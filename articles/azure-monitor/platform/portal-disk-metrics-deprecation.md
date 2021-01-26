@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
-ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 623d9385b9ae6b13c8964f655fb973fe67a0918a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79300490"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91743711"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure portal でのディスク メトリックの非推奨
 
@@ -44,38 +44,38 @@ ms.locfileid: "79300490"
 1. Azure portal で、「**アラート**」 を検索します。 次に、 **[サービス]** セクションで、 **[アラート]** を選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
+   > ![アラート サービス](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
 2. **[アラート]** ページで、 **[アラート ルール の管理]** ボタンを選択します。 
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![アラート ルールの管理](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
 3. **[リソース グループ]** ドロップダウン リストから **[Virtual Machines]** チェックボックスを選択し、 **[Signal type]\(シグナルの種類\)** ドロップダウン リストから **[メトリック]** チェックボックスを選択します。 
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+   > ![アラートのフィルター処理](./media/portal-disk-metrics-deprecation/filter-alerts.png)
 
 4. メトリックの一覧で、ディスクに関連する条件を特定します。 ルールの名前をクリックします。 
 
    名前は、テーブルの **[名前]** 列にハイパーリンクとして表示されます。
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![ディスク条件を見つける](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
 
 5. **[ルール管理]** ページの **[条件]** セクションで、アラートの条件をクリックします。 
 
    条件はハイパーリンクとして表示されます。  
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![条件を調整する](./media/portal-disk-metrics-deprecation/adjust-condition.png)
 
    **[シグナル ロジックの構成]** ページが表示され、条件の設定がそのページの **[アラート ロジック]** セクションに表示されます。
 
 6. これらの設定は、非推奨のメトリックを削除すると表示されなくなるため、記録しておいてください。
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![条件の規則](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
    > これらの設定は、スクリーンショットまたはテキスト ファイルでキャプチャすることを検討してください。 
@@ -83,7 +83,7 @@ ms.locfileid: "79300490"
 7. **[シグナルの選択に戻る]** リンクをクリックします。
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![シグナルの選択に戻る](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
 8. **[シグナル ロジックの構成]** ページで、適切な置換メトリック (新しいメトリック) を選択します。 この記事の前半にある[表](#update-metrics)を使用して、新しいメトリックの名前を識別します。
 
@@ -91,17 +91,17 @@ ms.locfileid: "79300490"
    > 検索バーへの入力を開始して、メトリック名の一覧を絞り込みます。 
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![新しいメトリックの選択](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
 9. **[完了]** ボタンを選択します。 
 
    > [!div class="mx-imgBorder"]
-   > ![イメージの説明](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![新しいメトリックの設定](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
 10. **[保存]** ボタンを選択して変更をコミットします。 
 
     > [!div class="mx-imgBorder"]
-    > ![イメージの説明](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![新しいメトリックの保存](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

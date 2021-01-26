@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248974"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387543"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -33,13 +33,13 @@ Data Factory [パイプライン](concepts-pipelines-activities.md)のデータ�
 ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。 
 
 - Azure SQL データベース
-- Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)
+- Azure Synapse Analytics
 - SQL Server データベース  SQL Server を使用している場合は、データベースをホストしているコンピューター、またはデータベースにアクセスできる別のコンピューターにセルフホステッド統合ランタイムをインストールします。 セルフホステッド統合ランタイムは、管理された確実な方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
-> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 プロパティの詳細については、[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md) の各コネクタに関する記事をご覧ください。 コピー アクティビティを使用して Azure Synapse Analytics (以前の Azure SQL Data Warehouse) にデータをコピーしている間に、ストアド プロシージャを呼び出すことは、サポートされていません。 しかし、SQL Data Warehouse のストアド プロシージャを呼び出すためにストアド プロシージャのアクティビティを使用することは可能です。 
+> Azure SQL Database または SQL Server にデータをコピーする場合、**sqlWriterStoredProcedureName** プロパティを使用してストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成できます。 プロパティの詳細については、[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md) の各コネクタに関する記事をご覧ください。 コピー アクティビティを使用して Azure Synapse Analytics にデータをコピー中に、ストアド プロシージャを呼び出すことはできません。 しかし、Azure Synapse Analytics のストアド プロシージャを呼び出すためにストアド プロシージャのアクティビティを使用することは可能です。 
 >
-> Azure SQL Database、SQL Server、または Azure Synapse Analytics (以前の Azure SQL Data Warehouse) からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ストアド プロシージャを呼び出してソース データベースからデータを読み取るために、コピー アクティビティ内で **SqlSource** を構成できます。 詳細については、[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md)、[Azure Synapse Analytics (以前の Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)          
+> Azure SQL Database、SQL Server、または Azure Synapse Analytics からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -73,7 +73,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | name                      | アクティビティの名前                     | はい      |
 | description               | アクティビティの用途を説明するテキストです。 | いいえ       |
 | type                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | はい      |
-| linkedServiceName         | Data Factory にリンクされたサービスとして登録されている **Azure SQL Database**、**Azure Synapse Analytics (以前の Azure SQL Data Warehouse)** 、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
+| linkedServiceName         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure Synapse Analytics**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | はい      |
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ       |
 
@@ -82,15 +82,13 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | Data Source          | データ型のマッピング |
 | ---------------------|-------------------|
-| Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL データベース   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
-## <a name="error-info"></a>エラー情報
 
-ストアド プロシージャが失敗し、エラー詳細が返されると、アクティビティ出力ではエラー情報を直接キャプチャすることができません。 ただし、データ ファクトリによって、そのアクティビティ実行イベントがすべて Azure Monitor に送り込まれます。 データ ファクトリによって Azure Monitor にイベントが送り込まれるとき、エラー詳細も送り込まれます。 そのようなイベントから、たとえば、メール アラートを設定できます。 詳細については、「[Azure Monitor を使用して、データ ファクトリをアラートおよび監視する](monitor-using-azure-monitor.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
@@ -102,5 +100,5 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 * [Hadoop ストリーミング アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

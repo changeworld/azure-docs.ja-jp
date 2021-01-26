@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: inhenkel
 ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89253983"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022219"
 ---
 # <a name="playback-with-azure-media-player"></a>Azure Media Player を使用した再生
 

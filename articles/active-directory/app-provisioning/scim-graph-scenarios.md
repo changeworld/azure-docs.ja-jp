@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: ba8dec19443bbafa300144b1aa42b3973cce9e6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235504"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655154"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化する
 
@@ -62,7 +62,7 @@ POST /Users
     "roles": []
 }
 ```
-    
+
 ## <a name="scenario-2-automatically-remove-users-from-my-app"></a>シナリオ 2: 自分のアプリからユーザーを自動的に削除する
 対象のアプリケーションを使用しているお客様は、セキュリティを重視して、従業員のアカウントが不要になったときにそれを削除するためのガバナンス要件を設定しています。 対象のアプリケーションからのプロビジョニング解除を自動化するにはどうすればよいですか。
 
@@ -102,7 +102,7 @@ DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 ## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>シナリオ 5: Teams、Outlook、Azure AD などの Microsoft サービスにおける変更を追跡する
 Teams と Outlook のメッセージの変更を追跡し、リアルタイムでそれらに対応できるようにする必要があります。 これらの変更を自分のアプリケーションにプッシュするにはどうすればよいですか。
 
-**推奨事項:** Microsoft Graph には、さまざまなリソースの[変更通知](/graph/webhooks)および[変更追跡機能](/graph/delta-query-overview)が用意されています。 変更通知に関する次の制限事項に注意してください。
+**推奨事項:** Microsoft Graph には、さまざまなリソースの [変更通知](/graph/webhooks)および [変更追跡機能](/graph/delta-query-overview)が用意されています。 変更通知に関する次の制限事項に注意してください。
 - イベント レシーバーがイベントを確認した後、なんらかの理由でそのイベントを処理できない場合は、イベントが失われる可能性があります。
 - 変更を受信する順序は、時系列であるとは限りません。
 - 必ずしも変更通知に[リソース データ](/graph/webhooks-with-resource-data)が含まれるとは限りません。上記の理由により、開発者は、多くの場合、同期シナリオの変更追跡と共に変更通知を使用します。 

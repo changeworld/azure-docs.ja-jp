@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021383"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024097"
 ---
 # <a name="color-materials"></a>色素材
 
-*色素材*は、Azure Remote Rendering でサポートされている[素材の種類](../../concepts/materials.md)の 1 つです。 これらは、いかなる照明も当てず、常に明るさが最大である[メッシュ](../../concepts/meshes.md)に使用されます。 車のダッシュボード、電球、静的な光源が既に組み込まれているデータ ([フォトグラメトリ](https://en.wikipedia.org/wiki/Photogrammetry)で取得したモデルなど) については、これが当てはまります。
+*色素材* は、Azure Remote Rendering でサポートされている [素材の種類](../../concepts/materials.md)の 1 つです。 これらは、いかなる照明も当てず、常に明るさが最大である[メッシュ](../../concepts/meshes.md)に使用されます。 車のダッシュボード、電球、静的な光源が既に組み込まれているデータ ([フォトグラメトリ](https://en.wikipedia.org/wiki/Photogrammetry)で取得したモデルなど) については、これが当てはまります。
 
 色素材のシェーディング モデルは [PBR 素材](pbr-materials.md)と比べて単純であるため、より効率的にレンダリングできます。 また、さまざまな透明度モードもサポートしています。
 
@@ -22,7 +22,7 @@ ms.locfileid: "84021383"
 
 これらのプロパティは、すべての素材に共通です。
 
-* **albedoColor:** この色には、*albedoMap* や " *:::no-loc text="vertex"::: カラー*" など、その他の色が乗算されます。 素材に対して*透明度*が有効な場合、アルファ チャネルを使用して不透明度が調整されます。ここで、`1` は完全に不透明、`0` は完全に透明を意味します。 既定値は白です。
+* **albedoColor:** この色には、*albedoMap* や " *:::no-loc text="vertex"::: カラー*" など、その他の色が乗算されます。 素材に対して *透明度* が有効な場合、アルファ チャネルを使用して不透明度が調整されます。ここで、`1` は完全に不透明、`0` は完全に透明を意味します。 既定値は白です。
 
   > [!NOTE]
   > 色素材には環境が反映されないため、完全に透明な色の素材は非表示になります。 これは、[PBR 素材](pbr-materials.md)とは異なります。
@@ -37,6 +37,14 @@ ms.locfileid: "84021383"
 
 * **isDoubleSided:** 両面に対する表示が true に設定されている場合、この素材が表示されている三角形は、カメラが背面を見ている場合でもレンダリングされます。 既定では、このオプションは無効になっています。 「[:::no-loc text="Single-sided"::: レンダリング](single-sided-rendering.md)」も参照してください。
 
+* **TransparencyWritesDepth:** 素材に TransparencyWritesDepth フラグが設定されていて、その素材が透明である場合、その素材を使用した物体も、最終的な深度バッファーに寄与します。 次のセクションの色素材プロパティ *transparencyMode* を参照してください。 実際のユース ケースで、完全に透明なシーンの [Late Stage Reprojection](late-stage-reprojection.md) の現実感を高める必要がある場合は、この機能を有効にすることをお勧めします。 不透明と透明が混在するシーンでは、この設定によって、非現実的な再投影動作や再投影アーティファクトが生じることがあります。 このため、一般的なユース ケースにおいて推奨される既定の設定は、このフラグを無効にすることです。 書き込まれる深度値は、カメラに最も近い物体のピクセルごとの深度レイヤーから取得されます。
+
+* **FresnelEffect:** この素材フラグを使用すると、個々のマテリアルに対して付加的な [フレネル効果](../../overview/features/fresnel-effect.md)を有効にすることができます。 この効果の外観は、以下で説明する、他のフレネル パラメーターによって制御されます。 
+
+* **FresnelEffectColor:** この素材に使用されるフレネルの色。 この素材に対してフレネル効果ビットが設定されている場合にのみ重要です (上記を参照)。 このプロパティによって、フレネル光沢の基本色が制御されます (詳細な説明は「[フレネル効果](../../overview/features/fresnel-effect.md)」を参照してください)。 現在は、rgb チャネル値のみが重要であり、アルファ値は無視されます。
+
+* **FresnelEffectExponent:** この素材に使用されるフレネル指数。 この素材に対してフレネル効果ビットが設定されている場合にのみ重要です (上記を参照)。 このプロパティによって、フレネル光沢の拡散が制御されます。 最小値 0.01 の場合、オブジェクト全体にわたって拡散されます。 最大値 10.0 では、光沢が抑制され、最グレージング端にのみ表示されます。
+
 ## <a name="color-material-properties"></a>色素材のプロパティ
 
 次のプロパティは、色素材に固有のものです。
@@ -50,6 +58,13 @@ ms.locfileid: "84021383"
   1. **AlphaBlended:** このモードは、PBR 素材の透明度モードに似ています。 ガラスなどの透明な素材の表示に使用されます。
 
   1. **Additive:** このモードは、最もシンプルかつ効率的な透明度モードです。 素材の影響は、レンダリングされるイメージに追加されます。 このモードを使用すると、重要なオブジェクトを強調表示するために使用されるマーカーなど、光彩 (ただし透明) のオブジェクトをシミュレートできます。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# ColorMaterial クラス](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager.CreateMaterial()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ ColorMaterial クラス](/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager::CreateMaterial()](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>次のステップ
 

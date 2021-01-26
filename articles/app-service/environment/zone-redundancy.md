@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961569"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90605075"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境での可用性ゾーンのサポート
 
@@ -29,11 +29,15 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 ゾーン ILB ASE は、次のいずれかのリージョンで作成できます。
 
+- オーストラリア東部
+- ブラジル南部
+- カナダ中部
 - 米国中部
 - 米国東部
 - 米国東部 2
 - 米国東部 2 (EUAP)
 - フランス中部 
+- ドイツ中西部
 - 東日本
 - 北ヨーロッパ
 - 西ヨーロッパ
@@ -83,7 +87,7 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 可用性ゾーンにデプロイされた ILB ASE には、ゾーン ILB ASE がデプロイされているリージョン内のユーザー データのみが格納されます。 Web サイトのファイル コンテンツ、ユーザーが指定した設定、および App Service に格納されているシークレットは、いずれもゾーン ILB ASE がデプロイされているリージョン内に残ります。
 
-ユーザーは、「可用性ゾーンに App Service Environment をデプロイする方法」の項で説明した手順に従って、単一リージョンのデータの保存場所となるようにしてください。 これらの手順に従って App Service Environment を構成することにより、可用性ゾーンにデプロイされた App Service Environment で、リージョンのデータの保存場所の要件が満たされます ([Azure トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されている要件を含む)。
+ユーザーは、「可用性ゾーンに App Service Environment をデプロイする方法」の項で説明した手順に従って、単一リージョンのデータの保存場所となるようにしてください。 これらの手順に従って App Service Environment を構成することにより、可用性ゾーンにデプロイされた App Service Environment で、リージョンのデータの保存場所の要件が満たされます ([Azure セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に指定されている要件を含む)。
 
 ユーザーは、次の手順に従って、1 つのリージョンにデータが格納されるように App Service Environment が適切に構成されていることを検証できます。 
 

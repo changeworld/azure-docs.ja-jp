@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081051"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545244"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "87081051"
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
+* インストール済みの PowerShell [Az モジュール](/powershell/azure/)。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
@@ -37,8 +37,8 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 リモート HDInsight クラスターで Hive クエリを実行するときに次のコマンドレットを使用します。
 
 * `Connect-AzAccount`: Azure サブスクリプションに対して Azure PowerShell を認証します。
-* `New-AzHDInsightHiveJobDefinition`: 指定された HiveQL ステートメントを使用して、"*ジョブ定義*" を作成します。
-* `Start-AzHDInsightJob`: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
+* `New-AzHDInsightHiveJobDefinition`: 指定された HiveQL ステートメントを使用して、" *ジョブ定義* " を作成します。
+* `Start-AzHDInsightJob`: ジョブ定義を HDInsight に送信し、ジョブを開始します。 " *ジョブ* " オブジェクトが返されます。
 * `Wait-AzHDInsightJob`: ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 * `Get-AzHDInsightJobOutput`: ジョブの出力を取得する場合に使用します。
 * `Invoke-AzHDInsightHiveJob`: HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了をブロックし、その結果を返します。
@@ -84,7 +84,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > **Here-Strings** の詳細については、<a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>に関するページをご覧ください。
+   > **Here-Strings** の詳細については、「[HERE-STRINGS](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings)」を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085614"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021794"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -124,7 +124,7 @@ Bind をインストールするには、次の手順に従います。
     > `ssh` ユーティリティは、さまざまな方法で取得できます。 Linux、Unix、および macOS では、オペレーティング システムの一部として提供されます。 Windows を使用している場合は、次のオプションのいずれかを検討してください。
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
-    > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Bash on Ubuntu on Windows 10](/windows/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
@@ -413,4 +413,3 @@ sudo service bind9 status
 * [HDInsight での Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase の概要](./apache-hbase-overview.md)
 * [Azure Virtual Network での Apache HBase クラスターの作成](./apache-hbase-provision-vnet.md)
-

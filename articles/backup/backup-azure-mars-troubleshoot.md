@@ -3,12 +3,12 @@ title: Azure Backup エージェントのトラブルシューティング
 description: この記事では、Azure Backup エージェントのインストールと登録のトラブルシューティング方法について説明します。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 4ae4142652d9d38d5bf384e5a10d6eeb7e3cc608
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763509"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993841"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -41,7 +41,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | 原因 | 推奨アクション |
 | ---     | ---    |
-| **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが壊れているか、期限が切れている可能性があります。 (たとえば、登録の時刻より 48 時間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから[新しい資格情報をダウンロード](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)します。 その後、必要に応じて次の手順に従います。 <ul><li> MARS を既にインストールして登録している場合は、Microsoft Azure Backup エージェント MMC コンソールを開きます。 次に、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報での登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**:複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 48 時間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
+| **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが、壊れている、期限が切れている、または *.vaultCredentials* と異なるファイル拡張子を持っている可能性があります。 (たとえば、登録の時刻より 48 時間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから[新しい資格情報をダウンロード](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)します。 その後、必要に応じて次の手順に従います。 <ul><li> MARS を既にインストールして登録している場合は、Microsoft Azure Backup エージェント MMC コンソールを開きます。 次に、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報での登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**:複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 48 時間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
 | **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンまたはプロキシ サーバーでインターネット接続が制限されていて、必要な URL へのアクセスが許可されていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォール/プロキシ サーバーがある場合は、ネットワーク チームと連携して、以下の URL と IP アドレスにアクセスできることを確認します。<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。<br></br> Azure ExpressRoute 経由で接続している場合は、「[Azure ExpressRoute のサポート](backup-support-matrix-mars-agent.md#azure-expressroute-support)」の説明に従って設定が構成されていることを確認してください。
 | **ウイルス対策ソフトウェアによって登録をブロックされています** | サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。 <br/><ul> <li> CBengine.exe <li> CSC.exe<li> スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
@@ -60,14 +60,14 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 1. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。
 1. システム アカウントのプロキシ設定を確認します。
 1. プロキシが構成されていてプロキシの詳細が提供されている場合は、詳細を削除します。
-1. プロキシが構成されていてプロキシの詳細が正しくない場合は、**プロキシの IP** と**ポート**の詳細が正しいことを確認します。
+1. プロキシが構成されていてプロキシの詳細が正しくない場合は、**プロキシの IP** と **ポート** の詳細が正しいことを確認します。
 1. Internet Explorer を閉じます。
 
 ## <a name="unable-to-download-vault-credential-file"></a>コンテナーの資格情報ファイルをダウンロードできない
 
 | エラー   | 推奨アクション |
 | ---     | ---    |
-|コンテナー資格情報ファイルをダウンロードできませんでした。 (ID: 403) | <ul><li> 別のブラウザーを使用してコンテナー資格情報のダウンロードを試みるか、次の手順を実行します。 <ul><li> Internet Explorer を起動します。 F12 キーを押します。 </li><li> **[ネットワーク]** タブに移動して、キャッシュと Cookie をクリアします。 </li> <li> ページを更新します。<br></li></ul> <li> サブスクリプションが無効/期限切れかどうかを確認します。<br></li> <li> 何らかのファイアウォール規則によってダウンロードがブロックされているかどうかを確認します。 <br></li> <li> コンテナーでの制限に達していないことを確認します (コンテナーあたり 50 マシン)。<br></li>  <li> コンテナー資格情報をダウンロードしてサーバーをコンテナーに登録するために必要な Azure Backup のアクセス許可をユーザーが持っていることを確認します。 「[ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](backup-rbac-rs-vault.md)」を参照してください。</li></ul> |
+|コンテナー資格情報ファイルをダウンロードできませんでした。 (ID: 403) | <ul><li> 別のブラウザーを使用してコンテナー資格情報のダウンロードを試みるか、次の手順を実行します。 <ul><li> Internet Explorer を起動します。 F12 キーを押します。 </li><li> **[ネットワーク]** タブに移動して、キャッシュと Cookie をクリアします。 </li> <li> ページを更新します。<br></li></ul> <li> サブスクリプションが無効/期限切れかどうかを確認します。<br></li> <li> 何らかのファイアウォール規則によってダウンロードがブロックされているかどうかを確認します。 <br></li> <li> コンテナーでの制限に達していないことを確認します (コンテナーあたり 50 マシン)。<br></li>  <li> コンテナー資格情報をダウンロードしてサーバーをコンテナーに登録するために必要な Azure Backup のアクセス許可をユーザーが持っていることを確認します。 「[Azure ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](backup-rbac-rs-vault.md)」を参照してください。</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした
 
@@ -83,7 +83,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 ## <a name="backup-jobs-completed-with-warning"></a>バックアップ ジョブが警告付きで完了した
 
-- バックアップ中に MARS エージェントによってファイルとフォルダーが反復処理されると、さまざまな状況が発生し、バックアップが "完了 (警告あり)" とマークされることがあります。 このような状況では、ジョブは "完了 (警告あり)" と表示されます。 これに問題はありませんが、少なくとも 1 つのファイルをバックアップできなかったことを意味します。 そのため、ジョブではそのファイルがスキップされ、データ ソースにある問題の他のすべてのファイルがバックアップされています。
+- バックアップ中に MARS エージェントによってファイルとフォルダーが反復処理されると、さまざまな状況が発生し、バックアップが "完了 (警告あり)" とマークされることがあります。 このような状況では、ジョブは "完了 (警告あり)" と表示されます。 これは問題ありませんが、少なくとも 1 つのファイルをバックアップできなかったことを意味しています。 そのため、ジョブではそのファイルがスキップされ、データ ソースにある問題の他のすべてのファイルがバックアップされています。
 
   ![バックアップ ジョブが警告ありで完了した](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 
@@ -137,7 +137,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
   1. **[Microsoft-OnlineBackup]** をダブルクリックし、 **[トリガー]** タブに移動します。
   1. 状態が **[有効]** に設定されていることを確認します。 設定されていない場合は、 **[編集]** を選択し、 **[有効]** を選択してから、 **[OK]** を選択します。
 
-- タスク実行のために選択したユーザー アカウントが **SYSTEM**、またはサーバー上の**ローカルの Administrators グループ**であることを確認します。 ユーザー アカウントを確認するには、 **[全般]** タブに移動し、 **[セキュリティ]** オプションを確認します。
+- タスク実行のために選択したユーザー アカウントが **SYSTEM**、またはサーバー上の **ローカルの Administrators グループ** であることを確認します。 ユーザー アカウントを確認するには、 **[全般]** タブに移動し、 **[セキュリティ]** オプションを確認します。
 
 - PowerShell 3.0 以降がサーバーにインストールされていることを確認します。 PowerShell のバージョンを確認するには、次のコマンドを実行し、`Major` のバージョン番号が 3 以上であることを確認します。
 
@@ -196,9 +196,9 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
 1. マウント プロセスが数分間実行されている場合は取り消します。
 
-2. 最新バージョンの Backup エージェントがあるかどうかを確認します。 バージョンを確認するには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 このリンクを選択して[最新バージョンをダウンロード](https://go.microsoft.com/fwLink/?LinkID=288905)します。
+2. 最新バージョンの Backup エージェントがあるかどうかを確認します。 バージョンを確認するには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン** 番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 このリンクを選択して[最新バージョンをダウンロード](https://go.microsoft.com/fwLink/?LinkID=288905)します。
 
-3. **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
+3. **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター** を探します。 見つかった場合は、手順 7 に進みます。
 
 4. Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]**  >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
 

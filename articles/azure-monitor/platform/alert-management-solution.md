@@ -6,21 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997258"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
-
-> [!NOTE]
->  Azure Monitor では、[System Center Operations Manager、Zabbix、Nagios などの監視ツール](https://aka.ms/managing-alerts-other-monitoring-services)で生成されたアラートを含め、[アラートを大規模に管理する](https://aka.ms/azure-alerts-overview)ための強化機能がサポートされるようになりました。
->  
-
 
 Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](./alerts-overview.md)ものや、[Nagios や Zabbix からインポートされた](../learn/quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](./om-agents.md)からもインポートされます。
 
@@ -76,7 +71,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
-アラート管理ソリューションでは、 **Alert**タイプのすべてのレコードが分析されます。  Log Analytics によって生成されたアラートや、Nagios または Zabbix から収集されたアラートが直接収集されるわけではありません。
+アラート管理ソリューションでは、 **Alert** タイプのすべてのレコードが分析されます。  Log Analytics によって生成されたアラートや、Nagios または Zabbix から収集されたアラートが直接収集されるわけではありません。
 
 アラートは System Center Operations Manager からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
@@ -120,4 +115,3 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](./alerts-overview.md) に関するページを参照してください。
-

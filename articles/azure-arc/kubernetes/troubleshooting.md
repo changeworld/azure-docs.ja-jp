@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723675"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586161"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc 対応 Kubernetes のトラブルシューティング (プレビュー)
 
@@ -50,16 +50,16 @@ Helm リリースが存在し、`STATUS: deployed` の場合は、`kubectl` を�
 
 ```console
 $ kubectl -n azure-arc get deployments,pods
-NAME                                        READY   UP-TO-DATE AVAILABLE AGE
-deployment.apps/cluster-metadata-operator   1/1     1           1        16h
-deployment.apps/clusteridentityoperator     1/1     1           1        16h
-deployment.apps/config-agent                1/1     1           1        16h
-deployment.apps/controller-manager          1/1     1           1        16h
-deployment.apps/flux-logs-agent             1/1     1           1        16h
-deployment.apps/metrics-agent               1/1     1           1        16h
-deployment.apps/resource-sync-agent         1/1     1           1        16h
+NAME                                       READY  UP-TO-DATE  AVAILABLE  AGE
+deployment.apps/clusteridentityoperator     1/1       1          1       16h
+deployment.apps/config-agent                1/1       1          1       16h
+deployment.apps/cluster-metadata-operator   1/1       1          1       16h
+deployment.apps/controller-manager          1/1       1          1       16h
+deployment.apps/flux-logs-agent             1/1       1          1       16h
+deployment.apps/metrics-agent               1/1       1          1       16h
+deployment.apps/resource-sync-agent         1/1       1          1       16h
 
-NAME                                            READY   STATUS   RESTART AGE
+NAME                                            READY   STATUS  RESTART  AGE
 pod/cluster-metadata-operator-7fb54d9986-g785b  2/2     Running  0       16h
 pod/clusteridentityoperator-6d6678ffd4-tx8hr    3/3     Running  0       16h
 pod/config-agent-544c4669f9-4th92               3/3     Running  0       16h
@@ -69,7 +69,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-すべてのポッドの `STATUS` が `Running` である必要があり、`READY` は `3/3` または `2/2` である必要があります。 ログを取得し、`Error` または `CrashLoopBackOff` を返しているポッドを書き留めます。 これらのポッドのいずれかが `Pending` 状態で止まっている場合、原因として、クラスター ノードにリソースが十分にないことが考えられます。 [クラスターをスケールアップする](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster)と、ポッドが `Running` 状態に移行します。
+すべてのポッドの `STATUS` が `Running` である必要があり、`READY` は `3/3` または `2/2` である必要があります。 ログを取得し、`Error` または `CrashLoopBackOff` を返しているポッドを書き留めます。 これらのポッドのいずれかが `Pending` 状態で止まっている場合、原因として、クラスター ノードにリソースが十分にないことが考えられます。 [クラスターをスケールアップする](https://kubernetes.io/docs/tasks/administer-cluster/)と、ポッドが `Running` 状態に移行します。
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Azure Arc に Kubernetes クラスターを Azure に接続する
 
@@ -100,6 +100,34 @@ Command group 'connectedk8s' is in preview. It may be changed/removed in a futur
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
+
+### <a name="helm-issue"></a>Helm の問題
+
+Helm バージョン `v3.3.0-rc.1` には、helm install または helm upgrade を実行すると (connectedk8s CLI 拡張機能で使用) すべてのフックが実行され、以下のエラーが発生するという[問題](https://github.com/helm/helm/pull/8527)があります。
+
+```console
+$ az connectedk8s connect -n shasbakstest -g shasbakstest
+Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
+Ensure that you have the latest helm version installed before proceeding.
+This operation might take a while...
+
+Please check if the azure-arc namespace was deployed and run 'kubectl get pods -n azure-arc' to check if all the pods are in running state. A possible cause for pods stuck in pending state could be insufficientresources on the kubernetes cluster to onboard to arc.
+ValidationError: Unable to install helm release: Error: customresourcedefinitions.apiextensions.k8s.io "connectedclusters.arc.azure.com" not found
+```
+
+この問題を解決するには、次の手順に従います。
+
+1. Azure portal で、問題となっている Azure Arc 対応 Kubernetes リソースを削除します。
+2. お使いのマシンで次のコマンドを実行します。
+    
+    ```console
+    kubectl delete ns azure-arc
+    kubectl delete clusterrolebinding azure-arc-operator
+    kubectl delete secret sh.helm.release.v1.azure-arc.v1
+    ```
+
+3. リリース候補バージョンではなく、[安定したバージョン](https://helm.sh/docs/intro/install/) (Helm 3) をマシンにインストールします。
+4. 適切な値を指定して `az connectedk8s connect` コマンドを実行し、クラスターを Azure Arc に接続します。
 
 ## <a name="configuration-management"></a>構成管理
 

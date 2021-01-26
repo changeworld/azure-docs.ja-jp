@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7212157bb7ef541ac1eb1753f46ea6ad434c2ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013369"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569999"
 ---
 # <a name="server-side-performance-queries"></a>サーバー側のパフォーマンス クエリ
 
@@ -29,7 +29,7 @@ ms.locfileid: "89013369"
 
 この図は、次の方法を示しています。
 
-* クライアントによって (16.6 ミリ秒ごとに) 60 Hz の固定フレーム レートで*姿勢推定*が開始されます
+* クライアントによって (16.6 ミリ秒ごとに) 60 Hz の固定フレーム レートで *姿勢推定* が開始されます
 * その後、サーバーがその姿勢に基づいてレンダリングを開始します
 * サーバーがエンコードされた動画の画像を送信します
 * クライアントがその画像をデコードし、その画像に対して CPU と GPU で何らかの処理を実行した後、画像を表示します
@@ -65,9 +65,9 @@ void QueryFrameData(ApiHandle<AzureSession> session)
 | メンバー | 説明 |
 |:-|:-|
 | latencyPoseToReceive | クライアント デバイスでのカメラの姿勢推定から、この姿勢のサーバー フレームがクライアント アプリケーションで完全に利用可能になるまでの待機時間。 この値には、ネットワークのラウンドトリップ、サーバーのレンダリング時間、動画のデコード、およびジッターの補正が含まれます。 **上の図の間隔 1** をご覧ください。|
-| latencyReceiveToPresent | 受信したリモート フレームが使用可能になってから、クライアント アプリが CPU に対して PresentFrame を呼び出すまでの待機時間。 |
-| latencyPresentToDisplay  | CPU 上にフレームが表示されてから、ディスプレイが点灯するまで待機時間。 この値には、クライアントの GPU 時間、OS で実行されたすべてのフレーム バッファリング、ハードウェアの再投影、およびデバイスに依存するディスプレイのスキャンアウト時間が含まれます。 **上の図の間隔 2** をご覧ください。|
-| timeSinceLastPresent | それ以降に CPU で実行される PresentFrame への呼び出しの間隔。 表示時間 (60 Hz のクライアントデバイスで 16.6 ミリ秒など) より大きい値は、クライアント アプリケーションが時間内に CPU ワークロードを完了しないことが原因で発生した問題を示しています。 **上の図の間隔 3** をご覧ください。|
+| latencyReceiveToPresent | 受信したリモート フレームが使用可能になってから、クライアント アプリが CPU に対して PresentFrame を呼び出すまでの待機時間。 **上の図の間隔 2** をご覧ください。|
+| latencyPresentToDisplay  | CPU 上にフレームが表示されてから、ディスプレイが点灯するまで待機時間。 この値には、クライアントの GPU 時間、OS で実行されたすべてのフレーム バッファリング、ハードウェアの再投影、およびデバイスに依存するディスプレイのスキャンアウト時間が含まれます。 **上の図の間隔 3** をご覧ください。|
+| timeSinceLastPresent | それ以降に CPU で実行される PresentFrame への呼び出しの間隔。 表示時間 (60 Hz のクライアントデバイスで 16.6 ミリ秒など) より大きい値は、クライアント アプリケーションが時間内に CPU ワークロードを完了しないことが原因で発生した問題を示しています。|
 | videoFramesReceived | 最後の 1 秒間にサーバーから受信されたフレームの数。 |
 | videoFrameReusedCount | デバイスで複数回使用された、最後の 1 秒間に受信されたフレームの数。 0 以外の値は、ネットワークのジッターまたはサーバーでの過剰なレンダリング時間が原因でフレームを再利用および再投影する必要があったことを示しています。 |
 | videoFramesSkipped | デコードされたが、新しいフレームが到着したためにディスプレイに表示されなかった、最後の 1 秒間に受信されたフレームの数。 0 以外の値は、ネットワークのジッターが原因で複数のフレームが遅延した後、クライアント デバイスにまとめてバーストとして到着したことを示しています。 |
@@ -85,7 +85,7 @@ void QueryFrameData(ApiHandle<AzureSession> session)
 
 ## <a name="performance-assessment-queries"></a>パフォーマンス評価クエリ
 
-*パフォーマンス評価クエリ*では、サーバー上の CPU および GPU ワークロードに関する詳細な情報を提供します。 データはサーバーから要求されるため、パフォーマンスのスナップショットのクエリは通常の非同期パターンに従います。
+*パフォーマンス評価クエリ* では、サーバー上の CPU および GPU ワークロードに関する詳細な情報を提供します。 データはサーバーから要求されるため、パフォーマンスのスナップショットのクエリは通常の非同期パターンに従います。
 
 ```cs
 PerformanceAssessmentAsync _assessmentQuery = null;
@@ -132,7 +132,7 @@ void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
 | networkLatency | ラウンドトリップ ネットワークのおおよその平均待機時間 (ミリ秒)。 上の図では、これは赤い矢印の合計に相当します。 この値は、`FrameStatistics` の `latencyPoseToReceive` 値からサーバーでの実際のレンダリング時間を差し引くことによって計算されます。 この概算値は正確ではありませんが、クライアントで計算された待機時間の値から分離されたネットワーク待機時間があることを示しています。 |
 | polygonsRendered | 1 つのフレームにレンダリングされる三角形の数。 この数には、後でレンダリング中にカリングされる三角形も含まれています。 つまり、この数はカメラの位置によって変わることはありませんが、三角形のカリング率に応じてパフォーマンスは大幅に変わる可能性があります。|
 
-値の評価に役立つように、各部分には**優良**、**良**、**平均**、**不良**などの品質分類が付いています。
+値の評価に役立つように、各部分には **優良**、**良**、**平均**、**不良** などの品質分類が付いています。
 この評価メトリックでは、サーバーの正常性が大まかに示されますが、それを絶対的なものであると見なさないでください。 たとえば、GPU 時間のスコアが "平均" であるとします。 それが平均と見なされるのは、フレーム時間の全体的な割り当て量の上限に近づいているためです。 ただし、この場合は、複雑なモデルをレンダリングしているので、考えようによってはそれでも良い値です。
 
 ## <a name="statistics-debug-output"></a>統計情報のデバッグ出力
@@ -172,6 +172,11 @@ void Update()
 `GetStatsString` API によってすべての値の文字列を書式設定できますが、それぞれの単一値を `ARRServiceStats` インスタンスからプログラムでクエリすることもできます。
 
 また、メンバーには、時間の経過と共に値を集計するいくつかのバリエーションもあります。 サフィックス `*Avg`、`*Max`、または `*Total` の付いたメンバーをご覧ください。 メンバー `FramesUsedForAverage` は、こうした集計に使用されていたフレームの数を示します。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RemoteManager.QueryServerPerformanceAssessmentAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
+* [C++ RemoteManager::QueryServerPerformanceAssessmentAsync()](/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>次のステップ
 

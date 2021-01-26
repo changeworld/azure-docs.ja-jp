@@ -6,21 +6,24 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: 82d820e676cb241198e7b412bad9602b5eb8109b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037340"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843606"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 Azure Spring Cloud では Azure CLI のログ ストリーミングを使ってトラブルシューティングのためにリアルタイムのアプリケーション コンソール ログを取得できます。 さらに、[診断設定でログとメトリックを分析する](./diagnostic-services.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension)のインストール。
-* [Spring Cloud アプリ](./spring-cloud-quickstart-launch-app-cli.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
+* Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](/cli/azure/install-azure-cli)のインストール。
+* [Spring Cloud アプリ](./spring-cloud-quickstart.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
 
 > [!NOTE]
 >  ASC CLI 拡張機能はバージョン 0.2.0 から 0.2.1 に更新されました。 この変更によってログ ストリーミングのコマンドの構文が影響を受けます。`az spring-cloud app logs` が `az spring-cloud app log tail` に取って代わります。 コマンド: `az spring-cloud app log tail` は今後のリリースで非推奨になります。 バージョン 0.2.0 を使用している場合、0.2.1 にアップグレードできます。 まず、コマンド `az extension remove -n spring-cloud` を使用して古いバージョンを削除します。  次に、コマンド `az extension add -n spring-cloud` で 0.2.1 をインストールします。
@@ -87,12 +90,6 @@ az spring-cloud app logs -h
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
+* [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [診断設定でログとメトリックを分析する](./diagnostic-services.md)
-
- 
-
-
-
-
 

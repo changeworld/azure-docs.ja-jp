@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Azure Defender for IoT のドキュメント
+summary: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+metadata:
+  title: Azure Defender for IoT のドキュメント
+  description: Azure ベースのクラウド セキュリティ サービス、Azure Defender for IoT が包括的な IoT デバイス脅威保護を提供するしくみについて説明します。
+  services: service
+  ms.service: defender-for-iot
+  ms.topic: landing-page
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/07/2020
+  ms.openlocfilehash: 89bab2cde338cdabe47f70ee084aa5365b1f1877
+  ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/06/2021
+  ms.locfileid: "97935973"
+landingContent:
+- title: Azure Defender for IoT を使用した作業の開始
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Defender for IoT とは
+      url: overview.md
+    - text: ソリューションのアーキテクチャ
+      url: architecture.md
+    - text: セットアップの概要
+      url: getting-started.md
+    - text: 新機能
+      url: release-notes.md
+- title: セットアップとオンボード - エージェントレス ソリューション
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ネットワークをセットアップする
+      url: how-to-set-up-your-network.md
+    - text: 必要なアプライアンスを特定する
+      url: how-to-identify-required-appliances.md
+    - text: ソフトウェアをインストールする
+      url: how-to-install-software.md
+- title: ネットワークを監視する - エージェントレス ソリューション
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 接続されたデバイスの表示
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: デバイスのインベントリを表示する
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: アラートの調査
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: レポートの生成
+      url: how-to-generate-reports.md
+    - text: 検出するトラフィックを制御する
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Azure Sentinel に接続する
+      url: how-to-configure-with-sentinel.md
+- title: Azure Defender for IoT - エージェントベースのソリューション
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Edge のセキュリティ モジュール
+      url: security-edge-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: IoT Hub を有効にする - エージェントベースのソリューション
+      url: quickstart-onboard-iot-hub.md
+    - text: IoT セキュリティ ソリューションを構成する
+      url: quickstart-configure-your-solution.md
+    - text: Azure RTOS 用のセキュリティ モジュールを構成する
+      url: quickstart-azure-rtos-security-module.md
+    - text: Azure Defender for IoT のモジュール ツインを作成する
+      url: quickstart-create-security-twin.md
+    - text: カスタムのセキュリティのアラートを作成する
+      url: quickstart-create-custom-alerts.md
+    - text: セキュリティ アラートについて調査する
+      url: quickstart-investigate-security-alerts.md
+- title: Azure Defender for IoT ソリューションのリソース
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Take
+      url: https://myignite.microsoft.com/sessions/973175b0-2a2d-4b41-99f8-051e42ac575a
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: resources-frequently-asked-questions.md

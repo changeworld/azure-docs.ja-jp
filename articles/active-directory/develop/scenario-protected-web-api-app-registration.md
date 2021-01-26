@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518276"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443944"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -64,7 +64,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 - 1 つまたは複数のスコープ
 - 1 つまたは複数のアプリ ロール
 
-既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。 アプリケーション登録ポータルにより、[構成された発行元ドメイン](howto-configure-publisher-domain.md)が確実に使用されるようになります
+既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。 アプリケーション登録ポータルにより、[構成された発行元ドメイン](howto-configure-publisher-domain.md)が確実に使用されるようになります。
 
 クライアント アプリケーションに対して、スコープは Web API に対する "*委任されたアクセス許可*" として表示され、アプリ ロールは "*アプリケーション アクセス許可*" として表示されます。
 
@@ -153,5 +153,4 @@ Web API によってアプリ ロールが確認されます ソフトウェア�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリ コードの構成](scenario-protected-web-api-app-configuration.md)
+このシナリオの次の記事である[アプリ コードの構成](scenario-protected-web-api-app-configuration.md)に関する記事に進みます。

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 13e08d2c273b242a902203abf0879fd11fbdf801
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85940414"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386473"
 ---
 Bing Web Search クライアント ライブラリを使用すると、Python アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 
@@ -177,7 +177,7 @@ Bing Web Search API の最初の呼び出しを行ったので、関数をいく
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing から返される結果の数の制限
 
-このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)によって返される結果の数を制限しています。 最初の結果の `name` と `url` が出力されます。
+このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)によって返される結果の数を制限しています。 最初の結果の `name` と `url` が出力されます。
 
 1. 次のコードを Python プロジェクトに追加します。
 
@@ -266,7 +266,7 @@ Bing Web Search API の最初の呼び出しを行ったので、関数をいく
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>セーフ サーチ、回答数、昇格フィルターの使用
 
-このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)による検索結果をフィルター処理します。 最初の結果の `name` と `url` が表示されます。
+このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)による検索結果をフィルター処理します。 最初の結果の `name` と `url` が表示されます。
 
 1. 次のコードを Python プロジェクトに追加します。
 
@@ -320,4 +320,4 @@ Bing Web Search API の最初の呼び出しを行ったので、関数をいく
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Python SDK リファレンス](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)
+* [Azure Python SDK リファレンス](/python/api/azure-cognitiveservices-search-websearch/?view=azure-python)

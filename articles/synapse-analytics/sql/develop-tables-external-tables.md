@@ -5,42 +5,42 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 070d933394b19ea38a9632f25909812943f7bff8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255832"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120429"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
-外部テーブルは、Hadoop、Azure Storage BLOB、または Azure Data Lake Storage にあるデータを参照します。 外部テーブルは、Azure Storage 内のファイルからデータを読み取ったり、ファイルにデータを書き込んだりするために使用されます。 Synapse SQL では、外部テーブルを使用して、SQL プールまたは SQL オンデマンド (プレビュー) に対するデータの読み取りと書き込みを行えます。
+外部テーブルは、Hadoop、Azure Storage BLOB、または Azure Data Lake Storage にあるデータを参照します。 外部テーブルは、Azure Storage 内のファイルからデータを読み取ったり、ファイルにデータを書き込んだりするために使用されます。 Synapse SQL では、外部テーブルを使用して、専用 SQL プールまたはサーバーレス SQL プールに対するデータの読み取りと書き込みを行えます。
 
-## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Synapse SQL プールおよびオンデマンドでの外部テーブル
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>専用 SQL プールとサーバーレス SQL プールにおける外部テーブル
 
-### <a name="sql-pool"></a>[SQL プール](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[専用 SQL プール](#tab/sql-pool) 
 
-SQL プールでは、外部テーブルを使用して以下を行えます。
+専用 SQL プールでは、外部テーブルを使用して以下を行えます。
 
 - Transact-SQL ステートメントを使用して、Azure Blob Storage と Azure Data Lake Gen2 に対するクエリを実行する。
-- Azure Blob Storage と Azure Data Lake Storage から SQL プールにデータのインポートと格納を行う。
+- Azure Blob Storage と Azure Data Lake Storage から専用 SQL プールにデータのインポートと格納を行う。
 
-[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL プール内のテーブルにインポートされます。 [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)に加えて、外部テーブルはデータの読み込みにも便利です。 
+[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL プール内のテーブルにインポートされます。 [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に加えて、外部テーブルはデータの読み込みにも便利です。 
 
-読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage からのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage からのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページを参照してください。
 
-### <a name="sql-on-demand"></a>[SQL オンデマンド](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[サーバーレス SQL プール](#tab/sql-on-demand)
 
-SQL オンデマンドの場合は、以下を行うために外部テーブルを使用します。
+サーバーレス SQL プールでは、外部テーブルを使用して以下を行います。
 
 - Transact-SQL ステートメントを使用して、Azure Blob Storage または Azure Data Lake Storage 内のデータのクエリを実行する
-- [CETAS](develop-tables-cetas.md) を使用して、SQL オンデマンドのクエリ結果を Azure Blob Storage または Azure Data Lake Storage 内のファイルに格納する
+- [CETAS](develop-tables-cetas.md) を使用して、サーバーレス SQL プールのクエリ結果を Azure Blob Storage または Azure Data Lake Storage 内のファイルに格納する
 
-次の手順を通じて、SQL オンデマンドを使用して外部テーブルを作成できます。
+次の手順を通じて、サーバーレス SQL プールを使用して外部テーブルを作成できます。
 
 1. CREATE EXTERNAL DATA SOURCE
 2. CREATE EXTERNAL FILE FORMAT
@@ -56,15 +56,15 @@ SQL オンデマンドの場合は、以下を行うために外部テーブル�
 - SAS トークンまたはワークスペースのマネージド ID を使用して外部テーブルが Azure Storage 上のファイルにしかアクセスできないようにするための資格情報をデータソースに含めることができます。例については、[ストレージ ファイルのストレージ アクセス制御の開発](develop-storage-files-storage-access-control.md#examples)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> SQL プール内では、資格情報なしのデータソースから、Azure AD ユーザーは自分の Azure AD ID を使用してストレージ ファイルにアクセスすることができます。 SQL オンデマンドでは、`IDENTITY='User Identity'` プロパティを含むデータベース スコープ資格情報を使用してデータソースを作成する必要があります。[こちらの例](develop-storage-files-storage-access-control.md#examples)を参照してください。
+> 専用 SQL プール内では、資格情報なしで作成されたデータソースから、Azure AD ユーザーは自分の Azure AD ID を使用してストレージ ファイルにアクセスすることができます。 サーバーレス SQL プールでは、`IDENTITY='User Identity'` プロパティを含むデータベース スコープ資格情報を使用してデータソースを作成する必要があります。[こちらの例](develop-storage-files-storage-access-control.md#examples)を参照してください。
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
-外部データ ソースは、ストレージ アカウントへの接続に使用されます。 完全なドキュメントについては、[こちら](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)で概説されています。
+外部データ ソースは、ストレージ アカウントへの接続に使用されます。 完全なドキュメントについては、[こちら](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)で概説されています。
 
 ### <a name="syntax-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE の構文
 
-#### <a name="sql-pool"></a>[SQL プール](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[専用 SQL プール](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[SQL オンデマンド](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[サーバーレス SQL プール](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -96,7 +96,7 @@ data_source_name
 データ ソースのユーザー定義の名前を指定します。 名前は、データベース内で一意である必要があります。
 
 #### <a name="location"></a>場所
-LOCATION = `'<prefix>://<path>'`: 接続プロトコルと外部データ ソースへのパスを指定します。 場所では次のパターンを使用できます。
+LOCATION = `'<prefix>://<path>'`: 接続プロトコルと外部データ ソースへのパスを指定します。 場所では、次のパターンを使用できます。
 
 | 外部データ ソース        | 場所プレフィックス | ロケーション パス                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
@@ -110,16 +110,16 @@ LOCATION = `'<prefix>://<path>'`: 接続プロトコルと外部データ ソー
 #### <a name="credential"></a>資格情報
 CREDENTIAL = `<database scoped credential>` は、Azure Storage 上で認証を受けるために使用される省略可能な資格情報です。 資格情報を持たない外部データソースからは、パブリック ストレージ アカウントにアクセスできます。 
 
-SQL プール内の資格情報を持たない外部データソースからは、呼び出し元の Azure AD ID を使用して、ストレージ上のファイルにアクセスすることもできます。 資格情報を持つ外部データソースでは、資格情報内に指定された ID を使用して、ファイルへのアクセスが行われます。
-- SQL プールでは、データベース スコープ資格情報を使用して、カスタム アプリケーション ID、ワークスのペース マネージド ID、または SAK キーを指定できます。 
-- SQL オンデマンドでは、データベース スコープ資格情報を使用して、呼び出し元の Azure AD ID、ワークスペースのマネージド ID、または SAS キーを指定できます。 
+専用 SQL プール内の資格情報を持たない外部データソースからは、呼び出し元の Azure AD ID を使用して、ストレージ上のファイルにアクセスします。 資格情報 `IDENTITY='User Identity'` があるサーバーレス SQL プールの外部データ ソースからは、呼び出し元の Azure AD ID を使用してファイルにアクセスします。
+- 専用 SQL プールでは、データベース スコープ資格情報を使用して、カスタム アプリケーション ID、ワークスのペース マネージド ID、または SAK キーを指定できます。 
+- サーバーレス SQL プールでは、データベース スコープ資格情報を使用して、呼び出し元の Azure AD ID、ワークスペースのマネージド ID、または SAS キーを指定できます。 
 
 #### <a name="type"></a>TYPE
-TYPE = `HADOOP` は SQL プールでの必須オプションです。これにより、Polybase テクノロジを使用して基になるファイルにアクセスすることが指定されます。 このパラメーターは、組み込みのネイティブ リーダーを使用する SQL オンデマンド サービスでは使用できません。
+TYPE = `HADOOP` は専用 SQL プールでの必須オプションです。これにより、Polybase テクノロジを使用して基になるファイルにアクセスすることが指定されます。 このパラメーターは、組み込みのネイティブ リーダーを使用するサーバーレス SQL プールでは使用できません。
 
 ### <a name="example-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE の例
 
-#### <a name="sql-pool"></a>[SQL プール](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[専用 SQL プール](#tab/sql-pool)
 
 次の例では、New York データ セットを参照する Azure Data Lake Gen2 の外部データ ソースを作成します。
 
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[SQL オンデマンド](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[サーバーレス SQL プール](#tab/sql-on-demand)
 
 次の例では、SAS 資格情報を使用してアクセスできる Azure Data Lake Gen2 の外部データソースを作成します。
 
@@ -159,11 +159,13 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Azure Blob Storage または Azure Data Lake Storage に格納される外部データを定義する外部ファイル形式オブジェクトを作成します。 外部ファイル形式の作成は、外部テーブルを作成するための前提条件です。 完全なドキュメントは[こちら](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)にあります。
+Azure Blob Storage または Azure Data Lake Storage に格納される外部データを定義する外部ファイル形式オブジェクトを作成します。 外部ファイル形式の作成は、外部テーブルを作成するための前提条件です。 完全なドキュメントは[こちら](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)にあります。
 
 外部ファイル形式を作成することで、外部テーブルによって参照されるデータの実際のレイアウトを指定します。
 
 ### <a name="syntax-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT の構文
+
+#### <a name="sql-pool"></a>[SQL プール](#tab/sql-pool)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -192,6 +194,40 @@ WITH (
     | Encoding = {'UTF8' | 'UTF16'}
 }
 ```
+
+#### <a name="serverless-sql-pool"></a>[サーバーレス SQL プール](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
 
 ### <a name="arguments-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT の引数
 
@@ -230,7 +266,7 @@ TRUE: テキスト ファイルからデータを取得するときは、外部�
 
 FALSE: すべての不足値を NULL として格納します。 区切りテキスト ファイルで単語 NULL を使って格納されている NULL 値は、文字列 "NULL" としてインポートされます。
 
-Encoding = {'UTF8' | 'UTF16'}: SQL オンデマンドでは、UTF8 および UTF16 でエンコードされた区切りテキスト ファイルを読み取ることができます。
+Encoding = {'UTF8' | 'UTF16'}: サーバーレス SQL プールでは、UTF8 および UTF16 でエンコードされた区切りテキスト ファイルを読み取ることができます。
 
 DATA_COMPRESSION = *data_compression_method*: この引数では、外部データのデータ圧縮方法を指定します。 
 
@@ -244,6 +280,8 @@ PARQUET 外部テーブルから読み取る場合に、この引数は無視さ
 DELIMITEDTEXT ファイル形式の種類では、次の圧縮方法がサポートされています。
 
 - DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
+
+PARSER_VERSION = 'parser_version': ファイルの読み取り時に使用するパーサーのバージョンを指定します。 詳細については、[OPENROWSET 引数](develop-openrowset.md#arguments)に関するページの PARSER_VERSION 引数を確認してください。
 
 ### <a name="example-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT の例
 
@@ -283,7 +321,7 @@ column_name <data_type>
 
 *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-作成するテーブルの 1 つから 3 つの部分で構成される名前。 外部テーブルの場合、SQL オンデマンドではテーブルのメタデータのみが格納されます。 SQL オンデマンドでは、実際のデータの移動または格納は行われません。
+作成するテーブルの 1 つから 3 つの部分で構成される名前。 外部テーブルの場合、サーバーレス SQL プールではテーブルのメタデータのみが格納されます。 サーバーレス SQL プールでは、実際のデータの移動または格納は行われません。
 
 <column_definition>, ...*n* ]
 
@@ -298,12 +336,12 @@ LOCATION = '*folder_or_filepath*'
 
 Azure Blob Storage にある実際のデータのフォルダーまたはファイル パスとファイル名を指定します。 ルート フォルダーから、場所を開始します。 ルート フォルダーは、外部データ ソースで指定されたデータの場所です。
 
-フォルダーの LOCATION を指定すると、SQL オンデマンドのクエリで外部テーブルから選択が行われ、そのフォルダーからファイルが取得されます。
+フォルダーの LOCATION を指定すると、サーバーレス SQL プールのクエリで外部テーブルから選択が行われ、そのフォルダーからファイルが取得されます。
 
 > [!NOTE]
-> Hadoop や PolyBase とは異なり、SQL オンデマンドではサブフォルダーは返されません。 ファイル名が下線 (_) またはピリオド (.) で始まるファイルが返されます。
+> Hadoop や PolyBase とは異なり、サーバーレス SQL プールではサブフォルダーは返されません。 ファイル名が下線 (_) またはピリオド (.) で始まるファイルが返されます。
 
-この例では、LOCATION='/webdata/' である場合、SQL オンデマンドのクエリで mydata.txt と _hidden.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
+この例では、LOCATION='/webdata/' である場合、サーバーレス SQL プールのクエリで mydata.txt と _hidden.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
 ![外部テーブルの再帰型データ](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -343,26 +381,24 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Azure Data Lake 内のファイルから外部テーブルを作成してクエリを実行する
 
-Data Lake の探索機能を使用することで、ファイルを右クリックするだけで、SQL プールまたは SQL オンデマンドを使って外部テーブルを作成してクエリを実行できるようになりました。
+Data Lake の探索機能を使用することで、ファイルを右クリックするだけで、専用 SQL プールまたはサーバーレス SQL プールを使って外部テーブルを作成してクエリを実行できるようになりました。
 
 ### <a name="prerequisites"></a>前提条件
 
 - 少なくとも ADLS Gen2 アカウントに対するストレージ BLOB データ共同作成者 ARM アクセス ロールがある状態で、ワークスペースにアクセスできる必要があります
 
-- SQL プールまたは SQL オンデマンドで外部テーブルを[作成してクエリを実行するためのアクセス許可](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2)が少なくとも必要です
-
-- ADLS Gen2 アカウントに関連付けられているリンクされたサービスには、**ファイルへのアクセス権が必要です**。 たとえば、リンクされたサービスの認証メカニズムがマネージド ID の場合、ワークスペースのマネージド ID には、ストレージ アカウントに対するストレージ BLOB 閲覧者アクセス許可が少なくとも必要です
+- SQL プールまたは SQL オンデマンドで外部テーブルを[作成してクエリを実行するためのアクセス許可](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)が少なくとも必要です
 
 [データ] パネルで、外部テーブルの作成元にするファイルを選択します。
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-ダイアログ ウィンドウが開きます。 SQL プールか SQL オンデマンドを選択し、テーブルに名前を付けて [スクリプトを開く] を選択します。
+ダイアログ ウィンドウが開きます。 専用 SQL プールかサーバーレス SQL プールを選択し、テーブルに名前を付けて [スクリプトを開く] を選択します。
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-SQL スクリプトは、ファイルからのスキーマの推論によって自動的に生成されます。
+SQL スクリプトは、ファイルからのスキーマの推論により自動的に生成されます。
 > [!div class="mx-imgBorder"]
 >![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 

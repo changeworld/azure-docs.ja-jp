@@ -1,20 +1,18 @@
 ---
 title: Azure Monitor ブックの時間パラメーター
-description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
+description: ユーザーが分析の時間コンテキストを設定できるように時間パラメーターを設定する方法について説明します。 時間パラメーターは、ほぼすべてのレポートで使用されます。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37f2219313a0d4c533d587a765dd22d527a5910f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658015"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143443"
 ---
 # <a name="workbook-time-parameters"></a>ブックの時間パラメーター
 
@@ -80,5 +78,5 @@ requests
 
 ## <a name="next-steps"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
+* ブックの豊富な視覚化オプションの学習を[開始](./workbooks-overview.md#visualizations)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

@@ -1,14 +1,14 @@
 ---
 title: カナダ連邦 PBMM ブループリント サンプルの概要
 description: カナダ連邦の PBMM ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のカナダ連邦の PBMM コントロールを評価するのに役立ちます。
-ms.date: 07/31/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: de45d8dd3834aee3c430ec8eeb66a063e3ad5a83
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6da387d6a2e0124a533c1001ab54dc9a9b4364ad
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500097"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420429"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルの概要
 

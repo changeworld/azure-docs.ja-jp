@@ -3,15 +3,15 @@ title: Windows Virtual Desktop とは - Azure
 description: Windows Virtual Desktop の概要
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661114"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023192"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -71,7 +71,7 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
 
-* [Azure Active Directory](/azure/active-directory/)。
+* [Azure Active Directory](../active-directory/index.yml)。
 * Azure Active Directory と同期している Windows Server Active Directory。 これは、Azure AD Connect (ハイブリッド組織の場合) または Azure AD Domain Services (ハイブリッドまたはクラウド組織の場合) を使用して構成できます。
   * Azure Active Directory と同期している Windows Server AD。 ユーザーのソースは Windows Server AD であり、Windows Virtual Desktop VM は Windows Server AD ドメインに参加しています。
   * Azure Active Directory と同期している Windows Server AD。 ユーザーのソースは Windows Server AD であり、Windows Virtual Desktop VM は Azure AD Domain Services ドメインに参加しています。
@@ -85,7 +85,7 @@ Windows Virtual Desktop に接続するためのユーザー要件は次のと�
 
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
-* [標準ドメイン参加済み](../active-directory-domain-services/active-directory-ds-comparison.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 仮想マシンを Azure AD に参加させることはできません。
+* [標準ドメイン参加済み](../active-directory-domain-services/compare-identity-solutions.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 仮想マシンを Azure AD に参加させることはできません。
 * 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-images)を実行していること。
 
 >[!NOTE]
@@ -101,6 +101,8 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 * デスクトップとアプリをホストしている VM が管理サービスに接続する際には、ネットワーク トラフィックが国/リージョン外に流れることがあります。
 * ネットワークのパフォーマンスを最適化するために、セッション ホストの VM を管理サービスと同じ Azure リージョンに配置することをお勧めします。
 
+エンタープライズ向け Windows Virtual Desktop の標準的なアーキテクチャのセットアップについては、[アーキテクチャのドキュメント](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)で確認できます。
+
 ## <a name="supported-remote-desktop-clients"></a>サポートされているリモート デスクトップ クライアント
 
 次のリモート デスクトップ クライアントは、Windows Virtual Desktop をサポートします。
@@ -110,12 +112,10 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Microsoft Store クライアント
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
-
-> [!IMPORTANT]
-> Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
 
 クライアントを使用するためにブロックを解除する必要がある URL の詳細については、「[安全な URL リスト](safe-url-list.md)」をご覧ください。
 

@@ -3,15 +3,15 @@ title: ISE の保存データを暗号化するためにカスタマー マネ�
 description: Azure Logic Apps の統合サービス環境 (ISE) の保存データをセキュリティで保護するために、独自の暗号化キーを作成して管理します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 11/20/2020
+ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386165"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741050"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -27,11 +27,15 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * カスタマー マネージド キーは、 "*ISE を作成するときにのみ*" 指定でき、その後には指定できません。 ISE を作成した後に、このキーを無効にすることはできません。 現時点では、ISE でのカスタマー マネージド キーのローテーションはサポートされていません。
 
-* カスタマー マネージド キーをサポートするには、ISE で[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) が有効になっている必要があります。 この ID により、ISE は他の Azure Active Directory (Azure AD) テナントのリソースへのアクセスを認証できるため、ユーザーは自分の資格情報でサインインする必要がありません。
+* カスタマー マネージド キーをサポートするには、ISE で[システム割り当てまたはユーザー割り当てのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) が有効になっている必要があります。 この ID により、Azure 仮想ネットワーク内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシンや他のシステムまたはサービスなど) へのアクセスを ISE で認証できます。 このようにすると、資格情報を使用してサインインする必要はありません。
 
-* 現在、カスタマー マネージド キーをサポートし、システム割り当て ID を有効にする ISE を作成するには、HTTPS PUT 要求を使用して Logic Apps REST API を呼び出す必要があります。
+* 現在、カスタマー マネージド キーをサポートし、いずれかのマネージド ID の種類が有効になっている ISE を作成するには、HTTPS PUT 要求を使用して Logic Apps REST API を呼び出す必要があります。
 
-* ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に、[ISE のシステム割り当て ID にキー コンテナーへのアクセス権を付与する](#identity-access-to-key-vault)必要があります。 そうしないと、ISE の作成は失敗し、アクセス許可エラーがスローされます。
+* [ISE のマネージド ID にキー コンテナーのアクセス権を付与する](#identity-access-to-key-vault)必要がありますが、このタイミングは使用するマネージド ID によって異なります。
+
+  * **システム割り当てマネージド ID**:ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に、[ISE のマネージド ID にキー コンテナーのアクセス権を付与する](#identity-access-to-key-vault)必要があります。 そうしないと、ISE の作成は失敗し、アクセス許可エラーが発生します。
+
+  * **ユーザー割り当てマネージド ID**:ISE を作成する HTTPS PUT 要求を送信する前に、[ISE のマネージド ID にキー コンテナーのアクセス権を付与する](#identity-access-to-key-vault)必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +43,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** プロパティが有効になっている Azure キー コンテナー。
 
-  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
+  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/customer-managed-keys-configure-key-vault.md)方法に関する記事を参照してください。 [Azure Key Vault](../key-vault/general/overview.md) を初めて使用する場合は、[Azure portal](../key-vault/general/quick-create-portal.md)、[Azure CLI](../key-vault/general/quick-create-cli.md)、または [Azure PowerShell](../key-vault/general/quick-create-powershell.md) を使用して Key Vault を作成する方法を確認してください。
 
 * キー コンテナーで、次のプロパティ値を使用して作成されたキー。
 
@@ -52,11 +56,11 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
   ![カスタマー マネージド暗号化キーの作成](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  詳細については、[Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事、または Azure PowerShell コマンドの「[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)」を参照してください。
+  詳細については、[Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/customer-managed-keys-configure-key-vault.md)方法に関する記事、または Azure PowerShell コマンドの「[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)」を参照してください。
 
 * HTTPS PUT 要求で Logic Apps REST API を呼び出して ISE を作成するために使用できるツール。 たとえば、[Postman](https://www.getpostman.com/downloads/) を使用したり、このタスクを実行するロジック アプリを構築したりできます。
 
-<a name="enable-support-key-system-identity"></a>
+<a name="enable-support-key-managed-identity"></a>
 
 ## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>キー コンテナーとマネージド ID のサポートを備えた ISE を作成する
 
@@ -65,7 +69,7 @@ Logic Apps REST API を呼び出して ISE を作成するには、この HTTPS 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Logic Apps REST API 2019-05-01 バージョンでは、ISE コネクタに対して独自の HTTP PUT 要求を行う必要があります。
+> Logic Apps REST API 2019-05-01 バージョンでは、ISE コネクタに対して独自の HTTPS PUT 要求を行う必要があります。
 
 通常、デプロイは 2 時間以内に完了します。 状況によっては、最大でデプロイに 4 時間かかる場合があります。 デプロイの状態を確認するには、[Azure portal](https://portal.azure.com) の Azure ツール バーで、通知アイコンを選択します。これで通知ペインが開きます。
 
@@ -88,7 +92,7 @@ Logic Apps REST API を呼び出して ISE を作成するには、この HTTPS 
 
 要求本文で、ISE 定義に次の追加項目の情報を入力して、それらのサポートを有効にします。
 
-* ISE がキー コンテナーにアクセスするために使用する、システム割り当てマネージド ID
+* ISE がキー コンテナーにアクセスするために使用するマネージド ID
 * キー コンテナーと、使用するカスタマー マネージド キー
 
 #### <a name="request-body-syntax"></a>要求本文の構文
@@ -97,7 +101,7 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
 
 ```json
 {
-   "id": "/subscriptions/{Azure-subscription-ID/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
    "name": "{ISE-name}",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "{Azure-region}",
@@ -106,7 +110,14 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
       "capacity": 1
    },
    "identity": {
-      "type": "SystemAssigned"
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -153,7 +164,13 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
    "identity": {
-      "type": "SystemAssigned"
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
    },
    "sku": {
       "name": "Premium",
@@ -197,7 +214,11 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
 
 ## <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
-ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に、ISE のシステム割り当て ID 用のキー コンテナーにアクセス ポリシーを追加する必要があります。 そうしないと、ISE の作成に失敗し、アクセス許可エラーが発生します。 
+タイミングは使用するマネージド ID によって異なりますが、[ISE のマネージド ID にキー コンテナーのアクセス権を付与する](#identity-access-to-key-vault)必要があります。
+
+* **システム割り当てマネージド ID**:ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に、ISE のシステム割り当てマネージド ID 用のキー コンテナーにアクセス ポリシーを追加する必要があります。 そうしないと、ISE の作成に失敗し、アクセス許可エラーが発生します。
+
+* **ユーザー割り当てマネージド ID**:ISE を作成する HTTPS PUT 要求を送信する前に、ISE のユーザー割り当てマネージド ID 用のキー コンテナーにアクセス ポリシーを追加します。
 
 このタスクでは、Azure PowerShell の [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドを使用するか、Azure portal で次の手順を実行します。
 
@@ -225,7 +246,7 @@ ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に�
 
    1. **[アクセス ポリシー]** ペインでの作業が終了したら、 **[保存]** を選択します。
 
-詳細については、「[マネージド ID で Key Vault の認証を提供する](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)」を参照してください。
+詳細については、[Key Vault で認証を行う方法](../key-vault/general/authentication.md)に関する記事と [Key Vault のアクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

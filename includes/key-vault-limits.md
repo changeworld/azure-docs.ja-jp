@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4abbeadb0d30911d99fff57c0e99a3e427a6d8d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838724"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025719"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
 
@@ -28,7 +28,7 @@ ms.locfileid: "85838724"
 >
 > スロットルのしきい値は重み付けされ、合計に対して適用されます。 たとえば、前の表で示されているように、RSA HSM キーで GET 操作を実行する場合に 4,096 ビット キーを使用すると、2,048 ビット キーと比較して 8 倍のコストがかかります。 これは、1,000/125 = 8 から導き出されます。
 >
-> 10 秒間に、Azure Key Vault クライアントは、`429` のスロットル HTTP 状態コードが発生するまで、次の操作のいずれか *1 つのみ*を実行できます。
+> 10 秒間に、Azure Key Vault クライアントは、`429` のスロットル HTTP 状態コードが発生するまで、次の操作のいずれか *1 つのみ* を実行できます。
 > - 2,000 件の RSA 2,048 ビット ソフトウェア キー GET トランザクション
 > - 1,000 件の RSA 2,048 ビット HSM キー GET トランザクション
 > - 125 件の RSA 4,096 ビット HSM キー GET トランザクション
@@ -40,7 +40,7 @@ ms.locfileid: "85838724"
 | --- | --- |
 | すべてのトランザクション |2,000 |
 
-これらの制限を超えたときにスロットルを処理する方法については、「[Azure Key Vault のスロットル ガイダンス](../articles/key-vault/key-vault-ovw-throttling.md)」をご覧ください。
+これらの制限を超えたときにスロットルを処理する方法については、「[Azure Key Vault のスロットル ガイダンス](../articles/key-vault/general/overview-throttling.md)」をご覧ください。
 
 <sup>1</sup> すべてのトランザクションの種類に適用されるサブスクリプション レベルの制限は、キー コンテナーの制限の 5 倍です。 たとえば、1 つのサブスクリプションで許可される HSM - その他のトランザクションの最大数は、10 秒間に 5,000 トランザクションです。
 

@@ -1,46 +1,49 @@
 ---
-title: クイック スタート:カスタム モデルを構築、デプロイ、および使用する - カスタム翻訳ツール
+title: 'クイック スタート: カスタム モデルを構築、デプロイ、および使用する - Custom Translator'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Custom Translator を使用して翻訳システムを構築する詳細なプロセスを実行します。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: b0992c4d18fdb9cb5201ab3ef52fba8ee3feb7a2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964381"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366055"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート:翻訳のためのカスタム モデルを構築、デプロイ、および使用する
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート: 翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
 この記事では、Custom Translator を使用して翻訳システムを構築する詳細な手順が示されています。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルを使用するには、サインインするための [Microsoft アカウント](https://signup.live.com)または [Azure AD アカウント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure でホストされている組織アカウント) が必要になります。
+1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルを使用するには、サインインするための [Microsoft アカウント](https://signup.live.com)または [Azure AD アカウント](../../../active-directory/fundamentals/active-directory-whatis.md) (Azure でホストされている組織アカウント) が必要になります。
 
-2. Azure portal を通じた Translator へのサブスクリプション。 カスタム翻訳ツール内のお客様のワークスペースに関連付ける Translator サブスクリプション キーが必要です。 「[Translator にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
+2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](../translator-how-to-signup.md)」を参照してください。
 
 3. 上記の両方がある場合は、[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルにサインインしてワークスペースとプロジェクトを作成し、ファイルをアップロードしてモデルを作成、デプロイします。
 
+>[!Note]
+>[対応 VNET](../../../api-management/api-management-using-with-vnet.md) 内に作成された Translator Text API リソース用のワークスペースをカスタム翻訳ツールで作成することはできません。
+
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-初回使用時は、ワークスペースを作成して Translator サブスクリプションに関連付ける際に、サービス利用条件への同意を求められます。
+初回使用時は、ワークスペースを作成して Microsoft Translator Text API サブスクリプションに関連付ける際に、サービス利用規約への同意を求められます。
 
 ![ワークスペースの作成](media/quickstart/terms-of-service.png)
-![ワークスペースの作成](media/quickstart/create-workspace-1.png)
-![ワークスペースの作成](media/quickstart/create-workspace-2.png)
-![ワークスペースの作成](media/quickstart/create-workspace-3.png)
-![ワークスペースの作成](media/quickstart/create-workspace-4.png)
-![ワークスペースの作成](media/quickstart/create-workspace-5.png)
-![ワークスペースの作成](media/quickstart/create-workspace-6.png)
+![ワークスペースの作成の画像 1](media/quickstart/create-workspace-1.png)
+![ワークスペースの作成の画像 2](media/quickstart/create-workspace-2.png)
+![ワークスペースの作成の画像 3](media/quickstart/create-workspace-3.png)
+![ワークスペースの作成の画像 4](media/quickstart/create-workspace-4.png)
+![ワークスペースの作成の画像 5](media/quickstart/create-workspace-5.png)
+![ワークスペースの作成の画像 6](media/quickstart/create-workspace-6.png)
 
-2 回目以降は、Custom Translator ポータルにアクセスし、[設定] ページに移動してワークスペースを管理できます。ワークスペースを作成したり、Translator のサブスクリプション キーをワークスペースに関連付けたり、共同所有者を追加したり、サブスクリプション キーを変更したりすることが可能です。
+2 回目以降は、Custom Translator ポータルにアクセスし、[設定] ページに移動してワークスペースを管理できます。ワークスペースを作成したり、Microsoft Translator Text API のサブスクリプション キーをワークスペースに関連付けたり、共同所有者を追加したり、サブスクリプション キーを変更したりすることが可能です。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
@@ -81,9 +84,15 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ![トレーニング済みモデルのデプロイ](media/quickstart/ct-how-to-deploy.png)
 
+## <a name="swap-deployed-model"></a>デプロイしたモデルを入れ替える
+
+デプロイしたモデルをプロジェクト内の別のものと入れ替えるには、目的のモデルの横に表示されている [スワップ] ボタンをクリックします。 スワップ処理中、デプロイしたモデルは引き続き翻訳要求の処理に使用できます。 
+
+![デプロイしたモデルを入れ替える](media/quickstart/ct-how-to-swap-model.png)
+
 ## <a name="use-a-deployed-model"></a>デプロイしたモデルの使用
 
-デプロイしたモデルには、Translator を介して CategoryID を指定することでアクセスできます (https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) )。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) に関する Web ページを参照してください。
+デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](../reference/v3-0-translate.md?tabs=curl)アクセスすることができます。 Translator Text API の詳細については、[API リファレンス](../reference/v3-0-reference.md) Web ページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

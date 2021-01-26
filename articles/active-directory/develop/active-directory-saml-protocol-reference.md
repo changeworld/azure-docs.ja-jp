@@ -13,11 +13,11 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552800"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994402"
 ---
 # <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft ID プラットフォームでの SAML プロトコルの使用方法
 
@@ -25,9 +25,9 @@ Microsoft ID プラットフォームでは、SAML 2.0 プロトコルを使用�
 
 SAML プロトコルで、ID プロバイダー (Microsoft ID プラットフォーム) とサービス プロバイダー (アプリケーション) に関する情報を交換する必要があります。
 
-アプリケーションが Azure AD に登録されると、アプリ開発者は Azure AD にフェデレーションに関する情報を登録します。 この情報には、アプリケーションの**リダイレクト URI** と**メタデータ URI** が含まれます。
+アプリケーションが Azure AD に登録されると、アプリ開発者は Azure AD にフェデレーションに関する情報を登録します。 この情報には、アプリケーションの **リダイレクト URI** と **メタデータ URI** が含まれます。
 
-Microsoft ID プラットフォームでは、クラウド サービスの**メタデータ URI** を使用し、署名キーとログアウト URI を取得します。 お客様は、 **[Azure AD]、[アプリの登録]** の順に選択してアプリを開き、 **[設定]、[プロパティ]** の順に選択してログアウト URL を更新できます。 このようにして、Microsoft ID プラットフォームから正しい URL に応答が送信されます。 
+Microsoft ID プラットフォームでは、クラウド サービスの **メタデータ URI** を使用し、署名キーとログアウト URI を取得します。 お客様は、 **[Azure AD]、[アプリの登録]** の順に選択してアプリを開き、 **[設定]、[プロパティ]** の順に選択してログアウト URL を更新できます。 このようにして、Microsoft ID プラットフォームから正しい URL に応答が送信されます。 
 
 Azure Active Directory は、テナント固有および共通 (テナント独立) のシングル サインオンとシングル サインアウト エンドポイントを公開します。 これらの URL は、単なる識別子ではなくアドレス指定可能な場所を表します。したがって、ユーザーはエンドポイントに移動してメタデータを読み取ることができます。
 

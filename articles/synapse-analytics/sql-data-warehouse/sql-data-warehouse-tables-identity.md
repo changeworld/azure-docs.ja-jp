@@ -1,6 +1,6 @@
 ---
 title: IDENTITY を使用して代理キーを作成する
-description: IDENTITY プロパティを使用して Synapse SQL プール内のテーブルに代理キーを作成する場合のレコメンデーションと例。
+description: IDENTITY プロパティを使用して専用 SQL プール内のテーブルに代理キーを作成する場合の推奨事項と例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,27 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121325"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323589"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL プールで IDENTITY を使用して代理キーを作成する
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>IDENTITY を使用して、Azure Synapse Analytics の専用 SQL プールで代理キーを作成する
 
-この記事では、IDENTITY プロパティを使用して Synapse SQL プール内のテーブルに代理キーを作成する場合のレコメンデーションと例を提供しています。
+この記事では、IDENTITY プロパティを使用して専用 SQL プール内のテーブルに代理キーを作成する場合の推奨事項と例を紹介します。
 
 ## <a name="what-is-a-surrogate-key"></a>代理キーとは
 
 テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。
 > [!NOTE]
-> Synapse SQL の IDENTITY 値は、ユーザーが明示的に "SET IDENTITY_INSERT ON" と重複する値を挿入するか IDENTITY を再シードする場合は、一意であるとは限りません。 詳細については、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」を参照してください。 
+> Azure Synapse Analytics では、IDENTITY 値は各ディストリビューションで自動的に増加し、他のディストリビューションの IDENTITY 値と重複しません。  Synapse の IDENTITY 値は、ユーザーが明示的に "SET IDENTITY_INSERT ON" と重複する値を挿入するか IDENTITY を再シードする場合は、一意であるとは限りません。 詳細については、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」を参照してください。 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
 
-IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、Synapse SQL プール内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
+IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、専用 SQL プール内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
 
 次のステートメントのような構文を使って、テーブルを最初に作成するときに、IDENTITY プロパティを持つようにテーブルを定義できます。
 
@@ -52,7 +53,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>値の割り当て
 
-IDENTITY プロパティでは、データ ウェアハウスの分散アーキテクチャにより、サロゲート値が割り当てられる順序は保証されません。 IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、Synapse SQL プール内のすべてのディストリビューションにスケールアウトするように設計されています。 
+IDENTITY プロパティでは、データ ウェアハウスの分散アーキテクチャにより、サロゲート値が割り当てられる順序は保証されません。 IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、専用 SQL プール内のすべてのディストリビューションにスケールアウトするように設計されています。 
 
 次にその例を示します。
 
@@ -102,7 +103,7 @@ CREATE TABLE AS SELECT (CTAS) は、SELECT..INTO と同じ SQL Server 動作に�
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>IDENTITY 列に値を明示的に挿入する
 
-Synapse SQL プールでは `SET IDENTITY_INSERT <your table> ON|OFF` 構文がサポートされています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
+専用 SQL プールでは `SET IDENTITY_INSERT <your table> ON|OFF` 構文がサポートされています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
 
 多くのデータ モデラーは、ディメンションの特定の行に定義済みの負の値を使うことを好みます。 たとえば、-1 や "unknown member" 行です。
 
@@ -163,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 現在は、IDENTITY 列のあるテーブルへのデータの読み込みに、`CREATE TABLE AS SELECT` を使うことはできません。
 >
 
-データの読み込みの詳細については、[Synapse SQL プール向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
+データの読み込みの詳細については、[専用 SQL プール向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
 
 ## <a name="system-views"></a>システム ビュー
 
@@ -197,7 +198,7 @@ AND     tb.name = 'T1'
 - 列が分散キーでもある場合
 - テーブルが外部テーブルである場合
 
-次の関連する関数は、Synapse SQL プールではサポートされません。
+次の関連する関数は、専用 SQL プールではサポートされません。
 
 - [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

@@ -2,28 +2,24 @@
 title: Azure Active Directory アプリケーション プロキシのデプロイ計画
 description: 組織内でアプリケーション プロキシのデプロイを計画するためのエンド ツー エンド ガイド
 services: active-directory
-documentationcenter: azure
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 08289987dac81905584ee65b808cfcbf35525728
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642420"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835144"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
-Azure Active Directory (Azure AD) アプリケーション プロキシは、オンプレミスのアプリケーションに、簡単、安全、かつコスト効率の高いリモート アクセス ソリューションを提供します。 これによって、最新のプロトコルをまだ使用できない従来のオンプレミス アプリケーションに対するアクセスを管理するためにすぐに移行できるパスがクラウド ファーストの組織に提供されます。 その他の概要については、「[アプリケーション プロキシとは](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)」をご覧ください。
+Azure Active Directory (Azure AD) アプリケーション プロキシは、オンプレミスのアプリケーションに、簡単、安全、かつコスト効率の高いリモート アクセス ソリューションを提供します。 これによって、最新のプロトコルをまだ使用できない従来のオンプレミス アプリケーションに対するアクセスを管理するためにすぐに移行できるパスがクラウド ファーストの組織に提供されます。 その他の概要については、「[アプリケーション プロキシとは](./application-proxy.md)」をご覧ください。
 
 リモート ユーザーに対して内部リソースへのアクセス権を付与するには、アプリケーション プロキシをお勧めします。 このようなリモート アクセスのユース ケースでは、アプリケーション プロキシを使用することで、VPN またはリバース プロキシは必要なくなります。 これは、企業ネットワーク上のユーザーを対象としていません。 これらのユーザーがイントラネット アクセス用にアプリケーション プロキシを使用した場合、望ましくないパフォーマンス上の問題が発生する可能性があります。
 
@@ -47,7 +43,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、オ
      * コネクタ コンピューターは、コネクタをインストールする前に [TLS 1.2 に対して有効](application-proxy-add-on-premises-application.md)にしておく必要があります。
 
      * 可能であれば、バックエンド Web アプリケーション サーバーと[同じネットワーク](application-proxy-network-topology.md)とセグメント内にコネクタをデプロイします。 アプリケーションの検出を完了した後でコネクタをデプロイすることをお勧めします。
-     * 高可用性とスケールを実現するために、各コネクタ グループには少なくとも 2 つのコネクタを用意することをお勧めします。 任意の時点でコンピューターにサービスを提供する必要がある場合は、3 つのコネクタを用意するのが最適です。 [コネクタ キャパシティ テーブル](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning)を参照すれば、コネクタのインストール先とするコンピューターの種類を容易に決定できます。 コンピューターが大きくなればなるほど、コネクターはより大きなバッファーとなり、より高いパフォーマンスを発揮します。
+     * 高可用性とスケールを実現するために、各コネクタ グループには少なくとも 2 つのコネクタを用意することをお勧めします。 任意の時点でコンピューターにサービスを提供する必要がある場合は、3 つのコネクタを用意するのが最適です。 [コネクタ キャパシティ テーブル](./application-proxy-connectors.md#capacity-planning)を参照すれば、コネクタのインストール先とするコンピューターの種類を容易に決定できます。 コンピューターが大きくなればなるほど、コネクターはより大きなバッファーとなり、より高いパフォーマンスを発揮します。
 
 * **ネットワーク アクセスの設定**:Azure AD アプリケーション プロキシ コネクタは [HTTPS (TCP ポート 443) および HTTP (TCP ポート 80) を介して Azure に接続します](application-proxy-add-on-premises-application.md)。
 
@@ -63,9 +59,9 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 *  **Azure のオンボード**:アプリケーション プロキシをデプロイする前に、ユーザー ID をオンプレミス ディレクトリと同期するか、Azure AD テナント内に直接作成する必要があります。 ID 同期によって、Azure AD が、アプリケーション プロキシが発行したアプリケーションへのアクセス権をユーザーに付与する前にユーザーを事前に認証でき、シングル サインオン (SSO) を実行するために必要なユーザー ID 情報を得ることができます。
 
-* **条件付きアクセスの要件**:イントラネット アクセスにアプリケーション プロキシを使用することはお勧めできません。これによって、ユーザーに影響を与える待機時間が追加されるためです。 アプリケーション プロキシは、インターネットからのリモート アクセスを対象にした事前認証および条件付きアクセス ポリシーと一緒に使用することをお勧めします。  イントラネット用に条件付きアクセスを提供するアプローチとしては、AAD で直接認証できるようにアプリケーションを近代化することです。 詳細については、「[アプリケーションを AAD に移行するためのリソース](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)」を参照してください。
+* **条件付きアクセスの要件**:イントラネット アクセスにアプリケーション プロキシを使用することはお勧めできません。これによって、ユーザーに影響を与える待機時間が追加されるためです。 アプリケーション プロキシは、インターネットからのリモート アクセスを対象にした事前認証および条件付きアクセス ポリシーと一緒に使用することをお勧めします。  イントラネット用に条件付きアクセスを提供するアプローチとしては、AAD で直接認証できるようにアプリケーションを近代化することです。 詳細については、「[アプリケーションを AAD に移行するためのリソース](./migration-resources.md)」を参照してください。
 
-* **サービスの制限**: 個々のテナントによるリソースの過剰消費から保護するために、アプリケーションおよびテナントごとにスロットリングの制限が設定されています。 これらの制限については、「[Azure AD サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)」を参照してください。 このようなスロットルの制限は、通常の使用量をはるかに超えるベンチマークに基づいて行われます。これにより、ほとんどのデプロイに十分なバッファーが提供されます。
+* **サービスの制限**: 個々のテナントによるリソースの過剰消費から保護するために、アプリケーションおよびテナントごとにスロットリングの制限が設定されています。 これらの制限については、「[Azure AD サービスの制限と制約](../enterprise-users/directory-service-limits-restrictions.md)」を参照してください。 このようなスロットルの制限は、通常の使用量をはるかに超えるベンチマークに基づいて行われます。これにより、ほとんどのデプロイに十分なバッファーが提供されます。
 
 * **公開証明書**:カスタム ドメイン名を使用している場合は、SSL 証明書を取得する必要があります。 組織の要件によって異なりますが、証明書の入手には時間がかかることがあります。できるだけ早くこのプロセスを開始することをお勧めします。 Azure アプリケーション プロキシでは、標準、[ワイルドカード](application-proxy-wildcard.md)、または SAN ベースの証明書がサポートされます。 詳細については、「[Azure AD アプリケーション プロキシでカスタム ドメインを構成する](application-proxy-configure-custom-domain.md)」を参照してください。
 
@@ -74,15 +70,15 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 * **URL の DNS レコード**
 
-   * アプリケーション プロキシ内でカスタム ドメインを使用する前に、パブリック DNS に CNAME レコードを作成する必要があります。これにより、カスタム定義された外部 URL をクライアントが事前定義済みアプリケーション プロキシ アドレスに解決できるようになります。 カスタム ドメインを使用するアプリケーションのために CNAME レコードを作成できないと、リモート ユーザーがアプリケーションに接続できなくなります。 CNAME レコードを追加するために必要な手順は DNS プロバイダーごとに異なるため、[Azure portal を使用して DNS レコードおよびレコード セットを管理する](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-portal)方法をご覧ください。
+   * アプリケーション プロキシ内でカスタム ドメインを使用する前に、パブリック DNS に CNAME レコードを作成する必要があります。これにより、カスタム定義された外部 URL をクライアントが事前定義済みアプリケーション プロキシ アドレスに解決できるようになります。 カスタム ドメインを使用するアプリケーションのために CNAME レコードを作成できないと、リモート ユーザーがアプリケーションに接続できなくなります。 CNAME レコードを追加するために必要な手順は DNS プロバイダーごとに異なるため、[Azure portal を使用して DNS レコードおよびレコード セットを管理する](../../dns/dns-operations-recordsets-portal.md)方法をご覧ください。
 
    * 同様に、コネクタ ホストは、発行されるアプリケーションの内部 URL を解決できる必要があります。
 
 * **管理者権限とロール**
 
-   * **コネクタのインストール**では、インストール先の Windows サーバーに対するローカル管理者権限が必要です。 また、コネクタ インスタンスを Azure AD テナントに認証して登録するために最小限の*アプリケーション管理者*ロールも必要です。
+   * **コネクタのインストール** では、インストール先の Windows サーバーに対するローカル管理者権限が必要です。 また、コネクタ インスタンスを Azure AD テナントに認証して登録するために最小限の *アプリケーション管理者* ロールも必要です。
 
-   * **アプリケーションの発行と管理**には、"*アプリケーション管理者*" ロールが必要です。 アプリケーション管理者ロールは、登録、SSO 設定、ユーザーとグループの割り当てとライセンス、アプリケーション プロキシ設定、同意など、ディレクトリ内のすべてのアプリケーションを管理できます。 条件付きアクセスの管理権限は付与されません。 "*クラウド アプリケーション管理者*" ロールには、アプリケーション プロキシ設定を管理できない以外は、アプリケーション管理者のすべての権限が含まれます。
+   * **アプリケーションの発行と管理** には、"*アプリケーション管理者*" ロールが必要です。 アプリケーション管理者ロールは、登録、SSO 設定、ユーザーとグループの割り当てとライセンス、アプリケーション プロキシ設定、同意など、ディレクトリ内のすべてのアプリケーションを管理できます。 条件付きアクセスの管理権限は付与されません。 "*クラウド アプリケーション管理者*" ロールには、アプリケーション プロキシ設定を管理できない以外は、アプリケーション管理者のすべての権限が含まれます。
 
 * **ライセンス**: アプリケーション プロキシは Azure AD Premium サブスクリプションで利用できます。 ライセンス オプションと機能の完全な一覧については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)をご覧ください。
 
@@ -97,7 +93,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 | ドメイン メンバーシップ| Web サーバーの完全修飾ドメイン名 (FQDN) |
 | アプリケーションの場所 | インフラストラクチャ内で Web サーバーまたはファームがある場所 |
 | 内部アクセス | 内部でアプリケーションにアクセスするときに使用される正確な URL。 <br> ファームでどの種類の負荷分散が使用されているか。 <br> アプリケーションがそれ自体以外のソースのコンテンツを描画するかどうか。<br> アプリケーションが WebSocket で動作するかどうかを決定します。 |
-| 外部アクセス | 既にアプリケーションが外部に公開されているベンダー ソリューション。 <br> 外部アクセス用に使用する URL です。 SharePoint の場合は、[このガイダンス](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)に従って代替アクセス マッピングを構成してください。 それ以外の場合、外部 URL を定義する必要があります。 |
+| 外部アクセス | 既にアプリケーションが外部に公開されているベンダー ソリューション。 <br> 外部アクセス用に使用する URL です。 SharePoint の場合は、[このガイダンス](/SharePoint/administration/configure-alternate-access-mappings)に従って代替アクセス マッピングを構成してください。 それ以外の場合、外部 URL を定義する必要があります。 |
 | 公開証明書 | カスタム ドメインを使用している場合は、対応するサブジェクト名の証明書を取得します。 証明書が存在する場合は、そのシリアル番号と取得できる場所をメモします。 |
 | 認証の種類| アプリケーションによってサポートされる認証の種類では、Basic、Windows 統合認証、フォームベース、ヘッダーベース、要求などがサポートされます。 <br>特定のドメイン アカウントで実行するようにアプリケーションが構成されている場合は、サービス アカウントの完全修飾ドメイン名 (FQDN) をメモします。<br> SAML ベースの場合は、識別子と応答 URL。 <br> ヘッダーベースの場合は、ベンダー ソリューションと認証の種類を処理するための特定の要件。 |
 | コネクタ グループ名 | このバックエンド アプリケーションにコンジットと SSO を提供するように指定されたコネクタ グループの論理名。 |
@@ -144,7 +140,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 **コネクタの管理**:
 
-* コネクタは、オンプレミス コンジットをアプリケーションに提供するために重要な役割を果たします。 **既定**コネクタ グループの使用が、運用環境で動作させる前の発行済みアプリケーションの最初のパイロット テストに適しています。 この後、テストが成功したアプリケーションを運用環境のコネクタ グループに移すことができます。
+* コネクタは、オンプレミス コンジットをアプリケーションに提供するために重要な役割を果たします。 **既定** コネクタ グループの使用が、運用環境で動作させる前の発行済みアプリケーションの最初のパイロット テストに適しています。 この後、テストが成功したアプリケーションを運用環境のコネクタ グループに移すことができます。
 
 **アプリケーション管理**:
 
@@ -176,7 +172,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 アプリケーションの発行では、すべての前提条件が満たされていることと、いくつかのコネクタが [アプリケーション プロキシ] ページに登録済みかつアクティブとして表示されていることが前提です。
 
-[PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) を使用してアプリケーションを発行することもできます。
+[PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview) を使用してアプリケーションを発行することもできます。
 
 アプリケーションを発行するときに従ういくつかのベスト プラクティスを次に示します。
 
@@ -218,7 +214,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 有効にすると、ユーザーは MyApps ポータルにログインして、アクセスを要求できるようになります。自動承認されて既に許可されたセルフサービス グループに追加されるか、指定された承認者からの承認を必要とします。
 
-ゲスト ユーザーは、[Azure AD B2B を介してアプリケーション プロキシによって発行された内部アプリケーションにアクセスするように招待](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker)することもできます。
+ゲスト ユーザーは、[Azure AD B2B を介してアプリケーション プロキシによって発行された内部アプリケーションにアクセスするように招待](../external-identities/add-users-information-worker.md)することもできます。
 
 通常匿名でアクセスでき、認証が不要なオンプレミス アプリケーションの場合には、アプリケーションの **[プロパティ]** にあるオプションを無効にすることをお勧めします。
 
@@ -253,9 +249,9 @@ SSO の実行が可能なのは、Azure AD が、リソースへのアクセス�
 
 ###  <a name="working-with-other-types-of-applications"></a>他の種類のアプリケーションを操作する
 
-Azure AD アプリケーション プロキシは、[Microsoft 認証ライブラリ (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) を使用するように開発されたアプリケーションもサポートできます。 これは、クライアント要求のヘッダー情報で受け取った Azure AD 発行のトークンを使用して、ユーザーのために事前認証を実行することにより、ネイティブ クライアント アプリをサポートします。
+Azure AD アプリケーション プロキシは、[Microsoft 認証ライブラリ (MSAL)](../develop/v2-overview.md) を使用するように開発されたアプリケーションもサポートできます。 これは、クライアント要求のヘッダー情報で受け取った Azure AD 発行のトークンを使用して、ユーザーのために事前認証を実行することにより、ネイティブ クライアント アプリをサポートします。
 
-アプリケーション プロキシの使用可能な構成については、[ネイティブおよびモバイル クライアント アプリの発行](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client)に関するページや[要求ベースのアプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps)に関するページをご覧ください。
+アプリケーション プロキシの使用可能な構成については、[ネイティブおよびモバイル クライアント アプリの発行](./application-proxy-configure-native-client-application.md)に関するページや[要求ベースのアプリケーション](./application-proxy-configure-for-claims-aware-applications.md)に関するページをご覧ください。
 
 ### <a name="use-conditional-access-to-strengthen-security"></a>条件付きアクセスを使用してセキュリティを強化する
 
@@ -263,11 +259,11 @@ Azure AD アプリケーション プロキシは、[Microsoft 認証ライブ�
 
 Azure AD アプリケーション プロキシをサポートするために次の機能を使用できます。
 
-* ユーザーおよびロケーションベースの条件付きアクセス:[ロケーションベースの条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)では、地理的な場所や IP アドレスに基づいてユーザー アクセスを制限することで機密データを保護します。
+* ユーザーおよびロケーションベースの条件付きアクセス:[ロケーションベースの条件付きアクセス ポリシー](../conditional-access/location-condition.md)では、地理的な場所や IP アドレスに基づいてユーザー アクセスを制限することで機密データを保護します。
 
-* デバイスベースの条件付きアクセス:[デバイスベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)では、登録され承認された準拠デバイスのみが会社のデータにアクセスできます。
+* デバイスベースの条件付きアクセス:[デバイスベースの条件付きアクセス](../conditional-access/require-managed-devices.md)では、登録され承認された準拠デバイスのみが会社のデータにアクセスできます。
 
-* アプリケーションベースの条件付きアクセス:会社のネットワークに接続していないときでも、仕事を中断するわけにはいきません。 [企業クラウドおよびオンプレミス アプリへのアクセスを保護](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)し、条件付きアクセスによる制御を管理します。
+* アプリケーションベースの条件付きアクセス:会社のネットワークに接続していないときでも、仕事を中断するわけにはいきません。 [企業クラウドおよびオンプレミス アプリへのアクセスを保護](../conditional-access/app-based-conditional-access.md)し、条件付きアクセスによる制御を管理します。
 
 * リスクベースの条件付きアクセス:[リスクベースの条件付きアクセス ポリシー](https://www.microsoft.com/cloud-platform/conditional-access)を使用し、悪意のあるハッカーからデータを保護しましょう。これらのポリシーは、オンプレミスかクラウドかにかかわらず、すべてのアプリとすべてのユーザーに適用できます。
 
@@ -277,7 +273,7 @@ Azure AD アプリケーション プロキシをサポートするために次�
 
 ### <a name="required-roles"></a>必要なロール
 
-マイクロソフトでは Azure AD で必要なタスクを実行するために最小限の権限を付与するという原則を提唱しています。 [使用可能なさまざまな Azure ロールを確認](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)し、個々のニーズに対処できる適したものを選択します。 場合によっては、一部のロールは、一時的に適用してデプロイが完了した後で削除する必要があります。
+マイクロソフトでは Azure AD で必要なタスクを実行するために最小限の権限を付与するという原則を提唱しています。 [使用可能なさまざまな Azure ロールを確認](../roles/permissions-reference.md)し、個々のニーズに対処できる適したものを選択します。 場合によっては、一部のロールは、一時的に適用してデプロイが完了した後で削除する必要があります。
 
 | ビジネス ロール| ビジネス タスク| Azure AD ロール |
 |---|---|---|
@@ -288,7 +284,7 @@ Azure AD アプリケーション プロキシをサポートするために次�
 
 セキュリティで保護された情報またはリソースへのアクセス権を持つユーザーの数を最小限に抑えると、悪意のあるアクターが許可されていないアクセス権を手にしたり、許可されているユーザーの不注意で機密性の高いリソースに影響が及んだりする可能性が抑えられます。
 
-ただし、ユーザーは特権を使用する操作を毎日実行する必要があるため、Just-In-Time (JIT) ベースの [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)ポリシーを適用して、Azure リソースおよび Azure AD にオンデマンド特権アクセスを提供することを、効果的な管理アクセスの管理と監査のアプローチとしてお勧めします。
+ただし、ユーザーは特権を使用する操作を毎日実行する必要があるため、Just-In-Time (JIT) ベースの [Privileged Identity Management](../privileged-identity-management/pim-configure.md)ポリシーを適用して、Azure リソースおよび Azure AD にオンデマンド特権アクセスを提供することを、効果的な管理アクセスの管理と監査のアプローチとしてお勧めします。
 
 ### <a name="reporting-and-monitoring"></a>レポートと監視
 
@@ -296,17 +292,17 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 
 #### <a name="application-audit-logs"></a>アプリケーションの監査ログ
 
-これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
+これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
 
 #### <a name="application-proxy-connector-monitoring"></a>アプリケーション プロキシ コネクタの監視
 
-コネクタとサービスは、高可用性のすべてのタスクに対処します。 Azure AD ポータルの [アプリケーション プロキシ] ページからコネクタの状態を監視できます。 コネクタのメンテナンスの詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)」を参照してください。
+コネクタとサービスは、高可用性のすべてのタスクに対処します。 Azure AD ポータルの [アプリケーション プロキシ] ページからコネクタの状態を監視できます。 コネクタのメンテナンスの詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](./application-proxy-connectors.md#maintenance)」を参照してください。
 
 ![例:Azure AD アプリケーション プロキシ コネクタ](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows イベント ログおよびパフォーマンス カウンター
 
-コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。 ログとカウンターは Windows イベント ログにあります。詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood)」を参照してください。 [Azure Monitor でイベント ログのデータ ソースを構成するにはこのチュートリアル](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)に従ってください。
+コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。 ログとカウンターは Windows イベント ログにあります。詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](./application-proxy-connectors.md#under-the-hood)」を参照してください。 [Azure Monitor でイベント ログのデータ ソースを構成するにはこのチュートリアル](../../azure-monitor/platform/data-sources-windows-events.md)に従ってください。
 
 ### <a name="troubleshooting-guide-and-steps"></a>トラブルシューティングのガイドと手順
 
@@ -323,7 +319,7 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 * [アプリに対するシングル サインオンの構成](application-proxy-config-sso-how-to.md)
 * [管理ポータルでのアプリの作成に関する問題](application-proxy-config-problem.md)
 * [Kerberos の制約付き委任を構成する](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [PingAccess を使用した構成](application-proxy-back-end-ping-access-how-to.md)
+* [PingAccess を使用した構成](./application-proxy-ping-access-publishing-guide.md)
 * ["この企業アプリケーションにアクセスできない" というエラー](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
 * [サインインの問題](application-sign-in-problem-on-premises-application-proxy.md)

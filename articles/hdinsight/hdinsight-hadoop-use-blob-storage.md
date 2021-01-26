@@ -8,20 +8,23 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086978"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547437"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
-[Azure Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) にデータを格納できます。 または、これらのオプションを組み合わせることができます。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
+データは、[Azure Blob Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) に格納できます。 または、これらのオプションを組み合わせることができます。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
-Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、既定のファイル システムとして Azure Storage 内の BLOB コンテナーを指定できます。 または、HDInsight 3.6 を使用して、Azure Storage または Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 のいずれかを既定のファイル システムとして選択することもできますが、いくつかの例外があります。 Data Lake Storage Gen 1 を既定のストレージとリンクされたストレージの両方として使用することのサポート可能性については、「[ HDInsight クラスターの利用可能性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)」を参照してください。
+Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、既定のファイル システムとして Azure Storage 内の BLOB コンテナーを指定できます。 または、HDInsight 3.6 を使用して、Azure Blob Storage または Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2 のいずれかを既定のファイル システムとして選択することもできますが、いくつかの例外があります。 Data Lake Storage Gen1 を既定のストレージとリンクされたストレージの両方として使用することに対するサポートの可否については、[HDInsight クラスターの可用性](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)に関するセクションを参照してください。
 
-この記事では、HDInsight クラスターでの Azure Storage の動作について説明します。 HDInsight クラスターでの Data Lake Storage Gen 1 の動作については、「[Azure HDInsight クラスターで Azure Data Lake Storage を使用する](hdinsight-hadoop-use-data-lake-store.md)」を参照してください。 HDInsight クラスターの作成について詳しくは、[HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+この記事では、HDInsight クラスターでの Azure Storage の動作について説明します。 
+* HDInsight クラスターでの Data Lake Storage Gen1 の動作については、[Azure HDInsight クラスターで Azure Data Lake Storage Gen1 を使用する](./hdinsight-hadoop-use-data-lake-storage-gen1.md)方法に関するページを参照してください。
+* HDInsight クラスターでの Data Lake Storage Gen2 の動作については、「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](./hdinsight-hadoop-use-data-lake-storage-gen2.md)」を参照してください。
+* HDInsight クラスターの作成について詳しくは、[HDInsight での Apache Hadoop クラスターの作成](./hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 > [!IMPORTANT]  
 > ストレージ アカウントの種類 **BlobStorage** は、HDInsight クラスターのセカンダリ ストレージとしてのみ使用できます。
@@ -41,23 +44,23 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
 
 ## <a name="access-files-from-within-cluster"></a>クラスター内からファイルにアクセスする
 
-複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と TLS で暗号化されたアクセス (*wasbs*) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
+複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス ( *wasb:* プレフィックス) と TLS で暗号化されたアクセス ( *wasbs* ) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
-* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/
@@ -148,7 +151,7 @@ Ambari REST API を使用してパスを取得する方法については、「 
 
 ## <a name="blob-containers"></a>BLOB コンテナー
 
-BLOB を使用するには、まず、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)を作成します。 この手順の一環として、ストレージ アカウントを作成する Azure リージョンを指定します。 クラスターとストレージ アカウントは、同じリージョンに置く必要があります。 Hive メタストア SQL Server データベースと Apache Oozie メタストア SQL Server データベースは同じリージョンに配置する必要があります。
+BLOB を使用するには、まず、[Azure ストレージ アカウント](../storage/common/storage-account-create.md)を作成します。 この手順の一環として、ストレージ アカウントを作成する Azure リージョンを指定します。 クラスターとストレージ アカウントは、同じリージョンに置く必要があります。 Hive メタストア SQL Server データベースと Apache Oozie メタストア SQL Server データベースは同じリージョンに配置する必要があります。
 
 作成される各 BLOB は、どこにあるとしても、Azure ストレージ アカウント内のコンテナーに属します。 このコンテナーは、HDInsight の外部で作成された既存の BLOB であっても、 HDInsight クラスター用に作成されたコンテナーであってもかまいません。
 
@@ -169,9 +172,9 @@ HDInsight クラスターを作成しているときに、そのクラスター�
 
 詳細については、次を参照してください。
 
-* [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure Data Lake Storage の概要](../data-lake-store/data-lake-store-get-started-portal.md)
-* [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
-* [Azure Storage の Shared Access Signature を使用した HDInsight でのデータへのアクセスの制限](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [クイック スタート: Apache Hadoop クラスターを作成する](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [チュートリアル: HDInsight クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 * [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
 * [チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Azure Storage の Shared Access Signature を使用した HDInsight でのデータへのアクセスの制限](hdinsight-storage-sharedaccesssignature-permissions.md)

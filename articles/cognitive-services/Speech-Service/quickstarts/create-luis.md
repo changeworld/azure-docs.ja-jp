@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: f547b353091cc81816f0974fced8d4dc836d22b2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391606"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023822"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>クイック スタート:LUIS エンドポイント キーを取得する
 
@@ -37,7 +37,7 @@ LUIS は、次の 3 種類のキーを使用します。
 |スターター|テキストのみを使用して LUIS アプリケーションをテストできる|
 |エンドポイント |特定の LUIS アプリへのアクセスを承認する|
 
-このチュートリアルには、エンドポイント タイプのキーが必要です。 このチュートリアルでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
+このチュートリアルには、エンドポイント タイプのキーが必要です。 このチュートリアルでは、[事前構築済みホーム オートメーション アプリの使用](../../luis/luis-get-started-create-app.md)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
 
 LUIS アプリを作成すると、テキスト クエリを使用してアプリをテストできるようにスターター キーが自動的に生成されます。 このキーでは Speech サービスとの統合が有効にならないため、このチュートリアルでこれを使用することはできません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当ててください。 このチュートリアルでは無料のサブスクリプション階層を使用することができます。
 
@@ -45,7 +45,7 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 ![LUIS のポータル キーとエンドポイントの設定](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-endpoints-page.png)
 
-**[Keys and Endpoint]\(キーとエンドポイント\) の設定**ページで:
+**[Keys and Endpoint]\(キーとエンドポイント\) の設定** ページで:
 
 1. **[Resources and Keys]\(リソースとキー\)** セクションまでスクロールし、 **[Assign resource]\(リソースの割り当て\)** を選択します。
 1. **[Assign a key to your app]\(アプリへのキーの割り当て\)** ダイアログ ボックスに次の変更を加えます。

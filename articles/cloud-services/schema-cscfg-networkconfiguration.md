@@ -9,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f62bb33332e818cc40c5195a1cc2f667f819b4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529290"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072579"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services Config NetworkConfiguration スキーマ
 
@@ -24,7 +24,7 @@ ms.locfileid: "79529290"
 
 - [Cloud Service (クラシック) 構成スキーマ](schema-cscfg-file.md)
 - [Cloud Service (クラシック) 定義スキーマ](schema-csdef-file.md)
-- [仮想ネットワークの作成 (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [仮想ネットワークの作成 (クラシック)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration 要素
 次の例は、`NetworkConfiguration` 要素とその子要素を示します。

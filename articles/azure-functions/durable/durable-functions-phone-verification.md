@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で人による�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028305"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -21,7 +21,7 @@ ms.locfileid: "80335757"
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
-電話確認は、アプリケーションのエンド ユーザーがスパマーではなく本人であることを確認するために使われます。 多要素認証は、ハッカーからユーザー アカウントを保護するための一般的なユース ケースです。 独自の電話確認を実装する場合の課題は、人間との**ステートフルな相互作用**が必要になることです。 通常、エンド ユーザーは何らかのコード (4 桁の数字など) を提供されて、**一定の時間内に**応答する必要があります。
+電話確認は、アプリケーションのエンド ユーザーがスパマーではなく本人であることを確認するために使われます。 多要素認証は、ハッカーからユーザー アカウントを保護するための一般的なユース ケースです。 独自の電話確認を実装する場合の課題は、人間との **ステートフルな相互作用** が必要になることです。 通常、エンド ユーザーは何らかのコード (4 桁の数字など) を提供されて、**一定の時間内に** 応答する必要があります。
 
 通常の Azure Functions は (他のプラットフォームの他の多くのクラウド エンドポイントと同様) ステートレスなので、この種の相互作用には、外部のデータベースまたは他の永続的なストアで状態を明示的に管理する必要があります。 さらの、連携できる複数の関数に相互作用を分割する必要があります。 たとえば、コードを決定し、それをどこかに永続化して、ユーザーの電話に送信するために、少なくとも 1 つの関数が必要です。 さらに、ユーザーからの応答を受信し、コードの検証を行うために何らかの方法で元の関数呼び出しにマップするために、他に少なくとも 1 つの関数が必要です。 また、セキュリティを確保するためにはタイムアウトも重要な側面です。 それは非常に複雑になる可能性があります。
 
@@ -45,7 +45,7 @@ ms.locfileid: "80335757"
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`Task.WhenAny` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
+> 最初はわかりにくいかもしれませんが、このオーケストレーターは[決定論的オーケストレーション制約](durable-functions-code-constraints.md)に違反していません。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`Task.WhenAny` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,20 @@ ms.locfileid: "80335757"
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `currentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`context.df.Task.any` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
+> 最初はわかりにくいかもしれませんが、このオーケストレーターは[決定論的オーケストレーション制約](durable-functions-code-constraints.md)に違反していません。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `currentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`context.df.Task.any` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
+
+# <a name="python"></a>[Python](#tab/python)
+
+**E4_SmsPhoneVerification** 関数は、オーケストレーター関数用の標準的な *function.json* を使います。
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+関数を実装するコードを次に示します。
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> 最初はわかりにくいかもしれませんが、このオーケストレーターは[決定論的オーケストレーション制約](durable-functions-code-constraints.md)に違反していません。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `currentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`context.df.Task.any` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
 
 ---
 
@@ -94,6 +107,16 @@ ms.locfileid: "80335757"
 次に示すのは、4 桁のチャレンジ コードを生成して SMS メッセージを送信するコードです。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+*function.json* の定義は次のようになります。
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+次に示すのは、4 桁のチャレンジ コードを生成して SMS メッセージを送信するコードです。
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 

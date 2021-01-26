@@ -3,12 +3,12 @@ title: Azure Stack への Azure Backup Server のインストール
 description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827009"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90970238"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -107,7 +107,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ### <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
 
-Recovery Services コンテナーのストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、Recovery Services コンテナーは geo 冗長ストレージを使用します。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 永続性を多少犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md)ストレージ オプションと[ローカル冗長](../storage/common/storage-redundancy.md)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
+Recovery Services コンテナーのストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、Recovery Services コンテナーは geo 冗長ストレージを使用します。 このコンテナーがプライマリ コンテナーの場合は、ストレージ オプションの設定を geo 冗長ストレージのままにします。 永続性を多少犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)、[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)、[ゾーン冗長](../storage/common/storage-redundancy.md#zone-redundant-storage)のストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事をご覧ください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -243,7 +243,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![ファイルのインストール場所の指定](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
+    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](/system-center/dpm/plan-long-and-short-term-data-storage)」を参照してください。
 
 6. **[セキュリティの設定]** 画面で、制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** を選択します。
 

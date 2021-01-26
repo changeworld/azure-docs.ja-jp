@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/20/2020
+ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738559"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509599"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 
 外部システムとの統合も可能です。 たとえば、認証には Azure AD B2C を使用できますが、顧客データの信頼できるソースとしての機能は、外部の顧客関係管理 (CRM) や顧客ロイヤルティ データベースに委任します。 詳細については、[リモート プロファイル](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) ソリューションに関する記事を参照してください。
 
-次の表に、Azure AD B2C ディレクトリのユーザー プロファイルでサポートされている[ユーザー リソースの種類](https://docs.microsoft.com/graph/api/resources/user)の属性の一覧を示します。 各属性について次の情報を提供します。
+次の表に、Azure AD B2C ディレクトリのユーザー プロファイルでサポートされている[ユーザー リソースの種類](/graph/api/resources/user)の属性の一覧を示します。 各属性について次の情報を提供します。
 
 - Azure AD B2C で使用される属性名 (その後のかっこ内は Microsoft Graph での属性名 (異なる場合))
 - 属性のデータ型
@@ -62,29 +62,35 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 |objectId        |String|ユーザーの一意識別子であるグローバル一意識別子 (GUID)。 例:12345678-9abc-def0-1234-56789abcde。 読み取り専用で、変更できません。|読み取り専用|はい|Input、Persisted、Output|
 |otherMails      |文字列コレクション|ユーザーのその他の電子メール アドレスの一覧。 例: ["bob@contoso.com", "Robert@fabrikam.com"]。|はい (連絡用電子メール アドレス)|いいえ|Persisted、Output|
 |password        |String|ユーザー作成時のローカル アカウントのパスワード。|いいえ|いいえ|Persisted|
-|passwordPolicies     |String|パスワードのポリシー。 コンマで区切られた複数のポリシー名で構成される文字列です。 例: "DisablePasswordExpiration, DisableStrongPassword"。|いいえ|いいえ|Persisted、Output|
+|passwordPolicies     |String|パスワードのポリシー。 コンマで区切られた複数のポリシー名で構成される文字列です。 たとえば、"DisablePasswordExpiration, DisableStrongPassword"。|いいえ|いいえ|Persisted、Output|
 |physicalDeliveryOfficeName (officeLocation)|String|ユーザーの勤務先のオフィス所在地。 最大長 128。|はい|いいえ|Persisted、Output|
 |postalCode      |String|ユーザーの住所の郵便番号。 郵便番号は、ユーザーの国/地域に固有です。 米国では、この属性に ZIP コードが含まれます。 最大長 40。|はい|いいえ|Persisted、Output|
 |preferredLanguage    |String|ユーザーの優先言語。 ISO 639-1 コードに従う必要があります。 例: "en-US"。|いいえ|いいえ|Persisted、Output|
 |refreshTokensValidFromDateTime|DateTime|この日時より前に発行された更新トークンは無効です。無効な更新トークンを使用して新しいアクセス トークンを取得すると、アプリケーションでエラーが発生します。 この場合、アプリケーションは、承認エンドポイントに対して要求を行うことによって、新しい更新トークンを取得する必要があります。 読み取り専用です。|いいえ|いいえ|出力|
-|signInNames ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内の任意の種類のローカル アカウント ユーザーの一意のサインイン名。 ローカル アカウントの種類を指定せずにサインイン値でユーザーを取得するには、これを使用します。|いいえ|いいえ|入力|
-|signInNames.userName ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意のユーザー名。 特定のサインイン ユーザー名でユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
-|signInNames.phoneNumber ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意の電話番号。 特定のサインイン電話番号でユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
-|signInNames.emailAddress ([Identities](manage-user-accounts-graph-api.md#identities-property))|String|ディレクトリ内のローカル アカウント ユーザーの一意のメール アドレス。 特定のサインイン電子メール アドレスでユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
+|signInNames ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内の任意の種類のローカル アカウント ユーザーの一意のサインイン名。 ローカル アカウントの種類を指定せずにサインイン値でユーザーを取得するには、この属性を使用します。|いいえ|いいえ|入力|
+|signInNames.userName ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意のユーザー名。 特定のサインイン ユーザー名でユーザーを作成または取得するには、この属性を使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
+|signInNames.phoneNumber ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意の電話番号。 特定のサインイン電話番号でユーザーを作成または取得するには、この属性を使用します。 パッチ操作中に PersistedClaims 単独でこの属性を指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
+|signInNames.emailAddress ([Identities](manage-user-accounts-graph-api.md#identities-property))|String|ディレクトリ内のローカル アカウント ユーザーの一意のメール アドレス。 特定のサインイン電子メール アドレスでユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこの属性を指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
 |state           |String|ユーザーの住所の都道府県。 最大長 128。|はい|はい|Persisted、Output|
 |streetAddress   |String|ユーザーの勤務地の番地。 最大長 1024。|はい|はい|Persisted、Output|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|多要素認証に使用される、ユーザーの 2 次電話番号。|はい|いいえ|Persisted、Output|
 |strongAuthenticationEmailAddress<sup>1</sup>|String|ユーザーの SMTP アドレス。 例: "bob@contoso.com"。この属性は、ユーザー名ポリシーでのサインインで、ユーザーの電子メール アドレスを保存するために使用されます。 この電子メール アドレスは、パスワード リセット フローで使用されます。|はい|いいえ|Persisted、Output|
-|strongAuthenticationPhoneNumber<sup>1</sup>|String|多要素認証に使用される、ユーザーの 1 次電話番号。|はい|いいえ|Persisted、Output|
+|strongAuthenticationPhoneNumber<sup>2</sup>|String|多要素認証に使用される、ユーザーの 1 次電話番号。|はい|いいえ|Persisted、Output|
 |surname         |String|ユーザーの姓。 最大長 64。|はい|はい|Persisted、Output|
 |telephoneNumber (businessPhones の最初のエントリ)|String|ユーザーの勤務地の 1 次電話番号。|はい|いいえ|Persisted、Output|
 |userPrincipalName    |String|ユーザーのユーザー プリンシパル名 (UPN)。 UPN は、インターネット標準 RFC 822 に基づくユーザーのインターネット形式のログイン名です。 ドメインがテナントの確認済みドメインのコレクションに存在している必要があります。 このプロパティは、アカウントを作成するときに必要です。 変更不可。|いいえ|いいえ|Input、Persisted、Output|
 |usageLocation   |String|法的な要請のためにライセンスを割り当てられるユーザーが、各国またはリージョンでサービスを利用できるかどうかを確認するのに必要です。 NULL 値は許可されません。 2 文字の国またはリージョン番号 (ISO 標準 3166)。 例 :"US"、"JP"、"GB"。|はい|いいえ|Persisted、Output|
 |userType        |String|ディレクトリ内のユーザー タイプを分類するために使用できる文字列値。 値は Member にする必要があります。 読み取り専用です。|読み取り専用|いいえ|Persisted、Output|
-|userState (externalUserState)<sup>2</sup>|String|Azure AD B2B アカウント専用。招待が PendingAcceptance であるか Accepted であるかを示します。|いいえ|いいえ|Persisted、Output|
+|userState (externalUserState)<sup>3</sup>|String|Azure AD B2B アカウント専用。招待が PendingAcceptance であるか Accepted であるかを示します。|いいえ|いいえ|Persisted、Output|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState プロパティに対する最新の変更のタイムスタンプを示します。|いいえ|いいえ|Persisted、Output|
-|<sup>1 </sup>Microsoft Graph ではサポート対象外<br><sup>2 </sup>Azure AD B2C では使用不可||||||
 
+<sup>1 </sup>Microsoft Graph ではサポート対象外<br><sup>2 </sup>詳細については、「[MFA 電話番号属性](#mfa-phone-number-attribute)」を参照してください<br><sup>3 </sup>Azure AD B2C では使用不可
+
+## <a name="mfa-phone-number-attribute"></a>MFA 電話番号属性
+
+多要素認証 (MFA) に電話を使用する場合は、ユーザー ID を確認するために携帯電話を使用します。 新しい電話番号をプログラムによって[追加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)し、電話番号の[更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、[取得](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)、[削除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)を行うには、MS Graph API [phone authentication method](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod) を使用します。
+
+Azure AD B2C の[カスタム ポリシー](custom-policy-overview.md)では、電話番号は要求の種類 `strongAuthenticationPhoneNumber` を通じて利用できます。
 
 ## <a name="extension-attributes"></a>拡張属性
 
@@ -94,7 +100,7 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 - ID プロバイダーは、**uniqueUserGUID** のような、保存する必要がある一意のユーザー識別子を保持しています。
 - カスタム ユーザー体験を、**migrationStatus** のようなユーザーの状態に対して維持する必要がある。
 
-Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 拡張属性は、ディレクトリ内のユーザー オブジェクトの[スキーマを拡張](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)します。 拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、b2c-extensions-app というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは Azure Active Directory アプリの登録で確認できます。
+Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 拡張属性は、ディレクトリ内のユーザー オブジェクトの[スキーマを拡張](/graph/extensibility-overview#schema-extensions)します。 拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、b2c-extensions-app というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは Azure Active Directory アプリの登録で確認できます。
 
 > [!NOTE]
 > - 最大 100 の拡張属性を任意のユーザー アカウントに書き込むことができます。
@@ -113,6 +119,5 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="next-steps"></a>次のステップ
 拡張属性に関する詳細情報:
-- [スキーマの拡張機能](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)
-- [ユーザー フローでカスタム属性を定義する](user-flow-custom-attributes.md)
-- [カスタム ポリシーでカスタム属性を定義する](custom-policy-custom-attributes.md)
+- [スキーマの拡張機能](/graph/extensibility-overview#schema-extensions)
+- [カスタム属性を定義する](user-flow-custom-attributes.md)

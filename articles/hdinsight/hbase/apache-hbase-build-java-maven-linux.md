@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323776"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547913"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -25,13 +25,13 @@ Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを�
 
 * HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)」を参照してください。
 
-* [Java Developer キット](https://aka.ms/azure-jdks) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。
 
 * テキスト エディター。 この記事では、Microsoft Notepad を使用します。
 
@@ -48,7 +48,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 
-1. 次のコマンドを使用して、**hbaseapp** という名前の Maven プロジェクトを作成します。
+1. 次のコマンドを使用して、 **hbaseapp** という名前の Maven プロジェクトを作成します。
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -415,7 +415,7 @@ public class DeleteTable {
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    このコマンドは、**people** という名前の HBase テーブルを作成してデータを設定します。
+    このコマンドは、 **people** という名前の HBase テーブルを作成してデータを設定します。
 
 4. テーブルに格納されている電子メール アドレスを検索するには、次のコマンドを使用します。
 
@@ -442,7 +442,7 @@ public class DeleteTable {
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>JAR をアップロードしてジョブを実行する (PowerShell)
 
-次の手順では、Azure PowerShell [AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)を使用して、JAR を Apache HBase クラスターの既定のストレージにアップロードします。 その後、HDInsight コマンドレットを使用して、例をリモートで実行します。
+次の手順では、Azure PowerShell [AZ モジュール](/powershell/azure/new-azureps-module-az)を使用して、JAR を Apache HBase クラスターの既定のストレージにアップロードします。 その後、HDInsight コマンドレットを使用して、例をリモートで実行します。
 
 1. AZ モジュール をインストールし、構成した後で、`hbase-runner.psm1` という名前のファイルを作成します。 このファイルの内容として、次のテキストを使用します。
 

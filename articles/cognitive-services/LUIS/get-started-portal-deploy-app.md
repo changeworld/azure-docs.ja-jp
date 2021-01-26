@@ -1,14 +1,16 @@
 ---
 title: クイック スタート:LUIS ポータルを使用してアプリをデプロイする
 description: このクイックスタートでは、予測エンドポイント リソースを作成し、リソースを割り当て、アプリをトレーニング、公開することによって、アプリをデプロイする方法について説明します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: b051f349716b5597adee4509cfe774978a8f61aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336372"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972515"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -119,4 +121,4 @@ LUIS 向けの新しい作成リソースまたはクエリ予測リソースを
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [一般的な意図とエンティティを識別する](luis-tutorial-prebuilt-intents-entities.md)
+> [一般的な意図とエンティティを識別する](./tutorial-machine-learned-entity.md)

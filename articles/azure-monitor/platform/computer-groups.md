@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112114"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302938"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -97,13 +97,13 @@ Configuration Manager のコレクションをインポートするには、[Azu
 ログ クエリから作成されたコンピューター グループをクエリで使用するには、そのエイリアスを関数として扱います。通常は、次の構文を使用します。
 
 ```kusto
-Table | where Computer in (ComputerGroup)`
+Table | where Computer in (ComputerGroup)
 ```
 
 たとえば、以下を使用して、mycomputergroup という名前のコンピューター グループ内のコンピューターのみを対象とした UpdateSummary レコードを返すことができます。
 
 ```kusto
-UpdateSummary | where Computer in (mycomputergroup)`
+UpdateSummary | where Computer in (mycomputergroup)
 ```
 
 インポートされたコンピュータ グループとそれらに含まれるコンピューターは、**ComputerGroup** テーブルに格納されます。  たとえば、次のクエリは、Active Directory の Domain Computers グループにコンピューターの一覧を返します。 

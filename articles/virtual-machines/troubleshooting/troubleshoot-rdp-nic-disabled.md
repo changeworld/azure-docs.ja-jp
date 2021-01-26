@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078631"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090264"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>ネットワーク インターフェイスが無効になっているために VM にリモート デスクトップ接続できない
 
@@ -28,6 +28,11 @@ ms.locfileid: "86078631"
 
 VM でネットワーク インターフェイスが無効になっているため、Azure 上で VM に対して RDP 接続または他の任意のポートへの他の種類の接続を行うことができません。
 
+![ネットワーク インターフェイスが切断されている VM を示したスクリーンショット。](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![ネットワーク インターフェイスが無効になっている VM を示したスクリーンショット。](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
+
 ## <a name="solution"></a>解決策
 
 これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
@@ -36,8 +41,7 @@ VM のインターフェイスを有効にするには、VM に対してシリ�
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
-1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](#reset-network-interface)」をご覧ください。
+1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](#reset-network-interface)」をご覧ください。
 2. ネットワーク インターフェイスの状態をチェックします。
 
     ```console

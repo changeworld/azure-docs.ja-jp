@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929790"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91398410"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
 
@@ -37,11 +37,11 @@ ms.locfileid: "88929790"
 
 1. コマンド バーから Search エクスプローラーを開きます。
 
-   ![ポータルでの Search エクスプローラーのコマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルでの Search エクスプローラーのコマンド")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
     または、開かれたインデックスで組み込みの **[Search エクスプローラー]** タブを使用します。
 
-   ![[Search エクスプローラー] タブ](./media/search-explorer/search-explorer-tab.png "[Search エクスプローラー] タブ")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="unspecified-query"></a>指定されていないクエリ
 
@@ -55,7 +55,7 @@ ms.locfileid: "88929790"
 
    **結果**
    
-   ![空のクエリの例](./media/search-explorer/search-explorer-example-empty.png "非修飾または空のクエリの例")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="free-text-search"></a>フリー テキスト検索
 
@@ -71,7 +71,7 @@ ms.locfileid: "88929790"
 
    CTRL + F キーを使用して、関心のある特定の語句を結果内で検索できます。
 
-   ![フリー テキストのクエリの例](./media/search-explorer/search-explorer-example-freetext.png "フリー テキストのクエリの例")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="count-of-matching-documents"></a>一致するドキュメントのカウント 
 
@@ -83,7 +83,7 @@ ms.locfileid: "88929790"
 
    **結果**
 
-   ![ドキュメントの数の例](./media/search-explorer/search-explorer-example-count.png "インデックス内の一致するドキュメントの数")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>検索結果内のフィールドを制限する
 
@@ -95,7 +95,7 @@ ms.locfileid: "88929790"
 
    **結果**
 
-   ![フィールドの制限の例](./media/search-explorer/search-explorer-example-selectfield.png "検索結果のフィールドの制限")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>結果の次のバッチを返す
 
@@ -107,7 +107,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
    **結果**
 
-   ![バッチ検索の結果](./media/search-explorer/search-explorer-example-topskip.png "結果の次のバッチを返す")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>フィルター式 (より大きい、より小さい、等しい)
 
@@ -119,7 +119,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
    
    **結果**
 
-   ![フィルター式](./media/search-explorer/search-explorer-example-filter.png "条件によるフィルター")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 ## <a name="order-by-expressions"></a>orderby 式
 
@@ -131,7 +131,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
    
    **結果**
 
-   ![Orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順の変更")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="ポータルでの Search エクスプローラーのコマンド" border="false":::
 
 **$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 

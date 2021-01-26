@@ -2,20 +2,20 @@
 title: テンプレートを使用して Azure DS Domain Services を有効にする | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して Azure Active Directory Domain Services を構成して有効にする方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: e18825da64d0d200f55ce72985ac843b93b1e612
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722638"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618792"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインを作成する
 
@@ -71,10 +71,10 @@ Azure AD DS には、サービス プリンシパルと Azure AD グループが
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Azure AD DS が通信し、自身を認証するようにするには、[New-AzureADServicePrincipal][New-AzureADServicePrincipal] コマンドレットを使用して Azure AD サービス プリンシパルを作成します。 ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
+Azure AD DS が通信し、自身を認証するようにするには、[New-AzureADServicePrincipal][New-AzureADServicePrincipal] コマンドレットを使用して Azure AD サービス プリンシパルを作成します。 ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 次に、[New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* という名前の Azure AD グループを作成します。 このグループに追加されたユーザーには、マネージド ドメインで管理タスクを実行するためのアクセス許可が付与されます。
@@ -125,7 +125,7 @@ Resource Manager リソース定義の一部として、次の構成パラメー
 |-------------------------|---------|
 | domainName              | マネージド ドメインの DNS ドメイン名。プレフィックスの名前付けや競合に関する前のポイントを考慮に入れてください。 |
 | filteredSync            | Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。<br /><br /> 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。|
-| notificationSettings    | マネージド ドメインで生成されたアラートがある場合は、電子メール通知を送信できます。 <br /><br />Azure テナントの*全体管理者*と *AAD DC Administrators* グループのメンバーは、これらの通知に対して *[有効]* にすることができます。<br /><br /> 必要に応じて、注意を必要とするアラートが発生した場合の通知の受信者を追加できます。|
+| notificationSettings    | マネージド ドメインで生成されたアラートがある場合は、電子メール通知を送信できます。 <br /><br />Azure テナントの *全体管理者* と *AAD DC Administrators* グループのメンバーは、これらの通知に対して *[有効]* にすることができます。<br /><br /> 必要に応じて、注意を必要とするアラートが発生した場合の通知の受信者を追加できます。|
 | domainConfigurationType | 既定では、マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ユーザー フォレストを作成するために *domainConfiguration* 値を指定する必要はありません。<br /><br /> "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストを作成するには、この値を *ResourceTrusting* に設定します。<br /><br />リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。|
 
 次の圧縮されたパラメーターの定義は、これらの値がどのように宣言されるかを示しています。 *aaddscontoso.com* という名前のユーザー フォレストは、マネージド ドメインに同期されている Azure AD のすべてのユーザーで作成されます。

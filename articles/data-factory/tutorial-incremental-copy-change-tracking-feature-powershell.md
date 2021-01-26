@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 6fab092b0467228fd4fcdbcf95f99fd0981fb1e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 85fabb540180adb1848285f4c40f944225db2760
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079225"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508579"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>PowerShell を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure SQL Database のソース データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
+このチュートリアルでは、Azure SQL Database のソース データベースから **変更追跡** 情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "89079225"
     3. ソース データベースから Azure Blob Storage にフル データを読み込みます。
 2. **スケジュールに従って差分データの増分読み込みを実行する** (データの初回読み込み後に定期的に実行)。
     1. 新旧の SYS_CHANGE_VERSION 値を取得します。
-    2. 差分データを読み込みます。これは、**sys.change_tracking_tables** から得られる変更済みの行 (2 つの SYS_CHANGE_VERSION 値の間にある行) の主キーと**ソース テーブル**内のデータとを結合した後、その差分データをターゲットに移動することによって行います。
+    2. 差分データを読み込みます。これは、**sys.change_tracking_tables** から得られる変更済みの行 (2 つの SYS_CHANGE_VERSION 値の間にある行) の主キーと **ソース テーブル** 内のデータとを結合した後、その差分データをターゲットに移動することによって行います。
     3. 次回の差分読み込みに備えて SYS_CHANGE_VERSION を更新します。
 
 ## <a name="high-level-solution"></a>ソリューションの概略
@@ -62,9 +62,9 @@ ms.locfileid: "89079225"
 
     ![データ全体の読み込み](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png)
 1.  **増分読み込み:** 次のアクティビティを含んだパイプラインを作成して定期的に実行します。
-    1. **2 つのルックアップ アクティビティ**を作成します。これらのアクティビティによって Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡すことになります。
-    2. 2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーする**コピー アクティビティを 1 つ**作成します。
-    3. 次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新する**ストアド プロシージャ アクティビティを 1 つ**作成します。
+    1. **2 つのルックアップ アクティビティ** を作成します。これらのアクティビティによって Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡すことになります。
+    2. 2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーする **コピー アクティビティを 1 つ** 作成します。
+    3. 次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新する **ストアド プロシージャ アクティビティを 1 つ** 作成します。
 
     ![増分読み込みのフロー図](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
 
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-a-data-source-table-in-your-database"></a>データベースにデータ ソース テーブルを作成する
 
 1. **SQL Server Management Studio** を起動し、SQL Database に接続します。
-2. **サーバー エクスプローラー**で目的の**データベース**を右クリックして **[新しいクエリ]** を選択します。
+2. **サーバー エクスプローラー** で目的の **データベース** を右クリックして **[新しいクエリ]** を選択します。
 3. データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
 
     ```sql
@@ -143,8 +143,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -193,7 +193,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
-* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
@@ -225,7 +225,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -248,7 +248,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         }
     }
     ```
-2. **Azure PowerShell** で、**Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス**AzureSQLDatabaseLinkedService** を作成します。
+2. **Azure PowerShell** で、**Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureSQLDatabaseLinkedService** を作成します。
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -256,7 +256,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -424,7 +424,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    出力例を次に示します。
 
-   ```json
+   ```console
     PipelineName      : FullCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -445,19 +445,19 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 2. **[すべてのサービス]** をクリックし、キーワード「`data factories`」で検索して、 **[データ ファクトリ]** を選択します。
 
     ![[データ ファクトリ] メニュー](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
-3. データ ファクトリの一覧から**目的のデータ ファクトリ**を探して選択し、[データ ファクトリ] ページを起動します。
+3. データ ファクトリの一覧から **目的のデータ ファクトリ** を探して選択し、[データ ファクトリ] ページを起動します。
 
     ![目的のデータ ファクトリの検索](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
 4. [データ ファクトリ] ページの **[監視と管理]** タイルをクリックします。
 
     ![Monitor & Manage tile](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. 独立したタブで**データ統合アプリケーション**が起動します。すべての**パイプラインの実行**とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 **[パラメーター]** 列のリンクをクリックすると、パイプラインに渡されたパラメーターを確認できます。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクをクリックします。
+5. 独立したタブで **データ統合アプリケーション** が起動します。すべての **パイプラインの実行** とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 **[パラメーター]** 列のリンクをクリックすると、パイプラインに渡されたパラメーターを確認できます。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクをクリックします。
 
-    ![パイプライン実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
-6. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての**アクティビティの実行**が表示されます。
+    ![データ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+6. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての **アクティビティの実行** が表示されます。
 
-    ![アクティビティの実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
-7. 再度**パイプラインの実行**ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
+    ![[パイプライン] リンクが呼び出された、データ ファクトリのアクティビティの実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+7. 再度 **パイプラインの実行** ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
 
 
 ### <a name="review-the-results"></a>結果の確認
@@ -492,119 +492,116 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ```
 
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>差分コピーのパイプラインを作成する
-この手順では、次のアクティビティを含んだパイプラインを作成して定期的に実行します。 **ルックアップ アクティビティ**は、Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡します。 **コピー アクティビティ**は、2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーします。 **ストアド プロシージャ アクティビティ**は、次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新します。
+この手順では、次のアクティビティを含んだパイプラインを作成して定期的に実行します。 **ルックアップ アクティビティ** は、Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡します。 **コピー アクティビティ** は、2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーします。 **ストアド プロシージャ アクティビティ** は、次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新します。
 
 1. JSON ファイル IncrementalCopyPipeline.json を同じフォルダー内に作成します。次の内容を記述してください。
 
     ```json
     {
-            "name": "IncrementalCopyPipeline",
-            "properties": {
-                "activities": [
+        "name": "IncrementalCopyPipeline",
+        "properties": {
+            "activities": [
                 {
-                        "name": "LookupLastChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
+                    "name": "LookupLastChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
                         "source": {
                             "type": "SqlSource",
                             "sqlReaderQuery": "select * from table_store_ChangeTracking_version"
-                            },
-
-                            "dataset": {
+                        },
+                        "dataset": {
                             "referenceName": "ChangeTrackingDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-                    {
-                        "name": "LookupCurrentChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
+                    }
+                },
+                {
+                    "name": "LookupCurrentChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
                         },
-
-                            "dataset": {
+                        "dataset": {
                             "referenceName": "SourceDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-
-                    {
-                        "name": "IncrementalCopyActivity",
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
-                            }
-                        },
-                        "dependsOn": [
-                            {
-                                "activity": "LookupLastChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            },
-                            {
-                                "activity": "LookupCurrentChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                        }
-                        ],
-
-                        "inputs": [
-                            {
-                            "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                        }
-                        ],
-                        "outputs": [
-                            {
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference"
-                            }
-                        ]
-                    },
-
-                {
-                        "name": "StoredProceduretoUpdateChangeTrackingActivity",
-                        "type": "SqlServerStoredProcedure",
-                        "typeProperties": {
-
-                            "storedProcedureName": "Update_ChangeTracking_Version",
-                            "storedProcedureParameters": {
-                            "CurrentTrackingVersion": {"value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}", "type": "INT64" },
-                                "TableName":  { "value":"@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}", "type":"String"}
-                            }
-                    },
-
-                        "linkedServiceName": {
-                        "referenceName": "AzureSQLDatabaseLinkedService",
-                            "type": "LinkedServiceReference"
-                        },
-
-                        "dependsOn": [
-                        {
-                                "activity": "IncrementalCopyActivity",
-                            "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            }
-                        ]
                     }
-                ]
-
-            }
+                },
+                {
+                    "name": "IncrementalCopyActivity",
+                    "type": "Copy",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
+                        },
+                        "sink": {
+                            "type": "BlobSink"
+                        }
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "LookupLastChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        },
+                        {
+                            "activity": "LookupCurrentChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ],
+                    "inputs": [
+                        {
+                            "referenceName": "SourceDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "SinkDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                },
+                {
+                    "name": "StoredProceduretoUpdateChangeTrackingActivity",
+                    "type": "SqlServerStoredProcedure",
+                    "typeProperties": {
+                        "storedProcedureName": "Update_ChangeTracking_Version",
+                        "storedProcedureParameters": {
+                            "CurrentTrackingVersion": {
+                                "value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}",
+                                "type": "INT64"
+                            },
+                            "TableName": {
+                                "value": "@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}",
+                                "type": "String"
+                            }
+                        }
+                    },
+                    "linkedServiceName": {
+                        "referenceName": "AzureSQLDatabaseLinkedService",
+                        "type": "LinkedServiceReference"
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "IncrementalCopyActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     }
-
     ```
+
 2. Set-AzDataFactoryV2Pipeline コマンドレットを実行して、パイプラインFullCopyPipeline を作成します。
 
    ```powershell
@@ -613,7 +610,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
    出力例を次に示します。
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -630,13 +627,13 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>増分コピー パイプラインを監視する
-1. **データ統合アプリケーション**で、**パイプラインの実行**ビューを最新の情報に更新します。 その一覧に IncrementalCopyPipeline があることを確認してください。 **[アクション]** 列のリンクをクリックします。  
+1. **データ統合アプリケーション** で、**パイプラインの実行** ビューを最新の情報に更新します。 その一覧に IncrementalCopyPipeline があることを確認してください。 **[アクション]** 列のリンクをクリックします。  
 
-    ![パイプライン実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
-2. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての**アクティビティの実行**が表示されます。
+    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+2. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての **アクティビティの実行** が表示されます。
 
-    ![アクティビティの実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
-3. 再度**パイプラインの実行**ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
+    ![いくつかが成功としてマークされている、データ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+3. 再度 **パイプラインの実行** ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
 
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーにもう 1 つファイルが確認できます。
@@ -655,8 +652,8 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
 
 

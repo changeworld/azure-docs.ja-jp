@@ -5,26 +5,26 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291876"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183914"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
-Azure Bastion サービスは、お使いの仮想ネットワーク内でプロビジョニングする、新しいフル プラットフォームマネージド PaaS サービスです。 これは、Azure portal 内で直接 TLS を経由して、お使いの仮想マシンへの安全かつシームレスな RDP または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。
+Azure Bastion は、ブラウザーと Azure portal を使用して仮想マシンに接続できるようにするサービスで、ユーザーがデプロイします。 Azure Bastion サービスは、お使いの仮想ネットワーク内でプロビジョニングする、フル プラットフォーム マネージド PaaS サービスです。 これにより、TLS 経由で Azure portal から直接、仮想マシンに安全かつシームレスに RDP/SSH 接続できます。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレス、エージェント、クライアント ソフトウェアはいずれも不要です。
 
-Bastion は、プロビジョニングされる仮想ネットワーク内のすべての VM に対して安全な RDP および SSH 接続を提供します。 Azure Bastion を使用すると、RDP または SSH を使用した安全なアクセスを提供しながら、お使いの仮想マシンが RDP または SSH ポートを外部に公開しないように保護されます。 Azure Bastion を使用して、Azure portal から直接仮想マシンに接続します。 追加のクライアント、エージェント、ソフトウェアは必要ありません。
+Bastion は、プロビジョニングされる仮想ネットワーク内のすべての VM に対して安全な RDP および SSH 接続を提供します。 Azure Bastion を使用すると、RDP または SSH を使用した安全なアクセスを提供しながら、お使いの仮想マシンが RDP または SSH ポートを外部に公開しないように保護されます。
 
 ## <a name="architecture"></a>Architecture
 
 Azure Bastion デプロイは、サブスクリプションやアカウント、仮想マシン単位ではなく、仮想ネットワーク単位です。 この仮想ネットワーク内で Azure Bastion サービスをプロビジョニングすると、同じ仮想ネットワーク内のすべての VM で RDP または SSH エクスペリエンスを利用できるようになります。
 
-RDP および SSH は、Azure で実行されているワークロードに接続できる、基本的な手段の一部です。 インターネット経由で RDP または SSH ポートを公開することは望ましくなく、重大な脅威にさらされる面と見なされます。 これは、プロトコルの脆弱性が原因であることがよくあります。 この脅威にさらされる面を含めるには、境界ネットワークの公開される側に踏み台ホスト (ジャンプサーバーとも呼ばれます) をデプロイできます。 Bastion のホスト サーバーは、攻撃に耐えられるように設計および構成されています。 また、Bastion のサーバーは、踏み台の背後やネットワーク内の奥の方にあるワークロードに対する RDP および SSH 接続も提供しています。
+RDP および SSH は、Azure で実行されているワークロードに接続できる、基本的な手段の一部です。 インターネット経由で RDP または SSH ポートを公開することは望ましくなく、重大な脅威にさらされる面と見なされます。 これは、プロトコルの脆弱性が原因であることがよくあります。 この脅威にさらされる面を含めるには、境界ネットワークの公開される側に bastion ホスト (ジャンプサーバーとも呼ばれます) をデプロイできます。 bastion ホスト サーバーは、攻撃に耐えられるように設計および構成されています。 また、Bastion のサーバーは、踏み台の背後やネットワーク内の奥の方にあるワークロードに対する RDP および SSH 接続も提供しています。
 
 ![Azure Bastion のアーキテクチャ](./media/bastion-overview/architecture.png)
 
@@ -57,5 +57,5 @@ RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.c
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Bastion ホスト リソースを作成する](bastion-create-host-portal.md)。
+* [チュートリアル: Azure Bastion ホストを作成し、Windows VM に接続する](tutorial-create-host-portal.md)。
 * Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。

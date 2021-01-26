@@ -1,15 +1,17 @@
 ---
 title: 開発者向けリソース - Language Understanding
 description: SDK、REST API、CLI は、ご使用のプログラミング言語で Language Understanding (LUIS) アプリを開発する際に役立ちます。 Azure リソースと LUIS 予測を管理します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/19/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 43c9ca244f02ffe1485fbd7316901d607d6e2479
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 01/12/2021
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 0e8da4d490ef5c9afb2ac363b62f0f1a4fe66f5e
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321227"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133312"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -21,17 +23,17 @@ Azure Cognitive Services 管理レイヤーを使用して、Language Understand
 
 ツールに基づくリファレンス ドキュメントを検索します。
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
+* [Azure CLI](/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
-* [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
+* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding の作成と予測要求
 
 Language Understanding サービスには、作成する必要がある Azure リソースからアクセスします。 次の 2 つのリソースがあります。
 
-* トレーニング用の**作成**リソースを使用して、作成、編集、トレーニング、公開を行います。
-* ランタイム用の**予測**を使用すると、ユーザーのテキストを送信し、予測を受け取ることができます。
+* トレーニング用の **作成** リソースを使用して、作成、編集、トレーニング、公開を行います。
+* ランタイム用の **予測** を使用すると、ユーザーのテキストを送信し、予測を受け取ることができます。
 
 V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
 
@@ -54,8 +56,8 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 現在、LUIS には次の 2 種類のエンドポイントがあります。
 
-* トレーニング エンドポイントでの**作成**
-* ランタイム エンドポイントでのクエリ**予測**。
+* トレーニング エンドポイントでの **作成**
+* ランタイム エンドポイントでのクエリ **予測**。
 
 |目的|URL|
 |--|--|
@@ -86,10 +88,10 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 |Language |リファレンス ドキュメント|Package|クイックスタート|
 |--|--|--|--|
-|C#|[作成](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[予測](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet の作成](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet の予測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[作成](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[クエリ予測](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
+|C#|[作成](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[予測](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet の作成](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet の予測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[作成](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[クエリ予測](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
 |Go|[作成と予測](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
-|Java|[作成と予測](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven の作成](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven の予測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[作成](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[予測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM の作成](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[作成](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[予測](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
+|Java|[作成と予測](/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven の作成](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven の予測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
+|JavaScript|[作成](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[予測](/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM の作成](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[作成](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[予測](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
 |Python|[作成と予測](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[作成](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[予測](azure-sdk-quickstart.md?pivots=programming-language-python)|
 
 
@@ -117,18 +119,14 @@ Language Understanding には、アプリケーションとそのモデルを JS
 Bot Framework は、さまざまな言語の [SDK](https://github.com/Microsoft/botframework) として、[Azure Bot Service](https://dev.botframework.com/) を使用するサービスとして使用できます。
 
 Bot Framework には、次のような Language Understanding に役立つ[いくつかのツール](https://github.com/microsoft/botbuilder-tools)が用意されています。
-
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) - マークダウン ファイルを使用して LUIS Language Understanding モデルを構築します
-* [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) - LUIS.ai アプリケーションを作成および管理します
-* [Dispatch](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch) - 親アプリと子アプリを管理します
-* [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - LUIS の意図とエンティティのバッキング C#/Typescript クラスを自動生成します。
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) - ボット開発者が Bot Framework SDK を使用して構築されたボットをテストおよびデバッグできるデスクトップ アプリケーションです
 * [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - 開発者およびさまざまな分野から成るチームが Microsoft Bot Framework を使用してボットや会話エクスペリエンスを作成できるようにするのための統合開発ツールです
 * [Bot Framework サンプル](https://github.com/microsoft/botbuilder-samples) - #C、JavaScript、TypeScript、Python
+
 ## <a name="next-steps"></a>次のステップ
 
 * 一般的な [HTTP エラー コード](luis-reference-response-codes.md)について学習します。
-* すべての API と SDK の[リファレンス ドキュメント](https://docs.microsoft.com/azure/index)
+* すべての API と SDK の[リファレンス ドキュメント](../../index.yml)
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) と [Azure Bot Service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Cognitive コンテナー](../cognitive-services-container-support.md)

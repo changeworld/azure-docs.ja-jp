@@ -4,12 +4,12 @@ description: Azure での Web Apps、Virtual Machine Scale Sets、および Clou
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7fdb3588833dd9bcf989e020cd1dd861c6e28f37
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327057"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95745318"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。
@@ -41,12 +41,12 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 組み合わせの一方のみを使用すると、自動スケーリングは、プロファイルで定義されている最大または最小のインスタンス数に達するまで、単一方向 (スケールアウトかスケールイン) のみの動作を行います。 これは最適とは言えません。可用性を確保するために、使用率が高い時間帯にリソースをスケールアップするのが理想的です。 同様に、使用率が低いときは、コストを節約するため、リソースをスケールダウンするのが望ましいやりかたです。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>診断メトリックに適切な統計を選択する
-診断メトリックの場合、スケールに使用するメトリックとして、"*平均*"、"*最小*"、"*最大*"、"*合計*" の中から選択できます。 最も一般的な統計は *平均*です。
+診断メトリックの場合、スケールに使用するメトリックとして、"*平均*"、"*最小*"、"*最大*"、"*合計*" の中から選択できます。 最も一般的な統計は *平均* です。
 
 ### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>どのメトリックの種類でもしきい値を慎重に選択する
 実際の状況に基づいて、スケールアウトとスケールインに異なるしきい値を慎重に選択することをお勧めします。
 
-スケールアウトとスケールインの条件に同じまたは近いしきい値を指定した次の例のような自動スケール設定は*お勧めできません*。
+スケールアウトとスケールインの条件に同じまたは近いしきい値を指定した次の例のような自動スケール設定は *お勧めできません*。
 
 * スレッド数が 600 以上のときにインスタンスを 1 つ増やす
 * スレッド数が 600 以下のときにインスタンスを 1 つ減らす
@@ -73,6 +73,9 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 3. 時間の経過と共に、CPU 使用率が 60 に低下したとします。
 4. 自動スケールのスケールイン ルールにより、スケールインした場合の最終状態が推定されます。 たとえば、60 x 3 (現在のインスタンス数) = 180 / 2 (スケールダウンしたときの最終的なインスタンス数) = 90 になります。 そのため、すぐにスケールアウトを再度実行しなければならないので、スケールインは実行されません。 代わりに、スケールダウンがスキップされます。
 5. 次回チェックされたときに、CPU 使用率が引き続き 50 に低下していると、 再び推定が行われます。50 x 3 インスタンス = 150 / 2 インスタンス = 75 となり、スケールアウトのしきい値である 80 を下回っているため、2 つのインスタンスに正常にスケールインされます。
+
+> [!NOTE]
+> インスタンスのターゲット数にスケーリングした結果として、フラッピングが発生する可能性があることが自動スケール エンジンによって検出されると、現在の数とターゲットの数との間のインスタンス数の差に対するスケーリングも試行されます。 この範囲内でフラッピングが発生しなかった場合、新しいターゲットで自動スケーリングによるスケール操作が続行されます。
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>特殊なメトリックのスケーリングしきい値に関する考慮事項
  Storage や Service Bus のキューの長さメトリックなどの特殊なメトリックでは、しきい値は現在のインスタンス数あたりの使用可能な平均メッセージ数です。 このメトリックのしきい値は慎重に選択します。
@@ -143,6 +146,8 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * 自動スケール サービスがスケール操作を実行できない場合。
 * 自動スケール サービスがスケールを決定する際にメトリックを使用できない場合。
 * スケールを決定する際にメトリックを再び使用できるようになった (回復した) 場合。
+* 自動スケーリングによってフラッピングが検出され、スケーリングの試行が中止されます。 この状況では、`Flapping` のログの種類が表示されます。 これが表示された場合は、しきい値が狭すぎるかどうかを検討してください。
+* 自動スケーリングによってフラッピングが検出されますが、スケーリングは正常に実行できます。 この状況では、`FlappingOccurred` のログの種類が表示されます。 これが表示された場合は、自動スケーリング エンジンによって (たとえば、4 インスタンスから 2 への) スケーリングが試行されたものの、これによりフラッピングが発生する可能性があると判断されました。 代わりに、自動スケーリング エンジンによって異なる数のインスタンスにスケーリングされると (たとえば、2 つではなく 3 つのインスタンスを使用)、フラッピングが発生しなくなるため、このインスタンス数にスケーリングされました。
 
 また、アクティビティ ログ アラートを使用して、自動スケール エンジンの正常性を監視することもできます。 ここに、[アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)場合、または[アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)場合の例を示します。
 

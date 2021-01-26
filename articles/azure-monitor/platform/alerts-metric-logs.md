@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f9005e95ac902a2d09b792c5f64520d0175c7707
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446176"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694966"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -25,10 +25,10 @@ Azure Monitor では、[クラシック アラート](./alerts-classic-portal.md
 
 - Windows および Linux マシンの[パフォーマンス カウンター](./data-sources-performance-counters.md)
 - [Agent Health のためのハートビート レコード](../insights/solution-agenthealth.md)
-- [更新管理](../../automation/update-management/update-mgmt-overview.md)レコード
+- [更新管理](../../automation/update-management/overview.md)レコード
 - [イベント データ](./data-sources-windows-events.md) ログ
 
-**ログのメトリック アラート**には、Azure のクエリ ベースの[ログ アラート](./alerts-log.md)よりも多くの利点があります。その一部を次に示します。
+**ログのメトリック アラート** には、Azure のクエリ ベースの [ログ アラート](./alerts-log.md)よりも多くの利点があります。その一部を次に示します。
 
 - メトリック アラートでは、ほぼリアルタイムの監視機能が提供されます。ログのメトリック アラートは、同じものを確保するためにログ ソースからデータをフォークします。
 - メトリック アラートはステートフルです。アラートが発生したときとアラートが解決されたときに、それぞれ一度だけ通知します。アラートの条件が満たされると間隔ごとに発生し続けるステートレスなログ アラートとは異なります。
@@ -55,20 +55,20 @@ Log Analytics データで収集されたログのメトリックを機能させ
 
 1. **アクティブな Log Analytics ワークスペース**: 有効かつアクティブな Log Analytics ワークスペースが存在する必要があります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../learn/quick-create-workspace.md)に関するページをご覧ください。
 2. **Log Analytics ワークスペースのエージェントを構成する**: 前の手順で使用した Log Analytics ワークスペースにデータを送信するために、Azure VM およびオンプレミスの VM でエージェントを構成する必要があります。 詳細については、[Log Analytics エージェントの概要](./agents-overview.md)に関する記事をご覧ください。
-3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成して、データを Log Analytics ワークスペースに送信する必要があります。サポートされるソリューションは、[Windows および Linux のパフォーマンス カウンター](./data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../insights/solution-agenthealth.md)、[更新管理](../../automation/update-management/update-mgmt-overview.md)、および[イベント データ](./data-sources-windows-events.md)です。
+3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成して、データを Log Analytics ワークスペースに送信する必要があります。サポートされるソリューションは、[Windows および Linux のパフォーマンス カウンター](./data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../insights/solution-agenthealth.md)、[更新管理](../../automation/update-management/overview.md)、および [イベント データ](./data-sources-windows-events.md)です。
 4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](./metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応するログまたはデータが必要です。 たとえば、 *% Available Memory* の場合、[パフォーマンス カウンター](./data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
 
 ## <a name="configuring-metric-alert-for-logs"></a>ログのメトリック アラートの構成
 
  メトリック アラートは、Azure portal、Resource Manager テンプレート、REST API、PowerShell、Azure CLI を使用して作成および管理することができます。 ログのメトリック アラートはメトリック アラートの一種であるため、前提条件が満たされたら、指定した Log Analytics ワークスペースに対してログのメトリック アラートを作成できます。 ペイロード スキーマ、適用されるクォータ制限、課金価格など、[メトリック アラート](./alerts-metric-near-real-time.md)の特性と機能はすべて、ログのメトリック アラートにも適用されます。
 
-手順の詳細とサンプルについては、[メトリック アラートの作成と管理](https://aka.ms/createmetricalert)に関するページをご覧ください。 具体的には、ログのメトリック アラートでは、メトリック アラートを管理する手順に従います。次の点に注意してください。
+手順の詳細とサンプルについては、[メトリック アラートの作成と管理](./alerts-metric.md)に関するページをご覧ください。 具体的には、ログのメトリック アラートでは、メトリック アラートを管理する手順に従います。次の点に注意してください。
 
 - メトリック アラートのターゲットが有効な "*Log Analytics ワークスペース*" であることを確認します。
-- 選択した "*Log Analytics ワークスペース*" のメトリック アラート用に選択したシグナルの種類が**メトリック**であることを確認します。
+- 選択した "*Log Analytics ワークスペース*" のメトリック アラート用に選択したシグナルの種類が **メトリック** であることを確認します。
 - ディメンション フィルターを使用して、特定の条件またはリソースをフィルター処理します。ログのメトリックは多次元です。
 - "*シグナル ロジック*" を構成すると、ディメンション (コンピューターなど) の複数の値にまたがる単一のアラートを作成できます。
-- 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用**しない**場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための明示的なルールを手動で作成する必要があります。
+- 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用 **しない** 場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための明示的なルールを手動で作成する必要があります。
 
 > [!NOTE]
 > Azure portal を使用して Log Analytics ワークスペースのメトリック アラートを作成すると、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための対応するルールがバックグラウンドで自動的に作成されます。*ユーザーの介入や操作は不要です*。 Azure portal 以外の方法を使用してログのメトリック アラートを作成する場合は、「[ログのメトリック アラートのリソース テンプレート](#resource-template-for-metric-alerts-for-logs)」をご覧ください。このセクションには、メトリック アラートを作成する前に、ScheduledQueryRule ベースのログからメトリックへの変換ルールを作成する方法のサンプルが示されています。このルールがないと、ログのメトリック アラートを作成するためのデータが存在しなくなります。
@@ -366,7 +366,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 または、Azure CLI を使用してリソース テンプレートをデプロイします。
 
 ```azurecli
-az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
+az deployment group create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
 ### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>動的しきい値によるログのメトリック アラート
@@ -682,7 +682,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 または、Azure CLI を使用してリソース テンプレートをデプロイします。
 
 ```azurecli
-az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
+az deployment group create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - [メトリック アラート](alerts-metric.md)の詳細を確認します。
 - [Azure でのログ アラート](./alerts-unified-log.md)について学習します。
 - [Azure のアラート](alerts-overview.md)について確認します。
-

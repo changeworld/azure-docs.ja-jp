@@ -4,16 +4,16 @@ description: OpenShift 4 を実行する Azure Red Hat OpenShift のプライベ
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: ms-jasondel
-ms.author: jasondel
+author: georgewallace
+ms.author: gwallace
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056773"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928061"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 
@@ -23,17 +23,35 @@ ms.locfileid: "88056773"
 > * 前提条件を設定し、必要な仮想ネットワークとサブネットを作成する
 > * プライベート API サーバー エンドポイントとプライベート イングレス コントローラーを使用してクラスターをデプロイする
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
+### <a name="register-the-resource-providers"></a>リソース プロバイダーを登録する
 
-次に、お使いのサブスクリプションに `Microsoft.RedHatOpenShift` リソースプロバイダーを登録する必要があります。
+1. 複数の Azure サブスクリプションがある場合は、適切なサブスクリプション ID を指定します。
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. `Microsoft.RedHatOpenShift` リソース プロバイダーを登録します。
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. `Microsoft.Compute` リソース プロバイダーを登録します。
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. `Microsoft.Storage` リソース プロバイダーを登録します。
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
 
@@ -141,7 +159,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **マスター サブネットの[サブネット プライベート エンドポイント ポリシーを無効にします](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** これは、クラスターに接続して管理できるようにするために必要です。
+5. **マスター サブネットの [サブネット プライベート エンドポイント ポリシーを無効にします](../private-link/disable-private-link-service-network-policy.md)。** これは、クラスターに接続して管理できるようにするために必要です。
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -207,11 +225,11 @@ az aro list-credentials \
 ```
 
 >[!IMPORTANT]
-> Azure Red Hat OpenShift のプライベート クラスターに接続するには、作成した仮想ネットワーク内、またはクラスターがデプロイされた仮想ネットワークで[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)された仮想ネットワーク内のホストから、次の手順を実行する必要があります。
+> Azure Red Hat OpenShift のプライベート クラスターに接続するには、作成した仮想ネットワーク内、またはクラスターがデプロイされた仮想ネットワークで[ピアリング](../virtual-network/virtual-network-peering-overview.md)された仮想ネットワーク内のホストから、次の手順を実行する必要があります。
 
 ブラウザーでコンソールの URL にアクセスし、`kubeadmin` 資格情報を使用してログインします。
 
-![Azure Red Hat OpenShift ログイン画面](media/aro4-login.png)
+![Azure Red Hat OpenShift ログイン画面を示すスクリーンショット。](media/aro4-login.png)
 
 ## <a name="install-the-openshift-cli"></a>OpenShift CLI をインストールする
 
@@ -230,7 +248,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> Azure Red Hat OpenShift のプライベート クラスターに接続するには、作成した仮想ネットワーク内、またはクラスターがデプロイされた仮想ネットワークで[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)された仮想ネットワーク内のホストから、次の手順を実行する必要があります。
+> Azure Red Hat OpenShift のプライベート クラスターに接続するには、作成した仮想ネットワーク内、またはクラスターがデプロイされた仮想ネットワークで[ピアリング](../virtual-network/virtual-network-peering-overview.md)された仮想ネットワーク内のホストから、次の手順を実行する必要があります。
 
 次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 **\<kubeadmin password>** を今取得したパスワードに置き換えます。
 

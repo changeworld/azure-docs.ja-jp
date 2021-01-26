@@ -8,15 +8,15 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086468"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007139"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
-Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/marketplace-publishers-guide.md)に関する記事を参照してください。
+Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/overview.md)に関する記事を参照してください。
 
 HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)* " モデルを使用します。 BYOL シナリオでは、アプリ ユーザーに対するアプリケーションの使用許諾はアプリケーション提供者が行います。 また、アプリ ユーザーへの課金はアプリ ユーザーが作成した Azure リソース (HDInsight クラスターとクラスターの VM/ノードなど) についてのみ行われます。 現在、アプリケーションそのものに対する課金は Azure で発生しません。
 
@@ -28,7 +28,7 @@ HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)* " 
 ## <a name="prerequisites"></a>前提条件
 カスタム アプリケーションを Azure Marketplace に送信するには、まず、[カスタム アプリケーションを作成してテストします](hdinsight-apps-install-custom-applications.md)。
 
-さらに、開発者アカウントの登録が必要となります。 詳しくは、[Azure Marketplace へのプランの発行](../marketplace/marketplace-publishers-guide.md)に関するページおよび「[Microsoft 開発者アカウントの作成](../marketplace/marketplace-publishers-guide.md)」をご覧ください。
+さらに、開発者アカウントの登録が必要となります。 詳しくは、[Azure Marketplace へのプランの発行](../marketplace/overview.md)に関するページおよび「[Microsoft 開発者アカウントの作成](../marketplace/overview.md)」をご覧ください。
 
 ## <a name="define-the-application"></a>アプリケーションの定義
 Marketplace へのアプリケーションの発行は、2 段階の手順で実行されます。 最初に、*createUiDef.json* ファイルを定義します。 createUiDef.json ファイルは、どのクラスターがアプリケーションと互換性があるかを示します。 次に、Azure Portal からテンプレートを発行します。 以下に createUiDef.json ファイルの例を示します。
@@ -89,7 +89,7 @@ HDInsight アプリケーションを発行するには:
 1. [Azure 発行](https://publish.windowsazure.com/)にサインインします。
 2. 左側のメニューで、 **[ソリューション テンプレート]** を選択します。
 3. タイトルを入力し、 **[Create a new solution template]\(新しいソリューション テンプレートを作成する\)** を選択します。
-4. 組織をまだ登録していない場合は、 **[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace/marketplace-publishers-guide.md)」を参照してください。
+4. 組織をまだ登録していない場合は、 **[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace/overview.md)」を参照してください。
 5. **[Define some Topologies to get Started]\(いくつかのトポロジを定義して開始する\)** を選択します。 ソリューション テンプレートは、作成したすべてのトポロジの「親」となります。 1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。 プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 
 6. トポロジ名を入力し、 **[+]** を選択します。
 7. 新しいバージョンを入力し、 **[+]** を選択します。
@@ -102,4 +102,3 @@ HDInsight アプリケーションを発行するには:
 * [Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)し、アプリケーションをさらに追加する方法について説明します。 
 * [Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Apache Hadoop クラスターを作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)する方法を確認します。
 * HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために [HDInsight で空のエッジ ノードを使用](hdinsight-apps-use-edge-node.md)する方法を確認します。
-

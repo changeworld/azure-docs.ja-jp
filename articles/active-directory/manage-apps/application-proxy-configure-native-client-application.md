@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 09e813e0dff09885f104e43099b10d6f6f8a7f9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165075"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657433"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 
 ![エンド ユーザー、Azure AD、発行済みアプリケーション間の関係](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-ネイティブ アプリケーションを発行するには、認証の処理が行われ、多数のクライアント環境がサポートされている、Microsoft Authentication Library を使います。 アプリケーション プロキシは、[サインイン済みのユーザーに代わって Web API を呼び出すデスクトップ アプリ](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user)のシナリオに当てはまります。
+ネイティブ アプリケーションを発行するには、認証の処理が行われ、多数のクライアント環境がサポートされている、Microsoft Authentication Library を使います。 アプリケーション プロキシは、[サインイン済みのユーザーに代わって Web API を呼び出すデスクトップ アプリ](../develop/authentication-flows-app-scenarios.md#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user)のシナリオに当てはまります。
 
 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 
 ここでは、次のように、Azure AD でアプリケーションを登録する必要があります。
 
-1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター**の**ダッシュボード**が表示されます。
+1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター** の **ダッシュボード** が表示されます。
 1. サイドバーで **[Azure Active Directory]** を選択します。 **[Azure Active Directory]** 概要ページが表示されます。
 1. Azure AD の概要のサイドバーで、 **[アプリの登録]** を選択します。 すべてのアプリ登録の一覧が表示されます。
 1. **[新規登録]** を選択します。 **[アプリケーションの登録]** ページが表示されます。
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
    - 企業および教育機関の顧客のみを対象とするには、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
    - 最も広範な Microsoft ID のセットを対象にするには、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント]** を選択します。
 1. **[リダイレクト URI]** で、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、アプリケーションのリダイレクト URI `https://login.microsoftonline.com/common/oauth2/nativeclient` を入力します。
-1. **Microsoft プラットフォームのポリシー**を選択して読んだ後、 **[登録]** を選択します。 新しいアプリケーション登録の概要ページが作成されて、表示されます。
+1. **Microsoft プラットフォームのポリシー** を選択して読んだ後、 **[登録]** を選択します。 新しいアプリケーション登録の概要ページが作成されて、表示されます。
 
 新しいアプリ登録の作成について詳しくは、[Azure Active Directory とのアプリケーションの統合](../develop/quickstart-register-app.md)に関する記事をご覧ください。
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 1. 新しいアプリケーション登録ページのサイドバーで、 **[API のアクセス許可]** を選択します。 新しいアプリケーション登録に対する **[API のアクセス許可]** ページが表示されます。
 1. **[アクセス許可の追加]** を選択します。 **[API アクセス許可の要求]** ページが表示されます。
 1. **[API を選択します]** の設定で、 **[所属する組織で使用している API]** を選択します。 API が公開されているディレクトリ内のアプリケーションを含む一覧が表示されます。
-1. 検索ボックスに入力するかスクロールしてプロキシ アプリケーションを探し (「[手順 1: プロキシ アプリケーションを発行する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-native-client-application#step-1-publish-your-proxy-application)」で発行したもの)、プロキシ アプリケーションを選択します。
+1. 検索ボックスに入力するかスクロールしてプロキシ アプリケーションを探し (「[手順 1: プロキシ アプリケーションを発行する](#step-1-publish-your-proxy-application)」で発行したもの)、プロキシ アプリケーションを選択します。
 1. **[アプリケーションに必要なアクセス許可の種類]** の見出しで、アクセス許可の種類を選択します。 ネイティブ アプリケーションでサインインしたユーザーとしてプロキシ アプリケーションの API にアクセスする必要がある場合は、 **[委任されたアクセス許可]** を選択します。
 1. **[アクセス許可を選択する]** の見出しで、必要なアクセス許可を選択して、 **[アクセス許可の追加]** を選択します。 ネイティブ アプリケーションの **[API のアクセス許可]** ページに、追加したプロキシ アプリケーションとアクセス許可 API が表示されるようになります。
 

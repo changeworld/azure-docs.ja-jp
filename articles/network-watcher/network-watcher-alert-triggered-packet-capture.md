@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738058"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965676"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -30,7 +30,7 @@ Azure でデプロイされたリソースは、24 時間 365 日実行されて
 
 Azure エコシステム内部から Network Watcher、アラート、関数を使うことにより、データとツールでプロアクティブに対応してネットワークの問題を解決できます。
 
-![シナリオ][scenario]
+![図は、仮想マシンの Network Watcher 拡張機能を示しています。これは、T C P Segments sent > 100 へ、次に Azure Functions へ、さらに Network Watcher へとフローし、そこから Network Watcher 拡張機能に戻っています。][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -39,7 +39,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 * 最新バージョンの [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * Network Watcher の既存インスタンス。 まだない場合は、[Network Watcher のインスタンスを作成](network-watcher-create.md)します。
-* [Windows 拡張機能](../virtual-machines/windows/extensions-nwa.md)または [Linux 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)を備えた、Network Watcher と同じリージョン内の既存の仮想マシン。
+* [Windows 拡張機能](../virtual-machines/extensions/network-watcher-windows.md)または [Linux 仮想マシン拡張機能](../virtual-machines/extensions/network-watcher-linux.md)を備えた、Network Watcher と同じリージョン内の既存の仮想マシン。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -340,7 +340,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 ### <a name="create-the-alert-rule"></a>アラート ルールの作成
 
-既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、 **[OK]** を選びます。
+既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../azure-monitor/platform/alerts-classic-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、 **[OK]** を選びます。
 
   |**設定** | **Value** | **詳細** |
   |---|---|---|
@@ -353,7 +353,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
   |**webhook**|[Function App の webhook URL]| 前の手順で作成した Function App の webhook URL。|
 
 > [!NOTE]
-> TCP セグメントのメトリックは、既定では無効です。 追加のメトリックを有効にする方法について詳しくは、「[監視と診断の有効化](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)」をご覧ください。
+> TCP セグメントのメトリックは、既定では無効です。 追加のメトリックを有効にする方法について詳しくは、「[監視と診断の有効化](../azure-monitor/overview.md)」をご覧ください。
 
 ## <a name="review-the-results"></a>結果の確認
 
@@ -363,11 +363,11 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 キャプチャ ファイルがローカルに格納されている場合は、仮想マシンにサインインすることで取得できます。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](https://storageexplorer.com/)を使うことができます。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](https://storageexplorer.com/)を使うことができます。
 
 ダウンロードしたキャプチャは、 **.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)
 - [Wireshark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>次のステップ

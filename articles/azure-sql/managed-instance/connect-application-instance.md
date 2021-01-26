@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab, vanto
+ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791258"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 - [Azure VNet ピアリング](../../virtual-network/virtual-network-peering-overview.md)
 - VNet 間 VPN ゲートウェイ ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続性の観点から言えば、ピアリングされた仮想ネットワーク内の仮想マシンであっても、同じ仮想ネットワーク内の仮想マシンであっても、待機時間に顕著な違いはありません。そのため、ピアリングが推奨されます。 仮想ネットワーク ピアリングは、同じリージョン内のネットワークに制限されます。  
+ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続性の観点から言えば、ピアリングされた仮想ネットワーク内の仮想マシンであっても、同じ仮想ネットワーク内の仮想マシンであっても、待機時間に顕著な違いはありません。そのため、ピアリングが推奨されます。 仮想ネットワーク ピアリングは、同じリージョン内のネットワーク間でサポートされます。 グローバル仮想ネットワーク ピアリングもサポート対象ですが、次の注記で説明する制限事項があります。  
 
 > [!IMPORTANT]
-> SQL Managed Instance の仮想ネットワーク ピアリングのシナリオは、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
+> [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
 
 ## <a name="connect-from-on-premises"></a>オンプレミスからの接続 
 
@@ -101,7 +101,7 @@ Azure App Service を SQL Managed Instance に接続する場合の特殊なケ�
 
 - 同じ仮想ネットワーク内であるが別のサブネット内の Azure 仮想マシンから SQL Managed Instance に接続できない場合は、アクセスをブロックしている可能性のある VM サブネットにネットワーク セキュリティ グループが設定されているかどうかを確認します。 さらに、SQL ポート 1433 と 11000-11999 の範囲のポート上で送信接続を開きます。これは、Azure の境界内でのリダイレクト経由の接続に必要なためです。
 - 仮想ネットワークと関連付けられているルート テーブルで、BGP 伝達が **[有効]** に設定されていることを確認します。
-- P2S VPN を使用している場合、Azure portal の構成に**イングレスとエグレス**の数が表示されることを確認します。 ゼロ以外の数であるということは、Azure がトラフィックをオンプレミスからまたはオンプレミスにルーティングしていることを示します。
+- P2S VPN を使用している場合、Azure portal の構成に **イングレスとエグレス** の数が表示されることを確認します。 ゼロ以外の数であるということは、Azure がトラフィックをオンプレミスからまたはオンプレミスにルーティングしていることを示します。
 
    ![イングレス/エグレスの数](./media/connect-application-instance/ingress-egress-numbers.png)
 
@@ -151,8 +151,8 @@ SQL Managed Instance に接続しようとする場合、ツールおよびド�
 |JDBC ドライバー| 6.4.0 |
 |Node.js ドライバー| 2.1.1 |
 |OLEDB ドライバー| 18.0.2.0 |
-|SSMS| 18.0 [以降](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 以降 |
+|SSMS| 18.0 [以降](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 以降 |
 
 ## <a name="next-steps"></a>次のステップ
 

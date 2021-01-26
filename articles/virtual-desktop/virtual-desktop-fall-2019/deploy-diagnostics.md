@@ -3,25 +3,20 @@ title: Windows Virtual Desktop (クラシック) の診断ツールをデプロ�
 description: Windows Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691413"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515636"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
 >[!IMPORTANT]
 >このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。
-
->[!IMPORTANT]
->サービスの需要が増加したため、2020 年 3 月 16 日より、ユーザーエクスペリエンスに影響を与える診断クエリを一時的に無効にしました。 このツールはこれらのクエリに依存して機能するため、動作が停止します。 診断クエリを再度利用できるようになったときに、この記事を更新します。
->
->それまでは、継続的な監視のために [Log Analytics を使用](diagnostics-log-analytics-2019.md)することを強くお勧めします。
 
 Windows Virtual Desktop の診断ツールでは、次のことを行うことができます。
 
@@ -43,8 +38,8 @@ Windows Virtual Desktop の診断ツールでは、次のことを行うこと�
 
 また、開始する前に、次の 2 つの PowerShell モジュールもインストールする必要があります。
 
-- [Azure PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 サインインするときに、サブスクリプション ID が準備できていることを確認します。
 
@@ -111,7 +106,7 @@ PowerShell スクリプトを実行するには:
 推奨されるパフォーマンス カウンターを手動で構成する方法を次に示します。
 
 1. インターネット ブラウザーを開き、管理者アカウントで [Azure portal](https://portal.azure.com/) にサインインします。
-2. 次に、**Log Analytics ワークスペース**に移動して、構成されている Windows パフォーマンス カウンターを確認します。
+2. 次に、**Log Analytics ワークスペース** に移動して、構成されている Windows パフォーマンス カウンターを確認します。
 3. **[設定]** セクションで **[詳細設定]** を選択します。
 4. その後、 **[データ]**  >  **[Windows パフォーマンス カウンター]** の順に移動し、次のカウンターを追加します。
 
@@ -121,7 +116,7 @@ PowerShell スクリプトを実行するには:
     -   Processor Information(\*)\\Processor Time
     -   User Input Delay per Session(\*)\\Max Input Delay
 
-パフォーマンス カウンターの詳細については、「[Azure Monitor での Windows および Linux のパフォーマンス データ ソース](/azure/azure-monitor/platform/data-sources-performance-counters)」を参照してください。
+パフォーマンス カウンターの詳細については、「[Azure Monitor での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」を参照してください。
 
 >[!NOTE]
 >構成した追加のカウンターは、診断ツール自体には表示されません。 診断ツールに表示されるようにするには、ツールの構成ファイルを構成する必要があります。 詳細な管理でこれを行う方法の手順については、後日 GitHub で提供されます。
@@ -204,7 +199,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 ユーザーが診断ツールを使用できるようにする前に、ユーザーが次のアクセス許可を持っていることを確認してください。
 
-- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/azure/azure-monitor/platform/roles-permissions-security)を参照してください。
+- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../../azure-monitor/platform/roles-permissions-security.md)を参照してください。
 -  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop-2019.md)」を参照してください。
 
 また、ユーザーに次の情報を提供する必要もあります。

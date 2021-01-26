@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74008263"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122743"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの使用状況と分析情報のレポート
 
@@ -45,7 +45,7 @@ ms.locfileid: "74008263"
 2. 正しいディレクトリを選択して、 **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
 3. **[アクティビティ]** セクションで、 **[使用状況と分析情報]** を選択してレポートを開きます。 
 
-![使用状況と分析情報のレポート](./media/concept-usage-insights-report/main-menu.png)
+![スクリーンショットには、[アクティビティ] セクションで選択された [使用状況と分析情報] が示されています。](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>レポートを使用する
@@ -58,7 +58,7 @@ ms.locfileid: "74008263"
 
 アプリケーション使用状況グラフ内の日付を選択すると、アプリケーションのサインイン アクティビティの詳細な一覧が表示されます。  
 
-![使用状況と分析情報のレポート](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![スクリーンショットには、範囲を選択してさまざまなアプリのサインイン アクティビティを表示できるアプリケーション アクティビティの [使用状況と分析情報] が示されています。](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>次のステップ
 

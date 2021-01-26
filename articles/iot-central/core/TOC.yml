@@ -6,10 +6,18 @@
       href: overview-iot-central.md
     - name: UI について
       href: overview-iot-central-tour.md
-    - name: デバイスの開発
+    - name: デバイスを接続して開発する
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
+        - name: 2020 年 11 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
+        - name: 2020 年 10 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
+        - name: 2020 年 9 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
+        - name: 2020 年 8 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
         - name: 2020 年 7 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
         - name: 2020 年 6 月の新機能と更新された機能
@@ -39,12 +47,10 @@
       href: quick-monitor-devices.md
 - name: チュートリアル
   items:
-    - name: 接続する
+    - name: デバイスを接続して開発する
       items:
-        - name: デバイスの接続 (Node.js)
-          href: tutorial-connect-device-nodejs.md
-        - name: デバイスの接続 (Python)
-          href: tutorial-connect-device-python.md
+        - name: デバイスを作成して接続する
+          href: tutorial-connect-device.md
         - name: ゲートウェイ デバイス テンプレートの作成
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続
@@ -58,10 +64,10 @@
         - name: 規則を作成する
           href: tutorial-create-telemetry-rules.md
         - name: IoT Central API を調べる
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
 - name: 概念
   items:
-    - name: アーキテクチャ
+    - name: Architecture
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -75,16 +81,26 @@
       href: concepts-iot-edge.md
 - name: 操作方法ガイド
   items:
-    - name: 接続する
+    - name: デバイスを接続して開発する
       items:
         - name: デバイス テンプレートを設定する
           href: howto-set-up-template.md
+        - name: デバイスの IoT への移動方法
+          href: how-to-move-device-to-iot.md
+        - name: プロパティの使用方法
+          href: howto-use-properties.md
+        - name: コマンドの使用方法
+          href: howto-use-commands.md
+        - name: 場所データの使用方法
+          href: howto-use-location-data.md
         - name: Azure Sphere DevKit を準備して接続する
           href: howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する
           href: howto-connect-ruuvi.md
         - name: Rigado Cascade 500 を準備して接続する
           href: howto-connect-rigado-cascade-500.md
+        - name: X.509 を使用してデバイスを接続する
+          href: how-to-connect-devices-x509.md
         - name: その他の IoT クラウドの接続
           href: howto-build-iotc-device-bridge.md
     - name: 接続を維持する
@@ -107,7 +123,7 @@
           href: howto-run-a-job.md
     - name: 変換
       items:
-        - name: クラウドの宛先にデータをエクスポートする (プレビュー)
+        - name: データをクラウドの宛先にエクスポートする
           href: howto-export-data.md
         - name: クラウドの宛先にデータをエクスポートする (レガシ)
           href: howto-export-data-legacy.md
@@ -164,9 +180,11 @@
             - name: ライブ チャットの切り替え
               href: howto-show-hide-chat.md
     - name: トラブルシューティング
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: デバイスの接続
+          href: troubleshoot-connection.md
+    - name: よく寄せられる質問
+      href: howto-faq.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -174,7 +192,7 @@
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../../iot-fundamentals/iot-support-help.md
     - name: 業界アプリケーション テンプレート
       items:
         - name: 小売
@@ -188,32 +206,34 @@
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../../iot-edge/index.yml
         - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+          href: ../../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
+          href: ../../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT デバイス SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: IoT Central API リファレンス
-      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
+      href: /rest/api/iotcentral/
+    - name: 顧客データ所在地
+      href: iot-central-customer-data-residency.md
     - name: 顧客データ要求
       href: iot-central-customer-data-requests.md
     - name: サポートされているブラウザー
       href: iot-central-supported-browsers.md
     - name: Azure IoT Central (レガシ テンプレート)
-      href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'
+      href: /previous-versions/azure/iot-central/core/overview-iot-central

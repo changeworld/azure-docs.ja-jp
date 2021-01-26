@@ -1,17 +1,17 @@
 ---
 title: サーバーの管理 - Azure portal - Azure Database for MySQL
 description: Azure portal から Azure Database for MySQL サーバーを管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: dfca1eb2eebe4418880be9da67e250bbc6e380a9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852178"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541455"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL サーバーの管理
 
@@ -37,7 +37,7 @@ Azure Database for MySQL サーバーを作成して使用を開始する方法�
 
 2. スケーリングの対象に応じて、 **[汎用]** または **[メモリ最適化]** を選択します。
 
-   ![Azure Database for MySQL で Basic、General Purpose、Memory Optimized のサービス レベルを選択する際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Azure Database for MySQL で Basic、General Purpose、Memory Optimized のサービス レベルを選択する際の Azure portal のスクリーンショット":::
 
    > [!NOTE]
    > レベルを変更すると、サーバーが再起動されます。
@@ -50,7 +50,7 @@ Azure Database for MySQL サーバーを作成して使用を開始する方法�
 
 2. スライダーを目的の値に動かして、 **[vCore]** の設定を変更します。
 
-    ![Azure Database for MySQL で仮想コア オプションを選択する際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/scaling-compute.png)
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Azure Database for MySQL で仮想コア オプションを選択する際の Azure portal のスクリーンショット":::
 
     > [!NOTE]
     > 仮想コアをスケーリングすると、サーバーが再起動されます。
@@ -63,7 +63,7 @@ Azure Database for MySQL サーバーを作成して使用を開始する方法�
 
 2. スライダーを目的の値まで上に動かして、 **[ストレージ]** の設定を変更します。
 
-   ![Azure Database for MySQL でストレージ スケールを選択する際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Azure Database for MySQL でストレージ スケールを選択する際の Azure portal のスクリーンショット":::
 
    > [!NOTE]
    > ストレージはスケールダウンできません。
@@ -76,11 +76,11 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 
 1. お使いのサーバーを Azure portal で選択します。 **[概要]** ウィンドウで **[パスワードのリセット]** を選択します。
 
-   ![Azure Database for MySQL でパスワードをリセットする際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Azure Database for MySQL でパスワードをリセットする際の Azure portal のスクリーンショット":::
 
 2. 新しいパスワードを入力し、そのパスワードを確認します。 テキストボックスに、パスワードの複雑さの要件についてのメッセージが表示されます。
 
-   ![Azure Database for MySQL でパスワードをリセットして保存する際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Azure Database for MySQL でパスワードをリセットして保存する際の Azure portal のスクリーンショット":::
 
 3. **[OK]** を選択して新しいパスワードを保存します。
 
@@ -90,11 +90,11 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 
 1. お使いのサーバーを Azure portal で選択します。 **[概要]** ウィンドウで **[削除]** を選択します。
 
-   ![Azure Database for MySQL でサーバーを削除する際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Azure Database for MySQL でサーバーを削除する際の Azure portal のスクリーンショット":::
 
 2. 入力ボックスにサーバーの名前を入力して、削除するサーバーであることを確認します。
 
-   ![Azure Database for MySQL でサーバーの削除を確定する際の Azure portal のスクリーンショット](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Azure Database for MySQL でサーバーの削除を確定する際の Azure portal のスクリーンショット":::
 
    > [!NOTE]
    > サーバーを削除すると、元に戻せません。

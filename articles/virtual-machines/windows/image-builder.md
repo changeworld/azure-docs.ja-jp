@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca9f9ad0fb724884e865469ba118af4c7e6cea2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027939"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202846"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Windows VM を作成する
 
-この記事では、Azure VM Image Builder を使用して、カスタマイズされた Windows イメージを作成する方法について説明します。 この記事の例では、イメージのカスタマイズに[カスタマイザー](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize)を使用します。
+この記事では、Azure VM Image Builder を使用して、カスタマイズされた Windows イメージを作成する方法について説明します。 この記事の例では、イメージのカスタマイズに[カスタマイザー](../linux/image-builder-json.md#properties-customize)を使用します。
 - PowerShell (ScriptUri) - [PowerShell スクリプト](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)をダウンロードし、実行します。
 - Windows の再起動 - VM を再起動します。
 - PowerShell (インライン) - 特定のコマンドを実行します。 この例では、`mkdir c:\\buildActions` を使用して、VM 上にディレクトリを作成します。
@@ -161,7 +161,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> ソース イメージの場合、必ず[バージョンを指定](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)する必要があり、`latest` は使用できません。
+> ソース イメージの場合、必ず[バージョンを指定](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version)する必要があり、`latest` は使用できません。
 > イメージの配布先となるリソース グループを追加または変更する場合、リソース グループに対して[アクセス許可が設定されていること](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group)を確認する必要があります。
  
 ## <a name="create-the-image"></a>イメージの作成
@@ -185,7 +185,7 @@ az resource create \
 > ステージング リソース グループは直接削除しないでください。 最初にイメージ テンプレート成果物を削除します。これにより、ステージング リソース グループが削除されます。
 
 イメージ構成テンプレートの送信中にサービスによって障害が報告された場合、次を実行します。
--  [トラブルシューティング](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)の手順を確認します。 
+-  [トラブルシューティング](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors)の手順を確認します。 
 - 送信を再試行する前に、次のスニペットを使用してテンプレートを削除する必要があります。
 
 ```azurecli-interactive
@@ -208,7 +208,7 @@ az resource invoke-action \
 
 ビルドが完了するまで待ちます。 これには約 15 分かかります。
 
-エラーが発生した場合は、これらの[トラブルシューティング](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)の手順を確認してください。
+エラーが発生した場合は、これらの[トラブルシューティング](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors)の手順を確認してください。
 
 
 ## <a name="create-the-vm"></a>VM の作成
@@ -271,4 +271,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md)に関するページを参照してください。

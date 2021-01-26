@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825261"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978596"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure Dedicated Host 予約によるコスト削減
 
-Azure Dedicated Host の予約インスタンスにコミットすると、コストを削減することができます。 予約割引は、予約スコープと属性に一致する実行中の専用ホストの数に対して自動的に適用されます。 割引を取得するために、専用ホストに予約を割り当てる必要はありません。 予約インスタンスの購入では、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストも含まれます。 [仮想マシン用 Azure 専用ホストに関する概要](./windows/dedicated-hosts.md)を参照してください。
+Azure Dedicated Host の予約インスタンスにコミットすると、コストを削減することができます。 予約割引は、予約スコープと属性に一致する実行中の専用ホストの数に対して自動的に適用されます。 割引を取得するために、専用ホストに予約を割り当てる必要はありません。 予約インスタンスの購入では、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストも含まれます。 [仮想マシン用 Azure 専用ホストに関する概要](./dedicated-hosts.md)を参照してください。
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>購入前に適切な専用ホスト SKU を決定する
 
@@ -129,7 +129,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 - [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure Dedicated Host の使用](./windows/dedicated-hosts.md)
+- [Azure Dedicated Host の使用](./dedicated-hosts.md)
 
 - [Dedicated Host の価格](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

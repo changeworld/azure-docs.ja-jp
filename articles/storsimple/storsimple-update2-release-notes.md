@@ -3,7 +3,7 @@ title: StorSimple 8000 シリーズ Update 2 リリース ノート | Microsoft 
 description: StorSimple 8000 シリーズ Update 2 における新機能、問題、回避策について説明します。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: e2c8bffd-7fc5-4b77-b632-a4f59edacc3a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: twooley
-ms.openlocfilehash: 4e57fffd2f74ae1b14f51537c92299607f193ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: alkohli
+ms.openlocfilehash: b68e338c2675a3aeefda390d12ab2d82ea1c7a9f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934051"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956655"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 シリーズ Update 2 リリース ノート
 
@@ -80,7 +80,7 @@ Update 2 では、次の新機能が導入されています。
 | 3 |ストレージ アカウント |Storage サービスを使用したストレージ アカウントの削除は、サポートされていないシナリオです。 これにより、ユーザー データを取得できなくなります。 | |はい |はい |
 | 4 |デバイスのフェールオーバー |同じソース デバイスのボリューム コンテナーについて、複数のフェールオーバーを異なるターゲット デバイスに対して実行することはサポートされません。 1 つの障害発生デバイスから複数のデバイスにフェールオーバーすると、フェールオーバーされた最初のデバイス上のボリューム コンテナーがデータの所有権を失います。 このようなフェールオーバーが発生した後、これらのボリューム コンテナーを Azure クラシック ポータルで表示するとその表示や動作が変わります。 | |はい |いいえ |
 | 5 |インストール |SharePoint 用 StorSimple アダプターのインストール中にインストールを正常に完了するためには、デバイスの IP を指定する必要があります。 | |はい |いいえ |
-| 6 |Web プロキシ |Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。 プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 |Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。 詳細については、「 [デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。 |はい |いいえ |
+| 6 |Web プロキシ |Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。 プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 |Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。 詳細については、「 [デバイスの Web プロキシの構成](./storsimple-8000-configure-web-proxy.md)」を参照してください。 |はい |いいえ |
 | 7 |Web プロキシ |登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。 | |はい |いいえ |
 | 8 |クラウドの長い待機時間と高い I/O ワークロード |StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。 |デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。 |はい |いいえ |
 | 9 |Azure PowerShell |新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 |次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |はい |はい |
@@ -107,5 +107,4 @@ Update 2 では、次の新機能が導入されています。
 この更新プログラムは、仮想デバイスには適用できません。 新しい仮想デバイスを作成する必要があります。 
 
 ## <a name="next-step"></a>次のステップ
-StorSimple デバイスに [Update 2 をインストールする](storsimple-install-update-2.md) 方法を確認します。
-
+StorSimple デバイスに [Update 2 をインストールする](./storsimple-8000-install-update-5.md) 方法を確認します。

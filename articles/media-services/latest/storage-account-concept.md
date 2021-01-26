@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291196"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916322"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
@@ -27,7 +27,7 @@ Azure でメディア コンテンツの管理、暗号化、エンコード、�
 
 Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 待ち時間やデータ エグレス コストが増加することを回避するために、ストレージ アカウントを Media Services アカウントと同じ場所で使用することを強くお勧めします。
 
-1 つの**プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは**汎用 v1** (GPv1) アカウントをサポートします。 BLOB のみのアカウントを**プライマリ**として使用することはできません。
+1 つの **プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは **汎用 v1** (GPv1) アカウントをサポートします。 BLOB のみのアカウントを **プライマリ** として使用することはできません。
 
 最新の機能とパフォーマンスを利用できるように、GPv2 を使用することをお勧めします。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。
 
@@ -54,6 +54,9 @@ Media Services v3 では、Storage API シリーズを使用してファイル�
 |[Storage のクライアント側の暗号化](../../storage/common/storage-client-side-encryption.md)|Azure Storage によって提供されるクライアント側暗号化、お客様が Key Vault で管理するキー。|サポートされていません。|
 
 <sup>1</sup> Media Services v3 では、ストレージの暗号化 (AES-256 暗号化) は、Media Services v2 で資産を作成した場合の下位互換性のためにのみサポートされています。つまり、v3 は既存のストレージ暗号化済み資産で動作しますが、新規作成はできません。
+
+## <a name="double-encryption"></a>二重暗号化
+Media Services では、二重暗号化がサポートされています。  二重暗号化の詳細については、[Azure の二重暗号化](https://docs.microsoft.com/azure/security/fundamentals/double-encryption)に関するページを参照してください。
 
 ## <a name="storage-account-errors"></a>ストレージ アカウント エラー
 

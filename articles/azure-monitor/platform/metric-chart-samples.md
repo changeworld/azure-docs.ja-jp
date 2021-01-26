@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 05dadfe88ed64aea8066b02298ba158a44a03c6f
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320257"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760185"
 ---
 # <a name="metric-chart-examples"></a>メトリック グラフの例 
 
@@ -24,7 +24,7 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](./me
 
 このグラフは、App Service の CPU が許容範囲内にあるかどうかを示し、負荷が正しく分散されたかどうかを判断するためにインスタンスごとの内訳を表示します。 このグラフを見ると、午前 6 時まで単一のサーバー インスタンスでアプリが実行された後、別のインスタンスが追加されてスケールアップされたことがわかります。
 
-![サーバー インスタンスごとの平均 CPU 使用率の折れ線グラフ](./media/metric-chart-samples/cpu-by-instance.png)
+![サーバー インスタンスごとの平均 CPU 使用率の折れ線グラフ](./media/metrics-charts/cpu-by-instance.png)
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
@@ -34,21 +34,21 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](./me
 
 リージョンごとのアプリケーションの可用性を確認して、どの地理的な場所に問題があるかを特定します。 このグラフには、Application Insights の可用性メトリックが表示されています。 監視対象のアプリケーションでは、米国東部のデータセンターからの可用性に問題はありませんが、米国西部と東アジアからの可用性については部分的な問題が発生していることがわかります。
 
-![場所ごとの平均可用性のグラフ](./media/metric-chart-samples/availability-run-location.png)
+![場所ごとの平均可用性のグラフ](./media/metrics-charts/availability-by-location.png)
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
 最初に、お客様の Web サイトに対して [Application Insights の可用性](../app/monitor-web-app-availability.md)の監視をオンにする必要があります。 その後、お客様の Application Insights リソースを選択し、可用性メトリックを選択します。 **[実行場所]** ディメンションで分割を適用します。
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>API 名ごとのストレージ アカウントのトランザクション数
+## <a name="volume-of-failed-storage-account-transactions-by-api-name"></a>API 名ごとの失敗したストレージ アカウントのトランザクション数
 
-ストレージ アカウント リソースで過剰な量のトランザクションが発生しています。 トランザクション メトリックを使用すると、過剰な負荷の原因となっている API を特定できます。 次のグラフでは、関心のある API 呼び出しのみにビューを絞り込むためにフィルタリングと分割で同じディメンション (API 名) が構成されていることに注意してください。
+ストレージ アカウント リソースで過剰な量のトランザクションが失敗しています。 トランザクション メトリックを使用すると、過剰なエラーの原因となっている API を特定できます。 次のグラフは、失敗した応答の種類で分割およびフィルター処理された同じディメンション (API 名) で構成されていることに注意してください。
 
-![API トランザクションの棒グラフ](./media/metric-chart-samples/transactions-by-api.png)
+![API トランザクションの棒グラフ](./media/metrics-charts/split-and-filter-example.png)
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
-メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を**棒グラフ**に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[API 名]** ディメンションを選択します。 次に、 **[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
+メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を **棒グラフ** に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[API 名]** ディメンションを選択します。 次に、 **[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,46 +5,41 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443566"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028898"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
 ## <a name="dismiss-user-risk-known-issues"></a>"ユーザー リスクを無視する" の既知の問題
 
-従来の Identity Protection で**ユーザー リスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
+従来の Identity Protection で **ユーザー リスクを無視する** と、Identity Protection のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
 
-Identity Protection で**ユーザー リスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが **\<Admin’s name with a hyperlink pointing to user’s blade\>** に設定されます。
+Identity Protection で **ユーザー リスクを無視する** と、Identity Protection のユーザーのリスク履歴のアクターが **\<Admin’s name with a hyperlink pointing to user’s blade\>** に設定されます。
 
 現在、ユーザー リスクの無視フローに遅延が発生するという既知の問題があります。 "ユーザー リスク ポリシー" がある場合、このポリシーによって、[ユーザー リスクを無視する] をクリックしてから数分以内に、無視されたユーザーへの適用が停止されます。 ただし、無視されたユーザーの "リスク状態" が UX で更新されるまでに既知の遅延があります。 回避策としては、ブラウザー レベルでページを更新して最新のユーザーの "リスク状態" を確認します。
 
-## <a name="risky-users-report-known-issues"></a>"危険なユーザー レポート" の既知の問題
-
-**[ユーザー名]** フィールドに対するクエリでは大文字と小文字が区別されますが、 **[名前]** フィールドに対するクエリでは大文字と小文字が区別されません。
-
-**[日付を次のように表示]** を切り替えると、 **[リスクの最終更新日時]** 列が非表示になります。 列を再度追加するには、[危険なユーザー] ブレードの上部にある **[列]** をクリックします。
-
-従来の Identity Protection で**すべてのイベントを無視する**と、リスク検出の状態が **[クローズ (解決済み)]** に設定されます。
-
-## <a name="risky-sign-ins-report-known-issues"></a>"リスクの高いサインイン レポート" の既知の問題
-
-リスク検出で **[解決]** を行うと、状態が **[ユーザーが、リスク ベースのポリシーに要求された MFA に成功しました]** に設定されます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="why-is-a-user-is-at-risk"></a>ユーザーがリスクにさらされるのはなぜですか?
 
 Azure AD Identity Protection のお客様であれば、[危険なユーザー](howto-identity-protection-investigate-risk.md#risky-users)のビューにアクセスして、危険度の高いユーザーをクリックしてください。 下部のドロワーの [リスクの履歴] タブに、ユーザー リスクが変化する原因となったすべてのイベントが表示されます。 そのユーザーの危険なサインインをすべて表示するには、[ユーザーの危険なサインイン] をクリックします。 このユーザーの危険の検出をすべて表示するには、[ユーザーのリスクの検出] をクリックします。
+
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>サインインがブロックされたのに、Identity Protection でリスクの検出が生成されなかったのはなぜですか?
+サインインはいくつかの理由でブロックされる可能性があります。 Identity Protection を使用すると、認証要求で正しい資格情報が使用されたときのリスクの検出だけが生成されることに注意してください。 ユーザーが正しくない資格情報を使用した場合は、不正なアクターによって正しい資格情報が使用されているのでない限り、資格情報の侵害のリスクがないため、Identity Protection によってフラグは設定されません。 ユーザーがサインインをブロックされても Identity Protection の検出が生成されない場合に可能性がある理由としては、次のようなものがあります。
+* IP アドレスからの悪意のあるアクティビティのため、**IP がブロックされる可能性があります**。 IP ブロック メッセージを見ても、資格情報が正しかったかどうかはわかりません。 IP がブロックされていて、正しい資格情報が使用されていない場合、Identity Protection の検出は生成されません。
+* **[スマート ロックアウト](../authentication/howto-password-smart-lockout.md)** により、複数回失敗した後でアカウントのサインインがブロックされることがあります
+* リスク レベル以外の条件を使用して認証要求をブロックする **条件付きアクセス ポリシー** が適用されている可能性があります
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>特定の種類の検出のレポートを取得する方法はありますか?
 
@@ -87,9 +82,11 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
 - このフィードバックを受けて、(ユーザーではなく) サインイン リスクの状態が **[安全であるとの確認済み]** に設定され、リスク レベルが **-** に設定されます。
 
-- さらに、リスク評価における今後の改善のために、Microsoft の機械学習システムに情報が送信されます。
+- さらに、リスク評価における今後の改善のために、Microsoft の機械学習システムに情報が送信されます。 
 
     > [!NOTE]
+    >今日、サインイン時に [安全と確認する] を選択しても、それだけでは、同じプロパティでの今後のサインインに危険としてフラグが付けられるのを防ぐことはできません。 システムをトレーニングしてユーザーのプロパティを学習させる最善の方法は、危険なサインイン ポリシーを MFA で使用することです。 危険なサインインで MFA が求められ、ユーザーが要求に正しく応答すると、サインインは成功し、正当なユーザーの行動についてシステムをトレーニングするのに役立ちます。
+    >
     > ユーザーが侵害されていないと思われる場合は、サインイン レベルで **[安全であるとの確認済み]** を使用するのではなく、ユーザー レベルで **[ユーザー リスクを無視する]** を使用してください。 ユーザー レベルで **[ユーザー リスクを無視する]** を使用すると、ユーザーリスク、および過去に発生したリスクの高いサインインとリスク検出がすべて閉じられます。
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Identity Protection にリスクの高いサインインやリスク検出が表示されていなくても、低 (またはそれ以上の) リスク スコアを持つユーザーが表示されるのはなぜですか?
@@ -98,4 +95,8 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>サインインに関連付けられている検出のリスクが低または中の場合に、サインインの「サインイン リスク (集計)」スコアが「高」になるのはなぜですか?
 
-集計リスク スコアが高であるのは、サインインの他の特徴、またはそのサインインに対して複数の検出が行われたという事実に基づく可能性があります。 逆に、サインインに関連付けられている検出のリスクが「高」の場合でも、サインインのサインイン リスク (集計) が「中」になることがあります。 
+集計リスク スコアが高であるのは、サインインの他の特徴、またはそのサインインに対して複数の検出が行われたという事実に基づく可能性があります。 逆に、サインインに関連付けられている検出のリスクが「高」の場合でも、サインインのサインイン リスク (集計) が「中」になることがあります。
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>"匿名 IP アドレスからのアクティビティ" と "匿名 IP アドレス" 検出の違いは何ですか?
+
+"匿名 IP アドレス" 検出のソースは Azure AD Identity Protection ですが、"匿名 IP アドレスからのアクティビティ" 検出は MCAS (Microsoft Cloud App Security) から統合されています。 非常に類似した名前が付いており、これらのシグナルが重複している思われる可能性がありますが、これらは異なるバックエンド検出です。

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962028"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
@@ -209,7 +209,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 11. `location` プロパティと `isEnabled` プロパティを見つけて次のように設定します。 他の 3 つのアラート (紫色の電球) についても同様の操作を行います。
     
     ![CPUHigh appInsights JSON コードの location プロパティと isEnabled プロパティ、およびそれらに設定する必要がある値が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]**  > **New [デプロイ]ment**に関するページをご覧ください。
+12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]**  > **New [デプロイ]ment** に関するページをご覧ください。
     
     ![新しいプロジェクトをデプロイする方法が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. ログインしていない場合は、Azure アカウントにログインします。
@@ -228,7 +228,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
     > 自動スケールは、**Standard** レベル以上で提供される機能です。プラン レベルのアラートは、**Basic** レベル以上で提供される機能です。AppInsights の新しいリソースすべてが点灯されたことがわかるように、**sku** パラメーターを **Standard** または **Premium** に設定する必要があります。
     > 
     > 
-16. **[デプロイ]** をクリックします。 **[パスワードの保存]** を選択した場合、パスワードはパラメーター ファイルに**プレーン テキストで**保存されます。 それ以外の場合は、デプロイメント プロセス中にデータベースのパスワードを入力するように求められます。
+16. **[デプロイ]** をクリックします。 **[パスワードの保存]** を選択した場合、パスワードはパラメーター ファイルに **プレーン テキストで** 保存されます。 それ以外の場合は、デプロイメント プロセス中にデータベースのパスワードを入力するように求められます。
 
 これで終了です。 後は、[Azure Portal](https://portal.azure.com/) と [Azure Resource Explorer](https://resources.azure.com) ツールに移動して、JSON でデプロイされたアプリケーションに追加された新しいアラートと自動スケールの設定を表示するだけです。
 

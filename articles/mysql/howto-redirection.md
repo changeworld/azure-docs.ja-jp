@@ -1,17 +1,17 @@
 ---
 title: リダイレクトを使用して接続する - Azure Database for MySQL
 description: この記事では、リダイレクトを使用して Azure Database for MySQL に接続するようにアプリケーションを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107820"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541812"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>リダイレクトを使用して Azure Database for MySQL に接続する
 
@@ -40,7 +40,7 @@ mysqlnd_azure 拡張機能は、PECL を通じて PHP アプリケーション�
 >[!IMPORTANT]
 > バージョン 1.1.0 以降でリダイレクトのロジック/動作が更新されました。そのため、**バージョン 1.1.0 以降を使用することをお勧めします**。
 
-リダイレクトの動作は、`mysqlnd_azure.enableRedirect` の値によって決まります。 次の表は、**バージョン 1.1.0 以降**のこのパラメーターの値に基づいたリダイレクトの動作の概要を示しています。
+リダイレクトの動作は、`mysqlnd_azure.enableRedirect` の値によって決まります。 次の表は、**バージョン 1.1.0 以降** のこのパラメーターの値に基づいたリダイレクトの動作の概要を示しています。
 
 以前のバージョンの mysqlnd_azure 拡張機能 (バージョン 1.0.0 から 1.0.3) を使用している場合、リダイレクトの動作は `mysqlnd_azure.enabled` の値によって決まります。 有効な値は `off` (次の表に記載されている動作と同様に機能します) と `on` (次の表の `preferred` のように機能します) です。  
 

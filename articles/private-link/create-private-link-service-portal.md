@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5b7bc8be89068f0d3cf6722c36ae7fd5cc560736
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927240"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012120"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Private Link サービスを作成する
 
@@ -165,7 +165,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **Next:次へ: アクセス セキュリティ** を選択します。
 
-1. **[Create a private link service - Access security]\(Private Link サービスの作成 - アクセス セキュリティ\)** で **[表示]** を選択し、**[ロールベースのアクセス制御のみ]** を選択します。
+1. **[Create a private link service - Access security]\(Private Link サービスの作成 - アクセス セキュリティ\)** で **[表示]** を選択し、 **[ロールベースのアクセス制御のみ]** を選択します。
   
 1. **[Next: Tags]\(次へ: タグ\)**  >  **[確認と作成]** の順に選択するか、ページ上部にある **[確認と作成]** タブを選択します。
 
@@ -182,4 +182,4 @@ Private Link サービスの使用が完了したら、リソース グループ
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure 内部ロード バランサーと Private Link サービスを作成しました。 [Azure portal を使用してプライベート エンドポイントを作成する](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)方法についてもご覧ください。
+このクイックスタートでは、Azure 内部ロード バランサーと Private Link サービスを作成しました。 [Azure portal を使用してプライベート エンドポイントを作成する](./create-private-endpoint-portal.md)方法についてもご覧ください。

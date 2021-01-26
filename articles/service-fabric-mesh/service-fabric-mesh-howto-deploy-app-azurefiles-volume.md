@@ -1,17 +1,17 @@
 ---
 title: Service Fabric Mesh アプリで Azure Files ベースのボリュームを使用する
 description: Azure CLI を使用して、Azure Files ベースのボリュームをサービス内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: gwallace
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260109"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007394"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
@@ -195,7 +195,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>ボリューム リソースを宣言し、サービス リソース (YAML) を更新する
 
-アプリケーションの*アプリ リソース* ディレクトリに新しい *volume.yaml* ファイルを追加します。  名前とプロバイダーを指定します (Azure Files ベースのボリュームを使用するには "SFAzureFile")。 `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` は、前の手順で見つけた値です。
+アプリケーションの *アプリ リソース* ディレクトリに新しい *volume.yaml* ファイルを追加します。  名前とプロバイダーを指定します (Azure Files ベースのボリュームを使用するには "SFAzureFile")。 `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` は、前の手順で見つけた値です。
 
 ```yaml
 volume:

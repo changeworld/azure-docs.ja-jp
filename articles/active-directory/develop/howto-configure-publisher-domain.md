@@ -13,16 +13,16 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129272"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013636"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
 
-アプリケーションの発行元ドメインは、ユーザーに情報の送信先を知らせるために[アプリケーションの同意プロンプト](application-consent-experience.md)でユーザーに表示されます。 2019 年 5 月 21 日の後に登録されたマルチテナント アプリケーションのうち、発行元ドメインのないアプリケーションは**未検証**として表示されます。 マルチテナント アプリケーションは、1 つの組織ディレクトリの外部にあるアカウントをサポートするアプリケーションです。たとえば、すべての Azure AD アカウントをサポートするか、またはすべての Azure AD アカウントと個人の Microsoft アカウントをサポートします。
+アプリケーションの発行元ドメインは、ユーザーに情報の送信先を知らせるために[アプリケーションの同意プロンプト](application-consent-experience.md)でユーザーに表示されます。 2019 年 5 月 21 日の後に登録されたマルチテナント アプリケーションのうち、発行元ドメインのないアプリケーションは **未検証** として表示されます。 マルチテナント アプリケーションは、1 つの組織ディレクトリの外部にあるアカウントをサポートするアプリケーションです。たとえば、すべての Azure AD アカウントをサポートするか、またはすべての Azure AD アカウントと個人の Microsoft アカウントをサポートします。
 
 ## <a name="new-applications"></a>新しいアプリケーション
 
@@ -38,17 +38,17 @@ ms.locfileid: "87129272"
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com (プライマリ) | domain2.com |
 
-マルチテナント アプリケーションの発行元ドメインが設定されていないか、または .onmicrosoft.com で終わるドメインに設定されている場合、アプリの同意プロンプトには発行元ドメインの代わりに**未検証**が表示されます。
+マルチテナント アプリケーションの発行元ドメインが設定されていないか、または .onmicrosoft.com で終わるドメインに設定されている場合、アプリの同意プロンプトには発行元ドメインの代わりに **未検証** が表示されます。
 
 ## <a name="grandfathered-applications"></a>条件が適用されないアプリケーション
 
-アプリが 2019 年 5 月 21 日の前に登録された場合は、発行元ドメインを設定していなくても、アプリケーションの同意プロンプトに**未検証**は表示されません。 ユーザーがアプリの同意プロンプトでこの情報を確認できるように、発行元ドメイン値を設定することをお勧めします。
+アプリが 2019 年 5 月 21 日の前に登録された場合は、発行元ドメインを設定していなくても、アプリケーションの同意プロンプトに **未検証** は表示されません。 ユーザーがアプリの同意プロンプトでこの情報を確認できるように、発行元ドメイン値を設定することをお勧めします。
 
 ## <a name="configure-publisher-domain-using-the-azure-portal"></a>Azure Portal を使用して発行元ドメインを構成する
 
 アプリの発行元ドメインを設定するには、次の手順に従います。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、<a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 
 1. アカウントが複数の Azure AD テナントに存在する場合:
    1. ページの右上隅にあるメニューからプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。

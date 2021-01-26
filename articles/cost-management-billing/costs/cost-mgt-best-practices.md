@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689152"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132824"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 
@@ -126,7 +126,7 @@ Azure 料金計算ツールを使用することで、さまざまな Azure サ�
 
 Azure Migrate は、オンプレミス データセンターでの組織の現在のワークロードを評価するサービスです。 Azure の代替ソリューションに求められることについての分析情報が得られます。 最初に、Migrate ではオンプレミス コンピューターを分析して、移行が可能かどうかを判断します。 次に、パフォーマンスを最大化するために Azure での VM のサイズ変更を推奨します。 最後に、Azure ベースのソリューションに関するコスト見積もりも作成します。
 
-詳細については、[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview) に関するページを参照してください。
+詳細については、[Azure Migrate](../../migrate/migrate-services-overview.md) に関するページを参照してください。
 
 ## <a name="analyze-and-manage-your-costs"></a>コストを分析して管理する
 

@@ -3,12 +3,12 @@ title: Azure Event Grid SDK
 description: Azure Event Grid の SDK について説明します。 これらの SDK は、管理、発行、および使用の機能を提供します。
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: 2b21d8bf2c393b096e9046765e6cfadc76baffbf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322531"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>管理と発行のための Event Grid SDK
 
@@ -29,14 +29,17 @@ Event Grid の SDK を使うと、プログラムでリソースの管理やイ�
 
 データ プレーン SDK を使うと、トピックにイベントを投稿でき、認証、イベントの形成、指定されたエンドポイントへの非同期の投稿が行われます。 これを使ってファースト パーティのイベントを使用することもできます。 現時点では、次の SDK を利用できます。
 
-* [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
-* [Go](https://github.com/Azure/azure-sdk-for-go)
-* [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)
-* [[Node]](https://www.npmjs.com/package/azure-eventgrid)
-* [Python](https://pypi.python.org/pypi/azure-eventgrid)
-* [Ruby](https://rubygems.org/gems/azure_event_grid)
+| プログラミング言語 | SDK | 
+| -------------------- | ---------- | ---------- | 
+| .NET | 安定版 SDK:[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>プレビュー版 SDK:[Azure.Messaging.EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
+| Java | 安定版 SDK: [azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>プレビュー版 SDK: [azure-messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
+| Python | [azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) ( **[Release history]\(リリース履歴\)** ページの最新の安定版とプレリリース版を参照してください) |
+| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) ( **[Versions]\(バージョン\)** タブに切り替えて、最新の安定版とベータ版のパッケージを確認してください)。 | 
+| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="next-steps"></a>次の手順
 
 * アプリケーションの例については、[Event Grid のコード サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid)に関するページを参照してください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

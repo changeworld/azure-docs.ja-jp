@@ -1,20 +1,22 @@
 ---
 title: テンプレートにおける変数
-description: Azure Resource Manager テンプレートで変数を定義する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で変数を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 11/24/2020
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75476165"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934664"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの変数
+# <a name="variables-in-arm-template"></a>ARM テンプレートでの変数
 
-この記事では、Azure Resource Manager テンプレートで変数を定義および使用する方法について説明します。 変数を使用してテンプレートを簡略化します。 テンプレート全体で複雑な式を繰り返すのではなく、複雑な式を含む変数を定義します。 次に、テンプレート全体で、必要に応じてその変数を参照します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で変数を定義および使用する方法について説明します。 変数を使用してテンプレートを簡略化します。 テンプレート全体で複雑な式を繰り返すのではなく、複雑な式を含む変数を定義します。 次に、テンプレート全体で、必要に応じてその変数を参照します。
 
 Resource Manager は、デプロイ操作を開始する前に変数を解決します。 テンプレートで変数が使用されている場合、Resource Manager はそれを解決済みの値に置き換えます。
+
+各変数の形式は、いずれかの[データ型](template-syntax.md#data-types)に一致している必要があります。
 
 ## <a name="define-variable"></a>変数を定義する
 
@@ -26,7 +28,7 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 },
 ```
 
-変数セクションでは、[reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
+`variables` セクションでは、[reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
 
 ## <a name="use-variable"></a>変数を使用する
 
@@ -61,7 +63,7 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 },
 ```
 
-パラメーターで、使用する構成の値を示す値を作成します。
+`parameters` で、使用する構成値を示す値を作成します。
 
 ```json
 "parameters": {
@@ -85,13 +87,13 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 
 次の例は、変数を使用するためのシナリオを示しています。
 
-|Template  |説明  |
+|テンプレート  |説明  |
 |---------|---------|
 | [変数の定義](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | さまざまな種類の変数を例示します。 このテンプレートではリソースをデプロイしません。 変数の値を作成して、その値を返します。 |
 | [構成変数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 構成の値を定義する変数の用法を例示します。 このテンプレートではリソースをデプロイしません。 変数の値を作成して、その値を返します。 |
 | [ネットワーク セキュリティの規則](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json)と[パラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | ネットワーク セキュリティ グループにセキュリティの規則を割り当てるために、配列を正しい形式で作成します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* 変数に使用できるプロパティの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」をご覧ください。
+* 変数に使用できるプロパティの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」をご覧ください。
 * 変数の作成に関する推奨事項については、[ベスト プラクティス - 変数](template-best-practices.md#variables)に関する記事をご覧ください。

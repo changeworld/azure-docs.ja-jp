@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 34caefba5bae660ca150f6e447b1d59b7174c768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857714"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907799"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Train Vowpal Wabbit Model (Vowpal Wabbit モデルのトレーニング)
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **Train Vowpal Wabbit Model** モジュールを使用し、Vowpal Wabbit を使用して機械学習モデルを作成する方法について説明します。  
+この記事では、Azure Machine Learning デザイナーで **Train Vowpal Wabbit Model** モジュールを使用し、Vowpal Wabbit を使用して機械学習モデルを作成する方法について説明します。  
 
 機械学習に Vowpal Wabbit を使用するには、Vowpal Wabbit の要件に従って入力の書式を設定し、必要な形式でデータを準備します。 このモジュールを使用して、Vowpal Wabbit のコマンド ライン引数を指定します。 
 

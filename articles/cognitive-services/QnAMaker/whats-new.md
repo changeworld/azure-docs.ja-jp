@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c3dc2f91fcd09807a7eaaaaa638e78ba3717faec
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836877"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061771"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -23,6 +23,16 @@ ms.locfileid: "87836877"
 
 QnA Maker の新機能について説明します。
 
+### <a name="november-2020"></a>2020 年 11 月
+
+* 無料パブリック プレビューでの提供が始まった新しいバージョンの QnA Maker。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)をご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-QnA-managed-Now-in-Public-Preview/player]
+* 簡素化されたリソースの作成
+* エンド ツー エンドのリージョン サポート
+* ディープ ラーニングされたランキング モデル
+* 正確な回答のためのコンピューター読み取りの理解
+  
 ### <a name="july-2020"></a>2020 年 7 月
 
 * [メタデータ: `OR` による複数のメタデータ ペアの論理の組み合わせ](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
@@ -48,17 +58,17 @@ QnA Maker の新機能について説明します。
 
 ### <a name="november-2019"></a>2019 年 11 月
 
-* QnA Maker に対する[政府クラウドのサポート](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker)
-* [複数ターン](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation)機能が一般提供になりました
-* レベル 1 の言語で[おしゃべりのサポート](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)が利用可能になりました
+* QnA Maker に対する[政府クラウドのサポート](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)
+* [複数ターン](./how-to/multiturn-conversation.md)機能が一般提供になりました
+* レベル 1 の言語で[おしゃべりのサポート](./how-to/chit-chat-knowledge-base.md#language-support)が利用可能になりました
 
 ### <a name="october-2019"></a>2019 年 10 月
 
-* QnA Maker サービスにおけるすべてのナレッジ ベースの[言語を明示的に設定](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)
+* QnA Maker サービスにおけるすべてのナレッジ ベースの[言語を明示的に設定](./index.yml)
 
 ### <a name="september-2019"></a>2019 年 9 月
 
-* [XLS ファイル形式](concepts/content-types.md)を使用したインポートとエクスポート
+* [XLS ファイル形式](./index.yml)を使用したインポートとエクスポート
 
 ### <a name="june-2019"></a>2019 年 6 月
 

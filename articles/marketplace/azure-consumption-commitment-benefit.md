@@ -4,15 +4,16 @@ description: 一連の Microsoft コマーシャル マーケットプレース 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 07/21/2020
-ms.openlocfilehash: 8a8b64bc0ed2702066a1ba280f1b40aabbcdb11b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/15/2020
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094757"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814433"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure の消費コミットメントのベネフィット
 
@@ -27,3 +28,33 @@ ms.locfileid: "87094757"
 
 > [!IMPORTANT]
 > このマーケットプレースのベネフィットの前に署名された CtC 契約には、除外が適用される場合があります。 資格に関してご不明な点がある場合は、Microsoft アカウントの責任者にお問い合わせください。
+
+## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>組織に Azure の消費コミットメント (MACC/CtC) があるかどうかを判断する
+
+組織に適格な契約があるかどうかわからない場合は、[Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 内の組織に関連付けられているテナントの下にある Marketplace エクスペリエンスにサインインします。 フィルター オプションとして **Azure ベネフィット対象のみ** を選択するためのオプションが表示される場合は、適格な Azure 消費コミットメントがあります。 Azure Marketplace を通じて直接購入した場合、適格な Azure Marketplace での購入は、組織の Azure の消費コミットメントに貢献します。
+
+[![[Azure ベネフィット対象] メニュー オプション。](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
+
+## <a name="determine-which-offers-are-eligible-for-azure-consumption-commitments-maccctc"></a>Azure の消費コミットメント (MACC/CtC) の対象となるオファーを判別する
+
+1. [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 内の組織に関連付けられているテナントの下にある Marketplace エクスペリエンスにサインインします。
+2. **[Azure ベネフィット対象]** フィルター (上の図) を適用して、組織の Azure の消費コミットメントに貢献するオファーを見つけます。
+
+   > [!NOTE]
+   > このフィルターがない場合、組織には適格なコミットメントがありません。 これが正しくないと思われる場合は、Microsoft アカウント エグゼクティブにお問い合わせください。
+ 
+3. オファーには **[Azure ベネフィット対象]** のバッジが付けられており、このオファーに関連付けられているソフトウェア/IP のコストは、組織に請求されるすべての Azure サービスに加えて、組織の Azure の消費コミットメントに貢献することが示されています。
+
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure ベネフィット対象のバッジ。":::
+
+   > [!NOTE]
+   > Azure Marketplace のデプロイを通じて組織に請求される Microsoft Azure サービスは、組織のコミットメントに対して本質的に貢献します。 "Azure ベネフィット対象" オファーには、サードパーティ ベンダーによって計上されたソフトウェア/IP のコストでも、Azure Marketplace 請求書の 100% が付与されるという追加の利点があります。
+
+4. Azure Marketplace から直接オファーを購入または作成します。 Microsoft は、ソフトウェア/IP のコストを含め、各請求書期間における組織の Azure の消費コミットメントに対して、適格なオファーの購入の 100% を付与します。
+
+> [!IMPORTANT]
+> 購入がコミットメントへの貢献となるようにするには、お客様の組織の Azure の消費コミットメントに関する登録を行って、オファーを Azure Marketplace から直接購入する必要があります。 クラウド ソリューション プロバイダー (CSP)、その他のリセラー チャネル、またはマーケットプレースの外部で購入されたオファーは、コミットメントに貢献しません。
+
+## <a name="next-steps"></a>次の手順
+
+- 組織で Azure Marketplace を活用する方法の詳細については、Microsoft Learn モジュール「[Azure Marketplace を使用してクラウドの調達とガバナンスを簡素化する](/learn/modules/simplify-cloud-procurement-governance-azure-marketplace/)」で学習してください。

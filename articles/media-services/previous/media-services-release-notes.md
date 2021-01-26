@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268657"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014105"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -49,6 +49,18 @@ ms.locfileid: "89268657"
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
 
+## <a name="september-2020"></a>2020 年 9 月
+
+次の v2 プロパティには、ジョブの進行状況データが設定されなくなります。
+
+* [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+
+タスクの履歴を取得するには、Webhook を介して v2 ジョブ通知を使用するか、通知エンドポイントを使用してメッセージをキューに格納する必要があります。 詳細については次を参照してください:
+
+* [Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
+* [Azure webhook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)
+
 ## <a name="february-2020"></a>2020 年 2 月
 
 一部の分析メディア プロセッサはインベントリから削除されます。 提供終了日については、[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
@@ -69,7 +81,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
-詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
+詳細については、[WAME から Media Encoder Standard への移行](./migrate-windows-azure-media-encoder.md)と [AME から Media Encoder Standard への移行](./migrate-azure-media-encoder.md)に関するページを参照してください。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -186,7 +198,7 @@ Media Services では、ストリーミング エンドポイントは、コン�
 
 ## <a name="april-2016-release"></a><a id="apr_changes16"></a>2016 年 4 月のリリース
 ### <a name="media-analytics"></a>メディア分析
- Media Services に強力なビデオ インテリジェンスとして Media Analytics が導入されました。 詳細については、[Media Services Analytics の概要](media-services-analytics-overview.md)に関するページをご覧ください。
+ Media Services に強力なビデオ インテリジェンスとして Media Analytics が導入されました。 詳細については、[Media Services Analytics の概要](./legacy-components.md)に関するページをご覧ください。
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (プレビュー)
 Media Services を使用して、Apple FairPlay で HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化できるようになりました。 また、Media Services ライセンス配信サービスを使用して、FairPlay ライセンスをクライアントに配信することもできます。 詳細については、「Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする」を参照してください。
@@ -263,7 +275,7 @@ Media Services で、Widevine Modular DRM テクノロジを使用してビデ�
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>2015 年 7 月のリリース
 * Media Encoder Standard の一般公開が発表されました。 詳細については、 [このブログの投稿](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
   
-    [こちらのセクション](https://go.microsoft.com/fwlink/?LinkId=618336)で説明されているように、Media Encoder Standard ではプリセットを使用しています。 4K エンコードのプリセットを使用する場合は、Premium の予約ユニットを取得する必要があります。 詳細については、[エンコードのスケール](media-services-scale-media-processing-overview.md)に関するページをご覧ください。
+    [こちらのセクション](./media-services-mes-presets-overview.md)で説明されているように、Media Encoder Standard ではプリセットを使用しています。 4K エンコードのプリセットを使用する場合は、Premium の予約ユニットを取得する必要があります。 詳細については、[エンコードのスケール](media-services-scale-media-processing-overview.md)に関するページをご覧ください。
 * ライブ リアルタイム キャプションが、Media Services と Media Player と共に使用されました。 詳細については、 [このブログの投稿](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)を参照してください。
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK の更新

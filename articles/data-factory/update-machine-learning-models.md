@@ -3,20 +3,20 @@ title: Azure Data Factory を使用して Azure Machine Learning Studio (classic
 description: Azure Data Factory と Azure Machine Learning Studio (classic) を使用して予測パイプラインを作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092543"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496740"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使用して Azure Machine Learning Studio (classic) モデルを更新する
 
@@ -73,8 +73,8 @@ Azure Machine Learning Studio (classic) を使って作成するモデルは、�
 
 モデルの再トレーニングと予測 Web サービスの更新を運用可能にするプロセス全体では、次の手順を実行する必要があります。
 
-- **バッチ実行アクティビティ**を使用して、**トレーニング Web サービス**を呼び出します。 トレーニング Web サービスの呼び出しは、[Azure Machine Learning Studio (classic) および Data Factory のバッチ実行のアクティビティを使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関するページで説明されている予測 Web サービスの呼び出しと同じです。 トレーニング Web サービスの出力は、予測 Web サービスの更新に使用できる iLearner ファイルです。
-- **更新リソース アクティビティ**を使用して**予測 Web サービス**の**更新リソース エンドポイント**を呼び出し、新しくトレーニングを行ったモデルでこの Web サービスを更新します。
+- **バッチ実行アクティビティ** を使用して、**トレーニング Web サービス** を呼び出します。 トレーニング Web サービスの呼び出しは、[Azure Machine Learning Studio (classic) および Data Factory のバッチ実行のアクティビティを使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関するページで説明されている予測 Web サービスの呼び出しと同じです。 トレーニング Web サービスの出力は、予測 Web サービスの更新に使用できる iLearner ファイルです。
+- **更新リソース アクティビティ** を使用して **予測 Web サービス** の **更新リソース エンドポイント** を呼び出し、新しくトレーニングを行ったモデルでこの Web サービスを更新します。
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
 
@@ -87,7 +87,7 @@ Azure Machine Learning Studio (classic) を使って作成するモデルは、�
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web サービスが新しい Azure Resource Manager Web サービスである
 
-Web サービスが、Azure Resource Manager エンドポイントを公開する新しい種類の Web サービスである場合は、2 番目の**既定以外**のエンドポイントを追加する必要はありません。 リンクされたサービスの **updateResourceEndpoint** の形式は次のとおりです。
+Web サービスが、Azure Resource Manager エンドポイントを公開する新しい種類の Web サービスである場合は、2 番目の **既定以外** のエンドポイントを追加する必要はありません。 リンクされたサービスの **updateResourceEndpoint** の形式は次のとおりです。
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
@@ -95,7 +95,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 [Azure Machine Learning Studio (classic) Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。
 
-新しい種類の更新リソース エンドポイントでは、サービス プリンシパルの認証が必要です。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Web サービスが属するサブスクリプションまたはリソース グループの**共同作成者**または**所有者**のロールを付与します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+新しい種類の更新リソース エンドポイントでは、サービス プリンシパルの認証が必要です。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Web サービスが属するサブスクリプションまたはリソース グループの **共同作成者** または **所有者** のロールを付与します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
 - アプリケーション ID
 - アプリケーション キー
@@ -132,7 +132,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 ## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>サンプル:Azure Machine Learning Studio (classic) モデルの再トレーニングと更新
 
-このセクションでは、**Azure Machine Learning Studio (classic) バッチ実行アクティビティ**を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、**Azure Machine Learning Studio (classic) 更新リソース アクティビティ**を使用して、スコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
+このセクションでは、**Azure Machine Learning Studio (classic) バッチ実行アクティビティ** を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、**Azure Machine Learning Studio (classic) 更新リソース アクティビティ** を使用して、スコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure BLOB ストレージのリンクされたサービス:
 Azure Storage には次のデータが格納されています。
@@ -176,7 +176,7 @@ Azure Storage には次のデータが格納されています。
 2. Web サービスの一覧で、 **[トレーニング Web サービス]** をクリックします。
 3. **[API キー]** ボックスの隣にあるコピー ボタンをクリックします。 クリップボードにコピーされた API キーを Data Factory JSON エディターに貼り付けます。
 4. **Azure Machine Learning Studio (クラシック)** で、 **[バッチ実行]** リンクをクリックします。
-5. **[要求]** セクションの**要求 URI** をコピーして、Data Factory JSON エディターに貼り付けます。
+5. **[要求]** セクションの **要求 URI** をコピーして、Data Factory JSON エディターに貼り付けます。
 
 ### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Azure Machine Learning Studio (classic) の更新可能なスコア付けエンドポイント用のリンクされたサービス:
 次の JSON スニペットは、スコア付け Web サービスの更新可能なエンドポイントを示す Azure Machine Learning Studio (classic) のリンクされたサービスを定義します。

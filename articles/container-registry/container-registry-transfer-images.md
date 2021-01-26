@@ -2,14 +2,14 @@
 title: 成果物を転送する
 description: Azure ストレージ アカウントを使用して転送パイプラインを作成することにより、イメージまたはその他の成果物のコレクションを 1 つのコンテナー レジストリから別のレジストリに転送する
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009156"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932602"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88009156"
 * BLOB が、ソース ストレージ アカウントからターゲット ストレージ アカウントにコピーされます。
 * ターゲット ストレージ アカウント内の BLOB が、ターゲット レジストリに成果物としてインポートされます。 ターゲット ストレージで成果物 BLOB が更新されるたびにトリガーされるように、インポート パイプラインを設定できます。
 
-転送は、物理的に切断されたクラウド内の 2 つの Azure コンテナー レジストリ間で、各クラウドのストレージ アカウントによって仲介されるコンテンツのコピーに最適です。 Docker Hub などのクラウド ベンダーを含め、接続されたクラウド内のコンテナー レジストリからイメージをコピーする場合は、代わりに[イメージ インポート](container-registry-import-images.md)を使用することをお勧めします。
+転送は、物理的に切断されたクラウド内の 2 つの Azure コンテナー レジストリ間で、各クラウドのストレージ アカウントによって仲介されるコンテンツのコピーに最適です。 そうではなく、Docker Hub などのクラウド ベンダーを含め、接続されたクラウド内のコンテナー レジストリからイメージをコピーする場合は、[イメージ インポート](container-registry-import-images.md)を使用することをお勧めします。
 
 この記事では、Azure Resource Manager テンプレート デプロイを使用して、転送パイプラインを作成して実行します。 Azure CLI は、ストレージ シークレットなど、関連付けられているリソースをプロビジョニングするために使用されます。 Azure CLI バージョン 2.2.0 以降が推奨されます。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
@@ -32,11 +32,18 @@ ms.locfileid: "88009156"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **コンテナー レジストリ** - 転送する成果物を含む既存のソース レジストリと、ターゲット レジストリが必要です。 ACR 転送は、物理的に切断されたクラウド間での移動を目的としています。 テストの場合、ソース レジストリとターゲット レジストリは、同じまたは異なる Azure サブスクリプション、Active Directory テナント、またはクラウドに存在する可能性があります。 レジストリを作成する必要がある場合は、「[クイック スタート: Azure CLI を使用したプライベート コンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」を参照してください。 
-* **ストレージ アカウント** - サブスクリプション内および任意の場所にソース ストレージ アカウントとターゲット ストレージ アカウントを作成します。 テスト目的では、ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数のサブスクリプションを使用できます。 クロスクラウドのシナリオでは、通常、各クラウドに個別のストレージ アカウントを作成します。 必要に応じて、[Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) またはその他のツールでストレージ アカウントを作成します。 
+* **コンテナー レジストリ** - 転送する成果物を含む既存のソース レジストリと、ターゲット レジストリが必要です。 ACR 転送は、物理的に切断されたクラウド間での移動を目的としています。 テストの場合、ソース レジストリとターゲット レジストリは、同じまたは異なる Azure サブスクリプション、Active Directory テナント、またはクラウドに存在する可能性があります。 
+
+   レジストリを作成する必要がある場合は、「[クイック スタート: Azure CLI を使用したプライベート コンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」を参照してください。 
+* **ストレージ アカウント** - サブスクリプション内および任意の場所にソース ストレージ アカウントとターゲット ストレージ アカウントを作成します。 テスト目的では、ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数のサブスクリプションを使用できます。 クロスクラウドのシナリオでは、通常、各クラウドに個別のストレージ アカウントを作成します。 
+
+  必要に応じて、[Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) またはその他のツールでストレージ アカウントを作成します。 
 
   各アカウントで成果物転送用の BLOB コンテナーを作成します。 たとえば、*transfer* という名前のコンテナーを作成します。 2 つ以上の転送パイプラインで同じストレージ アカウントを共有できますが、異なるストレージ コンテナー スコープを使用する必要があります。
-* **キー コンテナー** - ソース ストレージ アカウントとターゲット ストレージ アカウントへのアクセスに使用される SAS トークン シークレットを格納するには、キー コンテナーが必要です。 ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数の Azure サブスクリプションに、ソース キー コンテナーとターゲット キー コンテナーを作成します。 必要に応じて、[Azure CLI](../key-vault/secrets/quick-create-cli.md) またはその他のツールを使用してキー コンテナーを作成します。
+* **キー コンテナー** - ソース ストレージ アカウントとターゲット ストレージ アカウントへのアクセスに使用される SAS トークン シークレットを格納するには、キー コンテナーが必要です。 ソース レジストリおよびターゲット レジストリと同じ 1 つまたは複数の Azure サブスクリプションに、ソース キー コンテナーとターゲット キー コンテナーを作成します。 デモンストレーションの目的で、この記事で使用されているテンプレートとコマンドでも、ソースとターゲットの各キー コンテナーは、それぞれソースとターゲットの各レジストリと同じリソース グループにあることを前提としています。 この共通のリソース グループの使用は必須ではありませんが、この記事で使用するテンプレートとコマンドが簡単になります。
+
+   必要に応じて、[Azure CLI](../key-vault/secrets/quick-create-cli.md) またはその他のツールを使用してキー コンテナーを作成します。
+
 * **環境変数** - この記事のコマンド例では、ソース環境とターゲット環境に対して次の環境変数を設定します。 すべての例は、Bash シェル用に書式設定されています。
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -62,7 +69,7 @@ ms.locfileid: "88009156"
 
 ### <a name="things-to-know"></a>注意事項
 * ExportPipeline と ImportPipeline は、通常、ソース クラウドとターゲット クラウドに関連付けられている異なる Active Directory テナントにあります。 このシナリオでは、リソースのエクスポートとインポート用に個別のマネージド ID とキー コンテナーが必要です。 テスト目的では、これらのリソースを同じクラウドに配置し、ID を共有することができます。
-* パイプラインの例では、キー コンテナー シークレットにアクセスするために、システムによって割り当てられたマネージド ID を作成します。 ExportPipelines と ImportPipelines では、ユーザー割り当て ID もサポートされています。 この場合、ID のアクセス ポリシーを使用してキー コンテナーを構成する必要があります。 
+* 既定では、ExportPipeline および ImportPipeline の各テンプレートによって、システム割り当てマネージド ID を使用してキー コンテナーのシークレットにアクセスできるようになります。 ExportPipeline および ImportPipeline テンプレートでは、ユーザー割り当て ID もサポートされています。 
 
 ## <a name="create-and-store-sas-keys"></a>SAS キーを作成して格納する
 
@@ -152,7 +159,13 @@ ExportPipeline Resource Manager の[テンプレート ファイル](https://git
 
 ### <a name="create-the-resource"></a>リソースを作成する
 
-[az deployment group create][az-deployment-group-create] を実行して、リソースを作成します。 次の例では、デプロイ *exportPipeline* に名前を付けます。
+次の例に示すように、[az deployment group create][az-deployment-group-create] を実行して *exportPipeline* という名前のリソースを作成します。 既定で、最初のオプションを使用すると、サンプル テンプレートによって ExportPipeline リソースのシステム割り当て ID が有効になります。 
+
+2 つ目のオプションを使用すると、リソースにユーザー割り当て ID を指定できます (ユーザー割り当て ID の作成は示されていません)。
+
+どちらのオプションでも、テンプレートによって、エクスポート キー コンテナー内の SAS トークンにアクセスするための ID が構成されます。 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>オプション 1: リソースを作成し、システム割り当て ID を有効にする
 
 ```azurecli
 az deployment group create \
@@ -162,10 +175,23 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>オプション 2:リソースを作成し、ユーザー割り当て ID を指定する
+
+このコマンドでは、ユーザー割り当て ID のリソース ID を追加のパラメーターとして指定します。
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
 コマンド出力で、パイプラインのリソース ID (`id`) を書き留めます。 この値を後で使用できるように環境変数に格納するには、[az deployment group show][az-deployment-group-show] を実行します。 次に例を示します。
 
 ```azurecli
-EXPORT_RES_ID=$(az group deployment show \
+EXPORT_RES_ID=$(az deployment group show \
   --resource-group $SOURCE_RG \
   --name exportPipeline \
   --query 'properties.outputResources[1].id' \
@@ -198,20 +224,39 @@ ImportPipeline Resource Manager の[テンプレート ファイル](https://git
 
 ### <a name="create-the-resource"></a>リソースを作成する
 
-[az deployment group create][az-deployment-group-create] を実行して、リソースを作成します。
+次の例に示すように、[az deployment group create][az-deployment-group-create] を実行して *importPipeline* という名前のリソースを作成します。 既定で、最初のオプションを使用すると、サンプル テンプレートによって ImportPipeline リソースのシステム割り当て ID が有効になります。 
+
+2 つ目のオプションを使用すると、リソースにユーザー割り当て ID を指定できます (ユーザー割り当て ID の作成は示されていません)。
+
+どちらのオプションでも、テンプレートによって、インポート キー コンテナー内の SAS トークンにアクセスするための ID が構成されます。 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>オプション 1: リソースを作成し、システム割り当て ID を有効にする
 
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
   --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json \
-  --name importPipeline
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json 
 ```
 
-インポートを手動で実行する場合は、パイプラインのリソース ID (`id`) を書き留めておきます。 この値を後で使用できるように環境変数に格納するには、[az deployment group show][az-deployment-group-show] を実行します。 次に例を示します。
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>オプション 2:リソースを作成し、ユーザー割り当て ID を指定する
+
+このコマンドでは、ユーザー割り当て ID のリソース ID を追加のパラメーターとして指定します。
 
 ```azurecli
-IMPORT_RES_ID=$(az group deployment show \
+az deployment group create \
+  --resource-group $TARGET_RG \
+  --template-file azuredeploy.json \
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
+インポートを手動で実行する場合は、パイプラインのリソース ID (`id`) を書き留めておきます。 この値を後で使用できるように環境変数に格納するには、[az deployment group show][az-deployment-group-show] コマンドを実行します。 次に例を示します。
+
+```azurecli
+IMPORT_RES_ID=$(az deployment group show \
   --resource-group $TARGET_RG \
   --name importPipeline \
   --query 'properties.outputResources[1].id' \
@@ -246,12 +291,22 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+後で使用するために、パイプライン実行のリソース ID を環境変数に格納します。
+
+```azurecli
+EXPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $SOURCE_RG \
+  --name exportPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+```
+
 成果物のエクスポートには数分かかることがあります。 デプロイが正常に完了したら、ソース ストレージ アカウントの *transfer* コンテナーでエクスポート済み BLOB を一覧表示することによって、成果物のエクスポートを確認します。 たとえば、[az storage blob list][az-storage-blob-list] コマンドを実行します。
 
 ```azurecli
 az storage blob list \
-  --account-name $SA_SOURCE
-  --container transfer
+  --account-name $SOURCE_SA \
+  --container transfer \
   --output table
 ```
 
@@ -300,11 +355,21 @@ PipelineRun Resource Manager の[テンプレート ファイル](https://github
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
+  --name importPipelineRun \
   --template-file azuredeploy.json \
   --parameters azuredeploy.parameters.json
 ```
 
-デプロイが正常に完了したら、ターゲット コンテナー レジストリにリポジトリを一覧表示して、成果物のインポートを確認します。 たとえば、[az acr repository list][az-acr-repository-list] を実行します。
+後で使用するために、パイプライン実行のリソース ID を環境変数に格納します。
+
+```azurecli
+IMPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $TARGET_RG \
+  --name importPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+
+When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -329,20 +394,20 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>パイプライン リソースを削除する
 
-パイプライン リソースを削除するには、[az deployment group delete][az-deployment-group-delete] コマンドを使用して、Resource Manager デプロイを削除します。 次の例では、この記事で作成したパイプライン リソースを削除します。
+次のコマンド例では、[az resource delete][az-resource-delete] を使用して、この記事で作成したパイプライン リソースを削除します。 このリソース ID は、以前に環境変数に格納したものです。
 
-```azurecli
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipeline
+```
+# Delete export resources
+az resource delete \
+--resource-group $SOURCE_RG \
+--ids $EXPORT_RES_ID $EXPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipelineRun
-
-az deployment group delete \
-  --resource-group $TARGET_RG \
-  --name importPipeline  
+# Delete import resources
+az resource delete \
+--resource-group $TARGET_RG \
+--ids $IMPORT_RES_ID $IMPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -374,8 +439,6 @@ az deployment group delete \
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
 [az-login]: /cli/azure/reference-index#az-login
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
 [az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
@@ -387,3 +450,4 @@ az deployment group delete \
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
+[az-resource-delete]: /cli/azure/resource#az-resource-delete

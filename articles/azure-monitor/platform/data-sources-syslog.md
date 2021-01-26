@@ -1,20 +1,23 @@
 ---
-title: Azure Monitor の Syslog メッセージの収集と分析 | Microsoft Docs
+title: Azure Monitor で Log Analytics エージェントを使用して Syslog データ ソースを収集する
 description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と作成されるレコードの詳細について説明します。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/22/2019
-ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 10/21/2020
+ms.openlocfilehash: 2d86983c8ed6c738e4b4e96d8d291dee4dc4d87d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322314"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440622"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
+# <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Syslog データ ソースを収集する
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
+
+> [!IMPORTANT]
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](log-analytics-agent.md)を使用して Syslog イベントを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
 > [!NOTE]
 > Azure Monitor では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
@@ -45,7 +48,7 @@ Syslog コレクターでは、次のファシリティがサポートされて�
 Linux 用 Log Analytics エージェントは、構成で指定されているファシリティと重大度のイベントだけを収集します。 Azure Portal を通じて、または Linux エージェントで構成ファイルを管理することによって、Syslog を構成できます。
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure Portal での Syslog の構成
-[[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)で Syslog を構成します。 この構成は、各 Linux エージェントの構成ファイルに配信されます。
+Log Analytics ワークスペースで [[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から Syslog を構成します。 この構成は、各 Linux エージェントの構成ファイルに配信されます。
 
 新しい機能を追加するには、まず **[下の構成をコンピューターに適用する]** オプションを選択し、その名前を入力して、 **[+]** をクリックします。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
 
@@ -62,7 +65,7 @@ Linux 用 Log Analytics エージェントは、構成で指定されている�
 >
 
 #### <a name="rsyslog"></a>rsyslog
-rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあります。 既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティの警告レベル以上の syslog メッセージを収集します。
+rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf** にあります。 既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティの警告レベル以上の syslog メッセージを収集します。
 
 ```config
 kern.warning       @127.0.0.1:25224
@@ -160,7 +163,7 @@ Log Analytics エージェントは、ポート 25224 でローカル クライ�
 
 2 つの構成ファイルを作成することでポート番号を変更できます: FluentD 構成ファイルと rsyslog または syslog-ng ファイル (インストールしている Syslog デーモンにより決まります)。  
 
-* FluentD 構成ファイルは `/etc/opt/microsoft/omsagent/conf/omsagent.d` にある新しいファイルです。**port** エントリの値をカスタム ポート番号に変更します。
+* FluentD 構成ファイルは `/etc/opt/microsoft/omsagent/conf/omsagent.d` にある新しいファイルです。 **port** エントリの値をカスタム ポート番号に変更します。
 
     ```xml
     <source>
@@ -188,7 +191,7 @@ Log Analytics エージェントは、ポート 25224 でローカル クライ�
     auth.warning              @127.0.0.1:%SYSLOG_PORT%
     ```
 
-* syslog-ng 構成は下のサンプル構成をコピーして変更し、`/etc/syslog-ng/` にある syslog-ng.conf 構成ファイルの終わりに変更したカスタム設定を追加する必要があります。 既定のラベルである **%WORKSPACE_ID%_oms** または **%WORKSPACE_ID_OMS** は**使用しない**でください。変更を区別するために、カスタム ラベルを定義してください。  
+* syslog-ng 構成は下のサンプル構成をコピーして変更し、`/etc/syslog-ng/` にある syslog-ng.conf 構成ファイルの終わりに変更したカスタム設定を追加する必要があります。 既定のラベルである **%WORKSPACE_ID%_oms** または **%WORKSPACE_ID_OMS** は **使用しない** でください。変更を区別するために、カスタム ラベルを定義してください。  
 
     > [!NOTE]
     > 構成ファイルの既定値を変更すると、エージェントが既定の構成を適用したときに上書きされます。

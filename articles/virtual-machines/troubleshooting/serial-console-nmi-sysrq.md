@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022855"
 ---
 # <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しのための Azure シリアル コンソールを使用する
 

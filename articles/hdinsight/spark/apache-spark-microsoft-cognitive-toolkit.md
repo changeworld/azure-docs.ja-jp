@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084496"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505428"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
 
 この記事では、次の手順を実行します。
 
-1. [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) を Azure HDInsight Spark クラスターにインストールするカスタム スクリプトを実行する。
+1. [Microsoft Cognitive Toolkit](/cognitive-toolkit/) を Azure HDInsight Spark クラスターにインストールするカスタム スクリプトを実行する。
 
 2. [Jupyter Notebook](https://jupyter.org/) を [Apache Spark](https://spark.apache.org/) クラスターにアップロードし、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルを [Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) を使用して Azure Blob Storage アカウント内のファイルに適用する方法を確認する。
 
@@ -36,7 +36,7 @@ ms.locfileid: "86084496"
 * HDInsight Spark クラスターでスクリプト アクションを実行して、Microsoft Cognitive Toolkit と Python のパッケージをインストールします。
 * HDInsight Spark クラスターに対してソリューションを実行する Jupyter Notebook をアップロードします。
 
-次の残りの手順は、Jupyter Notebook に関する記事で説明します。
+次の残りの手順は、Jupyter Notebook に関する記事に記載されています。
 
 * サンプル イメージを Spark Resilient Distributed Dataset (RDD) に読み込む。
   * モジュールを読み込んでプリセットを定義する。

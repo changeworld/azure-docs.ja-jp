@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 608cfca3343b02101ac5e08acf0bec62900d1443
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836886"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108655"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
@@ -37,7 +37,7 @@ VM を作成します。 この例では、VM は "*myVM*" という名前、VM 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
    --name myVM \
-   --image openSUSE-Leap \
+   --image SUSE:openSUSE-Leap:15-2:latest \
    --size Standard_D2s_v3 \
    --generate-ssh-keys
 ```
@@ -117,7 +117,7 @@ mysql_secure_installation
 サインインして、MySQL プロンプトに入れるようになりました。
 
 ```bash  
-mysql -u root -p
+sudo mysql -u root -p
 ```
 MySQL のプロンプトに切り替わり、 SQL ステートメントを発行してデータベースとやり取りすることができます。
 

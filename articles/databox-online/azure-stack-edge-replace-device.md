@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge デバイスを交換する | Microsoft Docs
-description: Azure Stack Edge デバイスを交換する方法について説明します。
+title: Azure Stack Edge Pro デバイスを交換する | Microsoft Docs
+description: Azure Stack Edge Pro デバイスを交換する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 501136c6f5015dc8c68a1aba004432900675b11c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094873"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017971"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを交換する
+# <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスを交換する
 
-この記事では、Azure Stack Edge デバイスを交換する方法について説明します。 既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 
+この記事では、Azure Stack Edge Pro デバイスを交換する方法について説明します。 既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 
 
 
 この記事では、次の方法について説明します。
@@ -33,7 +33,7 @@ ms.locfileid: "87094873"
 
 既存のデバイスでハードウェア障害が発生した場合は、サポート チケットを開きます。 Microsoft サポートによって、このインスタンスにはフィールド交換ユニット (FRU) が利用できない、またはデバイスのハードウェア アップグレードが必要であると判断されます。 どちらの場合も、サポートは交換用デバイスを発注します。
 
-1. デバイスを返却したいことを示して、Microsoft サポートでサポート チケットを開きます。 問題の種類に **[Azure Stack Edge Hardware]\(Azure Stack Edge ハードウェア\)** を選択します。
+1. デバイスを返却したいことを示して、Microsoft サポートでサポート チケットを開きます。 問題の種類に **[Azure Stack Edge Pro Hardware ハードウェア]** を選択します。
 
     ![サポート チケットを開く](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -43,11 +43,14 @@ ms.locfileid: "87094873"
 
 ## <a name="create-a-resource-for-replacement-device"></a>交換用デバイスのための新しいリソースを作成する
 
+> [!NOTE]
+> 交換用デバイスをアクティブ化するための新しいリソースを作成します。 既存のリソースに対する交換用デバイスのアクティブ化はサポートされていません。
+
 リソースを作成するには、次の手順に従います。
 
 1. 「[新しいリソースを作成する](azure-stack-edge-deploy-prep.md#create-a-new-resource)」の手順に従って、交換用デバイスのためのリソースを作成します。 
 
-2. 必ず、 **[I have a Azure Stack Edge device]\(Azure Stack Edge を持っています\)** チェック ボックスをオンにしてください。 
+2. **[Azure Stack Edge Pro デバイスがあります]** チェック ボックスをオンにしてください。 
 
     ![交換用デバイスのためのリソース](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 
@@ -71,4 +74,4 @@ ms.locfileid: "87094873"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge デバイスを返却する](azure-stack-edge-return-device.md)方法について説明します。
+- [Azure Stack Edge Pro デバイスを返却する](azure-stack-edge-return-device.md)方法を確認します。

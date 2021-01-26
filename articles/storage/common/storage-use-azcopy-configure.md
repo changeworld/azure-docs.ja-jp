@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037186"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897860"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -28,19 +28,19 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ## <a name="configure-proxy-settings"></a>プロキシ設定の構成
 
-AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
+AzCopy v10 のプロキシ設定を構成するには、`HTTPS_PROXY` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
 | オペレーティング システム | command  |
 |--------|-----------|
-| **Windows** | コマンド プロンプトでは、`set https_proxy=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:https_proxy="<proxy IP>:<proxy port>"` を使用します|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | コマンド プロンプトでは、`set HTTPS_PROXY=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:HTTPS_PROXY="<proxy IP>:<proxy port>"` を使用します|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 現在のところ、AzCopy は、NTLM または Kerberos による認証を必要とするプロキシをサポートしていません。
 
 ### <a name="bypassing-a-proxy"></a>プロキシのバイパス ###
 
-Windows で AzCopy を実行していて、プロキシを使用_しない_ように (設定の自動検出ではなく) 指定する場合、次のコマンドを使用します。 これらの設定を使用すると、AzCopy はプロキシを検索したり、使用したりしません。
+Windows で AzCopy を実行していて、プロキシを使用 _しない_ ように (設定の自動検出ではなく) 指定する場合、次のコマンドを使用します。 これらの設定を使用すると、AzCopy はプロキシを検索したり、使用したりしません。
 
 | オペレーティング システム | 環境 | コマンド  |
 |--------|-----------|----------|

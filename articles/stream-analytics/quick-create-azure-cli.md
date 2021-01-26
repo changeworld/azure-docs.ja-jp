@@ -3,19 +3,19 @@ title: クイックスタート - Azure CLI を使用して Azure Stream Analyti
 description: このクイックスタートでは、Azure CLI を使用して Azure Stream Analytics ジョブを作成する方法を示します。
 services: stream-analytics
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231269"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016342"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -23,41 +23,11 @@ ms.locfileid: "86231269"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>環境を準備する
-
-1. サインインします。
-
-   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
-
-    ```azurecli
-    az login
-    ```
-
-    ターミナルに表示される手順に従って、認証プロセスを完了します。
-
-2. Azure CLI 拡張機能をインストールします。
-
-   Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。  Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。  更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
-
-   次のコマンドを実行して、[Stream Analytics の拡張機能](/cli/azure/ext/stream-analytics/stream-analytics)をインストールします。
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   次のコマンドを実行して、[Azure IoT の拡張機能](/cli/azure/ext/azure-iot)をインストールします。
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. リソース グループを作成します。
-
-   Azure リソースはすべてリソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
+- リソース グループを作成します。 Azure リソースはすべてリソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
    このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、*streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
 
@@ -77,7 +47,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    IoT ハブが作成されたら、[az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
+    IoT ハブが作成されたら、[az iot hub show-connection-string](/cli/azure/iot/hub) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -124,7 +94,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。 ストレージ アカウント キーを使用して、コンテナーの作成操作を承認します。 Azure CLI を使用したデータ操作の承認について詳しくは、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](/azure/storage/common/authorize-data-operations-cli)」を参照してください。
+3. BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。 ストレージ アカウント キーを使用して、コンテナーの作成操作を承認します。 Azure CLI を使用したデータ操作の承認について詳しくは、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../storage/blobs/authorize-data-operations-cli.md)」を参照してください。
 
    ```azurecli
    az storage container create \
@@ -138,7 +108,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
 
 次の Azure CLI コード ブロックでは、Stream Analytics ジョブを作成します。 各セクションを確認してコードを理解してください
 
-1. [az stream-analytics job create](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-create) コマンドを使用して、Stream Analytics ジョブを作成します。
+1. [az stream-analytics job create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) コマンドを使用して、Stream Analytics ジョブを作成します。
 
 ```azurecli
 az stream-analytics job create \
@@ -154,7 +124,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>ジョブへの入力を構成する
 
-[az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) コマンドレットを使用して、ジョブへの入力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ入力名、リソース グループ名、およびジョブ入力定義を受け取ります。 ジョブ入力定義は、ジョブの入力の構成に必要なプロパティを含む JSON ファイルです。 この例では、入力として IoT Hub を作成します。
+[az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) コマンドレットを使用して、ジョブへの入力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ入力名、リソース グループ名、およびジョブ入力定義を受け取ります。 ジョブ入力定義は、ジョブの入力の構成に必要なプロパティを含む JSON ファイルです。 この例では、入力として IoT Hub を作成します。
 
 ローカル マシンに `datasource.json` という名前のファイルを作成し、次の JSON データを追加します。 `sharedAccessPolicyKey` の値は必ず、前のセクションで保存した IoT ハブの接続文字列の `SharedAccessKey` 部分に置き換えてください。
 
@@ -185,7 +155,7 @@ az stream-analytics job create \
 次に、`az stream-analytics input create` コマンドレットを実行します。 必ず、`datasource` 変数の値は、ジョブ入力定義の JSON ファイルを格納したパスに、`serialization` 変数の値は、シリアル化 JSON ファイルを格納したパスに置き換えてください。
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -196,7 +166,7 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>ジョブへの出力を構成する
 
-[az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) コマンドレットを使用して、ジョブへの出力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ出力名、リソース グループ名、およびジョブ出力定義を受け取ります。 ジョブ出力定義は、ジョブの出力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを出力として使用します。
+[az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) コマンドレットを使用して、ジョブへの出力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ出力名、リソース グループ名、およびジョブ出力定義を受け取ります。 ジョブ出力定義は、ジョブの出力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを出力として使用します。
 
 ローカル マシンに `datasink.json` という名前のファイルを作成し、次の JSON データを追加します。 `accountKey` の値は、ストレージ アカウントのアクセス キー ($storageAccountKey 値に格納されている値) に置き換えてください。
 
@@ -221,7 +191,7 @@ az stream-analytics input create
 次に、`az stream-analytics output` コマンドレットを実行します。 必ず、`datasource` 変数の値は、ジョブ出力定義の JSON ファイルを格納したパスに、`serialization` 変数の値は、シリアル化 JSON ファイルを格納したパスに置き換えてください。
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -231,12 +201,12 @@ az stream-analytics output create
 
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
-[az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-transformation-create) コマンドレットを使用して、ジョブの変換を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ変換名、リソース グループ名、およびジョブ変換定義を受け取ります。 
+[az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) コマンドレットを使用して、ジョブの変換を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ変換名、リソース グループ名、およびジョブ変換定義を受け取ります。 
 
 `az stream-analytics transformation create` コマンドレットを実行します。
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -255,12 +225,12 @@ az stream-analytics transformation create
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics ジョブを開始して出力をチェックする
 
-[az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-start) コマンドレットを使用して、ジョブを開始します。 このコマンドレットは、パラメーターとして、ジョブ名、リソース グループ名、出力開始モード、および開始時刻を受け取ります。 `OutputStartMode` には、`JobStartTime`、`CustomTime`、または `LastOutputEventTime` の値が使用できます。
+[az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) コマンドレットを使用して、ジョブを開始します。 このコマンドレットは、パラメーターとして、ジョブ名、リソース グループ名、出力開始モード、および開始時刻を受け取ります。 `OutputStartMode` には、`JobStartTime`、`CustomTime`、または `LastOutputEventTime` の値が使用できます。
 
 次のコマンドレットを実行すると、ジョブが開始されたときに出力として `True` が返されます。 変換されたデータが含まれた出力フォルダーがストレージ コンテナーに作成されます。
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合、削除をスキップしてこのジョブを一時的に停止できます。 このジョブを今後使用しない場合には、次のコマンドレットを実行して、このクイック スタートで作成したすべてのリソースを削除してください。
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

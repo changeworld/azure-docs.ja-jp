@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: ce47d2ae65a4ea9e6878381ce58d62cb6c998599
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 95e244f956940f9d75df50243714f0fb8f8d0654
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998205"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424167"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 
@@ -42,7 +42,7 @@ ms.locfileid: "88998205"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+* **Azure サブスクリプション** 。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * Windows 上では [Visual Studio と Xamarin]。OS X 上では [Visual Studio for Mac]。
 * アクティブな Google アカウント
 
@@ -57,7 +57,7 @@ ms.locfileid: "88998205"
 ### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>GCM/FCM の設定を通知ハブ用に構成する
 
 1. 左側のメニューの **[設定]** で、 **[Google (GCM/FCM)]** を選択します。
-2. Google Firebase Console からメモした**サーバー キー**を入力します。
+2. Google Firebase Console からメモした **サーバー キー** を入力します。
 3. ツールバーの **[保存]** を選択します。
 
     ![Google G C M F C M オプションが強調表示され、赤線で囲まれた、Azure portal の通知ハブのスクリーンショット。](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
@@ -81,7 +81,7 @@ ms.locfileid: "88998205"
         ![[新しいプロジェクト] ダイアログ](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
 2. **[New Android App]\(新しい Android アプリ\)** ダイアログ ボックスで **[空のアプリ]** を選択し、 **[OK]** を選択します。
 
-    ![[新しいプロジェクト] ダイアログ](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![[空のアプリ] テンプレートが強調表示されているスクリーンショット。](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. **ソリューション エクスプローラー** ウィンドウで、 **[プロパティ]** を展開し、 **[AndroidManifest.xml]** をクリックします。 Google Firebase Console でプロジェクトに Firebase Cloud Messaging を追加するときに入力したパッケージ名に一致するようにパッケージ名を更新します。
 
     ![GCM でのパッケージ名](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
@@ -92,11 +92,11 @@ ms.locfileid: "88998205"
 1. 次の手順に従って、必要な NuGet パッケージをプロジェクトに追加します。
     1. プロジェクトを右クリックし、 **[NuGet パッケージの管理...]** を選択します。
     1. **[インストール済み]** タブに切り替えて、 **[Xamarin.Android.Support.Design]** を選択し、右側のウィンドウで **[更新]** を選択して、パッケージを最新バージョンに更新します。
-    1. **[参照]** タブに切り替えます。**Xamarin.GooglePlayServices.Base** を検索します。 結果の一覧で **[Xamarin.GooglePlayServices.Base]** を選択します。 その後、 **[インストール]** を選択します。
+    1. **[参照]** タブに切り替えます。 **Xamarin.GooglePlayServices.Base** を検索します。 結果の一覧で **[Xamarin.GooglePlayServices.Base]** を選択します。 その後、 **[インストール]** を選択します。
 
         ![Google Play 開発者サービス NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-    6. **[NuGet パッケージ マネージャー]** ウィンドウで、**Xamarin.Firebase.Messaging** を検索します。 結果の一覧で **[Xamarin.Firebase.Messaging]** を選択します。 その後、 **[インストール]** を選択します。
-    7. 次に、**Xamarin.Azure.NotificationHubs.Android** を検索します。 結果の一覧で **[Xamarin.Azure.NotificationHubs.Android]** を選択します。 その後、 **[インストール]** を選択します。
+    6. **[NuGet パッケージ マネージャー]** ウィンドウで、 **Xamarin.Firebase.Messaging** を検索します。 結果の一覧で **[Xamarin.Firebase.Messaging]** を選択します。 その後、 **[インストール]** を選択します。
+    7. 次に、 **Xamarin.Azure.NotificationHubs.Android** を検索します。 結果の一覧で **[Xamarin.Azure.NotificationHubs.Android]** を選択します。 その後、 **[インストール]** を選択します。
 
 ### <a name="add-the-google-services-json-file"></a>Google Services JSON ファイルを追加する
 
@@ -124,7 +124,7 @@ ms.locfileid: "88998205"
     </receiver>
     ```
 
-2. **application 要素の前**に、以下のステートメントを追加します。
+2. **application 要素の前** に、以下のステートメントを追加します。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -135,9 +135,9 @@ ms.locfileid: "88998205"
 
 3. Android アプリケーションと通知ハブについて次の情報を収集します。
 
-   * **接続文字列のリッスン**: [Azure portal] のダッシュボードで **[接続文字列の表示]** を選択します。 この値に使用するための `DefaultListenSharedAccessSignature` 接続文字列をコピーします。
-   * **ハブ名**: [Azure portal] からのハブの名前。 たとえば、 *mynotificationhub2*です。
-4. **[ソリューション エクスプローラー]** ウィンドウで、該当する**プロジェクト**を右クリックし、 **[追加]** を選択して、 **[クラス]** を選択します。
+   * **接続文字列のリッスン** : [Azure portal] のダッシュボードで **[接続文字列の表示]** を選択します。 この値に使用するための `DefaultListenSharedAccessSignature` 接続文字列をコピーします。
+   * **ハブ名** : [Azure portal] からのハブの名前。 たとえば、 *mynotificationhub2* です。
+4. **[ソリューション エクスプローラー]** ウィンドウで、該当する **プロジェクト** を右クリックし、 **[追加]** を選択して、 **[クラス]** を選択します。
 5. Xamarin プロジェクトの `Constants.cs` クラスを作成し、このクラスに次の定数値を定義します。 プレースホルダーを実際の値に置き換えます。
 
     ```csharp
@@ -162,7 +162,7 @@ ms.locfileid: "88998205"
     internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
 
-8. MainActivity クラスに次のメソッドを追加します。 デバイスで **Google Play 開発者サービス**が使用できるかどうかを確認します。
+8. MainActivity クラスに次のメソッドを追加します。 デバイスで **Google Play 開発者サービス** が使用できるかどうかを確認します。
 
     ```csharp
     public bool IsPlayServicesAvailable()
@@ -313,12 +313,12 @@ ms.locfileid: "88998205"
             Log.Debug(TAG, $"Successful registration of ID {regID}");
         }
     ```
-1. プロジェクトを**構築します**。
-1. デバイスまたは読み込まれたエミュレーターでアプリを**実行する**
+1. プロジェクトを **構築します** 。
+1. デバイスまたは読み込まれたエミュレーターでアプリを **実行する**
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Azure Portal からテスト通知を送信する
 
-アプリの通知の受信をテストするには、[Azure Portal] の **[テスト送信]** オプションを使用します。 これは、デバイスにテスト プッシュ通知を送信します。
+アプリの通知の受信をテストするには、 [Azure Portal] の **[テスト送信]** オプションを使用します。 これは、デバイスにテスト プッシュ通知を送信します。
 
 ![Azure Portal - テスト送信](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
@@ -362,7 +362,7 @@ ms.locfileid: "88998205"
 [Visual Studio と Xamarin]: /visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure Portal]: https://portal.azure.com/
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Android]: /previous-versions/azure/dn282661(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md

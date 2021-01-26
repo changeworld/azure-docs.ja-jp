@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326037"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441501"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する
 
@@ -73,11 +73,11 @@ Azure Monitor for VMs マップの統合を構成するには、次の操作を�
 
 6. 省略可能:Log Analytics と通信するすべての管理サーバーのリソース プールを選択し、 **[ワークスペースの追加]** をクリックします。
 
-    ![Operations Manager 構成リソース プール](media/service-map-scom/scom-config-pool.png)
+    ![[すべての管理サーバーのリソース プール] が選択されている [Microsoft Operations Management Suite ワークスペースを追加します] の [サーバー プール] 画面のスクリーンショット。](media/service-map-scom/scom-config-pool.png)
 
     Log Analytics ワークスペースの構成および登録には時間がかかる場合があります。 構成が完了すると、Operations Manager は、マップの最初の同期を開始します。
 
-    ![Operations Manager 構成リソース プール](media/service-map-scom/scom-config-success.png)
+    ![ワークスペースが追加されたことを確認する [Microsoft Operations Management Suite ワークスペースを追加します] の [完了] 画面のスクリーンショット。](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>統合の監視
 
@@ -98,11 +98,11 @@ Service Map フォルダーには 4 つのノードがあります。
 
 * **マシン グループの依存関係ビュー**:マップ機能から同期されているすべてのマシン グループが一覧表示されます。 グループをクリックすると、その分散アプリケーション ダイアグラムを確認できます。
 
-    ![Operations Manager の分散アプリケーション ダイアグラム](media/service-map-scom/scom-group-dad.png)
+    ![各マシン グループのイメージと、それらの間の依存関係を示す線を含む図を示している Service Map のスクリーンショット。](media/service-map-scom/scom-group-dad.png)
 
 * **サーバーの依存関係ビュー**:マップ機能から同期されているすべてのサーバーが一覧表示されます。 サーバーをクリックすると、その分散アプリケーション ダイアグラムを確認できます。
 
-    ![Operations Manager の分散アプリケーション ダイアグラム](media/service-map-scom/scom-dad.png)
+    ![各サーバーのイメージと、それらの間の依存関係を示す線を含む図を示している Service Map のスクリーンショット。](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>ワークスペースを編集または削除
 

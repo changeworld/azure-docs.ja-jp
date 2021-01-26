@@ -5,18 +5,18 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/24/2020
 ms.author: victorh
-ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075465"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95802025"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager ポリシーの概要
 
-ファイアウォール ポリシーは、NAT、ネットワーク、アプリケーションの各ルール コレクションのほか、脅威インテリジェンスの設定を含んだ Azure リソースです。 セキュリティ保護付き仮想ハブ内およびハブ仮想ネットワーク内の複数の Azure Firewall インスタンスにわたって使用できるグローバル リソースです。 ポリシーは、複数のリージョンおよび複数のサブスクリプションにわたって作用します。
+Firewall ポリシーは、NAT ルール、ネットワーク ルール、アプリケーション ルールを集めたものに脅威インテリジェンスの設定を加えた Azure リソースです。 セキュリティ保護付き仮想ハブ内およびハブ仮想ネットワーク内の複数の Azure Firewall インスタンスにわたって使用できるグローバル リソースです。 ポリシーは、複数のリージョンおよび複数のサブスクリプションにわたって作用します。
 
 ![Azure Firewall Manager ポリシー](media/policy-overview/policy-overview.png)
 

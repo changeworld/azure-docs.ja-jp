@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 06/10/2020
-ms.openlocfilehash: eac5814eb977a01135ad2fcd9551b3475673dbca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691749"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308819"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database と Azure Synapse Analytics サーバーのリソース制限
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,14 +79,14 @@ ms.locfileid: "84691749"
 
 - データベースまたはエラスティック プールのサービス レベルまたはコンピューティング サイズを高くします。 [シングルトンのリソースの拡大縮小に関する記事](single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](elastic-pool-scale.md)を参照してください。
 - ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
-- [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (並列処理の最大限度) の設定を減らします。
+- [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (並列処理の最大限度) の設定を減らします。
 - クエリのワークロードを最適化して、発生回数とクエリ ブロックの時間を削減します。
 
 ### <a name="memory"></a>メモリ
 
-他のリソース (CPU、ワーカー、ストレージ) とは異なり、メモリの制限に達しても、クエリのパフォーマンスに悪影響を及ぼすことはなく、エラーや失敗も発生しません。 [メモリ管理アーキテクチャ ガイド](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide)で詳しく説明されているように、SQL Server データベース エンジンでは、設計上、使用可能なすべてのメモリが使用されることが多くあります。 メモリは主にデータをキャッシュするために使用され、コストの高いストレージ アクセスが回避されます。 そのため、メモリ使用率が高いと、通常、クエリのパフォーマンスが向上します。これは、読み取りの遅いストレージではなく、読み取りの速いメモリが使用されるからです。
+他のリソース (CPU、ワーカー、ストレージ) とは異なり、メモリの制限に達しても、クエリのパフォーマンスに悪影響を及ぼすことはなく、エラーや失敗も発生しません。 [メモリ管理アーキテクチャ ガイド](/sql/relational-databases/memory-management-architecture-guide)で詳しく説明されているように、SQL Server データベース エンジンでは、設計上、使用可能なすべてのメモリが使用されることが多くあります。 メモリは主にデータをキャッシュするために使用され、コストの高いストレージ アクセスが回避されます。 そのため、メモリ使用率が高いと、通常、クエリのパフォーマンスが向上します。これは、読み取りの遅いストレージではなく、読み取りの速いメモリが使用されるからです。
 
-データベース エンジンが起動した後、ワークロードでストレージからデータの読み取りを開始すると、データベース エンジンにより、データが積極的にメモリにキャッシュされます。 この初期起動時間が経過すると、一般的に、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) の `avg_memory_usage_percent` および `avg_instance_memory_percent` 列が、100% に近いか一致することが予想されます (特に、アイドル状態ではなく、メモリに完全に収まらないデータベースの場合)。
+データベース エンジンが起動した後、ワークロードでストレージからデータの読み取りを開始すると、データベース エンジンにより、データが積極的にメモリにキャッシュされます。 この初期起動時間が経過すると、一般的に、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) の `avg_memory_usage_percent` および `avg_instance_memory_percent` 列が、100% に近いか一致することが予想されます (特に、アイドル状態ではなく、メモリに完全に収まらないデータベースの場合)。
 
 データ キャッシュ以外にも、データベース エンジンの他のコンポーネントでメモリが使用されます。 メモリの需要があり、使用可能なすべてのメモリがデータ キャッシュによって使用されている場合、データベース エンジンでは、他のコンポーネントがメモリを使用できるようにデータ キャッシュ サイズが動的に縮小され、他のコンポーネントでメモリが解放されると、データ キャッシュが動的に拡大されます。
 
@@ -98,50 +98,50 @@ ms.locfileid: "84691749"
 
 |解決策|説明|
 | :----- | :----- |
-|メモリ許可のサイズを小さくする|メモリ許可の詳細については、[SQL Server メモリ許可の理解](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595)に関するブログ記事をご覧ください。 過度に大きなメモリ許可を回避するための一般的な解決策は、[統計](https://docs.microsoft.com/sql/relational-databases/statistics/statistics)を最新の状態に保つことです。 これにより、クエリ エンジンによるメモリ消費量がより正確に推定されるため、不必要に大きいメモリ許可を回避できます。</br></br>互換性レベル 140 以降が使用されているデータベースでは、データベース エンジンにより、[バッチ モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback)を使用したメモリ許可サイズの自動調整が行われる場合があります。 互換性レベル 150 以降が使用されているデータベースでは、より一般的な行モードのクエリに対して、データベースエンジンにより、[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)が同じように使用されます。 この組み込み機能を使用すると、不必要に大きなメモリ許可が原因のメモリ不足エラーを回避できます。|
-|クエリ プラン キャッシュのサイズを小さくする|クエリの実行ごとにクエリ プランがコンパイルされないように、データベース エンジンにより、クエリ プランがメモリ内にキャッシュされます。 1 回だけ使用されるキャッシュ プランによって発生するクエリ プラン キャッシュの肥大化を回避するには、OPTIMIZE_FOR_AD_HOC_WORKLOADS [データベース スコープ構成](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)を有効にします。|
-|ロック メモリのサイズを小さくする|データベース エンジンにより、[ロック](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine)にメモリが使用されます。 可能であれば、大量のロックを取得し、ロック メモリの消費量が高くなる可能性のある大きなトランザクションは避けてください。|
+|メモリ許可のサイズを小さくする|メモリ許可の詳細については、[SQL Server メモリ許可の理解](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595)に関するブログ記事をご覧ください。 過度に大きなメモリ許可を回避するための一般的な解決策は、[統計](/sql/relational-databases/statistics/statistics)を最新の状態に保つことです。 これにより、クエリ エンジンによるメモリ消費量がより正確に推定されるため、不必要に大きいメモリ許可を回避できます。</br></br>互換性レベル 140 以降が使用されているデータベースでは、データベース エンジンにより、[バッチ モード メモリ許可フィードバック](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)を使用したメモリ許可サイズの自動調整が行われる場合があります。 互換性レベル 150 以降が使用されているデータベースでは、より一般的な行モードのクエリに対して、データベースエンジンにより、[行モード メモリ許可フィードバック](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)が同じように使用されます。 この組み込み機能を使用すると、不必要に大きなメモリ許可が原因のメモリ不足エラーを回避できます。|
+|クエリ プラン キャッシュのサイズを小さくする|クエリの実行ごとにクエリ プランがコンパイルされないように、データベース エンジンにより、クエリ プランがメモリ内にキャッシュされます。 1 回だけ使用されるキャッシュ プランによって発生するクエリ プラン キャッシュの肥大化を回避するには、OPTIMIZE_FOR_AD_HOC_WORKLOADS [データベース スコープ構成](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)を有効にします。|
+|ロック メモリのサイズを小さくする|データベース エンジンにより、[ロック](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine)にメモリが使用されます。 可能であれば、大量のロックを取得し、ロック メモリの消費量が高くなる可能性のある大きなトランザクションは避けてください。|
 
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>ユーザー ワークロードと内部プロセスによるリソース使用量
 
-各データベースのユーザー ワークロードによる CPU とメモリの使用量は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ビューの `avg_cpu_percent` 列と `avg_memory_usage_percent` 列で報告されます。 エラスティック プールの場合、プール レベルのリソース消費は、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビューで報告されます。 ユーザー ワークロードの CPU 消費量は、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`cpu_percent` Azure Monitor メトリックによって報告されます。
+各データベースのユーザー ワークロードによる CPU とメモリの使用量は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューの `avg_cpu_percent` 列と `avg_memory_usage_percent` 列で報告されます。 エラスティック プールの場合、プール レベルのリソース消費は、[sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビューで報告されます。 ユーザー ワークロードの CPU 消費量は、[単一データベース](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools)について、`cpu_percent` Azure Monitor メトリックによって報告されます。
 
 Azure SQL Database には、高可用性とディザスター リカバリー、データベースのバックアップと復元、監視、クエリ ストア、自動チューニングなどの中核的なサービス機能を実装するための、コンピューティング リソースが必要です。システムでは、[リソース ガバナンス](#resource-governance) メカニズムを使用して、これらの内部プロセス用にリソース全体の特定の限られた部分が確保されます。これにより、ユーザーのワークロードで残りのリソースを使用できるようになります。 内部プロセスでコンピューティング リソースが使用されていない場合は、システムによってユーザーのワークロードで使用できるようになります。
 
-ユーザー ワークロードと内部プロセスによる CPU とメモリの使用量の合計は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ビューの `avg_instance_cpu_percent` 列と `avg_instance_memory_percent` 列で報告されます。 このデータは、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`sqlserver_process_core_percent` および `sqlserver_process_memory_percent` Azure Monitor メトリックによって報告されます。
+ユーザー ワークロードと内部プロセスによる CPU とメモリの使用量の合計は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューの `avg_instance_cpu_percent` 列と `avg_instance_memory_percent` 列で報告されます。 このデータは、[単一データベース](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools)について、`sqlserver_process_core_percent` および `sqlserver_process_memory_percent` Azure Monitor メトリックによって報告されます。
 
-ユーザー ワークロードと内部プロセスによる最近のリソース消費の詳細な内訳は、[sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) および [sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) ビューで報告されます。 これらのビューで参照されているリソース プールとワークロード グループの詳細については、「[リソース管理](#resource-governance)」を参照してください。 これらのビューでは、関連付けられているリソース プールおよびワークロード グループにおける、ユーザー ワークロードと特定の内部プロセスによるリソース使用量が報告されます。
+ユーザー ワークロードと内部プロセスによる最近のリソース消費の詳細な内訳は、[sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) および [sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) ビューで報告されます。 これらのビューで参照されているリソース プールとワークロード グループの詳細については、「[リソース管理](#resource-governance)」を参照してください。 これらのビューでは、関連付けられているリソース プールおよびワークロード グループにおける、ユーザー ワークロードと特定の内部プロセスによるリソース使用量が報告されます。
 
-パフォーマンスの監視とトラブルシューティングのコンテキストでは、**ユーザーの CPU 消費量** (`avg_cpu_percent`、`cpu_percent`) と、ユーザー ワークロードと内部プロセスによる**合計 CPU 消費量** (`avg_instance_cpu_percent`、`sqlserver_process_core_percent`) の両方を考慮することが重要です。
+パフォーマンスの監視とトラブルシューティングのコンテキストでは、 **ユーザーの CPU 消費量** (`avg_cpu_percent`、`cpu_percent`) と、ユーザー ワークロードと内部プロセスによる **合計 CPU 消費量** (`avg_instance_cpu_percent`、`sqlserver_process_core_percent`) の両方を考慮することが重要です。
 
-**ユーザー CPU 消費量**は、各サービス目標におけるユーザー ワークロードの上限に対する割合として計算されます。 **ユーザー CPU 使用率**が 100% の場合は、ユーザー ワークロードがサービス目標の上限に達したことを示します。 一方、**合計 CPU 消費量**が 70 から 100% の範囲に達した場合は、報告される**ユーザー CPU 消費量**が 100% を大幅に下回ったままであっても、ユーザー ワークロードのスループットのフラット化とクエリの待機時間増が見られる可能性があります。 これは、コンピューティング リソースが適度に割り当てられている、より小さいサービス目標を使用していても、[高密度エラスティック プール](elastic-pool-resource-management.md)のような比較的集中的なユーザー ワークロードの場合に、発生する可能性が高くなります。 また、データベースの新しいレプリカを作成する場合など、内部プロセスで一時的に追加のリソースが必要な場合は、小さいサービス目標でも発生する可能性があります。
+**ユーザー CPU 消費量** は、各サービス目標におけるユーザー ワークロードの上限に対する割合として計算されます。 **ユーザー CPU 使用率** が 100% の場合は、ユーザー ワークロードがサービス目標の上限に達したことを示します。 一方、 **合計 CPU 消費量** が 70 から 100% の範囲に達した場合は、報告される **ユーザー CPU 消費量** が 100% を大幅に下回ったままであっても、ユーザー ワークロードのスループットのフラット化とクエリの待機時間増が見られる可能性があります。 これは、コンピューティング リソースが適度に割り当てられている、より小さいサービス目標を使用していても、[高密度エラスティック プール](elastic-pool-resource-management.md)のような比較的集中的なユーザー ワークロードの場合に、発生する可能性が高くなります。 また、データベースの新しいレプリカを作成する場合など、内部プロセスで一時的に追加のリソースが必要な場合は、小さいサービス目標でも発生する可能性があります。
 
-**合計 CPU 消費量**が高い場合の軽減オプションは、前に説明したものと同じであり、サービス目標を高くする、ユーザー ワークロードを最適化することが含まれます。
+**合計 CPU 消費量** が高い場合の軽減オプションは、前に説明したものと同じであり、サービス目標を高くする、ユーザー ワークロードを最適化することが含まれます。
 
 ## <a name="resource-governance"></a>リソース管理
 
-Azure SQL Database では、リソース制限を適用するために Azure SQL Database 上で実行できるよう修正や拡張が行われた SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) に基づいたリソース管理の実装を使用します。 SQL Database には複数の[リソース プール](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)および[ワークロード グループ](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)があり、プール レベルおよびグループ レベル両方でリソース制限が設定され、[均衡の取れた Database-as-a-Service](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/) が提供されています。 ユーザー ワークロードと内部ワークロードは、別々のリソース プールとワークロード グループに分類されます。 プライマリ レプリカおよび読み取り可能なセカンダリ レプリカ (geo レプリカを含む) のユーザー ワークロードは、`SloSharedPool1` リソース プールと `UserPrimaryGroup.DBId[N]` ワークロード グループに分類されます。`N` はデータベース ID の値を表します。 さらに、さまざまな内部ワークロード用に複数のリソース プールとワークロード グループがあります。
+Azure SQL Database では、リソース制限を適用するために Azure SQL Database 上で実行できるよう修正や拡張が行われた SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) に基づいたリソース管理の実装を使用します。 SQL Database には複数の[リソース プール](/sql/relational-databases/resource-governor/resource-governor-resource-pool)および[ワークロード グループ](/sql/relational-databases/resource-governor/resource-governor-workload-group)があり、プール レベルおよびグループ レベル両方でリソース制限が設定され、[均衡の取れた Database-as-a-Service](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/) が提供されています。 ユーザー ワークロードと内部ワークロードは、別々のリソース プールとワークロード グループに分類されます。 プライマリ レプリカおよび読み取り可能なセカンダリ レプリカ (geo レプリカを含む) のユーザー ワークロードは、`SloSharedPool1` リソース プールと `UserPrimaryGroup.DBId[N]` ワークロード グループに分類されます。`N` はデータベース ID の値を表します。 さらに、さまざまな内部ワークロード用に複数のリソース プールとワークロード グループがあります。
 
-Resource Governor を使用して SQL プロセス内でリソースを管理するだけでなく、Azure SQL Database ではプロセス レベルのリソース管理用に Windows [Job Objects](https://docs.microsoft.com/windows/win32/procthread/job-objects)、また、ストレージ クォータ管理用に Windows [ファイル サーバー リソース マネージャー (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) も使用します。
+Resource Governor を使用して SQL プロセス内でリソースを管理するだけでなく、Azure SQL Database ではプロセス レベルのリソース管理用に Windows [Job Objects](/windows/win32/procthread/job-objects)、また、ストレージ クォータ管理用に Windows [ファイル サーバー リソース マネージャー (FSRM)](/windows-server/storage/fsrm/fsrm-overview) も使用します。
 
-Azure SQL Database のリソース管理は、本質的に階層化されています。 制限は一貫して、オペレーティング システムのリソース管理メカニズムと Resource Governor を使用して OS レベルとストレージ ボリューム レベルで適用され、Resource Governor を使用してリソース プール レベルで、さらには Resource Governor を使用してワークロード グループ レベルで適用されます。 現在のデータベースまたはエラスティック プールに対して有効になっているリソース管理の制限は、[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューに示されます。
+Azure SQL Database のリソース管理は、本質的に階層化されています。 制限は一貫して、オペレーティング システムのリソース管理メカニズムと Resource Governor を使用して OS レベルとストレージ ボリューム レベルで適用され、Resource Governor を使用してリソース プール レベルで、さらには Resource Governor を使用してワークロード グループ レベルで適用されます。 現在のデータベースまたはエラスティック プールに対して有効になっているリソース管理の制限は、[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューに示されます。
 
 ### <a name="data-io-governance"></a>データの IO 管理
 
 データ IO の管理は、データベースのデータ ファイルに対する読み取りおよび書き込み両方の物理 IO を制限するために使用される、Azure SQL Database 内のプロセスです。 IOPS 制限はサービス レベルごとに設定され、"うるさい隣人" の影響を最小限に抑えて、マルチテナント サービス内のリソース割り当ての公平性を提供すると共に、基になるハードウェアとストレージの機能内に収めます。
 
-単一データベースの場合、ワークロード グループの制限は、データベースに対するすべてのストレージ IO に適用されます。一方、リソース プールの制限は、`tempdb` データベースを含め、同じ SQL プール上のすべてのデータベースに対するすべてのストレージ IO に適用されます。 エラスティック プールの場合、ワークロード グループの制限はプール内の各データベースに適用されます。一方、リソース プールの制限は、`tempdb` データベースを含め、エラスティック プール全体に対して適用され、プール内のすべてのデータベース間で共有されます。 ワークロード グループの制限はリソース プールの制限よりも低く、IOPS/スループットをより迅速に制限することから、通常、(単一またはプールされた) データベースに対するワークロードがリソース プールの制限に到達することはありません。 しかし、同じプール上の複数のデータベースに対して組み合わされたワークロードによって、プールの制限に到達する場合があります。
+単一データベースの場合、ワークロード グループの制限は、データベースに対するすべてのストレージ IO に適用されます。一方、リソース プールの制限は、`tempdb` データベースを含め、同じ専用 SQL プール上のすべてのデータベースに対するすべてのストレージ IO に適用されます。 エラスティック プールの場合、ワークロード グループの制限はプール内の各データベースに適用されます。一方、リソース プールの制限は、`tempdb` データベースを含め、エラスティック プール全体に対して適用され、プール内のすべてのデータベース間で共有されます。 ワークロード グループの制限はリソース プールの制限よりも低く、IOPS/スループットをより迅速に制限することから、通常、(単一またはプールされた) データベースに対するワークロードがリソース プールの制限に到達することはありません。 しかし、同じプール上の複数のデータベースに対して組み合わされたワークロードによって、プールの制限に到達する場合があります。
 
 たとえば、あるクエリで IO リソース管理なしで 1000 IOPS が生成されるが、ワークロード グループの IOPS 上限が 900 IOPS に設定されている場合、このクエリで、900 を超える IOPS は生成できません。 しかし、リソース プールの IOPS 上限が 1500 IOPS に設定されており、リソース プールに関連付けられているすべてのワークロード グループからの IO 合計が 1500 IOPS を超過した場合、同じクエリの IO がワークロード グループの制限である 900 IOPS を下回るまで減らされる可能性があります。
 
-[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューから返される IOPS およびスループットの最小値および最大値は、保証としてではなく、制限/上限として機能します。 さらに、リソース管理によって、特定のストレージ待機時間が保証されるわけではありません。 特定のユーザーのワークロードに対して実現できる最適な待機時間、IOPS、スループットは、IO リソース管理の上限だけではなく、使用される最大 IO サイズや基になるストレージの機能にも依存します。 SQL Database で使用される IO のサイズは、512 KB から 4 MB の間で変動します。 IOPS 制限の適用という目的のために、Azure Storage 内でデータ ファイルを備えるデータベースに例外が発生した場合は、サイズに関係なくどの IO も考慮されます。 その場合、Azure Storage IO の説明に従って、256 KB より大規模な IO は、複数の 256 KB の IO として考慮されます。
+[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューから返される IOPS およびスループットの最小値および最大値は、保証としてではなく、制限/上限として機能します。 さらに、リソース管理によって、特定のストレージ待機時間が保証されるわけではありません。 特定のユーザーのワークロードに対して実現できる最適な待機時間、IOPS、スループットは、IO リソース管理の上限だけではなく、使用される最大 IO サイズや基になるストレージの機能にも依存します。 SQL Database で使用される IO のサイズは、512 KB から 4 MB の間で変動します。 IOPS 制限の適用という目的のために、Azure Storage 内でデータ ファイルを備えるデータベースに例外が発生した場合は、サイズに関係なくどの IO も考慮されます。 その場合、Azure Storage IO の説明に従って、256 KB より大規模な IO は、複数の 256 KB の IO として考慮されます。
 
-Azure Storage 内のデータ ファイルを使用する Basic、Standard、General Purpose データベースでは、IOPS のこの数値を累積的に提供できる十分なデータ ファイルがデータベースにない場合、データがファイル間で均等に分散されていない場合、または、基本となる BLOB のパフォーマンス レベルによって IOPS/スループットがリソース管理の制限より下に制限される場合、`primary_group_max_io` 値に到達することはありません。 同様に、頻繁なトランザクション コミットによって生成された小規模なログ IO では、基になる Azure ストレージ BLOB 上の IOPS 制限があるため、ワークロードによって `primary_max_log_rate` 値に到達することはありません。
+Azure Storage 内のデータ ファイルを使用する Basic、Standard、General Purpose の各データベースでは、IOPS のこの数値を累積的に提供できる十分なデータ ファイルがデータベースにない場合、データがファイル間で均等に分散されていない場合、または基本となる BLOB のパフォーマンス レベルによって IOPS/スループットがリソース管理の制限より下に制限される場合、`primary_group_max_io` 値に到達することはありません。 同様に、頻繁なトランザクション コミットによって生成された小規模なログ IO では、基になる Azure Storage BLOB 上に IOPS 制限があるため、ワークロードによって `primary_max_log_rate` 値に到達することはありません。 Azure Premium Storage を使用するデータベースの場合、Azure SQL Database では、データベースのサイズに関係なく、必要な IOPS/スループットを取得するのに十分な大容量のストレージ BLOB が使用されます。 大規模なデータベースの場合、合計 IOPS/スループット容量を増やすために複数のデータファイルが作成されます。
 
-[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビュー上で報告される `avg_data_io_percent` および `avg_log_write_percent` などのリソース使用率の値は、リソース管理の上限の割合として計算されています。 そのため、リソース管理以外の要素によって IOPS/スループットが制限される場合は、報告されるリソース使用率が 100% を下回ったままであっても、IOPS/スループットのフラット化とワークロードの増加に伴う待機時間の増加が見られる可能性があります。
+[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、[sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビュー上で報告される `avg_data_io_percent` および `avg_log_write_percent` などのリソース使用率の値は、リソース管理の上限の割合として計算されています。 そのため、リソース管理以外の要素によって IOPS/スループットが制限される場合は、報告されるリソース使用率が 100% を下回ったままであっても、IOPS/スループットのフラット化とワークロードの増加に伴う待機時間の増加が見られる可能性があります。
 
-データベース ファイルごとの読み取りおよび書き込みの IOPS、スループット、および待機時間を確認するには、[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 関数を使用します。 この関数では、`avg_data_io_percent` に対しては考慮されないバックグラウンド IO を含む、データベースに対するすべての IO が網羅されますが、基になるストレージの IOPS とスループットが使用され、監視されているストレージの待機時間に影響を及ぼす可能性があります。 また、この関数では、IO リソース管理によって発生する可能性のある読み取りと書き込みの追加の待機時間も、それぞれ `io_stall_queued_read_ms` 列と `io_stall_queued_write_ms` 列に表示されます。
+データベース ファイルごとの読み取りおよび書き込みの IOPS、スループット、および待機時間を確認するには、[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 関数を使用します。 この関数では、`avg_data_io_percent` に対しては考慮されないバックグラウンド IO を含む、データベースに対するすべての IO が網羅されますが、基になるストレージの IOPS とスループットが使用され、監視されているストレージの待機時間に影響を及ぼす可能性があります。 この関数では、IO リソース管理によって発生する可能性のある読み取りと書き込みの追加の待機時間も、それぞれ `io_stall_queued_read_ms` 列と `io_stall_queued_write_ms` 列に表示されます。
 
 ### <a name="transaction-log-rate-governance"></a>トランザクション ログ速度ガバナンス
 
@@ -174,9 +174,16 @@ Azure Storage 内のデータ ファイルを使用する Basic、Standard、Gen
 - ETL プロセスでのステージング データなど、読み込まれるデータが一時的なデータである場合、tempdb に読み込むことができます (ログ記録が最小限に抑えられます)。
 - 分析シナリオでは、クラスター化列ストアの対象テーブルに読み込みます。 この場合は圧縮されるため、必要なログ速度が小さくなります。 この手法では CPU 使用率が増加し、クラスター化列ストア インデックスからメリットを得られるデータ セットにのみ適用できます。
 
+### <a name="storage-space-governance"></a>ストレージ スペースのガバナンス
+
+Premium および Business Critical のサービス レベルでは、データ ログ ファイルとトランザクション ログ ファイルは、データベースまたはエラスティック プールをホストしているマシンのローカル SSD ボリュームに格納されます。 このため、IOPS とスループットが高くなり、IO 待機時間が短くなります。 このローカル ボリュームのサイズは、ハードウェアの機能によって異なり、有限です。 特定のマシンでは、ローカル ボリュームの領域は、`tempdb`、オペレーティング システム、管理ソフトウェア、監視データ、ログなどを含む顧客データベースによって消費されます。データベースの作成、削除、および領域の使用量の増減に応じて、マシン上のローカル領域の消費量は時間の経過と共に変動します。 
+
+マシンで使用可能な空き領域が不足していることがシステムによって検出され、データベースまたはエラスティック プールが領域不足である場合、十分な空き領域がある別のマシンにデータベースまたはエラスティック プールが移動します。このため、構成されたサービス目標の最大サイズ制限一杯まで使用することが可能になります。 この移動処理は、データベースのスケーリング操作と同様にオンラインで実行され、操作終了時の短時間 (秒単位) のフェールオーバーなど、 これと同様の[影響](single-database-scale.md#impact)を与えます。 このフェールオーバーにより、開いている接続が終了され、トランザクションがロールバックされるので、その時点でデータベースを使用しているアプリケーションに影響を与える可能性があります。
+
+データは物理的に別のマシンにコピーされるため、より大きなデータベースを移動するにはかなりの時間が必要になることがあります。 その間、大規模なユーザー データベースやエラスティック プール、または `tempdb` データベースによるローカル領域の使用量が非常に急速に増加している場合は、領域が不足する危険性が高くなります。 システムでは、領域不足エラーと不要なフェールオーバーを回避するために、データベースの移動がバランスの取れた方法で開始されます。
+
 ## <a name="next-steps"></a>次のステップ
 
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 - DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](purchasing-models.md#dtu-based-purchasing-model)」をご覧ください。
-- tempdb のサイズ制限については、「[SQL Database の Tempdb データベース](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」をご覧ください。
- 
+- tempdb のサイズ制限については、「[SQL Database の Tempdb データベース](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」をご覧ください。

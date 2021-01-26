@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510345"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630483"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
@@ -32,7 +32,7 @@ Azure File Sync は、次の 2 つの主要なコンポーネントに基づく 
 
 この記事では、移行手順を中心に説明します。 移行前に Azure File Sync について詳しく知りたい場合は、次の記事をお勧めします。
 
-* [Azure File Sync - 概要](https://aka.ms/AFS "概要")
+* [Azure File Sync - 概要](./storage-sync-files-planning.md "概要")
 * [Azure File Sync - デプロイ ガイド](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>移行の目標
@@ -82,7 +82,7 @@ Azure File Sync の構成後にファイルとフォルダーの構造を変更�
 
 前の手順では、同期トポロジのコンポーネントを決定するすべての側面を検討しました。 この時点で、アップロード用のファイルを受信するようにサーバーを準備します。
 
-それぞれが独自の Azure ファイル共有に同期する**すべての**フォルダーを作成します。
+それぞれが独自の Azure ファイル共有に同期する **すべての** フォルダーを作成します。
 前に説明したフォルダー構造に従うようにすることが重要です。 たとえば、複数のローカル SMB 共有をまとめて 1 つの Azure ファイル共有に同期する場合は、それらをボリューム上の共通のルート フォルダーの下に配置する必要があります。 ここで、このターゲット ルート フォルダーをボリューム上に作成します。
 
 プロビジョニングした Azure ファイル共有の数は、この手順で作成したフォルダーの数に、ルート レベルで同期するボリュームの数を加えたものと一致している必要があります。
@@ -210,20 +210,20 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 これらの複数のコピーを並行して実行することができます。 一度に 1 つの Azure ファイル共有のスコープを処理することをお勧めします。
 
 > [!WARNING]
-> StorSimple から Windows Server にすべてのデータを移動したら、移行は完了です。Azure portal で***すべての***同期グループに戻り、クラウドを使った階層化ボリュームの空き領域の割合の値を、キャッシュの使用に適したもの (20% など) に調整します。 
+> StorSimple から Windows Server にすべてのデータを移動したら、移行は完了です。Azure portal で "***すべての** _" 同期グループに戻り、クラウドを使った階層化ボリュームの空き領域の割合の値を、キャッシュの使用に適したもの (20% など) に調整します。 
 
 クラウドを使った階層化ボリュームの空き領域ポリシーはボリューム レベルで動作し、複数のサーバー エンドポイントがそこから同期する可能性があります。 1 つのサーバー エンドポイントでも空き領域を調整し忘れた場合、同期では最も制限の厳しい規則が引き続き適用され、99% の空きディスク領域が確保されて、ローカル キャッシュが期待どおりに実行されなくなります。 アクセス頻度の低いアーカイブ データのみが含まれるボリューム用の名前空間のみを使用することを目的としている場合を除きます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-最も可能性の高い問題は、Windows Server 側で "*ボリュームがいっぱい*" になったために RoboCopy コマンドが失敗することです。 その場合は、アップロード速度よりダウンロード速度の方が速い可能性があります。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカル環境の Windows Server ディスクから内容が退避されます。
+発生する可能性が最も高い問題は、Windows Server 側で _"ボリュームがいっぱい"* になったために RoboCopy コマンドが失敗することです。 その場合は、アップロード速度よりダウンロード速度の方が速い可能性があります。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカル環境の Windows Server ディスクから内容が退避されます。
 
 同期を進行させ、クラウドを使った階層化にディスク領域を解放させます。 これは、Windows Server のエクスプローラーで確認できます。
 
 Windows Server に十分な空き容量がある場合は、コマンドを再実行すると問題が解決されます。 このような状況が発生しても壊れるものは何もなく、安心して進めることができます。 コマンドを再実行する不便さだけが唯一の影響です。
 
 他の Azure File Sync の問題が発生することもあります。
-可能性は低いですが発生した場合は、**Azure File Sync のトラブルシューティング ガイド**を参照してください。
+可能性は低いですが発生した場合は、**Azure File Sync のトラブルシューティング ガイド** を参照してください。
 
 ## <a name="relevant-links"></a>関連するリンク
 
@@ -233,6 +233,6 @@ Windows Server に十分な空き容量がある場合は、コマンドを再�
 
 Azure File Sync のコンテンツ:
 
-* [AFS の概要](https://aka.ms/AFS)
+* [AFS の概要](./storage-sync-files-planning.md)
 * [AFS デプロイ ガイド](storage-files-deployment-guide.md)
 * [AFS のトラブルシューティング](storage-sync-files-troubleshoot.md)

@@ -1,18 +1,20 @@
 ---
 title: テンプレート内の出力
-description: Azure Resource Manager テンプレートで出力値を定義する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 11/24/2020
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460026"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964016"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの出力
+# <a name="outputs-in-arm-templates"></a>ARM テンプレート内の出力
 
-この記事では、Azure Resource Manager テンプレートで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合は `outputs` を使用します。
+
+各出力値の形式は、いずれかの[データ型](template-syntax.md#data-types)と一致している必要があります。
 
 ## <a name="define-output-values"></a>出力値の定義
 
@@ -29,7 +31,7 @@ ms.locfileid: "79460026"
 
 ## <a name="conditional-output"></a>条件付き出力
 
-outputs セクションでは、値を条件付きで返すことができます。 通常、リソースを[条件付きでデプロイ](conditional-resource-deployment.md)した場合に出力で条件を使用します。 次の例は、新しくデプロイされたかどうかに基づいて、パブリック IP アドレスのリソース ID を条件付きで返す方法を示しています。
+`outputs` セクションでは、値を条件付きで返すことができます。 通常、リソースを[条件付きでデプロイ](conditional-resource-deployment.md)した場合は `outputs` で `condition` を使用します。 次の例は、新しくデプロイされたかどうかに基づいて、パブリック IP アドレスのリソース ID を条件付きで返す方法を示しています。
 
 ```json
 "outputs": {
@@ -45,7 +47,7 @@ outputs セクションでは、値を条件付きで返すことができます
 
 ## <a name="dynamic-number-of-outputs"></a>動的な出力の数
 
-場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 **copy** 要素を使用することで、可変数の値を返すことができます。
+場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 `copy` 要素を使用することで、可変数の値を返すことができます。
 
 ```json
 "outputs": {
@@ -59,7 +61,7 @@ outputs セクションでは、値を条件付きで返すことができます
 }
 ```
 
-詳細については、「[Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)」を参照してください。
+詳細については、「[ARM テンプレートでの出力の反復処理](copy-outputs.md)」を参照してください。
 
 ## <a name="linked-templates"></a>リンク済みテンプレート
 
@@ -110,12 +112,12 @@ az deployment group show \
 
 次の例は、出力を使用するためのシナリオを示しています。
 
-|Template  |説明  |
+|テンプレート  |説明  |
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 複合変数を作成し、それらの値を出力します。 リソースはデプロイしません。 |
 |[パブリック IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | パブリック IP アドレスを作成し、リソース ID を出力します。 |
 |[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 前述のテンプレートにリンクします。 ロード バランサーの作成時に出力内のリソース ID を使用します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* 出力に使用できるプロパティの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」をご覧ください。
+* 出力に使用できるプロパティの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

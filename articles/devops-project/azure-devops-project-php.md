@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233790"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588966"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Azure DevOps Starter を使用して PHP 用の CI/CD パイプラインを作成する
 
@@ -64,9 +64,9 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
  DevOps Starter によって、Azure Repos または GitHub に Git リポジトリが作成されます。 リポジトリを表示し、アプリケーションにコード変更を加えるには、次の手順に従います。
 
-1. DevOps Starter ダッシュボードの左側にあるマスターブランチのリンクを選択します。 このリンクは、新しく作成された Git リポジトリのビューを開きます。
+1. DevOps Starter ダッシュボードの左側にあるメイン ブランチのリンクを選択します。 このリンクは、新しく作成された Git リポジトリのビューを開きます。
 
-1. リポジトリのクローン URL を表示するには、ブラウザーの右上から **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスターブランチに直接コード変更を行い、コミットします。
+1. リポジトリのクローン URL を表示するには、ブラウザーの右上から **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してメイン ブランチに直接コード変更を行い、コミットします。
 
 1. 左側で、**resources/views/welcome.blade.php** ファイルに移動します。
 
@@ -118,11 +118,11 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで**削除**機能を使用します。
+Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
 CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [CD プロセスをカスタマイズする](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

@@ -1,14 +1,14 @@
 ---
 title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-ms.date: 07/06/2020
+ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041916"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949498"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure 管理の領域とは
 
@@ -18,7 +18,9 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 
 次の図は、アプリケーションまたはリソースを維持するために必要な管理のさまざまな領域を示しています。 これらのさまざまな領域は、ライフ サイクルとして考えることができます。 リソースの寿命全体での継続的な継承において、各領域が必要になります。 このリソースのライフサイクルは初期のデプロイから始まり、継続的な運用を経て、最後には廃止されます。
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure における管理の規範" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure における管理の規範の図。" border="false":::
+   Azure での管理とガバナンスをサポートするサービスの輪である、移行、セキュリティ、保護、監視、構成、およびガバナンスの要素を示す図。 セキュリティには、サブ項目としてセキュリティ管理と脅威の防止があります。 保護には、サブ項目としてバックアップとディザスター リカバリーがあります。 監視には、サブ項目としてアプリ、インフラストラクチャ、ネットワークの監視、および Log Analytics と診断があります。 構成には、サブ項目として構成、更新管理、オートメーション、およびスクリプトがあります。 ガバナンスには、サブ項目としてポリシー管理とコスト管理があります。
+:::image-end:::
 
 1 つの Azure サービスが、特定の管理領域の要件を完全に満たすことはありません。 代わりに、各領域は、複数のサービスの連携によって実現されます。 Application Insights などの一部のサービスは、ターゲットを絞った Web アプリケーション向けの監視機能を提供します。 Azure Monitor ログなどのその他のサービスは、その他のサービスの管理データを保存します。 この機能を使用すると、各種のサービスによって収集したさまざまな種類のデータを分析できます。
 
@@ -42,7 +44,7 @@ Azure におけるガバナンスは、主に 2 つのサービスで実装さ�
 
 ## <a name="secure"></a>セキュリティで保護
 
-リソースおよびデータのセキュリティを管理する セキュリティ プログラムには、脅威の評価、データの収集と分析、およびアプリケーションとリソースの準拠が必要になります。 セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 Azure リソースのセキュリティ保護に関する包括的な情報とガイダンスについては、「[Azure Security の概要](../security/fundamentals/overview.md)」を参照してください。
+リソースおよびデータのセキュリティを管理する セキュリティ プログラムには、脅威の評価、データの収集と分析、およびアプリケーションとリソースの準拠が必要になります。 セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-introduction.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 Azure リソースのセキュリティ保護に関する包括的な情報とガイダンスについては、「[Azure Security の概要](../security/fundamentals/overview.md)」を参照してください。
 
 ## <a name="protect"></a>保護
 

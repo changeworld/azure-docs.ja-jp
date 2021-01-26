@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116803"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063792"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -28,11 +28,11 @@ ms.locfileid: "88116803"
 次のチェックリストは、アプリケーションが [Microsoft ID プラットフォーム](./index.yml)と効果的に統合されていることを確認するために使用します。
 
 > [!TIP]
-> Azure portal の"*統合アシスタント*" は、これらのベスト プラクティスと推奨事項の多くを適用するのに役立ちます。 アシスタントの使用を開始するには、Azure portal で [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) を選択し、 **[Integration assistant (preview)]\(統合アシスタント (プレビュー)\)** メニュー項目を選択します。
+> Azure portal の"*統合アシスタント*" は、これらのベスト プラクティスと推奨事項の多くを適用するのに役立ちます。 アシスタントの使用を開始するには、Azure portal で [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) を選択し、 **[統合アシスタント]** メニュー項目を選択します。
 
 ## <a name="basics"></a>基本
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft プラットフォーム ポリシーを読んで理解します](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)。 ユーザーとプラットフォームを保護するために設計時に要点をまとめた条項にアプリケーションが従っていることを確認します。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft プラットフォーム ポリシーを読んで理解します](/legal/microsoft-identity-platform/terms-of-use)。 ユーザーとプラットフォームを保護するために設計時に要点をまとめた条項にアプリケーションが従っていることを確認します。
 
 ## <a name="ownership"></a>所有権
 

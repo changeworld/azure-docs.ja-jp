@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bfcfa4c5ed57489c56ebf845d238198944150a96
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020288"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202890"
 ---
 # <a name="entities"></a>エンティティ
 
@@ -21,7 +21,7 @@ ms.locfileid: "89020288"
 
 エンティティには、位置、回転、および拡大縮小によって定義された変換機能があります。 エンティティは、単独では注目すべき機能はありません。 代わりに、エンティティにアタッチされるコンポーネントによって動作が追加されます。 たとえば、[CutPlaneComponent](../overview/features/cut-planes.md) をアタッチすると、エンティティの位置に切断面が作成されます。
 
-エンティティ自体の最も重要な側面は、階層と、結果として生じる階層の変換です。 たとえば、共有されている 1 つの親エンティティに複数のエンティティが子としてアタッチされている場合、親エンティティの変換を変更することによって、これらのエンティティをすべて同時に移動、回転、および拡大縮小することができます。
+エンティティ自体の最も重要な側面は、階層と、結果として生じる階層の変換です。 たとえば、共有されている 1 つの親エンティティに複数のエンティティが子としてアタッチされている場合、親エンティティの変換を変更することによって、これらのエンティティをすべて同時に移動、回転、および拡大縮小することができます。 また、エンティティの `enabled` 状態を使用して、階層内のサブ グラフ全体でレイ キャストへの応答と可視性を無効にできます。
 
 エンティティはその親によって一意に所有されます。つまり、親が `Entity.Destroy()` で破棄されると、その子と、接続されているすべての[コンポーネント](components.md)も破棄されます。 したがって、シーンからモデルを削除するには、`AzureSession.Actions.LoadModelAsync()` またはその SAS バリアント `AzureSession.Actions.LoadModelFromSASAsync()` によって返される、モデルのルート ノードに対して `Destroy` を呼び出します。
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>空間境界のクエリ
 
 境界のクエリは、1 つのエンティティをルートとして使用して、完全なオブジェクト階層で機能する非同期呼び出しです。 [オブジェクトの境界](object-bounds.md)に関する専用の章をご覧ください。
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 オブジェクトがメタデータを保持していない場合でも、クエリは成功します。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# Entity クラス](/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager.CreateEntity()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C++ Entity クラス](/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager::CreateEntity()](/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523997"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238090"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
 カスタム翻訳ツールは、Translator サービスの機能です。ユーザーは、これを使用して、Translator (バージョン 3 のみ) でテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズできます。
 
-この機能を [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
+この機能を [Cognitive Services Speech](../speech-service/index.yml) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
 
 ## <a name="custom-translator"></a>Custom Translator
 
@@ -37,31 +37,9 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 適切な種類と量のトレーニング データがあれば、Custom Translator を使用することで、5 から 10 の間あるいはそれ以上の BLEU ポイントの翻訳品質を期待できることも珍しくありません。
 
-使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](https://aka.ms/CustomTranslatorDocs)」(Custom Translator ユーザー ガイド) をご覧ください。
-
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
-
-> [!NOTE]
-> 従来の Microsoft Translator Hub は、2019 年 5 月 17 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
-
-## <a name="custom-translator-versus-hub"></a>Custom Translator と Hub
-
-| 特徴量 | ハブ | Custom Translator |
-| ------- | :-: | :---------------: |
-|カスタマイズ機能の状態    | 一般公開    | 一般公開 |
-| Text API バージョン    | V2 のみ    | V3 のみ |
-| SMT のカスタマイズ    | はい    | いいえ |
-| NMT のカスタマイズ    | いいえ    | はい |
-| 新しい統合 Speech Services のカスタマイズ    | いいえ    | ○ |
-| [トレースなし](https://www.aka.ms/notrace) | はい    | [はい] |
-
-## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
-
-> [!NOTE]
-> 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator v2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator v3.0 では、これらのメソッドはサポートされません。
+使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](./custom-translator/overview.md)」(Custom Translator ユーザー ガイド) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Custom Translator を使用してカスタマイズされた言語システムを設定します](https://aka.ms/CustomTranslatorDocs)
+> [Custom Translator を使用してカスタマイズされた言語システムを設定します](./custom-translator/overview.md)

@@ -1,15 +1,15 @@
 ---
 title: Resource Manager テンプレートを使用して新しい推奨事項に合わせて Azure Advisor アラートを作成する
-description: 新しい推奨事項に合わせて Azure Advisor アラートを作成する
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Advisor からの新しい推奨事項に合わせてアラートを設定する方法について説明します。
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f03bf6eaf4f3045e00fc67efe6faa9f53d962089
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057819"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91629898"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して新しい推奨事項に基づいて Azure Advisor アラートを作成する
 
@@ -25,7 +25,7 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
 - 影響レベル
 - 推奨事項の種類
 
-アラートがトリガーされたときに実行されるアクションは、次の方法で構成することもできます。  
+アラートがトリガーされたときに実行されるアクションは、次の方法で構成することもできます。
 
 - 既存のアクション グループを選択する
 - 新しいアクション グループを作成する
@@ -69,11 +69,12 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
     {
       "comments": "Action Group",
       "type": "microsoft.insights/actionGroups",
-      "name": "[parameters('actionGroups_name')]",
       "apiVersion": "2019-06-01",
+      "name": "[parameters('actionGroups_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "dependsOn": [],
+      "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroups_name')]",
         "enabled": true,
@@ -85,17 +86,16 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
         ],
         "smsReceivers": [],
         "webhookReceivers": []
-      },
-      "dependsOn": []
+      }
     },
     {
       "comments": "Azure Advisor Activity Log Alert",
       "type": "microsoft.insights/activityLogAlerts",
-      "name": "[parameters('activityLogAlerts_name')]",
       "apiVersion": "2017-04-01",
+      "name": "[parameters('activityLogAlerts_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "tags": {},
       "properties": {
         "scopes": [
           "[variables('alertScope')]"

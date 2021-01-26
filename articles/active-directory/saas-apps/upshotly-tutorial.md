@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 1/7/2020
+ms.date: 1/5/2021
 ms.author: jeedes
-ms.openlocfilehash: 1dbcd2bd997872820e87c9d8c2e239c4324e9ce6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6c76f136c6b986a9fcbf4463654d1f9cc5cb80e
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532842"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046194"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Upshotly の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88532842"
 * Upshotly にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Upshotly に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,33 +43,33 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Azure AD への Upshotly の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Upshotly を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Upshotly**」と入力します。
 1. 結果のパネルから **[Upshotly]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-upshotly"></a>Upshotly の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-upshotly"></a>Upshotly の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Upshotly に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Upshotly の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Upshotly に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Upshotly に対する Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Upshotly SSO の構成](#configure-upshotly-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Upshotly テスト ユーザーの作成](#create-upshotly-test-user)** - Upshotly で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    1. **[Upshotly テスト ユーザーの作成](#create-upshotly-test-user)** - Upshotly で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Upshotly** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Upshotly** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (鉛筆) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,44 +110,52 @@ Upshotly に対する Azure AD SSO を構成してテストするには、次の
 1. アプリケーションの一覧で **[Upshotly]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-upshotly-sso"></a>Upshotly SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、Upshotly 企業サイトに管理者としてサインインします。
+1. Upshotly 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Upshotly のセットアップ]** をクリックすると、Upshotly アプリケーションに移動します。 そこから、管理者の資格情報を入力して Upshotly にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 4 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Upshotly を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Upshotly 企業サイトに管理者としてサインインします。
 
 1. **[User Profile]\(ユーザー プロファイル\)** をクリックし、 **[Admin]\(管理者\) > [SSO]** の順に移動して、以下の手順を実行します。
 
     ![Upshotly の構成](./media/upshotly-tutorial/config1.png)
 
-    a. **会社 ID** 値をコピーし、この**会社 ID** 値を使用して、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** にある**会社 ID** 値を置き換えます。
+    a. **会社 ID** 値をコピーし、この **会社 ID** 値を使用して、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** にある **会社 ID** 値を置き換えます。
 
-    b. Azure portal からダウンロードした**フェデレーション メタデータ XML** をメモ帳で開き、メタデータ XML の内容をコピーして、 **[XML metadata]\(XML メタデータ\)** ボックスに貼り付けます。
+    b. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、メタデータ XML の内容をコピーして、 **[XML metadata]\(XML メタデータ\)** ボックスに貼り付けます。
 
 ### <a name="create-upshotly-test-user"></a>Upshotly テスト ユーザーの作成
 
-このセクションでは、Upshotly Edge Cloud で B.Simon というユーザーを作成します。  [Upshotly クライアント サポート チーム](mailto:support@upshotly.com)と協力して、Upshotly Edge Cloud プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Upshotly Edge Cloud で B.Simon というユーザーを作成します。 [Upshotly クライアント サポート チーム](mailto:support@upshotly.com)と連携して、Upshotly Edge Cloud プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Upshotly] タイルをクリックすると、SSO を設定した Upshotly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Upshotly のサインオン URL にリダイレクトされます。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Upshotly のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Upshotly に自動的にサインインされます
 
-- [Azure AD で Upshotly を試す](https://aad.portal.azure.com/)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Upshotly] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Upshotly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+Upshotly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

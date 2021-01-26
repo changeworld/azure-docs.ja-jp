@@ -1,19 +1,19 @@
 ---
 title: 価格および課金モデル
-description: Azure Logic Apps の価格および課金モデルのしくみに関する概要
+description: Azure Logic Apps の価格および課金のしくみに関する概要
 services: logic-apps
 ms.suite: integration
 author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/07/2020
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078154"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673112"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -45,7 +45,7 @@ ms.locfileid: "87078154"
 
 "[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、分離された方法が用意されています。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 ISE を作成する場合、作成時にのみ、異なる[価格レート](https://azure.microsoft.com/pricing/details/logic-apps)の [ISE レベルまたは "SKU"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) を選択できます。
 
-* **Premium** ISE:この SKU の基本単位の容量は固定されていますが、さらにスループットが必要な場合は、ISE の作成中または作成後に[スケール ユニットを追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 ISE の制限の詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#integration-service-environment-ise)に関するページを参照してください。
+* **Premium** ISE:この SKU の基本単位の容量は固定されていますが、さらにスループットが必要な場合は、ISE の作成中または作成後に [スケール ユニットを追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 ISE の制限の詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#integration-service-environment-ise)に関するページを参照してください。
 
 * **Developer** ISE:この SKU にはスケールアップの機能、サービス レベル アグリーメント (SLA)、および公開されている制限はありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
 
@@ -63,13 +63,13 @@ ms.locfileid: "87078154"
 
   * **Premium** ISE SKU:単一の [Standard レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
-  * **Developer** ISE SKU:単一の[Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
+  * **Developer** ISE SKU:単一の [Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
-  各 ISE SKU の統合アカウントは、合計で 5 つに制限されています。 コストを追加することで、ISE SKU に基づいて、さらに多くの統合アカウントを作成できます。
+  コストを追加すれば、ISE の統合アカウントを[上限まで増やす](logic-apps-limits-and-config.md#integration-account-limits)ことができます。 
 
-  * **Premium** ISE SKU:最大 4 つの追加の Standard アカウント。 無料または Basic アカウントはありません。
+  * **Premium** ISE SKU:最大 19 個の追加の Standard アカウント。 Free または Basic アカウントは使用できません。
 
-  * **Developer** ISE SKU:最大 4 つの追加の Standard アカウント、または合計で最大 5 つの標準 Standard アカウント。 Basic アカウントはありません。
+  * **Developer** ISE SKU:無料アカウントを既にお持ちの場合は、Standard アカウントを最大 19 個追加でご利用いただくことができます。また、無料アカウントをお持ちでない場合は、Standard アカウントを合計 20 個までご利用いただけます。 Basic アカウントは使用できません。
 
   統合アカウントの制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)に関するページをご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
 
@@ -118,7 +118,7 @@ Azure Logic Apps の [B2B および EDI 機能](logic-apps-enterprise-integratio
 
 Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、リージョンの可用性、スループット、および使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
-[Premium または Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のいずれかの ["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、お使いの ISE で合計 5 つの統合アカウントを持つことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
+[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合、ISE では追加コストなしで 1 つの統合アカウントを使用できます。ただし、含まれるアカウントの種類は [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) によって異なります。 [コストを追加すれば](#fixed-pricing)、ISE の統合アカウントを[統合アカウントの上限まで増やす](logic-apps-limits-and-config.md#integration-account-limits)ことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 Free、Basic、または Standard の統合アカウントから選択するには、次のユース ケースの説明を確認してください。
 
@@ -137,6 +137,7 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 ご自身のロジック アプリのストレージ消費量を監視するために、以下を実行できます。
 
 * ロジック アプリで毎月使用されているストレージ ユニットの数 (GB 単位) を表示します。
+
 * ロジック アプリの実行履歴内の特定のアクションの入力と出力のサイズを表示します。
 
 <a name="storage-consumption"></a>
@@ -150,6 +151,9 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 1. 右側のウィンドウで、 **[グラフのタイトル]** の下の **[メトリック]** の一覧から **[ストレージ使用実行の利用状況に応じた課金]** を選択します。
 
    このメトリックでは、請求対象となる 1 か月あたりのストレージ消費ユニットの数 (GB 単位) が示されます。
+
+   > [!NOTE]
+   > ストレージの使用量が 500 MB 未満の実行は、[監視] ビューに表示されない場合がありますが、課金の対象です。
 
 <a name="input-output-sizes"></a>
 
@@ -165,7 +169,10 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 
 1. **[ロジック アプリの実行の詳細]** ウィンドウで、各アクションの状態と持続時間を一覧表示しているアクション テーブルから、表示するアクションを選択します。
 
-1. **[ロジック アプリのアクション]** ウィンドウで、それぞれ**入力リンク**と**出力リンク**の下に表示されるアクションの入力と出力のサイズを探します。
+1. **[ロジック アプリのアクション]** ウィンドウで、アクションの入力と出力のサイズを確認します。 **[入力リンク]** と **[出力リンク]** で、それらの入力と出力へのリンクを確認します。
+
+   > [!NOTE]
+   > ループについては、上位レベルのアクションによってのみ、入力と出力のサイズが表示されます。 入れ子になったループ内のアクションについては、入力と出力のサイズはゼロでリンクは表示されません。
 
 ## <a name="next-steps"></a>次のステップ
 

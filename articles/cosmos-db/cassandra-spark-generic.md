@@ -8,21 +8,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260493"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090513"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API に接続する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 この記事は、Spark からの Azure Cosmos DB Cassandra API 統合に関する一連の記事の 1 つです。 この記事では、接続、データ定義言語 (DDL) 操作、基本的なデータ操作言語 (DML) 操作、および Spark からの高度な Azure Cosmos DB Cassandra API 統合について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure Cosmos DB Cassandra API アカウントのプロビジョニング](create-cassandra-dotnet.md#create-a-database-account)
 
-* 任意の Spark 環境 [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | その他] をプロビジョニングします。
+* 任意の Spark 環境 [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) | その他] をプロビジョニングします。
 
 ## <a name="dependencies-for-connectivity"></a>接続の依存関係
 * **Cassandra 用 Spark コネクタ:** Spark コネクタは、Azure Cosmos DB Cassandra API に接続するために使用されます。  [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) で、実際の Spark 環境の Spark および Scala のバージョンと互換性のあるコネクタのバージョンを指定して使用します。

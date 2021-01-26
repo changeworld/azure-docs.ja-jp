@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
 ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050034"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Azure Policy を使用してクラスター構成を大規模に適用する (プレビュー)

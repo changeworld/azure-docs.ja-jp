@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084530"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822167"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
@@ -80,7 +80,7 @@ HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apach
     > [!NOTE]  
     > %spark2 インタープリターは、いずれの HDInsight バージョンの Zeppelin Notebook でもサポートされていません。また、%sh インタープリターは HDInsight 4.0 以降ではサポートされなくなります。
 
-5. `hvac` テーブルに対して Spark SQL ステートメントを実行できます。 次のクエリを新しい段落に貼り付けます。 このクエリでは、建物の ID が取得されます。 また、特定の日の各建物の目標温度と実温度の差も取得されます。 **Shift + Enter**キーを押します。
+5. `hvac` テーブルに対して Spark SQL ステートメントを実行できます。 次のクエリを新しい段落に貼り付けます。 このクエリでは、建物の ID が取得されます。 また、特定の日の各建物の目標温度と実温度の差も取得されます。 **Shift + Enter** キーを押します。
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apach
 
     先頭にある **%sql** ステートメントは、Livy Scala インタープリターを使用するように Notebook に指示します。
 
-6. **棒グラフ** アイコンを選択し、表示を変更します。  **棒グラフ**を選択した後に表示される **[設定]** で、 **[キー]** と **[値]** を選択できます。  次のスクリーンショットでは出力を示します。
+6. **棒グラフ** アイコンを選択し、表示を変更します。  **棒グラフ** を選択した後に表示される **[設定]** で、 **[キー]** と **[値]** を選択できます。  次のスクリーンショットでは出力を示します。
 
     ![ノートブックを使用した Spark SQL ステートメントの実行 1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "ノートブックを使用した Spark SQL ステートメントの実行 1")
 
@@ -100,7 +100,7 @@ HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apach
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    このスニペットを新しい段落に貼り付けて、 **Shift + Enter**キーを押します。 **[Temp]** ドロップダウン リストから **[65]** を選択します。
+    このスニペットを新しい段落に貼り付けて、 **Shift + Enter** キーを押します。 **[Temp]** ドロップダウン リストから **[65]** を選択します。
 
 8. **棒グラフ** アイコンを選択し、表示を変更します。  次に、 **[設定]** を選択し、次の変更を行います。
 
@@ -137,7 +137,7 @@ HDInsight 上の Apache Spark クラスター内の Zeppelin Notebook では、�
 
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。
 
-    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Use external packages with Jupyter notebook")
+    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Jupyter Notebook で外部のパッケージを使用する")
 
     c. 3 つの値をコロン ( **:** ) で区切って連結します。
 

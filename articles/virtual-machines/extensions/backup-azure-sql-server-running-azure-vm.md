@@ -1,24 +1,24 @@
 ---
 title: Azure VM で実行されている SQL Server 用の Azure Backup
 description: この記事では、Azure 仮想マシンで実行されている SQL Server で Azure Backup を登録する方法について説明します。
-services: backup
 author: dcurwin
 manager: carmonm
-ms.service: backup
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511179"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490732"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 
 さまざまなオファリングがある中、Azure Backup では、Azure VM で実行されている SQL Server などのワークロードをバックアップするためのサポートが提供されます。 SQL アプリケーションは Azure VM 内で実行されているため、バックアップ サービスがアプリケーションにアクセスして必要な詳細をフェッチするにはアクセス許可が必要です。
-そのため、Azure Backup では、ユーザーによってトリガーされる登録プロセスの間に、SQL Server が実行されている VM に、**AzureBackupWindowsWorkload** 拡張機能がインストールされます。
+そのため、Azure Backup では、ユーザーによってトリガーされる登録プロセスの間に、SQL Server が実行されている VM に、 **AzureBackupWindowsWorkload** 拡張機能がインストールされます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -109,7 +109,7 @@ $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-そのコマンドによってこのリソースの**バックアップ コンテナー**が返され、状態は**登録済み**になります。
+そのコマンドによってこのリソースの **バックアップ コンテナー** が返され、状態は **登録済み** になります。
 
 ## <a name="next-steps"></a>次のステップ
 

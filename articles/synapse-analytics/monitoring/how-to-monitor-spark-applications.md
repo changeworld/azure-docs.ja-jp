@@ -1,22 +1,22 @@
 ---
 title: Synapse Studio を使用して Apache Spark アプリケーションを監視する方法
-description: Synapse Studio を使用して Apache Spark アプリケーションを監視します。
+description: Synapse Studio を使用して Apache Spark アプリケーションを監視する方法について説明します。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 5f9733866e85d79bdb85b8a24d1878e1169c2479
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385587"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586042"
 ---
-# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Synapse Studio (プレビュー) を使用して Apache Spark アプリケーションを監視する
+# <a name="how-to-use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する方法
 
 Azure Synapse Analytics では、Spark を使用して、ワークスペース内の Spark プールでノートブック、ジョブ、その他の種類のアプリケーションを実行できます。
 
@@ -34,15 +34,13 @@ Azure Synapse Analytics では、Spark を使用して、ワークスペース�
 
 **[Apache Spark applications]\(Apache Spark アプリケーション\)** を選択して、Apache Spark アプリケーションの一覧を表示します。
 
- ![Spark アプリケーションを選択する](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
+ ![Spark アプリケーションを選択する](./media/how-to-monitor-spark-applications/monitor-hub-nav-spark-applications.png)
 
 ## <a name="filter-your-apache-spark-applications"></a>Apache Spark アプリケーションをフィルター処理する
 
 Apache Spark アプリケーションの一覧を関心のあるものだけにフィルター処理することができます。 画面の上部にあるフィルターを使用して、フィルター処理を行うフィールドを指定できます。
 
 たとえば、ビューをフィルター処理して、名前に "sales" を含む Apache Spark アプリケーションのみを表示することができます。
-
-![[フィルター] ボタン](./media/common/filter-button.png)
 
 ![サンプルのフィルター](./media/how-to-monitor-spark-applications/filter-example.png)
 

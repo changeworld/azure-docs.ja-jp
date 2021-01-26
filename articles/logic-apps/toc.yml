@@ -61,10 +61,22 @@
       items:
         - name: あらかじめ用意されているテンプレートから作成する
           href: logic-apps-create-logic-apps-from-templates.md
+        - name: 自動タスクを作成して Azure リソースを管理する
+          href: create-automation-tasks-azure-resources.md
         - name: BizTalk Services から移行する
           href: logic-apps-move-from-mabs.md
         - name: Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
           href: export-from-microsoft-flow-logic-app-template.md
+        - name: Azure Logic Apps プレビュー
+          items:
+            - name: Azure Logic Apps プレビューの概要
+              href: logic-apps-overview-preview.md
+            - name: ステートフルとステートレス ワークフローの作成 - Azure portal
+              href: create-stateful-stateless-workflows-azure-portal.md
+            - name: ステートフルとステートレス ワークフローの作成 - Visual Studio Code
+              href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: Power Automate と Power Apps からロジック アプリを呼び出す
+          href: call-from-power-automate-power-apps.md
         - name: ワークフローの実行のコントロール
           items:
             - name: 条件付きステートメント
@@ -95,7 +107,7 @@
           href: logic-apps-batch-process-send-receive-messages.md
         - name: メッセージを順番に送信する - シーケンシャルなコンボイ
           href: send-related-messages-sequential-convoy.md
-        - name: JSON 定義の作成
+        - name: JSON でワークフロー定義を作成する
           href: logic-apps-author-definitions.md
         - name: コンテンツ タイプを処理する
           href: logic-apps-content-type.md
@@ -103,6 +115,8 @@
           href: logic-apps-exception-handling.md
         - name: 大きいメッセージを処理する
           href: logic-apps-handle-large-messages.md
+        - name: SQL コネクタの実行時間の長いストアド プロシージャを処理する
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: 調整の問題または 429 エラーを処理する
           href: handle-throttling-problems-429-errors.md
         - name: カスタム コネクタを開発する
@@ -139,6 +153,7 @@
       items:
         - name: 統合アカウントを作成する
           href: logic-apps-enterprise-integration-create-integration-account.md
+          displayName: 'Azure CLI, az logic integration-account create, integration-account'
         - name: 取引先
           href: logic-apps-enterprise-integration-partners.md
         - name: アグリーメント
@@ -166,8 +181,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: UNH2.5 セグメントが含まれた EDIFACT ファイルの処理
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: RosettaNet メッセージの交換
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: RosettaNet メッセージの交換
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: X12 メッセージの交換
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -312,7 +327,7 @@
         - name: Logic Apps を管理する - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: 統合アカウントを管理する
-          href: ./logic-apps-enterprise-integration-create-integration-account.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: 統合サービス環境を管理する
           href: ise-manage-integration-service-environment.md
         - name: ロジック アプリのリソースを移動する
@@ -329,7 +344,7 @@
           href: logic-apps-azure-resource-manager-templates-overview.md
         - name: Logic Apps テンプレートの作成
           href: logic-apps-create-azure-resource-manager-templates.md
-        - name: Logic Apps テンプレートのデプロイ
+        - name: ロジック アプリ テンプレートのデプロイ
           href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: モニター
       items:
@@ -337,6 +352,8 @@
           href: monitor-logic-apps.md
         - name: Azure Monitor ログでロジック アプリを監視する
           href: monitor-logic-apps-log-analytics.md
+        - name: Azure Security Center でロジック アプリを監視する
+          href: healthy-unhealthy-resource.md
         - name: Azure Monitor ログで B2B メッセージを監視する
           href: monitor-b2b-messages-log-analytics.md
         - name: 監視と追跡クエリを作成する

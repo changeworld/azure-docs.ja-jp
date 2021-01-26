@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: cf1bf9e05f83610fd43146cf4c99c5006fdc97b3
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171463"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556462"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
 
@@ -24,12 +24,12 @@ ms.locfileid: "87171463"
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能を使用するには、最新の SQL Server Management Studio (SSMS) を[ダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)してインストールします。 バージョンのサポートの詳細は、次のとおりです。
+この機能を使用するには、最新の SQL Server Management Studio (SSMS) を[ダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)してインストールします。 バージョンのサポートの詳細は、次のとおりです。
 
 - SSISDB またはファイル システム内のパッケージを実行するには、SSMS バージョン 18.5 以降をインストールします。
 - パッケージ ストア内のパッケージを実行するには、SSMS バージョン 18.6 以降をインストールします。
 
-また、Azure Data Factory で [Azure SSIS 統合ランタイムをプロビジョニングする](tutorial-create-azure-ssis-runtime-portal.md)必要があります。 SQL Managed Instance をエンドポイント サーバーとして使用します。
+また、Azure Data Factory で [Azure SSIS 統合ランタイムをプロビジョニングする](./tutorial-deploy-ssis-packages-azure.md)必要があります。 SQL Managed Instance をエンドポイント サーバーとして使用します。
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>SSISDB で SSIS パッケージを実行する
 
@@ -96,7 +96,7 @@ ms.locfileid: "87171463"
    1. パッケージ ファイルがパスワードによって暗号化されている場合は、 **[暗号化用パスワード]** を選択して、パスワードを入力します。
 1. SSIS パッケージを実行するための構成ファイルが必要な場合は、 **[構成]** タブ上で、構成ファイルのパスを入力します。
    構成を Azure Files に保存する場合、その構成のパスは **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`** になります。
-1. **[実行オプション]** タブで、SSIS パッケージを実行するために **Windows 認証**または **32 ビット ランタイム**のどちらを使用するかを選択できます。
+1. **[実行オプション]** タブで、SSIS パッケージを実行するために **Windows 認証** または **32 ビット ランタイム** のどちらを使用するかを選択できます。
 1. **[ログ]** タブでは、ログ ファイルを格納するためのログ パスおよび対応するログ アクセス資格情報を選択できます。 
    既定では、ログ パスはパッケージ フォルダー パスと同じであり、ログ アクセス資格情報はパッケージ アクセス資格情報と同じになります。
    ログを Azure Files に保存する場合、ログ記録のパスは **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`** になります。
@@ -132,7 +132,7 @@ ms.locfileid: "87171463"
    1. パッケージ ファイルがパスワードによって暗号化されている場合は、 **[暗号化用パスワード]** を選択して、パスワードを入力します。
 1. SSIS パッケージを実行するための構成ファイルが必要な場合は、 **[構成]** タブ上で、構成ファイルのパスを入力します。
    構成を Azure Files に保存する場合、その構成のパスは **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`** になります。
-1. **[実行オプション]** タブで、SSIS パッケージを実行するために **Windows 認証**または **32 ビット ランタイム**のどちらを使用するかを選択できます。
+1. **[実行オプション]** タブで、SSIS パッケージを実行するために **Windows 認証** または **32 ビット ランタイム** のどちらを使用するかを選択できます。
 1. **[ログ]** タブでは、ログ ファイルを格納するためのログ パスおよび対応するログ アクセス資格情報を選択できます。
    既定では、ログ パスはパッケージ フォルダー パスと同じであり、ログ アクセス資格情報はパッケージ アクセス資格情報と同じになります。
    ログを Azure Files に保存する場合、ログ記録のパスは **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`** になります。
@@ -159,4 +159,4 @@ SQL Managed Instance エージェント ジョブからパッケージの実行�
 1. **executionId** に基づいて、対応する操作を停止します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory を使用して、SSIS パッケージのスケジュールを設定することもできます。 詳細な手順については、[Azure Data Factory イベント トリガー](how-to-create-event-trigger.md)に関する記事を参照してください。 
+Azure Data Factory を使用して、SSIS パッケージのスケジュールを設定することもできます。 詳細な手順については、[Azure Data Factory イベント トリガー](how-to-create-event-trigger.md)に関する記事を参照してください。

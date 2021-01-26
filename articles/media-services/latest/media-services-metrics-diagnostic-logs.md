@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296653"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685190"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Monitor 経由で Media Services のメトリックと診断ログを監視する
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Monitor を使用した Media Services のメトリックと診断ログを監視する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -67,8 +67,10 @@ Media Services では、次のリソースの監視メトリックがサポー�
 |Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
 |エグレス|エグレス|ストリーミング エンドポイントあたりの合計エグレス バイト/分。|
 |SuccessE2ELatency|成功したエンド ツー エンドの待機時間|ストリーミング エンドポイントが要求を受信してから応答の最後のバイトが送信されるまでの期間。|
+|CPU 使用率| | premium ストリーミング エンドポイントの CPU 使用率。 このデータは、standard ストリーミング エンドポイントでは使用できません。 |
+|エグレス帯域幅 | | エグレス帯域幅 (ビット/秒)。|
 
-### <a name="why-would-i-want-to-use-metrics"></a>メトリックを使用する理由
+### <a name="metrics-are-useful"></a>メトリックは役に立つ
 
 次に示すいくつかの例は、Media Services のメトリックの監視がアプリの実行状況を理解するためにどのように役立つかを示しています。 Media Services のメトリックを使用して対処できる内容は次のとおりです。
 
@@ -79,6 +81,8 @@ Media Services では、次のリソースの監視メトリックがサポー�
 * 失敗した要求の内訳を表示し、エラーの原因を確認する方法。
 * パッケージャーからプルされている DASH または HLS 要求の数を確認する方法。
 * アラートを設定して、失敗した要求の数がしきい値に達したタイミングを把握する方法。
+
+同時実行性は、時間の経過と共に 1 つのアカウントで使用されるストリーミング エンドポイントの数の問題になります。 複数のプロトコルへのダイナミック パッケージ、複数の DRM 暗号化など、複雑な公開パラメーターを持つ複数の同時ストリーム間の関係に留意する必要があります。公開されたライブ ストリームが追加されるたびに、ストリーミング エンドポイントの CPU と出力帯域幅が増えます。 この点を念頭に置き、Azure Monitor を使用してストリーミング エンドポイントの使用率 (CPU とエグレス容量) を注意深く監視し、適切にスケーリングしていることを確認する必要があります (または、同時実行性が非常に高くなっている場合は、トラフィックを複数のストリーミング エンドポイントに分割します)。
 
 ### <a name="example"></a>例
 

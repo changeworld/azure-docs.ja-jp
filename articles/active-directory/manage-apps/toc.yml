@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: シングル サインオン (SSO) とは
       href: what-is-single-sign-on.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: クイックスタート
   expanded: true
   items:
@@ -18,13 +20,15 @@
       href: add-application-portal-configure.md
     - name: アプリにユーザーを割り当てる
       href: add-application-portal-assign-users.md
-    - name: シングル サインオンを設定する
+    - name: SAML ベースのシングル サインオンの設定
       href: add-application-portal-setup-sso.md
+    - name: OIDC ベースのシングル サインオンの設定
+      href: add-application-portal-setup-oidc-sso.md
     - name: アプリを削除する
       href: delete-application-portal.md
 - name: チュートリアル
   items:
-    - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)
+    - name: アプリの統合に関するチュートリアル リスト
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
       href: application-proxy-add-on-premises-application.md
@@ -33,16 +37,12 @@
     - name: アプリケーション プロキシの Azure PowerShell サンプル
       href: application-proxy-powershell-samples.md
 - name: 概念
-  expanded: false
+  expanded: true
   items:
     - name: アプリ管理のベスト プラクティス
       href: application-management-fundamentals.md
     - name: 一般的なアプリ管理シナリオ
       href: common-scenarios.md
-    - name: テナントでのアプリの表示
-      href: application-types.md
-    - name: アプリへのユーザーの割り当て
-      href: ways-users-get-assigned-to-applications.md
     - name: クラウド アプリの統合の計画
       items:
         - name: アプリ統合の概要
@@ -51,14 +51,30 @@
           href: non-gallery-apps.md
         - name: マイ アプリのデプロイの計画
           href: access-panel-deployment-plan.md
-        - name: 開発者向けのガイダンス
-          href: developer-guidance-for-integrating-applications.md
     - name: シングル サインオン
       items:
-        - name: シングル サインオンのオプション
-          href: sso-options.md
         - name: シングル サインオンのデプロイを計画する
           href: plan-sso-deployment.md
+        - name: シングル サインオンのオプション
+          href: sso-options.md
+        - name: オンプレミス アプリでのシングル サインオン
+          href: application-proxy-config-sso-how-to.md
+        - name: OIDC ベースの SSO
+          href: configure-oidc-single-sign-on.md
+        - name: SAML ベースの SSO
+          href: configure-saml-single-sign-on.md
+        - name: SAML ベースの SSO (オンプレミス アプリ)
+          href: application-proxy-configure-single-sign-on-on-premises-apps.md
+        - name: パスワードベースの SSO
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: パスワード ベースの SSO (オンプレミス アプリ)
+          href: application-proxy-configure-single-sign-on-password-vaulting.md
+        - name: リンクベースの SSO
+          href: configure-linked-sign-on.md
+        - name: ヘッダー ベースの SSO (オンプレミス アプリ)
+          href: application-proxy-configure-single-sign-on-with-headers.md
+        - name: Kerberos ベースの SSO (オンプレミス アプリ)
+          href: application-proxy-configure-single-sign-on-with-kcd.md
         - name: ワンクリック SSO
           href: one-click-sso-tutorial.md
     - name: アプリケーションのセキュリティ
@@ -89,7 +105,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -100,28 +116,28 @@
 - name: 操作方法ガイド
   expanded: false
   items:
-    - name: Configure single sign-on
-      items:
-        - name: SAML ベースのシングル サインオンの構成
-          href: configure-saml-single-sign-on.md
-        - name: パスワードベースのサインオンの構成
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: リンクされたサインオンの構成
-          href: configure-linked-sign-on.md
     - name: ユーザーの割り当てとアプリへのアクセスの管理
       items:
-        - name: ユーザーの同意の構成
-          href: configure-user-consent.md
-        - name: 同意要求の管理と評価
-          href: manage-consent-requests.md
-        - name: テナント全体の管理者の同意を許可する
-          href: grant-admin-consent.md
-        - name: 管理者の同意ワークフローの構成 (プレビュー)
-          href: configure-admin-consent-workflow.md
+        - name: 同意とアクセス許可
+          items:
+            - name: ユーザーの同意の構成
+              href: configure-user-consent.md
+            - name: グループ所有者の同意を構成する
+              href: configure-user-consent-groups.md
+            - name: アクセス許可の分類を構成する
+              href: configure-permission-classifications.md
+            - name: アプリへの同意ポリシーを管理する
+              href: manage-app-consent-policies.md
+            - name: 管理者の同意ワークフローの構成 (プレビュー)
+              href: configure-admin-consent-workflow.md
+            - name: 同意要求の管理と評価
+              href: manage-consent-requests.md
+            - name: テナント全体の管理者の同意を許可する
+              href: grant-admin-consent.md
+            - name: アプリに付与されるアクセス許可の確認
+              href: manage-application-permissions.md
         - name: アプリのユーザー割り当ての管理
           href: assign-user-or-group-access-portal.md
-        - name: アプリに付与されるアクセス許可の確認
-          href: manage-application-permissions.md
         - name: マイ アプリでのコレクションの作成
           href: access-panel-collections.md
         - name: セルフサービス アプリ アクセスの使用
@@ -140,7 +156,7 @@
       items:
         - name: 移行リソース
           href: migration-resources.md
-        - name: Azure への ADFS アプリの移行
+        - name: Azure への AD FS アプリの移行
           href: migrate-adfs-apps-to-azure.md
         - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
           href: migrate-adfs-application-activity.md
@@ -170,24 +186,24 @@
           href: application-proxy-remove-personal-data.md
         - name: カスタム ドメインの構成
           href: application-proxy-configure-custom-domain.md
-        - name: アプリケーション プロキシを使用したシングル サインオン
+        - name: レガシ アプリのセキュリティ保護
           items:
-            - name: Kerberos の制約付き委任 (KCD)
-              href: application-proxy-configure-single-sign-on-with-kcd.md
-            - name: パスワード保管
-              href: application-proxy-configure-single-sign-on-password-vaulting.md
-            - name: ヘッダー
-              href: application-proxy-configure-single-sign-on-with-ping-access.md
-            - name: SAML SSO
-              href: application-proxy-configure-single-sign-on-on-premises-apps.md
-        - name: アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する
-          href: secure-hybrid-access.md
+            - name: Azure AD を使用した安全なハイブリッド アクセス
+              href: secure-hybrid-access.md
+            - name: F5 と Azure AD の統合
+              href: f5-aad-integration.md
+            - name: Azure IaaS での F5 BIG-IP VE のデプロイ
+              href: f5-bigip-deployment-guide.md
+            - name: パスワードレス VPN のための F5 Big-IP と Azure AD
+              href: f5-aad-password-less-vpn.md
         - name: 発行に関するチュートリアル
           items:
             - name: NDES サーバー上のアプリケーション プロキシとの統合
               href: active-directory-app-proxy-protect-ndes.md
+            - name: PingAccess を使用してアプリケーション プロキシと統合する
+              href: application-proxy-ping-access-publishing-guide.md
             - name: Azure AD Domain Services との統合
-              href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: Power BI との統合
               href: application-proxy-integrate-with-power-bi.md
             - name: Cloud App Security との統合
@@ -210,6 +226,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
           href: troubleshoot-saml-based-sso.md
+        - name: SAML ベースのシングル サインオンをデバッグする
+          href: debug-saml-sso-issues.md
         - name: ユーザーのサインインをトラブルシューティングする
           items:
             - name: 予期しない同意プロンプト
@@ -222,12 +240,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Microsoft アプリへのサインインに関する問題
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: フェデレーション シングル サインオンに関する問題 - ギャラリー以外のアプリ
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: フェデレーション シングル サインオンに関する問題 - ギャラリー アプリ
+            - name: シングル サインオンに関する問題
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: カスタム開発されたアプリに関する問題
-              href: application-sign-in-problem-custom-dev.md
         - name: オンプレミス アプリのトラブルシューティング
           items:
             - name: アプリケーション プロキシのトラブルシューティング
@@ -246,14 +260,12 @@
               href: application-proxy-connectivity-no-working-connector.md
             - name: 管理ポータルでの構成
               href: application-proxy-config-how-to.md
-            - name: アプリに対するシングル サインオンの構成
-              href: application-proxy-config-sso-how-to.md
             - name: 管理ポータルでのアプリの作成に関する問題
               href: application-proxy-config-problem.md
             - name: Kerberos の制約付き委任を構成する
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: PingAccess を使用した構成
-              href: application-proxy-back-end-ping-access-how-to.md
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: '"この企業アプリケーションにアクセスできない" というエラー'
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: アプリケーション プロキシ エージェント コネクタのインストール時の問題
@@ -268,14 +280,18 @@
       href: application-proxy-faq.md
     - name: アプリケーション プロキシのバージョン履歴
       href: application-proxy-release-version-history.md
+    - name: エンタープライズ アプリケーションでアプリが表示される理由
+      href: application-types.md
+    - name: ユーザーがアプリに割り当てられる理由
+      href: ways-users-get-assigned-to-applications.md
 - name: リソース
   items:
     - name: 開発者向けのサポート オプションとヘルプ オプション
-      href: /azure/active-directory/develop/developer-support-help-options?context=azure/active-directory/manage-apps/context/manage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: サービスの更新情報

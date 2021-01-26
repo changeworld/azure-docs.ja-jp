@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 1e3934a8ff91d764a5148b3d490b44f30983a284
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817286"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202132"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure でスポット VM を使用する
 
@@ -67,8 +67,22 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 スポット VM の価格は、リージョンと SKU に基づいて変化します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 
 
+[Azure 小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) を使用してスポット価格に関する情報を問い合わせるという方法で価格情報を問い合わせることもできます。 `meterName` と `skuName` の両方に `Spot` が含まれています。
 
 可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。
+
+## <a name="pricing-and-eviction-history"></a>価格と削除の履歴
+
+ポータルでは、あるリージョンの価格と削除率の履歴をサイズ別に表示できます。 **[View pricing history and compare prices in nearby regions]\(価格履歴を表示し、近くのリージョンの価格を比較する\)** を選択すると、特定のサイズに対して価格のテーブルまたはグラフが表示されます。  次の画像の価格と削除率は単なる例です。 
+
+**グラフ**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="リージョン オプションのスクリーンショット。グラフの価格と削除率に違いがあります。":::
+
+**テーブル**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="リージョン オプションのスクリーンショット。テーブルの価格と削除率に違いがあります。":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -85,21 +99,26 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 **質問:** スポット VM のクォータはどのように管理されますか?
 
-**A:** スポット VM には、個別のクォータ プールがあります。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+**A:** スポット VM には、個別のクォータ プールがあります。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 
 **質問:** スポットに追加のクォータを要求することはできますか。
 
-**A:** はい。[標準のクォータ要求プロセス](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)を通じて、スポット VM のクォータを増やす要求を送信することができます。
+**A:** はい。[標準のクォータ要求プロセス](../azure-portal/supportability/per-vm-quota-requests.md)を通じて、スポット VM のクォータを増やす要求を送信することができます。
 
 
 **質問:** どこで質問を投稿できますか。
 
-**A:** [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
+**A:** [Q&A](/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
+
+
+**質問:** スポット VM の最大価格を変更する方法はありますか。
+
+**A:** 最大価格を変更する前に、VM の割り当てを解除する必要があります。 その後、VM の **[Configuration]\(構成\)** セクションで、ポータルの最大価格を変更できます。 
 
 ## <a name="next-steps"></a>次のステップ
-[CLI](./linux/spot-cli.md)、[ポータル](./windows/spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
+[CLI](./linux/spot-cli.md)、[ポータル](spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
 
 また、[スポット VM インスタンスを使用したスケール セット](../virtual-machine-scale-sets/use-spot.md)をデプロイすることもできます。
 
-エラーが発生した場合は、[エラー コード](./error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
+エラーが発生した場合は、[エラー コード](./error-codes-spot.md)を参照してください。

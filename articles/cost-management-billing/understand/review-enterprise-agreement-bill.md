@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684662"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150075"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -436,7 +436,7 @@ Power BI の問題については、[Power BI サポート チーム](https://su
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>レポートにリソース タグが表示されないのはなぜですか
 
-リソース タグは Azure portal で管理されます。 [Azure portal](https://portal.azure.com) で Azure サブスクリプション チームに問い合わせることができます。 「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」の記事の手順に従ってください。
+リソース タグは Azure portal で管理されます。 [Azure portal](https://portal.azure.com) で Azure サブスクリプション チームに問い合わせることができます。 「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」の記事の手順に従ってください。
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>リソースの比率が毎日変わるのはなぜですか?
 

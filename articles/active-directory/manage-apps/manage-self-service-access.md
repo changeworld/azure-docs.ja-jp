@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dfa7530617830de99d752edcf4545300525ddbe8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640754"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997462"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 
-ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの**セルフサービス アプリケーション アクセス**を有効にする必要があります。 この機能は、[Azure AD ギャラリー](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)または [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)から追加されたアプリケーション、および[ユーザーまたは管理者の同意](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)を得て追加されたアプリケーションで利用できます。 
+ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの **セルフサービス アプリケーション アクセス** を有効にする必要があります。 この機能は、[Azure AD ギャラリー](./add-application-portal.md)または [Azure AD アプリケーション プロキシ](./application-proxy.md)から追加されたアプリケーション、および[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を得て追加されたアプリケーションで利用できます。 
 
 この機能は、IT グループとして時間とコストを節約するための優れた方法であり、Azure Active Directory を使用した最新のアプリケーション デプロイの一部として強くお勧めします。
 
@@ -82,4 +82,4 @@ ms.locfileid: "88640754"
 セルフサービス アプリケーションの構成を完了すると、ユーザーは [[マイ アプリ]](https://myapps.microsoft.com/) に移動し、 **[Add self-service apps]\(セルフサービス アプリの追加\)** ボタンをクリックすることで、セルフサービス アクセスが有効になっているアプリを検索できます。 ビジネス承認者にも、[[マイ アプリ]](https://myapps.microsoft.com/) で通知が表示されます。 ユーザーが、承認が必要なアプリケーションへのアクセスを要求した場合、それを通知する電子メールを有効にできます。
 
 ## <a name="next-steps"></a>次のステップ
-[セルフサービス グループ管理に必要な Azure Active Directory の設定](../users-groups-roles/groups-self-service-management.md)
+[セルフサービス グループ管理に必要な Azure Active Directory の設定](../enterprise-users/groups-self-service-management.md)

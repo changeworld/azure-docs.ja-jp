@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor for containers からのメトリック アラート | Microsoft Docs
+title: Azure Monitor for containers からのメトリック アラート
 description: この記事では、Azure Monitor for containers から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 10/28/2020
+ms.openlocfilehash: a81dfb3fab57b378a56bfa8ac8102d723a50dbbc
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563366"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695951"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Azure Monitor for containers からの推奨メトリック アラート (プレビュー)
 
-システム リソースのピーク需要が発生している場合、およびシステム リソースがほぼ容量の限度に近い状態で実行されている場合、システム リソースの問題に関するアラートを生成するには、Azure Monitor for containers を使用して、Azure Monitor ログに格納されているパフォーマンス データに基づいてログ アラートを作成します。 Azure Monitor for containers に、ご利用の AKS クラスターの事前構成済みメトリック アラート ルールが含まれるようになりました。これは、現在パブリック プレビューの段階です。
+システム リソースのピーク需要が発生している場合、およびシステム リソースがほぼ容量の限度に近い状態で実行されている場合、システム リソースの問題に関するアラートを生成するには、Azure Monitor for containers を使用して、Azure Monitor ログに格納されているパフォーマンス データに基づいてログ アラートを作成します。 Azure Monitor for containers に、ご利用の AKS および Azure Arc 対応 Kubernetes クラスターの事前構成済みメトリック アラート ルールが含まれるようになりました。これは、現在パブリック プレビューの段階です。
 
 この記事では、エクスペリエンスを確認し、これらのアラート ルールの構成と管理に関するガイダンスを提供します。
 
@@ -22,22 +22,22 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 開始する前に、次のことを確認してください。
 
-* カスタム メトリックは、一部の Azure リージョンでのみ利用できます。 サポートされているリージョンの一覧については、[こちら](../platform/metrics-custom-overview.md#supported-regions)を参照してください。
+* カスタム メトリックは、一部の Azure リージョンでのみ利用できます。 サポートされているリージョンの一覧については、「[サポートされているリージョン](../platform/metrics-custom-overview.md#supported-regions)」を参照してください。
 
-* メトリック アラート、および追加メトリックの導入をサポートするためのエージェントの必要最小限のバージョンは、**microsoft/oms:ciprod05262020**です。
+* メトリック アラートおよび追加メトリックの導入をサポートするためのエージェントの必要最小限のバージョンは、AKS の場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod05262020**、Azure Arc 対応 Kubernetes クラスターの場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod09252020** です。
 
     お使いのクラスターで新しいバージョンのエージェントが実行されていることを確認するには、次のいずれかの手順を行います。
 
     * コマンド `kubectl describe <omsagent-pod-name> --namespace=kube-system`を実行します。 返された状態の、出力の *Containers* セクションにある omsagent の **Image** の下の値をメモします。 
     * **[ノード]** タブでクラスター ノードを選択し、右側の **プロパティ** ウィンドウにある **[エージェント イメージ タグ]** の下の値をメモします。
 
-    表示された値は、**ciprod05262020** より後のバージョンである必要があります。 クラスターで古いバージョンを使用している場合は、[AKS クラスターでエージェントをアップグレードする](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)手順に従って、最新バージョンを取得します。
-    
-    エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、**分析情報**が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。 収集されたメトリックが表示されない場合は、クラスターのサービス プリンシパルまたは MSI に必要なアクセス許可がありません。 SPN または MSI が**監視メトリック パブリッシャー** ロールのメンバーであることを確認するには、「[Azure CLI を使用してクラスターごとにアップグレードする](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)」セクションの手順に従って、ロールの割り当てを確認して設定します。
+    AKS の場合、表示される値はバージョン **ciprod05262020** 以降である必要があります。 Azure Arc 対応 Kubernetes クラスターの場合、表示される値はバージョン **ciprod09252020** 以降である必要があります。 クラスターで古いバージョンを使用している場合は、「[コンテナーに対する Azure Monitor エージェントをアップグレードする方法](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)」の手順を参照して、最新バージョンを取得します。
+
+    エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、**分析情報** が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。 収集されたメトリックが表示されない場合は、クラスターのサービス プリンシパルまたは MSI に必要なアクセス許可がありません。 SPN または MSI が **監視メトリック パブリッシャー** ロールのメンバーであることを確認するには、「[Azure CLI を使用してクラスターごとにアップグレードする](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)」セクションの手順に従って、ロールの割り当てを確認して設定します。
 
 ## <a name="alert-rules-overview"></a>アラート ルールの概要
 
-重要な問題についてアラートを生成するために、Azure Monitor for containers には、AKS クラスターに関する次のメトリック アラートが含まれています。
+重要な問題についてアラートを生成するために、Azure Monitor for containers には、AKS および Azure Arc 対応 Kubernetes クラスターに関する次のメトリック アラートが含まれています。
 
 |名前| [説明] |既定のしきい値 |
 |----|-------------|------------------|
@@ -45,6 +45,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 |Average container working set memory % (コンテナーの平均ワーキング セット メモリ %) |コンテナーあたりの使用された平均ワーキング セット メモリを計算します。|コンテナーあたりの平均ワーキング セット メモリ使用率が 95% を超えたとき。 |
 |Average CPU % (平均 CPU %) |ノードあたりの使用された平均 CPU を計算します。 |ノードの平均 CPU 使用率が 80% を超えたとき |
 |Average Disk Usage % (平均ディスク使用率 %) |ノードの平均ディスク使用率を計算します。|ノードの平均ディスク使用率が 80% を超えたとき。 |
+|Average Persistent Volume Usage % (永続ボリュームの平均使用率 %) |ポッドあたりの平均 PV 使用量を計算します。 |ポッドあたりの平均 PV 使用率が 80% を超えたとき。|
 |Average Working set memory % (平均ワーキング セット メモリ %) |ノードの平均ワーキング セット メモリを計算します。 |ノードの平均ワーキング セット メモリが 80% を超えたとき。 |
 |Restarting container count (コンテナーの再起動回数) |コンテナーの再起動回数を計算します。 | コンテナーの再起動回数が 0 を超えたとき。 |
 |Failed Pod Counts (失敗したポッド数) |失敗した状態のポッドがあるかどうかを計算します。|失敗した状態のポッド数が 0 を超えたとき。 |
@@ -75,6 +76,8 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 * *cpuExceededPercentage*、*memoryRssExceededPercentage*、*memoryWorkingSetExceededPercentage* メトリックは、CPU、メモリ RSS、メモリ ワーキング セットの値が、構成されたしきい値 (既定のしきい値は 95%) を超えたときに送信されます。 これらのしきい値には、対応するアラート ルールに指定されたアラート条件のしきい値は含まれません。 つまり、これらのメトリックを収集し、[メトリック エクスプローラー](../platform/metrics-getting-started.md) で分析する必要がある場合は、しきい値をアラートのしきい値より低い値に構成することをお勧めします。 コンテナーのリソース使用率のしきい値に関するコレクション設定関連の構成は、セクション `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` の下の ConfigMaps ファイルでオーバーライドすることができます。 ConfigMap 構成ファイルの構成の詳細については、セクション「[ConfigMaps で警告可能なメトリックを構成する](#configure-alertable-metrics-in-configmaps)」を参照してください。
 
+* *pvUsageExceededPercentage* メトリックは、永続ボリューム使用率が、構成されているしきい値 (既定のしきい値は 60%) を超えたときに送信されます。 このしきい値には、対応するアラート ルールに指定されたアラート条件のしきい値は含まれません。 つまり、これらのメトリックを収集し、[メトリック エクスプローラー](../platform/metrics-getting-started.md) で分析する必要がある場合は、しきい値をアラートのしきい値より低い値に構成することをお勧めします。 永続ボリューム使用率のしきい値に関する収集設定関連の構成は、セクション `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` の下の ConfigMaps ファイルでオーバーライドすることができます。 ConfigMap 構成ファイルの構成の詳細については、セクション「[ConfigMaps で警告可能なメトリックを構成する](#configure-alertable-metrics-in-configmaps)」を参照してください。 *kube-system* 名前空間の要求での永続ボリューム メトリックの収集は、既定では除外されます。 この名前空間の収集を有効にするには、ConfigMap ファイルの `[metric_collection_settings.collect_kube_system_pv_metrics]` セクションを使用します。 詳細については、「[メトリック収集の設定](./container-insights-agent-config.md#metric-collection-settings)」を参照してください。
+
 ## <a name="metrics-collected"></a>収集されるメトリック
 
 特に指定しない限り、次のメトリックは、この機能の一部として有効化され、収集されます。
@@ -97,6 +100,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 |Insights.container/containers |cpuExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーの CPU 使用率 (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。<br> 収集済み  |
 |Insights.container/containers |memoryRssExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーのメモリ RSS (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。|
 |Insights.container/containers |memoryWorkingSetExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 95.0) を超えるコンテナーのメモリ ワーキング セットの割合 (%)。コンテナー名、コントローラー名、Kubernetes 名前空間、ポッド名別。|
+|Insights.container/persistentvolumes |pvUsageExceededPercentage |ユーザーが構成可能なしきい値 (既定値は 60.0) を超える永続ボリュームの PV 使用率 (%)。要求名、Kubernetes 名前空間、ボリューム名、ポッド名、ノード名別。
 
 ## <a name="enable-alert-rules"></a>アラート ルールを有効にする
 
@@ -144,7 +148,7 @@ Azure Resource Manager テンプレートとパラメーター ファイルを�
 
 2. カスタマイズされたテンプレートを portal からデプロイするには、[Azure portal](https://portal.azure.com)で **[リソースの作成]** を選択します。
 
-3. **template** を検索して、**Template** deployment を選択します。
+3. **template** を検索して、 **[テンプレートのデプロイ]** を選択します。
 
 4. **［作成］** を選択します
 
@@ -182,7 +186,7 @@ Azure Resource Manager テンプレートとパラメーター ファイルを�
     ```azurecli
     az login
 
-    az group deployment create \
+    az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file templateFileName.json \
@@ -207,29 +211,40 @@ Azure Monitor for containers のアラート ルールを表示および管理�
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>ConfigMaps で警告可能なメトリックを構成する
 
-ConfigMap 構成ファイルを構成して、コンテナー リソース使用率の既定のしきい値をオーバーライドするには、次の手順を行います。 これらの手順は、次の警告可能なメトリックにのみ適用できます。
+ConfigMap 構成ファイルを構成して、使用率の既定のしきい値をオーバーライドするには、次の手順を行います。 これらの手順は、次の警告可能なメトリックにのみ適用できます。
 
 * *cpuExceededPercentage*
 * *memoryRssExceededPercentage*
 * *memoryWorkingSetExceededPercentage*
+* *pvUsageExceededPercentage*
 
-1. セクション `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` の下の ConfigMap yaml ファイルを編集します。
+1. セクション `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` または `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` の下の ConfigMap YAML ファイルを編集します。
 
-2. *cpuExceededPercentage* のしきい値を 90% に変更して、このしきい値を超えたときにこのメトリックの収集を開始するには、次の例を使用して ConfigMap ファイルを構成します。
+   - *cpuExceededPercentage* のしきい値を 90% に変更して、このしきい値を超えたときにこのメトリックの収集を開始するには、次の例を使用して ConfigMap ファイルを構成します。
 
-    ```
-    container_cpu_threshold_percentage = 90.0
-    # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
-    container_memory_rss_threshold_percentage = 95.0
-    # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
-    container_memory_working_set_threshold_percentage = 95.0
-    ```
+     ```
+     [alertable_metrics_configuration_settings.container_resource_utilization_thresholds]
+         # Threshold for container cpu, metric will be sent only when cpu utilization exceeds or becomes equal to the following percentage
+         container_cpu_threshold_percentage = 90.0
+         # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
+         container_memory_rss_threshold_percentage = 95.0
+         # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
+         container_memory_working_set_threshold_percentage = 95.0
+     ```
 
-3. kubectl コマンド `kubectl apply -f <configmap_yaml_file.yaml>` を実行します。
+   - *pvUsageExceededPercentage* のしきい値を 80% に変更して、このしきい値を超えたときにこのメトリックの収集を開始するには、次の例を使用して ConfigMap ファイルを構成します。
+
+     ```
+     [alertable_metrics_configuration_settings.pv_utilization_thresholds]
+         # Threshold for persistent volume usage bytes, metric will be sent only when persistent volume utilization exceeds or becomes equal to the following percentage
+         pv_usage_threshold_percentage = 80.0
+     ```
+
+2. kubectl コマンド `kubectl apply -f <configmap_yaml_file.yaml>` を実行します。
 
     例: `kubectl apply -f container-azm-ms-agentconfig.yaml`.
 
-構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
+構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドの再起動は、ローリング再起動です。すべてが同時に再起動されるわけではありません。 再起動が完了すると、`configmap "container-azm-ms-agentconfig" created` のようなメッセージが表示され、結果が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
 

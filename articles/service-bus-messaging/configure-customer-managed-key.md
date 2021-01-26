@@ -3,12 +3,12 @@ title: Azure Service Bus 保存データの暗号化用に独自のキーを構�
 description: この記事では、Azure Service Bus の保存データを暗号化するための独自のキーを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 35680819350582062dd4227c65f9e72ae8b3ee5c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400587"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489702"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -25,7 +25,7 @@ BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ
 
 キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
-この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/secrets/quick-create-portal.md)」をご覧ください。
+この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault を作成する](../key-vault/general/quick-create-portal.md)」を参照します。
 
 > [!IMPORTANT]
 > Azure Service Bus でカスタマー マネージド キーを使うには、キー コンテナーに 2 つの必須プロパティが構成されている必要があります。 これらは次のとおりです。 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** です。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
@@ -35,14 +35,14 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 
 1. お使いの Service Bus Premium 名前空間に移動します。
 2. Service Bus 名前空間の **[設定]** ページで、 **[暗号化]** を選択します。
-3. 次の図に示すように、**カスタマー マネージド キーによる保存中の暗号化**を選択します。
+3. 次の図に示すように、**カスタマー マネージド キーによる保存中の暗号化** を選択します。
 
     ![カスタマー マネージド キーの有効化](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>キーを使用したキー コンテナーの設定
 
-カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Service Bus 名前空間に関連付ける必要があります。 Service Bus では Azure Key Vault のみがサポートされます。 前のセクションで**カスタマー マネージド キーによる暗号化**のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/soft-delete-powershell.md) または [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
+カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Service Bus 名前空間に関連付ける必要があります。 Service Bus では Azure Key Vault のみがサポートされます。 前のセクションで **カスタマー マネージド キーによる暗号化** のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/key-vault-recovery.md) または [CLI](../key-vault/general/key-vault-recovery.md) を使用して構成できます。
 
 1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」を参照してください。
 1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
@@ -102,10 +102,10 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 暗号化キーを取り消すと、暗号化されている名前空間で Service Bus サービスが機能しなくなります。 キーへのアクセスを有効にするか、削除済みのキーを復元すると、Service Bus サービスによってキーが選択され、暗号化された Service Bus 名前空間からデータにアクセスできるようになります。
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager テンプレートを使用して暗号化を有効にする
-このセクションでは、**Azure Resource Manager テンプレート**を使用して次のタスクを実行する方法を示します。 
+このセクションでは、**Azure Resource Manager テンプレート** を使用して次のタスクを実行する方法を示します。 
 
 1. **マネージド サービス ID** がある **Premium** Service Bus 名前空間を作成する。
-2. **キー コンテナー**を作成し、サービス ID にキー コンテナーへのアクセス権を付与する。 
+2. **キー コンテナー** を作成し、サービス ID にキー コンテナーへのアクセス権を付与する。 
 3. キー コンテナー情報 (キー/値) を使用して、Service Bus 名前空間を更新する。 
 
 
@@ -191,7 +191,7 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
  
 ### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Service Bus 名前空間の ID にキー コンテナーへのアクセス権を付与する
 
-1. 次のコマンドを実行して、**消去保護**と**論理的な削除**が有効なキー コンテナーを作成します。 
+1. 次のコマンドを実行して、**消去保護** と **論理的な削除** が有効なキー コンテナーを作成します。 
 
     ```powershell
     New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
@@ -199,7 +199,7 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
     
     (または)
     
-    次のコマンドを実行して、**既存のキー コンテナー**を更新します。 コマンドを実行する前に、リソース グループとキー コンテナー名の値を指定します。 
+    次のコマンドを実行して、**既存のキー コンテナー** を更新します。 コマンドを実行する前に、リソース グループとキー コンテナー名の値を指定します。 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force

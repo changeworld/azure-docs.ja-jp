@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333955"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する
 
@@ -19,7 +19,7 @@ ms.locfileid: "86520734"
 
 ロジック アプリのログを設定するには、[ロジック アプリを作成するときに Log Analytics を有効にする](#logging-for-new-logic-apps)か、既存のロジック アプリの Log Analytics ワークスペースに [Logic Apps 管理ソリューション をインストール](#install-management-solution)します。 このソリューションでは、ロジック アプリの実行に関する集約情報が提供され、状態、実行時間、再送信の状態、関連付け ID などの特定の詳細情報が含まれています。 次に、この情報に対してログの記録とクエリの作成を有効にするために、[Azure Monitor ログを設定します](#set-up-resource-logs)。
 
-この記事では、ロジック アプリの作成時に Log Analytics を有効にする方法、Logic Apps 管理ソリューションをインストールして設定する方法、および Azure Monitor ログのクエリを設定して作成する方法について説明します。
+この記事では、新しいロジック アプリと既存のロジック アプリで Log Analytics を有効にする方法、Logic Apps 管理ソリューションをインストールして設定する方法、および Azure Monitor ログのクエリを設定して作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,6 +89,9 @@ ms.locfileid: "86520734"
 
 ランタイム イベントおよびデータに関する情報を [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)に格納するとき、この情報の検索と確認に役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。
 
+> [!NOTE]
+> 診断設定を有効にした後、診断データが指定された宛先 (Log Analytics、イベント ハブ、ストレージ アカウントなど) のログに最大 30 分間送信されない場合があります。 この遅延は、この期間の診断データが存在しないため確認できない可能性があることを意味します。 完了したイベントと[追跡対象プロパティ](#extend-data)は、10 ～ 15 分間 Log Analytics ワークスペースに表示されない場合があります。
+
 1. [Azure Portal](https://portal.azure.com) で、ご利用のロジック アプリを探して選択します。
 
 1. ロジック アプリ メニューの **[監視]** で、 **[診断設定]**  >  **[診断設定を追加する]** を追加します。
@@ -140,13 +143,12 @@ ms.locfileid: "86520734"
 
    ![ロジック アプリの実行と状態を表示する](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
+   > [!NOTE]
+   > このページの**再送信**機能は現在使用できません。
+
    [追跡対象プロパティを設定した](#extend-data)アクションでは、 **[追跡対象プロパティ]** 列で **[表示]** を選択してプロパティを表示することもできます。 追跡対象プロパティを検索するには、列フィルターを使用します。
 
    ![ロジック アプリの追跡対象プロパティを表示する](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
-
-   > [!NOTE]
-   > 追跡対象プロパティまたは完了したイベントが Log Analytics ワークスペースに表示されるまでに、10 から 15 分の遅延が発生する場合があります。
-   > また、このページの**再送信**機能は現在使用できません。
 
 1. 結果をフィルター処理するには、クライアント側とサーバー側の両方でフィルター処理を実行します。
 

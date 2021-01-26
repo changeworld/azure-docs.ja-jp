@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
-ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4a3d0ef3c112da87e73f83c6c87de8f3fce1fea0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103570"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621367"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource および Azure Marketplace でおすすめになる方法
 
@@ -29,8 +29,8 @@ Azure Marketplace や AppSource の **[おすすめアプリ]** セクション�
 
 1. "*アプリまたはサービスが適切に分類されるようにします*": アプリまたはサービスの機能を表す 3 つのカテゴリを選択します。
 2. "*Azure Marketplace アプリ: Azure の消費を月ごとに増やします。* " 1 か月間の Azure の使用量を 1,000 時間にできれば、おすすめになる可能性が大幅に高まります。
-3. "*AppSource アプリ: オファーの取得数を増やします。* " 1 か月間の取得数を 10 回にすることができれば、おすすめになる可能性が大幅に高まります。 
-4. "*共同販売準備完了状態にします*": 共同販売準備完了のための要件を満たすようにします。
+3. "*AppSource アプリ: オファーの取得数を増やします。* " 1 か月間の取得数を 10 回にすることができれば、おすすめになる可能性が大幅に高まります。
+4. "*共同販売準備完了状態にします*": [共同販売準備完了のための要件](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)を満たすようにします。
 5. "*オファーの品質を向上させます*": オファーを変更する方法については、[コンテンツ掲載のガイドライン](marketplace-criteria-content-validation.md)に関する記事をご覧ください
 6. Marketplace で複数のオファーを公開します: すべてのコア アプリとサービスが掲載されていますか。 試用版エクスペリエンスがありますか。
 7. 顧客にレビューを書くよう勧めます。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5b4aadc506b2f4a251ccef5e9488066b609ba5a5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119754"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130529"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 
@@ -20,7 +20,7 @@ ms.locfileid: "86119754"
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>会社が既に職場アカウントを持っているかどうかを確認する
 
-会社が Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスにサブスクライブしている場合、パートナー センターで使用できる職場の電子メール アカウント ドメイン (Azure Active Directory テナントとも呼ばれます) は既にあります。
+会社が、Azure、Microsoft Intune、または Microsoft 365 などの Microsoft クラウド サービスにサブスクライブしている場合、パートナー センターで使用できる職場の電子メール アカウント ドメイン (Azure Active Directory テナントとも呼ばれます) は既に存在しています。
 
 確認するには、次の手順に従います。
 1. [https://portal.azure.com](https://portal.azure.com ) から Azure 管理ポータルにサインインします。
@@ -44,7 +44,7 @@ ms.locfileid: "86119754"
 
 このユーザー アカウントの電子メール アドレスは、ご使用のディレクトリで確認済みのドメイン名である必要があります。 左側のナビゲーション メニューで、 **[Azure Active Directory]**  ->  **[カスタム ドメイン名]** を選択することによって、ディレクトリで確認済みのドメインをすべて一覧表示できます。
 
-Azure Active Directory にカスタム ドメインを追加する方法の詳細については、[Azure AD へのドメインの追加または関連付け](../../active-directory/active-directory-add-domain.md)に関するページをご覧ください。
+Azure Active Directory にカスタム ドメインを追加する方法の詳細については、[Azure AD へのドメインの追加または関連付け](../../active-directory/fundamentals/add-custom-domain.md)に関するページをご覧ください。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>職場の電子メールによるサインインのトラブルシューティング
 
@@ -54,4 +54,4 @@ Azure Active Directory にカスタム ドメインを追加する方法の詳�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md) 
+- [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md)

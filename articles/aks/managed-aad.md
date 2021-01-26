@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936998"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684187"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -18,21 +18,14 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 認証の概要
 
-クラスター管理者は、ユーザーの ID またはディレクトリ グループのメンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成できます。 Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。
+クラスター管理者は、ユーザーの ID またはディレクトリ グループのメンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を構成できます。 Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。
 
 [Azure Active Directory 統合の概念に関するドキュメント](concepts-identity.md#azure-active-directory-integration)で、Azure AD 統合フローの詳細を確認してください。
-
-## <a name="region-availability"></a>利用可能なリージョン
-
-AKS マネージド Azure Active Directory 統合は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンで利用できます。
-
-* Azure Government は現在サポートされていません。
-* Azure China 21Vianet は現在サポートされていません。
 
 ## <a name="limitations"></a>制限事項 
 
 * AKS マネージド Azure AD 統合は無効にできません
-* AKS マネージド Azue AD 統合では、RBAC に対応していないクラスターはサポートされません
+* AKS マネージド Azure AD 統合では、Kubernetes RBAC に対応していないクラスターはサポートされません
 * AKS マネージド Azue AD 統合に関連付けられている Azure AD テナントの変更はサポートされません
 
 ## <a name="prerequisites"></a>前提条件
@@ -143,7 +136,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster 
 
 ## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>既存のクラスターで AKS マネージド Azure AD 統合を有効にする
 
-既存の RBAC 対応クラスターで AKS マネージド Azure AD 統合を有効にすることができます。 クラスターへのアクセスが維持されるように、管理者グループを設定してください。
+既存の Kubernetes RBAC 対応クラスターで AKS マネージド Azure AD 統合を有効にすることができます。 クラスターへのアクセスが維持されるように、管理者グループを設定してください。
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]

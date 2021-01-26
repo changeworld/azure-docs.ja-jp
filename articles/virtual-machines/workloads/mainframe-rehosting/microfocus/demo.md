@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508051"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915778"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
@@ -28,7 +28,7 @@ CICS とは、Customer Information Control System (顧客情報管理システ�
 
 - [SQL Server 2017 Express エディション](https://www.microsoft.com/sql-server/sql-server-editions-express)。 ダウンロードして、Enterprise Developer VM にインストールします。 Enterprise Server では、CICS リージョンの管理用データベースが必要になります。また BankDemo アプリケーションでも、BANKDEMO という SQL Server データベースが使用されます。 このデモでは、両方のデータベースに SQL Server Express を使用していることを前提とします。 インストールの際には、基本インストールを選択してください。
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS)。 SSMS は、データベースの管理と T-SQL スクリプトの実行に使用されます。 ダウンロードして、Enterprise Developer VM にインストールします。
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS)。 SSMS は、データベースの管理と T-SQL スクリプトの実行に使用されます。 ダウンロードして、Enterprise Developer VM にインストールします。
 
 - 最新のサービス パックが適用された [Visual Studio 2019](https://azure.microsoft.com/downloads/) か、[Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) (無料でダウンロードできます)。
 
@@ -106,7 +106,7 @@ Enterprise Developer 4.0 を VM にインストールしたら、それに付属
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>BankDemo データベースとそのすべてのオブジェクトを作成する
 
-1. **Windows エクスプローラー**を開き、**C:\\Users\\Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo\\SQL** に移動します。
+1. **Windows エクスプローラー** を開き、**C:\\Users\\Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo\\SQL** に移動します。
 
 2. **BankDemoCreateAll.SQL** ファイルの内容をクリップボードにコピーします。
 
@@ -141,7 +141,7 @@ Enterprise Developer 4.0 を VM にインストールしたら、それに付属
     > [!NOTE]
     > BankDemo プロジェクトでは、このデモでは使用されない HCOSS (Host Compatibility Option for SQL Server) が使用されます。
 
-5. **ソリューション エクスプローラー**で、**BankDemo2** プロジェクトを右クリックし、 **[ビルド]** を選択します。
+5. **ソリューション エクスプローラー** で、**BankDemo2** プロジェクトを右クリックし、 **[ビルド]** を選択します。
 
     > [!NOTE]
     > ソリューション レベルでビルドするとエラーが発生します (HCOSS が構成されていないため)。
@@ -212,7 +212,7 @@ Enterprise Developer 4.0 を VM にインストールしたら、それに付属
 > [!NOTE]
 > 最初の手順は重要です。このリージョンでは、先ほど作成した XA リソース定義を使用するように設定する必要があります。
 
-1. **[Regions Container]\(リージョン コンテナー\)** の下の **[BANKDEMO CICS Region]\(BANKDEMO CICS リージョン\)** に移動し、 **[Actions]\(アクション\)** ウィンドウから **[Edit Region Startup File]\(リージョン スタートアップ ファイルの編集\)** を選択します。 SQL プロパティまで下へスクロールし、**XA リソース名**として「**bankdemo**」と入力するか、省略記号を使用して選択します。
+1. **[Regions Container]\(リージョン コンテナー\)** の下の **[BANKDEMO CICS Region]\(BANKDEMO CICS リージョン\)** に移動し、 **[Actions]\(アクション\)** ウィンドウから **[Edit Region Startup File]\(リージョン スタートアップ ファイルの編集\)** を選択します。 SQL プロパティまで下へスクロールし、**XA リソース名** として「**bankdemo**」と入力するか、省略記号を使用して選択します。
 
 2. **[Save]\(保存\)** をクリックして変更を保存します。
 

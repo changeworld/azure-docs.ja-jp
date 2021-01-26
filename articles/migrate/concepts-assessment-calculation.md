@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate Server Assessment での Azure VM の評価
 description: Azure Migrate Server Assessment での評価について説明します
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261856"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752228"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>サーバー評価の概要 (Azure VM への移行)
 
@@ -54,7 +57,7 @@ Server Assessment を使用して作成した評価は、特定の時点のデ�
 
 アプライアンスによるマシンの検出が開始されたら、評価するマシンをグループにまとめて、評価の種類 **Azure VM** でそのグループに対する評価を実行できます。
 
-[VMware](tutorial-prepare-vmware.md)、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)向けのチュートリアルに従って、これらの手順を試すことができます。
+[VMware](./tutorial-discover-vmware.md)、[Hyper-V](./tutorial-discover-hyper-v.md)、または[物理サーバー](./tutorial-discover-physical.md)向けのチュートリアルに従って、これらの手順を試すことができます。
 
 ## <a name="how-do-i-assess-with-imported-data"></a>インポートされたデータを使用して評価する方法
 
@@ -80,7 +83,7 @@ CSV ファイルを使用してサーバーを評価する場合、アプライ�
     - **Hyper-V VM**:サンプル ポイントは、30 秒ごとに収集されます。
     - **物理サーバー**:サンプル ポイントは、5 分ごとに収集されます。
 
-1. アプライアンスにより、10 分ごとに、サンプル ポイントをまとめた 1 つのデータ ポイントが作成されます。 データ ポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択されます。 その後、そのデータ ポイントが Azure に送信されます。
+1. アプライアンスにより、VMware および Hyper-V サーバーでは 10 分ごとに、物理サーバーでは 5 分ごとに、サンプル ポイントをまとめた 1 つのデータ ポイントが作成されます。 データ ポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択されます。 その後、そのデータ ポイントが Azure に送信されます。
 1. Server Assessment では、過去 1 か月間のすべての 10 分のデータ ポイントが格納されます。
 1. 評価を作成すると、Server Assessment により、サイズ設定に使用するために適したデータ ポイントが特定されます。 この特定は、"*パフォーマンス履歴*" の百分位の値と "*百分位の使用率*" に基づきます。
 
@@ -173,7 +176,7 @@ Windows Server 2012 R2 および全 SP | Azure は完全サポートを提供し
 Windows Server 2012 および全 SP | Azure は完全サポートを提供します。 | Azure に対応。
 Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供します。| Azure に対応。
 Windows Server 2008 (32 ビットおよび 64 ビット) | Azure は完全サポートを提供します。 | Azure に対応。
-Windows Server 2003 および Windows Server 2003 R2 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。 | Azure に条件付きで対応。 Azure に移行する前に OS のアップグレードを検討してください。
+Windows Server 2003 および Windows Server 2003 R2 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) が必要です。 | Azure に条件付きで対応。 Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1、MS-DOS | これらのオペレーティング システムは、サポート終了日を過ぎています。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に OS をアップグレードすることをお勧めします。
 Windows 7、Windows 8、Windows 10 | Azure は、[Visual Studio サブスクリプションにのみ](../virtual-machines/windows/client-images.md)サポートを提供します。 | Azure に条件付きで対応。
 Windows 10 Pro | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応。
@@ -297,6 +300,6 @@ Azure Migrate でのパフォーマンスベースの Azure VM の各評価に�
 
 評価作成のベストプラクティスを[確認](best-practices-assessment.md)します。 
 
-- [VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md)、[物理サーバー](tutorial-prepare-physical.md)の評価を実行する方法について説明します。
-- [CSV ファイルでインポート](tutorial-assess-import.md)されたサーバーを評価する方法について説明します。
+- [VMware VM](./tutorial-discover-vmware.md)、[Hyper-V VM](./tutorial-discover-hyper-v.md)、[物理サーバー](./tutorial-discover-physical.md)の評価を実行する方法について説明します。
+- [CSV ファイルでインポート](./tutorial-discover-import.md)されたサーバーを評価する方法について説明します。
 - [依存関係の視覚化](concepts-dependency-visualization.md)について説明します。

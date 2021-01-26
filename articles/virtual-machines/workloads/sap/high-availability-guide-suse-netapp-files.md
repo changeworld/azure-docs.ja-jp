@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/28/2020
+ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 089976f6e97e303dd8faaf854e453a558b9eba84
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b8f2054296c5b4e567699924305b7f3385f30835
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89067588"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486217"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -261,13 +262,13 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
       1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
       1. [追加] をクリックします。
    1. 正常性プローブを作成します
-      1. ASCS のポート 620**00**
+      1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
          1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS**)
-         1. プロトコルに TCP、ポートに 620**00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
+         1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
-      1. ASCS ERS のポート 621**01**
-            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621**01** および **health.QAS.ERS**)
+      1. ASCS ERS のポート 621 **01**
+            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **01** および **health.QAS.ERS**)
    1. 負荷分散規則
       1. ASCS のバックエンド プールの作成
          1. ロード バランサーを開き、負荷分散規則 を選択して [追加] をクリックします
@@ -295,15 +296,15 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
       1. (A)SCS クラスターの仮想マシンを選択します
       1. [OK] をクリックします
    1. 正常性プローブを作成します
-      1. ASCS のポート 620**00**
+      1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
          1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS**)
-         1. プロトコルに TCP、ポートに 620**00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
+         1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
-      1. ASCS ERS のポート 621**01**
-            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621**01** および **health.QAS.ERS**)
+      1. ASCS ERS のポート 621 **01**
+            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **01** および **health.QAS.ERS**)
    1. 負荷分散規則
-      1. ASCS の 32**00** TCP
+      1. ASCS の 32 **00** TCP
          1. ロード バランサーを開き、負荷分散規則 を選択して [追加] をクリックします
          1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS.3200**)
          1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS**)
@@ -312,9 +313,13 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
       1. ASCS の追加のポート
-         * ASCS のポート 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 と TCP に対して上記の手順を繰り返します
+         * ASCS のポート 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 と TCP に対して上記の手順を繰り返します
       1. ASCS ERS の追加のポート
-         * ASCS ERS のポート 32**01**、33**01**、5**01**13、5**01**14、5**01**16 と TCP に対して上記の "d" 以下の手順を繰り返します
+         * ASCS ERS のポート 32 **01**、33 **01**、5 **01** 13、5 **01** 14、5 **01** 16 と TCP に対して上記の "d" 以下の手順を繰り返します
+
+      
+      > [!IMPORTANT]
+      > フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
       > [!Note]
       > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
@@ -338,7 +343,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    > [!NOTE]
    > ホスト名にダッシュを使用する場合の既知の問題は、パッケージ **sap-suse-cluster-connector** のバージョン **3.1.1** で修正されています。 ホスト名にダッシュが付いたクラスター ノードを使用している場合は、必ずバージョン 3.1.1 以降のパッケージ sap-suse-cluster-connector を使用してください。 そうしないと、クラスターは機能しません。 
 
-   SAP SUSE クラスター コネクタの新しいバージョンをインストールしたことを確認します。 古いものの名前は sap_suse_cluster_connector であり、新しいものの名前は **sap-suse-cluster-connector**です。
+   SAP SUSE クラスター コネクタの新しいバージョンをインストールしたことを確認します。 古いものの名前は sap_suse_cluster_connector であり、新しいものの名前は **sap-suse-cluster-connector** です。
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
@@ -556,7 +561,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   インストールで /usr/sap/**QAS**/ASCS**00** へのサブフォルダーの作成に失敗する場合は、ASCS**00** フォルダーの所有者とグループを設定し、もう一度試してください。 
+   インストールで /usr/sap/**QAS**/ASCS **00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
@@ -621,7 +626,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    > [!NOTE]
    > SWPM SP 20 PL 05 以降を使用します。 これより下位のバージョンではアクセス許可が正しく設定されないため、インストールが失敗します。
 
-   インストールで /usr/sap/**QAS**/ERS**01** へのサブフォルダーの作成に失敗する場合は、ERS**01** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**QAS**/ERS **01** へのサブフォルダーの作成に失敗する場合は、ERS **01** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>
@@ -669,11 +674,11 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 6. **[A]** キープ アライブを構成します
 
-   SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防ぐには、SAP NetWeaver ASCS/SCS プロファイルでパラメーターを設定し、Linux システム設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
+   SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防止するには、SAP NetWeaver ASCS/SCS プロファイル内にパラメーターを設定し (ENSA1 を使用している場合)、ENSA1/ENSA2 の両方について、すべての SAP サーバーで Linux システムの `keepalive` 設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
 
    <pre><code>
    # Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    </code></pre>
 
 7. **[A]** インストール後に SAP ユーザーを構成します

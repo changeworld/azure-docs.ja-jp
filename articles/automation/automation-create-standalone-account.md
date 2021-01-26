@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186590"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714645"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -22,7 +22,7 @@ Azure portal で Automation アカウントを作成すると、**実行**アカ
 
 * Azure Active Directory (Azure AD) にサービス プリンシパルを作成します。
 * 証明書を作成します。
-* Runbook を使用して Azure Resource Manager リソースを管理する、共同作成者のロールベースのアクセス制御 (RBAC) を割り当てます。
+* Runbook を使用して Azure Resource Manager リソースを管理する、共同作成者ロールを割り当てます。
 
 このアカウントが作成されると、自動化のニーズを満たす Runbook の作成とデプロイをすばやく開始することができます。
 
@@ -59,7 +59,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
    > [!NOTE]
    > [Automation アカウントの追加] ウィンドウに次のメッセージが表示された場合、お使いのアカウントは、サブスクリプションの管理者ロールのメンバーではなく、サブスクリプションの共同管理者でもありません。
    >
-   > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="&quot;Azure Active Directory に実行アカウントを作成するためのアクセス許可がありません&quot; というプロンプトのスクリーンショット":::
 
 1. [Automation アカウントの追加] ウィンドウの **[名前]** フィールドに、新しい Automation アカウントの名前を入力します。 選択した後は、この名前を変更することはできません。 
 
@@ -74,7 +74,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
    > [!NOTE]
    > **[Azure 実行アカウントの作成]** で **[いいえ]** を選択して、実行アカウントを作成しなかった場合、[Automation アカウントの追加] ウィンドウにメッセージが表示されます。 Azure Portal でアカウントが作成されますが、このアカウントは、クラシック デプロイ モデル内または Azure Resource Manager サブスクリプションのディレクトリ サービス内に対応する認証 ID を持ちません。 その結果、この Automation アカウントは、ご使用のサブスクリプションのリソースへのアクセス権を持ちません。 そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
    >
-   > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="&quot;Azure Active Directory に実行アカウントを作成するためのアクセス許可がありません&quot; というプロンプトのスクリーンショット":::
    >
    > サービス プリンシパルが作成されていない場合、共同作成者ロールは割り当てられません。
    >
@@ -105,4 +105,4 @@ Azure Automation アカウントを作成するとき、クラシック実行ア
 * PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[チュートリアル:PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
 * Python 2 runbook の使用を開始するには、「[チュートリアル:Python 2 Runbook を作成する](learn/automation-tutorial-runbook-textual-python2.md)」を作成します。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)」をご覧ください。

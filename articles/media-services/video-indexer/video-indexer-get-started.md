@@ -8,27 +8,29 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.openlocfilehash: 7099b0d303965b987fb316170738cc82568dc6d6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85130757"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505599"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>クイック スタート:サインアップして最初のビデオをアップロードする方法
 
 この入門クイック スタートでは、Video Indexer Web サイトにサインインする方法と、最初のビデオをアップロードする方法を示します。
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。 
 
 ## <a name="sign-up-for-video-indexer"></a>Video Indexer にサインアップする
 
 Video Indexer での開発を始めるには、[Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 
+Video Indexer の使用を開始すると、保存されているデータおよびアップロードされたコンテンツはすべて、Microsoft で管理されるキーを使用して保存時に暗号化されます。
+
 > [!NOTE]
-> Video Indexer の使用を開始すると、保存されているデータおよびアップロードされたコンテンツはすべて、Microsoft で管理されるキーを使用して保存時に暗号化されます。
+> [Video Indexer Web サイトに予定されている認証の変更](release-notes.md#planned-video-indexer-website-authenticatication-changes)に関するセクションを参照してください。
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Video Indexer Web サイトを使用してビデオをアップロードする
 
@@ -39,19 +41,23 @@ Video Indexer で使用できるファイル形式の一覧については、「
 ### <a name="upload-a-video"></a>ビデオをアップロードする
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。
-2. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
+1. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
 
     > [!NOTE]
     > ビデオの名前は、80 文字以下にする必要があります。
 
-    ![アップロード](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="アップロード":::
+1. ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。 進行状況が表示されます。 
 
-    ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="アップロードの進行状況":::
+1. Video Indexer で分析が完了すると、ビデオへのリンクとビデオの内容の簡単な説明が記載されたメールが届きます。 人、話されたり書かれたりしている単語、トピック、名前付きエンティティなどです。
+1. 後でライブラリの一覧でビデオを検索し、さまざまな操作を実行できます。 検索、インデックスの再作成、編集などです。
 
-    ![アップロード完了](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="アップロードの完了":::
+ 
 ## <a name="see-also"></a>関連項目
 
 詳細については、[ビデオのアップロードとインデックス作成](upload-index-videos.md)に関するページを参照してください。
@@ -60,7 +66,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 [API の使用開始](video-indexer-use-apis.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳しい紹介記事については、[概要ラボ](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)を参照してください。 
 

@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: サービスの再起動、シャットダウン、または停止
       href: boot-error-troubleshoot-windows.md
+    - name: Linux 仮想マシンのフル OS ディスクに関する問題
+      href: os-disk-full-linux.md
 - name: 予期しない再起動
   items:
     - name: 接続された VHD による VM の予期しない再起動
@@ -83,6 +85,8 @@
           href: troubleshoot-critical-service-failed-boot-error.md
         - name: ブート エラーのトラブルシューティング - ステータスが見つかりません
           href: boot-error-status-not-found.md
+        - name: Windows がシステムの構成を完了できなかったことをトラブルシューティングする
+          href: windows-could-not-configure-system.md
         - name: Windows Update のインストール容量のトラブルシューティング
           href: windows-update-installation-capacity.md
         - name: 起動可能なディスクではありません
@@ -101,16 +105,26 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: 監査構成ポリシーの適用時に VM が応答しない
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: 既定のドメイン コントローラーのポリシーを適用中に VM が応答しない
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: グループ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-group-policy.md
         - name: セキュリティ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-security-policy.md
+        - name: ローカル セッション マネージャーの待機中に VM が応答しない
+          href: vm-unresponsive-wait-local-session-manager.md
         - name: Windows ブート マネージャー エラー - 無効なイメージ ハッシュ状態
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows STOP エラー - 無効なシステム構成情報
           href: windows-stop-error-bad-system-config-info.md
+        - name: Windows STOP エラー - ハードウェアの誤動作
+          href: windows-stop-error-hardware-malfunction.md
         - name: Windows STOP エラー - メモリなし状態
           href: troubleshoot-windows-stop-error.md
+        - name: Windows STOP エラー - システム プロセスは終了しました
+          href: windows-stop-error-system-process-terminated.md
+        - name: Windows STOP エラー - システム スレッド例外が処理されませんでした
+          href: windows-stop-error-system-thread-exception-not-handled.md
 - name: VM に接続できない
   items:
     - name: RDP
@@ -218,6 +232,8 @@
           href: troubleshoot-performance-virtual-machine-linux-windows.md
         - name: パフォーマンス診断
           href: performance-diagnostics.md
+        - name: Azure Windows 仮想マシンの CPU が高い問題のトラブルシューティング
+          href: troubleshoot-high-cpu-issues-azure-windows-vm.md
     - name: PerfInsights
       items:
         - name: Windows
@@ -230,6 +246,12 @@
           items:
             - name: PerfInsights を使用する方法
               href: how-to-use-perfinsights-linux.md
+- name: 共有イメージ ギャラリーのトラブルシューティングを行う
+  items:
+    - name: 共有イメージ ギャラリーのトラブルシューティングを行う - Windows
+      href: ../troubleshooting-shared-images.md
+    - name: 共有イメージ ギャラリーのトラブルシューティングを行う - Linux
+      href: ../troubleshooting-shared-images.md
 - name: VM 拡張機能の問題
   items:
     - name: Azure 拡張機能の概要
@@ -240,6 +262,8 @@
       href: install-vm-agent-offline.md
     - name: Windows VM エージェントのトラブルシューティング
       href: windows-azure-guest-agent.md
+    - name: Linux VM エージェントのトラブルシューティング
+      href: linux-azure-guest-agent.md
 - name: バックアップと復元
   items:
     - name: Azure VM でのバックアップ エラーのトラブルシューティング
@@ -320,7 +344,7 @@
 - name: 移行と移動の問題
   items:
     - name: Azure Resource Manager の移行 (ASM から ARM) に関する FAQ
-      href: ../windows/migration-classic-resource-manager-overview.md
+      href: ../migration-classic-resource-manager-overview.md
 - name: 計画メンテナンス
   items:
     - name: 概要

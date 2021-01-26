@@ -6,18 +6,18 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540283"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937044"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する
 
-このチュートリアルでは、Azure Functions の[プライベート サイト アクセス](./functions-networking-options.md#private-site-access)を有効にする方法について説明します。 プライベート サイト アクセスを使用すると、自分の関数コードを特定の仮想ネットワークからしかトリガーできないように設定できます。
+このチュートリアルでは、Azure Functions の[プライベート サイト アクセス](./functions-networking-options.md#private-endpoint-connections)を有効にする方法について説明します。 プライベート サイト アクセスを使用すると、自分の関数コードを特定の仮想ネットワークからしかトリガーできないように設定できます。
 
-プライベート サイト アクセスは、Function App へのアクセスを特定の仮想ネットワークに限定する必要があるような状況で役立ちます。 たとえば、Function App の対象を特定の組織の従業員や、特定の仮想ネットワーク内のサービス (別の Azure Functions、Azure 仮想マシン、AKS クラスターなど) に限定することができます。
+プライベート サイト アクセスは、関数アプリへのアクセスを特定の仮想ネットワークに限定する必要があるような状況で役立ちます。 たとえば、関数アプリの対象を特定の組織の従業員や、特定の仮想ネットワーク内のサービス (別の Azure 関数、Azure 仮想マシン、AKS クラスターなど) に限定することができます。
 
 Function App が仮想ネットワーク内の Azure リソースにアクセスする必要がある (つまり[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)経由で接続されている) 場合、[仮想ネットワークの統合](./functions-create-vnet.md)が必要となります。
 
@@ -28,7 +28,7 @@ Function App が仮想ネットワーク内の Azure リソースにアクセス
 > * Azure Bastion サービスを作成する
 > * Azure Functions アプリを作成する
 > * 仮想ネットワーク サービス エンドポイントを構成する
-> * Azure Functions を作成してデプロイする
+> * Azure 関数を作成してデプロイする
 > * 仮想ネットワークの内外から関数を呼び出す
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
@@ -73,7 +73,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. _[ネットワーク]_ タブを選択し、 **[新規作成]** を選択して新しい仮想ネットワークを構成します。
 
     >[!div class="mx-imgBorder"]
-    >![新しい VM 用の仮想ネットワークを新規作成する](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![[仮想ネットワーク] セクションの [新規作成] アクションが強調表示されている [ネットワーク] タブを示すスクリーンショット。](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. _[仮想ネットワークの作成]_ で、画像の下にある表の設定を使用します。
 
@@ -113,7 +113,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     | _サブネット_ | AzureBastionSubnet | 新しい Bastion ホスト リソースがデプロイされるご利用の仮想ネットワークのサブネットです。 名前の値の **AzureBastionSubnet** を使用して、サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 **/27** かそれより大きいサブネットを使用する必要があります (/27、/26 など)。 |
 
     > [!NOTE]
-    > Azure Bastion リソースを作成するための詳細なステップ バイ ステップ ガイドについては、[Azure Bastion ホストの作成](../bastion/bastion-create-host-portal.md)に関するチュートリアルを参照してください。
+    > Azure Bastion リソースを作成するための詳細なステップ バイ ステップ ガイドについては、[Azure Bastion ホストの作成](../bastion/tutorial-create-host-portal.md)に関するチュートリアルを参照してください。
 
 1. Azure Bastion ホストのプロビジョニング先として使用できるサブネットを作成します。 **[サブネット構成の管理]** を選択すると新しいペインが表示され、そこで新しいサブネットを定義することができます。  新しいサブネットを作成するには、 **[+ サブネット]** を選択します。
 1. サブネットの名前は **AzureBastionSubnet** とし、サブネットのプレフィックスは **/27** 以上にしてください。  **[OK]** を選択してサブネットを作成します。
@@ -130,7 +130,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-an-azure-functions-app"></a>Azure Functions アプリを作成する
 
-次の手順では、[従量課金プラン](functions-scale.md#consumption-plan)を使用して Azure に Function App を作成します。 後からこのチュートリアルの中で、このリソースに自分の関数コードをデプロイします。
+次の手順では、[従量課金プラン](consumption-plan.md)を使用して Azure に関数アプリを作成します。 後からこのチュートリアルの中で、このリソースに自分の関数コードをデプロイします。
 
 1. ポータルで、リソース グループ ビューの上部にある **[追加]** を選択します。
 1. **[Compute] > [Function App]** の順に選択します。
@@ -149,7 +149,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
-    | _ストレージ アカウント_ | グローバルに一意の名前 | Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](./functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
+    | _ストレージ アカウント_ | グローバルに一意の名前 | Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)を満たしている必要があります。 |
     | _オペレーティング システム_ | 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
     | _プラン_ | 従量課金 | [ホスティング プラン](./functions-scale.md)は、Function App のスケーリング方法と各インスタンスが利用できるリソースを規定するものです。 |
 1. **[確認および作成]** を選択して、アプリ構成の選択内容を確認します。
@@ -159,7 +159,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 次の手順では、仮想ネットワーク上のリソースだけが関数を呼び出せるように[アクセス制限](../app-service/app-service-ip-restrictions.md)を構成します。
 
-[プライベート サイト](functions-networking-options.md#private-site-access) アクセスは、Function App と特定の仮想ネットワークとの間に Azure 仮想ネットワークの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を作成することによって実現します。 アクセス制限は、サービス エンドポイントを用いて導入されます。 特定の仮想ネットワーク内から発信されたトラフィックしか、指定されたリソースにアクセスできないようサービス エンドポイントによって制限されます。 指定されたリソースとは、このケースで言えば Azure Functions が該当します。
+[プライベート サイト](functions-networking-options.md#private-endpoint-connections) アクセスは、関数アプリと特定の仮想ネットワークとの間に Azure 仮想ネットワークの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を作成することによって実現します。 アクセス制限は、サービス エンドポイントを用いて導入されます。 特定の仮想ネットワーク内から発信されたトラフィックしか、指定されたリソースにアクセスできないようサービス エンドポイントによって制限されます。 指定されたリソースとは、このケースで言えば Azure 関数が該当します。
 
 1. Function App 内で、 _[設定]_ セクションのヘッダーの下にある **[ネットワーク]** リンクを選択します。
 1. _[ネットワーク]_ ページは、Azure Front Door、Azure CDN、アクセス制限を構成するための出発点となります。
@@ -172,7 +172,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. _[アクセス制限]_ ページを見ると、新しい制限が存在することがわかります。 _[エンドポイントの状態]_ が Disabled から Provisioning になり、最終的に Enabled になるまでに数秒かかる場合があります。
 
     >[!IMPORTANT]
-    > Function App にはそれぞれ、Function App のデプロイを管理するための [[高度なツール (Kudu)] サイト](../app-service/app-service-ip-restrictions.md#scm-site)があります。 このサイトには、`<FUNCTION_APP_NAME>.scm.azurewebsites.net` 形式の URL からアクセスします。 Kudu サイトでアクセス制限を有効にすると、ローカルの開発者ワークステーションからプロジェクト コードがデプロイされなくなり、デプロイを実行するには仮想ネットワーク内にエージェントが必要になります。
+    > 関数アプリにはそれぞれ、関数アプリのデプロイを管理するための [[高度なツール (Kudu)] サイト](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site)があります。 このサイトには、`<FUNCTION_APP_NAME>.scm.azurewebsites.net` 形式の URL からアクセスします。 Kudu サイトでアクセス制限を有効にすると、ローカルの開発者ワークステーションからプロジェクト コードがデプロイされなくなり、デプロイを実行するには仮想ネットワーク内にエージェントが必要になります。
 
 ## <a name="access-the-functions-app"></a>Function App にアクセスする
 
@@ -190,14 +190,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-a-function"></a>関数を作成する
 
-このチュートリアルの次の手順では、HTTP によってトリガーされる Azure Functions を作成します。 HTTP GET または POST 経由で関数を呼び出したときに、"Hello, {name}" という応答が返されるようにします。  
+このチュートリアルの次の手順では、HTTP によってトリガーされる Azure 関数を作成します。 HTTP GET または POST 経由で関数を呼び出したときに、"Hello, {name}" という応答が返されるようにします。  
 
 1. 次のいずれかのクイックスタートに従って、Azure Functions アプリを作成、デプロイします。
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [コマンド ライン](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
+    * [コマンド ライン](./create-first-function-cli-csharp.md)
+    * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Azure Functions プロジェクトを発行するときに、このチュートリアルの中で作成した Function App リソースを選択します。
 1. 関数がデプロイされていることを確認します。
@@ -219,7 +219,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 仮想ネットワーク上に構成されている VM の Web ブラウザーからは、(Azure Bastion サービスを使用して) 関数にアクセスすることができます。
 
 >[!div class="mx-imgBorder"]
->![Azure Bastion 経由で Azure Functions にアクセスする](./media/functions-create-private-site-access/access-function-via-bastion-final.png)
+>![Azure Bastion 経由で Azure 関数にアクセスする](./media/functions-create-private-site-access/access-function-via-bastion-final.png)
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 

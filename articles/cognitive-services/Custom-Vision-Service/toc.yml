@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Custom Vision とは
-      href: home.md
+      href: overview.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
@@ -13,7 +13,7 @@
       items:
         - name: Web ポータルの使用
           href: getting-started-build-a-classifier.md
-        - name: Custom Vision SDK の使用
+        - name: Custom Vision SDK または REST API の使用
           href: quickstarts/image-classification.md
     - name: オブジェクト検出器の構築
       items:
@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: Smart Labeler の使用
       href: suggested-tags.md
+    - name: Azure ロールベースのアクセス制御
+      href: role-based-access-control.md
     - name: モデルをエクスポートする
       items:
         - name: モバイルへのモデルのエクスポート
@@ -47,7 +49,11 @@
           href: custom-vision-onnx-windows-ml.md
         - name: Python での TensorFlow モデルの実行
           href: export-model-python.md
-    - name: アカウント データのエクスポートまたは削除
+    - name: ストレージ通知を統合する
+      href: storage-integration.md
+    - name: プロジェクトをコピーおよび移動する
+      href: copy-move-projects.md
+    - name: アカウント データの表示または削除
       href: ./export-delete-data.md
     - name: アプリを 3.0 API に更新する
       href: ./update-application-to-3.0-sdk.md
@@ -60,23 +66,25 @@
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
         - name: Node.js - トレーニング
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest
         - name: Node.js - 予測
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
+          href: /python/api/overview/azure/cognitiveservices/customvision?view=azure-python
         - name: Go - トレーニング
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
         - name: Go - 予測
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
+      href: /samples/browse/?products=azure&term=vision
     - name: 制限とクォータ
       href: limits-and-quotas.md
     - name: UserVoice

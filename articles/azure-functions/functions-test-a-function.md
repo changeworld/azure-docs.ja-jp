@@ -3,15 +3,15 @@ title: Azure Functions のテスト
 description: Visual Studio の C# 関数と VS Code の JavaScript 関数の自動化テストを作成する
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212900"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601392"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -28,7 +28,7 @@ ms.locfileid: "88212900"
 
 ## <a name="c-in-visual-studio"></a>Visual Studio での C#
 
-次の例では、Visual Studio で C# 関数アプリを作成し、[xUnit](https://xunit.github.io) を使用して実行およびテストする方法を説明します。
+次の例では、Visual Studio で C# 関数アプリを作成し、[xUnit](https://github.com/xunit/xunit) を使用して実行およびテストする方法を説明します。
 
 ![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "88212900"
 1. [新しい関数アプリを作成](./functions-create-first-azure-function.md)して **Functions** という名前を付けます
 2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して **MyHttpTrigger** という名前を付けます。
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して **MyTimerTrigger** という名前を付けます。
-4. ソリューションで [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)して **Functions.Tests** という名前を付けます。
+4. ソリューションで [xUnit テスト アプリを作成](https://xunit.net/docs/getting-started/netcore/cmdline)して **Functions.Tests** という名前を付けます。
 5. NuGet を使用して、テスト アプリから [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します
 6. *Functions.Tests* アプリから [*Functions* アプリを参照](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
 
@@ -251,17 +251,17 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**:このテストは、`ListLogger` のインスタンスを作成してタイマー関数に渡します。 関数が実行されると、予期されたメッセージが存在することを確認するためにログがチェックされます。
 
-テストでアプリケーション設定にアクセスする場合は、[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables) を使用できます。
+テストでアプリケーションの設定にアクセスする場合は、モックされた環境変数の値を持つ `IConfiguration` インスタンスを関数に[挿入](./functions-dotnet-dependency-injection.md)できます。
 
 ### <a name="run-tests"></a>テストの実行
 
-テストを実行するには、**テスト エクスプローラー**に移動し、 **[すべて実行]** の順にクリックします。
+テストを実行するには、**テスト エクスプローラー** に移動し、 **[すべて実行]** の順にクリックします。
 
 ![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>テストのデバッグ
 
-テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、 **[実行] > [前回の実行をデバッグする]** の順にクリックします。
+テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー** に移動して、 **[実行] > [前回の実行をデバッグする]** の順にクリックします。
 
 ## <a name="javascript-in-vs-code"></a>VS Code での JavaScript
 
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 テンプレートからの HTTP 関数は、クエリ文字列に指定された名前と連結された文字列 "Hello" を返します。 このテストは、要求の偽のインスタンスを作成して HTTP 関数に渡します。 このテストは、*log* メソッドが 1 回呼び出され、返されるテキストが "Hello Bill" に等しいことを確認します。
 
-次に、VS Code の Functions 拡張機能を使用して、JavaScript タイマー関数を新規作成して *TimerTrigger*という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+次に、VS Code の Functions 拡張機能を使用して、JavaScript タイマー関数を新規作成して *TimerTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 
 ```javascript
 const timerFunction = require('./index');

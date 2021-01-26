@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e522e358a1b76cea08dac550b33d7a2dfa7d926d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833319"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950229"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性
 この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](../../windows/tutorial-availability-sets.md)内にデプロイできます。 
@@ -29,7 +30,7 @@ ms.locfileid: "87833319"
 
 Availability Zones が提供される Azure リージョンには複数のデータ センターがあります。 データセンターは、電源、冷却装置、およびネットワークの供給からは独立しています。 1 つの Azure リージョン内で異なるゾーンを提供する理由は、提供されている 2 つまたは 3 つの Availability Zones にアプリケーションをデプロイするためです。 異なるゾーンにデプロイすることで、1 つの可用性ゾーンのインフラストラクチャのみに影響する電源やネットワークの問題が発生した場合に、Azure リージョン内のアプリケーションのデプロイは引き続き機能します。 容量は一部、減少する可能性があります。 たとえば、1 つのゾーン内の VM は失われる可能性がありますが、他の 2 つのゾーン内の VM は引き続き稼働して実行されます。 
  
-Azure 可用性セットは、論理グループ作成機能であり、この機能によって、可用性セット内に配置された VM リソースは、Azure データセンター内にデプロイされるときに、確実に互いに障害分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 一部の Azure ドキュメントでは、この構成を異なる[更新ドメインと障害ドメイン](../../windows/manage-availability.md)への配置と呼んでいます。 通常は、1 つの Azure データ センター内に配置されます。 アプリケーションがデプロイされているデータ センターが電源やネットワークの問題の影響を受けた場合、1 つの Azure リージョン内のすべての容量が影響を受けます。
+Azure 可用性セットは、論理グループ作成機能であり、この機能によって、可用性セット内に配置された VM リソースは、Azure データセンター内にデプロイされるときに、確実に互いに障害分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 一部の Azure ドキュメントでは、この構成を異なる[更新ドメインと障害ドメイン](../../manage-availability.md)への配置と呼んでいます。 通常は、1 つの Azure データ センター内に配置されます。 アプリケーションがデプロイされているデータ センターが電源やネットワークの問題の影響を受けた場合、1 つの Azure リージョン内のすべての容量が影響を受けます。
 
 Azure Availability Zones を構成するデータ センターの配置は、異なるゾーンにデプロイされたサービス間の許容できるネットワーク待機時間と、データ センター間の距離を比較検討して決定されます。 理想は、自然災害によって、1 つのリージョン内のすべての Availability Zones の電源、ネットワーク、インフラストラクチャが影響を受けないことです。 ただし、非常に大きな自然災害が発生した場合、Availability Zones は、1 つのリージョン内で必要とする可用性を必ずしも提供できない可能性があります。 2017 年 9 月 20 日にプエルトリコ島に上陸したハリケーン Maria を考えてみてください。 ハリケーンによって、幅 90 マイルの島でほぼ 100% の停電が発生しました。
 
@@ -78,7 +79,7 @@ Azure 可用性セット内の 2 つの Azure VM を使用するときに、2 �
 
 アーキテクチャは次のようになります。
 
-![ストレージ レプリケーションを示した 2 つの VM の図](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![2 つの VM によるストレージ レプリケーションのアーキテクチャを示す図。](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 この設定は、優れた RPO (Recovery Point Objective) および RTO (Recovery Time Objective) 時間の実現には、あまり適していません。 特に RTO 時間は、コピーされたバックアップを使用して、データベース全体を完全に復元する必要があるため、困難が生じます。 ただし、このセットアップは、メイン インスタンスでの意図しないデータ削除からの復旧には役立ちます。 この設定では、特定時点への復元、データ抽出、メイン インスタンスへの削除されたデータのインポートが、いつでも可能です。 そのため、バックアップ コピーの手法を他の高可用性機能と組み合わせて使用すると、有効な場合があります。 
 
@@ -127,4 +128,4 @@ Azure でのこれらの構成の設定手順については、以下をご覧�
 
 複数の Azure リージョン間での SAP HANA の可用性の詳細については、以下をご覧ください。
 
-- [Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md) 
+- [Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md)

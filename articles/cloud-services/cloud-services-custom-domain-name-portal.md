@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092730"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069927"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは `http://contoso.cloudapp.net` のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
@@ -119,7 +119,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 この例では、ルート ドメインの A レコードを作成する方法を示します。 すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「*****」と入力します。
 
 > [!WARNING]
-> Azure の IP アドレスは、既定では動的です。 自分の IP アドレスが変更されないようにするために、 [予約済み IP アドレス](../virtual-network/virtual-networks-reserved-public-ip.md) を使用すると便利です。
+> Azure の IP アドレスは、既定では動的です。 自分の IP アドレスが変更されないようにするために、 [予約済み IP アドレス](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) を使用すると便利です。
 > 
 > 
 
@@ -138,6 +138,3 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

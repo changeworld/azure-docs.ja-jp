@@ -1,21 +1,21 @@
 ---
 title: 'チュートリアル: Salesforce Sandbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
-description: Azure Active Directory と Salesforce Sandbox の間でシングル サインオンを構成する方法について説明します。
+description: Azure AD から Salesforce Sandbox にユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するうえで Salesforce Sandbox と Azure AD で実行する必要がある手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7e3f8e5e975468b468712ae8907cdca0e80a5f9f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543525"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352610"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル: Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -33,7 +33,7 @@ ms.locfileid: "88543525"
 
 Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
 
-プロビジョニング サービスを構成して有効にする前に、Salesforce Sandbox アプリへのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 これを決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)に関する手順に従って、これらのユーザーを Salesforce Sandbox アプリに割り当てることができます。
+プロビジョニング サービスを構成して有効にする前に、Salesforce Sandbox アプリへのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 これを決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に関する手順に従って、これらのユーザーを Salesforce Sandbox アプリに割り当てることができます。
 
 ### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>ユーザーを Salesforce Sandbox に割り当てる際の重要なヒント
 
@@ -63,25 +63,25 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![プロビジョニング](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットは、Salesforce Sandbox のプロビジョニング ページを示しています。[プロビジョニング モード] は [自動] に設定され、設定可能なその他の値が表示されています。](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce Sandbox アカウント名を入力します。
+    a. **[管理ユーザー名]** ボックスに、Salesforce.com で **システム管理者** プロファイルが割り当てられている Salesforce Sandbox アカウント名を入力します。
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
 1. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-     ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
+     ![選択された [設定] リンクを示すスクリーンショット。](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 1. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
+    ![[自分の個人情報] の [個人のセキュリティ トークンのリセット] が選択された状態を示すスクリーンショット。](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
 
 1. **[セキュリティ トークンのリセット]** ページで、 **[セキュリティ トークンのリセット]** ボタンをクリックします。
 
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
+    ![[セキュリティ トークンのリセット] の説明文とオプションが表示された、[セキュリティ トークンのリセット] ページのスクリーンショット](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
 
 1. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce Sandbox.com からの電子メールを探します。
 
@@ -109,4 +109,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)
+* [シングル サインオンの構成](./salesforce-sandbox-tutorial.md)

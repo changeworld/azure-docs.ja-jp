@@ -3,20 +3,20 @@ title: Azure Data Factory から Spark プログラムを呼び出す
 description: MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 417306e09a9424b302bb226aea5dd2c1debe96f5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185593"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508426"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -26,8 +26,8 @@ ms.locfileid: "82185593"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop Streaming アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -58,7 +58,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)にある Python スクリプト ファイル **test.py** をダウンロードして確認してください。
 
-1. Blob Storage の **adfspark** コンテナーにある**pyFiles** フォルダーに **test.py** をアップロードします。 コンテナーとフォルダーを作成します (存在しない場合)。
+1. Blob Storage の **adfspark** コンテナーにある **pyFiles** フォルダーに **test.py** をアップロードします。 コンテナーとフォルダーを作成します (存在しない場合)。
 
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 データ ファクトリを作成するには、次の手順に従います。
@@ -118,13 +118,13 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON エディターで、次の手順を実行します。
 
-    a. HDInsight Spark クラスターの URI を指定します。 (例: `https://<sparkclustername>.azurehdinsight.net/`)。
+    1. HDInsight Spark クラスターの URI を指定します。 (例: `https://<sparkclustername>.azurehdinsight.net/`)。
 
-    b. Spark クラスターにアクセスするユーザーの名前を指定します。
+    1. Spark クラスターにアクセスするユーザーの名前を指定します。
 
-    c. ユーザーのパスワードを指定します。
+    1. ユーザーのパスワードを指定します。
 
-    d. HDInsight Spark クラスターに関連付けられている Storage のリンクされたサービスを指定します。 この例では、AzureStorageLinkedService です。
+    1. HDInsight Spark クラスターに関連付けられている Storage のリンクされたサービスを指定します。 この例では、AzureStorageLinkedService です。
 
     ```json
     {
@@ -213,20 +213,21 @@ Spark アクティビティで Data Factory パイプラインを作成する一
         }
     }
     ```
+
     以下の点に注意してください。
 
-    a. **type** プロパティは **HDInsightSpark** に設定されます。
+    1. **type** プロパティは **HDInsightSpark** に設定されます。
 
-    b. **rootPath** プロパティは **adfspark\\pyFiles** に設定されます。ここで、adfspark は BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別のストレージ アカウントにアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
+    1. **rootPath** プロパティは **adfspark\\pyFiles** に設定されます。ここで、adfspark は BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別のストレージ アカウントにアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 
-    c. **entryFilePath** プロパティは、Python ファイルである **test.py** に設定されます。
+    1. **entryFilePath** プロパティは、Python ファイルである **test.py** に設定されます。
 
-    d. **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。
+    1. **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。
 
-    > [!IMPORTANT]
-    > 問題のトラブルシューティングを行う場合を除き、運用環境ではこのプロパティを `Always` に設定しないことをお勧めします。
+       > [!IMPORTANT]
+       > 問題のトラブルシューティングを行う場合を除き、運用環境ではこのプロパティを `Always` に設定しないことをお勧めします。
 
-    e. **outputs** セクションには、1 つの出力データセットがあります。 出力データセットは、Spark プログラムによって出力が生成されない場合でも指定する必要があります。 この出力データセットは、パイプラインのスケジュール (1 時間に 1 回、毎日) を開始します。
+    1. **outputs** セクションには、1 つの出力データセットがあります。 出力データセットは、Spark プログラムによって出力が生成されない場合でも指定する必要があります。 この出力データセットは、パイプラインのスケジュール (1 時間に 1 回、毎日) を開始します。
 
     Spark アクティビティでサポートされているプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 
@@ -346,7 +347,7 @@ HDInsight のリンクされたサービスによって参照される Blob Stor
 
 | Path | 説明 | 必須 | Type |
 | ---- | ----------- | -------- | ---- |
-| 。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
+| . | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |
 | ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの Java classpath に配置されます。 | いいえ | Folder |
 | ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます。 | いいえ | Folder |

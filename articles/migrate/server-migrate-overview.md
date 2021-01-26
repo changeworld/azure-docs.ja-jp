@@ -1,14 +1,17 @@
 ---
-title: Azure Migrate Server Migration を使用した VMware 移行オプションを選択する | Microsoft Docs
+title: Azure Migrate Server Migration を使用した VMware 移行オプションを選択する
 description: Azure Migrate Server Migration を使用して VMware VM を Azure に移行するためのオプションの概要について説明します。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950223"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070713"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -29,9 +32,9 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 **アプライアンスのデプロイ** | [Azure Migrate アプライアンス](migrate-appliance.md)がオンプレミスにデプロイされます。 | [Azure Migrate レプリケーション アプライアンス](migrate-replication-appliance.md)がオンプレミスにデプロイされます。
 **Site Recovery の互換性** | 互換性あり。 | Site Recovery を使用してコンピューターのレプリケーションを設定している場合は、Azure Migrate Server Migration を使用してレプリケートすることはできません。
 **ターゲット ディスク** | マネージド ディスク | マネージド ディスク
-**ディスクの制限** | OS ディスク:2 TB<br/><br/> データ ディスク:8 TB<br/><br/> 最大ディスク数:60 | OS ディスク:2 TB<br/><br/> データ ディスク:8 TB<br/><br/> 最大ディスク数:63
+**ディスクの制限** | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:60 | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:63
 **パススルー ディスク** | サポートされていません | サポートされています
-**UEFI ブート** | サポートされていません | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
+**UEFI ブート** | サポートされています。 | サポートされています。
 
 ## <a name="compare-deployment-steps"></a>デプロイ手順を比較する
 
@@ -40,7 +43,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 **タスク** | **詳細** |**エージェントレス** | **エージェント ベース**
 --- | --- | --- | ---
 **Azure Migrate アプライアンスをデプロイする** | VMware VM 上で実行される軽量のアプライアンス。<br/><br/> アプライアンスは、マシンを検出して評価し、エージェントレスの移行を使用してマシンを移行するために使用されます。 | 必須。<br/><br/> 既にアプライアンスを評価用に設定してある場合は、同じアプライアンスをエージェントレスの移行に使用できます。 | 不要。<br/><br/> アプライアンスを評価用に設定してある場合は、そのままにしておくことも、評価が済んだら削除することもできます。
-**Server Assessment ツールを使用する** | Azure Migrate:Server Assessment ツールを使用してマシンを評価します。 | 移行前にマシンを評価できますが、必須ではありません。 | 評価は省略可能です | 評価はオプションです。
+**Server Assessment ツールを使用する** | Azure Migrate:Server Assessment ツールを使用してマシンを評価します。 | 移行前にマシンを評価できますが、必須ではありません。 | 評価はオプションです。
 **Server Migration ツールを使用する** | Azure Migrate プロジェクトで Azure Migrate Server Migration ツールを追加します。 | 必須 | 必須
 **VMware の移行を準備する** | VMware サーバーと VM で設定を構成します。 | 必須 | 必須
 **VM 上にモビリティ サービスをインストールする** | Mobility Service は、レプリケートする各 VM 上で実行されます | 必要なし | 必須

@@ -1,14 +1,14 @@
 ---
 title: Recovery Services コンテナーの概要
-description: Recovery Services コンテナーの概要と Azure Backup コンテナーとの比較。
+description: Recovery Services コンテナーの概要です。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017323"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -18,7 +18,7 @@ ms.locfileid: "88889619"
 
 - **ハイブリッド IT 環境の一元監視**:Recovery Services コンテナーの場合、[Azure IaaS VM](backup-azure-manage-vms.md) だけでなく、[オンプレミス資産](backup-azure-manage-windows-server.md#manage-backup-items)も中央ポータルで監視することができます。 [詳細情報](backup-azure-monitoring-built-in-monitor.md)
 
-- **ロールベースのアクセス制御 (RBAC)** :RBAC を使用して、Azure のアクセス権を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
+- **Azure ロールベースのアクセス制御 (Azure RBAC)** : Azure RBAC を使用すると、Azure のアクセス制御を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する Azure RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
 
 - **論理的な削除**:論理的な削除を使用すると、悪意のあるアクターによってバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
 
@@ -30,7 +30,7 @@ Recovery Services コンテナーは、経時的に作成されたバックア�
 
 - Azure Backup では、コンテナーのストレージが自動的に処理されます。 [ストレージ設定の変更](./backup-create-rs-vault.md#set-storage-redundancy)方法を確認してください。
 
-- ストレージの冗長性の詳細については、[geo](../storage/common/storage-redundancy.md) と[ローカル](../storage/common/storage-redundancy.md)の冗長性に関する記事を参照してください。
+- ストレージ冗長性の詳細については、[geo](../storage/common/storage-redundancy.md#geo-zone-redundant-storage)、[ローカル](../storage/common/storage-redundancy.md#locally-redundant-storage)、[ゾーン](../storage/common/storage-redundancy.md#zone-redundant-storage)の冗長性に関するこれらの記事を参照してください。
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>Recovery Services コンテナーの暗号化設定
 

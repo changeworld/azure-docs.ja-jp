@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926148"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452295"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
 
@@ -48,7 +48,7 @@ Azure Data Factory の[コピー アクティビティ](data-factory-data-moveme
     例: データを SQL サーバーから SQL データベースにコピーします。 シンクの SQL データベースでは主キーが定義されていますが、ソースの SQL サーバーではそのような主キーは定義されていません。 ソースに存在する重複している行は、シンクにはコピーできません。 コピー アクティビティでは、ソース データの最初の行のみがシンクにコピーされます。 それ以降のソース行に重複している主キーの値が含まれている場合、互換性のないものとして検出され、スキップされます。
 
 >[!NOTE]
->この機能は、コピー アクティビティが [Azure SQL Data Warehouse PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) や [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) などの外部データ読み込みメカニズムを呼び出すように構成されている場合は適用されません。 PolyBase を使用して SQL Data Warehouse にデータを読み込むには、コピー アクティビティで "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" を指定して PolyBase のネイティブ フォールト トレランス サポートを使用します。
+>この機能は、コピー アクティビティが [Azure Synapse Analytics の PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) や [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) などの外部データ読み込みメカニズムを呼び出すように構成されている場合は適用されません。 PolyBase を使用して Azure Synapse Analytics にデータを読み込むには、コピー アクティビティで "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" を指定して PolyBase のネイティブ フォールト トレランス サポートを使用します。
 
 ## <a name="configuration"></a>構成
 次の例では、コピー アクティビティで互換性のない行をスキップするように構成する JSON 定義について説明します。

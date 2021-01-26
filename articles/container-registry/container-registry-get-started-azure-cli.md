@@ -4,12 +4,12 @@ description: Azure CLI を使用してプライベート Docker コンテナー 
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020077"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用したプライベート コンテナー レジストリの作成
 
@@ -69,10 +69,16 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 そのためには、[az acr login][az-acr-login] コマンドを使用します。
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 そのためには、[az acr login][az-acr-login] コマンドを使用します。 Azure CLI でログインする際は、レジストリ名のみを指定します。 ログイン サーバー名は使用しないでください。ドメインのサフィックスが含まれています (`azurecr.io` など)。 
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+例:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 このコマンドが完了すると、`Login Succeeded` というメッセージが返されます。

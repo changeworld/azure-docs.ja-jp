@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085737"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995592"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理
 
@@ -36,7 +36,7 @@ Data Lake Tools for Visual Studio を使用すると、C# またはハイブリ�
     > [!NOTE]  
     > Azure Data Lake および Stream Analytics ツールは、以前は HDInsight Tools for Visual Studio と呼ばれていました。
     >
-    > Azure Data Lake および Visual Studio 用 Stream Analytics ツールは、Visual Studio 2019 用の **Azure 開発**ワークロードに含まれています。
+    > Azure Data Lake および Visual Studio 用 Stream Analytics ツールは、Visual Studio 2019 用の **Azure 開発** ワークロードに含まれています。
 
 1. Visual Studio を起動します。
 
@@ -50,7 +50,7 @@ Data Lake Tools for Visual Studio を使用すると、C# またはハイブリ�
 
 1. **[サーバー エクスプローラー]** で、 **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択し、サインイン処理を完了します。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
     > [!NOTE]  
     > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。 2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにサインインします。
@@ -89,7 +89,7 @@ Visual Studio を使用してトポロジを送信すると、 **[Storm Topology
 ![トポロジを監視する、[Storm Topology ビュー] ウィンドウ、Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> また、**サーバー エクスプローラー**から **Storm トポロジ**を表示することもできます。 その場合、 **[Azure]**  >  **[HDInsight]** の順に展開し、HDInsight クラスターの Storm を右クリックして、 **[Storm トポロジの表示]** を選択します。
+> また、**サーバー エクスプローラー** から **Storm トポロジ** を表示することもできます。 その場合、 **[Azure]**  >  **[HDInsight]** の順に展開し、HDInsight クラスターの Storm を右クリックして、 **[Storm トポロジの表示]** を選択します。
 
 情報を表示するスパウトまたはボルト コンポーネントの形状を選択します。 選択された項目に関するコンポーネント情報を含むヒントが表示されます。
 
@@ -257,7 +257,7 @@ Linux ベースの HDInsight クラスターでの REST API のベース URI は
 
 ### <a name="authentication"></a>認証
 
-REST API への要求では*基本認証*を使用する必要があるため、HDInsight クラスターの管理者の名前とパスワードを使用する必要があります。
+REST API への要求では *基本認証* を使用する必要があるため、HDInsight クラスターの管理者の名前とパスワードを使用する必要があります。
 
 > [!NOTE]  
 > 基本認証はクリア テキストを使用して送信されるため、 *常に* HTTPS を使用してクラスターとの通信を保護する必要があります。

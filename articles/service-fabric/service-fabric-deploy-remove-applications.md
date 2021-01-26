@@ -3,12 +3,12 @@ title: PowerShell を使用した Azure Service Fabric のデプロイ
 description: Azure Service Fabric でのアプリケーションの削除とデプロイ、および Powershell でこれらのアクションを実行する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699840"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827431"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 
@@ -100,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 アプリケーション パッケージが大きい場合や含まれるファイルの数が多い場合は、アプリケーション パッケージを[圧縮](service-fabric-package-apps.md#compress-a-package)できます。 圧縮により、ファイルのサイズを小さくし、ファイル数を減らすことができます。
-その副次的な作用として、アプリケーションの種類の登録と登録解除が高速になります。 現時点で、特にパッケージを圧縮する時間を含めると、アップロード操作が遅くなることがあります。 
+これにより、アプリケーションの種類の登録と登録解除を高速に実行できます。 現時点で、特にパッケージを圧縮する時間を含めると、アップロード操作が遅くなることがあります。 
 
 パッケージを圧縮するには、同じ [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) コマンドを使用します。 圧縮は、`SkipCopy` フラグを使用することによってアップロードとは別に実行することも、アップロード操作と一緒に実行することもできます。 圧縮済みのパッケージに圧縮を適用した場合、何の操作も行われません。
 圧縮されているパッケージの圧縮を解除するには、同じ [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) コマンドを `UncompressPackage` スイッチと共に使用します。

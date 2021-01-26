@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーに Excel を使って接続す
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fccb919a7eac79080fefeac70326b8aa7a967622
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361559"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499472"
 ---
 # <a name="connect-with-excel"></a>Excel を使用した接続
 
@@ -26,7 +26,7 @@ ms.locfileid: "85361559"
 
 Excel でのサーバーへの接続は、Excel 2016 以降のデータの取得を使用してサポートされます。 Power Pivot での [テーブルのインポート] ウィザードを使用した接続はサポートされません。 
 
-1. Excel では、 **[データ]** リボンで **[外部データの取り込み]**  >  **[その他のデータ ソース]**  >  **[Analysis Services]** の順にクリックします。
+1. Excel の **[データ]** リボンで、 **[データの取得]** 、 **[データベースから]** 、 **[Analysis Services から]** の順にクリックします。
 
 2. データ接続ウィザードで、 **[サーバー名]** にプロトコルや URI などのサーバー名を入力します。 たとえば、「asazure://westcentralus.asazure.windows.net/advworks」のように入力します。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
 
@@ -42,7 +42,5 @@ Excel でのサーバーへの接続は、Excel 2016 以降のデータの取得
 
 ## <a name="see-also"></a>参照
 
-[クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
-[サーバーの管理](analysis-services-manage.md)     
-
-
+[クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)   
+[サーバーの管理](analysis-services-manage.md)

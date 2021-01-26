@@ -1,26 +1,16 @@
 ---
-title: Azure Portal でサポートされるブラウザーとデバイス | Microsoft Docs
+title: Azure portal でサポートされるブラウザーとデバイス
 description: すべての最新のデバイス上で、最新のブラウザー バージョンで Azure portal を使用できます。 この記事を参照して、お使いのブラウザーがサポートされていることを確認してください。
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: lwelicki
-editor: ''
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
-ms.service: azure-portal
-ms.workload: multiple
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.author: mblythe
+ms.date: 11/18/2020
 ms.custom: accessibility
-ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754193"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938088"
 ---
 # <a name="supported-devices"></a>サポートされているデバイス
 
@@ -33,7 +23,7 @@ ms.locfileid: "80754193"
 オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
 
 * Microsoft Edge (最新バージョン)
-* Internet Explorer 11
+* Internet Explorer 11 (2021 年 3 月 31 日までサポート)
 * Safari (最新バージョン、Mac のみ)
 * Chrome (最新バージョン)
 * Firefox (最新バージョン)

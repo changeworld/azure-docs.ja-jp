@@ -8,13 +8,13 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.custom: references_regions
-ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 131ec014c9ac016a682bc4928f74910a3405a5da
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723743"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186007"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
@@ -30,24 +30,24 @@ ms.locfileid: "88723743"
 * Arc 対応の Kubernetes エージェントをデプロイするには、クラスターとクラスター上のクラスター管理者ロールにアクセスするための kubeconfig ファイルが必要です。
 * `az login` および `az connectedk8s connect` コマンドで使用されるユーザーまたはサービス プリンシパルには、"Microsoft.Kubernetes/connectedclusters" リソースの種類に対する "読み取り" と "書き込み" のアクセス許可が必要です。 ユーザーまたはサービス プリンシパルに対するロールの割り当てには、これらのアクセス許可を持つ "Kubernetes クラスター - Azure Arc のオンボード" ロールを使用できます。
 * connectedk8s 拡張機能を使用してクラスターをオンボードするには、Helm 3 が必要です。 この要件を満たすには、[最新リリースの Helm 3 をインストール](https://helm.sh/docs/intro/install)してください。
-* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
+* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン 2.15 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)するか、最新バージョンに更新して、確実に Azure CLI バージョン 2.15 以降を保有しているようにします。
 * Arc 対応 Kubernetes CLI 拡張機能をインストールします。
   
   Kubernetes クラスターを Azure に接続するために必要な `connectedk8s` 拡張機能をインストールします。
   
-  ```console
+  ```azurecli
   az extension add --name connectedk8s
   ```
   
   `k8sconfiguration` 拡張機能をインストールします。
   
-  ```console
+  ```azurecli
   az extension add --name k8sconfiguration
   ```
   
   これらの拡張機能を後で更新する場合は、次のコマンドを実行します。
   
-  ```console
+  ```azurecli
   az extension update --name connectedk8s
   az extension update --name k8sconfiguration
   ```
@@ -68,10 +68,8 @@ Azure Arc エージェントが機能するには、次のプロトコル、ポ�
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | エージェントが Azure に接続してクラスターを登録するために必要です                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント                                      |
-| `https://docker.io`                                                                                            | コンテナー イメージをプルするために必要です                                                                                         |
-| `https://github.com`、git://github.com                                                                         | GitOps リポジトリの例は、GitHub でホストされています。 構成エージェントには、指定する git エンドポイントへの接続が必要です。 |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager トークンをフェッチして更新するために必要です                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です                                                                  |
+| `https://mcr.microsoft.com`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  システムによって割り当てられたマネージド ID 証明書をプルするために必須                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する:
@@ -179,32 +177,40 @@ AzureArcTest1  eastus      AzureArcTest
 
 1. 次のコマンドを実行して、お使いのコンピューターにインストールされている `connectedk8s` 拡張機能のバージョンを確認します。
 
-    ```bash
+    ```console
     az -v
     ```
 
-    送信プロキシを使用してエージェントを設定するには、`connectedk8s` 拡張機能のバージョン 0.2.3 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
+    送信プロキシを使用してエージェントを設定するには、`connectedk8s` 拡張機能のバージョン 0.2.5 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
 
-2. Azure CLI に必要な環境変数を設定します。
+2. 送信プロキシ サーバーを使用するには、Azure CLI に必要な環境変数を設定します。
 
-    ```bash
-    export HTTP_PROXY=<proxy-server-ip-address>:<port>
-    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-    ```
+    * bash を使用している場合、適切な値で次のコマンドを実行します。
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * PowerShell を使用している場合、適切な値で次のコマンドを実行します。
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
 
 3. プロキシ パラメーターを指定して connect コマンドを実行します。
 
-    ```bash
-    az connectedk8s connect -n <cluster-name> -g <resource-group> \
-    --proxy-https https://<proxy-server-ip-address>:<port> \
-    --proxy-http http://<proxy-server-ip-address>:<port> \
-    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```console
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. --proxy-skip-range で excludedCIDR を指定することは、エージェントのクラスター内通信が切断されないようにするために重要です。
-> 2. 上記のプロキシ仕様は、現在、sourceControlConfiguration で使用される Flux ポッドではなく、Arc エージェントに対してのみ適用されます。 Arc 対応の Kubernetes チームはこの機能に積極的に取り組んでいるため、間もなく利用できるようになります。
+> 2. ほとんどの送信プロキシ環境では --proxy-http、--proxy-https、--proxy-skip-range が求められますが、プロキシからの信頼されている証明書を、エージェント ポッドの信頼されている証明書ストアに挿入する必要がある場合は、--proxy-cert のみが必要となります。
+> 3. 上記のプロキシ仕様は現在、sourceControlConfiguration で使用される Flux ポッドではなく、Arc エージェントに対してのみ適用されます。 Arc 対応の Kubernetes チームはこの機能に積極的に取り組んでいるため、間もなく利用できるようになります。
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Kubernetes 用 Azure Arc エージェント
 
@@ -217,16 +223,16 @@ kubectl -n azure-arc get deployments,pods
 **出力:**
 
 ```console
-NAME                                        READY   UP-TO-DATE AVAILABLE AGE
-deployment.apps/cluster-metadata-operator   1/1     1           1        16h
-deployment.apps/clusteridentityoperator     1/1     1           1        16h
-deployment.apps/config-agent                1/1     1           1        16h
-deployment.apps/controller-manager          1/1     1           1        16h
-deployment.apps/flux-logs-agent             1/1     1           1        16h
-deployment.apps/metrics-agent               1/1     1           1        16h
-deployment.apps/resource-sync-agent         1/1     1           1        16h
+NAME                                        READY      UP-TO-DATE  AVAILABLE  AGE
+deployment.apps/cluster-metadata-operator     1/1             1        1      16h
+deployment.apps/clusteridentityoperator       1/1             1        1      16h
+deployment.apps/config-agent                  1/1             1        1      16h
+deployment.apps/controller-manager            1/1             1        1      16h
+deployment.apps/flux-logs-agent               1/1             1        1      16h
+deployment.apps/metrics-agent                 1/1             1        1      16h
+deployment.apps/resource-sync-agent           1/1             1        1      16h
 
-NAME                                            READY   STATUS   RESTART AGE
+NAME                                           READY    STATUS   RESTART AGE
 pod/cluster-metadata-operator-7fb54d9986-g785b  2/2     Running  0       16h
 pod/clusteridentityoperator-6d6678ffd4-tx8hr    3/3     Running  0       16h
 pod/config-agent-544c4669f9-4th92               3/3     Running  0       16h

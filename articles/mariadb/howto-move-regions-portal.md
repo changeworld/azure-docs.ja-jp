@@ -1,18 +1,18 @@
 ---
 title: Azure リージョンの移動 - Azure portal - Azure Database for MariaDB
 description: 読み取りレプリカと Azure portal を使用して、Azure Database for MariaDB サーバーをリージョン間で移動します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: abb692f71a3ed69c6779b6141c9098dc94c75c4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567746"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540826"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB サーバーを別のリージョンに移動する
 
@@ -21,7 +21,7 @@ ms.locfileid: "85567746"
 別のリージョンへの移動を完了するには、Azure Database for MariaDB の[リージョン間の読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を使用できます。 これを行うには、まずターゲット リージョンに読み取りレプリカを作成します。 次に、読み取りレプリカ サーバーへのレプリケーションを停止すると、読み取りと書き込みの両方のトラフィックを受け入れるスタンドアロン サーバーになります。 
 
 > [!NOTE]
-> この記事では、サーバーを別のリージョンに移動することに重点を置いています。 サーバーを別のリソース グループまたはサブスクリプションに移動する場合は、[移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)に関する記事を参照してください。 
+> この記事では、サーバーを別のリージョンに移動することに重点を置いています。 サーバーを別のリソース グループまたはサブスクリプションに移動する場合は、[移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関する記事を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,11 +38,11 @@ Azure portal を使用してターゲット リージョンにリージョン間
 1. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 1. **[レプリカの追加]** を選択します。
 1. レプリカ サーバーの名前を入力します。
-1. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
+1. レプリカ サーバーの場所を選択します。 既定の場所は、ソース サーバーの場所と同じです。 レプリカをデプロイするターゲットの場所が選択されていることを確認します。
 1. **[OK]** を選択して、レプリカの作成を確認します。 レプリカの作成中に、ソース サーバーからレプリカにデータがコピーされます。 ソース サーバーのサイズに比例して、作成時間が数分になる場合があります。
 
 >[!NOTE]
-> 作成されたレプリカでは、マスター サーバーの VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+> 作成されたレプリカでは、ソース サーバーの VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
 
 ## <a name="move"></a>詳細ビュー
 

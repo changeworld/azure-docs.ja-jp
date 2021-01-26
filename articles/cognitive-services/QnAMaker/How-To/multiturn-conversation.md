@@ -1,14 +1,16 @@
 ---
 title: 複数ターン会話 - QnA Maker
 description: プロンプトとコンテキストを使用して、一連の質問についてボットの複数ターンと呼ばれる複数回のターンを管理します。 複数ターンとは、前の質問のコンテキストが次の質問と応答に影響する会話をやりとりする機能です。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229348"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605146"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -20,7 +22,7 @@ ms.locfileid: "86229348"
 
 ## <a name="what-is-a-multi-turn-conversation"></a>複数ターン会話とは
 
-1 回のターンでは複数の質問に応答できません。 クライアント アプリケーション (チャット ボット) の会話を設計するにあたり、場合によっては、ユーザーが行う質問をフィルター処理または調整してから正しい応答を決定する必要があります。 質問のこのフローは、ユーザーに*フォローアップ プロンプト*を示すことで実現します。
+1 回のターンでは複数の質問に応答できません。 クライアント アプリケーション (チャット ボット) の会話を設計するにあたり、場合によっては、ユーザーが行う質問をフィルター処理または調整してから正しい応答を決定する必要があります。 質問のこのフローは、ユーザーに *フォローアップ プロンプト* を示すことで実現します。
 
 ユーザーが質問したとき、QnA Maker は応答 "_と_" フォローアップ プロンプトがあれば返します。 この応答では、フォローアップ質問を選択肢として提示できます。
 
@@ -37,7 +39,6 @@ ms.locfileid: "86229348"
 
 ユーザーがオプション (#3) を選ぶと、調整のための次のオプション (#4) が表示されます。 このシーケンスは、正しい最終応答 (#6) をユーザーが決定するまで続きます (#5)。
 
-
 ### <a name="use-multi-turn-in-a-bot"></a>ボットで複数ターンを使用する
 
 KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選択して、QnA Maker ボットを Azure Bot Service にデプロイできます。 ボットで有効にしたチャット クライアントにプロンプトが表示されます。
@@ -52,7 +53,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
 複数ターン構造は、URL、PDF ファイル、または DOCX ファイルからのみ推論できます。 構造の例として、[Microsoft Surface ユーザー マニュアル PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)の画像を表示します。
 
-![![ユーザー マニュアル内の構造の例]\(../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+:::image type="content" source="../media/conversational-context/import-file-with-conversational-structure.png" alt-text="スクリーンショットに、ユーザー マニュアルの構造の例が示されています。" lightbox="../media/conversational-context/import-file-with-conversational-structure.png":::
 
 ### <a name="building-your-own-multi-turn-document"></a>独自の複数ターンのドキュメントのビルド
 
@@ -72,15 +73,14 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
 1. QnA Maker で、 **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL や .pdf または .docx ファイルからの複数ターン抽出を有効にする\)** を有効にして作成された既存のナレッジ ベースを選択します 。
 1. **[設定]** ページにアクセスし、追加するファイルまたは URL を選択します。
-1. ナレッジ ベースを**保存してトレーニングします**。
+1. ナレッジ ベースを **保存してトレーニングします**。
 
 > [!Caution]
-> 新規または空のナレッジ ベースのデータ ソースとしてエクスポートされた TSV または XLS の複数ターンのナレッジ ベース ファイルを使用することは、サポートされていません。 エクスポートされた複数ターン プロンプトをナレッジ ベースに追加するには、QnA Maker ポータルの **[設定]** ページから、そのファイルの種類を**インポート**する必要があります。
-
+> 新規または空のナレッジ ベースのデータ ソースとしてエクスポートされた TSV または XLS の複数ターンのナレッジ ベース ファイルを使用することは、サポートされていません。 エクスポートされた複数ターン プロンプトをナレッジ ベースに追加するには、QnA Maker ポータルの **[設定]** ページから、そのファイルの種類を **インポート** する必要があります。
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>作成 API を使用して複数ターンのプロンプトを持つナレッジ ベースを作成する
 
-[QnA Maker 作成 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用して、複数ターンのプロンプトを持つナレッジ ケースを作成できます。 プロンプトは `context` プロパティの `prompts` 配列に追加されます。
+[QnA Maker 作成 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用して、複数ターンのプロンプトを持つナレッジ ケースを作成できます。 プロンプトは `context` プロパティの `prompts` 配列に追加されます。
 
 ## <a name="show-questions-and-answers-with-context"></a>コンテキストを使用して質問と応答を表示する
 
@@ -92,7 +92,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
 複数ターンのコンテキストが最初の列に表示されます。
 
-![!["Context (PREVIEW)" (コンテキスト (プレビュー) 列]\(../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="スクリーンショットに、強調表示されているコンテキスト セクションが示されています。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 上の画像では、 **#1** が列内で太字テキストで表示され、現在の質問を示しています。 親の質問は、行の最上位の項目です。 それより下のすべての質問は、リンクされた質問と応答のペアです。 これらの項目は選択できるので、直ちに他のコンテキスト項目に移動できます。
 
@@ -114,7 +114,6 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
     |Context-only (コンテキストのみ)| このチェック ボックスをオンにします。 応答は、質問がコンテキストを指定する場合にのみ返されます。|
     |Link to answer (応答へのリンク)|「**Use the sign-in screen**」(サインイン画面を使用する) と入力して、既存の質問と応答のペアを検索します。|
 
-
 1.  1 つの一致が返されます。 この応答をフォローアップとして選択し、 **[保存]** を選択します。
 
     ![[Follow-up prompt (PREVIEW)] (フォローアップ プロンプト (プレビュー)) ページ](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -135,7 +134,6 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 1. 表示テキストの編集が完了したら、 **[保存]** を選択します。
 1. 上部のナビゲーション バーで、 **[Save and train]\(保存してトレーニング\)** を選択します。
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>新しい質問と応答のペアをフォローアップ プロンプトとして追加する
 
 新しい質問と応答のペアをナレッジ ベースに追加すると、各ペアがフォローアップ プロンプトとして既存の質問にリンクされるはずです。
@@ -154,12 +152,11 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
     ![新しいプロンプトの質問と応答を作成する](../media/conversational-context/create-child-prompt-from-parent.png)
 
-
 1. **[新規作成]** を選択してから、 **[保存]** を選択します。
 
     このアクションによって、新しい質問と応答のペアが作成され、選択した質問がフォローアップ プロンプトとしてリンクされます。 両方の質問の **[コンテキスト]** 列は、フォローアップ プロンプトの関係を示します。
 
-1. **[オプションの表示]** を選択し、[ **[Show context (PREVIEW)]\(コンテキストを表示 (プレビュー)\)** ](#show-questions-and-answers-with-context) を選択します。
+1. **[オプションの表示]** を選択し、[ **[Show context (PREVIEW)]\(コンテキストを表示 (プレビュー)\)**](#show-questions-and-answers-with-context) を選択します。
 
     新しい質問は、どのようにリンクされているかを示します。
 
@@ -167,7 +164,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
     親の質問は、その選択肢の 1 つとして新しい質問を表示します。
 
-    ![![両方の質問の [コンテキスト] 列は、フォローアップ プロンプトの関係を示します]\(../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="スクリーンショットに、両方の質問の [コンテキスト] 列がフォローアップ プロンプトの関係を示していることが示されています。" lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. フォローアップ プロンプトを追加した後、上部のナビゲーション バーで **[Save and train]\(保存してトレーニング\)** を選択します。
 
@@ -225,7 +222,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
             "questions": [
                 "Sign out"
             ],
-            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start, and right-click your name. Then select Sign out. ",
+            "answer": "**Sign out**\n\nHere's how to sign out: \n\n  Go to Start, and right-click your name. Then select Sign out. ",
             "score": 38.01,
             "id": 18,
             "source": "product-manual.pdf",
@@ -352,14 +349,13 @@ QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初
 
 複数ターン機能を使用してカスタム アプリケーションをビルドする場合。 最初の質問の応答で、フォローアップ プロンプトとそれに関連付けられた `qnaId` が返されます。 ID が付与されたので、フォローアップ プロンプトの要求本文でこれを渡すことができます。 要求本文に `qnaId` とコンテキスト オブジェクト (これには以前の QnA Maker プロパティが含まれます) が含まれる場合、GenerateAnswer は、ランキング アルゴリズムを使用して質問テキストによる応答を見つけるのではなく、ID により正確な質問を返します。
 
-
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API では表示の順序がサポートされている
 
-JSON 応答で返される[表示テキストと表示の順序](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)は、[更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) による編集でサポートされています。
+JSON 応答で返される[表示テキストと表示の順序](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)は、[更新 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update) による編集でサポートされています。
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>更新 API を使用して複数ターンのプロンプトを追加または削除する
 
-[QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) を使用して、複数ターンのプロンプトを追加または削除できます。  プロンプトは `context` プロパティの `promptsToAdd` 配列と `promptsToDelete` 配列に追加されます。
+[QnA Maker 更新 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update) を使用して、複数ターンのプロンプトを追加または削除できます。  プロンプトは `context` プロパティの `promptsToAdd` 配列と `promptsToDelete` 配列に追加されます。
 
 ## <a name="export-knowledge-base-for-version-control"></a>バージョン管理用のナレッジ ベースのエクスポート
 
@@ -367,7 +363,7 @@ QnA Maker は、エクスポートされるファイルに複数ターンの会�
 
 ## <a name="next-steps"></a>次のステップ
 
-この[対話サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
+この[対話サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの移行](../Tutorials/migrate-knowledge-base.md)

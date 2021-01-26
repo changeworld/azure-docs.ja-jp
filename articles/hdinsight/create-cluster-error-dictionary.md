@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816458"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543102"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -24,7 +24,7 @@ ms.locfileid: "88816458"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>エラー コード: DeploymentDocument 'CsmDocument_2_0' で検証に失敗しました
 
-**Error**: ""スクリプト操作の場所を次のアクセスされた URI にすることはできません:\<SCRIPT ACTION URL\>"
+**Error** : ""スクリプト操作の場所を次のアクセスされた URI にすることはできません:\<SCRIPT ACTION URL\>"
 
 ### <a name="error-message-1"></a>エラー メッセージ 1
 
@@ -106,7 +106,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ### <a name="resolution"></a>解決方法
 
-スクリプトはカスタム スクリプトであるため、問題のトラブルシューティングを行い、必要に応じてスクリプトを再実行することをお勧めします。 スクリプト エラーのトラブルシューティングを行うには、/var/lib/ambari-agent/* フォルダー内のログを調べます。 または、Ambari UI の **[操作]** ページを開き、**run_customscriptaction** 操作を選択して、エラーの詳細を表示します。
+スクリプトはカスタム スクリプトであるため、問題のトラブルシューティングを行い、必要に応じてスクリプトを再実行することをお勧めします。 スクリプト エラーのトラブルシューティングを行うには、/var/lib/ambari-agent/* フォルダー内のログを調べます。 または、Ambari UI の **[操作]** ページを開き、 **run_customscriptaction** 操作を選択して、エラーの詳細を表示します。
 
 ---
 
@@ -141,7 +141,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 ネットワーク セキュリティ グループを使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
 
 - HDInsight を使用する予定の Azure リージョンを特定します。
-- HDInsight が必要とする IP アドレスを特定します。 詳細については、[HDInsight 管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)に関する記事を参照してください。
+- HDInsight が必要とする IP アドレスを特定します。 詳細については、[HDInsight 管理 IP アドレス](./hdinsight-management-ip-addresses.md)に関する記事を参照してください。
   - HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。
   - ネットワーク セキュリティ グループの場合、IP アドレスからの受信トラフィックをポート 443 で許可します。 この構成により、HDInsight 管理サービスが仮想ネットワークの外部からクラスターに確実に到達できるようになります。
 
@@ -172,7 +172,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 ### <a name="error"></a>エラー
 
-"サブネット /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> で構成されている、ネットワーク セキュリティ グループ /subscriptions/\<SubscriptionID\>/resourceGroups/<リソース グループ名\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 内のセキュリティ規則で、必要な受信または送信接続が許可されていません。 詳細については、「[Azure HDInsight 用の仮想ネットワークを計画する](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)」にアクセスするか、サポートにお問い合わせください。"
+"サブネット /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> で構成されている、ネットワーク セキュリティ グループ /subscriptions/\<SubscriptionID\>/resourceGroups/<リソース グループ名\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 内のセキュリティ規則で、必要な受信または送信接続が許可されていません。 詳細については、「[Azure HDInsight 用の仮想ネットワークを計画する](./hdinsight-plan-virtual-network-deployment.md)」にアクセスするか、サポートにお問い合わせください。"
 
 ### <a name="cause"></a>原因
 
@@ -182,8 +182,8 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 ネットワーク セキュリティ グループを使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
 
-- HDInsight で使用する予定の Azure リージョンを特定し、リージョンの安全な IP アドレスの一覧を作成します。 詳細については、「[正常性サービスと管理サービス: 特定のリージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)」を参照してください。
-- HDInsight で必要な IP アドレスを特定します。 詳細については、「 [HDInsight の管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)」を参照してください。
+- HDInsight で使用する予定の Azure リージョンを特定し、リージョンの安全な IP アドレスの一覧を作成します。 詳細については、「[正常性サービスと管理サービス: 特定のリージョン](./hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions)」を参照してください。
+- HDInsight で必要な IP アドレスを特定します。 詳細については、「 [HDInsight の管理 IP アドレス](./hdinsight-management-ip-addresses.md)」を参照してください。
 - HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。 ネットワーク セキュリティ グループの場合、IP アドレスからの受信トラフィックをポート 443 で許可します。 この構成により、HDInsight 管理サービスが仮想ネットワークの外部からクラスターに確実に到達できるようになります。
 
 ---
@@ -216,7 +216,7 @@ HDInsight サービスが、クラスターを作成しようとしていると�
 
 ### <a name="resolution"></a>解決方法
 
-カスタム VNet ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) を使用している場合は、クラスターが HDInsight 管理サービスと通信できることを確認してください。 詳細については、[HDInsight 管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)に関する記事を参照してください。
+カスタム VNet ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) を使用している場合は、クラスターが HDInsight 管理サービスと通信できることを確認してください。 詳細については、[HDInsight 管理 IP アドレス](./hdinsight-management-ip-addresses.md)に関する記事を参照してください。
 
 ---
 
@@ -240,4 +240,4 @@ HDInsight クラスターの作成中は、サブスクリプションベース�
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスター作成時のエラーのトラブルシューティングについて詳しくは、「[Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)」を参照してください。
+クラスター作成時のエラーのトラブルシューティングについて詳しくは、「[Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)」を参照してください。

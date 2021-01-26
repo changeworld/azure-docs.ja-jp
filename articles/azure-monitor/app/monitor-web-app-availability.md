@@ -4,12 +4,12 @@ description: Application Insights で Web テストを設定します。 Web サ
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310278"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007927"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -72,13 +72,48 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 |**クラシック** | 新しい可用性テストでクラシック アラートを使用することはもう推奨されていません。|
 |**アラートの場所のしきい値**|少なくとも 3/5 の場所にすることをお勧めします。 アラートの場所のしきい値とテストの場所の数の最適な関係は、**アラートの場所のしきい値** = **テストの場所の数** - 2 です。テストの場所は、少なくとも 5 か所にします。|
 
+### <a name="location-population-tags"></a>位置情報の作成タグ
+
+Azure Resource Manager を使用して可用性 URL の ping テストをデプロイするときに、次の作成タグを位置情報属性に使用できます。
+
+#### <a name="azure-gov"></a>Azure Gov
+
+| 表示名   | 作成名     |
+|----------------|---------------------|
+| USGov バージニア州 | usgov-va-azr        |
+| USGov アリゾナ  | usgov-phx-azr       |
+| USGov テキサス    | usgov-tx-azr        |
+| USDoD 東部     | usgov-ddeast-azr    |
+| USDoD 中部  | usgov-ddcentral-azr |
+
+#### <a name="azure"></a>Azure
+
+| 表示名                           | 作成名   |
+|----------------------------------------|-------------------|
+| オーストラリア東部                         | emea-au-syd-edge  |
+| ブラジル南部                           | latam-br-gru-edge |
+| 米国中部                             | us-fl-mia-edge    |
+| 東アジア                              | apac-hk-hkn-azr   |
+| 米国東部                                | us-va-ash-azr     |
+| フランス南部 (旧名フランス中部) | emea-ch-zrh-edge  |
+| フランス中部                         | emea-fr-pra-edge  |
+| 東日本                             | apac-jp-kaw-edge  |
+| 北ヨーロッパ                           | emea-gb-db3-azr   |
+| 米国中北部                       | us-il-ch1-azr     |
+| 米国中南部                       | us-tx-sn1-azr     |
+| 東南アジア                         | apac-sg-sin-azr   |
+| 英国西部                                | emea-se-sto-edge  |
+| 西ヨーロッパ                            | emea-nl-ams-azr   |
+| 米国西部                                | us-ca-sjc-azr     |
+| 英国南部                               | emea-ru-msa-edge  |
+
 ## <a name="see-your-availability-test-results"></a>可用性テストの結果を表示する
 
 可用性テストの結果は、折れ線グラフと散布図の両方で視覚化できます。
 
 数分後に、 **[更新]** をクリックすると、テスト結果が表示されます。
 
-![折れ線グラフ](./media/monitor-web-app-availability/availability-refresh-002.png)
+![スクリーンショットには、[更新] ボタンが強調表示された [可用性] ページが示されています。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散布図には、診断テスト手順の詳細が含まれたテスト結果のサンプルが表示されます。 テスト エンジンは、失敗したテストの診断の詳細を格納します。 成功したテストの場合、診断の詳細は実行のサブセットに対して格納されます。 緑色/赤色の点の上にポインターを置くと、テスト、テスト名、および場所が表示されます。
 

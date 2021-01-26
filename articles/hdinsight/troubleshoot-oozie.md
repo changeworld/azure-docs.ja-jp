@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: edbe5274de8576fccb29e1e69d260a6531d4ab05
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045860"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287392"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Azure HDInsight での Apache Oozie のトラブルシューティング
 
@@ -40,7 +40,7 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 **job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasbs://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ジョブが使う Blob Storage アドレスを変更します。
 
@@ -60,7 +60,7 @@ JA002: User: oozie is not allowed to impersonate <USER>
 
 現在のアクセス許可設定で、Oozie が指定されたユーザー アカウントを偽装することを許可していません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Oozie では、 **`users`** グループ内のユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **`users`** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをグループに追加します。
 
@@ -87,7 +87,7 @@ Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], e
 
 Sqoop が、データベースにアクセスするために必要なデータベース ドライバーを読み込むことができません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Oozie ジョブから Sqoop を使うときは、ジョブが使う他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。 また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照します。
 
@@ -107,10 +107,4 @@ Oozie ジョブから Sqoop を使うときは、ジョブが使う他のリソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

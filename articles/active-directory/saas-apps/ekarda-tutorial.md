@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Ekarda の統合 | Microsoft Docs
-description: Azure Active Directory と Ekarda の間でシングル サインオンを構成する方法について確認します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と ekarda の統合 | Microsoft Docs
+description: Azure Active Directory と ekarda の間でシングル サインオンを構成する方法を説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,189 +9,179 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: b1cf45fd57e159993cdb3a677c505911d013122e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d9e118620cb38e94cfc18d01d31888ac0a444bb7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544249"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813430"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Ekarda の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ekarda の統合
 
-このチュートリアルでは、Ekarda と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Ekarda を統合すると、次のことができます。
+このチュートリアルでは、ekarda と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と ekarda を統合すると、次のことができます。
 
-* Ekarda にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Ekarda に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+* ekarda にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して ekarda に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Ekarda でのシングル サインオン (SSO) が有効なサブスクリプション。
+* シングル サインオン (SSO) が有効な ekarda サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Ekarda では、**SP と IDP** によって開始される SSO がサポートされます
-* Ekarda では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* ekarda によって、SP Initiated SSO と IDP-initiated SSO がサポートされます。
+* ekarda によって、Just-In-Time ユーザー プロビジョニングがサポートされます。
 
-* Ekarda を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+## <a name="add-ekarda-from-the-gallery"></a>ギャラリーから ekarda を追加する
 
-## <a name="adding-ekarda-from-the-gallery"></a>ギャラリーからの Ekarda の追加
+Azure AD への ekarda の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に ekarda を追加します。
 
-Azure AD への Ekarda の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Ekarda を追加する必要があります。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. 左側のペインで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Ekarda**」と入力します。
-1. 結果のパネルから **[Ekarda]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ekarda**」と入力します。
+1. 結果パネルから **[ekarda]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
+## <a name="configure-and-test-azure-ad-sso-for-ekarda"></a>ekarda の Azure AD SSO の構成とテスト
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Ekarda の Azure AD シングル サインオンの構成とテスト
+**B.Simon** という名前のテスト ユーザーを使用して、ekarda に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと ekarda の関連ユーザーとの間に、リンクされた関係を確立する必要があります。
 
-**B.Simon** というテスト ユーザーを使用して、Ekarda に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Ekarda の関連ユーザーとの間にリンク関係を確立する必要があります。
+ekarda に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-Ekarda で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+1. [Azure AD SSO を構成](#configure-azure-ad-sso)して、ユーザーがこの機能を使用できるようにします。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Ekarda SSO の構成](#configure-ekarda-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Ekarda テスト ユーザーの作成](#create-ekarda-test-user)** - Ekarda で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    1. [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、B.Simon を使って Azure AD のシングル サインオンをテストします。
+    1. [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. [ekarda SSO を構成](#configure-ekarda-sso)して、アプリケーション側でシングル サインオン設定を構成します。
+    * [ekarda テスト ユーザーを作成](#create-an-ekarda-test-user)し、ekarda で B.Simon に対応するユーザーを作成し、そのユーザーの Azure AD 表現にリンクします。
+1. [SSO をテスト](#test-sso)して、構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
+Azure portal で次の手順に従って、Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Ekarda** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal にサインインします。
+1. **ekarda** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンの設定]** ページで、鉛筆アイコンを選択して **[基本的な SAML 構成]** の設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![鉛筆アイコンが強調表示された [SAML によるシングル サインオンの設定] ページのスクリーンショット。](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
-    
-    a. **[メタデータ ファイルをアップロードします]** をクリックします。
-
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
-
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、Ekarda セクションのテキスト ボックスに自動的に設定されます
+1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダーのメタデータ ファイル** が表示される場合は、次の手順を行います。
+    1. **[メタデータ ファイルをアップロードする]** を選択します。
+    1. フォルダー アイコンを選択してメタデータ ファイルを選択し、 **[アップロード]** を選択します。
+    1. メタデータ ファイルが正常にアップロードされると、 **[識別子]** と **[応答 URL]** の値が、ekarda セクションのテキスト ボックスに自動的に設定されます。
 
     > [!Note]
-    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **[識別子]** と **[応答 URL]** の値が自動的に表示されない場合は、要件に応じて手動で値を入力してください。
 
-1. **サービス プロバイダーのメタデータ ファイル**がなければ、 **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションに **サービス プロバイダーのメタデータ ファイル** が表示されず、アプリケーションを IDP-initiated モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://my.ekarda.com/users/saml_metadata/<COMPANY_ID>` の形式で URL を入力します。
+    1. **[識別子]** テキスト ボックスに、`https://my.ekarda.com/users/saml_metadata/<COMPANY_ID>`のパターンに従って URL を入力します。
+    1. **[応答 URL]** テキスト ボックスに、`https://my.ekarda.com/users/saml_acs/<COMPANY_ID>`のパターンに従って URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://my.ekarda.com/users/saml_acs/<COMPANY_ID>` のパターンを使用して URL を入力します
+1. アプリケーションを SP-initiated モードで構成する場合は、 **[追加の URL を設定します]** を選択して、次の手順を行います。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>` という形式で URL を入力します。
+    **[サインオン URL]** テキスト ボックスに、`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>` のパターンに従って URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Ekarda クライアント サポート チーム](mailto:contact@ekarda.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 前の 2 つの手順の値は、実際のものではありません。 実際の識別子、応答 URL、サインオン URL の値でこれらの値を更新します。 この値を取得するには、[ekarda クライアント サポート チーム](mailto:contact@ekarda.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[Set up Single Sign-On with SAML] (SAML でのシングル サインオンの設定)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして**証明書 (Base64)** をコピーし、コンピューターに保存します。
+1. **[SAML によるシングル サインオンの設定]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して **証明書 (Base64)** をコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![Base64 証明書のダウンロード リンクが強調表示された、[SAML によるシングル サインオンの設定] ページの [SAML 署名証明書] セクションのスクリーンショット。](common/certificatebase64.png)
 
-1. **[Ekarda のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[ekarda の設定]** セクションで、要件に基づいて適切な URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![URL コピー リンクが強調表示された、[SAML によるシングル サインオンの設定] ページの [SAML 署名証明書] セクションのスクリーンショット。](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal を使用して、B.Simon という名前のテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
+
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、`B.Simon@contoso.com` と入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示される値を書き留めます。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に Ekarda へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に ekarda へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Ekarda]** を選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+1. アプリケーションの一覧で **[ekarda]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[B.Simon]** を選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+## <a name="configure-ekarda-sso"></a>ekarda SSO の構成
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. ekarda 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
-## <a name="configure-ekarda-sso"></a>Ekarda SSO の構成
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-1. 別の Web ブラウザー ウィンドウで、Ekarda 企業サイトに管理者としてサインインします。
+2. ブラウザーに拡張機能を追加した後、 **[ekarda のセットアップ]** をクリックすると、ekarda アプリケーションに移動します。 そこから、管理者の資格情報を入力して ekarda にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
-1. **[管理]**  ->  **[マイ アカウント]** をクリックします。
+    ![セットアップの構成](common/setup-sso.png)
 
-    ![Ekarda の構成](./media/ekarda-tutorial/ekarda.png)    
+3. ekarda を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、ekarda 企業サイトに管理者としてサインインします。
 
-1. ページの下部に、 **[SAML SETTINGS] (SAML の設定)** セクションが表示されます。ここで、その SAML 統合を構成します。
-1. 次のページで、以下の手順を実行します。
+1. **[管理者]**  >  **[マイ アカウント]** の順に選択します。
 
-    ![Ekarda の構成](./media/ekarda-tutorial/ekarda1.png)
+    ![[管理者] メニューで [マイ アカウント] が強調表示された ekarda サイト UI のスクリーンショット。](./media/ekarda-tutorial/ekarda.png)
 
-    a. **[Service Provider metadata] (サービス プロバイダーのメタデータ)** リンクをクリックし、それをファイルとしてコンピューターに保存します。
+1. ページの下部にある **[SAML 設定]** を見つけます。 このセクションで SAML 統合を構成します。
+1. **[SAML 設定]** セクションで、次の手順を行います。
 
-    b. **[Enable SAML] (SAML の有効化)** チェック ボックスをオンにします。
+    ![SAML 構成フィールドが強調表示された、ekarda の [SAML 設定] ページのスクリーンショット。](./media/ekarda-tutorial/ekarda1.png)
 
-    c. **[IDP Entity ID] (IDP エンティティ ID)** ボックスに、Azure portal からコピーした**エンティティ ID** の値を貼り付けます。
+    1. **[サービス プロバイダーのメタデータ]** リンクを選択し、それをファイルとしてコンピューターに保存します。
+    1. **[SAML を有効にする]** チェック ボックスをオンにします。
+    1. **[IDP エンティティ ID]** テキスト ボックスに、先ほど Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
+    1. **[IDP ログイン URL]** テキスト ボックスに、先ほど Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
+    1. **[IDP ログアウト URL]** テキスト ボックスに、先ほど Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
+    1. メモ帳を使用して、Azure portal からダウンロードした **証明書 (Base64)** ファイルを開きます。 その内容を **[IDP x509 証明書]** テキスト ボックスに貼り付けます。
+    1. **[オプション]** セクションの **[SLO を有効にする]** チェック ボックスをオンにします。
+    1. **[Update]\(更新\)** を選択します。
 
-    d. **[IDP Login URL] (IDP ログイン URL)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+### <a name="create-an-ekarda-test-user"></a>ekarda テスト ユーザーの作成
 
-    e. **[IDP Logout URL] (IDP ログアウト URL)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+このセクションでは、B. Simon という名前のユーザーを ekarda に作成します。 ekarda によって、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションで実行する操作はありません。 ekarda に B. Simon という名前のユーザーがまだ存在しない場合は、認証後に新しく作成されます。
 
-    f. Azure portal からダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容を **[IDP x509 Certificate] (IDP x509 証明書)** ボックスに貼り付けます。
+## <a name="test-sso"></a>SSO のテスト
 
-    g. **[オプション]** セクションで **[Enable SLO] (SLO を有効にする)** を選択します。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-    h. **[更新]** をクリックします。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-### <a name="create-ekarda-test-user"></a>Ekarda テスト ユーザーの作成
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる ekarda のサインオン URL にリダイレクトされます。
 
-このセクションでは、B. Simon というユーザーを Ekarda に作成します。 Ekarda では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Ekarda 内にまだユーザーが存在していない場合は、認証後に新しいユーザーが作成されます。
+* ekarda のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-## <a name="test-sso"></a>SSO のテスト 
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した ekarda に自動的にサインインされます
 
-アクセス パネルで [Ekarda] タイルをクリックすると、SSO を設定した Ekarda に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [ekarda] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した ekarda に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で Ekarda を試す](https://aad.portal.azure.com/)
-
-- [Ekarda のエンタープライズ eCard ソリューション](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)を使用すると、会社のロゴが入った eCards を顧客や同僚に送信できるように、任意の数のスタッフをプロビジョニングできます。 SSO ソリューションとして Ekarda をプロビジョニングする方法の詳細については、[こちら](https://support.ekarda.com/#SSO-Implementation)を参照してください。
-
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Ekarda を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+ekarda を構成した後、セッション制御を適用できます。 この予防措置により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、アプリの条件付きアクセス制御を拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

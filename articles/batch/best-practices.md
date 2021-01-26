@@ -1,18 +1,21 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191808"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934290"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
-この記事では、Batch での現実の経験に基づいて、Azure Batch サービスを効果的かつ効率的に使用するための一連のベスト プラクティスについて説明します。 Batch の開発および使用中に設計上の落とし穴やパフォーマンスの潜在的な問題を回避し、アンチパターンに陥らないようにするために、この記事をお読みください。
+この記事では、Batch での現実の経験に基づいて、Azure Batch サービスを効果的に使用するための一連のベスト プラクティスと役立つヒントについて説明します。 これらのヒントは、パフォーマンスを向上させ、Azure Batch ソリューションの設計上の落とし穴を回避するために役立ちます。
+
+> [!TIP]
+> Azure Batch のセキュリティのガイダンスについては、「[Batch のセキュリティとコンプライアンスのベスト プラクティス](security-best-practices.md)」を参照してください。
 
 ## <a name="pools"></a>プール
 
@@ -20,7 +23,10 @@ ms.locfileid: "88191808"
 
 ### <a name="pool-configuration-and-naming"></a>プールの構成と名前指定
 
-- **プール割り当てモード** Batch アカウントの作成時に、**Batch サービス**または**ユーザー サブスクリプション**の 2 つのプール割り当てモードのいずれかを選択できます。 ほとんどの場合、既定の Batch サービス モードを選択することになります。このモードでは、Batch で管理されているサブスクリプションにバックグラウンドでプールが割り当てられます。 もう一方のユーザー サブスクリプション モードでは、プールの作成時に Batch VM などのリソースがサブスクリプションに直接作成されます。 ユーザー サブスクリプション アカウントは主に、重要であるが小規模なシナリオのサブセットを有効にするために使用されます。 ユーザー サブスクリプション モードの詳細については、「[ユーザー サブスクリプション モードのための追加構成](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)」を参照してください。
+- **プール割り当てモード** Batch アカウントの作成時に、**Batch サービス** または **ユーザー サブスクリプション** の 2 つのプール割り当てモードのいずれかを選択できます。 ほとんどの場合、既定の Batch サービス モードを選択することになります。このモードでは、Batch で管理されているサブスクリプションにバックグラウンドでプールが割り当てられます。 もう一方のユーザー サブスクリプション モードでは、プールの作成時に Batch VM などのリソースがサブスクリプションに直接作成されます。 ユーザー サブスクリプション アカウントは主に、重要であるが小規模なシナリオのサブセットを有効にするために使用されます。 ユーザー サブスクリプション モードの詳細については、「[ユーザー サブスクリプション モードのための追加構成](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)」を参照してください。
+
+- **"cloudServiceConfiguration" または "virtualMachineConfiguration"。**
+    "virtualMachineConfiguration" を使用する必要があります。 すべての Batch 機能は、"virtualMachineConfiguration" プールによってサポートされています。 一部の機能は "cloudServiceConfiguration" プールでサポートされておらず、新しい機能は計画されていません。
 
 - **ジョブからプールへのマッピングを決定するときに、ジョブとタスクの実行時間を考慮します。**
     ジョブが主に実行時間の短いタスクで構成されていて、かつ予想されるタスクの総数が少ないため、ジョブで予想される全体的な実行時間が長くない場合は、ジョブごとに新しいプールを割り当てないでください。 ノードの割り当て時間により、ジョブの実行時間が減少します。
@@ -29,19 +35,19 @@ ms.locfileid: "88191808"
     個々のノードが常に使用可能な状態であるとは限りません。 まれなケースですが、ハードウェア障害、オペレーティング システムの更新、その他の多くの問題によって、個々のノードがオフラインになることがあります。 Batch ワークロードの進捗が確実で保証されている必要がある場合、複数のノードでプールを割り当てる必要があります。
 
 - **リソース名は再利用しないでください。**
-    多くの場合、Batch リソース (ジョブ、プールなど) は、時間の経過と共に作成されたり削除されたりします。 たとえば、月曜日にプールを作成し、火曜日に削除した後、木曜日に別のプールを作成することがあります。 新しく作成した各リソースには、以前に使用したことのない一意の名前を付ける必要があります。 一意の名前を付けるには、GUID を使用するか (リソース名全体、またはその一部として)、リソースが作成された時間をリソース名に埋め込みます。 Batch では [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet) がサポートされています。これを使用すると、実際のリソース ID が人間にとってわかりやすいものではない場合でも、人が判読できる名前をリソースに付けることができます。 一意の名前を使用すると、ログとメトリックで何らかの処理を行った特定のリソースを簡単に識別できます。 また、リソースのサポート ケースを提出する必要がある場合にも、あいまいさが解消されます。
+    多くの場合、Batch リソース (ジョブ、プールなど) は、時間の経過と共に作成されたり削除されたりします。 たとえば、月曜日にプールを作成し、火曜日に削除した後、木曜日に別のプールを作成することがあります。 新しく作成した各リソースには、以前に使用したことのない一意の名前を付ける必要があります。 一意の名前を付けるには、GUID を使用するか (リソース名全体、またはその一部として)、リソースが作成された時間をリソース名に埋め込みます。 Batch では [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname) がサポートされています。これを使用すると、実際のリソース ID が人間にとってわかりやすいものではない場合でも、人が判読できる名前をリソースに付けることができます。 一意の名前を使用すると、ログとメトリックで何らかの処理を行った特定のリソースを簡単に識別できます。 また、リソースのサポート ケースを提出する必要がある場合にも、あいまいさが解消されます。
 
 - **プールのメンテナンスおよび障害時の継続性。**
     ジョブではプールを動的に使用することをお勧めします。 ジョブですべてのものに同じプールを使用する場合、プールで問題が発生した場合にジョブが実行されない可能性があります。 これは、時間の制約のあるワークロードでは特に重要です。 この問題を解決するには、各ジョブをスケジュールするときにプールを動的に選択または作成するか、異常なプールをバイパスできるようにプール名をオーバーライドする方法を用意しておきます。
 
-- **プールのメンテナンス中とエラー発生時のビジネス継続性** プールが必要なサイズまで拡大するのを阻む原因として、内部エラーや容量の制約など、多くのことが考えられます。このため、必要に応じて、別のプールでジョブを再ターゲットできる状態にしておく必要があります (別の VM サイズが使用される可能性がありますが、これは [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet) を介して Batch でサポートされます)。 削除や変更が行われないことを前提にして静的プール ID を使用することは避けてください。
+- **プールのメンテナンス中とエラー発生時のビジネス継続性** プールが必要なサイズまで拡大するのを阻む原因として、内部エラーや容量の制約など、多くのことが考えられます。このため、必要に応じて、別のプールでジョブを再ターゲットできる状態にしておく必要があります (別の VM サイズが使用される可能性がありますが、これは [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update) を介して Batch でサポートされます)。 削除や変更が行われないことを前提にして静的プール ID を使用することは避けてください。
 
 ### <a name="pool-lifetime-and-billing"></a>プールの有効期間と課金
 
-プールの有効期間は、割り当ての方法とプール構成に適用されるオプションによって異なります。 プールには、任意の有効期間と、プール内の計算ノードのさまざまな数をいつでも指定できます。 プール内の計算ノードを明示的、またはサービスによって提供される機能 (自動スケーリングまたは自動プール) を介して管理するのはユーザーの責任です。
+プールの有効期間は、割り当ての方法とプール構成に適用されるオプションによって異なります。 プールには、任意の有効期間と、プール内の計算ノードのさまざまな数をいつでも指定できます。 プール内の計算ノードを明示的、またはサービスによって提供される機能 ([自動スケーリング](nodes-and-pools.md#automatic-scaling-policy)または[自動プール](nodes-and-pools.md#autopools)) を介して管理するのはユーザーの責任です。
 
 - **プールを最新の状態に保ちます。**
-    数か月ごとにプールのサイズをゼロに変更して、最新のノード エージェントの更新とバグ修正を確実に取得する必要があります。 プールは、再作成されない限り、または計算ノードのサイズが 0 に変更されない限り、ノード エージェントの更新を受け取りません。 プールを再作成またはサイズ変更する前に、デバッグ目的でノード エージェント ログをダウンロードすることをお勧めします (「[ノード](#nodes)」セクションを参照)。
+    数か月ごとにプールのサイズをゼロに変更して、[最新のノード エージェントの更新とバグ修正](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)を確実に取得してください。 プールは、再作成されない限り、または計算ノードのサイズが 0 に変更されない限り、ノード エージェントの更新を受け取りません。 プールを再作成またはサイズ変更する前に、デバッグ目的でノード エージェント ログをダウンロードすることをお勧めします (「[ノード](#nodes)」セクションを参照)。
 
 - **プールの再作成** 同様に、プールを毎日削除して再作成することは推奨されません。 代わりに、新しいプールを作成し、その新規プールを指すように既存のジョブを更新します。 すべてのタスクを新しいプールに移動したら、古いプールを削除します。
 
@@ -63,7 +69,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 
 ### <a name="third-party-images"></a>サード パーティのイメージ
 
-プールは、Azure Marketplace に発行されたサード パーティのイメージを使用して作成できます。 ユーザー サブスクリプション モードの Batch アカウントを使用すると、特定のサード パーティのイメージでプールを作成する場合、"Marketplace での購入資格の確認のため、割り当てに失敗しました" というエラーが表示されることがあります。 このエラーを解決するには、イメージの発行者によって設定された条項に同意します。 これを行うには、[Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest) を使用します。
+プールは、Azure Marketplace に発行されたサード パーティのイメージを使用して作成できます。 ユーザー サブスクリプション モードの Batch アカウントを使用すると、特定のサード パーティのイメージでプールを作成する場合、"Marketplace での購入資格の確認のため、割り当てに失敗しました" というエラーが表示されることがあります。 このエラーを解決するには、イメージの発行者によって設定された条項に同意します。 これを行うには、[Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) または [Azure CLI](/cli/azure/vm/image/terms) を使用します。
 
 ### <a name="azure-region-dependency"></a>Azure リージョンの依存関係
 
@@ -83,7 +89,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 
 Batch ジョブは、システムから削除されるまで無期限の有効期限を持っています。 ジョブの状態は、スケジューリングの際にさらに多くのタスクを受け入れることができるかどうかを示します。
 
-明示的に終了されない限り、ジョブは自動的に完了状態に移行しません。 これは、[onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) プロパティまたは [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints) を使用して自動的にトリガーできます。
+明示的に終了されない限り、ジョブは自動的に完了状態に移行しません。 これは、[onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) プロパティまたは [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints) を使用して自動的にトリガーできます。
 
 既定の[アクティブ ジョブおよびジョブ スケジュールのクォータ](batch-quota-limit.md#resource-quotas)があります。 完了状態のジョブおよびジョブ スケジュールは、このクォータにはカウントされません。
 
@@ -93,13 +99,13 @@ Batch ジョブは、システムから削除されるまで無期限の有効�
 
 ### <a name="save-task-data"></a>タスク データを保存する
 
-計算ノードはその性質上、短い期間しか存在しません。 Batch には、自動プールや自動スケールなど、ノードの消失が容易に行われる多くの機能があります。 ノードが (サイズ変更やプールの削除により) プールを離れると、それらのノード上のすべてのファイルも削除されます。 このため、タスクでは、完了する前に、実行されているノードから永続ストアに出力を移動する必要があります。 同様に、タスクが失敗した場合は、障害を診断するために必要なログを永続ストアに移動する必要があります。
+計算ノードはその性質上、短い期間しか存在しません。 Batch には、[自動プール](nodes-and-pools.md#autopools)や[自動スケーリング](nodes-and-pools.md#automatic-scaling-policy)など、ノードの消失が容易に行われる多くの機能があります。 ノードが (サイズ変更やプールの削除により) プールを離れると、それらのノード上のすべてのファイルも削除されます。 このため、タスクでは、完了する前に、実行されているノードから永続ストアに出力を移動する必要があります。 同様に、タスクが失敗した場合は、障害を診断するために必要なログを永続ストアに移動する必要があります。
 
 Batch には、[OutputFiles](batch-task-output-files.md) およびさまざまな共有ファイル システムを介してデータをアップロードするための Azure Storage サポートが統合されています。あるいは、タスクでのアップロードをユーザー自身で実行することもできます。
 
 ### <a name="manage-task-lifetime"></a>タスクの有効期間を管理する
 
-不要になったタスクを削除するか、[retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) タスク制約を設定します。 `retentionTime` が設定されている場合、`retentionTime` の有効期限が切れると、Batch はタスクによって使用されているディスク領域を自動的にクリーンアップします。
+不要になったタスクを削除するか、[retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) タスク制約を設定します。 `retentionTime` が設定されている場合、`retentionTime` の有効期限が切れると、Batch はタスクによって使用されているディスク領域を自動的にクリーンアップします。
 
 タスクを削除すると、次の 2 つのことが行われます。 ジョブ内にタスクが蓄積されなくなり、目的のタスクのクエリや検索が容易にできなくなる場合があります (完了したタスクをフィルター処理する必要があるため)。 また、ノード上の対応するタスク データがクリーンアップされます (`retentionTime` にまだ達していない場合)。 これにより、ノードがタスク データでいっぱいにならず、ディスク領域が不足することがなくなります。
 
@@ -109,11 +115,11 @@ Batch には、[OutputFiles](batch-task-output-files.md) およびさまざま�
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>ノードごとの最大タスク数を適切に設定する
 
-Batch では、ノードでのタスクのオーバーサブスクライブ (ノードが持つコアの数よりも多くのタスクを実行) をサポートしています。 プール内のノードにタスクが "適合する" ようにするのはユーザーの責任です。 たとえば、1 つのノードでそれぞれ 25% の CPU 使用量を消費する 8 個のタスクを (`maxTasksPerNode = 8` のプール内に) スケジュールしようとすると、ユーザー エクスペリエンスが低下する可能性があります。
+Batch では、ノードでのタスクのオーバーサブスクライブ (ノードが持つコアの数よりも多くのタスクを実行) をサポートしています。 プール内のノードにタスクが "適合する" ようにするのはユーザーの責任です。 たとえば、1 つのノードでそれぞれ 25% の CPU 使用量を消費する 8 個のタスクを (`taskSlotsPerNode = 8` のプール内に) スケジュールしようとすると、ユーザー エクスペリエンスが低下する可能性があります。
 
 ### <a name="design-for-retries-and-re-execution"></a>再試行と再実行に対応して設計する
 
-タスクは、Batch によって自動的に再試行できます。 再試行には、ユーザー制御と内部の 2 種類があります。 ユーザー制御の再試行は、タスクの [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet) で指定されます。 タスクで指定されたプログラムがゼロ以外の終了コードで終了した場合、タスクは `maxTaskRetryCount` の値まで再試行されます。
+タスクは、Batch によって自動的に再試行できます。 再試行には、ユーザー制御と内部の 2 種類があります。 ユーザー制御の再試行は、タスクの [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount) で指定されます。 タスクで指定されたプログラムがゼロ以外の終了コードで終了した場合、タスクは `maxTaskRetryCount` の値まで再試行されます。
 
 まれなケースですが、計算ノードでの障害 (たとえば、内部状態を更新できない、タスクの実行中にノードで障害が発生したなど) によってタスクが内部的に再試行されることがあります。 タスクは、可能であれば、同じ計算ノード上で内部限度に達するまで再試行されます。その後、タスクの実行が中断されて、Batch で再スケジュール (別の計算ノード上の可能性があります) するためにタスクが延期されます。
 
@@ -140,6 +146,10 @@ Batch ノードでタスクをスケジュールするとき、それをタス�
 ### <a name="idempotent-start-tasks"></a>べき等な開始タスク
 
 他のタスクと同様に、ノードの[開始タスク](jobs-and-tasks.md#start-task)はノードが起動するたびに再実行されるため、べき等である必要があります。 べき等タスクとは、複数回実行したときに一貫した結果が得られる単純なタスクのことです。
+
+### <a name="isolated-nodes"></a>分離ノード
+
+コンプライアンスまたは規制要件があるワークロードには、分離された VM サイズの使用を検討してください。 仮想マシン構成モードでサポートされている分離サイズには、`Standard_E80ids_v4`、`Standard_M128ms`、`Standard_F72s_v2`、`Standard_G5`、`Standard_GS5`、`Standard_E64i_v3` があります。 分離された VM サイズの詳細については、「[Azure における仮想マシンの分離性](https://docs.microsoft.com/azure/virtual-machines/isolation)」をご覧ください。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>オペレーティング システム サービスのインターフェイスを使用して、実行時間の長いサービスを管理する
 
@@ -175,7 +185,7 @@ Resource Manager とテンプレートの詳細については、「[クイッ�
 
 ## <a name="connectivity"></a>接続
 
-Batch ソリューションでの接続を検討するときは、次のガイダンスを確認してください。
+Batch ソリューションの接続に関する次のガイダンスを確認してください。
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR)
 
@@ -192,11 +202,15 @@ Batch ソリューションでの接続を検討するときは、次のガイ�
 
 ### <a name="retry-requests-automatically"></a>要求の自動的な再試行
 
-要求を自動的に再試行する適切な再試行ポリシーが Batch サービス クライアントに設定されていることを確認します。この再試行は、サービス メンテナンス期間中だけでなく、通常の操作時にも実行されます。 これらの再試行ポリシーの間隔は、5 分以上にする必要があります。 自動再試行機能は、[.NET RetryPolicyProvider クラス](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)などのさまざまな Batch SDK で提供されています。
+要求を自動的に再試行する適切な再試行ポリシーが Batch サービス クライアントに設定されていることを確認します。この再試行は、サービス メンテナンス期間中だけでなく、通常の操作時にも実行されます。 これらの再試行ポリシーの間隔は、5 分以上にする必要があります。 自動再試行機能は、[.NET RetryPolicyProvider クラス](/dotnet/api/microsoft.azure.batch.retrypolicyprovider)などのさまざまな Batch SDK で提供されています。
 
 ### <a name="static-public-ip-addresses"></a>静的パブリック IP アドレス
 
 通常、Batch プール内の仮想マシンには、パブリック IP アドレスを使用してアクセスしますが、これはプールの有効期間中に変更される可能性があります。 これにより、特定の IP アドレスへのアクセスが制限されるデータベースやその他の外部サービスと対話ができなくなる場合があります。 お使いのプールのパブリック IP アドレスが予期せず変更されないようにするには、ご自身が制御する静的パブリック IP アドレスのセットを使用してプールを作成してください。 詳細については、「[特定のパブリック IP アドレスの Azure Batch プールを作成する](create-pool-public-ip.md)」を参照してください。
+
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>Cloud Services 構成を使用した接続のテスト
+
+Azure ロード バランサー経由の ICMP プロトコルは許可されていないため、クラウド サービスに通常の "ping" や ICMP プロトコルを使用することはできません。 詳細については、[Azure Cloud Services の接続とネットワーク](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)に関するページを参照してください。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch ノードの基になる依存関係
 
@@ -206,17 +220,23 @@ Batch ソリューションを設計するときは、次の依存関係と制�
 
 Azure Batch では、VM 上にユーザーとグループのセットが作成されて管理されますが、それを変更しないでください。 制限事項は次のとおりです。
 
-#### <a name="windows"></a>Windows
+Windows の場合:
 
 - **PoolNonAdmin** という名前のユーザー
 - **WATaskCommon** という名前のユーザー グループ
 
-#### <a name="linux"></a>Linux
+Linux:
 
 - **_azbatch** という名前のユーザー
 
 ### <a name="file-cleanup"></a>ファイルのクリーンアップ
 
-Batch では、タスクが実行されている作業ディレクトリのクリーンアップが、保有期間の終了後にアクティブに試行されます。 このディレクトリの外部に書き込まれたファイルは、ディスク領域の不足を防ぐため、[ユーザーがクリーンアップする必要があります](#manage-task-lifetime)。 
+Batch では、タスクが実行されている作業ディレクトリのクリーンアップが、保有期間の終了後にアクティブに試行されます。 このディレクトリの外部に書き込まれたファイルは、ディスク領域の不足を防ぐため、[ユーザーがクリーンアップする必要があります](#manage-task-lifetime)。
 
 startTask 作業ディレクトリから Windows でサービスを実行すると、そのフォルダーがまだ使用されているため、作業ディレクトリの自動クリーンアップはブロックされます。 これにより、パフォーマンスが低下します。 この問題を解決するには、そのサービス用のディレクトリを、Batch によって管理されていない別のディレクトリに変更します。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure portal を使用して Azure Batch アカウントを作成します](batch-account-create-portal.md)。
+- [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
+- [既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法](batch-quota-limit.md)について説明します

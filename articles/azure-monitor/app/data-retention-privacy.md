@@ -3,13 +3,13 @@ title: Azure Application Insights でのデータ保持と保存 | Microsoft Doc
 description: データ保持およびプライバシー ポリシー ステートメント
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929331"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91263914"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -153,7 +153,16 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 ### <a name="netcore"></a>NetCore
 
-既定では、`ServerTelemetryChannel` は、現在のユーザーのローカル アプリ データ フォルダー `%localAppData%\Microsoft\ApplicationInsights` または一時フォルダー `%TMP%` を使用します。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)を参照してください。)Linux 環境では、ストレージ フォルダーが指定されていない限り、ローカル ストレージは無効になります。
+既定では、`ServerTelemetryChannel` は、現在のユーザーのローカル アプリ データ フォルダー `%localAppData%\Microsoft\ApplicationInsights` または一時フォルダー `%TMP%` を使用します。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)を参照してください。) 
+
+Linux 環境では、ストレージ フォルダーが指定されていない限り、ローカル ストレージは無効になります。
+
+> [!NOTE]
+> リリース 2.15.0-beta3 以降、ローカル ストレージは Linux、Mac、Windows で自動的に作成されるようになりました。 Windows 以外のシステムの場合、次のロジックに基づいてローカル ストレージ フォルダーが自動的に作成されます。
+> - `${TMPDIR}` - `${TMPDIR}` 環境変数が設定されている場合、この場所が使用されます。
+> - `/var/tmp` - 前述の場所が存在しない場合は、`/var/tmp` を試します。
+> - `/tmp` - 前述のどちらの場所も存在しない場合は、`tmp` を試します。 
+> - これらの場所のいずれも存在しない場合、ローカル ストレージは作成されません。以前と同様に、手動による構成が必要になります。 [実装の詳細については、こちらをご覧ください](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
 
 次のコード スニペットは、`Startup.cs` クラスの `ConfigureServices()` メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
 

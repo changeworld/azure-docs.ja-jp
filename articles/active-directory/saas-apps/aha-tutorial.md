@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: b11955c040225f66bc3eda9fe762cb1cbfc2d308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542855"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671099"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>チュートリアル:Aha! と Azure Active Directory を統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542855"
 * ユーザーが自分の Azure AD アカウントを使用して Aha! に自動的に サインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,7 +77,7 @@ Aha! で Azure AD SSO を構成してテストするには、次の構成要素�
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
@@ -128,7 +128,7 @@ Aha! で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ## <a name="configure-aha-sso"></a>Aha! の SSO
 
-1. Aha! 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Aha! 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -143,12 +143,12 @@ Aha! で Azure AD SSO を構成してテストするには、次の構成要素�
     ![設定](./media/aha-tutorial/IC798950.png "設定")
 
 5. **[アカウント]** クリックします。
-  
+
     ![プロファイル](./media/aha-tutorial/IC798951.png "プロファイル")
 
 6. **[セキュリティとシングル サインオン]** クリックします。
 
-    ![セキュリティとシングル サインオン](./media/aha-tutorial/IC798952.png "セキュリティとシングル サインオン")
+    ![[セキュリティとシングル サインオン] メニュー オプションが強調表示されているスクリーンショット。](./media/aha-tutorial/IC798952.png "セキュリティとシングル サインオン")
 
 7. **[シングル サインオン]** セクションで、 **[ID プロバイダー]** として **[SAML2.0]** を選択します。
 
@@ -174,13 +174,12 @@ Aha! で Azure AD SSO を構成してテストするには、次の構成要素�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Aha!] タイルをクリックすると、SSO を設定した Aha! に自動的にサインイン します。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Aha!] タイルをクリックすると、SSO を設定した Aha! に自動的にサインイン します。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

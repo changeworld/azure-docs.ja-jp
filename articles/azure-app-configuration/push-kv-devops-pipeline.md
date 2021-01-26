@@ -2,17 +2,17 @@
 title: Azure Pipelines を使用して App Configuration に設定をプッシュする
 description: Azure Pipelines を使用して App Configuration ストアにキー値をプッシュする方法について説明します
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: lcozzens
-ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.author: alkemper
+ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719593"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932117"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -23,11 +23,11 @@ ms.locfileid: "88719593"
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - App Configuration リソース - [Azure portal](https://portal.azure.com)で無料リソースを作成する。
 - Azure DevOps プロジェクト - [無料プロジェクトを作成する](https://go.microsoft.com/fwlink/?LinkId=2014881)
-- Azure App Configuration Push タスク - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.) から無料でダウンロードする。
+- Azure App Configuration Push タスク - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) から無料でダウンロードする。
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
-サービス接続により、Azure DevOps プロジェクトから Azure サブスクリプション内のリソースにアクセスできます。
+[サービス接続](/azure/devops/pipelines/library/service-endpoints)により、Azure DevOps プロジェクトから Azure サブスクリプション内のリソースにアクセスできます。
 
 1. Azure DevOps で、ターゲットのパイプラインを含むプロジェクトに移動し、左下にある **[プロジェクトの設定]** を開きます。
 1. **[パイプライン]** で、 **[サービス接続]** を選択し、右上にある **[新しいサービス接続]** を選択します。
@@ -56,7 +56,7 @@ ms.locfileid: "88719593"
 
 このセクションでは、Azure DevOps ビルド パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
 
-1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインについては、[こちらのドキュメント](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)を参照してください。
+1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)を参照してください。
       - 新しいビルド パイプラインを作成する場合は、パイプラインの右側にある **[アシスタントを表示する]** を選択し、 **[Azure App Configuration Push]** タスクを検索します。
       - 既存のビルド パイプラインを使用する場合は、パイプラインを編集するときに **[タスク]** タブに移動し、 **[Azure App Configuration Push]** タスクを検索します。
 2. キー値を構成ファイルから App Configuration ストアにプッシュするために必要なタスクのパラメーターを構成します。 **[構成ファイルのパス]** パラメーターは、ファイル リポジトリのルートから始まります。
@@ -66,10 +66,10 @@ ms.locfileid: "88719593"
 
 このセクションでは、Azure DevOps リリース パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
 
-1. **[パイプライン]**  >  **[リリース]** の順に選択して、リリース パイプラインのページに移動します。 リリース パイプラインについては、[こちらのドキュメント](https://docs.microsoft.com/azure/devops/pipelines/release?view=azure-devops)を参照してください。
+1. **[パイプライン]**  >  **[リリース]** の順に選択して、リリース パイプラインのページに移動します。 リリース パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/release?view=azure-devops)を参照してください。
 1. 既存のリリース パイプラインを選択します。 ない場合は、 **[+ 新規]** を選択して、新規作成します。
 1. 右上隅にある **[編集]** ボタンを選択して、リリース パイプラインを編集します。
-1. **[ステージ]** を選択して、タスクを追加します。 ステージの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/release/environments?view=azure-devops)を参照してください。
+1. **[ステージ]** を選択して、タスクを追加します。 ステージの詳細については、[こちら](/azure/devops/pipelines/release/environments?view=azure-devops)を参照してください。
 1. そのジョブの **+** を選択し、 **[デプロイ]** タブで **[Azure App Configuration Push]** タスクを追加します。
 1. キー値を構成ファイルから App Configuration ストアにプッシュするために必要なタスク内のパラメーターを構成します。 パラメーターの説明は、以下の「**パラメーター**」セクション、および各パラメーターの横にあるヒントを参照してください。
 1. リリースを保存してキューに登録します。 リリース ログに、タスクの実行中に発生したすべてのエラーが表示されます。
@@ -87,7 +87,7 @@ App Configuration Push タスクによって、次のパラメーターが使用
 - **ラベル**:App Configuration ストア内で、各キー値にラベルとして追加される文字列。
 - **コンテンツの種類**: App Configuration ストア内で、各キー値にコンテンツの種類として追加される文字列。
 - **タグ**:`{"tag1":"val1", "tag2":"val2"}` 形式の JSON オブジェクト。これは、App Configuration ストアにプッシュされる各キー値に追加されるタグを定義します。
-- **指定されたプレフィックスとラベルを含むストア内の他のすべてのキー値を削除する**: 既定値は、**オフ**です。
+- **指定されたプレフィックスとラベルを含むストア内の他のすべてのキー値を削除する**: 既定値は、**オフ** です。
   - **オン**: 指定されたプレフィックスとラベルの両方と一致する App Configuration ストア内のすべてのキー値を削除した後、構成ファイルの新しいキー値をプッシュします。
   - **オフ**: すべてのキー値を構成ファイルから App Configuration ストアにプッシュし、App Configuration ストア内の他のすべてのものをそのまま残します。
 

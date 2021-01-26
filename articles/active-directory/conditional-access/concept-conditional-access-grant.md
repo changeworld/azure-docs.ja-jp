@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 536a9641b68ccd2510a7891b46483a322fb6ecb7
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274682"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900928"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -34,7 +34,7 @@ ms.locfileid: "87274682"
 
 管理者は、アクセス権を付与するときに 1 つ以上のコントロールを適用することを選択できます。 これらのコントロールには、次のオプションがあります。 
 
-- [多要素認証 (Azure Multi-Factor Authentication) を要求する](../authentication/concept-mfa-howitworks.md)
+- [多要素認証 (Azure AD Multi-Factor Authentication) を必須にする](../authentication/concept-mfa-howitworks.md)
 - [デバイスが準拠としてマーク済みであることを必要とする (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [ハイブリッド Azure AD 参加済みのデバイスを必要とする](../devices/concept-azure-ad-join-hybrid.md)
 - [承認済みクライアント アプリを必須にする](app-based-conditional-access.md)
@@ -43,14 +43,14 @@ ms.locfileid: "87274682"
 
 これらのオプションを組み合わせることを選択する場合、管理者は次の方法を選択できます。
 
-- 選択したコントロールすべてが必要 (コントロール**と**コントロール)
-- 選択したコントロールのいずれかが必要 (コントロール**または**コントロール)
+- 選択したコントロールすべてが必要 (コントロール **と** コントロール)
+- 選択したコントロールのいずれかが必要 (コントロール **または** コントロール)
 
 既定では、条件付きアクセスでは、選択したすべてのコントロールが必要です。
 
 ### <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-このチェックボックスをオンにすると、ユーザーは Azure Multi-Factor Authentication を実行する必要があります。 Azure Multi-factor Authentication のデプロイの詳細については、「[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)」の記事を参照してください。
+このチェックボックスをオンにすると、ユーザーは Azure AD Multi-Factor Authentication を実行する必要があります。 Azure AD Multi-factor Authentication のデプロイの詳細については、「[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)」の記事を参照してください。
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
 
@@ -70,7 +70,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。 これらの承認されたクライアント アプリは、モバイル デバイス管理 (MDM) ソリューションには一切依存せずに、[Intune アプリ保護ポリシー](/intune/app-protection-policy)をサポートします。
 
-この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
+この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーは必要なブローカー アプリをインストールするために、適切な App ストアにリダイレクトされます。
 
 この設定は、以下の iOS アプリと Android アプリに適用されます。
 
@@ -102,14 +102,16 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Word
 - Microsoft Yammer
 - Microsoft Whiteboard
+- Microsoft 365 管理
 
 **解説**
 
 - 承認されたクライアント アプリは、Intune モバイル アプリケーション管理機能をサポートしています。
 - **[承認されたクライアント アプリが必要です]** 要件:
    - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
-   - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
+   - デバイスを登録するには、ブローカー アプリが必要です。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。
 - 条件付きアクセスでは、InPrivate モードの Microsoft Edge を承認されたクライアント アプリと見なすことはできません。
+- 条件付きアクセス ポリシーでは、承認されたクライアント アプリとして Microsoft Power BI アプリが必要となります。ここでは、Azure AD アプリケーション プロキシを使用して、Power BI モバイル アプリからオンプレミスの Power BI Report Server に接続できるようにすることはできません。
 
 「[方法: 条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する](app-based-conditional-access.md)」を参照して構成の例を確認してください。
 
@@ -137,12 +139,12 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Nine Mail - Email & Calendar
 
 > [!NOTE]
-> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする**許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする**許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
+> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする** 許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする** 許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
 
 **解説**
 
 - アプリ保護ポリシーのアプリは、ポリシー保護を含む Intune モバイル アプリケーション管理機能をサポートしています。
-- **アプリの保護ポリシーが必要**の要件:
+- **アプリの保護ポリシーが必要** の要件:
     - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
     - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
 

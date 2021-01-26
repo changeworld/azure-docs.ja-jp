@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318353"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975576"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -156,7 +156,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
 1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
 1. 管理するアカウントを設定するには、 **[選択したクラス、グループ、またはオブジェクト]** を選択し、 **[選択...]** をクリックします。 次に、 **[グループ...]** をクリックし、 **[グループの検索]** ボックス開きます。
-1. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。 グループを選択したら、 **[OK]** をクリックして、 **[グループ検索]** ボックスを閉じます。
+1. **Microsoft System Center Advisor Monitoring Server Group** を検索して選択します。 グループを選択したら、 **[OK]** をクリックして、 **[グループ検索]** ボックスを閉じます。
 1. **[OK]** をクリックして、 **[実行アカウントの追加]** ボックスを閉じます。
 1. **[保存]** をクリックして、ウィザードを完了し、変更を保存します。
 
@@ -184,7 +184,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager コンソールを開き、 **[管理]** ワークスペースを選択します。
 1. Log Analytics を展開し、 **[接続]** を選択します。
 1. ウィンドウの中央にある **[Operation Management Suite の再構成]** リンクを選択します。
-1. **Log Analytics オンボード ウィザード**に従って､新しい Log Analytics ワークスペースに関連付けられている管理者アカウントの電子メール アドレスか電話番号とパスワードを入力します｡
+1. **Log Analytics オンボード ウィザード** に従って､新しい Log Analytics ワークスペースに関連付けられている管理者アカウントの電子メール アドレスか電話番号とパスワードを入力します｡
 
    > [!NOTE]
    > **[Operations Management Suite オンボード ウィザード: ワークスペースの選択]** ページに、使用されている既存のワークスペースが表示されます。

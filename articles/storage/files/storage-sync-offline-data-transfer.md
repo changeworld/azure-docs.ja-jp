@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034347"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017629"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure Data Box を使用して Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -25,7 +25,7 @@ ms.locfileid: "88034347"
 ## <a name="migration-tools"></a>移行ツール
 この記事で説明するプロセスは、Data Box だけでなく、その他のオフライン移行ツールにも対応しています。 また、インターネットでそのまま動作する AzCopy、Robocopy などのツールや、パートナーのツールとサービスにも対応しています。 最初のアップロードの課題を克服した場合でも、この記事に記載されている手順に従って、Azure File Sync と互換性のある方法でこれらのツールを使用してください。
 
-Azure File Sync を導入する前に、Windows Server 間で移動しなければならないケースもあります。そのような場合には [Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) が役立つ可能性があります。 Azure File Sync でサポートされるバージョンのサーバー OS (Windows Server 2012R2 以上) が必要であったり、単純に Azure File Sync 用の新しいシステムを購入するなど、移行の理由が何であれ、円滑な移行を支援するさまざまな機能と利点を SMS は備えています。
+Azure File Sync を導入する前に、Windows Server 間で移動しなければならないケースもあります。そのような場合には [Storage Migration Service](/windows-server/storage/storage-migration-service/overview) (SMS) が役立つ可能性があります。 Azure File Sync でサポートされるバージョンのサーバー OS (Windows Server 2012R2 以上) が必要であったり、単純に Azure File Sync 用の新しいシステムを購入するなど、移行の理由が何であれ、円滑な移行を支援するさまざまな機能と利点を SMS は備えています。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>ツールを使用してデータをオフライン転送する利点
 Data Box などの転送ツールをオフライン移行に使用する主な利点は次のとおりです。
@@ -91,7 +91,7 @@ Azure File Sync は、使用した一括移行ツールが最初に ACL を転�
 
 ## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>Azure File Sync とクラウドに事前シード処理されたファイル
 
-Azure ファイル共有で DataBox 以外の方法によってファイルをシード処理したことがある場合は、クラウド バックアップからの AzCopy や RoboCopy を始めとする方法を使用した場合でも、この記事で説明した[オフライン データ転送のプロセス](#process-for-offline-data-transfer)に従う必要があります。 ファイルをクラウドに移動する方法として、DataBox を無視する必要があるだけです。 ただし、最終的な Azure File Sync に接続された共有ではなく、*ステージング共有*にファイルをシード処理するプロセスに確実に従っていることが重要です。
+Azure ファイル共有で DataBox 以外の方法によってファイルをシード処理したことがある場合は、クラウド バックアップからの AzCopy や RoboCopy を始めとする方法を使用した場合でも、この記事で説明した[オフライン データ転送のプロセス](#process-for-offline-data-transfer)に従う必要があります。 ファイルをクラウドに移動する方法として、DataBox を無視する必要があるだけです。 ただし、最終的な Azure File Sync に接続された共有ではなく、*ステージング共有* にファイルをシード処理するプロセスに確実に従っていることが重要です。
 
 > [!WARNING]
 > 最終的な Azure File Sync に接続された共有ではなく、**ステージング共有にファイルをシード処理するプロセスに従ってください**。 そうしないと、ファイルの競合が発生する可能性があります (両方のファイル バージョンが格納されます)。また、ライブ サーバーで削除されたファイルが、古いシードされたファイルのセットにまだ存在する場合は、それが元に戻る可能性があります。 さらに、フォルダーの変更は相互にマージされるため、このようなミスの後は、名前空間を分離するのが非常に困難になります。

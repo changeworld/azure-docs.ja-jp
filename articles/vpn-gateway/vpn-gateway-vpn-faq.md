@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7e59c8ecc0d7af341ddc1ea79aa42460e00fa444
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121478"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89419777"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 

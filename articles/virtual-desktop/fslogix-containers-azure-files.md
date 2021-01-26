@@ -3,15 +3,15 @@ title: Windows Virtual Desktop FSLogix プロファイル コンテナー ファ
 description: この記事では、Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure Files について説明します。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002386"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861885"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure Files
 
@@ -70,7 +70,7 @@ S2D クラスターでは、オペレーティング システムが、修正プ
 2018 年 11 月 19 日、[Microsoft は FSLogix を買収しました](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix は多くのプロファイル コンテナーの課題に対処しています。 その中でも重要なものは次のとおりです。
 
 - **パフォーマンス:** [FSLogix プロファイル コンテナー](/fslogix/configure-profile-container-tutorial/)はハイ パフォーマンスであり、これによって、これまで Exchange キャッシュ モードの妨げになっていたパフォーマンスの問題が解決されます。
-- **OneDrive:** FSLogix プロファイル コンテナーがなければ、非永続的な RDSH または VDI 環境内で OneDrive for Business はサポートされません。 「[OneDrive for Business and FSLogix best practices](/fslogix/overview/)」 (OneDrive for Business と FSLogix のベストプラクティス) には、それらがやりとりする方法が説明されています。 詳細については、「[仮想デスクトップ上で同期クライアントを使用する](/deployoffice/rds-onedrive-business-vdi/)」を参照してください。
+- **OneDrive:** FSLogix プロファイル コンテナーがなければ、非永続的な RDSH または VDI 環境内で OneDrive for Business はサポートされません。 [OneDrive VDI のサポート ページ](/onedrive/sync-vdi-support)に、それらがやりとりする方法が説明されています。 詳細については、「[仮想デスクトップ上で同期クライアントを使用する](/deployoffice/rds-onedrive-business-vdi/)」を参照してください。
 - **追加のフォルダー:** FSLogix には、追加のフォルダーを含められるようにユーザー プロファイルを拡張する機能が用意されています。
 
 買収以降、Microsoft は、UPD などの既存のユーザー プロファイル ソリューションから FSLogix プロファイル コンテナーへの置き換えを開始しました。
@@ -87,7 +87,7 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 
 - Azure Files ストレージ アカウントをセッション ホスト VM と同じリージョンにする必要があります。
 - Azure Files のアクセス許可を、「[Requirements - Profile Containers](/fslogix/fslogix-storage-config-ht)」 (要件 - プロファイル コンテナー) に記載されているアクセス許可と一致させる必要があります。
-- 各ホストプールを、同じマスター イメージに基づいて同じ種類および同じサイズの VM で構築する必要があります。
+- 各ホスト プール VM を、同じマスター イメージに基づいて同じ種類および同じサイズの VM で構築する必要があります。
 - 管理、スケーリング、および更新を容易にするために各ホスト プール VM を同じリソースグループに含める必要があります。
 - 最適なパフォーマンスを得るには、ストレージ ソリューションと FSLogix プロファイル コンテナーを同じデータ センターの場所に置く必要があります。
 - マスター イメージを含むストレージ アカウントを、VM がプロビジョニングされるのと同じリージョンおよびサブスクリプションに置く必要があります。

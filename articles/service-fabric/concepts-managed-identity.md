@@ -3,13 +3,12 @@ title: Azure のマネージド ID
 description: Service Fabric での Azure のマネージド ID の使用について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257636"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574753"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Service Fabric での Azure のマネージド ID の使用
 

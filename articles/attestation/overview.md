@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320598"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748775"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (プレビュー)
 
-Microsoft Azure Attestation (プレビュー) は、[Intel ソフトウェア ガード エクステンションズ](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) エンクレーブや[仮想化ベースのセキュリティ](/windows-hardware/design/device-experiences/oem-vbs) (VBS) エンクレーブなどの信頼できる実行環境 (TEE) を証明するためのソリューションです。 エンクレーブ構成証明は、エンクレーブがセキュリティで保護され、信頼できることを検証するためのプロセスです。
+Microsoft Azure Attestation (プレビュー) は、プラットフォームの信頼性とその内部で実行されているバイナリの整合性をリモートで検証するための統合ソリューションです。 このサービスでは、[Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) エンクレーブや[仮想化ベースのセキュリティ](/windows-hardware/design/device-experiences/oem-vbs) (VBS) エンクレーブなどの高信頼実行環境 (TEE) の状態を証明する機能と共に、トラステッド プラットフォーム モジュール (TPM) によって裏付けられたプラットフォームの構成証明がサポートされています。 
 
 構成証明は、ソフトウェア バイナリが信頼できるプラットフォームで適切にインスタンス化されたことを示すためのプロセスです。 リモートの証明書利用者は、信頼できるハードウェアで上で実行されているのがこのような意図されたソフトウェアのみであるという確信を得ることができます。 Azure Attestation は、構成証明を目的とした、統合された顧客向けのサービスとフレームワークです。
 
@@ -34,12 +34,6 @@ Azure Attestation は、複数の環境と特徴的なユース ケースに対�
 SGX とは、特定の Intel CPU モデルでサポートされているハードウェアグレードの分離を指します。 SGX を使用すると、SGX エンクレーブと呼ばれるサニタイズされたコンパートメントでコードを実行できます。 その後、アクセスとメモリのアクセス許可はハードウェアによって管理され、攻撃対象領域は適切に分離された最小限のものになります。
 
 クライアント アプリケーションは、機密性の高いタスクがそれらのエンクレーブ内で実行されるように委任することで、SGX エンクレーブを利用するように設計できます。 このようなアプリケーションでは、Azure Attestation を利用して定期的にエンクレーブ内で信頼を確立し、その機能を使用して機密データにアクセスすることができます。
-
-### <a name="vbs-attestation"></a>VBS の構成証明
-
-VBS は、Hyper-V に基づくエンクレーブ メモリ保護のためのソフトウェアベース アーキテクチャです。 ホスト管理者コードだけでなく、ローカルおよびクラウド サービスの管理者が VBS エンクレーブ内のデータにアクセスしたり、その実行に影響を与えたりするのを防ぎます。
-
-Azure Attestation は、SGX テクノロジと同様に、構成されているポリシーと照らし合わせた VBS エンクレーブの検証と、有効性の証明としての認定ステートメントの発行をサポートします。
 
 ### <a name="open-enclave"></a>Open Enclave
 [Open Enclave](https://openenclave.io/sdk/) (OE) は、開発者が TEE ベースのアプリケーションの構築に利用する、単一の統合エンクレーブ抽象化の作成を目的としたライブラリのコレクションです。 これは、プラットフォームの特異性を最小限に抑える、セキュリティ保護されたユニバーサルなアプリ モデルを提供します。 Microsoft では、これを、SGX などのハードウェアベースのエンクレーブ テクノロジをだれもが使えるようにし、Azure での利用を拡大するための重要な手段と考えています。
@@ -65,19 +59,15 @@ Azure Attestation のお客様は、Microsoft が信頼できるコンピュー�
 
 Azure Attestation には以下のベネフィットがあるため、TEE を証明するうえで推奨される選択肢となっています。 
 
-- SGX エンクレーブや VBS エンクレーブなどの複数の TEE を証明するための統合フレームワーク
+- TPM、SGX エンクレーブ、VBS エンクレーブなどの複数の環境を証明するための統合フレームワーク 
 - カスタム構成証明プロバイダーとポリシーを構成してトークンの生成を制限できるマルチテナント サービス
 - ユーザーによる構成なしで証明できる既定のプロバイダーを提供
 - SGX エンクレーブ内での実装により、使用中のデータを保護
-- サービス レベル アグリーメント (SLA) を提供する高可用性サービス
+- 高可用性サービス 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>事業継続とディザスター リカバリー (BCDR) のサポート
 
-Azure Attestation の[ビジネス継続性とディザスター リカバリー](/azure/best-practices-availability-paired-regions) (BCDR) を使用すると、リージョン内の重大な可用性の問題や災害イベントによって生じるサービスの中断を軽減できます。
-
-現在 BCDR でサポートされているリージョンは次のとおりです
-- 米国東部 2 => 米国中部とペア。
-- 米国中部 => 米国東部 2 とペア。
+Azure Attestation の[ビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md) (BCDR) を使用すると、リージョン内の重大な可用性の問題や災害イベントによって生じるサービスの中断を軽減できます。
 
 2 つのリージョンにデプロイされたクラスターは、通常の状況下では独立して動作します。 一方のリージョンで障害または停止が発生した場合、次の処理が行われます。
 
@@ -91,4 +81,3 @@ Azure Attestation の[ビジネス継続性とディザスター リカバリー
 - [Azure Attestation の基本的な概念](basic-concepts.md)について学習する
 - [構成証明ポリシーを作成して署名する方法](author-sign-policy.md)
 - [PowerShell を使用して Azure Attestation を設定する](quickstart-powershell.md)
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322875"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545499"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -26,7 +26,7 @@ Apache Storm の Java ベース トポロジを作成する方法を説明しま
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 
@@ -43,7 +43,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 
-次のコマンドを使用して、**WordCount** という名前の Maven プロジェクトを作成します。
+次のコマンドを使用して、 **WordCount** という名前の Maven プロジェクトを作成します。
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -237,11 +237,11 @@ resources セクションには、トポロジ内のコンポーネントに必�
 
 Java ベースの Apache Storm トポロジは、作成か依存関係として参照する必要のある 3 つのコンポーネントで構成されます。
 
-* **スパウト**:外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
+* **スパウト** :外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
 
-* **ボルト**:スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
+* **ボルト** :スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
 
-* **トポロジ**:スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
+* **トポロジ** :スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
 
 ### <a name="create-the-spout"></a>スパウトを作成する
 
@@ -327,9 +327,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 ボルトは、データの処理を扱います。 ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、あらゆる操作が可能です。 このトポロジでは、次の 2 つのボルトを使用します。
 
-* **SplitSentence**:**RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
+* **SplitSentence** : **RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
 
-* **WordCount**:各単語が発生した回数をカウントします。
+* **WordCount** :各単語が発生した回数をカウントします。
 
 #### <a name="splitsentence"></a>SplitSentence
 

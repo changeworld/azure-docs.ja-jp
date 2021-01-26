@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511940"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024366"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -23,10 +23,10 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 
 | 設定 | 説明 |
 |:---|:---|
-| 名前           | **クエリ エクスプローラー**に表示されるクエリの名前。 |
+| 名前           | **クエリ エクスプローラー** に表示されるクエリの名前。 |
 | 名前を付けて保存        | 機能 |
 | 関数のエイリアス | この関数を他のクエリの中で使用するための短い名前。 スペースを含めることはできず、一意である必要があります。 |
-| カテゴリ       | 保存したクエリと関数を**クエリ エクスプローラー**内で整理するためのカテゴリ。 |
+| カテゴリ       | 保存したクエリと関数を **クエリ エクスプローラー** 内で整理するためのカテゴリ。 |
 
 
 
@@ -56,10 +56,10 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ クエリの記述に関するその他のレッスンを参照してください。
 
-- [文字列操作](string-operations.md)
-- [日付と時刻の操作](datetime-operations.md)
-- [集計関数](aggregations.md)
-- [高度な集計](advanced-aggregations.md)
-- [JSON とデータ構造](json-data-structures.md)
-- [結合](joins.md)
-- [グラフ](charts.md)
+- [文字列操作](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [日付と時刻の操作](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [集計関数](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [高度な集計](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON とデータ構造](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [結合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [グラフ](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfffafaab2e2d4ef6b165ef03beb827342c94608
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737344"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96018054"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
 この記事では、Azure CLI を使用して Azure 上でプライベート リンク サービスを作成する方法を示します。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-代わりに、Azure CLI をローカルにインストールして使用する場合、このクイックスタートでは、最新の Azure CLI バージョンを使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
+- この記事には、Azure CLI の最新バージョンが必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+
 ## <a name="create-a-private-link-service"></a>Private Link サービスを作成する
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -49,7 +50,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-health-probe"></a>ロード バランサーの正常性プローブの作成
 
-正常性プローブは、ネットワーク トラフィックを受信できるように、すべての仮想マシン インスタンスを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
+正常性プローブは、ネットワーク トラフィックを受信できるように、すべての仮想マシン インスタンスを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -62,7 +63,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 
-ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myHTTPRule* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
+ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myHTTPRule* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -78,7 +79,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 ```
 ### <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-この例では、仮想マシンの作成については説明しません。 「[Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool)」の手順に従って、ロード バランサー用のバックエンド サーバーとして使用される 2 つの仮想マシンを作成できます。 
+この例では、仮想マシンの作成については説明しません。 「[クイックスタート: Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する](../load-balancer/quickstart-load-balancer-standard-internal-cli.md)」の手順に従って、ロード バランサー用のバックエンド サーバーとして使用される 2 つの仮想マシンを作成できます。 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>サブネット上で Private Link サービス ネットワーク ポリシーを無効にする 
@@ -88,7 +89,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Private Link サービスを作成する  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Standard Load Balancer を使用して Private Link サービスを作成する 
  
 [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) を使って、Standard Load Balancer フロントエンド IP 構成を使用してプライベート リンク サービスを作成します。 この例では、*myResourceGroup* という名前のリソース グループ内で *myLoadBalancer* という名前の Standard Load Balancer を使用して、*myPLS* という名前のプライベート リンク サービスを作成します。 
  
@@ -162,4 +163,3 @@ az network private-link-service show --resource-group myResourceGroup --name myP
 ```
 ## <a name="next-steps"></a>次のステップ
 - [Azure Private Link サービス](private-link-service-overview.md)についてさらに学習する
- 

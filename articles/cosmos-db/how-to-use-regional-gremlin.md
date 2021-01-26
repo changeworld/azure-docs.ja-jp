@@ -1,34 +1,36 @@
 ---
 title: Azure Cosmos DB Graph データベースのリージョン エンドポイント
 description: アプリケーションに最も近い Graph データベース エンドポイントに接続する方法について学習します
-author: luisbosquez
-ms.author: lbosq
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f9d46c2f5cce397c2aa6ebbcd38d7fbb5786412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997253"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361789"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph アカウントのリージョン エンドポイント
-Azure Cosmos DB Graph データベースは[グローバルに分散](distribute-data-globally.md)されているため、アプリケーションは複数の読み取りエンドポイントを使用できます。 複数の場所で書き込みアクセスが必要なアプリケーションでは、[マルチマスター](how-to-multi-master.md)機能を有効にする必要があります。
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
+Azure Cosmos DB Graph データベースは[グローバルに分散](distribute-data-globally.md)されているため、アプリケーションは複数の読み取りエンドポイントを使用できます。 複数の場所で書き込みアクセスが必要なアプリケーションでは、[複数リージョン書き込み](how-to-multi-master.md)機能を有効にする必要があります。
 
 複数のリージョンを選択する理由:
 1. **水平方向の読み取りのスケーラビリティ** - アプリケーションの負荷が増えたときに読み取りトラフィックを異なる Azure リージョンにルーティングすることが賢明な場合があります。
 2. **低待ち時間** - 読み取りおよび書き込みトラフィックを最も近い Azure リージョンにルーティングすることで、各トラバーサルのネットワーク待ち時間オーバーヘッドを減らすことができます。
 
-**データの保存場所**要件は、Cosmos DB アカウントに Azure Resource Manager ポリシーを設定することで達成されます。 顧客は、Cosmos DB のデータの複製先のリージョンを制限できます。
+**データの保存場所** 要件は、Cosmos DB アカウントに Azure Resource Manager ポリシーを設定することで達成されます。 顧客は、Cosmos DB のデータの複製先のリージョンを制限できます。
 
 ## <a name="traffic-routing"></a>トラフィックのルーティング
 
 Cosmos DB Graph データベース エンジンは複数のリージョンで実行されており、そのそれぞれに複数のクラスターが含まれています。 各クラスターには数百台のマシンがあります。 Cosmos DB グラフ アカウントの DNS CNAME *accountname.gremlin.cosmos.azure.com* は、クラスターの DNS A レコードに解決されます。 ロードバランサーの単一の IP アドレスによって、内部クラスターのトポロジが隠されます。
 
-Cosmos DB Graph アカウントのすべてのリージョンに対して、リージョンの DNS CNAME レコードが作成されます。 リージョン エンドポイントの形式は *accountname-region.gremlin.cosmos.azure.com* です。 リージョン エンドポイントのリージョン セグメントは、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)名からすべてのスペースを削除することによって取得されます。 たとえば、`"contoso"` グローバル データベース アカウントの `"East US 2"` リージョンの DNS CNAME は、*contoso-eastus2.gremlin.cosmos.azure.com* になります
+Cosmos DB Graph アカウントのすべてのリージョンに対して、リージョンの DNS CNAME レコードが作成されます。 リージョン エンドポイントの形式は *accountname-region.gremlin.cosmos.azure.com* です。 リージョン エンドポイントのリージョン セグメントは、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)名からすべてのスペースを削除することによって取得されます。 たとえば、`"contoso"` グローバル データベース アカウントの `"East US 2"` リージョンの DNS CNAME は、 *contoso-eastus2.gremlin.cosmos.azure.com* になります
 
 TinkerPop Gremlin クライアントは、単一のサーバーで動作するように設計されています。 アプリケーションでは、読み取りおよび書き込みトラフィックにグローバルな書き込み可能 DNS CNAME を使用できます。 リージョン対応アプリケーションでは、読み取りトラフィックにリージョン エンドポイントを使用する必要があります。 特定のリージョンが書き込みを受け入れるように構成されている場合にのみ、書き込みトラフィックにリージョン エンドポイントを使用します。 
 

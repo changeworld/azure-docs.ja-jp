@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260222"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825798"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -33,15 +33,13 @@ ms.locfileid: "89260222"
 > [!NOTE]
 > Azure リソースのマネージド ID は、以前のマネージドサービス ID (MSI) の新しい名前です。
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>マネージド ID を持つリソースを見つけるにはどうすればいいですか?
 
 次の Azure CLI コマンドを使用して、システム割り当てマネージド ID を持つリソースの一覧を検索できます。 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>マネージド ID にバッキング アプリ オブジェクトはありますか?
 
@@ -72,13 +70,11 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 - システム割り当てマネージド ID が有効でなく、ユーザー割り当てマネージド ID が 1 つのみの場合、IMDS はその単一のユーザー割り当てマネージド ID を規定値とします。 
 - システム割り当てマネージド ID が有効でなく、複数のユーザー割り当てマネージド ID が存在する場合、要求内でのマネージド ID の指定が必要です。
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
 いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
-- ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
+- ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度アタッチします
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>マネージド ID を使って違うディレクトリやテナント内のリソースへアクセスできますか?
 
@@ -89,7 +85,46 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 - システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
 - ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当て。
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を作成できないようにするにはどうすればよいですか。
 
+[Azure Policy](../../governance/policy/overview.md) を使用して、ユーザー割り当てマネージド ID をユーザーが作成できないようにすることができます
+
+- [Azure portal](https://portal.azure.com) に移動し、 **[ポリシー]** に移動します。
+- **[定義]** を選択します。
+- **[+ ポリシー定義]** を選択し、必要な情報を入力します。
+- ポリシー規則セクションに、次を貼り付けます。
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+ポリシーを作成したら、使用するリソース グループに割り当てます。
+
+- リソース グループに移動します。
+- テスト用に使用しているリソース グループを見つけます。
+- 左側のメニューから **[ポリシー]** を選択します。
+- **[ポリシーの割り当て]** を選択します。
+- **[基本]** セクションで、次を指定します。
+    - **[Scope]\(スコープ\)** : テスト用に使用しているリソース グループ
+    - **[ポリシー定義]** :前に作成したポリシー。
+- 他のすべての設定は既定値のままにして、 **[確認と作成]** を選択します
+
+この時点で、リソース グループ内でユーザー割り当てマネージド ID を作成しようとすると失敗します。
+
+  ![ポリシー違反](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -112,7 +147,7 @@ Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推
 Azure リソースのマネージド ID の正しい値を取得できるように、VM 上で更新をトリガーします。 VM プロパティの変更を行って、Azure リソース ID のマネージド ID への参照を更新できます。 たとえば、次のコマンドを使用して、VM で新しいタグの値を設定できます。
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 このコマンドは、新しいタグ "fixVM" を値 1 で VM に設定します。 
@@ -125,8 +160,6 @@ VM が開始されると、次のコマンドを使用してタグを削除で�
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-
-
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Azure AD ディレクトリ間のサブスクリプションの転送
 
 マネージド ID は、サブスクリプションが別のディレクトリに移動/転送されたときに更新されません。 その結果、既存のシステム割り当てマネージド ID やユーザー割り当てマネージド ID は破損します。 
@@ -134,9 +167,9 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 別のディレクトリに移動されたサブスクリプションのマネージド ID の回避策:
 
  - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
- - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
+ - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度アタッチします
 
-詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)](../../role-based-access-control/transfer-subscription.md)」を参照してください。
+詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](../../role-based-access-control/transfer-subscription.md)」を参照してください。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>ユーザー割り当てマネージド ID の異なるリソース グループ/サブスクリプションへの移動
 

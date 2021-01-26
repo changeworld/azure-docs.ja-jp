@@ -3,16 +3,25 @@ title: お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止
 description: この記事では、コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815438"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695619"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法
 
-お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。 
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月に廃止されます。
+>
+> 2020 年 10 月の時点で、新しい 3.11 クラスターを作成することはできなくなります。
+> 既存の 3.11 クラスターは、2022 年 6 月までは引き続き動作しますが、その日以降はサポートされなくなります。
+>
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](../../openshift/tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:aro-feedback@microsoft.com)。
+
+お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
@@ -99,7 +108,7 @@ Linux 上で Azure CLI を使用して次のコマンドを実行してソリュ
 ```azurecli
 az login   
 az account set --subscription "Subscription Name"
-az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
+az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
 設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが返されます。

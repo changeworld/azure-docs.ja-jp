@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920113"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900462"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>チュートリアル:2 つのマネージド インスタンス間でのレプリケーションの構成
 
@@ -32,7 +32,7 @@ ms.locfileid: "87920113"
 > [!div class="checklist"]
 >
 > - レプリケーション パブリッシャーおよびディストリビューターとしてマネージド インスタンスを構成する。
-> - レプリケーション ディストリビューターとしてマネージド インスタンスを構成する。
+> - レプリケーション サブスクライバーとしてマネージド インスタンスを構成する。
 
 ![2 つのマネージド インスタンス間でのレプリケート](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "87920113"
 
 SQL Managed Instance をパブリッシャー、ディストリビューター、またはその両方として機能するよう構成するには、以下の要件があります。
 
-- パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[仮想ネットワーク ピアリング](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)が 3 つのエンティティすべての仮想ネットワーク間に構成されています。 
+- パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[VPN ゲートウェイ](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)が 3 つのエンティティすべての仮想ネットワーク間に構成されています。 
 - 接続では、レプリケーション参加者間で SQL 認証を使用します。
 - レプリケーションの作業ディレクトリとしての Azure ストレージ アカウント共有。
 - Azure ファイル共有にアクセスするために、マネージド インスタンスの NSG のセキュリティ規則でポート 445 (TCP 送信) を開く必要があります。  「`failed to connect to azure storage \<storage account name> with os error 53`」のエラーが発生する場合、適切な SQL Managed Instance サブネットの NSG にアウトバウンド規則を追加する必要があります。
@@ -68,7 +68,7 @@ SQL Managed Instance をパブリッシャー、ディストリビューター�
 
 ## <a name="3---create-an-azure-storage-account"></a>3 ‐ Azure ストレージ アカウントを作成する
 
-作業ディレクトリ用に [Azure ストレージ アカウント](/azure/storage/common/storage-create-storage-account#create-a-storage-account)を作成し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。 
+作業ディレクトリ用に [Azure ストレージ アカウント](../../storage/common/storage-account-create.md#create-a-storage-account)を作成し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。 
 
 `\\storage-account-name.file.core.windows.net\file-share-name` の形式のファイル共有パスをコピーします。
 
@@ -326,4 +326,4 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure SQL Managed Instance とのトランザクション レプリケーション](replication-transactional-overview.md)の詳細、または [SQL Managed Instance パブリッシャー/ディストリビューターと、Azure VM サブスクライバー上の SQL](replication-two-instances-and-sql-server-configure-tutorial.md) 間でのレプリケーションの構成方法についても学習してください。 
+[Azure SQL Managed Instance とのトランザクション レプリケーション](replication-transactional-overview.md)の詳細、または [SQL Managed Instance パブリッシャー/ディストリビューターと、Azure VM サブスクライバー上の SQL](replication-two-instances-and-sql-server-configure-tutorial.md) 間でのレプリケーションの構成方法についても学習してください。

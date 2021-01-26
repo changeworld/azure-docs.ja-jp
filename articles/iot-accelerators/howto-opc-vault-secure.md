@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082814"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926412"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスの使用
+
+> [!IMPORTANT]
+> この記事は更新される予定ですが、最新の内容については、[Azure 産業用 IoT](https://azure.github.io/Industrial-IoT/) に関するページを参照してください。
 
 この記事では、アプリケーションを登録する方法と、OPC UA デバイスに署名済みのアプリケーション証明書を発行する方法について説明します。
 
@@ -61,7 +64,7 @@ ms.locfileid: "87082814"
 
 4. フォームにサブジェクト名とドメイン名を入力します。 秘密キーとして、PEM または PFX を選択し、パスワードを指定します。 **[Generate New KeyPair]\(新しいキー ペアの生成\)** を選択し、証明書の要求を作成します。
 
-   ![証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/approve-reject.png "証明書の承認")
+   ![[証明書要求の詳細の表示] 画面と [Generate New KeyPair]\(新しいキー ペアの生成\) ボタンを示すスクリーンショット。](media/howto-opc-vault-secure/approve-reject.png "証明書の承認")
 
 5. 承認では、ユーザーが承認者ロールと Azure Key Vault での署名アクセス許可を持っている必要があります。 一般的なワークフローでは、承認者ロールと要求者ロールを別々のユーザーに割り当てる必要があります。 実際のキー ペアの作成と署名操作を開始する場合は **[Approve]\(承認\)** を選択し、キャンセルする場合は **[Reject]\(拒否\)** を選択します。 新しいキー ペアが作成され、証明書の要求元からダウンロードされるまで Azure Key Vault に安全に格納されます。 公開キーを使用して生成された証明書は、CA によって署名されます。 これらの操作の完了には数秒かかることがあります。
 
@@ -90,7 +93,7 @@ ms.locfileid: "87082814"
 
 5. 承認では、ユーザーが承認者ロールと Azure Key Vault での署名アクセス許可を持っている必要があります。 実際の署名操作を開始する場合は **[Approve]\(承認\)** を選択し、キャンセルする場合は **[Reject]\(拒否\)** を選択します。 公開キーを使用して生成された証明書は、CA によって署名されます。 この操作の完了には数秒かかることがあります。
 
-   ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
+   ![[証明書要求の詳細の表示] 画面を示すスクリーンショット。下部には承認メッセージが表示されています。](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
 
 6. 生成された証明書 (DER) は、ここからバイナリ ファイルとしてダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
 10. 証明書をダウンロードして安全に保存したら、 **[Delete Certificate]\(証明書の削除\)** を選択できます。
@@ -102,7 +105,7 @@ ms.locfileid: "87082814"
 
 これで、OPC UA デバイスは、追加の構成なしで、CA 署名済み証明書によって保護されている他の OPC UA デバイスと通信できるようになりました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、OPC UA デバイスをセキュリティで保護する方法を学習しました。次のことができます。
 

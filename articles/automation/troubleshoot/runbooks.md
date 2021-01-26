@@ -2,16 +2,16 @@
 title: Azure Automation Runbook に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Runbook に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904804"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368085"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -42,7 +42,7 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
     * [証明書を更新する](../manage-runas-account.md#cert-renewal) (実行アカウントの有効期限が切れている場合)。
     * [Webhook を更新する](../automation-webhooks.md#renew-a-webhook) (期限切れの Webhook を使用して Runbook を開始しようとしている場合)。
     * [ジョブの状態を確認](../automation-runbook-execution.md#job-statuses)して、現在の Runbook の状態と、この問題について考えられるいくつかの原因を特定する。
-    * [新たな出力を Runbook に追加](../automation-runbook-output-and-messages.md#monitor-message-streams)して、Runbook の中断前に何が発生したかを特定する。
+    * [新たな出力を Runbook に追加](../automation-runbook-output-and-messages.md#working-with-message-streams)して、Runbook の中断前に何が発生したかを特定する。
     * ジョブによってスローされる[例外を処理する](../automation-runbook-execution.md#exceptions)。
 
 1. Runbook ジョブまたは Hybrid Runbook Worker 上の環境が応答しない場合に、この手順を実行します。
@@ -147,15 +147,15 @@ Run Login-AzureRMAccount to login.
 
 別のサブスクリプションのリソースにアクセスしようとしている場合は、次の手順に従ってアクセス許可を構成します。
 
-1. Automation 実行アカウントに移動し、**アプリケーション ID** と**サムプリント**をコピーします。
+1. Automation 実行アカウントに移動し、 **アプリケーション ID** と **サムプリント** をコピーします。
 
     ![アプリケーション ID とサムプリントをコピーする](../media/troubleshoot-runbooks/collect-app-id.png)
 
-1. Automation アカウントがホスト "*されていない*" サブスクリプションの **[アクセス制御]** に移動し、新しいロールの割り当てを追加します。
+1. Automation アカウントがホスト " *されていない* " サブスクリプションの **[アクセス制御]** に移動し、新しいロールの割り当てを追加します。
 
     ![アクセス制御](../media/troubleshoot-runbooks/access-control.png)
 
-1. 前に収集した**アプリケーション ID** を追加します。 **[共同作成者]** のアクセス許可を選択します。
+1. 前に収集した **アプリケーション ID** を追加します。 **[共同作成者]** のアクセス許可を選択します。
 
     ![ロールの割り当ての追加](../media/troubleshoot-runbooks/add-role-assignment.png)
 
@@ -201,7 +201,7 @@ The subscription named <subscription name> cannot be found.
 次の手順に従って、Azure に対して認証されているかと、選択しようとしているサブスクリプションにアクセスできるかを確認します。
 
 1. スクリプトがスタンドアロンで動作することを確認するには、Azure Automation の外部でテストします。
-1. スクリプトで、`Select-*` コマンドレットを実行する前に [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) コマンドレットが実行されていることを確認します。
+1. スクリプトで、`Select-*` コマンドレットを実行する前に [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットが実行されていることを確認します。
 1. Runbook の先頭に `Disable-AzContextAutosave –Scope Process` を追加します。 このコマンドレットにより、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
 1. それでもエラー メッセージが表示される場合は、`Connect-AzAccount` に `AzContext` パラメーターを追加するようにコードを変更してから、コードを実行します。
 
@@ -251,7 +251,7 @@ Start-AzAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -AzContext $AzureContext `
+    -AzContext $AzContext `
     –Parameters $params –wait
 ```
 
@@ -398,7 +398,7 @@ Object reference not set to an instance of an object
 
 ### <a name="resolution"></a>解像度
 
-ポーリング ロジックを実装し、[Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) コマンドレットを使用して出力を取得します。 このロジックのサンプルは次のように定義されます。
+ポーリング ロジックを実装し、[Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) コマンドレットを使用して出力を取得します。 このロジックのサンプルは次のように定義されます。
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ Webhook が無効な場合は、Azure portal から再度有効にすること�
 
 ### <a name="cause"></a>原因
 
-このエラーは、多数の[詳細ストリーム](../automation-runbook-output-and-messages.md#monitor-verbose-stream)がある Runbook からジョブ出力を取得するときに発生する可能性があります。
+このエラーは、多数の[詳細ストリーム](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream)がある Runbook からジョブ出力を取得するときに発生する可能性があります。
 
 ### <a name="resolution"></a>解像度
 
 このエラーを解決するには、次のいずれかの操作を行います。
 
 * Runbook を編集し、出力されるジョブ ストリームの数を減らします。
-* コマンドレットを実行するときに取得されるストリーム数を減らします。 これを行うために、[Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) コマンドレットの `Stream` パラメーターに値を設定して、出力ストリームのみを取得できます。 
+* コマンドレットを実行するときに取得されるストリーム数を減らします。 これを行うために、[Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) コマンドレットの `Stream` パラメーターに値を設定して、出力ストリームのみを取得できます。 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>シナリオ:割り当てられたクォータを超えたために Runbook ジョブが失敗する
 
@@ -576,7 +576,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 このエラーを解決するには、次の 2 つの方法があります。
 
-* [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7) を使用する代わりに [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して、Runbook を開始します。
+* [Start-Job](/powershell/module/microsoft.powershell.core/start-job) を使用する代わりに [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) を使用して、Runbook を開始します。
 * Hybrid Runbook Worker で Runbook を実行してみます。
 
 この動作や、Azure Automation Runbook の他の動作の詳細については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」をご覧ください。
@@ -605,8 +605,8 @@ Runbook が、Azure サンドボックスのフェア シェアによって許�
 
 子 Runbook のシナリオを実現する PowerShell コマンドレットは次のとおりです。
 
-* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0)。 このコマンドレットを使用すると、Runbook を起動し、パラメーターを Runbook に渡すことができます。
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)。 子 Runbook の完了後に実行する必要がある操作がある場合は、このコマンドレットを使用して、各子のジョブの状態を確認できます。
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook)。 このコマンドレットを使用すると、Runbook を起動し、パラメーターを Runbook に渡すことができます。
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob)。 子 Runbook の完了後に実行する必要がある操作がある場合は、このコマンドレットを使用して、各子のジョブの状態を確認できます。
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>シナリオ:ジョブ ストリームで get_SerializationSettings メソッドに関するエラーが発生する
 
@@ -642,7 +642,7 @@ Runbook またはアプリケーションを Azure サンドボックスで実�
 
 ### <a name="cause"></a>原因
 
-この問題は、Azure サンドボックスですべてのアウトプロセス COM サーバーへのアクセスが阻止されることが原因で発生することがあります。 たとえば、サンドボックス アプリケーションまたは Runbook では、Windows Management Instrumentation (WMI) や Windows インストーラー サービス (msiserver.exe) を呼び出すことはできません。 
+この問題は、Azure サンドボックスですべてのアウトプロセス COM サーバーへのアクセスが阻止されることが原因で発生することがあります。 たとえば、サンドボックス アプリケーションまたは Runbook では、Windows Management Instrumentation (WMI) や Windows インストーラー サービス (msiserver.exe) を呼び出すことはできません。
 
 ### <a name="resolution"></a>解決方法
 

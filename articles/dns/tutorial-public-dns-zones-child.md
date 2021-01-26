@@ -1,5 +1,5 @@
 ---
-title: Azure 子 DNS ゾーンの作成
+title: チュートリアル:Azure 子 DNS ゾーンの作成
 titleSuffix: Azure DNS
 description: Azure portal で子 DNS ゾーンを作成する方法に関するチュートリアル。
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89081015"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183381"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>チュートリアル:新しい子 DNS ゾーンの作成
 
@@ -34,7 +34,7 @@ ms.locfileid: "89081015"
 * アクティブなサブスクリプションが含まれる Azure アカウント。  アカウントを持っていない場合は、[無料でアカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ことができます。
 * 既存の親 Azure DNS ゾーン。  
 
-このチュートリアルでは、親ゾーンとして contoso.com を使用し、子ドメイン名として subdomain.contoso.com を使用します。  *contoso.com* を実際の親ドメイン名に、*subdomain* を実際の子ドメインに置き換えてください。  親 DNS ゾーンを作成していない場合は、[Azure portal を使用して DNS ゾーンを作成する](https://docs.microsoft.com/azure/dns/dns-getstarted-portal#create-a-dns-zone)ための手順を参照してください。 
+このチュートリアルでは、親ゾーンとして contoso.com を使用し、子ドメイン名として subdomain.contoso.com を使用します。  *contoso.com* を実際の親ドメイン名に、*subdomain* を実際の子ドメインに置き換えてください。  親 DNS ゾーンを作成していない場合は、[Azure portal を使用して DNS ゾーンを作成する](./dns-getstarted-portal.md#create-a-dns-zone)ための手順を参照してください。 
 
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする

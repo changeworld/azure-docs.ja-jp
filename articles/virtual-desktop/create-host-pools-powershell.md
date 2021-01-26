@@ -3,15 +3,15 @@ title: PowerShell を使用して Windows Virtual Desktop のホスト プール
 description: PowerShell コマンドレットを使用して Windows Virtual Desktop にホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667165"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell を使用した Windows Virtual Desktop のホスト プールの作成
 
@@ -99,6 +99,9 @@ Windows Virtual Desktop エージェントをインストールして仮想マ�
 
     >[!NOTE]
     > ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)のメンバーでもあることを確認します。
+
+>[!IMPORTANT]
+>Windows インストーラーを無効にするポリシーや構成は、有効にしないことをお勧めします。 Windows インストーラーを無効にすると、サービスでセッション ホストにエージェントの更新をインストールできなくなり、セッション ホストが正常に機能しなくなります。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Windows Virtual Desktop ホスト プールに仮想マシンを登録する
 

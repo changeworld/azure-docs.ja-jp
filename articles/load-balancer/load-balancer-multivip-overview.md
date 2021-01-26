@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956374"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696882"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
 Azure Load Balancer は、複数のポート、複数の IP アドレス、またはその両方のサービスの負荷を分散できます。 パブリックおよび内部ロード バランサーの定義を使用して、一連の VM のフローの負荷を分散できます。
 
-この記事では、この機能の基礎と重要な概念、制約について説明します。 1 つの IP アドレスにのみサービスを公開する場合は、[パブリック](load-balancer-get-started-internet-portal.md)または[内部](load-balancer-get-started-ilb-arm-portal.md)ロード バランサーの構成に関する簡略化された手順が用意されています。 複数フロントエンドの追加は、1 つのフロントエンド構成に対する増分です。 この記事の概念を使用することで、簡略化された構成をいつでも展開できます。
+この記事では、この機能の基礎と重要な概念、制約について説明します。 1 つの IP アドレスにのみサービスを公開する場合は、[パブリック](./quickstart-load-balancer-standard-public-portal.md)または[内部](./quickstart-load-balancer-standard-internal-portal.md)ロード バランサーの構成に関する簡略化された手順が用意されています。 複数フロントエンドの追加は、1 つのフロントエンド構成に対する増分です。 この記事の概念を使用することで、簡略化された構成をいつでも展開できます。
 
 Azure Load Balancer を定義するときに、フロントエンドおよびバックエンド プールの構成は規則に接続されています。 規則によって参照される正常性プローブは、新しいフローをバックエンド プールのノードに送信する方法を決定します。 フロントエンド (VIP ともいう) は、IP アドレス (パブリックまたは内部)、トランスポート プロトコル (UDP または TCP)、および負荷分散規則のポート番号で構成される 3 タプルで定義されます。 バックエンド プールは、Load Balancer バックエンド プールを参照する、Virtual Machine IP 構成 (NIC リソースの一部) のコレクションです。
 
@@ -64,8 +64,8 @@ DIP は受信フローの宛先です。 バックエンド プールで、各 V
 
 | ルール | フロントエンドのマッピング | バックエンド プールへ |
 | --- | --- | --- |
-| 1 |![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![緑のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![緑のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![紫のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![紫のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Azure Load Balancer の完全なマッピングは次のようになりました。
 
@@ -143,8 +143,8 @@ netsh interface ipv4 set interface “interfacename” weakhostsend=enabled
 
 | ルール | フロントエンド | バックエンド プールにマップ |
 | --- | --- | --- |
-| 1 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (VM1 と VM2) |
-| 2 |![ルール](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (VM1 と VM2) |
+| 1 |![緑の規則](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![緑のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (VM1 と VM2) |
+| 2 |![紫の規則](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![紫のバックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (VM1 と VM2) |
 
 次の表は、ロード バランサーの完全なマッピングを示します。
 
@@ -163,6 +163,7 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 
 * 複数フロントエンドの構成は、IaaS VM でのみサポートされます。
 * Floating IP 規則の場合、ご利用のアプリケーションではアウトバウンド SNAT フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure のアウトバウンド SNAT がアウトバウンド フローを書き換えることができないため、フローが失敗します。  [アウトバウンドのシナリオ](load-balancer-outbound-connections.md)を確認してください。
+* Floating IP は現在、内部負荷分散シナリオのセカンダリ IP 構成でサポートされていません。
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) 」を参照してください。
 

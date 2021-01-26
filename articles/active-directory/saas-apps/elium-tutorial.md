@@ -4,19 +4,19 @@ description: Azure Active Directory と Elium の間にシングル サインオ
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: celested
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 756b8e8e06d393736b330c3ae3e9128de76bf5a0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544215"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Elium の統合
 
@@ -26,8 +26,6 @@ ms.locfileid: "88544215"
 * ユーザーが自分の Azure AD アカウントを使用して Elium に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
@@ -35,25 +33,28 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Elium でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Elium では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Elium では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Elium では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Elium では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-elium-from-the-gallery"></a>ギャラリーからの Elium の追加
 
 Azure AD への Elium の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Elium を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Elium**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Elium** 」と入力します。
 1. 結果のパネルから **[Elium]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-elium"></a>Elium の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-elium"></a>Elium の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Elium に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Elium の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -70,7 +71,7 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Elium** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Elium** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -87,7 +88,7 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
     **[サインオン URL]** ボックスに、`https://<platform-domain>.elium.com/login/saml2/login` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 `https://<platform-domain>.elium.com/login/saml2/metadata` でダウンロードできる **SP メタデータ ファイル**からこれらの値を取得します。これについては、このチュートリアルで後ほど説明します。
+    > これらは実際の値ではありません。 `https://<platform-domain>.elium.com/login/saml2/metadata` でダウンロードできる **SP メタデータ ファイル** からこれらの値を取得します。これについては、このチュートリアルで後ほど説明します。
 
 1. Elium アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -104,7 +105,7 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
     | company| user.companyname|
 
     > [!NOTE]
-    > これらは、既定の要求です。 **電子メール要求のみが必須です**。 JIT プロビジョニングの場合も、電子メール要求のみが必須です。 その他のカスタム要求は、顧客プラットフォームによって異なる場合があります。
+    > これらは、既定の要求です。 **電子メール要求のみが必須です** 。 JIT プロビジョニングの場合も、電子メール要求のみが必須です。 その他のカスタム要求は、顧客プラットフォームによって異なる場合があります。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -133,20 +134,14 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Elium]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-elium-sso"></a>Elium の SSO の構成
 
-1. Elium 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Elium 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -156,17 +151,17 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 
 1. Elium を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Elium 企業サイトにサインインして、次の手順を実行します。
 
-1. 右上隅の **[ユーザー プロファイル]** をクリックし、 **[管理]** を選択します。
+1. 右上隅の **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[Settings]\(設定\)** を選択します。
 
-    ![Configure single sign-on](./media/elium-tutorial/user1.png)
+    ![Elium のシングル サインオンの構成 01](./media/elium-tutorial/elium-01.png)
 
-1. **[セキュリティ]** タブを選びます。
+1. **[Advanced]\(詳細\)** で **[Security]\(セキュリティ\)** を選択します。
 
-    ![Configure single sign-on](./media/elium-tutorial/user2.png)
+    ![Elium のシングル サインオンの構成 02](./media/elium-tutorial/elium-02.png)
 
 1. **[シングル サインオン (SSO)]** セクションにスクロールし、次の手順に従います。
 
-    ![Configure single sign-on](./media/elium-tutorial/user3.png)
+    ![Elium のシングル サインオンの構成 03](./media/elium-tutorial/elium-03.png)
 
     a. **[Verify that SAML2 authentication works for your account]\(SAML2 認証がアカウントに対して動作することを確認する\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。
 
@@ -177,15 +172,15 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 
     c. **[JIT Provisioning]\(JIT プロビジョニング\)** チェック ボックスをオンにします。
 
-    d. **[ダウンロード]** をクリックして **SP メタデータ**を開きます。
+    d. **[ダウンロード]** をクリックして **SP メタデータ** を開きます。
 
-    e. **SP メタデータ** ファイルで **entityID** を検索し、**entityID** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** テキストボックスに貼り付けます。 
+    e. **SP メタデータ** ファイルで **entityID** を検索し、 **entityID** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** テキストボックスに貼り付けます。 
 
-    ![Configure single sign-on](./media/elium-tutorial/user4.png)
+    ![Elium のシングル サインオンの構成 04](./media/elium-tutorial/elium-04.png)
 
-    f. **SP メタデータ** ファイルで **AssertionConsumerService** を検索し、**Location** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** テキストボックスに貼り付けます。
+    f. **SP メタデータ** ファイルで **AssertionConsumerService** を検索し、 **Location** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** テキストボックスに貼り付けます。
 
-    ![Configure single sign-on](./media/elium-tutorial/user5.png)
+    ![Elium のシングル サインオンの構成 05](./media/elium-tutorial/elium-05.png)
 
     g. Azure Portal からダウンロードしたメタデータ ファイルをメモ帳で開き、内容をコピーして、 **[IdP Metadata]\(IdP メタデータ\)** テキストボックスに貼り付けます。
 
@@ -193,23 +188,27 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 
 ### <a name="create-elium-test-user"></a>Elium のテスト ユーザーの作成
 
-このセクションでは、B. Simon というユーザーを Elium に作成します。 Elium では、**Just-In-Time プロビジョニング**がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Elium に存在しない場合は、Elium にアクセスしようとしたときに新しいユーザーが作成されます。
+このセクションでは、B. Simon というユーザーを Elium に作成します。 Elium では、 **Just-In-Time プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Elium に存在しない場合は、Elium にアクセスしようとしたときに新しいユーザーが作成されます。
 
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[Elium サポート チーム](mailto:support@elium.com)にお問い合わせください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+ 
+#### <a name="sp-initiated"></a>SP Initiated:
+ 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Elium のサインオン URL にリダイレクトされます。  
+ 
+* Elium のサインオン URL に直接移動し、そこからログイン フローを開始します。
+ 
+#### <a name="idp-initiated"></a>IDP Initiated:
+ 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Elium に自動的にサインインされます 
+ 
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Elium タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Elium に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
-アクセス パネル上で [Elium] タイルをクリックすると、SSO を設定した Elium に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+## <a name="next-steps"></a>次の手順
 
-## <a name="additional-resources"></a>その他のリソース
-
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で Elium を試す](https://aad.portal.azure.com/)
+Elium を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

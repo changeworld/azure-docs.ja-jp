@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: bdc03d93654fdb0ae90600f8dad279f0fc8efbe9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 98e3eb4927b8eb9e52fd974c1ef7c417aff2ad54
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070838"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422792"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>チュートリアル:geo 分散型データベースを実装する (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 このチュートリアルに取り組む前に、次のものがインストールされていることを確認してください。
 
@@ -47,9 +47,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
-  > このチュートリアルでは、*AdventureWorksLT* サンプル データベースを使用します。
+  > このチュートリアルでは、 *AdventureWorksLT* サンプル データベースを使用します。
 
-- Java および Maven。「[Build an app using SQL Server (SQL Server を使用したアプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/)」にアクセスして **[Java]** を選択し、ご使用の環境を選択して、表示される手順に従ってください。
+- Java および Maven。「 [Build an app using SQL Server (SQL Server を使用したアプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/)」にアクセスして **[Java]** を選択し、ご使用の環境を選択して、表示される手順に従ってください。
 
 > [!IMPORTANT]
 > このチュートリアルの手順を実行しているコンピューターのパブリック IP アドレスを使用するようにファイアウォール規則を確実に設定してください。 データベース レベルのファイアウォール ルールは、セカンダリ サーバーに自動的にレプリケートされます。
@@ -132,7 +132,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. 「**Y**」と入力して **Enter** キーを押します。
+1. 「 **Y** 」と入力して **Enter** キーを押します。
 
 1. 新しいプロジェクトのディレクトリに移動します。
 
@@ -333,7 +333,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
 1. フェールオーバー グループの手動フェールオーバーを開始します。
 
    ```powershell
-   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
+   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 

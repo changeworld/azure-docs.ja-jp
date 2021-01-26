@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
+- contperf-fy21q2
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323126"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033291"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -27,19 +28,19 @@ ms.locfileid: "89323126"
 
 Azure の Computer Vision サービスを使用すると、関心のある視覚的特徴に基づいて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
-Computer Vision アプリケーションを作成するには、クライアント ライブラリ SDK を使用するか、REST API を直接呼び出します。 このページでは、Computer Vision でできることを大まかに取り上げます。
+Computer Vision アプリケーションを作成するには、[クライアント ライブラリ SDK](./quickstarts-sdk/client-library.md) を使用するか、[REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) を直接呼び出します。 このページでは、Computer Vision でできることを大まかに取り上げます。
+
+## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
+
+Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 最新のモデルを使用して、さまざまなサーフェスや背景でテキストを操作します。 これらには、レシート、ポスター、名刺、レター、ホワイトボードが含まれます。 2 つの OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>デジタル資産管理用の Computer Vision
 
 Computer Vision は、多くのデジタル資産管理 (DAM) シナリオに活用できます。 DAM は、リッチ メディア アセットの整理、保管、取得、およびデジタルの権利とアクセス許可の管理を行うビジネス プロセスです。 たとえば、会社では、表示されるロゴ、顔、オブジェクト、色などに基づいて、画像をグループ化し、識別することができます。 または、自動的に[画像のキャプションを生成](./Tutorials/storage-lab-tutorial.md)し、キーワードを添付して検索できるようにすることもできます。 Cognitive Services、Azure Cognitive Search、およびインテリジェント レポートを使用するオールインワンの DAM ソリューションについては、GitHub 上の「[ナレッジ マイニング ソリューション アクセラレータ ガイド](https://github.com/Azure-Samples/azure-search-knowledge-mining)」を参照してください。 その他の DAM の例については、[Computer Vision ソリューション テンプレート](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates)のリポジトリを参照してください。
 
-## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
-
-Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 最新のモデルを使用して、さまざまなサーフェスや背景でテキストを操作します。 これらには、レシート、ポスター、名刺、レター、ホワイトボードが含まれます。 2 つの OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](#next-steps)に従って始めてください。
-
 ## <a name="analyze-images-for-insight"></a>画像を分析して分析情報を得る
 
-画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の表に示したすべての機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に備わっています。 [クイックスタート](#next-steps)に従って始めてください。
+画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の表に示したすべての機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API に備わっています。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
 
 
 ### <a name="tag-visual-features"></a>視覚的特徴のタグ付け
@@ -64,7 +65,7 @@ Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.
 
 ### <a name="detect-faces"></a>顔を検出する
 
-イメージ内の人物の顔を検出して、検出されたそれぞれの顔に関する情報を提示します。 Computer Vision は検出された各顔の座標、四角い枠、性別、および年齢を返します。<br/>Computer Vision では、[Face](/azure/cognitive-services/face/) サービス機能のサブセットが提供されます。 Face サービスは、顔識別や姿勢検出など、より詳細な分析に使用できます。 [顔を検出する](concept-detecting-faces.md)
+イメージ内の人物の顔を検出して、検出されたそれぞれの顔に関する情報を提示します。 Computer Vision は検出された各顔の座標、四角い枠、性別、および年齢を返します。<br/>Computer Vision では、[Face](../face/index.yml) サービス機能のサブセットが提供されます。 Face サービスは、顔識別や姿勢検出など、より詳細な分析に使用できます。 [顔を検出する](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>イメージの種類の検出
 
@@ -90,9 +91,12 @@ Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.
 
 Computer Vision を使用すると、画像内の[成人向けコンテンツを検出](concept-detecting-adult-content.md)し、さまざまな分類の信頼度スコアを返すことができます。 コンテンツをフラグ設定するためのしきい値は、自分の都合に合わせて、スライディング スケールで設定することができます。
 
-## <a name="use-containers"></a>コンテナーの使用
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 
-印刷されたテキストと手書きのテキストをローカルに認識するには、標準化された Docker コンテナーをデータの近くにインストールして、[Computer Vision コンテナーを使用](computer-vision-how-to-install-containers.md)します。
+Computer Vision コンテナーを使用して API 機能をオンプレミスにデプロイします。 これらの Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。 Computer Vision には、次のコンテナーが用意されています。
+
+* [Computer Vision Read OCR コンテナー (プレビュー)](computer-vision-how-to-install-containers.md) を使用すると、画像内の印字されたテキストや手書きテキストを認識することができます。
+* [Computer Vision 空間分析コンテナー (プレビュー)](spatial-analysis-container.md) を使用すると、リアルタイム ストリーミング ビデオを分析して、物理環境における人物とその動きとの間の空間的な関係を把握できます。
 
 ## <a name="image-requirements"></a>イメージの要件
 
@@ -107,10 +111,8 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 
 Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-以下のクイック スタート ガイドに従って、実際に Computer Vision を使ってみましょう。
+使用する開発言語のクイックスタート ガイドに従って、Computer Vision の使用を開始します。
 
-- [クイック スタート: Computer Vision .NET クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [クイック スタート: Computer Vision Python クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [クイック スタート: Computer Vision Java クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md)

@@ -9,13 +9,13 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4b39c32da04efa3782cb2166c8e1137029b21258
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-js
+ms.openlocfilehash: cb183b5c8aff018d4dc73819b938b24ad0daa934
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852958"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975792"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>FHIR サービスからデータを読み取るために JavaScript アプリをデプロイする
 このチュートリアルでは、小さな JavaScript アプリをデプロイします。このアプリは、FHIR サービスからデータを読み取ります。 このチュートリアルの手順は、次のとおりです。
@@ -36,7 +36,7 @@ ms.locfileid: "87852958"
 ## <a name="deploy-azure-api-for-fhir"></a>Azure API for FHIR をデプロイする
 チュートリアルの最初の手順は、Azure API for FHIR を正しくセットアップすることです。
 
-1. [Azure API for FHIR](fhir-paas-portal-quickstart.md) をデプロイします
+1. [Azure API for FHIR](fhir-paas-portal-quickstart.md) をデプロイしていない場合はデプロイします。
 1. Azure API for FHIR をデプロイしたら、Azure API for FHIR に移動し、CORS を選択して、[CORS](configure-cross-origin-resource-sharing.md) 設定を構成します。 
     1. **[配信元]** を * に設定します
     1. **[ヘッダー]** を * に設定します

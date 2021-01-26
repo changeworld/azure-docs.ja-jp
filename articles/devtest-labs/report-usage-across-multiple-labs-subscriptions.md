@@ -3,16 +3,16 @@ title: 複数のラボとサブスクリプションにわたる Azure DevTest L
 description: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287274"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152195"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する
 
-ほとんどの大規模な組織では、使用状況の傾向や外れ値を視覚化することで、リソースの使用状況をより効果的に追跡したいと考えています。 ラボの所有者またはマネージャーは、リソースの使用状況に基づいて、ラボをカスタマイズして[リソースの使用状況とコストを向上させる](../cost-management-billing/manage/getting-started.md)ことができます。 Azure DevTest Labs では、ラボごとのリソース使用状況をダウンロードし、使用パターンをより詳しく調べることができます。 これらの使用パターンは、変化を特定し、効率を向上させるために役立ちます。 ほとんどの企業では、個々のラボの使用状況と、[複数のラボとサブスクリプション](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)にわたる全体的な使用状況の両方を求めています。 
+ほとんどの大規模な組織では、使用状況の傾向や外れ値を視覚化することで、リソースの使用状況をより効果的に追跡したいと考えています。 ラボの所有者またはマネージャーは、リソースの使用状況に基づいて、ラボをカスタマイズして[リソースの使用状況とコストを向上させる](../cost-management-billing/cost-management-billing-overview.md)ことができます。 Azure DevTest Labs では、ラボごとのリソース使用状況をダウンロードし、使用パターンをより詳しく調べることができます。 これらの使用パターンは、変化を特定し、効率を向上させるために役立ちます。 ほとんどの企業では、個々のラボの使用状況と、[複数のラボとサブスクリプション](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)にわたる全体的な使用状況の両方を求めています。 
 
 この記事では、複数のラボとサブスクリプションにわたるリソース使用状況の情報を処理する方法について説明します。
 

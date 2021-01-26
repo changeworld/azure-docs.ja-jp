@@ -10,13 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 6a81e52b833a59f51f6961a0bd41d52b040050b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876888"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023471"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -54,8 +54,8 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 * IDE またはテキスト エディター ([Visual Studio Code](https://code.visualstudio.com/)、[Atom](https://atom.io/) など)  
 * [Chrome](https://www.google.com/chrome/browser/) または [Firefox](https://www.mozilla.org/firefox)
 * **Translator** のサブスクリプション キー (リージョンの選択は不要)
-* **Text Analytics** のサブスクリプション キー (**米国西部**リージョン)。
-* **Speech Services** のサブスクリプション キー (**米国西部**リージョン)。
+* **Text Analytics** のサブスクリプション キー (**米国西部** リージョン)。
+* **Speech Services** のサブスクリプション キー (**米国西部** リージョン)。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>アカウントを作成してリソースをサブスクライブする
 
@@ -64,7 +64,7 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 * Text Analytics
 * Speech Services
 
-リソースを作成する具体的な手順については、[Azure portal での Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照してください。
+リソースを作成する具体的な手順については、[Azure portal での Cognitive Services アカウントの作成](../cognitive-services-apis-create-account.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > このチュートリアルでは、必要なリソースを米国西部リージョンに作成してください。 別のリージョンを使用する場合は、各 Python ファイルでベース URL を調整する必要があります。
@@ -475,7 +475,7 @@ flask run
 
 ## <a name="analyze-sentiment"></a>感情を分析する
 
-[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) を使用すると、感情分析を実行したり、テキストからキー フレーズを抽出したり、ソース言語を検出したりすることができます。 このアプリでは、入力されたテキストがポジティブかニュートラルかネガティブかを感情分析を使用して調べます。 この API は 0 から 1 までの数値スコアを返します。 1 に近いスコアは正の感情、0 に近いスコアは負の感情を示します。
+[Text Analytics API](../text-analytics/overview.md) を使用すると、感情分析を実行したり、テキストからキー フレーズを抽出したり、ソース言語を検出したりすることができます。 このアプリでは、入力されたテキストがポジティブかニュートラルかネガティブかを感情分析を使用して調べます。 この API は 0 から 1 までの数値スコアを返します。 1 に近いスコアは正の感情、0 に近いスコアは負の感情を示します。
 
 このセクションでは、次の作業を行います。
 
@@ -659,7 +659,7 @@ flask run
 
 ## <a name="convert-text-to-speech"></a>テキストを音声に変換する
 
-[Text-to-Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) により、アプリでテキストを人の声に近い自然な合成音声に変換できます。 このサービスは、標準音声、ニューラル音声、カスタム音声をサポートします。 サンプル アプリで使用しているのは、利用できる音声のほんの一部にすぎません。すべての音声の一覧については、[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)に関するページを参照してください。
+[Text-to-Speech API](../speech-service/text-to-speech.md) により、アプリでテキストを人の声に近い自然な合成音声に変換できます。 このサービスは、標準音声、ニューラル音声、カスタム音声をサポートします。 サンプル アプリで使用しているのは、利用できる音声のほんの一部にすぎません。すべての音声の一覧については、[サポートされている言語](../speech-service/language-support.md#text-to-speech)に関するページを参照してください。
 
 このセクションでは、次の作業を行います。
 
@@ -954,7 +954,7 @@ flask run
 > [!TIP]
 > 先ほど行った変更が反映されていない場合や、思いどおりにアプリが動作しない場合は、キャッシュをクリアするか、プライベート ウィンドウやシークレット ウィンドウを開いてみてください。
 
-以上で終了です。翻訳、感情分析、合成音声を実行する実用的なアプリが完成しました。 **Ctrl + C** キーを押してアプリを強制終了してください。 他の [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) もチェックしてみましょう。
+以上で終了です。翻訳、感情分析、合成音声を実行する実用的なアプリが完成しました。 **Ctrl + C** キーを押してアプリを強制終了してください。 他の [Azure Cognitive Services](../index.yml) もチェックしてみましょう。
 
 ## <a name="get-the-source-code"></a>ソース コードを入手する
 
@@ -962,6 +962,6 @@ flask run
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Translator リファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Translator リファレンス](./reference/v3-0-reference.md)
 * [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Text-to-speech API リファレンス](../speech-service/rest-text-to-speech.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961814"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546111"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -24,13 +24,13 @@ Azure HDInsight クラスターは、Azure クラウドで実行される使い�
 このドキュメントの手順の多くでは次のユーティリティを使用するので、これらがシステムにインストールされている必要があります。
 
 * [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します。
-* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) - Azure サービスをリモート管理するために使用します。
-* **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **jq** 。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
+* [Azure CLI](/cli/azure/install-azure-cli) - Azure サービスをリモート管理するために使用します。
+* **SSH クライアント** 。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="users"></a>ユーザー
 
-HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-overview.md)でない限り**シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
+HDInsight は、 [ドメイン参加済み](./domain-joined/hdinsight-security-overview.md)でない限り **シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
 
 ドメイン参加済みの HDInsight では、複数のユーザーがサポートされ、アクセス許可とロールの設定を詳細に行うことができます。 詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md)に関するページを参照してください。
 
@@ -38,7 +38,7 @@ HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-ov
 
 インターネットからクラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、`CLUSTERNAME.azurehdinsight.net` または `CLUSTERNAME-ssh.azurehdinsight.net` (SSH のみ) です。
 
-内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。 クラスター名を見つける方法については、Ambari Web UI の**ホスト**に関するページを参照してください。 次を使用して、Ambari REST API からホストの一覧を返すこともできます。
+内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。 クラスター名を見つける方法については、Ambari Web UI の **ホスト** に関するページを参照してください。 次を使用して、Ambari REST API からホストの一覧を返すこともできます。
 
 ```console
 curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
@@ -81,7 +81,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **SSH** - ポート 22 または 23 上の CLUSTERNAME-ssh.azurehdinsight.net。 ポート 22 はプライマリ ヘッドノードへの接続に、23 はセカンダリ ヘッドノードへの接続に使用されます。 ヘッド ノードの詳細については、「[HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+* **SSH** - ポート 22 または 23 上の CLUSTERNAME-ssh.azurehdinsight.net。 ポート 22 はプライマリ ヘッドノードへの接続に、23 はセカンダリ ヘッドノードへの接続に使用されます。 ヘッド ノードの詳細については、「[HDInsight における Apache Hadoop クラスターの可用性と信頼性](./hdinsight-business-continuity.md)」を参照してください。
 
     > [!NOTE]  
     > クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。 接続されたら、ヘッドノードから SSH を使用して worker ノードにアクセスできます。
@@ -92,8 +92,8 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
 
-* **2.6.5.3009-43**:そのディレクトリの名前は、HDInsight によって使用される Hadoop プラットフォームのバージョンです。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
-* **current**:このディレクトリには、**2.6.5.3009-43** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
+* **2.6.5.3009-43** :そのディレクトリの名前は、HDInsight によって使用される Hadoop プラットフォームのバージョンです。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
+* **current** :このディレクトリには、 **2.6.5.3009-43** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
 
@@ -101,15 +101,15 @@ Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあり�
 
 ほとんどの Hadoop ディストリビューションでは、データは HDFS に格納されます。 HDFS は、クラスター内のコンピューター上にあるローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
 
-HDInsight を使用する場合、データ ファイルは、Azure Blob Storage と必要に応じて Azure Data Lake Storage を使用して、適用性および回復性がある方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
+HDInsight を使用する場合、データ ファイルは、Azure Blob Storage と必要に応じて Azure Data Lake Storage Gen1 または Gen2 を使用して、適用性および回復性がある方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
 
 * 低コストの長期ストレージ。
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
 * 大きなファイル容量と適用性の高い大容量ストレージ。
 
-詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) に関するページを参照してください。
+詳細については、[Azure Blob Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) に関するページを参照してください。
 
-Azure Storage または Data Lake Storage を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドでは、Azure Storage 上または Data Lake Storage 上のどちらに格納されている場合でも、`/example/data` フォルダー内のファイルを一覧表示します。
+Azure Blob Storage または Data Lake Storage Gen1 または Gen2 を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドでは、Azure Storage 上または Data Lake Storage 上のどちらに格納されている場合でも、`/example/data` フォルダー内のファイルを一覧表示します。
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ HDInsight では、データ ストレージ リソース (Azure Blob Storage �
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-[**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) を使用する場合は、次のいずれかの URI スキームを使用します。
+[**Azure Data Lake Storage Gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md) を使用する場合は、次のいずれかの URI スキームを使用します。
 
 * `adl:///`:クラスターの既定の Data Lake Storage にアクセスします。
 
@@ -189,9 +189,9 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 HDInsight クラスターの外部からデータにアクセスする方法は複数あります。 データを操作するために使用できるユーティリティと SDK へのいくつかのリンクを次に示します。
 
-__Azure Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
+__Azure Blob Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2):Azure を操作するためのコマンド ライン インターフェイス コマンド。 インストール後、ストレージの使用方法については `az storage`、BLOB 特有のコマンドについては `az storage blob` をご覧ください。
+* [Azure CLI](/cli/azure/install-az-cli2):Azure を操作するためのコマンド ライン インターフェイス コマンド。 インストール後、ストレージの使用方法については `az storage`、BLOB 特有のコマンドについては `az storage blob` をご覧ください。
 * [blobxfer.py](https://github.com/Azure/blobxfer):Azure Storage で BLOB を使用するための Python スクリプト。
 * さまざまな SDK:
 
@@ -201,9 +201,9 @@ __Azure Storage__ を使用している場合は、次のリンクを参照し�
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [ストレージ REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-__Azure Data Lake Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
+__Azure Data Lake Storage Gen1__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
 
 * [Web ブラウザー](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -245,7 +245,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 > [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight に関する Microsoft Q&A 質問ページ](/answers/topics/azure-hdinsight.html)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="next-steps"></a>次のステップ
 

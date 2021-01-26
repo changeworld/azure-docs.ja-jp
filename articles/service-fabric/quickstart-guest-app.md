@@ -3,13 +3,13 @@ title: 既存のアプリをクラスターに迅速にデプロイする
 description: Visual Studio を使用して、Azure Service Fabric クラスターで既存の Node.js アプリケーションをホストします。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430727"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013600"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -25,13 +25,13 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="create-the-service"></a>サービスの作成
 
-Visual Studio を**管理者**として起動します。
+Visual Studio を **管理者** として起動します。
 
 `CTRL`+`SHIFT`+`N` キーを押して、プロジェクトを作成します。
 
 **[新しいプロジェクト]** ダイアログで、 **[クラウド]、[Service Fabric アプリケーション]** の順に選択します。
 
-アプリケーションに **MyGuestApp** という名前を付けて、 **[OK]** をクリックします。
+アプリケーションに **MyGuestApp** という名前を付けて、 **[作成]** をクリックします。
 
 >[!IMPORTANT]
 >Node.js では、Windows のパスの上限である 260 文字を超過しやすいため、 プロジェクト自体に短いパスを使用してください (例: **c:\code\svc1**)。 Windows 10 では、 **[こちらの手順](https://stackoverflow.com/a/41687101/1664231)** に従い、必要に応じて長いファイル パスを有効にすることができます。

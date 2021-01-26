@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9e3297ad055157d552424ecc48db6801f43b220
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686396"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929957"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 
@@ -25,14 +25,20 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 - **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結すると、Enterprise Agreement の課金アカウントが作成されます。 マイクロソフトエンタープライズ契約には、最大 2000 個のサブスクリプションを含めることができます。
 
-- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)または [Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)にサインアップしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。 Microsoft 顧客契約には、最大 20 のサブスクリプションを含めることができます。 詳細については、「[Get started with your billing account for Microsoft Customer Agreement (Microsoft Customer Agreement の請求先アカウントの概要)](../understand/mca-overview.md)」をご覧ください。
+- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)または [Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)にサインアップしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。 個人用の Microsoft 顧客契約には、最大 20 のサブスクリプションを含めることができます。 企業用の Microsoft 顧客契約では、サブスクリプションの数に制限はありません。 詳細については、「[Get started with your billing account for Microsoft Customer Agreement (Microsoft Customer Agreement の請求先アカウントの概要)](../understand/mca-overview.md)」をご覧ください。
 
-- **Microsoft Partner Agreement**: Microsoft Partner Agreement の課金アカウントは、クラウド ソリューション プロバイダー (CSP) パートナーが新しいコマース エクスペリエンスで顧客を管理する目的で作成します。 パートナーが Azure portal で課金アカウントを管理するためには、[Azure プラン](https://docs.microsoft.com/partner-center/purchase-azure-plan)に少なくとも 1 件の顧客が必要です。 詳細については、[Microsoft Partner Agreement の課金アカウントの概要](../understand/mpa-overview.md)に関するページを参照してください。
+- **Microsoft Partner Agreement**: Microsoft Partner Agreement の課金アカウントは、クラウド ソリューション プロバイダー (CSP) パートナーが新しいコマース エクスペリエンスで顧客を管理する目的で作成します。 パートナーが Azure portal で課金アカウントを管理するためには、[Azure プラン](/partner-center/purchase-azure-plan)に少なくとも 1 件の顧客が必要です。 詳細については、[Microsoft Partner Agreement の課金アカウントの概要](../understand/mpa-overview.md)に関するページを参照してください。
 
 請求先アカウントの種類を確認するには、「[請求先アカウントの種類を確認する](#check-the-type-of-your-account)」を参照してください。
 
 ## <a name="scopes-for-billing-accounts"></a>課金アカウントのスコープ
 スコープとは、ユーザーが請求先を表示および管理する際に使用する、課金アカウント内のノードです。 ユーザーが課金データ、支払い、請求書を管理し、アカウントの全般的な管理を行う場所です。
+
+課金アカウントを表示または管理するためのアクセスができない場合は、アクセスする権限がない可能性があります。 課金アカウントの管理者に連絡して、アクセス権を付与してもらうことができます。 詳細については、次の記事を参照してください。
+
+- [Microsoft オンライン サービス プログラム アクセス](manage-billing-access.md)
+- [Microsoft 顧客契約アクセス](understand-mca-roles.md)
+- [マイクロソフト エンタープライズ契約アクセス](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
@@ -80,11 +86,11 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 2. "**コスト管理 + 請求**" を検索します。
 
-   ![Azure portal の検索を表示するスクリーンショット](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. 概要ページで **[Switch scope]\(スコープの切り替え\)** を選択します。
 
-   ![課金スコープを示すスクリーンショット](./media/view-all-accounts/overview-select-scopes.png)
+   ![課金スコープを示すスクリーンショット。](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
@@ -92,7 +98,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 4. 詳細を表示するスコープを選択します。
 
-   ![課金スコープを示すスクリーンショット](./media/view-all-accounts/list-of-scopes.png)
+   ![選択すると詳細を表示できる課金スコープを示すスクリーンショット。](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>アカウントの種類を確認する
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

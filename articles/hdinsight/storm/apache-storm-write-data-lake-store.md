@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73241214"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545448"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 
@@ -32,7 +32,7 @@ Apache Storm を使用して、HDInsight 上の Apache Storm によって使用�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 
@@ -160,7 +160,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
     hdfs.url: wasbs:///
     ```
 
-    ファイルを保存するには、__Ctrl + X__ キーを押してから __Y__ キー、__Enter__ キーの順に押します。 このファイル内の値により、ストレージの URL と、データが書き込まれるディレクトリ名が設定されます。
+    ファイルを保存するには、 __Ctrl + X__ キーを押してから __Y__ キー、 __Enter__ キーの順に押します。 このファイル内の値により、ストレージの URL と、データが書き込まれるディレクトリ名が設定されます。
 
 1. 次のコマンドを使用して、トポロジを開始します。
 

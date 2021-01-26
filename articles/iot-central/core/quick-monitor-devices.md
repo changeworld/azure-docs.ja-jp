@@ -1,20 +1,19 @@
 ---
 title: クイックスタート - Azure IoT Central でデバイスを監視する
-description: オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視する方法について説明します。
+description: クイックスタート - オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e4485e4f8e873b1b49dc3d6df72eb04a1cbe8c17
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80998913"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992756"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>クイック スタート:Azure IoT Central を使用してデバイスを監視する
 
@@ -28,29 +27,29 @@ ms.locfileid: "80998913"
 
 ## <a name="receive-a-notification"></a>通知の受信
 
-Azure IoT Central では、デバイスに関する通知を電子メール メッセージとして送信します。 ビルダーは、コネクテッド デバイス センサーの温度がしきい値を超えたときに通知を送信する規則を追加しました。 作成者が通知の受信用に選択したアカウントに送信された電子メールを確認してください。
+Azure IoT Central では、デバイスに関する通知を電子メール メッセージとして送信します。 ビルダーは、接続されているデバイス センサーの湿度がしきい値を超えたときに、オペレーターに通知を送信するルールを追加しました。 オペレーターは通知メールを確認します。
 
 「[デバイスのルールとアクションを構成する](quick-configure-rules.md)」クイックスタートの最後で受信した電子メール メッセージを開きます。 メール内のデバイスへのリンクを選択します。
 
-![アラート通知電子メール](media/quick-monitor-devices/email.png)
+:::image type="content" source="media/quick-monitor-devices/email.png" alt-text="通知メールを示すスクリーンショット":::
 
 前のクイックスタートで作成したシミュレートされたデバイスの **[概要]** ページがブラウザーで開きます。
 
-![通知電子メール メッセージをトリガーしたデバイス](media/quick-monitor-devices/dashboard.png)
+:::image type="content" source="media/quick-monitor-devices/dashboard.png" alt-text="通知をトリガーしたデバイスの概要を示すスクリーンショット":::
 
 ## <a name="investigate-an-issue"></a>問題の調査
 
 オペレーターは、 **[概要]** 、 **[詳細]** 、および **[コマンド]** の各ページでデバイスに関する情報を確認できます。 ビルダーは、オペレーターがデバイス情報を編集したりデバイス プロパティを設定したりできるように、 **[デバイスの管理]** ビューを作成しました。
 
-ダッシュボードのグラフには、デバイスの温度のプロットが表示されます。 デバイスの温度が高すぎると判断したとしましょう。
+ダッシュボードのグラフには、デバイスの湿度のプロットが表示されます。 デバイスの湿度が高すぎると判断したとします。
 
 ## <a name="remediate-an-issue"></a>問題の修復
 
 デバイスに変更を加えるには、 **[デバイスの管理]** ページを使用します。
 
-デバイスを冷却するために、 **[ファン速度]** を 500 に変更します。 **[保存]** を選択してデバイスを更新します。 デバイスで設定の変更が確認されると、プロパティの状態が **[同期済み]** に変わります。
+**[Target temperature]\(目標温度\)** を 80 に変更してデバイスを温め、湿度を下げます。 **[保存]** を選択してデバイスを更新します。 デバイスで設定の変更が確認されると、プロパティの状態が **[同期済み]** に変わります。
 
-![設定の更新](media/quick-monitor-devices/change-settings.png)
+:::image type="content" source="media/quick-monitor-devices/change-settings.png" alt-text="デバイスの更新された目標温度設定を示すスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 

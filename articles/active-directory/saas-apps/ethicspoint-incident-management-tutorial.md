@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 8ea85db0749b2dc95c073072e52a49c795585b55
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b710093277f9597ce2fcc1361eb89ade74e04254
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555424"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453967"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>チュートリアル: Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合
 
@@ -27,7 +27,7 @@ EthicsPoint Incident Management (EPIM) と Azure AD の統合には、次の利�
 * ユーザーが自分の Azure AD アカウントで自動的に EthicsPoint Incident Management (EPIM) にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ EthicsPoint Incident Management (EPIM) と Azure AD の統合を構成するに�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* EthicsPoint Incident Management (EPIM) では、**SP** によって開始される SSO がサポートされます
+* EthicsPoint Incident Management (EPIM) では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-ethicspoint-incident-management-epim-from-the-gallery"></a>ギャラリーからの EthicsPoint Incident Management (EPIM) の追加
 
@@ -61,13 +61,13 @@ Azure AD への EthicsPoint Incident Management (EPIM) の統合を構成する�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**EthicsPoint Incident Management (EPIM)** 」と入力し、結果パネルで **[EthicsPoint Incident Management (EPIM)]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **EthicsPoint Incident Management (EPIM)** 」と入力し、結果パネルで **[EthicsPoint Incident Management (EPIM)]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の EthicsPoint Incident Management (EPIM)](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと EthicsPoint Incident Management (EPIM) の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -115,7 +115,7 @@ EthicsPoint Incident Management (EPIM) との Azure AD シングル サインオ
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 値を取得するには、[EthicsPoint Incident Management (EPIM) クライアント サポート チーム](https://www.navexglobal.com/company/contact-us)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -131,7 +131,7 @@ EthicsPoint Incident Management (EPIM) との Azure AD シングル サインオ
 
 ### <a name="configure-ethicspoint-incident-management-epim-single-sign-on"></a>EthicsPoint Incident Management (EPIM) のシングル サインオンの構成
 
-**EthicsPoint Incident Management (EPIM)** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [EthicsPoint Incident Management (EPIM) サポート チーム](https://www.navexglobal.com/company/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EthicsPoint Incident Management (EPIM)** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [EthicsPoint Incident Management (EPIM) サポート チーム](https://www.navexglobal.com/company/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -149,9 +149,9 @@ EthicsPoint Incident Management (EPIM) との Azure AD シングル サインオ
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -186,19 +186,18 @@ EthicsPoint Incident Management (EPIM) との Azure AD シングル サインオ
 
 ### <a name="create-ethicspoint-incident-management-epim-test-user"></a>EthicsPoint Incident Management (EPIM) のテスト ユーザーの作成
 
-このセクションでは、EthicsPoint Incident Management (EPIM) で Britta Simon というユーザーを作成します。  [EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) サポート チームと連携して、EthicsPoint Incident Management (EPIM) プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、EthicsPoint Incident Management (EPIM) で Britta Simon というユーザーを作成します。 [EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) サポート チームと連携して、EthicsPoint Incident Management (EPIM) プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [EthicsPoint Incident Management (EPIM)] タイルをクリックすると、SSO を設定した EthicsPoint Incident Management (EPIM) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [EthicsPoint Incident Management (EPIM)] タイルをクリックすると、SSO を設定した EthicsPoint Incident Management (EPIM) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

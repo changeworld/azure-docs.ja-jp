@@ -57,8 +57,13 @@
           href: container-registry-image-tag-version.md
         - name: geo レプリケーション
           href: container-registry-geo-replication.md
+        - name: ゾーン冗長性
+          displayName: availability zone
+          href: zone-redundancy.md
         - name: レジストリのベスト プラクティス
           href: container-registry-best-practices.md
+        - name: パブリック イメージの管理
+          href: buffer-gate-public-content.md
     - name: 操作方法ガイド
       expanded: false
       items:
@@ -118,12 +123,13 @@
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
                 - name: リポジトリスコープ トークンによる認証 (プレビュー)
                   href: container-registry-repository-scoped-permissions.md
-            - name: ロールベースのアクセス制御
+            - name: Azure ロールベースのアクセス制御
               href: container-registry-roles.md
+              displayName: 'permissions, authorization'
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
             - name: Security Center を使用したイメージのスキャン
-              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+              href: ../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json
         - name: レジストリと他の Azure サービス
           expanded: false
           items:
@@ -207,6 +213,10 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Resource Manager テンプレートを使用したクイック タスクの実行
           href: container-registry-task-run-template.md
+        - name: 専用エージェント プールでタスクを実行する (プレビュー)
+          href: tasks-agent-pools.md
+        - name: パブリック コンテンツの使用と管理
+          href: tasks-consume-public-content.md
         - name: Buildpack を使用したイメージのビルド (プレビュー)
           href: container-registry-tasks-pack-build.md
         - name: タスク ログを表示する

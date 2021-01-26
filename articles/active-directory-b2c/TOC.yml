@@ -7,6 +7,8 @@
       href: overview.md
     - name: 技術と機能の概要
       href: technical-overview.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: クイックスタート
   expanded: true
   items:
@@ -51,6 +53,18 @@
   href: code-samples.md
 - name: 概念
   items:
+    - name: External Identities のソリューションを比較する
+      href: ../active-directory/external-identities/compare-with-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+    - name: 基本を学ぶ
+      items:
+        - name: 認証と承認
+          href: ../active-directory/develop/authentication-vs-authorization.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: トークン
+          href: ../active-directory/develop/security-tokens.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: プロトコル
+          href: ../active-directory/develop/v2-app-types.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 認証ライブラリ
+          href: ../active-directory/develop/msal-overview.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: Azure AD B2C のベスト プラクティス
       href: best-practices.md
     - name: アプリケーションの種類
@@ -69,6 +83,8 @@
           href: tokens-overview.md
         - name: アクセス トークンの要求
           href: access-tokens.md
+    - name: ポリシー キー
+      href: policy-keys-overview.md
     - name: ユーザー フローとポリシー
       items:
         - name: ユーザー フロー
@@ -79,16 +95,16 @@
       href: user-overview.md
     - name: ユーザー プロファイルの属性
       href: user-profile-attributes.md
-    - name: SSO セッション
-      href: session-overview.md
     - name: Identity Protection と条件付きアクセス
       href: conditional-access-identity-protection-overview.md
 - name: 操作方法ガイド
   items:
     - name: アプリの統合
       items:
-        - name: アプリケーションを登録する
+        - name: Web アプリケーションの登録
           href: tutorial-register-applications.md
+        - name: シングルページ アプリケーション (SPA) を登録する
+          href: tutorial-register-spa.md
         - name: SAML サービス プロバイダーを登録する
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
@@ -103,151 +119,130 @@
           href: signin-appauth-ios.md
         - name: AppAuth を使用した Android
           href: signin-appauth-android.md
-    - name: ユーザー フロー
+    - name: フローを作成する
       items:
-        - name: フローを作成する
-          items:
-            - name: サインアップまたはサインイン
-              href: tutorial-create-user-flows.md
-            - name: リソース所有者のパスワード資格情報
-              href: configure-ropc.md
-            - name: セルフサービス パスワードのリセットの設定
-              href: user-flow-self-service-password-reset.md
+        - name: サインアップまたはサインイン ポリシー
+          href: add-sign-up-and-sign-in-policy.md
+        - name: サインイン ポリシー
+          href: add-sign-in-policy.md
+        - name: パスワードのリセット ポリシー
+          href: add-password-reset-policy.md
+        - name: パスワードの変更ポリシー
+          href: add-password-change-policy.md
+        - name: プロファイルの編集ポリシー
+          href: add-profile-editing-policy.md
+        - name: リソース所有者のパスワード資格情報ポリシー
+          href: add-ropc-policy.md
+          displayName: ROPC
+        - name: セルフサービス パスワードのリセット ポリシーの設定 (非推奨)
+          href: user-flow-self-service-password-reset.md
+        - name: 電話でのサインアップとサインイン
+          href: phone-authentication-user-flows.md
+    - name: ID プロバイダー
+      items:
+        - name: ローカル アカウント ID プロバイダー
+          href: identity-provider-local.md
+          displayName: 'Username, Email, Phone authorization, Phone sing-in'
+        - name: ID プロバイダーの追加
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+          displayName: 'AD-FS, ADFS'
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Azure AD (シングルテナント)
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD (マルチテナント)
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Azure AD B2C
+          href: identity-provider-azure-ad-b2c.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: 汎用の ID プロバイダー
+          href: identity-provider-generic-openid-connect.md
+        - name: GitHub
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: ID.me
+          href: identity-provider-id-me.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Microsoft アカウント
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Salesforce (SAML)
+          href: identity-provider-salesforce-saml.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: WeChat
+          href: identity-provider-wechat.md
+        - name: Weibo
+          href: identity-provider-weibo.md
+        - name: ID プロバイダー トークンのパススルー
+          href: idp-pass-through-user-flow.md
+    - name: UX のカスタマイズ
+      items:
+        - name: ユーザー入力の構成
+          href: configure-user-input.md
+        - name: 会社のブランド化を使用して UI をカスタマイズする
+          href: company-branding.md
+        - name: HTML テンプレートを使用して UI をカスタマイズする
+          href: customize-ui-with-html.md
+        - name: JavaScript とページ レイアウト
+          href: javascript-and-page-layout.md
+        - name: 言語をカスタマイズする
+          href: language-customization.md
+        - name: パスワードの複雑さ
+          href: password-complexity.md
+        - name: メールの確認を無効にする
+          href: disable-email-verification.md
+        - name: MFA の有効化
+          href: multi-factor-authentication.md
+          displayName: multi-factor auth
+        - name: 直接サインインの設定
+          href: direct-signin.md
+    - name: トークンおよびセッション管理
+      items:
+        - name: セッションの動作を構成する
+          href: session-behavior.md
+          displayName: 'SSO, KMSI, Keep me signed in'
+        - name: トークンを構成する
+          href: configure-tokens.md
+    - name: カスタム属性を定義する
+      href: user-flow-custom-attributes.md
+    - name: Identity Protection と条件付きアクセス
+      items:
+        - name: Identity Protection と条件付きアクセスを設定する
+          href: conditional-access-identity-protection-setup.md
         - name: 条件付きアクセスの追加
           href: conditional-access-user-flow.md
-        - name: UX のカスタマイズ
-          items:
-            - name: UI のカスタマイズ
-              href: customize-ui-overview.md
-            - name: JavaScript とページ レイアウト
-              href: user-flow-javascript-overview.md
-            - name: 言語をカスタマイズする
-              href: user-flow-language-customization.md
-            - name: パスワードの複雑さ
-              href: user-flow-password-complexity.md
-            - name: メールの確認を無効にする
-              href: user-flow-disable-email-verification.md
-            - name: MFA の有効化
-              href: custom-policy-multi-factor-authentication.md
-              displayName: multi-factor auth
-        - name: 外部 ID プロバイダー
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD (シングルテナント)
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Microsoft アカウント
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHub
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: WeChat
-              href: identity-provider-wechat.md
-            - name: Weibo
-              href: identity-provider-weibo.md
-            - name: 汎用の ID プロバイダー
-              href: identity-provider-generic-openid-connect.md
-        - name: トークンおよびセッション管理
-          items:
-            - name: トークンを構成する
-              href: configure-tokens.md
-            - name: セッションの動作を構成する
-              href: session-behavior.md
-        - name: 年齢制限を構成する
-          href: basic-age-gating.md
-        - name: カスタム属性を定義する
-          href: user-flow-custom-attributes.md
-        - name: 外部 IdP トークンをパススルーする
-          href: idp-pass-through-user-flow.md
-    - name: Identity Protection と条件付きアクセス
-      href: conditional-access-identity-protection-setup.md
+    - name: 年齢制限を構成する
+      href: basic-age-gating.md
+    - name: API コネクタ (プレビュー)
+      items:
+        - name: 概要
+          href: api-connectors-overview.md
+        - name: API コネクタを追加する
+          href: add-api-connector.md
     - name: カスタム ポリシー
       items:
-        - name: ポリシーの作成
+        - name: カスタム ポリシーの概要
+          href: custom-policy-trust-frameworks.md
+        - name: カスタム ポリシーの概要
+          href: custom-policy-get-started.md
+        - name: カスタム メール確認
           items:
-            - name: カスタム ポリシーの概要
-              href: custom-policy-get-started.md
-            - name: リソース所有者のパスワード資格情報
-              href: ropc-custom.md
-              displayName: ropc
-            - name: '[サインインしたままにする] の有効化'
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
-            - name: パスワードの変更
-              href: custom-policy-password-change.md
-            - name: 電話でのサインアップとサインイン
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
-        - name: UX のカスタマイズ
-          items:
-            - name: ユーザー入力の構成
-              href: custom-policy-configure-user-input.md
-              displayName: 'ui, ux'
-            - name: UI のカスタマイズ
-              href: custom-policy-ui-customization.md
-              displayName: 'ux, input, cors, html, css'
-            - name: 言語をカスタマイズする
-              href: custom-policy-localization.md
-            - name: カスタム メール確認
-              items:
-                - name: Mailjet
-                  href: custom-email-mailjet.md
-                - name: SendGrid
-                  href: custom-email-sendgrid.md
-              displayName: verification
-            - name: メールの確認を無効にする
-              href: custom-policy-disable-email-verification.md
-            - name: JavaScript を有効にする
-              href: javascript-samples.md
-            - name: パスワードの複雑さ
-              href: custom-policy-password-complexity.md
-        - name: 外部 ID プロバイダー
-          items:
-            - name: OIDC および OAuth プロバイダー
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD (シングルテナント)
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD (マルチテナント)
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Microsoft アカウント
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: SAML プロバイダー
-              items:
-                - name: ADFS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
-        - name: トークンおよびセッション管理
-          items:
-            - name: トークンのカスタマイズ
-              href: configure-tokens-custom-policy.md
-            - name: セッションの動作を構成する
-              href: session-behavior-custom-policy.md
-        - name: 外部 IdP トークンをパススルーする
-          href: idp-pass-through-custom.md
-        - name: アダプティブなエクスペリエンス
-          items:
-            - name: 直接サインインの設定
-              href: direct-signin.md
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: 独自のビジネス ロジックの追加
           items:
             - name: REST API の統合
@@ -260,8 +255,6 @@
               displayName: rest claims exchange
             - name: REST API のセキュリティ保護
               href: secure-rest-api.md
-        - name: カスタム属性を定義する
-          href: custom-policy-custom-attributes.md
         - name: トラブルシューティング
           items:
             - name: Application Insights を使用したログの収集
@@ -274,8 +267,6 @@
           href: analytics-with-application-insights.md
         - name: リファレンス
           items:
-            - name: 信頼フレームワークの定義
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -321,27 +312,27 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: 技術プロファイル
                   href: technicalprofiles.md
                   items:
-                    - name: 技術プロファイルについて
-                      href: technical-profiles-overview.md
                     - name: 検証技術プロファイルとは
                       href: validation-technical-profile.md
                     - name: Application Insights
                       href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
-                    - name: Azure Multi-Factor Authentication
+                    - name: Azure AD の Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
                     - name: Azure AD SSPR
                       href: aad-sspr-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
-                    - name: 条件付きアクセス技術プロファイル
+                    - name: 条件付きアクセス
                       href: conditional-access-technical-profile.md
                       displayName: ca
+                    - name: ID トークン ヒント
+                      href: id-token-hint.md
                     - name: JWT トークン発行者
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1
@@ -368,10 +359,14 @@
                       displayName: single sign-on
             - name: UserJourneys
               href: userjourneys.md
+            - name: SubJourneys
+              href: subjourneys.md
             - name: RelyingParty
               href: relyingparty.md
             - name: 要求リゾルバー
               href: claim-resolver-overview.md
+    - name: UserInfo エンドポイント
+      href: userinfo-endpoint.md
     - name: パートナー統合
       items:
         - name: Azure AD B2C パートナー ギャラリー
@@ -386,12 +381,22 @@
           href: partner-idology.md
         - name: itsme
           href: partner-itsme.md
-        - name: LexisNexis
-          href: partner-lexisnexis.md
         - name: Jumio
           href: partner-jumio.md
+        - name: Keyless
+          href: partner-keyless.md
+        - name: LexisNexis
+          href: partner-lexisnexis.md
+        - name: N8 Identity
+          href: partner-n8identity.md
+        - name: Nevis
+          href: partner-nevis.md
         - name: Onfido
           href: partner-onfido.md
+        - name: Saviynt
+          href: partner-saviynt.md
+        - name: Strata
+          href: partner-strata.md
         - name: Trusona
           href: partner-trusona.md
         - name: Twilio
@@ -400,6 +405,8 @@
           href: partner-typingdna.md
         - name: WhoIAM
           href: partner-whoiam.md
+        - name: Zscaler
+          href: partner-zscaler.md
     - name: b2clogin.com の使用
       items:
         - name: b2clogin.com の概要
@@ -412,9 +419,9 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: ユーザーの管理 - Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Azure Pipelines を使用したデプロイ
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -448,7 +455,7 @@
     - name: 課金モデル
       href: billing.md
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+      href: /samples/browse/?terms=b2c
     - name: Cookie の定義
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
@@ -456,10 +463,8 @@
       href: error-codes.md
     - name: Extensions アプリ
       href: extensions-app.md
-    - name: IEF リリース ノート
+    - name: カスタム ポリシー (IEF) のリリース ノート
       href: custom-policy-developer-notes.md
-    - name: Microsoft Graph API の操作
-      href: microsoft-graph-operations.md
     - name: ページ レイアウト バージョン
       href: page-layout.md
     - name: 利用可能なリージョンとデータの保存場所
@@ -478,7 +483,7 @@
     - name: よく寄せられる質問
       href: faq.md
     - name: ヘルプの表示
-      href: /azure/active-directory/develop/developer-support-help-options
+      href: ../active-directory/develop/developer-support-help-options.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory-b2c/'
     - name: 料金計算ツール

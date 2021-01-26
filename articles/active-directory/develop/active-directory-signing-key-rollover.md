@@ -8,26 +8,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a8c9a15761a4b37dfcf5ba7cc4cf046390092145
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115596"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672147"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーのロールオーバー
-この記事では、Microsoft ID プラットフォームによってセキュリティ トークンに署名するために使用される公開キーに関して、知っておく必要があることについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Microsoft ID プラットフォームを使用するすべてのアプリケーションは、キーのロールオーバー プロセスをプログラムで処理したり、定期的な手動ロールオーバー プロセスを確立したりできる必要があります。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
+この記事では、Microsoft ID プラットフォームによってセキュリティ トークンに署名するために使用される公開キーに関して、知っておく必要があることについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Microsoft ID プラットフォームを使用するすべてのアプリケーションは、キーのロールオーバー プロセスをプログラムで処理できる必要があります。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
 
 ## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーの概要
-Microsoft ID プラットフォームは、業界標準に基づいて構築された公開キー暗号化を使って、それ自体と、それを使用するアプリケーションの間の信頼を確立しています。 具体的には、次のように機能します。Microsoft ID プラットフォームでは、公開キーと秘密キーの組で構成される署名キーが使用されます。 認証に Microsoft ID プラットフォームを使用するアプリケーションにユーザーがサインインすると、Microsoft ID プラットフォームによって、そのユーザーに関する情報を含むセキュリティ トークンが作成されます。 このトークンは、Microsoft ID プラットフォームによって秘密キーを使って署名されてから、アプリケーションに返送されます。 トークンが有効であり、Microsoft ID プラットフォームからのものであることを確認するには、アプリケーションは、テナントの [OpenID Connect Discovery ドキュメント](https://openid.net/specs/openid-connect-discovery-1_0.html)または SAML/WS-Fed の[フェデレーション メタデータ ドキュメント](../azuread-dev/azure-ad-federation-metadata.md)に含まれている、Microsoft ID プラットフォームによって公開された公開キーを使って、トークンの署名を検証する必要があります。
+Microsoft ID プラットフォームは、業界標準に基づいて構築された公開キー暗号化を使って、それ自体と、それを使用するアプリケーションの間の信頼を確立しています。 具体的には、次のように機能します。Microsoft ID プラットフォームでは、公開キーと秘密キーの組で構成される署名キーが使用されます。 認証に Microsoft ID プラットフォームを使用するアプリケーションにユーザーがサインインすると、Microsoft ID プラットフォームによって、そのユーザーに関する情報を含むセキュリティ トークンが作成されます。 このトークンは、Microsoft ID プラットフォームによって秘密キーを使って署名されてから、アプリケーションに返送されます。 トークンが有効であり、Microsoft ID プラットフォームからのものであることを確認するには、アプリケーションにより、テナントの [OpenID Connect Discovery ドキュメント](https://openid.net/specs/openid-connect-discovery-1_0.html)または SAML/WS-Fed の[フェデレーション メタデータ ドキュメント](../azuread-dev/azure-ad-federation-metadata.md)に含まれている、Microsoft ID プラットフォームによって公開された公開キーを使って、トークンの署名が検証される必要があります。
 
-セキュリティ上の理由から、Microsoft ID プラットフォームの署名キーは定期的にロールオーバーされ、緊急時には即座にロールオーバーされる場合があります。 Microsoft ID プラットフォームと統合されているすべてのアプリケーションは、発生頻度に関係なくキーのロールオーバー イベントをいつでも処理できる必要があります。 このロジックを備えていないアプリケーションが期限切れのキーを使ってトークンの署名の検証を試みると、サインイン要求が失敗します。
+セキュリティ上の理由から、Microsoft ID プラットフォームの署名キーは定期的にロールオーバーされ、緊急時には即座にロールオーバーされる場合があります。 これらのキー ロール間に設定または保証された時間はありません。Microsoft ID プラットフォームと統合されているすべてのアプリケーションは、発生頻度に関係なくキーのロールオーバー イベントをいつでも処理できる必要があります。 このロジックを備えていないアプリケーションが期限切れのキーを使ってトークンの署名の検証を試みると、サインイン要求が失敗します。  更新プログラムを 24 時間ごとにチェックすることをお勧めします。そのためには、不明なキー識別子でトークンが検出された場合に、主要なドキュメントが直ちに更新されるように調整します (多くても 5 分に 1 回)。 
 
-OpenID Connect Discovery ドキュメントとフェデレーション メタデータ ドキュメントには、利用できる有効なキーが常に複数存在します。 1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるので、アプリケーションは、このドキュメントで指定されているどのキーでも使用できるようになっている必要があります。
+OpenID Connect Discovery ドキュメントとフェデレーション メタデータ ドキュメントには、利用できる有効なキーが常に複数存在します。 1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるので、アプリケーションは、このドキュメントで指定されているどのキーでも使用できるようになっている必要があります。  存在するキーの数は、Microsoft ID プラットフォームの内部アーキテクチャに基づいて、新しいプラットフォーム、新しいクラウド、または新しい認証プロトコルのサポートに伴って時間の経過と共に変わる場合があります。 JSON 応答でのキーの順序とそれらが公開された順序はどちらも、アプリにとって意味があってはなりません。 
+
+1 つの署名キーだけをサポートするアプリケーション、または署名キーを手動で更新する必要があるアプリケーションは、本質的に安全性と信頼性が低くなります。  これらは、[標準ライブラリ](reference-v2-libraries.md)を使用し、他のベスト プラクティスでも常に最新の署名キーを使用するように更新される必要があります。 
 
 ## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>アプリケーションに影響が波及するかどうかの評価とその対処法
 キー ロールオーバーへのアプリケーション側の対応は、アプリケーションの種類や使用されている ID プロトコル、ライブラリなどさまざまな要因によって異なります。 以下の各セクションでは、ごく一般的なアプリケーションにおけるキー ロールオーバーへの影響の有無を評価し、キーの自動ロールオーバーまたは手動更新に対応するようにアプリケーションを更新するうえでの指針を取り上げています。
@@ -58,7 +60,7 @@ OpenID Connect Discovery ドキュメントとフェデレーション メタデ
 ### <a name="web-applications--apis-accessing-resources"></a><a name="webclient"></a>リソースにアクセスする Web アプリケーション/API
 リソース (つまり、 Microsoft Graph、KeyVault、Outlook API、その他の Microsoft API) にアクセスするだけのアプリケーションは、通常、トークンを取得してリソース所有者に渡すだけです。 アプリケーションでリソースを保護しない場合は、トークンを調べることはないため、トークンへの適切な署名は必要はありません。
 
-アプリ専用のフロー (クライアント資格情報/クライアント証明書) を使用する Web アプリケーションと Web API はこのカテゴリに分類され、ロールオーバーの影響を受けません。
+トークンを要求するためのアプリ専用のフロー (クライアント資格情報/クライアント証明書) を使用する Web アプリケーションと Web API はこのカテゴリに分類され、ロールオーバーの影響を受けません。
 
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Azure App Service を使用して構築された、リソースを保護する Web アプリケーション/API
 Azure App Service の認証/承認 (EasyAuth) 機能には、キーのロールオーバーを自動的に処理するうえで必要なロジックがあります。
@@ -66,28 +68,30 @@ Azure App Service の認証/承認 (EasyAuth) 機能には、キーのロール�
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>.NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
 アプリケーションで .NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
 
-それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs から次のスニペットを探すことで確認できます。
+それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs ファイルで次のスニペットを探すことで確認できます。
 
-```
+```csharp
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+    new OpenIdConnectAuthenticationOptions
+    {
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-     // ...
-     });
+        // ...
+    });
 ```
-```
- app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-     {
-     // ...
-     });
+
+```csharp
+app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+    new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+    {
+        // ...
+    });
 ```
 
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>.NET Core OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
@@ -259,7 +263,7 @@ Microsoft から提供されたコード サンプルまたはチュートリア
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. 次に示すように、**Global.asax.cs** 内の**Application_Start()** メソッドで **RefreshValidationSettings()** メソッドを呼び出します。
+4. 次に示すように、**Global.asax.cs** 内の **Application_Start()** メソッドで **RefreshValidationSettings()** メソッドを呼び出します。
    ```
    protected void Application_Start()
    {
@@ -307,4 +311,4 @@ FedUtil を使用して構成を更新する手順は、次のようになりま
 [この GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>アプリケーションで自動ロールオーバーがサポートされていない場合に手動ロールオーバーを実行する方法
-アプリケーションで自動ロールオーバーがサポートされて**いない**場合は、Microsoft ID プラットフォームの署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。 [こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) には、これを実行する方法についてのスクリプトと手順が含まれています。
+アプリケーションで自動ロールオーバーがサポートされて **いない** 場合は、Microsoft ID プラットフォームの署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。 [こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) には、これを実行する方法についてのスクリプトと手順が含まれています。

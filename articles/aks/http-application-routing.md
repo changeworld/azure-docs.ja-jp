@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495150"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125871"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -26,8 +26,8 @@ HTTP アプリケーション ルーティング ソリューションを使用�
 
 アドオンによって、[Kubernetes イングレス コントローラー][ingress]と[外部 DNS][external-dns] コントローラーの 2 つのコンポーネントがデプロイされます。
 
-- **イングレス コントローラー**:イングレス コントローラーは、LoadBalancer タイプの Kubernetes サービスを使用することで、インターネットに公開されます。 イングレス コントローラーは、アプリケーションのエンドポイントへのルートを作成する [Kubernetes イングレス リソース][ingress-resource]を監視し、実装します。
-- **外部 DNS コントローラー**:Kubernetes イングレス リソースを監視し、クラスター固有の DNS ゾーンに DNS A レコードを作成します。
+- **イングレス コントローラー** :イングレス コントローラーは、LoadBalancer タイプの Kubernetes サービスを使用することで、インターネットに公開されます。 イングレス コントローラーは、アプリケーションのエンドポイントへのルートを作成する [Kubernetes イングレス リソース][ingress-resource]を監視し、実装します。
+- **外部 DNS コントローラー** :Kubernetes イングレス リソースを監視し、クラスター固有の DNS ゾーンに DNS A レコードを作成します。
 
 ## <a name="deploy-http-routing-cli"></a>HTTP ルーティングをデプロイする:CLI
 
@@ -78,7 +78,7 @@ Azure Cloud Shell を使用している場合、`kubectl` は既にインスト�
 az aks install-cli
 ```
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、*MyResourceGroup* の *MyAKSCluster* という名前の AKS クラスターの資格情報を取得します。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、 *MyResourceGroup* の *MyAKSCluster* という名前の AKS クラスターの資格情報を取得します。
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -112,7 +112,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-Web ブラウザーで *aks-helloworld.\<CLUSTER_SPECIFIC_DNS_ZONE\>* (たとえば、*aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io*) を開き、デモ アプリケーションが表示されることを確認します。 アプリケーションが表示されるまでに数分かかることがあります。
+Web ブラウザーで *aks-helloworld.\<CLUSTER_SPECIFIC_DNS_ZONE\>* (たとえば、 *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* ) を開き、デモ アプリケーションが表示されることを確認します。 アプリケーションが表示されるまでに数分かかることがあります。
 
 ## <a name="remove-http-routing"></a>HTTP ルーティングを削除する
 
@@ -173,9 +173,9 @@ HTTP ルーティング ソリューションは、Azure CLI を使用して削�
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-HTTP アプリケーションのルーティング アドオンが無効になっている場合は、一部の Kubernetes リソースがクラスターに残ることがあります。 これらのリソースには *configMaps* と *secrets* が含まれ、*kube-system* 名前空間で作成されます。 クリーンなクラスターを維持するために、これらのリソースを削除することができます。
+HTTP アプリケーションのルーティング アドオンが無効になっている場合は、一部の Kubernetes リソースがクラスターに残ることがあります。 これらのリソースには *configMaps* と *secrets* が含まれ、 *kube-system* 名前空間で作成されます。 クリーンなクラスターを維持するために、これらのリソースを削除することができます。
 
-次の [kubectl get][kubectl-get] コマンドを使用して、*addon-http-application-routing* リソースを探します。
+次の [kubectl get][kubectl-get] コマンドを使用して、 *addon-http-application-routing* リソースを探します。
 
 ```console
 kubectl get deployments --namespace kube-system

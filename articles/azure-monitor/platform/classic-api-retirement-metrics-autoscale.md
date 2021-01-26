@@ -4,16 +4,16 @@ description: メトリックおよび自動スケーリングのクラシック 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a8900d238e7542864e3dc53f9d192e579e2c96d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317384"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536695"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 
-Azure Monitor (最初のリリース時には Azure Insights という名前だった) では、現在、クラシック VM およびクラシック Cloud Services 用の自動スケーリング設定を作成して管理し、クラシック VM およびクラシック Cloud Services からのメトリックを使用する機能が提供されています。 すべてのリージョンのすべての Azure パブリックおよびプライベート クラウドでは、クラシック デプロイ モデルベースの API の元のセットの**提供が、2019 年 6 月 30 日に終了**します。   
+Azure Monitor (最初のリリース時には Azure Insights という名前だった) では、現在、クラシック VM およびクラシック Cloud Services 用の自動スケーリング設定を作成して管理し、クラシック VM およびクラシック Cloud Services からのメトリックを使用する機能が提供されています。 すべてのリージョンのすべての Azure パブリックおよびプライベート クラウドでは、クラシック デプロイ モデルベースの API の元のセットの **提供が、2019 年 6 月 30 日に終了** します。   
 
 1 年以上、Azure Resource Manager ベースの API セットを介して同じ操作がサポートされてきました。 Azure ポータルでは、自動スケーリングとメトリックの両方で新しい REST API が使用されます。 これらの Resource Manager API に基づく新しい SDK、PowerShell、および CLI も使用できます。 Microsoft の監視パートナー サービスでは、Azure Monitor で新しい Azure Resource Manager ベースの REST API が使用されます。  
 
@@ -29,9 +29,9 @@ Azure ポータルまたはさまざまな[監視パートナー サービス](.
 
 - **クラシック Azure Insights SDK** - [クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使用している場合は、[.NET](https://github.com/azure/azure-libraries-for-net#download) または [Java](https://github.com/azure/azure-libraries-for-java#download) 用の新しい Azure Monitor SDK の使用に切り替えます。 [Azure Monitor SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)をダウンロードします。
 
-- **クラシック自動スケーリング** - カスタム ビルド ツールから[クラシック自動スケーリング設定 API](/previous-versions/azure/reference/mt348562(v=azure.100)) を呼び出している場合や、[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使用している場合は、[Resource Manager Azure Monitor REST API](/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。
+- **クラシック自動スケーリング** - カスタム ビルド ツールから [クラシック自動スケーリング設定 API](/previous-versions/azure/reference/mt348562(v=azure.100)) を呼び出している場合や、[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使用している場合は、[Resource Manager Azure Monitor REST API](/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。
 
-- **クラシック メトリック** - カスタム ビルド ツールの[クラシック REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) または[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使ってメトリックを使用している場合は、[Resource Manager Azure Monitor REST API](/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。 
+- **クラシック メトリック** - カスタム ビルド ツールの [クラシック REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) または [クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使ってメトリックを使用している場合は、[Resource Manager Azure Monitor REST API](/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。 
 
 コードまたはカスタム ツールでクラシック API を呼び出しているかどうかがわからない場合は、以下を参照してください。
 
@@ -53,7 +53,7 @@ Azure ポータルまたはさまざまな[監視パートナー サービス](.
 
 自動スケールとメトリックの既存のすべての機能は、新しい API を介して引き続き動作します。  
 
-新しい API に移行することで、すべての監視サービス全体での一貫性のあるロールベースのアクセス制御 (RBAC) のためのサポートなど、Resource Manager ベースの機能が得られます。 また、以下のメトリックの追加機能が得られます。 
+新しい API に移行することで、すべての監視サービス全体での一貫性のある Azure ロールベースのアクセス制御 (Azure RBAC) のためのサポートなど、Resource Manager ベースの機能が得られます。 また、以下のメトリックの追加機能が得られます。 
 
 - ディメンションのサポート
 - すべてのサービス全体での一貫性のある 1 分のメトリック粒度 

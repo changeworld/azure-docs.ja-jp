@@ -1,15 +1,15 @@
 ---
 title: Azure portal の Azure Resource Graph エクスプローラーのキーボード ショートカット
 description: Azure portal の Azure Resource Graph エクスプローラーでは、アクションの実行と移動に役立つキーボード ショートカットがサポートされています。
-ms.date: 08/25/2020
+ms.date: 10/21/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146438"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340123"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph エクスプローラーのキーボード ショートカット
 
@@ -24,7 +24,7 @@ ms.locfileid: "89146438"
 |インデントを追加する |<kbd>Ctrl</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd>+<kbd>]</kbd> |
 |行を下へ移動する |<kbd>ALT</kbd>+<kbd>↓</kbd> |<kbd>Option</kbd>+<kbd>↓</kbd> |
 |行を上へ移動する |<kbd>ALT</kbd>+<kbd>↑</kbd> |<kbd>Option</kbd>+<kbd>↑</kbd> |
-|Replace |<kbd>Ctrl</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd>+<kbd>ALT</kbd>+<kbd>F</kbd> |
+|Replace |<kbd>Ctrl</kbd> + <kbd>H</kbd> |<kbd>Cmd</kbd>+<kbd>H</kbd> |
 |すべて選択する |<kbd>Ctrl</kbd> + <kbd>A</kbd> |<kbd>Cmd</kbd>+<kbd>A</kbd> |
 |下方向を選択する |<kbd>SHIFT</kbd>+<kbd>↓</kbd> |<kbd>SHIFT</kbd>+<kbd>↓</kbd> |
 |右方向を選択する |<kbd>SHIFT</kbd>+<kbd>→</kbd> |<kbd>SHIFT</kbd>+<kbd>→</kbd> |

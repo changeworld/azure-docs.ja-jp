@@ -12,10 +12,10 @@ ms.date: 07/16/2020
 ms.author: kenwith
 ROBOTS: NOINDEX
 ms.openlocfilehash: 318458eae72d6ffa679f08ffd32e8e8251e7484b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87562329"
 ---
 # <a name="get-it-now---add-an-app-from-the-azure-marketplace"></a>[今すぐ入手する] - Azure Marketplace からアプリを追加する

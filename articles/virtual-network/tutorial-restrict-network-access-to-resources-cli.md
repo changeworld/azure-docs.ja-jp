@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2be9b5e6fd489b331982d31693bf810d488d92b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484149"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221767"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -35,11 +35,11 @@ ms.locfileid: "87484149"
 * サブネットからリソースへのアクセスを確認する
 * サブネットおよびインターネットからリソースへのアクセスが拒否されたことを確認する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.28 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+- この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](security-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
+各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
 
 ```azurecli-interactive
 az network nsg rule create \

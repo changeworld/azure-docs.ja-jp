@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322297"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510568"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Monitor のメトリック アラート ルール用の Resource Manager テンプレート サンプル
 
@@ -343,7 +343,7 @@ ms.locfileid: "87322297"
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ ms.locfileid: "87322297"
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -502,7 +502,7 @@ ms.locfileid: "87322297"
 - 各条件内では、ディメンションごとに 1 つの値のみを選択できます。
 - "\*" をディメンション値として使用することはできません。
 - 異なる条件内で構成されているメトリックが同じディメンションをサポートしている場合、構成するディメンションの値は、関連する条件内にあるこれらすべてのメトリックに対して同じ方法で明示的に設定する必要があります。
-    - 次の例では、**Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、*criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため*criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
+    - 次の例では、**Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、*criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため *criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
 
 ### <a name="template-file"></a>テンプレート ファイル
 
@@ -875,7 +875,7 @@ ms.locfileid: "87322297"
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -3132,7 +3132,7 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 > [!NOTE]
 > `&amp`; は、& の HTML エンティティ参照です。 URL パラメーターは、1 つの & で分離されていますが、HTML で URL を記述した場合は、エンコードする必要があります。 そのため、pingURL パラメーターの値に "&" が含まれている場合は、"`&amp`;" を使用してエスケープする必要があります。
 
-### <a name="parameter-file"></a>パラメーター ファイル
+### <a name="template-file"></a>テンプレート ファイル
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>パラメーター ファイル
 
 ```json
@@ -3254,12 +3252,53 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+コンテンツ一致 `pingText` パラメーターの追加構成は、テンプレート ファイルの `Configuration/Webtest` 部分で制御されます。 具体的には、以下のセクションを参照してください。
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>テストの場所
+
+|Id                  | リージョン           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | 西ヨーロッパ      |
+| `us-ca-sjc-azr`    | 米国西部          |
+| `emea-ru-msa-edge` | 英国南部         |
+| `emea-se-sto-edge` | 英国西部          |
+| `apac-sg-sin-azr`  | 東南アジア   |
+| `us-tx-sn1-azr`    | 米国中南部 |
+| `us-il-ch1-azr`    | 米国中北部 |
+| `emea-gb-db3-azr`  | 北ヨーロッパ     |
+| `apac-jp-kaw-edge` | 東日本       |
+| `emea-fr-pra-edge` | フランス中部   |
+| `emea-ch-zrh-edge` | フランス南部     |
+| `us-va-ash-azr`    | 米国東部          |
+| `apac-hk-hkn-azr`  | 東アジア        |
+| `us-fl-mia-edge`   | 米国中部       |
+| `latam-br-gru-edge`| ブラジル南部      |
+| `emea-au-syd-edge` | オーストラリア東部   |
+
+### <a name="us-government-test-locations"></a>米国政府のテストの場所
+
+|Id                    | リージョン           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>次のステップ
 

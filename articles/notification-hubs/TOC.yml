@@ -113,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: Azure PowerShell を使用して通知ハブをデプロイおよび管理する
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: ユーザーに通知を安全にプッシュする
+    - name: セキュリティで保護された通知をユーザーに送信する
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: 登録情報を一括でエクスポートおよびインポートする
       href: export-modify-registrations-bulk.md

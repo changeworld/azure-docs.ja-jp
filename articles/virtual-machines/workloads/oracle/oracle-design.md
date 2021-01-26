@@ -1,25 +1,19 @@
 ---
 title: Azure での Oracle データベースの設計と実装 | Microsoft Docs
 description: ご利用の Azure 環境で Oracle データベースを設計および実装します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510013"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484432"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -49,7 +43,7 @@ ms.locfileid: "88510013"
 | **ネットワーク** |LAN/WAN  |SDN (ソフトウェアによるネットワーク)|
 | **セキュリティ グループ** |IP/ポートの制限ツール |[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
-| **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](../../windows/infrastructure-example.md) (修正/更新プログラムは Azure によって管理) |
+| **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (修正/更新プログラムは Azure によって管理) |
 | **リソース** |専用  |他のクライアントと共有|
 | **リージョン** |データ センター |[リージョンのペア](../../regions.md#region-pairs)|
 | **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -108,11 +102,11 @@ AWR レポートから取得できるメトリックを次に示します。
 
 たとえば、次の図では、ログ ファイルの同期が最上位にあります。 これは、LGWR から REDO ログ ファイルにログ バッファーを書き込むまでに必要な待機回数を示しています。 これらの結果は、パフォーマンスの高いストレージまたはディスクが必要なことを示します。 また、この図には、CPU (コア) の数とメモリの量も表示されています。
 
-![AWR レポート ページのスクリーンショット](./media/oracle-design/cpu_memory_info.png)
+![表の上部にあるログ ファイルの同期を示すスクリーンショット。](./media/oracle-design/cpu_memory_info.png)
 
 次の図は、読み取りと書き込みの I/O の合計数を示しています。 レポート期間中に、59 GB の読み取りと 247.3 GB の書き込みが行われました。
 
-![AWR レポート ページのスクリーンショット](./media/oracle-design/io_info.png)
+![読み取りと書き込みの合計 I/O を示すスクリーンショット。](./media/oracle-design/io_info.png)
 
 #### <a name="2-choose-a-vm"></a>2.VM の選択
 
@@ -144,7 +138,7 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 - オンプレミスのデプロイと比べて、ネットワーク待機時間が比較的長くなります。 ネットワークのラウンド トリップ数を削減すると、パフォーマンスが大幅に向上します。
 - ラウンドトリップ数を削減するには、同じ仮想マシン上のトランザクション数が多いアプリケーション、つまり "おしゃべりな" アプリを統合します。
 - ネットワーク パフォーマンスを向上させるには、[高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)で仮想マシンを使用してください。
-- 特定の Linux ディストリビューションについては、[TRIM/UNMAP サポート](../../linux/configure-lvm.md#trimunmap-support)を有効にすることを検討してください。
+- 特定の Linux ディストリビューションについては、[TRIM/UNMAP サポート](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support)を有効にすることを検討してください。
 - 個別の仮想マシン上に [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) をインストールします。
 - Linux では、既定では大型のページは有効になっていません。 大型のページを有効にすることを検討し、Oracle DB で `use_large_pages = ONLY` を設定します。 これは、パフォーマンスの向上に役立ちます。 詳細については、 [こちら](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)で確認できます。
 
@@ -158,7 +152,7 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 
 - *Premium Storage ディスク*:このディスクの種類は、実稼働ワークロードに最適です。 Premium Storage では、特定のサイズ シリーズ (DS、DSv2、GS、F シリーズなど) の VM に接続できる VM ディスクがサポートされています。 Premium ディスクはさまざまなサイズで提供されており、32 GB から 4,096 GB までのディスク サイズから選択できます。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。
 
-ポータルから新しいマネージド ディスクを作成すると、使用する種類のディスクについて**アカウントの種類**を選択できます。 使用可能なすべてのディスクがドロップダウン メニューに表示されるわけではないことに注意してください。 特定の VM サイズを選択した後のメニューには、その VM サイズに基づいて使用可能な Premium Storage の SKU のみが表示されます。
+ポータルから新しいマネージド ディスクを作成すると、使用する種類のディスクについて **アカウントの種類** を選択できます。 使用可能なすべてのディスクがドロップダウン メニューに表示されるわけではないことに注意してください。 特定の VM サイズを選択した後のメニューには、その VM サイズに基づいて使用可能な Premium Storage の SKU のみが表示されます。
 
 ![マネージド ディスク ページのスクリーンショット](./media/oracle-design/premium_disk01.png)
 
@@ -203,7 +197,7 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 スループットを最大にするには、ホスト キャッシュを **[なし]** で開始することをお勧めします。 Premium Storage では、 **[読み取り専用]** または **[なし]** のオプションでファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、/etc/fstab ファイルをディスクに更新します。
 
-![マネージド ディスク ページのスクリーンショット](./media/oracle-design/premium_disk02.png)
+![[読み取り専用] と [なし] のオプションが表示されたマネージド ディスク ページのスクリーンショット。](./media/oracle-design/premium_disk02.png)
 
 - OS ディスクには、既定の **[読み取り/書き込み]** キャッシュを使用します。
 - SYSTEM、TEMP、UNDO には、キャッシュに **[なし]** を使用します。
@@ -230,7 +224,7 @@ Azure 環境のセットアップと構成が完了した後に、今度はネ�
 - [Oracle ASM の構成](configure-oracle-asm.md)
 - [Oracle Data Guard の構成](configure-oracle-dataguard.md)
 - [Oracle Golden Gate の構成](configure-oracle-golden-gate.md)
-- [Oracle のバックアップと回復](oracle-backup-recovery.md)
+- [Oracle のバックアップと回復](./oracle-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 

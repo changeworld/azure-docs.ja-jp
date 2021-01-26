@@ -4,15 +4,15 @@ description: Azure アクティビティ ログ内の各カテゴリのイベン
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 06/09/2020
+ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9bda92667cfc3afb44a55adf3f3c12798a734ddc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829511"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522721"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、アクティビティ ログのカテゴリとそれぞれのスキーマについて説明します。 
@@ -23,13 +23,24 @@ ms.locfileid: "87829511"
 - [診断設定](diagnostic-settings.md)を使用して Azure Storage または Azure Event Hubs にアクティビティ ログを送信する場合は、スキーマについて最後の「[ストレージ アカウントとイベント ハブからのスキーマ](#schema-from-storage-account-and-event-hubs)」セクションを参照してください。
 - [診断設定](diagnostic-settings.md)を使用して Log Analytics ワークスペースにアクティビティ ログを送信する場合は、スキーマについて [Azure Monitor データ参照](/azure/azure-monitor/reference/)を参照してください。
 
+## <a name="severity-level"></a>重要度
+アクティビティ ログの各エントリには、重大度レベルが指定されています。 重大度レベルには、次の値のいずれかが指定されています。  
+
+| 重大度 | 説明 |
+|:---|:---|
+| 重大 | システム管理者による早急な対処を必要とするイベント。 アプリケーションまたはシステムの失敗、または応答の停止が発生したことを示している可能性があります。
+| Error | 問題を示すイベント。ただし、早急な対処は必要ありません。
+| 警告 | 実際のエラーではなく潜在的な問題を事前に警告するイベント。 リソースが理想的な状態ではなく、後で機能が低下し、エラーや重大なイベントが表示される可能性があることを示しています。  
+| Informational | 重大ではない情報を管理者に渡すイベント。 注意事項 ("参考") と同様のものです。 
+
+各リソース プロバイダーの開発者が、リソース エントリの重大度レベルを選択します。 このため、ユーザーにとっての実際の重要度は、アプリケーションのビルド方法によって異なります。 たとえば、分離されている特定のリソースにとって "重大" な項目は、Azure アプリケーションにとって中心的な種類のリソースでは、"エラー" ほど重要ではない可能性があります。 アラートを発生させるイベントを決定するときは、必ずこの点を考慮してください。  
 
 ## <a name="categories"></a>Categories
 アクティビティ ログの各イベントには、次の表に示す特定のカテゴリがあります。 ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合は、各カテゴリとそのスキーマの詳細について、以下のセクションを参照してください。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](./resource-logs.md#send-to-azure-event-hubs)場合、スキーマは異なります。 [リソース ログ スキーマ](./resource-logs-schema.md)へのプロパティのマッピングについては、この記事の最後のセクションで紹介します。
 
 | カテゴリ | 説明 |
 |:---|:---|
-| [管理](#administrative-category) | Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれます。 管理イベントの例としては、_仮想マシンの作成_、_ネットワーク セキュリティ グループの削除_ があります。<br><br>Resource Manager を使用してユーザーまたはアプリケーションが実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデル化されています。 操作の種類が  _書き込み_、_削除_、または _アクション_ の場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理イベントには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。 |
+| [管理](#administrative-category) | Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれます。 管理イベントの例としては、_仮想マシンの作成_、_ネットワーク セキュリティ グループの削除_ があります。<br><br>Resource Manager を使用してユーザーまたはアプリケーションが実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデル化されています。 操作の種類が  _書き込み_、_削除_、または _アクション_ の場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理イベントには、サブスクリプション内の Azure ロールベースのアクセス制御に対する任意の変更も含まれています。 |
 | [サービス正常性](#service-health-category) | Azure で発生した任意のサービス正常性インシデントのレコードが含まれます。 サービス正常性イベントの例としては、"_SQL Azure in East US is experiencing downtime_" (米国東部の SQL Azure でダウンタイムが発生しています) があります。 <br><br>Service Health のイベントは 6 種類に分かれます。"_要対応_"、"_支援復旧_"、"_インシデント_"、"_メンテナンス_"、"_情報_"、または "_セキュリティ_"。 これらのイベントが作成されるのは、サブスクリプション内にイベントの影響を受けるリソースがある場合のみです。
 | [Resource Health](#resource-health-category) | Azure リソースで発生したすべてのリソース正常性イベントのレコードが含まれます。 リソース正常性イベントの例としては、"_Virtual Machine health status changed to unavailable_" (仮想マシンの正常性状態が使用不可に変更されました) があります。<br><br>リソース正常性イベントは、次の 4 つの正常性状態のいずれかを示す可能性があります。"_使用可能_"、"_使用不可_"、"_デグレード_"、および "_不明_"。 さらに、リソース正常性イベントは、"_Platform Initiated_" (プラットフォーム開始) または "_User Initiated_" (ユーザー開始) のいずれかのカテゴリに分けることができます。 |
 | [Alert](#alert-category) | Azure アラートのアクティブ化のレコードが含まれます。 アラート イベントの例としては、"_CPU % on myVM has been over 80 for the past 5 minutes_" (myVM の CPU % が過去 5 分間で 80 を超えています) があります。|
@@ -39,7 +50,7 @@ ms.locfileid: "87829511"
 | [ポリシー](#policy-category) | Azure Policy によって実行されるすべての効果アクション操作のレコードが含まれます。 ポリシー イベントの例としては、"_監査_" と "_拒否_" があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。 |
 
 ## <a name="administrative-category"></a>管理カテゴリ
-このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
+このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内の Azure ロールベースのアクセス制御に対する任意の変更も含まれています。
 
 ### <a name="sample-event"></a>サンプル イベント
 ```json
@@ -132,7 +143,7 @@ ms.locfileid: "87829511"
 ### <a name="property-descriptions"></a>プロパティの説明
 | 要素名 | 説明 |
 | --- | --- |
-| authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
+| authorization |イベントの Azure RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
 | channels |次のいずれかの値:"Admin"、"Operation" |
 | claims |Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
@@ -763,7 +774,7 @@ ms.locfileid: "87829511"
 
 | 要素名 | 説明 |
 | --- | --- |
-| authorization | イベントの RBAC プロパティの配列。 新しいリソースの場合、これは、評価をトリガーした要求のアクションとスコープです。 既存のリソースの場合、アクションは "Microsoft.Resources/checkPolicyCompliance/read" です。 |
+| authorization | イベントの Azure RBAC プロパティの配列。 新しいリソースの場合、これは、評価をトリガーした要求のアクションとスコープです。 既存のリソースの場合、アクションは "Microsoft.Resources/checkPolicyCompliance/read" です。 |
 | caller | 新しいリソースの場合は、デプロイを開始した ID。 既存のリソースの場合は、Microsoft Azure Policy Insights RP の GUID。 |
 | channels | Policy イベントは "Operation" チャネルのみを使用します。 |
 | claims | Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |

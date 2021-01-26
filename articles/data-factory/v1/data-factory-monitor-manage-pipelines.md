@@ -3,20 +3,20 @@ title: Azure portal および PowerShell を使用したパイプラインの監
 description: Azure Portal および Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73666977"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495856"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "73666977"
 > 監視と管理アプリケーションによって、ご使用のデータ パイプラインの管理および管理や、問題のトラブルシューティングがより適切にサポートされます。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
 
 > [!IMPORTANT]
-> Azure Data Factory バージョン 1 は、新しい [Azure Monitor アラート インフラストラクチャ](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) を使用するようになりました。 以前のアラート インフラストラクチャは非推奨です。 その結果、バージョン 1 データ ファクトリ用に構成された既存のアラートは機能しなくなります。 v1 データ ファクトリの既存のアラートは自動的に移行されません。 これらのアラートは、新しいアラート インフラストラクチャ上に再作成する必要があります。 Azure Portal にログインして **[モニター]** を選択し、バージョン 1 のデータ ファクトリ用にメトリックに対する新しいアラートを作成します (失敗した実行、成功した実行など)。
+> Azure Data Factory バージョン 1 は、新しい [Azure Monitor アラート インフラストラクチャ](../../azure-monitor/platform/alerts-metric.md) を使用するようになりました。 以前のアラート インフラストラクチャは非推奨です。 その結果、バージョン 1 データ ファクトリ用に構成された既存のアラートは機能しなくなります。 v1 データ ファクトリの既存のアラートは自動的に移行されません。 これらのアラートは、新しいアラート インフラストラクチャ上に再作成する必要があります。 Azure Portal にログインして **[モニター]** を選択し、バージョン 1 のデータ ファクトリ用にメトリックに対する新しいアラートを作成します (失敗した実行、成功した実行など)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -59,7 +59,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
    ![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>Data Factory のダイアグラム ビュー
-データ ファクトリの**ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する 1 つのウィンドウが提供されます。 データ ファクトリの**ダイアグラム** ビューを表示するには、データ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
+データ ファクトリの **ダイアグラム** ビューでは、データ ファクトリとその資産を監視および管理する 1 つのウィンドウが提供されます。 データ ファクトリの **ダイアグラム** ビューを表示するには、データ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
 
 ![[ダイアグラム] ビュー](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
@@ -79,7 +79,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>パイプライン内の各アクティビティの状態を表示する
 アクティビティによって生成されるデータセットのステータスを表示することにより、アクティビティの現在の状態を確認できます。
 
-**ダイアグラム**の **OutputBlobTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 コピー アクティビティは過去 8 時間正常に実行され、**Ready** 状態のスライスを生成したことがわかります。  
+**ダイアグラム** の **OutputBlobTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 コピー アクティビティは過去 8 時間正常に実行され、**Ready** 状態のスライスを生成したことがわかります。  
 
 ![パイプラインの状態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
@@ -216,7 +216,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
    ![エラーのあるアクティビティ実行詳細ブレード](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>PowerShell を使用してエラーをデバッグする
-1. **PowerShell**を起動します。
+1. **PowerShell** を起動します。
 2. **Get-AzDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。        
 
     ```powershell   
@@ -288,7 +288,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 ![エラーの修正と検証](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用
-**Set-AzDataFactorySliceStatus** コマンドレットを使用してエラーを再実行できます。 このコマンドレットの構文やその他の詳細については、「[Set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)」のトピックをご覧ください。
+**Set-AzDataFactorySliceStatus** コマンドレットを使用してエラーを再実行できます。 このコマンドレットの構文やその他の詳細については、「[Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus)」のトピックをご覧ください。
 
 **例:**
 

@@ -2,29 +2,33 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760580"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027056"
 ---
-| リソース | Standard ファイル共有 | Premium ファイル共有 |
+| リソース | Standard ファイル共有\* | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|
 | ファイル共有の最小サイズ | 最小サイズなし。従量課金制 | 100 GiB、プロビジョニング済み |
-| ファイル共有の最大サイズ | 100 TiB*、5 TiB | 100 TiB |
+| ファイル共有の最大サイズ | 100 TiB\*\*、5 TiB | 100 TiB |
 | ファイル共有内の最大ファイル サイズ | 1 TiB | 4 TiB |
 | ファイル共有内の最大ファイル数 | 制限なし | 制限なし |
-| 共有あたりの最大 IOPS | 10,000 IOPS*、100 ms において 1,000 IOPS または 100 要求 | 100,000 IOPS |
+| 共有あたりの最大 IOPS | 10,000 IOPS\*\*、1,000 IOPS または 100 要求 (100 ミリ秒) | 100,000 IOPS |
 | ファイル共有あたりの保存されるアクセス ポリシーの最大数 | 5 | 5 |
-| 1 つのファイル共有のターゲット スループット | 最大 300 MiB/秒、最大 60 MiB/秒、  | Premium ファイル共有のイングレスとエグレスの値を参照してください|
+| 1 つのファイル共有のターゲット スループット | 最大 300 MiB/秒\*\*、最大 60 MiB/秒、  | Premium ファイル共有のイングレスとエグレスの値を参照してください|
 | 1 つのファイル共有の最大エグレス | Standard ファイル共有のターゲット スループットを参照してください | 最大 6,204 MiB/秒 |
 | 1 つのファイル共有の最大イングレス | Standard ファイル共有のターゲット スループットを参照してください | 最大 4,136 MiB/秒 |
 | ファイルまたはディレクトリあたりの開くことができるハンドルの最大数 | 2,000 オープン ハンドル | 2,000 オープン ハンドル |
 | 共有スナップショットの最大数 | 200 共有スナップショット | 200 共有スナップショット |
 | オブジェクト (ディレクトリとファイル) の名前の最大長 | 2,048 文字 | 2,048 文字 |
 | 最大パス名コンポーネント (パス \A\B\C\D 内。各文字はコンポーネント) | 255 文字 | 255 文字 |
+| ハード リンクの制限 (NFS のみ) | N/A | 178 |
+| SMB マルチチャネルの最大チャネル数 | 該当なし | 4 |
 
-\* Standard ファイル共有での既定サイズは 5 TiB です。Standard ファイル共有を 100 TiB にスケールアップする方法について詳しくは、「[大きなファイル共有の有効化と作成](../articles/storage/files/storage-files-how-to-create-large-file-share.md)」を参照してください。
+\* Standard ファイル共有で使用可能な 3 つの階層 (トランザクションの最適化、ホット、クール) すべてに Standard ファイル共有の制限が適用されます。
+
+\*\* Standard ファイル共有での既定サイズは 5 TiB です。Standard ファイル共有を 100 TiB にスケールアップする方法について詳しくは、「[大きなファイル共有の有効化と作成](../articles/storage/files/storage-files-how-to-create-large-file-share.md)」を参照してください。

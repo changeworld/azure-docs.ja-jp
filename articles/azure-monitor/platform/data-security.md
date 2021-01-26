@@ -5,16 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/04/2019
-ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 11/11/2020
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319798"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094337"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
-このドキュメントでは、[Azure トラスト センター](https://www.microsoft.com/ja-jp/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
+このドキュメントでは、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
 
 この記事は、Log Analytics によるデータの収集、処理、および保護の方法について説明します。 エージェントを使用して Web サービスに接続し、System Center Operations Manager を使用して運用データを収集し、Azure Diagnostics からデータを取得して Log Analytics に使用することができます。 
 
@@ -26,6 +26,12 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 * インシデント管理
 * コンプライアンス
 * セキュリティ基準認定
+
+Azure Monitor と Log Analytics に組み込まれている追加のセキュリティ機能を使用することもできます。 これらの機能を利用すると、より多くの管理者の管理が必要になります。 
+* カスタマー マネージド (セキュリティ) キー
+* Azure プライベート ストレージ
+* Private Link ネットワーク 
+* Azure ロックボックスによって設定された Azure サポートのアクセス制限
 
 セキュリティ ポリシーを含め、次の情報に関するご質問やご提案、問題がある場合は、[Azure のサポート オプション](https://azure.microsoft.com/support/options/)に関するページを参照してください。
 
@@ -103,7 +109,7 @@ Log Analytics には、すべての Microsoft サービスが準拠するイン�
 Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 
 ## <a name="compliance"></a>コンプライアンス
-Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure トラスト センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft トラスト センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
@@ -121,10 +127,10 @@ Azure Log Analytics は、次の要件を満たしています。
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * PCI Security Standards Council による [Payment Card Industry (PCI 準拠) データ セキュリティ基準 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [Service Organization Controls (SOC) 1 Type 1 および SOC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) に準拠している
-* [HIPAA および HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) (HIPAA Business Associate Agreement を締結している企業向け)
+* [HIPAA および HITECH](/compliance/regulatory/offering-hipaa-hitech) (HIPAA Business Associate Agreement を締結している企業向け)
 * Windows の一般的なエンジニアリング条件
 * Microsoft の信頼できるコンピューティング
-* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft トラスト センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
+* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
 
 > [!NOTE]
 > Log Analytics は、一部の認定および認証において、以前の名前である *Operational Insights* として表示されています。
@@ -166,10 +172,19 @@ Windows または管理サーバー エージェントのキャッシュされ�
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データは、リージョンの Azure Event Hub に格納され、データは最終的に保存されます。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、生データを処理してデータベースに取り込みます。
 
-データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料*プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは暗号化されます。
+データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料* プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは暗号化されます。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 Log Analytics ワークスペースにアクセスするには、設定済みの組織アカウントまたは Microsoft アカウントを使用して Azure Portal にサインインします。 ポータルと Log Analytics サービス間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、Azure Portal セッションが終了します。
+
+
+## <a name="additional-security-features"></a>追加のセキュリティ機能
+これらの追加のセキュリティ機能を使用して、Azure Monitor または Log Analytics 環境のセキュリティをさらに強化することができます。 これらの機能を利用すると、より多くの管理者の管理が必要になります。 
+- [カスタマー マネージド (セキュリティ) キー](customer-managed-keys.md) - カスタマー マネージド キーを使用して、Log Analytics ワークスペースに送信されるデータを暗号化できます。 Azure Key Vault を使用する必要があります。 
+- [プライベート/ユーザー マネージド ストレージ](private-storage.md) - 個人の暗号化されたストレージ アカウントを管理し、それを使用して監視データを格納するように Log Analytics に指示します 
+- [Private Link ネットワーク](private-link-security.md) - Azure Private Link を使用すると、プライベート エンドポイントを使用して Azure PaaS サービス (Azure Monitor を含む) をご使用の仮想ネットワークに安全に接続できます。 
+- [Azure カスタマー ロックボックス](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) - Microsoft Azure 用カスタマー ロックボックスには、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics で Azure VM のデータを収集する方法については、[Azure VM のクイック スタート](../learn/quick-collect-azurevm.md)に関するページをご覧ください。  

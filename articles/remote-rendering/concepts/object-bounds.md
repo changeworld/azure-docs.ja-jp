@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 099b0175b906e48034e663b575517e49bce7e753
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 421265bf1ee488c8e7d0c41e3ec9a250392d6f3d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021852"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202788"
 ---
 # <a name="object-bounds"></a>オブジェクトの境界
 
@@ -58,6 +58,11 @@ void GetBounds(ApiHandle<Entity> entity)
     });
 }
 ```
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# Entity.QueryLocalBoundsAsync](/dotnet/api/microsoft.azure.remoterendering.entity.querylocalboundsasync)
+* [C++ Entity::QueryLocalBoundsAsync](/cpp/api/remote-rendering/entity#querylocalboundsasync)
 
 ## <a name="next-steps"></a>次のステップ
 

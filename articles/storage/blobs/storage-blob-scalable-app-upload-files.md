@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75371940"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545042"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>接続文字列の構成
 
-Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 以前のチュートリアルで作成した仮想マシンにログインします。 管理者として **[コマンド プロンプト]** を開き、`/m` スイッチを付加して `setx` コマンドを実行します。このコマンドによって、コンピューター設定の環境変数が保存されます。 環境変数は、**コマンド プロンプト**を再度読み込むまで使用できません。 次のサンプルでは、 **\<storageConnectionString\>** を置き換えます。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの **接続文字列** をコピーします。 以前のチュートリアルで作成した仮想マシンにログインします。 管理者として **[コマンド プロンプト]** を開き、`/m` スイッチを付加して `setx` コマンドを実行します。このコマンドによって、コンピューター設定の環境変数が保存されます。 環境変数は、**コマンド プロンプト** を再度読み込むまで使用できません。 次のサンプルでは、 **\<storageConnectionString\>** を置き換えます。
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -62,7 +62,7 @@ setx storageconnectionstring "<storageConnectionString>" /m
 dotnet run
 ```
 
-アプリケーションでは、ランダムな名前のコンテナーを 5 つ作成し、ステージング ディレクトリのファイルをストレージ アカウントにアップロードする処理を開始します。 アプリケーションの実行時に大規模数のコンカレント接続が確実に許可されるように、アプリケーションではスレッドの最小数を 100 に、また、[DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) を 100 に設定します。
+アプリケーションでは、ランダムな名前のコンテナーを 5 つ作成し、ステージング ディレクトリのファイルをストレージ アカウントにアップロードする処理を開始します。 アプリケーションの実行時に大規模数のコンカレント接続が確実に許可されるように、アプリケーションではスレッドの最小数を 100 に、また、[DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) を 100 に設定します。
 
 スレッドの設定と接続制限設定に加えて、[UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) メソッドの [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) が、並行処理を使用し MD5 ハッシュ検証が無効になるように構成されます。 ファイルは 100 MB のブロック単位でアップロードされます。この構成によってパフォーマンスは向上しますが、パフォーマンスが低いネットワークを使用している場合は、100 MB ブロック全体が再試行されるエラーが発生している場合と同然に、負荷が高くなる恐れがあります。
 
@@ -171,7 +171,7 @@ Upload has been completed in 142.0429536 seconds. Press any key to continue
 
 ### <a name="validate-the-connections"></a>接続の検証
 
-ファイルのアップロード中に、ストレージ アカウントへのコンカレント接続の数を確認できます。 **コマンド プロンプト**を開き、`netstat -a | find /c "blob:https"` を入力します。 このコマンドは、現在 `netstat` を使用して開かれている接続の数を示します。 実際にチュートリアルを実行したときに表示される出力の例を以下に示します。 この例からわかるように、ストレージ アカウントにランダム ファイルをアップロードするときに、800 個の接続が開かれました。 この値は、アップロードの実行全体を通して変化します。 ブロック チャンクを並行でアップロードすることで、コンテンツの転送に必要な時間が大幅に削減されます。
+ファイルのアップロード中に、ストレージ アカウントへのコンカレント接続の数を確認できます。 **コマンド プロンプト** を開き、`netstat -a | find /c "blob:https"` を入力します。 このコマンドは、現在 `netstat` を使用して開かれている接続の数を示します。 実際にチュートリアルを実行したときに表示される出力の例を以下に示します。 この例からわかるように、ストレージ アカウントにランダム ファイルをアップロードするときに、800 個の接続が開かれました。 この値は、アップロードの実行全体を通して変化します。 ブロック チャンクを並行でアップロードすることで、コンテンツの転送に必要な時間が大幅に削減されます。
 
 ```
 C:\>netstat -a | find /c "blob:https"

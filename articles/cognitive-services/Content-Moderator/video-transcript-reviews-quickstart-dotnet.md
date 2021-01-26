@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2d0ddae8a9bd8054c740402b8beb3bb0bccfa9f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 326fc2cc162a2ab54b40888250fbeef55ad8800a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919218"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853460"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 
@@ -49,7 +49,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. ソリューションに新しい **コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
 1. プロジェクトに **VideoTranscriptReviews** という名前を付けます。
 
@@ -200,12 +200,12 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 **ContentModeratorClient.Reviews.AddVideoTranscript** でビデオ レビューにトランスクリプトを追加します。 **AddVideoTranscript** では、次のパラメーターが必要です。
 1. Content Moderator のチーム ID。
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
-1. トランスクリプトを含む**ストリーム** オブジェクト。
+1. トランスクリプトを含む **ストリーム** オブジェクト。
 
 トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT: Web ビデオ テキスト トラック形式](https://www.w3.org/TR/webvtt1/)に関するページをご覧ください。
 
 > [!NOTE]
-> プログラムは、VTT 形式でサンプル トランスクリプトを使用します。 実際のソリューションでは、Azure Media Indexer サービスを使用してビデオから[トランスクリプトを生成](https://docs.microsoft.com/azure/media-services/media-services-index-content)します。
+> プログラムは、VTT 形式でサンプル トランスクリプトを使用します。 実際のソリューションでは、Azure Media Indexer サービスを使用してビデオから[トランスクリプトを生成](../../media-services/previous/media-services-index-content.md)します。
 
 名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。
 
@@ -318,7 +318,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 名前空間 VideoTranscriptReviews、クラス Program に **Main** メソッドの定義を追加します。 最後に、Program クラスと VideoTranscriptReviews 名前空間を閉じます。
 
 > [!NOTE]
-> プログラムは、VTT 形式でサンプル トランスクリプトを使用します。 実際のソリューションでは、Azure Media Indexer サービスを使用してビデオから[トランスクリプトを生成](https://docs.microsoft.com/azure/media-services/media-services-index-content)します。
+> プログラムは、VTT 形式でサンプル トランスクリプトを使用します。 実際のソリューションでは、Azure Media Indexer サービスを使用してビデオから[トランスクリプトを生成](../../media-services/previous/media-services-index-content.md)します。
 
 ```csharp
 static void Main(string[] args)
@@ -381,5 +381,3 @@ Press any key to close the application.
 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
 
 レビュー ツールで[ビデオ レビュー](video-reviews-quickstart-dotnet.md)を生成する方法について学習する。
-
-[完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。

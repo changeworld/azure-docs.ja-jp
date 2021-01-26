@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798008"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833981"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 
@@ -51,7 +51,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
-- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
+- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure AD Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
 
 - **[インターネット プロパティ]、[セキュリティ] の順に選択し、[信頼されているサイト]** 設定で **My App** ポータルの URL を追加します。
 
@@ -75,7 +75,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
-- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
+- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure AD Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
 
 - ブラウザーのキャッシュを消去し、もう一度サインインしてみます。
 
@@ -87,7 +87,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 
-- [プロファイル情報を変更する](my-apps-portal-end-user-update-profile.md)。
+- [プロファイル情報を変更する](./my-account-portal-settings.md)。
 
 - [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)。
 

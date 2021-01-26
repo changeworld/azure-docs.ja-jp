@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d66c02b58da295c74a38fb921a081cc4036763a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73836787"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021917"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>カスタム ニューラル音声の制限の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "73836787"
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>カスタム ニューラル音声をデプロイするためのガイダンス
 
 - [責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md): Microsoft の調査に基づく主な推奨事項
-- [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent): 責任を持ってテクノロジを使用するために、そのテクノロジについて何を理解し、ボイス タレントに何を通知すべきか
+- [ボイス タレント向けの開示](/legal/cognitive-services/speech-service/disclosure-voice-talent): 責任を持ってテクノロジを使用するために、そのテクノロジについて何を理解し、ボイス タレントに何を通知すべきか
 - [設計の開示](concepts-disclosure-guidelines.md): 合成音声が使用されていることをユーザーが認識し、サービスを信頼できるようにエクスペリエンスを設計する方法
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>カスタム ニューラル音声が制限付きテクノロジである理由
@@ -41,11 +41,11 @@ Microsoft の目的は、個人や社会の権利を保護し、人間とコン�
 
 カスタム ニューラル音声サービスへのアクセスは、この制限プレビュー期間中に限られた数のお客様をサポートするための Microsoft の資格基準、審査プロセス、および可用性に基づき、Microsoft の独自の判断によって決定されます。
 
-申請プロセスの一環として、音声フォントを作成する前に、必ずボイス タレントから明示的な書面による許可を得る必要があり、これには[ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)の共有が含まれます。 また、音声フォントをデプロイする場合、実装によって、サービスで[合成音声が使用されていることがユーザーに開示され](concepts-disclosure-guidelines.md)、Microsoft 合成音声サービスを利用していることがサービス利用規約に記載され、サービスのユーザーが問題を報告し、Microsoft との間で詳細情報を共有できるようにするフィードバック チャネルがサポートされることに同意する必要があります。 使用条件の詳細については、[こちら](https://aka.ms/custom-neural-code-of-conduct)を参照してください。
+申請プロセスの一環として、音声フォントを作成する前に、必ずボイス タレントから明示的な書面による許可を得る必要があり、これには[ボイス タレント向けの開示](/legal/cognitive-services/speech-service/disclosure-voice-talent)の共有が含まれます。 また、音声フォントをデプロイする場合、実装によって、サービスで[合成音声が使用されていることがユーザーに開示され](concepts-disclosure-guidelines.md)、Microsoft 合成音声サービスを利用していることがサービス利用規約に記載され、サービスのユーザーが問題を報告し、Microsoft との間で詳細情報を共有できるようにするフィードバック チャネルがサポートされることに同意する必要があります。 使用条件の詳細については、[こちら](/legal/cognitive-services/speech-service/tts-code-of-conduct)を参照してください。
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
+* [ボイス タレント向けの開示](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
 

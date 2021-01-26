@@ -2,15 +2,14 @@
 title: ジョブ ブラウザーとジョブ ビューを使用する - Azure Data Lake Analytics
 description: この記事では、Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用方法について説明します。
 ms.service: data-lake-analytics
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131890"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018564"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics ジョブに対してジョブ ブラウザーとジョブ ビューを使用
 Azure Data Lake Analytics サービスは、送信されたジョブをクエリ ストアにアーカイブします。 この記事では、Azure Data Lake Tools for Visual Studio のジョブ ブラウザーとジョブ ビューを使用して過去のジョブ情報を検索する方法について説明します。 
@@ -38,7 +37,7 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
     
       ジョブの状態は、ジョブのフェーズを表します。
     
-      ![Azure Data Lake Analytics ジョブのフェーズを示す状態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![Azure Data Lake Analytics ジョブのフェーズを示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * 準備中:スクリプトをクラウドにアップロードし、コンパイル サービスを使用してスクリプトのコンパイルと最適化を行っています。
     * キューに挿入済み:十分なリソースが確保されるまで待機しているか、ジョブの数がアカウントあたりの最大同時実行可能ジョブ数の制限を超過しているときに、ジョブはキューに挿入されます。 優先度の設定により、キューに挿入されたジョブのシーケンスが決まります。数値が小さいほど、優先度は高くなります。
@@ -50,7 +49,7 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
     
       [Job Summary (ジョブの概要)] パネルの下部には、ジョブの基本情報が表示されます。
     
-      ![Azure Data Lake Analytics ジョブのフェーズを示す状態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![テキストボックス内の説明付きでジョブの概要を示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * ジョブ結果:[成功] または [失敗]。 ジョブは、すべてのフェーズで失敗する可能性があります。
     * 合計時間:送信時刻から終了時刻までの実時間 (期間)。
@@ -60,10 +59,10 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
     * アカウント:ジョブの実行に使用された Data Lake Analytics アカウント。
     * 作成者:ジョブを送信したユーザー。これは、実際のユーザーのアカウントまたはシステム アカウントの場合があります。
     * 優先順位:ジョブの優先度。 数値が小さいほど、優先度は高くなります。 これは、キュー内のジョブのシーケンスのみに影響します。 優先度を高くしても、実行中のジョブには作用しません。
-    * 並行処理:要求された同時実行 Azure Data Lake Analytics ユニット (ADLAU) (別名、頂点) の最大数。 現時点では、1 つの頂点は、2 つの仮想コアと 6 GB RAM を持つ 1 つの VM に相当しますが、これは、将来の Data Lake Analytics の更新プログラムでアップグレードされる可能性があります。
+    * 並行処理:要求された同時実行 Azure Data Lake Analytics ユニット (ADLAU) (頂点とも呼ばれます) の最大数。 現時点では、1 つの頂点は、2 つの仮想コアと 6 GB RAM を持つ 1 つの VM に相当しますが、これは、将来の Data Lake Analytics の更新プログラムでアップグレードされる可能性があります。
     * 残りのバイト数:ジョブが完了するまでに処理する必要があるバイト数。
     * 読み取りバイト数/書き込みバイト数:ジョブの実行が開始されてから読み取られたバイト数と書き込まれたバイト数。
-    * 合計頂点:ジョブは複数の処理に分割されます。各作業は頂点と呼ばれます。 この値は、ジョブを構成する処理の数を表します。 頂点は、基本的なプロセス単位 (別名、Azure Data Lake Analytics 単位 (ADLAU)) と見なすことができます。さらに、頂点は、並行処理で実行できます。 
+    * 合計頂点:ジョブは複数の処理に分割されます。各作業は頂点と呼ばれます。 この値は、ジョブを構成する処理の数を表します。 頂点は、基本的なプロセス単位 (Azure Data Lake Analytics ユニット (ADLAU) とも呼ばれます) と見なすことができます。さらに、頂点は、並行処理で実行できます。 
     * 完了/実行中/失敗:完了した頂点、実行中の頂点、および失敗した頂点の数。 頂点はユーザー コード エラーとシステム障害の両方が原因で失敗する可能性がありますが、システムは、失敗した頂点を自動的に複数回再試行します。 再試行しても頂点が失敗する場合は、ジョブ全体が失敗します。
 * [ジョブ グラフ]
   
@@ -71,7 +70,7 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
   
     ![Azure Data Lake Analytics ジョブのフェーズを示す状態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    ジョブは複数の処理に分割されます。 各処理は頂点と呼ばれます。 頂点はスーパー頂点 (別名、ステージ) としてグループ化され、ジョブ グラフとして視覚化されます。 ジョブ グラフ内の緑色のステージ プラカードは、ステージを表します。
+    ジョブは複数の処理に分割されます。 各処理は頂点と呼ばれます。 頂点はスーパー頂点 (ステージとも呼ばれます) としてグループ化され、ジョブ グラフとして視覚化されます。 ジョブ グラフ内の緑色のステージ プラカードは、ステージを表します。
   
     1 つのステージ内の各頂点は、同じデータの異なる部分に対して同じ処理を行っています。 たとえば、1 TB のデータ ファイルがあり、そのファイルから読み取る頂点が多数ある場合、各頂点はチャンクを読み取っています。 これらの頂点は、同じステージにグループ化され、同じ入力ファイルの異なる部分に対して同じ処理を行っています。
   

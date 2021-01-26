@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250194"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077202"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 
 API Management には、クライアント証明書を使用して API のバックエンド サービスへのアクセスを保護する機能があります。 このガイドでは、Azure portal の Azure API Management サービス インスタンスで証明書を管理する方法について説明します。 また、証明書を使用してバックエンド サービスにアクセスするように API を構成する方法についても説明します。
 
-API Management REST API を使用して証明書を管理する方法の詳細については、「 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API 証明書エンティティ</a>」をご覧ください。
+API Management REST API を使用して証明書を管理する方法の詳細については、「 <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API 証明書エンティティ</a>」をご覧ください。
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>前提条件
 
@@ -44,7 +44,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 1. Azure portal で Azure API Management サービス インスタンスに移動します。
 2. 一覧から **証明書** を選択します。
 3. **[+ 追加]** ボタンをクリックします。
-    ![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+    ![[追加] ボタンが強調表示されているスクリーンショット。](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. 証明書を参照し、ID とパスワードを入力します。
 5. **Create** をクリックしてください。
 
@@ -73,7 +73,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 2. **[デザイン]** タブで、 **[バックエンド]** セクションの鉛筆アイコンをクリックします。
 3. **[ゲートウェイ サーバーの資格情報]** を **[クライアント証明書]** に変更し、ドロップダウンから証明書を選択します。
-    ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+    ![ゲートウェイの資格情報を変更して証明書を選択する場所を示すスクリーンショット。](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. **[保存]** をクリックします。
 

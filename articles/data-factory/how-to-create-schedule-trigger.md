@@ -3,21 +3,21 @@ title: Azure Data Factory でのスケジュール トリガーの作成
 description: スケジュールでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/23/2018
+ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dd51f7bcaaa876285f6f514ea98603ff28e7ffa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872601"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001985"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,12 +48,19 @@ ms.locfileid: "87872601"
 
 1. **[新しいトリガー]** ページで、次の手順を行います。 
 
-    1. **[種類]** で **[スケジュール]** が選択されていることを確認します。 
-    1. **[開始日 (UTC)]** にトリガーの開始日時を指定します。 これは、既定で現在の日時に設定されています。 
-    1. トリガーの**繰り返し**を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、 **[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
-    1. トリガーの終了日時を指定しない場合は、 **[終了]** フィールドで **[終了日指定なし]** を選択します。 終了日時を指定するには、 **[指定日]** を選択し、終了日時を指定して、 **[OK]** を選択します。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
+    1. **[種類]** で **[スケジュール]** が選択されていることを確認します。
+    1. **[開始日]** にトリガーの開始日時を指定します。 既定では、現在の日時が協定世界時 (UTC) で設定されています。
+    1. トリガーが作成されるタイム ゾーンを指定します。 タイム ゾーンの設定は、高度な繰り返しオプションの **[開始日]** 、 **[終了日]** 、 **[スケジュール実行回数]** に適用されます。 タイム ゾーンの設定を変更することで、開始日が自動的に変更されることはありません。 指定したタイム ゾーンにおいて、開始日が正しいことを確認してください。 トリガーのスケジュール化された実行時間は、開始日よりも後と見なされることに注意してください (開始日は、実行時間よりも少なくとも 1 分短くなるようにしてください。そうでないと、次回の繰り返しでパイプラインがトリガーされます)。 
 
-        ![トリガー設定](./media/how-to-create-schedule-trigger/trigger-settings.png)
+        > [!NOTE]
+        > 夏時間を観測するタイム ゾーンの場合、年 2 回の変更に対して、トリガー時間が自動的に調整されます。 夏時間の変更を無効にするには、UTC など、夏時間を観測しないタイムゾーンを選択してください
+
+    1. トリガーの **繰り返し** を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、 **[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
+    1. 終了日時を指定するには、 **[Specify an End Date]\(終了日の指定\)** を選択し、 _[終了日]_ を指定して、 **[OK]** を選択します。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
+
+        ![トリガー設定](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
+
+        ![終了日のトリガー設定](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
 
 1. **[新しいトリガー]** ウィンドウで、 **[アクティブ化]** オプションの **[はい]** を選択し、 **[OK]** を選択します。 このチェック ボックスを使用して、トリガーを後で非アクティブ化できます。 
 
@@ -71,7 +78,7 @@ ms.locfileid: "87872601"
 
     ![トリガーされた実行を監視する](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. **[Trigger Runs]\(トリガーの実行\)** ビューへの切り替え 
+1. **[Trigger Runs]\(トリガーの実行\)**  \  **[スケジュール]** ビューに切り替えます。 
 
     ![トリガーの実行を監視する](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -95,8 +102,9 @@ ms.locfileid: "87872601"
                 "recurrence": {
                     "frequency": "Minute",
                     "interval": 15,
-                    "startTime": "2017-12-08T00:00:00",
-                    "endTime": "2017-12-08T01:00:00"
+                    "startTime": "2017-12-08T00:00:00Z",
+                    "endTime": "2017-12-08T01:00:00Z",
+                    "timeZone": "UTC"
                 }
             },
             "pipelines": [{
@@ -117,9 +125,16 @@ ms.locfileid: "87872601"
     JSON スニペットにおける設定は以下のとおりです。
     - トリガーの **type** 要素が "ScheduleTrigger" に設定されています。
     - **frequency** 要素が "Minute" に設定され、**interval** 要素が 15 に設定されています。 そのため、トリガーは開始時刻と終了時刻の間で 15 分ごとにパイプラインを実行します。
+    - **timeZone** 要素では、トリガーが作成されるタイム ゾーンを指定します。 この設定は、**startTime** と **endTime** の両方に影響します。
     - **endTime** 要素は、**startTime** 要素の値の 1 時間後になっています。 そのため、トリガーは開始時刻の 15 分後、30 分後、45 分後にパイプラインを実行します。 必ず、開始時刻を現在の UTC 時間に更新し、終了時刻を開始時刻の 1 時間後に更新してください。 
+
+        > [!IMPORTANT]
+        > UTC タイム ゾーンでは、startTime と endTime は "yyyy-MM-ddTHH:mm:ss **Z**" の形式に従う必要がありますが、他のタイム ゾーンでは、startTime と endTime は "yyyy-MM-ddTHH:mm:ss" に従います。 
+        > 
+        > ISO 8601 標準により、タイムスタンプへの _Z_ サフィックスは、日時を UTC タイム ゾーンとしてマークし、timeZone フィールドを使用不可にします。 UTC タイム ゾーンの _Z_ サフィックスが欠落していると、トリガーの "_アクティブ化_" でエラーが発生します。
+
     - トリガーは、**Adfv2QuickStartPipeline** パイプラインに関連付けられます。 複数のパイプラインをトリガーに関連付けるには、**pipelineReference** セクションを追加します。
-    - クイック スタートのパイプラインは、**inputPath** と **outputPath** の 2 つの**パラメーター**の値を受け取ります。 そのため、これらのパラメーターの値をトリガーから渡します。
+    - クイック スタートのパイプラインは、**inputPath** と **outputPath** の 2 つの **パラメーター** の値を受け取ります。 そのため、これらのパラメーターの値をトリガーから渡します。
 
 1. **Set-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
 
@@ -151,7 +166,11 @@ ms.locfileid: "87872601"
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
+    > [!NOTE]
+    > スケジュール トリガーのトリガー時間は UTC タイムスタンプで指定します。 _TriggerRunStartedAfter_ と _TriggerRunStartedBefore_ でも UTC タイムスタンプが想定されます
+
     Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
+
 
 
 ## <a name="net-sdk"></a>.NET SDK
@@ -207,6 +226,16 @@ ms.locfileid: "87872601"
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
+UTC 以外の別のタイムゾーンでトリガーを作成するには、次の設定が必要です。
+```csharp
+<<ClientInstance>>.SerializationSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+<<ClientInstance>>.SerializationSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Unspecified;
+<<ClientInstance>>.SerializationSettings.DateParseHandling = DateParseHandling.None;
+<<ClientInstance>>.DeserializationSettings.DateParseHandling = DateParseHandling.None;
+<<ClientInstance>>.DeserializationSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+<<ClientInstance>>.DeserializationSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Unspecified;
+```
+
 トリガー実行を監視するには、サンプルの最後の `Console.WriteLine` ステートメントの前に次のコードを追加します。
 
 ```csharp
@@ -240,7 +269,7 @@ Azure Portal でトリガー実行とパイプライン実行を監視するに�
 ```python
     # Create a trigger
     tr_name = 'mytrigger'
-    scheduler_recurrence = ScheduleTriggerRecurrence(frequency='Minute', interval='15',start_time='2017-12-12T04:00:00', end_time='2017-12-12T05:00:00', time_zone='UTC')
+    scheduler_recurrence = ScheduleTriggerRecurrence(frequency='Minute', interval='15',start_time='2017-12-12T04:00:00Z', end_time='2017-12-12T05:00:00Z', time_zone='UTC')
     pipeline_parameters = {'inputPath':'adftutorial/input', 'outputPath':'adftutorial/output'}
     pipelines_to_run = []
     pipeline_reference = PipelineReference('copyPipeline')
@@ -322,24 +351,46 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 | JSON プロパティ | 説明 |
 |:--- |:--- |
-| **startTime** | 日付/時刻の値。 単純なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
-| **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 このプロパティは省略可能です。 |
-| **timeZone** | タイム ゾーン。 現在、サポートされているタイム ゾーンは UTC のみです。 |
+| **startTime** | 日付/時刻の値。 単純なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 <br> UTC タイム ゾーンの場合の形式は `'yyyy-MM-ddTHH:mm:ssZ'` で、その他のタイムゾーンの場合の形式は `'yyyy-MM-ddTHH:mm:ss'` です。 |
+| **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 このプロパティは省略可能です。  <br> UTC タイム ゾーンの場合の形式は `'yyyy-MM-ddTHH:mm:ssZ'` で、その他のタイムゾーンの場合の形式は `'yyyy-MM-ddTHH:mm:ss'` です。 |
+| **timeZone** | トリガーが作成されるタイム ゾーン。 この設定は **startTime**、**endTime**、**schedule** に影響します。 [サポートされているタイム ゾーンの一覧](#time-zone-option)を参照してください |
 | **recurrence** | トリガーの繰り返し規則を指定する recurrence オブジェクト。 この recurrence オブジェクトは、**frequency**、**interval** **endTime** **count**、**schedule** の各要素をサポートします。 recurrence オブジェクトを定義する場合、**frequency** 要素は必須です。 recurrence オブジェクトの他の要素は省略可能です。 |
 | **frequency** | トリガーが繰り返される頻度の単位。 サポートされる値には、"minute"、"hour"、"day"、"week"、"month" があります。 |
 | **interval** | トリガーの実行頻度を決定する、**frequency** 値の間隔を示す正の整数。 たとえば、**interval** が 3 で **frequency** が "week" の場合、トリガーは 3 週間ごとに繰り返されます。 |
 | **schedule** | トリガーの繰り返しのスケジュール。 **frequency** 値が指定されたトリガーは、繰り返しのスケジュールに基づいて繰り返しが変更されます。 **schedule** プロパティには、分、時間、曜日、日にち、週番号に基づいた繰り返しの変更を指定します。
 
+> [!IMPORTANT]
+> UTC タイム ゾーンでは、startTime と endTime は "yyyy-MM-ddTHH:mm:ss **Z**" の形式に従う必要がありますが、他のタイム ゾーンでは、startTime と endTime は "yyyy-MM-ddTHH:mm:ss" に従います。 
+> 
+> ISO 8601 標準により、タイムスタンプへの _Z_ サフィックスは、日時を UTC タイム ゾーンとしてマークし、timeZone フィールドを使用不可にします。 UTC タイム ゾーンの _Z_ サフィックスが欠落していると、トリガーの "_アクティブ化_" でエラーが発生します。
 
 ### <a name="schema-defaults-limits-and-examples"></a>スキーマの既定値、制限、例
 
 | JSON プロパティ | Type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | String | はい | なし | ISO-8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | はい | なし | ISO-8601 の日付/時刻 | UTC タイムゾーンの場合は `"startTime" : "2013-01-09T09:30:00-08:00Z"`、 <br> その他のタイム ゾーンの場合は `"2013-01-09T09:30:00-08:00"` |
+| **timeZone** | String | はい | なし | [タイム ゾーン値](#time-zone-option)  | `"UTC"` |
 | **recurrence** | Object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Number | いいえ | 1 | 1 ～ 1,000 | `"interval":10` |
-| **endTime** | String | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | はい | なし | 将来の時刻を表す日付/時刻の値 | UTC タイムゾーンの場合は `"endTime" : "2013-02-09T09:30:00-08:00Z"`、 <br> その他のタイム ゾーンの場合は `"endTime" : "2013-02-09T09:30:00-08:00"`|
 | **schedule** | Object | いいえ | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+
+### <a name="time-zone-option"></a>タイム ゾーン オプション
+
+スケジュール トリガーでサポートされているタイム ゾーンの一部を次に示します。
+
+| タイム ゾーン | UTC オフセット (夏時間なし) | timeZone 値 | 夏時間を観測する | タイムスタンプ形式 |
+| :--- | :--- | :--- | :--- | :--- |
+| 協定世界時 | 0 | `UTC` | いいえ | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| 太平洋標準時 (PT) | -8 | `Pacific Standard Time` | はい | `'yyyy-MM-ddTHH:mm:ss'` |
+| 中部標準時 (CT) | -6 | `Central Standard Time` | はい | `'yyyy-MM-ddTHH:mm:ss'` |
+| 東部標準時 (ET) | -5 | `Eastern Standard Time` | はい | `'yyyy-MM-ddTHH:mm:ss'` |
+| グリニッジ標準時 (GMT) | 0 | `GMT Standard Time` | はい | `'yyyy-MM-ddTHH:mm:ss'` |
+| 中央ヨーロッパ標準時 | +1 | `W. Europe Standard Time` | はい | `'yyyy-MM-ddTHH:mm:ss'` |
+| インド標準時 (IST) | +5:30 | `India Standard Time` | いいえ | `'yyyy-MM-ddTHH:mm:ss'` |
+| 中国標準時 | +8 | `China Standard Time` | いいえ | `'yyyy-MM-ddTHH:mm:ss'` |
+
+この一覧は完全なものではありません。 タイム ゾーン オプションの完全な一覧については、Data Factory ポータルの[トリガー作成ページ](#data-factory-ui)を閲覧してください
 
 ### <a name="starttime-property"></a>startTime プロパティ
 次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。
@@ -351,9 +402,9 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が `2017-04-08 13:00`、開始時刻が `2017-04-07 14:00`、繰り返しが 2 日ごとであると仮定します  (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
 
-この条件では、最初の実行は `2017-04-09 at 14:00` になります。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻が `2017-04-07 at 2:00pm` であるため、次回のインスタンスはその 2 日後、つまり `2017-04-09 at 2:00pm` になります。
+この条件では、最初の実行は `2017-04-09` の `14:00` になります。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻が `2017-04-07` の `2:00pm` であるため、次回のインスタンスはその 2 日後、つまり `2017-04-09` の `2:00pm` になります。
 
-**startTime** 値が `2017-04-05 14:00` または `2017-04-01 14:00` であっても、最初の実行時刻は同じです。 最初の実行後、以降の実行はスケジュールを使用して計算されます。 したがって、以降の実行は、`2017-04-11 at 2:00pm`、`2017-04-13 at 2:00pm`、`2017-04-15 at 2:00pm` (以降も同様) になります。
+**startTime** 値が `2017-04-05 14:00` または `2017-04-01 14:00` であっても、最初の実行時刻は同じです。 最初の実行後、以降の実行はスケジュールを使用して計算されます。 したがって、以降の実行は、`2017-04-11` の `2:00pm`、`2017-04-13` の `2:00pm`、`2017-04-15` の `2:00pm` の順に続きます。
 
 最後に、トリガーのスケジュールに時間または分が設定されていない場合は、最初の実行の時間または分が既定値として使用されます。
 

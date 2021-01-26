@@ -1,21 +1,21 @@
 ---
 title: 組み込みのポリシー イニシアチブの一覧
 description: Azure Policy の組み込みのポリシー　イニシアチブの一覧を示します。 カテゴリには、規制コンプライアンス、ゲスト構成などが含まれます。
-ms.date: 09/04/2020
+ms.date: 01/08/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 04fc8769038ed02eda0daa06728b34b6ad96ea28
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5265005862dd047e347beda2dd2b2f512688464a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487091"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046385"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy の組み込みイニシアチブの定義
 
 このページは、Azure Policy の組み込みイニシアチブの定義のインデックスです。
 
-各組み込みの名前は、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のイニシアチブ定義ソースにリンクされています。 組み込みは、**metadata** 内の **category** プロパティごとにグループ化されています。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
+各組み込みの名前は、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のイニシアチブ定義ソースにリンクされています。 組み込みは、**metadata** 内の **category** プロパティごとにグループ化されています。 特定の **カテゴリ** にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

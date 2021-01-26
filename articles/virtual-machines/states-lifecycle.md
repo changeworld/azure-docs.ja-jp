@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261890"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963297"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
@@ -418,13 +418,13 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 
 ## <a name="vm-instance-view"></a>VM インスタンス ビュー
 
-インスタンス ビュー API によって、VM の実行状態に関する情報が提供されます。 詳細については、「[Virtual Machines - Instance View](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview)」(仮想マシン - インスタンス ビュー) の API ドキュメントをご覧ください。
+インスタンス ビュー API によって、VM の実行状態に関する情報が提供されます。 詳細については、「[Virtual Machines - Instance View](/rest/api/compute/virtualmachines/instanceview)」(仮想マシン - インスタンス ビュー) の API ドキュメントをご覧ください。
 
 Azure リソース エクスプローラーは、VM の実行状態を表示するためのシンプルな UI を備えています ([リソース エクスプローラー](https://resources.azure.com/))。
 
 プロビジョニング状態は、VM のプロパティとインスタンス ビューから確認できます。 電源の状態は、VM のインスタンス ビューから確認できます。
 
-自分のサブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して[Virtual Machines の List All API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) を使用します。
+自分のサブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して[Virtual Machines の List All API](/rest/api/compute/virtualmachines/listall) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

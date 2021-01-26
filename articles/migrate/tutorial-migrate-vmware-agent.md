@@ -1,19 +1,22 @@
 ---
 title: エージェントベースの Azure Migrate Server Migration を使用して VMware VM を移行する
 description: Azure Migrate を使用して VMware VM のエージェントベース移行を実行する方法について説明します。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 480051680ea98b82627a9a2b3ea004d9472f7124
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378850"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797096"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
-この記事では、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用して、エージェントベース移行でオンプレミスの VMware VM を Azure に移行する方法について説明します。  エージェントベース移行を使用して VMware VM を移行することもできます。 方法を[比較してください](server-migrate-overview.md#compare-migration-methods)。
+この記事では、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用して、エージェントベース移行でオンプレミスの VMware VM を Azure に移行する方法について説明します。  エージェントレス型移行を使用して VMware VM を移行することもできます。 方法を[比較してください](server-migrate-overview.md#compare-migration-methods)。
 
 
  このチュートリアルでは、以下の内容を学習します。
@@ -52,7 +55,7 @@ Azure Migrate プロジェクトがない場合は、プロジェクトを作成
 
 1. Azure portal でサブスクリプションを開き、 **[アクセス制御 (IAM)]** を選択します。
 2. **[アクセスの確認]** で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。
-3. **共同作成者**または**所有者**のアクセス許可を持っていることを確認します。
+3. **共同作成者** または **所有者** のアクセス許可を持っていることを確認します。
 
     - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
     - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
@@ -86,8 +89,8 @@ Azure Migrate Server Migration は、移行対象の VM を検出するために
 
 **タスク** | **ロールとアクセス許可** | **詳細**
 --- | --- | ---
-**VM 検出** | 読み取り専用以上の権限を持つユーザー<br/><br/> データ センター オブジェクト -> 子オブジェクトへのプロパゲート、ロール=読み取り専用 | ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。<br/><br/> アクセスを制限するには、**子オブジェクトへの伝達**特権を持つ**アクセスなし**ロールを子オブジェクト (vSphere ホスト、データストア、VM、ネットワーク) に割り当てます。
-**レプリケーション** |  必要なアクセス許可を備えたロール (Azure_Site_Recovery) を作成し、このロールを VMware のユーザーまたはグループに割り当てる<br/><br/> データ センター オブジェクト –> 子オブジェクトへの伝達、ロール = Azure_Site_Recovery<br/><br/> データストア -> 空間の割り当て、データストアの参照、ファイルの低レベルの操作、ファイルの削除、仮想マシン ファイルの更新<br/><br/> ネットワーク -> ネットワークの割り当て<br/><br/> リソース -> リソース プールへの VM の割り当て、電源がオフの VM の移行、電源がオンの VM の移行<br/><br/> タスク -> タスクの作成、タスクの更新<br/><br/> 仮想マシン -> 構成<br/><br/> 仮想マシン -> 対話 -> 質問への回答、デバイス接続、CD メディアの構成、フロッピー メディアの構成、電源オフ、電源オン、VMware ツールのインストール<br/><br/> 仮想マシン -> インベントリ -> 作成、登録、登録解除<br/><br/> 仮想マシン -> プロビジョニング -> 仮想マシンのダウンロードの許可、仮想マシン ファイルのアップロードの許可<br/><br/> 仮想マシン -> スナップショット -> スナップショットの削除 | ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。<br/><br/> アクセスを制限するには、**子オブジェクトへの伝達**特権を持つ**アクセスなし**ロールを子オブジェクト (vSphere ホスト、データストア、VM、ネットワーク) に割り当てます。
+**VM 検出** | 読み取り専用以上の権限を持つユーザー<br/><br/> データ センター オブジェクト -> 子オブジェクトへのプロパゲート、ロール=読み取り専用 | ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。<br/><br/> アクセスを制限するには、**子オブジェクトへの伝達** 特権を持つ **アクセスなし** ロールを子オブジェクト (vSphere ホスト、データストア、VM、ネットワーク) に割り当てます。
+**レプリケーション** |  必要なアクセス許可を備えたロール (Azure_Site_Recovery) を作成し、このロールを VMware のユーザーまたはグループに割り当てる<br/><br/> データ センター オブジェクト –> 子オブジェクトへの伝達、ロール = Azure_Site_Recovery<br/><br/> データストア -> 空間の割り当て、データストアの参照、ファイルの低レベルの操作、ファイルの削除、仮想マシン ファイルの更新<br/><br/> ネットワーク -> ネットワークの割り当て<br/><br/> リソース -> リソース プールへの VM の割り当て、電源がオフの VM の移行、電源がオンの VM の移行<br/><br/> タスク -> タスクの作成、タスクの更新<br/><br/> 仮想マシン -> 構成<br/><br/> 仮想マシン -> 対話 -> 質問への回答、デバイス接続、CD メディアの構成、フロッピー メディアの構成、電源オフ、電源オン、VMware ツールのインストール<br/><br/> 仮想マシン -> インベントリ -> 作成、登録、登録解除<br/><br/> 仮想マシン -> プロビジョニング -> 仮想マシンのダウンロードの許可、仮想マシン ファイルのアップロードの許可<br/><br/> 仮想マシン -> スナップショット -> スナップショットの削除 | ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。<br/><br/> アクセスを制限するには、**子オブジェクトへの伝達** 特権を持つ **アクセスなし** ロールを子オブジェクト (vSphere ホスト、データストア、VM、ネットワーク) に割り当てます。
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>モビリティ サービスのインストール用のアカウントを準備する
 
@@ -133,36 +136,6 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 
 > [!NOTE]
 > Azure Migrate Server Migration を使用したエージェントベースの移行は、Azure Site Recovery サービスの機能に基づいています。 一部の要件は、Site Recovery のドキュメントにリンクされている場合があります。
-
-
-
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Migrate:Server Migration ツールを追加する
-
-Azure Migrate プロジェクトがまだない場合は、ここで[プロジェクトを設定](how-to-add-tool-first-time.md)して、Server Migration ツールを追加してください。
-
-プロジェクトが存在する場合は、次の手順に従ってツールを追加します。
-
-1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
-2. **[サービス]** で **[Azure Migrate]** を選択します。
-
-    ![Azure Migrate の設定](./media/tutorial-migrate-vmware-agent/azure-migrate-search.png)
-
-3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
-4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-
-    ![サーバーの検出と評価](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
-
-1. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
-2. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-3. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
-
-    ![Azure Migrate プロジェクトの作成](./media/tutorial-migrate-vmware-agent/migrate-project.png)
-
-
-4. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
-5. **[移行ツールの選択]** で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[次へ]** 。
-6. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします
-7. ツールを追加すると、Azure Migrate プロジェクトの **[サーバー]**  >  **[移行ツール]** に表示されます。
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 
@@ -232,7 +205,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 8. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
 9. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを入力します。 サーバーがリッスンするポートを入力します。 コンテナーで VMware サーバーに使うフレンドリ名を入力します。
 10. VMware の検出用に[作成](#prepare-an-account-to-discover-vms)したアカウントの資格情報を入力します。 **[追加]**  >  **[続行]** を選択します。
-11. VM のレプリケーションを有効にした際のモビリティ サービスのプッシュ インストール用に[作成](#prepare-an-account-for-mobility-service-installation)した資格情報を、 **[仮想マシンの資格情報の構成]** に入力します。  
+11. VM のレプリケーションを有効にした際のモビリティ サービスのプッシュ インストール用に [作成](#prepare-an-account-for-mobility-service-installation)した資格情報を、 **[仮想マシンの資格情報の構成]** に入力します。  
     - Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。
     - Linux の場合は、ルート アカウントの詳細を指定します。
 12. **[構成の確定]** を選択して、登録を完了します。
@@ -251,7 +224,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 1. Azure Migrate プロジェクトの **[サーバー]** の **[Azure Migrate: Server Migration]** で、 **[レプリケート]** をクリックします。
 
-    ![VM をレプリケートする](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Azure Migrate の [サーバー] 画面のスクリーンショット。 Azure Migrate で [レプリケート] ボタンが選択されています。移行ツールでのサーバーの移行。](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. **[レプリケート]** > **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[はい (VMware vSphere の場合)]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
@@ -259,7 +232,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 5. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。
 6. **[ゲストの資格情報]** で、モビリティ サービスのプッシュ インストールに使用される VM 管理アカウントを指定します。 その後、 **[次へ:仮想マシン]** をクリックします。
 
-    ![VM をレプリケートする](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![[レプリケート] 画面の [ソース設定] タブのスクリーンショット。 [ゲストの資格情報] フィールドが強調表示され、値に "VM-admin-account" が設定されます。](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. **[仮想マシン]** で、レプリケートするマシンを選択します。
 
@@ -336,7 +309,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
     ![テスト移行](./media/tutorial-migrate-vmware-agent/test-migrate.png)
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
-4. **テスト移行**ジョブが開始されます。 ポータルの通知でジョブを監視します。
+4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
@@ -391,7 +364,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：

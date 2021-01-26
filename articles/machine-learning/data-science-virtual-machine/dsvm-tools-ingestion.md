@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308985"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -31,7 +31,7 @@ ms.locfileid: "87012316"
 | サポートされている DSVM バージョン      | Windows      |
 | 標準的な使用      | Azure Blob Storage から Azure Data Lake Store に複数の BLOB をインポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、「`adlcopy`」と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [AdlCopy を使用](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| サンプルへのリンク      | [AdlCopy を使用](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)      |
 | DSVM 上の関連ツール      | AzCopy、Azure CLI     |
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -42,7 +42,7 @@ ms.locfileid: "87012316"
 | サポートされている DSVM バージョン      | Windows、Linux     |
 | 標準的な使用      | Azure Storage と Azure Data Lake Store との間でデータをインポートおよびエクスポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、「`az`」と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [Azure CLI の使用](https://docs.microsoft.com/cli/azure)     |
+| サンプルへのリンク      | [Azure CLI の使用](/cli/azure)     |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
 
@@ -54,7 +54,7 @@ ms.locfileid: "87012316"
 | サポートされている DSVM バージョン      | Windows      |
 | 標準的な使用      | Azure Blob Storage にファイルをコピーし、アカウント間で BLOB をコピーします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、「`azcopy`」と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [Windows での AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| サンプルへのリンク      | [Windows での AzCopy](../../storage/common/storage-use-azcopy-v10.md)      |
 | DSVM 上の関連ツール      | AdlCopy     |
 
 
@@ -66,7 +66,7 @@ ms.locfileid: "87012316"
 | サポートされている DSVM バージョン      | Windows      |
 | 標準的な使用      | VM から CosmosDB にファイルをインポート、Azure Table Storageから CosmosDB にデータをインポート、および Microsoft SQL Server データベースから CosmosDB にデータをインポートします。     |
 |  使用/実行方法    |   コマンド ライン バージョンを使用するには、コマンド プロンプトを開いて「`dt`」と入力します。 GUI ツールを使用するには、コマンド プロンプトを開いて「`dtui`」と入力します。    |
-| サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| サンプルへのリンク      | [CosmosDB インポート データ](../../cosmos-db/import-data.md)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
 ## <a name="azure-storage-explorer"></a>Azure Azure Storage Explorer
@@ -88,7 +88,7 @@ ms.locfileid: "87012316"
 | サポートされている DSVM バージョン      | Windows      |
 | 標準的な使用      | CSV ファイルを SQL Server テーブルにインポートし、SQL Server テーブルをファイルにエクスポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、「`bcp`」と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [bcp ユーティリティ](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| サンプルへのリンク      | [bcp ユーティリティ](/sql/tools/bcp-utility)      |
 | DSVM 上の関連ツール      | SQL Server、sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse

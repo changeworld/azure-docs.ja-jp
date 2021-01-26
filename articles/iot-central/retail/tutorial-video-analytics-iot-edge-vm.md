@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure IoT Central でビデオ分析用 IoT Edge インスタンスを作成する (Linux VM)
-description: このチュートリアルでは、ビデオ分析 (物体とモーションの検出) アプリケーション テンプレートを使用して、ビデオ分析用 IoT Edge インスタンスを作成する方法について説明します。
+description: このチュートリアルでは、ビデオ分析 (物体とモーションの検出) アプリケーション テンプレートを使用して、ビデオ分析用 IoT Edge インスタンスを Linux VM に作成する方法について説明します。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038017"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763878"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Linux VM)
 
@@ -34,7 +34,7 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、[Azure IoT Central でビデオ分析アプリケーションを作成する](./tutorial-video-analytics-create-app.md)方法に関する前のチュートリアルを完了しておく必要があります。
+開始する前に、これよりも前の [Azure IoT Central でのビデオ分析アプリケーションの作成](./tutorial-video-analytics-create-app-yolo-v3.md)に関するチュートリアルか、[Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するチュートリアルを完了しておく必要があります。
 
 さらに、Azure サブスクリプションが必要となります。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で無料で作成できます。
 
@@ -51,15 +51,15 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 | サブスクリプション | Azure サブスクリプションを選択します。 |
 | Resource group | *lva-rg* - 前のチュートリアルで作成したリソース グループ。 |
 | リージョン       | *米国東部* |
-| DNS ラベル プレフィックス | VM の一意の DNS プレフィックスを選択します。 |
+| DNS ラベル プレフィックス | VM の一意の DNS プレフィックスを選択します。 すべて英字である必要があり、数字や特殊文字は使用できません。 |
 | 管理ユーザー名 | *AzureUser* |
 | 管理パスワード | パスワードを入力します。 このパスワードは後で使用します。*scratchpad.txt* ファイルに書き留めてください。 |
-| スコープ ID | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めた**スコープ ID**。 |
-| デバイス ID | *lva-gateway-001* - 前のチュートリアルで作成したゲートウェイ デバイス。 |
-| デバイス キー | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めたデバイスのプライマリ キー。 |
-| IoT Central アプリ ホスト | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた**アプリケーション URL** (例: *traders.azureiotcentral.com*)。 |
-| IoT Central アプリ API トークン | 前のチュートリアルで書き留めたオペレーター API トークン。 |
-| IoT Central デバイス プロビジョニング キー | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた、プライマリ グループの Shared Access Signature トークン。 |
+| スコープ ID | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めた **スコープ ID**。 |
+| デバイス ID | *gateway-001* - 前のチュートリアルで作成したゲートウェイ デバイス。 |
+| デバイス キー | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めた **デバイスの主キー**。 |
+| IoT Central アプリ ホスト | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **アプリケーション URL** (例: *traders.azureiotcentral.com*)。 |
+| IoT Central アプリ API トークン | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **オペレーター API トークン**。 |
+| IoT Central デバイス プロビジョニング キー | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **SAS-IoT-Devices グループの主キー**。 |
 | VM サイズ | *Standard_DS1_v2* |
 | Ubuntu OS バージョン | *18.04-LTS* |
 | 場所 | *[resourceGroup().location]* |
@@ -94,7 +94,7 @@ sudo iotedge list
 
 このデプロイでは、ライブ ビデオ分析に必要なモジュールを使用してカスタム IoT Edge 環境を作成しました。 既定の **config.yaml** は、IoT デバイス プロビジョニング サービスを使用して IoT Edge ランタイムが IoT Central に接続するように更新されています。 また、このデプロイでは、**state.json** というファイルが **/data/storage** フォルダーに作成されています。追加の構成データをモジュールに提供するためのものです。 詳細については、チュートリアル「[ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md)」を参照してください。
 
-IoT Edge デバイスをトラブルシューティングする方法については、「[IoT Edge デバイスのトラブルシューティング](https://docs.microsoft.com/azure/iot-edge/troubleshoot)」を参照してください。
+IoT Edge デバイスをトラブルシューティングする方法については、「[IoT Edge デバイスのトラブルシューティング](../../iot-edge/troubleshoot.md)」を参照してください。
 
 ## <a name="use-the-rtsp-simulator"></a>RTSP シミュレーターを使用する
 

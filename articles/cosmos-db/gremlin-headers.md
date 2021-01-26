@@ -5,16 +5,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/03/2019
-author: luisbosquez
-ms.author: lbosq
-ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: christopheranderson
+ms.author: chrande
+ms.openlocfilehash: 3f5996b281c1985747f754e3796e9fb84f90fdd3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390858"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356962"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin サーバーの応答ヘッダー
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 この記事では、要求の実行時に Cosmos DB Gremlin サーバーから呼び出し元に返されるヘッダーについて説明します。 これらのヘッダーは、要求パフォーマンスのトラブルシューティング、Cosmos DB サービスとネイティブに統合されるアプリケーションの構築、カスタマー サポートの簡素化に役立ちます。
 
 これらのヘッダーへの依存関係があると、アプリケーションの移植性が他の Gremlin の実装に限定されることに注意してください。 その代わり、Cosmos DB Gremlin との統合はより緊密になります。 これらのヘッダーは TinkerPop 標準ではありません。
@@ -29,7 +31,7 @@ ms.locfileid: "85390858"
 | **x-ms-total-server-time-ms** | double | 130.512 | Success and Failure | Cosmos DB Gremlin サーバーでトラバーサル全体の実行にかかった合計時間 (ミリ秒単位)。 このヘッダーは、すべての部分的な応答に含まれます。 これは、要求の開始以降に累積された実行時間を表します。 最後の応答は、総実行時間を示します。 このヘッダーは、遅延の原因としてクライアントとサーバーを区別する際に役立ちます。 クライアントでのトラバーサルの実行時間をこのヘッダーの値と比較できます。 |
 | **x-ms-status-code** | long | 200 | Success and Failure | ヘッダーは、要求が完了または終了した内部的な理由を示します。 アプリケーションはこのヘッダーの値を確認して是正措置を講じるよう求められます。 |
 | **x-ms-substatus-code** | long | 1003 | 失敗のみ | Cosmos DB は、一元化されたストレージ レイヤーをベースに構築されているマルチモデル データベースです。 このヘッダーには、高可用性スタックの下位レイヤーでエラーが発生した場合のエラーの理由に関する追加の分析情報が含まれます。 アプリケーションは、このヘッダーを格納し、Cosmos DB のカスタマー サポートに問い合わせる際にそれを使用するよう求められます。 このヘッダーの値は、Cosmos DB エンジニアによる迅速なトラブルシューティングに役立ちます。 |
-| **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | 失敗のみ | このヘッダーは、.NET の [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) 型の文字列表現です。 この値は、プロビジョニングされたスループットの消費によって失敗した要求のみに含まれます。 アプリケーションは、指示された期間の経過後にトラバーサルを再送信する必要があります。 |
+| **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | 失敗のみ | このヘッダーは、.NET の [TimeSpan](/dotnet/api/system.timespan) 型の文字列表現です。 この値は、プロビジョニングされたスループットの消費によって失敗した要求のみに含まれます。 アプリケーションは、指示された期間の経過後にトラバーサルを再送信する必要があります。 |
 | **x-ms-activity-id** | string (Guid) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Success and Failure | ヘッダーには、要求の一意のサーバー側識別子が格納されます。 各要求には、追跡目的でサーバーから一意識別子が割り当てられます。 アプリケーションは、ユーザーがカスタマー サポートに問い合わせる要求についてサーバーから返されたアクティビティ識別子をログに記録する必要があります。 Cosmos DB のサポート担当者は、Cosmos DB サービスのテレメトリ内にあるこれらの識別子によって特定の要求を見つけることができます。 |
 
 ## <a name="status-codes"></a>状態コード
@@ -40,10 +42,10 @@ ms.locfileid: "85390858"
 | --- | --- |
 | **401** | エラー メッセージ `"Unauthorized: Invalid credentials provided"` は、認証用パスワードが Cosmos DB アカウント キーと一致しない場合に返されます。 Azure portal でお使いの Cosmos DB Gremlin アカウントに移動し、キーが正しいことを確認してください。|
 | **404** | 同じエッジまたは頂点の削除と更新を同時に実行しようとする同時実行操作があります。 `"Owner resource does not exist"` というエラー メッセージは、指定されたデータベースまたはコレクションの `/dbs/<database name>/colls/<collection or graph name>` 形式の接続パラメーターに誤りがあることを示しています。|
-| **408** | `"Server timeout"` は、トラバーサルの所要時間が **30 秒**を超えたため、サーバーによって取り消されたことを示します。 トラバーサルの各ホップで頂点またはエッジをフィルター処理して検索範囲を絞り込むことで、トラバーサルを迅速に実行できるよう最適化します。|
+| **408** | `"Server timeout"` は、トラバーサルの所要時間が **30 秒** を超えたため、サーバーによって取り消されたことを示します。 トラバーサルの各ホップで頂点またはエッジをフィルター処理して検索範囲を絞り込むことで、トラバーサルを迅速に実行できるよう最適化します。|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` 通常、これは、識別子を持つ頂点または辺がグラフに既に存在する場合に発生します。| 
 | **412** | 状態コードには、エラー メッセージ `"PreconditionFailedException": One of the specified pre-condition is not met` が併記されます。 このエラーは、エッジまたは頂点の読み取りと、変更後のストアへの書き戻しの間のオプティミスティック同時実行制御違反を示しています。 このエラーが発生する最も一般的な状況は、プロパティの変更 (たとえば `g.V('identifier').property('name','value')`) です。 Gremlin エンジンは頂点を読み取って変更し、書き戻します。 同じ頂点またはエッジを書き込もうとしている別のトラバーサルが並列実行されている場合は、そのいずれかでこのエラーが発生します。 アプリケーションはサーバーにトラバーサルを再度送信する必要があります。| 
-| **429** | 要求が調整されたので、**x-ms-retry-after-ms** の値の経過後に再試行する必要があります| 
+| **429** | 要求が調整されたので、 **x-ms-retry-after-ms** の値の経過後に再試行する必要があります| 
 | **500** | `"NotFoundException: Entity with the specified id does not exist in the system."` を含むエラー メッセージは、データベースやコレクションが同じ名前で再作成されたことを示します。 さまざまな Cosmos DB コンポーネントで変更が反映され、キャッシュが無効になるため、このエラーは 5 分以内に解消されます。 この問題を回避するには、毎回一意のデータベース名とコレクション名を使用します。| 
 | **1000** | この状態コードは、サーバーがメッセージの解析に成功したものの実行できなかった場合に返されます。 これは通常、クエリに問題があることを示します。| 
 | **1001** | このコードは、サーバーがトラバーサルの実行を完了しても、応答をクライアントにシリアル化できない場合に返されます。 このエラーが発生する可能性があるのは、トラバースによって複雑な結果が生成される場合です。この結果が大きすぎるか、TinkerPop プロトコルの仕様に準拠していません。 アプリケーションは、このエラーが発生したときにトラバーサルを簡略化する必要があります。 | 

@@ -3,13 +3,13 @@ title: Azure NetApp Files と Azure Kubernetes Service を統合する
 description: Azure NetApp Files と Azure Kubernetes Service を統合する方法を確認します
 services: container-service
 ms.topic: article
-ms.date: 09/26/2019
-ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/23/2020
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126255"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files と Azure Kubernetes Service を統合する
 
@@ -21,7 +21,7 @@ ms.locfileid: "84465645"
 > [!IMPORTANT]
 > また、AKS クラスターは、[Azure NetApp Files をサポートするリージョン][anf-regions]にある必要があります。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ### <a name="limitations"></a>制限事項
 
@@ -29,7 +29,6 @@ Azure NetApp Files を使用した場合、次の制限が適用されます。
 
 * Azure NetApp Files は、[選択された Azure リージョン][anf-regions]でのみ利用できます。
 * Azure NetApp Files を使用するには、Azure NetApp Files サービスへのアクセス権が必要です。 アクセスを申請するには、[Azure NetApp Files 順番待ちリスト送信フォーム][anf-waitlist]を使用できます。 Azure NetApp Files サービスには、Azure NetApp Files チームから正式な確認メールが届くまでアクセスすることができません。
-* Azure NetApp Files サービスは、お使いの AKS クラスターと同じ仮想ネットワークに作成する必要があります。
 * AKS クラスターの初期展開後は、Azure NetApp Files の静的プロビジョニングのみがサポートされます。
 * Azure NetApp Files で動的プロビジョニングを使用するには [NetApp Trident](https://netapp-trident.readthedocs.io/) バージョン 19.07 以降をインストールして構成します。
 
@@ -47,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > この処理には、完了までに時間がかかる場合があります。
 
-AKS で使用するための Azure NetApp アカウントを作成する場合は、**ノード** リソース グループ内にアカウントを作成する必要があります。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します。 次の例では、リソース グループ名 *myResourceGroup* にある *myAKSCluster* という名前の AKS クラスターのノード リソース グループを取得しています。
+AKS で使用するための Azure NetApp アカウントを作成する場合は、 **ノード** リソース グループ内にアカウントを作成する必要があります。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある *myAKSCluster* という名前の AKS クラスターのノード リソース グループを取得しています。
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -57,7 +56,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-[az netappfiles account create][az-netappfiles-account-create] を使用して、その**ノード** リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、*MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
+[az netappfiles account create][az-netappfiles-account-create] を使用して、その **ノード** リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、 *MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
 
 ```azurecli
 az netappfiles account create \
@@ -66,7 +65,7 @@ az netappfiles account create \
     --account-name myaccount1
 ```
 
-[az netappfiles pool create][az-netappfiles-pool-create] を使用して新しい容量プールを作成します。 次の例では、*Premium* サービス レベルの 4 TB の *mypool1* という名前の新しい容量プールを作成します。
+[az netappfiles pool create][az-netappfiles-pool-create] を使用して新しい容量プールを作成します。 次の例では、 *Premium* サービス レベルの 4 TB の *mypool1* という名前の新しい容量プールを作成します。
 
 ```azurecli
 az netappfiles pool create \
@@ -106,7 +105,7 @@ VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAM
 SUBNET_NAME=MyNetAppSubnet
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
 VOLUME_SIZE_GiB=100 # 100 GiB
-UNIQUE_FILE_PATH="myfilepath2" # Please note that creation token needs to be unique within all ANF Accounts
+UNIQUE_FILE_PATH="myfilepath2" # Please note that file path needs to be unique within all ANF Accounts
 
 az netappfiles volume create \
     --resource-group $RESOURCE_GROUP \
@@ -118,7 +117,7 @@ az netappfiles volume create \
     --vnet $VNET_ID \
     --subnet $SUBNET_ID \
     --usage-threshold $VOLUME_SIZE_GiB \
-    --creation-token $UNIQUE_FILE_PATH \
+    --file-path $UNIQUE_FILE_PATH \
     --protocol-types "NFSv3"
 ```
 
@@ -170,7 +169,7 @@ spec:
 kubectl apply -f pv-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolume の "*状態*" が "*使用可能*" であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolume の " *状態* " が " *使用可能* " であることを確認します。
 
 ```console
 kubectl describe pv pv-nfs
@@ -200,7 +199,7 @@ spec:
 kubectl apply -f pvc-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolumeClaim の "*状態*" が "*使用可能*" であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolumeClaim の " *状態* " が " *使用可能* " であることを確認します。
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -217,7 +216,7 @@ metadata:
   name: nginx-nfs
 spec:
   containers:
-  - image: nginx
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: nginx-nfs
     command:
     - "/bin/sh"
@@ -238,7 +237,7 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、ポッドが "*実行中*" であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、ポッドが " *実行中* " であることを確認します。
 
 ```console
 kubectl describe pod nginx-nfs
@@ -247,11 +246,11 @@ kubectl describe pod nginx-nfs
 ボリュームがポッドにマウントされていることを [kubectl exec][kubectl-exec] を使用して確認してポッドに接続してから、`df -h` を使用してボリュームがマウントされてるかどうかを確認します。
 
 ```console
-$ kubectl exec -it nginx-nfs -- bash
+$ kubectl exec -it nginx-nfs -- sh
 ```
 
 ```output
-root@nginx-nfs:/# df -h
+/ # df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...
 10.0.0.4:/myfilepath2  100T  384K  100T   1% /mnt/azure

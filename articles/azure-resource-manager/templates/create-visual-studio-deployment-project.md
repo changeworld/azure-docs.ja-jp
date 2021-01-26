@@ -3,12 +3,12 @@ title: Visual Studio でリソース グループ プロジェクトを作成、
 description: Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76152733"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372648"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
@@ -23,7 +23,7 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 1. Visual Studio で、 **[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
 1. **[Azure リソース グループ]** プロジェクト テンプレートを選択し、 **[次へ]** を選択します。
 
-    ![Create project](./media/create-visual-studio-deployment-project/create-project.png)
+    ![[新しいプロジェクトの作成] ウィンドウで強調表示されている Azure リソース グループと [次へ] ボタンを示すスクリーンショット。](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. プロジェクトに名前を付けます。 他の既定の設定はおそらく問題ありませんが、お使いの環境でそれらが機能するように確認してください。 完了したら、 **[作成]** を選択します。
 
@@ -65,7 +65,7 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
 1. リソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** ボタンを選択するか、または **[リソース]** を右クリックして **[新しいリソースの追加]** を選択します。
 
-   ![リソースの追加](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![[JSON アウトライン] ウィンドウで強調表示されている [新しいリソースの追加] オプションを示すスクリーンショット。](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. **[ストレージ アカウント]** を選択し、名前を付けます。 数字と小文字のみで構成された 11 文字未満の名前を指定します。
 
@@ -189,7 +189,7 @@ AzureRM モジュール スクリプトの場合は、Visual Studio を使用し
 
 1. 次に、リソース グループ プロジェクトで新しいプロジェクトが認識されていることを確認する必要があります。 リソース グループ プロジェクト (ExampleAppDeploy) に戻ります。 **[参照]** を右クリックし、 **[参照の追加]** を選択します。
 
-    ![参照の追加](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![ExampleAppDeploy メニューで強調表示されている [参照の追加] オプションを示すスクリーンショット。](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. 作成した Web アプリ プロジェクトを選択します。
 
@@ -364,13 +364,13 @@ AzureRM モジュール スクリプトの場合は、Visual Studio を使用し
 
 1. デプロイが完了したら、ポータルでダッシュボードを表示します。 **[ダッシュボード]** を選択し、デプロイしたものを選択します。
 
-   ![カスタム ダッシュボード](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![[ダッシュボード] ページで強調表示されたカスタム ダッシュボードの例を示すスクリーンショット。](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. カスタマイズされたダッシュボードが表示されます。
 
    ![カスタム ダッシュボード](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-RBAC グループを使用して、ダッシュボードへのアクセスを管理できます。 また、デプロイした後で、ダッシュボードの外観をカスタマイズすることもできます。 ただし、リソース グループを再デプロイすると、ダッシュボードはテンプレートの既定の状態にリセットされます。 ダッシュボードの作成について詳しくは、「[プログラムによる Azure ダッシュボードの作成](../../azure-portal/azure-portal-dashboards-create-programmatically.md)」をご覧ください。
+ダッシュボードへのアクセスを管理するには、Azure のロールベースのアクセス制御 (RBAC) を使用します。 また、デプロイした後で、ダッシュボードの外観をカスタマイズすることもできます。 ただし、リソース グループを再デプロイすると、ダッシュボードはテンプレートの既定の状態にリセットされます。 ダッシュボードの作成について詳しくは、「[プログラムによる Azure ダッシュボードの作成](../../azure-portal/azure-portal-dashboards-create-programmatically.md)」をご覧ください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

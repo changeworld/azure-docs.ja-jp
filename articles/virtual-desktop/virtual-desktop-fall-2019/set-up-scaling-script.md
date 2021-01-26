@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005586"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078182"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Azure Automation を使用した Windows Virtual Desktop (クラシック) セッション ホストのスケーリング
 
@@ -21,10 +21,6 @@ ms.locfileid: "88005586"
 仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
 この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Appsについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
-
-## <a name="report-issues"></a>レポートに関する問題
-
-スケーリング ツールの問題レポートは、現在、Microsoft サポートではなく GitHub で処理されています。 スケーリング ツールで問題が発生した場合は、「[問題の報告](#reporting-issues)」セクションの説明に従って必要な情報を取得し、[RDS GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)で "4a-WVD-scaling-logicapps" というラベルの GitHub のイシューを開きます。
 
 ## <a name="how-the-scaling-tool-works"></a>スケーリング ツールのしくみ
 
@@ -362,3 +358,7 @@ Log Analytics を使用することにした場合、Log Analytics ワークス�
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>レポートに関する問題
+
+スケーリング ツールの問題に関する報告は、現在、Microsoft サポートで処理されています。 問題の報告を作成する場合は、「[問題の報告](#reporting-issues)」に記載されている手順に従ってください。 ツールに関するフィードバックがある場合、または新機能をリクエストする場合は、[RDS GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)で、"4-WVD-scaling-tool" という名前の GitHub 問題を開きます。

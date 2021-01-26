@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684424"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560544"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -21,7 +21,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
 > [!NOTE]
-> - **既存の予約を交換または払い戻しするには、予約注文の所有者のアクセス許可を持っている必要があります**。 [予約を管理できるユーザーを追加または変更する](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)ことができます。
+> - **既存の予約を交換または払い戻しするには、予約注文の所有者のアクセス許可を持っている必要があります**。 [予約を管理できるユーザーを追加または変更する](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)ことができます。
 > - Microsoft では、現在予約の払戻の中途解約料は請求していません。 将来的には、払戻料金を請求するようになる場合もあります。 現在、この料金がいつから有効になるかは未定です。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>既存の予約の交換または払戻を行う方法
@@ -30,7 +30,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 1. 払い戻したい予約を選択して **[交換]** を選択します。  
     [![返上する予約を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png#lightbox)
-1. 購入する VM 製品を選択し、数量を入力します。 新しい購入合計が、返金合計より多くなるようにしてください。 [購入する前に適切なサイズを決定](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)します。  
+1. 購入する VM 製品を選択し、数量を入力します。 新しい購入合計が、返金合計より多くなるようにしてください。 [購入する前に適切なサイズを決定](../../virtual-machines/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)します。  
     [![交換による VM 製品の購入を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png#lightbox)
 1. トランザクションを確認して、完了します。  
     [![交換による VM 製品の購入で返上を完了する例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png#lightbox)
@@ -66,7 +66,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 **交換ポリシー**
 
 - 既存の複数の予約を返上して、同じ種類の新しい予約を 1 つ購入できます。 別の種類の予約と交換することはできません。 たとえば、VM の予約を返金して、SQL の予約を購入することはできません。 交換により、ファミリ、シリーズ、バージョン、SKU、リージョン、数量、期間などの予約のプロパティを変更できます。
-- 交換を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
+- 交換を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)方法を参照してください。
 - 交換は払戻と再購入として処理されます。キャンセルと新しい予約の購入には、異なるトランザクションが作成されます。 日割り計算された予約金額が、交換する予約に払い戻されます。 新しい購入は全額請求されます。 日割り計算された予約金額は、返金される予約の日割り計算された残余値です。
 - 予約を購入するために使用したエンタープライズ契約の有効期限が切れて、新しい契約として更新された場合も、予約を交換または払い戻すことができます。
 - 新しい予約の生涯コミットメントは、返上する予約の残りのコミットメントと同じか、それよりも大きくなければなりません。 たとえば、1 か月あたり 100 ドルの 3 年間の予約を 18 回目の支払い後に交換した場合、新しい予約の生涯コミットメントは 1,800 ドル以上である必要があります (月払いまたは前払い)。
@@ -79,7 +79,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 - 1 つの請求プロファイルまたは 1 回の加入契約のすべての予約コミットメントのキャンセル額合計は、12 か月間のローリング ウィンドウにおいて 50,000 米国ドルを超えることはできません。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日以内に、48,200 米国ドルの上限が 1,800 米国ドル増やされ、ご自分の新しいプールは 50,000 米国ドルとなります。 その請求プロファイルまたは EA 加入契約のその他のすべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
 - 1 つの請求プロファイルまたは 1 回の EA 加入契約の 12 か月間の上限 50,000 米国ドルを超える払い戻しは、Azure では処理できません。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
-- 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
+- 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)方法を参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

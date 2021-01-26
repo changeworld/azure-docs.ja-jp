@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68993a460ba3d6a672a27eb8da5ced85b29d3d12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764555"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616900"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする
 
@@ -32,12 +32,12 @@ ms.locfileid: "84764555"
 この記事では、既にレポート サービスをデプロイし、[アプリケーション プロキシを有効にしている](application-proxy-add-on-premises-application.md)ことを前提としています。
 
 - アプリケーション プロキシを有効にするには、コネクタが Azure AD サービスと通信できるように、Windows サーバーにコネクタをインストールし、[前提条件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)を満たしている必要があります。
-- Power BI を発行するときは、同じ内部ドメインと外部ドメインを使用することをお勧めします。 カスタム ドメインの詳細については、[アプリケーション プロキシでのカスタム ドメインの使用](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)に関するページを参照してください。
+- Power BI を発行するときは、同じ内部ドメインと外部ドメインを使用することをお勧めします。 カスタム ドメインの詳細については、[アプリケーション プロキシでのカスタム ドメインの使用](./application-proxy-configure-custom-domain.md)に関するページを参照してください。
 - この統合は、**Power BI Mobile iOS および Android** アプリケーションに使用できます。
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>手順 1:Kerberos の制約付き委任 (KCD) を構成する
 
-Windows 認証を使用するオンプレミス アプリケーションの場合は、Kerberos 認証プロトコルと、Kerberos の制約付き委任 (KCD) と呼ばれる機能を使用して、シングル サインオン (SSO) を実現できます。 KCD を構成すると、ユーザーが Windows に直接サインインしていない場合でも、アプリケーション プロキシ コネクタは、そのユーザーの Windows トークンを取得できます。 KCD の詳細については、「[Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)」と「[アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任](application-proxy-configure-single-sign-on-with-kcd.md)」を参照してください。
+Windows 認証を使用するオンプレミス アプリケーションの場合は、Kerberos 認証プロトコルと、Kerberos の制約付き委任 (KCD) と呼ばれる機能を使用して、シングル サインオン (SSO) を実現できます。 KCD を構成すると、ユーザーが Windows に直接サインインしていない場合でも、アプリケーション プロキシ コネクタは、そのユーザーの Windows トークンを取得できます。 KCD の詳細については、「[Kerberos の制約付き委任の概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11))」と「[アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任](application-proxy-configure-single-sign-on-with-kcd.md)」を参照してください。
 
 Reporting Services 側で構成することはあまりありません。 適切な Kerberos 認証が行われるように、有効なサービス プリンシパル名 (SPN) があることを確認します。 また、Reporting Services サーバーのネゴシエート認証が有効になっていることを確認します。
 
@@ -45,7 +45,7 @@ Reporting Services 用に KCD を設定するには、次の手順に進みま�
 
 ### <a name="configure-the-service-principal-name-spn"></a>サービス プリンシパル名 (SPN) を構成する
 
-SPN は、Kerberos 認証を使用するサービスの一意の識別子です。 レポート サーバー用の適切な HTTP SPN が存在することを確認する必要があります。 レポート サーバー用の適切なサービス プリンシパル名 (SPN) を構成する方法については、「[レポート サーバーのサービス プリンシパル名 (SPN) の登録](https://msdn.microsoft.com/library/cc281382.aspx)」を参照してください。
+SPN は、Kerberos 認証を使用するサービスの一意の識別子です。 レポート サーバー用の適切な HTTP SPN が存在することを確認する必要があります。 レポート サーバー用の適切なサービス プリンシパル名 (SPN) を構成する方法については、「[レポート サーバーのサービス プリンシパル名 (SPN) の登録](/sql/reporting-services/report-server/register-a-service-principal-name-spn-for-a-report-server)」を参照してください。
 -L オプションを使用して Setspn コマンドを実行すると、SPN が追加されたことを確認できます。 このコマンドについて詳しくは、「[Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx)」をご覧ください。
 
 ### <a name="enable-negotiate-authentication"></a>ネゴシエート認証を有効にする
@@ -60,7 +60,7 @@ SPN は、Kerberos 認証を使用するサービスの一意の識別子です�
 </AuthenticationTypes>
 ```
 
-詳細については、「[Reporting Services 構成ファイルを変更する](https://msdn.microsoft.com/library/bb630448.aspx)」と「[レポート サーバーで Windows 認証を構成する](https://msdn.microsoft.com/library/cc281253.aspx)」を参照してください。
+詳細については、「[Reporting Services 構成ファイルを変更する](/sql/reporting-services/report-server/modify-a-reporting-services-configuration-file-rsreportserver-config)」と「[レポート サーバーで Windows 認証を構成する](/sql/reporting-services/security/configure-windows-authentication-on-the-report-server)」を参照してください。
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Reporting Services アプリケーション プール アカウントに追加された SPN への委任に対してコネクタが信頼されていることを確認する
 KCD を構成して、Azure AD アプリケーション プロキシ サービスがユーザー ID を Reporting Services アプリケーション プール アカウントに委任できるようにします。 KCD を構成するには、アプリケーション プロキシ コネクタを有効にして、Azure AD で認証されているユーザーの Kerberos チケットを取得します。 その後、そのサーバーは、コンテキストを対象アプリケーション (この場合は Reporting Services) に渡します。
@@ -84,7 +84,7 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 1. 次の設定を使用して、アプリケーション プロキシを介して Reporting Services を公開します。 アプリケーション プロキシを使用してアプリケーションを公開する方法の詳細な手順については、[Azure AD アプリケーション プロキシを使用したアプリケーションの公開](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)に関する記事を参照してください。
    - **[内部 URL]** : 企業ネットワーク内でコネクタが接続できるレポート サーバーの URL を入力します。 コネクタがインストールされているサーバーからこの URL に到達できることを確認します。 ベスト プラクティスは、`https://servername/` などのトップレベル ドメインを使用して、アプリケーション プロキシ経由で公開されていないサブパスに関する問題を回避することです。 たとえば、`https://servername/reports/` や `https://servername/reportserver/` ではなく、`https://servername/` を使用します。
      > [!NOTE]
-     > レポート サーバーに対してセキュリティで保護された HTTPS 接続を使用することをお勧めします。 方法の詳細については、「[ネイティブ モードのレポート サーバーでの SSL 接続の構成](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017)」を参照してください。
+     > レポート サーバーに対してセキュリティで保護された HTTPS 接続を使用することをお勧めします。 方法の詳細については、「[ネイティブ モードのレポート サーバーでの SSL 接続の構成](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017)」を参照してください。
    - **外部 URL**:Power BI Mobile アプリの接続先となるパブリック URL を入力します。 たとえば、カスタム ドメインが使用されている場合は、`https://reports.contoso.com` のようになります。 カスタム ドメインを使用するには、ドメインの証明書をアップロードし、DNS レコードがアプリケーションの既定の msappproxy.net ドメインを指すようにします。 詳細な手順については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
 
    - **事前認証方法**:Azure Active Directory
@@ -93,11 +93,11 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 
    a. ポータルのアプリケーション ページで **[シングル サインオン]** を選択します。
 
-   b. **シングル サインオン モード**の場合、 **[統合 Windows 認証]** を選択します。
+   b. **シングル サインオン モード** の場合、 **[統合 Windows 認証]** を選択します。
 
    c. **[内部アプリケーション SPN]** を先ほど設定した値に設定します。
 
-   d. ユーザーの代わりに使うコネクタに**委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)」を参照してください。
+   d. ユーザーの代わりに使うコネクタに **委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)」を参照してください。
 
    e. **[保存]** をクリックして変更を保存します。
 
@@ -148,13 +148,15 @@ Microsoft Intune を使用して、会社の従業員が使用するクライア
 5. **[所属する組織で使用している API]** で、"Microsoft モバイル アプリケーション管理" を検索して選択します。
 6. **DeviceManagementManagedApps.ReadWrite** アクセス許可をアプリケーションに追加します。
 7. **[管理者の同意を与えます]** をクリックして、アプリケーションへのアクセス許可を付与します。
-8. 「[アプリ保護ポリシーを作成して割り当てる方法](https://docs.microsoft.com/intune/app-protection-policies)」を参照して、必要な Intune ポリシーを構成します。
+8. 「[アプリ保護ポリシーを作成して割り当てる方法](/intune/app-protection-policies)」を参照して、必要な Intune ポリシーを構成します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-レポートの読み込みが数分以上試行された後にアプリケーションからエラー ページが返された場合、タイムアウト設定の変更が必要になることがあります。 既定では、アプリケーション プロキシは、要求に応答するまでに最大 85 秒かかるアプリケーションをサポートします。 この設定を 180 秒に延長するには、アプリケーションの [アプリ プロキシ] 設定ページでバックエンドのタイムアウト を **[Long]\(長い\)** に設定します。 高速で信頼性の高いレポートを作成する方法のヒントについては、[Power BI レポートのベスト プラクティス](https://docs.microsoft.com/power-bi/power-bi-reports-performance)に関するページを参照してください。
+レポートの読み込みが数分以上試行された後にアプリケーションからエラー ページが返された場合、タイムアウト設定の変更が必要になることがあります。 既定では、アプリケーション プロキシは、要求に応答するまでに最大 85 秒かかるアプリケーションをサポートします。 この設定を 180 秒に延長するには、アプリケーションの [アプリ プロキシ] 設定ページでバックエンドのタイムアウト を **[Long]\(長い\)** に設定します。 高速で信頼性の高いレポートを作成する方法のヒントについては、[Power BI レポートのベスト プラクティス](/power-bi/power-bi-reports-performance)に関するページを参照してください。
+
+条件付きアクセス ポリシーでは、承認されたクライアント アプリとして Microsoft Power BI アプリが必要となります。ここでは、Azure AD アプリケーション プロキシを使用して、Power BI モバイル アプリからオンプレミスの Power BI Report Server に接続できるようにすることはできません。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにします](application-proxy-configure-native-client-application.md)。
-- [Power BI Mobile アプリでオンプレミスのレポート サーバー レポートと KPI を表示します](https://docs.microsoft.com/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)
+- [Power BI モバイル アプリでオンプレミスのレポート サーバーのレポートと KPI を表示する](/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

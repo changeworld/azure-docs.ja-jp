@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 08/31/2020
-  ms.openlocfilehash: a2d736b2706b3b0958bb544c6d0e4434c78e6791
-  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+  ms.date: 09/30/2020
+  ms.openlocfilehash: 120e020a30daf377844ad9933a067def3360a399
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89231335"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91597768"
 landingContent:
 - title: Azure のガバナンスについて
   linkLists:
@@ -39,6 +39,10 @@ landingContent:
       url: ./create-management-group-azure-cli.md
     - text: 管理グループの作成 (Azure PowerShell)
       url: ./create-management-group-powershell.md
+    - text: 管理グループの作成 (.NET)
+      url: ./create-management-group-dotnet.md
+    - text: 管理グループの作成 (JavaScript)
+      url: ./create-management-group-javascript.md
     - text: 管理グループの作成 (REST)
       url: ./create-management-group-rest-api.md
     - text: 管理グループへのリソースのデプロイ (ARM テンプレート)

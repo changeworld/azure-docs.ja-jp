@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307294"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021832"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Azure DevOps による継続的配置
 
@@ -25,7 +25,7 @@ ms.locfileid: "85307294"
 > [!div class = "checklist"]
 > * 開発用のカスタム コマンド アプリケーション (DEV)
 > * 運用環境用のカスタム コマンド アプリケーション (PROD)
-> * [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) へのサインアップ
+> * [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) へのサインアップ
 
 ## <a name="exportimportpublish"></a>エクスポート/インポート/発行
 
@@ -33,7 +33,7 @@ ms.locfileid: "85307294"
 
 ### <a name="set-up-a-pipeline"></a>パイプラインの設定 
 
-1. **Azure DevOps - パイプライン**にアクセスして、[新しいパイプライン] をクリックします。
+1. **Azure DevOps - パイプライン** にアクセスして、[新しいパイプライン] をクリックします。
 1. **[接続]** セクションで、これらのスクリプトが配置されているリポジトリの場所を選択します。
 1. **[選択]** セクションで、ご自分のリポジトリを選択します。
 1. **[構成]** セクションで [Starter pipeline]\(スターター パイプライン\) を選択します。
@@ -72,7 +72,7 @@ ms.locfileid: "85307294"
 1. これらのスクリプトでは、リージョン `westus2` を使用していることを前提としている点にご注意ください。そうでない場合は、それに応じてタスクの引数を更新します。
 
     > [!div class="mx-imgBorder"]
-    > ![アクティビティの送信のペイロード](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![引数内のリージョン値を強調表示するスクリーンショット](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. [保存して実行] ボタンでドロップダウンを開き、[保存] をクリックします。
 
@@ -99,7 +99,7 @@ ms.locfileid: "85307294"
 
 ## <a name="deploy-from-source-code"></a>ソース コードからのデプロイ
 
-アプリケーションの定義をリポジトリに保持する場合は、ソース コードからデプロイするためのスクリプトが用意されています。 このスクリプトは bash 内にあるため、Windows をお使いの場合は、[Linux サブシステム](https://docs.microsoft.com/windows/wsl/install-win10)をインストールする必要があります。
+アプリケーションの定義をリポジトリに保持する場合は、ソース コードからデプロイするためのスクリプトが用意されています。 このスクリプトは bash 内にあるため、Windows をお使いの場合は、[Linux サブシステム](/windows/wsl/install-win10)をインストールする必要があります。
 
 スクリプトは、[Cognitive Services 音声アシスタント - カスタム コマンド](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands)でホストされています。 bash ディレクトリ内のスクリプトをご自分のリポジトリに複製します。 必ず同じパスを保持してください。
 
@@ -120,7 +120,7 @@ ms.locfileid: "85307294"
 
 ### <a name="set-up-a-pipeline"></a>パイプラインの設定 
 
-1. **Azure DevOps - パイプライン**にアクセスして、[新しいパイプライン] をクリックします。
+1. **Azure DevOps - パイプライン** にアクセスして、[新しいパイプライン] をクリックします。
 1. **[接続]** セクションで、これらのスクリプトが配置されているリポジトリの場所を選択します。
 1. **[選択]** セクションで、ご自分のリポジトリを選択します。
 1. **[構成]** セクションで [Starter pipeline]\(スターター パイプライン\) を選択します。

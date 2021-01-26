@@ -6,22 +6,18 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ac01d71316fe4ccf44aa422d88dc31b1fd0ca4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009445"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078556"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
 仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
 この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Apps について説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
-
-## <a name="report-issues"></a>レポートに関する問題
-
-スケーリング ツールの問題レポートは、現在、Microsoft サポートではなく GitHub で処理されています。 スケーリング ツールで問題が発生した場合は、「[問題の報告](#reporting-issues)」セクションの説明に従って必要な情報を取得し、[RDS GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)で "4a-WVD-scaling-logicapps" というラベルの GitHub のイシューを開きます。
 
 ## <a name="how-the-scaling-tool-works"></a>スケーリング ツールのしくみ
 
@@ -152,7 +148,7 @@ Azure Automation アカウントで実行アカウントを作成するには、
 
 6. 作成プロセスが完了すると、指定の Azure Automation アカウントに **AzureRunAsConnection** という名前の資産が作成されます。 **[Azure 実行アカウント]** を選択します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。 **[接続]** ページでも同じ情報を確認できます。 このページに移動するには、ウィンドウの左側のペインで、 **[共有リソース]** セクションの **[接続]** を選択し、**AzureRunAsConnection** という接続資産をクリックします。
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></aAzure Logic Apps と実行スケジュールを作成する
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic Apps と実行スケジュールを作成する
 
 最後に、Azure Logic Apps を作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。 まず、PowerShell セッション内で使用する [Desktop Virtualization PowerShell モジュール](powershell-module.md)をダウンロードしてインポートします (まだ行っていない場合)。
 
@@ -327,3 +323,7 @@ Log Analytics を使用することにした場合、Log Analytics ワークス�
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>レポートに関する問題
+
+スケーリング ツールの問題に関する報告は、現在、Microsoft サポートで処理されています。 問題の報告を作成する場合は、「[問題の報告](#reporting-issues)」に記載されている手順に従ってください。 ツールに関するフィードバックがある場合、または新機能をリクエストする場合は、[RDS GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)で、"4-WVD-scaling-tool" という名前の GitHub 問題を開きます。

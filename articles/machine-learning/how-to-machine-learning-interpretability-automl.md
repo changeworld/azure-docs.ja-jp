@@ -6,22 +6,22 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 19cebefd64f5b6dce9c265a591c8d5072fcd83db
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306419"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222736"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>解釈可能性: 自動機械学習のモデルの説明 (プレビュー)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning で自動機械学習 (ML) の説明を取得する方法について説明します。 自動 ML は、エンジニアリングされた特徴量の重要度を理解するのに役立ちます。 
+
+この記事では、Azure Machine Learning で自動機械学習 (AutoML) の説明を取得する方法について説明します。 AutoML は、生成されるモデルの特徴量の重要度を理解するのに役立ちます。 
 
 1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
 
@@ -33,19 +33,30 @@ ms.locfileid: "87306419"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 解釈可能性の機能。 `pip install azureml-interpret azureml-contrib-interpret` を実行して、必要なパッケージを取得します。
-- 自動 ML の実験の作成に関する知識。 Azure Machine Learning SDK の使用方法について詳しくは、この[回帰モデルのチュートリアル](tutorial-auto-train-models.md)を最後まで読むか、または[自動 ML の実験を構成する](how-to-configure-auto-train.md)方法に関する記事を参照してください。
+- 解釈可能性の機能。 `pip install azureml-interpret` を実行して、必要なパッケージを取得します。
+- AutoML の実験の作成に関する知識。 Azure Machine Learning SDK の使用方法について詳しくは、こちらの[回帰モデルのチュートリアル](tutorial-auto-train-models.md)を完了するか、[AutoML の実験を構成する](how-to-configure-auto-train.md)方法を参照してください。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>最良のモデルのトレーニング中の解釈可能性
 
-`best_run` から説明を取得します。これには、エンジニアリングされた特徴の説明が含まれます。
+`best_run` から説明を取得します。これには、生の特徴とエンジニアリングされた特徴の両方の説明が含まれます。
+
+> [!Warning]
+> 解釈可能性、最適なモデルの説明は、以下のアルゴリズムを最適なモデルとして推奨する Auto ML 予測実験では利用できません。 
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
+> * 平均 
+> * Naive
+> * Seasonal Average 
+> * Seasonal Naive
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>成果物ストアからエンジニアリングされた特徴量の重要度をダウンロードする
 
 `ExplanationClient` を使用して、`best_run` の成果物ストアからエンジニアリングされた特徴の説明をダウンロードできます。 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -54,7 +65,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>任意のモデルのトレーニング中の解釈可能性 
 
-モデルの説明を計算して視覚化する場合、自動 ML モデルの既存のモデルの説明には限定されません。 また、さまざまなテスト データを使用して、モデルの説明を取得することもできます。 このセクションの手順では、テスト データに基づいて、エンジニアリングされた特徴量の重要度を計算し、視覚化する方法を示します。
+モデルの説明を計算して視覚化する場合、AutoML モデルの既存のモデルの説明に限定されることはありません。 また、さまざまなテスト データを使用して、モデルの説明を取得することもできます。 このセクションの手順では、テスト データに基づいて、エンジニアリングされた特徴量の重要度を計算し、視覚化する方法を示します。
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>トレーニングから他の AutoML モデルを取得する
 
@@ -86,12 +97,12 @@ AutoML モデルの説明を生成するには、`MimicWrapper` クラスを使�
 
 - 説明セットアップ オブジェクト
 - ワークスペース
-- `fitted_model` 自動 ML モデルを説明する代理モデル
+- `fitted_model` AutoML モデルを説明する代理モデル
 
 また、MimicWrapper は、エンジニアリングされた説明のアップロード先となる `automl_run` オブジェクトを受け取ります。
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
@@ -105,16 +116,16 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>MimicExplainer を使用してエンジニアリングされた特徴量の重要度を計算および視覚化する
 
-変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生成済みのエンジニアリングされた特徴の特徴量の重要度を取得できます。 また、`ExplanationDashboard` を使用して、自動 ML フィーチャライザーによって生成された、エンジニアリングされた特徴の特徴量の重要度の値をダッシュボードに視覚化して表示することもできます。
+変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生成済みのエンジニアリングされた特徴の特徴量の重要度を取得できます。 `ExplanationDashboard` を使用して、AutoML フィーチャライザーによって生成された、エンジニアリングされた特徴の特徴量の重要度の値をダッシュボードに視覚化して表示することもできます。
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>推論中の解釈可能性
+## <a name="interpretability-during-inference"></a>推論中の解釈可能性
 
-このセクションでは、前のセクションで説明の計算に使用された Explainer を使用して、自動 ML モデルを運用化する方法について説明します。
+このセクションでは、前のセクションで説明の計算に使用された Explainer を使用して、AutoML モデルを運用化する方法について説明します。
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>モデルとスコアリング Explainer を登録する
 
@@ -192,7 +203,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>テスト データでの推論
 
-自動 ML モデルからの予測値を確認するための、テスト データを使用した推論。 予測値について、エンジニアリングされた特徴量の重要度を表示します。
+一部のテスト データを使用した推論によって、AutoML モデルの予測値を確認できます。これは、現時点では、Azure Machine Learning SDK でのみサポートされています。 予測値に寄与している特徴量の重要度を表示します。 
 
 ```python
 if service.state == 'Healthy':
@@ -209,9 +220,11 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>トレーニング時にデータのパターンと説明を発見するために視覚化する
 
-[Azure Machine Learning Studio](https://ml.azure.com) のワークスペースで、特徴量の重要度のグラフを視覚化できます。 自動 ML の実行が完了した後、 **[View model details]\(モデルの詳細を表示\)** を選択して、特定の実行を表示します。 **[Explanations]\(説明\)** タブを選択して、説明の視覚化ダッシュボードを表示します。
+[Azure Machine Learning Studio](https://ml.azure.com) のワークスペースで、特徴量の重要度のグラフを視覚化できます。 AutoML の実行が完了した後、 **[モデルの詳細の表示]** を選択して、特定の実行を表示します。 **[Explanations]\(説明\)** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
-[![機械学習解釈可能性のアーキテクチャ](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![機械学習解釈可能性のアーキテクチャ](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
+
+説明ダッシュボードの視覚化と特定のプロットの詳細については、[解釈可能性に関するハウツー ドキュメント](how-to-machine-learning-interpretability-aml.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

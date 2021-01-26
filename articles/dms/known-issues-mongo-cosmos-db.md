@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/27/2020
-ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: be6d9d3b8a20e11c874234baae26629ce0187e4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878053"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91291812"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API への移行に関する既知の問題と移行の制限事項
 
@@ -27,7 +27,7 @@ MongoDB から Azure Cosmos DB の MongoDB 用 API への移行に関する既�
 
 * **現象**:この問題は、ユーザーが MongoDB ソース サーバーに接続できない場合に発生します。 すべてのファイアウォール ポートが開いているにもかかわらず、ユーザーは接続できません。
 
-| 原因         | 解決策 |
+| 原因         | 解像度 |
 | ------------- | ------------- |
 | Azure Database Migration Service で自己署名証明書を使用すると、SSL 証明書が正しくないために移行が失敗する可能性があります。エラー メッセージには、"検証プロシージャによると、リモート証明書は無効です" と含まれている場合があります。 | CA からの正規の証明書を使用します。  通常、自己署名証明書は内部テストでのみ使用されます。 CA 証明機関から正規の証明書をインストールすると、問題なく Azure Database Migration Service で SSL を使用できるようになります (Cosmos DB の接続には、Mongo API 経由の SSL を使用します)。<br><br> |
 
@@ -35,7 +35,7 @@ MongoDB から Azure Cosmos DB の MongoDB 用 API への移行に関する既�
 
 * **現象**: **[ソースの選択]** ブレードで **Data from Azure Storage** モードを使用しているときに、 **[データベース設定]** ブレードで DB リストを取得できません。
 
-| 原因         | 解決策 |
+| 原因         | 解像度 |
 | ------------- | ------------- |
 | ストレージ アカウントの接続文字列に SAS 情報がないため、認証できません。 | Storage Explorer で BLOB コンテナーに SAS を作成し、コンテナー SAS 情報が含まれる URL をソースの詳細接続文字列として使用します。<br><br> |
 
@@ -43,7 +43,7 @@ MongoDB から Azure Cosmos DB の MongoDB 用 API への移行に関する既�
 
 * **現象**:移行は失敗します。
 
-| 原因         | 解決策 |
+| 原因         | 解像度 |
 | ------------- | ------------- |
 | サポートされていないバージョンの MongoDB から Azure Cosmos DB に移行しようとしています。 | 新しいバージョンの MongoDB がリリースされると、Azure Database Migration Service との互換性を確保するためにテストされ、サービスは最新バージョンを適用できるよう、定期的に更新されます。 移行がすぐに必要な場合は、回避策として、データベースまたはコレクションを Azure Storage にエクスポートし、その結果のダンプにソースをポイントすることができます。 Storage Explorer で BLOB コンテナーに SAS を作成してから、コンテナー SAS 情報が含まれる URL をソースの詳細接続文字列として使用します。<br><br> |
 

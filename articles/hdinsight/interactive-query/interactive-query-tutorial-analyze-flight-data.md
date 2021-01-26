@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319193"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534585"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
@@ -32,7 +32,7 @@ ms.locfileid: "85319193"
 
 * HDInsight 上の対話型クエリ クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照して、 **[クラスターの種類]** として **[対話型クエリ]** を選択します。
 
-* Azure SQL Database 内のデータベース。 保存先データ ストアとしてデータベースを使用します。 Azure SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](/azure/sql-database/sql-database-single-database-get-started)に関するページを参照してください。
+* Azure SQL Database 内のデータベース。 保存先データ ストアとしてデータベースを使用します。 Azure SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -165,9 +165,9 @@ Hive ジョブの一環として、.csv ファイルから **Delays** という�
     FROM delays_raw;
     ```
 
-3. ファイルを保存するには、**Ctrl + X** キー、**Y** キー、Enter キーの順に押します。
+3. ファイルを保存するには、 **Ctrl + X** キー、 **Y** キー、Enter キーの順に押します。
 
-4. Hive を起動し、**flightdelays.hql** ファイルを実行するには、次のコマンドを使用します。
+4. Hive を起動し、 **flightdelays.hql** ファイルを実行するには、次のコマンドを使用します。
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
@@ -232,7 +232,7 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
     GO
     ```
 
-    `GO` ステートメントを入力すると、前のステートメントが評価されます。 このステートメントにより、クラスター化インデックス付きの、**delays** という名前のテーブルが作成されます。
+    `GO` ステートメントを入力すると、前のステートメントが評価されます。 このステートメントにより、クラスター化インデックス付きの、 **delays** という名前のテーブルが作成されます。
 
     次のクエリを使用して、テーブルが作成されたことを確認します。
 

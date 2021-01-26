@@ -4,12 +4,12 @@ description: オンプレミスまたは Microsoft Azure Web アプリケーシ�
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263931"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -101,9 +101,10 @@ ASP.NET アプリケーションの場合は、バイト コード インスト�
 | プラットフォーム | 完全な SQL クエリを取得するために必要な手順 |
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
-| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用するか、Status Monitor PowerShell モジュールを使用して、[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md)して IIS を再起動します。 |
+| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用するか、Status Monitor PowerShell モジュールを使用して、[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine)して IIS を再起動します。 |
 | Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](./asp-net.md) または [ASP.NET Core アプリケーション](./asp-net-core.md)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します。
+| Azure Web ジョブ | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します。
 
 上記のプラットフォーム固有の手順に加えて、次のように applicationInsights.config ファイルを変更することで、**SQL コマンドの収集の有効化も明示的に選択する必要**があります。
 

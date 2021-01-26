@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2725d498b6fded56ad28235b051b1e8f4fbadadb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628948"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461205"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -68,9 +68,9 @@ Data Factory では、データ ファクトリ パイプライン テンプレ�
 
         -   オンプレミスの SQL Server から Azure SQL Database へ
 
-        -   オンプレミスの SQL Server から Azure SQL Data Warehouse へ
+        -   オンプレミスの SQL Server から Azure Synapse Analytics へ
 
-        -   オンプレミスの Oracleから Azure SQL Data Warehouse へ
+        -   オンプレミスの Oracle から Azure Synapse Analytics へ
 
 -   SSIS テンプレート
 

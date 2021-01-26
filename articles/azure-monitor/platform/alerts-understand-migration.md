@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852397"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875922"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>新しいアラートへの移行オプションについて
 
@@ -254,10 +254,12 @@ Cosmos DB の場合、同等のメトリックは以下に示すようになっ�
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>"Deny" 効果が使用されたポリシーによってルールの移行が妨げられる
 
-移行の一環として、新しいメトリック アラートと新しいアクション グループが作成され、クラシック アラート ルールが削除されますが、 ポリシーによって、リソースの作成が妨げられる可能性があります。 ポリシーによっては、一部またはすべてのルールを移行できない可能性があります。 プロセスをブロックしているポリシーは、[移行ツール](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)に関するページに一覧表示されます。 この問題は、次のいずれかの方法で解決できます。
+移行の一環として、新しいメトリック アラートと新しいアクション グループが作成され、クラシック アラート ルールが削除されますが、 [Azure ポリシー](../../governance/policy/index.yml)の割り当てによって、リソースの作成が妨げられる可能性があります。 ポリシーの割り当てによっては、一部またはすべてのルールを移行できない可能性があります。 プロセスをブロックしているポリシー割り当ては、[移行ツール](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)に関するページに一覧表示されます。 この問題は、次のいずれかの方法で解決できます。
 
-- 移行プロセスの間に、ポリシー割り当てからサブスクリプションまたはリソース グループを除外する。 [ポリシーの除外スコープの管理の詳細はこちら](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 効果を削除するか、"audit" または "append" に変更する (これにより、たとえば、タグの欠落に関連する問題を解決できます)。 [ポリシーの効果の詳細はこちら](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 移行プロセスの間に、ポリシー割り当てからサブスクリプション、リソース グループまたは個別のリソースを除外する。 [ポリシーの除外スコープの管理の詳細](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)。
+- ポリシー割り当てに対して "強制モード" を **Disabled (無効)** に設定します。 [ポリシー割り当ての enforcementMode プロパティの詳細](../../governance/policy/concepts/assignment-structure.md#enforcement-mode)
+- サブスクリプション、リソースグループ、または個々のリソースの Azure Policy 除外 (プレビュー) をポリシー割り当てに設定します。 [Azure Policy の除外構造の詳細](../../governance/policy/concepts/exemption-structure.md)
+- 効果を削除するか、「無効」、「監査」、「追加」または「修正」 に変更する (これにより、たとえば、タグの欠落に関連する問題を解決できます)。 [ポリシー効果の管理い関する詳細](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,23 +3,22 @@ title: .NET Core アプリでの機能フラグの使用に関するチュート
 description: このチュートリアルでは、.NET Core アプリで機能フラグを実装する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.author: lcozzens
+ms.date: 09/17/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224715"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929193"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -27,7 +26,7 @@ ms.locfileid: "88224715"
 
 機能管理ライブラリは、バックグラウンドで機能フラグのライフサイクルも管理します。 たとえば、ライブラリは、フラグの状態を更新およびキャッシュしたり、要求の呼び出し中にフラグの状態が不変であることを保証したりします。 さらに、ASP.NET Core ライブラリには、MVC コントローラー アクション、ビュー、ルート、およびミドルウェアを含む、すぐに使用できる統合が用意されています。
 
-「[クイック スタート: ASP.NET Core アプリに機能フラグを追加する](./quickstart-feature-flag-aspnet-core.md)」では、ASP.NET Core アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、それらの方法についてより詳細に説明します。 完全なリファレンスについては、[ASP.NET Core の機能管理に関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2091410)をご覧ください。
+「[クイック スタート: ASP.NET Core アプリに機能フラグを追加する](./quickstart-feature-flag-aspnet-core.md)」では、ASP.NET Core アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、それらの方法についてより詳細に説明します。 完全なリファレンスについては、[ASP.NET Core の機能管理に関するドキュメント](/dotnet/api/microsoft.featuremanagement)をご覧ください。
 
 このチュートリアルでは、次の内容を学習します。
 
@@ -107,7 +106,7 @@ App Configuration に ASP.NET Core アプリケーションを接続する最も
               .UseStartup<Startup>();
    ```
 
-2. *Startup.cs* を開き、`Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できるようにします。
+2. *Startup.cs* を開き、`Configure` メソッドを更新して、`UseAzureAppConfiguration` と呼ばれる組み込みのミドルウェアを追加します。 このミドルウェアを使用すると、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できます。
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -231,6 +230,12 @@ public IActionResult Index()
 
 ## <a name="mvc-views"></a>MVC ビュー
 
+*Views* ディレクトリの *_ViewImports.cshtml* を開き、機能マネージャーのタグ ヘルパーを追加します。
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
+
 MVC ビューでは、`<feature>` タグを使用して、機能フラグが有効かどうかに基づいてコンテンツをレンダリングできます。
 
 ```html
@@ -295,6 +300,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 このチュートリアルでは、`Microsoft.FeatureManagement` ライブラリを使用して ASP.NET Core アプリケーションで機能フラグを実装する方法を説明しました。 ASP.NET Core と App Configuration での機能管理サポートの詳細については、次のリソースをご覧ください。
 
-* [ASP.NET Core の機能フラグのサンプル コード](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Microsoft.FeatureManagement のドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [ASP.NET Core の機能フラグのサンプル コード](./quickstart-feature-flag-aspnet-core.md)
+* [Microsoft.FeatureManagement のドキュメント](/dotnet/api/microsoft.featuremanagement)
 * [機能フラグを管理する](./manage-feature-flags.md)

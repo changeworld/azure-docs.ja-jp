@@ -1,23 +1,14 @@
 ---
 title: プログラムによる Azure ダッシュボードの作成
 description: Azure portal のダッシュボードをテンプレートとして使用して、プログラムで Azure ダッシュボードを作成することができます。 JSON 参照を含めます。
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: mtillman
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/4/2020
+ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764045"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745810"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -55,7 +46,7 @@ ms.locfileid: "84764045"
 
 ![ダッシュボードの共有](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-**共有** を選択すると、発行先のサブスクリプションとリソースグループを選択するように求められます。 選択するサブスクリプションとリソース グループに書き込みアクセス権がなければなりません。 詳細については、[Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)を参照してください。
+**共有** を選択すると、発行先のサブスクリプションとリソースグループを選択するように求められます。 選択するサブスクリプションとリソース グループに書き込みアクセス権がなければなりません。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
 
 ![共有とアクセスに変更を加える](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -78,13 +69,13 @@ ms.locfileid: "84764045"
 Azure でリソースを作成する API には、次の 2 種類があります。
 
 * 命令型 API は、一度に 1 つのリソースを作成します。 詳しくは、[リソース](/rest/api/resources/resources)に関する記事をご覧ください。
-* 1 つの API 呼び出しで複数の依存リソースを作成する、テンプレートベースのデプロイシステムです。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
+* 1 つの API 呼び出しで複数の依存リソースを作成する、テンプレートベースのデプロイシステムです。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 テンプレートベースのデプロイでは、パラメーター化とテンプレート化がサポートされています。 この記事では、この方法を使用します。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>テンプレート デプロイを使用して、テンプレートからプログラムによってダッシュボードを作成します。
 
-Azure では、複数のリソースの配置を調整するための機能が提供されています。 デプロイするリソースを表し、その間の関係を表すデプロイメント テンプレートを作成します。  各リソースの JSON 形式は、1 つずつ作成した場合と同じです。 違いは、テンプレート言語では、変数、パラメーター、基本的な機能などのいくつかの概念が追加されている点です。 この拡張構文は、テンプレート デプロイメントのコンテキストでのみサポートされます。 前述の命令型 API で使用すると機能しません。 詳細については、[ Azure Resource Manager テンプレートの構造と構文を理解する](../azure-resource-manager/resource-group-authoring-templates.md)を参照してください。
+Azure では、複数のリソースの配置を調整するための機能が提供されています。 デプロイするリソースを表し、その間の関係を表すデプロイメント テンプレートを作成します。  各リソースの JSON 形式は、1 つずつ作成した場合と同じです。 違いは、テンプレート言語では、変数、パラメーター、基本的な機能などのいくつかの概念が追加されている点です。 この拡張構文は、テンプレート デプロイメントのコンテキストでのみサポートされます。 前述の命令型 API で使用すると機能しません。 詳細については、[ Azure Resource Manager テンプレートの構造と構文を理解する](../azure-resource-manager/templates/template-syntax.md)を参照してください。
 
 パラメーター化は、テンプレートのパラメーター構文を使用して実行する必要があります。  ここに示すように、以前に見つけたリソース ID のすべてのインスタンスを置き換えます。
 
@@ -125,7 +116,7 @@ JSON テンプレートの上部で、次のように必要なテンプレート
 テンプレートを構成したら、次のいずれかの方法を使用してデプロイします。
 
 * [REST API](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure portal でのテンプレートのデプロイページ](https://portal.azure.com/#create/Microsoft.Template)
 
@@ -658,3 +649,49 @@ JSON テンプレートの上部で、次のように必要なテンプレート
 ```
 
 パラメーター化されたテンプレートを使用してダッシュボードをデプロイする例を確認したので、[Azure Resource Manager REST API](/rest/api/)、[Azure CLI](/cli/azure)、または [Azure PowerShell コマンド](/powershell/azure/get-started-azureps)を使用して、テンプレートをデプロイしてみることができます。
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>Azure CLI を使用してダッシュボードをプログラムで作成する
+
+Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- これらの例ではダッシュボード [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json) を使用します。 山かっこ内の内容を実際の値に置き換えます。
+
+[az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) コマンドを実行して、ダッシュボードを作成します。
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+ダッシュボードを更新するには、[az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) コマンドを使用します。
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+[az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) コマンドを実行して、ダッシュボードの詳細を確認します。
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+現在のサブスクリプションのすべてのダッシュボードを表示するには、[az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list) を使用します。
+
+```azurecli
+az portal dashboard list
+```
+
+リソース グループのすべてのダッシュボードを表示することもできます。
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>次のステップ
+
+デスクトップの詳細については、「[Azure portal の設定を管理する](set-preferences.md)」を参照してください。
+
+ダッシュボードの Azure CLI サポートの詳細については、「[az portal dashboard](/cli/azure/ext/portal/portal/dashboard)」を参照してください。

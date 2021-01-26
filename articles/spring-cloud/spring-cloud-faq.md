@@ -4,15 +4,16 @@ description: この記事では、Azure Spring Cloud についてよく寄せら
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 0143b014328dfd5c164f0c3c62aeef7cabe1a17c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800372"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065424"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -36,14 +37,18 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
-米国東部、米国西部 2、西ヨーロッパ、東南アジアです。
+米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>指定されたリージョン外に格納されている顧客データはありますか?
+
+Azure Spring Cloud はリージョン サービスです。 Azure Spring Cloud のすべての顧客データは、冗長性を確保するために、指定されたリージョンの同じ地域内の複数のリージョンに格納されます。 地域とリージョンの詳細については、「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制限事項はどのようなものですか?
 
-プレビュー リリース中、Azure Spring Cloud には次の既知の制限事項があります。
-
+Azure Spring Cloud には、次の既知の制限があります。
+    
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
-* `server.port` の既定値は、ポート 80/443 です。 他の値が適用されている場合は、80/443 に上書きされます。
+* `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は上書きされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
 * Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
 
 ### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。 
@@ -52,48 +57,91 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](../azure-portal/supportability/how-to-create-azure-support-request.md)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
 
 ## <a name="development"></a>開発
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud アプリケーションの開発方法を学習するための最もすばやい方法は何ですか?
 
-Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart-launch-app-portal.md)」の手順に従ってください。
+Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」の手順に従ってください。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
 
 Azure Spring Cloud は、Java 8 および 11 をサポートしています。 「[Java ランタイムと OS バージョン](#java-runtime-and-os-versions)」を参照してください。
 
+### <a name="is-spring-boot-24x-supported"></a>Spring Boot 2.4.x はサポートされていますか?
+Microsoft は、Spring Boot 2.4 の問題を特定しました。現在、Spring コミュニティと協力してその解決に取り組んでいます。 その間は、アプリと Eureka の間で TLS 認証を有効にするために、これらの 2 つの依存関係を含めてください。
+
+```xml
+<dependency> 
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-client</artifactId>
+    <version>1.19.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.jersey.contribs</groupId>
+    <artifactId>jersey-apache-client4</artifactId>
+    <version>1.19.4</version>
+</dependency>
+```
+
+::: zone-end
+
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Spring Cloud アプリケーションのログとメトリックはどこで表示できますか?
 
-[アプリの概要] タブと [[Azure Monitor]](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) タブでメトリックを探してください。
+[アプリの概要] タブと [[Azure Monitor]](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer) タブでメトリックを探してください。
 
-Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
+Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](../azure-monitor/platform/data-platform-logs.md) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 
 はい。 詳細については、[Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)」を参照してください。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
 
 現時点でサポートされているサービスは次の 3 種類です:
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Cache for Redis
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>アプリケーション内から永続ボリュームを表示、追加、または移動できますか?
 
 はい。
 
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure Spring Cloud インスタンスには、送信パブリック IP アドレスはいくつありますか?
+
+送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。 
+
+| Azure Spring Cloud インスタンスの種類 | 送信パブリック IP アドレスの既定の数 |
+| -------------------------------- | ---------------------------------------------- |
+| Basic レベルのインスタンス             | 1                                              |
+| Standard レベルのインスタンス          | 2                                              |
+| VNet インジェクション インスタンス         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>送信パブリック IP アドレスの数を増やすことはできますか?
+
+はい。[サポート チケット](https://azure.microsoft.com/support/faq/)を開いて、より多くの送信パブリック IP アドレスを要求することができます。
+
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure Spring Cloud サービス インスタンスを削除または移動すると、その拡張機能リソースも削除または移動されますか?
 
-拡張リソースが所有するリソース プロバイダーのロジックによって異なります。 `Microsoft.AppPlatform` インスタンスの拡張リソースは同じ名前空間に属していないため、動作はリソース プロバイダーによって異なります。 たとえば、削除または移動操作は、**診断設定**リソースにカスケードされません。 新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または以前の Azure Spring Cloud インスタンスが戻った場合は、以前の**診断設定**リソースが引き続きそれを拡張します。
+拡張リソースが所有するリソース プロバイダーのロジックによって異なります。 `Microsoft.AppPlatform` インスタンスの拡張リソースは同じ名前空間に属していないため、動作はリソース プロバイダーによって異なります。 たとえば、削除または移動操作は、**診断設定** リソースにカスケードされません。 新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または以前の Azure Spring Cloud インスタンスが戻った場合は、以前の **診断設定** リソースが引き続きそれを拡張します。
 
+Azure CLI を使用して、Spring Cloud の診断設定を削除できます。
+
+```azurecli
+ az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
+```
+
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java ランタイムと OS バージョン
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud では、どのバージョンの Java ランタイムがサポートされていますか?
 
-Azure Spring Cloud では、2020 年 6 月現在での最新ビルドである Java 8 ビルド 252 と Java 11 ビルド 7 が含まれる Java LTS バージョンがサポートされています。 「[Azure 用の JDK および Azure Stack をインストールする](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
+Azure Spring Cloud では、2020 年 6 月現在での最新のビルドを含む Java LTS バージョン、Java 8 および Java 11 がサポートされています。 「[Azure 用の JDK および Azure Stack をインストールする](/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
 
 ### <a name="who-built-these-java-runtimes"></a>これらの Java ランタイムはだれがビルドしたのですか?
 
@@ -105,14 +153,14 @@ LTS と MTS の JDK リリースには、四半期ごとのセキュリティ更
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 LTS バージョンと Java 11 LTS バージョンのサポート期間を教えてください。
 
-[Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)に関する記事を参照してください。
+[Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)に関する記事を参照してください。
 
 * Java 8 LTS は 2030 年 12 月までサポートされます。
 * Java 11 LTS は 2027 年 9 月までサポートされます。
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>サポートされている Java ランタイムをローカル開発用にダウンロードするにはどうすればよいですか?
 
-「[Azure 用の JDK および Azure Stack をインストールする](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
+「[Azure 用の JDK および Azure Stack をインストールする](/azure/developer/java/fundamentals/java-jdk-install)」を参照してください。
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>古い Java ランタイムの削除ポリシーとは何ですか?
 
@@ -123,16 +171,17 @@ LTS と MTS の JDK リリースには、四半期ごとのセキュリティ更
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Java ランタイム レベルの問題についてサポートを受けるにはどうすればよいですか?
 
-Azure サポートでサポート チケットを開くことができます。  [Azure サポート リクエストを作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)に関する記事を参照してください。
+Azure サポートでサポート チケットを開くことができます。  [Azure サポート リクエストを作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>アプリを実行するためのオペレーティング システムは何ですか?
 
 最新の Ubuntu LTS バージョンが使用されており、現在は、[Ubuntu 20.04 LTS (Focal Fossa)](https://releases.ubuntu.com/focal/) が既定の OS となっています。
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>OS セキュリティ パッチはどのくらいの頻度で適用されますか?
+### <a name="how-often-are-os-security-patches-applied"></a>OS のセキュリティ パッチはどのくらいの頻度で適用されますか?
 
 Azure Spring Cloud に適用されるセキュリティ パッチは、月単位で運用環境に展開されます。
 Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE score 9 以上) は、可能な限り迅速に展開されます。
+::: zone-end
 
 ## <a name="deployment"></a>デプロイ
 
@@ -145,12 +194,13 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud でソースからコンテナーを構築することはできますか?
 
-はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-launch-from-source.md)」を参照してください。
+はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照してください。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 
-いいえ。
+はい。  詳細については、[自動スケーリングの設定](spring-cloud-tutorial-setup-autoscale.md)に関するページを参照してください。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
 既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行しようとしている場合は、次のベスト プラクティスを確認することをお勧めします。
@@ -161,8 +211,22 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 * 公式の、安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式版、ベータ版、またはフォーク済みバージョンの Pivotal Spring ライブラリにはサービス レベル アグリーメント (SLA) のサポートがありません。
 
 移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
+::: zone-end
 
-## <a name="trouble-shooting"></a>トラブルシューティング
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core のバージョン
+
+### <a name="which-net-core-versions-are-supported"></a>どのバージョンの .NET Core がサポートされていますか?
+
+.NET Core 3.1 以降のバージョンです。
+
+### <a name="how-long-will-net-core-31-be-supported"></a>.NET Core 3.1 はどのくらいの期間サポートされますか?
+
+2022 年 12 月 3 日までです。 「[.NET Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)」を参照してください。
+::: zone-end
+
+
+## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>サービス レジストリがまれに利用できなくなると、どのような影響がありますか?
 

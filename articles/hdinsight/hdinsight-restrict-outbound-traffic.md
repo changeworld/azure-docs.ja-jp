@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006519"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048676"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -23,11 +23,11 @@ ms.locfileid: "87006519"
 
 HDInsight クラスターは、通常は仮想ネットワークにデプロイされます。 クラスターは、その仮想ネットワークの外部にあるサービスに依存しています。
 
-受信トラフィックを必要とする依存関係は複数あります。 インバウンド管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、[こちら](hdinsight-management-ip-addresses.md)で公開されています。 また、その情報を使用してネットワーク セキュリティ グループ (NSG) ルールを作成し、クラスターへの受信トラフィックをセキュリティで保護することもできます。
+受信管理トラフィックはファイアウォールを介して送信できません。 [ここ](./hdinsight-service-tags.md)に記載されているように、受信トラフィックには NSG サービス タグを使用できます。 
 
-HDInsight の送信トラフィックの依存関係は、ほぼすべて、FQDN を使用して定義されています。 その背後には静的 IP アドレスがありません。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) によってクラスターからの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の名前解決に基づいてルールを設定し、使用することはできません。
+HDInsight の送信トラフィックの依存関係は、ほぼすべて、FQDN を使用して定義されています。 その背後には静的 IP アドレスがありません。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) によってクラスターからの送信トラフィックをロックできないことを意味します。 IP アドレスは頻繁に変わるので、現在の名前解決に基づいてルールを設定し、使用することはできません。
 
-ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用して、送信アドレスをセキュリティで保護します。 Azure Firewall では、宛先の FQDN または [FQDN タグ](../firewall/fqdn-tags.md)に基づいて送信トラフィックが制限されます。
+FQDN に基づいて送信トラフィックを制御できるファイアウォールを使用して、送信アドレスをセキュリティで保護します。 Azure Firewall では、宛先の FQDN または [FQDN タグ](../firewall/fqdn-tags.md)に基づいて送信トラフィックが制限されます。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>HDInsight に合わせて Azure Firewall を構成する
 
@@ -61,7 +61,7 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
     **一番上のセクション**
 
-    | プロパティ|  値|
+    | プロパティ|  [値]|
     |---|---|
     |名前| FwAppRule|
     |Priority|200|
@@ -79,7 +79,7 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows ログイン アクティビティを許可する |
-    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | `storage_account_name` を実際のストレージ アカウント名に置き換えます。 クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須]](../storage/common/storage-require-secure-transfer.md) がストレージ アカウントで有効になっていることを確認します。 |
+    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | `storage_account_name` を実際のストレージ アカウント名に置き換えます。 https 接続のみを使用するには、[[安全な転送が必須]](../storage/common/storage-require-secure-transfer.md) がストレージ アカウントで有効になっていることを確認します。 プライベート エンドポイントを使用してストレージ アカウントにアクセスする場合、この手順は必要ありません。また、ストレージ トラフィックはファイアウォールに転送されません。|
 
    ![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -95,27 +95,18 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
     **一番上のセクション**
 
-    | プロパティ|  値|
+    | プロパティ|  [値]|
     |---|---|
     |名前| FwNetRule|
     |Priority|200|
     |アクション|Allow|
 
-    **[IP アドレス] セクション**
-
-    | 名前 | Protocol | ソース アドレス | 宛先アドレス | 宛先ポート | Notes |
-    | --- | --- | --- | --- | --- | --- |
-    | Rule_1 | UDP | * | * | 123 | Time サービス |
-    | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | * | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます |
-    | Rule_3 | TCP | * | Data Lake Storage アカウントの IP アドレス | * | Azure Data Lake Storage を使用している場合は、ADLS Gen1 と Gen2 での SNI の問題に対処するネットワーク ルールを [IP アドレス] セクションに追加することができます。 このオプションでは、トラフィックはファイアウォールにルーティングされます。 そのため、大量のデータ読み込みのためにコストが上がる可能性がありますが、トラフィックはファイル ログに記録されて監査可能になります。 Data Lake Storage アカウントの IP アドレスを決定します。 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` などの PowerShell コマンドを使用して、FQDN を IP アドレスに解決できます。|
-    | Rule_4 | TCP | * | * | 12000 | (省略可能) Log Analytics を使用している場合は、Log Analytics ワークスペースとの通信を可能にするネットワーク ルールを [IP アドレス] セクションに作成します。 |
-
     **[サービス タグ] セクション**
 
     | 名前 | Protocol | ソース アドレス | サービス タグ | ターゲット ポート | Notes |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | SQL の [サービス タグ] セクションで、SQL トラフィックのログを記録して監査するためのネットワーク ルールを構成します。 HDInsight サブネットで SQL Server 用にサービス エンドポイントを構成していない限り、ファイアウォールはバイパスされます。 |
-    | Rule_8 | TCP | * | Azure Monitor | * | (省略可能) 自動スケール機能を使用する予定のお客様は、このルールを追加する必要があります。 |
+    | Rule_5 | TCP | * | SQL | 1433 | HDInsight によって提供される既定の SQL Server を使用している場合は、SQL の [サービス タグ] セクションで、SQL トラフィックのログを記録して監査するためのネットワーク ルールを構成します。 HDInsight サブネットで SQL Server 用にサービス エンドポイントを構成していない限り、ファイアウォールはバイパスされます。 Ambari、Oozie、Ranger、および Hive のメタストアにカスタム SQL サーバーを使用している場合は、独自のカスタム SQL サーバーへのトラフィックの許可のみが必要になります。|
+    | Rule_6 | TCP | * | Azure Monitor | * | (省略可能) 自動スケール機能を使用する予定のお客様は、このルールを追加する必要があります。 |
     
    ![タイトル:アプリケーション ルール コレクションを入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -125,9 +116,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 次のエントリを使用してルート テーブルを作成します。
 
-* 「[正常性サービスと管理サービス: すべてのリージョン](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions)」に記載された IP アドレスのうち、次ホップの種類が**インターネット**であるすべての IP アドレス。
-
-* 「[正常性サービスと管理サービス: 特定のリージョン](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions)」に記載されている、クラスターが作成されたリージョンの IP アドレスのうち、次ホップの種類が**インターネット**である 2 つの IP アドレス。
+* 「[正常性サービスと管理サービス](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions)」に記載された IP アドレスのうち、次ホップの種類が **[インターネット]** であるすべての IP アドレス。 これには、汎用リージョンの 4 つの IP と、特定のリージョンの 2 つの IP が含まれている必要があります。 このルールは、ResourceProviderConnection が "*受信*" に設定されている場合にのみ必要です。 ResourceProviderConnection が "*送信*" に設定されている場合、これらの IP は UDR では必要ありません。 
 
 * 次ホップが Azure Firewall プライベート IP アドレスである、IP アドレス 0.0.0.0/0 の 1 つの仮想アプライアンス ルート。
 
@@ -155,7 +144,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 1. **[+ 関連付け]** を選択します。
 
-1. **[サブネットの関連付け]** 画面で、クラスターが作成された仮想ネットワークを選択します。 また、HDInsight クラスター用に使用した**サブネット**を選択します。
+1. **[サブネットの関連付け]** 画面で、クラスターが作成された仮想ネットワークを選択します。 また、HDInsight クラスター用に使用した **サブネット** を選択します。
 
 1. **[OK]** を選択します。
 
@@ -171,7 +160,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 ## <a name="logging-and-scale"></a>ログ記録とスケール
 
-Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、次のチュートリアルの手順に従ってください。「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/tutorial-diagnostics.md)」を参照してください。
+Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、次のチュートリアルの手順に従ってください。「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/firewall-diagnostics.md)」を参照してください。
 
 ログ記録のセットアップを完了した後、Log Analytics を使用する場合は、次のようなクエリでブロックされたトラフィックを表示することができます。
 
@@ -181,7 +170,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 アプリケーションを初めて使用する際には、Azure Firewall と Azure Monitor ログを統合すると便利です。 特に、アプリケーションの依存関係をすべては把握していない場合に便利です。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](../azure-monitor/log-query/log-query-overview.md)」をご覧ください
 
-Azure Firewall のスケールの制限と要求の増加については、[こちら](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)のドキュメント、または [FAQ](../firewall/firewall-faq.md) を参照してください。
+Azure Firewall のスケールの制限と要求の増加については、[こちら](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)のドキュメント、または [FAQ](../firewall/firewall-faq.yml) を参照してください。
 
 ## <a name="access-to-the-cluster"></a>クラスターへのアクセス
 

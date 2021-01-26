@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977907"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90606260"
 ---
 1. 作成した仮想 WAN を探します。 [仮想 WAN] ページの **[接続]** セクションで、 **[ハブ]** を選択します。
 2. [ハブ] ページで、 **[+ 新しいハブ]** を選択して **[仮想ハブを作成する]** ページを開きます。
 
-    ![基本操作](./media/virtual-wan-tutorial-hub-include/basics.png "基本")
+    ![スクリーンショットには、[基本] タブが選択された [仮想ハブの作成] ペインが表示されています。](./media/virtual-wan-tutorial-hub-include/basics.png "基本")
 3. **[仮想ハブを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
     **プロジェクトの詳細**
@@ -28,7 +28,7 @@ ms.locfileid: "84977907"
    * ハブのプライベート アドレス空間。 ハブを作成するための最小アドレス空間は /24 です。これは、/25 から /32 のいずれの範囲でも、作成中にエラーが生成されることを意味します。 Microsoft のマネージド サービスである Azure Virtual WAN では、異なるゲートウェイまたはサービス (VPN ゲートウェイ、ExpressRoute ゲートウェイ、ユーザー VPN またはポイント対サイト ゲートウェイ、ファイアウォール、ルーティングなど) に対して、適切なサブネットが仮想ハブに作成されます。 ユーザーは仮想ハブ内のサービスのサブネット アドレス空間を明示的に計画する必要はありません。これは、サービスの一部として Microsoft によって行われます。
 4. **サイト間** を選択します。
 
-    ![サイト間](./media/virtual-wan-tutorial-hub-include/site-to-site.png "サイト間")
+    ![スクリーンショットには、[サイト間] タブが選択された [仮想ハブの作成] ペインが表示されています。](./media/virtual-wan-tutorial-hub-include/site-to-site.png "サイト間")
 
 5. **[サイト間]** タブで、次のフィールドを入力します。
 

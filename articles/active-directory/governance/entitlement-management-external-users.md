@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b356d5dff453b598eeb773af1a56fc50193e9e16
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783860"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746662"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
@@ -51,13 +51,13 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 1. 外部組織の連絡先に[マイ アクセス ポータルのリンク](entitlement-management-access-package-settings.md)を送信し、アクセス パッケージを要求するためにユーザーと共有できるようにします。
 
-1. 外部ユーザー (この例では**要求者 A**) は、マイ アクセス ポータルのリンクを使用して、アクセス パッケージへの[アクセスを要求](entitlement-management-request-access.md)します。 ユーザーのサインイン方法は、接続された組織で定義されているディレクトリまたはドメインの認証の種類によって異なります。
+1. 外部ユーザー (この例では **要求者 A**) は、マイ アクセス ポータルのリンクを使用して、アクセス パッケージへの [アクセスを要求](entitlement-management-request-access.md)します。 ユーザーのサインイン方法は、接続された組織で定義されているディレクトリまたはドメインの認証の種類によって異なります。
 
 1. 承認者が[要求を承認します](entitlement-management-request-approve.md) (または、要求が自動承認されます)。
 
 1. 要求は[配信中状態](entitlement-management-process.md)になります。
 
-1. B2B 招待プロセスを使用して、ゲスト ユーザー アカウントがディレクトリに作成されます (この例では**要求者 A (ゲスト)** )。 [許可リストまたは拒否リスト](../external-identities/allow-deny-list.md)が定義されている場合、リストの設定が適用されます。
+1. B2B 招待プロセスを使用して、ゲスト ユーザー アカウントがディレクトリに作成されます (この例では **要求者 A (ゲスト)** )。 [許可リストまたは拒否リスト](../external-identities/allow-deny-list.md)が定義されている場合、リストの設定が適用されます。
 
 1. ゲスト ユーザーに、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられます。 Azure AD および他の Microsoft Online Services や接続された SaaS アプリケーションに対して変更が行われるまで、しばらく時間がかかることがあります。 詳細については、「[変更が適用されるタイミング](entitlement-management-access-package-resources.md#when-changes-are-applied)」を参照してください。
 
@@ -83,8 +83,8 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 - ゲストが他のゲストをディレクトリに招待できるようにすることは、エンタイトルメント管理の外部でゲストの招待が発生する可能性があることを意味します。 **[ゲストは招待ができる]** を **[いいえ]** に設定して、適切に管理された招待のみを許可することをお勧めします。
 - B2B 許可リストを使用している場合は、エンタイトルメント管理を使用してパートナーにするドメインがリストに追加されていることを確認する必要があります。 または、B2B 拒否リストを使用している場合は、パートナーにするドメインがリストに追加されていないことを確認する必要があります。
-- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成した場合は、使用している B2B 許可または拒否リストの設定が優先されます。 したがって、このポリシーに含めるドメインを、許可リストを使用している場合は許可リストに含め、拒否リストを使用している場合は拒否リストから除外するようにしてください。
-- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証 (プレビュー)](../external-identities/one-time-passcode.md#opting-in-to-the-preview)」を参照してください。
+- **すべてのユーザー** (すべての接続されている組織と新しい外部ユーザー) にエンタイトルメント管理ポリシーを作成し、ユーザーがディレクトリ内の接続されている組織に属していない場合は、パッケージを要求するときに、接続されている組織が自動的に作成されます。 お使いの B2B の許可または拒否リストの設定が優先されます。 したがって、このポリシーに含めるドメインを、許可リストを使用している場合は許可リストに含め、拒否リストを使用している場合は拒否リストから除外するようにしてください。
+- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証 (プレビュー)](../external-identities/one-time-passcode.md)」を参照してください。
 - Azure AD B2B の外部コラボレーション設定の詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../external-identities/delegate-invitations.md)」を参照してください。
 
     ![Azure AD の外部コラボレーション設定](./media/entitlement-management-external-users/collaboration-settings.png)
@@ -105,11 +105,11 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>Microsoft 365 グループの共有設定を確認する
 
-- 外部ユーザーのアクセス パッケージに Microsoft 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Microsoft 365 グループへのゲスト アクセスの管理](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)」を参照してください。
+- 外部ユーザーのアクセス パッケージに Microsoft 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Microsoft 365 グループへのゲスト アクセスの管理](/Microsoft 365/admin/create-groups/manage-guest-access-in-groups?view=Microsoft 365-worldwide#manage-groups-guest-access)」を参照してください。
 
 - Microsoft 365 グループに関連付けられている SharePoint Online サイトとリソースに外部ユーザーがアクセスできるようにするには、SharePoint Online の外部共有がオンになっていることを確認してください。 詳細については、「[外部共有を有効または無効にする](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
 
-- PowerShell のディレクトリ レベルで Microsoft 365 グループのゲスト ポリシーを設定する方法については、「[例:ディレクトリ レベルでグループのゲスト ポリシーを構成する](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)」を参照してください。
+- PowerShell のディレクトリ レベルで Microsoft 365 グループのゲスト ポリシーを設定する方法については、「[例:ディレクトリ レベルでグループのゲスト ポリシーを構成する](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)」を参照してください。
 
 ### <a name="review-your-teams-sharing-settings"></a>Teams の共有設定を確認する
 

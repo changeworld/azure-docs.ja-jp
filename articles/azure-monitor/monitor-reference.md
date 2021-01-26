@@ -3,15 +3,15 @@ title: Azure Monitor によって監視される内容
 description: Azure Monitor によって監視されるすべてのサービスとその他のリソースのリファレンス。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 06/15/2020
-ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: rboucher
+ms.author: robb
+ms.date: 08/15/2020
+ms.openlocfilehash: 08d30fb72398c4b43422eb21f132d5fddd5502b7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080866"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853147"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -120,23 +120,23 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |IoT Hub | はい | はい | いいえ |  |
 |Key Vault | はい | はい | [はい](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes サービス (AKS) | いいえ | いいえ | [はい](insights/container-insights-overview.md)  |  |
-|Load Balancer | はい | はい | いいえ |  |
+|Load Balancer | はい | いいえ | いいえ |  |
 |Logic Apps | はい | はい | いいえ |  |
 |Machine Learning Service | いいえ | いいえ | いいえ |  |
 |Managed Applications  | いいえ | いいえ | いいえ |  |
 |マップ  | いいえ | いいえ | いいえ |  |
 |Media Services | はい | はい | いいえ |  |
-|Microsoft Flow | いいえ | いいえ | いいえ |  |
 |Microsoft マネージド デスクトップ | いいえ | いいえ | いいえ |  |
 |Microsoft PowerApps | いいえ | いいえ | いいえ |  |
 |Microsoft Social Engagement | いいえ | いいえ | いいえ |  |
-|Microsoft Stream | はい | はい | いいえ |  |
+|Microsoft Stream | はい | ○ | いいえ |  |
 |移行 | いいえ | いいえ | いいえ |  |
-|Multi-Factor Authentication | いいえ | はい | いいえ |  |
+|Multi-Factor Authentication | いいえ | ○ | いいえ |  |
 |Network Watcher | はい | はい | いいえ |  |
 |Notification Hubs | はい | いいえ | いいえ |  |
 |オープン データセット | いいえ | いいえ | いいえ |  |
 |ポリシー | いいえ | いいえ | いいえ |  |
+|Power Automate | いいえ | いいえ | いいえ |  |
 |Power BI Embedded | はい | はい | いいえ |  |
 |Private Link | いいえ | いいえ | いいえ |  |
 |Project Spool Communication Platform | いいえ | いいえ | いいえ |  |
@@ -151,7 +151,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |サインアップ ポータル | いいえ | いいえ | いいえ |  |
 |Site Recovery | いいえ | はい | いいえ |  |
 |Spring Cloud サービス | いいえ | いいえ | いいえ |  |
-|SQL Data Warehouse | はい | はい | いいえ |  |
+|Azure Synapse Analytics | はい | はい | いいえ |  |
 |SQL Database | はい | はい | いいえ |  |
 |SQL Server Stretch Database | はい | はい | いいえ |  |
 |スタック | いいえ | いいえ | いいえ |  |
@@ -170,18 +170,31 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |VPN Gateway | はい | はい | いいえ |  |
 |Windows Virtual Desktop | いいえ | いいえ | いいえ |  |
 
+## <a name="virtual-machine-agents"></a>仮想マシンのエージェント
+次の表に、仮想マシンのゲスト オペレーティング システムからデータを収集し、Monitor にデータを送信できるエージェントを示します。 各エージェントで異なるデータを収集し、Azure Monitor のメトリックまたはログに送信できます。 
+
+各エージェントが収集できるデータの詳細については、「[Azure Monitor エージェントの概要](platform/agents-overview.md)」を参照してください。
+
+| エージェント |  メトリック | ログ |
+|:---|:---|:---|:---|
+| [Azure Monitor エージェント (プレビュー)](platform/azure-monitor-agent-overview.md) | はい | はい |
+| [Log Analytics エージェント](platform/log-analytics-agent.md) | いいえ | はい|
+| [診断拡張機能](platform/diagnostics-extension-overview.md) | はい | いいえ |
+| [Telegraf エージェント](platform/collect-custom-metrics-linux-telegraf.md) | はい | いいえ |
+| [依存関係エージェント](insights/vminsights-enable-overview.md) | いいえ | はい |
+
 
 ## <a name="product-integrations"></a>製品の統合
 次の表のサービスとソリューションは、Azure Monitor によって収集された他のログ データを使用して分析できるように、データを Log Analytics ワークスペースに格納します。
 
 | 製品/サービス | 説明 |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking.md) と [Update Management](../automation/update-management/update-mgmt-overview.md) に関する記事を参照してください。 |
+| [Azure Automation](../automation/index.yml) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking/overview.md) と [Update Management](../automation/update-management/overview.md) に関する記事を参照してください。 |
 | [Azure Information Protection ](/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
 | [Azure Security Center](../security-center/index.yml) | セキュリティ イベントを収集して分析し、脅威分析を実行します。 「[Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md)」を参照してください。 |
 | [Azure Sentinel](../sentinel/index.yml) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](../sentinel/connect-data-sources.md)」のページを参照してください。 |
 | [Microsoft Intune](/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、または Log Analytics にログ データを送信する (プレビュー)](/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
-| ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](../network-watcher/traffic-analytics.md) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
+| ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](../network-watcher/traffic-analytics.md) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
 | [Office 365](insights/solution-office-365.md) | Office 365 環境を監視します。 Azure Sentinel から使用できる改善されたオンボード機能を備えた更新バージョンです。 |
 | [SQL Analytics](insights/azure-sql.md) | Azure SQL データベースと SQL Managed Instance のパフォーマンスを、複数のサブスクリプションにわたって大規模に監視します。 |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub デバイスの正常性と使用状況を追跡します。 |
@@ -232,4 +245,3 @@ Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリ
 - [Azure Monitor ログでデータを分析するためのログ クエリの作成に関するチュートリアル](learn/tutorial-resource-logs.md)を完了してください。
 - [Azure Monitor メトリックでデータを分析するためのメトリック グラフの作成に関するチュートリアル](learn/tutorial-metrics-explorer.md)を完了してください。
 
- 

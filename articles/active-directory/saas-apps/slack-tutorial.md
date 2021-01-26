@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d219767f943a432d41796c7d99f0e52253a9dd80
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527555"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814042"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88527555"
 * Slack にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Slack に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,38 +45,40 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Slack では、**SP** によって開始される SSO がサポートされます
 * Slack では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Slack では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)がサポートされます
-* Slack を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Slack では、[**自動化された** ユーザー プロビジョニング](./slack-provisioning-tutorial.md)がサポートされます
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-slack-from-the-gallery"></a>ギャラリーからの Slack の追加
 
 Azure AD への Slack の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Slack を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Slack**」と入力します。
 1. 結果のパネルから **[Slack]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-slack"></a>Slack の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-slack"></a>Slack の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Slack に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Slack の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Slack で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Slack に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Slack の SSO の構成](#configure-slack-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Slack のテスト ユーザーの作成](#create-slack-test-user)** - Slack で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクします。
+    1. **[Slack のテスト ユーザーの作成](#create-slack-test-user)** - Slack で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクします。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Slack** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Slack** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -86,13 +86,20 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://< DOMAIN NAME>.slack.com/sso/saml/start`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN NAME>.slack.com/sso/saml/start`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://slack.com` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに `https://slack.com` という URL を入力します。
+    
+    c. **[応答 URL]** に、次の URL パターンのいずれかを入力します。
+    
+    | [応答 URL]|
+    |----------|
+    | `https://<DOMAIN NAME>.slack.com/sso/saml` |
+    | `https://<DOMAIN NAME>.enterprise.slack.com/sso/saml` |
 
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Slack クライアント サポート チーム](https://slack.com/help/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
-    
+    > これらは実際の値ではありません。 実際のサインオン URL および応答 URL でこれらの値を更新する必要があります。 値を取得するには、[Slack クライアント サポート チーム](https://slack.com/help/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+
     > [!NOTE]
     > テナントと統合する必要がある Slack インスタンスが複数ある場合は、 **[識別子 (エンティティ ID)]** の値を変数にすることができます。 `https://<DOMAIN NAME>.slack.com` というパターンを使用します。 このシナリオでは、同じ値を使用して、Slack の別の設定と組み合わせる必要もあります。
 
@@ -106,7 +113,6 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
     | -----|---------|
     | emailaddress | user.userprincipalname |
     | email | user.userprincipalname |
-    | | |
 
    > [!NOTE]
    > サービス プロバイダー (SP) の構成を設定するには、SAML 構成ページの **[詳細オプション]** の横にある **[展開]** をクリックする必要があります。 **[Service Provider Issuer]\(サービス プロバイダーの発行者\)** ボックスに、ワークスペースの URL を入力します。 既定値は slack.com です。 
@@ -139,39 +145,43 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 1. アプリケーションの一覧で **[Slack]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-slack-sso"></a>Slack の SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、Slack 社のサイトに管理者としてサインインします。
+1. Slack 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Slack のセットアップ]** をクリックすると、Slack アプリケーションに移動します。 そこから、管理者の資格情報を入力して Slack にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Slack を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Slack 企業サイトに管理者としてサインインします。
 
 2. **[Microsoft Azure AD]** 、 **[Team Settings]** の順に選択します。
 
-     ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-team-settings.png)
+     ![[Microsoft Azure AD] でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. **[Team Settings]** セクションで、 **[Authentication]** タブをクリックし、 **[Change Settings]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-authentication.png)
+    ![[Team Settings]\(チーム設定\) でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. **[SAML Authentication Settings]** ダイアログで、次の手順を実行します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-save-authentication.png)
+    ![[SAML Authentication Settings]\(SAML 認証設定\) でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
-    a.  **[SAML 2.0 Endpoint (HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a.  **[SAML 2.0 Endpoint (HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b.  **[Identity Provider Issuer]\(ID プロバイダー発行者\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    b.  **[Identity Provider Issuer]\(ID プロバイダー発行者\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
     c.  ダウンロードした証明書ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[公開証明書]** ボックスに貼り付けます。
 
-    d. 必要に応じて、Slack チームに上記の 3 つの設定を構成します。 設定の詳細については、**Slack の SSO 構成ガイド**をこちらから参照してください。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
+    d. 必要に応じて、Slack チームに上記の 3 つの設定を構成します。 設定の詳細については、**Slack の SSO 構成ガイド** をこちらから参照してください。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-expand.png)
 
@@ -180,7 +190,7 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
     f.  **[Save Configuration]** をクリックします。
     
     > [!NOTE]
-    > Azure AD と統合する必要がある複数の Slack インスタンスがある場合は、Azure アプリケーション**識別子**の設定と組み合わせることができるように、 **[Service provider issuer]\(サービス プロバイダー発行者\)** に `https://<DOMAIN NAME>.slack.com` を設定します。
+    > Azure AD と統合する必要がある複数の Slack インスタンスがある場合は、Azure アプリケーション **識別子** の設定と組み合わせることができるように、 **[Service provider issuer]\(サービス プロバイダー発行者\)** に `https://<DOMAIN NAME>.slack.com` を設定します。
 
 ### <a name="create-slack-test-user"></a>Slack のテスト ユーザーの作成
 
@@ -194,18 +204,14 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Slack] タイルをクリックすると、SSO を設定した Slack に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Slack のサインオン URL にリダイレクトされます。
 
-## <a name="additional-resources"></a>その他のリソース
+* Slack のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Slack] タイルをクリックすると、Slack のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で Slack を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Slack を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

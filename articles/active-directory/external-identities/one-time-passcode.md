@@ -5,42 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 12/18/2020
 ms.author: mimart
 author: msmimart
-manager: celestedg
+manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907412"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703587"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>電子メール ワンタイム パスコード認証 (プレビュー)
+# <a name="email-one-time-passcode-authentication"></a>電子メール ワンタイム パスコード認証
+
+この記事では、B2B ゲスト ユーザーの電子メール ワンタイム パスコード認証を有効にする方法について説明します。 電子メール ワンタイム パスコード機能では、B2B ゲスト ユーザーが Azure AD、Microsoft アカウント (MSA)、Google フェデレーションなどの他の手段を使用して認証できないときに、ユーザーの認証が行われます。 ワンタイム パスコード認証では、Microsoft アカウントを作成する必要はありません。 ゲスト ユーザーは、招待に応じるか、共有リソースにアクセスするときに、自分のメール アドレスに送信される一時的なコードを要求することができます。 その後は、このコードを入力してサインインを続けます。
+
+![電子メール ワンタイム パスコードの概要図](media/one-time-passcode/email-otp.png)
+
+> [!IMPORTANT]
+> **2021 年 3 月** 以降、電子メール ワンタイム パスコード機能は、既存のすべてのテナントで有効になり、新しいテナントでは既定で有効になります。 この機能が自動的に有効にならないようにしたい場合は、これを無効にできます。 以下の「[電子メール ワンタイム パスコードを無効にする](#disable-email-one-time-passcode)」をご覧ください。
 
 > [!NOTE]
-> 電子メール ワンタイム パスコードは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-この記事では、B2B ゲスト ユーザーの電子メールのワンタイム パスコード認証を有効にする方法について説明します。 電子メール ワンタイム パスコード機能では、B2B ゲスト ユーザーが Azure AD、Microsoft アカウント (MSA)、Google フェデレーションなどの他の手段を使用して認証できないときに、ユーザーの認証が行われます。 ワンタイム パスコード認証では、Microsoft アカウントを作成する必要はありません。 ゲスト ユーザーは、招待に応じるか、共有リソースにアクセスするときに、自分のメール アドレスに送信される一時的なコードを要求することができます。 その後は、このコードを入力してサインインを続けます。
-
-現在、この機能はプレビューで使用できます (後述する「[プレビューにオプトインする](#opting-in-to-the-preview)」をご覧ください)。 プレビュー後、この機能はすべてのテナントに対して既定で有効になります。
-
-> [!NOTE]
-> ワンタイム パスコードのユーザーは、テナントのコンテキストを含むリンクを使用してサインインする必要があります (たとえば、`https://myapps.microsoft.com/?tenantid=<tenant id>` や `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`)。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。 
+> ワンタイム パスコードのユーザーは、テナントのコンテキストを含むリンクを使用してサインインする必要があります (たとえば、`https://myapps.microsoft.com/?tenantid=<tenant id>` や `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`)。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com` や `https://portal.azure.com` を使用すると、エラーが発生します。
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
+
+電子メール ワンタイム パスコード機能が有効になっている場合、[一定の条件を満たす](#when-does-a-guest-user-get-a-one-time-passcode)新しく招待されたユーザーはワンタイム パスコード認証を使用します。 電子メール ワンタイム パスコードが有効になる前に招待に応じたゲスト ユーザーは、引き続き同じ認証方法を使用します。
+
 ワンタイム パスコード認証では、ゲスト ユーザーは、直接リンクをクリックするか、招待メールを使用して、招待に応じることができます。 どちらの場合も、ブラウザーのメッセージで、ゲスト ユーザーのメール アドレスにコードが送信されることが示されます。 ゲスト ユーザーは、 **[コードの送信]** を選択します。
- 
+
    ![[コードの送信] ボタンを示すスクリーンショット](media/one-time-passcode/otp-send-code.png)
- 
+
 パスコードがユーザーのメール アドレスに送信されます。 ユーザーは、メールからパスコードを取得し、ブラウザー ウィンドウに入力します。
- 
+
    ![[コードの入力] ページを示すスクリーンショット](media/one-time-passcode/otp-enter-code.png)
- 
-ゲスト ユーザーは認証されて、共有リソースを表示したり、サインインを続行したりできるようになります。 
+
+ゲスト ユーザーは認証されて、共有リソースを表示したり、サインインを続行したりできるようになります。
 
 > [!NOTE]
 > ワンタイム パスコードの有効期間は 30 分です。 30 分が経過すると、その特定のワンタイム パスコードは無効になり、ユーザーは新しいパスコードを要求する必要があります。 ユーザー セッションは 24 時間後に期限が切れます。 それを過ぎると、ゲスト ユーザーはリソースにアクセスするときに新しいパスコードを受け取ります。 セッションの有効期限により、ゲスト ユーザーが自分の会社を退職したりアクセスを必要としなくなったときに特に、セキュリティが強化されます。
@@ -48,111 +51,61 @@ ms.locfileid: "87907412"
 ## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>ゲスト ユーザーがワンタイム パスコードを入手するとき
 
 次の場合、ゲスト ユーザーは、招待に応じたとき、または共有されているリソースへのリンクを使用したときに、ワンタイム パスコードを受け取ります。
-- Azure AD アカウントを持っていない 
-- Microsoft アカウントを持っていない 
-- 招待側テナントが @gmail.com および @googlemail.com ユーザーに Google フェデレーションを設定していない 
 
-招待するとき、招待されるユーザーにワンタイム パスコード認証が使用されることは示されません。 ただし、ゲスト ユーザーがサインインするとき、他の認証方法を使用できない場合は、ワンタイム パスコード認証がフォールバック メソッドになります。 
+- Azure AD アカウントを持っていない
+- Microsoft アカウントを持っていない
+- 招待側テナントが @gmail.com および @googlemail.com ユーザーに Google フェデレーションを設定していない
 
-Azure portal の **[Azure Active Directory]**  >  **[ユーザー]** で、ワンタイム パスコードを使用して認証しているゲスト ユーザーを確認できます。
+招待するとき、招待されるユーザーにワンタイム パスコード認証が使用されることは示されません。 ただし、ゲスト ユーザーがサインインするとき、他の認証方法を使用できない場合は、ワンタイム パスコード認証がフォールバック メソッドになります。
 
-![[Source]\(ソース\) の値が OTP のワンタイム パスワード ユーザーを示すスクリーンショット](media/one-time-passcode/otp-users.png)
+ゲスト ユーザーがワンタイム パスコードを使用して認証されているかどうかを調べるには、ユーザーの詳細で **[ソース]** プロパティを確認します。 Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]** の順に移動してから、ユーザーを選択して詳細ページを開きます。
+
+![[Source]\(ソース\) の値が OTP のワンタイム パスワード ユーザーを示すスクリーンショット](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
 > ユーザーがワンタイム パスコードを使用した後、MSA、Azure AD アカウント、または他のフェデレーション アカウントを取得した場合、引き続きワンタイム パスコードによる認証が使用されます。 認証方法を更新する場合は、ゲスト ユーザー アカウントを削除して、招待し直すことができます。
 
 ### <a name="example"></a>例
-ゲスト ユーザー alexdoe@gmail.com は、Google フェデレーションが設定されていない Fabrikam に招待されます。 Alex は Microsoft アカウントを持っていません。 認証用のワンタイム パスコードを受け取ります。
 
-## <a name="opting-in-to-the-preview"></a>プレビューにオプトインする 
-オプトイン アクションが有効になるまで、数分かかる場合があります。 その後は、上記の条件を満たす新しく招待されたユーザーだけが、ワンタイム パスコード認証を使用します。 以前に招待に応じたゲスト ユーザーは引き続き、同じ認証方法を使用します。
+ゲスト ユーザー teri@gmail.com は、Google フェデレーションが設定されていない Fabrikam に招待されます。 Teri は Microsoft アカウントを持っていません。 認証用のワンタイム パスコードを受け取ります。
 
-### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してオプトインするには
-1.  Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
-2.  ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
-3.  **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
-5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、 **[はい]** を選択します。
- 
-### <a name="to-opt-in-using-powershell"></a>PowerShell を使用してオプトインするには
+## <a name="disable-email-one-time-passcode"></a>電子メール ワンタイム パスコードを無効にする
 
-最初に、最新バージョンの Azure AD PowerShell for Graph モジュール (AzureADPreview) をインストールする必要があります。 その後、B2B ポリシーが既に存在するかどうかを確認して、適切なコマンドを実行します。
+2021 年 3 月以降、電子メール ワンタイム パスコード機能は、既存のすべてのテナントで有効になり、新しいテナントでは既定で有効になります。 その時点で、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド ("バイラル" または "Just-In-Time") Azure AD アカウントおよびテナントを作成することによる招待の利用をサポートしなくなります。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、使用しないことを選択した場合は、この機能を無効にすることもできます。
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>前提条件:最新の AzureADPreview モジュールをインストールする
-最初に、どのモジュールをインストールしているかをチェックします。 管理者特権で Windows PowerShell を開き (管理者として実行)、次のコマンドを実行します。
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
+> [!NOTE]
+>
+> お使いのテナントで電子メール ワンタイム パスコード機能が有効になっているときに、それを無効にした場合、ワンタイム パスコードを利用していたゲスト ユーザーは全員サインインできなくなります。 ゲスト ユーザーを削除して招待し直すと、別の認証方法を使用してもう一度サインインできるようになります。
 
-最新のバージョンがあることを示すメッセージなしで AzureADPreview モジュールが表示されれば、問題ありません。 それ以外の場合は、出力に基づいて次のいずれかを行います。
+### <a name="to-disable-the-email-one-time-passcode-feature"></a>電子メール ワンタイム パスコードを無効にするには
 
-- 結果が返らない場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- 結果に AzureAD モジュールだけが表示される場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。 
+1. Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
 
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- 結果に AzureADPreview モジュールだけが表示されるが、最新のバージョンがあることを示すメッセージが表示される場合は、次のコマンドを実行してそのモジュールをインストールします。 
+2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
 
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
+3. **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
 
-信頼されていないリポジトリからモジュールをインストールしていることを示すメッセージが表示される場合があります。 これは、PSGallery リポジトリを信頼されたリポジトリとして事前に設定していない場合に発生します。 **Y** キーを押してモジュールをインストールします。
+4. **[ゲストの電子メール ワンタイム パスコード]** の下で、 **[ゲストの電子メール ワンタイム パスコードを無効にする]** を選択します。
 
-#### <a name="check-for-existing-policies-and-opt-in"></a>既存のポリシーを確認してオプトインする
+    ![電子メール ワンタイム パスコードの設定](media/one-time-passcode/otp-admin-settings.png)
 
-次に、以下を実行して、B2BManagementPolicy が現在存在するかどうかを確認します。
+   > [!NOTE]
+   > 上記のオプションではなく、次のトグルが表示されている場合は、この機能のプレビューを以前に有効、無効、またはオプトインしたことがあることを意味します。 **[いいえ]** を選択すると、この機能が無効になります。
+   >
+   >![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-```powershell 
-$currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
-$currentpolicy -ne $null
-```
-- 出力が False の場合、ポリシーは現在存在しません。 新しい B2BManagementPolicy を作成し、以下を実行してプレビューにオプトインします。
+5. **[保存]** を選択します。
 
-   ```powershell 
-   $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
-   New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
-   ```
+## <a name="note-for-public-preview-customers"></a>パブリック プレビューの顧客向けのメモ
 
-- 出力が True の場合は、現在 B2BManagementPolicy ポリシーは存在します。 ポリシーを更新してプレビューにオプトインするには、以下を実行します。
-  
-   ```powershell 
-   $policy = $currentpolicy.Definition | ConvertFrom-Json
-   $features=[PSCustomObject]@{'Features'=@('OneTimePasscode')}; $policy.B2BManagementPolicy | Add-Member 'PreviewPolicy' $features -Force; $policy.B2BManagementPolicy
-   $updatedPolicy = $policy | ConvertTo-Json -Depth 3
-   Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-   ```
+以前に電子メール ワンタイム パスコードのパブリック プレビューにオプトインしたことがある場合は、2021 年 3 月という機能の自動有効化の期日が適用されないため、関連するビジネス プロセスは影響を受けません。 また、Azure portal の **[ゲストの電子メール ワンタイム パスコード]** プロパティの下に、 **[2021 年 3 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** オプションも表示されません。 代わりに、次の **[はい]** または **[いいえ]** のトグルが表示されます。
 
-## <a name="opting-out-of-the-preview-after-opting-in"></a>オプトインの後でプレビューからオプトアウトする
-オプトアウト アクションが有効になるまで、数分かかる場合があります。 プレビューを無効にした場合、ワンタイム パスコードを使用したゲスト ユーザーはサインインできなくなります。 ゲスト ユーザーを削除して招待し直すことで、ゲスト ユーザーが別の認証方法を使用して再びサインインできるようにすることができます。
+![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してプレビューをオフにするには
-1.  Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
-2.  ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
-3.  **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
-5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、 **[いいえ]** を選択します。
+ただし、この機能からオプトアウト し、2021 年 3 月にそれが自動的に有効になることを希望する場合は、Microsoft Graph API の [email authentication method configuration リソースの種類](https://aka.ms/exid-graphemailauth)を使用して、既定の設定に戻すことができます。 既定の設定に戻すと、 **[ゲストの電子メール ワンタイム パスコード]** の下で次のオプションが使用可能になります。
 
-### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell を使用してプレビューをオフにするには
-まだ行っていない場合は、最新の AzureADPreview モジュールをインストールします (前の「[前提条件:最新の AzureADPreview モジュールをインストールする](#prerequisite-install-the-latest-azureadpreview-module)」を参照してください)。 次に、以下を実行して、ワンタイム パスコード プレビュー ポリシーが現在存在するかどうかを確認します。
+- **[2021 年 3 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** 。 (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 3 月に自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
 
-```powershell 
-$currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
-($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
-```
+- **[ゲストの電子メール ワンタイム パスコードを今すぐ有効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を有効にします。
 
-出力が True の場合は、以下を実行してプレビューをオプトアウトします。
-
-```powershell 
-$policy = $currentpolicy.Definition | ConvertFrom-Json
-$policy.B2BManagementPolicy.PreviewPolicy.Features = $policy.B2BManagementPolicy.PreviewPolicy.Features.Where({$_ -ne "OneTimePasscode"})
-$updatedPolicy = $policy | ConvertTo-Json -Depth 3
-Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-```
-
+- **[ゲストの電子メール ワンタイム パスコードを無効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を無効にし、2021 年 3 月にこの機能が有効にならないようにします。

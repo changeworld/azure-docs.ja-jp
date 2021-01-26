@@ -1,6 +1,6 @@
 ---
 title: 具体化されたビューを使用したパフォーマンス チューニング
-description: 具体化されたビューを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項
+description: クエリのパフォーマンスを向上させるための、具体化されたビューに関する推奨事項と考慮事項。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495694"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305100"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>具体化されたビューを使用したパフォーマンス チューニング
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを使用した具体化されたビューでのパフォーマンス チューニング
 
-Synapse SQL プールでは、具体化されたビューは、複雑な分析クエリを少ないメンテナンスで維持し、クエリには一切変更を加えることなく高速なパフォーマンスが得られる手法です。 この記事では、具体化されたビューを使用するうえでの一般的なガイダンスを説明します。
+専用 SQL プールで具体化されたビューを使用すると、複雑な分析クエリのメンテナンスが少なくて済み、クエリを変更せずに高速なパフォーマンスを実現することができます。 この記事では、具体化されたビューを使用するうえでの一般的なガイダンスを説明します。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化されたビューと標準ビュー
 
@@ -27,9 +27,9 @@ SQL プールでは、標準ビューと具体化されたビューの両方が�
 
 標準ビューでは、ビューを使用するたびにそのデータが計算されます。  ディスクには一切データは格納されません。 通常、標準ビューは、データベース内の論理オブジェクトとクエリを体系化しやすくするツールとして使用されます。  標準ビューを使用するには、クエリでそれを直接参照する必要があります。
 
-具体化されたビューでは、そのデータが事前に計算され、テーブルと同じように SQL プールに格納して管理されます。  具体化されたビューを使用するたびに再計算は必要ありません。  そのため、具体化されたビューにあるデータの一部または全部を使用するクエリでは、パフォーマンスを向上させることができます。  さらに、具体化されたビューは、クエリで直接参照することなく使用できるので、アプリケーション コードに変更を加える必要がありません。  
+具体化されたビューによって、そのデータは事前に計算され、テーブルと同じように専用 SQL プールに格納されて管理されます。  具体化されたビューを使用するたびに再計算は必要ありません。  そのため、具体化されたビューにあるデータの一部または全部を使用するクエリでは、パフォーマンスを向上させることができます。  さらに、具体化されたビューは、クエリで直接参照することなく使用できるので、アプリケーション コードに変更を加える必要がありません。  
 
-標準ビューの要件のほとんどは、具体化されたビューにも当てはまります。 具体化されたビューの構文とその他の要件の詳細については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページを参照してください。
+標準ビューの要件のほとんどは、具体化されたビューにも当てはまります。 具体化されたビューの構文とその他の要件の詳細については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページを参照してください。
 
 | 比較                     | 表示                                         | 具体化されたビュー
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -46,17 +46,17 @@ SQL プールでは、標準ビューと具体化されたビューの両方が�
 
 - JOIN や集計関数を含んだ複雑なクエリの実行時間が短縮されます。 クエリが複雑であればあるほど、実行時間を短縮できる可能性が大きくなります。 利点が最大限に活かされるのは、クエリの計算コストが大きく、かつその結果得られるデータ セットが小さいケースです。  
 
-- SQL プールのオプティマイザーでは、デプロイされている具体化されたビューを自動的に使用して、クエリの実行プランを改善します。  このプロセスは、ユーザーからは透過的に行われ、クエリの実行速度を向上させます。また、具体化されたビューを直接参照する必要もありません。
+- 専用 SQL プールのクエリ オプティマイザーを使用すると、デプロイされている具体化されたビューを自動的に使用して、クエリの実行プランを改善できます。  このプロセスは、ユーザーからは透過的に行われ、クエリの実行速度を向上させます。また、具体化されたビューを直接参照する必要もありません。
 
 - ビューのメンテナンスが少なくて済みます。  具体化されたビューでは、データが 2 か所に格納されます (ビュー作成時の初期データはクラスター化列ストア インデックス、増分変更データはデルタ ストア)。  ベース テーブル以降のすべてのデータ変更は、同期的な方法で自動的にデルタ ストアに追加されます。  デルタ ストアにあるデータは、バックグラウンド プロセス (組ムーバー) によってビューの列ストア インデックスに定期的に移動されます。  この設計によって、具体化されたビューに対するクエリから、ベース テーブルに直接照会した場合と同じデータを得ることができます。
 - ベース テーブルとは異なり、具体化されたビューのデータは分散させることができます。  
 - 具体化されたビューのデータには、高可用性と回復性の点で、通常のテーブルのデータと同じ利点が確保されています。  
 
-他のデータ ウェアハウス プロバイダーと比較して、SQL プールに実装されている具体化されたビューには、さらに次の追加の利点があります。
+他のデータ ウェアハウス プロバイダーと比較して、専用 SQL プールに実装されている具体化されたビューには、さらに次の追加の利点があります。
 
 - ベース テーブル内のデータ変更で自動的かつ同期的にデータが更新されます。 ユーザーによる操作は不要です。
-- 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページを参照してください。
-- クエリに固有の具体化されたビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+- 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページを参照してください。
+- クエリに固有の具体化されたビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ## <a name="common-scenarios"></a>一般的なシナリオ  
 
@@ -79,7 +79,9 @@ SQL プールでは、標準ビューと具体化されたビューの両方が�
 
 **クエリ パフォーマンスを向上させるために別のデータ分散方法が必要である**
 
-Azure データ ウェアハウスは、分散型の超並列処理 (MPP) システムです。   データ ウェアハウス テーブル内のデータは、3 つの[分散方式](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。  
+Azure データ ウェアハウスは、分散型の超並列処理 (MPP) システムです。  
+
+Synapse SQL は、データ エンジニアにとって使い慣れた標準の T-SQL エクスペリエンスを使用して、エンタープライズがデータ ウェアハウジングおよびデータ仮想化シナリオを実装できるようにする分散クエリ システムです。 また、SQL の機能を拡張して、ストリーミングや機械学習のシナリオに対応します。 データ ウェアハウス テーブル内のデータは、3 つの[分散方式](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。  
 
 データ分散はテーブルの作成時に指定され、テーブルが削除されるまで変更されることなく維持されます。 具体化されたビューはディスク上の仮想テーブルであるため、ハッシュとラウンド ロビンによるデータ分散がサポートされます。  ユーザーは、ベース テーブルとは異なっているものの、頻繁にビューを使用するクエリのパフォーマンスに最適なデータ分散を選択できます。  
 
@@ -143,13 +145,17 @@ GROUP BY A, C
 
 **具体化されたビューを監視する**
 
-具体化されたビューは、クラスター化列ストア インデックス (CCI) を含んだテーブルとまったく同じようにデータ ウェアハウスに格納されます。  具体化されたビューからのデータの読み取りには、インデックスのスキャンとデルタ ストアからの変更の適用が含まれます。  デルタ ストア内の行数が多すぎると、具体化されたビューからのクエリの解決にかかる時間が、ベース テーブルに直接照会するよりも長くなってしまう場合があります。  クエリ パフォーマンスの低下を防ぐために、[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を実行して、ビューのオーバーヘッド比率 (合計行数/ベース ビューの行数) を監視することをお勧めします。  オーバーヘッド比率が高すぎる場合は、デルタ ストア内のすべての行が列ストア インデックスに移動されるよう、具体化されたビューを再構築することを検討してください。  
+具体化されたビューは、クラスター化列ストア インデックス (CCI) を含んだテーブルとまったく同じようにデータ ウェアハウスに格納されます。  具体化されたビューからのデータの読み取りには、インデックスのスキャンとデルタ ストアからの変更の適用が含まれます。  デルタ ストア内の行数が多すぎると、具体化されたビューからのクエリの解決にかかる時間が、ベース テーブルに直接照会するよりも長くなってしまう場合があります。  
+
+クエリ パフォーマンスの低下を防ぐために、[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行して、ビューのオーバーヘッド比率 (合計行数/ベース ビューの行数) を監視することをお勧めします。  オーバーヘッド比率が高すぎる場合は、デルタ ストア内のすべての行が列ストア インデックスに移動されるよう、具体化されたビューを再構築することを検討してください。  
 
 **具体化されたビューと結果セットのキャッシュ**
 
-これらの 2 つの機能は、クエリ パフォーマンスのチューニングと同時期に SQL プールに導入されました。 結果セットのキャッシュは、静的データに対する反復的なクエリから、高いコンカレンシーと高速な応答を得る目的で使用されます。  
+これらの 2 つの機能は、クエリ パフォーマンスのチューニングと同時期に専用 SQL プールに導入されました。 結果セットのキャッシュは、静的データに対する反復的なクエリから、高いコンカレンシーと高速な応答を得る目的で使用されます。  
 
-キャッシュされた結果を使用するには、キャッシュを要求するクエリの形式が、そのキャッシュを生成したクエリと一致している必要があります。  加えて、キャッシュされた結果は、クエリ全体に当てはまるものでなければなりません。  具体化されたビューでは、ベース テーブルへのデータの変更が許容されます。  具体化されたビューのデータは、クエリの一部に適用することができます。  そのため、一部の計算を共有する複数のクエリで、同じ具体化されたビューを使用することにより、パフォーマンスを高めることができます。
+キャッシュされた結果を使用するには、キャッシュを要求するクエリの形式が、そのキャッシュを生成したクエリと一致している必要があります。  加えて、キャッシュされた結果は、クエリ全体に当てはまるものでなければなりません。  
+
+具体化されたビューでは、ベース テーブルへのデータの変更が許容されます。  具体化されたビューのデータは、クエリの一部に適用することができます。  そのため、一部の計算を共有する複数のクエリで、同じ具体化されたビューを使用することにより、パフォーマンスを高めることができます。
 
 ## <a name="example"></a>例
 
@@ -352,7 +358,7 @@ GROUP BY c_customer_id
 
 ```
 
-元のクエリの実行プランをもう一度確認してみます。  今度は、結合の数が 17 から 5 に変化しており、また、シャッフルはなくなっています。  プランのフィルター操作アイコンをクリックします。 その出力リストに、ベース テーブルではなく具体化されたビューから読み取られたデータが表示されます。  
+元のクエリの実行プランをもう一度確認してみます。  今度は、結合の数が 17 から 5 に変化しており、また、シャッフルはなくなっています。  プランのフィルター操作アイコンを選択します。 その出力リストに、ベース テーブルではなく具体化されたビューから読み取られたデータが表示されます。  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

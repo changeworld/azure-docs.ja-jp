@@ -1,30 +1,30 @@
 ---
-title: Synapse SQL プールのデータ読み込みのベスト プラクティス
-description: Synapse SQL プールを使用したデータの読み込みに関する推奨事項とパフォーマンスの最適化。
+title: 専用 SQL プールのデータ読み込みのベスト プラクティス
+description: Azure Synapse Analytics の専用 SQL プール を使用したデータの読み込みに関する推奨事項とパフォーマンスの最適化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201635"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120106"
 ---
-# <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Synapse SQL プールを使用したデータの読み込みに関するベスト プラクティス
+# <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用したデータの読み込みのベスト プラクティス
 
-この記事では、SQL プールを使用したデータの読み込みに関する推奨事項とパフォーマンスの最適化について説明します。
+この記事では、専用 SQL プールを使用したデータの読み込みに関する推奨事項とパフォーマンスの最適化について説明します。
 
 ## <a name="preparing-data-in-azure-storage"></a>Azure Storage のデータの準備
 
-待機時間を最小限に抑えるには、ストレージ層と SQL プールを併置します。
+待機時間を最小限に抑えるには、ストレージ層と専用 SQL プールを併置します。
 
 ORC ファイル形式でデータをエクスポートすると、大きなテキスト列がある場合に、Java のメモリ不足エラーが発生することがあります。 この制限を回避するには、列のサブセットのみをエクスポートします。
 
@@ -34,23 +34,23 @@ ORC ファイル形式でデータをエクスポートすると、大きなテ�
 
 ## <a name="running-loads-with-enough-compute"></a>十分なコンピューティング リソースで読み込みを実行する
 
-読み込み速度を最速にするには、一度に 1 つの読み込みジョブのみを実行します。 それが実行できない場合は、同時に実行する読み込み数を最小限に抑えます。 大規模な読み込みジョブが予想される場合は、読み込み前に SQL プールをスケール アップすることを検討してください。
+読み込み速度を最速にするには、一度に 1 つの読み込みジョブのみを実行します。 それが実行できない場合は、同時に実行する読み込み数を最小限に抑えます。 大規模な読み込みジョブが予想される場合は、読み込み前に専用 SQL プールをスケール アップすることを検討してください。
 
 適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 各読み込みユーザーを特定のワークロード グループに分類します。 読み込みを実行するには、いずれかの読み込みユーザーとしてサインインし、読み込みを実行します。 読み込みは、ユーザーのワークロード グループを使用して実行されます。  
 
 ### <a name="example-of-creating-a-loading-user"></a>読み込みユーザーの作成の例
 
-この例では、特定のワークロード グループに分類された読み込みユーザーを作成します。 まず、**マスターに接続**し、ログインを作成します。
+この例では、特定のワークロード グループに分類された読み込みユーザーを作成します。 まず、**マスターに接続** し、ログインを作成します。
 
 ```sql
    -- Connect to master
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
+専用 SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
 
 ```sql
-   -- Connect to the SQL pool
+   -- Connect to the dedicated SQL pool
    CREATE USER loader FOR LOGIN loader;
    GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
    GRANT INSERT ON <yourtablename> TO loader;
@@ -60,7 +60,7 @@ SQL プールに接続し、ユーザーを作成します。 次のコードは
    
    CREATE WORKLOAD GROUP DataLoads
    WITH ( 
-      MIN_PERCENTAGE_RESOURCE = 100
+       MIN_PERCENTAGE_RESOURCE = 100
        ,CAP_PERCENTAGE_RESOURCE = 100
        ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
     );
@@ -71,12 +71,15 @@ SQL プールに接続し、ユーザーを作成します。 次のコードは
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>これは、SQL プールの 100% のリソースを単一の読み込みに割り当てる極端な例です。 これにより、最大コンカレンシーが 1 になります。 これを使用する必要があるのは、ワークロード間でリソースのバランスをとるために独自の構成で追加のワークロード グループを作成する必要がある初期読み込みに対してのみであることに注意してください。 
 
 読み込みワークロード グループのリソースを使用して読み込みを実行するには、loader としてサインインし、読み込みを実行します。
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>複数のユーザーによる読み込みの許可 (PolyBase)
 
-多くの場合、複数のユーザーが SQL プールにデータを読み込む必要があります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。
+多くの場合、複数のユーザーが 1 つの専用 SQL プールにデータを読み込む必要があります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。
 
 読み込みを実行するすべてのユーザーに、すべてのスキーマに対する制御アクセス権を付与したくない場合があります。 アクセス許可を制限するには、DENY CONTROL ステートメントを使用します。
 
@@ -91,9 +94,9 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="loading-to-a-staging-table"></a>ステージング テーブルに読み込む
 
-データを SQL プール テーブルに移行する際に最速の読み込み速度を達成するには、データを 1 つのステージング テーブルに読み込みます。  ステージング テーブルをヒープとして定義し、分散オプションにラウンドロビンを使用します。
+データを専用 SQL プール テーブルに移動する際に最速の読み込み速度を達成するには、データを 1 つのステージング テーブルに読み込みます。  ステージング テーブルをヒープとして定義し、分散オプションにラウンドロビンを使用します。
 
-通常、読み込みは 2 段階のプロセスです。まずステージング テーブルにデータを読み込み、運用 SQL プール テーブルに挿入します。 運用テーブルでハッシュ分散を使用している場合、ハッシュ分散を使用してステージング テーブルを定義すると、読み込みと挿入の合計時間が速くなる可能性があります。
+通常、読み込みは 2 段階のプロセスです。まずステージング テーブルにデータを読み込んでから、運用環境の専用 SQL プール テーブルに挿入します。 運用テーブルでハッシュ分散を使用している場合、ハッシュ分散を使用してステージング テーブルを定義すると、読み込みと挿入の合計時間が速くなる可能性があります。
 
 ステージング テーブルへの読み込みに時間はかかりますが、運用テーブルに行を挿入する 2 つ目の手順では、分散全体でデータの移動は発生しません。
 
@@ -111,7 +114,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SqLBulkCopy API または bcp を使用するときはバッチ サイズを増やす
 
-COPY ステートメントを使用して読み込むと、SQL プールで最大のスループットが得られます。 COPY を使用して読み込むことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
+COPY ステートメントを使用して読み込むと、専用 SQL プールで最大のスループットが得られます。 COPY を使用して読み込むことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
 
 > [!TIP]
 > 最適なバッチ サイズの容量を決定するために推奨されるベースラインは、10 万行から 100 万行のバッチ サイズです。
@@ -175,6 +178,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>次のステップ
 
-- 抽出、読み込み、変換 (ELT) プロセスを設計するときの COPY ステートメントまたは PolyBase の詳細については、[SQL Data Warehouse のための ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
-- 読み込みのチュートリアルについては、[COPY ステートメントを使用した Azure BLOB ストレージから Synapse SQL へのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関するページを参照してください。
+- 抽出、読み込み、変換 (ELT) プロセスを設計するときの COPY ステートメントまたは PolyBase の詳細については、[Azure Synapse Analytics の ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
+- 読み込みのチュートリアルについては、[COPY ステートメントを使用した Azure BLOB ストレージから Synapse SQL へのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関するページを参照してください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。

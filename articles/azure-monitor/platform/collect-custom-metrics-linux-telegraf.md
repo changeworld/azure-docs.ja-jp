@@ -8,11 +8,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008992"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -34,7 +34,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 [Azure portal](https://portal.azure.com) にサインインします。
 
 > [!NOTE]  
-> 従来のアラート ルールを移行し、既存の Linux 仮想マシンを使用する場合は、仮想マシンにシステムによって割り当てられた ID が**オン**に設定されていることを確認します。
+> 従来のアラート ルールを移行し、既存の Linux 仮想マシンを使用する場合は、仮想マシンにシステムによって割り当てられた ID が **オン** に設定されていることを確認します。
 
 新しい Linux VM を作成するには、次の手順を実行します。 
 
@@ -42,7 +42,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 1. 「**仮想マシン**」を検索します。  
 1. **[Ubuntu 16.04 LTS]** を選択し、 **[作成]** を選択します。 
 1. VM 名 (**MyTelegrafVM** など) を指定します。  
-1. ディスクの種類を **SSD** のままにしておきます。 次に、**azureuser** のように、**ユーザー名**を指定します。 
+1. ディスクの種類を **SSD** のままにしておきます。 次に、**azureuser** のように、**ユーザー名** を指定します。 
 1. **[認証の種類]** で、 **[パスワード]** を選択します。 次に、この VM への SSH に後から使用する予定のパスワードを入力します。 
 1. **[新しいリソース グループの作成]** を選択します。 **myResourceGroup** のように、名前を指定します。 **[場所]** を選択します。 **[OK]** をクリックします。 
 

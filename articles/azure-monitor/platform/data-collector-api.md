@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384856"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006629"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -54,7 +54,7 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 | 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 文字、数字、アンダースコア (_) のみを含めることができ、100 文字を超えることはできません。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
-| x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](log-standard-properties.md#_resourceid) プロパティに値が設定され、[リソース コンテキスト](design-logs-deployment.md#access-mode) クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース コンテキスト クエリにデータは含まれません。 |
+| x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](./log-standard-columns.md#_resourceid) プロパティに値が設定され、[リソース コンテキスト](design-logs-deployment.md#access-mode) クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース コンテキスト クエリにデータは含まれません。 |
 | time-generated-field | データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 
 ## <a name="authorization"></a>承認
@@ -66,7 +66,7 @@ Azure Monitor HTTP データ コレクター API への要求には、Authorizat
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)を使用して計算される[ハッシュベース メッセージ認証コード (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) です。 このコードを Base64 エンコーディングを使用してエンコードします。
+*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)を使用して計算される [ハッシュベース メッセージ認証コード (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) です。 このコードを Base64 エンコーディングを使用してエンコードします。
 
 **SharedKey** 署名文字列をエンコードするには、次の形式を使用します。
 
@@ -552,6 +552,98 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 
+### <a name="java-sample"></a>Java サンプル
+
+```java
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.springframework.http.MediaType;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.TimeZone;
+
+import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
+
+public class ApiExample {
+
+  private static final String workspaceId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+  private static final String sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+  private static final String logName = "DemoExample";
+  /*
+  You can use an optional field to specify the timestamp from the data. If the time field is not specified,
+  Azure Monitor assumes the time is the message ingestion time
+   */
+  private static final String timestamp = "";
+  private static final String json = "{\"name\": \"test\",\n" + "  \"id\": 1\n" + "}";
+  private static final String RFC_1123_DATE = "EEE, dd MMM yyyy HH:mm:ss z";
+
+  public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+    String dateString = getServerTime();
+    String httpMethod = "POST";
+    String contentType = "application/json";
+    String xmsDate = "x-ms-date:" + dateString;
+    String resource = "/api/logs";
+    String stringToHash = String
+        .join("\n", httpMethod, String.valueOf(json.getBytes(StandardCharsets.UTF_8).length), contentType,
+            xmsDate , resource);
+    String hashedString = getHMAC254(stringToHash, sharedKey);
+    String signature = "SharedKey " + workspaceId + ":" + hashedString;
+
+    postData(signature, dateString, json);
+  }
+
+  private static String getServerTime() {
+    Calendar calendar = Calendar.getInstance();
+    SimpleDateFormat dateFormat = new SimpleDateFormat(RFC_1123_DATE);
+    dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+    return dateFormat.format(calendar.getTime());
+  }
+
+  private static void postData(String signature, String dateString, String json) throws IOException {
+    String url = "https://" + workspaceId + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
+    HttpPost httpPost = new HttpPost(url);
+    httpPost.setHeader("Authorization", signature);
+    httpPost.setHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+    httpPost.setHeader("Log-Type", logName);
+    httpPost.setHeader("x-ms-date", dateString);
+    httpPost.setHeader("time-generated-field", timestamp);
+    httpPost.setEntity(new StringEntity(json));
+    try(CloseableHttpClient httpClient = HttpClients.createDefault()){
+      HttpResponse response = httpClient.execute(httpPost);
+      int statusCode = response.getStatusLine().getStatusCode();
+      System.out.println("Status code: " + statusCode);
+    }
+  }
+
+  private static String getHMAC254(String input, String key) throws InvalidKeyException, NoSuchAlgorithmException {
+    String hash;
+    Mac sha254HMAC = Mac.getInstance("HmacSHA256");
+    Base64.Decoder decoder = Base64.getDecoder();
+    SecretKeySpec secretKey = new SecretKeySpec(decoder.decode(key.getBytes(StandardCharsets.UTF_8)), "HmacSHA256");
+    sha254HMAC.init(secretKey);
+    Base64.Encoder encoder = Base64.getEncoder();
+    hash = new String(encoder.encode(sha254HMAC.doFinal(input.getBytes(StandardCharsets.UTF_8))));
+    return hash;
+  }
+
+}
+
+
+```
+
+
 ## <a name="alternatives-and-considerations"></a>代替手段と考慮事項
 Data Collector API は、自由形式のデータを Azure ログに収集する際のほとんどのニーズに対応しますが、この API の一部の制限を克服するために代替手段が必要になる場合があります。 主な考慮事項を含め、すべてのオプションを以下に示します。
 
@@ -559,7 +651,7 @@ Data Collector API は、自由形式のデータを Azure ログに収集する
 |---|---|---|
 | [カスタム イベント](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Application Insights でのネイティブ SDK ベースのインジェスト | 通常はアプリケーション内で SDK を使用してインストルメント化される Application Insights では、カスタム イベントを使用してカスタム データを送信できます。 | <ul><li> アプリケーション内で生成されるが、SDK によって既定のデータの種類 (要求、依存関係、例外など) のいずれかとして取得されないデータ。</li><li> Application Insights で他のアプリケーション データに最も頻繁に関連付けられるデータ。 </li></ul> |
 | Azure Monitor ログの Data Collector API | Azure Monitor ログの Data Collector API は、データを取り込むための完全に拡張可能な方法です。 JSON オブジェクト形式のデータはすべてここで送信できます。 送信されたデータが処理され、ログ内の他のデータや他の Application Insights データと関連付けるためにログで使用できるようになります。 <br/><br/> データは、ファイルとして Azure BLOB に簡単にアップロードできます。これらのファイルは Azure BLOB で処理され、Log Analytics にアップロードされます。 このようなパイプラインの実装例については、[こちら](./create-pipeline-datacollector-api.md)の記事をご覧ください。 | <ul><li> Application Insights 内でインストルメント化されたアプリケーション内で必ずしも生成されるわけではないデータ。</li><li> 例として、ルックアップ テーブル、ファクト テーブル、参照データ、事前に集計された統計などがあります。 </li><li> 他の Azure Monitor データ (Application Insights、ログの他の種類のデータ、Security Center、コンテナー/VM 用 Azure Monitor など) と相互参照されるデータ。 </li></ul> |
-| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) は、Application Insights Analytics と Azure Monitor ログを強化するデータ プラットフォームです。 一般提供 ("GA") が開始されたこのデータ プラットフォームを raw 形式で使用すると、クラスターに対する完全な柔軟性 (RBAC、リテンション率、スキーマなど) が得られます (ただし、管理オーバーヘッドが必要になります)。 ADX には、[CSV、TSV、JSON](/azure/kusto/management/mappings?branch=master) の各ファイルを含め、多数の[インジェスト オプション](/azure/data-explorer/ingest-data-overview#ingestion-methods)が用意されています。 | <ul><li> Application Insights またはログで他のどのデータにも関連付けられないデータ。 </li><li> Azure Monitor ログで現在提供されていない高度なインジェスト機能や処理機能を必要とするデータ。 </li></ul> |
+| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) は、Application Insights Analytics と Azure Monitor ログを強化するデータ プラットフォームです。 一般提供 ("GA") が開始されたこのデータ プラットフォームを raw 形式で使用すると、クラスターに対する完全な柔軟性 (Kubernetes RBAC、リテンション率、スキーマなど) が得られます (ただし、管理オーバーヘッドが必要になります)。 ADX には、[CSV、TSV、JSON](/azure/kusto/management/mappings?branch=master) の各ファイルを含め、多数の[インジェスト オプション](/azure/data-explorer/ingest-data-overview#ingestion-methods)が用意されています。 | <ul><li> Application Insights またはログで他のどのデータにも関連付けられないデータ。 </li><li> Azure Monitor ログで現在提供されていない高度なインジェスト機能や処理機能を必要とするデータ。 </li></ul> |
 
 
 ## <a name="next-steps"></a>次のステップ

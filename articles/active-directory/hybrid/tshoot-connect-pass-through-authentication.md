@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 251f9a2b075189f19b9e943ff660baaba93ec33b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275925"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652043"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "89275925"
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>機能と認証エージェントの状態を確認する
 
-テナントでパススルー認証機能がまだ**有効**であること、および認証エージェントの状態が**アクティブ**であり、**非アクティブ**ではないことを確認します。 機能の状態は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)の **[Azure AD Connect]** ブレードで確認できます。
+テナントでパススルー認証機能がまだ **有効** であること、および認証エージェントの状態が **アクティブ** であり、**非アクティブ** ではないことを確認します。 機能の状態は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)の **[Azure AD Connect]** ブレードで確認できます。
 
 ![Azure Active Directory 管理センター - [Azure AD Connect] ブレード](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "89275925"
 
 1. テスト アカウントを作成します。  
 2. エージェント マシンに PowerShell モジュールをインポートします。
- 
+
  ```powershell
  Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
@@ -72,7 +72,7 @@ ms.locfileid: "89275925"
  ``` 
 4. 資格情報の入力を求められたら、(https://login.microsoftonline.com) ) へのサインインに使用するものと同じユーザー名とパスワードを入力します。
 
-同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)」を参照してください。
+同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
 
 > [!IMPORTANT]
 > Azure AD Connect サーバーが ([Azure AD Connect の前提条件](./how-to-connect-install-prerequisites.md#installation-prerequisites)に記載されている要件である) ドメイン参加済みでない場合は、無効なユーザー名/パスワードの問題が発生します。
@@ -96,6 +96,7 @@ ms.locfileid: "89275925"
 | 80007 | 認証エージェントが Active Directory に接続できません。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。 
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
+| 80014 | 検証要求からの応答が最大経過時間を超えました。 | 認証エージェントがタイムアウトしました。このエラーの詳細を調べるには、エラー コード、相関 ID、タイムスタンプを添えて、サポート チケットを開いてください
 
 >[!IMPORTANT]
 >パススルー認証エージェントでは、[Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
@@ -155,6 +156,8 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 認証エージェントに関するエラーの場合、サーバーでイベント ビューアー アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
 
 詳細な分析を取得するには、"セッション" ログを有効にします (このオプションを表示するにはイベント ビューアー アプリケーション内で右クリックします)。 通常の操作中に、このログを有効にして認証エージェントを実行しないでください。これはトラブルシューティングにのみ使用します。 ログの内容は、ログを再度無効にした後にのみ表示されます。
+
+PTA エージェントのイベント マニフェストについては、[ここ](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster)を参照してください。
 
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 

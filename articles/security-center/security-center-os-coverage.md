@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998834"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852644"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -44,8 +44,10 @@ Security Center は [Log Analytics エージェント](../azure-monitor/platform
 
 また、Log Analytics エージェントが [Security Center にデータを送信するように適切に構成されている](security-center-enable-data-collection.md#manual-agent)ことを確認してください
 
-> [!TIP]
-> Windows および Linux で使用できる特定の Security Center 機能の詳細については、「[マシンを対象とする機能](security-center-services.md)」を参照してください。
+Windows および Linux で使用できる特定の Security Center 機能の詳細については、「[マシンを対象とする機能](security-center-services.md)」を参照してください。
+
+> [!NOTE]
+> Azure Defender はサーバーを保護するように設計されていますが、**Azure Defender for server** の機能のほとんどは Windows 10 マシンでサポートされています。 現在サポートされていない機能の 1 つとして、[Security Center の統合 EDR ソリューション: Microsoft Defender for Endpoint](security-center-wdatp.md) があります。
 
 ## <a name="managed-virtual-machine-services"></a>マネージド仮想マシン サービス <a name="virtual-machine"></a>
 
@@ -55,7 +57,7 @@ Security Center は [Log Analytics エージェント](../azure-monitor/platform
 
 クラウド サービスで実行する仮想マシン もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
 
-Azure Stack に存在する VM の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)に関するページを参照してください。
+Azure Stack に存在する VM の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](quickstart-onboard-machines.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

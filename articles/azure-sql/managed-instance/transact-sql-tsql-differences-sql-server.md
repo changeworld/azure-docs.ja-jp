@@ -5,18 +5,18 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 06/02/2020
+ms.reviewer: sstein, bonova, danil
+ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d611fc7eff2efa7a632f4b5467b5829a8374b95e
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705386"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796297"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,6 +69,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
 
 - SQL Managed Instance では、最大 32 個のストライプを使用するバックアップにインスタンス データベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
 - サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。 自動バックアップとポイントインタイム リストアを使用するか、代わりに[顧客管理 (BYOK) TDE](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) を使用します。 また、データベースで暗号化を無効にすることができます。
+- Managed Instance 上で行われたネイティブ バックアップを SQL Server に復元することはできません。 これは、SQL Server のどのバージョンと比べても、Managed Instance の内部データベース バージョンが高いためです。
 - SQL Managed Instance で `BACKUP` コマンドを使用した場合の最大バックアップ ストライプ サイズは、最大 BLOB サイズである 195 GB です。 バックアップ コマンドでストライプ サイズを増やして、個々のストライプ サイズを減らし、この制限内に収まるようにします。
 
     > [!TIP]
@@ -159,6 +160,8 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
 
+  - EXECUTE AS ステートメントを使用してユーザーを偽装するには、そのユーザーが Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 Azure AD サーバー プリンシパルにマップされた Azure AD グループのメンバーであるユーザーは、指定されたユーザー名に対する偽装権限を呼び出し元が持っている場合でも、EXECUTE AS ステートメントを使用して有効に偽装できません。
+
 - bacpac ファイルを使用したデータベースのエクスポート/インポートは、[SSMS V 18.4 以降](/sql/ssms/download-sql-server-management-studio-ssms)または [SQLPackage.exe](/sql/tools/sqlpackage-download) のいずれかを使用している SQL Managed Instance 内の Azure AD ユーザーに対してサポートされます。
   - データベース bacpac ファイルを使用すると、次の構成がサポートされます。 
     - 同じ Azure AD ドメイン内の異なるマネージド インスタンス間でのデータベースのエクスポート/インポート。
@@ -220,7 +223,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 
 - 複数のログ ファイルはサポートされていません。
 - インメモリ オブジェクトは、General Purpose サービス レベルではサポートされていません。 
-- General Purpose インスタンスあたり 280 ファイル (データベースあたり最大 280 ファイル) の制限があります。 General Purpose レベルのデータ ファイルとログ ファイルの両方がこの制限にカウントされます。 [Business Critical レベルでは、データベースあたり 32,767 ファイルがサポートされます](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
+- General Purpose インスタンスあたり 280 ファイル (データベースあたり最大 280 ファイル) の制限があります。 General Purpose レベルのデータ ファイルとログ ファイルの両方がこの制限にカウントされます。 [Business Critical レベルでは、データベースあたり 32,767 ファイルがサポートされます](./resource-limits.md#service-tier-characteristics)。
 - filestream データを含むファイル グループをデータベースに含めることはできません。 .bak に `FILESTREAM` データが含まれていると、復元は失敗します。 
 - すべてのファイルが Azure Blob Storage に配置されます。 ファイルあたりの IO およびスループットは、個々のファイルのサイズによって異なります。
 
@@ -300,6 +303,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
   - アラートはまだサポートされていません。
   - プロキシはサポートされていません。
 - EventLog はサポートされていません。
+- SQL Agent ジョブを作成、変更、実行するために、ユーザーは Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 直接マップされていないユーザー (SQL Agent ジョブを作成、変更、実行する権利を持つ Azure AD グループに属しているユーザーなど) は、これらの操作を有効に実行できません。 これは、Managed Instance の借用と [EXECUTE AS の制限事項](#logins-and-users)のためです。
 
 現在、次の SQL エージェント機能はサポートされていません。
 
@@ -353,7 +357,11 @@ SQL Server で有効になっている、ドキュメントに記載されてい
 
 ### <a name="distributed-transactions"></a>分散トランザクション
 
-MSDTC も[エラスティック トランザクション](../database/elastic-transactions-overview.md)も現在、SQL Managed Instance ではサポートされていません。
+[分散トランザクション](../database/elastic-transactions-overview.md)の部分的なサポートは、現在パブリック プレビューの段階です。 サポートされるシナリオは次のとおりです。
+* 参加要素が[サーバー信頼グループ](./server-trust-group-overview.md)に含まれる Azure SQL Managed Instance のみのトランザクション。
+* .NET (TransactionScope クラス) および Transact-SQL から開始されたトランザクション。
+
+現在、Azure SQL Managed Instance では、MSDTC オンプレミスまたは Azure Virtual Machines で定期的にサポートされている他のシナリオはサポートされていません。
 
 ### <a name="extended-events"></a>拡張イベント
 
@@ -389,9 +397,9 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 
 SQL Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
 
-- サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL、SQL Server インスタンスです。 
+- サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の[サーバーレス](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)と専用プール、および SQL Server インスタンスです。 
 - リンク サーバーは、分散型の書き込み可能なトランザクション (MS DTC) をサポートしていません。
-- サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイルのインポートの代わりに、`BULK INSERT` または `OPENROWSET` を使用して、Azure Blob Storage からネイティブ CSV インポートを使用してください。
+- サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイル インポートの代わりに `BULK INSERT` または `OPENROWSET` を使用して Azure Blob Storage からネイティブ CSV インポートを使用するか、[Azure Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)を使用してファイルの読み込みを試行します。
 
 操作: 
 
@@ -399,11 +407,12 @@ SQL Managed Instance のリンク サーバーがサポートするターゲッ�
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
-- リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 Azure Blob Storage から CSV ファイルを読み取る [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) を使用してください。 この要求は、[SQL Managed Instance フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|で追跡します
+- リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)、[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) (Azure Blob Storage から CSV ファイルを読み取る)、または [Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)の使用を試行します。 この要求は、[SQL Managed Instance フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|で追跡します
 
 ### <a name="polybase"></a>PolyBase
 
-HDFS または Azure BLOB ストレージ内のファイルを参照する外部テーブルはサポートされていません。 PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
+Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse プールに対して唯一使用可能な外部ソースの種類は RDBMS (パブリック プレビュー段階) です。 Azure Storage から直接読み取る Polybase 外部テーブルの回避策として、[Synapse Analytics 内のサーバーレス SQL プールを参照する外部テーブル](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)を使用できます。 Azure SQL Managed Instance では、[Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)や SQL Server へのリンク サーバーを使用して、Azure Storage のデータを読み取ることができます。
+PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
 
 ### <a name="replication"></a>レプリケーション
 
@@ -478,7 +487,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
   - `remote proc trans`
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
-- `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc`  および `sp_dropextendedproc` が含まれます。 [拡張ストアド プロシージャ](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
+- `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc` および `sp_dropextendedproc` が含まれます。 [拡張ストアド プロシージャ](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 
 ### <a name="system-functions-and-variables"></a>システム関数とシステム変数
@@ -510,12 +519,11 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 ### <a name="failover-groups"></a>フェールオーバー グループ
 システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。
 
-### <a name="failover-groups"></a>フェールオーバー グループ
-システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。
-
 ### <a name="tempdb"></a>TEMPDB
-
-`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズは SQL Managed Instance ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
+- `tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズは SQL Managed Instance ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
+- `Tempdb` は常に 12 個のデータ ファイルに分割されます (1 個のプライマリ (マスターとも呼ばれる) データ ファイルと 11 個のプライマリ以外のデータ ファイル)。 ファイル構造を変更することも、`tempdb` に新しいファイルを追加することもできません。 
+- [[メモリ最適化]`tempdb` メタデータ](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata) (新しい SQL Server 2019 のメモリ内データベース機能) は、サポートされていません。
+- `tempdb` ではモデル データベースから初期オブジェクト リストが取得されないため、再起動後またはフェールオーバー後に、モデル データベースで作成されたオブジェクトを `tempdb` で自動作成できません。 再起動後またはフェールオーバー後に、`tempdb` でオブジェクトを手動で作成する必要があります。
 
 ### <a name="msdb"></a>MSDB
 
@@ -523,13 +531,13 @@ SQL Managed Instance の次の MSDB スキーマは、それぞれの定義済�
 
 - 一般的なロール
   - TargetServersRole
-- [固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [固定データベース ロール](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail ロール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail ロール](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
-- [統合サービスのロール](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [統合サービスのロール](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
   - msdb
   - db_ssisltduser
   - db_ssisoperator
@@ -539,7 +547,7 @@ SQL Managed Instance の次の MSDB スキーマは、それぞれの定義済�
 
 ### <a name="error-logs"></a>エラー ログ
 
-SQL Managed Instance では、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、Azure Data Studio の [SQL Managed Instance - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) または [SQL Managed Instance の拡張機能 (プレビュー)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) に関する記事をご覧ください。
+SQL Managed Instance では、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、Azure Data Studio の [SQL Managed Instance - sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) または [SQL Managed Instance の拡張機能 (プレビュー)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

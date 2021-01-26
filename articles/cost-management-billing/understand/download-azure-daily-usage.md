@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 3b16e5b460f5fdfd0668db2b2e2fac78775cd893
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 141da3dfab9996110952ec266733271582e66ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688914"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439191"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
@@ -28,12 +28,12 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。  
-    ![Azure portal の検索を表示しているスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
+    ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. お持ちのアクセス権によっては、課金アカウントまたは課金プロファイルを選択する必要があります。
 1. 左側のメニューの **[課金]** から **[請求書]** を選択します。
 1. 請求書グリッドで、ダウンロードする使用量に対応する請求期間の行を探します。
 1. 右側にある**ダウンロード アイコン**または省略記号 (`...`) を選択します。  
-  ![[使用量 + 請求金額] の [ダウンロード] の場所を示すスクリーンショット](./media/download-azure-daily-usage/download-usage-others.png)  
+  ![ダウンロード オプションでの [コストの管理と請求] の [請求書] ページを示すスクリーンショット。](./media/download-azure-daily-usage/download-usage-others.png)  
 1. 右側に [ダウンロード] ペインが開きます。 **[使用量の詳細]** セクションから **[ダウンロード]** を選択します。  
 
 ## <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
@@ -42,10 +42,10 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。  
-    ![Azure portal の検索を表示しているスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
+    ![Azure portal の検索を示すスクリーンショット。](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. **[使用量 + 請求金額]** を選択します。
 1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。  
-    ![[使用量 + 請求金額] の [ダウンロード] の場所を示すスクリーンショット](./media/download-azure-daily-usage/download-usage-ea.png)
+    ![EA のお客様の [コストの管理と請求] の [請求書] ページを示すスクリーンショット。](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>保留中の料金の使用量のダウンロード
 

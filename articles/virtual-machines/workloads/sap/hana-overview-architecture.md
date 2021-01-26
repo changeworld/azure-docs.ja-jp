@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171127"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195451"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) とは
 
@@ -28,18 +29,20 @@ SAP HANA on Azure (L インスタンス) は、Azure 独自のソリューショ
 
 - **ネットワーク**:お客様に割り当てられているテナントごとに、仮想ネットワークを通じてインフラストラクチャ スタック内のお客様を分離します。 テナントは 1 件のお客様に割り当てられます。 お客様は複数のテナントを持つことができます。 テナントのネットワーク分離では、各テナントが同じお客様に属している場合でも、インフラストラクチャ スタンプ レベルでのテナント間のネットワーク通信が禁止されます。
 - **ストレージ コンポーネント**: ストレージ ボリュームが割り当てられているストレージ仮想マシンを通じて分離します。 ストレージ ボリュームは 1 つのストレージ仮想マシンにのみ割り当てることができます。 ストレージ仮想マシンは、SAP HANA TDI 認定のインフラストラクチャ スタック内の 1 つのテナントに排他的に割り当てられます。 そのため、ストレージ仮想マシンに割り当てられているストレージ ボリュームには、関連付けられている特定のテナント内でのみアクセスできます。 デプロイされている別のテナントには表示されません。
-- **サーバーまたはホスト**: サーバー ユニットまたはホスト ユニットがお客様間やテナント間で共有されることはありません。 お客様にデプロイされたサーバーまたはホストは、1 つのテナントに割り当てられたアトミック ベア メタル コンピューティング ユニットです。 別のお客様とホストまたはサーバーを共有することになるハードウェア パーティション分割やソフト パーティション分割が使用されることは*ありません*。 特定のテナントのストレージ仮想マシンに割り当てられたストレージ ボリュームは、このようなサーバーにマウントされます。 テナントは、排他的に割り当てられている別の SKU のサーバー ユニットを 1 つから複数持つことができます。
+- **サーバーまたはホスト**: サーバー ユニットまたはホスト ユニットがお客様間やテナント間で共有されることはありません。 お客様にデプロイされたサーバーまたはホストは、1 つのテナントに割り当てられたアトミック ベア メタル コンピューティング ユニットです。 別のお客様とホストまたはサーバーを共有することになるハードウェア パーティション分割やソフト パーティション分割が使用されることは *ありません*。 特定のテナントのストレージ仮想マシンに割り当てられたストレージ ボリュームは、このようなサーバーにマウントされます。 テナントは、排他的に割り当てられている別の SKU のサーバー ユニットを 1 つから複数持つことができます。
 - SAP HANA on Azure (L インスタンス) インフラストラクチャ スタンプ内では多数のさまざまなテナントがデプロイされており、テナントの概念により、ネットワーク、ストレージ、およびコンピューティング レベルで相互に分離されています。 
 
 
 これらのベア メタル サーバー ユニットでは、SAP HANA の実行のみがサポートされます。 SAP アプリケーション層またはワークロードのミドルウェア層は仮想マシン内で実行されます。 SAP HANA on Azure (L インスタンス) のユニットを実行しているインフラストラクチャ スタンプは、Azure ネットワーク サービスのバックボーンに接続されています。 これにより、SAP HANA on Azure (L インスタンス) のユニットと仮想マシン間の低遅延の接続が実現されます。
 
-2019 年 7 月の時点では、HANA L インスタンス スタンプの 2 つの異なるリビジョンとデプロイの場所を区別しています。
+2021 年 1 月の時点では、HANA L インスタンス スタンプとデプロイの場所の異なる 2 つのリビジョンを区別しています。
 
 - "リビジョン 3" (Rev 3):2019 年 7 月より前にお客様がデプロイに使用できたスタンプ
 - "リビジョン 4" (Rev 4):Azure VM ホストに近接する場所にデプロイされる新しいスタンプ設計。これまでに次の Azure リージョンでリリースされています。
     -  米国西部 2 
-    -  米国東部 
+    -  米国東部
+    -  米国東部 2 (2 つの可用性ゾーン)
+    -  米国中南部 (2 つの可用性ゾーン)
     -  西ヨーロッパ
     -  北ヨーロッパ
 
@@ -49,11 +52,11 @@ SAP HANA on Azure (L インスタンス) は、Azure 独自のソリューショ
 
 HANA L インスタンス ガイダンスの別のドキュメントでは、次の分野について説明します。
 
-- [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md)
+- [SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)
+- [SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md)
+- [Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)
+- [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視](troubleshooting-monitoring.md)
 - [STONITH を使用した SUSE での高可用性のセットアップ](./ha-setup-with-stonith.md)
 - [リビジョン 3 スタンプの Type II SKU の OS バックアップと復元](./os-backup-type-ii-skus.md)
 - [Azure 予約を使用して SAP HANA Large Instances に保存する](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)

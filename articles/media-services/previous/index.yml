@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: 3bcc408014f16c3c60accc5d0e7f3c5bf3652f50
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 05a5e8d179258815e75482f1532e01e79fa0353c
+  ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87091732"
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98695752"
 landingContent:
 - title: Azure Media Services v2 について
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
     - text: Azure Media Services v2 の概要
       url: media-services-overview.md
     - text: Media Services v3 への移行
-      url: ../latest/migrate-from-v2-to-v3.md
+      url: ../latest/migrate-v-2-v-3-migration-introduction.md
   - linkListType: whats-new
     links:
     - text: Media Services v2 の最新情報

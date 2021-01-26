@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431289"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922961"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -45,9 +45,9 @@ Azure Virtual Network
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP の設定
 
-仮想ネットワーク ゲートウェイの **[構成]** ページで  **[BGP ASN]** を構成できます。 BGP ASN に変更を加えます。 BGP の ASN を 65515 にすることはできません。 66515 は、Azure Virtual WAN が使用します。
+仮想ネットワーク ゲートウェイの **[構成]** ページで  **[BGP ASN]** を構成できます。 BGP ASN に変更を加えます。 BGP の ASN を 65515 にすることはできません。 65515 は、Azure Virtual WAN が使用します。
 
-![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
+![スクリーンショットには、[BGP ASN の構成] が選択された仮想ネットワーク ゲートウェイの [構成] ページが示されています。](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
 ### <a name="public-ip-addresses"></a><a name="pip"></a>パブリック IP アドレス
 
@@ -83,7 +83,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 
 1. Virtual WAN の **[VPN サイト]** ページの上部で、 **[サイト]** 、 **[Download Site-to-site VPN configuration]\(サイト間 VPN 構成をダウンロードする\)** の順に選択します。 Azure により、設定情報を格納した構成ファイルが作成されます。
 
-   ![構成ファイルのダウンロード](./media/connect-virtual-network-gateway-vwan/download.png "download")
+   ![[サイト間 VPN 構成のダウンロード] 操作が選択されている [VPN サイト] ページを示すスクリーンショット。](./media/connect-virtual-network-gateway-vwan/download.png "download")
 2. 構成ファイルをダウンロードし、開きます。
 3. 2 つ目のサイトについても、ここまでの手順を繰り返します。 両方の構成ファイルを開いたら、次のセクションに進みます。
 
@@ -98,7 +98,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
    * **[サブスクリプション]、[リソース グループ]、[場所]** については、Virtual WAN ハブと同じです。
 2. 見直しを終えたら、ローカル ネットワーク ゲートウェイを作成します。 作成したローカル ネットワーク ゲートウェイは、次の例のようになります。
 
-   ![構成ファイルのダウンロード](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![IP アドレスが強調表示され、[BGP 設定の構成] が選択されている [構成] ページを示すスクリーンショット。](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. ここまでの手順を繰り返して、ローカル ネットワーク ゲートウェイをもう 1 つ作成します。ただし、今度は構成ファイルの "Instance0" の値ではなく "Instance1" の値を使用します。
 
    ![構成ファイルのダウンロード](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")

@@ -5,18 +5,18 @@ author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74233011"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932284"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions の課金
 
 [Durable Functions](durable-functions-overview.md) は Azure Functions と同じように課金されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
 
-Azure Functions の[従量課金プラン](../functions-scale.md#consumption-plan)でオーケストレーター関数を実行する場合は、いくつかの課金動作に注意する必要があります。 以下のセクションでは、これらの動作とその影響について詳しく説明します。
+Azure Functions の[従量課金プラン](../consumption-plan.md)でオーケストレーター関数を実行する場合は、いくつかの課金動作に注意する必要があります。 以下のセクションでは、これらの動作とその影響について詳しく説明します。
 
 ## <a name="orchestrator-function-replay-billing"></a>オーケストレーター関数のリプレイの課金
 
@@ -45,7 +45,7 @@ Durable Functions アプリによって発生する実際の Azure Storage コ�
 
 * 1 つの関数アプリが 1 つのタスク ハブと関連付けられ、一連の Azure Storage リソースが共有されます。 これらのリソースは、関数アプリ内のすべての持続的関数によって使用されます。 関数アプリ内の関数の実際の数は、Azure Storage トランザクションのコストには影響しません。
 * 各関数アプリ インスタンスでは、指数バックオフ ポーリング アルゴリズムを使用して、ストレージ アカウント内の複数のキューに対して内部的にポーリングが行われます。 アイドル状態のアプリ インスタンスでは、アクティブなアプリよりキューをポーリングする頻度が低下し、結果としてトランザクション コストが少なくなります。 Durable Functions でのキュー ポーリング動作について詳しくは、[パフォーマンスとスケーリングに関する記事のキューのポーリングに関するセクション](durable-functions-perf-and-scale.md#queue-polling)を参照してください。
-* Azure Functions の従量課金プランまたは Premium プランで実行している場合、[Azure Functions のスケール コントローラー](../functions-scale.md#how-the-consumption-and-premium-plans-work)では、バックグラウンドのすべてのタスク ハブ キューに対して定期的にポーリングが行われます。 関数アプリが小規模から中規模の場合は、1 つのスケール コントローラー インスタンスだけがこれらのキューのポーリングを行います。 関数アプリが多数のインスタンスにスケールアウトされると、より多くのスケール コントローラー インスタンスが追加される場合があります。 これらの追加のスケール コントローラー インスタンスによって、キュートランザクションの総コストが増加する可能性があります。
+* Azure Functions の従量課金プランまたは Premium プランで実行している場合、[Azure Functions のスケール コントローラー](../event-driven-scaling.md)では、バックグラウンドのすべてのタスク ハブ キューに対して定期的にポーリングが行われます。 関数アプリが小規模から中規模の場合は、1 つのスケール コントローラー インスタンスだけがこれらのキューのポーリングを行います。 関数アプリが多数のインスタンスにスケールアウトされると、より多くのスケール コントローラー インスタンスが追加される場合があります。 これらの追加のスケール コントローラー インスタンスによって、キュートランザクションの総コストが増加する可能性があります。
 * 関数アプリの各インスタンスは、BLOB リースのセットに対して競合します。 これらのインスタンスでは、Azure Blob service が定期的に呼び出されて、保持されているリースの更新または新しいリースの取得が試みられます。 BLOB リースの数は、タスク ハブの構成済みパーティション数によって決まります。 多くの場合、多数の関数アプリ インスタンスにスケールアウトすると、これらのリース操作に関連する Azure Storage トランザクション コストが増加します。
 
 Azure Storage の価格について詳しくは、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するドキュメントを参照してください。 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2411d9257b1083cb2bcbfcad289813a6c062dff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081391"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143578"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSONPath を使用してブック内の JSON データを変換する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "87081391"
 
 JSONPath は、XML 用の XPath に似た JSON 用のクエリ言語です。 XPath と同様に、JSONPath を使用すると、JSON 構造からデータの抽出とフィルター処理を行うことができます。
 
-JSONPath 変換を使用すると、ブックの作成者は JSON をテーブル構造に変換できます。 その後、テーブルを使用して、[ブックの視覚化](workbooks-visualizations.md)をプロットできます。
+JSONPath 変換を使用すると、ブックの作成者は JSON をテーブル構造に変換できます。 その後、テーブルを使用して、[ブックの視覚化](./workbooks-overview.md#visualizations)をプロットできます。
 
 ## <a name="using-jsonpath"></a>JSONPath の使用
 

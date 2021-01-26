@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009513"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023396"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -27,11 +27,11 @@ Windows 10 Enterprise マルチセッションは、Azure イメージ ギャラ
 
 ### <a name="local-image-creation"></a>ローカル イメージの作成
 
-イメージをローカルの場所にダウンロードした後、**Hyper-V マネージャー**を開き、コピーした VHD を使用して VM を作成します。 次の手順はシンプルなバージョンですが、「[Create a virtual machine in Hyper-V (Hyper-V 内で仮想マシンを作成する)](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/)」で詳細な手順を確認できます。
+イメージをローカルの場所にダウンロードした後、**Hyper-V マネージャー** を開き、コピーした VHD を使用して VM を作成します。 次の手順はシンプルなバージョンですが、「[Create a virtual machine in Hyper-V (Hyper-V 内で仮想マシンを作成する)](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/)」で詳細な手順を確認できます。
 
 コピーした VHD を使用して VM を作成するには:
 
-1. **新しい仮想マシン ウィザード**を開きます。
+1. **新しい仮想マシン ウィザード** を開きます。
 
 2. [世代の指定] ページで、 **[第 1 世代]** を選択します。
 
@@ -93,7 +93,7 @@ Windows Server 上で Windows Defender を構成する手順について詳し�
 
 コマンド プロンプトで次のコマンドを実行して自動更新を無効にすることもできます。
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
@@ -101,7 +101,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 
 Windows 10 PC のスタート画面のレイアウトを指定するには、このコマンドを実行します。
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
@@ -113,13 +113,13 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 
 1. Active Directory サーバー上で、 **[グループ ポリシー管理コンソール]** を開きます。
 2. ドメインとグループ ポリシー オブジェクトを展開します。
-3. グループ ポリシー設定に対して作成した**グループ ポリシー オブジェクト**を右クリックし、 **[編集]** を選択します。
-4. **グループ ポリシー管理エディター**で、 **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[デバイスとリソースのリダイレクト]** に移動します。
+3. グループ ポリシー設定に対して作成した **グループ ポリシー オブジェクト** を右クリックし、 **[編集]** を選択します。
+4. **グループ ポリシー管理エディター** で、 **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[デバイスとリソースのリダイレクト]** に移動します。
 5. **[タイム ゾーン リダイレクトを許可する]** 設定を有効にします。
 
 このコマンドをマスター イメージに対して実行してタイム ゾーンをリダイレクトすることもできます。
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
@@ -132,7 +132,7 @@ Windows 10 Enterprise または Windows 10 Enterprise マルチセッション�
 
 次のコマンドを実行して、レジストリで設定を変更することもできます。
 
-```batch
+```cmd
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
@@ -153,19 +153,19 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 Windows 10 Enterprise マルチセッションでのテレメトリ データのフィードバック ハブ コレクションの場合は、次のコマンドを実行します。
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 ワトソン クラッシュを修正するには、次のコマンドを実行します。
 
-```batch
+```cmd
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
 5k 解像度のサポートを修正するには、レジストリ エディターに次のコマンドを入力します。 サイドバイサイド スタックを有効にする前に、コマンドを実行する必要があります。
 
-```batch
+```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f
@@ -189,7 +189,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 1. まだ行っていない場合は、VM イメージ (VHD) を固定に変換します。 イメージを固定に変換しない場合は、イメージを正常に作成できません。
 
-2. ストレージ アカウント内の BLOB コンテナーに VHD をアップロードします。 [Storage Explorer ツール](https://azure.microsoft.com/features/storage-explorer/)を使用して迅速にアップロードできます。 Storage Explorer ツールについて詳しくは、[こちらの記事](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)をご覧ください。
+2. ストレージ アカウント内の BLOB コンテナーに VHD をアップロードします。 [Storage Explorer ツール](https://azure.microsoft.com/features/storage-explorer/)を使用して迅速にアップロードできます。 Storage Explorer ツールについて詳しくは、[こちらの記事](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)をご覧ください。
 
     > [!div class="mx-imgBorder"]
     > ![Microsoft Azure Storage Explorer ツールの検索ウィンドウのスクリーンショット。 [.vhd/vhdx ファイルをページ BLOB としてアップロードする (推奨)] チェック ボックスがオンになっている。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)

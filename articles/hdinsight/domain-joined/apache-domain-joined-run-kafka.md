@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85105939"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010131"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -219,7 +219,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した Kafka クラスターを削除します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。

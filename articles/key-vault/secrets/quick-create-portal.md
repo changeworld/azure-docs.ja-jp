@@ -11,59 +11,47 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652277"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936670"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
-Azure Key Vault は、シークレットのセキュリティで保護されたストアを提供するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Azure Key Vault は、Azure Portal を使用して作成および管理できます。 このクイック スタートでは、キー コンテナーを作成し、それを使用してシークレットを格納します。 Key Vault の詳細については、[概要](../general/overview.md)に関する記事をご覧ください。
+Azure Key Vault は、シークレットのセキュリティで保護されたストアを提供するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Azure Key Vault は、Azure Portal を使用して作成および管理できます。 このクイック スタートでは、キー コンテナーを作成し、それを使用してシークレットを格納します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+詳細については、以下のページを参照してください。 
+- [Key Vault の概要](../general/overview.md)
+- [シークレットの概要](about-secrets.md)
+
+## <a name="prerequisites"></a>前提条件
+
+Azure Key Vault にアクセスするには、Azure サブスクリプションが必要です。 まだサブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+シークレットへのアクセスはすべて、Azure Key Vault 経由で行われます。 このクイックスタートでは、[Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用してキー コンテナーを作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
-## <a name="create-a-vault"></a>コンテナーの作成
-
-1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
-2. 検索ボックスに「**Key Vault**」と入力します。
-3. 結果の一覧の **[Key Vault]** を選択します。
-4. Key Vault のセクションで、 **[作成]** を選択します。
-5. **[キー コンテナーの作成]** セクションで、次の情報を入力します。
-    - **Name**:一意の名前が必要です。 このクイックスタートでは、**Contoso-vault2** を使用します。 
-    - **サブスクリプション**:サブスクリプションを選択します。
-    - **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。
-    - **[場所]** プルダウン メニューで場所を選択します。
-    - 他のオプションは既定値のままにしておきます。
-6. 上記の情報を指定したら、 **[作成]** を選択します。
-
-次の 2 つのプロパティをメモしておきます。
-
-* **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
-* **Vault URI (コンテナー URI)** :この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
-
-この時点で、使用している Azure アカウントが、この新しいコンテナーで操作を実行することを許可されている唯一のアカウントになります。
-
-![Key Vault の作成が完了した後の出力](../media/quick-create-portal/vault-properties.png)
-
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 
-シークレットをコンテナーに追加するには、いくつかの追加の手順を実行する必要があります。 この例では、アプリケーションが使用できるパスワードを追加します。 パスワードは **ExamplePassword** と呼ばれ、値 **hVFkk965BuUv** がその中に格納されます。
+コンテナーにシークレットを追加するには、次の手順に従います。
 
-1. Key Vault のプロパティ ページで、 **[シークレット]** を選択します。
-2. **[Generate/Import]\(生成/インポート\)** をクリックします。
-3. **[シークレットの作成]** 画面で、次の値を選択します。
+1. Azure portal で、新しいキー コンテナーに移動します。
+1. Key Vault の設定ページで、 **[シークレット]** を選択します。
+1. **[Generate/Import]\(生成/インポート\)** をクリックします。
+1. **[シークレットの作成]** 画面で、次の値を選択します。
     - **[アップロード オプション]** :手動。
-    - **Name**:ExamplePassword。
-    - **[値]** : hVFkk965BuUv
+    - **[名前]** : シークレットの名前を入力します。 シークレットの名前は、キー コンテナー内で一意である必要があります。 名前は、文字で始まり、0 から 9、a から z、A から Z、および - のみを使った 1 から 127 文字の文字列である必要があります。 名前付けの詳細については、[Key Vault のオブジェクト、識別子、バージョン管理](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)に関するセクションを参照してください。
+    - **値**: シークレットの値を入力します。 Key Vault API はシークレット値を文字列として受け取って返します。 
     - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
 
 シークレットが正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 
+
+シークレットの属性の詳細については、「[Azure Key Vault のシークレットについて](./about-secrets.md)」を参照してください。
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault からシークレットを取得する
 
@@ -75,6 +63,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ![表示されたシークレット値](../media/quick-create-portal/current-version-shown.png)
 
+以前に作成したシークレットを、[Azure CLI]() または [Azure PowerShell]() を使用して取得することもできます。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Key Vault に関する他のクイック スタートとチュートリアルは、このクイック スタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
@@ -84,11 +74,16 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 2. **[リソース グループの削除]** を選択します。
 3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
+> [!NOTE]
+> シークレット、キー、証明書、またはキー コンテナーが削除されると、7 日から 90 日の構成可能な期間にわたって回復可能な状態が維持されることに留意してください。 構成が指定されていない場合、既定の回復期間は 90 日に設定されます。 これにより、ユーザーはシークレットの誤削除に気づき、対応するために十分な時間を確保することができます。 キー コンテナーとキー コンテナー オブジェクトの削除と復旧について詳しくは、「[Azure Key Vault の論理的な削除の概要](../general/soft-delete-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
+- 「[キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)」を参照する
+- [App Service Web アプリで Key Vault を使用する](../general/tutorial-net-create-vault-azure-web-app.md)方法に関するページを参照する
+- [VM にデプロイされたアプリケーションで Key Vault を使用する](../general/tutorial-net-virtual-machine.md)方法に関するページを参照する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

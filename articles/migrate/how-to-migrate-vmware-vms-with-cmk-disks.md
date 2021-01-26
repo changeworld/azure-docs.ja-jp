@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate Server Migration を使用して、サーバー側暗号化 (SSE) とカスタマー マネージド キー (CMK) により VMware 仮想マシンを Azure に移行する
 description: Azure Migrate Server Migration を使用して、サーバー側暗号化 (SSE) とカスタマー マネージド キー (CMK) により VMware VM を Azure に移行する方法について説明します。
-author: bsiva
-ms.service: azure-migrate
-ms.manager: carmonm
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.author: raynew
-ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8a174c3b2bfb390eb7d691ae1bdcb0e28dde9032
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260016"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751089"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>サーバー側暗号化とカスタマー マネージド キーを使用して VMware VM を Azure VM に移行する
 
@@ -22,12 +21,12 @@ Azure Migrate Server Migration ポータルでの操作によって、[エージ
 
 この記事の例では、[Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、Resource Manager テンプレートの作成とデプロイに必要なタスクを実行します。
 
-カスタマー マネージド キー (CMK) を使用したマネージド ディスクのサーバー側暗号化 (SSE) の詳細を[ご覧ください](../virtual-machines/windows/disk-encryption.md)。
+カスタマー マネージド キー (CMK) を使用したマネージド ディスクのサーバー側暗号化 (SSE) の詳細を[ご覧ください](../virtual-machines/disk-encryption.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
 - ツールの要件を理解するために、エージェントレス レプリケーションを使用した VMware VM から Azure への移行に関する[チュートリアルを確認してください](tutorial-migrate-vmware.md)。
-- [こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトを作成し、**Azure Migrate:Server Migration** ツールをプロジェクトに追加します。
+- [こちらの手順に従って](./create-manage-projects.md)、Azure Migrate プロジェクトを作成し、**Azure Migrate:Server Migration** ツールをプロジェクトに追加します。
 - [こちらの手順に従って](how-to-set-up-appliance-vmware.md)、オンプレミス環境で VMware 用の Azure Migrate アプライアンスを設定し、検出を完了します。
 
 ## <a name="prepare-for-replication"></a>レプリケーションの準備

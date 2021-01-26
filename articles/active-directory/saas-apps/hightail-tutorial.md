@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 11/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 29f2610c371ecd567a18dc70e51b3eb34754d8ff
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297316"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180865"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hightail の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "89297316"
 * Hightail にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Hightail に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,14 +40,11 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Hightail では、**SP と IDP** によって開始される SSO がサポートされます
 * Hightail では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 ## <a name="adding-hightail-from-the-gallery"></a>ギャラリーから Hightail を追加する
 
 Azure AD への Hightail の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Hightail を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -60,7 +55,7 @@ Azure AD への Hightail の統合を構成するには、ギャラリーから�
 
 **B.Simon** というテスト ユーザーを使用して、Hightail に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Hightail の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Hightail で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Hightail に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -73,7 +68,7 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Hightail** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Hightail** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -81,11 +76,13 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    **[応答 URL]** ボックスに、`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse` という URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに `https://api.spaces.hightail.com/api/v1/saml/consumer` という URL を入力します。
+    
+    b. **[応答 URL]** ボックスに、URL として「`https://api.spaces.hightail.com/api/v1/saml/consumer`」と入力します。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://www.hightail.com/loginSSO`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://spaces.hightail.com/corp-login`」と入力します。
 
 1. Hightail アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -130,20 +127,14 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Hightail]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-hightail-sso"></a>Hightail SSO の構成
 
-1. Hightail 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Hightail 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -153,19 +144,19 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
 
 1. Hightail を手動で設定する場合は、別のブラウザー ウィンドウで **Hightail** 管理ポータルを開きます。
 
-1. ページの右上隅の**ユーザー アイコン**をクリックします。 
+1. ページの右上隅の **ユーザー アイコン** をクリックします。 
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure1.png)
+    ![ユーザー アイコンを示すスクリーンショット。](./media/hightail-tutorial/configure1.png)
 
 1. **[管理コンソールを表示]** タブをクリックします。
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure2.png)
+    ![[User]\(ユーザー\) の [View Admin Console]\(管理コンソールを表示\) ボタンを示すスクリーンショット。](./media/hightail-tutorial/configure2.png)
 
 1. 上部のメニューで、 **[SAML]** タブをクリックし、次の手順を実行します。
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure3.png)
+    ![[Login U R L]\(ログイン U R L\) および [SAML Certificate]\(SAML 証明書\) を入力できる [SAML] タブを示すスクリーンショット。](./media/hightail-tutorial/configure3.png)
 
-    a. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     b. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
@@ -182,16 +173,21 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Hightail] タイルをクリックすると、SSO を設定した Hightail に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Hightail のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Hightail のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Hightail に自動的にサインインされます 
 
-- [Azure AD で Hightail を試す](https://aad.portal.azure.com/)
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Hightail タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Hightail に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+
+
+## <a name="next-steps"></a>次のステップ
+
+Hightail を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

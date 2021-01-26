@@ -7,27 +7,27 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 87b674a9c6b7f7d591b39f1baf54c4d54082f306
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987309"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533788"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure Digital Twins でのエンドポイントとルートの管理 (ポータル)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](how-to-interpret-event-data.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる**エンドポイント**を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する[**イベント ルート**](concepts-route-events.md)を作成できます。
+Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](how-to-interpret-event-data.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する [**イベント ルート**](concepts-route-events.md)を作成できます。
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して、エンドポイントとルートを作成する手順を説明します。
 
-エンドポイントとルートは、[EventRoutes API](how-to-use-apis-sdks.md)、[.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して管理することもできます。 ポータルの代わりにこれらのメカニズムを使用するこの記事のバージョンについては、[*エンドポイントとルートを管理する方法 (API と CLI)* ](how-to-manage-routes-apis-cli.md) に関するページを参照してください。
+別の方法として、エンドポイントとルートは、[Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)、[SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して管理することもできます。 ポータルの代わりにこれらのメカニズムを使用するこの記事のバージョンについては、[*エンドポイントとルートを管理する方法 (API と CLI)*](how-to-manage-routes-apis-cli.md) に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure アカウント**が必要となります ([こちら](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)から無料で設定できます)。
-* ご利用の Azure サブスクリプションに **Azure Digital Twins インスタンス**が必要となります。 まだインスタンスをお持ちでない場合は、インスタンスを作成してください。その手順については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-scripted.md)に関するページを参照してください。 セットアップ中、次の値をメモしておいてください。後でこの記事の中で使用します。
+* **Azure アカウント** が必要となります ([こちら](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)から無料で設定できます)。
+* ご利用の Azure サブスクリプションに **Azure Digital Twins インスタンス** が必要となります。 まだインスタンスをお持ちでない場合は、インスタンスを作成してください。その手順については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 セットアップ中、次の値をメモしておいてください。後でこの記事の中で使用します。
     - インスタンス名
     - Resource group
 
@@ -52,13 +52,13 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid のエンドポイントを作成する
 
-**前提条件**:Event Grid の*カスタム イベント* クイックスタートの[「*カスタム トピックの作成*」セクション](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)の手順に従って、イベント グリッド トピックを作成します。
+**前提条件**:Event Grid の *カスタム イベント* クイックスタートの [「*カスタム トピックの作成*」セクション](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)の手順に従って、イベント グリッド トピックを作成します。
 
 トピックを作成したら、[Azure portal](https://portal.azure.com) の Azure Digital Twins インスタンスのページから Azure Digital Twins にそれをリンクすることができます (インスタンスを見つけるには、ポータルの検索バーにその名前を入力します)。
 
 インスタンスのメニューから、 _[エンドポイント]_ を選択します。 次に、 *[エンドポイント]* ページで、 *[+ エンドポイントの作成]* を選択します。 
 
-表示される *[エンドポイントの作成]* ページで、対応するラジオ ボタンを選択して、_Event Grid_ の種類のエンドポイントを作成できます。 その他の詳細を入力します。 _[名前]_ フィールドにエンドポイントの名前を入力し、ドロップダウンから _[サブスクリプション]_ を選択して、3 つ目のドロップダウンから、事前作成済みの _Event Grid トピック_を選択します。
+表示される *[エンドポイントの作成]* ページで、対応するラジオ ボタンを選択して、_Event Grid_ の種類のエンドポイントを作成できます。 その他の詳細を入力します。 _[名前]_ フィールドにエンドポイントの名前を入力し、ドロップダウンから _[サブスクリプション]_ を選択して、3 つ目のドロップダウンから、事前作成済みの _Event Grid トピック_ を選択します。
 
 次に、 _[保存]_ をクリックしてエンドポイントを作成します。
 
@@ -72,19 +72,19 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 エンドポイントの作成に失敗した場合は、エラー メッセージを確認し、数分後に再試行してください。
 
-これで、 _[名前]_ フィールドに指定した名前の下で、Event Grid トピックを Azure Digital Twins 内のエンドポイントとして使用できるようになりました。 通常は、**イベント ルート**のターゲットとしてこの名前を使用します。これは、[この記事の中で後から](#event-routes)作成します。
+これで、 _[名前]_ フィールドに指定した名前の下で、Event Grid トピックを Azure Digital Twins 内のエンドポイントとして使用できるようになりました。 通常は、**イベント ルート** のターゲットとしてこの名前を使用します。これは、[この記事の中で後から](#create-an-event-route)作成します。
 
 ### <a name="create-an-event-hubs-endpoint"></a>Event Hubs のエンドポイントを作成する
 
 **前提条件**: 
-* _Event Hubs 名前空間_と_イベント ハブ_が必要です。 この両方を作成するには、Event Hubs の[*イベント ハブの作成*](../event-hubs/event-hubs-create.md) クイックスタートの手順に従います。
-* _承認規則_が必要になります。 Event Hubs の「[*Shared Access Signature を使用する Event Hubs リソースへのアクセスの承認*](../event-hubs/authorize-access-shared-access-signature.md)」の記事を参照してください。
+* _Event Hubs 名前空間_ と _イベント ハブ_ が必要です。 この両方を作成するには、Event Hubs の [*イベント ハブの作成*](../event-hubs/event-hubs-create.md) クイックスタートの手順に従います。
+* _承認規則_ が必要になります。 Event Hubs の「[*Shared Access Signature を使用する Event Hubs リソースへのアクセスの承認*](../event-hubs/authorize-access-shared-access-signature.md)」の記事を参照してください。
 
 [Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスの詳細ページに移動します (ポータルの検索バーに名前を入力して、それを見つけることができます)。
 
 インスタンスのメニューから、 _[エンドポイント]_ を選択します。 次に、 *[エンドポイント]* ページで、 *[+ エンドポイントの作成]* を選択します。 
 
-表示される *[エンドポイントの作成]* ページで、対応するラジオ ボタンを選択して、_イベント ハブ_の種類のエンドポイントを作成できます。 _[名前]_ フィールドにエンドポイントの名前を入力します。 次に、 _[サブスクリプション]_ 、事前作成済みの _[イベント ハブの名前空間]_ 、 _[イベント ハブ]_ 、および _[承認規則]_ を各ドロップダウンから選択します。
+表示される *[エンドポイントの作成]* ページで、対応するラジオ ボタンを選択して、_イベント ハブ_ の種類のエンドポイントを作成できます。 _[名前]_ フィールドにエンドポイントの名前を入力します。 次に、 _[サブスクリプション]_ 、事前作成済みの _[イベント ハブの名前空間]_ 、 _[イベント ハブ]_ 、および _[承認規則]_ を各ドロップダウンから選択します。
 
 次に、 _[保存]_ をクリックしてエンドポイントを作成します。
 
@@ -94,13 +94,13 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 エンドポイントの作成に失敗した場合は、エラー メッセージを確認し、数分後に再試行してください。
 
-これで、 _[名前]_ フィールドに指定した名前の下で、イベント ハブを Azure Digital Twins 内のエンドポイントとして使用できるようになりました。 通常は、**イベント ルート**のターゲットとしてこの名前を使用します。これは、[この記事の中で後から](#event-routes)作成します。
+これで、 _[名前]_ フィールドに指定した名前の下で、イベント ハブを Azure Digital Twins 内のエンドポイントとして使用できるようになりました。 通常は、**イベント ルート** のターゲットとしてこの名前を使用します。これは、[この記事の中で後から](#create-an-event-route)作成します。
 
 ### <a name="create-a-service-bus-endpoint"></a>Service Bus エンドポイントを作成する
 
 **前提条件**: 
-* _Service Bus 名前空間_と _Service Bus トピック_が必要です。 これらの両方を作成するには、Service Bus の[*トピックとサブスクリプションの作成*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)クイックスタートの手順に従います。 「[*トピックに対するサブスクリプションを作成する*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic)」セクションを完了する必要はありません。
-* _承認規則_が必要になります。 これを作成するには、Service Bus の[*認証と承認*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)に関する記事を参照してください。
+* _Service Bus 名前空間_ と _Service Bus トピック_ が必要です。 これらの両方を作成するには、Service Bus の [*トピックとサブスクリプションの作成*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)クイックスタートの手順に従います。 「[*トピックに対するサブスクリプションを作成する*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic)」セクションを完了する必要はありません。
+* _承認規則_ が必要になります。 これを作成するには、Service Bus の [*認証と承認*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)に関する記事を参照してください。
 
 [Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスの詳細ページに移動します (ポータルの検索バーに名前を入力して、それを見つけることができます)。
 
@@ -116,18 +116,26 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 エンドポイントの作成に失敗した場合は、エラー メッセージを確認し、数分後に再試行してください。
 
-これで、 _[名前]_ フィールドに指定した名前の下で、Service Bus トピックを Azure Digital Twins 内のエンドポイントとして使用できるようになりました。 通常は、**イベント ルート**のターゲットとしてこの名前を使用します。これは、[この記事の中で後から](#event-routes)作成します。
+これで、 _[名前]_ フィールドに指定した名前の下で、Service Bus トピックを Azure Digital Twins 内のエンドポイントとして使用できるようになりました。 通常は、**イベント ルート** のターゲットとしてこの名前を使用します。これは、[この記事の中で後から](#create-an-event-route)作成します。
 
-## <a name="event-routes"></a>イベント ルート
+### <a name="create-an-endpoint-with-dead-lettering"></a>配信不能処理付きエンドポイントの作成
 
-Azure Digital Twins からエンドポイントに実際にデータを送信するには、**イベント ルート**を定義する必要があります。 これらのルートにより、開発者はシステム全体およびダウンストリーム サービスへのイベント フローを結び付けることができます。 イベント ルートの詳細については、[*Azure Digital Twins イベントのルーティングの概念*](concepts-route-events.md)に関する記事を参照してください。
+エンドポイントでは、一定の時間内にイベントを配信できない場合、あるいはイベントの配信を一定回数試行したが配信できない場合、未配信イベントをストレージ アカウントに送信できます。 このプロセスは **配信不能処理** と呼ばれます。
+
+配信不能処理が有効なエンドポイントを作成するには、Azure portal ではなく [ARM API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) を使用してエンドポイントを作成する必要があります。
+
+API を使用してこれを行う方法については、この記事の "[*API と CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)" のバージョンに関する記事を参照してください。
+
+## <a name="create-an-event-route"></a>イベント ルートを作成する
+
+Azure Digital Twins からエンドポイントに実際にデータを送信するには、**イベント ルート** を定義する必要があります。 これらのルートにより、開発者はシステム全体およびダウンストリーム サービスへのイベント フローを結び付けることができます。 イベント ルートの詳細については、[*Azure Digital Twins イベントのルーティングの概念*](concepts-route-events.md)に関する記事を参照してください。
 
 **前提条件**:ルートの作成に進む前に、この記事の前出の説明に従ってエンドポイントを作成する必要があります。 エンドポイントの設定が完了したら、イベント ルートの作成に進むことができます。
 
 >[!NOTE]
->エンドポイントを最近デプロイした場合は、新しいイベント ルートでそれらの使用を試みる**前に**、それらのデプロイが完了していることを確認します。 エンドポイントの準備ができていないためにルートを設定できない場合は、数分待ってからやり直してください。
+>エンドポイントを最近デプロイした場合は、新しいイベント ルートでそれらの使用を試みる **前に**、それらのデプロイが完了していることを確認します。 エンドポイントの準備ができていないためにルートを設定できない場合は、数分待ってからやり直してください。
 
-### <a name="create-an-event-route"></a>イベント ルートを作成する 
+### <a name="creation-steps-with-the-azure-portal"></a>Azure portal での作成手順
 
 イベントルート定義には、これらの要素が含まれます。
 * 使用するルート名
@@ -147,13 +155,13 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 * _[名前]_ フィールドでルートの名前
 * ルートの作成に使用する _[エンドポイント]_ 
 
-有効にするルートについて、少なくとも `true` の**イベントルート フィルターを追加する**必要もあります。 (`false` の既定値のままにするとルートが作成されますが、イベントがそれに送信されません)。これを行うには、 _[詳細エディター]_ のスイッチを切り替えて有効にし、 *[フィルター]* ボックスに `true` と書き込みます。
+有効にするルートについて、少なくとも `true` の **イベントルート フィルターを追加する** 必要もあります。 (`false` の既定値のままにするとルートが作成されますが、イベントがそれに送信されません)。これを行うには、 _[詳細エディター]_ のスイッチを切り替えて有効にし、 *[フィルター]* ボックスに `true` と書き込みます。
 
 :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="インスタンスのイベント ルートを作成するスクリーンショット。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 完了したら、 _[保存]_ ボタンをクリックして、イベント ルートを作成します。
 
-### <a name="filter-events"></a>イベントのフィルター処理
+## <a name="filter-events"></a>イベントのフィルター処理
 
 前述のように、ルートには **[フィルター]** フィールドがあります。 ルートのフィルター値が `false` の場合、エンドポイントにイベントが送信されません。 
 
@@ -161,7 +169,6 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 * Azure Digital Twins サービス API を使用して[デジタル ツイン](concepts-twins-graph.md)で発生するテレメトリ
 * Azure Digital Twins インスタンスでツインのプロパティが変更されたときに発生する、ツインのプロパティ変更通知
 * ツインまたはリレーションシップが作成または削除されたときに発生するライフサイクル イベント
-* Azure Digital Twins インスタンスで構成された[モデル](concepts-models.md)が追加または削除されたときに発生するモデル変更イベント
 
 より具体的なフィルターを定義することで、送信されるイベントの種類を制限できます。
 
@@ -205,7 +212,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
     :::column-end:::
 :::row-end:::
 
-サポートされているルート フィルターを次に示します。 *フィルター テキスト スキーマ*列の詳細は、[フィルター] ボックスに入力できるテキストです。
+サポートされているルート フィルターを次に示します。 *フィルター テキスト スキーマ* 列の詳細は、[フィルター] ボックスに入力できるテキストです。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f21b72cd519c1615d8273bf316a8d0ccad039672
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281390"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546162"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -88,7 +88,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 最後に、 __[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
 
-無料の [SendGrid アカウント](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
+無料の [SendGrid アカウント](../sendgrid-dotnet-how-to-send-email.md)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
 
 ### <a name="cluster"></a>クラスター
 
@@ -214,7 +214,7 @@ Ambari ビューを使うと、開発者は Apache Ambari ビュー フレーム
 
 Ambari の次の操作は、HDInsight ではサポートされていません。
 
-* __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 この操作は、HDInsight ではサポートされていません。
+* __メトリック コレクター サービスの移動__ 。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 この操作は、HDInsight ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

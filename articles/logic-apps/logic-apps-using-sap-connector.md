@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833897"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89488849"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -124,7 +124,7 @@ SAP コネクタでは [SAP .NET Connector (NCo) ライブラリ](https://suppor
 
 ### <a name="sap-client-library-prerequisites"></a>SAP クライアント ライブラリの前提条件
 
-* [.NET Framework 4.0 - Windows 64 ビット (x64) でコンパイルされた Microsoft .NET 3.0.22.0 向けの SAP コネクタ (NCo 3.0)](https://softwaredownloads.sap.com/file/0020000001000932019) の最新バージョンがインストールされていることを確認します。 以前のバージョンでは、互換性の問題が発生する可能性があります。 詳細については、「[SAP クライアント ライブラリのバージョン](#sap-library-versions)」を参照してください。
+* [.NET Framework 4.0 - Windows 64 ビット (x64) でコンパイルされた Microsoft .NET 3.0.22.0 向けの SAP コネクタ (NCo 3.0)](https://support.sap.com/en/product/connectors/msnet.html) の最新バージョンがインストールされていることを確認します。 以前のバージョンでは、互換性の問題が発生する可能性があります。 詳細については、「[SAP クライアント ライブラリのバージョン](#sap-library-versions)」を参照してください。
 
 * 既定では、SAP インストーラーによってアセンブリ ファイルが既定のインストール フォルダーに格納されます。 ご自分のシナリオに基づいて、次のように、これらのアセンブリ ファイルを別の場所にコピーする必要があります。
 
@@ -396,7 +396,7 @@ Logic Apps へのリモート関数呼び出し (RFC) を使用して SAP ABAP �
 
    あるいは、次のようにアクションを手動で指定できます。
 
-   ![SAP アクションの手動入力](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
+   ![使用する SAP アクションを手動で入力してください](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    複数のメッセージを受信するようにトリガーを設定したときのアクションの表示例を次に示します。
 

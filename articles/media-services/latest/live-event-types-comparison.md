@@ -3,24 +3,26 @@ title: Azure Media Services LiveEvent の種類 |Microsoft Docs
 description: Azure Media Services では、ライブ イベントは*パススルー*または*ライブ エンコード*のいずれかに設定できます。 この記事では、LiveEvent の種類を比較する詳細な表を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090061"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89397306"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、[ライブ イベント](/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 
 
@@ -84,8 +86,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 | 200 |340 |192 |30 |高 |
 
 > [!NOTE]
-> ライブ エンコード プリセットをカスタマイズする必要がある場合は、Azure portal 経由でサポート チケットを開いてください。 目的の解像度とビットレートを指定する必要があります。 720p のレイヤーが 1 つだけあり、最大で 6 つのレイヤーがあることを確認してください。 また、Standard ライブ エンコーダーのプリセットを要求していることを必ず指定してください。
-> ビットレートと解像度の特定の値は、時間の経過とともに調整される可能性があります
+> ライブ エンコード プリセットをカスタマイズする必要がある場合は、Azure portal 経由でサポート チケットを開いてください。 目的のビデオ解像度とビットレートを指定する必要があります。 オーディオ エンコード ビットレートのカスタマイズはサポートされていません。 720p のレイヤーが 1 つだけあり、最大で 6 つのレイヤーがあることを確認してください。 また、プリセットを要求していることを必ず指定してください。
 
 ### <a name="output-video-streams-for-default1080p"></a>Default1080p の出力ビデオ ストリーム
 
@@ -101,8 +102,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 | 200 |320 |180 |30 |高 |
 
 > [!NOTE]
-> ライブ エンコード プリセットをカスタマイズする必要がある場合は、Azure portal 経由でサポート チケットを開いてください。 目的の解像度とビットレートを指定する必要があります。 1080p のレイヤーが 1 つだけで、最大で 6 つのレイヤーが存在することを必ず確認してください。 また、Premium 1080p ライブ エンコーダーのプリセットを要求していることを必ず指定してください。
-> ビットレートと解像度の特定の値は、時間の経過とともに調整される可能性があります。
+> ライブ エンコード プリセットをカスタマイズする必要がある場合は、Azure portal 経由でサポート チケットを開いてください。 目的の解像度とビットレートを指定する必要があります。 1080p のレイヤーが 1 つだけあり、最大で 6 つのレイヤーがあることを確認してください。 また、Premium 1080p ライブ エンコーダーのプリセットを要求していることを指定してください。 ビットレートと解像度の特定の値は、時間の経過とともに調整される可能性があります。
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Default720p と Default1080p の出力オーディオ ストリーム
 

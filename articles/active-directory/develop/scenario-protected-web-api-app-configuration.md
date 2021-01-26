@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50de800c94bd0a65fafcff3ef6613d6f063a3797
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855486"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063197"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
@@ -40,7 +40,7 @@ Web アプリと同じように、ASP.NET と ASP.NET Core の Web API は、そ
 
 アプリが呼び出されたときにヘッダーに設定されるベアラー トークンには、アプリ ID に関する情報が保持されます。 また、Web アプリがデーモン アプリからのサービス間の呼び出しを受け入れる場合を除き、ユーザーに関する情報も保持されます。
 
-以下は、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用してトークンを取得した後、API を呼び出すクライアントを示す C# コードの例です。
+これは、Microsoft Authentication Library for .NET (MSAL.NET) を使用してトークンを取得した後、API を呼び出すクライアントを示す C# コードの例です。
 
 ```csharp
 var scopes = new[] {$"api://.../access_as_user"};
@@ -111,6 +111,12 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 **[Authorize]** 属性を保持するコントローラー アクションでアプリが呼び出されると、ASP.NET と ASP.NET Core により、Authorization ヘッダーのベアラー トークンからアクセス トークンが抽出されます。 その後、アクセス トークンは JwtBearer ミドルウェアに転送され、Microsoft IdentityModel Extensions for .NET が呼び出されます。
 
+#### <a name="microsoftidentityweb"></a>Microsoft.Identity.Web
+
+ASP.NET Core で Web API を開発する場合は、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet パッケージを使用することをお勧めします。
+
+_Microsoft.Identity.Web_ を使用すると、ASP.NET Core、認証ミドルウェア、および .NET 用の [Microsoft Authentication Library (MSAL)](msal-overview.md) 間を結び付けることができます。 これにより、より明確で堅牢な開発者エクスペリエンスが可能になり、Microsoft ID プラットフォームと Azure AD B2C の機能を活用できます。
+
 #### <a name="using-microsoftidentityweb-templates"></a>Microsoft.Identity.Web テンプレートを使用する
 
 Microsoft.Identity.Web プロジェクト テンプレートを使用して、Web API を最初から作成できます。 詳細については、「[Microsoft.Identity.Web - Web API プロジェクト テンプレート](https://aka.ms/ms-id-web/webapi-project-templates)」を参照してください。
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- 現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、NuGet パッケージとして使用可能な [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) を使用して *Startup.cs* 内のコードを置き換えることで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。
+ 現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、*Startup.cs* 内のコードを置き換える [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) を使用することで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -156,19 +162,20 @@ public void ConfigureServices(IServiceCollection services)
 public void ConfigureServices(IServiceCollection services)
 {
  // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
- services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+             .AddMicrosoftIdentityWebApi(Configuration, "AzureAd");
 
- services.AddControllers();
+services.AddControllers();
 }
 ```
 
 > [!NOTE]
-> Microsoft.Identity.Web を使用し、*appsettings.json*内に `Audience` を設定しない場合、次が使用されます。
+> Microsoft.Identity.Web を使用し、*appsettings.json* 内に `Audience` を設定しない場合、次が使用されます。
 > -  `$"{ClientId}"`。[アクセス トークンで承認されたバージョン](scenario-protected-web-api-app-registration.md#accepted-token-version)を `2` に設定している場合、または Azure AD B2C Web API の場合。
 > - `$"api://{ClientId}`。その他すべての場合 (v1.0 [アクセス トークン](access-tokens.md)の場合)。
 > 詳細については、Microsoft.Identity.Web の[ソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)を参照してください。
 
-上記のコード スニペットは、[ASP.NET Core Web API の増分チュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)から引用されています。 **AddMicrosoftIdentityWebApiAuthentication** に関する詳細については [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27) を参照してください。 このメソッドにより [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58) が呼び出されます。これ自体がトークンの検証方法をミドルウェアに指示します。 詳細については、その[ソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)を参照してください。
+上記のコード スニペットは、[ASP.NET Core Web API の増分チュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)から引用されています。 **AddMicrosoftIdentityWebApiAuthentication** に関する詳細については [Microsoft.Identity.Web](microsoft-identity-web.md) を参照してください。 このメソッドにより [AddMicrosoftIdentityWebAPI](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true) が呼び出されます。これ自体がトークンの検証方法をミドルウェアに指示します。
 
 ## <a name="token-validation"></a>トークンの検証
 
@@ -235,5 +242,4 @@ Azure Functions では、受信アクセス トークンを検証することも
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [コードでスコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)
+このシナリオの次の記事である「[コードでスコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)」に進みます。

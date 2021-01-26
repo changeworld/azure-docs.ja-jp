@@ -3,14 +3,14 @@ title: Azure Automation Runbook からメールを送信する
 description: この記事では、Runbook 内からメールを送信する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185859"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900323"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook からメールを送信する
 
@@ -67,7 +67,7 @@ Azure Key Vault を作成してシークレットを格納するその他の方�
 
 Runbook 内で Azure Key Vault を使用するには、次のモジュールを Automation アカウントにインポートする必要があります。
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 手順については、「[Az モジュールのインポート](shared-resources/modules.md#import-az-modules)」を参照してください。
@@ -100,7 +100,7 @@ Runbook 内で Azure Key Vault を使用するには、次のモジュールを 
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
     $VaultName = "<Enter your vault name>"
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValueText
+    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValue
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")
@@ -136,13 +136,13 @@ Runbook 内で Azure Key Vault を使用するには、次のモジュールを 
 
 Runbook が正常に実行されることを確認するには、「[Runbook をテストする](manage-runbooks.md#test-a-runbook)」または [Runbook の開始](start-runbooks.md)に関するページの手順に従います。
 
-最初にテスト用のメールが表示されない場合は、**迷惑メール**および**スパム**のフォルダーを確認してください。
+最初にテスト用のメールが表示されない場合は、**迷惑メール** および **スパム** のフォルダーを確認してください。
 
 ## <a name="clean-up-resources-after-the-email-operation"></a>メール操作後にリソースをクリーンアップする
 
 1. この Runbook が不要になったら、Runbook の一覧で選択し、 **[削除]** をクリックします。
 
-2. キー コンテナーを削除するには、[Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) コマンドレットを使用します。
+2. キー コンテナーを削除するには、[Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) コマンドレットを使用します。
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

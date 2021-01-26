@@ -7,12 +7,12 @@ keywords: 変更, 追跡, Change Tracking, インベントリ, Automation
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185808"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204250"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM に対する変更のトラブルシューティング
 
@@ -218,9 +218,9 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 
 18. アラート メールの件名をカスタマイズするには **[アクションをカスタマイズする]** を選択します。 
 
-19. **[ルールの作成]** で、 **[電子メールの件名]** 、 **[アラート ルールの作成]** の順に選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。 次の図は、W3SVC サービスが停止したときに受信する電子メールの例です。
+19. **[ルールの作成]** で、 **[電子メールの件名]** 、 **[アラート ルールの作成]** の順に選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。 次の図は、W3SVC サービスが停止したときに送信される電子メールの例です。
 
-    ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![W3SVC サービスが停止したときに送信されるメール通知のキャプチャ画面。](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -238,4 +238,4 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 さらに詳しく学ぶには、Change Tracking およびインベントリ機能の概要に進んでください。
 
 > [!div class="nextstepaction"]
-> [Change Tracking とインベントリの概要](./change-tracking.md)
+> [Change Tracking とインベントリの概要](change-tracking/overview.md)

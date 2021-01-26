@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118673"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011528"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 
@@ -41,52 +41,52 @@ ms.locfileid: "88118673"
 > 使用するポータルは、アプリケーションが Microsoft Azure パブリック クラウド、各国のクラウドまたはソブリン クラウドのいずれで実行されるかによって異なります。 詳細については、[各国のクラウド](./authentication-national-cloud.md#app-registration-endpoints)に関する記事をご覧ください。
 
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。 または、[選択した各国のクラウドの Azure portal](./authentication-national-cloud.md#app-registration-endpoints) にサインインします。
-2. お使いのアカウントで複数のテナントにアクセスできる場合は、右上隅で自分のアカウントをクリックします。 次に、ポータル セッションを目的の Azure Active Directory (Azure AD) テナントに変更します。
-3. 左側のウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** 、 **[新規登録]** の順に選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。 
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+   1. アプリケーションの **名前** を入力します (例: `AspNetCore-WebApp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**AspNetCore-WebApp**」と入力します。
-   1. **[リダイレクト URI]** に、アプリケーションの種類と認証に成功した後に返されたトークンの応答を受け入れる URI の接続先を追加します。 たとえば、「 **https://localhost:44321** 」と入力します。 次に、 **[登録]** を選択します。
-   ![登録](media/scenario-webapp/scenario-webapp-app-registration-1.png)
-1. **[認証]** メニューを選択し、次の情報を追加します。
-   1. **[応答 URL]** で、種類が **Web** の **https://localhost:44321/signin-oidc** を追加します。
-   1. **[詳細設定]** セクションの **[ログアウト URL]** を「 **https://localhost:44321/signout-oidc** 」に設定します
+   1. **[リダイレクト URI]** に、アプリケーションの種類と認証に成功した後に返されたトークンの応答を受け入れる URI の接続先を追加します。 たとえば、「`https://localhost:44321`」と入力します。
+   1. **[登録]** を選択します。
+1. **[管理]** の下で **[認証]** を選択し、次の情報を追加します。
+   1. **[Web]** セクションで、**リダイレクト URI** として `https://localhost:44321/signin-oidc` を追加します。
+   1. **ログアウト URL** として `https://localhost:44321/signout-oidc` を追加します。
    1. **[暗黙的な許可]** の下の **[ID トークン]** を選択します。
    1. **[保存]** を選択します。
-  ![登録](media/scenario-webapp/scenario-webapp-app-registration-2.png)
- 
+   
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+   1. アプリケーションの **名前** を入力します (例: `MailApp-openidconnect-v2`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**MailApp-openidconnect-v2**」と入力します。
    1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI **https://localhost:44326/** を入力します。
-1. **[登録]** を選択して、アプリケーションを作成します。
-1. **[認証]** メニューを選択します。
-1. **[詳細設定]** の **[暗黙的な許可]** セクションで **[ID トークン]** を選択します。 このサンプルでは、ユーザーをサインインさせるには、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
+   1. **[登録]** を選択して、アプリケーションを作成します。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[暗黙の付与]** セクションで、 **[ID トークン]** を選択します。 このサンプルでは、ユーザーをサインインさせるには、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
 1. **[保存]** を選択します。
 
 # <a name="java"></a>[Java](#tab/java)
 
-1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの表示名を入力します。 たとえば、「**java-webapp**」と入力します。
-1. **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択し、 **[アプリケーションの種類]** に **[Web アプリ / API]** を選択します。
-1. **[登録]** を選択し、アプリケーションを登録します。
-1. 左側のメニューで、 **[認証]** を選択します。 **[リダイレクト URI]** で **[Web]** を選択します。
-
-1. 2 つのリダイレクト URI を入力します。1 つはサインイン ページ用で、もう 1 つはグラフ ページ用です。 いずれの場合も、同じホストとポート番号を使用し、その後にサインイン ページの場合は **/msal4jsample/secure/aad** を、ユーザー情報ページの場合は **msal4jsample/graph/me** を続けます。
-
-   既定では、このサンプルでは次のものが使用されます。
-
+1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。 
+    1. アプリケーションの **名前** を入力します (例: `java-webapp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。 
+    1. **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
+    1. **[登録]** を選択し、アプリケーションを登録します。
+1. **[管理]** で、 **[認証]**  >  **[プラットフォームを追加]** の順に選択します。
+1. **[Web]** を選択します。
+1. **[リダイレクト URI]** に、同じホストとポート番号、その後にサインイン ページとして「`/msal4jsample/secure/aad`」を入力します。 
+1. **[構成]** をクリックします。
+1. **[Web]** セクションで、ユーザー情報ページの **リダイレクト URI** として、ホストとポート番号、その後に **/msal4jsample/graph/me** を使用します。
+既定では、このサンプルでは次のものが使用されます。
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-  次に、 **[保存]** を選択します。
-
-1. メニューから **[証明書とシークレット]** を選択します。
+1. **[保存]** を選択します。
+1. **[管理]** で、 **[証明書とシークレット]** を選択します。
 1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択し、次に、
 
    1. キーの説明を入力します。
@@ -97,14 +97,13 @@ ms.locfileid: "88118673"
 # <a name="python"></a>[Python](#tab/python)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**python-webapp**」と入力します。
+   1. アプリケーションの **名前** を入力します (例: `python-webapp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
    1. **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** に変更します。
    1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI **http://localhost:5000/getAToken** を入力します。
-1. **[登録]** を選択して、アプリケーションを作成します。
+   1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
-1. 左側のメニューで **[証明書とシークレット]** を選択します。
+1. **[管理]** で、 **[証明書とシークレット]** を選択します。
 1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択し、次に、
-
    1. キーの説明を入力します。
    1. キーの有効期間として **[1 年]** を選択します。
    1. **[追加]** を選択します。
@@ -119,9 +118,8 @@ ms.locfileid: "88118673"
 > - MyOrg (この組織のディレクトリ内のアカウントのみ)
 > - AnyOrg (任意の組織のディレクトリ内のアカウント)
 >
-> ユーザーが個人の Microsoft アカウント (Skype、Xbox、Outlook.com など) でサインインできるアプリケーションを作成できます。 まず、マルチテナント アプリケーションを作成します。 サポートされているアカウントの種類は、任意の組織のディレクトリ内のアカウントです。 次に、Azure portal から[アプリケーション マニフェスト](./reference-app-manifest.md)の [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティを **2** に、[`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) プロパティを `AzureADandPersonalMicrosoftAccount` に変更します。 詳細については、ASP.NET Core チュートリアルの「[手順 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant)」を参照してください。 この手順は一般化し、あらゆる言語の Web アプリに適用できます。
+> ユーザーが個人の Microsoft アカウント (Skype、Xbox、Outlook.com など) でサインインできるアプリケーションを作成できます。 まず、マルチテナント アプリケーションを作成します。 サポートされているアカウントの種類は、任意の組織のディレクトリ内のアカウントです。 次に、Azure portal から [アプリケーション マニフェスト](./reference-app-manifest.md)の [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティを **2** に、[`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) プロパティを `AzureADandPersonalMicrosoftAccount` に変更します。 詳細については、ASP.NET Core チュートリアルの「[手順 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant)」を参照してください。 この手順は一般化し、あらゆる言語の Web アプリに適用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリのコード構成](scenario-web-app-sign-user-app-configuration.md)
+このシナリオの次の記事である[アプリのコードの構成](scenario-web-app-sign-user-app-configuration.md)に関する記事に進みます。

@@ -1,19 +1,19 @@
 ---
 title: HBase .NET SDK の使用 - Azure HDInsight
 description: HBase .NET SDK を使用して、テーブルの作成と削除、およびデータの読み取りと書き込みを行います。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 7c62f1875fe44aa001323af5d83a0007ee18f11d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b5693ddef5e512b0a95c87a700fd12acd4b5fae
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017347"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654644"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
@@ -23,7 +23,7 @@ C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase 
 
 ## <a name="install-the-sdk"></a>SDK のインストール
 
-HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio の **NuGet パッケージ マネージャー コンソール**から、次のコマンドを使用してインストールできます。
+HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio の **NuGet パッケージ マネージャー コンソール** から、次のコマンドを使用してインストールできます。
 
 ```console
 Install-Package Microsoft.HBase.Client
@@ -190,4 +190,4 @@ finally
 ## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache HBase の例を使用する](apache-hbase-tutorial-get-started-linux.md)
-* [Apache HBase での Twitter センチメントのリアルタイム分析](../hdinsight-hbase-analyze-twitter-sentiment.md)によりエンド ツー エンド アプリケーションを構築する
+* [Apache HBase での Twitter センチメントのリアルタイム分析](./apache-hbase-tutorial-get-started-linux.md)によりエンド ツー エンド アプリケーションを構築する

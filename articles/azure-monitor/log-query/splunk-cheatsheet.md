@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c59b5646e011afa6b8487e8145a1cb07e6e2a8ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207481"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015582"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk ユーザーのための Azure Monitor ログ クエリ
 
@@ -123,7 +123,7 @@ Splunk には、`project-away` と似た演算子はないようです。 UI を
 | **Azure Monitor** | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>集計
-各種集計関数については、「[Azure Monitor ログ クエリの集計](aggregations.md)」をご覧ください。
+各種集計関数については、「[Azure Monitor ログ クエリの集計](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)」をご覧ください。
 
 | | 演算子 | 例 |
 |:---|:---|:---|

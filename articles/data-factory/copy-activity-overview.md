@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534347"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96902164"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -186,10 +186,11 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 ソース データ ストアからシンクにデータをコピーするだけでなく、シンクにコピーする追加データ列を追加するように構成することもできます。 次に例を示します。
 
 - ファイルベースのソースからコピーする場合は、相対ファイル パスを、データの取得元ファイルをトレースするための追加列として保存します。
+- 指定されたソース列を別の列として複製します。 
 - ADF 式を含む列を追加して、パイプライン名/パイプライン ID などの ADF システム変数をアタッチするか、上流アクティビティの出力から他の動的な値を保存します。
 - 静的な値を持つ列を、下流の使用ニーズに応じて追加します。
 
-コピーアクティビティ ソース タブの構成は次のとおりです。 
+コピー アクティビティ ソース タブの構成は次のとおりです。また、定義されている列名を使用して、通常どおりのコピー アクティビティ [スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)で追加の列をマッピングすることもできます。 
 
 ![コピー アクティビティで列を追加する](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| additionalColumns | シンクにコピーするデータ列を追加します。<br><br>`additionalColumns` 配列の各オブジェクトは追加列を表します。 `name` は列名を定義します。また、`value` はその列のデータ値を示します。<br><br>使用できるデータ値:<br>-  **`$$FILEPATH`** -予約済み変数。データセットで指定されたフォルダー パスへのソース ファイルの相対パスが格納されることを示します。 ファイルベースのソースに適用されます。<br>- **式**<br>- **静的な値** | いいえ |
+| additionalColumns | シンクにコピーするデータ列を追加します。<br><br>`additionalColumns` 配列の各オブジェクトは追加列を表します。 `name` は列名を定義します。また、`value` はその列のデータ値を示します。<br><br>使用できるデータ値:<br>-  **`$$FILEPATH`** -予約済み変数。データセットで指定されたフォルダー パスへのソース ファイルの相対パスが格納されることを示します。 ファイルベースのソースに適用されます。<br>-  **`$$COLUMN:<source_column_name>`** - 予約変数パターンは、指定されたソース列を別の列として複製することを示します<br>- **式**<br>- **静的な値** | いいえ |
 
 **例:**
 
@@ -218,6 +219,10 @@ Data Factory を使用すると、ソース データ ストアからシンク �
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",
@@ -249,7 +254,7 @@ SQL データベース/Azure Synapse Analytics にデータをコピーすると
 
 - [Azure SQL Database](connector-azure-sql-database.md)
 - [Azure SQL Database マネージド インスタンス](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![シンク テーブルの作成](media/copy-activity-overview/create-sink-table.png)
@@ -257,6 +262,13 @@ SQL データベース/Azure Synapse Analytics にデータをコピーすると
 ## <a name="fault-tolerance"></a>フォールト トレランス
 
 既定では、ソース データ行がシンク データ行と互換性がない場合、コピー アクティビティでデータのコピーが停止され、エラーが返されます。 コピーを成功させるには、互換性のない行をスキップし、ログに記録し、互換性のあるデータのみをコピーするようにコピー アクティビティを構成します。 詳細については、[コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)に関する記事を参照してください。
+
+## <a name="data-consistency-verification"></a>データ整合性の検証
+
+ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティでのデータ整合性の検証](copy-activity-data-consistency.md)」を参照してください。
+
+## <a name="session-log"></a>セッション ログ
+コピーされたファイル名をログに記録できます。これにより、コピー アクティビティのセッション ログを確認することで、データがコピー元からコピー先ストアに正常にコピーされたことだけでなく、コピー元とコピー先ストアの間で一貫していることも確認できます。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。

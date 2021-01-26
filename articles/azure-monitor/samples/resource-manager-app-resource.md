@@ -3,15 +3,15 @@ title: Application Insights リソース用の Resource Manager テンプレー�
 description: Azure Monitor で Application Insights リソースをデプロイするためのサンプル Azure Resource Manager テンプレート。
 ms.subservice: application-insights
 ms.topic: sample
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/08/2020
-ms.openlocfilehash: d7a8a7b7fa75d7d9bb4dc45a3432370bac4cb4d6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 88c657aa89476f3be21226544e64512bd433776c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498646"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210275"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Application Insights リソースを作成するための Resource Manager テンプレートのサンプル
 
@@ -107,7 +107,7 @@ ms.locfileid: "86498646"
 
 ## <a name="workspace-based-application-insights-resource"></a>ワークスペース ベースの Application Insights リソース 
 
-次の例では、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を作成します。 ワークスペースベースの Application Insights は、現在**プレビュー**段階にあります。 
+次の例では、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を作成します。 ワークスペースベースの Application Insights は、現在 **プレビュー** 段階にあります。 
 
 
 ### <a name="template-file"></a>テンプレート ファイル

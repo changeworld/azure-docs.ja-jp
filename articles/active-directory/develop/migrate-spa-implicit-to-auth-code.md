@@ -11,25 +11,25 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev
-ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027089"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063775"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>暗黙的な許可から承認ワークフロー フローに JavaScript のシングルページ アプリを移行する
 
 Microsoft Authentication Library for JavaScript (MSAL.js) v2.0 では、Microsoft ID プラットフォームでのシングルページ アプリケーションに対する、PKCE、CORS を使用した承認コード フローがサポートされます。 以降のセクションの手順に従い、暗黙的な許可を使用する MSAL.js 1.x アプリケーションを、MSAL.js 2.0+ (以下 *2.x*) と承認コード フローに移行します。
 
-MSAL.js 2.x は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.x よりも強化されています。 MSAL.js 2.x では、暗黙的フローはサポートされて**いません**。
+MSAL.js 2.x は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.x よりも強化されています。 MSAL.js 2.x では、暗黙的フローはサポートされて **いません**。
 
 ## <a name="migration-steps"></a>移行の手順
 
 MSAL.js 2.x と承認コード フローにアプリケーションを更新するには、主に 3 つの手順があります。
 
-1. [アプリ登録](#switch-redirect-uris-to-spa-platform)リダイレクト URI を **Web** プラットフォームから**シングルページ アプリケーション** プラットフォームに切り替えます。
+1. [アプリ登録](#switch-redirect-uris-to-spa-platform)リダイレクト URI を **Web** プラットフォームから **シングルページ アプリケーション** プラットフォームに切り替えます。
 1. [コード](#switch-redirect-uris-to-spa-platform)を MSAL.js 1.x から **2.x** に更新します。
 1. 登録を共有しているすべてのアプリケーションが MSAL.js 2.x と承認コード フローに更新されたら、アプリ登録の[暗黙的な許可](#disable-implicit-grant-settings)を無効にします。
 
@@ -41,7 +41,7 @@ MSAL.js 2.x と承認コード フローにアプリケーションを更新す�
 
 **Web** プラットフォーム リダイレクト URI で現在構成されているアプリ登録には、以下の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**Azure Active Directory** を選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインし、**Azure Active Directory** テナントを選択します。
 1. **[アプリの登録]** でアプリケーションを選択し、 **[認証]** を選択します。
 1. **[Web]** プラットフォーム タイルの **[リダイレクト URI]** で、URI を移行する必要があることを示す警告バナーを選択します。
 
@@ -86,7 +86,7 @@ MSAL 2.x をアプリケーションに追加する方法の完全なチュー�
 
 アプリ登録で暗黙的な許可設定のチェックマークをオフにすると、登録とそのクライアント ID を利用するすべてのアプリケーションに対して暗黙的フローが無効になります。
 
-すべてのアプリケーションを MSAL.js 2.x と [PublicClientApplication][msal-js-publicclientapplication] に更新するまで、暗黙的な許可フローを無効に**しないでください**。
+すべてのアプリケーションを MSAL.js 2.x と [PublicClientApplication][msal-js-publicclientapplication] に更新するまで、暗黙的な許可フローを無効に **しないでください**。
 
 ## <a name="next-steps"></a>次のステップ
 

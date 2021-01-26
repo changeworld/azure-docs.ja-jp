@@ -4,12 +4,12 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289505"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89378034"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 

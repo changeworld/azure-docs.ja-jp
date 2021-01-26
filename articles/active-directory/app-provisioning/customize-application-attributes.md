@@ -1,5 +1,5 @@
 ---
-title: Azure AD 属性マッピングのカスタマイズ | Microsoft Docs
+title: チュートリアル - Azure Active Directory 属性マッピングをカスタマイズする
 description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
 services: active-directory
 author: kenwith
@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
-ms.date: 04/03/2019
+ms.topic: tutorial
+ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235226"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936983"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
 Microsoft Azure AD では、Salesforce、G Suite、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure portal では属性マッピングによってその属性値を管理します。
 
@@ -27,7 +27,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 ## <a name="editing-user-attribute-mappings"></a>ユーザー属性マッピングの編集
 
-次の手順に従って、ユーザー プロビジョニングの**マッピング**機能にアクセスします。
+次の手順に従って、ユーザー プロビジョニングの **マッピング** 機能にアクセスします。
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインします。
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 ギャラリーから追加されたアプリを含む、構成済みのすべてのアプリの一覧が表示されます。
@@ -58,7 +58,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
   詳細については、「[Azure Active Directory における属性マッピングの式の書き方](../app-provisioning/functions-for-customizing-application-data.md)」を参照してください。
 - **なし** - ターゲットの属性を変更しません。 ただし、ターゲットの属性が空の場合は、指定した既定値が設定されます。
 
-これら 4 つの基本的な種類とともに、カスタム属性マッピングではオプションの**既定**値の割り当てという概念をサポートします。 既定値の割り当てでは、Azure AD にもターゲット オブジェクトにも値がない場合にも、ターゲットの属性には必ず値が設定されます。 最も一般的な構成では、これを空白のままにします。
+これら 4 つの基本的な種類とともに、カスタム属性マッピングではオプションの **既定** 値の割り当てという概念をサポートします。 既定値の割り当てでは、Azure AD にもターゲット オブジェクトにも値がない場合にも、ターゲットの属性には必ず値が設定されます。 最も一般的な構成では、これを空白のままにします。
 
 ### <a name="understanding-attribute-mapping-properties"></a>属性マッピングのプロパティの概要
 
@@ -107,12 +107,15 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 
 - Salesforce
 - ServiceNow
-- Workday
+- Workday から Active Directory / Workday から Azure Active Directory へ
+- SuccessFactors から Active Directory へ / SuccessFactors から Azure Active Directory へ
 - Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
-- [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ ([コア スキーマ](https://tools.ietf.org/html/rfc7643)に定義された属性を追加する必要がある)
+- [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ
+- Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません
+
 
 > [!NOTE]
-> サポートされている属性一覧の編集は、アプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。
+> サポートされている属性一覧の編集は、アプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
 
 サポートされている属性の一覧を編集するときは、次のプロパティが表示されます。
 
@@ -129,24 +132,21 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
 - **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 - **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
-- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
+- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCIM 準拠アプリケーションへカスタム拡張属性をプロビジョニングする
 SCIM RFC ではコア ユーザーとグループ スキーマが定義されているだけでなく、スキーマの拡張をアプリケーションのニーズに合わせて使用することもできます。 カスタム属性を SCIM アプリケーションに追加するには、次の手順に従います。
    1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインし、 **[Enterprise Applications]\(エンタープライズ アプリケーション\)** を選択して、アプリケーションを選択し、 **[Provisioning]\(プロビジョニング\)** を選択します。
-   2. **マッピング**で、カスタム属性を追加するオブジェクト (ユーザーまたはグループ) を選択します。
+   2. **マッピング** で、カスタム属性を追加するオブジェクト (ユーザーまたはグループ) を選択します。
    3. ページの下部にある **[Show advanced options]\(詳細オプションの表示\)** を選択します。
    4. **[Edit attribute list for AppName]\(AppName の属性リストの編集\)** を選択します。
    5. 属性の一覧の下部にあるフィールドに、カスタム属性に関する情報を入力します。 **[属性の追加]** を選択します。
 
-SCIM アプリケーションの場合は、次の例に示すパターンに従って属性名を指定する必要があります。 "CustomExtensionName" と "CustomAttribute" は、アプリケーションの要件に応じてカスタマイズできます。次に例を示します。  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
- * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
+SCIM アプリケーションの場合は、次の例に示すパターンに従って属性名を指定する必要があります。 "CustomExtensionName" と "CustomAttribute" は、アプリケーションの要件に応じてカスタマイズできます。例: urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
 
 これらの手順は、SCIM 対応アプリケーションにのみ適用されます。 ServiceNow や Salesforce などのアプリケーションは、SCIM を使用する Azure AD と統合されていないため、カスタム属性を追加するときにこの特定の名前空間は必要ありません。
 
-カスタム属性を参照属性または複数値の属性にすることはできません。 現在、カスタムの複数値の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
+カスタム属性は、参照属性、複数値の属性、または複合型の属性にすることはできません。 現在、カスタムの複数値または複合型の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
  
 **拡張属性を持つユーザーの表記を次に示します。**
 
@@ -174,7 +174,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {
@@ -192,7 +192,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
 ## <a name="provisioning-a-role-to-a-scim-app"></a>SCIM アプリへのロールのプロビジョニング
 ユーザーのロールをアプリケーションにプロビジョニングするには、次の手順を使用します。 下記の説明は、カスタム SCIM アプリケーションに固有のものであることに注意してください。 Salesforce や ServiceNow などのギャラリー アプリケーションの場合、事前定義済みのロール マッピングを使用します。 下記の項目は、アプリケーションで想定されている形式に AppRoleAssignments 属性を変換する方法を説明しています。
 
-- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](../app-provisioning/functions-for-customizing-application-data.md)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に**直接マップしないでください**。 
+- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](../app-provisioning/functions-for-customizing-application-data.md)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に **直接マップしないでください**。 
 
 - **SingleAppRoleAssignment** 
   - **使用する場合:** ユーザーの 1 つのロールをプロビジョニングする、またプライマリ ロールを指定するには、SingleAppRoleAssignment 式を使用します。 
@@ -202,7 +202,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
   - **考慮事項**
     - 複数のロールが 1 人のユーザーに割り当てられていないことを確認してください。 どのロールがプロビジョニングされるかを保証することはできません。
     
-  - **出力例** 
+  - **要求の例 (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
    }
    ```
   
+  - **出力例 (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形式で送信されるようにするには、[ここ](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)で説明されている機能フラグを使用できます。 
+
 - **AppRoleAssignmentsComplex** 
   - **使用する場合:** 1 人のユーザーに複数のロールをプロビジョニングするには、AppRoleAssignmentsComplex 式を使用します。 
   - **構成方法:** ロールの新しい属性を含めるには、上記のサポートされている属性の一覧を編集します。 
@@ -316,11 +331,12 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 - Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません。
 - これらの主キー (通常は "ID") は、属性マッピングのターゲット属性として含めないでください。 
 - 通常、role 属性は、直接マッピングではなく、式を使用してマッピングする必要があります。 ロールのマッピングの詳細については、上記のセクションを参照してください。 
+- マッピングからグループを無効にすることはできますが、ユーザーの無効化はサポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
-- [属性マッピングの式の書き方](../app-provisioning/functions-for-customizing-application-data.md)
-- [ユーザーのプロビジョニング用のフィルターのスコープ](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 - [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](use-scim-to-provision-users-and-groups.md)
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)

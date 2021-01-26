@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092424"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309547"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Azure Data Factory を使用して SQL Server データベースから SQL Database にデータを移動する
 
@@ -43,16 +43,16 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 * Azure Blob Storage アカウントから Azure SQL Database にデータをコピーする
 
 > [!NOTE]
-> ここで示す手順は、ADF チームが提供するより詳細なチュートリアル「[SQL Server データベースから Azure Blob ストレージにデータをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)」から抜粋したものです。また、このトピックの関連セクションへの参照が適宜提供されています。
+> ここで示す手順は、ADF チームが提供するより詳細なチュートリアル「[SQL Server データベースから Azure Blob ストレージにデータをコピーする](../../data-factory/tutorial-hybrid-copy-portal.md)」から抜粋したものです。また、このトピックの関連セクションへの参照が適宜提供されています。
 >
 >
 
 ## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
-* **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
-* **Azure SQL Database**へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、[Microsoft Azure SQL Database の概要](../../sql-database/sql-database-get-started.md)に関するページをご覧ください。
+* **Azure サブスクリプション** 。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント** 。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+* **Azure SQL Database** へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、[Microsoft Azure SQL Database の概要](../../azure-sql/database/single-database-create-quickstart.md)に関するページをご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
 > [!NOTE]
@@ -71,7 +71,7 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime をインストールして構成する
 Integration Runtime は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用される、マネージド データ統合インフラストラクチャです。 このランタイムは、以前は "Data Management Gateway" と呼ばれていました。
 
-セットアップするには、[パイプラインの作成手順に従ってください](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+セットアップするには、[パイプラインの作成手順に従ってください](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>データ リソースに接続するためにリンクされたサービスを作成する
 リンクされたサービスは、Azure Data Factory がデータ リソースに接続するために必要な情報を定義します。 このシナリオには、リンクされたサービスを必要とする 3 つのリソースがあります。
@@ -87,13 +87,13 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 以下のスクリプトベースの手順に従って、データセットの構造、場所、可用性を指定するテーブルを作成します。 テーブルを定義するには、JSON ファイルを使用します。 これらのファイルの構造の詳細については、「 [データセット](../../data-factory/concepts-datasets-linked-services.md)」を参照してください。
 
 > [!NOTE]
-> コマンドの実行に適した Azure サブスクリプションが選択されていることを確認するために、`Add-AzureAccount` コマンドレットを実行してから [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) コマンドレットを実行する必要があります。 このコマンドレットの説明については、「 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)」を参照してください。
+> コマンドの実行に適した Azure サブスクリプションが選択されていることを確認するために、`Add-AzureAccount` コマンドレットを実行してから [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) コマンドレットを実行する必要があります。 このコマンドレットの説明については、「 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)」を参照してください。
 >
 >
 
 テーブル内の JSON ベースの定義では、次の名前が使用されます。
 
-* SQL Server での**テーブル名**は *nyctaxi_data* です
+* SQL Server での **テーブル名** は *nyctaxi_data* です
 * the **コンテナー名** は *containername*
 
 この ADF パイプラインには、次の 3 つのテーブル定義が必要です。
@@ -138,7 +138,7 @@ SQL Server のテーブル定義は、次の JSON ファイルで指定されて
 
 ここでは列名が含まれていません。 ここで列名を含めることで、列名を副選択できます (詳細については、[ADF のドキュメント](../../data-factory/copy-activity-overview.md)のトピックを参照してください)。
 
-テーブルの JSON 定義を *onpremtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\onpremtabledef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
+テーブルの JSON 定義を *onpremtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\onpremtabledef.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp �
 }
 ```
 
-テーブルの JSON 定義を *bloboutputtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\bloboutputtabledef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
+テーブルの JSON 定義を *bloboutputtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\bloboutputtabledef.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-テーブルの JSON 定義を *AzureSqlTable.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\AzureSqlTable.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
+テーブルの JSON 定義を *AzureSqlTable.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\AzureSqlTable.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -217,7 +217,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>パイプラインを作成して定義する
 次のスクリプトベースの手順に従って、パイプラインに属するアクティビティを指定し、パイプラインを作成します。 パイプラインのプロパティを定義するため、JSON ファイルを使用します。
 
-* このスクリプトでは、 **パイプライン名** を *AMLDSProcessPipeline*としています。
+* このスクリプトでは、 **パイプライン名** を *AMLDSProcessPipeline* としています。
 * また、既定の実行時間 (12 am UTC) を使用して、ジョブが毎日実行されるようにパイプラインの周期性を設定していることにも注目してください。
 
 > [!NOTE]
@@ -232,7 +232,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
+        "description" : "This pipeline has two activities: the first one copies data from SQL Server to Azure Blob, and the second one copies from Azure Blob to Azure Database Table",
         "activities":
         [
             {
@@ -294,7 +294,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-パイプラインのこの JSON 定義を *pipelinedef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\pipelinedef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にパイプラインを作成します。
+パイプラインのこの JSON 定義を *pipelinedef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\pipelinedef.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にパイプラインを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

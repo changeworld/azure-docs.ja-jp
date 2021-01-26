@@ -9,10 +9,14 @@
       href: whats-new-docs.md
     - name: Cognitive Services と機械学習
       href: cognitive-services-and-machine-learning.md
+    - name: Cognitive Services の開発オプション
+      href: cognitive-services-development-options.md
     - name: Cognitive Services のカスタム サブドメイン
       href: cognitive-services-custom-subdomains.md
     - name: 言語のサポート
       href: language-support.md
+    - name: コストの計画と管理
+      href: plan-manage-costs.md
 - name: クイックスタート
   items:
     - name: Azure portal を使用して新しいリソースを作成する
@@ -23,7 +27,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: 診断ログ
       href: diagnostic-logging.md
 - name: Security
@@ -42,7 +46,7 @@
   items:
     - name: コンテナー サポート
       href: cognitive-services-container-support.md
-    - name: コンテナー イメージ タグ
+    - name: コンテナー イメージ タグとリリース ノート
       href: ./containers/container-image-tags.md
     - name: コンテナーに関する FAQ
       href: ./containers/container-faq.md
@@ -64,6 +68,8 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Cognitive Services コンテナーのドキュメント
+      href: containers/index.yml
 - name: ビッグ データ
   items:
     - name: ビッグ データの Cognitive Services
@@ -89,6 +95,8 @@
       href: ./policy-reference.md
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: cognitive-services-support-options.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: 価格
@@ -97,8 +105,6 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: サポートとヘルプのオプション
-      href: cognitive-services-support-options.md
     - name: サービス レベル アグリーメント (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: ビデオ

@@ -1,13 +1,15 @@
 ---
 title: V3 API クエリ文字列パラメーター
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/30/2020
-ms.openlocfilehash: 47727f6df772669fa323a10cd099764a6d35cb6a
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 14380dd781fc1eebfe7edb0a816ff8af0f2f17b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610789"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91309432"
 ---
 V3 API クエリ文字列パラメーターには、以下が含まれます。
 

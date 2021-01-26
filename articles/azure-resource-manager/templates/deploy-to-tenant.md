@@ -2,15 +2,15 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 11/24/2020
+ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002759"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807629"
 ---
-# <a name="create-resources-at-the-tenant-level"></a>テナント レベルでリソースを作成する
+# <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ
 
 組織が成熟するにつれて、[ポリシー](../../governance/policy/overview.md)または [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を定義し、Azure AD テナント全体に割り当てる必要性が生じることがあります。 テナント レベルのテンプレートを使用すると、宣言によってポリシーを適用し、グローバル レベルでロールを割り当てることができます。
 
@@ -24,7 +24,7 @@ Azure ポリシーでは、以下を使用します。
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-ロールベースのアクセス制御では、以下を使用します。
+Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を使用します。
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -36,26 +36,40 @@ Azure ポリシーでは、以下を使用します。
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
+サブスクリプションを作成するには、以下を使用します。
+
+* [aliases](/azure/templates/microsoft.subscription/aliases)
+
 コストを管理するには、以下を使用します。
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [instructions](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
-### <a name="schema"></a>スキーマ
+ポータルを構成するには、以下を使用します。
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
+
+## <a name="schema"></a>スキーマ
 
 テナントのデプロイに使用するスキーマは、リソース グループのデプロイ用のスキーマとは異なります。
 
 テンプレートの場合は、次を使用します。
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    ...
+}
 ```
 
 パラメーター ファイルのスキーマはすべてのデプロイ範囲で同じです。 パラメーター ファイルの場合は、次を使用します。
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
 
 ## <a name="required-access"></a>必要なアクセス
@@ -82,7 +96,9 @@ Azure Active Directory の全体管理者には、ロールを割り当てるア
 
 テナントのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドとは異なります。
 
-Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create) を使用します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -90,6 +106,8 @@ az deployment tenant create \
   --location WestUS \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Azure PowerShell の場合は [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
 
@@ -100,154 +118,78 @@ New-AzTenantDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
-REST API の場合は、「[デプロイ - テナントのスコープでの作成または更新](/rest/api/resources/deployments/createorupdateattenantscope)」を使用します。
+---
+
+ARM テンプレートをデプロイするためのデプロイ コマンドとオプションの詳細については、以下を参照してください。
+
+* [ARM テンプレートと Azure portal でリソースをデプロイする](deploy-portal.md)
+* [ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)
+* [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)
+* [ARM テンプレートと Azure Resource Manager REST API を使用してリソースをデプロイする](deploy-rest.md)
+* [デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする](deploy-to-azure-button.md)
+* [Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)
 
 ## <a name="deployment-location-and-name"></a>デプロイの場所と名前
 
-テナント レベルのデプロイの場合は、デプロイの場所を指定する必要があります。 デプロイの場所は、デプロイするリソースの場所とは異なります。 デプロイの場所では、デプロイ データを格納する場所を指定します。
+テナント レベルのデプロイの場合は、デプロイの場所を指定する必要があります。 デプロイの場所は、デプロイするリソースの場所とは異なります。 デプロイの場所では、デプロイ データを格納する場所を指定します。 [サブスクリプション](deploy-to-subscription.md)および[管理グループ](deploy-to-management-group.md)のデプロイにも場所が必要です。 [リソース グループ](deploy-to-resource-group.md)のデプロイの場合、リソース グループの場所を使用してデプロイ データを格納します。
 
 デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
-デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
+デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 たとえば、**centralus** で **deployment1** という名前のテナントのデプロイを作成した場合、後で **deployment1** という名前の別のデプロイを **westus** の場所に作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
 
 ## <a name="deployment-scopes"></a>デプロイのスコープ
 
-テナントにデプロイするときに、テナントまたは管理グループ、サブスクリプション、およびリソース グループをテナントでターゲットにすることができます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+テナントにデプロイする際には、リソースを以下にデプロイできます。
+
+* テナント
+* テナント内の管理グループ
+* subscriptions
+* リソース グループ
+* [拡張リソース](scope-extension-resources.md)はリソースに適用できます
+
+テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+このセクションでは、異なるスコープを指定する方法について説明します。 これらの異なるスコープを 1 つのテンプレートで結合することができます。
+
+### <a name="scope-to-tenant"></a>テナントへのスコープ
 
 テンプレートのリソース セクション内で定義されたリソースは、テナントに適用されます。
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        tenant-level-resources
-    ],
-    "outputs": {}
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+### <a name="scope-to-management-group"></a>管理グループへのスコープ
 
 テナント内で管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,18,22":::
 
-## <a name="use-template-functions"></a>テンプレート関数を使用する
+### <a name="scope-to-subscription"></a>サブスクリプションへのスコープ
 
-テナント デプロイの場合、テンプレート関数を使用する際に重要な考慮事項がいくつかあります。
+また、テナント内のサブスクリプションを対象にすることもできます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
-* [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
-* [subscription()](template-functions-resource.md#subscription) 関数は、サポートされて**いません**。
-* [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
-* テナント レベルでデプロイされているリソースのリソース ID を取得するには、[tenantResourceId()](template-functions-resource.md#tenantresourceid) 関数を使用します。
+テナント内のサブスクリプションを対象にするには、入れ子になったデプロイと `subscriptionId` プロパティを使用します。
 
-  たとえば、ポリシー定義のリソース ID を取得するには、次を使用します。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="9,10,18":::
 
-  ```json
-  tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
-  ```
+### <a name="scope-to-resource-group"></a>リソース グループへのスコープ
 
-  返されるリソース ID の形式は次のとおりです。
+また、テナント内のリソース グループを対象にすることもできます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
-  ```json
-  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  ```
+そのテナント内のリソース グループを対象にするには、入れ子になったデプロイを使用します。 `subscriptionId` と `resourceGroup` プロパティを設定します。 入れ子になったデプロイの場所はリソース グループの場所にデプロイされているため、設定しないでください。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
 
 ## <a name="create-management-group"></a>管理グループの作成
 
-[次のテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg)を使うと、管理グループを作成できます。
+次のテンプレートを使うと、管理グループを作成できます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>ロールを割り当てる
 
-[次のテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment)を使うと、テナントのスコープでロールを割り当てることができます。
+次のテンプレートを使うと、テナントのスコープでロールを割り当てることができます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>次のステップ
 

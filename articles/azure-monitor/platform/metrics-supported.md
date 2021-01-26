@@ -4,26 +4,26 @@ description: Azure Monitor で使用できるメトリックの一覧 (リソー
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 07/16/2020
+ms.date: 01/04/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 59df49d320b23686a3d053335ea2b95e98125b28
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 54ef00d32cea26a41581fc0bbd89d2be34919c02
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135557"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883029"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
 > [!NOTE]
-> この一覧は、大部分が Azure Monitor メトリック REST API から自動生成されます。 GitHub を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
+> この一覧は、主に自動生成されています。 GitHub を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 
 
-この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
+この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 この記事の上部に記載された日付以降に変更または追加されたメトリックは、まだ下記に記載されていない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
 
-メトリックは、リソース プロバイダーとリソースの種類別にまとめられます。 サービスとそれらに属するリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 
+メトリックは、リソース プロバイダーとリソースの種類別にまとめられます。 サービスとそれらに属するリソース プロバイダーおよび種類の一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>他の場所へのプラットフォーム メトリックのエクスポート
 
@@ -43,20 +43,19 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 ## <a name="guest-os-and-host-os-metrics"></a>ゲスト OS とホスト OS のメトリック
 
 > [!WARNING]
-> Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システム (ゲスト OS) のメトリックは、ここには一覧表示されて**いません**。 ゲスト OS メトリックは、ゲスト オペレーティング システムで実行される、あるいはそのシステムの一部として実行される 1 つまたは複数のエージェントを使用して収集する必要があります。  ゲスト OS メトリックには、ゲストの CPU 使用率またはメモリ使用量を追跡するパフォーマンス カウンターが含まれています。これらは、どちらも自動スケーリングまたはアラートに頻繁に使用されます。 
+> Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システム (ゲスト OS) のメトリックは、ここには一覧表示されて **いません**。 ゲスト OS メトリックは、ゲスト オペレーティング システムで実行される、あるいはそのシステムの一部として実行される 1 つまたは複数のエージェントを使用して収集する必要があります。  ゲスト OS メトリックには、ゲストの CPU 使用率またはメモリ使用量を追跡するパフォーマンス カウンターが含まれています。これらは、どちらも自動スケーリングまたはアラートに頻繁に使用されます。 
 >
 > **ホスト OS メトリックは利用可能であり、以下に一覧表示されています。** これらは同じではありません。 ホスト OS メトリックは、ゲスト OS セッションをホストしている Hyper-V セッションに関連しています。 
 
 > [!TIP]
 > ベスト プラクティスは、[Azure Diagnostics の拡張機能](diagnostics-extension-overview.md)を使用および構成し、プラットフォーム メトリックが格納されているのと同じ Azure Monitor メトリック データベースにゲスト OS パフォーマンス メトリックを送信することです。 この拡張機能により、[カスタム メトリック](metrics-custom-overview.md) API を介してゲスト OS メトリックがルーティングされます。 その後、ゲスト OS メトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりすることができます。 代わりに、あるいはさらに、Log Analytics エージェントを使用して、Azure Monitor ログや Log Analytics にゲスト OS メトリックを送信することもできます。 そこで、非メトリック データと組み合わせて、これらのメトリックに対してクエリを実行できます。 
 
-重要な追加情報については、[監視エージェントの概要](agents-overview.md)に関するページを参照してください。    
+重要な追加情報については、[監視エージェントの概要](agents-overview.md)に関するページを参照してください。
 
 ## <a name="table-formatting"></a>表の書式設定
 
 > [!IMPORTANT] 
 > この最新の更新では、新しい列が追加され、メトリックがアルファベット順に並べ替えられています。 追加情報とは、ブラウザー ウィンドウの幅に応じて、以下の表の下部に水平スクロール バーが表示される場合があることを意味します。 情報が欠落していると思われる場合は、スクロール バーを使用して表の全体が表示されるようにしてください。
-
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
@@ -157,7 +156,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |jvm.memory.committed|はい|jvm.memory.committed|バイト|Average|JVM に割り当て済みのメモリ (バイト単位)|Deployment、AppName、Pod|
 |jvm.memory.max|はい|jvm.memory.max|バイト|最大値|メモリ管理に使用できるメモリの最大量 (バイト単位)|Deployment、AppName、Pod|
 |jvm.memory.used|はい|jvm.memory.used|バイト|Average|アプリのメモリ使用量 (バイト単位)|Deployment、AppName、Pod|
-|process.cpu.usage|はい|process.cpu.usage|Percent|Average|アプリ JVM の CPU 使用率 (%)|Deployment、AppName、Pod|
+|process.cpu.usage|はい|process.cpu.usage|Percent|Average|JVM プロセスの最近の CPU 使用率|Deployment、AppName、Pod|
 |system.cpu.usage|はい|system.cpu.usage|Percent|Average|システム全体の最近の CPU 使用率|Deployment、AppName、Pod|
 |tomcat.global.error|はい|tomcat.global.error|Count|合計|Tomcat グローバル エラー|Deployment、AppName、Pod|
 |tomcat.global.received|はい|tomcat.global.received|バイト|合計|Tomcat 合計受信バイト|Deployment、AppName、Pod|
@@ -247,19 +246,19 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|BroadcastProcessedCount|はい|Broadcast Processed Count\(処理されたブロードキャストの数\)|Count|Average|処理されたトランザクションの数|Node、channel、type、status|
+|BroadcastProcessedCount|はい|BroadcastProcessedCountDisplayName|Count|Average|処理されたトランザクションの数|Node、channel、type、status|
 |ConnectionAccepted|はい|承認された接続|Count|合計|承認された接続|Node|
 |ConnectionActive|はい|アクティブな接続|Count|Average|アクティブな接続|Node|
 |ConnectionHandled|はい|処理された接続|Count|合計|処理された接続|Node|
-|ConsensusEtcdraftCommittedBlockNumber|はい|Consensus Etcdraft Committed Block Number\(コンセンサス Etcdraft のコミットされたブロック番号\)|Count|Average|最後にコミットされたブロックのブロック番号|Node、channel|
+|ConsensusEtcdraftCommittedBlockNumber|はい|ConsensusEtcdraftCommittedBlockNumberDisplayName|Count|Average|最後にコミットされたブロックのブロック番号|Node、channel|
 |CpuUsagePercentageInDouble|はい|CPU 使用率 (%)|Percent|最大値|CPU 使用率 (%)|Node|
-|EndorserEndorsementFailures|はい|Endorser Endorsement Failures\(エンドーサーによる保証の失敗\)|Count|Average|失敗した保証の数。|Node、channel、chaincode、chaincodeerror|
-|GossipLeaderElectionLeader|はい|Gossip Leader Election Leader\(ゴシップ リーダーの選定リーダー\)|Count|合計|ピアはリーダー (1) またはフォロワー (0) です|Node、channel|
-|GossipMembershipTotalPeersKnown|はい|Gossip Membership Total Peers Known\(ゴシップ メンバーシップの既知のピアの合計\)|Count|Average|既知のピアの合計|Node、channel|
-|GossipStateHeight|はい|Gossip State Height\(ゴシップの状態 (高さ)\)|Count|Average|現在の台帳 (高さ)|Node、channel|
+|EndorserEndorsementFailures|はい|EndorserEndorsementFailuresDisplayName|Count|Average|失敗した保証の数。|Node、channel、chaincode、chaincodeerror|
+|GossipLeaderElectionLeader|はい|GossipLeaderElectionLeaderDisplayName|Count|Average|ピアはリーダー (1) またはフォロワー (0) です|Node、channel|
+|GossipMembershipTotalPeersKnown|はい|GossipMembershipTotalPeersKnownDisplayName|Count|Average|既知のピアの合計|Node、channel|
+|GossipStateHeight|はい|GossipStateHeightDisplayName|Count|Average|現在の台帳 (高さ)|Node、channel|
 |IOReadBytes|はい|IO 読み取りバイト数|バイト|合計|IO 読み取りバイト数|Node|
 |IOWriteBytes|はい|IO 書き込みバイト数|バイト|合計|IO 書き込みバイト数|Node|
-|LedgerTransactionCount|はい|Ledger Transaction Count\(台帳のトランザクション数\)|Count|Average|処理されたトランザクションの数|Node、channel、transaction_type、chaincode、validation_code|
+|LedgerTransactionCount|はい|LedgerTransactionCountDisplayName|Count|Average|処理されたトランザクションの数|Node、channel、transaction_type、chaincode、validation_code|
 |MemoryLimit|はい|メモリの制限|バイト|Average|メモリの制限|Node|
 |MemoryUsage|はい|メモリ使用量|バイト|Average|メモリ使用量|Node|
 |MemoryUsagePercentageInDouble|はい|メモリ使用率 (%)|Percent|Average|メモリ使用率 (%)|Node|
@@ -275,6 +274,22 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
+|allcachehits|はい|キャッシュ ヒット数 (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|allcachemisses|はい|キャッシュ ミス数 (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|allcacheRead|はい|キャッシュ読み取り (インスタンス ベース)|BytesPerSecond|最大値||ShardId、Port、Primary|
+|allcacheWrite|はい|キャッシュ書き込み (インスタンス ベース)|BytesPerSecond|最大値||ShardId、Port、Primary|
+|allconnectedclients|はい|接続されたクライアント (インスタンス ベース)|Count|最大値||ShardId、Port、Primary|
+|allevictedkeys|はい|解放されたキー (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|allexpiredkeys|はい|有効期限が切れたキー (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|allgetcommands|はい|取得 (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|alloperationsPerSecond|はい|1 秒あたりの操作回数 (インスタンス ベース)|Count|最大値||ShardId、Port、Primary|
+|allserverLoad|はい|サーバーの負荷 (インスタンス ベース)|Percent|最大値||ShardId、Port、Primary|
+|allsetcommands|はい|設定 (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|alltotalcommandsprocessed|はい|操作の合計 (インスタンス ベース)|Count|合計||ShardId、Port、Primary|
+|alltotalkeys|はい|キー合計 (インスタンス ベース)|Count|最大値||ShardId、Port、Primary|
+|allusedmemory|はい|使用メモリ (インスタンス ベース)|バイト|最大値||ShardId、Port、Primary|
+|allusedmemorypercentage|はい|使用メモリの割合 (インスタンス ベース)|Percent|最大値||ShardId、Port、Primary|
+|allusedmemoryRss|はい|使用メモリ RSS (インスタンス ベース)|バイト|最大値||ShardId、Port、Primary|
 |cachehits|はい|キャッシュ ヒット数|Count|合計||ShardId|
 |cachehits0|はい|キャッシュ ヒット数 (シャード 0)|Count|合計||ディメンションなし|
 |cachehits1|はい|キャッシュ ヒット数 (シャード 1)|Count|合計||ディメンションなし|
@@ -578,7 +593,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |DataIn|はい|受信データ|バイト|合計|受信データのサイズ (バイト)。|ApiName、OperationName、Region|
 |DataOut|はい|送信データ|バイト|合計|送信データのサイズ (バイト)。|ApiName、OperationName、Region|
 |Latency|はい|Latency|MilliSeconds|Average|待機時間 (ミリ秒)。|ApiName、OperationName、Region|
-|ProcessedImages|はい|Processed Images (処理されたイメージ)|Count|合計| イメージ処理のトランザクション数。|ApiName、FeatureName、UsageChannel、Region|
+|ProcessedImages|はい|Processed Images (処理されたイメージ)|Count|合計|イメージ処理のトランザクション数。|ApiName、FeatureName、UsageChannel、Region|
 |ServerErrors|はい|サーバー エラー|Count|合計|サービスの内部エラー (HTTP 応答コード 5xx) があった呼び出しの回数。|ApiName、OperationName、Region|
 |SpeechSessionDuration|はい|Speech Session Duration (音声セッション継続時間)|Seconds|合計|音声セッションの合計継続時間 (秒)。|ApiName、OperationName、Region|
 |SuccessfulCalls|はい|成功した呼び出し|Count|合計|成功した呼び出しの数。|ApiName、OperationName、Region|
@@ -588,12 +603,25 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |TotalTransactions|はい|合計トランザクション|Count|合計|トランザクションの合計数。|ディメンションなし|
 
 
+## <a name="microsoftcomputecloudservices"></a>Microsoft.Compute/cloudServices
+
+|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
+|---|---|---|---|---|---|---|
+|Disk Read Bytes|はい|Disk Read Bytes|バイト|合計|監視期間中にディスクから読み取られたバイト数|RoleInstanceId|
+|Disk Read Operations/Sec|はい|Disk Read Operations/Sec|CountPerSecond|Average|ディスク読み取り IOPS|RoleInstanceId|
+|Disk Write Bytes|はい|Disk Write Bytes|バイト|合計|監視期間中にディスクに書き込まれたバイト数|RoleInstanceId|
+|Disk Write Operations/Sec|はい|Disk Write Operations/Sec|CountPerSecond|Average|ディスク書き込み IOPS|RoleInstanceId|
+|Percentage CPU|はい|Percentage CPU|Percent|Average|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|RoleInstanceId|
+
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
-|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計|ディメンションなし|
+|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。 解決方法については、 |ディメンションなし|
+|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。|ディメンションなし|
+|データ ディスク帯域幅の消費率|はい|データ ディスク帯域幅の消費率|Percent|Average|1 分あたりに消費されたデータ ディスク帯域幅の割合|LUN|
+|[Data Disk IOPS Consumed Percentage]\(データ ディスク IOPS の消費率\)|はい|[Data Disk IOPS Consumed Percentage]\(データ ディスク IOPS の消費率\)|Percent|Average|1 分あたりに消費されたデータ ディスク I/O の割合|LUN|
 |データ ディスクのキューの深さ|はい|データ ディスクのキューの深さ (プレビュー)|Count|Average|データ ディスクのキューの深さ (またはキューの長さ)|LUN|
 |データ ディスク読み取りバイト数/秒|はい|データ ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|Average|監視期間中に 1 つのディスクから読み取られたバイト数/秒|LUN|
 |データ ディスク読み取り操作数/秒|はい|データ ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|Average|監視期間中の 1 つのディスクからの読み取り IOPS|LUN|
@@ -609,6 +637,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |受信ネットワーク合計|はい|受信ネットワーク合計|バイト|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|ディメンションなし|
 |Network Out|はい|課金対象のネットワーク送信 (非推奨)|バイト|合計|仮想マシンがすべてのネットワーク インターフェイスから発信した課金対象バイト数 (送信トラフィック) (非推奨)|ディメンションなし|
 |送信ネットワーク合計|はい|送信ネットワーク合計|バイト|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|ディメンションなし|
+|OS ディスク帯域幅の消費率|はい|OS ディスク帯域幅の消費率|Percent|Average|1 分あたりに消費されたオペレーティング システム ディスク帯域幅の割合|LUN|
+|[OS Disk IOPS Consumed Percentage]\(OS ディスク IOPS の消費率\)|はい|[OS Disk IOPS Consumed Percentage]\(OS ディスク IOPS の消費率\)|Percent|Average|1 分あたりに消費されたオペレーティング システム ディスク I/O の割合|LUN|
 |OS ディスクのキューの深さ|はい|OS ディスクのキューの深さ (プレビュー)|Count|Average|OS ディスクのキューの深さ (またはキューの長さ)|ディメンションなし|
 |OS ディスク読み取りバイト数/秒|はい|OS ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|Average|OS ディスクの監視期間中に 1 つのディスクから読み取られたバイト数/秒|ディメンションなし|
 |OS ディスク読み取り操作数/秒|はい|OS ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|Average|OS ディスクの監視期間中の 1 つのディスクからの読み取り IOPS|ディメンションなし|
@@ -631,14 +661,18 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Premium データ ディスク キャッシュ読み取りミス|はい|Premium データ ディスク キャッシュ読み取りミス (プレビュー)|Percent|Average|Premium データ ディスク キャッシュ読み取りミス|LUN|
 |Premium OS ディスク キャッシュ読み取りヒット|はい|Premium OS ディスク キャッシュ読み取りヒット (プレビュー)|Percent|Average|Premium OS ディスク キャッシュ読み取りヒット|ディメンションなし|
 |Premium OS ディスク キャッシュ読み取りミス|はい|Premium OS ディスク キャッシュ読み取りミス (プレビュー)|Percent|Average|Premium OS ディスク キャッシュ読み取りミス|ディメンションなし|
+|VM のキャッシュされた帯域幅の消費率|はい|VM のキャッシュされた帯域幅の消費率|Percent|Average|VM によって消費されたキャッシュされたディスク帯域幅の割合|ディメンションなし|
+|[VM Cached IOPS Consumed Percentage]\(VM のキャッシュされた IOPS の消費率\)|はい|[VM Cached IOPS Consumed Percentage]\(VM のキャッシュされた IOPS の消費率\)|Percent|Average|VM によって消費されたキャッシュされたディスク IOPS の割合|ディメンションなし|
+|VM のキャッシュされていない帯域幅の消費率|はい|VM のキャッシュされていない帯域幅の消費率|Percent|Average|VM によって消費されたキャッシュされていないディスク帯域幅の割合|ディメンションなし|
+|[VM Uncached IOPS Consumed Percentage]\(VM のキャッシュされていない IOPS の消費率\)|はい|[VM Uncached IOPS Consumed Percentage]\(VM のキャッシュされていない IOPS の消費率\)|Percent|Average|VM によって消費されたキャッシュされていないディスク IOPS の割合|ディメンションなし|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
-|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計|ディメンションなし|
+|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。|ディメンションなし|
+|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。|ディメンションなし|
 |データ ディスクのキューの深さ|はい|データ ディスクのキューの深さ (プレビュー)|Count|Average|データ ディスクのキューの深さ (またはキューの長さ)|LUN、VMName|
 |データ ディスク読み取りバイト数/秒|はい|データ ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|Average|監視期間中に 1 つのディスクから読み取られたバイト数/秒|LUN、VMName|
 |データ ディスク読み取り操作数/秒|はい|データ ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|Average|監視期間中の 1 つのディスクからの読み取り IOPS|LUN、VMName|
@@ -753,7 +787,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |kube_node_status_allocatable_memory_bytes|いいえ|マネージド クラスターで使用可能なメモリの合計量|バイト|Average|マネージド クラスターで使用可能なメモリの合計量|ディメンションなし|
 |kube_node_status_condition|いいえ|さまざまなノードの状態の条件|Count|Average|さまざまなノードの状態の条件|condition、status、status2、node|
 |kube_pod_status_phase|いいえ|フェーズごとのポッドの数|Count|Average|フェーズごとのポッドの数|phase、namespace、pod|
-|kube_pod_status_ready|いいえ|準備完了状態のポッドの数|Count|Average|準備完了状態のポッドの数|namespace、pod|
+|kube_pod_status_ready|いいえ|準備完了状態のポッドの数|Count|Average|準備完了状態のポッドの数|namespace、pod、condition|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
@@ -867,12 +901,39 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |storage_used|はい|使用済みストレージ|バイト|Average|使用済みストレージ|ディメンションなし|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
+
+|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
+|---|---|---|---|---|---|---|
+|active_connections|はい|アクティブな接続|Count|Average|アクティブな接続|ディメンションなし|
+|backup_storage_used|はい|使用済みバックアップ ストレージ|バイト|Average|使用済みバックアップ ストレージ|ディメンションなし|
+|connections_failed|はい|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
+|connections_succeeded|はい|Succeeded Connections (成功した接続)|Count|合計|成功した接続|ディメンションなし|
+|cpu_credits_consumed|はい|使用済みの CPU クレジット|Count|Average|データベース サーバーによって消費されたクレジットの合計数|ディメンションなし|
+|cpu_credits_remaining|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計|ディメンションなし|
+|cpu_percent|はい|CPU 使用率|Percent|Average|CPU 使用率|ディメンションなし|
+|disk_queue_depth|はい|ディスクのキューの深さ|Count|Average|データ ディスクに対する未処理の I/O 操作の数|ディメンションなし|
+|iops|はい|IOPS|Count|Average|1 秒あたりの IO 操作回数|ディメンションなし|
+|maximum_used_transactionIDs|はい|Maximum Used Transaction IDs (使用されるトランザクション ID の最大数)|Count|Average|使用されるトランザクション ID の最大数|ディメンションなし|
+|memory_percent|はい|メモリの割合|Percent|Average|メモリの割合|ディメンションなし|
+|network_bytes_egress|はい|Network Out|バイト|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_ingress|はい|Network In|バイト|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
+|read_iops|はい|読み取り IOPS|Count|Average|データ ディスク I/O の 1 秒あたりの読み取り操作の数|ディメンションなし|
+|read_throughput|はい|読み取りスループット (バイト/秒)|Count|Average|監視期間中のデータ ディスクからの 1 秒あたりの読み取りバイト数|ディメンションなし|
+|storage_free|はい|空き記憶域|バイト|Average|空き記憶域|ディメンションなし|
+|storage_percent|はい|ストレージの割合|Percent|Average|ストレージの割合|ディメンションなし|
+|storage_used|はい|使用済みストレージ|バイト|Average|使用済みストレージ|ディメンションなし|
+|txlogs_storage_used|はい|使用されているトランザクション ログ ストレージ|バイト|Average|使用されているトランザクション ログ ストレージ|ディメンションなし|
+|write_iops|はい|書き込み IOPS|Count|Average|データ ディスク I/O の 1 秒あたりの書き込み操作の数|ディメンションなし|
+|write_throughput|はい|書き込みスループット (バイト/秒)|Count|Average|監視期間中のデータ ディスクへの 1 秒あたりの書き込みバイト数|ディメンションなし|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |active_connections|はい|アクティブな接続|Count|Average|アクティブな接続|ディメンションなし|
-|backup_storage_used|はい|使用されたバックアップ ストレージ|バイト|Average|使用されたバックアップ ストレージ|ディメンションなし|
+|backup_storage_used|はい|使用済みバックアップ ストレージ|バイト|Average|使用済みバックアップ ストレージ|ディメンションなし|
 |connections_failed|はい|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |cpu_percent|はい|CPU 使用率|Percent|Average|CPU 使用率|ディメンションなし|
 |io_consumption_percent|はい|IO の割合|Percent|Average|IO の割合|ディメンションなし|
@@ -903,23 +964,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |storage_used|はい|使用済みストレージ|バイト|Average|使用済みストレージ|ディメンションなし|
 
 
-## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft.DBforPostgreSQL/singleservers
-
-|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
-|---|---|---|---|---|---|---|
-|active_connections|はい|アクティブな接続|Count|Average|アクティブな接続|ディメンションなし|
-|connections_failed|はい|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
-|connections_succeeded|はい|Succeeded Connections (成功した接続)|Count|合計|成功した接続|ディメンションなし|
-|cpu_percent|はい|CPU 使用率|Percent|Average|CPU 使用率|ディメンションなし|
-|iops|はい|IOPS|Count|Average|1 秒あたりの IO 操作回数|ディメンションなし|
-|maximum_used_transactionIDs|はい|Maximum Used Transaction IDs (使用されるトランザクション ID の最大数)|Count|Average|使用されるトランザクション ID の最大数|ディメンションなし|
-|memory_percent|はい|メモリの割合|Percent|Average|メモリの割合|ディメンションなし|
-|network_bytes_egress|はい|Network Out|バイト|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
-|network_bytes_ingress|はい|Network In|バイト|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
-|storage_percent|はい|ストレージの割合|Percent|Average|ストレージの割合|ディメンションなし|
-|storage_used|はい|使用済みストレージ|バイト|Average|使用済みストレージ|ディメンションなし|
-
-
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
@@ -937,9 +981,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |c2d.twin.update.failure|はい|失敗したバック エンドからのツイン更新|Count|合計|バックエンドが開始して失敗したツイン更新の数。|ディメンションなし|
 |c2d.twin.update.size|はい|バックエンドからのツイン更新のサイズ|バイト|Average|バックエンドが開始して成功したツイン更新の平均、最小、および最大サイズ。|ディメンションなし|
 |c2d.twin.update.success|はい|成功したバックエンドからのツイン更新|Count|合計|バックエンドが開始して成功したツイン更新の数。|ディメンションなし|
-|C2DMessagesExpired|はい|期限切れ C2D メッセージ (プレビュー)|Count|合計|有効期限が切れた cloud-to-device メッセージの数|ディメンションなし|
+|C2DMessagesExpired|はい|期限切れ C2D メッセージ|Count|合計|有効期限が切れた cloud-to-device メッセージの数|ディメンションなし|
 |configuration|はい|構成メトリック|Count|合計|構成操作のメトリック|ディメンションなし|
-|connectedDeviceCount|いいえ|接続されているデバイス (プレビュー)|Count|Average|IoT Hub に接続されているデバイスの数|ディメンションなし|
+|connectedDeviceCount|いいえ|接続されたデバイス|Count|Average|IoT Hub に接続されているデバイスの数|ディメンションなし|
 |d2c.endpoints.egress.builtIn.events|はい|ルーティング: メッセージ/イベントに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) に正常に配信された回数。|ディメンションなし|
 |d2c.endpoints.egress.eventHubs|はい|ルーティング: Event Hub に配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが Event Hub エンドポイントに正常に配信された回数。|ディメンションなし|
 |d2c.endpoints.egress.serviceBusQueues|はい|ルーティング: Service Bus キューに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus キュー エンドポイントに正常に配信された回数。|ディメンションなし|
@@ -952,10 +996,10 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |d2c.endpoints.latency.serviceBusQueues|はい|ルーティング: Service Bus キューのメッセージの待機時間|ミリ秒|Average|IoT Hub の受信メッセージと Service Bus キュー エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c.endpoints.latency.serviceBusTopics|はい|ルーティング: Service Bus トピックのメッセージの待機時間|ミリ秒|Average|IoT Hub の受信メッセージと Service Bus トピック エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c.endpoints.latency.storage|はい|ルーティング: ストレージのメッセージの待機時間|ミリ秒|Average|IoT Hub の受信メッセージとストレージ エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
-|d2c.telemetry.egress.dropped|はい|ルーティング: 破棄されたテレメトリ メッセージ |Count|合計|デッド エンドポイントであるため、メッセージが IoT Hub ルーティングで破棄された回数。 この値では、フォールバック ルートに配信されるメッセージはカウントされません。破棄されたメッセージはそこには配信されないためです。|ディメンションなし|
+|d2c.telemetry.egress.dropped|はい|ルーティング: 破棄されたテレメトリ メッセージ |Count|合計|デッド エンドポイントであるため、メッセージが IoT Hub ルーティングで破棄された回数。 この値では、フォールバック ルートに配信されるメッセージはカウントされません。破棄されたメッセージはそこには配信されないためです。|ディメンションなし|
 |d2c.telemetry.egress.fallback|はい|ルーティング: フォールバックのために配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、フォールバック ルートに関連付けられているエンドポイントにメッセージが配信された回数。|ディメンションなし|
 |d2c.telemetry.egress.invalid|はい|ルーティング: 互換性のないテレメトリ メッセージ|Count|合計|エンドポイントと互換性がないため、IoT Hub ルーティングでメッセージを配信できなかった回数。 この値に再試行回数は含まれません。|ディメンションなし|
-|d2c.telemetry.egress.orphaned|はい|ルーティング: 孤立したテレメトリ メッセージ |Count|合計|どのルーティング規則 (フォールバック規則を含む) にも一致しなかっため、メッセージが IoT Hub ルーティングによって孤立した回数。 |ディメンションなし|
+|d2c.telemetry.egress.orphaned|はい|ルーティング: 孤立したテレメトリ メッセージ |Count|合計|どのルーティング規則 (フォールバック規則を含む) にも一致しなかっため、メッセージが IoT Hub ルーティングによって孤立した回数。 |ディメンションなし|
 |d2c.telemetry.egress.success|はい|ルーティング: 配信されたテレメトリ メッセージ|Count|合計|IoT Hub ルーティングを使用して、メッセージがすべてのエンドポイントに正常に配信された回数。 メッセージが複数のエンドポイントにルーティングされている場合、この値は正常に配信されるたびに 1 つずつ増えます。 メッセージが同じエンドポイントに複数回配信されている場合、この値は正常に配信されるたびに 1 つずつ増えます。|ディメンションなし|
 |d2c.telemetry.ingress.allProtocol|はい|テレメトリ メッセージ送信試行|Count|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|ディメンションなし|
 |d2c.telemetry.ingress.sendThrottle|はい|調整エラーの数|Count|合計|デバイスのスループット調整による調整エラーの数|ディメンションなし|
@@ -971,8 +1015,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |deviceDataUsageV2|はい|デバイス データの合計使用量 (プレビュー)|バイト|合計|Iot Hub に接続されているデバイスとの間で転送されたバイト数|ディメンションなし|
 |devices.connectedDevices.allProtocol|はい|接続されているデバイス (非推奨) |Count|合計|IoT Hub に接続されているデバイスの数|ディメンションなし|
 |devices.totalDevices|はい|デバイスの総数 (非推奨)|Count|合計|IoT Hub に登録されたデバイスの数|ディメンションなし|
-|EventGridDeliveries|はい|Event Grid の配信数 (プレビュー)|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションはイベントの種類 (https://aka.ms/ioteventgrid) ) を示します。|Result、EventType|
-|EventGridLatency|はい|Event Grid の待機時間 (プレビュー)|ミリ秒|Average|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType|
+|EventGridDeliveries|はい|Event Grid 配信|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションはイベントの種類 (https://aka.ms/ioteventgrid) ) を示します。|Result、EventType|
+|EventGridLatency|はい|Event Grid の待機時間|ミリ秒|Average|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType|
 |jobs.cancelJob.failure|はい|失敗したジョブの取り消し|Count|合計|失敗したジョブ取り消しの呼び出し。|ディメンションなし|
 |jobs.cancelJob.success|はい|成功したジョブの取り消し|Count|合計|正常に実行されたジョブ取り消しの呼び出し。|ディメンションなし|
 |jobs.completed|はい|完了したジョブ|Count|合計|完了したジョブの数。|ディメンションなし|
@@ -988,7 +1032,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |RoutingDataSizeInBytesDelivered|はい|Routing Delivery Message Size in Bytes (preview)\(バイト単位でのルーティング配信のメッセージ サイズ (プレビュー)\)|バイト|合計|IoT ハブによってエンドポイントに配信されるメッセージの合計サイズ (バイト単位)。 EndpointName と EndpointType ディメンションを使用して、さまざまなエンドポイントに配信されるメッセージのサイズ (バイト単位) を表示することができます。 メッセージが複数のエンドポイントに配信される場合、またはメッセージが同じエンドポイントに複数回配信される場合など、配信されるメッセージごとにメトリック値が増加します。|EndpointType、EndpointName、RoutingSource|
 |RoutingDeliveries|はい|Routing Deliveries (preview) (ルーティング配信数 (プレビュー))|Count|合計|IoT Hub がルーティングを使用して、すべてのエンドポイントにメッセージを配信しようとした回数。 成功および失敗の試行回数を確認するには、Result ディメンションを使用します。 無効、ドロップ、孤立など、失敗の原因を確認するには、FailureReasonCategory ディメンションを使用します。 また、EndpointName と EndpointType ディメンションを使用して、さまざまなエンドポイントに配信されたメッセージの数を把握することもできます。 メッセージが複数のエンドポイントに配信されるかどうか、またはメッセージが同じエンドポイントに複数回配信されるかどうかなど、配信の試行ごとにメトリック値が 1 ずつ増加します。|EndpointType、EndpointName、FailureReasonCategory、Result、RoutingSource|
 |RoutingDeliveryLatency|はい|Routing Delivery Latency (preview) (ルーティング配信の遅延 (プレビュー))|ミリ秒|Average|IoT Hub の受信メッセージとエンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。 EndpointName と EndpointType ディメンションを使用すると、さまざまなエンドポイントに対する待機時間を把握できます。|EndpointType、EndpointName、RoutingSource|
-|totalDeviceCount|いいえ|デバイスの合計数 (プレビュー)|Count|Average|IoT Hub に登録されたデバイスの数|ディメンションなし|
+|totalDeviceCount|いいえ|合計デバイス|Count|Average|IoT Hub に登録されたデバイスの数|ディメンションなし|
 |twinQueries.failure|はい|失敗したツイン クエリ|Count|合計|失敗したツイン クエリの数。|ディメンションなし|
 |twinQueries.resultSize|はい|ツイン クエリの結果のサイズ|バイト|Average|成功したツイン クエリの結果の平均、最小、および最大サイズ。|ディメンションなし|
 |twinQueries.success|はい|成功したツイン クエリ|Count|合計|成功したツイン クエリの数。|ディメンションなし|
@@ -1009,7 +1053,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |AddRegion|はい|追加されたリージョン|Count|Count|追加されたリージョン|リージョン|
 |AutoscaleMaxThroughput|いいえ|自動スケーリングの最大スループット|Count|最大値|自動スケーリングの最大スループット|DatabaseName、CollectionName|
-|AvailableStorage|いいえ|(非推奨) 使用可能な記憶域|バイト|合計|[使用可能な記憶域] は、2020 年 9 月末に Azure Monitor から削除されます。 Cosmos DB コレクション ストレージのサイズは無制限になりました。 唯一の制限は、各論理パーティション キーのストレージ サイズが 20 GB であることです。 診断ログで PartitionKeyStatistics を有効にすると、上位のパーティション キーのストレージ消費量を知ることができます。 Cosmos DB ストレージ クォータの詳細については、こちらのドキュメント https://docs.microsoft.com/azure/cosmos-db/concepts-limits をご確認ください。 非推奨になった後、非推奨メトリックでまだ定義されている残りのアラート ルールは、非推奨となる日の後に自動的に無効になります。|CollectionName、DatabaseName、Region|
+|AvailableStorage|いいえ|(非推奨) 使用可能な記憶域|バイト|合計|[使用可能な記憶域] は、2023 年 9 月末に Azure Monitor から削除されます。 Cosmos DB コレクション ストレージのサイズは無制限になりました。 唯一の制限は、各論理パーティション キーのストレージ サイズが 20 GB であることです。 診断ログで PartitionKeyStatistics を有効にすると、上位のパーティション キーのストレージ消費量を知ることができます。 Cosmos DB ストレージ クォータの詳細については、こちらのドキュメント https://docs.microsoft.com/azure/cosmos-db/concepts-limits をご確認ください。 非推奨になった後、非推奨メトリックでまだ定義されている残りのアラート ルールは、非推奨となる日の後に自動的に無効になります。|CollectionName、DatabaseName、Region|
 |CassandraConnectionClosures|いいえ|Cassandra 接続の終了|Count|合計|1 分単位の細分性で報告された、閉じられた Cassandra 接続の数|Region、ClosureReason|
 |CassandraConnectorAvgReplicationLatency|いいえ|Cassandra Connector Average Replication Latency\(Cassandra コネクタの平均レプリケーション待機時間\)|MilliSeconds|Average|Cassandra コネクタの平均レプリケーション待機時間|ディメンションなし|
 |CassandraConnectorReplicationHealthStatus|いいえ|Cassandra Connector Replication Health Status\(Cassandra コネクタ レプリケーションの正常性状態\)|Count|Count|Cassandra コネクタ レプリケーションの正常性の状態|NotStarted、ReplicationInProgress、Error|
@@ -1046,13 +1090,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MongoDatabaseThroughputUpdate|いいえ|Mongo Database Throughput Updated (更新された Mongo データベースのスループット)|Count|Count|更新された Mongo データベースのスループット|ResourceName |
 |MongoDBDatabaseCreate|いいえ|作成された Mongo データベース|Count|Count|作成された Mongo データベース|ResourceName |
 |MongoDBDatabaseUpdate|いいえ|Mongo Database Updated (更新された Mongo データベース)|Count|Count|更新された Mongo データベース|ResourceName |
-|MongoRequestCharge|はい|Mongo 要求の料金|Count|合計|使用された Mongo 要求の単位数|DatabaseName、CollectionName、Region、CommandName、ErrorCode、Status|
 |MongoRequests|はい|Mongo Requests (Mongo 要求数)|Count|Count|実行された Mongo 要求の数|DatabaseName、CollectionName、Region、CommandName、ErrorCode、Status|
-|MongoRequestsCount|いいえ|Mongo 要求のレート|CountPerSecond|Average|1 秒あたりの Mongo 要求の数|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsDelete|いいえ|Mongo Delete 要求のレート|CountPerSecond|Average|1 秒あたりの Mongo 削除要求の数|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsInsert|いいえ|Mongo Insert 要求のレート|CountPerSecond|Average|1 秒あたりの Mongo 挿入数|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsQuery|いいえ|Mongo Query 要求のレート|CountPerSecond|Average|1 秒あたりの Mongo クエリ要求数|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsUpdate|いいえ|Mongo 更新要求のレート|CountPerSecond|Average|1 秒あたりの Mongo 更新要求数|DatabaseName、CollectionName、Region、ErrorCode|
 |NormalizedRUConsumption|いいえ|Normalized RU Consumption (正規化された RU 消費量)|Percent|最大値|1 分あたりの最大 RU 消費率|CollectionName、DatabaseName、Region、PartitionKeyRangeId|
 |ProvisionedThroughput|いいえ|プロビジョニングされたスループット|Count|最大値|プロビジョニングされたスループット|DatabaseName、CollectionName|
 |RegionFailover|はい|リージョンのフェールオーバー|Count|Count|リージョンのフェールオーバー|ディメンションなし|
@@ -1268,19 +1306,20 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |要求/率|いいえ|サーバー要求率|CountPerSecond|Average|1 秒あたりのサーバー要求数による率|request/performanceBucket、request/resultCode、operation/synthetic、cloud/roleInstance、request/success、cloud/roleName|
 |traces/count|はい|トレース|Count|Count|トレース ドキュメント数|trace/severityLevel、operation/synthetic、cloud/roleName、cloud/roleInstance|
 
+
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |c2d.property.read.failure|はい|Failed Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの失敗数)|Count|合計|IoT Central から開始されて失敗した、すべてのプロパティ読み取りの数|ディメンションなし|
-|c2d.property.read.success|Yes|Successful Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの成功数)|Count|合計|IoT Central から開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
+|c2d.property.read.success|はい|Successful Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの成功数)|Count|合計|IoT Central から開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
 |c2d.property.update.failure|はい|Failed Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の失敗数)|Count|合計|IoT Central から開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
 |c2d.property.update.success|はい|Successful Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の成功数)|Count|合計|IoT Central から開始されて成功した、すべてのプロパティ更新の数|ディメンションなし|
 |connectedDeviceCount|いいえ|Total Connected Devices (接続されたデバイスの総数)|Count|Average|IoT Central に接続されているデバイスの数|ディメンションなし|
-|d2c.property.read.failure|Yes|Failed Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ読み取りの数|ディメンションなし|
-|d2c.property.read.success|Yes|Successful Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
-|d2c.property.update.failure|Yes|Failed Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
-|d2c.property.update.success|Yes|Successful Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ更新の数|ディメンションなし|
+|d2c.property.read.failure|はい|Failed Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ読み取りの数|ディメンションなし|
+|d2c.property.read.success|はい|Successful Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
+|d2c.property.update.failure|はい|Failed Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
+|d2c.property.update.success|はい|Successful Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ更新の数|ディメンションなし|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
@@ -1300,23 +1339,35 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |BatchBlobCount|はい|Batch Blob Count\(バッチ BLOB 数\)|Count|Average|インジェスト用に集計されたバッチのデータ ソースの数。|データベース|
 |BatchDuration|はい|バッチ期間|Seconds|Average|インジェスト フロー内の集計フェーズの期間。|データベース|
-|BatchesProcessed|はい|Batches Processed\(処理されたバッチ\)|Count|Average|インジェスト用に集計されたバッチの数。 バッチ完了の理由: バッチがバッチ処理時間、データ サイズ、またはバッチ処理ポリシーによって設定されたファイル数の上限に達したかどうか|Database、SealReason|
+|BatchesProcessed|はい|Batches Processed\(処理されたバッチ\)|Count|Average|インジェスト用に集計されたバッチの数。 バッチ処理の種類: バッチが、バッチ処理ポリシーによって設定されたバッチ処理時間、データ サイズ、またはファイル数の上限に達したかどうか|Database、SealReason|
 |BatchSize|はい|バッチ サイズ|バイト|Average|インジェスト用に集計されたバッチで、必要なデータ サイズが圧縮されていません。|データベース|
+|BlobsProcessed|はい|処理された BLOB|Count|Average|コンポーネントによって処理された BLOB の数。|Database、ComponentType、ComponentName|
+|BlobsReceived|はい|受信した BLOB|Count|Average|コンポーネントによって入力ストリームから受信した BLOB の数。|Database、ComponentType、ComponentName|
+|BlobsRejected|はい|拒否された BLOB|Count|Average|コンポーネントによって永続的に拒否されている BLOB の数。|Database、ComponentType、ComponentName|
 |CacheUtilization|はい|キャッシュ使用率|Percent|Average|クラスター スコープ内の使用率レベル|ディメンションなし|
 |ContinuousExportMaxLatenessMinutes|はい|Continuous Export Max Lateness (連続エクスポートの最大遅延)|Count|最大値|クラスター内の連続エクスポート ジョブによって報告された遅延 (分単位)|ディメンションなし|
 |ContinuousExportNumOfRecordsExported|はい|連続エクスポート - エクスポートされたレコードの数|Count|合計|エクスポート操作中に作成されたすべてのストレージ アーティファクトについてエクスポートされ実行されたレコードの数|ContinuousExportName、Database|
 |ContinuousExportPendingCount|はい|保留中の連続エクスポートの数|Count|最大値|実行の準備ができている保留中の連続エクスポート ジョブの数|ディメンションなし|
 |ContinuousExportResult|はい|連続エクスポートの結果|Count|Count|連続エクスポートが成功したか失敗したかを示します|ContinuousExportName、Result、Database|
 |CPU|はい|CPU|Percent|Average|CPU 使用率レベル|ディメンションなし|
+|CumulativeLatency|はい|累積待機時間|Seconds|Average|メッセージが検出されてから、処理のためにレポート コンポーネントによって受信されるまでの累積時間 (検出時間は、メッセージがインジェスト キューのためにキューに入れられたとき、またはデータ接続によって検出されたときに設定されます)。|Database、ComponentType|
+|DiscoveryLatency|はい|検出の待機時間|Seconds|Average|データ接続によって報告されます (存在する場合)。 メッセージがキューに入れられるか、イベントが作成されてから、データ接続によって検出されるまでの時間 (秒)。 この時間は、Azure Data Explorer の合計インジェスト期間には含まれません。|ComponentType、ComponentName|
 |EventsProcessedForEventHubs|はい|(Event/IoT Hubs の) 処理されたイベント|Count|合計|Event/IoT Hub からのインジェスト時に、クラスターによって処理されたイベントの数|EventStatus|
 |ExportUtilization|はい|エクスポート使用率|Percent|最大値|エクスポート使用率|ディメンションなし|
-|IngestionLatencyInSeconds|はい|インジェストの待機時間 (秒単位)|Seconds|Average|ソース (メッセージが EventHub 内にある場合など) からクラスターへのインジェスト時間 (秒単位)|ディメンションなし|
+|IngestionLatencyInSeconds|はい|インジェストの待ち時間|Seconds|Average|ソース (メッセージが EventHub 内にある場合など) からクラスターへのインジェスト時間 (秒単位)|ディメンションなし|
 |IngestionResult|はい|インジェストの結果|Count|Count|インジェスト操作の回数|IngestionResultDetails|
 |IngestionUtilization|はい|インジェストの使用率|Percent|Average|クラスターでのインジェスト スロットの使用率|ディメンションなし|
-|IngestionVolumeInMB|はい|インジェストの量 (MB 単位)|Count|合計|クラスターに取り込まれたデータの全体的な量 (MB 単位)|ディメンションなし|
+|IngestionVolumeInMB|はい|インジェストの量 (MB 単位)|バイト|合計|クラスターに取り込まれたデータの全体的な量 (MB 単位)|ディメンションなし|
 |InstanceCount|はい|Instance Count|Count|Average|インスタンスの総数|ディメンションなし|
 |KeepAlive|はい|キープ アライブ|Count|Average|サニティ チェックでは、クラスターがクエリに応答していることが示されます|ディメンションなし|
+|MaterializedViewAgeMinutes|はい|具体化されたビューの経過時間|Count|Average|具体化されたビューの経過時間 (分)|Database、MaterializedViewName|
+|MaterializedViewDataLoss|はい|具体化されたビューのデータ損失|Count|最大値|具体化されたビューの潜在的なデータ損失の可能性を示します|Database、MaterializedViewName、Kind|
+|MaterializedViewExtentsRebuild|はい|具体化されたビュー エクステントのリビルド|Count|Average|エクステントのリビルドの数|Database、MaterializedViewName|
+|MaterializedViewHealth|はい|具体化されたビューの正常性|Count|Average|具体化されたビューの正常性 (正常の場合は 1、正常でない場合は 0)|Database、MaterializedViewName|
+|MaterializedViewRecordsInDelta|はい|具体化されたビューのレコード (差分)|Count|Average|ビューの具体化されていない部分に含まれるレコードの数|Database、MaterializedViewName|
+|MaterializedViewResult|はい|具体化されたビューの結果|Count|Average|具体化されたプロセスの結果|Database、MaterializedViewName、Result|
 |QueryDuration|はい|クエリ実行時間|ミリ秒|Average|クエリの実行時間 (秒単位)|QueryStatus|
+|QueryResult|いいえ|クエリの結果|Count|Count|クエリの合計数。|Status|
 |SteamingIngestRequestRate|はい|ストリーミング インジェストの要求率|Count|RateRequestsPerSecond|ストリーミング インジェストの要求率 (要求数/秒)|ディメンションなし|
 |StreamingIngestDataRate|はい|ストリーミング インジェストのデータ速度|Count|Average|ストリーミング インジェストのデータ速度 (MB/秒)|ディメンションなし|
 |StreamingIngestDuration|はい|ストリーミング インジェストの期間|ミリ秒|Average|ストリーミング インジェスト時間 (ミリ秒)|ディメンションなし|
@@ -1411,14 +1462,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |アクティブなコア|はい|アクティブなコア|Count|Average|アクティブなコアの数|Scenario、ClusterName|
 |アクティブなノード|はい|アクティブなノード|Count|Average|アクティブ ノードの数。 これらは、ジョブをアクティブに実行しているノードです。|Scenario、ClusterName|
-|Cancel Requested Runs (キャンセルが要求された実行数)|はい|Cancel Requested Runs (キャンセルが要求された実行数)|Count|合計|このワークスペースに対してキャンセルが要求された実行の数。 実行のキャンセル要求が受信されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|Cancelled Runs (取り消された実行数)|はい|Cancelled Runs (取り消された実行数)|Count|合計|このワークスペースに対して取り消された実行の数。 実行が正常に取り消されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|完了した実行数|はい|完了した実行数|Count|合計|このワークスペースに対して正常に完了した実行の数。 実行が完了し、出力が収集されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|CpuUtilization|はい|CpuUtilization|Count|Average|CPU ノードのメモリ使用率 (%)。 使用率は 1 分間隔で報告されます。|Scenario、runId、NodeId、ClusterName|
+|Cancel Requested Runs (キャンセルが要求された実行数)|はい|Cancel Requested Runs (キャンセルが要求された実行数)|Count|合計|このワークスペースに対してキャンセルが要求された実行の数。 実行のキャンセル要求が受信されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|Cancelled Runs (取り消された実行数)|はい|Cancelled Runs (取り消された実行数)|Count|合計|このワークスペースに対して取り消された実行の数。 実行が正常に取り消されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|完了した実行数|はい|完了した実行数|Count|合計|このワークスペースに対して正常に完了した実行の数。 実行が完了し、出力が収集されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|CpuUtilization|はい|CpuUtilization|Count|Average|CPU ノードの使用率 (%)。 使用率は 1 分間隔で報告されます。|Scenario、runId、NodeId、ClusterName|
 |エラー|はい|エラー|Count|合計|このワークスペースの実行エラーの数。 実行時にエラーが発生するたびに、カウントが更新されます。|シナリオ|
-|失敗した実行|はい|失敗した実行|Count|合計|このワークスペースに対して失敗した実行の数。 実行に失敗すると、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|Finalizing Runs (終了処理中の実行数)|はい|Finalizing Runs (終了処理中の実行数)|Count|合計|このワークスペースに対して終了処理状態になった実行の数。 実行は完了しているものの、出力の収集がまだ進行中の場合に、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|GpuUtilization|はい|GpuUtilization|Count|Average|GPU ノードのメモリ使用率 (%)。 使用率は 1 分間隔で報告されます。|Scenario、runId、NodeId、DeviceId、ClusterName|
+|失敗した実行|はい|失敗した実行|Count|合計|このワークスペースに対して失敗した実行の数。 実行に失敗すると、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|Finalizing Runs (終了処理中の実行数)|はい|Finalizing Runs (終了処理中の実行数)|Count|合計|このワークスペースに対して終了処理状態になった実行の数。 実行は完了しているものの、出力の収集がまだ進行中の場合に、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|GpuUtilization|はい|GpuUtilization|Count|Average|GPU ノードの使用率 (%)。 使用率は 1 分間隔で報告されます。|Scenario、runId、NodeId、DeviceId、ClusterName|
 |アイドル状態のコア|はい|アイドル状態のコア|Count|Average|アイドル状態のコアの数|Scenario、ClusterName|
 |アイドル状態のノード|はい|アイドル状態のノード|Count|Average|アイドル状態のノードの数。 アイドル状態のノードは、ジョブを実行していないノードですが、使用可能な場合は新しいジョブを受け入れることができます。|Scenario、ClusterName|
 |終了中のコア|はい|終了中のコア|Count|Average|終了中のコアの数|Scenario、ClusterName|
@@ -1428,16 +1479,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |モデル デプロイが成功しました|はい|モデル デプロイが成功しました|Count|合計|このワークスペースで成功したモデル デプロイの数|シナリオ|
 |モデルの登録が失敗しました|はい|モデル登録失敗|Count|合計|このワークスペースで失敗したモデル登録の数|Scenario、StatusCode|
 |モデル登録成功|はい|モデル登録成功|Count|合計|このワークスペースで成功したモデル登録の数|シナリオ|
-|Not Responding Runs (応答していない実行数)|はい|Not Responding Runs (応答していない実行数)|Count|合計|このワークスペースに対して応答していない実行の数。 実行が応答していない状態になったときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|Not Started Runs (未開始の実行数)|はい|Not Started Runs (未開始の実行数)|Count|合計|このワークスペースに対して未開始状態の実行の数。 実行を作成するために要求が受信されたものの、実行情報がまだ設定されていない場合に、カウントが更新されます。 |Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
+|Not Responding Runs (応答していない実行数)|はい|Not Responding Runs (応答していない実行数)|Count|合計|このワークスペースに対して応答していない実行の数。 実行が応答していない状態になったときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|Not Started Runs (未開始の実行数)|はい|Not Started Runs (未開始の実行数)|Count|合計|このワークスペースに対して未開始状態の実行の数。 実行を作成するために要求が受信されたものの、実行情報がまだ設定されていない場合に、カウントが更新されます。 |Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
 |割り込まれたコア|はい|割り込まれたコア|Count|Average|割り込まれたコアの数|Scenario、ClusterName|
 |割り込まれたノード|はい|割り込まれたノード|Count|Average|割り込まれたノードの数。 これらのノードは低優先度のノードであり、使用可能なノード プールから外されます。|Scenario、ClusterName|
-|Preparing Runs (準備中の実行数)|はい|Preparing Runs (準備中の実行数)|Count|合計|このワークスペースに対して準備中の実行の数。 実行環境の準備中に実行が準備状態になると、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|Provisioning Runs (プロビジョニング中の実行数)|はい|Provisioning Runs (プロビジョニング中の実行数)|Count|合計|このワークスペースに対してプロビジョニング中の実行の数。 実行でのコンピューティング先の作成の待機中、またはプロビジョニング中に、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|Queued Runs (キューに入れられた実行数)|はい|Queued Runs (キューに入れられた実行数)|Count|合計|このワークスペースに対してキューに入れられた実行の数。 コンピューティング先で実行がキューに入れられたときに、カウントが更新されます。 必要なコンピューティング ノードの準備が整うまで待機しているときに発生する場合があります。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
+|Preparing Runs (準備中の実行数)|はい|Preparing Runs (準備中の実行数)|Count|合計|このワークスペースに対して準備中の実行の数。 実行環境の準備中に実行が準備状態になると、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|Provisioning Runs (プロビジョニング中の実行数)|はい|Provisioning Runs (プロビジョニング中の実行数)|Count|合計|このワークスペースに対してプロビジョニング中の実行の数。 実行でのコンピューティング先の作成の待機中、またはプロビジョニング中に、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|Queued Runs (キューに入れられた実行数)|はい|Queued Runs (キューに入れられた実行数)|Count|合計|このワークスペースに対してキューに入れられた実行の数。 コンピューティング先で実行がキューに入れられたときに、カウントが更新されます。 必要なコンピューティング ノードの準備が整うまで待機しているときに発生する場合があります。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
 |クォータ使用率|はい|クォータ使用率|Count|Average|クォータ使用率 (%)|Scenario、ClusterName、VmFamilyName、VmPriority|
-|開始した実行数|はい|開始した実行数|Count|合計|このワークスペースに対して実行されている実行の数。 必要なリソースに対して実行が開始されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|Starting Runs (開始中の実行数)|はい|Starting Runs (開始中の実行数)|Count|合計|このワークスペースに対して開始された実行の数。 実行の作成要求の後、および実行 ID などの実行情報が設定された後に、カウントが更新されます|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
+|開始した実行数|はい|開始した実行数|Count|合計|このワークスペースに対して実行されている実行の数。 必要なリソースに対して実行が開始されたときに、カウントが更新されます。|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|Starting Runs (開始中の実行数)|はい|Starting Runs (開始中の実行数)|Count|合計|このワークスペースに対して開始された実行の数。 実行の作成要求の後、および実行 ID などの実行情報が設定された後に、カウントが更新されます|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
 |コアの合計|はい|コアの合計|Count|Average|コアの合計数|Scenario、ClusterName|
 |ノード総数|はい|ノード総数|Count|Average|ノードの合計数。 この合計には、アクティブ ノード、アイドル状態のノード、使用できないノード、割り込まれたノード、終了中のノードなどが含まれます|Scenario、ClusterName|
 |使用できないコア|はい|使用できないコア|Count|Average|使用できないコアの数|Scenario、ClusterName|
@@ -1560,8 +1611,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|BitsInPerSecond (受信ビット数/秒)|はい|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ディメンションなし|
-|BitsOutPerSecond (送信ビット数/秒)|はい|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ディメンションなし|
+|BitsInPerSecond (受信ビット数/秒)|はい|BitsInPerSecond (受信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ディメンションなし|
+|BitsOutPerSecond (送信ビット数/秒)|はい|BitsOutPerSecond (送信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ディメンションなし|
 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
@@ -1579,28 +1630,28 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |ArpAvailability|はい|ARP の可用性|Percent|Average|MSEE からすべてのピアへの ARP の可用性。|PeeringType、Peer|
 |BgpAvailability|はい|BGP の可用性|Percent|Average|MSEE からすべてのピアへの BGP の可用性。|PeeringType、Peer|
-|BitsInPerSecond (受信ビット数/秒)|いいえ|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|PeeringType|
-|BitsOutPerSecond (送信ビット数/秒)|いいえ|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|PeeringType|
-|GlobalReachBitsInPerSecond|いいえ|GlobalReachBitsInPerSecond|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|PeeredCircuitSKey|
-|GlobalReachBitsOutPerSecond|いいえ|GlobalReachBitsOutPerSecond|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|PeeredCircuitSKey|
-|QosDropBitsInPerSecond|いいえ|DroppedInBitsPerSecond|CountPerSecond|Average|1 秒あたりに破棄されたデータのイングレス ビット数|ディメンションなし|
-|QosDropBitsOutPerSecond|いいえ|DroppedOutBitsPerSecond|CountPerSecond|Average|1 秒あたりに破棄されたデータのエグレス ビット数|ディメンションなし|
+|BitsInPerSecond (受信ビット数/秒)|いいえ|BitsInPerSecond (受信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|PeeringType、DeviceRole|
+|BitsOutPerSecond (送信ビット数/秒)|いいえ|BitsOutPerSecond (送信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|PeeringType、DeviceRole|
+|GlobalReachBitsInPerSecond|いいえ|GlobalReachBitsInPerSecond|BitsPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|PeeredCircuitSKey|
+|GlobalReachBitsOutPerSecond|いいえ|GlobalReachBitsOutPerSecond|BitsPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|PeeredCircuitSKey|
+|QosDropBitsInPerSecond|はい|DroppedInBitsPerSecond|BitsPerSecond|Average|1 秒あたりに破棄されたデータのイングレス ビット数|ディメンションなし|
+|QosDropBitsOutPerSecond|はい|DroppedOutBitsPerSecond|BitsPerSecond|Average|1 秒あたりに破棄されたデータのエグレス ビット数|ディメンションなし|
 
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|BitsInPerSecond (受信ビット数/秒)|はい|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ディメンションなし|
-|BitsOutPerSecond (送信ビット数/秒)|はい|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ディメンションなし|
+|BitsInPerSecond (受信ビット数/秒)|はい|BitsInPerSecond (受信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ディメンションなし|
+|BitsOutPerSecond (送信ビット数/秒)|はい|BitsOutPerSecond (送信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ディメンションなし|
 
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|ErGatewayConnectionBitsInPerSecond|いいえ|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ConnectionName|
-|ErGatewayConnectionBitsOutPerSecond|いいえ|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ConnectionName|
+|ErGatewayConnectionBitsInPerSecond|いいえ|BitsInPerSecond (受信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ConnectionName|
+|ErGatewayConnectionBitsOutPerSecond|いいえ|BitsOutPerSecond (送信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ConnectionName|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft.Network/expressRoutePorts
@@ -1609,8 +1660,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |AdminState|はい|AdminState|Count|Average|ポートの管理者の状態|Link|
 |LineProtocol|はい|LineProtocol|Count|Average|ポートの回線プロトコルの状態|Link|
-|PortBitsInPerSecond|はい|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|Link|
-|PortBitsOutPerSecond|はい|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|Link|
+|PortBitsInPerSecond|はい|BitsInPerSecond (受信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|Link|
+|PortBitsOutPerSecond|はい|BitsOutPerSecond (送信ビット数/秒)|BitsPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|Link|
 |RxLightLevel|はい|RxLightLevel|Count|Average|DBM の Rx ライト レベル|Link、Lane|
 |TxLightLevel|はい|TxLightLevel|Count|Average|DBM の Tx ライト レベル|Link、Lane|
 
@@ -1635,7 +1686,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |AllocatedSnatPorts|いいえ|割り当てられた SNAT ポート|Count|Average|期間内に割り当てられた SNAT ポートの合計数|FrontendIPAddress、BackendIPAddress、ProtocolType、 |
-|ByteCount|はい|Byte Count (バイト数)|Count|合計|期間内に送信された合計バイト数|FrontendIPAddress、FrontendPort、Direction|
+|ByteCount|はい|Byte Count (バイト数)|バイト|合計|期間内に送信された合計バイト数|FrontendIPAddress、FrontendPort、Direction|
 |DipAvailability|はい|正常性プローブの状態|Count|Average|期間あたりの Load Balancer 正常性プローブの状態平均|ProtocolType、BackendPort、FrontendIPAddress、FrontendPort、BackendIPAddress|
 |PacketCount|はい|Packet Count (パケット数)|Count|合計|期間内に送信された合計パケット数|FrontendIPAddress、FrontendPort、Direction|
 |SnatConnectionCount|はい|SNAT Connection Count (SNAT 接続数)|Count|合計|期間内に作成された新しい SNAT 接続の合計数|FrontendIPAddress、BackendIPAddress、ConnectionState|
@@ -1659,16 +1710,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |AverageRoundtripMs|はい|Avg.ラウンド トリップ時間 (ミリ秒)|MilliSeconds|Average|ソースと接続先の間で送信された接続監視プローブのネットワークの平均ラウンド トリップ時間 (ミリ秒)|ディメンションなし|
-|ChecksFailedPercent|はい|チェック失敗の割合 (プレビュー)|Percent|Average|失敗した接続監視チェックの割合|SourceAddress、SourceName、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName|
+|ChecksFailedPercent|はい|チェック失敗の割合 (プレビュー)|Percent|Average|失敗した接続監視チェックの割合|SourceAddress、SourceName、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName、SourceIP、DestinationIP、SourceSubnet、DestinationSubnet|
 |ProbesFailedPercent|はい|失敗したプローブの割合|Percent|Average|失敗した接続監視プローブの割合|ディメンションなし|
-|RoundTripTimeMs|はい|ラウンド トリップ時間 (ミリ秒) (プレビュー)|MilliSeconds|Average|接続監視チェックのラウンド トリップ時間 (ミリ秒)|SourceAddress、SourceName、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName|
+|RoundTripTimeMs|はい|ラウンド トリップ時間 (ミリ秒) (プレビュー)|MilliSeconds|Average|接続監視チェックのラウンド トリップ時間 (ミリ秒)|SourceAddress、SourceName、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName、SourceIP、DestinationIP、SourceSubnet、DestinationSubnet|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|ByteCount|はい|Byte Count (バイト数)|Count|合計|期間内に送信された合計バイト数|Port、Direction|
+|ByteCount|はい|Byte Count (バイト数)|バイト|合計|期間内に送信された合計バイト数|Port、Direction|
 |BytesDroppedDDoS|はい|DDoS 受信バイト破棄数|BytesPerSecond|最大値|DDoS 受信バイト破棄数|ディメンションなし|
 |BytesForwardedDDoS|はい|DDoS 受信バイト転送数|BytesPerSecond|最大値|DDoS 受信バイト転送数|ディメンションなし|
 |BytesInDDoS|はい|DDoS 受信バイト数|BytesPerSecond|最大値|DDoS 受信バイト数|ディメンションなし|
@@ -1869,10 +1920,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|EgressTrafficRate|はい|エグレス トラフィック速度|BitsPerSecond|Average|エグレス トラフィック速度 (ビット/秒)|ConnectionId|
-|IngressTrafficRate|はい|イグレス トラフィック速度|BitsPerSecond|Average|イグレス トラフィック速度 (ビット/秒)|ConnectionId|
-|SessionAvailabilityV4|はい|セッション可用性 V4|Percent|Average|V4 セッションの可用性|ConnectionId|
-|SessionAvailabilityV6|はい|セッションの可用性 V6|Percent|Average|V6 セッションの可用性|ConnectionId|
+|EgressTrafficRate|はい|エグレス トラフィック速度|BitsPerSecond|Average|エグレス トラフィック速度 (ビット/秒)|ConnectionId、SessionIp、TrafficClass|
+|IngressTrafficRate|はい|イグレス トラフィック速度|BitsPerSecond|Average|イグレス トラフィック速度 (ビット/秒)|ConnectionId、SessionIp、TrafficClass|
 
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft.Peering/peeringServices
@@ -1899,7 +1948,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |ActiveConnections|いいえ|ActiveConnections|Count|合計|Microsoft.Relay の ActiveConnections の合計。|EntityName|
 |ActiveListeners|いいえ|ActiveListeners|Count|合計|Microsoft.Relay の ActiveListeners の合計。|EntityName|
-|BytesTransferred|はい|BytesTransferred|Count|合計|Microsoft.Relay の BytesTransferred の合計。|EntityName|
+|BytesTransferred|はい|BytesTransferred|バイト|合計|Microsoft.Relay の BytesTransferred の合計。|EntityName|
 |ListenerConnections-ClientError|いいえ|ListenerConnections-ClientError|Count|合計|Microsoft.Relay の ListenerConnections での ClientError.|EntityName、 |
 |ListenerConnections-ServerError|いいえ|ListenerConnections-ServerError|Count|合計|Microsoft.Relay の ListenerConnections での ServerError.|EntityName、 |
 |ListenerConnections-Success|いいえ|ListenerConnections-Success|Count|合計|Microsoft.Relay の正常な ListenerConnections.|EntityName、 |
@@ -2011,9 +2060,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |dtu_consumption_percent|はい|DTU の割合|Percent|Average|DTU の割合。 DTU ベースのデータベースに適用されます。|ディメンションなし|
 |dtu_limit|はい|DTU の上限|Count|Average|DTU の上限。 DTU ベースのデータベースに適用されます。|ディメンションなし|
 |dtu_used|はい|使用された DTU|Count|Average|使用された DTU。 DTU ベースのデータベースに適用されます。|ディメンションなし|
-|dw_backup_size_gb|はい|データ ストレージ サイズ (GB)|Count|合計|データ ストレージのサイズは、データとトランザクション ログのサイズで構成されます。 メトリックは、請求書の "ストレージ" 部分にカウントされます。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
-|dw_geosnapshot_size_gb|はい|Disaster Recovery Storage Size (GB)\(ディザスター リカバリー ストレージ サイズ (GB)\)|Count|合計|ディザスター リカバリー ストレージ サイズは、請求書に "ディザスター リカバリー ストレージ" として反映されます。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
-|dw_snapshot_size_gb|はい|スナップショット ストレージ サイズ (GB)|Count|合計|スナップ ショット ストレージ サイズは、ユーザー定義および自動の復元ポイントを作成するために、スナップショットによってキャプチャされた増分変更のサイズです。 メトリックは、請求書の "ストレージ" 部分にカウントされます。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dwu_consumption_percent|はい|DWU の割合|Percent|最大値|DWU の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dwu_limit|はい|DWU 上限|Count|最大値|DWU 上限。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dwu_used|はい|使用済み DWU|Count|最大値|使用された DWU。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
@@ -2030,9 +2076,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |sqlserver_process_memory_percent|はい|SQL Server プロセス メモリの割合|Percent|最大値|SQL DB プロセスに対するメモリ使用率 (%)。 データ ウェアハウスには適用されません。|ディメンションなし|
 |storage|はい|使用済みのデータ領域|バイト|最大値|使用済みのデータ領域。 データ ウェアハウスには適用されません。|ディメンションなし|
 |storage_percent|はい|使用済みのデータ領域の割合|Percent|最大値|使用済みのデータ領域の割合。 データ ウェアハウスまたはハイパースケール データベースには適用されません。|ディメンションなし|
-|tempdb_data_size|はい|Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)。 データ ウェアハウスには適用されません。|ディメンションなし|
-|tempdb_log_size|はい|Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)。 データ ウェアハウスには適用されません。|ディメンションなし|
-|tempdb_log_used_percent|はい|Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率。 データ ウェアハウスには適用されません。|ディメンションなし|
+|tempdb_data_size|はい|Tempdb データ ファイル サイズ (KB)|Count|最大値|tempdb データ ファイルで使用されている領域 (キロバイト単位) データ ウェアハウスには適用されません。|ディメンションなし|
+|tempdb_log_size|はい|Tempdb ログ ファイル サイズ (KB)|Count|最大値|tempdb トランザクション ログ ファイルで使用されている領域 (キロバイト単位) データ ウェアハウスには適用されません。|ディメンションなし|
+|tempdb_log_used_percent|はい|Tempdb ログ使用率|Percent|最大値|tempdb トランザクション ログ ファイルで使用されている領域の割合 データ ウェアハウスには適用されません。|ディメンションなし|
 |wlg_active_queries|はい|Workload group active queries (ワークロード グループのアクティブなクエリ)|Count|合計|ワークロード グループ内のアクティブなクエリ数。 データ ウェアハウスにのみ適用されます。|WorkloadGroupName、IsUserDefined|
 |wlg_active_queries_timeouts|はい|Workload group query timeouts (ワークロード グループのクエリのタイムアウト)|Count|合計|ワークロード グループに対するタイムアウトしたクエリの数。 データ ウェアハウスにのみ適用されます。|WorkloadGroupName、IsUserDefined|
 |wlg_allocation_relative_to_system_percent|はい|Workload group allocation by system percent (システム割合別のワークロード グループの割り当て)|Percent|最大値|ワークロード グループあたりのシステム全体に対するリソースの割り当て比率。 データ ウェアハウスにのみ適用されます。|WorkloadGroupName、IsUserDefined|
@@ -2075,9 +2121,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |storage_limit|はい|データの最大サイズ|バイト|Average|データの最大サイズ|ディメンションなし|
 |storage_percent|はい|使用済みのデータ領域の割合|Percent|Average|使用済みのデータ領域の割合|ディメンションなし|
 |storage_used|はい|使用済みのデータ領域|バイト|Average|使用済みのデータ領域|ディメンションなし|
-|tempdb_data_size|はい|Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)|ディメンションなし|
-|tempdb_log_size|はい|Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)|ディメンションなし|
-|tempdb_log_used_percent|はい|Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率|ディメンションなし|
+|tempdb_data_size|はい|Tempdb データ ファイル サイズ (KB)|Count|最大値|tempdb データ ファイルで使用されている領域 (キロバイト単位)|ディメンションなし|
+|tempdb_log_size|はい|Tempdb ログ ファイル サイズ (KB)|Count|最大値|tempdb トランザクション ログ ファイルで使用されている領域 (キロバイト単位)|ディメンションなし|
+|tempdb_log_used_percent|はい|Tempdb ログ使用率|Percent|最大値|tempdb トランザクション ログ ファイルで使用されている領域の割合|ディメンションなし|
 |workers_percent|はい|ワーカーの割合|Percent|Average|ワーカーの割合|ディメンションなし|
 |xtp_storage_percent|はい|インメモリ OLTP ストレージの割合|Percent|Average|インメモリ OLTP ストレージの割合|ディメンションなし|
 
@@ -2228,42 +2274,46 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|OrchestrationActivityRunsEnded|いいえ|Activity runs ended (終了したアクティビティ実行数)|Count|合計|成功、失敗、または取り消されたオーケストレーション アクティビティの数|Result、FailureType、Activity、ActivityType、Pipeline|
-|OrchestrationPipelineRunsEnded|いいえ|Pipeline runs ended (終了したパイプライン実行数)|Count|合計|成功、失敗、または取り消されたオーケストレーション パイプライン実行の数|Result、FailureType、Pipeline|
-|OrchestrationTriggersEnded|いいえ|Triggers ended (終了したトリガー数)|Count|合計|成功、失敗、または取り消されたオーケストレーション トリガーの数|Result、FailureType、Trigger|
-|SQLOnDemandLoginAttempts|いいえ|Login attempts (ログインの試行回数)|Count|合計|成功または失敗したログイン試行回数|結果|
-|SQLOnDemandQueriesEnded|いいえ|Queries ended (終了したクエリ数)|Count|合計|成功、失敗、または取り消されたクエリの数|結果|
-|SQLOnDemandQueryProcessedBytes|いいえ|データ処理量|バイト|合計|クエリによって処理されたデータの量|ディメンションなし|
+|BuiltinSqlPoolDataProcessedBytes|いいえ|処理済みのデータ (バイト)|バイト|合計|クエリによって処理されたデータの量|ディメンションなし|
+|BuiltinSqlPoolLoginAttempts|いいえ|Login attempts (ログインの試行回数)|Count|合計|成功または失敗したログイン試行回数|結果|
+|BuiltinSqlPoolRequestsEnded|いいえ|終了した要求|Count|合計|成功、失敗、または取り消された要求の数|結果|
+|IntegrationActivityRunsEnded|いいえ|Activity runs ended (終了したアクティビティ実行数)|Count|合計|成功、失敗、または取り消された統合アクティビティの数|Result、FailureType、Activity、ActivityType、Pipeline|
+|IntegrationPipelineRunsEnded|いいえ|Pipeline runs ended (終了したパイプライン実行数)|Count|合計|成功、失敗、または取り消された統合パイプライン実行の数|Result、FailureType、Pipeline|
+|IntegrationTriggerRunsEnded|いいえ|終了したトリガーの実行|Count|合計|成功、失敗、または取り消された統合トリガーの数|Result、FailureType、Trigger|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|CoresCapacity|いいえ|Cores capacity (コア容量)|Count|最大値|コア容量|ディメンションなし|
-|MemoryCapacityGB|いいえ|Memory capacity (GB) (メモリ容量 (GB))|Count|最大値|メモリ容量 (GB)|ディメンションなし|
-|SparkJobsEnded|はい|Ended applications (終了したアプリケーション数)|Count|合計|終了したアプリケーションの数|JobType、JobResult|
+|BigDataPoolAllocatedCores|いいえ|割り当てられた仮想コア|Count|最大値|Apache Spark プールに割り当てられた仮想コア|SubmitterId|
+|BigDataPoolAllocatedMemory|いいえ|割り当てられたメモリ (GB)|Count|最大値|Apache Spark プールに割り当てられたメモリ (GB)|SubmitterId|
+|BigDataPoolApplicationsActive|いいえ|Active Apache Spark applications (アクティブな Apache Spark アプリケーション)|Count|Count|アクティブな Apache Spark プール アプリケーションの合計数|JobState|
+|BigDataPoolApplicationsEnded|いいえ|Ended Apache Spark applications (終了した Apache Spark アプリケーション)|Count|Count|終了した Apache Spark プール アプリケーションの数|JobType、JobResult|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
+|ActiveQueries|いいえ|アクティブなクエリ|Count|合計|アクティブなクエリ。 フィルター処理も分割も適用しないでこのメトリックを使用すると、システム上で実行されているすべてのアクティブなクエリが表示されます|IsUserDefined|
 |AdaptiveCacheHitPercent|いいえ|Adaptive cache hit percentage (アダプティブ キャッシュ ヒット率)|Percent|最大値|ワークロードによるアダプティブ キャッシュの使用状況を測定します。 このメトリックをキャッシュ ヒット率メトリックと一緒に使用して、追加容量に合わせてスケーリングするか、キャッシュをハイドレートするためにワークロードを再実行するかを決定します|ディメンションなし|
 |AdaptiveCacheUsedPercent|いいえ|Adaptive cache used percentage (アダプティブ キャッシュ使用率)|Percent|最大値|ワークロードによるアダプティブ キャッシュの使用状況を測定します。 このメトリックをキャッシュ使用率メトリックと一緒に使用して、追加容量に合わせてスケーリングするか、キャッシュをハイドレートするためにワークロードを再実行するかを決定します|ディメンションなし|
 |接続|はい|接続|Count|合計|SQL プールに対するログインの合計数|結果|
 |ConnectionsBlockedByFirewall|いいえ|ファイアウォールによってブロックされる接続数|Count|合計|ファイアウォール規則によってブロックされる接続の数。 SQL プールのアクセス制御ポリシーを再確認し、数が多い場合はこれらの接続を監視します|ディメンションなし|
+|CPUPercent|いいえ|DWU used percentage (使用された CPU の割合)|Percent|最大値|SQL プール内のすべてのノードでの CPU 使用率|ディメンションなし|
 |DWULimit|いいえ|DWU 上限|Count|最大値|SQL プールのサービス レベル目標|ディメンションなし|
 |DWUUsed|いいえ|使用済み DWU|Count|最大値|SQL プール全体の使用状況の概要表示を表します。 DWU の制限 * DWU の割合で測定されます|ディメンションなし|
 |DWUUsedPercent|いいえ|DWU used percentage (使用された DWU の割合)|Percent|最大値|SQL プール全体の使用状況の概要表示を表します。 CPU の割合とデータ IO の割合の最大値を取得することにより測定します|ディメンションなし|
 |LocalTempDBUsedPercent|いいえ|Local tempdb used percentage (ローカル tempdb 使用率)|Percent|最大値|すべてのコンピューティング ノードでの、ローカル tempdb の使用率 - 値は 5 分ごとに出力されます|ディメンションなし|
 |MemoryUsedPercent|いいえ|Memory used percentage (メモリ使用率)|Percent|最大値|SQL プール内のすべてのノードでのメモリ使用率|ディメンションなし|
+|QueuedQueries|いいえ|キューに置かれたクエリ|Count|合計|同時実行数の上限に達した後にキューに登録された要求の累積数|IsUserDefined|
 |wlg_effective_min_resource_percent|はい|Effective min resource percent (有効な最小リソース割合)|Percent|最小値|有効な最小リソース割合の設定では、サービス レベルとワークロード グループの設定が考慮されます。 有効な min_percentage_resource は、低いサービス レベルで高い値に調整できます|IsUserDefined、WorkloadGroup|
 |WLGActiveQueries|いいえ|Workload group active queries (ワークロード グループのアクティブなクエリ)|Count|合計|ワークロード グループ内のアクティブなクエリ数。 フィルター処理も分割も適用しないでこのメトリックを使用すると、システム上で実行されているすべてのアクティブなクエリが表示されます|IsUserDefined、WorkloadGroup|
 |WLGActiveQueriesTimeouts|いいえ|Workload group query timeouts (ワークロード グループのクエリのタイムアウト)|Count|合計|タイムアウトしたワークロード グループのクエリ。このメトリックでクエリのタイムアウトがレポートされるのは、クエリの実行が開始された場合だけです (ロックまたはリソースの待機による待ち時間は含まれません)|IsUserDefined、WorkloadGroup|
 |WLGAllocationByMaxResourcePercent|いいえ|Workload group allocation by max resource percent (最大リソース割合別のワークロード グループの割り当て)|Percent|最大値|ワークロード グループあたりの "Effective cap resource percent (有効な上限リソース割合)" に対するリソースの割り当て比率を表示します。 このメトリックでは、ワークロード グループの有効使用率が示されます|IsUserDefined、WorkloadGroup|
 |WLGAllocationBySystemPercent|いいえ|Workload group allocation by system percent (システム割合別のワークロード グループの割り当て)|Percent|最大値|システム全体に対するリソース割り当て比率|IsUserDefined、WorkloadGroup|
-|WLGEffectiveCapResourcePercent|はい|Effective cap resource percent (有効な上限リソース割合)|Percent|最大値|ワークロードグループの有効な上限リソースの割合。 min_percentage_resource > 0 のワークロード グループが他にある場合、effective_cap_percentage_resource はそれに比例して低くなります|IsUserDefined、WorkloadGroup|
+|WLGEffectiveCapResourcePercent|いいえ|Effective cap resource percent (有効な上限リソース割合)|Percent|最大値|ワークロードグループの有効な上限リソースの割合。 min_percentage_resource > 0 のワークロード グループが他にある場合、effective_cap_percentage_resource はそれに比例して低くなります|IsUserDefined、WorkloadGroup|
 |Effective min resource percent|いいえ|Workload group queued queries (ワークロード グループのキューに登録されたクエリ)|Count|合計|同時実行数の上限に達した後にキューに登録された要求の累積数|IsUserDefined、WorkloadGroup|
 
 
@@ -2326,26 +2376,26 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|ActiveRequests|はい|アクティブな要求数|Count|合計|アクティブな要求数|インスタンス|
-|AverageResponseTime|はい|平均応答時間|Seconds|Average|平均応答時間|インスタンス|
-|BytesReceived|はい|受信データ|バイト|合計|受信データ|インスタンス|
-|BytesSent|はい|送信データ|バイト|合計|送信データ|インスタンス|
-|CpuPercentage|はい|CPU の割合|Percent|Average|CPU の割合|インスタンス|
-|DiskQueueLength|はい|ディスク キューの長さ|Count|Average|ディスク キューの長さ|インスタンス|
-|Http101|はい|Http 101|Count|合計|Http 101|インスタンス|
-|Http2xx|はい|HTTP 2xx|Count|合計|HTTP 2xx|インスタンス|
-|Http3xx|はい|HTTP 3xx|Count|合計|HTTP 3xx|インスタンス|
-|Http401|はい|HTTP 401|Count|合計|HTTP 401|インスタンス|
-|Http403|はい|HTTP 403|Count|合計|HTTP 403|インスタンス|
-|Http404|はい|HTTP 404|Count|合計|HTTP 404|インスタンス|
-|Http406|はい|HTTP 406|Count|合計|HTTP 406|インスタンス|
-|Http4xx|はい|HTTP 4xx|Count|合計|HTTP 4xx|インスタンス|
-|Http5xx|はい|HTTP サーバー エラー|Count|合計|HTTP サーバー エラー|インスタンス|
-|HttpQueueLength|はい|HTTP キューの長さ|Count|Average|HTTP キューの長さ|インスタンス|
+|ActiveRequests|はい|アクティブな要求数 (非推奨)|Count|合計|アクティブな要求数|インスタンス|
+|AverageResponseTime|はい|平均応答時間 (非推奨)|Seconds|Average|フロント エンドが要求に応答するのに要した平均時間 (秒単位)。|インスタンス|
+|BytesReceived|はい|受信データ|バイト|合計|すべてのフロント エンドで使用された受信帯域幅の平均値 (MiB)。|インスタンス|
+|BytesSent|はい|送信データ|バイト|合計|すべてのフロント エンドで使用された受信帯域幅の平均値 (MiB)。|インスタンス|
+|CpuPercentage|はい|CPU の割合|Percent|Average|フロント エンドの全インスタンスで使用された平均 CPU。|インスタンス|
+|DiskQueueLength|はい|ディスク キューの長さ|Count|Average|ストレージのキューに登録された読み取り要求と書き込み要求の平均数。 ディスク キューが長いときは、過剰なディスク I/O のためにアプリの速度が低下している可能性があることを示しています。|インスタンス|
+|Http101|はい|Http 101|Count|合計|HTTP 状態コード 101 が結果として返された要求の数。|インスタンス|
+|Http2xx|はい|HTTP 2xx|Count|合計|200 以上 300 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http3xx|はい|HTTP 3xx|Count|合計|300 以上 400 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http401|はい|HTTP 401|Count|合計|HTTP 401 状態コードが結果として返された要求の数。|インスタンス|
+|Http403|はい|HTTP 403|Count|合計|HTTP 403 状態コードが結果として返された要求の数。|インスタンス|
+|Http404|はい|HTTP 404|Count|合計|HTTP 404 状態コードが結果として返された要求の数。|インスタンス|
+|Http406|はい|HTTP 406|Count|合計|HTTP 406 状態コードが結果として返された要求の数。|インスタンス|
+|Http4xx|はい|HTTP 4xx|Count|合計|400 以上 500 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http5xx|はい|HTTP サーバー エラー|Count|合計|500 以上 600 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|HttpQueueLength|はい|HTTP キューの長さ|Count|Average|処理される前にキューで待つ必要があった HTTP 要求の平均数。 HTTP キューが長いこと、または HTTP キューの長さが増加していることは、プランに大きな負荷がかかっているしるしです。|インスタンス|
 |LargeAppServicePlanInstances|はい|L App Service プランの worker の数|Count|Average|L App Service プランの worker の数|ディメンションなし|
 |MediumAppServicePlanInstances|はい|M App Service プランの worker の数|Count|Average|M App Service プランの worker の数|ディメンションなし|
-|MemoryPercentage|はい|メモリの割合|Percent|Average|メモリの割合|インスタンス|
-|Requests|はい|Requests|Count|合計|Requests|インスタンス|
+|MemoryPercentage|はい|メモリの割合|Percent|Average|フロント エンドの全インスタンスで使用された平均メモリ|インスタンス|
+|Requests|はい|Requests|Count|合計|結果として返された HTTP 状態コードを問わない、要求の合計数。|インスタンス|
 |SmallAppServicePlanInstances|はい|S App Service プランの worker の数|Count|Average|S App Service プランの worker の数|ディメンションなし|
 |TotalFrontEnds|はい|フロント エンドの合計|Count|Average|フロント エンドの合計|ディメンションなし|
 
@@ -2354,8 +2404,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|CpuPercentage|はい|CPU の割合|Percent|Average|CPU の割合|インスタンス|
-|MemoryPercentage|はい|メモリの割合|Percent|Average|メモリの割合|インスタンス|
+|CpuPercentage|はい|CPU の割合|Percent|Average|ワーカー プールの全インスタンスで使用された平均 CPU。|インスタンス|
+|MemoryPercentage|はい|メモリの割合|Percent|Average|ワーカー プールの全インスタンスで使用された平均メモリ。|インスタンス|
 |WorkersAvailable|はい|利用可能な worker の数|Count|Average|利用可能な worker の数|ディメンションなし|
 |WorkersTotal|はい|worker の合計数|Count|Average|worker の合計数|ディメンションなし|
 |WorkersUsed|はい|使用済みの worker の数|Count|Average|使用済みの worker の数|ディメンションなし|
@@ -2365,12 +2415,12 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|BytesReceived|はい|受信データ|バイト|合計|受信データ|インスタンス|
-|BytesSent|はい|送信データ|バイト|合計|送信データ|インスタンス|
-|CpuPercentage|はい|CPU の割合|Percent|Average|CPU の割合|インスタンス|
-|DiskQueueLength|はい|ディスク キューの長さ|Count|Average|ディスク キューの長さ|インスタンス|
-|HttpQueueLength|はい|HTTP キューの長さ|Count|Average|HTTP キューの長さ|インスタンス|
-|MemoryPercentage|はい|メモリの割合|Percent|Average|メモリの割合|インスタンス|
+|BytesReceived|はい|受信データ|バイト|合計|プランの全インスタンスで使用された平均受信帯域幅。|インスタンス|
+|BytesSent|はい|送信データ|バイト|合計|プランの全インスタンスで使用された平均送信帯域幅。|インスタンス|
+|CpuPercentage|はい|CPU の割合|Percent|Average|プランの全インスタンスで使用された平均 CPU。|インスタンス|
+|DiskQueueLength|はい|ディスク キューの長さ|Count|Average|ストレージのキューに登録された読み取り要求と書き込み要求の平均数。 ディスク キューが長いときは、過剰なディスク I/O のためにアプリの速度が低下している可能性があることを示しています。|インスタンス|
+|HttpQueueLength|はい|HTTP キューの長さ|Count|Average|処理される前にキューで待つ必要があった HTTP 要求の平均数。 HTTP キューが長いこと、または HTTP キューの長さが増加していることは、プランに大きな負荷がかかっているしるしです。|インスタンス|
+|MemoryPercentage|はい|メモリの割合|Percent|Average|プランの全インスタンスで使用された平均メモリ。|インスタンス|
 |SocketInboundAll|はい|SocketInboundAll|Count|Average|SocketInboundAll|インスタンス|
 |SocketLoopback|はい|SocketLoopback|Count|Average|SocketLoopback|インスタンス|
 |SocketOutboundAll|はい|SocketOutboundAll|Count|Average|SocketOutboundAll|インスタンス|
@@ -2386,129 +2436,97 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |TcpSynSent|はい|TCP SYN 送信済み|Count|Average|TCP SYN 送信済み|インスタンス|
 |TcpTimeWait|はい|TCP 待機中|Count|Average|TCP 待機中|インスタンス|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (関数を除く) 
 
-> [!NOTE]
-> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューのホワイトリストに登録されていない場合、データは表示されません。
-
-> [!IMPORTANT]
-> **平均応答時間**は、メトリック集計との混同を避けるために非推奨です。 代わりに**応答時間**を使用してください。
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|AppConnections|はい|接続|Count|Average|接続|インスタンス|
-|AverageMemoryWorkingSet|はい|平均メモリ ワーキング セット|バイト|Average|平均メモリ ワーキング セット|インスタンス|
-|AverageResponseTime|はい|平均応答時間 **(非推奨)**|Seconds|Average|平均応答時間|インスタンス|
-|BytesReceived|はい|受信データ|バイト|合計|受信データ|インスタンス|
-|BytesSent|はい|送信データ|バイト|合計|送信データ|インスタンス|
-|CpuTime|はい|CPU 時間|Seconds|合計|CPU 時間|インスタンス|
-|CurrentAssemblies|はい|現在のアセンブリ|Count|Average|現在のアセンブリ|インスタンス|
-|FileSystemUsage|はい|ファイル システムの使用量|バイト|Average|ファイル システムの使用量|ディメンションなし|
-|Gen0Collections|はい|Gen 0 ガベージ コレクション|Count|合計|Gen 0 ガベージ コレクション|インスタンス|
-|Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|Gen 1 ガベージ コレクション|インスタンス|
-|Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|Gen 2 ガベージ コレクション|インスタンス|
-|ハンドル|はい|ハンドルの数|Count|Average|ハンドルの数|インスタンス|
-|HealthCheckStatus|はい|正常性チェックの状態|Count|Average|正常性チェックの状態|インスタンス|
-|Http101|はい|Http 101|Count|合計|Http 101|インスタンス|
-|Http2xx|はい|HTTP 2xx|Count|合計|HTTP 2xx|インスタンス|
-|Http3xx|HTTP 3xx|Count|合計|HTTP 3xx|インスタンス|
-|Http401|はい|HTTP 401|Count|合計|HTTP 401|インスタンス|
-|Http403|はい|HTTP 403|Count|合計|HTTP 403|インスタンス|
-|Http404|はい|HTTP 404|Count|合計|HTTP 404|インスタンス|
-|Http406|はい|HTTP 406|Count|合計|HTTP 406|インスタンス|
-|Http4xx|はい|HTTP 4xx|Count|合計|HTTP 4xx|インスタンス|
-|Http5xx|はい|HTTP サーバー エラー|Count|合計|HTTP サーバー エラー|インスタンス|
-|HttpResponseTime|はい|応答時間|Seconds|Average|応答時間|インスタンス|
-|IoOtherBytesPerSecond|はい|IO その他のバイト/秒|BytesPerSecond|合計|IO その他のバイト/秒|インスタンス|
-|IoOtherOperationsPerSecond|はい|IO その他の操作/秒|BytesPerSecond|合計|IO その他の操作/秒|インスタンス|
-|IoReadBytesPerSecond|はい|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|
-|IoReadOperationsPerSecond|はい|IO 読み取り操作/秒|BytesPerSecond|合計|IO 読み取り操作/秒|インスタンス|
-|IoWriteBytesPerSecond|はい|IO 書き込みバイト/秒|BytesPerSecond|合計|IO 書き込みバイト/秒|インスタンス|
-|IoWriteOperationsPerSecond|はい|IO 書き込み操作/秒|BytesPerSecond|合計|IO 書き込み操作/秒|インスタンス|
-|MemoryWorkingSet|はい|メモリ ワーキング セット|バイト|Average|メモリ ワーキング セット|インスタンス|
-|PrivateBytes|はい|Private Bytes|バイト|Average|Private Bytes|インスタンス|
-|Requests|はい|Requests|Count|合計|Requests|インスタンス|
-|RequestsInApplicationQueue|はい|アプリケーション キュー内の要求数|Count|Average|アプリケーション キュー内の要求数|インスタンス|
-|Threads|はい|Thread Count|Count|Average|Thread Count|インスタンス|
-|TotalAppDomains|はい|アプリ ドメイン合計数|Count|Average|アプリ ドメイン合計数|インスタンス|
-|TotalAppDomainsUnloaded|はい|アンロード済みのアプリ ドメイン合計数|Count|Average|アンロード済みのアプリ ドメイン合計数|インスタンス|
-
-## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (関数)
-
-> [!NOTE]
-> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューのホワイトリストに登録されていない場合、データは表示されません。
-
-|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
-|---|---|---|---|---|---|---|
-|AverageMemoryWorkingSet|はい|平均メモリ ワーキング セット|バイト|Average|平均メモリ ワーキング セット|インスタンス|
-|BytesReceived|はい|受信データ|バイト|合計|受信データ|インスタンス|
-|BytesSent|はい|送信データ|バイト|合計|送信データ|インスタンス|
-|CurrentAssemblies|はい|現在のアセンブリ|Count|Average|現在のアセンブリ|インスタンス|
-|FileSystemUsage|はい|ファイル システムの使用量|バイト|Average|ファイル システムの使用量|ディメンションなし|
+|AppConnections|はい|接続|Count|Average|サンドボックス内に存在するバインドされたソケットの数 (w3wp.exe とその子プロセス)。 バインドされたソケットは、bind()/connect() API の呼び出しによって作成され、対象のソケットが CloseHandle()/closesocket() で閉じられるまで残っています。|インスタンス|
+|AverageMemoryWorkingSet|はい|平均メモリ ワーキング セット|バイト|Average|アプリで使用された平均メモリ量 (メガバイト (MiB))。|インスタンス|
+|AverageResponseTime|はい|平均応答時間 (非推奨)|Seconds|Average|アプリが要求に応答するのに要した平均時間 (秒単位)。|インスタンス|
+|BytesReceived|はい|受信データ|バイト|合計|アプリで消費された受信帯域幅の量 (MiB)。|インスタンス|
+|BytesSent|はい|送信データ|バイト|合計|アプリで消費された送信帯域幅の量 (MiB)。|インスタンス|
+|CpuTime|はい|CPU 時間|Seconds|合計|アプリで消費された CPU の量 (秒)。 このメトリックの詳細については、 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (「CPU 時間と CPU の割合」) を参照してください|インスタンス|
+|CurrentAssemblies|はい|現在のアセンブリ|Count|Average|このアプリケーション内のすべての AppDomain で読み込まれたアセンブリの現在の数。|インスタンス|
+|FileSystemUsage|はい|ファイル システムの使用量|バイト|Average|アプリによって使用されたファイル システム クォータの割合。|ディメンションなし|
 |FunctionExecutionCount|はい|関数の実行回数|Count|合計|関数の実行回数|インスタンス|
-|FunctionExecutionUnits|はい|関数の実行単位|Count|合計|[関数の実行単位](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|インスタンス|
-|Gen0Collections|はい|Gen 0 ガベージ コレクション|Count|合計|Gen 0 ガベージ コレクション|インスタンス|
-|Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|Gen 1 ガベージ コレクション|インスタンス|
-|Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|Gen 2 ガベージ コレクション|インスタンス|
+|FunctionExecutionUnits|はい|関数の実行単位|Count|合計|関数の実行単位|インスタンス|
+|Gen0Collections|はい|Gen 0 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 0 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|インスタンス|
+|Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 1 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|インスタンス|
+|Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 2 オブジェクトがガベージ コレクションされた回数。|インスタンス|
+|ハンドル|はい|ハンドルの数|Count|Average|アプリ プロセスによって現在開かれているハンドルの合計数。|インスタンス|
 |HealthCheckStatus|はい|正常性チェックの状態|Count|Average|正常性チェックの状態|インスタンス|
-|Http5xx|はい|HTTP サーバー エラー|Count|合計|HTTP サーバー エラー|インスタンス|
-|IoOtherBytesPerSecond|はい|IO その他のバイト/秒|BytesPerSecond|合計|IO その他のバイト/秒|インスタンス|
-|IoOtherOperationsPerSecond|はい|IO その他の操作/秒|BytesPerSecond|合計|IO その他の操作/秒|インスタンス|
-|IoReadBytesPerSecond|はい|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|
-|IoReadOperationsPerSecond|はい|IO 読み取り操作/秒|BytesPerSecond|合計|IO 読み取り操作/秒|インスタンス|
-|IoWriteBytesPerSecond|はい|IO 書き込みバイト/秒|BytesPerSecond|合計|IO 書き込みバイト/秒|インスタンス|
-|IoWriteOperationsPerSecond|はい|IO 書き込み操作/秒|BytesPerSecond|合計|IO 書き込み操作/秒|インスタンス|
-|MemoryWorkingSet|はい|メモリ ワーキング セット|バイト|Average|メモリ ワーキング セット|インスタンス|
-|PrivateBytes|はい|Private Bytes|バイト|Average|Private Bytes|インスタンス|
-|RequestsInApplicationQueue|はい|アプリケーション キュー内の要求数|Count|Average|アプリケーション キュー内の要求数|インスタンス|
-|TotalAppDomains|はい|アプリ ドメイン合計数|Count|Average|アプリ ドメイン合計数|インスタンス|
-|TotalAppDomainsUnloaded|はい|アンロード済みのアプリ ドメイン合計数|Count|Average|アンロード済みのアプリ ドメイン合計数|インスタンス|
+|Http101|はい|Http 101|Count|合計|HTTP 状態コード 101 が結果として返された要求の数。|インスタンス|
+|Http2xx|はい|HTTP 2xx|Count|合計|200 以上 300 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http3xx|はい|HTTP 3xx|Count|合計|300 以上 400 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http401|はい|HTTP 401|Count|合計|HTTP 401 状態コードが結果として返された要求の数。|インスタンス|
+|Http403|はい|HTTP 403|Count|合計|HTTP 403 状態コードが結果として返された要求の数。|インスタンス|
+|Http404|はい|HTTP 404|Count|合計|HTTP 404 状態コードが結果として返された要求の数。|インスタンス|
+|Http406|はい|HTTP 406|Count|合計|HTTP 406 状態コードが結果として返された要求の数。|インスタンス|
+|Http4xx|はい|HTTP 4xx|Count|合計|400 以上 500 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http5xx|はい|HTTP サーバー エラー|Count|合計|500 以上 600 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|HttpResponseTime|はい|応答時間|Seconds|Average|アプリが要求に応答するのに要した時間 (秒単位)。|インスタンス|
+|IoOtherBytesPerSecond|はい|IO その他のバイト/秒|BytesPerSecond|合計|アプリ プロセスがデータを含まない I/O 操作 (制御操作など) にバイトを発行している速度。|インスタンス|
+|IoOtherOperationsPerSecond|はい|IO その他の操作/秒|BytesPerSecond|合計|アプリ プロセスが読み取りまたは書き込み操作ではない I/O 操作を発行している速度。|インスタンス|
+|IoReadBytesPerSecond|はい|IO 読み取りバイト/秒|BytesPerSecond|合計|アプリ プロセスが I/O 操作からバイトを読み取っている速度。|インスタンス|
+|IoReadOperationsPerSecond|はい|IO 読み取り操作/秒|BytesPerSecond|合計|アプリ プロセスが読み取り I/O 操作を発行している速度。|インスタンス|
+|IoWriteBytesPerSecond|はい|IO 書き込みバイト/秒|BytesPerSecond|合計|アプリ プロセスが I/O 操作にバイトを書き込んでいる速度。|インスタンス|
+|IoWriteOperationsPerSecond|はい|IO 書き込み操作/秒|BytesPerSecond|合計|アプリ プロセスが書き込み I/O 操作を発行している速度。|インスタンス|
+|MemoryWorkingSet|はい|メモリ ワーキング セット|バイト|Average|アプリで使用されている現在のメモリ量 (MiB)。|インスタンス|
+|PrivateBytes|はい|Private Bytes|バイト|Average|プライベート バイトは、アプリ プロセスによって割り当てられた、他のプロセスとは共有できないメモリの現在のサイズ (バイト単位) です。|インスタンス|
+|Requests|はい|Requests|Count|合計|結果として返された HTTP 状態コードを問わない、要求の合計数。|インスタンス|
+|RequestsInApplicationQueue|はい|アプリケーション キュー内の要求数|Count|Average|アプリケーション要求キュー内の要求の数。|インスタンス|
+|Threads|はい|Thread Count|Count|Average|アプリ プロセス内で現在アクティブなスレッドの数。|インスタンス|
+|TotalAppDomains|はい|アプリ ドメイン合計数|Count|Average|現在このアプリケーションに読み込まれている AppDomain の数。|インスタンス|
+|TotalAppDomainsUnloaded|はい|アンロード済みのアプリ ドメイン合計数|Count|Average|アプリケーションの開始以降にアンロードされた AppDomain の合計数。|インスタンス|
+
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|AppConnections|はい|接続|Count|Average|接続|インスタンス|
-|AverageMemoryWorkingSet|はい|平均メモリ ワーキング セット|バイト|Average|平均メモリ ワーキング セット|インスタンス|
-|AverageResponseTime|はい|平均応答時間|Seconds|Average|平均応答時間|インスタンス|
-|BytesReceived|はい|受信データ|バイト|合計|受信データ|インスタンス|
-|BytesSent|はい|送信データ|バイト|合計|送信データ|インスタンス|
-|CpuTime|はい|CPU 時間|Seconds|合計|CPU 時間|インスタンス|
-|CurrentAssemblies|はい|現在のアセンブリ|Count|Average|現在のアセンブリ|インスタンス|
-|FileSystemUsage|はい|ファイル システムの使用量|バイト|Average|ファイル システムの使用量|ディメンションなし|
+|AppConnections|はい|接続|Count|Average|サンドボックス内に存在するバインドされたソケットの数 (w3wp.exe とその子プロセス)。 バインドされたソケットは、bind()/connect() API の呼び出しによって作成され、対象のソケットが CloseHandle()/closesocket() で閉じられるまで残っています。|インスタンス|
+|AverageMemoryWorkingSet|はい|平均メモリ ワーキング セット|バイト|Average|アプリで使用された平均メモリ量 (メガバイト (MiB))。|インスタンス|
+|AverageResponseTime|はい|平均応答時間 (非推奨)|Seconds|Average|アプリが要求に応答するのに要した平均時間 (秒単位)。|インスタンス|
+|BytesReceived|はい|受信データ|バイト|合計|アプリで消費された受信帯域幅の量 (MiB)。|インスタンス|
+|BytesSent|はい|送信データ|バイト|合計|アプリで消費された送信帯域幅の量 (MiB)。|インスタンス|
+|CpuTime|はい|CPU 時間|Seconds|合計|アプリで消費された CPU の量 (秒)。 このメトリックの詳細については、 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (「CPU 時間と CPU の割合」) を参照してください|インスタンス|
+|CurrentAssemblies|はい|現在のアセンブリ|Count|Average|このアプリケーション内のすべての AppDomain で読み込まれたアセンブリの現在の数。|インスタンス|
+|FileSystemUsage|はい|ファイル システムの使用量|バイト|Average|アプリによって使用されたファイル システム クォータの割合。|ディメンションなし|
 |FunctionExecutionCount|はい|関数の実行回数|Count|合計|関数の実行回数|インスタンス|
 |FunctionExecutionUnits|はい|関数の実行単位|Count|合計|関数の実行単位|インスタンス|
-|Gen0Collections|はい|Gen 0 ガベージ コレクション|Count|合計|Gen 0 ガベージ コレクション|インスタンス|
-|Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|Gen 1 ガベージ コレクション|インスタンス|
-|Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|Gen 2 ガベージ コレクション|インスタンス|
-|ハンドル|はい|ハンドルの数|Count|Average|ハンドルの数|インスタンス|
+|Gen0Collections|はい|Gen 0 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 0 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|インスタンス|
+|Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 1 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|インスタンス|
+|Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 2 オブジェクトがガベージ コレクションされた回数。|インスタンス|
+|ハンドル|はい|ハンドルの数|Count|Average|アプリ プロセスによって現在開かれているハンドルの合計数。|インスタンス|
 |HealthCheckStatus|はい|正常性チェックの状態|Count|Average|正常性チェックの状態|インスタンス|
-|Http101|はい|Http 101|Count|合計|Http 101|インスタンス|
-|Http2xx|はい|HTTP 2xx|Count|合計|HTTP 2xx|インスタンス|
-|Http3xx|はい|HTTP 3xx|Count|合計|HTTP 3xx|インスタンス|
-|Http401|はい|HTTP 401|Count|合計|HTTP 401|インスタンス|
-|Http403|はい|HTTP 403|Count|合計|HTTP 403|インスタンス|
-|Http404|はい|HTTP 404|Count|合計|HTTP 404|インスタンス|
-|Http406|はい|HTTP 406|Count|合計|HTTP 406|インスタンス|
-|Http4xx|はい|HTTP 4xx|Count|合計|HTTP 4xx|インスタンス|
-|Http5xx|はい|HTTP サーバー エラー|Count|合計|HTTP サーバー エラー|インスタンス|
-|HttpResponseTime|はい|応答時間|Seconds|Average|応答時間|インスタンス|
-|IoOtherBytesPerSecond|はい|IO その他のバイト/秒|BytesPerSecond|合計|IO その他のバイト/秒|インスタンス|
-|IoOtherOperationsPerSecond|はい|IO その他の操作/秒|BytesPerSecond|合計|IO その他の操作/秒|インスタンス|
-|IoReadBytesPerSecond|はい|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|
-|IoReadOperationsPerSecond|はい|IO 読み取り操作/秒|BytesPerSecond|合計|IO 読み取り操作/秒|インスタンス|
-|IoWriteBytesPerSecond|はい|IO 書き込みバイト/秒|BytesPerSecond|合計|IO 書き込みバイト/秒|インスタンス|
-|IoWriteOperationsPerSecond|はい|IO 書き込み操作/秒|BytesPerSecond|合計|IO 書き込み操作/秒|インスタンス|
-|MemoryWorkingSet|はい|メモリ ワーキング セット|バイト|Average|メモリ ワーキング セット|インスタンス|
-|PrivateBytes|はい|Private Bytes|バイト|Average|Private Bytes|インスタンス|
-|Requests|はい|Requests|Count|合計|Requests|インスタンス|
-|RequestsInApplicationQueue|はい|アプリケーション キュー内の要求数|Count|Average|アプリケーション キュー内の要求数|インスタンス|
-|Threads|はい|Thread Count|Count|Average|Thread Count|インスタンス|
-|TotalAppDomains|はい|アプリ ドメイン合計数|Count|Average|アプリ ドメイン合計数|インスタンス|
-|TotalAppDomainsUnloaded|はい|アンロード済みのアプリ ドメイン合計数|Count|Average|アンロード済みのアプリ ドメイン合計数|インスタンス|
+|Http101|はい|Http 101|Count|合計|HTTP 状態コード 101 が結果として返された要求の数。|インスタンス|
+|Http2xx|はい|HTTP 2xx|Count|合計|200 以上 300 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http3xx|はい|HTTP 3xx|Count|合計|300 以上 400 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http401|はい|HTTP 401|Count|合計|HTTP 401 状態コードが結果として返された要求の数。|インスタンス|
+|Http403|はい|HTTP 403|Count|合計|HTTP 403 状態コードが結果として返された要求の数。|インスタンス|
+|Http404|はい|HTTP 404|Count|合計|HTTP 404 状態コードが結果として返された要求の数。|インスタンス|
+|Http406|はい|HTTP 406|Count|合計|HTTP 406 状態コードが結果として返された要求の数。|インスタンス|
+|Http4xx|はい|HTTP 4xx|Count|合計|400 以上 500 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|Http5xx|はい|HTTP サーバー エラー|Count|合計|500 以上 600 未満の HTTP 状態コードが結果として返された要求の数。|インスタンス|
+|HttpResponseTime|はい|応答時間|Seconds|Average|アプリが要求に応答するのに要した時間 (秒単位)。|インスタンス|
+|IoOtherBytesPerSecond|はい|IO その他のバイト/秒|BytesPerSecond|合計|アプリ プロセスがデータを含まない I/O 操作 (制御操作など) にバイトを発行している速度。|インスタンス|
+|IoOtherOperationsPerSecond|はい|IO その他の操作/秒|BytesPerSecond|合計|アプリ プロセスが読み取りまたは書き込み操作ではない I/O 操作を発行している速度。|インスタンス|
+|IoReadBytesPerSecond|はい|IO 読み取りバイト/秒|BytesPerSecond|合計|アプリ プロセスが I/O 操作からバイトを読み取っている速度。|インスタンス|
+|IoReadOperationsPerSecond|はい|IO 読み取り操作/秒|BytesPerSecond|合計|アプリ プロセスが読み取り I/O 操作を発行している速度。|インスタンス|
+|IoWriteBytesPerSecond|はい|IO 書き込みバイト/秒|BytesPerSecond|合計|アプリ プロセスが I/O 操作にバイトを書き込んでいる速度。|インスタンス|
+|IoWriteOperationsPerSecond|はい|IO 書き込み操作/秒|BytesPerSecond|合計|アプリ プロセスが書き込み I/O 操作を発行している速度。|インスタンス|
+|MemoryWorkingSet|はい|メモリ ワーキング セット|バイト|Average|アプリで使用されている現在のメモリ量 (MiB)。|インスタンス|
+|PrivateBytes|はい|Private Bytes|バイト|Average|プライベート バイトは、アプリ プロセスによって割り当てられた、他のプロセスとは共有できないメモリの現在のサイズ (バイト単位) です。|インスタンス|
+|Requests|はい|Requests|Count|合計|結果として返された HTTP 状態コードを問わない、要求の合計数。|インスタンス|
+|RequestsInApplicationQueue|はい|アプリケーション キュー内の要求数|Count|Average|アプリケーション要求キュー内の要求の数。|インスタンス|
+|Threads|はい|Thread Count|Count|Average|アプリ プロセス内で現在アクティブなスレッドの数。|インスタンス|
+|TotalAppDomains|はい|アプリ ドメイン合計数|Count|Average|現在このアプリケーションに読み込まれている AppDomain の数。|インスタンス|
+|TotalAppDomainsUnloaded|はい|アンロード済みのアプリ ドメイン合計数|Count|Average|アプリケーションの開始以降にアンロードされた AppDomain の合計数。|インスタンス|
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Monitor のメトリックを確認します](data-platform.md)
-* [メトリックでアラートを作成します](alerts-overview.md)
-* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](platform-logs-overview.md)
+
+- [Azure Monitor のメトリックを確認します](data-platform.md)
+- [メトリックでアラートを作成します](alerts-overview.md)
+- [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](platform-logs-overview.md)

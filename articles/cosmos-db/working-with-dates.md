@@ -2,19 +2,21 @@
 title: Azure Cosmos DB で日付を扱う
 description: Azure Cosmos DB で DateTime オブジェクトの保存、インデックスの作成、およびクエリを行う方法について説明します。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019190"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359525"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB は、ネイティブの [JSON](https://www.json.org) データ モデルにより、スキーマの柔軟性と豊富なインデックス機能を提供します。 データベース、コンテナー、ドキュメント、ストアド プロシージャを含むすべての Azure Cosmos DB リソースは、JSON ドキュメントとしてモデル化されて保存されます。 ポータブルであることが求められる JSON (および Azure Cosmos DB) では、少数の基本的な型 (String、Number、Boolean、Array、Object、Null) しかサポートされません。 ただし、JSON は柔軟性が高いため、開発者およびフレームワークは、これらのプリミティブ型を使用したり、オブジェクトまたは配列として作成したりすることにより、複雑な型を表現できます。
 
@@ -66,7 +68,7 @@ DateTime 文字列をフィルターとして使用する範囲クエリは、Da
     }
 ```  
 
-または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 Azure Cosmos DB の内部 Timestamp (`_ts`) プロパティは、この方法を使用しています。 [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) クラスを使用して、DateTime を数値としてシリアル化できます。
+または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 Azure Cosmos DB の内部 Timestamp (`_ts`) プロパティは、この方法を使用しています。 [UnixDateTimeConverter](/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) クラスを使用して、DateTime を数値としてシリアル化できます。
 
 ## <a name="querying-datetimes-in-linq"></a>LINQ での DateTime のクエリ
 
@@ -92,6 +94,6 @@ Azure Cosmos DB の SQL クエリ言語と LINQ プロバイダーについて�
 
 ## <a name="next-steps"></a>次の手順
 
-* [GitHub のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)のダウンロードと実行
+* [GitHub のコード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples)のダウンロードと実行
 * [SQL クエリ](sql-query-getting-started.md)の詳細を確認する
 * [Azure Cosmos DB のインデックス作成ポリシー](index-policy.md)の詳細を確認する

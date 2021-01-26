@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772900"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564108"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure Confidential Computing についてよく寄せられる質問
 
-この記事では、[Azure で Confidential Computing ワークロード](overview.md)を実行することに関して特に多く寄せられる質問への回答を示します。
+この記事では、[Azure 仮想マシンで Confidential Computing ワークロード](overview.md)を実行することに関して特に多く寄せられる質問への回答を示します。
 
 この記事で Azure の問題に対処できない場合は、[MSDN および Stack Overflow の Azure 関連フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 Azure サポート要求を送信することもできます。 サポート要求を送信するには、[[Azure サポート]](https://azure.microsoft.com/support/options/) ページで [サポートを受ける] を選択します。
 
@@ -32,7 +32,7 @@ DCsv2 VM は次のような方法でデプロイできます。
 
 **すべての OS イメージが Azure Confidential Computing と連動しますか?**
 
-いいえ。 仮想マシンをデプロイできるのは、Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter、および Windows Server 2016 Datacenter を搭載した第 2 世代のオペレーティング マシン上だけです。 [Linux](../virtual-machines/linux/generation-2.md) と [Windows](../virtual-machines/windows/generation-2.md) の Gen 2 VM に関する詳細をご覧ください。
+いいえ。 仮想マシンをデプロイできるのは、Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter、および Windows Server 2016 Datacenter を搭載した第 2 世代のオペレーティング マシン上だけです。 [Linux](../virtual-machines/generation-2.md) と [Windows](../virtual-machines/generation-2.md) の Gen 2 VM に関する詳細をご覧ください。
 
 **DCsv2 仮想マシンがポータルで淡色表示され、選択できません**
 
@@ -56,6 +56,10 @@ DC-Series VM は、より古い Intel SGX を搭載した 6 コア Intel プロ�
 **DCsv2 仮想マシンは世界中で利用できますか?**
 
 いいえ。 現時点では、これらの仮想マシンは一部のリージョンでのみ利用できます。 利用できるリージョンの最新情報については、[リージョン別製品ページ](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)をご覧ください。 
+
+**これらのマシンではハイパースレッディングは無効にされますか?**
+
+すべての Azure Confidential Computing クラスターでは、ハイパースレッディングが無効にされます。
 
 **Open Enclave SDK を DCsv2 仮想マシンにインストールするにはどうすればよいですか。**
    

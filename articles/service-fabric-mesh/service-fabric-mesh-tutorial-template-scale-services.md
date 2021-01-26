@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure Service Fabric Mesh で実行されているアプリをスケーリングする
 description: このチュートリアルでは、Service Fabric Mesh で実行されているアプリケーション内でサービスをスケーリングする方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: df28083a0522178b7327d9f6d24029d303e417a1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351815"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747876"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>チュートリアル:Service Fabric Mesh で実行しているアプリケーションをスケーリングする
 
@@ -64,7 +64,7 @@ az mesh service show --resource-group myResourceGroup --name ToDoService --app-n
 
 以前は、アプリケーションは [mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルを利用してデプロイされました。
 
-[mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをローカルで開き、*frontEndReplicaCount* 値を 3 に設定し、*serviceReplicaCount* 値を 2 に設定します。
+[mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをローカルで開き、 *frontEndReplicaCount* 値を 3 に設定し、 *serviceReplicaCount* 値を 2 に設定します。
 
 ```json
       "frontEndReplicaCount":{

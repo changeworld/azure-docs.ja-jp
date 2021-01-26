@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1922ea9afd69366e534049f5a7a350cf39e52dee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760203"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371581"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>ページ上のリンクがアプリケーション プロキシ アプリケーションに対して機能しない
 
@@ -37,7 +37,7 @@ ms.locfileid: "84760203"
     内部 URL は変更するが、ユーザーのランディング ページを変更したくない場合は、ホーム ページ URL を前に発行した内部 URL に変更します。 これを行うには、[Azure Active Directory] -&gt; [アプリの登録] に移動し、アプリケーションを選択し、[ブランド] を選択します。 [ブランド] セクションには、目的のランディング ページになるように調整できるフィールド [ホーム ページ URL] が表示されます。 従来のアプリの登録エクスペリエンスを引き続き使用している場合は、[プロパティ] タブに "ホームページ URL" の詳細が表示されます。 
     
     > [!IMPORTANT]
-    > 上記の変更を行うには、Azure AD でアプリケーション オブジェクトを変更する権限が必要です。ユーザーには[アプリケーション管理者](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles)ロールが割り当てられている必要があります。このロールにより、ユーザーに Azure AD のアプリケーション修正権限が付与されます。
+    > 上記の変更を行うには、Azure AD でアプリケーション オブジェクトを変更する権限が必要です。ユーザーには[アプリケーション管理者](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles)ロールが割り当てられている必要があります。このロールにより、ユーザーに Azure AD のアプリケーション修正権限が付与されます。
     >
 
 2.  アプリケーションで完全修飾ドメイン名 (FQDN) を使用している場合は、[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用してアプリケーションを発行します。 この機能を使用すると、同じ URL を内部と外部の両方に使用できます。

@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554729"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972358"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンのバックアップと復元のオプション
 
@@ -32,7 +32,7 @@ Azure Site Recovery を使えば、大きな自然災害や広範囲にわたる
 
 オンデマンドのテスト フェールオーバーによって、ディザスター リカバリーのテストを、実稼働ワークロードや進行中のレプリケーションに影響を与えずに実行できます。 復旧計画を作成して、複数の VM で実行されているアプリケーション全体のフェールオーバーおよびフェールバックを調整できます。 復旧計画機能は、Azure Automation Runbook と統合されています。
 
-[仮想マシンのレプリケート](https://aka.ms/a2a-getting-started)から始めます。 
+[仮想マシンのレプリケート](../site-recovery/azure-to-azure-quickstart.md)から始めます。 
 
 ## <a name="managed-snapshots"></a>管理されたスナップショット 
 

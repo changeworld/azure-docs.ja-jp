@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 967861363d5056a5a466aa88840cda2aafbeb86b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375100"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188483"
 ---
 C++ デスクトップ開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、Speech SDK のインストールが必要となります。
 
@@ -17,15 +17,15 @@ C++ デスクトップ開発用の Visual Studio プロジェクトを作成す�
 
 最初に、C++ デスクトップ開発向けに Visual Studio を正しく設定します。
 
-1. Visual Studio 2019 を開いて**スタート** ウィンドウを表示します。
+1. Visual Studio 2019 を開いて **スタート** ウィンドウを表示します。
 
-   ![スタート ウィンドウ - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![Visual Studio 2019 の "スタート" ウィンドウを示すスクリーンショット。](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. **[コードなしで続行]** を選択して Visual Studio IDE に移動します。
 
 1. Visual Studio のメニュー バーから、 **[ツール]**  >  **[ツールと機能を取得]** の順に選択して Visual Studio インストーラーを開き、 **[変更中]** ダイアログ ボックスを表示します。
 
-   ![[ワークロード] タブ、[変更中] ダイアログ ボックス、Visual Studio インストーラー](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   !["Visual Studio インストーラー" の "変更中" ダイアログ ボックスの "ワークロード" タブを示すスクリーンショット。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. **[ワークロード]** タブの **[Windows]** で、 **[C++ によるデスクトップ開発]** ワークロードを見つけます。 そのワークロードの横のチェック ボックスがまだオンになっていない場合はオンにしてください。
 
@@ -59,7 +59,7 @@ C++ デスクトップ開発用の Visual Studio プロジェクトを作成す�
 
 最後に、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールし、自分のプロジェクト内の Speech SDK を参照します。
 
-1. **ソリューション エクスプローラー**でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
+1. **ソリューション エクスプローラー** でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
 
 1. **[参照]** を選択します。
 

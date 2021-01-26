@@ -6,6 +6,8 @@
       href: automation-intro.md
     - name: よく寄せられる質問
       href: automation-faq.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   items:
     - name: Automation アカウントを作成する
@@ -27,6 +29,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Python Runbook を作成する
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: Python 3 Runbook を作成する
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: 概念
   items:
     - name: Automation アカウントの認証の概要
@@ -96,6 +100,8 @@
           href: shared-resources/variables.md
         - name: Python 2 パッケージの管理
           href: python-packages.md
+        - name: Python 3 パッケージの管理
+          href: python-3-packages.md
         - name: 共有リソースのトラブルシューティング
           href: troubleshoot/shared-resources.md
     - name: プロセスの自動化
@@ -128,7 +134,7 @@
               href: graphical-runbook-sdk.md
         - name: Runbook を監視する
           items:
-            - name: Runbook 出力を監視する
+            - name: Runbook の出力を構成する
               href: automation-runbook-output-and-messages.md
             - name: グラフィック Runbook でのエラー処理
               href: automation-runbook-graphical-error-handling.md
@@ -193,29 +199,33 @@
         - name: 変更履歴とインベントリ
           items:
             - name: 概要
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: リンクされた Log Analytics ワークスペースでサポートされるリージョン
               href: how-to/region-mappings.md
             - name: 有効化
               items:
-                - name: Azure portal で変更履歴とインベントリを有効にする
-                  href: automation-enable-changes-from-browse.md
-                - name: Azure VM で変更履歴とインベントリを有効にする
-                  href: automation-enable-changes-from-vm.md
-                - name: Automation アカウントで変更履歴とインベントリを有効にする
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: Runbook で変更履歴とインベントリを有効にする
-                  href: automation-enable-changes-from-runbook.md
+                - name: Azure portal から有効にする
+                  href: change-tracking/enable-from-portal.md
+                - name: Azure VM から有効にする
+                  href: change-tracking/enable-from-vm.md
+                - name: Automation アカウントから有効にする
+                  href: change-tracking/enable-from-automation-account.md
+                - name: Runbook から有効にする
+                  href: change-tracking/enable-from-runbook.md
             - name: 変更の追跡とインベントリを管理する
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: VM からのインベントリ収集を管理する
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: スコープ構成を使用する
-              href: automation-scope-configurations-change-tracking.md
-            - name: Automation アカウントからワークスペースのリンクを解除する
-              href: automation-unlink-workspace-change-tracking.md
-            - name: 変更履歴とインベントリから VM を削除する
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: アラートを構成する
+              href: change-tracking/configure-alerts.md
+            - name: Disable
+              items:
+                - name: 変更履歴とインベントリを削除する
+                  href: change-tracking/remove-feature.md
+                - name: 変更履歴とインベントリから VM を削除する
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: トラブルシューティング
               items:
                 - name: 機能のデプロイに関する問題のトラブルシューティング
@@ -239,49 +249,49 @@
     - name: 更新管理
       items:
         - name: 概要
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: リンクされた Log Analytics ワークスペースでサポートされるリージョン
           href: how-to/region-mappings.md
         - name: 有効化
           items:
-            - name: Azure Resource Manager テンプレートを使用して Update Management を有効にする
-              href: update-management/update-mgmt-enable-template.md
-            - name: Azure portal から Update Management を有効にする
-              href: update-management/update-mgmt-enable-portal.md
-            - name: Azure VM から Update Management を有効にする
-              href: update-management/update-mgmt-enable-vm.md
-            - name: Automation アカウントから Update Management を有効にする
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: Runbook から Update Management を有効にする
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: Azure Resource Manager テンプレートの使用を有効にする
+              href: update-management/enable-from-template.md
+            - name: Azure portal から有効にする
+              href: update-management/enable-from-portal.md
+            - name: Azure VM から有効にする
+              href: update-management/enable-from-vm.md
+            - name: Automation アカウントから有効にする
+              href: update-management/enable-from-automation-account.md
+            - name: Runbook から有効にする
+              href: update-management/enable-from-runbook.md
         - name: VM 用の更新プログラムを管理する
           items:
             - name: はじめに
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: コンプライアンスの評価
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: 更新プログラムのデプロイとステータスの確認
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: 事前スクリプトと事後スクリプトの使用
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: アラートを構成する
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: Configuration Manager との統合
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: Windows Update クライアントを構成する
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: 動的グループを使用する
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: Update Management ログにクエリを実行する
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: スコープ構成を使用する
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: Disable
           items:
             - name: Update Management を削除する
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: Update Management から VM を削除する
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: トラブルシューティング
           items:
             - name: 機能のデプロイに関する問題のトラブルシューティング

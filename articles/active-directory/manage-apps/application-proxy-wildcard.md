@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997513"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) が含まれます。
+CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) が含まれます。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -191,5 +191,5 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 ## <a name="next-steps"></a>次のステップ
 
-- **カスタム ドメイン**の詳細については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
-- **アプリケーションの発行**の詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)に関するページを参照してください。
+- **カスタム ドメイン** の詳細については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
+- **アプリケーションの発行** の詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)に関するページを参照してください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 57445d1010e9775e3a1735fd64722c44db8e0a4e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a5bca193a54d63feb927070fe138464581665ac9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546597"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル: Azure Active Directory と TalentLMS の統合
 
@@ -27,7 +27,7 @@ TalentLMS と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に TalentLMS にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ TalentLMS と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* TalentLMS では、**SP** によって開始される SSO がサポートされます
+* TalentLMS では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-talentlms-from-the-gallery"></a>ギャラリーからの TalentLMS の追加
 
@@ -61,13 +61,13 @@ Azure AD への TalentLMS の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TalentLMS**」と入力し、結果パネルで **[TalentLMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **TalentLMS** 」と入力し、結果パネルで **[TalentLMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の TalentLMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TalentLMS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、TalentLMS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと TalentLMS 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 TalentLMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -144,7 +144,7 @@ TalentLMS で Azure AD シングル サインオンを構成するには、次�
 
     b. **[Identity provider (IDP)]\(ID プロバイダー (IDP)\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
-    c. Azure Portal の**拇印**の値を、 **[Certificate fingerprint]\(証明書のフィンガープリント\)** ボックスに貼り付けます。
+    c. Azure Portal の **拇印** の値を、 **[Certificate fingerprint]\(証明書のフィンガープリント\)** ボックスに貼り付けます。
 
     d.  **[Remote sign-in URL]\(リモート サインイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -178,7 +178,7 @@ TalentLMS で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -226,9 +226,9 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
     ![ユーザーの追加](./media/talentlms-tutorial/IC777299.png "ユーザーの追加")  
 
-    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
+    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta** )。
 
-    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
  
     c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (たとえば、`brittasimon\@contoso.com`)。
 
@@ -241,13 +241,12 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [TalentLMS] タイルをクリックすると、SSO を設定した TalentLMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [TalentLMS] タイルをクリックすると、SSO を設定した TalentLMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

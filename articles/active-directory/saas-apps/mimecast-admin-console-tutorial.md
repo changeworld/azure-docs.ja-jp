@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f0274aa15d965a4e06a096c21c0fd282ec1d12a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528473"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>チュートリアル:Mimecast Admin Console と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88528473"
 * ユーザーが自分の Azure AD アカウントを使用して Mimecast Admin Console に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Mimecast Admin Console では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Mimecast Admin Console を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護されます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Mimecast Admin Console では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Mimecast Admin Console を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護されます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>ギャラリーからの Mimecast Admin Console の追加
 
@@ -50,7 +50,7 @@ Azure AD への Mimecast Admin Console の統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Mimecast Admin Console**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Mimecast Admin Console** 」と入力します。
 1. 結果パネルから **Mimecast Admin Console** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-admin-console"></a>Mimecast Admin Console に対して Azure AD シングル サインオンを構成してテストする
@@ -155,23 +155,23 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
 
 1. **[Administration]\(管理\)**  >  **[Services]\(サービス\)**  >  **[Applications]\(アプリケーション\)** に移動します。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/services.png)
+    ![スクリーンショットは、[Applications]\(アプリケーション\) が選択された Mimecast ウィンドウを示しています。](./media/mimecast-admin-console-tutorial/services.png)
 
 1. **[Authentication Profiles]\(認証プロファイル\)** タブをクリックします。
     
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
+    ![スクリーンショットは、[Authentication Profiles]\(認証プロファイル\) が選択された [Applications]\(アプリケーション\) タブを示しています。](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
 1. **[New Authentication Profile]\(新しい認証プロファイル\)** タブをクリックします。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+    ![スクリーンショットでは、[New Authentication Profile]\(新しい認証プロファイル\) が選択されています。](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
 
 1. **[Description]\(説明\)** テキストボックスに有効な説明を入力し、 **[Enforce SAML Authentication for Administration Console]\(Administration Console に SAML 認証を適用\)** チェックボックスをオンにします。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+    ![スクリーンショットは、[Enforce SAML Authentication for Administration Console]\(Administration Console に SAML 認証を適用\) を選択する場所を示しています。](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
 
 1. **[SAML Configuration for Administration Console]\(Administration Console の SAML 構成\)** ページで、次の手順に従います。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/sso-settings.png)
+    ![スクリーンショットは、説明した値を入力できる [SAML Configuration for Administration Console]\(Administration Console の SAML 構成\) ページを示しています。](./media/mimecast-admin-console-tutorial/sso-settings.png)
 
     a. **[Provider]\(プロバイダー\)** で、ドロップダウンから **[Azure Active Directory]\(Azure Active Directory\)** を選択します。
 
@@ -189,23 +189,23 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
 
 1. **[Administration]\(管理\)**  >  **[Directories]\(ディレクトリ\)**  >  **[Internal Directories]\(内部ディレクトリ\)** に移動します。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/internal-directories.png)
+    ![スクリーンショットは、[Internal Directories]\(内部ディレクトリ\) が選択された Mimecast ウィンドウを示しています。](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
 1. お使いのドメインが下に記載されている場合は、そのドメインを選択します。記載されていない場合は、 **[New Domain]\(新しいドメイン\)** をクリックして新しいドメインを作成してください。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/domain-name.png)
+    ![スクリーンショットでは、ドメインが選択されています。](./media/mimecast-admin-console-tutorial/domain-name.png)
 
 1. **[New Address]\(新しいアドレス\)** タブをクリックします。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/new-address.png)
+    ![スクリーンショットでは、[New Address]\(新しいアドレス\) が選択されています。](./media/mimecast-admin-console-tutorial/new-address.png)
 
 1. 次のページで、必要なユーザー情報を入力します。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/user-information.png)
+    ![スクリーンショットは、説明した値を入力できるページを示しています。](./media/mimecast-admin-console-tutorial/user-information.png)
 
     a. **[Email Address]\(メール アドレス\)** テキストボックスに、ユーザーのメール アドレス (`B.Simon@yourdomainname.com` など) を入力します。
 
-    b. **[GLobal Name]\(グローバル名\)** テキストボックスに、ユーザーの**フル ネーム**を入力します。
+    b. **[GLobal Name]\(グローバル名\)** テキストボックスに、ユーザーの **フル ネーム** を入力します。
 
     c. **[Password]\(パスワード\)** および **[Confirm Password]\(パスワードの確認\)** テキストボックスに、ユーザーのパスワードを入力します。
 
@@ -215,24 +215,24 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
 
     f. ユーザーにロールを割り当てるには **[Role Edit]\(ロールの編集\)** をクリックし、組織の要件に従って、必要なロールをユーザーに割り当てます。
 
-    ![Mimecast Admin Console 構成](./media/mimecast-admin-console-tutorial/assign-role.png)
+    ![スクリーンショットは、[Role Edit]\(ロールの編集\) を選択できる [Address Settings]\(アドレス設定\) を示しています。](./media/mimecast-admin-console-tutorial/assign-role.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Mimecast Admin Console のタイルをクリックすると、SSO を設定した Mimecast Admin Console に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで Mimecast Admin Console のタイルをクリックすると、SSO を設定した Mimecast Admin Console に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Mimecast Admin Console を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御を使用して Mimecast Admin Console を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御を使用して Mimecast Admin Console を保護する方法](/cloud-app-security/proxy-intro-aad)

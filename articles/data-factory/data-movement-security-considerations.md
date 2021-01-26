@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019981"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117658"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -32,26 +32,26 @@ Data Factory ソリューションでは、1 つ以上のデータ [パイプラ
 
 Data Factory を利用できるのは少数のリージョンだけですが、データ移動サービスはデータのコンプライアンス、効率性、ネットワーク送信コスト削減のために[グローバルに利用できます](concepts-integration-runtime.md#integration-runtime-location)。 
 
-Azure Data Factory は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
+Azure 統合ランタイムとセルフホステッド統合ランタイムを含む Azure Data Factory では、クラウド データ ストアのリンクされたサービスの資格情報 (証明書を使用して暗号化されます) を除き、どの一時データ、キャッシュ データ、またはログも格納されません。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
 
-Data Factory は、次の認証を取得しています。
+Data Factory は、次の認証を取得しています。 
 
 | **[CSA STAR 認証](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
-| **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
+| **[ISO 22301:2012](/compliance/regulatory/offering-iso-22301)** |
 | **[ISO 27001:2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
 | **[ISO 27017:2015](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)** |
 | **[ISO 27018:2014](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)** |
 | **[ISO 9001:2015](https://www.microsoft.com/trustcenter/compliance/iso-9001)** |
 | **[SOC 1、2、3](https://www.microsoft.com/trustcenter/compliance/soc)** |
-| **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
+| **[HIPAA BAA](/compliance/regulatory/offering-hipaa-hitech)** |
 
-Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。 すべての Azure コンプライアンス認証の最新の一覧については、「 https://aka.ms/AzureCompliance 」を参照してください。
+Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center()](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。 すべての Azure コンプライアンス認証の最新の一覧については、「 https://aka.ms/AzureCompliance 」を参照してください。
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
-- **クラウド シナリオ**:このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+- **クラウド シナリオ**:このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure Synapse Analytics、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などのマネージド クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが含まれます。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 - **ハイブリッド シナリオ**:このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -60,14 +60,14 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
 
-- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/fundamentals/storage-overview.md)」を参照してください。
+- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../storage/blobs/security-recommendations.md)」を参照してください。
 - **Azure Key Vault に資格情報を格納します**。 データ ストアの資格情報は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に格納することもできます。 Data Factory は、アクティビティの実行中に資格情報を取得します。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
 クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。
 
 > [!NOTE]
-> データがデータベースとの間で転送中である間は、Azure SQL Database および Azure SQL Data Warehouse への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で **true** に設定します。 Azure Storage では、接続文字列で **HTTPS** を使用できます。
+> データベースとの間でのデータ転送中は、Azure SQL Database および Azure Synapse Analytics へのすべての接続で暗号化 (SSL/TLS) が必要です。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で **true** に設定します。 Azure Storage では、接続文字列で **HTTPS** を使用できます。
 
 > [!NOTE]
 > Oracle からデータを移動している間、転送中の暗号化を有効にするには、次のいずれかのオプションを実行します。
@@ -80,11 +80,11 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 ### <a name="data-encryption-at-rest"></a>保存データの暗号化
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Azure Synapse Analytics の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、[Azure Synapse Analytics でのデータベース保護](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。
 
 #### <a name="azure-sql-database"></a>Azure SQL データベース
-Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
+Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化を有効にすると、Data Lake Store によってデータの永続化の前の暗号化と取得前の暗号化解除が自動的に行われるので、データにアクセスするクライアントに対してこの動作が透過的になります。 詳細については、「[Azure Data Lake Store のセキュリティ](../data-lake-store/data-lake-store-security-overview.md)」をご覧ください。 
@@ -102,7 +102,7 @@ Amazon Redshift では、保存データのクラスター暗号化をサポー�
 Salesforce では、ファイル、添付ファイル、カスタム フィールドをすべて暗号化できる Shield Platform Encryption をサポートしています。 詳細については、「[Understanding the Web Server OAuth Authentication Flow (Web サーバーの OAuth 認証フローについて)](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)」をご覧ください。  
 
 ## <a name="hybrid-scenarios"></a>ハイブリッド シナリオ
-ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。 
+ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](./create-self-hosted-integration-runtime.md)」を参照してください。 
 
 ![セルフホステッド統合ランタイム チャネル](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
@@ -111,11 +111,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 ### <a name="on-premises-data-store-credentials"></a>オンプレミス データ ストアの資格情報
 資格情報は、Data Factory 内に格納することも、Azure Key Vault から実行時に [Data Factory によって参照](store-credentials-in-key-vault.md)することもできます。 Data Factory 内に資格情報を格納する場合は、常に、セルフホステッド統合ランタイムに暗号化されて格納されます。 
  
-- **資格情報をローカルに保存します**。 JSON にインラインで指定されている接続文字列と資格情報を使用して **Set-AzDataFactoryV2LinkedService** コマンドレットを直接使用すると、リンクされたサービスは暗号化されてセルフホステッド統合ランタイムに格納されます。  この場合、資格情報は、非常に安全な Azure バックエンド サービスを経由してセルフホスティッド統合マシンに送られ、そこで最終的に暗号化されて格納されます。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密データと資格情報を暗号化します。
+- **資格情報をローカルに保存します**。 JSON にインラインで指定されている接続文字列と資格情報を使用して **Set-AzDataFactoryV2LinkedService** コマンドレットを直接使用すると、リンクされたサービスは暗号化されてセルフホステッド統合ランタイムに格納されます。  この場合、資格情報は、非常に安全な Azure バックエンド サービスを経由してセルフホスティッド統合マシンに送られ、そこで最終的に暗号化されて格納されます。 セルフホステッド統合ランタイムは、Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) を使用して機密データと資格情報を暗号化します。
 
 - **Azure Key Vault に資格情報を格納します**。 データ ストアの資格情報は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に格納することもできます。 Data Factory は、アクティビティの実行中に資格情報を取得します。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
 
-- **Azure バックエンドを経由してセルフホステッド統合ランタイムに送らずに、ローカルに資格情報を格納します**。 Data Factory バックエンドを経由して資格情報を送らずに、セルフホステッド統合ランタイムでローカルに資格情報を暗号化して格納する場合は、「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」の手順に従ってください。 このオプションは、すべてのコネクタでサポートされています。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密データと資格情報を暗号化します。 
+- **Azure バックエンドを経由してセルフホステッド統合ランタイムに送らずに、ローカルに資格情報を格納します**。 Data Factory バックエンドを経由して資格情報を送らずに、セルフホステッド統合ランタイムでローカルに資格情報を暗号化して格納する場合は、「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」の手順に従ってください。 このオプションは、すべてのコネクタでサポートされています。 セルフホステッド統合ランタイムは、Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) を使用して機密データと資格情報を暗号化します。 
 
    リンクされたサービスの資格情報およびリンクされたサービスの機密情報の暗号化には、**New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用してください。 それから (接続文字列の **EncryptedCredential** 要素と共に) 返される JSON を使用して、**Set-AzDataFactoryV2LinkedService** コマンドレットを使用してリンクされたサービスを作成できます。  
 
@@ -156,10 +156,10 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
 
 > [!NOTE] 
-> 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。
+> 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、および Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。
 
 > [!NOTE] 
-> Azure Data Factory によるデータ アクセス戦略の詳細については、[こちらの記事](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)を参照してください。
+> Azure Data Factory によるデータ アクセス戦略の詳細については、[こちらの記事](./data-access-strategies.md#data-access-strategies-through-azure-data-factory)を参照してください。
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件    
 企業では、組織の中央ルーターで企業ファイアウォールが実行されています。 セルフホステッド統合ランタイムがインストールされているローカル コンピューターで Windows ファイアウォールがデーモンとして実行されています。 
@@ -169,7 +169,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。   
+> 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、および Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。   
 
 次の表には、Windows ファイアウォールの受信ポートの要件があります。
 
@@ -185,9 +185,9 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 以下のクラウド データ ストアでは、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可する必要があります。 これらのデータ ストアの中には、既定では、許可する必要がないものもあります。 
 
 - [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure Cosmos DB](../cosmos-db/firewall-support.md)
+- [Azure Cosmos DB](../cosmos-db/how-to-configure-firewall.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -198,10 +198,9 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 **セルフホステッド統合ランタイムの動作にはどのようなポートの要件がありますか?**
 
-セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (企業のファイアウォール レベルではない) でのみ受信ポート 8060 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、「[IP アドレスに対するファイアウォールの構成と許可リストの設定](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」セクションを参照してください。 
+セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (企業のファイアウォール レベルではない) でのみ受信ポート 8060 を開きます。 Azure SQL Database または Azure Synapse Analytics をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、「[IP アドレスに対するファイアウォールの構成と許可リストの設定](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」セクションを参照してください。 
 
 
 ## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」を参照してください。
 
- 

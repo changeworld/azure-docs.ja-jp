@@ -3,12 +3,12 @@ title: Azure Monitor でのメトリック - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Monitoring を使用して Azure Event Hubs を監視する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931150"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118797"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
@@ -46,58 +46,8 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 
 すべてのメトリック値が 1 分ごとに Azure Monitor に送信されます。 時間の粒度は、メトリック値が提供される時間間隔を定義します。 すべての Event Hubs メトリックに対してサポートされる時間間隔は 1 分です。
 
-## <a name="request-metrics"></a>要求のメトリック
-
-データおよび管理操作要求の数をカウントします。
-
-| メトリックの名前 | 説明 |
-| ------------------- | ----------------- |
-| 受信要求  | 指定された期間にわたって Azure Event Hubs サービスに対して実行された要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
-| 成功した要求    | 指定された期間にわたって Azure Event Hubs サービスに対して実行された成功した要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
-| サーバー エラー  | 指定された期間にわたって Azure Event Hubs サービスでエラーのために処理されなかった要求の数。 <br/><br/>単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
-|User Errors (ユーザー エラー) |指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|クォータ超過エラー数 |使用可能なクォータを超えた要求の数。 Event Hubs クォータの詳細については、[この記事](event-hubs-quotas.md)を参照してください。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-
-## <a name="throughput-metrics"></a>スループットのメトリック
-
-| メトリックの名前 | 説明 |
-| ------------------- | ----------------- |
-|調整された要求数 |スループット ユニットの使用量を超えたため調整された要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-
-## <a name="message-metrics"></a>メッセージのメトリック
-
-| メトリックの名前 | 説明 |
-| ------------------- | ----------------- |
-|受信メッセージ |指定された期間にわたって Event Hubs に送信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|送信メッセージ |指定された期間にわたって Event Hubs から取得されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|着信バイト数 |指定された期間にわたって Azure Event Hubs サービスに送信されたバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|発信バイト数 |指定された期間にわたって Azure Event Hubs サービスから取得されたバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-
-## <a name="connection-metrics"></a>接続のメトリック
-
-| メトリックの名前 | 説明 |
-| ------------------- | ----------------- |
-|ActiveConnections |名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|開かれている接続数 |開かれている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|切断された接続数 |閉じられている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-
-## <a name="event-hubs-capture-metrics"></a>Event Hubs Capture メトリック
-
-イベント ハブのキャプチャ機能を有効にしている場合は、Event Hubs Capture メトリックを監視できます。 次のメトリックは、キャプチャが有効になっている場合に監視できる内容を示しています。
-
-| メトリックの名前 | 説明 |
-| ------------------- | ----------------- |
-|バックログのキャプチャ |選択された宛先にまだキャプチャされていないバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|キャプチャされたメッセージ数 |指定された期間にわたって選択された宛先にキャプチャされたメッセージまたはイベントの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|キャプチャされたバイト数 |指定された期間にわたって選択された宛先にキャプチャされたバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-
-## <a name="metrics-dimensions"></a>メトリックのディメンション
-
-Azure Event Hubs は、Azure Monitor でのメトリックの次のディメンションをサポートします。 メトリックへのディメンションの追加は省略可能です。 ディメンションを追加しない場合、メトリックは名前空間レベルで指定されます。 
-
-| メトリックの名前 | 説明 |
-| ------------------- | ----------------- |
-|EntityName| Event Hubs は、名前空間の下のイベント ハブ エンティティをサポートします。|
+## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs メトリック
+サービスでサポートされているメトリックの一覧については、[Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)に関するセクションを参照してください
 
 ## <a name="azure-monitor-integration-with-siem-tools"></a>SIEM ツールとの Azure Monitor 統合
 Azure Monitor を使用して監視データ (アクティビティ ログ、診断ログなど) をイベント ハブにルーティングすると、セキュリティ情報イベント管理 (SIEM) ツールと簡単に統合できます。 詳細については、次の記事/ブログ投稿を参照してください。
@@ -108,8 +58,8 @@ Azure Monitor を使用して監視データ (アクティビティ ログ、診
 
 SIEM ツールでイベント ハブからログ データを使用するシナリオでは、受信メッセージが表示されない場合や、受信メッセージは表示されものの、メトリック グラフに送信メッセージが表示されない場合、次の手順を実行してください。
 
-- **受信メッセージがない**場合は、Azure Monitor サービスが監査ログと診断ログをイベント ハブに移動していないことを意味します。 その場合は、Azure Monitor チームとのサポート チケットを開いてください。 
-- 受信メッセージはあるが**送信メッセージがない**場合は、SIEM アプリケーションがメッセージを読み取っていないことを意味します。 SIEM プロバイダーに問い合わせて、それらのアプリケーションのイベント ハブの構成が正しいかどうかを確認してください。
+- **受信メッセージがない** 場合は、Azure Monitor サービスが監査ログと診断ログをイベント ハブに移動していないことを意味します。 その場合は、Azure Monitor チームとのサポート チケットを開いてください。 
+- 受信メッセージはあるが **送信メッセージがない** 場合は、SIEM アプリケーションがメッセージを読み取っていないことを意味します。 SIEM プロバイダーに問い合わせて、それらのアプリケーションのイベント ハブの構成が正しいかどうかを確認してください。
 
 
 ## <a name="next-steps"></a>次のステップ

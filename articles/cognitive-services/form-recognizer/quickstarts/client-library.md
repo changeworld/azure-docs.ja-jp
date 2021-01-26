@@ -1,31 +1,35 @@
 ---
-title: クイック スタート:Form Recognizer クライアント ライブラリ | Microsoft Docs
-description: '[製品名] クライアント ライブラリを使ってみます。'
+title: 'クイックスタート: Form Recognizer クライアント ライブラリまたは REST API'
+titleSuffix: Azure Cognitive Services
+description: Form Recognizer クライアント ライブラリまたは REST API を使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+zone_pivot_groups: programming-languages-set-formre
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: フォーム処理, 自動データ処理
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934356"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132285"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>クイック スタート:Form Recognizer クライアント ライブラリを使用する
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>クイックスタート: Form Recognizer クライアント ライブラリまたは REST API を使用する
 
-Form Recognizer クライアント ライブラリの使用を開始します。 Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する Cognitive Services です。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。
+好みの言語で Form Recognizer の使用を開始しましょう。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 フォーム ドキュメントから、テキスト、キーと値のペア、選択マーク、テーブル データなどを特定して抽出します。このサービスによって、元のファイルにおけるリレーションシップを含む構造化データが出力されます。 Form Recognizer は、REST API または SDK を介して使用できます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
-Form Recognizer クライアント ライブラリを使用して、次のことを行います。
+Form Recognizer の用途:
 
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
+* [Analyze Layout](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
+* [名刺を分析する](#analyze-business-cards)
+* [請求書を分析する](#analyze-invoices)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
@@ -51,5 +55,11 @@ Form Recognizer クライアント ライブラリを使用して、次のこと
 ::: zone pivot="programming-language-python"
 
 [!INCLUDE [Python SDK quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-rest-api"
+
+[!INCLUDE [REST API quickstart](../includes/quickstarts/rest-api.md)]
 
 ::: zone-end

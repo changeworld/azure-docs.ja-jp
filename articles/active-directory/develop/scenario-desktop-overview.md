@@ -12,38 +12,28 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4effdde131f93ccf430029edc4d87e0627010c8b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771861"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443194"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデスクトップ アプリ
 
 Web API を呼び出すデスクトップ アプリを構築するために必要なすべてのことについて説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="get-started"></a>はじめに
 
-最初のアプリケーションをまだ作成していない場合は、.NET デスクトップのクイックスタート、ユニバーサル Windows プラットフォーム (UWP) のクイックスタートまたは macOS ネイティブ アプリのクイックスタートに従って作成してください。
+初めてのアプリケーションをまだ作成していない場合、クイック スタートを完了して作成してください。
 
-> [!div class="nextstepaction"]
-> [クイック スタート: Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [クイック スタート: UWP アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [クイック スタート: macOS ネイティブ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
+- [クイック スタート: Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-windows-desktop.md)
+- [クイック スタート: UWP アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-uwp.md)
+- [クイック スタート: macOS ネイティブ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>概要
 
-デスクトップ アプリケーションを作成して、ユーザーをアプリケーションにサインインさせ、Microsoft Graph、他の Microsoft API、または独自の Web API などの Web API を呼び出します。 次のようにいくつかの可能性があります。
+デスクトップ アプリケーションを作成して、ユーザーをアプリケーションにサインインさせ、Microsoft Graph、他の Microsoft API、または独自の Web API などの Web API を呼び出します。 いくつかのオプションがあります。
 
 - 対話型トークン取得を使用できます。
 
@@ -65,7 +55,10 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
 デスクトップ アプリケーションには、いくつかの特異な点があります。 これらは主に、アプリケーションが対話型認証を使用するかどうかによって異なります。
 
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [デスクトップ アプリ:アプリの登録](scenario-desktop-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-desktop-app-registration.md)」に進みます。

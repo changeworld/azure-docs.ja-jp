@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7195e3c9f2d38c16bd9cad59a2489157c7c1340f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654635"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958967"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上の SAP MaxDB、liveCache、Content Server のデプロイ
 
@@ -338,7 +339,7 @@ SAP MaxDB 向けの Azure Storage のベスト プラクティスについては
 
 要するに、次のことを行う必要があります。
 
-* Azure Storage アカウントを使用する場合は、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」に従って、SAP MaxDB データ ボリュームとログ ボリューム (データ ファイルとログ ファイル) を保持する Azure Storage アカウントを**ローカル冗長ストレージ (LRS)** に設定します。
+* Azure Storage アカウントを使用する場合は、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」に従って、SAP MaxDB データ ボリュームとログ ボリューム (データ ファイルとログ ファイル) を保持する Azure Storage アカウントを **ローカル冗長ストレージ (LRS)** に設定します。
 * ログ ボリューム (データ ファイル) の IO パスと SAP MaxDB データ ボリューム (ログ ファイル) の IO パスを分けます。 つまり、SAP MaxDB データ ボリューム (データ ファイル) を 1 つの論理ドライブにインストールし、SAP MaxDB ログ ボリューム (ログ ファイル) を別の論理ドライブにインストールする必要があります。
 * SAP MaxDB データ用かログ ボリューム (データ ファイルとログ ファイル) 用か、および Azure Standard Storage を使用するか Azure Premium Storage を使用するかに応じて、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」に従って、各ディスクに適切なキャッシュ タイプを設定します。
 * ディスクあたりの現在の IOPS クォータが要件を満たしている限り、マウントされた単一のディスクにすべてのデータ ボリュームを格納し、マウントされた別の単一のディスクにデータベースのすべてのログ ボリュームを格納できます。

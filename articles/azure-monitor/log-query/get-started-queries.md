@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874063"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186713"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
 > [!NOTE]
-> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用してください。  KQL でクエリを実行する方法がわかっていて、リソースの種類に応じて便利なクエリをすぐに作成したい場合は、[保存済みサンプル クエリ ペイン](saved-queries.md)に関するページを参照してください。
+> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用してください。  KQL でクエリを実行する方法がわかっていて、リソースの種類に応じて便利なクエリをすぐに作成したい場合は、[保存済みサンプル クエリ ペイン](./example-queries.md)に関するページを参照してください。
 
 このチュートリアルでは、Azure Monitor でログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87874063"
 - カスタム フィールドの定義と使用
 - 結果の集計とグループ化
 
-Azure portal での Log Analytics の使用に関するチュートリアルについては、[Azure Monitor Log Analytics の使用開始](get-started-portal.md)に関するページを参照してください。<br>
+Azure portal での Log Analytics の使用に関するチュートリアルについては、[Azure Monitor Log Analytics の使用開始](./log-analytics-tutorial.md)に関するページを参照してください。<br>
 Azure Monitor でのログ クエリの詳細については、[Azure Monitor でのログ クエリの概要](log-query-overview.md)に関するページを参照してください。
 
 このチュートリアルのビデオバージョンで学ぶには、以下を参照してください。
@@ -68,20 +68,20 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-このクエリで、*SecurityEvent* テーブルの "Cryptographic" というフレーズが含まれるレコードが検索されます。 このようなレコードの中から、10 個のレコードが返され、表示されます。 `in (SecurityEvent)` の部分を省略して `search "Cryptographic"` を実行すると、*すべての*テーブルに対して検索が実行されます。この処理には時間がかかり、効率が良くありません。
+このクエリで、*SecurityEvent* テーブルの "Cryptographic" というフレーズが含まれるレコードが検索されます。 このようなレコードの中から、10 個のレコードが返され、表示されます。 `in (SecurityEvent)` の部分を省略して `search "Cryptographic"` を実行すると、*すべての* テーブルに対して検索が実行されます。この処理には時間がかかり、効率が良くありません。
 
 > [!WARNING]
 > 検索クエリは通常、処理する必要のあるデータが増えるため、テーブル ベースのクエリより低速です。 
 
 ## <a name="sort-and-top"></a>sort と top
-**take** は少数のレコードを取得する場合に便利ですが、結果は順不同で選択され、表示されます。 順序が設定されたビューを取得するには、優先する列で**並べ替え**ます。
+**take** は少数のレコードを取得する場合に便利ですが、結果は順不同で選択され、表示されます。 順序が設定されたビューを取得するには、優先する列で **並べ替え** ます。
 
 ```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
 
-ただし、返される結果が多すぎる場合や、処理に時間もかかる場合があります。 上記のクエリで、SecurityEvent テーブル*全体*が TimeGenerated 列で並べ替えられます。 Analytics ポータルでは、表示できるレコードの上限は 10,000 個に制限されています。 Analytics ポータルでは、表示が 10,000 レコードに制限されます。
+ただし、返される結果が多すぎる場合や、処理に時間もかかる場合があります。 上記のクエリで、SecurityEvent テーブル *全体* が TimeGenerated 列で並べ替えられます。 Analytics ポータルでは、表示できるレコードの上限は 10,000 個に制限されています。 Analytics ポータルでは、表示が 10,000 レコードに制限されます。
 
 最新の 10 レコードのみを取得するには、**top** を使用する方法が最適です。サーバー側でテーブル全体が並べ替えられてから、上位のレコードが返されます。
 
@@ -171,7 +171,7 @@ SecurityEvent
 また、**project** を使用して列の名前を変更し、新しい列を定義することもできます。 次の例では、project を使用して次の処理を行います。
 
 * 元の列の *Computer* および *TimeGenerated* のみを選択します。
-* *Activity* 列の名前を *EventDetails* に変更します。
+* *Activity* 列を *EventDetails* として表示します。
 * *EventCode* という名前の新しい列を作成します。 **substring ()** 関数は、Activity フィールドの先頭の 4 文字のみを取得するために使用されます。
 
 
@@ -244,7 +244,7 @@ Perf
 
 ## <a name="next-steps"></a>次のステップ
 
-- ログ クエリでの文字列データの使用の詳細について、「[Azure Monitor ログ クエリ内の文字列を操作する](string-operations.md)」で学習します。
-- ログ クエリでのデータの集計の詳細について、「[Azure Monitor ログ クエリの高度な集計](advanced-aggregations.md)」で学習します。
-- 複数のテーブルのデータを結合する方法について、「[Azure Monitor ログ クエリでの結合](joins.md)」で学習します。
+- ログ クエリでの文字列データの使用の詳細について、「[Azure Monitor ログ クエリ内の文字列を操作する](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)」で学習します。
+- ログ クエリでのデータの集計の詳細について、「[Azure Monitor ログ クエリの高度な集計](/azure/data-explorer/write-queries#advanced-aggregations)」で学習します。
+- 複数のテーブルのデータを結合する方法について、「[Azure Monitor ログ クエリでの結合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)」で学習します。
 - Kusto クエリ言語全体のドキュメントについては、[KQL 言語リファレンス](/azure/kusto/query/)を参照してください。

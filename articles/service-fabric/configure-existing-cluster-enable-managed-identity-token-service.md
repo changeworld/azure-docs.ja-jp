@@ -3,20 +3,19 @@ title: 既存の Service Fabric クラスターでマネージド ID のサポ�
 description: 既存の Azure Service Fabric クラスターでマネージド ID のサポートを有効にする方法を次に示します
 ms.topic: article
 ms.date: 03/11/2019
-ms.custom: sfrev
-ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257608"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574702"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>既存の Service Fabric クラスターでマネージド ID のサポートを構成する
 
-Service Fabric アプリケーションで [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用するには、まずクラスターで*マネージド ID トークン サービス*を有効にします。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
+Service Fabric アプリケーションで [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用するには、まずクラスターで *マネージド ID トークン サービス* を有効にします。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 
 > [!NOTE]
-> **マネージド ID トークン サービス**を有効にするには、Service Fabric ランタイム バージョン 6.5.658.9590 以降が必要です。  
+> **マネージド ID トークン サービス** を有効にするには、Service Fabric ランタイム バージョン 6.5.658.9590 以降が必要です。  
 >
 > クラスターの Service Fabric バージョンを調べるには、Azure portal からクラスター リソースを開き、 **[Essentials]\(基本\)** セクションで **[Service Fabric バージョン]** プロパティを確認します。
 >

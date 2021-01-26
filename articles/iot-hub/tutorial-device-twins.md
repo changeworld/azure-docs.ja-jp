@@ -13,13 +13,14 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
-ms.openlocfilehash: f3dad81a5cba9dd817e0d4e75590d374fe059358
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+- devx-track-azurecli
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424105"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572526"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -38,11 +39,9 @@ ms.locfileid: "87424105"
 > * 必要なプロパティを使用して、シミュレートされたデバイスに状態情報を送信する。
 > * 報告されたプロパティを使用して、シミュレートされたデバイスから状態情報を受信する。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
@@ -62,7 +61,7 @@ node --version
 
 このチュートリアルを完了するには、Azure サブスクリプションに、デバイスがデバイス ID レジストリに追加されている IoT ハブが含まれている必要があります。 デバイス ID レジストリにエントリがあることで、このチュートリアルで実行するシミュレートされたデバイスがハブに接続できます。
 
-サブスクリプションで IoT ハブをまだ設定していない場合は、次の CLI スクリプトを使用して IoT ハブを設定できます。 このスクリプトでは、IoT ハブに **tutorial-iot-hub** という名前を使用していますが、実行時にはこの名前を一意の名前に置き換える必要があります。 このスクリプトで、**米国中部**リージョンにリソース グループとハブが作成されますが、より近いリージョンに変更することもできます。 このスクリプトで、IoT ハブ サービス接続文字列が取得されます。この文字列をバックエンド サンプルで使用して IoT ハブに接続します。
+サブスクリプションで IoT ハブをまだ設定していない場合は、次の CLI スクリプトを使用して IoT ハブを設定できます。 このスクリプトでは、IoT ハブに **tutorial-iot-hub** という名前を使用していますが、実行時にはこの名前を一意の名前に置き換える必要があります。 このスクリプトで、**米国中部** リージョンにリソース グループとハブが作成されますが、より近いリージョンに変更することもできます。 このスクリプトで、IoT ハブ サービス接続文字列が取得されます。この文字列をバックエンド サンプルで使用して IoT ハブに接続します。
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -119,7 +118,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="sample-desired-properties"></a>必要なプロパティのサンプル
 
-アプリケーションに適した方法で必要なプロパティを構成することができます。 この例では、**fanOn** という 1 つの最上位プロパティを使用し、その他のプロパティを個別の**コンポーネント**にグループ化します。 次の JSON スニペットは、このチュートリアルで使用する必要なプロパティの構造を示しています。
+アプリケーションに適した方法で必要なプロパティを構成することができます。 この例では、**fanOn** という 1 つの最上位プロパティを使用し、その他のプロパティを個別の **コンポーネント** にグループ化します。 次の JSON スニペットは、このチュートリアルで使用する必要なプロパティの構造を示しています。
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 
@@ -161,7 +160,7 @@ JSON 階層内のさまざまなレベルの更新に反応して必要なプロ
 
 [!code-javascript[Create registry and get twin](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=getregistrytwin&highlight=2,6 "Create registry and get twin")]
 
-次のスニペットは、バックエンド アプリケーションがデバイスに送信するさまざまな必要なプロパティの*パッチ*を示しています。
+次のスニペットは、バックエンド アプリケーションがデバイスに送信するさまざまな必要なプロパティの *パッチ* を示しています。
 
 [!code-javascript[Patches sent to device](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=patches&highlight=2,12,26,41,56 "Patches sent to device")]
 
@@ -191,11 +190,11 @@ node ServiceClient.js "{your service connection string}"
 
 次のスクリーンショットは、シミュレートされたデバイス アプリケーションからの出力を示しています。必要なプロパティ **maxTemperature** の更新を処理する方法が強調表示されています。 最上位のハンドラーと climate コンポーネント ハンドラーの両方がどのように動作するかがわかります。
 
-![シミュレートされたデバイス](./media/tutorial-device-twins/SimulatedDevice1.png)
+![最上位のハンドラーと climate コンポーネント ハンドラーの両方がどのように動作するかを示すスクリーンショット。](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 次のスクリーンショットは、バックエンド アプリケーションからの出力を示しています。必要なプロパティ **maxTemperature** に更新が送信される方法が強調表示されています。
 
-![バックエンド アプリケーション](./media/tutorial-device-twins/BackEnd1.png)
+![バックエンド アプリケーションからの出力を示し、更新が送信される方法が強調表示されているスクリーンショット。](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>状態情報を受信する
 

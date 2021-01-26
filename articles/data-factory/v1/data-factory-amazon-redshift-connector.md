@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710152"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463093"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -101,13 +101,13 @@ ms.locfileid: "84710152"
 
 Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
-**例:Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
+**例:Amazon Redshift から Azure Synapse Analytics へデータをコピーする**
 
-この例では、Amazon Redshift から Azure SQL Data Warehouse にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
+この例では、Amazon Redshift から Azure Synapse Analytics にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
 
-このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが SQL Data Warehouse に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
+このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが Azure Synapse Analytics に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
 
-![Amazon Redshift から SQL Data Warehouse へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Amazon Redshift から Azure Synapse Analytics へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -346,7 +346,7 @@ Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/
 ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 
 ## <a name="repeatable-reads-from-relational-sources"></a>リレーショナル ソースからの反復可能な読み取り
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行する再試行**ポリシー**をデータセットに構成することもできます。 何度スライスが実行されても同じデータが読み取られるようにしてください。 また、どのようにスライスを再実行するかに関係なく同じデータが読み取られるようにしてください。 詳細については、「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行する再試行 **ポリシー** をデータセットに構成することもできます。 何度スライスが実行されても同じデータが読み取られるようにしてください。 また、どのようにスライスを再実行するかに関係なく同じデータが読み取られるようにしてください。 詳細については、「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

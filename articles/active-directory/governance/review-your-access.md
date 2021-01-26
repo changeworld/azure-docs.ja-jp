@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3fef2f85ca7e7b4034c8582477796d49446ea44
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077935"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746781"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -33,7 +33,7 @@ ms.locfileid: "85077935"
 アクセス レビューを実行する最初の手順は、アクセス レビューを見つけて開くことです。
 
 >[!IMPORTANT]
-> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべてのメールを確実に受信するため、azure-noreply@microsoft.com を信頼できる宛先のリストに追加してください。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対する自分のアクセスをレビューするように求めるメールの例を次に示します。
 
@@ -65,13 +65,13 @@ ms.locfileid: "85077935"
 
     他のユーザーのアクセスをレビューするように要求した場合は、ページの外観が異なります。 詳細については、[グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)に関するページを参照してください。
 
-    ![グループへのアクセスが引き続き必要かどうかを確認する、開かれたアクセス レビュー](./media/review-your-access/perform-access-review.png)
+    ![開いているアクセス レビューのスクリーンショット。グループへのアクセスが引き続き必要かどうか確認しています。](./media/review-your-access/perform-access-review.png)
 
 1. **[はい]** をクリックしてアクセスを維持するか、 **[いいえ]** をクリックしてアクセスを削除します。
 
 1. **[はい]** をクリックする場合は、 **[理由]** ボックスに正当性を指定する必要がある場合があります。
 
-    ![グループへのアクセスが引き続き必要かどうかを確認する、完了したアクセス レビュー](./media/review-your-access/perform-access-review-submit.png)
+    ![グループへのアクセスが引き続き必要かどうか確認するアクセス レビューの完了後のスクリーンショット。[はい] が選択されています。](./media/review-your-access/perform-access-review-submit.png)
 
 1. **[送信]** をクリックします。
 
@@ -106,7 +106,7 @@ ms.locfileid: "85077935"
 ### <a name="email"></a>Email
 
 >[!IMPORTANT]
-> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべてのメールを確実に受信するため、azure-noreply@microsoft.com を信頼できる宛先のリストに追加してください。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 電子メール メッセージの例は次のとおりです。
 
@@ -117,7 +117,7 @@ ms.locfileid: "85077935"
 3. 次は「**アクセス レビューを実行する**」のセクションに移ります。
 
 >[!NOTE]
->[レビューの開始] をクリックすると、**マイ アプリ**に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
+>[レビューの開始] をクリックすると、**マイ アプリ** に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
 
 ### <a name="directly-at-my-access"></a>マイ アクセスから直接
 

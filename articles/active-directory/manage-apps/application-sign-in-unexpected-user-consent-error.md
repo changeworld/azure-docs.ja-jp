@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499502"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658487"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
-この記事では、アプリケーションに同意する処理の最中に発生する可能性があるエラーについて説明します。 エラー メッセージが含まれていない、予期しない同意プロンプトをトラブルシューティングをする場合は、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)」を参照してください。
+この記事では、アプリケーションに同意する処理の最中に発生する可能性があるエラーについて説明します。 エラー メッセージが含まれていない、予期しない同意プロンプトをトラブルシューティングをする場合は、「[Azure AD の認証シナリオ](../develop/authentication-vs-authorization.md)」を参照してください。
 
 Azure Active Directory と統合する多くのアプリケーションが機能するためには、他のリソースへのアクセス許可が必要です。 これらのリソースを Azure Active Directory に統合する際にも、共通同意フレームワークを使用してリソースへのアクセス許可がしばしば要求されます。 同意プロンプトが表示されます。これは、通常は、アプリケーションを初めて使用するときに発生しますが、その後のアプリケーションの使用時にも発生する可能性があります。
 
@@ -78,10 +78,18 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 
     -   Azure AD アプリケーション ギャラリーからのアプリケーションの追加
 
+## <a name="risky-app-error-and-warning"></a>危険なアプリのエラーと警告
+* **AADSTS900941:** 管理者アカウントが必要です。 アプリは危険であると考えられます。 (AdminConsentRequiredDueToRiskyApp)
+* このアプリは危険である可能性があります。 このアプリを信頼する場合は、アクセス権を付与するように管理者に依頼してください。
+* **AADSTS900981:** 危険なアプリに対する管理者の同意要求が受信されました。 (AdminConsentRequestRiskyAppWarning)
+* このアプリは危険である可能性があります。 このアプリを信頼している場合のみ続行してください。
+
+これらのメッセージはどちらも、同意要求が危険である可能性があると Microsoft が判断した場合に表示されます。 他の多くの要因の中で、これは、[確認済みの発行元](../develop/publisher-verification-overview.md)がアプリ登録に追加されていない場合に発生する可能性があります。 [管理者の同意ワークフロー](configure-admin-consent-workflow.md)が無効になっている場合は、1 番目のエラー コードとメッセージがエンドユーザーに表示されます。 管理者の同意ワークフローが有効になっている場合は、2 番目のコードとメッセージがエンドユーザーと管理者に表示されます。 
+
+エンドユーザーは、危険であると検出されたアプリに同意を付与することはできません。 管理者はできますが、非常に注意してアプリを評価し、慎重に進める必要があります。 詳細に検討した結果、アプリが疑わしいと思われる場合は、同意画面から Microsoft に報告できます。 
+
 ## <a name="next-steps"></a>次のステップ 
 
-[Azure Active Directory (v1 エンドポイント) のアプリ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Azure Active Directory (v1 エンドポイント) のアプリ、アクセス許可、および同意](../develop/quickstart-register-app.md)<br>
 
-[Azure Active Directory (v2.0 エンドポイント) のスコープ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Azure Active Directory (v2.0 エンドポイント) のスコープ、アクセス許可、および同意](../develop/v2-permissions-and-consent.md)

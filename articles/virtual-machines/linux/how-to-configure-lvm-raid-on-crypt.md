@@ -2,17 +2,18 @@
 title: 暗号化されたデバイスで LVM と RAID を構成する - Azure Disk Encryption
 description: この記事では、Linux VM 用の暗号化されたデバイスで LVM と RAID を構成する手順について説明します。
 author: jofrance
-ms.service: security
+ms.service: virtual-machines
+ms.subservice: security
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: 746243336d74aefc55df48872fe9dd21e9cd99a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 46d2c039806e4e6a72e091458d44e7b21b3dfa70
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268222"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843521"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
 
@@ -367,7 +368,7 @@ mount -a
 lsblk -fs
 df -h
 ```
-![マウントされたファイル システムに関する情報](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![スクリーンショットには、data0 および data1 としてマウントされたファイル システムが表示されているコンソール ウィンドウが示されています。](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
 この **lsblk** のバリエーションでは、依存関係を逆順にしてデバイスを一覧表示しています。 このオプションを使用すると、元の /dev/sd[disk] デバイス名ではなく、論理ボリューム別にグループ化されたデバイスを識別できます。
 
@@ -436,7 +437,7 @@ done
 lsblk -fs
 df -h
 ```
-![マウントされたファイル システムに関する情報](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![スクリーンショットには、raiddata としてマウントされているファイル システムが表示されたコンソール ウィンドウが示されています。](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 Azure Disk Encryption で暗号化されたデバイスの上位に作成された RAID ボリュームのマウント ポイント オプションに、**nofail** オプションが追加されていることを確認することが重要です。 起動プロセス中 (またはメンテナンス モード中) の OS の停止を防ぐことができます。
 
@@ -459,4 +460,5 @@ df -h
 ```
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure Disk Encryption で暗号化された論理ボリューム管理デバイスのサイズを変更する](how-to-resize-encrypted-lvm.md)
 - [Azure Disk Encryption のトラブルシューティング](disk-encryption-troubleshooting.md)

@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:Azure DB for MariaDB を作成する - ARM テンプレート
 description: このクイックスタートの記事では、Azure Resource Manager テンプレートを使用して、Azure Database for MariaDB サーバーを作成する方法について説明します。
-author: mgblythe
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 108233892a89e6f6288e05476e37460a58b52b0e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660548"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537144"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MariaDB サーバーを作成する
 
@@ -72,9 +72,9 @@ Azure portal で Azure Database for MariaDB サーバーのテンプレートを
 
 1. **[リソース グループ]** の **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** を選択します。
 
-2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの**場所**を選択します。
+2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの **場所** を選択します。
 
-3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード**を入力します。
+3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード** を入力します。
 
     ![[Deploy Azure Database for MariaDB with VNet]\(VNet を使用して Azure Database for MariaDB をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 

@@ -1,17 +1,17 @@
 ---
 title: クエリ ストア - Azure Database for MariaDB
 description: Azure Database for MariaDB のクエリ ストア機能について説明します。これは、時間の経過と共にパフォーマンスを追跡するのに役立ちます。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79527811"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541183"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MariaDB のパフォーマンスの監視
 
@@ -36,12 +36,12 @@ Azure Database for MariaDB のクエリ ストア機能を使用すると、ク�
 1. Azure portal にサインインし、ご利用の Azure Database for MariaDB サーバーを選択します。
 1. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 1. query_store_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、**保存**します。
+1. 値を ALL に設定し、**保存** します。
 
 クエリ ストアでの待機統計を有効にするには、次の手順に従います。
 
 1. query_store_wait_sampling_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、**保存**します。
+1. 値を ALL に設定し、**保存** します。
 
 mysql データベース内にデータの最初のバッチが保持されるまで最大 20 分かかります。
 

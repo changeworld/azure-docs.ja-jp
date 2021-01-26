@@ -3,12 +3,12 @@ title: お使いのハイブリッド Kubernetes クラスターの監視を停�
 description: この記事では、Azure Monitor for containers でお使いのハイブリッド Kubernetes クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90986047"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>お使いのハイブリッド クラスターの監視を停止する方法
 
@@ -84,6 +84,25 @@ Kubernetes クラスターの監視を有効にした後に、その監視が必
     .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
     ```
 
+#### <a name="using-service-principal"></a>サービス プリンシパルを使用する
+スクリプト *disable-monitoring.ps1* では、対話型デバイス ログインが使用されます。 非対話型のログインを望む場合、既存のサービス プリンシパルを使用するか、「[前提条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)」の説明にある必須のアクセス許可が与えられたサービス プリンシパルを新規作成できます。 サービス プリンシパルを使用するには、$servicePrincipalClientId、$servicePrincipalClientSecret、$tenantId パラメーターを、enable-monitoring.ps1 スクリプトに使用するサービス プリンシパルの値と共に渡す必要があります。
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+次に例を示します。
+
+```powershell
+\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
+```
+
+
 ### <a name="using-bash"></a>Bash の使用
 
 1. 次のコマンドを使用し、監視アドオンを使用してクラスターを構成するスクリプトをローカル フォルダーにダウンロードし、保存します。
@@ -117,6 +136,24 @@ Kubernetes クラスターの監視を有効にした後に、その監視が必
     ```bash
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
     ```
+
+#### <a name="using-service-principal"></a>サービス プリンシパルを使用する
+Bash スクリプト *disable-monitoring.sh* では、対話型デバイス ログインが使用されます。 非対話型のログインを望む場合、既存のサービス プリンシパルを使用するか、「[前提条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)」の説明にある必須のアクセス許可が与えられたサービス プリンシパルを新規作成できます。 サービス プリンシパルを使用するには、*enable-monitoring.sh* Bash スクリプトに使用するサービス プリンシパルの --client-id、--client-secret、--tenant-id 値を渡す必要があります。
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+次に例を示します。
+
+```bash
+bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036439"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966340"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング
 
@@ -122,7 +122,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
   
   * VM の受信 NAT 規則構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
   * ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうかを確認します。
-  * 詳細については、[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)に関するページを参照してください。
+  * 詳細については、[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)に関するページを参照してください。
 
 仮想マシンまたはエンドポイントが負荷分散セットのメンバーである場合:
 

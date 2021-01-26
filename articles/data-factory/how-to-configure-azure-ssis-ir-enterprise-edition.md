@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 55a49ac13cdfd3f6157ae7495403f76056e734ce
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: be49d56d301c23791777f4d89e8c6c6fd35d7035
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184100"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636308"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 
@@ -38,7 +38,7 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 | Oracle コネクタ | Azure-SSIS IR Enterprise Edition には、Oracle 接続マネージャー、接続元、および接続先がプレインストールされています。 また、Azure-SSIS IR に Oracle Call Interface (OCI) ドライバーをインストールし、必要な場合は Oracle Transport Network Substrate (TNS) を構成する必要があります。 詳細については、「[Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)」(Azure-SSIS 統合ランタイムのカスタム設定) を参照してください。 |
 | Teradata コネクタ | Teradata 接続マネージャー、接続元、接続先、Teradata Parallel Transporter (TPT) API、および Teradata ODBC ドライバーを、Azure-SSIS IR Enterprise Edition にインストールする必要があります。 詳細については、「[Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)」(Azure-SSIS 統合ランタイムのカスタム設定) を参照してください。 |
 | SAP BW コネクタ | Azure-SSIS IR Enterprise Edition には、SAP BW 接続マネージャー、接続元、および接続先がプレインストールされています。 また、SAP BW ドライバーを Azure-SSIS IR にインストールする必要があります。 これらのコネクタは、SAP BW 7.0 以前のバージョンをサポートします。 これより後のバージョンの SAP BW または他の SAP 製品に接続するには、サード パーティの ISV から SAP コネクタを購入して、Azure-SSIS IR にインストールすることができます。 追加コンポーネントのインストール方法については、「[Azure SSIS 統合ランタイムのカスタム セットアップ](how-to-configure-azure-ssis-ir-custom-setup.md)」をご覧ください。 |
-| Analysis Services のコンポーネント               | データ マイニング モデル トレーニング変換先、ディメンション処理変換先、パーティション処理変換先、データ マイニング クエリ変換が、Azure-SSIS IR Enterprise Edition にプレインストールされています。 これらのコンポーネントはすべて SQL Server Analysis Services (SSAS) をサポートしますが、パーティション処理変換先だけは Azure Analysis Services (AAS) をサポートします。 SSAS に接続するには、[SSISDB で Windows 認証資格情報を構成する](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)必要もあります。 これらのコンポーネントに加えて、Azure-SSIS IR Standard/Enterprise Edition には Analysis Services DDL 実行タスク、Analysis Services 処理タスク、およびデータ マイニング クエリ タスクもプレインストールされています。 |
+| Analysis Services のコンポーネント               | データ マイニング モデル トレーニング変換先、ディメンション処理変換先、パーティション処理変換先、データ マイニング クエリ変換が、Azure-SSIS IR Enterprise Edition にプレインストールされています。 これらのコンポーネントはすべて SQL Server Analysis Services (SSAS) をサポートしますが、パーティション処理変換先だけは Azure Analysis Services (AAS) をサポートします。 SSAS に接続するには、[SSISDB で Windows 認証資格情報を構成する](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)必要もあります。 これらのコンポーネントに加えて、Azure-SSIS IR Standard/Enterprise Edition には Analysis Services DDL 実行タスク、Analysis Services 処理タスク、およびデータ マイニング クエリ タスクもプレインストールされています。 |
 | あいまいグループ化変換とあいまい参照変換  | Azure-SSIS IR Enterprise Edition には、あいまいグループ化変換とあいまい参照変換がプレインストールされています。 これらのコンポーネントは、参照データの格納用に SQL Server と Azure SQL Database の両方をサポートします。 |
 | 用語抽出変換と用語参照変換 | Azure-SSIS IR Enterprise Edition には、用語抽出変換と用語参照変換がプレインストールされています。 これらのコンポーネントは、参照データの格納用に SQL Server と Azure SQL Database の両方をサポートします。 |
 
@@ -48,7 +48,7 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 
 1.  [Azure PowerShell](/powershell/azure/install-az-ps)をダウンロードしてインストールします。
 
-2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
+2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、 **Edition** パラメーターの値として **Enterprise** を指定して `Set-AzDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"

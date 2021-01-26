@@ -10,17 +10,18 @@ ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086842"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462225"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード
+
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 
 
@@ -35,8 +36,6 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 
 > [!NOTE]
 > サンプルのパイプラインを作成して Azure BLOB から Azure SQL Database テーブルにデータをコピーする詳細な手順については、[コピー ウィザードのチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。
->
->
 
 このウィザードは最初からビッグ データを考慮して設計されており、さまざまな種類のデータとオブジェクトをサポートしています。 数百個のフォルダー、ファイル、またはテーブルを移動する Data Factory パイプラインを作成できます。 このウィザードは、自動データ プレビュー、スキーマのキャプチャとマッピング、およびデータのフィルター処理に対応しています。
 
@@ -49,8 +48,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 入力データのスキーマは、場合によっては出力データのスキーマと一致しない可能性があります。 このシナリオでは、ソース スキーマの列を宛先スキーマの列にマップする必要があります。
 
 > [!TIP]
-> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory はコピー元のスキーマを使ったテーブルの自動作成をサポートします。 詳しくは、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](./data-factory-azure-sql-data-warehouse-connector.md)」をご覧ください。
->
+> SQL Server または Azure SQL Database から Azure Synapse Analytics にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory ではコピー元のスキーマを使ったテーブルの自動作成がサポートされています。 詳しくは、[Azure Data Factory を使用した Azure Synapse Analytics 間でのデータの移動](./data-factory-azure-sql-data-warehouse-connector.md)に関する記事をご覧ください。
 
 ドロップダウン リストを使用して、宛先スキーマの列にマップするソース スキーマの列を選択します。 コピー ウィザードは、列のマッピングに関するユーザーのパターンを理解しようとします。 ユーザーがそれぞれの列を個別に選択しなくてもスキーマのマッピングが完了するように、同じパターンを残りの列にも適用します。 適用されたマッピングは、ドロップダウン リストを使用して 1 列ずつマップすることにより、必要に応じてオーバーライドできます。 マップする列が増えるにつれ、パターンはさらに正確になります。 このパターンはコピー ウィザードによって常に更新され、最終的にはユーザーが望む正しい列マッピングのパターンになります。     
 
@@ -80,7 +78,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 
 ![システム変数の使用](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-次のスクリーンショットに示すように、 **custom** 変数と、任意の [サポートされる書式文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)を使用することもできます。 その構造のフォルダーを選択するには、まず **[参照]** をクリックします。 次に、値を **{custom}** に置き換え、**Tab** キーを押して、書式文字列を入力できるテキスト ボックスを表示します。     
+次のスクリーンショットに示すように、 **custom** 変数と、任意の [サポートされる書式文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用することもできます。 その構造のフォルダーを選択するには、まず **[参照]** をクリックします。 次に、値を **{custom}** に置き換え、**Tab** キーを押して、書式文字列を入力できるテキスト ボックスを表示します。     
 
 ![カスタム変数の使用](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -90,6 +88,49 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 1 回限りのコピー操作では、ソースからコピー先に 1 回だけデータを移動できます。 これは、サポートされている形式のあらゆるサイズのデータに適用されます。 スケジュールされたコピーでは、指定した繰り返しでデータをコピーできます。 豊富な設定 (再試行、タイムアウト、アラートなど) を使用して、スケジュールされたコピーを構成できます。
 
 ![スケジュール プロパティ](./media/data-factory-copy-wizard/scheduling-properties.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+このセクションでは、Azure Data Factory のコピー ウィザードの一般的なトラブルシューティング方法について説明します。
+
+> [!NOTE] 
+> これらのトラブルシューティングのヒントは、Data Factory のバージョン 1 のコピー ウィザードに適用されます。 Data Factory v2 については、トラブルシューティング ガイドの [Azure Data Factory のトラブルシューティング](../data-factory-ux-troubleshoot-guide.md)に関する記事を参照してください。
+
+### <a name="error-code-unable-to-validate-in-copy-wizard"></a>エラー コード:コピー ウィザードの "Unable to validate" (検証できません)
+
+- **現象**:コピー ウィザードの最初のステップで、"Unable to Validate" (検証できません) という警告メッセージが表示されます。
+- **原因**:これは、すべてのサード パーティの cookie が無効にされている場合に発生する可能性があります。
+- **解決方法**: 
+    - Internet Explorer または Microsoft Edge ブラウザーを使用してください。
+    - Chrome ブラウザーを使用している場合は、次の手順に従って *microsoftonline.com* と *windows.net* を Cookie の例外として追加します。
+        1.  Chrome ブラウザーを開きます。
+        2.  右側にあるレンチまたは 3 本の線をクリックします (Google Chrome をカスタマイズおよび制御します)。
+        3.  **[設定]** をクリックします。
+        4.  **Cookie** を検索するか、[Advanced Settings] の **[Privacy]** にアクセスします。
+        5.  **[Content Settings]** を選択します。    
+        6.  Cookie には、 **[allow local data to be set (recommended)]** を設定する必要があります。
+        7.  **[Manage exceptions]** をクリックします。 **[hostname pattern]** に次の文字列を入力し、 **[Allow]** が動作セットであることを確認します。
+            - login.microsoftonline.com
+            - login.windows.net
+        8.  ブラウザーを閉じて再起動します。
+    - Firefox ブラウザーを使用している場合は、次の手順に従って Cookie の例外を追加してください。
+        1. Firefox メニューから、 **[Tools]**  >  **[Options]** にアクセスします。
+        2. **[Privacy]**  >  **[History]** で、現在の設定が **[Use Custom settings for history]** になっている可能性があります。
+        3. **[Accept third-party cookie]** で、現在の設定が **[Never]** である場合があります。その場合は、右側にある **[Exceptions]** をクリックして、次のサイトを追加します。
+            - https://login.microsoftonline.com
+            - https://login.windows.net
+        4.  ブラウザーを閉じて再起動します。 
+
+
+### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>エラー コード:Unable to open login page and enter password (ログイン ページを開けず、パスワードを入力できません)
+
+- **現象**:コピー ウィザードによってログイン ページにリダイレクトされますが、ログイン ページが正常に表示されません。
+- **原因**:この問題は、ネットワーク環境をオフィス ネットワークからホーム ネットワークに変更した場合に発生する可能性があります。 ブラウザーにはキャッシュがあります。 
+- **解決方法**: 
+    1.  ブラウザーを閉じて、もう一度やり直してください。 問題がまだ発生する場合は、次の手順に進みます。   
+    2.  Internet Explorer ブラウザーを使用している場合は、プライベート モードで開いてみてください (Ctrl + Shift + P キーを押します)。 Chrome ブラウザーを使用している場合は、シークレット モードで開いてみてください (Ctrl + Shift + N キーを押します)。 問題がまだ発生する場合は、次の手順に進みます。 
+    3.  別のブラウザーを使用してみてください。 
+
 
 ## <a name="next-steps"></a>次のステップ
 Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、 [コピー ウィザードを使用してパイプラインを作成する方法に関するチュートリアル](data-factory-copy-data-wizard-tutorial.md)をご覧ください。

@@ -3,16 +3,16 @@ title: Azure Application Insights からのアラートの送信 | Microsoft Doc
 description: Azure Application Insights を使用して、アプリケーションのエラーに応じてアラートを送信するためのチュートリアルです。
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 706f3913e25eca6240c186e45709faf6c77620bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dbf2cbe08fa1ba1ab79446e9068b4fb1fce381b0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324575"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210258"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 
@@ -28,7 +28,7 @@ Azure Application Insights を使用すると、ご利用のアプリケーシ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-[Application Insights のリソース](./dotnetcore-quick-start.md#enable-application-insights)を作成します。
+[Application Insights のリソース](../app/create-new-resource.md)を作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

@@ -1,14 +1,14 @@
 ---
 title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 07/10/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488356"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530983"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -18,7 +18,7 @@ ms.locfileid: "89488356"
 
 | サンプル | 説明 |
 |---------|---------|
-| [Australian Government ISM PROTECTED](./ism-protected/control-mapping.md) | Australian Government ISM PROTECTED に準拠するための規定を提供します。 |
+| [Australian Government ISM PROTECTED](./ism-protected/index.md) | Australian Government ISM PROTECTED に準拠するための規定を提供します。 |
 | [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md) | [Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に準拠するための規定を提供します。 |
 | [カナダ連邦の PBMM](./canada-federal-pbmm/index.md) | カナダ連邦の Protected B、Medium Integrity、Medium Availability (PBMM) に準拠するための規定を提供します。 |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| CIS Microsoft Azure Foundations Benchmark の推奨事項に準拠する際に役立つ一連のポリシーを提供します。 |
@@ -42,7 +42,8 @@ ms.locfileid: "89488356"
 
 ## <a name="samples-strategy"></a>サンプルの戦略
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="ブループリント サンプルの戦略" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="アーキテクチャの複雑さとコンプライアンス要件の中でブループリント サンプルが適合する場所を示す図。" border="false":::
+   アーキテクチャの複雑さが X 軸に、コンプライアンスの要件が Y 軸にある座標系について説明しています。  アーキテクチャの複雑さとコンプライアンス要件が増すにつれて、リージョン E に指定されたポータルから標準のブループリント サンプルを採用します。Azure の使用を開始するお客様の場合、リージョン A と B によって指定されたクラウド導入フレームワーク (C A F) ベースの基盤とランディング ゾーンのブループリントを活用します。残りの領域は、顧客によって作成されたカスタム ブループリントが元になっており、リージョン C、D、および F のパートナー向けです。:::image-end:::
 
 CAF 基盤および CAF 移行ランディング ゾーンのブループリントは、オンプレミスの資産とワークロードを Azure に移行するために既存のクリーンな単一サブスクリプションが顧客側で準備されていることを前提としています
 (図の領域 A および B)。  

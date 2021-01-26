@@ -1,6 +1,6 @@
 ---
 title: 共有メタデータ テーブル
-description: Azure Synapse Analytics には共有メタデータ モデルが用意されていて、Apache Spark でテーブルを作成することにより、データを複製しなくても、SQL オンデマンド (プレビュー) と SQL プール エンジンからそのテーブルにアクセスできるようになります。
+description: Azure Synapse Analytics には共有メタデータ モデルが用意されていて、サーバーレス Apache Spark プールでテーブルを作成することにより、データを複製しなくても、サーバーレス SQL プールと専用 SQL プールからそのテーブルにアクセスできるようになります。
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,29 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018741"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461379"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Apache Spark プール (プレビュー) と SQL オンデマンド (プレビュー) エンジンの間でデータベースと Parquet でサポートされたテーブルを共有できます。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Apache Spark プールとサーバーレス SQL プールの間でデータベースと Parquet でサポートされたテーブルを共有できます。
 
 Spark ジョブによってデータベースが作成されると、Spark を使用してその内部にテーブルを作成できます (ストレージ形式として Parquet を使用)。 これらのテーブルではすぐに、任意の Azure Synapse ワークスペース Spark プールによってクエリを実行できるようになります。 これらは、アクセス許可の対象となる任意の Spark ジョブから使用することもできます。
 
-Spark で作成、管理される外部テーブルは、SQL オンデマンドの対応する同期済みデータベースと同じ名前の外部テーブルとして使用することもできます。 テーブルの同期については、「[SQL での Spark テーブルの公開](#expose-a-spark-table-in-sql)」で詳しく説明します。
+Spark で作成、管理される外部テーブルは、サーバーレス SQL プールの対応する同期済みデータベースと同じ名前の外部テーブルとして使用することもできます。 テーブルの同期については、「[SQL での Spark テーブルの公開](#expose-a-spark-table-in-sql)」で詳しく説明します。
 
-テーブルは SQL オンデマンドに非同期的に同期されるため、表示されるまでに遅延が発生します。
+テーブルはサーバーレス SQL プールに非同期的に同期されるため、表示されるまでに遅延が発生します。
 
 ## <a name="manage-a-spark-created-table"></a>Spark で作成されたテーブルの管理
 
-Spark を使用して、Spark で作成されたデータベースを管理します。 たとえば、Spark プール ジョブを使用してそれを削除したり、Spark からその内部にテーブルを作成したりします。
+Spark を使用して、Spark で作成されたデータベースを管理します。 たとえば、サーバーレス Apache Spark プール ジョブを使用してそれを削除したり、Spark からその内部にテーブルを作成したりします。
 
-SQL オンデマンドでそのようなデータベースにオブジェクトを作成したり、データベースの削除を試みたりすると、操作は成功しますが、元の Spark データベースは変更されません。
+サーバーレス SQL プールでそのようなデータベースにオブジェクトを作成したり、データベースの削除を試みたりすると、操作は成功しますが、元の Spark データベースは変更されません。
 
 ## <a name="expose-a-spark-table-in-sql"></a>SQL での Spark テーブルの公開
 
@@ -49,7 +48,7 @@ Spark には、Azure Synapse によって自動的に SQL で公開されるテ�
 
   Spark では、`LOCATION` オプションを指定するか、Hive 形式を使用することにより、既存のデータに対して外部テーブルを作成することもできます。 このような外部テーブルは、Parquet などのさまざまなデータ形式にできます。
 
-Azure Synapse では現在、SQL エンジンを使用して Parquet 形式でデータを格納する、「マネージドおよび外部 Spark テーブル」のみが共有されます。 他の形式に基づくテーブルは自動的に同期されません。 SQL エンジンがテーブルの基になる形式をサポートしている場合は、自分の SQL データベースの外部テーブルとして、このようなテーブルを明示的に同期することができます。
+Azure Synapse では現在、SQL エンジンを使用して Parquet 形式でデータを格納するマネージドおよび外部 Spark テーブルのみが共有されます。 他の形式に基づくテーブルは自動的に同期されません。 SQL エンジンがテーブルの基になる形式をサポートしている場合は、自分の SQL データベースの外部テーブルとして、このようなテーブルを明示的に同期することができます。
 
 ### <a name="share-spark-tables"></a>Spark テーブルを共有する
 
@@ -74,12 +73,12 @@ Spark テーブルのデータ型は、Synapse SQL エンジンのものとは�
 | `decimal`      | `decimal`        |<!-- need precision and scale-->|
 | `timestamp` |    `datetime2`      |<!-- need precision and scale-->|
 | `date`      | `date`           ||
-| `string`    |    `varchar(max)`   | 照合順序 `Latin1_General_CP1_CI_AS_UTF8` を使用 |
+| `string`    |    `varchar(max)`   | 照合順序 `Latin1_General_100_BIN2_UTF8` を使用 |
 | `binary`    |    `varbinary(max)` ||
 | `boolean`   |    `bit`            ||
-| `array`     |    `varchar(max)`   | 照合順序 `Latin1_General_CP1_CI_AS_UTF8` を使用して JSON にシリアル化 |
-| `map`       |    `varchar(max)`   | 照合順序 `Latin1_General_CP1_CI_AS_UTF8` を使用して JSON にシリアル化 |
-| `struct`    |    `varchar(max)`   | 照合順序 `Latin1_General_CP1_CI_AS_UTF8` を使用して JSON にシリアル化 |
+| `array`     |    `varchar(max)`   | 照合順序 `Latin1_General_100_BIN2_UTF8` を使用して JSON にシリアル化 |
+| `map`       |    `varchar(max)`   | 照合順序 `Latin1_General_100_BIN2_UTF8` を使用して JSON にシリアル化 |
+| `struct`    |    `varchar(max)`   | 照合順序 `Latin1_General_100_BIN2_UTF8` を使用して JSON にシリアル化 |
 
 <!-- TODO: Add precision and scale to the types mentioned above -->
 
@@ -95,9 +94,9 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
 
 ## <a name="examples"></a>例
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark で Parquet がベースのマネージド テーブルを作成し、SQL オンデマンドでクエリを実行する
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Spark で Parquet がベースのマネージド テーブルを作成し、サーバーレス SQL プールでクエリを実行する
 
-このシナリオでは、`mytestdb` という名前の Spark データベースを用意します。 「[SQL オンデマンドを使用して Spark データベースを作成して接続する](database.md#create-and-connect-to-spark-database-with-sql-on-demand)」を参照してください。
+このシナリオでは、`mytestdb` という名前の Spark データベースを用意します。 「[サーバーレス SQL プールを使用して Spark データベースを作成して接続する](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool)」を参照してください。
 
 次のコマンドを実行し、SparkSQL を使用してマネージド Spark テーブルを作成します。
 
@@ -105,7 +104,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-これにより、データベース `mytestdb` にテーブル `myParquetTable` が作成されます。 少し時間が経過すると、SQL オンデマンドでテーブルを確認できるようになります。 たとえば、SQL オンデマンドで次のステートメントを実行します。
+このコマンドにより、データベース `mytestdb` にテーブル `myParquetTable` が作成されます。 少し時間が経過すると、サーバーレス SQL プールでテーブルを確認できるようになります。 たとえば、サーバーレス SQL プールから次のステートメントを実行します。
 
 ```sql
     USE mytestdb;
@@ -140,7 +139,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-これで、次のように SQL オンデマンドでデータを読み取ることができます。
+これで、次のようにサーバーレス SQL プールからデータを読み取ることができます。
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark で Parquet がベースの外部テーブルを作成し、SQL オンデマンドでクエリを実行する
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Spark で Parquet がベースの外部テーブルを作成し、サーバーレス SQL プールでクエリを実行する
 
 この例では、前の例でマネージド テーブル用に作成した Parquet データ ファイルに対して外部 Spark テーブルを作成します。
 
@@ -168,7 +167,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 プレースホルダー `<fs>` は、ワークスペースの既定のファイル システムであるファイル システム名に、プレースホルダー `<synapse_ws>` は、この例を実行するために使用している Synapse ワークスペースの名前に置き換えてください。
 
-前の例では、`mytestdb` データベースに `myExtneralParquetTable` テーブルが作成されます。 少し時間が経過すると、SQL オンデマンドでテーブルを確認できるようになります。 たとえば、SQL オンデマンドで次のステートメントを実行します。
+前の例では、`mytestdb` データベースに `myExtneralParquetTable` テーブルが作成されます。 少し時間が経過すると、サーバーレス SQL プールでテーブルを確認できるようになります。 たとえば、サーバーレス SQL プールから次のステートメントを実行します。
 
 ```sql
 USE mytestdb;
@@ -177,7 +176,7 @@ SELECT * FROM sys.tables;
 
 結果に `myExternalParquetTable` が含まれていることを確認します。
 
-これで、次のように SQL オンデマンドでデータを読み取ることができます。
+これで、次のようにサーバーレス SQL プールからデータを読み取ることができます。
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

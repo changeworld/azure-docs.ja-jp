@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011025"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -77,7 +77,7 @@ ms.locfileid: "87092747"
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>私のクラウド サービスの TLS または SSL 証明書の証明書チェーンが不完全なのはなぜですか。
     
-Microsoft では、リーフ証明書だけではなく、完全な証明書チェーン (リーフ証明書、中間証明書、およびルート証明書) をインストールすることをお客様にお勧めしています。 お客様がリーフ証明書だけをインストールした場合、CTL を探索して証明書チェーンを構築することについては Windows の処理に頼ることになります。 Windows が証明書を検証しようとしたときに、Azure または Windows Update で断続的なネットワークの問題や DNS の問題が発生すると、証明書が無効と見なされる可能性があります。 完全な証明書チェーンをインストールすると、この問題を回避できます。 これを行う方法については、ブログ記事「[How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) (チェーンされた SSL 証明書をインストールする方法)」をご覧ください。
+Microsoft では、リーフ証明書だけではなく、完全な証明書チェーン (リーフ証明書、中間証明書、およびルート証明書) をインストールすることをお客様にお勧めしています。 お客様がリーフ証明書だけをインストールした場合、CTL を探索して証明書チェーンを構築することについては Windows の処理に頼ることになります。 Windows が証明書を検証しようとしたときに、Azure または Windows Update で断続的なネットワークの問題や DNS の問題が発生すると、証明書が無効と見なされる可能性があります。 完全な証明書チェーンをインストールすると、この問題を回避できます。 これを行う方法については、ブログ記事「[How to install a chained SSL certificate](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate) (チェーンされた SSL 証明書をインストールする方法)」をご覧ください。
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>"Windows Azure Tools Encryption Certificate for Extensions" の目的は何ですか。
 
@@ -111,11 +111,11 @@ Get-AzurePublishSettingsFile
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。
 
-この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、[こちらのアドバイザリ](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)をご覧ください。
+この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、[こちらのアドバイザリ](/security-updates/securityadvisories/2018/4092731)をご覧ください。
 
 詳細については、次の記事を参照してください。
-- [クラウド サービスのスタートアップ タスクを構成して実行する方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [クラウド サービス共通のスタートアップ タスク](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [クラウド サービスのスタートアップ タスクを構成して実行する方法](./cloud-services-startup-tasks.md)
+- [クラウド サービス共通のスタートアップ タスク](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -139,16 +139,16 @@ csdef および cscfg のアップロード先に blob またはローカルを�
 * ローカル リソースのクォータ制限を大きくする。
 
 詳細については、以下のドキュメントをご覧ください。
-* [Azure Storage への診断データの保存と表示](/azure/storage/common/storage-introduction)
-* [IIS Logs stop writing in Cloud Service](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/) (IIS ログがクラウド サービスで書き込みを停止する)
+* [Azure Storage への診断データの保存と表示](../storage/common/storage-introduction.md)
+* [IIS Logs stop writing in Cloud Service](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service) (IIS ログがクラウド サービスで書き込みを停止する)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Cloud Services の WAD ログ記録を有効にする方法を教えてください。
 Windows Azure Diagnostics (WAD) ログ記録は、次のオプションを使用して有効にできます。
-1. [Visual Studio から有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [.NET コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [PowerShell を使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [Visual Studio から有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [.NET コードを使用して有効にする](./cloud-services-dotnet-diagnostics.md)
+3. [PowerShell を使用して有効にする](./cloud-services-diagnostics-powershell.md)
 
-クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
+クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
 
 
 ## <a name="network-configuration"></a>ネットワーク構成
@@ -217,7 +217,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 ## <a name="permissions"></a>アクセス許可
 
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Cloud Services のロールベースのアクセスを実装するにはどうすればよいですか。
-Cloud Services は、Azure Resource Manager ベースのサービスではないため、ロールベースのアクセス制御 (RBAC) モデルをサポートしていません。
+Cloud Services は、Azure Resource Manager ベースのサービスではないため、Azure ロールベースのアクセス制御 (Azure RBAC) モデルをサポートしていません。
 
 「[Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
@@ -248,7 +248,7 @@ Application Insights でカスタム メトリックを利用してクラウド 
 
 クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
 
-Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)」をご覧ください
+Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md)」をご覧ください
 
 Cloud Services 用に Azure Diagnostics ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
 
@@ -313,7 +313,7 @@ SNI バインドは、以下のようにクラウド サービス ロール イ�
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-[こちら](https://technet.microsoft.com/library/ee790567.aspx)の説明のように、$sslFlags には次の値のいずれかを使用できます。
+[こちら](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10))の説明のように、$sslFlags には次の値のいずれかを使用できます。
 
 |値|意味|
 ------|------
@@ -324,7 +324,7 @@ New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddr
  
 **方法 2: コードを使用する**
 
-SNI バインドは、こちらの[ブログ投稿](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)のように、ロール スタートアップでコードを使用して構成することもできます。
+SNI バインドは、こちらの[ブログ投稿](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service)のように、ロール スタートアップでコードを使用して構成することもできます。
 
 ```csharp
 //<code snip> 
@@ -356,7 +356,6 @@ Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Whe
 
 サービスの IP アドレスを失うことがなく請求額を減らすには次のような方法があります。
 
-1. デプロイを削除する前に、[IP アドレスを予約](../virtual-network/virtual-networks-reserved-public-ip.md)します。  この IP アドレスに対してのみ課金されます。 IP アドレスの課金について詳しくは、「[IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
+1. デプロイを削除する前に、[IP アドレスを予約](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)します。  この IP アドレスに対してのみ課金されます。 IP アドレスの課金について詳しくは、「[IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
 2. デプロイを削除します。 後で使えるように、xxx.cloudapp.net は削除しないでください。
 3. サブスクリプションで予約したものと同じ予約 IP を使ってクラウド サービスを再デプロイする場合、「[Reserved IP addresses for Cloud Services and Virtual Machines](https://azure.microsoft.com/blog/reserved-ip-addresses/)」(クラウド サービスおよび仮想マシンに対する予約済み IP アドレス) をご覧ください。
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 170997099f1194bbc75d6d61a7c29fc1d18b462a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c15b693ecbcb4557fb5ec9ceca8436316f33747
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552219"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Qualtrics の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552219"
 * ユーザーが自分の Azure AD アカウントを使用して SAP Qualtrics に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関する記事を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ ms.locfileid: "88552219"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SAP Qualtrics では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
-* SAP Qualtrics では、**Just In Time** ユーザー プロビジョニングがサポートされます。
-* SAP Qualtrics を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
+* SAP Qualtrics では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
+* SAP Qualtrics では、 **Just In Time** ユーザー プロビジョニングがサポートされます。
+* SAP Qualtrics を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
 
 ## <a name="add-sap-qualtrics-from-the-gallery"></a>ギャラリーからの SAP Qualtrics の追加
 
@@ -51,7 +51,7 @@ Azure AD への SAP Qualtrics の統合を構成するには、ギャラリー�
 1. 左側のペインで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP Qualtrics**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SAP Qualtrics** 」と入力します。
 1. 結果から **[SAP Qualtrics]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>SAP Qualtrics の Azure AD シングル サインオンの構成とテスト
@@ -136,7 +136,7 @@ SAP Qualtrics で Azure AD SSO を構成してテストするには、次の構�
 
 ## <a name="configure-sap-qualtrics-sso"></a>SAP Qualtrics の SSO の構成
 
-SAP Qualtrics 側でシングル サインオンを構成するには、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** を [SAP Qualtrics サポート チーム](https://www.qualtrics.com/support/)に送信します。 サポート チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
+SAP Qualtrics 側でシングル サインオンを構成するには、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** を [SAP Qualtrics サポート チーム](https://www.qualtrics.com/support/)に送信します。 サポート チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
 
 ### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics のテスト ユーザーの作成
 
@@ -146,19 +146,18 @@ SAP Qualtrics では、Just-In-Time ユーザー プロビジョニングがサ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SAP Qualtrics] タイルをクリックすると、SSO を設定した SAP Qualtrics に自動的にサインインします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [SAP Qualtrics] タイルをクリックすると、SSO を設定した SAP Qualtrics に自動的にサインインします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で SAP Qualtrics を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって SAP Qualtrics を保護する](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって SAP Qualtrics を保護する](/cloud-app-security/proxy-intro-aad)

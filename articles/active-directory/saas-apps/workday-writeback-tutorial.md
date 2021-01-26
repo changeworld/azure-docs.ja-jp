@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526832"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359733"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>チュートリアル:Azure AD から Workday への属性の書き戻しを構成する
 このチュートリアルの目的は Azure AD から Workday に属性を書き戻すために必要な手順を説明することです。 Workday Writeback プロビジョニング アプリは、次の Workday 属性に対する値の割り当てをサポートします。
@@ -34,7 +34,7 @@ ms.locfileid: "88526832"
 
 この Workday Writeback ユーザー プロビジョニング ソリューションは、次のお客様に最適です。
 
-* IT が管理する正式な属性 (メールアドレス、ユーザー名、電話番号など) を Workday に書き戻したいと考える、Office 365 を使用している組織
+* IT が管理する正式な属性 (メールアドレス、ユーザー名、電話番号など) を Workday に書き戻したいと考える、Microsoft 365 を使用している組織
 
 ## <a name="configure-integration-system-user-in-workday"></a>Workday の統合システム ユーザーの構成
 
@@ -68,11 +68,11 @@ Workday 統合システム ユーザー アカウントとワーカー データ
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。*username\@contoso4*
+   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。 *username\@contoso4*
 
    * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` のようになります。*contoso4* は適切なテナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` のようになります。 *contoso4* は適切なテナント名に置き換え、 *wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェック ボックスをオンにします。
 
@@ -88,7 +88,7 @@ Workday 統合システム ユーザー アカウントとワーカー データ
 
 3. **[属性マッピング]** セクションで、Workday の Worker ID または従業員 ID が格納されている Azure Active Directory の属性を示すように一致する ID を更新します。 一般的なマッチング メソッドは、Workday の Worker ID または従業員 ID を Azure AD の extensionAttribute1-15 に同期してから、この Azure AD の属性を使用して、Workday に戻ってユーザーを照合します。
 
-4. 通常、Azure AD の *userPrincipalName*属性を Workday の *UserID* 属性にマップし、Azure AD の *mail* 属性を Workday の *EmailAddress* 属性にマップします。 
+4. 通常、Azure AD の *userPrincipalName* 属性を Workday の *UserID* 属性にマップし、Azure AD の *mail* 属性を Workday の *EmailAddress* 属性にマップします。 
 
      >[!div class="mx-imgBorder"]
      >![Azure Portal](./media/workday-inbound-tutorial/workday-writeback-mapping.png)
@@ -144,16 +144,31 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
+1. **[スコープ]** ドロップダウンで **[すべてのユーザーとグループを同期する]** を選択します。 このオプションを使用すると、Writeback アプリによって、すべてのユーザーのマップされた属性が、 **[マッピング]**  ->  **[ソース オブジェクト スコープ]** で定義されたスコープ規則に従って Azure AD から Workday に書き戻されます。 
+
+   > [!div class="mx-imgBorder"]
+   > ![書き戻しのスコープを選択する](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Workday の Writeback プロビジョニング アプリでは、 **[割り当てられたユーザーとグループのみを同期する]** オプションはサポートされていません。
+ 
+
 2. **[保存]** をクリックします。
 
 3. この操作により初期同期が開始されます。これに要する時間はソース ディレクトリのユーザー数に応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
 
-4. 好きなときに、Azure Portal の **[監査ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、ソースからインポートされたユーザーやターゲット アプリケーションにエクスポートされたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。  
+4. 好きなときに、Azure portal の **[プロビジョニング ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、ソースからインポートされたユーザーやターゲット アプリケーションにエクスポートされたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。  
 
 5. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに概要レポートが出力されます。
 
      > [!div class="mx-imgBorder"]
      > ![プロビジョニングの進行状況バー](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
+
+* Writeback アプリでは、 **Communication_Usage_Type_ID** および **Phone_Device_Type_ID** の各パラメーターに定義済みの値が使用されます。 Workday テナントで、これらの属性に別の値が使用されている場合、書き戻し操作は成功しません。 回避策として、Workday の Type_ID を更新することをお勧めします。 
+* Writeback アプリがセカンダリ電話番号を更新するように構成されている場合、Workday の既存のセカンダリ電話番号は置き換えられません。 新しいセカンダリ電話番号が worker レコードに追加されます。 この動作に対する回避策はありません。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

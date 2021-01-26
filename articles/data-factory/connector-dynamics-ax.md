@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4dbedc0a30c80748ffc27bb7e17c86067ca0238
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982698"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638161"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする
 
@@ -34,10 +34,10 @@ ms.locfileid: "84982698"
 
 Dynamics AX から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
-具体的には、この Dynamics AX コネクタは、**OData プロトコル**と**サービス プリンシパル認証**を使用した Dynamics AX からのデータ コピーをサポートしています。
+具体的には、この Dynamics AX コネクタは、 **OData プロトコル** と **サービス プリンシパル認証** を使用した Dynamics AX からのデータ コピーをサポートしています。
 
 >[!TIP]
->**Dynamics 365 Finance and Operations** からデータをコピーするために、このコネクタを使用することもできます。 Dynamics 365 の [OData のサポート](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata)と[認証方法](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)に関するページを参照してください。
+>**Dynamics 365 Finance and Operations** からデータをコピーするために、このコネクタを使用することもできます。 Dynamics 365 の [OData のサポート](/dynamics365/unified-operations/dev-itpro/data-entities/odata)と[認証方法](/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)に関するページを参照してください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -66,7 +66,7 @@ Dynamics AX のリンクされたサービスでは、次のプロパティが�
 | type | **type** プロパティを **DynamicsAX** に設定する必要があります。 |はい |
 | url | Dynamics AX (または Dynamics 365 Finance および Operations) インスタンスの OData エンドポイント。 |はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、 [Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
 | aadResourceId | 認可を要求する AAD リソースを指定します。 たとえば、Dynamics の URL が `https://sampledynamics.sandbox.operations.dynamics.com/data/` である場合、対応する AAD リソースは通常 `https://sampledynamics.sandbox.operations.dynamics.com` となります。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを選択できます (データ ストアがプライベート ネットワークに配置されている場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
@@ -107,7 +107,7 @@ Dynamics AX からデータをコピーするには、データセットの **ty
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、**DynamicsAXResource** に設定する必要があります。 | はい |
+| type | データセットの **type** プロパティは、 **DynamicsAXResource** に設定する必要があります。 | はい |
 | path | Dynamics AX OData エンティティのパス。 | はい |
 
 **例**
@@ -142,8 +142,8 @@ Dynamics AX からデータをコピーするは、コピー アクティビテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **DynamicsAXSource** に設定する必要があります | はい |
-| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**:コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 指定しない場合は、既定値の **00:30:00** (30 分) が使用されます。 | いいえ |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注** :コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト ( **TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 指定しない場合は、既定値の **00:30:00** (30 分) が使用されます。 | いいえ |
 
 **例**
 

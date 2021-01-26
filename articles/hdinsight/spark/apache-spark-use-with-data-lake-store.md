@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080943"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821164"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
@@ -23,7 +23,7 @@ ms.locfileid: "86080943"
 
 * Azure Data Lake Storage Gen1 アカウント。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](../../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順に従います。
+* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 「[クイック スタート: HDInsight のクラスターを設定する](../hdinsight-hadoop-provision-linux-clusters.md)」の手順に従います。
 
 ## <a name="prepare-the-data"></a>データを準備する
 
@@ -73,9 +73,9 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook を作成します](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成します")
+    ![新しい Jupyter Notebook を作成する](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成する")
 
-4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter**キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter** キーを押します。
 
     ```scala
     from pyspark.sql.types import *
@@ -105,7 +105,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     空のセルに次のコード例を貼り付けて、**MYDATALAKESTORE** を Data Lake Storage アカウント名に置き換え、**Shift + Enter** キーを押します。 このコード サンプルは、 **hvac**という一時テーブルにデータを登録します。
+     空のセルに次のコード例を貼り付けて、**MYDATALAKESTORE** を Data Lake Storage アカウント名に置き換え、**Shift + Enter** キーを押します。 このコード サンプルは、 **hvac** という一時テーブルにデータを登録します。
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster

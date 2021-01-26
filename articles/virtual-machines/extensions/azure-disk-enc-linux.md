@@ -8,23 +8,24 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61f8fd3d671bbd66d2dc5656e9a467b06798d280
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066915"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968419"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>概要
 
-Azure Disk Encryption は、Linux の DM-Crypt サブシステムを活用して、[特定の Azure Linux ディストリビューション](https://aka.ms/adelinux)でディスク全体の暗号化を提供します。  このソリューションは、ディスク暗号化キーとシークレットを管理できるように、Azure Key Vault と統合されています。
+Azure Disk Encryption は、Linux の DM-Crypt サブシステムを活用して、[特定の Azure Linux ディストリビューション](../linux/disk-encryption-overview.md)でディスク全体の暗号化を提供します。  このソリューションは、ディスク暗号化キーとシークレットを管理できるように、Azure Key Vault と統合されています。
 
 ## <a name="prerequisites"></a>前提条件
 

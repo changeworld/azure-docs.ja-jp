@@ -1,7 +1,7 @@
 ---
 title: Microsoft Authentication Library (MSAL) への移行
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) と Azure AD Authentication Library (ADAL) の違いと、MSAL への移行方法について学習します。
+description: Microsoft Authentication Library (MSAL) と Azure AD Authentication Library (ADAL) の違いと、MSAL への移行方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3a1428f05d1a5f7563b2715a9142cf73dc5063a9
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224358"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063656"
 ---
-# <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
+# <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
 
 多くの開発者は、Azure Active Directory Authentication Library (ADAL) を使用してアプリケーションをビルドおよびデプロイしてきました。 今後は、Azure AD エンティティの認証と承認には、Microsoft Authentication Library (MSAL) を使用することをお勧めします。
 

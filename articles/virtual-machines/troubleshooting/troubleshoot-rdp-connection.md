@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 831ce1ccb2c09a85ddfff8fa65172b1871119a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079895"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201622"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。 VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。 この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。 
@@ -46,7 +46,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 詳しい手順と説明が必要な場合は、この後の説明をお読みください。 ルーターやファイアウォールなどのローカル ネットワーク機器が、送信 TCP ポート 3389 をブロックしていないことを確認します。この方法については、[Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順](detailed-troubleshoot-rdp.md)に関する記事をご覧ください。
 
 > [!TIP]
-> ポータルで **[接続]** ボタンが淡色表示され、[Express Route](../../expressroute/expressroute-introduction.md) や[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。 [Azure におけるパブリック IP アドレス](../../virtual-network/public-ip-addresses.md)に関するページをご覧ください。
+> ポータルで **[接続]** ボタンが淡色表示され、[Express Route](../../expressroute/expressroute-introduction.md) や [サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。 [Azure におけるパブリック IP アドレス](../../virtual-network/public-ip-addresses.md)に関するページをご覧ください。
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>RDP 問題をトラブルシューティングする方法
@@ -66,7 +66,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Reset password]** ボタンをクリックします。 **[モード]** を **[Reset configuration only]** に設定し、 **[更新]** ボタンをクリックします。
    
-    ![Azure Portal で RDP 構成をリセットする](./media/troubleshoot-rdp-connection/reset-rdp.png)
+    ![Azure portal で RDP 構成をリセットします。](./media/troubleshoot-rdp-connection/reset-rdp.png)
 2. **ネットワーク セキュリティ グループの規則を確認する**。 [IP フロー検証](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、RDP ポート (既定では 3389) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-traffic-filter-problem.md)」を参照してください。
 
 3. **VM のブート診断を確認する**。 このトラブルシューティングの手順では、VM コンソール ログを確認し、VM が問題を報告しているかどうかを確認します。 すべての VM でブート診断を有効にしているとは限らないため、このトラブルシューティングの手順は省略できます。
@@ -78,17 +78,17 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能]** と表示されます。
    
-    ![Azure Portal で VM リソース ヘルスを確認する](./media/troubleshoot-rdp-connection/check-resource-health.png)
+    ![Azure portal で VM リソース正常性を確認します。](./media/troubleshoot-rdp-connection/check-resource-health.png)
 6. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、ローカル管理者アカウントのパスワードをリセットします。  VM にログインしたら、そのユーザーのパスワードをリセットしてください。
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Reset password]** ボタンをクリックします。 **[モード]** が **[パスワードのリセット]** に設定されていることを確認し、ユーザー名と新しいパスワードを入力します。 最後に、 **[更新]** ボタンをクリックします。
    
-    ![Azure Portal でユーザーの資格情報をリセットする](./media/troubleshoot-rdp-connection/reset-password.png)
+    ![Azure portal でユーザーの資格情報をリセットします。](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **VM を再起動する**。 このトラブルシューティングの手順では、VM 自体で発生している根底にある問題を修正できます。
    
     Azure Portal で VM を選択し、 **[概要]** タブをクリックします。 **[再起動]** ボタンをクリックします。
    
-    ![Azure Portal で VM を再起動する](./media/troubleshoot-rdp-connection/restart-vm.png)
+    ![Azure portal で VM を再起動します。](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **アプリケーションを再デプロイする**。 このトラブルシューティングの手順では、プラットフォームやネットワークの根底にある問題を修正するために、Azure 内の別のホストに VM を再デプロイします。
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[再デプロイ]** ボタンをクリックし、 **[再デプロイ]** をクリックします。
@@ -101,7 +101,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 
 10. オンプレミスのファイアウォールまたはコンピューター上のファイアウォールが Azure に対する送信 TCP 3389 トラフィックを許可していることを確認します。
 
-RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
+RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md)に関する記事をご覧ください。
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Azure PowerShell を使用したトラブルシューティング
 まだインストールしていない場合は、 [最新の Azure PowerShell をインストールして構成します](/powershell/azure/)。
@@ -154,7 +154,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     Direction                : Inbound
     ```
    
-    RDP トラフィックを許可する規則がない場合、[ネットワーク セキュリティ グループの規則を作成します](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 TCP ポート 3389 を使用できます。
+    RDP トラフィックを許可する規則がない場合、[ネットワーク セキュリティ グループの規則を作成します](../windows/nsg-quickstart-powershell.md)。 TCP ポート 3389 を使用できます。
 3. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、指定したローカル管理者アカウントのパスワードをリセットします。
    
     最初に、次のように資格情報を `$cred` 変数に割り当てて、ユーザー名と新しいパスワードを指定します。
@@ -190,7 +190,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 
 7. オンプレミスのファイアウォールまたはコンピューター上のファイアウォールが Azure に対する送信 TCP 3389 トラフィックを許可していることを確認します。
 
-RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
+RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md)に関する記事をご覧ください。
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された VM のトラブルシューティング
 
@@ -203,14 +203,14 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
    
     Azure Portal で VM を選択します。 **[...More]** ボタンをクリックして、 **[リモート アクセスのリセット]** をクリックします。
    
-    ![Azure Portal で RDP 構成をリセットする](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
+    ![クラシック デプロイ モデルを使用して、Azure portal で VM の RDP 構成をリセットします。](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
 2. **Cloud Services エンドポイントを確認する**。 このトラブルシューティングの手順では、RDP トラフィックを許可するように、Cloud Services にエンドポイントがあることを確認します。 RDP の既定のポートは、TCP ポート 3389 です。 RDP トラフィックを許可する規則は、VM を作成する際に自動で作成されない場合があります。
    
    Azure Portal で VM を選択します。 **[エンドポイント]** ボタンをクリックして、VM 用に現在構成されているエンドポイントを表示します。 TCP ポート 3389 の RDP トラフィックを許可するエンドポイントが存在することを確認します。
    
    次の例は、RDP トラフィックを許可する有効なエンドポイントを示しています。
    
-   ![Azure Portal で Cloud Services エンドポイントを確認する](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
+   ![クラシック デプロイ モデルを使用して、Azure portal で VM のクラウド サービス エンドポイントを確認します。](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
    RDP トラフィックを許可するエンドポイントがない場合、[ エンドポイントを作成します](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。 プライベート ポート 3389 に TCP を許可します。
 3. **VM のブート診断を確認する**。 このトラブルシューティングの手順では、VM コンソール ログを確認し、VM が問題を報告しているかどうかを確認します。 すべての VM でブート診断を有効にしているとは限らないため、このトラブルシューティングの手順は省略できます。
@@ -220,21 +220,21 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能]** と表示されます。
    
-    ![Azure Portal で VM リソース ヘルスを確認する](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
+    ![クラシック デプロイ モデルを使用して、Azure portal で VM の VM リソース正常性を確認します。](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、指定したローカル管理者アカウントのパスワードをリセットします。  VM にログインしたら、そのユーザーのパスワードをリセットしてください。
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Reset password]** ボタンをクリックします。 ユーザー名と新しいパスワードを入力します。 最後に、 **[保存]** ボタンをクリックします。
    
-    ![Azure Portal でユーザーの資格情報をリセットする](./media/troubleshoot-rdp-connection/classic-reset-password.png)
+    ![クラシック デプロイ モデルを使用して、Azure portal で VM のユーザー資格情報をリセットします。](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **VM を再起動する**。 このトラブルシューティングの手順では、VM 自体で発生している根底にある問題を修正できます。
    
     Azure Portal で VM を選択し、 **[概要]** タブをクリックします。 **[再起動]** ボタンをクリックします。
    
-    ![Azure Portal で VM を再起動する](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+    ![クラシック デプロイ モデルを使用して、Azure portal で VM を再起動します。](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
 7. オンプレミスのファイアウォールまたはコンピューター上のファイアウォールが Azure に対する送信 TCP 3389 トラフィックを許可していることを確認します。
 
-RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
+RDP の問題が解決しない場合は、[サポート要求を申請](https://azure.microsoft.com/support/options/)するか、[RDP トラブルシューティングの考え方と手順](detailed-troubleshoot-rdp.md)に関する記事をご覧ください。
 
 ## <a name="troubleshoot-specific-rdp-errors"></a>特定の RDP エラーのトラブルシューティング
 お使いの VM に RDP 経由で接続しようとすると、特定のエラー メッセージが表示される場合があります。 一般的なエラー メッセージは次のとおりです。
@@ -246,6 +246,6 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 * [このコンピューターはリモート コンピューターに接続できません](troubleshoot-specific-rdp-errors.md#rdpconnect)。
 
 ## <a name="additional-resources"></a>その他のリソース
-上記のエラーが発生していないにもかかわらず、リモート デスクトップを介して VM に接続できない場合は、 [リモート デスクトップのトラブルシューティング](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+上記のエラーが発生していないにもかかわらず、リモート デスクトップを介して VM に接続できない場合は、 [リモート デスクトップのトラブルシューティング](detailed-troubleshoot-rdp.md)に関するページをご覧ください。
 * VM で実行されているアプリケーションへのアクセスにおけるトラブルシューティング手順については、[Azure VM で実行されているアプリケーションへのアクセスのトラブルシューティング](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)に関する記事をご覧ください。
 * Secure Shell (SSH) を使用した Azure の Linux VM への接続で問題が発生している場合は、[Azure の Linux VM への SSH 接続のトラブルシューティング](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)に関する記事をご覧ください。

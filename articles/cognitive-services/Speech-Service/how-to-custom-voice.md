@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: e48dfd224a9656c7d8327dd77f1b55e9a744f3af
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056688"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573090"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -39,10 +39,10 @@ Custom Voice を開始する前に、Azure アカウントと音声サービス�
 
 ## <a name="custom-neural-voices"></a>カスタム ニューラル音声
 
-ニューラル音声のカスタマイズ機能は、現在、パブリック プレビュー段階にあり、一部のお客様に限定されています。 使用を開始するには、この[申請フォーム](https://go.microsoft.com/fwlink/?linkid=2108737)に入力してください。
+現在、Custom Voice では、Standard およびニューラル レベルがサポートされています。 カスタム ニューラル音声によって、ユーザーはより少ないデータでより高品質の音声モデルを構築できるようになります。また、AI を責任を持ってデプロイするための手段として利用できます。 カスタム ニューラル音声を使用して、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようにすることをお勧めします。 [カスタム ニューラル音声の詳細については、こちらを参照してください](https://aka.ms/CNV-Transparency-Note)。 
 
 > [!NOTE]
-> 信頼のおける AI の設計に対するマイクロソフトの取り組みの一環として、個人および社会の権利を保護し、人とコンピューターとの透明性のあるやり取りを促進することを目的としています。 このため、カスタム ニューラル音声は、すべてのお客様が一般に利用できるわけではありません。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の倫理原則に沿ってアプリケーションを使用することを確約した場合のみです。 アプリケーションの制限プロセスの詳細については、[こちら](https://aka.ms/custom-neural-gating-overview)を参照してください。
+> 責任ある AI を設計するという Microsoft の取り組みの一環として、Microsoft ではカスタム ニューラル音声の使用を制限しています。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の責任ある AI の原則に沿ってアプリケーションを使用することを確約した場合のみです。 詳細については、[アクセスの制限に対するポリシー](https://aka.ms/gating-overview)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 Custom Voice の Standard バージョンとニューラル バージョンでサポートされている[言語](language-support.md#customization)と[リージョン](regions.md#custom-voices)は異なります。 開始する前に詳細を確認してください。  
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
@@ -56,7 +56,7 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 4. 別の Speech サブスクリプションに切り替えたい場合は、上部のナビゲーションにある歯車アイコンを使用します。
 
 > [!NOTE]
-> サービスを使用する前に、Azure で F0 または S0 のキーを作成しておく必要があります。
+> サービスを使用する前に、Azure で F0 または S0 の Speech Service キーを作成しておく必要があります。 カスタム ニューラル音声では S0 レベルのみがサポートされています。 
 
 ## <a name="how-to-create-a-project"></a>プロジェクトを作成する方法
 

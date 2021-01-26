@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806064"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126888"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
 認識の正確性の問題、特に単語が削除されたり誤って置き換えられたりする問題を改善したい場合は、音声データと共にヒューマン ラベル付け文字起こしを使用することがあります。 ヒューマン ラベル付け文字起こしとは これは簡単で、音声ファイルを逐語的に書き写したもののことです。
 
-認識能力を向上させるには、大量の文字起こしデータが必要です。10 から 1,000 時間の文字起こしデータを用意することをお勧めします。 このページでは、質の高い文字起こしを作成するために役立つガイドラインについて説明します。 このガイドは、ロケールごとに分かれており、米国英語、標準中国語、およびドイツ語のセクションで構成されています。
+認識能力を向上させるには、大量の文字起こしデータが必要です。10 から 20 時間の文字起こしデータを用意することをお勧めします。 このページでは、質の高い文字起こしを作成するために役立つガイドラインについて説明します。 このガイドは、ロケールごとに分かれており、米国英語、標準中国語、およびドイツ語のセクションで構成されています。
+
+> [!NOTE]
+> すべての基本モデルでオーディオ ファイルのカスタマイズがサポートされているわけではありません。 基本モデルでサポートされていない場合、トレーニングでは、関連するテキストが使用されるのと同じ方法で文字起こしテキストが使用されます。
 
 ## <a name="us-english-en-us"></a>英語 (米国) (en-US)
 
@@ -29,7 +32,7 @@ ms.locfileid: "74806064"
 
 次に例をいくつか示します。
 
-| 使用を避ける文字 | Substitution | Notes |
+| 使用を避ける文字 | 代入 | Notes |
 | ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | 開始と終了の引用符が、適切な ASCII 文字に置き換えられています。 |
 | John’s day | John's day | アポストロフィが、適切な ASCII 文字に置き換えられています。 |
@@ -84,7 +87,7 @@ ms.locfileid: "74806064"
 
 次に例をいくつか示します。
 
-| 使用を避ける文字 | Substitution   | Notes |
+| 使用を避ける文字 | 代入   | Notes |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 開始と終了の引用符が、適切な文字に置き換えられています。 |
 | 需要什么帮助? | 需要什么帮助？| 疑問符が、適切な文字に置き換えられています。 |
@@ -164,8 +167,8 @@ ms.locfileid: "74806064"
 
 ## <a name="next-steps"></a>次の手順
 
-- [データを準備してテストする](how-to-custom-speech-test-data.md)
+- [データを準備してテストする](./how-to-custom-speech-test-and-train.md)
 - [データを検査する](how-to-custom-speech-inspect-data.md)
 - [データを評価する](how-to-custom-speech-evaluate-data.md)
 - [モデルをトレーニングする](how-to-custom-speech-train-model.md)
-- [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
+- [モデルをデプロイする](./how-to-custom-speech-train-model.md)

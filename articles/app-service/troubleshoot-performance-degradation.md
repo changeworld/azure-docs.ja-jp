@@ -7,15 +7,15 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958254"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763810"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
-この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
+この記事は、[Azure App Service](./overview.md) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 
@@ -82,7 +82,7 @@ App Service アプリにはそれぞれ拡張可能な管理エンドポイン�
 - [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) などのソース コード エディター。 
 - アプリに接続されている MySQL データベースのような、接続されたリソース用の管理ツール。
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../azure-monitor/app/web-monitor-performance.md)」を参照してください。
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
 <a name="collect"></a>
 
@@ -133,7 +133,7 @@ Kudu には次のような機能があります。
 * アプリケーションの環境設定
 * ログ ストリーム
 * 診断ダンプ
-* デバッグ コンソール (Powershell のコマンドレットや基本的な DOS コマンドを実行可能)
+* デバッグ コンソール (PowerShell のコマンドレットや基本的な DOS コマンドを実行可能)。
 
 Kudu にはもう 1 つ便利な機能があり、アプリケーションからファーストチャンス例外がスローされた場合に、Kudu と SysInternals ツール Procdump を使用してメモリ ダンプを作成することができます。 このメモリ ダンプはプロセスのスナップショットです。アプリに関して、通常より複雑な問題をトラブルシューティングできる場合も少なくありません。
 

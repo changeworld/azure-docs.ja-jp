@@ -1,6 +1,6 @@
 ---
 title: C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する
-description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
+description: C++ で Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 3d38fa2afe35976283e5129eab7d7f8ef3a1103b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236490"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489881"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -78,7 +79,7 @@ Azure Storage クライアントまたは Cosmos DB クライアントでは、�
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-`<your_storage_account>` にはストレージ アカウントの名前を使用します。 <your_storage_account_key> については、[Azure portal](https://portal.azure.com) に記載されているストレージアカウントのアクセス キーを使用します。 ストレージ アカウントとアクセス キーについて詳しくは、「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。
+`<your_storage_account>` にはストレージ アカウントの名前を使用します。 <your_storage_account_key> については、[Azure portal](https://portal.azure.com) に記載されているストレージアカウントのアクセス キーを使用します。 ストレージ アカウントとアクセス キーについて詳しくは、「[ストレージ アカウントを作成する](../storage/common/storage-account-create.md)」を参照してください。
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列の設定
 
@@ -94,7 +95,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 ローカルの Windows ベースのコンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Azure ストレージ エミュレーターを使用できます。 ストレージ エミュレーターは、ローカルの開発マシンで、Azure BLOB、Queue、および Table service をシミュレートするユーティリティです。 次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
@@ -138,7 +139,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
-エンティティをテーブルに追加するには、新しい `table_entity` オブジェクトを作成し、`table_operation::insert_entity` に渡します。 次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。 多様なパーティション キーを使用すると、並列操作のスケーラビリティを高めることができます。 詳しくは、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)」をご覧ください。
+エンティティをテーブルに追加するには、新しい `table_entity` オブジェクトを作成し、`table_operation::insert_entity` に渡します。 次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。 多様なパーティション キーを使用すると、並列操作のスケーラビリティを高めることができます。 詳しくは、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/blobs/storage-performance-checklist.md)」をご覧ください。
 
 次のコードでは、ユーザー データの格納用に `table_entity` の新しいインスタンスを作成しています。 次に、テーブルへのエンティティの挿入用に `table_operation` を作成するために `table_operation::insert_entity` を呼び出し、それに新しいテーブル エンティティを関連付けています。 最後に、`cloud_table` オブジェクトに対して `execute` メソッドを呼び出します。 新しい `table_operation` により、新しいユーザー エンティティを `people` テーブルに挿入する要求が Table service に送信されます。  
 
@@ -501,7 +502,7 @@ else
 
 Visual Studio Community エディションの場合、インクルード ファイル *storage_account.h* と *table.h* が原因でプロジェクトにビルド エラーが発生する場合は、 **/permissive-** コンパイラ スイッチを削除します。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[プロパティ]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[プロパティ]** を選択します。
 1. **[プロパティ ページ]** ダイアログ ボックスで、 **[構成プロパティ]** を展開し、 **[C/C++]** を展開し、 **[言語]** を選択します。
 1. **[準拠モード]** を **[いいえ]** に設定します。
 

@@ -4,19 +4,18 @@ summary: Azure Data Lake Analytics を使用すると、大規模なデータ �
 metadata:
   title: Azure Data Lake Analytics
   description: Azure Data Lake Analytics を使用すると、大規模なデータ セットに対応するビッグ データ分析ジョブを実行できます。
-  services: data-lake-analytics
   ms.service: data-lake-analytics
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 5dadcad164a309a7251a1e4627cf1e78f6e927d4
-  ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+  ms.openlocfilehash: 014dbc3b2337238604cfd585ee1d39c4e8dab85b
+  ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87475721"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96511374"
 landingContent:
 - title: Data Lake Analytics について
   linkLists:
@@ -41,7 +40,7 @@ landingContent:
     - text: U-SQL を使ってみる
       url: data-lake-analytics-u-sql-get-started.md
     - text: U-SQL 言語のリファレンス
-      url: https://docs.microsoft.com/u-sql/
+      url: https://docs.microsoft.com/u-sql
     - text: U-SQL カタログの概要
       url: data-lake-analytics-u-sql-catalog.md
     - text: ユーザー定義演算子を使用する

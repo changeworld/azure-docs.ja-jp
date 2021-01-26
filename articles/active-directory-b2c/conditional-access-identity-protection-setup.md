@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270713"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949770"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C で Identity Protection と条件付きアクセスを設定する
 
@@ -26,7 +26,7 @@ Identity Protection は、ご自分の Azure AD B2C テナントに継続的な�
 ## <a name="prerequisites"></a>前提条件
 
 - 対象の Azure AD B2C テナントが [Azure AD サブスクリプションにリンクされている](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)必要があります。
-- サインインとユーザーのリスクベースの条件付きアクセスを使用するには、Azure AD B2C Premium P2 が必要です。 必要に応じて、[Azure AD B2C の価格レベルを Premium P2 に変更](https://aka.ms/exid-pricing-tier)してください。 
+- サインインとユーザーのリスクベースの条件付きアクセスを使用するには、Azure AD B2C Premium P2 が必要です。 必要に応じて、[Azure AD B2C の価格レベルを Premium P2 に変更](./billing.md)してください。 
 - 対象の B2C テナントで Identity Protection と条件付きアクセスを管理するには、全体管理者の役割またはセキュリティ管理者の役割が割り当てられているアカウントが必要です。
 - 対象のテナントでこれらの機能を使用するには、最初に Azure AD B2C Premium P2 価格レベルに切り替える必要があります。
 
@@ -41,10 +41,12 @@ Azure AD B2C では、現在、次のリスク検出がサポートされてい�
 |リスク検出の種類  |説明  |
 |---------|---------|
 | 特殊な移動     | ユーザーの最近のサインインに基づき特殊と判断された場所からのサインイン。        |
-|匿名 IP アドレス     | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)        |
-|通常とは異なるサインイン プロパティ     | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。        |
+|匿名 IP アドレス     | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。        |
 |マルウェアにリンクした IP アドレス     | マルウェアにリンクした IP アドレスからのサインイン         |
-|Azure AD 脅威インテリジェンス     | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました        |
+|通常とは異なるサインイン プロパティ     | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。        |
+|ユーザーに対するセキュリティ侵害を管理者が確認しました    | 管理者は、ユーザーが侵害されたことを示しています。             |
+|パスワード スプレー     | パスワード スプレー攻撃を使用してサインインします。      |
+|Azure AD 脅威インテリジェンス     | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントのリスク イベントを表示する
 

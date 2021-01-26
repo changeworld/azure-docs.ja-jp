@@ -1,6 +1,6 @@
 ---
 title: B2B コラボレーション ユーザーの条件付きアクセス - Azure AD
-description: Azure Active Directory B2B コラボレーションでは、会社のアプリケーションへの選択的なアクセスのために、多要素認証 (MFA) をサポートしています
+description: Azure Active Directory B2B ユーザーに多要素認証ポリシーを強制する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907744"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892453"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -110,5 +110,5 @@ B2B ユーザーのデバイスが Contoso によって管理されていない�
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
-* [Azure AD B2B コラボレーションのライセンス](licensing-guidance.md)
+* [External Identities の価格](external-identities-pricing.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](faq.md)

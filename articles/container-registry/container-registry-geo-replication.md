@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116790"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705168"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -18,9 +18,9 @@ ms.locfileid: "87116790"
 
 geo レプリケートされたレジストリには次の利点があります。
 
-* 複数のリージョンで 1 つのレジストリ/イメージ/タグ名を使用できる
-* リージョン デプロイからネットワーク上の近い場所のレジストリにアクセスできる
-* コンテナー ホストと同じリージョンにあるレプリケートされたローカルのレジストリからイメージがプルされるので、追加のエグレス料金が発生しない
+* 複数のリージョンで単一のレジストリ、イメージ、タグの名前を使用できる
+* ネットワーク上の近い場所のレジストリにアクセスできることで、リージョンのデプロイのパフォーマンスと信頼性が向上する
+* コンテナー ホストと同じまたは隣接するリージョンにあるレプリケートされたローカルのレジストリからイメージ レイヤーをプルすることで、データ転送コストを削減する
 * 複数のリージョンにまたがってレジストリを一元管理できる
 
 > [!NOTE]
@@ -57,7 +57,10 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 * すべてのリージョンにまたがる 1 つのレジストリ (`contoso.azurecr.io`) を管理すれば済む。
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
-* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成できます。
+* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
+* 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
+
+Azure Container Registry では、耐障害性と可用性に優れた Azure コンテナー レジストリを Azure リージョンに作成するため、[可用性ゾーン](zone-redundancy.md)もサポートされています。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
@@ -121,7 +124,7 @@ geo レプリケーションは、Azure Container Registry の [Premium サー�
 
 ## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>geo レプリカ レジストリでプッシュ操作の問題を解決する
  
-geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに*近くの*レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
+geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに *近くの* レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
  
 この問題が発生する場合、Linux ホスト上で、`dnsmasq` など、クライアント側 DNS キャッシュを適用することが 1 つの解決策です。 これでレジストリ名の解決に一貫性が与えられます。 Azure で Linux VM を使用してレジストリにプッシュしている場合、「[Azure での Linux 仮想マシンの DNS 名前解決のオプション](../virtual-machines/linux/azure-dns.md)」を参照してください。
 
@@ -138,7 +141,7 @@ Geo レプリケートされたレジストリでの操作をトラブルシュ�
 az acr replication list --registry --output table
 
 # Disable routing to replication
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled false
 ```
@@ -146,7 +149,7 @@ az acr replication update update --name westus \
 レプリケーションへのルーティングを復元するには、以下のように指定します。
 
 ```azurecli
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled true
 ```

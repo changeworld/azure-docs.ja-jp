@@ -2,16 +2,16 @@
 title: Azure Migrate Server Assessment を使用して AVS 評価を作成する |Microsoft Docs
 description: Azure Migrate Server Assessment ツールを使用して AVS 評価を作成する方法について説明します
 author: rashi-ms
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.manager: abhemraj
+ms.topic: how-to
+ms.date: 06/26/2020
+ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288857"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752075"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成する
 
@@ -21,10 +21,10 @@ ms.locfileid: "87288857"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- Azure Migrate プロジェクトを[作成](./create-manage-projects.md)していることを確認します。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 - 評価を作成するには、[VMware](how-to-set-up-appliance-vmware.md) 用の Azure Migrate アプライアンスを設定する必要があります。これは、オンプレミスのマシンを検出して Azure Migrate: Server Assessment にメタデータとパフォーマンスデータを送信します。Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
-- コンマ区切り値 (CSV) 形式で[サーバーのメタデータをインポート](tutorial-assess-import.md)することもできます。
+- コンマ区切り値 (CSV) 形式で[サーバーのメタデータをインポート](./tutorial-discover-import.md)することもできます。
 
 
 ## <a name="azure-vmware-solution-avs-assessment-overview"></a>Azure VMware Solution (AVS) の評価の概要
@@ -56,7 +56,7 @@ Azure VMware Solution (AVS) の評価作成に使用できるサイズ変更の�
 
 2. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[評価]** をクリックします。
 
-    ![アクセス](./media/how-to-create-assessment/assess.png)
+    ![Azure Migrate Servers のスクリーンショット。[評価ツール] の下で [評価] が選択されています。](./media/how-to-create-assessment/assess.png)
 
 3. **[サーバーの評価]** で、評価の種類に "Azure VMware Solution (AVS)" を選択し、検出ソースを選択して評価名を指定します。
 
@@ -66,7 +66,7 @@ Azure VMware Solution (AVS) の評価作成に使用できるサイズ変更の�
 
     ![AVS 評価のプロパティ](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+5. **[次へ]** をクリックして **評価するマシンを選択** します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
 
 6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
 
@@ -110,7 +110,7 @@ Azure VMware Solution (AVS) の評価の内容は次のとおりです。
     - **[Readiness 不明]** : オンプレミス環境から収集したメタデータが不十分なために、Azure Migrate がマシンの対応性を判断できませんでした。
 
 3. 推奨されるツールを確認します。
-    - **VMware HCX または Enterprise**: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
+    - **VMware HCX または Enterprise**: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
     - **不明**:CSV ファイルを介してインポートされたマシンの場合、既定の移行ツールは不明です。 VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 
 
 4. **[AVS 対応性]** の状態をクリックします。 VM 対応性の詳細を表示し、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を表示できます。

@@ -4,21 +4,21 @@ description: .NET クライアント ライブラリを使用して、システ�
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1501b61e930b7554063356335b967583c0a3ff5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008439"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521531"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
 
-BLOB コンテナーは、そこに含まれているデータに加えて、システム プロパティとユーザー定義メタデータをサポートしています。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して、システム プロパティとユーザー定義メタデータを管理する方法について説明します。
+BLOB コンテナーは、そこに含まれているデータに加えて、システム プロパティとユーザー定義メタデータをサポートしています。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して、システム プロパティとユーザー定義メタデータを管理する方法について説明します。
 
 ## <a name="about-properties-and-metadata"></a>プロパティとメタデータについて
 
@@ -126,7 +126,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-メタデータ名/値ペアは有効な HTTP ヘッダーであり、HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名および有効な C# 識別子でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含む [Base64 エンコード](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string)または [URL エンコード](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode)のメタデータ値。
+メタデータ名/値ペアは有効な HTTP ヘッダーであり、HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名および有効な C# 識別子でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含む [Base64 エンコード](/dotnet/api/system.convert.tobase64string)または [URL エンコード](/dotnet/api/system.web.httputility.urlencode)のメタデータ値。
 
 メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。 メタデータ名では、それが作成されたときに使用された大文字と小文字の区別が維持されますが、設定または読み取り時には大文字と小文字が区別されません。 同じ名前を使用する 2 つ以上のメタデータ ヘッダーがリソースに送信された場合、Azure BLOB ストレージは HTTP エラー コード 400 (正しくない要求) を返します。
 
@@ -168,7 +168,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) または [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) メソッドを呼び出して [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) コレクションを設定した後、値を読み取ります。
+メタデータを取得するには、次の例に示すように、BLOB またはコンテナーで [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) または [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) メソッドを呼び出して [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) コレクションを設定した後、値を読み取ります。 **GetProperties** メソッドでは、1 回の呼び出しで BLOB のプロパティとメタデータが取得されます。 これは、[BLOB のプロパティの取得](/rest/api/storageservices/get-blob-properties)と [BLOB のメタデータの取得](/rest/api/storageservices/get-blob-metadata)を個別に呼び出す必要がある REST API と異なり ます。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

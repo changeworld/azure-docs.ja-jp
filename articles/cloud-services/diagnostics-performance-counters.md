@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77469529"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078597"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -70,7 +70,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-このような個々のカウンター パスは、クラウド サービスで使用される診断フレームワークに追加できます。 パフォーマンス カウンター パスの構築方法の詳細については、「[Specifying a Counter Path (カウンター パスの指定)](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))」を参照してください。
+このような個々のカウンター パスは、クラウド サービスで使用される診断フレームワークに追加できます。 パフォーマンス カウンター パスの構築方法の詳細については、「[Specifying a Counter Path (カウンター パスの指定)](/windows/win32/perfctrs/specifying-a-counter-path)」を参照してください。
 
 ## <a name="collect-a-performance-counter"></a>パフォーマンス カウンターの収集
 
@@ -290,8 +290,5 @@ counterServiceUsed.Increment();
 
 - [Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights のシステム パフォーマンス カウンター](../azure-monitor/app/performance-counters.md)
-- [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
+- [カウンター パスの指定](/windows/win32/perfctrs/specifying-a-counter-path)
 - [Azure Diagnostics のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-
-
-

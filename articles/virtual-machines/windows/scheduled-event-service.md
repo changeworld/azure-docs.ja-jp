@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999022"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483302"
 ---
 # <a name="monitoring-scheduled-events"></a>スケジュールされたイベントの監視
 
@@ -132,7 +132,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Azure Monitor を使用したアラート ルールの作成 
 
 
-イベントが Log Analytics にプッシュされたら、次の[クエリ](../../azure-monitor/log-query/get-started-portal.md)を実行して、スケジュール イベントを探すことができます。
+イベントが Log Analytics にプッシュされたら、次の[クエリ](../../azure-monitor/log-query/log-analytics-tutorial.md)を実行して、スケジュール イベントを探すことができます。
 
 1. ページの上部にある **[ログ]** を選択し、次の内容をテキスト ボックスに貼り付けます。
 

@@ -5,15 +5,17 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3938209e80eb211afc332997b5b241c12a0f6eb9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: d19dc409f4d57a114b5937e6ce3718315e550a08
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212459"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763589"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 この記事では、カスタム traefik イングレス コントローラーを使用するように Azure Dev Spaces を構成する方法について説明します。 この記事では、そのカスタム イングレス コントローラーが HTTPS も使用するように構成する方法についても説明します。
 
@@ -45,13 +47,13 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 traefik イングレス コントローラーの Helm グラフを含む[公式の安定版 Helm リポジトリ][helm-stable-repo]を追加します。
 
 ```console
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable
 ```
 
 traefik イングレス コントローラー用に Kubernetes 名前空間を作成し、それを `helm` を使用してインストールします。
 
 > [!NOTE]
-> ご使用の AKS クラスターで RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
+> ご使用の AKS クラスターで Kubernetes RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
 
 ```console
 kubectl create ns traefik
@@ -158,7 +160,7 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 `azds list-uris` コマンドからパブリック URL を開いて、*bikesharingweb* サービスに移動します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` です。
 
 > [!NOTE]
-> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの**両方**を更新したことを確認してください。
+> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの **両方** を更新したことを確認してください。
 
 `azds space select` コマンドを使用すると、*dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
 
@@ -210,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> テストの場合、*ClusterIssuer* に使用できる[ステージング サーバー][letsencrypt-staging-issuer]もあります。
+> テストの場合、*ClusterIssuer* に使用できる [ステージング サーバー][letsencrypt-staging-issuer]もあります。
 
 `kubectl` を使用して `letsencrypt-clusterissuer.yaml` を適用します。
 
@@ -221,7 +223,7 @@ kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 以前の *traefik* *ClusterRole* および *ClusterRoleBinding* を削除し、`helm` を使用して、traefik を HTTPS にアップグレードします。
 
 > [!NOTE]
-> ご使用の AKS クラスターで RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
+> ご使用の AKS クラスターで Kubernetes RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
 
 ```console
 kubectl delete ClusterRole traefik
@@ -373,7 +375,7 @@ Azure Dev Spaces のしくみの詳細について確認します。
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
 [az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-remove-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

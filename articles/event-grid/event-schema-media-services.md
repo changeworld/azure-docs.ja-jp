@@ -4,11 +4,11 @@ description: Azure Event Grid で Media Services イベント用に用意され�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105933"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015215"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Media Services
 
@@ -16,7 +16,7 @@ ms.locfileid: "86105933"
 
 ## <a name="job-related-event-types"></a>ジョブに関連するイベントの種類
 
-Media Services では、以下の種類の**ジョブ**関連イベントが出力されます。 **ジョブ**関連イベントには 2 つのカテゴリがあります。"ジョブの状態変更の監視" と "ジョブ出力の状態変更の監視" です。 
+Media Services では、以下の種類の **ジョブ** 関連イベントが出力されます。 **ジョブ** 関連イベントには 2 つのカテゴリがあります。"ジョブの状態変更の監視" と "ジョブ出力の状態変更の監視" です。 
 
 JobStateChange イベントをサブスクライブすると、すべてのイベントを登録できます。 また、特定のイベントのみ (たとえば、JobErrored、JobFinished、JobCanceled などの最終状態) をサブスクライブすることもできます。   
 
@@ -38,7 +38,7 @@ JobStateChange イベントをサブスクライブすると、すべてのイ�
 
 1 つのジョブに複数のジョブ出力が含まれている場合があります (複数のジョブ出力を含めるように変換を構成した場合)。個々のジョブ出力の詳細を追跡する場合は、ジョブ出力変更イベントをリッスンします。
 
-各**ジョブ** は **JobOutput** よりも上位レベルになるため、ジョブ出力イベントは対応するジョブの内部で発生します。 
+各 **ジョブ** は **JobOutput** よりも上位レベルになるため、ジョブ出力イベントは対応するジョブの内部で発生します。 
 
 `JobFinished`、`JobCanceled`、`JobError` の各エラー メッセージには、(すべてのジョブ出力が完了したときに) ジョブ出力ごとの集計結果が出力されます。 一方、ジョブ出力イベントは、各タスクが完了したときに発生します。 たとえば、エンコードの出力とそれに続く Video Analytics の出力が行われる場合は、2 つのイベントがジョブ出力イベントとして発生してから、最後の JobFinished イベントが集計データと共に発生します。
 
@@ -64,7 +64,7 @@ JobStateChange イベントをサブスクライブすると、すべてのイ�
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
-Media Services では、以下の種類の**ライブ** イベントも出力されます。 **Live** イベントには、ストリーム レベル イベントとトラック レベル イベントの 2 つのカテゴリがあります。 
+Media Services では、以下の種類の **ライブ** イベントも出力されます。 **Live** イベントには、ストリーム レベル イベントとトラック レベル イベントの 2 つのカテゴリがあります。 
 
 ### <a name="stream-level-events"></a>ストリーム レベル イベント
 

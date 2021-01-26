@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway:ポイント対サイト接続のトラブルシューティング: Mac OS X クライアント'
 description: ネイティブ VPN クライアントと IKEv2 を使用し、Mac OS X からポイント対サイト接続の問題を解決する方法について説明します。
 services: vpn-gateway
-author: kumudD
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030665"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359326"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN クライアントからのポイント対サイト VPN 接続のトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "88030665"
 4. **ローカル ID** が、クライアント証明書の**サブジェクト**と同じである必要があります。
 5. **[認証設定]** をクリックして [認証設定] ページを開きます。
 
-   ![[認証設定]](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![[認証設定] ダイアログ ボックスのスクリーンショット。[証明書] が選択されています。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. ドロップダウンで **[証明書]** が選択されていることを確認します。
 7. **[選択]** をクリックし、適切な証明書が選択されていることを確認します。 **[OK]** をクリックして、すべての変更を保存します。
 
@@ -48,7 +48,7 @@ ms.locfileid: "88030665"
 4. **ローカル ID** は、空白にすることができます。
 5. **[認証設定]** をクリックし、ドロップダウンで [ユーザー名] が選択されていることを確認します。
 
-   ![[認証設定]](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![[認証設定] ダイアログ ボックスのスクリーンショット。[ユーザー名] が選択されています。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. 適切な資格情報が入力されていることを確認します。
 
 ## <a name="additional-steps"></a><a name="additional"></a>追加の手順

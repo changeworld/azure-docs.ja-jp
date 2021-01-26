@@ -1,58 +1,65 @@
 ---
-title: Azure の Oracle WebLogic Server とは
-description: Microsoft Azure で Oracle WebLogic Server を実行する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: edburns
-manager: gwallace
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+title: Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
+description: Microsoft Azure Virtual Machines で Oracle WebLogic Server を実行する方法について説明します。
+author: rezar
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 05/11/2020
-ms.author: edburns
-ms.openlocfilehash: fe247e75040f658beb94a66176f802993268a7d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 09/23/2020
+ms.author: rezar
+ms.reviewer: cynthn
+ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851862"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486693"
 ---
-# <a name="what-is-oracle-weblogic-server-on-azure"></a>Azure の Oracle WebLogic Server とは
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
 
-このページでは、Azure Virtual Machines で WebLogic Server (WLS) を実行するためのソリューションについて説明します。  これらのソリューションは、Oracle と Microsoft が共同で開発しています。
+このページでは、Azure Virtual Machines で Oracle WebLogic Server (WLS) を実行するためのソリューションについて説明します。 これらのソリューションは、Oracle と Microsoft が共同で開発およびサポートしています。
 
-Oracle WebLogic Server は、多層分散型エンタープライズ アプリケーションを開発してデプロイするための、世界初のクラウド ネイティブのエンタープライズ Java プラットフォーム アプリケーション サーバーです。 Azure WebLogic Server のオファーにより、クラウド コンピューティングを導入することができます。  Java EE アプリケーションの Azure Cloud へのリフト アンド シフトなど、WebLogic 移行の選択肢が増え、柔軟性が向上します。   Azure 上の WLS は、わずかな労力で大きな影響をもたらすことができます。 このオファーにより、基幹業務 (LOB) アプリケーションを迅速に開始できます。  各オファーでは、仮想ネットワーク、ストレージ、および Linux のリソースが自動的にプロビジョニングされます。  手間を一切かけることなく、WebLogic Server がインストールされます。  Azure 上の WLS では、ネットワーク セキュリティ グループを使用してセキュリティを設定し、Azure App Gateway によって負荷分散を行い、Azure Active Directory で認証を行い、既存のデータベースに自動的に接続します。
+また、Azure Kubernetes Service で WLS を実行することもできます。 これを行うための解決策については、[この Microsoft の記事](./weblogic-aks.md)を参照してください。
 
-:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="Azure portal を使用して、WebLogic Server を Azure にデプロイできる":::
+WLS は、世界中の最もミッション クリティカルなエンタープライズ Java アプリケーションを複数実行している最先端の Java アプリケーション サーバーです。 WLS は、Oracle ソフトウェア スイートのミドルウェア基盤を形成しています。 Oracle と Microsoft は、最先端のクラウド プラットフォームとして Azure 上でワークロードを実行するための選択肢と柔軟性を WLS の顧客に与えることに取り組んでいます。
 
-さまざまなシナリオに対応できるよう、管理サーバーがある単一ノード、管理サーバーがない単一ノード、クラスター、動的クラスターの 4 つのオファーが用意されています。  このオファーをぜひお試しください。これらは、無料でご利用いただけます。
+Azure WLS ソリューションは、ほとんどの定型操作を自動化することで、Java EE アプリケーションをできるだけ簡単に Azure 仮想マシンにリフト アンド シフトで移行できるようにすることを目的としています。 ソリューションでは、仮想ネットワーク、ストレージ、Java、および Linux のリソースが自動的にプロビジョニングされます。 最低限の手間で、WebLogic Server がインストールされます。 このソリューションでは、ネットワーク セキュリティ グループを使用してセキュリティを設定し、Azure App Gateway によって負荷分散を行い、Azure Active Directory で認証を行います。 また、Oracle クラウドまたは Azure 上の Azure PostgreSQL、Azure SQL、Oracle DB などの既存のデータベースに自動的に接続することもできます。 ソリューションのロード マップには、Oracle Coherence を介した分散ログと分散キャッシュを有効にする機能が含まれています。  
 
-_これらのオファーはライセンス持ち込み型です_。 ここでは、Oracle ですでに適切なライセンスを取得していること、および Microsoft Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
+:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="Azure portal を使用して、Azure に WebLogic Server をデプロイできる":::
 
-_オファーを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組みたい場合は、_ [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) の [[CONTACT ME]\(お問い合わせ\)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) ボタンを選択してください。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、コラボレーションが開始されます。
+さまざまなシナリオに対応できるよう、[管理サーバーがない単一ノード](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls)、[管理サーバーがある単一ノード](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin)、[クラスター](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)、[動的クラスター](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster)の 4 つのオファーが用意されています。 これらのオファーは無料で使用できます。 これらのオファーの説明とリンクは以下のとおりです。
+
+_これらのオファーはライセンス持ち込み型です_。 ここでは、Oracle で既に適切なライセンスを取得していること、および Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
+
+このオファーでは、基本イメージ (WebLogic Server 14 や JDK 11 on Oracle Linux 7.6 など) を使用して、さまざまなオペレーティング システム、Java、および WLS バージョンをサポートしています。 これらの基本イメージは、Azure で単独で使用することもできます。 基本イメージは、カスタマイズされた複雑な Azure デプロイを必要とする顧客に適しています。 現在の基本イメージ セットは、[こちら](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)から入手できます。
+
+_これらのオファーを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組むことに関心がある場合は、_ [マーケットプレース オファーの概要ページ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)の [[CONTACT ME]\(お問い合わせ\)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) ボタンを選択してください。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、密接なコラボレーションが開始されます。 移行シナリオで共同作業を行う機会は、オファーの初期開発が進められている間は無料です。
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server Single Node
 
-このオファーでは、単一の仮想マシンがプロビジョニングされ、そこに WLS がインストールされます。 ドメインの作成や管理サーバーの起動は行われません。 単一ノードは、高度にカスタマイズしたドメイン構成を使用するシナリオで役立ちます。
+[このオファー](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls)では、単一の仮想マシンがプロビジョニングされ、そこに WLS がインストールされます。 ドメインの作成や管理サーバーの起動は行われません。 単一ノード オファーは、高度にカスタマイズしたドメイン構成を使用するシナリオで役立ちます。
 
 ## <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic Server with Admin Server
 
-このオファーでは、単一の仮想マシンがプロビジョニングされ、そこに WLS がインストールされます。 さらに、ドメインが作成され、管理サーバーが起動されて、ドメインの管理が可能になります。
+[このオファー](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin)では、単一の仮想マシンがプロビジョニングされ、そこに WLS がインストールされます。 ドメインが作成され、管理サーバーが起動されます。 ドメインを管理し、すぐにアプリケーションのデプロイを開始できます。
 
 ## <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server Cluster
 
-このオファーでは、WLS 仮想マシンの高可用性クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されて、ドメインの管理が可能になります。
+[このオファー](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)では、WLS 仮想マシンの高可用性クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されます。 クラスターを管理し、可用性の高いアプリケーションでの作業をすぐに開始できます。
 
 ## <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server Dynamic Cluster
 
-このオファーでは、可用性が高くてスケーラブルな、WLS 仮想マシンの動的クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されて、ドメインの管理が可能になります。
+[このオファー](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster)では、可用性が高くてスケーラブルな、WLS 仮想マシンの動的クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されます。
 
-## <a name="next-steps"></a>次のステップ
+ソリューションでは、広範な運用環境に対応したデプロイ アーキテクチャが比較的簡単に有効になります。 ビジネス アプリケーションの開発に専念できるようにすることによって、可能な限り最も生産的な方法でほとんどの移行ケースを満たすことができます。
 
-Azure Marketplace で各オファーについて調べます。
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="複雑な WebLogic サーバーのデプロイが Azure で有効になっている":::
+
+顧客は、ソリューションによって自動的にプロビジョニングされるもの以外に、さらにデプロイをカスタマイズできる完全な柔軟性を得ています。 おそらく顧客は、アプリケーションのデプロイに加え、Azure リソースをそれらのデプロイと統合します。 ソリューションのさらなる改善に関するフィードバックを提供することをお勧めします。
+
+## <a name="next-steps"></a>次の手順
+
+Azure のオファーをご覧ください。
 
 > [!div class="nextstepaction"]
 > [Oracle WebLogic Server Single Node](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls)

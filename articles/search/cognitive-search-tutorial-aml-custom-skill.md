@@ -3,17 +3,17 @@ title: チュートリアル:Azure Machine Learning を使用してカスタム 
 titleSuffix: Azure Cognitive Search
 description: このチュートリアルでは、Azure Machine Learning を使用して、Azure Cognitive Search の AI エンリッチメント パイプラインのカスタム スキルを作成してデプロイする方法について説明します。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924590"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057605"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 
 
@@ -82,16 +82,15 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 
 ポータルで [スキルセット] に移動し、[スキルセットの定義 (JSON)] リンクを選択します。 ポータルには、ノートブックの最初のセルで作成されたスキルセットの JSON が表示されます。 画面の右側には、スキル定義テンプレートを選択できるドロップダウン メニューがあります。 Azure Machine Learning (AML) テンプレートを選択します。 Azure ML ワークスペースの名前と、推論クラスターにデプロイされたモデルのエンドポイントを指定します。 このテンプレートはエンドポイントの URI とキーで更新されます。
 
-> [!div class="mx-imgBorder"]
-> ![スキルセット定義テンプレート](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="スキルセット定義テンプレート&quot;:::
 
 このウィンドウからスキルセット テンプレートをコピーし、左側のスキルセット定義に貼り付けます。 テンプレートを編集して、不足している次の値を指定します。
 
 * 名前
 * 説明
 * Context
-* "inputs" の名前とソース
-* "outputs" の名前とターゲット名
+* &quot;inputs&quot; の名前とソース
+* &quot;outputs" の名前とターゲット名
 
 スキルセットを保存します。
 

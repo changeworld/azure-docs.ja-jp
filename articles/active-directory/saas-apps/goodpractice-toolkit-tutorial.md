@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550641"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>チュートリアル:Azure Active Directory と Mind Tools Toolkit の統合
 
@@ -28,7 +28,7 @@ ms.locfileid: "88550641"
 * ユーザーが自分の Azure AD アカウントを使用して Mind Tools Toolkitt に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関する記事を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ Mind Tools Toolkit と Azure AD の統合を構成するには、次のものが
 
 * Mind Tools Toolkit では、SP Initiated SSO がサポートされます。
 * Mind Tools Toolkit では、Just-In-Time ユーザー プロビジョニングがサポートされます。
-* Mind Tools Toolkit を構成した後、セッション制御を適用できます。 この制御により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Mind Tools Toolkit を構成した後、セッション制御を適用できます。 この制御により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-mind-tools-toolkit-from-the-gallery"></a>ギャラリーからの Mind Tools Toolkit の追加
 
@@ -53,12 +53,12 @@ Azure AD への Mind Tools Toolkit の統合を構成するには、ギャラリ
 1. 左端のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Mind Tools Toolkit**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Mind Tools Toolkit** 」と入力します。
 1. 検索結果から **[Mind Tools Toolkit]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**B.Simon** というテスト ユーザーを使用して、Mind Tools Toolkit で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Mind Tools Toolkit 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、 **B.Simon** というテスト ユーザーを使用して、Mind Tools Toolkit で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Mind Tools Toolkit 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Mind Tools Toolkit で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了します。
 
@@ -111,8 +111,8 @@ Mind Tools Toolkit で Azure AD のシングル サインオンを構成して�
 1. Azure portal の左端で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
-   1. **[ユーザー名]** フィールドに、「**B.Simon@** _companydomain_ **.** _extension_」と入力します。 たとえば、「 B.Simon@contoso.com 」のように入力します。
+   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。  
+   1. **[ユーザー名]** フィールドに、「 **B.Simon@** _companydomain_ **.** _extension_ 」と入力します。 たとえば、「 B.Simon@contoso.com 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
 
@@ -136,7 +136,7 @@ Mind Tools Toolkit で Azure AD のシングル サインオンを構成して�
 
 ## <a name="configure-mind-tools-toolkit-sso"></a>Mind Tools Toolkit の SSO の構成
 
-**Mind Tools Toolkit** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** テキストと以前にコピーした URL を [Mind Tools Toolkit サポート チーム](mailto:support@goodpractice.com)に送信します。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
+**Mind Tools Toolkit** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** テキストと以前にコピーした URL を [Mind Tools Toolkit サポート チーム](mailto:support@goodpractice.com)に送信します。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
 
 ### <a name="create-a-mind-tools-toolkit-test-user"></a>Mind Tools Toolkit のテスト ユーザーの作成
 
@@ -148,18 +148,18 @@ Mind Tools Toolkit では、Just-In-Time プロビジョニングがサポート
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで [Mind Tools Toolkit] タイルを選択すると、SSO を設定した Mind Tools Toolkit に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+マイ アプリ ポータルで [Mind Tools Toolkit] タイルを選択すると、SSO を設定した Mind Tools Toolkit に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory の統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory の統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Mind Tools Toolkit を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Mind Tools Toolkit を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Mind Tools Toolkit を保護する方法](/cloud-app-security/proxy-intro-aad)

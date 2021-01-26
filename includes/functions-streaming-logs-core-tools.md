@@ -4,12 +4,12 @@ ms.author: glenga
 ms.date: 7/24/2019
 ms.topic: include
 ms.service: azure-functions
-ms.openlocfilehash: 1928a8238cd73087e3c199675574dd1395f4d76d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0159ceb6e5d6d64a7a9bda383396607e4ce05b84
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68881321"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020361"
 ---
 #### <a name="built-in-log-streaming"></a>組み込みのログ ストリーミング
 
@@ -19,9 +19,12 @@ ms.locfileid: "68881321"
 func azure functionapp logstream <FunctionAppName>
 ```
 
+>[!NOTE]
+>従量課金プランの場合、組み込みのログ ストリーミングは、Linux で実行されている関数アプリの Core Tools でまだ有効になっていません。 これらのホスティング プランでは、代わりに Live Metrics Stream を使用してログをほぼリアルタイムで表示する必要があります。
+
 #### <a name="live-metrics-stream"></a>ライブ メトリック ストリーム
 
-また、次の例に示すように、`--browser` オプションを含めることによって、関数アプリの [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) を新しいブラウザー ウィンドウに表示することもできます。
+次の例に示すように、`--browser` オプションを含めることで、関数アプリの [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) を新しいブラウザー ウィンドウで表示できます。
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

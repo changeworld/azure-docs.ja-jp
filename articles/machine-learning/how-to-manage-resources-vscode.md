@@ -1,7 +1,7 @@
 ---
 title: VS Code 拡張機能 (プレビュー) によるリソースの作成と管理
 titleSuffix: Azure Machine Learning
-description: VS Code 拡張機能を使用してリソースを作成および管理する
+description: Azure Machine Learning Visual Studio Code 拡張機能を使用して Azure Machine Learning リソースを作成して管理する方法について説明します。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010675"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -44,10 +44,10 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
     1. Azure サブスクリプションを選びます
     1. 新しいリソース グループを選択するか作成して、ワークスペースをプロビジョニングします
     1. ワークスペースをプロビジョニングする場所を選択します。
-    1. *basic* エディションと *enterprise* エディションのどちらかを選択します。 さまざまな [Azure Machine Learning エディション](concept-editions.md)の詳細については、こちらを参照してください。
 
 ワークスペースを作成する別の方法として、次のものがあります。
 
+- **[表示] > [コマンド パレット]** からコマンド パレットを開いて、テキスト プロンプトに「**Azure ML:Create Workspace**」と入力します。
 - Azure Machine Learning ビューの上部にある `+` アイコンをクリックします。
 - 他のリソースをプロビジョニングするときにワークスペースを選択するように求めるメッセージが表示されたら、新しいワークスペースを作成します。
 
@@ -56,8 +56,8 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. ワークスペースが含まれているサブスクリプション ノードを展開します。
 1. 削除するワークスペースを右クリックします。
 1. 削除するかどうかを選択します。
-    - *[Only the workspace] (ワークスペースのみ)* :このオプションを選択すると、ワークスペース Azure リソース**のみ**が削除されます。 ワークスペースがアタッチされていたリソース グループ、ストレージ アカウント、その他のリソースは Azure に残ります。
-    - *[With associated resources] (関連するリソースを含む)* :このオプションを選択すると、ワークスペースが削除され、**さらに**関連付けられているすべてのリソースが削除されます。
+    - *[Only the workspace] (ワークスペースのみ)* :このオプションを選択すると、ワークスペース Azure リソース **のみ** が削除されます。 ワークスペースがアタッチされていたリソース グループ、ストレージ アカウント、その他のリソースは Azure に残ります。
+    - *[With associated resources] (関連するリソースを含む)* :このオプションを選択すると、ワークスペースが削除され、**さらに** 関連付けられているすべてのリソースが削除されます。
 
 ## <a name="datastores"></a>データストア
 
@@ -201,6 +201,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. ワークスペース内の **[実験]** ノードを展開します。
 1. 実行する実験を右クリックします。
 1. アクティビティ バーの **[実験の実行]** アイコンを選択します。
+1. 実験をローカルで実行するか、リモートで実行するかを選択します。 実験をローカルで実行およびデバッグする詳細については、[デバッグ ガイド](how-to-debug-visual-studio-code.md)に関する項を参照してください。
 1. サブスクリプションを選択します。
 1. Azure ML ワークスペースを選択して、実験を実行します。
 1. 実験を選択します。
@@ -243,6 +244,39 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
 
 拡張機能では、実行に使用される実行構成や実行の詳細などのメタデータを検査できます。
 
+## <a name="compute-instances"></a>コンピューティング インスタンス
+
+詳細については、「[コンピューティング インスタンス](concept-compute-instance.md)」を参照してください。
+
+### <a name="create-compute-instance"></a>コンピューティング インスタンスの作成
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. コンピューティング インスタンスを作成するワークスペース ノードを展開します。
+1. **[Compute instances]\(コンピューティング インスタンス\)** ノードを右クリックし、 **[Create compute instance]\(コンピューティング インスタンスの作成\)** を選択します。
+1. 次のように入力します。
+    1. コンピューティング インスタンスの名前を指定します。
+    1. 一覧から VM のサイズを選択します。
+    1. SSH アクセスを有効にするかどうかを選択します。
+        1. SSH アクセスを有効にする場合は、SSH 公開キーまたはキーを含むファイルも指定する必要があります。 詳細については、[Azure での SSH キーの作成と使用のガイド](../virtual-machines/linux/mac-create-ssh-keys.md)に関するページを参照してください。
+
+### <a name="stop-or-restart-compute-instance"></a>コンピューティング インスタンスの停止または再起動
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. ワークスペース内の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 停止または再起動するコンピューティング インスタンスを右クリックし、 **[Stop Compute instance]\(コンピューティング インスタンスの停止\)** または **[Restart compute instance]\(コンピューティング インスタンスの再起動\)** を選択します。
+
+### <a name="view-compute-instance-configuration"></a>コンピューティング インスタンス構成の表示
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. ワークスペース内の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 検査するコンピューティング インスタンスを右クリックし、 **[View Compute instance Properties]\(コンピューティング インスタンスのプロパティを表示\)** を選択します。
+
+### <a name="delete-compute-instance"></a>コンピューティング インスタンスの削除
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. ワークスペース内の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 削除するコンピューティング インスタンスを右クリックして、 **[Delete compute instance]\(コンピューティング インスタンスの削除\)** を選択します。
+
 ## <a name="compute-clusters"></a>コンピューティング クラスター
 
 この拡張機能は、次のコンピューティングの種類に対応しています。
@@ -259,7 +293,7 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
 1. **[コンピューティング クラスター]** ノードを右クリックし、 **[Create Compute] (コンピューティングの作成)** を選択します。
 1. 次のように入力します。
     1. コンピューティングの種類を選択します
-    1. VM のサイズを選択します。 [VM サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関する詳細を表示します。
+    1. VM のサイズを選択します。 [VM サイズ](../virtual-machines/sizes.md)に関する詳細を表示します。
     1. コンピューティングの名前を指定します。
 
 ### <a name="view-compute-configuration"></a>コンピューティング構成の表示

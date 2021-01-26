@@ -2,21 +2,21 @@
 title: コードで TLS/SSL 証明書を使用する
 description: コードでクライアント証明書を使用する方法について説明します。 クライアント証明書を使用してリモートリ ソースで認証するか、またはそれらを使用して暗号化タスクを実行します。
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962130"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126041"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service の自分のコードから TLS/SSL 証明書を使用する
 
 [App Service に追加したパブリック証明書またはプライベート証明書](configure-ssl-certificate.md)には、アプリケーション コード内からアクセスすることができます。 アプリ コードはクライアントとして、証明書認証を必要とする外部サービスにアクセスすることがあるほか、暗号タスクを実行しなければならない場合もあります。 この攻略ガイドでは、アプリケーション コードで公開またはプライベートの証明書を使用する方法について説明します。
 
-コードで証明書を使用するこの方法では、App Service の TLS 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。 アプリが **Free** レベルまたは **Shared** レベルの場合は、[アプリのリポジトリに証明書ファイルを格納](#load-certificate-from-file)することができます。
+コードで証明書を使用するこの方法では、App Service の TLS 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。 アプリが **Free** レベルまたは **Shared** レベルの場合は、 [アプリのリポジトリに証明書ファイルを格納](#load-certificate-from-file)することができます。
 
 App Service の TLS/SSL 証明書の管理機能を使用すれば、証明書とアプリケーション コードを分離して管理し、機密データを保護できます。
 
@@ -49,10 +49,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="load-certificate-in-windows-apps"></a>Windows アプリで証明書を読み込む
 
-Windows ホステッド アプリは、`WEBSITE_LOAD_CERTIFICATES` アプリ設定によって、Windows 証明書ストア内の指定された証明書にアクセスできるようになります。その場所は、[価格レベル](overview-hosting-plans.md)によって異なります。
-
-- **Isolated** レベル - [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 内。 
-- その他すべてのレベル - [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 内。
+`WEBSITE_LOAD_CERTIFICATES` アプリの設定により、[現在の User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) にある Windows 証明書ストア内で、指定された証明書から Windows でホストされているアプリへのアクセスが可能になります。
 
 C# コードで証明書にアクセスするには、証明書の拇印を使用します。 次のコードでは、サムプリントが `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` の証明書を読み込みます。
 
@@ -107,29 +104,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 Windows 証明書ストアがサポートされない言語またはサポートが不十分な言語については、「[ファイルから証明書を読み込む](#load-certificate-from-file)」を参照してください。
 
-## <a name="load-certificate-in-linux-apps"></a>Linux アプリで証明書を読み込む
-
-Linux ホステッド アプリ (カスタム コンテナー アプリを含む) は、`WEBSITE_LOAD_CERTIFICATES` アプリ設定によって、指定された証明書にファイルとしてアクセスできるようになります。 それらのファイルは、次のディレクトリに格納されます。
-
-- プライベート証明書 - `/var/ssl/private` ( `.p12` ファイル)
-- パブリック証明書 - `/var/ssl/certs` ( `.der` ファイル)
-
-証明書のファイル名は、証明書の拇印です。 次の C# コードは、Linux アプリでパブリック証明書を読み込む方法を示しています。
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
-
 ## <a name="load-certificate-from-file"></a>ファイルから証明書を読み込む
 
 読み込む必要のある証明書ファイルを手動でアップロードする場合は、[Git](deploy-local-git.md) などではなく [FTPS](deploy-ftp.md) を使用して証明書をアップロードすることをお勧めします。 プライベート証明書などの機密データは、ソース管理から分離しておく必要があります。
@@ -152,6 +126,39 @@ using System.Security.Cryptography.X509Certificates;
 
 ...
 var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
+
+## <a name="load-certificate-in-linuxwindows-containers"></a>Linux/Windows コンテナーで証明書を読み込む
+
+Windows または Linux コンテナー アプリ (組み込みの Linux コンテナーを含む) は、`WEBSITE_LOAD_CERTIFICATES` アプリ設定によって、指定された証明書にファイルとしてアクセスできるようになります。 それらのファイルは、次のディレクトリに格納されます。
+
+| コンテナー プラットフォーム | パブリック証明書 | プライベート証明書 |
+| - | - | - |
+| Windows コンテナー | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Linux コンテナー | `/var/ssl/certs` | `/var/ssl/private` |
+
+証明書のファイル名は、証明書の拇印です。 
+
+> [!NOTE]
+> App Service を使用すると、証明書のパスは、環境変数 (`WEBSITE_PRIVATE_CERTS_PATH`、`WEBSITE_INTERMEDIATE_CERTS_PATH`、`WEBSITE_PUBLIC_CERTS_PATH`、`WEBSITE_ROOT_CERTS_PATH`) として Windows コンテナーに挿入されます。 証明書のパスを今後変更する場合に備え、証明書のパスをハードコーディングする代わりに、環境変数を使用して証明書のパスを参照することをお勧めします。
+>
+
+さらに、 **LocalMachine\My** では、 [Windows Server Core コンテナー](configure-custom-container.md#supported-parent-images)によって、証明書が証明書ストアに自動的に読み込まれます。 証明書を読み込むには、「[Windows アプリで証明書を読み込む](#load-certificate-in-windows-apps)」と同じパターンに従います。 Windows Nano ベースのコンテナーについては、上記のファイル パスを使用して、[証明書を直接ファイルから読み込み](#load-certificate-from-file)ます。
+
+次の C# コードは、Linux アプリでパブリック証明書を読み込む方法を示しています。
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate

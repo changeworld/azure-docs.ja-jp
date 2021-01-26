@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 176060700f50a6ce6e8cb5cf622ee4c922e5a952
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051085"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845359"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Ink Recognizer API の言語と地域のサポート
 
@@ -41,8 +41,8 @@ ms.locfileid: "89051085"
 | オランダ語 (オランダ)                        |     `nl-NL`     |
 | 英語 (オーストラリア)                        |     `en-AU`     |
 | 英語 (カナダ)                           |     `en-CA`     |
-| 英語 (イギリス)                   |     `en-GB`     |
 | 英語 (インド)                            |     `en-IN`     |
+| 英語 (イギリス)                   |     `en-GB`     |
 | 英語 (米国)                    |     `en-US`     |
 | フィンランド語                                    |     `fi-FI`     |
 | フランス語 (フランス)                            |     `fr-FR`     |
@@ -67,23 +67,23 @@ ms.locfileid: "89051085"
 | ポーランド語                                     |     `pl-PL`     |
 | ポルトガル語 (ブラジル)                        |     `pt-BR`     |
 | ポルトガル語 (ポルトガル)                      |     `pt-PT`     |
-| ロマンシュ語                                    |     `rm-CH`     |
 | ルーマニア語                                   |     `ro-RO`     |
+| ロマンシュ語                                    |     `rm-CH`     |
 | ロシア語                                    |     `ru-RU`     |
 | スコットランド ゲール語                            |     `gd-GB`     |
-| セソト サ レボア語                           |    `nso-ZA`     |
 | セルビア語 (キリル、ボスニア・ヘルツェゴビナ) |  `sr-Cyrl-BA`   |
 | セルビア語 (キリル、モンテネグロ)             |  `sr-Cyrl-ME`   |
 | セルビア語 (キリル、セルビア)                 |  `sr-Cyrl-RS`   |
 | セルビア語 (ラテン、ボスニア・ヘルツェゴビナ)    |  `sr-Latn-BA`   |
 | セルビア語 (ラテン、モンテネグロ)                |  `sr-Latn-ME`   |
 | セルビア語 (ラテン、セルビア)                    |  `sr-Latn-RS`   |
+| セソト サ レボア語                           |    `nso-ZA`     |
 | セツワナ語 (南アフリカ)                    |     `tn-ZA`     |
 | スロバキア語                                     |     `sk-SK`     |
 | スロベニア語                                  |     `sl-SI`     |
 | スペイン語 (アルゼンチン)                        |     `es-AR`     |
-| スペイン語 (スペイン)                            |     `es-ES`     |
 | スペイン語 (メキシコ)                           |     `es-MX`     |
+| スペイン語 (スペイン)                            |     `es-ES`     |
 | スウェーデン語 (スウェーデン)                           |     `sv-SE`     |
 | トルコ語                                    |     `tr-TR`     |
 | ウェールズ語                                      |     `cy-GB`     |

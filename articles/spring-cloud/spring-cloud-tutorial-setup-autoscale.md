@@ -1,20 +1,23 @@
 ---
-title: チュートリアル - マイクロサービス アプリケーションの自動スケーリングを設定する
+title: マイクロサービス アプリケーションの自動スケーリングを設定する
 description: この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449469"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533827"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>チュートリアル:マイクロサービス アプリケーションの自動スケーリングを設定する
+# <a name="set-up-autoscale-for-microservice-applications"></a>マイクロサービス アプリケーションの自動スケーリングを設定する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 自動スケーリングは、需要の変化に応じてマイクロサービス アプリケーションが最高のパフォーマンスを発揮できるようにする Azure Spring Cloud の組み込み機能です。 これには、仮想 CPU、メモリ、アプリ インスタンスの数の変更が含まれます。 この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -22,7 +25,7 @@ ms.locfileid: "87449469"
 以下の手順に従うためには、次の要件を満たす必要があります。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](./spring-cloud-quickstart.md)に従って作業を開始してください。
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Azure portal で自動スケーリングのページに移動する
@@ -67,5 +70,5 @@ Basic レベルを使用していて、その 1 つ以上の制限により制�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Azure の自動スケーリングの概要](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLI での自動スケーリングの監視](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Microsoft Azure の自動スケーリングの概要](../azure-monitor/platform/autoscale-overview.md)
+* [Azure CLI での自動スケーリングの監視](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

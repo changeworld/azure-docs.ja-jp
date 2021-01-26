@@ -5,18 +5,18 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119312"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669314"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>チュートリアル:ARM テンプレートでの条件の使用
 
-Azure Resource Manager (ARM) テンプレートで条件に基づいて Azure リソースをデプロイする方法について説明します。
+Azure Resource Manager テンプレート (ARM テンプレート) で条件に基づいて Azure リソースをデプロイする方法について説明します。
 
-[リソースのデプロイ順序の設定](./template-tutorial-create-templates-with-dependent-resources.md)に関するチュートリアルでは、仮想マシン、仮想ネットワーク、およびその他の依存リソース (ストレージ アカウントなど) を作成します。 新しいストレージ アカウントを毎回作成する代わりに、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかをユーザーに選択してもらいます。 この目的を達成するために、追加のパラメーターを定義します。 パラメーターの値に "new" が指定されると、新しいストレージ アカウントが作成されます。 それ以外の場合、名前が指定された既存のストレージ アカウントが使用されます。
+[リソースのデプロイ順序の設定](./template-tutorial-create-templates-with-dependent-resources.md)に関するチュートリアルでは、仮想マシン、仮想ネットワーク、およびその他の依存リソース (ストレージ アカウントなど) を作成します。 新しいストレージ アカウントを毎回作成する代わりに、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかをユーザーに選択してもらいます。 この目的を達成するために、追加のパラメーターを定義します。 パラメーターの値に **new** が指定されると、新しいストレージ アカウントが作成されます。 それ以外の場合、名前が指定された既存のストレージ アカウントが使用されます。
 
 ![条件を使用する Resource Manager テンプレートの図](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -35,13 +35,15 @@ Azure Resource Manager (ARM) テンプレートで条件に基づいて Azure �
 * [テンプレート関数:If](./template-functions-logical.md#if)。
 * [Azure Resource Manager テンプレートの比較関数](./template-functions-comparison.md)
 
+条件について取り上げた Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」を参照してください。
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
@@ -54,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
-1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 1. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
@@ -73,22 +75,22 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     テンプレートをカスタマイズする前に、テンプレートのリファレンスを確認しておくと参考になります。
 
-1. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+1. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを _azuredeploy.json_ という名前でローカル コンピューターに保存します。
 
 ## <a name="modify-the-template"></a>テンプレートの変更
 
 既存のテンプレートに 2 つの変更を加えます。
 
 * ストレージ アカウント名パラメーターを追加します。 ユーザーは、新しいストレージ アカウント名を指定するか、または既存のストレージ アカウント名を指定することができます。
-* **newOrExisting** という新しいパラメーターを追加します。 デプロイする際には、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかどうかが、このパラメーターを使用して判別されます。
+* `newOrExisting` という新しいパラメーターを追加します。 デプロイする際には、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかどうかが、このパラメーターを使用して判別されます。
 
 変更を行う手順は次のとおりです。
 
-1. Visual Studio Code で **azuredeploy.json** を開きます。
-1. テンプレート全体で 3 つの **variables('storageAccountName')** を **parameters('storageAccountName')** に置き換えます。
+1. Visual Studio Code で _azuredeploy.json_ を開きます。
+1. テンプレート全体で 3 つの `variables('storageAccountName')` を `parameters('storageAccountName')` に置き換えます。
 1. 次の変数定義を削除します。
 
-    ![条件を使用する Resource Manager テンプレートの図](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![削除する必要のある変数定義が強調表示されているスクリーンショット。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. parameters セクションの先頭に、次の 2 つのパラメーターを追加します。
 
@@ -105,7 +107,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     },
     ```
 
-    Visual Studio Code で **ALT + Shift + F** キーを押してテンプレートの書式を設定します。
+    Visual Studio Code で Alt + Shift + F キーを押してテンプレートの書式を設定します。
 
     更新したパラメーター定義は次のようになります。
 
@@ -117,12 +119,12 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    この条件では、**newOrExisting** というパラメーターの値が確認されます。 パラメーターの値に **new** が指定されていると、ストレージ アカウントが作成されます。
+    この条件では、パラメーター `newOrExisting` の値が確認されます。 パラメーターの値に **new** が指定されていると、ストレージ アカウントが作成されます。
 
     更新したストレージ アカウント定義は次のようになります。
 
-    ![Resource Manager での条件の使用](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-1. 仮想マシンのリソース定義の **storageUri** プロパティを次の値に更新します。
+    ![更新したストレージ アカウント定義を示すスクリーンショット。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+1. 仮想マシンのリソース定義の `storageUri` プロパティを次の値に更新します。
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -136,16 +138,16 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
-1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
+1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。 切り替えた場合は、シェルを再起動する必要があります。
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、`ls` コマンドと `cat` コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 
     > [!IMPORTANT]
-    > ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 ストレージ アカウント名は、プロジェクト名に "store" が追加されたものです。 プロジェクト名と生成されたストレージ アカウント名がストレージ アカウント名の要件を満たしていることを確認してください。
+    > ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 ストレージ アカウント名は、プロジェクト名に **store** が追加されたものです。 プロジェクト名と生成されたストレージ アカウント名がストレージ アカウント名の要件を満たしていることを確認してください。
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
@@ -172,13 +174,13 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     ```
 
     > [!NOTE]
-    > **newOrExisting** が **new** のときに、指定したストレージ アカウント名のストレージ アカウントが既に存在している場合、デプロイは失敗します。
+    > `newOrExisting` が **new** のときに、指定したストレージ アカウント名のストレージ アカウントが既に存在している場合、デプロイは失敗します。
 
-**newOrExisting** を "existing" に設定した別のデプロイを作成して、既存のストレージ アカウントを指定します。 事前にストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。
+`newOrExisting` を **existing** に設定した別のデプロイを作成して、既存のストレージ アカウントを指定します。 事前にストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]\(使ってみる\)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]/(試してみる/)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

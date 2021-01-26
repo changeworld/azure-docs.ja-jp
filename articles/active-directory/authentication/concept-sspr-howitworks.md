@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 12/07/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716318"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779364"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 >
 > ユーザーが自分でパスワードをリセットする機能が IT チームによって有効にされていない場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
-## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
+## <a name="how-does-the-password-reset-process-work"></a>パスワード リセット プロセスのしくみ
 
 ユーザーは、[SSPR ポータル](https://aka.ms/sspr)を使用してパスワードをリセットまたは変更できます。 まず、希望する認証方法を登録しておく必要があります。 ユーザーが SSPR ポータルにアクセスすると、Azure Platform によって次の要素が考慮されます。
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 ユーザーがアプリケーションまたはページから **[アカウントにアクセスできません]** というリンクを選択した場合、または [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) に直接移動した場合、SSPR ポータルで使用される言語は、次のオプションに基づきます。
 
-* 既定では、SSPR を適切な言語で表示するために、ブラウザーのロケールが使用されます。 パスワード リセットのエクスペリエンスは、[Office 365 でサポートされている](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)のと同じ言語にローカライズされます。
+* 既定では、SSPR を適切な言語で表示するために、ブラウザーのロケールが使用されます。 パスワード リセットのエクスペリエンスは、[Microsoft 365 でサポートされている](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)言語と同じものにローカライズされます。
 * 特定のローカライズされた言語で SSPR にリンクする場合は、パスワード リセット URL の末尾に、必要なロケールと共に `?mkt=` を追加します。
     * たとえば、スペイン語の *es-us* ロケールを指定するには、`?mkt=es-us` - [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) を使用します。
 
@@ -59,20 +59,22 @@ SSPR ポータルが必要な言語で表示された後、ユーザー ID を�
 
 上記のすべてのチェックが正常に完了した場合、パスワードをリセットまたは変更するプロセスがユーザーに案内されます。
 
+> [!NOTE]
+> SSPR では、パスワード リセット プロセスの一環としてユーザーにメール通知が送信される場合があります。 これらのメールは、複数のリージョンにまたがってアクティブ/アクティブ モードで動作する SMTP リレー サービスを使用して送信されます。
+>
+> SMTP リレー サービスでは、メールの本文が受信され、処理されますが、保存はされません。 顧客から提供された情報を含む可能性がある SSPR メールの本文は、SMTP リレー サービスのログに格納されません。 ログには、プロトコルのメタデータのみが含まれています。
+
 SSPR の使用を開始するには、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:セルフサービス パスワード リセット (SSPR) を有効にする](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>登録のオプション
 
-ユーザーは、SSPR を使用してパスワードをリセットまたは変更する前に、まず自分自身および使用する認証方法を登録する必要があります。 前のセクションで説明したように、ユーザーが SSPR に登録されていて適切なライセンスが適用されている必要があります。
-
-### <a name="require-users-to-register-when-they-sign-in"></a>サインイン時にユーザーに登録を求める
+## <a name="require-users-to-register-when-they-sign-in"></a>サインイン時にユーザーに登録を求める
 
 Azure AD を使用して任意のアプリケーションにサインインする場合は SSPR 登録を完了するようにユーザーに要求するオプションを有効にすることができます。 このワークフローには、次のアプリケーションが含まれます。
 
-* Office 365
+* Microsoft 365
 * Azure portal
 * アクセス パネル
 * フェデレーション アプリケーション
@@ -87,7 +89,7 @@ Azure AD を使用して任意のアプリケーションにサインインす�
 >
 > ユーザーが既にサインインしている場合、SSPR に登録するためのこの中断によりその接続が切断されることはありません。
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>ユーザーが認証情報を再確認するように求められるまでの日数を設定する
+## <a name="reconfirm-authentication-information"></a>認証情報を再確認する
 
 パスワードのリセットまたは変更が必要になったときに認証方法が正しいことを確実にするために、一定期間後にユーザーに登録情報を確認するように要求できます。 このオプションは、 **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** オプションを有効にした場合にのみ使用できます。
 
@@ -126,7 +128,7 @@ SSPR で使用できる認証方法は次のとおりです。
 パスワード リセットの方法として Microsoft Authenticator アプリなどのモバイル アプリを使用している場合は、次の考慮事項が適用されます。
 
 * 管理者がパスワードのリセットに 1 つの方法の使用を必須にすると、使用できる選択肢は確認コードのみになります。
-* 管理者がパスワードのリセットに 2 つの方法の使用を必須にすると、ユーザーは通知**または**確認コードを、他の有効な方法に加えて使用できます。
+* 管理者がパスワードのリセットに 2 つの方法の使用を必須にすると、ユーザーは通知 **または** 確認コードを、他の有効な方法に加えて使用できます。
 
 | リセットに必要な方法の数 | 1 つ | 2 つ |
 | :---: | :---: | :---: |
@@ -149,9 +151,9 @@ SSPR で使用できる認証方法は次のとおりです。
 
 | 登録されている方法の数 | 必要な方法の数 | 結果 |
 | :---: | :---: | :---: |
-| 1 つ以上 | 1 | リセットまたはロック解除**できる** |
-| 1 | 2 | リセットまたはロック解除**できない** |
-| 2 以上 | 2 | リセットまたはロック解除**できる** |
+| 1 つ以上 | 1 | リセットまたはロック解除 **できる** |
+| 1 | 2 | リセットまたはロック解除 **できない** |
+| 2 以上 | 2 | リセットまたはロック解除 **できる** |
 
 使用可能な認証方法を変更した場合も、ユーザーに問題が発生する可能性があります。 ユーザーが使用できる認証方法の種類を変更すると、誤って、使用できるデータが最小量に及ばない場合にユーザーが SSPR を使用できないようにする可能性があります。
 
@@ -190,9 +192,9 @@ Azure AD によって現在のハイブリッド接続が確認され、Azure po
 * お客様のオンプレミスのライトバック クライアントは稼働しています。
 * Azure AD Connect はオンラインであり、オンプレミスのライトバック クライアントに接続されていますが、 インストールされている Azure AD Connect のバージョンが古いようです。 最新の接続機能と重要なバグ フィックスを確実に入手するため、[Azure AD Connect のアップグレード](../hybrid/how-to-upgrade-previous-version.md)をご検討ください。
 * インストールされている Azure AD Connect のバージョンが古いため、残念ながらオンプレミスのライトバック クライアントの状態を確認できません。 [Azure AD Connect をアップグレードし](../hybrid/how-to-upgrade-previous-version.md)、接続の状態を確認できるようにしてください。
-* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
+* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](./troubleshoot-sspr-writeback.md)、接続を復元してください。
 * パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](./tutorial-enable-sspr-writeback.md)、接続を復元してください。
-* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
+* 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](./troubleshoot-sspr-writeback.md)、接続を復元してください。
 
 SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
 
@@ -221,8 +223,8 @@ SSPR を使用すると、管理者によって開始されたパスワードの
 
 パスワードのリセットと変更は、すべての企業間 (B2B) 構成で完全にサポートされています。 B2B ユーザーのパスワード リセットは、次の 3 つの場合にサポートされます。
 
-* **既存の Azure AD テナントがあるパートナー組織のユーザー**:パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Office 365 のお客様に追加料金は発生しません。
-* **セルフ サービス サインアップを使ってサインアップしたユーザー**:パートナーを組んでいる組織が[セルフ サービス サインアップ](../users-groups-roles/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録したメールを使ってパスワードをリセットできます。
+* **既存の Azure AD テナントがあるパートナー組織のユーザー**:パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Microsoft 365 のお客様に追加料金は発生しません。
+* **セルフ サービス サインアップを使ってサインアップしたユーザー**:パートナーを組んでいる組織が [セルフ サービス サインアップ](../enterprise-users/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録したメールを使ってパスワードをリセットできます。
 * **B2B ユーザー**:新しい [Azure AD B2B 機能](../external-identities/what-is-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
 
 このシナリオをテストするには、これらのパートナー ユーザーのいずれかで https://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。

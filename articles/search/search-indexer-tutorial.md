@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004257"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697171"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure SQL データにインデックスを付ける
 
@@ -55,9 +55,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure portal](https://portal.azure.com/)にサインインします。
 
-1. **SQL データベース**を検索または作成します。 既定値および一番低い価格レベルを使用してかまいません。 サーバーを作成する利点は、後の手順でテーブルを作成して読み込むために必要な管理者ユーザー名とパスワードを指定できることです。
+1. **SQL データベース** を検索または作成します。 既定値および一番低い価格レベルを使用してかまいません。 サーバーを作成する利点は、後の手順でテーブルを作成して読み込むために必要な管理者ユーザー名とパスワードを指定できることです。
 
-   ![[新しいデータベース] ページ](./media/search-indexer-tutorial/indexer-new-sqldb.png "[新しいデータベース] ページ")
+   :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="[新しいデータベース] ページ" border="false":::
 
 1. **[確認と作成]** をクリックして、新しいサーバーとデータベースをデプロイします。 サーバーとデータベースがデプロイされるまで待ちます。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ファイルを選択し、 **[開く]** をクリックします。 このスクリプトは次のスクリーンショットのようになります。
 
-   ![SQL スクリプト](./media/search-indexer-tutorial/sql-script.png "SQL スクリプト")
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="SQL スクリプト" border="false":::
 
 1. **[実行]** をクリックしてクエリを実行します。 3 つの行について、クエリが正常に実行されたことを示すメッセージが [結果] ウィンドウに表示されます。
 
@@ -99,7 +99,7 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2 - 環境を設定する
 
@@ -201,7 +201,7 @@ public string HotelName { get; set; }
 
 F5 キーを押して、ソリューションをビルドおよび実行します。 プログラムがデバッグ モードで実行されます。 コンソール ウィンドウで各操作の状態が報告されます。
 
-   ![コンソール出力](./media/search-indexer-tutorial/console-output.png "コンソール出力")
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="コンソール出力" border="false":::
 
 コードは Visual Studio でローカルに実行され、Azure 上の検索サービスに接続されます。次に、それが Azure SQL Database に接続され、データセットが取得されます。 このように多くの操作が伴うため、障害が発生し得るポイントがいくつも存在します。 エラーが発生した場合は、まず次の条件を確認してください。
 
@@ -213,11 +213,11 @@ F5 キーを押して、ソリューションをビルドおよび実行しま�
 
 ## <a name="5---search"></a>5 - 検索する
 
-Azure portal を使用してオブジェクトの作成を検証し、**検索エクスプローラー**を使用してインデックスを照会します。
+Azure portal を使用してオブジェクトの作成を検証し、**検索エクスプローラー** を使用してインデックスを照会します。
 
-1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、それぞれのリストを順に開き、オブジェクトが作成されていることを確認します。 **インデックス**、**インデクサー**、**データ ソース**の名前は、それぞれ "hotels"、"azure-sql-indexer"、"azure-sql" です。
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、それぞれのリストを順に開き、オブジェクトが作成されていることを確認します。 **インデックス**、**インデクサー**、**データ ソース** の名前は、それぞれ "hotels"、"azure-sql-indexer"、"azure-sql" です。
 
-   ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="インデクサーとデータ ソースのタイル" border="false":::
 
 1. hotels インデックスを選択します。 hotels ページの先頭のタブは **[検索エクスプローラー]** です。 
 
@@ -225,7 +225,7 @@ Azure portal を使用してオブジェクトの作成を検証し、**検索�
 
    インデックスの 3 つのエントリが JSON ドキュメントとして返されます。 Search エクスプローラーは、構造全体が見えるようにドキュメントを JSON 形式で返します。
 
-   ![インデックスのクエリ](./media/search-indexer-tutorial/portal-search.png "インデックスのクエリ")
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="インデックスのクエリ" border="false":::
    
 1. 次に、検索文字列として「`search=river&$count=true`」を入力します。 
 

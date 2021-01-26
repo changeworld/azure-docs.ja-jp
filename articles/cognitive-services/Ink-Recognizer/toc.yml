@@ -10,11 +10,11 @@
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
-        - name: Javascript
+        - name: JavaScript
           href: quickstarts/javascript.md
 - name: 概念
   items:
@@ -22,9 +22,9 @@
       href: concepts/send-ink-data.md
 - name: サンプル
   items:
-    - name: 'C# およびユニバーサル Windows プラットフォーム (UWP)'
+    - name: C# およびユニバーサル Windows プラットフォーム (UWP)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# および Windows Presentation Foundation (WPF)'
+    - name: C# および Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: JavaScript Web ブラウザー アプリ
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -35,11 +35,11 @@
 - name: リファレンス
   items:
     - name: REST API リファレンス
-      href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
+      href: /rest/api/cognitiveservices/inkrecognizer/inkrecognizer
     - name: PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: 言語のサポート
       href: language-support.md
     - name: リージョン

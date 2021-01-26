@@ -12,12 +12,13 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ROBOTS: NOINDEX
+ms.openlocfilehash: ffd9b415d3b2a8e1aa716caa0e8289c6ae127b71
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884683"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065084"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft ID プラットフォーム認証プロトコル
 

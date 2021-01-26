@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559407"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763164"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR Service のマネージド ID
 
@@ -56,26 +56,60 @@ Azure SignalR Service は完全に管理されたサービスであるため、�
 
 1. システム割り当て ID またはユーザー割り当て ID を追加します。
 
-2. アップストリーム設定を構成し、 **[認証]** 設定として **[ManagedIdentity]** を使用します。 認証を使用してアップストリーム設定を作成する方法については、「[アップストリーム設定](concept-upstream.md)」を参照してください。
+2. アップストリーム設定を 1 つ追加し、次に示すように、アスタリスクをクリックして詳細ページを表示します。
+    :::image type="content" source="media/signalr-howto-use-managed-identity/pre-msi-settings.png" alt-text="pre-msi-setting":::
+    
+    :::image type="content" source="media/signalr-howto-use-managed-identity/msi-settings.png" alt-text="msi-setting":::
 
 3. マネージド ID 認証設定の **[リソース]** で、ターゲット リソースを指定できます。 リソースは取得したアクセス トークンの `aud` 要求になります。これは、アップストリーム エンドポイントの検証の一部として使用できます。 リソースは次のいずれかになります。
     - Empty
     - サービス プリンシパルのアプリケーション (クライアント) ID
     - サービス プリンシパルのアプリケーション ID URI
-    - [Azure サービスのリソース ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Azure サービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > サービスでアクセス トークンを自分で検証する場合は、任意のリソース形式を選択できます。 **[認証]** 設定の **[リソース]** の値と検証との間に整合性があることを確認してください。 データ プレーンに対してロールベースのアクセス制御 (RBAC) を使用する場合は、サービス プロバイダーが要求するリソースを使用する必要があります。
+    > サービスでアクセス トークンを自分で検証する場合は、任意のリソース形式を選択できます。 **[認証]** 設定の **[リソース]** の値と検証との間に整合性があることを確認してください。 データ プレーンに対して Azure ロールベースのアクセス制御 (Azure RBAC) を使用する場合は、サービス プロバイダーが要求するリソースを使用する必要があります。
 
 ### <a name="validate-access-tokens"></a>アクセス トークンを検証する
 
-`Authorization` ヘッダー内のトークンは、[Microsoft ID プラットフォームのアクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens)です。
+`Authorization` ヘッダー内のトークンは、[Microsoft ID プラットフォームのアクセス トークン](../active-directory/develop/access-tokens.md#validating-tokens)です。
 
 アクセス トークンを検証するには、アプリで対象ユーザーと署名トークンも検証する必要があります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、[テナントに依存しないバージョンのドキュメント](https://login.microsoftonline.com/common/.well-known/openid-configuration)を確認してください。
 
-Azure Active Directory (Azure AD) ミドルウェアには、アクセス トークンを検証するための機能が組み込まれています。 [サンプル](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)を参照して、任意の言語で検索することができます。
+Azure Active Directory (Azure AD) ミドルウェアには、アクセス トークンを検証するための機能が組み込まれています。 [サンプル](../active-directory/develop/sample-v2-code.md)を参照して、任意の言語で検索することができます。
 
-トークンの検証を処理する方法を示すライブラリとコード サンプルが用意されています。 また、JSON Web Token (JWT) 検証に使用できるオープンソースのパートナー ライブラリもいくつかあります。 ほとんどすべてのプラットフォームと言語に、少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries)」を参照してください。
+トークンの検証を処理する方法を示すライブラリとコード サンプルが用意されています。 また、JSON Web Token (JWT) 検証に使用できるオープンソースのパートナー ライブラリもいくつかあります。 ほとんどすべてのプラットフォームと言語に、少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](../active-directory/develop/reference-v2-libraries.md)」を参照してください。
+
+#### <a name="authentication-in-function-app"></a>関数アプリでの認証
+
+関数アプリでのアクセス トークンの検証は、コードを使用せず、簡単かつ効率的に設定できます。
+
+1. **[認証/承認]** ページで、 **[App Service 認証]** を **[オン]** に切り替えます。
+
+2. **[要求が認証されない場合に実行するアクション]** で、 **[Azure Active Directory でのログイン]** を選択します。
+
+3. [認証プロバイダー] で、 **[Azure Active Directory]** をクリックします。
+
+4. 新しいページで、 **[簡易]** を選択し、 **[新しい AD アプリを作成する]** を選択して、 **[OK]** をクリックします :::image type="content" source="media/signalr-howto-use-managed-identity/function-aad.png" alt-text="Function Aad":::
+
+5. SignalR Service に移動し、[手順](howto-use-managed-identity.md#add-a-system-assigned-identity)に従って、システム割り当て ID またはユーザー割り当て ID を追加します。
+
+6. SignalR Service で **[アップストリームの設定]** にアクセスし、 **[マネージド ID の使用]** を選択して、 **[既存のアプリケーションから選択]** を選択します。 以前に作成したアプリケーションを選択します。
+
+これらの設定の後、Function App では、ヘッダーにアクセス トークンがない要求が拒否されるようになります。
+
+## <a name="use-a-managed-identity-for-key-vault-reference"></a>Key Vault 参照にマネージド ID を使用する
+
+SignalR Service では、Key Vault にアクセスし、マネージド ID を使用してシークレットを取得することができます。
+
+1. Azure SignalR Service 用のシステム割り当て ID またはユーザー割り当て ID を追加します。
+
+2. Key Vault のアクセス ポリシーで、マネージド ID に対する読み取りアクセス許可をシークレットに付与します。 [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)に関する説明を参照してください
+
+現在、この機能は次のシナリオで使用できます。
+
+- [アップストリーム URL パターンでのシークレット参照](./concept-upstream.md#key-vault-secret-reference-in-url-template-settings)
+
 
 ## <a name="next-steps"></a>次のステップ
 

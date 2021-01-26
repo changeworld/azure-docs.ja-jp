@@ -9,13 +9,13 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67180908"
 ---
- Azure Cloud Shell を使用している場合は、[使ってみる] をクリックすると、Azure アカウントに自動的にサインインします。 ローカルにサインインするには、昇格された特権で PowerShell コンソールを開き、コマンドレットを実行して接続します。
+ Azure Cloud Shell を使用している場合は、[試してみる] をクリックすると、Azure アカウントに自動的にサインインします。 ローカルにサインインするには、昇格された特権で PowerShell コンソールを開き、コマンドレットを実行して接続します。
 
 ```azurepowershell
 Connect-AzAccount

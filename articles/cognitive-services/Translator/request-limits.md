@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903409"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016498"
 ---
 # <a name="request-limits-for-translator"></a>Translator に対する要求の制限
 
@@ -31,7 +31,7 @@ ms.locfileid: "87903409"
 |:----|:----|:----|:----|
 | Translate | 10,000    | 100   | 10,000 |
 | Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
+| Detect | 50,000 | 100 |   50,000 |
 | BreakSentence | 50,000    | 100 | 50,000 |
 | 辞書検索| 100 |  10  | 1,000 |
 | 辞書の例 | テキストに 100 と翻訳に 100 (合計 200)| 10|   2,000 |
@@ -52,17 +52,17 @@ ms.locfileid: "87903409"
 | S3 / C3 | 12,000 万文字/時間 |
 | S4 / C4 | 20,000 万文字/時間 |
 
-[マルチ サービス サブスクリプション](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)の制限は S1 レベルと同じです。
+[マルチ サービス サブスクリプション](./reference/v3-0-reference.md#authentication)の制限は S1 レベルと同じです。
 
 これらの制限は、Microsoft の標準翻訳モデルに制限されます。 カスタム翻訳ツールを使用するカスタム翻訳モデルは、1 秒あたり 1,800 文字に制限されます。
 
 ## <a name="latency"></a>Latency
 
-Translator の最大待ち時間は、標準モデルを使用した場合は 15 秒、カスタム モデルを使用した場合は 120 秒です。 通常、*100 文字以内のテキスト*の応答は 150 ミリ秒から 300 ミリ秒で返されます。 カスタム トランスレーター モデルの待機時間特性は、持続要求レートに似ており、要求レートが間欠的になると待機時間が長くなる可能性があります。 応答時間は、要求のサイズと言語ペアによって異なります。 その時間枠内に翻訳または[エラー応答](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)が返されなかった場合、ご使用のコードおよびネットワーク接続を確認してから、再試行してください。 
+Translator の最大待ち時間は、標準モデルを使用した場合は 15 秒、カスタム モデルを使用した場合は 120 秒です。 通常、*100 文字以内のテキスト* の応答は 150 ミリ秒から 300 ミリ秒で返されます。 カスタム トランスレーター モデルの待機時間特性は、持続要求レートに似ており、要求レートが間欠的になると待機時間が長くなる可能性があります。 応答時間は、要求のサイズと言語ペアによって異なります。 その時間枠内に翻訳または[エラー応答](./reference/v3-0-reference.md#errors)が返されなかった場合、ご使用のコードおよびネットワーク接続を確認してから、再試行してください。 
 
 ## <a name="sentence-length-limits"></a>文の長さの制限
 
-[BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) 関数を使用する場合、文の長さは 275 文字に制限されます。 以下の言語については例外があります。
+[BreakSentence](./reference/v3-0-break-sentence.md) 関数を使用する場合、文の長さは 275 文字に制限されます。 以下の言語については例外があります。
 
 | Language | コード | 文字数制限 |
 |----------|------|-----------------|
@@ -81,4 +81,4 @@ Translator の最大待ち時間は、標準モデルを使用した場合は 15
 
 * [料金](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [リージョン別の提供状況](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 Translator リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 Translator リファレンス](./reference/v3-0-reference.md)

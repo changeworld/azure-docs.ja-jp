@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997712"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701876"
 ---
 # <a name="textures"></a>テクスチャ
 
@@ -21,12 +21,12 @@ ms.locfileid: "88997712"
 
 テクスチャの種類によってユース ケースも異なります。
 
-* **2D テクスチャ**は、主に[素材](materials.md)で使用されます。
-* **キューブマップ**は、[スカイ](../overview/features/sky.md)に使用できます。
+* **2D テクスチャ** は、主に [素材](materials.md)で使用されます。
+* **キューブマップ** は、[スカイ](../overview/features/sky.md)に使用できます。
 
 ## <a name="supported-texture-formats"></a>サポートされているテクスチャ形式
 
-ARR に提供されるすべてのテクスチャは、[DDS 形式](https://en.wikipedia.org/wiki/DirectDraw_Surface)である必要があります。 可能であれば、ミップマップとテクスチャの圧縮を使用します。 変換プロセスを自動化する場合は、[TexConv コマンドライン ツール](../resources/tools/tex-conv.md)に関する記事を参照してください。
+ARR に提供されるすべてのテクスチャは、[DDS 形式](https://en.wikipedia.org/wiki/DirectDraw_Surface)である必要があります。 可能であれば、ミップマップとテクスチャの圧縮を使用します。
 
 ## <a name="loading-textures"></a>テクスチャの読み込み
 
@@ -82,11 +82,19 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 }
 ```
 
-
 用途に対してサポートされるテクスチャの種類によっては、テクスチャの種類とコンテンツに制限がある場合があります。 たとえば、[PBR 素材](../overview/features/pbr-materials.md)の粗さマップはグレースケールである必要があります。
 
 > [!CAUTION]
 > ARR ではすべての *Async* 関数が非同期操作オブジェクトを返します。 操作が完了するまで、これらのオブジェクトへの参照を保存する必要があります。 そうしないと、C# ガベージ コレクターによって操作が早期に削除されて、完了できなくなる場合があります。 上のサンプル コードでは、*Completed* イベントが到着するまで参照を保持するために、メンバー変数 ' _textureLoad ' が使用されています。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# Texture クラス](/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C# RemoteManager.LoadTextureAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C# RemoteManager.LoadTextureFromSASAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C++ Texture クラス](/cpp/api/remote-rendering/texture)
+* [C++ RemoteManager::LoadTextureAsync()](/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C++ RemoteManager::LoadTextureFromSASAsync()](/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>次のステップ
 

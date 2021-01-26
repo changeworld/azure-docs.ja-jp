@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 166bdb7a2cf15a84e1b826a9a798042c568bb227
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922151"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608233"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
@@ -77,7 +78,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 1. **[表示名]** および有効な **[連絡先の電子メール]** を入力します。
 1. **[Create App ID] \(アプリ ID の作成)** をクリックします。 Facebook プラットフォームのポリシーを受け入れ、オンライン セキュリティ チェックを完了する必要があります。
 1. **[設定]**  >  **[基本]** を選択します。
-1. **カテゴリ**を選択します。たとえば`Business and Pages`。 この値は Facebook では必須ですが、Azure AD B2C では使用されません。
+1. **カテゴリ** を選択します。たとえば`Business and Pages`。 この値は Facebook では必須ですが、Azure AD B2C では使用されません。
 1. ページの下部で、 **[プラットフォームの追加]** 、 **[Web サイト]** の順に選択します。
 1. **サイト URL** に、`https://your-tenant-name.b2clogin.com/`を入力して`your-tenant-name`をお使いのテナントの名前に置き換えてください。
 1. **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com/` など) を入力します。 プライバシー ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
@@ -87,7 +88,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 1. **[Products]\(製品\)** を選択し、 **[Facebook Login]\(Facebook ログイン\)** で **[Set up]\(セットアップ\)** を選択します。
 1. 左側のメニューの **[Facebook Login]\(Facebook ログイン\)** で **[Settings]\(設定\)** を選択します。
 1. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 ページの下部にある **[Save Changes]\(変更の保存\)** を選択します。
-1. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある**状態**セレクターをクリックし、 **[オン]** に設定してアプリケーションを公開し、 **[確認]** をクリックします。 この時点で、状態は**開発**から**ライブ**に変更されます。
+1. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある **状態** セレクターをクリックし、 **[オン]** に設定してアプリケーションを公開し、 **[確認]** をクリックします。 この時点で、状態は **開発** から **ライブ** に変更されます。
 
 ## <a name="add-the-identity-providers"></a>ID プロバイダーを追加する
 
@@ -99,19 +100,21 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
 1. **[名前]** を入力します。 たとえば､「*Contoso Azure AD*」と入力します。
-1. **[メタデータ URL]** には、次の URL を入力します。`your-AD-tenant-domain` は、利用する Azure AD テナントのドメイン名に置き換えます。
+1. **[メタデータ URL]** には、次の URL を入力します。`{tenant}` は、利用する Azure AD テナントのドメイン名に置き換えます。
 
     ```
-    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
+    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 」のように入力します。
+    たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` 」のように入力します。
+    たとえば、「 `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` 」のように入力します。
 
 1. **[クライアント ID]** には、前に記録したアプリケーション ID を入力します。
 1. **[クライアント シークレット]** には、前に記録したクライアント シークレットを入力します。
-1. **[スコープ]** 、 **[応答の種類]** 、および **[応答モード]** の既定値はそのままにします。
-1. (省略可能) **Domain_hint** に値を入力します。 たとえば、「*ContosoAD*」とします。 [ドメイン ヒント](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)は、アプリケーションからの認証要求に含まれるディレクティブです。 ドメイン ヒントを使用して、ユーザーのフェデレーション IdP サインイン ページへの移動を高速化できます。 または、マルチテナント アプリケーションで使用して、テナント用にブランディングされた Azure AD サインイン ページをすぐに表示することができます。
-1. **[ID プロバイダー要求のマッピング]** で、次の要求マッピング値を入力します。
+1. **[スコープ]** で、`openid profile` を入力します。
+1. **[応答の種類]** および **[応答モード]** の既定値はそのままにします。
+1. (省略可能) **[ドメインのヒント]** に、「`contoso.com`」と入力します。 詳しくは、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md#redirect-sign-in-to-a-social-provider)」をご覧ください。
+1. **[ID プロバイダー要求のマッピング]** で、次の要求を入力します。
 
     * **[ユーザー ID]** : *oid*
     * **[表示名]** : *name*

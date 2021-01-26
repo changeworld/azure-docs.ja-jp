@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: f66ed9a7d26a0c2d7def7d17820379b8e3460460
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 77b75b1134bbc8366478b1f9f4d14e86e9684f70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373073"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91709542"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Text Analytics API v3 でサポートされているエンティティのカテゴリ
 
@@ -27,7 +27,7 @@ ms.locfileid: "87373073"
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal"></a>[個人](#tab/personal)
+#### <a name="pii"></a>[PII](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 
@@ -35,9 +35,9 @@ ms.locfileid: "87373073"
 
 [!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
-***
+次のステップ
 
-## <a name="next-steps"></a>次のステップ
-
-* [Text Analytics で固有表現抽出
+## <a name="next-steps"></a>[Text Analytics で固有表現抽出
 を使用する方法](how-tos/text-analytics-how-to-entity-linking.md)
+
+_ <bpt id="p1">[</bpt>How to use Named Entity Recognition in Text Analytics<ept id="p1">](how-tos/text-analytics-how-to-entity-linking.md)</ept>

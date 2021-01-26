@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル: Azure Active Directory と Skills Base の統合
 
@@ -27,7 +27,7 @@ Skills Base と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Skills Base に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -110,7 +110,7 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
     > [!NOTE]
     > Skills Base アプリケーションからサインオン URL を取得できます。 管理者としてログインし、[管理] > [設定] > [インスタンスの詳細] > [ショートカット] リンクに移動してください。 サインオン URL をコピーし、上のテキスト ボックスに貼り付けます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -134,16 +134,16 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
 
 3. **[Authentication]\(認証\)** ページの [Single Sign-On]\(シングル サインオン\) で、 **[SAML 2]** を選択します。
 
-    ![シングル](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![[Single Sign-On]\(シングル サインオン\) で SAML 2 が選択された [Authentication]\(認証\) ページのスクリーンショット。](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. **[Authentication]\(認証\)** ページで、次の手順を実行します。
 
-    ![シングル](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![[Authentication]\(認証\) ページのスクリーンショット。ここでは、説明されている値を入力することができます。](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. **[Status]\(状態\)** オプションの横にある **[Update IdP metadata]\(IdP メタデータの更新\)** をクリックし、Azure Portal からダウンロードしたメタデータ XML のコンテンツを、指定のテキストボックスに貼り付けます。
 
     > [!Note]
-    > Idp メタデータは、上のスクリーンショットに示すように、**メタデータ検証**ツールを使用して検証することもできます。
+    > Idp メタデータは、上のスクリーンショットに示すように、**メタデータ検証** ツールを使用して検証することもできます。
 
     b. **[保存]** をクリックします。
 
@@ -209,12 +209,12 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Skills Base] タイルをクリックすると、SSO を設定した Skills Base に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Skills Base] タイルをクリックすると、SSO を設定した Skills Base に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

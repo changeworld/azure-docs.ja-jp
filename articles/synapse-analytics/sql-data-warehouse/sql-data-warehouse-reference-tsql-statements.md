@@ -1,6 +1,6 @@
 ---
-title: T-SQL ステートメント
-description: Synapse SQL プールでサポートされる T-SQL ステートメントのドキュメントへのリンク。
+title: 専用 SQL プール内の T-SQL ステートメント
+description: Azure Synapse Analytics の専用 SQL プール用にサポートされている T-SQL ステートメントのドキュメントへのリンク。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a52049dc08b0a8170acc4d15860db69aea44a2f
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 390907eaf529df3f9adfd481e96ff166be543d01
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276449"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324629"
 ---
-# <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>Synapse SQL プールでサポートされる T-SQL ステートメント
+# <a name="t-sql-statements-supported-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール用にサポートされている T-SQL ステートメント 
 
-Synapse SQL プールでサポートされる T-SQL ステートメントのドキュメントへのリンク。
+専用 SQL プールでサポートされている T-SQL ステートメントのドキュメントへのリンク。
 
 ## <a name="data-definition-language-ddl-statements"></a>データ定義言語 (DDL) ステートメント
 
@@ -131,4 +131,4 @@ Synapse SQL プールでサポートされる T-SQL ステートメントのド�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Synapse SQL プールの T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)」および「[Synapse SQL プールのシステム ビュー](../sql/reference-tsql-system-views.md)」を参照してください。
+詳細については、[専用 SQL プールの T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)に関するページ、および[専用 SQL プールのシステム ビュー](../sql/reference-tsql-system-views.md)に関するページを参照してください。

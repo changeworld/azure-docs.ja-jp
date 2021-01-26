@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985066"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350043"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -33,11 +33,11 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
 2. Data Lake Storage Gen1 アカウントを開き、Data Lake Storage Gen1 アカウント ブレードから **[診断設定]** をクリックします。
 3. **[診断設定]** ブレードで、 **[診断を有効にする]** をクリックします。
 
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Traffic Manager で診断ログを有効にする")
+    ![[診断設定] オプションと [診断を有効にする] オプションが強調表示されている Data Lake Storage Gen1 アカウントのスクリーンショット。](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Traffic Manager で診断ログを有効にする")
 
 3. **[診断設定]** ブレードで、診断ログの構成を次のように変更します。
    
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Traffic Manager で診断ログを有効にする")
+    ![[名前] テキスト ボックスと [保存] オプションが強調表示されている [診断設定] セクションのスクリーンショット。](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Traffic Manager で診断ログを有効にする")
    
    * **[名前]** には、診断ログ構成の値を入力します。
    * さまざまな方法でデータを格納および処理することができます。
@@ -46,7 +46,7 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
         
         * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Monitor サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Azure Monitor ログの使用についての詳細は、「[Azure Monitor のログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」をご覧ください。
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Monitor サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Azure Monitor ログの使用についての詳細は、「[Azure Monitor のログ検索で収集されたデータの表示または分析](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
@@ -64,7 +64,7 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
 1. Data Lake Storage Gen1 アカウントの **[設定]** ブレードから、 **[診断ログ]** をクリックします。
    
     ![診断ログを表示する](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "診断ログを表示する") 
-2. **[診断ログ]** ブレードには、**監査ログ**と**要求ログ**によって分類されたログが表示されます。
+2. **[診断ログ]** ブレードには、**監査ログ** と **要求ログ** によって分類されたログが表示されます。
    
    * 要求ログは、Data Lake Storage Gen1 アカウントで作成されたすべての API 要求をキャプチャします。
    * 監査ログは要求ログに似ていますが、Data Lake Storage Gen1 アカウントで実行されている操作のさらに詳細な内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
@@ -73,13 +73,13 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
 1. ログ記録用に Data Lake Storage Gen1 に関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログを表示する")
+    ![[BLOB] オプションが選択され、[Blob service] ブレードで 2 つの Blob service の名前が強調表示されている、Data Lake Storage Gen1 ブレードのスクリーンショット。](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログを表示する")
    
    * コンテナー **insights-logs-audit** には、監査ログが含まれます。
    * コンテナー **insights-logs-requests** には、要求ログが含まれます。
 2. これらのコンテナー内で、ログは次の構造の下に格納されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログを表示する")
+    ![コンテナーに格納されているログ構造のスクリーンショット。](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログを表示する")
    
     たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
@@ -119,7 +119,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Requests**など。 |
+| category |String |ログのカテゴリ。 **Requests** など。 |
 | operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
 | resultType |String |操作の状態。200 など。 |
 | callerIpAddress |String |要求を行うクライアントの IP アドレス |
@@ -168,7 +168,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Audit**など。 |
+| category |String |ログのカテゴリ。 **Audit** など。 |
 | operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
 | resultType |String |操作の状態。200 など。 |
 | resultSignature |String |操作に関する追加情報。 |
@@ -182,7 +182,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | StreamName |String |操作が実行されたパス |
 
 ## <a name="samples-to-process-the-log-data"></a>ログ データ処理のサンプル
-Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
+Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
 
 ```
 search *
@@ -196,4 +196,3 @@ Azure Data Lake Storage Gen1 には、ログ データを処理および分析�
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
-

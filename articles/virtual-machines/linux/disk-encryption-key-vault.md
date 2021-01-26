@@ -1,18 +1,18 @@
 ---
 title: Azure Disk Encryption 用のキー コンテナーの作成と構成
-description: この記事では、Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します
+description: この記事では、Linux VM の Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します。
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 0de1f1c1012315d2b9e6dd0297443f2633440869
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90970974"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 

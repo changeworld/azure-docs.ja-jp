@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75895312"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022702"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
@@ -56,7 +56,7 @@ Azure Portal は次の情報を提供できます。
 
 ![HDInsight、Azure Portal の情報](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使うこともできます。
+[Azure CLI](/cli/azure/) を使うこともできます。
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -90,8 +90,8 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 
 #### <a name="check-azure-service-usage-limits"></a>Azure サービスの使用制限を確認する
 
-大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
-[Resource Manager のコア クォータ増加要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
+大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
+[Resource Manager のコア クォータ増加要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
 
 #### <a name="check-the-release-version"></a>リリース バージョンを確認する
 
@@ -262,7 +262,7 @@ HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービス
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight ログの分析](hdinsight-debug-jobs.md)
+* [HDInsight ログの分析](./hdinsight-troubleshoot-guide.md)
 * [Linux ベースの HDInsight への Apache Hadoop YARN アプリケーションのサインインにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight における Apache Spark クラスターの既知の問題](hdinsight-apache-spark-known-issues.md)
+* [HDInsight における Apache Spark クラスターの既知の問題](./spark/apache-spark-known-issues.md)

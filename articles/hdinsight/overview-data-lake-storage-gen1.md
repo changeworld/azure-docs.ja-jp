@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b598494500124ca4a70e8e2d7bfef023fbf7d498
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187247"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328778"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>HDInsight での Azure Data Lake Storage Gen1 の概要
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen1 では、Azure Active Directory を使用して認証を�
 
 | **機能** | **説明** |
 | --- | --- |
-| 認証 |Data Lake Storage Gen1 では、Azure Active Directory (Azure AD) と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、Azure AD のすべての機能の利点が得られます。 これらの機能には、多要素認証、条件付きアクセス、ロールベースのアクセス制御などがあります。 また、アプリケーションの使用状況の監視、セキュリティの監視とアラートなどを行うこともできます。 Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 「[Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)」を参照してください。|
+| 認証 |Data Lake Storage Gen1 では、Azure Active Directory (Azure AD) と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、Azure AD のすべての機能の利点が得られます。 これらの機能には、多要素認証、条件付きアクセス、Azure ロールベースのアクセス制御などがあります。 また、アプリケーションの使用状況の監視、セキュリティの監視とアラートなどを行うこともできます。 Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 「[Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)」を参照してください。|
 | アクセス制御 |Data Lake Storage Gen1 では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御が提供されます。 ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Storage Gen1 のコンテキストにおける ACL のしくみの詳細については、「[Data Lake Storage Gen1 でのアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。 |
 | 暗号化 |Data Lake Storage Gen1 では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Storage Gen1 アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 詳細については、[Data Lake Storage Gen1 での暗号化](../data-lake-store/data-lake-store-encryption.md)に関するページを参照してください。 暗号化関連の構成を提供する方法については、「[Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する](../data-lake-store/data-lake-store-get-started-portal.md)」を参照してください。 |
 

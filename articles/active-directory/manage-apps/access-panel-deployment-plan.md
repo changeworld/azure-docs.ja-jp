@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930538"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832541"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory マイ アプリのデプロイを計画する
 
-Azure Active Directory (Azure AD) マイ アプリは、サポート コストを削減し、生産性とセキュリティを向上させ、ユーザーのストレスを軽減するために役立つ Web ベースのポータルです。 このシステムには、いつシステムにアクセスしたかを追跡し、誤用または悪用を管理者に通知する詳細なレポート機能が含まれています。
+Azure Active Directory (Azure AD) マイ アプリは、サポート コストを削減し、生産性とセキュリティを向上させ、ユーザーのストレスを軽減するために役立つ Web ベースのポータルです。 このシステムには、いつシステムにアクセスしたかを追跡し、誤用または悪用を管理者に通知する詳細なレポート機能が含まれています。 エンドユーザーの視点からマイ アプリを使用する方法については、[マイ アプリ ポータルのヘルプ](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 Azure AD マイ アプリを使用すると、次の操作を実行できます。
 
 * 会社の Azure AD 接続されているすべてのリソース (アプリケーションなど) を検出してアクセスする
 * 新しいアプリとグループへのアクセスを要求する
 * 他のユーザーのためにこれらのリソースへのアクセスを管理する
-* セルフサービス パスワード リセット と Azure Multi-Factor Authentication の設定を管理する
+* セルフサービス パスワード リセットと Azure AD Multi-Factor Authentication の設定を管理する
 * 各自のデバイスを管理する
 
 また、管理者が以下を管理できるようにします。
@@ -42,7 +42,7 @@ Azure AD マイ アプリは、次のようにビジネスに役立ちます。
 
 **直感的なユーザー エクスペリエンスを提供**:マイ アプリによって、Azure シングル サインオン (SSO) に接続されたすべてのアプリケーションに対して 1 つのプラットフォームが提供されます。 既存の設定や新しい機能 (グループ管理、セルフサービス パスワード リセット など) が追加されたときに、統合ポータルでそれらを見つけることができます。 直感的なエクスペリエンスなので、ユーザーはより迅速に作業に戻り、生産性を高め、さらにストレスを減らすことができます。
 
-**生産性の向上**:マイ アプリのすべてのユーザー アプリケーションで SSO が有効です。 エンタープライズ アプリケーションと Microsoft 365 全体で SSO を有効にして、追加のサインイン プロンプトを削減または排除することで、より優れたサインイン エクスペリエンスが実現します。 マイ アプリでは、セルフサービスと動的なメンバーシップが使用され、ID システムの全体的なセキュリティが向上します。 これは、適切な担当者がアプリケーションへのアクセスを確実に管理することで実現します。 マイ アプリは、すばやくリソースを見つけて仕事上のタスクを続行するための一貫したランディング ページとして機能します。
+**生産性の向上**:マイ アプリのすべてのユーザー アプリケーションで SSO が有効です。 エンタープライズ アプリケーションと Microsoft 365 全体で SSO を有効にして、追加のサインイン プロンプトを削減または排除することで、より優れたサインイン エクスペリエンスが実現します。 マイ アプリでは、セルフサービスと動的なメンバーシップが使用され、ID システムの全体的なセキュリティが向上します。 マイ アプリによって、アプリケーションへのアクセスを適切な人物が管理することになります。 マイ アプリは、すばやくリソースを見つけて仕事上のタスクを続行するための一貫したランディング ページとして機能します。
 
 **コストの管理**:Azure AD でマイ アプリを有効にすると、オンプレミス インフラストラクチャの処分に役立ちます。 一貫したポータルを使用して、すべてのアプリの検索、リソースへのアクセスの要求、アカウントの管理を行うことができるので、サポート コストが削減されます。
 
@@ -54,13 +54,10 @@ Azure AD マイ アプリは、次のようにビジネスに役立ちます。
 
 マイ アプリは基本的なレベルでは無料であり、使用にライセンスは必要ありません。 ただし、ディレクトリ内のオブジェクトとデプロイする追加機能の数によっては、追加のライセンスが必要になる場合があります。 ライセンス要件がある一部の一般的な Azure AD のシナリオには、以下のセキュリティ機能が含まれます。
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
-* [グループベースのメンバーシップ](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
-* [セルフサービス パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
-* [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [グループベースのメンバーシップ](../fundamentals/active-directory-manage-groups.md)
+* [セルフサービス パスワード リセット](../authentication/tutorial-enable-sspr.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 
 [Azure AD のフル ライセンス ガイド](https://azure.microsoft.com/pricing/details/active-directory/)のページを参照してください。
 
@@ -68,9 +65,8 @@ Azure AD マイ アプリは、次のようにビジネスに役立ちます。
 
 このプロジェクトを開始する前に、次の前提条件を完了してください。
 
-* [アプリケーション SSO を統合する](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
-* [Azure AD のユーザーとグループのインフラストラクチャを管理する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [アプリケーション SSO を統合する](./plan-sso-deployment.md)
+* [Azure AD のユーザーとグループのインフラストラクチャを管理する](../fundamentals/active-directory-manage-groups.md)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Azure AD マイ アプリのデプロイを計画する
 
@@ -89,6 +85,10 @@ Azure AD マイ アプリは、次のようにビジネスに役立ちます。
 | ユーザー エクスペリエンス| ユーザーは自分のアカウントを管理できます。 |
 | ユーザー エクスペリエンス| ユーザーはブラウザーの互換性を理解しています。 |
 | サポート| ユーザーはマイ アプリの問題のサポートを見つけることができます。 |
+
+
+> [!TIP]
+> マイ アプリは離れた場所にいるとき、アプリケーション プロキシを利用して社内 URL で使用できます。 詳細については、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
 
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>Azure AD マイ アプリをデプロイするためのベスト プラクティス
 
@@ -135,7 +135,6 @@ Azure AD マイ アプリは、次のようにビジネスに役立ちます。
 管理者の同意を使用するには、組織のグローバル管理者である必要があり、かつ、アプリケーションが以下のいずれかの条件を満たしている必要があります。
 
 * 組織に登録済み
-
 * 別の Azure AD 組織に登録されており、少なくとも 1 人のユーザーによって同意されている
 
 詳細については、「[Azure Active Directory でエンドユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)」を参照してください。
@@ -167,25 +166,23 @@ Microsoft は、マイ アプリに関する[電子メールやその他の連�
 
 パスワード ベースの SSO や ADFS ではなく、この方法をアプリケーションがサポートしている場合は、Azure AD (OpenID Connect/SAML) を用いたフェデレーション SSO を使用します。
 
-SaaS アプリケーションをデプロイおよび構成する方法の詳細については、[SaaS SSO デプロイ計画](https://aka.ms/deploymentplans/sso)に関するページを参照してください。
+SaaS アプリケーションをデプロイおよび構成する方法の詳細については、[SaaS SSO デプロイ計画](./plan-sso-deployment.md)に関するページを参照してください。
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>[マイ アプリ] ブラウザー拡張機能のデプロイを計画する
 
-ユーザーがパスワードベースの SSO アプリケーションにサインインする場合は、[マイ アプリ] のセキュリティで保護されたサインイン拡張機能をインストールして使用する必要があります。 この拡張機能では、アプリケーションのサインイン フォームにパスワードを送信するスクリプトが実行されます。 ユーザーは、パスワードベースの SSO アプリケーションを最初に起動するときに、この拡張機能のインストールを求められます。 拡張機能の詳細については、[マイ アプリのブラウザー拡張機能のインストール](access-panel-extension-problem-installing.md)に関するドキュメントを参照してください。
+ユーザーがパスワードベースの SSO アプリケーションにサインインする場合は、[マイ アプリ] のセキュリティで保護されたサインイン拡張機能をインストールして使用する必要があります。 この拡張機能では、アプリケーションのサインイン フォームにパスワードを送信するスクリプトが実行されます。 ユーザーは、パスワードベースの SSO アプリケーションを最初に起動するときに、この拡張機能のインストールを求められます。 拡張機能の詳細については、[マイ アプリのブラウザー拡張機能のインストール]()に関するドキュメントを参照してください。
 
-パスワードベースの SSO アプリケーションを統合する必要がある場合、[サポートされているブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)を使用して拡張機能を大規模にデプロイするためのメカニズムを定義する必要があります。 次のオプションがあります。
+パスワードベースの SSO アプリケーションを統合する必要がある場合、[サポートされているブラウザー](../user-help/my-apps-portal-end-user-access.md)を使用して拡張機能を大規模にデプロイするためのメカニズムを定義する必要があります。 次のオプションがあります。
 
-* [Internet Explorer のグループ ポリシー](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
-* [Internet Explorer の Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
-* [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Internet Explorer のグループ ポリシー]()
+* [Internet Explorer の Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](../user-help/my-apps-portal-end-user-access.md)
 
 パスワードベースの SSO アプリケーションを使用していないユーザーも、この拡張機能を利用できます。 ベネフィットの例には、拡張機能の検索バーから任意のアプリを起動できること、最近使用したアプリケーションへのアクセスの検索、[マイ アプリ] ページへのリンクなどがあります。
 
 #### <a name="plan-for-mobile-access"></a>モバイル アクセスの計画
 
-パスワードベースの SSO アプリケーションをモバイル ユーザーが起動するには、Intune ポリシーで保護されたブラウザー (Microsoft Edge または Intune Managed Browser) が必要です。 ポリシーで保護されたブラウザーは、アプリケーション用に保存されたパスワードの転送を有効にします。 Microsoft Edge またはマネージド ブラウザーは、一連の Web データ保護機能を提供します。 iOS および Android デバイスで、エンタープライズ シナリオに Microsoft Edge を使用することもできます。 Microsoft Edge は、Intune Managed Browser と同じ管理シナリオをサポートし、ユーザーのエクスペリエンスを向上させます。 詳細情報:[ポリシーで保護された Microsoft Intune ブラウザーを使用して Web アクセスを管理する](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
+パスワードベースの SSO アプリケーションをモバイル ユーザーが起動するには、Intune ポリシーで保護されたブラウザー (Microsoft Edge または Intune Managed Browser) が必要です。 ポリシーで保護されたブラウザーは、アプリケーション用に保存されたパスワードの転送を有効にします。 Microsoft Edge またはマネージド ブラウザーは、一連の Web データ保護機能を提供します。 iOS および Android デバイスで、エンタープライズ シナリオに Microsoft Edge を使用することもできます。 Microsoft Edge は、Intune Managed Browser と同じ管理シナリオをサポートし、ユーザーのエクスペリエンスを向上させます。 詳細情報:[ポリシーで保護された Microsoft Intune ブラウザーを使用して Web アクセスを管理する](/intune/app-configuration-managed-browser)。
 
 ## <a name="plan-your-my-apps-deployment"></a>[マイ アプリ] のデプロイを計画する
 
@@ -228,7 +225,7 @@ Azure AD SSO に対応した任意のアプリケーションを [マイ アプ�
 
 Azure AD では、独自のセキュリティ グループまたは Microsoft 365 グループを作成して管理することができます。 グループの所有者は、メンバーシップ要求を承認または拒否できます。また、グループ メンバーシップの制御を委任できます。 セルフサービスによるグループ管理機能は、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
 
-セルフサービスによるグループ メンバーシップを計画するには、組織内のすべてのユーザーにグループの作成と管理を許可するか、それとも一部のユーザーのみに許可するかを決定します。 一部のユーザーを許可している場合、許可するユーザーを追加するグループを設定する必要があります。 これらのシナリオを有効にする方法の詳細については、「[Azure Active Directory でのセルフサービス グループ管理の設定](../users-groups-roles/groups-self-service-management.md)」を参照してください。
+セルフサービスによるグループ メンバーシップを計画するには、組織内のすべてのユーザーにグループの作成と管理を許可するか、それとも一部のユーザーのみに許可するかを決定します。 一部のユーザーを許可している場合、許可するユーザーを追加するグループを設定する必要があります。 これらのシナリオを有効にする方法の詳細については、「[Azure Active Directory でのセルフサービス グループ管理の設定](../enterprise-users/groups-self-service-management.md)」を参照してください。
 
 ## <a name="plan-reporting-and-auditing"></a>レポートと監査を計画する
 
@@ -251,11 +248,11 @@ Azure AD は、ほとんどの監査データを 30 日間保持します。 デ
 
 アプリケーションが SSO 用に構成された後、グループにアクセス権が割り当てられます。 割り当てられたグループのユーザーは、[マイ アプリ] および Microsoft 365 アプリ ランチャーでそのアプリケーションを表示してアクセスすることができます。
 
-「[Azure Active Directory でアプリケーションにユーザーとグループを割り当てる](methods-for-assigning-users-and-groups.md)」を参照してください。
+「[Azure Active Directory でアプリケーションにユーザーとグループを割り当てる](./assign-user-or-group-access-portal.md)」を参照してください。
 
 テストまたはデプロイ中にグループを追加するが、アプリケーションを [マイ アプリ] にまだ表示させない場合は、「[Azure Active Directory のエンドユーザーに対してアプリケーションを非表示にする](hide-application-from-user-portal.md)」を参照してください。
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>Microsoft 365 アプリケーションを [マイ アプリ] にデプロイする
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>Microsoft 365 アプリケーションを [マイ アプリ] にデプロイする
 
 Microsoft 365 アプリケーションの場合、ユーザーは各自に割り当てられたライセンスに基づいて Office のコピーを受け取ります。 Office アプリケーションにアクセスするための前提条件は、Office アプリケーションに紐付けられた正しいライセンスにユーザーを割り当てることです。 ユーザーにライセンスを割り当てると、ライセンスに関連付けられたアプリケーションが、ユーザーの [マイ アプリ] ページと Microsoft 365 アプリ ランチャーに自動的に表示されます。
 
@@ -290,7 +287,6 @@ Microsoft 365 アプリケーションの場合、ユーザーは各自に割り
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>アプリケーションのセルフサービス機能のテスト ケースの例
 
-
 | ビジネス ケース| 予想される結果 |
 | - | - |
 | ユーザーはアプリケーションのメンバーシップを管理できる| ユーザーはアプリにアクセスできるメンバーを追加/削除できる |
@@ -298,12 +294,12 @@ Microsoft 365 アプリケーションの場合、ユーザーは各自に割り
 
 ### <a name="rollback-steps"></a>手順をロールバックする
 
-お客様のデプロイが想定どおりに行われない場合にどうするかを計画することは重要です。 デプロイ時に SSO の構成に失敗した場合に、[SSO の問題をトラブルシューティング](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso)してユーザーへの影響を軽減する方法を理解する必要があります。 極端な状況では、[SSO のロール バック](../manage-apps/plan-sso-deployment.md#rollback-process)が必要になる場合があります。
+お客様のデプロイが想定どおりに行われない場合にどうするかを計画することは重要です。 デプロイ時に SSO の構成に失敗した場合に、[SSO の問題をトラブルシューティング](../hybrid/tshoot-connect-sso.md)してユーザーへの影響を軽減する方法を理解する必要があります。 極端な状況では、[SSO のロール バック](../manage-apps/plan-sso-deployment.md#rollback-process)が必要になる場合があります。
 
 
 ## <a name="manage-your-implementation"></a>実装を管理する
 
-Azure Active Directory 内で必要なタスクを実行するには、最小限の特権ロールを使用する必要があります。 [使用できるさまざまなロールを確認](../users-groups-roles/directory-assign-admin-roles.md)して、このアプリケーションの各ペルソナのニーズを満たすのに適したものを選択してください。 場合によっては、一部のロールは、一時的に適用してデプロイが完了した後で削除する必要があります。
+Azure Active Directory 内で必要なタスクを実行するには、最小限の特権ロールを使用します。 [使用できるさまざまなロールを確認](../roles/permissions-reference.md)して、このアプリケーションの各ペルソナのニーズを満たすのに適したものを選択してください。 場合によっては、一部のロールは、一時的に適用してデプロイが完了した後で削除する必要があります。
 
 | ペルソナ| ロール| Azure AD ロール  |
 | - | -| -|
@@ -315,22 +311,5 @@ Azure Active Directory 内で必要なタスクを実行するには、最小限
 
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) を使用してロールを管理し、ディレクトリのアクセス許可を持つユーザーに対する追加の監査、制御、およびアクセス レビューを提供することができます。
 
-### <a name="troubleshoot-my-apps-issues"></a>マイ アプリの問題のトラブルシューティング
-
-一般的なシナリオを使用して、自社のサポート組織向けのトラブルシューティング ガイドを作成し、解決策が載っている Microsoft のドキュメントを参照先として指示します。 場合によっては、組織で採用されている複数の階層でサポートを分担するためのガイドを作成する必要があります。
-
-参考資料については、次のトラブルシューティング ガイドを参照してください。
-
-[アプリケーションが表示されない](access-panel-troubleshoot-application-not-appearing.md)
-
-[予期しないアプリケーションが表示される](access-panel-troubleshoot-unexpected-application.md)
-
-[ユーザーがマイ アプリにサインインできない](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[セルフサービスのアプリケーション アクセスの使用に関する問題](access-panel-troubleshoot-self-service-access.md)
-
-[ブラウザー拡張機能に関する問題](manage-access-panel-browser-extension.md)
-
 ## <a name="next-steps"></a>次のステップ
-
-[Azure Multi-Factor Authentication のデプロイを計画する](https://aka.ms/deploymentplans/mfa)
+[Azure AD Multi-Factor Authentication のデプロイを計画する](../authentication/howto-mfa-getstarted.md)

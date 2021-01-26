@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b409254abbde1c1f6156052c49a07e6cc09a4dfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288272"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958780"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -243,7 +244,7 @@ Azure での SAP 高可用性は、次の 3 つの種類に分類できます。
 
     たとえば、高可用性には、コンピューティング (VM)、ネットワーク、ストレージおよび SAP アプリケーションの可用性を高めるためのその利点を含めることがあります。
 
-* **Azure インフラストラクチャ VM の再起動を利用した SAP アプリケーションの*高可用性*の実現**: 
+* **Azure インフラストラクチャ VM の再起動を利用した SAP アプリケーションの *高可用性* の実現**: 
 
     Linux で Windows Server フェールオーバー クラスタリング (WSFC) や Pacemaker などの機能を使用しない場合は、Azure VM の再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
 
@@ -272,13 +273,13 @@ Windows 向けはありますが、Linux 向けの sapinst-integrated SAP 高可
 (99.95/100) * (99.9/100) * (99.9/100) = 0.9975、つまり 99.75% の全体的な可用性。
 
 ### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>同じ可用性セット内の仮想マシンの複数のインスタンス
-同じ*可用性セット*にデプロイされた 2 つ以上のインスタンスがあるすべての仮想マシンについては、仮想マシンが 99.95% 以上の時間において少なくとも 1 つのインスタンスに接続されることを保証します。
+同じ *可用性セット* にデプロイされた 2 つ以上のインスタンスがあるすべての仮想マシンについては、仮想マシンが 99.95% 以上の時間において少なくとも 1 つのインスタンスに接続されることを保証します。
 
-2 つ以上の VM が同じ可用性セットに含まれている場合、基盤となる Azure プラットフォームによって、可用性セット内の各仮想マシンに*更新ドメイン*と*障害ドメイン*が割り当てられます。
+2 つ以上の VM が同じ可用性セットに含まれている場合、基盤となる Azure プラットフォームによって、可用性セット内の各仮想マシンに *更新ドメイン* と *障害ドメイン* が割り当てられます。
 
-* **更新ドメイン**では、Azure インフラストラクチャの計画済みメンテナンス時に、複数の VM が同時に再起動しないことが保証されます。 一度に 1 つの VM のみが再起動されます。
+* **更新ドメイン** では、Azure インフラストラクチャの計画済みメンテナンス時に、複数の VM が同時に再起動しないことが保証されます。 一度に 1 つの VM のみが再起動されます。
 
-* **障害ドメイン**では、共通の電源とネットワーク スイッチを共有していないハードウェア コンポーネントに VM がデプロイされることが保証されます。 サーバー、ネットワーク スイッチ、または電源で計画外のダウンタイムが発生した場合に、1 つの VM のみが影響を受けます。
+* **障害ドメイン** では、共通の電源とネットワーク スイッチを共有していないハードウェア コンポーネントに VM がデプロイされることが保証されます。 サーバー、ネットワーク スイッチ、または電源で計画外のダウンタイムが発生した場合に、1 つの VM のみが影響を受けます。
 
 詳細については、「[Azure での Windows 仮想マシンの可用性の管理][azure-virtual-machines-manage-availability]」をご覧ください。
 
@@ -326,7 +327,7 @@ Managed Disks は Azure Resource Manager のリソースの種類で、Azure Sto
 
 
 
-## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Azure インフラストラクチャ高可用性を利用した SAP アプリケーションの*高可用性*の実現
+## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Azure インフラストラクチャ高可用性を利用した SAP アプリケーションの *高可用性* の実現
 
 Linux で WSFC や Pacemaker などの機能 (現在 SUSE Linux Enterprise Server [SLES] 12 以降でのみサポート) を使用しない場合は、Azure VM の再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
 
@@ -344,7 +345,7 @@ SAP システム全体の高可用性を実現するには、SAP システムの
 
 > このセクションは次に適用されます。
 >
-> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![Windows ロゴ。][Logo_Windows] Windows および ![Linux ロゴ。][Logo_Linux] Linux
 >
 
 SAP アプリケーション サーバーおよびダイアログ インスタンスについては、通常、特定の高可用性ソリューションは不要です。 高可用性は冗長性によって実現し、Azure Virtual Machines のさまざまなインスタンスで複数のダイアログ インスタンスを構成します。 Azure Virtual Machines の 2 つのインスタンスに少なくとも 2 つの SAP アプリケーション インスタンスをインストールする必要があります。
@@ -382,7 +383,7 @@ Azure スケール ユニット内の Azure 可用性セットで使用できる
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows での SAP ASCS/SCS インスタンスの高可用性のアーキテクチャ
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 
 WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを保護できます。 ソリューションには、2 つのバリエーションがあります。
@@ -395,7 +396,7 @@ WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを�
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux での SAP ASCS/SCS インスタンスの高可用性アーキテクチャ
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 > 
 > SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。 可用性の高い NFS が必要でない、SLES での代替 HA アーキテクチャについては、[SAP アプリケーション用に Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver に関する高可用性ガイド][sap-suse-ascs-ha-anf]を参照してください。
 
@@ -404,7 +405,7 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスのための SAP NetWeaver マルチ SID の構成
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 > 
 > マルチ SID は、ファイル共有と共有ディスクを使用して WSFC でサポートされます。
 > 
@@ -414,7 +415,7 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 
 * [Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンス マルチ SID の高可用性に関するページ][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 > 
 > マルチ SID クラスタリングは、SAP ASCS/Pacemaker の Linux クラスターでサポートされており、同じクラスター上で **5 つ** の SAP SID に制限されています。
 > Linux のマルチ SID 高可用性アーキテクチャについての詳細は、次をご覧ください。

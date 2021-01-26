@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4ebd3cc605b396f72d063f3fc506df9020ec3a5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e3570a716eccf131cf19192454bfbc1008a6306e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060997"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935038"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault との間でキーの設定と取得を行う
 
@@ -69,7 +69,7 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 Add-AzKeyVaultKey -VaultName 'Contoso-Vault2' -Name 'ExampleKey' -Destination 'Software'
 ```
 
-これで、Azure Key Vault に追加したキーは、その URI を使用すると参照できます。 **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** を使用して、現在のバージョンを取得します。 
+これで、Azure Key Vault に追加したキーは、その URI を使用すると参照できます。 **"https://Contoso-Vault2.vault.azure.net/keys/ExampleKey"** を使用して、現在のバージョンを取得します。 
 
 以前に格納したキーを表示するには:
 
@@ -94,4 +94,4 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

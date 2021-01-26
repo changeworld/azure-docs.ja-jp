@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 9643e62f085888808b95698d068c5e383fb8d539
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142538"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337969"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal で Azure Data Box の自己管理型の発送を使用する
 
@@ -36,53 +36,55 @@ ms.locfileid: "88142538"
 Data Box を注文するときに、自己管理型の発送オプションを選択できます。
 
 1. Azure Data Box の注文の **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
-   ![自己管理型の発送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+ 
+   ![自己管理型の発送、配送先住所の追加](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. 発送の種類を選択する時に、 **[Self-managed shipping]\(自己管理型の発送\)** オプションを選択します。 このオプションは、「前提条件」で説明されているように、サポートされているリージョンでのみ使用できます。
 
 3. 発送先住所を入力したら、確認して注文を完了する必要があります。
-   ![自己管理型の発送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+
+   ![自己管理型の発送、確認して住所を追加する](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. デバイスの準備が完了し、その電子メール通知を受け取ったら、受け取りをスケジュールします。
 
    Azure Data Box の注文の **[概要]** に移動し、 **[Schedule pickup]\(受け取りのスケジュールを設定\)** を選択します。
 
-   ![Data Box デバイスの受け取りを注文する](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-01.png)
+   ![Data Box 注文、受け取りオプションのスケジュール](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-01.png)
 
 5. **[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\)** の説明に従ってください。
 
    認証コードを取得する前に、[adbops@microsoft.com](mailto:adbops@microsoft.com) にメールを送信して、リージョンのデータセンターからデバイスを受け取りのスケジュールを設定する必要があります。
 
-   ![集荷のスケジュール](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
+   ![Azure の受け取りのスケジュールの手順](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
 6. デバイスの受け取りをスケジュールすると、 **[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\)** ウィンドウにデバイスの認証コードが表示されます。
 
-   ![認証コードの表示](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
+   ![デバイス認証コードの表示](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   この**認証コード**をメモしておきます。 セキュリティ要件に従って、受け取りをスケジュールするときに、受け取りを行う人物の名前を指定する必要があります。
+   この **認証コード** をメモしておきます。 セキュリティ要件に従って、受け取りをスケジュールするときに、受け取りを行う人物の名前を指定する必要があります。
 
    また、データセンターに受け取りに行くユーザーの詳細を指定する必要もあります。 お客様または連絡担当者は、データセンターで検証される政府発行の写真付きの ID を携帯する必要があります。
 
-   さらに、デバイスを受け取りに行くユーザーにも、**認証コード**が必要です。 認証コードは、データセンターでの受け取り時に検証されます。
+   さらに、デバイスを受け取りに行くユーザーにも、**認証コード** が必要です。 認証コードは、データセンターでの受け取り時に検証されます。
 
 7. デバイスをデータセンターから受け取ると、注文は自動的に **[Picked up]\(受け取り済み\)** 状態になります。
 
-    ![集荷されました](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
+    ![受け取り状態の注文](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
 
 8. デバイスを受け取ったら、サイトのデータを Data Box にコピーします。 データのコピーが完了したら、Data Box の発送の準備をします。 詳細については、「[配送の準備](data-box-deploy-picked-up.md#prepare-to-ship)」を参照してください。
 
-   **発送準備**の手順は、重大なエラーがないよう完了する必要があります。エラーがあった場合、必要な修正を行った後で、この手順をもう一度実行する必要があります。 発送準備が正常に完了したら、デバイスのローカル ユーザーインターフェイスで、返却用の認証コードを確認します。
+   **発送準備** の手順は、重大なエラーがないよう完了する必要があります。エラーがあった場合、必要な修正を行った後で、この手順をもう一度実行する必要があります。 発送準備が正常に完了したら、デバイスのローカル ユーザーインターフェイスで、返却用の認証コードを確認します。
 
    > [!NOTE]
    > この認証コードは、メールで共有しないでください。 これは、データセンターでの返却時にのみ検証されます。
 
 9. 返却の予定を受け取ると、Azure portal に表示されるその注文の状態が **[Ready to receive at Azure datacenter]\(Azure データセンターで受け取る準備が完了しました\)** になります。 **[Schedule drop-off]\(返却のスケジュール\)** の指示に従って、デバイスを返却します。
 
-   ![認証コードの表示](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![デバイスの返却の手順](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. ID と認証コードが検証され、データセンターにデバイスを返却すると、注文ステータスが **[Received]\(返却済み\)** になります。
 
-    ![返却完了](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
+    ![返却済みステータスの注文](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 
 11. デバイスを返却すると、データのコピーが続行されます。 コピーが完了すると、注文が完了します。
 

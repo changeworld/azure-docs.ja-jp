@@ -1,19 +1,19 @@
 ---
 title: HBase クラスターを新しいバージョンに移行する - Azure HDInsight
 description: Azure HDInsight で Apache HBase クラスターを新しいバージョンに移行する方法。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079549"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697664"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 
@@ -52,7 +52,7 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 
 1. 同じストレージ アカウントで別のコンテナー名を使用して、[新しい移行先 HDInsight クラスターを設定](../hdinsight-hadoop-provision-linux-clusters.md)します。
 
-    ![同じストレージ アカウントを使用して別のコンテナーを作成する](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   ![同じストレージ アカウントを使用して別のコンテナーを作成する](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
 1. アップグレードするクラスターである、ソース HBase クラスターをフラッシュします。 HBase では、_memstore_ と呼ばれるメモリ内ストアに受信データが書き込まれます。 memstore が一定のサイズに達すると、HBase はクラスターのストレージ アカウントに長期保存するためにディスクにフラッシュします。 古いクラスターを削除すると、memstore がリサイクルされ、データが失われる可能性があります。 各テーブルの memstore をディスクに手動でフラッシュするには、次のスクリプトを実行します。 このスクリプトの最新バージョンは、Azure の [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) にあります。
 
@@ -182,19 +182,49 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 
     ![[Turn On Maintenance Mode for HBase]\(HBase のメンテナンス モードをオンにする\) チェックボックスをオンにし、操作を確定します](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
+1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
+
+   次のコマンドを、元のクラスターの任意の ZooKeeper ノードまたはワーカー ノードの SSH セッションから実行して、HDFS の下の WAL ディレクトリをバックアップします。
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup**
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   ```
+    
 1. 新しい HDInsight クラスターの Ambari にサインインします。 `fs.defaultFS` HDFS 設定を、元のクラスターで使用されているコンテナー名を指すように変更します。 この設定は、 **[HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) > [Advanced core-site]\(高度なコアサイト\)** にあります。
 
-    ![Ambari で、[Services]\(サービス\) > [HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) をクリックします](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   ![Ambari で、[Services]\(サービス\) > [HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) をクリックします](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
-    ![Ambari で、コンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   ![Ambari で、コンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
 
    `hbase.rootdir` パスを、元のクラスターのコンテナーを指すように変更します。
 
-    ![Ambari で、HBase rootdir のコンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   ![Ambari で、HBase rootdir のコンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 これは、拡張書き込み機能がある HBase クラスターに対してのみ必要であり、元のクラスターが拡張書き込み機能を備えた HBase クラスターだった場合にのみ必要です。
 
-1. HDInsight 3.6 を 4.0 にアップグレードする場合は、次の手順に従います。それ以外の場合は手順 10 までスキップしてください。
+   この新しいクラスターの ZooKeeper と WAL FS データをクリーニングします。 任意の ZooKeeper ノードまたはワーカー ノードで次のコマンドを実行します。
+
+   ```bash
+   hbase zkcli
+   rmr /hbase-unsecure
+   quit
+
+   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+   ```
+
+1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
+   
+   新しいクラスターの任意の ZooKeeper ノードまたはワーカー ノードの SSH セッションから、新しいクラスターの HDFS に WAL ディレクトリを復元します。
+   
+   ```bash
+   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   ```
+   
+1. HDInsight 3.6 を 4.0 にアップグレードする場合は、次の手順に従います。それ以外の場合は手順 13 までスキップしてください。
+
     1. Ambari で必要なすべてのサービスを再起動するために、 **[Services]\(サービス\　)**  >  **[Restart All Required]\(必須をすべて再起動\)** を選択します。
     1. HBase サービスを停止します。
     1. Zookeeper ノードに SSH 接続し、[zkCli](https://github.com/go-zkcli/zkcli) コマンド `rmr /hbase-unsecure` を実行して Zookeeper から HBase ルートの znode を削除します。

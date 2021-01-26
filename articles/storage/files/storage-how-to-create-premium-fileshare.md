@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7c178f0bb54cb815b25259c819d15d10b3671c79
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1ec8e4a945f8b8277d05c11bf3673d2e4ab15f9a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070940"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626794"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Azure Premium ファイル共有を作成する方法
 
@@ -24,8 +24,8 @@ Premium ファイル共有は、ソリッド ステート ディスク (SSD) ス
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- Azure PowerShell モジュールを使用する場合は、[最新バージョンをインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)してください。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure PowerShell モジュールを使用する場合は、[最新バージョンをインストール](/powershell/azure/install-az-ps?view=azps-4.6.0)してください。
 
 ## <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 
@@ -163,6 +163,7 @@ Azure PowerShell モジュールで Premium ファイル共有を作成するに
 ```powershell
 New-AzStorageShare `
    -Name myshare `
+   -EnabledProtocol SMB `
    -Context $storageAcct.Context
 ```
 
@@ -177,6 +178,7 @@ Azure CLI で Premium ファイル共有を作成するには、[az storage shar
 az storage share create \
     --account-name $STORAGEACCT \
     --account-key $STORAGEKEY \
+    --enabled-protocol SMB \
     --name "myshare" 
 ```
 ---

@@ -3,7 +3,7 @@ title: Azure Media Services の概要 | Microsoft Docs
 description: Microsoft Azure Media Services は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 この記事では、Azure Media Services の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89261157"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348748"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要
 
@@ -78,7 +78,7 @@ Media Services ソリューションを構築するために、以下を使用�
 
 ## <a name="code-samples"></a>コード サンプル
 
-**Azure のコード サンプル** ギャラリーで、[Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)を検索すると、複数のコード サンプルが見つかります。
+**Azure のコード サンプル** ギャラリーで、 [Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)を検索すると、複数のコード サンプルが見つかります。
 
 ## <a name="concepts"></a>概念
 
@@ -86,13 +86,12 @@ Azure Media Services の概念については、「 [概念](media-services-conc
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Media Services のサポートされているシナリオとデータ センター全体における可用性
 
-詳細については、[AMS のシナリオおよびデータ センター全体における機能とサービスの可用性](scenarios-and-availability.md)に関する記事を参照してください。
+Azure の一般的なシナリオの詳細については、[AMS のシナリオ](scenarios-and-availability.md)に関するページを参照してください。
+リージョン別の提供状況については、[メディア サービスの提供状況](availability-regions-v-2.md)に関するページを参照してください。
 
 ## <a name="service-level-agreement-sla"></a>サービス レベル アグリーメント (SLA)
 
 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」参照してください。
-
-データ センターにおける可用性については、[可用性](scenarios-and-availability.md#availability)に関するセクションを参照してください。
 
 ## <a name="support"></a>サポート
 

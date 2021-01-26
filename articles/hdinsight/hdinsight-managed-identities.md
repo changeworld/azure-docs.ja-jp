@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 87bc2338ecc48f1115a406c276ef221cb185a4c5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749859"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118627"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 
@@ -44,9 +44,19 @@ Azure HDInsight では、マネージド ID は内部コンポーネントの HD
 
 マネージド ID は、Azure HDInsight のさまざまなシナリオで使用されます。 セットアップと構成の詳細な手順については、次の関連ドキュメントをご覧ください。
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#create-a-user-assigned-managed-identity)
 * [Enterprise セキュリティ パッケージ](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [お客様が管理するキー ディスクの暗号化](disk-encryption.md)
+
+これらのシナリオで使用するマネージド ID の証明書は、HDInsight によって自動的に更新されます。 ただし、長時間実行されているクラスターで複数の異なるマネージド ID が使用されているときは制限があり、すべてのマネージド ID で証明書の更新が意図したとおりに機能しない可能性があります。 この制限のため、実行時間の長いクラスター (たとえば、60 日以上) を使用する予定の場合は、上記のすべてのシナリオで同じマネージド ID を使用することをお勧めします。 
+
+複数の異なるマネージド ID を使用して実行時間の長いクラスターを既に作成していて、次のいずれかの問題が発生している場合:
+ * ESP クラスターにおいて、クラスター サービスでエラーが発生し始めたり、スケールアップや他の操作が認証エラーで失敗し始めます。
+ * ESP クラスターにおいて、AAD-DS LDAPS 証明書を変更するときに、LDAPS 証明書が自動的に更新されないため、LDAP の同期やスケールアップが失敗するようになります。
+ * ADLS Gen2 への MSI アクセスが失敗し始めます。
+ * CMK シナリオで、暗号化キーをローテーションできません。
+
+このようなときは、上記のシナリオに必要なロールとアクセス許可を、クラスターで使用されているすべてのマネージド ID に割り当てる必要があります。 たとえば、ADLS Gen2 クラスターと ESP クラスターに対して異なるマネージド ID を使用した場合、これらの問題が発生しないようにするには、それらの両方に、"ストレージ BLOB データ所有者" ロールと "HDInsight ドメイン サービス共同作成者" ロールを割り当てる必要があります。
 
 ## <a name="faq"></a>よく寄せられる質問
 

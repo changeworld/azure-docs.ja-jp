@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3b86f9bcbc863a78fd5f8f748e973a20ea709636
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035061"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573172"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 
@@ -61,6 +61,9 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 |CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
+>[!NOTE]
+>可用性ゾーンがあるリージョンでは、PowerShell または CLI コマンドを使用して、パブリック IP アドレス プレフィックスを、非ゾーンとして、特定のゾーンに関連付けて、またはゾーン冗長を使用するように作成できます。  API バージョン 2020-08-01 以降では、ゾーン パラメーターが指定されていない場合、非ゾーンのパブリック IP アドレス プレフィックスが作成されます。 2020-08-01 より前のバージョンの API では、ゾーン冗長パブリック IP アドレス プレフィックスが作成されます。 
+
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>プレフィックスから静的パブリック IP アドレスを作成する
 プレフィックスを作成したら、プレフィックスから静的 IP アドレスを作成する必要があります。 これを行うには、次の手順を実行します。
 
@@ -77,7 +80,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 または、パブリック IP アドレス リソースを作成するには、--public-ip-prefix (CLI) および -PublicIpPrefix (PS) パラメーターを指定して以下の CLI および PS コマンドを使用することができます。 
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
@@ -88,11 +91,11 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 2. 表示か設定の変更、または一覧から削除するパブリック IP アドレス プレフィックスの名前を選択します。
 3. パブリック IP アドレス プレフィックスの表示か設定の変更、または一覧からの削除のどの操作を行うかに従って以下のいずれかの設定を行います。
    - **表示**: **[概要]** セクションには、プレフィックスなど、パブリック IP アドレス プレフィックスの主要な設定が表示されます。
-   - **[削除]** :パブリック IP アドレス プレフィックスを削除するには、 **[概要]** セクションの **[削除]** を選択します。 プレフィックス内のアドレスがパブリック IP アドレス リソースに関連付けられている場合は、まずパブリック IP アドレス リソースを削除する必要があります。 [パブリック IP アドレスの削除](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)に関するページを参照してください。
+   - **[削除]** :パブリック IP アドレス プレフィックスを削除するには、 **[概要]** セクションの **[削除]** を選択します。 プレフィックス内のアドレスがパブリック IP アドレス リソースに関連付けられている場合は、まずパブリック IP アドレス リソースを削除する必要があります。 [パブリック IP アドレスの削除](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)に関するページを参照してください。
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) (パブリック IP アドレスの一覧表示)、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) (設定の表示)、[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) (更新)、[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) (削除)|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) (パブリック IP アドレス オブジェクトの取得とその設定の表示)、[Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) (設定の更新)、[Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) (削除)|

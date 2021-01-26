@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 08/10/2020
 ms.author: juliako
-ms.custom: devx-track-javascript
-ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994980"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>お使いのアプリに Video Indexer ウィジェットを埋め込む
 
@@ -73,13 +73,13 @@ ms.locfileid: "87414022"
 埋め込みリンクには、`location` パラメーターを含める必要があります。[リージョンの名前を取得する方法](regions.md)に関するページを参照してください。 ご利用のアカウントがプレビューである場合は、location の値に `trial` を使用する必要があります。 `trial` は、`location` パラメーターの既定値です。 (例: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`)。
 
 > [!IMPORTANT]
-> **プレーヤー** ウィジェットまたは**分析情報**ウィジェットのリンクを共有すると、アクセス トークンが追加され、読み取り専用アクセス許可がアカウントに付与されます。
+> **プレーヤー** ウィジェットまたは **分析情報** ウィジェットのリンクを共有すると、アクセス トークンが追加され、読み取り専用アクセス許可がアカウントに付与されます。
 
 ### <a name="public-content"></a>パブリック コンテンツ
 
 1. [Video Indexer](https://www.videoindexer.ai/) の Web サイトにサインインします。
 1. 作業するビデオを選択し、 **[再生]** を押します。
-1. 目的のウィジェットの種類 (**コグニティブな分析情報**、**プレーヤー**、または**エディター**) を選択します。
+1. 目的のウィジェットの種類 (**コグニティブな分析情報**、**プレーヤー**、または **エディター**) を選択します。
 1. **[&lt;/&gt; 埋め込み]** をクリックします。
 5. 埋め込みコードをコピーします ( **に表示されます。埋め込みコード** を、**共有 & 埋め込み** ダイアログにコピーします)。
 6. コードをお使いのアプリに追加します。
@@ -102,6 +102,17 @@ ms.locfileid: "87414022"
 コグニティブな分析情報ウィジェットは、お使いのアプリ上でビデオと対話できます。 このセクションでは、この対話を実現する方法を示します。
 
 ![コグニティブな分析情報ウィジェット Video Indexer](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+
+### <a name="flow-overview"></a>フローの概要
+
+トランスクリプトを編集する場合、次のフローが発生します。
+
+1. タイムラインでトランスクリプトを編集します。
+1. Video Indexer によってこれらの更新が取得され、言語モデルの [from transcript edits](customize-language-model-with-website.md#customize-language-models-by-correcting-transcripts) に保存されます。
+1. キャプションは更新されます。
+
+    * Video Indexer のプレーヤー ウィジェットを使用している場合は、自動的に更新されます。
+    * 外部プレーヤーを使用している場合は、 **[Get video captions]\(ビデオ キャプションの取得\)** 呼び出しを使用して新しいキャプション ファイルを取得します。
 
 ### <a name="cross-origin-communications"></a>クロスオリジン通信
 

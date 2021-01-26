@@ -8,22 +8,31 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: amqp
-ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: amqp, devx-track-azurecli
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81733008"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121092"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する IoT Edge デバイスになるように構成します。 透過的なゲートウェイの構成では、デバイスはゲートウェイの存在を知らなくても、ゲートウェイを介して Azure IoT Hub に接続できます。 同時に、Azure IoT Hub 内のデバイスを操作するユーザーは中間のゲートウェイ デバイスを意識しません。 最終的には、IoT Edge モジュールを透過的なゲートウェイに追加することによってエッジ分析をシステムに追加します。
 
 この記事の手順は通常、クラウド開発者によって実行されます。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * ゲートウェイ デバイスがダウンストリーム デバイスに安全に接続できるようにするための証明書を作成する。
+> * IoT Edge デバイスを作成する。
+> * IoT Edge デバイスをシミュレートする Azure 仮想マシンを作成する。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="create-certificates"></a>証明書の作成
 
@@ -72,11 +81,11 @@ ms.locfileid: "81733008"
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Azure Key Vault に証明書をアップロードする
 
-証明書を安全に保存し、複数のデバイスからアクセスできるようにするために、証明書を Azure Key Vault にアップロードします。 上記の一覧からわかるように、2 種類の証明書ファイルがあります: PFX と PEM。 PFX は、Key Vault にアップロードされる Key Vault 証明書として扱います。 PEM ファイルはプレーンテキストであり、Key Vault シークレットとして扱います。 [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) を実行して作成した、Azure Machine Learning ワークスペースに関連付けられているキー コンテナーを使用します。
+証明書を安全に保存し、複数のデバイスからアクセスできるようにするために、証明書を Azure Key Vault にアップロードします。 上記の一覧からわかるように、2 種類の証明書ファイルがあります: PFX と PEM。 PFX は、Key Vault にアップロードされる Key Vault 証明書として扱います。 PEM ファイルはプレーンテキストであり、Key Vault シークレットとして扱います。 [Jupyter Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks) を実行して作成した、Azure Machine Learning ワークスペースに関連付けられているキー コンテナーを使用します。
 
 1. [Azure portal](https://portal.azure.com) から、Azure Machine Learning ワークスペースに移動します。
 
-2. Azure Machine Learning ワークスペースの概要ページで、**キー コンテナー**の名前を探します。
+2. Azure Machine Learning ワークスペースの概要ページで、**キー コンテナー** の名前を探します。
 
     ![キー コンテナー名をコピーする](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
@@ -96,7 +105,7 @@ ms.locfileid: "81733008"
 
 Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ内のデバイスの ID を作成します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 構成済みのデバイスがハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
 
-このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、[Azure portal](how-to-register-device.md#register-in-the-azure-portal) または [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) を使用して完了することもできます。
+このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、Azure portal または Azure CLI を使用して完了することもできます。
 
 1. 開発用コンピューターで Visual Studio Code を開きます。
 
@@ -167,7 +176,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
     * まだ存在しない場合、リソース グループを作成する
     * 仮想マシンの作成
     * ポート 22 (SSH)、5671 (AMQP)、5672 (AMPQ)、および 443 (TLS) に対して VM の NSG 例外を追加する
-    * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest) をインストールする
+    * [Azure CLI](/cli/azure/install-azure-cli-apt) をインストールします。
 
 7. スクリプトは、VM に接続するための SSH 接続文字列を出力します。 次のステップのために接続文字列をコピーします。
 
@@ -294,12 +303,13 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge ランタイム" イメージを使用して VM をデプロイしました。 VM を稼動状態にし、SSH 経由で接続して、Azure にサインインし、Key Vault から証明書をダウンロードしました。 config.yaml ファイルを更新して IoT Edge ランタイムの構成にいくつかの変更を加えました。
-
-詳細については、「[IoT Edge デバイスをゲートウェイとして使用する方法](iot-edge-as-gateway.md)」および「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 
 次の記事に進んで、IoT Edge モジュールをビルドします。
 

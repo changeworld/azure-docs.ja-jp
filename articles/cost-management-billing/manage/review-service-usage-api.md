@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: reference
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a7b06ff41e537513558e7f4dc8e1732966299b01
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 018e61fbc74091fa25211b8a25ce067862a0cc7d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684730"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132399"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API を使用して Azure リソースの使用状況を確認する
 
@@ -153,4 +153,4 @@ HTTP 要求本文でレポートのパラメーターを構成します。 次�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Rest API の開始](https://docs.microsoft.com/rest/api/azure/)   
+- [Azure Rest API の開始](/rest/api/azure/)

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f4f6a6e72b57638688069111071a6e0a035c49
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018666"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>キャッシュ規則で Azure CDN キャッシュの動作を制御する
 
 > [!NOTE] 
-> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Verizon Premium ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Verizon Premium ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
  
 Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方法を制御する方法が 2 つあります。 
 
@@ -52,7 +52,7 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
 
 
 ## <a name="caching-behavior-settings"></a>キャッシュ動作の設定
-グローバル キャッシュ規則およびカスタム キャッシュ規則に対しては、次の**キャッシュ動作**の設定を指定できます。
+グローバル キャッシュ規則およびカスタム キャッシュ規則に対しては、次の **キャッシュ動作** の設定を指定できます。
 
 - **[キャッシュのバイパス]** :キャッシュを行わず、もともと指定されているキャッシュ ディレクティブ ヘッダーを無視します。
 

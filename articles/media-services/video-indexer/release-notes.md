@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837311"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120089"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,40 @@ ms.locfileid: "87837311"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+##  <a name="december-2020"></a>2020 年 12 月
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>Video Indexer はスイス西部とスイス北部にデプロイ済み
+
+Video Indexer 有料アカウントをスイス西部とスイス北部リージョンで作成できるようになりました。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="animated-character-identification-improvements"></a>アニメーション化されたキャラクターの識別の向上  
+
+Video Indexer では、Cognitive Services の Custom Vision との統合によって、アニメーション化されたコンテンツのキャラクターの検出、グループ化、認識がサポートされます。 検出とキャラクターの認識におけるこの AI アルゴリズムに大きな改良を加えた結果、分析情報の正確性と識別されるキャラクターが大幅に改善されました。
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>Video Indexer Web サイトの認証に予定されている変更
+
+2021 年 3 月 1 日以降、Facebook または LinkedIn を使用して [Video Indexer Web サイト](https://www.videoindexer.ai/) [開発者ポータル](video-indexer-use-apis.md) にサインアップとサインインすることができなくなります。
+
+これらのいずれかのプロバイダーを使用して、サインアップとサインインができるようになります。Azure AD、Microsoft、Google。
+
+> [!NOTE]
+> LinkedIn と Facebook に接続されている Video Indexer アカウントには、2021 年 3 月 1 日以降アクセスできなくなります。 
+> 
+> 引き続きアクセスできるよう、所有している Azure AD、Microsoft、Google アカウントを Video Indexer アカウントに[招待](invite-users.md)してください。<br/>
+> あるいは、有料アカウントを作成し、データを移行できます。
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>Video Indexer Web サイトのモバイル設計
+
+Video Indexer Web サイトのエクスペリエンスが、モバイル デバイスをサポートするようになりました。 ユーザー エクスペリエンスは、モバイル画面のサイズに合わせて最適化されます (カスタマイズ UI は除く)。 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>アクセシビリティの向上とバグ修正 
+
+WCAG (Web Content Accessibility Guidelines) の一部として、ならびに Microsoft アクセシビリティ標準の一部として、Video Indexer web サイトのエクスペリエンスが第 C レベルに揃えられました。 キーボード ナビゲーション、プログラムによるアクセス、スクリーン リーダーに関連するいくつかのバグ修正および改善が行われました。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -133,7 +167,7 @@ Video Indexer で、`ar-SY`、`en-UK`、および `en-AU` のカスタム言語�
  
 ### <a name="swagger-update"></a>Swagger の更新
 
-Video Indexer で、**認証**と**操作**が単一の[Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
+Video Indexer で、**認証** と **操作** が単一の [Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
 
 ## <a name="december-2019"></a>2019 年 12 月
 

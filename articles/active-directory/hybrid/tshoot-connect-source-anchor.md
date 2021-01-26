@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb82eb2d8e23daec0ddb8856b713c1aa051f25c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e6460015430850c11fbf70a005d7440ce1b92fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306006"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>インストール時のソース アンカーに関する問題のトラブルシューティング
 この記事では、インストール時に発生する可能性のあるソース アンカーに関するさまざまな問題について説明し、これらの問題を解決する方法を示します。
@@ -27,16 +27,16 @@ ms.locfileid: "85355949"
 カスタム インストール時に、Azure AD Connect は Azure Active Directory からソース アンカーを読み取ります。 Azure Active Directory にポリシーが存在する場合、Azure AD Connect は、顧客によってオーバーライドされていない限り、同じポリシーを適用します。 読み取られた属性がウィザードに表示されます。 また、ユーザーがソース アンカー ポリシーをオーバーライドしようとするとウィザードに警告が表示されます。
 
 この読み取り操作時に、Azure Active Directory のソース アンカー ポリシーが予期されない場合があります。 この場合、Azure AD Connect では、使用すべきソース アンカーを識別できないため、手動でオーバーライドする必要があります。</br>
-![予期しない](media/tshoot-connect-source-anchor/source1.png)
+![ソース アンカーを手動でオーバーライドする場所を示すスクリーンショット。](media/tshoot-connect-source-anchor/source1.png)
 
 この問題を解決するために、特定の属性を選択することで、ソース アンカーを手動でオーバーライドできます。 この操作は、選択する属性を把握している場合にのみ続行してください。 不明な場合には、[Microsoft サポート](https://support.microsoft.com/contactus/)にお問い合わせください。 ソース アンカー ポリシーを変更すると、オンプレミス ユーザーとそのユーザーに関連付けられている Azure リソースの間の関連付けが解除される場合があります。</br>
-![予期しない](media/tshoot-connect-source-anchor/source2.png)
+![ソース アンカーをオーバーライドする属性を指定している画面のスクリーンショット。](media/tshoot-connect-source-anchor/source2.png)
 
 ### <a name="express-installation"></a>高速インストール
 高速インストール時に、Azure AD Connect は Azure Active Directory からソース アンカー ポリシーを読み取ります。 Azure Active Directory にポリシーが存在する場合、Azure AD Connect は同じポリシーを適用します。 手動でオーバーライドする方法はありません。
 
 この読み取り操作時に、Azure Active Directory のソース アンカー ポリシーが予期されない場合があります。 この場合、Azure AD Connect では、使用すべきソース アンカーを識別できません。</br>
-![予期しない](media/tshoot-connect-source-anchor/source3.png)
+![Azure Active Directory のソース アンカーが予期されていないときの動作を示すスクリーンショット。](media/tshoot-connect-source-anchor/source3.png)
 
 この問題を解決するには、カスタム モードを使用して再インストールし、特定の属性を選択することでソース アンカーを手動でオーバーライドします。 この操作は、選択する属性を把握している場合にのみ続行してください。 不明な場合には、[Microsoft サポート](https://support.microsoft.com/contactus/)にお問い合わせください。 ソース アンカー ポリシーを変更すると、オンプレミス ユーザーとそのユーザーに関連付けられている Azure リソースの間の関連付けが解除される場合があります。
 

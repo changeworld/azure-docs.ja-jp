@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987037"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88958662"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -153,7 +153,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上記のアクセス トークンは、Microosft Graph 用に v1.0 でフォーマットされたトークンです。 これは、トークンの形式はアクセス対象の**リソース**に基づいたものであり、要求に使用されるエンドポイントとは無関係であるためです。 Microsoft Graph は v1.0 トークンを受け入れるように設定されているため、クライアントが Microsoft Graph のトークンを要求すると、Microsoft ID プラットフォームによって v1.0 アクセス トークンが生成されます。 他のアプリからは、v2.0 形式のトークンや v1.0 形式のトークン、さらには専用や暗号化されたトークン形式が必要であると示される場合があります。  v1.0 と v2.0 のエンドポイントは両方とも、どちらの形式のトークンも出力できます。この方法では、クライアントによってトークンが要求された方法や場所に関係なく、リソースは常に適切な形式のトークンを取得できます。 
+> 上記のアクセス トークンは、Microsoft Graph 用に v1.0 でフォーマットされたトークンです。 これは、トークンの形式はアクセス対象の**リソース**に基づいたものであり、要求に使用されるエンドポイントとは無関係であるためです。 Microsoft Graph は v1.0 トークンを受け入れるように設定されているため、クライアントが Microsoft Graph のトークンを要求すると、Microsoft ID プラットフォームによって v1.0 アクセス トークンが生成されます。 他のアプリからは、v2.0 形式のトークンや v1.0 形式のトークン、さらには専用や暗号化されたトークン形式が必要であると示される場合があります。  v1.0 と v2.0 のエンドポイントは両方とも、どちらの形式のトークンも出力できます。この方法では、クライアントによってトークンが要求された方法や場所に関係なく、リソースは常に適切な形式のトークンを取得できます。 
 >
 > アクセス トークンを調べる必要があるのはアプリケーションのみです。 クライアントは、それらを**調べることができません**。 コード内で他のアプリのアクセス トークンを調べると、そのアプリによって自身のトークンの形式が変更されたり、暗号化が開始されたりしたときに、アプリが予期せず中断される可能性があります。 
 

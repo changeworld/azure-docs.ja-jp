@@ -1,20 +1,19 @@
 ---
-title: Azure Service Bus の SQLRuleAction 構文リファレンス
-description: この記事では、SQLRuleAction 構文のリファレンスを示します。 アクションは、ブローカー メッセージに対して実行される SQL 言語ベースの構文で記述されています。
+title: Azure Service Bus サブスクリプション ルールの SQL アクション構文 |Microsoft Docs
+description: この記事では、SQL ルールのアクション構文のリファレンスを示します。 アクションは、メッセージに対して実行される SQL 言語ベースの構文で記述されています。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/24/2020
+ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341573"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489396"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus の SQLRuleAction 構文リファレンス
+# <a name="subscription-rule-sql-action-syntax"></a>サブスクリプション ルールの SQL アクション構文
 
-*SqlRuleAction* は [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して実行される、SQL 言語ベースの構文で記述された一連のアクションを表します。   
+"*SQL アクション*" は、メッセージがサブスクリプション ルールのフィルターによって選択された後にメッセージ メタデータを操作するために使用されます。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 アクション式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の "action" プロパティの `sqlExpression` 要素、または Azure CLI `az servicebus topic subscription rule create` コマンドの [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数で使用されます。
   
-この記事では、SQL ルール アクションの文法について詳しく説明します。  
   
 ```  
 <statements> ::=
@@ -209,7 +208,11 @@ ms.locfileid: "85341573"
 - 存在しないユーザー プロパティが参照されていても、アクションは失敗しません。
 - 存在しないユーザー プロパティは内部的に "Unknown" と評価され、演算子を評価するときに [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) と同じセマンティクスに従います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction クラス (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

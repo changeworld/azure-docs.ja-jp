@@ -8,32 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934584"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033644"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
-[Speech SDK](speech-sdk.md) の代替手段となる Speech Services では、REST API を使用して音声テキスト変換を実行できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。 REST API は非常に制限されており、[Speech SDK](speech-sdk.md) を使用ができない場合にのみ使用する必要があります。
+Speech to Text には、2 つの異なる REST API があります。 各 API は特別な目的を果たし、異なるエンドポイントのセットを使用します。
 
-Speech to Text REST API を使用する前に、次のことを理解してください。
+以下に、Speech to Text REST API を示します。
+- [Speech to Text REST API v 3.0](#speech-to-text-rest-api-v30): [バッチ文字起こし](batch-transcription.md)および [Custom Speech](custom-speech-overview.md) に使用されます。 v3.0 は、[v2.0 の後継](/azure/cognitive-services/speech-service/migrate-v2-to-v3)です。
+- [Speech to Text REST API for short audio](#speech-to-text-rest-api-for-short-audio): [Speech SDK](speech-sdk.md) の代替手段として、OnLine 文字起こしに使用されます。 この API を使用する要求では、要求ごとに最大 60 秒の音声を送信できます。 
 
-* REST API を使用して音声を直接送信する要求には、最大 60 秒の音声のみを含めることができます。
-* Speech to Text REST API から返すことができるのは最終的な結果だけです。 結果を部分的に得ることはできません。
+## <a name="speech-to-text-rest-api-v30"></a>Speech to Text REST API v3.0
 
-それを超える長さの音声をアプリケーションで送信する必要がある場合は、[Speech SDK](speech-sdk.md) か、[バッチ文字起こし](batch-transcription.md)など、ファイルベースの REST API の使用を検討してください。
+Speech to Text REST API v3.0 は、[バッチ文字起こし](batch-transcription.md)および [Custom Speech](custom-speech-overview.md) に使用されます。 REST を介して OnLine 文字起こしと通信する必要がある場合は、[Speech to Text REST API for short audio](#speech-to-text-rest-api-for-short-audio) を使用します。
+
+REST API v3.0 を使用して、次の操作を行うことができます。
+- 作成したモデルに同僚がアクセスできるようにする場合や、複数のリージョンにモデルをデプロイする場合に、モデルを他のサブスクリプションにコピーする
+- コンテナーのデータの文字起こしをする (一括文字起こし)、複数の音声 ファイル URL を提供する
+- SAS Uri を使用して Azure Storage アカウントからデータをアップロードする
+- エンドポイントのログが要求されている場合は、エンドポイントごとにログを取得する
+- オンプレミスのコンテナーを設定するために、作成するモデルのマニフェストを要求する
+
+REST API v3.0 には、次のような機能が含まれています。
+- **通知 - Webhook**: サービスの実行中のすべてのプロセスで Webhook 通知がサポートされるようになりました。 REST API v3.0 では、通知が送信される Webhook を登録できるようにする呼び出しが提供されます。
+- **エンドポイントの背後にあるモデルの更新** 
+- **複数のデータセットを使用したモデル適応**: 音響、言語、発音データなどの複数のデータセットの組み合わせを使用してモデルを調整できます。
+- **独自のストレージの利用**: ログ、文字起こしファイル、その他のデータなどに独自のストレージ アカウントを使用できます。
+
+REST API v3.0 とバッチ文字起こしの使用例については、[こちらの記事](batch-transcription.md)を参照してください。
+
+Speech to Text REST API v2.0 を使用している場合は、[こちらのガイド](/azure/cognitive-services/speech-service/migrate-v2-to-v3)で v3.0 への移行方法を参照してください。
+
+Speech to Text REST API v3.0 の全リファレンスについては、[こちら](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)を参照してください。
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>Speech to Text REST API for short audio
+
+[Speech SDK](speech-sdk.md) の代替手段となる Speech Services では、REST API を使用して音声テキスト変換を実行できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。 REST API for short audio は非常に制限されており、[Speech SDK](speech-sdk.md) を使用できない場合にのみ使用する必要があります。
+
+Speech to Text REST API for short audio を使用する前に、次のことを考慮してください。
+
+* REST API for short audio を使用して音声を直接送信する要求には、最長 60 秒の音声のみを含めることができます。
+* Speech to Text REST API for short audio から返すことができるのは最終的な結果だけです。 結果を部分的に得ることはできません。
+
+それを超える長さの音声をアプリケーションで送信する必要がある場合は、[Speech SDK](speech-sdk.md) または [Speech to Text REST API v3.0](#speech-to-text-rest-api-v30) の使用を検討してください。
+
+> [!TIP]
+> Azure Government と Azure China のエンドポイントについては、[こちらの記事](sovereign-clouds.md)を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>リージョンとエンドポイント
+### <a name="regions-and-endpoints"></a>リージョンとエンドポイント
 
-REST API のエンドポイントの形式は次のとおりです。
+REST API for short audio のエンドポイントの形式は次のとおりです。
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -46,7 +80,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 > [!NOTE]
 > 4xx HTTP エラーを受け取らないためには、URL に言語パラメーターを付加する必要があります。 たとえば、米国西部エンドポイントを使用する米国英語に設定される言語は `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` です。
 
-## <a name="query-parameters"></a>クエリ パラメーター
+### <a name="query-parameters"></a>クエリ パラメーター
 
 REST 要求のクエリ文字列には、次のパラメーターを含めることができます。
 
@@ -55,13 +89,13 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 | `language` | 認識の対象として発話された言語を識別します。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。 | 必須 |
 | `format` | 結果の形式を指定します。 指定できる値は、`simple` と `detailed` です。 単純な結果には `RecognitionStatus`、`DisplayText`、`Offset`、`Duration`が含まれます。 詳細な応答には、表示テキストの 4 つの異なる表現が含まれます。 既定の設定は `simple` です。 | 省略可能 |
 | `profanity` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する)、または `raw` (不適切な表現を結果に含める) です。 既定の設定は `masked` です。 | 省略可能 |
-| `cid` | [Custom Speech ポータル](how-to-custom-speech.md)を使用してカスタム モデルを作成する場合、 **[デプロイ]** ページにある **[エンドポイント ID]** を使用してカスタム モデルを使用できます。 `cid` クエリ文字列パラメーターの引数として **[エンドポイント ID]** を使用します。 | 省略可能 |
+| `cid` | [Custom Speech ポータル](./custom-speech-overview.md)を使用してカスタム モデルを作成する場合、 **[デプロイ]** ページにある **[エンドポイント ID]** を使用してカスタム モデルを使用できます。 `cid` クエリ文字列パラメーターの引数として **[エンドポイント ID]** を使用します。 | 省略可能 |
 
-## <a name="request-headers"></a>要求ヘッダー
+### <a name="request-headers"></a>要求ヘッダー
 
-この表は、音声テキスト変換要求の必須のヘッダーと省略可能なヘッダーの一覧です。
+次の表に、音声テキスト変換要求の必須ヘッダーと省略可能なヘッダーを示します。
 
-|ヘッダー| 説明 | 必須/省略可能 |
+|Header| 説明 | 必須/省略可能 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 音声サービスのサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | このヘッダーと `Ocp-Apim-Subscription-Key` のどちらかが必須となります。 |
@@ -71,7 +105,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 | `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 音声サービスは最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
 | `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Service からは、結果が JSON 形式で返されます。Speech Service からは、結果が JSON 形式で返されます。 一部の要求フレームワークでは、互換性のない既定値が提供されます。 常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
 
-## <a name="audio-formats"></a>オーディオの形式
+### <a name="audio-formats"></a>オーディオの形式
 
 オーディオは HTTP `POST` 要求の本文で送信されます。 この表内のいずれかの形式にする必要があります。
 
@@ -81,16 +115,16 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 | OGG    | OPUS  | 256 kpbs | 16 kHz、モノラル |
 
 >[!NOTE]
->上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式と、[その他の形式](how-to-use-codec-compressed-audio-input-streams.md)がサポートされています。
+>上の形式は、Speech Services の REST API for short audio と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式と、[その他の形式](how-to-use-codec-compressed-audio-input-streams.md)がサポートされています。
 
-## <a name="pronunciation-assessment-parameters"></a>発音評価パラメーター
+### <a name="pronunciation-assessment-parameters"></a>発音評価パラメーター
 
 発音評価の必須パラメーターと省略可能なパラメーターを次の表に示します。
 
-| パラメーター | 説明 | 必須/省略可能 |
+| パラメーター | 説明 | 必須 |
 |-----------|-------------|---------------------|
 | ReferenceText | 発音が評価されるテキスト。 | 必須 |
-| GradingSystem | スコア調整用のポイント システム。 指定できる値は、`FivePoint` と `HundredMark` です。 既定の設定は `FivePoint` です。 | 省略可能 |
+| GradingSystem | スコア調整用のポイント システム。 `FivePoint` システムによって 0 から 5 の浮動小数点スコアが付与され、`HundredMark` によって 0 から 100 の浮動小数点スコアが付与されます。 既定値:`FivePoint`。 | 省略可能 |
 | 粒度 | 評価の粒度。 指定できる値は、全文、単語、音素レベルのスコアを示す `Phoneme`、全文と単語レベルのスコアを示す `Word`、および全文レベルのみのスコアを示す `FullText` です。 既定の設定は `Phoneme` です。 | 省略可能 |
 | Dimension | 出力条件を定義します。 指定できる値は、正確性スコアのみを示す `Basic`、より多くのディメンション (全文レベルの流暢性スコアと完全性スコア、単語レベルのエラーの種類など) のスコアを示す `Comprehensive` です。 [[Response parameters]\(応答パラメーター\)](#response-parameters) を見て、さまざまなスコア ディメンションと単語エラーの種類の定義を確認します。 既定の設定は `Basic` です。 | 省略可能 |
 | EnableMiscue | 誤りの計算を有効にします。 これを有効にすると、発音された単語が参照テキストと比較され、比較に基づいて省略または挿入がマークされます。 指定できる値は、`False` と `True` です。 既定の設定は `False` です。 | 省略可能 |
@@ -120,7 +154,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 >[!NOTE]
 >現在、発音評価機能は、`westus`、`eastasia` および `centralindia` リージョンでのみ利用できます。 また、現在、この機能は `en-US` 言語でのみ提供されています。
 
-## <a name="sample-request"></a>要求のサンプル
+### <a name="sample-request"></a>要求のサンプル
 
 以下のサンプルには、ホスト名と必須のヘッダーが含まれています。 サービスにはオーディオ データも必要であることに注意してください。このサンプルにオーディオ データは含まれていません。 前述のようにチャンクにすることをお勧めしますが、必須ではありません。
 
@@ -140,7 +174,7 @@ Expect: 100-continue
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>HTTP 状態コード
+### <a name="http-status-codes"></a>HTTP 状態コード
 
 各応答の HTTP 状態コードは、成功または一般的なエラーを示します。
 
@@ -152,9 +186,9 @@ Pronunciation-Assessment: eyJSZWZlcm...
 | `401` | 権限がありません | サブスクリプション キーまたは認証トークンが指定のリージョンで無効であるか、または無効なエンドポイントです。 |
 | `403` | Forbidden | サブスクリプション キーまたは認証トークンがありません。 |
 
-## <a name="chunked-transfer"></a>チャンク転送
+### <a name="chunked-transfer"></a>チャンク転送
 
-チャンク転送 (`Transfer-Encoding: chunked`) は、認識の待ち時間を短縮するのに役立ちます。 これにより、Speech Services では、音声ファイルを転送中にファイルの処理を開始できます。 REST API は部分的または中間的な結果を提供しません。
+チャンク転送 (`Transfer-Encoding: chunked`) は、認識の待ち時間を短縮するのに役立ちます。 これにより、Speech Services では、音声ファイルを転送中にファイルの処理を開始できます。 REST API for short audio では部分的または中間的な結果は提供されません。
 
 このコード サンプルは、オーディオをチャンクで送信する方法を示しています。 最初のチャンクだけに、オーディオ ファイルのヘッダーが含まれている必要があります。 `request` は、適切な REST エンドポイントに接続された `HttpWebRequest` オブジェクトです。 `audioFile` はディスク上のオーディオ ファイルのパスです。
 
@@ -188,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>応答パラメーター
+### <a name="response-parameters"></a>応答パラメーター
 
 結果は JSON 形式で返されます。 `simple` 形式には、次の最上位レベル フィールドが含まれます。
 
@@ -230,7 +264,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `PronScore` | 特定の音声の発音品質を示す全体的なスコア。 これは、重み付きの `AccuracyScore`、`FluencyScore`、および `CompletenessScore` から集計されます。 |
 | `ErrorType` | この値は、`ReferenceText` と比較して、単語が省略されているか、挿入されているか、発音が正しくないかを示します。 指定できる値は、`None` (この単語にエラーがないことを意味します)、`Omission`、`Insertion`、および `Mispronunciation` です。 |
 
-## <a name="sample-responses"></a>応答のサンプル
+### <a name="sample-responses"></a>応答のサンプル
 
 `simple` 認識の代表的な応答:
 
@@ -304,5 +338,6 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 ## <a name="next-steps"></a>次のステップ
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [音響モデルをカスタマイズする](./how-to-custom-speech-train-model.md)
+- [言語モデルをカスタマイズする](./how-to-custom-speech-train-model.md)
+- [バッチ文字起こしについての理解を深める](batch-transcription.md)

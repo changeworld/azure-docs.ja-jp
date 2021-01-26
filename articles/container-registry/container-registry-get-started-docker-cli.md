@@ -4,12 +4,12 @@ description: Docker CLI を使用した、Azure のプライベート コンテ�
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456360"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071631"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -37,6 +37,8 @@ docker login myregistry.azurecr.io
 ```
 
 どちらのコマンドも、完了すると `Login Succeeded` が返されます。
+> [!NOTE]
+>* Docker 拡張機能を備えた Visual Studio Code を使用すると、ログインがより高速かつ便利になります。
 
 > [!TIP]
 > `docker login` を使用する場合とレジストリにプッシュするために画像にタグ付けする場合は、常にレジストリの完全修飾名 (すべて小文字) を指定してください。 この記事の例では、完全修飾名は *myregistry.azurecr.io* です。

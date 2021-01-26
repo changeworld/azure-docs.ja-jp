@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e14995b92e99e1a9695f81fb71bcab6dd62303a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011669"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708698"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
 この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
@@ -30,19 +30,19 @@ ms.locfileid: "89011669"
 3 ノード クラスターがあるとして、"MyAppType" というタイプの **fabric:/App1** という*アプリケーション*を作成します。 この **fabric:/App1** というアプリケーションの内部に、"MyServiceType" タイプのサービス **fabric:/App1/ServiceA** を作成します。 このサービスには、2 つのパーティション (たとえば、**P1** と **P2**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、最終的にノードにデプロイされるこのアプリケーションのビューを示しています。
 
 
-![デプロイされたアプリケーションのノード ビューの図][node-view-one]
+![最終的にノードにデプロイされるこのアプリケーションのビューを示す図。][node-view-one]
 
 
 Service Fabric によって "MyServicePackage" がアクティブ化されます。これにより、"MyCodePackage" が起動され、さらに両方のパーティションのレプリカがホスティングされています。 クラスター内のノードと同じ数のレプリカをパーティションごとに選択したので、クラスターのノードはすべて同じビューを持ちます。 それでは、アプリケーション **fabric:/App1** の中に、別のサービス **fabric:/App1/ServiceB** を作成してみましょう。 このサービスには、1 つのパーティション (たとえば **P3**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、このノードの新しいビューを示しています。
 
 
-![デプロイされたアプリケーションのノード ビューの図][node-view-two]
+![ノードの新しいビューを示す図。][node-view-two]
 
 
 Service Fabric によって、アクティブ化した既存の "MyServicePackage" 内に **fabric:/App1/ServiceB** というサービスの **P3** パーティションの新しいレプリカが配置されました。 次に、 "MyAppType" タイプの別のアプリケーション **fabric:/App2** を作成してみましょう。 **fabric:/App2** の内部に、サービス **fabric:/App2/ServiceA** を作成します。 このサービスには、2 つのパーティション (**P4** と **P5**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、この新しいノードのビューを示しています。
 
 
-![デプロイされたアプリケーションのノード ビューの図][node-view-three]
+![新しいノードのビューを示す図。][node-view-three]
 
 
 Service Fabric は 'MyServicePackage' の新しいコピーをアクティブ化し、これによって 'MyCodePackage' の新しいコピーが起動されます。 サービス **fabric:/App2/ServiceA** の両方のパーティション (**P4** と **P5**) のレプリカが、この "MyCodePackage" という新しいコピーに配置されます。
@@ -157,7 +157,7 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 特定のノード上で、両方のサービスはそれぞれ 2 つのレプリカを持ちます。 サービスを専有プロセス モデルで作成したため、Service Fabric は各レプリカについて "MyServicePackge" の新しいコピーをアクティブ化します。 "MultiTypeServicePackage" の各アクティブ化によって、"MyCodePackageA" と "MyCodePackageB" のコピーが開始します。 ただし、"MultiTypeServicePackage" がアクティブ化されたレプリカをホストするのは、"MyCodePackageA" または "MyCodePackageB" のどちらか 1 つだけです。 次の図で、このノードのビューを示します。
 
 
-![デプロイされたアプリケーションのノード ビューの図][node-view-five]
+![ノードのビューを示す図。][node-view-five]
 
 
 サービス **fabric:/SpecialApp/ServiceA** のパーティション **P1** のレプリカに対する "MultiTypeServicePackage" のアクティブ化では、"MyCodePackageA" がレプリカをホストします。 "MyCodePackageB" は実行しています。 同様に、サービス **fabric:/SpecialApp/ServiceB** のパーティション **P3** のレプリカに対する "MultiTypeServicePackage" のアクティブ化では、"MyCodePackageB" がレプリカをホストします。 "MyCodePackageA" は実行しています。 そのため、*ServicePackage* ごとの (異なる *ServiceTypes* を登録している) *CodePackage* の数が多くなれば、それだけリソース使用の冗長性が高くなることになります。 

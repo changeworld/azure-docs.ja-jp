@@ -2,13 +2,13 @@
 title: Azure Batch タスクの開始イベント
 description: Batch タスクの開始イベントのリファレンス情報です。 スケジューラがコンピューティング ノードでタスクの開始予定を設定すると、このイベントが生成されます。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: ed7b3014279fc87fbaae6f1c270f056e95073aaf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/08/2020
+ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965095"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851018"
 ---
 # <a name="task-start-event"></a>タスク開始イベント
 
@@ -23,6 +23,7 @@ ms.locfileid: "85965095"
     "id": "myTask",
     "taskType": "User",
     "systemTaskVersion": 220192842,
+    "requiredSlots": 1,
     "nodeInfo": {
         "poolId": "pool-001",
         "nodeId": "tvm-257509324_1-20160908t162728z"
@@ -45,6 +46,7 @@ ms.locfileid: "85965095"
 |`id`|String|タスクの ID です。|
 |`taskType`|String|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。|
 |`systemTaskVersion`|Int32|これは、タスクの内部再試行カウンターです。 Batch サービスは一時的問題に対応するタスクを内部で再試行できます。 これらの問題には、内部的なスケジュール エラーや、コンピューティング ノードを異常な状態から回復しようとする動作が含まれます。|
+|`requiredSlots`|Int32|タスクを実行するために必要なスロット。|
 |[`nodeInfo`](#nodeInfo)|複合型|タスクが実行されたコンピューティング ノードに関する情報が含まれます。|
 |[`multiInstanceSettings`](#multiInstanceSettings)|複合型|このタスクが複数のコンピューティング ノードを必要とする、複数インスタンス タスクであることを指定します。  詳細は [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task) をご覧ください。|
 |[`constraints`](#constraints)|複合型|このタスクに適用される実行の制約。|
@@ -52,25 +54,25 @@ ms.locfileid: "85965095"
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`poolId`|String|タスクが実行されたプールの ID。|
 |`nodeId`|String|タスクが実行されたノードの ID。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|要素名|種類|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |`numberOfInstances`|int|タスクに必要なコンピューター ノードの数。|
 
 ###  <a name="constraints"></a><a name="constraints"></a> constraints
 
-|要素名|種類|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|タスクを再試行できる最大回数。 Batch サービスは、終了コードが 0 以外の場合にタスクを再試行します。<br /><br /> この値によって再試行の回数が限定されますのでご注意ください。 Batch サービスはタスクを 1 回試行してから、上限に達するまで再試行できます。 たとえば、最大再試行回数が 3 の場合、Batch はタスクを最大 4 回試行します (初回試行 1 回と再試行 3 回)。<br /><br /> 最大再試行回数が 0 の場合、Batch サービスはタスクを再試行しません。<br /><br /> 最大再試行回数が -1 の場合、Batch サービスはタスクを無制限に再試行します。<br /><br /> 既定値は 0 (再試行なし) です。|
 
 ###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
-|要素名|種類|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |`retryCount`|Int32|Batch サービスによりタスクが再試行された回数。 タスクは、0 以外のコードで終了すると、指定された MaxTaskRetryCount まで再試行されます。|

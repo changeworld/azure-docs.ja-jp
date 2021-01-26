@@ -1,130 +1,160 @@
 ---
-title: Azure Front Door と Azure Web Application Firewall (WAF) を使用して、Web アプリケーションをすばやくスケーリングし、保護する | Microsoft Docs
-description: この記事では、Azure Front Door サービスと Web Application Firewall を使用する方法について説明します
+title: チュートリアル:Azure Front Door と Azure Web Application Firewall (WAF) を使用して、Web アプリケーションをスケーリングし、保護する
+description: このチュートリアルでは、Azure Front Door サービスと共に Azure Web Application Firewall を使用する方法について説明します。
 services: frontdoor
 documentationcenter: ''
 author: duongau
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7d2978b34d4c1e6cf85c65be2e9c3292ec704be4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398887"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279220"
 ---
-# <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Azure Front Door と Azure Web Application Firewall (WAF) を使用して、Web アプリケーションをすばやくスケーリングし、保護する
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>チュートリアル:Azure Front Door と Azure Web Application Firewall (WAF) を使用して、Web アプリケーションをすばやくスケーリングし、保護する
 
-多くの Web アプリケーションでは、COVID-19 による影響で、この数週間にトラフィックが急増しています。 さらに、これらの Web アプリケーションでは、サービス拒否攻撃など、悪意のあるトラフィックも確認されています。 急増するトラフィックに対応できるようスケールを拡張し、攻撃からの保護を実現するには、Azure Front Door と Azure WAF を使用するのが効果的です。これにより、処理を高速化し、キャッシュを効果的に活用し、Web アプリケーションの前面にセキュリティ層を確保することができます。 この記事では、Azure の内部と外部で実行されているすべての Web アプリケーションを対象に、この Azure Front Door と Azure WAF を迅速に設定する方法について説明します。 
+多くの Web アプリケーションで、新型コロナウイルス感染症による影響から、この数週間のトラフィックが急増しています。 また、これらの Web アプリケーションでは、サービス拒否攻撃など、悪意のあるトラフィックも確認されています。 トラフィックの急増への対応としてアプリケーションをスケールアウトし、かつ攻撃から保護するための効果的な方法があります。この方法では、Web アプリの前面に、高速化、キャッシュ、セキュリティのレイヤーとして、Azure Front Door と Azure WAF を構成します。 この記事では、Azure の内部または外部で実行されているすべての Web アプリに対して、Azure Front Door と Azure WAF を構成する方法について説明します。 
 
-このチュートリアルでは、Azure CLI を使用して WAF を設定しますが、これらの手順はすべて、Azure portal、Azure PowerShell、Azure ARM、Azure REST API でも完全にサポートされています。 
+このチュートリアルでは、Azure CLI を使用して WAF を構成します。 Azure portal、Azure PowerShell、Azure Resource Manager、または Azure REST API を使用して、同じことを実現できます。 
+
+このチュートリアルでは、次の作業を行う方法について説明します。
+> [!div class="checklist"]
+> - Front Door を作成する。
+> - Azure WAF ポリシーを作成する。
+> - WAF ポリシーに対するルール セットを構成する。
+> - WAF ポリシーと Front Door を関連付ける。
+> - カスタム ドメインを構成する。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+- このチュートリアルの手順では Azure CLI を使用します。 Azure CLI の使用方法については、[こちらのガイドを参照してください](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
-このブログの手順では、Azure コマンドライン インターフェイス (CLI) を使用します。 Azure CLI の使用方法については、[こちらのガイド](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)を参照してください。
+  > [!TIP] 
+  > [Bash in Azure Cloud Shell](../cloud-shell/quickstart.md) を使用すると、Azure CLI をすばやく簡単に使い始めることができます。
 
-*ヒント: [Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) を使用すると、Azure CLI の使用方法をすばやく簡単に理解できます*
+- Azure CLI に `front-door` 拡張機能を確実に追加してください。
 
-Azure CLI にフロントドア拡張機能が追加されていることを確認してください
+   ```azurecli-interactive 
+   az extension add --name front-door
+   ```
 
-```azurecli-interactive 
-az extension add --name front-door
-```
+> [!NOTE] 
+> このチュートリアルで使用されているコマンドの詳細については、[Front Door 用の Azure CLI のリファレンス](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest)に関する記事を参照してください。
 
-注:以下に示すコマンドの詳細については、[フロント ドアの Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest)を参照してください。
-
-## <a name="step-1-create-an-azure-front-door-afd-resource"></a>手順 1:Azure Front Door (AFD) リソースを作成する
-
+## <a name="create-an-azure-front-door-resource"></a>Azure Front Door リソースを作成する
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-**--backend-address**:保護しようとしているアプリケーションの完全修飾ドメイン名 (FQDN) 名を指定します。 例: myapplication.contoso.com
+`--backend-address`: 保護対象のアプリケーションの完全修飾ドメイン名 (FQDN)。 たとえば、「 `myapplication.contoso.com` 」のように入力します。
 
-**--accepted-protocols**:Web アプリケーションに使用するプロトコルとして、AFD でサポートするプロトコルをすべて指定します。 例: --accepted-protocols Http Https
+`--accepted-protocols`: Azure Front Door で Web アプリケーションに対してサポートするプロトコルを指定します。 たとえば、「 `--accepted-protocols Http Https` 」のように入力します。
 
-**--name**: AFD リソースの名前を指定します
+`--name`: Azure Front Door リソースの名前。
 
-**--resource-group**:この AFD リソースを配置するリソース グループを指定します。  リソース グループの詳細については、Azure でのリソース グループの管理に関する記事を参照してください
+`--resource-group`: この Azure Front Door リソースを配置するリソース グループ。 リソース グループの詳細については、[Azure でのリソース グループの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事を参照してください。
 
-このコマンドが正常に実行されたら、"hostName" というキーを探し、その値をメモしてください。これは後の手順で使用します。 hostName は、作成した AFD リソースの DNS 名です
+このコマンドを実行すると取得される応答で、キー `hostName` を探します。 この値は、後のステップで必要になります。 `hostName` は、作成した Azure Front Door リソースの DNS 名です。
 
-## <a name="step-2-create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>手順 2:Azure Front Door リソースで使用する Azure WAF プロファイルを作成する
+## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Azure Front Door リソースで使用する Azure WAF プロファイルを作成する
 
 ```azurecli-interactive 
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
 ```
 
---name Azure WAF ポリシーの名前を指定します
+`--name`: 新しい Azure WAF ポリシーの名前。
 
---resource-group この WAF リソースを配置するリソース グループを指定します。 
+`--resource-group`: この WAF リソースを配置するリソース グループ。 
 
-上記の CLI コードを実行すると、WAF ポリシーが作成されて有効化され、保護モードになります。 
+上の CLI コードを実行すると、WAF ポリシーが作成されて有効化され、保護モードになります。 
 
-注: WAF を検出モードで作成し、悪意のある要求を (ブロックせずに) ログに記録した後、その結果を見たうえで、保護モードに変更するかどうかを判断することもできます。
+> [!NOTE] 
+> 保護モードの使用を決定する前に、検出モードで WAF ポリシーを作成し、悪意のある要求がどのように検出されてログに記録されるかを、(それらをブロックしないで) 確認することができます。
 
-このコマンドが正常に実行されたら、"ID" というキーを探し、その値をメモしてください。これは後の手順で使用します。 ID フィールドは次のような形式になっています
+このコマンドを実行すると取得される応答で、キー `ID` を探します。 この値は、後のステップで必要になります。 
+
+`ID` フィールドの形式は次のとおりです。
 
 /subscriptions/**subscription id**/resourcegroups/**resource group name**/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF policy name**
 
-## <a name="step-3-add-managed-rulesets-to-this-waf-policy"></a>手順 3:この WAF ポリシーにマネージド ルールセットを追加する
+## <a name="add-managed-rule-sets-to-the-waf-policy"></a>WAF ポリシーにマネージド ルール セットを追加する
 
-WAF ポリシーでは、マネージド ルールセットを追加することができます。これは、Microsoft によって作成および管理される一連の規則です。これを使用すると、各種の脅威に対して、すぐに保護を提供できます。 この例では、2 つのルールセットを追加します。(1) 一般的な Web の脅威から保護する既定のルールセットと、(2) 悪意のあるボットから保護する ボット保護ルールセットです
+WAF ポリシーにマネージド ルール セットを追加することができます。 マネージド ルール セットは、Microsoft によって構築されて管理される一連のルールであり、あるクラスの脅威を保護するのに役立ちます。 この例では、2 つのルール セットを追加します。
+- 既定のルール セット。一般的な Web の脅威からユーザーを保護するのに役立ちます。 
+- ボット保護ルール セット。悪意のあるボットから保護するのに役立ちます。
 
-(1) 既定のルールセットを追加する
+既定のルール セットを追加します。
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
+   ```
 
-(2) ボット マネージャー ルールセットを追加する
+ボット保護ルール セットを追加します。
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
+   ```
 
---policy-name Azure WAF リソースに付けた名前を指定します
+`--policy-name`: Azure WAF リソースに指定した名前。
 
---resource-group この WAF リソースを配置したリソース グループを指定します。
+`--resource-group`: WAF リソースを配置したリソース グループ。
 
-## <a name="step-4-associate-the-waf-policy-with-the-afd-resource"></a>手順 4:WAF ポリシーを AFD リソースに関連付ける
+## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>WAF ポリシーと Azure Front Door リソースを関連付ける
 
-この手順では、作成した WAF ポリシーを、Web アプリケーションの前面にある AFD リソースに関連付けます。
+このステップでは、作成した WAF ポリシーを、Web アプリケーションの前面にある Azure Front Door リソースと関連付けます。
 
 ```azurecli-interactive 
 az network front-door update --name <> --resource-group <> --set frontendEndpoints[0].webApplicationFirewallPolicyLink='{"id":"<>"}'
 ```
 
---name AFD リソースに付けた名前を指定します
+`--name`: Azure Front Door リソースに指定した名前。
 
---resource-group Azure Front Door リソースを配置したリソース グループを指定します。
+`--resource-group`: Azure Front Door リソースを配置したリソース グループ。
 
---set AFD リソースに関連付けられている frontendEndpoint の WebApplicationFirewallPolicyLink 属性を、新規作成した WAF ポリシーで更新します。 WAF ポリシーの ID には、上記の手順 2 でメモしたものを使用します
+`--set`: ここでは、Azure Front Door リソースに関連付けられている `frontendEndpoint` の `WebApplicationFirewallPolicyLink` 属性を、新しい WAF ポリシーに更新します。 このチュートリアルで前に WAF プロファイルを作成したときに取得した応答から、WAF ポリシーの ID を取得する必要があります。
 
-注: 上の例は、カスタム ドメインを使用しない場合の例です
+ > [!NOTE] 
+> 前の例は、カスタム ドメインを使用していない場合に適用されます。 Web アプリケーションへのアクセスにカスタム ドメインを使用していない場合は、次のセクションを省略できます。 その場合は、Azure Front Door リソースを作成したときに取得した `hostName` を顧客に提供します。 この `hostName` を使用して、Web アプリケーションにアクセスします。
 
-Web アプリケーションへのアクセスにカスタム ドメインを使用しない場合、手順 5 は省略できます。 その場合は、手順 1 で取得したホスト名をエンド ユーザーに提供することで、Web アプリケーションにアクセスしてもらうことができます
+## <a name="configure-the-custom-domain-for-your-web-application"></a>Web アプリケーションのカスタム ドメインを構成する
 
-## <a name="step-5-configure-custom-domain-for-your-web-application"></a>手順 5:Web アプリケーションのカスタム ドメインを構成する
+Web アプリケーションのカスタム ドメイン名は、顧客がアプリケーションを参照するために使用するものです。 例: www.contoso.com。 最初、このカスタム ドメイン名は、Azure Front Door を導入する前に実行されていた場所を指していました。 Azure Front Door と WAF をアプリケーションの前面に追加した後、そのカスタム ドメインに対応する DNS エントリによって、Azure Front Door リソースが指し示されている必要があります。 この変更を行うには、Azure Front Door リソースを作成したときに記録した Azure Front Door の `hostName` に、DNS サーバーのエントリを再マップします。
 
-Web アプリケーションのカスタム ドメイン名 (顧客がアプリケーションを参照するのに使うドメイン名。たとえば、 www.contoso.com) は、当初、AFD が導入される前の実行場所を指していました。 ここでのアーキテクチャ変更によってアプリケーションの前面に AFD と WAF が追加された後は、そのカスタム ドメインに対応する DNS エントリが、この AFD リソースを指すようにする必要があります。 これを行うには、DNS サーバーのこのエントリを、手順 1 でメモした AFD ホスト名にマップし直します。
+DNS レコードを更新するための具体的な手順は、DNS サービス プロバイダーによって異なります。 Azure DNS を使用して DNS 名をホストしている場合は、[DNS レコードの更新手順](../dns/dns-operations-recordsets-cli.md)に関するドキュメントを参照して、Azure Front Door の `hostName` を指すようにすることができます。 
 
-DNS レコードを更新するための具体的な手順は、DNS サービス プロバイダーによって異なりますが、Azure DNS を使用して DNS 名をホストしている場合は、[DNS レコードを更新する手順](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli)に関するドキュメントを参照して、AFD hostName をポイントできます。 
+ゾーン頂点 (contoso.com など) を使用した Web サイトへのアクセスを顧客に行ってもらう必要がある場合には、注意すべき重要な点が 1 つあります。 この場合は、Azure DNS とその[別名レコードの種類](../dns/dns-alias.md)を使用して、DNS 名をホストする必要があります。 
 
-ここで注意すべき重要な点として、ユーザーがゾーンの頂点 (たとえば、contoso.com) を使用して Web サイトにアクセスするようにしたい場合は、Azure DNS とその [ALIAS レコード タイプ](https://docs.microsoft.com/azure/dns/dns-alias)を使用して DNS 名をホストする必要があります。 
+また、このマッピングが認識されるように、Azure Front Door の構成を更新して、それに[カスタム ドメインを追加する](./front-door-custom-domain.md)必要があります。
 
-また、AFD 構成を更新して[このカスタム ドメインを追加](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain)し、AFD でこのマッピングが認識されるようにする必要があります。
+最後に、カスタム ドメインを使用して Web アプリケーションにアクセスし、HTTPS プロトコルを有効にする場合についてです。 この場合は、[Azure Front Door でカスタム ドメインに対して証明書を設定する](./front-door-custom-domain-https.md)必要があります。 
 
-最後に、カスタム ドメインを使用して Web アプリケーションにアクセスする場合で、HTTPS プロトコルを有効にする場合は、[AFD でのカスタム ドメイン設定に対応した証明書](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)を用意する必要があります。 
+## <a name="lock-down-your-web-application"></a>Web アプリケーションをロック ダウンする
 
-## <a name="step-6-lock-down-your-web-application"></a>手順 6:Web アプリケーションをロック ダウンする
+Azure Front Door のエッジのみが確実に Web アプリケーションと通信できるようにすることをお勧めします。 そうすることで、誰も Azure Front Door の保護をバイパスしてアプリケーションに直接アクセスすることができなくなります。 このロックダウンを実現するには、「[バックエンドへのアクセスを Azure Front Door のみにロックダウンするにはどうしたらよいですか?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)」を参照してください。
 
-実施するべきベスト プラクティスの 1 つとして、AFD のエッジのみが Web アプリケーションと通信できるようにすることをお勧めします。 この措置を講じれば、AFD 保護をバイパスしてアプリケーションに直接アクセスすることはできなくなります。 このロック ダウンを行うには、[AFD の FAQ セクション](https://docs.microsoft.com/azure/frontdoor/front-door-faq)にアクセスし、バックエンドのロックダウン (AFD のみによるアクセス) に関する質問を参照してください。
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルで使用したリソースが不要になったら、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを使用して、リソース グループ、Front Door、WAF ポリシーを削除してください。
+
+```azurecli-interactive
+  az group delete \
+    --name <>
+```
+`--name`: このチュートリアルで使用したすべてのリソースのリソース グループの名前。
+
+## <a name="next-steps"></a>次の手順
+
+Front Door のトラブルシューティングを行う方法については、トラブルシューティング ガイドを参照してください。
+
+> [!div class="nextstepaction"]
+> [ルーティングの一般的な問題のトラブルシューティング](front-door-troubleshoot-routing.md)

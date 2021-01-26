@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2707c5a6cb110d30b85b765f6c8b144e8cca7abe
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386920"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074721"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のアプリケーションとサービスの可用性の問題:よく寄せられる質問 (FAQ)
 
@@ -33,7 +33,7 @@ ms.locfileid: "75386920"
 
 最新のゲスト OS の更新に関する完全な詳細については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」を参照してください。
 
-再起動に関する有益な情報と、ゲスト OS とホスト OS の更新プログラムの技術的な詳細のヒントについては、MSDN の [OS のアップグレードによるロール インスタンスの再起動](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)に関するブログ記事を参照してください。
+再起動に関する有益な情報と、ゲスト OS とホスト OS の更新プログラムの技術的な詳細のヒントについては、MSDN の [OS のアップグレードによるロール インスタンスの再起動](/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades)に関するブログ記事を参照してください。
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>クラウド サービスがしばらくの間アイドル状態だった後、サービスに対する最初の要求が通常より長くかかるのはなぜですか。
 Web サーバーが最初の要求を受信すると、まずコードを再コンパイルしてから要求を処理します。 最初の要求にかかる時間が他の要求よりも長い理由はそこにあります。 既定では、ユーザーが非アクティブになると、アプリケーション プールがシャットダウンします。 また、アプリケーション プールは、既定では 1,740 分 (29 時間) ごとにリサイクルされます。

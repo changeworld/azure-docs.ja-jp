@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: 操作方法
   items:
+    - name: 手動で移行する
+      href: manual-migration.md
     - name: Windows Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
@@ -32,6 +34,12 @@
           href: connect-macos.md
         - name: iOS クライアントに接続する
           href: connect-ios.md
+        - name: Microsoft Store クライアントを使用した接続
+          href: connect-microsoft-store.md
+        - name: Linux デバイスを使用した接続
+          href: linux-overview.md
+    - name: デバイスのリダイレクトを構成する
+      href: configure-device-redirections.md
     - name: PowerShell モジュールを設定する
       href: powershell-module.md
     - name: ホスト プールとセッション ホストを作成する
@@ -84,11 +92,21 @@
           href: diagnostics-log-analytics.md
     - name: 組み込みアプリの公開
       href: publish-apps.md
-    - name: MSIX アプリのアタッチを設定する
-      href: app-attach.md
+    - name: MSIX アプリのアタッチを使用する
+      items:
+        - name: Azure portal で MSIX アプリのアタッチを設定する
+          href: app-attach-azure-portal.md
+        - name: PowerShell で MSIX アプリのアタッチを設定する
+          href: app-attach-powershell.md
+        - name: PowerShell スクリプトを使用する
+          href: app-attach.md
+        - name: MSIX イメージを準備する
+          href: app-attach-image-prep.md
+        - name: ファイル共有を設定する
+          href: app-attach-file-share.md
     - name: Microsoft Teams の使用
       href: teams-on-wvd.md
-    - name: Azure Multi-Factor Authentication を設定する
+    - name: Azure AD の Multi-Factor Authentication を設定する
       href: set-up-mfa.md
     - name: 自動更新を構成する
       href: configure-automatic-updates.md
@@ -98,16 +116,34 @@
       href: azure-advisor.md
     - name: 推奨事項を解決する
       href: azure-advisor-recommendations.md
+    - name: Windows Virtual Desktop 向けの Azure Monitor を使用する
+      href: azure-monitor.md
+    - name: ディザスター リカバリー プランを設定する
+      href: disaster-recovery.md
 - name: 概念
   items:
+    - name: 組み込みのロール
+      href: rbac.md
     - name: 認証
       href: authentication.md
-    - name: 安全な URL リスト
-      href: safe-url-list.md
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
-    - name: ユーザー接続の待ち時間の特定
-      href: connection-latency.md
+    - name: Windows Virtual Desktop エージェント
+      href: agent-overview.md
+    - name: ネットワーク接続
+      items:
+        - name: ネットワーク接続について
+          href: network-connectivity.md
+        - name: RDP Shortpath
+          href: shortpath.md
+        - name: サービスの品質 (QoS) を実装する
+          href: rdp-quality-of-service-qos.md
+        - name: 必要な URL リスト
+          href: safe-url-list.md
+        - name: 帯域幅に関する考慮事項
+          href: rdp-bandwidth.md
+        - name: ユーザー接続の待ち時間の特定
+          href: connection-latency.md
     - name: Windows Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
@@ -130,6 +166,8 @@
           href: app-attach-glossary.md
         - name: よく寄せられる質問
           href: app-attach-faq.md
+    - name: Azure Monitor 用語集
+      href: azure-monitor-glossary.md
     - name: データの場所
       href: data-locations.md
 - name: トラブルシューティング
@@ -144,12 +182,16 @@
       href: troubleshoot-vm-configuration.md
     - name: リモート デスクトップ サービスの接続
       href: troubleshoot-service-connection.md
+    - name: Windows Virtual Desktop エージェント
+      href: troubleshoot-agent.md
     - name: リモート デスクトップ クライアントの問題
       href: troubleshoot-client.md
     - name: Windows Virtual Desktop PowerShell
       href: troubleshoot-powershell.md
     - name: グラフィックスのパフォーマンスの問題の診断
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: リファレンス
   items:
     - name: セキュリティの運用方法
@@ -158,8 +200,6 @@
       href: linux-overview.md
     - name: サポートされる RDP ファイルの設定
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: ネットワーク ガイダンス
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 仮想マシンのサイズ指定ガイダンス
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure コマンド ライン インターフェイス (CLI)

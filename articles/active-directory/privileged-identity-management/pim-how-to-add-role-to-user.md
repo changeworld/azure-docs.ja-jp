@@ -10,27 +10,27 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421384"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004672"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
-全体管理者は、Azure Active Directory (Azure AD) を使用して、**永続的**な Azure AD 管理者ロールの割り当てを行うことができます。 こうしたロールの割り当ては、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md) または [PowerShell のコマンド](/powershell/module/azuread#directory_roles) を使用して作成できます。
+全体管理者は、Azure Active Directory (Azure AD) を使用して、**永続的** な Azure AD 管理者ロールの割り当てを行うことができます。 こうしたロールの割り当ては、[Azure portal](../roles/permissions-reference.md) または [PowerShell のコマンド](/powershell/module/azuread#directory_roles) を使用して作成できます。
 
-永続的な管理ロールの割り当ては、特権ロール管理者が Azure AD Privileged Identity Management (PIM) サービスを使用して行うこともできます。 さらに、特権ロール管理者は、ユーザーを Azure AD 管理者ロールの**候補**にすることもできます。 管理者候補は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
+永続的な管理ロールの割り当ては、特権ロール管理者が Azure AD Privileged Identity Management (PIM) サービスを使用して行うこともできます。 さらに、特権ロール管理者は、ユーザーを Azure AD 管理者ロールの **候補** にすることもできます。 管理者候補は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
 
 ## <a name="determine-your-version-of-pim"></a>PIM のバージョンを判断する
 
 2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)が行われます。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
   [![[Azure AD] > [Privileged Identity Management] を選択する](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -41,7 +41,7 @@ ms.locfileid: "87421384"
 
 ユーザーを Azure AD 管理者ロールの候補にするには、次の手順を実行します。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
     Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
 
@@ -51,7 +51,7 @@ ms.locfileid: "87421384"
 
 1. **[ロール]** を選択して、Azure AD のアクセス許可のロール一覧を表示します。
 
-    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![[割り当ての追加] 操作が選択されている [ロール] ページのスクリーンショット。](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. **[割り当ての追加]** を選択して、 **[割り当ての追加]** ページを開きます。
 
@@ -74,6 +74,30 @@ ms.locfileid: "87421384"
 1. ロールが割り当てられると、割り当て状態の通知が表示されます。
 
     ![新しい割り当て - 通知](./media/pim-how-to-add-role-to-user/assignment-notification.png)
+
+## <a name="assign-a-role-with-restricted-scope"></a>制限スコープがあるロールを割り当てる
+
+特定のロールでは、付与されるアクセス許可の範囲を 1 つの管理単位、サービス プリンシパル、またはアプリケーションに制限することができます。 この手順は、管理単位のスコープを持つロールを割り当てる場合の例です。 管理単位を介してスコープをサポートするロールの一覧については、「[スコープ付きロールを管理単位に割り当てる](../roles/admin-units-assign-roles.md)」を参照してください。 この機能は、現在 Azure AD 組織に展開されています。
+
+1. 特権ロール管理者アクセス許可を使用して、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択します。
+
+1. **[ユーザー管理者]** を選択します。
+
+    ![ポータルでロールを開くと、[割り当ての追加] コマンドを使用できます](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. **[割り当ての追加]** を選択します。
+
+    ![ロールがスコープをサポートしている場合は、スコープを選択できます](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. **[割り当ての追加]** ページでは、次のことができます。
+
+   - ロールに割り当てるユーザーまたはグループを選択する
+   - ロールのスコープ (この場合は管理単位) を選択する
+   - スコープの管理単位を選択する
+
+管理単位の作成の詳細については、[管理単位の追加と削除](../roles/admin-units-manage.md)に関するページを参照してください。
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
 
@@ -101,7 +125,7 @@ ms.locfileid: "87421384"
 
 1. **[ロール]** または **[メンバー]** をクリックします。
 
-    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Azure AD ロールを開く](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. **[メンバーの追加]** を選択して **[管理されるメンバーの追加]** を開きます。
 
@@ -111,23 +135,23 @@ ms.locfileid: "87421384"
 
 1. **[メンバーの選択]** を選択してロールに割り当てるユーザーを選択し、 **[選択]** を選択します。
 
-    ![ロールを選択する](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![割り当てるユーザーまたはグループを選択します](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. **[管理されるメンバーの追加]** で **[OK]** を選択し、ロールにユーザーを追加します。
 
 1. ロールの一覧で、割り当てたロールを選択してメンバーの一覧を表示します。
 
-     ロールが割り当てられると、選択したユーザーが、ロールの**候補**としてメンバー リストに表示されます。
+     ロールが割り当てられると、選択したユーザーが、ロールの **候補** としてメンバー リストに表示されます。
 
     ![ロールの候補となるユーザー](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
 1. これで、そのユーザーがロールの対象となりました。ユーザーに、[Privileged Identity Management での自分の Azure AD ロールのアクティブ化](pim-how-to-activate-role.md)に関するページの手順に従ってロールをアクティブ化できることを知らせてください。
 
-    臨時管理者は、アクティブ化時に Azure Multi-Factor Authentication への登録を求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (@outlook.com など) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
+    臨時管理者には、アクティブ化時に Azure AD Multi-Factor Authentication への登録が求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (@outlook.com など) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
 
 ## <a name="make-a-role-assignment-permanent"></a>ロールの割り当てを永続化する
 
-既定では、新しいユーザーは、あくまで Azure AD 管理者ロールの*候補*でしかありません。 ロールの割り当てを永続化する場合は、次の手順に従ってください。
+既定では、新しいユーザーは、あくまで Azure AD 管理者ロールの *候補* でしかありません。 ロールの割り当てを永続化する場合は、次の手順に従ってください。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -137,13 +161,13 @@ ms.locfileid: "87421384"
 
     ![メンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. 永続化する**候補**ロールを選択します。
+1. 永続化する **候補** ロールを選択します。
 
 1. **[その他]** を選択し、 **[永続化]** を選択します。
 
     ![ロールの割り当てを永続化する](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
-    ロールが**永続**として表示されています。
+    ロールが **永続** として表示されています。
 
     ![永続化されたメンバーの一覧が変化](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
@@ -169,7 +193,7 @@ ms.locfileid: "87421384"
 
 1. 確認を求めるメッセージで **[はい]** を選択します。
 
-    ![ロールの削除](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![削除を確認します](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     ロールの割り当てが削除されました。
 
@@ -191,7 +215,7 @@ ms.locfileid: "87421384"
 
    ![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
-1. **MS PIM**サービス プリンシパルに**ユーザー アクセス管理者**ロールが割り当てられているかどうかを確認します。
+1. **MS PIM** サービス プリンシパルに **ユーザー アクセス管理者** ロールが割り当てられているかどうかを確認します。
 
 1. そうなっていない場合、 **[ロールの割り当ての追加]** を選択して、 **[ロールの割り当ての追加]** ウィンドウを開きます。
 

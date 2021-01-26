@@ -11,14 +11,14 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: ae21368269a2c098b4e35bf83b8c9fdf2749a297
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212991"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460547"
 ---
-# <a name="quickstart-configure-workload-isolation-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロードの分離を構成する
+# <a name="quickstart-configure-workload-isolation-in-a-dedicated-sql-pool-using-t-sql"></a>クイックスタート: T-SQL を使用して専用 SQL プールのワークロードの分離を構成する
 
 このクイックスタートでは、データの読み込み用にリソースを予約する場合にワークロード グループとワークロード分類子をすばやく作成します。 ワークロード グループによって、データの読み込みにシステム リソースの 20% が割り当てられます。  ワークロード分類子によって、データ読み込みワークロード グループに要求が割り当てられます。  データの読み込みに対して 20% が分離されることで、SLA を達成するためのリソースが保証されます。
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートは、Azure Synapse の Synapse SQL インスタンスが既に用意されていて、CONTROL データベース権限を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
+このクイックスタートは、Azure Synapse の Synapse SQL インスタンスが既に用意されていて、CONTROL データベース権限を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前の専用 SQL プールを作成してください。
 
 ## <a name="create-login-for-dataloads"></a>DataLoads のログインを作成する
 
@@ -103,10 +103,10 @@ DROP USER [ELTLogin]
 ;
 ```
 
-データ ウェアハウス ユニットと、データ ウェアハウスに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
+データ ウェアハウス ユニットと専用 SQL プールに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
 
-- データをストレージに保持しておく場合は、SQL プールを使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開します。
-- それ以上課金されないようにする場合は、データ ウェアハウスを削除できます。
+- データをストレージに保持しておく場合は、専用 SQL プールを使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開します。
+- それ以上課金されないようにする場合は、専用 SQL プールを削除できます。
 
 ## <a name="next-steps"></a>次のステップ
 

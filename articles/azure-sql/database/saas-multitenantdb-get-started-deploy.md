@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310089"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790969"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 > - Wingtip Tickets SaaS アプリケーションのデプロイ方法。
 > - アプリケーションのソース コード、および管理スクリプトを取得する場所。
 > - アプリを構成するサーバーおよびデータベースについて。
-> - *カタログ*によるテナントとデータのマッピング方法。
+> - *カタログ* によるテナントとデータのマッピング方法。
 > - 新しいテナントのプロビジョニング方法。
 > - アプリでテナントのアクティビティを監視する方法。
 
@@ -97,7 +97,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプト、DLL) が Windows によってブロックされる場合があります。 zip ファイルからスクリプトを抽出するとき、以下の手順を実行して、.zip ファイルをブロック解除してから抽出します。 .zip ファイルをブロック解除することによってスクリプトを実行できるようになります。
 
 1. [WingtipTicketsSaaS-MultiTenantDb GitHub リポジトリ](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)を参照します。
-2. **[Clone or download]\(複製またはダウンロード\)** をクリックします。
+2. **[Clone or download]** をクリックします。
 3. **[Download ZIP]** をクリックし、ファイルを保存します。
 4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
 5. **[全般]** タブで **[ブロックの解除]** を選択し、 **[適用]** をクリックします。
@@ -108,10 +108,10 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>このデプロイの構成ファイルの更新
 
-スクリプトを実行する前に、**UserConfig.psm1** で*リソース グループ*と*ユーザー*の値を設定します。 これらの変数は、デプロイ中に設定した値に設定します。
+スクリプトを実行する前に、**UserConfig.psm1** で *リソース グループ* と *ユーザー* の値を設定します。 これらの変数は、デプロイ中に設定した値に設定します。
 
 1. *PowerShell ISE* で ...\\Learning Modules\\*UserConfig.psm1* を開きます。
-2. *ResourceGroupName*と*Name*をデプロイの固有の値で更新します (10 行目および 11 行目のみ)。
+2. *ResourceGroupName* と *Name* をデプロイの固有の値で更新します (10 行目および 11 行目のみ)。
 3. 変更を保存します。
 
 このファイルで設定された値はすべてのスクリプトで使用されるため、正確であることが重要です。 アプリを再デプロイする場合は、ユーザーとリソース グループにそれぞれ別の値を選択する必要があります。 次に新しい値で UserConfig.psm1 ファイルを再度更新します。
@@ -260,7 +260,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 > [!div class="checklist"]
 > - Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ方法。
 > - アプリを構成するサーバーおよびデータベースについて。
-> - *カタログ*によるテナントとデータのマッピング。
+> - *カタログ* によるテナントとデータのマッピング。
 > - マルチテナント データベースとシングルテナント データベースに新しいテナントをプロビジョニングする方法。
 > - プール使用率を表示してテナント アクティビティを監視する方法。
 > - サンプル リソースを削除して、関連する課金を停止する方法。
@@ -278,7 +278,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 [link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
-[link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
+[link-azure-get-started-powershell-41q]: /powershell/azure/get-started-azureps
 
 [link-github-wingtip-multitenantdb-55g]: https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB/
 
@@ -290,4 +290,3 @@ A [series of related tutorials] is available that build upon this initial deploy
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Azure にデプロイするためのボタン。"
-

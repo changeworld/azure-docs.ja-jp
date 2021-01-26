@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087692"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536268"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -28,7 +28,7 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>ML サービス クラスターをワンボックス構成で運用化する
 
 > [!NOTE]  
-> 以下の手順は、R Server 9.0 と ML Server 9.1 に適用されます。 ML Server 9.3 については、[運用化構成を管理するための管理ツールの使用](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)に関するページをご覧ください。
+> 以下の手順は、R Server 9.0 と ML Server 9.1 に適用されます。 ML Server 9.3 については、[運用化構成を管理するための管理ツールの使用](/machine-learning-server/operationalize/configure-admin-cli-launch)に関するページをご覧ください。
 
 1. エッジ ノードに SSH 接続します。
 
@@ -54,11 +54,11 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成**します。
+1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、 **ML Server を運用化のために構成** します。
 
     ![R server の管理ユーティリティ (選択)](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
+1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「 **A** 」を入力します。
 
     ![R server の管理ユーティリティ (運用化)](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -70,11 +70,11 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 1. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
 
-    a. メイン メニューから、**6** を選択して、診断テストを実行します。
+    a. メイン メニューから、 **6** を選択して、診断テストを実行します。
 
     ![R server の管理ユーティリティ (診断)](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. Diagnostic Tests メニューから、**A** を選択します。メッセージが表示されたら、ローカル管理者ユーザーに対して指定したパスワードを入力します。
+    b. Diagnostic Tests メニューから、 **A** を選択します。メッセージが表示されたら、ローカル管理者ユーザーに対して指定したパスワードを入力します。
 
     ![R server の管理ユーティリティ (テスト)](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
@@ -82,11 +82,11 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
     ![R server の管理ユーティリティ (合格)](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
-    d. 表示されたメニュー オプションから「**E**」を入力して、メイン メニューに戻ります。次に、「**8**」を入力して、管理ユーティリティを終了します。
+    d. 表示されたメニュー オプションから「 **E** 」を入力して、メイン メニューに戻ります。次に、「 **8** 」を入力して、管理ユーティリティを終了します。
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark で Web サービスを実行しているときの長い待ち時間
 
-mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題を回避するには、次のようにします。
+mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、" *rserve2* " というユーザーに属します。 この問題を回避するには、次のようにします。
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -103,7 +103,7 @@ chmod 777 /var/RevoShare/rserve2
 rxSparkConnect(reset = TRUE)
 ```
 
-この段階で、運用化の構成が完了しました。 これで、ご自身の RClient の `mrsdeploy` パッケージを使用してエッジ ノードの運用化に接続し、[リモート実行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)や [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)などの機能の使用を開始できます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。 以降のセクションでは、このトンネルの設定方法について説明します。
+この段階で、運用化の構成が完了しました。 これで、ご自身の RClient の `mrsdeploy` パッケージを使用してエッジ ノードの運用化に接続し、[リモート実行](/machine-learning-server/r/how-to-execute-code-remotely)や [Web サービス](/machine-learning-server/operationalize/concept-what-are-web-services)などの機能の使用を開始できます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。 以降のセクションでは、このトンネルの設定方法について説明します。
 
 ### <a name="ml-services-cluster-on-virtual-network"></a>仮想ネットワーク上の ML サービス クラスター
 
@@ -177,9 +177,9 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
     dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
     ```
 
-1. 「**1**」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
+1. 「 **1** 」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
 
-1. 「**C**」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
+1. 「 **C** 」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
 
 1. 管理ユーティリティを終了します。
 

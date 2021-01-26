@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ff69486ab24c999e40b0afc13c91d6f729c352a0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021886"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206562"
 ---
 # <a name="models"></a>モデル
 
@@ -28,7 +28,6 @@ Azure Remote Rendering の*モデル*とは、[エンティティ](entities.md)�
 ランタイム用のモデルの作成は、FBX や GLTF などのファイル形式から[入力モデルを変換する](../how-tos/conversion/model-conversion.md)ことによって行われます。 変換プロセスでは、テクスチャ、素材、メッシュなどのすべてのリソースが抽出され、最適化されたランタイム形式に変換されます。 また、構造情報が抽出され、それが ARR のエンティティまたはコンポーネント グラフ構造に変換されます。
 
 > [!IMPORTANT]
->
 > [モデルの変換](../how-tos/conversion/model-conversion.md)は、[メッシュ](meshes.md)を作成する唯一の方法です。 メッシュは実行時にエンティティ間で共有できますが、ランタイムにメッシュを取得する方法は、モデルを読み込む以外にありません。
 
 ## <a name="loading-models"></a>モデルの読み込み
@@ -118,6 +117,13 @@ ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<E
 
 > [!CAUTION]
 > ARR ではすべての *Async* 関数が非同期操作オブジェクトを返します。 操作が完了するまで、これらのオブジェクトへの参照を保存する必要があります。 そうしないと、C# ガベージ コレクターによって操作が早期に削除されて、完了できなくなる場合があります。 上のサンプル コードでは、*await* を使用して、モデルの読み込みが完了するまでローカル変数 'loadOp' で参照が保持されることを保証しています。 ただし、代わりに *Completed* イベントを使用する場合は、非同期操作をメンバー変数に格納する必要があります。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RemoteManager.LoadModelAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager.LoadModelFromSASAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager::LoadModelAsync()](/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager::LoadModelFromSASAsync()](/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>次のステップ
 

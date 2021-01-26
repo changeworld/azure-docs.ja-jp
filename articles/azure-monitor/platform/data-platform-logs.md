@@ -1,136 +1,91 @@
 ---
-title: Azure Monitor のログ | Microsoft Docs
+title: Azure Monitor ログ
 description: 監視データの高度な分析に使用される Azure Monitor のログについて説明します。
 documentationcenter: ''
-author: bwren
-manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 413616034dfe7d1f13612ba12ba86014af62c704
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325629"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559067"
 ---
-# <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
+# <a name="azure-monitor-logs-overview"></a>Azure Monitor ログの概要
+Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)からログとパフォーマンス データを収集して整理する Azure Monitor の機能です。 Azure サービスからの[プラットフォーム ログ](platform-logs-overview.md)、[仮想マシン エージェント](agents-overview.md)からのログとパフォーマンス データ、[アプリケーション](../app/app-insights-overview.md)からの使用状況とパフォーマンス データなど、さまざまなソースからのデータを 1 つのワークスペースに統合し、何百万ものレコードを迅速に分析できる高度なクエリ言語を使用してまとめて分析することができます。 特定のレコードのセットを取得するだけの単純なクエリを実行することも、高度なデータ分析を実行して監視データの重要なパターンを特定することもできます。 Log Analytics を使用してログ クエリとその結果を対話形式で操作したり、アラート ルールでそれらを使用して問題が事前に通知されるようにしたり、ブックやダッシュボードでその結果を視覚化したりします。
 
 > [!NOTE]
-> Azure Monitor で収集されたすべてのデータは、2 つの基本的な型であるメトリックとログのどちらかに該当します。 この記事では、ログについて説明します。 メトリックの詳細な説明については「[Azure Monitor のメトリック](data-platform-metrics.md)」を、2 つの比較については「[Azure Monitor によって収集される監視データ](data-platform.md)」をご覧ください。
-
-Azure Monitor のログは、さまざまなソースからのデータについて複雑な分析を実行するときに特に便利です。 この記事では、Azure Monitor でのログの構造と、データを使用してできること、およびログにデータを保存できるさまざまなデータ ソースについて説明します。
-
-> [!NOTE]
-> Azure Monitor のログと Azure 上のログ データのソースを区別することが重要です。 たとえば、Azure のサブスクリプション レベルのイベントは、Azure Monitor のメニューから表示できる[アクティビティ ログ](platform-logs-overview.md)に書き込まれます。 ほとんどのリソースでは、別の場所に転送できる[リソース ログ](platform-logs-overview.md)に運用情報が書き込まれます。 Azure Monitor Logs は、アクティビティ データとリソース ログと共に他の監視データを収集して、リソース全体を深く分析するためのログ データ プラットフォームです。
-
-## <a name="what-are-azure-monitor-logs"></a>Azure Monitor のログとは
-
-Azure Monitor のログには、種類ごとに異なるプロパティ セットを持つレコードに編成されたさまざまな種類のデータが含まれます。 ログは、Azure Monitor のメトリックのような数値を含むことができますが、通常は、詳細な説明付きのテキスト データが含まれます。 さらに、それらは、構造が違うことと、多くの場合定期的に収集されないという点で、メトリック データとは異なります。 イベントやトレースなどの利用統計情報は、組み合わせて分析できるように、パフォーマンス データとともに Azure Monitor ログとして格納されます。
-
-一般的な種類のログ エントリは、散発的に収集されるイベントです。 イベントは、アプリケーションまたはサービスによって作成され、通常は、単独で完全なコンテキストを示す十分な情報が含まれています。 たとえば、イベントは、特定のリソースが作成または変更されたこと、トラフィックの増加に応答して新しいホストが開始されたこと、またはアプリケーションでエラーが検出されたことを示すことができます。
-
- データの形式は多様である可能性があるため、アプリケーションは、必要な構造を使用するカスタム ログを作成できます。 メトリック データは、他の監視データと組み合わせてトレンド分析やその他のデータ分析を行うために、ログ内に格納することもできます。
+> Azure Monitor ログは、Azure Monitor をサポートするデータ プラットフォームの半分です。 もう一方は、時系列データベースに数値データを格納する [Azure Monitor メトリック](data-platform-metrics.md)です。 これは、このデータを、Azure Monitor ログのデータよりも軽量化し、ほぼリアルタイムのシナリオに対応させ、問題のアラートや迅速な検出に特に役立たせることができるものです。 ただし、メトリックが特定の構造に数値データを格納することしかできないのに対し、ログは、それぞれ独自の構造を持つさまざまなデータ型を格納できます。 メトリック データの分析に使用できないログ クエリを使用して、ログ データで複雑な分析を実行することもできます。
 
 
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Azure Monitor のログでできること
-次の表に、Azure Monitor でログを使用できるさまざまな方法を示します。
+次の表に、Azure Monitor でログを使用できるさまざまな方法のいくつかを示します。
 
-
-|  | 説明 |
+|  |  |
 |:---|:---|
-| **分析** | Azure portal で [Log Analytics](../log-query/get-started-portal.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力なデータ エクスプローラー分析エンジンを使用してログ データを対話形式で分析します。<br>Azure portal で [Application Insights 分析コンソール](../log-query/log-query-overview.md)を使用してログ クエリを記述し、Application Insights からログ データを対話形式で分析します。 |
+| **分析** | Azure portal で [Log Analytics](../log-query/log-analytics-tutorial.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力な分析エンジンを使用してログ データを対話形式で分析します。 |
+| **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する、[ログ警告ルール](alerts-log.md)を構成します。 |
 | **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](./workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
-| **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する、[ログ警告ルール](alerts-log.md)を構成します。<br>メトリックとして抽出された特定のログ データ ログに対して[メトリック警告ルール](alerts-metric-logs.md)を構成します。 |
+| **分析情報** | 特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供する[分析情報](../monitor-reference.md#insights-and-core-solutions)をサポートします。  |
 | **取得** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
-| **エクスポート** | [Logic Apps](../../logic-apps/index.yml) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
+| **エクスポート** | Azure ストレージ アカウントまたは Azure Event Hubs への[ログ データの自動エクスポート](logs-data-export.md)を構成します。<br>[Logic Apps](logicapp-flow-connector.md) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
+
+![ログの概要](media/data-platform-logs/logs-overview.png)
 
 
-## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Azure Monitor ログのデータの構造
-Azure Monitor ログによって収集されたデータは、[Log Analytics ワークスペース](./design-logs-deployment.md)に格納されます。 各ワークスペースには、それぞれに特定のソースからのデータが格納される複数のテーブルが含まれます。 すべてのテーブルで共有される[いくつかの一般的なプロパティ](log-standard-properties.md)がありますが、格納されるデータの種類に応じたそれぞれに固有のプロパティ セットもあります。 新しいワークスペースには標準のテーブル セットが作成され、ワークスペースに書き込むさまざまな監視ソリューションと他のサービスによってテーブルが追加されます。
+## <a name="data-collection"></a>データ コレクション
+Log Analytics のワークスペースを作成したら、データを送信するようにさまざまなソースを構成する必要があります。 データは自動的には収集されません。 この構成は、データ ソースによって異なります。 たとえば、Azure リソースからワークスペースにリソース ログを送信するには、[診断設定](diagnostic-settings.md)を作成します。 仮想マシンからデータを収集するには、[Azure Monitor for VMs を有効にします](../insights/vminsights-enable-overview.md)。 追加のイベントとパフォーマンス データを収集するには、[ワークスペース上にデータ ソースを構成します](data-sources.md)。
 
-Application Insights からのログ データではワークスペースと同じ Log Analytics エンジンが使用されますが、監視対象のアプリケーションごとに個別に格納されます。 各アプリケーションには、アプリケーションの要求、例外、ページ ビューなど、データを保持するための標準のテーブル セットがあります。
+- Azure Monitor ログにデータを送信するよう構成できるデータ ソースの完全なリストについては、「[Azure Monitor によって監視される内容](../monitor-reference.md)」を参照してください。
 
-ログ クエリでは、Log Analytics ワークスペースまたは Application Insights アプリケーションからのデータが使用されます。 [リソース間のクエリ](../log-query/cross-workspace-query.md)を使用して、他のログ データと共にアプリケーション データを分析したり、複数のワークスペースまたはアプリケーションを含むクエリを作成したりすることができます。
 
-![Workspaces](media/data-platform-logs/workspaces.png)
+## <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
+Azure Monitor ログによって収集されたデータは、1 つ以上の [Log Analytics ワークスペース](./design-logs-deployment.md)に格納されます。 ワークスペースでは、データの地理的な場所、データにアクセスできるユーザーを定義するアクセス権、価格レベルやデータ保有期間などの構成設定が定義されます。  
+
+Azure Monitor ログを使用するには、少なくとも 1 つのワークスペースを作成する必要があります。 すべての監視データに対して 1 つのワークスペースで十分である場合もあります。また、要件に応じて複数のワークスペースを作成することもできます。 たとえば、実稼働データ用に 1 つのワークスペースを、そしてテスト用に別のものを用意することができます。 
+
+- 新しいワークスペースを設定するには、「[Azure portal で Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)」を参照してください。
+- 複数のワークスペースを作成する際の考慮事項については、「[Azure Monitor ログのデプロイの設計](design-logs-deployment.md)」を参照してください。
+
+## <a name="data-structure"></a>データ構造
+ログ クエリにより、Log Analytics ワークスペースからデータが取得されます。 各ワークスペースには、複数のデータ行を含む別々の列に編成された複数のテーブルが含まれています。 各テーブルは、データ ソースによって提供されるデータ行によって共有される一意の列セットによって定義されます。 
+
+[![Azure Monitor ログの構造](media/data-platform-logs/logs-structure.png)](media/data-platform-logs/logs-structure.png#lightbox)
+
+
+Application Insights のログ データは、Azure Monitor ログにも格納されますが、アプリケーションの構成方法によってその格納方法は異なります。 ワークスペースベースのアプリケーションの場合、アプリケーション要求、例外、ページ ビューなどのデータを保持するために、データは標準のテーブ ルセットの Log Analytics ワークスペースに格納されます。 複数のアプリケーションで同じワークスペースを使用できます。 従来のアプリケーションでは、データは Log Analytics ワークスペースには格納されません。 同じクエリ言語が使用されているため、Azure portal の同じ Log Analytics ツールを使用してクエリを作成して実行します。 ただし、従来のアプリケーションのデータは、互いに独立して格納されます。 テーブル名と列名は異なっていますが、その一般的な構造は、ワークスペースベースのアプリケーションと同じです。 ワークスペースベースおよび従来のアプリケーションのスキーマの詳細な比較については、「[ワークスペースベース リソースの変更](../app/apm-tables.md)」を参照してください。
+
+
+> [!NOTE]
+> Application Insights のエクスペリエンスにおける Application Insights クラシック リソース クエリ、ブック、およびログベースのアラートについては、引き続き完全な下位互換性を提供します。 [新しいワークスペース ベースのテーブル構造またはスキーマ](../app/apm-tables.md)に対してクエリ/ビューを実行するには、まず Log Analytics ワークスペースに移動する必要があります。 プレビュー中に [Application Insights] ウィンドウの **[ログ]** を選択すると、従来の Application Insights クエリ エクスペリエンスにアクセスできます。 詳しくは、「[クエリ スコープ](../log-query/scope.md)」を参照してください。
+
+
+[![Application Insights の Azure Monitor ログの構造](media/data-platform-logs/logs-structure-ai.png)](media/data-platform-logs/logs-structure-ai.png#lightbox)
+
 
 ## <a name="log-queries"></a>ログ クエリ
-Azure Monitor ログのデータは、[Kusto クエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/log-query-overview.md) を使用して、Azure portal でログ クエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。
+データはログ クエリを使用して Log Analytics ワークスペースから取得されます。これは、データを処理して結果を返す読み取り専用の要求です。 ログ クエリは、Azure Data Explorer で使用されるものと同じクエリ言語である [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) で記述されます。 Log Analytics でログ クエリを記述してその結果を対話形式で操作したり、アラート ルールでそれらを使用して問題が事前に通知されるようにしたり、ブックやダッシュボードにその結果を含めたりすることができます。 分析情報には、ビューとブックをサポートするための事前に構築されたクエリが含まれます。
+
+- ログ クエリが使用されている場所の一覧と、開始するためのチュートリアルやその他のドキュメントのリファレンスについては、「[Azure Monitor のログ クエリ](log-query/../../log-query/log-query-overview.md)」を参照してください。
 
 ![Log Analytics](media/data-platform-logs/log-analytics.png)
 
-Application Insights のデータを分析するには、[Application Insights から Log Analytics](../log-query/log-query-overview.md) を開きます。
+## <a name="log-analytics"></a>Log Analytics
+Azure portal のツールである Log Analytics を使用して、ログ クエリを編集して実行し、その結果を対話形式で分析します。 その後、作成したクエリを使用して、ログ クエリ アラートやブックなどの Azure Monitor の他の機能をサポートできます。 Azure Monitor メニューの **[ログ]** オプション、または Azure portal のその他のほとんどのサービスから、Log Analytics にアクセスできます。
 
-![Application Insights Analytics](media/data-platform-logs/app-insights-analytics.png)
-
-[Log Analytics API](https://dev.loganalytics.io/documentation/overview) および [Application Insights REST API](https://dev.applicationinsights.io/documentation/overview) を使用して、ログ データを取得することもできます。
-
-
-## <a name="sources-of-azure-monitor-logs"></a>Azure Monitor ログのソース
-Azure Monitor は、Azure 内とオンプレミス リソースからの両方の、さまざまなソースからログ データを収集できます。 次の表では、Azure Monitor ログにデータを書き込むさまざまなリソースから使用できるさまざまなデータ ソースを示します。 それぞれに、必要な構成の詳細へのリンクがあります。
-
-### <a name="azure-tenant-and-subscription"></a>Azure テナントとサブスクリプション
-
-| Data | 説明 |
-|:---|:---|
-| Azure Active Directory 監査ログ | 各ディレクトリの診断設定によって構成されます。 「[Azure AD ログを Azure Monitor ログと統合する](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)」をご覧ください。  |
-| アクティビティ ログ | 既定では個別に格納され、ほぼリアルタイムのアラートに使用できます。 Log Analytics ワークスペースに書き込むには、Activity Log Analytics ソリューションをインストールします。 「[Log Analytics での Azure アクティビティ ログの収集と分析](./activity-log.md)」をご覧ください。 |
-
-### <a name="azure-resources"></a>Azure リソース
-
-| Data | 説明 |
-|:---|:---|
-| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 [Azure リソース ログの Log Analytics へのストリーミング](./resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。 |
-| 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../monitor-reference.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
-| メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 [Azure リソース ログの Log Analytics へのストリーミング](./resource-logs.md#send-to-azure-storage)に関するページを参照してください。 |
-| Azure Table Storage | 一部の Azure リソースによて監視データが書き込まれる Azure Storage からデータを収集します。 「[Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する](diagnostics-extension-logs.md)」をご覧ください。 |
-
-### <a name="virtual-machines"></a>Virtual Machines
-
-| Data | 説明 |
-|:---|:---|
-|  エージェントのデータ ソース | [Windows](agent-windows.md) と [Linux](../learn/quick-collect-linux-computer.md) のエージェントから収集されるデータ ソースには、イベント、パフォーマンス データ、カスタム ログが含まれます。 データ ソースの一覧と構成の詳細については、「[Azure Monitor のエージェント データ ソース](data-sources.md)」をご覧ください。 |
-| 監視ソリューション | 監視ソリューションによりエージェントから収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../monitor-reference.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
-| System Center Operations Manager | Operations Manager の管理グループを Azure Monitor に接続し、オンプレミスのエージェントからログにイベントおよびパフォーマンス データを収集します。 この構成について詳しくは、「[Operations Manager を Log Analytics に接続する](om-agents.md)」をご覧ください。 |
+- Log Analytics の説明については、[Azure Monitor の Log Analytics の概要](../log-query/log-analytics-overview.md)に関するページを参照してください。 
+- Log Analytics 機能を使用して簡単なログクエリを作成し、その結果を分析する方法を体験するには、[Log Analytics チュートリアル](../log-query/log-analytics-tutorial.md)を参照してください。
 
 
-### <a name="applications"></a>アプリケーション
 
-| Data | 説明 |
-|:---|:---|
-| 要求と例外 | アプリケーションの要求と例外に関する詳細なデータは、_requests_、_pageViews_、_exceptions_ の各テーブルにあります。 [外部コンポーネント](../app/asp-net-dependencies.md)の呼び出しは、_dependencies_ テーブルにあります。 |
-| 使用状況とパフォーマンス | アプリケーションのパフォーマンスは、_requests_、_browserTimings_、_performanceCounters_ の各テーブルで入手できます。 [カスタム メトリック](../app/api-custom-events-metrics.md#trackevent)のデータは、_customMetrics_ テーブルにあります。|
-| トレース データ | [分散トレース](../app/distributed-tracing.md)からの結果は、_traces_ テーブルに格納されます。 |
-| 可用性テスト | [可用性テスト](../app/monitor-web-app-availability.md)の概要データは、_availabilityResults_ テーブルに格納されます。 これらのテストからの詳細データは別のストレージにあり、Azure portal の Application Insights でアクセスします。 |
-
-### <a name="insights"></a>洞察
-
-| Data | 説明 |
-|:---|:---|
-| コンテナーに対する Azure Monitor | [Azure Monitor for containers](../insights/container-insights-overview.md) によって収集されたインベントリとパフォーマンス データです。 テーブルの一覧については、「[コンテナーのデータ収集の詳細](../insights/container-insights-log-search.md#container-records)」をご覧ください。 |
-| VM に対する Azure Monitor | [Azure Monitor for VMs](../insights/vminsights-overview.md) によって収集されたマップとパフォーマンス データです。 このデータのクエリについて詳しくは、「[VM 用 Azure Monitor からログを照会する方法](../insights/vminsights-log-search.md)」をご覧ください。 |
-
-### <a name="custom"></a>Custom 
-
-| Data | 説明 |
-|:---|:---|
-| REST API | 任意の REST クライアントから Log Analytics ワークスペースにデータを書き込みます。 詳しくは、「[HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信](data-collector-api.md)」をご覧ください。
-| ロジック アプリ | **Azure Log Analytics データ コレクター** アクションでロジック アプリ ワークフローから Log Analytics ワークスペースに任意のデータを書き込みます。 |
-
-### <a name="security"></a>セキュリティ
-
-| Data | 説明 |
-|:---|:---|
-| Azure Security Center | [Azure Security Center](../../security-center/index.yml) には、Log Analytics ワークスペースで収集されたデータが格納され、他のログ データと共に分析できます。 ワークスペースの構成について詳しくは、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」をご覧ください。 |
-| Azure Sentinel | [Azure Sentinel](../../sentinel/index.yml) には、データ ソースから Log Analytics ワークスペースへのデータが格納されます。 「[データ ソースの接続](../../sentinel/connect-data-sources.md)」のページを参照してください。  |
+## <a name="relationship-to-azure-data-explorer"></a>Azure Data Explorer とのリレーションシップ
+Azure Monitor ログは、Azure Data Explorer に基づいています。 Log Analytics ワークスペースは Azure Data Explorer のデータベースとほぼ同じで、テーブルは同じように構造化され、どちらも同じ Kusto クエリ言語 (KQL) が使用されています。 Log Analytics を使用して Azure portal で Azure Monitor クエリを操作するエクスペリエンスは、Azure Data Explorer Web UI を使用したエクスペリエンスと似ています。 [Log Analytics ワークスペースのデータを Azure Data Explorer クエリに含める](/azure/data-explorer/query-monitor-data)こともできます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [Azure Monitor データ プラットフォーム](data-platform.md)の詳細を確認します。
+- Log Analytics ワークスペースからデータを取得して分析する[ログ クエリ](../log-query/log-query-overview.md)について説明します。
 - [Azure Monitor でのメトリック](data-platform-metrics.md)を確認します。
 - Azure のさまざまなリソースで[入手できる監視データ](data-sources.md)を確認します。
-

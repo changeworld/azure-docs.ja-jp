@@ -3,20 +3,20 @@ title: Azure Data Factory - JSON スクリプトのリファレンス
 description: Data Factory のエンティティ用の JSON スキーマを紹介します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41ba08aef7aed761c3c6063f97768f22bffe3a36
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318894"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508494"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -90,7 +90,7 @@ ms.locfileid: "85318894"
 | type |アクティビティの種類を指定します。 アクティビティの種類については、「[データ ストア](#data-stores)」および「[データ変換アクティビティ](#data-transformation-activities)」をご覧ください。 |はい |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |HDInsightStreaming および SqlServerStoredProcedure アクティビティの場合は "いいえ" <br/> <br/> それ以外の場合は "はい" |
 | outputs |アクティビティで使用される出力テーブル。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |はい |
-| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティ、Azure Machine Learning アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ" |
+| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティ、Azure Machine Learning スタジオ (クラシック) アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ" |
 | typeProperties |TypeProperties セクションのプロパティは、アクティビティの種類によって異なります。 |いいえ |
 | policy |アクティビティの実行時の動作に影響するポリシーです。 指定されていない場合は、既定のポリシーが使用されます。 |いいえ |
 | scheduler |"scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#dataset-availability)プロパティにあるサブプロパティと同じです。 |いいえ |
@@ -111,7 +111,7 @@ ms.locfileid: "85318894"
 ### <a name="typeproperties-section"></a>typeProperties セクション
 typeProperties セクションは、アクティビティごとに異なります。 変換アクティビティには type プロパティのみが存在します。 パイプラインの変換アクティビティを定義する JSON サンプルについては、この記事の[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。
 
-**コピー アクティビティ**の typeProperties セクションには、**source** と **sink** の 2 つのサブセクションが存在します。 データ ストアを source や sink として使用する JSON サンプルについては、この記事の「[データ ストア](#data-stores)」セクションを参照してください。
+**コピー アクティビティ** の typeProperties セクションには、**source** と **sink** の 2 つのサブセクションが存在します。 データ ストアを source や sink として使用する JSON サンプルについては、この記事の「[データ ストア](#data-stores)」セクションを参照してください。
 
 ### <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
 次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
@@ -337,7 +337,7 @@ structure:
 | ポリシー名 | 説明 | 適用先 | 必須 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ |NA |
-| minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ |NA |
+| minimumRows |**Azure SQL Database** または **Azure テーブル** のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ |NA |
 
 **例:**
 
@@ -352,7 +352,7 @@ structure:
 }
 ```
 
-データセットは Azure Data Factory で作成されている場合を除き、 **external**とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
+データセットは Azure Data Factory で作成されている場合を除き、 **external** とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
 
 | 名前 | 説明 | 必須 | Default value |
 | --- | --- | --- | --- |
@@ -377,7 +377,7 @@ structure:
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
-| &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
+| &nbsp; |[Azure Synapse Analytics](#azure-synapse-analytics) |
 | &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table Storage](#azure-table-storage) |
 | **データベース** |[Amazon Redshift](#amazon-redshift) |
@@ -409,7 +409,7 @@ structure:
 リンクされたサービスには、Azure Storage のリンクされたサービスと Azure Storage SAS のリンクされたサービスの 2 種類があります。
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-**アカウント キー**を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
+**アカウント キー** を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -460,7 +460,7 @@ Azure BLOB データセットを定義するには、データセットの **typ
 | folderPath |BLOB ストレージのコンテナーとフォルダーのパス。 例: myblobcontainer\myblobfolder\ |はい |
 | fileName |BLOB の名前です。 fileName は省略可能で、大文字と小文字を区別します。<br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定の BLOB で動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 #### <a name="example"></a>例
@@ -597,7 +597,7 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい (サービス プリンシパル認証の場合) |
 | servicePrincipalKey | アプリケーションのキーを取得します。 | はい (サービス プリンシパル認証の場合) |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | はい (サービス プリンシパル認証の場合) |
-| authorization | **Data Factory エディター**で **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい (ユーザー資格情報認証の場合)|
+| authorization | **Data Factory エディター** で **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい (ユーザー資格情報認証の場合)|
 | sessionID | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使用できます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい (ユーザー資格情報認証の場合) |
 
 #### <a name="example-using-service-principal-authentication"></a>例: サービス プリンシパル認証の使用
@@ -643,7 +643,7 @@ Azure Data Lake Store データセットを定義するには、データセッ�
 | folderPath |Azure Data Lake Store のコンテナーとフォルダーのパス。 |はい |
 | fileName |Azure Data Lake Store 内のファイルの名前。 fileName は省略可能で、大文字と小文字を区別します。 <br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 #### <a name="example"></a>例
@@ -1100,14 +1100,14 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 
 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#copy-activity-properties)に関する記事を参照してください。
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure SQL Data Warehouse のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 |はい |
+| connectionString |connectionString プロパティには、Azure Synapse Analytics インスタンスに接続するために必要な情報を指定します。 |はい |
 
 
 
@@ -1125,14 +1125,14 @@ Azure SQL Data Warehouse のリンクされたサービスを定義するには�
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure SQL Data Warehouse データセットを定義するには、データセットの **type** を **AzureSqlDWTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics データセットを定義するには、データセットの **type** を **AzureSqlDWTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルまたはビューの名前です。 |はい |
+| tableName |リンクされたサービスが参照する Azure Synapse Analytics データベースのテーブルまたはビューの名前です。 |はい |
 
 #### <a name="example"></a>例
 
@@ -1161,10 +1161,10 @@ Azure SQL Data Warehouse データセットを定義するには、データセ�
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties)に関する記事を参照してください。
 
-### <a name="sql-dw-source-in-copy-activity"></a>コピー アクティビティの SQL DW ソース
-Azure SQL Data Warehouse からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlDWSource** に設定し、**source** セクションで以下のプロパティを指定します。
+### <a name="azure-synapse-analytics-source-in-copy-activity"></a>コピー アクティビティでの Azure Synapse Analytics ソース
+Azure Synapse Analytics からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlDWSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -1216,20 +1216,20 @@ Azure SQL Data Warehouse からデータをコピーする場合は、コピー 
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
 
-### <a name="sql-dw-sink-in-copy-activity"></a>コピー アクティビティの SQL DW シンク
-Azure SQL Data Warehouse にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlDWSink** に設定し、**sink** セクションで以下のプロパティを指定します。
+### <a name="azure-synapse-analytics-sink-in-copy-activity"></a>コピー アクティビティでの Azure Synapse Analytics シンク
+Azure Synapse Analytics にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlDWSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ |
-| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **SQL Data Warehouse へのデータ読み込みには、PolyBase の使用をお勧めします。** |True <br/>False (既定値) |いいえ |
+| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **Azure Synapse Analytics へのデータ読み込みには、PolyBase の使用をお勧めします。** |True <br/>False (既定値) |いいえ |
 | polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |&nbsp; |いいえ |
-| rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](https://msdn.microsoft.com/library/dn935021.aspx) 」をご覧ください。 |0 (既定値)、1、2、… |いいえ |
+| rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](/sql/t-sql/statements/create-external-table-transact-sql) 」をご覧ください。 |0 (既定値)、1、2、… |いいえ |
 | rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 |Value (既定値)、Percentage |いいえ |
 | rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 |1、2、… |はい (**rejectType** が **percentage** の場合) |
-| useTypeDefault |PolyBase によってテキスト ファイルからデータが取得されるときに、区切りテキスト ファイル内の不足値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
+| useTypeDefault |PolyBase によってテキスト ファイルからデータが取得されるときに、区切りテキスト ファイル内の不足値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 
@@ -1277,7 +1277,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -1394,7 +1394,7 @@ Azure Cognitive Search データセットを定義するには、データセッ
 リンクされたサービスには、Azure Storage のリンクされたサービスと Azure Storage SAS のリンクされたサービスの 2 種類があります。
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-**アカウント キー**を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
+**アカウント キー** を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -1536,7 +1536,7 @@ Azure Table Storage にデータをコピーする場合は、コピー アク�
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |文字列値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |列の名前。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |列の名前。 |いいえ |
-| azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ |
+| azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](/rest/api/storageservices/Insert-Or-Merge-Entity)」および「[Insert or Replace Entity (エンティティの挿入または置換)](/rest/api/storageservices/Insert-Or-Replace-Entity)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ |
 | writeBatchSize |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |TimeSpan<br/><br/>例:"00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
 
@@ -1652,7 +1652,7 @@ Amazon Redshift からデータをコピーする場合は、コピー アクテ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -1771,7 +1771,7 @@ IBM DB2 からデータをコピーする場合は、コピー アクティビ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from "MySchema"."MyTable""`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from "MySchema"."MyTable""`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 ```json
@@ -1889,7 +1889,7 @@ MySQL データベースからデータをコピーする場合は、コピー �
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 
 #### <a name="example"></a>例
@@ -2005,7 +2005,7 @@ Oracle データベースからデータをコピーする場合は、コピー 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `select * from MyTable` <br/><br/>指定されていない場合に実行される SQL ステートメント: `select * from MyTable` |いいえ (**データセット**の **tableName** が指定されている場合) |
+| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `select * from MyTable` <br/><br/>指定されていない場合に実行される SQL ステートメント: `select * from MyTable` |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2178,7 +2178,7 @@ PostgreSQL データベースからデータをコピーする場合は、コピ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2738,7 +2738,7 @@ Sybase データベースからデータをコピーする場合は、コピー 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2937,8 +2937,8 @@ Cassandra データセットを定義するには、データセットの **type
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい (**CassandraSource** の**クエリ**が定義されていない場合)。 |
-| tableName |Cassandra データベースのテーブル名。 |はい (**CassandraSource** の**クエリ**が定義されていない場合)。 |
+| keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい (**CassandraSource** の **クエリ** が定義されていない場合)。 |
+| tableName |Cassandra データベースのテーブル名。 |はい (**CassandraSource** の **クエリ** が定義されていない場合)。 |
 
 #### <a name="example"></a>例
 
@@ -3097,7 +3097,7 @@ MongoDB からデータをコピーする場合は、コピー アクティビ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **collectionName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -3179,7 +3179,7 @@ Amazon S3 データセットを定義するには、データセットの **type
 | key |S3 オブジェクト キー。 |String |いいえ |
 | prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |String |いいえ |
 | version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |String |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ | |
 
 
@@ -3311,7 +3311,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-**オンプレミスのファイル サーバー**のリンクされているサービスで、オンプレミスのファイル システムを Azure データ ファクトリにリンクできます。 次の表に、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめています。
+**オンプレミスのファイル サーバー** のリンクされているサービスで、オンプレミスのファイル システムを Azure データ ファクトリにリンクできます。 次の表に、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめています。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -3374,8 +3374,8 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter":2016-1-?.txt"<br/><br/>fileFilter は FileShare 入力データセットに適用されることに注意してください。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath/fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** であり、サポートされるレベルは**Optimal** と **Fastest** です。 「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** であり、サポートされるレベルは **Optimal** と **Fastest** です。 「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 > [!NOTE]
 > fileName と fileFilter は、同時に使用することができません。
@@ -3640,8 +3640,8 @@ FTP データセットを定義するには、データセットの **type** を
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** であり、サポートされるレベルは**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** であり、サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 | useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 バイナリ モードの場合は true、ASCII モードの場合は false です。 既定値:True。 このプロパティを使用できるのは、関連するリンクされたサービスの種類が FtpServer の場合のみです。 |いいえ |
 
 > [!NOTE]
@@ -3730,11 +3730,11 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | url |HDFS への URL |はい |
-| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
+| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証** を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
-| encryptedCredential |アクセス資格情報の [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 出力。 |いいえ |
+| encryptedCredential |アクセス資格情報の [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 出力。 |いいえ |
 
 #### <a name="example-using-anonymous-authentication"></a>例:匿名認証を使用する
 
@@ -3781,7 +3781,7 @@ HDFS データセットを定義するには、データセットの **type** �
 | folderPath |フォルダーへのパス。 例: `myfolder`<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例: folder\subfolder には、folder\\\\subfolder を指定し、d:\samplefolder には、d:\\\\samplefolder を指定します。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例: 1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 > [!NOTE]
@@ -3982,7 +3982,7 @@ SFTP データセットを定義するには、データセットの **type** �
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 | useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 バイナリ モードの場合は true、ASCII モードの場合は false です。 既定値:True。 このプロパティを使用できるのは、関連するリンクされたサービスの種類が FtpServer の場合のみです。 |いいえ |
 
@@ -4112,12 +4112,12 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 
 認証に `certThumbprint` を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、ゲートウェイ サービスに読み取りアクセス許可を付与する必要があります。
 
-1. Microsoft 管理コンソール (MMC) を起動します。 **ローカル コンピューター**を対象とする **[証明書]** スナップインを追加します。
+1. Microsoft 管理コンソール (MMC) を起動します。 **ローカル コンピューター** を対象とする **[証明書]** スナップインを追加します。
 2. **[証明書]** 、 **[個人]** の順に展開し、 **[証明書]** をクリックします。
 3. 個人用ストアの証明書を右クリックし、 **[すべてのタスク]** -> **[秘密キーの管理]** の順に選択します。
 3. **[セキュリティ]** タブで、証明書に対する読み取りアクセス権を使用して Data Management Gateway Host Service を実行しているユーザー アカウントを追加します。
 
-**例: クライアント証明書の使用**このリンクされたサービスは、データ ファクトリをオンプレミスの HTTP Web サーバーにリンクします。 Data Management Gateway がインストールされているコンピューターにインストールされているクライアント証明書を使用します。
+**例: クライアント証明書の使用** このリンクされたサービスは、データ ファクトリをオンプレミスの HTTP Web サーバーにリンクします。 Data Management Gateway がインストールされているコンピューターにインストールされているクライアント証明書を使用します。
 
 ```json
 {
@@ -4163,7 +4163,7 @@ HTTP データセットを定義するには、データセットの **type** �
 | requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET` です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
-| format | **HTTP エンドポイントからデータをそのまま取得する**だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合に、次の種類の形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |いいえ |
+| format | **HTTP エンドポイントからデータをそのまま取得する** だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合に、次の種類の形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 #### <a name="example-using-the-get-default-method"></a>例: GET (既定) メソッドを使用する
@@ -4464,7 +4464,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>例: 暗号化された資格情報で基本認証を使用する
-[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) コマンドレットを使用して資格情報を暗号化できます。
+[New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) コマンドレットを使用して資格情報を暗号化できます。
 
 ```json
 {
@@ -4621,7 +4621,7 @@ Salesforce データセットを定義するには、データセットの **typ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |Salesforce のテーブル名。 |いいえ (**RelationalSource** の**クエリ**が指定されている場合) |
+| tableName |Salesforce のテーブル名。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -4771,7 +4771,7 @@ Web データセットを定義するには、データセットの **type** を
 詳細については、[Web テーブル コネクタ](data-factory-web-table-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="web-source-in-copy-activity"></a>コピー アクティビティの Web ソース
-Web テーブルからデータをコピーする場合は、コピー アクティビティの **source type** を **WebSource** に設定します。 現時点では、ソースが **WebSource**型のコピー アクティビティの場合、追加プロパティはサポートされません。
+Web テーブルからデータをコピーする場合は、コピー アクティビティの **source type** を **WebSource** に設定します。 現時点では、ソースが **WebSource** 型のコピー アクティビティの場合、追加プロパティはサポートされません。
 
 #### <a name="example"></a>例
 
@@ -4824,9 +4824,9 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 | --- | --- |
 | [On-demand HDInsight クラスター](#on-demand-azure-hdinsight-cluster)または[独自の HDInsight クラスター](#existing-azure-hdinsight-cluster) |[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
-| [Azure Machine Learning](#azure-machine-learning) | [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) |
+| [Azure Machine Learning Studio (クラシック)](#azure-machine-learning-studio-classic) | [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](#azure-machine-learning-studio-classic-batch-execution-activity)、[Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティ](#azure-machine-learning-studio-classic-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database)、[Azure Synapse Analytics](#azure-synapse-analytics)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>オンデマンド Azure HDInsight クラスター
 Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
@@ -4836,7 +4836,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは **HDInsightOnDemand**に設定されます。 |はい |
+| type |type プロパティは **HDInsightOnDemand** に設定されます。 |はい |
 | clusterSize |クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 |はい |
 | timetolive |オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。 その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。 |はい |
 | version |HDInsight クラスターのバージョン。 詳細については、「[Azure Data Factory でサポートされる HDInsight バージョン](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)」をご覧ください。 |いいえ |
@@ -4874,7 +4874,7 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは **HDInsight**に設定されます。 |はい |
+| type |type プロパティは **HDInsight** に設定されます。 |はい |
 | clusterUri |HDInsight クラスターの URI です。 |はい |
 | username |既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
@@ -4907,7 +4907,7 @@ Azure Batch のリンクされたサービスを作成し、仮想マシン (VM)
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは **AzureBatch**に設定されます。 |はい |
+| type |type プロパティは **AzureBatch** に設定されます。 |はい |
 | accountName |Azure Batch アカウントの名前です。 |はい |
 | accessKey |Azure Batch アカウントのアクセス キーです。 |はい |
 | poolName |仮想マシンのプールの名前です。 |はい |
@@ -4931,11 +4931,11 @@ Azure Batch のリンクされたサービスを作成し、仮想マシン (VM)
 }
 ```
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning のリンクされたサービスを作成し、Machine Learning のバッチ スコアリング エンドポイントを Data Factory に登録します。 このリンクされたサービスで実行できる 2 つのデータ変換アクティビティ: [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity)。
+## <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック)
+Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成し、スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録します。 このリンクされたサービスで実行できる 2 つのデータ変換アクティビティ: [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](#azure-machine-learning-studio-classic-batch-execution-activity)、[Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティ](#azure-machine-learning-studio-classic-update-resource-activity)。
 
 ### <a name="linked-service"></a>リンクされたサービス
-次の表は、Azure Machine Learning のリンクされたサービスの Azure JSON 定義で使用されるプロパティの説明です。
+次の表は、スタジオ (クラシック) のリンクされたサービスの Azure JSON 定義内で使用されるプロパティの説明です。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -5064,9 +5064,9 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 [HDInsight MapReduce アクティビティ](#hdinsight-mapreduce-activity) | Data Factory パイプラインの HDInsight MapReduce アクティビティは、独自の、またはオンデマンドの Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。
 [HDInsight Streaming アクティビティ](#hdinsight-streaming-activity) | Data Factory パイプラインの HDInsight Streaming アクティビティは、独自の、またはオンデマンドの Windows/Linux ベースの HDInsight クラスターで Hadoop Streaming プログラムを実行します。
 [HDInsight Spark アクティビティ](#hdinsight-spark-activity) | Data Factory パイプラインの HDInsight Spark アクティビティでは、独自の HDInsight クラスターで Spark プログラムを実行します。
-[Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity) | Azure Data Factory を使用すると、公開された Azure Machine Learning Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインでバッチ実行アクティビティを使用すると、Machine Learning Web サービスを呼び出して、データの予測を一括で行うことができます。
-[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) | 時間の経過と共に、Machine Learning スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの Machine Learning モデルでスコア付け Web サービスを更新する必要があります。 更新リソース アクティビティを使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。
-[ストアド プロシージャ アクティビティ](#stored-procedure-activity) | Data Factory パイプラインでストアド プロシージャ アクティビティを使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure SQL Data Warehouse、SQL Server データベース。
+[Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](#azure-machine-learning-studio-classic-batch-execution-activity) | Azure Data Factory を使用すると、公開されたスタジオ (クラシック) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内でバッチ実行アクティビティを使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。
+[Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](#azure-machine-learning-studio-classic-update-resource-activity) | 時間の経過と共に、Azure Machine Learning Studio (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの機械学習モデルでスコア付け Web サービスを更新する必要があります。 更新リソース アクティビティを使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。
+[ストアド プロシージャ アクティビティ](#stored-procedure-activity) | Data Factory パイプラインでストアド プロシージャ アクティビティを使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics、SQL Server データベース。
 [Data Lake Analytics U-SQL アクティビティ](#data-lake-analytics-u-sql-activity) | Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。
 [.NET カスタム アクティビティ](#net-custom-activity) | Data Factory でサポートされていない方法でデータを変換する必要がある場合は、独自のデータ処理ロジックを使用するカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用できます。 Azure Batch サービスまたは Azure HDInsight クラスターを使用して実行するようにカスタム .NET アクティビティを構成できます。
 
@@ -5346,14 +5346,14 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 
 このアクティビティの詳細については、[Spark アクティビティ](data-factory-spark.md)に関する記事を参照してください。
 
-## <a name="machine-learning-batch-execution-activity"></a>Machine Learning バッチ実行アクティビティ
-Azure Machine Learning Studio バッチ実行アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 Azure Machine Learning のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
+## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ
+Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-webServiceInput | Azure Machine Learning Studio Web サービスの入力として渡すデータセット。 アクティビティの入力にも、このデータセットを含める必要があります。 |webServiceInput または webServiceInputs を使用します。 |
-webServiceInputs | Azure Machine Learning Studio Web サービスの入力として渡す複数のデータセットを指定します。 Web サービスが複数の入力を受け取る場合は、webServiceInput プロパティではなく、webServiceInputs プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。 | webServiceInput または webServiceInputs を使用します。 |
-webServiceOutputs | Azure Machine Learning Studio Web サービスの出力として割り当てられるデータセット。 このデータセットで Web サービスの出力データが返されます。 | はい |
+webServiceInput | スタジオ (クラシック) Web サービスの入力として渡すデータセット。 アクティビティの入力にも、このデータセットを含める必要があります。 |webServiceInput または webServiceInputs を使用します。 |
+webServiceInputs | スタジオ (クラシック) Web サービスの入力として渡す複数のデータセットを指定します。 Web サービスが複数の入力を受け取る場合は、webServiceInput プロパティではなく、webServiceInputs プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。 | webServiceInput または webServiceInputs を使用します。 |
+webServiceOutputs | スタジオ (クラシック) Web サービスの出力として割り当てられるデータセット。 このデータセットで Web サービスの出力データが返されます。 | はい |
 globalParameters | このセクションの Web サービス パラメーターの値を指定します。 | いいえ |
 
 ### <a name="json-example"></a>JSON の例
@@ -5397,13 +5397,13 @@ globalParameters | このセクションの Web サービス パラメーター�
 }
 ```
 
-この例の JSON では、デプロイされた Azure Machine Learning Web サービスが、リーダー モジュールとライター モジュールを使用して、Azure SQL Database のデータを読み書きします。 この Web サービスでは、Database server name、Database name、Server user account name、Server user account password という 4 つのパラメーターが公開されています。
+この例の JSON では、デプロイされたスタジオ (クラシック) Web サービスによってリーダーおよびライター モジュールが使用され、Azure SQL Database のデータが読み書きされます。 この Web サービスでは、Database server name、Database name、Server user account name、Server user account password という 4 つのパラメーターが公開されています。
 
 > [!NOTE]
 > AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。 たとえば、上の JSON スニペットでは、MLSqlInput は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
 
-## <a name="machine-learning-update-resource-activity"></a>Machine Learning 更新リソース アクティビティ
-Azure Machine Learning Studio 更新リソース アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 Azure Machine Learning のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ
+Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
@@ -5411,7 +5411,7 @@ trainedModelName | 再トレーニング済みモデルの名前。 | はい |
 trainedModelDatasetName | 再トレーニング操作から返される iLearner ファイルを指すデータセット。 | はい |
 
 ### <a name="json-example"></a>JSON の例
-パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 Azure Machine Learning Studioバッチ実行アクティビティはトレーニング データを入力として使用し、iLearner ファイルを出力として作成します。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
+パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 スタジオ (クラシック) バッチ実行アクティビティにより、トレーニング データが入力として使用され、iLearner ファイルが出力として作成されます。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
 
 ```json
@@ -5541,18 +5541,18 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 
 - SQL Server
 - Azure SQL データベース
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics
 
 アクティビティの種類を SqlServerStoredProcedure に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL Database または Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
+| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL Database または Azure Synapse Analytics のストアド プロシージャ名を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ |
 
 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。
 
-出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
+出力データセットでは、ストアド プロシージャ アクティビティの **スケジュール** (毎時、毎週、毎月など) を指定します。 出力データセットでは、ストアド プロシージャを実行する Azure SQL Database、Azure Synapse Analytics、または SQL Server Database を表す **リンクされたサービス** を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに **ダミー データセット** を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
 
 ### <a name="json-example"></a>JSON の例
 

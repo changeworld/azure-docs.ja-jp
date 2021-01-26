@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めてのポータル クエリ
 description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056382"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057384"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Resource Graph クエリからグラフを作成する
 
-上で示した最後のクエリを実行した後、 **[グラフ]** タブを選択すると、"結果セットが円グラフの視覚化と互換性がありません" というメッセージが表示されます。 結果を一覧表示するクエリはグラフにすることができませんが、リソース数を返すクエリであれば、グラフにすることができます。 [「仮想マシンの数 (OS の種類別)」のサンプル クエリ](./samples/starter.md#count-os)を使用して、Resource Graph クエリから視覚化を行ってみましょう。
+前のクエリを実行した後、 **[グラフ]** タブを選択すると、"結果セットが円グラフの視覚化と互換性がありません" というメッセージが表示されます。 結果を一覧表示するクエリはグラフにすることができませんが、リソース数を返すクエリであれば、グラフにすることができます。 [「仮想マシンの数 (OS の種類別)」のサンプル クエリ](./samples/starter.md#count-os)を使用して、Resource Graph クエリから視覚化を行ってみましょう。
 
 1. ウィンドウの **[クエリ 1]** 部分に次のクエリを入力し、 **[クエリの実行]** を選択します。
 
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>クエリの視覚化結果をダッシュボードにピン留めする
 
-視覚化できる結果をクエリから得たら、その視覚化したデータをいずれかのダッシュボードにピン留めすることができます。 上記のクエリを実行した後、次の手順を実行します。
+視覚化できる結果をクエリから得たら、その視覚化したデータをいずれかのダッシュボードにピン留めすることができます。 前のクエリを実行した後、次の手順を実行します。
 
 1. **[保存]** を選択し、"VMs by OS Type" という名前を付けます。 その後、右側のウィンドウの下部にある **[保存]** を選択します。
 
@@ -94,7 +94,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 - [Resource Graph エクスプローラー - サンプル ダッシュボード 2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="サンプル ダッシュボード 2 の画像の例" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="サンプル ダッシュボード 1 の画像の例" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > 上の例に示したダッシュボードのスクリーンショットにあるカウントとグラフは、ご利用の Azure 環境によって異なります。

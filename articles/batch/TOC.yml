@@ -43,7 +43,19 @@
         - name: Batch のサンプル リポジトリ
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Batch サービス モードでの Batch アカウントの作成
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: ユーザー サブスクリプション モードでの Batch アカウントの作成
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: Azure Batch アカウントへのアプリケーションの追加
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: Linux プールの作成と管理
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: Windows プールの作成と管理
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: ジョブとタスクを実行する
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: 概念
   items:
     - name: セキュリティ
@@ -53,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+        - name: セキュリティの運用方法
+          href: security-best-practices.md
     - name: Batch サービスのワークフローとリソース
       displayName: developer features
       href: batch-service-workflow-features.md
@@ -123,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: コンピューティング ノードの VM サイズを選択する
           href: batch-pool-vm-sizes.md
+        - name: クラウドサービスから仮想マシン プールに移行する
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: コンピューティング ノードへのアクセスを構成する
           href: pool-endpoint-configuration.md
         - name: Shared Image Gallery を使用してプールを作成する
@@ -156,6 +172,7 @@
         - name: ジョブの準備と完了タスク
           href: batch-job-prep-release.md
         - name: 同時実行ノード タスク
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Task dependencies
           href: batch-task-dependencies.md
@@ -206,14 +223,12 @@
           items:
             - name: Azure を使用したレンダリング
               href: batch-rendering-service.md
-            - name: VM イメージのレンダリング
+            - name: VM イメージの Batch レンダリング
               href: batch-rendering-applications.md
             - name: Batch レンダリングの機能
               href: batch-rendering-functionality.md
             - name: Batch レンダリングの使用
               href: batch-rendering-using.md
-            - name: レンダー マネージャーの使用
-              href: batch-rendering-render-managers.md
             - name: レンダリング アプリケーション参照
               href: batch-rendering-application-reference.md
             - name: ストレージとデータの移動
@@ -257,12 +272,16 @@
           href: batch-pool-resize-start-event.md
         - name: プールのサイズ変更の完了イベント
           href: batch-pool-resize-complete-event.md
+        - name: プールの自動スケーリング イベント
+          href: batch-pool-autoscale-event.md
         - name: タスク開始イベント
           href: batch-task-start-event.md
         - name: タスク完了イベント
           href: batch-task-complete-event.md
         - name: タスク失敗イベント
           href: batch-task-fail-event.md
+        - name: タスク スケジュール失敗イベント
+          href: batch-task-schedule-fail-event.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

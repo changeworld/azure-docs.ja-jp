@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:Azure Blob Storage ライブラリ v12 - Java
+title: Azure Blob Storage ライブラリ v12 - Java
 description: このクイックスタートでは、Java 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 7c0b8d6ea772d3d655eb6fbe39afa5ef9edafc11
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319815"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501126"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>クイック スタート:Java v12 SDK で BLOB を管理する
 
@@ -21,16 +21,16 @@ ms.locfileid: "87319815"
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)
+* [API リファレンス ドキュメント](/java/api/overview/azure/storage-blob-readme)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
 * [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [サンプル](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) バージョン 8 以降。
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
@@ -45,13 +45,29 @@ ms.locfileid: "87319815"
 
 1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven コマンドを使用し、*blob-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して "Hello world!" を作成します。 Java プロジェクト。
 
-   ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart \
-                          -DartifactId=blob-quickstart-v12 \
-                          -DarchetypeArtifactId=maven-archetype-quickstart \
-                          -DarchetypeVersion=1.4 \
-                          -DinteractiveMode=false
-   ```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    mvn archetype:generate `
+        --define interactiveMode=n `
+        --define groupId=com.blobs.quickstart `
+        --define artifactId=blob-quickstart-v12 `
+        --define archetypeArtifactId=maven-archetype-quickstart `
+        --define archetypeVersion=1.4
+    ```
+
+    # <a name="bash"></a>[Bash](#tab/bash)
+
+    ```bash
+    mvn archetype:generate \
+        --define interactiveMode=n \
+        --define groupId=com.blobs.quickstart \
+        --define artifactId=blob-quickstart-v12 \
+        --define archetypeArtifactId=maven-archetype-quickstart \
+        --define archetypeVersion=1.4
+    ```
+
+    ---
 
 1. プロジェクトの生成からの出力は、次のようになります。
 
@@ -159,11 +175,11 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 これらのリソースとやり取りするには、以下の Java クラスを使用します。
 
-* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。 ストレージ アカウントでは、Blob service に対して最上位の名前空間が提供されます。
-* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html):`BlobServiceClientBuilder` クラスでは、`BlobServiceClient` オブジェクトの構成とインスタンス化を支援する fluent ビルダー API が提供されています。
-* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html):`BlobItem` クラスでは、`listBlobsFlat` の呼び出しから返された個々の BLOB が示されます。
+* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。 ストレージ アカウントでは、Blob service に対して最上位の名前空間が提供されます。
+* [ クラスでは、](/java/api/com.azure.storage.blob.blobserviceclientbuilder) オブジェクトの構成とインスタンス化を支援する fluent ビルダー API が提供されています。
+* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+* [ クラスを使用して、Azure Storage BLOB を操作できます。
+* [BlobItem](/java/api/com.azure.storage.blob.models.blobitem):`BlobItem` クラスは、[listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) の呼び出しから返された個々の BLOB を表します。
 
 ## <a name="code-examples"></a>コード例
 
@@ -201,7 +217,7 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 > [!IMPORTANT]
 > コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-次に、[BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) クラスのインスタンスを作成し、[create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) メソッドを呼び出して、ストレージ アカウントに実際にコンテナーを作成します。
+次に、[BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient) クラスのインスタンスを作成し、[create](/java/api/com.azure.storage.blob.blobcontainerclient.create) メソッドを呼び出して、ストレージ アカウントに実際にコンテナーを作成します。
 
 `Main` メソッドの末尾に次のコードを追加します。
 
@@ -221,8 +237,8 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 次のコード スニペット:
 
 1. ローカルの *data* ディレクトリにテキスト ファイルを作成します。
-1. 「[コンテナーを作成する](#create-a-container)」セクションでのコンテナー上で [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) メソッドを呼び出すことで、[BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) オブジェクトへの参照を取得します。
-1. [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成しますが、既に存在する場合は上書きしません。
+1. 「[コンテナーを作成する](#create-a-container)」セクションでのコンテナー上で [getBlobClient](/java/api/com.azure.storage.blob.blobcontainerclient.getblobclient) メソッドを呼び出すことで、[BlobClient](/java/api/com.azure.storage.blob.blobclient) オブジェクトへの参照を取得します。
+1. [uploadFromFile](/java/api/com.azure.storage.blob.blobclient.uploadfromfile) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成しますが、既に存在する場合は上書きしません。
 
 `Main` メソッドの末尾に次のコードを追加します。
 
@@ -248,7 +264,7 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-[listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) メソッドを呼び出して、コンテナー内の BLOB を一覧表示します。 この場合、コンテナーに BLOB が 1 つだけ追加されているので、一覧表示操作ではその 1 つの BLOB だけが返されます。
+[listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) メソッドを呼び出して、コンテナー内の BLOB を一覧表示します。 この場合、コンテナーに BLOB が 1 つだけ追加されているので、一覧表示操作ではその 1 つの BLOB だけが返されます。
 
 `Main` メソッドの末尾に次のコードを追加します。
 
@@ -263,7 +279,7 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>BLOB をダウンロードする
 
-[downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードでは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOAD" というサフィックスを追加します。
+[downloadToFile](/java/api/com.azure.storage.blob.specialized.blobclientbase.downloadtofile) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードでは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOAD" というサフィックスを追加します。
 
 `Main` メソッドの末尾に次のコードを追加します。
 
@@ -280,7 +296,7 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>コンテナーを削除する
 
-次のコードでは、[delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) メソッドを使用して、コンテナー全体を削除することで、アプリによって作成されたリソースをクリーンアップします。 また、アプリによって作成されたローカル ファイルも削除します。
+次のコードでは、[delete](/java/api/com.azure.storage.blob.blobcontainerclient.delete) メソッドを使用して、コンテナー全体を削除することで、アプリによって作成されたリソースをクリーンアップします。 また、アプリによって作成されたローカル ファイルも削除します。
 
 アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`System.console().readLine()` を呼び出すことで、ユーザーの入力を一時停止します。 このとき、リソースが削除される前に、正しく作成されたことを確認できます。
 

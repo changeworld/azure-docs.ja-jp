@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270667"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108724"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -29,9 +29,9 @@ Azure AD 拡張機能が動作しない一般的な理由は 2 つあります�
 
 Azure AD と Azure AD B2C は、別個の製品であるため、同じテナントで共存させることはできません。 Azure AD テナントは、組織を表します。 Azure AD B2C テナントは、証明書利用者アプリケーションで使用される ID のコレクションを表します。 **[Azure AD B2C] > [ID プロバイダー]** で **[新しい OpenID Connect プロバイダー]** を追加するか、またはカスタム ポリシーを使用して、Azure AD B2C で Azure AD にフェデレーションして、組織の従業員の認証を許可することができます。
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Office 365 に提供することはできますか。
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Microsoft 365 に提供することはできますか?
 
-Azure AD B2C は、Microsoft Office 365 のユーザーの認証に使用できません。 Azure AD は、SaaS アプリへの従業員のアクセスを管理するための Microsoft のソリューションであり、その目的で設計された機能 (ライセンス付与や条件付きアクセスなど) を備えています。 Azure AD B2C には、Web およびモバイル アプリケーションを構築するための ID およびアクセスの管理プラットフォームが用意されています。 Azure AD テナントにフェデレーションするように Azure AD B2C を構成すると、Azure AD テナントでは、Azure AD B2C に依存するアプリケーションへの従業員のアクセスが管理されます。
+Azure AD B2C は、Microsoft 365 のユーザーの認証に使用できません。 Azure AD は、SaaS アプリへの従業員のアクセスを管理するための Microsoft のソリューションであり、その目的で設計された機能 (ライセンス付与や条件付きアクセスなど) を備えています。 Azure AD B2C には、Web およびモバイル アプリケーションを構築するための ID およびアクセスの管理プラットフォームが用意されています。 Azure AD テナントにフェデレーションするように Azure AD B2C を構成すると、Azure AD テナントでは、Azure AD B2C に依存するアプリケーションへの従業員のアクセスが管理されます。
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C のローカル アカウントとは何ですか。 それらは、Azure AD の職場または学校アカウントとはどのような点が異なるのですか。
 
@@ -90,7 +90,7 @@ Microsoft Graph API を使用して、移行ツールを作成できます。 �
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ユーザー フローはどのようなものですか。
 
-Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、「[Azure Active Directory のパスワード ポリシーと制限](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)」を参照してください。
+Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、「[Azure Active Directory のパスワード ポリシーと制限](../active-directory/authentication/concept-sspr-policy.md)」を参照してください。
 
 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](threat-management.md)」を参照してください。
 
@@ -104,7 +104,7 @@ Azure AD B2C のローカル アカウントのパスワード ユーザー フ�
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C は Microsoft Dynamics のような CRM システムと連携しますか。
 
-Microsoft Dynamics 365 ポータルとの統合を使用できます。 [Azure AD B2C を使用して認証するための Dynamics 365 ポータルの構成](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c)に関する記事を参照してください。
+Microsoft Dynamics 365 ポータルとの統合を使用できます。 [Azure AD B2C を使用して認証するための Dynamics 365 ポータルの構成](/dynamics365/customer-engagement/portals/azure-ad-b2c)に関する記事を参照してください。
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Azure AD B2C はオンプレミスの SharePoint 2016 以前と連携しますか。
 
@@ -112,19 +112,19 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>外部 ID を管理するために Azure AD B2C または B2B を使用する必要がありますか。
 
-外部 ID のシナリオに適した機能を適用する方法の詳細については、 [Azure AD での B2B コラボレーションおよび B2C の比較](../active-directory/b2b/compare-with-b2c.md)に関する記事を参照してください。
+外部 ID のシナリオに適した機能を適用する方法の詳細については、 [Azure AD での B2B コラボレーションおよび B2C の比較](../active-directory/external-identities/compare-with-b2c.md)に関する記事を参照してください。
 
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
 
 いいえ。Azure AD B2C では Azure AD Premium と同じレポート セットはサポートされていません。 ただし、多くの共通点があります。
 
-* **サインイン レポート**は、各サインインの記録を、詳細は除外して提供します。
-* **監査レポート**には、管理アクティビティとアプリケーション アクティビティの両方が含まれます。
-* **使用状況レポート**には、ユーザーの数、ログインの回数、MFA のボリュームが含まれます。
+* **サインイン レポート** は、各サインインの記録を、詳細は除外して提供します。
+* **監査レポート** には、管理アクティビティとアプリケーション アクティビティの両方が含まれます。
+* **使用状況レポート** には、ユーザーの数、ログインの回数、MFA のボリュームが含まれます。
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C で提供されているページの UI をローカライズできますか。 どの言語がサポートされていますか。
 
-「[言語のカスタマイズ](user-flow-language-customization.md)」をご覧ください。 Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。
+「[言語のカスタマイズ](language-customization.md)」をご覧ください。 Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
 
@@ -134,22 +134,21 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 Azure AD B2C テナントを削除するには、次の手順に従います。
 
-新しい統一的な**アプリの登録**エクスペリエンスと、従来の**アプリケーション (レガシ)** エクスペリエンスのいずれかを利用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+新しい統一的な **アプリの登録** エクスペリエンスと、従来の **アプリケーション (レガシ)** エクスペリエンスのいずれかを利用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
-1. *サブスクリプション管理者*として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
+1. *サブスクリプション管理者* として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. Azure AD B2C テナント内のすべての**ユーザー フロー (ポリシー)** を削除します。
+1. Azure AD B2C テナント内のすべての **ユーザー フロー (ポリシー)** を削除します。
 1. **[アプリの登録]** 、 **[すべてのアプリケーション]** タブの順に選択します。
 1. 登録したすべてのアプリケーションを削除します。
 1. **b2c-extensions-app** を削除します。
 1. **[管理]** にある **[ユーザー]** を選択します。
-1. 各ユーザーを順に選択します (ただし、現在サインインに使用している*サブスクリプション管理者*ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
+1. 各ユーザーを順に選択します (ただし、現在サインインに使用している *サブスクリプション管理者* ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. **[管理]** の下で **[ユーザー設定]** を選択します。
-1. 表示される場合は、 **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。
@@ -158,14 +157,14 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 
 #### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
-1. *サブスクリプション管理者*として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
+1. *サブスクリプション管理者* として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. ご使用の Azure AD B2C テナントの**ユーザー フロー (ポリシー)** をすべて削除します。
-1. ご使用の Azure AD B2C テナントに登録したすべての**アプリケーション (レガシ)** を削除します。
+1. ご使用の Azure AD B2C テナントの **ユーザー フロー (ポリシー)** をすべて削除します。
+1. ご使用の Azure AD B2C テナントに登録したすべての **アプリケーション (レガシ)** を削除します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
-1. 各ユーザーを順に選択します (ただし、現在サインインに使用している*サブスクリプション管理者*ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
+1. 各ユーザーを順に選択します (ただし、現在サインインに使用している *サブスクリプション管理者* ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
 1. **[アプリケーションをすべて表示]** を選択します。
 1. **b2c-extensions-app** という名前のアプリケーションを選択し、 **[削除]** を選択した後、確認を求められたら **[はい]** を選択します。

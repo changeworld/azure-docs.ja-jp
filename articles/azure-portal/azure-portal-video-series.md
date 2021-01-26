@@ -1,20 +1,15 @@
 ---
 title: Azure portal の使い方に関するビデオ シリーズ
 description: ポータルで Azure サービスを使用する方法のビデオ デモを見つけます。 最新のハウツー ビデオを直接表示してリンクします。
-services: azure-portal
 keywords: ''
-author: mgblythe
-ms.author: mblythe
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522948"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852610"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portal の使い方に関するビデオ シリーズ
 
@@ -22,18 +17,17 @@ Azure portal のハウツー ビデオ シリーズでは、Azure portal で Azu
 
 ## <a name="featured-video"></a>注目のビデオ
 
-この注目のビデオでは、Azure Static Web Apps をデプロイする方法について説明します。
+このおすすめのビデオでは、Azure クイックスタート センターを使用して Azure を開始する方法を説明します。
 
-> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
+> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
 
-[Azure Static Web Apps をデプロイする方法](https://www.youtube.com/watch?v=H2MPsgujpNk)
+[Azure クイックスタート センターを使用して Azure の使用を開始する方法](https://www.youtube.com/watch?v=mb5k9nXMtBM)
 
 見逃したかもしれない以下の最近のビデオを確認してください。
 
-| [Azure Functions を監視する方法](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [BLOB のバージョン管理を使用する方法](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Azure Private Link を使用してストレージ アカウントに接続する](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [Azure Kubernetes Service でアプリケーションを管理する方法](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [ログとパラメーターを使用して Azure ブックを作成する方法](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [App Service Web アプリでカスタム ドメインを追加し、セキュリティで保護する方法](https://www.youtube.com/watch?v=bXP6IvNYISw) |
 | ------| ------ | ------ |
-| [![Azure Functions を監視する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![BLOB のバージョン管理の方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![Azure Private Link を使用したストレージ アカウントへの接続に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
-
+| [![Azure Kubernetes Service でアプリケーションを管理する方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![ログとパラメーターを使用して Azure ブックを作成する方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![App Service Web アプリでカスタム ドメインを追加し、セキュリティで保護する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
 
 ## <a name="video-playlist"></a>ビデオのプレイリスト
 

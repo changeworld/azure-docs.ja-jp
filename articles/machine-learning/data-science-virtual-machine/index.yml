@@ -11,12 +11,12 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: 816a82095c84c7991d5d68b08d479c629d10f07a
-  ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+  ms.openlocfilehash: 6cce3a1c8ec5c330c84009a8c20cbddd769b129c
+  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/30/2020
-  ms.locfileid: "87431905"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94985775"
 landingContent:
 - title: Data Science Virtual Machine を使ってみる
   linkLists:
@@ -53,6 +53,6 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure Machine Learning コンピューティング インスタンス
-      url: /azure/machine-learning/concept-compute-instance
+      url: ../concept-compute-instance.md
     - text: Microsoft の ML 製品の比較
-      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
+      url: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure%2fmachine-learning%2fstudio%2fcontext%2fml-context

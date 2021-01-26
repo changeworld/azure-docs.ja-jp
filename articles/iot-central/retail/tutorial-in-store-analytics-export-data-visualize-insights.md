@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999572"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346369"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
-
 
 
 前の 2 つのチュートリアルでは、**ストア内の分析 - チェックアウト** アプリケーション テンプレートを使用して、IoT Central アプリケーションを作成し、カスタマイズしました。 このチュートリアルでは、デバイスから収集されたテレメトリをエクスポートするように、IoT Central アプリケーションを構成します。 その後、Power BI を使用して、店のマネージャーがテレメトリから得られた分析情報を視覚化するためのカスタム ダッシュボードを作成します。
@@ -67,11 +66,11 @@ ms.locfileid: "80999572"
     * IoT Central アプリケーションに使用したものと同じ場所を選択します。
     * **［作成］** を選択します システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
 1. ポータルで、**retail-store-analysis** リソース グループに移動します。 デプロイが完了するまで待ちます。 場合によっては、 **[最新の情報に更新]** を選択してデプロイの状態を更新する必要があります。 また、 **[通知]** で、イベント ハブ名前空間の作成の状態を確認することもできます。
-1. **retail-store-analysis** リソース グループで、 **[Event Hubs 名前空間]** を選択します。 ポータルで **Event Hubs 名前空間**のホーム ページが表示されます。
+1. **retail-store-analysis** リソース グループで、 **[Event Hubs 名前空間]** を選択します。 ポータルで **Event Hubs 名前空間** のホーム ページが表示されます。
 
-**Event Hubs 名前空間**が作成されたので、IoT Central アプリケーションで使用する**イベント ハブ**を作成できます。
+**Event Hubs 名前空間** が作成されたので、IoT Central アプリケーションで使用する **イベント ハブ** を作成できます。
 
-1. ポータルの **Event Hubs 名前空間**のホーム ページで、 **[+ イベント ハブ]** を選択します。
+1. ポータルの **Event Hubs 名前空間** のホーム ページで、 **[+ イベント ハブ]** を選択します。
 1. **[イベント ハブの作成]** ページで、名前として「_store-telemetry_」と入力し、 **[作成]** を選択します。
 
 これで、IoT Central アプリケーションからのデータ エクスポートを構成するときに使用できるイベント ハブが作成されました。
@@ -163,7 +162,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 1. [Azure portal](https://portal.azure.com) にサインインし、画面の左上にある **[リソースの作成]** を選択します。
 1. **[Marketplace を検索]** に「_Logic App_」と入力し、**Enter** キーを押します。
 1. **[Logic App]** ページで、 **[作成]** を選択します。
-1. **ロジック アプリ**の作成ページで次のようにします。
+1. **ロジック アプリ** の作成ページで次のようにします。
     * ロジック アプリの一意の名前を入力します (_yourname-retail-store-analysis_ など)。
     * IoT Central アプリケーションの作成に使用したものと同じ **[サブスクリプション]** を選択します。
     * **retail-store-analysis** リソース グループを選択します。
@@ -409,7 +408,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * **Timestamp** フィールドを選択し、 **[動的なコンテンツ]** の一覧から **x-opt-enqueuedtime** を選択します。
     * **Dwell Time 1** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**DwellTime1** を選択します。
     * **Dwell Time 2** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**DwellTime2** を選択します。
-    * **[保存]** を選択して変更を保存します。 **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションは、次のスクリーンショットのようになります。![待ち時間アクション](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * **[保存]** を選択して変更を保存します。 **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションは、次のスクリーンショットのようになります。![[Dwell Time interface]\(待ち時間インターフェイス\) アクションを表示する画面のスクリーンショット。](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. **[People Count interface]\(客数インターフェイス\)** アクションを選択し、 **[アクションの追加]** を選択します。
 1. **[コネクタとアクションを検索する]** に「**Power BI**」と入力して、**Enter** キーを押します。
 1. **[Add rows to a dataset (preview)]\(データセットに行を追加する (プレビュー)\)** アクションを選択します。
@@ -484,7 +483,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 次のスクリーンショットのように、ダッシュボード上のタイルのサイズと配置を変更します。
 
-![Power BI ダッシュボード](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![タイルのサイズと配置が変更された Power BI ダッシュボードのスクリーンショット。](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 他のグラフィックス リソースを追加して、ダッシュボードをさらにカスタマイズしてかまいません。
 

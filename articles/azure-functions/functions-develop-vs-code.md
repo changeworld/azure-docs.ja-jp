@@ -4,12 +4,12 @@ description: Visual Studio Code 用 Azure Functions 拡張機能を使用して�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206742"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936976"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -34,7 +34,7 @@ Azure Functions 拡張機能には、次のような利点があります。
 
 この記事の例は、現在、JavaScript (Node.js) と C# クラス ライブラリの関数でのみ使用可能です。  
 
-この記事では、Azure Functions 拡張機能を使って関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio Code を使って最初の関数を作成](functions-create-first-function-vs-code.md) してください。
+この記事では、Azure Functions 拡張機能を使って関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio Code を使って最初の関数を作成](./create-first-function-vs-code-csharp.md) してください。
 
 > [!IMPORTANT]
 > 1 つの関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
@@ -64,11 +64,11 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
     ![関数を作成する](./media/functions-develop-vs-code/create-function.png)
 
-1. 関数アプリ プロジェクト用のフォルダーを選択し、次に**関数プロジェクト用の言語を選択します**。
+1. 関数アプリ プロジェクト用のフォルダーを選択し、次に **関数プロジェクト用の言語を選択します**。
 
-1. Core Tools をまだインストールしていない場合は、インストールする Core Tools の**バージョンを選択**するよう求められます。 バージョン 2.x またはそれ以降のバージョンを選択します。 
+1. Core Tools をまだインストールしていない場合は、インストールする Core Tools の **バージョンを選択** するよう求められます。 バージョン 2.x またはそれ以降のバージョンを選択します。 
 
-1. **HTTP トリガー**関数テンプレートを選択するか、 **[Skip for now]\(今はしない\)** を選択して、関数なしでプロジェクトを作成できます。 後でいつでも、[プロジェクトに関数を追加](#add-a-function-to-your-project)できます。
+1. **HTTP トリガー** 関数テンプレートを選択するか、 **[Skip for now]\(今はしない\)** を選択して、関数なしでプロジェクトを作成できます。 後でいつでも、[プロジェクトに関数を追加](#add-a-function-to-your-project)できます。
 
     ![HTTP トリガー テンプレートを選択する](./media/functions-develop-vs-code/create-function-choose-template.png)
 
@@ -233,7 +233,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 ### <a name="quick-function-app-create"></a>関数アプリのクイック作成
 
-**[+ Create New Function App in Azure...]\(+ Azure で新しい関数アプリを作成する...\)** を選択すると、関数アプリに必要な Azure リソースの値が拡張機能によって自動的に生成されます。 これらの値は、選択した関数アプリ名に基づきます。 既定値を使ってプロジェクトを Azure の新しい関数アプリに発行する例については、[Visual Studio Code のクイックスタートに関する記事](functions-create-first-function-vs-code.md#publish-the-project-to-azure)を参照してください。
+**[+ Create New Function App in Azure...]\(+ Azure で新しい関数アプリを作成する...\)** を選択すると、関数アプリに必要な Azure リソースの値が拡張機能によって自動的に生成されます。 これらの値は、選択した関数アプリ名に基づきます。 既定値を使ってプロジェクトを Azure の新しい関数アプリに発行する例については、[Visual Studio Code のクイックスタートに関する記事](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)を参照してください。
 
 作成したリソースに明示的な名前を指定する場合は、高度な作成パスを選択する必要があります。
 
@@ -245,9 +245,9 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
     ![Function App の設定](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. サインしていない場合は、**Azure にサインイン**するよう求められます。 **無料の Azure アカウントを作成**することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
+1. サインしていない場合は、**Azure にサインイン** するよう求められます。 **無料の Azure アカウントを作成** することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
 
-1. 複数のサブスクリプションがある場合、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この _高度_ なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
+1. 複数のサブスクリプションがある場合、関数アプリの **サブスクリプションを選択** してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この _高度_ なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
 
 1. プロンプトに従って、次の情報を入力します。
 
@@ -255,7 +255,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
     | ------ | ----- | ----------- |
     | Select function app in Azure (Azure で関数アプリを選択する) | \+ Create New Function App in Azure (+ Azure で新しい関数アプリを作成する) | 次のプロンプトで、新しい関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを選択します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
     | Select an OS (OS を選択する) | Windows | 関数アプリは Windows で実行されます。 |
-    | Select a hosting plan (ホスティング プランを選択する) | 従量課金プラン | サーバーレス[従量課金プランでのホスティング](functions-scale.md#consumption-plan)が使用されます。 |
+    | Select a hosting plan (ホスティング プランを選択する) | 従量課金プラン | サーバーレス[従量課金プランでのホスティング](consumption-plan.md)が使用されます。 |
     | Select a runtime for your new app (新しいアプリのランタイムを選択する) | プロジェクトの言語 | ランタイムは、発行するプロジェクトに一致している必要があります。 |
     | Select a resource group for new resources (新しいリソースのリソース グループを選択する) | 新しいリソース グループの作成 | 次のプロンプトで、`myResourceGroup` のようなリソース グループ名を入力し、Enter キーを選択します。 既存のリソース グループを選択することもできます。 |
     | Select a storage account (ストレージ アカウントを選択する) | 新しいストレージ アカウントを作成する | 次のプロンプトで、関数アプリで使用する新しいストレージ アカウントのグローバルに一意の名前を入力して、Enter キーを選択します。 ストレージ アカウント名の長さは 3 文字から 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを選択することもできます。 |
@@ -297,7 +297,7 @@ Functions プロジェクトをローカルで実行するには、これらの�
     | Language | 要件 |
     | -------- | --------- |
     | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI ツール](/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |
+    | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 以降](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) 推奨|
 
@@ -369,7 +369,7 @@ Azure でアプリケーション設定を作成した場合は、次のコマ�
 
 アップロードと同様に、ローカル ファイルが暗号化されている場合は、復号化され、更新されて、再び暗号化されます。 2 つの場所で値が競合する設定がある場合は、続行する方法を選択するように求められます。
 
-## <a name="monitoring-functions"></a>Functions の監視
+## <a name="monitoring-functions"></a>関数の監視
 
 [関数をローカルで実行](#run-functions-locally)しているときは、ログ データがターミナル コンソールにストリーミングされます。 また、Functions プロジェクトが Azure の関数アプリで実行されているときにもログ データを取得できます。 Azure のストリーミング ログに接続してほぼリアルタイムのログ データを表示するか、関数アプリの動作をより完全に把握するために Application Insights を有効にすることができます。
 
@@ -384,15 +384,13 @@ Azure でアプリケーション設定を作成した場合は、次のコマ�
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> ストリーミング ログでは、Functions ホストの 1 つのインスタンスしかサポートされません。 関数が複数のインスタンスにスケール調整されている場合、他のインスタンスからのデータはログ ストリームに表示されません。 Application Insights の [Live Metrics Stream](../azure-monitor/app/live-stream.md) では、複数のインスタンスがサポートされます。 これもほぼリアルタイムですが、ストリーミング分析は[サンプリングされたデータ](functions-monitoring.md#configure-sampling)に基づいています。
+> ストリーミング ログでは、Functions ホストの 1 つのインスタンスしかサポートされません。 関数が複数のインスタンスにスケール調整されている場合、他のインスタンスからのデータはログ ストリームに表示されません。 Application Insights の [Live Metrics Stream](../azure-monitor/app/live-stream.md) では、複数のインスタンスがサポートされます。 これもほぼリアルタイムですが、ストリーミング分析は[サンプリングされたデータ](configure-monitoring.md#configure-sampling)に基づいています。
 
 ### <a name="application-insights"></a>Application Insights
 
-関数アプリを Application Insights と統合することによって、関数の実行を監視することをお勧めします。 Azure portal で関数アプリを作成する場合、この統合は、既定で行われます。 Visual Studio の発行中に関数アプリを作成する場合は、Application Insights を自分で統合する必要があります。
+関数アプリを Application Insights と統合することによって、関数の実行を監視することをお勧めします。 Azure portal で関数アプリを作成する場合、この統合は、既定で行われます。 Visual Studio の発行中に関数アプリを作成する場合は、Application Insights を自分で統合する必要があります。 方法については、「[Application Insights との統合を有効にする](configure-monitoring.md#enable-application-insights-integration)」を参照してください。
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
+Application Insights を使用した監視の詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ## <a name="c-script-projects"></a>C\# スクリプト プロジェクト
 

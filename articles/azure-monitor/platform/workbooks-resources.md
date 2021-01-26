@@ -1,20 +1,18 @@
 ---
 title: Azure Monitor ブックのリソース パラメーター
-description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
+description: リソース パラメーターを使用し、ブック内でリソースを選択できるようにする方法について説明します。 リソース パラメーターを使用し、データの取得元にするスコープを設定します。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 27e98ae51cbea654ca0f06979b289a497a5aedf3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504993"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143530"
 ---
 # <a name="workbook-resource-parameters"></a>ブックのリソース パラメーター
 
@@ -113,5 +111,5 @@ ms.locfileid: "86504993"
 
 ## <a name="next-steps"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
+* ブックの豊富な視覚化オプションの学習を[開始](./workbooks-overview.md#visualizations)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

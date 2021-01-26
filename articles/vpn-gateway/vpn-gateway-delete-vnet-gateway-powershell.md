@@ -4,15 +4,15 @@ description: Resource Manager デプロイ モデルで、PowerShell を使用�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 02/07/2019
+ms.date: 09/03/2020
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 54fe4486d43a40e54a0aeae36963c0271fae6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064526"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89440764"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]

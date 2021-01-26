@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
-ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80272702"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400933"
 ---
 ```json
 {
@@ -70,7 +70,7 @@ ms.locfileid: "80272702"
 |**インテント**|列挙型|アラートの背後にある強制終了チェーンに関連するインテント。 サポートされている値のリストと、Azure Security Center のサポートされる強制終了チェーン インテントの説明については、「[意図](../articles/security-center/alerts-reference.md#intentions)」を参照してください。<br/>このフィールドには複数の値が含まれる場合があります (コンマで区切られます)。|
 |**IsIncident**|Bool|このフィールドは、アラートがインシデントである (複数のアラートの複合グループ化) か、単一のアラートであるかを決定します。 フィールドの既定値は "false" (単一のアラートであることを意味します) です。|
 |**ProcessingEndTime**|DateTime|アラートを保持している元の製品で、エンド ユーザーがアラートにアクセスできた時間。|
-|**ProductName**|String|このアラートを発行した製品の名前 (Azure Security Center、Azure ATP、Microsoft Defender ATP、O365 ATP、MCAS など)。|
+|**ProductName**|String|このアラートを発行した製品の名前 (Azure Security Center、Azure ATP、Microsoft Defender ATP、MCAS など)。|
 |**RemediationSteps**|リスト<String>|アラートを修復するために実行する手動のアクション項目。|
 |**ResourceIdentifiers**|リスト (リソース識別子)|適切な製品露出グループ (テナント、ワークスペース、サブスクリプションなど) にアラートを送信するために使用できる、このアラートのリソース識別子。 アラートごとに異なる種類の識別子を複数指定できます。|
 |**Severity**|列挙型|プロバイダーから報告されたアラートの重要度。 有効値は次のとおりです。情報、低、中、および高。|

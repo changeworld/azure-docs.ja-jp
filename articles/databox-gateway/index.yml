@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Azure Data Box Gateway のドキュメント - オンライン転送
+summary: クラウドでのアーカイブ処理、ディザスター リカバリー、またはクラウド規模でのデータの処理のための、ネットワークを介したデータ転送のために Azure Data Box Gateway デバイスを使用できます。
+metadata:
+  title: Azure Data Box Gateway のドキュメント - オンライン転送
+  description: Azure に対してネットワーク経由で高パフォーマンスのデータ転送を行うための Data Box Gateway のドキュメント。
+  services: databox
+  ms.service: databox
+  ms.subservice: gateway
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 10/29/2020
+  ms.openlocfilehash: 811d0555e6fd39f372b4742501a3114bbc9a25b4
+  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96579947"
+landingContent:
+- title: Data Box Gateway について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Data Box Gateway とは
+      url: data-box-gateway-overview.md
+  - linkListType: architecture
+    links:
+    - text: データ転送オプションの選択
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: ネットワーク転送またはオフライン転送の使用
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 2007 リリース ノート - 最新
+      url: data-box-gateway-2007-release-notes.md
+- title: 要件と制限
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 要件
+      url: data-box-gateway-system-requirements.md
+    - text: 制限
+      url: data-box-gateway-limits.md
+- title: 配置
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: デプロイを準備する
+      url: data-box-gateway-deploy-prep.md
+    - text: Hyper-V でプロビジョニングする
+      url: data-box-gateway-deploy-provision-hyperv.md
+    - text: 接続、設定、アクティブ化
+      url: data-box-gateway-deploy-connect-setup-activate.md
+    - text: データの転送
+      url: data-box-gateway-deploy-add-shares.md
+- title: 管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 共有の管理
+      url: data-box-gateway-manage-shares.md
+    - text: PowerShell を通じた管理
+      url: data-box-gateway-connect-powershell-interface.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: トラブルシューティング
+      url: data-box-gateway-troubleshoot.md
+    - text: モニター
+      url: data-box-gateway-monitor.md
+    - text: サポート チケットを開く
+      url: ../databox-online/azure-stack-edge-contact-microsoft-support.md

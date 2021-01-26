@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056378"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89500132"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Kubernetes にセルフホステッド ゲートウェイをデプロイする
 
@@ -63,7 +63,7 @@ ms.locfileid: "87056378"
 ## <a name="production-deployment-considerations"></a>運用環境のデプロイに関する考慮事項
 
 ### <a name="access-token"></a>アクセス トークン
-有効なアクセス トークンがない場合、セルフホステッド ゲートウェイで、関連付けられている API Management サービスのエンドポイントから構成データにアクセスしてダウンロードすることができません。 アクセス トークンは最大で 30 日間有効です。 有効期限が切れる前に再生成し、手動か自動化により、新しいトークンでクラスターを構成する必要があります。 
+有効なアクセス トークンがない場合、セルフホステッド ゲートウェイで、関連付けられている API Management サービスのエンドポイントから構成データにアクセスしてダウンロードすることができません。 アクセス トークンは最大で 30 日間有効です。 有効期限が切れる前に再生成し、手動か自動化により、新しいトークンでクラスターを構成する必要があります。
 
 トークンの更新を自動化する場合、この管理 API [操作](/rest/api/apimanagement/2019-12-01/gateway/generatetoken)を使用して新しいトークンを生成します。 Kubernetes シークレットの管理の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/configuration/secret)を参照してください。
 
@@ -106,6 +106,9 @@ DNS 名前解決は、Azure 内の依存関係に接続してバックエンド 
 Azure portal に用意されている YAML ファイルからは、既定の [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) ポリシーが適用されます。 このポリシーによって、クラスター DNS で解決されない名前解決要求は、ノードから継承される上流 DNS サーバーに転送されます。
 
 Kubernetes での名前解決の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)を参照してください。 自分のセットアップに合わせて [DNS ポリシー](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)または [DNS 構成](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config)をカスタマイズすることを検討してください。
+
+### <a name="external-traffic-policy"></a>外部トラフィック ポリシー
+Azure portal で提供されている YAML ファイルでは、[[サービス]](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) オブジェクトの `externalTrafficPolicy` フィールドが `Local` に設定されます。 これにより、([要求コンテキスト](api-management-policy-expressions.md#ContextVariables)でアクセスできる) 呼び出し元の IP アドレスが保持され、ノード間の負荷分散が無効になるため、発生するネットワーク ホップが排除されます。 この設定では、1 ノードあたりのゲートウェイ ポッド数が等しくないデプロイでトラフィックが非対称に分散される可能性があることに注意してください。
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>カスタム ドメイン名と SSL 証明書
 

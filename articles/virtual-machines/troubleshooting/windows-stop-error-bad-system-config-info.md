@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942016"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977033"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows STOP エラー - 0x00000074 Bad System Config Info
 
@@ -27,10 +27,10 @@ ms.locfileid: "88942016"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、Windows の STOP コード **#0x00000074** または **BAD_SYSTEM_CONFIG_INFO** が表示される。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、Windows の STOP コード **#0x00000074** または **BAD_SYSTEM_CONFIG_INFO** が表示される。
 
 "*問題が発生したため、PC を再起動する必要があります。再起動してください。* 
-*この問題と、考えられる修正プログラムの詳細については、http://windows.com/stopcode をご覧ください。* 
+*この問題と、考えられる修正プログラムの詳細については、 http://windows.com/stopcode をご覧ください。* 
 *サポート担当者に連絡する場合は、次の情報をお伝えください。* 
 *STOP コード: BAD_SYSTEM_CONFIG_INFO*"
 
@@ -58,13 +58,13 @@ ms.locfileid: "88942016"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM の作成とアクセス
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 1. ハイブが壊れていないかを確認します。
 1. リモート デスクトップ接続を使用して、修復 VM に接続します。
-1. `\windows\system32\config` フォルダーをコピーし、正常なディスク パーティションまたは別の安全な場所に保存します。 重要なレジストリ ファイルを編集するため、このフォルダーは予防措置としてバックアップします。
+1. `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` フォルダーをコピーし、正常なディスク パーティションまたは別の安全な場所に保存します。 重要なレジストリ ファイルを編集するため、このフォルダーは予防措置としてバックアップします。 
 
 > [!NOTE]
-> レジストリに加えた変更をロールバックする必要がある場合に備えて、`\windows\system32\config` フォルダーのコピーをバックアップとして作成します。
+> レジストリに加えた変更をロールバックする必要がある場合に備えて、`<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` フォルダーのコピーをバックアップとして作成します。
 
 ### <a name="check-for-hive-corruption"></a>ハイブが壊れていないかを確認する
 
@@ -72,7 +72,7 @@ ms.locfileid: "88942016"
 
 1. 修復 VM で、**レジストリ エディター** アプリケーションを開きます。 Windows の検索バーに「REGEDIT」と入力して検索します。
 1. レジストリ エディターで、 **[HKEY_LOCAL_MACHINE]** を選択して強調表示し、メニューから **[ファイル]、[ハイブの読み込み...]** を選択します。
-1. `\windows\system32\config\SYSTEM` を参照し、 **[開く]** を選択します。
+1. `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` を参照し、 **[開く]** を選択します。
 1. 名前の入力を求められたら、「**BROKENSYSTEM**」と入力します。
 
    1. ハイブが開けなかった場合、または空の場合は、ハイブが破損しています。 ハイブが破損している場合は、[サポート チケットを開きます](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
@@ -133,4 +133,4 @@ ms.locfileid: "88942016"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) に従って VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) に従って VM を再構築します。

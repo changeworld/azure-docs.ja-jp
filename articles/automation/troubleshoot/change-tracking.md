@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3ecd4330381db1f63a40e9ba5ff63108c6fa78fe
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187236"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205610"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Change Tracking と Inventory に関する問題のトラブルシューティング
 
-この記事では、Azure Automation の Change Tracking とインベントリの問題のトラブルシューティングを行い、解決する方法について説明します。 Change Tracking とインベントリの一般的な情報については、「[変更履歴とインベントリの概要](../change-tracking.md)」を参照してください。
+この記事では、Azure Automation の Change Tracking とインベントリの問題のトラブルシューティングを行い、解決する方法について説明します。 Change Tracking とインベントリの一般的な情報については、「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ## <a name="windows"></a>Windows
 
@@ -37,7 +37,7 @@ Windows マシンで Change Tracking とインベントリが有効であるの�
 * Change Tracking と Inventory 用の管理パックがダウンロードされていません。
 * 有効になっている VM の複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 Log Analytics エージェント マシン上で **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** に移動し、次のコマンドを実行します。
 
@@ -89,7 +89,7 @@ Linux マシンで Change Tracking とインベントリが有効であるのに
 * Linux 用 Log Analytics エージェントが正しく構成されていません。
 * ファイルの整合性の監視 (FIM) の競合があります。
 
-#### <a name="resolution"></a>解決方法 
+#### <a name="resolution"></a>解像度 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>Linux 用 Log Analytics エージェントが実行されていない
 
@@ -108,11 +108,11 @@ Heartbeat
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux 用 Log Analytics エージェントが正しく構成されていない
 
-Linux 用 Log Analytics エージェントは、OMS Log Collector ツールを使用したログおよびコマンド ライン出力収集用に正しく構成されていない可能性があります。 「[変更履歴とインベントリの概要](../change-tracking.md)」を参照してください。
+Linux 用 Log Analytics エージェントは、OMS Log Collector ツールを使用したログおよびコマンド ライン出力収集用に正しく構成されていない可能性があります。 「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ##### <a name="fim-conflicts"></a>FIM の競合
 
-Azure Security Center の FIM 機能で、Linux ファイルの整合性が正しく検証されていない可能性があります。 FIM が動作し、Linux ファイル監視用に正しく構成されていることを確認します。 「[変更履歴とインベントリの概要](../change-tracking.md)」を参照してください。
+Azure Security Center の FIM 機能で、Linux ファイルの整合性が正しく検証されていない可能性があります。 FIM が動作し、Linux ファイル監視用に正しく構成されていることを確認します。 「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

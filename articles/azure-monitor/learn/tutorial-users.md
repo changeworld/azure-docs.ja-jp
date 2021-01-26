@@ -3,16 +3,16 @@ title: Azure Application Insights で顧客を理解する | Microsoft Docs
 description: Azure Application Insights を使用して、顧客がアプリケーションをどのように使用しているかを理解するためのチュートリアルです。
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318404"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210173"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights を使用して顧客がアプリケーションをどのように使用しているかを理解する
 
@@ -98,7 +98,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 
 ## <a name="compare-desired-activity-to-reality"></a>望ましいアクティビティと現実を比較する
-前のパネルでは、アプリケーションのユーザーが実行したことに注目していますが、**ファネル**では、ユーザーに実行してほしいことに注目します。  ファネルは、アプリケーションの一連の手順とこれらの手順の間を移動したユーザーの割合を表します。  たとえば、アプリケーションに接続して製品を検索したユーザーの割合を測定するファネルを作成できます。  その製品を買い物かごに追加したユーザーの割合と、購入を完了したユーザーの割合を確認できます。
+前のパネルでは、アプリケーションのユーザーが実行したことに注目していますが、**ファネル** では、ユーザーに実行してほしいことに注目します。  ファネルは、アプリケーションの一連の手順とこれらの手順の間を移動したユーザーの割合を表します。  たとえば、アプリケーションに接続して製品を検索したユーザーの割合を測定するファネルを作成できます。  その製品を買い物かごに追加したユーザーの割合と、購入を完了したユーザーの割合を確認できます。
 
 1. メニューの **[ファネル]** を選択し、 **[新規]** をクリックします。 
 
@@ -127,7 +127,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
     ![保持フィルターに対して設定された条件に一致するユーザーのグラフを示すスクリーンショット。](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>ユーザーの移動を分析する
-**ユーザー フロー**は、ユーザーがサイトのページと機能をどのように移動しているかを視覚化します。  これにより、ユーザーがどの特定のページから移動することが多いか、アプリケーションをどのように終了することが多いか、繰り返し実行される何らかのアクションがあるかどうかといった疑問の回答を得ることができます。
+**ユーザー フロー** は、ユーザーがサイトのページと機能をどのように移動しているかを視覚化します。  これにより、ユーザーがどの特定のページから移動することが多いか、アプリケーションをどのように終了することが多いか、繰り返し実行される何らかのアクションがあるかどうかといった疑問の回答を得ることができます。
 
 1.  メニューの **[ユーザー フロー]** を選択します。
 2.  **[新規]** をクリックして新しいユーザー フローを作成した後、 **[編集]** をクリックしてその詳細を編集します。

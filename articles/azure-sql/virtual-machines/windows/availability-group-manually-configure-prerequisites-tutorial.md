@@ -8,24 +8,27 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651184"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044290"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に Always On 可用性グループを作成するための前提条件
+# <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 このチュートリアルでは、[Azure Virtual Machines (VM) 上に SQL Server Always On 可用性グループ](availability-group-manually-configure-tutorial.md)を作成するための前提条件を満たす方法を説明します。 前提条件を満たすと、1 つのリソース グループ内に 1 つのドメイン コントローラー、2 つの SQL Server VM、および 1 つの監視サーバーがあることになります。
+
+この記事では可用性グループ環境を手動で構成しますが、[Azure portal](availability-group-azure-portal-configure.md)、[PowerShell や Azure CLI](availability-group-az-commandline-configure.md)、または [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成することもできます。 
 
 **推定所要時間**: 前提条件を満たすまでには数時間かかる場合があります。 この時間の大半は、仮想マシンの作成に費やされます。
 
@@ -35,12 +38,12 @@ ms.locfileid: "88651184"
 
 ## <a name="review-availability-group-documentation"></a>可用性グループのドキュメントの確認
 
-このチュートリアルでは、SQL Server Always On 可用性グループに関する基本的な知識があることを前提としています。 このテクノロジに詳しくない場合は、「[Overview of Always On Availability Groups (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)」(Always On 可用性グループの概要 (SQL Server)) を参照してください。
+このチュートリアルでは、SQL Server Always On 可用性グループに関する基本的な知識があることを前提としています。 このテクノロジに詳しくない場合は、[Always On 可用性グループの概要 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)に関する記事を参照してください。
 
 
 ## <a name="create-an-azure-account"></a>Azure アカウントの作成
 
-Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic)か、[Visual Studio サブスクライバーの特典を有効にする](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits)ことができます。
+Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic)か、[Visual Studio サブスクライバーの特典を有効にする](/visualstudio/subscriptions/subscriber-benefits)ことができます。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -60,7 +63,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 8. 場所を選択します。 場所とは、可用性グループを作成する Azure リージョンのことです。 この記事では、すべてのリソースを 1 つの Azure の場所に作成します。
 9. **[ダッシュボードにピン留めする]** がオンになっていることを確認します。 これは、Azure ポータルのダッシュボードにリソース グループのショートカットを作成するためのオプションです。この設定は省略してもかまいません。
 
-   ![Resource group](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
+   ![Azure portal のリソース グループのショートカット](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
 
 10. **[作成]** を選択して、リソース グループを作成します。
 
@@ -118,13 +121,13 @@ Azure portal で仮想ネットワークを作成するには:
 
     既に作成してあるサブネットに注目してください。
 
-   ![仮想ネットワークの構成](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
+   ![既に作成してあるサブネットに注目してください](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
 
 5. 2 つ目のサブネットを作成するには、 **[+ サブネット]** を選択します。
-6. **[サブネットの追加]** で、 **[名前]** に「**sqlsubnet**」と入力してサブネットを構成します。 有効な **アドレス範囲**が Azure によって自動的に指定されます。 このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。 運用環境では、さらに多くのアドレスが必要になる場合があります。
+6. **[サブネットの追加]** で、 **[名前]** に「**sqlsubnet**」と入力してサブネットを構成します。 有効な **アドレス範囲** が Azure によって自動的に指定されます。 このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。 運用環境では、さらに多くのアドレスが必要になる場合があります。
 7. **[OK]** を選択します。
 
-    ![仮想ネットワークの構成](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
+    ![サブネットを構成する](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
 次の表は、ネットワーク構成の設定をまとめたものです。
 
@@ -142,7 +145,7 @@ Azure portal で仮想ネットワークを作成するには:
 
 ## <a name="create-availability-sets"></a>可用性セットを作成する
 
-仮想マシンを作成する前に、可用性セットを作成する必要があります。 可用性セットにより、計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムを短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 詳細については、[仮想マシンの可用性の管理](../../../virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+仮想マシンを作成する前に、可用性セットを作成する必要があります。 可用性セットにより、計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムを短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 詳細については、[仮想マシンの可用性の管理](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 可用性セットは 2 つ必要です。 1 つ目はドメイン コントローラー用です。 2 つ目は SQL Server VM 用です。
 
@@ -202,7 +205,7 @@ Azure portal で仮想ネットワークを作成するには:
 | **診断ストレージ アカウント** |*自動的に作成* |
 
    >[!IMPORTANT]
-   >VM を可用性セットに配置できるのは、VM の作成時のみです。 VM の作成後に可用性セットを変更することはできません。 「[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)」を参照してください。
+   >VM を可用性セットに配置できるのは、VM の作成時のみです。 VM の作成後に可用性セットを変更することはできません。 「[仮想マシンの可用性管理](../../../virtual-machines/manage-availability.md)」を参照してください。
 
 Azure で仮想マシンが作成されます。
 
@@ -226,7 +229,7 @@ Azure で仮想マシンが作成されます。
 6. **[Active Directory Domain Services]** と **[DNS サーバー]** という役割を選択します。 メッセージが表示されたら、これらの役割に必要なその他の機能を追加します。
 
    > [!NOTE]
-   > Windows から、静的 IP アドレスがないという警告が出されます。 構成をテストしている場合は、 **[続行]** を選択します。 運用シナリオの場合は、Azure Portal で IP アドレスを静的アドレスに設定するか、[PowerShell を使用してドメイン コントローラー コンピューターの静的 IP アドレスを設定](../../../virtual-network/virtual-networks-reserved-private-ip.md)してください。
+   > Windows から、静的 IP アドレスがないという警告が出されます。 構成をテストしている場合は、 **[続行]** を選択します。 運用シナリオの場合は、Azure Portal で IP アドレスを静的アドレスに設定するか、[PowerShell を使用してドメイン コントローラー コンピューターの静的 IP アドレスを設定](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip)してください。
    >
 
     ![役割の追加のダイアログ](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
@@ -240,7 +243,7 @@ Azure で仮想マシンが作成されます。
     ![DMS サーバー VM 上の AD DS を示すダイアログ](./media/availability-group-manually-configure-prerequisites-tutorial-/24-addsmore.png)
     
 12. **[すべてのサーバー タスクの詳細]** ダイアログ ボックスの **[操作]** 列で、 **[このサーバーをドメイン コントローラーに昇格する]** を選択します。
-13. **Active Directory Domain Services の構成ウィザード**で、次の値を使用します。
+13. **Active Directory Domain Services の構成ウィザード** で、次の値を使用します。
 
     | **ページ** | 設定 |
     | --- | --- |
@@ -292,7 +295,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 5. **[プロパティ]** を選択します。
 6. **[インターネット プロトコル バージョン 4 (TCP/IPv4)]** を選択し、 **[プロパティ]** を選択します。
 7. **[次の DNS サーバーのアドレスを使う]** を選択し、 **[優先 DNS サーバー]** にプライマリ ドメイン コントローラーのアドレスを指定します。
-8. **[OK]** 、 **[閉じる]** の順に選択して変更を適用します。 これで、VM を **corp.contoso.com**に参加させることができるようになりました。
+8. **[OK]** 、 **[閉じる]** の順に選択して変更を適用します。 これで、VM を **corp.contoso.com** に参加させることができるようになりました。
 
    >[!IMPORTANT]
    >DNS 設定の変更後、リモート デスクトップへの接続が失われた場合は、Azure Portal に移動し、仮想マシンを再起動してください。
@@ -320,7 +323,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
     >**[DNS オプション]** ページでは、この DNS サーバーの委任を作成できないという警告が表示される場合があります。 この警告は、非運用環境では無視してかまいません。
     >
 
-22. **前提条件**の確認のダイアログ ボックスが表示されるまで、 **[次へ]** を選択します。 その後、 **[インストール]** を選択します。
+22. **前提条件** の確認のダイアログ ボックスが表示されるまで、 **[次へ]** を選択します。 その後、 **[インストール]** を選択します。
 
 サーバーによる構成の変更が完了したら、サーバーを再起動します。
 
@@ -374,17 +377,21 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 ## <a name="create-sql-server-vms"></a>SQL Server VM の作成
 
-3 つの仮想マシンを追加で作成します。 ソリューションには、SQL Server のインスタンスを持つ 2 つの仮想マシンが必要です。 3 番目の仮想マシンは、監視として機能します。 Windows Server 2016 では[クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)を使用できます。 ただし、以前のオペレーティング システムとの一貫性を保つため、この記事では監視に仮想マシンを使用します。  
+3 つの仮想マシンを追加で作成します。 ソリューションには、SQL Server のインスタンスを持つ 2 つの仮想マシンが必要です。 3 番目の仮想マシンは、監視として機能します。 Windows Server 2016 では[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)を使用できます。 ただし、以前のオペレーティング システムとの一貫性を保つため、この記事では監視に仮想マシンを使用します。  
 
 続行する前に、次の設計上の決定を検討してください。
 
 * **ストレージ: Azure Managed Disks**
 
-   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)」を参照してください。 可用性セットのマネージド ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)」を参照してください。
+   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)」を参照してください。 可用性セットのマネージド ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)」を参照してください。
 
 * **ネットワーク: 運用中のプライベート IP アドレス**
 
    このチュートリアルでは、仮想マシンにパブリック IP アドレスを使用します。 パブリック IP アドレスを使うと、インターネット経由で仮想マシンに直接リモート接続できるため、構成手順が簡素化されます。 運用環境では、SQL Server インスタンス VM リソースの脆弱性の範囲を縮小するため、プライベート IP アドレスのみを使用することをお勧めします。
+
+* **ネットワーク: サーバーごとに 1 つの NIC を推奨** 
+
+サーバー (クラスター ノード) ごとに 1 つの NIC と、1 つのサブネットを使用します。 Azure ネットワークは物理的な冗長を備えているので、Azure 仮想マシンのゲスト クラスターに NIC とサブネットを追加する必要はありません。 クラスター検証レポートには、ノードは 1 つのネットワーク上でのみ到達可能であることを警告するメッセージが表示されます。 Azure 仮想マシンのゲスト フェールオーバー クラスターでは、この警告を無視できます。
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>SQL Server VM の作成と構成
 
@@ -412,13 +419,17 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 これで、VM を **corp.contoso.com** に参加させることができるようになりました。 両方の SQL Server VM とファイル共有監視サーバーに対して、次の手順を実行します。
 
 1. **BUILTIN\DomainAdmin** で、仮想マシンにリモートで接続します。
-2. **サーバー マネージャー**で **[ローカル サーバー]** を選択します。
+2. **サーバー マネージャー** で **[ローカル サーバー]** を選択します。
 3. **[ワークグループ]** リンクを選択します。
 4. **[コンピューター名]** セクションで、 **[変更]** を選択します。
 5. **[ドメイン]** チェック ボックスをオンにし、テキスト ボックスに「**corp.contoso.com**」を入力します。 **[OK]** を選択します。
 6. **[Windows セキュリティ]** ポップアップ ダイアログで、既定のドメイン管理者の資格情報であるアカウント (**CORP\DomainAdmin**) とパスワード (**Contoso!0000**) を指定します。
 7. "corp.contoso.com ドメインへようこそ" のメッセージが表示されたら、 **[OK]** を選択します。
 8. **[閉じる]** を選択し、ポップアップ ダイアログで **[今すぐ再起動]** を選択します。
+
+## <a name="add-accounts"></a>アカウントの追加
+
+各 VM の管理者としてインストール アカウントを追加し、SQL Server 内のインストール アカウントとローカル アカウントにアクセス許可を付与して、SQL Server サービス アカウントを更新します。 
 
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>各クラスター VM に Corp\Install ユーザーを管理者として追加する
 
@@ -438,16 +449,6 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 7. **[OK]** を選択して **[管理者のプロパティ]** ダイアログ ボックスを閉じます。
 8. 以上の手順を **sqlserver-1** と **cluster-fsw** にも繰り返します。
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
-
-各 SQL Server VM で、SQL Server サービス アカウントを設定します。 ドメイン アカウントの構成時に作成したアカウントを使用します。
-
-1. **[SQL Server 構成マネージャー]** を開きます。
-2. SQL Server サービスを右クリックし、 **[プロパティ]** を選択します。
-3. アカウントとパスワードを設定します。
-4. もう一方の SQL Server VM についても同じ手順を繰り返します。  
-
-SQL Server 可用性グループでは、各 SQL Server VM をドメイン アカウントとして実行する必要があります。
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>各 SQL Server VM にインストール アカウント用のサインインを作成する
 
@@ -457,7 +458,7 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 1. SQL Server Management Studio を開き、SQL Server のローカル インスタンスに接続します。
 
-1. **オブジェクト エクスプローラー**で **[セキュリティ]** を選択します。
+1. **オブジェクト エクスプローラー** で **[セキュリティ]** を選択します。
 
 1. **[ログイン]** を右クリックします。 **[新しいログイン]** を選択します。
 
@@ -467,7 +468,7 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 1. ドメイン管理者のネットワーク資格情報を入力します。
 
-1. インストール アカウントを使用します。
+1. インストール アカウント (CORP\install) を使用します。
 
 1. サインインを **sysadmin** 固定サーバー ロールのメンバーに設定します。
 
@@ -475,56 +476,7 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 もう一方の SQL Server VM についても、上の手順を繰り返します。
 
-## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>両方の SQL Server VM にフェールオーバー クラスター機能を追加する
-
-フェールオーバー クラスター機能を追加するには、両方の SQL Server VM で次の手順を実行します。
-
-1. *CORP\install* アカウントを使用して、リモート デスクトップ プロトコル (RDP) を通じて SQL Server 仮想マシンに接続します。 **[サーバー マネージャー] ダッシュボード**を開きます。
-2. ダッシュボードの **[役割と機能の追加]** リンクを選択します。
-
-    ![サーバー マネージャー - 役割の追加](./media/availability-group-manually-configure-prerequisites-tutorial-/22-addfeatures.png)
-
-3. **[Server Features (サーバーの機能)]** セクションが表示されるまで **[次へ]** を選択します。
-4. **[機能]** で **[フェールオーバー クラスタリング]** を選択します。
-5. その他の必要な機能を追加します。
-6. **[インストール]** を選択して機能を追加します。
-
-もう一方の SQL Server VM についても同じ手順を繰り返します。
-
-  >[!NOTE]
-  > 実際に SQL Server VM をフェールオーバー クラスターに参加させる手順と共に、この手順は、[Azure SQL VM CLI](availability-group-az-cli-configure.md) と [Azure クイック スタート テンプレート](availability-group-quickstart-template-configure.md)を使用して自動化できるようになりました。
-  >
-
-
-## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> 各 SQL Server VM でファイアウォールを構成する
-
-このソリューションでは、ファイアウォールで次の TCP ポートが開いている必要があります。
-
-- **SQL Server VM**:SQL Server の既定のインスタンス用のポート 1433。
-- **Azure ロード バランサー プローブ:** 使用可能な任意のポート。 例では 59999 がよく使用されます。
-- **データベース ミラーリング エンドポイント:** 使用可能な任意のポート。 例では 5022 がよく使用されます。
-
-両方の SQL Server VM 上でファイアウォールのポートを開く必要があります。
-
-ポートを開く方法は、使用するファイアウォール ソリューションによって異なります。 次のセクションでは、Windows ファイアウォールでポートを開く方法について説明します。 各 SQL Server VM で、必要なポートを開きます。
-
-### <a name="open-a-tcp-port-in-the-firewall"></a>ファイアウォールで TCP ポートを開く
-
-1. 最初の SQL サーバーの**スタート**画面で、 **[セキュリティが強化された Windows ファイアウォール]** を開きます。
-2. 左側のウィンドウで、 **[受信の規則]** を選択します。 右側のペインで **[新しい規則]** を選択します。
-3. **[規則の種類]** で **[ポート]** を選択します。
-4. ポートに対して **[TCP]** を選択し、適切なポート番号を入力します。 次の例を参照してください。
-
-   ![SQL ファイアウォール](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
-
-5. **[次へ]** を選択します。
-6. **[操作]** ページで、 **[接続を許可する]** をオンにしたまま、 **[次へ]** を選択します。
-7. **[プロファイル]** ページで、既定の設定をそのまま使用し、 **[次へ]** を選択します。
-8. **[名前]** ページで、 **[名前]** テキスト ボックスに規則の名前 (**Azure LB Probe** など) を指定し、 **[完了]** を選択します。
-
-2 つ目の SQL Server VM についても同じ手順を繰り返します。
-
-## <a name="configure-system-account-permissions"></a>システム アカウントのアクセス許可を構成する
+### <a name="configure-system-account-permissions"></a>システム アカウントのアクセス許可を構成する
 
 システム アカウント用のアカウントを作成し、適切なアクセス許可を付与するには、各 SQL Server インスタンスで次の手順を実行します。
 
@@ -553,6 +505,71 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
    GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
    GO 
    ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
+
+各 SQL Server VM で、SQL Server サービス アカウントを設定します。 ドメイン アカウントの構成時に作成したアカウントを使用します。
+
+1. **[SQL Server 構成マネージャー]** を開きます。
+2. SQL Server サービスを右クリックし、 **[プロパティ]** を選択します。
+3. アカウントとパスワードを設定します。
+4. もう一方の SQL Server VM についても同じ手順を繰り返します。  
+
+SQL Server 可用性グループでは、各 SQL Server VM をドメイン アカウントとして実行する必要があります。
+
+## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>両方の SQL Server VM にフェールオーバー クラスター機能を追加する
+
+フェールオーバー クラスター機能を追加するには、両方の SQL Server VM で次の手順を実行します。
+
+1. *CORP\install* アカウントを使用して、リモート デスクトップ プロトコル (RDP) を通じて SQL Server 仮想マシンに接続します。 **[サーバー マネージャー] ダッシュボード** を開きます。
+2. ダッシュボードの **[役割と機能の追加]** リンクを選択します。
+
+    ![サーバー マネージャー - 役割の追加](./media/availability-group-manually-configure-prerequisites-tutorial-/22-addfeatures.png)
+
+3. **[Server Features (サーバーの機能)]** セクションが表示されるまで **[次へ]** を選択します。
+4. **[機能]** で **[フェールオーバー クラスタリング]** を選択します。
+5. その他の必要な機能を追加します。
+6. **[インストール]** を選択して機能を追加します。
+
+もう一方の SQL Server VM についても同じ手順を繰り返します。
+
+  >[!NOTE]
+  > 実際に SQL Server VM をフェールオーバー クラスターに参加させる手順と共に、この手順は、[Azure SQL VM CLI](./availability-group-az-commandline-configure.md) と [Azure クイック スタート テンプレート](availability-group-quickstart-template-configure.md)を使用して自動化できるようになりました。
+  >
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>フェールオーバー クラスター ネットワークのしきい値の調整
+
+SQL Server 可用性グループを使用して Azure VM で Windows フェールオーバー クラスター ノードを実行する場合は、クラスター設定をより緩やかな監視状態に変更してください。  これにより、クラスターの安定性と信頼性が大幅に向上します。  この詳細については、「[IaaS と SQL Server - フェールオーバー クラスター ネットワークのしきい値の調整](/windows-server/troubleshoot/iaas-sql-failover-cluster)」を参照してください。
+
+
+## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> 各 SQL Server VM でファイアウォールを構成する
+
+このソリューションでは、ファイアウォールで次の TCP ポートが開いている必要があります。
+
+- **SQL Server VM**:SQL Server の既定のインスタンス用のポート 1433。
+- **Azure ロード バランサー プローブ:** 使用可能な任意のポート。 例では 59999 がよく使用されます。
+- **データベース ミラーリング エンドポイント:** 使用可能な任意のポート。 例では 5022 がよく使用されます。
+
+両方の SQL Server VM 上でファイアウォールのポートを開く必要があります。
+
+ポートを開く方法は、使用するファイアウォール ソリューションによって異なります。 次のセクションでは、Windows ファイアウォールでポートを開く方法について説明します。 各 SQL Server VM で、必要なポートを開きます。
+
+### <a name="open-a-tcp-port-in-the-firewall"></a>ファイアウォールで TCP ポートを開く
+
+1. 最初の SQL サーバーの **スタート** 画面で、 **[セキュリティが強化された Windows ファイアウォール]** を開きます。
+2. 左側のウィンドウで、 **[受信の規則]** を選択します。 右側のペインで **[新しい規則]** を選択します。
+3. **[規則の種類]** で **[ポート]** を選択します。
+4. ポートに対して **[TCP]** を選択し、適切なポート番号を入力します。 次の例を参照してください。
+
+   ![SQL ファイアウォール](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
+
+5. **[次へ]** を選択します。
+6. **[操作]** ページで、 **[接続を許可する]** をオンにしたまま、 **[次へ]** を選択します。
+7. **[プロファイル]** ページで、既定の設定をそのまま使用し、 **[次へ]** を選択します。
+8. **[名前]** ページで、 **[名前]** テキスト ボックスに規則の名前 (**Azure LB Probe** など) を指定し、 **[完了]** を選択します。
+
+2 つ目の SQL Server VM についても同じ手順を繰り返します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

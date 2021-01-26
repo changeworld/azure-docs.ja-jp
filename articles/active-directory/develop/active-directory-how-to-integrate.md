@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォームと統合する方法
+title: Microsoft ID プラットフォームと統合する方法 | Azure
+titleSuffix: Microsoft identity platform
 description: アプリケーションと Microsoft ID プラットフォームを統合する利点について学習し、簡略化されたサインイン、ID 管理、多要素認証、アクセスの制御などの機能についての情報を確認します。
 services: active-directory
 author: rwike77
@@ -8,16 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: deb923a52e5d6cd5384dbf94d2249572b25b1a61
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115698"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063843"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Microsoft ID プラットフォームとの統合
 
@@ -31,7 +33,7 @@ ms.locfileid: "88115698"
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>アプリケーションへのサインイン方法として Microsoft ID プラットフォームをサポートする
 
-**サインインの手間が減り、サポート コストが削減されます。** Microsoft ID プラットフォームを使用してアプリケーションにサインインすれば、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。 開発者としては、保存して保護するパスワードが 1 つ減ります。 忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。 Microsoft ID プラットフォームにより、Office 365 や Microsoft Azure などの世界的に人気の高いクラウド アプリケーションのサインインが容易になります。 数百万の組織の何億人ものユーザーが既に Microsoft ID プラットフォームにサインインしています。 詳細については、[Microsoft ID プラットフォーム サインインのサポートの追加](./authentication-vs-authorization.md)に関する記事を参照してください。
+**サインインの手間が減り、サポート コストが削減されます。** Microsoft ID プラットフォームを使用してアプリケーションにサインインすれば、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。 開発者としては、保存して保護するパスワードが 1 つ減ります。 忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。 Microsoft ID プラットフォームにより、Microsoft 365 や Microsoft Azure などの世界的に人気の高いクラウド アプリケーションのサインインが容易になります。 数百万の組織の何億人ものユーザーが既に Microsoft ID プラットフォームにサインインしています。 詳細については、[Microsoft ID プラットフォーム サインインのサポートの追加](./authentication-vs-authorization.md)に関する記事を参照してください。
 
 **アプリケーションへのサインアップが簡単になります。**  アプリケーションへのサインアップの間に、Microsoft ID プラットフォームからユーザーに関する基本的な情報が送信されるため、サインアップ フォームへの入力を事前に行ったり、完全に排除したりできます。 ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。 すべてのユーザーが、IT スタッフの介入を必要とせずに、Microsoft ID プラットフォームと統合されているアプリケーションにサインアップおよびサインインできます。 [Azure AD アカウント ログイン用のアプリケーションのサインアップ](../../app-service/configure-authentication-provider-aad.md)の詳細を参照してください。
 
@@ -47,13 +49,13 @@ ms.locfileid: "88115698"
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他へのアクセスの取得
 
-**Microsoft ID プラットフォームは、Office 365 やその他の Microsoft ビジネス サービスの承認サーバーです。**  アプリケーションへのサインイン方法として Microsoft ID プラットフォームをサポートしている場合、または OAuth 2.0 を使用して現在のユーザー アカウントを Azure AD ユーザー アカウントにリンクすることをサポートしている場合は、ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他の情報への読み書きアクセスを要求できます。 ユーザーの予定表にシームレスにイベントを書き込んだり、OneDrive のファイルを読み書きしたりできます。 [Office 365 API のアクセス](/previous-versions/office/office-365-api/)に関する詳細を参照してください。
+**Microsoft ID プラットフォームは、Microsoft 365 やその他の Microsoft ビジネス サービスの承認サーバーです。**  アプリケーションへのサインイン方法として Microsoft ID プラットフォームをサポートしている場合、または OAuth 2.0 を使用して現在のユーザー アカウントを Azure AD ユーザー アカウントにリンクすることをサポートしている場合は、ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他の情報への読み書きアクセスを要求できます。 ユーザーの予定表にシームレスにイベントを書き込んだり、OneDrive のファイルを読み書きしたりできます。 [Microsoft 365 API](/graph/overview) の詳細を参照してください。
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Azure および Office 365 マーケットプレースのアプリケーションの宣伝
+### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Azure と Microsoft 365 マーケットプレースでアプリケーションを宣伝する
 
 **既に Azure AD を使用している数百万の組織にアプリケーションを宣伝します。**  マーケットプレースを検索および参照しているユーザーは既にクラウド サービスを使用しており、クラウド サービスの顧客として認定されています。 [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/)のアプリケーションの宣伝に関する詳細を参照してください。
 
-**ユーザーがアプリケーションにサインアップすると、アプリケーションは Azure AD アクセス パネルと Office 365 アプリケーション ランチャーに表示されるようになります。**  ユーザーは後で迅速かつ簡単にアプリケーションに戻ることができ、ユーザーの結びつきが強くなります。 [Azure AD アクセス パネル](../user-help/my-apps-portal-end-user-access.md)に関する詳細を参照してください。
+**ユーザーがお客様のアプリケーションにサインアップすると、それが Azure AD アクセス パネルと Microsoft 365 アプリケーション ランチャーに表示されるようになります。**  ユーザーは後で迅速かつ簡単にアプリケーションに戻ることができ、ユーザーの結びつきが強くなります。 [Azure AD アクセス パネル](../user-help/my-apps-portal-end-user-access.md)に関する詳細を参照してください。
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>デバイスとサービスの間およびサービスとサービスの間の安全な通信
 
@@ -81,11 +83,11 @@ Microsoft ID プラットフォームとの統合には、追加コードを記�
 
 **業界標準のプロトコル。**  Microsoft は業界標準のサポートに取り組んでいます。 Microsoft ID プラットフォームでは、業界標準のプロトコルである OAuth 2.0 と OpenID Connect 1.0 がサポートされています。 詳細については、[Microsoft ID プラットフォームの認証プロトコル](active-directory-v2-protocols.md)に関するページを参照してください。
 
-**オープン ソース ライブラリ。**  Microsoft は、開発時間短縮のため、一般的な言語とプラットフォームの完全にサポートされたオープン ソース ライブラリを提供します。 ソース コードは Apache 2.0 でライセンスされており、自由にフォークしてプロジェクトに役立てることができます。 詳細については、[Microsoft 認証ライブラリ (MSAL)](reference-v2-libraries.md) に関するページを参照してください。
+**オープン ソース ライブラリ。**  Microsoft は、開発時間短縮のため、一般的な言語とプラットフォームの完全にサポートされたオープン ソース ライブラリを提供します。 ソース コードは Apache 2.0 でライセンスされており、自由にフォークしてプロジェクトに役立てることができます。 詳細については、[Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) に関するページを参照してください。
 
 ### <a name="worldwide-presence-and-high-availability"></a>世界的なプレゼンスと高可用性
 
-**Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
+**Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Microsoft 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
 
 ## <a name="next-steps"></a>次のステップ
 

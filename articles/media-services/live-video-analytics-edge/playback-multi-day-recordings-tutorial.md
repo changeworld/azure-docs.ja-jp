@@ -3,12 +3,12 @@ title: 数日間の記録の再生 - Azure
 description: このチュートリアルでは、Azure Media Services API を使用して数日間の継続的なビデオ記録を再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649093"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803434"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>チュートリアル:数日間の記録の再生  
 
@@ -70,13 +70,21 @@ ms.locfileid: "88649093"
 } 
 ```
 
-Visual Studio Code で、左側の [実行] アイコンをクリックすると (または Ctrl + Shift + D キー)、実行するために使用可能なアプリケーションを表示できます。
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
-![ラン](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-次に示すように、ドロップダウン ボックスから AMS Asset Player アプリケーションを選択し、F5 キーを押してデバッグを開始します。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
 
-![デバッグ](./media/playback-multi-day-recordings-tutorial/debug.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="拡張機能の設定":::
+1. <!--In Visual Studio Code, you can click-->左側の [実行] アイコンをクリックして (または Ctrl + Shift + D キーを押して)、実行可能なアプリケーションを表示します。
+
+    ![[実行] 項目が選択された Visual Studio Code メニューのスクリーンショット。](./media/playback-multi-day-recordings-tutorial/run.png)
+1. 次に示すように、ドロップダウン ボックスから AMS Asset Player アプリケーションを選択し、F5 キーを押してデバッグを開始します。
+
+    ![AMS Asset Player が選択された Visual Studio Code メニューのスクリーンショット。](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 このサンプル アプリケーションでは、既定のブラウザー アプリをビルドして起動し、AMS Asset Player ページを開きます。
 

@@ -11,18 +11,31 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136050"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118253"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 このガイドでは、Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する方法について説明します。 これにより、共有のセルフホステッド統合ランタイムを他のデータ ファクトリで使用できます。
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
+
+データ ファクトリに既に設定してある既存のセルフホステッド統合ランタイム インフラストラクチャを再利用することができます。 この再利用により、共有された既存のセルフホステッド IR を参照して、異なるデータ ファクトリにリンクされたセルフホステッド統合ランタイムを作成できます。
+
+この機能の概要とデモンストレーションを参照するには、以下の 12 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>用語
+
+- **共有された IR**:物理インフラストラクチャで実行されている元のセルフホステッド IR。  
+- **リンクされた IR**:別の共有された IR を参照する IR。 リンクされた IR は論理 IR であり、共有された別のセルフホステッド IR のインフラストラクチャを使用します。
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Azure Data Factory の UI を使用して共有のセルフホステッド IR を作成する
 
@@ -57,7 +70,7 @@ Azure PowerShell を使用して共有のセルフホステッド IR を作成�
 
 - **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
 
-- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」に記載されている手順に従います。 PowerShell を使用してスクリプトを実行し、他のデータ ファクトリと共有できるセルフホステッド統合ランタイムを作成できます。 
+- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/install-az-ps)」に記載されている手順に従います。 PowerShell を使用してスクリプトを実行し、他のデータ ファクトリと共有できるセルフホステッド統合ランタイムを作成できます。 
 
 > [!NOTE]  
 > 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)」ページで目的のリージョンを選択してください。
@@ -99,7 +112,7 @@ Azure PowerShell を使用して共有のセルフホステッド IR を作成�
     > [!NOTE]  
     > この手順は省略可能です。 既にデータ ファクトリがある場合は、この手順をスキップしてください。 
 
-    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -155,7 +168,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>別のデータ ファクトリを作成する
 
 > [!NOTE]  
-> この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。 ただし、他のデータ ファクトリに対してロールの割り当てを追加または削除するには、[ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)や[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)など、`Microsoft.Authorization/roleAssignments/write` アクセス許可と `Microsoft.Authorization/roleAssignments/delete` アクセス許可が必要です。
+> この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。 ただし、他のデータ ファクトリに対してロールの割り当てを追加または削除するには、[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)や[所有者](../role-based-access-control/built-in-roles.md#owner)など、`Microsoft.Authorization/roleAssignments/write` アクセス許可と `Microsoft.Authorization/roleAssignments/delete` アクセス許可が必要です。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -214,8 +227,39 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
 
+### <a name="monitoring"></a>監視
+
+#### <a name="shared-ir"></a>共有された IR:
+
+![共有された統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![共有された統合ランタイムを監視](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>リンクされた IR:
+
+![リンクされた統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![リンクされた統合ランタイムを監視](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項
+
+* リンクされた IR が作成されるデータ ファクトリには、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的にマネージド ID が作成されます。 ただし、Azure Resource Manager テンプレートまたは SDK を使用してデータ ファクトリを作成する場合は、**ID** プロパティを明示的に設定する必要があります。 この設定により、Resource Manager ではマネージド ID を含むデータ ファクトリが作成されます。
+
+* この機能をサポートする Data Factory .NET SDK のバージョンは、1.1.0 以降である必要があります。
+
+* アクセス許可を付与するには、ユーザーには、共有 IR が存在するデータ ファクトリ内に所有者ロールまたは継承された所有者ロールが必要です。
+
+* 共有機能は、同じ Azure AD テナント内のデータ ファクトリに対してのみ機能します。
+
+* Azure AD の[ゲスト ユーザー](../active-directory/governance/manage-guest-access-with-access-reviews.md)の場合、UI の検索機能 (検索キーワードを使用してすべてのデータ ファクトリを一覧表示する機能) が動作しません。 ただし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能を使用せずに IR を共有できます。 IR を共有する必要があるデータ ファクトリのマネージド ID について、 **[アクセス許可の割り当て]** ボックスにそのマネージド ID を入力し、Data Factory UI で **[追加]** を選択します。
+
+  > [!NOTE]
+  > この機能は Data Factory V2 でのみ使用できます。
+
+
 ### <a name="next-steps"></a>次のステップ
 
-- [Azure Data Factory の統合ランタイムの概念](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)を確認します。
+- [Azure Data Factory の統合ランタイムの概念](./concepts-integration-runtime.md)を確認します。
 
-- [Azure portal 上でセルフホステッド統合ランタイムを作成する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)方法を確認します。
+- [Azure portal 上でセルフホステッド統合ランタイムを作成する](./create-self-hosted-integration-runtime.md)方法を確認します。

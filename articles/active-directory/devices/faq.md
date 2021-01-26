@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266784"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860951"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -25,7 +25,7 @@ ms.locfileid: "89266784"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、 **[ユーザー デバイス]** には表示されません。
-Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
+Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) コマンドレットを使用することもできます。
 
 **[ユーザー デバイス]** には、次のデバイスだけが表示されます。
 
@@ -57,7 +57,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>Q:Windows 10 デバイスに "Your organization has deleted the device (組織がデバイスを削除しました)" または "Your organization has disabled the device (組織がデバイスを無効にしました)" というエラー メッセージが表示されるのはなぜですか?
 
-**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする[プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
+**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする [プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
 
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
@@ -198,7 +198,7 @@ Windows 10 2004 更新プログラムでは、UPN の変更がサポートされ
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q:一部のユーザーに、Azure AD 参加済みデバイスで Azure Multi-Factor Authentication のプロンプトが表示されないのはなぜですか?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q:一部のユーザーに、Azure AD 参加済みデバイスで Azure AD Multi-Factor Authentication のプロンプトが表示されないのはなぜですか?
 
 **A:** ユーザーが Multi-Factor Authentication を使用してデバイスを Azure AD に参加または登録している可能性があります。 それにより、デバイス自体がそのユーザーにとっての信頼された 2 つ目の要素になります。 同じユーザーがデバイスにサインインしてアプリケーションにアクセスするときは常に、Azure AD はデバイスを 2 つ目の要素と見なします。 これによりそのユーザーは、Multi-Factor Authentication の追加のプロンプトが表示されることなく、アプリケーションにシームレスにアクセスできます。 
 

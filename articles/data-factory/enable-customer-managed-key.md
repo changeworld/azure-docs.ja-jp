@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f1a7bffc05d83b30fe9e5bcd6e17bf6bc0192e1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650581"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348944"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>カスタマー マネージド キーを使用した Azure Data Factory の暗号化
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory では、エンティティの定義や実行中にキャッシュされたデータなど、保存データを暗号化します。 既定では、データは、ランダムに生成されてデータ ファクトリに一意に割り当てられる Microsoft 管理のキーで暗号化されます。 セキュリティをさらに保証するために、Azure Data Factory のカスタマー マネージド キー機能を使用して Bring Your Own Key (BYOK) を有効にできるようになりました。 カスタマー マネージド キーを指定すると、Data Factory により、ファクトリ システム キーと CMK の__両方__を使用して顧客データが暗号化されます。 どちらかがない場合は、データとファクトリへのアクセスが拒否されます。
+Azure Data Factory では、エンティティの定義や実行中にキャッシュされたデータなど、保存データを暗号化します。 既定では、データは、ランダムに生成されてデータ ファクトリに一意に割り当てられる Microsoft 管理のキーで暗号化されます。 セキュリティをさらに保証するために、Azure Data Factory のカスタマー マネージド キー機能を使用して Bring Your Own Key (BYOK) を有効にできるようになりました。 カスタマー マネージド キーを指定すると、Data Factory により、ファクトリ システム キーと CMK の __両方__ を使用して顧客データが暗号化されます。 どちらかがない場合は、データとファクトリへのアクセスが拒否されます。
 
 カスタマー マネージド キーを格納するには、Azure Key Vault が必要です。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 キー コンテナーと Data Factory は同じ Azure Active Directory (Azure AD) テナントで同じリージョンに存在する必要がありますが、サブスクリプションは異なっていてもかまいません。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
@@ -45,12 +45,12 @@ Azure Data Factory では、エンティティの定義や実行中にキャッ�
 
 ### <a name="enable-soft-delete-and-do-not-purge-on-azure-key-vault"></a>Azure Key Vault で論理的な削除と消去しないを有効にする
 
-Data Factory でカスタマー マネージド キーを使用するには、Key Vault に__論理的な削除__と__消去しない__の 2 つのプロパティが設定されている必要があります。 これらのプロパティは、新規または既存のキー コンテナーで、PowerShell または Azure CLI を使用して有効にすることができます。 既存のキー コンテナーでこれらのプロパティを有効にする方法については、次のいずれかの記事の「_論理的な削除を有効にする_」および「_消去保護を有効にする_」を参照してください。
+Data Factory でカスタマー マネージド キーを使用するには、Key Vault に __論理的な削除__ と __消去しない__ の 2 つのプロパティが設定されている必要があります。 これらのプロパティは、新規または既存のキー コンテナーで、PowerShell または Azure CLI を使用して有効にすることができます。 既存のキー コンテナーでこれらのプロパティを有効にする方法については、次のいずれかの記事の「_論理的な削除を有効にする_」および「_消去保護を有効にする_」を参照してください。
 
-- [PowerShell で論理的な削除を使用する方法](../key-vault/general/soft-delete-powershell.md)
-- [CLI で論理的な削除を使用する方法](../key-vault/general/soft-delete-cli.md)
+- [PowerShell で論理的な削除を使用する方法](../key-vault/general/key-vault-recovery.md)
+- [CLI で論理的な削除を使用する方法](../key-vault/general/key-vault-recovery.md)
 
-Azure portal を使用して新しい Azure Key Vault を作成している場合は、次のように __論理的な削除__と__消去しない__を有効にすることができます。
+Azure portal を使用して新しい Azure Key Vault を作成している場合は、次のように __論理的な削除__ と __消去しない__ を有効にすることができます。
 
   ![Key Vault の作成時に論理的な削除と消去保護を有効にするスクリーンショット](media/enable-customer-managed-key/01-enable-purge-protection.png)
 

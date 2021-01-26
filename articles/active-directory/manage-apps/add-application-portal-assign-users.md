@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325880"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>クイック スタート:Azure AD を ID プロバイダーとして使用しているアプリにユーザーを割り当てる
 
@@ -38,7 +38,7 @@ Azure AD テナントに追加したアプリにユーザーを割り当てる�
 1. Azure AD portal で、 **[エンタープライズ アプリケーション]** を選択します。 次に、構成するアプリケーションを探して選択します。
 2. 左側のナビゲーション メニューで **[ユーザーとグループ]** を選択します。
    > [!NOTE]
-   > 一部の Microsoft 365 アプリと Office 365 アプリでは、PowerShell を使用する必要があります。 
+   > 一部の Microsoft 365 アプリでは、PowerShell を使用する必要があります。 
 3. **[ユーザーの追加]** ボタンを選択します。
 4. **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 5. アプリケーションに割り当てるユーザーまたはグループを選択します。 検索ボックスで、ユーザーまたはグループの名前の入力を開始することもできます。 複数のユーザーとグループを選択でき、選択した項目が **[選択されたアイテム]** に表示されます。
@@ -46,7 +46,7 @@ Azure AD テナントに追加したアプリにユーザーを割り当てる�
     > グループをアプリケーションに割り当てると、そのグループ内のユーザーのみがアクセスできるようになります。 割り当ては、入れ子になったグループにはカスケードされません。
 
     > [!NOTE]
-    > グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Office 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 
+    > グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Microsoft 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 
 6. 完了したら、 **[選択]** を選択します。
    ![アプリケーションにユーザーまたはグループを割り当てる](./media/assign-user-or-group-access-portal/assign-users.png)
 7. **[ユーザーとグループ]** ウィンドウで、リストから 1 つまたは複数のユーザーまたはグループを選択し、ウィンドウの下部にある **[選択]** ボタンを選びます。
@@ -55,8 +55,7 @@ Azure AD テナントに追加したアプリにユーザーを割り当てる�
     > アプリケーションでロールの選択がサポートされていない場合は、既定のアクセス ロールが割り当てられます。 この場合、アプリケーションでユーザーのアクセス レベルを管理します。
 9. **[割り当ての追加]** ウィンドウで、ウィンドウの下部にある **[割り当て]** ボタンを選択します。
 
-> [!NOTE]
-> 同じ手順を使用して、ユーザーまたはグループの割り当てを解除できます。 割り当てを解除するユーザーまたはグループを選択してから、 **[削除]** を選択します。 一部の Microsoft 365 アプリと Office 365 アプリでは、PowerShell を使用する必要があります。 
+同じ手順を使用して、ユーザーまたはグループの割り当てを解除できます。 割り当てを解除するユーザーまたはグループを選択してから、 **[削除]** を選択します。 一部の Microsoft 365 アプリと Office 365 アプリでは、PowerShell を使用する必要があります。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -66,4 +65,9 @@ Azure AD テナントに追加したアプリにユーザーを割り当てる�
 
 次の記事に進み、アプリのシングル サインオンをセットアップする方法を学習してください。
 > [!div class="nextstepaction"]
-> [シングル サインオンを設定する](add-application-portal-setup-sso.md)
+> [SAML ベースのシングル サインオンの設定](add-application-portal-setup-sso.md)
+
+OR
+
+> [!div class="nextstepaction"]
+> [OIDC ベースのシングル サインオンの設定](add-application-portal-setup-oidc-sso.md)

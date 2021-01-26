@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 2bdf3a763dc71eb842496775b6cc91b8ca39b4b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226209"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343843"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "89226209"
 
 - [アクティビティ ログを Log Analytics と統合する方法](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+- [Azure AD で緊急アクセス用アカウントを管理する](../roles/security-emergency-access.md)
 
 - [KQL クイック リファレンス](/azure/data-explorer/kql-quick-reference)
 
@@ -72,7 +72,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 3. Log Analytics ワークスペース ページで、 **[追加]** をクリックします。
 
-    ![追加](./media/tutorial-log-analytics-wizard/add.png)
+    ![スクリーンショットは、Log Analytics ワークスペース ページの [追加] ボタンを示しています。](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  **[Log Analytics ワークスペースの作成]** ページで、次の手順を実行します。
 
@@ -96,11 +96,11 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 7. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. **[監視]** セクションで、 **[診断設定]** をクリックします。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![[監視] で選択された [診断設定] を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. **[診断設定]** ページで、 **[診断設定を追加する]** をクリックします。
 
@@ -128,13 +128,13 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ログ]** をクリックします。
 
 4. **[ログ]** ページで **[Get Started]\(開始\)** をクリックします。
 
-5. **検索*ボックスに、クエリを入力します。
+5. **検索* ボックスに、クエリを入力します。
 
 6. **[実行]** をクリックします。  
 
@@ -172,7 +172,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 内部結合を使用して監査ログとサインイン ログをマージする:
 
-`AuditLogs |where OperationName contains "Add User" |extend UserPrincipalName = tostring(TargetResources[0].userPrincipalName) | |project TimeGenerated , UserPrincipalName |join kind = inner (SigninLogs) on UserPrincipalName |summarize arg_min(TimeGenerated, *) by UserPrincipalName |extend SigninDate = TimeGenerated` 
+`AuditLogs |where OperationName contains "Add User" |extend UserPrincipalName = tostring(TargetResources[0].userPrincipalName) | |project TimeGenerated, UserPrincipalName |join kind = inner (SigninLogs) on UserPrincipalName |summarize arg_min(TimeGenerated, *) by UserPrincipalName |extend SigninDate = TimeGenerated` 
 
 
 クライアント アプリの種類別にサインイン数を表示する:
@@ -210,13 +210,13 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ログ]** をクリックします。
 
 4. **[ログ]** ページで **[Get Started]\(開始\)** をクリックします。
 
-5. **検索**ボックスに、「`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`」と入力します。
+5. **検索** ボックスに、「`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`」と入力します。
 
 6. **[実行]** をクリックします。  
 
@@ -301,11 +301,11 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ブック]** をクリックします。
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![スクリーンショットは、Azure portal メニューの、[Workbooks] が選択されている [監視] を示しています。](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. **[クイックスタート]** セクションで、 **[Empty]\(空\)** をクリックします。
 
@@ -332,7 +332,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 10. [**クエリの実行**] をクリックします。
 
-    ![Run query](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![[クエリの実行] ボタンを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
 11. ツール バーの **[視覚化]** で、 **[円グラフ]** をクリックします。
 
@@ -353,19 +353,19 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ブック]** をクリックします。
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![スクリーンショットは、[Workbooks] が選択されている、メニュー [監視] を示しています。ブックが選択されているメニューの監視を示しています。](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. **[条件付きアクセス]** セクションで、 **[Conditional Access Insights and Reporting]\(条件付きアクセスに関する分析情報とレポート\)** をクリックします。
 
-    ![条件付きアクセス テンプレート](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![[Conditional Access Insights and Reporting]\(条件付きアクセスに関する分析情報とレポート\) オプションを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
 5. ツール バーで、 **[編集]** をクリックします。
 
-    ![条件付きアクセス テンプレート](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![[編集] ボタンを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
 6. ツール バーで、3 つのドット、 **[追加]** 、 **[クエリの追加]** の順にクリックします。
 
@@ -375,7 +375,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 8. [**クエリの実行**] をクリックします。
 
-    ![Run query](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![このクエリを実行する [クエリの実行] ボタンを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
 9. **[期間]** をクリックし、 **[クエリに設定します]** を選択します。
 

@@ -13,12 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.custom: contperf-fy21q2
+  ms.openlocfilehash: f0f2e009220292d298848cf93c479639b2318062
+  ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592748"
+  ms.lasthandoff: 12/16/2020
+  ms.locfileid: "97588490"
 landingContent:
 - title: Translator
   linkLists:
@@ -33,25 +34,15 @@ landingContent:
     - text: コンプライアンス
       url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
     - text: サブスクリプションの作成
-      url: translator-text-how-to-signup.md
+      url: ./translator-how-to-signup.md
     - text: よく寄せられる質問
       url: https://www.microsoft.com/translator/faq.aspx
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: テキストを翻訳する
-      url: quickstart-translate.md
-    - text: テキストを表記変換する
-      url: quickstart-transliterate.md
-    - text: 言語検出
-      url: quickstart-detect.md
-    - text: 辞書検索
-      url: quickstart-dictionary.md
-    - text: 文の長さを決定する
-      url: quickstart-sentences.md
-    - text: サポートされている言語を一覧表示する
-      url: quickstart-languages.md
+    - text: クイック スタート
+      url: quickstart-translator.md
   - linkListType: tutorial
     links:
     - text: WPF 翻訳アプリを作成する (C#)
@@ -106,3 +97,9 @@ landingContent:
       url: https://aka.ms/TranslatorGitHub
     - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context

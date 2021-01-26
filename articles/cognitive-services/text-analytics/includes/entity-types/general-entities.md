@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 32e80c50ff6f543679852cbd7e5ce9bda92d01e1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 630f04bf2cc9e7de6331f9d25754a20fe2327d76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140936"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779412"
 ---
 次のエンティティ カテゴリは、`/entities/recognition/general` エンドポイントに要求を送信するときに返されます。
 

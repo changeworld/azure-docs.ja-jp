@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 6ae4e658985a3974b311171e83e6243dfc4a1ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eb9cd00350c41645d4427e30a6f25a6c163358c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444031"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659898"
 ---
 # <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonworks Data Platform の Docker デプロイを使用してビッグ データ分析のためのラボを設定する
 
@@ -28,7 +28,7 @@ ms.locfileid: "85444031"
 
 ### <a name="lab-account-settings"></a>ラボ アカウントの設定
 
-以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)」を参照してください。
+以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](./specify-marketplace-images.md)」を参照してください。
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |
@@ -86,15 +86,15 @@ Docker コンテナーを使用するには、まずテンプレート VM に Do
    -    HDP Sandbox を検証する
 
     > [!WARNING] 
-    > HDP の最新の .zip ファイルをダウンロードするときは、空白を含むディレクトリ パスに .zip ファイルを保存*しない*ようにしてください。
+    > HDP の最新の .zip ファイルをダウンロードするときは、空白を含むディレクトリ パスに .zip ファイルを保存 *しない* ようにしてください。
 
     > [!NOTE] 
-    > デプロイ中に**ドライブが共有されていない**ことを示す例外が発生した場合は、HDP の Linux コンテナーがローカルの Windows ファイルにアクセスできるように、C ドライブを Docker と共有する必要があります。  これを修正するには、[Windows システム トレイ の Docker アイコンをクリック](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)して Docker デスクトップ メニューを開き、 **[設定]** を選択します。  **[Docker 設定]** ダイアログが開いたら、 **[リソース] > [ファイル共有]** を選択し、**C** ドライブにチェックを入れます。  その後、HDP Sandbox をデプロイする手順を繰り返すことができます。
+    > デプロイ中に **ドライブが共有されていない** ことを示す例外が発生した場合は、HDP の Linux コンテナーがローカルの Windows ファイルにアクセスできるように、C ドライブを Docker と共有する必要があります。  これを修正するには、[Windows システム トレイ の Docker アイコンをクリック](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)して Docker デスクトップ メニューを開き、 **[設定]** を選択します。  **[Docker 設定]** ダイアログが開いたら、 **[リソース] > [ファイル共有]** を選択し、**C** ドライブにチェックを入れます。  その後、HDP Sandbox をデプロイする手順を繰り返すことができます。
 
 1. HDP Sandbox 用の Docker コンテナーがデプロイされて実行中になったら、ブラウザーを起動し、Cloudera の手順に従って [Sandbox のウェルカム ページ](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page)を開いて HDP ダッシュボードを起動することで、その環境にアクセスできます。
 
     > [!NOTE] 
-    > この手順では、サンドボックス環境のローカル IP アドレスを、テンプレート VM 上のホストファイルの sandbox-hdp.hortonworks.com にあらかじめマップしていることを前提としています。  このマッピングを**行わない**場合、`http://localhost:8080` に移動して、Sandbox のウェルカム ページにアクセスできます。
+    > この手順では、サンドボックス環境のローカル IP アドレスを、テンプレート VM 上のホストファイルの sandbox-hdp.hortonworks.com にあらかじめマップしていることを前提としています。  このマッピングを **行わない** 場合、`http://localhost:8080` に移動して、Sandbox のウェルカム ページにアクセスできます。
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>学生のログイン時に Docker コンテナーを自動的に開始する
 

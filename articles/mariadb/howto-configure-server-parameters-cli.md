@@ -1,22 +1,25 @@
 ---
 title: サーバー パラメーターの構成 - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI コマンド ライン ユーティリティを使って Azure Database for MariaDB のサービス パラメーターを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 6/11/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493807"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538140"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーのサーバー パラメーターを構成する
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MariaDB サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。
+
+>[!Note]
+> サーバー パラメーターは、[Azure CLI](./howto-configure-server-parameters-cli.md)、[PowerShell](./howto-configure-server-parameters-using-powershell.md)、または [Azure portal](./howto-server-parameters.md) を使用して、サーバー レベルでグローバルに更新できます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -56,7 +59,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 このコードは、**slow\_query\_log** 構成を既定値 **OFF** にリセットします。 
 
-## <a name="setting-parameters-not-listed"></a>表示されないパラメーターの設定
+## <a name="setting-parameters-not-listed"></a>設定パラメーターが一覧に含まれていない
 更新するサーバー パラメーターが Azure portal に一覧表示されていない場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **init\_connect** サーバー構成パラメーターを更新して、文字セットなどの値を設定します。

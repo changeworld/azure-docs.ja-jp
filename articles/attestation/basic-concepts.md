@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a4ab8372e23e3621f7d73f8dbc38957c809acc9c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237052"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921616"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -30,7 +30,7 @@ ms.locfileid: "89237052"
 
 構成証明プロバイダーは、Microsoft.Attestation という名前の Azure リソース プロバイダーに属しています。 リソース プロバイダーは、Azure Attestation の REST コントラクトを提供するサービス エンドポイントであり、[Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用してデプロイされます。 構成証明プロバイダーはそれぞれ、検出可能な特定のポリシーに従います。 
 
-構成証明プロバイダーは、TEE タイプごとに既定のポリシーを使用して作成されます (VBS エンクレーブには既定のポリシーがないことに注意してください)。 SGX の既定のポリシーについて詳しくは、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
+構成証明プロバイダーは、構成証明タイプごとに既定のポリシーを使用して作成されます (VBS エンクレーブには既定のポリシーがないことに注意してください)。 SGX の既定のポリシーについて詳しくは、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
 
 ### <a name="regional-default-provider"></a>リージョンにおける既定のプロバイダー
 
@@ -38,11 +38,11 @@ Azure Attestation には、リージョンごとに既定のプロバイダー�
 
 | リージョン | 構成証明の URI | 
 |--|--|
-| 英国南部 | https://shareduks.uks.attest.azure.net | 
-| 米国東部 2 | https://sharedeus2.eus2.attest.azure.net | 
-| 米国中部 | https://sharedcus.cus.attest.azure.net | 
-| 米国東部| https://sharedeus.eus.attest.azure.net | 
-| カナダ中部 | https://sharedcac.cac.attest.azure.net | 
+| 英国南部 | `https://shareduks.uks.attest.azure.net` | 
+| 米国東部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
+| 米国中部 | `https://sharedcus.cus.attest.azure.net` | 
+| 米国東部| `https://sharedeus.eus.attest.azure.net` | 
+| カナダ中部 | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>構成証明要求
 
@@ -50,13 +50,13 @@ Azure Attestation には、リージョンごとに既定のプロバイダー�
 - "Quote" - "Quote" プロパティの値は、構成証明クォートの Base64URL エンコード表現を含む文字列です。
 - "EnclaveHeldData" - "EnclaveHeldData" プロパティの値は、エンクレーブ保持データの Base64URL エンコード表現を含む文字列です。
 
-Azure Attestation により、TEE から提供された "Quote" が検証され、そのクォートの reportData フィールドの先頭から 32 バイトの中で、与えられたエンクレーブ保持データの SHA256 ハッシュが確実に表現されます。 
+Azure Attestation により、提供された "Quote" が検証され、そのクォートの reportData フィールドの先頭から 32 バイトの中で、与えられたエンクレーブ保持データの SHA256 ハッシュが確実に表現されます。 
 
 ## <a name="attestation-policy"></a>構成証明ポリシー
 
 構成証明ポリシーは、構成証明の証拠を処理する際に使用されるもので、お客様が構成できます。 Azure Attestation の核となるのはポリシー エンジンです。これによって、証拠の構成要素となる要求が処理されます。 Azure Attestation が証拠に基づいて構成証明トークンを発行すべきかどうか、ひいては構成証明者を承認するかどうかが、ポリシーを使用して判断されます。 結果的に、すべてのポリシーにパスしなければ、JWT トークンは発行されません。
 
-構成証明プロバイダーの既定の TEE ポリシーで要件を満たすことができない場合、お客様は、Azure Attestation でサポートされるリージョンであれば、どこにでもカスタム ポリシーを作成できます。 ポリシー管理は、Azure Attestation がお客様に提供する重要な機能です。 ポリシーは TEE 固有であり、エンクレーブを識別したり、出力トークンに要求を追加したり、出力トークン内の要求に変更を加えたりするときに使用できます。 
+構成証明プロバイダーの既定のポリシーで要件を満たすことができない場合、お客様は、Azure Attestation でサポートされるリージョンであれば、どこにでもカスタム ポリシーを作成できます。 ポリシー管理は、Azure Attestation がお客様に提供する重要な機能です。 ポリシーは構成証明タイプ固有であり、エンクレーブを識別したり、出力トークンに要求を追加したり、出力トークン内の要求に変更を加えたりするときに使用できます。 
 
 既定のポリシーの内容とサンプルについては、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
 
@@ -99,6 +99,15 @@ SGX エンクレーブに対して生成された JWT の例:
 }.[Signature]
 ```
 "exp"、"iat"、"iss"、"nbf" などの要求は [JWT RFC](https://tools.ietf.org/html/rfc7517) によって定義され、それ以外は Azure Attestation によって生成されます。 詳細については、[Azure Attestation によって発行される要求](claim-sets.md)に関するページを参照してください。
+
+## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
+
+顧客データを保護するために、Azure Attestation では Azure Storage にデータが保持されます。 Azure ストレージでは、データ センターへの書き込みの際に保存データが暗号化され、顧客がアクセスできるように暗号化が解除されます。 この暗号化は、Microsoft が管理する暗号化キーを使用して行われます。 
+
+Azure Attestation では、Azure ストレージ内のデータを保護するだけでなく、Azure Disk Encryption (ADE) を利用してサービス VM も暗号化します。 Azure コンフィデンシャル コンピューティング環境のエンクレーブで実行されている Azure Attestation の場合、ADE 拡張機能は現時点ではサポートされていません。 このようなシナリオでは、データがメモリに格納されないようにするために、ページ ファイルは無効になっています。 
+
+Azure Attestation インスタンスのローカル ハード ディスク ドライブに顧客データが保存されることはありません。
+
 
 ## <a name="next-steps"></a>次のステップ
 

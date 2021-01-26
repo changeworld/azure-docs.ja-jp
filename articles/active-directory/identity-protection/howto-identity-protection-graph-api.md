@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 5367e5027bfae2fa3ed7e87a779e50e4048ba608
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950121"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861733"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
@@ -55,7 +55,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 ### <a name="configure-api-permissions"></a>API のアクセス許可を構成する
 
-1. 作成した**アプリケーション**から、 **[API のアクセス許可]** を選択します。
+1. 作成した **アプリケーション** から、 **[API のアクセス許可]** を選択します。
 1. **[構成されたアクセス許可]** ページで、上部ツール バーの **[アクセス許可の追加]** をクリックします。
 1. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
 1. **[API を選択します]** ページで、 **[Microsoft Graph]** を選んで、 **[選択]** をクリックします。
@@ -67,7 +67,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 ### <a name="configure-a-valid-credential"></a>有効な資格情報を構成する
 
-1. 作成した**アプリケーション**から、 **[証明書とシークレット]** を選択します。
+1. 作成した **アプリケーション** から、 **[証明書とシークレット]** を選択します。
 1. **[クライアント シークレット]** で、 **[新しいクライアント シークレット]** を選択します。
    1. クライアント シークレットの **[説明]** を入力し、組織のポリシーに従って有効期限を設定します。
    1. **[追加]** を選択します。
@@ -104,6 +104,8 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 成功した場合の応答は、OData JSON 形式の ID リスク検出とその関連データのコレクションです。必要に応じてこのデータを解析し、処理できます。
 
 ### <a name="sample"></a>サンプル
+
+このサンプルでは、共有シークレットを使用して認証を行う方法を示します。 運用環境では、コードにシークレットを格納することは一般的に好ましくありません。 組織は、Azure リソース用マネージド ID を使用して、これらの資格情報をセキュリティで保護することができます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」という記事を参照してください。
 
 以下に示したコードは、PowerShell を使って認証と API 呼び出しを行う例です。  
 該当するクライアント ID、秘密キー、テナントのドメインを追加してください。
@@ -171,4 +173,4 @@ Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプ
 - [Azure Active Directory Identity Protection で検出されるリスク検出の種類](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph の概要](https://developer.microsoft.com/graph/docs)
-- [Azure AD Identity Protection Service Root](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)
+- [Azure AD Identity Protection Service Root](/graph/api/resources/identityprotectionroot)

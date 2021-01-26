@@ -15,10 +15,10 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: devx-track-python
 ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851716"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
@@ -351,11 +351,11 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |`apiName`|string|API の名前。|  
 |`apiDescription`|string|API の説明。|  
 |`api`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
-|`operation`|[Operation](api-management-template-data-model-reference.md#Operation)|現在表示されている Operation。|  
-|`sampleUrl`|string|現在の Operation の URL。|  
-|`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の Operation のメニュー。|  
-|`consoleUrl`|URI|**[使ってみる]** ボタンの URI。|  
-|`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の Operation のコード サンプル。|  
+|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
+|`sampleUrl`|string|現在の操作の URL。|  
+|`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
+|`consoleUrl`|URI|**[試してみる]** ボタンの URI。|  
+|`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   

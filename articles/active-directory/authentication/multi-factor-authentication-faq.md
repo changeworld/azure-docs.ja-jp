@@ -1,29 +1,29 @@
 ---
-title: Azure Multi-Factor Authentication FAQ - Azure Active Directory
-description: Azure Multi-Factor Authentication に関してよく寄せられる質問と回答。
+title: Azure AD Multi-Factor Authentication FAQ - Azure Active Directory
+description: Azure AD Multi-Factor Authentication に関してよく寄せられる質問と回答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718868"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741452"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
+# <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication についてよく寄せられる質問
 
-この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。
+この FAQ では、Azure AD Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 >
 > Azure Multi-Factor Authentication Server に関して、以下で共有される情報は、MFAサーバーを既に実行しているユーザーにのみ適用されます。
 >
@@ -37,7 +37,7 @@ ms.locfileid: "88718868"
 
 ### <a name="how-does-azure-multi-factor-authentication-server-handle-user-data"></a>Azure Multi-Factor Authentication Server ではどのようにユーザー データが処理されますか。
 
-Multi-Factor Authentication Server では、ユーザーのデータはオンプレミス サーバーにだけ格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが 2 段階認証を実行すると、Multi-Factor Authentication Server から Azure Multi-Factor Authentication クラウド サービスにデータが送信され、認証が要求されます。 Multi-Factor Authentication Server と Multi-Factor Authentication クラウド サービス間の通信には、送信方向のポート 443 経由で Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) が使用されます。
+Multi-Factor Authentication Server では、ユーザーのデータはオンプレミス サーバーにだけ格納されます。 永続的なユーザー データはクラウドに格納されません。 ユーザーが 2 段階認証を実行すると、Multi-Factor Authentication Server から Azure AD Multi-Factor Authentication クラウド サービスにデータが送信され、認証が要求されます。 Multi-Factor Authentication Server と Multi-Factor Authentication クラウド サービス間の通信には、送信方向のポート 443 経由で Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) が使用されます。
 
 認証要求がクラウド サービスに送信されると、認証レポートと使用状況レポート用のデータが収集されます。 2 段階認証ログには、次のデータ フィールドが含まれています。
 
@@ -56,7 +56,7 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 
 認証データと共に、認証結果 (成功または拒否) と、拒否された場合はその理由が保存されます。 このデータは、認証と使用状況のレポートで確認できます。
 
-詳細については、「[Azure Multi-Factor Authentication のデータの保存場所と顧客データ](concept-mfa-data-residency.md)」を参照してください。
+詳細については、「[Azure AD Multi-Factor Authentication のデータの保存場所と顧客データ](concept-mfa-data-residency.md)」を参照してください。
 
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>ユーザーに SMS メッセージを送る際には、どの SMS ショート コードが使用されますか。
 
@@ -78,19 +78,19 @@ Microsoft は、米国とカナダ以外の国または地域ではショート 
 
 ## <a name="billing"></a>課金
 
-課金に関するほとんどの疑問は、「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」ページか[Azure Multi-Factor Authentication のバージョンと従量制の料金プラン](concept-mfa-licensing.md)のドキュメントのいずれかを参照することで解決します。
+課金に関するほとんどの疑問は、「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」ページか[Azure AD Multi-Factor Authentication のバージョンと従量制の料金プラン](concept-mfa-licensing.md)のドキュメントのいずれかを参照することで解決します。
 
 * [認証用の電話呼び出しやテキスト メッセージの送信について、自分の組織に料金が請求されることはありますか。](#is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication)
 * [ユーザーごとの課金モデルで、課金の対象となるのは有効化されているすべてのユーザーですか、それとも 2 段階認証を実行したユーザーのみですか。](#does-the-per-user-billing-model-charge-me-for-all-enabled-users-or-just-the-ones-that-performed-two-step-verification)
 * [Multi-Factor Authentication の請求はどのように行われますか。](#how-does-multi-factor-authentication-billing-work)
-* [Azure Multi-Factor Authentication の無料版はありますか。](#is-there-a-free-version-of-azure-multi-factor-authentication)
+* [Azure AD Multi-Factor Authentication の無料版はありますか。](#is-there-a-free-version-of-azure-ad-multi-factor-authentication)
 * [ユーザーごとおよび認証ごとの使用量課金モデルは、組織でいつでも切り替えることができますか。](#can-my-organization-switch-between-per-user-and-per-authentication-consumption-billing-models-at-any-time)
 * [使用量ベースの課金とサブスクリプション (ライセンスベースのモデル) は、組織でいつでも切り替えることができますか。](#can-my-organization-switch-between-consumption-based-billing-and-subscriptions-a-license-based-model-at-any-time)
-* [組織が Azure Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication)
+* [組織が Azure AD Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication)
 
 ### <a name="is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication"></a>認証用の電話呼び出しやテキスト メッセージの送信について、自分の組織に料金が請求されることはありますか。
 
-いいえ。Azure Multi-Factor Authentication 経由でユーザーに対して行われる電話呼び出しや送信されるテキスト メッセージの料金が個別に請求されることはありません。 認証ごとの MFA プロバイダーを使用している場合は認証ごとに料金が請求されますが、認証の手段に対する請求は行われません。
+いいえ。Azure AD Multi-Factor Authentication 経由でユーザーに対して行われる電話呼び出しや送信されるテキスト メッセージの料金が個別に請求されることはありません。 認証ごとの MFA プロバイダーを使用している場合は認証ごとに料金が請求されますが、認証の手段に対する請求は行われません。
 
 ユーザーが受ける電話呼び出しやテキスト メッセージの料金は、個人で契約している電話サービスに従って請求されます。
 
@@ -102,11 +102,11 @@ Microsoft は、米国とカナダ以外の国または地域ではショート 
 
 ユーザーごとまたは認証ごとの MFA プロバイダーを作成すると、組織の Azure サブスクリプションは毎月使用量に基づいて課金されます。 この課金モデルは、仮想マシンと Web Apps の使用量に対する Azure の課金方法に似ています。
 
-Azure Multi-factor Authentication のサブスクリプションを購入すると、組織はユーザーごとに年間ライセンス費用のみを支払います。 MFA ライセンスと Office 365、Azure AD Premium または Microsoft Enterprise Mobility + Security バンドルは、この方法で課金されます。
+Azure AD Multi-factor Authentication のサブスクリプションを購入すると、組織はユーザーごとに年間ライセンス費用のみを支払います。 MFA ライセンスと Microsoft 365、Azure AD Premium または Enterprise Mobility + Security バンドルは、この方法で課金されます。
 
-詳細については、「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。
+詳細については、「[Azure AD Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。
 
-### <a name="is-there-a-free-version-of-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の無料版はありますか。
+### <a name="is-there-a-free-version-of-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の無料版はありますか。
 
 セキュリティの既定値群は、Azure AD Free レベルで有効にすることができます。 セキュリティの既定値群を使用すると、Microsoft Authenticator アプリを使用しているすべてのユーザーに多要素認証が有効になります。 セキュリティの既定値群では、テキスト メッセージまたは電話による確認を使用することはできず、Microsoft Authenticator アプリだけが使用できます。
 
@@ -128,7 +128,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 ディレクトリに "*認証ごと*" の Azure Multi-Factor Authentication プロバイダーがある場合は、その MFA プロバイダーがサブスクリプションにリンクされている限り、認証ごとに常に料金が請求されます。 MFA ライセンスをユーザーに割り当てることはできますが、2 段階認証の要求が行われると、それが MFA ライセンスの割り当てられたユーザーによる要求かどうかに関係なく、毎回料金が請求されます。
 
-### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication"></a>組織が Azure Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。
+### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication"></a>組織が Azure AD Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。
 
 組織で使用量ベースの課金モデルを使用する場合、Azure Active Directory の利用は任意であり、必須ではありません。 MFA プロバイダーが Azure AD テナントにリンクされていない場合は、Azure Multi-Factor Authentication Server をオンプレミスにのみデプロイできます。
 
@@ -159,11 +159,11 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 ### <a name="what-should-i-do-if-one-of-my-users-cant-get-in-to-their-account"></a>アカウントに入れないユーザーがいる場合はどうすればよいですか。
 
-ユーザーに登録プロセスを再度実行してもらうことで、ユーザーのアカウントをリセットできます。 詳細については、 [クラウドでの Azure Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](howto-mfa-userdevicesettings.md)に関するページを参照してください。
+ユーザーに登録プロセスを再度実行してもらうことで、ユーザーのアカウントをリセットできます。 詳細については、 [クラウドでの Azure AD Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](howto-mfa-userdevicesettings.md)に関するページを参照してください。
 
 ### <a name="what-should-i-do-if-one-of-my-users-loses-a-phone-that-is-using-app-passwords"></a>アプリ パスワードを使用している携帯電話を紛失したユーザーがいる場合は、どうすればよいですか。
 
-未承認のアクセスを防ぐには、そのユーザーのアプリ パスワードをすべて削除します。 ユーザーは、代わりのデバイスを入手した後に、パスワードを再作成できます。 詳細については、 [クラウドでの Azure Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](howto-mfa-userdevicesettings.md)に関するページを参照してください。
+未承認のアクセスを防ぐには、そのユーザーのアプリ パスワードをすべて削除します。 ユーザーは、代わりのデバイスを入手した後に、パスワードを再作成できます。 詳細については、 [クラウドでの Azure AD Multi-Factor Authentication によるユーザーおよびデバイスの設定の管理](howto-mfa-userdevicesettings.md)に関するページを参照してください。
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>ユーザーがブラウザー以外のアプリにサインインできない場合はどうすればよいですか。
 
@@ -199,7 +199,7 @@ Azure MFA サーバー v7.0 以降の単方向 SMS の場合、レジストリ �
 
 ユーザーが定義されたタイムアウト期間内に SMS に応答しない場合、認証は拒否されます。
 
-クラウドの Azure MFA の一方向の SMS (AD FS アダプターおよびネットワーク ポリシー サーバー拡張機能など) の場合、タイムアウト設定を構成することはできません。 Azure AD は、確認コードを 180 秒間保存します。
+クラウドの Azure AD MFA の一方向の SMS (AD FS アダプターおよびネットワーク ポリシー サーバー拡張機能など) の場合、タイムアウト設定を構成することはできません。 Azure AD は、確認コードを 180 秒間保存します。
 
 ### <a name="can-i-use-hardware-tokens-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でハードウェア トークンを使用できますか。
 

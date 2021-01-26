@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695696"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499273"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Managed Instance のアラートを作成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -145,5 +145,5 @@ ms.locfileid: "84695696"
 * Azure Monitor アラート システムの詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/platform/alerts-overview.md)」を参照してください
 * メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../../azure-monitor/platform/alerts-metric-overview.md)」を参照してください
 * アラートでの Webhook の詳細については、[クラシック メトリック アラートを使用する Webhook の呼び出し](../../azure-monitor/platform/alerts-webhooks.md)に関するページを参照してください
-* PowerShell を使用したアラートの構成と管理の詳細については、[アクション ルール](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)に関するページを参照してください
-* API を使用したアラートの構成と管理の詳細については、「[Azure Monitor REST API リファレンス](https://docs.microsoft.com/rest/api/monitor/)」を参照してください 
+* PowerShell を使用したアラートの構成と管理の詳細については、[アクション ルール](/powershell/module/az.monitor/add-azmetricalertrulev2)に関するページを参照してください
+* API を使用したアラートの構成と管理の詳細については、「[Azure Monitor REST API リファレンス](/rest/api/monitor/)」を参照してください

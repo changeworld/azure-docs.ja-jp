@@ -4,12 +4,12 @@ description: 自動スケール設定とそのしくみについて詳しく説�
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317469"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605242"
 ---
 # <a name="understand-autoscale-settings"></a>自動スケール設定について
 自動スケール設定を使用すると、アプリケーションの変動する負荷に対応するために適切な量のリソースを確実に実行できます。 負荷やパフォーマンスを示すメトリック、またはスケジュールされた日時にトリガーするメトリックに基づいてトリガーされるように自動スケール設定を構成できます。 この記事では、自動スケール設定の構造について詳しく説明します。 まず、設定のスキーマとプロパティについて取り上げ、構成可能なさまざまなプロファイルの種類についてわかりやすく説明します。 最後に、そのときどきで実行されるプロファイルが、Azure の自動スケール機能によって、どのように評価されるかを説明します。
@@ -60,7 +60,7 @@ ms.locfileid: "87317469"
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -119,34 +119,41 @@ ms.locfileid: "87317469"
 
 - **指定日プロファイル :** 特殊なケースで使用されるプロファイルです。 たとえば、2017 年 12 月 26 日 (太平洋標準時) に重要なイベントが予定されており、 その日のリソースの最小/最大容量を別の値にする必要があるとします。ただし、引き続き同じメトリックでスケールする必要があります。 この場合、設定のプロファイル リストに指定日プロファイルを追加します。 このプロファイルをイベントの日にのみ実行するように構成します。 それ以外の日は標準プロファイルが自動スケールに使用されます。
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     

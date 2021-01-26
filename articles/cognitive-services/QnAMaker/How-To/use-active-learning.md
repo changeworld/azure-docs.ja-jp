@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースと共にアクティブ ラーニングを使用する - QnA Maker
-description: アクティブ ラーニングを使用してナレッジ ベースの質を向上させます。 既存の質問の削除や変更は行わずに、レビュー、承認、却下を行います。
+description: アクティブ ラーニングを使用してナレッジ ベースの質を向上させる方法について説明します。 既存の質問の削除や変更は行わずに、レビュー、承認、却下を行います。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 004ee9d4cced0116831718b1601d5d510dea5a4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ac5e32b454cfc1adafb1f54b01d2a1a302908a4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090928"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600437"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -23,11 +25,13 @@ ms.locfileid: "87090928"
 
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>代わりの質問のためにアクティブ ラーニングを有効にする
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示します。 アクティブ ラーニングを有効にした後は、クライアント アプリから QnA Maker に情報を送信する必要があります。 詳細については、「[ボットから GenerateAnswer および Train API を使用するためのアーキテクチャの流れ](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot)」を参照してください。
 
 1. **[発行]** を選択してナレッジ ベースを発行します。 アクティブ ラーニング クエリは、GenerateAnswer API 予測エンドポイントからのみ収集されます。 QnA Maker ポータルの [テスト] ウィンドウへのクエリは、アクティブ ラーニングには影響しません。
 
-1. QnA Maker ポータルでアクティブ ラーニングを有効にするには、右上隅に移動して自分の**名前**を選択し、[**Service settings\(サービス設定\)** ](https://www.qnamaker.ai/UserSettings) に移動します。
+1. QnA Maker ポータルでアクティブ ラーニングを有効にするには、右上隅に移動して自分の **名前** を選択し、[**Service settings\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。
 
     ![[Service settings]\(サービス設定\) ページで、アクティブ ラーニングの提案された代わりの質問を有効にします。 右上のメニューで自分のユーザー名を選択し、[Service Settings]\(サービス設定\) を選択します。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
@@ -41,6 +45,12 @@ ms.locfileid: "87090928"
     > 上の画像の具体的なバージョンは、単なる例として表示されています。 実際のバージョンは、異なる場合があります。
 
     **[Active Learning]\(アクティブ ラーニング\)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジ ベースから定期的に新しい質問が提案されます。 設定を再度切り替えると、 **[Active Learning] (アクティブ ラーニング)** を無効にできます。
+    
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) のアクティブ ラーニングは、既定では **有効** になっています。 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
+
+---
 
 ## <a name="review-suggested-alternate-questions"></a>推奨される代わりの質問を確認する
 

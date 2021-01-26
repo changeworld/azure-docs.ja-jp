@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229754"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362401"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -73,7 +73,7 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)します。 また、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)します。 また、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 ### <a name="plan-communications"></a>連絡を計画する
 
@@ -101,11 +101,11 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 |領域 |説明 |
 |-|-|
-|保持| **30 日を超えるログ保有期間**。 ‎法的または業務上の要件により、Azure AD の監査ログとサインイン ログを 30 日よりも長く保存する必要があります。 |
-|Analytics| **ログが検索可能である必要がある**。 ‎保存されたログを分析ツールを使用して検索できる必要があります。 |
-| Operational Insights| **さまざまなチームのための分析情報**。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
-| セキュリティ分析情報| **さまざまなチームのための分析情報**。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
-| SIEM システムでの統合      | **SIEM の統合**。 ‎Azure AD のサインイン ログと監査ログを既存の SIEM システムに統合およびストリーム配信する必要があります。 |
+|保持| **30 日を超えるログ保有期間** 。 ‎法的または業務上の要件により、Azure AD の監査ログとサインイン ログを 30 日よりも長く保存する必要があります。 |
+|Analytics| **ログが検索可能である必要がある** 。 ‎保存されたログを分析ツールを使用して検索できる必要があります。 |
+| Operational Insights| **さまざまなチームのための分析情報** 。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
+| セキュリティ分析情報| **さまざまなチームのための分析情報** 。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
+| SIEM システムでの統合      | **SIEM の統合** 。 ‎Azure AD のサインイン ログと監査ログを既存の SIEM システムに統合およびストリーム配信する必要があります。 |
 
 ### <a name="choose-a-monitoring-solution-architecture"></a>監視ソリューションのアーキテクチャを選択する
 
@@ -133,7 +133,7 @@ Azure AD のアクティビティ ログ用の既製のビューをインスト�
 
 Azure イベント ハブにログをルーティングすると、サードパーティ製の SIEM ツールとの統合が可能になります。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせ、より豊富な環境分析情報を提供することができます。 
 
-ログをイベント ハブにストリーム配信する方法については、[こちら](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
+ログをイベント ハブにストリーム配信する方法については、[こちら](./tutorial-azure-monitor-stream-logs-to-event-hub.md)を参照してください。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視の運用とセキュリティを計画する
 
@@ -151,9 +151,9 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 * レポート閲覧者
 
-[Azure AD 管理者ロール](../users-groups-roles/directory-assign-admin-roles.md)の詳細を確認します。
+[Azure AD 管理者ロール](../roles/permissions-reference.md)の詳細を確認します。
 
-*アカウント侵害*のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
+*アカウント侵害* のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
 
 ##  
 

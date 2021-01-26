@@ -10,12 +10,12 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: cf41da685036770144ebf7eb2befd0c3d126362d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 698a9c062596a3439d95ac0d586854fc6616fdd6
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446021"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556547"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムで接続の診断機能を使用する
 
@@ -104,6 +104,6 @@ SSIS 統合ランタイムで SQL Server Integration Services (SSIS) パッケ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SSMS を使用して Azure に SSIS プロジェクトを配置する](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)
-- [SSMS を使用して Azure で SSIS パッケージを実行する](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)
-- [Azure で SSIS パッケージをスケジュール設定する](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)
+- [SSMS を使用して Azure に SSIS プロジェクトを配置する](/sql/integration-services/ssis-quickstart-deploy-ssms)
+- [SSMS を使用して Azure で SSIS パッケージを実行する](/sql/integration-services/ssis-quickstart-run-ssms)
+- [Azure で SSIS パッケージをスケジュール設定する](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)

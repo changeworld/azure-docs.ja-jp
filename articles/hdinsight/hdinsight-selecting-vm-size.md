@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73682201"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535316"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Azure HDInsight クラスターの適切な VM サイズの選択
 
@@ -32,7 +32,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 - RAM: VM サイズによって、VM で使用可能な RAM の容量も決まります。 処理するデータをディスクから読み取るのではなく、メモリに格納するワークロードの場合、ワーカー ノードにデータを格納できる十分なメモリがあることを確認します。
 
-- [ネットワーク]\: クラスターのほとんどの種類では、クラスターで処理されるデータはローカル ディスク上に存在するのではなく、Data Lake Storage や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関する記事をご覧ください。
+- [ネットワーク]\: クラスターのほとんどの種類では、クラスターで処理されるデータはローカル ディスク上に存在するのではなく、Data Lake Storage や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](../virtual-machines/sizes.md)に関する記事をご覧ください。
 
 ## <a name="understanding-vm-optimization"></a>VM の最適化について
 
@@ -40,10 +40,10 @@ Azure の仮想マシン ファミリは、さまざまなユース ケースに
 
 | Type                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [エントリ レベル](../virtual-machines/linux/sizes-general.md)          | A、Av2  | 開発とテストのような、エントリ レベルのワークロードに最適な CPU パフォーマンスとメモリ構成を備えています。 A シリーズは経済的で、Azure の使用を開始するための低コストなオプションとなっています。 |
-| [汎用](../virtual-machines/linux/sizes-general.md)          | D、DSv2、Dv2  | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
-| [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md)        | F           | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
-| [メモリの最適化](../virtual-machines/linux/sizes-memory.md)         | Esv3、Ev3  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
+| [エントリ レベル](../virtual-machines/sizes-general.md)          | A、Av2  | 開発とテストのような、エントリ レベルのワークロードに最適な CPU パフォーマンスとメモリ構成を備えています。 A シリーズは経済的で、Azure の使用を開始するための低コストなオプションとなっています。 |
+| [汎用](../virtual-machines/sizes-general.md)          | D、DSv2、Dv2  | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
+| [コンピューティングの最適化](../virtual-machines/sizes-compute.md)        | F           | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
+| [メモリの最適化](../virtual-machines/sizes-memory.md)         | Esv3、Ev3  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 
 - HDInsight がサポートされるリージョンで提供されている VM インスタンスの価格については、[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)に関するページを参照してください。
 
@@ -74,4 +74,4 @@ VM SKU とクラスター サイズのベンチマークの詳細については
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure HDInsight でサポートされるノード構成](hdinsight-supported-node-configuration.md)
-- [Azure の Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md)
+- [Azure の Linux 仮想マシンのサイズ](../virtual-machines/sizes.md)

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642386"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658725"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -28,7 +28,7 @@ ms.locfileid: "88642386"
 
 シングル サインオン (SSO) によって、ユーザーが Azure Active Directory (Azure AD) 内のアプリケーションにサインオンするときのセキュリティと利便性が向上します。 
 
-多くの組織では、エンド ユーザーの生産性向上のため、Office 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成して更新する必要があり、ユーザーはそれぞれのパスワードを覚える必要がありました。
+多くの組織では、エンド ユーザーの生産性向上のため、Microsoft 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成して更新する必要があり、ユーザーはそれぞれのパスワードを覚える必要がありました。
 
 Azure Marketplace には、SSO 接続を事前に統合したアプリケーションが 3000 以上あり、お使いのテナントでこれらを簡単に統合できます。
 
@@ -39,7 +39,7 @@ Azure Marketplace には、SSO 接続を事前に統合したアプリケーシ�
 
 ## <a name="plan-your-sso-team"></a>SSO チームを計画する
 
-- **適切な利害関係者が担当する** - テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)し、その利害関係者が自分のロールを理解していることを確認します。
+- **適切な利害関係者が担当する** - テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)し、その利害関係者が自分のロールを理解していることを確認します。
 - **コミュニケーションの計画** - コミュニケーションは、新しいサービスの成功に必要不可欠です。 ユーザー エクスペリエンスが具体的にどのように変わるのか、問題が発生したときにサポートを受ける方法について、ユーザーに事前に連絡します。 [エンドユーザーが、SSO が有効なアプリケーションにアクセスする方法](end-user-experiences.md)に関する選択肢を確認し、お客様の選択に合わせてコミュニケーションを構築します。 
 
 ## <a name="plan-your-sso-protocol"></a>SSO プロトコルを計画する
@@ -48,31 +48,31 @@ Azure Marketplace には、SSO 接続を事前に統合したアプリケーシ�
 
 ユーザーがアプリにシングル サインオンできるようにする方法は主に 2 つあります。
 
-- **フェデレーション シングル サインオン**では、Azure AD アカウントを使用して、アプリケーションに対するユーザー認証を Azure AD が行います。 この方法は、SAML 2.0、WS-Federation、OpenID Connect などのプロトコルをサポートするアプリケーションでサポートされていて、シングル サインオンのモードのうちで最も多機能です。 パスワード ベースの SSO や ADFS ではなく、この方法をアプリケーションがサポートしている場合は、Azure AD を用いたフェデレーション SSO を使用することをお勧めします。
+- **フェデレーション シングル サインオン** では、Azure AD アカウントを使用して、アプリケーションに対するユーザー認証を Azure AD が行います。 この方法は、SAML 2.0、WS-Federation、OpenID Connect などのプロトコルをサポートするアプリケーションでサポートされていて、シングル サインオンのモードのうちで最も多機能です。 パスワード ベースの SSO や ADFS ではなく、この方法をアプリケーションがサポートしている場合は、Azure AD を用いたフェデレーション SSO を使用することをお勧めします。
 
-- **パスワード ベースのシングル サインオン**では、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインインします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 パスワードベースのシングル サインオンでは、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生が可能になります。 このオプションでは、アプリケーションによって提供される既存のサインイン プロセスが利用され、管理者がパスワードを管理でき、ユーザーがパスワードを知っている必要はありません。
+- **パスワード ベースのシングル サインオン** では、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインインします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 パスワードベースのシングル サインオンでは、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生が可能になります。 このオプションでは、アプリケーションによって提供される既存のサインイン プロセスが利用され、管理者がパスワードを管理でき、ユーザーがパスワードを知っている必要はありません。
 
 ### <a name="considerations-for-federation-based-sso"></a>フェデレーション ベースの SSO に関する考慮事項
 
-- **OpenID Connect と OAuth の使用** - 接続対象のアプリケーションがこれをサポートしている場合は OIDC/OAuth 2.0 の方法を使用して、そのアプリケーションに対する SSO を有効にします。 この方法では、必要な構成は少なくて済み、ユーザー エクスペリエンスはより豊かなものになります。 詳細については、[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md) に関する記事、[OpenID Connect 1.0](../develop/v2-protocols-oidc.md) に関する記事、[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)を参照してください。
+- **OpenID Connect と OAuth の使用** - 接続対象のアプリケーションがこれをサポートしている場合は OIDC/OAuth 2.0 の方法を使用して、そのアプリケーションに対する SSO を有効にします。 この方法では、必要な構成は少なくて済み、ユーザー エクスペリエンスはより豊かなものになります。 詳細については、[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md) に関する記事、[OpenID Connect 1.0](../develop/v2-protocols-oidc.md) に関する記事、[Azure Active Directory 開発者ガイド](../develop/index.yml)を参照してください。
 - **SAML ベースの SSO のエンドポイント構成** -SAML を使用する場合、開発者は、アプリケーションを構成する前に特定の情報が必要になります。 詳細については、「[SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)」を参照してください。
-- **SAML ベースの SSO の証明書の管理** - お使いのアプリケーションのフェデレーション SSO を有効にする場合、既定では 3 年間有効な証明書が Azure AD で作成されます。 必要に応じて、その証明書の有効期限をカスタマイズできます。 有効期限前に証明書を更新するための適切なプロセスがあることを確認します。 詳細については、[Azure AD での証明書管理](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)に関する記事を参照してください。
+- **SAML ベースの SSO の証明書の管理** - お使いのアプリケーションのフェデレーション SSO を有効にする場合、既定では 3 年間有効な証明書が Azure AD で作成されます。 必要に応じて、その証明書の有効期限をカスタマイズできます。 有効期限前に証明書を更新するための適切なプロセスがあることを確認します。 詳細については、[Azure AD での証明書管理](./manage-certificates-for-federated-single-sign-on.md)に関する記事を参照してください。
 
 ### <a name="considerations-for-password-based-sso"></a>パスワード ベースの SSO に関する考慮事項
 
-パスワード ベースの SSO で Azure AD を使用するには、安全に資格情報を取得し、ログイン フォームに入力するブラウザー拡張機能をデプロイする必要があります。 [サポートされているブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)を使用して、拡張機能を大規模にデプロイするためのメカニズムを定義します。 次のオプションがあります。
+パスワード ベースの SSO で Azure AD を使用するには、安全に資格情報を取得し、ログイン フォームに入力するブラウザー拡張機能をデプロイする必要があります。 [サポートされているブラウザー](../user-help/my-apps-portal-end-user-access.md)を使用して、拡張機能を大規模にデプロイするためのメカニズムを定義します。 次のオプションがあります。
 
-- [Internet Explorer のグループ ポリシー](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Internet Explorer 用の Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-- [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Internet Explorer のグループ ポリシー](./access-panel-deployment-plan.md)
+- [Internet Explorer 用の Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](../user-help/my-apps-portal-end-user-access.md)
 
-詳細については、[パスワード シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)に関する記事を参照してください。
+詳細については、[パスワード シングル サインオンの構成](./configure-password-single-sign-on-non-gallery-applications.md)に関する記事を参照してください。
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>ギャラリーにないアプリケーションのログイン フォーム メタデータの取得
 
 Microsoft では、パスワード保管のための Web アプリケーションでのメタデータの取得 (ユーザー名とパスワードのフィールドの取得) をサポートしています。 フォームのメタデータを取得するようにアプリケーションを構成するプロセス中に、ログイン URL に移動します。 正確なログイン URL については、アプリケーション所有者に問い合わせてください。 この情報はサインオンのプロセス中に使用され、サインオン時に、Azure AD の資格情報をアプリケーションにマッピングします。
 
-詳細については、Azure AD でのアプリケーション アクセスと SSO に関する記事の「[パスワードベースの SSO](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)」を参照してください。
+詳細については、Azure AD でのアプリケーション アクセスと SSO に関する記事の「[パスワードベースの SSO](./what-is-single-sign-on.md)」を参照してください。
 
 #### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>フォームのメタデータを再取得する必要があることが示される場合
 
@@ -96,7 +96,7 @@ Microsoft では、パスワード保管のための Web アプリケーショ�
 
 正しい認証方法の選択は、Azure AD ハイブリッド ID ソリューションのセットアップにおける最初の重要な決定です。 Azure AD Connect (クラウドでのユーザーのプロビジョニングも行います) を使用することで構成される認証方法を実装します。
 
-認証方法を選ぶには、時間、既存のインフラストラクチャ、複雑さ、および選んだ方法の実装にかかるコストを考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 特定のシナリオに最も合うものを選択する必要があります。 詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)」を参照してください。
+認証方法を選ぶには、時間、既存のインフラストラクチャ、複雑さ、および選んだ方法の実装にかかるコストを考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 特定のシナリオに最も合うものを選択する必要があります。 詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../hybrid/choose-ad-authn.md)」を参照してください。
 
 ## <a name="plan-your-security-and-governance"></a>セキュリティとガバナンスを計画する 
 
@@ -104,7 +104,7 @@ BYOD デバイスとクラウド アプリケーションの爆発的な増加�
 
 ### <a name="plan-access-reviews"></a>アクセス レビューを計画する
 
-[アクセス レビュー](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)を組織で使用することにより、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理できます。 ユーザーのアクセスを定期的にレビューすることを計画し、適切なユーザーのみが継続的なアクセス権を持つようにします。
+[アクセス レビュー](../governance/create-access-review.md)を組織で使用することにより、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理できます。 ユーザーのアクセスを定期的にレビューすることを計画し、適切なユーザーのみが継続的なアクセス権を持つようにします。
 
 アクセス レビューの設定中に計画する主要なトピックをいくつかご紹介します。
 
@@ -116,7 +116,7 @@ BYOD デバイスとクラウド アプリケーションの爆発的な増加�
 
 ### <a name="plan-auditing"></a>監査を計画する
 
-Azure AD には、[技術やビジネスのインサイトを含むレポート](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)が用意されています。 
+Azure AD には、[技術やビジネスのインサイトを含むレポート](../reports-monitoring/overview-reports.md)が用意されています。 
 
 セキュリティとアクティビティの両方のレポートを使用できます。 セキュリティ レポートでは、リスクのフラグ付きユーザーとリスクの高いサインインが示されます。アクティビティ レポートは、サインイン アクティビティを詳細化し、すべてのログインの監査証跡を提供することによって、組織内のユーザーの行動を理解するのに役立ちます。 レポートを使用して、リスクの管理、生産性の向上、およびコンプライアンスの監視を行うことができます。
 
@@ -139,15 +139,15 @@ MCAS をデプロイすると、以下のことができるようになります
 - アプリの条件付きアクセス制御の保護を使用して、クラウド アプリにおけるリアルタイムの可視化と、アクセスおよびアクティビティの制御を実現する
 - ポリシーを設定して、その後の微調整を行うことで、継続的な制御を可能にする
 
-Microsoft Cloud Application Security (MCAS) のセッション制御は、任意のオペレーティング システムの主要なプラットフォーム上で任意のブラウザーで使用できます。 モバイル アプリとデスクトップ アプリも、ブロックや許可をすることができます。 Azure AD とネイティブに統合することによって、SAML で構成されたアプリまたは Azure AD でのシングル サインオンを使用した Open ID Connect アプリをサポートできます。これには、[こちらでご紹介するいくつかのアプリ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)が含まれます。
+Microsoft Cloud Application Security (MCAS) のセッション制御は、任意のオペレーティング システムの主要なプラットフォーム上で任意のブラウザーで使用できます。 モバイル アプリとデスクトップ アプリも、ブロックや許可をすることができます。 Azure AD とネイティブに統合することによって、SAML で構成されたアプリまたは Azure AD でのシングル サインオンを使用した Open ID Connect アプリをサポートできます。これには、[こちらでご紹介するいくつかのアプリ](/cloud-app-security/proxy-intro-aad)が含まれます。
 
-MCAS に関する詳細については、「[Microsoft Cloud App Security の概要](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)」を参照してください。 MCAS は、ユーザー ベースのサブスクリプション サービスです。 [MCAS ライセンス データシート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)でライセンスの詳細を確認できます。
+MCAS に関する詳細については、「[Microsoft Cloud App Security の概要](/cloud-app-security/what-is-cloud-app-security)」を参照してください。 MCAS は、ユーザー ベースのサブスクリプション サービスです。 [MCAS ライセンス データシート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)でライセンスの詳細を確認できます。
 
 ### <a name="use-conditional-access"></a>条件付きアクセスを使用する
 
 条件付きアクセスを使用すると、クラウド アプリに対して、条件に基づくアクセス制御の決定を自動化できます。
 
-条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 このため、条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセスを判別できます。 たとえば、サインインのリスク レベルや要求の場所などを使用できます。 条件付きアクセスの詳細については、[概要](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)に関する記事と[デプロイ計画](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)に関する記事を参照してください。
+条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 このため、条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセスを判別できます。 たとえば、サインインのリスク レベルや要求の場所などを使用できます。 条件付きアクセスの詳細については、[概要](../conditional-access/plan-conditional-access.md)に関する記事と[デプロイ計画](../conditional-access/plan-conditional-access.md)に関する記事を参照してください。
 
 ## <a name="azure-sso-technical-requirements"></a>Azure SSO の技術的な要件
 
@@ -163,7 +163,7 @@ MCAS に関する詳細については、「[Microsoft Cloud App Security の概
 
 ### <a name="attribute-requirements"></a>属性の要件
 
-Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連の属性と属性マッピングが存在します。 アプリによっては、グループなどの他の種類のオブジェクトを管理するものもあります。 Azure AD からアプリケーションへのユーザー属性のマッピングを計画し、ビジネス ニーズに合わせて[既定の属性マッピングをカスタマイズ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)します。
+Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連の属性と属性マッピングが存在します。 アプリによっては、グループなどの他の種類のオブジェクトを管理するものもあります。 Azure AD からアプリケーションへのユーザー属性のマッピングを計画し、ビジネス ニーズに合わせて[既定の属性マッピングをカスタマイズ](../app-provisioning/customize-application-attributes.md)します。
 
 ### <a name="certificate-requirements"></a>証明書の要件
 
@@ -171,9 +171,9 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 証明書を管理する方法は 2 つあります。 
 
-- **証明書の自動ロールオーバー** - Microsoft では、[Azure AD の署名キーのロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)をサポートしています。 これは、証明書を管理する上では好ましい方法ですが、すべての ISV がこのシナリオをサポートしているわけではありません。
+- **証明書の自動ロールオーバー** - Microsoft では、[Azure AD の署名キーのロールオーバー](../develop/active-directory-signing-key-rollover.md)をサポートしています。 これは、証明書を管理する上では好ましい方法ですが、すべての ISV がこのシナリオをサポートしているわけではありません。
 
-- **手動による更新** - すべてのアプリケーションには、定義された方法に基づいて有効期限が切れる固有の証明書があります。 アプリケーションの証明書の有効期限が切れる前に、新しい証明書を作成して、ISV に送信します。 この情報は、フェデレーション メタデータから取得できます。 [こちらでフェデレーション メタデータの詳細をお読みください。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
+- **手動による更新** - すべてのアプリケーションには、定義された方法に基づいて有効期限が切れる固有の証明書があります。 アプリケーションの証明書の有効期限が切れる前に、新しい証明書を作成して、ISV に送信します。 この情報は、フェデレーション メタデータから取得できます。 [こちらでフェデレーション メタデータの詳細をお読みください。](../azuread-dev/azure-ad-federation-metadata.md)
 
 ## <a name="implement-sso"></a>SSO を実装する
 
@@ -189,11 +189,11 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 - **SSO の構成**
 
-   [アプリケーションの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)からお使いのアプリケーションの SSO チュートリアルを見つけて開き、SaaS アプリケーションを正常に構成するためのチュートリアルの手順に従います。
+   [アプリケーションの一覧](../saas-apps/tutorial-list.md)からお使いのアプリケーションの SSO チュートリアルを見つけて開き、SaaS アプリケーションを正常に構成するためのチュートリアルの手順に従います。
 
-   お使いのアプリケーションが見つからない場合は、[カスタム アプリケーションに関するドキュメント](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)を参照してください。 ここでは、Azure AD ギャラリーにないアプリケーションを追加する方法を学びます。
+   お使いのアプリケーションが見つからない場合は、[カスタム アプリケーションに関するドキュメント](./configure-saml-single-sign-on.md)を参照してください。 ここでは、Azure AD ギャラリーにないアプリケーションを追加する方法を学びます。
 
-   必要に応じて、[Microsoft のガイダンス ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)を使用して、エンタープライズ アプリケーションの SAML トークンで発行された要求を使用できます。 これが、お使いのアプリケーションの SAML 応答で受信されると想定されるものにマッピングされていることを確認します。 構成中に問題が発生した場合は、[SSO 統合をデバッグする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)に関するガイダンスを使用します。
+   必要に応じて、[Microsoft のガイダンス ドキュメント](../develop/active-directory-claims-mapping.md)を使用して、エンタープライズ アプリケーションの SAML トークンで発行された要求を使用できます。 これが、お使いのアプリケーションの SAML 応答で受信されると想定されるものにマッピングされていることを確認します。 構成中に問題が発生した場合は、[SSO 統合をデバッグする方法](./debug-saml-sso-issues.md)に関するガイダンスを使用します。
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>エンドユーザーに SSO の変更を連絡する
 
@@ -231,7 +231,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 ### <a name="required-administrative-roles"></a>必要な管理者ロール
 
-必ず、Azure Active Directory 内で必要なタスクの実行に使用できる最小限のアクセス許可を持つロールを使用してください。 Microsoft では、[使用できるさまざまなロールを確認](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)して、このアプリケーションの各ペルソナのニーズを満たすのに適したものを選択することをお勧めします。 一部のロールは、一時的に適用され、デプロイが完了した後に削除する必要があります。
+必ず、Azure Active Directory 内で必要なタスクの実行に使用できる最小限のアクセス許可を持つロールを使用してください。 Microsoft では、[使用できるさまざまなロールを確認](../roles/permissions-reference.md)して、このアプリケーションの各ペルソナのニーズを満たすのに適したものを選択することをお勧めします。 一部のロールは、一時的に適用され、デプロイが完了した後に削除する必要があります。
 
 | ペルソナ| ロール | Azure AD ロール (必要な場合) |
 |--------|-------|-----------------------------|
@@ -241,7 +241,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 | インフラストラクチャ管理者 | 証明書のロール オーバー所有者 | 全体管理者 |
 | ビジネスの所有者/利害関係者 | アプリケーションでのユーザーの構成証明、アクセス許可を持つユーザーの構成 | なし |
 
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) を使用してロールを管理し、ディレクトリのアクセス許可を持つユーザーに対する追加の監査、制御、およびアクセス レビューを提供することをお勧めします。
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) を使用してロールを管理し、ディレクトリのアクセス許可を持つユーザーに対する追加の監査、制御、およびアクセス レビューを提供することをお勧めします。
 
 ### <a name="sso-certificate-lifecycle-management"></a>SSO 証明書のライフサイクル管理
 
@@ -261,11 +261,11 @@ Azure AD とシングル サインオンが構成されているアプリケー�
 
 - たとえば、LDAP と AD FS と Ping など、**お使いのアプリが複数の ID プロバイダーをサポートしている場合**、ロールアウト中に既存の SSO 構成を削除しないでください。 代わりに、後で戻す必要性が生じた場合に備えて、移行中は無効にします。 
 
-- **お使いのアプリが複数の IDP をサポートしていない**ものの、ユーザーがフォーム ベース認証 (ユーザー名/パスワード) を使用してログインできる場合、新しい SSO 構成のロールアウトに失敗したときはこの手法にフォールバックできるようにします。
+- **お使いのアプリが複数の IDP をサポートしていない** ものの、ユーザーがフォーム ベース認証 (ユーザー名/パスワード) を使用してログインできる場合、新しい SSO 構成のロールアウトに失敗したときはこの手法にフォールバックできるようにします。
 
 ### <a name="access-management"></a>アクセス管理
 
-リソースへのアクセスを管理する場合には、拡張された方法を選ぶことをお勧めします。 一般的な方法には、Azure AD Connect 経由で同期したオンプレミス グループの使用、[ユーザー属性に基づいた Azure AD での動的グループの作成](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)、リソース所有者によって管理される[セルフサービス グループ](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)の作成があります。
+リソースへのアクセスを管理する場合には、拡張された方法を選ぶことをお勧めします。 一般的な方法には、Azure AD Connect 経由で同期したオンプレミス グループの使用、[ユーザー属性に基づいた Azure AD での動的グループの作成](../enterprise-users/groups-dynamic-membership.md)、リソース所有者によって管理される[セルフサービス グループ](../enterprise-users/groups-self-service-management.md)の作成があります。
 
 ### <a name="monitor-security"></a>セキュリティを監視する
 
@@ -277,52 +277,52 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 
 #### <a name="consent-issues"></a>同意に関する問題
 
-- [予期しない同意エラー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt)
+- [予期しない同意エラー](./application-sign-in-unexpected-user-consent-prompt.md)
 
-- [ユーザーの同意エラー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error)
+- [ユーザーの同意エラー](./application-sign-in-unexpected-user-consent-error.md)
 
 #### <a name="sign-in-issues"></a>サインインの問題
 
-- [カスタム ポータルからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
+- [カスタム ポータルからのサインインに関する問題](./application-sign-in-other-problem-access-panel.md)
 
-- [マイ アプリからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [マイ アプリからのサインインに関する問題](./application-sign-in-other-problem-access-panel.md)
 
-- [アプリケーションのサインイン ページでのエラー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
+- [アプリケーションのサインイン ページでのエラー](./application-sign-in-problem-application-error.md)
 
-- [Microsoft アプリケーションへのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-first-party-microsoft)
+- [Microsoft アプリケーションへのサインインに関する問題](./application-sign-in-problem-first-party-microsoft.md)
 
 #### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure アプリケーション ギャラリーのアプリケーションの SSO の問題
 
-- [Azure アプリケーション ギャラリーのアプリケーションのパスワード SSO に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery) 
+- [Azure アプリケーション ギャラリーのアプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
 
-- [Azure アプリケーション ギャラリーのアプリケーションのフェデレーション SSO に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-gallery)   
+- [Azure アプリケーション ギャラリーのアプリケーションのフェデレーション SSO に関する問題](./application-sign-in-problem-federated-sso-gallery.md)   
 
 #### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure アプリケーション ギャラリー以外のアプリケーションの SSO の問題
 
-- [Azure アプリケーション ギャラリー以外のアプリケーションのパスワード SSO に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-non-gallery) 
+- [Azure アプリケーション ギャラリー以外のアプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
 
-- [Azure アプリケーション ギャラリー以外のアプリケーションのフェデレーション SSO に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
+- [Azure アプリケーション ギャラリー以外のアプリケーションのフェデレーション SSO に関する問題](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-[SAML ベースの SSO をデバッグする](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[SAML ベースの SSO をデバッグする](./debug-saml-sso-issues.md)
 
-[PowerShell 経由でのアプリの要求のマッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+[PowerShell 経由でのアプリの要求のマッピング](../develop/active-directory-claims-mapping.md)
 
-[SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+[SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)
 
-[シングル サインオンの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)
 
-[シングル サインアウトの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[シングル サインアウトの SAML プロトコル](../develop/single-sign-out-saml-protocol.md)
 
-[Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (パートナーやベンダーなどの外部ユーザー用)
+[Azure AD B2B](../external-identities/what-is-b2b.md) (パートナーやベンダーなどの外部ユーザー用)
 
-[Azure AD 条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Azure AD 条件付きアクセス](../conditional-access/overview.md)
 
-[Azure Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+[Azure Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[SSO アクセス](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+[SSO アクセス](./what-is-single-sign-on.md)
 
-[アプリケーション SSO チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+[アプリケーション SSO チュートリアル](../saas-apps/tutorial-list.md)
 
 [ホワイトペーパーのダウンロード - シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)

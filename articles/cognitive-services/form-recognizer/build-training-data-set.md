@@ -9,40 +9,39 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905093"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845601"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
-Form Recognizer のカスタム モデルを使用する場合は、モデルを業界固有のフォームに合わせてトレーニングできるように、独自のトレーニング データを提供します。 
+Form Recognizer のカスタム モデルを使用する場合は、モデルを業界固有のフォームに合わせてトレーニングできるように、独自のトレーニング データを [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) 操作に提供します。 このガイドに従い、モデルを効果的にトレーニングするためにデータを収集し、準備する方法について学習してください。
 
 手動ラベルなしでトレーニングする場合は、5 つの入力済みフォームを使用するか、空のフォーム (ファイル名に "empty" という単語を含める必要があります) と 2 つの入力済みフォームを使用できます。 十分な数の入力済みフォームがある場合でも、トレーニング データ セットに空のフォームを追加することで、モデルの精度を高めることができます。
 
 手動でラベル付けされたトレーニング データを使用する場合は、同じ種類の少なくとも 5 つの入力済みフォームから開始する必要があります。 必要なデータ セットに加え、ラベル付けされていないフォームと空のフォームを引き続き使用することもできます。
 
+## <a name="custom-model-input-requirements"></a>カスタム モデルの入力要件
+
+まず、トレーニング データ セットが Form Recognizer の入力の要件に従っていることを確認します。
+
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
+
 ## <a name="training-data-tips"></a>トレーニング データのヒント
 
-トレーニング用に最適化されたデータ セットを使用することが重要です。 次のヒントを使用して、[カスタムモデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) 操作で最良の結果が得られるようにしてください：
+以下の追加ヒントに従い、トレーニングのためにデータ セットをさらに最適化してください。
 
 * 可能であれば、画像ベースのドキュメントではなく、テキストベースの PDF ドキュメントを使用します。 スキャンした PDF は画像として処理されます。
 * 入力フォームの場合は、すべてのフィールドに入力されている例を使用します。
 * 各フィールドに異なる値が含まれたフォームを使用します。
 * フォームの画像の品質が低い場合は、より大きなデータ セット (たとえば 10 から 15 の画像) を使用します。
-* トレーニングデータセットの合計サイズは、最大500ページまでにすることができます。
-
-## <a name="general-input-requirements"></a>一般的な入力の要件
-
-トレーニング データ セットが、すべての Form Recognizer コンテンツの入力の要件にも従っていることを確認します。 
-
-[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>トレーニング データをアップロードする
 
-トレーニングに使用するフォーム ドキュメントのセットをまとめたら、それを Azure Blob Storage コンテナーにアップロードする必要があります。 コンテナーを含む Azure Storage アカウントを作成する方法がわからない場合は、[Azure portal の Azure Storage に関するクイックスタート](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に従ってください。 Standard パフォーマンス レベルを使用します。
+トレーニングに使用するフォーム ドキュメントのセットをまとめたら、それを Azure Blob Storage コンテナーにアップロードする必要があります。 コンテナーを含む Azure Storage アカウントを作成する方法がわからない場合は、[Azure portal の Azure Storage に関するクイックスタート](../../storage/blobs/storage-quickstart-blobs-portal.md)に従ってください。 Standard パフォーマンス レベルを使用します。
 
 手動でラベル付けされたデータを使用する場合は、トレーニング ドキュメントに対応する *.labels.json* ファイルと *.ocr.json* ファイルもアップロードする必要があります。 [サンプル ラベル付けツール](./quickstarts/label-tool.md) (または独自の UI) を使用して、これらのファイルを生成できます。
 
@@ -73,7 +72,9 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニング データ セットの作成方法を習得したので、クイックスタートに従って、カスタム Form Recognizer モデルをトレーニングし、お使いのフォームでの使用を開始してください。
 
-* [cURL を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/curl-train-extract.md)
-* [REST API と Python を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/python-train-extract.md)
+* [クライアント ライブラリまたは REST API を使用し、モデルをトレーニングし、フォーム データを抽出する](./quickstarts/client-library.md)
 * [サンプル ラベル付けツールを使用したラベルによるトレーニング](./quickstarts/label-tool.md)
-* [REST API と Python を使用したラベルのトレーニング](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>関連項目
+
+* [Form Recognizer とは](./overview.md)

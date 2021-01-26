@@ -1,17 +1,15 @@
 ---
 title: Azure の Service Fabric クラスターに Java アプリをデプロイする
 description: このチュートリアルでは、Azure Service Fabric クラスターに Java Service Fabric アプリケーションをデプロイする方法について説明します。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 50ae4d34cd7b238403ee95bd36a97ac82392f3ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320733"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702159"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
@@ -116,10 +114,10 @@ ms.locfileid: "87320733"
 10. 以下のコマンドを使用して Event Hubs のリソースを作成します。 プロンプトに従って、namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule、receiveAuthorizationRule の詳細を入力してください。
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup

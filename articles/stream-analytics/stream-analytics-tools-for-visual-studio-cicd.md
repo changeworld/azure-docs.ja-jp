@@ -3,27 +3,26 @@ title: Azure Stream Analytics CI/CD NuGet パッケージを使用する
 description: この記事では、Azure Stream Analytics CI/CD NuGet パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187661"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019892"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>統合と開発に Azure Stream Analytics CI/CD NuGet パッケージを使用する 
 この記事では、Azure Stream Analytics CI/CD NuGet パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
 
-MSBuild のサポートを得るには、[Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)のバージョン 2.3.0000.0 以降を使います。
+MSBuild のサポートを得るには、[Visual Studio の Stream Analytics ツール](./stream-analytics-quick-create-vs.md)のバージョン 2.3.0000.0 以降を使います。
 
 NuGet パッケージの[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) を利用できます。 これは、[Stream Analytics Visual Studio プロジェクト](stream-analytics-vs-tools.md)の継続的インテグレーションおよびデプロイ プロセスをサポートする MSBuild、ローカル実行、デプロイ ツールを提供します。 
 > [!NOTE]
 > NuGet パッケージは、Visual Studio の Stream Analytics ツールのバージョン 2.3.0000.0 以降でのみ使用できます。 以前のバージョンの Visual Studio Tools で作成されたプロジェクトがある場合は、バージョン 2.3.0000.0 以降で開き、保存します。 その後、新しい機能が有効になります。 
 
-詳しくは、[Visual Studio の Azure Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)に関する記事をご覧ください。
+詳しくは、[Visual Studio の Azure Stream Analytics ツール](./stream-analytics-quick-create-vs.md)に関する記事をご覧ください。
 
 ## <a name="msbuild"></a>MSBuild
 標準の Visual Studio MSBuild エクスペリエンスと同様に、プロジェクトをビルドするオプションは 2 つあります。 プロジェクトを右クリックし、次に **[ビルド]** を選択できます。 コマンド ラインから NuGet パッケージの **MSBuild** を使用することもできます。
@@ -52,7 +51,7 @@ parameters.json ファイルの既定のパラメーターは、Visual Studio �
       "value": null
     },
 ```
-[Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を確認してください。
+[Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を確認してください。
 
 出力シンクとしての Azure Data Lake Store Gen1 にマネージド ID を使用するには、Azure にデプロイする前に、PowerShell を使用してサービス プリンシパルへのアクセス許可を提供する必要があります。 詳細については、[Resource Manager テンプレートによってマネージド ID を使用した ADLS Gen1 のデプロイを行う](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)方法を確認してください。
 

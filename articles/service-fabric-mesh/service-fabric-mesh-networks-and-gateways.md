@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric のネットワークの概要
 description: Service Fabric Mesh でのネットワーク、ゲートウェイ、およびインテリジェントなトラフィック ルーティングについて説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75459138"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842701"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションでのネットワークの概要
 この記事では、さまざまな種類のロード バランサー、お使いのアプリケーションのネットワークがゲートウェイによって他のネットワークに接続される方法、およびお使いのアプリケーション内のサービス間でトラフィックがルーティングされる方法について説明します。

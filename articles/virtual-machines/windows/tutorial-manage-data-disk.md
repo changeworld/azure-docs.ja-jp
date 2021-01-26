@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 528fe5dea533faf9447e03dd901568d783891ce9
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e3d81bfaba572361304224932fadb7da5b1cc3f8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718936"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912889"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -38,7 +38,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 Azure 仮想マシンを作成すると、2 つのディスクが仮想マシンに自動的に接続されます。 
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 4 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 [Azure Marketplace](https://azure.microsoft.com/marketplace/) イメージから新しい仮想マシン (VM) を作成する場合は、通常、127 GB です (ただし、一部のイメージの OS ディスクは、これより小さいサイズです)。 OS ディスクには、既定でドライブ文字 *C:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
+**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 4 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 [Azure Marketplace](https://azure.microsoft.com/marketplace/) イメージから新しい仮想マシン (VM) を作成する場合は、通常、127 GB です (ただし、一部のイメージの OS ディスクは、これより小さいサイズです)。 OS ディスクには、既定でドライブ文字 *C:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト **しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
 
 **一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは [VM のサイズ](../sizes.md)によって決まります。 一時ディスクには、既定でドライブ文字 *D:* が割り当てられます。
 
@@ -64,7 +64,7 @@ Premium Storage ディスクをプロビジョニングすると、Standard Stor
 
 このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、次のコマンドを使用して仮想マシンを作成します。
 
-[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
+[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
 
 
 [New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。

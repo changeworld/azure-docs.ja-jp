@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894164"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289115"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Azure HDInsight で Data Lake ストレージ ファイルにアクセスできない
 
@@ -30,9 +30,9 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ユーザーによってファイル/フォルダーのサービス プリンシパル (SP) のアクセス許可が取り消されている可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
-1. SP に、パスに沿って走査するための 'x' アクセス許可があることを確認します。 詳細については、「 [アクセス許可](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)」を参照してください。 Data Lake ストレージ アカウント内のファイルまたはフォルダーへのアクセスを確認するための dfs コマンドの例:
+1. SP に、パスに沿って走査するための 'x' アクセス許可があることを確認します。 詳細については、「 [アクセス許可](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)」を参照してください。 Data Lake ストレージ アカウント内のファイルまたはフォルダーへのアクセスを確認するための `dfs` コマンドの例:
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 サービス プリンシパルにアクセスするために提供された証明書の有効期限が切れている可能性があります。
 
-1. ヘッドノードに SSH 接続します。 次の dfs コマンドを使用して、ストレージ アカウントへのアクセスを確認します。
+1. ヘッドノードに SSH 接続します。 次の `dfs` コマンドを使用して、ストレージ アカウントへのアクセスを確認します。
 
     ```
     hdfs dfs -ls /
     ```
 
-1. エラー メッセージが次のようになっていることを確認します。
+1. エラー メッセージが次の出力のようになっていることを確認します。
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -99,7 +99,7 @@ Token Refresh failed - Received invalid http response: 500
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次の PowerShell スクリプトを使用して、新しい証明書を作成するか、既存の証明書を割り当てます。
 
@@ -161,16 +161,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-既存の証明書を割り当てるには、証明書を作成して、.pfx ファイルとパスワードを用意します。 その証明書を、クラスターが作成されたサービス プリンシパルに関連付け、AppId を用意します。
+既存の証明書を割り当てるには、証明書を作成して、.pfx ファイルとパスワードを用意します。 その証明書を、AppId ready を使用して、クラスターを作成するのに使用されたサービス プリンシパルに関連付けます。
 
 パラメーターを実際の値に置き換えた後、PowerShell コマンドを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

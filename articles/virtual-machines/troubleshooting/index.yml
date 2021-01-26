@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: df855334f91899ab23625f7161792d0bec416782
-  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+  ms.openlocfilehash: 4f1fd0f88c7165a409644029f247b090df285138
+  ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/25/2020
-  ms.locfileid: "88816602"
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94506041"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -126,7 +126,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 共有イメージ ギャラリーのトラブルシューティング - 複製が遅い
-      url: ../windows/troubleshooting-shared-images.md#replication-is-slow
+      url: ../troubleshooting-shared-images.md#replication-speed
 - title: VM 拡張機能の問題
   linkLists:
   - linkListType: how-to-guide

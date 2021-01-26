@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e5aafaa02f503582bd0050f8a6389d78b52eaa76
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033123"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939155"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルをサード パーティ アプリケーションで安全に識別できるように、階層化されたファイルには "オフライン" 属性と FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性の両方が NTFS 内で設定されます。
@@ -48,9 +48,9 @@ Azure File Sync システム フィルターによって、各サーバー エ�
 |8 KB (8192)                 | 16 KB   |
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 KB   |
-|64 KB (65536)               | 128 KB  |
+|64 KB (65536)    | 128 KB  |
 
-Windows Server 2019 および Azure File Sync エージェント バージョン 12 以降では、最大 2 MB のクラスター サイズもサポートされており、このようなより大きなクラスター サイズに対する階層化も同様に機能します。 以前の OS またはエージェントのバージョンでは、最大 64 KB のクラスター サイズがサポートされています。
+最大 64 KB のクラスター サイズが現在サポートされていますが、サイズがそれより大きい場合、クラウドを使った階層化は機能しません。
 
 Windows で使用されるすべてのファイル システムでは、クラスター サイズ (アロケーション ユニット サイズとも呼ばれる) に基づいてハードディスクが整理されます。 クラスター サイズは、ファイルを保持するために使用できる最小のディスク領域を表しています。 ファイル サイズがクラスター サイズの偶数倍にならない場合は、ファイルを保持するために (クラスター サイズの次の倍数まで) 追加の領域を使用する必要があります。
 
@@ -85,11 +85,23 @@ Azure File Sync は、Windows Server 2012 R2 以降が搭載された NTFS ボ�
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>日付の階層化ポリシーを、ボリューム空き領域の階層化ポリシーと組み合わせて動作させるには、どうしたらいいですか。 
 サーバー エンドポイント上でクラウドの階層化を有効にする場合は、ボリューム空き領域ポリシーを設定します。 このポリシーは、日付ポリシーなどの他のポリシーよりも常に優先されます。 必要に応じて、該当のボリューム上の各サーバー エンドポイントの日付ポリシーを有効にできます。 このポリシーでは、このポリシーが示す日付範囲内にアクセス (つまり、読み取りまたは書き込み) があったファイルだけがローカルに保持されます。 指定された日数の間にアクセスされないファイルは階層化されます。 
 
-クラウドを使った階層化では、最後のアクセス時刻を使用して、どのファイルを階層化する必要があるかを判断します。 クラウド階層化フィルター ドライバー (storagesync.sys) によって、最後のアクセス時刻の追跡とクラウド階層化ヒート ストアへの情報の記録が行われます。 ローカルの PowerShell コマンドレットを使用して、ヒートストアを表示できます。
+クラウドを使った階層化では、最後のアクセス時刻を使用して、どのファイルを階層化する必要があるかを判断します。 クラウド階層化フィルター ドライバー (storagesync.sys) によって、最後のアクセス時刻の追跡とクラウド階層化ヒート ストアへの情報の記録が行われます。 サーバーローカルの PowerShell コマンドレットを使用して、ヒート ストアを取得し、これを CSV ファイルに保存することができます。
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]

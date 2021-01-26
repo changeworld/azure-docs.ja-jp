@@ -3,17 +3,17 @@ title: コマーシャル マーケットプレース パートナーと顧客�
 description: Azure Marketplace ソリューションの顧客の使用状況を追跡する方法の概要を取得します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031287"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436693"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -32,16 +32,19 @@ ms.locfileid: "88031287"
 >
 >- 顧客の使用状況の属性は、新しいデプロイのためのものであり、既にデプロイされている既存のリソースのタグ付けをサポートしていません。
 >
->- Azure Marketplace に公開される [Azure アプリケーション](./partner-center-portal/create-new-azure-apps-offer.md) オファーには、顧客の使用状況の属性が必要です。
+>- Azure Marketplace に公開される [Azure アプリケーション](./create-new-azure-apps-offer.md) オファーには、顧客の使用状況の属性が必要です。
+>
+>- すべての Azure サービスが、顧客の使用状況の属性との間に互換性があるわけではありません。 Azure Kubernetes Services (AKS) と VM Scale Sets には現在、使用状況を実際よりも低く報告する既知の問題があります。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>GUID の作成
 
-GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 Azure Storage チームは、正しい形式の GUID を電子メールで送信し、さまざまなトラッキング システムで再利用できる [GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を作成しました。
+GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡に使用する GUID を作成するには、たとえば PowerShell 経由で、GUID ジェネレーターを使用することをお勧めします。
 
-> [!NOTE]
-> [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用して GUID を作成することを強くお勧めします。 詳細については、[FAQ](#faq) をご覧ください。
+```powershell
+[guid]::NewGuid()
+```
 
 各製品について、オファーと配布チャネルごとに一意の GUID を作成することをお勧めします。 レポートを分割したくない場合は、製品の複数配布チャネルに対して単一の GUID を使用することを選択できます。
 
@@ -61,19 +64,19 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 テンプレートまたはユーザー エージェントに GUID を追加し、その GUID をパートナー センターに登録すると、将来のデプロイが追跡されます。
 
 > [!NOTE]
-> パートナー センターを通じて Azure Marketplace に [Azure アプリケーション](./partner-center-portal/create-new-azure-apps-offer.md) オファーを公開する場合には、テンプレートをアップロードした時点で、テンプレート内で使用している新しい GUID がパートナー センターのプロファイルに自動で登録されます。  
+> パートナー センターを通じて Azure Marketplace に [Azure アプリケーション](./create-new-azure-apps-offer.md) オファーを公開する場合には、テンプレートをアップロードした時点で、テンプレート内で使用している新しい GUID がパートナー センターのプロファイルに自動で登録されます。  
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
 
 1. [商業マーケットプレース パブリッシャー](https://aka.ms/JoinMarketplace)としてサインアップします。
 
-   * パートナーは、[パートナー センターにプロファイルを持っている](become-publisher.md)必要があります。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
+   * パートナーは、[パートナー センターにプロファイルを持っている](./partner-center-portal/create-account.md)必要があります。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
    * パートナーは複数の GUID を登録できます。
    * パートナーは、マーケットプレース以外のソリューション テンプレートやオファーの GUID を登録できます。
 
-1. 右上にある設定の歯車アイコンを選択し、 **[開発者向け設定]** を選択します。
+1. 右上隅の **[設定]** (歯車アイコン) を選択し、 **[アカウント設定]** を選択します。
 
-1. **[アカウント設定]** ページで、 **[Add Tracking GUID]\(追跡用 GUID の追加\)** を選択します。
+1. **[組織プロファイル]** の **[ID]** で **[追跡 GUID の追加]** を選択します。
 
 1. **[GUID]** ボックスに、追跡用 GUID を入力します。 `pid-` プレフィックスは付けずに GUID だけを入力してください。 **[説明]** ボックスに、プランの名前または説明を入力します。
 
@@ -87,7 +90,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 > [!NOTE]
 > ソリューション テンプレートの作成と公開に関して詳しくは、以下をご覧ください。
 > * [初めての Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
->* [Azure アプリケーション オファー](./partner-center-portal/create-new-azure-apps-offer.md)。
+>* [Azure アプリケーション オファー](./create-new-azure-apps-offer.md)。
 >* ビデオ:[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
@@ -97,9 +100,9 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 1. Resource Manager テンプレートを開きます。
 
-1. メイン テンプレート ファイルに新しいリソースを追加します。 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
+1. メイン テンプレート ファイルで [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments) 型の新しいリソースを追加します。 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
 
-1. `pid-` プレフィックスに続けて GUID 値を入力します (例: pid-eb7927c8-dd66-43e1-b0cf-c346a422063)。
+1. `pid-` プレフィックスの後にリソースの名前として GUID 値を入力します。 たとえば、GUID が eb7927c8-dd66-43e1-b0cf-c346a422063 の場合、リソース名は _pid-eb7927c8-dd66-43e1-b0cf-c346a422063_ になります。
 
 1. テンプレートにエラーがないかチェックします。
 
@@ -112,11 +115,11 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 テンプレートのリソースの追跡を有効にするには、リソース セクションに次の追加リソースを追加する必要があります。 メインのテンプレート ファイルに追加するときは、以下のサンプル コードを独自の入力で変更してください。
 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみに追加する必要があります。入れ子またはリンクされたテンプレート内には必要ありません。
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -132,7 +135,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 ## <a name="use-the-resource-manager-apis"></a>Resource Manager API を使用する
 
-場合によっては、パートナーは Azure サービスをデプロイするために、Resource Manager REST API に対して直接呼び出しを行うことができます。 こうした呼び出しに対応するため、[Azure は複数の SDK をサポート](https://docs.microsoft.com/azure/?pivot=sdkstools)しています。 いずれか 1 つの SDK を使用するか、REST API を直接呼び出して、リソースをデプロイできます。
+場合によっては、パートナーは Azure サービスをデプロイするために、Resource Manager REST API に対して直接呼び出しを行うことができます。 こうした呼び出しに対応するため、[Azure は複数の SDK をサポート](../index.yml?pivot=sdkstools)しています。 いずれか 1 つの SDK を使用するか、REST API を直接呼び出して、リソースをデプロイできます。
 
 Resource Manager テンプレートを使用している場合は、上記の手順に従ってソリューションにタグ付けする必要があります。 Resource Manager テンプレートを使用しておらず、API 呼び出しを直接行わない場合でも、Azure リソースの使用量を関連付けるために、デプロイにタグを付けることができます。
 
@@ -154,6 +157,20 @@ Python では、**config** 属性を使用します。 この属性は UserAgent
 > [!NOTE]
 > 属性はクライアントごとに追加します。 グローバルな静的構成はありません。 すべてのクライアントで追跡が行われていることを確認するために、クライアント ファクトリにタグを付けることもできます。 詳細については、[GitHub のクライアント ファクトリ サンプル](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)を参照してください。
 
+#### <a name="example-the-net-sdk"></a>例:.NET SDK
+
+.NET の場合、必ずユーザー エージェントを設定します。 [Microsoft.Azure.Management.Fluent](/dotnet/api/microsoft.azure.management.fluent) ライブラリを使用し、次のコードでユーザー エージェントを設定できます (サンプルは C#)。
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
+
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Azure PowerShell を使用してデプロイにタグを付ける
 
 Azure PowerShell でリソースをデプロイする場合は、次の方法を使用して GUID を追加します。
@@ -166,10 +183,11 @@ Azure PowerShell でリソースをデプロイする場合は、次の方法を
 
 Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGENT** 環境変数を設定します。 この変数は、スクリプトのスコープ内で設定できます。 シェル スコープを対象として、この変数をグローバルに設定することもできます。
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-詳細については、[Azure SDK for Go](https://docs.microsoft.com/azure/developer/go/) に関するページを参照してください。
+
+詳細については、[Azure SDK for Go](/azure/developer/go/) に関するページを参照してください。
 
 ## <a name="use-terraform"></a>Terraform を使用する
 
@@ -189,7 +207,6 @@ provider "azurerm" {
 
 * GUID を作成する (GUID は、オファーまたは SKU ごとに追加する必要があります)
 * Azure プロバイダーを更新し、*partner_id* の値を GUID に設定する (GUID の前に "pid-" を付けずに、実際の GUID に設定してください)
-
 
 ## <a name="verify-the-guid-deployment"></a>GUID のデプロイを確認する
 
@@ -234,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>レポート
 
-顧客の使用状況属性のレポートは、パートナー センター ダッシュ ボードで確認できます ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインに関する問題が発生した場合は、「サポートを受ける」セクションの指示に従ってサポート リクエストを作成します。
-
-[Partner Association Type]\(パートナー関連付けタイプ\) のドロップダウン リストで追跡対象のテンプレートを選択すると、レポートが表示されます。
-
-![顧客の使用状況の属性のレポート](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+顧客の使用状況属性のレポートは、パートナー センター ダッシュ ボードで確認できます ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインで問題が発生した場合は、[サポート リクエスト](#get-support)を作成します。
 
 ## <a name="notify-your-customers"></a>顧客に通知する
 
@@ -246,47 +259,15 @@ foreach ($deployment in $deployments){
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Resource Manager テンプレートでデプロイする場合の通知
 
-このテンプレートをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
+このテンプレートをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー ([https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) で確認できます) に沿って収集され、管理されます。
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK または API でデプロイする場合の通知
 
-\<PARTNER> ソフトウェアをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
+\<PARTNER> ソフトウェアをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー ([https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) で確認できます) に沿って収集され、管理されます。
 
 ## <a name="get-support"></a>サポートを受ける
 
-発生した問題に応じて 2 つのサポート チャネルがあります。
-
-パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
-
-![サポートの利用ページのスクリーンショット](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-マーケットプレースのオンボードや、顧客の使用状況の属性全般 (顧客の使用状況の属性の設定方法など) についてのサポートが必要な場合は、次の手順に従います。
-
-1. [サポート ページ](https://go.microsoft.com/fwlink/?linkid=844975)に移動します。
-
-1. **[問題の種類]** で **[Marketplace Onboarding]\(マーケットプレースのオンボード\)** を選択します。
-
-1. 問題の**カテゴリ**を選択します。
-
-   - 使用状況の関連付けの問題の場合は、 **[その他]** を選択します。
-   - Azure Marketplace に関するアクセスの問題の場合は、 **[Access Problem]\(アクセスの問題\)** を選択します。
-
-     ![問題のカテゴリを選択](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. **[要求の開始]** を選択します。
-
-1. 次のページで、必須の値を入力します。 **[続行]** をクリックします。
-
-1. 次のページで、必須の値を入力します。
-
-   > [!IMPORTANT]
-   > **[インシデント タイトル]** ボックスに「**ISV Usage Tracking**」と入力します。 問題を詳しく記述してください。
-
-   ![インシデント タイトルとして「ISV Usage Tracking」を入力](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. フォームに必要事項を入力し、 **[送信]** を選択します。
-
-顧客の使用状況の属性を理解して採用するために、Microsoft パートナー技術コンサルタントから、技術的なプレセール、デプロイ、およびアプリケーション開発のシナリオに関する技術的なガイダンスを受けることもできます。
+コマーシャル マーケットプレースのサポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](support.md)」を参照してください。
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>技術コンサルティングの要求を送信する方法
 
@@ -297,6 +278,7 @@ foreach ($deployment in $deployments){
     * 連絡先情報を入力または確認します。
     * コンサルティングの詳細は、事前に入力されている場合があります。入力されていない場合は、ドロップダウンから選択します。
     * 問題のタイトルと説明を入力します (できる限り詳細に入力します)。
+
 1. [送信] をクリックします。
 
 スクリーンショット付きの詳細な手順については、[テクニカル プリセールスおよびデプロイ サービスを使用する](https://aka.ms/TechConsultInstructions)方法に関する記事を参照してください。
@@ -327,10 +309,6 @@ Microsoft はパートナーに対し、そのソリューションの顧客デ�
 
 デプロイと使用状況をパートナーのソリューションに結び付けるこの新しい方法は、パートナーのソリューションを Azure の使用状況にリンクするメカニズムを提供します。 DPOR が目的とするのは、コンサルティング (システム インテグレーター) または管理 (マネージド サービス プロバイダー) パートナーを顧客の Azure サブスクリプションに関連付けることです。
 
-**Azure Storage の GUID ジェネレーター フォームを使用するメリットは何ですか?**
-
-Azure Storage の GUID ジェネレーター フォームでは、必要な形式の GUID が生成されることが保証されます。 さらに、Azure Storage のデータ プレーン追跡方法のいずれかを使用している場合は、同じ GUID を Marketplace のコントロール プレーンの追跡に利用できます。 これにより、別の GUID を維持することなく、パートナーの属性に単一の統一 GUID を活用できます。
-
 **Azure Marketplace 内でソリューション テンプレート オファー用にプライベートのカスタム VHD を使用できますか?**
 
 いいえ、できません。 仮想マシン イメージは、Azure Marketplace から入手する必要があります。次を参照してください: [Azure Marketplace での仮想マシンのオファー発行ガイド](marketplace-virtual-machines.md)。
@@ -339,7 +317,7 @@ Azure Storage の GUID ジェネレーター フォームでは、必要な形�
 
 **メイン テンプレートの *contentVersion* プロパティを更新できません**
 
-テンプレートが別のテンプレートから TemplateLink を使用してデプロイされている場合は、バグの可能性があります。何らかの理由で、古い contentVersion が予期されている場合があります。 対処法は、以下のメタデータ プロパティを使用することです。
+何らかの理由で古い contentVersion を必要とする別のテンプレートからの TemplateLink を使用してテンプレートがデプロイされている場合、これはバグの可能性があります。 対処法は、以下のメタデータ プロパティを使用することです。
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

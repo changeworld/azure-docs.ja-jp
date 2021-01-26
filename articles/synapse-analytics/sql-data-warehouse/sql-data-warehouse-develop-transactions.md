@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL プールでのトランザクションの使用
+title: Azure Synapse Analytics SQL プールでトランザクションを使用する
 description: この記事には、Synapse SQL プールでトランザクションを実装し、ソリューションを開発するためのヒントが記載されています。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67cb4868ee8d4190c47e23315bf2a22e5c847ff1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213382"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121177"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>Synapse SQL プールでのトランザクションの使用
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Azure Synapse の SQL プールでトランザクションを使用する 
 
 この記事には、SQL プールでトランザクションを実装し、ソリューションを開発するためのヒントが記載されています。
 
@@ -27,7 +28,7 @@ ms.locfileid: "85213382"
 
 ## <a name="transaction-isolation-levels"></a>トランザクション分離レベル
 
-SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
+SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー SQL プールの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
 
 有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を確認してください。
 
@@ -44,7 +45,7 @@ SQL プールは、ACID トランザクションを実装します。 トラン�
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
+| [DWU](./sql-data-warehouse-overview-what-is.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -65,7 +66,7 @@ SQL プールは、ACID トランザクションを実装します。 トラン�
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
+| [DWU](./sql-data-warehouse-overview-what-is.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | ディストリビューションあたりの上限 (GB) | ディストリビューション数 | 最大トランザクション サイズ (GB) | ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |

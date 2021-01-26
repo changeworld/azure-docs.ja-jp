@@ -3,15 +3,15 @@ title: Windows Virtual Desktop のホスト プール Azure portal - Azure
 description: Azure portal を使用して Windows Virtual Desktop のホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322587"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91287391"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
@@ -48,7 +48,8 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 1. Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサインインします。
    
-   >![注] US Gov ポータルにサインインしている場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
+   >[!NOTE]
+   > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
 
 2. 検索バーに「**Windows Virtual Desktop**」と入力し、[サービス] にある **[Windows Virtual Desktop]** を見つけて選択します。
 
@@ -188,6 +189,13 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
      - ご自分の構成に基づいた Azure リソース管理テンプレートのダウンロード リンク。
 
 これですべて完了しました。
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>Azure Resource Manager テンプレートを実行して新しいホスト プールをプロビジョニングする
+
+自動プロセスを使用する場合は、代わりに [Azure Resource Manager テンプレートをダウンロードして](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)、新しいホストプールをプロビジョニングします。
+
+>[!NOTE]
+>自動プロセスを使用して環境を構築する場合は、最新バージョンの構成 JSON ファイルが必要になります。 JSON ファイルは[こちら](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

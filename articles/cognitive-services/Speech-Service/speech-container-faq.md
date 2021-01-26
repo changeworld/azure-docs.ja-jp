@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918470"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827157"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>音声サービスコンテナーの良くある質問(FAQ)
 
@@ -31,7 +31,7 @@ ms.locfileid: "88918470"
 
 **回答:** 運用クラスターを設定する際は、考慮すべき点があります。 まず、ひとつまたは複数のコンテナーを同じ子mピュータにセットアップすることは、大きな問題ではありません。 問題が発生している場合は、ハードウェア関連も問題である可能性があります;まず、リソースを確認してください。（CPUおよびメモリの仕様）
 
-現時点では、 `ja-JP`コンテナーと最新のモデルについて検討してください。 音響モデルはCPUで最も必要とされるピースであり、一方で言語モデルは最もメモリを必要とします。 使用の基準として、オーディオがリアルタイムで流れる時（マイクからなど）、約0.6 CPUコアが必要となります。 （ファイルからなど）オーディオをリアルタイムよりも早く供給する場合、その使用料は2倍（1.2x コア）になります。 一方で、下記のメモリはデコード用に運用されています。 ファイルキャッシュに格納される言語モデルの実際のフルサイズを*考慮する必要は*ありません。 追加の2GBの`ja-JP``en-US`場合は、(6-7)を超える可能性があります。
+現時点では、 `ja-JP`コンテナーと最新のモデルについて検討してください。 音響モデルはCPUで最も必要とされるピースであり、一方で言語モデルは最もメモリを必要とします。 使用の基準として、オーディオがリアルタイムで流れる時（マイクからなど）、約0.6 CPUコアが必要となります。 （ファイルからなど）オーディオをリアルタイムよりも早く供給する場合、その使用料は2倍（1.2x コア）になります。 一方で、下記のメモリはデコード用に運用されています。 ファイルキャッシュに格納される言語モデルの実際のフルサイズを *考慮する必要は* ありません。 追加の2GBの`ja-JP``en-US`場合は、(6-7)を超える可能性があります。
 
 メモリが不足しており、複数の言語を配置しようとしているコンピュータがある場合は、ファイルキャッシュがフルになり、OSが強制的にモデルを操作します。文字起こしの転写がある場合、パフォーマンスの低下やその他パフォーマンス実行の妨げになる恐れがあります。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88918470"
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-最後に、`DECODER MAX_COUNT`変数を利用して、 *単一*コンテナー内のデコーダの数を設定できます。 なので、基本的には、SKU (CPU/メモリ) から開始し、最大限に活用する方法を提案可能です。 最適な出発点は、推奨されるホストコンピュータのリソース仕様を参照することです。
+`DECODER MAX_COUNT` 変数を使用して、"*単一*" コンテナー内のデコーダの数を設定できます。 なので、基本的には、SKU (CPU/メモリ) から開始し、最大限に活用する方法を提案可能です。 最適な出発点は、推奨されるホストコンピュータのリソース仕様を参照することです。
 
 <br>
 </details>
@@ -133,7 +133,7 @@ RECOGNIZED: SpeechRecognitionResult(
 
 現在、カスタム言語モデルまたはカスタム音響モデルのいずれか１つのモデルIDのみをお渡しすることができます。
 
-**回答:** 音響モデルと言語モデルの両方を同時に*サポートしないように*するか決定します。 これは、APIの中断を減らすために統合識別子が作成されるまで有効となります。 申し訳ありませんが、現時点ではサポートされておりません。
+**回答:** 音響モデルと言語モデルの両方を同時に *サポートしないように* するか決定します。 これは、APIの中断を減らすために統合識別子が作成されるまで有効となります。 申し訳ありませんが、現時点ではサポートされておりません。
 
 <br>
 </details>
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**回答 2:** 要求で正しい音声名を指定する必要があります。これは大文字と小文字が区別されます。 完全なサービスマッピング名を参照してください。 `en-US-JessaRUS`を使用する必要があります。これは、現在、コンテナーバージョンのテキスト読み上げでは `en-US-JessaNeural`が利用できないためです。
+**回答 2:** 要求で正しい音声名を指定する必要があります。これは大文字と小文字が区別されます。 完全なサービスマッピング名を参照してください。
 
 **エラー 3:**
 
@@ -310,6 +310,8 @@ Websocket が正しくセットアップされていることがわかります�
 
 さまざまなモードについては、以下の音声モード参照してください：
 
+## <a name="speech-modes---interactive-conversation-dictation"></a>音声モード - 対話型、会話、ディクテーション
+
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 適切な修正は、オンプレミスのサポートがある SDK 1.8 で行われます (適切なエンドポイントが選択されるため、オンラインサービスよりも悪いことはありません)。 それまでの間は、継続的な認識のためのサンプルがあります。それを指していないのはなぜですか。
@@ -324,7 +326,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>さまざまなオーディオファイルに、どのモードを使用すればよいですか。</b>
 </summary>
 
-**回答:** [Python を使用した ](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python)クイックスタートを次に示します。 Docs サイトにリンクされている他の言語を見つけることができます。
+**回答:** [Python を使用した](./get-started-speech-to-text.md?pivots=programming-language-python)クイックスタートを次に示します。 Docs サイトにリンクされている他の言語を見つけることができます。
 
 対話型、会話、ディクテーションを明確にします。これは、サービスが音声要求を処理する特定の方法を指定するための高度な方法です。 申し訳ありませんが、オンプレミスのコンテナーについては、(ローカルコンピューターを含む) 完全な URI を指定する必要があるため、この情報は抽象化から漏洩します。 SDK チームと協力して、今後も使用できるようにしています。
 
@@ -419,7 +421,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 |-----------------------|---------------------|---------------------|
 | カスタム テキスト読み上げ | 1 コア、2 GB メモリ | 2 コア、3 GB のメモリ |
 
-***
+**_
 
 - 各コアは 2.6 GHz 以上にする必要があります。
 - ファイルの場合、スロットルは音声SDK の2x になります (最初の5秒間のオーディオは調整されません)。
@@ -438,9 +440,9 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>音声コンテナーは句読点をサポートしていますか？</b>
 </summary>
 
-**回答:** オンプレミスのコンテナーで使用可能な大文字 (ITN) があります。 句読点は言語に依存しており、一部の言語 (中国語、日本語など) ではサポートされていません。
+*回答:* オンプレミスのコンテナーで使用可能な大文字 (ITN) があります。 句読点は言語に依存しており、一部の言語 (中国語、日本語など) ではサポートされていません。
 
-既存のコンテナーに対しては、暗黙的な句読点のサポートがあり*ます*が、これは`off`既定でのものです。 つまり、こ `.`の場合では文字を取得できますが、`。`文字は取得できません。 この暗黙的なロジックを有効にするには、音声SDK を使用して Python でこれを行う方法の例を次に示します (他の言語でも同様です)：
+既存のコンテナーに対しては、暗黙的な句読点のサポートがあり *ます* が、これは`off`既定でのものです。 つまり、こ `.`の場合では文字を取得できますが、`。`文字は取得できません。 この暗黙的なロジックを有効にするには、音声SDK を使用して Python でこれを行う方法の例を次に示します (他の言語でも同様です)：
 
 ```python
 speech_config.set_service_property(
@@ -480,6 +482,16 @@ Content-Length: 0
 
 **回答:** 音声to text コンテナーの REST API はサポートされていません。 音声 SDK を通じてサポートされているのは Websocket だけです。 公式のドキュメントを参照してください。[ クエリ予測エンドポイント を参照してください](speech-container-howto.md#query-the-containers-prediction-endpoint)。
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> コンテナーが非ルート ユーザーとして実行されているのはなぜですか? これにより、どのような問題が発生しますか?</b>
+</summary>
+
+**回答:** コンテナー内の既定のユーザーは、非ルート ユーザーであることにご注意ください。 これにより、コンテナーをエスケープするプロセスや、ホスト ノードにエスカレートされたアクセス許可を取得するプロセスが保護されます。 既定では、OpenShift Container Platform などの一部のプラットフォームで、任意に割り当てられたユーザー ID を使用してコンテナーを実行することで、この処理が既に実行されています。 これらのプラットフォームでは、非ルート ユーザーは、書き込みが必要な外部にマップされたボリュームに書き込むためのアクセス許可を持っている必要があります。 たとえば、ログ フォルダーやカスタムのモデル ダウンロード フォルダーなどです。
 <br>
 </details>
 
@@ -549,6 +561,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 
 **回答:** 音声コンテナーには、さまざまな用途のエンドポイントが3つあります。これらは音声モードとして定義されています。以下を参照してください：
 
+## <a name="speech-modes"></a>音声モード
+
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 さまざまな目的で使用され、異なる方法で使用されます。
@@ -565,7 +579,7 @@ Python [サンプル](https://github.com/Azure-Samples/cognitive-services-speech
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-java-stable" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | 現在サポート、または計画されていません。 |
@@ -586,7 +600,7 @@ Python [サンプル](https://github.com/Azure-Samples/cognitive-services-speech
 |--|:-|
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-java-stable" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | 現在、サポートされていません |

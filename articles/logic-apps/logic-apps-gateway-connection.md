@@ -7,11 +7,11 @@ ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 08/18/2020
 ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009257"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -20,7 +20,7 @@ ms.locfileid: "88661199"
 この記事では、以前に[ローカル コンピューターにインストールされたゲートウェイ](../logic-apps/logic-apps-gateway-install.md)の Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの詳細については、「[ゲートウェイのしくみ](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
 
 > [!TIP]
-> ゲートウェイを使用せずに、Azure 仮想ネットワーク内のオンプレミス リソースに直接アクセスするには、代わりに[*統合サービス環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成することを検討します。 
+> ゲートウェイを使用せずに、Azure 仮想ネットワーク内のオンプレミス リソースに直接アクセスするには、代わりに [*統合サービス環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成することを検討します。 
 
 他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
@@ -171,7 +171,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 
 * ゲートウェイのインストールは、別のゲートウェイ リソースに既に関連付けられています。 各ゲートウェイ リソースは、1 つの Azure アカウントおよびサブスクリプションのみリンクできる、1 つのゲートウェイ インストールにだけリンクできます。 そのため、別のゲートウェイ リソースと既に関連付けられているゲートウェイ インストールを選択することはできません。 これらのインストールは、 **[インストール名]** の一覧に表示されません。
 
-  Azure portal でゲートウェイの登録を確認するには、"*すべて*" の Azure サブスクリプションで、リソースの種類が**オンプレミス データ ゲートウェイ**である Azure リソースをすべて見つけます。 ゲートウェイのインストールと他のゲートウェイ リソースとのリンクを解除する場合は、「[ゲートウェイ リソースの削除](#change-delete-gateway-resource)」を参照してください。
+  Azure portal でゲートウェイの登録を確認するには、"*すべて*" の Azure サブスクリプションで、リソースの種類が **オンプレミス データ ゲートウェイ** である Azure リソースをすべて見つけます。 ゲートウェイのインストールと他のゲートウェイ リソースとのリンクを解除する場合は、「[ゲートウェイ リソースの削除](#change-delete-gateway-resource)」を参照してください。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

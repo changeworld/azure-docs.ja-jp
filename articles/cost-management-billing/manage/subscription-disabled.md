@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686804"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744427"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>無効な Azure サブスクリプションを再度有効にする
 
@@ -32,7 +32,7 @@ Azure 無料アカウントにサインアップすると、30 日間試用で�
 > [!NOTE]
 > 無料試用版サブスクリプションを使用しているときに使用制限を削除すると、ご利用のサブスクリプションは、無料試用の終了時に従量課金制の個別サブスクリプションに変換されます。 残りのクレジットは、サブスクリプションの作成後、丸 30 日間保持されます。 また、12 か月間の無料サービスにアクセスすることもできます。
 
-Azure の課金アクティビティの監視および管理については、「[Azure の課金とコスト管理で予想外のコストを防ぐ](getting-started.md)」を参照してください。
+Azure の課金アクティビティの監視および管理については、「[Azure のコストの管理を計画する](../understand/plan-manage-costs.md)」を参照してください。
 
 
 ## <a name="your-bill-is-past-due"></a>請求の支払い期限が過ぎている
@@ -55,9 +55,13 @@ Azure の課金アクティビティの監視および管理については、�
 
 その他のサブスクリプションの種類については、[サポートに連絡して](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、サブスクリプションを再度有効にしてもらいます。
 
+## <a name="after-reactivation"></a>再度有効にした後
+
+サブスクリプションを再度有効にした後、リソースの作成または管理に遅延が発生する可能性があります。 遅延が 30 分を超えた場合は、[Azure の課金サポート](https://go.microsoft.com/fwlink/?linkid=2083458)にお問い合わせください。 ほとんどの Azure リソースは自動的に再開され、対処は必要ありません。 しかし、Azure サービス リソースを確認し、自動的に再開されていないものは再起動することをお勧めします。
+
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure の課金アクティビティを監視および管理する](getting-started.md)方法を確認します。
+- [Azure のコストの管理を計画する](../understand/plan-manage-costs.md)方法について説明します。

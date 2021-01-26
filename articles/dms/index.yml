@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: 05780a5628f920b8fb4f0c73794046f23e895c58
-  ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+  ms.openlocfilehash: c2461fa9eb2c326141d244fbc576355226f891dd
+  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/31/2020
-  ms.locfileid: "89182243"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94962707"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -124,11 +124,11 @@ landingContent:
     - text: データベース移行ガイド
       url: https://datamigration.microsoft.com/
     - text: Data Migration Assistant
-      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview?view=sql-server-2017
     - text: SQL Server Migration Assistant
-      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
     - text: Database Experimentation Assistant
-      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
     - text: データ アクセス移行ツールキット
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: Oracle を Azure に移行する

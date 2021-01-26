@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521379"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537186"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
 
@@ -24,15 +24,15 @@ ms.locfileid: "86521379"
 データをオンプレミスから Azure 環境に移行するには、主に次の 2 つのオプションがあります。
 
 * TLS を使用してネットワーク経由でデータを転送する
-    * インターネット経由 - Azure Storage Explorer、AzCopy、Azure Powershell、Azure CLI などの複数のツールのいずれかを使用して、通常のインターネット接続経由でデータを Azure ストレージに転送できます。 詳細については、「[Azure Storage との間でのデータの移動](../../storage/common/storage-moving-data.md)」をご覧ください。
+    * インターネット経由 - Azure Storage Explorer、AzCopy、Azure Powershell、Azure CLI などの複数のツールのいずれかを使用して、通常のインターネット接続経由でデータを Azure ストレージに転送できます。 詳細については、「[Azure Storage との間でのデータの移動](../../storage/common/storage-choose-data-transfer-solution.md)」をご覧ください。
 
     * ExpressRoute - ExpressRoute は、Microsoft のデータセンターとオンプレミスや共用施設にあるインフラストラクチャの間にプライベート接続を作成できる Azure サービスです。 ExpressRoute 接続はパブリックなインターネットを経由しないため、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 詳しくは、「[ExpressRoute 回線の作成と変更](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)」をご覧ください。
 
-    * Data Box オンライン データ転送 - Data Box Edge と Data Box Gateway は、ネットワーク ストレージのゲートウェイとして機能して自社サイトと Azure の間でデータを管理するオンライン データ転送製品です。 Data Box Edge は、Azure との間でデータを転送する機能と、人工知能 (AI) に対応したエッジ計算によってデータを処理する機能とを備えたオンプレミスのネットワーク デバイスです。 Data Box Gateway は、ストレージ ゲートウェイ機能を備えた仮想アプライアンスです。 詳しくは、「[Azure Data Box のドキュメント - オンライン転送](https://docs.microsoft.com/azure/databox-online/)」をご覧ください。
+    * Data Box オンライン データ転送 - Data Box Edge と Data Box Gateway は、ネットワーク ストレージのゲートウェイとして機能して自社サイトと Azure の間でデータを管理するオンライン データ転送製品です。 Data Box Edge は、Azure との間でデータを転送する機能と、人工知能 (AI) に対応したエッジ計算によってデータを処理する機能とを備えたオンプレミスのネットワーク デバイスです。 Data Box Gateway は、ストレージ ゲートウェイ機能を備えた仮想アプライアンスです。 詳しくは、「[Azure Data Box のドキュメント - オンライン転送](../../databox-online/index.yml)」をご覧ください。
 
 * オフラインでのデータの発送
 
-    Data Box オフライン データ転送 - ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。 Data Box オフライン転送デバイスの詳細については、「[Azure Data Box のドキュメント - オフライン転送](https://docs.microsoft.com/azure/databox/)」を参照してください。 Hadoop クラスターの移行の詳細については、[Azure Data Box を使用したオンプレミス HDFS ストアから Azure Storage への移行](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)に関するページを参照してください。
+    Data Box オフライン データ転送 - ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。 Data Box オフライン転送デバイスの詳細については、「[Azure Data Box のドキュメント - オフライン転送](../../databox/index.yml)」を参照してください。 Hadoop クラスターの移行の詳細については、[Azure Data Box を使用したオンプレミス HDFS ストアから Azure Storage への移行](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)に関するページを参照してください。
 
 次の表に、データ ボリュームとネットワーク帯域幅に基づくおおまかなデータ転送時間を示します。 データ移行に 3 週間以上かかることが予想される場合は Data Box を使用してください。
 

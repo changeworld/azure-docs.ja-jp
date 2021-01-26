@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: bf8923c1090669caa46ef51a26418933b1cda023
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996178"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563434"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Translator によるコンテンツの翻訳を防止する方法
 
@@ -37,13 +37,27 @@ Translator では、翻訳されないようコンテンツにタグを付ける
    <div>This will be translated. </div>
    ```
 
-2. [動的ディクショナリ](dynamic-dictionary.md)を使用して決まった翻訳を指示する。
+2. コンテンツに `translate="no"` でタグ付けします。 これは、入力の textType が HTML に設定されている場合にのみ機能します。
 
-3. 文字列を翻訳対象として Translator に渡さないでください。
+   例:
 
-4. カスタム トランスレーター: 語句に対して 100% の確率で決まる翻訳は、[カスタム トランスレーターのディクショナリ](custom-translator/what-is-dictionary.md)を使用して指示します。
+   ```html
+   <span translate="no">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
+   ```html
+   <div translate="no">This will not be translated.</div>
+   <div>This will be translated. </div>
+   ```
+   
+3. [動的ディクショナリ](dynamic-dictionary.md)を使用して決まった翻訳を指示する。
+
+4. 文字列を翻訳対象として Translator に渡さないでください。
+
+5. カスタム トランスレーター: 語句に対して 100% の確率で決まる翻訳は、[カスタム トランスレーターのディクショナリ](custom-translator/what-is-dictionary.md)を使用して指示します。
 
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Translator 呼び出しでの翻訳を防止する](reference/v3-0-translate.md)
+> [翻訳操作を使用してテキストを翻訳する](reference/v3-0-translate.md)

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013641"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701944"
 ---
 # <a name="sky-reflections"></a>空の反射
 
@@ -28,8 +28,8 @@ Azure Remote Rendering では、リアルな照明の計算を行うために "*
 
 | Roughness  | 0                                        | 0.25                                          | 0.5                                          | 0.75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| 金属以外  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| 金属      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| 金属以外  | ![誘電性、Roughness=0](media/dielectric-0.png)   | ![誘電性、Roughness=0.25](media/dielectric-0.25.png)  | ![誘電性、Roughness=0.5](media/dielectric-0.5.png)  | ![誘電性、Roughness=0.75](media/dielectric-0.75.png)  | ![誘電性、Roughness=1](media/dielectric-1.png)  |
+| 金属      | ![金属、Roughness=0](media/metallic-0.png)  | ![金属、Roughness=0.25](media/metallic-0.25.png)    | ![金属、Roughness=0.5](media/metallic-0.5.png)    | ![金属、Roughness=0.75](media/metallic-0.75.png)    | ![金属、Roughness=1](media/metallic-1.png)    |
 
 照明モデルの詳細については、「[素材](../../concepts/materials.md)」の章を参照してください。
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -121,24 +121,28 @@ Azure Remote Rendering には、常に使用可能な組み込みの環境マッ
 
 |識別子                         | 説明                                              | 図                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | さまざまなストライプ ライト、明るい室内ベース照明    | ![Autoshop](media/autoshop.png)
-|builtin://BoilerRoom               | 明るい室内ライト設定、複数のウィンドウ ライト      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | 中程度の室内ライト設定でのさまざまな色付きライト  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | 適度に明るいアンビエント ホール ライト                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | 明暗のコントラストを使用した薄暗い室内設定              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | 昼間のアンビエント ルーム ライト、明るいウィンドウ エリア ライト     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | 暗い夜の空と地面、周囲に多くのライトがある   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | 明るい太陽の光と影のコントラスト                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | 澄んだスカイ ライトと、適度な地面照明            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | 適度に変化する太陽と日陰                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | 夕暮れに近づく夕日のライト                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | 明るく、緑がかっている、白色の明るい色調、淡色の地面 | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | 明るい周囲光がある昼間                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | TearsOfSteelBridge と同じ                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | さまざまなストライプ ライト、明るい室内ベース照明    | ![オブジェクトを照らすために使用される Autoshop Skybox](media/autoshop.png)
+|builtin://BoilerRoom               | 明るい室内ライト設定、複数のウィンドウ ライト      | ![オブジェクトを照らすために使用される BoilerRoom Skybox](media/boiler-room.png)
+|builtin://ColorfulStudio           | 中程度の室内ライト設定でのさまざまな色付きライト  | ![オブジェクトを照らすために使用される ColorfulStudio Skybox](media/colorful-studio.png)
+|builtin://Hangar                   | 適度に明るいアンビエント ホール ライト                     | ![オブジェクトを照らすために使用される SmallHangar Skybox](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | 明暗のコントラストを使用した薄暗い室内設定              | ![オブジェクトを照らすために使用される IndustrialPipeAndValve Skybox](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | 昼間のアンビエント ルーム ライト、明るいウィンドウ エリア ライト     | ![オブジェクトを照らすために使用される Lebombo Skybox](media/lebombo.png)
+|builtin://SataraNight              | 暗い夜の空と地面、周囲に多くのライトがある   | ![オブジェクトを照らすために使用される SataraNight Skybox](media/satara-night.png)
+|builtin://SunnyVondelpark          | 明るい太陽の光と影のコントラスト                      | ![オブジェクトを照らすために使用される SunnyVondelpark Skybox](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | 澄んだスカイ ライトと、適度な地面照明            | ![オブジェクトを照らすために使用される Syferfontein Skybox](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | 適度に変化する太陽と日陰                         | ![オブジェクトを照らすために使用される TearsOfSteelBridge Skybox](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | 夕暮れに近づく夕日のライト                    | ![オブジェクトを照らすために使用される VeniceSunset Skybox](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | 明るく、緑がかっている、白色の明るい色調、淡色の地面 | ![オブジェクトを照らすために使用される WhippleCreekRegionalPark Skybox](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | 明るい周囲光がある昼間                 | ![オブジェクトを照らすために使用される WinterRiver Skybox](media/winter-river.png)
+|builtin://DefaultSky               | TearsOfSteelBridge と同じ                               | ![オブジェクトを照らすために使用される DefaultSky Skybox](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RemoteManager.SkyReflectionSettings プロパティ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager::SkyReflectionSettings()](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [照明](../../overview/features/lights.md)
 * [素材](../../concepts/materials.md)
 * [テクスチャ](../../concepts/textures.md)
-* [TexConv コマンドライン ツール](../../resources/tools/tex-conv.md)

@@ -4,12 +4,12 @@ description: HTTP によってトリガーされるサーバーレス PowerShell
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072045"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349250"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>チュートリアル:HTTP によってトリガーされる Azure Functions を使用してコンテナー グループを作成する
 
@@ -27,13 +27,14 @@ ms.locfileid: "89072045"
 
 ## <a name="prerequisites"></a>前提条件
 
-ご利用の OS に Visual Studio Code と Azure Functions 拡張機能をインストールして使用するための前提条件については、[Visual Studio Code を使用して Azure で初めての関数を作成する方法](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment)に関するページを参照してください。
+ご利用の OS に Visual Studio Code と Azure Functions 拡張機能をインストールして使用するための前提条件については、[Visual Studio Code を使用して Azure で初めての関数を作成する方法](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment)に関するページを参照してください。
 
 この記事の追加の手順では、Azure PowerShell を使用します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell のインストール][azure-powershell-install]および [Azure へのサインイン](/powershell/azure/get-started-azureps#sign-in-to-azure)に関する記事を参照してください。
 
 ## <a name="create-a-basic-powershell-function"></a>基本的な PowerShell 関数を作成する
 
-[Azure で初めての PowerShell 関数を作成する方法](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell)の手順に従い、HTTP トリガー テンプレートを使用して PowerShell 関数を作成します。 Azure Functions の既定の名前 **HttpTrigger** を使用します。 このクイックスタートに示すように、関数をローカルでテストし、Azure の関数アプリにプロジェクトを発行します。 この例は、テキスト文字列を返す、HTTP によってトリガーされた関数です。 この記事の後続の手順では、コンテナー グループを作成するよう関数を変更します。
+[Azure で初めての PowerShell 関数を作成する方法](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell)の手順に従い、HTTP トリガー テンプレートを使用して PowerShell 関数を作成します。 Azure 関数の既定の名前 **HttpTrigger** を使用します。 このクイックスタートに示すように、関数をローカルでテストし、Azure の関数アプリにプロジェクトを発行します。 この例は、テキスト文字列を返す、HTTP によってトリガーされた関数です。 この記事の後続の手順では、コンテナー グループを作成するよう関数を変更します。
+
 
 この記事では、*myfunctionapp* という名前を使用して Azure リソース グループにプロジェクトを発行することを想定しています。Azure リソース グループの名前は、関数アプリの名前に従って自動的に付けられています (こちらも *myfunctionapp*)。 その後の手順で、一意の関数アプリ名とリソース グループ名に置き換えます。
 

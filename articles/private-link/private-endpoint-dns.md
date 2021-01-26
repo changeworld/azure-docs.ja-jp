@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918130"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134077"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -25,9 +25,11 @@ ms.locfileid: "88918130"
 - **ホスト ファイルを使用する (テストにのみ推奨)** 。 仮想マシン上のホスト ファイルを使用して、DNS をオーバーライドすることができます。  
 - **プライベート DNS ゾーンを使用する**。 [プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)を使用して、特定のプライベート エンドポイントの DNS 解決をオーバーライドすることができます。 プライベート DNS ゾーンを自分の仮想ネットワークにリンクして、特定のドメインを解決することができます。
 - **DNS フォワーダーを使用する (オプション)** 。 DNS フォワーダーを使用して、特定のプライベート リンク リソースの DNS 解決をオーバーライドすることができます。 お使いの [DNS サーバー](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)が仮想ネットワーク上にホストされている場合は、プライベート DNS ゾーンを使用する DNS 転送規則を作成して、すべてのプライベート リンク リソースの構成を簡略化することができます。
- 
+
 > [!IMPORTANT]
 > パブリック エンドポイントを解決する目的でアクティブに使用されているゾーンをオーバーライドすることはお勧めしません。 リソースへの接続は、パブリック DNS への DNS 転送なしでは正しく解決できません。 問題を回避するには、別のドメイン名を作成するか、次の各サービスの推奨される名前に従ってください。 
+
+
 
 ## <a name="azure-services-dns-zone-configuration"></a>Azure サービス DNS ゾーンの構成
 提案されたプライベート ドメイン名に解決をリダイレクトするために、Azure サービスによってパブリック DNS サービスに正規名の DNS レコード (CNAME) が作成されます。 この解決は、プライベート エンドポイントのプライベート IP アドレスでオーバーライドすることができます。 
@@ -40,7 +42,7 @@ ms.locfileid: "88918130"
 Azure サービスについては、次の表に示すように、推奨されるゾーン名を使用します。
 
 | プライベート リンク リソースの種類/サブリソース |プライベート DNS ゾーンの名前 | パブリック DNS ゾーンのフォワーダー |
-|---|---|---|---|
+|---|---|---|
 | Azure Automation (Microsoft.Automation/automationAccounts)/Webhook、DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
 | Azure SQL Database (Microsoft.Sql/servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure Synapse Analytics (Microsoft.Sql/servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -66,7 +68,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Backup (Microsoft.RecoveryServices/vaults)/コンテナー | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
 | Azure Event Hubs (Microsoft.EventHub/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft.ServiceBus/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT Hub (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT Hub (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure Relay (Microsoft.Relay/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft.EventGrid/topics)/トピック | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft.EventGrid/domains)/ドメイン | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -74,10 +76,14 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)/ワークスペース | privatelink.api.azureml.ms | api.azureml.ms |
 | IoT Hub (Microsoft.Devices/IotHubs)/IotHub | privatelink.azure-devices.net | azure-devices.net |
 | SignalR (Microsoft.SignalRService/SignalR)/signalR | privatelink.service.signalr.net | service.signalr.net |
-| Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.com | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.com |
+| Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Cognitive Services (Microsoft.CognitiveServices/accounts)/アカウント | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure File Sync (Microsoft.StorageSync/storageSyncServices) / afs |  privatelink.afs.azure.net  |  afs.azure.net  |
+| Azure Data Factory (Microsoft.DataFactory/factories ) / dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
+| Azure Data Factory (Microsoft.DataFactory/factories ) / portal |  privatelink.azure.com  |  azure.com  |
+| Azure Cache for Redis (Microsoft.Cache/Redis) / redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup>IoT Hub の組み込みのイベント ハブ互換エンドポイントで使用します。 詳細については、[IoT Hub の組み込みエンドポイントに対するプライベート リンクのサポート](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)に関するページを参照してください。
  
 ## <a name="dns-configuration-scenarios"></a>DNS の構成シナリオ
 
@@ -91,6 +97,8 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 - [DNS フォワーダーを使用しているオンプレミスのワークロード](#on-premises-workloads-using-a-dns-forwarder)
 - [DNS フォワーダーを使用した仮想ネットワークとオンプレミス ワークロード](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)
 
+> [!NOTE]
+> [Azure Firewall DNS プロキシ](../firewall/dns-settings.md#dns-proxy)は、[オンプレミスのワークロード](#on-premises-workloads-using-a-dns-forwarder)と [DNS フォワーダーを使用する仮想ネットワークのワークロード](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)用の DNS フォワーダーとして使用できます。
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>カスタム DNS サーバーのない仮想ネットワークのワークロード
 
@@ -119,7 +127,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 > [!IMPORTANT]
 > 別のサブスクリプションのハブアンドスポーク モデルでプライベート エンドポイントを使用している場合は、ハブで同じプライベート DNS ゾーンを再利用します。
 
-このシナリオには、[ハブ アンド スポーク](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)のネットワーク トポロジがあります。スポーク ネットワークで共通プライベート エンドポイントを共有し、すべてのスポーク仮想ネットワークが同じプライベート DNS ゾーンにリンクされています。 
+このシナリオには、[ハブ アンド スポーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)のネットワーク トポロジがあります。スポーク ネットワークで共通プライベート エンドポイントを共有し、すべてのスポーク仮想ネットワークが同じプライベート DNS ゾーンにリンクされています。 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="ハブとスポーク、および Azure 提供の DNS":::
 
@@ -130,38 +138,37 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 次のシナリオは、Azure に DNS フォワーダーがあるオンプレミス ネットワークに適しています。DNS フォワーダーには、サーバーレベル フォワーダー経由のすべての DNS クエリを Azure 提供の DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) に解決する役割があります。 
 
 > [!NOTE]
-> このシナリオでは、Azure SQL Database から推奨されるプライベート DNS ゾーンを使用します。 その他のサービスの場合は、「 [Azure サービス DNS ゾーンの構成](#azure-services-dns-zone-configuration)」を参照してモデルを調整できます。
+> このシナリオでは、Azure SQL Database から推奨されるプライベート DNS ゾーンを使用します。 その他のサービスの場合、次のリファレンスを使用してモデルを調整できます (「[Azure サービス DNS ゾーンの構成](#azure-services-dns-zone-configuration)」)。
 
 適切に構成するには、次のリソースが必要です。
 
-- オンプレミスのネットワーク
--  [オンプレミスに接続されている](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
-- Azure にデプロイされた DNS フォワーダー 
-- プライベート DNS ゾーン  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と [タイプ A レコード](../dns/dns-zones-records.md#record-types)
+- オンプレミス ネットワーク
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- Azure にデプロイされた DNS フォワーダー 
+- プライベート DNS ゾーン [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と[タイプ A レコード](../dns/dns-zones-records.md#record-types)
 - プライベート エンドポイント情報 (FQDN レコード名とプライベート IP アドレス)
 
 次の図は、Azure にデプロイされた DNS フォワーダーを使用するオンプレミス ネットワークからの DNS の解決シーケンスを示しています。この解決は、[仮想ネットワークにリンクされた](../dns/private-dns-virtual-network-links.md)プライベート DNS ゾーンによって行われます。
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Azure DNS を使用したオンプレミス":::
 
-この構成は、DNS ソリューションが既に配置されているオンプレミス ネットワーク用に拡張できます。 
-オンプレミスの DNS ソリューションは、Azure にデプロイされた DNS フォワーダーを参照する [条件付きフォワーダー](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)を介して、Azure DNS に DNS トラフィックを転送するように構成する必要があります。
+この構成は、DNS ソリューションが既に配置されているオンプレミス ネットワーク用に拡張できます。 オンプレミスの DNS ソリューションは、Azure にデプロイされた DNS フォワーダーを参照する[条件付きフォワーダー](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)を介して、Azure DNS に DNS トラフィックを転送するように構成する必要があります。
 
 > [!NOTE]
-> このシナリオでは、Azure SQL Database から推奨されるプライベート DNS ゾーンを使用します。 その他のサービスの場合は、「 [Azure サービス DNS ゾーンの構成](#azure-services-dns-zone-configuration)」を参照してモデルを調整できます。
+> このシナリオでは、Azure SQL Database から推奨されるプライベート DNS ゾーンを使用します。 その他のサービスの場合、次のリファレンスを使用してモデルを調整できます (「[Azure サービス DNS ゾーンの構成](#azure-services-dns-zone-configuration)」)。
 
 適切に構成するには、次のリソースが必要です。
 
-- カスタム DNS ソリューションが配置されているオンプレミス ネットワーク 
--  [オンプレミスに接続されている](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- カスタム DNS ソリューションが配置されているオンプレミス ネットワーク 
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
 - Azure にデプロイされた DNS フォワーダー
-- プライベート DNS ゾーン  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)  と [タイプ A レコード](../dns/dns-zones-records.md#record-types)
+- プライベート DNS ゾーン [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と[タイプ A レコード](../dns/dns-zones-records.md#record-types)
 - プライベート エンドポイント情報 (FQDN レコード名とプライベート IP アドレス)
 
-次の図は、Azure に DNS トラフィックを条件付きで転送するオンプレミス ネットワークからの DNS の解決シーケンスを示しています。この解決は、 [仮想ネットワークにリンクされた](../dns/private-dns-virtual-network-links.md)プライベート DNS ゾーンによって行われます。
+次の図は、Azure に DNS トラフィックを条件付きで転送するオンプレミス ネットワークからの DNS の解決シーケンスを示しています。この解決は、[仮想ネットワークにリンクされた](../dns/private-dns-virtual-network-links.md)プライベート DNS ゾーンによって行われます。
 
 > [!IMPORTANT]
-> 条件付き転送は、推奨される[パブリック DNS ゾーン フォワーダー](#azure-services-dns-zone-configuration)に対して行われる必要があります。 たとえば、 **privatelink**.database.windows.net ではなく `database.windows.net` です。
+> 条件付き転送は、推奨される[パブリック DNS ゾーン フォワーダー](#azure-services-dns-zone-configuration)に対して行われる必要があります。 たとえば、**privatelink**.database.windows.net ではなく、`database.windows.net` です。
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Azure DNS に転送しているオンプレミス":::
 
@@ -177,18 +184,18 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 > この構成には単一のプライベート DNS ゾーンが必要です。 また、オンプレミスおよび[ピアリングされた仮想ネットワーク](../virtual-network/virtual-network-peering-overview.md)から実行されるすべてのクライアント接続では、同じプライベート DNS ゾーンを使用する必要があります。
 
 > [!NOTE]
-> このシナリオでは、Azure SQL Database から推奨されるプライベート DNS ゾーンを使用します。 その他のサービスの場合は、「 [Azure サービス DNS ゾーンの構成](#azure-services-dns-zone-configuration)」を参照してモデルを調整できます。
+> このシナリオでは、Azure SQL Database から推奨されるプライベート DNS ゾーンを使用します。 その他のサービスの場合、次のリファレンスを使用してモデルを調整できます (「[Azure サービス DNS ゾーンの構成](#azure-services-dns-zone-configuration)」)。
 
 適切に構成するには、次のリソースが必要です。
 
-- オンプレミスのネットワーク
--  [オンプレミスに接続されている](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
-- [ピアリングされた仮想ネットワーク](../virtual-network/virtual-network-peering-overview.md) 
+- オンプレミス ネットワーク
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- [ピアリングされた仮想ネットワーク](../virtual-network/virtual-network-peering-overview.md) 
 - Azure にデプロイされた DNS フォワーダー
-- プライベート DNS ゾーン  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)  と [タイプ A レコード](../dns/dns-zones-records.md#record-types)
+- プライベート DNS ゾーン [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と[タイプ A レコード](../dns/dns-zones-records.md#record-types)
 - プライベート エンドポイント情報 (FQDN レコード名とプライベート IP アドレス)
 
-次の図は、Azure にデプロイされた DNS フォワーダーを使用するオンプレミスおよび仮想ネットワークからの DNS の解決シーケンスを示しています。この解決は、 [仮想ネットワークにリンクされた](../dns/private-dns-virtual-network-links.md)プライベート DNS ゾーンによって行われます。
+次の図は、Azure にデプロイされた DNS フォワーダーを使用するオンプレミスおよび仮想ネットワークからの DNS の解決シーケンスを示しています。この解決は、[仮想ネットワークにリンクされた](../dns/private-dns-virtual-network-links.md)プライベート DNS ゾーンによって行われます。
 
 :::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="ハイブリッド シナリオ":::
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090333"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565261"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>証明書を使用して B2B メッセージのセキュリティを強化する
 
@@ -51,11 +51,11 @@ B2B 機能を備えたロジック アプリで "*パブリック証明書*" を
    | **[MSSQLSERVER のプロトコルのプロパティ]** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 |
    ||||
 
-   ![[追加] を選択し、証明書の詳細を指定する](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![証明書の詳細を指定するために [追加] を選択する場所を示すスクリーンショット。](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    選択した内容が Azure によって確認されると、証明書がアップロードされます。
 
-   ![新しい証明書が表示される](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![Azure で新しい証明書が表示される場所を示すスクリーンショット。](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>プライベート証明書のアップロード
 

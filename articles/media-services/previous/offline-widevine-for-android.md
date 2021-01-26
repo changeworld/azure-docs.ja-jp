@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269592"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006365"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
@@ -49,13 +49,13 @@ Android Player アプリを構築するには、3 つのオプションがあり
 
 この記事では、Widevine で保護されたコンテンツのオフライン ストリーミングに関連する一般的な質問にもお答えします。
 
-## <a name="requirements"></a>必要条件 
+## <a name="requirements"></a>要件 
 
 Android デバイスに Widevine 用のオフライン DRM を実装する前に、次のことを行っておく必要があります。
 
 - Widevine DRM を使ったオンライン コンテンツ保護に対して導入される概念をよく理解します。 これについては、次のドキュメント/サンプルで詳しく説明されています。
     - [Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する](media-services-deliver-keys-and-licenses.md)
-    - [CENC とマルチ DRM およびアクセス制御: Azure および Azure Media Services での参照設計と実装](media-services-cenc-with-multidrm-access-control.md)
+    - [CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装](media-services-cenc-with-multidrm-access-control.md)
     - [.NET で PlayReady または Widevine の動的共通暗号化を使用する](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-drm/)
     - [.NET で Azure Media Services を使用して PlayReady や Widevine のライセンスを配信する](https://azure.microsoft.com/resources/samples/media-services-dotnet-deliver-playready-widevine-licenses/)
 - Widevine DRM のオフライン再生をサポートする機能を持つオープンソースのビデオ プレーヤー SDK である Google ExoPlayer SDK for Android についてよく理解します。 
@@ -71,9 +71,9 @@ Media Services で資産の Widevine 保護を構成するときは、次の 3 �
 2. ライセンス配信サービスでのコンテンツ キー配信の承認方法を指定する ContentKeyAuthorizationPolicyRestriction (オープンまたはトークン承認)
 3. DRM (Widevine) ライセンス テンプレート
 
-Widevine ライセンスの**オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)を構成する必要があります。 **policy_overrides** オブジェクトで、**can_persist** プロパティを **true** に設定します (既定値は false)。 
+Widevine ライセンスの **オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)を構成する必要があります。 **policy_overrides** オブジェクトで、**can_persist** プロパティを **true** に設定します (既定値は false)。 
 
-次のコード例では、.NET を使って Widevine ライセンスの**オフライン** モードを有効にしています。 このコードは、「[ Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)」(.NET で PlayReady または Widevine の動的共通暗号化を使用する) のサンプルが基になっています。 
+次のコード例では、.NET を使って Widevine ライセンスの **オフライン** モードを有効にしています。 このコードは、「[ Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)」(.NET で PlayReady または Widevine の動的共通暗号化を使用する) のサンプルが基になっています。 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)
@@ -171,7 +171,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 一部のクライアント/ユーザーには永続ライセンス (オフライン有効) を提供し、他のクライアント/ユーザーには非永続ライセンス (オフライン無効) を提供するにはどうすればよいですか。 コンテンツを複製し、別のコンテンツ キーを使う必要がありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 コンテンツを複製する必要はありません。 コンテンツのコピーと ContentKeyAuthorizationPolicy は 1 つでかまいませんが、2 つの異なる ContentKeyAuthorizationPolicyOption が必要です。
 
 1. IContentKeyAuthorizationPolicyOption 1: 永続的ライセンスと、license_type = "Persistent" などの要求を含む ContentKeyAuthorizationPolicyRestriction 1 を使います
@@ -185,12 +185,12 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」 (Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](./media-services-widevine-license-template-overview.md)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 
 Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」 (Widevine DRM アーキテクチャの概要) では、次の 3 つのセキュリティ レベルが定義されています。
 
-1.  セキュリティ レベル 1:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
-2.  セキュリティ レベル 2:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
+1.  セキュリティ レベル 1: すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
+2.  セキュリティ レベル 2: 暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
 3.  セキュリティ レベル 3: デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。
 
 同時に、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](./media-services-widevine-license-template-overview.md)では、content_key_specs の security_level プロパティは、次の 5 つの異なる値を持つことができるようになっています (再生のクライアント堅牢性の要件)。
@@ -205,15 +205,15 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 
 | **Widevine アーキテクチャで定義されているセキュリティ レベル** |**Widevine API で使われるセキュリティ レベル**|
 |---|---| 
-| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**:暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**:コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
-**セキュリティ レベル 2**:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
-| **セキュリティ レベル 3**:デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
+| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**: 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**: コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
+**セキュリティ レベル 2**: 暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**: キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
+| **セキュリティ レベル 3**: デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**: ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
 
 ### <a name="question"></a>Question
 
 コンテンツのダウンロードに時間がかかるのはなぜですか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 
 ダウンロードの速度を上げるには 2 つの方法があります。
 

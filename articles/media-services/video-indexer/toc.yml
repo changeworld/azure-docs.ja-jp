@@ -13,6 +13,8 @@
       href: invite-users.md
 - name: チュートリアル
   items:
+    - name: Azure に接続された新しいアカウントを作成する
+      href: connect-to-azure.md
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
     - name: Logic Apps コネクタ
@@ -23,6 +25,8 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: 概念
   items:
+    - name: 概要
+      href: concepts-overview.md
     - name: Video Indexer と Media Services のプリセットを比較する
       href: compare-video-indexer-with-media-services-presets.md
     - name: 複数のテナントの管理
@@ -45,8 +49,6 @@
           href: customize-person-model-overview.md
 - name: ハウツー ガイド
   items:
-    - name: Azure に接続する
-      href: connect-to-azure.md
     - name: Azure に接続されたアカウントの管理
       href: manage-account-connected-to-azure.md
     - name: ビデオのアップロードとインデックス作成
@@ -54,6 +56,7 @@
     - name: Video Indexer の出力の確認
       href: video-indexer-output-json-v2.md
     - name: ビデオ内の正確な場面の検出
+      displayName: search
       href: video-indexer-search.md
     - name: シーン、ショット、キーフレームの検出
       href: scenes-shots-keyframes.md
@@ -65,12 +68,14 @@
       href: use-editor-create-project.md
     - name: アプリケーションへのウィジェットの埋め込み
       href: video-indexer-embed-widgets.md
+    - name: Video Indexer を大規模に使用する場合の考慮事項
+      href: considerations-when-use-at-scale.md
     - name: 障害復旧
       href: video-indexer-disaster-recovery.md
     - name: コンテンツ モデルのカスタマイズ
       items:
         - name: アニメーション化された文字
-          href: animated-characters-recognition.md
+          href: animated-characters-recognition-how-to.md
         - name: Person
           items:
             - name: Video Indexer Web サイトの使用
@@ -102,6 +107,7 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: リージョン
+      displayName: location
       href: regions.md
     - name: FAQ
       href: faq.md
@@ -109,6 +115,8 @@
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: リリース ノート
       href: release-notes.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=video-indexer'
     - name: ユーザーの声
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
     - name: ブログ

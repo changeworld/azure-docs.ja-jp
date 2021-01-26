@@ -2,13 +2,13 @@
 title: Azure Service Bus - メッセージの有効期限
 description: この記事では、Azure Service Bus メッセージの有効期限と Time to Live について説明します。 このような期限が過ぎると、メッセージは配信されなくなります。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/29/2020
+ms.openlocfilehash: 47f8bdb4440adfeb5197f90cdad5358a442ce6a7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064725"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569923"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -29,7 +29,7 @@ ms.locfileid: "88064725"
 > [!NOTE]
 > 特に指定されていない場合、ブローカー メッセージの既定の [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 値は [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue) です。
 >
-> メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard レベルと Premium レベルでは [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue) です。  Basic レベルでは、既定の有効期間は 14 日間です。
+> メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard レベルと Premium レベルでは [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue) です。 **Basic** レベルでは、既定 (かつ最長) の有効期限は **14 日間**です。
 
 有効期限が切れたメッセージは、[EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) プロパティを設定するか、またはポータルでそれぞれのボックスにチェックを付けることで、[配信不能キュー](service-bus-dead-letter-queues.md)に移動することもできます。 オプションを無効のままにすると、期限切れのメッセージは削除されます。 配信不能キューに移動された期限切れのメッセージは、ユーザー プロパティ セクションにブローカーが保存する [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) プロパティを評価することで、他の配信不能キューと区別できます。この場合、値は [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) になります。
 

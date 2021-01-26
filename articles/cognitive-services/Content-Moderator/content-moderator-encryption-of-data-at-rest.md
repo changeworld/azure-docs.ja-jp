@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 38fc21ee45db25f015a6b8b534b0d922efa636f2
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 1401108a594e30790e842ec379724603f11d493f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310548"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913706"
 ---
 # <a name="content-moderator-encryption-of-data-at-rest"></a>Content Moderator による保存データの暗号化
 
@@ -34,11 +34,10 @@ Content Moderator を使うと、クラウドに永続化されるデータが�
 Content Moderator レビュー チーム用にデータの暗号化を有効にするには、「[クイック スタート: Web 上で Content Moderator を試す](quick-start.md#create-a-review-team)」をご覧ください。  
 
 > [!NOTE]
-> Content Moderator E0 価格レベルの "_リソース ID_" を指定する必要があります。
+> Content Moderator E0 価格レベルの " _リソース ID_ " を指定する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * CMK がサポートされているサービスの完全な一覧については、[Cognitive Services 用のカスタマー マネージド キー](../encryption/cognitive-services-encryption-keys-portal.md)に関するページを参照してください
-* [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault とは](../../key-vault/general/overview.md)
 * [Cognitive Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325153"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445768"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -364,15 +364,15 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 **[ネットワーク トラフィックをキャプチャするエージェント]** ブレードを使用して、コンピューターが消費しているネットワーク帯域幅の量を確認することができます。 このブレードを使用すると、環境内で "_最もおしゃべりな_" コンピュータを簡単に見つけることができます。 そのようなコンピュータは過負荷になったり、異常動作を行ったり、通常より多くのネットワーク リソースを使用したりしている可能性があります。
 
-![ログ検索例](./media/wire-data/log-search-example01.png)
+![各コンピューターで使用されるネットワーク帯域幅が表示されている、Wire Data 2.0 ダッシュボードの [ネットワーク トラフィックをキャプチャするエージェント] ブレードのスクリーンショット。](./media/wire-data/log-search-example01.png)
 
 同様に、 **[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは、多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
 
-![ログ検索例](./media/wire-data/log-search-example02.png)
+![各ローカル サブネットによって消費されるネットワーク帯域幅を示す Wire Data 2.0 ダッシュボードの [ローカルサブネット] ブレードのスクリーンショット。](./media/wire-data/log-search-example02.png)
 
 **[アプリケーション レベル プロトコル]** ブレードは、どのプロトコルが使用されているかを確認するのに役立ちます。 たとえば、ネットワーク環境で SSH が使用されていないと予想される場合があります。 このブレードで利用可能な情報を表示すると、すぐにこの予想の正誤を確認できます。
 
-![ログ検索例](./media/wire-data/log-search-example03.png)
+![各プロトコルによって使用されているネットワーク帯域幅を示す Wire Data 2.0 ダッシュボードの [アプリケーション レベル プロトコル] ブレードのスクリーンショット。](./media/wire-data/log-search-example03.png)
 
 また、プロトコルのトラフィックが時間の経過とともに増加しているか減少しているかを知っておくと便利です。 たとえば、アプリケーションによって送信されているデータ量が増加している場合、注意すべきことや注目すべきことがある可能性があります。
 

@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor ブックの概要
-description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
-author: mrbullwinkle
+description: Azure portal 内でデータを分析し、高度な視覚的レポートを作成するためのブックの柔軟なキャンバスについて説明します。
 manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799567"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143632"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
@@ -43,12 +41,13 @@ ms.locfileid: "87799567"
 
 ブックには、データを視覚化するための豊富な機能セットが用意されています。 各視覚化の種類の詳細な例については、以下の例のリンクを参照してください。
 
-* [[テキスト]](workbooks-visualizations.md#text)
-* [グラフ](workbooks-visualizations.md#charts)
-* [グリッド](workbooks-visualizations.md#grids)
-* [タイル](workbooks-visualizations.md#tiles)
-* [ツリー](workbooks-visualizations.md#trees)
-* [グラフ](workbooks-visualizations.md#graphs)
+* [[テキスト]](workbooks-text-visualizations.md)
+* [グラフ](workbooks-chart-visualizations.md)
+* [グリッド](workbooks-grid-visualizations.md)
+* [タイル](workbooks-tile-visualizations.md)
+* [ツリー](workbooks-tree-visualizations.md)
+* [グラフ](workbooks-graph-visualizations.md)
+* [複合棒グラフ](workbooks-composite-bar.md)
 
 ![ブックの視覚化の例](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +85,9 @@ ms.locfileid: "87799567"
 
 ### <a name="editing-mode"></a>編集モード
 
-このブック テンプレートがどのように構成されているかを理解するには、 **[編集]** を選択して編集モードに切り替える必要があります。 
+このブック テンプレートがどのように構成されているかを理解するには、 **[編集]** を選択して編集モードに切り替える必要があります。
 
-![アプリケーションの障害分析テンプレートのスクリーンショット](./media/workbooks-overview/edit.png)
+![ブックの [編集] ボタンのスクリーンショット。](./media/workbooks-overview/edit.png)
 
 編集モードに切り替えると、ブックの個々の側面に対応する多数の **[編集]** ボックスが右側に表示されます。
 
@@ -98,7 +97,7 @@ ms.locfileid: "87799567"
 
 ![基になる Kusto クエリのスクリーンショット](./media/workbooks-overview/kusto.png)
 
-右側にある他の **[編集]** ボタンをクリックすると、マークダウンベースの[テキスト ボックス](workbooks-visualizations.md#text)、[パラメーターの選択](workbooks-parameters.md) UI 要素、その他の[グラフまたは視覚化の種類](workbooks-visualizations.md)など、ブックを構成する主要なコンポーネントがいくつか表示されます。 
+右側にある他の **[編集]** ボタンをクリックすると、マークダウンベースの[テキスト ボックス](workbooks-text-visualizations.md)、[パラメーターの選択](workbooks-parameters.md) UI 要素、その他の[グラフまたは視覚化の種類](#visualizations)など、ブックを構成する主要なコンポーネントがいくつか表示されます。 
 
 作成済みのテンプレートを編集モードで調べ、ニーズに合わせて変更を加えたうえで独自のカスタム ブックを保存することは、Azure Monitor ブックでできることを知るための優れた方法です。
 
@@ -111,7 +110,7 @@ ms.locfileid: "87799567"
 ![ピン留めエクスペリエンス](./media/workbooks-overview/pin-experience.png)
 
 > [!NOTE]
-> ブックの状態は、ピン留めの時点で保存されます。ダッシュボード上のピン留めされたブックは、基になるブックが変更された場合でも更新されません。 ピン留めされたブック パーツを更新するには、そのパーツを削除して、再度ピン留めする必要があります。
+> ブックの状態は、ピン留めの時点で保存されます。ダッシュボード上でピン留めされたブックは、基になるブックが変更された場合でも更新されません。 ピン留めされたブック パーツを更新するには、そのパーツを削除して、再度ピン留めする必要があります。
 
 ## <a name="dashboard-time-ranges"></a>ダッシュボードの時間範囲
 
@@ -130,5 +129,5 @@ ms.locfileid: "87799567"
 
 ## <a name="next-step"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
+* ブックの豊富な視覚化オプションの学習を[開始](#visualizations)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

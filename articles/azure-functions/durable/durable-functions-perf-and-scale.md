@@ -1,16 +1,16 @@
 ---
 title: Durable Functions のパフォーマンスとスケーリング - Azure
-description: Azure Functions の Durable Functions 拡張機能の概要です。
+description: Azure Functions の Durable Functions 拡張機能の固有のスケーリング特性について説明します。
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853706"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572801"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -20,19 +20,19 @@ ms.locfileid: "88853706"
 
 ## <a name="history-table"></a>履歴テーブル
 
-**履歴**テーブルは、タスク ハブ内のすべてのオーケストレーション インスタンスの履歴イベントを含む Azure Storage テーブルです。 このテーブルの名前は、*TaskHubName*History の形式になります。 インスタンスが実行されると、新しい行がこのテーブルに追加されます。 このテーブルのパーティション キーは、オーケストレーションのインスタンス ID から派生します。 ほとんどの場合、インスタンス ID はランダムであり、Azure Storage での内部パーティションの最適な分散が確保されます。
+**履歴** テーブルは、タスク ハブ内のすべてのオーケストレーション インスタンスの履歴イベントを含む Azure Storage テーブルです。 このテーブルの名前は、*TaskHubName* History の形式になります。 インスタンスが実行されると、新しい行がこのテーブルに追加されます。 このテーブルのパーティション キーは、オーケストレーションのインスタンス ID から派生します。 ほとんどの場合、インスタンス ID はランダムであり、Azure Storage での内部パーティションの最適な分散が確保されます。
 
 オーケストレーション インスタンスを実行する必要があるときには、履歴テーブルの適切な行がメモリに読み込まれます。 その後、これらの "*履歴イベント*" がオーケストレーター関数コードに再生され、以前にチェックポイントされた状態に戻されます。 このように実行履歴を使用した状態の再構築は、[イベント ソーシング パターン](/azure/architecture/patterns/event-sourcing)の影響を受けます。
 
 ## <a name="instances-table"></a>インスタンス テーブル
 
-**インスタンス** テーブルは、タスク ハブ内のすべてのオーケストレーションおよびエンティティ インスタンスの状態を含む別の Azure Storage テーブルです。 インスタンスが作成されると、このテーブルに新しい行が追加されます。 このテーブルのパーティション キーはオーケストレーション インスタンス ID またはエンティティ キーであり、行キーは固定定数です。 オーケストレーションまたはエンティティ インスタンスごとに 1 行があります。
+**インスタンス** テーブルは、タスク ハブ内のすべてのオーケストレーションおよびエンティティ インスタンスの状態を含む別の Azure Storage テーブルです。 インスタンスが作成されると、このテーブルに新しい行が追加されます。 このテーブルのパーティション キーはオーケストレーション インスタンス ID またはエンティティ キーであり、行キーは空の文字列です。 オーケストレーションまたはエンティティ インスタンスごとに 1 行があります。
 
-このテーブルは、`GetStatusAsync` (.NET) API と `getStatus` (JavaScript) API の他に、[status query HTTP API](durable-functions-http-api.md#get-instance-status) からのインスタンス クエリ要求を満たすために使用されます。 最終的には、前述の**履歴**テーブルの内容との整合性が維持されます。 このように別の Azure Storage テーブルを使用したインスタンス クエリ操作への効率的な対応は、[コマンド クエリ責務分離 (CQRS) パターン](/azure/architecture/patterns/cqrs)の影響を受けます。
+このテーブルは、`GetStatusAsync` (.NET) API と `getStatus` (JavaScript) API の他に、[status query HTTP API](durable-functions-http-api.md#get-instance-status) からのインスタンス クエリ要求を満たすために使用されます。 最終的には、前述の **履歴** テーブルの内容との整合性が維持されます。 このように別の Azure Storage テーブルを使用したインスタンス クエリ操作への効率的な対応は、[コマンド クエリ責務分離 (CQRS) パターン](/azure/architecture/patterns/cqrs)の影響を受けます。
 
 ## <a name="internal-queue-triggers"></a>内部キュー トリガー
 
-オーケストレーター関数とアクティビティ関数は、どちらも関数アプリのタスク ハブ内の内部キューによってトリガーされます。 このようにキューを使用することによって、信頼性のある "少なくとも 1 回" のメッセージ配信保証が実現されます。 Durable Functions には、**コントロール キュー**と**作業項目キュー**という 2 種類のキューがあります。
+オーケストレーター関数とアクティビティ関数は、どちらも関数アプリのタスク ハブ内の内部キューによってトリガーされます。 このようにキューを使用することによって、信頼性のある "少なくとも 1 回" のメッセージ配信保証が実現されます。 Durable Functions には、**コントロール キュー** と **作業項目キュー** という 2 種類のキューがあります。
 
 ### <a name="the-work-item-queue"></a>作業項目キュー
 
@@ -51,7 +51,7 @@ Durable Task 拡張機能は、アイドル状態のキューのポーリング�
 最大ポーリング遅延は、[host.json ファイル](../functions-host-json.md#durabletask)内の `maxQueuePollingInterval` プロパティを使用して構成できます。 このプロパティを高い値に設定するほど、メッセージ処理の待機時間が長くなる可能性があります。 長い処理時間が予期されるのは、非アクティブ期間の後のみになります。 このプロパティを低い値に設定すると、ストレージ トランザクションの増加により、ストレージ コストが上昇する可能性があります。
 
 > [!NOTE]
-> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
+> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../event-driven-scaling.md) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
 
 ### <a name="orchestration-start-delays"></a>オーケストレーション開始の遅延
 オーケストレーションのインスタンスを開始するには、タスク ハブのコントロール キューのいずれかに `ExecutionStarted` メッセージを追加します。 特定の状況では、オーケストレーションの実行がスケジュールされている時刻から、実際に実行が開始されるまでの間に、複数秒の遅延が発生する場合があります。 この時間の間、オーケストレーションのインスタンスは `Pending` 状態のままになります。 この遅延には、次の 2 つの原因が考えられます。
@@ -94,7 +94,7 @@ Durable Functions で使用されるキュー、テーブル、BLOB は、構成
 
 ## <a name="orchestrator-scale-out"></a>オーケストレーターのスケールアウト
 
-アクティビティ関数はステートレスであり、VM の追加によって自動的にスケールアウトされます。 一方、オーケストレーター関数およびエンティティは、1 つまたは複数のコントロール キューに*パーティション化*されます。 コントロール キューの数は、**host.json** ファイルで定義されています。 次の例の host.json スニペットを使うと、`durableTask/storageProvider/partitionCount` プロパティ (または Durable Functions 1.x の `durableTask/partitionCount`) は `3` に設定されます。
+アクティビティ関数はステートレスであり、VM の追加によって自動的にスケールアウトされます。 一方、オーケストレーター関数およびエンティティは、1 つまたは複数のコントロール キューに *パーティション化* されます。 コントロール キューの数は、**host.json** ファイルで定義されています。 次の例の host.json スニペットを使うと、`durableTask/storageProvider/partitionCount` プロパティ (または Durable Functions 1.x の `durableTask/partitionCount`) は `3` に設定されます。
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
@@ -103,7 +103,7 @@ Durable Functions で使用されるキュー、テーブル、BLOB は、構成
   "extensions": {
     "durableTask": {
       "storageProvider": {
-          "partitionCount": 3
+        "partitionCount": 3
       }
     }
   }
@@ -138,7 +138,7 @@ Durable Functions で使用されるキュー、テーブル、BLOB は、構成
 
 ## <a name="auto-scale"></a>自動スケール
 
-従量課金およびエラスティック Premium プランで実行されるすべての Azure Functions と同様に、Durable Functions では、[Azure Functions のスケール コントローラー](../functions-scale.md#runtime-scaling)による自動スケールがサポートされています。 スケール コントローラーは、_peek_ コマンドを定期的に発行してすべてのキューの待ち時間を監視します。 スケール コントローラーは、ピークされたメッセージの待ち時間に基づいて、VM を追加するか削除するかを決定します。
+従量課金およびエラスティック Premium プランで実行されるすべての Azure Functions と同様に、Durable Functions では、[Azure Functions のスケール コントローラー](../event-driven-scaling.md#runtime-scaling)による自動スケールがサポートされています。 スケール コントローラーは、_peek_ コマンドを定期的に発行してすべてのキューの待ち時間を監視します。 スケール コントローラーは、ピークされたメッセージの待ち時間に基づいて、VM を追加するか削除するかを決定します。
 
 コントロール キューのメッセージ待ち時間が長すぎると判断された場合、メッセージ待ち時間が許容レベルまで低減されるか、コントロール キューのパーティション数に達するまで、VM インスタンスが追加されます。 同様に、作業項目キューの待ち時間が長い場合は、パーティション数に関係なく、VM インスタンスが継続的に追加されます。
 
@@ -231,7 +231,7 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 
 ### <a name="orchestrator-function-replay"></a>オーケストレーター関数の再生
 
-前述のように、オーケストレーター関数は**履歴**テーブルの内容を使用して再生されます。 既定では、メッセージのバッチがコントロール キューからデキューされるたびに、オーケストレーター関数コードが再生されます。 ファンアウト、ファンイン パターンを使用していて、すべてのタスクが完了するまで待機している場合 (たとえば、.NET で `Task.WhenAll` や、JavaScript で `context.df.Task.all` を使用している場合) でも、タスク応答のバッチが時間の経過と共に処理されるため、再生が発生します。 延長セッションを有効にすると、オーケストレーター関数インスタンスがメモリに保持される期間が長くなり、履歴全体を再生することなく新しいメッセージを処理できます。
+前述のように、オーケストレーター関数は **履歴** テーブルの内容を使用して再生されます。 既定では、メッセージのバッチがコントロール キューからデキューされるたびに、オーケストレーター関数コードが再生されます。 ファンアウト、ファンイン パターンを使用していて、すべてのタスクが完了するまで待機している場合 (たとえば、.NET で `Task.WhenAll` や、JavaScript で `context.df.Task.all` を使用している場合) でも、タスク応答のバッチが時間の経過と共に処理されるため、再生が発生します。 延長セッションを有効にすると、オーケストレーター関数インスタンスがメモリに保持される期間が長くなり、履歴全体を再生することなく新しいメッセージを処理できます。
 
 延長セッションのパフォーマンス向上は、次のような場合によく見られます。
 
@@ -256,8 +256,8 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 * **アクティビティの順次実行**: このシナリオでは、一連のアクティビティ関数を順次実行するオーケストレーター関数を記述します。 これは、[関数チェーン](durable-functions-sequence.md)のサンプルに最も似ています。
 * **アクティビティの並列実行**: このシナリオでは、[ファンアウト/ファンイン](durable-functions-cloud-backup.md) パターンを使用して多数のアクティビティ関数を並列実行するオーケストレーター関数を記述します。
 * **並列応答処理**: このシナリオは、[ファンアウト/ファンイン](durable-functions-cloud-backup.md) パターンの後半部分です。 ファンインのパフォーマンスが重視されます。 ファンアウトとは異なり、ファンインは 1 つのオーケストレーター関数インスタンスによって実行されるため、ファンインを実行できる VM は 1 台だけであることに注意してください。
-* **外部イベント処理**: このシナリオは、一度に 1 つの[外部イベント](durable-functions-external-events.md)を待機する単一のオーケストレーター関数インスタンスを表します。
-* **エンティティ操作の処理**: このシナリオでは、_単一_ の[カウンター エンティティ](durable-functions-entities.md)で操作の一定のストリームを処理する速度をテストします。
+* **外部イベント処理**: このシナリオは、一度に 1 つの [外部イベント](durable-functions-external-events.md)を待機する単一のオーケストレーター関数インスタンスを表します。
+* **エンティティ操作の処理**: このシナリオでは、_単一_ の [カウンター エンティティ](durable-functions-entities.md)で操作の一定のストリームを処理する速度をテストします。
 
 > [!TIP]
 > ファンアウトとは異なり、ファンイン操作は 1 台の VM に制限されます。 アプリケーションでファンアウト/ファンイン パターンを使用しており、ファンインのパフォーマンスを懸念している場合は、アクティビティ関数のファンアウトを複数の[サブオーケストレーション](durable-functions-sub-orchestrations.md)に分けることを検討してください。

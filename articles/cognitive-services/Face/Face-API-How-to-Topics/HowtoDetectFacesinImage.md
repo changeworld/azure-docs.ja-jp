@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 231f30f5532d0934ba41e591aa821d56b11d5856
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f7a740b1015bda80000f65180eda2c5e618670da
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928005"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911241"
 ---
 # <a name="get-face-detection-data"></a>顔検出データの取得
 
@@ -30,77 +30,35 @@ ms.locfileid: "88928005"
 
 ## <a name="setup"></a>セットアップ
 
-このガイドでは、Face サブスクリプション キーとエンドポイント URL を使用して、`faceClient` という名前の [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) オブジェクトを既に作成していることを前提としています。 ここから、[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) (このガイドで使用) または [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) のいずれかを呼び出すことによって、顔検出機能を使用することができます。 この機能を設定する方法については、クイックスタートのいずれかに従ってください。
+このガイドでは、Face サブスクリプション キーとエンドポイント URL を使用して、`faceClient` という名前の [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) オブジェクトを既に作成していることを前提としています。 ここから、[DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) (このガイドで使用) または [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) のいずれかを呼び出すことによって、顔検出機能を使用することができます。 この機能を設定する方法については、クイックスタートのいずれかに従ってください。
 
 このガイドでは、Detect 呼び出しの仕様、たとえば、渡すことができる引数や返されたデータで実行できることを中心に説明を進めます。 必要な機能だけを照会することをお勧めします。 操作が増えると、完了までの時間が長くなります。
 
 ## <a name="get-basic-face-data"></a>基本的な顔データの取得
 
-顔を検出し、画像内での位置を取得するには、_returnFaceId_ パラメーターを **true** に設定して、メソッドを呼び出します。 これは、既定の設定です。
+顔を検出し、画像内での位置を取得するには、 _returnFaceId_ パラメーターを **true** に設定して、 [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) または [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) メソッドを呼び出します。 これは、既定の設定です。
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
-返された [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) オブジェクトを照会して、そのオブジェクトの一意の ID と、顔のピクセル座標を示す四角形を取得できます。
+返された [DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) オブジェクトを照会して、そのオブジェクトの一意の ID と、顔のピクセル座標を示す四角形を取得できます。
 
-```csharp
-foreach (var face in faces)
-{
-    string id = face.FaceId.ToString();
-    FaceRectangle rect = face.FaceRectangle;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
-顔の位置と寸法を解析する方法については、「[FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)」を参照してください。 通常、この四角形には、目、眉、鼻、口が含まれます。 頭の上部、耳、あごは必ずしも含まれません。 顔の四角形を使用して、頭部全体をトリミングしたり、上半身のポートレート (証明写真のような画像) を取得したりするために、四角形を各方向に拡張できます。
+顔の位置と寸法を解析する方法については、「[FaceRectangle](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)」を参照してください。 通常、この四角形には、目、眉、鼻、口が含まれます。 頭の上部、耳、あごは必ずしも含まれません。 顔の四角形を使用して、頭部全体をトリミングしたり、上半身のポートレート (証明写真のような画像) を取得したりするために、四角形を各方向に拡張できます。
 
 ## <a name="get-face-landmarks"></a>顔のランドマークの取得
 
-[顔のランドマーク](../concepts/face-detection.md#face-landmarks)とは、瞳孔、鼻の先など、顔の中の見つけやすいポイントのことです。 顔のランドマーク データを取得するには、_returnFaceLandmarks_ パラメーターを **true** に設定します。
+[顔のランドマーク](../concepts/face-detection.md#face-landmarks)とは、瞳孔、鼻の先など、顔の中の見つけやすいポイントのことです。 顔のランドマーク データを取得するには、 _detectionModel_ パラメーターを **DetectionModel.Detection01** に、 _returnFaceLandmarks_ パラメーターを **true** に設定します。
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
 次のコードは、鼻と瞳孔の位置を取得する方法を示しています。
 
-```csharp
-foreach (var face in faces)
-{
-    var landmarks = face.FaceLandmarks;
-
-    double noseX = landmarks.NoseTip.X;
-    double noseY = landmarks.NoseTip.Y;
-
-    double leftPupilX = landmarks.PupilLeft.X;
-    double leftPupilY = landmarks.PupilLeft.Y;
-
-    double rightPupilX = landmarks.PupilRight.X;
-    double rightPupilY = landmarks.PupilRight.Y;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks2":::
 
 顔のランドマーク データを使用して、顔の方向を正確に計算することもできます。 たとえば、顔の回転は、口の中心から目の中心までのベクターとして定義できます。 この次のコードではこのベクターが計算されます。
 
-```csharp
-var upperLipBottom = landmarks.UpperLipBottom;
-var underLipTop = landmarks.UnderLipTop;
-
-var centerOfMouth = new Point(
-    (upperLipBottom.X + underLipTop.X) / 2,
-    (upperLipBottom.Y + underLipTop.Y) / 2);
-
-var eyeLeftInner = landmarks.EyeLeftInner;
-var eyeRightInner = landmarks.EyeRightInner;
-
-var centerOfTwoEyes = new Point(
-    (eyeLeftInner.X + eyeRightInner.X) / 2,
-    (eyeLeftInner.Y + eyeRightInner.Y) / 2);
-
-Vector faceDirection = new Vector(
-    centerOfTwoEyes.X - centerOfMouth.X,
-    centerOfTwoEyes.Y - centerOfMouth.Y);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="direction":::
 
 顔の方向がわかったら、四角形の顔フレームを回転させて、より適切な向きに修正できます。 画像内の顔をトリミングするには、顔が常に縦に表示されるように、画像をプログラムで回転させます。
 
@@ -108,36 +66,13 @@ Vector faceDirection = new Vector(
 
 顔検出 API では、顔の四角形とランドマークに加えて、顔に関するいくつかの概念属性を分析できます。 完全な一覧については、[顔の属性](../concepts/face-detection.md#attributes)の概念に関するセクションを参照してください。
 
-顔の属性を分析するには、_returnFaceAttributes_ パラメーターを [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 値のリストに設定します。
+顔の属性を分析するには、 _detectionModel_ パラメーターを **DetectionModel.Detection01** に、 _returnFaceAttributes_ パラメーターを [FaceAttributeType Enum](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 値のリストに設定します。
 
-```csharp
-var requiredFaceAttributes = new FaceAttributeType[] {
-    FaceAttributeType.Age,
-    FaceAttributeType.Gender,
-    FaceAttributeType.Smile,
-    FaceAttributeType.FacialHair,
-    FaceAttributeType.HeadPose,
-    FaceAttributeType.Glasses,
-    FaceAttributeType.Emotion
-};
-var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
 その後、返されたデータへの参照を取得し、ニーズに応じてさらに操作します。
 
-```csharp
-foreach (var face in faces)
-{
-    var attributes = face.FaceAttributes;
-    var age = attributes.Age;
-    var gender = attributes.Gender;
-    var smile = attributes.Smile;
-    var facialHair = attributes.FacialHair;
-    var headPose = attributes.HeadPose;
-    var glasses = attributes.Glasses;
-    var emotion = attributes.Emotion;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes2":::
 
 各属性の詳細については、「[Face detection and attributes (顔の検出と属性)](../concepts/face-detection.md)」概念ガイドを参照してください。
 
@@ -150,4 +85,4 @@ foreach (var face in faces)
 ## <a name="related-topics"></a>関連トピック
 
 - [リファレンス ドキュメント (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [リファレンス ドキュメント (.NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [リファレンス ドキュメント (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)

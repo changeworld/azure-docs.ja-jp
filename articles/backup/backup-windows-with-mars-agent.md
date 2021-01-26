@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182090"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90052224"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server ファイルおよびフォルダーを Azure にバックアップする
 
@@ -125,7 +125,7 @@ Azure Backup のネットワーク調整では、ローカル オペレーティ
 1. **[調整]** タブで、 **[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** をオンにします。
 
     ![バックアップ操作のネットワーク帯域幅調整を設定する](./media/backup-configure-vault/throttling-dialog.png)
-1. 作業時間中と作業時間外に使用できる帯域幅を指定します。 帯域幅の値は 512 Kbps から開始し、最大は 1,023 MBps です。 **[OK]** をクリックします。
+1. 作業時間中と作業時間外に使用できる帯域幅を指定します。 帯域幅の値は 512 Kbps から開始し、最大は 1,023 Mbps です。 **[OK]** をクリックします。
 
 ## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 

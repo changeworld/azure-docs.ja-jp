@@ -8,51 +8,64 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171144"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555585"
 ---
 # <a name="convert-to-image-directory"></a>イメージ ディレクトリへの変換
 
-この記事では、イメージ ディレクトリへの変換モジュールを使用して画像データセットを 'Image Directory' データ型に変換する方法について説明します。これは、Azure Machine Learning デザイナー (プレビュー) の画像関連タスク (画像分類など) で使用される標準のデータ形式です。
+この記事では、イメージ ディレクトリへの変換モジュールを使用して画像データセットを *Image Directory* データ型に変換する方法について説明します。これは、Azure Machine Learning デザイナーの画像関連タスク (画像分類など) で使用される標準のデータ形式です。
 
 ## <a name="how-to-use-convert-to-image-directory"></a>イメージ ディレクトリへの変換を使用する方法  
 
-1.  **イメージ ディレクトリへの変換**モジュールを実験に追加します。 このモジュールは、モジュール一覧の [Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\) カテゴリにあります。 
+1. まず、イメージ データセットを準備します。 
 
-2.  [画像データセットを登録](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)し、モジュールの入力ポートに接続します。 入力データセットに画像が含まれていることを確認してください。 
-    次のデータセット形式がサポートされています。
-
-    - 拡張子が '.zip'、'tar'、'.gz'、'bz2' の圧縮ファイル。
-    - 画像を含むフォルダー。 **このようなフォルダーは、最初に圧縮してから、その圧縮ファイルをデータセットとして使用することを強くお勧めします**。
+    監視学習を行うには、トレーニング データ セットのラベルを指定する必要があります。 イメージ データセット ファイルは、次の構造になっている必要があります。
+    
+    ```
+    Your_image_folder_name/Category_1/xxx.png
+    Your_image_folder_name/Category_1/xxy.jpg
+    Your_image_folder_name/Category_1/xxz.jpeg
+    
+    Your_image_folder_name/Category_2/123.png
+    Your_image_folder_name/Category_2/nsdf3.png
+    Your_image_folder_name/Category_2/asd932_.png
+    ```
+    
+    イメージ データセット フォルダーには、複数のサブフォルダーがあります。 各サブフォルダーには、それぞれ1つのカテゴリの画像が含まれます。 サブフォルダーの名前は、イメージ分類などのタスクのラベルと見なされます。 詳細については、「[Torchvision データセット](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder)」を参照してください。
 
     > [!WARNING]
-    > **データのインポート** モジュールの出力型は DataFrame Directory であるため、**データのインポート** モジュールを使用して画像データセットをインポートすることは**できません**。
+    > 現在、データ ラベルからエクスポートされたラベル付きデータセットは、デザイナーではサポートされていません。
+
+    これらの拡張子を持つイメージ (小文字) はサポートされています: .jpg、.jpeg、.png、ppm、.bmp、. pgm、.tif、tiff、. webp。 また、1 つのフォルダーに複数の種類のイメージを含めることもできます。 各カテゴリ フォルダーに同じ数のイメージを含める必要はありません。
+
+    拡張子が.zip、. tar、. gz、および bz2 のフォルダーまたは圧縮ファイルを使用できます。 **圧縮ファイルは、パフォーマンスを高めるため推奨されます。** 
     
+    ![イメージのサンプル データセット](./media/module/image-sample-dataset.png)
 
     > [!NOTE]
-    > 教師あり学習で画像データセットを使用する場合は、ラベルが必要です。
-    > 画像分類タスクでは、この画像データセットが Torchvision ImageFolder 形式で構成されている場合、モジュールの出力に画像の 'カテゴリ' としてラベルを生成することができます。 それ以外の場合、ラベルなしで画像だけが保存されます。 ラベルを取得するように画像データセットを整理する方法の例を次に示します。画像のカテゴリをサブフォルダー名として使用します。 詳細については、「[Torchvision データセット](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder)」を参照してください。
-    >
-    > ```
-    > root/dog/xxx.png
-    > root/dog/xxy.png
-    > root/dog/xxz.png
-    >
-    > root/cat/123.png
-    > root/cat/nsdf3.png
-    > root/cat/asd932_.png
-    > ```
+    > 推論の場合、イメージ データセットのフォルダーには、未分類のイメージのみを含める必要があります。
 
-3.  パイプラインを送信します。
+1. イメージ ディレクトリ モジュールへの変換の入力は **ファイル データセット** でなければならないため、[イメージ データセットはファイル データセットとしてワークスペースに登録します。](../how-to-create-register-datasets.md)
+
+1. 登録されているイメージ データセットをキャンバスに追加します。 登録されているデータセットは、キャンバスの左側にあるモジュール一覧の **データセット** カテゴリで確認できます。 現在、デザイナーでは、イメージデータセットの視覚化はサポートされていません。
+
+    > [!WARNING]
+    > **データのインポート** モジュールの出力型は DataFrame Directory であるため、**データのインポート** モジュールを使用して画像データセットをインポートすることは **できません**。
+
+1. **イメージ ディレクトリへの変換** モジュールをキャンバスに追加します。 このモジュールは、モジュール一覧の [Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\) カテゴリにあります。 これをイメージ データセットに接続します。
+    
+3.  パイプラインを送信します。 このモジュールは、GPU または CPU 上で実行できます。
 
 ## <a name="results"></a>結果
 
-**イメージ ディレクトリへの変換**モジュールの出力は Image Directory 形式であり、入力ポートの形式が同様に Image Directory である他の画像関連モジュールに接続できます。
+**イメージ ディレクトリへの変換** モジュールの出力は **Image Directory** 形式であり、入力ポートの形式が同様に Image Directory である他の画像関連モジュールに接続できます。
+
+![イメージ ディレクトリへの変換の出力](./media/module/convert-to-image-directory-output.png)
 
 ## <a name="technical-notes"></a>テクニカル ノート 
 
@@ -70,4 +83,4 @@ ms.locfileid: "86171144"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

@@ -12,27 +12,27 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5348c0ed5d80e2738bb865ca3ec1ddf5aaed009a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495740"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118049"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 
-このチュートリアルでは、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer)を使用して、予測機械学習モデルを構築します。 このモデルは、Azure Synapse に格納されているデータに基づきます。 チュートリアルのシナリオは、Adventure Works (自転車店) でターゲット マーケティング キャンペーンを作成できるように、顧客が自転車を購入する可能性があるかどうかを予測することです。
+このチュートリアルでは、[Azure Machine Learning デザイナー](../../machine-learning/concept-designer.md)を使用して、予測機械学習モデルを構築します。 このモデルは、Azure Synapse に格納されているデータに基づきます。 チュートリアルのシナリオは、Adventure Works (自転車店) でターゲット マーケティング キャンペーンを作成できるように、顧客が自転車を購入する可能性があるかどうかを予測することです。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルの手順を実行するには、次のものが必要です。
 
-* AdventureWorksDW サンプル データが事前に読み込まれた SQL プール。 この SQL プールをプロビジョニングするには、[SQL プールの作成](create-data-warehouse-portal.md)に関するページを参照し、サンプル データを読み込むことを選択します。 データ ウェアハウスは既にあるが、サンプル データがない場合は、[サンプル データを手動で読み込む](load-data-from-azure-blob-storage-using-polybase.md)ことができます。
-* Azure Machine Learning ワークスペース。 [このチュートリアル](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)に従って、新しいものを作成します。
+* AdventureWorksDW サンプル データが事前に読み込まれた SQL プール。 この SQL プールをプロビジョニングするには、[SQL プールの作成](create-data-warehouse-portal.md)に関するページを参照し、サンプル データを読み込むことを選択します。 データ ウェアハウスは既にあるが、サンプル データがない場合は、[サンプル データを手動で読み込む](./load-data-from-azure-blob-storage-using-copy.md)ことができます。
+* Azure Machine Learning ワークスペース。 [このチュートリアル](../../machine-learning/how-to-manage-workspace.md)に従って、新しいものを作成します。
 
 ## <a name="get-the-data"></a>データを取得する
 
-使用しているデータは、AdventureWorksDW の dbo.vTargetMail ビューにあります。 このチュートリアルでデータストアを使用するには、Azure Synapse で現在データセットをサポートしていないため、データをまず Azure Data Lake Storage アカウントにエクスポートします。 Azure Data Factory を使用することで、[コピー アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)を使用して、データ ウェアハウスから Azure Data Lake Storage にデータをエクスポートできます。 インポートには、次のクエリを使用します。
+使用しているデータは、AdventureWorksDW の dbo.vTargetMail ビューにあります。 このチュートリアルでデータストアを使用するには、Azure Synapse で現在データセットをサポートしていないため、データをまず Azure Data Lake Storage アカウントにエクスポートします。 Azure Data Factory を使用することで、[コピー アクティビティ](../../data-factory/copy-activity-overview.md)を使用して、データ ウェアハウスから Azure Data Lake Storage にデータをエクスポートできます。 インポートには、次のクエリを使用します。
 
 ```sql
 SELECT [CustomerKey]
@@ -54,9 +54,9 @@ SELECT [CustomerKey]
 FROM [dbo].[vTargetMail]
 ```
 
-Azure Data Lake Storage でデータが使用できるようになったら、Azure Machine Learning のデータストアを使用して、[Azure Storage サービスに接続](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)します。 次の手順に従って、データストアと対応するデータセットを作成します。
+Azure Data Lake Storage でデータが使用できるようになったら、Azure Machine Learning のデータストアを使用して、[Azure Storage サービスに接続](../../machine-learning/how-to-access-data.md)します。 次の手順に従って、データストアと対応するデータセットを作成します。
 
-1. Azure portal から、または [Azure Machine Learning Studio](https://ml.azure.com/) にサインインして、Azure Machine learning Studio を起動します。
+1. Azure portal から、または [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインして、Azure Machine learning スタジオを起動します。
 
 1. **管理** セクションの左ウィンドウで **データストア** をクリックし、**New Datastore\(新しいデータストア\)** をクリックします。
 
@@ -68,7 +68,7 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 1. データセットの名前を指定し、種類を **[表形式]** として選択します。 次に、 **[次へ]** をクリックして先に進みます。
 
-1. **データストアの選択または作成セクション**で、 **[Previously created datastore]\(以前に作成されたデータストア\)** オプションを選択します。 前に作成したデータストアを選択します。 [次へ] をクリックし、パスとファイルの設定を指定します。 ファイルに列ヘッダーが含まれる場合は、必ずそれを指定してください。
+1. **データストアの選択または作成セクション** で、 **[Previously created datastore]\(以前に作成されたデータストア\)** オプションを選択します。 前に作成したデータストアを選択します。 [次へ] をクリックし、パスとファイルの設定を指定します。 ファイルに列ヘッダーが含まれる場合は、必ずそれを指定してください。
 
 1. 最後に、 **[作成]** をクリックしてデータセットを作成します。
 
@@ -155,10 +155,10 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 * スコア付け確率: 顧客が自転車を購入する可能性
 * スコア付けラベル: モデルによって行われた分類 - 自転車を購入する顧客 (1) か、購入しない顧客 (0) このラベル付けの確率のしきい値は 50% に設定されており、調整できます。
 
-[BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較して、モデルのパフォーマンスがどの程度優れていたか確認します。 次に、このモデルを使用して、新しい顧客の予測を行うことができます。 [このモデルを Web サービスとして発行する](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)か、または Azure Synapse に結果を書き戻すことができます。
+[BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較して、モデルのパフォーマンスがどの程度優れていたか確認します。 次に、このモデルを使用して、新しい顧客の予測を行うことができます。 [このモデルを Web サービスとして発行する](../../machine-learning/tutorial-designer-automobile-price-deploy.md)か、または Azure Synapse に結果を書き戻すことができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning の詳細については、[Azure での機械学習の概要](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)に関するページを参照してください。
+Azure Machine Learning の詳細については、[Azure での機械学習の概要](../../machine-learning/overview-what-is-azure-ml.md)に関するページを参照してください。
 
 データ ウェアハウスの組み込みのスコアリングについて、[こちら](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を参照してください。

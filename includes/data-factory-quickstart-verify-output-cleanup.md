@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: c0fcdf1cf69c55f63288138bc7377a78295cb2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544687"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013364"
 ---
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
@@ -17,13 +17,13 @@ ms.locfileid: "86544687"
 
 1. Azure portal の **adftutorial** コンテナー ページで、 **[最新の情報に更新]** を選択して出力フォルダーを表示します。 
     
-    ![更新](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![コンテナー ページのスクリーンショット。ここでページを最新の情報に更新することができます。](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 
 2. フォルダー一覧で、 **[output]** を選択します。 
 
 3. **emp.txt** が output フォルダーにコピーされていることを確認します。 
 
-    ![更新](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![output フォルダーの内容を示すスクリーンショット。](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

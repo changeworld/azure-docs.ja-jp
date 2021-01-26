@@ -19,10 +19,18 @@
   items:
     - name: データの共有
       href: share-your-data.md
+      displayName: 'Azure CLI, az datashare account create, az datashare create'
     - name: データの受け入れと受信
       href: subscribe-to-data-share.md
+      displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
+    - name: Security
+      items:
+        - name: セキュリティの概要
+          href: security.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: Azure Data Share の用語
       href: terminology.md
     - name: ロールと要件
@@ -31,8 +39,6 @@
       href: concepts-pricing.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: 操作方法ガイド
@@ -41,15 +47,11 @@
       items:
         - name: Azure Storage からの共有
           href: how-to-share-from-storage.md
-        - name: Azure SQL Database または Synapse Analytics からの共有
+        - name: Azure SQL Database または Azure Synapse Analytics からの共有
           href: how-to-share-from-sql.md
         - name: Azure Data Explorer からの共有
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: モニター
-      href: how-to-monitor.md
-    - name: トラブルシューティング
-      href: data-share-troubleshoot.md
     - name: データセットの追加
       href: how-to-add-datasets.md
     - name: データセット マッピングの構成
@@ -60,24 +62,26 @@
       href: how-to-delete-invitation.md
     - name: 共有サブスクリプションの取り消し
       href: how-to-revoke-share-subscription.md
-    - name: Security
-      href: security.md
+    - name: モニター
+      href: how-to-monitor.md
     - name: 障害復旧
       href: disaster-recovery.md
+    - name: トラブルシューティング
+      href: data-share-troubleshoot.md
 - name: リファレンス
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+      href: /powershell/module/az.datashare/?view=azps-2.6.0
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
+      href: /cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+      href: /answers/topics/azure-data-share.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: ブログ

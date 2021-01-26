@@ -5,16 +5,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304084"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612689"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
+
+はい。Azure Virtual WAN は一般提供 (GA) の状態にあります。 ただし、Virtual WAN はいくつかの機能とシナリオから構成されています。 Microsoft がプレビュー タグを適用する機能またはシナリオが Virtual WAN 内にあります。 その場合、特定の機能またはシナリオ自体がプレビューになります。 特定のプレビュー機能を使用しない場合、通常の GA サポートが適用されます。 プレビュー サポートについて詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
 Virtual WAN では、サイト/サイト間 VPN 接続、ユーザー/P2S 接続、ExpressRoute 接続、Virtual Network 接続、VPN ExpressRoute 相互接続、VNet 間の推移的な接続、一元化されたルーティング、Azure Firewall、Firewall Manager のセキュリティ、監視、ExpressRoute 暗号化など、数多くの機能が 1 つの画面に組み込まれています。 Virtual WAN の利用を開始するために、これらのユースケースをすべて用意する必要はありません。 1 つのユース ケースのみで利用を開始できます。 Virtual WAN アーキテクチャは、スケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャで、ブランチ (VPN/SD-WAN デバイス)、ユーザー (Azure VPN クライアント、openVPN、または IKEv2 クライアント)、ExpressRoute 回線、仮想ネットワークが仮想ハブのスポークとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN/VPN デバイスを利用したハブとスポークの場合、ユーザーは Azure Virtual WAN ポータル内で手動で設定するか、Virtual WAN パートナーのCPE (SD-WAN/VPN) を使用して Azure への接続を設定することができます。 Virtual WAN パートナーによって、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化が提供されます。 ポイント対サイト (ユーザー VPN) 接続の場合、[Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN、または IKEv2 クライアントがサポートされています。 
@@ -83,7 +87,7 @@ P2S クライアント用の DNS サーバーを追加するには、2つのオ�
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>ユーザー VPN (ポイント対サイト) の場合、サポートされているクライアントの数はいくつですか。
 
-各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 20 では最大 10,000 接続がサポートされます。 
+各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 18 では最大 10,000 接続がサポートされます。 
 
 たとえば、ユーザーが 1 スケール ユニットを選択したとします。 各スケール ユニットはデプロイされた 1 つのアクティブ/アクティブ ゲートウェイを意味し、(この例では 2 つある) インスタンスのそれぞれで最大 500 接続がサポートされます。 ゲートウェイあたり 500 接続 * 2 を取得できますが、このスケール ユニットで 500 ではなく、1,000 を計画することを意味するわけではありません。 推奨される接続数を超えた場合は、余分な 500 の接続が中断される可能性があるため、インスタンスの処理が必要になることがあります。 また、スケール ユニットをスケールアップまたはスケールダウンする場合や、VPN ゲートウェイのポイント対サイト構成を変更する場合に備えて、必ずダウンタイムを計画してください。
 
@@ -224,7 +228,7 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 仮想ハブが複数のリモート ハブからの同じルートを学習する場合、次の順序で決定されます。
 
 1. プレフィックスの最長一致。
-2. interhub 経由のローカル ルート。
+2. インターハブ上のローカル ルート (仮想ハブからは 65520-65520 がインターハブ AS に対して割り当てられます)
 3. BGP 経由の静的ルート: これは、仮想ハブ ルーターによって行われる決定に対するコンテキストにあります。 しかし、決定を行うのが VPN ゲートウェイであり、サイトで BGP 経由のルートをアドバタイズする場合、または静的アドレス プレフィックスを指定する場合は、静的ルートが BGP ルートよりも優先されることがあります。
 4. VPN 経由の ExpressRoute (ER): コンテキストがローカル ハブの場合、VPN よりも ER が優先されます。 ExpressRoute 回線間の転送接続は、Global Reach 経由でのみ使用できます。 そのため、ExpressRoute 回線が 1 つのハブに接続されており、VPN 接続を使用して異なるハブに接続されている別の ExpressRoute 回線があるシナリオの場合、ハブ間のシナリオでは VPN が優先される可能性があります。
 5. AS パスの長さ。
@@ -256,6 +260,8 @@ ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エ
 
 IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv4 および IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。 
 
+Azure Firewall 経由のインターネット ブレークアウトを使用したポイント対サイトの (ユーザー) VPN シナリオでは、おそらく、仮想 WAN ハブに対してトラフィックを強制するために、クライアント デバイスの IPv6 接続を無効にする必要があります。 最近のデバイスでは、IPv6 アドレスが既定で使用されるためです。
+
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
 
 最小バージョンとして 05-01-2020 (2020 年 5 月 1 日) が必要です。 
@@ -267,3 +273,11 @@ IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされ
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Basic タイプの Virtual WAN と Standard タイプの Virtual WAN の違いは何ですか。
 
 「[Basic および Standard の仮想 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)」を参照してください。 価格については、[価格](https://azure.microsoft.com/pricing/details/virtual-wan/)ページを参照してください。
+
+### <a name="does-virtual-wan-store-customer-data"></a>Virtual WAN に顧客データは格納されますか? 
+
+いいえ。 Virtual WAN にお客様のデータは一切格納されません。
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>ユーザーに代わって Virtual WAN をサービスとして管理できるマネージド サービス プロバイダーはありますか? 
+
+はい。 Azure Marketplace から利用できるマネージド サービス プロバイダー (MSP) ソリューションの一覧については、「[Azure ネットワーク MSP パートナーによる Azure Marketplace のオファー](../articles/networking/networking-partners-msp.md#msp)」を参照してください。

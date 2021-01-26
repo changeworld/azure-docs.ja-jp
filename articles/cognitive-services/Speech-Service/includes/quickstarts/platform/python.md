@@ -2,14 +2,14 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/04/2020
+ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: a7e47ebd9695b57163aacdfa5faf3ad82fc7e12d
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: d50d4c554f47629f6e04adf957e02f8ffcc48fe5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805784"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509408"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、`pip install azure-cognitiveservices-speech` を実行します。
 
@@ -20,25 +20,20 @@ ms.locfileid: "85805784"
 - 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
   - Windows: x64 および x86
   - Mac: macOS X バージョン 10.12 以降
-  - Linux: x64 上の Ubuntu 16.04 または 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8
+  - Linux。[サポートされている Linux ディストリビューションとターゲット アーキテクチャ](~/articles/cognitive-services/speech-service/speech-sdk.md)の一覧を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - サポートされている Linux プラットフォームでは、特定のライブラリがインストールされている必要があります (Secure Sockets Layer サポート用に `libssl`、サウンド サポート用に `libasound2`)。 これらのライブラリの正しいバージョンをインストールするために必要なコマンドについては、下記のディストリビューションを参照してください。
 
-  - Ubuntu では、以下のコマンドを実行して、必要なパッケージをインストールします。
+  - Ubuntu/Debian では、次のコマンドを実行して、必要なパッケージをインストールします。
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - Debian 9 では、以下のコマンドを実行して、必要なパッケージをインストールします。
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    libssl1.0.0 が使用できない場合は、libssl1.0.x (ここで、x は 0 より大) または libssl1.1 を代わりにインストールします。
 
   - RHEL または CentOS では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
@@ -95,7 +90,7 @@ Speech SDK Python パッケージの更新プログラムは、PyPI を通じて
 新しいバージョンが利用可能な場合は、コマンド `pip install --upgrade azure-cognitiveservices-speech` を使用してそれに更新できます。
 `azure.cognitiveservices.speech.__version__` 変数を調べて、現在インストールされているバージョンを確認します。
 
-問題があるか、機能が欠落している場合は、「[サポート オプションとヘルプ オプション](~/articles/cognitive-services/speech-service/support.md)」を参照してください。
+問題があるか、機能が欠落している場合は、「[サポート オプションとヘルプ オプション](../../../../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

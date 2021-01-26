@@ -3,18 +3,18 @@ title: 仮想ネットワーク
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services リソースの多層型ネットワーク セキュリティを構成します。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 12/04/2020
+ms.author: aahi
+ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505029"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97034022"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -40,47 +40,39 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 
 ## <a name="supported-regions-and-service-offerings"></a>サポートされているリージョンとサービス内容
 
-仮想ネットワーク (Vnet) は、[Cognitive Services が使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/)でサポートされます。 Cognitive Services が一覧にない場合、現在、仮想ネットワークはサポートされていません。
+仮想ネットワーク (Vnet) は、[Cognitive Services が使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/)でサポートされます。 Cognitive Services は、ネットワーク ルールの構成用のサービス タグをサポートしています。 次に示すサービスは、**CognitiveServicesManagement** サービス タグに含まれています。
 
 > [!div class="checklist"]
-> * [Anomaly Detector](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Face](./face/index.yml)
-> * [Form Recognizer](./form-recognizer/index.yml)
-> * [Language Understanding](./luis/index.yml)
-> * [Personalizer](./personalizer/index.yml)
-> * [Text Analytics](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [Immersive Reader](./immersive-reader/index.yml)
+> * Anomaly Detector
+> * Computer Vision
+> * Content Moderator
+> * Custom Vision
+> * Face
+> * Form Recognizer
+> * イマーシブ リーダー
+> * Language Understanding (LUIS)
+> * Personalizer
+> * Speech Services
+> * Text Analytics
+> * QnA Maker
+> * Translator Text
 
-## <a name="service-tags"></a>サービス タグ
 
-Cognitive Services は、ネットワーク ルールの構成用のサービス タグをサポートしています。 次に示すサービスは、**CognitiveServicesManagement** サービス タグに含まれています。
+> [!NOTE]
+> LUIS を使用している場合、**CognitiveServicesManagement** タグを指定しても、SDK または REST API を使用してサービスを使用できるようになるだけです。 仮想ネットワークから LUIS ポータルにアクセスして使用するには、次のタグを使用する必要があります。  
+> * **AzureActiveDirectory**
+> * **AzureFrontDoor.Frontend**
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
 
-> [!div class="checklist"]
-> * [Anomaly Detector](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Face](./face/index.yml)
-> * [Form Recognizer](./form-recognizer/index.yml)
-> * [Language Understanding (LUIS)](./luis/index.yml)
-> * [Personalizer](./personalizer/index.yml)
-> * [Text Analytics](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator](./translator/index.yml)
-> * [Speech Service](./speech-service/index.yml)
-> * [Immersive Reader](./immersive-reader/index.yml)
+
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
 
 既定では、Cognitive Services リソースは任意のネットワーク上のクライアントからの接続を受け入れます。 選択したネットワークへのアクセスを制限するには、まず既定のアクションを変更する必要があります。
 
 > [!WARNING]
-> ネットワーク ルールを変更すると、Azure Cognitive Services に接続するアプリケーションの機能に影響が及ぶことがあります。 既定のネットワーク ルールを**拒否**に設定すると、アクセスを**許可**する特定のネットワーク ルールも合わせて適用されていない限り、データへのアクセスがすべてブロックされます。 アクセスを拒否する既定のルールを変更する前に、ネットワーク ルールを使用して、許可されたネットワークへのアクセスを許可するようにしてください。 オンプレミス ネットワークの IP アドレスを一覧表示することを許可する場合は、オンプレミス ネットワークから発信することができるすべてのパブリック IP アドレスを追加してください。
+> ネットワーク ルールを変更すると、Azure Cognitive Services に接続するアプリケーションの機能に影響が及ぶことがあります。 既定のネットワーク ルールを **拒否** に設定すると、アクセスを **許可** する特定のネットワーク ルールも合わせて適用されていない限り、データへのアクセスがすべてブロックされます。 アクセスを拒否する既定のルールを変更する前に、ネットワーク ルールを使用して、許可されたネットワークへのアクセスを許可するようにしてください。 オンプレミス ネットワークの IP アドレスを一覧表示することを許可する場合は、オンプレミス ネットワークから発信することができるすべてのパブリック IP アドレスを追加してください。
 
 ### <a name="managing-default-network-access-rules"></a>既定のネットワーク アクセス ルールを管理する
 
@@ -103,7 +95,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
 
 1. Cognitive Services リソースの既定のルールの状態を表示します。
 
@@ -139,7 +131,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
 
 1. Cognitive Services リソースの既定のルールの状態を表示します。
 
@@ -165,7 +157,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
         --default-action Allow
     ```
 
-***
+**_
 
 ## <a name="grant-access-from-a-virtual-network"></a>仮想ネットワークからアクセスの許可
 
@@ -177,7 +169,7 @@ VNet 内の Azure Cognitive Services に対する[サービス エンドポイ�
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-Cognitive Services リソースに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は、既定の *共同作成者* ロール、または *Cognitive Services 共同作成者* ロールです。 必要なアクセス許可をカスタム ロール定義に追加することもできます。
+Cognitive Services リソースに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は、既定の共同作成者ロール、または "*Cognitive Services 共同作成者*" ロールです。 必要なアクセス許可をカスタム ロール定義に追加することもできます。
 
 Cognitive Services リソースとアクセスを許可される仮想ネットワークは、異なる Azure AD テナントの一部であるサブスクリプションなど、異なるサブスクリプションに含まれていてもかまいません。
 
@@ -225,7 +217,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
 
 1. 仮想ネットワーク規則を一覧表示します。
 
@@ -285,7 +277,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
 
 1. 仮想ネットワーク規則を一覧表示します。
 
@@ -333,10 +325,10 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
         --subnet $subnetid
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+> 拒否するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>インターネットの IP 範囲からのアクセスを許可する
 
@@ -347,7 +339,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
    > [!Tip]
    > 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。
 
-IP ネットワーク ルールは、**パブリック インターネット**の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、`10.*`、`172.16.*` - `172.31.*`、および `192.168.*` で始まるアドレスが含まれます。
+IP ネットワーク ルールは、**パブリック インターネット** の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、`10.*`、`172.16.*` - `172.31.*`、および `192.168.*` で始まるアドレスが含まれます。
 
    > [!NOTE]
    > IP ネットワーク ルールは、Cognitive Services リソースと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。
@@ -384,7 +376,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
 
 1. IP ネットワーク ルールを一覧表示します。
 
@@ -442,7 +434,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
 
 1. IP ネットワーク ルールを一覧表示します。
 
@@ -483,10 +475,10 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
         --ip-address "16.17.18.0/24"
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+> 拒否するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
 ## <a name="use-private-endpoints"></a>プライベート エンドポイントを使用する
 
@@ -502,7 +494,7 @@ Cognitive Services リソースのプライベート エンドポイントを使
 
 プライベート エンドポイントは、[VNet](../virtual-network/virtual-networks-overview.md) 内の Azure リソース用の特別なネットワーク インターフェイスです。 Cognitive Services リソースのプライベート エンドポイントを作成すると、対象の VNet 上のクライアントと対象のリソース間のセキュリティで保護された接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。 プライベート エンドポイントと Cognitive Services サービス間の接続には、セキュリティで保護されたプライベート リンクが使用されます。
 
-VNet 内のアプリケーションは、プライベート エンドポイント経由でサービスにシームレスに接続できます。その際、使用される接続文字列と承認メカニズムは、それを経由しない場合と同じものになります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート エンドポイントは、Cognitive Services リソースでサポートされているすべてのプロトコル (REST を含む) で使用できます。
+VNet 内のアプリケーションは、プライベート エンドポイント経由でサービスにシームレスに接続できます。その際、使用される接続文字列と承認メカニズムは、それを経由しない場合と同じものになります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-services)」セクションを参照してください。 プライベート エンドポイントは、Cognitive Services リソースでサポートされているすべてのプロトコル (REST を含む) で使用できます。
 
 プライベート エンドポイントは、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用するサブネットに作成できます。 サブネット内のクライアントは、プライベート エンドポイントを使用して 1 つの Cognitive Services リソースに接続する一方で、サービス エンドポイントを使用して他のリソースにアクセスできます。
 
@@ -520,17 +512,17 @@ Cognitive Services リソースの所有者は、[Azure portal](https://portal.a
 
 ### <a name="connecting-to-private-endpoints"></a>プライベート エンドポイントへの接続
 
-プライベート エンドポイントを使用する VNet 上のクライアントは、パブリック エンドポイントに接続するクライアントと同じ接続文字列を Cognitive Services リソースに対して使用する必要があります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート リンク経由の VNet から Cognitive Services リソースへの接続を自動的にルーティングするために、DNS 解決に依存しています。 Speech Service 
+プライベート エンドポイントを使用する VNet 上のクライアントは、パブリック エンドポイントに接続するクライアントと同じ接続文字列を Cognitive Services リソースに対して使用する必要があります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-services)」セクションを参照してください。 プライベート リンク経由の VNet から Cognitive Services リソースへの接続を自動的にルーティングするために、DNS 解決に依存しています。 
 
 既定では、VNet に接続されている[プライベート DNS ゾーン](../dns/private-dns-overview.md)が作成され、プライベート エンドポイントに必要な更新も行われます。 ただし、独自の DNS サーバーを使用している場合は、DNS 構成に追加の変更が必要になることがあります。 以下の [DNS の変更](#dns-changes-for-private-endpoints)に関するセクションで、プライベート エンドポイントに必要な更新について説明しています。
 
-### <a name="private-endpoints-with-the-speech-service"></a>プライベート エンドポイントと Speech Service
+### <a name="private-endpoints-with-the-speech-services"></a>プライベート エンドポイントと Speech Service
 
-Speech Service でプライベート エンドポイントを使用する場合は、カスタム エンドポイントを使用して Speech Service を呼び出す必要があります。 グローバル エンドポイントは使用できません。 エンドポイントは、`{account}.{stt|tts|voice|dls}.speech.microsoft.com` というパターンに従う必要があります。
+「[Azure Private Link によって提供されるプライベート エンドポイントでの Speech Service の使用](Speech-Service/speech-services-private-link.md)」を参照してください。
 
 ### <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
 
-プライベート エンドポイントを作成すると、Cognitive Services リソースの DNS CNAME リソース レコードは、プレフィックス "*privatelink*" を持つサブドメイン内のエイリアスに更新されます。 既定では、"*privatelink*" サブドメインに対応する[プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
+プライベート エンドポイントを作成すると、Cognitive Services リソースの DNS CNAME リソース レコードは、プレフィックス "*privatelink*" を持つサブドメイン内のエイリアスに更新されます。 既定では、"*privatelink*" サブドメインに対応する [プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
 
 プライベート エンドポイントを備える VNet の外部からエンドポイント URL を解決すると、Cognitive Services リソースのパブリック エンドポイントに解決されます。 プライベート エンドポイントをホストしている VNet から解決されると、エンドポイント URL はプライベート エンドポイントの IP アドレスに解決されます。
 
@@ -543,8 +535,8 @@ Speech Service でプライベート エンドポイントを使用する場合�
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
 
-* [Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-* [プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+* [プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ### <a name="pricing"></a>価格
 
@@ -552,5 +544,5 @@ Speech Service でプライベート エンドポイントを使用する場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-* さまざまな [AzureCognitive Services](welcome.md) をご覧ください
+* さまざまな [AzureCognitive Services](./what-are-cognitive-services.md) をご覧ください
 * [Azure Virtual Network サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)の詳細を確認する

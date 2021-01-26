@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
 ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83655069"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理
@@ -27,7 +27,7 @@ ms.locfileid: "83655069"
 
 既定では、脅威インテリジェンスベースのフィルター処理は、アラート モードで有効になっています。 この機能の無効化やモードの変更は、ポータルのインターフェイスがお住まいの地域で使用可能になるまで実行できません。
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="脅威インテリジェンス ベースのフィルタリング ポータルのインターフェイス":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="ファイアウォールの脅威インテリジェンス":::
 
 ## <a name="logs"></a>ログ
 

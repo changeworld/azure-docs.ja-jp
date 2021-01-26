@@ -4,21 +4,23 @@ description: この記事では、Azure portal、PowerShell、または REST API
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922950"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351726"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
 サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザー、サービス プリンシパル、またはセキュリティ グループである必要があります。 Azure portal でご利用のサーバーの **[Analysis Services 管理者]** を使用するか、SSMS、PowerShell、または REST API のサーバー プロパティを使用して、サーバー管理者を管理できます。 
 
-**セキュリティ グループ**を追加するときは、`obj:groupid@tenantid` を使用します。 サービス プリンシパルは、サーバー管理者ロールに追加されたセキュリティ グループ内ではサポートされません。
+**セキュリティ グループ** を追加するときは、`obj:groupid@tenantid` を使用します。 サービス プリンシパルは、サーバー管理者ロールに追加されたセキュリティ グループ内ではサポートされません。
+
+サーバーのファイアウォールが有効になっている場合は、サーバー管理者のクライアント コンピューターの IP アドレスがファイアウォール規則に含まれている必要があります。 詳細については、「[サーバーのファイアウォールの構成](analysis-services-qs-firewall.md)」を参照してください。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure Portal を使用してサーバー管理者を追加するには
 
@@ -40,13 +42,13 @@ ms.locfileid: "87922950"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-新しいサーバーの作成時に Administrator パラメーターを指定するには、[New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドレットを使用します。 <br>
-既存のサーバーに対する Administrator パラメーターを変更するには、[Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) コマンドレットを使用します。
+新しいサーバーの作成時に Administrator パラメーターを指定するには、[New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドレットを使用します。 <br>
+既存のサーバーに対する Administrator パラメーターを変更するには、[Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) コマンドレットを使用します。
 
 ## <a name="rest-api"></a>REST API
 
-新しいサーバーの作成時に asAdministrator プロパティを指定して、[Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) を使用します。 <br>
-既存のサーバーの変更時に asAdministrator プロパティを指定して、[Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) を使用します。 <br>
+新しいサーバーの作成時に asAdministrator プロパティを指定して、[Create](/rest/api/analysisservices/servers/create) を使用します。 <br>
+既存のサーバーの変更時に asAdministrator プロパティを指定して、[Update](/rest/api/analysisservices/servers/update) を使用します。 <br>
 
 
 
@@ -54,4 +56,4 @@ ms.locfileid: "87922950"
 
 [認証とユーザーのアクセス許可](analysis-services-manage-users.md)  
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
-[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003849"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400609"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -32,27 +32,27 @@ Azure Digital Twins で提供される機能の概要を次に示します。
 
 Azure Digital Twins では、[**モデル**](concepts-models.md)と呼ばれるカスタム ツイン型を使用して、物理環境の人、場所、および物を表すデジタルエン ティティを定義します。 
 
-これらのモデル定義は、ビジネスを説明するための特殊なボキャブラリと考えることができます。 たとえば、ビル管理ソリューションでは、"建物"、"階数"、"エレベーター" などのモデルを定義できます。 その後、これらのモデルに基づいて**デジタル ツイン**を作成して、特定の環境を表すことができます。
+これらのモデル定義は、ビジネスを説明するための特殊なボキャブラリと考えることができます。 たとえば、ビル管理ソリューションでは、"建物"、"階数"、"エレベーター" などのモデルを定義できます。 その後、これらのモデルに基づいて **デジタル ツイン** を作成して、特定の環境を表すことができます。
 
 モデルは [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) と呼ばれる JSON に似た形式の言語で定義され、その状態プロパティ、テレメトリ イベント、コマンド、コンポーネント、およびリレーションシップの観点からツインを記述します。
-* モデルは、エンティティ間のセマンティック **リレーションシップ**を定義して、それらのやり取りを反映するナレッジ グラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
+* モデルは、エンティティ間のセマンティック **リレーションシップ** を定義して、それらのやり取りを反映するナレッジ グラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
 * モデルの継承を使用してツインを特殊化することもできます。 一方のモデルがもう一方のモデルから継承できます。
 
-DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
+DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
 
 ### <a name="live-execution-environment"></a>ライブ実行環境
 
-Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す**ライブ グラフ**にツインを接続します。
+Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す **ライブ グラフ** にツインを接続します。
 
-Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
+Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
 
 次に、視覚化の例を示します。
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="デジタル ツインを表すノードのグラフが表示された Azure Digital Twins explorer サンプル アプリケーションのスクリーンショット" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
-Azure Digital Twins では、そのグラフをデータ処理とビジネス ロジックで最新の状態に保つための豊富な**イベント システム**を提供しています。 [Azure Functions](../azure-functions/functions-overview.md) などの外部のコンピューティング リソースを接続して、このデータ処理を柔軟でカスタマイズされた方法で行うことができます。
+Azure Digital Twins では、そのグラフをデータ処理とビジネス ロジックで最新の状態に保つための豊富な **イベント システム** を提供しています。 [Azure Functions](../azure-functions/functions-overview.md) などの外部のコンピューティング リソースを接続して、このデータ処理を柔軟でカスタマイズされた方法で行うことができます。
 
-Azure Digital Twins の強力な**クエリ API** を使用して、ライブ実行環境から分析情報を抽出することもできます。 この API を使用すると、プロパティ値、リレーションシップ、リレーションシップ プロパティ、モデル情報など、豊富な検索条件を使用してクエリを実行できます。 また、クエリを結合して、ご自分の環境に関する幅広い分析情報を収集し、ご自分にとって重要なカスタムの質問に答えることもできます。
+Azure Digital Twins の強力な **クエリ API** を使用して、ライブ実行環境から分析情報を抽出することもできます。 この API を使用すると、プロパティ値、リレーションシップ、リレーションシップ プロパティ、モデル情報など、豊富な検索条件を使用してクエリを実行できます。 また、クエリを結合して、ご自分の環境に関する幅広い分析情報を収集し、ご自分にとって重要なカスタムの質問に答えることもできます。
 
 ### <a name="input-from-iot-and-business-systems"></a>IoT およびビジネス システムからの入力
 
@@ -64,7 +64,7 @@ Azure Digital Twins を使用してこの目的のための新しい IoT Hub を
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>TSI、ストレージ、分析への出力
 
-Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 これは、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用して、目的のデータ フローを駆動する、**イベント ルート**を通じて提供されます。
+Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 これは、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用して、目的のデータ フローを駆動する、**イベント ルート** を通じて提供されます。
 
 イベント ルートでは、次のようなことが可能です。
 * [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) に Azure Digital Twins データを格納する
@@ -84,25 +84,18 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 * モデルの構成、トポロジの作成、ツイン グラフからの分析情報の抽出によって Azure Digital Twins インスタンスを駆動する 1 つ以上のクライアント アプリ。
 * Azure Digital Twins によって生成されるイベントや、デバイスなどの接続されたデータ ソースを処理するための 1 つ以上の外部コンピューティング リソース。 コンピューティング リソースを提供する一般的な方法の 1 つは、[Azure Functions](../azure-functions/functions-overview.md) を使用することです。
 * デバイス管理と IoT データ ストリーム機能を提供する IoT ハブ。
-* ワークフロー統合 ([Logic Apps](../logic-apps/logic-apps-overview.md)、コールド ストレージ、タイム シリーズ統合、分析など) のタスクを処理するダウンストリーム サービス。 
+* ワークフロー統合 ([Logic Apps](../logic-apps/logic-apps-overview.md)、コールド ストレージ、時系列統合、分析など) のタスクを処理するダウンストリーム サービス。
 
 次の図は、大規模な Azure IoT ソリューションのコンテキスト内で Azure Digital Twins が存在する場所を示しています。
 
 :::image type="content" source="media/overview/solution-context.png" alt-text="入力ソース、出力サービス、およびクライアント アプリと外部コンピューティング リソースとの双方向の通信を示す図。" border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>パブリック プレビューのサービスの制限
+## <a name="service-limits"></a>サービスの制限
 
-> [!IMPORTANT]
-> 現在、Azure Digital Twins はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳細については、「[*Microsoft Azure プレビューの追加使用条件*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-パブリック プレビュー期間中の Azure Digital Twins の制限の一覧については、[*参照:パブリック プレビューのサービスの制限*](reference-service-limits.md)に関するページを参照してください。
+Azure Digital Twins の制限の一覧については、[ *「リファレンス」のサービスの制限*](reference-service-limits.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-以前のプレビュー リリースの Azure Digital Twins を使用していた場合は、次の変更点を確認してください。
-* "[*概要: 以前のリリースとの違い*](overview-differences.md)
+Azure Digital Twins の最初のプレビュー リリース (2018 年 10 月) を使用している場合は、変更内容を確認してください。"[*概要: 最初のリリースとの違い*](overview-differences.md)"。
 
-または、最初のチュートリアルに進み、Azure Digital Twins の使用について詳しく確認してください。
-
-[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)
+または、クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認してください。[*クイック スタート:サンプル シナリオを精査する*](quickstart-adt-explorer.md)"。

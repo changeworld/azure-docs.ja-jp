@@ -5,6 +5,7 @@
     - name: Virtual WAN とは
       href: virtual-wan-about.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: サイト間接続を作成する
       href: virtual-wan-site-to-site-portal.md
@@ -26,7 +27,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md
@@ -66,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: 複数の ISP リンク - Azure パスの選択
           href: path-selection-multiple-links.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 価格の概念
       href: pricing-concepts.md
     - name: 仮想ハブの NVA について
@@ -76,6 +81,8 @@
       href: upgrade-virtual-wan.md
     - name: 仮想ハブに NVA を作成する
       href: How-to-nva-hub.md
+    - name: クロステナント VNet 接続を作成する
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: ExpressRoute 接続を作成する
@@ -102,6 +109,8 @@
           href: about-vpn-profile-download.md
         - name: グローバルおよびハブベースのプロファイル
           href: global-hub-profile.md
+        - name: Windows 10 向けに Azure VPN クライアントを構成する
+          href: openvpn-azure-ad-client.md
         - name: OpenVPN クライアントを構成する
           href: howto-openvpn-clients.md?
         - name: Always-On VPN ユーザー トンネルを構成する
@@ -112,8 +121,6 @@
           href: openvpn-azure-ad-mfa.md
         - name: Azure AD 認証を構成する
           href: virtual-wan-point-to-site-azure-ad.md
-        - name: Windows 10 向けに Azure VPN クライアントを構成する
-          href: openvpn-azure-ad-client.md
         - name: マルチアプリケーション Azure AD 認証を構成する
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: ルーティング
@@ -132,14 +139,14 @@
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md
+        - name: Private Link の接続の構成
+          href: howto-private-link.md
+        - name: リソースへのアクセス管理 - スポーク VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: 監視
       items:
         - name: ログとメトリック
           href: logs-metrics.md
-    - name: Private Link
-      items:
-        - name: Private Link の接続の構成
-          href: howto-private-link.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551168"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358214"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、Concur アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Concur アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>ユーザーを Concur に割り当てる際の重要なヒント
 
@@ -96,9 +96,9 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 9. **[プロビジョニング モード]** を **[自動]** に設定します。 
  
-    ![プロビジョニング](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Azure portal の Concur の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、[テスト接続] ボタンが強調表示されています。](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「**ユーザー名**」と「**パスワード**」を入力します。
+10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「 **ユーザー名** 」と「 **パスワード** 」を入力します。
 
 11. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
 
@@ -121,4 +121,3 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](concur-tutorial.md)
-

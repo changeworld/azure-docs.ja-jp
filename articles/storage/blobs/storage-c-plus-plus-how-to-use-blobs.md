@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033633"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011100"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 
@@ -51,7 +51,7 @@ Azure Storage API を使用して BLOB にアクセスする C++ ファイルの
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Azure のストレージ接続文字列の設定
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure portal](https://portal.azure.com) に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。 ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure portal](https://portal.azure.com) に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。 ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 ```cpp
 // Define the connection-string with your values.
@@ -184,7 +184,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-一覧取得操作の詳細については、「 [C++ での Azure Storage のリソース一覧の取得](../storage-c-plus-plus-enumeration.md)」を参照してください。
+一覧取得操作の詳細については、「 [C++ での Azure Storage のリソース一覧の取得](../common/storage-c-plus-plus-enumeration.md)」を参照してください。
 
 ## <a name="how-to-download-blobs"></a>方法:BLOB をダウンロードする
 BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **download_to_stream** メソッドを呼び出します。 次の例は、**download_to_stream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
@@ -257,10 +257,9 @@ blockBlob.delete_blob();
 ## <a name="next-steps"></a>次のステップ
 これで、BLOB ストレージの基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。
 
-- [C++ から Queue ストレージを使用する方法](../storage-c-plus-plus-how-to-use-queues.md)
+- [C++ から Queue ストレージを使用する方法](../queues/storage-c-plus-plus-how-to-use-queues.md)
 - [C++ から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-- [C++ での Azure Storage のリソース一覧の取得](../storage-c-plus-plus-enumeration.md)
+- [C++ での Azure Storage のリソース一覧の取得](../common/storage-c-plus-plus-enumeration.md)
 - [C++ 用ストレージ クライアント ライブラリ リファレンス](https://azure.github.io/azure-storage-cpp)
 - [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](../storage-use-azcopy.md)
-
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](../common/storage-use-azcopy-v10.md)

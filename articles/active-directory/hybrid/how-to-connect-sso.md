@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26a223a409c64a65413527f381775f94feb96273
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278532"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408007"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -31,12 +31,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-シームレス SSO は、サインインの方法として、 [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)のどちらとも組み合わせることができます。 シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき _ません_。
+シームレス SSO は、サインインの方法として、 [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)のどちらとも組み合わせることができます。 シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき _ません_ 。
 
 ![シームレス シングル サインオン](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO では、ユーザーのデバイスが**ドメインに参加している**ことのみが必要ですが、[Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済み、ハイブリッド Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
+>シームレス SSO では、ユーザーのデバイスが **ドメインに参加している** ことのみが必要ですが、 [Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは [ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済み、ハイブリッド Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -56,7 +56,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - アプリケーション (たとえば、`https://myapps.microsoft.com/contoso.com`) が Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
 - アプリケーション (たとえば、`https://contoso.sharepoint.com`) がサインイン要求を、Azure AD の共通エンドポイント (つまり、`https://login.microsoftonline.com/common/<...>`) ではなく、Azure AD のテナントとして設定されているエンドポイント (つまり、`https://login.microsoftonline.com/contoso.com/<..>` または `https://login.microsoftonline.com/<tenant_ID>/<..>`) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。
 - サインアウトがサポートされています。 そのため、ユーザーは、シームレス SSO を使用して自動的にサインインするのではなく、サインインに別の Azure AD アカウントを使用することを選択できます。
-- バージョン 16.0.8730.xxxx 以降の Office 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
+- バージョン 16.0.8730.xxxx 以降の Microsoft 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
 - この機能は、Azure AD Connect を使用して有効にできます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートする Office クライアントでサポートされています。
@@ -64,18 +64,20 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
-|Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows 8.1|はい\*|はい*\*\*\*|はい|はい\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
 |Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
 
-\*Internet Explorer バージョン 10 以降が必要
+\*Internet Explorer バージョン 10 以降が必要です。
 
-\*\*Internet Explorer バージョン 10 以降が必要。 拡張保護モードを無効にする
+\*\*Internet Explorer バージョン 10 以降が必要です。 拡張保護モードを無効にする。
 
-\*\*\*[追加の構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要
+\*\*\*[別途構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要。
+
+\*\*\*\*Microsoft Edge バージョン 77 以降が必要です。
 
 >[!NOTE]
 >Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../devices/concept-azure-ad-join.md) を使用することをお勧めします。
@@ -83,7 +85,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ## <a name="next-steps"></a>次のステップ
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
-- [**デプロイ計画**](https://aka.ms/deploymentplans/sso) - 詳細なデプロイ計画です。
+- [**デプロイ計画**](../manage-apps/plan-sso-deployment.md) - 詳細なデプロイ計画です。
 - [**技術的な詳細**](how-to-connect-sso-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。

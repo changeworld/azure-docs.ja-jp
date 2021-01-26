@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 07/21/2020
-ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff9fc2baaf1563d4a02364db00344ffc0bc46a6a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087783"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060267"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -32,7 +32,7 @@ Web ブラウザーを開いて [Microsoft Azure Portal](https://portal.azure.co
 既定のビューはサービス ダッシュボードです。
 
 > [!NOTE]
-> サブスクリプションあたり最大 10 個の DMS インスタンスを作成できます。 それ以上のインスタンスが必要な場合は、サポート チケットを作成してください。
+> リージョンごとにサブスクリプションあたり最大 10 個の DMS インスタンスを作成できます。 それ以上のインスタンスが必要な場合は、サポート チケットを作成してください。
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
@@ -54,15 +54,15 @@ Database Migration Service の最初のインスタンスを作成する前に�
 
 3. **[移行サービスの作成]** 画面で:
 
-    - Azure Database Migration Service のインスタンスを識別する、覚えやすい一意の**サービス名**を選択します。
-    - インスタンスを作成する Azure **サブスクリプション**を選択します。
-    - 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。
+    - Azure Database Migration Service のインスタンスを識別する、覚えやすい一意の **サービス名** を選択します。
+    - インスタンスを作成する Azure **サブスクリプション** を選択します。
+    - 既存の **リソース グループ** を選択するか、新しいリソース グループを作成します。
     - ソースまたはターゲット サーバーに最も近い **[場所]** を選択します。
-    - 既存の**仮想ネットワーク**を選択するか、新たに作成します。
+    - 既存の **仮想ネットワーク** を選択するか、新たに作成します。
 
         仮想ネットワークによって、ソース データベースとターゲット環境へのアクセスが Azure Database Migration Service に提供されます。
 
-        Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/vnet)に関する記事を参照してください。
+        Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事を参照してください。
 
     - [Basic:1 vCore]\(Basic: 1 仮想コア\) を **[価格レベル]** で選択します。
 
@@ -76,7 +76,7 @@ Database Migration Service の最初のインスタンスを作成する前に�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイック スタートで作成したリソースは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を削除することでクリーンアップできます。 リソース グループを削除するには、作成した Azure Database Migration Service のインスタンスに移動します。 **リソース グループ**名を選択し、 **[リソース グループの削除]** を選択します。 この操作により、リソース グループ内のすべての資産だけでなく、グループ自体も削除されます。
+このクイック スタートで作成したリソースは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を削除することでクリーンアップできます。 リソース グループを削除するには、作成した Azure Database Migration Service のインスタンスに移動します。 **リソース グループ** 名を選択し、 **[リソース グループの削除]** を選択します。 この操作により、リソース グループ内のすべての資産だけでなく、グループ自体も削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

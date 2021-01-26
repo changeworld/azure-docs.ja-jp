@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 95af0cd4b59863ad0f591476441d9a7733765453
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076030"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540399"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -34,7 +34,7 @@ HDInsight には、特定のワークロード用に調整されたいくつか�
 
 HDInsight で Hive を使用するさまざまな方法を次の表に示します。
 
-| **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用元の **クライアントのオペレーティング システム** |
+| **方法** | **対話型** クエリ | **バッチ** 処理の有無 | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
 | [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux、Unix、Mac OS X、または Windows |
 | [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
@@ -72,14 +72,14 @@ Hive でサポートされるファイル形式の詳細については、[言�
 
 Hive で作成できるテーブルには、次の 2 種類があります。
 
-* __内部__:データは Hive データ ウェアハウスに格納されます。 データ ウェアハウスは、クラスターの既定のストレージの `/hive/warehouse/` に配置されます。
+* __内部__ :データは Hive データ ウェアハウスに格納されます。 データ ウェアハウスは、クラスターの既定のストレージの `/hive/warehouse/` に配置されます。
 
     次のいずれかの条件に当てはまる場合は、内部テーブルを使用します。
 
     * データが一時的である。
     * Hive でテーブルとデータのライフサイクルを管理したい。
 
-* __外部__:データはデータ ウェアハウスの外部に格納されます。 データは、クラスターからアクセス可能な任意のストレージに格納できます。
+* __外部__ :データはデータ ウェアハウスの外部に格納されます。 データは、クラスターからアクセス可能な任意のストレージに格納できます。
 
     次のいずれかの条件に当てはまる場合は、外部テーブルを使用します。
 
@@ -88,7 +88,7 @@ Hive で作成できるテーブルには、次の 2 種類があります。
     * 既定以外のストレージ アカウントなど、カスタムの場所が必要である。
     * データの形式、場所などが Hive 以外のプログラムによって管理される。
 
-詳細については、[Hive の内部テーブルと外部テーブルの概要](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)に関するブログ記事を参照してください。
+詳細については、[Hive の内部テーブルと外部テーブルの概要](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro)に関するブログ記事を参照してください。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
@@ -100,7 +100,7 @@ Hive は **ユーザー定義関数 (UDF)** で拡張することもできます
 
 * [C# ユーザー定義関数と Apache Hive の使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight にカスタムの Apache Hive ユーザー定義関数を追加する方法](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight にカスタムの Apache Hive ユーザー定義関数を追加する方法](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [日付/時刻の形式を Apache Hive タイムスタンプに変換する Hive ユーザー定義関数の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -134,7 +134,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |ステートメント |説明 |
 |---|---|
 |DROP TABLE|テーブルが既に存在する場合は、それを削除します。|
-|CREATE EXTERNAL TABLE|新しい**外部**テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。|
+|CREATE EXTERNAL TABLE|新しい **外部** テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。|
 |ROW FORMAT|データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。|
 |STORED AS TEXTFILE LOCATION|データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。|
 |SELECT|列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。|
@@ -143,9 +143,9 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 > [!NOTE]  
 > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
 >
-> 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
+> 外部テーブルを削除しても、データは削除 **されません** 。テーブル定義のみが削除されます。
 
-外部テーブルではなく**内部**テーブルを作成するには、次の HiveQL を使用します。
+外部テーブルではなく **内部** テーブルを作成するには、次の HiveQL を使用します。
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -168,7 +168,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 |---|---|
 |CREATE TABLE IF NOT EXISTS|テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。|
 |STORED AS ORC|Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。|
-|INSERT OVERWRITE ...SELECT|**ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにそのデータを挿入します。|
+|INSERT OVERWRITE ...SELECT|**ERROR]** を含む **log4jLogs** テーブルの行を選択し、 **errorLogs** テーブルにそのデータを挿入します。|
 
 > [!NOTE]  
 > 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
@@ -197,11 +197,11 @@ Azure Data Factory では、Data Factory パイプラインの一部として HD
 
 SQL Server Integration Services (SSIS) を使用して Hive ジョブを実行することができます。 Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
 
-* [Azure HDInsight Hive タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight Hive タスク](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure サブスクリプション接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure サブスクリプション接続マネージャー](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-詳細については、[Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) のドキュメントをご覧ください。
+詳細については、[Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) のドキュメントをご覧ください。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 

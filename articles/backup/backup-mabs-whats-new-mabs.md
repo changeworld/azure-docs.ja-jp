@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893189"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332765"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server (MABS) の新機能
 
@@ -23,7 +23,7 @@ Microsoft Azure Backup Server (MABS) バージョン 3 UR1 は最新のアップ
 
 MABS V2 は、[Modern Backup Storage](backup-mabs-add-storage.md) (MBS) が導入され、記憶域使用率とパフォーマンスが改善されています。 MBS は、基になるファイル システムとして ReFS を使用しており、階層型記憶域などのハイブリッド ストレージを活用するように設計されています。
 
-MBS によるスケールとパフォーマンスを達成するために、MABS V3 UR1 で DPM HDD ストレージと共に階層化ボリュームとして使用するフラッシュ ストレージ (SSD) の割合を小さく (ストレージ全体の 4%) することをお勧めします。 階層型記憶域を使用した MABS V3 UR1 では、バックアップ速度が 50% から 70% 向上しています。 階層化ストレージを構成するステップについては、DPM の記事「[階層型記憶域で MBS をセットアップする](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」を参照してください。
+MBS によるスケールとパフォーマンスを達成するために、MABS V3 UR1 で DPM HDD ストレージと共に階層化ボリュームとして使用するフラッシュ ストレージ (SSD) の割合を小さく (ストレージ全体の 4%) することをお勧めします。 階層型記憶域を使用した MABS V3 UR1 では、バックアップ速度が 50% から 70% 向上しています。 階層化ストレージを構成するステップについては、DPM の記事「[階層型記憶域で MBS をセットアップする](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)」を参照してください。
 
 ### <a name="support-for-refs-volumes"></a>ReFS ボリュームのサポート
 

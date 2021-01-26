@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 9a0d91677770e89f3e249fc699057332cccaa323
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001111"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347474"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>マイクロフルフィルメント センターのアーキテクチャ
 
@@ -22,11 +22,11 @@ ms.locfileid: "81001111"
 
 ![Azure IoT Central のストアの分析](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- ゲートウェイ デバイスにテレメトリ データを送信している IoT センサーのセット
-- テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
-- 操作のために目的の Azure サービスへの継続的データ エクスポート
-- データを必要な形式で構造化し、ストレージ サービスに送信できます
-- ビジネス アプリケーションを使って、データのクエリを実行し、小売りの活動に役立つ分析情報を生成することができます
+1. ゲートウェイ デバイスにテレメトリ データを送信している IoT センサーのセット
+2. テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
+3. 操作のために目的の Azure サービスへの継続的データ エクスポート
+4. データを必要な形式で構造化し、ストレージ サービスに送信できます
+5. ビジネス アプリケーションを使って、データのクエリを実行し、小売りの活動に役立つ分析情報を生成することができます
  
 マイクロフルフィルメント センター ソリューションで一般的に役立つ主要なコンポーネントについて見ていきましょう。
 

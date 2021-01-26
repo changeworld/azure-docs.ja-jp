@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82981223"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072800"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure App Configuration でマネージド ID を使用する方法
 
@@ -33,7 +33,7 @@ Azure CLI を使用してマネージド ID を設定するには、既存の構
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
 - 以下の各コード ブロックの右上隅にある [使ってみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
-- ローカルの CLI コンソールを使用する場合は、[Azure CLI の最新バージョン (2.1 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+- ローカルの CLI コンソールを使用する場合は、[Azure CLI の最新バージョン (2.1 以降) をインストール](/cli/azure/install-azure-cli)します。
 
 次の手順では、CLI を使用して、App Configuration ストアを作成し、それに ID を割り当てる方法について説明します。
 
@@ -66,7 +66,7 @@ Azure CLI を使用してマネージド ID を設定するには、既存の構
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
 - 以下の各コード ブロックの右上隅にある [使ってみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
-- ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+- ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](/cli/azure/install-azure-cli)します。
 
 次の手順では、CLI を使用して、ユーザー割り当て ID と App Configuration ストアを作成し、ID をストアに割り当てる方法について説明します。
 

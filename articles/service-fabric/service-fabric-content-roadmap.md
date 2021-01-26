@@ -3,12 +3,12 @@ title: Azure Service Fabric の詳細について説明します。
 description: Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836702"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485452"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -51,7 +51,7 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 
 各パーティションのレプリカがクラスターのノード間で分散され、名前付きのサービスの状態を[スケール](service-fabric-concepts-scalability.md)できます。 データ ニーズの拡大に応じて、パーティションが拡大し、Service Fabric はノード間でパーティションのバランスを再調整して、ハードウェア リソースを効率的に使用します。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、パーティションのレプリカのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティション レプリカのバランスを再調整します。
 
-パーティションには、ステートレスの名前付きサービスの場合はインスタンスが、ステートフルの名前付きサービスの場合はレプリカが格納されます。 通常、ステートレスの名前付きサービスは内部的な状態を持たないため、割り当てられるパーティションは 1 つだけです。 パーティションのインスタンスによってもたらされるのは[可用性](service-fabric-availability-services.md)です。 つまり 1 つのインスタンスで障害が発生しても他のインスタンスは正常動作を保ち、Service Fabric によって新しいインスタンスが作成されます。 ステートフルの名前付きサービスでは、その状態がレプリカ内で管理されます。それぞれのパーティションが固有のレプリカ セットを持ちます。 読み取りおよび書き込み操作は、1 つのレプリカ (プライマリと呼ばれます) で実行されます。 書き込み操作からの状態の変更は、他の複数のレプリカ (アクティブ セカンダリと呼ばれます) にレプリケートされます。 万一レプリカに障害が発生した場合は、Service Fabric が既存のレプリカから新しいレプリカを構築します。
+パーティションには、ステートレスの名前付きサービスの場合はインスタンスが、ステートフルの名前付きサービスの場合はレプリカが格納されます。 通常、ステートレスの名前付きサービスは内部的な状態を持たないため、割り当てられるパーティションは 1 つだけですが、[例外があります](./service-fabric-concepts-partitioning.md#partition-service-fabric-stateless-services)。 パーティションのインスタンスによってもたらされるのは[可用性](service-fabric-availability-services.md)です。 つまり 1 つのインスタンスで障害が発生しても他のインスタンスは正常動作を保ち、Service Fabric によって新しいインスタンスが作成されます。 ステートフルの名前付きサービスでは、その状態がレプリカ内で管理されます。それぞれのパーティションが固有のレプリカ セットを持ちます。 読み取りおよび書き込み操作は、1 つのレプリカ (プライマリと呼ばれます) で実行されます。 書き込み操作からの状態の変更は、他の複数のレプリカ (アクティブ セカンダリと呼ばれます) にレプリケートされます。 万一レプリカに障害が発生した場合は、Service Fabric が既存のレプリカから新しいレプリカを構築します。
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric 用のステートレス マイクロサービスとステートフル マイクロサービス
 Service Fabric では、マイクロサービスまたはコンテナーで構成されるアプリケーションを構築することができます。 ステートレス マイクロサービス (プロトコル ゲートウェイや Web プロキシなど) では、要求およびそのサービスからの応答以外では変更可能な状態が維持されません。 Azure Cloud Services worker ロールは、ステートレス サービスの一例です。 ステートフル マイクロサービス (ユーザー アカウント、データベース、デバイス、ショッピング カート、キューなど) では、要求およびその応答以外でも変更可能な認証状態が維持されます。 今日のインターネット規模のアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせで構成されています。 
@@ -131,7 +131,7 @@ Linux スタンドアロン クラスターはまだサポートされていま�
 クラスターのセキュリティに関するシナリオは次のとおりです。
 * ノード間のセキュリティ
 * クライアントとノードの間のセキュリティ
-* ロール ベースのアクセス制御 (RBAC)
+* Service Fabric のロールベースのアクセス制御
 
 詳細については、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)に関するページを参照してください。
 
@@ -189,7 +189,7 @@ Service Fabric には、正常性ストアに集計された[正常性レポー�
 * [サービスを監視および診断する](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)方法を学びます。 
 * [アプリとサービスをテストする](service-fabric-testability-overview.md)方法を学びます。
 * [クラスター リソースを管理および調整する](service-fabric-cluster-resource-manager-introduction.md)方法を学びます。
-* [Service Fabric サンプル](https://aka.ms/servicefabricsamples)を確認します。
+* [Service Fabric サンプル](/samples/browse/?products=azure)を確認します。
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 * [チームのブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で記事やお知らせを読みます。
 

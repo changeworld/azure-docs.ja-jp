@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235079"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069808"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 プロビジョニング コネクタは、[Azure Portal](https://portal.azure.com) を使用してセットアップおよび構成します。サポートされているアプリケーションに[提供されているドキュメント](../saas-apps/tutorial-list.md)に従ってください。 構成を完了し実行すると、以下の 2 つの方法のいずれかで、プロビジョニング ジョブをレポートできます。
 
 * **Azure portal** - この記事では、主に、[Azure portal](https://portal.azure.com) からレポート情報を取得する方法について説明します。このポータルでは、プロビジョニングの概要レポートと、特定のアプリケーションの詳細なプロビジョニング監査ログの両方が提供されます。
-* **監査 API** - Azure Active Directory には、プログラムで詳細なプロビジョニング監査ログを取得することができる監査 API も用意されています。 この API の使用を取り上げたドキュメントについては、[Azure Active Directory 監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)を参照してください。 この記事では、API を使用する方法については具体的に説明していませんが、監査ログに記録されるプロビジョニング イベントの種類については詳細に説明しています。
+* **監査 API** - Azure Active Directory には、プログラムで詳細なプロビジョニング監査ログを取得することができる監査 API も用意されています。 この API の使用を取り上げたドキュメントについては、[Azure Active Directory 監査 API リファレンス](/graph/api/resources/directoryaudit)を参照してください。 この記事では、API を使用する方法については具体的に説明していませんが、監査ログに記録されるプロビジョニング イベントの種類については詳細に説明しています。
 
 ### <a name="definitions"></a>定義
 

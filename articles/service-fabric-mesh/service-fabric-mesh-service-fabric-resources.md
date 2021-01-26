@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354872"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric リソース モデルの概要
 
@@ -66,7 +66,7 @@ Mesh アプリケーションが複数のサービスで構成されている場
 
 多くの場合、コンテナーは一時ディスクを利用可能にしています。 ただし、一時ディスクは一時的なので、コンテナーがクラッシュすると、新しい一時ディスクが取得され、情報は失われます。 また、一時ディスク上の情報を他のコンテナーと共有することは困難でもあります。 ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。 ボリューム リソースは、ディレクトリのマウント方法とそのバッキング ストレージを示す宣言的な方法です (Azure Files Volume または Service Fabric Reliable Volume)。  詳細については、[状態の格納](service-fabric-mesh-storing-state.md#volumes)に関するページを参照してください。
 
-![ボリューム][Image3]
+![ディスク ボリュームに送信されるサービスを示す図。Service Fabric Reliable ボリュームに送信されてからレプリケートされたローカル ディスクへ、Azure Files ボリュームに送信されてからネットワーク ストレージへと送信されます。][Image3]
 
 ## <a name="programming-models"></a>プログラミング モデル
 サービス リソースは、リソースに関連付けられたコード パッケージで参照されているコンテナー イメージのみを実行する必要があります。 コンテナー内の任意のフレームワークを使用して、任意の言語で記述した任意のコードを実行できます。Service Fabric Mesh 固有の API を理解したり使用したりする必要はありません。 

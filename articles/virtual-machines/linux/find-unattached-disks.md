@@ -1,5 +1,5 @@
 ---
-title: 接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
+title: Azure CLI - 接続されていないマネージドおよびアンマネージド ディスクを見つけて削除する
 description: Azure CLI を使用して、接続されていない Azure 管理ディスクと非管理対象ディスク (VHD/ページ BLOB) を見つけて削除する方法
 author: roygara
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 87fe277bbd2fa618d43ce3274c1d2c05a5d7b396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c3e8bb2ff6f3313e851a4253a95a5ad923a8f70
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016218"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Azure CLI を使用し、接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 この機能は、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを見つけて削除し、不要なコストを削減する方法を示します。 
@@ -20,7 +20,7 @@ Azure で仮想マシン (VM) を削除するとき、既定では、その VM �
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>マネージド ディスク:接続されていないディスクの検索と削除 
 
-次のスクリプトは、**ManagedBy** プロパティの値を調べることにより、接続されていない[マネージド ディスク](managed-disks-overview.md)を探します。 マネージド ディスクが VM に接続しているとき、**ManagedBy** プロパティには VM のリソース ID が含まれます。 マネージド ディスクが接続されていないとき、**ManagedBy** プロパティは null です。 スクリプトは Azure サブスクリプションのすべてのマネージド ディスクを調べます。 **ManagedBy** プロパティに null が設定されたマネージド ディスクをスクリプトが見つけると、そのディスクは接続されていないと判断します。
+次のスクリプトは、**ManagedBy** プロパティの値を調べることにより、接続されていない [マネージド ディスク](../managed-disks-overview.md)を探します。 マネージド ディスクが VM に接続しているとき、**ManagedBy** プロパティには VM のリソース ID が含まれます。 マネージド ディスクが接続されていないとき、**ManagedBy** プロパティは null です。 スクリプトは Azure サブスクリプションのすべてのマネージド ディスクを調べます。 **ManagedBy** プロパティに null が設定されたマネージド ディスクをスクリプトが見つけると、そのディスクは接続されていないと判断します。
 
 >[!IMPORTANT]
 >最初は、**deleteUnattachedDisks** 変数を 0 に設定してスクリプトを実行します。 この操作は、接続されていないすべてのマネージド ディスクを検索して表示します。
@@ -29,11 +29,9 @@ Azure で仮想マシン (VM) を削除するとき、既定では、その VM �
 >
 
 ```azurecli
-
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
 # Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
 deleteUnattachedDisks=0
-
 unattachedDiskIds=$(az disk list --query '[?managedBy==`null`].[id]' -o tsv)
 for id in ${unattachedDiskIds[@]}
 do
@@ -61,13 +59,10 @@ done
 >
 
 ```azurecli
-   
 # Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
 # Set deleteUnattachedVHDs=0 if you want to see the details of the unattached VHDs
 deleteUnattachedVHDs=0
-
 storageAccountIds=$(az storage account list --query [].[id] -o tsv)
-
 for id in ${storageAccountIds[@]}
 do
     connectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
@@ -106,5 +101,3 @@ done
 ## <a name="next-steps"></a>次のステップ
 
 詳しくは、「[ストレージ アカウントの削除](../../storage/common/storage-account-create.md#delete-a-storage-account)」をご覧ください。
-
-

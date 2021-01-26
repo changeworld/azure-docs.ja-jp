@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514675"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961177"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
@@ -61,11 +61,11 @@ StorSimple デバイス マネージャー サービスに接続されている 
 
 デバイスは、クラウド ストレージ サービス プロバイダーで認証を行うために時刻を同期する必要があります。 デバイスの時刻の設定を変更するには、dバイスの **[全般設定]** ブレードを使用します。
 
-![[全般設定] 内のデバイスの説明](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![[全般設定] 内のデバイスの説明 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  ドロップダウン リストからタイム ゾーンを選択します。 最大 2 台のネットワーク タイム プロトコル (NTP) サーバーを指定できます。
 
- - **プライマリ NTP サーバー**: 構成は必須であり、StorSimple 用 Windows PowerShell を使用してデバイスを構成するときに指定します。 NTP サーバーとして、既定の Windows Server である **time.windows.com** を指定できます。 プライマリ NTP サーバーの構成は Azure ポータルから確認できますが、変更するには Windows PowerShell インターフェイスを使用する必要があります。 デバイスのプライマリ NTP サーバーを変更するには、`Set-HcsNTPClientServerAddress` コマンドレットを使用します。 詳細については、[Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) コマンドレットの構文を参照してください。
+ - **プライマリ NTP サーバー**: 構成は必須であり、StorSimple 用 Windows PowerShell を使用してデバイスを構成するときに指定します。 NTP サーバーとして、既定の Windows Server である **time.windows.com** を指定できます。 プライマリ NTP サーバーの構成は Azure ポータルから確認できますが、変更するには Windows PowerShell インターフェイスを使用する必要があります。 デバイスのプライマリ NTP サーバーを変更するには、`Set-HcsNTPClientServerAddress` コマンドレットを使用します。 詳細については、[Set-HcsNTPClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) コマンドレットの構文を参照してください。
 
 - **セカンダリ NTP サーバー**: 構成は省略可能です。 ポータルを使用して、セカンダリ NTP サーバーを構成できます。
 
@@ -85,7 +85,7 @@ DNS サーバーは、デバイスがクラウド ストレージ サービス �
 
 可用性を高めるには、デバイスの初期デプロイ時にプライマリ DNS サーバーとセカンダリ DNS サーバーの両方を構成する必要があります。
 
-**プライマリ DNS サーバー**: 初回のセットアップ中に、StorSimple 用 Windows PowerShell を使用して、プライマリ DNS サーバーを先に指定します。 プライマリ DNS サーバーは、Windows PowerShell インターフェイス経由でのみ再構成できます。 デバイスのプライマリ DNS サーバーを変更するには、`Set-HcsDNSClientServerAddress` コマンドレットを使用します。 詳細については、[Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) コマンドレットの構文を参照してください。
+**プライマリ DNS サーバー**: 初回のセットアップ中に、StorSimple 用 Windows PowerShell を使用して、プライマリ DNS サーバーを先に指定します。 プライマリ DNS サーバーは、Windows PowerShell インターフェイス経由でのみ再構成できます。 デバイスのプライマリ DNS サーバーを変更するには、`Set-HcsDNSClientServerAddress` コマンドレットを使用します。 詳細については、[Set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) コマンドレットの構文を参照してください。
 
 **セカンダリ DNS サーバー**: セカンダリ DNS サーバーを変更するには、デバイスの Windows PowerShell インターフェイスで `Set-HcsDNSClientServerAddress` コマンドレットを使用するか、Azure ポータルで StorSimple デバイスの **[ネットワーク設定]** ブレードを使用します。
 
@@ -169,4 +169,3 @@ DATA 1 から DATA 5 までのネットワーク インターフェイスでは�
 
 * [StorSimple デバイスの MPIO の構成方法](storsimple-8000-configure-mpio-windows-server.md)。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
-

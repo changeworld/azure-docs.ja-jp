@@ -1,5 +1,5 @@
 ---
-title: VM からイメージを作成する (プレビュー)
+title: VM からイメージを作成する
 description: Azure PowerShell を使用し、Azure の既存 VM から Shared Image Gallery にイメージを作成する方法について説明します。
 author: cynthn
 ms.topic: how-to
@@ -9,22 +9,22 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225650"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601664"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>プレビュー:VM からイメージを作成する
+# <a name="create-an-image-from-a-vm"></a>VM からイメージを作成する
 
 既存の VM を使用し、同じ VM を複数作成する場合、Azure PowerShell を利用し、その VM から Shared Image Gallery にイメージを作成できます。 [Azure CLI](image-version-vm-cli.md) を利用して VM からイメージを作成することもできます。
 
 Azure PowerShell を利用し、[特殊な VM と一般の VM](./windows/shared-image-galleries.md#generalized-and-specialized-images) の両方からイメージをキャプチャできます。 
 
 イメージ ギャラリー内のイメージには 2 つのコンポーネントがあります。この例ではそれを作成します。
-- **イメージ定義**には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 
-- **イメージ バージョン**は、Shared Image Gallery の使用時に VM の作成に使用されるものです。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 VM を作成するとき、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
+- **イメージ定義** には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 
+- **イメージ バージョン** は、Shared Image Gallery の使用時に VM の作成に使用されるものです。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 VM を作成するとき、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -105,7 +105,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。 レプリケーションのターゲット リージョンを選択するときに、レプリケーションのターゲットとして、"*ソース*" リージョンも含める必要があることに注意してください。
 
-VM からイメージ バージョンを作成するには、`-Source` に `$vm.Id.ToString()` を使用します。
+VM からイメージ バージョンを作成するには、`-SourceImageId` に `$vm.Id.ToString()` を使用します。
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -119,7 +119,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $gallery.ResourceGroupName `
    -Location $gallery.Location `
    -TargetRegion $targetRegions  `
-   -Source $sourceVm.Id.ToString() `
+   -SourceImageId $sourceVm.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01' `  
    -asJob 
 ```

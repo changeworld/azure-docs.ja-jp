@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041631"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>正規化されたデータベース スキーマを Azure SQL Database から Azure CosmosDB 非正規コンテナーに移行する
 
@@ -96,11 +96,11 @@ FROM SalesLT.SalesOrderHeader o;
 
 19. [シンクの設定] で、[パーティション キー] を ```\SalesOrderID``` とし、コレクション アクションを "再作成" とします。 ご利用のマッピング タブが次のようになっていることを確認します。
 
-![シンクの設定](media/data-flow/cosmosb7.png)
+![[マッピング] タブを示すスクリーンショット。](media/data-flow/cosmosb7.png)
 
 20. [データのプレビュー] をクリックして、これらの 32 行が新しいドキュメントとして新しいコンテナーに挿入されるように設定されていることを確認します。
 
-![シンクの設定](media/data-flow/cosmosb8.png)
+![[データのプレビュー] タブを示すスクリーンショット。](media/data-flow/cosmosb8.png)
 
 すべて問題がないようであれば、新しいパイプラインを作成し、このデータ フロー アクティビティをそのパイプラインに追加して実行する準備ができたことになります。 デバッグまたはトリガーされた実行から実行できます。 数分後に、ご利用の CosmosDB データベースには、"orders" という名前で注文に関する非正規化コンテナーが新規に作成されます。
 

@@ -51,17 +51,26 @@
         - name: HTTP 拡張機能を使用した OVMS の使用
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: Custom Vision の使用
+          href: custom-vision-tutorial.md
+        - name: 空間分析の使用
+          href: spatial-analysis-tutorial.md
 - name: サンプル
   items:
     - name: C# ダイレクト メソッドのサンプル
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: C# SDK のサンプル
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Python ダイレクト メソッドのサンプル
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Python SDK のサンプル
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: 概念
   items:
     - name: メディア グラフ
       href: media-graph-concept.md
     - name: メディア グラフ拡張機能
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: ビデオ記録
       href: video-recording-concept.md
@@ -89,8 +98,16 @@
       href: manage-recording-policy-how-to.md
     - name: ポータルを使用したダイレクト メソッドの呼び出し
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: Azure Stack Edge へのデプロイ
+      href: deploy-azure-stack-edge-how-to.md
+    - name: シグナル ゲートの構成
+      href: configure-signal-gate-how-to.md
     - name: トラブルシューティング
       href: troubleshoot-how-to.md
+    - name: アップグレード中
+      href: upgrading-lva-module.md
+    - name: gRPC 推論サーバーの開発とデプロイ
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: リファレンス
   items:
     - name: HTTP 拡張プロトコル
@@ -109,3 +126,5 @@
       href: faq.md
     - name: 運用環境の準備状況とベスト プラクティス
       href: production-readiness.md
+    - name: 透明性と責任ある AI の原則
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

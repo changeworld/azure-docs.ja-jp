@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543012"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515695"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Security Code Analysis について
 
@@ -39,7 +39,7 @@ Azure DevOps パイプラインに Microsoft Security Code Analysis ツールを
 
 ### <a name="clean-builds"></a>クリーン ビルド
 
-ツールによってレポートされた初期の問題に対処した後、新しい問題の発生時にビルドを中断するようこの拡張機能を構成できます。 すべての pull request に対して継続的インテグレーション ビルドを設定することは簡単です。
+ツールによってレポートされた初期の問題に対処した後、新しい問題の発生時にビルドを中断するようこの拡張機能を構成できます。 すべての pull request に対して継続的インテグレーション ビルドを設定することは簡単です。
 
 ### <a name="set-it-and-forget-it"></a>設定したら放っておく
 
@@ -73,7 +73,7 @@ BinSkim は、コンパイラの設定、リンカーの設定、およびバイ
 
 ### <a name="roslyn-analyzers"></a>Roslyn アナライザー
 
-Roslyn アナライザーは、マネージド C# コードと Visual Basic コードを静的に分析するための Microsoft のコンパイラ統合ツールです。 詳細については、「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/)」を参照してください。
+Roslyn アナライザーは、マネージド C# コードと Visual Basic コードを静的に分析するための Microsoft のコンパイラ統合ツールです。 詳細については、「[Roslyn ベースのアナライザー](/dotnet/fundamentals/code-analysis/quality-rules/security-warnings)」を参照してください。
 
 ### <a name="tslint"></a>TSLint
 

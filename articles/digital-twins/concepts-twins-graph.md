@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062051"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045956"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
-Azure Digital Twins ソリューションでは、環境内のエンティティは Azure **デジタル ツイン**で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを**リレーションシップ**によって他のデジタル ツインに接続して、**ツイン グラフ**を形成できます。このツイン グラフは、環境全体を表しています。
+Azure Digital Twins ソリューションでは、環境内のエンティティは Azure **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
 
 > [!TIP]
 > "Azure Digital Twins" は、この Azure サービス全体を指します。 "デジタル ツイン" または単に "ツイン" は、サービスのインスタンス内の個々のツイン ノードを指します。
@@ -39,63 +39,26 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ## <a name="create-with-the-apis"></a>API を使用して作成する
 
-このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](how-to-use-apis-sdks.md) を利用する .NET コードの例が含まれています。
+このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](/rest/api/digital-twins/dataplane/twins) を利用する .NET コードの例が含まれています。
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、*Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
+[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、*Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
 
-Azure Digital Twins の現在のプレビューでは、ツインを作成する前に、ツインのすべてのプロパティを初期化しておく必要があります。 これを行うには、必要な初期化値を提供する JSON ドキュメントを作成します。
+ツインは作成時にそのプロパティを初期化できます。あるいは後で設定できます。 プロパティを初期化してツインを作成するには、必要な初期化値を与える JSON ドキュメントを作成します。
 
-```csharp
-public Task<boolean> CreateRoom(string id, double temperature, double humidity) 
-{
-    // Define the model for the twin to be created
-    Dictionary<string, object> meta = new Dictionary<string, object>()
-    {
-      { "$model", "dtmi:com:contoso:Room;2" }
-    };
-    // Initialize the twin properties
-    Dictionary<string, object> initData = new Dictionary<string, object>()
-    {
-      { "$metadata", meta },
-      { "Temperature", temperature},
-      { "Humidity", humidity},
-    };
-    try
-    {
-      await client.DigitalTwins.AddAsync(id, initData);
-      return true;
-    }
-    catch (ErrorResponseException e)
-    {
-      Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}");
-      return false;
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
+
+ディクショナリを使用する代わりに、`BasicDigitalTwin` という名称のヘルパー クラスを使用し、"ツイン" オブジェクトにプロパティ フィールドをもっと直接的に格納することもできます。 ヘルパー クラスとその使用例の詳細については、「[*デジタル ツインを作成するセクション*](how-to-manage-twin.md#create-a-digital-twin)」を参照してください。このセクションは *「デジタル ツインを管理する」方法* を参照してください。
+
+>[!NOTE]
+>ツイン プロパティはオプションとして扱われ、初期化する必要がありませんが、ツインの作成時にそのあらゆる [コンポーネント](concepts-models.md#elements-of-a-model)を設定する **必要があります**。 空のオブジェクトにすることができますが、コンポーネント自体は存在する必要があります。
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
-[DigitalTwins API](how-to-use-apis-sdks.md) を使用して、*GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
+[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、*GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-Dictionary<string, object> targetrec = new Dictionary<string, object>()
-{
-    { "$targetId", "Cafe" }
-};
-try
-{
-    await client.DigitalTwins.AddEdgeAsync("GroundFloor", "contains", "GF-to-Cafe", targetrec);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>グラフ要素の JSON 表現
 

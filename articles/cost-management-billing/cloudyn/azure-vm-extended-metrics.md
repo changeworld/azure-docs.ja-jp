@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89084f0631b52631708db68a11595cb24d1b9fee
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690121"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131447"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -28,7 +28,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 - 使用状況に応じてサイズを調整し、コストを管理します。
 - Cloudyn からコスト効率のよいサイズ設定の最適化に関する推奨事項を取得します。
 
-たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_Percentage CPU_ および _\Memory\% Committed Bytes In Use_ に対応します。
+たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、 _Percentage CPU_ および _\Memory\% Committed Bytes In Use_ に対応します。
 
 > [!NOTE]
 > 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn には、[Log Analytics エージェント](../../azure-monitor/platform/agents-overview.md)との互換性はありません。
@@ -50,7 +50,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 
 拡張メトリックを有効にするのは簡単です。 VM ごとに、ゲスト レベルの監視を有効にします。 ゲスト レベルの監視を有効にすると、Azure Diagnostics エージェントが VM にインストールされます。 既定では、拡張メトリックの基本セットが追加されます。 以降のプロセスは、クラシック VM と通常の VM、および Windows VM と Linux VM で同じです。
 
-Azure と Linux のゲスト レベルの監視では、どちらもストレージ アカウントが必要なことに留意してください。 ゲスト レベルの監視を有効にするときに、既存のストレージ アカウントを選択しなかった場合は、アカウントが作成されます。
+Windows と Linux のゲスト レベルの監視では、どちらもストレージ アカウントが必要なことに留意してください。 ゲスト レベルの監視を有効にするときに、既存のストレージ アカウントを選択しなかった場合は、アカウントが作成されます。
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>既存の VM でゲスト レベルの監視を有効にする
 
@@ -74,7 +74,7 @@ Azure 仮想マシンの拡張メトリックを有効にする方法の詳細�
 
 ## <a name="resource-manager-credentials"></a>Resource Manager の資格情報
 
-拡張メトリックを有効にした後は、Cloudyn が [Resource Manager の資格情報](../../cost-management/activate-subs-accounts.md)にアクセスできることを確認します。 Cloudyn が VM のパフォーマンス データを収集して表示するには、資格情報が必要です。 資格情報は、コスト最適化の推奨事項の作成にも使われます。 Cloudyn は、インスタンスがダウンサイズの推奨の候補かどうかを判定するために、少なくとも 3 日分のパフォーマンス データをインスタンスから収集する必要があります。
+拡張メトリックを有効にした後は、Cloudyn が [Resource Manager の資格情報](./activate-subs-accounts.md)にアクセスできることを確認します。 Cloudyn が VM のパフォーマンス データを収集して表示するには、資格情報が必要です。 資格情報は、コスト最適化の推奨事項の作成にも使われます。 Cloudyn は、インスタンスがダウンサイズの推奨の候補かどうかを判定するために、少なくとも 3 日分のパフォーマンス データをインスタンスから収集する必要があります。
 
 ## <a name="enable-vm-metrics-with-a-script"></a>スクリプトで VM のメトリックを有効にする
 
@@ -88,4 +88,4 @@ Cloudyn ポータルで Azure インスタンスのパフォーマンス メト�
 
 ## <a name="next-steps"></a>次のステップ
 
-- アカウントの Azure Resource Manager API アクセスをまだ有効にしていない場合は、「[Azure サブスクリプションとアカウントのアクティブ化](../../cost-management/activate-subs-accounts.md)」に進んでください。
+- アカウントの Azure Resource Manager API アクセスをまだ有効にしていない場合は、「[Azure サブスクリプションとアカウントのアクティブ化](./activate-subs-accounts.md)」に進んでください。

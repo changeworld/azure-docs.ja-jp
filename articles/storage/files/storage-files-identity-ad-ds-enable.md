@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535078"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630398"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
@@ -28,20 +28,20 @@ AzFilesHybrid PowerShell モジュールのコマンドレットによって、�
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid モジュールをダウンロードする
 
-- [AzFilesHybrid モジュールをダウンロードして解凍します](https://github.com/Azure-Samples/azure-files-samples/releases) (GA モジュール v0.2.0 以降)
+- [AzFilesHybrid モジュール (GA モジュール: v0.2.0+) をダウンロードして解凍する](https://github.com/Azure-Samples/azure-files-samples/releases)AES 256 Kerberos 暗号化は、v0.2.2 以上でサポートされることに注意してください。 この機能を 0.2.2 未満の AzFilesHybrid バージョンで有効にし、AES 256 Kerberos 暗号化がサポートされるように更新する場合は、[この記事](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)をご覧ください。 
 - ターゲット AD でサービス ログオン アカウントまたはコンピューター アカウントを作成する権限がある AD DS 資格情報を使用して、オンプレミスの AD DS に参加しているデバイスにモジュールをインストールして実行します。
 -  Azure AD に同期されているオンプレミスの AD DS 資格情報を使用して、スクリプトを実行します。 オンプレミスの AD DS 資格情報には、ストレージ アカウント所有者または共同作成者の Azure ロールのアクセス許可が必要です。
 
 ### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth を実行する
 
-`Join-AzStorageAccountForAuth` コマンドレットでは、指定されたストレージ アカウントに代わってオフライン ドメイン参加に相当することを行います。 このスクリプトでは、コマンドレットを使用して、AD ドメインに[コンピューター アカウント](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)を作成します。 何らかの理由でコンピューター アカウントを使用できない場合は、代わりに[サービス ログオン アカウント](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)を作成するようにスクリプトを変更できます。 このコマンドを手動で実行する場合は、環境に最も適したアカウントを選択する必要があります。
+`Join-AzStorageAccountForAuth` コマンドレットでは、指定されたストレージ アカウントに代わってオフライン ドメイン参加に相当することを行います。 このスクリプトでは、コマンドレットを使用して、AD ドメインに[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)を作成します。 何らかの理由でコンピューター アカウントを使用できない場合は、代わりに[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)を作成するようにスクリプトを変更できます。 このコマンドを手動で実行する場合は、環境に最も適したアカウントを選択する必要があります。
 
 コマンドレットによって作成された AD DS アカウントは、ストレージ アカウントを表します。 AD DSアカウントが、パスワードの有効期限を適用する組織単位 (OU) の下で作成されている場合は、パスワードの有効期間の前にパスワードを更新する必要があります。 その日付の前までにアカウント パスワードが更新されない場合は、Azure ファイル共有にアクセスするときに認証エラーが発生します。 パスワードを更新する方法については、[AD DS アカウント パスワードを更新する](storage-files-identity-ad-ds-update-password.md)方法に関する記事を参照してください。
 
 PowerShell で実行する前に、必ず、以下のパラメーターのプレースホルダーの値を実際の値に置き換えてください。
 > [!IMPORTANT]
-> ドメイン参加コマンドレットは、AD のストレージ アカウント (ファイル共有) を表す AD アカウントを作成します。 コンピューター アカウントまたはサービス ログオン アカウントのどちらとして登録するかを選択できます。詳細については、[FAQ](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) を参照してください。 コンピューター アカウントの場合は、AD で 30 日に設定された既定のパスワードの有効期限が存在します。 同様に、サービス ログオン アカウントでも、既定のパスワードの有効期限が AD ドメインまたは組織単位 (OU) で設定されている可能性があります。
-> どちらのアカウントの種類でも、AD 環境で構成されているパスワードの有効期限を確認し、パスワードの有効期間が終了する前に、AD アカウントの[ストレージ アカウント ID のパスワードを更新する](storage-files-identity-ad-ds-update-password.md)よう計画することをお勧めします。 [AD で新しい AD 組織単位 (OU) を作成](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps)し、それぞれ[コンピューター アカウント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN)またはサービス ログオン アカウントのパスワードの有効期限のポリシーを無効にすることを検討できます。 
+> ドメイン参加コマンドレットは、AD のストレージ アカウント (ファイル共有) を表す AD アカウントを作成します。 コンピューター アカウントまたはサービス ログオン アカウントのどちらとして登録するかを選択できます。詳細については、[FAQ](./storage-files-faq.md#security-authentication-and-access-control) を参照してください。 コンピューター アカウントの場合は、AD で 30 日に設定された既定のパスワードの有効期限が存在します。 同様に、サービス ログオン アカウントでも、既定のパスワードの有効期限が AD ドメインまたは組織単位 (OU) で設定されている可能性があります。
+> どちらのアカウントの種類でも、AD 環境で構成されているパスワードの有効期限を確認し、パスワードの有効期間が終了する前に、AD アカウントの[ストレージ アカウント ID のパスワードを更新する](storage-files-identity-ad-ds-update-password.md)よう計画することをお勧めします。 [AD で新しい AD 組織単位 (OU) を作成](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps)し、それぞれ[コンピューター アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))またはサービス ログオン アカウントのパスワードの有効期限のポリシーを無効にすることを検討できます。 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -72,8 +72,12 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -StorageAccountName $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
-        -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" # If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory.
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" <# Default is set as ComputerAccount #> `
+        -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" <# If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory. #> `
+        -EncryptionType "<AES256/RC4/AES256,RC4>" <# Specify the encryption agorithm used for Kerberos authentication. Default is configured as "'RC4','AES256'" which supports both 'RC4' and 'AES256' encryption. #>
+
+#Run the command below if you want to enable AES 256 authentication. If you plan to use RC4, you can skip this step.
+Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, see Azure Files Windows troubleshooting guide.
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
@@ -85,7 +89,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>環境の確認
 
-まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
+まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD でのストレージ アカウントを表す ID の手動による作成
 
@@ -151,6 +155,16 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
+正常に終了した場合、出力は次のようになります。
+
+```PowerShell
+DomainName:<yourDomainHere>
+NetBiosDomainName:<yourNetBiosDomainNameHere>
+ForestName:<yourForestNameHere>
+DomainGuid:<yourGUIDHere>
+DomainSid:<yourSIDHere>
+AzureStorageID:<yourStorageSIDHere>
+```
 ## <a name="next-steps"></a>次のステップ
 
 これで、ストレージ アカウントで機能が正常に有効になりました。 この機能を使用するには、共有レベルのアクセス許可を割り当てる必要があります。 次のセクションに進みます。

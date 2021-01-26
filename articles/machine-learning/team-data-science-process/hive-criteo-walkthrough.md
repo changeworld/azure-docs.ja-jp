@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274205"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305938"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -45,29 +45,29 @@ Criteo データは、gzip で圧縮された 370 GB の TSV ファイル (非�
 
 不足値がこのデータセットの数値列とカテゴリ列の両方にあります。 不足値を処理する単純なメソッドが説明されています。 データの詳細については、Hive テーブルにデータを格納するときに説明します。
 
-**定義**:*クリックスルー率 (CTR):* このメトリックは、データ内のクリックの割合です。 この Criteo データセットの CTR は、約 3.3% または 0.033 です。
+**定義** : *クリックスルー率 (CTR):* このメトリックは、データ内のクリックの割合です。 この Criteo データセットの CTR は、約 3.3% または 0.033 です。
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
 このチュートリアルでは、次の 2 つのサンプルの予測問題に対処します。
 
-1. **二項分類**:ユーザーが追加をクリックしたかどうかを予測します。
+1. **二項分類** :ユーザーが追加をクリックしたかどうかを予測します。
 
    * クラス 0:クリックしない
    * クラス 1:Click
-2. **回帰**:ユーザーの特徴から広告クリックの確率を予測します。
+2. **回帰** :ユーザーの特徴から広告クリックの確率を予測します。
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>データ サイエンス用に HDInsight Hadoop クラスターをセット アップする
 > [!NOTE]
-> 通常、この手順は、**管理者**タスクです。
+> 通常、この手順は、 **管理者** タスクです。
 
 HDInsight クラスターを使用して予測分析ソリューションを構築するために、3 つの手順で Azure のデータ サイエンス環境をセット アップします。
 
 1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
-2. [Azure HDInsight Hadoop Clusters for Data Science のカスタマイズ](customize-hadoop-cluster.md):この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズするときに実行する、2 つの重要な手順があります (このトピックで説明します)。
+2. [Azure HDInsight Hadoop Clusters for Data Science のカスタマイズ](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md):この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズするときに実行する、2 つの重要な手順があります (このトピックで説明します)。
 
    * 作成時に、手順 1 で作成したストレージ アカウントを HDInsight クラスターにリンクします。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
    * 作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 ここで指定するリモート アクセス資格情報を覚えておいてください (クラスターの作成時に指定した資格情報とは異なります)。次の手順を完了します。
-3. [Azure Machine Learning Studio (クラシック) ワークスペースを作成する](../studio/create-workspace.md)この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
+3. [Azure Machine Learning Studio (クラシック) ワークスペースを作成する](../classic/create-workspace.md)この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得して使用する
 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットにアクセスするには、リンクをクリックし、使用条件に同意して名前を入力します。 次にスナップショットを示します。
@@ -76,7 +76,7 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 
 **[Continue to Download (ダウンロードの続行)]** をクリックしてデータセットとその可用性に関する詳細をお読みください。
 
-このデータは [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) の wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ にあります。 "wasb" は、Azure BLOB ストレージの場所を表します。
+このデータは [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-dotnet.md) の wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ にあります。 "wasb" は、Azure BLOB ストレージの場所を表します。
 
 1. この Azure Blob Storage 内のデータは、解凍されたデータの 3 つのサブフォルダーで構成されています。
 
@@ -99,7 +99,7 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 これで、チュートリアルの最初の部分 (Hive を使用したデータ探索と Azure Machine Learning のデータの準備) を設定して開始する準備ができました。
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Hive データベースとテーブルを作成する
-Criteo データセットの Hive テーブルを作成するには、ヘッド ノードのデスクトップで ***Hadoop コマンド ライン***を開き、次のコマンドを入力して Hive ディレクトリに入ります。
+Criteo データセットの Hive テーブルを作成するには、ヘッド ノードのデスクトップで "* *_Hadoop コマンド ライン_* _" を開き、次のコマンドを入力して Hive ディレクトリに入ります
 
 ```console
 cd %hive_home%\bin
@@ -118,9 +118,9 @@ Hive REPL が "hive >" 記号と共に表示されたら、単にクエリをカ
 
 以下のコードでは、データベース "criteo" を作成した後、次の 4 つのテーブルが生成されます。
 
-* day\_00 ～ day\_20 の期間に構築された、*カウントを生成する 1 つのテーブル*。
-* day\_21 に構築された、*トレーニング データベースとして使用する 1 つのテーブル*。
-* それぞれ day\_22 と day\_23 に構築された、*テスト データセットとして使用する 2 つのテーブル*。
+_ day\_00 から day\_20 の期間に作成された " *カウントを生成する 1 つのテーブル* "。
+* day\_21 に構築された、 *トレーニング データベースとして使用する 1 つのテーブル* 。
+* それぞれ day\_22 と day\_23 に構築された、 *テスト データセットとして使用する 2 つのテーブル* 。
 
 いずれかの日が休日であるため、テスト データセットを 2 つの異なるテーブルに分割します。 その目的は、休日と休日以外の違いを、モデルがクリックスルー率から検出できるかどうかを判断することです。
 
@@ -161,7 +161,7 @@ STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.wi
 
 **任意の Hive クエリを実行する方法は 2 つあります。**
 
-* **Hive REPL コマンド ラインを使用する**:最初の方法は "hive" コマンドを発行し、Hive REPL コマンド ラインでクエリをコピーして貼り付けることです。
+* **Hive REPL コマンド ラインを使用する** :最初の方法は "hive" コマンドを発行し、Hive REPL コマンド ラインでクエリをコピーして貼り付けることです。
 
   ```console
   cd %hive_home%\bin
@@ -169,7 +169,7 @@ STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.wi
   ```
 
      REPL コマンド ラインで、クエリをカット アンド ペースして実行します。
-* **ファイルにクエリを保存し、コマンドを実行する**:2 番目の方法は '.hql' ファイル ([sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) にクエリを保存し、次のコマンドを発行してクエリを実行することです。
+* **ファイルにクエリを保存し、コマンドを実行する** :2 番目の方法は '.hql' ファイル ( [sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) にクエリを保存し、次のコマンドを発行してクエリを実行することです。
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -354,7 +354,7 @@ SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 Time taken: 448.116 seconds, Fetched: 1 row(s)
 ```
 
-Col15 には 19 M 個の一意の値があります。 "one-hot エンコーディング" のような単純な手法を使用して、このような高次元カテゴリ変数をエンコードすることはできません。 特に、この問題に効率的に取り組むために、[カウントを使用した学習](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)と呼ばれる、強力で信頼性の高い手法が示されています。
+Col15 には 19 M 個の一意の値があります。 "one-hot エンコーディング" のような単純な手法を使用して、このような高次元カテゴリ変数をエンコードすることはできません。 特に、この問題に効率的に取り組むために、[カウントを使用した学習](/archive/blogs/machinelearning/big-learning-made-easy-with-counts)と呼ばれる、強力で信頼性の高い手法が示されています。
 
 最後に、他のカテゴリ列の一意の値の数も確認します。 [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) の内容を以下に示します。
 
@@ -472,7 +472,7 @@ Time taken: 300.02 seconds
 Azure Machine Learning に移動する前に、カウント テーブルに関する最後の重要なコンポーネントがあります。 次のサブセクションでは、カウント テーブルについて詳しく説明します。
 
 ## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> カウント テーブルの簡単な説明
-ご覧になったように、カテゴリ変数のいくつかは高次元です。 チュートリアルでは、こうした変数を効率的かつ堅牢な方法でエンコードする、[カウントを使用した学習](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)と呼ばれる強力な手法について説明します。 この手法の詳細については、リンクをクリックしてください。
+ご覧になったように、カテゴリ変数のいくつかは高次元です。 チュートリアルでは、こうした変数を効率的かつ堅牢な方法でエンコードする、[カウントを使用した学習](/archive/blogs/machinelearning/big-learning-made-easy-with-counts)と呼ばれる強力な手法について説明します。 この手法の詳細については、リンクをクリックしてください。
 
 >[!NOTE]
 >このチュートリアルでは、カウント テーブルを使用して、高次元のカテゴリ特徴のコンパクトな表現を生成することに重点を置いています。 これは、カテゴリ特徴をエンコードする唯一の方法ではありません。関心のある方は、他の手法の詳細について [one-hot エンコーディング](https://en.wikipedia.org/wiki/One-hot)に関するページと[特徴ハッシュ](https://en.wikipedia.org/wiki/Feature_hashing)に関するページをご覧ください。
@@ -489,7 +489,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 4. [モデルを評価する](#step4)
 5. [モデルを Web サービスとして発行する](#step5)
 
-これで、Azure Machine Learning Studio でモデルを構築する準備ができました。 ダウンサンプリングされたデータは、クラスター内に Hive テーブルとして保存されます。 このデータを読み取るには、Azure Machine Learning の**データのインポート** モジュールを使用します。 このクラスターのストレージ アカウントにアクセスするための資格情報は、以下のとおりです。
+これで、Azure Machine Learning Studio でモデルを構築する準備ができました。 ダウンサンプリングされたデータは、クラスター内に Hive テーブルとして保存されます。 このデータを読み取るには、Azure Machine Learning の **データのインポート** モジュールを使用します。 このクラスターのストレージ アカウントにアクセスするための資格情報は、以下のとおりです。
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> ステップ 1:データのインポート モジュールを使用して、Azure Machine Learning に Hive テーブルからデータを取得し、機械学習の実験用に選ぶ
 まず **[+新規]**  ->  **[実験]**  ->  **[空の実験]** を選択します。 次に、左上の **[検索]** ボックスで "データのインポート" を検索します。 **データのインポート** モジュールを実験キャンバス (画面の中央) にドラッグ アンド ドロップして、データ アクセスにモジュールを使用します。
@@ -502,13 +502,13 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 1. [Hive クエリ] を **データ ソース**
 2. **[Hive データベース クエリ]** ボックスでは、SELECT * FROM <your\_database\_name.your\_table\_name> のみで十分です。
-3. **Hcatalog サーバー URI**:クラスターが "abc" の場合は、単に https:\//abc.azurehdinsight.net となります。
-4. **Hadoop ユーザーのアカウント名**:クラスターの設定時に選択したユーザー名。 (リモート アクセスのユーザー名ではありません)。
-5. **Hadoop ユーザー アカウントのパスワード**:クラスターの設定時に選択した上記のユーザー名のパスワード。 (リモート アクセスのパスワードではありません)。
-6. **出力データの場所**:[Azure] を選択します
-7. **Azure ストレージ アカウント名**:クラスターに関連付けられているストレージ アカウント
-8. **Azure Storage アカウント キー**:クラスターに関連付けられているストレージ アカウントのキー。
-9. **Azure コンテナー名**:クラスター名が "abc" の場合、通常は単に "abc" となります。
+3. **Hcatalog サーバー URI** :クラスターが "abc" の場合は、単に https:\//abc.azurehdinsight.net となります。
+4. **Hadoop ユーザーのアカウント名** :クラスターの設定時に選択したユーザー名。 (リモート アクセスのユーザー名ではありません)。
+5. **Hadoop ユーザー アカウントのパスワード** :クラスターの設定時に選択した上記のユーザー名のパスワード。 (リモート アクセスのパスワードではありません)。
+6. **出力データの場所** :[Azure] を選択します
+7. **Azure ストレージ アカウント名** :クラスターに関連付けられているストレージ アカウント
+8. **Azure Storage アカウント キー** :クラスターに関連付けられているストレージ アカウントのキー。
+9. **Azure コンテナー名** :クラスター名が "abc" の場合、通常は単に "abc" となります。
 
 **データのインポート** がデータの取得を終了したら (モジュールに緑色のチェック マークが表示されます)、このデータをデータセットとして保存します (任意の名前を付けます)。 次のように表示されます。
 
@@ -543,7 +543,7 @@ Azure Machine Learning Studio (クラシック) の実験は、次のように�
 カテゴリ型の特徴を持つ大規模なデータセットの場合、数百万単位の一意の値が含まれる可能性があります。 このような高次元のカテゴリ型の特徴を表現する場合、ワンホット エンコーディングなどの単純な方法を使用することは完全に不可能です。 このチュートリアルでは、組み込みの Azure Machine Learning モジュールを利用するカウント特徴を使い、このような高次元のカテゴリ型変数をコンパクトな表現で生成する方法について説明します。 最終的に、モデル サイズは小さくなり、トレーニング時間は短縮され、他の技術を使用する場合と同等のパフォーマンス メトリックになります。
 
 ##### <a name="building-counting-transforms"></a>カウント変換の構築
-カウント特徴を構築するために、Azure Machine Learning で利用できる**カウント変換の構築**モジュールを使用します。 次のようなモジュールです。
+カウント特徴を構築するために、Azure Machine Learning で利用できる **カウント変換の構築** モジュールを使用します。 次のようなモジュールです。
 
 ![カウント変換の構築モジュール プロパティ](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![カウント変換の構築モジュール](./media/hive-criteo-walkthrough/OdDN0vw.png)
@@ -562,17 +562,17 @@ Azure Machine Learning Studio (クラシック) の実験は、次のように�
 
 ![[変換として保存] オプション](./media/hive-criteo-walkthrough/IcVgvHR.png)
 
-前述の実験アーキテクチャで説明したように、データセット "ytransform2" は保存したカウント変換と正確に対応しています。 以降のこの実験では、読者が何らかのデータに対して**カウント変換の構築**モジュールを使用してカウントを生成したと想定して話を進めます。このようなカウントを使用すると、トレーニング データセットとテスト データセットに対してカウント特徴を生成できます。
+前述の実験アーキテクチャで説明したように、データセット "ytransform2" は保存したカウント変換と正確に対応しています。 以降のこの実験では、読者が何らかのデータに対して **カウント変換の構築** モジュールを使用してカウントを生成したと想定して話を進めます。このようなカウントを使用すると、トレーニング データセットとテスト データセットに対してカウント特徴を生成できます。
 
 ##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>トレーニング データセットとテスト データセットの一部に含めるカウント特徴を選択する
-カウント変換が準備できたら、**カウント テーブル パラメーターの変更**モジュールを使用して、トレーニング データセットとテスト データセットに含める特徴を選択できます。 このモジュールは、完全を期すためにここで紹介していますが、 わかりやすくするために、実際には実験で使用しません。
+カウント変換が準備できたら、 **カウント テーブル パラメーターの変更** モジュールを使用して、トレーニング データセットとテスト データセットに含める特徴を選択できます。 このモジュールは、完全を期すためにここで紹介していますが、 わかりやすくするために、実際には実験で使用しません。
 
 ![カウント テーブル パラメーターの変更](./media/hive-criteo-walkthrough/PfCHkVg.png)
 
 この場合は、ご覧のように log-odds が使用され、バック オフ列は無視されています。 また、ごみ箱のしきい値、平滑化のために追加する擬似的な過去の例の数、Laplacian ノイズを使用するかどうかなど、パラメーターを設定することもできます。 これらはいずれも高度な特徴です。このような特徴を初めて生成する場合は、この既定値を参考に利用することができます。
 
 ##### <a name="data-transformation-before-generating-the-count-features"></a>カウント特徴を生成する前のデータ変換
-ここでは、実際にカウント特徴を生成する前の、トレーニング データおよびテスト データ変換に関する重要ポイントに焦点を当てます。 カウント変換がデータに適用される前に、2 つの **R スクリプトの実行**モジュールが使用されます。
+ここでは、実際にカウント特徴を生成する前の、トレーニング データおよびテスト データ変換に関する重要ポイントに焦点を当てます。 カウント変換がデータに適用される前に、2 つの **R スクリプトの実行** モジュールが使用されます。
 
 ![R スクリプトの実行モジュール](./media/hive-criteo-walkthrough/aF59wbc.png)
 
@@ -589,7 +589,7 @@ Azure Machine Learning Studio (クラシック) の実験は、次のように�
 この単純な R のスクリプトでは、正のクラスと負のクラスのバランス量の設定に "pos\_neg\_ratio" が使用されます。 クラスの不均衡を改善すると、通常、クラスの分布が偏っているという分類の問題がある場合にパフォーマンスが改善されるため、この処理は重要です (正のクラスが 3.3%、負のクラスが 96.7% の例を思い出してください)。
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>カウント変換をデータに適用する
-最後に、**変換の適用**モジュールを使用すると、トレーニング データセットとテスト データセットにカウント変換を適用できます。 このモジュールは、1 つの入力として保存済みのカウント変換を使用し、もう 1 つの入力としてトレーニング データセットまたはテスト データセットを使用して、カウント特徴を含むデータを返します。 次に例を示します。
+最後に、 **変換の適用** モジュールを使用すると、トレーニング データセットとテスト データセットにカウント変換を適用できます。 このモジュールは、1 つの入力として保存済みのカウント変換を使用し、もう 1 つの入力としてトレーニング データセットまたはテスト データセットを使用して、カウント特徴を含むデータを返します。 次に例を示します。
 
 ![変換の適用モジュール](./media/hive-criteo-walkthrough/xnQvsYf.png)
 
@@ -612,28 +612,28 @@ Azure Machine Learning Studio (クラシック) の実験は、次のように�
 実験のため、既定値を選択します。 既定値には意味があり、パフォーマンスの簡単なベースラインを効果的に取得するのに適しています。 ベースラインがあれば、パラメーターを整理してパフォーマンスを改善できます。
 
 #### <a name="train-the-model"></a>モデルをトレーニングする
-トレーニングのために、単純に**モデルのトレーニング** モジュールを呼び出します。 2 つの入力は、2 クラス ブースト デシジョン ツリー学習者とトレーニング データセットです。 次に例を示します。
+トレーニングのために、単純に **モデルのトレーニング** モジュールを呼び出します。 2 つの入力は、2 クラス ブースト デシジョン ツリー学習者とトレーニング データセットです。 次に例を示します。
 
 ![モデルのトレーニング モジュール](./media/hive-criteo-walkthrough/2bZDZTy.png)
 
 #### <a name="score-the-model"></a>モデルにスコアを付ける
-トレーニング済みのモデルを用意すると、テスト データセットにスコアを付け、パフォーマンスを評価することができます。 それには、次の図に示す**モデルのスコア付け**モジュールと、**モデルの評価**モジュールを使用します。
+トレーニング済みのモデルを用意すると、テスト データセットにスコアを付け、パフォーマンスを評価することができます。 それには、次の図に示す **モデルのスコア付け** モジュールと、 **モデルの評価** モジュールを使用します。
 
 ![スコア モデル モジュール](./media/hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> 手順 4:モデルを評価する
-最後に、モデルのパフォーマンスを分析します。 通常、2 つのクラス (二項) 分類の問題の効果的な手段は、AUC です。 この曲線を視覚化するには、**モデルのスコア付け**モジュールを**モデルの評価**モジュールに関連付けます。 **モデルの評価**モジュールで **[視覚化]** をクリックすると、次のようなグラフィックが表示されます。
+最後に、モデルのパフォーマンスを分析します。 通常、2 つのクラス (二項) 分類の問題の効果的な手段は、AUC です。 この曲線を視覚化するには、 **モデルのスコア付け** モジュールを **モデルの評価** モジュールに関連付けます。 **モデルの評価** モジュールで **[視覚化]** をクリックすると、次のようなグラフィックが表示されます。
 
 ![評価モジュール BDT モデル](./media/hive-criteo-walkthrough/0Tl0cdg.png)
 
-二項 (または 2 つのクラス) 分類の問題で、予測精度の効果的な手段は 曲線下面積 (AUC) です。 次のセクションでは、テスト データセットでこのモデルを使用して、結果を示します。 **モデルの評価**モジュールの出力ポートを右クリックし、 **[視覚化]** をクリックします。
+二項 (または 2 つのクラス) 分類の問題で、予測精度の効果的な手段は 曲線下面積 (AUC) です。 次のセクションでは、テスト データセットでこのモデルを使用して、結果を示します。 **モデルの評価** モジュールの出力ポートを右クリックし、 **[視覚化]** をクリックします。
 
 ![視覚化のモデルの評価モジュール](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
 ### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> 手順 5:モデルを Web サービスとして発行する
 最小限の労力で Azure Machine Learning モデルを Web サービスとして発行することは、モデルを広く利用できるようにするために重要です。 発行すると、誰でも予測が必要な入力データを使用して Web サービスを呼び出すことができます。また、Web サービスはそのモデルを使用して予測を返します。
 
-まず、**モデルのトレーニング** モジュールを右クリックし、 **[トレーニング済みのモデルとして保存する]** オプションを使用して、トレーニング済みのモデルをトレーニング済みモデル オブジェクトとして保存します。
+まず、 **モデルのトレーニング** モジュールを右クリックし、 **[トレーニング済みのモデルとして保存する]** オプションを使用して、トレーニング済みのモデルをトレーニング済みモデル オブジェクトとして保存します。
 
 次に、Web サービスの入力ポートと出力ポートを作成します。
 
@@ -654,12 +654,12 @@ Azure Machine Learning Studio (クラシック) の実験は、次のように�
 ![BDT 入力データを作成する](./media/hive-criteo-walkthrough/OEJMmst.png)
 
 > [!NOTE]
-> 入力データ形式には、**カウント Featurizer** モジュールの出力を使用します。 この実験が完了したら、 **カウント Featurizer** モジュールから出力をデータセットとして保存します。 このデータセットは、Web サービスの入力データに使用されます。
+> 入力データ形式には、 **カウント Featurizer** モジュールの出力を使用します。 この実験が完了したら、 **カウント Featurizer** モジュールから出力をデータセットとして保存します。 このデータセットは、Web サービスの入力データに使用されます。
 >
 >
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Web サービスの公開のためのスコア付け実験
-まず、重要な構造は、**カウント Featurizer** モジュールを使用して前の手順で生成された、いくつかの行の入力データとトレーニング済みのモデル オブジェクトを受け入れる**モデルのスコア付け**モジュールです。 "データセット内の列の選択" を使用して、スコア付けラベルとスコア付け確率を予測します。
+まず、重要な構造は、 **カウント Featurizer** モジュールを使用して前の手順で生成された、いくつかの行の入力データとトレーニング済みのモデル オブジェクトを受け入れる **モデルのスコア付け** モジュールです。 "データセット内の列の選択" を使用して、スコア付けラベルとスコア付け確率を予測します。
 
 ![データセット内の列の選択](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
@@ -677,7 +677,7 @@ Web サービスが公開されると、次のようなページにリダイレ�
 
 左側に表裏される Web サービス用の 2 つのリンクに注意してください。
 
-* **要求/応答**サービス (RRS) は、1 つの予測を対象としたサービスで、このワークショップで使用されています。
+* **要求/応答** サービス (RRS) は、1 つの予測を対象としたサービスで、このワークショップで使用されています。
 * **バッチの実行** サービス (BES) バッチ予測を使用し、Azure Blob ストレージに存在する予測を行う、入力データを使用する必要があります。
 
 **[REQUEST/RESPONSE]** リンクをクリックすると、C#、python、R で作成されたコードを紹介するページに移動します。そのコードを使用して、Web サービスの呼び出しを手間なく行うことができます。 このページの API キーを認証に使用する必要があります。
@@ -695,4 +695,3 @@ Web サービスが公開されると、次のようなページにリダイレ�
 Python スクリプトの JSON フレームワークで質問された 2 つのテスト サンプルに対して、"スコア付けラベル, スコア付け確率" の形式で回答が返されました。 この場合は、事前に定義されたコードによって提供された既定値が選択されています (すべての数値列が 0、すべてのカテゴリ列が文字列 "value" です)。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法を示すチュートリアルは終了です。 ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
-

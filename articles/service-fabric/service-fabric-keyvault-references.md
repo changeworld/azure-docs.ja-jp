@@ -3,16 +3,22 @@ title: Azure Service Fabric - Service Fabric アプリケーションの KeyVaul
 description: この記事では、アプリケーション シークレットでの Service Fabric KeyVaultReference サポートの使用方法について説明します。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246165"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313789"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric アプリケーションでの KeyVaultReference サポート (プレビュー)
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric アプリケーションでの KeyVaultReference サポート (プレビュー)
 
 クラウド アプリケーションを構築するときの一般的な課題は、アプリケーションによって必要とされるシークレットを安全に格納する方法です。 たとえば、コンテナー リポジトリの資格情報を keyvault に格納し、アプリケーション マニフェスト上でそれを参照する場合があります。 Service Fabric KeyVaultReference では、Service Fabric マネージド IDを使用し、keyvault シークレットの参照を容易にします。 この記事では以降、Service Fabric KeyVaultReference の使用方法について詳しく説明するとともに、一般的な使用方法をいくつか紹介します。
+
+> [!IMPORTANT]
+> このプレビュー機能を運用環境で使用することは推奨されません。
+
+> [!NOTE]
+> KeyVaultReference のプレビュー機能でサポートされるのは、[バージョン管理された](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)シークレットのみです。 バージョン管理されていないシークレットはサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 

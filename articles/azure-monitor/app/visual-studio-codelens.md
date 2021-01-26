@@ -2,17 +2,14 @@
 title: Visual Studio の CodeLens における Application Insights Telemetry | Microsoft Docs
 description: Visual Studio の CodeLens を使用して Application Insights の要求と例外のテレメトリにすばやくアクセスします。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323487"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538497"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio の CodeLens における Application Insights テレメトリ
 Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。 [ Application Insights](./app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
@@ -33,7 +30,7 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 > 
 
 ## <a name="exceptions-in-codelens"></a>CodeLens における例外
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![CodeLens に表示された 47 の例外を示すスクリーンショット。](./media/visual-studio-codelens/codelens-exceptions.png)
 
 例外 CodeLens インジケーターは、このメソッドから提供された要求の処理中に、過去 24 時間にアプリケーションで最も頻繁に発生した 15 の例外の発生回数を表示します。
 
@@ -55,7 +52,7 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 > 
 
 ## <a name="requests-in-codelens"></a>CodeLens における要求
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![7% の失敗を含む、684 個の要求の詳細を示すスクリーンショット。](./media/visual-studio-codelens/codelens-requests.png)
 
 要求 CodeLens インジケーターは、過去 24 時間にメソッドによって処理された HTTP 要求の数と、これらの要求が失敗した割合を示します。
 
@@ -68,9 +65,6 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 * CodeLens の詳細ビューの左上隅で Application Insights リソースの名前を選択して、CodeLens データのソースとなるリソースを変更します。
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
-|  |  |
-| --- | --- |
-| **[Visual Studio での Application Insights の操作](./visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio-codelens/34.png) |
-| **[データの追加](./asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/visual-studio-codelens/64.png) |
-| **[Application Insights ポータルの操作](./overview-dashboard.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/visual-studio-codelens/62.png) |
+* **[Visual Studio での Application Insights の操作](./visual-studio.md)** 。 テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 
+* **[Application Insights ポータルの操作](./overview-dashboard.md)** 。 ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 
 

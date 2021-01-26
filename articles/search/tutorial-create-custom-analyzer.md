@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b83ed506c0aa6299e5308e9e0c7276a21b7d9abe
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290312"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652349"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>チュートリアル:電話番号のカスタム アナライザーを作成する
 
@@ -59,9 +59,9 @@ ms.locfileid: "89290312"
 
 1. `<YOUR-ADMIN-API-KEY>` を、検索サービスのプライマリ キーまたはセカンダリ キーに置き換えます。
 
-  ![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Postman の要求 URL とヘッダー" border="false":::
 
-Postman に慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
+Postman に慣れていない場合は、[Azure Cognitive Search REST API を調べる方法](search-get-started-rest.md)に関するページを参照してください。
 
 ## <a name="3---create-an-initial-index"></a>3 - 初期インデックスを作成する
 
@@ -172,7 +172,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
   api-key: <YOUR-ADMIN-API-KEY>  
 ```
 
-このクエリでは、**期待される 4 つの結果のうち 3 つ**が返されますが、**予期しない結果も 2 つ**返されます。
+このクエリでは、**期待される 4 つの結果のうち 3 つ** が返されますが、**予期しない結果も 2 つ** 返されます。
 
 ```json
 {
@@ -208,7 +208,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
   api-key: <YOUR-ADMIN-API-KEY>
 ```
 
-結果は先ほどよりも悪く、**4 つある正しい一致のうち 1 つ**しか返されません。
+結果は先ほどよりも悪く、**4 つある正しい一致のうち 1 つ** しか返されません。
 
 ```json
 {
@@ -239,11 +239,11 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 以下の図を見ると、この 3 つのコンポーネントが連携して文がトークン化されるようすをご覧いただけます。
 
-  ![文をトークン化するアナライザー処理の図](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="文をトークン化するアナライザー処理の図":::
 
 その後、高速なフルテキスト検索を可能にする転置インデックスにこれらのトークンが格納されます。  フルテキスト検索は、字句解析中に抽出された一意の語句すべてを、それが出現するドキュメントへと、転置インデックスによってマッピングすることで実現されます。 以下の図に例を示します。
 
-  ![転置インデックスの例](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="転置インデックスの例":::
 
 すべての検索は、転置インデックスに格納された語句の検索に帰結します。 ユーザーからクエリが送信されると、次の処理が行われます。
 
@@ -251,7 +251,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 1. 転置インデックスがスキャンされて、一致する語句を含んだドキュメントが検出されます。
 1. 最後に、取得されたドキュメントが[類似性アルゴリズム](index-ranking-similarity.md)によってランク付けされます。
 
-  ![類似性をランク付けするアナライザー処理の図](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="類似性をランク付けするアナライザー処理の図":::
 
 検索語が転置インデックス内の語句と一致しなかった場合、結果は返されません。 クエリの機構について詳しくは、[フルテキスト検索](search-lucene-query-architecture.md)に関する記事を参照してください。
 
@@ -270,8 +270,8 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
   api-key: <YOUR-ADMIN-API-KEY>
 
   {
-      "text": "(425) 555-0100",
-      "analyzer": "standard.lucene"
+    "text": "(425) 555-0100",
+    "analyzer": "standard.lucene"
   }
 ```
 
@@ -491,7 +491,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-firs
 
 カスタム アナライザーを使用して、インデックスに対していくつかのサンプル クエリを実行してみると、再現率が向上して、一致するすべての電話番号が返されるようになったことに気付くでしょう。 ただし、n-gram トークン フィルターが原因で、ある程度の擬陽性の結果も返されます。 これは、n-gram トークン フィルターではよくある副作用です。
 
-擬陽性を避けるために、ここでは、クエリ用のアナライザーを別途作成します。 このアナライザーは既に作成したアナライザーと同じですが、`custom_ngram_filter` が**ありません**。
+擬陽性を避けるために、ここでは、クエリ用のアナライザーを別途作成します。 このアナライザーは既に作成したアナライザーと同じですが、`custom_ngram_filter` が **ありません**。
 
 ```json
     {

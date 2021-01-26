@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318183"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936160"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -18,7 +18,7 @@ Azure Functions では、Function App インスタンスを作成するときに
 |ストレージ サービス  | 機能の使用法  |
 |---------|---------|
 | [Azure BLOB Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](functions-scale.md#consumption-plan)や [Premium プラン](functions-scale.md#premium-plan)で、Function App コードを格納して実行するために使用されるファイル共有。 |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](consumption-plan.md)や [Premium プラン](functions-premium-plan.md)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |
 
@@ -27,15 +27,21 @@ Azure Functions では、Function App インスタンスを作成するときに
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
-Function App を作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントには、BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントが含まれます。 これらのサポートされていないアカウントは、Function App の作成時に [ストレージ アカウント] ブレードから除外されます。
+関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントには、BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントが含まれます。
 
 ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)」を参照してください。 
 
-お使いの Function App で既存のストレージ アカウントを使用することは可能ですが、必ずこれらの要件を満たしている必要があります。 Function App の作成フローの一部として作成されたストレージ アカウントでは、これらのストレージ アカウント要件を満たしていることが保証されます。  
+お使いの関数アプリで既存のストレージ アカウントを使用することは可能ですが、必ずこれらの要件を満たしている必要があります。 Azure portal で、関数アプリの作成フローの一部として作成されたストレージ アカウントでは、これらのストレージ アカウント要件を満たしていることが保証されます。 ポータルでは、関数アプリの作成中に既存のストレージ アカウントを選択すると、サポートされていないアカウントが除外されます。 このフローでは、作成している関数アプリと同じリージョンにある既存のストレージ アカウントのみを選択できます。 詳細については、「[ストレージ アカウントの場所](#storage-account-location)」を参照してください。
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>ストレージ アカウントに関するガイダンス
 
 すべての Function App には、操作するためのストレージ アカウントが必要です。 そのアカウントが削除されると、Function App は実行されません。 ストレージ関連の問題をトラブルシューティングするには、[ストレージ関連の問題をトラブルシューティングする方法](functions-recover-storage-account.md)に関する記事を参照してください。 Function App によって使用されるストレージ アカウントには、次の追加の考慮事項が適用されます。
+
+### <a name="storage-account-location"></a>ストレージ アカウントの場所
+
+最適なパフォーマンスを得るには、関数アプリで同じリージョンのストレージ アカウントを使用する必要があります。これにより、待ち時間が短縮されます。 Azure portal によって、このベスト プラクティスが適用されます。 何らかの理由で、関数アプリとは異なるリージョンでストレージ アカウントを使用する必要がある場合は、ポータルの外部で関数アプリを作成する必要があります。 
 
 ### <a name="storage-account-connection-setting"></a>ストレージ アカウント接続の設定
 
@@ -55,7 +61,15 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>ファイル共有をマウントする (Linux)
+### <a name="in-region-data-residency"></a>リージョンのデータ所在地
+
+すべての顧客データを 1 つのリージョン内に留める必要がある場合、関数アプリに関連付けられているストレージ アカウントは、[リージョン内冗長性](../storage/common/storage-redundancy.md)が与えられたアカウントにする必要があります。 リージョン内で冗長性を持つストレージ アカウントは、[Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) でも使用される必要があります。
+
+プラットフォームで管理されるその他の顧客データは、内部負荷分散型の App Service Environment (ASE) でホストしているとき、そのリージョン内にのみ格納されます。 詳細については、[ASE のゾーン冗長性](../app-service/environment/zone-redundancy.md#in-region-data-residency)に関するページを参照してください。
+
+## <a name="mount-file-shares"></a>ファイル共有をマウントする
+
+"_この機能は現在、Linux で実行されている場合にのみ使用できます。_ " 
 
 既存の Azure Files 共有を Linux Function App にマウントすることができます。 Linux Function App に共有をマウントすることにより、既存の機械学習モデルや、関数内のその他のデータを活用できます。 既存の共有を Linux Function App にマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用できます。 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683795"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075673"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1.2 をサポートしていないアプリケーションのトラブルシューティング
 この記事では、古い TLS プロトコル (TLS 1.0 および 1.1) を有効にする方法と、Windows Server 2019 クラウド サービスの Web ロールと worker ロールで追加のプロトコルをサポートするためのレガシの暗号スイートの適用方法について説明します。 
@@ -25,7 +25,7 @@ ms.locfileid: "83683795"
 TLS 1.0 と TLS 1.1 を非推奨にするステップを実行しますが、お客様が廃止を計画するまで、古いプロトコルと暗号スイートをサポートする必要があることを理解しています。  これらのレガシの値を再度有効にすることはお勧めしませんが、Microsoft はお客様を支援するためのガイダンスを提供しています。 この記事に記載されている変更を実装する前に、回帰のリスクを評価することをお勧めします。 
 
 > [!NOTE]
-> ゲスト OS ファミリ 6 リリースでは、TLS 1.0 と1.1 を明示的に無効にし、暗号スイートの特定のセットを定義することで、TLS 1.2 が適用されます。ゲスト OS ファミリの詳細については、「[ゲスト OS のリリース ニュース](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)」を参照してください
+> ゲスト OS ファミリ 6 リリースでは、TLS 1.0 と1.1 を明示的に無効にし、暗号スイートの特定のセットを定義することで、TLS 1.2 が適用されます。ゲスト OS ファミリの詳細については、「[ゲスト OS のリリース ニュース](./cloud-services-guestos-update-matrix.md#family-6-releases)」を参照してください
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>TLS 1.0、TLS 1.1、および古い暗号スイートのサポートの終了 
@@ -362,4 +362,3 @@ Visual Studio からプッシュされた更新プログラムと共にスクリ
 
 [SSLLabs](https://www.ssllabs.com/) を使用して、エンドポイントの TLS の状態を検証することができます 
 
- 

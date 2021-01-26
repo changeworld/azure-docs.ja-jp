@@ -35,7 +35,11 @@
         - name: 0 - オブジェクトとモーションの検出アプリケーションの展開
           href: tutorial-video-analytics-deploy.md
         - name: 1 - ビデオ分析アプリケーションを作成する
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: オブジェクトとモーションの検出 (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: オブジェクトとモーションの検出 (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2 - IoT Edge デバイスの構成
           items:
             - name: エッジでのビデオ分析デバイスの作成 (Linux VM)
@@ -66,7 +70,7 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: 操作方法ガイド
   items:
-    - name: デバイスの接続
+    - name: デバイスを接続して開発する
       items:
         - name: Rigado Cascade 500 を準備して接続する
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
@@ -129,31 +133,31 @@
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../../iot-fundamentals/iot-support-help.md
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../../iot-edge/index.yml
         - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+          href: ../../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
+          href: ../../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT デバイス SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: 顧客データ要求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: サポートされているブラウザー

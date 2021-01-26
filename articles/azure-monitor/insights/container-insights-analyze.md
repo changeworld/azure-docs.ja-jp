@@ -3,12 +3,12 @@ title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 68d0ac03ae0f6029e0f984e296a89048536f4eb7
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166639"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251286"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -130,7 +130,7 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 | insights.container/pods | |
 | | PodCount | Kubernetes からのポッドの数。|
 
-メトリックを[分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)してディメンションごとに表示したり、セグメント間の比較を視覚化したりできます。 ノードの場合は、"*ホスト*" ディメンションでグラフをセグメント化できます。 ポッドの場合は、次のディメンションでセグメント化できます。
+メトリックを[分割](../platform/metrics-charts.md#apply-splitting)してディメンションごとに表示したり、セグメント間の比較を視覚化したりできます。 ノードの場合は、"*ホスト*" ディメンションでグラフをセグメント化できます。 ポッドの場合は、次のディメンションでセグメント化できます。
 
 * コントローラー
 * Kubernetes 名前空間
@@ -143,7 +143,7 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 
 階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、ウィンドウの上部にある **[ライブ データの表示 (プレビュー)]** リンクを選択して、Kubernetes コンテナー ログ (stdout/stderror)、イベント、およびポッド メトリックを表示することもできます。 このデータを表示するためのアクセス権の付与および管理に必要な構成について詳しくは、[ライブ データの設定 (プレビュー)](container-insights-livedata-setup.md) に関する記事をご覧ください。 クラスター リソースの表示中は、コンテナーからこのデータをリアルタイムで確認できます。 この機能の詳細については、「[Kubernetes ログ、イベント、およびポッド メトリックをリアルタイムで表示する方法](container-insights-livedata-overview.md)」を参照してください。 事前に定義されたログ検索に基づいてワークスペースに格納されている Kubernetes ログ データを表示するには、 **[View in analytics]\(分析で表示する\)** ドロップダウン リストから **[コンテナー ログの表示]** を選択します。 このトピックに関するその他の情報については、「[データを分析するためのログの検索](container-insights-log-search.md#search-logs-to-analyze-data)」を参照してください。
 
-ページ上部の **[+ フィルターの追加]** オプションを使用して、 **[サービス]** 、 **[ノード]** 、 **[名前空間]** 、または **[ノード プール]** でビューの結果をフィルター処理します。 フィルター スコープを選択した後は、 **[Select value(s)]\(値の選択\)** フィールドに表示される値のいずれかを選択します。 構成したフィルターは、AKS クラスターのいずれかの観点を表示するときにグローバルに適用されます。 数式は、等号のみがサポートされています。 最初のフィルターの上に新しいフィルターを追加して、結果をさらに絞り込むことができます。 たとえば、**ノード**によるフィルターを指定した場合、2 番目のフィルターとしては**サービス**または**名前空間**だけを選択できます。
+ページ上部の **[+ フィルターの追加]** オプションを使用して、 **[サービス]** 、 **[ノード]** 、 **[名前空間]** 、または **[ノード プール]** でビューの結果をフィルター処理します。 フィルター スコープを選択した後は、 **[Select value(s)]\(値の選択\)** フィールドに表示される値のいずれかを選択します。 構成したフィルターは、AKS クラスターのいずれかの観点を表示するときにグローバルに適用されます。 数式は、等号のみがサポートされています。 最初のフィルターの上に新しいフィルターを追加して、結果をさらに絞り込むことができます。 たとえば、**ノード** によるフィルターを指定した場合、2 番目のフィルターとしては **サービス** または **名前空間** だけを選択できます。
 
 あるタブで指定したフィルターは別のタブを選択しても引き続き適用されます。 指定されているフィルターの横にある **[x]** 記号を選択すると削除されます。
 
@@ -161,13 +161,13 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 展開されたノードでは、ノード上で実行されているポッドまたはコンテナーからコントローラーにドリルダウンして、そのコントローラーでフィルター処理されたパフォーマンス データを見ることができます。 特定のノードの **[コントローラー]** 列の値を選択します。
 
-![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/container-insights-analyze/drill-down-node-controller.png)
+![スクリーンショットでは、パフォーマンス ビューでノードからコントローラーにドリルダウンする様子を示しています。](./media/container-insights-analyze/drill-down-node-controller.png)
 
 ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認します。 メモリ使用率を確認するには、 **[メトリック]** ドロップダウン リストで **[メモリ RSS]** または **[メモリ ワーキング セット]** を選択します。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。
 
 ![コンテナー ノード パフォーマンス ビュー](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
-**メモリ ワーキング セット**は、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 **メモリ RSS** は、メイン メモリ (つまり常駐メモリ) だけを示します。 このメトリックは、使用可能なメモリの実際の容量を示します。 常駐メモリと仮想メモリにはどのような違いがあるのでしょうか。
+**メモリ ワーキング セット** は、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 **メモリ RSS** は、メイン メモリ (つまり常駐メモリ) だけを示します。 このメトリックは、使用可能なメモリの実際の容量を示します。 常駐メモリと仮想メモリにはどのような違いがあるのでしょうか。
 
 - 常駐メモリまたはメイン メモリは、クラスターのノードで使用可能なコンピューターのメモリの実際の容量です。
 
@@ -228,7 +228,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 特定のコントローラーの **[ノード]** 列の値を選択します。
 
-![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/container-insights-analyze/drill-down-controller-node.png)
+![パフォーマンス ビューでのコントローラーからノードへのドリルダウンの例](./media/container-insights-analyze/drill-down-controller-node.png)
 
 次の表では、コントローラーを表示した場合に示される情報について説明します。
 
@@ -291,38 +291,19 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 | ![終了状態アイコン](./media/container-insights-analyze/containers-terminated-icon.png) | 正常に停止したか、停止に失敗した|
 | ![失敗状態アイコン](./media/container-insights-analyze/containers-failed-icon.png) | 失敗の状態 |
 
+## <a name="monitor-and-visualize-network-configurations"></a>ネットワーク構成の監視と視覚化
+Azure ネットワーク ポリシー マネージャーには、お客様のネットワーク構成を監視して理解を深めることができる有益な Prometheus メトリックが含まれています。 Azure portal または Grafana Labs に組み込まれている視覚化を提供します。 詳細については、「[Azure NPM を使用したネットワーク構成の監視と視覚化](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm)」を参照してください。
+
+
 ## <a name="workbooks"></a>Workbooks
 
-ブックでは、テキスト、 [ログ クエリ](../log-query/query-language.md)、[メトリック](../platform/data-platform-metrics.md)、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
+Workbooks では、テキスト、ログ クエリ、メトリック、パラメーターが、クラスターのパフォーマンスを分析できる内容豊富な対話型レポートに組み合わされます。 Azure Monitor for Containers に使用できる Workbooks の詳細については、[Azure Monitor for Containers の Workbooks](container-insights-reports.md) に関する記事を参照してください。
 
-Azure Monitor for containers には、開始するための次の 4 つのブックが含まれています。
-
-- **ディスク容量**:次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用状況グラフが示されます。
-
-    - すべてのディスクのディスク使用率。
-    - すべてのディスクの空きディスク領域。
-    - ノードのディスクごとに、その使用済み領域 (%)、使用済み領域 (%) の傾向、空きディスク領域 (GiB)、空きディスク領域 (GiB) の傾向を示すグリッド。 テーブル内で行を選択すると、使用済み領域 (%) と空きディスク領域 (GiB) が行の下に表示されます。
-
-- **ディスク IO**:次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用率グラフが示されます。
-
-    - 読み取りバイト数/秒、書き込みバイト数/秒、および読み書きバイト数/秒で、すべてのディスクにわたって集計されたディスク I/O の傾向。
-    - ディスク I/O のボトルネックの測定および特定に役立つ主要業績評価指標を示す 8 つのパフォーマンス グラフ。
-
-- **Kubelet**:キー ノードの動作統計を示す 2 つのグリッドが含まれています。
-
-    - ノード グリッドによる概要では、ノードごとの割合および傾向による、合計操作数、合計エラー数、および成功した操作数を要約します。
-    - 操作の種類ごとの概要では、割合および傾向による、合計操作数、合計エラー数、および成功した操作数を操作ごとに要約します。
-
-- **ネットワーク**:ノード ネットワーク アダプターごとの対話形式のネットワーク使用率グラフと、ご使用のネットワーク アダプターのパフォーマンスの測定に役立つ主要業績評価指標を表すグリッドを示します。
-
-**[ブックの表示]** ドロップダウン リストからそれぞれを選択することにより、これらのブックにアクセスします。
-
-![[ブックの表示] ドロップダウン リスト](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、実際の DevOps や運用プロセスと手順をサポートする方法について学習します。
+- [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、実際の DevOps や運用プロセスと手順をサポートする方法について学習します。
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、実際のクラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
-- Kubernetes クラスターの正常性状態の表示方法については、「[クラスターの正常性を監視する](container-insights-health.md)」を参照してください。
+- Kubernetes クラスターの正常性状態の表示方法については、「[クラスターの正常性を監視する](./container-insights-overview.md)」を参照してください。

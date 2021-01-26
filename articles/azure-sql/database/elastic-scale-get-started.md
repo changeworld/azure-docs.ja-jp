@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029883"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786719"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -87,7 +87,7 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 2. *ElasticScaleStarterKit.sln* ソリューションを *C#* ディレクトリから開いてプロジェクトを作成します。
 
-3. サンプル プロジェクトのソリューションで、*app.config* ファイルを開きます。 ファイルの指示に従って、サーバー名とサインイン情報 (ユーザー名とパスワード) を追加します。
+3. サンプル プロジェクトのソリューションで、 *app.config* ファイルを開きます。 ファイルの指示に従って、サーバー名とサインイン情報 (ユーザー名とパスワード) を追加します。
 
 4. アプリケーションをビルドして実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これにより、Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
 
@@ -98,23 +98,23 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 お疲れさまでした。 これで、SQL Database で Elastic Database ツールを使って、最初のシャーディング アプリケーションを適切にビルドし、実行できました。 Visual Studio または SQL Server Management Studio を使用してデータベースに接続し、サンプルで作成したシャードの内容を簡単に確認してください。 新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
 
 > [!IMPORTANT]
-> 最新バージョンの Management Studio を常に使用して、Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+> 最新バージョンの Management Studio を常に使用して、Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ## <a name="key-pieces-of-the-code-sample"></a>コード サンプルの主要部
 
-* **シャードとシャード マップの管理**:このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。  
+* **シャードとシャード マップの管理** :このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。  
 
-* **データ依存ルーティング**:トランザクションの適切なシャードへのルーティングは、*DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](https://go.microsoft.com/?linkid=9862596)」をご覧ください。
+* **データ依存ルーティング** :トランザクションの適切なシャードへのルーティングは、 *DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](https://go.microsoft.com/?linkid=9862596)」をご覧ください。
 
-* **複数のシャードにまたがるクエリ実行**:複数のシャードに対するクエリの実行は、*MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](https://go.microsoft.com/?linkid=9862597)」をご覧ください。
+* **複数のシャードにまたがるクエリ実行** :複数のシャードに対するクエリの実行は、 *MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](https://go.microsoft.com/?linkid=9862597)」をご覧ください。
 
-* **空のシャードの追加**:新しい空のシャードの反復追加は、*CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。
+* **空のシャードの追加** :新しい空のシャードの反復追加は、 *CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。
 
 ## <a name="other-elastic-scale-operations"></a>他の Elastic Scale の操作
 
-* **既存のシャードの分割**:シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
+* **既存のシャードの分割** :シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
-* **既存のシャードのマージ**:シャードのマージも分割/マージ ツールを使って行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
+* **既存のシャードのマージ** :シャードのマージも分割/マージ ツールを使って行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
 ## <a name="cost"></a>コスト
 
@@ -134,7 +134,7 @@ Elastic Database ツールについて詳しくは、以下の記事をご覧く
   * [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * チャンネル 9:[Elastic Scale の概要に関するビデオ](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* ディスカッション フォーラム:[Azure SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
+* ディスカッション フォーラム:[Azure SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)
 * パフォーマンスを測定するには:[シャード マップ マネージャーのパフォーマンス カウンター](elastic-database-client-library.md)
 
 <!--Anchors-->

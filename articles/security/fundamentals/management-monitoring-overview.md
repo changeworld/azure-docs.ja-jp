@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448351"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842755"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
+Azure ロールベースのアクセス制御 (Azure RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 Azure RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 Azure RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
 
 詳細情報:
 
-* [RBAC に関する Active Directory チームのブログ](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Azure RBAC に関する Active Directory チームのブログ](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>マルウェア対策
@@ -48,25 +48,25 @@ Symantec Endpoint Protection (SEP) も、Azure でサポートされています
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](antimalware.md)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-trend)
-* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-symantec)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../../virtual-machines/extensions/trend.md)
+* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Virtual Machines を保護するための新しいマルウェア対策オプション](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。
+Azure AD Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。
 
 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 詳細情報:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication とは](/azure/active-directory/authentication/multi-factor-authentication)
-* [Azure Multi-Factor Authentication のしくみ](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD の Multi-Factor Authentication の仕組み](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
+Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Microsoft 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
 
 * 任意の環境間 (VPN IP) ネットワーク。
 * ポイント ツー ポイントのイーサネット ネットワーク。
@@ -112,7 +112,7 @@ Identity Protection は、通知と推奨される修復を提供することで
 
 詳細情報:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
@@ -129,8 +129,8 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-intro.md)
-* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/security-center-secure-score.md)
+* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
+* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>インテリジェント セキュリティ グラフ
 

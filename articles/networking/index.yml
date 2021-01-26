@@ -11,13 +11,13 @@ metadata:
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 55340e52505498f2475487567f141437347c3d10
-  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+  ms.date: 09/28/2020
+  ms.openlocfilehash: 0f0536c259bb8b4168ab5fcf3e05016a281b05d5
+  ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89290380"
+  ms.lasthandoff: 01/15/2021
+  ms.locfileid: "98233952"
 highlightedContent:
   items:
   - title: Azure ネットワークとは
@@ -28,13 +28,13 @@ highlightedContent:
     url: https://azure.microsoft.com/updates/?category=networking
   - title: Azure の負荷分散オプション
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview
+    url: /azure/architecture/guide/technology-choices/load-balancing-overview
   - title: Azure のハブスポーク ネットワーク トポロジ
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: ルーティング設定とは
+    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+  - title: Azure Orbital とは
     itemType: concept
-    url: ../virtual-network/routing-preference-overview.md
+    url: azure-orbital-overview.md
   - title: Azure サービスを使用したリモートでの作業
     itemType: concept
     url: working-remotely-support.md
@@ -62,7 +62,7 @@ conceptualContent:
     - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
       itemType: overview
       text: Azure VPN Gateway とは
-    - url: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
       itemType: tutorial
       text: サイト間接続
     - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
@@ -150,7 +150,7 @@ conceptualContent:
     - url: ../application-gateway/quick-create-portal.md
       itemType: quickstart
       text: ポータルを使用して Web トラフィックを転送する
-    - url: ../application-gateway/application-gateway-faq.md
+    - url: ../application-gateway/application-gateway-faq.yml
       itemType: concept
       text: よく寄せられる質問
     - url: ../application-gateway/application-gateway-troubleshooting-502.md
@@ -209,7 +209,7 @@ conceptualContent:
     - url: ../bastion/bastion-overview.md
       itemType: overview
       text: Azure Bastion とは
-    - url: ../bastion/bastion-create-host-portal.md
+    - url: ../bastion/tutorial-create-host-portal.md
       itemType: how-to-guide
       text: Azure Bastion ホストを作成する
     - url: ../bastion/troubleshoot.md
@@ -268,17 +268,17 @@ conceptualContent:
       text: 詳細情報
   - title: DDoS Protection
     links:
-    - url: ../virtual-network/ddos-protection-overview.md
+    - url: ../ddos-protection/ddos-protection-overview.md
       itemType: overview
       text: Azure DDoS Protection Standard とは
-    - url: ../virtual-network/manage-ddos-protection.md
+    - url: ../ddos-protection/manage-ddos-protection.md
       itemType: how-to-guide
       text: DDoS Protection の管理
-    - url: ../virtual-network/ddos-protection-partner-onboarding.md
+    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
       itemType: concept
       text: オンボード パートナー
     footerLink:
-      url: https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices
+      url: ../ddos-protection/index.yml
       text: 詳細情報
   - title: コンテンツ配信ネットワーク
     links:
@@ -333,10 +333,10 @@ additionalContent:
   - items:
     - title: Azure ネットワーク用の Azure PowerShell コマンド
       summary: Azure ネットワークのコマンドレットについて説明します。
-      url: https://docs.microsoft.com/en-us/powershell/module/az.network/?view=azps-3.5.0#networking
+      url: /powershell/module/az.network/?view=azps-3.5.0#networking
     - title: Azure ネットワーク用の Azure CLI コマンド
       summary: CLI リファレンスで Azure ネットワークのコマンドを確認してください。
-      url: https://docs.microsoft.com/en-us/cli/azure/network?view=azure-cli-latest
+      url: /cli/azure/network?view=azure-cli-latest
     - title: Azure ネットワークのブログ
       summary: Azure ネットワークの最新のブログをご覧ください。
       url: https://azure.microsoft.com/blog/topics/networking/

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 8aa2644f86f5c26fa861aba8c928e79b7bc58a6c
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f8b6f1f8b22435af33c9ae908bb0a3f6f3df8889
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873196"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535350"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python のサンプル
 
@@ -35,7 +35,7 @@ ms.locfileid: "87873196"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Python 用の Azure HDInsight SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
+[Python 用の Azure HDInsight SDK](/python/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 
@@ -48,4 +48,4 @@ ms.locfileid: "87873196"
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for Python のリファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)でご覧いただけます。
+ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for Python のリファレンス ドキュメント](/python/api/overview/azure/hdinsight)でご覧いただけます。

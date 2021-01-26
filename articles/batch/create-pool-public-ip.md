@@ -2,13 +2,13 @@
 title: 特定のパブリック IP アドレスのプールを作成する
 description: 独自のパブリック IP アドレスを使用する Batch プールを作成する方法について説明します。
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.date: 10/08/2020
+ms.openlocfilehash: e822311718847e173763847d503335f71457308b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146489"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849330"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>特定のパブリック IP アドレスの Azure Batch プールを作成する
 
@@ -82,10 +82,10 @@ client-request-id: 00000000-0000-0000-0000-000000000000
        "resizeTimeout":"PT15M",
       "targetDedicatedNodes":5,
       "targetLowPriorityNodes":0,
-      "maxTasksPerNode":3,
+      "taskSlotsPerNode":3,
       "taskSchedulingPolicy": {
         "nodeFillType":"spread"
-      }, 
+      },
       "enableAutoScale":false,
       "enableInterNodeCommunication":true,
       "metadata": [ {

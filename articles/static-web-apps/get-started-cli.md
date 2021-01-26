@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Azure CLI で Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: Azure CLI を使用して Azure Static Web Apps インスタンスをビルドする方法について学習します。
+title: 'クイックスタート: CLI を使用して Azure Static Web Apps で最初の静的サイトを構築する'
+description: Azure CLI を使用して、静的サイトを Azure Static Web Apps にデプロイする方法について説明します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e0fdbc50dd36e4ea23903a5929735c1c83bd394
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00892b61cd23ee38ff3d63f8b61391ff1bffdc90
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752870"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616407"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して静的 Web アプリを初めてビルドする
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して最初の静的サイトを構築する
 
 Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Azure CLI を使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
 
@@ -25,7 +25,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 - [GitHub](https://github.com) アカウント
 - [GitHub の個人用アクセス トークン](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com) アカウント
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) のインストール (バージョン 2.8.0 以上)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) のインストール (バージョン 2.8.0 以上)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
@@ -129,7 +129,7 @@ cd my-first-static-web-app
 
 ```bash
 az staticwebapp delete \
-    --name my-first-static-web-app
+    --name my-first-static-web-app \
     --resource-group my-first-static-web-app
 ```
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0681346252f840173d5cd7d4cfe5ef40076f0068
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509088"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912599"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -180,7 +180,7 @@ Azure Resource Manager VM の場合は、ポータルから実行コマンドを
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Azure Resource Manager VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../windows/portal-create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
+  * Azure Resource Manager VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -218,7 +218,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
    ![レジストリ エディター](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. **[選択するオブジェクト名を入力してください]** ボックスに**ホスト名**または**動的 IP** (推奨) を入力して、ターゲット VM を検索します。
+3. **[選択するオブジェクト名を入力してください]** ボックスに **ホスト名** または **動的 IP** (推奨) を入力して、ターゲット VM を検索します。
 
    ![[選択するオブジェクト名を入力してください] ボックス](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
@@ -251,7 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>次のステップ
 
-- Enter-PSSession コマンドレットの詳細については、[Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1) を参照してください。
+- Enter-PSSession コマンドレットの詳細については、[Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1&preserve-view=true) を参照してください。
 - クラシック デプロイ モデルを使用した Windows のカスタム スクリプト拡張機能の詳細については、「[Windows でのカスタムのスクリプト拡張機能](../extensions/custom-script-windows.md)」を参照してください。
 - PsExec は、[PSTools スイート](https://download.sysinternals.com/files/PSTools.zip)の一部です。
 - PSTools スイートの詳細については、[PSTools](/sysinternals/downloads/pstools) に関するページを参照してください。

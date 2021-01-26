@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905161"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146707"
 ---
 # <a name="edit-an-api"></a>API の編集
 
@@ -35,13 +35,13 @@ ms.locfileid: "87905161"
 
 ## <a name="edit-an-api-in-apim"></a>APIM で API を編集する
 
-![API の編集](./media/edit-api/edit-api001.png)
+![APIM で API を編集するプロセスが強調表示されているスクリーンショット。](./media/edit-api/edit-api001.png)
 
 1. **[API]** タブをクリックします。
 2. 前にインポートした API の 1 つを選びます。
 3. **[デザイン]** タブを選択します。
 4. 編集する操作を選びます。
-5. 操作の名前を変更するには、**[フロントエンド]** ウィンドウの**鉛筆**を選択します。
+5. 操作の名前を変更するには、 **[フロントエンド]** ウィンドウの **鉛筆** を選択します。
 
 ## <a name="update-the-swagger"></a>Swagger を更新する
 
@@ -50,7 +50,7 @@ ms.locfileid: "87905161"
 1. **[すべての操作]** を選択します
 2. **[フロントエンド]** ウィンドウの鉛筆をクリックします。
 
-    ![API の編集](./media/edit-api/edit-api002.png)
+    ![[フロントエンド] 画面の鉛筆アイコンが強調表示されているスクリーンショット。](./media/edit-api/edit-api002.png)
 
     API の Swagger が表示されます。
 
@@ -64,5 +64,5 @@ ms.locfileid: "87905161"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [APIM ポリシーのサンプル](policy-samples.md)
+> [APIM ポリシーのサンプル](./policy-reference.md)
 > [発行された API の変換と保護](transform-api.md)

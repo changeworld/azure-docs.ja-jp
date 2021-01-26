@@ -2,14 +2,14 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499995"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881750"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -26,9 +26,11 @@ Azure リソース、リソース グループ、サブスクリプションに�
 
 ## <a name="required-access"></a>必要なアクセス
 
-リソースにタグを適用するには、**Microsoft.Resources/tags** リソースの種類に対する書き込みアクセス権が必要です。 [タグ共同作成者](../../role-based-access-control/built-in-roles.md#tag-contributor)ロールを使用すると、エンティティ自体へのアクセス権がなくても、エンティティにタグを適用できます。 現時点では、タグの共同作成者ロールでは、ポータルからリソースまたはリソース グループにタグを適用することはできません。 ポータルを使用したサブスクリプションへのタグの適用は可能です。 PowerShell と REST API によるすべてのタグ操作がサポートされます。  
+タグ リソースへの必要なアクセスを取得するには、2 つの方法があります。
 
-[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールでも、任意のエンティティにタグを適用するために必要なアクセス権が付与されます。 1 つのリソースの種類だけにタグを適用するには、そのリソースの共同作成者ロールを使用します。 たとえば、仮想マシンにタグを適用するには、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)を使用します。
+- **Microsoft.Resources/tags** リソースの種類に対する書き込みアクセス権を持つこと。 このアクセス権により、リソース自体にアクセスできない場合でも、任意のリソースにタグを付けることができます。 [タグ共同作成者](../../role-based-access-control/built-in-roles.md#tag-contributor)ロールでは、このアクセス権が付与されます。 現時点では、タグの共同作成者ロールでは、ポータルからリソースまたはリソース グループにタグを適用することはできません。 ポータルを使用したサブスクリプションへのタグの適用は可能です。 PowerShell と REST API によるすべてのタグ操作がサポートされます。  
+
+- リソース自体に対する書き込みアクセス権を持つこと。 [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールでは、任意のエンティティにタグを適用するために必要なアクセス権が付与されます。 1 つのリソースの種類だけにタグを適用するには、そのリソースの共同作成者ロールを使用します。 たとえば、仮想マシンにタグを適用するには、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)を使用します。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -240,92 +242,208 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>タグを適用する
 
-リソース グループまたはリソースにタグを追加する場合は、既存のタグを上書きするか、既存のタグに新しいタグを追加することができます。
+Azure CLI には、タグを適用するための 2 つのコマンドが用意されています。[az tag create](/cli/azure/tag#az_tag_create) と [az tag update](/cli/azure/tag#az_tag_update) です。 Azure CLI 2.10.0 以降である必要があります。 `az version` を使用して、お使いのバージョンを確認できます。 更新またはインストールする方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-リソースのタグを上書きするには、次のコマンドを使用します。
+**az tag create** を実行すると、リソース、リソース グループ、またはサブスクリプションのすべてのタグが置き換えられます。 コマンドを呼び出すときに、タグを付けるエンティティのリソース ID を渡します。
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-リソースの既存のタグにタグを追加するには、次のコマンドを使用します。
+次の例では、一連のタグがストレージ アカウントに適用されます。
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-リソース グループの既存のタグを上書きするには、次のコマンドを使用します。
+コマンドが完了すると、リソースに 2 つのタグが付いていることがわかります。
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+異なるタグを指定してコマンドをもう一度実行すると、前のタグが削除されることに注意してください。
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-リソース グループの既存のタグにタグを追加するには、次のコマンドを使用します。
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+既にタグがあるリソースにタグを追加するには、`az tag update` を使用します。 `--operation` パラメーターを `Merge` に設定します。
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-現在、Azure CLI には、サブスクリプションにタグを適用するコマンドはありません。 ただし、CLI を使用して、サブスクリプションにタグを適用する ARM テンプレートをデプロイできます。 「[リソース グループまたはサブスクリプションにタグを適用する](#apply-tags-to-resource-groups-or-subscriptions)」を参照してください。
+2 つの新しいタグが既存の 2 つのタグに追加されていることに注意してください。
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+各タグ名に対して設定できる値は 1 つだけです。 タグに新しい値を指定すると、マージ操作を使用した場合でも、古い値が置き換えられます。 次の例では、Status タグを Normal から Green に変更します。
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+`--operation` パラメーターを `Replace` に設定すると、既存のタグが新しいタグのセットに置き換えられます。
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+リソースには新しいタグだけが残ります。
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+同じコマンドを、リソース グループまたはサブスクリプションに対しても使用できます。 タグを付けるリソース グループまたはサブスクリプションの識別子を渡します。
+
+リソース グループに新しいタグのセットを追加する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+リソース グループのタグを更新する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+サブスクリプションに新しいタグのセットを追加する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+サブスクリプションのタグを更新する場合の使用方法は、次のとおりです。
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>タグの一覧を表示する
 
-リソースの既存のタグを表示するには、次のように使用します。
+リソース、リソース グループ、またはサブスクリプションのタグを取得するには、[az tag list](/cli/azure/tag#az_tag_list) コマンドを使用して、エンティティのリソース ID を渡します。
+
+リソースのタグを表示するには、次のように使用します。
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-リソース グループの既存のタグを表示するには、次のようにします。
+リソース グループのタグを表示するには、次のように使用します。
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-このスクリプトは次の形式を返します。
+サブスクリプションのタグを表示するには、次のように使用します。
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>タグで一覧を取得する
 
-特定のタグと値を持つすべてのリソースを取得するには、`az resource list` を使用します。
+特定のタグ名と値を持つリソースを取得するには、次のように使用します。
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-特定のタグが付いたリソース グループを取得するには、`az group list` を使用します。
+特定のタグ名と任意のタグ値を持つリソースを取得するには、次のように使用します。
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+特定のタグ名と値を持つリソース グループを取得するには、次のように使用します。
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>タグを削除する
+
+特定のタグを削除するには、`az tag update` を使用し、 `--operation` を `Delete` に設定します。 削除するタグを渡します。
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+指定したタグが削除されます。
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+すべてのタグを削除するには、[az tag delete](/cli/azure/tag#az_tag_delete) コマンドを使用します。
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>スペースを処理する
 
-タグの名前または値にスペースが含まれている場合は、いくつかの追加手順を実行する必要があります。 次の例では、タグにスペースが含まれている場合に、リソース グループのすべてのタグをそのリソースに適用します。
+タグの名前または値にスペースが含まれている場合は、二重引用符で囲みます。
 
 ```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
-## <a name="templates"></a>テンプレート
+## <a name="arm-templates"></a>ARM テンプレート
 
-Resource Manager テンプレートによるデプロイの間に、リソース、リソース グループ、サブスクリプションにタグを付けることができます。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用したデプロイ時に、リソース、リソース グループ、サブスクリプションにタグを付けることができます。
+
+> [!NOTE]
+> ARM テンプレートを使用して適用したタグによって既存のタグが上書きされます。
 
 ### <a name="apply-values"></a>値を適用する
 
@@ -333,7 +451,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -372,7 +490,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -410,7 +528,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -443,7 +561,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -579,7 +697,7 @@ Azure REST API でタグを操作するには、次のように使用します�
 
 タグを使用して課金データをグループ化できます。 たとえば、異なる組織向けに複数の VM を実行している場合は、タグを使用して、コスト センターごとに使用状況をグループ化します。 また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
 
-タグに関する情報は、[Azure Resource Usage API や Rate Card API](../../cost-management-billing/manage/usage-rate-card-overview.md)、またはコンマ区切り値 (CSV) ファイルから取得できます。 使用状況ファイルは [Azure アカウント センター](https://account.azure.com/Subscriptions)または Azure portal からダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
+タグに関する情報は、[Azure Resource Usage API や Rate Card API](../../cost-management-billing/manage/usage-rate-card-overview.md)、またはコンマ区切り値 (CSV) ファイルから取得できます。 Azure portal から使用状況ファイルをダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
 
 REST API の操作については、「 [Azure Billing REST API Reference (Azure Billing REST API リファレンス)](/rest/api/billing/)」を参照してください。
 

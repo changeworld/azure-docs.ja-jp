@@ -9,15 +9,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: references_regions
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747525"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070942"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -43,9 +44,9 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 ## <a name="key-components"></a>主なコンポーネント
 
-- **ネットワーク セキュリティ グループ (NSG)** :Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
+- **ネットワーク セキュリティ グループ (NSG)** :Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - **ネットワーク セキュリティ グループ (NSG) フロー ログ**:ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
-- **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+- **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 - **Log Analytics ワークスペース**:Azure アカウントに関するデータが格納される、Azure Monitor ログのインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 - **Network Watcher**:ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
 
@@ -58,68 +59,112 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 ## <a name="supported-regions-nsg"></a>サポートされているリージョン:NSG 
 
 NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
-
-* カナダ中部
-* 米国中西部
-* 米国東部
-* 米国東部 2
-* 米国中北部
-* 米国中南部
-* 米国中部
-* 米国西部
-* 米国西部 2
-* フランス中部
-* 西ヨーロッパ
-* 北ヨーロッパ
-* ブラジル南部
-* 英国西部
-* 英国南部
-* オーストラリア東部
-* オーストラリア南東部
-* 東アジア
-* 東南アジア
-* 韓国中部
-* インド中部
-* インド南部
-* 東日本 
-* 西日本
-* US Gov バージニア州
-* 中国東部 2
+:::row:::
+   :::column span="":::
+      オーストラリア中部  
+      オーストラリア東部  
+      オーストラリア南東部  
+      ブラジル南部  
+      カナダ中部  
+      カナダ東部  
+      インド中部  
+      米国中部  
+      中国東部 2  
+      中国北部 2  
+   :::column-end:::
+   :::column span="":::
+      東アジア  
+      米国東部  
+      米国東部 2  
+      米国東部 2 EUAP  
+      フランス中部  
+      東日本  
+      西日本  
+      韓国中部  
+      韓国南部  
+      米国中北部  
+   :::column-end:::
+   :::column span="":::
+      北ヨーロッパ  
+      南アフリカ北部  
+      米国中南部  
+      インド南部  
+      東南アジア  
+      スイス北部  
+      スイス西部  
+      英国南部  
+      英国西部  
+      USGov アリゾナ  
+   :::column-end:::
+   :::column span="":::
+      USGov テキサス  
+      USGov バージニア州  
+      USNat 東部  
+      USNat 西部  
+      USSec 東部  
+      USSec 西部  
+      米国中西部  
+      西ヨーロッパ  
+      米国西部  
+      米国西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>サポートされているリージョン:Log Analytics ワークスペース
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
-* カナダ中部
-* 米国中西部
-* 米国東部
-* 米国東部 2
-* 米国中北部
-* 米国中南部
-* 米国中部
-* 米国西部
-* 米国西部 2
-* 米国中部
-* フランス中部
-* 西ヨーロッパ
-* 北ヨーロッパ
-* ブラジル南部
-* 英国西部
-* 英国南部
-* オーストラリア東部
-* オーストラリア南東部
-* 東アジア
-* 東南アジア
-* 韓国中部
-* インド中部
-* 東日本
-* US Gov バージニア州
-* 中国東部 2
+:::row:::
+   :::column span="":::
+      オーストラリア中部  
+      オーストラリア東部  
+      オーストラリア南東部  
+      ブラジル南部  
+      カナダ中部  
+      インド中部  
+      米国中部  
+      中国東部 2  
+      東アジア  
+      米国東部  
+   :::column-end:::
+   :::column span="":::
+      米国東部 2  
+      米国東部 2 EUAP  
+      フランス中部  
+      ドイツ中西部  
+      東日本  
+      韓国中部  
+      米国中北部  
+      北ヨーロッパ  
+      南アフリカ北部  
+      米国中南部  
+   :::column-end:::
+   :::column span="":::
+      東南アジア  
+      スイス北部  
+      スイス西部  
+      アラブ首長国連邦中部  
+      英国南部  
+      英国西部  
+      USGov アリゾナ  
+      USGov バージニア州  
+      USNat 東部  
+      USNat 西部  
+   :::column-end:::
+   :::column span="":::
+      USSec 東部  
+      USSec 西部  
+      米国中西部  
+      西ヨーロッパ  
+      米国西部  
+      米国西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="user-access-requirements"></a>ユーザー アクセスの要件
 
-お使いのアカウントは、次のいずれかの Azure [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)のメンバーである必要があります。
+お使いのアカウントは、次のいずれかの [Azure 組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)のメンバーである必要があります。
 
 |デプロイメント モデル   | Role                   |
 |---------          |---------               |
@@ -187,7 +232,7 @@ New-AzStorageAccount `
 4. **[リテンション期間]** を、データを保存する日数に設定します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。 
 5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、 **[オン]** を選択します。
 6. 処理間隔を選択します。 選択内容に基づいて、フロー ログがストレージ アカウントから収集され、Traffic Analytics によって処理されます。 処理間隔は、1 時間ごとまたは 10 分ごとを選択できます。 
-7. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions-log-analytics-workspaces)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+7. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions-log-analytics-workspaces)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
 > [!NOTE]
 >トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
@@ -339,7 +384,7 @@ Application Gateway および Load Balancer ごとのトラフィック分布、
  - どのサブネットがどの Application Gateway または Load Balancer と会話しているかを把握します。 想定外の会話を見つけた場合は、構成を修正できます。
  - 非承認ネットワークが、Application Gateway または Load Balancer と会話している場合、非承認ネットワークをブロックするように NSG ルールを構成することで修正できます。 
 
-    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![スクリーンショットは、フローに関してアプリケーション ゲートウェイ サブネットへのトラフィック分散を含むサブネット トポロジを示しています。](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>インターネットからのトラフィックを受信するポートと仮想マシンを表示する
 

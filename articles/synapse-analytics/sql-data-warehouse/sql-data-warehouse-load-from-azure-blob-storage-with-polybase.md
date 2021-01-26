@@ -1,26 +1,26 @@
 ---
-title: Contoso Retail データを Synapse SQL データ ウェアハウスに読み込む
-description: PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Synapse SQL に読み込みます。
+title: Contoso Retail データを専用 SQL プールに読み込む
+description: PolyBase および T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを専用 SQL プールに読み込みます。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbe61444404b16a09a1e0d2bdead72ac53a60744
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213314"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452877"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso Retail データを Synapse SQL に読み込む 
+# <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに Contoso Retail データを読み込む
 
-このチュートリアルでは、PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Synapse SQL データ ウェアハウスに読み込む方法を説明します。
+このチュートリアルでは、PolyBase および T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを専用 SQL プールに読み込む方法を説明します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -30,15 +30,15 @@ ms.locfileid: "85213314"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを実行するには、Synapse SQL データ ウェアハウスを既に持つ Azure アカウントが必要です。 データ ウェアハウスがプロビジョニングされていない場合は、[データ ウェアハウスの作成とサーバーレベルのファイアウォール規則の設定](create-data-warehouse-portal.md)に関する記事を参照してください。
+このチュートリアルを実行するには、専用 SQL プールが既に設定されている Azure アカウントが必要です。 データ ウェアハウスがプロビジョニングされていない場合は、[データ ウェアハウスの作成とサーバーレベルのファイアウォール規則の設定](create-data-warehouse-portal.md)に関する記事を参照してください。
 
 ## <a name="configure-the-data-source"></a>データ ソースの構成
 
-PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、Synapse SQL データ ウェアハウスに格納されます。 データは外部に保存されます。
+PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、専用 SQL プールに格納されます。 データは外部に保存されます。
 
 ## <a name="create-a-credential"></a>資格情報の作成
 
-Contoso のパブリック データを読み込もうとしている場合は、**この手順をスキップ**してください。 パブリック データにはだれでもアクセスできるため、セキュリティで保護されたアクセスは必要ありません。
+Contoso のパブリック データを読み込もうとしている場合は、**この手順をスキップ** してください。 パブリック データにはだれでもアクセスできるため、セキュリティで保護されたアクセスは必要ありません。
 
 独自のデータを読み込むためにこのチュートリアルをテンプレートとして使用している場合は、**この手順をスキップしないでください**。 資格情報を使用してデータにアクセスするには、次のスクリプトを使用してデータベース スコープの資格情報を作成します。 その後、データ ソースの場所を定義するときにそれを使用します。
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>列ストア圧縮の最適化
 
-既定では、Synapse SQL データ ウェアハウスには、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
+既定では、専用 SQL プールには、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。
 

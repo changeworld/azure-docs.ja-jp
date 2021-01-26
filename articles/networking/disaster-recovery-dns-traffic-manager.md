@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74483541"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234156"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS と Traffic Manager を使用したディザスター リカバリー
 
@@ -45,7 +45,7 @@ ms.locfileid: "74483541"
     
     *図: アクティブ/パッシブ (ウォーム スタンバイ)のディザスター リカバリー構成*
     
-フェールオーバーおよび高可用性について詳しくは、 [Azure アプリケーションのディザスター リカバリー](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)に関する記事をご覧ください。
+フェールオーバーおよび高可用性について詳しくは、 [Azure アプリケーションのディザスター リカバリー](/azure/architecture/resiliency/disaster-recovery-azure-applications)に関する記事をご覧ください。
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>ディザスター リカバリー アーキテクチャの計画
@@ -54,7 +54,7 @@ ms.locfileid: "74483541"
 -  デプロイ メカニズムを使用して、プライマリおよびスタンバイの環境間でのインスタンス、データ、および構成をレプリケートします。 この種のディザスター リカバリーは、Veritas や NetApp などの Microsoft Azure パートナー アプライアンス/サービスを介して Azure Site Recovery を使用してネイティブで実行できます。 
 - ネットワーク トラフィックまたは Web トラフィックをプライマリ サイトからスタンバイ サイトに迂回させるソリューションを開発します。 この種のディザスター リカバリーは、Azure DNS、Azure Traffic Manager (DNS)、またはサード パーティ製のグローバル ロード バランサーを使用して実現できます。
 
-この記事では、ネットワーク トラフィックおよび Web トラフィックのリダイレクトを使用した方法のみを扱います。 Azure Site Recovery のセットアップの詳細については、 [Azure Site Recovery のドキュメント](https://docs.microsoft.com/azure/site-recovery/)を参照してください。
+この記事では、ネットワーク トラフィックおよび Web トラフィックのリダイレクトを使用した方法のみを扱います。 Azure Site Recovery のセットアップの詳細については、 [Azure Site Recovery のドキュメント](../site-recovery/index.yml)を参照してください。
 DNS は多くの場合、データ センターの外部で使用できるグローバル サービスであり、リージョンや可用性ゾーン (AZ) レベルのあらゆる障害から隔離されているため、DNS はネットワーク トラフィックを迂回させる最も効率的なメカニズムです。 ユーザーは DNS ベースのフェールオーバーのメカニズムを使用することができ、Azure では 2 つの DNS サービス、つまり Azure DNS (権限のある DNS) と Azure Traffic Manager (DNS ベースのスマート トラフィック ルーティング) が何らかの方法で同じ効果を実現できます。 
 
 この記事で説明する解決策について説明するために広く使用される DNS に関するいくつかの概念を理解しておく必要があります。
@@ -170,12 +170,3 @@ contoso123 という名前で新しい Azure Traffic Manager プロファイル�
 ## <a name="next-steps"></a>次のステップ
 - Azure Traffic Manager の詳細については、[こちら](../traffic-manager/traffic-manager-overview.md)をご覧ください。
 - [Azure DNS](../dns/dns-overview.md) の詳細を学習する。
-
-
-
-
-
-
-
-
-

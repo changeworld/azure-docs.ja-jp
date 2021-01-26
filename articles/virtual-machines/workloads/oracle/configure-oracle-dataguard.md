@@ -1,25 +1,19 @@
 ---
 title: Azure Linux 仮想マシンで Oracle Data Guard を実装する | Microsoft Docs
 description: Oracle Data Guard をすばやく作成し、Azure 環境で実行します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: cc7579b48307325e25d8914ea4c722a9641883f3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083380"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952150"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
@@ -57,7 +51,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットの作成は省略可能ですが、作成することをお勧めします。 詳細については、[Azure 可用性セットのガイドライン](../../windows/infrastructure-example.md)に関する記事をご覧ください。
+可用性セットの作成は省略可能ですが、作成することをお勧めします。 詳細については、[Azure 可用性セットのガイドライン](/previous-versions/azure/virtual-machines/windows/infrastructure-example)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \

@@ -4,6 +4,8 @@
   items:
     - name: Azure Functions について
       href: functions-overview.md
+    - name: 作業の開始
+      href: functions-get-started.md
     - name: Durable Functions
       href: durable/durable-functions-overview.md
     - name: サーバーレス サービスの比較
@@ -13,15 +15,43 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Functions の作成
+    - name: 最初の関数を作成する
       expanded: true
       items:
         - name: Visual Studio Code
-          href: ./functions-create-first-function-vs-code.md
+          expanded: true
+          items:
+            - name: C#
+              href: create-first-function-vs-code-csharp.md
+            - name: Java
+              href: create-first-function-vs-code-java.md
+            - name: JavaScript
+              href: create-first-function-vs-code-node.md
+            - name: PowerShell
+              href: create-first-function-vs-code-powershell.md
+            - name: Python
+              href: create-first-function-vs-code-python.md
+            - name: TypeScript
+              href: create-first-function-vs-code-typescript.md
+            - name: その他 (Go/Rust)
+              href: create-first-function-vs-code-other.md
         - name: "Visual\_Studio"
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
-          href: functions-create-first-azure-function-azure-cli.md
+          expanded: false
+          items:
+            - name: C#
+              href: create-first-function-cli-csharp.md
+            - name: Java
+              href: create-first-function-cli-java.md
+            - name: JavaScript
+              href: create-first-function-cli-node.md
+            - name: PowerShell
+              href: create-first-function-cli-powershell.md
+            - name: Python
+              href: create-first-function-cli-python.md
+            - name: TypeScript
+              href: create-first-function-cli-typescript.md
         - name: ARM テンプレート
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
@@ -79,14 +109,48 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: CLI サンプルのインデックス
+          href: functions-cli-samples.md
+        - name: Function App の作成
+          items:
+            - name: サーバーレス関数アプリ
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: サーバーレス Python アプリ
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: スケーラブルな Premium プランのアプリ
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: Dedicated (App Service) プランのアプリ
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: サービスの統合
+          items:
+            - name: Azure Storage の接続
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: Azure Cosmos DB の接続
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Python マウント ファイル共有
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: 継続的なデプロイ
+          items:
+            - name: GitHub のデプロイ
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: DevOps 配置
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
     - name: ランタイムのバージョンの比較
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Premium プラン
-      href: functions-premium-plan.md
+    - name: ホスティングとスケール
+      items:
+        - name: 従量課金プラン
+          href: consumption-plan.md
+        - name: Premium プラン
+          href: functions-premium-plan.md
+        - name: 専用プラン
+          href: dedicated-plan.md
+        - name: イベント ドリブン スケーリング
+          href: event-driven-scaling.md
     - name: デプロイメント
       href: functions-deployment-technologies.md
     - name: イベントとメッセージング
@@ -141,6 +205,9 @@
           displayName: 'secure, ssl'
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: 監視
+      href: functions-monitoring.md
+      displayName: 'App Insights, Application Insights, logs, logging'
     - name: 診断
       href: functions-diagnostics.md
     - name: 従量課金プランのコスト
@@ -181,13 +248,13 @@
             - name: HTTP トリガー
               items:
                 - name: Azure portal
-                  href: functions-create-first-azure-function.md
+                  href: functions-create-function-app-portal.md
                 - name: コマンド ライン
-                  href: ./functions-create-first-azure-function-azure-cli.md
+                  href: ./create-first-function-cli-csharp.md
                 - name: "Visual\_Studio"
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: ./functions-create-first-function-vs-code.md
+                  href: ./create-first-function-vs-code-csharp.md
                 - name: Gradle を使用した Java
                   href: functions-create-first-java-gradle.md
                 - name: Eclipse を使用した Java
@@ -201,7 +268,9 @@
                 - name: Linux App Service プラン
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 従量課金プラン
-                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
+                  href: create-first-function-cli-python.md
+                - name: Premium プラン
+                  href: create-premium-plan-function-app-portal.md
                 - name: Microsoft Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB のトリガー
@@ -214,6 +283,8 @@
               href: functions-create-scheduled-function.md
         - name: バインドの追加
           items:
+            - name: バインドの追加方法
+              href: add-bindings-existing-function.md
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: ストレージ - Python
@@ -239,7 +310,7 @@
         - name: 接続の管理
           href: manage-connections.md
           displayName: best practice
-        - name: エラー処理
+        - name: エラー処理と再試行
           href: functions-bindings-error-pages.md
         - name: HTTP によってトリガーされない Functions を手動で実行する
           href: functions-manually-run-non-http.md
@@ -280,11 +351,18 @@
           href: functions-geo-disaster-recovery.md
     - name: モニター
       items:
-        - name: Functions の監視
-          href: functions-monitoring.md
+        - name: 監視の構成
+          href: configure-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
-        - name: ログの分析
+        - name: テレメトリ データを分析する
+          href: analyze-telemetry-data.md
+          displayName: 'App Insights, Application Insights, Kusto'
+        - name: ストリーミング ログ
+          href: streaming-logs.md
+          displayName: monitoring
+        - name: 診断ログ
           href: functions-monitor-log-analytics.md
+          displayName: 'Azure Monitor, Kusto, Log Analytics, metrics'
     - name: セキュリティで保護
       items:
         - name: SSL 証明書の追加
@@ -303,6 +381,8 @@
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Apple でのサインインを使用した認証 (プレビュー)
+              href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 高度な認証
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: IP の制限
@@ -333,8 +413,6 @@
           href: ./functions-create-vnet.md
         - name: Open API 2.0 定義の作成
           href: ./functions-openapi-definition.md
-        - name: PowerApps および Microsoft Flow にエクスポートする
-          href: app-service-export-api-to-powerapps-and-flow.md
         - name: マネージド ID の使用
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP Functions エンドポイントのカスタマイズ
@@ -347,6 +425,8 @@
           href: functions-recover-storage-account.md
         - name: Python Functions のトラブルシューティング
           href: recover-python-functions.md
+        - name: Python 関数のスケールとパフォーマンス
+          href: python-scale-performance-reference.md
 - name: リファレンス
   items:
     - name: API リファレンス
@@ -463,7 +543,16 @@
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
         - name: RabbitMQ
-          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
+          items:
+            - name: 概要
+              href: functions-bindings-rabbitmq.md
+              displayName: RabbitMQ
+            - name: トリガー
+              href: functions-bindings-rabbitmq-trigger.md
+              displayName: RabbitMQ
+            - name: 出力
+              href: functions-bindings-rabbitmq-output.md
+              displayName: RabbitMQ
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
@@ -492,7 +581,16 @@
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: テーブル ストレージ
-          href: functions-bindings-storage-table.md
+          items:
+            - name: 概要
+              href: functions-bindings-storage-table.md
+              displayName: Table storage
+            - name: 入力
+              href: functions-bindings-storage-table-input.md
+              displayName: Table storage
+            - name: 出力
+              href: functions-bindings-storage-table-output.md
+              displayName: Table storage
         - name: Timer
           href: functions-bindings-timer.md
         - name: Twilio
@@ -516,7 +614,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
+      href: pricing.md
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: クォータの情報

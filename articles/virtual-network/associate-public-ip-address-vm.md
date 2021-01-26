@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035469"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223025"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
 
@@ -214,4 +214,4 @@ ms.locfileid: "88035469"
 
 ## <a name="next-steps"></a>次のステップ
 
-ネットワーク セキュリティ グループを利用して、VM への受信インターネット トラフィックを許可します。 ネットワーク セキュリティ グループを作成する方法については、[ネットワーク セキュリティ グループの操作](manage-network-security-group.md#work-with-network-security-groups)に関するページをご覧ください。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](security-overview.md)に関するページをご覧ください。
+ネットワーク セキュリティ グループを利用して、VM への受信インターネット トラフィックを許可します。 ネットワーク セキュリティ グループを作成する方法については、[ネットワーク セキュリティ グループの操作](manage-network-security-group.md#work-with-network-security-groups)に関するページをご覧ください。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](./network-security-groups-overview.md)に関するページをご覧ください。

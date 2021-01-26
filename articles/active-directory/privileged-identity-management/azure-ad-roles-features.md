@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88784013"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371513"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロールの管理機能
 
@@ -29,7 +29,7 @@ Privileged Identity Management での Azure AD ロールの管理機能が更新
 
 ## <a name="time-bound-assignments"></a>期限付き割り当て
 
-以前、ロールの割り当てには、*有資格*と*永続*の 2 つの状態がありました。 現在では、それぞれの割り当ての種類に、開始時間と終了時間を設定できます。 この追加により、割り当てには次の 4 つの状態が設定できるようになりました。
+以前、ロールの割り当てには、 *有資格* と *永続* の 2 つの状態がありました。 現在では、それぞれの割り当ての種類に、開始時間と終了時間を設定できます。 この追加により、割り当てには次の 4 つの状態が設定できるようになりました。
 
 - [Eligible permanently]\(永続的に有資格\)
 - [Active permanently]\(永続的にアクティブ\)
@@ -42,15 +42,15 @@ Privileged Identity Management での Azure AD ロールの管理機能が更新
 
 Azure AD ロール向けの新しい設定も追加されました。
 
-- **以前**は、アクティブ化はロールごとにのみ構成することができました。 つまり、多要素認証要件やインシデントまたは要求チケット要件などのアクティブ化設定は、特定のロールに対して有資格であるすべてのユーザーに適用されました。
-- **今**では、ロールをアクティブ化する前に個々のユーザーが多要素認証を実行する必要があるかどうかを構成できるようになりました。 さらに、特定のロールに関連する Privileged Identity Management のメールを詳細に管理できるようになりました。
+- **以前** は、アクティブ化はロールごとにのみ構成することができました。 つまり、多要素認証要件やインシデントまたは要求チケット要件などのアクティブ化設定は、特定のロールに対して有資格であるすべてのユーザーに適用されました。
+- **今** では、ロールをアクティブ化する前に個々のユーザーが多要素認証を実行する必要があるかどうかを構成できるようになりました。 さらに、特定のロールに関連する Privileged Identity Management のメールを詳細に管理できるようになりました。
 
 ## <a name="extend-and-renew-assignments"></a>割り当ての延長と更新
 
 期限付き割り当てについて知ると、期限が切れたらロールはどうなるのか、という疑問がわくと思います。 この新しいバージョンでは、このシナリオに対して 2 つの選択肢があります。
 
-- **拡張**:ロールの割り当ての有効期限が近付くと、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての延長を要求できます
-- **更新**:ロールの割り当ての有効期限が切れた場合、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての更新を要求できます
+- **拡張** :ロールの割り当ての有効期限が近付くと、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての延長を要求できます
+- **更新** :ロールの割り当ての有効期限が切れた場合、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての更新を要求できます
 
 ユーザーが行うこれらの操作には、グローバル管理者または特権ロール管理者からの承認が必要です。 管理者は、これらの有効期限を管理する仕事から解放されます。 延長または更新の要求を待ち、その要求が有効であれば承認するだけでよいのです。
 
@@ -69,4 +69,4 @@ Azure AD ロール向けの Privileged Identity Management PowerShell モジュ�
 - [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
 - [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
 - [Azure AD のカスタム ロールの割り当てを構成する](azure-ad-custom-roles-configure.md)
-- [Azure AD のロールの定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD のロールの定義](../roles/permissions-reference.md)

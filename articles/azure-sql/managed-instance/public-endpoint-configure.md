@@ -5,22 +5,22 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708644"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788283"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のパブリック エンドポイントを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)のパブリック エンドポイントを使用すると、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)の外部からマネージド インスタンスにデータ アクセスできます。 マネージド インスタンスには、Power BI や Azure App Service などのマルチテナント Azure サービスまたはオンプレミス ネットワークからアクセスできます。 マネージド インスタンスでパブリック エンドポイントを使用すると、VPN を使用する必要がなくなるため、VPN のスループットの問題を回避できます。
+[マネージド インスタンス](./sql-managed-instance-paas-overview.md)のパブリック エンドポイントを使用すると、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)の外部からマネージド インスタンスにデータ アクセスできます。 マネージド インスタンスには、Power BI や Azure App Service などのマルチテナント Azure サービスまたはオンプレミス ネットワークからアクセスできます。 マネージド インスタンスでパブリック エンドポイントを使用すると、VPN を使用する必要がなくなるため、VPN のスループットの問題を回避できます。
 
 この記事では、次の方法について学習します。
 
@@ -41,17 +41,17 @@ ms.locfileid: "84708644"
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Azure portal でマネージド インスタンスのパブリック エンドポイントを有効にする
 
 1. Azure portal (<https://portal.azure.com/.>) を起動します。
-1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL Managed Instance** を選択します。
+1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL マネージド インスタンス** を選択します。
 1. **[セキュリティ]** の設定で、 **[仮想ネットワーク]** タブを選択します。
 1. 仮想ネットワークの構成ページで **[有効]** を選択し、 **[保存]** アイコンを選択して構成を更新します。
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![パブリック エンドポイントが有効になっている SQL マネージド インスタンスの仮想ネットワーク ページを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>PowerShell を使用してマネージド インスタンスのパブリック エンドポイントを有効にする
 
 ### <a name="enable-public-endpoint"></a>パブリック エンドポイントの有効化
 
-次の PowerShell コマンドを実行します。 **subscription-id** を実際のサブスクリプション ID に置き換えます。 また、**rg-name** を実際のマネージド インスタンスのリソース グループに置き換え、**mi-name** を実際のマネージド インスタンスの名前に置き換えます。
+次の PowerShell コマンドを実行します。 **subscription-id** を実際のサブスクリプション ID に置き換えます。 また、 **rg-name** を実際のマネージド インスタンスのリソース グループに置き換え、 **mi-name** を実際のマネージド インスタンスの名前に置き換えます。
 
 ```powershell
 Install-Module -Name Az
@@ -82,29 +82,29 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>ネットワーク セキュリティ グループでパブリック エンドポイント トラフィックを許可する
 
-1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、**SQL Managed Instance** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
+1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、 **SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![仮想ネットワークとサブネットの値を確認できる仮想ネットワーク構成ページを示すスクリーンショット](./media/public-endpoint-configure/mi-overview.png)
 
 1. 仮想ネットワークの左側の構成ウィンドウで **[サブネット]** タブを選択し、マネージド インスタンスの **[セキュリティ グループ]** を書き留めます。
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![マネージド インスタンスのセキュリティ グループを取得できる [サブネット] タブを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
-1. そのマネージド インスタンスが含まれているリソース グループに戻ります。 前に書き留めておいた**ネットワーク セキュリティ グループ**の名前が表示されるはずです。 名前を選択して、ネットワーク セキュリティ グループの構成ページに移動します。
+1. そのマネージド インスタンスが含まれているリソース グループに戻ります。 前に書き留めておいた **ネットワーク セキュリティ グループ** の名前が表示されるはずです。 名前を選択して、ネットワーク セキュリティ グループの構成ページに移動します。
 
-1. **[受信セキュリティ規則]** タブを選択し、**deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で**追加**します。 </br> </br>
+1. **[受信セキュリティ規則]** タブを選択し、 **deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で **追加** します。 </br> </br>
 
     |設定  |推奨値  |説明  |
     |---------|---------|---------|
     |**ソース**     |任意の IP アドレスまたはサービス タグ         |<ul><li>Power BI などの Azure サービスの場合は、Azure クラウド サービス タグを選択します</li> <li>自分のコンピューターまたは Azure 仮想マシンの場合は、NAT IP アドレスを使用します</li></ul> |
     |**ソース ポート範囲**     |* |ソース ポートは、通常、動的に割り当てられ、予測できないため、* (任意) のままにしておきます |
     |**宛先**     |Any         |マネージド インスタンスのサブネットへのトラフィックを許可するには、宛先は [任意] のままにしておきます |
-    |**宛先ポート範囲**     |3342         |宛先ポートの範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
+    |**宛先ポート範囲**     |3342         |宛先ポート野範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
     |**プロトコル**     |TCP         |SQL Managed Instance では、TDS に TCP プロトコルを使用します |
     |**操作**     |Allow         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
     |**優先順位**     |1300         |この規則が **deny_all_inbound** 規則よりも優先度が高いことを確認してください |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![新しい public_endpoint_inbound ルールが deny_all_inbound ルールの上にある受信セキュリティ ルールを示すスクリーンショット。](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > マネージド インスタンスへのパブリック エンドポイント接続にはポート 3342 が使用され、現時点では変更できません。
@@ -112,9 +112,9 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>マネージド インスタンスのパブリック エンドポイントの接続文字列を取得する
 
 1. パブリック エンドポイントに対して有効になっている マネージド インスタンスの構成ページに移動します。 **[設定]** 構成の下にある **[接続文字列]** タブを選択します。
-1. パブリック エンドポイントのホスト名が <mi_name>.**public**.<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
+1. パブリック エンドポイントのホスト名が <mi_name>. **public** .<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![パブリック エンドポイントとプライベート エンドポイントの接続文字列を示すスクリーンショット。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>次のステップ
 

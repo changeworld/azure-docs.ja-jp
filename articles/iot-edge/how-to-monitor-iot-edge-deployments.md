@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489114"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450171"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge デプロイの監視
 
@@ -63,12 +63,11 @@ IoT Hub サービスでは、このデータを Azure portal と Azure CLI で�
 
    ![デプロイのメトリックを表示する](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-
 デプロイを変更するには、「[デプロイの変更](how-to-deploy-at-scale.md#modify-a-deployment)」を参照してください。
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Azure CLI でデプロイを監視する
 
-単一のデプロイの詳細を表示するには、[az IoT edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) コマンドを使用します。
+単一のデプロイの詳細を表示するには、[az IoT edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) コマンドを使用します。
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -86,7 +85,7 @@ deployment show コマンドは、次のパラメーターを受け取ります�
 * **reportedSuccessfulCount** - IoT Edge クライアント ランタイムから成功をレポートしているデプロイ内の IoT Edge デバイスの数を指定するデバイス メトリックです。
 * **reportedFailedCount** - IoT Edge クライアント ランタイムから失敗をレポートしているデプロイ内の IoT Edge デバイスの数を指定するデバイス メトリックです。
 
-[az IoT Edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) コマンドを使用して、各メトリックのデバイス ID またはオブジェクトの一覧を表示できます。
+[az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) コマンドを使用して、各メトリックのデバイス ID またはオブジェクトの一覧を表示できます。
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

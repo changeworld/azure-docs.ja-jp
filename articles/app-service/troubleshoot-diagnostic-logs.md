@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 875254071d0ea252508242b83102fb8ca8b44e53
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962181"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825366"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -58,7 +58,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 >
 >
 
-ログに記録する詳細さの**レベル**を選択します。 次の表に、各レベルに含まれるログのカテゴリを示します。
+ログに記録する詳細さの **レベル** を選択します。 次の表に、各レベルに含まれるログのカテゴリを示します。
 
 | Level | 含まれるカテゴリ |
 |-|-|
@@ -185,16 +185,18 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 次の表は、サポートされるログの種類と説明を示しています。 
 
-| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | 説明 |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
-| AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
-| AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
-| AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | はい | TBD | FTP および Kudu 経由のファイル変更。Premium 以上の App Service プラン にて利用可能 |
-| AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
-| AppServiceIPSecAuditLogs  | はい | はい | IP ルールからの要求 |
-| AppServicePlatformLogs  | TBA | はい | コンテナー ログ |
+| ログのタイプ | Windows | Windows コンテナー | Linux | Linux コンテナー | 説明 |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | Java SE および Tomcat | はい | はい | はい | 標準出力と標準エラー |
+| AppServiceHTTPLogs | はい | はい | はい | はい | Web サーバー ログ |
+| AppServiceEnvironmentPlatformLogs | はい | 該当なし | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
+| AppServiceAuditLogs | はい | はい | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
+| AppServiceFileAuditLogs | はい | はい | TBA | TBA | サイト コンテンツに行われたファイルの変更。Premium レベル以上でのみ使用可能 |
+| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat Blessed Images <sup>1</sup> | Java SE & Tomcat Blessed Images <sup>1</sup> | アプリケーション ログ |
+| AppServiceIPSecAuditLogs  | はい | はい | はい | はい | IP ルールからの要求 |
+| AppServicePlatformLogs  | TBA | はい | はい | はい | コンテナーの操作ログ |
+
+<sup>1</sup> Java SE アプリの場合は、アプリ設定に "$WEBSITE_AZMON_PREVIEW_ENABLED" を追加し、それを 1 または true に設定します。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)

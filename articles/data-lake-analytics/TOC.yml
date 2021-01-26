@@ -68,7 +68,7 @@
             - name: 基本
               href: data-lake-analytics-u-sql-get-started.md
             - name: 言語のリファレンス
-              href: 'https://msdn.microsoft.com/library/azure/mt591959'
+              href: 'https://docs.microsoft.com/u-sql'
             - name: Catalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: ユーザー定義演算子
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: Cognitive 拡張機能
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: プログラミング ガイド
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: "Visual\_Studio"
           items:
             - name: インストール
@@ -113,8 +111,32 @@
               href: data-lake-analytics-data-lake-tools-for-vscode.md
             - name: カスタム コード
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+            - name: リソースへのアクセス
+              href: data-lake-analytics-data-lake-tools-for-vscode-access-resource.md
             - name: ローカルの実行とデバッグ
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: プログラミング ガイド
+          items:
+            - name: プログラミング ガイドの概要
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: プログラミング ガイド - UDT および UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: プログラミング ガイド - UDO
+              items:
+                - name: ユーザー定義オブジェクトの概要
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: ユーザー定義エクストラクターを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: ユーザー定義アウトプッターを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: ユーザー定義プロセッサを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: ユーザー定義アプライヤーを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: ユーザー定義コンバイナーを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: ユーザー定義レジューサーを使用する
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: U-SQL ジョブのスケジュール設定
       items:
         - name: SSIS を使用したジョブのスケジュール設定
@@ -139,7 +161,7 @@
           href: understand-spark-code-concepts.md
     - name: U-SQL ジョブのトラブルシューティング
       items:
-        - name: U-SQL ランタイム エラーのトラブルシューティング
+        - name: U-SQL ランタイム エラーと既知の問題のトラブルシューティング
           href: runtime-troubleshoot.md
         - name: .NET アップグレードのトラブルシューティング
           href: dotnet-upgrade-troubleshoot.md
@@ -152,26 +174,26 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-analytics'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python'
+      href: /python/api/overview/azure/data-lake-analytics
     - name: REST
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.datalakeanalytics/allversions
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/dla'
+      href: /cli/azure/dla
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure Data Lake のブログ
-      href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
+      href: /archive/blogs/azuredatalake/
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 変更の要求
       href: 'https://feedback.azure.com/forums/327234-data-lake'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-analytics.html'
+      href: /answers/topics/azure-data-lake-analytics.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: 料金計算ツール

@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254703"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109846"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>クイック スタート:Linux (Ubuntu) Data Science Virtual Machine を設定する
 
@@ -46,7 +46,7 @@ Data Science Virtual Machine Ubuntu 18.04 のインスタンスを作成する�
        * **[仮想マシン名]** : 仮想マシンの名前を入力します。 この名前は Azure portal で使用されます。
        * **[リージョン]** :最適なデータ センターを選択します。 ネットワーク アクセスを最速にするために、データの大半が存在するデータセンターか、物理的に最も近くにあるデータセンターを選びます。 詳細については、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に関する記事を参照してください。
        * **イメージ**:既定値をそのまま使用します。
-       * **Size**:このオプションには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/linux/sizes.md)に関する記事を参照してください。
+       * **Size**:このオプションには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/sizes.md)に関する記事を参照してください。
        * **[認証の種類]** : 設定を迅速に行うには、[パスワード] を選択します。 
          
          > [!NOTE]
@@ -73,8 +73,6 @@ Ubuntu DSVM には、次の 3 つの方法のいずれかでアクセスでき�
   * ターミナル セッションの場合の SSH
   * グラフィカル セッションの場合の X2Go
   * Jupyter Notebook の場合の JupyterHub と JupyterLab
-
-また、Data Science Virtual Machine を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Azure Notebooks プロジェクトの管理と構成](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)に関するページを参照してください。
 
 ### <a name="ssh"></a>SSH
 
@@ -121,12 +119,16 @@ Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [Jupyte
 
    1. ローカル コンピューターから Web ブラウザーを開き、https:\//your-vm-ip:8000 に移動します。"your-vm-ip" は、前にメモした IP アドレスに置き換えます。
    1. ブラウザーにより、証明書エラーが発生したことが報告され、ページを直接開けなくなる場合があります。 DSVM では、自己署名証明書を使用してセキュリティを提供しています。 ほとんどのブラウザーでは、この警告の後にクリック スルーすることができます。 多くのブラウザーでは、Web セッション全体の証明書に関する何らかの視覚的な警告が引き続き提供されます。
+
+      >[!NOTE]
+      > ブラウザーに `ERR_EMPTY_RESPONSE` というエラー メッセージが表示された場合は、*HTTP* または Web アドレスだけを使用するのではなく、*HTTPS* プロトコルを明示的に使用してマシンにアクセスする必要があります。 アドレス行に `https://` なしで Web アドレスを入力すると、ほとんどのブラウザーでは既定で `http` に設定されるので、このエラーが表示されます。
+
    1. VM を作成するときに使ったユーザー名とパスワードを入力してサインインしてください。 
 
       ![Jupyter ログインを入力する](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
->[!NOTE]
-> この段階で 500 エラーが発生した場合、ユーザー名に大文字を使用した可能性があります。 これは、JupyterHub と、それが使用する PAMAuthenticator の間の既知の相互作用です。 
+      >[!NOTE]
+      > この段階で 500 エラーが発生した場合、ユーザー名に大文字を使用した可能性があります。 これは、JupyterHub と、それが使用する PAMAuthenticator の間の既知の相互作用です。 "このページに到達できない" というエラーが返される場合は、おそらくネットワーク セキュリティ グループのアクセス許可を調整する必要があります。 Azure portal で、リソース グループ内のネットワーク セキュリティ グループ リソースを見つけます。 パブリック インターネットから JupyterHub にアクセスするには、ポート 8000 を開放する必要があります。 (Just-In-Time アクセスの構成を強くおすすめします。この図を見ると、VM が Just-In-Time アクセスを使用するように構成されていることがわかります。 「[Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する](../../security-center/security-center-just-in-time.md)」を参照してください。)![ネットワーク セキュリティ グループの構成](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. 入手できる多くのサンプル ノートブックを参照します。
 
@@ -144,6 +146,6 @@ c.Spawner.default_url = '/lab'
 
 * [Linux Data Science Virtual Machine でのデータ サイエンス](linux-dsvm-walkthrough.md)に関するチュートリアルでは、ここでプロビジョニングされた Linux DSVM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 
 * この記事で説明しているツールを試して、DSVM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで `dsvm-more-info` を実行して確認することもできます。  
-* [Team Data Science Process](https://aka.ms/tdsp)を使用して、分析ソリューションを体系的に構築する方法を確認します。
+* [Team Data Science Process](../team-data-science-process/index.yml)を使用して、分析ソリューションを体系的に構築する方法を確認します。
 * Azure AI サービスを使用する機械学習とデータ分析のサンプルについては、[Azure AI Gallery](https://gallery.azure.ai/) を参照してください。
 * この仮想マシンに適した[リファレンス ドキュメント](./reference-ubuntu-vm.md)を参照してください。

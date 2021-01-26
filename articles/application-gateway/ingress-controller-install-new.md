@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807156"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693670"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "84807156"
 
 [Azure Cloud Shell](https://shell.azure.com/) には、必要なすべてのツールが既に含まれています。 別の環境を使用する場合は、次のコマンドライン ツールがインストールされていることを確認してください。
 
-* `az` - Azure CLI: [インストール手順](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` - Azure CLI: [インストール手順](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` - Kubernetes コマンド ライン ツール: [インストール手順](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` - Kubernetes パッケージ マネージャー: [インストール手順](https://github.com/helm/helm/releases/latest)
 * `jq` - コマンド ライン JSON プロセッサ: [インストール手順](https://stedolan.github.io/jq/download/)
@@ -38,9 +38,9 @@ ms.locfileid: "84807156"
 
 ## <a name="create-an-identity"></a>ID を作成する
 
-次の手順に従って、Azure Active Directory (AAD) [サービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)を作成します。 `appId`、`password`、`objectId` の値を記録してください。これらは次の手順で使用します。
+次の手順に従って、Azure Active Directory (AAD) [サービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成します。 `appId`、`password`、`objectId` の値を記録してください。これらは次の手順で使用します。
 
-1. AD サービス プリンシパルを作成します ([RBAC の詳細をご覧ください](https://docs.microsoft.com/azure/role-based-access-control/overview))。
+1. AD サービス プリンシパルを作成します ([Azure RBAC の詳細をご覧ください](../role-based-access-control/overview.md))。
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -66,16 +66,16 @@ ms.locfileid: "84807156"
     }
     EOF
     ```
-    **RBAC** が有効のクラスターをデプロイするには、`aksEnableRBAC` フィールドを `true` に設定します
+    **Kubernetes RBAC** が有効のクラスターをデプロイするには、`aksEnableRBAC` フィールドを `true` に設定します
 
 ## <a name="deploy-components"></a>コンポーネントをデプロイする
 この手順では、サブスクリプションに次のコンポーネントを追加します。
 
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- 2 つの[サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)を含む [Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [AAD ポッド ID](https://github.com/Azure/aad-pod-identity/blob/master/README.md) で使用される[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- [Azure Kubernetes Service](../aks/intro-kubernetes.md)
+- [Application Gateway](./overview.md) v2
+- 2 つの[サブネット](../virtual-network/virtual-networks-overview.md)を含む [Virtual Network](../virtual-network/virtual-networks-overview.md)
+- [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)
+- [AAD ポッド ID](https://github.com/Azure/aad-pod-identity/blob/master/README.md) で使用される[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)
 
 1. Azure Resource Manager テンプレートをダウンロードし、必要に応じてそのテンプレートを変更します。
     ```bash
@@ -92,7 +92,7 @@ ms.locfileid: "84807156"
     az group create -n $resourceGroupName -l $location
 
     # modify the template as needed
-    az group deployment create \
+    az deployment group create \
             -g $resourceGroupName \
             -n $deploymentName \
             --template-file template.json \
@@ -101,7 +101,7 @@ ms.locfileid: "84807156"
 
 1. デプロイが完了したら、`deployment-outputs.json` という名前のファイルにデプロイ出力をダウンロードします。
     ```azurecli
-    az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
+    az deployment group show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
 ## <a name="set-up-application-gateway-ingress-controller"></a>Azure Application Gateway イングレス コントローラーを設定する
@@ -111,7 +111,7 @@ ms.locfileid: "84807156"
 ### <a name="setup-kubernetes-credentials"></a>Kubernetes 資格情報を設定する
 次の手順では、新しい Kubernetes クラスターへの接続に使用する [kubectl](https://kubectl.docs.kubernetes.io/) コマンドを設定する必要があります。 [Cloud Shell](https://shell.azure.com/) には `kubectl` が既にインストールされています。 `az` CLI を使用して、Kubernetes の資格情報を取得します。
 
-新しくデプロイされた AKS の資格情報を取得します ([詳細はこちら](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster))。
+新しくデプロイされた AKS の資格情報を取得します ([詳細はこちら](../aks/kubernetes-walkthrough.md#connect-to-the-cluster))。
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -121,7 +121,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 ```
 
 ### <a name="install-aad-pod-identity"></a>AAD ポッド ID をインストールする
-  Azure Active Directory ポッド ID は、[Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) へのトークンベースのアクセスを提供します。
+  Azure Active Directory ポッド ID は、[Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) へのトークンベースのアクセスを提供します。
 
   [AAD ポッド ID](https://github.com/Azure/aad-pod-identity) によって、次のコンポーネントが Kubernetes クラスターに追加されます。
    * Kubernetes [CRD](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`、`AzureAssignedIdentity`、`AzureIdentityBinding`
@@ -131,24 +131,24 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 AAD ポッド ID をクラスターにインストールするには、次のようにします。
 
-   - "*RBAC が有効*" の AKS クラスター
+   - *Kubernetes RBAC が有効* の AKS クラスター
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - "*RBAC が無効*" の AKS クラスター
+   - *Kubernetes RBAC が無効* の AKS クラスター
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
      ```
 
 ### <a name="install-helm"></a>Helm のインストール
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) は、Kubernetes 用のパッケージ マネージャーです。 これを利用して `application-gateway-kubernetes-ingress` パッケージをインストールします。
+[Helm](../aks/kubernetes-helm.md) は、Kubernetes 用のパッケージ マネージャーです。 これを利用して `application-gateway-kubernetes-ingress` パッケージをインストールします。
 
-1. [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) をインストールし、以下を実行して `application-gateway-kubernetes-ingress` Helm パッケージを追加します。
+1. [Helm](../aks/kubernetes-helm.md) をインストールし、以下を実行して `application-gateway-kubernetes-ingress` Helm パッケージを追加します。
 
-    - "*RBAC が有効*" の AKS クラスター
+    - "*Kubernetes RBAC が有効*" の AKS クラスター
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - "*RBAC が無効*" の AKS クラスター
+    - "*Kubernetes RBAC が無効*" の AKS クラスター
 
         ```bash
         helm init
@@ -228,7 +228,7 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     

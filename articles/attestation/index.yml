@@ -10,12 +10,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 07/20/2020
-  ms.openlocfilehash: 218a957bfc351dd40f9b101f44d1c6e090e92027
-  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+  ms.openlocfilehash: 9740c315333d3f24e43a35b476243f323b6e3821
+  ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89398122"
+  ms.lasthandoff: 01/14/2021
+  ms.locfileid: "98209918"
 landingContent:
 - title: Microsoft Azure Attestation について
   linkLists:
@@ -27,10 +27,14 @@ landingContent:
   linkLists:
   - linkListType: deploy
     links:
-    - text: PowerShell のクイック スタート
-      url: quickstart-powershell.md
     - text: ARM テンプレートのクイックスタート
       url: quickstart-template.md
+    - text: PowerShell のクイック スタート
+      url: quickstart-powershell.md
+    - text: ポータルのクイックスタート
+      url: quickstart-portal.md
+    - text: CLI のクイックスタート
+      url: quickstart-azure-cli.md
 - title: 概念
   linkLists:
   - linkListType: concept
@@ -47,8 +51,10 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 構成証明ポリシーの作成と署名
+    - text: 構成証明ポリシーの作成
       url: author-sign-policy.md
+    - text: プライベート エンドポイントの作成 - PowerShell
+      url: private-endpoint-powershell.md
     - text: SGX 構成証明コード サンプル
       url: /samples/browse/?expanded=azure&terms=attestation
 - title: References
@@ -59,5 +65,5 @@ landingContent:
       url: faq.md
     - text: REST
       url: /rest/api/attestation/
-    - text: Azure PowerShell
-      url: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+    - text: 問題のトラブルシューティング
+      url: troubleshoot-guide.md

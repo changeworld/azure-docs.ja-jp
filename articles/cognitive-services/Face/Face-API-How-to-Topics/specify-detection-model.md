@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3278a1522fe3967dd1de5551e90732e63b7666f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931558"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913485"
 ---
 # <a name="specify-a-face-detection-model"></a>顔検出モデルを指定する
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>指定したモデルを使用して Person に顔を追加する
 
-Face サービスは画像から顔データを抽出し、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API によってそれを **Person** オブジェクトに関連付けることができます。 この API 呼び出しでは、[Face - Detect] と同じ方法で検出モデルを指定できます。
+Face サービスは画像から顔データを抽出し、 [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API によってそれを **Person** オブジェクトに関連付けることができます。 この API 呼び出しでは、[Face - Detect] と同じ方法で検出モデルを指定できます。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -75,7 +75,7 @@ await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imag
 このコードは、ID `mypersongroupid` を持つ **PersonGroup** を作成し、それに **Person** を追加します。 次に、`detection_02` モデルを使用して、この **Person** に顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
 
 > [!NOTE]
-> **Person** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、([Face - Identify] API などで) **Person** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
+> **Person** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、( [Face - Identify] API などで) **Person** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
 
 ## <a name="add-face-to-facelist-with-specified-model"></a>指定したモデルを使用して FaceList に顔を追加する
 
@@ -91,7 +91,7 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 このコードは、`My face collection` という **FaceList** を作成し、それに `detection_02` モデルを使用して顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
 
 > [!NOTE]
-> **FaceList** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、**FaceList** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
+> **FaceList** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、 **FaceList** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
 
 ## <a name="evaluate-different-models"></a>さまざまなモデルを評価する
 
@@ -110,9 +110,9 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 この記事では、さまざまな Face API で使用する検出モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
 
-* [Face .NET SDK](../Quickstarts/csharp-sdk.md)
-* [Face Python SDK](../Quickstarts/python-sdk.md)
-* [Face Go SDK](../Quickstarts/go-sdk.md)
+* [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Face Go SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

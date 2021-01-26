@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bf86656ff670df19162867d597a869d762a012e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555741"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019346"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>チュートリアル:Dropbox Business と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555741"
 * ユーザーが自分の Azure AD アカウントを使用して Dropbox Business に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Dropbox Business では、**SP** Initiated SSO がサポートされます
 
 * Dropbox Business では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](dropboxforbusiness-tutorial.md)がサポートされます
-* Dropbox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Dropbox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-dropbox-business-from-the-gallery"></a>ギャラリーからの Dropbox Business の追加
 
@@ -88,7 +88,7 @@ Dropbox Business で Azure AD の SSO を構成してテストするには、次
     > [!NOTE]
     > 上記のサインオン URL の値は、実際の値ではありません。 実際のサインオン URL に値を置き換えます。実際の値については後で説明します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -135,7 +135,7 @@ Dropbox Business で Azure AD の SSO を構成してテストするには、次
 
 ## <a name="configure-dropbox-business-sso"></a>Dropbox Business の SSO の構成
 
-1. Dropbox Business 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイ アプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
+1. Dropbox Business 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイ アプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -145,35 +145,35 @@ Dropbox Business で Azure AD の SSO を構成してテストするには、次
 
 3. Dropbox Business を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、Dropbox Business テナントに移動して、Dropbox Business テナントにサインオンします。 さらに次の手順に従います。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
+    ![[Dropbox Business Sign in]\(Dropbox Business サインイン\) ページを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
 
-4. **ユーザー アイコン**をクリックし、 **[Settings]\(設定\)** タブを選択します。
+4. **ユーザー アイコン** をクリックし、 **[Settings]\(設定\)** タブを選択します。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure1.png "Configure single sign-on")
+    ![[ユーザー アイコン] アクションと [Settings]\(設定\) が選択されていることを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure1.png "Configure single sign-on")
 
 5. 左側のナビゲーション ウィンドウで、 **[Admin console]\(管理コンソール\)** をクリックします。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure2.png "Configure single sign-on")
+    ![[Admin console]\(管理コンソール\) が選択されていることを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure2.png "Configure single sign-on")
 
 6. **[Admin console]\(管理コンソール\)** の左側のナビゲーション ウィンドウで、 **[Settings]\(設定\)** をクリックします。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure3.png "Configure single sign-on")
+    ![[Settings]\(設定\) が選択されていることを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure3.png "Configure single sign-on")
 
 7. **[Authentication]\(認証\)** セクションの **[Single sign-on]\(シングル サインオン\)** オプションを選択します。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure4.png "Configure single sign-on")
+    ![[Single sign-on]\(シングル サインオン\) が選択されている [Authentication]\(認証\) セクションを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure4.png "Configure single sign-on")
 
 8. **[Single sign-on]\(シングル サインオン\)** セクションで、次の手順を実行します。  
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure5.png "Configure single sign-on")
+    ![[Single sign-on]\(シングル サインオン\) の構成設定を示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure5.png "Configure single sign-on")
 
     a. **[Single sign-on]\(シングル サインオン\)** のドロップ ダウンからオプションとして **[Required]\(必須\)** を選択します。
 
-    b. **[Add sign-in URL]\(サインイン URL の追加\)** をクリックし、 **[Identity provider sign-in URL]\(ID プロバイダーのサインイン URL\)** ボックスに Azure portal からコピーした**ログイン URL** の値を貼り付け、 **[完了]** を選択します。
+    b. **[Add sign-in URL]\(サインイン URL の追加\)** をクリックし、 **[Identity provider sign-in URL]\(ID プロバイダーのサインイン URL\)** ボックスに Azure portal からコピーした **ログイン URL** の値を貼り付け、 **[完了]** を選択します。
 
     ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure6.png "Configure single sign-on")
 
-    c. **[Upload certificate]\(証明書のアップロード\)** をクリックし、Azure portal からダウンロードした **Base64 でエンコードされた証明書ファイル**を参照します。
+    c. **[Upload certificate]\(証明書のアップロード\)** をクリックし、Azure portal からダウンロードした **Base64 でエンコードされた証明書ファイル** を参照します。
 
     d. **[Copy link]\(リンクのコピー\)** をクリックし、コピーした値を Azure portal の **[Dropbox Business のドメインと URL]** セクションの **[サインオン URL]** テキストボックスに貼り付けます。
 
@@ -188,16 +188,16 @@ Dropbox Business で Azure AD の SSO を構成してテストするには、次
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Dropbox Business] タイルを選択すると、SSO を設定した Dropbox Business に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Dropbox Business] タイルを選択すると、SSO を設定した Dropbox Business に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Azure Active Directory の条件付きアクセスとは](/cloud-app-security/proxy-intro-aad)
 
 - [Azure AD で Dropbox Business を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

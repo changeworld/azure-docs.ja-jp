@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: c653a8afa3d15278a03655f71dccade6171db837
-  ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+  ms.openlocfilehash: c456153b3efe3da28d9cd7b2fd39c1eca073e656
+  ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/21/2020
-  ms.locfileid: "88723896"
+  ms.lasthandoff: 01/20/2021
+  ms.locfileid: "98598143"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -45,7 +45,11 @@ landingContent:
     - text: JavaScript SDK の使用
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
-      url: quickstarts/curl-train-extract.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: tutorial
+    links:
+    - text: フォーム データを一括で抽出する
+      url: tutorial-bulk-processing.md
 - title: トレーニング データ セットの作成
   linkLists:
   - linkListType: how-to-guide
@@ -62,8 +66,6 @@ landingContent:
     links:
     - text: サンプル ラベル付けツールを使用したトレーニング
       url: quickstarts/label-tool.md
-    - text: REST API と Python を使用したラベルのトレーニング
-      url: quickstarts/python-labeled-data.md
 - title: 配信確認メッセージからデータを抽出する
   linkLists:
   - linkListType: quickstart
@@ -77,24 +79,12 @@ landingContent:
     - text: JavaScript SDK の使用
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: REST API の使用する (cURL)
-      url: quickstarts/curl-receipts.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
   - linkListType: concept
     links:
     - text: レシートの概念
       url: concept-receipts.md?
 - title: 名刺からデータを抽出する
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: REST API の使用
-      url: quickstarts/python-business-cards.md?
-  - linkListType: concept
-    links:
-    - text: 名刺の概念
-      url: concept-business-cards.md?
-- title: テキスト レイアウト情報を取得する
   linkLists:
   - linkListType: quickstart
     links:
@@ -107,9 +97,29 @@ landingContent:
     - text: JavaScript SDK の使用
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: REST API の使用する (Python)
-      url: quickstarts/python-layout.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: concept
+    links:
+    - text: 名刺の概念
+      url: concept-business-cards.md?
+- title: テキスト レイアウト情報を取得する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: レイアウトの概念
+      url: concept-layout.md?
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: コンテナーの使用
   linkLists:
   - linkListType: get-started
@@ -131,16 +141,20 @@ landingContent:
     - text: Form Recognizer API v2.0
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer
+      url: /dotnet/api/overview/azure/ai.formrecognizer-readme
+    - text: Python SDK
+      url: /python/api/azure-ai-formrecognizer/?view=azure-python
+    - text: Java SDK
+      url: /java/api/overview/azure/ai-formrecognizer-readme
+    - text: JavaScript SDK
+      url: /javascript/api/overview/azure/ai-form-recognizer-readme
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference
     links:
-    - text: UserVoice
-      url: https://go.microsoft.com/fwlink/?linkid=2090535
-    - text: Stack Overflow
-      url: https://go.microsoft.com/fwlink/?linkid=2087186
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context

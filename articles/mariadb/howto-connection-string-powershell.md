@@ -1,18 +1,18 @@
 ---
 title: PowerShell を使用して接続文字列を生成する - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB に接続するための接続文字列を生成する Azure PowerShell の例を提供します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: b08a1c60b1225b2786ea869f96ac40cc651c82f3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9dee109c701d3760c93f39e639dcfd7cae07b595
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185606"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538055"
 ---
 # <a name="how-to-generate-an-azure-database-for-mariadb-connection-string-with-powershell"></a>PowerShell を使用して Azure Database for MariaDB 接続文字列を生成する方法
 

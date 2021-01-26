@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 70bc667fcfa352be7283773e752a798875bf3d01
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c2595d75acfacf3d501b6efb83b383d9a56215a6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231267"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203288"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックスの Azure セキュリティ ベースライン
 
 Microsoft Azure 用カスタマー ロックボックスの Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つレコメンデーションが含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
@@ -116,7 +116,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -132,9 +132,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 カスタマー ロックボックスによって生成されたアクティビティ ログを Azure Sentinel または別の SIEM にオンボードして、中央のログの集計と管理を有効にします。
 
-* [カスタマー ロックボックスの監査ログ](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#auditing-logs)
+* [カスタマー ロックボックスの監査ログ](./customer-lockbox-overview.md#auditing-logs)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: はい
 
@@ -144,9 +144,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**: カスタマー ロックボックスの監査ログは、Azure アクティビティ ログで自動的に有効にされ、管理されます。 このデータを表示するには、Azure アクティビティ ログから Log Analytic ワークスペースにそれをストリーミングし、そこでそれに関する調査と分析を実行できます。
 
-* [カスタマー ロックボックスの監査ログ](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#auditing-logs)
+* [カスタマー ロックボックスの監査ログ](./customer-lockbox-overview.md#auditing-logs)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: はい
 
@@ -164,7 +164,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、カスタマー ロックボックスに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-* [ログ保持期間のパラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [ログ保持期間のパラメーターを設定する方法](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -174,7 +174,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**: カスタマー ロックボックスの監査ログは、Azure アクティビティ ログで自動的に有効にされ、管理されます。 このデータを表示するには、Azure アクティビティ ログから Log Analytic ワークスペースにそれをストリーミングし、そこでそれに関する調査と分析を実行できます。 異常な動作について、カスタマー ロックボックス要求からのログを分析し、監視します。 Azure Sentinel ワークスペースの "ログ" セクションを使用して、クエリを実行したり、カスタマー ロックボックス ログに基づいてアラートを作成したりします。
 
-* [カスタマー ロックボックスの監査ログ](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#auditing-logs)
+* [カスタマー ロックボックスの監査ログ](./customer-lockbox-overview.md#auditing-logs)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -184,9 +184,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**: カスタマー ロックボックスの監査ログは、Azure アクティビティ ログで自動的に有効にされ、管理されます。 このデータを表示するには、Azure アクティビティ ログから Log Analytic ワークスペースにそれをストリーミングし、そこでそれに関する調査と分析を実行できます。 異常な動作について、カスタマー ロックボックス要求からのログを分析し、監視します。 Azure Sentinel ワークスペースの "ログ" セクションを使用して、クエリを実行したり、カスタマー ロックボックス ログに基づいてアラートを作成したりします。
 
-* [カスタマー ロックボックスの監査ログ](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#auditing-logs)
+* [カスタマー ロックボックスの監査ログ](./customer-lockbox-overview.md#auditing-logs)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -218,7 +218,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -226,11 +226,11 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 お客様の組織で、Azure サブスクリプションの所有者ロールを持つユーザーに、保留中のアクセス要求について通知するメールが Microsoft から送信されます。 カスタマー ロックボックス要求では、このユーザーが承認者に指定されます。
 
-* [カスタム ロールについて](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [カスタム ロールについて](../../role-based-access-control/custom-roles.md)
 
-* [ブック用に Azure RBAC を構成する方法](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [ブック用に Azure RBAC を構成する方法](../../sentinel/quickstart-get-visibility.md)
 
-* [カスタマー ロックボックスでのアクセス要求のアクセス許可について](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [カスタマー ロックボックスでのアクセス要求のアクセス許可について](./customer-lockbox-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -253,9 +253,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](../../security-center/security-center-identity-access.md)
 
-* [Azure Policy を使用する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を使用する方法](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -273,9 +273,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**:Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -283,11 +283,11 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) 対応の特権アクセス ワークステーション (PAW) を使用して、ログインし、カスタマー ロックボックス要求を構成します。
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) 対応の特権アクセス ワークステーション (PAW) を使用して、ログインし、カスタマー ロックボックス要求を構成します。
 
-* [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
+* [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) (Privileged Access Workstation)
 
-* [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -299,9 +299,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 また、Azure Active Directory のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-* [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) をデプロイする方法](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD のリスク検出の概要](../../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -311,7 +311,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -321,7 +321,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**: Azure Active Directory を中央認証および承認システムとして使用します (該当する場合)。 Azure Active Directory でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure Active Directory では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
-* [Azure Active Directory インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure Active Directory インスタンスを作成して構成する方法](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -331,9 +331,9 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**:Azure Active Directory では、古いアカウントの検出に役立つログが提供されます。 また、Azure Active Directory アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-* [Azure Active Directory レポートについて](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure Active Directory レポートについて](../../active-directory/reports-monitoring/index.yml)
 
-* [Azure Active Directory のアクセス レビューを使用する方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure Active Directory のアクセス レビューを使用する方法](../../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -347,9 +347,9 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 このプロセスを効率化するには、Azure Active Directory ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -359,11 +359,11 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**:コントロール プレーン (Azure portal など) でのアカウント ログイン動作の偏差について、Azure Active Directory Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure Active Directory の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure Active Directory の危険なサインインを表示する方法](../../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -379,7 +379,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -393,7 +393,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**: 適用できません。カスタマー ロックボックスは、アクセスを許可しているリソースと同じサブスクリプションにプロビジョニングされます。 保護または分離するパブリック エンドポイントがありません。 カスタマー ロックボックス要求のアクセス権は、テナント レベルで所有者ロールを保持しているユーザーに付与されます。
 
-* [カスタマー ロックボックス ワークフローについて](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [カスタマー ロックボックス ワークフローについて](./customer-lockbox-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -403,7 +403,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**: Microsoft では、カスタマー ロックボックス用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](./protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -413,7 +413,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**: 既定で、Microsoft では、クラウド サービスとユーザーとの間でデータをやりとりする際に、トランスポート層セキュリティ (TLS) プロトコルを使用してデータを保護します。 Microsoft のデータ センターは、Azure サービスに接続するクライアント システムとの TLS 接続をネゴシエートします。 TLS には、強力な認証、メッセージの機密性、整合性 (メッセージの改ざん、傍受、偽造の検出が有効)、相互運用性、アルゴリズムの柔軟性、デプロイと使用のしやすさといったメリットがあります。
 
-* [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Azure での転送中の暗号化の概要](./encryption-overview.md#encryption-of-data-in-transit)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -431,7 +431,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**:カスタマー ロックボックス要求の承認は、テナント レベルで所有者ロールを保持しているユーザーに付与されます。
 
-* [カスタマー ロックボックス ワークフローについて](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [カスタマー ロックボックス ワークフローについて](./customer-lockbox-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -441,7 +441,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。 Microsoft では、カスタマー ロックボックス用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護](./protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -459,11 +459,11 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 **ガイダンス**: カスタマー ロックボックスの監査ログは、Azure アクティビティ ログで自動的に有効にされ、管理されます。 Azure アクティビティ ログを使用して、Azure カスタマー ロックボックス リソースへの変更を監視し、検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [カスタマー ロックボックスで監査を有効にする方法](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [カスタマー ロックボックスで監査を有効にする方法](./customer-lockbox-overview.md)
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -471,7 +471,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -515,7 +515,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
@@ -523,11 +523,11 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 従来の Azure リソースは Azure Resource Graph で検出できますが、Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure ロールベースのアクセス制御 (Azure RBAC) を理解する](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure ロールベースのアクセス制御 (Azure RBAC) を理解する](../../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -549,11 +549,11 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -573,9 +573,9 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -611,9 +611,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -631,7 +631,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -655,7 +655,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -749,7 +749,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 適用できません。カスタマー ロックボックスではマネージド ID を使用しません。
 
-* [マネージド ID をサポートする Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [マネージド ID をサポートする Azure サービス](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -767,7 +767,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -797,7 +797,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -833,13 +833,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
-* [Azure Security Center 内でワークフロー自動化を構成する方法](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center 内でワークフロー自動化を構成する方法](../../security-center/security-center-planning-and-operations-guide.md)
 
 * [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -875,7 +875,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -885,9 +885,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -897,7 +897,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -905,7 +905,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
@@ -921,5 +921,5 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../benchmarks/security-baselines-overview.md)の詳細について学習する

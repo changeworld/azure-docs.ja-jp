@@ -1,14 +1,14 @@
 ---
 title: テンプレートの概要
-description: リソースのデプロイに Azure Resource Manager テンプレートを使用する利点について説明します。
+description: リソースのデプロイに Azure Resource Manager テンプレート (ARM テンプレート) を使用する利点について説明します。
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 12/17/2020
+ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119363"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657313"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -16,7 +16,7 @@ ms.locfileid: "86119363"
 
 これらの課題に対応するには、デプロイを自動化し、インフラストラクチャの手法をコードとして使用することができます。 コードでは、デプロイする必要があるインフラストラクチャを定義します。 インフラストラクチャのコードは、プロジェクトの一部になります。 アプリケーションのコードと同様に、インフラストラクチャのコードをソース リポジトリに格納し、そのバージョンを管理します。 チーム内の誰でもコードを実行して、同様の環境をデプロイできます。
 
-Azure ソリューション用にインフラストラクチャをコードとして実装するには、Azure Resource Manager (ARM) テンプレートを使用します。 テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 このテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
+Azure ソリューション用にインフラストラクチャをコードとして実装するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用します。 テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 このテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
 
 ## <a name="why-choose-arm-templates"></a>ARM テンプレートを選択する理由
 
@@ -48,7 +48,7 @@ ARM テンプレートを使用するか、他のいずれかのコードとし�
 
 * **コードとしてのポリシー**:[Azure Policy](../../governance/policy/overview.md) は、ガバナンスを自動化するためのコード フレームワークとしてのポリシーです。 Azure ポリシーを使用している場合、テンプレート経由でデプロイすると、非準拠リソースではポリシーが修復されます。
 
-* **デプロイのブループリント**:Microsoft が提供する[ブループリント](../../governance/blueprints/overview.md)を活用することで、規制やコンプライアンスの基準を満たすことができます。 これらのブループリントには、さまざまなアーキテクチャ用の既成のテンプレートが含まれています。
+* **デプロイのブループリント**:Microsoft が提供する [ブループリント](../../governance/blueprints/overview.md)を活用することで、規制やコンプライアンスの基準を満たすことができます。 これらのブループリントには、さまざまなアーキテクチャ用の既成のテンプレートが含まれています。
 
 * **CI/CD の統合**: テンプレートを継続的インテグレーションと継続的配置 (CI/CD) ツールに統合することができます。これにより、リリース パイプラインを自動化し、高速で信頼性の高いアプリケーションとインフラストラクチャの更新を行うことができます。 Azure DevOps と Resource Manager テンプレート タスクを使うことで、Azure Pipelines を使用して ARM テンプレート プロジェクトを継続的にビルドおよびデプロイすることができます。 詳細については、[パイプラインを使用した VS プロジェクト](add-template-to-azure-pipelines.md)に関するページおよび「[チュートリアル: Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](./deployment-tutorial-pipeline.md)」を参照してください。
 
@@ -80,13 +80,13 @@ ARM テンプレートを使用するか、他のいずれかのコードとし�
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2016-01-01",
+    "apiVersion": "2019-04-01",
     "name": "mystorageaccount",
     "location": "westus",
     "sku": {
       "name": "Standard_LRS"
     },
-    "kind": "Storage",
+    "kind": "StorageV2",
     "properties": {}
   }
 ]
@@ -96,17 +96,19 @@ Resource Manager は、この定義を次の REST API 操作に変換し、Micro
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
 REQUEST BODY
 {
   "location": "westus",
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage",
+  "kind": "StorageV2",
   "properties": {}
 }
 ```
+
+リソースに対してテンプレートで設定された **apiVersion** が、REST 操作の API バージョンとして使用されていることに注意してください。 テンプレートを繰り返しデプロイし、自信を持って引き続き動作させることができます。 同じ API バージョンを使用することで、新しいバージョンで導入される可能性がある破壊的変更について気にする必要はなくなります。
 
 ## <a name="template-design"></a>テンプレートの設計
 
@@ -114,7 +116,7 @@ REQUEST BODY
 
 ![3 層のテンプレート](./media/overview/3-tier-template.png)
 
-ただし、インフラストラクチャ全体を 1 つのテンプレートで定義する必要はありません。 多くの場合、対象を絞って目的を特化した一連のテンプレートにデプロイの要件を分類することが合理的です。 これらのテンプレートは、さまざまなソリューションで簡単に再利用できます。 特定のソリューションをデプロイするには、必要なすべてのテンプレートをリンクするマスター テンプレートを作成します。 次の画像は、入れ子になった 3 つのテンプレートを含む親テンプレートを利用して 3 層のソリューションをデプロイする方法を示しています。
+ただし、インフラストラクチャ全体を 1 つのテンプレートで定義する必要はありません。 多くの場合、対象を絞って目的を特化した一連のテンプレートにデプロイの要件を分類することが合理的です。 これらのテンプレートは、さまざまなソリューションで簡単に再利用できます。 特定のソリューションをデプロイするには、必要なすべてのテンプレートをリンクするメイン テンプレートを作成します。 次の画像は、入れ子になった 3 つのテンプレートを含む親テンプレートを利用して 3 層のソリューションをデプロイする方法を示しています。
 
 ![入れ子になったテンプレートの層](./media/overview/nested-tiers-template.png)
 
@@ -127,6 +129,7 @@ REQUEST BODY
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての ARM テンプレートを作成してデプロイする](template-tutorial-create-first-template.md)」を参照してください。
+* Microsoft Learn のガイド付きモジュール セットを使用して ARM テンプレートを学習するには、「[ARM テンプレートを使用して Azure にリソースをデプロイして管理する」](/learn/paths/deploy-manage-resource-manager-templates/)を参照してください。
 * テンプレート ファイルのプロパティについては、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
 * テンプレートのエクスポートの詳細については、「[クイックスタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](quickstart-create-templates-use-the-portal.md)」を参照してください。
 * 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](frequently-asked-questions.md)」を参照してください。

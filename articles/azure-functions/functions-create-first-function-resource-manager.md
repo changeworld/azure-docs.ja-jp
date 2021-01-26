@@ -5,12 +5,12 @@ ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1e623405faa89ff41eccdaa57578bc8ac94cd78c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642267"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422826"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>クイック スタート:ARM テンプレートから Azure Functions リソースを作成してデプロイする
 
@@ -38,7 +38,14 @@ ms.locfileid: "88642267"
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[Visual Studio Code でローカル関数プロジェクトを作成する](functions-create-first-function-vs-code.md#create-an-azure-functions-project)
+Visual Studio Code を使用し、選択した言語でローカル関数プロジェクトを作成します。  
+
++ [C#](create-first-function-vs-code-csharp.md)
++ [Java](create-first-function-vs-code-java.md)
++ [JavaScript](create-first-function-vs-code-node.md)
++ [PowerShell](create-first-function-vs-code-powershell.md)
++ [Python](create-first-function-vs-code-python.md)
++ [TypeScript](create-first-function-vs-code-typescript.md)
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -46,7 +53,14 @@ ms.locfileid: "88642267"
 
 # <a name="command-line"></a>[コマンド ライン](#tab/command-line)
 
-[コマンド ラインからローカル関数プロジェクトを作成する](functions-create-first-azure-function-azure-cli.md#create-a-local-function-project)
+コマンド ラインから、選択した言語でローカル関数プロジェクトを作成します。
+
++ [C#](create-first-function-cli-csharp.md)
++ [Java](create-first-function-cli-java.md)
++ [JavaScript](create-first-function-cli-node.md)
++ [PowerShell](create-first-function-cli-powershell.md)
++ [Python](create-first-function-cli-python.md)
++ [TypeScript](create-first-function-cli-typescript.md)
 
 ---
 
@@ -107,13 +121,13 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **[発行先を選択]** の **[Azure Functions の従量課金制プラン]** で **[既存のものを選択]** を選択し、 **[プロファイルの作成]** を選択します。
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="既存の発行先を選択する":::
 
-1. 該当する**サブスクリプション**を選択し、リソース グループを展開して関数アプリを選択し、 **[OK]** を選択します。
+1. 該当する **サブスクリプション** を選択し、リソース グループを展開して関数アプリを選択し、 **[OK]** を選択します。
 
 1. 発行が完了したら、 **[サイトの URL]** をコピーします。
 

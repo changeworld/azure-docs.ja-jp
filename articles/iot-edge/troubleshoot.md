@@ -4,16 +4,16 @@ description: この記事を使用して、コンポーネントの状態およ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902458"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462369"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -46,6 +46,8 @@ iotedge check
 * "*接続検査*" では、IoT Edge ランタイムがホスト デバイス上のポートにアクセス可能であること、およびすべての IoT Edge コンポーネントが IoT Hub にアクセス可能であることが確認されます。 IoT Edge デバイスがプロキシの背後にある場合、この一連の検査でてエラーが返されます。
 * "*製品の準備完了検査*" では、デバイス証明機関 (CA) の証明書の状態やモジュール ログ ファイルの構成など、推奨される運用上のベスト プラクティスが検査されます。
 
+IoT Edge チェック ツールでは、コンテナーを使用して診断が実行されます。 コンテナー イメージ `mcr.microsoft.com/azureiotedge-diagnostics:latest` は、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) から入手できます。 インターネットに直接アクセスせずにデバイスのチェックを実行する必要がある場合は、デバイスにコンテナー イメージへのアクセス権が必要です。
+
 エラーや警告が表示された場合の対処方法など、このツールが実行する各診断チェックの詳細については、[IoT Edge のトラブルシューティング チェック](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)に関するページを参照してください。
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>"support-bundle" コマンドを使用してデバッグ情報を収集する
@@ -66,6 +68,8 @@ Windows の場合:
 iotedge support-bundle --since 6h
 ```
 
+また、デバイスへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)の呼び出しを使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
+
 > [!WARNING]
 > `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
 
@@ -74,6 +78,23 @@ iotedge support-bundle --since 6h
 古いバージョンの IoT Edge を実行している場合は、アップグレードすると問題が解決されることがあります。 `iotedge check` ツールでは、IoT Edge セキュリティ デーモンが最新バージョンであることは確認されますが、IoT Edge ハブとエージェント モジュールのバージョンは確認されません。 デバイス上のランタイム モジュールのバージョンを確認するには、`iotedge logs edgeAgent` と `iotedge logs edgeHub` のコマンドを使用します。 バージョン番号は、モジュールの起動時にログで宣言されます。
 
 デバイスを更新する手順については、「[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)」を参照してください。
+
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>デバイスに IoT Edge がインストールされていることを確認する
+
+[edgeAgent モジュール ツインの監視](./how-to-monitor-module-twins.md)によって、デバイスに IoT Edge がインストールされていることを確認できます。
+
+最新の edgeAgent モジュール ツインを取得するには、[Azure Cloud Shell](https://shell.azure.com/) から次のコマンドを実行します。
+
+   ```azurecli-interactive
+   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   ```
+
+このコマンドは、edgeAgent の[報告されるプロパティ](./module-edgeagent-edgehub.md)すべてを出力します。 次に、デバイスの状態を監視する便利な方法を示します。
+
+* ランタイムの状態
+* ランタイムの開始時刻
+* ランタイムの最後の終了時刻
+* ランタイムの再起動回数
 
 ## <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Security Manager の状態とそのログを確認する
 
@@ -193,6 +214,8 @@ IoT Edge セキュリティ デーモンが実行されている場合は、コ�
 iotedge logs <container name>
 ```
 
+また、デバイス上のモジュールへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)の呼び出しを使用して、そのモジュールのログを Azure Blob Storage にアップロードすることもできます。
+
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge ハブを通過するメッセージを表示する
 
 IoT Edge ハブを通過するメッセージを表示し、ランタイム コンテナーから得た詳細なログから分析情報を収集できます。 これらのコンテナーで詳細ログを有効にするには、yaml 構成ファイルに`RuntimeLogLevel` を設定します。 ファイルを開くには:
@@ -251,7 +274,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>ファイアウォール規則とポート構成規則を確認する
 
-Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミス サーバーから Azure クラウドへの通信が許可されています。「[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)」をご覧ください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub の間の通信チャネルは常にアウトバウンドに構成されます。 この構成は、[サービス支援通信方式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)に基づいていて、悪意のあるエンティティが探る攻撃対象の領域が最小限になります。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュする必要がある特定のシナリオのみです。 cloud-to-device メッセージは、セキュリティで保護された TLS チャネルを使用して保護されます。また、X.509 証明書と TPM デバイス モジュールを使用してさらに保護することができます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
+Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミス サーバーから Azure クラウドへの通信が許可されています。「[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)」をご覧ください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub の間の通信チャネルは常にアウトバウンドに構成されます。 この構成は、[サービス支援通信方式](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices)に基づいていて、悪意のあるエンティティが探る攻撃対象の領域が最小限になります。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュする必要がある特定のシナリオのみです。 cloud-to-device メッセージは、セキュリティで保護された TLS チャネルを使用して保護されます。また、X.509 証明書と TPM デバイス モジュールを使用してさらに保護することができます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
 
 IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュールをセキュリティで保護するための強化された構成を提供しますが、依然として基になるマシンとネットワークの構成に依存しています。 そのため、エッジからクラウドへの安全な通信を実現するための適切なネットワーク規則およびファイアウォール規則が設定されていることを確認することが不可欠です。 Azure IoT Edge ランタイムがホストされている、基になるサーバー用にファイアウォール規則を構成するときには、以下の表をガイドラインとして使用できます。
 

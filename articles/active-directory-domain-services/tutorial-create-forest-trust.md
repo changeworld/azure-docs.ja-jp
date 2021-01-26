@@ -2,20 +2,20 @@
 title: チュートリアル - Azure AD Domain Services でフォレストの信頼を作成する | Microsoft Docs
 description: Azure AD Domain Services 用の Azure portal 内で、オンプレミスの AD DS ドメインへの一方向の送信フォレストを作成する方法について学習します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722723"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618333"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance-advanced]します。
     
     > [!IMPORTANT]
-    > 必ず*リソース* フォレストを使用してマネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。
+    > 必ず *リソース* フォレストを使用してマネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。
     >
     > また、マネージド ドメインに対して *Enterprise* SKU を少なくとも使用する必要があります。 必要に応じて、[マネージド ドメインの SKU を変更][howto-change-sku]します。
 
@@ -88,9 +88,9 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. *onprem.contoso.com* などのドメインを右クリックし、 **[プロパティ]** を選択します。
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
 1. Azure AD DS ドメイン名に対して名前 (*aaddscontoso.com* など) を入力してから、 **[次へ]** を選択します
-1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
+1. **フォレストの信頼** を作成するオプションを選択して、**一方向: 受信** の信頼を作成します。
 1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal でマネージド ドメインに対する信頼を作成します。
-1. **フォレスト全体の認証**を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
+1. **フォレスト全体の認証** を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
 1. 既定のオプションを使用して次のいくつかのウィンドウをステップ実行し、オプションの **[確認しない]** を選択します。
 1. **[完了]** を選択します。
 
@@ -104,12 +104,12 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. マネージド ドメインの左側にあるメニューで、 **[信頼]** を選択してから、 **[+ 追加]** を選択して信頼を追加します。
 
    > [!NOTE]
-   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
+   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が *ユーザー* 場合、信頼を作成することはできません。 現在、マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
 
 1. ご利用の信頼を識別する表示名を入力し、次にオンプレミスの信頼されたフォレストの DNS 名 (*onprem.contoso.com* など) を入力します。
 1. 前のセクションでオンプレミスの AD DS ドメインに対して受信フォレストの信頼を構成したときに使用したのと同じ信頼パスワードを指定します。
 1. オンプレミスの AD DS ドメインに少なくとも 2 つの DNS サーバーを指定します (*10.1.1.4* や *10.1.1.5* など)。
-1. 準備ができたら、送信フォレストの信頼を**保存**します
+1. 準備ができたら、送信フォレストの信頼を **保存** します
 
     ![Azure portal で送信フォレストの信頼を作成する](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 

@@ -1,27 +1,30 @@
 ---
 title: Azure Virtual WAN:ハブでネットワーク仮想アプライアンス (NVA) を作成する
-description: このチュートリアルでは、Virtual WAN ハブでネットワーク仮想アプライアンスをデプロイする方法について説明します。
+description: Virtual WAN ハブでネットワーク仮想アプライアンスをデプロイする方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: c5f120d6d9d80db4eaa9cf6f68e8dd27d45c8aea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094821"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964645"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブでネットワーク仮想アプライアンスを作成する方法 (プレビュー)
 
-このチュートリアルでは、Azure の **Network Virtual Appliance** (NVA) を使用して、Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
+この記事では、Azure の **Network Virtual Appliance** (NVA) を使用して、Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、「[Virtual WAN とは](virtual-wan-about.md)」を参照してください。
 
 この記事のステップは、Virtual WAN ハブで **Barracuda CloudGen WAN** ネットワーク仮想アプライアンスを作成する際に役立ちます。 この演習を完了するには、開始する前に、Barracuda Cloud Premise Device (CPE) と、ハブにデプロイする Barracuda CloudGen WAN アプライアンスのライセンスが必要です。
 
-## <a name="before-you-begin"></a>開始する前に
+Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュメントについては、「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」を参照してください。 アカウントを登録し、必要な Cisco SD-WAN ライセンスを取得するには、Cisco に電子メールを送信してください。電子メール アドレスは次のとおりです。vwan_public_preview@external.cisco.com
+
+
+## <a name="prerequisites"></a>前提条件
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
@@ -95,5 +98,5 @@ ms.locfileid: "87094821"
 
 ## <a name="next-steps"></a>次のステップ
 
-* Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
+* Virtual WAN の詳細については、「[Virtual WAN とは](virtual-wan-about.md)」ページを参照してください。
 * Virtual WAN ハブでの NVA の詳細については、「[Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)](about-nva-hub.md)」を参照してください。

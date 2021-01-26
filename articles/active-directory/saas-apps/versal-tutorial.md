@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: ae966e56b0ea679f20445648926ce2beccb9f080
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3372d8d162046dd35fc82c097991a043521d48ab
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532059"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-versal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Versal の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532059"
 * ユーザーが自分の Azure AD アカウントを使用して Versal に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
-* Versal では、**IDP** によって開始される SSO がサポートされます
+* Versal では、 **IDP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への Versal の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Versal**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Versal** 」と入力します。
 1. 結果のパネルから **Versal** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -89,7 +89,7 @@ Versal に対する Azure AD SSO を構成してテストするには、次の�
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Versal クライアント サポート チーム](https://support.versal.com/hc/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Versal アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Versal アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Versal アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 Versal アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -133,7 +133,7 @@ Versal に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-versal-sso"></a>Versal の SSO の構成
 
-**Versal** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Versal サポート チーム](https://support.versal.com/hc/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Versal** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Versal サポート チーム](https://support.versal.com/hc/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-versal-test-user"></a>Versal テスト ユーザーの作成
 
@@ -142,17 +142,16 @@ Versal に対する Azure AD SSO を構成してテストするには、次の�
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、Web サイトに埋め込まれた Versal コースを使用して Azure AD のシングル サインオン構成をテストします。
-Azure AD シングル サインオンのサポートによる Versal コースの埋め込み方法の手順については、「[組織コースの埋め込み](https://support.versal.com/hc/articles/203271866-Embedding-organizational-courses)」の「**SAML シングル サインオン**」サポート ガイドを参照してください。 
+Azure AD シングル サインオンのサポートによる Versal コースの埋め込み方法の手順については、「 [組織コースの埋め込み](https://support.versal.com/hc/articles/203271866-Embedding-organizational-courses)」の「 **SAML シングル サインオン** 」サポート ガイドを参照してください。 
 
 テスト コースの埋め込みをテストするには、コースを作成し、組織で共有し、公開する必要があります。 詳細については、「[Creating a course](https://support.versal.com/hc/articles/203722528-Create-a-course)(コースの作成)、「[Publishing a course](https://support.versal.com/hc/articles/203753398-Publishing-a-course)」(コースの公開)、および「[Course and learner management](https://support.versal.com/hc/articles/206029467-Course-and-learner-management)」(コースと学習者の管理) を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Versal を試す](https://aad.portal.azure.com/)
-

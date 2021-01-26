@@ -1,15 +1,17 @@
 ---
 title: データの変更 - LUIS
 description: Language Understanding (LUIS) での予測前にデータを変更する方法について説明します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 621a41f743b751a8c24bf6f6ad8497fb5c79775c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934669"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026012"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、[スペルの修正](luis-tutorial-bing-spellcheck.md)や、事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) でのタイム ゾーンの問題の修正が含まれます。
@@ -96,7 +98,7 @@ V3 では、`datetimeReference` によってタイムゾーン オフセット�
 
 #### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 予測の C# コードによってパラメーターの正しい値を決定する
 
-次の C# コードでは、[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) クラスの [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) メソッドを使用して、システム時刻に基づいて正しいオフセット値を決定します。
+次の C# コードでは、[TimeZoneInfo](/dotnet/api/system.timezoneinfo) クラスの [FindSystemTimeZoneById](/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) メソッドを使用して、システム時刻に基づいて正しいオフセット値を決定します。
 
 ```csharp
 // Get CST zone id

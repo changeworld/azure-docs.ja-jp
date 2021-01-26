@@ -1,51 +1,44 @@
 ---
-title: MQTT を使用して IoT プラグ アンド プレイ プレビュー デバイス クライアントを作成する | Microsoft Docs
-description: MQTT プロトコルを直接使用して、Azure IoT Device SDK を使用せずに、IoT プラグ アンド プレイ プレビュー デバイス クライアントを作成します
+title: チュートリアル - MQTT を使用して Azure IoT プラグ アンド プレイ デバイス クライアントを作成する | Microsoft Docs
+description: チュートリアル - MQTT プロトコルを直接使用して、Azure IoT Device SDK を使用せずに、IoT プラグ アンド プレイ デバイス クライアントを作成します
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 56463b03fe633959585e14271050bcdaacb25663
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535208"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421381"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-preview-device-client"></a>MQTT を使用して IoT プラグ アンド プレイ プレビュー デバイス クライアントを開発する
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する
 
 可能であれば、いずれかの Azure IoT Device SDK を使用して、IoT プラグ アンド プレイ デバイス クライアントを構築する必要があります。 ただし、メモリに制約のあるデバイスの使用時などのシナリオでは、MQTT ライブラリを使用して IoT ハブと通信することが必要になる場合があります。
 
 このチュートリアルのサンプルでは、[Eclipse Mosquitto](http://mosquitto.org/) MQTT ライブラリと Visual Studio を使用します。 このチュートリアルの手順では、開発用コンピューターで Windows を使用していることを前提としています。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Windows でこのチュートリアルを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を [インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください
 * [Git](https://git-scm.com/download/)
 * [CMake](https://cmake.org/download/)
-* [Azure IoT エクスプローラー](howto-install-iot-explorer.md)
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-次のコマンドを実行して、デバイスがハブに接続するための Shared Access Signature を取得します。 この文字列を記録しておきます。このチュートリアルの後半で使用します。
-
-```azurecli-interactive
-az iot hub generate-sas-token -d <YourDeviceID> -n <YourIoTHubName>
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-IoT ハブの接続文字列を使用して、**Azure IoT エクスプローラー** ツールを構成します。
+*Azure IoT エクスプローラー* ツールを使用して、新しいデバイスを IoT ハブに追加します。 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」を完了している場合、IoT ハブと Azure IoT エクスプローラー ツールは構成済みです。
 
 1. **Azure IoT エクスプローラー** ツールを起動します。
-1. **[Settings]\(設定\)** ページで、IoT ハブの接続文字列を **[App configurations]\(アプリの構成\)** の設定に貼り付けます。
-1. **[Save and Connect]\(保存して接続\)** を選択します。
-1. 前に追加したデバイスが、メイン ページのデバイスの一覧に表示されます。
+1. **[IoT Hub]** ページで、 **[View devices in this hub]\(このハブのデバイスを表示\)** を選択します。
+1. **[デバイス]** ページで **[+ 新規]** を選択します。
+1. 自動生成された対称キーを使用する *my-mqtt-device* というデバイスを作成します。
+1. **[デバイス ID]** ページで、 **[Connection string with SAS token]\(SAS トークンを含む接続文字列\)** を展開します。
+1. **対称キー** として使用する **主キー** を選択し、有効期限を 60 分に設定して、 **[生成]** を選択します。
+1. 生成された **SAS トークン接続文字列** をコピーします。この値は、このチュートリアルで後ほど使用します。
 
 ## <a name="clone-sample-repo"></a>サンプル リポジトリを複製する
 
@@ -87,13 +80,13 @@ cd vcpkg
 
 Visual Studio でサンプル コードを表示するには、*IoTMQTTSample\src\Windows* フォルダーにある *MQTTWin32.sln* ソリューション ファイルを開きます。
 
-**ソリューション エクスプローラー**で、** TelemetryMQTTWin32** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
+**ソリューション エクスプローラー **で、** TelemetryMQTTWin32** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
-**TelemetryMQTTWin32** プロジェクトで、**MQTT_Mosquitto.cpp** ソース ファイルを開きます。 前に記録したデバイスの詳細を使用して、接続情報の定義を更新します。 トークン文字列プレースホルダーを以下のように置き換えます。
+**TelemetryMQTTWin32** プロジェクトで、**MQTT_Mosquitto.cpp** ソース ファイルを開きます。 前に記録したデバイスの詳細を使用して、接続情報の定義を更新します。 トークン文字列プレースホルダーを次のように置き換えます。
 
-* `IOTHUBNAME` 識別子は、作成した IoT ハブの名前。
-* `DEVICEID` 識別子は、作成したデバイスの名前。
-* `PWD` 識別子は、デバイスに対して生成した Shared Access Signature の値。
+* `IOTHUBNAME` を IoT ハブの名前に置き換えます。
+* `DEVICEID` 識別子を `my-mqtt-device` に置き換えます。
+* `PWD` 識別子を、デバイス用に生成した SAS トークン接続文字列の適切な部分に置き換えます。 接続文字列の `SharedAccessSignature sr=` から最後までの部分を使用します。
 
 Azure IoT エクスプローラーを起動し、テレメトリのリッスンを開始して、コードが正常に動作していることを確認します。
 
@@ -109,12 +102,12 @@ Azure IoT エクスプローラーでは、デバイスが IoT プラグ アン�
 
 IoT プラグ アンド プレイ デバイスでは、一連の簡単な規則に従う必要があります。 デバイスは、接続時にモデル ID を送信すると、IoT プラグ アンド プレイ デバイスになります。
 
-このサンプルでは、モデル ID *dtmi:com:example:Thermostat;1* を MQTT 接続パケットに追加します。 `USERNAME` のクエリ文字列パラメーターとしてモデル ID を渡し、`api-version` を `2020-05-31-preview` に変更します。
+このサンプルでは、モデル ID を MQTT 接続パケットに追加します。 `USERNAME` のクエリ文字列パラメーターとしてモデル ID を渡し、`api-version` を `2020-09-30` に変更します。
 
 ```c
 // computed Host Username and Topic
 //#define USERNAME IOTHUBNAME ".azure-devices.net/" DEVICEID "/?api-version=2018-06-30"
-#define USERNAME IOTHUBNAME ".azure-devices.net/" DEVICEID "/?api-version=2020-05-31-preview&model-id=dtmi:com:example:Thermostat;1"
+#define USERNAME IOTHUBNAME ".azure-devices.net/" DEVICEID "/?api-version=2020-09-30&model-id=dtmi:com:example:Thermostat;1"
 #define PORT 8883
 #define HOST IOTHUBNAME //".azure-devices.net"
 #define TOPIC "devices/" DEVICEID "/messages/events/"
@@ -133,9 +126,6 @@ IoT プラグ アンド プレイ コンポーネント内を移動できるよ�
 これで、デバイス コードを変更して、モデルで定義されているテレメトリ、プロパティ、コマンドを実装できます。 Mosquitto ライブラリを使用したサーモスタット デバイスの実装例については、GitHub の「[Windows の IoT SDK を使用せずに Azure IoTHub で MQTT PnP を使用する](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32)」を参照してください。
 
 > [!NOTE]
-> 既定では、Shared Access Signature は 60 分間のみ有効です。
-
-> [!NOTE]
 >クライアントでは、`IoTHubRootCA_Baltimore.pem` ルート証明書ファイルを使用して、接続先の IoT ハブの ID を検証します。
 
 ### <a name="mqtt-topics"></a>MQTT のトピック
@@ -147,9 +137,7 @@ IoT プラグ アンド プレイ コンポーネント内を移動できるよ�
 * `DEVICE_TELEMETRY_MESSAGE` では、IoT ハブにテレメトリを送信対するためにデバイスによって使用されるトピックが定義されています。
 
 MQTT の詳細については、「[Azure IoT の MQTT サンプル](https://github.com/Azure-Samples/IoTMQTTSample/)」GitHub リポジトリを参照してください。
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
+  
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、IoT プラグ アンド プレイの規則に従うように MQTT デバイス クライアントを変更する方法を説明しました。 IoT プラグ アンド プレイの詳細については、次を参照してください。

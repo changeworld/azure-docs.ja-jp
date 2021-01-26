@@ -3,14 +3,14 @@ title: 正常性統合ロールアウト - Azure Deployment Manager
 description: Azure Deployment Manager で多くのリージョンにわたってサービスをデプロイする方法について説明します すべてのリージョンにロール アウトする前に、デプロイの安定性を確認する安全なデプロイの実施方法について説明します。
 author: mumian
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e13f18ef9c2ec71a351d8a80d72d600bf8e9715
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702552"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607407"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Azure Deployment Manager に正常性統合ロールアウトを導入する (パブリック プレビュー)
 
@@ -20,9 +20,9 @@ ms.locfileid: "84702552"
 
 Microsoft は、正常性統合を可能な限り簡単にするために、サービス正常性監視のトップ企業と連携して、正常性チェックをデプロイと統合するための簡単なコピー/貼り付けソリューションを提供しています。 正常性モニターをまだ使用していない場合、次のソリューションから始めることをお勧めします。
 
-| ![Azure Deployment Manager の正常性モニター プロバイダー、Datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Azure Deployment Manager の正常性モニター プロバイダー、Site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure Deployment Manager の正常性モニター プロバイダー、Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
-|-----|------|------|
-|Datadog は、最新式のクラウド環境向け監視/分析プラットフォームで業界をリードしています。 「[how Datadog integrates with Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/)」 (Datadog と Azure Deployment Manager の統合のしくみ) を参照してください。|Site24x7 は、プライベート/パブリック クラウド サービス監視のオールインワン型ソリューションです。 「[how Site24x7 integrates with Azure Deployment Manager](https://www.site24x7.com/azure/adm.html)」 (Site24x7 と Azure Deployment Manager の統合のしくみ) を参照してください。| Wavefront は、マルチクラウド アプリケーション環境向けの監視/分析プラットフォームです。 「[how Wavefront integrates with Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/)」 (Wavefront と Azure Deployment Manager の統合のしくみ) を参照してください。|
+| ![Azure Deployment Manager の正常性モニター プロバイダー、Azure Monitor](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-azure-monitor.svg)| ![Azure Deployment Manager の正常性モニター プロバイダー、Datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Azure Deployment Manager の正常性モニター プロバイダー、Site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure Deployment Manager の正常性モニター プロバイダー、Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
+|-----|-----|------|------|
+|Azure Monitor、クラウド ネイティブ向けの Microsoft のフル スタック可観測性プラットフォーム、監視と分析のハイブリッド。 |Datadog は、最新式のクラウド環境向け監視/分析プラットフォームで業界をリードしています。 「[how Datadog integrates with Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/)」 (Datadog と Azure Deployment Manager の統合のしくみ) を参照してください。|Site24x7 は、プライベート/パブリック クラウド サービス監視のオールインワン型ソリューションです。 「[how Site24x7 integrates with Azure Deployment Manager](https://www.site24x7.com/azure/adm.html)」 (Site24x7 と Azure Deployment Manager の統合のしくみ) を参照してください。| Wavefront は、マルチクラウド アプリケーション環境向けの監視/分析プラットフォームです。 「[how Wavefront integrates with Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/)」 (Wavefront と Azure Deployment Manager の統合のしくみ) を参照してください。|
 
 ## <a name="how-service-health-is-determined"></a>サービスの正常性が判断されるしくみ
 
@@ -38,10 +38,55 @@ Azure Deployment Manager 正常性チェックの設定の流れ:
 1. Azure Deployment Manager ロールアウトの一環として 1 つまたは複数の healthCheck 手順を作成します。 healthCheck 手順に次の情報を入力します。
 
     1. 正常性モニターの REST API の URI (正常性サービス プロバイダーによって定義されています)。
-    1. 認証情報です。 現在のところ、API キー スタイルの認証のみサポートされています。
+    1. 認証情報です。 現在のところ、API キー スタイルの認証のみサポートされています。 Azure Monitor に関しては、Azure Deployment Manager Rollout に使用されるユーザー割り当てのマネージド ID が Azure Monitor に拡張されるため、"RolloutIdentity" として設定してください。
     1. [HTTP 状態コード](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes)または正常性応答を定義する正規表現。 すべてが一致した場合に応答を正常と見なす正規表現か、一部でも一致すれば正常と見なす正規表現を指定できることにご注目ください。 いずれの方法もサポートされています。
 
-    次の JSON はサンプルです。
+    次の JSON は Azure Monitor と Azure Deployment Manager の統合の例であり、RolloutIdentity を活用し、正常性チェックを確立し、アラートがない場合、ロールアウトを続行します。 サポートされている唯一の Azure Monitor API:[アラート – すべて取得](/rest/api/monitor/alertsmanagement/alerts/getall)。
+
+    ```json
+    {
+      "type": "Microsoft.DeploymentManager/steps",
+      "apiVersion": "2018-09-01-preview",
+      "name": "healthCheckStep",
+      "location": "[parameters('azureResourceLocation')]",
+      "properties": {
+        "stepType": "healthCheck",
+        "attributes": {
+          "waitDuration": "PT1M",
+          "maxElasticDuration": "PT1M",
+          "healthyStateDuration": "PT1M",
+          "type": "REST",
+          "properties": {
+            "healthChecks": [
+              {
+                "name": "appHealth",
+                "request": {
+                  "method": "GET",
+                  "uri": "[parameters('healthCheckUrl')]",
+                  "authentication": {
+                    "type": "RolloutIdentity"
+                  }
+                },
+                "response": {
+                  "successStatusCodes": [
+                    "200"
+                  ],
+                  "regex": {
+                    "matches": [
+                      "\"value\":\\[\\]"
+                    ],
+                    "matchQuantifier": "All"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
+
+    次の JSON は、その他すべての正常性監視プロバイダーの例です。
 
     ```json
     {
@@ -132,23 +177,23 @@ Azure Deployment Manager 正常性チェックの設定の流れ:
 
 ## <a name="phases-of-a-health-check"></a>正常性チェックのフェーズ
 
-この時点では、Azure Deployment Manager では、サービスの正常性を問い合わせる方法とロールアウト中にそれを行うフェーズが認識されています。 しかしながら、Azure Deployment Manager では、このようなチェックのタイミングを詳細に設定することもできます。 healthCheck 手順は連続する 3 つのフェーズで実行されます。そのいずれでも、継続時間を設定できます。 
+この時点では、Azure Deployment Manager では、サービスの正常性を問い合わせる方法とロールアウト中にそれを行うフェーズが認識されています。 しかしながら、Azure Deployment Manager では、このようなチェックのタイミングを詳細に設定することもできます。 healthCheck 手順は連続する 3 つのフェーズで実行されます。そのいずれでも、継続時間を設定できます。
 
-1. 待機
+1. Wait
 
-    1. デプロイ操作の完了後、VM は再起動され、新しいデータに基づいて再構成されることがあります。さらには、初めて開始されることもあります。 正常性監視プロバイダーが集計し、有用な情報に変える正常性信号の送信がサービスで開始されるまで時間がかかることがあります。 この騒々しいプロセスの間は、サービスの正常性を確認しても意味がないかもしれません。更新が安定した状態に達していないためです。 実際、リソースが落ち着くとき、サービスは正常な状態とそうではない状態の間で揺れていることがあります。 
-    1. 待機フェーズ中、サービスの正常性は監視されません。 正常性チェック プロセスを始める前に、デプロイされたリソースにベイクする時間を与えるために利用されます。 
+    1. デプロイ操作の完了後、VM は再起動され、新しいデータに基づいて再構成されることがあります。さらには、初めて開始されることもあります。 正常性監視プロバイダーが集計し、有用な情報に変える正常性信号の送信がサービスで開始されるまで時間がかかることがあります。 この騒々しいプロセスの間は、サービスの正常性を確認しても意味がないかもしれません。更新が安定した状態に達していないためです。 実際、リソースが落ち着くとき、サービスは正常な状態とそうではない状態の間で揺れていることがあります。
+    1. 待機フェーズ中、サービスの正常性は監視されません。 正常性チェック プロセスを始める前に、デプロイされたリソースにベイクする時間を与えるために利用されます。
 1. Elastic
 
     1. あらゆるケースにおいて、リソースが安定するまでベイクにかかる時間を把握することはできないため、Elastic フェーズでは、リソースが潜在的に不安定なときと安定して正常な状態を維持するためにリソースが必要とされるときの間に柔軟な時間が確保されます。
-    1. Elastic フェーズの開始時、Azure Deployment Manager は指定の REST エンドポイントにポーリングを開始し、サービスの正常性を定期的に問い合わせます。 ポーリング間隔は設定可能です。 
-    1. サービスが正常ではないことを示す信号と共に正常性モニターが戻ってきた場合、そのような信号は無視され、Elastic フェーズが続行され、ポーリングが続行されます。 
-    1. サービスが正常であることを示す信号と共に正常性モニターが戻ってくると、直後に Elastic フェーズは終了となり、HealthyState フェーズが開始されます。 
-    1. そのため、Elastic フェーズに指定された継続時間は、正常応答が必須と見なされるまでサービスの正常性のポーリングに利用できる最大時間となります。 
+    1. Elastic フェーズの開始時、Azure Deployment Manager は指定の REST エンドポイントにポーリングを開始し、サービスの正常性を定期的に問い合わせます。 ポーリング間隔は設定可能です。
+    1. サービスが正常ではないことを示す信号と共に正常性モニターが戻ってきた場合、そのような信号は無視され、Elastic フェーズが続行され、ポーリングが続行されます。
+    1. サービスが正常であることを示す信号と共に正常性モニターが戻ってくると、直後に Elastic フェーズは終了となり、HealthyState フェーズが開始されます。
+    1. そのため、Elastic フェーズに指定された継続時間は、正常応答が必須と見なされるまでサービスの正常性のポーリングに利用できる最大時間となります。
 1. HealthyState
 
-    1. HealthyState フェーズの間、Elastic フェーズと同じ間隔でサービスの正常性が継続的にポーリングされます。 
-    1. サービスには、指定されている継続時間の間ずっと、正常性監視プロバイダーからの正常性信号を維持することが求められます。 
+    1. HealthyState フェーズの間、Elastic フェーズと同じ間隔でサービスの正常性が継続的にポーリングされます。
+    1. サービスには、指定されている継続時間の間ずっと、正常性監視プロバイダーからの正常性信号を維持することが求められます。
     1. ある時点で異常応答が検出された場合、Azure Deployment Manager によってロールアウト全体が中止となり、異常サービス信号を含む REST 応答が返されます。
     1. HealthyState の継続時間が終了すると、healthCheck は完了となります。デプロイは次の手順に進みます。
 

@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 7982cb80c253ec3966319528e39390920c653e38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974264"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788402"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance で最小 TLS バージョンを構成する
 最小[トランスポート層セキュリティ (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) バージョン設定を使用すると、お客様は Azure SQL Managed Instance で使用される TLS のバージョンを制御することができます。
@@ -37,9 +37,9 @@ Login failed with invalid TLS version
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
 
-次の PowerShell スクリプトは、**最少 TLS バージョン** プロパティをインスタンス レベルで `Get` および `Set` する方法を示しています。
+次の PowerShell スクリプトは、 **最少 TLS バージョン** プロパティをインスタンス レベルで `Get` および `Set` する方法を示しています。
 
 ```powershell
 #Get the Minimal TLS Version property
@@ -52,11 +52,11 @@ Set-AzSqlInstance -Name sql-instance-name -ResourceGroupName resource-group -Min
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>Azure CLI 経由で最小 TLS バージョンを設定する
 
 > [!IMPORTANT]
-> このセクションのすべてのスクリプトでは [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) が必要です。
+> このセクションのすべてのスクリプトでは [Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>bash シェルでの Azure CLI
 
-次の CLI スクリプトは、bash シェルでの**最少 TLS バージョン**の変更方法を示しています。
+次の CLI スクリプトは、bash シェルでの **最少 TLS バージョン** の変更方法を示しています。
 
 ```azurecli-interactive
 # Get current setting for Minimal TLS Version

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee9d879849a94ac255a0967ad4fbc762417f8cd4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885074"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442652"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web API
 
@@ -24,7 +24,7 @@ Web API を呼び出す Web API を構築するために知っておくべきこ
 
 ## <a name="prerequisites"></a>前提条件
 
-保護された Web API が Web API を呼び出すこのシナリオは、「Web API の保護」シナリオの上に構築されます。 この基本的なシナリオの詳細については、「[シナリオ: 保護された Web API](scenario-protected-web-api-overview.md)」を参照してください。
+保護された Web API が他の Web API を呼び出すこのシナリオは、「[シナリオ: 保護された Web API](scenario-protected-web-api-overview.md)」の上に構築されます。
 
 ## <a name="overview"></a>概要
 
@@ -40,5 +40,4 @@ API のアクセス許可に関連するアプリの登録部分は、従来と�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリの登録](scenario-web-api-call-api-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-web-api-call-api-app-registration.md)」に進みます。

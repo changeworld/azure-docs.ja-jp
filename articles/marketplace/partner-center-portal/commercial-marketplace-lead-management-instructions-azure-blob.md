@@ -4,15 +4,15 @@ description: Azure BLOB を使用して Microsoft AppSource および Azure Mark
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/01/2020
-ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121913"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491105"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure BLOB ストレージを使用し、コマーシャル マーケットプレースの潜在顧客を管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "86121913"
 3. Azure portal 上で、次の手順を使用してストレージ アカウントを作成します。  
     1. 左側のメニュー バーにある **[+ リソースの作成]** を選択します。  **[新規]** ウィンドウ (ブレード) が、右側に表示されます。
     2. **[新規]** ウィンドウで **[ストレージ]** を選択します。  **[おすすめ]** 一覧が右側に表示されます。
-    3. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。  「[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)」の記事にある手順に従ってください。
+    3. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。  「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md?tabs=azure-portal)」の記事にある手順に従ってください。
 
     ![Azure ストレージ アカウントを作成する手順](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "86121913"
 
     ![Azure ストレージ アカウントにアクセスする](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
 
-5. ストレージ アカウントのウィンドウで、 **[アクセス キー ]** を選択し、キーの *[接続文字列]* 値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*ストレージ アカウント接続文字列*" 値です。
+5. ストレージ アカウントのウィンドウで、 **[アクセス キー ]** を選択し、キーの *[接続文字列]* 値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある " *ストレージ アカウント接続文字列* " 値です。
 
      接続文字列の例を次に示します。
 
@@ -51,17 +51,17 @@ ms.locfileid: "86121913"
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Azure ストレージ キー](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![[接続文字列] テキスト ボックスが強調表示された [アクセス キー] ページを示すスクリーンショット。](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
 6. ストレージ アカウントのページで **[BLOB]** を選択します。
 
-   ![Azure ストレージ キー](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![BLOB が選択された Azure Storage アカウント ページのスクリーンショット](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. [BLOB] ページが表示されたら、 **[+ コンテナー]** ボタンを選択します。
 
-8. 新しいコンテナーの**名前**を入力します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。 コンテナーと BLOB の名前の詳細については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
+8. 新しいコンテナーの **名前** を入力します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。 コンテナーと BLOB の名前の詳細については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-    この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*コンテナー名*" 値です。
+    この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある " *コンテナー名* " 値です。
 
 9. コンテナーへのパブリック アクセスのレベルを **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** として設定します。
 
@@ -91,5 +91,3 @@ ms.locfileid: "86121913"
 
     > [!NOTE]
     > オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。
-
-

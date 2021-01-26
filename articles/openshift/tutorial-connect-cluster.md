@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 132a9b7ad3eef17f4ca27fb76a0c05f94c82fd37
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587856"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428270"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターに接続する
 
@@ -23,9 +23,9 @@ ms.locfileid: "88587856"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、Azure Red Hat OpenShift クラスターを作成しました。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - Azure Red Hat Openshift 4 クラスターの作成](tutorial-create-cluster.md)に関するページから開始してください。
+前のチュートリアルでは、Azure Red Hat OpenShift クラスターを作成しました。 これらの手順を完了しておらず、その順番に従って進めたい場合は、[チュートリアル 1: Azure Red Hat OpenShift 4 クラスターを作成する](tutorial-create-cluster.md)方法に関する記事から開始してください。
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-次の出力例は、パスワードが `kubeadminPassword` に含まれることを示しています。
+次の出力例は、`kubeadminPassword` のパスワードを示しています。
 
 ```json
 {
@@ -46,7 +46,7 @@ az aro list-credentials \
 }
 ```
 
-次のコマンドを実行すると、クラスター コンソールの URL を調べることができます。これは、`https://console-openshift-console.apps.<random>.<region>.aroapp.io/` のようになります
+次のコマンドを実行すると、クラスター コンソールの URL を調べることができます。これは、`https://console-openshift-console.apps.<random>.<region>.aroapp.io/` のようになります。
 
 ```azurecli-interactive
  az aro show \
@@ -63,7 +63,7 @@ az aro list-credentials \
 
 OpenShift Web コンソールにログインしたら、右上の **[?]** をクリックし、 **[Command Line Tools]\(コマンド ライン ツール\)** をクリックします。 お使いのマシンに適したリリースをダウンロードします。
 
-![Azure Red Hat OpenShift ログイン画面](media/aro4-download-cli.png)
+![[?] を選択して表示される一覧の [Command Line Tools]\(コマンド ライン ツール\) オプションが強調表示されているスクリーンショット アイコンを選択し、ナビゲーション ウィンドウを折りたたみます。](media/aro4-download-cli.png)
 
 また、<https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> からお使いのマシンに適した CLI の最新リリースをダウンロードすることもできます。
 

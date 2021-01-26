@@ -1,6 +1,6 @@
 ---
-title: ワークロードの重要度の管理と監視
-description: Azure Synapse Analytics で要求レベルの重要度を管理および監視する方法について説明します。
+title: 専用 SQL プールでワークロードの重要度の管理と監視を行う
+description: Azure Synapse Analytics の専用 SQL プールで要求レベルの重要度を管理および監視する方法について説明します。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211971"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459207"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードの重要度の管理と監視を行う
+# <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでワークロードの重要度の管理と監視を行う
 
-DMV とカタログ ビューを使用して、Azure Synapse で Synapse SQL の要求レベルの重要度を管理および監視します。
+DMV とカタログ ビューを使用して、Azure Synapse で専用 SQL プールの要求レベルの重要度を管理および監視します。
 
 ## <a name="monitor-importance"></a>重要度を監視する
 

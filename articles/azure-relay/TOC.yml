@@ -65,9 +65,9 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: セキュリティで保護
       items:
-        - name: IP ファイアウォールの構成 (プレビュー)
+        - name: IP ファイアウォールの構成
           href: ip-firewall-virtual-networks.md
-        - name: プライベート エンドポイントの構成 (プレビュー)
+        - name: プライベート エンドポイントの構成
           href: private-link-service.md
     - name: 管理および監視
       items:

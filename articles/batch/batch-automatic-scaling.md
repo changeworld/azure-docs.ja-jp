@@ -2,20 +2,20 @@
 title: Azure Batch プール内のコンピューティング ノードの自動スケール
 description: クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932323"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737294"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
 Azure Batch では定義したパラメーターに基づいてプールが自動的にスケールされるため、時間とコストを節約できます。 自動スケーリングにより、Batch ではタスクの需要が増えるとノードが動的にプールに追加され、タスクの需要が減ると計算ノードが削除されます。
 
-計算ノードのプールで自動スケーリングを有効にするには、定義した*自動スケーリングの数式*をプールに関連付けます。 Batch サービスでは、自動スケーリングの数式を使用して、ワークロードを実行するために必要なノードの数が決定されます。 これらのノードは、専用ノードまたは[優先順位の低いノード](batch-low-pri-vms.md)のいずれかです。 その後、Batch では、サービス メトリック データが定期的に確認され、それを使用して、式に基づいて定義した間隔でプール内のノード数が調整されます。
+計算ノードのプールで自動スケーリングを有効にするには、定義した *自動スケーリングの数式* をプールに関連付けます。 Batch サービスでは、自動スケーリングの数式を使用して、ワークロードを実行するために必要なノードの数が決定されます。 これらのノードは、専用ノードまたは[優先順位の低いノード](batch-low-pri-vms.md)のいずれかです。 その後、Batch では、サービス メトリック データが定期的に確認され、それを使用して、式に基づいて定義した間隔でプール内のノード数が調整されます。
 
 自動スケーリングは、プールの作成時に有効にするか、既存のプールに適用できます。 Batch では、数式をプールに割り当てる前に数式の評価を行うことができるほか、自動スケールの実行状態を監視することができます。 自動スケーリングによってプールを構成すると、後で数式に変更を加えることができます。
 
@@ -79,7 +79,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="variables"></a>変数
 
-自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。
+自動スケールの数式には、**サービス定義** の変数と **ユーザー定義** の変数の両方を使用できます。
 
 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。
 
@@ -133,7 +133,10 @@ $NodeDeallocationOption = taskcompletion;
 | $PreemptedNodeCount | 割り込み状態にあるプール内のノードの数。 |
 
 > [!TIP]
-> これらの読み取り専用のサービス定義変数は、それぞれに関連付けられたデータにアクセスするさまざまなメソッドを指定する*オブジェクト*です。 詳しくは、後述の「[サンプル データの取得](#obtain-sample-data)」をご覧ください。
+> これらの読み取り専用のサービス定義変数は、それぞれに関連付けられたデータにアクセスするさまざまなメソッドを指定する *オブジェクト* です。 詳しくは、後述の「[サンプル データの取得](#obtain-sample-data)」をご覧ください。
+
+> [!NOTE]
+> 特定の時点で実行されているタスクの数に基づいてスケーリングする場合は `$RunningTasks` を使用し、実行するためにキューに配置されているタスクの数に基づいてスケーリングする場合は `$ActiveTasks` を使用します。
 
 ## <a name="types"></a>型
 
@@ -190,7 +193,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="functions"></a>関数
 
-自動スケーリングの数式を定義するときに、これらの定義済みの**関数**を使用できます。
+自動スケーリングの数式を定義するときに、これらの定義済みの **関数** を使用できます。
 
 | 機能 | の戻り値の型 : | 説明 |
 | --- | --- | --- |
@@ -283,7 +286,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | メソッド | 説明 |
 | --- | --- |
-| GetSample() |`GetSample()` メソッドは、データ サンプルのベクターを返します。<br/><br/>サンプルは、30 秒相当のメトリック データです。 つまり、30 秒ごとにサンプルが取得されます。 ただし、この後も説明しますが、サンプルが収集されてから、それが数式に使用できるようになるまでには時間差があります。 そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。<ul><li>`doubleVec GetSample(double count)`:最新の収集済みサンプルから取得するサンプル数を指定します。 `GetSample(1)` は、使用できる最新のサンプルを返します。 ただし、`$CPUPercent` などのメトリックの場合、サンプルが収集された*時間*がわからないので、`GetSample(1)` を使用できません。 最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。 このような場合は、次のように期間を使用することが適切です。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`:サンプル データを収集する期間を指定します。 指定した期間内に必要となるサンプルの割合をオプションで指定できます。 たとえば、`$CPUPercent.GetSample(TimeInterval_Minute * 10)` は、過去 10 分間のサンプルがすべて `CPUPercent` 履歴に存在する場合、20 個のサンプルを返します。 過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。 この場合、`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` は、サンプルの 90% しか使用できないため、失敗しますが、`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` は成功します。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`:開始時刻と終了時刻の両方を使用して、データを収集する期間を指定します。 前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。 `GetSample` メソッドを使用する際にはこの遅延を考慮します。 後述の `GetSamplePercent` をご覧ください。 |
+| GetSample() |`GetSample()` メソッドは、データ サンプルのベクターを返します。<br/><br/>サンプルは、30 秒相当のメトリック データです。 つまり、30 秒ごとにサンプルが取得されます。 ただし、この後も説明しますが、サンプルが収集されてから、それが数式に使用できるようになるまでには時間差があります。 そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。<ul><li>`doubleVec GetSample(double count)`:最新の収集済みサンプルから取得するサンプル数を指定します。 `GetSample(1)` は、使用できる最新のサンプルを返します。 ただし、`$CPUPercent` などのメトリックの場合、サンプルが収集された *時間* がわからないので、`GetSample(1)` を使用できません。 最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。 このような場合は、次のように期間を使用することが適切です。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`:サンプル データを収集する期間を指定します。 指定した期間内に必要となるサンプルの割合をオプションで指定できます。 たとえば、`$CPUPercent.GetSample(TimeInterval_Minute * 10)` は、過去 10 分間のサンプルがすべて `CPUPercent` 履歴に存在する場合、20 個のサンプルを返します。 過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。 この場合、`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` は、サンプルの 90% しか使用できないため、失敗しますが、`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` は成功します。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`:開始時刻と終了時刻の両方を使用して、データを収集する期間を指定します。 前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。 `GetSample` メソッドを使用する際にはこの遅延を考慮します。 後述の `GetSamplePercent` をご覧ください。 |
 | GetSamplePeriod() |履歴のサンプル データ セットで受け取ったサンプルの期間を返します。 |
 | Count() |メトリック履歴のサンプルの合計数を返します。 |
 | HistoryBeginTime() |使用可能な最も古いメトリックのデータ サンプルのタイムスタンプを返します。 |
@@ -326,7 +329,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 サンプルの可用性には遅延があるため、時間範囲を指定する際には、常に、開始時間を 1 分より長く遡って指定する必要があります。 サンプルがシステムを介して伝達されるまで約 1 分かかるため、`(0 * TimeInterval_Second, 60 * TimeInterval_Second)` の範囲内のサンプルは使用できない場合があります。 ここでも、 `GetSample()` の割合パラメーターを使用することで、サンプルの割合に関する特定の要件を適用できます。
 
 > [!IMPORTANT]
-> **自動スケールの数式では `GetSample(1)` に*のみ*依存することは避ける**ことが強く推奨されます。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
+> **自動スケールの数式では `GetSample(1)` に *のみ* 依存することは避ける** ことが強く推奨されます。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
 
 ## <a name="write-an-autoscale-formula"></a>自動スケールの数式の記述
 
@@ -381,7 +384,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> これを選択する場合は、数式文字列にコメントと改行の両方を含めることができます。
+> これを選択する場合は、数式文字列にコメントと改行の両方を含めることができます。 また、セミコロンがないと、評価エラーが発生する可能性があることにも注意してください。
 
 ## <a name="automatic-scaling-interval"></a>自動スケールの間隔
 
@@ -648,6 +651,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>プールの自動スケーリング イベントを使用して自動スケールの実行履歴を取得する
+[PoolAutoScaleEvent](batch-pool-autoscale-event.md) に対してクエリを実行して、自動スケーリングの履歴を確認することもできます。 このイベントは、Batch サービスによって生成され、自動スケールの数式の評価と実行が発生するたびに記録します。これは、潜在的な問題のトラブルシューティングに役立ちます。
+
+PoolAutoScaleEvent のサンプル イベント:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>自動スケールの数式の例
 
 さまざまな方法でプールのコンピューティング リソースの量を調整する、いくつかの数式を見ていきます。
@@ -691,7 +712,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>例 3: 並列タスクの説明
 
-この C# の例では、タスクの数に基づいてプール サイズを調整します。 また、この数式では、プールに設定されている [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) 値が考慮されます。 このアプローチは、プールで[並列タスクの実行](batch-parallel-node-tasks.md)が有効になっている場合に便利です。
+この C# の例では、タスクの数に基づいてプール サイズを調整します。 この数式では、プールに設定されている [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 値が考慮されます。 このアプローチは、プールで[並列タスクの実行](batch-parallel-node-tasks.md)が有効になっている場合に便利です。
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +720,7 @@ $NodeDeallocationOption = taskcompletion;
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

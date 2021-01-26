@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934448"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024774"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows の音声アシスタントの実装
 
@@ -30,15 +30,15 @@ ms.locfileid: "88934448"
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>マイクが使用可能かつアクセス可能であることを確認し、その状態を監視する
 
-MVA が音声によるアクティブ化を検出するには、マイクが存在し、アクセス可能である必要があります。 [AppCapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、[DeviceWatcher](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)、[MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) の各クラスを使用して、それぞれマイクのプライバシー アクセス、デバイスの存在、デバイスの状態 (音量、ミュートなど) を確認します。
+MVA が音声によるアクティブ化を検出するには、マイクが存在し、アクセス可能である必要があります。 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、[DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)、[MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) の各クラスを使用して、それぞれマイクのプライバシー アクセス、デバイスの存在、デバイスの状態 (音量、ミュートなど) を確認します。
 
 ### <a name="register-the-application-with-the-background-service"></a>バックグラウンド サービスにアプリケーションを登録する
 
-MVA がバックグラウンドでアプリケーションを起動するには、そのアプリケーションをバックグラウンド サービスに登録する必要があります。 バックグラウンド サービスの登録全般については、[こちら](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)のガイドをご覧ください。
+MVA がバックグラウンドでアプリケーションを起動するには、そのアプリケーションをバックグラウンド サービスに登録する必要があります。 バックグラウンド サービスの登録全般については、[こちら](/windows/uwp/launch-resume/register-a-background-task)のガイドをご覧ください。
 
 ### <a name="unlock-the-limited-access-feature"></a>制限付きアクセス機能のロックを解除する
 
-Microsoft によって提供される制限付きアクセス機能キーを使用して、音声アシスタント機能のロックを解除します。 これを行うには、Windows SDK の [LimitedAccessFeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) クラスを使用します。
+Microsoft によって提供される制限付きアクセス機能キーを使用して、音声アシスタント機能のロックを解除します。 これを行うには、Windows SDK の [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) クラスを使用します。
 
 ### <a name="register-the-keyword-for-the-application"></a>アプリケーションにキーワードを登録する
 
@@ -86,7 +86,7 @@ Windows で次の 2 つのいずれかの方法でキーワードが検出され
 
 ### <a name="retrieve-activation-audio"></a>アクティブ化オーディオを取得する
 
-[AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) を作成し、`ConversationalAgentSession` の `CreateAudioDeviceInputNodeAsync` に渡します。 これにより、"*キーワードが検出された約 3 秒前に開始する*" オーディオがグラフのオーディオ バッファーに読み込まれます。 この先頭のオーディオは、幅広いキーワード長とスピーカー速度に対応するために追加されています。 次に、オーディオ グラフから [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) イベントを処理して、オーディオ データを取得します。
+[AudioGraph](/uwp/api/windows.media.audio.audiograph) を作成し、`ConversationalAgentSession` の `CreateAudioDeviceInputNodeAsync` に渡します。 これにより、"*キーワードが検出された約 3 秒前に開始する*" オーディオがグラフのオーディオ バッファーに読み込まれます。 この先頭のオーディオは、幅広いキーワード長とスピーカー速度に対応するために追加されています。 次に、オーディオ グラフから [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) イベントを処理して、オーディオ データを取得します。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -118,7 +118,7 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 上記のロックされた状態でのエクスペリエンスの設計に関するガイダンスについては、[ベスト プラクティス ガイド](windows-voice-assistants-best-practices.md)を参照してください。
 
-ロックされた状態のビューが表示されているアプリは、"キオスク モード" にあると見なされます。 キオスク モードを使用するアプリの実装の詳細については、[キオスク モードに関するドキュメント](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)を参照してください。
+ロックされた状態のビューが表示されているアプリは、"キオスク モード" にあると見なされます。 キオスク モードを使用するアプリの実装の詳細については、[キオスク モードに関するドキュメント](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)を参照してください。
 
 ### <a name="transitioning-above-lock"></a>ロックされた状態の切り替え
 
@@ -149,7 +149,7 @@ conversationalAgentSession.SystemStateChanged += (s, e) =>
 ロックされた状態またはロックが解除された状態で、プログラムによってアプリケーションを正しく閉じるには、`WindowService.CloseWindow()` API を使用します。 これにより、OnSuspend を含むすべての UWP ライフサイクル メソッドがトリガーされ、終了前に `ConversationalAgentSession` インスタンスを破棄することをアプリケーションに許可します。
 
 > [!NOTE]
-> アプリケーションは、[ロックが解除された状態のインスタンス](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)を閉じることなく閉じることができます。 この場合、ロックされた状態でのビューを "クリーンアップ" する必要があります。こうすることで、画面のロックが解除されると、ロックされた状態でのビューの操作を試行するイベント ハンドラーとタスクがなくなります。
+> アプリケーションは、[ロックが解除された状態のインスタンス](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)を閉じることなく閉じることができます。 この場合、ロックされた状態でのビューを "クリーンアップ" する必要があります。こうすることで、画面のロックが解除されると、ロックされた状態でのビューの操作を試行するイベント ハンドラーとタスクがなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 

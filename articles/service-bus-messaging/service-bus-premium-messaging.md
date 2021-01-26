@@ -3,12 +3,12 @@ title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386352"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90966779"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -72,7 +72,7 @@ Service Bus Premium 名前空間に割り当てられるメッセージング �
     - CPU 使用率が ***20% を下回る***場合は、名前空間に割り当てられたメッセージング ユニット数を***スケールダウン***できる可能性があります。
     - CPU 使用率が ***70% を超える***場合、名前空間に割り当てられるメッセージング ユニットを***スケールアップ***すると、アプリケーションにメリットがあります。
 
-Service Bus 名前空間に割り当てられたリソースのスケール プロセスは、[Azure Automation Runbook](../automation/automation-quickstart-create-runbook.md) を使用して自動化できます。
+Service Bus 名前空間を構成して、自動スケーリングする (メッセージング ユニットを増減する) 方法については、「[メッセージング ユニットを自動的に更新する](automate-update-messaging-units.md)」を参照してください。
 
 > [!NOTE]
 > 名前空間に割り当てられたリソースの**スケール**は、プリエンティブまたはリアクティブにすることができます。
@@ -96,10 +96,9 @@ Premium メッセージングは簡単に使い始めることができ、その
 
 Service Bus メッセージングの詳細については、次のリンクをご覧ください。
 
-* [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Azure Service Bus Premium メッセージングの概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
+- [メッセージング ユニットを自動的に更新する](automate-update-messaging-units.md)
+- [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+- [Azure Service Bus Premium メッセージングの概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
 <!--Image references-->
 

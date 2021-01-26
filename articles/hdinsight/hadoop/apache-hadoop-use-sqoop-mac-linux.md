@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 0761ea059350369a363ee1022b21c9da2702b396
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6cd522192c498d628490430c46c18c8ae08ad2e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076115"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547012"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と Azure SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -150,7 +150,7 @@ SQL から Azure のストレージへ。
 
     Azure Virtual Network での HDInsight の使用に関する詳細情報については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-plan-virtual-network-deployment.md)」をご覧ください。 Azure Virtual Network の詳細については、「[Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-* SQL 認証を許可するよう、SQL Server を構成する必要があります。 詳細については、[認証モードの選択](https://msdn.microsoft.com/ms144284.aspx)に関するドキュメントを参照してください。
+* SQL 認証を許可するよう、SQL Server を構成する必要があります。 詳細については、[認証モードの選択](/sql/relational-databases/security/choose-an-authentication-mode)に関するドキュメントを参照してください。
 
 * リモート接続を許可するよう、SQL Server を構成する必要がある場合があります。 詳細については、[SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)のドキュメントを参照してください。
 

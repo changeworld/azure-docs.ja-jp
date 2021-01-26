@@ -7,13 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001979"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571642"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -32,7 +32,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 この記事の以下の手順を実施します。
 
-* Azure CLI を使用して 2 つの Contoso 部門 IoT ハブ (**Contoso トースター部門**と**Contoso ヒート ポンプ部門**) を作成する
+* Azure CLI を使用して 2 つの Contoso 部門 IoT ハブ (**Contoso トースター部門** と **Contoso ヒート ポンプ部門**) を作成する
 * カスタム割り当てポリシー用に Azure 関数を使用して新しいグループ登録を作成する
 * 2 つのデバイス シミュレーションのためのデバイス キーを作成する
 * Azure IoT C SDK の開発環境をセットアップする
@@ -44,15 +44,15 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+- [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
-* [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
+- [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>プロビジョニング サービスと 2 つの部門 IoT ハブを作成する
 
-このセクションでは、Azure Cloud Shell を使用して、プロビジョニング サービスと、**Contoso トースター部門**と **Contoso ヒート ポンプ部門**を表す 2 つの IoT ハブを作成します。
+このセクションでは、Azure Cloud Shell を使用して、プロビジョニング サービスと、**Contoso トースター部門** と **Contoso ヒート ポンプ部門** を表す 2 つの IoT ハブを作成します。
 
 > [!TIP]
 > この記事で使用するコマンドにより、米国西部の場所にプロビジョニング サービスとその他のリソースが作成されます。 ご自分の場所から最も近い、Device Provisioning Service がサポートされているリージョンにリソースを作成することをお勧めします。 使用可能な場所の一覧を表示するには、`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` コマンドを実行するか、[Azure の状態](https://azure.microsoft.com/status/)ページに移動して "Device Provisioning Service" を検索します。 コマンドでは、場所は 1 単語または複数単語の形式で指定できます。たとえば、westus、West US、WEST US などです。この値で、大文字と小文字は区別されません。 複数単語形式で場所を指定する場合は、値を引用符で囲みます。たとえば、`-- location "West US"` のようにします。
@@ -104,7 +104,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、 **[作成]** を選択します。
 
-3. **関数アプリ**の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、 **[確認と作成]** を選択します。
+3. **関数アプリ** の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、 **[確認と作成]** を選択します。
 
     **リソース グループ**: **[contoso-us-resource-group]** を選択して、この記事で作成されるすべてのリソースをまとめて保持します。
 
@@ -114,7 +114,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     **ランタイム スタック**:ドロップダウンから **[.NET Core]** を選択します。
 
-    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では**米国西部**を使用します。
+    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では **米国西部** を使用します。
 
     > [!NOTE]
     > 既定では、Application Insights が有効になっています。 この記事では Application Insights は必要ありませんが、カスタム割り当てで発生する問題を理解し、調査するのに役立つ場合があります。 必要に応じて、 **[監視]** タブを選択し、 **[Application Insights を有効にする]** を **[いいえ]** に選択することで、Application Insights を無効にすることができます。
@@ -127,13 +127,13 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     ![関数アプリに関数を追加する](./media/how-to-use-custom-allocation-policies/create-function.png)
 
-6. **.NET 用の Azure Functions - 作業の開始**ページの**デプロイ環境の選択**ステップで **[ポータル内]** タイルを選択してから、 **[続行]** を選択します。
+6. **.NET 用の Azure Functions - 作業の開始** ページの **デプロイ環境の選択** ステップで **[ポータル内]** タイルを選択してから、 **[続行]** を選択します。
 
     ![ポータル開発環境を選択する](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-7. 次のページの**関数の作成**ステップで、 **[Webhook + API]** タイルを選択してから、 **[作成]** を選択します。 **HttpTrigger1** という名前の関数が作成され、ポータルに **run.csx** コード ファイルの内容が表示されます。
+7. 次のページの **関数の作成** ステップで、 **[Webhook + API]** タイルを選択してから、 **[作成]** を選択します。 **HttpTrigger1** という名前の関数が作成され、ポータルに **run.csx** コード ファイルの内容が表示されます。
 
-8. 必須の Nuget パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの Nuget パッケージで定義されているクラスが使用されます。 Azure Functions では、*function.host* ファイルを使用して Nuget パッケージが参照されます。 このステップで、*function.host* ファイルを保存してアップロードします。
+8. 必須の NuGet パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの NuGet パッケージで定義されているクラスが使用されます。 Azure Functions では、*function.host* ファイルを使用して NuGet パッケージが参照されます。 このステップで、*function.host* ファイルを保存してアップロードします。
 
     1. 次の行を任意のエディターにコピーし、ファイルを *function.host* としてご使用のコンピューターに保存します。
 
@@ -298,7 +298,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="create-the-enrollment"></a>登録を作成する
 
-このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
+このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-x509-attestation.md)を使用することを検討してください。
 
 1. 引き続き [Azure portal](https://portal.azure.com) でプロビジョニング サービスを開きます。
 
@@ -342,7 +342,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 このセクションでは、一意のデバイス キーを 2 つ作成します。 1 つのキーは、シミュレートされたトースター デバイスに使用します。 もう 1 つのキーは、シミュレートされたヒート ポンプ デバイスに使用します。
 
-デバイス キーを生成するには、前にメモした**主キー**を使用して、デバイスごとにデバイス登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。 登録グループを使用して派生デバイス キーを作成する方法の詳細については、「[Symmetric key attestation (対称キーの構成証明)](concepts-symmetric-key-attestation.md)」のグループ登録に関するセクションを参照してください。
+デバイス キーを生成するには、前にメモした **主キー** を使用して、デバイスごとにデバイス登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。 登録グループを使用して派生デバイス キーを作成する方法の詳細については、「[Symmetric key attestation (対称キーの構成証明)](concepts-symmetric-key-attestation.md)」のグループ登録に関するセクションを参照してください。
 
 この記事の例では、次の 2 つのデバイス登録 ID を使用して、両方のデバイスのデバイス キーを計算します。 両方の登録 ID に、カスタム割り当てポリシーのサンプル コードを操作するために有効なサフィックスが付いています。
 
@@ -353,7 +353,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
 
-1. **KEY** の値を、前に書き留めた**主キー**で置き換えます。
+1. **KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -377,7 +377,7 @@ Linux ワークステーションを使用している場合は、次の例に�
 
 Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
 
-1. **KEY** の値を、前に書き留めた**主キー**で置き換えます。
+1. **KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -410,7 +410,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -437,7 +437,7 @@ Windows ベースのワークステーションを使用している場合は、
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    `cmake` で C++ コンパイラが見つからない場合は、コマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でコマンドを実行してください。
+    `cmake` で C++ コンパイラが見つからない場合は、コマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs)でコマンドを実行してください。
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
@@ -473,7 +473,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、**prov\_dev\_client\_sample.c** を開きます。
 
-4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ**の値で置き換えます。 
+4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -591,4 +591,4 @@ Windows ベースのワークステーションを使用している場合は、
 ## <a name="next-steps"></a>次のステップ
 
 * 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-* プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
+* プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください

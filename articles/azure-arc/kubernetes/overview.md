@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 7e48ebf98f12e79cb154fb50d8e6dbdfaea1cd95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723726"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371309"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -37,6 +37,7 @@ Azure Arc 対応 Kubernetes は、Cloud Native Computing Foundation (CNCF) で�
 * Canonical Charmed Kubernetes 1.18
 * AKS Engine
 * Azure Stack Hub 上の AKS エンジン
+* Azure Stack HCI 上の AKS
 * クラスター API プロバイダー Azure
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ 
@@ -51,12 +52,30 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 
 * Kubernetes 用の Azure Policy を使用してポリシーを適用する。 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>サポートされているリージョン 
 
 Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 
 
 * 米国東部 
 * 西ヨーロッパ
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+* Azure Arc 対応 Kubernetes と Azure Kubernetes Service (AKS) の違いは何ですか?
+
+    Azure Kubernetes Service (AKS) は、Azure によるマネージド Kubernetes オファリングです。 AKS を使用すると、マネージド Kubernetes クラスターを Azure に簡単にデプロイできます。 AKS では、責任の多くを Azure にオフロードすることで、Kubernetes の管理の複雑さと運用上のオーバーヘッドを軽減します。 Kubernetes マスターは、Azure によって管理されます。 ユーザーは、エージェント ノードの管理と保守のみを行います。
+
+    Azure Arc 対応 Kubernetes を使用すると、Kubernetes クラスターを Azure に接続して、Azure Monitor や Azure Policy などの Azure の管理機能を拡張できます。 基になる Kubernetes クラスター自体のメンテナンスはユーザーが行います。
+
+* Azure で実行されている Azure Kubernetes Service クラスターを Azure Arc に接続する必要はありますか?
+
+    いいえ。 Azure Monitor、Azure Policy (Gatekeeper) など、Azure Arc 対応 Kubernetes のすべての機能は、Azure に既にリソース表現がある AKS でネイティブに使用できます。
+    
+* Azure Stack HCI 上の AKS クラスターは Azure Arc に接続した方がよいですか? Azure Stack Hub または Azure Stack Edge で実行されている Kubernetes クラスターはどうですか?
+
+    はい。これらのクラスターを Azure Arc に接続すると、利点が得られます。 Azure Resource Manager で、これらの Kubernetes クラスターのリソース表現が提供されます。 このリソース表現を使用して、クラスター構成、Azure Monitor、Azure Policy (Gatekeeper) などの機能を、これらの Kubernetes クラスターに拡張できます。
 
 ## <a name="next-steps"></a>次のステップ
 

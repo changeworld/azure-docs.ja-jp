@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/17/2020
+ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918045"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008567"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>チュートリアル:Power Apps から Cognitive Search インデックスに対してクエリを実行する
 
@@ -31,9 +31,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Power Apps アカウント](http://make.powerapps.com)
+* [Power Apps アカウント](https://make.powerapps.com)
 
-* [Hotels-sample インデックス](search-get-started-portal.md)
+* 検索サービスでホストされている [Hotels-sample インデックス](search-get-started-portal.md)
 
 * [クエリ API キー](search-security-api-keys.md#find-existing-keys)
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Power Apps のコネクタは、データ ソース接続です。 この手順では、クラウド内の検索インデックスに接続するカスタム コネクタを作成します。
 
-1. Power Apps に[サインイン](http://make.powerapps.com)します。
+1. Power Apps に[サインイン](https://make.powerapps.com)します。
 
 1. 左側で **[データ]**  >  **[カスタム コネクタ]** の順に展開します。
  
@@ -76,9 +76,9 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
    * [URL] には、検索インデックスに対するサンプル クエリを入力します (`search=*` ではすべてのドキュメントが返され、`$select=` ではフィールドを選択できます)。 API バージョンは必須です。 すべて指定した URL は、`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30` のようになります。
 
-   * [ヘッダー] には、「`Content-Type`」と入力します。 
+   * [ヘッダー] には、「`Content-Type`」と入力します。 この値は、後の手順で `application/json` に設定します。
 
-     **Power Apps** では、クエリからのパラメーターの抽出に構文が使用されます。 検索フィールドが明示的に定義されていることに注目してください。 
+     **Power Apps** は、URL の構文を使用して、クエリからパラメーターを抽出します。検索、選択、および api-version パラメーターは、ウィザードの進行に応じて構成可能になります。
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="[サンプルからのインポート]" border="true":::
 
@@ -111,11 +111,11 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
       - {name: Content-Type, in: header, required: false, type: string}
     ```
 
-1. **3. 要求**の手順に戻り、[応答] セクションまで下へスクロールします。 **[既定の応答を追加する]** をクリックします。 これは Power Apps に応答のスキーマを理解させるのに役立つため、非常に重要です。 
+1. ウィザードに戻り、 **[3. 要求]** の手順に戻ります。 [応答] セクションまで下へスクロールします。 **[既定の応答を追加する]** をクリックします。 これは Power Apps に応答のスキーマを理解させるのに役立つため、非常に重要です。 
 
 1. 応答のサンプルを貼り付けます。 サンプルの応答をキャプチャする簡単な方法は、Azure portal の Search エクスプローラーを使用することです。 Search エクスプローラーでは、要求と同じクエリを入力する必要がありますが、 **$top = 2** を追加して、結果を 2 つのドキュメントに制限します (`search=*&$select=HotelName,Description,Address/City&$top=2`)。 
 
-   Power Apps では、スキーマを検出するために必要な結果はわずかです。
+   Power Apps では、スキーマを検出するために必要な結果はわずかです。 hotels-sample-index を使用している場合、次の応答をここでウィザードにコピーできます。
 
     ```JSON
     {
@@ -144,7 +144,11 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
     > [!TIP] 
     > 入力できる JSON の応答には文字数制限があります。そのため、JSON を貼り付ける前に簡略化することをお勧めします。 応答のスキーマと形式は、値自体よりも重要です。 たとえば、[説明] フィールドは、最初の文だけに単純化することができます。
 
-1. 右上の **[コネクタの作成]** をクリックします。
+1. **[インポート]** をクリックして、既定の応答を追加します。
+
+1. 右上の **[コネクタの作成]** をクリックして、定義を保存します。
+
+1. **[閉じる]** をクリックしてコネクタを閉じます。
 
 ## <a name="2---test-the-connection"></a>2 - 接続をテストする
 
@@ -154,7 +158,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 1. 左端の **[カスタム コネクタ]** をクリックします。
 
-1. コネクタを名前で検索します (このチュートリアルでは "AzureSearchQuery" です)。
+1. 一覧でコネクタ (このチュートリアルでは "AzureSearchQuery") を探します。
 
 1. コネクタを選択し、アクションの一覧を展開して、 **[ビューのプロパティ]** を選択します。
 
@@ -232,7 +236,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
    * **[データソース]** を *azResult* に設定します。
    * インデックス内のデータの種類に基づいて、適切な **[レイアウト]** を選択します。 この例では、 *[Title, subtitle and body]\(タイトル、サブタイトル、および本文\)* レイアウトを使用しています。
-   * **[フィールド] を編集**し、視覚化するフィールドを選択します。
+   * **[フィールド] を編集** し、視覚化するフィールドを選択します。
 
     コネクタを定義したときにサンプルの結果を提供しているため、アプリによりインデックスで使用できるフィールドが認識されます。
     
@@ -250,7 +254,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行状態のままにしておくと、料金が発生する場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
 ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 

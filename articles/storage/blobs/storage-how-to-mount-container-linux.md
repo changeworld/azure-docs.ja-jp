@@ -1,19 +1,19 @@
 ---
 title: Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs
 description: Linux 上の仮想ファイル システム ドライバーである blobfuse を使用して Azure Blob Storage コンテナーをマウントする方法について説明します。
-author: rishabpoh
+author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.date: 2/1/2019
-ms.author: ripohane
-ms.reviewer: dineshm
-ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.author: tamram
+ms.reviewer: twooley
+ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180407"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921699"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -23,20 +23,20 @@ ms.locfileid: "89180407"
 このガイドでは、blobfuse を使用し、Linux 上で Blob Storage コンテナーをマウントしてデータにアクセスする方法を示します。 blobfuse の詳細については、「[the blobfuse repository (blobfuse リポジトリ)](https://github.com/Azure/azure-storage-fuse)」にある詳細を参照してください。
 
 > [!WARNING]
-> blobfuse は、単に要求を [BLOB REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) に変換するだけなので、100% の POSIX 準拠は保証されません。 たとえば、名前変更操作は POSIX ではアトミックですが、blobfuse では違います。
+> blobfuse は、単に要求を [BLOB REST API](/rest/api/storageservices/blob-service-rest-api) に変換するだけなので、100% の POSIX 準拠は保証されません。 たとえば、名前変更操作は POSIX ではアトミックですが、blobfuse では違います。
 > ネイティブなファイル システムと blobfuse の違いの完全な一覧については、[blobfuse ソース コード リポジトリ](https://github.com/azure/azure-storage-fuse)にアクセスしてください。
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Linux に blobfuse をインストールする
-blobfuse バイナリは、Linux の Ubuntu および RHEL ディストリビューション用の [Microsoft ソフトウェア リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[Azure Storage のインストール手順](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)に従ってソース コードからバイナリをビルドすることもできます。
+blobfuse バイナリは、Linux の Ubuntu および RHEL ディストリビューション用の [Microsoft ソフトウェア リポジトリ](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[Azure Storage のインストール手順](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)に従ってソース コードからバイナリをビルドすることもできます。
 
-blobfuse では、Ubuntu 14.04、16.04、および 18.04 へのインストールをサポートしています。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
+blobfuse では、Ubuntu 14.04、16.04、18.04、および 20.04 へのインストールをサポートしています。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
 ```
 lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>Microsoft パッケージ リポジトリを構成する
-[Microsoft 製品用の Linux パッケージ リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)を構成します。
+[Microsoft 製品用の Linux パッケージ リポジトリ](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)を構成します。
 
 例として、Enterprise Linux 6 ディストリビューション上では、次のようになります。
 ```bash
@@ -144,5 +144,4 @@ echo "hello world" > test/blob.txt
 ## <a name="next-steps"></a>次のステップ
 
 * [blobfuse ホーム ページ](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [blobfuse の問題を報告する](https://github.com/Azure/azure-storage-fuse/issues) 
-
+* [blobfuse の問題を報告する](https://github.com/Azure/azure-storage-fuse/issues)

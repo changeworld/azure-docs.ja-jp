@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ebe9f936e3d0dfafec23842fcdbfd225995d546b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719785"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510964"
 ---
 # <a name="common-errors"></a>一般的なエラー
 
@@ -61,10 +61,41 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`AdminUserName`@`ServerName`*/ /*!50003
 DELIMITER ;
 ```
+#### <a name="error-1227-42000-at-line-295-access-denied-you-need-at-least-one-of-the-super-or-set_user_id-privileges-for-this-operation"></a>ERROR 1227 (42000) at line 295 (エラー 1227 (42000)、行 295): Access denied; you need (at least one of) the SUPER or SET_USER_ID privilege(s) for this operation (アクセスが拒否されました。この操作には、(少なくとも 1 つの) SUPER または SET_USER_ID 特権が必要です)
 
-## <a name="next-steps"></a>次の手順
-探していた回答が見つからない場合は、次のことを検討してください。
-- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) で質問を投稿する。
+上記のエラーは、ダンプ ファイルのインポートまたはスクリプトの実行の一環として CREATE VIEW with DEFINER ステートメントを実行しているときに、発生する可能性があります。 Azure Database for MySQL では、SUPER 特権または SET_USER_ID 特権はどのユーザーに対しても許可されません。 
+
+**解決方法**: 
+* 可能であれば、definer ユーザーを使用して CREATE VIEW を実行します。 異なるアクセス許可を持つさまざまな definer によるビューが多数存在する可能性があるため、これは実現できない場合があります。  OR
+* ダンプ ファイルまたは CREATE VIEW スクリプトを編集し、ダンプ ファイルから DEFINER= ステートメントを削除します 
+* ダンプ ファイルまたは CREATE VIEW スクリプトを編集し、definer の値を、スクリプト ファイルのインポートまたは実行を行っている、管理者アクセス許可を持つユーザーで置き換えます。
+
+> [!Tip] 
+> DEFINER= ステートメントを置き換えるには、sed または perl を使用してダンプ ファイルまたは SQL スクリプトを変更します
+
+## <a name="common-connection-errors-for-server-admin-login"></a>サーバー管理者ログインの一般的な接続エラー
+
+Azure Database for MySQL サーバーが作成されると、サーバー管理者ログインは、サーバーの作成時にエンド ユーザーによって提供されます。 サーバー管理者のログインを使用すると、新しいデータベースの作成、新しいユーザーの追加、アクセス許可の付与を行うことができます。 サーバー管理者ログインが削除された場合、そのアクセス許可が取り消された場合、またはパスワードが変更された場合、接続中にアプリケーションで接続エラーが表示され始める可能性があります。 一般的なエラーの一部を次に示します
+
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>ERROR 1045 (28000) (エラー 1045 (28000)): Access denied for user "username"@"IP address" (using password: YES) (次のユーザーのアクセスが拒否されました: "username"@"IP address" (使用したパスワード:Yes))
+
+上記のエラーは、次の場合に発生します。
+
+* username が存在しない
+* ユーザー username が削除されている
+* パスワードが変更またはリセットされている。
+
+**解決方法**: 
+* サーバーに有効なユーザーとして "username" が存在するか、または誤って削除されていないかを確認します。 Azure Database for MySQL ユーザーにログインすることで、次のクエリを実行できます。
+  ```sql
+  select user from mysql.user;
+  ```
+* MySQL にログインして上記のクエリ自体を実行できない場合は、[Azure portal を使用して管理者パスワードをリセットする](howto-create-manage-server-portal.md)ことをお勧めします。 Azure portal の [パスワードのリセット] オプションを使用すると、ユーザーの再作成、パスワードのリセット、管理者のアクセス許可の復元を実行できます。これにより、サーバー管理者を使用してログインし、追加の操作を実行することができます。
+
+## <a name="next-steps"></a>次のステップ
+探している回答が見つからない場合は、次のことを検討してください。
+
+- [Microsoft Q&A 質問ページ](/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) で質問を投稿する。
 - Azure Database for MySQL チーム [@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com) に電子メールを送信する。 このメール アドレスはテクニカル サポートのエイリアスではありません。
 - Azure サポートに連絡し、[Azure portal からチケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 - フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。

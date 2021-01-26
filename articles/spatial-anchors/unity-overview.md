@@ -1,19 +1,19 @@
 ---
 title: Azure Spatial Anchors Unity の概要
 description: Unity アプリ内で Azure Spatial Anchors を使用する方法について説明します。 Unity for HoloLens、Unity for Android、Unity for iOS のクイックスタートを確認します。
-author: rgarcia
-ms.author: rgarcia
-manager: vriveras
+author: msftradford
+ms.author: parkerra
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
-ms.date: 02/26/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51df8ff31c6f86608b7cae53ca779a2a03068e57
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006144"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487267"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Unity での Azure Spatial Anchors を使用した構築
 
@@ -22,12 +22,12 @@ ms.locfileid: "83006144"
 
 **HoloLens 用の Unity**
 
-[クイック スタート: Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[クイック スタート: Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する](./quickstarts/get-started-unity-hololens.md)
 
 **Android 用の Unity**
 
-[クイック スタート: Azure Spatial Anchors を使用する Unity Android アプリを作成する](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[クイック スタート: Azure Spatial Anchors を使用する Unity Android アプリを作成する](./quickstarts/get-started-unity-android.md)
 
 **iOS 用の Unity**
 
-[クイック スタート: Azure Spatial Anchors を使用して Unity iOS アプリを作成する](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[クイック スタート: Azure Spatial Anchors を使用して Unity iOS アプリを作成する](./quickstarts/get-started-unity-ios.md)

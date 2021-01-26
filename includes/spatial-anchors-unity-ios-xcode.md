@@ -1,55 +1,45 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72933467"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762611"
 ---
-**[Build]\(ビルド\)** を選択します。 開かれたダイアログ ボックスで、Xcode プロジェクトをエクスポートするフォルダーを選択します。
+**[Build]\(ビルド\)** を選択します。 ウィンドウが開いたら、Xcode プロジェクトのエクスポート先にするフォルダーを選択します。
 
-エクスポートが完了すると、エクスポートされた Xcode プロジェクトを含むフォルダーが表示されます。
+   エクスポートが完了すると、エクスポートされた Xcode プロジェクトを含むフォルダーが表示されます。
 
-> [!NOTE]
-> 置き換えるか追加するかを尋ねるウィンドウが表示される場合は、 **[Append]\(追加\)** を選択することをお勧めします。 シーンのアセットを変更している場合は、 **[Replace]\(置換\)** を選択するだけで済みます (たとえば、親子関係を追加、削除、または変更する場合や、プロパティを追加、削除、または変更する場合)。ソース コードを変更するだけの場合は、 **[Append]\(追加\)** で十分です。
+   > [!NOTE]
+   > 置き換えるか追加するかを尋ねるメッセージを含むウィンドウが表示された場合、 **[Append]\(追加\)** を選択することをお勧めします。その方が時間が節約されます。 **[Replace]\(置換\)** はシーンのアセットを変更している場合にのみ選択してください。 たとえば、親子関係を追加、削除、または変更する場合や、プロパティを追加、削除、または変更する場合です。 ソース コードを変更するだけの場合は、**[Append]\(追加\)** で十分です。
 
-### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Xcode プロジェクトを Azure Spatial Anchors 参照を含む xcworkspace に変換する
+## <a name="open-the-xcode-project"></a>Xcode プロジェクトを開く
 
-エクスポートされた Xcode プロジェクトのフォルダーで、ターミナルで次のコマンドを実行して、プロジェクトに必要な CocoaPods をインストールします。
+これで Xcode で `Unity-iPhone.xcodeproj` プロジェクトを開くことができるようになります。 
 
-```bash
-pod install --repo-update
+Xcode を起動してエクスポートされた `Unity-iPhone.xcodeproj` プロジェクトを開くか、プロジェクトをエクスポートした場所から次のコマンドを実行して、Xcode でプロジェクトを起動することができます。
+
+ ```bash
+open ./Unity-iPhone.xcodeproj
 ```
 
-これで、`Unity-iPhone.xcworkspace` を開き、Xcode でプロジェクトを開くことができるようになります。
+ルートの **Unity-iPhone** ノードを選択してプロジェクトの設定を表示し、**[General]\(全般\)** タブを選択します。
 
-```bash
-open ./Unity-iPhone.xcworkspace
-```
+**[Deployment Info]\(展開情報\)** で、展開ターゲットが **iOS 11.0** に設定されていることを確認します。
 
-> [!NOTE]
-> macOS Catalina (10.15) にアップグレードした後に CocoaPod に関する問題が発生している場合は、[こちら](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015)のトラブルシューティングの手順を参照してください。
+**[Signing & Capabilities]\(署名と機能\)** タブを選択し、 **[Automatically manage signing]\(署名を自動的に管理\)** が有効になっていることを確認します。 有効でない場合は有効にして、表示されたウィンドウで **[Enable Automatic]\(自動を有効にする\)** を選択して、ビルドの設定をリセットします。
 
-ルートの **Unity-iPhone** ノードを選択してプロジェクトの設定を表示し、 **[General]\(全般\)** タブを選択します。
+## <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 
-**[Signing]\(署名\)** で、 **[Automatically manage signing]\(署名を自動的に管理\)** を有効にします。 有効でない場合は有効にして、表示されるダイアログ ボックスで **[Enable Automatic]\(自動を有効にする\)** を選択して、ビルドの設定をリセットします。
+iOS デバイスを Mac に接続し、**アクティブ スキーム** を iOS デバイスに設定します。
 
-**[Deployment Info]\(展開情報\)** で、 **[Deployment Target]\(展開ターゲット\)** が `11.0` に設定されていることを確認します。
-
-### <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
-
-iOS デバイスを Mac に接続し、**アクティブ スキーム**を iOS デバイスに設定します。
-
-![デバイスを選択する](./media/spatial-anchors-unity/select-device.png)
+   ![デバイスを選択するための [My iPhone] ボタンのスクリーンショット。](./media/spatial-anchors-unity/select-device.png)
 
 **[Build and then run the current scheme]\(ビルドしてから現在のスキームを実行する\)** を選択します。
 
-![デプロイして実行する](./media/spatial-anchors-unity/deploy-run.png)
-
-> [!NOTE]
-> `library not found for -lPods-Unity-iPhone` エラーが表示される場合は、`.xcworkspace` ファイルではなく `.xcodeproj` ファイルを開いた可能性があります。
+   !["デプロイと実行" の矢印ボタンのスクリーンショット。](./media/spatial-anchors-unity/deploy-run.png)

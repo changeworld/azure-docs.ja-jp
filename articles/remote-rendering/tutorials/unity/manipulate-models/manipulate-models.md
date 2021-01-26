@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018860"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559135"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 
@@ -161,7 +161,7 @@ ms.locfileid: "89018860"
 
 1. アプリケーションをもう一度実行する モデルが読み込まれるとすぐに、リモート オブジェクトの境界が表示されます。 以下のような値が表示されます。
 
-     ![境界が更新されたところ](./media/updated-bounds.png)
+     ![リモート オブジェクトの境界の例を示すスクリーンショット。](./media/updated-bounds.png)
 
 Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCollider** を構成しました。 この境界を利用すれば、ローカルにレンダリングされたオブジェクトと同じ方法を使用して、ビジュアル化とインタラクションを実行することができます。 たとえば、トランスフォームや物理演算などを変更するスクリプトです。
 
@@ -176,7 +176,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 1. Unity の [Play]\(再生\) ボタンを押してシーンを再生し、**AppMenu** 内の **[Model Tools]\(モデル ツール\)** メニューを開きます。
 ![ビュー コントローラー](./media/model-with-view-controller.png)
 
-**AppMenu** には、モデルとのバインドに使用されるビュー コントローラーを実装した **[Model Tools]\(モデル ツール\)** サブメニューがあります。 この GameObject に **RemoteBounds** コンポーネントが含まれている場合、[**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) コンポーネント (**BoxCollider** を使用してオブジェクトの周囲に境界ボックスをレンダリングする MRTK コンポーネント) がビュー コントローラーによって追加されます。 ハンド インタラクションは、[**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator) が担います。 これらのスクリプトを組み合わせることで、リモートでレンダリングされたモデルの移動、回転、拡大縮小を行うことができます。
+**AppMenu** には、モデルとのバインドに使用されるビュー コントローラーを実装した **[Model Tools]\(モデル ツール\)** サブメニューがあります。 この GameObject に **RemoteBounds** コンポーネントが含まれている場合、[**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) コンポーネント (**BoxCollider** を使用してオブジェクトの周囲に境界ボックスをレンダリングする MRTK コンポーネント) がビュー コントローラーによって追加されます。 ハンド インタラクションは、[**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html) が担います。 これらのスクリプトを組み合わせることで、リモートでレンダリングされたモデルの移動、回転、拡大縮小を行うことができます。
 
 1. ゲーム パネルにマウスを移動し、その中でクリックしてフォーカスを設定します。
 1. [MRTK のハンド シミュレーション](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)を使用して、左 Shift キーを長押しします。
@@ -237,7 +237,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
     ```
 
     > [!NOTE]
-    > Unity には [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html) という名前のクラスがあり、また、Azure Remote Rendering には [**RayCastHit**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.raycasthit) という名前のクラスがあります。 コンパイル エラーを防ぐうえで、**C** の大文字と小文字の区別が重要となります。
+    > Unity には [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html) という名前のクラスがあり、また、Azure Remote Rendering には [**RayCastHit**](/dotnet/api/microsoft.azure.remoterendering.raycasthit) という名前のクラスがあります。 コンパイル エラーを防ぐうえで、**C** の大文字と小文字の区別が重要となります。
 
     **RemoteRayCaster** は、リモート レイを現在のセッションにキャストするための共通のアクセス ポイントとなります。 この後、実際に MRTK ポインター ハンドラーを実装します。 このスクリプトに `IMixedRealityPointerHandler` インターフェイスを実装することにより、[Mixed Reality Pointer](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/Input/Pointers.html) イベントをリッスンしたいという意図が MRTK に伝えられます。
 
@@ -308,7 +308,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 
 クリック時にレイ キャスト要求を送信するのは、リモート オブジェクトにクエリを実行する効率的な方法です。 しかし理想的なユーザー エクスペリエンスではありません。なぜなら、カーソルが衝突するのはボックス コライダーであって、モデルそのものではないためです。
 
-リモート セッションでもっと頻繁にレイをキャストする新しい MRTK ポインターを作成することもできます。 これはより複雑なアプローチですが、ユーザー エクスペリエンスは向上するでしょう。 この手法は、このチュートリアルの範囲外ですが、[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)にあるショーケース アプリで、このアプローチの例を確認できます。
+リモート セッションでもっと頻繁にレイをキャストする新しい MRTK ポインターを作成することもできます。 これはより複雑なアプローチですが、ユーザー エクスペリエンスは向上するでしょう。 この手法は、このチュートリアルの範囲外ですが、[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)にあるショーケース アプリで、このアプローチの例を確認できます。
 
 **RemoteRayCastPointerHandler** でレイ キャストが正常に完了すると、ヒットした `Entity` が `OnRemoteEntityClicked` Unity イベントから生成されます。 そのイベントに応答するには、`Entity` を受け取って、それに対するアクションを実行するヘルパー スクリプトを作成します。 まず、スクリプトで `Entity` の名前をデバッグ ログに出力してみましょう。
 

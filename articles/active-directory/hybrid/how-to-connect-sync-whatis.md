@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf014feb9ef08b7a24c9640679c7c0baadf298c0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89662393"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
 Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。 オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。 Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
@@ -52,7 +52,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 | [パスワード ハッシュ同期の実装](how-to-connect-password-hash-synchronization.md) |パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
 | [デバイスの書き戻し](how-to-connect-device-writeback.md) |Azure AD Connect のデバイスの書き戻しのしくみについて説明します。 |
 | [ディレクトリ拡張機能](how-to-connect-sync-feature-directory-extensions.md) |独自のカスタム属性で Azure AD スキーマを拡張する方法について説明します。 |
-| [Office 365 の PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |ユーザーの Office 365 リソースをユーザーと同じリージョンに配置する方法について説明します。 |
+| [Microsoft 365 の PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |ユーザーの Microsoft 365 リソースをユーザーと同じリージョンに配置する方法について説明します。 |
 | **同期サービス** | |
 | [Azure AD Connect 同期サービスの機能](how-to-connect-syncservice-features.md) |同期サービス側と、Azure AD で同期の設定を変更する方法について説明します。 |
 | [重複属性の回復性](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |**userPrincipalName** と **proxyAddresses** の重複した属性値の回復性を有効にして使用する方法について説明します。 |

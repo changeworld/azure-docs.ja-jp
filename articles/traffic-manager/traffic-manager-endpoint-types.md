@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: duau
-ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e55c2115edef684f38aa53172596beffd101ef59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401284"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184392"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
 
@@ -92,15 +92,15 @@ Traffic Manager ポータル、PowerShell、CLI、または REST API を使用�
 
 ## <a name="faqs"></a>FAQ
 
-* [複数のサブスクリプションのエンドポイントで Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+* [複数のサブスクリプションのエンドポイントで Traffic Manager を使用できますか。](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 
-* [クラウド サービス 'Staging' スロットで Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+* [クラウド サービス 'Staging' スロットで Traffic Manager を使用できますか。](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-cloud-service-staging-slots)
 
-* [Traffic Manager では IPv6 エンドポイントはサポートされていますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
+* [Traffic Manager では IPv6 エンドポイントはサポートされていますか。](./traffic-manager-faqs.md#does-traffic-manager-support-ipv6-endpoints)
 
-* [同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+* [同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [Traffic Manager プロファイルの Azure エンドポイントを別のリソース グループに移動する操作方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
+* [Traffic Manager プロファイルの Azure エンドポイントを別のリソース グループに移動する操作方法を教えてください。](./traffic-manager-faqs.md#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
 ## <a name="next-steps"></a>次のステップ
 

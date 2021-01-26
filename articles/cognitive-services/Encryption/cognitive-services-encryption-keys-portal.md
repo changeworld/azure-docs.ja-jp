@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 1d161c82c087fd86a3774f0d121330260b1574e4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310701"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366096"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Cognitive Services 用に Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -38,5 +38,5 @@ Cognitive Services 用に Azure Key Vault でカスタマー マネージド キ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault とは](../../key-vault/general/overview.md)
 * [Cognitive Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)

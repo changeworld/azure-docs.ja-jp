@@ -1,20 +1,20 @@
 ---
 title: Custom Vision による保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: Custom Vision による保存データの暗号化。
+description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、Custom Vision での保存データの暗号化と、CMK を有効化および管理する方法について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 85cf251db69d33f02e928eaea6a848f20ae7d923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310293"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616214"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision による保存データの暗号化
 
@@ -39,5 +39,5 @@ Azure Custom Vision では、クラウドに永続化されるときにデータ
 ## <a name="next-steps"></a>次のステップ
 
 * CMK がサポートされているサービスの完全な一覧については、[Cognitive Services 用のカスタマー マネージド キー](../encryption/cognitive-services-encryption-keys-portal.md)に関するページを参照してください
-* [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault とは](../../key-vault/general/overview.md)
 * [Cognitive Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)

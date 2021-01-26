@@ -2,14 +2,14 @@
 title: 要求の制限と調整
 description: サブスクリプションの上限に達したときに、Azure Resource Manager の要求をスロットルする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239358"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563128"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
@@ -65,6 +65,13 @@ Microsoft.Network リソース プロバイダーでは、次の調整制限が�
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph の調整
 
 [Azure Resource Graph](../../governance/resource-graph/overview.md) では、その操作に対する要求数が制限されます。 この記事内の、残りの要求数を確認する方法と、上限に達したときの対処方法の手順は、Resource Graph にも該当します。 ただし、Resource Graph は独自の制限とリセット レートを設定します。 詳細については、[Resource Graph スロットル ヘッダー](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)に関する記事をご覧ください。
+
+### <a name="other-resource-providers"></a>他のリソース プロバイダー
+
+他のリソース プロバイダーでの帯域幅調整の詳細については、以下を参照してください。
+
+* [Azure Key Vault のスロットル ガイダンス](../../key-vault/general/overview-throttling.md)
+* [AKS のトラブルシューティング](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
 
 ## <a name="error-code"></a>エラー コード
 
@@ -189,7 +196,7 @@ msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 詳細な PowerShell の例については、[サブスクリプションの Resource Manager の制限を確認する方法](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)に関するページを参照してください。
 * 制限とクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。

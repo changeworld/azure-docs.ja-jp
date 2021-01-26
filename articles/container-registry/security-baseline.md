@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0004b7689b6ede2200e3fe4cb06bba2bbc168d6d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 52cc67b1160ae8c9a0120a0a10d0131b167d5776
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259404"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202676"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Container Registry 用の Azure セキュリティ ベースライン
 
@@ -135,7 +135,7 @@ Azure Firewall でアラートを構成する方法: https://docs.microsoft.com/
 
 **ガイダンス**: Azure Policy を使用して、ご利用の Azure コンテナー レジストリに関連付けられているネットワーク リソース用の標準的なセキュリティ構成を定義して実装します。 ご利用のコンテナー レジストリのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ContainerRegistry" および "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。 
 
-Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することができます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を容易に微調整できます。
+Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することができます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を容易に微調整できます。
 
 Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
@@ -148,7 +148,7 @@ Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governan
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
-**ガイダンス**: お客様は、Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することができます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を容易に微調整できます。
+**ガイダンス**: お客様は、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することができます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を容易に微調整できます。
 
 Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -178,7 +178,7 @@ Azure Monitor でアラートを作成する方法:  https://docs.microsoft.com/
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
-**ガイダンス**:Microsoft は Azure リソースのためにタイム ソースを管理していますが、コンピューティング リソースのために時刻同期設定を管理するオプションが用意されています。
+**ガイダンス**: Microsoft は Azure リソースのためにタイム ソースを管理していますが、コンピューティング リソースのために時刻同期設定を管理するオプションが用意されています。
 
 Azure コンピューティング リソースの時刻同期を構成する方法: https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
@@ -336,7 +336,7 @@ Azure Container Registry 管理者アカウント:  https://docs.microsoft.com/a
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。
+**ガイダンス**:可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。
 
 コンテナー レジストリに個別にアクセスするには、Azure Active Directory に統合された個別のログインを使用します。
 
@@ -364,9 +364,9 @@ Azure Security Center で ID とアクセスを監視する方法: https://docs.
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**:MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
+**ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-特権アクセス ワークステーションについて:  https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+特権アクセス ワークステーションについて:  https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -556,9 +556,9 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (Azure AD) RBAC を使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) 使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
 
-Azure で RBAC を構成する方法:  https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Azure RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Azure Container Registry のロールとアクセス許可:  https://docs.microsoft.com/azure/container-registry/container-registry-roles
 
@@ -678,7 +678,7 @@ Azure Container Registry と Security Center の統合 (プレビュー):  https
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -910,7 +910,7 @@ Azure Repos のドキュメント:  https://docs.microsoft.com/azure/devops/repo
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**:適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
+**ガイダンス**: 適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -919,7 +919,7 @@ Azure Repos のドキュメント:  https://docs.microsoft.com/azure/devops/repo
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7:システム構成管理ツールをデプロイする
 
-**ガイダンス**: Azure Policy を使用して、システム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
+**ガイダンス**:Azure Policy を使用して、システム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
 Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
@@ -941,7 +941,7 @@ Azure Policy を構成して管理する方法:  https://docs.microsoft.com/azur
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
 
-**ガイダンス**:Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。
+**ガイダンス**: Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。
 
 Azure Policy を使用して、サブスクリプションで作成できるリソースの種類に制限を設けます。
 
@@ -970,9 +970,11 @@ Azure Policy を使用した Azure コンテナー レジストリのコンプ�
 
 Azure マネージド ID と統合する方法:  https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-キー コンテナーを作成する方法:  https://docs.microsoft.com/azure/key-vault/quick-create-portal
+キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-マネージド ID で Key Vault の認証を提供する方法:  https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault に対して認証を行う方法: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault のアクセス ポリシーを割り当てる方法: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 Azure Container Registry タスクで Azure マネージド ID を使用する:  https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
 
@@ -983,7 +985,7 @@ Azure Container Registry タスクで Azure マネージド ID を使用する: 
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
+**ガイダンス**:マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
 マネージド ID を構成する方法:  https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 

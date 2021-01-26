@@ -4,18 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a5c113849296275432acf1f5603377a1909a2c04
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88702982"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842260"
 ---
 ## <a name="run-the-function-locally"></a>Functions をローカルで実行する
 
 Azure Functions プロジェクトをローカルで実行してデバッグするために、Azure Functions Core Tools は Visual Studio Code と統合されています。 Visual Studio Code をデバッグする方法の詳細については、「[PowerShell Azure Functions をローカル環境でデバッグする](../articles/azure-functions/functions-debug-powershell-local.md)」を参照してください。 
-
-1. F5 キーを押して Functions アプリ プロジェクトを起動します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. 関数を呼び出すには、<kbd>F5</kbd> キーを押して関数アプリ プロジェクトを起動します。 Core Tools からの出力が **ターミナル** パネルに表示されます。 Windows での実行に問題がある場合、Visual Studio Code の既定のターミナルが **WSL Bash** に設定されていないことをご確認ください。
 
 1. **ターミナル** パネルで、HTTP によってトリガーされる Functions の URL エンドポイントをコピーします。
 
@@ -40,4 +39,4 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
 
 1. 完了したら、**Ctrl + C** キーを押して Core Tools を停止します。
 
-Functions がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
+関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。

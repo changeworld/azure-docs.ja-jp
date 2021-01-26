@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 16f6a0660fa9aa20f636ee412f3f337bd5dea9b5
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962419"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825968"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
@@ -42,7 +42,7 @@ App Service 内では、任意のネットワークに含まれていて、443 �
 - 通常はファイアウォールに穴を開ける必要はありません。 接続はすべて、標準的な Web ポート経由の発信です。
 - ネットワーク レベルの機能であるため、アプリで使用される言語とエンドポイントで使用されるテクノロジに依存しません。
 - 単一のアプリから複数のネットワークにアクセスするために使用できます。 
-- Windows アプリ向けには GA でサポートされており、Linux アプリ向けにはプレビュー段階です。
+- Windows ネイティブ アプリ向けには GA でサポートされており、Linux アプリ向けにはプレビュー段階です。 Windows コンテナー アプリではサポートされていません。
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>ハイブリッド接続で実行できないこと ###
 
@@ -117,7 +117,7 @@ App Service プランの SKU 要件が存在する以外に、ハイブリッド
 
 このツールは、Windows Server 2012 以降のバージョンの Windows で実行されます。 HCM はサービスとして実行し、送信のためにポート 443 で Azure Relay に接続します。  
 
-HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに*ハイブリッド接続マネージャー UI*と入力して検索できます。  
+HCM をインストールしたら、HybridConnectionManagerUi.exe を実行して、このツールの UI を使用できます。 このファイルは、Hybrid Connection Manager のインストール ディレクトリにあります。 Windows 10 では、検索ボックスに *ハイブリッド接続マネージャー UI* と入力して検索できます。  
 
 ![ハイブリッド接続マネージャーのスクリーンショット][7]
 

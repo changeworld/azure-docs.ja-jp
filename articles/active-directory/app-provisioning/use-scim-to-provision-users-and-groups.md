@@ -1,24 +1,25 @@
 ---
-title: Azure AD からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを開発する
-description: クロスドメイン ID 管理システム (SCIM) では、自動ユーザー プロビジョニングが標準化されます。 SCIM エンドポイントを開発し、SCIM API を Azure Active Directory と統合して、クラウド アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
+title: チュートリアル - Azure AD からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを開発する
+description: クロスドメイン ID 管理システム (SCIM) では、自動ユーザー プロビジョニングが標準化されます。 このチュートリアルでは、SCIM エンドポイントを開発し、SCIM API を Azure Active Directory と統合して、クラウド アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
-ms.date: 03/07/2020
+ms.topic: tutorial
+ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690257"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246759"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
+# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>チュートリアル - SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
 アプリケーション開発者は System for Cross-Domain Identity Management (SCIM) ユーザー管理 API を使用し、アプリケーションと Azure AD の間のユーザーとグループの自動プロビジョニングを有効にできます。 この記事では、SCIM エンドポイントを構築し、Azure AD プロビジョニング サービスと統合する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
@@ -87,7 +88,8 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
      "location":
  "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
    }
- ```
+}   
+```
 
 ### <a name="table-2-default-user-attribute-mapping"></a>表 2:既定のユーザー属性マッピング
 次に、以下の表を使用して、アプリケーションが必要とする属性を Azure AD および SCIM RFC の属性にマップする方法を把握できます。 Azure AD と SCIM エンドポイントの間で属性がどのようにマップされるかを[カスタマイズ](customize-application-attributes.md)できます。 ユーザーとグループの両方、または以下に示すすべての属性をサポートする必要がないことに注意してください。 これは、Azure AD の属性が SCIM プロトコルのプロパティに通常マップされる方法を参照するためのものです。 
@@ -125,7 +127,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
-SCIM RFC では複数のエンドポイントが定義されています。 /User エンドポイントで開始し、そこから展開できます。 /Schemas エンドポイントは、カスタム属性を使用する場合、またはスキーマが頻繁に変更される場合に役立ちます。 これにより、クライアントで最新のスキーマを自動的に取得できます。 /Bulk エンドポイントは、グループをサポートする場合に特に役立ちます。 次の表では、SCIM 標準で定義されているさまざまなエンドポイントについて説明します。 /Schemas エンドポイントは、カスタム属性を使用する場合、またはスキーマが頻繁に変更される場合に役立ちます。 これにより、クライアントで最新のスキーマを自動的に取得できます。 /Bulk エンドポイントは、グループをサポートする場合に特に役立ちます。 次の表では、SCIM 標準で定義されているさまざまなエンドポイントについて説明します。 
+SCIM RFC では複数のエンドポイントが定義されています。 /User エンドポイントで開始し、そこから展開できます。 /Schemas エンドポイントは、カスタム属性を使用する場合、またはスキーマが頻繁に変更される場合に役立ちます。 これにより、クライアントで最新のスキーマを自動的に取得できます。 /Bulk エンドポイントは、グループをサポートする場合に特に役立ちます。 次の表では、SCIM 標準で定義されているさまざまなエンドポイントについて説明します。
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表 4:開発するエンドポイントを決定する
 |ENDPOINT|Description|
@@ -147,13 +149,14 @@ SCIM RFC では複数のエンドポイントが定義されています。 /Use
 [SCIM 2.0 プロトコル仕様](http://www.simplecloud.info/#Specification)の中で、アプリケーションは次の要件を満たす必要があります。
 
 * [SCIM プロトコルのセクション 3.3](https://tools.ietf.org/html/rfc7644#section-3.3) に従って、ユーザー、グループ (オプション) の作成をサポートする。  
-* [SCIM プロトコルのセクション 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) に従って、PATCH 要求によるユーザーまたはグループの変更をサポートする。  
+* [SCIM プロトコルのセクション 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) に従って、PATCH 要求によるユーザーまたはグループの変更をサポートする。 サポートにより確実に、パフォーマンスの高い方法でグループとユーザーがプロビジョニングされます。 
 * [SCIM プロトコルのセクション 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1) に従って、これまで作成したユーザーまたはグループの既知のリソースの取得をサポートする。  
 * [SCIM プロトコルのセクション 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2) に従って、ユーザーまたはグループのクエリをサポートする。  既定では、ユーザーの取得には `id`、ユーザーのクエリには `username` と `externalId`、グループのクエリには `displayName` が使用されます。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID と管理者によるユーザーの照会をサポートする。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID とメンバーによるグループの照会をサポートする。  
+* グループ リソースの照会時には、SCIM プロトコルのセクション 3.4.2.5 に従ってフィルター [excludedAttributes=members](#get-group) をサポートする。
 * アプリケーションに対する Azure AD の認証と承認のために、単一のベアラー トークンを受け入れる。
-* ユーザー `active=false` の論理削除とユーザー `active=true` の復元をサポートします。
+* ユーザー `active=false` の論理削除とユーザー `active=true` の復元をサポートする (ユーザーがアクティブかどうかに関係なく、要求でユーザー オブジェクトが返される必要があります)。 ユーザーが返されないのは、アプリケーションから完全削除されているときです。 
 
 Azure AD との互換性を確保するために、SCIM エンドポイントの実装時は次の一般的なガイドラインに従ってください。
 
@@ -165,8 +168,9 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
     - `eq`
     - `and`
 * [https://tools.ietf.org/html/rfc7644#section-3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2 ) に定義されているように、特に PATCH `op` 操作値の場合、SCIM 内の構造要素に対して大文字と小文字を区別した一致を要求しないでください。 Azure AD では、'op' の値が `Add`、`Replace`、`Remove` として出力されます。
-* Microsoft Azure AD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続**フローの一部としても行われます。 
+* Microsoft Azure AD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続** フローの一部としても行われます。 
 * リソースのクエリが可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)に関するページを参照してください。
+* SCIM エンドポイントで HTTPS をサポートする
 
 ### <a name="user-provisioning-and-deprovisioning"></a>ユーザーのプロビジョニングとプロビジョニング解除
 
@@ -195,29 +199,21 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
   - [ユーザーの作成](#create-user) ([要求](#request) / [応答](#response))
   - [ユーザーの取得](#get-user) ([要求](#request-1) / [応答](#response-1))
   - [クエリによるユーザーの取得](#get-user-by-query) ([要求](#request-2) / [応答](#response-2))
-  - [クエリによるユーザーの取得 - 0 件の結果](#get-user-by-query---zero-results) ([要求](#request-3)
-/ [応答](#response-3))
-  - [ユーザーの更新 [複数値のプロパティ]](#update-user-multi-valued-properties) ([要求](#request-4) /  [応答](#response-4))
-  - [ユーザーの更新 [単一値のプロパティ]](#update-user-single-valued-properties) ([要求](#request-5)
-/ [応答](#response-5)) 
-  - [ユーザーの無効化](#disable-user) ([要求](#request-14) / 
-[応答](#response-14))
-  - [ユーザーの削除](#delete-user) ([要求](#request-6) / 
-[応答](#response-6))
+  - [クエリによるユーザーの取得 - 0 件の結果](#get-user-by-query---zero-results) ([要求](#request-3) / [応答](#response-3))
+  - [ユーザーの更新 [複数値のプロパティ]](#update-user-multi-valued-properties) ([要求](#request-4) / [応答](#response-4))
+  - [ユーザーの更新 [単一値のプロパティ]](#update-user-single-valued-properties) ([要求](#request-5) / [応答](#response-5)) 
+  - [ユーザーの無効化](#disable-user) ([要求](#request-14) / [応答](#response-14))
+  - [ユーザーの削除](#delete-user) ([要求](#request-6) / [応答](#response-6))
 
 
 [グループ操作](#group-operations)
-  - [グループの作成](#create-group) ( [要求](#request-7) / [応答](#response-7))
-  - [グループの取得](#get-group) ( [要求](#request-8) / [応答](#response-8))
+  - [グループの作成](#create-group) ([要求](#request-7) / [応答](#response-7))
+  - [グループの取得](#get-group) ([要求](#request-8) / [応答](#response-8))
   - [displayName でのグループの取得](#get-group-by-displayname) ([要求](#request-9) / [応答](#response-9))
-  - [グループの更新 [非メンバー属性]](#update-group-non-member-attributes) ([要求](#request-10) /
- [応答](#response-10))
-  - [グループの更新 [メンバーの追加]](#update-group-add-members) ( [要求](#request-11) /
-[応答](#response-11))
-  - [グループの更新 [メンバーの削除]](#update-group-remove-members) ([要求](#request-12) /
-[応答](#response-12))
-  - [グループの削除](#delete-group) ([要求](#request-13) /
-[応答](#response-13))
+  - [グループの更新 [非メンバー属性]](#update-group-non-member-attributes) ([要求](#request-10) / [応答](#response-10))
+  - [グループの更新 [メンバーの追加]](#update-group-add-members) ([要求](#request-11) / [応答](#response-11))
+  - [グループの更新 [メンバーの削除]](#update-group-remove-members) ([要求](#request-12) / [応答](#response-12))
+  - [グループの削除](#delete-group) ([要求](#request-13) / [応答](#response-13))
 
 ### <a name="user-operations"></a>ユーザー操作
 
@@ -746,7 +742,7 @@ TLS 1.2 暗号スイートの最低条件:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範囲
-Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory と AzureActiveDirectoryDomainServices の IP 範囲で動作します。 AzureActiveDirectory の IP 範囲のみへの統合を行う作業が進行中です。 
+Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory の IP 範囲で動作します。 AzureActiveDirectory タグの下に一覧表示されている IP 範囲を追加し、Azure AD プロビジョニング サービスからアプリケーションへのトラフィックを許可できます。 計算されたアドレスについて、IP 範囲の一覧を注意深く確認する必要があることにご注意ください。 '40.126.25.32 ' などのアドレスは、IP 範囲の一覧では '40.126.0.0/18' として表されることがあります。 次の [API](/rest/api/virtualnetwork/servicetags/list) を使用して、プログラムによって IP 範囲の一覧を取得することもできます。
 
 ## <a name="step-3-build-a-scim-endpoint"></a>手順 3:SCIM エンドポイントを構築する
 
@@ -763,7 +759,7 @@ _Microsoft.SCIM_ プロジェクトは、SCIM 仕様に準拠する Web サー�
 
 ![内訳:プロバイダーのメソッドへの呼び出しに変換された要求](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
 
-_Microsoft.SCIM.WebHostSample_ プロジェクトは、_空の_テンプレートに基づく Visual Studio ASP.NET Core Web アプリケーションです。 これにより、サンプル コードをスタンドアロンとしてデプロイし、コンテナーまたはインターネット インフォメーション サービス内でホストすることができます。 また、_Microsoft.SCIM.IProvider_ インターフェイスを実装して、クラスをサンプル ID ストアとしてメモリに保持することができます。
+_Microsoft.SCIM.WebHostSample_ プロジェクトは、_空の_ テンプレートに基づく Visual Studio ASP.NET Core Web アプリケーションです。 これにより、サンプル コードをスタンドアロンとしてデプロイし、コンテナーまたはインターネット インフォメーション サービス内でホストすることができます。 また、_Microsoft.SCIM.IProvider_ インターフェイスを実装して、クラスをサンプル ID ストアとしてメモリに保持することができます。
 
 ```csharp
     public class Startup
@@ -794,6 +790,7 @@ SCIM サービスには、HTTP アドレスと、ルート証明機関が次の�
 * Go Daddy
 * VeriSign
 * WoSign
+* DST Root CA X3
 
 .NET Core SDK には、開発時に使用できる HTTPS 開発証明書が含まれています。この証明書は、最初の実行エクスペリエンスの一部としてインストールされます。 ASP.NET Core Web アプリケーションの実行方法に応じて、異なるポートがリッスンされます。
 
@@ -914,7 +911,7 @@ GET 要求をトークン コントローラーに送信することで有効な
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>ユーザーのプロビジョニングとプロビジョニング解除の処理
 
-***例 1.一致するユーザーをサービスに照会する***
+***例 1. 一致するユーザーをサービスに照会する** _
 
 Azure Active Directory は、Azure AD 内のユーザーの mailNickname 属性値に一致する `externalId` 属性値を持つユーザーをサービスに照会します。 クエリは次の例のようなハイパーテキスト転送プロトコル (HTTP) 要求として表現されます。jyoung は Azure Active Directory 内のユーザーの mailNickname 例です。
 
@@ -942,12 +939,12 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 `externalId` 属性に特定の値を持つユーザーのサンプル クエリでは、QueryAsync メソッドに渡される引数の値は次のようになります。
 
-* parameters.AlternateFilters.Count:1
+_ parameters.AlternateFilters.Count: 1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator:ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
 
-***例 2.ユーザーをプロビジョニングする***
+***例 2. ユーザーをプロビジョニングする** _
 
 ユーザーの mailNickname 属性値に一致する `externalId` 属性値を持つユーザーを Web サービスに照会したときに、応答でユーザーが返されなかった場合、Azure Active Directory は、Azure Active Directory 内のユーザーに対応するユーザーをプロビジョニングするようにサービスに要求します。  このような要求の例を次に示します。 
 
@@ -996,7 +993,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 ユーザーをプロビジョニングする要求では、resource 引数の値は、Microsoft.SCIM.Schemas ライブラリで定義されている Microsoft.SCIM.Core2EnterpriseUser クラスのインスタンスです。  ユーザーをプロビジョニングする要求が成功すると、メソッドの実装により、Microsoft.SCIM.Core2EnterpriseUser クラスのインスタンスが返され、Identifier プロパティの値に新たにプロビジョニングされたユーザーの一意識別子が設定されると想定されています。  
 
-***例 3.ユーザーの現在の状態を照会する*** 
+_*_例 3.ユーザーの現在の状態を照会する_*_ 
 
 SCIM によってアクセスされる ID ストアに存在することがわかっているユーザーを更新するために、Azure Active Directory は、次のような要求を使用して、そのユーザーの現在の状態をサービスに要求して処理を続行します。 
 
@@ -1020,14 +1017,14 @@ SCIM によってアクセスされる ID ストアに存在することがわ�
 
 ユーザーの現在の状態を取得する要求の例では、parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   
-* Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+_ Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-***例 4.更新する参照属性の値を照会する*** 
+***例 4. 更新する参照属性の値を照会する** _ 
 
 参照属性を更新する場合、Azure Active Directory は、サービスによってアクセスされる ID ストア内の参照属性の現在の値が Azure Active Directory 内のその属性の値と既に一致しているかどうかを判別するために、サービスにクエリを実行します。 ユーザーの場合、この方法で現在の値を照会する属性は、manager 属性のみです。 ユーザー オブジェクトの manager 属性に特定の値があるかどうかを判別する要求の例を次に示します。このサンプル コードでは、要求はサービスのプロバイダーの QueryAsync メソッドへの呼び出しに変換されます。 parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   
-* parameters.AlternateFilters.Count:2
+_ parameters.AlternateFilters.Count: 2
 * parameters.AlternateFilters.ElementAt(x).AttributePath:"ID"
 * parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1039,7 +1036,7 @@ SCIM によってアクセスされる ID ストアに存在することがわ�
 
 ここでは、filter クエリ パラメーターの式の順序に応じて、インデックス x の値が 0、インデックス y の値が 1 になるか、または x の値が 1、y の値が 0 になります。   
 
-***例 5.Azure AD から SCIM サービスに対するユーザーの更新を要求する*** 
+***例 5. Azure AD から SCIM サービスに対するユーザーの更新を要求する** _ 
 
 Azure Active Directory から SCIM サービスに対するユーザーを更新する要求の例を次に示します。 
 
@@ -1078,7 +1075,7 @@ Azure Active Directory から SCIM サービスに対するユーザーを更新
 
 ユーザーを更新する要求の例では、patch 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   
-* ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 * (PatchRequest as PatchRequest2).Operations.Count:1
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
@@ -1087,7 +1084,7 @@ Azure Active Directory から SCIM サービスに対するユーザーを更新
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
 
-***例 6.ユーザーのプロビジョニングを解除する***
+***例 6. ユーザーのプロビジョニングを解除する** _
 
 SCIM サービスによってアクセスされる ID ストアからユーザーのプロビジョニングを解除するために、Azure AD は次のような要求を送信します。
 
@@ -1110,7 +1107,7 @@ SCIM サービスによってアクセスされる ID ストアからユーザ�
 
 ユーザーのプロビジョニングを解除する要求の例では、resourceIdentifier 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
 
-* ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>手順 4:SCIM エンドポイントを Azure AD SCIM クライアントと統合する
@@ -1145,14 +1142,14 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 7. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: `https://api.contoso.com/scim/`
 8. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD では各要求に Azure AD を発行元とする OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリは、この Azure AD によって発行されたトークンを検証できます。 
    > [!NOTE]
-   > このフィールドを空白のままにして、Azure AD によって生成されるトークンに依存することは推奨 "***されません***"。 このオプションは、主にテスト目的で使用できます。
-9. **[テスト接続]** を選択して、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試行に失敗した場合は、エラー情報が表示されます。  
+   > このフィールドを空白のままにして、Azure AD によって生成されるトークンに依存することは推奨 "**_されません_* _"。 このオプションは、主にテスト目的で使用できます。
+9. _ *[テスト接続]* * を選択して、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試行に失敗した場合は、エラー情報が表示されます。  
 
     > [!NOTE]
-    > **テスト接続**では、Azure AD 構成で照合プロパティとして選択されたランダムな GUID を使用して、存在しないユーザー用の SCIM エンドポイントのクエリが実行されます。 想定される適切な応答は、HTTP 200 OK と空の SCIM ListResponse メッセージです。
+    > **テスト接続** では、Azure AD 構成で照合プロパティとして選択されたランダムな GUID を使用して、存在しないユーザー用の SCIM エンドポイントのクエリが実行されます。 想定される適切な応答は、HTTP 200 OK と空の SCIM ListResponse メッセージです。
 
 10. アプリケーションへの接続の試行に成功した場合は、 **[保存]** を選択して管理者資格情報を保存します。
-11. **[マッピング]** セクションには、選択可能な 2 つの[属性マッピング](customize-application-attributes.md)のセットがあります。片方はユーザー オブジェクト用であり、他方はグループ オブジェクト用です。 Azure Active Directory からアプリに同期されている属性を確認するには、それぞれを選択します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理でアプリ内のユーザーとアカウントを照合するために使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
+11. **[マッピング]** セクションには、選択可能な 2 つの [属性マッピング](customize-application-attributes.md)のセットがあります。片方はユーザー オブジェクト用であり、他方はグループ オブジェクト用です。 Azure Active Directory からアプリに同期されている属性を確認するには、それぞれを選択します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理でアプリ内のユーザーとアカウントを照合するために使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
     > [!NOTE]
     > 必要に応じて [グループ] マッピングを無効にすることで、グループ オブジェクトの同期を無効にできます。
@@ -1169,13 +1166,13 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>手順 5:Azure AD アプリケーション ギャラリーにアプリケーションを発行する
 
-複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../azuread-dev/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
+複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../develop/v2-howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。
 
 ### <a name="gallery-onboarding-checklist"></a>ギャラリーのオンボードのチェックリスト
 アプリケーションの迅速なオンボードと顧客のスムーズなデプロイ エクスペリエンスを確実なものとするために、以下のチェックリストに従ってください。 ギャラリーにオンボードする際に、ご自身から情報が収集されます。 
 > [!div class="checklist"]
-> * [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
-> * テナントごとに少なくとも 1 秒あたり 25 個の要求をサポートする (必須)
+> * [SCIM 2.0](#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
+> * ユーザーとグループが遅延なく確実にプロビジョニングされ、プロビジョニング解除されるよう、テナントあたり、少なくとも毎秒 25 件の要求をサポートする (必須)
 > * 顧客のギャラリー オンボード後のガイドを行うエンジニアリングとサポートの連絡先を確立する (必須)
 > * アプリケーションの 3 つの無期限のテスト資格情報 (必須)
 > * 次に示すように、OAuth 承認コードの付与または有効期間が長いトークンをサポートする (必須)
@@ -1192,7 +1189,7 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 |--|--|--|--|
 |ユーザー名とパスワード (推奨されないか、Azure AD でサポートされていません)|簡単に実装できます|セキュリティで保護されていません - 「[パスワードは重要ではない](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)」を参照|ギャラリー アプリに対してケース バイ ケースでサポートされます。 ギャラリー以外のアプリではサポートされていません。|
 |有効期間が長いベアラー トークン|有効期間が長いトークンでは、ユーザーが存在している必要はありません。 プロビジョニングを設定する場合、管理者はこれらを簡単に使用できます。|有効期間が長いトークンは、メールのようにセキュリティで保護されていない方法を使用しないと、管理者と共有するのが困難です。 |ギャラリー アプリとギャラリー以外のアプリでサポートされます。 |
-|OAuth 認証コードの付与|アクセス トークンの有効期間はパスワードよりもはるかに短く、有効期間が長いベアラー トークンにはない自動更新メカニズムがあります。  初期承認中に実際のユーザーが存在する必要があり、アカウンタビリティのレベルを追加します。 |ユーザーが存在している必要があります。 ユーザーが組織からいなくなる場合、トークンは無効になり、承認を再度完了する必要があります。|ギャラリー アプリでサポートされていますが、ギャラリー以外のアプリではサポートされていません。 ギャラリー以外のサポートはバックログにあります。|
+|OAuth 認証コードの付与|アクセス トークンの有効期間はパスワードよりもはるかに短く、有効期間が長いベアラー トークンにはない自動更新メカニズムがあります。  初期承認中に実際のユーザーが存在する必要があり、アカウンタビリティのレベルを追加します。 |ユーザーが存在している必要があります。 ユーザーが組織からいなくなる場合、トークンは無効になり、承認を再度完了する必要があります。|ギャラリー アプリでサポートされていますが、ギャラリー以外のアプリではサポートされていません。 ただし、短期的なテストのために、UI のアクセス トークンをシークレット トークンとして提供することができます。 ギャラリー以外での OAuth コードの付与に対するサポートはバックログに入っています。|
 |OAuth クライアント資格情報の付与|アクセス トークンの有効期間はパスワードよりもはるかに短く、有効期間が長いベアラー トークンにはない自動更新メカニズムがあります。 承認コードの付与とクライアント資格情報の付与の両方で、同じ種類のアクセス トークンが作成されるため、これらの方法間の移動は API に対して透過的です。  プロビジョニングは完全に自動化することができ、ユーザーの介入なしに新しいトークンを自動的に要求することができます。 ||ギャラリー アプリとギャラリー以外のアプリでサポートされていません。 サポートはバックログに入っています。|
 
 > [!NOTE]
@@ -1201,7 +1198,7 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 **OAuth 承認コード付与フロー:** プロビジョニング サービスでは、[承認コードの付与](https://tools.ietf.org/html/rfc6749#page-24)がサポートされています。 ギャラリーにアプリを発行するための要求を送信した後、私たちのチームは次の情報を収集するためにお客様と協力します。
 *  承認 URL:ユーザー エージェント リダイレクトによってリソース所有者から承認を取得するためのクライアントによる URL。 ユーザーは、アクセスを承認するためにこの URL にリダイレクトされます。 現在、この URL はテナントごとに構成できないことに注意してください。
 *  トークン交換 URL:アクセス トークンの承認付与を交換するためのクライアントによる URL。通常は、クライアント認証を使用します。 現在、この URL はテナントごとに構成できないことに注意してください。
-*  クライアント ID: 承認サーバーは、登録されたクライアントにクライアント識別子 (クライアントによって提供される登録情報を表す一意の文字列) を発行します。  クライアント識別子はシークレットではありません。これはリソースの所有者に公開されており、クライアント認証に単独で使用**できません**。  
+*  クライアント ID: 承認サーバーは、登録されたクライアントにクライアント識別子 (クライアントによって提供される登録情報を表す一意の文字列) を発行します。  クライアント識別子はシークレットではありません。これはリソースの所有者に公開されており、クライアント認証に単独で使用 **できません**。  
 *  クライアント シークレット:クライアント シークレットは、承認サーバーによって生成されるシークレットです。 これは承認サーバーにのみ認識される一意の値である必要があります。 
 
 OAuth v1 は、クライアント シークレットの露出が原因で、サポートされていないことに注意してください。 OAuth v2 はサポートされています。  
@@ -1210,7 +1207,18 @@ OAuth v1 は、クライアント シークレットの露出が原因で、サ�
 * 複数のリダイレクト URL をサポートします。 管理者は、"portal.azure.com" と "aad.portal.azure.com" の両方からプロビジョニングを構成できます。 複数のリダイレクト URL をサポートすることで、ユーザーがいずれのポータルからでもアクセスを承認できるようになります。
 * 複数のシークレットをサポートして、ダウンタイムなしでスムーズにシークレットを更新できるようにします。 
 
-**有効期間が長い OAuth ベアラー トークン:** アプリケーションで OAuth 認証コード付与フローがサポートされていない場合は、管理者がプロビジョニング統合のセットアップに使用できる、有効期間が長い OAuth ベアラー トークンを生成することもできます。 トークンは永続的である必要があり、そうでない場合、トークンの有効期限が切れるとプロビジョニング ジョブが[検疫](application-provisioning-quarantine-status.md)されます。 このトークンのサイズは 1 KB 未満である必要があります。  
+OAuth コード付与フローの手順は次のとおりです。
+1. ユーザーは Azure portal にサインインし、[エンタープライズ アプリケーショ] > [アプリケーションの選択] > [プロビジョニング] > [承認] の順にクリックします。
+2. ユーザーは Azure portal によって、承認 URL (サード パーティのアプリのサインイン ページ) にリダイレクトされます。
+3. 管理者は、サード パーティのアプリケーションに資格情報を提供します。 
+4. サード パーティのアプリによってユーザーが Azure portal にリダイレクトし戻され、付与コードが提供されます。 
+5. Azure AD プロビジョニング サービスによって、トークン URL が呼び出され、付与コードが提供されます。 サード パーティのアプリケーションから、アクセス トークン、更新トークン、有効期限が含まれた応答が返されます。
+6. プロビジョニング サイクルが開始されると、サービスによって現在のアクセス トークンが有効かどうかが確認され、必要に応じて新しいトークンと交換されます。 アクセス トークンは、アプリに対して行われた各要求で提供され、要求の有効性は各要求の前に確認されます。
+
+> [!NOTE]
+> 現在、ギャラリー以外のアプリケーションで OAuth を設定することはできませんが、承認サーバーからアクセス トークンを手動で生成し、ギャラリー以外のアプリケーションのシークレット トークンのフィールドに入力することができます。 これにより、OAuth コード付与がサポートされるアプリ ギャラリーにオンボードする前に、SCIM サーバーと Azure AD SCIM クライアントとの互換性を確認できます。  
+
+**有効期間が長い OAuth ベアラー トークン:** アプリケーションで OAuth 認証コード付与フローがサポートされていない場合は、管理者がプロビジョニング統合のセットアップに使用できる、有効期間が長い OAuth ベアラー トークンを生成することもできます。 トークンは永続的である必要があり、そうでない場合、トークンの有効期限が切れるとプロビジョニング ジョブが[検疫](application-provisioning-quarantine-status.md)されます。
 
 追加の認証および承認方法については、[UserVoice](https://aka.ms/appprovisioningfeaturerequest) にご連絡ください。
 
@@ -1233,3 +1241,4 @@ OAuth v1 は、クライアント シークレットの露出が原因で、サ�
 * [ユーザー プロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 * [アカウント プロビジョニング通知](user-provisioning.md)
 * [SaaS アプリを統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+

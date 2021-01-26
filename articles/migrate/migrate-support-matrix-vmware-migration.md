@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869101"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968451"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -39,9 +42,9 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 **VMware** | **詳細**
 --- | ---
-**VMware vCenter サーバー** | バージョン 5.5、6.0、6.5、または 6.7。
-**VMware vSphere ESXI ホスト** | バージョン 5.5、6.0、6.5、または 6.7。
-**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、vCenter Server で次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse**:VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.LowLevelFileOperations**: データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking**:VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Configuration.DiskLease**:VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskAccess**: (特に vSphere 6.0 以降) VDDK を使用したディスクのランダム読み取りアクセス用に VM 上のディスクを開くことを許可します。<br/><br/> - **VirtualMachine.Provisioning.ReadOnlyDiskAccess**: VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess**: VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.VirtualMachineDownload**: VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.SnapshotManagement\*** : レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - **Virtual Machine.Interaction.Power Off**:Azure への移行中に VM の電源をオフにすることを許可します。
+**VMware vCenter サーバー** | バージョン 5.5、6.0、6.5、6.7、7.0。
+**VMware vSphere ESXI ホスト** | バージョン 5.5、6.0、6.5、6.7、7.0。
+**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、vCenter Server で次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse** ([データストア] -> [データストアの参照]):VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.FileManagement** ([データストア] -> [低レベルのファイル操作]):データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Config.ChangeTracking** ([仮想マシン] -> [ディスク変更の追跡]):VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Config.DiskLease** ([仮想マシン] -> [ディスクのリース]):VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomRead** ([仮想マシン] -> [プロビジョニング] -> [読み取り専用ディスク アクセスの許可]):VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess** ([仮想マシン] -> [プロビジョニング] -> [ディスク アクセスの許可]):VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.GetVmFiles** ([仮想マシン] -> [プロビジョニング] -> [仮想マシンのダウンロードの許可]):VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.State.\* *_ ([仮想マシン] -> [スナップショット管理]):レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - _* VirtualMachine.Interact.PowerOff** ([仮想マシン] -> [相互作用] -> [パワーオフ]):Azure への移行中に VM の電源をオフにすることを許可します。
 
 
 
@@ -53,10 +56,10 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **サポートされているオペレーティング システム** | Azure でサポートされている [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](../virtual-machines/linux/endorsed-distros.md) オペレーティング システムを移行できます。
 **Azure での Windows VM** | 場合によっては、移行前に VM に[いくつかの変更を加える](prepare-for-migration.md#verify-required-changes-before-migrating)必要があります。 
-**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8。 その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
+**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
 **Linux ブート** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
-**UEFI ブート** | UEFI ブートを使用した VM の移行はサポートされません。
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
+**UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
+**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 32 TB。
 **ディスクの制限** |  VM あたり最大 60 台のディスク。
 **暗号化されたディスクまたはボリューム** | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。
 **共有ディスク クラスター** | サポートされていません。
@@ -68,9 +71,9 @@ VMware VM は、次のいくつかの方法で移行できます。
 **ストレージ vMotion** | サポートされていません。 VM でストレージ vMotion を使用している場合、レプリケーションは機能しません。
 **チーミングされた NIC** | サポートされていません。
 **IPv6** | サポートされていません。
-**ターゲット ディスク** | VM は、Azure 内のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
+**ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
 **同時レプリケーション** | vCenter Server あたり 300 台の VM。 それ以上ある場合は、300 台単位のバッチで移行します。
-
+**Azure VM エージェントの自動インストール (Windows エージェント)** | Windows Server 2008 R2 以降でサポートされています。
 
 ### <a name="appliance-requirements-agentless"></a>アプライアンスの要件 (エージェントレス)
 
@@ -116,9 +119,10 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **ネットワークとストレージ** | 最新情報については、Site Recovery の[ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#network)と[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#storage)の前提条件を確認してください。 Azure Migrate の場合も、ネットワークとストレージの要件は同じです。
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 VMware の移行に関する要件は、Azure Migrate の場合も同じです。
 **モビリティ サービス** | 移行対象となる各 VM に、Mobility Service エージェントがインストールされている必要があります。
-**UEFI ブート** | サポートされています。
-**ターゲット ディスク** | VM は、Azure 内のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
+**UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
+**UEFI - セキュア ブート**         | 移行はサポートされません。
+**ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
+**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 32 TB。
 **ディスクの制限** |  VM あたり最大 63 台のディスク。
 **暗号化されたディスクまたはボリューム** | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。
 **共有ディスク クラスター** | サポートされていません。
@@ -168,7 +172,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
 FC ディスク | サポートされていません。 
 BitLocker | サポートされていません。<br/><br/> マシンを移行する前に、BitLocker を無効にする必要があります。
 VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。 
-移行後の接続 - Windows | 移行後に、Windows が実行されている Azure VM に接続するには:<br/><br/> - 移行前に、オンプレミス VM で RDP を有効にします。<br/><br/> TCP と UDP の規則が **[パブリック]** プロファイルに追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間 VPN アクセスの場合は、RDP を有効にし、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** で**ドメイン ネットワークとプライベート ネットワーク**の RDP を許可します。<br/><br/> さらに、オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](prepare-for-migration.md)。
+移行後の接続 - Windows | 移行後に、Windows が実行されている Azure VM に接続するには:<br/><br/> - 移行前に、オンプレミス VM で RDP を有効にします。<br/><br/> TCP と UDP の規則が **[パブリック]** プロファイルに追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間 VPN アクセスの場合は、RDP を有効にし、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** で **ドメイン ネットワークとプライベート ネットワーク** の RDP を許可します。<br/><br/> さらに、オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](prepare-for-migration.md)。
 移行後の接続 - Linux | 移行後に、SSH を使用して Azure VM に接続するには:<br/><br/> 移行前に、オンプレミスのマシンで、Secure Shell サービスが [開始] に設定されていることと、ファイアウォール規則で SSH 接続が許可されていることを確認します。<br/><br/> フェールオーバー後の Azure VM で、フェールオーバーされた VM とその接続先の Azure サブネットのネットワーク セキュリティ グループ規則について、SSH ポートへの受信接続を許可します。<br/><br/> さらに、VM のパブリック IP アドレスを追加します。  
 
 

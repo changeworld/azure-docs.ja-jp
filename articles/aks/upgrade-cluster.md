@@ -3,17 +3,17 @@ title: Azure Kubernetes Service (AKS) クラスターのアップグレード
 description: Azure Kubernetes Service (AKS) クラスターをアップグレードして最新の機能とセキュリティ更新プログラムを入手する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/17/2020
+ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050620"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734354"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
-AKS クラスターのライフサイクルの一環として、最新の Kubernetes バージョンへのアップグレードが必要になることはよくあります。 最新の Kubernetes セキュリティ リリースを適用するか、アップグレードして最新の機能を入手することが重要です。 この記事では、AKS クラスター内のマスター コンポーネントまたは 1 つの既定のノード プールをアップグレードする方法について説明します。
+AKS クラスター ライフサイクルの一部には、最新の Kubernetes バージョンへの定期的なアップグレードの実行が含まれます。 最新のセキュリティ リリースを適用するか、アップグレードして最新の機能を入手することが重要です。 この記事では、AKS クラスター内のマスター コンポーネントまたは 1 つの既定のノード プールをアップグレードする方法について説明します。
 
 複数のノード プールまたは Windows Server ノードを使用する AKS クラスターについては、[AKS 内のノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
@@ -26,32 +26,31 @@ AKS クラスターのライフサイクルの一環として、最新の Kubern
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>利用できる AKS クラスターのアップグレードを確認する
 
-ご使用のクラスターに利用できる Kubernetes リリースを確認するには、[az aks get-upgrades][az-aks-get-upgrades] コマンドを使用します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myAKSCluster* という名前のクラスターに対して利用できるアップグレードを確認します。
+ご使用のクラスターに利用できる Kubernetes リリースを確認するには、[az aks get-upgrades][az-aks-get-upgrades] コマンドを使用します。 次の例では、*myResourceGroup* で *myAKSCluster* への使用可能なアップグレードを確認します。
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 > [!NOTE]
-> サポートされている AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、*1.12.x* -> *1.13.x* または *1.13.x* -> *1.14.x* の間のアップグレードは許可されていますが、*1.12.x* -> *1.14.x* は許可されていません。
->
-> *1.12.x* -> *1.14.x* にアップグレードするには、まず *1.12.x* -> *1.13.x* にアップグレードしてから、*1.13.x* -> *1.14.x* にアップグレードします。
->
-> 複数のバージョンは、サポートされていないバージョンからサポートされているバージョンにアップグレードする場合にのみスキップできます。 たとえば、サポートされていない *1.10. x* からサポートされている *1.15.x* へのアップグレードは完了できます。
+> サポートされている AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 すべてのアップグレードは、メジャー バージョン番号で順番に実行する必要があります。 たとえば、*1.14.x* -> *1.15.x* または *1.15.x* -> *1.16.x* の間のアップグレードは許可されていますが、*1.14.x* -> *1.16.x* は許可されていません。 
+> > 複数のバージョンのスキップは、"_サポートされていないバージョン_" から "_サポートされているバージョン_" にアップグレードする場合にのみ可能です。 たとえば、サポートされていない *1.10.x* からサポートされている *1.15.x* へのアップグレードは実行することができます。
 
-次の出力例は、クラスターをバージョン *1.13.9* と *1.13.10* にアップグレードできることを示しています。
+次の出力例は、クラスターをバージョン *1.19.1* と *1.19.3* にアップグレードできることを示しています。
 
 ```console
-Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
--------  ----------------  ---------------  -----------------  ---------------
-default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
+Name     ResourceGroup    MasterVersion    Upgrades
+-------  ---------------  ---------------  --------------
+default  myResourceGroup  1.18.10          1.19.1, 1.19.3
 ```
-アップグレードが利用できない場合は、次のように表示されます。
+
+アップグレードが利用できない場合は、次のメッセージが表示されます。
+
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-## <a name="customize-node-surge-upgrade-preview"></a>ノード サージ アップグレードのカスタマイズ (プレビュー)
+## <a name="customize-node-surge-upgrade"></a>ノード サージ アップグレードのカスタマイズ
 
 > [!Important]
 > ノード サージには、アップグレード操作ごとに、要求された最大サージ カウントに対するサブスクリプション クォータが必要です。 たとえば、クラスターに 5 つのノード プールがあり、そのそれぞれに 4 つのノードが含まれる場合、合計で 20 個のノードがあります。 各ノード プールの最大サージ値が 50% の場合、アップグレードを完了するには、10 ノード (2 ノード * 5 プール) の追加のコンピューティングおよび IP クォータが必要です。
@@ -65,30 +64,6 @@ AKS は、既定で、1 つの追加ノードを使用してサージ操作す�
 AKS では、最大サージに対して整数値とパーセント値の両方を受け入れます。 たとえば、整数 "5" は、サージする 5 つの追加ノードを示します。 値 "50%" は、プール内の現在のノード数の半分のサージ値を示します。 最大サージ パーセント値には、最低 1%、最大 100% の値を指定できます。 パーセント値は、最も近いノード数に切り上げられます。 アップグレード時に最大サージ値が現在のノード数より小さい場合、現在のノード数が最大サージ値に使用されます。
 
 アップグレード中、最大サージ値には、最小値を 1 とし、最大値をノード プール内のノード数とする値を指定することができます。 より大きな値を設定することもできますが、最大サージに使用されるノードの最大数は、アップグレード時のプール内のノードの数を超えることはありません。
-
-### <a name="set-up-the-preview-feature-for-customizing-node-surge-upgrade"></a>ノード サージ アップグレードをカスタマイズするためのプレビュー機能の設定
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePreview"
-```
-
-登録には数分かかります。 次のコマンドを使用して、機能が登録されていることを確認します。
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MaxSurgePreview')].{Name:name,State:properties.state}"
-```
-
-プレビュー中、最大サージを使用するには、*aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 > [!Important]
 > ノード プールの最大サージ設定は永続的です。  以降の Kubernetes アップグレードまたはノード バージョンのアップグレードでは、この設定が使用されます。 ノード プールの最大サージ値はいつでも変更できます。 運用ノード プールの場合は、最大サージ設定を 33% にすることをお勧めします。
@@ -107,7 +82,12 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS クラスターのアップグレード
 
-AKS クラスターに利用できるバージョンの一覧を参照し、[az aks upgrade][az-aks-upgrade] コマンドを使用してアップグレードします。 アップグレード プロセス中に、AKS は指定された Kubernetes バージョンを実行する新しいノードをクラスターに追加した後、実行中のアプリケーションへの中断を最小限に抑えるために古いノードのいずれかを慎重に[切断およびドレイン][kubernetes-drain]します。 新しいノードが実行中のアプリケーション ポッドとして確認されたら、その古いノードが削除されます。 このプロセスは、クラスター内のすべてのノードがアップグレードされるまで繰り返されます。
+AKS クラスターに利用できるバージョンの一覧を参照し、[az aks upgrade][az-aks-upgrade] コマンドを使用してアップグレードします。 アップグレード プロセス中、AKS によって次のことが行われます。 
+- 指定された Kubernetes バージョンを実行するクラスターに 1 つの新しいバッファー ノード (または[最大サージ](#customize-node-surge-upgrade)に構成されている数のノード) が追加されます。 
+- 実行中のアプリケーションの中断を最小限に抑えるために、古いノードのいずれかの[切断とドレイン][kubernetes-drain]が実行されます (最大サージを使用している場合は、指定されたバッファー ノードの数と同じ数のノードの[切断とドレイン][kubernetes-drain]が同時に実行されます)。 
+- 古いノードが完全にドレインされると、新しいバージョンを受け取るための再イメージ化が実行され、次にアップグレードされるノード用のバッファー ノードになります。 
+- このプロセスは、クラスター内のすべてのノードがアップグレードされるまで繰り返されます。 
+- プロセスの最後に、最後にバッファー ノードが削除され、既存のエージェント ノードの数とゾーン バランスが維持されます。
 
 ```azurecli-interactive
 az aks upgrade \
@@ -118,8 +98,9 @@ az aks upgrade \
 
 ノード数にもよりますが、クラスターのアップグレードには数分かかります。
 
-> [!NOTE]
-> クラスターのアップグレードについては、完了までの合計許容時間があります。 この時間は `10 minutes * total number of nodes in the cluster` の積を取得することによって計算されます。 たとえば、20 ノードのクラスターでは、アップグレード操作が 200 分で成功する必要があります。それを超えた場合は、AKS によって操作が失敗します。これは、クラスターが回復不能な状態になるのを回避するためです。 アップグレードの失敗から回復するには、タイムアウトに達した後にアップグレード操作を再試行してください。
+> [!IMPORTANT]
+> `PodDisruptionBudgets` (PDB) で一度に少なくとも 1 つのポッド レプリカを確実に移動できるようにします。そうしない場合、ドレインまたは強制削除操作は失敗します。
+> ドレイン操作が失敗した場合、アプリケーションが中断されないように、アップグレード操作は設計によって失敗します。 操作を停止させる原因 (間違った PDB やクォータの不足など) を解消し、操作をやり直してください。
 
 アップグレードが成功したことを確認するには、[az aks show][az-aks-show] コマンドを使用します。
 
@@ -131,8 +112,58 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded            myakscluster-dns-379cbbb9.hcp.eastus.azmk8s.io
+```
+
+## <a name="set-auto-upgrade-channel"></a>自動アップグレード チャネルを設定する
+
+クラスターの手動アップグレードに加え、クラスターに自動アップグレード チャネルを設定できます。 次のアップグレード チャネルを使用できます。
+
+|チャネル| アクション | 例
+|---|---|---|
+| `none`| 自動アップグレードを無効にし、クラスターをその現行バージョンの Kubernetes で維持します。| 既定の設定 (変更されていない場合)|
+| `patch`| サポートされる最新版のパッチが利用できるようになったとき、それにクラスターを自動アップグレードします。マイナー バージョンはそのまま維持されます。| たとえば、クラスターでバージョン *1.17.7* を実行しているとき、バージョン *1.17.9*、*1.18.4*、*1.18.6*、*1.19.1* が利用できる場合、クラスターは *1.17.9* にアップグレードされます。|
+| `stable`| マイナー バージョン *N-1* でサポートされる最新のパッチ リリースにクラスターが自動アップグレードされます。*N* はサポートされる最新のマイナー バージョンです。| たとえば、クラスターでバージョン *1.17.7* を実行しているとき、バージョン *1.17.9*、*1.18.4*、*1.18.6*、*1.19.1* が利用できる場合、クラスターは *1.18.6* にアップグレードされます。
+| `rapid`| サポートされる最新のマイナー バージョンでサポートされる最新のパッチ リリースにクラスターが自動アップグレードされます。| クラスターの Kubernetes バージョンが *N-2* マイナー バージョンの位置にある場合 (*N* はサポートされる最新のマイナー バージョン)、クラスターはまず、*N-1* マイナー バージョンでサポートされる最新のパッチ バージョンにアップグレードされます。 たとえば、クラスターでバージョン *1.17.7* を実行しているとき、バージョン *1.17.9*、*1.18.4*、*1.18.6*、*1.19.1* が利用できる場合、クラスターはまず *1.18.6* にアップグレードされ、その後、*1.19.1* にアップグレードされます。
+
+> [!NOTE]
+> クラスターの自動アップグレードは Kubernetes の GA バージョンにのみアップグレードされ、プレビュー バージョンに更新されることはありません。
+
+クラスターの自動アップグレードは、クラスターの手動アップグレードを同じプロセスに従います。 詳細については、「[AKS クラスターのアップグレード][upgrade-cluster]」を参照してください。
+
+AKS クラスターのクラスター自動アップグレードはプレビュー機能です。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+`AutoUpgradePreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+クラスターの作成時に自動アップグレード チャネルを設定するには、次の例のように、*auto-upgrade-channel* パラメーターを使用します。
+
+```azurecli-interactive
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
+```
+
+既存のクラスターに自動アップグレード チャネルを設定するには、次の例のように、*auto-upgrade-channel* パラメーターを更新します。
+
+```azurecli-interactive
+az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -151,6 +182,10 @@ myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded      
 [az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[upgrade-cluster]:  #upgrade-an-aks-cluster

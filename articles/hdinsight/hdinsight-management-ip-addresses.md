@@ -7,26 +7,34 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 08/11/2020
+ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778262"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549040"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
+この記事では、Azure HDInsight の正常性サービスと管理サービスで使用される IP アドレスの一覧を示します。 ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用する場合、受信ネットワーク トラフィックの許可リストにこれらの IP アドレスの一部を追加することが必要になる場合があります。
+
+## <a name="introduction"></a>はじめに
+ 
 > [!Important]
-> ほとんどの場合で、IP アドレスを手動で追加する代わりに、ネットワーク セキュリティ グループに[サービス タグ](hdinsight-service-tags.md)機能を使用できるようになりました。 新しいリージョンはサービス タグに対してのみ追加され、静的 IP アドレスは最終的に非推奨になります。
+> ほとんどの場合で、IP アドレスを手動で追加する代わりに、ネットワーク セキュリティ グループに[サービス タグ](hdinsight-service-tags.md)を使用できるようになりました。 新しい Azure リージョンの IP アドレスは発行されず、これらは発行されたサービス タグのみを持ちます。 管理 IP アドレス用の静的 IP アドレスは、最終的には非推奨となります。
 
 ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用して HDInsight クラスターへの受信トラフィックを制御する場合は、クラスターが Azure の重要な正常性サービスと管理サービスと通信できるようにする必要があります。  これらのサービスで使用される IP アドレスは、一部がリージョン固有であり、一部がすべての Azure リージョンに適用されます。 カスタム DNS を使用していない場合は、必要に応じて Azure DNS サービスからのトラフィックも許可します。
+
+ここに記載されていないリージョンの IP アドレスが必要な場合は、 [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用して、お客様のリージョンの IP アドレスを見つけることができます。 API を使用できない場合、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
+
+HDInsight では、クラスターの作成とスケーリングに関するこれらの規則の検証を行い、さらにエラーが発生しないようにします。 検証が成功しなかった場合、作成とスケーリングは失敗します。
 
 次のセクションでは、許可する必要がある特定の IP アドレスについて説明します。
 
 ## <a name="azure-dns-service"></a>Azure DNS サービス
 
-Azure で提供される DNS サービスを使用している場合は、ポート 53 上の __168.63.129.16__ からのアクセスを許可します。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。 カスタムの DNS を使用している場合は、この手順をスキップします。
+Azure で提供される DNS サービスを使用している場合は、TCP と UDP の両方に対して、ポート 53 上の __168.63.129.16__ へのアクセスを許可します。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。 カスタムの DNS を使用している場合は、この手順をスキップします。
 
 ## <a name="health-and-management-services-all-regions"></a>正常性サービスと管理サービス:すべてのリージョン
 
@@ -53,7 +61,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 | オーストラリア | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 受信 |
 | &nbsp; | オーストラリア南東部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 受信 |
 | ブラジル | ブラジル南部 | 191.235.84.104</br>191.235.87.113 | \*:443 | 受信 |
-| カナダ | カナダ東部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 受信 |
+| Canada | カナダ東部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 受信 |
 | &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 |\*:443 | 受信 |
 | 中国 | 中国北部 | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*:443 | 受信 |
 | &nbsp; | 中国東部 | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | 受信 |
@@ -72,15 +80,16 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 | &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | \*:443 | 受信
 | イギリス | 英国西部 | 51.141.13.110</br>51.141.7.20 | \*:443 | 受信 |
 | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | \*:443 | 受信 |
-| 米国 | 米国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 受信 |
+| United States | 米国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 受信 |
 | &nbsp; | 米国東部 | 13.82.225.233</br>40.71.175.99 | \*:443 | 受信 |
 | &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | \*:443 | 受信 |
 | &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 受信 |
 | &nbsp; | 米国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 受信 |
 | &nbsp; | 米国西部 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | 受信 |
 | &nbsp; | アラブ首長国連邦北部 | 65.52.252.96</br>65.52.252.97 | \*:443 | 受信 |
+| &nbsp; | アラブ首長国連邦中部 | 20.37.76.96</br>20.37.76.99 | \*:443 | 受信 |
 
-Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
+Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](../azure-government/compare-azure-government-global-azure.md)」をご覧ください。
 
 詳細については、[ネットワーク トラフィックのコントロール](./control-network-traffic.md)に関する記事を参照してください。
 

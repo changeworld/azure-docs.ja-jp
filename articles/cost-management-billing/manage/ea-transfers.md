@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/11/2020
 ms.author: banders
-ms.openlocfilehash: fdbeaaf255277765c77900c10339dd3d473b590f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f5555662c6cb5f44be3959ec3d22d1cf1953674d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686923"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030095"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure エンタープライズ転送
 
@@ -93,9 +94,13 @@ Azure 前払いは、登録間で転送を行うことはできません。 Azur
 
 アカウントまたは加入契約の転送中にダウンタイムは発生しません。 必要な情報がすべて指定されている場合は、要求どおりの日に完了できます。
 
-## <a name="change-account-owner"></a>アカウント所有者を変更する
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>エンタープライズ サブスクリプションを従量課金制サブスクリプションに譲渡する
 
-Azure EA Portal では、アカウント所有者間でサブスクリプションを転送できます。 詳細については、「[Change account owner (アカウント所有者を変更する)](ea-portal-get-started.md#change-account-owner)」を参照してください。
+従量課金制料金の個々のサブスクリプションにエンタープライズ サブスクリプションを譲渡するには、Azure エンタープライズ ポータルで新しいサポート リクエストを作成する必要があります。 サポート リクエストを作成するには、 **[ヘルプとサポート]** 領域の **[+ 新しいサポート リクエスト]** を選択します。
+
+## <a name="change-azure-subscription-or-account-ownership"></a>Azure サブスクリプションまたはアカウントの所有権を変更する
+
+Azure EA Portal では、アカウント所有者間でサブスクリプションを転送できます。 詳細については、「[Azure サブスクリプションまたはアカウントの所有権を変更する](ea-portal-administration.md#change-azure-subscription-or-account-ownership)」をご覧ください。
 
 ## <a name="subscription-transfer-effects"></a>サブスクリプションを転送した場合の影響
 

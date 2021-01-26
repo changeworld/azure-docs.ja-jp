@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286463"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020931"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>チュートリアル:Azure Time Series Insights Gen2 環境を設定する
 
@@ -38,7 +38,7 @@ ms.locfileid: "87286463"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 少なくとも、Azure サブスクリプションに対する**共同作成者**ロールが必要です。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+* 少なくとも、Azure サブスクリプションに対する **共同作成者** ロールが必要です。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
 
@@ -68,7 +68,7 @@ ms.locfileid: "87286463"
 
    [![デバイス シミュレーション ソリューションのプロビジョニング完了。](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
-1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した**ソリューション名**を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
+1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した **ソリューション名** を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
 
    [![デバイス シミュレーションのリソース。](media/v2-update-provision/tsi-device-sim-solution-resources.png)](media/v2-update-provision/tsi-device-sim-solution-resources.png#lightbox)
 
@@ -91,8 +91,8 @@ ms.locfileid: "87286463"
     | **リソース グループ** | Azure Time Series Insights Gen2 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループとは、Azure リソース用のコンテナーです。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じリソース グループを使用します。 |
     | **場所** | Azure Time Series Insights Gen2 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、デバイス シミュレーターによって作成された IoT ハブと同じリージョン内に Azure Time Series Insights Gen2 環境を作成することをお勧めします。 |
     | **レベル** |  **[Gen2 (L1)]** を選択します。 これは、Azure Time Series Insights Gen2 製品の SKU です。 |
-    | **Time Series ID property name\(時系列 ID のプロパティ名\)** | 時系列インスタンスを一意に識別する値を含むプロパティの名前を入力します。 時系列 ID として **[プロパティ名]** ボックスに入力する値は後で変更できません。 このチュートリアルでは、「***iothub-connection-device-id***」と入力します。複合時系列 ID を含む、時系列 ID の詳細については、「[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)」を参照してください。 |
-    | **Storage account name \(ストレージ アカウント名\)** | 新しいストレージ アカウント用のグローバルな一意名を入力します。|
+    | **Time Series ID property name\(時系列 ID のプロパティ名\)** | 時系列インスタンスを一意に識別する値を含むプロパティの名前を入力します。 時系列 ID として **[プロパティ名]** ボックスに入力する値は後で変更できません。 このチュートリアルでは、「**_iothub-connection-device-id_* _」と入力します。 複合時系列 ID を含む、時系列 ID の詳細については、「[時系列 ID の選択のベスト プラクティス](./how-to-select-tsid.md)」を参照してください。 |
+    | _ *ストレージ アカウント名** | 新しいストレージ アカウント用のグローバルな一意名を入力します。|
     | **ストレージ アカウントの種類** | 新しいストレージ アカウントのストレージの種類を選択します。 StorageV2 をお勧めします|
     | **ストレージ アカウントのレプリケーション** | 新しいストレージ アカウントのストレージの種類を選択します。 選択した場所に基づいて、LRS、GRS、ZRS から選択できます。 このチュートリアルでは、LRS を選択できます|
     | **階層構造の名前空間** |このオプションは、ストレージの種類に [StorageV2] を選択すると選択できます。 既定では無効になっています。 このチュートリアルでは、既定の *[無効]* 状態のままにしておくことができます|
@@ -117,7 +117,7 @@ ms.locfileid: "87286463"
    | **IoT Hub name (IoT ハブの名前)** | デバイス シミュレーター用に作成した IoT ハブの名前を選択します。 |
    | **IoT Hub access policy (IoT ハブのアクセス ポリシー)** | **[iothubowner]** を選びます。 |
    | **IoT Hub コンシューマー グループ** | **[New]\(新規\)** を選択し、一意の名前を入力します。次に、 **[+ Add]\(追加\)** を選択します。 コンシューマー グループは、Azure Time Series Insights Gen2 で一意の値である必要があります。 |
-   | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで**タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Azure Time Series Insights Gen2 の既定の設定です。 |
+   | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで **タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Azure Time Series Insights Gen2 の既定の設定です。 |
 
 1. **[確認および作成]** を選択します。
 
@@ -143,7 +143,7 @@ ms.locfileid: "87286463"
 
    1. ご自分の資格情報が表示されることを確認します。
 
-      ご自分の資格情報が表示されない場合は、[追加] を選択し、資格情報を検索することにより、環境にアクセスするためのアクセス許可を自分自身に付与する必要があります。 アクセス許可の設定について詳しくは、「[データ アクセスの許可](./time-series-insights-data-access.md)」を参照してください。
+      ご自分の資格情報が表示されない場合は、[追加] を選択し、資格情報を検索することにより、環境にアクセスするためのアクセス許可を自分自身に付与する必要があります。 アクセス許可の設定について詳しくは、「[データ アクセスの許可](./concepts-access-policies.md)」を参照してください。
 
 ## <a name="stream-data"></a>データをストリーム配信する
 
@@ -177,7 +177,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
 ## <a name="analyze-data"></a>データを分析する
 
-このセクションでは、[Azure Time Series Insights Gen2 エクスプローラー](./time-series-insights-update-explorer.md)を使用して、時系列データの基本的な分析を実行します。
+このセクションでは、[Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)を使用して、時系列データの基本的な分析を実行します。
 
 1. [Azure portal](https://portal.azure.com/) のリソース ページで URL を選択して、Azure Time Series Insights Gen2 エクスプローラーに移動します。
 
@@ -199,7 +199,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
     [![すべての時系列のグラフ。](media/v2-update-provision/tsi-explorer-add-three-instances.png)](media/v2-update-provision/tsi-explorer-add-three-instances.png#lightbox)
 
-1. 右上にある時間範囲ピッカーを選択します。 ここでは、特定の開始時刻と終了時刻をミリ秒単位で選択したり、**過去 30 分**などの事前構成済みオプションから選択したりできます。 既定のタイム ゾーンを変更することもできます。
+1. 右上にある時間範囲ピッカーを選択します。 ここでは、特定の開始時刻と終了時刻をミリ秒単位で選択したり、**過去 30 分** などの事前構成済みオプションから選択したりできます。 既定のタイム ゾーンを変更することもできます。
 
     [![時間の範囲を過去 30 分に設定します。](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png)](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png#lightbox)
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510518"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368340"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "88510518"
 
 サブスクリプションをお持ちでない場合は、次の手順を実行します。
 
-1. サブスクライブして翻訳リソースを作成します。 「[翻訳にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup)」に従ってサブスクライブし、翻訳キーを取得します。
+1. サブスクライブして翻訳リソースを作成します。 「[翻訳にサインアップする方法](../translator-how-to-signup.md)」に従ってサブスクライブし、翻訳キーを取得します。
 2. 翻訳サブスクリプション用のキーをメモします。 Key1、Key2 のいずれかを利用できます。
 3. Custom Translator ポータルに戻ります。
 
@@ -51,6 +51,8 @@ ms.locfileid: "88510518"
 
     ![[新しいワークスペースの作成] ダイアログ](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>カスタム翻訳ツールでは、 [対応 VNET](../../../api-management/api-management-using-with-vnet.md) 内に作成された Translator Text API リソース (別名: Azure サブスクリプション キー) 用のワークスペースを作成することはできません。
 
 ### <a name="modify-existing-key"></a>既存のキーを変更する
 
@@ -61,7 +63,7 @@ ms.locfileid: "88510518"
 
 3. ダイアログに翻訳サブスクリプション用のキーを入力し、[保存] ボタンをクリックします。
 
-    ![サブスクリプション キーを追加する方法](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![サブスクリプション キーを追加する方法のダイアログ](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>ワークスペースを管理する
 

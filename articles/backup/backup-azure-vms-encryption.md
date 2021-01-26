@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611298"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547153"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
@@ -16,13 +16,17 @@ ms.locfileid: "88611298"
 
 ## <a name="encryption-using-platform-managed-keys"></a>プラットフォーム マネージド キーを使用した暗号化
 
-既定では、VM 内のすべてのディスクは、[Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) を使用するプラットフォーム マネージド キー (PMK) を使用して、保存時に自動的に暗号化されます。 目的とする暗号化をサポートするために必要な特定の操作は行わずに、Azure Backup を使用して、これらの VM をバックアップできます。 プラットフォーム マネージド キーを使用した暗号化の詳細については、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)を参照してください。
+既定では、VM 内のすべてのディスクは、[Storage Service Encryption](../storage/common/storage-service-encryption.md) を使用するプラットフォーム マネージド キー (PMK) を使用して、保存時に自動的に暗号化されます。 目的とする暗号化をサポートするために必要な特定の操作は行わずに、Azure Backup を使用して、これらの VM をバックアップできます。 プラットフォーム マネージド キーを使用した暗号化の詳細については、[こちらの記事](../virtual-machines/disk-encryption.md#platform-managed-keys)を参照してください。
 
 ![暗号化されたディスク](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した暗号化
 
-カスタム マネージド キー (CMK) を使用してディスクを暗号化する場合は、ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ユーザーによって管理されます。 CMK を使用する Storage Service Encryption (SSE) は、Azure Disk Encryption (ADE) 暗号化とは異なります。 ADE では、オペレーティング システムの暗号化ツールを使用します。 SSE では、ストレージ サービス内のデータを暗号化することで、VM に任意の OS またはイメージを使用できます。 カスタマー マネージド キーを使用したマネージド ディスクの暗号化の詳細については、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)を参照してください。
+カスタマー マネージド キー (CMK) を使用してディスクを暗号化する場合は、ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ユーザーによって管理されます。 CMK を使用する Storage Service Encryption (SSE) は、Azure Disk Encryption (ADE) 暗号化とは異なります。 ADE では、オペレーティング システムの暗号化ツールを使用します。 SSE では、ストレージ サービス内のデータを暗号化することで、VM に任意の OS またはイメージを使用できます。
+
+ディスクの暗号化にカスタマー マネージド キーを使用する VM のバックアップまたは復元を行うために、明示的な操作は必要ありません。 コンテナーに格納されているこれらの VM のバックアップ データは、[コンテナーで使用される暗号化](encryption-at-rest-with-cmk.md)と同じ方法で暗号化されます。
+
+カスタマー マネージド キーを使用したマネージド ディスクの暗号化の詳細については、[こちらの記事](../virtual-machines/disk-encryption.md#customer-managed-keys)を参照してください。
 
 ## <a name="encryption-support-using-ade"></a>ADE を使用した暗号化のサポート
 
@@ -114,12 +118,12 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 Azure Backup では、キーとシークレット、および関連付けられた VM がバックアップするために、読み取り専用のアクセス権が必要です。
 
-- ご利用の Key Vault は、Azure サブスクリプションの Azure AD テナントに関連付けられます。 **メンバー ユーザー**の場合は、さらに操作しなくても、Azure Backup によって Key Vault へのアクセス権が取得されます。
-- **ゲスト ユーザー**の場合は、キー コンテナーにアクセスするために、Azure Backup にアクセス許可を提供する必要があります。
+- ご利用の Key Vault は、Azure サブスクリプションの Azure AD テナントに関連付けられます。 **メンバー ユーザー** の場合は、さらに操作しなくても、Azure Backup によって Key Vault へのアクセス権が取得されます。
+- **ゲスト ユーザー** の場合は、キー コンテナーにアクセスするために、Azure Backup にアクセス許可を提供する必要があります。
 
 アクセス許可を設定するには
 
-1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー**を検索します。
+1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー** を検索します。
 1. バックアップをしている暗号化された VM と関連付けられたキー コンテナーを選択します。
 1. **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加]** の順に選択します。
 
@@ -127,7 +131,7 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 
 1. **[アクセス ポリシーの追加]**  > 、 **[テンプレートからの構成 (省略可能)]** で、 **[Azure Backup]** を選択します。
     - **[キーのアクセス許可]** と **[シークレットのアクセス許可]** に、必要なアクセス許可が事前入力されます。
-    - VM が **BEK のみ**を使用して暗号化される場合、シークレットのみを対象としたアクセス許可が必要なため、 **[キーのアクセス許可]** の選択を解除する必要があります。
+    - VM が **BEK のみ** を使用して暗号化される場合、シークレットのみを対象としたアクセス許可が必要なため、 **[キーのアクセス許可]** の選択を解除する必要があります。
 
     ![Azure Backup の選択](./media/backup-azure-vms-encryption/select-backup-template.png)
 
@@ -139,7 +143,7 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 
 ## <a name="restore-an-encrypted-vm"></a>暗号化された VM を復元する
 
-暗号化された VM は、下の説明のとおり、VM ディスクを復元することでのみ復元できます。 **既存の置換**と **VM の復元**はサポートされていません。
+暗号化された VM は、下の説明のとおり、VM ディスクを復元することでのみ復元できます。 **既存の置換** と **VM の復元** はサポートされていません。
 
 暗号化された VM を次のように復元します。
 

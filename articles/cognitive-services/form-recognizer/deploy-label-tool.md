@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717899"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359848"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -77,7 +77,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [ユーザー名] (省略可能) - ユーザー名を作成します。 
    * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
    * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
-   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
+   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
 
     # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
@@ -86,8 +86,8 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
    * [ユーザー名] (省略可能) - ユーザー名を作成します。 
    * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
-   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` に設定します
-   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
+   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview` に設定します
+   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
     
     ---
@@ -100,9 +100,12 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 > [!NOTE]
 > Web アプリを作成するときに、承認と認証を構成することもできます。 これは、開始するために必要なことではありません。 
 
+> [!IMPORTANT]
+> Web アプリが `https` アドレスで表示されるようにするために、TLS を有効にしなければならない場合があります。 [TLS エンドポイントを有効にする](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl)ための手順に従って、Web アプリの TLS/SSL を有効にするサイドカー コンテナーを設定してください。
+
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
+Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
 
 このコマンドについて知っておくべきことがいくつかあります。
 
@@ -136,7 +139,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -149,7 +152,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>承認のために Azure AD に接続する
 
-Web アプリを Azure Active Directory に接続することをお勧めします。 これにより、有効な資格情報を持つユーザーのみがサインインして Web アプリを使用できるようになります。 [App Service アプリの構成](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)に関する記事の手順に従って、Azure Active Directory に接続します。
+Web アプリを Azure Active Directory に接続することをお勧めします。 これにより、有効な資格情報を持つユーザーのみがサインインして Web アプリを使用できるようになります。 [App Service アプリの構成](../../app-service/configure-authentication-provider-aad.md)に関する記事の手順に従って、Azure Active Directory に接続します。
 
 ## <a name="open-source-on-github"></a>GitHub でのオープンソース
 

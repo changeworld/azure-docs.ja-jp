@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857417"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822320"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
 
-この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
+この記事では、[Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "82857417"
   
 * IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows) を使用します。
   
-* Azure Toolkit for IntelliJ。 「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)」を参照してください。
+* Azure Toolkit for IntelliJ。 「[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/installation)」を参照してください。
 
 * HDInsight クラスターに接続します。 [HDInsight クラスターへの接続](apache-spark-intellij-tool-plugin.md)に関するページを参照してください。
 
@@ -128,19 +128,19 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](./apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](../hdinsight-apache-spark-create-standalone-application.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](./apache-spark-create-standalone-application.md)
 * [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
 * [Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](./apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)

@@ -1,17 +1,17 @@
 ---
 title: メトリック アラートを構成する - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal から Azure Database for MariaDB のメトリック アラートを構成およびアクセスする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e108ca3aa346af20b31ff446130014e1250f49c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120077"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541081"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -27,7 +27,7 @@ ms.locfileid: "86120077"
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 監視 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>メトリックのアラート ルールを作成する
 1. [Azure portal](https://portal.azure.com/) で、監視する Azure Database for MariaDB サーバーを選択します。
@@ -52,7 +52,7 @@ ms.locfileid: "86120077"
    
    完了したら、 **[完了]** を選択します。
 
-   ![メトリックを選択する](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![メトリック 2 を選択する](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. **[アクション グループ]** セクション内で **[新規作成]** を選択して、アラートの通知を受信する新しいグループを作成します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "86120077"
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-    ![アクション グループ](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![アクション グループ 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 
@@ -80,10 +80,10 @@ ms.locfileid: "86120077"
 アラートを作成したら、それを選択して次のアクションを実行できます。
 
 * このアラートに関連するメトリックのしきい値と、前日の実際の値を示すグラフを表示する。
-* アラート ルールを**編集**または**削除**する。
-* アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
+* アラート ルールを **編集** または **削除** する。
+* アラートを **無効** にしてアラートを一時的に停止する、または **有効** にして通知の受け取りを再開する。
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
-* [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
+* [メトリック収集の概要](../azure-monitor/platform/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。

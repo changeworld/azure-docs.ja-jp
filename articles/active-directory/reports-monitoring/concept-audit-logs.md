@@ -13,26 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995983"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
 環境の動作状況を判断するために必要な情報は、Azure Active Directory (Azure AD) レポートで入手できます。
+
+
 
 このレポート アーキテクチャは、次のコンポーネントで構成されます。
 
 - **アクティビティ** 
     - **サインイン** - [サインイン レポート](concept-sign-ins.md)は、マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報を提供します。
     - **監査ログ** - Azure AD 内のさまざまな機能によって行われたすべての変更についてログによる追跡可能性を提供します。 監査ログの例として、ユーザー、アプリ、グループ、ロール、ポリシーの追加や削除など、Azure AD 内のあらゆるリソースに加えられた変更があります。
+    - **プロビジョニング ログ** - [プロビジョニング ログ](./concept-provisioning-logs.md)によって、プロビジョニング サービスによるアクティビティの監視 (ServiceNow のグループや Workday からインポートされたユーザーの作成など) が可能になります。 
 - **Security** 
     - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
@@ -41,11 +44,11 @@ ms.locfileid: "89229924"
  
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 
-* **セキュリティ管理者**、**セキュリティ閲覧者**、**レポート閲覧者**、**グローバル閲覧者**、または**全体管理者**のロールのユーザー
+* **セキュリティ管理者**、**セキュリティ閲覧者**、**レポート閲覧者**、**グローバル閲覧者**、または **全体管理者** のロールのユーザー
 
 ## <a name="audit-logs"></a>監査ログ
 
-Azure AD の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。 監査レポートにアクセスするには、**Azure Active Directory** の **[監視]** セクションで **[監査ログ]** を選択します。 監査ログでは最大 1 時間の待ち時間が生じる可能性があることに注意してください。そのため、タスクが完了した後、監査アクティビティ データがポータルに表示されるまでにそれだけ長い時間がかかる場合があります。
+Azure AD の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。 監査レポートにアクセスするには、**Azure Active Directory** の **[監視]** セクションで **[監査ログ]** を選択します。 
 
 
 
@@ -53,7 +56,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 
 - 発生の日付と時刻
 - 発生をログに記録したサービス
-- アクティビティの名前とカテゴリ (*何か*を指す) 
+- アクティビティの名前とカテゴリ (*何か* を指す) 
 - アクティビティの状況 (成功または失敗)
 - ターゲット
 - アクティビティのイニシエーターまたはアクター ("だれが" を指す)
@@ -62,15 +65,15 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 
 リスト ビューをカスタマイズするには、ツール バーの **[列]** をクリックします。
 
-![監査ログ](./media/concept-audit-logs/columns.png "監査ログ")
+![列の監査](./media/concept-audit-logs/columns.png "列の監査")
 
 これで、追加のフィールドの表示または既に表示されているフィールドの削除ができます。
 
-![監査ログ](./media/concept-audit-logs/columnselect.png "監査ログ")
+![フィールドの削除](./media/concept-audit-logs/columnselect.png "フィールドの削除")
 
 詳細な情報を取得するには、リスト ビューで項目を選択します。
 
-![監査ログ](./media/concept-audit-logs/details.png "監査ログ")
+![項目の選択](./media/concept-audit-logs/details.png "項目の選択")
 
 
 ## <a name="filtering-audit-logs"></a>監査ログのフィルター処理
@@ -85,7 +88,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 - 開始者 (アクター)
 - 期間
 
-![監査ログ](./media/concept-audit-logs/filter.png "監査ログ")
+![オブジェクトのフィルタリング](./media/concept-audit-logs/filter.png "Filter オブジェクト")
 
 **[サービス]** フィルターでは、次のサービスのドロップダウン リストから選択できます。
 
@@ -157,7 +160,7 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 
 また、 **[ダウンロード]** ボタンを選択して、フィルターされたデータ (最大 250,000 個のレコード) をダウンロードすることもできます。 CSV 形式または JSON 形式でログをダウンロードできます。 ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。
 
-![監査ログ](./media/concept-audit-logs/download.png "監査ログ")
+![データをダウンロードする](./media/concept-audit-logs/download.png "データをダウンロードする")
 
 ## <a name="audit-logs-shortcuts"></a>監査ログのショートカット
 
@@ -188,11 +191,11 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 
 ユーザーに関連する監査データだけを確認する場合は、 **[ユーザー]** タブの **[監視]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。このエントリ ポイントには、事前選択カテゴリとして **UserManagement** があります。
 
-![監査ログ](./media/concept-audit-logs/users.png "監査ログ")
+![User](./media/concept-audit-logs/users.png "User")
 
 グループに関連する監査データだけを確認する場合は、 **[グループ]** タブの **[監視]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。このエントリ ポイントには、事前選択カテゴリとして **GroupManagement** があります。
 
-![監査ログ](./media/concept-audit-logs/groups.png "監査ログ")
+![グループのフィルタリング](./media/concept-audit-logs/groups.png "グループのフィルタリング")
 
 ### <a name="enterprise-applications-audit-logs"></a>エンタープライズ アプリケーションの監査ログ
 
@@ -206,13 +209,13 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 
 お使いのアプリケーションに関連する監査データを確認する場合は、 **[エンタープライズ アプリケーション]** ブレードの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。 このエントリ ポイントには、 **[アクティビティの種類]** として **[エンタープライズ アプリケーション]** があらかじめ選択されています。
 
-![監査ログ](./media/concept-audit-logs/enterpriseapplications.png "監査ログ")
+![エンタープライズ アプリケーション](./media/concept-audit-logs/enterpriseapplications.png "エンタープライズ アプリケーション")
 
-## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 のアクティビティ ログ
 
-Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
+Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
 
-[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

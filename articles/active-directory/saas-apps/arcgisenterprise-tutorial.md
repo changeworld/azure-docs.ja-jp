@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549614"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>チュートリアル: Azure Active Directory と ArcGIS Enterprise の統合
 
@@ -27,7 +27,7 @@ ArcGIS Enterprise と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して ArcGIS Enterprise に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -68,7 +68,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 4. 検索ボックスに「**ArcGIS Enterprise**」と入力し、結果パネルで **[ArcGIS Enterprise]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の ArcGIS Enterprise](common/search-new-app.png)
+    ![結果一覧の ArcGIS Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -104,7 +104,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\) のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`<EXTERNAL_DNS_NAME>.portal` の形式で URL を入力します。
 
@@ -112,7 +112,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\) のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin` という形式で URL を入力します。
 
@@ -125,7 +125,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>ArcGIS Enterprise でシングル サインオンを構成する
 
-1. ArcGIS Enterprise 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. ArcGIS Enterprise 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -138,27 +138,27 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 1. **[組織] > [設定の編集]** を選択します。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure1.png)
+    ![ArcGIS Enterprise の [組織] タブが表示されているスクリーンショット。[設定の編集] が強調表示されています。](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. **[セキュリティ]** タブを選びます。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure2.png)
+    ![[セキュリティ] タブが選択されている画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. **[Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\)** セクションまで下へスクロールして **[SET ENTERPRISE LOGIN]\(エンタープライズ ログインの設定\)** を選択します。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure3.png)
+    ![[Set Enterprise Login]\(エンタープライズ ログインの設定\) を選択できる [Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. **[Set Identity Provider]\(ID プロバイダーの設定\)** セクションで、次の手順に従います。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure4.png)
+    ![ここで説明されている手順の実行場所となる [Set Identity Provider]\(ID プロバイダーの設定\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. **[名前]** テキスト ボックスに、**Azure Active Directory Test** のような名前を指定します。
 
     b. **[URL]** ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
     c. **[詳細設定の表示]** をクリックし、**[エンティティ ID]** の値をコピーして、Azure Portal の **[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\)** セクションの **[識別子]** テキスト ボックスに貼り付けます。
-    
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure5.png)
+
+    ![エンティティ ID を取得して ID プロバイダーを更新する画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. **[ID プロバイダーの更新]** をクリックします。
 
@@ -179,7 +179,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -218,19 +218,18 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 このセクションでは、Britta Simon というユーザーを ArcGIS Enterprise に作成します。 ArcGIS Enterprise では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ArcGIS Enterprise にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [ArcGIS Enterprise のサポート チーム](mailto:support@esri.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[ArcGIS Enterprise のサポート チーム](mailto:support@esri.com)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [ArcGIS Enterprise] タイルをクリックすると、SSO を設定した ArcGIS Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [ArcGIS Enterprise] タイルをクリックすると、SSO を設定した ArcGIS Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -4,12 +4,12 @@ description: 統合タスクに最適化された Microsoft クラウド サー�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809971"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934868"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure における統合と自動化の適切なサービスを選ぶ
 
@@ -41,7 +41,7 @@ Power Automate を使用すると、オフィスの従業員がだれでも、�
 | **デザイン ツール** |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | **アプリケーション ライフサイクル管理 (ALM)** |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します |Azure DevOps: [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) におけるソース管理、テスト、サポート、自動化、管理 |
 | **管理者向けエクスペリエンス** |Microsoft Power Automate 環境とデータ損失防止 (DLP) ポリシーの管理、ライセンスの追跡: [管理センター](https://admin.flow.microsoft.com) |リソース グループ、接続、アクセス管理、およびログ記録の管理: [Azure Portal](https://portal.azure.com) |
-| **Security** |Office 365 セキュリティ/コンプライアンスの監査ログ、DLP、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure によるセキュリティ保証:[Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| **Security** |Microsoft 365 セキュリティ監査ログ、DLP、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure によるセキュリティ保証:[Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions と Azure Logic Apps の比較
 
@@ -78,9 +78,9 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 
 |  | 関数 | WebJobs と WebJobs SDK |
 | --- | --- | --- |
-|**[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケーリング](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と [自動スケーリング](event-driven-scaling.md)**|✔||
 |**[ブラウザーでの開発とテスト](functions-create-first-azure-function.md)** |✔||
-|**[従量課金制の価格](functions-scale.md#consumption-plan)**|✔||
+|**[従量課金制の価格](consumption-plan.md)**|✔||
 |**[Logic Apps との統合](functions-twitter-email.md)**|✔||
 | **イベントのトリガー** |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | **サポートされている言語**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|

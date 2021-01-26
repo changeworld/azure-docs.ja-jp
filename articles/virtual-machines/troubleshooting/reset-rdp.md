@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832452"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200925"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
 Windows 仮想マシン (VM) に接続できない場合は、ご自分のローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 パスワードをリセットするには、Azure portal を使用するか、Azure PowerShell で VM アクセス拡張機能を使用します。 VM にサインインした後、そのローカル管理者のパスワードをリセットします。  
@@ -86,14 +86,14 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
     > [!TIP]
     > 同時に VM に存在する VM アクセス エージェント数は 1 つのみです。 VM アクセス エージェントのプロパティを設定するには、`-ForceRerun` オプションを使用します。 `-ForceRerun` を使用する際は、以前のコマンドで使用したのと同じ名前を VM アクセス エージェントに使用してください。
 
-1. それでも仮想マシンにリモート接続できない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 Windows ドメイン コントローラーへの接続を失った場合は、ドメイン コントローラーのバックアップから復元する必要があります。
+1. それでも仮想マシンにリモート接続できない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md)に関するページを参照してください。 Windows ドメイン コントローラーへの接続を失った場合は、ドメイン コントローラーのバックアップから復元する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure VM アクセス拡張機能が応答せず、パスワードをリセットできない場合は、[オフラインのローカル Windows パスワードをリセット](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できます。 この方法はより高度であり、問題のある VM の仮想ハード ディスクを別の VM に接続する必要があります。 最初に、この記事に記載されている手順を実行し、これらの手順でうまくいかない場合にのみ、オフラインのパスワードをリセットする方法をお試しください。
+- Azure VM アクセス拡張機能が応答せず、パスワードをリセットできない場合は、[オフラインのローカル Windows パスワードをリセット](reset-local-password-without-agent.md)できます。 この方法はより高度であり、問題のある VM の仮想ハード ディスクを別の VM に接続する必要があります。 最初に、この記事に記載されている手順を実行し、これらの手順でうまくいかない場合にのみ、オフラインのパスワードをリセットする方法をお試しください。
 
-- [Azure VM 拡張機能とその機能について学習します](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+- [Azure VM 拡張機能とその機能について学習します](../extensions/features-windows.md)。
 
 - [RDP または SSH を使用して Azure Virtual Machines に接続します](/previous-versions/azure/dn535788(v=azure.100))。
 
-- [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティングを行います](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+- [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティングを行います](troubleshoot-rdp-connection.md)。

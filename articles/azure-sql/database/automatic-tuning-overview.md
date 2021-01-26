@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: d2a00be4d08a7a2dfa8e11a22593d017d184a368
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982713"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500871"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での自動チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,7 +46,7 @@ Azure SQL Database のデータベースに適用されるチューニング操�
 
 ![自動チューニングのしくみ](./media/automatic-tuning-overview/how-does-automatic-tuning-work.png)
 
-Azure SQL Database の自動チューニングの核となるロジックは、データベース エンジンの SQL Server 自動チューニング機能でも使用されています。 組み込みインテリジェンスのしくみに関する技術的な情報の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。
+Azure SQL Database の自動チューニングの核となるロジックは、データベース エンジンの SQL Server 自動チューニング機能でも使用されています。 組み込みインテリジェンスのしくみに関する技術的な情報の詳細については、[SQL Server の自動チューニング](/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。
 
 自動チューニングのしくみの概要と一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
 
@@ -54,8 +54,8 @@ Azure SQL Database の自動チューニングの核となるロジックは、�
 
 ## <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
-- [Azure SQL Database の自動チューニングは Azure portal で有効にするか](automatic-tuning-enable.md)、または [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL ステートメントを使用します。
-- Azure SQL Managed Instance の自動チューニングを有効にするには、[ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL ステートメントを使用します。
+- [Azure SQL Database の自動チューニングは Azure portal で有効にするか](automatic-tuning-enable.md)、または [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL ステートメントを使用します。
+- Azure SQL Managed Instance の自動チューニングを有効にするには、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL ステートメントを使用します。
 
 ## <a name="automatic-tuning-options"></a>自動チューニング オプション
 
@@ -69,7 +69,7 @@ Azure SQL Database および Azure SQL Managed Instance で使用可能な自動
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database の自動チューニング
 
-Azure SQL Database の自動チューニングでは、**CREATE INDEX**、**DROP INDEX**、**FORCE LAST GOOD PLAN** データベース アドバイザーの推奨設定を使用して、データベースのパフォーマンスが最適化されます。 詳細については、[Azure portal での Database Advisor の推奨事項](database-advisor-find-recommendations-portal.md)、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)、および [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) を参照してください。
+Azure SQL Database の自動チューニングでは、**CREATE INDEX**、**DROP INDEX**、**FORCE LAST GOOD PLAN** データベース アドバイザーの推奨設定を使用して、データベースのパフォーマンスが最適化されます。 詳細については、[Azure portal での Database Advisor の推奨事項](database-advisor-find-recommendations-portal.md)、[PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)、および [REST API](/rest/api/sql/serverautomatictuning) を参照してください。
 
 Azure portal を使用してチューニングの推奨事項を手動で適用するか、または自動チューニングでチューニングの推奨事項を自律的に適用することができます。 システムで自律的にチューニングの推奨事項を適用する利点は、ワークロードのパフォーマンスが向上することが自動的に検証されることです。パフォーマンスの顕著な向上が検出されない場合、チューニングの推奨事項は自動的に元に戻されます。 頻繁に実行されないクエリがチューニングの推奨事項によって影響を受ける場合、設計上、検証フェーズに最大で 72 時間かかる可能性があることに注意してください。
 
@@ -90,7 +90,7 @@ T-SQL を使用してチューニングの推奨事項を適用する場合は�
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の自動チューニング
 
-SQL Managed Instance の自動チューニングでは、**FORCE LAST GOOD PLAN** のみがサポートされます。 T-SQL による自動チューニング オプションの構成の詳細については、[自動チューニングでの自動プラン修正の導入](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)と[自動プラン修正](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)に関するページを参照してください。
+SQL Managed Instance の自動チューニングでは、**FORCE LAST GOOD PLAN** のみがサポートされます。 T-SQL による自動チューニング オプションの構成の詳細については、[自動チューニングでの自動プラン修正の導入](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)と[自動プラン修正](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

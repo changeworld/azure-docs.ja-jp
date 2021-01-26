@@ -4,12 +4,12 @@ description: この記事では、コンテナー用の Azure Monitor で Azure 
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99c4ecb6c8b77f1576f25816ba486ed262249c32
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489488"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695701"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
 
@@ -35,7 +35,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->テンプレートはクラスターの同じリソース グループ内にデプロイする必要があります。 このテンプレートの使用時にその他のいずれかのプロパティまたはアドオンを省略すると、それらがクラスターから削除される場合があります。 たとえば、ご利用のクラスターに実装されている RBAC ポリシーの "*enableRBAC*" が挙げられるほか、AKS クラスターにタグが指定されている場合は "*aksResourceTagValues*" が該当します。  
+>テンプレートはクラスターの同じリソース グループ内にデプロイする必要があります。 このテンプレートの使用時にその他のいずれかのプロパティまたはアドオンを省略すると、それらがクラスターから削除される場合があります。 たとえば、ご利用のクラスターに実装されている Kubernetes RBAC ポリシーの *enableRBAC* が挙げられるほか、AKS クラスターにタグが指定されている場合は *aksResourceTagValues* が該当します。  
 >
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
@@ -135,7 +135,7 @@ Linux 上で Azure CLI を使用して次のコマンドを実行してソリュ
 ```azurecli
 az login   
 az account set --subscription "Subscription Name"
-az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
+az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
 設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが返されます。

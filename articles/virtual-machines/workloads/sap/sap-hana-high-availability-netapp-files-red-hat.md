@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 030677276fa077c06a95e7c677fec956b9c2a947
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556189"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489209"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性
 
@@ -93,9 +94,9 @@ ms.locfileid: "88556189"
 
 ## <a name="overview"></a>概要
 
-従来、スケールアップ環境では、SAP HANA のすべてのファイル システムはローカル ストレージからマウントされていました。 Red Hat Enterprise Linux での SAP HANA システム レプリケーションの高可用性のセットアップは、[RHEL での SAP HANA システムレプリケーションのセットアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)に関するガイドで公開されています。
+従来、スケールアップ環境では、SAP HANA のすべてのファイル システムはローカル ストレージからマウントされていました。 Red Hat Enterprise Linux での SAP HANA システム レプリケーションの高可用性のセットアップは、[RHEL での SAP HANA システムレプリケーションのセットアップ](./sap-hana-high-availability-rhel.md)に関するガイドで公開されています。
 
-[Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) NFS 共有でスケールアップ システムの SAP HANA 高可用性を実現するには、1 つのノードで ANF 上の NFS 共有へのアクセスが失われたときに HANA リソースが回復するために、追加のリソース構成がクラスターに必要です。  クラスターは NFS マウントを管理して、リソースの正常性を監視できるようにします。 ファイル システム マウントと SAP HANA リソース間の依存関係が適用されます。  
+[Azure NetApp Files](../../../azure-netapp-files/index.yml) NFS 共有でスケールアップ システムの SAP HANA 高可用性を実現するには、1 つのノードで ANF 上の NFS 共有へのアクセスが失われたときに HANA リソースが回復するために、追加のリソース構成がクラスターに必要です。  クラスターは NFS マウントを管理して、リソースの正常性を監視できるようにします。 ファイル システム マウントと SAP HANA リソース間の依存関係が適用されます。  
 
 ![ANF での SAP HANA HA スケールアップ](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,29 +126,29 @@ SAP HANA システム レプリケーションの構成では、専用の仮想�
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>Azure NetApp Files インフラストラクチャの設定
 
-Azure NetApp Files インフラストラクチャの設定を続行する前に、Azure [NetApp Files のドキュメント](https://docs.microsoft.com/azure/azure-netapp-files/)の内容をよく理解しておいてください。
+Azure NetApp Files インフラストラクチャの設定を続行する前に、Azure [NetApp Files のドキュメント](../../../azure-netapp-files/index.yml)の内容をよく理解しておいてください。
 
 Azure NetApp Files はいくつかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)で利用できます。 選択した Azure リージョンで Azure NetApp Files が提供されているかどうかを確認してください。
 
 Azure リージョン別に Azure NetApp Files を利用できるかどうかについては、[NetApp Files を利用できる Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)に関するページをご覧ください。
 
-Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登録する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)」の手順に従って、Azure NetApp Files へのオンボードを要求してください。
+Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登録する](../../../azure-netapp-files/azure-netapp-files-register.md)」の手順に従って、Azure NetApp Files へのオンボードを要求してください。
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ
 
-以下の手順では、お使いの [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内にデプロイする必要があります。
+以下の手順では、お使いの [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内にデプロイする必要があります。
 
-1. リソースをまだデプロイしていない場合は、[Azure NetApp Files へのオンボード](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)を要求してください。
+1. リソースをまだデプロイしていない場合は、[Azure NetApp Files へのオンボード](../../../azure-netapp-files/azure-netapp-files-register.md)を要求してください。
 
-2. 「[NetApp アカウントを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)」の手順に従って、選択した Azure リージョンに NetApp アカウントを作成します。
+2. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」の手順に従って、選択した Azure リージョンに NetApp アカウントを作成します。
 
-3.  [Azure NetApp Files の容量プールの設定](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。
+3.  [Azure NetApp Files の容量プールの設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。
 
-    この記事で示されている HANA アーキテクチャでは、"*Ultra* サービス" レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure 上の HANA ワークロードの場合、Azure NetApp Files の *Ultra* または *Premium* [サービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)を使用することをお勧めします。
+    この記事で示されている HANA アーキテクチャでは、"*Ultra* サービス" レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure 上の HANA ワークロードの場合、Azure NetApp Files の *Ultra* または *Premium* [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。
 
-4.  「[サブネットを Azure NetApp Files に委任する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)」の手順に従って、サブネットを Azure NetApp Files に委任します。
+4.  「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の手順に従って、サブネットを Azure NetApp Files に委任します。
 
-5.  「[Azure NetApp Files の NFS ボリュームを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。
+5.  「[Azure NetApp Files の NFS ボリュームを作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。
 
     ボリュームをデプロイするときは、NFSv4.1 バージョンを必ず選択してください。 指定された Azure NetApp Files のサブネット内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。
 
@@ -171,10 +172,10 @@ SAP HANA スケールアップ システム用の Azure NetApp Files を作成�
 
 - 最小容量のプールは 4 テビバイト (TiB) です。
 - 最小ボリューム サイズは 100 ギビバイト (GiB) です。
-- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)内に存在する必要があります。
+- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](../../../virtual-network/virtual-network-peering-overview.md)内に存在する必要があります。
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
-- Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。
-- Azure NetApp Files の[エクスポート ポリシー](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)では、ユーザーが制御できるのは、許可されたクライアントと、アクセスの種類 (読み取りと書き込み、読み取り専用など) です。
+- Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。
+- Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアントと、アクセスの種類 (読み取りと書き込み、読み取り専用など) です。
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、その機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。
 
 > [!IMPORTANT]
@@ -182,7 +183,7 @@ SAP HANA スケールアップ システム用の Azure NetApp Files を作成�
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>Azure NetApp Files での HANA データベースのサイズ指定
 
-Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)」に記載されているように、ボリューム サイズとサービス レベルの機能です。
+Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム サイズとサービス レベルの機能です。
 
 Azure で SAP 用のインフラストラクチャを設計するときは、SAP による最小ストレージ要件に注意する必要があります。これは、最小スループット特性につながります。
 
@@ -190,7 +191,7 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
 - /hana/data での読み取りアクティビティは、16 MB および 64 MB の I/O サイズで、400 MB/秒以上。
 - /hana/data での書き込みアクティビティは、16 MB および 64 MB の I/O サイズで、250 MB/秒以上。
 
-ボリューム クォータの 1 TiB あたりの [Azure NetApp Files スループットの上限](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)は次のとおりです。
+ボリューム クォータの 1 TiB あたりの [Azure NetApp Files スループットの上限](../../../azure-netapp-files/azure-netapp-files-service-levels.md)は次のとおりです。
 
 - Premium Storage 層 - 64 MiB/秒
 - Ultra Storage 層 - 128 MiB/秒
@@ -227,6 +228,13 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
 5.  仮想マシン 1 (**hanadb1**) を作成します。 
 6.  仮想マシン 2 (**hanadb2**) を作成します。  
 7.  仮想マシンの作成中は、すべてのマウント ポイントが Azure NetApp Files の NFS 共有にあるため、ディスクは追加しません。 
+
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。    
+
+> [!NOTE] 
+> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。
+
 8.  Standard Load Balancer を使用している場合は、次の構成手順に従います。
     1.  まず、フロントエンド IP プールを作成します。
         1.  ロード バランサーを開き、 **[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
@@ -244,7 +252,7 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
     1.  次に、正常性プローブを作成します。
         1.  ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
         1.  新しい正常性プローブの名前を入力します (例: **hana-hp**)。
-        1.  プロトコルとして [TCP] を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+        1.  プロトコルとして [TCP] を選択し、ポート 625 **03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
         1.  **[OK]** を選択します。
     1.  次に、負荷分散規則を作成します。
         1.  ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
@@ -255,8 +263,6 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
         1.  **Floating IP を有効にします**。
         1.  **[OK]** を選択します。
 
-> [!NOTE] 
-> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」を参照してください。
 
 9. または、Basic Load Balancer を使用するシナリオの場合は、次の構成手順に従います。
     1.  ロードバランサーを構成します。 まず、フロントエンド IP プールを作成します。
@@ -275,40 +281,40 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
     1.  次に、正常性プローブを作成します。
         1.  ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
         1.  新しい正常性プローブの名前を入力します (例: **hana-hp**)。
-        1.  プロトコルとして **[TCP]** を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+        1.  プロトコルとして **[TCP]** を選択し、ポート 625 **03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
         1.  **[OK]** を選択します。
     1.  SAP HANA 1.0 の場合は、負荷分散規則を作成します。
         1.  ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-        1.  新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**15)。
+        1.  新しいロード バランサー規則の名前を入力します (例: hana-lb-3 **03** 15)。
         1.  前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
-        1.  **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 15 を入力します。
+        1.  **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3 **03** 15 を入力します。
         1.  **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
         1.  **Floating IP を有効にします**。
         1.  **[OK]** を選択します。
-        1.  ポート 3**03**17 について、これらの手順を繰り返します。
+        1.  ポート 3 **03** 17 について、これらの手順を繰り返します。
     1.  SAP HANA 2.0 の場合は、システム データベースの負荷分散規則を作成します。
         1.  ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-        1.  新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**13)。
+        1.  新しいロード バランサー規則の名前を入力します (例: hana-lb-3 **03** 13)。
         1.  前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
-        1.  **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 13 を入力します。
+        1.  **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3 **03** 13 を入力します。
         1.  **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
         1.  **Floating IP を有効にします**。
         1.  **[OK]** を選択します。
-        1.  ポート 3**03**14 について、これらの手順を繰り返します。
+        1.  ポート 3 **03** 14 について、これらの手順を繰り返します。
     1.  SAP HANA 2.0 の場合は、まずテナント データベースの負荷分散規則を作成します。
         1.  ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
-        1.  新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**40)。
+        1.  新しいロード バランサー規則の名前を入力します (例: hana-lb-3 **03** 40)。
         1.  前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
-        1.  **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 40 を入力します。
+        1.  **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3 **03** 40 を入力します。
         1.  **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
         1.  **Floating IP を有効にします**。
         1.  **[OK]** を選択します。
-        1.  ポート 3**03**41 と 3**03**42 について、これらの手順を繰り返します。
+        1.  ポート 3 **03** 41 と 3 **03** 42 について、これらの手順を繰り返します。
 
 SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント データベース](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) ガイドの[テナント データベースへの接続](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)に関する章または SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694) を参照してください。
 
 > [!IMPORTANT]
-> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) も参照してください。
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](../../../load-balancer/load-balancer-custom-probe-overview.md)」を参照してください。 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) も参照してください。
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Azure NetApp Files ボリュームのマウント
 
@@ -457,7 +463,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 ## <a name="configure-sap-hana-system-replication"></a>SAP HANA システム レプリケーションの構成
 
-[SAP HANA システム レプリケーション](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication)のセットアップの手順に従って、SAP HANA システム レプリケーションを構成します。 
+[SAP HANA システム レプリケーション](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication)のセットアップの手順に従って、SAP HANA システム レプリケーションを構成します。 
 
 ## <a name="cluster-configuration"></a>クラスター構成
 
@@ -465,7 +471,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 ### <a name="create-a-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
-「[Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)」の手順に従って、この HANA サーバーに対して基本的な Pacemaker クラスターを作成します。
+「[Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする](./high-availability-guide-rhel-pacemaker.md)」の手順に従って、この HANA サーバーに対して基本的な Pacemaker クラスターを作成します。
 
 ### <a name="configure-filesystem-resources"></a>Filesystem リソースの構成
 
@@ -540,7 +546,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA クラスター リソースの構成
 
-1. 「[SAP HANA クラスター リソースの作成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources)」の手順に従って、クラスターに SAP HANA リソースを作成します。 SAP HANA リソースを作成したら、SAP HANA リソースとファイル システム (NFS マウント) の間に場所ルール制約を作成する必要があります。
+1. 「[SAP HANA クラスター リソースの作成](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources)」の手順に従って、クラスターに SAP HANA リソースを作成します。 SAP HANA リソースを作成したら、SAP HANA リソースとファイル システム (NFS マウント) の間に場所ルール制約を作成する必要があります。
 
 2. **[1]** SAP HANA リソースと NFS マウント間の制約の構成
 
@@ -548,13 +554,18 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
     ```
     pcs constraint location SAPHanaTopology_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 7.x
     pcs constraint location SAPHana_HN1_03-master rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 8.x
+    pcs constraint location SAPHana_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
     # Take the cluster out of maintenance mode
     sudo pcs property set maintenance-mode=false
     ```
 
    クラスターとすべてのリソースの状態のチェック
-
+   > [!NOTE]
+   > この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+   
     ```
     sudo pcs status
     
@@ -682,4 +693,4 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   [RHEL での SAP HANA システム レプリケーションのセットアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)に関するページで説明されているテストも実行して、SAP HANA クラスター構成を十分にテストすることをお勧めします。   
+   [RHEL での SAP HANA システム レプリケーションのセットアップ](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)に関するページで説明されているテストも実行して、SAP HANA クラスター構成を十分にテストすることをお勧めします。

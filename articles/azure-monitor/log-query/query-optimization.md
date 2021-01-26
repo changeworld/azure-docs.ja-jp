@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a817c12a367d7c14f693389920e49b368a35cc06
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565725"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522874"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -52,6 +52,8 @@ Log Analytics でクエリを実行した後、クエリ結果の上にある下
 
 ## <a name="total-cpu"></a>合計 CPU
 すべてのクエリ処理ノードでこのクエリを処理するために実際に投入されたコンピューティング CPU です。 ほとんどのクエリは多数のノード上で実行されるため、通常、これはクエリの実行に実際にかかった期間よりもはるかに大きくなります。 
+
+CPU を 100 秒以上活用するクリエは、リソースを過度に消費するクエリと見なされます。 CPU を 1,000 秒以上活用するクリエはリソースを酷使するクエリと見なされ、調整されることがあります。
 
 クエリの処理時間は以下に費やされます。
 - データ取得 - 古いデータの取得には、最近のデータの取得よりも時間がかかります。
@@ -96,18 +98,34 @@ SecurityEvent
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+場合によっては、フィルター処理が行われる対象はフィールドだけではないため、評価済みの列がクエリ処理エンジンによって暗黙的に作成されます。
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>効果的な集計コマンドおよびディメンションを summarize と join で使用する
 
@@ -176,6 +194,8 @@ SecurityEvent
 ## <a name="data-used-for-processed-query"></a>処理されたクエリに使用するデータ
 
 クエリの処理における重要な要因は、クエリ処理のためにスキャン、使用されるデータの量です。 Azure Data Explorer では、他のデータ プラットフォームと比べ、データ量を大幅に削減する積極的な最適化が使用されています。 それでも、クエリには、使用されるデータ量に影響を与える可能性のある重要な要因があります。
+
+2,000KB を超えるデータを処理するクリエは、リソースを過度に消費するクエリと見なされます。 20,000KB を超えるデータを処理するクリエはリソースを酷使するクエリと見なされ、調整されることがあります。
 
 Azure Monitor ログでは、データにインデックスを付ける手段として、**TimeGenerated** 列が使用されます。 **TimeGenerated** の値をできるだけ狭い範囲に絞り込むと、処理すべきデータの量がかなり制限されることで、クエリのパフォーマンスが大幅に向上します。
 
@@ -275,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-上の例でサブクエリの使用を回避できない場合は、別の方法として [materialize() 関数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)を使用して、それぞれに使用される単一のソース データが存在することについてクエリ エンジンにヒントを提供します。 これは、クエリ内で複数回使用される関数からソース データが取得される場合に便利です。
+上の例でサブクエリの使用を回避できない場合は、別の方法として [materialize() 関数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)を使用して、それぞれに使用される単一のソース データが存在することについてクエリ エンジンにヒントを提供します。 これは、クエリ内で複数回使用される関数からソース データが取得される場合に便利です。 materialize は、サブクエリの出力が入力よりもはるかに小さい場合に有効です。 クエリ エンジンによって、すべての発生において出力がキャッシュされ再利用されます。
 
 
 
@@ -299,6 +319,8 @@ SecurityEvent
 ## <a name="time-span-of-the-processed-query"></a>処理されたクエリの期間
 
 Azure Monitor ログ内のすべてのログは、**TimeGenerated** 列に従ってパーティション分割されます。 アクセスされるパーティションの数は、期間に直接関係します。 時間範囲を短縮することは、迅速なクエリ実行を確実にするための最も効率的な方法となります。
+
+期間が 15 日間を超えるクエリは、リソースを過度に消費するクエリと見なされます。 期間が 90 日間を超えるクエリはリソースを酷使するクエリと見なされ、調整されることがあります。
 
 時間範囲は、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](scope.md#time-range)」で説明されているように、Log Analytics 画面で時間範囲セレクターを使用して設定できます。 選択した時間範囲がクエリ メタデータを使用してバックエンドに渡されるため、この方法をお勧めします。 
 
@@ -389,6 +411,9 @@ Heartbeat
 ## <a name="age-of-processed-data"></a>処理されたデータの期間
 Azure Data Explorer では、インメモリ、ローカルの SSD ディスク、さらに処理速度の遅い Azure BLOB という複数のストレージ層が使用されています。 データが新しいほど、待ち時間が短い、より高性能な層に格納される確率が高くなり、クエリ期間と CPU が低減されます。 システムには、データ自体に加え、メタデータ用のキャッシュもあります。 データが古くなるほど、メタデータがキャッシュ内に存在する確率が低くなります。
 
+14 日以上が経過しているデータを処理するクリエは、リソースを過度に消費するクエリと見なされます。
+
+
 クエリによっては古いデータの使用が必要な場合がありますが、古いデータが誤って使用されるケースもあります。 これは、メタデータに時間範囲を指定せずにクエリを実行した際に、一部のテーブル参照に **TimeGenerated** 列に対するフィルターが含まれていない場合に発生します。 このような場合、システムによって、そのテーブルに格納されているすべてのデータがスキャンされます。 データ保有期間が長い場合は、データ保有期間と同じ長い時間範囲 (したがって古いデータ) が対象となることがあります。
 
 たとえば、次のようなケースがあります。
@@ -408,6 +433,8 @@ Azure Data Explorer では、インメモリ、ローカルの SSD ディスク�
 リージョンをまたがるクエリを実行するには、通常はクエリの最終結果よりはるかに大きい、バックエンドの中間データ チャンクをシステムでシリアル化して転送する必要があります。 また、最適化、ヒューリスティック、キャッシュの利用を行うためのシステムの機能も制限されます。
 これらのリージョンすべてをスキャンする理由がない場合は、対象のリージョンが絞り込まれるようにスコープを調整する必要があります。 リソースのスコープが最小化されても、多くのリージョンが使用されている場合は、構成の誤りが原因で生じる可能性があります。 たとえば、監査ログと診断設定が異なるリージョンにある別々のワークスペースに送信されたり、診断設定の構成が複数存在したりします。 
 
+リージョンが 3 つ以上にまたがるクリエは、リソースを過度に消費するクエリと見なされます。 リージョンが 6 つ以上にまたがるクリエはリソースを酷使するクエリと見なされ、調整されることがあります。
+
 > [!IMPORTANT]
 > 1 つのクエリが複数のリージョンにわたって実行された場合、CPU とデータの測定値が正確ではなくなり、いずれか 1 つのリージョンの測定値のみが表示されます。
 
@@ -420,6 +447,8 @@ Azure Data Explorer では、インメモリ、ローカルの SSD ディスク�
 - リソースでスコープが指定されたクエリでデータを取得し、複数のワークスペースにそのデータが格納される場合。
  
 リージョンおよびクラスターにまたがるクエリを実行するには、通常はクエリの最終結果よりはるかに大きい、バックエンドの中間データ チャンクをシステムでシリアル化して転送する必要があります。 また、最適化、ヒューリスティック、キャッシュの利用を行うためのシステムの機能も制限されます。
+
+ワークスペースが 5 つ以上にまたがるクリエは、リソースを過度に消費するクエリと見なされます。 クエリが 100 を超えるワークスペースにまたがることはありません。
 
 > [!IMPORTANT]
 > マルチワークスペースのシナリオでは、CPU とデータの測定値が正確ではなくなり、ごく一部のワークスペースに測定値のみが表示されます。
@@ -434,7 +463,7 @@ Azure Monitor ログでは、Azure Data Explorer の大規模なクラスター�
 - シリアル化関数やウィンドウ関数 ([serialize 演算子](/azure/kusto/query/serializeoperator)、[next ()](/azure/kusto/query/nextfunction)、[prev ()](/azure/kusto/query/prevfunction)、[row](/azure/kusto/query/rowcumsumfunction) 関数など) の使用。 このようなケースのいくつかでは、時系列およびユーザー分析関数を使用できます。 また、[range](/azure/kusto/query/rangeoperator)、[sort](/azure/kusto/query/sortoperator)、[order](/azure/kusto/query/orderoperator)、[top](/azure/kusto/query/topoperator)、[top-hitters](/azure/kusto/query/tophittersoperator)、[getschema](/azure/kusto/query/getschemaoperator) 演算子がクエリの末尾以外で使用されている場合にも、非効率的なシリアル化が発生する可能性があります。
 -    [dcount ()](/azure/kusto/query/dcount-aggfunction) 集計関数を使用すると、システムでは個別の値の中央コピーが強制的に保持されます。 データのスケールが大きい場合は、dcount 関数の省略可能なパラメーターを使用して精度を下げることを検討してください。
 -    多くの場合、[join](/azure/kusto/query/joinoperator?pivots=azuremonitor) 演算子を使用すると全体的な並列処理が低下します。 パフォーマンスに問題がある場合は、代替手段としてシャッフル結合を試してください。
--    リソースのスコープが指定されたクエリで、非常に多くの Azure のロールの割り当てがある状況では、実行前の RBAC チェックに時間がかかることがあります。 その結果、チェックにかかる時間が長くなり、並列処理が低下する可能性があります。 たとえば、多数のリソースがあり、各リソースに、サブスクリプションやリソース グループのレベルではなくリソースレベルでロールの割り当てが多数存在するサブスクリプションに対してクエリが実行されます。
+-    リソースのスコープが指定されたクエリで、非常に多くの Azure のロールの割り当てがある状況では、実行前の Kubernetes RBAC または Azure RBAC チェックに時間がかかることがあります。 その結果、チェックにかかる時間が長くなり、並列処理が低下する可能性があります。 たとえば、多数のリソースがあり、各リソースに、サブスクリプションやリソース グループのレベルではなくリソースレベルでロールの割り当てが多数存在するサブスクリプションに対してクエリが実行されます。
 -    クエリで小さなデータ チャンクを処理している場合、システムがクエリを多数の計算ノードに分散させないため、その並列処理は少なくなります。
 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830548"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198001"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 
@@ -53,7 +53,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 具体的には、次の方法を学習します。
 
-- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)。
+- [パペットをデプロイします](https://puppet.com/docs/puppet/5.5/install_windows.html)。
 
 
 ## <a name="cloud-init"></a>cloud-init
@@ -88,7 +88,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 具体的には、次の方法を学習します。
 
 - [Azure CLI で Linux VM を作成し、カスタム スクリプト拡張機能を使用する](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)。
-- [Azure PowerShell で Windows VM を作成し、カスタム スクリプト拡張機能を使用する](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
+- [Azure PowerShell で Windows VM を作成し、カスタム スクリプト拡張機能を使用する](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)。
 
 
 ## <a name="packer"></a>Packer

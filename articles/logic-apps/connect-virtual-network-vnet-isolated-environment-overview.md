@@ -3,21 +3,21 @@ title: Azure Virtual Network にアクセスする
 description: 統合サービス環境 (ISE) を利用して、ロジック アプリから Azure の仮想ネットワーク (VNET) にアクセスする方法の概要
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 07/05/2020
-ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816025"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108570"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
-ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) へのアクセスが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される Logic Apps サービスのインスタンスです。
+ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) へのアクセスが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される Logic Apps サービスのインスタンスです。 ISE 内のデータは、[その ISE を作成して展開するリージョンと同じ場所](https://azure.microsoft.com/global-infrastructure/data-residency/)にあります。
 
-たとえば、一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md) を通じてセットアップ可能) を使用して、Azure Storage、Azure Cosmos DB などの Azure PaaS サービスや、Azure でホストされている Azure SQL Database、パートナー サービス、カスタマー サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
+たとえば、一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md) を通じて設定可能) を使用して、Azure Storage、Azure Cosmos DB などの Azure PaaS サービスや、Azure でホストされている Azure SQL Database、パートナー サービス、カスタマー サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
 
 ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*"(デプロイ) されます。 アクセスを必要とする統合アカウントやロジック アプリの場所としてその ISE を使用することができます。
 
@@ -60,7 +60,7 @@ ISE にロジック アプリを作成して実行すると、マルチテナン
   * Azure Automation、Azure Key Vault、Azure Event Grid、および Azure Monitor ログ
   * FTP、SFTP-SSH、File System、および SMTP
   * SAP、IBM MQ、IBM DB2、および IBM 3270
-  * SQL Server、Azure SQL Data Warehouse、Azure Cosmos DB
+  * SQL Server、Azure Synapse Analytics、Azure Cosmos DB
   * AS2、X12、EDIFACT
 
   オンプレミスのシステムまたはデータ ソース用の ISE コネクタを使用できる場合は、ほぼ例外なく、[オンプレミスのデータ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用せずに、直接接続できます。 詳細については、このトピックの後の方の「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
@@ -120,7 +120,15 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 * **内部**:ロジック アプリの実行履歴から、"*仮想ネットワーク内からのみ*"、入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するプライベート エンドポイント。
 
   > [!IMPORTANT]
-  > プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 そうでないと、ロジック アプリの実行履歴を表示しようとしたときに、"予期しないエラーが発生しました。 フェッチできませんでした。" というエラーが発生します。
+  > それらの Webhook ベース トリガーを使用する必要がある場合、ISE の作成時、内部エンドポイントでは "*なく*"、外部エンドポイントを使用してください。
+  > 
+  > * Azure DevOps
+  > * Azure Event Grid
+  > * Common Data Service
+  > * Office 365
+  > * SAP (ISE バージョン)
+  > 
+  > また、プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 そうでないと、ロジック アプリの実行履歴を表示しようとしたときに、"予期しないエラーが発生しました。 フェッチできませんでした。" というエラーが発生します。
   >
   > ![ファイアウォール経由でトラフィックを送信できないために Azure Storage アクション エラーが発生する](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
   >
@@ -142,7 +150,7 @@ ISE 内で実行されるロジック アプリ、組み込みトリガー、組
 
 ## <a name="integration-accounts-with-ise"></a>ISE での統合アカウント
 
-統合サービス環境 (ISE) の内部のロジック アプリで統合アカウントを使用できます。 ただし、これらの統合アカウントでは、リンクされているロジック アプリと "*同じ ISE*" を使用する必要があります。 ISE のロジック アプリは、同じ ISE にある統合アカウントのみを参照できます。 統合アカウントを作成すると、ご利用の統合アカウントの場所として、自分の ISE を選択できます。 統合アカウントと ISE に対する価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
+統合サービス環境 (ISE) の内部のロジック アプリで統合アカウントを使用できます。 ただし、これらの統合アカウントでは、リンクされているロジック アプリと "*同じ ISE*" を使用する必要があります。 ISE のロジック アプリは、同じ ISE にある統合アカウントのみを参照できます。 統合アカウントを作成すると、ご利用の統合アカウントの場所として、自分の ISE を選択できます。 統合アカウントと ISE に対する価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 制限の詳細については、「[統合アカウントの制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

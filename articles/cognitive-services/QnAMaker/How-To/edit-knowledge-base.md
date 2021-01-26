@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースの編集 - QnA Maker
 description: QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコンテンツを管理することができます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054013"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351709"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>ナレッジベースで QnA ペアを編集する
 
@@ -72,7 +74,7 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 
     > [!div class="mx-imgBorder"]
-    > ![リッチテキスト エディターを使用して、パブリックにアクセスできるイメージと、その代替テキストを追加します。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![インプレース エディターのスクリーンショット。パブリック アクセスできるイメージの URL を確認できます。イメージの代替テキストが入力されています。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. 回答のテキストを選択してからツールバーの [リンク] アイコンを選択するか、ツールバーのリンク アイコンを選択してから新しいテキストと URL を入力して、URL へのリンクを追加します。
 
@@ -85,7 +87,7 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 ## <a name="delete-a-qna-pair"></a>QnA ペアの削除
 
-QnA を削除するには、QnA 行の右端にある**削除**アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、 **[パブリッシュ]** ページから KB をエクスポートすることを検討してください。
+QnA を削除するには、QnA 行の右端にある **削除** アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、 **[パブリッシュ]** ページから KB をエクスポートすることを検討してください。
 
 ![QnA ペアの削除](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -126,11 +128,11 @@ QnA ペアのリンクは、[フォローアップ プロンプト](multiturn-co
 
 回答の[リッチテキスト編集](#add-an-editorial-qna-set)では、作成者は、書式設定ツールバーを使用して、テキストをすばやく選択し、書式設定することができます。
 
-[Markdown](../reference-markdown-format.md) は、CI/CD パイプラインの一部として、または[バッチ テスト](../Quickstarts/batch-testing.md)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
+[Markdown](../reference-markdown-format.md) は、CI/CD パイプラインの一部として、または[バッチ テスト](../index.yml)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの共同作業](./collaborate-knowledge-base.md)
+> [ナレッジ ベースの共同作業](../index.yml)
 
 * [QnA Maker によって使用される Azure リソースを管理する](set-up-qnamaker-service-azure.md)

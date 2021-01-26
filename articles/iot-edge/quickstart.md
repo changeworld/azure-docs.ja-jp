@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 547bf111e73813c939caa917c0117dac6c8989e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061491"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922468"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>クイック スタート:初めての IoT Edge モジュールを仮想 Windows デバイスにデプロイする
 
@@ -22,12 +22,10 @@ ms.locfileid: "88061491"
 
 このクイック スタートでは、次の方法について説明します。
 
-> [!div class="checklist"]
->
-> * IoT Hub を作成します。
-> * IoT Edge デバイスを IoT ハブに登録します。
-> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-> * モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
+* IoT Hub を作成します。
+* IoT Edge デバイスを IoT ハブに登録します。
+* IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+* モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart/install-edge-full.png)
 
@@ -35,23 +33,21 @@ ms.locfileid: "88061491"
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-このクイックスタートの多くの手順を実行するには、Azure CLI を使用します。 Azure IoT には、追加機能を有効にするための拡張機能が用意されています。
-
-Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 ## <a name="prerequisites"></a>前提条件
+
+Azure CLI の環境を準備します。
+
+- PowerShell 環境で [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell) を使用します。
+
+   [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)   
+- 必要に応じて、Azure CLI を[インストール](/cli/azure/install-azure-cli)して、CLI リファレンス コマンドを実行します。
+   - ローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用して Azure CLI でサインインします。  認証プロセスを完了するには、ターミナルに表示される手順に従います。  追加のサインイン オプションについては、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
+  - 初回使用時にインストールを求められたら、Azure CLI 拡張機能をインストールします。  拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+  - [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。
 
 クラウド リソース:
 
-* このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。
+- このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -59,7 +55,7 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
 IoT Edge デバイス:
 
-* IoT Edge デバイスとして機能する Windows 仮想マシン。 この仮想マシンを作成するには、次のコマンドを使用します。`{password}` は、セキュリティで保護されたパスワードに置き換えます。
+- IoT Edge デバイスとして機能する Windows 仮想マシン。 この仮想マシンを作成するには、次のコマンドを使用します。`{password}` は、セキュリティで保護されたパスワードに置き換えます。
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -76,11 +72,11 @@ IoT Edge デバイス:
   リモート デスクトップ接続でこのファイルを開き、`az vm create` コマンドで指定した管理者名とパスワードを使用して Windows 仮想マシンに接続します。
 
 > [!NOTE]
-> Windows 仮想マシンは、Windows バージョン 1809 (ビルド 17763) を使用して起動されます。これは、最新の [Windows の長期サポートのビルド](https://docs.microsoft.com/windows/release-information/)です。 既定では、Windows は 22 時間ごとに自動的に更新プログラムをチェックします。 仮想マシンのチェックが完了したら、Windows 用の IoT Edge と互換性のないバージョンの更新プログラムがプッシュされ、Windows 用の IoT Edge の機能をそれ以上使用できなくなります。 仮想マシンの使用を 22 時間以内に制限するか、[Windows の更新プログラムを一時的に停止する](https://support.microsoft.com/help/4028233/windows-10-manage-updates)ことをお勧めします。
+> Windows 仮想マシンは、Windows バージョン 1809 (ビルド 17763) を使用して起動されます。これは、最新の [Windows の長期サポートのビルド](/windows/release-information/)です。 既定では、Windows は 22 時間ごとに自動的に更新プログラムをチェックします。 仮想マシンのチェックが完了したら、Windows 用の IoT Edge と互換性のないバージョンの更新プログラムがプッシュされ、Windows 用の IoT Edge の機能をそれ以上使用できなくなります。 仮想マシンの使用を 22 時間以内に制限するか、[Windows の更新プログラムを一時的に停止する](https://support.microsoft.com/help/4028233/windows-10-manage-updates)ことをお勧めします。
 >
 > このクイックスタートでは、わかりやすくするための Windows デスクトップの仮想マシンを使用します。 運用シナリオ向けに一般提供されている Windows オペレーティング システムについては、「[Azure IoT Edge のサポートされるシステム](support.md)」を参照してください。
 >
-> IoT Core を実行しているデバイスなど、IoT Edge 用に独自の Windows デバイスを構成する準備ができたら、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」の手順を行います。
+> IoT Core を実行しているデバイスなど、IoT Edge 用に独自の Windows デバイスを構成したい場合は、[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)方法に関するページの手順に従ってください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -118,7 +114,7 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
 2. デバイスの接続文字列を確認します。この接続文字列により、IoT Hub 内で物理デバイスとその ID をリンクさせます。 これには、IoT ハブの名前、デバイスの名前、2 つの間の接続を認証する共有キーが含まれています。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
 3. JSON 出力から `connectionString` キーの値をコピーして保存します。 この値はデバイスの接続文字列です。 次のセクションでは、この接続文字列を使用して IoT Edge ランタイムを構成します。
@@ -130,7 +126,7 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
 Azure IoT Edge ランタイムを IoT Edge デバイスにインストールし、デバイスの接続文字列を使用してその構成を行います。
 ![図 - デバイスでランタイムを開始する](./media/quickstart/start-runtime.png)
 
-IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 *IoT Edge セキュリティ デーモン*は、IoT Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 *IoT Edge エージェント*は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールのデプロイと監視を管理します。 *IoT Edge ハブ*は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を処理します。
+IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 *IoT Edge セキュリティ デーモン* は、IoT Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 *IoT Edge エージェント* は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールのデプロイと監視を管理します。 *IoT Edge ハブ* は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を処理します。
 
 インストール スクリプトには、IoT Edge デバイス上のコンテナー イメージを管理する Moby というコンテナー エンジンも含まれています。
 
@@ -144,9 +140,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 PowerShell を使用して IoT Edge ランタイムをダウンロードし、インストールします。 IoT Hub から取得したデバイスの接続文字列を使用して、目的のデバイスを構成します。
 
-1. まだの場合は、[新しい Azure IoT Edge デバイスの登録](how-to-register-device.md)に関するページの手順に従って、デバイスを登録し、デバイス接続文字列を取得します。
-
-2. 仮想マシン内で、管理者として PowerShell を実行します。
+1. 仮想マシン内で、管理者として PowerShell を実行します。
 
    >[!NOTE]
    >IoT Edge をインストールするには、PowerShell (x86) ではなく PowerShell の AMD64 セッションを使用します。 どのセッションの種類を使用しているかがわからない場合は、次のコマンドを実行します。
@@ -155,25 +149,25 @@ PowerShell を使用して IoT Edge ランタイムをダウンロードし、�
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-IoTEdge** コマンドを実行すると、ご使用の Windows マシンがサポートされているバージョンであることが確認され、コンテナーの機能が有効化され、Moby ランタイムがダウンロードされた後、IoT Edge ランタイムがダウンロードされます。
+2. **Deploy-IoTEdge** コマンドを実行すると、ご使用の Windows マシンがサポートされているバージョンであることが確認され、コンテナーの機能が有効化され、Moby ランタイムがダウンロードされた後、IoT Edge ランタイムがダウンロードされます。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. 場合によってはマシンが自動的に再起動します。 Deploy-IoTEdge コマンドから再起動を促すメッセージが表示された場合は、再起動します。
+3. 場合によってはマシンが自動的に再起動します。 Deploy-IoTEdge コマンドから再起動を促すメッセージが表示された場合は、再起動します。
 
-5. 再び PowerShell を管理者として実行します。
+4. 再び PowerShell を管理者として実行します。
 
-6. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。
+5. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. **DeviceConnectionString** を求められたら、前のセクションでコピーした文字列を入力します。 接続文字列の前後に引用符は含めないでください。
+6. **DeviceConnectionString** を求められたら、前のセクションでコピーした文字列を入力します。 接続文字列の前後に引用符は含めないでください。
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge ランタイムの状態を確認する
 

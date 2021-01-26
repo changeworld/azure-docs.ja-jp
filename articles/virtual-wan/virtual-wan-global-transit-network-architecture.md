@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212704"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563734"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -43,7 +43,7 @@ Azure Virtual WAN を使うと、VNet、ブランチ サイト、SaaS および 
 
 "**図 2:グローバル トランジット ネットワークと Virtual WAN**
 
-Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure リージョンにおいてプロビジョニングされ、それにブランチ、VNet、リモート ユーザーを接続できます。 物理ブランチ サイトは、Premium ExpressRoute またはサイト間 VPN によってハブに接続されます。VNet は、VNet 接続によってハブに接続されます。リモート ユーザーは、ユーザー VPN (ポイント対サイト VPN) を使ってハブに直接接続できます。 また、Virtual WAN を使うと、あるリージョン内の VNet を別のリージョンの Virtual WAN ハブに接続できるリージョン間 VNet 接続もサポートされます。
+Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure リージョンにおいてプロビジョニングされ、それにブランチ、VNet、リモート ユーザーを接続できます。 物理ブランチ サイトは、Premium または Standard の ExpressRoute またはサイト間 VPN によってハブに接続されます。VNet は、VNet 接続によってハブに接続されます。リモート ユーザーは、ユーザー VPN (ポイント対サイト VPN) を使ってハブに直接接続できます。 また、Virtual WAN を使うと、あるリージョン内の VNet を別のリージョンの Virtual WAN ハブに接続できるリージョン間 VNet 接続もサポートされます。
 
 Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユーザー) の数が最も多いリージョンに Virtual WAN ハブを 1 つ作成した後、他のリージョン内にあるスポークをハブに接続します。 これは、エンタープライズ フットプリントの大部分が 1 つのリージョン内にあってリモート スポークの数が少ない場合に適したオプションです。  
   
@@ -87,7 +87,7 @@ Azure Virtual WAN では、次のグローバル トランジット接続パス�
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach と Virtual WAN
 
-ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 Virtual WAN を使うと、ExpressRoute 回線接続がサポートされます。 ExpressRoute を使って Virtual WAN にブランチ サイトを接続するには、1) Premium 回線、2) Global Reach が有効な場所に配置された回線が必要です。
+ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 Virtual WAN を使うと、ExpressRoute 回線接続がサポートされます。 ExpressRoute を使って Virtual WAN にブランチ サイトを接続するには、1) Premium または Standard 回線、2) Global Reach が有効な場所に配置された回線が必要です。
 
 ExpressRoute Global Reach は、ExpressRoute に対するアドオン機能です。 Global Reach を使用すると、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築できます。 ExpressRoute を使用して Azure Virtual WAN に接続されたブランチが相互に通信するには、ExpressRoute Global Reach が必要です。
 
@@ -127,7 +127,7 @@ VNet 対 VNet トランジットを使うと、VNet を相互に接続し、複�
 
 Azure Virtual WAN ハブにより、ハイブリッド ネットワーク上のすべてのネットワーク エンドポイントが相互接続され、すべてのトランジット ネットワーク トラフィックが認識される可能性があります。 VWAN ハブ内に Azure Firewall を展開し、クラウドベースのセキュリティ、アクセス、ポリシー制御を有効にすることにより、Virtual WAN ハブをセキュリティ保護付き仮想ハブに変換できます。 Virtual WAN ハブ内の Azure Firewall のオーケストレーションは、Azure Firewall Manager で実行できます。
 
-[Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) を使うと、セキュリティを管理し、グローバル トランジット ネットワーク用にスケーリングする機能が提供されます。 Azure Firewall Manager には、Azure Firewall と共に、ルーティングの一元管理、グローバル ポリシーの管理、サードパーティによる高度なインターネット セキュリティ サービスの機能が用意されています。
+[Azure Firewall Manager](../firewall-manager/index.yml) を使うと、セキュリティを管理し、グローバル トランジット ネットワーク用にスケーリングする機能が提供されます。 Azure Firewall Manager には、Azure Firewall と共に、ルーティングの一元管理、グローバル ポリシーの管理、サードパーティによる高度なインターネット セキュリティ サービスの機能が用意されています。
 
 ![Azure Firewall によるセキュリティ保護付き仮想ハブ](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
@@ -177,4 +177,4 @@ Virtual WAN を使って接続を作成し、VWAN ハブに Azure Firewall を�
 
 * [Virtual WAN を使用するサイト間接続](virtual-wan-site-to-site-portal.md)
 * [Virtual WAN を使用する ExpressRoute 接続](virtual-wan-expressroute-portal.md)
-* [VWAN に Azure FW を展開するための Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [VWAN に Azure FW を展開するための Azure Firewall Manager](../firewall-manager/index.yml)

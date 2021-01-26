@@ -19,9 +19,20 @@
     - name: 管理グループの作成 - Azure PowerShell
       displayName: hierarchy
       href: ./create-management-group-powershell.md
+    - name: 管理グループの作成 - .NET
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: 管理グループの作成 - JavaScript
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
     - name: 管理グループの作成 - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: チュートリアル
+  items:
+    - name: '次のことを学びます:サブスクリプション ガバナンス戦略を作成する'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: 操作方法ガイド
   expanded: true
   items:

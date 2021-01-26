@@ -1,6 +1,6 @@
 ---
 title: 接続性のトラブルシューティング
-description: Synapse SQL プールの接続性のトラブルシューティング。
+description: 専用 SQL プール (旧称 SQL DW) の接続のトラブルシューティング。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,46 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ea99c2ce1963ec58649fd4c2fbb4d98768da8c6f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010190"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447962"
 ---
-# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL プールの接続に関する問題のトラブルシューティング
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (旧称 SQL DW) の接続に関する問題のトラブルシューティング
 
-この記事では、SQL プール データベースの接続に関連する一般的な問題を解決する方法を挙げます。
+この記事では、専用 SQL プール データベース (旧称 SQL DW) の接続に関連する一般的な問題を解決する方法を挙げます。
 
 ## <a name="check-service-availability"></a>サービスが使えることを確認する
 
-このサービスが利用できるかどうかを確認します。 Azure portal で、接続しようとしている SQL プールに移動します。 左側 TOC パネルで、 **[問題の診断と解決]** をクリックします。
+このサービスが利用できるかどうかを確認します。 Azure portal で、接続しようとしている専用 SQL プール (旧称 SQL DW) に移動します。 左側 TOC パネルで、 **[問題の診断と解決]** をクリックします。
 
 ![[リソース正常性] の選択](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL プールの状態がここに表示されます。 サービスが **[使用可能]** ではない場合、他の手順を試してください。
+専用 SQL プール (旧称 SQL DW) の状態がここに表示されます。 サービスが **[使用可能]** ではない場合、他の手順を試してください。
 
 ![サービスは利用可能](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-[リソース正常性] に SQL プール インスタンスが一時停止されているか、スケーリング中であることが表示されている場合、ガイダンスに従いインスタンスを再開します。
+[リソース正常性] に専用 SQL プール (旧称 SQL DW) インスタンスが一時停止されているか、スケーリング中であることが表示されている場合、ガイダンスに従ってインスタンスを再開します。
 
-![一時停止中のサービス](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) リソースの正常性に関する追加情報がここにあります。
+![一時停止またはスケーリング中の専用 SQL プールのインスタンスを示すスクリーンショット。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Azure Resource Health に関する追加情報がここにあります。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>一時停止中の操作やスケーリング操作を確認する
 
-SQL プール インスタンスが一時停止しているのか、スケーリング中であるのかをポータルで確認します。
+専用 SQL プール (旧称 SQL DW) インスタンスが一時停止しているのか、スケーリング中であるのかをポータルで確認します。
 
-![一時停止中のサービス](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![データ ウェアハウスが一時停止中かどうかを確認する方法を示すスクリーンショット。](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-サービスが一時停止されているか、スケーリング中の場合、メンテナンス スケジュール中でないことを確認します。 SQL プールのポータルの " *[概要]* " に、選択されているメンテナンス スケジュールが表示されます。
+サービスが一時停止されているか、スケーリング中の場合、メンテナンス スケジュール中でないことを確認します。 専用 SQL プール (旧称 SQL DW) のポータルの "*概要*" に、選択されているメンテナンス スケジュールが表示されます。
 
 ![[概要] のメンテナンス スケジュール](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-表示されない場合、このメンテナンスがスケジュールされたイベントではないことを IT 管理者に確認します。 SQL プール インスタンスを再開するには、[これらの手順](pause-and-resume-compute-portal.md)に従います。
+表示されない場合、このメンテナンスがスケジュールされたイベントではないことを IT 管理者に確認します。 専用 SQL プール (旧称 SQL DW) インスタンスを再開するには、[これらの手順](pause-and-resume-compute-portal.md)に従ってください。
 
 ## <a name="check-your-firewall-settings"></a>ファイアウォール設定を確認する
 
-SQL プール データベースの通信は、ポート 1433 上で行われます。  企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門がポート 1433 を開かない限り、[論理サーバー](../../azure-sql/database/logical-servers.md)に接続することはできません。 ファイアウォール構成の詳細は[こちら](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)にあります。
+専用 SQL プール (旧称 SQL DW) データベースの通信は、ポート 1433 上で行われます。  企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門がポート 1433 を開かない限り、[論理サーバー](../../azure-sql/database/logical-servers.md)に接続することはできません。 ファイアウォール構成の詳細は[こちら](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)にあります。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/サービス エンドポイント設定を確認する
 
@@ -60,7 +61,7 @@ SQL プール データベースの通信は、ポート 1433 上で行われま
 
 ### <a name="software"></a>ソフトウェア
 
-最新のツールを使用して SQL プールに接続していることを確認します。
+最新のツールを使用して専用 SQL プール (旧称 SQL DW) に接続していることを確認します。
 
 - SSMS
 - Azure Data Studio
@@ -105,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>接続が途切れる問題
 
-キューに追加された要求の数が多く、サーバーに大きな負荷がかかっていないか確認します。 場合によっては、SQL プールを拡張し、リソースを増やす必要があります。
+キューに追加された要求の数が多く、サーバーに大きな負荷がかかっていないか確認します。 場合によっては、専用 SQL プール (旧称 SQL DW) を拡張し、リソースを増やす必要があります。
 
 ## <a name="common-error-messages"></a>一般的なエラー メッセージ
 

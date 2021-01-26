@@ -1,18 +1,18 @@
 ---
 title: PowerShell を使用して接続文字列を生成する - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL に接続するための接続文字列を生成する Azure PowerShell の例を提供します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc, devx-track-azurepowershell
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: 37a257e2ca7f354659c032833480dd207cc1bed9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9f960d32dcf1f359327dccc01eeb06825cc3a062
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839938"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541472"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>PowerShell を使用して Azure Database for MySQL 接続文字列を生成する方法
 

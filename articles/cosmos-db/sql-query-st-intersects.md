@@ -3,19 +3,22 @@ title: Azure Cosmos DB クエリ言語の ST_INTERSECTS
 description: Azure Cosmos DB の SQL システム関数 ST_INTERSECTS について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fca6e94f61ff4d21886bf81a56afa032c8773c1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303139"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004451"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
- 最初の引数で指定された GeoJSON オブジェクト (Point、Polygon、または LineString) が 2 つ目の引数の GeoJSON (Point、Polygon、または LineString) と交差するかどうかを示すブール式を返します。  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+ 最初の引数で指定された GeoJSON オブジェクト (Point、Polygon、MultiPolygon、LineString) が 2 つ目の引数の GeoJSON (Point、Polygon、MultiPolygon、LineString) と交差するかどうかを示すブール式を返します。  
   
 ## <a name="syntax"></a>構文
   

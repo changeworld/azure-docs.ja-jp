@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8042e1d3f93b870cdc669628a28fcbad54b69150
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891472"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724847"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>認証に Azure フロントエンド API を使用する
 
-このセクションでは、認証に C# の API を使用する方法について説明します。
+このセクションでは、認証とセッション管理のために API を使用する方法について説明します。
+
+> [!CAUTION]
+> この章で説明する関数では、サーバーで内部的に REST 呼び出しを発行します。 すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合、`SessionGeneralContext.HttpResponseCode` メンバーの値は 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
+
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
@@ -26,7 +31,11 @@ AzureFrontendAccountInfo は、SDK の ```AzureFrontend``` インスタンスの
 
 public class AzureFrontendAccountInfo
 {
-    // Something akin to "<region>.mixedreality.azure.com"
+    // Domain that will be used for account authentication for the Azure Remote Rendering service, in the form [region].mixedreality.azure.com.
+    // [region] should be set to the domain of the Azure Remote Rendering account.
+    public string AccountAuthenticationDomain;
+    // Domain that will be used to generate sessions for the Azure Remote Rendering service, in the form [region].mixedreality.azure.com.
+    // [region] should be selected based on the region closest to the user. For example, westus2.mixedreality.azure.com or westeurope.mixedreality.azure.com.
     public string AccountDomain;
 
     // Can use one of:
@@ -45,6 +54,7 @@ C++ の場合は、次のようになります。
 ```cpp
 struct AzureFrontendAccountInfo
 {
+    std::string AccountAuthenticationDomain{};
     std::string AccountDomain{};
     std::string AccountId{};
     std::string AccountKey{};
@@ -426,9 +436,9 @@ void StopRenderingSession(ApiHandle<AzureSession> session)
 
 ```cs
 private ArrInspectorAsync _pendingAsync = null;
-void ConnectToArrInspector(AzureSession session, string hostname)
+void ConnectToArrInspector(AzureSession session)
 {
-    _pendingAsync = session.ConnectToArrInspectorAsync(hostname);
+    _pendingAsync = session.ConnectToArrInspectorAsync();
     _pendingAsync.Completed +=
         (ArrInspectorAsync res) =>
         {
@@ -458,9 +468,9 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ```
 
 ```cpp
-void ConnectToArrInspector(ApiHandle<AzureSession> session, std::string hostname)
+void ConnectToArrInspector(ApiHandle<AzureSession> session)
 {
-    ApiHandle<ArrInspectorAsync> pendingAsync = *session->ConnectToArrInspectorAsync(hostname);
+    ApiHandle<ArrInspectorAsync> pendingAsync = *session->ConnectToArrInspectorAsync();
     pendingAsync->Completed([](ApiHandle<ArrInspectorAsync> res)
     {
         if (res->GetIsRanToCompletion())

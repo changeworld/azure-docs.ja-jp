@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9d620342d53bdae0b3a520000f6d240eb0e28d15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164922"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180594"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -24,7 +24,7 @@ Azure Active Directory アプリケーション プロキシは、オンプレ�
 
 Azure AD アプリケーション プロキシの特徴:
 
-- **簡単に使用できる**。 ユーザーは、O365 にアクセスするのと同じようにオンプレミスのアプリケーションにアクセスでき、Azure AD に統合された他の SaaS アプリにもアクセスできます。 アプリケーション プロキシを使用するためにアプリケーションを変更または更新する必要はありません。
+- **簡単に使用できる**。 ユーザーは、Microsoft 365 や Azure AD に統合された他の SaaS アプリにアクセスするのと同じように、オンプレミスのアプリケーションにアクセスできます。 アプリケーション プロキシを使用するためにアプリケーションを変更または更新する必要はありません。
 
 - **セキュリティ保護**。 オンプレミスのアプリケーションは、Azure の承認制御とセキュリティ分析を使用できます。 たとえば、オンプレミス アプリケーションでは、条件付きアクセスと 2 段階認証を使用できます。 アプリケーション プロキシでは、ファイアウォールを介した受信接続を開く必要がありません。
 
@@ -36,7 +36,7 @@ Azure AD アプリケーション プロキシの特徴:
 アプリケーション プロキシは次に対応します。
 
 * 認証に[統合 Windows 認証](application-proxy-configure-single-sign-on-with-kcd.md)を使用する Web アプリ
-* フォーム ベースまたは[ヘッダー ベース](application-proxy-configure-single-sign-on-with-ping-access.md)のアクセスを使用する Web アプリ
+* フォーム ベースまたは[ヘッダー ベース](./application-proxy-configure-single-sign-on-with-headers.md)のアクセスを使用する Web アプリ
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
 * [リモート デスクトップ ゲートウェイ](application-proxy-integrate-with-remote-desktop-services.md)の背後でホストされているアプリケーション
 * Microsoft Authentication Library (MSAL) と統合されるリッチ クライアント アプリ
@@ -58,6 +58,11 @@ Azure AD アプリケーション プロキシの特徴:
 5. コネクタはオンプレミスのアプリケーションに要求を送信します。
 6. 応答はコネクタとアプリケーション プロキシ サービス経由でユーザーに送信されます。
 
+> [!NOTE]
+> ほとんどの Azure AD ハイブリッド エージェントと同様に、アプリケーション プロキシ コネクタでは、ファイアウォールを介した受信接続を開く必要はありません。 手順 3 のユーザー トラフィックは (Azure AD の) アプリケーション プロキシ サービスで終了します。 残りの通信はアプリケーション プロキシ コネクタ (オンプレミス) が行います。
+>
+
+
 | コンポーネント | 説明 |
 | --------- | ----------- |
 | エンドポイント  | エンドポイントは、URL または[エンド ユーザー ポータル](end-user-experiences.md)です。 ユーザーは、外部 URL にアクセスすることによって、ネットワークの外部にいてもアプリケーションに到達できます。 ネットワーク内のユーザーは、URL またはエンド ユーザー ポータルからアプリケーションにアクセスできます。 ユーザーは、これらのエンドポイントの 1 つに移動すると、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。|
@@ -69,4 +74,3 @@ Azure AD アプリケーション プロキシの特徴:
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーション プロキシの使用を開始するには、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](application-proxy-add-on-premises-application.md)を参照してください。
-

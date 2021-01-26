@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 28e15cb7e0b519932eeee3a6a6445449affe2f35
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551372"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル: Azure Active Directory と ArcGIS Online の統合
 
@@ -27,7 +27,7 @@ ArcGIS Online と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで自動的に ArcGIS Online にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -66,7 +66,7 @@ ArcGIS Online の Azure AD への統合を構成するには、ArcGIS Online を
 
 4. 検索ボックスに「**ArcGIS Online**」と入力し、結果パネルで **[ArcGIS Online]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の ArcGIS Online](common/search-new-app.png)
+    ![結果一覧の ArcGIS Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -111,11 +111,11 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[ArcGIS Online クライアント サポート チーム](https://support.esri.com/en/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **ArcGIS Online** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
+6. **ArcGIS Online** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイアプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
 
     ![image](./media/arcgis-tutorial/install_extension.png)
 
@@ -166,7 +166,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -210,24 +210,24 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 1. **ArcGIS** テナントにログインします。
 
 2. **[INVITE MEMBERS] \(メンバーの招待)** をクリックします。
-   
+
     ![メンバーの招待](./media/arcgis-tutorial/ic784747.png "[Invite Members]")
 
 3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、 **[NEXT] \(次へ)** をクリックします。
-   
+
     ![メンバーを自動的に追加する](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
 
 4. **[Members]** ダイアログ ページで、次の手順に従います。
-   
-     ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "[Add And Review]")
-    
-     a. プロビジョニングする有効な Azure AD アカウントの**メール**、**名**、**姓**を入力します。
-  
+
+    ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "[Add And Review]")
+
+     a. プロビジョニングする有効な Azure AD アカウントの **メール**、**名**、**姓** を入力します。
+
      b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
 5. 入力したデータを確認してから、 **[ADD MEMBERS] \(メンバーの追加)** をクリックします。
-   
+
     ![メンバーの追加](./media/arcgis-tutorial/ic784750.png "Add member")
-        
+
     > [!NOTE]
     > Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
 
@@ -235,13 +235,12 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [ArcGIS Online] タイルをクリックすると、SSO を設定した ArcGIS Online に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [ArcGIS Online] タイルをクリックすると、SSO を設定した ArcGIS Online に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

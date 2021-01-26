@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6a16106495e584c9acbc02d380242df665f35ce5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020010"
 ---
 ## <a name="push-image-to-registry"></a>レジストリにイメージをプッシュする
 
@@ -23,7 +23,7 @@ Azure Container Registry にイメージをプッシュするには、まずイ�
 docker pull hello-world
 ```
 
-イメージをレジストリにプッシュするには、レジストリのログイン サーバーの完全修飾名を使用して、そのイメージにタグを付けておく必要があります。 ログイン サーバー名は、 *\<registry-name\>.azurecr.io* (すべて小文字) という形式です (*mycontainerregistry.azurecr.io* など)。
+イメージをレジストリにプッシュするには、レジストリのログイン サーバーの完全修飾名を使用して、そのイメージにタグを付けておく必要があります。 ログイン サーバー名は、 *\<registry-name\>.azurecr.io* (すべて小文字にする必要があります) という形式です (*mycontainerregistry.azurecr.io* など)。
 
 [docker tag][docker-tag] コマンドを使用してイメージにタグ付けします。 `<login-server>` を ACR インスタンスのログイン サーバー名で置き換えます。
 

@@ -2,20 +2,24 @@
 title: クイック スタート:Azure Application Insights を使用した Java Web アプリの分析
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 ms.topic: conceptual
-author: lgayhardt
+ms.date: 11/22/2020
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: jgol
+ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326921"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131782"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
-このクイックスタートでは、Application Insights を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を自動的に行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
+
+> [!CAUTION]
+> 2020 年 11 月以降、Java アプリケーションの監視には、Azure Monitor Application Insights Java 3.0 エージェントを使用した自動インストルメンテーションをお勧めします。 開始方法について詳しくは、「[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)」を参照してください。
+
+このクイックスタートでは、Application Insights SDK を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
 
 Application Insights は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 
@@ -26,6 +30,8 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights のインストルメンテーション キーを取得する
 
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=java)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. Azure portal で、Application Insights のリソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
@@ -50,7 +56,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
         <artifactId>applicationinsights-web-auto</artifactId>
         <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>2.5.0</version>
+        <version>2.6.2</version>
       </dependency>
     </dependencies>
 ```
@@ -63,15 +69,11 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
 
 ```gradle
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.6.2'
       // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-# <a name="other-types"></a>[その他の型](#tab/other)
-
-[最新バージョン](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードし、必要なファイルをプロジェクトにコピーして、以前のバージョンを置き換えます。
 
 ---
 
@@ -82,10 +84,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
   * `applicationinsights-core` は、ベア API のみを提供します (アプリケーションがサーブレット ベースでない場合など)。
   
 * *SDK を最新バージョンに更新するにはどうすればよいですか。*
-  * Gradle または Maven を使用している場合:
-    * 最新バージョンを指定するようにビルド ファイルを更新します。
-  * 依存関係を手動で管理している場合:
-    * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
+  * 2020 年 11 月以降、Java アプリケーションの監視には、Azure Monitor Application Insights Java 3.0 エージェントを使用した自動インストルメンテーションをお勧めします。 開始方法について詳しくは、「[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)」を参照してください。
 
 ## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* ファイルを追加する
 *ApplicationInsights.xml* をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイ クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
@@ -163,10 +162,6 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
 ![チャート付きの Application Insights の [失敗] ペイン](./media/java-get-started/006-barcharts.png)
 
-<!--
-[TODO update image with 2.5.0 operation naming provided by agent]
--->
-
 ### <a name="instance-data"></a>インスタンス データ
 個々のインスタンスを表示するには、特定の要求の種類をクリックします。
 
@@ -193,22 +188,10 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service の構成 (Spring Boot)
+## <a name="azure-app-service-aks-vms-config"></a>Azure App Service、AKS、VM の構成
 
-Windows で動作する Spring Boot アプリでは、 Azure App Services での追加構成の実行を必要とします。 **web.config** を変更し、次の構成を追加します。
+Azure リソース プロバイダーのいずれかで実行されているアプリケーションを監視する際に最適で最も簡単な方法は、[Java 3.0 エージェント](./java-in-process-agent.md)を介して Application Insights の自動インストルメンテーションを使用することです。
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <handlers>
-            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
-        </handlers>
-        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
-        </httpPlatform>
-    </system.webServer>
-</configuration>
-```
 
 ## <a name="exceptions-and-request-failures"></a>例外と要求エラー
 ハンドルされない例外と要求エラーは、Application Insights Web フィルターによって自動的に収集されます。
@@ -321,4 +304,3 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom:
 - seo-lt-2019
 - seo-dt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 564581a102ac3fab504e82db00ef54b3e45d0c19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090741"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609039"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -38,8 +38,8 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
   2. 次に示すように、pg_hba.conf ファイルに IP アドレスを追加します。
 
       ```
-          host  all     172.16.136.18/10    md5
-          host  replication postgres    172.16.136.18/10    md5
+          host    all    172.16.136.18/10    md5
+          host    replication postgres    172.16.136.18/10     md5
       ```
 
 - ユーザーは、ソース データベースをホストするサーバー上でレプリケーション ロールを持っている必要があります。
@@ -47,7 +47,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 - ターゲット Azure Database for PostgreSQL-Single Server のスキーマに外部キーを含めることはできません。 外部キーを削除するには、次のクエリを使用します。
 
     ```
-                                SELECT Queries.tablename
+                  SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
                 ,concat('alter table ', Queries.tablename, ' ', 
                                                 STRING_AGG(concat('ADD CONSTRAINT ', Queries.foreignkey, ' FOREIGN KEY (', column_name, ')', 'REFERENCES ', foreign_table_name, '(', foreign_column_name, ')' ), ',')) as AddQuery
@@ -81,6 +81,8 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
+## <a name="size-limitations"></a>サイズの制限
+- 1 つの DMS サービスを使用して、PostgreSQL から Azure DB for PostgreSQL に最大 2 TB のデータを移行できます。
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
 
   **制限事項**:テーブルに主キーがない場合は、変更がターゲット データベースと同期されない可能性があります。
@@ -94,13 +96,13 @@ AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移
 - **Error**: The Default value of column '{column}' in table '{table}' in database '{database}' is different on source and target servers.\(データベース '{database}' のテーブル '{table}' にある列 '{column}' の既定値が、ソース サーバーとターゲット サーバーで異なります。\) It's '{value on source}' on source and '{value on target}' on target.\(ソースでは '{value on source}'、ターゲットでは '{value on target}' です。\)
 
   **制限事項**:このエラーは、列スキーマの既定値がソース データベースとターゲット データベースで異なる場合に発生します。
-  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)をご覧ください。
 
 - **Error**: ターゲット データベース '{database}' には '{number of tables}' 個のテーブルが含まれていますが、ソース データベース '{database}' に含まれるテーブルは '{number of tables}' 個です。 ソース データベースとターゲット データベースのテーブル数は同じでなければなりません。
 
   **制限事項**:このエラーは、ソース データベースとターゲット データベースのテーブル数が異なる場合に発生します。
 
-  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)をご覧ください。
 
 - **エラー:** ソース データベース {database} が空です。
 
@@ -111,7 +113,7 @@ AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移
 - **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
 
   **制限事項**:このエラーは、ターゲット データベースにスキーマがない場合に発生します。 ターゲットのスキーマがソースのスキーマと一致していることを確認してください。
-  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)をご覧ください。
 
 ## <a name="other-limitations"></a>その他の制限事項
 

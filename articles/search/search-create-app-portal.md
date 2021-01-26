@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292539"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91399824"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)
 
@@ -35,7 +35,7 @@ ms.locfileid: "89292539"
 
   このクイックスタートでは、縮小版画像を含んだ組み込みの不動産サンプル データとインデックスを使用します (このウィザードでは、結果ページへの画像の追加がサポートされます)。 この演習で使用するインデックスを作成するには、**データのインポート** ウィザードを実行します。その際、データ ソースとして *realestate-us-sample* を選択してください。
 
-  ![サンプル データのデータ ソース ページ](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="サンプル データのデータ ソース ページ" border="false":::
 
 インデックスを使用する準備が整ったら、次の手順に進みます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "89292539"
 
 1. [説明] では、クリックしてその特定のドキュメントにアクセスするかどうかの判断に役立つような詳しい情報が格納されているフィールドを選択します。
 
-   ![サンプル データの結果を構成する](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="サンプル データのデータ ソース ページ" border="false":::
 
 ## <a name="add-a-sidebar"></a>サイド バーを追加する
 
@@ -83,7 +83,7 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 
 次のスクリーンショットは、ウィザードのオプションとアプリでレンダリングされるページとを並べて示したものです。 選択フィールドの使い方や、[フィールド名を表示する] を使用して候補内のラベルを追加したり除外したりする方法が確認できます。
 
-![クエリ候補の構成](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="サンプル データのデータ ソース ページ":::
 
 ## <a name="create-download-and-execute"></a>作成、ダウンロード、実行する
 
@@ -95,7 +95,7 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 
 基になるインデックスは、複数のドキュメントにまたがって複製された架空の生成データからできていて、説明と画像が一致しない場合があります。 独自のインデックスに基づいてアプリを作成すれば、両者の関連性を高めることができます。
 
-![アプリを実行する](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="サンプル データのデータ ソース ページ":::
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.reviewer: mathoma, sstein, danil
+ms.date: 11/13/2020
+ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809478"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797215"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ ms.locfileid: "87809478"
 
 > [!IMPORTANT]
 > 復元中に既存のデータベースを上書きすることはできません。
-
-既定では、Azure SQL Database と Azure SQL Managed Instance のバックアップは geo レプリケートされた BLOB ストレージ (RA-GRS ストレージの種類) に格納されます。 加えて、SQL Managed Instance では、ローカル冗長 (LRS) とゾーン冗長 (ZRS) バックアップ ストレージもサポートされます。 冗長性によって、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止または停電、大規模な自然災害など) から確実にデータが保護されます。 ゾーン冗長ストレージ (ZRS) は[特定のリージョン](../../storage/common/storage-redundancy.md#zone-redundant-storage)でのみ利用できます。
-
-> [!IMPORTANT]
-> バックアップに使用するストレージの冗長性は、マネージド インスタンスに対してのみ構成できます。またその構成は、作成プロセス中に行うことができます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。
 
 Standard または Premium のサービス レベルを使用している場合、データベースの復元によって追加のストレージ コストが発生する可能性があります。 復元されたデータベースの最大サイズが、ターゲット データベースのサービス レベルとパフォーマンス レベルに含まれるストレージの量を超えると、追加のコストが発生します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 実際に使用される容量が、含まれるストレージの量より少ない場合、データベースの最大サイズを含まれる量に設定することで、この追加コストを回避できます。
 
@@ -65,11 +60,11 @@ Standard または Premium のサービス レベルを使用している場合�
 サーバー全体を復元するための組み込みの方法はありません。 このタスクを実行する方法の例については、「[Azure SQL Database: サーバーの完全復旧](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)」を参照してください。
 
 > [!IMPORTANT]
-> 自動バックアップを使って復旧するには、サブスクリプション内の SQL Server 共同作成者ロールまたは SQL Managed Instance 共同作成者ロール (復旧のターゲットによって決まります) のメンバーであるか、サブスクリプション所有者である必要があります。 詳細については、[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure portal、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
+> 自動バックアップを使って復旧するには、サブスクリプション内の SQL Server 共同作成者ロールまたは SQL Managed Instance 共同作成者ロール (復旧のターゲットによって決まります) のメンバーであるか、サブスクリプション所有者である必要があります。 詳細については、[Azure RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure portal、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.) を使用して、スタンドアロンのデータベース、プールされたデータベース、またはインスタンス データベースを、以前の時点に復元できます。 要求では、復元されるデータベースに対して任意のサービス レベルまたはコンピューティング サイズを指定できます。 データベースを復元するサーバーに十分なリソースを確保します。 
+Azure portal、[PowerShell](/powershell/module/az.sql/restore-azsqldatabase)、または [REST API](/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.) を使用して、スタンドアロンのデータベース、プールされたデータベース、またはインスタンス データベースを、以前の時点に復元できます。 要求では、復元されるデータベースに対して任意のサービス レベルまたはコンピューティング サイズを指定できます。 データベースを復元するサーバーに十分なリソースを確保します。 
 
 完了すると、元のデータベースと同じサーバー上に新しいデータベースが作成されます。 復元されたデータベースでは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまでは、料金は発生しません。
 
@@ -91,20 +86,20 @@ Azure portal で復元するデータベースの概要ブレードから、単�
 
 Azure portal を使用してデータベースを特定の時点に復旧するには、データベースの概要ページを開き、ツール バーの **[復元]** を選択します。 バックアップ ソースを選択し、新しいデータベースを作成する特定の時点のバックアップ ポイントを選択します。
 
-  ![データベース復元オプションのスクリーンショット](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![SQL Database のデータベース復元オプションのスクリーンショット。](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
 Azure portal を使用してマネージド インスタンス データベースを特定の時点に復旧するには、データベースの概要ページを開き、ツール バーの **[復元]** を選択します。 新しいデータベースを作成する特定の時点のバックアップ ポイントを選択します。
 
-  ![データベース復元オプションのスクリーンショット](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![SQL Managed Instance のデータベース復元オプションのスクリーンショット。](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> データベースをプログラムでバックアップから復元するには、「[自動バックアップを使用したプログラム実行の復旧](recovery-using-backups.md)」を参照してください。
+> データベースをプログラムでバックアップから復元するには、[自動バックアップを使用したプログラムによる復旧](recovery-using-backups.md)に関するページを参照してください。
 
 ## <a name="deleted-database-restore"></a>削除されたデータベースの復元
 
-削除されたデータベースを、削除時点またはそれ以前の時点の状態で、同じサーバー上または同じマネージド インスタンス上に復元できます。 Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、これを行うことができます。 削除されたデータベースを復元するには、バックアップから新しいデータベースを作成します。
+削除されたデータベースを、削除時点またはそれ以前の時点の状態で、同じサーバー上または同じマネージド インスタンス上に復元できます。 Azure portal、[PowerShell](/powershell/module/az.sql/restore-azsqldatabase)、または [REST (createMode=Restore)](/rest/api/sql/databases/createorupdate) を使用して、これを行うことができます。 削除されたデータベースを復元するには、バックアップから新しいデータベースを作成します。
 
 > [!IMPORTANT]
 > サーバーまたはマネージド インスタンスを削除すると、そのデータベースもすべて削除され、復旧することはできなくなります。 削除されたサーバーまたはマネージド インスタンスは復元できません。
@@ -112,6 +107,9 @@ Azure portal を使用してマネージド インスタンス データベー�
 ### <a name="deleted-database-restore-by-using-the-azure-portal"></a>削除されたデータベースの Azure portal を使用した復元
 
 削除されたデータベースの復元は、Azure portal で、サーバーまたはマネージド インスタンス リソースから実行します。
+
+> [!TIP]
+> 最近削除されたデータベースが Azure portal の **[削除されたデータベース]** ページに表示されるには、数分かかることがあります。削除されたデータベースを [プログラムを使用して](#programmatic-recovery-using-automated-backups)表示する場合も同様です。
 
 #### <a name="sql-database"></a>SQL Database
 
@@ -143,7 +141,7 @@ Azure SQL Database の削除されたデータベースの復元方法を示す�
 ## <a name="geo-restore"></a>geo リストア
 
 > [!IMPORTANT]
-> geo リストアは、geo 冗長 (RA-GRS) バックアップ ストレージ タイプを使用して構成されたマネージド インスタンスでのみ利用できます。 ローカル冗長またはゾーン冗長バックアップ ストレージ タイプを使用して構成されたマネージド インスタンスでは、geo リストアはサポートされません。
+> geo リストアは、geo 冗長[バックアップ ストレージ](automated-backups-overview.md#backup-storage-redundancy)を使用して構成された SQL データベースまたはマネージド インスタンスでのみ利用できます。
 
 最新の geo レプリケートされたバックアップから、任意の Azure リージョンの任意の SQL Database サーバーにデータベースを復元するか、任意のマネージド インスタンスにインスタンス データベースを復元できます。 geo リストアでは、geo レプリケートされたバックアップをソースとして使用します。 データベースまたはデータセンターが停止してアクセスできない場合でも、geo リストアを要求できます。
 
@@ -159,7 +157,7 @@ Azure portal から、新しい単一データベースまたはマネージド 
 
 選択したリージョンとサーバーの単一データベースを Azure portal から geo リストアするには、次の手順に従います。
 
-1. **ダッシュボード**から、 **[追加]**  >  **[SQL データベースの作成]** を選択します。 **[基本]** タブで、必要な情報を入力します。
+1. **ダッシュボード** から、 **[追加]**  >  **[SQL データベースの作成]** を選択します。 **[基本]** タブで、必要な情報を入力します。
 2. **[追加設定]** を選択します。
 3. **[既存のデータを使用します]** で **[バックアップ]** を選択します。
 4. **[バックアップ]** で、使用可能な geo リストア バックアップの一覧からバックアップを選択します。
@@ -196,7 +194,7 @@ Azure portal を使用して、マネージド インスタンス データベ�
 geo セカンダリ データベースでは、ポイントインタイム リストアを実行できません。 これを実行できるのは、プライマリ データベースだけです。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](../../key-vault/general/disaster-recovery-guidance.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> geo リストアは、SQL Database と SQL Managed Instance で使用できる最も基本的なディザスター リカバリー ソリューションです。 これは、自動的に作成される geo レプリケートされたバックアップに依存し、目標復旧時点 (RPO) は 1 時間、推定復旧時間は最大 12 時間です。 リージョンの停止後は、需要が急激に増加する可能性があるため、目的のデータベースを復元する容量がターゲット リージョンに確保される保証はありません。 アプリケーションで使用されているデータベースが比較的小さく、アプリケーションがビジネスにとって重要でなければ、geo リストアは適切なディザスター リカバリー ソリューションです。 
+> geo リストアは、SQL Database と SQL Managed Instance で使用できる最も基本的なディザスター リカバリー ソリューションです。 これは、自動的に作成される geo レプリケートされたバックアップに依存し、目標復旧時点 (RPO) は最大 1 時間、推定復旧時間は最大 12 時間です。 リージョンの停止後は、需要が急激に増加する可能性があるため、目的のデータベースを復元する容量がターゲット リージョンに確保される保証はありません。 アプリケーションで使用されているデータベースが比較的小さく、アプリケーションがビジネスにとって重要でなければ、geo リストアは適切なディザスター リカバリー ソリューションです。 
 >
 > 大規模なデータベースを必要とし、事業継続性を保証する必要があるビジネス上不可欠なアプリケーションの場合は、[自動フェールオーバー グループ](auto-failover-group-overview.md)を使用します。 大幅に低い RPO と目標復旧時間が実現され、容量が常に保証されます。 
 >
@@ -210,7 +208,7 @@ Azure PowerShell または REST API を復旧に使用することもできま�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは SQL Database と SQL Managed Instance によって引き続きサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと Azure Resource Manager モジュールのコマンドの引数は、大部分が同じです。
+> PowerShell Azure Resource Manager モジュールは SQL Database と SQL Managed Instance によって引き続きサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと Azure Resource Manager モジュールのコマンドの引数は、大部分が同じです。
 
 #### <a name="sql-database"></a>SQL Database
 
@@ -242,8 +240,8 @@ REST API を使用してデータベースを復元するには:
 
 | API | 説明 |
 | --- | --- |
-| [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |データベースを復元します。 |
-| [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/operations) |復元操作中にステータスを返します。 |
+| [REST (createMode=Recovery)](/rest/api/sql/databases) |データベースを復元します。 |
+| [Get Create or Update Database Status](/rest/api/sql/operations) |復元操作中にステータスを返します。 |
 
 ### <a name="azure-cli"></a>Azure CLI
 

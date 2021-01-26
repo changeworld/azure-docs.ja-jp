@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036370"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89440611"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティを監視する
 
@@ -30,7 +30,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 コピー アクティビティの実行を監視するには、お使いのデータ ファクトリの **[作成と監視]** UI に移動します。 **[監視]** タブに表示されるパイプライン実行の一覧で、**パイプライン名**のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。
 
-![コピー アクティビティの実行を監視する](./media/copy-activity-overview/monitor-pipeline-run.png)
+![パイプラインの実行の監視](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 このレベルでは、コピー アクティビティの入力、出力、エラー (コピー アクティビティの実行が失敗した場合) と、実行時間や状態などの統計情報へのリンクが表示されます。 コピー アクティビティ名の横にある **[詳細]** ボタン (眼鏡) をクリックすると、コピー アクティビティの実行に関する詳細が表示されます。 
 
@@ -67,7 +67,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | throughput | データ転送率。 | 浮動小数点数 (KB/秒単位) |
 | sourcePeakConnections | コピー アクティビティの実行中にソース データ ストアに対して確立されたコンカレント接続の最大数。 | Int32 値 (単位なし) |
 | sinkPeakConnections| コピー アクティビティの実行中にシンク データ ストアに対して確立されたコンカレント接続の最大数。| Int32 値 (単位なし) |
-| sqlDwPolyBase | データを SQL Data Warehouse にコピーするときに PolyBase を使用するかどうかを指定します。 | Boolean |
+| sqlDwPolyBase | データを Azure Synapse Analytics (旧称 SQL Data Warehouse) にコピーするときに PolyBase を使用するかどうかを指定します。 | Boolean |
 | redshiftUnload | Redshift からデータをコピーするときに UNLOAD を使用するかどうかを指定します。 | Boolean |
 | hdfsDistcp | HDFS からデータをコピーするときに DistCp を使用するかどうかを指定します。 | Boolean |
 | effectiveIntegrationRuntime | アクティビティの実行を強化するために使用される統合ランタイム (IR) またはランタイム (`<IR name> (<region if it's Azure IR>)` 形式)。 | Text (文字列) |

@@ -4,18 +4,18 @@ description: Azure Monitor を使用して Azure Cosmos DB のアラートを設
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095588"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339548"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Azure Monitor を使用して Azure Cosmos DB のアラートを作成する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 アラートは、Azure Cosmos DB リソースの可用性と応答性を監視するための定期的なテストを設定するために使用されます。 アラートでは、いずれかのメトリックがしきい値に達したとき、またはアクティビティ ログに特定のイベントが記録されたときに、電子メールの形式で通知を送信したり、Azure 関数を実行したりすることができます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "87095588"
 
    * **[リソースの選択]** ペインを開き、次のように構成します。
 
-   * **サブスクリプション**名を選択します。
+   * **サブスクリプション** 名を選択します。
 
    * **[リソースの種類]** に **[Azure Cosmos DB アカウント]** を選択します。
 
@@ -61,7 +61,7 @@ ms.locfileid: "87095588"
 
    * 次のタブでは、アラートをトリガーするロジックを定義し、グラフを使用して Azure Cosmos アカウントの傾向を表示することができます。 **[合計要求ユニット数]** メトリックではディメンションがサポートされます。 これらのディメンションを使用すると、メトリックに基づいてフィルター処理を行うことができます。 ディメンションを選択していない場合、この値は無視されます。
 
-   * **[ディメンション名]**として**[StatusCode]** を選択します。 **[カスタム値を追加]** を選択し、状態コードを 429 に設定します。
+   * **[ディメンション名] **として** [StatusCode]** を選択します。 **[カスタム値を追加]** を選択し、状態コードを 429 に設定します。
 
    * **[アラート ロジック]** で、 **[しきい値]** を **[静的]** に設定します。 静的しきい値では、ユーザー定義のしきい値を使用してルールを評価します。一方、動的しきい値では、組み込みの機械学習アルゴリズムを使用して、メトリックの動作パターンを継続的に学習し、しきい値を自動的に計算します。
 

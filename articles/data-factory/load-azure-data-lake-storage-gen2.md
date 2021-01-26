@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/09/2020
+ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660474"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554120"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
@@ -42,7 +42,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -88,7 +88,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 6. **[再帰的]** オプションと **[バイナリ コピー]** オプションをオンにすることで、コピーの動作を指定します。 **[次へ]** を選択します。
 
-    ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+    ![[入力ファイルまたはフォルダーの選択] を示すスクリーンショット。ここでは、[バイナリ コピー] と [再帰的] を選択できます。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
 7. **[配布先データ ストア]** ページで、 **[新しい接続の作成]** をクリックし、 **[Azure Data Lake Storage Gen2]** を選択して、 **[続行]** を選択します。
 
@@ -103,7 +103,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、 **[次へ]** を選択します。 対応する ADLS Gen2 ファイル システムとサブ フォルダーが存在しない場合は、コピー中に ADF によって作成されます。
 
-    ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
+    ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
 10. **[設定]** ページで、 **[次へ]** を選択して、既定の設定を使用します。
 

@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL プールに接続する
+title: Azure Synapse の SQL プールに接続する
 description: SQL プールに接続します。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,17 +10,17 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, devx-track-csharp
-ms.openlocfilehash: ab169f7b814dedbc63f3cb6cddbfb822bdb57ab9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: azure-synapse, seo-lt-2019, devx-track-csharp
+ms.openlocfilehash: 3483fa03e8c05101b88bde5c964b74b382d32a52
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016446"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462840"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>Synapse SQL プールに接続する
+# <a name="connect-to-a-sql-pool-in-azure-synapse"></a>Azure Synapse の SQL プールに接続する 
 
-SQL プールに接続します。
+Azure Synapse の SQL プールに接続します。
 
 ## <a name="find-your-server-name"></a>サーバー名を検索する
 
@@ -70,7 +70,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 SQL プールでは、接続とオブジェクトの作成時に一部の設定が標準化されます。 これらの設定をオーバーライドすることはできません。設定には次のものがあります。
 
-| データベースの設定 | 値 |
+| SQL プールの設定 | 値 |
 |:--- |:--- |
 | [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
 | [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |

@@ -4,11 +4,11 @@ description: この記事では、Service Fabric アプリケーションのア�
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022991"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
 
@@ -22,19 +22,19 @@ ms.locfileid: "86248086"
 
 アプリケーションやクラスターのアップグレードまたはノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、インスタンスがダウンして接続が強制的に終了した後、公開されたエンドポイントが削除されるため、接続が解除される場合があります。
 
-これを回避するには、サービス構成に*インスタンスの終了遅延期間*を追加する、*RequestDrain* 機能を構成して、公開されているエンドポイントでクラスター内の既存の要求がドレインされるようにします。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントが、インスタンスの終了前の延期期間の開始*前*に削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントには、延期期間開始時点でコールバック関数によってエンドポイントの変更が通知されるため、エンドポイントを解決し、停止するインスタンスへの新しい要求の送信を回避できます。 これらの要求は、[リバース プロキシ](./service-fabric-reverseproxy.md)を使用するクライアントや、エンドポイントを更新する通知モデル ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) をサービス エンドポイントの解決 API と共に使用しているクライアントから送信されたものである場合があります。
+これを回避するには、サービス構成に *インスタンスの終了遅延期間* を追加する、*RequestDrain* 機能を構成して、公開されているエンドポイントでクラスター内の既存の要求がドレインされるようにします。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントが、インスタンスの終了前の延期期間の開始 *前* に削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントには、延期期間開始時点でコールバック関数によってエンドポイントの変更が通知されるため、エンドポイントを解決し、停止するインスタンスへの新しい要求の送信を回避できます。 これらの要求は、[リバース プロキシ](./service-fabric-reverseproxy.md)を使用するクライアントや、エンドポイントを更新する通知モデル ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) をサービス エンドポイントの解決 API と共に使用しているクライアントから送信されたものである場合があります。
 
 ### <a name="service-configuration"></a>サービス構成
 
 サービス側で延期期間を構成するには、いくつかの方法があります。
 
- * **新しいサービスを作成する場合**は、`-InstanceCloseDelayDuration` を指定します。
+ * **新しいサービスを作成する場合** は、`-InstanceCloseDelayDuration` を指定します。
 
     ```powershell
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
- * **アプリケーション マニフェストの既定のセクションでサービスを定義する場合**は、`InstanceCloseDelayDurationSeconds` プロパティを割り当てます。
+ * **アプリケーション マニフェストの既定のセクションでサービスを定義する場合** は、`InstanceCloseDelayDurationSeconds` プロパティを割り当てます。
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,13 +42,13 @@ ms.locfileid: "86248086"
           </StatelessService>
     ```
 
- * **既存のサービスを更新する場合**は、`-InstanceCloseDelayDuration` を指定します。
+ * **既存のサービスを更新する場合** は、`-InstanceCloseDelayDuration` を指定します。
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **ARM テンプレートを使用して既存のサービスを作成または更新する場合**は、`InstanceCloseDelayDuration` 値を指定します (サポートされている最小 API バージョン:2019-11-01-preview):
+ * **ARM テンプレートを使用して既存のサービスを作成または更新する場合** は、`InstanceCloseDelayDuration` 値を指定します (サポートされている最小 API バージョン:2019-11-01-preview):
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {

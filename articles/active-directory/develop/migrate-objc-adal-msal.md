@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119931"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107922"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>アプリケーションを iOS および macOS 用の MSAL に移行する
 
@@ -136,7 +136,7 @@ MSAL では、アプリで処理できるエラーと、ユーザーによる介
 
 [`MSALError` リスト](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)内の他のすべてのエラーの処理は、省略可能です。 これらのエラーの情報を使用して、ユーザー エクスペリエンスを向上させることができます。
 
-MSAL エラー処理の詳細については、[MSAL を使用した例外とエラーの処理](msal-handling-exceptions.md)に関するページを参照してください。
+MSAL エラー処理の詳細については、[MSAL を使用した例外とエラーの処理](msal-error-handling-ios.md)に関するページを参照してください。
 
 ### <a name="broker-support"></a>ブローカー サポート
 

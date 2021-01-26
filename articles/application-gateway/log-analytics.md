@@ -1,19 +1,19 @@
 ---
 title: Azure Log Analytics を使用して WAF ログを調べる
 titleSuffix: Azure Application Gateway
-description: この記事では、Azure Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる方法を見ていただきます
+description: この記事では、Azure Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォール (WAF) のログを調べる方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 88e360c5630c24dd997f72bda3fc4a480264763d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 881dbd02a6bf069fbe68108cc6eab0cb6b909a13
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086916"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362652"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォール (WAF) のログを調べる
 
@@ -80,7 +80,7 @@ AzureDiagnostics
 
 クエリを作成した後は、それをダッシュボードに追加できます。  Log Analytics ワークスペースの右上にある **[ダッシュボードにピン留め]** を選択します。 前の 4 つのクエリをサンプル ダッシュボードにピン留めすると、データをひとめで確認できるようになります。
 
-![ダッシュボード](media/log-analytics/dashboard.png)
+![Azure ダッシュボードのスクリーンショット。クエリを追加できます。](media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>次のステップ
 

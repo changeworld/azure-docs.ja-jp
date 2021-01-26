@@ -14,11 +14,11 @@ caps.latest.revision: 60
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 4368bb38a280461fdd77348de60a0e5793ee9582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535682"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011321"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services の定義: WebRole スキーマ
 Azure Web ロールは、Web アプリケーションのプログラミング用として IIS 7 でサポートされるようにカスタマイズされたロールであり、ASP.NET、PHP、Windows Communication Foundation、FastCGI などがあります。

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4d29b1301f66f2834c974bdcd2675cf1a672c742
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2ef564ae61aab10e1d100ccaf2547248e4a6a8e8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555715"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352169"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>チュートリアル:Druva を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,15 +58,15 @@ Azure AD での自動ユーザー プロビジョニング用に Druva を構成
 
 2. **[管理]**  >  **[デプロイ]**  >  **[ユーザー]** に移動します。
 
-    ![Druva での SCIM の追加](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Druva 管理コンソールのスクリーンショット。[Manage]\(管理\) が強調表示され、[Manage]\(管理\) メニューが表示されています。そのメニューの [Deployments]\(デプロイ\) の下にある [Users]\(ユーザー\) が強調表示されています。" border="false":::
 
 3.  **[設定]** に移動します。 **[トークンの生成]** をクリックします。
 
-    ![Druva での SCIM の追加](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Druva 管理コンソールのページのスクリーンショット。[Settings]\(設定\) が強調表示され、[Settings]\(設定\) タブが開いています。[Generate token]\(トークンの生成\) ボタンが強調表示されています。" border="false":::
 
 4.  **[認証トークン]** 値をコピーします。 この値を、Azure portal で Druva アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
     
-    ![Druva での SCIM の追加](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Druva 管理コンソールの [Create token]\(トークンの作成\) ページのスクリーンショット。&quot;トークンのコピー&quot; というラベルが付いたリンクは、認証トークンの値をコピーするためにあります。" border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>ギャラリーからの Druva の追加
 
@@ -109,11 +109,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Druva 
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5.  [管理者資格情報] セクションの **[テナントの URL]** に「`https://apis.druva.com/insync/scim`」と入力します。 **[認証トークン]** 値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Druva に接続できることを確認します。 接続できない場合は、使用中の Druva アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -154,7 +154,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Druva 
     
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* Druva では、必須の属性として**電子メール**が必要です。 
+* Druva では、必須の属性として **電子メール** が必要です。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

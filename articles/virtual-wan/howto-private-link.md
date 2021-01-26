@@ -6,15 +6,15 @@ services: virtual-wan
 author: erjosito
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: 98142e3a8904bcbb0352fa768fc72966412dae0b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590499"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913757"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Virtual WAN で Private Link を使用する
 
@@ -72,7 +72,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 10.1.3.75
 ```
 
-ご覧のとおり、ここでは SQL Server によってクライアントから認識される発信元 IP アドレスを返す特別な SQL クエリを使用しています。 この場合、サーバーはクライアントをプライベート IP (`10.1.3.75`) で認識しています。つまり、トラフィックはパブリック インターネットを経由せずに、プライベート エンドポイントに直行します。
+ご覧のとおり、ここでは SQL Server によってクライアントから認識される発信元 IP アドレスを返す特別な SQL クエリを使用しています。 この場合、サーバーでは、クライアントはそのプライベート IP (`10.1.3.75`) で認識されます。つまり、トラフィックは VNet からプライベート エンドポイントに直行します。
 
 このガイドの例を使用するには、Azure SQL Database で定義されている資格情報と一致するように `username` と `password` 変数を設定する必要があることに注意してください。
 

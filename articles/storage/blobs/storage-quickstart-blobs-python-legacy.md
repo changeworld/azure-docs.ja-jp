@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 34205caf03d2f2d7255f75ea6203c5572c4c429b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851326"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523308"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>クイック スタート:Python v2.1 SDK で BLOB を管理する
 
@@ -137,7 +137,7 @@ block_blob_service.set_container_acl(
 クラウド BLOB コンテナーを作成した後は、関心がある特定の BLOB を指す **CloudBlockBlob** オブジェクトをインスタンス化します。 これにより、必要に応じて BLOB をアップロード、ダウンロード、コピーできるようになります。
 
 > [!IMPORTANT]
-> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」 (コンテナー、BLOB、およびメタデータの名前付けと参照) を参照してください。
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」 (コンテナー、BLOB、およびメタデータの名前付けと参照) を参照してください。
 
 ### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
@@ -216,7 +216,7 @@ BLOB ストレージを使用する Python 開発の詳細については、以�
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
 
-- Python クライアント ライブラリの詳細については、[Python 用 Azure Storage ライブラリ](https://docs.microsoft.com/python/api/overview/azure/storage)に関する記事を参照してください。
+- Python クライアント ライブラリの詳細については、[Python 用 Azure Storage ライブラリ](/python/api/overview/azure/storage)に関する記事を参照してください。
 - Python クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次のステップ

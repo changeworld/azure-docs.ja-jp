@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890469"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325657"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -16,7 +16,7 @@ ms.locfileid: "88890469"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>ID とユーザー アクセスの管理と制御
 
-Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (Azure RBAC)](./backup-rbac-rs-vault.md) を使用したきめ細かなアクセスを通して、マネージド型の操作を管理することができます。 RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
+Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (Azure RBAC)](./backup-rbac-rs-vault.md) を使用したきめ細かなアクセスを通して、マネージド型の操作を管理することができます。 Azure RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの[組み込みロール](../role-based-access-control/built-in-roles.md)が提供されます。
 
@@ -24,9 +24,9 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの[
 * バックアップ オペレーター - バックアップの削除とバックアップ ポリシーの管理を除き、共同作成者が行うすべての操作を行います
 * バックアップ リーダー - すべてのバックアップ管理操作を表示するアクセス許可
 
-[Azure Backup を管理するためのロールベースのアクセス制御](./backup-rbac-rs-vault.md)について確認してください。
+[Azure Backup を管理するための Azure ロールベースのアクセス制御](./backup-rbac-rs-vault.md)について確認してください。
 
-Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](./backup-security-controls.md)について確認してください。
+Azure Backup には、セキュリティ脆弱性の防止、検出、および対応を行うための、サービスに組み込まれているセキュリティ コントロールがいくつかあります。 [Azure Backup のセキュリティ コントロール](./security-baseline.md)について確認してください。
 
 ## <a name="separation-between-guest-and-azure-storage"></a>ゲストと Azure ストレージの分離
 
@@ -70,7 +70,7 @@ Azure Backup サービスは、Microsoft Azure Recovery Services (MARS) エー�
 
 * 削除されたバックアップ データは、削除日から追加で 14 日間保持されます。 これにより、特定の期間内のデータの復旧性が確保され、攻撃が行われてもデータが失われることはありません。 また、保持される最小復旧ポイントの数が非常に増えたため、データの破損を防ぐことができます。 [削除されたバックアップ データの復旧の詳細については、こちらを参照してください](./backup-azure-security-feature.md#recover-deleted-backup-data)。
 
-* Microsoft Azure Recovery Services (MARS) エージェントを使用してバックアップされたデータの場合は、Azure Backup にアップロードする前にデータが暗号化され、Azure Backup からダウンロードした後にのみ暗号化が解除されるようにするために、パスフレーズが使用されます。 パスフレーズの詳細は、パスフレーズを作成したユーザーと、それを使用して構成されたエージェントでのみ使用できます。 そのサービスとの間で転送または共有されるものはありません。 これにより、 (ネットワークでの中間者攻撃などで) 誤って公開されたデータは、パスフレーズなしでは使用できず、パスフレーズはネットワークで送信されないため、データの完全なセキュリティが確保されます。
+* Microsoft Azure Recovery Services (MARS) エージェントを使用してバックアップされたデータの場合は、Azure Backup にアップロードする前にデータが暗号化され、Azure Backup からダウンロードした後にのみ暗号化が解除されるようにするために、パスフレーズが使用されます。 パスフレーズの詳細は、パスフレーズを作成したユーザーと、それを使用して構成されたエージェントでのみ使用できます。 そのサービスとの間で転送または共有されるものはありません。 これにより、(ネットワーク上の中間者攻撃などで) 誤って公開されたデータはパスフレーズなしで使用できず、パスフレーズはネットワーク経由で送信されないため、データの完全なセキュリティが確保されます。
 
 ## <a name="compliance-with-standardized-security-requirements"></a>標準化されたセキュリティ要件への準拠
 

@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76834656"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896364"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
+
+> [!NOTE]
+> このチュートリアルでは、接続モニター (クラシック) について取り上げます。 改良された新しい[接続モニター](connection-monitor-overview.md)で、強化された接続監視機能を体験してみましょう。
 
 仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルでは、以下の内容を学習します。
 
@@ -34,9 +37,11 @@ ms.locfileid: "76834656"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-vms"></a>VM の作成
 
@@ -45,25 +50,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
-2. **[Compute]** を選択し、オペレーティング システムを選択します。 このチュートリアルでは、 **[Windows Server 2016 Datacenter]** を使用します。
+2. **[Compute]** を選択し、オペレーティング システムを選択します。 このチュートリアルでは、**[Windows Server 2016 Datacenter]** を使用します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
     |設定|値|
     |---|---|
-    |Name|myVm1|
+    |名前|myVm1|
     |ユーザー名| 任意のユーザー名を入力します。|
     |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
-    |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
-    |Location| **[米国東部]** を選択します。|
+    |Resource group| **[新規作成]** を選択し、「**myResourceGroup** と入力します。|
+    |場所| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
-5. **[設定]** で **[拡張機能]** を選択します。 次の図に示すように、 **[拡張機能の追加]** を選択して、 **[Network Watcher Agent for Windows]** を選択します。
+5. **[設定]** で **[拡張機能]** を選択します。 次の図に示すように、**[拡張機能の追加]** を選択して、**[Network Watcher Agent for Windows]** を選択します。
 
     ![Network Watcher エージェント拡張機能](./media/connection-monitor/nw-agent-extension.png)
 
-6. **[Network Watcher Agent for Windows]** の下の **[作成]** を選択し、 **[拡張機能のインストール]** の下の **[OK]** を選択し、 **[拡張機能]** の下の **[OK]** を選択します。
-7. 残りの **[設定]** は既定値を受け入れて、 **[OK]** を選択します。
+6. **[Network Watcher Agent for Windows]** の下の **[作成]** を選択し、**[拡張機能のインストール]** の下の **[OK]** を選択し、**[拡張機能]** の下の **[OK]** を選択します。
+7. 残りの **[設定]** は既定値を受け入れて、**[OK]** を選択します。
 8. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
 
 ### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
@@ -73,8 +78,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |手順|設定|値|
 |---|---|---|
 | 1 | いずれかのバージョンの **Ubuntu Server** を選択する |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
-| 3 | 認証の種類                   | SSH 公開キーを貼り付けるか、 **[パスワード]** を選択して、パスワードを入力します。 |
+| 3 | 名前                                  | myVm2                                                                   |
+| 3 | 認証の種類                   | SSH 公開キーを貼り付けるか、**[パスワード]** を選択して、パスワードを入力します。 |
 | 3 | Resource group                        | **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。                 |
 | 6 | 拡張機能                            | **Linux 用 Network Watcher Agent**                                             |
 
@@ -88,11 +93,11 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 2. **[フィルター]** ボックスに「*network watcher*」の入力を始めます。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 3. **[監視]** の **[接続モニター]** を選択します。
 4. **[+ 追加]** を選択します。
-5. 監視する接続の情報を入力するか選択して、 **[追加]** を選択します。 次の図に示す例で、監視される接続は、ポート 22 経由の *myVm1* VM から *myVm2* VM への接続です。
+5. 監視する接続の情報を入力するか選択して、**[追加]** を選択します。 次の図に示す例で、監視される接続は、ポート 22 経由の *myVm1* VM から *myVm2* VM への接続です。
 
     | 設定                  | 値               |
     | ---------                | ---------           |
-    | Name                     | myVm1-myVm2(22)     |
+    | 名前                     | myVm1-myVm2(22)     |
     | source                   |                     |
     | 仮想マシン          | myVm1               |
     | 宛先              |                     |
@@ -114,7 +119,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
     次の情報をメモしておきます。
 
-    | アイテム                     | 値                      | 詳細                                                     |
+    | Item                     | 値                      | 詳細                                                     |
     | ---------                | ---------                  |--------                                                     |
     | Status                   | 到達可能                  | エンドポイントが到達可能かどうかを知ることができます。|
     | 平均 往復時間          | 接続を作成するまでの往復時間 (ミリ秒) を知ることができます。 接続モニターは、60 秒ごとに接続をプローブするため、時間経過に伴う待機時間を監視できます。                                         |
@@ -125,11 +130,11 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
 アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 生成されたアラートで、第三者への通知や別のプロセスの呼び出しなど、1 つまたは複数のアクションを自動的に実行できます。 アラート ルールを設定する際、対象となるリソースによって、アラートの生成に使用できる一連のメトリックが決まります。
 
-1. Azure portal で **Monitor** サービスを選択し、 **[アラート]**  >  **[新しいアラート ルール]** の順に選択します。
-2. **[ターゲットの選択]** をクリックして、対象となるリソースを選択します。 **[サブスクリプション]** を選択し、**リソースの種類**を設定して、使用したい接続モニターをフィルターで絞り込みます。
+1. Azure portal で **Monitor** サービスを選択し、**[アラート]** > **[新しいアラート ルール]** の順に選択します。
+2. **[ターゲットの選択]** をクリックして、対象となるリソースを選択します。 **[サブスクリプション]** を選択し、**リソースの種類** を設定して、使用したい接続モニターをフィルターで絞り込みます。
 
     ![ターゲットが選択された状態のアラート画面](./media/connection-monitor/set-alert-rule.png)
-1. 対象となるリソースを選択したら、 **[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
+1. 対象となるリソースを選択したら、**[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
 
     ![シグナルが選択された状態のアラート ページ](./media/connection-monitor/set-alert-signals.png)
 1. アラート ルール名、説明、重大度などのアラートの詳細を指定します。 アラートにアクション グループを追加して、アラートへの対応を自動化したりカスタマイズしたりすることもできます。
@@ -140,20 +145,20 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
 1. ポータル上部の [検索] ボックスに「*myResourceGroup*」と入力します。 検索結果に **myResourceGroup** リソース グループが表示されたら、それを選択します。
 2. **myVm2-ns** ネットワーク セキュリティ グループを選択します。
-3. 次の図に示すように、 **[受信セキュリティ規則]** を選択し、 **[追加]** を選択します。
+3. 次の図に示すように、**[受信セキュリティ規則]** を選択し、**[追加]** を選択します。
 
     ![受信セキュリティ規則](./media/connection-monitor/inbound-security-rules.png)
 
-4. 仮想ネットワーク内のすべての VM 間の通信を許可する既定の規則は、**AllowVnetInBound** という名前の規則です。 **AllowVnetInBound** 規則よりも高い優先順位 (小さい数値) で、ポート 22 経由の受信を拒否する規則を作成します。 次の情報を選択するか、入力し、それ以外の情報は既定値を受け入れて、 **[作成]** を選択します。
+4. 仮想ネットワーク内のすべての VM 間の通信を許可する既定の規則は、**AllowVnetInBound** という名前の規則です。 **AllowVnetInBound** 規則よりも高い優先順位 (小さい数値) で、ポート 22 経由の受信を拒否する規則を作成します。 次の情報を選択するか、入力し、それ以外の情報は既定値を受け入れて、**[作成]** を選択します。
 
     | 設定                 | 値          |
     | ---                     | ---            |
     | 宛先ポート範囲 | 22             |
     | アクション                  | 拒否           |
     | Priority                | 100            |
-    | Name                    | DenySshInbound |
+    | 名前                    | DenySshInbound |
 
-5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]** 、 **[接続モニター]** の順に選択し、 **[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。
+5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]**、**[接続モニター]** の順に選択し、**[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。
 
     ![モニター詳細のエラー](./media/connection-monitor/vm-monitor-fault.png)
 

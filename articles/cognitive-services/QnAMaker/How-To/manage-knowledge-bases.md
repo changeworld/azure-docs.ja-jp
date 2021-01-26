@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースを管理する - QnA Maker
 description: QnA Maker を使うと、ナレッジ ベースの設定とコンテンツにアクセスできるようになり、ナレッジ ベースを管理できます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c7bb79cbd67ba2fb151641ddeeb31b54e399b906
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551780"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938258"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>ナレッジ ベースを作成して設定を管理する
 
@@ -44,7 +46,7 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
     |**Default answer text (既定の回答テキスト)**| `Quickstart - default answer not found.`|
-    |**+ Add URL (+ URL の追加)**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ Add URL (+ URL の追加)**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
 
 1. **[Step 5]\(手順 5\)** で、 **[Create your KB]\(KB の作成\)** を選択します。
@@ -57,7 +59,7 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
 
 1.  上部のナビゲーション バーにある **[My knowledge bases]\(マイ ナレッジ ベース\)** を選択します。
 
-       自分が作成したサービスと他のユーザーから共有されたサービスが、**最終更新日**の降順ですべて表示されます。
+       自分が作成したサービスと他のユーザーから共有されたサービスが、**最終更新日** の降順ですべて表示されます。
 
        ![[My knowledge bases]\(マイ ナレッジ ベース\)](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
@@ -72,7 +74,7 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
        |コンテンツを最新の情報に更新|既存の URL の最新のコンテンツをクロールするためのナレッジ ベースが必要な場合は、 **[更新]** チェック ボックスをオンにします。 これにより、最新の URL コンテンツでナレッジ ベースが 1 回更新されます。 この操作では、定期的な更新スケジュールが設定されません。|
        |ファイルの追加|**[Manage knowledge base]\(ナレッジ ベースの管理\)** を選択してから **[+ ファイルの追加]** を選択し、サポートされているファイル ドキュメントを追加してナレッジ ベースに含めることができます。|
     |[インポート]|**[Import Knowledge base]\(ナレッジ ベースのインポート\)** ボタンを選択して、既存のナレッジ ベースをインポートすることもできます。 |
-    |更新|ナレッジ ベースの更新は、ナレッジ ベースと関連付けられた QnA Maker サービスの作成中に使用している**管理価格レベル**によって異なります。 必要な場合、Azure portal から管理レベルを更新することもできます。
+    |更新|ナレッジ ベースの更新は、ナレッジ ベースと関連付けられた QnA Maker サービスの作成中に使用している **管理価格レベル** によって異なります。 必要な場合、Azure portal から管理レベルを更新することもできます。
 
   1. ナレッジ ベースを変更した後、その変更を保持するには、ページの右上隅にある **[保存してトレーニング]** を選択します。
 
@@ -105,7 +107,7 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
 
 ## <a name="next-steps"></a>次のステップ
 
-リソース内のすべてのナレッジ ベースの[言語の管理](language-knowledge-base.md)について学習します。
+リソース内のすべてのナレッジ ベースの[言語の管理](../index.yml)について学習します。
 
 * QnA ペアの編集
 * QnA Maker によって使用される Azure リソースを管理する

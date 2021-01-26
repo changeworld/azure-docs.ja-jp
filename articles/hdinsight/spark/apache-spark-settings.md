@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188159"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821147"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -23,13 +23,13 @@ HDInsight Spark クラスターには、Apache Spark ライブラリのインス
 
 ![Spark HDInsight のアーキテクチャ](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-HDInsight クラスター内のノードの VM の数と VM のサイズも、Spark の構成に影響します。 HDInsight の構成が既定値ではない場合は、通常、Spark の構成にも既定ではない値が必要です。 HDInsight Spark クラスターを作成するときに、各コンポーネントの推奨される VM サイズが表示されます。 現在、Azure に対する[メモリ最適化された Linux VM のサイズ](../../virtual-machines/linux/sizes-memory.md)は、D12 v2 以上です。
+HDInsight クラスター内のノードの VM の数と VM のサイズも、Spark の構成に影響します。 HDInsight の構成が既定値ではない場合は、通常、Spark の構成にも既定ではない値が必要です。 HDInsight Spark クラスターを作成するときに、各コンポーネントの推奨される VM サイズが表示されます。 現在、Azure に対する[メモリ最適化された Linux VM のサイズ](../../virtual-machines/sizes-memory.md)は、D12 v2 以上です。
 
 ## <a name="apache-spark-versions"></a>Apache Spark のバージョン
 
 クラスターに最適な Spark バージョンを使用します。  HDInsight サービスには、複数のバージョンの Spark および HDInsight 自体の両方が含まれます。  Spark の各バージョンには、既定のクラスター設定のセットが含まれます。  
 
-新しいクラスターを作成するときに、Spark のバージョンを複数のバージョンの中から選ぶことができます。 完全な一覧については、[HDInsight のコンポーネントとバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)に関するページを参照してください。
+新しいクラスターを作成するときに、Spark のバージョンを複数のバージョンの中から選ぶことができます。 完全な一覧については、[HDInsight のコンポーネントとバージョン](../hdinsight-component-versioning.md)に関するページを参照してください。
 
 > [!NOTE]  
 > HDInsight サービスに含まれる Apache Spark の既定のバージョンは、予告なく変更される場合があります。 バージョンの依存関係がある場合は、.NET SDK、Azure PowerShell、Azure クラシック CLI を使ってクラスターを作成するときに、特定のバージョンを指定することをお勧めします。
@@ -85,7 +85,7 @@ Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)**
 
 Spark ジョブはワーカーのリソース (具体的にはメモリ) を使うため、ワーカー ノードの Executor 用に Spark 構成値を調整するのが一般的です。
 
-アプリケーションの要件が向上するよう Spark の構成をチューニングするために調整されることが多い 3 つの主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、および `spark.executor.memory` です。 Executor は、Spark アプリケーション用に起動されるプロセスです。 Executor はワーカー ノードで動作し、アプリケーションのタスクを実行します。 ワーカー ノードの数とワーカー ノードのサイズによって、Executor の数と Executor のサイズが決まります。 これらの値はクラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。  Ambari Web UI で **[Custom spark-defaults]\(カスタム Spark 既定値\)** を選ぶことで、実行中のクラスターでのこれらの値を編集できます。  変更を行った後は、影響を受けるすべてのサービスの**再起動**を求める UI が表示されます。
+アプリケーションの要件が向上するよう Spark の構成をチューニングするために調整されることが多い 3 つの主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、および `spark.executor.memory` です。 Executor は、Spark アプリケーション用に起動されるプロセスです。 Executor はワーカー ノードで動作し、アプリケーションのタスクを実行します。 ワーカー ノードの数とワーカー ノードのサイズによって、Executor の数と Executor のサイズが決まります。 これらの値はクラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。  Ambari Web UI で **[Custom spark-defaults]\(カスタム Spark 既定値\)** を選ぶことで、実行中のクラスターでのこれらの値を編集できます。  変更を行った後は、影響を受けるすべてのサービスの **再起動** を求める UI が表示されます。
 
 > [!NOTE]  
 > 3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。
@@ -121,7 +121,7 @@ YARN は、各 Spark ノード上のコンテナーで使われる最大合計�
 
 ![YARN の Spark メモリの管理](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook で実行するアプリケーションのパラメーターを変更する
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook で実行されているアプリケーションのパラメーターを変更する
 
 HDInsight の Spark クラスターには、既定で複数のコンポーネントが含まれます。 これらの各コンポーネントには、必要に応じてオーバーライドできる既定の構成値が含まれます。
 
@@ -130,15 +130,15 @@ HDInsight の Spark クラスターには、既定で複数のコンポーネン
 |Spark Core|Spark Core、Spark SQL、Spark ストリーミング API、GraphX、Apache Spark MLlib。|
 |Anaconda|Python パッケージ マネージャー。|
 |Apache Livy|Apache Spark REST API (HDInsight Spark クラスターへのリモート ジョブの送信に使われます)。|
-|Jupyter ノートブックと Apache Zeppelin ノートブック|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
+|Jupyter Notebook と Apache Zeppelin Notebook|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
 |ODBC ドライバー|HDInsight の Spark クラスターを、Microsoft Power BI や Tableau などのビジネス インテリジェンス (BI) ツールに接続します。|
 
-Jupyter Notebook で実行するアプリケーションについては、`%%configure` コマンドを使って、Notebook 自体の内部から構成を変更できます。 これらの構成変更は、お使いの Notebook インスタンスから実行された Spark ジョブに適用されます。 そのような変更は、最初のコード セルを実行する前、アプリケーションの冒頭で行います。 変更された構成は、Livy セッションの作成時に適用されます。
+Jupyter Notebook で実行されているアプリケーションについては、`%%configure` コマンドを使って、Notebook 自体の内部から構成を変更できます。 これらの構成変更は、お使いの Notebook インスタンスから実行された Spark ジョブに適用されます。 そのような変更は、最初のコード セルを実行する前、アプリケーションの冒頭で行います。 変更された構成は、Livy セッションの作成時に適用されます。
 
 > [!NOTE]  
 > アプリケーションの後のステージで構成を変更するには、`-f` (force) パラメーターを使う必要があります。 ただし、アプリケーションのすべての進捗が失われます。
 
-以下のコードでは、Jupyter Notebook で実行しているアプリケーションの構成を変更する方法を示します。
+以下のコードでは、Jupyter Notebook で実行されているアプリケーションの構成を変更する方法を示します。
 
 ```
 %%configure

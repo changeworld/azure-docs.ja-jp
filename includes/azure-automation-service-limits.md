@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 06/29/2020
+ms.date: 10/21/2020
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a6b21d3782931e3bee4a13ff95e7f313dcc1af2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379718"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 

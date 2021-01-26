@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/20/2020
-ms.openlocfilehash: 06e96e970705801203c0469d5b87d1304d67a4f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b331f8e0af452937028c63fba123cb92f57a6b0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090690"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962418"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -34,11 +34,11 @@ Azure Database Migration Service では、マルチテナント コンテナー 
 
 ## <a name="postgresql-versions-supported-as-a-target-database"></a>ターゲット データベースとしてサポートされている PostgreSQL のバージョン
 
-Azure Database Migration Service では、Azure Database for PostgreSQL-Single Server バージョン 9.5、9.6、10 および 11 への移行がサポートされています。 Azure Database for PostgreSQL-Single Server で現在サポートされているバージョンの情報については、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」を参照してください。
+Azure Database Migration Service では、Azure Database for PostgreSQL-Single Server バージョン 9.5、9.6、10 および 11 への移行がサポートされています。 Azure Database for PostgreSQL-Single Server で現在サポートされているバージョンの情報については、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」を参照してください。
 
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
 
-以下のデータ型は移行**できません**。
+以下のデータ型は移行 **できません**。
 
 - BFILE
 - ROWID

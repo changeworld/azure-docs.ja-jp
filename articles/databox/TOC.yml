@@ -1,5 +1,5 @@
 - name: Azure Data Box のドキュメント - オフライン転送
-  href: /azure/databox
+  href: ./index.yml
   items:
     - name: Data Box
       items:
@@ -72,12 +72,14 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: Security
+            - name: セキュリティ
               items:
                 - name: セキュリティ ベースライン
                   href: security-baseline.md
                 - name: セキュリティを確認する
                   href: data-box-security.md
+            - name: ACL とメタデータの転送
+              href: data-box-file-acls-preservation.md
             - name: よく寄せられる質問
               href: data-box-faq.md
         - name: 方法
@@ -88,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: 自己管理の出荷の使用
               href: data-box-portal-customer-managed-shipping.md
+            - name: 独自の証明書を持ち込む
+              href: data-box-bring-your-own-certificates.md
             - name: カスタマー マネージド キーの有効化
               href: data-box-customer-managed-encryption-key-portal.md
             - name: カスタマー ロックボックスを使用する
@@ -101,7 +105,7 @@
             - name: 移行
               items:
                 - name: SharePoint Online へ
-                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%2fazure%2fdatabox%2fcontext%2fcontext
                 - name: Azure File Sync へ
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
@@ -125,6 +129,7 @@
           items:
             - name: 設定 - Azure portal
               href: data-box-disk-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: チュートリアル
           items:
             - name: 1 - 注文
@@ -175,6 +180,7 @@
           items:
             - name: 設定 - Azure portal
               href: data-box-heavy-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: チュートリアル
           items:
             - name: 1 - 注文
@@ -235,6 +241,9 @@
           href: /powershell/module/az.databox
         - name: .NET API
           href: /dotnet/api/overview/azure/databox/management
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: リソース
       items:
         - name: Data Box 製品

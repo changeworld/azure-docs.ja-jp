@@ -1,17 +1,17 @@
 ---
 title: Azure Application Insights を使用して可用性アラートを設定する | Microsoft Docs
-description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
+description: Application Insights で Web テストを設定する方法について説明します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320648"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043387"
 ---
 # <a name="availability-alerts"></a>可用性のアラート
 
@@ -24,15 +24,15 @@ ms.locfileid: "87320648"
 ![エクスペリエンスを作成する](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  [新しい統合アラート](../platform/alerts-overview.md)の場合、アラート ルールの重大度と通知の基本設定[をアクション グループ](../platform/action-groups.md)と一緒に、アラート エクスペリエンスで構成する**必要があります**。 次の手順を行わないと、ポータル内通知を受け取るだけとなります。
+>  [新しい統合アラート](../platform/alerts-overview.md)の場合、アラート ルールの重大度と通知の基本設定 [をアクション グループ](../platform/action-groups.md)と一緒に、アラート エクスペリエンスで構成する **必要があります** 。 次の手順を行わないと、ポータル内通知を受け取るだけとなります。
 
 1. 可用性テストを保存した後、詳細タブで、作成したテストの省略記号をクリックします。 [アラートの編集] をクリックします。
 
-   ![保存後の編集](./media/availability-alerts/edit-alert.png)
+   ![メニューで [アラートの編集] が選択されていることを示すスクリーンショット。](./media/availability-alerts/edit-alert.png)
 
 2. 目的の重大度レベルとルールの説明を設定し、次に、最も重要なものとして、このアラート ルールに使用する、通知の基本設定が含まれているアクション グループを設定します。
 
-   ![保存後の編集](./media/availability-alerts/set-action-group.png)
+   ![[ルールの管理] ページを示すスクリーンショット。ここでは、ルールを編集できます。](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > このエクスペリエンスによって作成される可用性アラートは、状態に基づきます。 つまり、アラートの条件が満たされると、サイトが使用不可として検出された場合に 1 つのアラートが生成されます。 次にアラートの条件が評価されたときに、サイトがまだ停止している場合、新しいアラートは生成されません。 そのため、サイトが 1 時間前から停止しており、電子メール アラートを設定済みの場合は、サイトが停止した時点で 1 つの電子メールを、また、サイトがバックアップされた時点でそれに続くもう 1 つの電子メールを受信するだけになります。 サイトがまだ使用不可であることを知らせる継続的なアラートは受信しません。

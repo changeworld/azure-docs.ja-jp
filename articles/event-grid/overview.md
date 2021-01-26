@@ -2,13 +2,13 @@
 title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 ms.topic: overview
-ms.date: 07/07/2020
-ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/24/2020
+ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116133"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576684"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -20,16 +20,17 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 
 
-![ソースとハンドラーの Event Grid モデル](./media/overview/functional-model.png)
+:::image type="content" source="./media/overview/functional-model.png" alt-text="ソースとハンドラーの Event Grid モデル" lightbox="./media/overview/functional-model.png":::
 
 この図は、Event Grid によってソースとハンドラーが接続されるようすを示すもので、サポートされる統合の包括的な一覧ではありません。
 
 ## <a name="event-sources"></a>イベント ソース
 
-現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
+現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。 一覧のソースの詳細については、リンクを選択してください。
 
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
@@ -77,7 +78,7 @@ Azure Event Grid の主要な特長を次に示します。
 * **ファンアウト** - 複数のエンドポイントを同じイベントにサブスクライブし、必要な数の場所にイベントのコピーを送信できます。
 * **信頼性** - 指数バックオフによる 24 時間の再試行で、確実にイベントが配信されるようにします。
 * **イベントごとの支払** - Event Grid の使用量に対して料金を支払います。
-* **高スループット** - 1 秒あたり数百万イベントをサポートして、Event Grid での大量ワークロードを作成できます。
+* **高スループット** - Event Grid で大量のワークロードを作成できます。
 * **組み込みイベント** - リソース定義の組み込みイベントにより、迅速に開始および実行できます。
 * **カスタム イベント** - Event Grid ルートを使用し、フィルター処理を行い、信頼性の高い方法でアプリにカスタム イベントを配信します。
 
@@ -118,6 +119,6 @@ Azure Event Grid では、イベントごとに課金される価格モデルを
 * [Logic Apps をイベント ハンドラーとして使用する](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Event Grid によってプッシュされるイベントに対応するアプリを Logic Apps を使用して作成するためのチュートリアルです。
 * [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md)  
-  Azure Functions を使用して Event Hubs から SQL Data Warehouse にデータをストリーミングするチュートリアルです。
+  Azure Functions を使用して Event Hubs から Azure Synapse Analytics にデータをストリーミングするチュートリアルです。
 * [Event Grid REST API リファレンス](/rest/api/eventgrid)  
   イベントのサブスクリプション、ルーティング、フィルター処理を管理するためのリファレンス コンテンツを提供します。

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74270219"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95526121"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -76,13 +76,13 @@ Blob ストレージのライフサイクル管理には、ルールベースの
 
 詳細については、「[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください。
 
-Premium のブロック BLOB ストレージ アカウントに格納されているデータは、ホット、クール、およびアーカイブ層間で移動することはできません。 ただし、ブロック BLOB ストレージ アカウントから*別の*アカウントのホット アクセス層に BLOB をコピーすることは可能です。 別にアカウントにデータをコピーするには、[Put Block From URL](/rest/api/storageservices/put-block-from-url) API または [AzCopy v10](../common/storage-use-azcopy-v10.md) を使用します。 **Put Block From URL** API では、サーバー上のデータを同期的にコピーします。 この呼び出しは、すべてのデータが、元のサーバー上の場所からコピー先の場所に移動された後でのみ完了します。
+Premium のブロック BLOB ストレージ アカウントに格納されているデータは、ホット、クール、およびアーカイブ層間で移動することはできません。 ただし、ブロック BLOB ストレージ アカウントから *別の* アカウントのホット アクセス層に BLOB をコピーすることは可能です。 別にアカウントにデータをコピーするには、[Put Block From URL](/rest/api/storageservices/put-block-from-url) API または [AzCopy v10](../common/storage-use-azcopy-v10.md) を使用します。 **Put Block From URL** API では、サーバー上のデータを同期的にコピーします。 この呼び出しは、すべてのデータが、元のサーバー上の場所からコピー先の場所に移動された後でのみ完了します。
 
 ## <a name="next-steps"></a>次のステップ
 
 GPv2 および BLOB ストレージ アカウントでホット、クール、アーカイブを評価します。
 
 - [アーカイブ層から BLOB データをリハイドレートする方法を確認する](storage-blob-rehydration.md)
-- [Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](../common/storage-enable-and-view-metrics.md)
+- [Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](./monitor-blob-storage.md)
 - [BLOB ストレージ アカウントと GPv2 アカウントのホット、クール、アーカイブのリージョンごとの料金を確認する](https://azure.microsoft.com/pricing/details/storage/)
 - [データ転送の価格を確認する](https://azure.microsoft.com/pricing/details/data-transfers/)

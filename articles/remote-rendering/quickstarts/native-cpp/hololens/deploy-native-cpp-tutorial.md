@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892662"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724971"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>クイック スタート:ネイティブ C++ サンプルを HoloLens にデプロイする
 
@@ -32,14 +32,14 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
 
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
+* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 特に、次の *ワークロード* のインストールは必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Git ([ダウンロード](https://git-scm.com/downloads))
 
 ## <a name="clone-the-arr-samples-repository"></a>ARR サンプル リポジトリをクローンする
 
-最初に、パブリック Azure Remote Rendering サンプルを含む Git リポジトリをクローンします。 コマンド プロンプトを開き (Windows の [スタート] メニューで「`cmd`」と入力します)、ARR サンプル プロジェクトを格納するディレクトリに移動します。
+グローバル Azure Remote Rendering サンプルを含む Git リポジトリをクローンします。 コマンド プロンプトを開き (Windows の [スタート] メニューで「`cmd`」と入力します)、ARR サンプル プロジェクトを格納するディレクトリに移動します。
 
 次のコマンドを実行します。
 
@@ -70,7 +70,8 @@ C++ HoloLens チュートリアルは、*NativeCpp/HoloLens* サブディレク�
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,9 +79,9 @@ C++ HoloLens チュートリアルは、*NativeCpp/HoloLens* サブディレク�
 ```
 
 具体的には、次の値を変更します。
-* `init.AccountId` と `init.AccountKey` に使用するアカウント データを実際の値に変更します。 [アカウント情報の取得](../../../how-tos/create-an-account.md#retrieve-the-account-information)方法についての段落を参照してください。
-* 実際のリージョンが `westus2` 以外である場合は、`init.AccountDomain` 文字列のリージョン部分を変更します (例: `"westeurope.mixedreality.azure.com"`)。
-* 加えて、`m_sessionOverride` を既存のセッション ID に変更することができます。 セッションは、このサンプルの外部で作成できます。たとえば、[PowerShell スクリプト](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)を使用するか、[セッションの REST API](../../../how-tos/session-rest-api.md#create-a-session) を使用して直接作成することができます。
+* `init.AccountId`、`init.AccountKey`、`init.AccountAuthenticationDomain` に使用するアカウント データを実際の値に変更します。 [アカウント情報の取得](../../../how-tos/create-an-account.md#retrieve-the-account-information)方法についての段落を参照してください。
+* 実際のリージョンが `westus2` 以外である場合は、`init.AccountDomain` 文字列のリージョン部分を変更して、リモート レンダリング セッションを作成する場所を指定します (例: `"westeurope.mixedreality.azure.com"`)。
+* 加えて、`m_sessionOverride` を既存のセッション ID に変更することができます。 セッションは、このサンプルの外部で作成できます。たとえば、[PowerShell スクリプト](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)を使用するか、[セッションの REST API](../../../how-tos/session-rest-api.md#create-a-session) を使用して直接作成できます。
 サンプルを複数回実行する必要がある場合は、サンプルの外部でセッションを作成するようお勧めします。 セッションを渡さなかった場合、起動のたびに新しいセッションが作成されます。起動には数分かかる場合があります。
 
 アプリケーションをコンパイルする準備が整いました。

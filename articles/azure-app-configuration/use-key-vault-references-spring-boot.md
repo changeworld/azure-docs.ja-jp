@@ -3,23 +3,22 @@ title: Java Spring Boot アプリで Azure App Configuration の Key Vault 参�
 description: このチュートリアルでは、Java Spring Boot アプリから Azure App Configuration の Key Vault 参照を使用する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/11/2020
+ms.author: alkemper
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: ede8203078a3d496975e208622ef61018997cf8d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121597"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929219"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -44,14 +43,14 @@ App Configuration に格納されているその他のキーの場合と同様�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk)。
+* バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](/java/azure/jdk)。
 * [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
 1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します。
 
-    ![Key Vault の作成が完了した後の出力](./media/quickstarts/search-services.png)
+    ![Azure portal の [リソースの作成] オプションを示すスクリーンショット。](./media/quickstarts/search-services.png)
 1. 検索ボックスに「**Key Vault**」と入力します。
 1. 結果リストで、左側の **[キー コンテナー]** を選択します。
 1. **[キー コンテナー]** で、 **[追加]** を選択します。
@@ -65,7 +64,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 この時点で、お使いの Azure アカウントが、この新しいコンテナーへのアクセスが承認されている唯一のアカウントになります。
 
-![Key Vault の作成が完了した後の出力](./media/quickstarts/vault-properties.png)
+![キー コンテナーを示すスクリーンショット。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 

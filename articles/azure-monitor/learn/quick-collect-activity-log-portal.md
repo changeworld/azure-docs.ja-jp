@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446285"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439217"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure portal を使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 アクティビティ ログは、Azure のプラットフォーム ログであり、サブスクリプション レベルのイベントの分析情報が提供されます。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりできます。 このクイック スタートでは、Azure portal を使用して Log Analytics ワークスペースと診断設定を作成し、アクティビティ ログを Azure Monitor ログに送信して、[ログ クエリ](../log-query/log-query-overview.md)を使って分析し、[ログ アラート](../platform/alerts-log-query.md)や[ブック](../platform/workbooks-overview.md)などの他の機能を有効にする方法について説明します。 
@@ -24,7 +24,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。 
 
-![Azure portal](media/quick-create-workspace/azure-portal-01.png)
+![Azure portal のスクリーンショット。検索ボックスに「log analytics workspaces」と入力され、[Services]\(サービス\) の [Log Analytics workspaces]\(Log Analytics ワークスペース\) が強調表示されている。](media/quick-create-workspace/azure-portal-01.png)
   
 **[追加]** をクリックし、 **[リソース グループ]** 、ワークスペースの **[名前]** 、 **[場所]** に値を指定します。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
 
@@ -36,7 +36,7 @@ Azure portal で、 **[Log Analytics ワークスペース]** を検索して選
 ## <a name="create-diagnostic-setting"></a>診断設定の作成
 Azure portal で、**モニター**を検索して選択します。 
 
-![Azure portal](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Azure portal のスクリーンショット。検索ボックスに「monitor」と入力され、[Services]\(サービス\) の [Monitor]\(モニター\) が強調表示されている。](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 **[アクティビティ ログ]** を選択します。 現在のサブスクリプションの最近のイベントが表示されるはずです。 **[診断設定]** をクリックすると、サブスクリプションの診断設定が表示されます。
 

@@ -8,18 +8,18 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83725671"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426713"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Helm を使用して Kubernetes デプロイと統合する
 
 Helm を使用すると、Kubernetes で実行されるアプリケーションを定義、インストール、およびアップグレードすることができます。 Helm chart には、Kubernetes アプリケーションのインスタンスを作成するために必要な情報が含まれています。 構成は、chart の外部の *values.yaml* という名前のファイルに保存されます。 
 
-リリース プロセス中、Helm により、アプリケーションを実行するために、chart が適切な構成とマージされます。 たとえば、*values.yaml* に定義された変数は、実行中のコンテナー内で環境変数として参照できます。 また、Helm では、データ ボリュームとしてマウントしたり、環境変数として公開したりできる Kubernetes シークレットの作成もサポートされています。
+リリース プロセス中、Helm により、アプリケーションを実行するために、chart が適切な構成とマージされます。 たとえば、 *values.yaml* に定義された変数は、実行中のコンテナー内で環境変数として参照できます。 また、Helm では、データ ボリュームとしてマウントしたり、環境変数として公開したりできる Kubernetes シークレットの作成もサポートされています。
 
 *values.yaml* に格納されている値は、Helm の実行時にコマンド ラインで追加の YAML ベースの構成ファイルを指定することでオーバーライドすることができます。 Azure App Configuration では、構成値の YAML ファイルへのエクスポートがサポートされています。 このエクスポート機能をお使いのデプロイに統合すると、App Configuration に保存されている構成値を Kubernetes アプリケーションで利用できるようになります。
 
@@ -28,12 +28,12 @@ Helm を使用すると、Kubernetes で実行されるアプリケーション�
 > * Helm を使用してアプリケーションを Kubernetes にデプロイするときに、App Configuration の値を使用する。
 > * App Configuration 内の Key Vault 参照に基づいて Kubernetes シークレットを作成する。
 
-このチュートリアルでは、Helm を使用した Kubernetes の管理に関する基本的な知識があることを前提としています。 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/kubernetes-helm) での Helm を使用したアプリケーションのインストールについて詳細を確認します。
+このチュートリアルでは、Helm を使用した Kubernetes の管理に関する基本的な知識があることを前提としています。 [Azure Kubernetes Service](../aks/kubernetes-helm.md) での Helm を使用したアプリケーションのインストールについて詳細を確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (バージョン 2.4.0 以降) をインストールします
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (バージョン 2.4.0 以降) をインストールします
 - [Helm](https://helm.sh/docs/intro/install/) (バージョン 2.14.0 以降) をインストールします
 - Kubernetes クラスター。
 
@@ -41,7 +41,7 @@ Helm を使用すると、Kubernetes で実行されるアプリケーション�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
+7. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | 値 |
     |---|---|
@@ -51,16 +51,16 @@ Helm を使用すると、Kubernetes で実行されるアプリケーション�
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>App Configuration に Key Vault 参照を追加する
-1. [Azure portal](https://portal.azure.com) にサインインし、**Password** という名前と **myPassword** という値を持つシークレットを [Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) に追加します。 
+1. [Azure portal](https://portal.azure.com) にサインインし、 **Password** という名前と **myPassword** という値を持つシークレットを [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) に追加します。 
 2. 前のセクションで作成した App Configuration ストア インスタンスを選択します。
 
 3. **[構成エクスプローラー]** を選択します。
 
 4. **[+ 作成]** 、 **[キー コンテナー参照]** の順に選択し、次の値を指定します。
-    - **[キー]** :**secrets.password** を選択します。
-    - **ラベル**:この値は空白のままにしておきます。
+    - **[キー]** : **secrets.password** を選択します。
+    - **ラベル** :この値は空白のままにしておきます。
     - **[サブスクリプション]** 、 **[リソース グループ]** 、 **[キー コンテナー]** : 前の手順で作成したキー コンテナー内の値に対応する値を入力します。
-    - **[シークレット]** : 前のセクションで作成した、**Password** という名前のシークレットを選択します。
+    - **[シークレット]** : 前のセクションで作成した、 **Password** という名前のシークレットを選択します。
 
 ## <a name="create-helm-chart"></a>Helm chart を作成する ##
 まず、次のコマンドを使用して、サンプルの Helm chart を作成します
@@ -86,7 +86,7 @@ mychart
 `-- values.yaml
 ```
 
-次に、*deployment.yaml* ファイルの **spec:template:spec:containers** セクションを更新します。 次のスニペットでは、2 つの環境変数をコンテナーに追加します。 これらの値は、デプロイ時に動的に設定します。
+次に、 *deployment.yaml* ファイルの **spec:template:spec:containers** セクションを更新します。 次のスニペットでは、2 つの環境変数をコンテナーに追加します。 これらの値は、デプロイ時に動的に設定します。
 
 ```yaml
 env:
@@ -172,7 +172,7 @@ data:
   password: {{ .Values.secrets.password | b64enc }}
 ```
 
-最後に、*values.yaml* ファイルを次の内容で更新して、*deployment.yaml* および *secrets.yaml* ファイルで参照される構成設定とシークレットの既定値をオプションで指定します。 実際の値は、App Configuration からプルされる構成によって上書きされます。
+最後に、 *values.yaml* ファイルを次の内容で更新して、 *deployment.yaml* および *secrets.yaml* ファイルで参照される構成設定とシークレットの既定値をオプションで指定します。 実際の値は、App Configuration からプルされる構成によって上書きされます。
 
 ```yaml
 # settings will be overwritten by App Configuration
@@ -185,13 +185,13 @@ settings:
 最初に、App Configuration から *myConfig.yaml* ファイルに構成をダウンロードします。 **settings.** で始まるキーのみをダウンロードするには、キー フィルターを使用します。 Key Vault 参照のキーを除外するのにキー フィルターが十分でない場合は、引数 **--skip-keyvault** を使用してそれらを除外することができます。 
 
 > [!TIP]
-> [export コマンド](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)の詳細を確認してください。 
+> [export コマンド](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)の詳細を確認してください。 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
 ```
 
-次に、*mySecrets.yaml* という名前のファイルにシークレットをダウンロードします。 コマンドライン引数 **--resolve-keyvault** を使用した場合、Key Vault 内の実際の値を取得することによって Key Vault 参照が解決されます。 このコマンドは、対応するキー コンテナーに対するアクセス許可を持つ資格情報を使用して実行する必要があります。
+次に、 *mySecrets.yaml* という名前のファイルにシークレットをダウンロードします。 コマンドライン引数 **--resolve-keyvault** を使用した場合、Key Vault 内の実際の値を取得することによって Key Vault 参照が解決されます。 このコマンドは、対応するキー コンテナーに対するアクセス許可を持つ資格情報を使用して実行する必要があります。
 
 > [!WARNING]
 > このファイルには機密情報が含まれているため、取り扱いに注意し、不要になった場合はクリーンアップしてください。
@@ -200,7 +200,7 @@ az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key 
 az appconfig kv export -n myAppConfiguration -d file --path mySecrets.yaml --key "secrets.*" --separator "." --resolve-keyvault --format yaml
 ```
 
-helm upgrade の **-f** 引数を使用して、作成した 2 つの構成ファイルを渡します。 これにより、*values.yaml* で定義された構成値が、App Configuration からエクスポートされた値で上書きされます。
+helm upgrade の **-f** 引数を使用して、作成した 2 つの構成ファイルを渡します。 これにより、 *values.yaml* で定義された構成値が、App Configuration からエクスポートされた値で上書きされます。
 
 ```console
 helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart 
@@ -225,13 +225,13 @@ else{
 
 ```
 
-[Kubernetes ダッシュボード](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)にアクセスして、構成とシークレットが正常に設定されたことを確認します。 App Configuration からの **color** と **message** の値がコンテナーの環境変数に入力されていることがわかります。
+[Kubernetes ダッシュボード](../aks/kubernetes-dashboard.md)にアクセスして、構成とシークレットが正常に設定されたことを確認します。 App Configuration からの **color** と **message** の値がコンテナーの環境変数に入力されていることがわかります。
 
 ![クイック スタートのアプリ (ローカルで起動)](./media/kubernetes-dashboard-env-variables.png)
 
-App Configuration で Key Vault 参照として格納された 1 つのシークレット (**password**) も Kubernetes シークレットに追加されています。 
+App Configuration で Key Vault 参照として格納された 1 つのシークレット ( **password** ) も Kubernetes シークレットに追加されています。 
 
-![クイック スタートのアプリ (ローカルで起動)](./media/kubernetes-dashboard-secrets.png)
+![データ セクション内のパスワードを強調表示するスクリーンショット。](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -242,4 +242,4 @@ App Configuration で Key Vault 参照として格納された 1 つのシーク
 このチュートリアルでは、Helm を使用した Kubernetes デプロイで使用するために Azure App Configuration データをエクスポートしました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

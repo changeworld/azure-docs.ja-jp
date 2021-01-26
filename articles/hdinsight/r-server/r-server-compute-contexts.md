@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087607"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536336"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション
 
@@ -23,18 +23,18 @@ Azure HDInsight 上の ML Services は、コンピューティング コンテ�
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上の ML Services
 
-[Azure HDInsight の ML Services](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 Apache Hadoop HDFS 内の [Azure Blob](../../storage/common/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 ML Services はオープンソース R が基になっているため、構築する R ベースのアプリケーションでは、8,000 を超えるオープンソース R パッケージのどれでも適用できます。 また、[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (ML Services に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
+[Azure HDInsight の ML Services](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 Apache Hadoop HDFS 内の [Azure Blob](../../storage/common/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 ML Services はオープンソース R が基になっているため、構築する R ベースのアプリケーションでは、8,000 を超えるオープンソース R パッケージのどれでも適用できます。 また、[RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler) (ML Services に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>エッジ ノードに対する計算コンテキスト
 
 一般に、エッジ ノードの ML Services で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 RevoScaleR 関数を呼び出すステップは例外です。 RevoScaleR 呼び出しは、RevoScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。
 
-- local sequential (*local*)
-- local parallel (*localpar*)
+- local sequential ( *local* )
+- local parallel ( *localpar* )
 - Map Reduce
 - Spark
 
-オプション *local* と *localpar* の違いは、**rxExec** 呼び出しを実行する方法のみです。 RevoScaleR の **numCoresToUse** オプションの使用を通じて別途指定されている (`rxOptions(numCoresToUse=6)` など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。 並列実行は、パフォーマンスの面で最も有利なオプションです。
+オプション *local* と *localpar* の違いは、 **rxExec** 呼び出しを実行する方法のみです。 RevoScaleR の **numCoresToUse** オプションの使用を通じて別途指定されている (`rxOptions(numCoresToUse=6)` など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。 並列実行は、パフォーマンスの面で最も有利なオプションです。
 
 次の表は、呼び出しの実行方法を設定する各種コンピューティング コンテキスト オプションをまとめたものです。
 
@@ -59,12 +59,12 @@ Azure HDInsight 上の ML Services は、コンピューティング コンテ�
 
 ### <a name="local"></a>ローカル
 
-- 分析するデータが少量で、繰り返し分析が必要ない場合は、データを分析ルーチンに直接ストリーミングして、*local* または *localpar* を使用します。
-- 分析するデータが少量または中規模の量で、繰り返し分析が必要である場合は、データをローカル ファイル システムにコピーして XDF にインポートし、*local* または *localpar* を使用して分析します。
+- 分析するデータが少量で、繰り返し分析が必要ない場合は、データを分析ルーチンに直接ストリーミングして、 *local* または *localpar* を使用します。
+- 分析するデータが少量または中規模の量で、繰り返し分析が必要である場合は、データをローカル ファイル システムにコピーして XDF にインポートし、 *local* または *localpar* を使用して分析します。
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- 分析するデータが大量である場合、**RxHiveData** または **RxParquetData** を使用して Spark データフレームにインポートするか、ストレージに問題がなければ、HDFS の XDF にインポートし、Spark コンピューティング コンテキストを使用して分析を行います。
+- 分析するデータが大量である場合、 **RxHiveData** または **RxParquetData** を使用して Spark データフレームにインポートするか、ストレージに問題がなければ、HDFS の XDF にインポートし、Spark コンピューティング コンテキストを使用して分析を行います。
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
 
@@ -77,7 +77,7 @@ RevoScaleR コンピューティング コンテキストの詳細と例につ�
 > ?rxSetComputeContext
 ```
 
-「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
+「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
 
 ## <a name="next-steps"></a>次のステップ
 

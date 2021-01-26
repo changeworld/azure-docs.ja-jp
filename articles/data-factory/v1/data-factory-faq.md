@@ -3,20 +3,20 @@ title: Azure Data Factory - よく寄せられる質問
 description: Azure データ ファクトリについてよく寄せられる質問です。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57f2beef3dc14a47480950bf9e3bdf35a1fd6ce8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645142"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495822"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "75645142"
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
-Data Factory は、 **データの移動や変換を自動化する**クラウドベースのデータ統合サービスです。 原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
+Data Factory は、 **データの移動や変換を自動化する** クラウドベースのデータ統合サービスです。 原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
 
 Data Factory を使用すると、データ ドリブンのワークフローを作成して、オンプレミスとクラウドのデータ ストアの間でデータを移動したり、Azure HDInsight や Azure Data Lake Analytics などのコンピューティング サービスを使用してデータを処理/変換したりすることができます。 必要なアクションを実行するパイプラインを作成した後で、それを定期的に実行するようにスケジュールすることができます (毎時、毎日、毎週など)。   
 
@@ -38,10 +38,10 @@ Azure Data Factory の価格の詳細については、[Data Factory の価格�
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Azure Data Factory の利用はどのように開始するのですか。
 * Azure Data Factory の概要については、 [Azure Data Factory サービスの概要](data-factory-introduction.md)に関するページをご覧ください。
 * コピー アクティビティを使用して **データのコピー/移動** を行う方法に関するチュートリアルについては、 [Azure Blob Storage から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
-* HDInsight Hive アクティビティを使用する**データの変換**方法に関するチュートリアルについては、 「[チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md)」を参照してください。
+* HDInsight Hive アクティビティを使用する **データの変換** 方法に関するチュートリアルについては、 「[チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md)」を参照してください。
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Data Factory を利用可能なリージョンはどこですか。
-Data Factory は、**米国西部**と**北ヨーロッパ**で使用できます。 Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。 「 [サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
+Data Factory は、**米国西部** と **北ヨーロッパ** で使用できます。 Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。 「 [サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Data Factory/パイプライン/アクティビティ/データセットの数の制限値はいくつですか。
 詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
@@ -70,9 +70,9 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 | --- | --- |
 | [On-demand HDInsight クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning Studio (クラシック)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory と SQL Server Integration Services (SSIS) はどのように違いますか。 
 MVP (Most Valued Professional) の 1 人である Reza Rad の「[Azure Data Factory vs.SSIS (Azure Data Factory とSSIS)](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
@@ -205,4 +205,4 @@ external プロパティが適切に設定されている場合は、入力デ�
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 963f89c99d71afbebbe122e3c7d8b3227dc4a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff859e7d77fd19cd006cf45a6faa737297fdb9a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518410"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349641"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>チュートリアル:RFPIO を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -66,11 +66,11 @@ Azure AD での自動ユーザー プロビジョニング用に RFPIO を構成
 
 4.  **[Auto User Provisioning]\(自動ユーザー プロビジョニング\)** がオンになっていることを確認します。 **[GENERATE SCIM API TOKEN]\(SCIM API トークンの生成\)** をクリックします。
 
-    ![RFPIO でのトークンの作成](media/rfpio-provisioning-tutorial/generate.png)
+    ![[GENERATE SCIM API TOKEN]\(SCIM API トークンの生成\) オプションが呼び出されている [SCIM] セクションのスクリーンショット。](media/rfpio-provisioning-tutorial/generate.png)
 
-5.  **SCIM API トークン**を保存します。このトークンは、セキュリティ上の目的で再び表示されることはありません。 この値を、Azure portal で RFPIO アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
+5.  **SCIM API トークン** を保存します。このトークンは、セキュリティ上の目的で再び表示されることはありません。 この値を、Azure portal で RFPIO アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
 
-    ![RFPIO でのトークンの作成](media/rfpio-provisioning-tutorial/auth.png)
+    ![[送信] を選択した後に表示される警告ダイアログ ボックスが表示された [SCIM] セクションのスクリーンショット。](media/rfpio-provisioning-tutorial/auth.png)
 
 ## <a name="add-rfpio-from-the-gallery"></a>ギャラリーからの RFPIO の追加
 
@@ -99,7 +99,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に RFPIO 
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、RFPIO でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> RFPIO では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[RFPIO シングル サインオンのチュートリアル](rfpio-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> RFPIO で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[RFPIO シングル サインオンのチュートリアル](rfpio-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-rfpio-in-azure-ad"></a>Azure AD で RFPIO の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
@@ -113,13 +113,13 @@ Azure AD を使用した自動ユーザー プロビジョニング用に RFPIO 
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 `」と入力します。 値の例は `https://Azure-test1.rfpio.com/rfpserver/scim/v2` です。 **[シークレット トークン]** に先ほど取得した**SCIM API トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から RFPIO への接続を確保します。 接続できない場合は、使用中の RFPIO アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 `」と入力します。 値の例は `https://Azure-test1.rfpio.com/rfpserver/scim/v2` です。 **[シークレット トークン]** に先ほど取得した **SCIM API トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から RFPIO への接続を確保します。 接続できない場合は、使用中の RFPIO アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

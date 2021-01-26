@@ -4,18 +4,18 @@ description: Azure SQL Database ゲートウェイの IP アドレスの移行�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: sqldbrb=1 
+ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507503"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427104"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,14 +27,22 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+### <a name="october-2020"></a>2020 年 10 月
+
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- ドイツ中西部:51.116.240.0、51.116.248.0
+
+2020 年 10 月 12 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます。 
+
 ### <a name="september-2020"></a>2020 年 9 月
-新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、**2020 年 9 月 15 日**にお客様のトラフィックの受け入れを開始します。
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、 **2020 年 9 月 15 日** にお客様のトラフィックの受け入れを開始します。
 
 - オーストラリア南東部:13.77.48.10
 - カナダ東部:40.86.226.166、52.242.30.154
 - 英国南部:51.140.184.11、51.105.64.0
 
-既存の SQL ゲートウェイは、以下のリージョンのトラフィックの受け入れを開始します。 これらの SQL ゲートウェイでは、**2020 年 9 月 15 日**にお客様のトラフィックの受け入れを開始します。
+既存の SQL ゲートウェイは、以下のリージョンのトラフィックの受け入れを開始します。 これらの SQL ゲートウェイでは、 **2020 年 9 月 15 日** にお客様のトラフィックの受け入れを開始します。
 
 - オーストラリア南東部:191.239.192.109 および 13.73.109.251
 - 米国中部:13.67.215.62、52.182.137.15、23.99.160.139、104.208.16.96 および 104.208.21.1
@@ -47,19 +55,19 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - 東南アジア:104.43.15.0、23.100.117.95、および 40.78.232.3
 - 米国西部: 104.42.238.205、23.99.34.75、および 13.86.216.196
 
-新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、**2020 年 9 月 10 日**からお客様のトラフィックの受け入れを開始します。
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、 **2020 年 9 月 10 日** からお客様のトラフィックの受け入れを開始します。
 
 - 米国中西部: 13.78.248.43 
 - 南アフリカ北部: 102.133.120.2  
 
-新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、**2020 年 9 月 1 日**からお客様のトラフィックの受け入れを開始します。
+新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、 **2020 年 9 月 1 日** からお客様のトラフィックの受け入れを開始します。
 
 - 北ヨーロッパ:13.74.104.113 
 - 米国西部 2:40.78.248.10 
 - 西ヨーロッパ:52.236.184.163 
 - 米国中南部:20.45.121.1、20.49.88.1 
 
-既存の SQL ゲートウェイは、以下のリージョンのトラフィックの受け入れを開始します。 これらの SQL ゲートウェイでは、**2020 年 9 月 1 日**からお客様のトラフィックの受け入れを開始します。
+既存の SQL ゲートウェイは、以下のリージョンのトラフィックの受け入れを開始します。 これらの SQL ゲートウェイでは、 **2020 年 9 月 1 日** からお客様のトラフィックの受け入れを開始します。
 - 東日本:40.79.184.8、40.79.192.5
 
 # <a name="completed"></a>[完了](#tab/completed-ip)
@@ -100,7 +108,8 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 - オンプレミスのファイアウォールで特定のゲートウェイに対して IP アドレスをハードコーディングしている
 - サービス エンドポイントとして Microsoft.SQL を使用しているサブネットがあるが、ゲートウェイ IP アドレスと通信できない
-- データベースに対して[ゾーン冗長構成](high-availability-sla.md#zone-redundant-configuration)を使用している
+- [General Purpose レベル向けのゾーン冗長構成](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)を使用している
+- [Premium と Business Critical のレベル向けのゾーン冗長構成](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)を使用している
 
 次の場合は影響を受けません。
  

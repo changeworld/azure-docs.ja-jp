@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797748"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957692"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -54,7 +55,7 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
 
 1. 新しい SLES 12 SP1 以降の仮想マシンをデプロイし、ssh 経由でそれらに接続します。 サイズの大きいマシンは必要ありません。 Standard_E2s_v3 または Standard_D2s_v3 などの仮想マシン サイズで十分です。 OS ディスクには Premium ストレージを使用してください。
 
-すべての **iSCSI ターゲット仮想マシン**に対し、次のコマンドを実行します。
+すべての **iSCSI ターゲット仮想マシン** に対し、次のコマンドを実行します。
 
 1. SLES を更新します
 
@@ -84,7 +85,7 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>iSCSI ターゲット サーバーに iSCSI デバイスを作成する
 
-すべての **iSCSI ターゲット仮想マシン**に対して次のコマンドを実行し、SAP システムによって使用されるクラスター用の iSCSI ディスクを作成します。 次の例では、複数のクラスターに対して SBD デバイスが作成されています。 この例では、複数のクラスターに対して 1 つの iSCSI ターゲット サーバーを使用する方法を示しています。 SBD デバイスは OS ディスク上に配置されます。 十分な容量があることを確認してください。
+すべての **iSCSI ターゲット仮想マシン** に対して次のコマンドを実行し、SAP システムによって使用されるクラスター用の iSCSI ディスクを作成します。 次の例では、複数のクラスターに対して SBD デバイスが作成されています。 この例では、複数のクラスターに対して 1 つの iSCSI ターゲット サーバーを使用する方法を示しています。 SBD デバイスは OS ディスク上に配置されます。 十分な容量があることを確認してください。
 
 **`nfs`** は、NFS クラスターを識別するために使用されます。**ascsnw1** は **NW1** の ASCS クラスターを識別するために使用され、**dbnw1** は **NW1** のデータベース クラスターを識別するために使用されます。**nfs-0** と **nfs-1** は、NFS クラスター ノードのホスト名で、**nw1-xscs-0** と **nw1-xscs-1** は、**NW1** の ASCS クラスター ノードのホスト名です。**nw1-db-0** と **nw1-db-1** は、データベース クラスター ノードのホスト名です。 これらは、実際のクラスター ノードのホスト名と、実際の SAP システムの SID に置き換えてください。
 
@@ -442,7 +443,7 @@ o- / ...........................................................................
    >SUSEConnect ---list-extensions を実行して、拡張機能を確認できます。  
    >Azure Fence エージェントでフェールオーバー時間を短縮するには、次のようにします。
    > - SLES 12 SP4 または SLES 12 SP5 の場合、python-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする  
-   > - SLES 15 の場合、python**3**-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする 
+   > - SLES 15 の場合、python **3**-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする 
 
 1. **[A]** ホスト名解決を設定します
 
@@ -583,8 +584,8 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
    サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. [Certificates and Secrets]\(証明書とシークレット\) を選択し、[New client secret]\(新しいクライアント シークレット\) をクリックします
 1. 新しいキーの説明を入力し、[Never expires]\(有効期限なし\) を選択して [追加] をクリックします
-1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. [概要] を選択します。 アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. 値をメモします。 この値は、サービス プリンシパルの **パスワード** として使用します
+1. [概要] を選択します。 アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の **ログイン ID**) として使用します
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 

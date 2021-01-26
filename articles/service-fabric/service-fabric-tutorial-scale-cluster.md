@@ -3,13 +3,13 @@ title: Azure で Service Fabric クラスターのスケーリングを行う
 description: このチュートリアルでは、Azure の Service Fabric クラスターをスケールアウトおよびスケールインする方法と、残ったリソースをクリーンアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716896"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702176"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -80,7 +80,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 ### <a name="update-the-template"></a>テンプレートを更新する
 
-リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあり、各ノード タイプのノード数を設定する 3 つのパラメーター (*nt0InstanceCount*、*nt1InstanceCount*、および *nt2InstanceCount*) があります。  たとえば、*nt1InstanceCount* パラメーターは 2 つ目のノード タイプのインスタンスの数を設定し、関連付けられている仮想マシン スケール セット内の VM の数を設定します。
+リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの [サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあり、各ノード タイプのノード数を設定する 3 つのパラメーター (*nt0InstanceCount*、*nt1InstanceCount*、および *nt2InstanceCount*) があります。  たとえば、*nt1InstanceCount* パラメーターは 2 つ目のノード タイプのインスタンスの数を設定し、関連付けられている仮想マシン スケール セット内の VM の数を設定します。
 
 そのため、*nt1InstanceCount* の値を更新すると、2 つ目のノード タイプのノードの数が変更されます。  100 ノードを超えてノード タイプをスケールアウトすることができない点に注意してください。  ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。 ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
 
@@ -94,7 +94,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 または、次の Azure CLI コマンドを使用します。
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>クラスターにノード タイプを追加する
@@ -800,7 +800,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 または、次の Azure CLI コマンドを使用します。
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>ノード タイプをクラスターから削除する
@@ -856,7 +856,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 または、次の Azure CLI コマンドを使用します。
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>次のステップ

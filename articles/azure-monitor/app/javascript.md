@@ -3,13 +3,13 @@ title: JavaScript Web アプリのための Azure Application Insights
 description: ページ ビューとセッション数、Web クライアントのデータ、シングル ページ アプリケーション (SPA) を取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-js
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224855"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858554"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -19,8 +19,11 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK を追加する
 
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=js)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
-2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` 設定に追加します。
+2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) または[接続文字列](#connection-string-setup)をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` または `connectionString` 設定に追加します。
 3. 次の 2 つの方法のいずれかを使用して、Application Insights JavaScript SDK を Web ページまたはアプリに追加します。
     * [npm のセットアップ](#npm-based-setup)
     * [JavaScript スニペット](#snippet-based-setup)
@@ -40,7 +43,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **typings はこのパッケージに含まれている**ため、typings パッケージを別途インストールする必要は**ありません**。
+> **typings はこのパッケージに含まれている** ため、typings パッケージを別途インストールする必要は **ありません**。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -102,7 +105,7 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 
 上記では、各構成オプションが新しい行に示されています。[省略可能] と示されている項目の既定値を上書きしたくない場合は、その行を削除することで、返されるページのサイズを最小限に抑えることができます。
 
-使用できる構成オプションは次のとおりです。 
+使用できる構成オプションは次のとおりです。
 
 | 名前 | Type | 説明
 |------|------|----------------
@@ -113,16 +116,30 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 | crossOrigin | string *[省略可能]* | この設定を含めると、SDK をダウンロードするために追加されたスクリプト タグに、この文字列値が設定された crossOrigin 属性が含まれるようになります。 定義されていない場合 (既定値)、crossOrigin 属性は追加されません。 推奨値は未定義 (既定値) を表す ""、または "anonymous" です (すべての有効な値については、[HTML 属性: `crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) のドキュメントをご覧ください)。
 | cfg | object **[必須]** | 初期化中に Application Insights SDK に渡される構成。
 
+### <a name="connection-string-setup"></a>接続文字列の設定
+
+NPM またはスニペットのセットアップでは、接続文字列を使用して Application Insights のインスタンスを構成することもできます。 単に `instrumentationKey` フィールドを `connectionString` フィールドに置き換えるだけです。
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
+
 ### <a name="sending-telemetry-to-the-azure-portal"></a>テレメトリを Azure portal に送信する
 
 既定では Application Insights JavaScript SDK は、アプリケーションの正常性や基になるユーザー エクスペリエンスを判別するのに役立つ多くのテレメトリ項目を自動収集します。 これには以下が含まれます。
 
-- アプリでの**キャッチされない例外** (以下の情報が含まれる)
+- アプリでの **キャッチされない例外** (以下の情報が含まれる)
     - スタック トレース
     - 例外の詳細とエラーに付随するメッセージ
     - エラーの行番号と列番号
     - エラーが発生した URL
-- アプリの **XHR** および **Fetch** (フェッチ コレクションは既定では無効) 要求によって実行される**ネットワーク依存関係要求** (以下の情報が含まれる)
+- アプリの **XHR** および **Fetch** (フェッチ コレクションは既定では無効) 要求によって実行される **ネットワーク依存関係要求** (以下の情報が含まれる)
     - 依存関係ソースの URL
     - 依存関係の要求に使用されたコマンドとメソッド
     - 要求の期間
@@ -163,8 +180,8 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 送信前にテレメトリをバッチ処理する時間 (ミリ秒) |
 | disableExceptionTracking | false | true の場合、例外は自動収集されません。 既定値は false です。 |
 | disableTelemetry | false | true の場合、テレメトリは収集または送信されません。 既定値は false です。 |
-| enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部**デバッグ データはログに記録される**代わりに**例外としてスローされます。 既定値は false です。 <br>***注:*** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
-| loggingLevelConsole | 0 | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
+| enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部** デバッグ データはログに記録される **代わりに** 例外としてスローされます。 既定値は false です。 <br>**_注:_* この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
+| loggingLevelConsole | 0 | *内部* Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
 | loggingLevelTelemetry | 1 | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
 | diagnosticLogInterval | 10000 | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) |
 | samplingPercentage | 100 | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 |
@@ -200,57 +217,56 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
 | enableUnhandledPromiseRejectionTracking | false | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。
 
-## <a name="single-page-applications"></a>シングル ページ アプリケーション
+## <a name="enable-time-on-page-tracking"></a>ページ滞在時間の追跡を有効にする
 
-既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され**ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
+`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の [カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
 
-現在、この SDK で初期化できる個別の [React プラグイン](#react-extensions)が提供されています。 これによって、ルート変更追跡が実現し、[他の React 固有テレメトリ](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)の収集も行われます。
+## <a name="enable-correlation"></a>関連付けを有効にする
 
-> [!NOTE]
-> `enableAutoRouteTracking: true` は、React プラグインを使用して**いない**場合にのみ使用します。 いずれも、ルートの変更時、新しい PageViews を送信できます。 両方が有効になっている場合、PageViews が重複して送信されることがあります。
+関連付けにより、分散トレースを有効にするデータが生成および送信され、[アプリケーション マップ](../app/app-map.md)、[エンド ツー エンド トランザクション ビュー](../app/app-map.md#go-to-details)、その他の診断ツールが強化されます。
 
-## <a name="configuration-autotrackpagevisittime"></a>構成: autoTrackPageVisitTime
-
-`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
-
-## <a name="react-extensions"></a>React の拡張機能
-
-| 拡張機能 |
-|---------------|
-| [React](javascript-react-plugin.md)|
-| [React Native](javascript-react-native-plugin.md)|
-
-## <a name="correlation"></a>相関関係
-
-クライアントからサーバー側への相関関係は、次に対してサポートされます。
-
-- XHR/AJAX 要求 
-- フェッチ要求 
-
-クライアントからサーバー側への相関関係は、`GET` および `POST` 要求に対しては**サポートされません**。
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>クライアント AJAX とサーバー要求の間でコンポーネント間の相関関係を有効にする
-
-`CORS` の相関関係を有効にするには、クライアントは 2 つの追加の要求ヘッダー `Request-Id` と `Request-Context` を送信する必要があり、サーバー側では、これらのヘッダーがある接続を受け入れられる必要があります。 これらのヘッダーの送信は、JavaScript SDK 構成内に `enableCorsCorrelation: true` を設定することによって有効になります。 
-
-サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
-
-Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
-
-クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+次の例は、関連付けを有効にするために必要なすべての構成を示しており、それに続いてシナリオ固有の注意事項があります。
 
 ```javascript
 // excerpt of the config section of the JavaScript SDK snippet with correlation
 // between client-side AJAX and server requests enabled.
 cfg: { // Application Insights Configuration
     instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
     enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
     correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
     /* ...Other Configuration Options... */
 }});
 </script>
 
 ``` 
+
+クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+
+サーバー側は、これらのヘッダーが存在する接続を受け入れる必要があります。 サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
+
+Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
+
+> [!NOTE]
+> 2020 年以降にリリースされた OpenTelemtry または Application Insights SDK を使用している場合は、[WC3 TraceContext](https://www.w3.org/TR/trace-context/) を使用することをお勧めします。 [こちら](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の構成ガイダンスを参照してください。
+
+## <a name="single-page-applications"></a>シングル ページ アプリケーション
+
+既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され **ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
+
+現在、この SDK で初期化できる個別の [React プラグイン](javascript-react-plugin.md)が提供されています。 これによって、ルート変更追跡が実現し、他の React 固有テレメトリの収集も行われます。
+> [!NOTE]
+> `enableAutoRouteTracking: true` は、React プラグインを使用して **いない** 場合にのみ使用します。 いずれも、ルートの変更時、新しい PageViews を送信できます。 両方が有効になっている場合、PageViews が重複して送信されることがあります。
+
+## <a name="extensions"></a>拡張機能
+
+| 拡張機能 |
+|---------------|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
+| [Angular](javascript-angular-plugin.md) |
 
 ## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
 
@@ -315,7 +331,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>例
 
-実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
+実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/Azure-Samples?q=applicationinsights-js-demo)を参照してください。
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からのアップグレード
 
@@ -323,7 +339,7 @@ SDK V2 バージョンでの破壊的変更:
 - API 署名の向上のため、trackPageView や trackException などの一部の API 呼び出しが更新されています。 Internet Explorer 8 以前のバージョンのブラウザーでの実行はサポートされません。
 - データ スキーマの更新により、テレメトリ エンベロープのフィールド名と構造が変更されています。
 - `context.operation` が `context.telemetryTrace` に移動されました。 一部のフィールドも変更されました (`operation.id` --> `telemetryTrace.traceID`)。
-  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` を使用します。
+  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` を使用します。
     > [!NOTE]
     > トレース ID を一意に保つには、以前に `Util.newId()` を使用した場所で今度は `Util.generateW3CId()` を使用します。 両方とも、最終的には操作 ID になります。
 

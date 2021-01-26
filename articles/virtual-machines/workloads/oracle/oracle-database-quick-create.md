@@ -1,25 +1,19 @@
 ---
 title: Azure VM での Oracle データベースの作成 | Microsoft Docs
 description: Azure 環境で Oracle Database 12c データベースをすばやく起動して実行します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 08/28/2020
-ms.author: rogardle
-ms.openlocfilehash: fb4403747a3681abd6023cdb9b5e62fd50af12c3
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 10/05/2020
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: 6468acb598cee26c46b62d64c748f0e393f27271
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179642"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967960"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -141,7 +135,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
-           -datafileDestination "/u01/app/oracle/oradata/"
+           -datafileDestination "/u01/app/oracle/oradata/" \
            -ignorePreReqs
     ```
 

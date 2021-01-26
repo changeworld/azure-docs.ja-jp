@@ -3,15 +3,15 @@ title: Windows Virtual Desktop のセキュリティに関するベスト プラ
 description: Windows Virtual Desktop 環境のセキュリティを確保するためのベスト プラクティス。
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002290"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562618"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -62,7 +62,7 @@ Azure Security Center Standard を使用すると、次のことを実行でき�
 
 ### <a name="improve-your-secure-score"></a>セキュア スコアを向上させる
 
-セキュア スコアは、全体的なセキュリティを向上させるための推奨事項とベスト プラクティスに関する助言を提供します。 これらの推奨事項には、どれが最も重要かを選択するのに役立つように優先順位が付けられています。また、クイック修正のオプションを使用すると、潜在的な脆弱性に迅速に対処できます。 また、これらの推奨事項は時間の経過とともに更新されるため、環境のセキュリティを維持するための最良の方法について、常に最新の情報を得ることができます。 詳細については、「[Azure Security Center でセキュア スコアを向上する](../security-center/security-center-secure-score.md)」を参照してください。
+セキュア スコアは、全体的なセキュリティを向上させるための推奨事項とベスト プラクティスに関する助言を提供します。 これらの推奨事項には、どれが最も重要かを選択するのに役立つように優先順位が付けられています。また、クイック修正のオプションを使用すると、潜在的な脆弱性に迅速に対処できます。 また、これらの推奨事項は時間の経過とともに更新されるため、環境のセキュリティを維持するための最良の方法について、常に最新の情報を得ることができます。 詳細については、「[Azure Security Center でセキュア スコアを向上する](../security-center/secure-score-security-controls.md)」を参照してください。
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Windows Virtual Desktop のセキュリティに関するベスト プラクティス
 
@@ -70,17 +70,17 @@ Windows Virtual Desktop には、多くの組み込みのセキュリティ コ�
 
 ### <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-Windows Virtual Desktop のすべてのユーザーと管理者に多要素認証を要求すると、デプロイ全体のセキュリティが向上します。 詳細については、「[Windows Virtual Desktop 用に Azure Multi-Factor Authentication を有効にする](set-up-mfa.md)」を参照してください。
+Windows Virtual Desktop のすべてのユーザーと管理者に多要素認証を要求すると、デプロイ全体のセキュリティが向上します。 詳細については、[Windows Virtual Desktop 向け Azure AD Multi-Factor Authentication の有効化](set-up-mfa.md)に関する記事を参照してください。
 
 ### <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
 
-[条件付きアクセス](../active-directory/conditional-access/best-practices.md)を有効にすると、Windows Virtual Desktop 環境へのアクセス権をユーザーに付与する前にリスクを管理できます。 アクセス権を付与するユーザーを決定するときは、そのユーザーが何者か、どのようにサインインするか、どのデバイスが使用されているかについても検討することをお勧めします。
+[条件付きアクセス](../active-directory/conditional-access/overview.md)を有効にすると、Windows Virtual Desktop 環境へのアクセス権をユーザーに付与する前にリスクを管理できます。 アクセス権を付与するユーザーを決定するときは、そのユーザーが何者か、どのようにサインインするか、どのデバイスが使用されているかについても検討することをお勧めします。
 
 ### <a name="collect-audit-logs"></a>監査ログの収集
 
 監査ログの収集を有効にすると、Windows Virtual Desktop に関連するユーザーと管理者のアクティビティを表示できます。 主要な監査ログの例を次に示します。
 
--   [Azure アクティビティ ログ](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)
 -   [Azure Active Directory アクティビティ ログ](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [セッション ホスト](../azure-monitor/platform/agent-windows.md)
@@ -93,11 +93,30 @@ Windows Virtual Desktop のすべてのユーザーと管理者に多要素認�
 
 ### <a name="monitor-usage-with-azure-monitor"></a>Azure Monitor を使用して使用状況を監視する
 
-[Azure Monitor](https://azure.microsoft.com/services/monitor/) を使用して、Windows Virtual Desktop サービスの使用状況と可用性を監視します。 サービスに影響するイベントが発生したときにすぐに通知を受け取れるように、Windows Virtual Desktop サービス用の[サービス正常性アラート](../service-health/alerts-activity-log-service-notifications.md)を作成することを検討してください。
+[Azure Monitor](https://azure.microsoft.com/services/monitor/) を使用して、Windows Virtual Desktop サービスの使用状況と可用性を監視します。 サービスに影響するイベントが発生したときにすぐに通知を受け取れるように、Windows Virtual Desktop サービス用の[サービス正常性アラート](../service-health/alerts-activity-log-service-notifications-portal.md)を作成することを検討してください。
 
 ## <a name="session-host-security-best-practices"></a>セッション ホストのセキュリティに関するベスト プラクティス
 
 セッション ホストは、Azure サブスクリプションと仮想ネットワーク内で実行される仮想マシンです。 Windows Virtual Desktop デプロイの全体的なセキュリティは、セッション ホストに配置するセキュリティ コントロールで決まります。 このセクションでは、セッション ホストのセキュリティを維持するためのベスト プラクティスについて説明します。
+
+### <a name="enable-screen-capture-protection-preview"></a>画面キャプチャ保護を有効にする (プレビュー)
+
+画面キャプチャの保護機能を使用することで、機密情報がクライアント エンドポイントでキャプチャされないようにします。 この機能を有効にすると、スクリーンショットおよびスクリーン共有でリモート コンテンツが自動的にブロックまたは非表示になります。 また、画面内の内容を継続的にキャプチャしている可能性がある悪意のあるソフトウェアからも非表示になります。 この機能の使用中は、エンドポイントへリモート コンテンツがコピーされることを防ぐために、クリップボードのリダイレクトを無効にすることをお勧めします。
+
+このポリシーは、レジストリ キーを構成することによって、ホスト レベルで適用されます。 このポリシーを有効にするには、PowerShell を開き、次のコマンドレットを実行して **fEnableScreenCaptureProtection** レジストリ キーを設定します。
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+この新機能をテストするには:
+
+- 検証環境でホスト プールがプロビジョニングされていることを確認します。
+- Windows デスクトップ クライアント バージョン 1.2.1526 以降をダウンロードしてインストールしていることを確認します。
+
+>[!NOTE]
+>プレビュー期間中、この機能は Windows 10 エンドポイントからの完全なデスクトップ接続のみでサポートされます。
+
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection を有効にする
 

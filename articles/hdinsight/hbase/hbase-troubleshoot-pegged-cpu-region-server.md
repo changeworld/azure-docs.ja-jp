@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bed73c3ccc7f514ffc9ff8f97534ae4b249834ce
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75887310"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017017"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>シナリオ:Azure HDInsight の Apache HBase クラスターのリージョン サーバーの固定 CPU
 
@@ -26,7 +26,7 @@ Apache HBase リージョン サーバー プロセスの CPU 占有率が 200% 
 
 HBase クラスター v3.4 を実行している場合に、jdk バージョン 1.7.0_151 へのアップグレードが原因である潜在的なバグに遭遇することがあります。 確認されている症状は、リージョン サーバーのプロセスが 200% に近い CPU 占有率を示し始めるというものです (これを検証するには、`top` コマンドを実行します。CPU 占有率が 200% に近いプロセスがある場合、その pid を取得し、`ps -aux | grep` を実行して、それがリージョン サーバーのプロセスであることを確認します)。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. 次のようにして、クラスターのすべてのノードに jdk 1.8 をインストールします。
 
@@ -38,7 +38,7 @@ HBase クラスター v3.4 を実行している場合に、jdk バージョン 
 
 1. **[HBase]->[Configs]->[Advanced]->[Advanced]** `hbase-env configs` に移動し、変数 `JAVA_HOME` を `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` に変更します。 構成変更を保存します。
 
-1. (省略可能だが推奨) [クラスター上のすべてのテーブルをフラッシュします](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
+1. (省略可能だが推奨) [クラスター上のすべてのテーブルをフラッシュします](/archive/blogs/azuredatalake/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables)。
 
 1. もう一度 Ambari UI から、再起動が必要なすべての HBase サービスを再起動します。
 
@@ -52,10 +52,4 @@ ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-* [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
-
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」をご覧ください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

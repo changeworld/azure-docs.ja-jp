@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086251"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340290"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services のサイズ
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
@@ -36,7 +36,7 @@ Azure では複数の標準的なサイズを選択できます。 これらの�
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-* A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「[ハイ パフォーマンス コンピューティング VM のサイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+* A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス* とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「[ハイ パフォーマンス コンピューティング VM のサイズ](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * Dv3 シリーズ、Dv2 シリーズ、D シリーズ、G シリーズは、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリ要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 * Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。 その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、 **"仮想マシン {マシン名} を構成できませんでした"** または **"仮想マシン {マシン名} を作成できませんでした"** というエラー メッセージが表示されることがあります。 各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー:"仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
 * お客様のサブスクリプションによっては、特定のサイズ ファミリにデプロイできるコア数が制限されることがあります。 コア クォータを増やすには、Azure サポートにお問い合わせください。
@@ -72,7 +72,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 * ストレージ容量は GiB (1024^3 バイト) 単位で示されています。 GB (1000^3 バイト) 単位のディスクと GiB (1024^3 バイト) 単位のディスクを比較する場合は、GiB 単位の方が容量の数値が小さく見えることに注意してください。 たとえば、1023 GiB = 1098.4 GB です。
 * ディスク スループットの測定単位は、1 秒あたりの入力/出力操作数 (IOPS) および MBps です (MBps = 10^6 バイト/秒)。
-* データ ディスクは、キャッシュを有効にしたモードでも無効化したモードでも動作します。 キャッシュを有効にしたデータ ディスクの操作では、ホスト キャッシュ モードは **ReadOnly** または **ReadWrite** に設定されています。 キャッシュを無効にしたデータ ディスクの操作では、ホスト キャッシュ モードは **None**に設定されています。
+* データ ディスクは、キャッシュを有効にしたモードでも無効化したモードでも動作します。 キャッシュを有効にしたデータ ディスクの操作では、ホスト キャッシュ モードは **ReadOnly** または **ReadWrite** に設定されています。 キャッシュを無効にしたデータ ディスクの操作では、ホスト キャッシュ モードは **None** に設定されています。
 * 最大ネットワーク帯域幅は、VM の種類ごとに割り当てられた最大集約帯域です。 最大帯域幅は、適切なネットワーク容量を確保するための適切な VM の種類を選択するためのガイダンスを提供します。 低、中、高、非常に高の順でスループットが増加します。 実際のネットワークのパフォーマンスは、ネットワークおよびアプリケーションの負荷、アプリケーションのネットワーク設定など、多くの要因に左右されます。
 
 ## <a name="a-series"></a>A シリーズ
@@ -88,7 +88,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | A7              | 8         | 56           | 2040                 | 4/高 |
 
 ## <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス
-これらのサイズの使用に関する情報と考慮事項については、「[ハイ パフォーマンス コンピューティング VM のサイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+これらのサイズの使用に関する情報と考慮事項については、「[ハイ パフォーマンス コンピューティング VM のサイズ](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 | サイズ            | CPU コア数 | メモリ:GiB  | 一時ストレージ:GiB       | 最大 NIC/ネットワーク帯域幅 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -217,7 +217,4 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)について学習してください。
-* HPC ワークロードのためのハイ パフォーマンス コンピューティング VM のサイズについては[こちら](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
-
-
-
+* HPC ワークロードのためのハイ パフォーマンス コンピューティング VM のサイズについては[こちら](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。

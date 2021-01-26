@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924488"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535663"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Cognitive Search での類似性とスコアリング
 
@@ -40,7 +40,7 @@ ms.locfileid: "88924488"
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>スコアリング統計とスティッキー セッション
 
-スケーラビリティのために、Azure Cognitive Search ではシャーディング プロセスを介して各インデックスが水平方向に分散されます。つまり、インデックスの各部が物理的に分離されます。
+スケーラビリティのために、Azure Cognitive Search ではシャーディング プロセスを介して各インデックスが水平方向に分散されます。つまり、[インデックスの各部が物理的に分離されます](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 既定では、ドキュメントのスコアは、"*シャード内*" のデータの統計プロパティに基づいて計算されます。 このアプローチは、一般に、データの大規模なコーパスでは問題にならず、すべてのシャードの情報に基づいてスコアを計算する必要がある場合よりもパフォーマンスが向上します。 ただし、このパフォーマンスの最適化を使用すると、2 つの非常に類似したドキュメント (またはまったく同一のドキュメント) は、それぞれが異なるシャードになる場合、関連性スコアが異なる可能性があります。
 
@@ -107,6 +107,4 @@ Azure Cognitive Search では、次の 2 種類の類似性ランク付けアル
 
 ## <a name="see-also"></a>関連項目
 
- [スコアリング プロファイル](index-add-scoring-profiles.md) [REST API リファレンス](/rest/api/searchservice/)   
- [ドキュメント API の検索](/rest/api/searchservice/search-documents)   
- [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [スコアリング プロファイル](index-add-scoring-profiles.md) [REST API リファレンス](/rest/api/searchservice/) [ドキュメント API の検索](/rest/api/searchservice/search-documents) [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search)

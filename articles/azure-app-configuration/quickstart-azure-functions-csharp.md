@@ -2,18 +2,18 @@
 title: Azure Functions による Azure App Configuration のクイック スタート | Microsoft Docs
 description: このクイックスタートでは、Azure App Configuration および C# を使用して、Azure Functions アプリを作成します。 App Configuration ストアを作成して接続します。 関数をローカルでテストします。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 1/9/2019
-ms.author: lcozzens
-ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/28/2020
+ms.author: alkemper
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590287"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964084"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Azure Functions アプリを作成する
 
@@ -21,15 +21,15 @@ ms.locfileid: "88590287"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) と **Azure 開発**ワークロード。
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/dotnet)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) と **Azure 開発** ワークロード。
 - [Azure Functions ツール](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
+7. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|
@@ -37,52 +37,82 @@ ms.locfileid: "88590287"
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
-7. **[適用]** を選択します。
+8. **[適用]** を選択します。
 
 ## <a name="create-a-functions-app"></a>関数アプリを作成する
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
+このプロジェクトは、[.NET Azure Functions で依存関係の挿入](/azure/azure-functions/functions-dotnet-dependency-injection)を使用して、新しい構成ソースとして Azure App Configuration を追加します。
 
-1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、**[プレリリースを含める]** チェック ボックスをオンにします。
+1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、自分のプロジェクトに追加します。
+   - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) バージョン 4.1.0 以降
+   - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) バージョン 1.1.0 以降 
 
-2. *Function1.cs* を開き、.Net Core 構成および App Configuration 構成プロバイダーの名前空間を追加します。
+2. 次のコードを使用して、新しいファイル *Startup.cs* を追加します。 これにより、`FunctionsStartup` 抽象クラスを実装する `Startup` という名前のクラスが定義されます。 アセンブリ属性は、Azure Functions の起動時に使われる型名を指定するために使用されます。
+
+    `AddAzureAppConfiguration()` を呼び出すことで、`ConfigureAppConfiguration` メソッドをオーバーライドし、Azure App Configuration プロバイダーを新しい構成ソースとして追加します。 この時点ではサービスを登録する必要がないため、`Configure` メソッドは空のままです。
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. *Function1.cs* を開いて、次の名前空間を追加します。
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. `IConfiguration` のシングルトン インスタンスを作成するために、`Configuration` という名前の `static` プロパティを追加します。 `AddAzureAppConfiguration()` を呼び出して App Configuration に接続するための `static` コンストラクターを追加します。 これによって、アプリケーションの起動時に一度だけ構成が読み込まれます。 以後、すべての Functions 呼び出しについて、同じ構成インスタンスが使用されます。
+   依存関係の挿入によって、`IConfiguration` のインスタンスを取得するために使用するコンストラクターを追加します。
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. 構成から値を読み取るように `Run` メソッドを更新します。
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   `Function1` クラスと `Run` メソッドを静的にすることはできません。 `static` 修飾子が自動生成された場合は削除します。
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
@@ -120,7 +150,7 @@ ms.locfileid: "88590287"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から Azure Functions アプリと共に使用しました。 構成設定を動的に更新するように Azure Functions アプリを構成する方法については、次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)から Azure Functions アプリと共に使用しました。 構成が動的に更新されるように Azure Functions アプリを更新する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [動的な構成を有効にする](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Azure Functions で動的な構成を有効にする](./enable-dynamic-configuration-azure-functions-csharp.md)

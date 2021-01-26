@@ -9,25 +9,25 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/16/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 525c705db81dc0f152c8dbc55de5ebac841e5d57
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836124"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201741"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
 この記事では、パブリック エンドポイントへの送信接続を有効にする構成について説明します。 構成は、主に、SUSE/RHEL に対する Pacemaker での高可用性のコンテキストにおけるものです。  
 
-高可用性ソリューションの Azure フェンス エージェントで Pacemaker を使用している場合、VM には Azure 管理 API への送信接続が必要です。  
-この記事では、シナリオに最適なオプションを選択できるように、複数のオプションを示します。  
+高可用性ソリューションの Azure フェンス エージェントで Pacemaker を使用している場合、VM には Azure 管理 API への送信接続が必要です。 この記事では、シナリオに最適なオプションを選択できるように、複数のオプションを示します。  
 
 ## <a name="overview"></a>概要
 
@@ -41,12 +41,12 @@ Azure Load Balancer の Basic SKU と Standard SKU には、いくつかの重�
 
 VM にパブリック IP アドレスが割り当てられている場合、または VM がパブリック IP アドレスを持つロード バランサーのバックエンド プールに含まれる場合は、パブリック エンドポイントへの送信接続があります。  
 
-SAP システムには、機密性の高いビジネス データが含まれることがよくあります。 SAP システムをホストしている VM にパブリック IP アドレスを持つことが許容されることはほとんどありません。 同時に、VM からパブリック エンドポイントへの送信接続を必要とするシナリオもあります。  
+SAP システムには、機密性の高いビジネス データが含まれることがよくあります。 SAP システムをホストしている VM にパブリック IP アドレス経由でアクセスすることが許可されることはほとんどありません。 同時に、VM からパブリック エンドポイントへの送信接続を必要とするシナリオもあります。  
 
 Azure のパブリック エンドポイントへのアクセスを必要とするシナリオの例を次に示します。  
-- Pacemaker クラスターでのフェンス メカニズムとしての Azure フェンス エージェントの使用
-- Azure Backup
-- Azure Site Recovery  
+- Azure Fence Agent には、**management.azure.com** と **login.microsoftonline.com** へのアクセスが必要になります  
+- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
 - オペレーティング システムに修正プログラムを適用するためのパブリック リポジトリの使用
 - SAP アプリケーションのデータ フローで、パブリック エンドポイントへの送信接続が必要になる場合がある
 
@@ -67,12 +67,12 @@ SAP のデプロイでパブリック エンドポイントへの送信接続が
   * [Azure Firewall の概要](../../../firewall/overview.md) - Azure Firewall の概要
   * [チュートリアル:Azure Firewall のデプロイと構成](../../../firewall/tutorial-firewall-deploy-portal.md) - Azure portal を使用して Azure Firewall を構成する方法についての説明
 * [仮想ネットワーク - ユーザー定義規則](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) - Azure ルーティングの概念と規則  
-* [セキュリティ グループのサービス タグ](../../../virtual-network/security-overview.md#service-tags) - サービス タグを使用してネットワーク セキュリティ グループとファイアウォールの構成を簡略化する方法
+* [セキュリティ グループのサービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags) - サービス タグを使用してネットワーク セキュリティ グループとファイアウォールの構成を簡略化する方法
 
-## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>インターネットへの送信接続のために追加する外部 Azure Standard Load Balancer
+## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>オプション 1: インターネットへの送信接続のために追加する外部 Azure Standard Load Balancer
 
 パブリック エンドポイントから VM への受信接続を許可せずに、パブリック エンドポイントへの送信接続を実現する 1 つのオプションは、パブリック IP アドレスを使用して 2 番目のロード バランサーを作成し、2 番目のロード バランサーのバックエンド プールに VM を追加して、[送信規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)だけを定義することです。  
-VM からの発信呼び出しにアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)を使用します。  
+VM からの発信呼び出しにアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)を使用します。  
 詳しくは、[アウトバウンド接続](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)に関するドキュメントのシナリオ 2 をご覧ください。  
 構成は次のようになります。  
 
@@ -81,11 +81,11 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 ### <a name="important-considerations"></a>重要な考慮事項
 
 - 同じサブネット内の複数の VM 用にパブリック Load Balancer を 1 つ追加して、パブリック エンドポイントへの送信接続を実現し、コストを最適化することができます  
-- VM からアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)を使用します。 ネットワーク セキュリティ グループは、サブネットまたは各 VM に割り当てることができます。 可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、セキュリティ規則の複雑さを軽減します。  
+- VM からアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)を使用します。 ネットワーク セキュリティ グループは、サブネットまたは各 VM に割り当てることができます。 可能な場合は、[サービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、セキュリティ規則の複雑さを軽減します。  
 - パブリック IP アドレスとアウトバウンド規則を備えた Azure Standard Load Balancer を使うと、パブリック エンドポイントに直接アクセスできます。 企業のセキュリティ要件で、監査とログ記録のため、集中管理された企業ソリューションを使用してすべての送信トラフィックを通過させる必要がある場合は、このシナリオで要件を満たすことができない可能性があります。  
 
 >[!TIP]
->可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、ネットワーク セキュリティ グループの複雑さを軽減します。 
+>可能な場合は、[サービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、ネットワーク セキュリティ グループの複雑さを軽減します。 
 
 ### <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -100,7 +100,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 2. バックエンドプール **MyBackendPoolOfPublicILB** を作成し、VM を追加します。  
    1. 仮想ネットワークを選択します  
    1. VM とその IP アドレスを選択し、バックエンド プールにそれらを追加します  
-3. [アウトバウンド規則を作成します](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration)。 現在、Azure portal からアウトバウンド規則を作成することはできません。 アウトバウンド規則は [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest) で作成できます。  
+3. [アウトバウンド規則を作成します](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration)。 現在、Azure portal からアウトバウンド規則を作成することはできません。 アウトバウンド規則は [Azure CLI](../../../cloud-shell/overview.md) で作成できます。  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -109,17 +109,17 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 4. 特定のパブリック エンドポイントへのアクセスを制限するネットワーク セキュリティ グループの規則を作成します。 既存のネットワーク セキュリティ グループがある場合は、それを調整できます。 次の例では、Azure 管理 API に対してのみアクセスを有効にする方法を示します。 
    1. [ネットワーク セキュリティ グループ] に移動します
    1. [送信セキュリティ規則] をクリックします
-   1. **インターネット**へのすべての送信アクセスを**拒否する**規則を追加します。
-   1. すべてのインターネット アクセスを拒否する規則の優先順位より低い優先順位での、**AzureCloud** に対するアクセスを**許可する**規則を追加します。
+   1. **インターネット** へのすべての送信アクセスを **拒否する** 規則を追加します。
+   1. すべてのインターネット アクセスを拒否する規則の優先順位より低い優先順位での、**AzureCloud** に対するアクセスを **許可する** 規則を追加します。
 
 
    送信セキュリティ規則は次のようになります。 
 
    ![パブリック IP を使用した 2 番目の Load Balancer での送信接続](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Azure ネットワーク セキュリティ グループについて詳しくは、「[セキュリティ グループ](../../../virtual-network/security-overview.md)」をご覧ください。 
+   Azure ネットワーク セキュリティ グループについて詳しくは、「[セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)」をご覧ください。 
 
-## <a name="azure-firewall-for-outbound-connections-to-internet"></a>インターネットへの送信接続に対する Azure Firewall
+## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>オプション 2:インターネットへの送信接続に対する Azure Firewall
 
 パブリック エンドポイントから VM への受信接続を許可せずに、パブリック エンドポイントへの送信接続を実現するもう 1 つのオプションは、Azure Firewall を使用するものです。 Azure Firewall は、高可用性が組み込まれたマネージド サービスであり、複数の可用性ゾーンにまたがることができます。  
 Azure Firewall 経由でトラフィックをルーティングするには、[ユーザー定義ルート](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)をデプロイし、VM と Azure ロード バランサーがデプロイされているサブネットに関連付け、Azure Firewall をポイントする必要もあります。  
@@ -137,7 +137,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 - 企業のファイアウォール ソリューションが Azure Firewall ではなく、すべての送信トラフィックを一元化された企業ソリューションを通過させるというセキュリティ要件がある場合、このソリューションは実用的ではない可能性があります。  
 
 >[!TIP]
->可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、Azure Firewall の規則の複雑さを軽減します。  
+>可能な場合は、[サービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、Azure Firewall の規則の複雑さを軽減します。  
 
 ### <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -153,7 +153,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
    1. パブリック IP アドレス: [作成] をクリックし、名前を入力します。 たとえば、**MyFirewallPublicIP** です。  
 4. 指定したパブリック エンドポイントへの送信接続を許可する Azure ファイアウォール規則を作成します。 例では、Azure 管理 API パブリック エンドポイントへのアクセスを許可する方法が示されています。  
    1. [ルール]、[ネットワーク ルール コレクション] を選択し、[ネットワーク ルール コレクションの追加] をクリックします。  
-   1. 名前:「**MyOutboundRule**」と入力し、優先順位を入力し、**許可**アクションを選択します。  
+   1. 名前:「**MyOutboundRule**」と入力し、優先順位を入力し、**許可** アクションを選択します。  
    1. サービス:**ToAzureAPI** という名前を指定します。  プロトコル: **[すべて]** を選択します。 送信元アドレス: VM と Standard Load Balancer がデプロイされているサブネットの範囲を入力します (例: **11.97.0.0/24**)。 宛先ポート: 「<b>*</b>」と入力します。  
    1. 保存
    1. Azure Firewall にまだいる間に、[概要] を選択します。 Azure Firewall のプライベート IP アドレスを記録します。  
@@ -162,14 +162,14 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
    1. 「MyRouteTable」という名前を入力し、サブスクリプション、リソース グループ、場所を選択します (仮想ネットワークとファイアウォールの場所に一致させます)。  
    1. 保存  
 
-   ファイアウォール規則は次のようになります。![Azure Firewall での送信接続](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
+   ファイアウォール規則は次のようになります。![ファイアウォールがどのように見えるかを示す図。](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM のサブネットから **MyAzureFirewall** のプライベート IP アドレスへのユーザー定義ルートを作成します。
    1. [ルート テーブル] で、[ルート] をクリックします。 [追加] を選択します。 
    1. ルート名: ToMyAzureFirewall、アドレス プレフィックス: **0.0.0.0/0**。 次ホップの種類: 仮想アプライアンスを選択します。 次ホップ アドレス: 構成したファイアウォールのプライベート IP アドレスを入力します: **11.97.1.4**。  
    1. 保存
 
-## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Azure 管理 API への Pacemaker 呼び出しに対するプロキシの使用
+## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>オプション 3:Azure 管理 API への Pacemaker 呼び出しに対するプロキシの使用
 
 プロキシを使用して、Azure 管理 API のパブリック エンドポイントへの Pacemaker の呼び出しを許可することができます。  
 
@@ -197,7 +197,7 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
    https_proxy=http://MyProxyService:MyProxyPort
    ```
 
-2. **すべての**クラスター ノード で Pacemaker サービスを再起動します。  
+2. **すべての** クラスター ノード で Pacemaker サービスを再起動します。  
   - SUSE
  
      ```console
@@ -220,9 +220,9 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
      sudo pcs property set maintenance-mode=false
      ```
 
-## <a name="other-solutions"></a>その他のソリューション
+## <a name="other-options"></a>その他のオプション
 
-サードパーティ ファイアウォール経由で送信トラフィックが経路指定される場合:
+URL ベースのサードパーティ ファイアウォール プロキシ経由で送信トラフィックがルーティングされる場合:
 
 - Azure フェンス エージェントを使用している場合、Azure 管理 API `https://management.azure.com` および `https://login.microsoftonline.com` への送信接続がファイアウォール構成で許可されるようにします。   
 - 更新プログラムやパッチの適用に SUSE の Azure パブリック クラウド更新インフラストラクチャを使用している場合、「[Azure Public Cloud Update Infrastructure 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)」 (Azure パブリック クラウド更新インフラストラクチャ 101) を参照してください。

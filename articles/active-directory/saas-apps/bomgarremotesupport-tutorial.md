@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/12/2020
 ms.author: jeedes
-ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c11d8aaa578006c7dbd96b457399df5b17fd9bd8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BeyondTrust Remote Support の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88549295"
 * BeyondTrust Remote Support にアクセスするユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して BeyondTrust Remote Support に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +44,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Azure AD への BeyondTrust Remote Support の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に BeyondTrust Remote Support を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -57,7 +55,7 @@ Azure AD への BeyondTrust Remote Support の統合を構成するには、ギ�
 
 **B.Simon** というテスト ユーザーを使用して、BeyondTrust Remote Support に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと BeyondTrust Remote Support の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-BeyondTrust Remote Support に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+BeyondTrust Remote Support に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -70,7 +68,7 @@ BeyondTrust Remote Support に対する Azure AD SSO を構成してテストす
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **BeyondTrust Remote Support** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **BeyondTrust Remote Support** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -95,12 +93,11 @@ BeyondTrust Remote Support に対する Azure AD SSO を構成してテストす
 
     | 名前 |  ソース属性|
     | ---------------| ----------|
-    | Givenname | User.givenname |
-    | Emailaddress | User.mail |
-    | 名前 | user.userprincipalname |
     | ユーザー名 | user.userprincipalname |
+    | FirstName | User.givenname |
+    | LastName | User.surname |
+    | Email | User.mail |
     | グループ | user.groups |
-    | 一意のユーザー ID | user.userprincipalname |
 
     > [!NOTE]
     > BeyondTrust Remote Support アプリケーションに Azure AD グループを割り当てる場合、"要求で返されるグループ" オプションを "None" から "SecurityGroup" に変更する必要があります。 グループは、オブジェクト ID としてアプリケーションにインポートされます。 Azure AD グループのオブジェクト ID は見つけるには、Azure Active Directory インターフェイスで [プロパティ] を確認します。 これは、Azure AD グループを参照して、適切なグループ ポリシーに割り当てるために必要です。
@@ -138,63 +135,62 @@ BeyondTrust Remote Support に対する Azure AD SSO を構成してテストす
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーション一覧で **[BeyondTrust Remote Support]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-beyondtrust-remote-support-sso"></a>BeyondTrust Remote Support の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、BeyondTrust Remote Support に管理者としてサインインします。
 
-1. **[STATUS]\(状態\)** メニューをクリックし、**識別子**、**応答 URL**、**サインオン URL** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションでこれらの値を使用します。
-
-    ![BeyondTrust Remote Support の構成](./media/bomgarremotesupport-tutorial/config-url-values.png)
-
-1. `https://support.example.com/login` で BeyondTrust Remote Support の /login インターフェイスに移動します。**support.example.com** はご使用のアプライアンスのプライマリ ホスト名であり、管理者の資格情報を使用して認証を行います。
-
 1. **[Users & Security]\(ユーザーとセキュリティ\)**  >  **[Security Providers]\(セキュリティ プロバイダー\)** に移動します。
 
-1. ドロップダウン メニューで、 **[SAML]** を選択し、 **[Create Provider]\(プロバイダーの作成\)** ボタンをクリックします。
+1. **[SAML Providers]\(SAML プロバイダー\)** の **編集** アイコンをクリックします。
 
-1. [Identity Provider Settings]\(ID プロバイダーの設定\) セクションに、ID プロバイダーのメタデータをアップロードするオプションがあります。 Azure portal からダウンロードしたメタデータ XML ファイルを探して、 **[Upload]\(アップロード\)** ボタンをクリックします。 **[Entity ID]\(エンティティ ID\)** 、 **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** と証明書が自動的にアップロードされます。 **[Protocol Binding]\(プロトコル バインド\)** は **[HTTP POST]** に変更する必要があります。 次のスクリーンショットをご覧ください。
+    ![SAML プロバイダーの編集アイコン](./media/bomgarremotesupport-tutorial/saml-providers.png)
 
-    ![BeyondTrust Remote Support の構成](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+1. **[Service Provider Settings]\(サービス プロバイダーの設定\)** セクションを展開します。
+
+1. **[Download Service Provider Metadata]\(サービス プロバイダーのメタデータのダウンロード\)** をクリックします。または、 **[Entity ID]\(エンティティ ID\)** と **[ACS URL]** の値をコピーし、それらの値を Azure portal の **[基本的な SAML 構成]** セクションで使用してください。
+
+    ![サービス プロバイダーのメタデータのダウンロード](./media/bomgarremotesupport-tutorial/service-provider-metadata.png)
+
+
+1. [Identity Provider Settings]\(ID プロバイダーの設定\) セクションの **[Upload Identity Provider Metadata]\(ID プロバイダ メタデータのアップロード\)** をクリックし、Azure portal からダウンロードしたメタデータ XML ファイルを探します。
+
+1.  **[Entity ID]\(エンティティ ID\)** 、 **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** 、 **[Server Certificate]\(サーバー証明書\)** は自動的にアップロードされます。 **[SSO URL Protocol Binding]\(SSO URL プロトコル バインド\)** は **[HTTP POST]** に変更する必要があります。
+
+    ![スクリーンショットは、これらのアクションを実行する [Identity Provider Settings]\(ID プロバイダーの設定\) セクションを示しています。](./media/bomgarremotesupport-tutorial/identity-provider.png)
+
+1. **[Save]** をクリックします。
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust Remote Support のテスト ユーザーを作成する
 
 ここでは、ユーザー プロビジョニング設定を構成します。 このセクションで使用される値は、Azure portal の **[ユーザー属性と要求]** セクションから参照されます。 これは、作成時に既にインポートされている既定値に構成しましたが、必要に応じて値をカスタマイズできます。
 
-![ユーザーの作成](./media/bomgarremotesupport-tutorial/config-user1.png)
+![スクリーンショットは、ユーザーの値を構成できる [User Provision Settings]\(ユーザー プロビジョニング設定\) を示しています。](./media/bomgarremotesupport-tutorial/user-attribute.png)
 
 > [!NOTE]
 > この実装では、グループおよび電子メールの属性は必要ありません。 Azure AD グループを利用して、それらをアクセス許可の BeyondTrust Remote Support グループ ポリシーに割り当てる場合は、グループのオブジェクト ID を Azure portal のそのプロパティを使用して参照し、[Available Groups]\(使用可能なグループ\) セクションに配置する必要があります。 これが完了すると、オブジェクト ID/AD グループがアクセス許可のグループ ポリシーへの割り当てに使用できるようになります。
 
-![ユーザーの作成](./media/bomgarremotesupport-tutorial/config-user2.png)
+![スクリーンショットは、[Membership type]\(メンバーシップの種類\)、[Source]\(ソース\)、[Type]\(種類\)、および [Object ID]\(オブジェクト ID\) を含む [IT] セクションを示しています。](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![ユーザーの作成](./media/bomgarremotesupport-tutorial/config-user3.png)
+![スクリーンショットは、グループ ポリシーの [Basic Settings]\(基本設定\) ページを示しています。](./media/bomgarremotesupport-tutorial/group-policy.png)
 
 > [!NOTE]
 > または、SAML2 セキュリティ プロバイダーで既定のグループ ポリシーを設定することもできます。 このオプションを定義することで、SAML 経由で認証を行うすべてのユーザーに、グループ ポリシー内で指定されたアクセス許可が割り当てられます。 General Members ポリシーは、アクセス許可が制限されている BeyondTrust Remote Support/Privileged Remote Access に含まれており、認証をテストしてユーザーを適切なポリシーに割り当てるために使用できます。 ユーザーは、認証の試行が最初に成功するまで、/login > [Users & Security]\(ユーザーとセキュリティ\) 経由で SAML2 ユーザーの一覧に追加されません。 グループ ポリシーに関する追加情報については、リンク `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm` を参照してください。
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [BeyondTrust Remote Support] タイルをクリックすると、SSO を設定した BeyondTrust Remote Support に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる BeyondTrust Remote Support のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* BeyondTrust Remote Support のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [BeyondTrust Remote Support] タイルをクリックすると、BeyondTrust Remote Support サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で BeyondTrust Remote Support を試す](https://aad.portal.azure.com/)
+BeyondTrust Remote Support を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。

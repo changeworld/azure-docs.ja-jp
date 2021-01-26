@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021070"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203247"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>チュートリアル:素材、ライト、および効果の調整
 
@@ -32,7 +32,7 @@ ms.locfileid: "89021070"
 
 視覚的なフィードバックをユーザーに提供することは、どのようなアプリケーションにおいてもユーザー エクスペリエンスの重要な点です。 Azure Remote Rendering では、[階層状態のオーバーライド](../../../overview/features/override-hierarchical-state.md)を通じて視覚的なフィードバック メカニズムを実現します。 階層状態のオーバーライドは、モデルのローカル インスタンスにアタッチされたコンポーネントを使用して実装されます。 これらのローカル インスタンスの作成方法については、「[Unity 階層へのリモート オブジェクト グラフの同期](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy)」で学習しました。
 
-まず、[**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) コンポーネントのラッパーを作成します。 **HierarchicalStateOverrideComponent** は、リモート エンティティのオーバーライドを制御するローカル スクリプトです。 [**チュートリアル アセット**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial)には、**BaseEntityOverrideController** と呼ばれる抽象基底クラスが含まれており、これを拡張してラッパーを作成します。
+まず、[**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) コンポーネントのラッパーを作成します。 **HierarchicalStateOverrideComponent** は、リモート エンティティのオーバーライドを制御するローカル スクリプトです。 [**チュートリアル アセット**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial)には、**BaseEntityOverrideController** と呼ばれる抽象基底クラスが含まれており、これを拡張してラッパーを作成します。
 
 1. **EntityOverrideController** という名前の新しいスクリプトを作成し、その内容を次のコードで置き換えます。
 

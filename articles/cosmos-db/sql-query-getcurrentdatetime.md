@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の GetCurrentDateTime
 description: Azure Cosmos DB での SQL システム関数 GetCurrentDateTime について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 03a3183fe3001008cdd3f3caae1b8c3af81668fe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606961"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340211"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 UTC (協定世界時) での現在の日付と時刻を ISO 8601 文字列として返します。
   

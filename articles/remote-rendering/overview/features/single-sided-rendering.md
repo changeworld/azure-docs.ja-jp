@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f1778d1f37217a5f65624be2fcc6c58c68002931
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 37a665c776a64558a13910875f221462fb7d0ef8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013284"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205066"
 ---
 # <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: レンダリング
 
@@ -65,6 +65,11 @@ void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
     settings->SetMode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RemoteManager.SingleSidedSettings プロパティ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.singlesidedsettings)
+* [C++ RemoteManager::SingleSidedSettings()](/cpp/api/remote-rendering/remotemanager#singlesidedsettings)
 
 ## <a name="next-steps"></a>次のステップ
 

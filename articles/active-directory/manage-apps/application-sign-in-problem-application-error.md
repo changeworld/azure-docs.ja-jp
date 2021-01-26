@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779286a43f8b20ce9a9a528e14eaa930763d82b4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759540"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651585"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>ユーザーがサインインした後、アプリのページにエラー メッセージが表示される
 
@@ -29,7 +29,7 @@ ms.locfileid: "84759540"
 
 アプリが Azure AD からの応答を受け入れなかったいくつかの理由が考えられます。 エラー メッセージで、応答に不足しているものを明確に識別できない場合、次の手順を試してください。
 
--   アプリが Azure AD ギャラリーの場合は、[Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)に関するページの手順に従ったことを確認します。
+-   アプリが Azure AD ギャラリーの場合は、[Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)に関するページの手順に従ったことを確認します。
 
 -   [Fiddler](https://www.telerik.com/fiddler) などのツールを使用して、SAML の要求、応答、およびトークンをキャプチャします。
 
@@ -72,7 +72,7 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
 SAML 応答にロールなどの属性が不足しているために、アプリへのサインインが失敗します。 または、アプリが **NameID** (ユーザー識別子) 属性に別の形式または値を期待しているため、失敗します。
 
-アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を使用している場合は、ユーザーが SaaS アプリにプロビジョニングされていることを確認してください。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)」を参照してください。
+アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](../app-provisioning/user-provisioning.md)を使用している場合は、ユーザーが SaaS アプリにプロビジョニングされていることを確認してください。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)」を参照してください。
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Azure AD アプリの構成に属性を追加する
 
@@ -99,9 +99,9 @@ SAML 応答にロールなどの属性が不足しているために、アプリ
 
 ## <a name="change-the-nameid-format"></a>NameID の形式を変更する
 
-アプリケーションが **NameID** (ユーザー識別子) 属性に別の形式を期待している場合は、「[NameID の編集](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid)」を参照して NameID の形式を変更します。
+アプリケーションが **NameID** (ユーザー識別子) 属性に別の形式を期待している場合は、「[NameID の編集](../develop/active-directory-saml-claims-customization.md#editing-nameid)」を参照して NameID の形式を変更します。
 
-Azure AD は、選択した値に基づく **NameID** 属性 (ユーザー識別子) の形式、または SAML AuthRequest でアプリによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)」の「NameIDPolicy」を参照してください。
+Azure AD は、選択した値に基づく **NameID** 属性 (ユーザー識別子) の形式、または SAML AuthRequest でアプリによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md#nameidpolicy)」の「NameIDPolicy」を参照してください。
 
 ## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>アプリが SAML 応答に別の署名方法を想定する
 
@@ -164,4 +164,4 @@ Azure AD によってデジタル署名される SAML トークンの部分を�
    次回ユーザーがアプリにサインインするときに、Azure AD は SHA-1 アルゴリズムを使用して SAML トークンに署名します。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)。
+[Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)。

@@ -3,12 +3,12 @@ title: DPM サーバーを準備してワークロードをバックアップす
 description: この記事では、Azure Backup サービスを使用して、Azure への System Center Data Protection Manager (DPM) バックアップを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002863"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -48,7 +48,7 @@ VMware VM 上の DPM | System Center 2012 R2 の更新プログラムのロー�
 サポートされていないファイルの種類 | <li>大文字と小文字を区別するファイル システムのサーバー<li> ハード リンク (スキップされる)<li> 再解析ポイント (スキップされる)<li> 暗号化されている圧縮ファイル (スキップされる)<li> 暗号化されているスパース ファイル (スキップされる)<li> 圧縮ストリーム<li> 解析ストリーム
 ローカル ストレージ | バックアップする各マシンには、バックアップするデータのサイズの 5% 以上の空きローカル ストレージが必要です。 たとえば、100 GB のデータをバックアップするには、スクラッチ場所に少なくとも 5 GB の空き領域が必要です。
 コンテナー ストレージ | Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 54,400 GB を超えないようにする必要があります。
-Azure ExpressRoute | パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。<br/><br/> **パブリック ピアリングを使用する場合**:次のドメインまたはアドレスへのアクセスを確保します。<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft ピアリングを使用する場合**は、サービス、リージョン、関連するコミュニティについて以下の値を選択します。<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>- Microsoft Azure リージョン (Recovery Services コンテナーの場所による)<br/><br/>- Azure Storage (Recovery Services コンテナーの場所による)<br/><br/>詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。<br/><br/>**注**:パブリック ピアリングは、新しい回線では非推奨です。
+Azure ExpressRoute | パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。<br/><br/> **パブリック ピアリングを使用する場合**:次のドメインまたはアドレスへのアクセスを確保します。<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft ピアリングを使用する場合** は、サービス、リージョン、関連するコミュニティについて以下の値を選択します。<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>- Microsoft Azure リージョン (Recovery Services コンテナーの場所による)<br/><br/>- Azure Storage (Recovery Services コンテナーの場所による)<br/><br/>詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。<br/><br/>**注**:パブリック ピアリングは、新しい回線では非推奨です。
 Azure Backup エージェント | DPM が System Center 2012 SP1 で実行されている場合、DPM SP1 のロールアップ 2 以降をインストールします。 これはエージェントのインストールに必要です。<br/><br/> この記事では、Microsoft Azure Recovery Service (MARS) エージェントとも呼ばれる、Azure Backup エージェントの最新バージョンをデプロイする方法について説明します。 以前のバージョンがデプロイされている場合、最新バージョンに更新し、バックアップが期待どおりに動作するようにしてください。
 
 開始する前に、Azure Backup 機能が有効になっている Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 [Azure Backup の料金](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
@@ -61,7 +61,7 @@ geo 冗長ストレージとローカル冗長ストレージのどちらかを�
 
 - 既定では、コンテナーには geo 冗長ストレージがあります。
 - コンテナーがプライマリ バックアップの場合は、オプションの設定を geo 冗長ストレージのままにします。 耐久性が十分でなくても低コストなバックアップが必要な場合は、以下の手順を使用して、ローカル冗長ストレージを構成します。
-- [Azure ストレージ](../storage/common/storage-redundancy.md)、[geo 冗長](../storage/common/storage-redundancy.md)ストレージおよび[ローカル冗長](../storage/common/storage-redundancy.md)ストレージの各オプションについて学習します。
+- [Azure ストレージ](../storage/common/storage-redundancy.md)、[geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージ、[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージ、および[ゾーン冗長](../storage/common/storage-redundancy.md#zone-redundant-storage)ストレージの各オプションについて学習します。
 - 初期バックアップの前にストレージ設定を変更します。 項目をバックアップ済みの場合、ストレージ設定を変更する前にコンテナーへのバックアップを停止します。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
@@ -165,7 +165,7 @@ Azure Backup によってバックアップされるすべてのマシンに、B
 
 7. **[登録]** を選択してコンテナーに DPM サーバーを登録します。
 
-サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。 ワークロードを Azure にバックアップするには、DPM コンソールで保護グループを構成する必要があります。 保護グループを展開する[方法を確認](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)してください。
+サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。 ワークロードを Azure にバックアップするには、DPM コンソールで保護グループを構成する必要があります。 保護グループを展開する[方法を確認](/system-center/dpm/create-dpm-protection-groups)してください。
 
 ## <a name="troubleshoot-vault-credentials"></a>コンテナーの資格情報のトラブルシューティング
 

@@ -1,14 +1,16 @@
 ---
 title: アプリの計画 - QnA Maker
 description: QnA Maker アプリを計画する方法について説明します。 QnA Maker がどのように動作し、他の Azure サービスと対話しているか、またいくつかのナレッジ ベースの概念について説明します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 19499aceed96155fa42c78865b1d673a3830f5cc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 11/09/2020
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054206"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353172"
 ---
 # <a name="plan-your-qna-maker-app"></a>QnA Maker アプリの計画
 
@@ -18,6 +20,8 @@ QnA Maker アプリを計画するには QnA Maker がどのように動作し�
 
 QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource-purposes)には特定の目的があります。 各リソースには、独自の目的、制限、および[価格レベル](azure-resources.md#pricing-tier-considerations)があります。 これらのリソースの機能を理解し、その知識を計画プロセスに使用できるようにすることが重要です。
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 | リソース | 目的 |
 |--|--|
 | [QnA Maker](azure-resources.md#qna-maker-resource) リソース | 作成とクエリ予測 |
@@ -25,6 +29,14 @@ QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource
 | [App Service のリソースと App Plan サービス](azure-resources.md#app-service-and-app-service-plan)のリソース | 予測エンドポイントに対するクエリの実行 |
 | [Application Insights](azure-resources.md#application-insights) リソース | クエリ予測テレメトリ |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+| リソース | 目的 |
+|--|--|
+| [QnA Maker](azure-resources.md#qna-maker-resource) リソース | 作成、クエリ予測エンドポイントおよびテレメトリ|
+| [Cognitive Search](azure-resources.md#cognitive-search-resource) リソース | データ ストレージと検索 |
+
+---
 ### <a name="resource-planning"></a>リソースの計画
 
 各リソースの Free レベルである `F0` を利用できます。また、作成とクエリ予測の両方のエクスペリエンスが用意されています。 このレベルを使用して作成とクエリ予測を学習することができます。 運用またはライブのシナリオに移行するときは、リソースの選択を再評価してください。
@@ -47,7 +59,7 @@ QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource
 
 これらのリソースの一部を既に使用している場合は、リソースの共有を検討してください。 リソースの共有は高度なシナリオであることを理解した上で、[共有できる](azure-resources.md#share-services-with-qna-maker)リソースを確認してください。
 
-同じ QnA Maker リソースで作成されたすべてのナレッジ ベースは、同じ**テスト** クエリ予測エンドポイントを共有します。
+同じ QnA Maker リソースで作成されたすべてのナレッジ ベースは、同じ **テスト** クエリ予測エンドポイントを共有します。
 
 ### <a name="understand-the-impact-of-resource-selection"></a>リソース選択の影響の概要
 
@@ -63,19 +75,32 @@ QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource
 
 ### <a name="language-considerations"></a>言語に関する注意点
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 QnA Maker リソースに作成された 1 つ目のナレッジ ベースによって、リソースの言語が設定されます。 1 つの QnA Maker リソースには 1 つの言語のみを使用できます。
 
 クエリをクエリ予測エンドポイントに送信する前に、QnA Maker リソースを言語ごとに構築するか、[Translator](../../translator/translator-info-overview.md) を使用してクエリを別の言語からナレッジ ベースの言語に変更することができます。
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+同じ QnA Maker リソース内でナレッジ ベースがさまざまな言語で提供されるようになりました。 最初のナレッジ ベースを作成するとき、1 つの言語か複数の言語でナレッジ ベースのリソースを使用することを選択できます。
+
+![QnA Maker マネージド (プレビュー) 多言語ナレッジ ベース選択](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> ナレッジ ベースごとに言語設定を有効にする場合、QnA Maker リソースで作成するナレッジ ベースの数に制限があります。 言語設定の制限については、[こちら](./azure-resources.md)をご覧ください。
+
+---
+
 ### <a name="ingest-data-sources"></a>データ ソースを取り込む
 
-取り込まれた次の[データ ソース](knowledge-base.md)のいずれかを使用して、ナレッジ ベースを作成することができます。
+取り込まれた次の[データ ソース](../index.yml)のいずれかを使用して、ナレッジ ベースを作成することができます。
 
 * パブリック URL
 * SharePoint のプライベート URL
 * ファイル
 
-インジェスト プロセスでは、[サポートされているコンテンツの種類](content-types.md)がマークダウンに変換されます。 *回答*のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
+インジェスト プロセスでは、[サポートされているコンテンツの種類](../index.yml)がマークダウンに変換されます。 *回答* のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
 
 ### <a name="data-format-considerations"></a>データ形式に関する考慮事項
 
@@ -99,17 +124,17 @@ QnA ペアの最終的な形式はマークダウンであるため、[マーク
 
 コラボレーターは、ナレッジ ベース アプリケーションの完全な開発スタックを共有する他の開発者であることも、ナレッジ ベースの作成のみに制限されていることもあります。
 
-ナレッジ ベースの作成では、コラボレーターの機能の範囲を制限するために、Azure portal で適用するいくつかの[ロールベースのアクセス許可](../how-to/collaborate-knowledge-base.md)をサポートしています。
+ナレッジ ベースの作成では、コラボレーターの機能の範囲を制限するために、Azure portal で適用するいくつかの[ロールベースのアクセス許可](../index.yml)をサポートしています。
 
 ## <a name="integration-with-client-applications"></a>クライアント アプリケーションとの統合
 
-[クライアント アプリケーション](integration-with-other-applications.md)との統合は、予測ランタイム エンドポイントにクエリを送信することで実現します。 クエリは、QnA Maker の Web アプリ エンドポイントへの SDK または REST ベースの要求と共に、特定のナレッジ ベースに送信されます。
+[クライアント アプリケーション](../index.yml)との統合は、予測ランタイム エンドポイントにクエリを送信することで実現します。 クエリは、QnA Maker の Web アプリ エンドポイントへの SDK または REST ベースの要求と共に、特定のナレッジ ベースに送信されます。
 
 クライアント要求を正しく認証するためには、クライアント アプリケーションが正しい資格情報とナレッジ ベース ID を送信する必要があります。 Azure Bot Service を使用する場合は、Azure portal でボット構成の一部として設定を構成します。
 
 ### <a name="conversation-flow-in-a-client-application"></a>クライアント アプリケーションでの会話フロー
 
-Azure ボットなどの[クライアント アプリケーション](integration-with-other-applications.md)での会話フローでは、ナレッジ ベースとの対話の前後に機能が必要になる場合があります。
+Azure ボットなどの[クライアント アプリケーション](../index.yml)での会話フローでは、ナレッジ ベースとの対話の前後に機能が必要になる場合があります。
 
 お使いのクライアント アプリケーションは、フォローアップ プロンプトを処理する別の手段を提供するか、おしゃべりを含めることで、会話フローをサポートしていますか。 その場合は、これらを早期に設計し、別のサービスによって、またはナレッジ ベースに送信されたときに、クライアント アプリケーション クエリが正しく処理されるようにします。
 
@@ -123,11 +148,11 @@ Azure ボットなどの[クライアント アプリケーション](integratio
 
 ### <a name="active-learning-from-a-client-application"></a>クライアント アプリケーションからのアクティブ ラーニング
 
-QnA Maker では、_アクティブ ラーニング_を使用して、回答に関する代わりの質問を提案することで、ナレッジ ベースを向上させます。 この[アクティブ ラーニング](active-learning-suggestions.md)の一部は、クライアント アプリケーションで行う必要があります。 クライアント アプリケーションでは、会話型のプロンプトを通じて、ナレッジ ベースからユーザーにとって役に立たない回答が返されたことを判断し、より適切な回答を判断することができます。 クライアント アプリケーションは、予測品質を向上させるために、[ナレッジ ベースにその情報を返信する](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api)必要があります。
+QnA Maker では、_アクティブ ラーニング_ を使用して、回答に関する代わりの質問を提案することで、ナレッジ ベースを向上させます。 この[アクティブ ラーニング](active-learning-suggestions.md)の一部は、クライアント アプリケーションで行う必要があります。 クライアント アプリケーションでは、会話型のプロンプトを通じて、ナレッジ ベースからユーザーにとって役に立たない回答が返されたことを判断し、より適切な回答を判断することができます。 クライアント アプリケーションは、予測品質を向上させるために、[ナレッジ ベースにその情報を返信する](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api)必要があります。
 
 ### <a name="providing-a-default-answer"></a>既定の回答の提供
 
-ナレッジ ベースは、回答が見つからない場合は_既定の回答_を返します。 この回答は、QnA Maker ポータルの **[設定]** ページ、または [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) で構成できます。
+ナレッジ ベースは、回答が見つからない場合は _既定の回答_ を返します。 この回答は、QnA Maker ポータルの **[設定]** ページ、または [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) で構成できます。
 
 この既定の回答は、Azure ボットの既定の回答とは異なります。 構成設定の一環として、Azure portal で Azure ボットの既定の回答を構成します。 これは、スコアのしきい値が満たされない場合に返されます。
 
@@ -145,12 +170,20 @@ QnA Maker では、_アクティブ ラーニング_を使用して、回答に�
 * `test` または `production` のナレッジ ベースに送信されるクエリ
 
 [2 フェーズの回答の順位](query-knowledge-base.md#how-qna-maker-processes-a-user-query-to-select-the-best-answer)があります。
-- Cognitive Search - 1 位。 _許可される回答_の数を十分に高く設定して、最適な回答が Cognitive Search から返され、QnA Maker ランカーに渡されるようにします。
+- Cognitive Search - 1 位。 _許可される回答_ の数を十分に高く設定して、最適な回答が Cognitive Search から返され、QnA Maker ランカーに渡されるようにします。
 - QnA Maker - 2 位。 特徴量化と機械学習を適用して、最適な回答を決定します。
 
 ### <a name="service-updates"></a>サービスの更新情報
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 サービス更新プログラムを自動的に管理するには、[最新のランタイム更新プログラム](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)を適用します。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) では、ランタイムは QnA Maker サービス自体によって管理されます。 そのため、サービス更新プログラムは適用されません。
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>スケーリング、スループット、および回復性
 
@@ -158,7 +191,16 @@ QnA Maker では、_アクティブ ラーニング_を使用して、回答に�
 
 ### <a name="analytics-with-application-insights"></a>Application Insights による分析
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 ナレッジ ベースに対するすべてのクエリは Application Insights に格納されます。 [上位のクエリ](../how-to/get-analytics-knowledge-base.md)を使用して、メトリックを理解します。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+マネージド デプロイでは、テレメトリは [Azure Monitor サービス](../../../azure-monitor/index.yml)経由で提供されます。 [上位のクエリ](../how-to/get-analytics-knowledge-base.md)を使用して、メトリックを理解します。
+
+
+---
 
 ## <a name="development-lifecycle"></a>開発ライフサイクル
 
@@ -175,11 +217,11 @@ QnA Maker では、_アクティブ ラーニング_を使用して、回答に�
 
 ### <a name="devops-development"></a>DevOps 開発
 
-DevOps パイプラインに挿入するナレッジ ベースを開発するには、[バッチ テスト](../quickstarts/batch-testing.md)中にナレッジ ベースを分離する必要があります。
+DevOps パイプラインに挿入するナレッジ ベースを開発するには、[バッチ テスト](../index.yml)中にナレッジ ベースを分離する必要があります。
 
 ナレッジ ベースは、QnA Maker リソースの他のすべてのナレッジ ベースと Cognitive Search インデックスを共有します。 ナレッジ ベースはパーティションによって分離されますが、インデックスを共有すると、発行されたナレッジ ベースと比較したときにスコアの差が生じる可能性があります。
 
-`test` と `production` のナレッジ ベースを_同じスコア_にするためには、QnA Maker リソースを 1 つのナレッジ ベースに分離します。 このアーキテクチャでは、リソースは分離されたバッチ テストの長さまで有効である必要があります。
+`test` と `production` のナレッジ ベースを _同じスコア_ にするためには、QnA Maker リソースを 1 つのナレッジ ベースに分離します。 このアーキテクチャでは、リソースは分離されたバッチ テストの長さまで有効である必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

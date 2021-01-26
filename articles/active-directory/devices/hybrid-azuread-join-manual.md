@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5316a1647c96076696b14de157e74e2155a6b368
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268555"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860016"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -169,7 +169,7 @@ Windows Server 2008 以前のバージョンが実行されているドメイン
 
 検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md)」を参照してください。
 
-確認済みの会社のドメインの一覧を取得するには、[Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) コマンドレットを使用できます。
+確認済みの会社のドメインの一覧を取得するには、[Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain) コマンドレットを使用できます。
 
 ![会社のドメインの一覧](./media/hybrid-azuread-join-manual/01.png)
 
@@ -328,7 +328,7 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
 
 検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md)」を参照してください。  
 
-確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) コマンドレットを使用できます。
+確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](/powershell/module/msonline/get-msoldomain) コマンドレットを使用できます。
 
 ![会社のドメインの一覧](./media/hybrid-azuread-join-manual/01.png)
 
@@ -564,17 +564,17 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
-2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)に関するページをご覧ください。
+2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md#manage-devices)に関するページをご覧ください。
 3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。 フェデレーション環境では、登録に失敗し、デバイスを同期するように AAD Connect が構成されている場合にのみ、この問題が発生する可能性があります。
-4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
+4. **[登録済み]** 列に **日付/時刻** が含まれている場合、Hybrid Azure AD Join は完了しています。
 
 ### <a name="using-powershell"></a>PowerShell の使用
 
-**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)内にあります。
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1)内にあります。
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 
-- Windows クライアントの ID と一致する**デバイス ID** を備えたオブジェクトが存在する必要があります。
+- Windows クライアントの ID と一致する **デバイス ID** を備えたオブジェクトが存在する必要があります。
 - **DeviceTrustType** の値は **[ドメイン参加済み]** です。 この設定は、Azure AD ポータルの **[デバイス]** ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
 - 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** です。
 

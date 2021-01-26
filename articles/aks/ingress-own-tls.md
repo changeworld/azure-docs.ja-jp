@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで独自の証明書
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 42e9f2128063caa13cf3fca1a28ec7e6465ba74e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: da2aab0530dce6c7c2cb3f776fdd618880c79805
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855691"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246181"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 
@@ -38,7 +38,7 @@ ms.locfileid: "88855691"
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
+> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが Kubernetes RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。
@@ -81,7 +81,7 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 
 ## <a name="generate-tls-certificates"></a>TLS 証明書を生成する
 
-この記事では、`openssl` を使用して自己署名証明書を生成します。 運用環境で使用する場合は、プロバイダーまたは独自の証明機関 (CA) からの信頼された署名証明書を要求する必要があります。 次の手順では、TLS 証明書と OpenSSL によって生成された秘密キーを使用して、Kubernetes *シークレット*を生成します。
+この記事では、`openssl` を使用して自己署名証明書を生成します。 運用環境で使用する場合は、プロバイダーまたは独自の証明機関 (CA) からの信頼された署名証明書を要求する必要があります。 次の手順では、TLS 証明書と OpenSSL によって生成された秘密キーを使用して、Kubernetes *シークレット* を生成します。
 
 次の例では、365 日間有効な *aks-ingress-tls.crt* という名前の 2048 ビット RSA X509 証明書を作成します。 秘密キー ファイルの名前は *aks-ingress-tls.key* です。 Kubernetes の TLS シークレットには、これらの両方のファイルが必要です。
 
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -170,7 +170,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -364,7 +364,7 @@ kubectl delete -f hello-world-ingress.yaml
 証明書シークレットを削除します。
 
 ```console
-kubectl delete secret aks-ingress-tls
+kubectl delete secret aks-ingress-tls --namespace ingress-basic
 ```
 
 最後に、名前空間自体を削除します。 `kubectl delete` コマンドを使用して、名前空間の名前を指定します。

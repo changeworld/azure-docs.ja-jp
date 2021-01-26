@@ -5,20 +5,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bb4974620323de45fd621ae2ed73d3655244d8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525172"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856724"
 ---
 1. 仮想 WAN のポータル ページの **[接続]** セクションで、 **[VPN サイト]** を選択して VPN サイト ページを開きます。
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 
-   ![基本操作](./media/virtual-wan-tutorial-site-include/basics.png "基本")
+   ![スクリーンショットには、[VPN サイトを作成する] ペインが開いた状態の [VPN (Site to site)]\(VPN (サイト間)\) ウィンドウが表示されています。](./media/virtual-wan-tutorial-site-include/basics.png "基本")
 3. **[VPN サイトを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
     * **[リージョン]** - 旧称は場所。 これは、このサイト リソースを作成する場所です。
@@ -26,10 +26,14 @@ ms.locfileid: "86525172"
     * **[デバイス ベンダー]** - VPN デバイス ベンダーの名前 (例:Citrix、Cisco、Barracuda)。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングを行ったりするのに役立ちます。
     * **[ボーダー ゲートウェイ プロトコル]** - 有効にすると、サイトからのすべての接続が BGP 対応になります。 最終的には、[リンク] セクションで VPN サイトからの各リンクの BGP 情報を設定します。 仮想 WAN での BGP の構成は、Azure 仮想ネットワーク ゲートウェイ VPN での BGP の構成と同等です。 オンプレミスの BGP ピア アドレスをデバイス側のご使用の VPN および VPN サイトの VNet アドレス空間のパブリック IP アドレスと同じにすることはできません。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイスのループバック インターフェイスに割り当てられたアドレスを使用できます。場所を表す対応する VPN サイトで、このアドレスを指定します。 BGP の前提条件については、「[BGP と Azure VPN Gateway について](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)」を参照してください。 VPN サイトの BGP 設定を有効にすると、いつでも VPN 接続を編集して、BGP パラメーター (リンクのピアリング IP と AS 番号) を更新することができます。
     * **[プライベート アドレス空間]** - オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。 これは、サイトで BGP が有効になっていない場合に必要です。
+    
+      >[!NOTE]
+      >サイトを作成した後にアドレス空間を編集した場合 (追加のアドレス空間を追加した場合など)、コンポーネントの再作成中での有効なルートの更新には、8 分から 10 分かかることがあります。
+      >
     * **[ハブ]** - サイトを接続する先のハブ。 サイトは、VPN Gateway を持つハブにのみ接続できます。 ハブが表示されない場合は、まずそのハブで VPN ゲートウェイを作成してください。
 4. ブランチにある物理的なリンクに関する情報を追加するには、 **[リンク]** を選択します。 仮想 WAN パートナーの CPE デバイスがある場合は、システムから設定されたブランチ情報のアップロードの一部として、この情報が Azure と交換されるかどうかを確認します。
 
-   ![リンク](./media/virtual-wan-tutorial-site-include/links.png "リンク")
+   ![スクリーンショットには、[リンク] タブが選択された状態の [VPN サイトを作成する] ペインが表示されています。](./media/virtual-wan-tutorial-site-include/links.png "リンク")
 
     * **[リンク名]** - VPN サイトで物理リンクに付ける名前を指定します。 例: mylink1。
     * **[プロバイダー名]** - VPN サイトの物理リンクの名前。 例:ATT、Verizon。

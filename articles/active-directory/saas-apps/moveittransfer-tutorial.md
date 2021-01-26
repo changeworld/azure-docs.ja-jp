@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c79596747be655e372958e06021c50f23ff0fe03
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544130"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>チュートリアル: Azure Active Directory と MOVEit Transfer - Azure AD integration の統合
 
@@ -27,7 +27,7 @@ MOVEit Transfer - Azure AD integration と Azure AD の統合には、次の利�
 * ユーザーが自分の Azure AD アカウントを使用して MOVEit Transfer - Azure AD integration に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と MOVEit Transfer - Azure AD integration の統合を構成するに�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MOVEit Transfer - Azure AD integration では、**SP** によって開始される SSO がサポートされます
+* MOVEit Transfer - Azure AD integration では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>ギャラリーからの MOVEit Transfer - Azure AD integration の追加
 
@@ -61,13 +61,13 @@ Azure AD への MOVEit Transfer - Azure AD integration の統合を構成する�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**MOVEit Transfer - Azure AD integration**」と入力し、結果パネルで **MOVEit Transfer - Azure AD integration** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **MOVEit Transfer - Azure AD integration** 」と入力し、結果パネルで **MOVEit Transfer - Azure AD integration** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の MOVEit Transfer - Azure AD integration](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、MOVEit Transfer - Azure AD integration で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、MOVEit Transfer - Azure AD integration で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと MOVEit Transfer - Azure AD integration 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 MOVEit Transfer - Azure AD integration で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -97,26 +97,26 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と **[応答 URL]** の値が、 **[基本的な SAML 構成]** セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **[応答 URL]** の値が、 **[基本的な SAML 構成]** セクションに自動的に設定されます。
 
     ![MOVEit Transfer - Azure AD integration のドメインと URL のシングル サインオン情報](common/sp-identifier-reply.png)
 
     **[サインオン URL]** ボックスに、`https://contoso.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > **[サインオン URL]** は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[MOVEit Transfer - Azure AD integration クライアント サポート](https://community.ipswitch.com/s/support) チームに問い合わせてください。 **サービス プロバイダー メタデータ ファイル**は、チュートリアルの「**MOVEit Transfer - Azure AD integration のシングル サインオンの構成**」セクションで後述する**サービス プロバイダー メタデータ URL** からダウンロードできます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > **[サインオン URL]** は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[MOVEit Transfer - Azure AD integration クライアント サポート](https://community.ipswitch.com/s/support) チームに問い合わせてください。 **サービス プロバイダー メタデータ ファイル** は、チュートリアルの「 **MOVEit Transfer - Azure AD integration のシングル サインオンの構成** 」セクションで後述する **サービス プロバイダー メタデータ URL** からダウンロードできます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -146,7 +146,7 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![サービス プロバイダー メタデータ URL](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-   * **[基本的な SAML 構成]** セクションで、**entityID** が**識別子**と一致することを確認します。
+   * **[基本的な SAML 構成]** セクションで、 **entityID** が **識別子** と一致することを確認します。
    * **AssertionConsumerService** の場所 URL が **[基本的な SAML 構成]** セクションの **[応答 URL]** と一致していることを確認します。
     
      ![アプリ側でのシングル サインオンの構成](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
@@ -159,7 +159,7 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![SAML ID プロバイダー](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-7. **[Edit Federated Identity Provider Settings (フェデレーション ID プロバイダーの設定の編集)]** ページの **[Enabled (有効)]** で **[Yes (はい)]** を選択し、**[Save (保存)]** をクリックします。
+7. **[Edit Federated Identity Provider Settings (フェデレーション ID プロバイダーの設定の編集)]** ページの **[Enabled (有効)]** で **[Yes (はい)]** を選択し、 **[Save (保存)]** をクリックします。
 
     ![フェデレーション ID プロバイダーの設定](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
@@ -169,9 +169,9 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
     
     a. **[Login name (ログイン名)]** として **[SAML NameID]** を選択します。
     
-    b. **[Full name]\(フル ネーム\)** として **[Other]\(その他\)** を選び、**[Attribute name]\(属性名\)** ボックスに値「`http://schemas.microsoft.com/identity/claims/displayname`」を入力します。
+    b. **[Full name]\(フル ネーム\)** として **[Other]\(その他\)** を選び、 **[Attribute name]\(属性名\)** ボックスに値「`http://schemas.microsoft.com/identity/claims/displayname`」を入力します。
     
-    c. **[Email]\(電子メール\)** として **[Other]\(その他\)** を選び、**[Attribute name]\(属性名\)** ボックスに値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
+    c. **[Email]\(電子メール\)** として **[Other]\(その他\)** を選び、 **[Attribute name]\(属性名\)** ボックスに値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
     
     d. **[Auto-create account on signon (サインオン時にアカウントを自動作成する)]** で **[Yes (はい)]** を選択します。
     
@@ -193,9 +193,9 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -218,7 +218,7 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -239,13 +239,12 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [MOVEit Transfer - Azure AD integration] タイルをクリックすると、SSO を設定した MOVEit Transfer - Azure AD integration に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [MOVEit Transfer - Azure AD integration] タイルをクリックすると、SSO を設定した MOVEit Transfer - Azure AD integration に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

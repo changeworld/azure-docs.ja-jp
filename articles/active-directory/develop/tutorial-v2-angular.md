@@ -1,7 +1,7 @@
 ---
-title: Angular シングルページ アプリのチュートリアル - Azure
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する Angular アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: Angular SPA アプリケーションで、Microsoft ID プラットフォーム エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。
+description: このチュートリアルでは、Microsoft ID プラットフォームを使用してユーザーのサインインを処理し、アクセス トークンを取得してそのユーザーに代わって Microsoft Graph API を呼び出す Angular シングルページ アプリ (SPA) を作成します。
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -11,31 +11,37 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118298"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979931"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
-このチュートリアルでは、Angular シングルページ アプリケーション (SPA) で次のことを行う方法を説明します。
-- 個人用アカウント、職場アカウント、学校アカウントをサインインさせます。
-- アクセス トークンを取得します。
-- "*Microsoft ID プラットフォーム エンドポイント*" のアクセス トークンを必要とする Microsoft Graph API などの API を呼び出します。
+このチュートリアルでは、ユーザーのサインインを行い、Microsoft Graph API を呼び出す Angular シングルページ アプリケーション (SPA) を構築します。
 
->[!NOTE]
->このチュートリアルでは、Microsoft Authentication Library (MSAL) を使用して新しい Angular SPA を作成する方法について説明します。 サンプル アプリをダウンロードする場合は、[クイックスタート](quickstart-v2-angular.md)を参照してください。
+このチュートリアルの内容:
+
+> [!div class="checklist"]
+> * `npm` で Angular プロジェクトを作成する
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)。
+* プロジェクト ファイルを編集するためのエディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
 
 ## <a name="how-the-sample-app-works"></a>このサンプル アプリのしくみ
 
 ![このチュートリアルで生成されたサンプル アプリの動作を示す図](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>詳細情報
-
-このチュートリアルで作成したサンプル アプリケーションを使用すると、Angular SPA で、Microsoft ID プラットフォーム エンドポイントからトークンを受け取る Microsoft Graph API や Web API に対してクエリを実行することができます。 Angular ライブラリの MSAL は、コア MSAL.js ライブラリのラッパーです。 これにより、Angular (6 以降) アプリケーションは、Microsoft Azure Active Directory、Microsoft アカウント ユーザー、ソーシャル ID ユーザー (Facebook、Google、LinkedIn など) を使用してエンタープライズ ユーザーを認証することができます。 また、アプリケーションは、このライブラリを通じて、Microsoft クラウド サービスや Microsoft Graph にアクセスすることができます。
+このチュートリアルで作成したサンプル アプリケーションを使用すると、Angular SPA で、Microsoft ID プラットフォームによって発行されたトークンを受け取る Microsoft Graph API や Web API に対してクエリを実行することができます。 Microsoft Authentication Library (MSAL) for Angular という、コア MSAL.js ライブラリのラッパーを使用します。 MSAL Angular では、Angular (6 以降) のアプリケーションが Azure Active Directory (Azure AD) を使用して、エンタープライズ ユーザーや Microsoft アカウントを持つユーザー、さらにソーシャル ID (Facebook、Google、LinkedIn など) を持つユーザーを認証することができます。 また、アプリケーションは、このライブラリを通じて、Microsoft クラウド サービスや Microsoft Graph にアクセスすることができます。
 
 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 トークンの取得と更新は、MSAL によって処理されます。
 
@@ -48,13 +54,6 @@ ms.locfileid: "88118298"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript Angular Wrapper 用の Microsoft Authentication Library|
 
 MSAL.js ライブラリのソース コードは、GitHub の [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) リポジトリにあります。
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルを実行するには、次のものが必要です。
-
-* [Node.js](https://nodejs.org/en/download/) などのローカル Web サーバー。 このチュートリアルの手順は、Node.js に基づいています。
-* プロジェクト ファイルを編集するための [Visual Studio Code](https://code.visualstudio.com/download) などの統合開発環境 (IDE)。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
@@ -195,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-次に、保護されたリソースのマップを `protectedResourceMap` として `MsalModule.forRoot()` に指定し、`consentScopes` にそれらのスコープを含めます。
+次に、保護されたリソースのマップを `protectedResourceMap` として `MsalModule.forRoot()` に指定し、`consentScopes` にそれらのスコープを含めます。 `protectedResourceMap` コレクションに指定する URL は、大文字と小文字が区別されます。
 
 ```javascript
 @NgModule({
@@ -343,6 +342,7 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 ## <a name="next-steps"></a>次のステップ
 
-ID とアクセスの管理を初めて体験する方のために、「[認証と承認](authentication-vs-authorization.md)」を手始めに、最新の認証の概念を理解するのに役立つ記事がいくつか用意されています。
+Microsoft ID プラットフォームにおけるシングルページ アプリケーション (SPA) 開発の詳細を、複数のパートから成る一連の記事でご覧ください。
 
-Microsoft ID プラットフォームでのシングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数パートから構成される記事の「[シナリオ: シングルページ アプリケーション](scenario-spa-overview.md)」シリーズが、作業を開始するのに役立ちます。
+> [!div class="nextstepaction"]
+> [シナリオ:シングルページ アプリ](scenario-spa-overview.md)

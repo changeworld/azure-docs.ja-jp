@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102793"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061248"
 ---
 ## <a name="common-scenarios"></a>一般的なシナリオ
 バースティングから大きなメリットが得られるシナリオを次に示します。
@@ -47,7 +47,7 @@ ms.locfileid: "87102793"
     - プロビジョニングされる MB/秒:25
     - 最大バースト MB/秒:170 
 - 2 つの P10 データ ディスク 
-    - プロビジョニングされる MB/秒:25
+    - プロビジョニングされる MB/秒:100
     - 最大バースト MB/秒:170
 
  VM が起動すると、OS ディスクからデータが取得されます。 OS ディスクは起動されている VM の一部であるため、この OS ディスクのバースティング クレジットはいっぱいになります。 これらのクレジットを使用して、下記に示すとおり 170 MB/秒で OS ディスクの起動をバーストできます。

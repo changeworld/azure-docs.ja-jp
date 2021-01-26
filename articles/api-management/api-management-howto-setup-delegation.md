@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461002"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341843"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -44,7 +44,7 @@ ms.locfileid: "87461002"
 * 特殊な委任エンドポイントの URL を決めて **[委任エンドポイント URL]** フィールドに入力します。 
 * [委任の認証キー] フィールドに、要求が本当に Azure API Management から送信されたものかをどうかを確かめるための署名のコンピューティングに使用するシークレットを入力します。 **[生成]** ボタンをクリックすると、API Management によってランダムにキーを生成できます。
 
-次に、 **委任エンドポイント**を作成する必要があります。 委任エンドポイントでは、次に示す操作を実行します。
+次に、 **委任エンドポイント** を作成する必要があります。 委任エンドポイントでは、次に示す操作を実行します。
 
 1. 次の形式の要求を受け取ります。
    
@@ -61,21 +61,19 @@ ms.locfileid: "87461002"
    * **returnUrl** および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 ハッシュを計算します ([コードの例を次に示します])。
      
      > HMAC(**salt** + '\n' + **returnUrl**)
-     > 
-     > 
+
    * 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。 2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
 3. サインイン/サインアップの要求を受け取っていることを確認します。**operation** クエリ パラメーターが "**SignIn**" に設定されます。
 4. サインインまたはサインアップのための UI をユーザーに表示します。
 5. サインアップの場合は、API Management に対応するアカウントを作成する必要があります。 [ユーザーを作成] します。 このとき、ユーザー ID をユーザー ストア内のユーザー ID と同じに設定するか、または追跡が可能な ID に設定してください。
 6. ユーザーが正常に認証されたら、次の操作を行います。
    
-   * [シングル サインオン (SSO) トークンを要求] します。
+   * API Management REST API を使用して[共有アクセス トークンを要求します]
    * 上記の API 呼び出しによって受け取った SSO URL に returnUrl クエリ パラメーターを付加します。
      
-     > 例: `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * 上記の手順で生成された URL にユーザーをリダイレクトします。
+     > 例: `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * 上で生成された URL にユーザーをリダイレクトします
 
 **SignIn** 操作に加えて、ここまでの手順に従い、さらに次の操作のいずれかを使用することにより、アカウント管理も実行できます。
 
@@ -186,9 +184,9 @@ var signature = digest.toString('base64');
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[シングル サインオン (SSO) トークンを要求]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[共有アクセス トークンを要求する]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [ユーザーを作成]: /rest/api/apimanagement/2019-12-01/user/createorupdate
-[サブスクリプションのための REST API の呼び出し]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
+[サブスクリプションのための REST API を呼び出します]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps
 [コードの例を次に示します]: #delegate-example-code
 

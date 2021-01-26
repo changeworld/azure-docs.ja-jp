@@ -8,14 +8,14 @@ ms.custom: seo-lt-2019, sqldbrb=1, devx-track-csharp
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: 055dbdcf936cc55dcad288d216d765f4e1bf789d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932442"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671176"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>チュートリアル:C&#x23; と ADO.NET を使用して Azure SQL Database 内でリレーショナル データベースを設計する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサ�
 *Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 > [!TIP]
-> 次の Microsoft Learn モジュールは、単純なデータベースの作成など、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
+> 次の Microsoft Learn モジュールは、単純なデータベースの作成など、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -76,13 +76,13 @@ Azure SQL Database のデータベースは、定義済みの一連のコンピ�
 
     サービス レベル、DTU または仮想コアの数、およびストレージの容量を選択したら、 **[適用]** をクリックします。
 
-7. 空のデータベースの**照合順序**を入力します (このチュートリアルでは既定値を使用)。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
+7. 空のデータベースの **照合順序** を入力します (このチュートリアルでは既定値を使用)。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
 8. これで **SQL Database** フォームの入力が完了したので、 **[作成]** をクリックして、データベースをプロビジョニングします。 この手順には数分かかることがあります。
 
 9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
 
-   ![通知 (notification)](./media/design-first-database-csharp-tutorial/notification.png)
+   ![スクリーンショットは、Azure portal の、"デプロイは進行中です" と表示された [通知] を示しています。](./media/design-first-database-csharp-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>サーバーレベルの IP ファイアウォール規則を作成する
 
@@ -91,7 +91,7 @@ SQL Database では、サーバーレベルで IP ファイアウォールが作
 > [!IMPORTANT]
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内からこのサービスに接続しようとしても、ポート 1433 でのアウトバウンド トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、管理者がポート 1433 を開かない限り、データベースに接続することはできません。
 
-1. デプロイが完了したら、左側のメニューで **[SQL データベース]** をクリックし、**SQL データベース** ページで、*yourDatabase* をクリックします。 お客様のデータベースの概要ページが開くと、完全修飾**サーバー名** (*yourserver.database.windows.net* など) や追加の構成オプションが表示されます。
+1. デプロイが完了したら、左側のメニューで **[SQL データベース]** をクリックし、 **SQL データベース** ページで、 *yourDatabase* をクリックします。 お客様のデータベースの概要ページが開くと、完全修飾 **サーバー名** ( *yourserver.database.windows.net* など) や追加の構成オプションが表示されます。
 
 2. この完全修飾サーバー名をコピーします。これは、SQL Server Management Studio からお客様のサーバーとデータベースに接続するために使用します。
 

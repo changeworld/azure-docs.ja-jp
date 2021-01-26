@@ -5,13 +5,15 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.date: 08/17/2020
-ms.openlocfilehash: 2c3b11ca0c2bb916a5a3fcaf50eb99c7db3aa8e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.reviewer: cynthn
+ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642561"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968589"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -46,13 +48,16 @@ Azure portal (https://portal.azure.com) にサインインする
 
 2. **[プロバイダーの追加]** を選択し、ドロップダウンから **[SAP HANA]** を選択します。 
 
+   > [!IMPORTANT]
+   > SAP HANA プロバイダーが SAP HANA "マスター" ノードに対して構成されていることを確認してください。
+
 3. HANA サーバーのプライベート IP を入力します。
 
 4. 使用するデータベース テナントの名前を入力します。 任意のテナントを選択できますが、**SYSTEMDB** を使用すると、さまざまな監視領域が有効になるため、これを使用することをお勧めします。 
 
-5. HANA データベースに関連付けられている SQL ポート番号を入力します。 ポート番号は、 **[3]**  +  **[instance#]**  +  **[13]** または **[3]**  +  **[instance#]**  +  **[15]** の形式で入力する必要があります。 たとえば、30013 や 30015 と入力します。 
+5. HANA データベースに関連付けられている SQL ポート番号を入力します。 ポート番号は、 **[3]**  +  **[instance#]**  +  **[13]** の形式で入力する必要があります (例: 30013)。 
 
-6. 使用するデータベース ユーザー名を入力します。 データベース ユーザーに**監視**および**カタログ読み取り**ロールが割り当てられていることを確認します。 
+6. 使用するデータベース ユーザー名を入力します。 データベース ユーザーに **監視** および **カタログ読み取り** ロールが割り当てられていることを確認します。 
 
 7. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115103"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169275"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 ## <a name="lookup-current-error-code-information"></a>現在のエラー コード情報の参照
 エラー コードとメッセージは変更される可能性があります。  最新の情報については、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) ページを参照して、AADSTS のエラーの説明、修正、およびいくつかの推奨される回避策を確認してください。  
 
-返されたエラー コードの数値部分を検索します。  たとえば、"AADSTS16000" というエラー コードを受け取った場合は、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) で "16000" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。[https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000)
+たとえば、"AADSTS50058" というエラー コードを受け取った場合は、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) で "50058" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。[https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058)
 
 ## <a name="aadsts-error-codes"></a>AADSTS エラー コード
 
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50136 | RedirectMsaSessionToApp - 単一 MSA セッションが検出されました。 |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken - 外部更新トークンがないためセッションが無効です。 |
 | AADSTS50140 | KmsiInterrupt - ユーザーがサインインしたときの "サインインしたままにする" 割り込みによりエラーが発生しました。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
-| AADSTS50143 | セッションが一致しません。異なるリソースにより、ユーザーのテナントがドメインのヒントと一致しないため、セッションが無効です。詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、 [サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
+| AADSTS50143 | セッションが一致しません。異なるリソースにより、ユーザーのテナントがドメインのヒントと一致しないため、セッションが無効です。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - ユーザーの Active Directory パスワードの有効期限が切れました。 ユーザーに新しいパスワードを生成するか、またはユーザーにセルフサービスのリセット ツールを使用させて、パスワードをリセットしてください。 |
 | AADSTS50146 | MissingCustomSigningKey - このアプリは、アプリ固有の署名キーを使って構成する必要があります。 そのように構成されていません。または、キーが有効期限切れか、またはまだ有効になっていません。 |
 | AADSTS50147 | MissingCodeChallenge - コードのチャレンジ パラメーターのサイズが無効です。 |
@@ -200,7 +200,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS70007 | UnsupportedResponseMode - アプリが、トークンを要求するときに、`response_mode` のサポートされていない値を返しました。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 非アクティブのため、更新トークンの有効期限が切れました。 トークンは XXX に発行され、一定期間、非アクティブでした。 |
 | AADSTS70011 | InvalidScope - アプリによって要求されたスコープが無効です。 |
-| AADSTS70012 | MsaServerError - MSA (コンシューマー) ユーザーの認証中にサーバー エラーが発生しました。 やり直してください。 まだ失敗する場合は、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError - MSA (コンシューマー) ユーザーの認証中にサーバー エラーが発生しました。 やり直してください。 まだ失敗する場合は、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 デバイス フロー エラー。 承認は保留中です。 デバイスは要求のポーリングを再試行します。 |
 | AADSTS70018 | BadVerificationCode - ユーザーがデバイス コード フローに誤ったユーザー コードを入力したため、確認コードが無効です。 認証は承認されていません。 |
 | AADSTS70019 | CodeExpired - 確認コードの有効期限が切れました。 ユーザーにサインインを再試行させてください。 |
@@ -251,7 +251,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90051 | InvalidNationalCloudId - 国内クラウド識別子に無効なクラウド識別子が含まれています。 |
 | AADSTS90055 | TenantThrottlingError - 着信要求が多すぎます。 この例外は、ブロックされているテナントに対してスローされます。 |
 | AADSTS90056 | BadResourceRequest - コードをアクセス トークンと引き換えるには、アプリで `/token` エンドポイントに POST 要求を送信する必要があります。 また、その前に認証コードを提供し、それを POST 要求で `/token` エンドポイントに送信する必要があります。 OAuth 2.0 承認コード フローの概要については、この記事 ([../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)) を参照してください。 ユーザーを authorization_code を返す `/authorize` エンドポイントにリダイレクトしてください。 `/token` エンドポイントに要求をポストすることで、ユーザーはアクセス トークンを取得します。 Azure portal にログインし、 **[アプリの登録] > [エンドポイント]** の順にチェックして、2 つのエンドポイントが正しく構成されていることを確認します。 |
-| AADSTS90072 | PassThroughUserMfaError - ユーザーがサインインに使用した外部アカウントが、ユーザーがサインインしているテナントに存在しません。そのため、ユーザーはテナントの MFA 要件を満たすことができません。 アカウントをまずテナントに外部ユーザーとして追加する必要があります。 サインアウトして別の Azure AD ユーザー アカウントでサインインしてください。 |
+| AADSTS90072 | PassThroughUserMfaError - ユーザーがサインインに使用した外部アカウントが、ユーザーがサインインしているテナントに存在しません。そのため、ユーザーはテナントの MFA 要件を満たすことができません。 このエラーは、ユーザーが同期されていても、Active Directory と Azure AD 間で ImmutableID (sourceAnchor) 属性に不一致がある場合にも発生する可能性があります。 アカウントをまずテナントに外部ユーザーとして追加する必要があります。 サインアウトして別の Azure AD ユーザー アカウントでサインインしてください。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - サービスが WS-Federation メッセージを処理しようとしたときにエラーが発生しました。 メッセージが無効です。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 要求に対して選択された認証ポリシーは現在サポートされていません。 |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed - ゲスト アカウントは、このサイトでは許可されていません。 |
@@ -315,11 +315,12 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700022 | InvalidMultipleResourcesScope - 入力パラメーターのスコープに指定された値に複数のリソースが含まれているため無効です。 |
 | AADSTS700023 | InvalidResourcelessScope - アクセス トークンを要求するときに、入力パラメーターのスコープに指定された値が無効です。 |
 | AADSTS7000215 | 無効なクライアント シークレットが指定されています。 開発者エラー - アプリは、必要な認証パラメーターまたは正しい認証パラメーターを使用せずにサインインしようとしています。|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください ([https://aka.ms/certCreds](https://aka.ms/certCreds))。 |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください ([https://aka.ms/certCreds](./active-directory-certificate-credentials.md))。 |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 指定された承認コードは、他のテナントに対して使用することを目的にしているため、拒否されました。 OAuth2 承認コードは、それが取得されたときの同じテナント (必要に応じて /common または /{tenant-ID}) に対して引き換える必要があります。 |
 | AADSTS1000000 | UserNotBoundError - Bind API では Azure AD ユーザーも外部 IDP による認証が必要ですが、まだ行われていません。 |
 | AADSTS1000002 | BindCompleteInterruptError - バインドは正常に完了しましたが、ユーザーに通知する必要があります。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - アプリケーションが無効です。 |
+| AADSTS7000114| アプリケーション 'appIdentifier' には、アプリケーションの代理呼び出しを行うことが許可されていません。|
 | AADSTS7500529 | 値 ‘SAMLId-Guid’ は有効な SAML ID ではありません- Azure AD ではこの属性を使用して、返される応答の InResponseTo 属性が設定されます。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、id6c1c178c166d486687be4aaf5e482730 は有効な ID です。 |
 
 ## <a name="next-steps"></a>次のステップ

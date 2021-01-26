@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 07bd92e17b827dfeede5958587cecbdc97694329
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080161"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003924"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -192,11 +192,11 @@ Active Directory テナント管理者を作成します。
 
 1. **[Azure AD に接続]** ページで、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 Active Directory テナントを構成するときに作成したユーザー名 `fabrikamazureadmin@hdifabrikam.com` を使用します。 **[次へ]** を選択します。
 
-    ![[Azure AD に接続] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+    ![[Azure AD への接続] ページ。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
 1. **[Active Directory ドメイン サービスへの接続]** ページで、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 前に作成したユーザー名 `HDIFabrikam\HDIFabrikamAdmin` とそのパスワードを使用します。 **[次へ]** を選択します。
 
-   ![[Azure AD に接続] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
+   ![[AD DS への接続] ページ。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. **[Azure AD サインインの構成]** ページで、 **[次へ]** を選択します。
    ![[Azure AD サインインの構成] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
@@ -227,7 +227,7 @@ Azure AD Domain Services (Azure AD DS) の構成に使用できるユーザー�
 
 ### <a name="enable-azure-ad-ds"></a>Azure AD DS を有効にする
 
-Azure AD DS を有効にするには、以下の手順のようにします。 詳しくは、[Azure portal を使用して Azure AD DS を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)方法に関する記事をご覧ください。
+Azure AD DS を有効にするには、以下の手順のようにします。 詳しくは、[Azure portal を使用して Azure AD DS を有効にする](../../active-directory-domain-services/tutorial-create-instance.md)方法に関する記事をご覧ください。
 
 1. Azure AD DS をホストする仮想ネットワークを作成します。 次の PowerShell コードを実行します。
 
@@ -302,7 +302,7 @@ Azure AD DS を有効にすると、ローカル DNS サーバーが Azure AD VM
 
 Azure Active Directory に対する読み書きには、ライトウェイト ディレクトリ アクセス プロトコル (LDAP) が使用されます。 Secure Sockets Layer (SSL) または Transport Layer Security (TLS) テクノロジを使用して、LDAP トラフィックを機密情報にしてセキュリティで保護することができます。 適切な形式の証明書をインストールすることで、LDAP over SSL (LDAPS) を有効にすることができます。
 
-Secure LDAP について詳しくは、[Azure AD DS マネージド ドメインに対する LDAP の構成](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap)に関する記事をご覧ください。
+Secure LDAP について詳しくは、[Azure AD DS マネージド ドメインに対する LDAP の構成](../../active-directory-domain-services/tutorial-configure-ldaps.md)に関する記事をご覧ください。
 
 このセクションでは、自己署名証明書を作成し、証明書をダウンロードして、**HDIFabrikam** Azure AD DS マネージド ドメイン用に LDAPS を構成します。
 
@@ -318,11 +318,11 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 > [!NOTE]  
 > TLS/SSL 証明書要求の作成には、有効な公開キー暗号化標準 (PKCS) \#10 要求が作成される任意のユーティリティーまたはアプリケーションを使用できます。
 
-証明書がコンピューターの**個人用**ストアにインストールされていることを確認します。
+証明書がコンピューターの **個人用** ストアにインストールされていることを確認します。
 
 1. Microsoft 管理コンソール (MMC) を起動します。
 1. ローカル コンピューターの証明書を管理する **[証明書]** スナップインを追加します。
-1. **[証明書 (ローカル コンピューター)]**  >  **[個人用]**  >  **[証明書]** を展開します。 新しい証明書が**個人用**ストアに存在するはずです。 この証明書は完全修飾ホスト名に対して発行されます。
+1. **[証明書 (ローカル コンピューター)]**  >  **[個人用]**  >  **[証明書]** を展開します。 新しい証明書が **個人用** ストアに存在するはずです。 この証明書は完全修飾ホスト名に対して発行されます。
 
     ![ローカル証明書の作成を確認する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
@@ -370,7 +370,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 この手順には、次の前提条件が必要です。
 
-1. **米国西部**の場所に、新しいリソース グループ *HDIFabrikam-WestUS* を作成します。
+1. **米国西部** の場所に、新しいリソース グループ *HDIFabrikam-WestUS* を作成します。
 1. ESP 対応の HDInsight クラスターをホストする仮想ネットワークを作成します。
 
     ```powershell

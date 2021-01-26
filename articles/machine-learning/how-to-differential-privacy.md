@@ -1,40 +1,36 @@
 ---
-title: WhiteNoise パッケージを使用してデータのプライバシーを維持する方法 (プレビュー)
+title: SmartNoise パッケージを使用してデータのプライバシーを維持する方法 (プレビュー)
 titleSuffix: Azure Machine Learning
-description: WhiteNoise パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
+description: SmartNoise パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 12/21/2020
+ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320206"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221937"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-WhiteNoise Python パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
+SmartNoise Python パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 
 差分プライバシーは、ゴールド スタンダードなプライバシー定義です。 このプライバシー定義に準拠しているシステムでは、幅広いデータ再構成やデータ再識別攻撃 (補助情報を持つ敵対者からの攻撃など) への防御が強力に保証されます。 詳細については、[差分プライバシーのしくみ](./concept-differential-privacy.md)に関するページを参照してください。
 
-> [!NOTE]
-> ツールキットの名前は変更予定で、今後数週間で新しい名前が導入されることにご注意ください。 
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-whitenoise-packages"></a>WhiteNoise パッケージのインストール
+## <a name="install-smartnoise-packages"></a>SmartNoise パッケージのインストール
 
 ### <a name="standalone-installation"></a>スタンドアロン インストール
 
@@ -42,45 +38,45 @@ WhiteNoise Python パッケージを使用して、Azure Machine Learning モデ
 
 以下の手順は、`python` と `pip` コマンドが `python3` と `pip3` にマップされることを前提としています。
 
-pip を使用して [WhiteNoise Python パッケージ](https://pypi.org/project/opendp-whitenoise/)をインストールします。
+pip を使用して [SmartNoise Python パッケージ](https://pypi.org/project/opendp-smartnoise/)をインストールします。
 
-`pip install opendp-whitenoise`
+`pip install opendp-smartnoise`
 
 パッケージがインストールされたことを確認するには、Python プロンプトを起動し、次のように入力します。
 
 ```python
-import opendp.whitenoise.core
-import opendp.whitenoise.sql
+import opendp.smartnoise.core
+import opendp.smartnoise.sql
 ```
 
 インポートが成功すると、ライブラリがインストールされて使用できる状態になります。
 
 ### <a name="docker-image"></a>Docker イメージ
 
-WhiteNoise パッケージを Docker と併用することもできます。
+SmartNoise パッケージを Docker と併用することもできます。
 
-Spark、Jupyter、サンプル コードを含む Docker コンテナー内でライブラリを使用するには、`opendp/whitenoise` イメージをプルします。
+Spark、Jupyter、サンプル コードを含む Docker コンテナー内でライブラリを使用するには、`opendp/smartnoise` イメージをプルします。
 
 ```sh
-docker pull opendp/whitenoise:privacy
+docker pull opendp/smartnoise:privacy
 ```
 
 イメージをプルしたら、Jupyter サーバーを起動します。
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run opendp/smartnoise:privacy
 ```
 
-これにより、`localhost` のポート `8989` でパスワード `pass@word99` を使用して Jupyter サーバーが開始されます。 上記のコマンド ラインを使用して `whitenoise-privacy` という名前のコンテナーを開始したと仮定すると、以下を実行して Jupyter サーバーで Bash ターミナルを開くことができます。
+これにより、`localhost` のポート `8989` でパスワード `pass@word99` を使用して Jupyter サーバーが開始されます。 上記のコマンド ラインを使用して `smartnoise-privacy` という名前のコンテナーを開始したと仮定すると、以下を実行して Jupyter サーバーで Bash ターミナルを開くことができます。
 
 ```sh
-docker exec -it whitenoise-run bash
+docker exec -it smartnoise-run bash
 ```
 
 Docker インスタンスではシャットダウン時にすべての状態がクリアされるため、実行中のインスタンスで作成したノートブックはすべて失われます。 その対策として、コンテナー起動時にローカル フォルダーをコンテナーにバインド マウントできます。
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/smartnoise:privacy
 ```
 
 *my-notebooks* フォルダーに作成したノートブックはすべて、ローカル ファイルシステムに格納されます。
@@ -95,7 +91,7 @@ docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Use
 import os
 import sys
 import numpy as np
-import opendp.whitenoise.core as wn
+import opendp.smartnoise.core as sn
 
 data_path = os.path.join('.', 'data', 'PUMS_california_demographics_1000', 'data.csv')
 var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
@@ -104,19 +100,19 @@ var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
 この例では、年齢の平均と分散を計算します。  合計 1.0 の `epsilon` を使用します (epsilon はプライバシー パラメーターで、計算する 2 つの数量にプライバシー予算を振り分けます)。 詳細については、[プライバシー メトリック](concept-differential-privacy.md#differential-privacy-metrics)に関するページを参照してください。
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
                           data_n = 1000
                          )
     # get variance of age
-    age_var = wn.dp_variance(data = wn.cast(data['age'], type="FLOAT"),
+    age_var = sn.dp_variance(data = sn.cast(data['age'], type="FLOAT"),
                              privacy_usage = {'epsilon': .35},
                              data_lower = 0.,
                              data_upper = 100.,
@@ -156,19 +152,19 @@ Privacy usage: approximate {
 | SUM           |            | 補完 |
 | 分散/共分散 |      | 変換  |
 
-詳細については、[基本データ分析のノートブック](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb)を参照してください。
+詳細については、[データ分析のノートブック](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/basic_data_analysis.ipynb)を参照してください。
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>差分プライベート リリースのおおよその有用性
 
 差分プライバシーはノイズを調整することで機能するため、プライバシー リスクによってリリースの有用性が変わる可能性があります。  一般的に、各個人を保護するために必要なノイズは、サンプル サイズが大きくなるにつれて無視できる程度になりますが、各個人を対象としたリリースの場合は、その結果を圧倒します。  アナリストは、リリースの精度情報を確認して、リリースの有用性を判断できます。
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
@@ -202,11 +198,11 @@ Age accuracy is: 0.2995732273553991
 ```python
 income_edges = list(range(0, 100000, 10000))
 
-with wn.Analysis() as analysis:
-    data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
-    income_histogram = wn.dp_histogram(
-            wn.cast(data['income'], type='int', lower=0, upper=100),
+    income_histogram = sn.dp_histogram(
+            sn.cast(data['income'], type='int', lower=0, upper=100),
             edges = income_edges,
             upper = 1000,
             null_value = 150,
@@ -216,11 +212,11 @@ with wn.Analysis() as analysis:
 
 各個人がヒストグラム ビン間でばらばらに分けられているため、ヒストグラムに多数のビンが含まれていても、プライバシー コストはヒストグラムごとに 1 回しか発生しません。
 
-ヒストグラムの詳細については、[ヒストグラムのノートブック](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/histograms.ipynb)を参照してください。
+ヒストグラムの詳細については、[ヒストグラムのノートブック](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/histograms.ipynb)を参照してください。
 
 ## <a name="generate-a-covariance-matrix"></a>共分散行列を生成する
 
-WhiteNoise では、`dp_covariance` 関数で 3 つの異なる機能を提供します。
+SmartNoise では、`dp_covariance` 関数で 3 つの異なる機能を提供します。
 
 - 2 つのベクトル間の共分散
 - 行列の共分散行列
@@ -229,13 +225,13 @@ WhiteNoise では、`dp_covariance` 関数で 3 つの異なる機能を提供�
 次に、スカラー共分散を計算する例を示します。
 
 ```python
-with wn.Analysis() as analysis:
-    wn_data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    wn_data = sn.Dataset(path = data_path, column_names = var_names)
 
-    age_income_cov_scalar = wn.dp_covariance(
-      left = wn.cast(wn_data['age'], 
+    age_income_cov_scalar = sn.dp_covariance(
+      left = sn.cast(wn_data['age'], 
       type = "FLOAT"), 
-      right = wn.cast(wn_data['income'], 
+      right = sn.cast(wn_data['income'], 
       type = "FLOAT"), 
       privacy_usage = {'epsilon': 1.0},
       left_lower = 0., 
@@ -247,8 +243,8 @@ with wn.Analysis() as analysis:
 ```
 
 詳細については、[共分散のノートブック](
-https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/covariance.ipynb)を参照してください。
+https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/covariance.ipynb)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [WhiteNoise サンプルのノートブック](https://github.com/opendifferentialprivacy/whitenoise-samples/tree/master/analysis)を調べます。
+- [SmartNoise サンプルのノートブック](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis)を調べます。

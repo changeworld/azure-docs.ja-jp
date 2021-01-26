@@ -13,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115069"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208891"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
 アプリケーション マニフェストには、Microsoft ID プラットフォームにあるアプリケーション オブジェクトのすべての属性の定義が含まれます。 それは、アプリケーション オブジェクトを更新するメカニズムとしても機能します。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](/graph/api/resources/application)を参照してください。
 
-Azure portal で、あるいは [REST API](/graph/api/resources/application) または [PowerShell](/powershell/module/azuread/?view=azureadps-2.0#applications) を使用してプログラムで、アプリの属性を構成できます。 ただし、一部のシナリオでは、アプリ マニフェストを編集してアプリの属性を構成する必要があります。 これらのシナリオは、次のとおりです。
+Azure portal で、あるいは [REST API](/graph/api/resources/application) または [PowerShell](/powershell/module/azuread#applications) を使用してプログラムで、アプリの属性を構成できます。 ただし、一部のシナリオでは、アプリ マニフェストを編集してアプリの属性を構成する必要があります。 これらのシナリオは、次のとおりです。
 
 * アプリを Azure AD マルチテナントと個人用の Microsoft アカウントとして登録した場合、サポートされる Microsoft アカウントを UI で変更することはできません。 代わりに、アプリケーション マニフェスト エディターを使用して、サポートされるアカウントの種類を変更する必要があります。
 * アプリでサポートされるアクセス許可とロールを定義する必要がある場合は、アプリケーション マニフェストを変更する必要があります。
@@ -33,7 +33,7 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
 
 アプリケーション マニフェストを構成するには:
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 **Azure Active Directory** サービスを検索して選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアクセスします。 **Azure Active Directory** サービスを検索して選択します。
 1. **[アプリの登録]** を選択します。
 1. 構成するアプリを選択します。
 1. アプリの **[概要]** ページで、 **[マニフェスト]** セクションを選択します。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを編集できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。
@@ -82,7 +82,7 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
 | :--- | :--- |
 | addIns | コレクション |
 
-使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の `addIns` プロパティを設定できます。 このパラメーターを使うと、Office 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。
+使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の `addIns` プロパティを設定できます。 このパラメーターを使うと、Microsoft 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。
 
 例:
 
@@ -114,17 +114,6 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
 ```json
     "allowPublicClient": false,
 ```
-
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| availableToOtherTenants | Boolean |
-
-アプリケーションが他のテナントと共有されている場合は true、それ以外の場合は false に設定します。
-
-> [!NOTE]
-> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInAudience` に置き換えられます。
 
 ### <a name="appid-attribute"></a>appId 属性
 
@@ -165,17 +154,6 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| displayName | String |
-
-アプリの表示名。
-
-> [!NOTE]
-> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`name` に置き換えられます。
-
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
 | Key | 値の型 |
@@ -194,39 +172,13 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 
 - `"None"`
 - `"SecurityGroup"` (セキュリティ グループおよび Azure AD ロールの場合)
+- `"ApplicationGroup"` (このオプションには、アプリケーションに割り当てられているグループのみが含まれます)
 - `"All"` (これは、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます)。
 
 例:
 
 ```json
     "groupMembershipClaims": "SecurityGroup",
-```
-
-### <a name="homepage-attribute"></a>homepage 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| homepage |String |
-
-アプリケーションのホームページの URL です。
-
-> [!NOTE]
-> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInUrl` に置き換えられます。
-
-### <a name="objectid-attribute"></a>objectId 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-|objectId | String |
-
-ディレクトリ内のアプリの一意識別子。
-
-これは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`id` に置き換えられます。
-
-例:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
@@ -244,7 +196,6 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
@@ -488,16 +439,6 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| publicClient | Boolean|
-
-このアプリケーションがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリケーションなど) であるかどうかを指定します。
-
-このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`allowPublicClient` に置き換えられます。
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
 | Key | 値の型 |
@@ -510,17 +451,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| replyUrls | 文字列配列 |
-
-この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。
-
-このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`replyUrlsWithType` に置き換えられます。
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
@@ -663,16 +594,16 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 
 以前にダウンロードしたマニフェストをアップロードしようとすると、次のいずれかのエラーが表示される場合があります。 マニフェスト エディターで現在サポートされている新しいバージョンのスキーマが、アップロードしようとしているスキーマと一致していないためにこのエラーが発生している可能性があります。
 
-* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:無効なオブジェクト識別子 'undefined' です。 []。"
-* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:指定した 1 つ以上のプロパティ値が無効です。 []。"
-* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:この API バージョンで更新用に availableToOtherTenants を設定することはできません。 []。"
-* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:'replyUrls' プロパティの更新は、このアプリケーションでは許可されていません。 代わりに、'replyUrlsWithType' プロパティを使用してください。 []。"
+* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:無効なオブジェクト識別子 'undefined' です。 []."
+* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:指定した 1 つ以上のプロパティ値が無効です。 []."
+* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:この API バージョンで更新用に availableToOtherTenants を設定することはできません。 []."
+* "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:'replyUrls' プロパティの更新は、このアプリケーションでは許可されていません。 代わりに、'replyUrlsWithType' プロパティを使用してください。 []."
 * "xxxxxx アプリケーションを更新できませんでした。 エラーの詳細:型名のない値が見つかりましたが、使用できる必要な型がありません。 モデルが指定されている場合、ペイロード内の値ごとに型が必要です。その型は、ペイロードで指定できる型か、呼び出し元による明示的な型か、親値から暗黙的に推定される型にすることができます。 []"
 
 これらのエラーのいずれかが表示された場合、以下の操作を実行することをお勧めします。
 
 1. 以前にダウンロードしたマニフェストのアップロードではなく、マニフェスト エディターで個別に属性を編集します。 関心のある属性を正常に編集するために、[マニフェスト リファレンス](#manifest-reference)の表を使って新旧の属性の構文とセマンティクスを理解します。
-1. ワークフローにおいて、後で使用するためにソース リポジトリ内にマニフェストを保存する必要がある場合は、リポジトリに保存されたマニフェストを、**アプリの登録**エクスペリエンスに表示されているものにリベースすることをお勧めします。
+1. ワークフローにおいて、後で使用するためにソース リポジトリ内にマニフェストを保存する必要がある場合は、リポジトリに保存されたマニフェストを、**アプリの登録** エクスペリエンスに表示されているものにリベースすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -686,14 +617,10 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 [AAD-DEVELOPER-GLOSSARY]:developer-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
-[APPLICATION-ENTITY]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity
-[APPLICATION-ENTITY-APP-ROLE]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#approle-type
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
 [O365-PERM-DETAILS]: /graph/permissions-reference
-[O365-SERVICE-DAEMON-APPS]: /previous-versions/office/office-365-api/
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/

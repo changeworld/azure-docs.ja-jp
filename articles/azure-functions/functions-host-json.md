@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055288"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654814"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -117,6 +117,11 @@ ms.locfileid: "87055288"
     "managedDependency": {
         "enabled": true
     },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -124,7 +129,8 @@ ms.locfileid: "87055288"
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -138,7 +144,7 @@ ms.locfileid: "87055288"
 
 この設定は [logging](#logging) の子です。
 
-[サンプリング オプション](./functions-monitoring.md#configure-sampling)など、Application Insights のオプションを制御します。
+[サンプリング オプション](./configure-monitoring.md#configure-sampling)など、Application Insights のオプションを制御します。
 
 完全な JSON 構造については、前の [サンプル host.json ファイル](#sample-hostjson-file) を参照してください。
 
@@ -157,16 +163,18 @@ ms.locfileid: "87055288"
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
+これらの設定の詳細については、「[Application Insights におけるサンプリング](../azure-monitor/app/sampling.md)」を参照してください。 
+
 |プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | サンプリングを有効または無効にします。 | 
 | maxTelemetryItemsPerSecond | 20 | 各サーバー ホストで 1 秒あたりにログに記録されるテレメトリ項目の目標数。 アプリを多数のホストで実行する場合、トラフィックの全体的なターゲット レート内に収まるように、この値を削減します。 | 
 | evaluationInterval | 01:00:00 | テレメトリの現在のレートを再評価する間隔。 評価は移動平均として実行されます。 急変しやすいテレメトリの場合は、この間隔を短くすることもできます。 |
-| initialSamplingPercentage| 1.0 | サンプリング率が動的に変化するサンプリング プロセスの開始時に適用される初期サンプリング率。 デバッグ中はこの値を減らさないでください。 |
+| initialSamplingPercentage| 100.0 | サンプリング率が動的に変化するサンプリング プロセスの開始時に適用される初期サンプリング率。 デバッグ中はこの値を減らさないでください。 |
 | samplingPercentageIncreaseTimeout | 00:00:01 | サンプリング率が変化する場合、このプロパティにより、変化してからどのくらいの時間が経過すると、Application Insights でサンプリング率を上げてキャプチャ データ量を増やすことができるようになるかが決まります。 |
 | samplingPercentageDecreaseTimeout | 00:00:01 | サンプリング率が変化する場合、このプロパティにより、変化してからどのくらいの時間が経過すると、Application Insights でサンプリング率を下げてキャプチャ データ量を減らすことができるようになるかが決まります。 |
 | minSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最小サンプリング率が決定されます。 |
-| maxSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
+| maxSamplingPercentage | 100.0 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
 | movingAverageRatio | 1.0 | 移動平均の計算で最新値に割り当てられる重み。 1 以下の値を使用します。 小さい値にすると、急変に対する反応が低いアルゴリズムになります。 |
 | excludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | includedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `excludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定された型のインスタンスがサンプリングされます。明示的にも暗黙的にも指定されていない型はサンプリングなしで転送されます。 |
@@ -211,6 +219,28 @@ ms.locfileid: "87055288"
 ## <a name="cosmosdb"></a>cosmosDb
 
 構成設定は、[Cosmos DB のトリガーとバインディング](functions-bindings-cosmosdb-v2-output.md#host-json)に関する記事に記載されています。
+
+## <a name="customhandler"></a>customHandler
+
+カスタム ハンドラーの構成設定。 詳細については、「[Azure Functions のカスタム ハンドラー](functions-custom-handlers.md#configuration)」を参照してください。
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|プロパティ | Default | 説明 |
+| --------- | --------- | --------- |
+| defaultExecutablePath | N/A | カスタム ハンドラー プロセスとして起動する実行可能ファイル。 カスタム ハンドラーを使用する場合は必須の設定であり、その値は関数アプリのルートを基準とします。 |
+| workingDirectory | *関数アプリのルート* | カスタム ハンドラー プロセスを開始する作業ディレクトリ。 これはオプションの設定であり、その値は関数アプリのルートを基準とします。 |
+| 引数 | N/A | カスタム ハンドラー プロセスに渡すコマンド ライン引数の配列。 |
+| enableForwardingHttpRequest | false | 設定した場合、HTTP トリガーと HTTP 出力だけで構成されているすべての関数には、カスタム ハンドラーの[要求ペイロード](functions-custom-handlers.md#request-payload)ではなく、元の HTTP 要求が転送されます。 |
 
 ## <a name="durabletask"></a>durableTask
 
@@ -310,7 +340,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
-|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)」をご覧ください。 |
 |console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
 
@@ -349,6 +379,28 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ## <a name="queues"></a>queues
 
 構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue-output.md#host-json)に関する記事に記載されています。  
+
+## <a name="retry"></a>retry
+
+アプリ内のすべての実行に対する[再試行ポリシー](./functions-bindings-error-pages.md#retry-policies-preview) オプションを制御します。
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|プロパティ  |Default | 説明 |
+|---------|---------|---------| 
+|strategy|null|必須。 使用する再試行戦略。 有効な値は `fixedDelay` または `exponentialBackoff`です。|
+|maxRetryCount|null|必須。 関数の実行ごとに許可される再試行の最大回数。 `-1` は、無制限に再試行することを意味します。|
+|delayInterval|null|`fixedDelay` 戦略で再試行の間に使用される遅延。|
+|minimumInterval|null|`exponentialBackoff` 戦略を使用する場合の最小再試行遅延。|
+|maximumInterval|null|`exponentialBackoff` 戦略を使用する場合の最大再試行遅延。| 
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -393,6 +445,16 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+アプリを再起動する必要がある変更について監視されているファイルの 1 つ以上の名前の配列。  これにより、これらのファイル内のコードが変更されたときに、その更新が関数によって取得されることが保証されます。
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

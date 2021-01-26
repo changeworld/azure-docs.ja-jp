@@ -2,7 +2,7 @@
 title: Azure AD Domain Services の範囲指定された同期 | Microsoft Docs
 description: Azure portal を使用して、Azure AD から Azure Active Directory Domain Services マネージド ドメインへの範囲指定された同期を構成する方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe373b9aa08d6999a9c57dd0008a207071e1dddd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068900"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618911"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure portal を使用して、Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 

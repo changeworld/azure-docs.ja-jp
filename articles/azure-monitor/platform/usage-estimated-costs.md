@@ -5,15 +5,15 @@ author: dalekoetke
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: mbullwin
+ms.author: lagayhar
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c90c2519b03d02da19da62fde5065984d379aa86
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323402"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208507"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Monitor での使用量と推定コストの監視
 
@@ -70,7 +70,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 使用量の詳細は、[Azure portal で使用量をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)して確認できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
 > [!NOTE]
-> **Azure Cost Management と課金**ハブの **[コスト管理]** を使用することは、監視コストを幅広く理解するための推奨アプローチです。  [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) および [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) の **[使用量と推定コスト]** エクスペリエンスでは、Azure Monitor のこれらの各部分のより深い分析情報が提供されます。
+> **Azure Cost Management と課金** ハブの **[コスト管理]** を使用することは、監視コストを幅広く理解するための推奨アプローチです。  [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) および [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) の **[使用量と推定コスト]** エクスペリエンスでは、Azure Monitor のこれらの各部分のより深い分析情報が提供されます。
 
 Azure Monitor の使用量を表示するためのもう 1 つのオプションは、[監視] ハブの **[使用量と推定コスト]** ページです。 このページには、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)、[Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、[Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) などの中心的な監視機能の使用量が表示されます。 2018 年 4 月より前の価格プランを利用しているお客様の場合は、Insights と Analytics 経由で購入した Log Analytics の使用量も含まれています。
 

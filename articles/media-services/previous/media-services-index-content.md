@@ -3,7 +3,7 @@ title: Azure Media Indexer によるメディア ファイルのインデック�
 description: Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 このトピックでは、Media Indexer の使用方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/22/2019
-ms.author: juliako
+ms.date: 10/21/2020
+ms.author: inhenkel
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 12a4099a6a3f0d06dfbb40171970c7386c3e4d22
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256448"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518842"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-> [!NOTE]
-> **Azure Media Indexer** メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+> [!IMPORTANT]
+> [Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyzing-video-audio-files-concept.md)を使用して、Indexer v1 および Indexer v2 から移行することをお勧めします。 [Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](./legacy-components.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
 
@@ -36,19 +36,19 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 インデックス作成ジョブは次の出力を生成できます。
 
-* 次の形式のクローズド キャプション ファイル:**TTML** と **WebVTT**。
+* 次の形式のクローズド キャプション ファイル: **TTML** と **WebVTT** 。
   
     クローズド キャプション ファイルには、Recognizability と呼ばれるタグが含まれています。これは、ソース ビデオ内の音声がどれくらい認識可能であるかに基づいて、インデックス作成ジョブを評価します。  見分けの値を使用して、出力ファイルの使いやすさを検査します。 低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。
 * キーワード ファイル (XML)。
 
-この記事では、ジョブのインデックスを作成して、**資産のインデックス**と**複数のファイルのインデックスを作成**する方法について説明します。
+この記事では、ジョブのインデックスを作成して、 **資産のインデックス** と **複数のファイルのインデックスを作成** する方法について説明します。
 
 ## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>タスクのインデックスを作成するための構成とマニフェスト ファイルの使用
 タスクの構成を使用して、インデックス作成のタスクの詳細を指定できます。 たとえば、メディア ファイルに使用するメタデータを指定できます。 このメタデータは、言語エンジンによって、そのボキャブラリの展開に使用され、音声認識の精度が大幅に向上します。  希望の出力ファイルを指定することもできます。
 
 マニフェスト ファイルを使用して一度に複数のメディア ファイルを処理できます。
 
-詳細については、「 [Azure Media Indexer 用のタスク プリセット](./media-services-analytics-overview.md)」をご覧ください。
+詳細については、「 [Azure Media Indexer 用のタスク プリセット](./legacy-components.md)」をご覧ください。
 
 ## <a name="index-an-asset"></a>資産のインデックス作成
 次のメソッドは、資産としてメディア ファイルをアップロードし、ジョブを作成して資産のインデックスを作成します。
@@ -154,14 +154,14 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 | --- | --- |
 | **InputFileName.ttml**<br/>**InputFileName.vtt** |TTML および WebVTT 形式のクローズド キャプション (CC) ファイル。<br/><br/>オーディオとビデオ ファイルを聴覚障がいを持つユーザーにアクセスできるようにするために使用できます。<br/><br/>クローズド キャプション ファイルには、<b>Recognizability</b> と呼ばれるタグが含まれています。これは、ソース ビデオ内の音声がどれくらい認識可能であるかに基づいて、インデックス作成ジョブを評価します。  <b>Recognizability</b> の値を使用して、出力ファイルの利用価値を検査することができます。 低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。 |
 | **InputFileName.kw.xml<br/>InputFileName.info** |キーワードと情報ファイル。 <br/><br/>キーワードのファイルは、頻度とオフセットの情報を含む、音声コンテンツから抽出されたキーワードを含む XML ファイルです。 <br/><br/>情報ファイルは、認識された各用語に関する詳細な情報が含まれるプレーンテキスト ファイルです。 最初の行は特殊で、認識度スコアを含みます。 後続の各行は、開始時刻、終了時刻、言葉/言い回し、信頼度データのタブ区切り一覧になります。 時間は秒単位で、信頼度は 0 ～ 1 の数値として指定されます。 <br/><br/>行の例:"1.20    1.45    word    0.67" <br/><br/>これらのファイルは、音声分析を実行する、Bing、Google または Microsoft SharePoint などの検索エンジンに公開してメディア ファイルをより検索しやすくする、または関連性の高い広告を配信するなど、さまざまな目的で使用できます。 |
-| **JobResult.txt** |出力マニフェストは、複数のファイルのインデックスを作成する場合にのみ存在します。次の情報が含まれています。<br/><br/><table border="1"><tr><th>InputFile</th><th>エイリアス</th><th>MediaLength</th><th>エラー</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>該当なし</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **JobResult.txt** |出力マニフェストは、複数のファイルのインデックスを作成する場合にのみ存在します。次の情報が含まれています。<br/><br/><table border="1"><tr><th>InputFile</th><th>エイリアス</th><th>MediaLength</th><th>エラー</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 4000 を表示して失敗します。 詳細については、 [エラー コード](#error_codes)をご覧ください
 
 ## <a name="index-multiple-files"></a>複数のファイルのインデックス
 次のメソッドは、資産として複数のメディア ファイルをアップロードし、ジョブを作成してバッチ内のすべてのファイルのインデックスを作成します。
 
-".lst" 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。 マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。 詳細については、「 [Azure Media Indexer 用のタスク プリセット](./media-services-analytics-overview.md)」をご覧ください。
+".lst" 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。 マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。 詳細については、「 [Azure Media Indexer 用のタスク プリセット](./legacy-components.md)」をご覧ください。
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -248,8 +248,8 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 
 | 名前 | 必須 | 説明 |
 | --- | --- | --- |
-| **input** |false |インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、メディア ファイル形式としてMP4、WMV、MP3、M4A、WMA、AAC、WAV をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。</p><p>資産ファイル名を明示的に指定するには、次を実行します。<br/>`<input name="TestFile.wmv">`<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/><br/><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。 </p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。 </p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。  </p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br/>`<input list="input.lst">`</li></ol><br/><br/>注:マニフェスト ファイルに 10 を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。 |
-| **metadata** |false |語彙アダプテーション用に指定する資産ファイルのメタデータ。  標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br/>`<metadata key="..." value="..."/>` <br/><br/>事前定義済みの**キー**に対して**値**を指定できます。 現在サポートされているキーは<br/><br/>"title" と "description" です。これは、語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。  インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **input** |false |インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、メディア ファイル形式としてMP4、WMV、MP3、M4A、WMA、AAC、WAV をサポートしています。</p><p>ファイル名は、 **input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。</p><p>資産ファイル名を明示的に指定するには、次を実行します。<br/>`<input name="TestFile.wmv">`<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/><br/><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。 </p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。 </p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。  </p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br/>`<input list="input.lst">`</li></ol><br/><br/>注:マニフェスト ファイルに 10 を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。 |
+| **metadata** |false |語彙アダプテーション用に指定する資産ファイルのメタデータ。  標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br/>`<metadata key="..." value="..."/>` <br/><br/>事前定義済みの **キー** に対して **値** を指定できます。 現在サポートされているキーは<br/><br/>"title" と "description" です。これは、語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。  インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
 | **features** <br/><br/> バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。 |false |音声認識機能には、次の設定キーがあります。<table><tr><th><p>Key</p></th>        <th><p>説明</p></th><th><p>値の例</p></th></tr><tr><td><p>Language</p></td><td><p>マルチメディア ファイル内で認識される自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。  </p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。  省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False。 </p></td></tr></table> |
 
 ### <a name="error-codes"></a><a id="error_codes"></a>エラー コード
@@ -266,7 +266,7 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 | 2006 |入力のファイルが多すぎます |入力のマニフェストに 10 個を超えるファイルがあります。 |
 | 3000 |メディア ファイルのデコードに失敗しました |メディア コーデックがサポートされていない <br/>or<br/> メディア ファイルが破損している <br/>or<br/> 入力メディアのオーディオ ストリームがありません。 |
 | 4000 |バッチのインデックス作成一部成功しました |一部の入力メディア ファイルは、インデックスを付けるできませんでした。 詳細については、「 <a href="#output_files">出力ファイル</a>。 |
-| その他 |内部エラー |サポート チームにお問い合わせください。 [https://github.com/mysqljs/mysql/](indexer@microsoft.com) |
+| その他 |内部エラー |サポート チームにお問い合わせください。 indexer@microsoft.com |
 
 ## <a name="supported-languages"></a><a id="supported_languages"></a>サポートされている言語
 現時点では、英語とスペイン語の言語がサポートされています。  
@@ -278,6 +278,6 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>関連リンク
-[Azure Media Services Analytics の概要](media-services-analytics-overview.md)
+[Azure Media Services Analytics の概要](./legacy-components.md)
 
-[Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](media-services-process-content-with-indexer2.md)
+[Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](./legacy-components.md)

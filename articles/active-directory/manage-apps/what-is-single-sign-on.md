@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 4e27266688e39eadc8ae1f3d9afd84c42e1b524e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069471"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031659"
 ---
 # <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは
 
@@ -53,7 +53,7 @@ Web アプリにおけるシングル サインオンの動作については、
 > [!TIP]
 > クラウドでホストされるアプリは、SaaS (サービスとしてのソフトウェア) アプリとも呼ばれます。 
 
-クラウドでホストされるアプリのシングル サインオンは簡単です。 アプリにそれが使用されていることを ID プロバイダーに伝えます。 そのうえで、ID プロバイダーを信頼するようにアプリを構成します。 アプリの ID プロバイダーとして Azure AD を使用する方法については、[アプリケーション管理に関するクイックスタート シリーズ](view-applications-portal.md)を参照してください。
+クラウドでホストされるアプリのシングル サインオンは簡単です。 アプリにそれが使用されていることを ID プロバイダーに伝えます。 そのうえで、ID プロバイダーを信頼するようにアプリを構成します。 アプリの ID プロバイダーとして Azure AD を使用する方法については、[アプリケーション管理に関するクイックスタート シリーズ](add-application-portal.md)を参照してください。
 
 > [!TIP]
 > クラウドとインターネットという用語は、多くの場合置き換えることができます。 その理由は、ネットワーク図と関係があります。 すべてのコンポーネントを描画するのは現実的ではないため、図で大規模なコンピューター ネットワークを表すときは雲の形を使うのが一般的です。 インターネットは最もよく知られているネットワークであるため、これらの用語は容易に置き換えて使うことができます。 ただし、どのコンピューター ネットワークでもクラウドと呼ぶことができます。

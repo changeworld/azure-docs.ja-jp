@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90705998"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -154,7 +154,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースのホストとして、[アクセス トークン](#access-token)を提示する[クライアント アプリケーション](#client-application)からのリソース要求 (保護されたリソースに対する要求) を受理し、応答する機能を備えたサーバーをいいます。 保護されたリソース サーバーまたはリソース アプリケーションと呼ばれることもあります。
 
-リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する [Microsoft Graph API][Microsoft-Graph] や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。
+リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する [Microsoft Graph API][Microsoft-Graph] や、メール、カレンダーなどのデータへのアクセスを提供する Microsoft 365 API があります。
 
 リソース アプリケーションの ID 構成は、クライアント アプリケーションと同様、Azure AD テナントへの [登録](#application-registration) を通じて確立され、アプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方が得られます。 Microsoft Graph API など、Microsoft が提供している一部の API には、あらかじめ登録されているサービス プリンシパルが存在し、プロビジョニング時にすべてのテナントで利用できるようになっています。
 
@@ -164,7 +164,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][Graph-Sp-Resource]に格納されます。 Azure Portal は、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
 
-Microsoft Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][Graph-Perm-Scopes]に関するページを参照してください。 実装手順の例については、[RBAC と Azure portal を使用してアクセスを管理する方法][AAD-RBAC]に関するページを参照してください。
+Microsoft Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][Graph-Perm-Scopes]に関するページを参照してください。 実装手順の例については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する][AAD-RBAC]」をご覧ください。
 
 ## <a name="scopes"></a>スコープ
 
@@ -172,7 +172,7 @@ Microsoft Graph API によって公開されているアプリケーション �
 
 スコープは、リソースによって定義される文字列 ("Mail.Read"、"Directory.ReadWrite.All" など) です。[Azure portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [oauth2Permissions プロパティ][Graph-Sp-Resource]に格納されます。 Azure Portal は、クライアント アプリケーションの、スコープに対する[委任されたアクセス許可](#permissions)を構成するためにも使用します。
 
-推奨される名前付け規則は、"resource.operation.constraint" 形式です。 Microsoft Graph API によって公開されているスコープの詳しい説明については、[Graph API のアクセス許可スコープ][Graph-Perm-Scopes]に関するページを参照してください。 Office 365 サービスによって公開されているスコープについては、[Office 365 API アクセス許可に関するリファレンス][O365-Perm-Ref]を参照してください。
+推奨される名前付け規則は、"resource.operation.constraint" 形式です。 Microsoft Graph API によって公開されているスコープの詳しい説明については、[Graph API のアクセス許可スコープ][Graph-Perm-Scopes]に関するページを参照してください。 Microsoft 365 サービスによって公開されているスコープについては、[Microsoft 365 API のアクセス許可のリファレンス][O365-Perm-Ref]に関するページを参照してください。
 
 ## <a name="security-token"></a>セキュリティ トークン
 
@@ -202,7 +202,7 @@ Azure AD ディレクトリのインスタンスを "Azure AD テナント" と�
 * ユーザー アカウントや登録済みアプリケーションの認証
 * OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint)のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
 
-Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Office 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]に関するページを参照してください。 サブスクリプションと Azure AD テナントの関係と、サブスクリプションの Azure AD テナントへの関連付けまたは追加の方法については、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する][AAD-How-Subscriptions-Assoc]」を参照してください。
+Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Microsoft 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]に関するページを参照してください。 サブスクリプションと Azure AD テナントの関係と、サブスクリプションの Azure AD テナントへの関連付けまたは追加の方法については、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する][AAD-How-Subscriptions-Assoc]」を参照してください。
 
 ## <a name="token-endpoint"></a>トークン エンドポイント
 

@@ -1,6 +1,6 @@
 ---
 title: REST API を使用した一時停止、再開、スケーリング
-description: REST API を介して、Azure Synapse Analytics データ ウェアハウスでコンピューティング能力を管理します。
+description: REST API を使用して、Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) のコンピューティング能力を管理します。
 services: synapse-analytics
 author: antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 243a7fd71e7b4f762130db2383f449021129cc62
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213280"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060301"
 ---
-# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>Azure Synapse Analytics データ ウェアハウス用の REST API シリーズ
+# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用の REST API
 
-Azure Synapse Analytics データ ウェアハウスでコンピューティング能力を管理するための REST API について説明します。
+Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) のコンピューティングを管理するための REST API。
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
 
@@ -32,7 +32,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": "DW1000c"
     }
 }
 ```
@@ -64,7 +64,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="get-maintenance-schedule"></a>メンテナンス スケジュールの取得
 
-データ ウェアハウスに関して設定されたメンテナンス スケジュールを確認します。
+専用 SQL プール (旧称 SQL DW) に設定されているメンテナンス スケジュールを確認します。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>メンテナンス スケジュールの設定
 
-既存のデータ ウェアハウスについてのメンテナンス スケジュールを設定したり更新したりします。
+既存の専用 SQL プール (旧称 SQL DW) のメンテナンス スケジュールを設定および更新します。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -82,14 +82,14 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
     "properties": {
         "timeRanges": [
                 {
-                                "dayOfWeek": Saturday,
-                                "startTime": 00:00,
-                                "duration": 08:00,
+                                "dayOfWeek": "Saturday",
+                                "startTime": "00:00",
+                                "duration": "08:00",
                 },
                 {
-                                "dayOfWeek": Wednesday
-                                "startTime": 00:00,
-                                "duration": 08:00,
+                                "dayOfWeek": "Wednesday",
+                                "startTime": "00:00",
+                                "duration": "08:00",
                 }
                 ]
     }

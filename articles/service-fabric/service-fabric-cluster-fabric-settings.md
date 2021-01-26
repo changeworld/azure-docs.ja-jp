@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682990"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095272"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -141,6 +141,7 @@ ms.locfileid: "83682990"
 |IsEnabled|ブール値、既定値は FALSE|静的|DnsService を有効または無効にします。 DnsService は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
 |PartitionPrefix|string、既定値は "--"|静的|パーティション分割されたサービスの DNS クエリのパーティション プレフィックス文字列値を制御します。 値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>空の文字列にすることはできません。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。|
 |PartitionSuffix|string、既定値は ""|静的|パーティション分割されたサービスの DNS クエリのパーティション サフィックス文字列値を制御します。値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。 |
+|RetryTransientFabricErrors|ブール値、既定値は true|静的|この設定を使用すると、DnsService から Service Fabric API を呼び出すときに、再試行機能を制御することができます。 有効にすると、一時的なエラーが発生した場合に最大 3 回再試行します。|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -243,7 +244,7 @@ ms.locfileid: "83682990"
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的|timespan を秒単位で指定します。 FaultAnalysisService の QuorumLossWaitDuration。 |
 |ReplicaDropWaitDurationInSeconds|int、既定値は 600|静的|このパラメーターは、データ損失 API が呼び出されたときに使用されます。 レプリカの削除がシステムで内部的に呼び出された後、レプリカが削除されるまでのシステムの待機時間を制御します。 |
 |ReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60 分|静的|timespan を秒単位で指定します。 FaultAnalysisService の ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration| 時間 (秒単位)、既定値は (60*24*7) 分 |静的|timespan を秒単位で指定します。 FaultAnalysisService の StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration| 時間 (秒単位)、既定値は (60 *24* 7) 分 |静的|timespan を秒単位で指定します。 FaultAnalysisService の StandByReplicaKeepDuration。 |
 |StoredActionCleanupIntervalInSeconds | int、既定値は 3600 |静的|ストアをクリーンアップする頻度。 終了状態のアクションと、少なくとも CompletedActionKeepDurationInSeconds で指定された期間よりも前に完了したアクションだけが削除されます。 |
 |StoredChaosEventCleanupIntervalInSeconds | int、既定値は 3600 |静的|クリーンアップのためにストアを監査する頻度。イベント数が 30000 を超えると、クリーンアップが開始されます。 |
 |TargetReplicaSetSize |int、既定値は 0 |静的|NOT_PLATFORM_UNIX_START FaultAnalysisService の TargetReplicaSetSize。 |
@@ -423,14 +424,14 @@ ms.locfileid: "83682990"
 |AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
 |AzureStorageMaxWorkerThreads | int、既定値は 25 |動的|並列 worker スレッドの最大数。 |
 |AzureStorageOperationTimeout | 時間 (秒単位)、既定値は 6000 |動的|timespan を秒単位で指定します。 xstore 操作が完了するまでのタイムアウト。 |
-|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。 |
-|CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成が有効な場合は、未使用のアプリケーションの種類のバージョンが自動的に登録解除され、直近の未使用の 3 バージョンがスキップされるため、イメージ ストアが占有するディスク領域が削減されます。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 |
+|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は true |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。
+|CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成が有効な場合は、未使用のアプリケーションの種類のバージョンが自動的に登録解除され、直近の未使用の 3 バージョンがスキップされるため、イメージ ストアが占有するディスク領域が削減されます。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 <br/> *ベスト プラクティスは `true` を使用することです。*
 |DisableChecksumValidation | ブール値、既定値は false |静的| この構成により、アプリケーションのプロビジョニング時におけるチェックサムの検証を有効または無効にすることができます。 |
 |DisableServerSideCopy | ブール値、既定値は false |静的|この構成により、アプリケーションのプロビジョニング時における、ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にできます。 |
 |ImageCachingEnabled | ブール値、既定値は true |静的|この構成により、キャッシュを有効または無効にすることができます。 |
 |ImageStoreConnectionString |SecureString |静的|ImageStore のルートへの接続文字列。 |
 |ImageStoreMinimumTransferBPS | int、既定値は 1024 |動的|クラスターと ImageStore 間の最小転送速度。 この値を使用して、外部 ImageStore にアクセスするときのタイムアウトを決定します。 クラスターが外部 ImageStore からダウンロードする際により多くの時間を確保できるように、クラスターと ImageStore 間の待機時間が長い場合にのみ、この値を変更します。 |
-|MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成により、クリーンアップでスキップされる未使用のアプリケーションの種類のバージョンの数が定義されます。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。 |
+|MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成により、クリーンアップでスキップされる未使用のアプリケーションの種類のバージョンの数が定義されます。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。 <br/>*一般的なベスト プラクティスは既定値 (`3`) を使用することです。1 未満の値は有効ではありません。*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -520,6 +521,7 @@ ms.locfileid: "83682990"
 |AutoDetectAvailableResources|ブール値、既定値は TRUE|静的|この構成は、ノードで使用可能なリソース (CPU およびメモリ) の自動検出をトリガーします。この構成が true に設定されている場合は、実際の容量を読み取り、ユーザーによって不適切なノード容量が指定されているとき、または容量が定義されていないときは、それを修正します。この構成が false の場合は、ユーザーによって不適切なノード容量が指定されているという警告をトレースしますが、修正しません。つまり、ユーザーは、実際のノードの容量よりも大きな値を指定しようとしています。容量が未定義の場合は、無制限の容量と見なされます |
 |BalancingDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 新しいノードの追加後、この期間内に均衡化アクティビティを開始しないでください。 |
 |BalancingDelayAfterNodeDown | 時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 ノード ダウン イベント後、この期間内に均衡化アクティビティを開始しないでください。 |
+|BlockNodeInUpgradeConstraintPriority | int、既定値は 0 |動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:Ignore  |
 |CapacityConstraintPriority | int、既定値は 0 | 動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | int、既定値は 20 | 動的|ResourceBalancer が発行した移動が連続して破棄された回数がここで定義した連続回数に達すると、診断が行われ、正常性の警告が出力されます。 負の値:この条件下では警告は出力されません。 |
 |ConstraintFixPartialDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的| timespan を秒単位で指定します。 新しいノードの追加後、この期間内に FaultDomain および UpgradeDomain の制約違反を修正しないでください。 |
@@ -875,7 +877,7 @@ ms.locfileid: "83682990"
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60)|静的|timespan を秒単位で指定します。 受信および受け入れ側の両方における接続設定のタイムアウト (セキュア モードでのセキュリティ ネゴシエーションを含む) |
 |FrameHeaderErrorCheckingEnabled|ブール値、既定値は TRUE|静的|非セキュア モードのフレーム ヘッダーに対するエラー チェックの既定設定。この設定は、コンポーネント設定でオーバーライドされます。 |
-|MessageErrorCheckingEnabled|ブール値、既定値は FALSE|静的|非セキュア モードのメッセージ ヘッダーと本文に対するエラー チェックの既定設定。この設定は、コンポーネント設定でオーバーライドされます。 |
+|MessageErrorCheckingEnabled|ブール値、既定値は TRUE|静的|非セキュア モードのメッセージ ヘッダーと本文に対するエラー チェックの既定設定。この設定は、コンポーネント設定でオーバーライドされます。 |
 |ResolveOption|string、既定値は "unspecified"|静的|FQDN の解決方法を決定します。  有効な値は "未指定/ipv4/ipv6" です。 |
 |SendTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(300)|動的|timespan を秒単位で指定します。 スタック接続を検出するためのタイムアウトを送信します。 TCP エラー レポートは、一部の環境では信頼できません。 使用可能なネットワーク帯域幅と送信データのサイズ (\*MaxMessageSize\/\*SendQueueSizeLimit) に従って調整する必要があります。 |
 
@@ -890,7 +892,7 @@ ms.locfileid: "83682990"
 |PlacementConstraints | string、既定値は "" |静的| UpgradeOrchestrationService の PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の QuorumLossWaitDuration。 |
 |ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60 分|静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 60*24*7 分 |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 60 *24* 7 分 |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の StandByReplicaKeepDuration。 |
 |TargetReplicaSetSize |int、既定値は 0 |静的 |UpgradeOrchestrationService の TargetReplicaSetSize。 |
 |UpgradeApprovalRequired | ブール値、既定値は false | 静的|コードのアップグレードを続行する前に管理者の承認を必須にするための設定。 |
 

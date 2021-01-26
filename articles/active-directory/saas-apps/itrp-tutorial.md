@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552800"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "92459681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552800"
 * ユーザーが自分の Azure AD アカウントを使用して ITRP に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -92,9 +92,9 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
-    ![[編集] アイコン](common/edit-urls.png)
+    ![[SAML でシングル サインオンをセットアップします] ページを示すスクリーンショット。[編集] アイコンが選択されています。](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ダイアログ ボックスで、次の手順を実行します。
 
@@ -113,7 +113,7 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
 5. **[SAML 署名証明書]** セクションで **[編集]** アイコンを選択して、 **[SAML 署名証明書]** ダイアログ ボックスを開きます。
 
-    ![[編集] アイコン](common/edit-certificate.png)
+    ![[編集] アイコンが選択されている [SAML 署名証明書] ページを示すスクリーンショット。](common/edit-certificate.png)
 
 6. **[SAML 署名証明書]** ダイアログ ボックスで、証明書の **[拇印]** の値をコピーして保存します。
 
@@ -143,9 +143,9 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
 1. **[Single Sign-On]\(シングル サインオン\)** 構成セクションで、次の手順を実行します。
 
-    ![[Single Sign-On]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775572.png "[Single Sign-On]\(シングル サインオン\) セクション")
+    ![[Enabled]\(有効\) が選択されている [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/ic775572.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
-    ![[Single Sign-On]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775573.png "[Single Sign-On]\(シングル サインオン\) セクション")
+    ![この手順で説明されている情報を追加できる [Single Sign-On]\(シングル サインオン\) セクションを示すスクリーンショット。](./media/itrp-tutorial/ic775573.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
     1. **[Enabled]** を選択します。
 
@@ -242,12 +242,12 @@ Azure AD ユーザーが ITRP にサインインできるようにするには�
 
 ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
 
-アクセス パネル上で [ITRP] タイルを選択すると、SSO を設定した ITRP インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [ITRP] タイルを選択すると、SSO を設定した ITRP インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

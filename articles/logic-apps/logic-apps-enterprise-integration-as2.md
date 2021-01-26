@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/24/2020
-ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/08/2020
+ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078636"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856672"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
 > [!IMPORTANT]
 > 元の AS2 コネクタは非推奨になっているため、追跡機能が必要な場合を除き、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 v2 コネクタでは追跡機能を除き、元のバージョンと同じ機能を提供します。このコネクタは、Logic Apps ランタイムにとってネイティブであり、メッセージ サイズ、スループット、および待ち時間について大幅なパフォーマンスの向上を実現します。 また、v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
 
-Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタを使用できます。これには、AS2 通信を管理するためのトリガーとアクションが用意されています。 たとえば、メッセージの送信時にセキュリティと信頼性を確立するには、以下のアクションを使用できます。
+Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタを使用できます。これには、AS2 (バージョン 1.2) 通信をサポートして管理するためのトリガーとアクションが用意されています。 たとえば、メッセージの送信時にセキュリティと信頼性を確立するには、以下のアクションを使用できます。
 
 * [**AS2 エンコード** アクション](#encode): 暗号化、デジタル署名、メッセージ処理通知 (MDN) を介した受信確認を提供します。これらは否認防止をサポートするのに役立ちます。 たとえば、このアクションでは、AS2/HTTP ヘッダーが適用され、構成されている場合は、次のタスクが実行されます。
 

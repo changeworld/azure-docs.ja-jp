@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907732"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860628"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -45,7 +45,7 @@ ms.locfileid: "87907732"
 ## <a name="limitations"></a>制限事項
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
-フェデレーションを行うドメインは、Azure AD で DNS 検証済み***でない***ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
+フェデレーションを行うドメインは、Azure AD で DNS 検証済み***でない** _ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
 
 ### <a name="authentication-url"></a>認証 URL
 直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
@@ -60,20 +60,20 @@ ms.locfileid: "87907732"
 -   federation.exostar.com
 -   federation.exostartest.com
 
-たとえば、**fabrikam.com** に対して直接フェデレーションを設定する場合、`https://fabrikam.com/adfs` という認証 URL は検証に合格します。 同じドメイン内のホストも合格します (たとえば `https://sts.fabrikam.com/adfs`)。 ただし、同じドメインの `https://fabrikamconglomerate.com/adfs` または `https://fabrikam.com.uk/adfs` という認証 URL は、合格しません。
+たとえば、_*fabrikam.com** に対して直接フェデレーションを設定する場合、`https://fabrikam.com/adfs` という認証 URL は検証に合格します。 同じドメイン内のホストも合格します (たとえば `https://sts.fabrikam.com/adfs`)。 ただし、同じドメインの `https://fabrikamconglomerate.com/adfs` または `https://fabrikam.com.uk/adfs` という認証 URL は、合格しません。
 
 ### <a name="signing-certificate-renewal"></a>署名証明書の更新
 ID プロバイダーの設定でメタデータ URL を指定した場合、署名証明書が有効期限切れになると、Azure AD によって自動的に更新されます。 ただし、証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
 
 ### <a name="limit-on-federation-relationships"></a>フェデレーション リレーションシップの制限
-現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)と直接フェデレーションの両方が含まれます。
+現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](/powershell/module/msonline/set-msoldomainfederationsettings)と直接フェデレーションの両方が含まれます。
 
 ### <a name="limit-on-multiple-domains"></a>複数のドメインに対する制限
 現在、同じテナントからの複数のドメインとの直接フェデレーションはサポートされていません。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>アンマネージド (電子メールで検証) テナントが存在するドメインとの直接フェデレーションを設定することはできますか。 
-はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../users-groups-roles/domains-admin-takeover.md)が実施されていない場合は、そのドメインとの直接フェデレーションを設定することができます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとの直接フェデレーションを設定することができます。 Azure portal 上で、または PowerShell を使用して、DNS で検証済みのドメインとの直接フェデレーションを設定しようとすると、エラーが表示されます。
+はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../enterprise-users/domains-admin-takeover.md)が実施されていない場合は、そのドメインとの直接フェデレーションを設定することができます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとの直接フェデレーションを設定することができます。 Azure portal 上で、または PowerShell を使用して、DNS で検証済みのドメインとの直接フェデレーションを設定しようとすると、エラーが表示されます。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>直接フェデレーションと電子メールのワンタイム パスコード認証の両方が有効な場合、どちらの方法が優先されますか。
 取引先組織との直接フェデレーションが確立すると、その組織に属する新しいゲスト ユーザーに対して、電子メールのワンタイム パスコード認証よりも直接フェデレーションが優先されます。 直接フェデレーションを設定する前に、ゲスト ユーザーがワンタイム パスコード認証を使用して招待を利用した場合、それらのゲスト ユーザーは引き続きワンタイム パスコード認証を使用することになります。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>直接フェデレーションは、部分的に同期されたテナントに起因するサインインの問題に対応していますか。
@@ -87,7 +87,7 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 
 ### <a name="saml-20-configuration"></a>SAML 2.0 の構成
 
-Azure AD B2B は、以下に示す特定の要件に従って、SAML プロトコルを使用する ID プロバイダーと連携するように構成できます。 ご利用の SAML ID プロバイダーと Azure AD の間に信頼を設定する方法の詳細については、「[シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)」を参照してください。  
+Azure AD B2B は、以下に示す特定の要件に従って、SAML プロトコルを使用する ID プロバイダーと連携するように構成できます。 ご利用の SAML ID プロバイダーと Azure AD の間に信頼を設定する方法の詳細については、「[シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](../hybrid/how-to-connect-fed-saml-idp.md)」を参照してください。  
 
 > [!NOTE]
 > 直接フェデレーションのターゲット ドメインを Azure AD 上で DNS によって検証することはできません。 認証 URL のドメインは、ターゲット ドメインに一致する必要があります。または、許可されている ID プロバイダーのドメインである必要があります。 詳細については、「[制限事項](#limitations)」のセクションを参照してください。 

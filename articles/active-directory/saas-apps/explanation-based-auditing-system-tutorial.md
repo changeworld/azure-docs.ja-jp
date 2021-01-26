@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 68f163442c3e13c822b6f4dfa987d0eb26ccafe3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d63b1fa82400d95b18c6dbd7f37ec321f72b3a7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519761"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>チュートリアル:Azure Active Directory と Explanation-Based Auditing System の統合
 
@@ -27,7 +27,7 @@ Explanation-Based Auditing System と Azure AD を統合すると、次の利点
 * ユーザーが自分の Azure AD アカウントで Explanation-Based Auditing System に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ Explanation-Based Auditing System と Azure AD の統合を構成するには、
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Explanation-Based Auditing System では、**SP** によって開始される SSO がサポートされます
+* Explanation-Based Auditing System では、 **SP** によって開始される SSO がサポートされます
 
-* Explanation-Based Auditing System では、**Just-In-Time** ユーザー プロビジョニングがサポートされます 
+* Explanation-Based Auditing System では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます 
 
 ## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Explanation-Based Auditing System をギャラリーから追加する
 
@@ -63,13 +63,13 @@ Azure AD への Explanation-Based Auditing System の統合を構成するには
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Explanation-Based Auditing System**」と入力し、結果パネルから **[Explanation-Based Auditing System]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Explanation-Based Auditing System** 」と入力し、結果パネルから **[Explanation-Based Auditing System]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの Explanation-Based Auditing System](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーを基に、Explanation-Based Auditing System で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Explanation-Based Auditing System で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Explanation-Based Auditing System 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Explanation-Based Auditing System で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Explanation-Based Auditing System で Azure AD のシングル サインオン�
 
 Explanation-Based Auditing System で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の**Explanation-Based Auditing System** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Explanation-Based Auditing System** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -111,7 +111,7 @@ Explanation-Based Auditing System で Azure AD シングル サインオンを�
 
 ### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>Explanation-Based Auditing System のシングル サインオンの構成
 
-**Explanation-Based Auditing System**  側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Explanation-Based Auditing System サポート チーム](mailto:support@maizeanalytics.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Explanation-Based Auditing System**  側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Explanation-Based Auditing System サポート チーム](mailto:support@maizeanalytics.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -129,9 +129,9 @@ Explanation-Based Auditing System で Azure AD シングル サインオンを�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -172,13 +172,12 @@ Explanation-Based Auditing System で Azure AD シングル サインオンを�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Explanation-Based Auditing System] タイルをクリックすると、SSO を設定した Explanation-Based Auditing System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Explanation-Based Auditing System] タイルをクリックすると、SSO を設定した Explanation-Based Auditing System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -7,17 +7,94 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294001"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337918"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
-Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
+Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
+::: zone pivot="programming-language-csharp"
+この記事では、.NET Core Steeltoe アプリで分散トレースを使用できるようにする方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+これらの手順を実行するには、[Azure Spring Cloud にデプロイする準備が既に整っている](spring-cloud-tutorial-prepare-app-deployment.md) Steeltoe アプリが必要です。
+
+## <a name="dependencies"></a>依存関係
+
+Steeltoe 2.4.4 の場合は、次の NuGet パッケージを追加します。
+
+* [Steeltoe.Management.TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+* [Steeltoe.Management.ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
+
+Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
+
+* [Steeltoe.Management.TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+
+## <a name="update-startupcs"></a>Startup.cs を更新する
+
+1. Steeltoe 2.4.4 の場合は、`ConfigureServices` メソッドで `AddDistributedTracing` および `AddZipkinExporter` を呼び出します。
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration);
+       services.AddZipkinExporter(Configuration);
+   }
+   ```
+
+   Steeltoe 3.0.0 の場合は、`ConfigureServices` メソッドで `AddDistributedTracing` を呼び出します。
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration, builder => builder.UseZipkinWithTraceOptions(services));
+   }
+   ```
+
+1. Steeltoe 2.4.4 の場合は、`Configure` メソッドで `UseTracingExporter` を呼び出します。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+        app.UseTracingExporter();
+   }
+   ```
+
+   Steeltoe 3.0.0 の場合、`Configure` メソッドを変更する必要はありません。
+
+## <a name="update-configuration"></a>構成を更新する
+
+アプリが Azure Spring Cloud で実行されるときに使用される構成ソースに次の設定を追加します。
+
+1. `management.tracing.alwaysSample` を true に設定します。
+
+2. Eureka サーバー、構成サーバー、ユーザー アプリ間で送信されるトレース スパンを確認する場合: `management.tracing.egressIgnorePattern` を "/api/v2/spans|/v2/apps/. */permissions|/eureka/.* |/oauth/.*" に設定します。
+
+たとえば、*appsettings.json* には次のプロパティが含まれます。
+ 
+```json
+"management": {
+    "tracing": {
+      "alwaysSample": true,
+      "egressIgnorePattern": "/api/v2/spans|/v2/apps/.*/permissions|/eureka/.*|/oauth/.*"
+    }
+  }
+```
+
+.NET Core Steeltoe アプリでの分散トレースの詳細については、Steeltoe ドキュメントの[分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)に関するページを参照してください。
+::: zone-end
+::: zone pivot="programming-language-java"
 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
@@ -28,8 +105,8 @@ Azure Spring Cloud の分散トレース ツールを使用すると、複雑な
 
 ## <a name="prerequisites"></a>前提条件
 
-ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 Azure Spring Cloud サービスをプロビジョニングし、実行するには、[Azure CLI を使用したアプリのデプロイのクイックスタート](spring-cloud-quickstart.md)を完了してください。
-    
+ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」クイックスタートを完了して、Azure Spring Cloud サービスをプロビジョニングして実行します。
+
 ## <a name="add-dependencies"></a>依存関係を追加する
 
 1. application.properties ファイルに次の行を追加します。
@@ -73,6 +150,7 @@ spring.sleuth.sampler.probability=0.5
 ```
 
 アプリケーションの構築とデプロイが既に完了している場合は、サンプル レートを変更できます。 これを行うには、Azure CLI または Azure portal で前の行を環境変数として追加します。
+::: zone-end
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
@@ -85,15 +163,15 @@ spring.sleuth.sampler.probability=0.5
 
 ## <a name="view-the-application-map"></a>アプリケーション マップを表示する
 
-**[分散トレース]** ページに戻り、 **[View application map]\(アプリケーション マップの表示\)** を選択します。 アプリケーションの視覚的表現と監視設定を確認します。 アプリケーション マップの使用方法については、「[アプリケーション マップ: 分散アプリケーションのトリアージ](https://docs.microsoft.com/azure/azure-monitor/app/app-map)」を参照してください。
+**[分散トレース]** ページに戻り、 **[View application map]\(アプリケーション マップの表示\)** を選択します。 アプリケーションの視覚的表現と監視設定を確認します。 アプリケーション マップの使用方法については、「[アプリケーション マップ: 分散アプリケーションのトリアージ](../azure-monitor/app/app-map.md)」を参照してください。
 
 ## <a name="use-search"></a>検索を使用する
 
-他の特定のテレメトリ項目に対するクエリを行うには、検索機能を使用します。 **[分散トレース]** ページで、 **[検索]** を選択します。 検索機能の使用方法の詳細については、「[Application Insights の検索の使用](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)」を参照してください。
+他の特定のテレメトリ項目に対するクエリを行うには、検索機能を使用します。 **[分散トレース]** ページで、 **[検索]** を選択します。 検索機能の使用方法の詳細については、「[Application Insights の検索の使用](../azure-monitor/app/diagnostic-search.md)」を参照してください。
 
 ## <a name="use-application-insights"></a>Application Insights を使用する
 
-Application Insights では、アプリケーション マップと検索機能の他に、監視機能が提供されます。 Azure portal でアプリケーションの名前を検索し、Application Insights ページを開いて監視情報を確認します。 これらのツールの使用方法の詳細については、「[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)」を参照してください。
+Application Insights では、アプリケーション マップと検索機能の他に、監視機能が提供されます。 Azure portal でアプリケーションの名前を検索し、Application Insights ページを開いて監視情報を確認します。 これらのツールの使用方法の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 ## <a name="disable-application-insights"></a>Application Insights を無効にする
 

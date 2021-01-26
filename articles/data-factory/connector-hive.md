@@ -9,16 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987051"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844956"
 ---
-# <a name="copy-data-from-hive-using-azure-data-factory"></a>Azure Data Factory を使用して Hive からデータをコピーする 
+# <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Azure Data Factory を使用して Hive からデータをコピーおよび変換する 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Hive からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -68,6 +68,7 @@ Hive のリンクされたサービスでは、次のプロパティがサポー
 | allowHostNameCNMismatch | TLS 経由で接続するときに、CA が発行した TLS/SSL 証明書名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は false です。  | いいえ |
 | allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| storageReference | マッピング データ フローでデータをステージングするために使用されるストレージ アカウントのリンクされたサービスへの参照。 これは、マッピング データ フローで Hive のリンクされたサービスを使用する場合にのみ必要です | いいえ |
 
 **例:**
 
@@ -164,6 +165,53 @@ Hive からデータをコピーするは、コピー アクティビティの�
     }
 ]
 ```
+
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+Hive コネクタは、マッピング データ フローで[インライン データセット](data-flow-source.md#inline-datasets)のソースとしてサポートされています。 クエリを使用するか、HDInsight の Hive テーブルから直接読み取ります。 Hive データは、データ フローの一部として変換される前に、ストレージ アカウントで Parquet ファイルとしてステージングされます。 
+
+### <a name="source-properties"></a>ソース プロパティ
+
+次の表に、Hive ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| ストア | ストアは `hive` である必要があります | はい |  `hive` | store | 
+| フォーマット | テーブルまたはクエリから読み取るかを指定します | はい | `table` または `query` | format |
+| スキーマ名 | テーブルから読み取る場合、ソース テーブルのスキーマ |  はい (フォーマットが `table` の場合) | String | schemaName |
+| テーブル名 | テーブルから読み取る場合、テーブル名 |   はい (フォーマットが `table` の場合) | String | tableName |
+| クエリ | フォーマットが `query` の場合、Hive のリンクされたサービスに対するソース クエリ | はい (フォーマットが `query` の場合) | String | query |
+| ステージング済み | Hive テーブルは常にステージングされます。 | はい | `true` | staged |
+| ストレージ コンテナー | Hive から読み取る前、または Hive に書き込む前にデータをステージングするために使用されるストレージ コンテナー。 Hive クラスターは、このコンテナーへのアクセス権を持っている必要があります。 | はい | String | storageContainer |
+| ステージング データベース | リンクされたサービスで指定されたユーザー アカウントがアクセスできるスキーマ/データベース。 ステージング中に外部テーブルを作成するために使用され、その後削除します | no | `true` または `false` | stagingDatabaseName |
+| 事前 SQL スクリプト | データを読み取る前に Hive テーブルで実行する SQL コード | no | String | preSQLs |
+
+#### <a name="source-example"></a>ソースの例
+
+以下に Hive ソース構成の例を示します。
+
+![Hive ソースの例](media/data-flow/hive-source.png "[Hive ソースの例")
+
+これらの設定は、次のデータ フロー スクリプトに変換されます。
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    ignoreNoFilesFound: false,
+    format: 'table',
+    store: 'hive',
+    schemaName: 'default',
+    tableName: 'hivesampletable',
+    staged: true,
+    storageContainer: 'khive',
+    storageFolderPath: '',
+    stagingDatabaseName: 'default') ~> hivesource
+```
+### <a name="known-limitations"></a>既知の制限事項
+
+* 配列、マップ、構造体、和集合などの複合型の読み取りはサポートされていません。 
+* Hive コネクタがサポートしているのは、バージョン 4.0 以上 (Apache Hive 3.1.0) の Azure HDInsight の Hive テーブルのみです
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

@@ -1,29 +1,32 @@
 ---
-title: Azure Monitor での Windows イベント ログを収集および分析する | Microsoft Docs
+title: Azure Monitor の Log Analytics エージェントを使用して Windows イベント ログのデータ ソースを収集する
 description: Azure Monitor による Windows イベント ログの収集を構成する方法、および Azure Monitor で作成されるレコードの詳細について説明します。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075255"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012597"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor での Windows イベント ログのデータ ソース
-Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](agent-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows イベント ログのデータ ソースを収集する
+Windows イベント ログは、Windows 仮想マシン上の Log Analytics エージェントの最も一般的な[データ ソース](agent-data-sources.md)の 1 つです。これは、多くのアプリケーションから Windows イベント ログへ書き込みが行われるためです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
+
+> [!IMPORTANT]
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](log-analytics-agent.md)を使用して Windows イベントを収集する方法について説明します。 他のエージェントでは異なるデータが収集され、異なる方法で構成されます。 使用可能なエージェントとそれらを使用して収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
 ![Windows イベント](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Windows イベント ログの構成
-Windows イベント ログは、[[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。
+Log Analytics ワークスペースで [[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から Windows イベント ログを構成します。
 
 Azure Monitor は、設定で指定されている Windows イベント ログのイベントのみを収集します。  イベント ログを追加するには、追加するログの名前を入力して、 **+** をクリックします。  各ログについて、選択した重大度レベルのイベントのみが収集されます。  各ログで収集する重大度レベルにチェックマークを入れます。  イベントをフィルター処理するための追加条件を指定することはできません。
 
-イベント ログの名前を入力していくと、Azure Monitor が一般的なイベント ログ名の候補を表示します。 追加しようとするログが候補リストに表示されない場合、ログの完全な名前を入力して追加することもできます。 ログの完全な名前はイベント ビューアーを使用して確認できます。 イベント ビューアーで、ログの *[プロパティ]* ページを開き、 *[フル ネーム]* フィールドの文字列をコピーします。
+イベント ログの名前を入力していくと、Azure Monitor が一般的なイベント ログ名の候補を表示します。 追加しようとするログが候補リストに表示されない場合、ログの完全な名前を入力して追加することもできます。 ログの完全な名前はイベント ビューアーを使用して確認できます。 イベント ビューアーで、ログの *[プロパティ]* ページを開き、*[フル ネーム]* フィールドの文字列をコピーします。
 
 ![Windows イベントの構成](media/data-sources-windows-events/configure.png)
 
@@ -34,7 +37,7 @@ Azure Monitor は、設定で指定されている Windows イベント ログ�
 Azure Monitor は、監視対象のイベントが作成されたときに、選択された重大度に一致する各イベントをそのイベント ログから収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントは、一定の期間オフラインになった場合、最後に停止した時点からのイベントを収集します。これには、エージェントがオフライン中に作成されたイベントも含まれます。  エージェントがオフラインのときに、未収集のイベントにラップされたイベント ログが上書きされた場合は、これらのイベントが収集されない可能性もあります。
 
 >[!NOTE]
->Azure Monitor は、*クラシック*または*監査成功*のキーワードおよびキーワード *0xa0000000000000* を含む、イベント ID が 18453 のソース *MSSQLSERVER* から SQL Server によって作成された監査イベントは収集しません。
+>Azure Monitor は、*クラシック* または *監査成功* のキーワードおよびキーワード *0xa0000000000000* を含む、イベント ID が 18453 のソース *MSSQLSERVER* から SQL Server によって作成された監査イベントは収集しません。
 >
 
 ## <a name="windows-event-records-properties"></a>Windows イベント レコードのプロパティ

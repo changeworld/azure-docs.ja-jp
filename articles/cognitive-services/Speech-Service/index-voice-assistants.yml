@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
-  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+  ms.openlocfilehash: 8b10f817abf73172018e904eb46d4c9e20b844e2
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85299383"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95015387"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:
@@ -61,11 +61,11 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# (UWP)
-      url: quickstart-voice-assistant-csharp-uwp.md
+      url: ./quickstarts/voice-assistants.md?pivots=programming-language-csharp
     - text: Java (Windows、macOS、Linux)
-      url: quickstart-voice-assistant-java-jre.md
+      url: ./quickstarts/voice-assistants.md?pivots=programming-language-java
     - text: Java (Android)
-      url: quickstart-voice-assistant-java-android.md
+      url: ./quickstarts/voice-assistants.md?pivots=programming-language-java
   - linkListType: tutorial
     links:
     - text: Speech SDK を使用してボットを音声対応にする
@@ -75,8 +75,14 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: カスタム キーワードを作成する
-      url: speech-devices-sdk-create-kws.md
+      url: ./custom-keyword-basics.md
   - linkListType: reference
     links:
     - text: カスタム キーワードの名前付けのガイドライン
-      url: speech-devices-sdk-kws-guidelines.md
+      url: ./custom-keyword-overview.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

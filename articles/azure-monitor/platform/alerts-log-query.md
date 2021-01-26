@@ -1,56 +1,73 @@
 ---
-title: Azure Monitor でのログ アラートのクエリ | Microsoft Docs
-description: Azure Monitor の更新プログラムでのログ アラートの効率的なクエリの記述と、既存のクエリを変換するためのプロセスに関する推奨事項を示します。
-author: yossi-y
-ms.author: yossiy
+title: ログ アラート クエリを最適化する | Microsoft Docs
+description: 効率的なアラート クエリを記述するための推奨事項
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: be2d49a824066b8926ae455978facb34c0b44310
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e7c9c76816b5d1ee2eedfb7e54645e056906feef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505467"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186628"
 ---
-# <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor でのログ アラートのクエリ
-[Azure Monitor ログに基づくアラート ルール](alerts-unified-log.md)は一定間隔で実行されるため、必ずオーバーヘッドと待機時間を最小限に抑えるように記述する必要があります。 この記事では、ログ アラートの効率的なクエリの記述と、既存のクエリを変換するためのプロセスに関する推奨事項を示します。 
+# <a name="optimizing-log-alert-queries"></a>ログ アラート クエリの最適化
+この記事では、最適なパフォーマンスを実現するために[ログ アラート](alerts-unified-log.md) クエリを記述して変換する方法について説明します。 最適化されたクエリを使用すると、頻繁に実行されるアラートの待機時間と負荷が軽減されます。
 
-## <a name="types-of-log-queries"></a>ログ クエリの種類
-[Azure Monitor のログ クエリ](../log-query/log-query-overview.md)は、テーブルか、[search](/azure/kusto/query/searchoperator) または [union](/azure/kusto/query/unionoperator) 演算子のいずれかで始まります。
+## <a name="how-to-start-writing-an-alert-log-query"></a>アラート ログ クエリの記述を開始する方法
 
-たとえば、次のクエリは _SecurityEvent_ テーブルが対象であり、特定のイベント ID を検索します。 これは、このクエリが処理する必要のある唯一のテーブルです。
+アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../log-query/example-queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../log-query/log-analytics-tutorial.md)ことから開始することもできます。 
+
+### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>アラートでなく問題を示すクエリ
+
+アラート フローは、問題を示す結果をアラートに変換するために構築されました。 たとえば、次のようなクエリの場合を考えてみましょう。
 
 ``` Kusto
-SecurityEvent | where EventID == 4624 
+SecurityEvent
+| where EventID == 4624
 ```
 
-`search` または `union` で始まるクエリでは、1 つのテーブル内の列間や、複数のテーブル間でも検索を行うことができます。 次の例は、_Memory_ という用語を検索するための複数の方法を示しています。
+ユーザーの意図がアラートを発することの場合は、この種類のイベントが発生すると、アラート ロジックによってクエリに `count` が追加されます。 実行されるクエリは次のようになります。
 
-```Kusto
-search "Memory"
-search * | where == "Memory"
-search ObjectName: "Memory"
-search ObjectName == "Memory"
-union * | where ObjectName == "Memory"
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+| count
 ```
 
-`search` と `union` は、データ モデル全体で用語を検索するデータの探索時には便利ですが、複数のテーブルをスキャンする必要があるため、テーブルを使用するよりも効率が低下します。 アラート ルールのクエリは一定間隔で実行されるため、結果として過剰なオーバーヘッドが生じてアラートに待機時間が追加されます。 このオーバーヘッドのため、Azure のログ アラートのクエリは、常に明確な範囲を定義するテーブルで始める必要があります。これにより、クエリのパフォーマンスと結果の関連性の両方が向上します。
+クエリにアラート ロジックを追加する必要はなく、それを行うと問題を引き起こす可能性さえあります。 上の例では、クエリに `count` を含めると、アラート サービスによって `count` の `count` が行われるため、常に値 1 が返されます。
 
-## <a name="unsupported-queries"></a>サポートされていないクエリ
-2019 年 1 月 11 日以降、`search` または `union`演算子を使用するログ アラート ルールの作成または変更は Azure portal でサポートされません。 アラート ルールでこれらの演算子を使用すると、エラー メッセージが返されます。 既存のアラート ルールと Log Analytics API を使用して作成および編集したアラート ルールは、この変更による影響は受けません。 効率を向上させるためには、この種のクエリを使用するアラート ルールを変更することを検討してください。  
+### <a name="avoid-limit-and-take-operators"></a>`limit` 演算子と `take` 演算子の回避
 
-リソース間のクエリは `union` を使用し、これによりクエリの範囲が特定のリソースに制限されるため、[リソース間のクエリ](../log-query/cross-workspace-query.md)を使用するログ アラート ルールはこの変更による影響は受けません。 これは、使用できない `union *` に相当するものではありません。  次の例は、ログ アラート ルールで有効です。
+クエリで `limit` と `take` を使用すると、結果が時間の経過とともに一貫しないため、待機時間とアラートの負荷が増加する可能性があります。 必要な場合にのみ使用することをお勧めします。
+
+## <a name="log-query-constraints"></a>ログ クエリの制約
+[Azure Monitor のログ クエリ](../log-query/log-query-overview.md)は、テーブルか、[`search`](/azure/kusto/query/searchoperator) 演算子または [`union`](/azure/kusto/query/unionoperator) 演算子のいずれかで始まります。
+
+ログ アラート ルールのクエリは、常に明確な範囲を定義するテーブルで始める必要があります。これにより、クエリのパフォーマンスと結果の関連性の両方が向上します。 アラート ルール内のクエリは頻繁に実行されるので、`search` と `union` を使用すると、複数のテーブルにわたるスキャンが必要になるため、アラートの待機時間が増加するオーバーヘッドが過剰に生じる可能性があります。 また、これらの演算子は、アラート サービスがクエリを最適化する機能を低下させます。
+
+リソース間のクエリが想定される `search` 演算子または `union` 演算子を使用するログ アラート ルールの作成または変更は、サポートされていません。
+
+たとえば、次のアラート クエリは _SecurityEvent_ テーブルが対象であり、特定のイベント ID を検索します。 これは、このクエリが処理する必要のある唯一のテーブルです。
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+```
+
+リソース間のクエリは `union` 型を使用し、これによりクエリの範囲が特定のリソースに制限されるため、[リソース間のクエリ](../log-query/cross-workspace-query.md)を使用するログ アラート ルールはこの変更による影響は受けません。 次の例は、ログ アラート クエリで有効です。
 
 ```Kusto
-union 
-app('Contoso-app1').requests, 
-app('Contoso-app2').requests, 
+union
+app('Contoso-app1').requests,
+app('Contoso-app2').requests,
 workspace('Contoso-workspace1').Perf 
 ```
 
 >[!NOTE]
->ログ アラートでの[リソース間のクエリ](../log-query/cross-workspace-query.md)は、新しい [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、[リソース間のクエリ](../log-query/cross-workspace-query.md)のログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
+> [リソース間のクエリ](../log-query/cross-workspace-query.md)は、新しい [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でサポートされています。 まだ[従来の Log Analytics Alert API](api-alerts.md) を使用してログ アラートを作成する場合は、切り替えについて[ここ](alerts-log-api-switch.md)を参照してください。
 
 ## <a name="examples"></a>例
 次の例には、`search` と `union` を使用するログ クエリが含まれていて、アラート ルールで使用するためにこれらのクエリを変更する際に使用できる手順を示しています。
@@ -59,159 +76,143 @@ workspace('Contoso-workspace1').Perf
 `search` を使用してパフォーマンス情報を取得する次のクエリを使用して、ログ アラート ルールを作成するとします。 
 
 ``` Kusto
-search * | where Type == 'Perf' and CounterName == '% Free Space' 
-| where CounterValue < 30 
-| summarize count()
+search *
+| where Type == 'Perf' and CounterName == '% Free Space'
+| where CounterValue < 30
 ```
-  
 
 このクエリを変更するには、まず次のクエリを使用して、プロパティが属しているテーブルを特定します。
 
 ``` Kusto
-search * | where CounterName == '% Free Space'
+search *
+| where CounterName == '% Free Space'
 | summarize by $table
 ```
- 
 
-このクエリの結果として、_CounterName_ プロパティが _Perf_ テーブルから取得されたことが示されます。 
+このクエリの結果として、_CounterName_ プロパティが _Perf_ テーブルから取得されたことが示されます。
 
 この結果を使用して、アラート ルールに使用する次のクエリを作成することができます。
 
 ``` Kusto
-Perf 
-| where CounterName == '% Free Space' 
-| where CounterValue < 30 
-| summarize count()
+Perf
+| where CounterName == '% Free Space'
+| where CounterValue < 30
 ```
-
 
 ### <a name="example-2"></a>例 2
 `search` を使用してパフォーマンス情報を取得する次のクエリを使用して、ログ アラート ルールを作成するとします。 
 
 ``` Kusto
-search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
-| summarize Avg_Memory_Usage =avg(CounterValue) by Computer 
+search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize Avg_Memory_Usage =avg(CounterValue) by Computer
 | where Avg_Memory_Usage between(90 .. 95)  
-| count 
 ```
-  
 
 このクエリを変更するには、まず次のクエリを使用して、プロパティが属しているテーブルを特定します。
 
 ``` Kusto
-search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use" 
-| summarize by $table 
+search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize by $table
 ```
- 
 
-このクエリの結果として、_ObjectName_ プロパティと _CounterName_ プロパティが _Perf_ テーブルから取得されたことが示されます。 
+このクエリの結果として、_ObjectName_ プロパティと _CounterName_ プロパティが _Perf_ テーブルから取得されたことが示されます。
 
 この結果を使用して、アラート ルールに使用する次のクエリを作成することができます。
 
 ``` Kusto
-Perf 
-| where ObjectName =="Memory" and CounterName=="% Committed Bytes In Use" 
-| summarize Avg_Memory_Usage=avg(CounterValue) by Computer 
-| where Avg_Memory_Usage between(90 .. 95)  
-| count 
+Perf
+| where ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize Avg_Memory_Usage=avg(CounterValue) by Computer
+| where Avg_Memory_Usage between(90 .. 95)
 ```
- 
 
 ### <a name="example-3"></a>例 3
 
 `search` と `union` の両方を使用してパフォーマンス情報を取得する次のクエリを使用して、ログ アラート ルールを作成するとします。 
 
 ``` Kusto
-search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
-| where Computer !in ((union * | where CounterName == "% Processor Utility" | summarize by Computer))
-| summarize Avg_Idle_Time = avg(CounterValue) by Computer|  count  
+search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")
+| where Computer !in (
+    union *
+    | where CounterName == "% Processor Utility"
+    | summarize by Computer)
+| summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ```
- 
 
 このクエリを変更するには、まず次のクエリを使用して、クエリの最初の部分のプロパティが属しているテーブルを特定します。 
 
 ``` Kusto
-search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
-| summarize by $table 
+search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")
+| summarize by $table
 ```
 
-このクエリの結果として、これらのすべてのプロパティが _Perf_ テーブルから取得されたことが示されます。 
+このクエリの結果として、これらのすべてのプロパティが _Perf_ テーブルから取得されたことが示されます。
 
 ここで、`withsource` コマンドで `union` を使用して、各行の基になっているソース テーブルを特定します。
 
 ``` Kusto
-union withsource=table * | where CounterName == "% Processor Utility" 
-| summarize by table 
+union withsource=table *
+| where CounterName == "% Processor Utility"
+| summarize by table
 ```
- 
 
-このクエリの結果として、これらのプロパティも _Perf_ テーブルから取得されたことが示されます。 
+このクエリの結果として、これらのプロパティも _Perf_ テーブルから取得されたことが示されます。
 
 これらの結果を使用して、アラート ルールに使用する次のクエリを作成することができます。 
 
 ``` Kusto
-Perf 
-| where ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total" 
-| where Computer !in ( 
-    (Perf 
-    | where CounterName == "% Processor Utility" 
-    | summarize by Computer)) 
-| summarize Avg_Idle_Time = avg(CounterValue) by Computer 
-| count 
+Perf
+| where ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total"
+| where Computer !in (
+    (Perf
+    | where CounterName == "% Processor Utility"
+    | summarize by Computer))
+| summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ``` 
 
 ### <a name="example-4"></a>例 4
 2 つの `search` クエリの結果を結合する次のクエリを使用して、ログ アラート ルールを作成するとします。
 
 ```Kusto
-search Type == 'SecurityEvent' and EventID == '4625' 
-| summarize by Computer, Hour = bin(TimeGenerated, 1h) 
-| join kind = leftouter ( 
-    search in (Heartbeat) OSType == 'Windows' 
-    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h) 
-    | project Hour , Computer  
-)  
-on Hour 
-| count 
+search Type == 'SecurityEvent' and EventID == '4625'
+| summarize by Computer, Hour = bin(TimeGenerated, 1h)
+| join kind = leftouter (
+    search in (Heartbeat) OSType == 'Windows'
+    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h)
+    | project Hour , Computer
+) on Hour
 ```
- 
 
 このクエリを変更するには、まず次のクエリを使用して、結合の左側にあるプロパティが含まれているテーブルを特定します。 
 
 ``` Kusto
-search Type == 'SecurityEvent' and EventID == '4625' 
-| summarize by $table 
+search Type == 'SecurityEvent' and EventID == '4625'
+| summarize by $table
 ```
- 
 
 結果は、結合の左側にあるプロパティが _SecurityEvent_ テーブルに属していることを示しています。 
 
 ここで、次のクエリを使用して、結合の右側にあるプロパティが含まれているテーブルを特定します。 
-
  
 ``` Kusto
-search in (Heartbeat) OSType == 'Windows' 
-| summarize by $table 
+search in (Heartbeat) OSType == 'Windows'
+| summarize by $table
 ```
-
  
-結果は、結合の右側にあるプロパティが Heartbeat テーブルに属していることを示しています。 
+結果は、結合の右側にあるプロパティが _Heartbeat_ テーブルに属していることを示しています。
 
 これらの結果を使用して、アラート ルールに使用する次のクエリを作成することができます。 
-
 
 ``` Kusto
 SecurityEvent
 | where EventID == '4625'
 | summarize by Computer, Hour = bin(TimeGenerated, 1h)
 | join kind = leftouter (
-    Heartbeat  
-    | where OSType == 'Windows' 
-    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h) 
-    | project Hour , Computer  
-)  
-on Hour 
-| count 
+    Heartbeat
+    | where OSType == 'Windows'
+    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h)
+    | project Hour , Computer
+) on Hour
 ```
 
 ## <a name="next-steps"></a>次のステップ

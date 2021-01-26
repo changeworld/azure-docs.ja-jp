@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Functions のドキュメント
-summary: Azure Functions は、インフラストラクチャを明示的にプロビジョニングしたり管理したりする必要がない、イベントトリガー型のコードを実行できるサーバーレス コンピューティング サービスです。
+summary: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
 metadata:
   title: Azure Functions のドキュメント
-  description: Azure Functions は、インフラストラクチャを明示的にプロビジョニングしたり管理したりする必要がない、イベントトリガー型のコードを実行できるサーバーレス コンピューティング サービスです。
+  description: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 7a6f493bef86952de212eea264cccea1c0bcfeca
-  ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
+  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/05/2020
-  ms.locfileid: "87810056"
+  ms.lasthandoff: 01/19/2021
+  ms.locfileid: "98570135"
 landingContent:
 - title: Azure Functions について
   linkLists:
@@ -41,15 +41,21 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: はじめての Functions の作成 (C#)
-      url: functions-create-your-first-function-visual-studio.md
+      url: create-first-function-vs-code-csharp.md
+    - text: はじめての Functions の作成 (Go)
+      url: create-first-function-vs-code-other.md?tabs=go
     - text: はじめての Functions の作成 (Java)
-      url: functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java
+      url: create-first-function-cli-java.md?tabs=bash%2Cazure-cli%2Cbrowser
     - text: はじめての Functions の作成 (JavaScript)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-javascript
+      url: create-first-function-vs-code-node.md
     - text: はじめての Functions の作成 (PowerShell)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-powershell
+      url: create-first-function-vs-code-powershell.md
     - text: はじめての Functions の作成 (Python)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-python
+      url: create-first-function-vs-code-python.md
+    - text: はじめての Functions の作成 (Rust)
+      url: create-first-function-vs-code-other.md?tabs=rust
+    - text: はじめての Functions の作成 (TypeScript)
+      url: create-first-function-vs-code-typescript.md
   - linkListType: learn
     links:
     - text: サーバーレス ロジックの作成

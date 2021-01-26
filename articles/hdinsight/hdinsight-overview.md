@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a1ef441943ec3c29770e0964b3c1132f86239b42
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754873"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127415"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight とは
 
@@ -35,13 +35,13 @@ HDInsight で利用可能な Hadoop テクノロジ スタック コンポーネ
 
 |機能  |説明  |
 |---------|---------|
-|クラウド ネイティブ     |     Azure HDInsight を使用すると、[Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md)、 [Spark](./spark/apache-spark-jupyter-spark-sql.md)、 [Interactive query (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、 [Kafka](./kafka/apache-kafka-get-started.md)、 [Storm](./storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md)、 [ML サービス](./r-server/r-server-overview.md)向けに最適化されたクラスターを Azure 上に作成することができます。 また、HDInsight は、あらゆる運用環境のワークロードについてエンド ツー エンドの SLA を提供します。  |
-|低コストでスケーラブル     | ワークロードを[スケールアップまたはスケールダウン](./hdinsight-administer-use-portal-linux.md#scale-clusters) することができます。  [クラスターをオンデマンドで作成](./hdinsight-hadoop-create-linux-clusters-adf.md) し、実際に使用する分にのみ支払うことでコストを削減できます。 データ パイプラインを作成して、必要なジョブを運用化することもできます。 コンピューティングとストレージが分離され、より高いパフォーマンスと柔軟性が実現されています。 |
-|セキュリティとコンプライアンス    | HDInsight を使用すると、[Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md)、[暗号化](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、[Azure Active Directory](./domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な[コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。        |
-|監視    | Azure HDInsight と [Azure Monitor ログ](./hdinsight-hadoop-oms-log-analytics-tutorial.md)の統合によって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。        |
-|グローバル対応 | HDInsight は、他のあらゆるビッグ データ分析サービスより多くの [リージョン](https://azure.microsoft.com/regions/services/) で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。 |  
-|生産性     |  Azure HDInsight を使用すると、お好みの開発環境で Hadoop および Spark 向けの豊富な生産性ツールを利用できます。 これらの開発環境には、Scala、Python、R、Java、.NET に対応した [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)、[VS Code](./hdinsight-for-vscode.md)、[Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)、および [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md) が含まれます。 データ サイエンティストが、[Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) や [Zeppelin](./spark/apache-spark-zeppelin-notebook.md) など、広く使われている Notebook を使って共同作業を行うこともできます。    |
-|機能拡張     |  [スクリプト アクション](./hdinsight-hadoop-customize-cluster-linux.md)を使ってコンポーネント (Hue、Presto など) をインストールしたり、[エッジ ノードを追加](./hdinsight-apps-use-edge-node.md)したり、[定評のある他のビッグ データ アプリケーションと連携](./hdinsight-apps-install-applications.md)したりすることで、HDInsight のクラスターを拡張することができます。 HDInsight は、特に普及率の高いビッグ データ ソリューションと[ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) デプロイでシームレスに連携します。|
+|クラウド ネイティブ     |     Azure HDInsight を使用すると、Hadoop、Spark、 [Interactive query (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase、ML Services 向けに最適化されたクラスターを Azure 上に作成することができます。 また、HDInsight は、あらゆる運用環境のワークロードについてエンド ツー エンドの SLA を提供します。  |
+|低コストでスケーラブル     | ワークロードをスケールアップまたはスケールダウンすることができます。 クラスターをオンデマンドで作成し、実際に使用する分にのみ支払うことでコストを削減できます。 データ パイプラインを作成して、必要なジョブを運用化することもできます。 コンピューティングとストレージが分離され、より高いパフォーマンスと柔軟性が実現されています。 |
+|セキュリティとコンプライアンス    | HDInsight を使用すると、Azure Virtual Network、暗号化、Azure Active Directory との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的なコンプライアンス基準を満たしています。        |
+|監視    | Azure HDInsight と Azure Monitor ログの統合によって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。        |
+|グローバル対応 | HDInsight は、他のあらゆるビッグ データ分析サービスより多くのリージョンで提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。 |  
+|生産性     |  Azure HDInsight を使用すると、お好みの開発環境で Hadoop および Spark 向けの豊富な生産性ツールを利用できます。 これらの開発環境には、Scala、Python、R、Java、.NET に対応した Visual Studio、VS Code、Eclipse、および IntelliJ が含まれます。 データ サイエンティストが、Jupyter や Zeppelin など、広く使われている Notebook を使って共同作業を行うこともできます。    |
+|機能拡張     |  スクリプト アクションを使ってコンポーネント (Hue、Presto など) をインストールしたり、エッジ ノードを追加したり、定評のある他のビッグ データ アプリケーションと連携したりすることで、HDInsight のクラスターを拡張することができます。 HDInsight は、特に普及率の高いビッグ データ ソリューションとワンクリック デプロイでシームレスに連携します。|
 
 ## <a name="scenarios-for-using-hdinsight"></a>HDInsight を使用するシナリオ
 
@@ -53,27 +53,27 @@ ETL (抽出、変換、読み込み) は、異種データ ソースから非構
 
 ### <a name="data-warehousing"></a>データ ウェアハウス
 
-HDInsight を使用して、あらゆる形式の構造化データや非構造化データに対話型クエリをペタバイト規模で実行することができます。 それらを BI ツールに接続するモデルを作成することもできます。 詳しくは、[こちらの顧客事例](https://customers.microsoft.com/story/milliman)をご覧ください。
+HDInsight を使用して、あらゆる形式の構造化データや非構造化データに対話型クエリをペタバイト規模で実行することができます。 それらを BI ツールに接続するモデルを作成することもできます。
 
-![HDInsight のアーキテクチャ:データ ウェアハウス](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight のデータ ウェアハウスのアーキテクチャ")
+HDInsight のアーキテクチャ: データ ウェアハウジング
 
 ### <a name="internet-of-things-iot"></a>モノのインターネット(IoT)
 
 さまざまなデバイスからリアルタイムで受信したストリーミング データを HDInsight で処理することができます。 詳細については、[Azure マネージド ディスクを使用した HDInsight での Apache Kafka のパブリック プレビューを知らせる Azure のブログ記事を参照してください](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
 
-![HDInsight のアーキテクチャ:モノのインターネット](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT アーキテクチャ")
+HDInsight のアーキテクチャ: モノのインターネット
 
 ### <a name="data-science"></a>データ サイエンス
 
 データから重要な洞察を得るアプリケーションを HDInsight で作成することができます。 また、その基盤の上に Azure Machine Learning を使用して、ビジネスの将来の傾向を予測することもできます。 詳しくは、[こちらの顧客事例](https://customers.microsoft.com/story/pros)をご覧ください。
 
-![HDInsight のアーキテクチャ:データ サイエンス](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight データ サイエンスのアーキテクチャ")
+HDInsight のアーキテクチャ: データ サイエンス
 
 ### <a name="hybrid"></a>ハイブリッド
 
 HDInsight を使用して、既にあるオンプレミスのビッグ データ インフラストラクチャを Azure にまで拡張し、そのクラウドの高度な分析機能を活用することができます。
 
-![HDInsight のアーキテクチャ:ハイブリッド](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight のハイブリッド アーキテクチャ")
+HDInsight のアーキテクチャ: ハイブリッド
 
 ## <a name="cluster-types-in-hdinsight"></a>HDInsight でのクラスターの種類
 
@@ -91,11 +91,11 @@ HDInsight には、特定のクラスターの種類のほか、コンポーネ�
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight のオープンソース コンポーネント
 
-Azure HDInsight では、Hadoop、Spark、Hive、LLAP、Kafka、Storm、HBase、R をはじめとするオープンソースのフレームワークを使ってクラスターを作成できます。これらのクラスターには、[Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)、[Avro](https://avro.apache.org/docs/current/spec.html)、[Apache Hive](https://hive.apache.org)、[HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/)、[Apache Mahout](https://mahout.apache.org/)、[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、[Apache Phoenix](https://phoenix.apache.org/)、[Apache Pig](https://pig.apache.org/)、[Apache Sqoop](https://sqoop.apache.org/)、[Apache Tez](https://tez.apache.org/)、[Apache Oozie](https://oozie.apache.org/)、[Apache ZooKeeper](https://zookeeper.apache.org/) など、各クラスターに備わっている他のオープンソース コンポーネントが最初から付属しています。  
+Azure HDInsight では、Hadoop、Spark、Hive、LLAP、Kafka、Storm、HBase、R をはじめとするオープンソースのフレームワークを使ってクラスターを作成できます。これらのクラスターには、Apache Ambari5、Avro5、Apache Hive3、HCatalog2、Apache Mahout2、Apache Hadoop MapReduce3、Apache Hadoop YARN2、Apache Phoenix3、Apache Pig3、Apache Sqoop3、Apache Tez3、Apache Oozie2、Apache ZooKeeper5 など、各クラスターに備わっている他のオープンソース コンポーネントが最初から付属しています。  
 
 ## <a name="programming-languages-in-hdinsight"></a>HDInsight のプログラミング言語
 
-HDInsight クラスター (Spark、HBase、Kafka、Hadoopなど) は多数のプログラミング言語をサポートします。 既定でインストールされないプログラミング言語があります。 既定でインストールされないライブラリ、モジュール、またはパッケージは、[スクリプト アクションを使用してコンポーネントをインストール](./hdinsight-hadoop-script-actions-linux.md)します。
+HDInsight クラスター (Spark、HBase、Kafka、Hadoopなど) は多数のプログラミング言語をサポートします。 既定でインストールされないプログラミング言語があります。 既定でインストールされないライブラリ、モジュール、またはパッケージは、スクリプト アクションを使用してコンポーネントをインストールします。
 
 |プログラミング言語  |Information  |
 |---------|---------|
@@ -107,13 +107,10 @@ HDInsight クラスター (Spark、HBase、Kafka、Hadoopなど) は多数のプ
 
 HDInsight のデータ クエリやジョブは、Azure とシームレスに統合された HDInsight の開発ツール (IntelliJ、Eclipse、Visual Studio Code、Visual Studio) を使用して作成、送信することができます。
 
-* [Azure Toolkit for IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [Azure Toolkit for Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [Azure HDInsight Tools for VS Code](./hdinsight-for-vscode.md)
-
-* [Azure Data Lake Tools for Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* Azure Toolkit for IntelliJ10
+* Azure Toolkit for Eclipse6
+* Azure HDInsight Tools for VS Code13
+* Azure Data Lake Tools for Visual Studio9
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight のビジネス インテリジェンス
 
@@ -129,9 +126,18 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 
 * [Microsoft Hive ODBC Driver を使用した Excel から Apache Hadoop への接続](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (Windows が必要)
 
+
+## <a name="in-region-data-residency"></a>リージョンのデータ所在地 
+
+Spark、Hadoop、LLAP、Storm、MLService には顧客データは格納されないため、これらのサービスでは、[トラスト センター](https://azuredatacentermap.azurewebsites.net/)で指定されているものも含めて、リージョンのデータ所在地の要件が自動的に満たされます。 
+
+Kafka と HBase は顧客データを格納します。 このデータは、Kafka および HBase によって 1 つのリージョンに自動的に格納されるため、このサービスは、[トラスト センター](https://azuredatacentermap.azurewebsites.net/)で指定されているものも含めて、リージョンのデータ所在地の要件を満たします。 
+
+
+Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用すれば、使い慣れたビジネス インテリジェンス (BI) ツールを HDInsight と連携して、データの取得、分析、レポート生成を行うことができます。
+
 ## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache Hadoop クラスターを作成する](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
-* [Apache Spark クラスターの作成 - ポータル](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Azure HDInsight 用の仮想ネットワークを計画する](hdinsight-plan-virtual-network-deployment.md)
+* Apache Spark クラスターの作成 - ポータル
 * [Azure HDInsight のエンタープライズ セキュリティ](./domain-joined/hdinsight-security-overview.md)

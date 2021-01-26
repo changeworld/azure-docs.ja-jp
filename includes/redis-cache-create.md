@@ -2,26 +2,27 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: redis-cache
-author: wesmc7777
+author: curib
 ms.service: cache
 ms.topic: include
-ms.date: 11/05/2019
-ms.author: wesmc
+ms.date: 10/06/2020
+ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528831"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002463"
 ---
-1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 
-   
-   ![[リソースの作成] を選択します](media/redis-cache-create/create-a-resource.png)
+1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
+
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="左側のナビゲーション ペインの [リソースの作成] が強調表示されています。":::
+
    
 1. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
-   
-   ![Azure Cache for Redis を選択する](media/redis-cache-create/redis-cache-new-cache-menu.png)
+
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="[新規] で、 [データベース] が強調表示され、[Azure Cache for Redis] が強調表示されています。":::
    
 1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
    
@@ -32,15 +33,25 @@ ms.locfileid: "87528831"
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
    | **場所** | ドロップ ダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
    | **価格レベル** | ドロップ ダウンで[価格レベル](https://azure.microsoft.com/pricing/details/cache/)を選択します。 |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](../articles/azure-cache-for-redis/cache-overview.md)に関するページを参照してください。 |
-   
-1. **［作成］** を選択します 
-   
-   ![Azure Cache for Redis を作成する](media/redis-cache-create/redis-cache-cache-create.png) 
-   
-   > [!NOTE]
-   > キャッシュのプロビジョニングには、約 15 分から 20 分かかると予想されます。   
-   
-   Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
-   
-   ![Azure Cache for Redis が作成された](media/redis-cache-create/redis-cache-cache-created.png)
 
+1. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンをクリックします。
+
+1. **[ネットワーク]** タブで、接続方法を選択します。
+
+1. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンをクリックします。
+
+1. Basic または Standard のキャッシュ インスタンスの **[詳細]** タブで、非 TLS ポートを有効にする場合は有効トグルをオンにします。 使用する Redis のバージョン 4 または (プレビュー) 6 を選択することもできます。
+
+    :::image type="content" source="media/redis-cache-create/redis-version.png" alt-text="Redis バージョン 4 または 6。":::
+
+1. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。 使用する Redis のバージョン 4 または (プレビュー) 6 を選択することもできます。 
+
+1. **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンをクリックします。
+
+1. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
+
+1. **[Review + create]\(レビュー + 作成\)** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
+
+1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
+
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 

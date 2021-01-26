@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2f7746f079e740493348731376d0a5a7b1a9e954
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852618"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317846"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
 
@@ -33,7 +33,7 @@ ms.locfileid: "87852618"
 ## <a name="prerequisites"></a>前提条件
 
 - [MLOpsPython テンプレート](https://github.com/microsoft/MLOpsPython/generate)を生成し、`experimentation/Diabetes Ridge Regression Training.ipynb` と `experimentation/Diabetes Ridge Regression Scoring.ipynb` ノートブックを使用します。 これらのノートブックは、実験環境から運用に変換する例として使用されます。 これらのノートブックは、[https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) にあります。
-- `nbconvert`をインストールする。 [インストール](https://nbconvert.readthedocs.io/en/latest/install.html) ページの「__nbconvert のインストール__」セクションにあるインストール手順のみに従ってください。
+- `nbconvert`をインストールする。 [インストール](https://nbconvert.readthedocs.io/en/latest/install.html) ページの「 __nbconvert のインストール__ 」セクションにあるインストール手順のみに従ってください。
 
 ## <a name="remove-all-nonessential-code"></a>不要なコードをすべて削除する
 
@@ -67,7 +67,7 @@ args = {
 }
 
 reg_model = Ridge(**args)
-reg.fit(data["train"]["X"], data["train"]["y"])
+reg_model.fit(data["train"]["X"], data["train"]["y"])
 
 preds = reg_model.predict(data["test"]["X"])
 mse = mean_squared_error(preds, y_test)
@@ -91,11 +91,11 @@ joblib.dump(value=reg, filename=model_name)
 
 1. データ フレームをテスト データとトレーニング データに分割する `split_data` という関数を作成します。 この関数は、データフレーム `df` をパラメーターとして受け取って、`train` と `test` をキーとするディクショナリを返す必要があります。
 
-    "*Split Data into Training and Validation Sets*" という見出しの下にあるコードを `split_data` 関数に移動し、`data` オブジェクトを返すように変更します。
+    " *Split Data into Training and Validation Sets* " という見出しの下にあるコードを `split_data` 関数に移動し、`data` オブジェクトを返すように変更します。
 
 1. パラメーター `data` および `args` を受け取って、トレーニング済みのモデルを返す、`train_model` という関数を作成します。
 
-    "*Training Model on Training Set*" という見出しの下にあるコードを `train_model` 関数に移動し、`reg_model` オブジェクトを返すように変更します。 `args` ディクショナリは削除してください。この値は `args` パラメーターから渡されます。
+    " *Training Model on Training Set* " という見出しの下にあるコードを `train_model` 関数に移動し、`reg_model` オブジェクトを返すように変更します。 `args` ディクショナリは削除してください。この値は `args` パラメーターから渡されます。
 
 1. `reg_model` および `data` をパラメーターとして受け取ってモデルを評価し、トレーニング済みのモデルのメトリックのディクショナリを返す `get_model_metrics` という関数を作成します。
 
@@ -527,5 +527,5 @@ def test_train_model():
 ここでは、実験コードから運用環境のコードへの変換方法について説明しました。さらに詳しい情報と次のステップについては、次のリンクを参照してください。
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Pipelines と Azure Machine Learning を使用して独自のモデルをトレーニング、評価、デプロイする CI/CD パイプラインを作成します。
-+ [Azure ML の実験の実行とメトリックを監視する](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [ML Web サービス エンドポイントからのデータを監視および収集する](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [Azure ML の実験の実行とメトリックを監視する](./how-to-track-experiments.md)
++ [ML Web サービス エンドポイントからのデータを監視および収集する](./how-to-enable-app-insights.md)

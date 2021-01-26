@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9457323b2642d0e7c5a623c13ec8440520bd5b8b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 44c80703466f91ccdfa33934efa0a05e699fd5de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891778"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724393"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>チュートリアル:Remote Rendering を HoloLens Holographic アプリに統合する
 
@@ -30,10 +30,10 @@ ms.locfileid: "88891778"
 
 このチュートリアルには、次のものが必要です。
 
-* アカウント情報 (アカウント ID、アカウント キー、サブスクリプション ID)。 アカウントをお持ちでない場合は、[アカウントを作成](../../../how-tos/create-an-account.md)してください。
+* アカウント情報 (アカウント ID、アカウント キー、アカウント ドメイン、サブスクリプション ID)。 アカウントをお持ちでない場合は、[アカウントを作成](../../../how-tos/create-an-account.md)してください。
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)。
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)。
-* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
+* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Visual Studio 用の Windows Mixed Reality アプリ テンプレート [(ダウンロード)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX)。
@@ -169,7 +169,8 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
         RR::AzureFrontendAccountInfo init;
         init.AccountId = "00000000-0000-0000-0000-000000000000";
         init.AccountKey = "<account key>";
-        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+        init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
         m_modelURI = "builtin://Engine";
         m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
 
@@ -220,7 +221,7 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
 
 このコードでは、メンバー関数 `SetNewSession` と `SetNewState` が呼び出されます。これらは、次の段落で、残りのステート マシン コード部分と共に実装されます。
 
-資格情報はサンプル内にハードコーディングされており、所定の場所に入力する必要があることにご注意ください ([アカウント ID、アカウント キー](../../../how-tos/create-an-account.md#retrieve-the-account-information)、[ドメイン](../../../reference/regions.md))。
+資格情報はサンプル内にハードコーディングされており、所定の場所に入力する必要があることに注意してください ([アカウント ID、アカウント キー、アカウント ドメイン](../../../how-tos/create-an-account.md#retrieve-the-account-information)、[リモート レンダリング ドメイン](../../../reference/regions.md))。
 
 初期化解除は対称的に、デストラクター本体の末尾で逆の順番で実行します。
 

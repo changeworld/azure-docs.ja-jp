@@ -4,15 +4,15 @@ description: Azure App Service と Application Insights リソースをデプロ
 ms.subservice: application-insights
 ms.topic: sample
 ms.custom: devx-track-dotnet
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 08/06/2020
-ms.openlocfilehash: 966dc0650d445a2181dc6a7d6ea1c57f223fd6f9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fcc325d94f4577c00dade183d423f5d35eec8800
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934244"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209153"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>Application Insights 監視機能を備えた Azure App Service Web アプリを作成するための Resource Manager テンプレート サンプル
 

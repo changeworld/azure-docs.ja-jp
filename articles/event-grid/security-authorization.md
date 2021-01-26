@@ -3,29 +3,32 @@ title: Azure Event Grid のセキュリティと認証
 description: Azure Event Grid とその概念について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119091"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109591"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid リソースへのアクセスの承認
-Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御 (RBAC) を使います。
+Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な **管理操作** を実行する各ユーザーに付与されるアクセス レベルを制御できます。 Event Grid では、Azure ロールベースのアクセス制御 (Azure RBAC) が使用されます。
 
+> [!NOTE]
+> Event Grid トピックまたはドメインへのイベントの発行については、Event Grid は Azure RBAC をサポートしません。 Shared Access Signature (SAS) キーまたはトークンを使用して、イベントを発行するクライアントを認証します。 詳細については、[発行クライアントの認証](security-authenticate-publishing-clients.md)に関する記事を参照してください。 
 
 ## <a name="operation-types"></a>操作の種類
+Azure Event Grid でサポートされている操作の一覧を表示するには、次の Azure CLI コマンドを実行します。 
 
-Event Grid では、以下の操作がサポートされています。
+```azurecli-interactive
+az provider operation show --namespace Microsoft.EventGrid
+```
 
-* Microsoft.EventGrid/*/read
-* Microsoft.EventGrid/*/write
-* Microsoft.EventGrid/*/delete
+次の操作は秘密情報を返す可能性がありますが、これは通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 
+
 * Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-最後の 3 つの操作は秘密情報を返す可能性がありますが、この情報は通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 
 
 ## <a name="built-in-roles"></a>組み込みのロール
 

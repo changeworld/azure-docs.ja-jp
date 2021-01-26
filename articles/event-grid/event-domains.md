@@ -3,12 +3,12 @@ title: Azure Event Grid のイベント ドメイン
 description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114365"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328829"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -37,13 +37,13 @@ ms.locfileid: "86114365"
 
 ## <a name="access-management"></a>アクセス管理
 
-ドメインでは、Azure のロールベースのアクセス制御 (RBAC) を使用して、各トピックの承認と認証を細かく制御することができます。 これらのロールを使用することで、アプリケーションの各テナントを、アクセスを許可するトピックにのみ制限することができます。
+ドメインでは、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、各トピックの認可と認証を細かく制御することができます。 これらのロールを使用することで、アプリケーションの各テナントを、アクセスを許可するトピックにのみ制限することができます。
 
-イベント ドメインでの RBAC は、他の Event Grid や Azure での[マネージド アクセス制御](security-authorization.md)の動作と同じように動作します。 RBAC を使用して、イベント ドメインでカスタム ロール定義を作成して適用します。
+イベント ドメインでの Azure RBAC は、他の Event Grid や Azure での[マネージド アクセス制御](security-authorization.md)の動作と同じように動作します。 Azure RBAC を使用して、イベント ドメインでカスタム ロール定義を作成して適用します。
 
 ### <a name="built-in-roles"></a>組み込みロール
 
-Event Grid には、RBAC がイベント ドメインでより簡単に動作するように、2 つの組み込みロール定義があります。 **EventGrid EventSubscription 共同作成者 (プレビュー)** ロールと、**EventGrid EventSubscription 閲覧者 (プレビュー)** ロールです。 イベント ドメインでトピックをサブスクライブする必要があるユーザーに、これらのロールを割り当てます。 ロールの割り当てのスコープは、ユーザーがサブスクライブする必要があるトピックだけにします。
+Event Grid には、Azure RBAC がイベント ドメインでより簡単に動作するように、2 つの組み込みロール定義があります。 **EventGrid EventSubscription 共同作成者 (プレビュー)** ロールと、 **EventGrid EventSubscription 閲覧者 (プレビュー)** ロールです。 イベント ドメインでトピックをサブスクライブする必要があるユーザーに、これらのロールを割り当てます。 ロールの割り当てのスコープは、ユーザーがサブスクライブする必要があるトピックだけにします。
 
 これらのロールについては、[Event Grid の組み込みロール](security-authorization.md#built-in-roles)に関する記事をご覧ください。
 

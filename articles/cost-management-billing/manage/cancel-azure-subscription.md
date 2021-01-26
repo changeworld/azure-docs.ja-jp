@@ -7,36 +7,28 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 16ba70717d04c44e950ce2ed2c47e54859c4be47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684883"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503796"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
-サブスクリプションが不要になった場合は、Azure portal で Azure サブスクリプションを取り消すことができます。
+不要になった場合は、Azure portal で Azure サブスクリプションを取り消すことができます。
 
 必須ではありませんが、Microsoft は、サブスクリプションをキャンセルする前に次の処置を講じることを "*推奨*" しています。
 
 * データをバックアップする。 たとえば、Azure Storage や SQL にデータを格納している場合は、コピーをダウンロードします。 仮想マシンを使用している場合は、そのイメージをローカルに保存します。
-* サービスをシャットダウンする。 [管理ポータルのリソース ページ](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)に移動し、実行中の仮想マシン、アプリケーション、またはその他のサービスをすべて**停止**します。
+* サービスをシャットダウンする。 [管理ポータルのリソース ページ](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)に移動し、実行中の仮想マシン、アプリケーション、またはその他のサービスをすべて **停止** します。
 * データの移行を検討する。 「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 * すべてのリソースとすべてのリソース グループを削除します。
 * `AssignableScopes` でこのサブスクリプションを参照しているカスタム ロールがある場合は、それらのカスタム ロールを更新して、このサブスクリプションを削除する必要があります。 サブスクリプションを取り消した後でカスタム ロールを更新しようとすると、エラーが発生する可能性があります。 詳細については、[カスタム ロールに関する問題のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles)に関するセクションと、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
 
 有料の Azure サポート プランを取り消しても、サブスクリプション期間の残りの期間について請求されます。 詳細については、「[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)」を参照してください。
-
-## <a name="cancel-subscription-in-the-azure-portal"></a>Azure portal でサブスクリプションを取り消す
-
-1. [Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
-1. 取り消すサブスクリプションを選択します。
-1. **[概要]** を選択し、 **[サブスクリプションの取り消し]** を選択します。
-    ![[キャンセル] ボタンを示すスクリーン ショット](./media/cancel-azure-subscription/cancel_ibiza.png)
-1. 画面の指示に従って、取り消しを完了します。
 
 ## <a name="who-can-cancel-a-subscription"></a>サブスクリプションを取り消すことができるユーザー
 
@@ -48,7 +40,27 @@ ms.locfileid: "88684883"
 |[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) と [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  サブスクリプションの所有者とアカウント所有者       |
 |[Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)と [DevTest 用 Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  サブスクリプションの所有者      |
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>サブスクリプションの取り消し後の流れ
+
+## <a name="cancel-subscription-in-the-azure-portal"></a>Azure portal でサブスクリプションを取り消す
+
+1. [Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
+1. 取り消すサブスクリプションを選択します。
+1. **[概要]** を選択し、 **[サブスクリプションの取り消し]** を選択します。
+    ![[キャンセル] ボタンを示すスクリーン ショット](./media/cancel-azure-subscription/cancel_ibiza.png)
+1. 画面の指示に従って、取り消しを完了します。
+
+> [!NOTE]
+> パートナーは、顧客から要求された場合、または未払いや不正行為があった場合に、サブスクリプションを中断または取り消すことができます。 詳細については、「[サブスクリプションを中断または取り消す](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)」セクションを参照してください。
+
+## <a name="cancel-a-support-plan"></a>サポート プランを取り消す
+
+Azure Web サイトか Azure portal からサポート プランを購入した場合、または Microsoft 顧客契約の下でサポート プランをご利用の場合、サポート プランを取り消すことができます。 Microsoft の代理店またはパートナーからサポート プランを購入した場合は、代理店またはパートナーにお問い合わせください。 
+
+1. Azure portal で **[コストの管理と請求]** に移動します。
+1. **[課金]** の **[当月サービス利用料金]** を選択します。
+1. サポート プラン明細項目の右側にある省略記号 ( **...** ) を選択し、 **[Turn off auto-renewal]\(自動更新をオフにします\)** を選択します。
+
+## <a name="what-happens-after-subscription-cancellation"></a>サブスクリプションの取り消し後は、どうなりますか?
 
 取り消し後は、課金がただちに停止されます。 ただし、取り消しがポータルに反映されるまでに最大で 10 分かかります。 請求期間の途中でキャンセルした場合、期間終了後の一般的な請求日に、最終的な課金内容が送信されます。
 
@@ -65,15 +77,27 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 1. 削除するサブスクリプションを選択します。
 1. **[概要]** を選択し、 **[サブスクリプションの削除]** を選択します。
 
-## <a name="reactivate-subscription"></a>サブスクリプションの再アクティブ化
+## <a name="reactivate-a-subscription"></a>サブスクリプションの再アクティブ化
 
 従量課金制のサブスクリプションを誤って取り消した場合は、[アカウント センターで再アクティブ化](subscription-disabled.md)することができます。
 
 サブスクリプションが従量課金制のサブスクリプションでない場合は、取り消しから 90 日以内にサポートに問い合わせて、サブスクリプションの再アクティブ化を依頼してください。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>Azure portal にサブスクリプション取り消しオプションが表示されないのはなぜですか? 
 
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+サブスクリプションを取り消すために必要なアクセス許可がない可能性があります。 さまざまな種類のサブスクリプションを取り消すことができるユーザーについては、「[サブスクリプションを取り消すことができるユーザー](#who-can-cancel-a-subscription)」を参照してください。
+
+## <a name="how-do-i-delete-my-azure-account"></a>Azure アカウントを削除するにはどうすればよいですか?
+
+*自分のすべての個人情報を含め、自分のアカウントを削除する必要があります。アクティブな (無料試用版) サブスクリプションは既に取り消しました。アクティブなサブスクリプションはなく、アカウントを完全に削除したいと考えています。*
+
+* 組織を通じて Azure Active Directory アカウントを持っている場合は、Azure AD 管理者がアカウントを削除できます。 その後、サービスが無効になります。 つまり、仮想マシンの割り当てが解除され、一時 IP アドレスが解放され、ストレージが読み取り専用になります。 要約すると、取り消しが完了すると、すぐに課金が停止されます。
+
+* 組織を通じた Azure AD アカウントではない場合は、Azure サブスクリプションを取り消して削除した後、アカウントからクレジット カードを削除することができます。 このアクションによってアカウントは削除されませんが、操作できなくなります。 関連付けられている Microsoft アカウントが他の目的に使用されていない場合は、さらに進んで、それを削除することもできます。
+
+## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>Visual Studio Professional アカウントを取り消すにはどうすればよいですか?
+
+「[更新とキャンセル](/visualstudio/subscriptions/faq/admin/renewal-cancellation)」の記事を参照してください。 Visual Studio Azure サブスクリプションを持っている場合は、それも取り消して削除する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

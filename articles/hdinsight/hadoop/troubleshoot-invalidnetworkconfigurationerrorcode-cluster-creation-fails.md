@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 01/22/2020
-ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/12/2021
+ms.openlocfilehash: 2478148f946ddc88e571b76396544b028455ec75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82780438"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132107"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 
@@ -60,7 +60,7 @@ Azure Storage と SQL には固定の IP アドレスがないため、これら
 
 * クラスターに[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md) を使用している場合。
 
-    Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **[送信セキュリティ規則]** セクションで、制限なしでインターネットへの発信アクセスを許可します (ここでは、**優先順位**の数値が小さいほど優先順位が高くなることに注意してください)。 また、**subnets** セクションで、この NSG がクラスター サブネットに適用されているかどうかを確認します。
+    Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **[送信セキュリティ規則]** セクションで、制限なしでインターネットへの発信アクセスを許可します (ここでは、**優先順位** の数値が小さいほど優先順位が高くなることに注意してください)。 また、**subnets** セクションで、この NSG がクラスター サブネットに適用されているかどうかを確認します。
 
 * クラスターで[ユーザー定義ルート (UDR)](../../virtual-network/virtual-networks-udr-overview.md) が使用されている場合。
 
@@ -68,6 +68,19 @@ Azure Storage と SQL には固定の IP アドレスがないため、これら
 
     定義されているルートがある場合は、クラスターがデプロイされたリージョンの IP アドレスのルートが存在し、各ルートの **NextHopType** が **Internet** であることを確認します。 前述の記事に記載されている必要な IP アドレスごとに、ルートが定義されている必要があります。
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Failed to establish an outbound connection from the cluster for the communication with the HDInsight resource provider. Please ensure that outbound connectivity is allowed. (HDInsight リソース プロバイダーとの通信のためのクラスターからの送信接続の確立に失敗しました。送信接続が許可されていることを確認してください。)"
+
+### <a name="issue"></a>問題
+
+エラーの説明に、"Failed to establish an outbound connection from the cluster for the communication with the HDInsight resource provider. Please ensure that outbound connectivity is allowed. (HDInsight リソース プロバイダーとの通信のためのクラスターからの送信接続の確立に失敗しました。送信接続が許可されていることを確認してください。)" と記載されています。
+
+### <a name="cause"></a>原因
+
+Private Link を使用してリンクされた HDInsight クラスターを使用する場合は、HDInsight リソース プロバイダーへの接続を許可するように、クラスターからの発信アクセスを構成する必要があります。
+
+### <a name="resolution"></a>解像度
+
+* この問題を解決するには、[プライベート リンクのセットアップ](../hdinsight-private-link.md)に関するページに記載されている HDInsight Private Link のセットアップ手順を参照してください
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"仮想ネットワーク構成が HDInsight の要件と互換性がありません"
@@ -85,7 +98,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 カスタム DNS の設定に問題がある可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 168.63.129.16 がカスタム DNS チェーンに含まれていることを確認します。 仮想ネットワーク内の DNS サーバーは、その仮想ネットワーク内のホスト名を解決するために、Azure の再帰的競合回避モジュールに DNS クエリを転送することができます。 詳細については、[仮想ネットワークでの名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)に関するページを参照してください。 Azure の再帰的競合回避モジュールへのアクセスは、仮想 IP 168.63.129.16 を通じて提供されます。
 
@@ -95,7 +108,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. たとえば、次のコマンドを実行します。
+1. 次のコマンドを実行します。
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
@@ -134,6 +147,13 @@ hostname -f
 nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
+### <a name="cause"></a>原因
+
+この `InvalidNetworkConfigurationErrorCode` エラー コードのもう 1 つの原因として、PowerShell または Azure Runbook で非推奨のパラメーター `EnableVmProtection` を使用することが考えられます。
+
+### <a name="resolution"></a>解決方法
+
+[Az PowerShell SDK](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-5.3.0&viewFallbackFrom=azps-4.2.0) に記載されているように、`Get-AzVirtualNetwork` の有効なパラメーターを使用します。
 
 ---
 
@@ -145,4 +165,4 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 * [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

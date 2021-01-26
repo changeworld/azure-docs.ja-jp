@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651728"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916288"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -60,12 +61,12 @@ ms.locfileid: "88651728"
     - SAP セントラル サービスに対するマルチ SID クラスター構成の使用は、Azure での Windows、SLES、RHEL の各ゲスト オペレーティング システム上でサポートされます。 その影響範囲によって、このようなマルチ SID クラスターに配置する ASCS/SCS が増加する可能性があることに注意してください。 各ゲスト OS のシナリオに関するドキュメントについては、次の記事を参照してください。
         - [Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [Red Hat Enterprise Linux for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)
+        - [Red Hat Enterprise Linux for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-rhel-multi-sid.md)
     - 高可用性とディザスター リカバリーのアーキテクチャ。
         - RTO と RPO に基づいて、必要な高可用性とディザスター リカバリー アーキテクチャの概要を定義します。
         - 1 つのゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS パッケージでは同期ホット スタンバイの同期メソッドが提供されており、運用システム用に推奨されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)」と関連ドキュメントから始めて、さまざまなデータベースについての SAP 関連ドキュメントもチェックしてください。
-           たとえば、[こちら](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows Server フェールオーバー クラスタリングを使用することは、サポートされていません。 代わりに次のようなソリューションを使用してください。
+           たとえば、[こちら](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows Server フェールオーバー クラスタリングを使用することは、サポートされていません。 代わりに次のようなソリューションを使用してください。
            - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle データの保護](../oracle/configure-oracle-dataguard.md)
            - [HANA システム レプリケーション](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -106,10 +107,10 @@ ms.locfileid: "88651728"
         - SAP サポート ノート、SAP HANA ハードウェア ディレクトリ、SAP PAM にあるリソースをもう一度確認します。 Azure でサポートされている VM、それらの VM の種類でサポートされている OS リリース、サポートされている SAP および DBMS のリリースに変更がないことを確認します。
         - もう一度、Azure にデプロイするアプリケーションおよびインフラストラクチャのサイズを検証します。 既存のアプリケーションを移行するのであれば、多くの場合、使用しているインフラストラクチャと [SAP ベンチマーク Web ページ](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)から必要な SAPS を取得し、それを [SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されている SAPS 番号と比較することができます。 また、[SAP 評価に関するこの記事](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)に注意してください。
         - 計画フェーズで選択した種類の VM の最大ストレージ スループットとネットワーク スループットに関して、Azure VM のサイズ設定を評価およびテストします。 手順については、こちらを参照してください:
-           -  「[Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」。 サイズ設定では*キャッシュされていないディスクの最大スループット*を検討することが重要です。
-           -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では*キャッシュされていないディスクの最大スループット*を検討することが重要です。
+           -  「[Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」。 サイズ設定では *キャッシュされていないディスクの最大スループット* を検討することが重要です。
+           -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では *キャッシュされていないディスクの最大スループット* を検討することが重要です。
    2. ストレージ。
-        - ドキュメント「[SAP ワークロードの Azure Storage の種類](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)」を確認してください。
+        - ドキュメント「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を確認してください。
         - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssd)を使用します。
         - 一般に、[Azure Standard HDD ディスク](../../disks-types.md#standard-hdd)を使用することはお勧めしません。
         - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../disks-types.md#premium-ssd) を使用します。
@@ -127,7 +128,7 @@ ms.locfileid: "88651728"
         - SAP アプリケーション レイヤーと SAP DBMS レイヤーの間のデータ パスを評価およびテストします。
             -  SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤーの間の通信パスに [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)を配置することは、サポートされていません。
             -  ピアリングされていない別々の Azure 仮想ネットワークに SAP アプリケーション レイヤーと SAP DBMS を配置することは、サポートされていません。
-            -  [アプリケーション セキュリティ グループとネットワーク セキュリティ グループの規則](../../../virtual-network/security-overview.md)を使用して、SAP アプリケーション レイヤーと SAP DBMS レイヤーとの間のルートを定義できます。
+            -  [アプリケーション セキュリティ グループとネットワーク セキュリティ グループの規則](../../../virtual-network/network-security-groups-overview.md)を使用して、SAP アプリケーション レイヤーと SAP DBMS レイヤーとの間のルートを定義できます。
         - SAP アプリケーション レイヤーおよび SAP DBMS レイヤーで使用される VM 上で、[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が有効になっていることを確認します。 Azure で高速ネットワークをサポートするには、異なる OS レベルが必要であることに留意してください。
             - Windows Server 2012 R2 以降。
             - SUSE Linux 12 SP3 以降。
@@ -138,7 +139,7 @@ ms.locfileid: "88651728"
         - Azure Load Balancer を Linux ゲスト オペレーティング システムと共に使用している場合、Linux ネットワーク パラメーター **net.ipv4.tcp_timestamps** が **0** に設定されていることを確認します。 この推奨事項は、[SAP ノート #2382421](https://launchpad.support.sap.com/#/notes/2382421) の以前のバージョンの推奨事項と競合しています。 その SAP ノートは、Azure ロード バランサーと連携するように、このパラメーターを **0** に設定する必要があるという記述に更新されました。
         - 最適なネットワーク待ち時間を実現するために [Azure 近接通信配置グループ](../../linux/co-location.md)の使用を検討します。 詳細については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」を参照してください。
    4. 高可用性とディザスター リカバリーのデプロイ。
-        - 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション レイヤーをデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](../../windows/manage-availability.md)にデプロイされることを確認します。
+        - 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション レイヤーをデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](../../manage-availability.md)にデプロイされることを確認します。
         - SAP セントラル サービスと DBMS に対して高可用性が必要ない場合は、これらの VM を SAP アプリケーション レイヤーと同じ可用性セットにデプロイできます。
         - パッシブ レプリケーションを使用して高可用性用に SAP セントラル サービスと DBMS レイヤーを保護する場合は、SAP セントラル サービス用の 2 つのノードを 1 つの独立した可用性セットに配置し、2 つの DBMS ノードを別の可用性セットに配置します。
         - Azure Availability Zones にデプロイする場合は、可用性セットを使用できません。 しかし、アクティブとパッシブのセントラル サービス ノードを 2 つの異なる Availability Zones にデプロイする必要があります。 待機時間が最も短い Availability Zones を使用します。
@@ -179,7 +180,7 @@ ms.locfileid: "88651728"
    4. リージョンをまたぐ DR 機能とアーキテクチャをテストします。
 1. セキュリティのチェック。
    1. Azure のロールベースのアクセス制御 (Azure RBAC) アーキテクチャの有効性をテストします。 目標は、異なるチームのアクセスとアクセス許可を分離して制限することです。 例として、SAP Basis チームのメンバーは、VM をデプロイし、Azure Storage から特定の Azure 仮想ネットワークにディスクを割り当てることができなければなりません。 しかし、SAP Basis チームは、独自の仮想ネットワークを作成したり、既存の仮想ネットワークの設定を変更したりすることができてはなりません。 ネットワーク チームのメンバーは、SAP アプリケーションと DBMS の VM が実行されている仮想ネットワークに、VM をデプロイできてはなりません。 また、このチームのメンバーは、VM の属性の変更または VM やディスクの削除もできてはなりません。  
-   1.  [ネットワーク セキュリティグループと ASC](../../../virtual-network/security-overview.md) の規則が想定どおりに動作することを確認し、保護されたリソースをシールドします。
+   1.  [ネットワーク セキュリティグループと ASC](../../../virtual-network/network-security-groups-overview.md) の規則が想定どおりに動作することを確認し、保護されたリソースをシールドします。
    1.  暗号化する必要のあるすべてのリソースが暗号化されていることを確認します。 証明書をバックアップして保存し、それらの証明書にアクセスして、暗号化されたエンティティを復元するプロセスを定義し、実装します。
    1.  OS のサポートの観点から可能な場合は、OS ディスクに対して [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) を使用します。
    1.  使用している暗号化のレイヤーが多すぎないことを確認してください。 場合によっては、同じサーバー上の異なるディスクまたはコンポーネントを保護するために、Azure Disk Encryption と、DBMS Transparent Data Encryption のメソッドの 1 つを一緒に使用することに意味があります。  たとえば、SAP DBMS サーバーでは、オペレーティング システムのブート ディスク (OS で ADE がサポートされている場合)、および DBMS のデータ永続化ファイルによって使用されていないデータ ディスクで Azure Disk Encryption (ADE) を有効にできます。  たとえば、DBMS TDE 暗号化キーを保持しているディスクで ADE を使用します。
@@ -213,7 +214,7 @@ ms.locfileid: "88651728"
 12. ワークロードを適用しながら、Azure でのシステムのリソース使用量を記録します。 この使用量と以前のプラットフォームのレコードを比較します。 大きな違いがある場合は、将来のデプロイで VM のサイズを調整します。 ダウンサイズすると、VM のストレージとネットワークの帯域幅も減少することに留意してください。
     - [Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. システムのコピー機能やプロセスについて実験します。 目的は、プロジェクト チームが新しいシステムをすばやく入手できるよう、自分で開発システムやテスト システムを簡単にコピーできるようにすることです。 これらのタスクには、[SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) を使用することを検討してください。
+13. システムのコピー機能やプロセスについて実験します。 目的は、プロジェクト チームが新しいシステムをすばやく入手できるよう、自分で開発システムやテスト システムを簡単にコピーできるようにすることです。 
 14. チームの Azure のロールベースのアクセス、アクセス許可、およびプロセスを最適化して調整します。それにより、義務が確実に分離されるようにします。 同時に、すべてのチームが Azure のインフラストラクチャでタスクを実行できることを確認します。
 15. 高可用性とディザスター リカバリーの手順を演習、テスト、文書化し、これらのタスクをスタッフが実行できるようにします。 欠点を明らかにし、デプロイに統合する新しい Azure の機能を調整します。
 
@@ -242,8 +243,8 @@ ms.locfileid: "88651728"
     - 待機時間の影響を受けやすいディスクに対し、または [99.9% の単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) が要求される場合、Azure Premium Storage が使用されていること。
     - Azure 書き込みアクセラレータが正しくデプロイされていること。
         - VM 内で、書き込みアクセラレータが必要な複数のディスクにまたがって、ストレージ スペースまたはストライプ セットが正しく構築されたことを確認します。
-        - [Linux 上のソフトウェア RAID の構成](../../linux/configure-raid.md)を確認します。
-        - [Azure での Linux VM 上の LVM の構成](../../linux/configure-lvm.md)を確認します。
+        - [Linux 上のソフトウェア RAID の構成](/previous-versions/azure/virtual-machines/linux/configure-raid)を確認します。
+        - [Azure での Linux VM 上の LVM の構成](/previous-versions/azure/virtual-machines/linux/configure-lvm)を確認します。
     - [Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)だけが使用されていること。
     - 正しい可用性セットおよび Availability Zones に VM がデプロイされたこと。
     - SAP アプリケーション レイヤーおよび SAP DBMS レイヤーで使用される VM 上で、[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が有効になっていること。

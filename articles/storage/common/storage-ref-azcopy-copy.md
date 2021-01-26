@@ -4,16 +4,16 @@ description: この記事では、azcopy copy コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281992"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356176"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ SAS トークンとワイルドカード文字 (*) を使用して、ファイ�
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+ファイルとディレクトリを Azure Storage アカウントにアップロードし、クエリ文字列でエンコードされたタグを BLOB に設定します。 
+
+- {key = "bla bla", val = "foo"}、{key = "bla bla 2", val = "bar"} の各タグを設定するには、次の構文を使用します。`azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
+
+- BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
 
 OAuth 認証を使用して 1 つのファイルをダウンロードします。 AzCopy にまだログインしていない場合は、次のコマンドを実行する前に `azcopy login` コマンドを実行します。
 
@@ -214,9 +222,19 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+ファイルとディレクトリを Azure Storage アカウントに転送し、指定されたクエリ文字列でエンコードされたタグを BLOB に設定します。 
+
+- {key = "bla bla", val = "foo"}、{key = "bla bla 2", val = "bar"} の各タグを設定するには、次の構文を使用します。`azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
+    
+- BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
+
 ## <a name="options"></a>Options
 
 **--backup** アップロード向けに Windows の SeBackupPrivilege を、またはダウンロード向けに SeRestorePrivilege を有効にし、AzCopy ですべてのファイルを表示して読み取り、ファイル システムのアクセス許可に関係なく、あらゆるアクセス許可を復元できるようにします。 AzCopy を実行しているアカウントには、既にこれらのアクセス許可がなくてはなりません (たとえば、管理者権限を持っている、または `Backup Operators` グループのメンバーであるなど)。 このフラグは、アカウントに既に含まれている特権をアクティブ化します。
+
+**--blob-tags** string   BLOB に文字列を設定して、ストレージ アカウントのデータを分類します。
 
 **--blob-type** string  宛先の BLOB の種類を定義します。 これは、BLOB をアップロードする場合と、アカウント間でコピーする場合に使用されます (既定では `Detect`)。 有効な値は、`Detect`、`BlockBlob`、`PageBlob`、および `AppendBlob` です。 アカウント間でコピーする場合、値 `Detect` を使用すると、AzCopy はソース BLOB の種類を使用して、コピー先 BLOB の種類を判断します。 ファイルをアップロードするとき、`Detect` は、ファイル拡張子に基づいて、ファイルが VHD ファイルまたは VHDX ファイルであるかを判断します。 ファイルが VHD ファイルまたは VHDX ファイルの場合、AzCopy はそのファイルをページ BLOB として扱います。 (既定値は "Detect")
 
@@ -258,11 +276,15 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-after** string 指定した日付/時刻以降に変更されたファイルのみが含まれます。 値は、ISO8601 形式で指定する必要があります。 タイムゾーンが指定されていない場合、値は AzCopy を実行しているマシンのローカル タイムゾーンにあると見なされます。 たとえば、UTC 時刻の場合は `2020-08-19T15:04:00Z`、ローカル タイムゾーンが深夜 (00:00) の場合は `2020-08-19` になります。 AzCopy 10.5 と同様に、このフラグはフォルダーにではなくファイルにのみ適用されるため、このフラグを `--preserve-smb-info` または `--preserve-smb-permissions` と共に使用した場合、フォルダー プロパティはコピーされません。
 
+ **--include-before** string  指定した日付/時刻以前に変更されたファイルのみが含まれます。 値は、ISO8601 形式で指定する必要があります。 タイムゾーンが指定されていない場合、値は AzCopy を実行しているマシンのローカル タイムゾーンにあると見なされます。 例: UTC 時刻の場合は `2020-08-19T15:04:00Z`、ローカル タイムゾーンが深夜 (00:00) の場合は `2020-08-19` になります。 AzCopy 10.7 以降、このフラグはフォルダーにではなくファイルにのみ適用されるため、このフラグを `--preserve-smb-info` または `--preserve-smb-permissions` と共に使用した場合、フォルダー プロパティはコピーされません。
+
 **--include-attributes** string (Windows のみ) 属性が属性一覧と一致するファイルを含めます。 次に例を示します。A;S;R
 
 **--include-path** string コピーするときにこれらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: `myFolder;myFolder/subDirName/file.pdf`)。
 
 **--include-pattern** string コピーするときにこれらのファイルのみを含めます。 このオプションでは、ワイルドカード文字 (*) がサポートされます。 `;` を使用してファイルを区切ります。
+
+**--list-of-versions** string  各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB を指している必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があるため、これを徹底します。 AzCopy は、指定されたバージョンをコピー先フォルダーにダウンロードします。 詳細については、「[前のバージョンの BLOB をダウンロードする](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)」を参照してください。
 
 **--log-level** string ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 既定値は `INFO` です。 
 
@@ -290,7 +312,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--s2s-handle-invalid-metadata** string   無効なメタデータ キーの処理方法を指定します。 使用できるオプションは ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid です。 既定値は `ExcludeIfInvalid` です。 (既定値は "ExcludeIfInvalid")
 
-**--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 (既定値は true)。  (既定値は true)
+**--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 既定値は `true` です。  (既定値は "true")
 
 **--s2s-preserve-properties** サービス間のコピー中にすべてのプロパティを保持します。 AWS S3 と Azure File の非単一ファイル ソースの場合、リスト操作はオブジェクトとファイルの完全なプロパティを返しません。 完全なプロパティを保持するために、AzCopy では、オブジェクトまたはファイルごとに 1 つの追加の要求を送信する必要があります。 (既定値は true)
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: 5876626ed4ba27c0f39b0c02af926c61261fca71
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7c89706d749151b5a59667282eb6675fd18dc8c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327431"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535367"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java のサンプル
 
@@ -32,7 +32,7 @@ ms.locfileid: "87327431"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure HDInsight SDK for Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+[Azure HDInsight SDK for Java](/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 
@@ -45,4 +45,4 @@ ms.locfileid: "87327431"
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for Java のリファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview)でご覧いただけます。
+ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for Java のリファレンス ドキュメント](/java/api/overview/azure/hdinsight)でご覧いただけます。

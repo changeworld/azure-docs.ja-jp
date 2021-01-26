@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/19/2019
-ms.openlocfilehash: d469566d7ae5feda37944dda5a0702dca6fca19b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/06/2020
+ms.openlocfilehash: c6b976ca1beb9beb78f7c56d7ae512c1f499c2c5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515582"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186526"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -20,7 +20,7 @@ Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-pla
 
 ## <a name="application-tiers"></a>アプリケーション層
 
-Azure アプリケーションの監視データのソースは階層に分類できます。最上位の階層はアプリケーション自体で、その下にある各階層は Azure プラットフォームのコンポーネントです。 階層によって、データへのアクセス方法が異なります。 以下の表にアプリケーションの各階層をまとめ、それぞれの階層の監視データのソースを後続のセクションで取り上げます。 それぞれのデータの場所とそのアクセス方法の説明については、[Azure における監視データの場所](data-locations.md)に関するページを参照してください。
+Azure アプリケーションの監視データのソースは階層に分類できます。最上位の階層はアプリケーション自体で、その下にある各階層は Azure プラットフォームのコンポーネントです。 階層によって、データへのアクセス方法が異なります。 以下の表にアプリケーションの各階層をまとめ、それぞれの階層の監視データのソースを後続のセクションで取り上げます。 それぞれのデータの場所とそのアクセス方法の説明については、[Azure における監視データの場所](../monitor-reference.md)に関するページを参照してください。
 
 
 ![監視の階層](../media/overview/overview.png)
@@ -86,7 +86,7 @@ Azure サブスクリプションの正常性と運用に関連したテレメ�
 ## <a name="azure-resources"></a>Azure リソース
 メトリックおよびリソースのログは、Azure リソースの _内部_ 操作に関する情報を提供します。 これらはほとんどの Azure サービスで利用できます。また、特定のサービスについては、さらに詳しいデータが監視ソリューションおよび Insights によって収集されます。
 
-![Azure リソースの収集](media/data-sources/azure-resources.png)
+![Azure リソースの収集](media/data-sources/data-source-azure-resources.svg)
 
 
 ### <a name="platform-metrics"></a>プラットフォームのメトリック 
@@ -119,7 +119,7 @@ Azure 仮想マシンに対して Azure Diagnostics 拡張機能を有効にす�
 
 | 到着地 | 説明 | リファレンス |
 |:---|:---|:---|
-| ストレージ | Azure 診断拡張機能は、常に Azure Storage アカウントに書き込みます。 | [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](diagnostics-extension-windows-install.md)<br>[Linux Diagnostic 拡張機能を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
+| ストレージ | Azure 診断拡張機能は、常に Azure Storage アカウントに書き込みます。 | [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](diagnostics-extension-windows-install.md)<br>[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Azure Monitor メトリック | パフォーマンス カウンターを収集するように Diagnostics 拡張機能を構成した場合、それらは Azure Monitor メトリック データベースに書き込まれます。 | [Windows 仮想マシンの Resource Manager テンプレートを使用してゲスト OS メトリックを Azure Monitor メトリック ストアに送信する](collect-custom-metrics-guestos-resource-manager-vm.md) |
 | Event Hubs | Event Hubs を使用して他の場所にデータをストリーム配信するように Diagnostics 拡張機能を構成します。  | [Event Hubs を使用して、Azure Diagnostics データをストリーミングする](diagnostics-extension-stream-event-hubs.md)<br>[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Application Insights のログ | アプリケーションをサポートするコンピューティング リソースからログとパフォーマンス カウンターを収集して、他のアプリケーション データと共に分析します。 | [Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](diagnostics-extension-to-application-insights.md) |
@@ -164,7 +164,7 @@ Azure Monitor における詳しいアプリケーションの監視は、さま
 |            | 例外のサブセットを得るためにキャプチャされたデバッグのスナップショット データは、Azure Storage に格納されます。 Azure portal で Application Insights を使用してダウンロードし、ローカル分析を行います。  | [スナップショットのしくみ](../app/snapshot-debugger.md#how-snapshots-work) |
 
 ## <a name="monitoring-solutions-and-insights"></a>監視ソリューションと Insights
-[監視ソリューション](../insights/solutions.md)と [Insights](../insights/insights-overview.md) は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 アプリケーションのさまざまな階層 (場合によっては複数の階層) に存在するリソースに対応することもできます。
+[監視ソリューション](../insights/solutions.md)と [Insights](../monitor-reference.md) は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 アプリケーションのさまざまな階層 (場合によっては複数の階層) に存在するリソースに対応することもできます。
 
 ### <a name="monitoring-solutions"></a>監視ソリューション
 
@@ -208,4 +208,4 @@ Azure のその他のサービスでは、Azure Monitor データ プラット�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor によって収集される監視データの種類](data-platform.md)と、このデータを表示および分析する方法の詳細を確認します。
-- [Azure リソースからのデータが格納されるさまざまな場所](data-locations.md)とそのアクセス方法を列挙します。 
+- [Azure リソースからのデータが格納されるさまざまな場所](../monitor-reference.md)とそのアクセス方法を列挙します。

@@ -23,8 +23,32 @@
 - name: 概念
   expanded: true
   items:
-    - name: Security
+    - name: セキュリティ
       items:
+        - name: セキュリティで保護された外部コラボレーション
+          items:
+            - name: セキュリティで保護された外部アクセスの概要
+              href: secure-external-access-resources.md
+            - name: 1 セキュリティ体制を判別する
+              href: 1-secure-access-posture.md
+            - name: 2 現在の状態を確認する
+              href: 2-secure-access-current-state.md
+            - name: 3 セキュリティ プランを作成する
+              href: 3-secure-access-plan.md
+            - name: 4 グループを使用してアクセスをセキュリティで保護する
+              href: 4-secure-access-groups.md
+            - name: 5 B2B コラボレーションを使用してアクセスをセキュリティで保護する
+              href: 5-secure-access-b2b.md
+            - name: 6 エンタイトルメント管理を使用してアクセスをセキュリティで保護する
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7 条件付きアクセスを使用してアクセスをセキュリティで保護する
+              href: 7-secure-access-conditional-access.md
+            - name: 8 秘密度ラベルを使用してアクセスをセキュリティで保護する
+              href: 8-secure-access-sensitivity-labels.md
+            - name: 9 Teams、SharePoint、OneDrive へのアクセスをセキュリティで保護する
+              href: 9-secure-access-teams-sharepoint.md
+        - name: オンプレミスの攻撃から Microsoft 365 を保護する
+          href: protect-m365-from-on-premises-attacks.md
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
         - name: セキュリティの既定値群
@@ -49,6 +73,78 @@
           href: active-directory-architecture.md
         - name: すべてのアプリを Azure AD と統合する
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: 認証とプロトコルのプロビジョニング
+          items:
+            - name: 概要
+              href: auth-sync-overview.md
+            - name: ヘッダーベースの認証
+              href: auth-header-based.md
+            - name: LDAP 認証
+              href: auth-ldap.md
+            - name: OAuth 2.0 認証
+              href: auth-oauth2.md
+            - name: Open ID Connect 認証
+              href: auth-oidc.md
+            - name: パスワードベースの認証
+              href: auth-password-based-sso.md
+            - name: RADIUS 認証
+              href: auth-radius.md
+            - name: リモート デスクトップ ゲートウェイ認証
+              href: auth-remote-desktop-gateway.md
+            - name: SAML 認証
+              href: auth-saml.md
+            - name: SSH 認証
+              href: auth-ssh.md
+            - name: Windows 認証 - KCD
+              href: auth-kcd.md
+            - name: ディレクトリ同期
+              href: sync-directory.md
+            - name: LDAP 同期
+              href: sync-ldap.md
+            - name: SCIM 同期
+              href: sync-scim.md
+        - name: 回復性のための構築
+          items:
+            - name: 概要
+              href: resilience-overview.md
+            - name: インフラストラクチャのガイダンス
+              items:
+                - name: インフラストラクチャの概要
+                  href: resilience-in-infrastructure.md
+                - name: 資格情報の管理
+                  href: resilience-in-credentials.md
+                - name: デバイスの状態
+                  href: resilience-with-device-states.md
+                - name: 継続的アクセス評価
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: 外部ユーザーの認証
+                  href: resilience-b2b-authentication.md
+                - name: ハイブリッド認証
+                  href: resilience-in-hybrid.md
+                - name: アプリケーション プロキシ
+                  href: resilience-on-premises-access.md
+            - name: Azure AD B2C のガイダンス
+              items:
+                - name: 回復性に関する Azure AD B2C の概要
+                  href: resilience-b2c.md
+                - name: エンド ユーザー エクスペリエンス
+                  href: resilient-end-user-experience.md
+                - name: 外部プロセスとのインターフェイス
+                  href: resilient-external-processes.md
+                - name: Azure AD B2C 開発者のベスト プラクティス
+                  href: resilience-b2c-developer-best-practices.md
+                - name: 監視と分析
+                  href: resilience-with-monitoring-alerting.md
+            - name: アプリケーション開発のガイダンス
+              items:
+                - name: 開発の概要
+                  href: resilience-app-development-overview.md
+                - name: クライアント アプリケーション
+                  href: resilience-client-app.md
+                - name: デーモン アプリケーション
+                  href: resilience-daemon-app.md
+        - name: Azure で使用される証明機関
+          href: certificate-authorities.md
     - name: デプロイ ガイド
       items:
         - name: デプロイ 30、90、およびそれ以降
@@ -88,6 +184,8 @@
           href: customize-branding.md
         - name: '"サインイン状態の維持" の構成'
           href: keep-me-signed-in.md
+        - name: テナント ID を検索する方法
+          href: active-directory-how-to-find-tenant.md
         - name: Azure サブスクリプションを関連付ける
           href: active-directory-how-subscriptions-associated-directory.md
         - name: プライバシー情報を追加する

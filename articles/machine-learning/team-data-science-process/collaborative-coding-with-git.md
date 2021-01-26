@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090214"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588711"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -25,7 +25,7 @@ ms.locfileid: "87090214"
 
 Azure DevOps では、Azure Boards のユーザー ストーリーまたはタスク作業項目を Azure Repos Git リポジトリ ブランチに接続する便利な方法を提供します。 関連付けられているコードにユーザー ストーリーまたはタスクを直接リンクできます。 
 
-作業項目を新しいブランチに接続するには、作業項目の横にある**アクション**の省略記号 ( **...** ) を選択し、コンテキスト メニューでスクロールして **[新しいブランチ]** を選択します。  
+作業項目を新しいブランチに接続するには、作業項目の横にある **アクション** の省略記号 ( **...** ) を選択し、コンテキスト メニューでスクロールして **[新しいブランチ]** を選択します。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
@@ -39,7 +39,7 @@ Windows または Linux で次の Git bash コマンドを使用して新しい�
 git checkout -b <new branch name> <base branch name>
 
 ```
-\<base branch name> を指定しない場合、新しいブランチは、`master` に基づきます。 
+\<base branch name> を指定しない場合、新しいブランチは、`main` に基づきます。 
 
 作業ブランチに切り替えるには、次のコマンドを実行します。 
 
@@ -47,7 +47,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-作業ブランチに切り替えた後に、その作業項目を完成するために、コードやドキュメント アーティファクトの開発を開始できます。 `git checkout master` を実行すると、`master` ブランチに戻ります。
+作業ブランチに切り替えた後に、その作業項目を完成するために、コードやドキュメント アーティファクトの開発を開始できます。 `git checkout main` を実行すると、`main` ブランチに戻ります。
 
 ユーザー ストーリー作業項目ごとに Git ブランチを作成することをお勧めします。 次に、タスク作業項目ごとに、ユーザー ストーリー ブランチに基づいてブランチを作成できます。 複数の担当者が同じプロジェクトの異なるユーザー ストーリーや、同じユーザー ストーリーの異なるタスクで作業している場合は、そのユーザー ストーリーとタスクの関係に対応する階層にブランチを編成します。 ブランチを共有する場合は、各チーム メンバーが異なるブランチや異なるコード、または他のアーティファクトに取り組むようにすることで、競合を最小限に抑えることができます。 
 
@@ -74,7 +74,7 @@ git push origin script
 
 ## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Pull request を作成する
 
-1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で*pull request*を作成して送信できます。 
+1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で *pull request* を作成して送信できます。 
 
 Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[Pull request]** をポイントします。 次に、 **[新しい pull request]** ボタンまたは **[Pull request の作成]** リンクのいずれかを選択します。
 
@@ -105,7 +105,7 @@ pull request が作成されると、レビュー担当者は、pull request の
 次の Git bash コマンドを使用して、`script` 作業ブランチをそのベース ブランチにマージし、マージ後に作業ブランチを削除することもできます。
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```

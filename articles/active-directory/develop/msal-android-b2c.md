@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119880"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131646"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 
-Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者は、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) を使用してソーシャル ID およびローカル ID でユーザーを認証できます。 Azure AD B2C は、ID 管理サービスです。 それを使用すると、貴社のアプリケーションを顧客が使用するときに、顧客がサインアップ、サインイン、およびプロファイル管理を行う方法をカスタマイズおよび制御することができます。
+Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者は、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) を使用してソーシャルおよびローカル ID でユーザーを認証できます。 Azure AD B2C は、ID 管理サービスです。 それを使用すると、貴社のアプリケーションを顧客が使用するときに、顧客がサインアップ、サインイン、およびプロファイル管理を行う方法をカスタマイズおよび制御することができます。
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>既知の機関とリダイレクト URI を構成する
 
@@ -36,11 +36,14 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 
 アプリ用の構成ファイルの場合、2 つの `authorities` が宣言されます。 ポリシーごとに 1 つです。 各機関の `type` プロパティは `B2C` です。
 
+>注:B2C アプリケーションの場合、`account_mode` を **MULTIPLE** に設定する必要があります。 [複数のアカウントのパブリック クライアント アプリ](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application)の詳細については、ドキュメントを参照してください。
+
 ### `app/src/main/res/raw/msal_config.json`
 ```json
 {
     "client_id": "<your_client_id_here>",
     "redirect_uri": "<your_redirect_uri_here>",
+    "account_mode" : "MULTIPLE",
     "authorities": [{
             "type": "B2C",
             "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
@@ -129,7 +132,7 @@ AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Build
 
         @Override
         public void onError(MsalException exception) {
-            // Token request was unsuccesful, inspect the exception
+            // Token request was unsuccessful, inspect the exception
         }
     })
     .build();
@@ -153,7 +156,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>パスワード変更ポリシーを処理する
 
-ローカル アカウントのサインアップまたはサインイン ユーザー フローでは、"**パスワードを忘れた場合**" のリンクをクリックするように促します。 このリンクをクリックしても、パスワード リセット ユーザー フローは自動的にはトリガーされません。
+ローカル アカウントのサインアップまたはサインイン ユーザー フローでは、"**パスワードを忘れた場合**"  。 このリンクをクリックしても、パスワード リセット ユーザー フローは自動的にはトリガーされません。
 
 代わりに、エラー コード `AADB2C90118` がご利用のアプリに返されます。 アプリケーションでは、パスワードをリセットする特定のユーザー フローを実行して、このエラー コードを処理する必要があります。
 

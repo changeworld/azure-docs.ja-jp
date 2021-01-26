@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: c8d7b13f9e35a41a414a44c908997cfcc550af41
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: a21df6e5f8d437415bb5376969d56d26153b5c5f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011737"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500463"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure の Linux 仮想マシンを監視する
 
@@ -192,4 +192,4 @@ VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行�
 次のチュートリアルに進み、Azure Security Center について学習してください。
 
 > [!div class="nextstepaction"]
-> [VM のセキュリティの管理](tutorial-azure-security.md)
+> [VM のセキュリティの管理](../tutorial-azure-security.md)

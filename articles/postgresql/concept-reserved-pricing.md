@@ -1,17 +1,17 @@
 ---
 title: 予約済みコンピューティングの価格 - Azure Database for PostgreSQL - Single Server
 description: 予約容量を使用して Azure Database for PostgreSQL 計算リソースを前払いする
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 9c5d6359ce0e79fce2e80911ff78d19cc88162b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc6cc40c936876c856326e330b67ef465f90cde
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208707"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240445"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Azure Database for PostgreSQL の前払い - 予約容量を持つ Single Server 計算リソース
 
@@ -20,15 +20,15 @@ Azure Database for PostgreSQL では計算リソースを前払いすること�
 特定の Azure Database for PostgreSQL サーバーに予約を割り当てる必要はありません。 既に実行している Azure Database for PostgreSQL または新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Azure Database for PostgreSQL のコンピューティング料金は従量課金制で課金されなくなります。 予約には、PostgreSQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Database for PostgreSQL に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for PostgreSQL の予約容量オファー](https://azure.microsoft.com/pricing/details/postgresql/)に関するページを参照してください。 </br>
 
 > [!IMPORTANT]
-> 予約容量の価格は、Azure Database for PostgreSQL の [Single Server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) および [Hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) デプロイ オプションの両方で使用できます。 Hyperscale (Citus) での RI の価格の詳細については、[このページ](concepts-hyperscale-reserved-pricing.md)を参照してください。
+> 予約容量の価格は、Azure Database for PostgreSQL の [Single Server](./overview.md#azure-database-for-postgresql---single-server) および [Hyperscale Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) デプロイ オプションの両方で使用できます。 Hyperscale (Citus) での RI の価格の詳細については、[このページ](concepts-hyperscale-reserved-pricing.md)を参照してください。
 
-Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal.azure.com/) で購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/monthly-payments-reservations.md)で行います。 予約容量を購入するには:
+Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal.azure.com/) で購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 * 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
-* Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
+* Enterprise サブスクリプションの場合、 [EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 * クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Database for PostgreSQL の予約容量を購入できます。 </br>
 
-エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)」をご覧ください。
+エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>購入する前に適切なサーバー サイズを決定する
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 4. 必須フィールドに必要事項を入力します。 選択した属性と一致する既存または新規のデータベースが、予約容量の割引を受けられます。 割引を受ける Azure Database for PostgreSQL サーバーの実際の数は、選択したスコープと数量によって変わります。
 
 
-![予約価格の概要](media/concepts-reserved-pricing/postgresql-reserved-price.png)
+:::image type="content" source="media/concepts-reserved-pricing/postgresql-reserved-price.png" alt-text="予約価格の概要":::
 
 
 次の表で、必須フィールドについて説明します。
@@ -63,7 +63,7 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="vcore-size-flexibility"></a>仮想コアのサイズの柔軟性
 
@@ -79,9 +79,9 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-* [Azure の予約とは](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-* [Azure の予約の管理](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Azure の予約割引を理解する](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [従量課金制サブスクリプションの予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [エンタープライズ加入契約の予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Azure の予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Azure の予約割引を理解する](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [従量課金制サブスクリプションの予約使用量について](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [エンタープライズ加入契約の予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)

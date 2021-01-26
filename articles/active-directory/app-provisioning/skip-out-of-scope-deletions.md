@@ -11,22 +11,21 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995371"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする
 
 既定では、Azure AD プロビジョニング エンジンは、スコープ外に出るユーザーを論理的に削除または無効化します。 ただし、Workday to AD User Inbound Provisioning などの特定のシナリオでは、この動作が予期されていない場合があり、この既定の動作をオーバーライドしたいことがあります。  
 
-この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions*** を設定する方法について説明します。 
-* ***SkipOutOfScopeDeletions*** が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
-* ***SkipOutOfScopeDeletions*** が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、*プロビジョニング アプリ*のレベルで設定され、Graph API を使用して構成できます。 
+この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions** _ を設定する方法について説明します。 _ ***SkipOutOfScopeDeletions** _ が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
+_ ***SkipOutOfScopeDeletions** _ が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、"プロビジョニング アプリ" のレベルで設定され、Graph API を使用して構成できます。 
 
-この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、この構成は*他のすべてのアプリ* (ServiceNow、Salesforce、Dropbox など) でも使用できます。
+この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、この構成は *他のすべてのアプリ* (ServiceNow、Salesforce、Dropbox など) でも使用できます。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>手順 1:プロビジョニング アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
 
@@ -69,9 +68,9 @@ Microsoft Graph Explorer で、[servicePrincipalId] を「[手順 1](#step-1-ret
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>手順 4:SkipOutOfScopeDeletions フラグを使用して、シークレット エンドポイントを更新します
 
-Graph エクスプローラーで次のコマンドを実行して、***SkipOutOfScopeDeletions*** フラグを使用してシークレット エンドポイントを更新します。 
+Graph エクスプローラーで下のコマンドを実行して、**_SkipOutOfScopeDeletions_* _ フラグを使用してシークレット エンドポイントを更新します。 
 
-以下の URL で、[servicePrincipalId] を[手順 1.](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) で抽出した **ServicePrincipalId** に置き換えます。 
+下の URL で、[servicePrincipalId] を [手順 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) で抽出した _ *ServicePrincipalId** に置き換えます。 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
@@ -90,7 +89,7 @@ Graph エクスプローラーで次のコマンドを実行して、***SkipOutO
 
 特定のユーザーをスキップするようにスコープ規則を更新することで、このフラグが予期される動作になることをテストできます。 次の例では、新しいスコープ規則を追加することによって、ID 21173 の従業員 (以前はスコープ内) を除外しています。 
 
-   ![スコープ設定の例](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![ユーザーの例が強調表示された [スコープ フィルターの追加] セクションを示すスクリーンショット。](./media/skip-out-of-scope-deletions/skip-07.png)
 
 次のプロビジョニング サイクルでは、Azure AD プロビジョニング サービスによって、ユーザー 21173 がスコープ外に出たことが識別され、SkipOutOfScopeDeletions プロパティが有効になっている場合は、そのユーザーの同期規則によって、次のようなメッセージが表示されます。 
 

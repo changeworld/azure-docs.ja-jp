@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504306"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023229"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>低速から中速のネットワーク帯域幅での小規模なデータセットのデータ転送
  
@@ -32,7 +32,7 @@ ms.locfileid: "85504306"
 
 このシナリオで推奨されるオプションは次のとおりです。
 
-- Azure Storage Explorer や Azure portal の Azure Storage などの**グラフィカル インターフェイス ツール**。 これらでは、データを表示して数個のファイルをすばやく転送する簡単な手段が提供されます。
+- Azure Storage Explorer や Azure portal の Azure Storage などの **グラフィカル インターフェイス ツール**。 これらでは、データを表示して数個のファイルをすばやく転送する簡単な手段が提供されます。
 
     - **Azure Storage Explorer** - このクロスプラットフォーム ツールを使用すると、Azure ストレージ アカウントの内容を管理できます。 BLOB、ファイル、キュー、テーブル、Azure Cosmos DB のエンティティをアップロード、ダウンロード、および管理できます。 BLOB ストレージと共に使用して BLOB とフォルダーを管理できるだけでなく、ローカル ファイル システムと BLOB ストレージ間、またはストレージ アカウント間で BLOB をアップロードおよびダウンロードすることができます。
     - **Azure portal** - Azure portal の Azure Storage では、ファイルを調べて一度に 1 つずつ新しいファイルをアップロードするための、Web ベースのインターフェイスが提供されています。 ツールをインストールしたくない場合、またはファイルをすばやく探索するためや少数のファイルをアップロードするためだけにコマンドを発行したくない場合に適しています。
@@ -63,6 +63,5 @@ ms.locfileid: "85504306"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage Explorer を使用してデータを転送する](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)方法を学習します。
-- [AzCopy を使用してデータを転送する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-
+- [Azure Storage Explorer を使用してデータを転送する](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md)方法を学習します。
+- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md)

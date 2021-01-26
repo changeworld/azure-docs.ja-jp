@@ -3,12 +3,12 @@ title: Azure Backup Server V3 RTM でバックアップできる内容
 description: この記事では、Azure Backup Server V3 RTM によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示した保護のマトリックスを示します。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c1a1a876a9249a32c87c50d7f320a62b9c478caf
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763611"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752381"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM の保護マトリックス
 
@@ -78,7 +78,7 @@ ms.locfileid: "88763611"
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|サポートされていません|保護:Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi ライセンス版 5.5/6.0/6.5 |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3、V2|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
 |VMware VM|[VMware vSphere ライセンス版 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
-|Linux|Hyper-V または VMware ゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3、V2|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護:仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> ファイル整合性のあるスナップショットのみがサポートされます。 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
+|Linux|[Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) または [VMware](backup-azure-backup-server-vmware.md) のゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3、V2|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護:仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> ファイル整合性のあるスナップショットのみがサポートされます。 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 

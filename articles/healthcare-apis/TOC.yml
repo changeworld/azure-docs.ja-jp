@@ -9,20 +9,25 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Azure API for FHIR をデプロイする - ポータル
-      href: fhir-paas-portal-quickstart.md
-    - name: Azure API for FHIR をデプロイする - PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: Azure API for FHIR をデプロイする - CLI
-      href: fhir-paas-cli-quickstart.md
-    - name: FHIR Server for Azure をデプロイする - ポータル
-      href: fhir-oss-portal-quickstart.md
-    - name: FHIR Server for Azure をデプロイする - PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: FHIR Server for Azure をデプロイする - CLI
-      href: fhir-oss-cli-quickstart.md
-    - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする - ポータル
-      href: iot-fhir-portal-quickstart.md
+    - name: Azure API for FHIR をデプロイする
+      expanded: false
+      items:
+        - name: ポータルの使用
+          href: fhir-paas-portal-quickstart.md
+        - name: PowerShell の使用
+          href: fhir-paas-powershell-quickstart.md
+        - name: CLI の使用
+          href: fhir-paas-cli-quickstart.md
+        - name: ARM テンプレートの使用
+          displayName: Resource Manager
+          href: fhir-paas-arm-template-quickstart.md
+    - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする
+      expanded: false
+      items:
+        - name: ポータルの使用
+          href: iot-fhir-portal-quickstart.md
+        - name: ARM テンプレートの使用
+          href: iot-fhir-arm-template-quickstart.md
 - name: チュートリアル
   expanded: false
   items:
@@ -73,19 +78,30 @@
           href: configure-local-rbac.md
         - name: データベース設定を構成する
           href: configure-database.md
+        - name: 顧客管理キーの構成
+          href: customer-managed-key.md
         - name: CORS を構成する
           href: configure-cross-origin-resource-sharing.md
         - name: エクスポートを構成する
           href: configure-export-data.md
+        - name: Private Link を構成する
+          href: configure-private-link.md
     - name: データのエクスポート
       expanded: false
       items:
-        - name: 匿名化エクスポート
+        - name: データのエクスポート
           href: export-data.md
+        - name: 匿名化エクスポート
+          href: de-identified-export.md
     - name: ID オブジェクト ID を見つける
       href: find-identity-object-ids.md
-    - name: Azure API for FHIR® で診断ログを有効にする
-      href: enable-diagnostic-logging.md
+    - name: 診断ログと指標
+      expanded: false
+      items:
+        - name: Azure API for FHIR で診断ログを有効にする
+          href: enable-diagnostic-logging.md
+        - name: Azure IoT Connector for FHIR (プレビュー) のメトリックを表示および構成する
+          href: iot-metrics-display.md
     - name: Azure API for FHIR のトークンを取得する - CLI
       href: get-healthcare-apis-access-token-cli.md
     - name: Azure IoT Connector for FHIR (プレビュー) のエラーのトラブルシューティングを行う

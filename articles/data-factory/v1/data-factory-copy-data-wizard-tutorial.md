@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 93360e48dad13b9ec57175d31ecb61d32974f066
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85248549"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128404"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル:コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
@@ -33,9 +33,9 @@ ms.locfileid: "85248549"
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 
-このチュートリアルでは、**コピー ウィザード**を使用して、Azure Blob Storage から Azure SQL Database にデータをコピーする方法を示します。 
+このチュートリアルでは、**コピー ウィザード** を使用して、Azure Blob Storage から Azure SQL Database にデータをコピーする方法を示します。 
 
-Azure Data Factory の**コピー ウィザード**を使用すると、サポートされているソース データ ストアからサポートされているターゲット データ ストアにデータをコピーするデータ パイプラインを簡単に作成することができます。 そのため、データ移動のシナリオを想定したサンプル パイプラインを作成する場合は、まずこのウィザードを使用することをお勧めします。 コピー アクティビティのソースおよびターゲットとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。  
+Azure Data Factory の **コピー ウィザード** を使用すると、サポートされているソース データ ストアからサポートされているターゲット データ ストアにデータをコピーするデータ パイプラインを簡単に作成することができます。 そのため、データ移動のシナリオを想定したサンプル パイプラインを作成する場合は、まずこのウィザードを使用することをお勧めします。 コピー アクティビティのソースおよびターゲットとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。  
 
 このチュートリアルでは、Azure Data Factory を作成し、コピー ウィザードを起動して、一連の手順を実行する方法を紹介しながら、データの取り込み/移動のシナリオについて詳しく説明します。 ウィザードの手順が完了すると、Azure Blob Storage から Azure SQL Database にデータを複製するコピー アクティビティを含んだパイプラインが自動的に作成されます。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
@@ -43,7 +43,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
 このチュートリアルを実行する前に、 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関する記事に記載されている前提条件を満たしてください。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
-この手順では、Azure ポータルを使用して、 **ADFTutorialDataFactory**という名前の Azure データ ファクトリを作成します。
+この手順では、Azure ポータルを使用して、 **ADFTutorialDataFactory** という名前の Azure データ ファクトリを作成します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 左上隅の **[リソースの作成]** 、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
@@ -55,14 +55,14 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
        Azure Data Factory の名前はグローバルに一意にする必要があります。 `Data factory name “ADFTutorialDataFactory” is not available` エラーが発生した場合は、データ ファクトリの名前を (yournameADFTutorialDataFactoryYYYYMMDD などに) 変更して作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
       
        ![使用できない Data Factory 名](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
-   2. Azure **サブスクリプション**を選択します。
+   2. Azure **サブスクリプション** を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。 
       
       - **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。
           
         このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/management/overview.md)に関するページを参照してください。
-   4. データ ファクトリの**場所**を選択します。
+   4. データ ファクトリの **場所** を選択します。
    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
    6. **Create** をクリックしてください。
       
@@ -72,10 +72,10 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    ![データ ファクトリのホーム ページ](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
-1. [Data Factory] ブレードで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
+1. [Data Factory] ブレードで **[データのコピー]** タイルをクリックして、**コピー ウィザード** を起動します。 
    
    > [!NOTE]
-   > 承認の処理が進行中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、ブラウザーで**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
+   > 承認の処理が進行中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、ブラウザーで **サード パーティの Cookie とサイト データをブロック** する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
 2. **[プロパティ]** ページで次の操作を実行します。
    
    1. **[タスク名]** に「**CopyFromBlobToAzureSql**」と入力します。
@@ -91,8 +91,8 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    
    1. **[リンクされたサービス名]** に「**AzureStorageLinkedService**」と入力します。
    2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
-   3. Azure **サブスクリプション**を選択します。  
-   4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント**を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、 **[Account selection method (アカウントの選択方法)]** で **[Enter manually (手動で入力)]** オプションを選択し、 **[次へ]** をクリックします。 
+   3. Azure **サブスクリプション** を選択します。  
+   4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント** を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、 **[Account selection method (アカウントの選択方法)]** で **[Enter manually (手動で入力)]** オプションを選択し、 **[次へ]** をクリックします。 
       
       ![Copy Tool - Specify the Azure Blob storage account](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
@@ -100,10 +100,10 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    1. **[adftutorial]** (フォルダー) をダブルクリックします。
    2. **emp.txt** を選択し、 **[選択]** をクリックします。
       
-      ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
+      ![入力ファイルの [選択] オプションを示すスクリーンショット。](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、 **[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]** は選択しないでください。 
    
-    ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
+    ![入力の [Binary copy]\(バイナリ コピー\) オプションを示すスクリーンショット。](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
 7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 区切り記号を手動で入力することで、コピー ウィザードによる自動検出を防止 (オーバーライド) することもできます。 区切り記号を確認し、データをプレビューしたら、 **[次へ]** をクリックします。 
    
     ![Copy Tool - File format settings](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
@@ -114,13 +114,13 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    
    1. **[接続名]** フィールドに「**AzureSqlLinkedService**」と入力します。
    2. **[Server / database selection method (サーバー/データベースの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
-   3. Azure **サブスクリプション**を選択します。  
-   4. **サーバー名**と**データベース**を選択します。
-   5. **ユーザー名**と**パスワード**を入力します。
+   3. Azure **サブスクリプション** を選択します。  
+   4. **サーバー名** と **データベース** を選択します。
+   5. **ユーザー名** と **パスワード** を入力します。
    6. **[次へ]** をクリックします。  
       
       ![Copy Tool - Azure SQL Database の指定](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
-10. **[テーブル マッピング]** ページで、 **[ターゲット]** フィールドのドロップダウン リストから **[emp]** を選択します。**下向き矢印**をクリックすると (省略可能)、スキーマを表示し、データをプレビューできます。
+10. **[テーブル マッピング]** ページで、 **[ターゲット]** フィールドのドロップダウン リストから **[emp]** を選択します。**下向き矢印** をクリックすると (省略可能)、スキーマを表示し、データをプレビューできます。
     
      ![Copy Tool - Table mapping](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
 11. **[Schema mapping (スキーマ マッピング)]** ページで、 **[次へ]** をクリックします。
@@ -128,10 +128,10 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
     ![Copy Tool - schema mapping](./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png)
 12. **[Performance settings (パフォーマンス設定)]** ページで、 **[次へ]** をクリックします。 
     
-    ![Copy Tool - performance settings](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
+    ![[Performance settings]\(パフォーマンス設定\) ページを示すスクリーンショット。ここでは、[次へ] を選択できます。](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
 13. **[概要]** ページの内容を確認し、 **[完了]** をクリックします。 これにより、2 つのリンクされたサービス、2 つのデータセット (入力と出力)、1 つのパイプラインが (コピー ウィザードを起動した場所から) データ ファクトリに作成されます。 
     
-    ![Copy Tool - performance settings](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
+    ![[概要] ページを示すスクリーンショット。ここでは、[次へ] を選択できます。](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## <a name="launch-monitor-and-manage-application"></a>監視と管理アプリケーションの起動
 1. **[デプロイ]** ページでリンク `Click here to monitor copy pipeline` をクリックします。

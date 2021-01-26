@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207357"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858639"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
 仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 ゲートウェイやその接続の監視は、通信が切断されていないことを確認するために重要です。 Network Watcher には、ゲートウェイや接続をトラブルシューティングする機能が用意されています。 この機能は、ポータル、PowerShell、Azure CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher はゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は、実行時間の長いトランザクションです。 診断が完了すると、結果が返されます。
 
-![ポータル][2]
+![スクリーンショットには、Network Watcher の [VPN 診断] が示されています。][2]
 
 ## <a name="results"></a>結果
 
@@ -105,7 +105,7 @@ ms.locfileid: "86207357"
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
+Azure Storage アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -207,6 +207,9 @@ Elapsed Time            330 sec
 |         6    ikeext               ike_sa_management_c3162  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
+
+## <a name="considerations"></a>考慮事項 
+* CLI のバグ: Azure CLI を使用してコマンドを実行する場合は、VPN Gateway とストレージ アカウントが同じリソース グループに存在する必要があります。 異なるリソース グループにリソースがあるお客様は、代わりに PowerShell または Azure portal を使用できます。  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279221"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964934"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple:よく寄せられる質問
 
@@ -40,10 +40,10 @@ StorSimple パートナーが Azure Portal で StorSimple Virtual Array をデ�
 
 詳細については、[CSP プログラムにおける StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/) に関するページを参照してください。 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>StorSimple は使用量ベースですか。それとも、Office 365 と Enterprise Mobility Suite (EMS) のようにシート ライセンスに基づいていますか。
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>StorSimple は使用量ベースですか。それとも、Microsoft 365 と Enterprise Mobility Suite (EMS) のようにシート ライセンスに基づいていますか。
 StorSimple は使用量ベースのサービスです。 CSP ルート経由で StorSimple Virtual Array を調達した顧客は、Virtual Array と Azure の使用量を支払います。これは CSP の請求書で別個の項目として請求されます。 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>StorSimple のビジネス モデルは、Office 365 や Enterprise Mobility Suite といった他のサービスのビジネス モデルと似ていますか。 
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>StorSimple のビジネス モデルは、Microsoft 365 や Enterprise Mobility Suite といった他のサービスのビジネス モデルと似ていますか。 
 はい。 このモデルは、Azure における使用量ベースの他のサービスと同様に、卸売り割引モデルです。 StorSimple の卸売り割引は、他の Azure サービスの割引と似ています。 このモデルでは、StorSimple Virtual Array を使用して販売を拡大し、Azure の使用を後押しする機会が CSP パートナーに提供されます。  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>リリース当初にはどの StorSimple SKU が使用できますか。
@@ -59,7 +59,7 @@ CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能な�
 複数のソリューションを提供できます。
 
 - パートナーは、StorSimple Virtual Array を再販売できます。 
-- パートナーは、StorSimple を基に構築されたソリューションのほか、その他の Azure サービスやサードパーティ製ソフトウェアを提供できます。 詳細については、[StorSimple 関連のソリューションの例](https://aka.ms/storsimple-build-solutions)を確認してください。
+- パートナーは、StorSimple を基に構築されたソリューションのほか、その他の Azure サービスやサードパーティ製ソフトウェアを提供できます。 詳細については、[StorSimple 関連のソリューションの例](./storsimple-disaster-recovery-using-azure-site-recovery.md)を確認してください。
 - パートナーは管理されたサービスを提供することで、新しいビジネス モデルを発見することもできます。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP パートナーが受けられるインセンティブは何ですか。 自分に CSP プログラムのインセンティブを受ける資格があるか知りたいのですが。
@@ -86,7 +86,7 @@ CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能な�
 ## <a name="support-for-storsimple-and-csp"></a>StorSimple と CSP のサポート
 
 ### <a name="are-there-any-forums-to-get-additional-support-for-csp-partners-to-deploy-and-manage-storsimple"></a>CSP パートナーが StorSimple をデプロイして管理する際に追加のサポートを得られるフォーラムはありますか。
-CSP フォーラムの StorSimple のグループに参加することで、よく寄せられる質問への回答を得られます。 最初に、[Azure Advisor Yammer グループ](https://www.yammer.com/azureadvisors)に参加する必要があります。 次に、**StorSimple パートナー アドバイザー**というグループを探して参加してください。
+CSP フォーラムの StorSimple のグループに参加することで、よく寄せられる質問への回答を得られます。 最初に、[Azure Advisor Yammer グループ](https://www.yammer.com/azureadvisors)に参加する必要があります。 次に、**StorSimple パートナー アドバイザー** というグループを探して参加してください。
 
 ### <a name="how-does-the-support-work-for-storsimple-for-csp"></a>CSP の StorSimple ではサポートのしくみはどうなっていますか。 
 CSP の StorSimple のサポート モデルは、CSP の他の Azure サービスのものと同じです。 詳細については、[CSP のカスタマー サポート](/partner-center/csp-overview)に関するページをご覧ください。

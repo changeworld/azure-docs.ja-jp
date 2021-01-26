@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226333"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097005"
 ---
-このクイックスタートでは、Speech Devices SDK for Android を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。
+このクイックスタートでは、Speech Devices SDK for Android を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription.md)デバイスとして使用する方法について説明します。
 
-このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../get-started.md) アカウントが必要になります。
+このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) アカウントが必要になります。
 
 サンプル アプリケーションのソース コードは Speech Devices SDK に付属しています。 [GitHub で入手する](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)こともできます。
 
@@ -24,18 +24,18 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
 - [開発キット](../get-speech-devices-sdk.md)に付属している手順に従って、デバイスの電源を入れます。
 
-- [Speech Devices SDK](https://aka.ms/sdsdk-download) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
+- [Speech Devices SDK](../speech-devices-sdk.md) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
 
   > [!NOTE]
   > このクイックスタートでは、アプリが C:\SDSDK\Android-Sample-Release に抽出されることを前提としています
 
-- [Speech サービス用の Azure サブスクリプション キー](../get-started.md)を取得します
+- [Speech サービス用の Azure サブスクリプション キー](../overview.md#try-the-speech-service-for-free)を取得します
 
 - 会話の文字起こしを使用する予定がある場合は、[円形マイク デバイス](../get-speech-devices-sdk.md)を使用する必要があります。この機能は現在、"centralus" および "eastasia" リージョンの "en-US" と "zh-CN" でのみ使用できます。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
-- Speech サービスを使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。
+- Speech サービスを使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](../../luis/luis-how-to-azure-subscription.md) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](../how-to-recognize-intents-from-speech-csharp.md)」 を参照してください。
 
-  [LUIS の単純なモデルを作成](https://docs.microsoft.com/azure/cognitive-services/luis/)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://aka.ms/sdsdk-luis)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、 **[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
+  [LUIS の単純なモデルを作成](../../luis/index.yml)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://aka.ms/sdsdk-luis)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、 **[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
 
 - [Android Studio](https://developer.android.com/studio/) と [Vysor](https://vysor.io/download/) を PC にインストールします。
 
@@ -96,7 +96,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
     依存関係セクションに次の行を追加して、**build.gradle(Module:app)** を更新します。 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
     ```
     
 1. ソース コードに Speech サブスクリプション キーを追加します。 意図認識を試す場合は、[Language Understanding Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) のサブスクリプション キーとアプリケーション ID も追加します。
@@ -122,7 +122,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 1. 既定のキーワードは "Computer" です。 用意されている別のキーワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替キーワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、C:\SDSDK\Android-Sample-Release\keyword\Computer には、キーワード "Computer" に使用されるファイルが含まれています。
 
    > [!TIP]
-   > [カスタム キーワードを作成する](../speech-devices-sdk-create-kws.md)こともできます。
+   > [カスタム キーワードを作成する](../custom-keyword-basics.md)こともできます。
 
    新しいキーワードを使用するには、`MainActivity.java` で下記の 2 行を更新し、キーワード パッケージをお使いのアプリにコピーします。 たとえば、キーワード パッケージ kws-machine.zip からキーワード "Machine" を使用するには:
 
@@ -162,7 +162,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
    ![Speech Devices SDK のサンプル アプリケーションとオプション](../media/speech-devices-sdk/qsg-8.png)
 
-1. 新しい会話の文字起こしのデモをお試しください。 'セッションの開始' で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、デバイス上のファイル `/video/participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](../how-to-use-conversation-transcription-service.md) に関するページを参照してください。
+1. 新しい会話の文字起こしのデモをお試しください。 'セッションの開始' で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、デバイス上のファイル `/video/participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](../how-to-use-conversation-transcription.md) に関するページを参照してください。
 
    ![会話の文字起こしアプリケーションのデモ](../media/speech-devices-sdk/qsg-15.png)
 

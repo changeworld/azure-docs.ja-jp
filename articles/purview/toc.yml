@@ -1,0 +1,158 @@
+items:
+  - name: Azure Purview のドキュメント
+    href: index.yml
+  - name: 概要
+    items:
+      - name: Azure Purview とは
+        href: overview.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: Purview アカウントの作成 - Azure portal
+        href: create-catalog-portal.md
+      - name: Purview アカウントの作成 - Azure PowerShell
+        href: create-catalog-powershell.md
+  - name: チュートリアル
+    items:
+      - name: スタート キット
+        items:
+          - name: データのスキャン
+            href: tutorial-scan-data.md
+          - name: ホーム ページのナビゲーションと検索
+            href: tutorial-asset-search.md
+          - name: アセットの参照とデータ系列の表示
+            href: tutorial-browse-and-view-lineage.md
+          - name: リソース セット、アセット、スキーマ、分類を調べる
+            href: tutorial-schemas-and-classifications.md
+          - name: 用語集の用語を作成する
+            href: tutorial-import-create-glossary-terms.md
+      - name: オンプレミスの SQL サーバーの登録とスキャン
+        href: register-scan-on-premises-sql-server.md
+      - name: カタログの REST API を呼び出す
+        href: tutorial-using-rest-apis.md
+  - name: 概念
+    items:
+      - name: Purview Studio の使用
+        href: use-purview-studio.md
+      - name: デプロイのベスト プラクティス
+        href: deployment-best-practices.md
+      - name: Azure Purview の制限
+        href: how-to-manage-quotas.md
+      - name: 削除されたアセットをスキャンが検出する方法
+        href: concept-detect-deleted-assets.md
+      - name: リソース セットについて
+        href: concept-resource-sets.md
+      - name: データ系列
+        href: concept-data-lineage.md
+      - name: サポートされているデータ ソースとファイルの種類
+        href: sources-and-scans.md
+      - name: カタログのアクセス許可
+        href: catalog-permissions.md
+      - name: カタログの検索
+        href: concept-search.md
+      - name: ビジネス用語集
+        href: concept-business-glossary.md
+      - name: データの分析情報
+        href: concept-insights.md
+      - name: サポートされているブラウザー
+        href: supported-browsers.md
+      - name: よく寄せられる質問
+        href: frequently-asked-questions.md
+  - name: 操作方法ガイド
+    items:
+      - name: 登録とスキャン
+        items:
+          - name: '[資格情報の管理]'
+            href: manage-credentials.md
+            displayName: Create and manage Credentials
+          - name: スキャン ルール セットを作成する
+            href: create-a-scan-rule-set.md
+          - name: 統合ランタイムの管理
+            href: manage-integration-runtimes.md
+          - name: 接続の問題のトラブルシューティング
+            href: troubleshoot-connections.md
+          - name: 変換元
+            items:
+              - name: データ ソースを管理する
+                href: manage-data-sources.md
+              - name: Purview コネクタの概要
+                href: purview-connector-overview.md
+              - name: Azure Blob Storage
+                href: register-scan-azure-blob-storage-source.md
+                displayName: Register and scan azure blob storage
+              - name: Azure Cosmos DB
+                href: register-scan-azure-cosmos-database.md
+                displayName: Register and scan Azure Cosmos DB
+              - name: Azure Data Explorer
+                href: register-scan-azure-data-explorer.md
+                displayName: Register and scan Azure Data Explorer Kusto
+              - name: Azure Data Lake Storage Gen 1
+                href: register-scan-adls-gen1.md
+                displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
+              - name: Azure Data Lake Storage Gen 2
+                href: register-scan-adls-gen2.md
+                displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
+              - name: Azure SQL データベース
+                href: register-scan-azure-sql-database.md
+                displayName: Register and scan Azure SQL DB
+              - name: Azure SQL Database Managed Instance
+                href: register-scan-azure-sql-database-managed-instance.md
+                displayName: Register and scan Azure SQL DB Managed Instance
+              - name: Azure Synapse Analytics
+                href: register-scan-azure-synapse-analytics.md
+              - name: オンプレミスの SQL サーバー
+                href: register-scan-on-premises-sql-server.md
+              - name: Power BI のテナント - ポータル
+                href: register-scan-power-bi-tenant.md
+      - name: ビジネス用語集
+        items:
+          - name: 用語集の用語の作成、インポート、エクスポート
+            href: how-to-create-import-export-glossary.md
+          - name: 用語テンプレートの管理
+            href: how-to-manage-term-templates.md
+          - name: 用語集の用語を割り当てるために、アセットを一括編集する
+            href: how-to-bulk-edit-assets.md
+      - name: 分類
+        items:
+          - name: カスタム分類と分類規則の作成
+            href: create-a-custom-classification-and-classification-rule.md
+          - name: 分類の適応
+            href: apply-classifications.md
+          - name: コンテンツに自動的にラベルを付ける
+            href: create-sensitivity-label.md
+      - name: 検索と参照
+        items:
+          - name: Data Catalog の参照
+            href: how-to-browse-catalog.md
+          - name: Data Catalog の検索
+            href: how-to-search-catalog.md
+      - name: 系列
+        items:
+          - name: データ系列ユーザー ガイド
+            href: catalog-lineage-user-guide.md
+          - name: Azure Data Factory のデータ系列
+            href: how-to-link-azure-data-factory.md
+          - name: Azure Data Share のデータ系列
+            href: how-to-link-azure-data-share.md
+      - name: Monitor
+        items:
+          - name: Azure Monitor による監視
+            href: how-to-monitor-with-azure-monitor.md
+      - name: 洞察
+        items:
+          - name: アセットの分析情報を表示する
+            href: asset-insights.md
+          - name: 用語集の分析情報を表示する
+            href: glossary-insights.md
+          - name: スキャンの分析情報を表示する
+            href: scan-insights.md
+          - name: 分類の分析情報を表示する
+            href: classification-insights.md
+          - name: 秘密度ラベルの分析情報を表示する
+            href: sensitivity-insights.md
+          - name: ファイル名拡張子の分析情報を表示する
+            href: file-extension-insights.md
+  - name: リファレンス
+    items:
+      - name: サポートされている分類
+        href: supported-classifications.md

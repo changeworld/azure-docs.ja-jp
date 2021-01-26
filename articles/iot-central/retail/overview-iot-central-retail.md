@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719226"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124964"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した小売ソリューションの構築
 
@@ -41,9 +41,9 @@ IoT センサーを使用すると、気温、湿度、傾き、衝撃、光、�
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Azure IoT Retail の概要":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="コネクテッド ロジスティクスのダッシュボード":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Azure IoT Retail の概要":::
 
 詳細については、[コネクテッド ロジスティクス アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-connected-logistics.md)に関するページを参照してください。
 
@@ -64,7 +64,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="デジタル流通センターのダッシュボード":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Azure IoT Retail の概要":::
 
 詳細については、[デジタル流通センター アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-digital-distribution-center.md)に関するページを参照してください。
 
@@ -86,7 +86,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="ストア内分析条件監視":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Azure IoT Retail の概要":::
 
 詳細については、[Azure IoT Central でのストア内分析アプリケーションの作成](./tutorial-in-store-analytics-create-app.md)に関するページを参照してください。
 
@@ -108,7 +108,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="ストア内分析レジ":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Azure IoT Retail の概要":::
 
 詳細については、[Azure IoT Central でのストア内分析アプリケーションの作成](./tutorial-in-store-analytics-create-app.md)に関するページを参照してください。
 
@@ -128,7 +128,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="スマート インベントリの管理のダッシュボード":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Azure IoT Retail の概要":::
 
 詳細については、[スマート インベントリの管理アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-smart-inventory-management.md)に関するページを参照してください。
 
@@ -148,7 +148,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 
 次のスクリーンショットでは、アプリケーション テンプレートですぐに使えるダッシュボードを示しています。 このダッシュボードは、特定のソリューションの要件に合わせて全面的にカスタマイズできます。
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="マイクロフルフィルメント センター":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Azure IoT Retail の概要":::
 
 詳細については、[マイクロフルフィルメント センター アプリケーション テンプレートのデプロイと説明](./tutorial-micro-fulfillment-center.md)に関するページを参照してください。
 
@@ -165,7 +165,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 * **(Sample) Real Camera Management ((サンプル) 実際のカメラ管理)** : シミュレートされたカメラを使用して、アプリケーションからカメラを管理する方法を示します。
 * **(Sample) Real Camera Monitor ((サンプル) 実際のカメラ監視)** : シミュレートされたカメラを使用して、アプリケーションからカメラを監視する方法を示します。
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="ビデオ分析 - オブジェクトとモーションの検出":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Azure IoT Retail の概要":::
 
 このソリューションのアーキテクチャについて詳しくは、[ビデオ分析アプリケーションのアーキテクチャ](architecture-video-analytics.md)に関するページを参照してください。
 
@@ -185,4 +185,4 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 * [スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-smart-inventory-management.md)。
 * [マイクロフルフィルメント センター アプリケーション テンプレートをデプロイして調べる](./tutorial-micro-fulfillment-center.md)。
 * [ビデオ分析アプリケーション テンプレートをデプロイして調べる](./tutorial-video-analytics-deploy.md)。
-* [IoT Central の概要](../preview/overview-iot-central.md)に関するページで、IoT Central の詳細について確認する。
+* [IoT Central の概要](../core/overview-iot-central.md)に関するページで、IoT Central の詳細について確認する。

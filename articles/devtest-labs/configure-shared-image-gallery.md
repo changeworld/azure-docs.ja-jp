@@ -3,12 +3,12 @@ title: Azure DevTest Labs での共有イメージ ギャラリーの構成 | Mi
 description: Azure DevTest Labs で、ラボのリソースの作成時に、共有の場所からユーザーがイメージにアクセスできるよう、共有イメージ ギャラリーを構成する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271041"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327979"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
 DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
@@ -16,7 +16,7 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 - イメージのマネージド グローバル レプリケーション
 - 容易な管理のためのイメージのバージョン管理とグループ化
 - 可用性ゾーンをサポートするリージョンでゾーン冗長ストレージ (ZRS) アカウントを使用して、イメージの可用性を高めます。 ZRS では、ゾーンの障害に対する回復性の向上が提供されます。
-- ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション間やテナント間で共有します。
+- Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サブスクリプション間やテナント間で共有します。
 
 詳細については、[共有イメージ ギャラリーのドキュメント](../virtual-machines/windows/shared-image-galleries.md)を参照してください。 
  
@@ -35,7 +35,7 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。
 1. 一覧で **[DevTest Labs]** を選択します。
-1. ラボの一覧で、目的の**ラボ**を選択します。
+1. ラボの一覧で、目的の **ラボ** を選択します。
 1. 左側のメニューの **[設定]** セクションで、 **[構成とポリシー]** を選択します。
 1. 左側のメニューで、 **[仮想マシンのベース]** の下にある **[Shared Image Galleries]\(共有イメージ ギャラリー\)** を選択します。
 
@@ -43,7 +43,7 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 1. **[Attach]\(アタッチ\)** ボタンをクリックしてドロップダウンからギャラリーを選択することによって、既存の共有イメージ ギャラリーをラボにアタッチします。
 
     ![Attach](./media/configure-shared-image-gallery/attach-options.png)
-1. イメージ ギャラリーがアタッチされたら、選択してアタッチされたギャラリーに移動します。 VM 作成用に共有イメージを**有効化または無効化**するようギャラリーを構成します。 リストからイメージ ギャラリーを選択して構成します。 
+1. イメージ ギャラリーがアタッチされたら、選択してアタッチされたギャラリーに移動します。 VM 作成用に共有イメージを **有効化または無効化** するようギャラリーを構成します。 リストからイメージ ギャラリーを選択して構成します。 
 
     既定では、 **[すべてのイメージを仮想マシン ベースとして使用できるようにする]** が **[はい]** に設定されています。 つまり、アタッチされた共有イメージ ギャラリーにあるすべてのイメージは、ラボ ユーザーが新しいラボ VM を作成する際に使用できるということです。 特定のイメージへのアクセスを制限する必要がある場合は、 **[すべてのイメージを仮想マシン ベースとして使用できるようにする]** を **[いいえ]** に変更し、VM の作成時に許可したいイメージを選択したうえで、 **[保存]** ボタンを選択してください。
 

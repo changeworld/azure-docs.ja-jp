@@ -6,19 +6,20 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 11/16/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 028f5898c995463df502b314682b6cf054ff288f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684866"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028854"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
-請求書による支払いに切り替えた場合、請求日から 30 日以内に小切手/電信送金で請求金額を支払うことになります。 Azure サブスクリプションの支払いを請求書で行う対象となるには、Azure サポートに要求を送信します。 要求が承認されると、[Azure portal](https://portal.azure.com) で請求書支払い (小切手/電信送金) に切り替えられます。
+請求書による支払いに切り替えた場合、請求日から 30 日以内に小切手/電信送金で請求金額を支払うことになります。 Azure サブスクリプションの支払いを請求書で行う対象となるには、Azure サポートに要求を送信します。 要求が承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えられます。
 
 > [!IMPORTANT]
 > * 請求書支払い (小切手/電信送金) は、会社を代表して Azure を使用しているお客様にのみ提供されます。
@@ -27,7 +28,7 @@ ms.locfileid: "88684866"
 
 ## <a name="request-to-pay-by-invoice"></a>請求書による支払いを要求する
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、サポート リクエストを発行します。 **[ヘルプとサポート]** を検索して選択します。
+1. Azure portal にアクセスして、サポート リクエストを発行します。 **[ヘルプとサポート]** を検索して選択します。
 
     ![Microsoft Azure portal で [ヘルプとサポート] を検索する](./media/pay-by-invoice/search-for-help-and-support.png)
 
@@ -67,25 +68,25 @@ ms.locfileid: "88684866"
      サブスクリプションの具体的なリージョンおよびシリーズ:<br>
 
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](change-azure-account-profile.md)」を参照してください。
-    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
+    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。
 
 6. 連絡先情報と優先連絡方法を確認し、 **[作成]** を選択します。
 
-必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。
+必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。 会社の監査済み財務諸表の提出をお願いする場合があります。 財務情報が提供されていない場合や、必要な与信限度額を裏付ける十分な情報がない場合は、与信審査要求を承認するために、保証金またはスタンドバイ信用状を求める場合があります。
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>請求書支払い (小切手/電信送金) に切り替える
 
 請求書による支払いが承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えることができます。
 
-Microsoft Online Services Program アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。 [アカウントの種類を確認する方法をご覧ください](#check-access-to-a-microsoft-customer-agreement)。
+Microsoft Online Services Program アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure サブスクリプションを小切手/電信送金に切り替える
 
 Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 *請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません*。
 
-1. [Azure portal](https://portal.azure.com) にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。
+1. Azure portal にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。
 
-    ![Microsoft Azure portal で [コストの管理と請求] を検索する](./media/pay-by-invoice/search.png)
+    ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/pay-by-invoice/search.png)
 
 1. 請求書支払いに切り替えるサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。
@@ -97,7 +98,7 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 課金プロファイルを小切手/電信送金に切り替えるには、次の手順に従います。 課金プロファイルの既定の支払い方法を変更できるのは、Azure にサインアップしたユーザーのみです。
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、課金情報を表示します。 **[コストの管理と請求]** を検索して選択します。
+1. Azure portal にアクセスして、課金情報を表示します。 **[コストの管理と請求]** を検索して選択します。
 1. メニューから **[課金プロファイル]** を選択します。
 
     ![[課金プロファイル] メニュー項目、[コストの管理と請求]、Microsoft Azure portal](./media/pay-by-invoice/billing-profile.png)
@@ -122,10 +123,6 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 * アカウント名と会社名の間での名前の相違
 * 名前の変更
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585970"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342231"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
@@ -87,7 +87,7 @@ Security Center のユーザーは、アラート インシデントを削除で
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-詳細については、[セキュリティ アラートの取得 (GET コレクション)](https://msdn.microsoft.com/library/mt704050.aspx) に関するページを参照してください。
+詳細については、[セキュリティ アラートの取得 (GET コレクション)](/previous-versions/azure/reference/mt704050(v=azure.100)) に関するページを参照してください。
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>同意のないプロファイルまたはマーケティングのための個人データの使用の制限
 Security Center のユーザーは、自分の[セキュリティ連絡先データ](security-center-provide-security-contact-details.md)を削除することによって、オプトアウトすることを選択できます。

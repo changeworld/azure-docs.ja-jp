@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536750"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952320"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
 HDInsight クラスターを作成する際、次のいくつかの異なる Azure Storage サービスを選択できます。
 
-* [Azure ストレージ](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen2.md)
-* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
+* [HDInsight での Azure Blob Storage](./overview-azure-storage.md)
+* [HDInsight での Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen2.md)
+* [HDInsight での Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
 
 この記事では、これらのストレージの種類とそれらの固有の機能の概要を提供します。
 
@@ -36,6 +36,8 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 |Azure Storage| 汎用 v1 | Object | BLOB | Standard | 該当なし | All | All |
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
+|Azure Storage| ブロック BLOB| Object | ブロック BLOB | Premium | 該当なし| 3.6 以降 | 高速書き込みが可能なのは HBase のみ|
+|Azure Data Lake Storage Gen2| ブロック BLOB| 階層構造 (ファイルシステム) | ブロック BLOB | Premium | 該当なし| 3.6 以降 | 高速書き込みが可能なのは HBase のみ|
 
 ** HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみに BlobStorage の種類を使用できます。ページ BLOB は、サポートされるストレージ オプションではありません。
 
@@ -58,7 +60,7 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 | 4.0 | Data Lake Storage Gen1 | Any | いいえ |
 | 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen1 | いいえ |
 
-*=すべてがクラスター アクセスに同じマネージド ID を使用するように設定されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
+*=すべてがクラスター アクセスに同じマネージド ID を使用するように設定されている限り、これは 1 つ以上の Data Lake Storage Gen2 である可能性があります。
 
 > [!NOTE]
 > Data Lake Storage Gen2 プライマリ ストレージは、Spark 2.1 または 2.2 クラスターではサポートされていません。
@@ -71,8 +73,8 @@ HDInsight が 1 つのリージョンにデータを格納するように正し�
  
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Storage の概要](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen1 の概要](./overview-data-lake-storage-gen1.md)
-* [Azure Data Lake Storage Gen2 の概要](./overview-data-lake-storage-gen2.md)
+* [HDInsight での Azure Storage の概要](./overview-azure-storage.md)
+* [HDInsight での Azure Data Lake Storage Gen1 の概要](./overview-data-lake-storage-gen1.md)
+* [HDInsight での Azure Data Lake Storage Gen2 の概要](./overview-data-lake-storage-gen2.md)
 * [Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure ストレージの概要](../storage/common/storage-introduction.md)

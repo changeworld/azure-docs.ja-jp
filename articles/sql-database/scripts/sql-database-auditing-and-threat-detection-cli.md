@@ -4,19 +4,19 @@ description: Azure SQL Database で監査と Advanced Threat Protection を構�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: security
+ms.custom: security, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: ronitr
 ms.author: ronitr
-ms.reviewer: carlrab, vanto
+ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: ac945b14091ae01cfad66c3776c84406583e491f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3df43af03fd536dfe50733bb6e10ff43d9f54834
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737106"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>CLI を使用して SQL Database の監査と Advanced Threat Protection を構成する
 

@@ -1,6 +1,6 @@
 ---
 title: テーブルのパーティション分割
-description: Synapse SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例
+description: 専用 SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763135"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448022"
 ---
-# <a name="partitioning-tables-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルのパーティション分割
+# <a name="partitioning-tables-in-dedicated-sql-pool"></a>専用 SQL プールでのテーブルのパーティション分割
 
-Synapse SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例。
+専用 SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例。
 
 ## <a name="what-are-table-partitions"></a>テーブル パーティションの概要
 
-テーブル パーティションを使用すると、データを小さなデータ グループに分割できます。 ほとんどの場合、テーブル パーティションはデータ列に作成されます。 パーティション分割は、クラスター化列ストア、クラスター化インデックス、ヒープなど、Synapse SQL プールのすべてのテーブル型でサポートされます。 パーティション分割は、ハッシュ分散とラウンド ロビン分散の両方を含むあらゆる種類のディストリビューションでもサポートされます。  
+テーブル パーティションを使用すると、データを小さなデータ グループに分割できます。 ほとんどの場合、テーブル パーティションはデータ列に作成されます。 パーティション分割は、クラスター化列ストア、クラスター化インデックス、ヒープなど、専用 SQL プールのすべてのテーブル型でサポートされます。 パーティション分割は、ハッシュ分散とラウンド ロビン分散の両方を含むあらゆる種類のディストリビューションでもサポートされます。  
 
 パーティション分割をすると、データのメンテナンスとクエリのパフォーマンスでメリットを得ることができます。 両方のメリットを得られるか、片方のみかは、データの読み込み方法と、同じ列を両方の目的で使用できるかどうかによります。その理由は、パーティション分割を実行できるのが 1 つの列のみであるためです。
 
 ### <a name="benefits-to-loads"></a>読み込みに対するメリット
 
-Synapse SQL プールでパーティション分割する主なメリットは、パーティションの削除、切り替え、および結合の使用による、データの読み込みの効率性とパフォーマンスの向上です。 ほとんどの場合、データは、データがデータベースに読み込まれる順序に密接に関連付けられている日付列でパーティション分割されます。 データを保持するためにパーティションを使用する最大のメリットの 1 つが、トランザクション ログの回避です。 単にデータを挿入、更新、または削除するのは最も簡単なアプローチですが、少しの配慮と労力を注いで読み込みプロセス中にパーティション分割を使用すると、大幅にパフォーマンスを向上できます。
+専用 SQL プールでパーティション分割する主なメリットは、パーティションの削除、切り替え、および結合の使用による、データの読み込みの効率性とパフォーマンスの向上です。 ほとんどの場合、データは、データが SQL プールに読み込まれる順序に密接に関連付けられている日付列でパーティション分割されます。 データを保持するためにパーティションを使用する最大のメリットの 1 つが、トランザクション ログの回避です。 単にデータを挿入、更新、または削除するのは最も簡単なアプローチですが、少しの配慮と労力を注いで読み込みプロセス中にパーティション分割を使用すると、大幅にパフォーマンスを向上できます。
 
 テーブルのセクションを手早く削除したり置き換えたりするには、パーティションの切り替えを使用できます。  たとえば、売上のファクト テーブルに過去 36 か月のデータのみが含まれるとします。 毎月末に、最も古い月の売上データがテーブルから削除されます。  このデータは、最も古い月のデータを削除する delete ステートメントを使用して削除できます。 
 
@@ -48,17 +48,17 @@ Synapse SQL プールでパーティション分割する主なメリットは�
 
 パーティション分割が役立つように、パーティション分割を使用する時期と作成するパーティション数を把握することが重要です。 パーティションの数が多すぎるかどうかについて厳格なルールはなく、データと、同時に読み込むパーティションの数によります。 パーティション分割構成が成功すると、通常、パーティションの数は数十個から数百個程度であり、数千個にまでなることはありません。
 
-**クラスター化列ストア** テーブルでパーティションを作成するときは、各パーティションに属している行数が重要になります。 クラスター化列ストア テーブルの圧縮とパフォーマンスを最適化するためには、ディストリビューションおよびパーティションあたり少なくとも 100 万行が必要です。 Synapse SQL プールでは、パーティションが作成される前に、各テーブルが 60 個の分散データベースに既に分割されています。 
+**クラスター化列ストア** テーブルでパーティションを作成するときは、各パーティションに属している行数が重要になります。 クラスター化列ストア テーブルの圧縮とパフォーマンスを最適化するためには、ディストリビューションおよびパーティションあたり少なくとも 100 万行が必要です。 専用 SQL プールでは、パーティションが作成される前に、各テーブルが 60 個の分散データベースに既に分割されています。 
 
-テーブルに追加されるすべてのパーティション分割は、バックグラウンドで作成されたディストリビューションに追加されたものです。 この例を使用して、売上のファクト テーブルに 36 か月のパーティションが含まれる場合、Synapse SQL プールに 60 のディストリビューションがあるとすると、売上のファクト テーブルは 1 か月あたり 6 千万行、すべての月を指定する場合は 21 億行を含む必要があります。 テーブルに含まれる行が、パーティションごとの推奨される最小の行数よりも少ない場合、パーティションあたりの行数を増やすためにパーティション数を少なくすることを検討する必要があります。 
+テーブルに追加されるすべてのパーティション分割は、バックグラウンドで作成されたディストリビューションに追加されたものです。 この例では、売上のファクト テーブルに 36 か月のパーティションが含まれる場合、専用 SQL プールに 60 のディストリビューションがあるとすると、売上のファクト テーブルには 1 か月あたり 6 千万行、すべての月を指定する場合は 21 億行を含める必要があります。 テーブルに含まれる行が、パーティションごとの推奨される最小の行数よりも少ない場合、パーティションあたりの行数を増やすためにパーティション数を少なくすることを検討する必要があります。 
 
 詳細については、[インデックス作成](sql-data-warehouse-tables-index.md)に関する記事を参照してください。この記事には、クラスター列ストア インデックスの質を評価できるクエリについて記載されています。
 
 ## <a name="syntax-differences-from-sql-server"></a>SQL Server との構文の相違点
 
-Synapse SQL プールには、SQL Server よりも簡単なパーティションの定義方法が導入されています。 パーティション関数とパーティション構成は、SQL Server のものであるため、Synapse SQL プールでは使用されません。 代わりに、必要なのは、パーティション分割された列と境界点を特定することだけです。 
+専用 SQL プールには、SQL Server よりも簡単なパーティションの定義方法が導入されています。 パーティション関数とパーティション構成は、SQL Server のものであるため、専用 SQL プールでは使用されません。 代わりに、必要なのは、パーティション分割された列と境界点を特定することだけです。 
 
-パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。 SQL Server および Synapse SQL プールは、テーブルごとに 1 つのパーティション列をサポートします。このパーティション列で、範囲指定によるパーティションを指定することができます。 パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。 SQL Server および専用 SQL プールでは、テーブルごとに 1 つのパーティション列がサポートされます。このパーティション列で、範囲指定によるパーティションを指定することができます。 パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
 
 次の例では、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用して、FactInternetSales テーブルを OrderDateKey 列でパーティション分割します。
 
@@ -88,12 +88,12 @@ WITH
 
 ## <a name="migrating-partitioning-from-sql-server"></a>SQL Server からのパーティション分割の移行
 
-SQL Server のパーティション定義を Synapse SQL プールに移行するには、次の操作を行います。
+SQL Server のパーティション定義を専用 SQL プールに移行するには、次の操作を行います。
 
 - SQL Server の[パーティション構成](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を除去します。
 - [パーティション関数](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)の定義を CREATE TABLE に追加します。
 
-パーティション分割されたテーブルを SQL Server インスタンスから移行する場合、各パーティションに含まれる行数を調べるうえで以下の SQL が役立つ場合があります。 Synapse SQL プールで同じパーティション分割の粒度を使用する場合、パーティションごとの行数が 60 の倍数で減少することに注意してください。  
+パーティション分割されたテーブルを SQL Server インスタンスから移行する場合、各パーティションに含まれる行数を調べるうえで以下の SQL が役立つ場合があります。 専用 SQL プールで同じパーティション分割の粒度を使用する場合、パーティションごとの行数が 60 の倍数で減少することに注意してください。  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>パーティションの切り替え
 
-Synapse SQL プールでは、パーティションの分割、結合、および切り替えをサポートします。 これらの各機能は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用して実行されます。
+専用 SQL プールでは、パーティションの分割、結合、および切り替えがサポートされています。 これらの各機能は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用して実行されます。
 
 2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。 テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。 パーティション境界が同じでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
 
@@ -253,7 +253,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 パーティション内の既存のデータを取り除くには、データをスイッチアウトするために `ALTER TABLE` が必要でした。  それから、新しいデータにスイッチインするために別の `ALTER TABLE` が必要でした。  
 
-Synapse SQL プールでは、`ALTER TABLE` コマンドで `TRUNCATE_TARGET` オプションがサポートされています。  `TRUNCATE_TARGET` により、`ALTER TABLE` コマンドは、パーティション内の既存のデータを新しいデータで上書きします。  以下の例は、`CTAS` を使用して、既存のデータで新しいテーブルを作成して新しいデータを挿入し、次に、既存のデータを上書きして、すべてのデータをターゲット テーブルに切り替えています。
+専用 SQL プールでは、`ALTER TABLE` コマンドで `TRUNCATE_TARGET` オプションがサポートされています。  `TRUNCATE_TARGET` により、`ALTER TABLE` コマンドは、パーティション内の既存のデータを新しいデータで上書きします。  以下の例は、`CTAS` を使用して、既存のデータで新しいテーブルを作成して新しいデータを挿入し、次に、既存のデータを上書きして、すべてのデータをターゲット テーブルに切り替えています。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -355,7 +355,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     DROP TABLE #partitions;
     ```
 
-この方法では、ソース管理のコードを静的なコードとして維持し、パーティション境界値は動的にすることが可能になるので、時間の経過に伴って、データベースとともに進化させることができます。
+この方法では、ソース管理のコードを静的なコードとして維持し、パーティション境界値は動的にすることが可能になるので、時間の経過に伴って、SQL プールとともに進化させることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

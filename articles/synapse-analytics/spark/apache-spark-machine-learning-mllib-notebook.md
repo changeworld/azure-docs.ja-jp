@@ -1,26 +1,26 @@
 ---
-title: Apache Spark MLlib で機械学習アプリをビルドする
-description: Apache Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。
+title: チュートリアル:Apache Spark MLlib で機械学習アプリをビルドする
+description: Apache Spark MLlib を使用して、ロジスティック回帰による分類を使ってデータセットを分析する機械学習アプリを作成する方法に関するチュートリアル。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
-ms.topic: conceptual
+ms.reviewer: jrasnick
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 30ddee7c203ef1654972675f610256d1bfb1f21c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719344"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116910"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
+# <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
-この記事では、Apache Spark [MLlib](https://spark.apache.org/mllib/) を使用して、Azure のオープン データセットに対するシンプルな予測分析を実行する機械学習アプリケーションを作成する方法について説明します。 Spark には、組み込みの機械学習ライブラリが用意されています。 この例では、ロジスティック回帰による*分類*を使用しています。
+この記事では、Apache Spark [MLlib](https://spark.apache.org/mllib/) を使用し、Azure のオープン データセットに対してシンプルな予測分析を実行する機械学習アプリケーションの作成方法について説明します。 Spark には、組み込みの機械学習ライブラリが用意されています。 この例では、ロジスティック回帰による *分類* を使用しています。
 
-MLlib は、機械学習タスクに役立つ多数のユーティリティを提供するコア Spark ライブラリです。これには、次のことに適したユーティリティが含まれます。
+SparkML と MLlib は、機械学習タスクに役立つ多数のユーティリティを提供するコア Spark ライブラリです。これには、次のことに適したユーティリティが含まれます。
 
 - 分類
 - 回帰
@@ -31,9 +31,9 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 
 ## <a name="understand-classification-and-logistic-regression"></a>分類およびロジスティック回帰について
 
-一般的な Machine Learning タスクである*分類*は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに*ラベル*を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する機械学習アルゴリズムを考えてみます。
+一般的な Machine Learning タスクである *分類* は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに *ラベル* を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する機械学習アルゴリズムを考えてみます。
 
-*ロジスティック回帰*は、分類に使用できるアルゴリズムです。 Spark のロジスティック回帰 API は、 *二項分類*(入力データを 2 つのグループのいずれかに分類する) に適しています。 ロジスティック回帰の詳細については、 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)を参照してください。
+*ロジスティック回帰* は、分類に使用できるアルゴリズムです。 Spark のロジスティック回帰 API は、 *二項分類*(入力データを 2 つのグループのいずれかに分類する) に適しています。 ロジスティック回帰の詳細については、 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)を参照してください。
 
 要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる *ロジスティック関数* が生成されます。
 
@@ -46,7 +46,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 
 次の手順では、特定の乗車にチップが含まれているかどうかを予測するモデルを作成します。
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib 機械学習アプリを作成する
+## <a name="create-an-apache-spark--machine-learning-model"></a>Apache Spark 機械学習モデルを作成する
 
 1. PySpark カーネルを使用してノートブックを作成します。 手順については、「[ノートブックの作成](../quickstart-apache-spark-notebook.md#create-a-notebook)」を参照してください。
 2. このアプリケーションに必要な型をインポートします。 次のコードをコピーして空のセルに貼り付け、**Shift + Enter** を押すか、コードの左側にある青い再生アイコンを使用して、セルを実行します。
@@ -71,7 +71,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 
 生データは Parquet 形式であるため、Spark コンテキストを使用して、ファイルをデータフレームとして、直接メモリにプルできます。 次のコードでは既定のオプションを使用していますが、必要に応じて、データ型とその他のスキーマ属性のマッピングを強制的に行うこともできます。
 
-1. 次の行を実行して、新しいセルにコードを貼り付けて、Spark データフレームを作成します。 これにより、Open Dataset API を介してデータが取得されます。 このデータをすべてプルすると、約 15 億行が生成されます。 Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 このデータを、より小さいものにフィルター処理することができます。 次のコード例では、start_date と end_date を使用し、1 か月分のデータを返すフィルターを適用します。
+1. 次の行を実行して、新しいセルにコードを貼り付けて、Spark データフレームを作成します。 これにより、Open Dataset API を介してデータが取得されます。 このデータをすべてプルすると、約 15 億行が生成されます。 サーバーレス Apache Spark プールのサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 このデータを、より小さいものにフィルター処理することができます。 次のコード例では、start_date と end_date を使用し、1 か月分のデータを返すフィルターを適用します。
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -96,7 +96,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
     display(sampled_taxi_df)
     ```
 
-4. 生成されるデータセットのサイズとノートブックを何回も実験または実行する必要に応じて、データセットをワークスペースにローカルにキャッシュすることをお勧めします。 明示的なキャッシュを実行するには、次の 3 つの方法があります。
+4. 生成されるデータセットのサイズと、多くの回数ノートブックを実験または実行する必要性に応じて、データセットをワークスペースにローカルにキャッシュすることが推奨される場合があります。 明示的なキャッシュを実行するには、次の 3 つの方法があります。
 
    - データフレームをファイルとしてローカルに保存する
    - データフレームを一時テーブルまたはビューとして保存する
@@ -109,44 +109,6 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
-
-## <a name="understand-the-data"></a>データを理解する
-
-通常は、データの理解を深めるために、この時点で、*探索的データ分析* (EDA) のフェーズを実行します。 次のコードに、データの状態と品質に関する結論に導くヒントに関連するデータの 3 つの異なる視覚化を示しています。
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![ヒストグラム](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![箱ひげ図](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![散布図](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="prepare-the-data"></a>データを準備する
 
@@ -193,7 +155,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>ロジスティック回帰モデルを作成する
 
-最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア*のセットである必要があります。ここで*特徴ベクトル*とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列を整数表現に変換する必要があります。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
+最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア* のセットである必要があります。ここで *特徴ベクトル* とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列については、整数表現への変換が必要です。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +168,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-これにより、すべての列がモデルをトレーニングするために適した形式である新しいデータフレームが得られます。
+このアクションにより、すべての列がモデルをトレーニングするのに適切な形式になっている新しいデータフレームが得られます。
 
 ## <a name="train-a-logistic-regression-model"></a>ロジスティック回帰モデルのトレーニング
 
@@ -272,7 +234,7 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![ロジスティック回帰チップ モデルの ROC 曲線](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "ロジスティック回帰チップ モデルの ROC 曲線")
+![ロジスティック回帰チップ モデルの ROC 曲線](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>Spark インスタンスをシャットダウンする
 
@@ -285,8 +247,8 @@ plt.show()
 ## <a name="next-steps"></a>次のステップ
 
 - [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)
+- [Azure Synapse Analytics](../index.yml)
+- [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) エクスペリエンスを使用してください。
+> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) のエクスペリエンスを使用してください。

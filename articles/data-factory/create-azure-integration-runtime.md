@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659700"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895343"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ Azure IR は、ネイティブにデータ移動を実行したり、HDInsight �
 Azure IR を作成して設定するには、次の手順を使用できます。
 
 ### <a name="create-an-azure-ir-via-azure-powershell"></a>Azure PowerShell を使用して Azure IR を作成する
-統合ランタイムは、**Set-AzDataFactoryV2IntegrationRuntime** PowerShell コマンドレットを使用して作成できます。 Azure IR を作成するには、このコマンドに対して名前、場所、種類を指定します。 次に示すのは、場所を "West Europe" (西ヨーロッパ) に設定して Azure IR を作成するコマンドの例です。
+統合ランタイムは、 **Set-AzDataFactoryV2IntegrationRuntime** PowerShell コマンドレットを使用して作成できます。 Azure IR を作成するには、このコマンドに対して名前、場所、種類を指定します。 次に示すのは、場所を "West Europe" (西ヨーロッパ) に設定して Azure IR を作成するコマンドの例です。
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
@@ -48,13 +48,13 @@ Set-AzDataFactoryV2IntegrationRuntime PowerShell コマンドレットを使用�
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory UI を使用して Azure IR を作成する
 Azure Data Factory UI を使用して Azure IR を作成するには、次の手順を使用します。
 
-1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](./author-management-hub.md)を選択します。
 
    ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
 
 1. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
 
-   ![統合ランタイムの作成](media/doc-common-process/manage-new-integration-runtime.png)
+   ![左側のウィンドウの統合ランタイムと [+ 新規] ボタンが強調表示されているスクリーンショット。](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
 
@@ -92,4 +92,3 @@ Azure IR が作成されたら、リンクされたサービスの定義でそ�
 
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
 - [Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)
- 

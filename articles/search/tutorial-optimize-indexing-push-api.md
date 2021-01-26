@@ -7,29 +7,29 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfb2598fb3a207bbdfaade9086efd07827b077dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998426"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693401"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 
 Azure Cognitive Search は、検索インデックスにデータをインポートする [2 つの基本的な手法](search-what-is-data-import.md)をサポートしています。1 つは、プログラムを使用してインデックスにデータを "*プッシュ*" する方法、もう 1 つは、サポート対象データ ソースで [Azure Cognitive Search のインデクサー](search-indexer-overview.md)をポイントしてデータを "*プル*" する方法です。
 
-このチュートリアルでは、[プッシュ モデル](search-what-is-data-import.md#pushing-data-to-an-index)を使用して効率的にデータのインデックスを作成する方法について説明します。その際、要求はバッチで処理し、エクスポネンシャル バックオフの再試行戦略を使用しています。 [アプリケーションをダウンロードして実行](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)することができます。 この記事では、アプリケーションの主な特徴と、データのインデックスを作成する際に考慮すべき事柄について説明します。
+このチュートリアルでは、[プッシュ モデル](search-what-is-data-import.md#pushing-data-to-an-index)を使用して効率的にデータのインデックスを作成する方法について説明します。その際、要求はバッチで処理し、エクスポネンシャル バックオフの再試行戦略を使用しています。 [サンプル アプリケーションをダウンロードし、実行](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)できます。 この記事では、アプリケーションの主な特徴と、データのインデックスを作成する際に考慮すべき事柄について説明します。
 
 このチュートリアルでは、C# と [.NET SDK](/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * インデックスを作成する
 > * さまざまなバッチ サイズをテストして最も効率的なサイズを特定する
-> * データのインデックスを非同期的に作成する
+> * バッチに非同期でインデックスを付ける
 > * 複数のスレッドを使用してインデックスの作成速度を高める
-> * エクスポネンシャル バックオフの再試行戦略を使用して、失敗した項目を再試行する
+> * エクスポネンシャル バックオフの再試行戦略を使用して、失敗したドキュメントを再試行する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="download-files"></a>ファイルのダウンロード
 
-このチュートリアルのソース コードは、[Azure-Samples/azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub リポジトリの [optimzize-data-indexing](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) フォルダーにあります。
+このチュートリアルのソース コードは、[Azure-Samples/azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub リポジトリの [optimzize-data-indexing/v11](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing/v11) フォルダーにあります。
 
 ## <a name="key-considerations"></a>重要な考慮事項
 
@@ -73,18 +73,17 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 ## <a name="2---set-up-your-environment"></a>2 - 環境を設定する
 
 1. Visual Studio を起動し、**OptimizeDataIndexing.sln** を開きます。
 1. ソリューション エクスプローラーで **appsettings.json** を開き、接続情報を指定します。
-1. 完全な URL が "https://my-demo-service.search.windows.net" である場合、`searchServiceName` に指定するサービス名は "my-demo-service" です。
 
 ```json
 {
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+  "SearchServiceUri": "https://{service-name}.search.windows.net",
+  "SearchServiceAdminApiKey": "",
   "SearchIndexName": "optimize-indexing"
 }
 ```
@@ -112,7 +111,7 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 ### <a name="creating-the-index"></a>インデックスを作成する
 
-このサンプル プログラムでは、.NET SDK を使用して、Azure Cognitive Search のインデックスを定義および作成します。 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) クラスを利用して、C# データ モデル クラスからインデックス構造を生成します。
+このサンプル プログラムでは、.NET SDK を使用して、Azure Cognitive Search のインデックスを定義および作成します。 `FieldBuilder` クラスを利用して、C# データ モデル クラスからインデックス構造を生成します。
 
 データ モデルは、Hotel クラスによって定義されています。Hotel クラスには、Address クラスへの参照も含まれています。 FieldBuilder は、複数のクラス定義をドリルダウンして、このインデックスの複雑なデータ構造を生成します。 メタデータ タグは、検索や並べ替えが可能かどうかなど、各フィールドの属性を定義するために使用されます。
 
@@ -120,27 +119,25 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 ```csharp
 . . .
-[IsSearchable, IsSortable]
+[SearchableField(IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Address Address { get; set; }
 . . .
 ```
 
-**Program.cs** ファイルでは、インデックスが、`FieldBuilder.BuildForType<Hotel>()` メソッドで生成された名前とフィールド コレクションを使用して定義され、次のように作成されます。
+**Program.cs** ファイルでは、インデックスが、`FieldBuilder.Build(typeof(Hotel))` メソッドで生成された名前とフィールド コレクションを使用して定義され、次のように作成されます。
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address class is referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -148,11 +145,12 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 **DataGenerator.cs** ファイルには、テスト用のデータを生成するための単純なクラスが実装されています。 インデックス作成用に一意の ID を持った大量のドキュメントを簡単に作成できるようにすることが、このクラスの唯一の目的です。
 
-たとえば、一意の ID を持った 100,000 件のホテルのリストを取得する場合、次の 2 行のコードを実行します。
+たとえば、一意の ID を持った 100,000 件のホテルのリストを取得する場合、次のコード行を実行します。
 
 ```csharp
+long numDocuments = 100000;
 DataGenerator dg = new DataGenerator();
-List<Hotel> hotels = dg.GetHotels(100000, "large");
+List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 ```
 
 このサンプルのテスト用に用意されたホテルには、**small** と **large** の 2 つのサイズがあります。
@@ -164,7 +162,7 @@ List<Hotel> hotels = dg.GetHotels(100000, "large");
 Azure Cognitive Search は、1 つまたは複数のドキュメントをインデックスに読み込む次の API をサポートしています。
 
 + [ドキュメントの追加、更新、削除 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction クラス](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [IndexDocumentsAction class](/dotnet/api/azure.search.documents.models.indexdocumentsaction) または [IndexDocumentsBatch class](/dotnet/api/azure.search.documents.models.indexdocumentsbatch)
 
 ドキュメントのインデックスをバッチ単位で作成することによって、インデックス作成のパフォーマンスが大幅に向上します。 バッチの最大サイズは、1,000 ドキュメントまたは約 16 MB です。
 
@@ -178,7 +176,7 @@ Azure Cognitive Search は、1 つまたは複数のドキュメントをイン�
 次の関数は、バッチ サイズをテストするための単純なアプローチを示したものです。
 
 ```csharp
-public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
+public static async Task TestBatchSizesAsync(SearchClient searchClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
 {
     DataGenerator dg = new DataGenerator();
 
@@ -192,7 +190,7 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
             List<Hotel> hotels = dg.GetHotels(numDocs, "large");
 
             DateTime startTime = DateTime.Now;
-            await UploadDocuments(indexClient, hotels);
+            await UploadDocumentsAsync(searchClient, hotels).ConfigureAwait(false);
             DateTime endTime = DateTime.Now;
             durations.Add(endTime - startTime);
 
@@ -208,22 +206,24 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
         // Pausing 2 seconds to let the search service catch its breath
         Thread.Sleep(2000);
     }
+
+    Console.WriteLine();
 }
 ```
 
 このサンプルではすべてのドキュメントが同じサイズですが、実際にはそうとは限らないため、検索サービスに送信するデータのサイズを見積もります。 そのために使用しているのが以下の関数です。オブジェクトを JSON に変換したうえで、そのサイズをバイト単位で調べます。 この手法によって、インデックスの作成速度 (MB/秒) の観点から最も効率のよいバッチ サイズを特定することができます。
 
 ```csharp
+// Returns size of object in MB
 public static double EstimateObjectSize(object data)
 {
-    // converting data to json for more accurate sizing
-    var json = JsonConvert.SerializeObject(data);
-
     // converting object to byte[] to determine the size of the data
     BinaryFormatter bf = new BinaryFormatter();
     MemoryStream ms = new MemoryStream();
     byte[] Array;
 
+    // converting data to json for more accurate sizing
+    var json = JsonSerializer.Serialize(data);
     bf.Serialize(ms, json);
     Array = ms.ToArray();
 
@@ -234,10 +234,10 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-この関数には、`ISearchIndexClient` のほか、バッチ サイズごとのテストの試行回数を指定する必要があります。 インデックス作成時間には、バッチごとに多少のばらつきがあると考えられます。そこで統計的に有意な結果を得るために、それぞれのバッチが既定では 3 回試行されます。
+この関数には、`SearchClient` のほか、バッチ サイズごとのテストの試行回数を指定する必要があります。 インデックス作成時間には、バッチごとに多少のばらつきがあると考えられます。そこで統計的に有意な結果を得るために、それぞれのバッチが既定では 3 回試行されます。
 
 ```csharp
-await TestBatchSizes(indexClient, numTries: 3);
+await TestBatchSizesAsync(searchClient, numTries: 3);
 ```
 
 この関数を実行すると、次のような出力がコンソールに表示されます。
@@ -250,8 +250,8 @@ await TestBatchSizes(indexClient, numTries: 3);
 
 使用するバッチ サイズを特定できたので、データのインデックス作成を開始します。 データのインデックスを効率よく作成するために、このサンプルでは、次のことを行っています。
 
-* 複数のスレッド (ワーカー) を使用する。
-* エクスポネンシャル バックオフの再試行戦略を実装する。
++ 複数のスレッド (ワーカー) を使用する。
++ エクスポネンシャル バックオフの再試行戦略を実装する。
 
 ### <a name="use-multiple-threadsworkers"></a>複数のスレッド (ワーカー) を使用する
 
@@ -268,13 +268,16 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 
 失敗した要求は、[エクスポネンシャル バックオフの再試行戦略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)を使用して再試行する必要があります。
 
-503 などで失敗した要求は、Azure Cognitive Search の .NET SDK によって自動的に再試行されますが、207 には、独自の再試行ロジックを実装する必要があります。 [Polly](https://github.com/App-vNext/Polly) などのオープンソース ツールを使用して、再試行戦略を実装することもできます。 
+503 などで失敗した要求は、Azure Cognitive Search の .NET SDK によって自動的に再試行されますが、207 には、独自の再試行ロジックを実装する必要があります。 [Polly](https://github.com/App-vNext/Polly) などのオープンソース ツールを使用して、再試行戦略を実装することもできます。
 
 このサンプルでは、エクスポネンシャル バックオフの再試行戦略を独自に実装します。 この戦略を実装するにはまず、失敗した要求の `maxRetryAttempts` と `delay` (初期延期期間) を含め、いくつかの変数を定義します。
 
 ```csharp
 // Create batch of documents for indexing
-IndexBatch<Hotel> batch = IndexBatch.Upload(hotels);
+var batch = IndexDocumentsBatch.Upload(hotels);
+
+// Create an object to hold the result
+IndexDocumentsResult result = null;
 
 // Define parameters for exponential backoff
 int attempts = 0;
@@ -282,9 +285,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-[IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) をキャッチすることが重要となります。この例外は、インデックスの作成処理が部分的にのみ成功 (207) していることを示します。 失敗した項目は `FindFailedActionsToRetry` メソッドを使用して再試行します。このメソッドを使用することで、失敗した項目だけを含んだ新しいバッチを簡単に作成することができます。
+インデックス作成捜査の結果は変数 `IndexDocumentResult result` に格納されます。 下の画像のようにバッチに含まれるドキュメントが失敗したかどうかを確認できるため、この変数は重要です。 部分的に失敗している場合、失敗したドキュメントの ID に基づいて新しいバッチが作成されます。
 
-`IndexBatchException` 以外の例外もキャッチする必要があります。それらは、要求が完全に失敗したことを意味します。 これらの例外の発生頻度はさほど高くありません。特に .NET SDK では、503 が自動的に再試行されます。
+`RequestFailedException` 例外は要求が完全に失敗しており、再試行が必要であることを示すため、これもキャッチする必要があります。
 
 ```csharp
 // Implement exponential backoff
@@ -293,29 +296,46 @@ do
     try
     {
         attempts++;
-        var response = await indexClient.Documents.IndexAsync(batch);
-        break;
+        result = await searchClient.IndexDocumentsAsync(batch).ConfigureAwait(false);
+
+        var failedDocuments = result.Results.Where(r => r.Succeeded != true).ToList();
+
+        // handle partial failure
+        if (failedDocuments.Count > 0)
+        {
+            if (attempts == maxRetryAttempts)
+            {
+                Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("[Batch starting at doc {0} had partial failure]", id);
+                Console.WriteLine("[Retrying {0} failed documents] \n", failedDocuments.Count);
+
+                // creating a batch of failed documents to retry
+                var failedDocumentKeys = failedDocuments.Select(doc => doc.Key).ToList();
+                hotels = hotels.Where(h => failedDocumentKeys.Contains(h.HotelId)).ToList();
+                batch = IndexDocumentsBatch.Upload(hotels);
+
+                Task.Delay(delay).Wait();
+                delay = delay * 2;
+                continue;
+            }
+        }
+
+        return result;
     }
-    catch (IndexBatchException ex)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2}", attempts, maxRetryAttempts, ex.Message);
+        Console.WriteLine("[Batch starting at doc {0} failed]", id);
+        Console.WriteLine("[Retrying entire batch] \n");
 
         if (attempts == maxRetryAttempts)
+        {
+            Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
             break;
-
-        // Find the failed items and create a new batch to retry
-        batch = ex.FindFailedActionsToRetry(batch, x => x.HotelId);
-        Console.WriteLine("Retrying failed documents using exponential backoff...\n");
-
-        Task.Delay(delay).Wait();
-        delay = delay * 2;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2} \n", attempts, maxRetryAttempts, ex.Message);
-
-        if (attempts == maxRetryAttempts)
-            break;
+        }
 
         Task.Delay(delay).Wait();
         delay = delay * 2;
@@ -325,10 +345,10 @@ do
 
 ここでは、エクスポネンシャル バックオフのコードを呼び出しやすいよう関数にラップしています。
 
-さらに、アクティブなスレッドを管理するための関数も別途作成します。 その関数は、簡潔にするためにここでは省略していますが、[ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs) でご覧いただけます。 その関数は、次のコマンドで呼び出すことができます。`hotels` はアップロードするデータで、`1000` はバッチ サイズ、また `8` は、コンカレント スレッド数です。
+さらに、アクティブなスレッドを管理するための関数も別途作成します。 その関数は、簡潔にするためにここでは省略していますが、[ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs) でご覧いただけます。 その関数は、次のコマンドで呼び出すことができます。`hotels` はアップロードするデータで、`1000` はバッチ サイズ、また `8` は、コンカレント スレッド数です。
 
 ```csharp
-ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
+await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
 ```
 
 この関数を実行すると、次のような出力が表示されます。
@@ -337,7 +357,10 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 
 ドキュメントのバッチが失敗すると、処理に失敗したこと、またそのバッチが再試行されていることを示すエラーが出力されます。
 
-![データのインデックス作成関数からのエラー](media/tutorial-optimize-data-indexing/index-data-error.png "バッチ サイズのテスト関数の出力")
+```
+[Batch starting at doc 6000 had partial failure]
+[Retrying 560 failed documents]
+```
 
 関数の実行が完了したら、すべてのドキュメントがインデックスに追加されたことを確認できます。
 
@@ -354,7 +377,7 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 Count Documents 操作は、検索インデックス内のドキュメントの数を取得します。
 
 ```csharp
-long indexDocCount = indexClient.Documents.Count();
+long indexDocCount = await searchClient.GetDocumentCountAsync();
 ```
 
 #### <a name="get-index-statistics"></a>インデックス統計の取得
@@ -362,7 +385,7 @@ long indexDocCount = indexClient.Documents.Count();
 Get Index Statistics 操作は、現在のインデックスに対するドキュメントの数と記憶域の使用状況を返します。 インデックスの統計は、ドキュメント数よりも更新に時間がかかります。
 
 ```csharp
-IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(configuration["SearchIndexName"]);
+var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
 ### <a name="azure-portal"></a>Azure portal

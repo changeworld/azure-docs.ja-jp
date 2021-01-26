@@ -2,19 +2,17 @@
 title: Azure Monitor ブックとカスタム パラメーター
 description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.author: mbullwin
-ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: daedef3410e32b97f8cf753bcbad6c2bc11bbc41
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461465"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143655"
 ---
 # <a name="interactive-workbooks"></a>対話型ブック
 
@@ -190,5 +188,5 @@ ms.locfileid: "87461465"
 
 ## <a name="next-steps"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
+* ブックの豊富な視覚化オプションの学習を[開始](./workbooks-overview.md#visualizations)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

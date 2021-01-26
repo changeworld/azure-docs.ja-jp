@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090401"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309911"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps の Azure Monitor ログで監視と追跡を行うクエリを表示および作成します
 
-[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)から結果を生成する基になるクエリを表示し、特定の条件に基づいて結果をフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。 クエリには [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)が使用されます。これは、他の結果を表示するために編集できます。 詳細については、「[Azure Monitor ログ クエリ](../azure-monitor/log-query/query-language.md)」を参照してください。
+[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)から結果を生成する基になるクエリを表示し、特定の条件に基づいて結果をフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。 クエリには [Kusto クエリ言語](/azure/data-explorer/kusto/query/)が使用されます。これは、他の結果を表示するために編集できます。 詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +59,7 @@ ms.locfileid: "87090401"
 
      ![[Logic Apps B2B] ソリューションの事前に構築されたクエリを使用して開始する](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * 空のクエリから開始するには、クエリ エディターでクエリ用の [Kusto クエリ言語](../azure-monitor/log-query/query-language.md)の入力を開始します。
+   * 空のクエリから開始するには、クエリ エディターでクエリ用の [Kusto クエリ言語](/azure/data-explorer/kusto/query/)の入力を開始します。
 
      ![空のクエリで開始](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 

@@ -1,25 +1,25 @@
 ### YamlMime:Landing
 title: アプリケーション管理のドキュメント
-summary: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Microsoft 365 やその他多数のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
+summary: Azure Active Directory は ID およびアクセス管理 (IAM) システムです。 デジタル ID に関する情報を格納するための 1 つの場所を提供します。 ユーザー情報が格納される場所として Azure AD を使用するようにソフトウェア アプリケーションを構成できます。
 metadata:
   title: アプリケーション管理のドキュメント
-  description: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Microsoft 365 やその他多数のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
+  description: Azure AD は Identity and Access Management (IAM) システムです。 デジタル ID に関する情報を格納するための 1 つの場所を提供します。 ユーザー情報が格納される場所として Azure AD を使用するようにソフトウェア アプリケーションを構成できます。
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: aa77188b8784c2106daf2f35d15e165b3964b56f
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209119"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98730457"
 landingContent:
-- title: アプリケーション管理について
+- title: アプリ管理について
   linkLists:
   - linkListType: overview
     links:
@@ -27,75 +27,89 @@ landingContent:
       url: what-is-application-management.md
     - text: シングル サインオンとは
       url: what-is-single-sign-on.md
+- title: はじめに
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: クイックスタート シリーズ
+    - text: アプリを表示する
       url: view-applications-portal.md
-- title: クラウド アプリとシングル サインオンの管理
+    - text: アプリを追加する
+      url: add-application-portal.md
+- title: アプリの追加および構成
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: シングル サインオンについて
+    - text: アプリを追加する
+      url: add-application-portal.md
+    - text: アプリを構成する
+      url: add-application-portal-configure.md
+- title: アプリを管理する
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: ベスト プラクティス
+      url: application-management-fundamentals.md
+    - text: 一般的なシナリオ
+      url: common-scenarios.md
+- title: シングル サインオンについて
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: シングルサインオンの概念
       url: what-is-single-sign-on.md
-    - text: エンドユーザー エクスペリエンス
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: Configure single sign-on
-      url: configure-saml-single-sign-on.md
-    - text: ユーザーまたはグループをアプリに割り当てる
-      url: assign-user-or-group-access-portal.md
-- title: ユーザーとグループをアプリにプロビジョニングする
+    - text: シングル サインオンのオプション
+      url: sso-options.md
+- title: アプリへの同意
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: アプリケーションのプロビジョニングとは
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: SaaS アプリのプロビジョニングに関するチュートリアル
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: アプリの構築 プロビジョニングに SCIM を使用する (アプリのプロビジョニングに関するドキュメント)
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: ギャラリー アプリを追加しますか? プロビジョニングを構成する (アプリのプロビジョニングに関するドキュメント)
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: アプリケーション プロキシを使用してオンプレミス アプリを発行する
+    - text: ユーザーの同意の構成
+      url: configure-user-consent.md
+    - text: 管理者の同意の構成
+      url: configure-admin-consent-workflow.md
+- title: アプリの移行
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: アプリケーション プロキシとは
+    - text: 移行リソース
+      url: migration-resources.md
+    - text: Azure への AD FS アプリの移行
+      url: migrate-adfs-apps-to-azure.md
+- title: オンプレミス アプリの使用
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: アプリ プロキシとは
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: アプリケーション プロキシの計画
+    - text: アプリ プロキシのデプロイ
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: オンプレミス アプリの追加
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: プロキシ サーバーを使用したコネクタの構成
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: カスタム ホーム ページの構成
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: アプリケーション プロキシを使用したリモート デスクトップの発行
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する
+- title: アプリのセキュリティ保護
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: レガシ アプリ (クラウドおよびオンプレミス) のセキュリティで保護されたハイブリッド アクセス
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: アプリへのアクセスを管理する
+      url: what-is-access-management.md
+    - text: テナント制限の管理
+      url: tenant-restrictions.md
+- title: マイ アプリの構成
+  linkLists:
+  - linkListType: learn
     links:
-    - text: F5 Big-IP APM を使用したアプリの保護
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: Zscaler ZPA を使用したアプリの保護
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: マイ アプリのデプロイの計画
+      url: access-panel-deployment-plan.md
+    - text: コレクションを作成する
+      url: access-panel-collections.md
+- title: 新しいアプリの開発
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 開発者向けのガイダンス
+      url: ../develop/v2-howto-app-gallery-listing.md
+    - text: プラットフォームとは
+      url: ../develop/v2-overview.md
+- title: ドキュメントの最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: ドキュメントの最新情報
+      url: whats-new-docs.md

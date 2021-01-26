@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a4b2af8626f69b6947950f87b99ed5a60692d8b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547632"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -27,7 +27,7 @@ Canvas と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Canvas に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Canvas の Azure AD への統合を構成するには、Canvas をギャラリ�
 
 4. 検索ボックスに「**Canvas**」と入力し、結果ウィンドウで **Canvas** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Canvas](common/search-new-app.png)
+    ![結果一覧の Canvas](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -148,7 +148,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     c. **[Log Out URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
+    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした **パスワードの変更 URL** の値を貼り付けます。
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
@@ -175,7 +175,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -223,11 +223,11 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 3. **[ユーザー]** をクリックします。
 
-   ![ユーザー](./media/canvas-lms-tutorial/ic775995.png "ユーザー")
+   ![スクリーンショットは、[ユーザー] が選択されている [Canvas] メニューを示しています。](./media/canvas-lms-tutorial/ic775995.png "ユーザー")
 
 4. **[新しいユーザーの追加]** をクリックします。
 
-   ![ユーザー](./media/canvas-lms-tutorial/ic775996.png "ユーザー")
+   ![スクリーンショットは、[新しいユーザーの追加] ボタンを示しています。](./media/canvas-lms-tutorial/ic775996.png "ユーザー")
 
 5. [新しいユーザーの追加] ダイアログ ページで、次の手順を実行します。
 
@@ -250,13 +250,12 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Canvas] タイルをクリックすると、SSO を設定した Canvas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Canvas] タイルをクリックすると、SSO を設定した Canvas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

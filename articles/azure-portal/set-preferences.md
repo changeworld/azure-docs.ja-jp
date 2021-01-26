@@ -1,20 +1,15 @@
 ---
-title: Azure portal の設定と基本設定を管理する | Microsoft Docs
+title: Azure portal の設定を管理する
 description: 独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 設定には、非アクティブ セッションのタイムアウト、既定のビュー、メニュー モード、コントラスト、テーマ、通知、言語と地域の形式が含まれます
-services: azure-portal
 keywords: 設定, タイムアウト, 言語, 地域
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205689"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745640"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal の設定を管理する
 
@@ -42,7 +37,7 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 ![既定のビューが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/default-view.png)
 
-- **ホーム**はカスタマイズできません。  よく使用される Azure サービスへのショートカットが表示され、最近使用したリソースが一覧表示されます。 Microsoft Learn や Azure ロードマップなどのリソースへの便利なリンクも表示されます。
+- **ホーム** はカスタマイズできません。  よく使用される Azure サービスへのショートカットが表示され、最近使用したリソースが一覧表示されます。 Microsoft Learn や Azure ロードマップなどのリソースへの便利なリンクも表示されます。
 
 - ダッシュボードをカスタマイズし、自分専用に設計されたワークスペースを作成することができます。 たとえば、プロジェクト、タスク、またはロールに焦点を合わせたダッシュボードを作成できます。 **[ダッシュボード]** を選択した場合、既定のビューは最近使用したダッシュボードに移動します。 詳細については、「[Azure Portal でのダッシュボードの作成と共有](azure-portal-dashboards.md)」を参照してください。
 
@@ -50,11 +45,11 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 ポータル メニューの既定のモードでは、ページ上でポータル メニューがどれだけの領域を占めるかを制御します。
 
-![テーマが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/menu-mode.png)
+![ポータル メニューの既定のモードを設定する方法を示すスクリーンショット。](./media/set-preferences/menu-mode.png)
 
-- ポータル メニューは**ポップアップ** モードの場合、必要になるまで表示されません。 メニュー アイコンを選択して、メニューを開いたり閉じたりします。
+- ポータル メニューは **ポップアップ** モードの場合、必要になるまで表示されません。 メニュー アイコンを選択して、メニューを開いたり閉じたりします。
 
-- ポータル メニューに対して**ドッキング モード**を選択した場合は、常に表示されます。 メニューを折りたためば、より広い作業領域を確保できます。
+- ポータル メニューに対して **ドッキング モード** を選択した場合は、常に表示されます。 メニューを折りたためば、より広い作業領域を確保できます。
 
 ## <a name="choose-a-theme-or-enable-high-contrast"></a>テーマを選択するか、ハイ コントラストを有効にする
 
@@ -96,7 +91,7 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>ディレクトリ タイムアウト設定を変更する (管理者)
 
-[グローバル管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)の管理者は、セッションがサインアウトするまでの最大アイドル時間を適用できます。非アクティブ タイムアウト ポリシーは、ディレクトリ レベルで適用されます。 この設定は、新しいセッションに対して有効になります。 既にサインインしているユーザーには、すぐには適用されません。 ディレクトリの詳細については、「[Active Directory Domain Services の概要](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
+[グローバル管理者ロール](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)の管理者は、セッションがサインアウトするまでの最大アイドル時間を適用できます。非アクティブ タイムアウト ポリシーは、ディレクトリ レベルで適用されます。 この設定は、新しいセッションに対して有効になります。 既にサインインしているユーザーには、すぐには適用されません。 ディレクトリの詳細については、「[Active Directory Domain Services の概要](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
 
 グローバル管理者として、Azure portal のすべてのユーザーに対してアイドル タイムアウト設定を適用する場合は、これらの手順に従います。
 

@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053628"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996867"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
@@ -23,7 +23,7 @@ ms.locfileid: "88053628"
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動してカスタム ドメインのルート ドメインを有効にするため、そのセクション内の HTTPS を有効にする手順は省略可能です。 
+> このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動し、カスタム ドメインのルート ドメインを有効にするので、そのセクション内の HTTPS を有効にする手順を省略できます。 
 
 <a id="enable-http"></a>
 
@@ -60,7 +60,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
 
-3. **プライマリ BLOB サービス エンドポイント**または**プライマリ静的 Web サイト エンドポイント**の値をテキスト ファイルにコピーします。 
+3. **プライマリ BLOB サービス エンドポイント** または **プライマリ静的 Web サイト エンドポイント** の値をテキスト ファイルにコピーします。 
 
 4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
 
@@ -146,7 +146,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
 
-3. **プライマリ BLOB サービス エンドポイント**または**プライマリ静的 Web サイト エンドポイント**の値をテキスト ファイルにコピーします。 
+3. **プライマリ BLOB サービス エンドポイント** または **プライマリ静的 Web サイト エンドポイント** の値をテキスト ファイルにコピーします。 
 
 4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
 
@@ -250,7 +250,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-カスタム ドメインの登録を削除するには、[az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
+カスタム ドメインの登録を削除するには、[az storage account update](/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
 
 * コマンド形式:
 
@@ -320,11 +320,11 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 4. (省略可能) 次のガイダンスを確認します。
 
-   * [Azure CDN での Shared Access Signature (SAS) トークン](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)。
+   * [Azure CDN での Shared Access Signature (SAS) トークン](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures)。
 
-   * [Azure CDN での HTTP から HTTPS へのリダイレクト](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
+   * [Azure CDN での HTTP から HTTPS へのリダイレクト](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
-   * [Azure CDN で Blob Storage を使用する場合の価格と課金](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
+   * [Azure CDN で Blob Storage を使用する場合の価格と課金](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
 ## <a name="next-steps"></a>次のステップ
 

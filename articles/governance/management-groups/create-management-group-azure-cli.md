@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure CLI を使用して、
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f07ae46c95f9ab9cc1ad973204ac5c50320fdf46
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237133"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920663"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して管理グループを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "89237133"
 
 ### <a name="create-in-the-azure-cli"></a>Azure CLI で作成する
 
-Azure CLI では、[az account management-group create](/cli/azure/account/management-group#az-account-management-group-create) コマンドを使用して新しい管理グループを作成します。 この例では、管理グループの **name** は _Contoso_ です。
+Azure CLI では、[az account management-group create](/cli/azure/account/management-group#az_account_management_group_create) コマンドを使用して新しい管理グループを作成します。 この例では、管理グループの **name** は _Contoso_ です。
 
 ```azurecli-interactive
 az account management-group create --name 'Contoso'
@@ -51,7 +51,7 @@ az account management-group create --name 'ContosoSubGroup' --parent 'Contoso'
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-先ほど作成した管理グループを削除するには、[az account management-group delete](/cli/azure/account/management-group#az-account-management-group-delete) コマンドを使用します。
+先ほど作成した管理グループを削除するには、[az account management-group delete](/cli/azure/account/management-group#az_account_management_group_delete) コマンドを使用します。
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'

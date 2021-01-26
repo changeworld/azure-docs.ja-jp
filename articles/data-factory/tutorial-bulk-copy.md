@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用してデータを一括コピーする
-description: Azure Data Factory とコピー アクティビティを使い、ソース データ ストアからコピー先データ ストアにデータを一括コピーする方法について説明します。
+description: Azure Data Factory とコピー アクティビティを使用して、ソース データ ストアからコピー先データ ストアにデータを一括コピーします。
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,25 +11,25 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: bf40353a8f29200ab2a33859473dbc504c29bf7d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251513"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510436"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell を使用し、Azure Data Factory を使用して複数のテーブルを一括コピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
+このチュートリアルでは、**Azure SQL Database から Azure Synapse Analytics に多数のテーブルをコピーする方法** について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
 
 このチュートリアルは大まかに次の手順で構成されます。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
-> * Azure SQL Database、Azure SQL Data Warehouse、Azure Storage のリンクされたサービスを作成します。
-> * Azure SQL Database と Azure SQL Data Warehouse のデータセットを作成します。
+> * Azure SQL Database、Azure Synapse Analytics、および Azure Storage のリンクされたサービスを作成します。
+> * Azure SQL Database および Azure Synapse Analytics データセットを作成します。
 > * コピーするテーブルを検索するためのパイプラインと実際のコピー操作を実行するためのパイプラインを作成します。 
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。
@@ -37,12 +37,12 @@ ms.locfileid: "85251513"
 このチュートリアルでは、Azure PowerShell を使用します。 その他のツールまたは SDK を使ってデータ ファクトリを作成する方法については、[クイックスタート](quickstart-create-data-factory-dot-net.md)を参照してください。 
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
-このシナリオでは、SQL Data Warehouse にコピーする必要のあるテーブルが Azure SQL Database に多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
+このシナリオでは、Azure Synapse Analytics にコピーする必要のあるテーブルが Azure SQL Database に多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
 
 ![ワークフロー](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * 1 つ目のパイプラインでは、シンク データ ストアにコピーするテーブルの一覧が検索されます。  代わりに、シンク データ ストアにコピーするすべてのテーブルが列挙されたメタデータ テーブルを用意する方法もあります。 次に、1 つ目のパイプラインによって 2 つ目のパイプラインがトリガーされ、データベース内の各テーブルを反復処理しながらデータのコピー操作が実行されます。
-* 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを SQL Data Warehouse 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[BLOB ストレージと PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 
+* 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを Azure Synapse Analytics 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[Blob Storage と PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -53,23 +53,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
 * **Azure Storage アカウント**。 この Azure ストレージ アカウントは、一括コピー操作のステージング BLOB ストレージとして使用されます。 
 * **Azure SQL データベース**。 ソース データが格納されているデータベースです。 
-* **Azure SQL Data Warehouse**。 SQL データベースからコピーされたデータは、このデータ ウェアハウスに格納されます。 
+* **Azure Synapse Analytics**。 SQL データベースからコピーされたデータは、このデータ ウェアハウスに格納されます。 
 
-### <a name="prepare-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse の準備
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>SQL Database と Azure Synapse Analytics を準備する
 
 **ソース Azure SQL Database の準備**:
 
-[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従い、Adventure Works LT サンプル データを使って SQL Database にデータベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを SQL データ ウェアハウスにコピーします。
+[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従い、Adventure Works LT サンプル データを使って SQL Database にデータベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics にコピーします。
 
-**シンク Azure SQL Data Warehouse の準備**:
+**シンク Azure Synapse Analytics を準備する**:
 
-1. Azure SQL データ ウェアハウスがない場合は、「[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)」の記事に書かれている作成手順を参照してください。
+1. Azure Synapse Analytics ワークスペースがない場合は、「[Azure Synapse Analytics の使用を開始する](..\synapse-analytics\get-started.md)」の記事の作成手順を参照してください。
 
-2. 対応するテーブル スキーマを SQL Data Warehouse に作成します。 データの移行/コピーは、後続の手順で Azure Data Factory を使用して行います。
+2. 対応するテーブル スキーマを Azure Synapse Analytics に作成します。 データの移行/コピーは、後続の手順で Azure Data Factory を使用して行います。
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL サーバーにアクセスするための Azure サービス
 
-SQL Database と SQL Data Warehouse の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご利用のサーバーで **[Azure サービスへのアクセスを許可]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL データベースからデータを読み取ったり、Azure SQL データ ウェアハウスにデータを書き込んだりすることができます。 この設定を確認して有効にするには、次の手順を実行します。
+SQL Database と Azure Synapse Analytics の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご利用のサーバーで **[Azure サービスへのアクセスを許可]** 設定を **オン** にしてください。 この設定により、Data Factory サービスで Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics にデータを書き込んだりすることができます。 この設定を確認して有効にするには、次の手順を実行します。
 
 1. 左側にある **[すべてのサービス]** をクリックし、 **[SQL Server]** をクリックします。
 2. サーバーを選択し、 **[設定]** の **[ファイアウォール]** をクリックします。
@@ -77,7 +77,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. **PowerShell**を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+1. **PowerShell** を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
@@ -146,14 +146,14 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDatabaseLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
-### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>シンク Azure SQL Data Warehouse のリンクされたサービスを作成する
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>シンク Azure Synapse Analytics のリンクされたサービスを作成する
 
 1. 次の内容を記述した **AzureSqlDWLinkedService.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。
 
@@ -180,7 +180,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDWLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -216,7 +216,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -255,7 +255,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     DatasetName       : AzureSqlDatabaseDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -263,7 +263,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>シンク SQL Data Warehouse のデータセットを作成する
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>シンク Azure Synapse Analytics 用のデータセットを作成する
 
 1. 次の内容を記述した **AzureSqlDWDataset.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。"tableName" はパラメーターとして設定されています。後で、このデータセットを参照するコピー アクティビティを使用して、実際の値をデータセットに渡します。
 
@@ -299,7 +299,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     DatasetName       : AzureSqlDWDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -313,7 +313,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>パイプライン "IterateAndCopySQLTables" を作成する
 
-このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、ステージング コピーと PolyBase を使って、Azure SQL Database 内のテーブルから Azure SQL Data Warehouse にデータがコピーされます。
+このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、ステージング コピーと PolyBase を使って、Azure SQL Database 内のテーブルから Azure Synapse Analytics にデータがコピーされます。
 
 1. 次の内容を記述した **IterateAndCopySQLTables.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。
 
@@ -334,7 +334,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from Azure SQL Database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to Azure Synapse Analytics",
                                 "type": "Copy",
                                 "inputs": [
                                     {
@@ -391,7 +391,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     PipelineName      : IterateAndCopySQLTables
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -467,7 +467,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     出力例を次に示します。
 
-    ```json
+    ```console
     PipelineName      : GetTableListAndTriggerCopyData
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -509,7 +509,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
     サンプル実行の出力結果を次に示します。
 
-    ```json
+    ```console
     Pipeline run details:
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -573,15 +573,15 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     $result2
     ```
 
-3. シンク Azure SQL Data Warehouse に接続し、Azure SQL Database から正しくデータがコピーされていることを確認します。
+3. シンク Azure Synapse Analytics に接続し、Azure SQL Database から正しくデータがコピーされていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
-> * Azure SQL Database、Azure SQL Data Warehouse、Azure Storage のリンクされたサービスを作成します。
-> * Azure SQL Database と Azure SQL Data Warehouse のデータセットを作成します。
+> * Azure SQL Database、Azure Synapse Analytics、および Azure Storage のリンクされたサービスを作成します。
+> * Azure SQL Database および Azure Synapse Analytics データセットを作成します。
 > * コピーするテーブルを検索するためのパイプラインと実際のコピー操作を実行するためのパイプラインを作成します。 
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。

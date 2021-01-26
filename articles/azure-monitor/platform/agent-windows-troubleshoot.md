@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927319"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050563"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -21,6 +21,40 @@ Azure Monitor の Windows 用 Log Analytics エージェントで発生する可
 * Premier サポート ベネフィットをお持ちのお客様は、[Premier](https://premier.microsoft.com/) でサポート要求を開くことができます。
 * Azure サポート契約のお客様は、[Azure portal](https://manage.windowsazure.com/?getsupport=true) でサポート要求を開くことができます。
 * Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics のトラブルシューティング ツール
+
+Log Analytics エージェントの Windows トラブルシューティング ツールは、Log Analytics エージェントでの問題の検出と診断に役立つように設計された、PowerShell スクリプトのコレクションです。 それは、インストール時にエージェントに自動的に含まれます。 このツールを実行することが、問題を診断するための最初の手順になります。
+
+### <a name="how-to-use"></a>使用方法
+1. Log Analytics エージェントがインストールされているコンピューターで、管理者として PowerShell プロンプトを開きます。
+1. ツールが置かれているディレクトリに移動します。
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. 次のコマンドを使用してメイン スクリプトを実行します。
+   * `.\GetAgentInfo.ps1`
+1. トラブルシューティングのシナリオを選択します。
+1. コンソールに表示される指示に従います。 (注: トレース ログの手順では、ログ収集を停止する際に手動による操作が必要です。 問題の再現度に基づいて一定期間待ち、S キーを押してログ収集を停止し、次の手順に進みます。)
+
+   結果ファイルの場所は完了時にログに記録され、新しいエクスプローラー ウィンドウが、ファイルを強調表示した状態で表示されます。
+
+### <a name="installation"></a>インストール
+トラブルシューティング ツールは、Log Analytics エージェント (ビルド 10.20.18053.0) のインストール時に自動的に同梱されます。
+
+### <a name="scenarios-covered"></a>対象となるシナリオ
+トラブルシューティング ツールによって確認されるシナリオの一覧を次に示します。
+
+- エージェントがデータを報告しないか、ハートビートのデータがない
+- エージェントの拡張機能のデプロイが失敗した
+- エージェントがクラッシュした
+- エージェントが大量の CPU/メモリを消費している
+- インストールまたはアンインストールでのエラー
+- カスタム ログの問題
+- OMS ゲートウェイの問題
+- パフォーマンス カウンターの問題
+- すべてのログが収集される
+
+>[!NOTE]
+>問題が発生した場合は、トラブルシューティング ツールを実行してください。 チケットをオープンする際に最初からログを提示すると、サポート チームが問題を迅速にトラブルシューティングするのに役立ちます。
 
 ## <a name="important-troubleshooting-sources"></a>重要なトラブルシューティング ソース
 
@@ -59,7 +93,7 @@ Azure Government に必要なファイアウォールの情報については、
 
     ![TestCloudConnection ツールの実行結果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- **イベント ソース** - *Health Service Modules*、*HealthService*、*Service Connector* で *Operations Manager* イベント ログを絞り込み、**イベント レベルの** *警告*と*エラー*で絞り込んで、次の表のイベントが書き込まれたかどうかを確認します。 その場合は、発生する可能性がある各イベントについて記載されている解決手順を確認します。
+- **イベント ソース** - *Health Service Modules*、*HealthService*、*Service Connector* で *Operations Manager* イベント ログを絞り込み、**イベント レベルの** *警告* と *エラー* で絞り込んで、次の表のイベントが書き込まれたかどうかを確認します。 その場合は、発生する可能性がある各イベントについて記載されている解決手順を確認します。
 
     |イベント ID |source |説明 |解決方法 |
     |---------|-------|------------|-----------|
@@ -93,11 +127,11 @@ Heartbeat
 クエリから結果が返される場合は、特定のデータ型の収集とサービスへの転送が行われていないかどうかを判断する必要があります。 この原因は、更新された構成をエージェントがサービスから受信していないこと、またはエージェントの正常な動作を妨げる他の何らかの症状の可能性があります。 さらにトラブルシューティングを行うには、次の手順を実行します。
 
 1. コンピューターで管理者特権のコマンド プロンプトを開き、`net stop healthservice && net start healthservice` を入力してエージェント サービスを再起動します。
-2. *Operations Manager* イベント ログを開き、**イベント ソース**の *HealthService* から **イベント ID** の *7023、7024、7025、7028*、および *1210* を検索します。  これらのイベントは、エージェントが Azure Monitor から構成を正常に受信しており、コンピューターをアクティブに監視していることを示します。 イベント ID 1210 のイベントの説明では、最後の行に、エージェントの監視範囲に含まれるすべての解決策と分析情報も指定されます。  
+2. *Operations Manager* イベント ログを開き、**イベント ソース** の *HealthService* から **イベント ID** の *7023、7024、7025、7028*、および *1210* を検索します。  これらのイベントは、エージェントが Azure Monitor から構成を正常に受信しており、コンピューターをアクティブに監視していることを示します。 イベント ID 1210 のイベントの説明では、最後の行に、エージェントの監視範囲に含まれるすべての解決策と分析情報も指定されます。  
 
     ![イベント ID 1210 の説明](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. 数分経ってもクエリ結果または視覚化に想定されるデータが表示されない場合は、*Operations Manager* イベント ログの解決策と分析情報のどちらのデータを表示しているかに応じて、**イベント ソースの**  *HealthService* と *Health Service Modules* を検索します。また、**イベント レベルの** *警告*と*エラー* で絞り込み、次の表のイベントが書き込まれたかどうかを確認します。
+3. 数分経ってもクエリ結果または視覚化に想定されるデータが表示されない場合は、*Operations Manager* イベント ログの解決策と分析情報のどちらのデータを表示しているかに応じて、**イベント ソースの**  *HealthService* と *Health Service Modules* を検索します。また、**イベント レベルの** *警告* と *エラー* で絞り込み、次の表のイベントが書き込まれたかどうかを確認します。
 
     |イベント ID |source |説明 |解決方法 |
     |---------|-------|------------|

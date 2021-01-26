@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 8c3d79211ce594ec4c175aa6f6b5f8df3a7c4ba8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a108f8f5c5b333a9fc7e6eabbfa516b6578ca76
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115545"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063826"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>独自に開発したアプリケーションに必要な特定の API を見つける方法
 
@@ -27,7 +28,7 @@ Web API を公開すると、アクセス許可をアプリの登録に追加す
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>Web API にアクセスするためのクライアント アプリケーションの構成
 
-アクセス許可をアプリの登録に追加すると、公開されている Web API に **API アクセスを追加**できます。 Web API にアクセスするには、「[Web API にアクセスするためのクライアント アプリケーションの構成](quickstart-configure-app-access-web-apis.md)」で説明されている手順に従います。
+アクセス許可をアプリの登録に追加すると、公開されている Web API に **API アクセスを追加** できます。 Web API にアクセスするには、「[Web API にアクセスするためのクライアント アプリケーションの構成](quickstart-configure-app-access-web-apis.md)」で説明されている手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 

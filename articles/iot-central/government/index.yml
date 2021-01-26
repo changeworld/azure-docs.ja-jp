@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: a036b23d460fc5c638f36ff0dbca9bcda11cd39c
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 71e9abb48b6fc6f00ff34e3d0f21e7261094a399
+  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87335925"
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "96121606"
 landingContent:
 - title: 政府機関ソリューションを構築する
   linkLists:
@@ -31,18 +31,30 @@ landingContent:
       url: tutorial-water-consumption-monitoring.md
     - text: 接続された廃棄物管理アプリを作成する
       url: tutorial-connected-waste-management.md
-- title: 接続する
+- title: デバイスを接続して開発する
   linkLists:
+  - linkListType: overview
+    links:
+    - text: デバイス開発者向けの概要
+      url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: デバイス テンプレートを設定する
-      url: ../core/howto-set-up-template.md
-    - text: デバイスの接続
+    - text: デバイスを作成して接続する
       url: ../core/tutorial-connect-device.md
+  - linkListType: concept
+    links:
+    - text: デバイスの接続性
+      url: ../core/concepts-get-connected.md
+    - text: デバイス テンプレート
+      url: ../core/concepts-device-templates.md
   - linkListType: how-to-guide
     links:
-    - text: その他の IoT クラウドの接続
-      url: ../core/howto-build-iotc-device-bridge.md
+    - text: テンプレートを設定する
+      url: ../core/howto-set-up-template.md
+    - text: Azure Sphere デバイスを接続する
+      url: ../core/howto-connect-sphere.md
+    - text: デバイス接続のトラブルシューティング
+      url: ../core/troubleshoot-connection.md
 - title: 接続を維持する
   linkLists:
   - linkListType: tutorial

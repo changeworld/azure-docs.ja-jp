@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/09/2020
+ms.openlocfilehash: f94975b91a332e480a1b570c29f02040a1047f75
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730147"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555415"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -52,7 +52,7 @@ ms.locfileid: "84730147"
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[分析]**  >  **[データ ファクトリ]** を選択します。
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[統合]**  >  **[Data Factory]** を選択します。
 
    ![データ ファクトリの選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "84730147"
 
     c. **[トリガーの種類]** で、 **[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
 
-    d. **[Recurrence]\(繰り返し\)** で、**15 分**と指定します。
+    d. **[Recurrence]\(繰り返し\)** で、**15 分** と指定します。
 
     e. **[次へ]** を選択します。
 

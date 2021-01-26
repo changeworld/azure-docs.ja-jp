@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184062"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953952"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -77,9 +77,9 @@ WoodGrove は、個人消費者と企業顧客の両方に食料品を販売す�
 
 WoodGrove Groceries では、顧客とストアの関係に基づいて、いくつかのサインイン オプションが提供されています。
 
-* **個人**の顧客は、ソーシャル ID プロバイダーやメール アドレスとパスワードなど、個人アカウントを使用してサインアップまたはサインインできます。
-* **企業**顧客は、会社の資格情報を使用してサインアップまたはサインインできます。
-* **パートナー**と仕入先は、販売する商品を食料品ストアに提供する個人です。 パートナー ID は、[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) によって提供されます。
+* **個人** の顧客は、ソーシャル ID プロバイダーやメール アドレスとパスワードなど、個人アカウントを使用してサインアップまたはサインインできます。
+* **企業** 顧客は、会社の資格情報を使用してサインアップまたはサインインできます。
+* **パートナー** と仕入先は、販売する商品を食料品ストアに提供する個人です。 パートナー ID は、[Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) によって提供されます。
 
 ![個人 (B2C)、企業 (B2C)、およびパートナー (B2B) のサインイン ページ](./media/overview/woodgrove-overview.png)
 
@@ -95,7 +95,7 @@ WoodGrove では、顧客が自分の Google、Facebook、または Microsoft �
 
 ![Azure AD B2C によってホストされている WoodGrove のカスタム サインアップ ページ](./media/overview/sign-up.png)
 
-メール アドレスを入力し、 **[Send verification code]** を選択すると、Azure AD B2C によってコードが顧客に送信されます。 顧客は、コードを入力し、 **[Verify code]** を選択して、フォームに他の情報を入力した後、サービス使用条件に同意する必要があります。
+メール アドレスを入力し、**[Send verification code]** を選択すると、Azure AD B2C によってコードが顧客に送信されます。 顧客は、コードを入力し、**[Verify code]** を選択して、フォームに他の情報を入力した後、サービス使用条件に同意する必要があります。
 
 **[Create]** ボタンをクリックすると、Azure AD B2C によってユーザーは WoodGrove Groceries の Web サイトにリダイレクトされます。 Azure AD B2C では、リダイレクトのとき、WoodGrove の Web アプリケーションに OpenID Connect の認証トークンが渡されます。 ユーザーは、サインインが済んで操作できる状態になり、右上隅に表示名が表示されることでサインインしていることが示されます。
 
@@ -105,13 +105,13 @@ WoodGrove では、顧客が自分の Google、Facebook、または Microsoft �
 
 顧客が **[Business customers]** の下にあるいずれかのオプションを選択すると、WoodGrove Groceries の Web サイトでは、個人顧客の場合とは異なる Azure AD B2C ポリシーが呼び出されます。
 
-このポリシーでは、サインアップとサインインに会社の資格情報を使用するオプションが、ユーザーに提示されます。 WoodGrove の例では、ユーザーは Office 365 または Azure AD のアカウントを使用してサインインするように求められます。 このポリシーでは、[マルチテナント Azure AD アプリケーション](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) と `/common` Azure AD エンドポイントを使用して、Azure AD B2C と世界中の Office 365 顧客がフェデレーションされます。
+このポリシーでは、サインアップとサインインに会社の資格情報を使用するオプションが、ユーザーに提示されます。 WoodGrove の例では、ユーザーの職場または学校アカウントを使用してサインインするように求められます。 このポリシーでは、[マルチテナント Azure AD アプリケーション](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md)と `/common` Azure AD エンドポイントを使用して、Azure AD B2C と世界中の Microsoft 365 顧客がフェデレーションされます。
 
 ### <a name="authenticate-partners"></a>パートナーを認証する
 
 **[Sign in with your supplier account]** リンクでは、Azure Active Directory B2B のコラボレーション機能が使用されます。 Azure AD B2B は、パートナー ID を管理するための Azure Active Directory の機能のファミリです。 Azure AD B2C で保護されたアプリケーションにアクセスするため、Azure Active Directory からそれらの ID をフェデレーションすることができます。
 
-Azure AD B2B について詳しくは、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
+Azure AD B2B について詳しくは、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../active-directory/external-identities/what-is-b2b.md)」をご覧ください。
 
 <!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
 ### Sample code
@@ -121,7 +121,7 @@ If you'd like to jump right into the code to see how the WoodGrove Groceries app
 [Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
 -->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD B2C とはどのようなものか、そしてそれが役に立ついくつかのシナリオがわかったので、その機能と技術的側面についてもう少し掘り下げて説明します。
 

@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa7be140b47d389bea0e7468d1a5ac7e58c3b1b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306278"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -33,7 +33,7 @@ Azure AD Connect Health アラート セクションには、アクティブな�
 
 アクティブまたは解決済みのアラートをダブルクリックすると、新しいブレードが開かれ、追加情報、アラートを解決するための手順、関連ドキュメントへのリンクなどが表示されます。 過去に解決されたアラートの履歴データも表示できます。
 
-![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/alert2.png)
+![Azure AD Connect Health の [アラート] ページのスクリーンショット。アラートが選択されており、[アラートの詳細] ウィンドウが表示されています。](./media/how-to-connect-health-adfs/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>AD FS の利用状況分析
 Azure AD Connect Health 利用状況分析では、フェデレーション サーバーの認証トラフィックを分析できます。 [利用状況分析] ボックスをダブルクリックすると、[利用状況分析] ブレードが開き、いくつかのメトリックとグループ分けが表示されます。
@@ -43,7 +43,7 @@ Azure AD Connect Health 利用状況分析では、フェデレーション サ�
 >
 >
 
-![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report1.png)
+![Azure AD Connect Health の [利用状況分析] ページのスクリーンショット。](./media/how-to-connect-health-adfs/report1.png)
 
 追加のメトリックの選択、時間範囲の指定、グループ分けの変更を行うには、利用状況の分析グラフを右クリックし、[グラフの編集] を選択します。 これで、時間範囲の指定、別のメトリックの選択、グループ分けの変更を行うことができます。 さまざまな "メトリック" に基づいて認証トラフィックの分布を確認し、次のセクションに示す "グループ化" という関連パラメーターを使用して各メトリックをグループ化できます。
 
@@ -78,7 +78,7 @@ Azure AD Connect Health 利用状況分析では、フェデレーション サ�
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS のパフォーマンスの監視
 Azure AD Connect Health のパフォーマンスの監視は、メトリックに関する監視情報を提供します。 [監視] ボックスを選択すると、新しいブレードが開かれ、メトリックに関する詳細情報が表示されます。
 
-![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/perf1.png)
+![Azure AD Connect Health のパフォーマンスの [監視] ページのスクリーンショット。](./media/how-to-connect-health-adfs/perf1.png)
 
 ブレードの上部にある [フィルター] を選択すると、サーバーごとにフィルター処理して個々のサーバーのメトリックを表示することができます。 メトリックを変更するには、監視ブレードの監視グラフを右クリックし、[グラフの編集] を選択します (または [グラフの編集] ボタンを選択します)。 開いた新しいブレードのドロップダウンから追加のメトリックを選択し、パフォーマンス データを表示する時間の範囲を指定します。
 
@@ -89,7 +89,7 @@ AD FS サーバーで認証要求が失敗する一般的な理由の 1 つは�
 
 Azure AD Connect Health for AD FS では、無効なユーザー名またはパスワードでログインが失敗した上位 50 名のユーザーに関するレポートを表示できます。 このレポートは、ファーム内のすべての AD FS サーバーによって生成される監査イベントに基づいて作成されます。
 
-![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report1a.png)
+![[レポート] セクションのスクリーンショット。過去 30 日間において無効なパスワードを試した回数が表示されています。](./media/how-to-connect-health-adfs/report1a.png)
 
 このレポートから、次の情報を簡単に確認することができます。
 

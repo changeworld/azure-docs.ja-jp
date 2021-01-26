@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510268"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656786"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -40,7 +40,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 1. https://portal.azure.com/ にサインインします。
 
-2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある**設定**アイコンを選択します。
+2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある **設定** アイコンを選択します。
 
       a.  **[Azure Active Directory]**  >  **[アプリの登録]** の順に進みます。
 
@@ -70,7 +70,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 7. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive 
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -84,7 +84,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
     ```
 
-9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列** の値をキャプチャします。
 
 
 ## <a name="create-device-or-sensor-metadata"></a>デバイスまたはセンサーのメタデータを作成する
@@ -101,46 +101,45 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 - /**SensorModel**:SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
 - /**Sensor**:センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
 
-
-|        DeviceModel   |  検索候補   |
-| ------- | -------             |
-|     Type (node、gateway)        |          デバイスの種類 - Node または Gateway      |
-|          Manufacturer            |         製造元の名前    |
-|  ProductCode                    |  デバイスの製品コード、モデル名、またはモデル番号。 例: EnviroMonitor#6800。  |
-|            Port          |     ポートの名前と種類 (デジタルまたはアナログ)。
-|     名前                 |  リソースを識別するための名前。 たとえば、モデル名または製品名。
-      説明     | そのモデルについてのわかりやすい説明を入力します。
-|    Properties          |    製造元から提供されるその他のプロパティ。   |
-|    **[デバイス]**             |                      |
-|   DeviceModelId     |     関連付けられているデバイス モデルの ID  |
-|  HardwareId          | MAC アドレスなど、デバイスの一意の ID。
-|  ReportingInterval        |   レポートの間隔 (秒)。
-|  場所            |  デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。
-|ParentDeviceId       |    このデバイスが接続されている親デバイスの ID。 たとえば、ゲートウェイに接続されているノードがあります。 ノードは parentDeviceId というゲートウェイを備えています。  |
-|    名前            | リソースを識別するための名前。 デバイス パートナーは、パートナー側のデバイス名と一致する名前を送信する必要があります。 パートナー デバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。|
-|     説明       |      わかりやすい説明を入力します。 |
-|     Properties    |  製造元から提供されるその他のプロパティ。
-|     **SensorModel**        |          |
-|       Type (analog、digital)          |      センサーの種類 (アナログまたはデジタル)。       |
-|          Manufacturer            |       センサーの製造元。     |
-|     ProductCode| 製品コード、モデル名、またはモデル番号。 例: RS-CO2-N01。 |
-|       SensorMeasures > Name       | センサーのメジャーの名前。 小文字のみがサポートされます。 メジャーの深さが異なる場合は、深さを指定します。 例: soil_moisture_15cm。 この名前は、テレメトリ データと一致している必要があります。  |
-|          SensorMeasures > DataType       |テレメトリのデータ型。 現在、倍精度浮動小数点型がサポートされています。|
-|    SensorMeasures > Type    |センサーのテレメトリ データの測定の種類。 システムで定義された種類は、AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、Pressure、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR です。 さらに追加するには、/ExtendedType API を参照してください。|
-|        SensorMeasures > Unit              | センサーのテレメトリ データの単位。 システムで定義された単位は、NoUnit、Celsius、Fahrenheit、Kelvin、Rankine、Pascal、Mercury、PSI、MilliMeter、CentiMeter、Meter、Inch、Feet、Mile、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、Degree、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、Percentage、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、Liter、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour です。さらに追加する場合は、/ExtendedType API を参照してください。|
-|    SensorMeasures > AggregationType    |  値は、none、average、maximum、minimum、または StandardDeviation を指定できます。  |
-|          名前            | リソースを識別する名前。 たとえば、モデル名または製品名。  |
-|    説明        | そのモデルについてのわかりやすい説明を入力します。|
-|   Properties       |  製造元から提供されるその他のプロパティ。|
-|    **センサー**      |          |
-| HardwareId          |   製造元によって設定された、センサーの一意の ID。|
-|  SensorModelId     |    関連付けられているセンサー モデルの ID。|
-| 場所          |  センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。|
-|   Port > Name        |  センサーが接続されている、デバイス上のポートの名前と種類。 これは、デバイス モデルで定義されているのと同じ名前にする必要があります。|
-|    DeviceID  |    センサーが接続されているデバイスの ID。 |
-| 名前            |   リソースを識別する名前 たとえば、センサー名または製品名と、モデル番号または製品コード。|
-|    説明      | わかりやすい説明を入力します。|
-|    Properties        |製造元から提供されるその他のプロパティ。|
+| DeviceModel | 検索候補 |
+|--|--|
+| Type (node、gateway) | デバイスの種類 - Node または Gateway |
+| Manufacturer | 製造元の名前 |
+| ProductCode | デバイスの製品コード、モデル名、またはモデル番号。 例: EnviroMonitor#6800。 |
+| Port | ポートの名前と種類 (デジタルまたはアナログ)。 |
+| 名前 | リソースを識別するための名前。 たとえば、モデル名または製品名。 |
+| 説明 | そのモデルについてのわかりやすい説明を入力します。 |
+| Properties | 製造元から提供されるその他のプロパティ。 |
+| **[デバイス]** |  |
+| DeviceModelId | 関連付けられているデバイス モデルの ID |
+| HardwareId | MAC アドレスなど、デバイスの一意の ID。 |
+| ReportingInterval | レポートの間隔 (秒)。 |
+| 場所 | デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。 |
+| ParentDeviceId | このデバイスが接続されている親デバイスの ID。 たとえば、ゲートウェイに接続されているノードがあります。 ノードは parentDeviceId というゲートウェイを備えています。 |
+| 名前 | リソースを識別するための名前。 デバイス パートナーは、パートナー側のデバイス名と一致する名前を送信する必要があります。 パートナー デバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。 |
+| 説明 | わかりやすい説明を入力します。 |
+| Properties | 製造元から提供されるその他のプロパティ。 |
+| **SensorModel** |  |
+| Type (analog、digital) | センサーの種類 (アナログまたはデジタル)。 |
+| Manufacturer | センサーの製造元。 |
+| ProductCode | 製品コード、モデル名、またはモデル番号。 例: RS-CO2-N01。 |
+| SensorMeasures > Name | センサーのメジャーの名前。 小文字のみがサポートされます。 メジャーの深さが異なる場合は、深さを指定します。 例: soil_moisture_15cm。 この名前は、テレメトリ データと一致している必要があります。 |
+| SensorMeasures > DataType | テレメトリのデータ型。 現在、倍精度浮動小数点型がサポートされています。 |
+| SensorMeasures > Type | センサーのテレメトリ データの測定の種類。 システムで定義された種類は、AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、Pressure、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR です。 さらに追加するには、/ExtendedType API を参照してください。 |
+| SensorMeasures > Unit | センサーのテレメトリ データの単位。 システムで定義された単位は、NoUnit、Celsius、Fahrenheit、Kelvin、Rankine、Pascal、Mercury、PSI、MilliMeter、CentiMeter、Meter、Inch、Feet、Mile、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、Degree、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、Percentage、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、Liter、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour です。さらに追加する場合は、/ExtendedType API を参照してください。 |
+| SensorMeasures > AggregationType | 値は、none、average、maximum、minimum、または StandardDeviation を指定できます。 |
+| 名前 | リソースを識別する名前。 たとえば、モデル名または製品名。 |
+| 説明 | そのモデルについてのわかりやすい説明を入力します。 |
+| Properties | 製造元から提供されるその他のプロパティ。 |
+| **センサー** |  |
+| HardwareId | 製造元によって設定された、センサーの一意の ID。 |
+| SensorModelId | 関連付けられているセンサー モデルの ID。 |
+| 場所 | センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。 |
+| Port > Name | センサーが接続されている、デバイス上のポートの名前と種類。 これは、デバイス モデルで定義されているのと同じ名前にする必要があります。 |
+| DeviceID | センサーが接続されているデバイスの ID。 |
+| 名前 | リソースを識別する名前 たとえば、センサー名または製品名と、モデル番号または製品コード。 |
+| 説明 | わかりやすい説明を入力します。 |
+| Properties | 製造元から提供されるその他のプロパティ。 |
 
 オブジェクトの詳細については、[Swagger](https://aka.ms/FarmBeatsDatahubSwagger) を参照してください。
 
@@ -336,7 +335,7 @@ FarmBeats でデバイスとセンサーを作成したので、関連付けら�
 
 ### <a name="create-a-telemetry-client"></a>テレメトリ クライアントを作成する
 
-テレメトリを Azure Event Hubs に送信して、処理する必要があります。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 テレメトリ データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 テレメトリの送信の詳細については、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send) に関するページを参照してください。
+テレメトリを Azure Event Hubs に送信して、処理する必要があります。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 テレメトリ データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 テレメトリの送信の詳細については、[Azure Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) に関するページを参照してください。
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>クライアントとしてテレメトリ メッセージを送信する
 

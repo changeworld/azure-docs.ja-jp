@@ -3,14 +3,14 @@ title: Python と Jupyter Notebooks を使用してデータ サイエンスを�
 description: Python と Jupyter Notebooks を使用してデータサイエンスを教えるためのラボを設定する方法について説明します。
 author: emaher
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445017"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648023"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する
 この記事では、[Jupyter Notebook](http://jupyter-notebook.readthedocs.io/) の使用方法を学生に教えるために必要なツールを使用して Lab Services 内にテンプレート仮想マシン (VM) を設定する方法と、学生が各自の仮想マシン (VM) 上で各自のノートブックに接続する方法について概説します。
@@ -35,7 +35,7 @@ Azure サブスクリプションを用意したら、Azure Lab Services で新�
 > この記事では、Jupyter Notebook で事前構成済みであるため、Azure マーケットプレースで入手できる Data Science 仮想マシン イメージを使用します。 ただし、これらのイメージには、データ サイエンス用の他の多くの開発ツールとモデリング ツールも含まれています。 これらの追加のツールが不要で、Jupyter Notebook だけを使用する簡易セットアップを行う場合は、カスタム VM イメージを作成します。 例については、[Azure での JupyperHub のインストール](http://tljh.jupyter.org/en/latest/install/azure.html)に関する記事を参照してください。 カスタム イメージを作成したら、Azure Lab Services 内でそのイメージを使用できるように共有イメージ ギャラリーにアップロードします。 詳細については、[Azure Lab Services での共有イメージ ギャラリーの使用](how-to-attach-detach-shared-image-gallery.md)に関する記事を参照してください。 
 
 ### <a name="lab-settings"></a>ラボの設定
-クラスルーム ラボを設定するときに、次の表に示すように、**仮想マシンのサイズ**と**仮想マシン イメージ**の設定を構成します。 クラスルーム ラボを作成する手順については、「[クラスルーム ラボをセットアップする](tutorial-setup-classroom-lab.md)」を参照してください。
+クラスルーム ラボを設定するときに、次の表に示すように、**仮想マシンのサイズ** と **仮想マシン イメージ** の設定を構成します。 クラスルーム ラボを作成する手順については、「[クラスルーム ラボをセットアップする](tutorial-setup-classroom-lab.md)」を参照してください。
 
 | ラボの設定 | 値/説明 |
 | ------------ | ------------------ | 
@@ -86,7 +86,7 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
 以下のセクションで、Jupyter Notebook に接続するためのこれらの方法の詳細について説明します。 
 
 #### <a name="ssh-to-virtual-machine"></a>仮想マシンに SSH 接続する
-学生は、ターミナル セッションから Linux VM に SSH 経由で接続できます。 詳しい手順については、[クラスルーム ラボへのアクセス方法](how-to-use-classroom-lab.md)に関するページを参照してください。 Windows クライアント コンピューターを使用している場合は、[PuTTY](https://www.putty.org/) をダウンロードして SSH クライアントを有効にするか、コマンド プロンプトから SSH への [Windows での OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) を有効にする必要があります。 
+学生は、ターミナル セッションから Linux VM に SSH 経由で接続できます。 詳しい手順については、[クラスルーム ラボへのアクセス方法](how-to-use-classroom-lab.md)に関するページを参照してください。 Windows クライアント コンピューターを使用している場合は、[PuTTY](https://www.putty.org/) をダウンロードして SSH クライアントを有効にするか、コマンド プロンプトから SSH への [Windows での OpenSSH](/windows-server/administration/openssh/openssh_install_firstuse) を有効にする必要があります。 
 
 1.  VM を起動します。
 2.  VM が実行されたら、 **[接続]** をクリックします。SSH コマンド文字列を示すダイアログ ボックスが表示されます。これは、次の例のようになります。
@@ -119,7 +119,7 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
 6. **[OK]** を選択します。 
 
     > [!NOTE]
-     > 新しい X2Go セッションを作成するときは、RDP ポート**ではなく**、必ず SSH ポートを使用してください。
+     > 新しい X2Go セッションを作成するときは、RDP ポート **ではなく**、必ず SSH ポートを使用してください。
 
 次に、VM に接続するために、次の手順に従います。    
 
@@ -131,7 +131,7 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
 
 
 #### <a name="ssh-tunnel-to-jupyter-server-on-the-vm"></a>VM 上の Jupyter サーバーへの SSH トンネル
-学生によっては、自分のローカル コンピューターから VM 内の Jupyter サーバーに直接接続することを望む場合があります。 SSH プロトコルでは、ローカル コンピューターとリモート サーバー (ここでは学生のラボ VM) 間でのポート転送を有効にして、サーバー上の特定のポートで実行されているアプリケーションを、ローカル コンピューター上のマッピングポートに**トンネリング**されるようにすることができます。 学生は、次の手順に従って、ラボ VM 上の Jupyter サーバーへの SSH トンネリングを行う必要があります。
+学生によっては、自分のローカル コンピューターから VM 内の Jupyter サーバーに直接接続することを望む場合があります。 SSH プロトコルでは、ローカル コンピューターとリモート サーバー (ここでは学生のラボ VM) 間でのポート転送を有効にして、サーバー上の特定のポートで実行されているアプリケーションを、ローカル コンピューター上のマッピングポートに **トンネリング** されるようにすることができます。 学生は、次の手順に従って、ラボ VM 上の Jupyter サーバーへの SSH トンネリングを行う必要があります。
 
 1.  [Azure Lab Services ポータル](https://labs.azure.com)で、接続先の Linux VM が起動されていることを確認します。
 2.  VM が実行されたら、 **[接続]** をクリックします。SSH コマンド文字列を示すダイアログ ボックスが表示されます。これは、次の文字列のようになります。
@@ -139,7 +139,7 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
     ```bash
      ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
      ```
-3. ローカル コンピューターで、ターミナルまたはコマンド プロンプトを起動し、それに SSH 接続文字列をコピーします。 次に、`-L 8888:localhost:8888` をコマンド文字列に追加します。これにより、ポート間の**トンネル**が作成されます。 最終的な文字列は次のようになります。
+3. ローカル コンピューターで、ターミナルまたはコマンド プロンプトを起動し、それに SSH 接続文字列をコピーします。 次に、`-L 8888:localhost:8888` をコマンド文字列に追加します。これにより、ポート間の **トンネル** が作成されます。 最終的な文字列は次のようになります。
 
     ```bash
      ssh –L 8888:localhost:8888 -p 12345 student@ml-lab-b720853e-570f-49ac-9cb2-bd0bd2aeec35.eastus.cloudapp.azure.com

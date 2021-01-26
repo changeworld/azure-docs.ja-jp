@@ -1,5 +1,6 @@
 ---
 title: Android 用の ADAL から MSAL への移行に関するガイド | Azure
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory Authentication Library (ADAL) Android アプリを Microsoft Authentication Library (MSAL) に移行する方法を学習します。
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084058"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672289"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android 用の ADAL から MSAL への移行に関するガイド
 
@@ -31,7 +32,7 @@ ADAL は、Azure Active Directory v1.0 エンドポイントで動作します�
 サポートするものは次のとおりです。
   - 組織 ID (Azure Active Directory)
   - Outlook.com、Xbox Live などの組織以外の ID
-  - (B2C のみ) Google、Facebook、Twitter、Amazon とのフェデレーション ログイン
+  - (Azure AD B2C のみ) Google、Facebook、Twitter、Amazon とのフェデレーション ログイン
 
 - 標準は以下のものと互換性があります。
   - OAuth v2.0
@@ -67,7 +68,7 @@ MSAL を使用するために既存アプリの登録を変更する必要はあ
 
 ### <a name="user-consent"></a>ユーザーの同意
 
-ADAL と AAD v1 エンドポイントでは、ユーザーが所有しているリソースに対するそのユーザーの同意が、最初の使用時に許可されました。 MSAL と Microsoft ID プラットフォームでは、同意を段階的に要求できます。 増分同意は、ユーザーが高い特権を検討する可能性があるか、アクセス許可が必要な理由について明確な説明が提供されていない場合はそれが問われる可能性があるアクセス許可の際に便利です。 ADAL では、これらのアクセス許可によって、アプリへのユーザーのサインインが中止された可能性があります。
+ADAL と Azure AD v1 エンドポイントでは、ユーザーが所有しているリソースに対するそのユーザーの同意が、最初の使用時に許可されました。 MSAL と Microsoft ID プラットフォームでは、同意を段階的に要求できます。 増分同意は、ユーザーが高い特権を検討する可能性があるか、アクセス許可が必要な理由について明確な説明が提供されていない場合はそれが問われる可能性があるアクセス許可の際に便利です。 ADAL では、これらのアクセス許可によって、アプリへのユーザーのサインインが中止された可能性があります。
 
 > [!TIP]
 > アプリでアクセス許可を必要とする理由についてユーザーに追加のコンテキストを提供する必要がある場合は、増分同意を使用することをお勧めします。
@@ -88,7 +89,7 @@ ADAL と AAD v1 エンドポイントでは、ユーザーが所有している�
 > [!CAUTION]
 > スコープとリソース ID の両方を設定することはできません。両方を設定しようとすると、`IllegalArgumentException` になります。
 
- これにより、これまでと同じ v1 の動作となります。 アプリの登録で要求されるすべてのアクセス許可は、最初のやり取り時にユーザーから要求されます。
+これにより、これまでと同じ v1 の動作となります。 アプリの登録で要求されるすべてのアクセス許可は、最初のやり取り時にユーザーから要求されます。
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>必要に応じてのみ、アクセス許可を認証して要求する
 
@@ -130,13 +131,13 @@ Microsoft では知られておらず、構成に含まれていない機関を�
 ### <a name="logging"></a>ログ記録
 次のように、宣言によってログ記録を構成の一部として構成できるようになりました。
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>UserInfo から Account に移行する
 
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>新しい例外に移行する
@@ -238,21 +237,29 @@ public interface SilentAuthenticationCallback {
 ADAL には、`AuthenticationException` という 1 つの種類の例外があり、これには、`ADALError` 列挙値を取得するためのメソッドが含まれています。
 MSAL には、例外の階層があり、それぞれに関連する特定のエラー コードの独自のセットがあります。
 
-MSAL 例外のリスト
+| 例外                                        | 説明                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalArgumentException`                          | 1 つまたは複数の入力引数が無効な場合にスローされます。                 |
+| `MsalClientException`                            | エラーがクライアント側である場合にスローされます。                                 |
+| `MsalDeclinedScopeException`                     | 要求された 1 つまたは複数のスコープがサーバーによって拒否された場合にスローされます。 |
+| `MsalException`                                  | MSAL によってスローされた既定のチェック例外。                           |
+| `MsalIntuneAppProtectionPolicyRequiredException` | リソースで MAMCA 保護ポリシーが有効になっている場合にスローされます。         |
+| `MsalServiceException`                           | エラーがサーバー側である場合にスローされます。                                 |
+| `MsalUiRequiredException`                        | トークンをサイレントで更新できない場合にスローされます。                    |
+| `MsalUserCancelException`                        | ユーザーが認証フローをキャンセルした場合にスローされます。                |
 
-|例外  | 説明  |
-|---------|---------|
-| `MsalException`     | MSAL によってスローされた既定のチェック例外。  |
-| `MsalClientException`     | エラーがクライアント側である場合にスローされます。 |
-| `MsalArgumentException`     | 1 つまたは複数の入力引数が無効な場合にスローされます。 |
-| `MsalClientException`     | エラーがクライアント側である場合にスローされます。 |
-| `MsalServiceException`     | エラーがサーバー側である場合にスローされます。 |
-| `MsalUserCancelException`     | ユーザーが認証フローをキャンセルした場合にスローされます。  |
-| `MsalUiRequiredException`     | トークンをサイレントで更新できない場合にスローされます。  |
-| `MsalDeclinedScopeException`     | 要求された 1 つまたは複数のスコープがサーバーによって拒否された場合にスローされます。  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | リソースで MAMCA 保護ポリシーが有効になっている場合にスローされます。 |
+### <a name="adalerror-to-msalexception-translation"></a>ADALError から MsalException への変換
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError から MsalException ErrorCode
+| ADAL でこれらのエラーをキャッチしている場合は…  | …次の MSAL 例外をキャッチします。                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *対応する ADALError はありません* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *対応する ADALError はありません* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *対応する ADALError はありません* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *対応する ADALError はありません* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>ADAL ログ記録から MSAL ログ記録
 
@@ -271,30 +278,30 @@ MSAL 例外のリスト
 // New interface
   StringBuilder logs = new StringBuilder();
   Logger.getInstance().setExternalLogger(new ILoggerCallback() {
-            @Override
-            public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
-                logs.append(message).append('\n');
-            }
-        });
+      @Override
+      public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
+          logs.append(message).append('\n');
+      }
+  });
 
 // New Log Levels:
 public enum LogLevel
 {
-        /**
-         * Error level logging.
-         */
-        ERROR,
-        /**
-         * Warning level logging.
-         */
-        WARNING,
-        /**
-         * Info level logging.
-         */
-        INFO,
-        /**
-         * Verbose level logging.
-         */
-        VERBOSE
+    /**
+     * Error level logging.
+     */
+    ERROR,
+    /**
+     * Warning level logging.
+     */
+    WARNING,
+    /**
+     * Info level logging.
+     */
+    INFO,
+    /**
+     * Verbose level logging.
+     */
+    VERBOSE
 }
 ```

@@ -6,33 +6,33 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 562a0fbd64fca530598a58599160dbdd7e479557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f544d2266f9b479f06ffed130592ecd44bfec80f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485525"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195928"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure Application Gateway 用の Azure セキュリティ ベースライン
 
 Azure Application Gateway 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つレコメンデーションが含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
 **ガイダンス**: すべての Virtual Network Azure Application Gateway サブネット デプロイに、アプリケーションの信頼されたポートとソースに固有のネットワーク アクセス制御が適用されたネットワーク セキュリティ グループ (NSG) があることを確認します。 ネットワーク セキュリティ グループは Azure Application Gateway でサポートされていますが、NSG と Azure Application Gateway が想定どおりに機能するためには、従う必要があるいくつかの制限と要件があります。
 
-* [Azure Application Gateway での NSG の使用に関する制限と要件について](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [Azure Application Gateway での NSG の使用に関する制限と要件について](./configuration-overview.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -47,13 +47,13 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 - アプリケーション ゲートウェイ サブネットに NSG がある
 - その NSG 上で NSG フロー ログを有効にした
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-* [Azure Application Gateway の診断とログに関する FAQ](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#diagnostics-and-logging)
+* [Azure Application Gateway の診断とログに関する FAQ](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Azure Security Center の監視**: はい
 
@@ -63,11 +63,11 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 
 **ガイダンス**: 着信トラフィックをさらに検査するために、Azure Web アプリケーション ファイアウォール (WAF) を重要な Web アプリケーションの前にデプロイします。 Web アプリケーション ファイアウォール (WAF) は、一般的な悪用や脆弱性から Web アプリケーションを一元的に保護するサービス (Azure Application Gateway の機能) です。 Azure WAF を使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃などの攻撃をブロックするために、受信 Web トラフィックを検査することで、Azure App Service Web アプリをセキュリティ保護できます。 WAF は、OWASP (Open Web Application Security Project) コア ルール セット 3.1 (WAF_v2 のみ)、3.0、2.2.9 の規則に基づいています。
 
-* [Azure Application Gateway の機能について](https://docs.microsoft.com/azure/application-gateway/features)
+* [Azure Application Gateway の機能について](./features.md)
 
-* [Azure WAF について](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure WAF について](../web-application-firewall/ag/ag-overview.md)
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -77,9 +77,9 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 
 **ガイダンス**: Azure Application Gateway の実稼働インスタンスに関連付けられている Azure Virtual Networks で DDoS Standard 保護を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある IP アドレスとの通信を拒否します。
 
-* [DDoS 保護を構成する方法](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -94,13 +94,13 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 - アプリケーション ゲートウェイ サブネットに NSG がある
 - その NSG 上で NSG フロー ログを有効にした
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-* [Azure Application Gateway の診断とログに関する FAQ](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#diagnostics-and-logging)
+* [Azure Application Gateway の診断とログに関する FAQ](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -112,13 +112,13 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 
 また、IDS または IPS 機能を含め、Azure Marketplace で入手できる Barracuda WAF for Azure などのマーケットプレースの選択肢が複数あります。
 
-* [Azure Application Gateway の機能について](https://docs.microsoft.com/azure/application-gateway/features)
+* [Azure Application Gateway の機能について](./features.md)
 
-* [Azure WAF について](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure WAF について](../web-application-firewall/ag/ag-overview.md)
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Barracuda WAF クラウド サービスの概要](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+* [Barracuda WAF クラウド サービスの概要](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -128,11 +128,11 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 
 **ガイダンス**: 信頼できる証明書に対して HTTPS/SSL を有効にした Web アプリケーションの Azure Application Gateway をデプロイします。
 
-* [Application Gateway をデプロイする方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway をデプロイする方法](./quick-create-portal.md)
 
-* [HTTPS を使用するように Application Gateway を構成する方法](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [HTTPS を使用するように Application Gateway を構成する方法](./create-ssl-portal.md)
 
-* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](./overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -144,9 +144,9 @@ Azure Application Gateway 用の Azure セキュリティ ベースラインに�
 
 Azure Application Gateway サブネットに関連付けられているネットワーク セキュリティ グループ (NSG) の場合、Application Gateway v1 SKU の TCP ポート 65503 ～ 65534 と、v2 SKU の TCP ポート 65200 ～ 65535 で、宛先サブネットが [すべて]、ソースが GatewayManager サービス タグである着信インターネット トラフィックを許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 それらのゲートウェイの顧客を含む外部エンティティは、これらのエンドポイントで通信できません。
 
-* [サービス タグの概要と使用](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [サービス タグの概要と使用](../virtual-network/service-tags-overview.md)
 
-* [Azure Application Gateway 構成の概要](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [Azure Application Gateway 構成の概要](./configuration-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -156,11 +156,11 @@ Azure Application Gateway サブネットに関連付けられているネット
 
 **ガイダンス**:Azure Application Gateway のデプロイに関連するネットワーク設定の標準的なセキュリティ構成を定義して、実装します。 Azure Application Gateways、Azure Virtual Networks、ネットワーク セキュリティ グループのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 組み込みのポリシー定義を使用することもできます。
 
-また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
+また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -174,11 +174,11 @@ Azure Application Gateway サブネットに関連付けられているネット
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -188,9 +188,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Application Gateway デプロイに関連するネットワーク設定とリソースの変更を検出します。 重要なネットワーク設定とリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -198,7 +198,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -216,13 +216,13 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 Azure Application Gateway では、Azure Application Insights とのビルトイン統合も提供されます。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 Application Insights は、パフォーマンスの異常を自動的に検出するほか、問題の診断や、Web アプリの使用状況の理解に役立つ強力な分析ツールを備えています。 連続エクスポートを有効にすると、Application Insights からのテレメトリを一元化された場所にエクスポートして、標準の保持期間より長い間データを維持することができます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Application Gateway の診断設定を有効にする方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+* [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
-* [Application Insights を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights を有効にする方法](../azure-monitor/app/app-insights-overview.md)
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)
+* [連続エクスポートを構成する方法](../azure-monitor/app/export-telemetry.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -236,13 +236,13 @@ Azure Application Gateway では、Azure Application Insights とのビルトイ
 
 Azure Application Gateway では、Azure Application Insights とのビルトイン統合も提供されます。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 Application Insights は、パフォーマンスの異常を自動的に検出するほか、問題の診断や、Web アプリの使用状況の理解に役立つ強力な分析ツールを備えています。 連続エクスポートを有効にすると、Application Insights からのテレメトリを一元化された場所にエクスポートして、標準の保持期間より長い間データを維持することができます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Application Gateway の診断設定を有効にする方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+* [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
-* [Application Insights を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights を有効にする方法](../azure-monitor/app/app-insights-overview.md)
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)
+* [連続エクスポートを構成する方法](../azure-monitor/app/export-telemetry.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -260,7 +260,7 @@ Azure Application Gateway では、Azure Application Insights とのビルトイ
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -274,11 +274,11 @@ Azure Application Gateways などのデプロイされたすべてのネット�
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Application Gateway の診断設定を有効にする方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+* [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
-* [Azure Monitor for Networks の使用方法](https://docs.microsoft.com/azure/azure-monitor/insights/network-insights-overview)
+* [Azure Monitor for Networks の使用方法](../azure-monitor/insights/network-insights-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -292,15 +292,15 @@ Azure アクティビティ ログの診断設定と Azure WAF の診断設定�
 
 Azure Application Gateways などのデプロイされたすべてのネットワーク リソースの正常性とメトリックを包括的に把握するために、Azure Monitor for Networks を使用します。 Azure Monitor for Networks コンソール内で Azure Application Gateway のアラートを表示し、作成できます。
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-* [Azure Application Gateway の診断設定を有効にする方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+* [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
-* [Azure Monitor for Networks の使用方法](https://docs.microsoft.com/azure/azure-monitor/insights/network-insights-overview)
+* [Azure Monitor for Networks の使用方法](../azure-monitor/insights/network-insights-overview.md)
 
-* [Azure 内でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Azure 内でアラートを作成する方法](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -312,9 +312,9 @@ Azure Application Gateways などのデプロイされたすべてのネット�
 
 Azure Application Gateway デプロイの診断設定を構成します。 診断設定を使用して、選択した送信先 (ストレージ アカウント、Event Hubs、Logs Analytics) へのリソースのプラットフォーム ログおよびメトリックのストリーミング エクスポートを構成します。
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Azure WAF の診断設定を構成する方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+* [Azure WAF の診断設定を構成する方法](./application-gateway-diagnostics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -338,15 +338,15 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
 **ガイダンス**: Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -369,9 +369,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](../security-center/security-center-identity-access.md)
 
-* [Azure Policy を使用する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -381,11 +381,11 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure アプリの登録 (サービス プリンシパル) を使用して、API 呼び出しを介して Azure Application Gateways と対話するために使用できるトークンを取得します。
 
-* [Azure REST API を呼び出す方法](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Azure REST API を呼び出す方法](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [クライアント アプリケーション (サービス プリンシパル) を Azure AD に登録する方法](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [クライアント アプリケーション (サービス プリンシパル) を Azure AD に登録する方法](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Azure Recovery Services API に関する情報](https://docs.microsoft.com/rest/api/recoveryservices/)
+* [Azure Recovery Services API に関する情報](/rest/api/recoveryservices/)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -395,9 +395,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**:Azure AD MFA を有効にして、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -407,9 +407,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -419,9 +419,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: 環境内で疑わしいアクティビティまたは安全でないアクティビティが環境で発生したときに、Azure Active Directory セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -431,7 +431,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -441,7 +441,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**:Azure Active Directory (AAD) を中央認証と承認システムとして使用します。 AAD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、AAD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
-* [AAD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -451,9 +451,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**:Azure AD には、古いアカウントの検出に役立つログが用意されています。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -465,7 +465,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 このプロセスを効率化するには、Azure Active Directory ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペースで必要なアラートを構成できます。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -475,11 +475,11 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure AD ID Protectoin およびリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -489,7 +489,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**:適用できません。カスタマー ロックボックスは Azure Application Gateway に適用されません。
 
-* [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -497,13 +497,13 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-**ガイダンス**: タグを使用して、機密情報を格納または処理する Azure リソースの追跡に役立てます。
+**ガイダンス**:タグを使用して、機密情報を格納または処理する Azure リソースの追跡に役立てます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -513,15 +513,15 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 すべての Virtual Network Azure Application Gateway サブネット デプロイに、アプリケーションの信頼されたポートとソースに固有のネットワーク アクセス制御が適用されたネットワーク セキュリティ グループ (NSG) があることを確認します。 ネットワーク セキュリティ グループは Azure Application Gateway でサポートされていますが、NSG と Azure Application Gateway が想定どおりに機能するためには、従う必要があるいくつかの制限と要件があります。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [Azure Application Gateway での NSG の使用に関する制限と要件について](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [Azure Application Gateway での NSG の使用に関する制限と要件について](./configuration-overview.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -531,9 +531,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: すべての Virtual Network Azure Application Gateway サブネット デプロイに、アプリケーションの信頼されたポートとソースに固有のネットワーク アクセス制御が適用されたネットワーク セキュリティ グループ (NSG) があることを確認します。 送信トラフィックを信頼できる場所のみに制限して、データ窃盗の脅威を軽減できます。 ネットワーク セキュリティ グループは Azure Application Gateway でサポートされていますが、NSG と Azure Application Gateway が想定どおりに機能するためには、従う必要があるいくつかの制限と要件があります。
 
-* [Azure Application Gateway での NSG の使用に関する制限と要件について](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [Azure Application Gateway での NSG の使用に関する制限と要件について](./configuration-overview.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -543,7 +543,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: TLS により、Azure Application Gateway のエンドツーエンドの暗号化を構成します。
 
-* [Azure Application Gateway を使用してエンド ツー エンド TLS を構成する方法](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal)
+* [Azure Application Gateway を使用してエンド ツー エンド TLS を構成する方法](./end-to-end-ssl-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -555,17 +555,17 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 Microsoft では、Azure Application Gateway の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: 適用なし
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (AD) ロールベースのアクセス制御 (RBAC) を使用して、Azure Application Gateway コントロール プレーン (Azure portal) へのアクセスを制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Application Gateway コントロール プレーン (Azure portal) へのアクセスを制御します。
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -591,7 +591,7 @@ Microsoft では、Azure Application Gateway の基になるインフラスト�
 
 **ガイダンス**: Azure Monitor と Azure アクティビティ ログを使用して、運用環境の Azure Application Gateway インスタンスおよびその他の重要なリソースまたは関連リソースへの変更が発生したときに、アラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -599,7 +599,7 @@ Microsoft では、Azure Application Gateway の基になるインフラスト�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -607,7 +607,7 @@ Microsoft では、Azure Application Gateway の基になるインフラスト�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 Azure Application Gateway で利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure PaaS サービスの機能の対応状況 (脆弱性評価を含む)](https://docs.microsoft.com/azure/security-center/features-paas)
+* [Azure PaaS サービスの機能の対応状況 (脆弱性評価を含む)](../security-center/features-paas.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -635,7 +635,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 Azure Application Gateway で利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure PaaS サービスの機能の対応状況 (脆弱性評価を含む)](https://docs.microsoft.com/azure/security-center/features-paas)
+* [Azure PaaS サービスの機能の対応状況 (脆弱性評価を含む)](../security-center/features-paas.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -647,7 +647,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 Azure Application Gateway で利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure PaaS サービスの機能の対応状況 (脆弱性評価を含む)](https://docs.microsoft.com/azure/security-center/features-paas)
+* [Azure PaaS サービスの機能の対応状況 (脆弱性評価を含む)](../security-center/features-paas.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -655,19 +655,19 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -677,7 +677,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -691,11 +691,11 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -715,9 +715,9 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -753,9 +753,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -773,7 +773,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -791,15 +791,15 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 すべての Virtual Network Azure Application Gateway サブネット デプロイに、アプリケーションの信頼されたポートとソースに固有のネットワーク アクセス制御が適用されたネットワーク セキュリティ グループ (NSG) があることを確認します。 ネットワーク セキュリティ グループは Azure Application Gateway でサポートされていますが、NSG と Azure Application Gateway が想定どおりに機能するためには、従う必要があるいくつかの制限と要件があります。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [Azure Application Gateway での NSG の使用に関する制限と要件について](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [Azure Application Gateway での NSG の使用に関する制限と要件について](./configuration-overview.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -807,15 +807,15 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**: Azure Application Gateway のデプロイに関連するネットワーク設定の標準的なセキュリティ構成を定義して、実装します。 Azure Application Gateways、Azure Virtual Networks、ネットワーク セキュリティ グループのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 組み込みのポリシー定義を使用することもできます。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -833,9 +833,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -853,9 +853,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:カスタム Azure ポリシー定義を使用する場合は、Azure DevOps または Azure Repos を使ってコードを安全に格納して管理します。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -873,7 +873,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 組み込みの Azure Policy 定義と "Microsoft.Network" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタム ポリシーを作成します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -891,7 +891,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 組み込みの Azure Policy 定義と "Microsoft.Network" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタム ポリシーを作成します。 ご利用の Azure リソースの構成を自動的に適用するには、Azure Policy の [audit]、[deny]、[deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -911,7 +911,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 Azure Key Vault を使用して、証明書を安全に格納します。 Azure Key Vault はプラットフォームマネージド シークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway v2 SKU に制限されます。
 
-* [Azure PowerShell を使用して、Key Vault 証明書によって SSL 終端を構成する方法](https://docs.microsoft.com/azure/application-gateway/configure-keyvault-ps)
+* [Azure PowerShell を使用して、Key Vault 証明書によって SSL 終端を構成する方法](./configure-keyvault-ps.md)
 
 **Azure Security Center の監視**: はい
 
@@ -923,7 +923,7 @@ Azure Key Vault を使用して、証明書を安全に格納します。 Azure 
 
 Azure Key Vault を使用して、証明書を安全に格納します。 Azure Key Vault はプラットフォームマネージド シークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway v2 SKU に制限されます。
 
-* [Azure PowerShell を使用して、Key Vault 証明書によって SSL 終端を構成する方法](https://docs.microsoft.com/azure/application-gateway/configure-keyvault-ps)
+* [Azure PowerShell を使用して、Key Vault 証明書によって SSL 終端を構成する方法](./configure-keyvault-ps.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -941,7 +941,7 @@ Azure Key Vault を使用して、証明書を安全に格納します。 Azure 
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -949,9 +949,9 @@ Azure Key Vault を使用して、証明書を安全に格納します。 Azure 
 
 Azure Application Gateway デプロイの診断設定を構成します。 診断設定を使用して、選択した送信先 (ストレージ アカウント、Event Hubs、Logs Analytics) へのリソースのプラットフォーム ログおよびメトリックのストリーミング エクスポートを構成します。
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Azure WAF の診断設定を構成する方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
+* [Azure WAF の診断設定を構成する方法](./application-gateway-diagnostics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -969,7 +969,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure Web アプリケーション ファイアウォール (WAF) を使用する場合は、WAF ポリシーを構成できます。 WAF ポリシーは、2 種類のセキュリティ規則で構成できます。お客様が作成するカスタム規則と、Azure によって管理される事前構成済みの規則のセットのコレクションであるマネージド規則セットです。 Azure で管理される規則セットでは、一般的なセキュリティ脅威のセットに対する保護をデプロイする簡単な方法が提供されます。 そのような規則セットが Azure によって管理されるので、新しい攻撃シグネチャから保護するために、必要に応じて規則が更新されます。
 
-* [Azure で管理されている WAF 規則セットについて](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy)
+* [Azure で管理されている WAF 規則セットについて](../web-application-firewall/ag/ag-overview.md#waf-policy-and-rules)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -977,7 +977,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -985,11 +985,11 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 Azure DevOps Services では、Azure Storage 機能の多くを活用して、ハードウェア障害、サービスの中断、またはリージョンの災害が発生した場合にデータの可用性を確保しています。 さらに、Azure DevOps チームは、データを偶発的または悪意のある削除から保護する手順に従っています。
 
-* [Azure DevOps のデータ可用性の概要](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
+* [Azure DevOps のデータ可用性の概要](/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -999,7 +999,7 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 **ガイダンス**: Azure Key Vault 内のカスタマー マネージド証明書をバックアップします。
 
-* [Azure で Key Vault の証明書をバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
+* [Azure で Key Vault の証明書をバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1009,7 +1009,7 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 **ガイダンス**: バックアップされたカスタマー マネージド証明書の復元をテストします。
 
-* [Key Vault の証明書を復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
+* [Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1019,7 +1019,7 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 **ガイダンス**: Azure Key Vault に対して論理的な削除が有効になっていることを確認します。 論理的な削除では、削除されたキーコンテナーと、キー、シークレット、証明書などのコンテナー オブジェクトを復元できます。
 
-* [Azure Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+* [Azure Key Vault の論理的な削除を使用する方法](../key-vault/general/key-vault-recovery.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1027,13 +1027,13 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
-* [Azure Security Center 内でワークフロー自動化を構成する方法](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md)
 
 * [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1069,7 +1069,7 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1079,9 +1079,9 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 **ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1089,9 +1089,9 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス**: セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
+**ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1099,7 +1099,7 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -1115,5 +1115,5 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

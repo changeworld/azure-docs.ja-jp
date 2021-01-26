@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: チュートリアル
   items:
-    - name: マーケットプレース アプリケーションの発行
-      href: publish-marketplace-app.md
     - name: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: サンプル
@@ -33,6 +31,10 @@
       href: concepts-built-in-policy.md
     - name: ロール定義のアーティファクト
       href: concepts-custom-role-definition.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: ディストリビューターのプロパティ
@@ -41,6 +43,8 @@
           href: create-uidefinition-overview.md
         - name: ポータルのインターフェイスをテストする
           href: test-createuidefinition.md
+        - name: Azure アプリケーション オファーを作成する
+          href: ../../marketplace/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Just-In-Time アクセスを要求する
           href: request-just-in-time-access.md
         - name: 既存の仮想ネットワークを使用する
@@ -116,6 +120,8 @@
               href: microsoft-common-passwordbox.md
             - name: Section
               href: microsoft-common-section.md
+            - name: ServicePrincipalSelector
+              href: microsoft-common-serviceprincipalselector.md
             - name: スライダー
               href: microsoft-common-slider.md
             - name: TagsByResource
@@ -132,6 +138,10 @@
               href: microsoft-compute-sizeselector.md
             - name: UserNameTextBox
               href: microsoft-compute-usernametextbox.md
+        - name: Key Vault
+          items:
+            - name: KeyVaultCertificateSelector
+              href: microsoft-keyvault-keyvaultcertificateselector.md
         - name: マネージド ID
           items:
             - name: IdentitySelector
@@ -154,6 +164,8 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+            - name: StorageBlobSelector
+              href: microsoft-storage-storageblobselector.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -167,5 +179,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Resource Manager テンプレートのベスト プラクティス
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-managed-applications.html
     - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'
+      href: 'https://stackoverflow.com/questions/tagged/azure-managed-app'

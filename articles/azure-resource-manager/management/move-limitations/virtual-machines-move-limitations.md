@@ -2,13 +2,13 @@
 title: 新しいサブスクリプションまたはリソース グループへ Azure VM を移動する
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 12/01/2020
+ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933241"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456319"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -19,8 +19,8 @@ ms.locfileid: "88933241"
 次のシナリオはまだサポートされていません。
 
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
-* プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 現在のサブスクリプションでの仮想マシンをプロビジョニング解除し、新しいサブスクリプションに再デプロイしてください。
 * 仮想ネットワーク内のすべてのリソースを移動しない場合、既存の仮想ネットワーク内の仮想マシンを新しいサブスクリプションに移動することはできません。
+* プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 考えられる回避策については、「[Marketplace のプランを使用した仮想マシン」](#virtual-machines-with-marketplace-plans)を参照してください。
 * 低優先度の仮想マシンと低優先度の仮想マシン スケール セットは、リソース グループまたはサブスクリプション間で移動することはできません。
 * 可用性セット内の仮想マシンを個別に移動することはできません。
 
@@ -36,6 +36,24 @@ az vm encryption disable --resource-group demoRG --name myVm1
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
 
+## <a name="virtual-machines-with-marketplace-plans"></a>Marketplace のプランを使用した仮想マシン
+
+プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 この制限を回避するには、現在のサブスクリプションでの仮想マシンのプロビジョニングを解除し、新しいサブスクリプションに再デプロイします。 次の手順により、新しいサブスクリプションで仮想マシンを再作成できます。 ただし、一部のシナリオでは機能しない可能性があります。 そのプランが Marketplace で使用できなくなった場合、これらの手順は機能しなくなります。
+
+1. プランに関する情報をコピーします。
+
+1. OS ディスクを変換先サービスに複製するか、変換元サービスから仮想マシンを削除した後に元のディスクを移動します。
+
+1. 変換先サービスで、ご利用のプランの Marketplace 使用条件に同意します。 次の PowerShell コマンドを実行して、使用条件に同意することができます。
+
+   ```azurepowershell
+   Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
+   ```
+
+   または、ポータルを使用して、そのプランを使用した仮想マシンの新しいインスタンスを作成することもできます。 新しいサブスクリプションの使用条件に同意した後に、その仮想マシンを削除することができます。
+
+1. 変換先サービスで、PowerShell、CLI、または Azure Resource Manager テンプレートを使用して、複製された OS ディスクから仮想マシンを再作成します。 ディスクに接続されているマーケットプレース プランを含めます。 プランに関する情報は、新しいサブスクリプションで購入したプランと一致している必要があります。
+
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Backup を利用した仮想マシン
 
 Azure Backup で構成された仮想マシンを移動するには、その復元ポイントをコンテナーから削除する必要があります。
@@ -48,9 +66,9 @@ Azure Backup で構成された仮想マシンを移動するには、その復�
 2. Azure Backup で構成された仮想マシンを移動するには、次の手順を実行します。
 
    1. 仮想マシンの場所を探します。
-   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、*AzureBackupRG_westus2_1* となります
+   2. 名前付けパターン `AzureBackupRG_<VM location>_1` を持つリソース グループを探します。 たとえば、名前は *AzureBackupRG_westus2_1* の形式になります。
    3. Azure portal で、 **[非表示の型の表示]** をオンにします。
-   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
+   4. `AzureBackup_<VM name>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
    5. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
    6. 削除操作が完了したら、仮想マシンを移動できます。
 
@@ -59,19 +77,66 @@ Azure Backup で構成された仮想マシンを移動するには、その復�
 
 ### <a name="powershell"></a>PowerShell
 
-* 仮想マシンの場所を探します。
-* 名前付けパターン `AzureBackupRG_<location of your VM>_1` (たとえば、AzureBackupRG_westus2_1) を持つリソース グループを探します
-* PowerShell の場合、`Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`コマンドレットを使用します
-* 名前付けパターン `AzureBackup_<name of your VM that you're trying to move>_###########` を持つタイプ `Microsoft.Compute/restorePointCollections` のリソースを探します
-* このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+1. 仮想マシンの場所を探します。
+
+1. 名前付けパターンが `AzureBackupRG_<VM location>_1` のリソース グループを探します。 たとえば、`AzureBackupRG_westus2_1` などです。
+
+1. 仮想マシンを 1 つだけ移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. この場所にある、バックアップを使用した仮想マシンをすべて移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   各リソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
+   ```
 
 ### <a name="azure-cli"></a>Azure CLI
 
-* 仮想マシンの場所を探します。
-* 名前付けパターン `AzureBackupRG_<location of your VM>_1` (たとえば、AzureBackupRG_westus2_1) を持つリソース グループを探します
-* CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1`を使用します
-* 名前付けパターン `AzureBackup_<name of your VM that you're trying to move>_###########` を持つタイプ `Microsoft.Compute/restorePointCollections` のリソースを探します
-* このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+1. 仮想マシンの場所を探します。
+
+1. 名前付けパターンが `AzureBackupRG_<VM location>_1` のリソース グループを探します。 たとえば、`AzureBackupRG_westus2_1` などです。
+
+1. 仮想マシンを 1 つだけ移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
+   ```
+
+   このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
+
+1. この場所にある、バックアップを使用した仮想マシンをすべて移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   各リソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
 ## <a name="next-steps"></a>次のステップ
 

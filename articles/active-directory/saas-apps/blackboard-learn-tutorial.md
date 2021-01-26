@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: b44ba20a554a33a22e5fcd28f874a99728df911a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43ddae72270e801b1c9379c27ae6c7bde0d2a665
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530768"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blackboard-learn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Blackboard Learn の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88530768"
 * ユーザーが自分の Azure AD アカウントを使用して Blackboard Learn に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Blackboard Learn では、**SP** によって開始される SSO がサポートされます
-* Blackboard Learn では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Blackboard Learn では、 **SP** によって開始される SSO がサポートされます
+* Blackboard Learn では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-blackboard-learn-from-the-gallery"></a>ギャラリーからの Blackboard Learn の追加
@@ -51,7 +51,7 @@ Azure AD への Blackboard Learn の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Blackboard Learn**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Blackboard Learn** 」と入力します。
 1. 結果のパネルから **[Blackboard Learn]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-blackboard-learn"></a>Blackboard Learn の Azure AD シングル サインオンの構成とテスト
@@ -126,25 +126,25 @@ Blackboard Learn で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-blackboard-learn-sso"></a>Blackboard Learn の SSO の構成
 
-**Blackboard Learn** 側でシングル サインオンを構成するには、こちらの[リンク](https://help.blackboard.com/Learn/Administrator/SaaS/Authentication/Implement_Authentication/SAML_Authentication_Provider_Type)をクリックしてください。 構成を行っているときに問題が生じた場合は、[Blackboard Learn サポート チーム](https://www.blackboard.com/support/index.aspx)にお問い合わせください。
+**Blackboard Learn** 側でシングル サインオンを構成するには、こちらの [リンク](https://help.blackboard.com/Learn/Administrator/SaaS/Authentication/Implement_Authentication/SAML_Authentication_Provider_Type)をクリックしてください。 構成を行っているときに問題が生じた場合は、[Blackboard Learn サポート チーム](https://www.blackboard.com/support/index.aspx)にお問い合わせください。
 
 
 ### <a name="create-blackboard-learn-test-user"></a>Blackboard Learn のテスト ユーザーの作成
 
-このセクションでは、Blackboard Learn で Britta Simon というユーザーを作成します。 Blackboard Learn アプリケーションは、ジャスト イン タイム ユーザー プロビジョニングをサポートしています。 **Azure AD シングル サインオンの構成**に関するセクションで説明しているように要求が構成されていることを確認してください。
+このセクションでは、Blackboard Learn で Britta Simon というユーザーを作成します。 Blackboard Learn アプリケーションは、ジャスト イン タイム ユーザー プロビジョニングをサポートしています。 **Azure AD シングル サインオンの構成** に関するセクションで説明しているように要求が構成されていることを確認してください。
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Blackboard Learn] タイルをクリックすると、SSO を設定した Blackboard Learn に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Blackboard Learn] タイルをクリックすると、SSO を設定した Blackboard Learn に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Blackboard を試す](https://aad.portal.azure.com/)

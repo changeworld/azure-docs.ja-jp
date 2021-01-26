@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 8/26/2019
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522858"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822286"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory における外部の制御アクティビティの一般的なトラブルシューティング方法について説明します。
@@ -522,79 +523,29 @@ ms.locfileid: "86522858"
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>エラー コード:200
-
-- **メッセージ**: `Unexpected error happened: '%error;'.`
-
-- **原因**:内部サービスに問題があります。
-
-- **推奨事項**:ADF サポートに連絡してさらに支援を求めてください。
-
-### <a name="error-code-201"></a>エラー コード:201
-
-- **メッセージ**: `JobType %jobType; is not found.`
-
-- **原因**:ADF でサポートされていない新しい種類のジョブがあります。
-
-- **推奨事項**:ADF サポート チームに連絡してさらに支援を求めてください。
-
-### <a name="error-code-202"></a>エラー コード:202
-
-- **メッセージ**: `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **原因**:エラー メッセージに、発生した問題の詳細が含まれています。
-
-- **推奨事項**:エラー メッセージの詳細は、問題の解決に役立ちます。 十分な情報がない場合は、ADF サポートに連絡してさらに支援を求めてください。
-
-### <a name="error-code-203"></a>エラー コード:203
-
-- **メッセージ**: `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **原因**:エラー メッセージに、発生した問題の詳細が含まれています。
-
-- **推奨事項**:エラー メッセージの詳細は、問題の解決に役立ちます。 十分な情報がない場合は、ADF サポートに連絡してさらに支援を求めてください。
-
-### <a name="error-code-204"></a>エラー コード:204
-
-- **メッセージ**: `The resumption token is missing for runId '%runId;'.`
-
-- **原因**:内部サービスに問題があります。
-
-- **推奨事項**:ADF サポートに連絡してさらに支援を求めてください。
-
-### <a name="error-code-205"></a>エラー コード:205
-
-- **メッセージ**: `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **原因**:HDI オンデマンド クラスターの作成中にエラーが発生しました。
-
-- **推奨事項**:ADF サポートに連絡してさらに支援を求めてください。
-
 ### <a name="error-code-206"></a>エラー コード:206
 
-- **メッセージ**: `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **メッセージ**: `The batch ID for Spark job is invalid. Please retry your job.`
 
 - **原因**:このエラーの原因となったサービスに内部的な問題がありました。
 
-- **推奨事項**:この問題は一時的なものである可能性があります。 ジョブを再試行します。問題が解決しない場合は、ADF サポートに連絡してさらに支援を求めてください。
+- **推奨事項**:この問題は一時的なものである可能性があります。 しばらくしてから、ジョブを再試行してください。
 
 ### <a name="error-code-207"></a>エラー コード:207
 
-- **メッセージ**: `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **メッセージ**: `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **原因**:プライマリ ストレージ アカウントからリージョンを特定しているときに内部エラーが発生しました。
 
-- **推奨事項**:別のストレージを試してください。 このオプションが許容できる解決策ではない場合は、ADF サポート チームに連絡してさらに支援を求めてください。
+- **推奨事項**:別のストレージを試してください。 
 
 ### <a name="error-code-208"></a>エラー コード:208
 
-- **メッセージ**: `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **メッセージ**: `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **原因**:サービス プリンシパルを読み取ろうとしたときか MSI 認証をインスタンス化しようとしたとき、内部エラーが発生しました。
 
-- **推奨事項**:指定のサブスクリプションで HDInsight クラスターを作成するアクセス許可を持っているサービス プリンシパルの指定を検討し、再試行します。 [管理 ID が正しく設定されていること](https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities)を確認します。
-
-   このオプションが許容できる解決策ではない場合は、ADF サポート チームに連絡してさらに支援を求めてください。
+- **推奨事項**:指定のサブスクリプションで HDInsight クラスターを作成するアクセス許可を持っているサービス プリンシパルの指定を検討し、再試行します。 [管理 ID が正しく設定されていること](../hdinsight/hdinsight-managed-identities.md)を確認します。
 
 ### <a name="error-code-2300"></a>エラー コード:2300
 
@@ -604,7 +555,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:クラスターが削除されていないこと、および指定した URI が正しいことを確認します。 ブラウザーでこの URI を開くと、Ambari UI が表示されます。 クラスターが仮想ネットワークに存在する場合、この URI はプライベート URI になります。 それを開くには、同じ仮想ネットワークに属している仮想マシン (VM) を使用します。
 
-   詳細については、「[Apache Hadoop サービスへの直接接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)」を参照してください。
+   詳細については、「[Apache Hadoop サービスへの直接接続](../hdinsight/hdinsight-plan-virtual-network-deployment.md#directly-connect-to-apache-hadoop-services)」を参照してください。
  
  </br>
 
@@ -612,9 +563,9 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:一般的な HDInsight の接続またはネットワーク接続の問題が考えられます。 まず、HDInsight Ambari UI がどのブラウザーからも使用可能であることを確認します。 次に、ご自分の資格情報がまだ有効であることを確認してください。
    
-   セルフホステッド統合ランタイム (IR) を使用している場合は、セルフホステッド IR がインストールされている VM またはマシンからこの手順を実行します。 その後、Data Factory から再びジョブの送信を試みてください。 それでも失敗する場合は、Data Factory チームに連絡してサポートを依頼してください。
+   セルフホステッド統合ランタイム (IR) を使用している場合は、セルフホステッド IR がインストールされている VM またはマシンからこの手順を実行します。 その後、Data Factory から再びジョブの送信を試みてください。
 
-   詳細については、「[Ambari Web UI](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-manage-ambari#ambari-web-ui)」を参照してください。
+   詳細については、「[Ambari Web UI](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)」を参照してください。
 
  </br>
 
@@ -622,7 +573,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:資格情報を訂正して、リンクされたサービスを再デプロイしてください。 任意のブラウザーでクラスター URI を開いてサインインを試行することで、まず HDInsight で資格情報が機能することを確認します。 資格情報が機能しない場合は、Azure portal からリセットできます。
 
-   ESP クラスターでは、[セルフ サービスのパスワード リセット](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password)を使用してパスワードをリセットすることができます。
+   ESP クラスターでは、[セルフ サービスのパスワード リセット](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)を使用してパスワードをリセットすることができます。
 
  </br>
 
@@ -638,8 +589,8 @@ ms.locfileid: "86522858"
        詳細については、Azure HDInsight のトラブルシューティングに関するドキュメントを参照してください。 次に例を示します。
 
        * [Ambari UI の 502 エラー](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
-       * [Apache Spark Thrift サーバーの RpcTimeoutException](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception)
-       * [Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)。
+       * [Apache Spark Thrift サーバーの RpcTimeoutException](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)
+       * [Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング](../application-gateway/application-gateway-troubleshooting-502.md)。
 
  </br>
 
@@ -647,7 +598,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:HDInsight に送信されるコンカレント ジョブの数を制限します。 ジョブが同じアクティビティによって送信されている場合は、Data Factory アクティビティのコンカレンシーを参照してください。 同時実行のパイプラインが時間を分散して実行されるようにトリガーを変更してください。
 
-   [HDInsight のドキュメント](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors)を参照し、エラーの提案に従って `templeton.parallellism.job.submit` を調整してください。
+   [HDInsight のドキュメント](../hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors.md)を参照し、エラーの提案に従って `templeton.parallellism.job.submit` を調整してください。
 
 ### <a name="error-code-2301"></a>エラー コード:2301
 
@@ -673,7 +624,7 @@ ms.locfileid: "86522858"
        1. アラートとアラートの解決方法の詳細については、「[クラスターの管理と監視](https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-and-monitoring-ambari/content/amb_predefined_alerts.html)」を参照してください。
     1. YARN メモリを確認します。 YARN メモリの量が多い場合は、ジョブの処理が遅れている可能性があります。 Spark アプリケーション/ジョブに対応できるだけの十分なリソースがない場合は、クラスターに十分なメモリとコアが確保されるようにクラスターをスケールアップしてください。 
  1. サンプル テスト ジョブを実行します。
-    1. HDInsight バックエンドで同じジョブを実行する場合は、ジョブが成功したことを確認します。 サンプル実行の例については、「[HDInsight に含まれる MapReduce サンプルを実行する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux)」を参照してください 
+    1. HDInsight バックエンドで同じジョブを実行する場合は、ジョブが成功したことを確認します。 サンプル実行の例については、「[HDInsight に含まれる MapReduce サンプルを実行する](../hdinsight/hadoop/apache-hadoop-run-samples-linux.md)」を参照してください 
  1. ジョブが引き続き HDInsight で失敗している場合は、アプリケーションのログと情報を確認して、サポートに提供します。
     1. ジョブが YARN に送信されたかどうかを確認します。 ジョブが yarn に送信されていない場合は、`--master yarn` を使用します。
     1. アプリケーションの実行が終了している場合は、YARN アプリケーションの開始時刻と終了時刻を収集します。 アプリケーションの実行が完了しなかった場合は、開始時刻または起動時刻を収集します。
@@ -695,7 +646,7 @@ ms.locfileid: "86522858"
        1. アラートとアラートの解決方法の詳細については、「[クラスターの管理と監視](https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-and-monitoring-ambari/content/amb_predefined_alerts.html)」を参照してください。
     1. YARN メモリを確認します。 YARN メモリの量が多い場合は、ジョブの処理が遅れている可能性があります。 Spark アプリケーション/ジョブに対応できるだけの十分なリソースがない場合は、クラスターに十分なメモリとコアが確保されるようにクラスターをスケールアップしてください。 
  1. サンプル テスト ジョブを実行します。
-    1. HDInsight バックエンドで同じジョブを実行する場合は、ジョブが成功したことを確認します。 サンプル実行の例については、「[HDInsight に含まれる MapReduce サンプルを実行する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux)」を参照してください 
+    1. HDInsight バックエンドで同じジョブを実行する場合は、ジョブが成功したことを確認します。 サンプル実行の例については、「[HDInsight に含まれる MapReduce サンプルを実行する](../hdinsight/hadoop/apache-hadoop-run-samples-linux.md)」を参照してください 
  1. ジョブが引き続き HDInsight で失敗している場合は、アプリケーションのログと情報を確認して、サポートに提供します。
     1. ジョブが YARN に送信されたかどうかを確認します。 ジョブが yarn に送信されていない場合は、`--master yarn` を使用します。
     1. アプリケーションの実行が終了している場合は、YARN アプリケーションの開始時刻と終了時刻を収集します。 アプリケーションの実行が完了しなかった場合は、開始時刻または起動時刻を収集します。
@@ -727,7 +678,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:エラー メッセージは、問題の特定に役立ちます。 json 構成を修正し、再試行します。
 
-   詳細については、「[Azure HDInsight のオンデマンドのリンクされたサービス](https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service)」を参照してください。
+   詳細については、「[Azure HDInsight のオンデマンドのリンクされたサービス](./compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。
 
 ### <a name="error-code-2310"></a>エラー コード:2310
 
@@ -737,7 +688,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:エラー メッセージに従い、問題を解決します。 これを解決できる十分な情報がない場合、HDI チームに連絡し、バッチ ID とジョブ ID を伝えてください。ID は ADF 監視ページのアクティビティ実行 Output で見つかります。 さらにトラブルシューティングを行うには、バッチ ジョブの完全なログを収集します。
 
-   完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](https://docs.microsoft.com/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。
+   完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。
 
 ### <a name="error-code-2312"></a>エラー コード:2312
 
@@ -747,7 +698,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:ADF 監視ページのアクティビティ実行 Output にあるリンクにアクセスし、HDInsight Spark クラスターでの実行のトラブルシューティングを行います。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
 
-   完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](https://docs.microsoft.com/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。
+   完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。
 
 ### <a name="error-code-2313"></a>エラー コード:2313
 
@@ -757,7 +708,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:HDInsight Spark クラスターでのバッチをトラブルシューティングしてください。 さらに支援が必要であれば、HDInsight サポートにお問い合わせください。 
 
-   完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](https://docs.microsoft.com/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。完全なログを HDInsight サポートと共有して、さらに支援を求めてください。
+   完全なログを収集する方法の詳細については、「[バッチ ジョブの完全なログを取得する](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)」を参照してください。完全なログを HDInsight サポートと共有して、さらに支援を求めてください。
 
 ### <a name="error-code-2328"></a>エラー コード:2328
 
@@ -844,8 +795,8 @@ ms.locfileid: "86522858"
    1. ODBC または Java Database Connectivity (JDBC) 接続が正しく設定されていることを確認します。
       1. JDBC の場合、同じ仮想ネットワークを使用しているときは、以下からこの接続を取得できます。<br>
         `Hive -> Summary -> HIVESERVER2 JDBC URL`
-      1. 適切な JDBC が設定されていることを確認するには、「[HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver)」を参照してください。
-      1. Open Database (ODB) の場合は、「[チュートリアル: ODBC と PowerShell による Apache Hive のクエリの実行](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell)」を参照して、設定が正しいことを確認します。 
+      1. 適切な JDBC が設定されていることを確認するには、「[HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する](../hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver.md)」を参照してください。
+      1. Open Database (ODB) の場合は、「[チュートリアル: ODBC と PowerShell による Apache Hive のクエリの実行](../hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell.md)」を参照して、設定が正しいことを確認します。 
    1. Hiveserver2、Hive メタストア、および Hiveserver2 Interactive がアクティブで動作していることを確認します。 
    1. Ambari ユーザー インターフェイス (UI) を確認します。
       1. すべてのサービスがまだ実行されていることを確認します。
@@ -864,8 +815,8 @@ ms.locfileid: "86522858"
    1. ODBC または Java Database Connectivity (JDBC) 接続が正しく設定されていることを確認します。
       1. JDBC の場合、同じ仮想ネットワークを使用しているときは、以下からこの接続を取得できます。<br>
         `Hive -> Summary -> HIVESERVER2 JDBC URL`
-      1. 適切な JDBC が設定されていることを確認するには、「[HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver)」を参照してください。
-      1. Open Database (ODB) の場合は、「[チュートリアル: ODBC と PowerShell による Apache Hive のクエリの実行](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell)」を参照して、設定が正しいことを確認します。 
+      1. 適切な JDBC が設定されていることを確認するには、「[HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する](../hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver.md)」を参照してください。
+      1. Open Database (ODB) の場合は、「[チュートリアル: ODBC と PowerShell による Apache Hive のクエリの実行](../hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell.md)」を参照して、設定が正しいことを確認します。 
    1. Hiveserver2、Hive メタストア、および Hiveserver2 Interactive がアクティブで動作していることを確認します。 
    1. Ambari ユーザー インターフェイス (UI) を確認します。
       1. すべてのサービスがまだ実行されていることを確認します。
@@ -921,7 +872,7 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:選択したリンクされたサービスがアクティビティでサポートされているいずれかの種類であることを確認します。 HDI アクティビティでは、AzureBlobStorage と AzureBlobFSStorage のリンクされたサービスがサポートされています。
 
-   詳細については、「[Azure HDInsight クラスターで使用するストレージ オプションを比較する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options)」を参照してください
+   詳細については、「[Azure HDInsight クラスターで使用するストレージ オプションを比較する](../hdinsight/hdinsight-hadoop-compare-storage-options.md)」を参照してください
 
 ### <a name="error-code-2355"></a>エラー コード:2355
 
@@ -1001,6 +952,16 @@ ms.locfileid: "86522858"
 
 - **推奨事項**:HDInsight オンデマンドのリンクされたサービスの追加ストレージとして Azure Blob Storage アカウントを指定します。
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>HDInsight ESP クラスターを使用している ADF のリンクされたサービスで SSL エラーが発生しました
+
+- **メッセージ**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **原因**:この問題は、システムの信頼ストアに関連している可能性が最も高いです。
+
+- **解決方法**:パス **Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib** に移動し、DriverConfiguration64.exe を開いて設定を変更できます。
+
+    ![[Use System Trust Store]\(システムの信頼ストアの使用\) をオフにする](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Web アクティビティ
 
 ### <a name="error-code-2128"></a>エラー コード:2128
@@ -1054,6 +1015,20 @@ ms.locfileid: "86522858"
 
 詳細については、「[Fiddler の基本](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)」を参照してください。
 
+## <a name="general"></a>全般
+
+### <a name="activity-stuck-issue"></a>アクティビティの停止に関する問題
+
+アクティビティが通常の実行時間を大幅に超えて実行され、ほとんど進行していない場合、そのアクティビティは停止している可能性があります。 取り消しを試みた後、再試行して問題が解決するかどうかを確認できます。 コピー アクティビティの場合は、パフォーマンスの監視とトラブルシューティングの詳細について「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。データ フローの場合は、[マッピング データ フローのパフォーマンスとチューニング ガイド](concepts-data-flow-performance.md)に関するページをご覧ください。
+
+### <a name="payload-is-too-large"></a>ペイロードが大きすぎます
+
+**エラー メッセージ:** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
+
+**原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、「[Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)」セクションで説明されているように 896 KB です。
+
+**推奨事項:** アップストリーム アクティビティの出力または外部から 1 つ以上の大きなパラメーター値を渡す場合、特に制御フロー内のアクティビティ間で実際のデータを渡す場合、この制限に達する可能性があります。 大きなパラメーター値のサイズを減らせるかどうかを確認するか、パイプライン ロジックを調整して、アクティビティ間で値が渡されずにアクティビティ内で処理されるようにします。
+
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
@@ -1063,4 +1038,4 @@ ms.locfileid: "86522858"
 * [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 * [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/)
-* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Microsoft Q&A 質問ページ](/answers/topics/azure-data-factory.html)

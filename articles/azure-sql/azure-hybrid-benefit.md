@@ -5,18 +5,18 @@ description: Azure SQL Database と SQL Managed Instance の割引に既存の S
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
-ms.custom: sqldbrb=4
+ms.custom: sqldbrb=4, devx-track-azurecli
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 872b36eae9142473885885d5bf5ad3fa10ae5ccb
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987020"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841599"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure ハイブリッド特典 - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "85987020"
 > [!NOTE]
 > Azure ハイブリッド特典に変更してもダウンタイムは必要ありません。
 
-![価格](./media/azure-hybrid-benefit/pricing.png)
+![仮想コアの価格体系](./media/azure-hybrid-benefit/pricing.png)
 
 ## <a name="choose-a-license-model"></a>ライセンス モデルを選択する
 
@@ -96,5 +96,5 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure SQL デプロイ オプションの選択については、[Azure SQL で適切なデプロイ オプションを選択する](azure-sql-iaas-vs-paas-what-is-overview.md)方法に関するページを参照してください。
+- Azure SQL デプロイ オプションの選択については、[Azure SQL での適切なデプロイ オプションの選択](azure-sql-iaas-vs-paas-what-is-overview.md)に関するページを参照してください。
 - SQL Database と SQL Managed Instance の機能比較については、[SQL Database と SQL Managed Instance の機能比較](database/features-comparison.md)に関するページを参照してください。

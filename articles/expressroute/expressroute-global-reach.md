@@ -5,31 +5,35 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 27061035048202e4bcf231045bd946dd08bb5472
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: references_regions
+ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396507"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90987616"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure や Office 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。
+ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure や Microsoft 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用しています。 ただし、ブランチ オフィスは相互に直接接続してデータを送信することはできません。 つまり、10.0.1.0/24 から 10.0.3.0/24 および 10.0.4.0/24 ネットワークにデータを送信することはできますが、10.0.2.0/24 ネットワークには送信できません。
 
-![ない場合][1]
+![Express Route Global Reach とリンクされていない回線を示す図。][1]
 
 **ExpressRoute Global Reach** を使用すると、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築できます。 上記の例では、ExpressRoute Global Reach を追加することで、サンフランシスコ オフィス (10.0.1.0/24) が、既存の ExpressRoute 回線と Microsoft のグローバル ネットワークを介してロンドン オフィス (10.0.2.0/24) とデータを直接交換できます。 
 
-![ある場合][2]
+![Express Route Global Reach とリンクされている回線を示す図。][2]
 
 ## <a name="use-case"></a>使用事例
 ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を補完し、世界各地のブランチ オフィスを接続するために設計されています。 たとえば、お使いのサービス プロバイダーが主に米国で業務を行っていて、米国内のすべてのブランチはリンクしていたが、日本や香港特別行政区では業務を行っていない場合、ExpressRoute Global Reach によって現地のサービス プロバイダーを利用できます。そうすると、Microsoft が ExpressRoute と自社のグローバル ネットワークを使用して、現地のユーザーのブランチを米国内のブランチに接続します。
 
-![ユース ケース][3]
+![Express Route Global Reach のユース ケースを示す図。][3]
 
 ## <a name="availability"></a>可用性 
-現在、ExpressRoute Global Reach は以下の場所でサポートされています。
+ExpressRoute Global Reach は以下の場所でサポートされています。 
+
+> [!NOTE] 
+> [異なる地政学的地域](expressroute-locations-providers.md#locations)間で ExpressRoute Global Reach を有効にするには、**Premium SKU** の回線を使用する必要があります。
 
 * オーストラリア
 * Canada
@@ -48,13 +52,10 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 * イギリス
 * United States
 
-ExpressRoute 回線は、上記の国または地域の [ExpressRoute ピアリング拠点](expressroute-locations.md)に作成する必要があります。 [異なる地政学的地域](expressroute-locations.md)間で ExpressRoute Global Reach を有効にするには、Premium SKU の回線を使用する必要があります。
-
 ## <a name="next-steps"></a>次のステップ
-1. [Global Reach の FAQ を表示する](expressroute-faqs.md#globalreach)
-2. [Global Reach を有効にする方法を学習する](expressroute-howto-set-global-reach.md)
-3. [ExpressRoute 回線を仮想ネットワークにリンクする方法を学習する](expressroute-howto-linkvnet-arm.md)
-
+- [Global Reach の FAQ](expressroute-faqs.md#globalreach) を確認します。
+- [Global Reach を有効にする](expressroute-howto-set-global-reach.md)方法を確認します。
+- [ExpressRoute 回線を仮想ネットワークにリンクする](expressroute-howto-linkvnet-arm.md)方法を確認します。
 
 <!--Image References-->
 [1]: ./media/expressroute-global-reach/1.png "Global Reach なしの図"

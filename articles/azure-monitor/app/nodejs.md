@@ -3,13 +3,13 @@ title: Azure Application Insights を使用して Node.js サービスを監視�
 description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371619"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920573"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -40,6 +40,9 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK の設定
 
 アプリでデータを収集できるように、アプリに SDK を追加します。
+
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=nodejs)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 1. 新しく作成したリソースから、リソースのインストルメンテーション キー (*ikey* とも呼ばれます) をコピーします。 Application Insights では、この ikey を使用して、対象の Azure リソースにデータをマッピングします。 SDK で ikey を使用するためには、その ikey を環境変数またはコードの中で指定する必要があります。  
 
@@ -139,7 +142,7 @@ appInsights.setup("<instrumentation_key>")
 IDE の組み込みの型ヒントで説明を確認するか、または [applicationinsights.ts](https://github.com/microsoft/ApplicationInsights-node.js/blob/develop/applicationinsights.ts) を参照して、これらがコントロールできる内容と省略可能なセカンダリ引数についての詳細を確認してください。
 
 > [!NOTE]
->  既定では、`setAutoCollectConsole` は `console.log` (およびその他のコンソール メソッド) の呼び出しを*除外*するように構成されています。 サポートされているサードパーティのロガー (たとえば、winston や bunyan) の呼び出しのみが収集されます。 `setAutoCollectConsole(true, true)` を使用することで、この動作を変更して `console` メソッドの呼び出しを含めることができます。
+>  既定では、`setAutoCollectConsole` は `console.log` (およびその他のコンソール メソッド) の呼び出しを *除外* するように構成されています。 サポートされているサードパーティのロガー (たとえば、winston や bunyan) の呼び出しのみが収集されます。 `setAutoCollectConsole(true, true)` を使用することで、この動作を変更して `console` メソッドの呼び出しを含めることができます。
 
 ### <a name="sampling"></a>サンプリング
 
@@ -334,7 +337,7 @@ server.on("listening", () => {
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>テレメトリ プロセッサを使用したデータの前処理
 
-*テレメトリ プロセッサ*を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
+*テレメトリ プロセッサ* を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
 
 ```javascript
 public addTelemetryProcessor(telemetryProcessor: (envelope: Contracts.Envelope, context: { http.RequestOptions, http.ClientRequest, http.ClientResponse, correlationContext }) => boolean)
@@ -416,10 +419,9 @@ client.config.PROPERTYNAME = VALUE;
 ## <a name="next-steps"></a>次のステップ
 
 * [ポータル内でテレメトリを監視する](./overview-dashboard.md)
-* [テレメトリに関する分析クエリを記述する](../log-query/get-started-portal.md)
+* [テレメトリに関する分析クエリを記述する](../log-query/log-analytics-tutorial.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
-

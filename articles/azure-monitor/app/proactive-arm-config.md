@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309343"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890515"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -21,10 +21,10 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 ## <a name="smart-detection-rule-configuration"></a>スマート検出ルールの構成
 
 スマート検出ルールに対して次の設定を構成できます。
-- ルールが有効になっているかどうか (既定値は **true**)。
-- 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](../../role-based-access-control/built-in-roles.md#monitoring-reader) ロールと [[共同作成者の監視]](../../role-based-access-control/built-in-roles.md#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true**)。
+- ルールが有効になっているかどうか (既定値は **true** )。
+- 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](../../role-based-access-control/built-in-roles.md#monitoring-reader) ロールと [[共同作成者の監視]](../../role-based-access-control/built-in-roles.md#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true** )。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
-    -  メールの構成は、_プレビュー_ とマークされたスマート検出ルールで使用できません。
+    -  メールの構成は、 _プレビュー_ とマークされたスマート検出ルールで使用できません。
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
@@ -44,7 +44,7 @@ Application Insights リソース名を置換し、関連するスマート検�
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ Application Insights リソース名を置換し、関連するスマート検�
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ Application Insights リソース名を置換し、関連するスマート検�
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ Application Insights リソース名を置換し、関連するスマート検�
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }

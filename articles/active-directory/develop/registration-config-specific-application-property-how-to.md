@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 1469fcfa68b10353b78d31ccc758c61bf7746692
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120696"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064302"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>独自に開発したアプリ用の Azure portal の登録フィールド
 
@@ -24,7 +25,7 @@ ms.locfileid: "88120696"
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 
--   新しいアプリケーションを登録するには、[Azure Portal](https://portal.azure.com) に移動します。
+-   新しいアプリケーションを登録するには、<a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> に移動します。
 
 -   左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
 

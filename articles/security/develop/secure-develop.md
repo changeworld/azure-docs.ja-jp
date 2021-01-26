@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283488"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511282"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
-この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
+この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
 
 この記事では、次の SDL フェーズについて説明します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "87283488"
 
 ### <a name="perform-code-reviews"></a>コード レビューを実行する
 
-コードをチェックインする前に、[コード レビュー](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)を実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) を使用して、コード レビュー プロセスを管理できます。
+コードをチェックインする前に、[コード レビュー](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)を実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) を使用して、コード レビュー プロセスを管理できます。
 
 ### <a name="perform-static-code-analysis"></a>静的コード分析を実行する
 
@@ -48,15 +48,15 @@ Azure Marketplace では、静的コード分析を実行してコード レビ�
 
 データ フローの早い段階で入力を検証し、適切な形式のデータのみがワークフローに入ることを確認します。 不適切なデータがデータベースに保存されたり、下流コンポーネントでの異常の原因になったりしないようにする必要があります。
 
-ブラックリストとホワイトリストは、入力構文の検証を実行するための 2 つの一般的なアプローチです。
+ブロックリストと許可リストは、入力構文の検証を実行するための 2 つの一般的なアプローチです。
 
-  - ブラックリストでは、特定のユーザー入力に "既知の悪意のある" コンテンツが含まれていないことの確認が試みられます。
+  - ブロックリストでは、特定のユーザー入力に "既知の悪意のある" コンテンツが含まれていないことの確認が試みられます。
 
-  - ホワイトリストでは、特定のユーザー入力が "既知の適切な" 入力のセットと一致することの確認が試みられます。 文字ベースのホワイトリストは、ユーザー入力に "既知の適切な" 文字のみが含まれていること、または入力が既知の形式と一致することをアプリケーションで確認する、ホワイトリストの形式です。
+  - 許可リストでは、特定のユーザー入力が "既知の適切な" 入力のセットと一致することの確認が試みられます。 文字ベースの許可リストは、ユーザー入力に "既知の適切な" 文字のみが含まれていること、または入力が既知の形式と一致することをアプリケーションで確認する、許可リストの形式です。
     たとえば、これには、ユーザー名に英数字のみが含まれていることや、正確に 2 つの数値が含まれていることの確認が含まれる可能性があります。
 
-ホワイトリストは、セキュリティで保護されたソフトウェアを構築するための推奨されるアプローチです。
-ブラックリストは、不適切かもしれない入力の完全な一覧を考えることは不可能であるため、エラーが発生しやすくなります。
+許可リストは、セキュリティで保護されたソフトウェアを構築するための推奨されるアプローチです。
+ブロックリストでは、不適切かもしれない入力の完全な一覧を考えることは不可能であるため、エラーが発生しやすくなります。
 
 この処理は、クライアント側ではなくサーバー側で行います (または、サーバー側とクライアント側)。
 
@@ -99,7 +99,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 アプリケーションで[ファイルのアップロード](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
 
-マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
+マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/security-center-partner-integration.md) と統合できます。
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: elastic-pools
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab, sstein
-ms.date: 07/21/2020
-ms.openlocfilehash: f71daab55139f6b4690df50472928db466774cb3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.reviewer: sstein
+ms.date: 10/15/2020
+ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128269"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882308"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用したエラスティック プールに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |プールあたりの最大データ IOPS <sup>2</sup> |400|800|1200|1600|2000|2400|
-|プールあたりの最大ログ レート (MBps)|4.7|9.4|14.1|18.8|23.4|28.1|
+|プールあたりの最大ログ レート (MBps)|6|12|18|24|30|36|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup> |210|420|630|840|1050|1260|
 |プールあたりの最大同時ログイン数 <sup>3</sup> |210|420|630|840|1050|1260|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -86,7 +86,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |プールあたりの最大データ IOPS <sup>2</sup>|2800|3200|3600|4000|6400|9600|
-|プールあたりの最大ログ レート (MBps)|32.8|37.5|37.5|37.5|37.5|37.5|
+|プールあたりの最大ログ レート (MBps)|42|48|48|48|48|48|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |プールあたりの最大同時ログイン (要求) 数 <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -120,13 +120,13 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |プールあたりの最大データ IOPS <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|プールあたりの最大ログ レート (MBps)|9.4|18.8|28.1|37.5|37.5|37.5|37.5|
+|プールあたりの最大ログ レート (MBps)|12|24|36|48|48|48|48|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |プールあたりの最大同時ログイン (要求) 数 <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |エラスティック プール仮想コアのデータベースあたりの最小/最大選択肢|0、0.25、0.5、1、2|0、0.25、0.5、1...4|0、0.25、0.5、1...6|0、0.25、0.5、1...8|0、0.25、0.5、1...10|0、0.25、0.5、1...12|0、0.25、0.5、1...14|
 |レプリカの数|1|1|1|1|1|1|1|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|マルチ AZ|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
@@ -152,13 +152,13 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |プールあたりの最大データ IOPS <sup>2</sup> |6,400|7,200|8,000|9,600|12,800|16,000|16,000|
-|プールあたりの最大ログ レート (MBps)|37.5|37.5|37.5|37.5|37.5|37.5|37.5|
+|プールあたりの最大ログ レート (MBps)|48|48|48|48|48|48|48|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |プールあたりの最大同時ログイン (要求) 数 <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |エラスティック プール仮想コアのデータベースあたりの最小/最大選択肢|0、0.25、0.5、1...16|0、0.25、0.5、1...18|0、0.25、0.5、1...20|0、0.25、0.5、1...20、24|0、0.25、0.5、1...20、24、32|0、0.25、0.5、1...16、24、32、40|0、0.25、0.5、1...16、24、32、40、80|
 |レプリカの数|1|1|1|1|1|1|1|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|マルチ AZ|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
@@ -186,7 +186,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |プールあたりの最大データ IOPS <sup>2</sup>|2560|3200|3840|4480|5120|
-|プールあたりの最大ログ レート (MBps)|30|30|30|30|30|
+|プールあたりの最大ログ レート (MBps)|48|48|48|48|48|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup>|400|500|600|700|800|
 |プールあたりの最大同時ログイン (要求) 数 <sup>3</sup>|800|1000|1200|1400|1600|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|
@@ -219,7 +219,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |プールあたりの最大データ IOPS <sup>2</sup>|5760|6400|7680|10240|11520|23040|
-|プールあたりの最大ログ レート (MBps)|30|30|30|30|30|30|
+|プールあたりの最大ログ レート (MBps)|48|48|48|48|48|48|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |プールあたりの最大同時ログイン (要求) 数 <sup>3</sup>|1800|2000|2400|3200|3600|7200|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|

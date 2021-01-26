@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f6a709d3e0f1c71f89473b6ed8435c6eea7e1c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75887327"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540229"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で `hbase hbck` コマンドから不一致が返される
 
@@ -26,7 +26,7 @@ ms.locfileid: "75887327"
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. 次を実行してメタ テーブルを修正します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "75887327"
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次を実行してリージョンをオンラインにします。
 
@@ -65,7 +65,7 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 これらの重複するリージョンを手動でマージします。 HBase HMaster Web UI テーブル セクションに移動し、問題が発生しているテーブル リンクを選択します。 このテーブルに属している各リージョンの開始キー/終了キーが表示されます。 次に、これらの重複するリージョンをマージします。 HBase シェルで`merge_region 'xxxxxxxx','yyyyyyy', true` を実行します。 次に例を示します。
 
@@ -89,7 +89,7 @@ RegionC, startkey:010, endkey:080.
 
 最も可能性の高い原因は、RegionServer のクラッシュ時または VM の再起動時のリージョンの部分的な削除です。 現時点で Azure Storage はフラットな BLOB ファイル システムであり、一部のファイル操作はアトミックではありません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 以下の残りのファイルとフォルダーを手動でクリーンアップします。
 
@@ -109,4 +109,4 @@ RegionC, startkey:010, endkey:080.
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

@@ -5,23 +5,20 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044529"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854973"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory での差分形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、差分形式を使用して、[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) または [Azure Blob Storage](connector-azure-blob-storage.md) に保存されている Delta Lake との間でデータをコピーする方法について説明します。 このコネクタは、ソースとシンクの両方としてデータ フローをマッピングするとき、[インライン データセット](data-flow-source.md#inline-datasets)として利用できます。
-
-> [!NOTE]
-> データ フローをマッピングするための差分形式コネクタは現在、パブリック プレビューとして利用できます。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
@@ -41,6 +38,7 @@ ms.locfileid: "87044529"
 | [圧縮の種類] | 差分テーブルの圧縮の種類 | no | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | `Optimal` または `Fastest` | compressionLevel |
 | タイム トラベル | 差分テーブルの古いスナップショットにクエリを実行するかどうかを選択します | no | タイムスタンプ別のクエリ:Timestamp <br> バージョン別のクエリ:Integer | timestampAsOf <br> versionAsOf |
+| [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>Import schema
 
@@ -77,7 +75,7 @@ source(output(movieId as integer,
 | [圧縮の種類] | 差分テーブルの圧縮の種類 | no | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | `Optimal` または `Fastest` | compressionLevel |
 | VACUUM | 古いバージョンのテーブルに保持しきい値を時間単位で指定します。 0 以下の既定値は 30 日です。 | はい | Integer | vacuum |
-| 更新方法 | Delta Lake で許可される更新操作を指定します。 挿入ではない方法については、行にマークを付けるために、先行する行の変更変換が必要です。 | はい | `true` または `false` | deletable <br> insertable <br> updateable <br> upsertable |
+| 更新方法 | Delta Lake で許可される更新操作を指定します。 挿入ではない方法については、行にマークを付けるために、先行する行の変更変換が必要です。 | はい | `true` または `false` | deletable <br> insertable <br> updateable <br> merge |
 
 ### <a name="delta-sink-script-example"></a>差分シンク スクリプトの例
 

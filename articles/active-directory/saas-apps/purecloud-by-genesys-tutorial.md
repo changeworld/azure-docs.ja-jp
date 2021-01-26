@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7aa43a94c7b49eef5b3273617ad9038fd1202e4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553289"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505721"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553289"
 * ユーザーが自分の Azure AD アカウントを使用して PureCloud by Genesys に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* PureCloud by Genesys では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* PureCloud by Genesys では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの ID は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への PureCloud by Genesys の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**PureCloud by Genesys**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **PureCloud by Genesys** 」と入力します。
 1. 結果のパネルから **[PureCloud by Genesys]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>PureCloud by Genesys の Azure AD シングル サインオンの構成とテスト
@@ -167,21 +167,21 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 1. 上部の **[Admin] (管理)** を選択し、 **[Integrations] (統合)** の **[Single Sign-on] (シングル サインオン)** に移動します。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![[PureCloud Admin]\(PureCloud 管理\) ウィンドウのスクリーンショット。ここで [Single Sign-on]\(シングル サインオン\) を選択することができます。](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. **[ADFS/Azure AD (Premium)]** タブに切り替えて、次の手順に従います。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![[Integrations]\(統合\) ページのスクリーンショット。ここで、説明されている値を入力できます。](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. **[Browse] (参照)** を選択して、Azure portal からダウンロードした base 64 でエンコードされた証明書を **[ADFS Certificate] (ADFS 証明書)** にアップロードします。
 
-    b. **[ADFS Issuer URI] (ADFS 発行者の URI)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    b. **[ADFS Issuer URI] (ADFS 発行者の URI)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    c. **[Target URI] (ターゲット URI)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[Target URI] (ターゲット URI)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. **[Relying Party Identifier] (証明書利用者識別子)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブを選択して、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier] (証明書利用者識別子)** ボックスに貼り付けます。
+    d. **[Relying Party Identifier] (証明書利用者識別子)** の値については、Azure portal に移動し、 **PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブを選択して、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier] (証明書利用者識別子)** ボックスに貼り付けます。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![アプリケーション I D の値が表示される [プロパティ] ペインのスクリーンショット。](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. **[保存]** を選択します。
 
@@ -195,19 +195,19 @@ Azure AD ユーザーが PureCloud by Genesys にサインインできるよう�
 
 1. 上部の **[Admin] (管理)** を選択し、 **[People & Permissions] (ユーザーとアクセス許可)** の **[People] (ユーザー)** に移動します。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![[PureCloud Admin]\(PureCloud 管理\) ウィンドウのスクリーンショット。ここで [People]\(ユーザー\) を選択することができます。](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. **[People] (ユーザー)** ページで、 **[Add Person] (ユーザーの追加)** を選択します。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![ユーザーを追加できる [People]\(ユーザー\) ページのスクリーンショット。](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. **[Add People to the Organization] (組織へのユーザーの追加)** ダイアログボックスで、次の手順に従います。
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![スクリーンショットは、説明した値を入力できるページを示しています。](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. **[Full Name] (フル ネーム)** ボックスに、ユーザーの名前を入力します。 次に例を示します。**B.simon**。
+    a. **[Full Name] (フル ネーム)** ボックスに、ユーザーの名前を入力します。 次に例を示します。 **B.simon** 。
 
-    b. **[Email] (メール)** ボックスに、ユーザーのメール アドレスを入力します。 例: **b.simon\@contoso.com**。
+    b. **[Email] (メール)** ボックスに、ユーザーのメール アドレスを入力します。 例: **b.simon\@contoso.com** 。
 
     c. **［作成］** を選択します
 
@@ -215,14 +215,14 @@ Azure AD ユーザーが PureCloud by Genesys にサインインできるよう�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで **[PureCloud by Genesys]** タイルを選択すると、SSO を設定した PureCloud by Genesys アカウントに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで **[PureCloud by Genesys]** タイルを選択すると、SSO を設定した PureCloud by Genesys アカウントに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure AD の統合方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure AD の統合方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure AD のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure AD のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure AD の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure AD の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で PureCloud by Genesys を試す](https://aad.portal.azure.com/)

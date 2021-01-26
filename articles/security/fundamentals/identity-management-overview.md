@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002688"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843691"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
- ID 管理は、[セキュリティ プリンシパル](/windows/security/identity-protection/access-control/security-principals)を認証および承認するプロセスです。 これは、これらのプリンシパル (ID) に関する情報の制御にも関係します。 セキュリティ プリンシパル (ID) には、サービス、アプリケーション、ユーザー、グループなどが含まれることがあります。Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ちます。 この保護によって、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証が可能になります。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) は、クラウド上の何千ものサービスとしてのソフトウェア (SaaS) アプリケーションへのシングル サインオン (SSO)、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
+ ID 管理は、[セキュリティ プリンシパル](/windows/security/identity-protection/access-control/security-principals)を認証および承認するプロセスです。 これは、これらのプリンシパル (ID) に関する情報の制御にも関係します。 セキュリティ プリンシパル (ID) には、サービス、アプリケーション、ユーザー、グループなどが含まれることがあります。Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ちます。 この保護によって、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証が可能になります。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) は、クラウド上の何千ものサービスとしてのソフトウェア (SaaS) アプリケーションへのシングル サインオン (SSO)、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
  
 Azure Active Directory (Azure AD) のセキュリティ上の利点を活用することで、次のことが可能になります。
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) のセキュリティ上の利点を活用す�
 
 SSO とは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
 
-多くの組織では、ユーザーの生産性向上のため、Office 365、Box、Salesforce などの SaaS アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
+多くの組織では、ユーザーの生産性向上のために、Microsoft 365、Box、Salesforce などの SaaS アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
 
 Azure AD はオンプレミスの Active Directory 環境をクラウドに拡張して、ユーザーがプライマリ組織アカウントを使用してドメイン参加デバイスおよび会社のリソースにサインインするだけでなく、それぞれの業務に必要なすべての Web アプリケーションおよび SaaS アプリケーションにもサインインできるようにします。
 
@@ -68,38 +68,38 @@ Azure AD はオンプレミスの Active Directory 環境をクラウドに拡�
 
 ## <a name="reverse-proxy"></a>リバース プロキシ
 
-Azure AD アプリケーション プロキシを使用すると、[SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) サイト、[Outlook Web アプリ](https://technet.microsoft.com/library/jj657718.aspx)、[IIS](https://www.iis.net/) ベースのアプリなどのオンプレミス アプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。 アプリケーション プロキシでは、多くの種類のオンプレミス Web アプリケーションに対応するリモート アクセスと SSO を、Azure AD がサポートする数千もの SaaS アプリケーションとともに利用できます。 従業員は、自宅から自分のデバイスでアプリケーションにサインインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
+Azure AD アプリケーション プロキシを使用すると、[SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) サイト、[Outlook Web アプリ](/Exchange/clients/outlook-on-the-web/outlook-on-the-web)、[IIS](https://www.iis.net/) ベースのアプリなどのオンプレミス アプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。 アプリケーション プロキシでは、多くの種類のオンプレミス Web アプリケーションに対応するリモート アクセスと SSO を、Azure AD がサポートする数千もの SaaS アプリケーションとともに利用できます。 従業員は、自宅から自分のデバイスでアプリケーションにサインインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
 
 詳細情報:
 
-* [Azure AD アプリケーション プロキシの有効化](/azure/active-directory/manage-apps/application-proxy-enable)
-* [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](/azure/active-directory/active-directory-application-proxy-publish)
+* [Azure AD アプリケーション プロキシの有効化](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
+* [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
 * [アプリケーション プロキシを使用したシングル サインオン](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [条件付きアクセスの使用](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
+Azure AD Multi-Factor Authentication は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 詳細情報:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication とは](/azure/active-directory/authentication/multi-factor-authentication)
-* [Azure Multi-Factor Authentication のしくみ](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD の Multi-Factor Authentication の仕組み](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
 Azure RBAC は Azure Resource Manager 上に構築された認可システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。 Azure RBAC を使用すると、ユーザーのアクセスのレベルを細かく制御できます。 たとえば、ユーザーに応じて、管理の対象を仮想ネットワークのみに制限したり、リソース グループ内のすべてのリソースを管理できるようにしたりできます。 Azure には複数の組み込みロールがあり、使用できます。 4 つの基本的な組み込みロールを次に示します。 最初の 3 つは、すべてのリソースの種類に適用されます。
 
-- [所有者](/azure/role-based-access-control/built-in-roles#owner) - 他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 
-- [共同作成者](/azure/role-based-access-control/built-in-roles#contributor) - すべての種類の Azure リソースを作成および管理できます。他のユーザーにアクセス権を付与することはできません。
-- [閲覧者](/azure/role-based-access-control/built-in-roles#reader) - 既存の Azure リソースを表示できます。
-- [ユーザー アクセス管理者](/azure/role-based-access-control/built-in-roles#user-access-administrator) - Azure リソースへのユーザー アクセスを管理できます。
+- [所有者](../../role-based-access-control/built-in-roles.md#owner) - 他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 
+- [共同作成者](../../role-based-access-control/built-in-roles.md#contributor) - すべての種類の Azure リソースを作成および管理できます。他のユーザーにアクセス権を付与することはできません。
+- [閲覧者](../../role-based-access-control/built-in-roles.md#reader) - 既存の Azure リソースを表示できます。
+- [ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator) - Azure リソースへのユーザー アクセスを管理できます。
 
 詳細情報:
 
-* [Azure ロールベースのアクセス制御 (Azure RBAC) とは](/azure/role-based-access-control/overview)
-* [Azure 組み込みロール](/azure/role-based-access-control/built-in-roles)
+* [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)
+* [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>セキュリティの監視、アラート、および機械学習ベースのレポート
 
@@ -115,9 +115,9 @@ Azure portal では、レポートは次のカテゴリに分類されます。
 
 詳細情報:
 
-* [アクセスおよび使用状況レポートの表示](/azure/active-directory/active-directory-view-access-usage-reports)
-* [Azure Active Directory レポートの使用の開始](/azure/active-directory/active-directory-reporting-getting-started)
-* [Azure Active Directory レポート ガイド](/azure/active-directory/active-directory-reporting-guide)
+* [アクセスおよび使用状況レポートの表示](../../active-directory/reports-monitoring/overview-reports.md)
+* [Azure Active Directory レポートの使用の開始](../../active-directory/reports-monitoring/overview-reports.md)
+* [Azure Active Directory レポート ガイド](../../active-directory/reports-monitoring/overview-reports.md)
 
 ## <a name="consumer-identity-and-access-management"></a>コンシューマーの ID とアクセスの管理
 
@@ -135,26 +135,26 @@ Azure AD B2C を使用すると、コンシューマーは、既存のソーシ�
 
 ## <a name="device-registration"></a>デバイス登録
 
-Azure AD Device Registration は、デバイスに基づいて[条件付きでアクセス](/azure/active-directory/active-directory-conditional-access-device-registration-overview)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
+Azure AD Device Registration は、デバイスに基づいて[条件付きでアクセス](../../active-directory/devices/device-management-azure-portal.md)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
 Intune などのモバイル デバイス管理ソリューションと組み合わせて使用すると、Azure AD 内のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
 
 詳細情報:
 
-* [Azure AD デバイス登録の使用](/azure/active-directory/active-directory-conditional-access-device-registration-overview)
-* [Azure AD への Windows ドメイン参加済みデバイスの自動デバイス登録](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
-* [Azure AD への Windows ドメイン参加済みデバイスの自動登録の設定](/azure/active-directory/active-directory-conditional-access-automatic-device-registration-setup)
+* [Azure AD デバイス登録の使用](../../active-directory/devices/device-management-azure-portal.md)
+* [Azure AD への Windows ドメイン参加済みデバイスの自動デバイス登録](../../active-directory/devices/hybrid-azuread-join-plan.md)
+* [Azure AD への Windows ドメイン参加済みデバイスの自動登録の設定](../../active-directory/devices/hybrid-azuread-join-plan.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
+Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD や他の Microsoft Online Services (Microsoft 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
 
-ユーザーは、Azure や Office 365 のリソース、または他の SaaS アプリで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。 しかし、このようなアクセスでは、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害が組織のクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management はこのリスクの軽減に役立ちます。
+ユーザーは、Azure または Microsoft 365 のリソース、または他の SaaS アプリで、特権操作の実行が必要になる場合があります。 通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。 しかし、このようなアクセスでは、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害が組織のクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management はこのリスクの軽減に役立ちます。
 
 Azure AD Privileged Identity Management を使用することで、次のことが可能になります。
 
 * Azure AD の管理者であるユーザーを特定する。
-* Office 365 や Intune などの Microsoft サービスへのオンデマンドのジャスト イン タイム (JIT) な管理アクセスを可能にする。
+* Microsoft 365 や Intune などの Microsoft サービスへの、オンデマンドのジャスト イン タイム (JIT) な管理アクセスを可能にする。
 * 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する。
 * 特権ロールへのアクセスに関するアラートを受け取る。
 
@@ -169,12 +169,12 @@ Azure AD Identity Protection は、リスク検出や組織の ID に影響す�
 
 詳細情報:
 
-* [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
+* [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9:Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>ハイブリッド ID 管理/Azure AD Connect
 
-Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。 Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 また、以下のような特徴があります。
+Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。 Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。 Microsoft 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 また、以下のような特徴があります。
 
 * Synchronization
 * AD FS とフェデレーションの統合

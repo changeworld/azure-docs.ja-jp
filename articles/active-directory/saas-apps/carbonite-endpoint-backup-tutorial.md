@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff19275270e5b6572fb7d637b88c4736a3aa6ea0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530612"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456485"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>チュートリアル:Carbonite Endpoint Backup と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88530612"
 * ユーザーが自分の Azure AD アカウントを使用して Carbonite Endpoint Backup に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Carbonite Endpoint Backup では、**SP および IDP** で開始される SSO がサポートされます
+* Carbonite Endpoint Backup では、 **SP および IDP** で開始される SSO がサポートされます
 
 ## <a name="adding-carbonite-endpoint-backup-from-the-gallery"></a>ギャラリーからの Carbonite Endpoint Backup の追加
 
@@ -49,7 +49,7 @@ Azure AD への Carbonite Endpoint Backup の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Carbonite Endpoint Backup**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Carbonite Endpoint Backup** 」と入力します。
 1. 結果ウィンドウで **[Carbonite Endpoint Backup]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -117,7 +117,7 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>Carbonite Endpoint Backup SSO の構成
 
-1. Carbonite Endpoint Backup 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、**My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Carbonite Endpoint Backup 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、 **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -129,25 +129,25 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 4. 左側のウィンドウの **[Company]\(会社\)** をクリックします。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![スクリーンショットは、[Company]\(会社\) が選択されている Carbonite Endpoint を示しています。](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. **[Single sign-on]\(シングル サインオン\)** をクリックします。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![スクリーンショットは、[Single sign-on]\(シングル サインオン\) が選択されている [Company]\(会社\) を示しています。](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. **[Enable]\(有効化\)** をクリックし、 **[Edit settings]\(設定の編集\)** をクリックして構成します。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![スクリーンショットは、[Enable]\(有効化\) と [Edit settings]\(設定の編集\) が選択されている [Single sign-on]\(シングル サインオン\) タブを示しています。](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. **[Single sign-on]\(シングル サインオン\)** 設定ページで、次の手順を実行します。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![スクリーンショットは、この手順で説明されている情報を含む [Single sign-on]\(シングル サインオン\) タブを示しています。](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    1. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    1. **[Identity provider URL]\(ID プロバイダーの URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    1. **[Identity provider URL]\(ID プロバイダーの URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    1. **[Choose file]\(ファイルの選択\)** をクリックして、Azure portal からダウンロードした**証明書 (Base64)** をアップロードします。
+    1. **[Choose file]\(ファイルの選択\)** をクリックして、Azure portal からダウンロードした **証明書 (Base64)** をアップロードします。
 
     1. **[保存]** をクリックします。
 
@@ -187,11 +187,11 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 1. 左側のウィンドウの **[Users]\(ユーザー\)** をクリックし、 **[Add user]\(ユーザーの追加\)** をクリックします。
 
-    ![Carbonite Endpoint Backup でユーザーを追加する](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![スクリーンショットは、[Users]\(ユーザー\) と [Add user]\(ユーザーの追加\) が選択されている [Carbonite Endpoint] ページを示しています。](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. **[Add user]\(ユーザーの追加\)** ページで、次の手順に従います。
 
-    ![Carbonite Endpoint Backup でユーザーを追加する](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![スクリーンショットは、ここで説明されている手順を実行できる [Add user]\(ユーザーの追加\) ページを示しています。](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. ユーザーの **[Email]\(メール\)** 、 **[First name]\(名\)** 、 **[Last name]\(姓\)** を入力し、組織の要件に従って、必要なアクセス許可をユーザーに提供します。
 
@@ -201,12 +201,12 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Carbonite Endpoint Backup] タイルをクリックすると、SSO を設定した Carbonite Endpoint Backup に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Carbonite Endpoint Backup] タイルをクリックすると、SSO を設定した Carbonite Endpoint Backup に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

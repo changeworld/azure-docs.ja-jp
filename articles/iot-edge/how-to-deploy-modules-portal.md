@@ -4,17 +4,16 @@ description: Azure portal で IoT Hub を使用して、デプロイマニフェ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133917"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048034"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -25,13 +24,20 @@ ms.locfileid: "82133917"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
-* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#register-in-the-azure-portal)。
+* IoT Edge デバイス。
+
+  IoT Edge デバイスを設定していない場合は、Azure 仮想マシンで作成できます。 クイックスタートの記事のいずれかの手順に従って、[仮想 Linux デバイスを作成](quickstart-linux.md)するか、[仮想 Windows デバイスを作成](quickstart.md)します。
 
 ## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
 配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
 Azure Portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。 3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および**デプロイの確認**。
+
+>[!NOTE]
+>この記事の手順は、IoT Edge エージェントとハブの最新のスキーマ バージョンに合わせています。 スキーマ バージョン 1.1 は IoT Edge バージョン 1.0.10 と共にリリースされ、モジュールの起動順序機能とルートの優先順位付け機能を使用可能にします。
+>
+>1\.0.9 以前のバージョンを実行しているデバイスにデプロイする場合は、ウィザードの **[モジュール]** ステップで **[ランタイムの設定]** を編集して、スキーマ バージョン 1.0 を使用できるようにします。
 
 ### <a name="select-device-and-add-modules"></a>デバイスを選択してモジュールを追加する
 
@@ -40,26 +46,35 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 1. デバイスの一覧でターゲット デバイスの ID をクリックします。
 1. 上部のバーで **[モジュールの設定]** を選択します。
 1. ページの **[Container Registry の設定]** セクションで、モジュール イメージを格納するプライベート コンテナー レジストリにアクセスするための資格情報を指定します。
-1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** を選択します。
-1. ドロップダウン メニューでモジュールの種類を確認します：
+1. ページの **[IoT Edge モジュール]** セクションで、**[追加]** を選択します。
+1. ドロップダウン メニューで、モジュールの種類を次の 3 つから選択します。
 
    * **IoT Edge モジュール** - モジュール名とコンテナー イメージの URI を指定します。 たとえば、サンプルの SimulatedTemperatureSensor モジュールのイメージ URI は `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`です。 モジュール イメージがプライベート コンテナー レジストリに格納されている場合は、このページに資格情報を追加して、イメージにアクセスします。
    * **Marketplace モジュール** - Azure Marketplace でホストされているモジュール。 Marketplace モジュールによっては、追加の構成が必要になる場合があります。そのため、[Azure Marketplace IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) 一覧でモジュールの詳細を確認してください。
    * **Azure Stream Analytics モジュール** - Azure Stream Analytics ワークロードから生成されるモジュールです。
 
-1. モジュールを追加したら、一覧からモジュール名を選択してモジュールの設定を開きます。 必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
-1. 必要に応じて、手順 5 ～ 8 を繰り返して、モジュールをデプロイに追加します。
-1. **ルート** 　でルート のセクションに進みます。
+1. モジュールを追加したら、一覧からモジュール名を選択してモジュールの設定を開きます。 必要な場合は、省略可能なフィールドに入力します。
+
+   指定可能なモジュール設定の詳細については、[モジュールの構成と管理](module-composition.md#module-configuration-and-management)に関するページを参照してください。
+
+   モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
+
+1. 手順 6 から 8 を繰り返して、モジュールをデプロイに追加します。
+1. **次へ:ルート** 　でルート のセクションに進みます。
 
 ### <a name="specify-routes"></a>ルートを指定する
 
-**[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定では、ルートは **route** という名前で、**FROM /messages/\* INTO $upstream** として定義されています。つまり、任意のモジュールによって出力されたすべてのメッセージは IoT Hub に送信されます。  
+**[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定では、新しいデバイスの最初のデプロイには、**route** という名前で、**FROM /messages/\* INTO $upstream** として定義されているルートが含まれます。つまり、任意のモジュールによって出力されたすべてのメッセージは IoT ハブに送信されます。  
 
-[ルートの宣言](module-composition.md#declare-routes) の情報を使用してルートを追加または更新し、 **[次へ]：レビュー + 作成** を選択して、ウィザードの次の手順に進みます。
+**priority** パラメーターと **time to live** パラメーターは、ルート定義に含めることができるオプションのパラメーターです。 priority パラメーターでは、メッセージが最初に処理されるルート、または最後に処理されるルートを選択できます。 優先度は 0 から 9 の数値で設定されます (最高優先度は 0)。 time to live パラメーターでは、メッセージが処理されるかキューから削除されるまで当該ルートに保持しておく期間を宣言できます。
+
+ルートの作成方法の詳細については、「[ルートの宣言](module-composition.md#declare-routes)」を参照してください。
+
+ルートが設定されたら、 **[次へ:確認と作成]** を選択し、ウィザードの次の手順に進みます。
 
 ### <a name="review-deployment"></a>デプロイを確認する
 
-確認のセクションには、前述の 2 つのセクションの選択項目に基づいて作成された JSON 配置マニフェストが表示されます。 追加しなかった 2 つのモジュール ( **$edgeAgent** および **$edgeHub**) が宣言されていることに注目してください。 これらの 2 つのモジュールは、[IoT Edge ランタイム](iot-edge-runtime.md)を構成し、すべてのデプロイの既定値として使用されます。
+確認のセクションには、前述の 2 つのセクションの選択項目に基づいて作成された JSON 配置マニフェストが表示されます。 追加しなかった 2 つのモジュール (**$edgeAgent** および **$edgeHub**) が宣言されていることに注目してください。 これらの 2 つのモジュールは、[IoT Edge ランタイム](iot-edge-runtime.md)を構成し、すべてのデプロイの既定値として使用されます。
 
 デプロイ情報を確認し、 **[作成]** を選択します。
 
@@ -90,19 +105,19 @@ Marketplace の IoT Edge モジュールを調べて、必要なモジュール�
 Azure Marketplace のモジュールを、Azure portal の IoT Hub デバイスにすばやくデプロイできます。
 
 1. Azure portal で、お使いの IoT Hub に移動します。
-1. 左側のペインの **[デバイスの自動管理]** の下で、 **[IoT Edge]** を選択します。
+1. 左側のペインの **[デバイスの自動管理]** の下で、**[IoT Edge]** を選択します。
 1. デプロイを受信する IoT Edge デバイスを選択します。
 1. 上部のバーで **[モジュールの設定]** を選択します。
-1. **[IoT Edge モジュール]** セクションで、 **[追加]** をクリックし、ドロップダウンメニューから **[Marketplace モジュール]** を選択します。
+1. **[IoT Edge モジュール]** セクションで、**[追加]** をクリックし、ドロップダウンメニューから **[Marketplace モジュール]** を選択します。
 
 ![IoT Hub にモジュールを追加する](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 
-**[IoT Edge モジュールの Marketplace]** ページでモジュールを選択します。 選択したモジュールは、サブスクリプション、リソース グループ、およびデバイスに対して自動的に構成されます。 その後、それは IoT Edge モジュールの一覧に表示されます。 このモジュールには追加の構成が必要な場合があります。
+**[IoT Edge モジュールの Marketplace]** ページからモジュールを選択します。 選択したモジュールは、サブスクリプション、リソース グループ、およびデバイスに対して自動的に構成されます。 その後、それは IoT Edge モジュールの一覧に表示されます。 一部のモジュールでは、追加の構成が必要になることがあります。
 
 > [!TIP]
 > Azure IoT Hub の IoT Edge モジュールに関する情報は限られています。 詳細については、Azure Marketplace の [IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) に関するページを参照してください。
 
-**この記事の前で記載した [[ルートの指定]](#specify-routes) と [[デプロイの確認]](#review-deployment) で説明されているように、デプロイをルーティング**  して続行します。
+**Next:この記事の前で記載した [ルートの指定](#specify-routes) と [デプロイの確認](#review-deployment) で説明されているように、デプロイをルーティング**  して続行します。
 
 ## <a name="next-steps"></a>次のステップ
 

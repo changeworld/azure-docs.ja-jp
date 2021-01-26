@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ
-description: Azure Synapse Analytics (旧称 SQL DW) が並列処理 (MPP) と Azure Storage を結合して、ハイ パフォーマンスとスケーラビリティを実現する方法を説明します。
+title: 専用 SQL プール (旧称 SQL DW) アーキテクチャ
+description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) で分散クエリ処理機能と Azure Storage を組み合わせて、ハイ パフォーマンスとスケーラビリティを実現する方法について説明します。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,49 +10,44 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210968"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119596"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ
+# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) のアーキテクチャ
 
-Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
+Azure Synapse Analytics は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた分析サービスです。 これにより、条件に基づいてデータのクエリを自由に行うことができます。
 
- Azure Synapse には、次の 4 つのコンポーネントがあります。
+> [!NOTE]
+>詳細については、[Azure Synapse Analytics のドキュメント](../overview-what-is.md)を参照してください。
+>
 
-- Synapse SQL:完全な T-SQL ベースの分析
-
-  - SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
-  - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
-- Spark:緊密に統合された Apache Spark (プレビュー)
-- データ統合:ハイブリッド データ統合 (プレビュー)
-- Studio: 統一ユーザー エクスペリエンス。  (プレビュー)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
-## <a name="synapse-sql-mpp-architecture-components"></a>Synapse SQL MPP アーキテクチャ コンポーネント
+## <a name="synapse-sql-architecture-components"></a>Synapse SQL アーキテクチャのコンポーネント
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)と呼ばれるコンピューティング能力の抽象化です。 コンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
+[専用 SQL プール (旧称 SQL DW)](sql-data-warehouse-overview-what-is.md) では、スケールアウト アーキテクチャを活用して、複数のノードにデータの計算処理を分散します。 スケール単位は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)と呼ばれるコンピューティング能力の抽象化です。 コンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
 
-![Synapse SQL アーキテクチャ](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![専用 SQL プール (旧称 SQL DW) アーキテクチャ](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Synapse SQL は、ノードベースのアーキテクチャを使用します。 アプリケーションでは T-SQL コマンドに接続し、これを Synapse SQL の単一のエントリ ポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。
+専用 SQL プール (旧称 SQL DW) は、ノードに基づくアーキテクチャを使用します。 アプリケーションは、制御ノードに接続して、T-SQL コマンドを発行します。 制御ノードでは、分散クエリ エンジンがホストされ、それによって並列処理のためにクエリが最適化された後、作業を並行して行うために操作がコンピューティング ノードに渡されます。
 
-コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 Data Movement Service (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。
+コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 データ移動サービス (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。
 
-分離されたストレージとコンピューティングでは、Synapse SQL プールを使用する場合、次のことが可能です。
+分離されたストレージとコンピューティングでは、専用 SQL プール (旧称 SQL DW) を使用する場合、次のことが可能です。
 
 - 記憶域のニーズに関係なく、コンピューティング能力を計算する。
-- データを移動せずに、SQL プール (データ ウェアハウス) 内のコンピューティング能力を拡大または縮小します。
-- データをそのままの状態で保持しながら、コンピューティング能力を一時停止するため、支払いをストレージの分だけにする。
+- データを移動することなく、専用 SQL プール (旧称 SQL DW) 内でコンピューティング能力を拡大または縮小する。
+- データをそのままの状態で保持しながら、コンピューティング能力を一時停止するため、支払いがストレージの分だけで済む。
 - 稼働時間中にコンピューティング能力を再開する。
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Synapse SQL では、ユーザー データを安全に保つために Azure Storage を使用します。  データは Azure Storage によって保存、管理されるため、ストレージの使用量が別途課金されます。 データは、システムのパフォーマンスの最適化のため、**ディストリビューション**にシャード化されます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次の 2 つのシャーディング パターンがサポートされています。
+専用 SQL プール (旧称 SQL DW) は、Azure Storage を活用して、ユーザー データを安全に保ちます。  データは Azure Storage によって保存、管理されるため、ストレージの使用量が別途課金されます。 データは、システムのパフォーマンスの最適化のため、**ディストリビューション** にシャード化されます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次の 2 つのシャーディング パターンがサポートされています。
 
 - ハッシュ インデックス
 - ラウンド ロビン
@@ -60,13 +55,13 @@ Synapse SQL では、ユーザー データを安全に保つために Azure Sto
 
 ### <a name="control-node"></a>制御ノード
 
-制御ノードは、アーキテクチャの脳です。 すべてのアプリケーションおよび接続と対話するフロントエンドです。 MPP エンジンは制御ノードで実行され、並列クエリを最適化および調整します。 T-SQL クエリを送信すると、それが制御ノードによって、各ディストリビューションに対して並列で実行されるクエリに変換されます。
+制御ノードは、アーキテクチャの脳です。 すべてのアプリケーションおよび接続と対話するフロントエンドです。 制御ノードで分散クエリ エンジンが実行され、並列クエリのための最適化と調整が行われます。 T-SQL クエリを送信すると、それが制御ノードによって、各ディストリビューションに対して並列で実行されるクエリに変換されます。
 
 ### <a name="compute-nodes"></a>コンピューティング ノード
 
 コンピューティング ノードは計算能力を提供します。 ディストリビューションは、処理のためにコンピューティング ノードにマップされます。 追加のコンピューティング リソースの料金を支払うと、ディストリビューションが使用可能なコンピューティング ノードに再マップされます。 コンピューティング ノード数の範囲は 1 から 60 までで、Synapse SQL のサービス レベルによって決定されます。
 
-各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[MPP のシステム ビューに関する記事](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)をご覧ください。
+各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[Synapse SQL のシステム ビュー](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)に関する記事をご覧ください。
 
 ### <a name="data-movement-service"></a>データ移動サービス
 
@@ -76,7 +71,7 @@ Synapse SQL では、ユーザー データを安全に保つために Azure Sto
 
 ディストリビューションは、分散データで実行される並列クエリの保存および処理の基本的な単位です。 Synapse SQL でクエリを実行する場合、作業は並列で実行される 60 の小さなクエリに分割されます。
 
-60 の小さいクエリそれぞれは、いずれかのデータ ディストリビューションで実行されます。 各コンピューティング ノードでは、60 ディストリビューションの 1 つまたは複数が管理されます。 最大コンピューティング リソース数を持つ 1 つの SQL プールでは、1 コンピューティング ノードあたりのディストリビューション数は 1 です。 最小コンピューティング リソース数を持つ 1 つの SQL プールでは、1 つのコンピューティング ノードにすべてのディストリビューションがあります。  
+60 の小さいクエリそれぞれは、いずれかのデータ ディストリビューションで実行されます。 各コンピューティング ノードでは、60 ディストリビューションの 1 つまたは複数が管理されます。 コンピューティング リソースの数が最大の専用 SQL プール (旧称 SQL DW) では、コンピューティング ノードごとに 1 つのディストリビューションがあります。 コンピューティング リソースの数が最小の専用 SQL プール (旧称 SQL DW) では、1 つのコンピューティング ノードにすべてのディストリビューションがあります。  
 
 ## <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
 
@@ -112,13 +107,13 @@ Synapse SQL では、ユーザー データを安全に保つために Azure Sto
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Synapse の概要について学習したので、次はすばやく [SQL プールを作成](create-data-warehouse-portal.md)し、[サンプル データを読み込む](load-data-from-azure-blob-storage-using-polybase.md)方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
+Azure Synapse の概要について学習したので、次は、すばやく[専用 SQL プール (旧称 SQL DW) を作成し](create-data-warehouse-portal.md)、[サンプル データを読み込む](./load-data-from-azure-blob-storage-using-copy.md)方法について学習します。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
 
 - [顧客の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [ブログ](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [サポート チケットを作成する](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

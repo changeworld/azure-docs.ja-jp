@@ -10,40 +10,45 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799283"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131129"
 ---
-# <a name="business-card-concepts"></a>名刺の概念
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル 
 
-Azure Form Recognizer では、事前構築済みモデルの 1 つを使用して、名刺からキーと値のペアを分析して抽出できます。 Business Card API は、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
+Azure Form Recognizer では、事前構築済みの名刺モデルを使用して、名刺から連絡先情報を分析して抽出できます。 これは、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
 
-## <a name="what-does-the-business-card-api-do"></a>Business Card API の機能
+## <a name="what-does-the-business-card-service-do"></a>名刺サービスにはどのような機能がありますか。
 
-Business Card API は、名刺からキー フィールドを抽出し、それを構成済みの JSON 応答で返します。
+事前構築済みの Business Card API は、名刺からキー フィールドを抽出し、それを構成済みの JSON 応答で返します。
 
-![FOTT + JSON 出力からの Contoso の明細画像](./media/business-card-english.jpg)
+![FOTT + JSON 出力からの Contoso の明細画像](./media/business-card-example.jpg)
 
-### <a name="fields-extracted"></a>抽出されるフィールド: 
-* 連絡先の名前 
-* 名 
-* 姓 
-* 会社名 
-* Departments 
-* 役職 
-* メール 
-* Websites 
-* アドレス 
-* 電話番号 
-  * 携帯電話 
-  * Fax 
-  * 勤務先の電話 
-  * その他の電話 
 
-また、Business Card API は、すべての認識されたテキストを名刺から返します。 この OCR 出力は JSON 応答に含まれています。  
+
+### <a name="fields-extracted"></a>抽出されるフィールド:
+
+|名前| Type | 説明 | Text | 
+|:-----|:----|:----|:----|
+| ContactNames | オブジェクトの配列 | 名刺から抽出された連絡先の名前 | [{ "FirstName":"John", "LastName":"Doe" }] |
+| FirstName | string | 連絡先の名 | "John" | 
+| LastName | string | 連絡先の姓 |   "Doe" | 
+| CompanyNames | 文字列の配列 | 名刺から抽出された会社名 | ["Contoso"] | 
+| Departments | 文字列の配列 | 連絡先の部署または組織 | ["R&D"] | 
+| JobTitles | 文字列の配列 | リストされている連絡先の役職 | ["Software Engineer"] | 
+| メール | 文字列の配列 | 名刺から抽出された連絡先のメールアドレス | ["johndoe@contoso.com"] | 
+| Websites | 文字列の配列 | 名刺から抽出された Web サイト | ["https://www.contoso.com"] | 
+| アドレス | 文字列の配列 | 名刺から抽出された住所 | ["123 Main Street, Redmond, WA 98052"] | 
+| MobilePhones | 電話番号の配列 | 名刺から抽出された携帯電話番号 | ["+19876543210"] |
+| Fax | 電話番号の配列 | 名刺から抽出された Fax 電話番号 | ["+19876543211"] |
+| WorkPhones | 電話番号の配列 | 名刺から抽出された勤務先電話番号 | ["+19876543231"] |
+| OtherPhones    | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
+
+
+また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。  
 
 ### <a name="input-requirements"></a>入力要件 
 
@@ -51,30 +56,27 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
 
 ## <a name="the-analyze-business-card-operation"></a>名刺の分析操作
 
-[名刺の分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)では、名刺の画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[名刺の分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)では、名刺の画像または PDF を入力として受け取り、目的の値を抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>名刺の分析結果の取得操作
 
-2 番目の手順では、[名刺の分析結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)操作を呼び出します。 この操作では、名刺の分析操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[名刺の分析結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult)操作を呼び出します。 この操作では、名刺の分析操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
-|status | string | notStarted: 分析操作は開始されていません。 |
-| |  | running: 分析操作が進行中です。 |
-| |  | failed: 分析操作は失敗しました。 |
-| |  | succeeded: 分析操作は成功しました。 |
+|status | string | notStarted: 分析操作は開始されていません。<br /><br />running: 分析操作が進行中です。<br /><br />failed: 分析操作は失敗しました。<br /><br />succeeded: 分析操作は成功しました。|
 
-**status** フィールドの値が **succeeded** の場合、JSON 応答には名刺の解釈とテキスト認識の結果が含まれます。 名刺の解釈の結果は名前付きフィールド値のディクショナリとして編成され、各値には、抽出されたテキスト、正規化された値、境界ボックス、信頼および対応する単語要素が含まれます。 テキスト認識の結果は行と単語の階層として編成され、テキスト、境界ボックス、信頼情報が含まれます。
+**status** フィールドの値が **succeeded** の場合、JSON 応答には名刺の解釈と、必要に応じてテキスト認識の結果 (要求した場合) が含まれます。 名刺の解釈の結果は名前付きフィールド値のディクショナリとして編成され、各値には、抽出されたテキスト、正規化された値、境界ボックス、信頼および対応する単語要素が含まれます。 テキスト認識の結果は行と単語の階層として編成され、テキスト、境界ボックス、信頼情報が含まれます。
 
 ![サンプルの名刺の出力](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>サンプル JSON 出力
 
-成功した JSON 応答の例を次に示します。"readResults" ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 "documentResults" ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切なキーと値のペアが存在する場所です。
+成功した JSON 応答の例を次に示します。"readResults" ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 "documentResults" ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切な連絡先情報が存在する場所です。
 
 ```json
 {
@@ -90,8 +92,8 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                "lines": 
-                          {
+                   "lines": 
+                             {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -376,7 +378,7 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
 }
 ```
 
-[名刺データ抽出](./QuickStarts/python-business-cards.md)のクイックスタートに従って、Python と REST API を使用した名刺データ抽出を実装します。
+[クイックスタート](./QuickStarts/client-library.md)に従って、Python と REST API を使用した名刺データ抽出を実装します。
 
 ## <a name="customer-scenarios"></a>顧客シナリオ  
 
@@ -387,12 +389,13 @@ Business Card API で抽出されたデータは、さまざまな作業を行�
 * 潜在顧客を追跡します。  
 * 既存の名刺画像から、連絡先情報を一括して抽出します。 
 
-また、Business Card API では、[AIBuilder の名刺処理機能](https://docs.microsoft.com/ai-builder/prebuilt-business-card)も強化されています。
+また、Business Card API では、[AI Builder の名刺処理機能](/ai-builder/prebuilt-business-card)も強化されています。
 
 ## <a name="next-steps"></a>次のステップ
 
-- クイックスタートに従って、[Python での Business Card API のクイックスタート](./quickstarts/python-business-cards.md)を開始します。
-- [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) について学習します。
-- [Form Recognizer](overview.md) の詳細を確認します。
+- [クイックスタート](./quickstarts/client-library.md)に従って、名刺の認識を開始します。
 
+## <a name="see-also"></a>関連項目
 
+* [Form Recognizer とは](./overview.md)
+* [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

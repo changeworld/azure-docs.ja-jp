@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure で PerfInsights を使用する方法 | Microsoft Docs
 description: PerfInsights を使用して Windows VM のパフォーマンスに関する問題のトラブルシューティングを行う方法を説明します。
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: dcscontentpm
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9e298bf39446024f384b9af142fe3000e936bb6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526641"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656854"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Azure で PerfInsights を使用する方法
 
@@ -123,10 +123,10 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 | XPerf トレース                       |                            |                                    |                          |                      | はい                  |
 | StorPort トレース                    |                            |                                    |                          |                      | はい                  |
 | ネットワーク トレース                     |                            |                                    |                          | はい                  | はい                  |
-| Diskspd ベンチマーク トレース ***       |                            | はい                                |                          |                      |                      |
+| Diskspd ベンチマーク トレース **_       |                            | はい                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>パフォーマンス診断トレース (*)
+### <a name="performance-diagnostics-trace-_"></a>パフォーマンス診断トレース (_)
 
 バックグラウンドでルール ベースのエンジンを実行してデータを収集し、継続的なパフォーマンスの問題を診断します。 現在サポートされているルールは次のとおりです。
 
@@ -154,7 +154,7 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 #### <a name="for-azure-files"></a>Azure Files 向け
 \SMB Client Shares
 
-### <a name="diskspd-benchmark-trace-"></a>Diskspd ベンチマーク トレース (***)
+### <a name="diskspd-benchmark-trace-_"></a>Diskspd ベンチマーク トレース (**_)
 Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプール ドライブ [読み取り/書き込み])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>VM での PerfInsights ツールの実行
@@ -165,7 +165,14 @@ Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプ�
 
 -  このツールを、パフォーマンスに問題がある VM で実行する必要があります。 
 
--  次のクライアント オペレーティング システムがサポートされています。Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1、および Windows 10。
+-  サポートされているオペレーティング システムは次のとおりです: _ Windows Server 2019
+   * Windows Server 2016
+   * Windows Server 2012 R2
+   * Windows Server 2012
+   * Windows Server 2008 R2
+   * Windows 10
+   * Windows 8.1
+   * Windows 8
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>運用 VM でこのツールを実行したときに発生する可能性のある問題
 
@@ -251,8 +258,8 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 **[検索結果]** タブを選択します。
 
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-finding-tab.png)
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-findings.png)
+![PerfInsights レポートの [概要] タブのスクリーンショット。](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights レポートの [ストレージ] タブのスクリーンショット。](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > [高] と分類された結果は、パフォーマンスの問題の原因となる可能性のある既知の問題です。 [中] と分類された結果は、最適ではないが、必ずしもパフォーマンス問題の原因とはならない構成です。 [低] と分類された結果は、単なる情報提供のためのステートメントです。

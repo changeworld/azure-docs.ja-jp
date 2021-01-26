@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate Server Assessment を使用して Azure VM の評価を作成する | Microsoft Docs
 description: Azure Migrate Server Assessment ツールを使用して Azure VM の評価を作成する方法について説明します
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/15/2019
-ms.author: raynew
-ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7101c61db8f0863c3a16b1c17f04188f9bee4e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549800"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754302"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure VM の評価を作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "85549800"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- Azure Migrate プロジェクトを[作成](./create-manage-projects.md)していることを確認します。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 - 評価を作成するには、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用の Azure Migrate アプライアンスを設定する必要があります。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
 
@@ -43,7 +43,7 @@ Azure Migrate: Server Assessment を使用して Azure VM の評価を作成す�
 1. 評価を作成するための[ベスト プラクティス](best-practices-assessment.md)を確認します。
 2. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[評価]** をクリックします。
 
-    ![アクセス](./media/how-to-create-assessment/assess.png)
+    ![Azure Migrate Servers のスクリーンショット。[評価ツール] の下で [評価] が選択されています。](./media/how-to-create-assessment/assess.png)
 
 3. **[サーバーの評価]** で、評価の種類として [Azure VM] を選択し、検出ソースを選択し、評価名を指定します。
 
@@ -53,7 +53,7 @@ Azure Migrate: Server Assessment を使用して Azure VM の評価を作成す�
 
     ![評価のプロパティ](./media/how-to-create-assessment//view-all.png)
 
-5. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+5. **[次へ]** をクリックして **評価するマシンを選択** します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
 6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
 7. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
 8. **[評価を作成します]** をクリックして、グループを作成し、評価を実行します。

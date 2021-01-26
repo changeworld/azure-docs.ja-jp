@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cab4cd34458e6107c653859c97dfda12486a38a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f4d4d1e0fc44b9fb031ce5e3e45219fa8169562
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549745"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458508"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Sales Navigator の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549745"
 * ユーザーが自分の Azure AD アカウントを使用して LinkedIn Sales Navigator に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* LinkedIn Sales Navigator では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* LinkedIn Sales Navigator では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* LinkedIn Sales Navigator では、[**自動化された**ユーザー プロビジョニング](linkedinsalesnavigator-provisioning-tutorial.md)がサポートされます
+* LinkedIn Sales Navigator では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* LinkedIn Sales Navigator では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LinkedIn Sales Navigator では、 [**自動化された** ユーザー プロビジョニング](linkedinsalesnavigator-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>ギャラリーからの LinkedIn Sales Navigator ナビゲーターの追加
 
@@ -51,7 +51,7 @@ Azure AD への LinkedIn Sales Navigator の統合を構成するには、ギャ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**LinkedIn Sales Navigator**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **LinkedIn Sales Navigator** 」と入力します。
 1. 結果のパネルから **[LinkedIn Sales Navigator]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>LinkedIn Sales Navigator の Azure AD シングル サインオンの構成とテスト
@@ -79,9 +79,9 @@ LinkedIn Sales Navigator で Azure AD SSO を構成してテストするには�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、**エンティティ ID** の値を入力します。エンティティ ID の値は、このチュートリアルで後述する Linkedin Portal からコピーします。
+    a. **[識別子]** ボックスに、 **エンティティ ID** の値を入力します。エンティティ ID の値は、このチュートリアルで後述する Linkedin Portal からコピーします。
 
-    b. **[応答 URL]** ボックスに、**Assertion Consumer Access (ACS) URL** の値を入力します。Assertion Consumer Access (ACS) URL の値は、このチュートリアルで後述する LinkedIn Portal からコピーします。
+    b. **[応答 URL]** ボックスに、 **Assertion Consumer Access (ACS) URL** の値を入力します。Assertion Consumer Access (ACS) URL の値は、このチュートリアルで後述する LinkedIn Portal からコピーします。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -145,11 +145,11 @@ LinkedIn Sales Navigator で Azure AD SSO を構成してテストするには�
 
 1. **[Account Center (アカウント センター)]** で、 **[Settings (設定)]** の下の **[Global Settings (グローバル設定)]** をクリックします。 さらに、ドロップダウン リストから **[Sales Navigator]** を選択します。
 
-    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![[Sales Navigator] を選択できる [Application Settings]\(アプリケーションの設定\) を示すスクリーンショット。](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
 1. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックして、次の手順を実行します。
 
-    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![説明されている値を入力できる [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
     a. **[Entity ID]\(エンティティ ID\)** をコピーして、Azure portal の **[基本的な SAML 構成]** にある **[識別子]** ボックスに貼り付けます。
 
@@ -157,11 +157,11 @@ LinkedIn Sales Navigator で Azure AD SSO を構成してテストするには�
 
 1. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 **[Upload XML file]\(XML ファイルのアップロード\)** オプションをクリックして、Azure portal からダウンロードした XML ファイルをアップロードします。
 
-    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![X M L ファイルをアップロードできる [Configure the LinkedIn service provider S S O settings]\(LinkedIn サービス プロバイダーの S S O 設定の構成\) を示すスクリーンショット。](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[Not Connected (未接続)]** から **[Connected (接続済み)]** に変更されます
 
-    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![[Authenticate users with S S O]\(S S O を使用してユーザーを認証する\) を有効にできる [Single Sign-On]\(シングル サインオン\) を示すスクリーンショット。](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-sales-navigator-test-user"></a>LinkedIn Sales Navigator のテスト ユーザーの作成
 
@@ -173,14 +173,14 @@ Linked Sales Navigator アプリケーションでは、ジャストインタイ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [LinkedIn Sales Navigator] タイルをクリックすると、SSO を設定した LinkedIn Sales Navigator に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [LinkedIn Sales Navigator] タイルをクリックすると、SSO を設定した LinkedIn Sales Navigator に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で LinkedIn Sales Navigator を試す](https://aad.portal.azure.com/)

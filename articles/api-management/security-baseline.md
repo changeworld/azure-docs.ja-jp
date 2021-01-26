@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d6c954d6336a0b88f57ba1f70571263af5d1c583
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229805"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201078"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -98,9 +98,9 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 * [Azure Application Gateway について](../application-gateway/index.yml)
 
-* [Azure DDoS Protection Standard を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [Azure DDoS Protection Standard を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -187,7 +187,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 **ガイダンス**: Azure API Management のデプロイに関連するネットワーク設定の標準的なセキュリティ構成を定義して、実装します。 Azure API Management のデプロイと関連リソースのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" および "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。 また、次のように、Azure Virtual Networks 用の組み込みのポリシー定義を使用することもできます。
 - DDoS Protection Standard を有効にする必要がある
 
-また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
+また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -281,7 +281,7 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス**:Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
+**ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
 * [Log Analytics ワークスペースのログの保持期間パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -301,7 +301,7 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 * [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
-* [Log Analytics ワークスペースについて](../azure-monitor/log-query/get-started-portal.md)
+* [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Application Insights と統合する方法](./api-management-howto-app-insights.md)
 
@@ -323,7 +323,7 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 * [Azure API Management の診断設定を有効にする方法](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [承認されていない要求に対してアラート ルールを構成する方法](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
+* [Azure API Management の警告ルールを構成する方法](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 * [Azure API Management インスタンスの容量メトリックを表示する方法](./api-management-capacity.md)
 
@@ -375,13 +375,13 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 * [Azure API Management でロールベースのアクセス制御を使用する方法](./api-management-role-based-access-control.md)
 
-* [Azure API Management インスタンスのユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Azure API Management インスタンスのユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールに割り当てられたユーザーの一覧を取得する方法](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールに割り当てられたユーザーの一覧を取得する方法](/powershell/module/az.resources/get-azroleassignment)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロール定義を取得する方法](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロール定義を取得する方法](/powershell/module/az.resources/get-azroledefinition)
 
-* [Azure Security Center からの ID とアクセスの推奨事項について](../security-center/recommendations-reference.md#recs-identity)
+* [Azure Security Center からの ID とアクセスの推奨事項について](../security-center/recommendations-reference.md#recs-identityandaccess)
 
 **Azure Security Center の監視**: はい
 
@@ -446,7 +446,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -462,7 +462,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 * [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
+* [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -480,7 +480,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**:可能な限り、Azure AD を中央認証および承認システムとして使用します。 AAD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
+**ガイダンス**:可能な限り、Azure AD を中央認証および承認システムとして使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
 Azure Active Directory を使用して開発者アカウントを認証するように Azure API Management 開発者ポータルを構成します。
 
@@ -490,7 +490,7 @@ Azure Active Directory (AD) で OAuth 2.0 プロトコルを使用して API を
 
 * [Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する方法](./api-management-howto-protect-backend-with-aad.md)
 
-* [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -506,7 +506,7 @@ Azure Active Directory (AD) で OAuth 2.0 プロトコルを使用して API を
 
 * [Azure API Management でユーザー アカウントを管理する方法](./api-management-howto-create-or-invite-developers.md)
 
-* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
 * [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法](./api-management-howto-create-groups.md)
 
@@ -588,7 +588,7 @@ Azure AD ユーザー アカウントの診断設定を作成し、監査ログ�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -614,7 +614,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 **ガイダンス**: 管理プレーン呼び出しは、TLS 経由で Azure Resource Manager によって行われます。 有効な JSON Web トークン (JWT) が必要です。 データ プレーン呼び出しは、TLS と、サポートされる認証メカニズムのいずれか (例: クライアント証明書や JWT など) で保護できます。
 
-* [Azure API Management でのデータ保護について](./api-management-security-controls.md#data-protection)
+* [Azure API Management でのデータ保護について](#data-protection)
 
 * [Azure API Management で TLS 設定を管理する](./api-management-howto-manage-protocols-ciphers.md)
 
@@ -664,7 +664,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 **ガイダンス**: 証明書、キー、およびシークレットの名前付きの値などの機密データは、サービスで管理される、サービス インスタンスごとのキーで暗号化されます。 すべての暗号化キーはサービス インスタンスごとに存在し、サービスで管理されます。
 
-* [Azure API Management を使用した保存データの保護と暗号化について](./api-management-security-controls.md#data-protection)
+* [Azure API Management を使用した保存データの保護と暗号化について](#data-protection)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -692,7 +692,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure API Management で利用可能なセキュリティ コントロールについて](./api-management-security-controls.md)
+* [Azure API Management で利用可能なセキュリティ コントロールについて]()
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -728,7 +728,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 顧客が利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-* [Azure API Management で利用可能なセキュリティ コントロールについて](./api-management-security-controls.md)
+* [Azure API Management で利用可能なセキュリティ コントロールについて]()
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -740,13 +740,13 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -774,7 +774,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -888,7 +888,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure Policy を使用して、Azure API Management サービスの標準的なセキュリティ構成を定義して実装します。 Azure API Management サービスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" 名前空間で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -928,11 +928,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、Azure API Management サービスの構成を安全に格納して管理します。
 
-* [Azure DevOps でファイルを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でファイルを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
-
-* [Azure API Management DevOps リソース キットについて](./api-management-security-controls.md#configuration-management)
+* [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -971,8 +969,6 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 **ガイダンス**:Azure API Management DevOps リソース キットを使用して、Azure API Management の構成管理を行います。
 
 また、Azure Policy を使用して、Azure API Management サービスの標準的なセキュリティ構成を定義して実装します。 Azure API Management インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" 名前空間で Azure Policy エイリアスを使用します。 Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
-
-* [Azure API Management DevOps リソース キットについて](./api-management-security-controls.md#configuration-management)
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1086,7 +1082,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 * [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Azure Key Vault の証明書をバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Azure Key Vault の証明書をバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1098,7 +1094,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 * [API Management の復元操作を呼び出す方法](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [Azure Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Azure Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1114,7 +1110,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 

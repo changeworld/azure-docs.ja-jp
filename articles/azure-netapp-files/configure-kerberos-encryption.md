@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 05d173b715a8bc060e2f4d9cdcc7e3aef5630109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535257"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935225"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -75,7 +75,7 @@ NFSv4.1 Kerberos を構成すると、Active Directory に 2 つのコンピュ�
 * SMB 共有のコンピューター アカウント
 * NFSv4.1 のコンピューター アカウント。このアカウントは `NFS-` プレフィックスによって識別できます。 
 
-最初の NFSv4.1 Kerberos ボリュームを作成した後、次の PowerShell コマンドを使用して、暗号化の種類またはコンピューター アカウントを設定してください。
+最初の NFSv4.1 Kerberos ボリュームの作成後、次の PowerShell コマンドを使用して、そのコンピューター アカウントの暗号化の種類を設定します。
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 3. 新しいボリューム用のディレクトリ (マウント ポイント) を作成します。  
 
 4. コンピューター アカウントの既定の暗号化の種類を AES 256 に設定します。  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * このコマンドは、コンピューター アカウントごとに 1 回だけ実行する必要があります。
     * このコマンドの実行は、ドメイン コントローラーから、または [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) がインストールされている PC から行うことができます。 
-    * `$COMPUTERACCOUNT` 変数は、Kerberos ボリュームをデプロイしたときに Active Directory に作成されたコンピューター アカウントです。 これは、先頭に `NFS-` が付いているアカウントです。 
+    * `$NFSCOMPUTERACCOUNT` 変数は、Kerberos ボリュームをデプロイしたときに Active Directory に作成されたコンピューター アカウントです。 これは、先頭に `NFS-` が付いているアカウントです。 
     * `$ANFSERVICEACCOUNT` 変数は、コンピューター アカウントが作成された組織単位に対する管理を委任されている、特権のない Active Directory ユーザー アカウントです。 
 
 5. ホストでボリュームをマウントします。 
@@ -135,7 +135,7 @@ NFSv4.1 ボリュームで現在使用できるセキュリティ オプショ�
 
 ### <a name="expected-performance-impact"></a>予想されるパフォーマンスに対する影響 
 
-焦点となる領域が 2 つがあります。 軽い負荷と上限です。 次の一覧では、パフォーマンスに対する影響について、セキュリティ設定別とシナリオ別に説明します。 比較はすべて `sec=sys` セキュリティ パラメーターに対して行われています。
+焦点となる領域が 2 つがあります。 軽い負荷と上限です。 次の一覧では、パフォーマンスに対する影響について、セキュリティ設定別とシナリオ別に説明します。 比較はすべて `sec=sys` セキュリティ パラメーターに対して行われています。 1 つのクライアントを使用して、1 つのボリュームでテストが実行されました。 
 
 krb5 のパフォーマンスに対する影響:
 
@@ -172,6 +172,7 @@ krb5p のパフォーマンに対する影響:
 
 ## <a name="next-steps"></a>次のステップ  
 
+* [NFSv4.1 Kerberos ボリュームの問題のトラブルシューティング](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Azure NetApp Files についての FAQ](azure-netapp-files-faqs.md)
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Active Directory 接続を作成する](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

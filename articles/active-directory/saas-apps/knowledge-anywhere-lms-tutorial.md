@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: eab1304408f896f5c9d736488997c1246ae167f2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549944"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458984"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Knowledge Anywhere LMS の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549944"
 * ユーザーが自分の Azure AD アカウントを使用して Knowledge Anywhere LMS に自動的にサインインできます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Knowledge Anywhere LMS では、**SP** Initiated SSO と **Just In Time** ユーザー プロビジョニングがサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Knowledge Anywhere LMS では、 **SP** Initiated SSO と **Just In Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>ギャラリーからの Knowledge Anywhere LMS の追加
 
@@ -47,7 +47,7 @@ Azure AD への Knowledge Anywhere LMS の統合を構成するには、マネ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Knowledge Anywhere LMS**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Knowledge Anywhere LMS** 」と入力します。
 1. 結果のパネルから **[Knowledge Anywhere LMS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -99,7 +99,7 @@ Knowledge Anywhere LMS に対する Azure AD SSO を構成してテストする�
 
 ### <a name="configure-knowledge-anywhere-lms"></a>Knowledge Anywhere LMS の構成
 
-1. Knowledge Anywhere LMS 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Knowledge Anywhere LMS 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -111,23 +111,23 @@ Knowledge Anywhere LMS に対する Azure AD SSO を構成してテストする�
 
 4. **[Site]\(サイト\)** タブを選択します。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![[Site]\(サイト\) タブを示すスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. **[SAML Settings]\(SAML 設定\)** タブを選択します。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![[SAML Settings]\(SAML 設定\) が選択されている [Knowledge anywhere] ページが示されているスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. **[Add New]\(新規追加\)** をクリックします。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![[Service Provider Settings]\(サービス プロバイダーの設定\) の [Add New]\(新規追加\) ボタンを示すスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. **[Add/Update SAML Settings]\(SAML 設定の追加/更新\)** ページで、次の手順を実行します。
 
-    ![Knowledge Anywhere LMS の構成](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![ここで説明されている変更を行うことができる [Add/Update SAML Settings]\(SAML 設定の追加/更新\) ページを示すスクリーンショット。](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. 所属する組織に応じて [IDP Name]\(IDP 名\) に入力します (例: `Azure`)。
 
-    b. **[IDP Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    b. **[IDP Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
     c. **[IDP URL]\(IDP URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -179,12 +179,12 @@ Knowledge Anywhere LMS に対する Azure AD SSO を構成してテストする�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [Knowledge Anywhere LMS] タイルを選択すると、SSO を設定した Knowledge Anywhere LMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Knowledge Anywhere LMS] タイルを選択すると、SSO を設定した Knowledge Anywhere LMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

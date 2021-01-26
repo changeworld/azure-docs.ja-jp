@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cedea9eb4ec47af445b2ae31225a697f3c51b46e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542821"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318920"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>チュートリアル:AirWatch を Azure Active Directory と統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542821"
 * ユーザーが自分の Azure AD アカウントを使用して AirWatch に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -125,7 +125,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[ユーザー]** タブをクリックし、 **[ベース DN]** テキストボックスにドメイン名を入力してから **[保存]** をクリックします。
 
-   ![User](./media/airwatch-tutorial/ic791922.png "User")
+   ![[ベース DN] テキスト ボックスが強調表示されているスクリーンショット。](./media/airwatch-tutorial/ic791922.png "User")
 
 1. **[Server]** タブをクリックします。
 
@@ -133,7 +133,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[LDAP]** セクションで次の手順を実行します。
 
-    ![アップロード](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![[LDAP] セクションに加える必要のある変更点を示すスクリーンショット。](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. **[Directory Type]** として **[None]** を選択します。
 
@@ -223,7 +223,7 @@ Azure AD ユーザーが AirWatch にサインインできるようにするに�
 
 3. **Users\(ユーザー\)** メニューで、**List View\(リスト ビュー\)** 、**Add\(追加\) > Add User\(ユーザーの追加\)** の順にクリックします。
   
-   ![ユーザーの追加](./media/airwatch-tutorial/ic791930.png "ユーザーの追加")
+   ![[Add]\(追加\) および [Add User]\(ユーザーの追加\) ボタンが強調表示されているスクリーンショット。](./media/airwatch-tutorial/ic791930.png "ユーザーの追加")
 
 4. **[Add / Edit User]** ダイアログで、次の手順を実行します。
 
@@ -238,12 +238,12 @@ Azure AD ユーザーが AirWatch にサインインできるようにするに�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [AirWatch] タイルを選択すると、SSO を設定した AirWatch に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [AirWatch] タイルを選択すると、SSO を設定した AirWatch に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

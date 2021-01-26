@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: ee6b6c29c89c39c72144371af8268760da843170
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c37637ba1cb5154bbd56f7fd22bbbca62b8c3438
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375501"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187624"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](../../../../get-started.md)
+> * [Azure Speech リソースを作成する](../../../../overview.md#try-the-speech-service-for-free)
 > * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md)
-> * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
+> * [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続されたボットを作成する
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 >
   > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "87375501"
 次の行を追加して、go.mod ファイルを最新の SDK バージョンで更新します。
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.14.0
 )
 ```
 
@@ -102,13 +102,13 @@ func main() {
 - 左側の **[Keys and Endpoint]\(キーとエンドポイント\)** に、利用可能なサブスクリプション キーが 2 つあります
     - そのどちらか一方で `YOUR_SUBSCRIPTION_KEY` の値を置き換えます
 - 左側の **[概要]** で、リージョンをメモし、それをリージョン識別子にマッピングします
-    - `YOUR_BOT_REGION` の置換値としてリージョン識別子を使用します (**米国西部**の場合は `"westus"` など)
+    - `YOUR_BOT_REGION` の置換値としてリージョン識別子を使用します (**米国西部** の場合は `"westus"` など)
 
    > [!NOTE]
    > [音声アシスタントをサポートしているリージョンの一覧](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
    > [!NOTE]
-   > ご自分のボットの構成の詳細については、[Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
+   > ご自分のボットの構成の詳細については、[Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
 
 ## <a name="code-explanation"></a>コードの説明
 音声構成オブジェクトを作成するには、Speech のサブスクリプション キーとリージョンが必要です。 音声認識エンジン オブジェクトをインスタンス化するには、この構成オブジェクトが必要です。

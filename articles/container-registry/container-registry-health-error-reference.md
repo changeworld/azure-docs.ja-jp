@@ -1,14 +1,14 @@
 ---
-title: 正常性チェックのエラー リファレンス
+title: レジストリ正常性チェックのエラー リファレンス
 description: Azure Container Registry で az acr check-health 診断コマンドを実行することによって検出された問題のエラー コードと考えられる解決策
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978316"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565600"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス
 
@@ -90,7 +90,7 @@ ms.locfileid: "82978316"
 
 このエラーは、クライアントがコンテナー レジストリへのセキュリティで保護された接続を確立できなかったことを意味します。 このエラーは一般に、プロキシ サーバーの実行中または使用中に発生します。
 
-*考えられる解決策*: プロキシの内側の動作について詳しくは、[こちらをご覧ください](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy)。
+*考えられる解決策*: プロキシの内側の動作について詳しくは、[こちらをご覧ください](/cli/azure/use-cli-effectively)。
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

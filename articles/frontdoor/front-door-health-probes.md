@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399635"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449235"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
-それぞれの Front Door 環境では、特定の Front Door 環境から各バックエンドの正常性と近接性を確認するために、構成されている各バックエンドに合成 HTTP/HTTPS 要求を定期的に送信します。 Front Door は、これらのプローブからの応答を使用して、実際のクライアント要求のルーティング先として "最適な" バックエンドを決定します。 
+それぞれの Front Door 環境では、特定の Front Door 環境の各バックエンドの正常性と近接性を確認するために、構成されている各バックエンドに合成 HTTP/HTTPS 要求を定期的に送信します。 Front Door は、プローブからのこれらの応答を使用して、クライアント要求のルーティング先として "最適な" バックエンドリソースを決定します。 
 
 > [!WARNING]
-> Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブ要求の量が極めて多くなる可能性があります。構成されている正常性プローブの頻度にもよりますが、毎分 25 回要求されることもあれば、多いときは毎分 1200 回要求されることもあります。 既定のプローブ頻度は 30 秒であり、バックエンドのプローブ量は毎分 200 要求程度になるはずです。
+> Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブの量が極めて多くなる可能性があります。構成されている正常性プローブの頻度にもよりますが、毎分 25 回要求されることもあれば、多いときは毎分 1200 回要求されることもあります。 既定のプローブ頻度は 30 秒であり、バックエンドのプローブ量は毎分 200 要求程度になるはずです。
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル
 

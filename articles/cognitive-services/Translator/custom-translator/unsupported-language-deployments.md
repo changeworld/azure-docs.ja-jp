@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7498169c2c61b8337a90fbda082729f200f04635
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964687"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369037"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
 
@@ -33,13 +33,13 @@ ms.locfileid: "85964687"
 * モデルの言語ペアは、カスタム翻訳ツールで、サポートされていない言語のペアである必要があります。  言語のペアの片方が英語をサポートしているもののその言語は英語では無い場合、サポートされていない言語の展開の対象となります。  たとえば、フランス語とドイツ語の言語ペアにおいてフランス語から英語がサポートされていて英語からドイツ語がサポートされていても、この言語ペアのハブ モデルはサポートされていない言語の組み合わせとなります。
 
 ## <a name="process"></a>Process
-展開の対象となるハブからモデルを移行すると、ワークスペースの**設定**ページに表示できます。ページ下部までスクロールすると**Unsupported Translator Hub Trainings** (サポートされていない翻訳ツールのハブ トレーニング) セクションが表示されます。  このセクションは、上記の前提条件を満たすプロジェクトの場合のみ表示されます。
+展開の対象となるハブからモデルを移行すると、ワークスペースの **設定** ページに表示できます。ページ下部までスクロールすると **Unsupported Translator Hub Trainings** (サポートされていない翻訳ツールのハブ トレーニング) セクションが表示されます。  このセクションは、上記の前提条件を満たすプロジェクトの場合のみ表示されます。
 
-![Hub から移行する方法](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![[Unsupported Translator Hub Trainings]\(サポートされていない翻訳ツールのハブ トレーニング\) セクションが強調表示されているスクリーンショット。](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 **Unsupported Translator Hub Trainings** (サポートされていない翻訳ツールのハブ トレーニング) において **[Unrequested trainings]** (要求されていないトレーニング) タブには、展開にふさわしいモデルが表示されます。  展開するモデルを選択し要求を送信します。   4 月 30 日の展開期限まで、展開を行おうとするモデルをできる限り多く選択できます。
  
-![Hub から移行する方法](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![[Unrequested trainings]\(要求されていないトレーニング\) タブのスクリーンショット。](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 送信後はモデルは **[Unrequested trainings]** (要求されていないトレーニング) タブではなく **[Requested trainings]** (要求されたトレーニング) タブに表示されます。いつでも、要求されたトレーニングを表示できます。
 
@@ -47,7 +47,7 @@ ms.locfileid: "85964687"
 
 ## <a name="whats-next"></a>次の操作
 
-ハブの使用を中止し、すべてのモデルの展開を解除すると、展開用に選択したモデルが保存されます。  サポートされていないモデルを展開するための要求は 5 月 24日までに送信してください。  これらのモデルは 6 月 15 日に展開し、翻訳ツールの V3 を通じてアクセスできます。  さらに、Translator V2 は 7 月 1 日まで利用できます。  
+ハブの使用を中止し、すべてのモデルの展開を解除すると、展開用に選択したモデルが保存されます。  サポートされていないモデルを展開するための要求は 5 月 24日までに送信してください。  これらのモデルは 6 月 15 日に展開し、翻訳ツールの V3 API を通じてアクセスできます。  さらに、V2 API は 7 月 1 日まで利用できます。  
 
 ハブ チェックの使用停止に関する重要な日付については、[ここ](https://www.microsoft.com/translator/business/hub/)をクリックしてください。
 展開後、通常のホスティング料金が適用されます。  詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)のページを参照してください。  
@@ -57,4 +57,4 @@ ms.locfileid: "85964687"
 ## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
-- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Microsoft Translator Text API V3](../reference/v3-0-translate.md?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

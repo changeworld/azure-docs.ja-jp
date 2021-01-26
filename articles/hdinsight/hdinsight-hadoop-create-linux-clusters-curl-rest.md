@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
-ms.openlocfilehash: 75eda1720e80a886ca0efb2d1f4204416a5b55f8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083340"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020631"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -28,7 +28,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 ## <a name="create-a-template"></a>テンプレートの作成
 
-Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なリソースを 1 つのテンプレートで定義することができます。
+Azure Resource Manager テンプレートは、**リソース グループ** とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なリソースを 1 つのテンプレートで定義することができます。
 
 次の JSON ドキュメントは、[https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
 
@@ -214,12 +214,12 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 
-「[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
+「[Azure CLI の概要](/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 > [!NOTE]  
-> 以下の手順は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)」ドキュメントの「*パスワードを使用したサービス プリンシパルの作成*」セクションを要約したものです。 この手順を実行すると、Azure REST API への認証に使用されるサービス プリンシパルが作成されます。
+> 以下の手順は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」ドキュメントの「*パスワードを使用したサービス プリンシパルの作成*」セクションを要約したものです。 この手順を実行すると、Azure REST API への認証に使用されるサービス プリンシパルが作成されます。
 
 1. コマンド ラインで、次のコマンドを使用して Azure サブスクリプションを一覧表示します。
 
@@ -250,7 +250,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
      このコマンドから返される値は、__オブジェクト ID__ です。 この値を保存します。
 
-4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した**サブスクリプション ID** を使用します。
+4. **所有者** の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した **サブスクリプション ID** を使用します。
 
    ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/

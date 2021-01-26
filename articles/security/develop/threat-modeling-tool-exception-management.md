@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f68bc5e4604f35f9c4c45cd3e38ddaf8d24cd03
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 41532e554623c47e9728c6ccab92d99500e42021
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004461"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517429"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム:例外管理 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -38,7 +38,7 @@ ms.locfileid: "89004461"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **手順** | Windows Communication Framework (WCF) サービスでは、デバッグ情報を公開する構成が可能です。 デバッグ情報は、運用環境では使用しないようにしてください。 `<serviceDebug>` タグにより、WCF サービスでデバッグ情報機能を有効にするかどうかが定義されます。 includeExceptionDetailInFaults 属性が true に設定されている場合、アプリケーションからの例外情報はクライアントに返されます。 攻撃者は、デバッグ出力から入手した追加の情報を使用して、アプリケーションが使用するフレームワーク、データベース、その他のリソースを対象とした攻撃をマウントすることができます。 |
 
 ### <a name="example"></a>例
@@ -62,7 +62,7 @@ ms.locfileid: "89004461"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ジェネリック、NET Framework 3 |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **手順** | サービスに関する情報を公開すると、サービスの悪用について攻撃者に多くの洞察を与えてしまう可能性があります。 `<serviceMetadata>` タグにより、メタデータの公開機能が有効化されます。 サービス メタデータには、パブリックにアクセスできないようにする必要がある機密情報が含まれている可能性があります。 少なくとも、信頼されたユーザーにのみメタデータへのアクセスを許可し、不要な情報は公開されないことを確認してください。 メタデータを公開する機能をすべて無効にすると、より安全です。 安全な WCF 構成には `<serviceMetadata>` タグが含まれません。 |
 
 ## <a name="ensure-that-proper-exception-handling-is-done-in-aspnet-web-api"></a><a id="exception"></a>ASP.NET Web API で適切な例外処理が実行されたことを確認する
@@ -202,7 +202,7 @@ ASP.NET Web API での例外処理とモデルの検証の詳細については�
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET エラー ページ設定の編集ダイアログ ボックス](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **参照**              | [ASP.NET エラー ページ設定の編集ダイアログ ボックス](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd569096(v=ws.10)) |
 | **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の `<customErrors>` タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off:** カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これは、既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>IIS の deployment メソッドを retail に設定する
@@ -213,7 +213,7 @@ ASP.NET Web API での例外処理とモデルの検証の詳細については�
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [deployment 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
+| **参照**              | [deployment 要素 (ASP.NET 設定スキーマ)](/previous-versions/dotnet/netframework-2.0/ms228298(v=vs.80)) |
 | **手順** | <p>`<deployment retail>` スイッチは、実稼働 IIS サーバーで使用するためのものです。 このスイッチを使用すると、ページ上にトレース出力を生成するアプリケーション機能、エンド ユーザーに詳細なエラー メッセージを表示する機能、debug スイッチが無効化され、これによりアプリケーションのパフォーマンスを最大限に高め、セキュリティ情報の漏えいの可能性を最小限に抑えながら、アプリケーションの実行が支援されます。</p><p>多くの場合、失敗した要求トレースやデバッグなどの開発者向けスイッチおよびオプションが、開発中に有効化されています。 すべての実稼働サーバーの deployment メソッドを retail に設定することをお勧めします。 machine.config ファイルを開き、`<deployment retail="true" />` が true のままであることを確認します。</p>|
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>例外は安全に失敗する必要がある
@@ -268,4 +268,4 @@ ASP.NET Web API での例外処理とモデルの検証の詳細については�
             }
         }
 ```
-上記のメソッドでは、何らかの例外が発生すると、常に true を返します。 エンド ユーザーが、ブラウザーでは考慮されているが `Uri()` コンストラクターでは考慮されていない正しくない URL を入力した場合、例外が返され、攻撃対象は、有効ではあるものの正しくない URL に誘導されます。 
+上記のメソッドでは、何らかの例外が発生すると、常に true を返します。 エンド ユーザーが、ブラウザーでは考慮されているが `Uri()` コンストラクターでは考慮されていない正しくない URL を入力した場合、例外が返され、攻撃対象は、有効ではあるものの正しくない URL に誘導されます。

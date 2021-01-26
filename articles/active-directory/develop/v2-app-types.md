@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームのアプリケーションの種類 | Azure
-description: Microsoft ID プラットフォーム (v2.0) エンドポイントでサポートされているアプリの種類とシナリオです。
+description: Microsoft ID プラットフォーム エンドポイントでサポートされているアプリの種類とシナリオです。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
+ms.openlocfilehash: fd1fc59fd1ade6036c57f15415afccfc693f7bff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121172"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029755"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
-Microsoft ID プラットフォーム (v2.0) エンドポイントでは、さまざまな最新アプリ アーキテクチャ向けの認証がサポートされています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Microsoft ID プラットフォームを使用して作成できるアプリの種類について説明します。 情報は、[コードを詳しく確認する](v2-overview.md#getting-started)前に大まかなシナリオを理解するうえで役立ちます。
+Microsoft ID プラットフォーム エンドポイントでは、さまざまな最新アプリ アーキテクチャ向けの認証がサポートされています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Microsoft ID プラットフォームを使用して作成できるアプリの種類について説明します。 情報は、[アプリケーションのシナリオ](authentication-flows-app-scenarios.md#application-scenarios)でコードを詳しく確認する前に大まかなシナリオを理解するうえで役立ちます。
 
 ## <a name="the-basics"></a>基本
 
 Microsoft ID プラットフォーム エンドポイントを使う各アプリを、Azure portal の[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)で登録する必要があります。 アプリの登録プロセスでは、次の値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する **アプリケーション (クライアント) ID**
-* 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
+* 応答をアプリにリダイレクトして戻すために使用できる **リダイレクト URI**。
 * 他にいくつかのシナリオ固有の値 (サポートされているアカウントの種類など)
 
 詳細については、[アプリの登録](quickstart-register-app.md)方法を参照してください。
@@ -42,11 +42,11 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>シングル ページ アプリ (JavaScript)
 
-最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあり、Angular、React、Vue などのフレームワークと共に使用されることもあります。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)を使用してこれらのアプリがサポートされます。
+最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあり、Angular、React、Vue などのフレームワークと共に使用されることもあります。 Microsoft ID プラットフォーム エンドポイントでは、認証に [OpenID Connect](v2-protocols-oidc.md) プロトコルを使用し、承認に [OAuth 2.0 の暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)または新しい [OAuth 2.0 承認コード + PKCE フロー](v2-oauth2-auth-code-flow.md)を使用することで、これらのアプリをサポートしています (以下を参照してください)。
 
-このフローでは、アプリは Microsoft ID プラットフォームの `authorize` エンドポイントからコードを受け取り、クロス サイト Web 要求を使用してトークンと更新トークンに引き換えます。 更新トークンは 24 時間ごとに期限切れになるため、アプリは別のコードを要求する必要があります。
+次のフロー図は、OAuth 2.0 承認コードの許可を示しています (PKCE に関する詳細は省略しています)。この例では、アプリで Microsoft ID プラットフォーム `authorize` エンドポイントからコードを受け取り、トークンに引き換え、クロスサイト Web 要求を使用してトークンを更新しています。 更新トークンは 24 時間ごとに期限切れになるため、アプリは別のコードを要求する必要があります。 通常、アクセス トークンに加えて、クライアント アプリケーションにサインインしたユーザーを表す `id_token` も、同じフローまたは別の OpenID Connect 要求 (ここには示されていません) を介して要求されます。
 
-![SPA アプリのコード フロー](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="シングル ページ アプリとセキュリティ トークン サービス エンドポイントの間の OAuth 2 認証コード フローを示す図。" border="false":::
 
 実際のシナリオについては、[認証コード フローを使用して、ユーザーをサインインし、JavaScript SPA から Microsoft Graph API を呼び出すチュートリアル](tutorial-v2-javascript-auth-code.md)を参照してください。
 
@@ -81,10 +81,9 @@ Web サーバー アプリにおけるサインイン認証フローは、主に
 
 Microsoft ID プラットフォーム エンドポイントから受け取った公開署名キーを使用して ID トークンを検証することにより、ユーザーの ID を確認することができます。 以降のページ要求でユーザーを識別するために使用できるセッション Cookie が設定されます。
 
-このシナリオを実際に確認するには、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの、いずれかの Web アプリ サインインのコード サンプルを試してください。
+このシナリオの実際の動作を確認するには、[ユーザーをサインインさせる Web アプリのシナリオ](scenario-web-app-sign-user-overview.md)に関するページでコード サンプルをお試しください。
 
 Web サーバー アプリは、単純なサインインを実行するだけでなく、REST API をはじめとする他の Web サービスにアクセスすることが必要な場合があります。 この場合、Web サーバー アプリは、OpenID Connect と OAuth 2.0 を組み合わせたフローに関与します。その際使用されるのが [OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)です。 このシナリオの詳細については、[Web アプリと Web API の使用の開始](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)に関する記事を参照してください。
-
 
 ## <a name="web-apis"></a>Web API
 
@@ -106,9 +105,9 @@ Web API では、すべての種類のアプリ (Web サーバー アプリ、�
 
 ![Web API の認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-OAuth2 アクセス トークンを使用して Web API をセキュリティで保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
+OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、[保護された Web API のシナリオ](scenario-protected-web-api-overview.md)に関するページの Web API コード サンプルを確認してください。
 
-多くの場合、Web API は Microsoft ID プラットフォームで保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API では**代理**フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
+多くの場合、Web API は Microsoft ID プラットフォームで保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API では **代理** フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
 
 ## <a name="mobile-and-native-apps"></a>モバイル アプリとネイティブ アプリ
 
@@ -117,6 +116,9 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティで
 このフローでは、ユーザーがサインインすると、アプリは Microsoft ID プラットフォーム エンドポイントから承認コードを受け取ります。 承認コードは、サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。 アプリはバックグラウンドで承認コードを OAuth 2.0 のアクセス トークンおよび更新トークンと交換します。 アプリではそのアクセス トークンを使って HTTP 要求で Web API を認証できます。また、古いアクセス トークンの有効期限が切れた場合は、更新トークンを使って新しいアクセス トークンを取得できます。
 
 ![ネイティブ アプリの認証フロー](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> アプリケーションで既定のシステム Web ビューが使用されている場合は、「[Azure AD 認証と承認のエラー コード](reference-aadsts-error-codes.md)」の "サインインの確認" 機能とエラーコード AADSTS50199 の情報を確認してください。
 
 ## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 

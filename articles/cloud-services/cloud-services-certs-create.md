@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142368"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072426"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure にデプロイする方法について説明します。
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > ドメインではなく IP アドレスを持つ証明書を使用する場合は、-DnsName パラメーターで IP アドレスを使用します。
 
 
-この [証明書を管理ポータルで](../azure-api-management-certs.md)使用する場合は、 **.cer** ファイルにエクスポートしてください。
+この [証明書を管理ポータルで](/previous-versions/azure/azure-api-management-certs)使用する場合は、 **.cer** ファイルにエクスポートしてください。
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ## <a name="next-steps"></a>次のステップ
 [サービス証明書を Azure Portal にアップロードします](cloud-services-configure-ssl-certificate-portal.md)。
 
-[管理 API 証明書](../azure-api-management-certs.md) を Azure Portal にアップロードします。
-
-
-
-
+[管理 API 証明書](/previous-versions/azure/azure-api-management-certs) を Azure Portal にアップロードします。

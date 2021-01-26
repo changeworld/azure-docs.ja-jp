@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131856"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483816"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>音声サービス: ドキュメントの最新情報
 
@@ -23,34 +23,32 @@ ms.locfileid: "87131856"
 
 ### <a name="service-updates"></a>サービスの更新情報
 
-音声サービス、Speech SDK、Speech Devices SDK、または Speech CLI に対する更新情報については、次を参照してください。
+音声サービス、Speech SDK、Speech Devices SDK、Speech CLI、Speech コンテナーに対する更新情報については、次を参照してください。
 * [Speech SDK のリリース ノート](releasenotes.md)。
 * [Speech Devices SDK のリリース ノート](devices-sdk-release-notes.md)
+* [Cognitive Services コンテナーのリリース ノート](../containers/container-image-tags.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
 ### <a name="new-articles"></a>新しい記事
 
-* [Custom Speech 用のモデルを向上させる](how-to-custom-speech-improve-accuracy.md)
+* [Custom Speech 用のモデルを向上させる](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>更新された記事
 
 * [Speech SDK オーディオ入力ストリーム API について](how-to-use-audio-input-streams.md) - 1 秒間に許可されるサンプル数を更新しました。
 * [音声テキスト変換の自動言語検出](how-to-automatic-language-detection.md) - Objective-C の手順をドキュメントに追加しました。
-* [音声認識モードを選択する](how-to-choose-recognition-mode.md) - JavaScript の手順をドキュメントに追加しました。
+* [音声認識モードを選択する](./get-started-speech-to-text.md) - JavaScript の手順をドキュメントに追加しました。
 * [Speech SDK 用に RHEL/CentOS 7 を構成する](how-to-configure-rhel-centos-7.md) - 設定手順を改善しました。
-* [音声テキスト変換用のフレーズ リスト](how-to-phrase-lists.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: Python の長い形式の音声の非同期合成 (プレビュー)](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) - パブリック ニューラル音声のサポートと関連するパラメーターについて更新しました。
-* [クイック スタート: オーディオ ファイルから音声を認識する](quickstarts/speech-to-text-from-file.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: マイクから音声を認識する](quickstarts/speech-to-text-from-microphone.md )- Go および JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md) - JavaScript の手順をドキュメントに追加しました。
+* [音声テキスト変換用のフレーズ リスト](./get-started-speech-to-text.md) - JavaScript の手順をドキュメントに追加しました。
+* [クイック スタート: Python の長い形式の音声の非同期合成 (プレビュー)](./long-audio-api.md) - パブリック ニューラル音声のサポートと関連するパラメーターについて更新しました。
+* [クイック スタート: オーディオ ファイルから音声を認識する](./get-started-speech-to-text.md) - JavaScript の手順をドキュメントに追加しました。
+* [クイック スタート: マイクから音声を認識する](./get-started-speech-to-text.md)- Go および JavaScript の手順をドキュメントに追加しました。
+* [クイック スタート: BLOB ストレージに格納された音声を認識する](./batch-transcription.md) - JavaScript の手順をドキュメントに追加しました。
 * [クイック スタート: Language Understanding (LUIS) を使用して、音声、意図、エンティティを認識する](quickstarts/intent-recognition.md)
 * [クイック スタート: 開発環境を設定する](quickstarts/setup-platform.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: オーディオ ファイルに音声を合成する](quickstarts/text-to-speech-audio-file.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: スピーカーに音声を合成する](quickstarts/text-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: 音声間翻訳](quickstarts/translate-speech-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: 音声を複数の言語に翻訳する](quickstarts/translate-speech-to-text-multiple-languages.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: 音声テキスト変換の翻訳](quickstarts/translate-speech-to-text.md) - JavaScript の手順をドキュメントに追加しました。
+* [クイック スタート: オーディオ ファイルに音声を合成する](./get-started-text-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
+* [クイック スタート: スピーカーに音声を合成する](./get-started-text-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
 * [キーワードとは](custom-keyword-overview.md) - 概要の内容およびリンクを更新しました。
 * [音声テキスト変換のソース言語を指定する](how-to-specify-source-language.md) - JavaScript および Objective-C の手順をドキュメントに追加しました。
 

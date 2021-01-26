@@ -3,20 +3,20 @@ title: Data Factory で Resource Manager テンプレートを使用する
 description: Azure Resource Manager テンプレートを作成および使用して Data Factory エンティティを作成する方法を説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4c840d50fb80a57e9c68645ade8baa22b455fa84
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194457"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495499"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -27,9 +27,9 @@ ms.locfileid: "84194457"
 
 世界中に 10 の製造プラントを持つ企業について考えてみましょう。 各プラントからのログは、個別の SQL Server データベースに格納されます。 企業は、アドホック分析用にクラウドに 1 つのデータ ウェアハウスを構築したいと考えています。 また、開発、テスト、および運用環境に同じロジックの異なる構成が必要でもあります。
 
-この場合、同じ環境内でタスクを繰り返す必要がありますが、各製造プラントの 10 のデータ ファクトリ間で異なる値を使用する必要があります。 ここに**繰り返し**が伴います。 テンプレートでは、この一般的なフロー (つまり、各データ ファクトリに同じアクティビティを持つパイプライン) の抽象化が可能になり、各製造プラントに個別のパラメーター ファイルを使用できます。
+この場合、同じ環境内でタスクを繰り返す必要がありますが、各製造プラントの 10 のデータ ファクトリ間で異なる値を使用する必要があります。 ここに **繰り返し** が伴います。 テンプレートでは、この一般的なフロー (つまり、各データ ファクトリに同じアクティビティを持つパイプライン) の抽象化が可能になり、各製造プラントに個別のパラメーター ファイルを使用できます。
 
-また、企業が、異なる環境間でこれらの 10 のデータ ファクトリを複数回デプロイする必要がある場合、テンプレートでは、この**再利用性**を使用して、開発、テスト、および運用環境に個別のパラメーター ファイルを利用できます。
+また、企業が、異なる環境間でこれらの 10 のデータ ファクトリを複数回デプロイする必要がある場合、テンプレートでは、この **再利用性** を使用して、開発、テスト、および運用環境に個別のパラメーター ファイルを利用できます。
 
 ## <a name="templating-with-azure-resource-manager"></a>Azure Resource Manager でのテンプレート
 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)は、Azure Data Factory でテンプレートを実現するための優れた方法です。 Resource Manager テンプレートでは、JSON ファイルを使用して Azure ソリューションのインフラストラクチャと構成を定義します。 Azure Resource Manager テンプレートはほぼすべての Azure サービスと連携するため、広範に使用して Azure アセットのあらゆるリソースを簡単に管理できます。 Resource Manager テンプレート全般については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
@@ -228,12 +228,12 @@ dataFactoryName は以下のように "変数" で定義します。
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Data Factory テンプレートのパラメーター化
-パラメーター化のベスト プラクティスについては、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/resource-manager-template-best-practices.md)」を参照してください。 通常は、特に代わりに変数を使用できる場合には、パラメーターの使用を最小限にすることをお勧めします。 次のシナリオではパラメーターのみを指定します。
+パラメーター化のベスト プラクティスについては、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/templates/template-best-practices.md)」を参照してください。 通常は、特に代わりに変数を使用できる場合には、パラメーターの使用を最小限にすることをお勧めします。 次のシナリオではパラメーターのみを指定します。
 
 * 設定は環境によって異なります (例: 開発、テスト、運用)
 * シークレット情報 (パスワードなど)
 
-テンプレートを使用した Azure Data Factory エンティティのデプロイ時にシークレットを [Azure Key Vault](../../key-vault/general/overview.md) から取得する必要がある場合は、次の例で示されているように **Key Vault** と**シークレット名**を指定します。
+テンプレートを使用した Azure Data Factory エンティティのデプロイ時にシークレットを [Azure Key Vault](../../key-vault/general/overview.md) から取得する必要がある場合は、次の例で示されているように **Key Vault** と **シークレット名** を指定します。
 
 ```JSON
 "parameters": {

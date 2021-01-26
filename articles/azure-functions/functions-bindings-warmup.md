@@ -10,22 +10,25 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206582"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655860"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 
-この記事では、Azure Functions でウォームアップ トリガーを使用する方法について説明します。 ウォームアップ トリガーは、[Premium プラン](functions-premium-plan.md)で実行されている関数アプリでのみサポートされています。 実行中の関数アプリをスケーリングするためにインスタンスが追加されると、ウォームアップ トリガーが呼び出されます。 ウォームアップ トリガーを使用して[事前ウォームアップ プロセス](./functions-premium-plan.md#pre-warmed-instances)の間にカスタムの依存関係を事前に読み込むと、関数がすぐに要求の処理を開始できるようになります。 
+この記事では、Azure Functions でウォームアップ トリガーを使用する方法について説明します。 実行中の関数アプリをスケーリングするためにインスタンスが追加されると、ウォームアップ トリガーが呼び出されます。 ウォームアップ トリガーを使用して[事前ウォームアップ プロセス](./functions-premium-plan.md#pre-warmed-instances)の間にカスタムの依存関係を事前に読み込むと、関数がすぐに要求の処理を開始できるようになります。 
+
+> [!NOTE]
+> ウォームアップ トリガーは、従量課金プランで実行されている関数アプリではサポートされていません。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
-[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン **3.0.5 以降**が必要です。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。 
+[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン **3.0.5 以降** が必要です。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -97,10 +100,8 @@ namespace WarmupSample
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
 
-`HttpRequest` にバインドする C# スクリプト コードを次に示します。
-
 ```cs
-public static void Run(ILogger log)
+public static void Run(WarmupContext warmupContext, ILogger log)
 {
     log.LogInformation("Function App instance is warm 🌞🌞🌞");  
 }

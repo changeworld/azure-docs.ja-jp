@@ -10,12 +10,12 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266036"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014392"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 
@@ -69,7 +69,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 > 
 > 
 
-ロケーターの有効期限を更新するには、[REST](/rest/api/media/operations/locator#update_a_locator) API または [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
+ロケーターの有効期限を更新するには、[REST](/rest/api/media/operations/locator#update_a_locator) API または [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
 ロケーターは、ユーザーごとのアクセス制御を管理するためのものではありません。 デジタル著作権管理 (DRM) ソリューションを使用することで、個々のユーザーに異なるアクセス権限を付与できます。 詳細については、「 [メディアの保護](/previous-versions/azure/dn282272(v=azure.100))」をご覧ください。
 

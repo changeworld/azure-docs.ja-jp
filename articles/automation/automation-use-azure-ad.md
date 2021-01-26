@@ -4,12 +4,12 @@ description: この記事では、Azure Automation 内で Azure AD を Azure へ
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064389"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400674"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD を使用して Azure に対する認証を行う
 
@@ -21,7 +21,7 @@ ms.locfileid: "87064389"
 
 * Azure Active Directory PowerShell for Graph (AzureRM および Az モジュール)。 Azure Automation には、AzureRM モジュールとその最新のアップグレードである Az モジュールが付属しています。 Azure AD ユーザー (OrgId) の資格情報ベースの認証を使用した Azure への非対話型認証が機能に含まれています。 「[Azure AD 2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76)」を参照してください。
 
-* Microsoft Azure Active Directory for Windows PowerShell (MSOnline モジュール)。 このモジュールを使用すると、Office 365 を含む Microsoft Online との対話が可能になります。
+* Microsoft Azure Active Directory for Windows PowerShell (MSOnline モジュール)。 このモジュールを使用すると、Microsoft 365 を含む Microsoft Online との対話が可能になります。
 
 >[!NOTE]
 >PowerShell Core は、MSOnline モジュールをサポートしていません。 モジュール コマンドレットを使用するには、それらを Windows PowerShell から実行する必要があります。 MSOnline モジュールではなく、新しい Azure Active Directory PowerShell for Graph モジュールを使用することをお勧めします。 
@@ -46,7 +46,7 @@ ms.locfileid: "87064389"
 ### <a name="install-the-msonline-module"></a>MSOnline モジュールをインストールする
 
 >[!NOTE]
->MSOnline モジュールをインストールするには、Office 365 管理者ロールのメンバーである必要があります。 「[管理者ロールについて](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)」を参照してください。
+>MSOnline モジュールをインストールするには、管理者ロールのメンバーである必要があります。 「[管理者ロールについて](/microsoft-365/admin/add-users/about-admin-roles)」を参照してください。
 
 1. コンピューターで Microsoft .NET Framework 3.5.x 機能が有効であることを確認します。 コンピューターに新しいバージョンがインストールされている可能性がありますが、.NET Framework の以前のバージョンとの下位互換性を有効または無効にすることができます。 
 

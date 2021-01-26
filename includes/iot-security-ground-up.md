@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050302"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557724"
 ---
 モノのインターネット (IoT) は、世界各地の企業に固有のセキュリティ、プライバシー、およびコンプライアンスの課題をもたらします。 ソフトウェアとその実装方法に関する問題が発生した場合、従来のサイバー テクノロジとは異なり、IoT ではサイバーおよび物理世界が融合すると何が起こるかが懸念されます。 IoT ソリューションを保護するには、デバイスの安全なプロビジョニング、デバイスとクラウド間の安全な接続、処理中および保管中のクラウドでの安全なデータ保護を確実に行う必要があります。 ただし、そのような機能には、リソースが限られたデバイス、デプロイの地理的分散、およびソリューション内の多数のデバイスという問題が伴います。
 
@@ -37,13 +37,13 @@ ms.locfileid: "86050302"
 
 ## <a name="microsoft-azure---secure-iot-infrastructure-for-your-business"></a>Microsoft Azure - 企業の IoT インフラストラクチャのセキュリティ保護
 
-Microsoft Azure は完全なクラウド ソリューションを提供します。このソリューションは、分析、機械学習、ストレージ、セキュリティ、ネットワーク、Web などを統合した、常に成長しているクラウド サービスのコレクションを、データの保護とプライバシーに関する業界最高水準のコミットメントと組み合わせたものです。 Microsoft の[侵害想定](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)戦略では、攻撃をシミュレートし、新たな脅威を検出し、その脅威から保護して侵害から回復するための Azure の機能をテストするソフトウェア セキュリティ エキスパートの専属の "*レッド チーム*" を使用します。 Microsoft の[グローバル インシデント対応](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)チームは、攻撃や悪意のある活動の影響を軽減するために、常に対応できる状態を保っています。 このチームは、インシデント管理、通信、回復の確立された手順に従い、検出可能で予測可能なインターフェイスを使用して内外のパートナーと連絡を取ります。
+Microsoft Azure は完全なクラウド ソリューションを提供します。このソリューションは、分析、機械学習、ストレージ、セキュリティ、ネットワーク、Web などを統合した、常に成長しているクラウド サービスのコレクションを、データの保護とプライバシーに関する業界最高水準のコミットメントと組み合わせたものです。 Microsoft の [侵害想定](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)戦略では、攻撃をシミュレートし、新たな脅威を検出し、その脅威から保護して侵害から回復するための Azure の機能をテストするソフトウェア セキュリティ エキスパートの専属の "*レッド チーム*" を使用します。 Microsoft の[グローバル インシデント対応](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)チームは、攻撃や悪意のある活動の影響を軽減するために、常に対応できる状態を保っています。 このチームは、インシデント管理、通信、回復の確立された手順に従い、検出可能で予測可能なインターフェイスを使用して内外のパートナーと連絡を取ります。
 
-Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入の検出と予防、サービス拒否攻撃の予防、定期的な侵入テスト、および科学捜査ツールが継続的に提供されます。 [多要素認証](../articles/active-directory/authentication/multi-factor-authentication.md) では、ネットワークにアクセスするエンドユーザーのために追加のセキュリティ レイヤーを提供します。 また、アプリケーションとホスト プロバイダーのために、アクセス制御、監視、マルウェア対策、脆弱性スキャン、修正プログラム、および構成管理を提供します。
+Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入の検出と予防、サービス拒否攻撃の予防、定期的な侵入テスト、および科学捜査ツールが継続的に提供されます。 [多要素認証](../articles/active-directory/authentication/concept-mfa-howitworks.md) では、ネットワークにアクセスするエンドユーザーのために追加のセキュリティ レイヤーを提供します。 また、アプリケーションとホスト プロバイダーのために、アクセス制御、監視、マルウェア対策、脆弱性スキャン、修正プログラム、および構成管理を提供します。
 
 ソリューションアクセラレータは、SDLや OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。
 
-[IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+[IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/classic/index.yml) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT ソリューションアクセラレータに組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、この記事では Suite を 3 つの主なセキュリティ領域に分割しています。
 
@@ -89,7 +89,7 @@ Azure IoT ソリューションアクセラレータでは、ユーザーの認�
 
 データをクラウドに配置すれば、ユーザー定義のワークフローでの処理と格納が可能になります。 データの各部分へのアクセスは、使用するストレージ サービスに応じて、Azure Active Directory で制御されます。
 
-IoT インフラストラクチャで使用されるすべてのキーはクラウド内のセキュリティで保護されたストレージに格納されるため、キーの再プロビジョニングが必要な場合はロール オーバーすることができます。 データは、必要なセキュリティ レベルの定義を有効にして、[Azure Cosmos DB](../articles/cosmos-db/introduction.md) または [SQL Database](../articles/sql-database/sql-database-faq.md) に格納できます。 さらに、Azure では、侵入や不正アクセスを知らせるためにデータへのすべてのアクセスを監視し、監査する方法が提供されます。
+IoT インフラストラクチャで使用されるすべてのキーはクラウド内のセキュリティで保護されたストレージに格納されるため、キーの再プロビジョニングが必要な場合はロール オーバーすることができます。 データは、必要なセキュリティ レベルの定義を有効にして、[Azure Cosmos DB](../articles/cosmos-db/introduction.md) または [SQL Database](../articles/azure-sql/database/sql-database-paas-overview.md) に格納できます。 さらに、Azure では、侵入や不正アクセスを知らせるためにデータへのすべてのアクセスを監視し、監査する方法が提供されます。
 
 ## <a name="conclusion"></a>まとめ
 

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082277"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628696"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
-このドキュメントは、**ScaleR** ロジスティック回帰モデルを使用して、フライト到着遅延の予測方法を示しています。 例では **SparkR** を使用してフライト遅延や気象データを組合せて使用しています。
+このドキュメントは、 **ScaleR** ロジスティック回帰モデルを使用して、フライト到着遅延の予測方法を示しています。 例では **SparkR** を使用してフライト遅延や気象データを組合せて使用しています。
 
 どちらのパッケージも Apache Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 ML Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "86082277"
 
 これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する ML Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。
 
-本ドキュメントの以降の説明は、R と ML Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象にしています。 このシナリオを説明する過程で、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も紹介します。
+本ドキュメントの以降の説明は、R と ML Server の [ScaleR](/machine-learning-server/r/concept-what-is-revoscaler) ライブラリについて、ある程度理解している読者を対象にしています。 このシナリオを説明する過程で、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も紹介します。
 
 ## <a name="the-airline-and-weather-datasets"></a>航空データセットと気象データセット
 
@@ -218,7 +218,7 @@ weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv
 
 ## <a name="data-cleansing-and-transformation"></a>データのクレンジングと変換
 
-次に、インポートした航空データに対してクリーンアップ処理を実行して列の名前を変更し、 必要な変数のみを確保したうえで、スケジュールされた出発時刻を時 (hour) 単位に丸めて、出発時の最新の気象データとマージできる状態にします。
+次に、インポートした航空データに対していくつかのクリーンアップを実行して列の名前を変更します。 必要な変数のみを確保したうえで、スケジュールされた出発時刻を時 (hour) 単位に丸めて、出発時の最新の気象データとマージできる状態にします。
 
 ```
 logmsg('clean the airline data') 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>外部でのスコア付け
 
-データのスコア付けのモデルは、別のプラットフォームに移して使うこともできます。 その場合は、モデルを RDS ファイルに保存し、それを移行先のスコア付け環境 (MIcrosoft SQL Server R Services など) に転送してインポートします。 スコア付けの対象となるデータのファクター レベルを、モデルが構築された環境と確実に合わせることが重要です。 この要件は、モデリング データに関連付けられている列情報を ScaleR の `rxCreateColInfo()` 関数で抽出して保存し、その列情報を予測の入力データ ソースに適用することで満たすことができます。 次のコードでは、テスト データセットからいくつかの行を保存し、そのサンプルから列情報を抽出して予測スクリプトに使用しています。
+データのスコア付けのモデルは、別のプラットフォームに移して使うこともできます。 その場合は、モデルを RDS ファイルに保存し、それを移行先のスコア付け環境 (Microsoft SQL Server R Services など) に転送してインポートします。 スコア付けの対象となるデータのファクター レベルを、モデルが構築された環境と確実に合わせることが重要です。 この要件は、モデリング データに関連付けられている列情報を ScaleR の `rxCreateColInfo()` 関数で抽出して保存し、その列情報を予測の入力データ ソースに適用することで満たすことができます。 次のコードの例では、テスト データセットからいくつかの行を保存し、そのサンプルから列情報を抽出して予測スクリプトに使用しています。
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +535,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="next-steps-and-more-information"></a>次のステップと詳細情報
 
-- Apache Spark での ML Server の使用について詳しくは、[概要のガイダンス](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)を参照してください。
+- Apache Spark での ML Server の使用について詳しくは、[概要のガイダンス](/machine-learning-server/r/how-to-revoscaler-spark)を参照してください。
 
 - HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)に関するページをご覧ください。
 
@@ -543,4 +543,4 @@ SparkR の使い方について詳しくは、次のドキュメントをご覧�
 
 - [Apache SparkR のドキュメント](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
-- [SparkR の概要](https://docs.databricks.com/spark/latest/sparkr/overview.html) (Databricks のサイト)。
+- [SparkR の概要](/azure/databricks/spark/latest/sparkr/overview)

@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォームでの iOS と macOS のクイック スタート | Azure
-description: iOS または macOS アプリケーションでユーザーのサインインを行い、Microsoft Graph に対してクエリを実行する方法を説明します。
+title: 'クイックスタート: iOS または macOS アプリに "Microsoft アカウントでサインイン" を追加する | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、iOS または macOS アプリでのユーザーのサインイン、Microsoft ID プラットフォームからのアクセス トークンの取得、および Microsoft Graph API の呼び出しを行う方法について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,26 +13,29 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 2fbff2abeb454fe02aa4bd50615033b9a0b7f27b
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115256"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178604"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
-このクイック スタートには、ネイティブの iOS または macOS アプリケーションで Microsoft ID プラットフォームを使用して個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、および Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
+このクイックスタートでは、ネイティブの iOS または macOS アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。
 
-このクイック スタートは、iOS アプリと macOS アプリの両方に適用されます。 一部の手順は、iOS アプリにのみ必要です。 それらの手順では、iOS のみが対象であることが示されています。
+このクイックスタートは、iOS アプリと macOS アプリの両方に適用されます。 一部の手順は iOS アプリにのみ必要であり、そのように示されます。
+
+## <a name="prerequisites"></a>前提条件
+
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* XCode 10 以降
+* iOS 10 以降
+* macOS 10.12 以降
+
+## <a name="how-the-sample-works"></a>このサンプルのしくみ
 
 ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro.svg)
-
-> [!NOTE]
-> **前提条件**
-> * XCode 10 以降
-> * iOS 10 以降
-> * macOS 10.12 以降
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -42,7 +46,7 @@ ms.locfileid: "88115256"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリを登録するには、
-> 1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) ウィンドウに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -51,16 +55,17 @@ ms.locfileid: "88115256"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
-> 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://aka.ms/MobileAppReg) ページに移動します。
-> 1. **[新規登録]** を選択します。
-> 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
->      - **[名前]** セクションに、アプリのユーザーがアプリにサインインまたは同意したときにユーザーに表示されるわかりやすいアプリケーション名を入力します。
->      - このページの他の設定はスキップします。
->      - [`Register`] を選択します。
-> 1. **[管理]** セクションで、[`Authentication`] > [`Add Platform`] > [`iOS`] を選択します。
->      - アプリケーションの***バンドル ID*** を入力します。 バンドル ID は、アプリケーションを一意に識別する一意の文字列 (例: `com.<yourname>.identitysample.MSALMacOS`) にすぎません。 使用する値を書き留めておきます。
->      - iOS の構成は macOS アプリケーションにも適用できることに注意してください。
-> 1. `Configure` を選択し、このクイック スタートでの後の手順のために "***MSAL 構成***" の詳細を保存しておきます。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+> 1. **Azure Active Directory** を検索して選択します。    
+> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+> 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+> 1. **[登録]** を選択します。
+> 1. **[管理]** で、 **[認証]**  >  **[プラットフォームの追加]**  >  **[iOS]** の順に選択します。
+> 1. アプリケーションの **バンドル ID** を入力します。 バンドル識別子は、アプリケーションを一意に識別する一意の文字列です (例: `com.<yourname>.identitysample.MSALMacOS`)。 使用する値を書き留めておきます。 iOS の構成は macOS アプリケーションにも適用できることに注意してください。
+> 1. **[構成]** を選択し、このクイックスタートでの後の手順のために **MSAL 構成** の詳細を保存しておきます。
+> 1. **[完了]** を選択します。
+
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
@@ -70,16 +75,16 @@ ms.locfileid: "88115256"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-ios/green-check.png) アプリケーションはこれらの属性で構成されています
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>手順 2:サンプル プロジェクトのダウンロード
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [iOS 用のコード サンプルをダウンロードする]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [macOS 用のコード サンプルをダウンロードする]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>手順 2:サンプル プロジェクトのダウンロード
-> 
+>
 > - [iOS 用のコード サンプルをダウンロードする](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [macOS 用のコード サンプルをダウンロードする](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -111,9 +116,9 @@ ms.locfileid: "88115256"
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
-> 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した**バンドル ID** を入力します。
+> 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した **バンドル ID** を入力します。
 > 1. **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
-> 1. dict ルート ノードの下の `Enter_the_bundle_Id_Here` を、ポータルで使用した "***バンドル ID***" に置き換えます。
+> 1. dict ルート ノードの下の `Enter_the_bundle_Id_Here` を、ポータルで使用した "**_バンドル ID_* _" に置き換えます。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -175,8 +180,8 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |各値の説明: | 説明 |
 > |---------|---------|
-> | `clientId` | *portal.azure.com* に登録されているアプリケーションの Application ID |
-> | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合は *https<span/>://login.microsoftonline.com/common* |
+> | `clientId` | _portal.azure.com* に登録されているアプリケーションの Application ID |
+> | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合、これは `https://login.microsoftonline.com/common` になります |
 > | `redirectUri` | アプリケーションのリダイレクト URI。 'nil' を渡すと、既定値またはカスタムのリダイレクト URI を使用できます。 |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>iOS のみ: アプリの追加要件
@@ -209,7 +214,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最後に、アプリでは、`LSApplicationQueriesSchemes` エントリが ***Info.plist*** に `CFBundleURLTypes` と並んで存在している必要があります。 サンプルにはこれが含まれています。
+最後に、アプリでは、`LSApplicationQueriesSchemes` エントリが ***Info.plist** _ に `CFBundleURLTypes` と並んで存在している必要があります。 サンプルにはこれが含まれています。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -227,7 +232,7 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `acquire
 
 状況によっては、ユーザーが Microsoft ID プラットフォームと対話する必要があります。 このような場合、エンド ユーザーは自分のアカウントを選択する、自分の資格情報を入力する、またはアプリのアクセス許可に同意することを要求される可能性があります。 たとえば、次のように入力します。
 
-* ユーザーが初めてアプリケーションにサインインした場合
+ユーザーがアプリケーションに初めてサインインした場合
 * ユーザーが自分のパスワードをリセットした場合、ユーザーは自分の資格情報を入力する必要がある
 * アプリケーションがリソースへのアクセスを初めて要求している場合
 * MFA またはその他の条件付きアクセス ポリシーが必要な場合
@@ -262,13 +267,11 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > | `scopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]`) (`api://<Application ID>/access_as_user`) |
 > | `account` | トークンが要求されているアカウント。 このクイックスタートでは、単一アカウントのアプリケーションを取り扱います。 複数アカウントのアプリを構築する場合は、`accountsFromDeviceForParameters:completionBlock:` を使用し、正しい `accountIdentifier` を渡して、どのアカウントをトークン要求に使用するかを識別するためのロジックを定義する必要があります |
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-iOS および macOS のチュートリアルで、アプリケーションの構築についての完全なステップ バイ ステップ ガイドを試します。このクイック スタートの完全な説明も含まれています。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
+Microsoft ID プラットフォームからアクセス トークンを取得し、これを使用して Microsoft Graph API を呼び出す iOS または macOS アプリを作成するステップバイステップのチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [iOS と macOS での Graph API 呼び出しのチュートリアル](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [チュートリアル: iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す](tutorial-v2-ios.md)

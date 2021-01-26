@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269694"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802577"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -28,7 +28,7 @@ ms.locfileid: "89269694"
 
 ## <a name="overview"></a>概要
 
-**Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](media-services-analytics-overview.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
+**Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](./legacy-components.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
 
 **Azure Media Redactor** の詳細については、[顔編集の概要](media-services-face-redaction.md)に関するトピックを参照してください。
 
@@ -38,7 +38,7 @@ ms.locfileid: "89269694"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure Media Services Explorer のワークフロー
 
-Redactor の使用を開始する最も簡単な方法は、GitHub のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合**モードによる簡略化されたワークフローを実行できます。
+Redactor の使用を開始する最も簡単な方法は、GitHub のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合** モードによる簡略化されたワークフローを実行できます。
 
 ### <a name="download-and-setup"></a>ダウンロードとセットアップ
 
@@ -47,7 +47,7 @@ Redactor の使用を開始する最も簡単な方法は、GitHub のオープ�
 
     アカウント名とキーの情報を取得するには、[Azure Portal](https://portal.azure.com/) に移動して AMS アカウントを選択します。 [設定]、[キー] の順にクリックします。 [キーの管理] ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。 アカウント名とプライマリ キーの値をコピーします。
 
-![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![スクリーンショットは、アカウント名とキーを入力できる Microsoft Azure Media Services を示しています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>最初のパス – 分析モード
 
@@ -55,32 +55,32 @@ Redactor の使用を開始する最も簡単な方法は、GitHub のオープ�
 1. マウスを右クリックし、[Media Analytics]、[Azure Media Redactor]、[分析モード] の順に選択して、メディア ファイルを処理します。 
 
 
-![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![スクリーンショットに、Azure Media Redactor を持つプロセス資産があるメニューが示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![スクリーンショットに Azure Media Redactor が示され、最初のパスに分析モードが選択されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 顔の位置データを含む json ファイルと、検出された顔の jpg が出力されます。 
 
-![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![スクリーンショットは、分析の出力を示しています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>2 回目のパス – 編集モード
 
 1. 元のビデオ資産を最初のパスからの出力にアップロードし、プライマリ資産として設定します。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![スクリーンショットに、アップロード ボタンとプライマリとして設定ボタンが示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. (省略可能) 修正する ID の改行区切りリストを含む "Dance_idlist.txt" ファイルをアップロードします。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![スクリーンショットは、テキスト ファイルをアップロードするオプションが示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. (省略可能) annotations.json ファイルを編集します (境界ボックスの境界を広げるなど)。 
-4. 最初のパスからの出力資産を右クリックし、[Redactor] を選択し、**修正**モードで実行します。 
+4. 最初のパスからの出力資産を右クリックし、[Redactor] を選択し、**修正** モードで実行します。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![スクリーンショットに Azure Media Redactor が示され、2 番目のパスに編集モードが選択されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. 修正後の最終出力資産をダウンロードまたは共有します。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![スクリーンショットに、[ダウンロード] ボタンが示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer オープン ソース ツール
 
@@ -94,12 +94,12 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 
 1.  ソリューション全体をダウンロードし、ビルドします。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![スクリーンショットは、メニューから選択されたビルド ソリューションを示しています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  FFMPEG を[こちら](https://ffmpeg.org/download.html)からダウンロードします。 このプロジェクトは、もともと、バージョン be1d324 (2016-10-04) で開発され、静的リンクが設定されていました。 
 3.  ffmpeg.exe と ffprobe.exe を、AzureMediaRedactor.exe と同じ出力フォルダーにコピーします。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![スクリーンショットに、ffmpeg や ffmpeg を含むフォルダーの内容が示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. AzureMediaRedactor.exe を実行します。 
 
@@ -109,11 +109,11 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 2. 元のビデオ ファイルと Redaction による分析ジョブの出力の両方をダウンロードします。 
 3. ビジュアライザー アプリケーションを実行し、上記のファイルを選択します。 
 
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![スクリーンショットに、Azure Media Redactor のアップロード中ファイルが示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. ファイルをプレビューします。 右側のサイドバーを使用して、ぼかしたい顔を選択します。 
     
-    ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![スクリーンショットに、ぼかしの対象となる顔をプレビューおよび選択できる Azure Media Redactor が示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  下部にあるテキスト フィールドには、顔の ID が表示されます。 これらの ID を 改行区切りリストとして含む "idlist.txt" という名前のファイルを作成します。 
 
@@ -131,8 +131,8 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>関連リンク
-[Azure Media Services Analytics の概要](media-services-analytics-overview.md)
+[Azure Media Services Analytics の概要](./legacy-components.md)
 
-[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [Azure Media Analytics の顔編集の発表](https://azure.microsoft.com/blog/azure-media-redactor/)

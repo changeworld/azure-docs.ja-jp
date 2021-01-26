@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337961"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148818"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87337961"
 
 ## <a name="what-you-need"></a>必要なもの
 
-[ファースト ステップ ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)に従って以下のことを行います。
+[ファースト ステップ ガイド](./iot-hub-arduino-iot-devkit-az3166-get-started.md)に従って以下のことを行います。
 
 * DevKit をWi-Fi に接続
 * 開発環境の準備
@@ -133,6 +133,6 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続して、センサー データを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
-* [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT ソリューション アクセラレータの概要](/azure/iot-suite/)
 
-* [IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/) 
+* [IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/)

@@ -8,16 +8,16 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89294256"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search インデクサーから SQL マネージド インスタンスへの接続を構成する
 
-[インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)に関するページに示されているように、**SQL マネージド インスタンス**に対するインデクサーの作成は、Azure Cognitive Search によってパブリック エンドポイント経由でサポートされています。
+[インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)に関するページに示されているように、**SQL マネージド インスタンス** に対するインデクサーの作成は、Azure Cognitive Search によってパブリック エンドポイント経由でサポートされています。
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>パブリック エンドポイントを使用して Azure SQL Managed Instance を作成する
 **[パブリック エンドポイントの有効化]** オプションが選択された状態で SQL マネージド インスタンスを作成します。
@@ -27,10 +27,10 @@ ms.locfileid: "88922890"
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL Managed Instance のパブリック エンドポイントを有効にする
 **[セキュリティ]**  >  **[仮想ネットワーク]**  >  **[パブリック エンドポイント]**  >  **[有効化]** によって、既存の SQL マネージド インスタンスでパブリック エンドポイントを有効にすることもできます。
 
-   ![パブリック エンドポイントを有効にする](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "パブリック エンドポイントの有効化")
+   ![マネージド インスタンス VNET を使用してパブリック エンドポイントを有効にする](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "パブリック エンドポイントの有効化")
 
 ## <a name="verify-nsg-rules"></a>NSG 規則を確認する
-ネットワーク セキュリティ グループに、Azure サービスからの接続を許可する正しい**受信セキュリティ規則**が設定されていることを確認します。
+ネットワーク セキュリティ グループに、Azure サービスからの接続を許可する正しい **受信セキュリティ規則** が設定されていることを確認します。
 
    ![NSG インバウンド セキュリティ規則](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG インバウンド セキュリティ規則")
 
@@ -45,7 +45,7 @@ ms.locfileid: "88922890"
 > これらの 2 つの規則それぞれについて、"PORT" = `3342`、"PROTOCOL" = `TCP`、"DESTINATION" = `Any`、"ACTION" = `Allow` と設定します
 
 ## <a name="get-public-endpoint-connection-string"></a>パブリック エンドポイントの接続文字列を取得する
-**パブリック エンドポイント**の接続文字列 (ポート 1433 ではなく、ポート 3342) を使用していることを確認します。
+**パブリック エンドポイント** の接続文字列 (ポート 1433 ではなく、ポート 3342) を使用していることを確認します。
 
    ![パブリック エンドポイントの接続文字列](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "パブリック エンドポイントの接続文字列")
 

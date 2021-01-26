@@ -1,6 +1,6 @@
 ---
 title: Azure AD アプリケーション プロキシ コネクタを理解する | Microsoft Docs
-description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
+description: Azure AD アプリケーション プロキシ コネクタについて説明します。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764674"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591057"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -37,7 +37,7 @@ Windows Server 2012 R2 以降が実行されていて、アプリケーション
 アプリケーション プロキシ コネクタをインストールするには、Windows サーバーで TLS 1.2 が有効になっている必要があります。 サーバー上で TLS 1.2 を有効にするには、次の手順に従います。
 
 1. 次のレジストリ キーを設定します。
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -67,7 +67,7 @@ Windows Server 2012 R2 以降が実行されていて、アプリケーション
 
 Azure AD では、デプロイしたすべてのコネクタの自動更新を提供します。 アプリケーション プロキシ コネクタ アップデーター サービスを実行している限り、コネクタは自動更新されます。 サーバーにコネクタ アップデーター サービスが見つからない場合は、[コネクタを再インストール](application-proxy-add-on-premises-application.md)して更新プログラムを取得する必要があります。
 
-お使いのコネクタの番まで自動更新を待てない場合は、手動アップグレードを実行できます。 コネクタが配置されたサーバーの[コネクタ ダウンロード ページ](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)に移動し、 **[ダウンロード]** を選択します。 このプロセスによって、ローカル コネクタのアップグレードが開始されます。
+お使いのコネクタの番まで自動更新を待てない場合は、手動アップグレードを実行できます。 コネクタが配置されたサーバーの [コネクタ ダウンロード ページ](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)に移動し、 **[ダウンロード]** を選択します。 このプロセスによって、ローカル コネクタのアップグレードが開始されます。
 
 複数のコネクタを持つテナントの場合、環境でのダウンタイムを避けるために、自動更新では各グループで一度に 1 つのコネクタが対象となります。
 
@@ -104,7 +104,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 > [!NOTE]
 > 4、8、および 16 コアのマシンの間で、最大 TPS に大きな違いはありません。 これらのマシンで主に違うのは、予想される待機時間です。
 >
-> この表はまた、インストールされているコンピューターの種類に基づいたコネクタの予測されるパフォーマンスに焦点を絞っています。 これは、アプリケーション プロキシ サービスの調整制限とは別です。[サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)に関するページを参照してください。
+> この表はまた、インストールされているコンピューターの種類に基づいたコネクタの予測されるパフォーマンスに焦点を絞っています。 これは、アプリケーション プロキシ サービスの調整制限とは別です。[サービスの制限と制約](../enterprise-users/directory-service-limits-restrictions.md)に関するページを参照してください。
 
 ## <a name="security-and-networking"></a>セキュリティとネットワーク
 
@@ -155,14 +155,17 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 証明書の更新に初めて成功した後、Azure AD アプリケーション プロキシ コネクタ サービス (ネットワーク サービス) には、ローカル コンピューター ストアから古い証明書を削除するアクセス許可がありません。 証明書の有効期限が切れている場合、またはサービスによって使用されなくなった場合は、証明書を安全に削除することができます。
 
-証明書の更新に関する問題を回避するには、コネクタから[ドキュメントに記載されている送信先](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)までのネットワーク通信が有効になっていることを確認します。
+証明書の更新に関する問題を回避するには、コネクタから[ドキュメントに記載されている送信先](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)までのネットワーク通信が有効になっていることを確認します。
 
 コネクタが数か月間サービスに接続していないと、証明書の有効期限が切れることがあります。 このような場合は、コネクタをアンインストールしてから再インストールして、登録をトリガーします。 次の PowerShell コマンドを実行できます。
 
 ```
 Import-module AppProxyPSModule
-Register-AppProxyConnector
+Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ```
+
+政府機関の場合は、`-EnvironmentName "AzureUSGovernment"` を使用します。 詳細については、「[Azure Government クラウド用にエージェントをインストールする](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)」を参照してください。
+
 証明書の検証と問題のトラブルシューティングの方法について詳しくは、「[コンピューターとバックエンド コンポーネントでアプリケーション プロキシ信頼証明書がサポートされていることを確認する](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)」を参照してください。
 
 ## <a name="under-the-hood"></a>しくみ
@@ -175,9 +178,9 @@ Windows パフォーマンス カウンターなど、同じ管理ツールの�
 
 ![パフォーマンス モニターを使用したコネクタへのカウンターの追加](./media/application-proxy-connectors/performance-monitor.png)
 
-コネクタには**管理者**ログと**セッション** ログがあります。 **管理者**ログには主要なイベントとそのエラーが含まれます。 **セッション** ログには、すべてのトランザクションとその処理の詳細が含まれます。
+コネクタには **管理者** ログと **セッション** ログがあります。 **管理者** ログには主要なイベントとそのエラーが含まれます。 **セッション** ログには、すべてのトランザクションとその処理の詳細が含まれます。
 
-ログを表示するには、**イベント ビューアー**を開き、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AadApplicationProxy]**  >  **[コネクタ]** の順に移動します。 **セッション** ログを表示するには、 **[表示]** メニューの **[分析およびデバッグ ログの表示]** を選択します。 通常、**セッション** ログはトラブルシューティングに使用され、既定では無効になっています。 イベントの収集を開始するときに有効にし、その後、不要になったら無効にしてください。
+ログを表示するには、**イベント ビューアー** を開き、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AadApplicationProxy]**  >  **[コネクタ]** の順に移動します。 **セッション** ログを表示するには、 **[表示]** メニューの **[分析およびデバッグ ログの表示]** を選択します。 通常、**セッション** ログはトラブルシューティングに使用され、既定では無効になっています。 イベントの収集を開始するときに有効にし、その後、不要になったら無効にしてください。
 
 [サービス] ウィンドウでサービスの状態を確認することができます。 コネクタは、実際のコネクタとアップデーターという、2 つの Windows サービスで構成されています。 この両方を常に実行する必要があります。
 

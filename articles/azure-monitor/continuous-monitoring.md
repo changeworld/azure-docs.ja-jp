@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1892afde42ccbcf1c28b7d6a757875772ee3ac5d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318132"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905606"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -28,7 +28,7 @@ ms.locfileid: "87318132"
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 - [お客様の DevOps リリース パイプラインに継続的監視](./app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
 - [Status Monitor](./app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](./learn/quick-monitor-portal.md) 向け、[Java](./app/java-get-started.md) 向け、[Node.js](./learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](./app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](./app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](./app/asp-net.md) 向け、[.NET Core](./app/asp-net-core.md) 向け、[Java](./app/java-get-started.md) 向け、[Node.js](./learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](./app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](./app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 
@@ -43,7 +43,7 @@ ms.locfileid: "87318132"
 
 [Infrastructure as Code](/azure/devops/learn/what-is-infrastructure-as-code) は、DevOps チームがソース コードに使用するのと同じバージョン管理を使用し、記述的モデルでインフラストラクチャを管理するものです。 これにより、お客様の環境の信頼性とスケーラビリティが高まり、お客様のアプリケーションの管理に使用されるものと同様のプロセスを利用できるようになります。
 
--  多数のリソースに対して監視を有効にし、アラートを構成するには、[Resource Manager テンプレート](platform/template-workspace-configuration.md)を使用します。
+-  多数のリソースに対して監視を有効にし、アラートを構成するには、[Resource Manager テンプレート](./samples/resource-manager-workspace.md)を使用します。
 - お客様のリソースに対してさまざまなルールを強制するには、[Azure Policy](../governance/policy/overview.md) を使用します。 これにより、それらのリソースがお客様の会社の標準やサービス レベル アグリーメントに準拠している状態が確保されます。 
 
 
@@ -87,4 +87,3 @@ ms.locfileid: "87318132"
 
 - [Azure Monitor](overview.md) のさまざまなコンポーネントについて確認する。
 - お客様のリリース パイプラインに[継続的監視を追加](./app/continuous-monitoring.md)する。
-

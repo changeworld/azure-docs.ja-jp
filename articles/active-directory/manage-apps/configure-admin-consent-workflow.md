@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997496"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>管理者の同意ワークフローの構成 (プレビュー)
 
@@ -62,11 +62,11 @@ ms.locfileid: "84763620"
 
 2. **[承認が必要です]** というメッセージが表示されます。 ユーザーは、アプリへのアクセスが必要である理由を入力し、 **[承認要求]** を選択します。
 
-   ![管理者の同意に関するユーザーの要求と理由](media/configure-admin-consent-workflow/end-user-justification.png)
+   ![スクリーンショットには、承認を要求できる [承認が必要です] ダイアログ ボックスが示されています。](media/configure-admin-consent-workflow/end-user-justification.png)
 
 3. **[リクエストが送信されました]** というメッセージで、要求が管理者に送信されたことを確認します。ユーザーが複数の要求を送信した場合は、最初の要求のみが管理者に送信されます。
 
-   ![管理者の同意に関するユーザーの要求と理由](media/configure-admin-consent-workflow/end-user-sent-request.png)
+   ![スクリーンショットには、[リクエストが送信されました] の確認が表示されています。](media/configure-admin-consent-workflow/end-user-sent-request.png)
 
  4. 要求が承認、拒否、またはブロックされると、ユーザーにメール通知が届きます。 
 
@@ -147,7 +147,7 @@ ms.locfileid: "84763620"
 
 **レビュー担当者が、アプリケーションの承認を一部のユーザーのみに限定することはできますか。**
  
-管理者の同意を付与してテナント内のすべてのユーザーにアプリケーションの使用を許可することに懸念がある場合は、要求を拒否することをお勧めします。 そのうえで、管理者の同意を手動で付与します。これを行うには、ユーザー割り当てを要求することでアプリケーションへのアクセスを制限し、次にアプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
+管理者の同意を付与してテナント内のすべてのユーザーにアプリケーションの使用を許可することに懸念がある場合は、要求を拒否することをお勧めします。 そのうえで、管理者の同意を手動で付与します。これを行うには、ユーザー割り当てを要求することでアプリケーションへのアクセスを制限し、次にアプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -157,6 +157,6 @@ ms.locfileid: "84763620"
 
 [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
 
-[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/25/2020
+ms.date: 09/10/2020
 ms.author: victorh
-ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 69890e2d846a63a70c1b7459b1df13ce5e891289
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827224"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659473"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 
@@ -73,6 +73,49 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
    ```
 
+* **DNS プロキシ ログ**
+
+   DNS プロキシ ログは、Azure Firewall ごとに有効にしている場合にのみ、ストレージ アカウントに保存され、イベント ハブにストリーム配信されて、Azure Monitor ログに送信されます。 このログは、DNS プロキシを使用して構成された DNS サーバーへの DNS メッセージを追跡します。 次の例に示すように、データは JSON 形式でログに記録されます。
+
+
+   ```
+   Category: DNS proxy logs.
+   Time: log timestamp.
+   Properties: currently contains the full message.
+   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
+   ```
+
+   成功: 
+   ```json
+   {
+     "category": "AzureFirewallDnsProxy",
+     "time": "2020-09-02T19:12:33.751Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallDnsProxyLog",
+     "properties": {
+         "msg": "DNS Request: 11.5.0.7:48197 – 15676 AAA IN md-l1l1pg5lcmkq.blob.core.windows.net. udp 55 false 512 NOERROR - 0 2.000301956s"
+     }
+   }
+   ```
+
+   ［失敗］:
+
+   ```json
+   {
+     "category": "AzureFirewallDnsProxy",
+     "time": "2020-09-02T19:12:33.751Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallDnsProxyLog",
+     "properties": {
+         "msg": " Error: 2 time.windows.com.reddog.microsoft.com. A: read udp 10.0.1.5:49126->168.63.129.160:53: i/o timeout”
+     }
+   }
+   ```
+
+   メッセージの形式:
+
+   `[client’s IP address]:[client’s port] – [query ID] [type of the request] [class of the request] [name of the request] [protocol used] [request size in bytes] [EDNS0 DO (DNSSEC OK) bit set in the query] [EDNS0 buffer size advertised in the query] [response CODE] [response flags] [response size] [response duration]`
+
 ログを保存するための 3 つのオプションがあります。
 
 * **ストレージ アカウント**: ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
@@ -115,7 +158,7 @@ Azure Firewall では、次のメトリックを利用できます。
   - 状態:値は *[Healthy]* \(正常\)、 *[Degraded]* \(低下\)、 *[Unhealthy]* \(異常\) のいずれかになります。
   - 理由:ファイアウォールの対応する状態の理由を示します。 
 
-     SNAT ポートの使用率が 95% を超える場合、使い果たされたと見なされ、正常性は 50% で、状態 = **低下**および理由 = **SNAT ポート**になります。 ファイアウォールはトラフィックの処理を継続し、既存の接続に影響はありません。 ただし、新しい接続は断続的に確立されない可能性があります。
+     SNAT ポートの使用率が 95% を超える場合、使い果たされたと見なされ、正常性は 50% で、状態 = **低下** および理由 = **SNAT ポート** になります。 ファイアウォールはトラフィックの処理を継続し、既存の接続に影響はありません。 ただし、新しい接続は断続的に確立されない可能性があります。
 
      SNAT ポートの使用率が 95% 未満の場合、ファイアウォールは正常と見なされ、正常性は 100% として表示されます。
 
@@ -130,6 +173,6 @@ Azure Firewall では、次のメトリックを利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Firewall のログとメトリックを監視する方法については、[Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
+- Azure Firewall のログとメトリックを監視する方法については、[Azure Firewall のログを監視する方法に関するチュートリアル](./firewall-diagnostics.md)を参照してください。
 
 - Azure Monitor のメトリックの詳細については、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」を参照してください。

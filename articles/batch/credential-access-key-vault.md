@@ -2,18 +2,18 @@
 title: Batch で Key Vault に安全にアクセスする
 description: Azure Batch を使用して、プログラムで Key Vault の資格情報にアクセスする方法について説明します。
 ms.topic: how-to
-ms.date: 02/13/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6938d0fcd2357efcf03053b0c9b2bde3954270b7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079440"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350689"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch で Key Vault に安全にアクセスする
 
-この記事では、Azure Key Vault に格納されている資格情報に安全にアクセスできるように、Batch ノードを設定する方法について説明します。 管理者の資格情報を Key Vault に配置する一方で、スクリプトから Key Vault にアクセスするために資格情報をハードコーディングすることは無意味です。 これを解決するには、Key Vault へのアクセス権を Batch ノードに付与する証明書を使用します。 いくつかの手順を実行すると、Batch 用の安全なキー ストレージを実装できます。
+この記事では、[Azure Key Vault](../key-vault/general/overview.md) に格納されている資格情報に安全にアクセスできるように、Batch ノードを設定する方法について説明します。 管理者の資格情報を Key Vault に配置する一方で、スクリプトから Key Vault にアクセスするために資格情報をハードコーディングすることは無意味です。 これを解決するには、Key Vault へのアクセス権を Batch ノードに付与する証明書を使用します。
 
 Batch ノードから Azure Key Vault に対して認証を行うには、次のものが必要です。
 
@@ -46,12 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-Key Vault へのアクセス権は、**ユーザー**または**サービス プリンシパル**に付与されます。 プログラムによって Key Vault にアクセスするには、前の手順で作成した証明書と共にサービス プリンシパルを使用します。
-
-Azure サービス プリンシパルの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
-
-> [!NOTE]
-> サービス プリンシパルは、Key Vault と同じ Azure AD テナントに存在する必要があります。
+Key Vault へのアクセス権は、**ユーザー** または **サービス プリンシパル** に付与されます。 プログラムによって Key Vault にアクセスするには、前のステップで作成した証明書と共に[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用します。 サービス プリンシパルは、Key Vault と同じ Azure AD テナントに存在する必要があります。
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -72,7 +67,7 @@ $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplic
 
 ## <a name="grant-rights-to-key-vault"></a>Key Vault への権限を付与する
 
-前の手順で作成したサービス プリンシパルには、Key Vault からシークレットを取得するためのアクセス許可が必要です。 アクセス許可を付与するには、Azure portal を使用するか、次の PowerShell コマンドを使用します。
+前の手順で作成したサービス プリンシパルには、Key Vault からシークレットを取得するためのアクセス許可が必要です。 アクセス許可を付与するには、[Azure portal](../key-vault/general/assign-access-policy-portal.md) を使用するか、次の PowerShell コマンドを使用します。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -82,13 +77,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Batch プールを作成し、プールの [証明書] タブに移動して、作成した証明書を割り当てます。 これで、すべての Batch ノードに証明書が存在することになります。
 
-次に、証明書を Batch アカウントに割り当てる必要があります。 証明書をアカウントに割り当てると、その証明書をプールに割り当てることができ、次に各ノードに割り当てることができます。 最も簡単にこれを行うには、ポータルで Batch アカウントに移動し、 **[証明書]** に移動して、 **[追加]** を選択します。 「[証明書を取得する](#obtain-a-certificate)」で生成した `.pfx` ファイルをアップロードし、パスワードを指定します。 完了すると、証明書が一覧に追加され、拇印を確認できるようになります。
+次に、この証明書を Batch アカウントに割り当てます。 証明書をアカウントに割り当てると、Batch によってその証明書をプールに割り当て、次に各ノードに割り当てることができます。 最も簡単にこれを行うには、ポータルで Batch アカウントに移動し、 **[証明書]** に移動して、 **[追加]** を選択します。 先ほど生成した `.pfx` ファイルをアップロードし、パスワードを指定します。 完了すると、証明書が一覧に追加され、拇印を確認できるようになります。
 
 これで、Batch プールを作成する際に、プール内で **[証明書]** に移動し、作成した証明書をそのプールに割り当てることができます。 これを行う場合は、ストアの場所として **[LocalMachine]** を選択してください。 証明書が、プール内のすべての Batch ノードに読み込まれます。
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
 
-ノードで PowerShell スクリプトを使用して Key Vault にアクセスすることを計画している場合は、Azure PowerShell ライブラリをインストールしておく必要があります。 これを行うにはいくつかの方法があります。ノードに Windows Management Framework (WMF) 5 がインストールされている場合は、install-module コマンドを使用してダウンロードできます。 WMF 5 がインストールされていないノードを使用している場合、これをインストールする最も簡単な方法は、Azure PowerShell `.msi` ファイルをバッチ ファイルとひとまとめにし、バッチ起動スクリプトの最初の部分としてインストーラーを呼び出すことです。 詳細については、次の例を参照してください。
+ノードで PowerShell スクリプトを使用して Key Vault にアクセスすることを計画している場合は、Azure PowerShell ライブラリをインストールしておく必要があります。 ノードに Windows Management Framework (WMF) 5 がインストールされている場合は、install-module コマンドを使用してダウンロードできます。 WMF 5 がインストールされていないノードを使用している場合、これをインストールする最も簡単な方法は、Azure PowerShell `.msi` ファイルを Batch ファイルとひとまとめにし、バッチ起動スクリプトの最初の部分としてインストーラーを呼び出すことです。 詳細については、次の例を参照してください。
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -99,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Key Vault にアクセスします
 
-これで、Batch ノードで実行されるスクリプトで Key Vault にアクセスするための設定が完了しました。 スクリプトから Key Vault にアクセスするには、スクリプトで証明書を使用して Azure AD に対する認証を行うだけです。 PowerShell でこれを行うには、次のコマンド例を使用します。 **拇印**の適切な GUID、**アプリ ID** (サービス プリンシパルの ID)、**テナント ID** (サービス プリンシパルが存在するテナント) を指定します。
+これで、Batch ノードで実行されているスクリプトの Key Vault にアクセスできるようになりました。 スクリプトから Key Vault にアクセスするには、スクリプトで証明書を使用して Azure AD に対する認証を行うだけです。 PowerShell でこれを行うには、次のコマンド例を使用します。 **拇印** の適切な GUID、**アプリ ID** (サービス プリンシパルの ID)、**テナント ID** (サービス プリンシパルが存在するテナント) を指定します。
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
@@ -112,3 +107,9 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 ```
 
 これらはスクリプトで使用する資格情報です。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Key Vault](../key-vault/general/overview.md) の詳細はこちらです。
+- [Batch 用の Azure セキュリティ ベースライン](security-baseline.md)を確認します。
+- [計算ノードへのアクセスを構成する](pool-endpoint-configuration.md)、[Linux 計算ノードへのアクセスを構成する](batch-linux-nodes.md)、および[プライベート エンドポイントの使用](private-connectivity.md)に関する Batch 機能について参照します。

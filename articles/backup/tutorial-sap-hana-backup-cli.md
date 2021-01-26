@@ -1,15 +1,15 @@
 ---
-title: チュートリアル - CLI を使用した Azure での SAP HANA DB のバックアップ
+title: チュートリアル - Azure CLI を使用した Azure での SAP HANA DB のバックアップ
 description: このチュートリアルでは、Azure CLI を使用して、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007589"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746747"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースをバックアップする
 
@@ -26,9 +26,9 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 SAP HANA で[現在サポートされているシナリオ](./sap-hana-backup-support-matrix.md#scenario-support)を確認してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン xx.xxx.x 以降を使用する必要があります。 CLI のバージョンを調べるには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.30 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) コマンドレットを使用します。
+既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) コマンドレットを使用します。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -59,7 +59,7 @@ az backup vault backup-properties set \
     --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-コンテナーが正常に作成されたかどうかを確認するには、[az backup vault list](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list) コマンドレットを使用します。 次の応答が表示されます。
+コンテナーが正常に作成されたかどうかを確認するには、[az backup vault list](/cli/azure/backup/vault#az-backup-vault-list) コマンドレットを使用します。 次の応答が表示されます。
 
 ```output
 Location   Name             ResourceGroup
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 Azure サービスで SAP HANA インスタンス (SAP HANA がインストールされている VM) を検出するには、SAP HANA マシン上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行する必要があります。 スクリプトを実行する前に、[前提条件](./tutorial-backup-sap-hana-db.md#prerequisites)がすべて満たされていることを確認してください。 スクリプトで実行される処理の詳細については、「[事前登録スクリプトで実行される処理](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)」セクションをご参照ください。
 
-このスクリプトを実行すると、前に作成した Recovery Services コンテナーに SAP HANA インスタンスを登録できます。 インスタンスを登録するには、[az backup container register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) コマンドレットを使用します。 *VMResourceId* は、SAP HANA をインストールするために作成した VM のリソース ID です。
+このスクリプトを実行すると、前に作成した Recovery Services コンテナーに SAP HANA インスタンスを登録できます。 インスタンスを登録するには、[az backup container register](/cli/azure/backup/container#az-backup-container-register) コマンドレットを使用します。 *VMResourceId* は、SAP HANA をインストールするために作成した VM のリソース ID です。
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
@@ -87,7 +87,7 @@ az backup container register --resource-group saphanaResourceGroup \
 
 SAP HANA インスタンスを登録すると、現在のすべてのデータベースが自動的に検出されます。 ただし、今後追加される可能性のある新しいデータベースを検出するには、[登録済み SAP HANA インスタンスに追加された新しいデータベースの検出](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance)に関するセクションを参照してください。
 
-SAP HANA インスタンスがコンテナーに正常に登録されているかどうかを確認するには、[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) コマンドレットを使用します。 次の応答が表示されます。
+SAP HANA インスタンスがコンテナーに正常に登録されているかどうかを確認するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドレットを使用します。 次の応答が表示されます。
 
 ```output
 Name                                                    Friendly Name    Resource Group        Type           Registration Status
@@ -100,7 +100,7 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 
 ## <a name="enable-backup-on-sap-hana-database"></a>SAP HANA データベースでバックアップを有効にする
 
-[az backup protect-item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) コマンドレットを使うと、前の手順で登録した、SAP HANA インスタンスで検出されたすべてのデータベースが一覧表示されます。
+[az backup protect-item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) コマンドレットを使うと、前の手順で登録した、SAP HANA インスタンスで検出されたすべてのデータベースが一覧表示されます。
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -121,19 +121,19 @@ saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost   
 
 上記の出力からわかるように、SAP HANA システムの SID は HXE です。 このチュートリアルでは、*hxehost* サーバー上にある *saphanadatabase;hxe;hxe* データベースのバックアップを構成します。
 
-データベースでバックアップを保護および構成するには、[az backup protection enable-for-azurewl](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) コマンドレットを使用します。 使用するポリシーの名前を指定します。 CLI を使用してポリシーを作成するには、[az backup policy create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) コマンドレットを使用します。 このチュートリアルでは、*sapahanaPolicy* ポリシーを使用します。
+データベースでバックアップを保護および構成するには、[az backup protection enable-for-azurewl](/cli/azure/backup/protection#az-backup-protection-enable-for-azurewl) コマンドレットを使用します。 使用するポリシーの名前を指定します。 CLI を使用してポリシーを作成するには、[az backup policy create](/cli/azure/backup/policy#az-backup-policy-create) コマンドレットを使用します。 このチュートリアルでは、*sapahanaPolicy* ポリシーを使用します。
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --policy-name saphanaPolicy \
-    --protectable-item-name saphanadatabase;hxe;hxe  \
-    --protectable-item-type SAPHANADatabse \
+    --protectable-item-name "saphanadatabase;hxe;hxe"  \
+    --protectable-item-type SAPHANADatabase \
     --server-name hxehost \
     --workload-type SAPHANA \
     --output table
 ```
 
-上記のバックアップ構成が完了したかどうかを確認するには、[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) コマンドレットを使用します。 出力は次のように表示されます。
+上記のバックアップ構成が完了したかどうかを確認するには、[az backup job list](/cli/azure/backup/job#az-backup-job-list) コマンドレットを使用します。 出力は次のように表示されます。
 
 ```output
 Name                                  Operation         Status     Item Name   Start Time UTC
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) コマンドレットを実行すると、登録、バックアップの構成、バックアップ データの削除などの他の操作に加えて、保護されたデータベース上で実行されたか、現在実行中のすべてのバックアップ ジョブ (スケジュール済みまたはオンデマンド) が一覧表示されます。
+[az backup job list](/cli/azure/backup/job#az-backup-job-list) コマンドレットを実行すると、登録、バックアップの構成、バックアップ データの削除などの他の操作に加えて、保護されたデータベース上で実行されたか、現在実行中のすべてのバックアップ ジョブ (スケジュール済みまたはオンデマンド) が一覧表示されます。
 
 >[!NOTE]
 >Azure Backup では、Azure VM で実行されている SAP HANA データベースをバックアップしている場合、夏時間変更に合わせた自動調整は行われません。
@@ -173,7 +173,7 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
+応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
 
 >[!NOTE]
 >完全バックアップまたは差分バックアップをスケジュールするだけでなく、手動でトリガーすることもできます。 ログ バックアップは、内部的に SAP HANA によって自動的にトリガーおよび管理されます。

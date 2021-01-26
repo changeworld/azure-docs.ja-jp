@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507847"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198970"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -128,7 +129,7 @@ SAP HANA on Azure (L インスタンス) の場合、Azure で行われる時刻
 Azure 仮想ネットワークの設計と、それらの仮想ネットワークの HANA L インスタンスへの接続が、以下のドキュメントで説明されている推奨事項に従って行われていることが前提です。
 
 - [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](./hana-overview-architecture.md)
-- [SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)
 
 単一ユニットのネットワーキングに関して、触れておくべき注意点がいくつかあります。 どの HANA L インスタンス ユニットにも 2 ～ 3 個の IP アドレスが備わっており、それらのアドレスは 2 ～ 3 個の NIC ポートに割り当てられています。 HANA スケールアウト構成と HANA システム レプリケーション シナリオでは、3 つの IP アドレスが使用されます。 ユニットの NIC に割り当てられている IP アドレスの 1 つは、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](./hana-overview-architecture.md)」で説明されているサーバー IP プールから割り当てられたものです。
 
@@ -138,7 +139,7 @@ Azure 仮想ネットワークの設計と、それらの仮想ネットワー�
 
 SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP が推奨するガイドラインに従う SAP HANA on Azure `service management` によって構成されます。 これらのガイドラインについては、ホワイト ペーパー「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」に記載されています。 
 
-各種 HANA L インスタンス SKU で提供されるさまざまなボリュームのおおよそのサイズについては、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+各種 HANA L インスタンス SKU で提供されるさまざまなボリュームのおおよそのサイズについては、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md)」をご覧ください。
 
 次の表に、ストレージ ボリュームの名前付け規則を示します。
 
@@ -160,7 +161,7 @@ HANA usr/sap は、同じボリュームを共有します。 マウント ポ�
 
 HANA L インスタンス ユニットを確認すると、HANA/data 用に大きなディスク ボリュームを備えていること、また、HANA/log/backup というボリュームがあることが分ります。 HANA/data をこれほど大きくしているのは、お客様に提供されるストレージ スナップショットが同じディスク ボリュームを使用しているためです。 ストレージ スナップショットを数多く実行するほど、割り当てられたストレージ ボリュームでは、スナップショットがより多くの領域を消費します。 
 
-HANA/log/backup ボリュームは、データベース バックアップ用のボリュームになることは想定されていません。 そのサイズは、HANA トランザクション ログ バックアップ用のバックアップ ボリュームとして使用される設定となっています。 詳細については、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 
+HANA/log/backup ボリュームは、データベース バックアップ用のボリュームになることは想定されていません。 そのサイズは、HANA トランザクション ログ バックアップ用のバックアップ ボリュームとして使用される設定となっています。 詳細については、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」をご覧ください。 
 
 お客様は、提供されているストレージに加え、追加のストレージ容量を 1 TB 単位で購入することができます。 この追加ストレージは、新しいボリュームとして HANA L インスタンスに追加できます。
 
@@ -179,7 +180,7 @@ SAP HANA on Azure `service management` によるオンボード中、お客様�
 
 S72m HANA L インスタンス ユニットに対する df -h コマンドの出力は次のようになります。
 
-![HANA L インスタンス ユニットのマウントされたボリュームの fstab](./media/hana-installation/image2_df_output.PNG)
+![HANA L インスタンス ユニットに対するコマンドの出力を示すスクリーンショット。](./media/hana-installation/image2_df_output.PNG)
 
 
 L インスタンス スタンプ内のストレージ コントローラーとノードは NTP サーバーに同期されます。 SAP HANA on Azure (L インスタンス) のユニットと Azure VM を NTP サーバーに対して同期するときには、Azure と L インスタンス スタンプのインフラストラクチャやコンピューティング ユニットの間に大きな時間のずれがあってはいけません。

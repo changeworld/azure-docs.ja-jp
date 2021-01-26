@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006434"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746473"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight でエンドツーエンドのデータ パイプラインを作成して売上の分析情報を導き出す
 
@@ -27,13 +27,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI - バージョン 2.2.0 以上。 「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI - バージョン 2.2.0 以上。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 * jq。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
 * [Azure の組み込みロールである所有者](../role-based-access-control/built-in-roles.md)のメンバー。
 
-* PowerShell を使用して Data Factory パイプラインをトリガーしている場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
+* PowerShell を使用して Data Factory パイプラインをトリガーしている場合は、[AZ モジュール](/powershell/azure/)が必要になります。
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller)。このチュートリアルの最後に、ビジネスの分析情報を視覚化する目的で使用します。
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    指定するリージョンがわからない場合は、[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) コマンドで、サブスクリプションに対してサポートされているリージョンの一覧を取得できます。
+    指定するリージョンがわからない場合は、[az account list-locations](/cli/azure/account#az-account-list-locations) コマンドで、サブスクリプションに対してサポートされているリージョンの一覧を取得できます。
 
     このコマンドによって次のリソースがデプロイされます。
 

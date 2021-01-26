@@ -5,22 +5,80 @@ description: Visual Studio Code を使用して Azure Machine Learning のコー
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
+ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 09/30/2020
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907354"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739996"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Visual Studio Code (VS Code) および [depugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning のパイプラインとデプロイを対話形式でデバッグする方法について説明します。
+
+Visual Studio Code (VS Code) および [debugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning の実験、パイプライン、およびデプロイを対話形式でデバッグする方法について説明します。
+
+## <a name="run-and-debug-experiments-locally"></a>ローカルでの実験の実行とデバッグ
+
+Azure Machine Learning 拡張機能を使用して、クラウドに送信する前に Machine Learning の実験を検証、実行、およびデバッグします。
+
+### <a name="prerequisites"></a>前提条件
+
+* Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](tutorial-setup-vscode-extension.md)に関するページを参照してください。
+* [Docker](https://www.docker.com/get-started)
+  * Mac および Windows 用の Docker デスクトップ
+  * Linux 用 Docker エンジン。
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> Windows では、[Linux コンテナーを使用するように Docker を構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)してください。
+
+> [!TIP]
+> 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
+
+> [!IMPORTANT]
+> 実験をローカルで実行する前に、Docker が実行されていることを確認してください。
+
+### <a name="debug-experiment-locally"></a>ローカルで実験をデバッグする
+
+1. VS Code で、Azure Machine Learning 拡張機能ビューを開きます。
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。 既存のものがない場合は、拡張機能を使用して [Azure Machine Learning ワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)できます。
+1. ワークスペース ノードを展開します。
+1. **[実験]** ノードを右クリックし、 **[実験の作成]** を選択します。 プロンプトが表示されたら、実験の名前を指定します。
+1. **[実験]** ノードを展開し、実行する実験を右クリックして、 **[実験の実行]** を選択します。
+1. 実験を実行するオプションの一覧から、 **[ローカル]** を選択します。
+1. **Windows で初めて使用する場合のみ**。 ファイル共有を許可するように求めるメッセージが表示されたら、 **[はい]** を選択します。 ファイル共有を有効にすると、Docker では、スクリプトが格納されているディレクトリをコンテナーにマウントできます。 さらに、Docker では、実行からのログと出力をシステムの一時ディレクトリに格納することもできます。
+1. 実験をデバッグするには **[はい]** を選択します。 それ以外の場合は、 **[いいえ]** を選択します。 [いいえ] を選択すると、デバッガーにアタッチせずにローカルで実験が実行されます。
+1. **[新しい実行構成を作成する]** を選択して、実行構成を作成します。 実行構成によって、実行するスクリプト、依存関係、および使用されるデータセットが定義されます。 または、既存のものがある場合は、ドロップダウンから選択します。
+    1. 環境を選択します。 [Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)のいずれかから選択することも、独自のものを作成することもできます。
+    1. 実行するスクリプトの名前を指定します。 パスは、VS Code で開かれているディレクトリに対する相対パスです。
+    1. Azure Machine Learning データセットを使用するかどうかを選択します。 拡張機能を使用して [Azure Machine Learning データセット](how-to-manage-resources-vscode.md#create-dataset)を作成できます。
+    1. debugpy は、実験を実行しているコンテナーにデバッガーをアタッチするために必要です。 debugpy を依存関係として追加するには、 **[debugpy の追加]** を選択します。 その以外の場合は、 **[スキップ]** を選択します。 debugpy を依存関係として追加しないと、デバッガーにアタッチせずに実験が実行されます。
+    1. 実行構成の設定が含まれている構成ファイルがエディターで開きます。 設定に問題がなければ、 **[実験を送信する]** を選択します。 または、メニュー バーからコマンド パレットを開き ( **[ビュー] > [コマンド パレット]** )、テキスト ボックスに `Azure ML: Submit experiment` コマンドを入力します。
+1. 実験が送信されると、スクリプトおよび実行構成で指定された構成を含む Docker イメージが作成されます。
+
+    Docker イメージのビルド プロセスが開始されると、`60_control_log.txt` ファイルの内容が VS Code の出力コンソールにストリーミングされます。
+
+    > [!NOTE]
+    > 初めて Docker イメージを作成するときには、数分かかることがあります。
+
+1. イメージがビルドされると、デバッガーを開始するためのプロンプトが表示されます。 スクリプトにブレークポイントを設定し、デバッグを開始する準備ができたら **[デバッガーを開始]** を選択します。 これにより、実験を実行しているコンテナーに VS Code デバッガーがアタッチされます。 または、Azure Machine Learning 拡張機能で、現在の実行のノードの上にマウス ポインターを移動し、再生アイコンを選択してデバッガーを開始します。
+
+    > [!IMPORTANT]
+    > 1 つの実験に対して複数のデバッグ セッションを作成することはできません。 ただし、複数の VS Code インスタンスを使用して複数の実験をデバッグすることはできます。
+
+この時点で、VS Code を使用してコードをステップ実行してデバッグできるようになります。
+
+いずれかの時点で実行を取り消す場合は、実行ノードを右クリックして **[実行の取り消し]** を選択します。
+
+リモート実験の実行と同様に、実行ノードを展開してログと出力を調べることができます。
+
+> [!TIP]
+> 環境内で定義されている同じ依存関係を使用する Docker イメージは、実行間で再利用されます。 ただし、新規または別の環境を使用して実験を実行すると、新しいイメージが作成されます。 これらのイメージはローカル ストレージに保存されるため、古いまたは使用されていない Docker イメージは削除することをお勧めします。 システムからイメージを削除するには、[Docker CLI](https://docs.docker.com/engine/reference/commandline/rmi/) または [VS Code Docker 拡張機能](https://code.visualstudio.com/docs/containers/overview)を使用します。
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 
@@ -37,7 +95,7 @@ Visual Studio Code (VS Code) および [depugpy](https://github.com/microsoft/de
   * 仮想ネットワーク内の Notebook VM のコンピューティング インスタンス
   * VPN または ExpressRoute を使用した仮想ネットワークへのプライベート ネットワーク接続があるクライアント コンピューター。
 
-Azure Machine Learning で Azure Virtual Network を使用する方法の詳細については、「[Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)」を参照してください。
+Azure Machine Learning で Azure Virtual Network を使用する方法の詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
 
 > [!TIP]
 > 仮想ネットワークの内側にない Azure Machine Learning リソースを操作することもできますが、仮想ネットワークの使用をお勧めします。
@@ -109,7 +167,7 @@ ML パイプライン ステップでは、Python スクリプトが実行され
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-次の Python の例は、デバッグを有効にする基本的な `train.py` ファイルを示しています。
+次の Python の例は、デバッグを有効にするシンプルな `train.py` ファイルを示しています。
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -281,7 +339,7 @@ ip_address: 10.3.0.5
 場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 VS Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。
 
 > [!IMPORTANT]
-> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
+> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
 
 ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 Docker の使用の詳細については、[Docker のドキュメント](https://docs.docker.com/)を参照してください。 コンピューティング インスタンスを使用する場合は、Docker が既にインストールされていることに注意してください。
 
@@ -297,9 +355,9 @@ ip_address: 10.3.0.5
 
 1. Docker イメージと通信するように VS Code を構成するには、次のような新しいデバッグ構成を作成します。
 
-    1. VS Code から __[デバッグ]__ メニューを選択し、 __[構成を開く]__ を選択します。 __launch.json__ という名前のファイルが開きます。
+    1. VS Code から、 __[実行]__ 拡張機能の __[デバッグ]__ メニューを選択し、 __[構成を開く]__ を選択します。 __launch.json__ という名前のファイルが開きます。
 
-    1. __launch.json__ ファイルで、`"configurations": [` を含む行を見つけ、その後に次のテキストを挿入します。
+    1. __launch.json__ ファイルで、 __"configurations"__ の項目 (`"configurations": [` を含む行) を見つけ、その後に次のテキストを挿入します。 
 
         ```json
         {
@@ -318,11 +376,44 @@ ip_address: 10.3.0.5
             ]
         }
         ```
+        挿入すると、__launch.json__ ファイルは次のようになります。
+        ```json
+        {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Azure Machine Learning Deployment: Docker Debug",
+                "type": "python",
+                "request": "attach",
+                "connect": {
+                    "port": 5678,
+                    "host": "0.0.0.0"
+                    },
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/var/azureml-app"
+                    }
+                ]
+            }
+            ]
+        }
+        ```
 
         > [!IMPORTANT]
-        > 構成セクションに既に他のエントリがある場合は、挿入したコードの後にコンマ (,) を追加します。
+        > 構成セクションに既に他のエントリがある場合は、挿入したコードの後にコンマ ( __,__ ) を追加します。
 
-        このセクションは、ポート 5678 を使用して Docker コンテナーにアタッチされます。
+        このセクションは、ポート __5678__ を使用して Docker コンテナーにアタッチされます。
 
     1. __launch.json__ ファイルを保存します。
 
@@ -375,13 +466,13 @@ ip_address: 10.3.0.5
     package.pull()
     ```
 
-    イメージが作成されてダウンロードされると、イメージ パス (リポジトリ、名前、タグ、また、ここではそのダイジェストを含む) が次のようなメッセージに表示されます。
+    イメージが作成されてダウンロードされると (このプロセスには 10 分以上かかる場合があるため、気長にお待ちください)、次のようなメッセージでイメージ パス (リポジトリ、名前、タグ、また、ここではそのダイジェストを含む) が最終的に表示されます。
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. イメージの操作を容易にするには、次のコマンドを使用してタグを追加します。 `myimagepath` を、前の手順の場所の値で置き換えます。
+1. イメージをローカルで簡単に操作できるようにするには、次のコマンドを使用して、このイメージのタグを追加します。 次のコマンドの `myimagepath` を、前の手順の場所の値で置き換えます。
 
     ```bash
     docker tag myimagepath debug:1
@@ -399,24 +490,39 @@ ip_address: 10.3.0.5
 1. イメージを使って Docker コンテナーを開始するには、次のコマンドを使用します。
 
     ```bash
-    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
     これにより、`score.py` がコンテナー内のものにローカルでアタッチされます。 そのため、エディターで行われた変更はすべて、コンテナーに自動的に反映されます。
 
-1. コンテナー内で、シェルから次のコマンドを実行します
+2. エクスペリエンスを向上させるために、新しい VS Code インターフェイスを使用してコンテナーにアクセスできます。 VS Code のサイドバーから `Docker` の拡張機能を選択し、自分のローカル コンテナー (このドキュメントでは `debug:1`) を見つけます。 このコンテナーを右クリックして `"Attach Visual Studio Code"` を選択すると、新しい VS Code インターフェイスが自動的に開きます。このインターフェイスに作成したコンテナーの内部が表示されます。
+
+    ![コンテナー VS Code インターフェイス](./media/how-to-troubleshoot-deployment/container-interface.png)
+
+3. コンテナー内で、シェルから次のコマンドを実行します
 
     ```bash
     runsvdir /var/runit
     ```
+    これにより、コンテナー内のシェルに次の出力が表示されます。
 
-1. VS Code をコンテナー内の debugpy に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning Deployment: Docker Debug]__ 構成を選択します。 サイド バーのデバッグ アイコンを選択して、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning Deployment: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
+    ![コンテナーの実行コンソールの出力](./media/how-to-troubleshoot-deployment/container-run.png)
+
+4. VS Code をコンテナー内の debugpy に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning Deployment: Docker Debug]__ 構成を選択します。 サイド バーの __[実行]__ 拡張機能アイコンを選択して、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning Deployment: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
 
     ![デバッグ アイコン、デバッグの開始ボタン、および構成セレクター](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    
+    緑色の矢印をクリックしてデバッガーをアタッチすると、コンテナー VS Code インターフェイスに新しい情報が表示されます。
+    
+    ![コンテナー デバッガーのアタッチされた情報](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    
+    また、メインの VS Code インターフェイスには、次のような情報が表示されます。
 
-この時点で、VS Code は Docker コンテナー内の debugpy に接続し、前に設定したブレークポイントで停止します。 これで、実行時のようにコードをステップ実行したり、変数を表示したりできます。
+    ![score.py の VS Code ブレークポイント](./media/how-to-troubleshoot-deployment/local-debugger.png)
 
-VS Code を使用した Python のデバッグの詳細については、「[Python コードのデバッグ](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)」を参照してください。
+ここで、コンテナーにアタッチされているローカル `score.py` は、設定したブレークポイントで既に停止しています。 この時点で、VS Code は Docker コンテナー内の debugpy に接続され、前に設定したブレークポイントで Docker コンテナーを停止させます。 これで、実行時のようにコードをステップ実行したり、変数を表示したりできます。
+
+VS Code を使用した Python のデバッグの詳細については、「[Python コードのデバッグ](https://code.visualstudio.com/docs/python/debugging)」を参照してください。
 
 ### <a name="stop-the-container"></a>コンテナーの停止
 
@@ -428,6 +534,12 @@ docker stop debug
 
 ## <a name="next-steps"></a>次のステップ
 
-Visual Studio Code Remote の設定が完了したので、Visual Studio Code からコンピューティング インスタンスをリモート コンピューティングとして使用して、自分のコードを対話形式でデバッグすることができます。 
+VS Code Remote の設定が完了したので、VS Code からコンピューティング インスタンスをリモート コンピューティングとして使用して、自分のコードを対話形式でデバッグすることができます。 
 
-[チュートリアル:最初の ML モデルをトレーニングする)](tutorial-1st-experiment-sdk-train.md)」では、統合ノートブックでコンピューティング インスタンスを使用する方法を示しています。
+トラブルシューティングについて学習します。
+
+* [ローカルでのモデル デプロイ](how-to-troubleshoot-deployment-local.md)
+* [リモートでのモデル デプロイ](how-to-troubleshoot-deployment.md)
+* [Machine Learning パイプライン](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

@@ -10,12 +10,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: c92ce909abd9a36f2515eefeb60ff0066221a4e1
-  ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+  ms.openlocfilehash: 74ba5f8270e366621a0fd352bd76747077d9cc08
+  ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2020
-  ms.locfileid: "89468966"
+  ms.lasthandoff: 11/10/2020
+  ms.locfileid: "94411322"
 landingContent:
 - title: Azure Red Hat OpenShift について
   linkLists:
@@ -41,6 +41,10 @@ landingContent:
       url: ./howto-create-private-cluster-3x.md
     - text: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
       url: dns-forwarding.md
+    - text: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
+      url: built-in-container-registry.md
+    - text: Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty アプリケーションをデプロイする
+      url: howto-deploy-java-liberty-app.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

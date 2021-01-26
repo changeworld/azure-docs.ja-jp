@@ -6,20 +6,20 @@ manager: dcscontentpm
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056246"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976185"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
 Windows 仮想マシン (VM) をオンプレミスから Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 第 1 世代 VM で OS VHD に許容される最大サイズは 2 TB です。
 
-VHDX ファイルを VHD に変換し、容量可変ディスクを容量固定ディスクに変換することはできますが、VM の世代を変更することはできません。 詳細については、「[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成すべきか](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V)」および「[Azure での第 2 世代 VM のサポート](generation-2.md)」を参照してください。
+VHDX ファイルを VHD に変換し、容量可変ディスクを容量固定ディスクに変換することはできますが、VM の世代を変更することはできません。 詳細については、「[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成すべきか](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V)」および「[Azure での第 2 世代 VM のサポート](../generation-2.md)」を参照してください。
 
 Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/)」を参照してください。
 
@@ -28,73 +28,6 @@ Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮�
 >
 > - Windows Server (64 ビット版) 2008 R2 以降の Windows Server オペレーティング システム。 Azure での 32 ビットのオペレーティング システムの実行については、「[Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート](https://support.microsoft.com/help/4021388/)」を参照してください。
 > - Azure Site Recovery や Azure Migrate など、何らかのディザスター リカバリー ツールをワークロードの移行に使用する場合でも、移行前にゲスト OS でこのプロセスを実行してイメージを準備する必要があります。
-
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>仮想ディスクを容量固定の VHD に変換する
-
-このセクションのいずれかの方法を使用して、仮想ディスクを Azure に必要な形式に変換し、サイズ変更します。
-
-1. 仮想ディスクの変換またはサイズ変更処理を実行する前に、VM をバックアップします。
-
-1. Windows VHD がローカル サーバーで正しく動作していることを確認します。 Azure に変換またはアップロードする前に、VM 自体に発生しているすべてのエラーを解決します。
-
-1. 仮想ディスクを固定の種類に変換します。
-
-1. Azure の要件を満たすように仮想ディスクのサイズを変更します。
-
-   1. Azure のディスクの仮想サイズは、1 MiB にアラインする必要があります。 VHD に 1 MiB の端数がある場合は、1 MiB の倍数になるようにディスクのサイズを変更する必要があります。 MiB の端数があるディスクでは、アップロードした VHD からイメージを作成する際にエラーが発生します。 これを確認するには、PowerShell の [Get-VHD](/powershell/module/hyper-v/get-vhd) コマンドレットを使用し、"Size" (Azure の 1 MiB の倍数である必要があります) と "FileSize" ("Size" に VHD フッターの 512 バイトを足した値に等しくなります) を表示します。
-   
-   1. 第 1 世代 VM で OS VHD に許容される最大サイズは 2,048 GiB (2 TiB) です。 
-   1. データ ディスクの最大サイズは 32,767 GiB (32 TiB) です。
-
-> [!NOTE]
-> - 固定ディスクに変換し、必要に応じてサイズを変更した後に Windows OS ディスクを準備する場合は、そのディスクを使用する VM を作成します。 VM を起動してサインインし、この記事のセクションを続行して、アップロードの準備を完了します。  
-> - データ ディスクを準備している場合は、このセクションで中断し、ディスクのアップロードに進むことができます。
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V マネージャーを使用してディスクを変換する
-
-1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]**  >  **[ディスクの編集]** の順に選択します。
-1. **[仮想ハード ディスクの場所]** ページで、お使いの仮想ディスクを選択します。
-1. **[アクションの選択]** ページで、 **[変換]**  >  **[次へ]** の順に選択します。
-1. VHDX から変換するには、 **[VHD]**  >  **[次へ]** の順に選択します。
-1. 容量可変ディスクから変換するには、 **[容量固定]**  >  **[次へ]** の順に選択します。
-1. 新しい VHD ファイルの保存先となるパスを見つけて選択します。
-1. **[完了]** を選択します。
-
-### <a name="use-powershell-to-convert-the-disk"></a>PowerShell を使用してディスクを変換する
-
-PowerShell で [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、仮想ディスクを変換できます。 このコマンドレットのインストールに関する情報が必要な場合は、[こちら](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)をクリックしてください。
-
-次の例は、ディスクを VHDX から VHD に変換します。 また、ディスクを容量可変ディスクを容量固定ディスクに変換します。
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-この例で、**Path** の値を、変換する仮想ハード ディスクのパスに置き換えてください。 **DestinationPath** の値を、変換したディスクの新しいパスおよび名前に置き換えます。
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK ディスク フォーマットからの変換
-
-[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) を使用して VHD 形式に変換できます。 詳細については、「[VMware VMDK から Hyper-V VHD への変換方法](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)」を参照してください。
-
-### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Hyper-V マネージャーを使用してディスクのサイズを変更する
-
-1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]**  >  **[ディスクの編集]** の順に選択します。
-1. **[仮想ハード ディスクの場所]** ページで、お使いの仮想ディスクを選択します。
-1. **[アクションの選択]** ページで、 **[展開]**  >  **[次へ]** の順に選択します。
-1. **[仮想ハード ディスクの場所]** ページで、新しいサイズを GiB 単位で入力し、 **[次へ]** を選択します。
-1. **[完了]** を選択します。
-
-### <a name="use-powershell-to-resize-the-disk"></a>PowerShell を使用してディスクのサイズを変更する
-
-PowerShell で [Resize-VHD](/powershell/module/hyper-v/resize-vhd) コマンドレットを使用して、仮想ディスクのサイズを変更できます。 このコマンドレットのインストールに関する情報が必要な場合は、[こちら](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)をクリックしてください。
-
-次の例では、Azure のアラインメント要件を満たすために、ディスクのサイズを 100.5 MiB から 101 MiB に変更します。
-
-```powershell
-Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
-```
-
-この例では、**Path** の値をサイズ変更する仮想ハード ディスクのパスに置き換えます。 **SizeBytes** の値を、ディスクの新しいサイズ (バイト単位) に置き換えます。
 
 ## <a name="system-file-checker"></a>システム ファイル チェッカー
 
@@ -411,13 +344,13 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 
 1. VM を再起動して、Windows が引き続き正常であり、RDP 接続を介してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V サーバーに VM を作成して、VM が完全に起動することを確認することを検討してください。 次に、RDP を介して VM に到達できることを確認するためのテストを実行します。
 
-1. 余分な Transport Driver Interface (TDI) フィルターはすべて削除します。 たとえば、TCP パケットや追加のファイアウォールを分析するソフトウェアは削除します。 これを後で確認する場合は、VM が Azure にデプロイされた後に行うことができます。
+1. 余分な Transport Driver Interface (TDI) フィルターはすべて削除します。 たとえば、TCP パケットや追加のファイアウォールを分析するソフトウェアは削除します。
 
 1. 物理コンポーネントまたはその他の仮想化テクノロジに関連する、その他のサードパーティ ソフトウェアまたはドライバーをアンインストールします。
 
 ### <a name="install-windows-updates"></a>Windows 更新プログラムのインストール
 
-理想的には、継続して*パッチ レベル*でマシンを更新する必要があります。 これを実行できない場合は、以下の更新プログラムがインストールされていることを確認してください。 最新の更新プログラムを入手するには、Windows Update の履歴ページを参照してください。[Windows 10 および Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 および Windows Server 2012 R2](https://support.microsoft.com/help/4009470)、[Windows 7 SP1 および Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
+理想的には、継続して "*パッチ レベル*" でマシンを更新する必要があります。そうできない場合は、以下の更新プログラムがインストールされていることを確認してください。 最新の更新プログラムを入手するには、Windows Update の履歴ページを参照してください。[Windows 10 および Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 および Windows Server 2012 R2](https://support.microsoft.com/help/4009470)、[Windows 7 SP1 および Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 <br />
 
@@ -462,7 +395,7 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 > [!NOTE]
 > VM のプロビジョニング中に誤って再起動されないようにするために、すべての Windows Update インストールが完了し、保留中の更新プログラムがないことを確認することをお勧めします。 これを行う 1 つの方法は、考えられるすべての Windows 更新プログラムをインストールし、一度再起動してから、`sysprep.exe` コマンドを実行します。
 
-### <a name="determine-when-to-use-sysprep"></a>Sysprep を使用する状況の判断
+## <a name="determine-when-to-use-sysprep"></a>Sysprep を使用する状況の判断
 
 システム準備ツール (`sysprep.exe`) は、Windows インストールをリセットするために使用できるプロセスです。
 Sysprep は、個人データをすべて削除し、コンポーネントをいくつかリセットすることによって、"すぐに使用できる" エクスペリエンスを提供します。
@@ -497,10 +430,77 @@ Windows ベースのコンピューターにインストールされているロ
 1. **[OK]** を選択します。
 1. Sysprep が完了したら、VM をシャットダウンします。 VM をシャットダウンするために **[再起動]** を使用しないでください。
 
-これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化された VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
+これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化された VHD のアップロードと Azure での新しい VM の作成](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)に関するページをご覧ください。
 
 >[!NOTE]
-> カスタム *unattend.xml* ファイルはサポートされていません。 **additionalUnattendContent** プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する *unattend.xml* ファイルに [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
+> カスタム *unattend.xml* ファイルはサポートされていません。 **additionalUnattendContent** プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する *unattend.xml* ファイルに [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>仮想ディスクを容量固定の VHD に変換する
+
+このセクションのいずれかの方法を使用して、仮想ディスクを Azure に必要な形式に変換し、サイズ変更します。
+
+1. 仮想ディスクの変換またはサイズ変更処理を実行する前に、VM をバックアップします。
+
+1. Windows VHD がローカル サーバーで正しく動作していることを確認します。 Azure に変換またはアップロードする前に、VM 自体に発生しているすべてのエラーを解決します。
+
+1. 仮想ディスクを固定の種類に変換します。
+
+1. Azure の要件を満たすように仮想ディスクのサイズを変更します。
+
+   1. Azure のディスクの仮想サイズは、1 MiB にアラインする必要があります。 VHD に 1 MiB の端数がある場合は、1 MiB の倍数になるようにディスクのサイズを変更する必要があります。 MiB の端数があるディスクでは、アップロードした VHD からイメージを作成する際にエラーが発生します。 サイズを確認するには、PowerShell の [Get-VHD](/powershell/module/hyper-v/get-vhd) コマンドレットを使用し、"Size" (Azure で 1 MiB の倍数である必要があります) と "FileSize" ("Size" に VHD フッターの 512 バイトを足した値に等しくなります) を表示します。
+   
+   1. 第 1 世代 VM で OS VHD に許容される最大サイズは 2,048 GiB (2 TiB) です。 
+   1. データ ディスクの最大サイズは 32,767 GiB (32 TiB) です。
+
+> [!NOTE]
+> - 固定ディスクに変換し、必要に応じてサイズを変更した後に Windows OS ディスクを準備する場合は、そのディスクを使用する VM を作成します。 VM を起動してサインインし、この記事のセクションを続行して、アップロードの準備を完了します。  
+> - データ ディスクを準備している場合は、このセクションで中断し、ディスクのアップロードに進むことができます。
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V マネージャーを使用してディスクを変換する
+
+1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]**  >  **[ディスクの編集]** の順に選択します。
+1. **[仮想ハード ディスクの場所]** ページで、お使いの仮想ディスクを選択します。
+1. **[アクションの選択]** ページで、 **[変換]**  >  **[次へ]** の順に選択します。
+1. VHDX から変換するには、 **[VHD]**  >  **[次へ]** の順に選択します。
+1. 容量可変ディスクから変換するには、 **[容量固定]**  >  **[次へ]** の順に選択します。
+1. 新しい VHD ファイルの保存先となるパスを見つけて選択します。
+1. **[完了]** を選択します。
+
+### <a name="use-powershell-to-convert-the-disk"></a>PowerShell を使用してディスクを変換する
+
+PowerShell で [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、仮想ディスクを変換できます。 このコマンドレットのインストールに関する情報が必要な場合は、[Hyper-V ロールのインストール](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)に関するページを参照してください。
+
+次の例は、ディスクを VHDX から VHD に変換します。 また、ディスクを容量可変ディスクを容量固定ディスクに変換します。
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+この例で、**Path** の値を、変換する仮想ハード ディスクのパスに置き換えてください。 **DestinationPath** の値を、変換したディスクの新しいパスおよび名前に置き換えます。
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Hyper-V マネージャーを使用してディスクのサイズを変更する
+
+1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]**  >  **[ディスクの編集]** の順に選択します。
+1. **[仮想ハード ディスクの場所]** ページで、お使いの仮想ディスクを選択します。
+1. **[アクションの選択]** ページで、 **[展開]**  >  **[次へ]** の順に選択します。
+1. **[仮想ハード ディスクの場所]** ページで、新しいサイズを GiB 単位で入力し、 **[次へ]** を選択します。
+1. **[完了]** を選択します。
+
+### <a name="use-powershell-to-resize-the-disk"></a>PowerShell を使用してディスクのサイズを変更する
+
+PowerShell で [Resize-VHD](/powershell/module/hyper-v/resize-vhd) コマンドレットを使用して、仮想ディスクのサイズを変更できます。 このコマンドレットのインストールに関する情報が必要な場合は、[Hyper-V ロールのインストール](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)に関するページを参照してください。
+
+次の例では、Azure のアラインメント要件を満たすために、ディスクのサイズを 100.5 MiB から 101 MiB に変更します。
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+この例では、**Path** の値をサイズ変更する仮想ハード ディスクのパスに置き換えます。 **SizeBytes** の値を、ディスクの新しいサイズ (バイト単位) に置き換えます。
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK ディスク フォーマットからの変換
+
+[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Azure Migrate](../../migrate/server-migrate-overview.md) を使用して VMDK を変換し、Azure にアップロードできます。
 
 ## <a name="complete-the-recommended-configurations"></a>推奨される構成を完了する
 

@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
-description: このクイックスタートでは、Microsoft ID プラットフォームによって保護された ASP.NET Web API を Windows デスクトップ (WPF) アプリケーションから呼び出す方法について説明します。 WPF クライアントは、ユーザーを認証し、アクセ ストークンを要求して、Web API を呼び出します。
+title: 'クイックスタート: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、Microsoft ID プラットフォームによって保護された ASP.NET Web API を Windows デスクトップ (WPF) アプリケーションから呼び出す方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,167 +9,177 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/12/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0fc31fd397f8206f7c6f0509dd03495631dde609
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2967476d06b8f6f88b740f811a94c5fdb4284b4d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165636"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011868"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
+# <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
-このクイックスタートでは、認証されたユーザーのみがアクセスできるように Web API を公開し、保護します。 このサンプルでは、個人アカウント (outlook.com、live.com などを含む) だけでなく、Microsoft ID プラットフォームと統合されたすべての会社や組織の職場または学校アカウントによって発行されたトークンを受け入れることができるように ASP.NET Web API を公開する方法について説明します。
+このクイックスタートでは、リソースへのアクセスを承認されたアカウントだけに制限して、ASP.NET Web API を保護する方法を示すコード サンプルをダウンロードして実行します。 このサンプルでは、個人用 Microsoft アカウントと Azure Active Directory (Azure AD) 組織のアカウントの承認がサポートされています。
 
-このサンプルには、Web API にアクセスするためのアクセス トークンを要求する方法を示す Windows デスクトップ アプリケーション (WPF) クライアントも含まれています。
+また、この記事では、Windows Presentation Foundation (WPF) アプリを使用して、Web API にアクセスするためのアクセス トークンを要求するデモンストレーションを行います。
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行するには、次のものが必要になります。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Visual Studio 2017 または 2019。 [Visual Studio を無料で](https://www.visualstudio.com/downloads/)ダウンロードします。
 
-* Visual Studio 2017 または 2019。  [Visual Studio を無料で](https://www.visualstudio.com/downloads/)ダウンロードします。
+## <a name="clone-or-download-the-sample"></a>サンプルをクローンまたはダウンロードする
 
-* [Microsoft アカウント](https://www.outlook.com)または [Microsoft 365 Developer Program](/office/developer-program/office-365-developer-program)
+サンプルは、次の 2 つの方法のいずれかで取得できます。
 
-## <a name="download-or-clone-this-sample"></a>このサンプルをダウンロードまたは複製する
+* シェルまたはコマンド ラインからクローンする
+   ```console
+   git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
+   ```
+* [ZIP ファイルとしてダウンロードする](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)
 
-このサンプルは、シェルまたはコマンド ラインから複製できます。
+## <a name="register-your-web-api"></a>Web API を登録する
 
-  ```console
-  git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
-  ```
+このセクションでは、Azure portal の **[アプリの登録]** で Web API を登録します。
 
-または、[サンプルを ZIP ファイルでダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)できます。
+### <a name="choose-your-azure-ad-tenant"></a>Azure AD テナントを選択する
 
-## <a name="register-your-web-api-in-the-application-registration-portal"></a>Web API をアプリケーション登録ポータルに登録する
+アプリを手動で登録するには、アプリを作成する Azure Active Directory (Azure AD) テナントを選択します。
 
-### <a name="choose-the-azure-ad-tenant-where-you-want-to-create-your-applications"></a>アプリケーションを作成するための Azure AD テナントを選択する
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、<a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. ご利用のアカウントが複数の Azure AD テナントに存在する場合は、右上にあるプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
+1. 使用する Azure AD テナントにポータル セッションを変更します。
 
-アプリを手動で登録する場合は、最初の手順として次の操作を行う必要があります。
+### <a name="register-the-todolistservice-app"></a>TodoListService アプリを登録する
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用のアカウントが複数の Azure AD テナントに存在する場合は、ページ上部のメニューの右上隅にあるプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
-   ポータル セッションを目的の Azure AD テナントに変更します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `AppModelv2-NativeClient-DotNet-TodoListService`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
+1. **[登録]** を選択して、アプリケーションを作成します。
+1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を探し、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります (つまり、*TodoListService\Web.config* ファイルの `ClientId`)。
+1. **[管理]** で、 **[API の公開]**  >  **[スコープの追加]** の順に選択します。 **[保存して続行]** を選択して、提案されたアプリケーション ID URI (`api://{clientId}`) を受け入れ、次の情報を入力します。
 
-### <a name="register-the-service-app-todolistservice"></a>サービス アプリを登録する (TodoListService)
+    1. **[スコープ名]** に「`access_as_user`」と入力します。
+    1. **[同意できるユーザー]** で **[管理者とユーザー]** オプションが選択されていることを確認します。
+    1. **[管理者の同意の表示名]** ボックスには、「`Access TodoListService as a user`」と入力します。
+    1. **[管理者の同意の説明]** ボックスには、「`Accesses the TodoListService web API as a user`」と入力します。
+    1. **[ユーザーの同意の表示名]** ボックスには、「`Access TodoListService as a user`」と入力します。
+    1. **[ユーザーの同意の説明]** ボックスには、「`Accesses the TodoListService web API as a user`」と入力します。
+    1. **[状態]** は **[有効]** のままにします。
+1. **[スコープの追加]** を選択します。
 
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-1. **[新規登録]** を選択します。
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `AppModelv2-NativeClient-DotNet-TodoListService`)。
-   - **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウント]** に変更します。
-   - **[登録]** を選択して、アプリケーションを作成します。
+### <a name="configure-the-service-project"></a>サービス プロジェクトを構成する
 
-1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります (`TodoListService\Web.config` の `ClientId`)。
-1. **[API の公開]** セクションを選択し、次の操作を行います。
-   - **[Scope の追加]** を選択します。
-   - **[保存して続行]** を選択して、提案されたアプリケーション ID URI (api://{clientId}) を受け入れます。
-   - 次のパラメーターを入力します。
-     - **[スコープ名]** には、`access_as_user` を使用します。
-     - **[同意できるユーザー]** で **[管理者とユーザー]** オプションが選択されていることを確認します。
-     - **[管理者の同意の表示名]** には、「`Access TodoListService as a user`」と入力します。
-     - **[管理者の同意の説明]** には、「`Accesses the TodoListService web API as a user`」と入力します。
-     - **[ユーザーの同意の表示名]** には、「`Access TodoListService as a user`」と入力します。
-     - **[ユーザーの同意の説明]** には、「`Accesses the TodoListService web API as a user`」と入力します。
-     - **[状態]** を **[有効化]** のままにします。
-     - **[スコープの追加]** を選択します
+次の手順を実行して、登録されている Web API に一致するようにサービス プロジェクトを構成します。
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>登録されている Web API に一致するようにサービス プロジェクトを構成する
+1. Visual Studio でソリューションを開き、TodoListService プロジェクトのルートの下にある *Web.config* ファイルを開きます。
 
-1. Visual Studio でソリューションを開き、**TodoListService** プロジェクトのルートの下にある **Web.config** ファイルを開きます。
-1. `ida:ClientId` パラメーターの値を、アプリケーション登録ポータルで登録したアプリケーションの**クライアント ID (アプリケーション ID)** に置き換えます。
+1. `ida:ClientId` パラメーターの値を、**アプリの登録** ポータルで登録したアプリケーションのクライアント ID (アプリケーション ID) に置き換えます。
 
-### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>*TodoListClient* の app.config に新しいスコープを追加する
+### <a name="add-the-new-scope-to-the-appconfig-file"></a>新しいスコープを app.config ファイルに追加する
 
-* **TodoListClient** プロジェクトのルート フォルダーにある **app.config** ファイルを開き、`TodoListServiceScope` パラメーターで *TodoListService* に登録したアプリケーションの**アプリケーション ID** を貼り付けて、文字列 `{Enter the Application ID of your TodoListService from the app registration portal}` を置き換えます。
+次の手順を実行して、新しいスコープを TodoListClient *app.config* ファイルに追加します。
+
+1. TodoListClient プロジェクトのルート フォルダーで *app.config* ファイルを開きます。
+
+1. `TodoListServiceScope` パラメーターで TodoListService プロジェクトに登録したアプリケーションのアプリケーション ID を貼り付け、`{Enter the Application ID of your TodoListService from the app registration portal}` 文字列を置き換えます。
 
   > [!NOTE]
-  > 次の形式が使用されていることを確認します。
-  >
-  > `api://{TodoListService-Application-ID}/access_as_user`
-  >
-  >({TodoListService-Application-ID} は、TodoListService のアプリケーション ID を表す GUID です)。
+  > アプリケーション ID の形式が `api://{TodoListService-Application-ID}/access_as_user` になっていることを確認してください (`{TodoListService-Application-ID}` は TodoListService アプリのアプリケーション ID を表す GUID です)。
 
-## <a name="register-the-client-app-todolistclient"></a>クライアント アプリを登録する (TodoListClient)
+## <a name="register-the-todolistclient-client-app"></a>TodoListClient クライアント アプリを登録する
 
-この手順では、アプリケーション登録ポータルで新しいアプリケーションを登録して、*TodoListClient* プロジェクトを構成します。 クライアントとサーバーが*同じアプリケーション*と見なされる場合は、手順 2 で登録したのと同じアプリケーションを再利用することもできます。 ユーザーが Microsoft の個人アカウントでサインインできるようにするには、同じアプリケーションを使用する必要があります。
+このセクションでは、Azure portal の **アプリの登録** で TodoListClient アプリを登録し、TodoListClient プロジェクトでコードを設定します。 クライアントとサーバーが *同じアプリケーション* と見なされる場合は、手順 2 で登録したアプリケーションを再利用できます。 ユーザーが Microsoft の個人用アカウントでサインインできるようにするには、同じアプリケーションを使用します。
 
-### <a name="register-the-todolistclient-application-in-the-application-registration-portal"></a>*アプリケーション登録ポータル*に *TodoListClient* アプリケーションを登録する
+### <a name="register-the-app"></a>アプリを登録する
 
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+次の手順を実行して、TodoListClient アプリを登録します。
+
+1. 開発者用の Microsoft ID プラットフォームの[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)ポータルに移動します。
 1. **[新規登録]** を選択します。
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `NativeClient-DotNet-TodoListClient`)。
-   - **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウント]** に変更します。
-   - **[登録]** を選択して、アプリケーションを作成します。
-   
+
+    1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: **NativeClient-DotNet-TodoListClient**)。
+    1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
+    1. **[登録]** を選択して、アプリケーションを作成します。
+
    > [!NOTE]
-   > *TodoListClient* プロジェクトの **app.config** で、`ida:Tenant` の既定値は `common` に設定されています。
-   >
-   > `common` は、職場または学校アカウントを使用するか、Microsoft の個人用アカウントを使用してサインインできることを意味します ( **[任意の組織のディレクトリ内のアカウント]** を選択したため)。
-   >
-   > `organizations` は、職場または学校アカウントを使用してサインインできることを意味します。
-   >
-   > `consumers` は、Microsoft の個人用アカウントを使用してのみサインインできることを意味します。
-   >
-   
-1. アプリの [概要] ページで、 **[認証]** セクションを選択します。
-   1. **[プラットフォーム構成]** で **[プラットフォームを追加]** ボタンを選択します。
-   1. **[モバイル アプリケーションとデスクトップ アプリケーション]** で、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
-   1. **[リダイレクト URI]** で、 **https://login.microsoftonline.com/common/oauth2/nativeclient** のチェック ボックスをオンにします。
-   1. **[構成]** をクリックします。   
-1. **[API のアクセス許可]** セクションを選択します
-   1. **[アクセス許可の追加]** ボタンを選択します。
-   1. **[自分の API]** タブを選択します。
-   1. API の一覧で、`AppModelv2-NativeClient-DotNet-TodoListService API` または Web API に入力した名前を選択します。
-   1. まだチェックしていない場合は、**access_as_user** アクセス許可をチェックします。 必要に応じて検索ボックスを使用します。
-   1. **[アクセス許可の追加]** ボタンを選択します
+   > TodoListClient プロジェクトの *app.config* ファイルで、`ida:Tenant` の既定値は `common` に設定されています。 次の値を指定できます。
+   > - `common`:職場または学校アカウントを使用するか、Microsoft の個人用アカウントを使用してサインインできます (手順 3b で **[任意の組織のディレクトリ内のアカウント]** を選択したため)。
+   > - `organizations`:職場または学校アカウントを使用してサインインできます。
+   > - `consumers`:Microsoft の個人用アカウントを使用してのみサインインできます。
 
-### <a name="configure-your-todolistclient-project"></a>*TodoListClient* プロジェクトを構成する
+1. アプリの **[概要]** ページで **[認証]** を選択し、次の手順を実行します。
 
-1. *アプリケーション登録ポータル*の **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値をコピーします。
-1. **TodoListClient** プロジェクトのルート フォルダーにある **app.config** ファイルを開き、値を `ida:ClientId` パラメーター値に貼り付けます。
+    1. **[プラットフォーム構成]** で **[プラットフォームを追加]** ボタンを選択します。
+    1. **[モバイル アプリケーションとデスクトップ アプリケーション]** で、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+    1. **[リダイレクト URI]** で、 **https://login.microsoftonline.com/common/oauth2/nativeclient** のチェック ボックスをオンにします。
+    1. **[構成]** をクリックします。
 
-## <a name="run-your-project"></a>プロジェクトを実行する
+1. **[API のアクセス許可]** を選択し、次の手順を実行します。
 
-1. `<F5>` キーを押してプロジェクトを実行します。 *TodoListClient* が開きます。
-1. 右上にある **[サインイン]** を選択し、アプリケーションの登録に使用したのと同じユーザー、または同じディレクトリ内のユーザーでサインインします。
-1. 初めてサインインする場合は、この時点で *TodoListService* Web API に同意するように求められることがあります。
-1. このサインインでは、*TodoListService* Web API にアクセスして *To-Do* リストを操作するためのアクセス トークンも *access_as_user* スコープに対して要求されます。
+    1. **[アクセス許可の追加]** ボタンを選択します。
+    1. **[自分の API]** タブを選択します。
+    1. API のリストで **[AppModelv2-NativeClient-DotNet-TodoListService API]** または Web API に入力した名前を選択します。
+    1. まだ選択していない場合は、**access_as_user** アクセス許可のチェック ボックスをオンにします。 必要に応じて検索ボックスを使用します。
+    1. **[アクセス許可の追加]** ボタンを選択します
+
+### <a name="configure-your-project"></a>プロジェクトを構成する
+
+次の手順を実行して、TodoListClient プロジェクトを構成します。
+
+1. **アプリの登録** ポータルの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値をコピーします。
+
+1. TodoListClient プロジェクトのルート フォルダーで *app.config* ファイルを開き、アプリケーション ID の値を `ida:ClientId` パラメーターに貼り付けます。
+
+## <a name="run-your-todolistclient-project"></a>TodoListClient プロジェクトを実行する
+
+次の手順を実行して、TodoListClient プロジェクトを実行します。
+
+1. F5 キーを押して TodoListClient プロジェクトを開きます。 プロジェクト ページが開きます。
+
+1. 右上にある **[サインイン]** を選択し、アプリケーションの登録に使用したのと同じ資格情報でサインインするか、同じディレクトリ内のユーザーとしてサインインします。
+
+   初めてサインインする場合は、TodoListService Web API に同意するように求められることがあります。
+
+   TodoListService Web API にアクセスし、*To-Do* リストを操作できるようにするために、このサインインでは *access_as_user* スコープへのアクセス トークンも要求されます。
 
 ## <a name="pre-authorize-your-client-application"></a>クライアント アプリケーションを事前承認する
 
-他のディレクトリのユーザーが Web API にアクセスできるようにする方法の 1 つは、Web API に対する "*事前承認済み*" アプリケーションの一覧にあるクライアント アプリケーションのアプリケーション ID を追加することで、Web API にアクセスするためにクライアント アプリケーションを "*事前承認*" することです。 事前承認済みのクライアントを追加することで、Web API の使用に同意する必要がなくなります。 Web アプリケーションを事前承認するには、次の手順に従います。
+他のディレクトリのユーザーが Web API にアクセスできるようにする方法の 1 つとして、Web API にアクセスするクライアント アプリケーションを事前承認する方法があります。 これを行うには、クライアント アプリからのアプリケーション ID を Web API の事前承認済みアプリケーションのリストに追加します。 事前承認されたクライアントを追加すると、ユーザーは同意しなくても Web API にアクセスできるようになります。 次の手順を実行して、クライアント アプリを事前承認します。
 
-1. *アプリケーション登録ポータル*に戻り、**TodoListService** のプロパティを開きます。
-1. **[API の公開]** セクションで、 *[承認済みのクライアント アプリケーション]* セクションの **[クライアント アプリケーションの追加]** をクリックします。
-1. *[クライアント ID]* フィールドに、`TodoListClient` アプリケーションのアプリケーション ID を貼り付けます。
-1. *[承認済みのスコープ]* セクションで、この Web API のスコープ `api://<Application ID>/access_as_user` を選択します。
-1. ページの下部にある **[アプリケーションの追加]** ボタンを押します。
+1. **アプリの登録** ポータルで、TodoListService アプリのプロパティを開きます。
+1. **[API の公開]** セクションの **[承認済みのクライアント アプリケーション]** で **[クライアント アプリケーションの追加]** を選択します。
+1. **[クライアント ID]** ボックスに、TodoListClient アプリのアプリケーション ID を貼り付けます。
+1. **[承認済みのスコープ]** セクションで、`api://<Application ID>/access_as_user` Web API のスコープを選択します。
+1. **[アプリケーションの追加]** をクリックします。
 
-## <a name="run-your-project"></a>プロジェクトを実行する
+### <a name="run-your-project"></a>プロジェクトを実行する
 
-1. `<F5>` キーを押してプロジェクトを実行します。 *TodoListClient* が開きます。
-1. 右上にある **[サインイン]** (または [キャッシュをクリア]/[サインイン]) を選択し、個人用 Microsoft アカウント (live.com または hotmail.com) を使用するか、職場または学校アカウントを使用してサインインします。
+1. F5 キーを押してプロジェクトを実行します。 TodoListClient アプリが開きます。
+1. 右上にある **[サインイン]** を選択して、live.com、hotmail.com などの Microsoft の個人用アカウント、または職場または学校アカウントを使用してサインインします。
 
-## <a name="optional-restrict-sign-in-access-to-your-application"></a>省略可能:アプリケーションへのサインイン アクセスを制限する
+## <a name="optional-limit-sign-in-access-to-certain-users"></a>省略可能:サインイン アクセスを特定のユーザーに制限する
 
-既定では、このコード サンプルをダウンロードして、前の手順の後に Azure Active Directory v2 エンドポイントを使用するようにアプリケーションを構成すると、個人アカウント (outlook.com、live.com など) と、Azure AD に統合された組織の職場または学校アカウントの両方で、トークンを要求して Web API にアクセスできます。
+既定では、上記の手順に従うと、outlook.com、live.com などの個人用アカウント、または Azure AD に統合されている組織の職場または学校アカウントはすべて、トークンを要求したり、Web API にアクセスしたりできます。
 
-アプリケーションにサインインできるユーザーを制限するには、次のいずれかのオプションを使用します。
+アプリケーションにサインインできるユーザーを指定するには、次のいずれかのオプションを使用します。
 
-### <a name="option-1-restrict-access-to-a-single-organization-single-tenant"></a>オプション 1: 単一の組織へのアクセスを制限する (シングルテナント)
+### <a name="option-1-limit-access-to-a-single-organization-single-tenant"></a>オプション 1: 単一の組織へのアクセスを制限する (シングル テナント)
 
-単一の Azure AD テナントに属するユーザー アカウント (そのテナントの*ゲスト アカウント*を含む) のみに対して、アプリケーションへのサインイン アクセスを制限できます。 このシナリオは、*基幹業務アプリケーション*に共通です。
+単一の Azure AD テナントに属するユーザー アカウント (そのテナントの *ゲスト アカウント* を含む) に、アプリケーションへのサインイン アクセスを制限できます。 このシナリオは、*基幹業務アプリケーション* に共通です。
 
-1. **App_Start\Startup.Auth** ファイルを開き、`OpenIdConnectSecurityTokenProvider` に渡されたメタデータ エンドポイントの値を `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` に変更します (`contoso.onmicrosoft.com` などのテナント名を使用することもできます)。
+1. *App_Start\Startup.Auth* ファイルを開き、`OpenIdConnectSecurityTokenProvider` に渡されたメタデータの値を `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` に変更します。 `contoso.onmicrosoft.com` などのテナント名を使用することもできます。
 2. 同じファイルで、`TokenValidationParameters` の `ValidIssuer` プロパティを `"https://sts.windows.net/{Tenant ID}/"` に設定し、`ValidateIssuer` 引数を `true` に設定します。
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>オプション 2:カスタム メソッドを使用して発行者を検証する
 
-**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters クラス](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters?view=azure-dotnet)に関するページをご覧ください。
+`IssuerValidator` パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの詳細については、[TokenValidationParameters クラス](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters?view=azure-dotnet&preserve-view=true)に関するページを参照してください。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

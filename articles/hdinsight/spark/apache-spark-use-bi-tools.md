@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82195113"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821283"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル:HDInsight での Power BI を使用した Apache Spark データの分析
 
@@ -99,7 +99,7 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
     1. **[視覚エフェクト]** ウィンドウで **[面グラフ]** を選択します。
 
-    2. **[BuildingID]** フィールドを**軸**にドラッグし、 **[ActualTemp]** と **[TargetTemp]** の各フィールドを**値**にドラッグします。
+    2. **[BuildingID]** フィールドを **軸** にドラッグし、 **[ActualTemp]** と **[TargetTemp]** の各フィールドを **値** にドラッグします。
 
         ![値の列を追加](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "値の列を追加")
 

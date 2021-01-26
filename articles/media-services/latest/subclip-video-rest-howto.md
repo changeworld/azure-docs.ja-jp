@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: 2a78e8c8c204e5cedeb8bdd2a25cff40a3e5cc44
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 524da91d55bad29a5f7c6dcec0eecc245b9954fd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296551"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511911"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST
 
@@ -49,7 +49,7 @@ ms.locfileid: "89296551"
 1. "transformName" 環境変数の値を実際の変換名で更新します。 
 1. **[Body]\(本文\)** タブを選択し、"myOutputAsset" を実際の出力アセットの名前で更新します。
 
-    ```
+    ```json
     {
       "properties": {
         "description": "A Job with transform cb9599fb-03b3-40eb-a2ff-7ea909f53735 and single clip.",
@@ -58,8 +58,8 @@ ms.locfileid: "89296551"
           "@odata.type": "#Microsoft.Media.JobInputHttp",
           "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
           "files": [
-                "Ignite-short.mp4"
-            ],
+            "Ignite-short.mp4"
+          ],
           "start": {
             "@odata.type": "#Microsoft.Media.AbsoluteClipTime",
             "time": "PT10S"
@@ -82,7 +82,7 @@ ms.locfileid: "89296551"
     ```
 1. **[送信]** をクリックします。
 
-    作成および送信されたジョブに関する情報とジョブの状態とを含んだ**応答**が表示されます。 
+    作成および送信されたジョブに関する情報とジョブの状態とを含んだ **応答** が表示されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

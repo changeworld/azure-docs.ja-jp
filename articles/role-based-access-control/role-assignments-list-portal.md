@@ -7,26 +7,25 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361852"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964373"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
 > 組織が、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>ユーザーまたはグループのロールの割り当てを一覧表示する
 
-サブスクリプションのユーザーまたはグループに割り当てられているロールを最も簡単に確認する方法は、 **[Azure でのロールの割り当て]** ペインを使用することです。
+サブスクリプションのユーザーまたはグループに割り当てられているロールを簡単に確認する方法は、 **[Azure ロールの割り当て]** ペインを使用することです。
 
 1. Azure portal で、Azure portal メニューから **[すべてのサービス]** を選択します。
 
@@ -56,7 +55,7 @@ ms.locfileid: "85361852"
 
 1. **[所有者]** セクションまでスクロールして、このサブスクリプションの所有者ロールが割り当てられているすべてのユーザーを表示します。
 
-   ![サブスクリプションへのアクセスの制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![サブスクリプションへのアクセスの制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/sub-access-control-role-assignments-owners.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>あるスコープのロールの割り当てを一覧表示する
 
@@ -68,7 +67,7 @@ ms.locfileid: "85361852"
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのすべてのロールの割り当てを表示します。
 
-   ![アクセス制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![アクセス制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/rg-access-control-role-assignments.png)
 
    [ロールの割り当て] タブでは、このスコープにアクセス権があるユーザーを確認できます。 スコープが **[このリソース]** のロールもあれば、別のスコープからスコープを **[(継承)]** しているロールもあることに注目してください。 アクセス権は、このリソースに明確に割り当てられるか、または親スコープへの割り当てから継承されます。
 
@@ -84,19 +83,23 @@ ms.locfileid: "85361852"
 
 1. **[アクセスの確認]** タブをクリックします。
 
-    ![アクセス制御 - [アクセスの確認] タブ](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![リソース グループのアクセス制御 - [アクセスの確認] タブ](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
-1. **[検索]** 一覧で、アクセス権を確認するセキュリティ プリンシパルの種類を選択します。
+1. **[検索]** ボックスの一覧で、アクセスを確認するユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
 
 1. 検索ボックスに、表示名、メール アドレス、またはオブジェクト識別子のディレクトリを検索するための文字列を入力します。
 
-    ![[アクセスの確認] の選択リスト](./media/role-assignments-list-portal/check-access-select.png)
+    ![[アクセスの確認] の選択リスト](./media/shared/rg-check-access-select.png)
 
 1. セキュリティ プリンシパルをクリックして **[割り当て]** ウィンドウを開きます。
 
-    ![[割り当て] ウィンドウ](./media/role-assignments-list-portal/check-access-assignments.png)
+    このウィンドウでは、このスコープで選択し、このスコープに継承された、セキュリティ プリンシパルのアクセス権を確認できます。 子スコープでの割り当ては表示されません。 次の割り当てが表示されます。
 
-    このウィンドウでは、選択したセキュリティ プリンシパルに割り当てられているロールとスコープを確認できます。 このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合は、それが表示されます。
+    - Azure RBAC で追加されたロール割り当て。
+    - Azure Blueprints または Azure マネージド アプリを使用して追加された拒否割り当て。
+    - 従来のデプロイ向けの、従来のサービス管理者または共同管理者の割り当て。 
+
+    ![[割り当て] ウィンドウ](./media/shared/rg-check-access-assignments-user.png)
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>マネージド ID のロールの割り当ての一覧表示
 
@@ -126,7 +129,7 @@ ms.locfileid: "85361852"
 
     管理グループ、サブスクリプション、リソース グループ、リソースなどのさまざまなスコープで、選択したユーザー割り当てマネージド ID に割り当てられているロールの一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
 
-    ![システム割り当てマネージド ID のロールの割り当て](./media/shared/role-assignments-user-assigned.png)
+    ![ユーザー割り当てマネージド ID に対するロールの割り当てを示しているスクリーンショット。](./media/shared/role-assignments-user-assigned.png)
 
 1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
 
@@ -140,14 +143,9 @@ ms.locfileid: "85361852"
 
 ![アクセス制御 - ロールの割り当ての追加の警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="download-role-assignments-preview"></a>ロールの割り当てのダウンロード (プレビュー)
+## <a name="download-role-assignments"></a>ロールの割り当てのダウンロード
 
 スコープ内のロールの割り当ては、CSV 形式または JSON 形式でダウンロードできます。 これは、スプレッドシート内のリストを検査したり、サブスクリプションの移行時にインベントリを取得したりする必要がある場合に役立ちます。
-
-> [!IMPORTANT]
-> ロールの割り当てのダウンロードは、現在パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ロールの割り当てをダウンロードするときは、次の条件に注意する必要があります。
 
@@ -163,7 +161,7 @@ ms.locfileid: "85361852"
 
 1. **[アクセス制御 (IAM)]** をクリックします。
 
-1. **[ロールの割り当てのダウンロード] (プレビュー)** をクリックして、[ロールの割り当てのダウンロード] ペインを開きます。
+1. **[ロールの割り当てのダウンロード]** をクリックして、[ロールの割り当てのダウンロード] ペインを開きます。
 
     ![アクセス制御 - ロールの割り当てのダウンロード](./media/role-assignments-list-portal/download-role-assignments.png)
 
@@ -183,7 +181,7 @@ ms.locfileid: "85361852"
 
     ![ロールの割り当てを CSV としてダウンロード](./media/role-assignments-list-portal/download-role-assignments-csv.png)
 
-    ![ロールの割り当てを CSV としてダウンロード](./media/role-assignments-list-portal/download-role-assignments-json.png)
+    ![ダウンロードされた JSON 形式のロールの割り当てのスクリーンショット。](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>次のステップ
 

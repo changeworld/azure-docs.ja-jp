@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82233467"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する
@@ -40,7 +40,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 |:---|:---|
 | Name | シンクのわかりやすい名前。 シンクに送信するデータ ソースを指定するために構成で使用します。 |
 | url  | \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\> の形式のイベント ハブの URL。          |
-| SharedAccessKeyName | イベント ハブに対する少なくとも**送信**権限を持つ共有アクセス ポリシーの名前。 |
+| SharedAccessKeyName | イベント ハブに対する少なくとも **送信** 権限を持つ共有アクセス ポリシーの名前。 |
 | SharedAccessKey     | イベント ハブに対する共有アクセス ポリシーのプライマリ キーまたはセカンダリ キー。 |
 
 パブリック構成とプライベート構成の例を次に示します。 これは、イベント ハブ データ シンクの構成方法と使用方法を説明するために、1 つのパフォーマンス カウンターとイベント ログを含む最小構成です。 より複雑な例については、「[Azure Diagnostics の構成スキーマ](diagnostics-extension-schema-windows.md)」を参照してください。
@@ -170,7 +170,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs シンクのトラブルシューティング
 
-- Azure Diagnostics 自体のログとエラーが含まれる Azure Storage のテーブル **WADDiagnosticInfrastructureLogsTable** を確認します。 1 つの方法は、 [Azure Storage Explorer](https://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
+- Azure Diagnostics 自体のログとエラーが含まれる Azure Storage のテーブル **WADDiagnosticInfrastructureLogsTable** を確認します。 1 つの方法は、 [Azure Storage Explorer](https://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs** のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
 
 - イベント ハブが正しくプロビジョニングされていることを確認してください。 構成の **PrivateConfig** セクションのすべての接続情報は、ポータルに表示されるリソースの値に一致している必要があります。 ポータルで SAS ポリシー (この例では *SendRule*) が定義されていること、および "*送信*" アクセス許可が付与されていることを確認します。  
 

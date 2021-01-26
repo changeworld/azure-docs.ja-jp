@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67503388"
 ---
 Premium ファイルは、**FileStorage** と呼ばれる一意のストレージ アカウントを使用します。 このアカウントの種類は、高 IOPS、高スループットで、一貫して待機時間の短い のワークロード向けに設計されています。 Premium ファイル ストレージは、プロビジョニングされた共有サイズに合わせて拡大縮小されます。

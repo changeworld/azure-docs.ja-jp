@@ -3,12 +3,12 @@ title: Azure DevTest Labs を使用してラボを作成する | Microsoft Docs
 description: このチュートリアルでは、Azure portal を使って Azure DevTest Labs のラボを作成します。 ラボの管理者は、ラボを設定し、ラボに VM を作成して、ポリシーを構成します。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85476565"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324282"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
 このチュートリアルでは、Azure portal を使ってラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     2. **[ユーザー名]** に、仮想マシンにアクセスできるユーザーの名前を入力します。 
     3. **[パスワード]** に、ユーザーのパスワードを入力します。 
 
-        ![ベースの選択](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![[Create lab resource]\(ラボ リソースの作成\) ページの [基本設定] のスクリーンショット。](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. **[詳細設定]** タブを選択します。
     1. **[このマシンを要求可能にする]** で、 **[はい]** を選びます。
     2. **インスタンス数**が **1** に設定されていることを確認します。 **2** に設定すると、`<base image name>00' and <base image name>01` という名前で 2 つの VM が作成されます。 たとえば、`win10vm00` と `win10vm01` などです。     

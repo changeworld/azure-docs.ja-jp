@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Python で仮想マシンを使用して Azure Key Vault を使用する | Microsoft Docs
-description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように ASP.NET Core アプリケーションを構成します。
+description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように仮想マシン Python アプリケーションを構成します。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875951"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285309"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>チュートリアル:Python で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -58,7 +58,7 @@ az login
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-次のいずれかの方法を使用して、**myVM** という名前の VM を作成します。
+次のいずれかの方法を使用して、 **myVM** という名前の VM を作成します。
 
 | Linux | Windows |
 |--|--|
@@ -66,7 +66,7 @@ az login
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure ポータル](../../virtual-machines/windows/quick-create-portal.md) |
 
-Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh*) に配置されます。 
+Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、 *azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh* ) に配置されます。 
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>サンプルの Python スクリプトを作成して編集する
 
-仮想マシンで、**sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
+仮想マシンで、 **sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
 
 ```python
 from azure.keyvault.secrets import SecretClient
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>サンプルの Python アプリを実行する
 
-最後に、**sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
+最後に、 **sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
 
 ```bash
 python3 sample.py
@@ -166,4 +166,4 @@ az group delete -g myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](/rest/api/keyvault/)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2730c6ce523e618110cd29b13ba2f37115e2cbd0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.custom: devx-track-js
+ms.openlocfilehash: 99e17db99842546b7f595d62f82f8bacb0ee6a8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267685"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329705"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Azure Media Services で Video.js プレーヤーを使用する方法
 

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183635"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608590"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -21,6 +21,9 @@ ms.locfileid: "88183635"
 
 > [!NOTE]
 > この手順は、StorSimple Cloud Appliance では使用できません。 詳細については、クラウド アプライアンスのホスト サーバーを構成する方法を参照してください。
+
+> [!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 
 ## <a name="about-multipathing"></a>マルチパスについて
@@ -101,10 +104,10 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
         collisions:0 txqueuelen:0
         RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
     ```
-1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils*をインストールします。
+1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils* をインストールします。
    
    1. CentOS ホストに `root` としてログオンします。
-   1. *iSCSI-initiator-utils*をインストールします。 型:
+   1. *iSCSI-initiator-utils* をインストールします。 型:
       
        `yum install iscsi-initiator-utils`
    1. *iSCSI-Initiator-utils* が正常にインストールされた後で、iSCSI サービスを開始します。 型:
@@ -127,7 +130,7 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
         ```
       
        上の例から、iSCSI 環境では、2、3、4、5 の実行レベルでのブート時に実行されることが確認できます。
-1. *device-mapper-multipath*をインストールします。 型:
+1. *device-mapper-multipath* をインストールします。 型:
    
     `yum install device-mapper-multipath`
    
@@ -377,9 +380,9 @@ A. 通常、マルチパスのパスが表示されないのはマルチパス �
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Q. 自分のデバイスがホワイトリストに登録されているかどうかわかりません。
+Q. 自分のデバイスが許可されているかどうかわかりません。
 
-A. ご使用のデバイスがホワイトリストに登録されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
+A. ご使用のデバイスが許可されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
 
 ```console
 multipathd -k
@@ -449,4 +452,3 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 
 * [CentOS での MPIO の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux トレーニング ガイド](http://linux-training.be/linuxsys.pdf)
-

@@ -56,14 +56,16 @@
           href: dsvm-common-identity.md
         - name: リソースのアクセス資格情報のセキュリティ保護
           href: dsvm-secure-access-keys.md
+    - name: Data Science Virtual Machine を Ubuntu 18.04 にアップグレードする
+      href: ubuntu-upgrade.md
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-science-vm.html'
+      href: /answers/topics/azure-data-science-vm.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=dsvm'
     - name: R 開発者ガイド
-      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=%2fazure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: リファレンス
   items:
     - name: Ubuntu Data Science Virtual Machine
@@ -72,5 +74,3 @@
       href: release-notes.md
     - name: 既知の問題
       href: reference-known-issues.md
-    - name: 非推奨のお知らせ
-      href: reference-deprecation.md

@@ -11,19 +11,22 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276186"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504357"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government クラウドのハイブリッド ID に関する考慮事項
 
 この記事では、Microsoft Azure Government クラウドでハイブリッド環境を統合する場合の考慮事項について説明します。 この情報は、Azure Government クラウドを操作している管理者と設計者のための参考資料として提供されています。
 
 > [!NOTE]
-> オンプレミスの Microsoft Azure Active Directory (Azure AD) 環境を Azure Government クラウドと統合するには、[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) の最新リリースにアップグレードする必要があります。
+> Microsoft Active Directory 環境 (オンプレミスのもの、または同じクラウド インスタンスの一部である IaaS にホストされているもの) を Azure Government クラウドと統合するには、[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) の最新リリースにアップグレードする必要があります。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 米国政府の国防総省エンドポイントの完全一覧については、[こちらのドキュメント](/office365/enterprise/office-365-u-s-government-dod-endpoints)を参照してください。
 
@@ -36,7 +39,7 @@ ms.locfileid: "89276186"
 パススルー認証エージェントをデプロイする前に、お使いのサーバーと Azure AD の間にファイアウォールがあるかどうかを確認します。 Domain Name System (DNS) でブロックされているプログラムまたは安全なプログラムがお使いのファイアウォールまたはプロキシで許可される場合、次の接続を追加します。
 
 > [!NOTE]
-> 次のガイダンスは、Azure Government 環境用に [Azure AD アプリケーション プロキシ コネクタ](https://aka.ms/whyappproxy)をインストールする場合にも適用されます。
+> 次のガイダンスは、Azure Government 環境用に [Azure AD アプリケーション プロキシ コネクタ](../manage-apps/what-is-application-proxy.md)をインストールする場合にも適用されます。
 
 |URL |用途|
 |-----|-----|

@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) コントローラー ログの表示
 description: Azure Kubernetes Service (AKS) で Kubernetes マスター ノードのログを有効にし、それらを表示する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 10/14/2020
+ms.openlocfilehash: 59e7259ae352491bddebe054f2c34bdc810ea48a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250738"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183228"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -17,7 +17,7 @@ Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-ma
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure portal][portal-quickstart] を使用して作成します。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
+この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure portal][portal-quickstart] を使用して作成します。 Azure Monitor ログは、Kubernetes RBAC と、Azure RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
 
 ## <a name="enable-resource-logs"></a>リソース ログの有効化
 
@@ -30,12 +30,18 @@ Azure Monitor ログの有効化と管理は、Azure portal で行います。 A
 1. AKS クラスター (*myAKSCluster* など) を選択し、 **[診断設定を追加する]** を選択します。
 1. 名前 (*myAKSClusterLogs* など) を入力し、 **[Log Analytics への送信]** オプションを選択します。
 1. 既存のワークスペースを選択するか、新しいワークスペースを作成します。 ワークスペースを作成する場合は、ワークスペースの名前、リソース グループ、および場所を指定します。
-1. 使用可能なログの一覧から、有効にするログを選択します。 一般的なログには、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* が含まれます。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
+1. 使用可能なログの一覧から、有効にするログを選択します。 この例では、*kube-audit* および *kube-audit-admin* ログを有効にします。 一般的なログには、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* が含まれます。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
 
-次に示すポータルのスクリーン ショットは、 *[診断設定]* ウィンドウの例です。
+## <a name="log-categories"></a>ログのカテゴリ
 
-![AKS クラスターの Azure Monitor ログに使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
+Kubernetes によって書き込まれたエントリに加えて、プロジェクトの監査ログには AKS からのエントリも含まれます。
+
+監査ログは、*kube-audit*、*kube-audit-admin*、*guard* の 3 つのカテゴリに記録されます。
+
+- *kube-audit* カテゴリには、すべての監査イベントのすべての監査ログ データが含まれており、これには *get*、*list*、*create*、*update*、*delete*、*patch*、および *post* が含まれます。
+- *kube-audit-admin* カテゴリは、*kube* ログ カテゴリのサブセットです。 *kube-audit-admin* は、*get* および *list* の監査イベントをログから除外することで、ログの数を大幅に削減します。
+- *guard* カテゴリはマネージド Azure AD および Azure RBAC 監査です。 マネージド Azure AD の場合: トークン入力、ユーザー情報出力。Azure RBAC の場合: アクセス レビューの入力と出力。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS クラスター上のテスト ポッドのスケジュール設定
 
@@ -49,7 +55,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -71,49 +77,71 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>収集したデータの表示
 
-診断ログが有効になって Log Analytics ワークスペースに表示されるまでには、数分かかる場合があります。 Azure portal で、Log Analytics ワークスペースのリソース グループ (*myResourceGroup* など) を選択し、Log Analytics リソース (*myAKSLogs* など) を選択します。
+診断ログが有効になって表示されるまでには、最大 10 分かかる場合があります。
 
-![AKS クラスターの Log Analytics ワークスペースを選択する](media/view-master-logs/select-log-analytics-workspace.png)
+> [!NOTE]
+> コンプライアンスまたはその他の目的ですべての監査ログ データが必要な場合は、データを収集して BLOB ストレージなどの安価なストレージに保存します。 *kube-audit-admin* ログ カテゴリを使用して、監視およびアラートの目的で意味のある監査ログ データのセットを収集して保存します。
 
-左側で、 **[ログ]** を選択します。 *kube-apiserver* を表示するには、テキスト ボックスに次のクエリを入力します。
+Azure portal で、AKS クラスターに移動し、左側にある **[ログ]** を選択します。 *[クエリの例]* ウィンドウが表示されている場合は閉じます。
 
-```
-AzureDiagnostics
-| where Category == "kube-apiserver"
-| project log_s
-```
-
-通常、多くのログは API サーバーに対して返されます。 クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、*pods/nginx* を検索します。
+左側で、**[ログ]** を選択します。 *kube-audit* ログを表示するには、テキスト ボックスに次のクエリを入力します。
 
 ```
 AzureDiagnostics
-| where Category == "kube-apiserver"
-| where log_s contains "pods/nginx"
+| where Category == "kube-audit"
 | project log_s
 ```
 
-次のスクリーン ショットのように、NGINX ポッドのログが表示されます。
+おそらく、多くのログが返されます。 クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、*nginx* を検索します。
 
-![サンプルの NGINX ポッドに対する Log Analytics クエリ 結果](media/view-master-logs/log-analytics-query-results.png)
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
+```
 
-クエリの*カテゴリ*名を *kube-controller-manager* や *kube-scheduler* に更新して (つまり、有効にするログの名前を指定して)、追加のログを表示することもできます。 さらに、*where* ステートメントを追加して目的のイベントを絞り込むこともできます。
+*kube-audit-admin* ログを表示するには、テキスト ボックスに次のクエリを入力します。
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| project log_s
+```
+
+この例では、クエリは *kube-audit-admin* のすべての作成ジョブを示しています。おそらく多くの結果が返されますが、クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、*nginx* を検索します。
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| where log_s contains "nginx"
+| project log_s
+```
+
 
 クエリの実行やログ データの絞り込みの方法について詳しくは、「[Log Analytics のログ検索で収集されたデータの表示または分析][analyze-log-analytics]」をご覧ください。
 
 ## <a name="log-event-schema"></a>ログのイベント スキーマ
 
-次の表は、各イベントに使用されるスキーマの説明をまとめたものです。ログ データを分析する際にご使用ください。
+AKS では、次のイベントがログに記録されます。
 
-| フィールド名               | 説明 |
-|--------------------------|-------------|
-| *resourceId*             | ログを生成した Azure リソース |
-| *time*                   | ログがアップロードされた時刻のタイムスタンプ |
-| *category*               | ログを生成するコンテナー/コンポーネントの名前 |
-| *operationName*          | 常に *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | コンポーネントから送られたログのフルテキスト |
-| *properties.stream*      | *stderr* または *stdout* |
-| *properties.pod*         | ログの取得元のポッド名 |
-| *properties.containerID* | このログの取得元の docker コンテナーの ID |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureDiagnostics][log-schema-azurediagnostics]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [ハートビート][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Perf][log-schema-perf]
 
 ## <a name="log-roles"></a>ログのロール
 
@@ -134,9 +162,26 @@ AzureDiagnostics
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
 [log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
-[analyze-log-analytics]: ../azure-monitor/log-query/get-started-portal.md
+[analyze-log-analytics]: ../azure-monitor/log-query/log-analytics-tutorial.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azurediagnostics]: /azure/azure-monitor/reference/tables/azurediagnostics
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: b3b2032d8cefe881e59fe339786877c4f03c9305
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f85cb97406e8b6cbb4811268696fc36f47ec3adb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553786"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pipedrive の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553786"
 * ユーザーが自分の Azure AD アカウントを使用して Pipedrive に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Pipedrive では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Pipedrive SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Pipedrive では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Pipedrive SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 
 ## <a name="adding-pipedrive-from-the-gallery"></a>ギャラリーからの Pipedrive の追加
@@ -51,7 +51,7 @@ Azure AD への Pipedrive の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Pipedrive**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Pipedrive** 」と入力します。
 1. 結果パネルから **[Pipedrive]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>Pipedrive の Azure AD シングル サインオンの構成とテスト
@@ -144,15 +144,15 @@ Pipedrive に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[User Profile]\(ユーザー プロファイル\)** をクリックし、 **[Settings]\(設定\)** を選択します。
 
-    ![Pipedrive の構成](./media/pipedrive-tutorial/configure1.png)
+    ![スクリーンショットは、[User Profile]\(ユーザー プロファイル\) メニューの [Settings]\(設定\) が選択されていることを示しています。](./media/pipedrive-tutorial/configure1.png)
 
 1. [SECURITY CENTER] まで下にスクロールし、 **[Single sign-on]\(シングル サインオン\)** を選択します。
 
-    ![Pipedrive の構成](./media/pipedrive-tutorial/configure2.png)
+    ![スクリーンショットは、[Security Center]\(セキュリティ センター\) で [Single sign-on]\(シングル サインオン\) が選択されていることを示しています。](./media/pipedrive-tutorial/configure2.png)
 
 1. **[SAML configuration for Pipedrive]\(Pipedrive の SAML 構成\)** セクションで、次の手順に従います。
 
-    ![Pipedrive の構成](./media/pipedrive-tutorial/configure3.png)
+    ![スクリーンショットは、[S A M L configuration for Pipedrive]\(Pipedrive の S A M L 構成\) セクションですべてのテキストボックスが強調表示されていることを示しています。](./media/pipedrive-tutorial/configure3.png)
 
     a. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
@@ -160,7 +160,7 @@ Pipedrive に対する Azure AD SSO を構成してテストするには、次�
 
     c. **[Single Log Out(SLO) url]\(シングル ログアウト (SLO) URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. **[x.509 certificate]\(x.509 証明書\)** ボックスで、Azure portal からダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をコピーして、 **[x.509 certificate]\(x.509 証明書\)** に貼り付けて、変更を保存します。
+    d. **[x.509 certificate]\(x.509 証明書\)** ボックスで、Azure portal からダウンロードした **証明書 (Base64)** ファイルをメモ帳で開き、その内容をコピーして、 **[x.509 certificate]\(x.509 証明書\)** に貼り付けて、変更を保存します。
 
 ### <a name="create-pipedrive-test-user"></a>Pipedrive テスト ユーザーの作成
 
@@ -168,11 +168,11 @@ Pipedrive に対する Azure AD SSO を構成してテストするには、次�
 
 1. [COMPANY] まで下にスクロールし、 **[Manage users]\(ユーザーの管理\)** を選択します。
 
-    ![Pipedrive の構成](./media/pipedrive-tutorial/user1.png)
+    ![スクリーンショットは、[Company]\(会社\) メニューで [Manage users]\(ユーザーの管理\) が選択されていることを示しています。](./media/pipedrive-tutorial/user1.png)
 
 1. **[Add users]\(ユーザーの追加)** をクリックします。
     
-    ![Pipedrive の構成](./media/pipedrive-tutorial/user2.png)
+    ![スクリーンショットは、[Manage users]\(ユーザーの管理\) ページの右側にある [Add users]\(ユーザーの追加\) ボタンが選択されていることを示しています。](./media/pipedrive-tutorial/user2.png)
 
 1. **[Manage users]\(ユーザーの管理\)** セクションで、次の手順を実行します。
 
@@ -190,16 +190,16 @@ Pipedrive に対する Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Pipedrive] タイルをクリックすると、SSO を設定した Pipedrive に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Pipedrive] タイルをクリックすると、SSO を設定した Pipedrive に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Pipedrive を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

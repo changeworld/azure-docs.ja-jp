@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行する際の、よく寄せられる質問について説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927530"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013969"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -113,6 +113,49 @@ Azure Dev Spaces は現在、Linux ベースのノード プールに対して�
 
 Windows ノードを含むクラスターでは、ポート不足が発生するまで、約 500 個のサービスを設定できます。
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Windows ノードで Azure ハイブリッド特典を使用できますか?
+
+正解です。 Windows Server 向け Azure ハイブリッド特典では、オンプレミスの Windows Server ライセンスを AKS Windows ノードに持ち込めるため、運用コストを削減できます。
+
+Azure ハイブリッド特典は、AKS クラスター全体または個々のノードで使用できます。 個々のノードの場合は、[ノード リソース グループ][resource-groups]に移動し、ノードに Azure ハイブリッド特典を直接適用する必要があります。 個々のノードに Azure ハイブリッド特典を適用する方法の詳細については、「[Windows Server 向け Azure Hybrid Benefit][hybrid-vms]」を参照してください。 
+
+新しい AKS クラスターで Azure ハイブリッド特典を使用するには、`--enable-ahub` 引数を使用します。
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+既存の AKS クラスターで Azure ハイブリッド特典を使用するには、`--enable-ahub` 引数を使用してクラスターを更新します。
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+クラスターに Azure ハイブリッド特典が設定されているかどうかを確認するには、次のコマンドを使用します。
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+クラスターで Azure ハイブリッド特典が有効になっている場合、`az vmss show` の出力は次のようになります。
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Windows コンテナーで Kubernetes Web ダッシュボードを使用できますか?
 
 はい。[Kubernetes Web ダッシュボード][kubernetes-dashboard] を使用して Windows コンテナーに関する情報にアクセスできますが、現時点では、Kubernetes Web ダッシュボードから直接、実行中の Windows コンテナーに、*kubectl exec* を実行することはできません。 実行中の Windows コンテナーへの接続の詳細については、「[メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する][windows-rdp]」を参照してください。
@@ -152,3 +195,5 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

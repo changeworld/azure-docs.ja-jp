@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:接続 - MySQL Workbench - Azure Database for MySQL
 description: このクイックスタートでは、MySQL Workbench を使用して、Azure Database for MySQL に接続のうえデータを照会するための手順を紹介します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5e27cfec0a3f0a58c1e94a822e0c831f4efa1b32
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185827"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535539"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:MySQL Workbench を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -40,7 +40,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 3. サーバー名をクリックします。
 
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for MySQL サーバー名](./media/connect-php/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>MySQL Workbench を使用したサーバーへの接続 
 GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続する手順は次のとおりです。
@@ -49,7 +49,7 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 
 2.    **[Setup New Connection]\(新しい接続のセットアップ\)** ダイアログ ボックスで、次の情報を **[Parameters]\(パラメーター\)** タブに入力します。
 
-![新しい接続のセットアップ](./media/connect-workbench/2-setup-new-connection.png)
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="新しい接続のセットアップ":::
 
 | **設定** | **推奨値** | **フィールドの説明** |
 |---|---|---|
@@ -103,13 +103,23 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 
     このスクリーンショットは、SQL Workbench に表示された SQL コードとその実行後の出力の例を示しています。
     
-    ![サンプル SQL コードを実行するための MySQL Workbench の SQL タブ](media/connect-workbench/3-workbench-sql-tab.png)
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="サンプル SQL コードを実行するための MySQL Workbench の SQL タブ":::
 
 2. サンプル SQL コードを実行するには、 **[SQL File]\(SQL ファイル\)** タブのツールバーにある稲妻アイコンをクリックします。
 3. ページ中央の **[結果グリッド]** セクションの 3 つのタブに結果が表示されていることに注目してください。 
 4. ページの下部にある **[Output]\(出力\)** リストに注目してください。 各コマンドの状態が表示されています。 
 
 これで、MySQL Workbench を使用して Azure Database for MySQL に接続し、SQL 言語を使用してデータを照会できました。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

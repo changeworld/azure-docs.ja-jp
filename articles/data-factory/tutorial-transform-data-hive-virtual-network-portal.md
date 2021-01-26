@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f6e1f80ebba0aa67cf2bab4a772ebc1765cd8298
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083068"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634370"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Azure portal から Azure Data Factory 内の Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 
@@ -38,19 +38,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure Storage アカウント**。 Hive スクリプトを作成し、Azure ストレージにアップロードします。 Hive スクリプトからの出力は、このストレージ アカウントに格納されます。 このサンプルでは、この Azure ストレージ アカウントがプライマリ ストレージとして HDInsight クラスターによって使用されます。 
+- **Azure Storage アカウント** 。 Hive スクリプトを作成し、Azure ストレージにアップロードします。 Hive スクリプトからの出力は、このストレージ アカウントに格納されます。 このサンプルでは、この Azure ストレージ アカウントがプライマリ ストレージとして HDInsight クラスターによって使用されます。 
 - **Azure Virtual Network。** Azure 仮想ネットワークを持っていない場合は、[こちらの手順](../virtual-network/quick-create-portal.md)に従って作成してください。 このサンプルでは、HDInsight は Azure 仮想ネットワーク内にあります。 Azure Virtual Network の構成例を次に示します。 
 
     ![Create virtual network](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **HDInsight クラスター。** HDInsight クラスターを作成し、前の手順で作成した仮想ネットワークに参加させます。手順については、「[Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)」を参照してください。 仮想ネットワークでの HDInsight の構成例を次に示します。 
+- **HDInsight クラスター。** HDInsight クラスターを作成し、前の手順で作成した仮想ネットワークに参加させます。手順については、「[Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-plan-virtual-network-deployment.md)」を参照してください。 仮想ネットワークでの HDInsight の構成例を次に示します。 
 
     ![仮想ネットワークでの HDInsight](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
-- **仮想マシン**。 Azure 仮想マシン VM を作成し、HDInsight クラスターが含まれている仮想ネットワークに参加させます。 詳細については、[仮想マシンの作成方法](../virtual-network/quick-create-portal.md#create-virtual-machines)に関するページを参照してください。 
+- **Azure PowerShell** 。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
+- **仮想マシン** 。 Azure 仮想マシン VM を作成し、HDInsight クラスターが含まれている仮想ネットワークに参加させます。 詳細については、[仮想マシンの作成方法](../virtual-network/quick-create-portal.md#create-virtual-machines)に関するページを参照してください。 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive スクリプトを BLOB ストレージ アカウントにアップロードする
 
-1. 次の内容で、**hivescript.hql** という名前の Hive SQL ファイルを作成します。
+1. 次の内容で、 **hivescript.hql** という名前の Hive SQL ファイルを作成します。
 
    ```sql
    DROP TABLE IF EXISTS HiveSampleOut; 
@@ -66,32 +66,32 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
        state
    FROM hivesampletable
    ```
-2. Azure BLOB ストレージで、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。
+2. Azure BLOB ストレージで、 **adftutorial** という名前のコンテナーを作成します (存在しない場合)。
 3. **hivescripts** という名前のフォルダーを作成します。
 4. **hivescript.hql** ファイルを **hivescripts** サブフォルダーにアップロードします。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+1. Web ブラウザー ( **Microsoft Edge** または **Google Chrome** ) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. [Azure Portal](https://portal.azure.com/) にログインします。    
 2. 左側のメニューで **[新規]** をクリックし、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
-3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialHiveFactory**」と入力します。 
+3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「 **ADFTutorialHiveFactory** 」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
-   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameMyAzureSsisDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameMyAzureSsisDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
     *データ ファクトリ名 "MyAzureSsisDataFactory" は利用できません*
-3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
+3. データ ファクトリを作成する Azure **サブスクリプション** を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
      リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2]** を選択します。
+4. **バージョン** として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 データ ファクトリの作成がサポートされている場所のみが一覧に表示されます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。
@@ -102,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
     ![データ ファクトリのホーム ページ](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** をクリックして、別のタブで Data Factory ユーザー インターフェイス (UI) を起動します。
-11. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。 
+11. **開始** ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。 
 
     ![[編集] タブ](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
@@ -118,16 +118,16 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
 3. **[プライベート ネットワーク]** を選択し、 **[次へ]** をクリックします。
     
    ![[プライベート ネットワーク] の選択](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
-4. **[名前]** に「**MySelfHostedIR**」と入力し、 **[次へ]** をクリックします。 
+4. **[名前]** に「 **MySelfHostedIR** 」と入力し、 **[次へ]** をクリックします。 
 
    ![統合ランタイム名を指定する](./media/tutorial-transform-data-using-hive-in-vnet-portal/integration-runtime-name.png) 
-5. コピー ボタンをクリックして、統合ランタイムの**認証キー**をコピーして保存します。 ウィンドウを開いたままにしておきます。 このキーは、仮想マシンにインストールされている IR を登録するために使用します。 
+5. コピー ボタンをクリックして、統合ランタイムの **認証キー** をコピーして保存します。 ウィンドウを開いたままにしておきます。 このキーは、仮想マシンにインストールされている IR を登録するために使用します。 
 
    ![認証キーをコピーする](./media/tutorial-transform-data-using-hive-in-vnet-portal/copy-key.png)
 
 ### <a name="install-ir-on-a-virtual-machine"></a>仮想マシンに IR をインストールする
 
-1. Azure VM で、[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)をダウンロードします。 前の手順で取得した**認証キー**を使用して、セルフホステッド統合ランタイムを手動で登録します。 
+1. Azure VM で、[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)をダウンロードします。 前の手順で取得した **認証キー** を使用して、セルフホステッド統合ランタイムを手動で登録します。 
 
     ![統合ランタイムの登録](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
 
@@ -151,8 +151,8 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
 このセクションでは、次の 2 つのリンクされたサービスを作成してデプロイします。
-- Azure Storage アカウントをデータ ファクトリにリンクする、**Azure Storage のリンクされたサービス**。 このストレージは、HDInsight クラスターによって使用されるプライマリ ストレージです。 この場合、この Azure Storage アカウントを使用して、Hive スクリプトとスクリプトの出力を保存します。
-- **HDInsight のリンクされたサービス**。 Azure Data Factory は、Hive スクリプトを実行するために、スクリプトをこの HDInsight クラスターに送信します。
+- Azure Storage アカウントをデータ ファクトリにリンクする、 **Azure Storage のリンクされたサービス** 。 このストレージは、HDInsight クラスターによって使用されるプライマリ ストレージです。 この場合、この Azure Storage アカウントを使用して、Hive スクリプトとスクリプトの出力を保存します。
+- **HDInsight のリンクされたサービス** 。 Azure Data Factory は、Hive スクリプトを実行するために、スクリプトをこの HDInsight クラスターに送信します。
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 
@@ -164,7 +164,7 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
    ![[Azure Blob Storage] の選択](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    1. **[名前]** に「**AzureStorageLinkedService**」と入力します。
+    1. **[名前]** に「 **AzureStorageLinkedService** 」と入力します。
     2. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[MySelfHostedIR]** を選択します。
     3. **[ストレージ アカウント名]** で、使用する Azure ストレージ アカウントを選択します。 
     4. ストレージ アカウントへの接続をテストするために、 **[テスト接続]** をクリックします。
@@ -182,11 +182,11 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
     ![Azure HDInsight を選択する](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    1. **[名前]** に「**AzureHDInsightLinkedService**」と入力します。
+    1. **[名前]** に「 **AzureHDInsightLinkedService** 」と入力します。
     2. **[Bring your own HDInsight]\(自分で HDInsight を用意する\)** を選択します。 
     3. **[Hdi cluster]\(HDI クラスター\)** で、使用する HDInsight クラスターを選択します。 
-    4. HDInsight クラスターの**ユーザー名**を入力します。
-    5. ユーザーの**パスワード**を入力します。 
+    4. HDInsight クラスターの **ユーザー名** を入力します。
+    5. ユーザーの **パスワード** を入力します。 
     
         ![Azure HDInsight の設定](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-hdinsight.png)
 
@@ -220,20 +220,20 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
     2. **[ファイル パス]** で、 **[ストレージを参照]** をクリックします。 
  
         ![[ストレージを参照]](./media/tutorial-transform-data-using-hive-in-vnet-portal/browse-storage-hive-script.png)
-    3. **[Choose a file or folder]\(ファイルまたはフォルダーの選択\)** ウィンドウで、**adftutorial** コンテナーの **hivescripts** フォルダーに移動します。**hivescript.hql** を選択し、 **[完了]** をクリックします。  
+    3. **[Choose a file or folder]\(ファイルまたはフォルダーの選択\)** ウィンドウで、 **adftutorial** コンテナーの **hivescripts** フォルダーに移動します。 **hivescript.hql** を選択し、 **[完了]** をクリックします。  
         
         ![[Choose a file or folder]\(ファイルまたはフォルダーの選択\)](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
     4. **[ファイル パス]** に **adftutorial/hivescripts/hivescript.hql** が表示されていることを確認します。
 
         ![スクリプトの設定](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
-    5. **[スクリプト] タブ**で、 **[詳細]** セクションを展開します。 
+    5. **[スクリプト] タブ** で、 **[詳細]** セクションを展開します。 
     6. **[パラメーター]** の **[Auto-fill from script]\(スクリプトから自動入力\)** をクリックします。 
     7. **[出力]** パラメーターの値を `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 形式で入力します。 (例: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`)。
  
         ![[スクリプトの引数]](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. アーティファクトを Data Factory に公開するために、 **[発行]** をクリックします。
 
-    ![発行](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![Data Factory に公開するためのオプションを示すスクリーンショット。](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
 
@@ -276,6 +276,3 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
 
 > [!div class="nextstepaction"]
 >[Data Factory の制御フローの分岐とチェーン](tutorial-control-flow-portal.md)
-
-
-

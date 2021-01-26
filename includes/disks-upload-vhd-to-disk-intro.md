@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80420944"
 ---
 この記事では、ローカル コンピューターから Azure マネージド ディスクに VHD をアップロードする方法や、AzCopy を使用してマネージド ディスクを別のリージョンにコピーする方法について説明します。 このプロセス (直接アップロード) を使用すると、VHD を最大 32 TiB のサイズで直接マネージド ディスクにアップロードすることもできます。 現在、直接アップロードは、Standard HDD、Standard SSD、および Premium SSD マネージド ディスクでサポートされています。 Ultra ディスクでは、まだサポートされていません。

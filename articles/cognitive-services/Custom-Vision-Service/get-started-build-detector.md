@@ -1,25 +1,27 @@
 ---
-title: 'クイックスタート: オブジェクト検出器を構築する - Custom Vision Service'
+title: 'クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する'
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
+description: このクイックスタートでは、Custom Vision Web サイトを使用してオブジェクト検出器モデルを作成、トレーニング、テストする方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: 画像認識、画像認識アプリ、Custom Vision
+ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549549"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132581"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>クイック スタート:Custom Vision を使用してオブジェクト検出器を構築する方法
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する
 
-このクイックスタートでは、Custom Vision Web サイトをとおしてオブジェクト検出器を構築する方法について説明します。 検出器モデルを構築すると、オブジェクト検出のために Custom Vision Service を使用できます。
+このクイックスタートでは、Custom Vision Web サイトを使用してオブジェクト検出器モデルを作成する方法について説明します。 モデルを作成したら、新しい画像でテストを行い、最終的に、独自の画像認識アプリに統合することができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
@@ -27,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - 検出器モデルのトレーニングに使用する画像のセット。 GitHub 上の[サンプル イメージ](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)のセットを使用することができます。 または、以下のヒントを使用して、独自の画像を選択することもできます。
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal で Custom Vision リソースを作成する
+## <a name="create-custom-vision-resources"></a>Custom Vision リソースを作成する
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +47,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 1. プロジェクトの名前と説明を入力します。 次に、リソース グループを選択します。 サインインしたアカウントが Azure アカウントと関連付けられている場合は、[リソース グループ] ドロップダウンに、Custom Vision Service リソースを含むすべての Azure リソース グループが表示されます。 
 
    > [!NOTE]
-   > リソース グループを使用できない場合は、[Azure portal](https://portal.azure.com/) へのログインに使用したのと同じアカウントで [customvision.ai](https://customvision.ai) にログインしていることを確認してください。 また、Custom Vision リソースを配置した Azure portal のディレクトリと同じ "ディレクトリ" を Custom Vision ポータルで選択していることを確認してください。 どちらのサイトでも、画面の右上隅にあるドロップダウン アカウント メニューから、ディレクトリを選択できます。 
+   > リソース グループを使用できない場合は、[Azure portal](https://portal.azure.com/) へのログインに使用したのと同じアカウントで [customvision.ai](https://customvision.ai) にログインしていることを確認してください。 また、Custom Vision リソースを配置した Azure portal のディレクトリと同じ "ディレクトリ" を Custom Vision Web サイトで選択していることを確認してください。 どちらのサイトでも、画面の右上隅にあるドロップダウン アカウント メニューから、ディレクトリを選択できます。 
 
 1. __[プロジェクトの種類]__ で __[Object Detection]\(オブジェクトの検出\)__ を選択します。
 
@@ -55,7 +57,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     |---|---|
     |__全般__| さまざまなオブジェクト検出タスク用に最適化されています。 他のドメインのいずれも適切でないか、どのドメインを選択すればよいか不確かな場合は、汎用ドメインを選択してください。 |
     |__ロゴ__|画像内のブランド ロゴを探すために最適化されています。|
-    |__棚の製品__|棚で製品を検出して分類するために最適化されています。|
+    |__シェルブの製品__|シェルブで製品を検出して分類するために最適化されています。|
     |__コンパクト ドメイン__| モバイル デバイス上でのリアルタイムのオブジェクト検出の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
 1. 最後に、__[プロジェクトの作成]__ を選択します。
@@ -96,8 +98,9 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 トレーニングが完了すると、モデルのパフォーマンスが計算され、表示されます。 Custom Vision サービスは、トレーニング用に送信した画像を利用して精度、再現率、および平均精度を計算します。 精度と再現率は、検出器の有効性を表す 2 つの異なる測定値です。
 
-- **精度**は、正しかったと識別された分類の割合を示します。 たとえばあるモデルで、100 個の画像が犬として識別され、それらのうち 99 個が実際に犬であった場合、精度は 99% になります。
-- **再現率**は、正しく識別された実際の分類の割合を示します。 たとえば、実際にりんごである画像が 100 個あり、そのモデルで、80 個がりんごとして識別された場合、再現率は 80% になります。
+- **精度** は、正しかったと識別された分類の割合を示します。 たとえばあるモデルで、100 個の画像が犬として識別され、それらのうち 99 個が実際に犬であった場合、精度は 99% になります。
+- **再現率** は、正しく識別された実際の分類の割合を示します。 たとえば、実際にりんごである画像が 100 個あり、そのモデルで、80 個がりんごとして識別された場合、再現率は 80% になります。
+- **平均精度** は、平均精度 (AP) の平均値です。 AP は、精度/再現率曲線 (行われた各予測の再現率に対してプロットされた精度) の下の領域です。
 
 ![トレーニング結果には、全体的な精度および再現率と、平均精度が表示されます。](./media/get-started-build-detector/trained-performance.png)
 
@@ -105,9 +108,13 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
+### <a name="overlap-threshold"></a>オーバーラップしきい値
+
+**[Overlap Threshold]\(重複しきい値\)** スライダーは、トレーニングにおいて、あるオブジェクトの予測がどの程度「正しい」と見なされるべきかを示します。 予測されるオブジェクトの境界ボックスと実際のユーザー入力の境界ボックスの間で許容される最小の重複を設定します。 境界ボックスの重複の程度がこれに及ばない場合、予測は正しいと見なされません。
+
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 
-検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい_イテレーション_を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
+検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
 トレーニング済みのモデルにプログラムでアクセスする方法については、「[Prediction API でモデルを使用する](./use-prediction-api.md)」を参照してください。
 
@@ -118,3 +125,4 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](test-your-model.md)
 
+* [Custom Vision とは](./overview.md)

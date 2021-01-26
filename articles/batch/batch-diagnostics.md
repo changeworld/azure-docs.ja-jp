@@ -2,17 +2,17 @@
 title: メトリック、アラート、診断ログ
 description: プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145088"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994113"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
- 
+
 この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と[診断ログ](../azure-monitor/platform/platform-logs-overview.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/platform/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。
 
 ## <a name="batch-metrics"></a>Batch メトリック
@@ -57,7 +57,7 @@ Azure Monitor API を使用して、メトリックをプログラムで取得�
 
 メトリックに関して順番どおりではない配信、データの損失、および重複が発生する可能性があるため、単一のデータ ポイントに関してトリガーされるアラートはお勧めしません。 アラートを作成するときに、しきい値を使用して、これらの不整合を考慮することができます。
 
-たとえば、優先順位の低いコアの数が特定のレベルに落ちた場合に生成されるメトリック アラートを構成して、プールの構成を調整できるようにします。 最良の結果を得るには、低優先度コア数の平均値が期間全体のしきい値を下回ったときにアラートをトリガーするための期間は 10 分以上に設定してください。 これにより、メトリックが集計する時間が増えるため、より正確な結果を得ることができます。 
+たとえば、優先順位の低いコアの数が特定のレベルに落ちた場合に生成されるメトリック アラートを構成して、プールの構成を調整できるようにします。 最良の結果を得るには、低優先度コア数の平均値が期間全体のしきい値を下回ったときにアラートをトリガーするための期間は 10 分以上に設定してください。 これにより、メトリックが集計する時間が増えるため、より正確な結果を得ることができます。
 
 Azure portal でメトリック アラートを構成するには:
 
@@ -76,8 +76,8 @@ Azure portal でメトリック アラートを構成するには:
 
 診断ログには、Azure リソースによって生成された、各リソースの操作を記述する情報が含まれます。 Batch では、次のログを収集できます。
 
-- プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成された**サービス ログ** イベント。
-- アカウント レベルの**メトリック** ログ。
+- プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成された **サービス ログ** イベント。
+- アカウント レベルの **メトリック** ログ。
 
 診断ログの収集を有効にする設定は、既定では有効になりません。 監視する Batch アカウントごとに診断ログを明示的に有効にする必要があります。
 
@@ -87,11 +87,11 @@ Azure portal でメトリック アラートを構成するには:
 
 または、次のことも可能です。
 
-- Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-about.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
+- Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-about.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。
 - 診断ログを [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
 
 > [!NOTE]
-> Azure サービスで診断ログ データの格納または処理を行うには、追加料金が発生することがあります。 
+> Azure サービスで診断ログ データの格納または処理を行うには、追加料金が発生することがあります。
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Batch 診断ログの収集を有効にする
 
@@ -105,7 +105,7 @@ Azure portal に新しい診断設定を作成するには、次の手順に従�
 6. **[ServiceLog]** 、 **[AllMetrics]** 、またはその両方を選択します。
 7. **[保存]** を選択して診断設定を作成します。
 
-[Azure portal で Azure Monitor を使用して収集を有効にする](../azure-monitor/platform/diagnostic-settings.md)ことで、診断設定を構成することもでき、これを行うには、[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-settings-template.md)を使用するか、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
+[Azure portal で Azure Monitor を使用して収集を有効にする](../azure-monitor/platform/diagnostic-settings.md)ことで、診断設定を構成することもでき、これを行うには、[Resource Manager テンプレート](../azure-monitor/samples/resource-manager-diagnostic-settings.md)を使用するか、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする
 
@@ -139,7 +139,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 
 ### <a name="service-log-events"></a>サービス ログ イベント
 
-Azure Batch サービス ログが収集される場合、そのログには、プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成されたイベントが含まれます。 Batch によって生成された各イベントが、JSON 形式で記録されます。 たとえば、次に示すのはサンプルの**プール作成イベント**の本文です。
+Azure Batch サービス ログが収集される場合、そのログには、プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成されたイベントが含まれます。 Batch によって生成された各イベントが、JSON 形式で記録されます。 たとえば、次に示すのはサンプルの **プール作成イベント** の本文です。
 
 ```json
 {
@@ -155,7 +155,7 @@ Azure Batch サービス ログが収集される場合、そのログには、�
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,9 +170,11 @@ Batch サービスによって生成されるサービス ログ イベントに
 - [プール削除の完了](batch-pool-delete-complete-event.md)
 - [プールのサイズ変更の開始](batch-pool-resize-start-event.md)
 - [プールのサイズ変更の完了](batch-pool-resize-complete-event.md)
+- [プールの自動スケーリング](batch-pool-autoscale-event.md)
 - [タスク開始](batch-task-start-event.md)
 - [タスク完了](batch-task-complete-event.md)
 - [タスク失敗](batch-task-fail-event.md)
+- [タスク スケジュール失敗](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,0 +1,54 @@
+- name: Azure Import/Export のドキュメント
+  href: ./index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Import/Export とは
+      href: storage-import-export-service.md
+- name: 概念
+  items:
+    - name: 要件を確認する
+      href: storage-import-export-requirements.md
+    - name: よく寄せられる質問
+      href: storage-import-export-service-faq.md
+- name: 方法
+  expanded: true
+  items:
+    - name: 配置
+      items:
+        - name: データを BLOB にインポートする
+          href: storage-import-export-data-to-blobs.md
+        - name: データをファイルにインポートする
+          href: storage-import-export-data-to-files.md
+        - name: BLOB からデータをエクスポートする
+          href: storage-import-export-data-from-blobs.md
+    - name: カスタマー マネージド キーを使用する
+      href: storage-import-export-encryption-key-portal.md
+    - name: モニター
+      items:
+        - name: ドライブの状態を表示する
+          href: storage-import-export-view-drive-status.md
+        - name: ジョブの状態を表示する
+          href: storage-import-export-tool-reviewing-job-status-v1.md
+    - name: トラブルシューティング
+      items:
+        - name: 一般的なエラーを修正する
+          href: storage-import-export-tool-troubleshooting-v1.md
+        - name: インポート ジョブを修復する
+          href: storage-import-export-tool-repairing-an-import-job-v1.md
+        - name: エクスポート ジョブを修復する
+          href: storage-import-export-tool-repairing-an-export-job-v1.md
+        - name: サポートに問い合わせる
+          href: storage-import-export-contact-microsoft-support.md
+- name: リファレンス
+  items:
+    - name: REST API
+      href: /rest/api/storageimportexport/jobs
+    - name: Azure PowerShell
+      href: /powershell/module/Az.ImportExport
+- name: リソース
+  items:
+    - name: データをオフラインでエクスポートする
+      href: /learn/modules/export-data-with-azure-import-export
+    - name: その他のオフライン転送オプション
+      href: ../databox/index.yml

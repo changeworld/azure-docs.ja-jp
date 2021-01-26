@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084683"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822252"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
-
-> [!div class="op_single_selector"]
-> * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
 
 HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://jupyter.org/) を、そのクラスターに標準では含まれていない、コミュニティから提供された外部の Apache **maven** パッケージを使用するように構成する方法について説明します。
 
@@ -39,7 +35,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
 1. `https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動します。`CLUSTERNAME` はご自身の Spark クラスターの名前です。
 
-1. 新しい Notebook を作成します。 **[新規]** を選択した後、 **[Spark]** を選択します。
+1. 新しい Notebook を作成します。 **[新規]** を選択した後、**[Spark]** を選択します。
 
     ![新しい Spark Jupyter Notebook を作成する](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook を作成します")
 
@@ -52,7 +48,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
     >[!IMPORTANT]  
     >最初のセルでカーネルを構成しなかった場合、`-f` パラメーターを指定して `%%configure` を使用できますが、その場合セッションが最初からやり直しとなり、すべての進捗が失われます。
 
-    | HDInsight のバージョン | command |
+    | HDInsight のバージョン | コマンド |
     |-------------------|---------|
     | HDInsight 3.5 および HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |HDInsight 3.3 および HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
@@ -63,7 +59,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。 収集した値が、クラスターに一致することを確認します。 この例では、Scala 2.11 と Spark 1.5.0 パッケージを使用していますが、クラスター内の Scala または Spark のバージョンに応じて別のバージョンを選択しなければならないことがあります。 クラスター上の Scala のバージョンを確認するには、Spark Jupyter カーネルまたは Spark 送信に対して `scala.util.Properties.versionString` を実行します。 クラスター上の Spark のバージョンを確認するには、Jupyter Notebook に対して `sc.version` を実行します。
 
-    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Use external packages with Jupyter notebook")
+    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook で外部のパッケージを使用します")
 
     c. 3 つの値をコロン ( **:** ) で区切って連結します。
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 42d1d66c67b554b4b98cd8267b5945049215f843
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254856"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556020"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>チュートリアル:コピー アクティビティがあるパイプラインを .NET API で作成する
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "85254856"
 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[パイプライン内の複数アクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。 
 
 > [!NOTE] 
-> Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)を参照してください。
+> Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/overview/azure/data-factory)を参照してください。
 > 
 > このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
@@ -55,7 +55,7 @@ ms.locfileid: "85254856"
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
 Azure Active Directory アプリケーションを作成し、アプリケーションのサービス プリンシパルを作成して、 **Data Factory 共同作成者** ロールに割り当てます。
 
-1. **PowerShell**を起動します。
+1. **PowerShell** を起動します。
 2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
 
     ```powershell
@@ -108,7 +108,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 9. アプリケーション ID を取得します。
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     出力のアプリケーション ID (applicationID) をメモします。
 
@@ -129,7 +129,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    6. [場所] で **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
 2. **[ツール]** をクリックし、 **[NuGet パッケージ マネージャー]** をポイントして、 **[パッケージ マネージャー コンソール]** をクリックします。
-3. **パッケージ マネージャー コンソール**で、次の手順を実行します。
+3. **パッケージ マネージャー コンソール** で、次の手順を実行します。
    1. 次のコマンドを実行して、Data Factory パッケージをインストールします: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. 次のコマンドを実行して、Azure Active Directory パッケージをインストールします (コードで Active Directory API を使用します): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. 次の **appSetttings** セクションを **App.config** ファイルに追加します。 これらの設定は、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。
@@ -190,7 +190,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    >
    > データ ファクトリの名前 (dataFactoryName) が一意になるように更新します。 データ ファクトリの名前はグローバルに一意にする必要があります。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 
-7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
+7. **データ ファクトリ** を作成する次のコードを **Main** メソッドに追加します。
 
     ```csharp
     // create a data factory
@@ -209,7 +209,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     ```
 
     データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。 それでは、この手順でデータ ファクトリの作成から始めましょう。
-8. **Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+8. **Azure Storage のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
    > [!IMPORTANT]
    > **storageaccountname** と **accountkey** を Azure ストレージ アカウントの名前とキーで置き換えます。
@@ -237,7 +237,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     したがって、AzureStorageLinkedService と AzureSqlLinkedService という名前の 2 つのリンクされたサービスを作成します (タイプ: AzureStorage、AzureSqlDatabase)。  
 
     AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このストレージ アカウントは、[前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部としてコンテナーを作成し、データをアップロードしたストレージ アカウントです。
-9. **Azure SQL のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+9. **Azure SQL のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
    > [!IMPORTANT]
    > **servername**、**databasename**、**username**、**password** をサーバー名、データベース名、ユーザー名、パスワードで置き換えます。
@@ -261,7 +261,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     ```
 
     AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。
-10. **入力データセットと出力データセット**を作成する次のコードを **Main** メソッドに追加します。
+10. **入力データセットと出力データセット** を作成する次のコードを **Main** メソッドに追加します。
 
     ```csharp
     // create input and output datasets
@@ -345,8 +345,8 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 
     この手順では、BLOB ファイル (emp.txt) を参照する InputDataset という名前のデータセットを作成します。このファイルは、リンクされたサービス AzureStorageLinkedService が表す Azure Storage 内の BLOB コンテナー (adftutorial) のルート フォルダーにあります。 fileName の値を指定しなかった場合やこれをスキップした場合、入力フォルダー内のすべての BLOB のデータがターゲットにコピーされます。 このチュートリアルでは、fileName の値を指定します。    
 
-    この手順では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService** で表されるデータベース内の SQL テーブルをポイントします。
-11. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。 この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する**コピー アクティビティ**を備えたパイプラインを作成します。
+    この手順では、 **OutputDataset** という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService** で表されるデータベース内の SQL テーブルをポイントします。
+11. **パイプラインを作成してアクティブにする** 次のコードを **Main** メソッドに追加します。 この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する **コピー アクティビティ** を備えたパイプラインを作成します。
 
     ```csharp
     // create a pipeline
@@ -519,7 +519,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 20. 指定したデータベースの **emp** テーブルに 2 つの従業員レコードが作成されることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)を参照してください。
+Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/overview/azure/data-factory)を参照してください。
 
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020407"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489542"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは `/example/jars/hadoop-mapreduce-examples.jar` です。  そのサンプルの 1 つに、**wordcount** があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブは `/example/data/gutenberg/davinci.txt` ファイルを読み取り、結果を `/example/data/davinciwordcount` に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
+この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは `/example/jars/hadoop-mapreduce-examples.jar` です。  そのサンプルの 1 つに、 **wordcount** があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブは `/example/data/gutenberg/davinci.txt` ファイルを読み取り、結果を `/example/data/davinciwordcount` に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
 
 > [!NOTE]  
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
@@ -174,5 +174,5 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * Hive ジョブの送信については、「[HDInsight .NET SDK を使用した Apache Hive クエリの実行](apache-hadoop-use-hive-dotnet-sdk.md)」を参照してください。
 * HDInsight クラスターの作成については、「[HDInsight での Linux ベースの Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 * HDInsight クラスターの管理については、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
-* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を参照してください。
+* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](/dotnet/api/overview/azure/hdinsight)を参照してください。
 * 非対話型認証については、「[非対話型認証 .NET HDInsight アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。

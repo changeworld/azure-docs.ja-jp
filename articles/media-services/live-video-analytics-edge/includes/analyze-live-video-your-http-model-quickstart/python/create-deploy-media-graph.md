@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6be3da1e031a1ea5b32f58343639d6e7fbf2425e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6aeded077c20e59b3f9b3863a9956596382d3a82
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684255"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531939"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>サンプル ファイルを調べて編集する
 
@@ -16,11 +16,11 @@ ms.locfileid: "88684255"
 
 1. *src/cloud-to-device-console-app* フォルダーに移動します。 ここには、*appsettings.json* ファイルと、他にいくつかのファイルがあります。
 
-    * ***c2d-console-app.csproj*** - Visual Studio Code のプロジェクト ファイルです。
-    * ***operations.json*** - プログラムで実行する操作のリストです。
-    * ***Program.cs*** - サンプル プログラム コードです。 このコードによって以下が行われます。
+    * ***c2d-console-app.csproj** - Visual Studio Code のプロジェクト ファイルです。
+    _ ***operations.json** _ - プログラムで実行する操作のリストです。
+    _ ***Program.cs** _ - サンプル プログラム コードです。 このコードによって以下が行われます。
 
-        * アプリ設定を読み込みます。
+        _ アプリ設定を読み込みます。
         * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用し、その[ダイレクト メソッド](../../../direct-methods.md)を呼び出すことで、ライブ ビデオ ストリームを分析できます。
         * プログラムの出力を **[ターミナル]** ウィンドウで調べたり、モジュールによって生成されたイベントを **[出力]** ウィンドウで調べたりできるように、一時停止します。
         * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。
@@ -29,7 +29,7 @@ ms.locfileid: "88684255"
 1. *operations.json* ファイルを編集します。
     * グラフ トポロジへのリンクを変更します。
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 
     * `GraphInstanceSet` で、前のリンクの値と一致するようにグラフ トポロジの名前を編集します。
 
@@ -68,9 +68,18 @@ ms.locfileid: "88684255"
 
 ### <a name="prepare-to-monitor-events"></a>イベントの監視の準備をする
 
-Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。 この手順は、Visual Studio Code の **[出力]** ウィンドウで、IoT Hub イベントを監視するために必要です。 
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
-![監視の開始](../../../media/quickstarts/start-monitoring-iothub-events.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
+1. Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。 この手順は、Visual Studio Code の **[出力]** ウィンドウで、IoT Hub イベントを監視するために必要です。 
+
+   ![監視の開始](../../../media/quickstarts/start-monitoring-iothub-events.png) 
 
 ### <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
@@ -82,7 +91,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
    Executing operation GraphTopologyList
    -----------------------  Request: GraphTopologyList  --------------------------------------------------
    {
-   "@apiVersion": "1.0"
+   "@apiVersion": "2.0"
    }
    ---------------  Response: GraphTopologyList - Status: 200  ---------------
    {
@@ -100,7 +109,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithHttpExtension",

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8843f24f27f8973ad99989f743d1b3fae568679e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997151"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90988046"
 ---
 # <a name="server-sizes"></a>サーバーのサイズ
 
@@ -23,7 +23,7 @@ Azure Remote Rendering は、`Standard` と `Premium` の 2 つのサーバー�
 
 'Standard' のサーバー サイズでレンダラーがこの制限に達すると、レンダリングがチェッカーボードの背景に切り替えられます。
 
-![チェッカーボード](media/checkerboard.png)
+![黒と白の正方形のグリッドと [ツール] メニューを表示するスクリーンショット。](media/checkerboard.png)
 
 ## <a name="specify-the-server-size"></a>サーバーのサイズを指定する
 

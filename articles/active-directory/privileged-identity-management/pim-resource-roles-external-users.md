@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010641"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management でゲスト ユーザーを招待して Azure リソース ロールを割り当てる
 
@@ -67,7 +67,7 @@ B2B コラボレーションを使用する場合は、外部ユーザーをゲ�
 
 Privileged Identity Management を使用すると、ゲストを招待し、Azure リソース ロールの資格を付与することができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)または[ユーザー管理者](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)または[ユーザー管理者](../roles/permissions-reference.md#user-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -157,7 +157,7 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
     ![時刻、要求元、およびアクションが一覧表示される [Azure リソース] - [リソースの監査] ページ](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. ゲストのアクティビティを表示するには、 **[Azure Active Directory]**  >  **[ユーザー]**  > *ゲスト名*の順に選択します。
+1. ゲストのアクティビティを表示するには、 **[Azure Active Directory]**  >  **[ユーザー]**  > *ゲスト名* の順に選択します。
 
 1. **[監査ログ]** を選択して、組織の監査ログを表示します。 必要に応じて、フィルターを指定できます。
 

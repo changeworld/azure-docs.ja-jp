@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004853"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327340"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法
 
@@ -23,7 +23,7 @@ Azure Cache for Redis インスタンスのメトリックが Redis [INFO](https
 
 キャッシュ メトリックを確認するには、[Azure Portal](https://portal.azure.com) で対象のキャッシュ インスタンスに[移動](cache-configure.md#configure-azure-cache-for-redis-settings)します。  Azure Cache for Redis の **[概要]** ブレードと **[Redis メトリック]** ブレードには組み込みのグラフがいくつか用意されています。 各グラフは、メトリックの追加や削除、レポート期間の変更など、カスタマイズすることができます。
 
-![[Redis メトリック]](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
+![6 個のグラフが表示されます。 そのうちの 1 つは、過去 1 時間のキャッシュ ヒットとキャッシュ ミスです。](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
 ## <a name="view-pre-configured-metrics-charts"></a>事前に構成されているメトリック グラフを表示する
 
@@ -48,17 +48,17 @@ Azure Cache for Redis インスタンスのメトリックが Redis [INFO](https
 
 ## <a name="view-metrics-with-azure-monitor"></a>Azure Monitor でメトリックを表示する
 
-Azure Monitor を使用して Redis のメトリックを表示し、カスタム グラフを作成するには、 **[リソース] メニュー**で **[メトリック]** をクリックし、目的のメトリック、レポート間隔、グラフの種類などを使用してグラフをカスタマイズします。
+Azure Monitor を使用して Redis のメトリックを表示し、カスタム グラフを作成するには、 **[リソース] メニュー** で **[メトリック]** をクリックし、目的のメトリック、レポート間隔、グラフの種類などを使用してグラフをカスタマイズします。
 
-![[Redis メトリック]](./media/cache-how-to-monitor/redis-cache-monitor.png)
+![Contoso55 の左側のナビゲーション ウィンドウで、[メトリック] は [監視] のオプションであり、強調表示されています。 [メトリック] では、メトリックの一覧が表示されます。 [キャッシュ ヒット] と [キャッシュ ミス] が選択されています。](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Azure Monitor を使用してメトリックを操作する方法について詳しくは、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」をご覧ください。
+Azure Monitor を使用してメトリックを操作する方法について詳しくは、「[Microsoft Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)」をご覧ください。
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>キャッシュ メトリックをエクスポートする
 
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../azure-monitor/platform/archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
 
 対象のキャッシュ メトリックのストレージ アカウントを構成するには:
 
@@ -67,7 +67,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 3. 設定に名前を付けます。
 4. **[ストレージ アカウントへのアーカイブ]** をオンにします。 診断データをストレージ アカウントに送信する際には、ストレージおよびトランザクションの通常のデータ料金が発生します。
 4. **[構成]** を選択してキャッシュ メトリックを格納するストレージ アカウントを選択します。
-5. 表の見出しの **[メトリック]** で、**AllMetrics** など、保存する品目の横にあるチェック ボックスをオンにします。 **[保有期間 (日)]** ポリシーを指定します。 指定できる最大保有期間は **365 日**です。 ただし、メトリック データを永続的に保持する場合は、 **[保有期間 (日)]** を「**0**」に設定します。
+5. 表の見出しの **[メトリック]** で、**AllMetrics** など、保存する品目の横にあるチェック ボックスをオンにします。 **[保有期間 (日)]** ポリシーを指定します。 指定できる最大保有期間は **365 日** です。 ただし、メトリック データを永続的に保持する場合は、 **[保有期間 (日)]** を「**0**」に設定します。
 6. **[保存]** をクリックします。
 
 
@@ -125,11 +125,11 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 * Webhook を呼び出す
 * Azure Logic App を呼び出す
 
-対象のキャッシュのアラート ルールを構成するには、 **[リソース] メニュー**で **[アラート ルール]** をクリックします。
+対象のキャッシュのアラート ルールを構成するには、 **[リソース] メニュー** で **[アラート ルール]** をクリックします。
 
 ![監視](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-アラートを構成して使用する方法について詳しくは、[アラートの概要](../monitoring-and-diagnostics/insights-alerts-portal.md)に関する記事をご覧ください。
+アラートを構成して使用する方法について詳しくは、[アラートの概要](../azure-monitor/platform/alerts-classic-portal.md)に関する記事をご覧ください。
 
 ## <a name="activity-logs"></a>アクティビティ ログ
 アクティビティ ログは、Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 以前は "監査ログ" や "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、Azure Cache for Redis インスタンスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。 
@@ -138,6 +138,6 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 > アクティビティ ログには、読み取り (GET) 操作は含まれません。
 >
 
-対象のキャッシュのアクティビティ ログを表示するには、 **[リソース] メニュー**で **[アクティビティ ログ]** をクリックします。
+対象のキャッシュのアクティビティ ログを表示するには、 **[リソース] メニュー** で **[アクティビティ ログ]** をクリックします。
 
 アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/platform/platform-logs-overview.md)」をご覧ください。

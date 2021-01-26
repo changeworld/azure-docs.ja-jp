@@ -11,19 +11,19 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 556af0c505197170a633cf1f949d87f5d2584690
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 9b88397f6ed507f2685bcd293ba16e55a6836f28
+  ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82131327"
+  ms.lasthandoff: 12/30/2020
+  ms.locfileid: "97813158"
 landingContent:
 - title: Custom Vision について
   linkLists:
   - linkListType: overview
     links:
     - text: Custom Vision とは
-      url: home.md
+      url: overview.md
   - linkListType: whats-new
     links:
     - text: 新機能
@@ -38,7 +38,7 @@ landingContent:
     links:
     - text: Web ポータルの使用
       url: getting-started-build-a-classifier.md
-    - text: Custom Vision SDK の使用
+    - text: Custom Vision SDK または REST API の使用
       url: quickstarts/image-classification.md
   - linkListType: how-to-guide
     links:
@@ -101,24 +101,22 @@ landingContent:
     - text: Prediction API
       url: https://go.microsoft.com/fwlink/?linkid=865445
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
     - text: Python SDK
-      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
+      url: /python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
     - text: Java SDK
-      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
     - text: Go SDK (training)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
     - text: Go SDK (prediction)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference
     links:
-    - text: UserVoice
-      url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
-    - text: Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context

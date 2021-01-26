@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure VM で実行されたバ�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22ff95fe5261a839927aa6ad8123ba370710f178
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007300"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91323092"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースを管理する
 
@@ -39,7 +39,7 @@ Azure CLI を使用すると、Azure Backup を使用してバックアップさ
 
 ## <a name="monitor-backup-and-restore-jobs"></a>バックアップ ジョブと復元ジョブを監視する
 
-完了した、または現在実行中のジョブ (バックアップまたは復元) を監視するには、[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) コマンドレットを使用します。 CLI を使って、[現在実行中のジョブを中断する](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop)ことや、[ジョブが完了するまで待機する](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)こともできます。
+完了した、または現在実行中のジョブ (バックアップまたは復元) を監視するには、[az backup job list](/cli/azure/backup/job#az-backup-job-list) コマンドレットを使用します。 CLI を使って、[現在実行中のジョブを中断する](/cli/azure/backup/job#az-backup-job-stop)ことや、[ジョブが完了するまで待機する](/cli/azure/backup/job#az-backup-job-wait)こともできます。
 
 ```azurecli-interactive
 az backup job list --resource-group saphanaResourceGroup \
@@ -60,7 +60,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>ポリシーを変更する
 
-SAP HANA バックアップ構成の基になるポリシーを変更するには、[az backup policy set](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-set) コマンドレットを使用します。 このコマンドレットの name パラメーターは、ポリシーを変更するバックアップ項目を示します。 このチュートリアルでは、SAP HANA データベースのポリシー *saphanadatabase;hxe;hxe* を新しいポリシー *newsaphanaPolicy* に置き換えます。 新しいポリシーを作成するには、[az backup policy create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) コマンドレットを使用します。
+SAP HANA バックアップ構成の基になるポリシーを変更するには、[az backup policy set](/cli/azure/backup/policy#az-backup-policy-set) コマンドレットを使用します。 このコマンドレットの name パラメーターは、ポリシーを変更するバックアップ項目を示します。 このチュートリアルでは、SAP HANA データベースのポリシー *saphanadatabase;hxe;hxe* を新しいポリシー *newsaphanaPolicy* に置き換えます。 新しいポリシーを作成するには、[az backup policy create](/cli/azure/backup/policy#az-backup-policy-create) コマンドレットを使用します。
 
 ```azurecli-interactive
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -82,7 +82,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 [Recovery Services コンテナーに SAP HANA インスタンスを登録する](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance)と、このインスタンス上のすべてのデータベースが自動的に検出されます。
 
-ただし、新しいデータベースが SAP HANA インスタンスに後で追加された場合は、[az backup protectable-item initialize](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) コマンドレットを使用します。 このコマンドレットによって、追加された新しいデータベースが検出されます。
+ただし、新しいデータベースが SAP HANA インスタンスに後で追加された場合は、[az backup protectable-item initialize](/cli/azure/backup/protectable-item#az-backup-protectable-item-initialize) コマンドレットを使用します。 このコマンドレットによって、追加された新しいデータベースが検出されます。
 
 ```azurecli-interactive
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -91,7 +91,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-次に、[az backup protectable-item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) コマンドレットを使用して、SAP HANA インスタンス上で検出されたすべてのデータベースを一覧表示します。 ただし、この一覧には、バックアップが既に構成されているデータベースは含まれません。 バックアップするデータベースが検出されたら、「[SAP HANA データベースでバックアップを有効にする](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)」を参照してください。
+次に、[az backup protectable-item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) コマンドレットを使用して、SAP HANA インスタンス上で検出されたすべてのデータベースを一覧表示します。 ただし、この一覧には、バックアップが既に構成されているデータベースは含まれません。 バックアップするデータベースが検出されたら、「[SAP HANA データベースでバックアップを有効にする](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)」を参照してください。
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -127,7 +127,7 @@ SAP HANA データベースの保護は、次のいくつかの方法で停止�
 
 ### <a name="stop-protection-with-retain-data"></a>データを保持して保護を停止
 
-データを保持して保護を停止するには、[az backup protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) コマンドレットを使用します。
+データを保持して保護を停止するには、[az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) コマンドレットを使用します。
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -146,11 +146,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-この操作の状態を確認するには、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用します。
+この操作の状態を確認するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
 
 ### <a name="stop-protection-without-retain-data"></a>データを保持せずに保護を停止する
 
-データを保持せずに保護を停止するには、[az backup protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) コマンドレットを使用します。
+データを保持せずに保護を停止するには、[az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) コマンドレットを使用します。
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -170,13 +170,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-この操作の状態を確認するには、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用します。
+この操作の状態を確認するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
 
 ## <a name="resume-protection"></a>Resume protection
 
 データを保持して SAP HANA データベースの保護を停止すると、後で保護を再開できます。 バックアップされたデータを保持しない場合は、保護を再開できなくなります。
 
-保護を再開するには、[az backup protection resume](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) コマンドレットを使用します。
+保護を再開するには、[az backup protection resume](/cli/azure/backup/protection#az-backup-protection-resume) コマンドレットを使用します。
 
 ```azurecli-interactive
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -194,7 +194,7 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-この操作の状態を確認するには、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用します。
+この操作の状態を確認するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

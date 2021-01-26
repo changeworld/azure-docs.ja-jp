@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654754"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498423"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -25,17 +25,14 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 >
 > 詳細については、[Windows](../virtual-machines/windows/storage-performance.md) または [Linux](../virtual-machines/linux/storage-performance.md) 用の「Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する」を参照してください。  
 
-ACU: 150 から 175
-
-バースト:サポートされています
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション:サポートされていません
-
-メモリ保持更新: サポートされていません
+[ACU](acu.md):150 から 175<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md):サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
+[VM 世代サポート](generation-2.md):第 1 世代と第 2 世代<br>
+バースト:サポートされています<br>
+<br>
 
 | サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時のデータ ディスク スループット (IOPs/MBps)<sup>4</sup> | キャッシュ不使用時の最大バースト データ ディスク スループット (IOPs/MBps)<sup>5</sup>| 最大データ ディスク数 | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -54,7 +51,7 @@ Premium Storage キャッシュ:サポートされていません
 
 <sup>4</sup> Lsv2 ワークロードに役立たないため、Lsv2 シリーズの VM ではデータ ディスク用のホスト キャッシュを提供しません。
 
-<sup>5</sup> Lsv2 シリーズの VM では、一度に最大 30 分間、ディスク パフォーマンスを[バースト](linux/disk-bursting.md)できます。 
+<sup>5</sup> Lsv2 シリーズの VM では、一度に最大 30 分間、ディスク パフォーマンスを[バースト](./disk-bursting.md)できます。 
 
 <sup>6</sup> vCPU が 64 個を超える VM には、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。
 
@@ -73,7 +70,7 @@ Premium Storage キャッシュ:サポートされていません
 - ストレージ容量は GiB (1024^3 バイト) 単位で示されています。 GB (1000^3 バイト) 単位のディスクと GiB (1024^3 バイト) 単位のディスクを比較する場合は、GiB 単位の方が容量の数値が小さく見えることに注意してください。 たとえば、1023 GiB = 1098.4 GB です。
 - ディスク スループットの測定単位は、1 秒あたりの入力/出力操作数 (IOPS) および MBps です (MBps = 10^6 バイト/秒)。
 - VM のパフォーマンスを最適にするには、データ ディスクの数を vCPU あたり 2 ディスクに制限する必要があります。
-- **想定ネットワーク帯域幅**は、すべての宛先について、すべての NIC で [VM の種類ごとに割り当てられた最大集約帯域幅](../virtual-network/virtual-machine-network-throughput.md)です。 上限は保証されませんが、目的のアプリケーションに適した VM の種類を選択するためのガイダンスを示しています。 実際のネットワークのパフォーマンスは、ネットワークの輻輳、アプリケーションの負荷、ネットワーク設定など、さまざまな要因に左右されます。 ネットワーク スループットの最適化については、[Windows および Linux のネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)に関する記事を参照してください。 Linux または Windows で想定ネットワーク パフォーマンスを実現するには、特定のバージョンを選択するか、VM を最適化することが必要になることがあります。 詳細については、[仮想マシンのスループットを確実にテストする方法](../virtual-network/virtual-network-bandwidth-testing.md)に関する記事を参照してください。
+- **想定ネットワーク帯域幅** は、すべての宛先について、すべての NIC で [VM の種類ごとに割り当てられた最大集約帯域幅](../virtual-network/virtual-machine-network-throughput.md)です。 上限は保証されませんが、目的のアプリケーションに適した VM の種類を選択するためのガイダンスを示しています。 実際のネットワークのパフォーマンスは、ネットワークの輻輳、アプリケーションの負荷、ネットワーク設定など、さまざまな要因に左右されます。 ネットワーク スループットの最適化については、[Windows および Linux のネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)に関する記事を参照してください。 Linux または Windows で想定ネットワーク パフォーマンスを実現するには、特定のバージョンを選択するか、VM を最適化することが必要になることがあります。 詳細については、[仮想マシンのスループットを確実にテストする方法](../virtual-network/virtual-network-bandwidth-testing.md)に関する記事を参照してください。
 
 
 ## <a name="other-sizes-and-information"></a>その他のサイズと情報

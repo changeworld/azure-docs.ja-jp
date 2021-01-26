@@ -1,15 +1,18 @@
 ---
 title: Azure Migrate について
 description: Azure Migrate サービスについて説明します。
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122083"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754081"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -18,7 +21,7 @@ ms.locfileid: "86122083"
 Azure Migrate では、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データを評価し、Azure への移行を行うための一元化されたハブが提供されます。 以下が提供されます。
 
 - **統合された移行プラットフォーム**:Azure への移行を開始、実行、追跡するための単一のポータル。
-- **ツールの範囲**:評価と移行のためのさまざまなツール。 Azure Migrate ツールには、Server Assessment と Azure Migrate が含まれています。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。 また、Azure Migrate は、他の Azure サービスやツール、さらに独立系ソフトウェア ベンダー (ISV) オファリングと統合されています。
+- **ツールの範囲**:評価と移行のためのさまざまなツール。 Azure Migrate ツールには、Azure Migrate:Server Assessment、Azure Migrate: Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。 また、Azure Migrate は、他の Azure サービスやツール、さらに独立系ソフトウェア ベンダー (ISV) オファリングと統合されています。
 - **評価と移行**: Azure Migrate ハブでは、以下の評価と移行を行うことができます。
     - **サーバー**:オンプレミスのサーバーを評価し、Azure の仮想マシンまたは Azure VMware Solution (AVS) (プレビュー) に移行します。
     - **データベース**: オンプレミスのデータベースを評価し、Azure SQL Database または SQL Managed Instance に移行します。
@@ -82,9 +85,9 @@ Azure Migrate: Server Migration ツールは、以下を Azure に移行する�
 
 **移行** | **詳細**
 --- | ---
-オンプレミスの VMware VM | エージェントレスまたはエージェントベースの移行を使用して、VM を Azure に移行します。<br/><br/> エージェントレス移行の場合、Server Migration では、オンプレミスに配置されている Azure Migrate アプライアンスが使用されます。 これは、Server Assessment に使用するものと同じ種類のアプライアンスです。<br/><br/> エージェントベース移行の場合、Server Assessment ではレプリケーション アプライアンスが使用されます。
-オンプレミスの Hyper-V VM | VM を Azure に移行します。<br/><br/> Server Assessment では、Hyper-V ホストにインストールされているプロバイダー エージェントが移行に使用されます。
-オンプレミスの物理サーバー | 物理マシンを Azure に移行できます。 また、他の仮想化されたマシンや他のパブリック クラウドの VM を移行の目的で仮想マシンとして扱うことで移行することができます。 | Server Assessment では、レプリケーション アプライアンスが移行に使用されます。
+オンプレミスの VMware VM | エージェントレスまたはエージェントベースの移行を使用して、VM を Azure に移行します。<br/><br/> エージェントレス移行の場合、Server Assessment が VMware VM の検出と評価に使用する Azure Migrate アプライアンスが、Server Migration でも使用されます。<br/><br/> エージェントベース移行の場合は、レプリケーション アプライアンスが Server Migration で使用されます。
+オンプレミスの Hyper-V VM | VM を Azure に移行します。<br/><br/> Server Migration では、Hyper-V ホストにインストールされているプロバイダー エージェントが移行に使用されます。
+オンプレミスの物理サーバー | 物理マシンを Azure に移行できます。 また、他の仮想化されたマシンや他のパブリック クラウドの VM を移行の目的で物理サーバーとして扱うことで移行することができます。 | Server Migration では、レプリケーション アプライアンスが移行に使用されます。
 
 
 ## <a name="selecting-assessment-and-migration-tools"></a>評価および移行ツールの選択
@@ -124,5 +127,5 @@ Azure Migrate サービスには、次の 2 つのバージョンがあります
 
 ## <a name="next-steps"></a>次のステップ
 
-- チュートリアルを実行し、[VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)を評価します。
+- チュートリアルを実行し、[VMware VM](./tutorial-discover-vmware.md)、[Hyper-V VM](./tutorial-discover-hyper-v.md)、または[物理サーバー](./tutorial-discover-physical.md)を評価します。
 - Azure Migrate について[よく寄せられる質問を確認](resources-faq.md)します。

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505841"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090076"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>チュートリアル:Azure リソースからリソース ログを収集して分析する
 
@@ -84,7 +84,7 @@ Log Analytics ワークスペースからデータを取得するには、Kusto 
     > [!NOTE]
     > Azure Monitor のメニューからログを開いた場合は、スコープが Log Analytics ワークスペースに設定されます。 この場合、すべてのクエリにはワークスペース内のすべてのレコードが含まれます。
    
-    ![ログ](media/tutorial-resource-logs/logs.png)
+    ![スクリーンショットに示すロジック アプリのログには、新しいクエリが表示され、ロジック アプリの名前が強調表示されています。](media/tutorial-resource-logs/logs.png)
 
 4. 例で示されているサービスでは、**AzureDiagnostics** テーブルにリソース ログが書き込まれますが、他のサービスでは他のテーブルに書き込むことができます。 さまざまな Azure サービスで使用されるテーブルについては、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172247"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223229"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -39,10 +39,12 @@ Azure リソース マネージャーで、 [パブリック IP](virtual-network
 
 ## <a name="sku"></a>SKU
 
+SKU のアップグレードについては、[パブリック IP のアップグレード](../virtual-network/virtual-network-public-ip-address-upgrade.md)に関するページをご覧ください。
+
 パブリック IP アドレスは、次の SKU のいずれかを使用して作成されます。
 
 >[!IMPORTANT]
-> ロード バランサー リソースとパブリック IP リソースには一致する SKU を使用する必要があります。 Basic SKU リソースと Standard SKU リソースを組み合わせることはできません。 スタンドアロン仮想マシン、可用性セット リソース内の仮想マシン、または仮想マシン スケール セット リソースを、両方の SKU に同時にアタッチすることはできません。  新しい設計では、Standard SKU リソースの使用を検討する必要があります。  詳しくは、[Standard ロード バランサー](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+> ロード バランサー リソースとパブリック IP リソースには一致する SKU を使用する必要があります。 Basic SKU リソースと Standard SKU リソースを組み合わせることはできません。 スタンドアロン仮想マシン、可用性セット リソース内の仮想マシン、または仮想マシン スケール セット リソースを、両方の SKU に同時にアタッチすることはできません。  新しい設計では、Standard SKU リソースの使用を検討する必要があります。  詳しくは、[Standard ロード バランサー](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 
 ### <a name="standard"></a>Standard
 
@@ -50,12 +52,13 @@ Standard SKU のパブリック IP アドレス:
 
 - 必ず静的割り当て方法を使用してください。
 - インバウンドから発生するフローの調整可能なアイドル タイムアウトとして4分から30 分 (既定値は 4 分) が、またアウトバウンドから発生するフローの固定アイドル タイムアウトとして 4 分が割り当てられます。
-- 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を使用した受信トラフィックの一覧表示を許可します。
-- ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
-- ゾーン冗長、またはゾーンにすることができます (ゾーンとして作成でき、特定の可用性ゾーンで保証できます)。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+- 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups)を使用した受信トラフィックの一覧表示を許可します。
+- ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
+- ゾーン冗長 (3 つすべてのゾーンからアドバタイズ)、またはゾーン (ゾーンとして作成でき、特定の可用性ゾーンで保証できます) にすることができます。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 **ゾーン冗長 IP は、[3 つの可用性ゾーン](../availability-zones/az-region.md)が有効になっているリージョンでのみ作成できます。** ゾーンが有効になる前に作成された IP は、ゾーン冗長にはなりません。
+- [リージョン間ロード バランサー ](../load-balancer/cross-region-overview.md)(プレビュー機能) のためのエニーキャスト フロントエンド IP として使用できます。
  
 > [!NOTE]
-> [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を作成して関連付け、目的のインバウンド トラフィックを明示的に許可するまで、Standard SKU リソースとのインバウンド通信は失敗します。
+> [ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups)を作成して関連付け、目的のインバウンド トラフィックを明示的に許可するまで、Standard SKU リソースとのインバウンド通信は失敗します。
 
 > [!NOTE]
 > [インスタンス メタデータ サービス (IMDS)](../virtual-machines/windows/instance-metadata-service.md) を使用している場合は、Basic SKU のパブリック IP アドレスのみを使用できます。 Standard SKU はサポートされていません。
@@ -80,9 +83,9 @@ Basic SKU のアドレス:
 
 ## <a name="allocation-method"></a>割り当て方法
 
-Basic および Standard のパブリック IP では、**静的**な割り当てがサポートされています。  リソースには、作成時に IP アドレスが割り当てられます。 この IP アドレスは、リソースが削除されたときに解放されます。
+Basic および Standard のパブリック IP では、**静的** な割り当てがサポートされています。  リソースには、作成時に IP アドレスが割り当てられます。 この IP アドレスは、リソースが削除されたときに解放されます。
 
-Basic SKU のパブリック IP アドレスは、**動的**な割り当てをサポートします。 動的割り当てが既定の割り当て方法です。 "動的" を選択すると、IP アドレスは作成時にリソースに割り当てられ**ません**。
+Basic SKU のパブリック IP アドレスは、**動的** な割り当てをサポートします。 動的割り当てが既定の割り当て方法です。 "動的" を選択すると、IP アドレスは作成時にリソースに割り当てられ **ません**。
 
 IP は、パブリック IP アドレス リソースを次のものに関連付けるときに割り当てられます。
 
@@ -91,12 +94,12 @@ IP は、パブリック IP アドレス リソースを次のものに関連付
 
 IP アドレスは、リソースを停止 (または削除) すると解放されます。  
 
-たとえば、パブリック IP リソースが**リソース A** という名前のリソースから解放されます。**リソース A** は、パブリック IP リソースが再割り当てされる場合、起動時に別の IP アドレスを受信します。
+たとえば、パブリック IP リソースが **リソース A** という名前のリソースから解放されます。**リソース A** は、パブリック IP リソースが再割り当てされる場合、起動時に別の IP アドレスを受信します。
 
-IP アドレスは、割り当て方法が**静的**から**動的**に変更されたときに解放されます。 関連付けられたリソースの IP アドレスが変わらないようにするには、割り当て方法を明示的に**静的**に設定します。 この場合、静的 IP アドレスが即座に割り当てられます。
+IP アドレスは、割り当て方法が **静的** から **動的** に変更されたときに解放されます。 関連付けられたリソースの IP アドレスが変わらないようにするには、割り当て方法を明示的に **静的** に設定します。 この場合、静的 IP アドレスが即座に割り当てられます。
 
 > [!NOTE]
-> 割り当て方法を**静的**に設定しても、パブリック IP アドレス リソースに割り当てられる実際の IP アドレスは指定できません。 リソースが作成される Azureの場所で使用可能な IP アドレスのプールから IP アドレスが割り当てられます。
+> 割り当て方法を **静的** に設定しても、パブリック IP アドレス リソースに割り当てられる実際の IP アドレスは指定できません。 リソースが作成される Azureの場所で使用可能な IP アドレスのプールから IP アドレスが割り当てられます。
 >
 
 次のようなシナリオでは、静的なパブリック IP アドレスが一般的に使用されます。
@@ -137,17 +140,17 @@ DNS レコードには [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvi
 
 ## <a name="virtual-machines"></a>仮想マシン
 
-パブリック IP アドレスは、その**ネットワーク インターフェイス**に割り当てることで、[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンに関連付けることができます。 
+パブリック IP アドレスは、その **ネットワーク インターフェイス** に割り当てることで、[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンに関連付けることができます。 
 
-パブリック IP アドレスには、**動的**または**静的**を選択します。 [IP アドレスをネットワーク インターフェイスに割り当てる方法](virtual-network-network-interface-addresses.md)を参照してください。
+パブリック IP アドレスには、**動的** または **静的** を選択します。 [IP アドレスをネットワーク インターフェイスに割り当てる方法](virtual-network-network-interface-addresses.md)を参照してください。
 
 ## <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 
-パブリック IP アドレスをロード バランサーの**フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#sku) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP は、負荷分散された IP として機能します。 
+パブリック IP アドレスをロード バランサーの **フロントエンド** 構成に割り当てることで、パブリック IP アドレスと [SKU](#sku) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP は、負荷分散された IP として機能します。 
 
 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 ロード バランサーのフロントエンドには、複数のパブリック IP アドレスを割り当てることができます。 この構成により、TLS ベースの Web サイトを含むマルチテナント環境のような[マルチ VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを実現できます。 
 
-Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ## <a name="vpn-gateways"></a>VPN ゲートウェイ
 
@@ -156,14 +159,21 @@ Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の S
 * Azure 仮想ネットワーク
 * オンプレミス ネットワーク。 
 
-パブリック IP アドレスは、リモート ネットワークとの通信を有効にするために VPN Gateway に割り当てられます。 VPN ゲートウェイに割り当てることができるのは、*動的*基本パブリック IP アドレスのみです。
+パブリック IP アドレスは、リモート ネットワークとの通信を有効にするために VPN Gateway に割り当てられます。 VPN ゲートウェイに割り当てることができるのは、*動的* 基本パブリック IP アドレスのみです。
 
 ## <a name="application-gateways"></a>アプリケーション ゲートウェイ
 
-パブリック IP アドレスをゲートウェイの **フロント エンド** 構成に割り当てることで、Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関連付けることができます。 
+パブリック IP アドレスをゲートウェイの **フロント エンド** 構成に割り当てることで、Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関連付けることができます。 
 
-* **動的**な Basic パブリック IP アドレスは、Application Gateway の V1 フロントエンド構成に割り当てます。 
-* **静的**な Standard SKU アドレスは、V2 フロントエンド構成に割り当てます。
+* **動的** な Basic パブリック IP アドレスは、Application Gateway の V1 フロントエンド構成に割り当てます。 
+* **静的** な Standard SKU アドレスは、V2 フロントエンド構成に割り当てます。
+
+## <a name="azure-firewall"></a>Azure Firewall
+
+[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) では、アプリケーションとネットワークの接続ポリシーを、サブスクリプションと仮想ネットワークをまたいで作成、適用、記録することができます。
+
+**静的** な標準パブリック IP アドレスは、ファイアウォールにのみ関連付けることができます。 これにより、対象の仮想ネットワークから送信されるトラフィックを外部のファイアウォールで識別できます。 
+
 
 ## <a name="at-a-glance"></a>早見表
 
@@ -175,6 +185,7 @@ Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の S
 | インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
 | Application gateway |フロント エンド構成 |はい (V1 のみ) |はい (V2 のみ) |
+| Azure Firewall | フロント エンド構成 | いいえ | はい|
 
 ## <a name="limits"></a>制限
 
@@ -189,4 +200,3 @@ IP アドレス指定に対する制限は、Azure の[ネットワークの制�
 ## <a name="next-steps"></a>次のステップ
 * [Azure でのプライベート IP アドレス](private-ip-addresses.md)について学習する
 * [Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする](virtual-network-deploy-static-pip-arm-portal.md)
-

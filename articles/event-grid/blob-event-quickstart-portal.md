@@ -4,11 +4,11 @@ description: クイック スタート:Azure Event Grid と Azure portal を使�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421605"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005692"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
 
@@ -34,7 +34,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
    
 1. **[ストレージ アカウントの作成]** ページで、次の手順を実行します。
     1. Azure サブスクリプションを選択します。 
-    2. **リソース グループ**には、新しいリソース グループ名を作成するか既存の名前を選択します。 
+    2. **リソース グループ** には、新しいリソース グループ名を作成するか既存の名前を選択します。 
     3. ストレージ アカウントの名前を入力します。 
     4. **[Review + create]\(レビュー + 作成\)** を選択します。 
 
@@ -85,8 +85,8 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
    ![[webhook] を選択する](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **[イベント サブスクリプションの作成]** ページで、次の手順を実行します。 
-    1. イベント サブスクリプションの**名前**を入力します。
-    2. **システム トピック**の**名前**を入力します。 システム トピックについては、[システム トピックの概要](system-topics.md)に関するページを参照してください。
+    1. イベント サブスクリプションの **名前** を入力します。
+    2. **システム トピック** の **名前** を入力します。 システム トピックについては、[システム トピックの概要](system-topics.md)に関するページを参照してください。
 
        ![イベント サブスクリプションとシステム トピックの名前を入力します](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
     2. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
@@ -127,7 +127,7 @@ BLOB ストレージのイベントをトリガーするには、ファイルを
 
 1. テスト ファイルを参照し、それをアップロードします。
 
-1. 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 メッセージは JSON 形式であり、1 つまたは複数のイベントの配列が含まれています。 次の例の JSON メッセージには、1 つのイベントの配列が含まれています。 Web アプリを表示して、**BLOB 作成**イベントが受信されたことを確認します。 
+1. 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 メッセージは JSON 形式であり、1 つまたは複数のイベントの配列が含まれています。 次の例の JSON メッセージには、1 つのイベントの配列が含まれています。 Web アプリを表示して、**BLOB 作成** イベントが受信されたことを確認します。 
 
    ![BLOB 作成イベント](./media/blob-event-quickstart-portal/blob-created-event.png)
 

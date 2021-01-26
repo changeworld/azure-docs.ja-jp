@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics の互換性レベル
 description: Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056518"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015982"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -33,12 +33,12 @@ Azure Stream Analytics では現在、次の 3 つの互換性レベルがサポ
 
 ## <a name="set-the-compatibility-level"></a>互換性レベルの設定
 
-Stream Analytics ジョブの互換性レベルは、Azure portal または [create job REST API 呼び出し](/rest/api/streamanalytics/stream-analytics-job)を使用して設定できます。
+Stream Analytics ジョブの互換性レベルは、Azure portal または [create job REST API 呼び出し](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel)を使用して設定できます。
 
 Azure portal でジョブの互換性レベルを更新するには:
 
 1. [Azure portal](https://portal.azure.com) を使用して、Stream Analytics ジョブを見つけます。
-2. 互換性レベルを更新する前に、ジョブを**停止**します。 ジョブが実行状態の場合は、互換性レベルを更新できません。
+2. 互換性レベルを更新する前に、ジョブを **停止** します。 ジョブが実行状態の場合は、互換性レベルを更新できません。
 3. **[構成]** 見出しで、 **[互換性レベル]** を選択します。
 4. 必要な互換性レベルの値を選択します。
 5. ページの下部にある **[保存]** を選択します。
@@ -77,13 +77,13 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 **以前のレベル:** アップサート動作は "*挿入またはマージ*" でした。
 
-**1.2 レベル:** CosmosDB 出力でのネイティブ Bulk API 統合により、スループットが最大になり、要求の調整が効率的に処理されます。 詳細については、[Azure Cosmos DB ページへの Azure Stream Analytics の出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)に関する記事を参照してください。
+**1.2 レベル:** CosmosDB 出力でのネイティブ Bulk API 統合により、スループットが最大になり、要求の調整が効率的に処理されます。 詳細については、[Azure Cosmos DB ページへの Azure Stream Analytics の出力](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)に関する記事を参照してください。
 
 アップサート動作は "*挿入または置換*" です。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL 出力に書き込むときの DateTimeOffset
 
-**以前のレベル:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 型は、UTC に調整されました。
+**以前のレベル:** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql) 型は、UTC に調整されました。
 
 **1.2 レベル:** DateTimeOffset は調整されなくなりました。
 
@@ -151,4 +151,4 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の入力をトラブルシューティングする](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics のリソース正常性](stream-analytics-resource-health.md)
+* [Stream Analytics のリソース正常性](./stream-analytics-troubleshoot-query.md)

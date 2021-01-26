@@ -7,72 +7,81 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.date: 11/12/2020
+ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826822"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883352"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
-この記事では、**最近**の Azure HDInsight リリース更新に関する情報を提供します。 以前のリリースについて詳しくは、「[HDInsight リリース ノートのアーカイブ](hdinsight-release-notes-archive.md)」を参照してください。
+この記事では、**最近** の Azure HDInsight リリース更新に関する情報を提供します。 以前のリリースについて詳しくは、「[HDInsight リリース ノートのアーカイブ](hdinsight-release-notes-archive.md)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 
 Azure HDInsight は、Azure 上でオープン ソース分析を行うエンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
 
-## <a name="release-date-08092020"></a>リリース日: 2020 年 8 月 9 日
+リリース ノートをサブスクライブする場合は、[この GitHub リポジトリ](https://github.com/hdinsight/release-notes/releases)のリリースをご覧ください。
 
-このリリースは、HDInsight 4.0 にのみ適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更が見られない場合は、お客様のリージョンで数日以内にリリースがライブになるまでお待ちください。
+## <a name="release-date-11182020"></a>リリース日: 2020 年 11 月 18 日
+
+このリリースは HDInsight 3.6 と HDInsight 4.0 の両方に適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更が見られない場合は、お客様のリージョンで数日以内にリリースがライブになるまでお待ちください。
 
 ## <a name="new-features"></a>新機能
-### <a name="support-for-sparkcruise"></a>SparkCruise のサポート
-SparkCruise は、Spark 用の自動計算再利用システムです。 これは、過去のクエリ ワークロードに基づいて具体化する共通の部分式を選択します。 SparkCruise は、これらの部分式をクエリ処理の一部として具体化します。計算の再利用は、バックグラウンドで自動的に適用されます。 Spark コードを変更しなくても、SparkCruise の機能を使用できます。
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>HDInsight 4.0 での Hive ビューのサポート
-Apache Ambari Hive ビューは、Web ブラウザーから Hive クエリを作成、最適化、および実行する際に役立つように設計されています。 Hive ビューは、このリリース以降の HDInsight 4.0 クラスターでネイティブにサポートされています。 既存のクラスターには適用されません。 組み込みの Hive ビューを取得するには、クラスターを削除して再作成する必要があります。
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>HDInsight 4.0 での Tez ビューのサポート
-Apache Tez ビューは、Hive Tez ジョブの実行を追跡およびデバッグする際に使用されます。 Tez ビューは、このリリース以降の HDInsight 4.0 でネイティブにサポートされています。 既存のクラスターには適用されません。 組み込みの Tez ビューを取得するには、クラスターを削除して再作成する必要があります。
+### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>保存時におけるカスタマー マネージド キー暗号化の自動キー ローテーション
+このリリース以降、お客様はカスタマー マネージド キーの暗号化に、バージョンレスの Azure KeyValut 暗号化キー URL を使用できます。 HDInsight は、有効期限が切れたとき、または新しいバージョンに置き換えられたときに、自動的にキーをローテーションします。 詳細については[ここ](./disk-encryption.md)を参照してください。
+
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark、Hadoop、および ML Services 用のさまざまな Zookeeper 仮想マシン サイズを選択する機能
+これまで、HDInsight では、Spark、Hadoop、ML Services のクラスターの種類に対して Zookeeper ノード サイズのカスタマイズはサポートされていませんでした。 既定値は A2_v2 および A2 の仮想マシン サイズであり、無料で提供されます。 このリリース以降、お客様のシナリオに最も適した Zookeeper 仮想マシン サイズを選択できます。 A2_v2 および A2 以外の仮想マシン サイズの Zookeeper ノードには課金されます。 A2_v2 および A2 の仮想マシンは引き続き無料で提供されます。
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このリリース以降、サービスは徐々に [Azure 仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)に移行されます。 このプロセス全体に数か月かかる可能性があります。 リージョンとサブスクリプションが移行された後は、新しく作成された HDInsight クラスターは、お客様が操作することなく、仮想マシン スケール セット上で動作するようになります。 破壊的変更は想定されていません。
 
 ## <a name="deprecation"></a>非推奨
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark クラスターでの Spark 2.1 と 2.2 の非推奨化
-2020 年 7 月 1 日以降、HDInsight 3.6 で Spark 2.1 と 2.2 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 3.6 で Spark 2.3 に移行することを検討してください。
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark クラスターでの Spark 2.3 の非推奨化
-2020 年 7 月 1 日以降、HDInsight 4.0 で Spark 2.3 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 4.0 で Spark 2.4 に移行することを検討してください。
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka クラスターの Kafka 1.1 の廃止
-2020 年 7 月 1 日以降、HDInsight 4.0 で Kafka 1.1 を使用して新しい Kafka クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断される可能性を回避するため、2020 年 6 月 30 日までに HDInsight 4.0 で Kafka 2.1 に移行することを検討してください。
+### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3.6 ML Services クラスターの非推奨
+HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポート終了となります。 2021 年 1 月 1 日以降は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#available-versions)で確認してください。
+
+### <a name="disabled-vm-sizes"></a>無効な VM サイズ
+2020 年 11 月 16 日以降、新規のお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 過去 3 か月間、これらの VM サイズを使用していた既存のお客様は、影響を受けません。 2021 年 1 月 9 日以降は、すべてのお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 既存のクラスターはそのまま実行されます。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
 
 ## <a name="behavior-changes"></a>動作の変更
-### <a name="ambari-stack-version-change"></a>Ambari スタック バージョンの変更
-このリリース以降、Ambari のバージョンが 2.x.x.x から 4.1 に変更されます。 Ambari のバージョンは、Ambari の UI > [バージョン変更] で確認できます。
+### <a name="add-nsg-rule-checking-before-scaling-operation"></a>スケーリング操作の前に NSG ルール チェックを追加する
+HDInsight では、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) のチェックがスケーリング操作で追加されました。 クラスターの作成に加えて、クラスターのスケーリングについても同じ検証が行われます。 この検証により、予測できないエラーを防ぐことができます。 検証が成功しなかった場合、スケーリングは失敗します。 NSG と UDR を正しく構成する方法の詳細については、「[HDInsight 管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)」を参照してください。
 
 ## <a name="upcoming-changes"></a>今後の変更
-注意を払う必要があり、近く予定されている破壊的変更はありません。
+今後のリリースでは、次の変更が行われます。
+
+### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>クラスターの既定の VM サイズが Ev3 ファミリに変更される
+次のリリース (1 月末) 以降、クラスターの既定の VM サイズが D ファミリから Ev3 ファミリに変更されます。 この変更は、ヘッド ノードとワーカー ノードに適用されます。 この変更を回避するには、使用する VM サイズを ARM テンプレートで指定します。
+
+### <a name="default-cluster-version-will-be-changed-to-40"></a>既定のクラスター バージョンは 4.0 に変更されます
+2021 年 2 月以降、HDInsight クラスターの既定のバージョンは 3.6 から 4.0 に変更されます。 使用可能なバージョンの詳細については、「[使用可能なバージョン](./hdinsight-component-versioning.md#available-versions)」を参照してください。 HDInsight 4.0 の新機能については、[こちら](./hdinsight-version-release.md)を参照してください
+
+### <a name="os-version-upgrade"></a>OS バージョンのアップグレード
+HDInsight では、OS バージョンが 16.04 から 18.04 にアップグレードされます。 アップグレードは、2021 年 4 月までに完了する予定です。
+
+### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3.6 は 2021 年 6 月 30 日にサポート終了
+HDInsight 3.6 のサポートが終了します。 2021 年 6 月 30 日以降は、お客様が新しい HDInsight 3.6 クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
 
 ## <a name="bug-fixes"></a>バグの修正
 HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
 
-Hive の場合、以下の JIRA が移植されます。
-* [HIVE-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [HIVE-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [HIVE-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [HIVE-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-HBase の場合、以下の JIRA が移植されます。
-* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
-このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)を参照してください。
+このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](./hdinsight-component-versioning.md)を参照してください。
 
 ## <a name="known-issues"></a>既知の問題
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>HDInsight クラスター VM が定期的に再起動しないようにする
 
-Azure portal で、SSH 認証の種類の公開キーを使用して Azure HDInsight クラスターを作成するときにエラーが発生する問題が修正されました。 ユーザーが **[確認と作成]** をクリックすると、"SSH ユーザー名に含まれる 3 文字以上連続する文字列を使用することはできません" というエラーを受け取ります。 この問題は修正されましたが、CTRL + F5 キーを押してブラウザーのキャッシュを更新し、修正されたビューを読み込む必要がある場合があります。 この問題の回避策は、ARM テンプレートを使用してクラスターを作成することでした。 
+2020 年 11月中旬から、HDInsight クラスター VM が定期的に再起動されることがあります。 これには次の原因が考えられます。
+
+1.  クラスターで Clamav が有効になっています。 新しい azsec-clamav パッケージが大量のメモリを消費し、それによってノードの再起動がトリガーされます。 
+2.  CRON ジョブは、Azure サービスで使用される証明機関 (CA) の一覧の変更を監視するように、日単位でスケジュールされます。 新しい CA 証明書が利用可能になると、スクリプトによってその証明書が JDK 信頼ストアに追加され、再起動がスケジュールされます。
+
+HDInsight は、両方の問題に対して、実行中のすべてのクラスターに修正プログラムをデプロイし、パッチを適用しています。 修正プログラムをすぐに適用し、予期しない VM の再起動を回避するには、すべてのクラスター ノードで次のスクリプト アクションを永続的なスクリプト アクションとして実行します。 修正プログラムとパッチの適用が完了すると、HDInsight から別の通知が送信されます。
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

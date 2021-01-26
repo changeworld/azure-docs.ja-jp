@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 11/09/2020
+ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84660988"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553609"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -45,12 +45,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="azure-roles"></a>Azure ロール
 Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。
 
-サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal に移動します。 右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択してください。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」をご覧ください。
+サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal に移動します。 右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択してください。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016、2017
 このチュートリアルでは、SQL Server データベースを "*ソース*" データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 
-1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
+1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
 
 1. 自分の資格情報で SQL Server インスタンスに接続します。
 
@@ -110,7 +110,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 この手順では、データ ファクトリを作成するほか、Data Factory UI を起動してそのデータ ファクトリにパイプラインを作成します。
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -120,7 +120,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
    ![新しいデータ ファクトリ名](./media/doc-common-process/name-not-available-error.png)
 
-1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+1. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
 
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
@@ -178,7 +178,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     d. Data Factory が SQL Server データベースへの接続に使用する適切な認証の種類を **[認証の種類]** で選択します。
 
-    e. **[ユーザー名]** と **[パスワード]** に、ユーザー名とパスワードを入力します。 ユーザー アカウントまたはサーバー名にバックスラッシュ (\\) を使用する必要がある場合は、エスケープ文字 (\\) に続けて入力してください。 たとえば、「*mydomain\\\\myuser*」のように入力します。
+    e. **[ユーザー名]** と **[パスワード]** に、ユーザー名とパスワードを入力します。 必要に応じて、ユーザー名として *mydomain\\myuser* を使用します。
 
     f. **[接続テスト]** を選択します。 この手順は、作成したセルフホステッド統合ランタイムを使用して Data Factory が SQL Server データベースに接続できることを確認するために行います。
 
@@ -214,9 +214,9 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     a. **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
 
-    b. **[ファイルのパス]** で、**コンテナーまたはディレクトリ**の部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
+    b. **[ファイルのパス]** で、**コンテナーまたはディレクトリ** の部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
 
-    c. **ファイル**部分については、 **[動的なコンテンツの追加]** を選択します。
+    c. **ファイル** 部分については、 **[動的なコンテンツの追加]** を選択します。
     ![ファイル名を解決するための動的な式](./media/tutorial-hybrid-copy-portal/file-name.png)
 
     d. `@CONCAT(pipeline().RunId, '.txt')` を追加し、 **[完了]** を選択します。 この操作で、ファイルの名前が PipelineRunID.txt に変更されます。
@@ -229,7 +229,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. 作成したエンティティを Data Factory に発行するには、 **[すべて発行]** を選択します。
 
-1. **発行が完了**したことを示すポップアップが表示されるまで待ちます。 発行の状態を確認するには、ウィンドウの上部にある **[通知の表示]** リンクを選択します。 通知ウィンドウを閉じるには、 **[閉じる]** を選択します。
+1. **発行が完了** したことを示すポップアップが表示されるまで待ちます。 発行の状態を確認するには、ウィンドウの上部にある **[通知の表示]** リンクを選択します。 通知ウィンドウを閉じるには、 **[閉じる]** を選択します。
 
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする

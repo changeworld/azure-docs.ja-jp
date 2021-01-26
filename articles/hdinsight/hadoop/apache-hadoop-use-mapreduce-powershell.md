@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5f5a9fb8ddd25f750b19044bac7253bbff2f98
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006604"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545210"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する
 
@@ -25,7 +25,7 @@ ms.locfileid: "87006604"
 
 * HDInsight の Apache Hadoop クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
-* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
+* インストール済みの PowerShell [Az モジュール](/powershell/azure/)。
 
 ## <a name="run-a-mapreduce-job"></a>MapReduce ジョブを実行する
 
@@ -36,14 +36,14 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 |コマンドレット | 説明 |
 |---|---|
 |Connect-AzAccount|Azure サブスクリプションに対して Azure PowerShell を認証します。|
-|New-AzHDInsightMapReduceJobDefinition|指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。|
-|Start-AzHDInsightJob|ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。|
+|New-AzHDInsightMapReduceJobDefinition|指定された MapReduce 情報を使用して、新しい " *ジョブ定義* " を作成します。|
+|Start-AzHDInsightJob|ジョブ定義を HDInsight に送信し、ジョブを開始します。 " *ジョブ* " オブジェクトが返されます。|
 |Wait-AzHDInsightJob|ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。|
 |Get-AzHDInsightJobOutput|ジョブの出力を取得するために使用します。|
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
-1. エディターを使用して、次のコードを **mapreducejob.ps1**として保存します。
+1. エディターを使用して、次のコードを **mapreducejob.ps1** として保存します。
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 

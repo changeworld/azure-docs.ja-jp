@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291468"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741826"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -28,7 +28,7 @@ ms.locfileid: "89291468"
 Azure Media Services では、Azure クラウドで顧客にライブ イベントを配信できます。 Media Services v3 でライブ ストリーミング イベントを設定するには、この記事で説明されている概念を理解する必要があります。
 
 > [!TIP]
-> Media Services v2 API から移行するお客様の場合、**ライブ イベント** エンティティは v2 にある **Channel** に置き換わり、**ライブ出力**は **Program** に置き換わります。
+> Media Services v2 API から移行するお客様の場合、**ライブ イベント** エンティティは v2 にある **Channel** に置き換わり、**ライブ出力** は **program** に置き換わります。
 
 ## <a name="live-events"></a>ライブ イベント
 
@@ -36,7 +36,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
-[ライブ イベント](/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
+[ライブ イベント](/rest/api/media/liveevents)は、*パススルー* (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または *ライブ エンコード* (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
 * **LiveEventEncodingType.None**:オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー モードとも呼ばれます。
 * **LiveEventEncodingType.Standard**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 投稿フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします。
@@ -46,12 +46,12 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ![パススルー ライブ イベントと Media Services サンプル図](./media/live-streaming/pass-through.svg)
 
-パススルー **ライブ イベント**を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 この種類のライブ イベントを作成するときは、None (LiveEventEncodingType.None) を指定してください。
+パススルー **ライブ イベント** を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 この種類のライブ イベントを作成するときは、None (LiveEventEncodingType.None) を指定してください。
 
 投稿フィードは最大 4K の解像度と 60 フレーム/秒のフレーム レートで、H.264/AVC または H.265/HEVC のいずれかのビデオ コーデックと AAC (AAC-LC、HE-AACv1、または HE-AACv2) オーディオ コーデックを使用して送信することができます。 詳細については、[ライブ イベントの種類の比較](live-event-types-comparison.md)に関するページを参照してください。
 
 > [!NOTE]
-> 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
+> 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 [価格](https://azure.microsoft.com/pricing/details/media-services/)の詳細を参照してください。
 >
 
 [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126) の .NET のコード例を参照してください。
@@ -75,16 +75,33 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ライブ イベントの作成時には次のオプションを指定できます。
 
-* ライブ イベントのストリーミング プロトコル (現時点では、RTMP プロトコルと Smooth Streaming プロトコルがサポートされます)<br/>ライブ イベントや、それに関連付けられたライブ出力の実行中は、プロトコル オプションを変更できません。 別のプロトコルが必要な場合は、ストリーミング プロトコルごとに別のライブ イベントを作成します。  
-* イベントの作成時に、そのイベントを自動開始するように設定できます。 <br/>自動開始が true に設定されている場合、ライブ イベントは作成された後に開始されます。 ライブ イベントの実行が開始されるとすぐに課金が開始されます。 それ以上の課金を停止するには、ライブ イベント リソースの Stop を明示的に呼び出す必要があります。 または、ストリーミングを開始する準備ができたら、イベントを開始できます。
+* ライブイベントに名前と説明を指定できます。
+* クラウド エンコードには、パススルー (クラウド エンコードなし)、Standard (最大 720p)、Premium (最大 1080p) が含まれます。 Standard と Premium のエンコードでは、エンコードされたビデオのストレッチ モードを選択できます。
+  * なし: エンコード プリセットに指定された出力解像度に厳密に従います。入力ビデオのピクセル縦横比やディスプレイの縦横比は考慮されません。
+  * AutoSize:出力解像度をオーバーライドし、それをパディングなしでディスプレイの入力の縦横比に合わせて変更します。 たとえば入力が 1920 x 1080 であるとき、エンコード プリセットによって 1280 x 1280 が要求された場合、プリセットの値がオーバーライドされ、出力は 1280 x 720 となり、入力の縦横比 (16:9) が維持されます。
+  * AutoFit:出力におけるアクティブなビデオ領域に入力と同じ縦横比を確保しつつ、出力解像度を遵守するために、出力を (レターボックスまたはピラーボックスで) パディングします。 例として、入力が 1920 x 1080 であるとき、エンコード プリセットによって 1280 x 1280 が要求された場合、出力は 1280 x 1280 となりますが、縦横比が 16:9 である 1280 x 720 の四角形を挟むように、幅 280 ピクセルのピラー ボックス領域が左右に追加されます。
+* ストリーミング プロトコル (現時点では、RTMP プロトコルと Smooth Streaming プロトコルがサポートされます)。 ライブ イベントや、それに関連付けられたライブ出力の実行中は、プロトコル オプションを変更できません。 別のプロトコルが必要な場合は、ストリーミング プロトコルごとに別のライブ イベントを作成します。
+* 入力 ID。ライブ イベント入力ストリームのグローバル一意識別子です。
+* 静的ホスト名プレフィックス (このケースでは、ランダムな 128 ビットの 16 進文字列が使用されます)。ライブ イベント名を使用するか、カスタム名を使用します。  顧客名の使用を選択した場合、この値はカスタム ホスト名プレフィックスになります。
+* 入力キー フレームの間隔を設定することで、ライブ ブロードキャストと再生の間のエンドツーエンドの待機時間を減らすことができます。これは、HLS 出力の各メディア セグメントの期間 (秒単位) です。 値は、0.5 から 20 秒の範囲の 0 以外の整数である必要があります。  入力キー フレーム間隔と出力キー フレーム間隔の *どちらも* 設定されていない場合は、値の既定値は 2 秒です。 キー フレームの間隔は、パススルー イベントでのみ許可されます。
+* イベントの作成時に、それを自動開始するように設定できます。 自動開始が true に設定されている場合、ライブ イベントは作成された後に開始されます。 ライブ イベントの実行が開始されるとすぐに課金が開始されます。 それ以上の課金を停止するには、ライブ イベント リソースの Stop を明示的に呼び出す必要があります。 または、ストリーミングを開始する準備ができたら、イベントを開始できます。
 
-    詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
+> [!NOTE]
+> 最大フレームレートは、Standard と Premium の両方のエンコードで 30 fps です。
 
-* 取り込みやプレビューの IP 制限。 このライブ イベントへのビデオの取り込みが許可される IP アドレスを定義できます。 許可される IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: '10.0.0.1/22')、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: '10.0.0.1(255.255.252.0)') のいずれかの形で指定できます。<br/>IP アドレスが指定されておらず、規則の定義もない場合は、どの IP アドレスも許可されません。 すべての IP アドレスを許可するには、規則を作成し、0.0.0.0/0 に設定します。<br/>IP アドレスの形式は、4 つの数字を含む IpV4 アドレスか CIDR アドレス範囲にする必要があります。
+## <a name="standby-mode"></a>StandBy モード
 
-    自分のファイアウォールで特定の IP を有効にする場合、またはライブ イベントへの入力を Azure IP アドレスに制限する場合は、[Azure Datacenter IP のアドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページから JSON ファイルをダウンロードします。 このファイルについて詳しくは、ページの「**詳細**」セクションを選択してください。
-    
-* イベントを作成するときに、ライブの文字起こしを有効にすることを選択できます。 <br/> 既定では、ライブの文字起こしは無効になっています。 ライブ イベントや、それに関連付けられたライブ出力の実行中は、このプロパティを変更することはできません。 
+ライブ イベントを作成する際に、それを StandBy モードに設定できます。 イベントが StandBy モードの間は、説明、静的ホスト名プレフィックス、入力およびプレビュー アクセスの制限設定を編集できます。  StandBy モードはまだ課金対象モードですが、ライブ ストリームを開始する場合とは異なる価格設定になります。
+
+詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
+
+* 取り込みやプレビューの IP 制限。 このライブ イベントへのビデオの取り込みが許可される IP アドレスを定義できます。 許可される IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: '10.0.0.1/22')、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: '10.0.0.1(255.255.252.0)') のいずれかの形で指定できます。
+<br/><br/>
+IP アドレスが指定されておらず、規則の定義もない場合は、どの IP アドレスも許可されません。 すべての IP アドレスを許可するには、規則を作成し、0.0.0.0/0 に設定します。<br/>IP アドレスの形式は、4 つの数字を含む IpV4 アドレスか CIDR アドレス範囲にする必要があります。
+<br/><br/>
+自分のファイアウォールで特定の IP を有効にする場合、またはライブ イベントへの入力を Azure IP アドレスに制限する場合は、[Azure Datacenter IP のアドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページから JSON ファイルをダウンロードします。 このファイルについて詳しくは、ページの「**詳細**」セクションを選択してください。
+
+* イベントを作成するときに、ライブの文字起こしを有効にすることを選択できます。 既定では、ライブの文字起こしは無効になっています。 ライブの文字起こしの詳細については、「[ライブ文字起こし](live-transcription.md)」を参照してください。
 
 ### <a name="naming-rules"></a>名前付け規則
 
@@ -100,25 +117,30 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ライブ イベントが作成されると、ライブ オンプレミス エンコーダーに提供する取り込み URL を取得できます。 ライブ エンコーダーは、これらの URL を使用して、ライブ ストリームを入力します。 詳細については、「[おすすめのライブ ストリーミング エンコーダー](recommended-on-premises-live-encoders.md)」を参照してください。
 
+>[!NOTE]
+> 2020-05-01 API リリース現在、バニティ URL は静的ホスト名と呼ばれています
+
 非バニティ URL またはバニティ URL を使用できます。
 
-> [!NOTE] 
+> [!NOTE]
 > 取り込み URL を予測的にするには、"バニティ" モードを設定します。
 
 * 非バニティ URL
 
-    非バニティ URL は、Media Services v3 での既定のモードです。 ライブ イベントをすばやく取得できる可能性がありますが、取り込み URL がわかるのはライブ イベントの開始時のみです。 ライブ イベントを停止または開始すると、URL は変わります。 <br/>非バニティは、エンド ユーザーが可能な限り早くライブ イベントを取得するアプリを使用してストリームしたいシナリオで、動的取り込み URL を使用しても問題にならない場合に役立ちます。
+    非バニティ URL は、Media Services v3 での既定のモードです。 ライブ イベントをすばやく取得できる可能性がありますが、取り込み URL がわかるのはライブ イベントの開始時のみです。 ライブ イベントを停止または開始すると、URL は変わります。 非バニティは、エンド ユーザーが可能な限り早くライブ イベントを取得するアプリを使用してストリームしたいシナリオで、動的取り込み URL を使用しても問題にならない場合に役立ちます。
 
     ライブ イベントが作成される前にクライアント アプリが取り込み URL を事前に生成する必要がない場合は、ライブ イベント用のアクセス トークンが Media Services で自動生成されるようにします。
 
 * バニティ URL
 
     バニティ モードは、ハードウェア ブロードキャスト エンコーダーを使用していて、ライブ イベントの開始時にエンコーダーを再構成したくない大規模なメディア放送局に好まれています。 これらの放送局は、時間が経過しても変化しない、予測的な取り込み URL を必要としています。
-    
-    > [!NOTE]
-    > Azure portal では、バニティ URL は "*永続的な入力 URL*" という名前になります。
 
-    API でこのモードを指定するには、作成時に `vanityUrl` を `true` に設定します (既定値は `false`)。 また、作成時に、独自のアクセス トークン (`LiveEventInput.accessToken`) を渡す必要があります。 トークンの値を指定して、URL 内のランダムなトークンを回避します。 このアクセス トークンは、有効な GUID 文字列 (ハイフン付きまたはなし) である必要があります。 モードはいったん設定されると、更新できません。
+    > [!NOTE]
+    > Azure portal では、バニティ URL は "*静的ホスト名プレフィックス*" という名前になります。
+
+    API でこのモードを指定するには、作成時に `useStaticHostName` を `true` に設定します (既定値は `false`)。 `useStaticHostname` が true に設定されている場合、`hostnamePrefix` は、ライブ イベント プレビューおよび取り込みエンドポイントに割り当てられたホスト名の最初の部分を指定します。 最終的なホスト名は、このプレフィックス、メディア サービス アカウント名、および Azure Media Services データ センターの短いコードの組み合わせになります。
+
+    URL でのランダム トークンを避けるため、作成時に自身のアクセス トークン (`LiveEventInput.accessToken`) を渡す必要もあります。  このアクセス トークンは、有効な GUID 文字列 (ハイフン付きまたはなし) である必要があります。 モードはいったん設定されると、更新できません。
 
     アクセス トークンは、データ センター内で一意である必要があります。 アプリでバニティ URL を使用する必要がある場合は、(既存の GUID を再利用する代わりに) 常にアクセス トークン用の新しい GUID インスタンスを作成することをお勧めします。
 
@@ -128,8 +150,8 @@ Media Services によるライブ エンコードを使用する場合は、オ�
     |---|---|---|
     |REST|[properties.vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--vanity-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
-    
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+
 ### <a name="live-ingest-url-naming-rules"></a>ライブ取り込み URL の名前付け規則
 
 * 以下の "*ランダム*" な文字列は 128 ビットの 16 進数です (32 文字の 0-9 a-f で構成されています)。
@@ -151,6 +173,8 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>バニティ URL
+
+次のパスでは、`<live-event-name>` は、イベントに指定された名前、またはライブ イベントの作成で使用されるカスタム名のいずれかを意味します。
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -177,9 +201,9 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ## <a name="live-outputs"></a>ライブ出力
 
-ストリームがライブ イベントに流れ始めると、[資産](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
+ストリームがライブ イベントに流れ始めると、[アセット](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
 
-ライブ出力の詳細については、「[クラウド DVRの使用](live-event-cloud-dvr.md)」を参照してください。
+ライブ出力の詳細については、「[クラウド DVR の使用](live-event-cloud-dvr.md)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

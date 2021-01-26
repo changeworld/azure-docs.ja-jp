@@ -4,12 +4,12 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516126"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708434"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
@@ -18,7 +18,8 @@ ms.locfileid: "86516126"
 アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
 
 > [!NOTE]
-> アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは**できません**。
+> * アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは **できません**。
+> * カテゴリが Security の Activity Log Alerts は [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) への[新しいアップグレードされたフロー](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal)でも定義できます
 
 通常、アクティビティ ログ アラートを作成して、通知を受け取るのは次の場合です。
 
@@ -40,7 +41,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
     - サブスクリプション レベル:サブスクリプション内のすべての仮想マシンや、サブスクリプション内のすべてのリソースなど
 - **[リソース グループ]** :既定では、アラート ルールは、[スコープ] での定義対象となっているのと同じリソース グループに保存されます。 ユーザーは、アラート ルールを格納するリソース グループを定義することもできます。
 - **[リソースの種類]** :アラートの対象として、Resource Manager で定義されている名前空間。
-- **[操作名]** : ロールベースのアクセス制御に使用される [Azure Resource Manager の操作](../../role-based-access-control/resource-provider-operations.md)名。 Azure Resource Manager に登録されていない操作は、アクティビティ ログ アラート ルールでは使用できません。
+- **[操作名]** : Azure ロールベースのアクセス制御に使用される [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md)名。 Azure Resource Manager に登録されていない操作は、アクティビティ ログ アラート ルールでは使用できません。
 - **レベル**:イベントの重大度レベル (情報、警告、エラー、重大)。
 - **状態**: イベントの状態 (通常は [開始]、[失敗]、または [成功])。
 - **イベント開始者**: "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。

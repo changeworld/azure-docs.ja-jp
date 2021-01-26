@@ -1,6 +1,6 @@
 ---
-title: Media Services を使用する Azure Functions の開発
-description: このトピックでは、Media Services を使用する Azure Functions を Azure Portal で開発する方法について説明します。
+title: Media Services を使用する Azure 関数の開発
+description: このトピックでは、Media Services を使用する Azure 関数を Azure Portal で開発する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 520ad8f68e0f995ea05456ebcf6de4c1ba3f9418
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262119"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030307"
 ---
-# <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure Functions の開発
+# <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure Functions について確認するには、**Azure Functions** のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
 
-Azure Media Services を使用する既存の Azure Functions を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、 **[Azure に配置する]** を押します。
+Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、 **[Azure に配置する]** を押します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - 初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがまだない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
-- Azure Media Services (AMS) アカウントでアクションを実行する Azure Functions を作成したり、Media Services から送信されるイベントをリッスンしたりするためには、[こちら](media-services-portal-create-account.md)の説明に従って AMS アカウントを作成する必要があります。
+- Azure Media Services (AMS) アカウントでアクションを実行する Azure 関数を作成したり、Media Services から送信されるイベントをリッスンしたりするためには、[こちら](media-services-portal-create-account.md)の説明に従って AMS アカウントを作成する必要があります。
     
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -64,22 +64,22 @@ Media Services の関数を開発するときは、自分が開発するさま�
 デプロイした関数アプリは、 **[App Services]** の Azure Functions に表示されます。
 
 1. 目的の関数アプリを選択し、 **[新しい関数]** をクリックします。
-2. **C#** 言語と**データ処理**シナリオを選択します。
+2. **C#** 言語と **データ処理** シナリオを選択します。
 3. **BlobTrigger** テンプレートを選択します。 BLOB を **input** コンテナーにアップロードするたびに、この関数はトリガーされます。 **input** 名は、次の手順の **Path** で指定されます。
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![スクリーンショットには、BlobTrigger が選択された [テンプレートを選択] ダイアログ ボックスが示されています。](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. **BlobTrigger** を選択すると、一部の追加のコントロールがページに表示されます。
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![スクリーンショットには、[関数名の指定] ダイアログ ボックスが示されています。](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. **Create** をクリックしてください。 
 
 ## <a name="files"></a>ファイル
 
-開発した Azure Functions は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 Azure Portal を使用して関数を作成すると、**function.json** および **run.csx** が自動的に作成されます。 ユーザーは、**project.json** ファイルを追加するか、アップロードする必要があります。 このセクションの残りの部分では、各ファイルの簡単な説明とその定義を紹介します。
+Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 Azure Portal を使用して関数を作成すると、**function.json** および **run.csx** が自動的に作成されます。 ユーザーは、**project.json** ファイルを追加するか、アップロードする必要があります。 このセクションの残りの部分では、各ファイルの簡単な説明とその定義を紹介します。
 
-![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![スクリーンショットには、プロジェクト内の json ファイルが示されています。](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 

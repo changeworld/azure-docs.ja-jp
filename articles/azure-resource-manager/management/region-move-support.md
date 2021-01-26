@@ -4,14 +4,14 @@ description: Azure リージョン間で移動できる Azure リソースの種
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83cd36683a0487f13ab5707e4b1534cc7f20a88a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040957"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948529"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -121,6 +121,7 @@ ms.locfileid: "87040957"
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -362,9 +363,9 @@ ms.locfileid: "87040957"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | availabilitysets | いいえ | 
+> | availabilitysets | はい <br/><br/> 可用性セットを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | diskencryptionsets | いいえ | 
-> | disks | いいえ | 
+> | disks | はい <br/><br/> Azure VM および関連ディスクを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | galleries | いいえ | 
 > | galleries/images | いいえ | 
 > | galleries/images/versions | いいえ | 
@@ -376,7 +377,7 @@ ms.locfileid: "87040957"
 > | sharedvmimages | いいえ | 
 > | sharedvmimages/versions | いいえ | 
 > | スナップショット | いいえ | 
-> | virtualmachines | はい | 
+> | virtualmachines | はい <br/><br/> Azure VM を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | virtualmachines/extensions | いいえ | 
 > | virtualmachinescalesets | いいえ | 
 
@@ -695,7 +696,7 @@ ms.locfileid: "87040957"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | accounts | いいえ | 
+> | accounts | 不正解です。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。
 > | actiongroups |  いいえ | 
 > | activitylogalerts | いいえ | 
 > | alertrules |  いいえ | 
@@ -907,13 +908,13 @@ ms.locfileid: "87040957"
 > | expressrouteports | いいえ | 
 > | frontdoors | いいえ | 
 > | frontdoorwebapplicationfirewallpolicies | いいえ | 
-> | loadbalancers | はい <br/><br/> 既存の構成をテンプレートとしてエクスポートし、そのテンプレートを新しいリージョンにデプロイすることができます。 [外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)または[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)のロード バランサーを移動する方法をご覧ください。 |
+> | loadbalancers | はい <br/><br/> 内部および外部のロード バランサーを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
 > | localnetworkgateways |  いいえ | 
 > | natgateways |  いいえ | 
 > | networkintentpolicies |  いいえ | 
-> | networkinterfaces | はい | 
+> | networkinterfaces | はい <br/><br/> NIC を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | networkprofiles | いいえ | 
-> | networksecuritygroups | はい | 
+> | networksecuritygroups | はい <br/><br/> ネットワーク セキュリティ グループ (NSG) を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | networkwatchers |  いいえ |  
 > | networkwatchers/connectionmonitors |  いいえ | 
 > | networkwatchers/lenses |  いいえ | 
@@ -923,7 +924,7 @@ ms.locfileid: "87040957"
 > | privatednszones/virtualnetworklinks |  いいえ |  
 > | privateendpoints | いいえ | 
 > | privatelinkservices | いいえ | 
-> | publicipaddresses | はい<br/><br/> 既存のパブリック IP アドレス構成をテンプレートとしてエクスポートし、そのテンプレートを新しいリージョンにデプロイすることができます。 パブリック IP アドレスの移動の[詳細をご覧ください](../../virtual-network/move-across-regions-publicip-portal.md)。 |
+> | publicipaddresses | はい<br/><br/> パブリック IP アドレスを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
 > | publicipprefixes | いいえ | 
 > | routefilters | いいえ | 
 > | routetables |  いいえ | 
@@ -1028,6 +1029,14 @@ ms.locfileid: "87040957"
 > | ------------- | ----------- |
 > | Query |  いいえ |  
 
+## <a name="microsoftresources"></a>Microsoft.Resources
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | リージョンの移動 |
+> | ------------- | ----------- |
+> | deploymentScripts |  はい<br/><br/>[Microsoft.Resources リソースを新しいリージョンに移動する](microsoft-resources-move-regions.md) |
+> | templateSpecs |  はい<br/><br/>[Microsoft.Resources リソースを新しいリージョンに移動する](microsoft-resources-move-regions.md) |  
+
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
@@ -1125,11 +1134,11 @@ ms.locfileid: "87040957"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | instancepools | いいえ | 
-> | managedinstances | はい | 
+> | managedinstances | はい <br/><br/> マネージド インスタンスのリージョン間での移動に関する[詳細を参照してください](../../azure-sql/database/move-resources-across-regions.md)。 | 
 > | managedinstances/databases | はい | 
 > | servers | はい | 
-> | servers/databases | はい | 
-> | servers/elasticpools | はい | 
+> | servers/databases | はい <br/><br/> データベースのリージョン間での移動に関する[詳細を参照してください](../../azure-sql/database/move-resources-across-regions.md)。<br/><br/> Azure Resource Mover を使用した Azure SQL データベースの移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
+> | servers/elasticpools | はい <br/><br/> エラスティック プールのリージョン間での移動に関する[詳細を参照してください](../../azure-sql/database/move-resources-across-regions.md)。<br/><br/> Azure Resource Mover を使用した Azure SQL エラスティック プールを移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
 > | virtualclusters | はい | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

@@ -4,12 +4,12 @@ description: アクティビティ ログ アラートがアクティブにな�
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 018bf7ac9c24669df798e9ba05c667dcb72d94a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321838"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916637"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -19,7 +19,7 @@ ms.locfileid: "87321838"
 アクション グループについて詳しくは、[アクション グループを作成](./action-groups.md)する方法をご覧ください。
 
 > [!NOTE]
-> [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。このスキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードによって Webhook の統合を実現できることです。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
+> [共通アラート スキーマ](./alerts-common-schema.md)を使用することもできます。このスキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードによって Webhook の統合を実現できることです。 [共通アラート スキーマの定義については、こちらを参照してください。](./alerts-common-schema-definitions.md)
 
 
 ## <a name="authenticate-the-webhook"></a>webhook の認証
@@ -27,6 +27,20 @@ webhook は、認証のためにトークンベースの承認を使用するこ
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 POST 操作に含まれる JSON ペイロードは、ペイロードの data.context.activityLog.eventSource フィールドによって異なります。
+
+> [!NOTE]
+> 現時点では、アクティビティ ログ イベントの一部である説明は、発生した **"アラートの説明"** プロパティにコピーされます。
+>
+> アクティビティ ログのペイロードを他のアラートの種類に合わせるために、2021 年 4 月 1 日以降は、発生したアラートの **"説明"** プロパティにアラート ルールの説明が含まれるようになります。
+>
+> この変更に向けた準備として、アクティビティ ログの発生したアラートに、 **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** という新しいプロパティが作成されました。 この新しいプロパティには、既に使用可能な **"説明"** プロパティが入力されます。 つまり、新しい **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** フィールドには、アクティビティ ログ イベントの一部である説明が含まれます。
+>
+> 発生したアラートの **"説明"** プロパティを使用している可能性のあるアラート ルール、アクション ルール、Webhook、ロジック アプリ、またはその他の構成を確認し、 **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** プロパティに置き換えてください。
+>
+> 現在、(アクション ルール、Webhook、ロジック アプリ、またはその他の構成の) 状態が、アクティビティ ログ アラートの **"説明"** プロパティに基づいている場合は、代わりに **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** プロパティに基づくように変更することが必要な場合があります。
+>
+> 新しい **"説明"** プロパティに入力するために、アラート ルールの定義に説明を追加できます。
+> ![発生したアクティビティ ログ アラート](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>共通
 
@@ -269,7 +283,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
 | properties |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 |
 | イベント |イベントに関するメタデータを含む要素。 |
-| authorization |イベントのロールベースのアクセス制御プロパティ。 これらのプロパティには通常、action、role、scope が含まれます。 |
+| authorization |イベントの Azure ロールベースのアクセス制御プロパティ。 これらのプロパティには通常、action、role、scope が含まれます。 |
 | category |イベントのカテゴリ。 サポートされる値は Administrative、Alert、Security、ServiceHealth、Recommendation です。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 一部のシステム呼び出しでは、null の場合があります。 |
 | correlationId |通常は GUID (文字列形式)。 correlationId を含むイベントは、より大きな同じアクションに属し、通常は correlationId を共有します。 |
@@ -292,4 +306,3 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
-

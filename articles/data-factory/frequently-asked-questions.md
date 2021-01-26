@@ -3,18 +3,18 @@ title: 'Azure Data Factory: よく寄せられる質問 '
 description: Azure Data Factory についてよく寄せられる質問とその回答を紹介します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d1b9f0e25c460b7f26c31c3d2c6ebe51d958017
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187289"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485035"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -65,12 +65,12 @@ Data Factory V2 の充実した SDK セットを使用すると、使い慣れ�
 ユーザーは、文書化されている REST API を Data Factory V2 に対するインターフェイスとして使用することもできます。
 
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>ビジュアル ツールを使用した反復開発とデバッグ
-Azure Data Factory ビジュアル ツールを使用すると、反復開発とデバッグを行うことができます。 パイプラインを作成し、パイプライン キャンバスの**デバッグ**機能を使用して、1 行もコードを記述せずにテストを実行できます。 テストの実行結果は、パイプライン キャンバスの **[出力]** ウィンドウに表示されます。 テストの実行が成功したら、パイプラインにさらにアクティビティを追加し、反復的な方法でデバッグを続行できます。 進行中になったテストをキャンセルすることもできます。 
+Azure Data Factory ビジュアル ツールを使用すると、反復開発とデバッグを行うことができます。 パイプラインを作成し、パイプライン キャンバスの **デバッグ** 機能を使用して、1 行もコードを記述せずにテストを実行できます。 テストの実行結果は、パイプライン キャンバスの **[出力]** ウィンドウに表示されます。 テストの実行が成功したら、パイプラインにさらにアクティビティを追加し、反復的な方法でデバッグを続行できます。 進行中になったテストをキャンセルすることもできます。 
 
 **[デバッグ]** を選択する前にデータ ファクトリ サービスの変更を発行する必要はありません。 これは、データ ファクトリのワークフローを更新する前に、新しい追加や変更が開発環境、テスト環境、運用環境で期待どおりに動作することを確認する場合に便利です。 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS パッケージを Azure にデプロイする機能 
-SSIS ワークロードを移動する場合は、データ ファクトリを作成し、Azure-SSIS 統合ランタイムをプロビジョニングできます。 Azure-SSIS 統合ランタイムは、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) のフル マネージドのクラスターです。 詳しい手順については、「[SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」チュートリアルを参照してください。 
+SSIS ワークロードを移動する場合は、データ ファクトリを作成し、Azure-SSIS 統合ランタイムをプロビジョニングできます。 Azure-SSIS 統合ランタイムは、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) のフル マネージドのクラスターです。 詳しい手順については、「[SSIS パッケージを Azure にデプロイする](./tutorial-deploy-ssis-packages-azure.md)」チュートリアルを参照してください。 
  
 ### <a name="sdks"></a>SDK
 プログラマティック インターフェイスを必要とする詳しい知識のあるユーザー向けに、Data Factory では、使い慣れた IDE を使用してパイプラインを作成、管理、監視するために使用できる豊富な SDK セットが用意されています。 .NET、PowerShell、Python、REST などの言語がサポートされています。
@@ -159,7 +159,7 @@ Azure Data Factory の価格の詳細については、[Data Factory の価格�
 Azure Data Factory の最新情報を入手するには、次のサイトを参照してください。
 
 - [ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [ドキュメントのホーム ページ](/azure/data-factory)
+- [ドキュメントのホーム ページ](./index.yml)
 - [製品のホーム ページ](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>技術的な詳細情報 
@@ -190,7 +190,7 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory で他の 90 個のデータセット型を使用してデータにアクセスする方法はありますか?
 
-現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure SQL Data Warehouse のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
+現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure Synapse Analytics のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
 
 コピー アクティビティを使用して、データを他の任意のコネクタから段階的に送り、Data Flow のアクティビティを実行してステージングの後にデータを変換します。 たとえば、まずパイプラインを BLOB ストレージにコピーし、次に Data Flow のアクティビティでソースのデータセットを使用して、データを変換します。
 

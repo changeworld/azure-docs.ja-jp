@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844849"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145652"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -121,7 +121,7 @@ Azure API for FHIR のメタデータ URL は `https://MYACCOUNT.azurehealthcare
 
 [Send]\(送信\) をクリックすると、患者が正常に作成されていることがわかります。
 
-![作成された患者](media/tutorial-postman/postman-patient-created.png)
+![患者が正常に作成されたことを示すスクリーンショット。](media/tutorial-postman/postman-patient-created.png)
 
 患者の検索を繰り返すと、患者のレコードが表示されます。
 

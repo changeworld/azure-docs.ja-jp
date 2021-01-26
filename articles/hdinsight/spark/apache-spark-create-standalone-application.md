@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 5be4ce97e6087847f084f9b9ec2a6b8b0df84e14
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756896"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033512"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -39,7 +39,7 @@ ms.locfileid: "88756896"
 
 * Java IDE。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
 
-* Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)」を参照してください。
+* Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA 用の Scala プラグインをインストールする
 
@@ -98,7 +98,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 5. アーキタイプの一覧から、 **`org.scala-tools.archetypes:scala-archetype-simple`** を選択します。 このアーキタイプによって、正しいディレクトリ構造が作成され、Scala プログラムを作成するのに必要な既定の依存関係がダウンロードされます。
 
-    ![`IntelliJ IDEA Maven プロジェクトを作成する`](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![[New Project]\(新しいプロジェクト\) ウィンドウで選択されたアーキタイプを示すスクリーンショット。](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. **[次へ]** を選択します。
 
@@ -107,7 +107,7 @@ Scala プラグインをインストールするには、次の手順を実行�
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
 
-    ![`IntelliJ IDEA Maven プロジェクトを作成する`](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![[New Project]\(新しいプロジェクト\) ウィンドウの [Artifact Coordinates]\(成果物の調整/) オプションを示すスクリーンショット。](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. **[次へ]** を選択します。
 
@@ -213,7 +213,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 * クラスターに関連付けられている **Azure Storage Blob にアプリケーション jar をコピーします**。 コピーには、**AzCopy** コマンドライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
-* Spark クラスターに、**Apache Livy を使用してリモートからアプリケーション ジョブを送信**します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、[HDInsight の Spark クラスターで Apache Livy を使用してリモートから Apache Spark ジョブを送信する方法](apache-spark-livy-rest-interface.md)に関するページを参照してください。
+* Spark クラスターに、**Apache Livy を使用してリモートからアプリケーション ジョブを送信** します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、[HDInsight の Spark クラスターで Apache Livy を使用してリモートから Apache Spark ジョブを送信する方法](apache-spark-livy-rest-interface.md)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -221,7 +221,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 

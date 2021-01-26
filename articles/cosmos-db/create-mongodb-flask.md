@@ -9,14 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 3d066005ac18bf42f913885558bf6f0ee5fc50c4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873043"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349165"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -117,17 +118,17 @@ ms.locfileid: "87873043"
 
 2. ルート ディレクトリ内の *app.py* ファイルを開きます。
 
-3. (コピー ボタンを使用して) ポータルから**ユーザー名**の値をコピーし、*app.py* ファイル内の **name** の値に設定します。
+3. (コピー ボタンを使用して) ポータルから **ユーザー名** の値をコピーし、*app.py* ファイル内の **name** の値に設定します。
 
-4. 次に、ポータルから**接続文字列**の値をコピーし、それを *app.py* ファイル内の **MongoClient** の値に設定します。
+4. 次に、ポータルから **接続文字列** の値をコピーし、それを *app.py* ファイル内の **MongoClient** の値に設定します。
 
-5. 最後に、ポータルから**パスワード**の値をコピーし、*app.py* ファイル内の **password** の値に設定します。
+5. 最後に、ポータルから **パスワード** の値をコピーし、*app.py* ファイル内の **password** の値に設定します。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 これまでと同じ方法で実行できます。
 
 ## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
-このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この GitHub リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)に従って、Azure で GitHub による継続的配置を設定します。
+このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この GitHub リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](../app-service/deploy-continuous-deployment.md)に従って、Azure で GitHub による継続的配置を設定します。
 
 Azure にデプロイする場合は、アプリケーション キーを削除し、以下のセクションがコメント アウトされていないことを確認する必要があります。
 
@@ -137,7 +138,7 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-アプリケーション設定に MONGOURL、MONGO_PASSWORD、MONGO_USERNAME を追加する必要があります。 この[チュートリアル](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)に従って、Azure Web Apps のアプリケーション設定の詳細を確認できます。
+アプリケーション設定に MONGOURL、MONGO_PASSWORD、MONGO_USERNAME を追加する必要があります。 この[チュートリアル](../app-service/configure-common.md#configure-app-settings)に従って、Azure Web Apps のアプリケーション設定の詳細を確認できます。
 
 このリポジトリのフォークを作成しない場合は、下の **[Azure へのデプロイ]** をクリックすることもできます。 Azure に移動し、Azure Cosmos DB アカウント情報でアプリケーション設定を設定する必要があります。
 
@@ -161,4 +162,4 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
 このクイックスタートでは、Azure Cosmos DB for Mongo DB API アカウントを作成し、Azure Cosmos DB Emulator を使用して、GitHub からクローンした Python Flask To-Do Web アプリを実行する方法について説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。 
 
 > [!div class="nextstepaction"]
-> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
+> [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

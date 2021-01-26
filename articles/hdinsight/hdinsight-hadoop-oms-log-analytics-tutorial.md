@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 775e2fad573832dd29fc45985c6d6bd0a50fdf3c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078352"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546094"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
 Azure Monitor ログを有効にして、HDInsight で Hadoop クラスターの操作を監視する方法を説明します。 また、HDInsight 監視ソリューションを追加する方法について説明します。
 
-[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、クラウド環境とオンプレミス環境を監視する Azure Monitor サービスです。 この監視では、可用性とパフォーマンスを維持します。 クラウド、オンプレミス環境内にあるリソースによって生成されたデータと他の監視ツールのデータを収集します。 データは、複数のソースにわたる分析を提供するために使用されます。
+[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)は、クラウド環境とオンプレミス環境を監視する Azure Monitor サービスです。 この監視では、可用性とパフォーマンスを維持します。 クラウド、オンプレミス環境内にあるリソースによって生成されたデータと他の監視ツールのデータを収集します。 データは、複数のソースにわたる分析を提供するために使用されます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,9 +40,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
   HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。  
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。 最新バージョンを使用していることを確認します。 必要であれば、`Update-Module -Name Az` を実行します。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。 最新バージョンを使用していることを確認します。 必要であれば、`Update-Module -Name Az` を実行します。
 
-* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 > [!NOTE]  
 > パフォーマンス向上のため、HDInsight クラスターと Log Analytics ワークスペースの両方を同じリージョンに配置することをお勧めします。 Azure Monitor ログは、すべての Azure リージョンで使用できるわけではありません。
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure PowerShell を使用して Azure Monitor を有効にする
 
-Azure PowerShell Az モジュールの [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) コマンドレットを使用して Azure Monitor ログを有効にすることができます。
+Azure PowerShell Az モジュールの [Enable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) コマンドレットを使用して Azure Monitor ログを有効にすることができます。
 
 ```powershell
 # Enter user information
@@ -97,7 +97,7 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-無効にする場合は、[Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) コマンドレットを使用します。
+無効にする場合は、[Disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) コマンドレットを使用します。
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
@@ -105,7 +105,7 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="enable-azure-monitor-using-azure-cli"></a>Azure CLI を使用して Azure Monitor を有効にする
 
-Azure CLI `[az hdinsight monitor enable`] (https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) コマンドを使用して、Azure Monitor ログを有効にすることができます。
+Azure CLI `[az hdinsight monitor enable`](/cli/azure/hdinsight/monitor#az-hdinsight-monitor-enable) コマンドを使用して、Azure Monitor ログを有効にすることができます。
 
 ```azurecli
 # set variables
@@ -120,7 +120,7 @@ az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --wo
 az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```
 
-無効にするには、[`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) コマンドを使用します。
+無効にするには、[`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az-hdinsight-monitor-disable) コマンドを使用します。
 
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
@@ -128,7 +128,7 @@ az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight クラスター管理ソリューションをインストールする
 
-HDInsight では、Azure Monitor ログに追加できるクラスター固有の管理ソリューションが提供されます。 [管理ソリューション](../log-analytics/log-analytics-add-solutions.md)を使用すると、Azure Monitor ログに機能を追加して、追加のデータおよび分析ツールを提供できます。 これらのソリューションでは、HDInsight クラスターから重要なパフォーマンス メトリックが収集されます。 メトリックを検索するためのツールが提供されます。 また、これらのソリューションは、HDInsight でサポートされるほとんどのクラスターの種類に対する視覚化とダッシュボードも提供します。 このソリューションで収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。
+HDInsight では、Azure Monitor ログに追加できるクラスター固有の管理ソリューションが提供されます。 [管理ソリューション](../azure-monitor/insights/solutions.md)を使用すると、Azure Monitor ログに機能を追加して、追加のデータおよび分析ツールを提供できます。 これらのソリューションでは、HDInsight クラスターから重要なパフォーマンス メトリックが収集されます。 メトリックを検索するためのツールが提供されます。 また、これらのソリューションは、HDInsight でサポートされるほとんどのクラスターの種類に対する視覚化とダッシュボードも提供します。 このソリューションで収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。
 
 利用可能な HDInsight ソリューションは次のとおりです。
 
@@ -147,7 +147,7 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
 
-Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析がサポートされています。 詳細については、[Azure Monitor の Linux パフォーマンス データ ソース](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)に関する記事をご覧ください。
+Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析がサポートされています。 詳細については、[Azure Monitor の Linux パフォーマンス データ ソース](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters)に関する記事をご覧ください。
 
 ## <a name="cluster-auditing"></a>クラスターの監査
 

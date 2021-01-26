@@ -11,18 +11,22 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another resource group.
-ms.openlocfilehash: fe8051d551077666c06ac033f22303fd643ac602
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ea152e1d78ab1ea610eee5420394c89524673993
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585735"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042384"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>リソース グループ間での Azure Key Vault の移動
 
 ## <a name="overview"></a>概要
 
 リソース グループ間でのキー コンテナーの移動は、サポートされているキー コンテナー機能です。 リソース グループ間でキー コンテナーを移動しても、キー コンテナーのファイアウォールまたはアクセス ポリシーの構成には影響しません。 接続されているアプリケーションとサービス プリンシパルは、意図したとおりに動作し続けるはずです。
+
+> [!IMPORTANT]
+> **ディスクの暗号化に使用されているキー コンテナーは移動できません。**
+> VM のディスク暗号化でキー コンテナーを使用している場合、ディスク暗号化が有効になっている間、キー コンテナーを別のリソース グループまたはサブスクリプションに移動することはできません。 キー コンテナーを新しいリソース グループまたはサブスクリプションに移動する前に、ディスクの暗号化を無効にする必要があります。 
 
 ## <a name="design-considerations"></a>デザインに関する考慮事項
 

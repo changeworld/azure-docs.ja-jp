@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 994130ce2ecb4578a8d34f1f77b310bb558d3c7a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617206"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967909"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (Large Instances) に HANA をインストールする
 
@@ -115,7 +116,7 @@ rpm –qa | grep gtk2
 ![SAP HANA ライフサイクル管理画面のスクリーンショット (定義するシステム管理者フィールド)](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> ユニットのデプロイを注文するときに Microsoft に提供したものと同じ**システム管理者ユーザー ID** と**ユーザー グループの ID** を入力する必要があります。 それ以外の場合、HANA L インスタンス ユニットへの SAP HANA のインストールは失敗します。
+> ユニットのデプロイを注文するときに Microsoft に提供したものと同じ **システム管理者ユーザー ID** と **ユーザー グループの ID** を入力する必要があります。 それ以外の場合、HANA L インスタンス ユニットへの SAP HANA のインストールは失敗します。
 
 この後に続く 2 つの画面は、ここでは示しません。 それらでは、SAP HANA データベースの SYSTEM ユーザーのパスワードと、sapadm ユーザーのパスワードを入力することができます。 後者は、SAP HANA データベース インスタンスの一部としてインストールされる SAP Host Agent で使用されます。
 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510371"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626352"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
-Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux またはリモート Server Message Block (SMB) 共有との間の同期はサポートされていません。
+Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux クライアント、リモート Server Message Block (SMB) 共有、Network File System (NFS) 共有との間の同期はサポートされていません。
 
 そのため、ファイル サービスをハイブリッド デプロイに変換するには、Windows Server に移行する必要があります。 この記事では、そのような移行の計画と実行について説明します。
 
@@ -207,7 +207,7 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-最も一般的な問題は、Windows Server 側で**ボリュームがいっぱい**になったために Robocopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカルの Windows Server ディスクからコンテンツが退避されます。 目標は、ボリューム上の空き領域を 99% にすることです。
+最も一般的な問題は、Windows Server 側で **ボリュームがいっぱい** になったために Robocopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカルの Windows Server ディスクからコンテンツが退避されます。 目標は、ボリューム上の空き領域を 99% にすることです。
 
 同期を進行させ、クラウドを使った階層化にディスク領域を解放させます。 これは、Windows Server 上のエクスプローラーで確認できます。
 
@@ -219,6 +219,6 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事には、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプが含まれています。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
-* [Azure File Sync の概要](https://aka.ms/AFS)
+* [Azure File Sync の概要](./storage-sync-files-planning.md)
 * [Azure File Sync デプロイ ガイド](storage-files-deployment-guide.md)
 * [Azure File Sync に関するトラブルシューティング](storage-sync-files-troubleshoot.md)

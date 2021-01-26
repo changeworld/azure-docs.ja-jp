@@ -7,21 +7,24 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922196"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859614"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
-アプリケーションが Azure Active Directory B2C (Azure AD B2C) とやりとりできるようにするには、管理しているテナントに登録する必要があります。
+アプリケーションが Azure Active Directory B2C (Azure AD B2C) とやりとりできるようにするには、管理しているテナントに登録する必要があります。 
 
-この記事では、次の方法について説明します。
+> [!NOTE]
+> サブスクリプションあたり最大 20 個のテナントを作成できます。 この制限は、サービス拒否攻撃などのリソースに対する脅威からの保護に役立ち、Azure portal と基盤となるテナント作成 API の両方で適用されます。 20 を超えるテナントを作成する必要がある場合は、[Microsoft サポート](support-options.md)にお問い合わせください。
+
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * Azure AD B2C テナントを作成する
@@ -46,8 +49,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![サブスクリプション テナント、サブスクリプション テナントが選択された状態のディレクトリ + サブスクリプションのフィルター](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
+
+   ![[リソースの作成] ボタンを選択する](media/tutorial-create-tenant/create-a-resource.png)
+
 1. **[Azure Active Directory B2C]** を検索して、 **[作成]** を選択します。
-1. **[Create a new Azure AD B2C Tenant]\(新しい Azure AD B2C テナントの作成\)** を選択します。
+2. **[Create a new Azure AD B2C Tenant]\(新しい Azure AD B2C テナントの作成\)** を選択します。
 
     ![Azure portal で選択された新しい Azure AD B2C テナントを作成する](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
@@ -57,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[初期ドメイン名]** - Azure AD B2C テナントのドメイン名を入力します。
    - **[国またはリージョン]** - 該当する国またはリージョンを一覧から選択します。 この選択を後から変更することはできません。
    - **[サブスクリプション]** - 一覧からサブスクリプションを選択します。
-   - **[リソース グループ]** - テナントが含まれるリソース グループを選択します。 または、 **[新規作成]** を選択してリソース グループの**名前**を入力し、 **[リソース グループの場所]** を選択して **[OK]** を選択します。
+   - **[リソース グループ]** - テナントが含まれるリソース グループを選択または検索します。
 
     ![Azure portal でのサンプル値が含まれているテナントの作成フォーム](media/tutorial-create-tenant/review-and-create-tenant.png)
 

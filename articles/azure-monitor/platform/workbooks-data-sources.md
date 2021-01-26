@@ -3,19 +3,17 @@ title: Azure Monitor ブックのデータソース | Microsoft docs
 description: 複数のデータ ソースから作成された作成済みおよびパラメーター化されたカスタム Azure Monitor ブックを使用して、複雑なレポート作成を簡素化します
 services: azure-monitor
 documentationcenter: ''
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: mbullwin
-ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081425"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927908"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -79,7 +77,7 @@ Azure Monitor には、Windows または Linux ゲスト オペレーティン�
 
 クエリ コントロールでこのデータ ソースを使用するには、 **[クエリの種類]** ドロップダウンを使用して [Azure の正常性] を選択し、ターゲットとなるリソースを選択します。 正常性フィルターのドロップダウンを使用して、ご自分の分析ニーズに合わせて興味深いリソースの問題のサブセットを選択します。
 
-![アラート クエリのスクリーンショット](./media/workbooks-overview/resource-health.png)
+![正常性フィルターの一覧を表示するアラート クエリのスクリーンショット。](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 
@@ -111,7 +109,6 @@ JSON プロバイダーを使用すると、静的な JSON コンテンツから
 
 ## <a name="next-steps"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
+* ブックの豊富な視覚化オプションの学習を[開始](./workbooks-overview.md#visualizations)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。
 * [Log Analytics のクエリ最適化のヒント](../log-query/query-optimization.md)
-* 

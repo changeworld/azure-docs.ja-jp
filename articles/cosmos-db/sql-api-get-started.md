@@ -9,19 +9,20 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 514fe30da9c0e232c168992c2aabbb484644aa99
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49fa928285b29eaff806b009cf327e84e17491c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015307"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098724"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [Async Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [Async Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
@@ -67,8 +68,8 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
     :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="プロジェクトを構成する":::
 
-1. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、 **[NuGet パッケージの管理]** を選択します。
-1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、*Microsoft.Azure.Cosmos* を検索します。 **[Microsoft.Azure.Cosmos]** を選択し、 **[インストール]** を選択します。
+1. **ソリューション エクスプローラー** で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、 *Microsoft.Azure.Cosmos* を検索します。 **[Microsoft.Azure.Cosmos]** を選択し、 **[インストール]** を選択します。
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Azure Cosmos DB クライアント SDK 用 NuGet のインストール":::
 
@@ -117,7 +118,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
     ```
 
    > [!NOTE]
-   > 以前のバージョンの .NET SDK に慣れている方は、"*コレクション*" や "*ドキュメント*" という用語をよく目にしたかと思います。 Azure Cosmos DB では複数の API モデルをサポートしているため、.NET SDK バージョン 3.0 では、"*コンテナー*" と "*項目*" という一般的な用語が使用されています。 "*コンテナー*" は、コレクション、グラフ、またはテーブルを表します。 "*項目*" は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 詳細については、「[Azure Cosmos DB のデータベース、コンテナー、項目の操作](databases-containers-items.md)」を参照してください。
+   > 以前のバージョンの .NET SDK に慣れている方は、" *コレクション* " や " *ドキュメント* " という用語をよく目にしたかと思います。 Azure Cosmos DB では複数の API モデルをサポートしているため、.NET SDK バージョン 3.0 では、" *コンテナー* " と " *項目* " という一般的な用語が使用されています。 " *コンテナー* " は、コレクション、グラフ、またはテーブルを表します。 " *項目* " は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 詳細については、「[Azure Cosmos DB のデータベース、コンテナー、項目の操作](account-databases-containers-items.md)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 ご使用の Azure Cosmos DB アカウントを探して、 **[キー]** を選択します。
 
@@ -125,7 +126,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. *Program.cs* で、`<your endpoint URL>` を **URI** の値に置き換えます。 `<your primary key>` は **PRIMARY KEY** の値に置き換えます。
 
-1. **Main** メソッドの下に、**GetStartedDemoAsync** という新しい非同期タスクを追加します。これによって新しい `CosmosClient` がインスタンス化されます。
+1. **Main** メソッドの下に、 **GetStartedDemoAsync** という新しい非同期タスクを追加します。これによって新しい `CosmosClient` がインスタンス化されます。
 
     ```csharp
     public static async Task Main(string[] args)
@@ -145,19 +146,19 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
     Azure Cosmos DB リソース上で実行するメソッドを呼び出すエントリ ポイントとして **GetStartedDemoAsync** を使用します。
 
-1. 次のコードを追加して、**Main** メソッドから **GetStartedDemoAsync** 非同期タスクを実行します。 **Main** メソッドは例外をキャッチし、コンソールに書き込みます。
+1. 次のコードを追加して、 **Main** メソッドから **GetStartedDemoAsync** 非同期タスクを実行します。 **Main** メソッドは例外をキャッチし、コンソールに書き込みます。
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
 
 1. F5 キーを押してアプリケーションを実行します。
 
-    コンソールには、次のメッセージが表示されます。**End of demo, press any key to exit. (デモはこれで終わりです。終了するには何かキーを押してください。)** このメッセージによって、アプリケーションが Azure Cosmos DB に接続したことを確認できます。 表示されたら、コンソール ウィンドウを閉じます。
+    コンソールには、次のメッセージが表示されます。 **End of demo, press any key to exit. (デモはこれで終わりです。終了するには何かキーを押してください。)** このメッセージによって、アプリケーションが Azure Cosmos DB に接続したことを確認できます。 表示されたら、コンソール ウィンドウを閉じます。
 
 お疲れさまでした。 これで、Azure Cosmos DB アカウントに接続しました。
 
 ## <a name="step-4-create-a-database"></a>手順 4:データベースを作成する
 
-データベースは、コンテナーに分割された項目の論理上のコンテナーです。 [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) クラスの `CreateDatabaseIfNotExistsAsync` または `CreateDatabaseAsync` のいずれかのメソッドでデータベースを作成できます。
+データベースは、コンテナーに分割された項目の論理上のコンテナーです。 [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) クラスの `CreateDatabaseIfNotExistsAsync` または `CreateDatabaseAsync` のいずれかのメソッドでデータベースを作成できます。
 
 1. `CreateDatabaseAsync` メソッドをコピーし、`GetStartedDemoAsync` メソッドの下に貼り付けます。
 
@@ -260,7 +261,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 1. F5 キーを押してアプリケーションを実行します。
 
    > [!NOTE]
-   > "503 service unavailable exception" (503 サービス利用不可の例外) エラーが表示される場合は、直接接続モードに必要な[ポート](performance-tips.md#networking)がファイアウォールによってブロックされている可能性があります。 この問題を解決するには、次のコードに示すように、必要なポートを開くか、ゲートウェイ モード接続を使用します。
+   > "503 service unavailable exception" (503 サービス利用不可の例外) エラーが表示される場合は、直接接続モードに必要な[ポート](sql-sdk-connection-modes.md#service-port-ranges)がファイアウォールによってブロックされている可能性があります。 この問題を解決するには、次のコードに示すように、必要なポートを開くか、ゲートウェイ モード接続を使用します。
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
@@ -278,7 +279,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 >
 >
 
-コンテナーは、`CosmosDatabase` クラスの [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) または [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) メソッドのいずれかを使用して作成できます。 コンテナーは、項目 (SQL API の場合は JSON ドキュメント) および関連する JavaScript サーバー側アプリケーション ロジック (ストアド プロシージャ、ユーザー定義関数、トリガーなど) で構成されます。
+コンテナーは、`CosmosDatabase` クラスの [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) または [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) メソッドのいずれかを使用して作成できます。 コンテナーは、項目 (SQL API の場合は JSON ドキュメント) および関連する JavaScript サーバー側アプリケーション ロジック (ストアド プロシージャ、ユーザー定義関数、トリガーなど) で構成されます。
 
 1. `CreateContainerAsync` メソッドをコピーし、`CreateDatabaseAsync` メソッドの下に貼り付けます。 `CreateContainerAsync` によって、`LastName` プロパティによってパーティション化されている `containerId` フィールドに指定された ID で新しいコンテナー (ID `FamilyContainer`) が作成されます (このコンテナーがまだ存在していない場合)。
 
@@ -304,7 +305,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>手順 6: コンテナーに項目を追加する
 
-`CosmosContainer` クラスの [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) メソッドで項目を作成できます。 SQL API を使用すると、項目はドキュメントとして投影されます。これは、ユーザー定義の任意の JSON コンテンツです。 これで、Azure Cosmos コンテナーに項目を挿入できます。
+`CosmosContainer` クラスの [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) メソッドで項目を作成できます。 SQL API を使用すると、項目はドキュメントとして投影されます。これは、ユーザー定義の任意の JSON コンテンツです。 これで、Azure Cosmos コンテナーに項目を挿入できます。
 
 まず、このサンプルの Azure Cosmos DB 内に格納されるオブジェクトを表す `Family` クラスを作成しましょう。 また、`Family` 内で使用されるサブクラス `Parent`、`Child`、`Pet`、`Address` も作成します。 項目には、JSON で `id` としてシリアル化される `Id` プロパティが必要です。
 
@@ -345,7 +346,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>手順 7: Azure Cosmos DB リソースを照会する
 
-Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 詳細については、「[SQL クエリの使用を開始する](sql-api-sql-query.md)」をご覧ください。 次のサンプル コードを使用して、前の手順で挿入した項目に対してどのようにクエリを実行するかを説明します。
+Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 詳細については、「[SQL クエリの使用を開始する](./sql-query-getting-started.md)」をご覧ください。 次のサンプル コードを使用して、前の手順で挿入した項目に対してどのようにクエリを実行するかを説明します。
 
 1. `QueryItemsAsync` メソッドをコピーし、`AddItemsToContainerAsync` メソッドの後に貼り付けます。
 
@@ -489,7 +490,7 @@ End of demo, press any key to exit.
 * [Azure Cosmos DB アカウント][cosmos-db-create-account]。
 * GitHub で入手可能な [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) ソリューション。
 
-Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの復元]** を選択します。 次に、*App.config* ファイルで、`EndPointUri` と `PrimaryKey` の値を更新します。この手順については、「[手順 3:Azure Cosmos DB アカウントに接続する](#Connect)」を参照してください。
+Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、 **ソリューション エクスプローラー** でソリューションを右クリックし、 **[NuGet パッケージの復元]** を選択します。 次に、 *App.config* ファイルで、`EndPointUri` と `PrimaryKey` の値を更新します。この手順については、「 [手順 3:Azure Cosmos DB アカウントに接続する](#Connect)」を参照してください。
 
 以上です。ビルドすれば完了です。
 
@@ -497,8 +498,8 @@ Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、*
 
 * さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 「[チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する](sql-api-dotnet-application.md)」を参照してください。
 * Azure Cosmos DB のスケーリングとパフォーマンスをテストする方法については、 「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
-* Azure Cosmos DB の要求、使用状況、およびストレージを監視する方法については、「[Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する](monitor-accounts.md)」を参照してください。
+* Azure Cosmos DB の要求、使用状況、およびストレージを監視する方法については、「[Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する](./monitor-cosmos-db.md)」を参照してください。
 * サンプル データセットに対してクエリを実行するには、「[Query Playground](https://www.documentdb.com/sql/demo)」を参照してください。
-* Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](https://docs.microsoft.com/azure/cosmos-db/introduction)」を参照してください。
+* Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](./introduction.md)」を参照してください。
 
 [cosmos-db-create-account]: create-sql-api-java.md#create-a-database-account

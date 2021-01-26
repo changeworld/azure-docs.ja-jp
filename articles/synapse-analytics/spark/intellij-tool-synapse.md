@@ -1,24 +1,24 @@
 ---
 title: チュートリアル - Azure Toolkit for IntelliJ (Spark アプリケーション)
-description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、Apache Spark プール (プレビュー) に送信します。
+description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、サーバーレス Apache Spark プールに送信します。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194946"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121228"
 ---
-# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
+# <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
-このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 Spark プール (プレビュー) に送信する方法を説明します。 このプラグインには、次のような使い方があります。
+このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して、[Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発し、それを IntelliJ 統合開発環境 (IDE) からサーバーレス Apache Spark プールに直接送信する方法について説明します。 このプラグインには、次のような使い方があります。
 
 - Scala Spark アプリケーションを開発して Spark プール に送信する。
 - Spark プール リソースにアクセスする。
@@ -36,8 +36,8 @@ ms.locfileid: "85194946"
 - [IntelliJ IDEA コミュニティ バージョン](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)。
 - Azure ツールキット プラグイン 3.27.0-2019.2 - [IntelliJ プラグイン リポジトリ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)からインストール
 - [JDK (バージョン 1.8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
-- Scala プラグイン - [IntelliJ プラグイン リポジトリ](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)からインストール。
-- この前提条件は、Windows ユーザーのみを対象としています。
+- Scala プラグイン - [IntelliJ プラグイン リポジトリ](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)からインストール。
+- 次の前提条件は、Windows ユーザーのみを対象としています。
 
   Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に WinUtils.exe がないことが原因で発生します。
   このエラーを回避するには、[WinUtils 実行可能ファイル](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)をダウンロードして、**C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
@@ -100,11 +100,11 @@ Azure サブスクリプションにサインインして、Spark プールに�
 
     ![IntelliJ IDEA の [Azure Sign In]\(Azure サインイン\)](./media/intellij-tool-synapse/intellij-view-explorer2.png)
 
-4. **[Azure Device Login]\(Azure デバイスのログイン\)** ダイアログ ボックスで **[Copy&Open]\(コピーして開く\)** をクリックします。
+4. **[Azure Device Login]\(Azure デバイスのログイン\)** ダイアログ ボックスで **[Copy&Open]\(コピーして開く\)** を選択します。
 
    ![IntelliJ IDEA の [Azure Device Login]\(Azure デバイスのログイン\)](./media/intellij-tool-synapse/intellij-view-explorer5.png)
 
-5. ブラウザー インターフェイスで、コードを貼り付けて **[次へ]** をクリックします。
+5. ブラウザー インターフェイスで、コードを貼り付けて **[次へ]** を選択します。
 
    ![Microsoft の HDI の [コードの入力] ダイアログ](./media/intellij-tool-synapse/intellij-view-explorer6.png)
 
@@ -112,7 +112,7 @@ Azure サブスクリプションにサインインして、Spark プールに�
 
    ![Microsoft の HDI のメールの入力ダイアログ](./media/intellij-tool-synapse/intellij-view-explorer7.png)
 
-7. サインイン後、 **[Select Subscriptions]\(サブスクリプションの選択\)** ダイアログ ボックスに、その資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 該当するサブスクリプションを選択し、 **[選択]** をクリックします。
+7. サインイン後、 **[Select Subscriptions]\(サブスクリプションの選択\)** ダイアログ ボックスに、その資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 該当するサブスクリプションを選択して、 **[選択]** を選択します。
 
     ![[サブスクリプションの選択] ダイアログ ボックス](./media/intellij-tool-synapse/Select-Subscriptions.png)
 
@@ -128,13 +128,13 @@ Azure サブスクリプションにサインインして、Spark プールに�
 
 Scala アプリケーションを作成した後、これをリモートから実行できます。
 
-1. アイコンをクリックすると **[Run/Debug Configurations]\(実行/デバッグ構成\)** ウィンドウが開きます。
+1. アイコンをクリックして、 **[Run/Debug Configurations]\(実行/デバッグ構成\)** ウィンドウを開きます。
 
-    ![[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\) コマンド](./media/intellij-tool-synapse/open-configuration-window.png)
+    ![[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\) コマンド 1](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. **[Run/Debug Configurations]\(実行/デバッグ構成\)** ダイアログ ウィンドウで、 **[+]** をクリックし、 **[Apache Spark on Synapse]** を選択します。
+2. **[Run/Debug Configurations]\(実行/デバッグ構成\)** ダイアログ ウィンドウで、 **[+]** を選択してから、 **[Apache Spark on Synapse]** を選択します。
 
-    ![[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\) コマンド](./media/intellij-tool-synapse/create-synapse-configuration02.png)
+    ![[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\) コマンド 2](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
 3. **[Run/Debug Configurations]\(実行/デバッグ構成\)** ウィンドウで、次の値を指定して **[OK]** を選択します。
 
@@ -145,20 +145,20 @@ Scala アプリケーションを作成した後、これをリモートから�
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |ジョブの構成|既定のキーと値を変更できます。 詳細については、[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
     |コマンド ライン引数|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
-    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細情報:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
+    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細については、[Apache Spark 構成]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|
     |ストレージ型|ドロップダウンリストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** または **[Use cluster default storage account to upload]\(クラスターの既定のストレージ アカウントを使用してアップロード\)** を選択します。|
     |ストレージ アカウント|ストレージ アカウントを入力します。|
     |ストレージ キー|ストレージ キーを入力します。|
     |ストレージ コンテナー|**[ストレージ アカウント]** と **[ストレージ キー]** の入力後、ドロップダウン リストからストレージ コンテナーを選択します。|
 
-    ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/intellij-tool-synapse/create-synapse-configuration03.png)
+    ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス 1](./media/intellij-tool-synapse/create-synapse-configuration03.png)
 
-4. **[SparkJobRun]** アイコンをクリックし、選択した Spark プールにプロジェクトを送信します。 **[Remote Spark Job in Cluster]\(クラスターのリモート Spark ジョブ\)** タブの下部には、ジョブの実行の進行状況が表示されます。 赤いボタンをクリックすると、アプリケーションを停止できます。
+4. **[SparkJobRun]** アイコンを選択して、プロジェクトを選択した Spark プールに送信します。 **[Remote Spark Job in Cluster]\(クラスターのリモート Spark ジョブ\)** タブの下部には、ジョブの実行の進行状況が表示されます。 赤いボタンを選択すると、アプリケーションを停止できます。
 
     ![[Apache Spark Submission]\(Apache Spark 送信\) ウィンドウ](./media/intellij-tool-synapse/remotely-run-synapse.png)
 
-    ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/intellij-tool-synapse/remotely-run-result.png)
+    ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス 2](./media/intellij-tool-synapse/remotely-run-result.png)
 
 ## <a name="local-rundebug-apache-spark-applications"></a>Apache Spark アプリケーションをローカル実行およびデバッグする
 
@@ -168,26 +168,26 @@ Scala アプリケーションを作成した後、これをリモートから�
 
 1. **[Run/Debug Configurations]\(実行/デバッグ構成\)** ダイアログを開き、プラス記号 ( **+** ) を選択します。 次に **[Apache Spark on Synapse]** オプションを選択します。 **[名前]** 、 **[Main class name]\(メイン クラス名\)** に保存する情報を入力します。
 
-    ![Intellij の実行/デバッグ構成 (ローカル実行)](./media/intellij-tool-synapse/local-run-synapse.png)
+    ![Intellij の実行/デバッグ構成 (ローカル実行 1)](./media/intellij-tool-synapse/local-run-synapse.png)
 
     - [環境変数] と [WinUtils.exe Location]\(WinUtils.exe の場所\) は、Windows ユーザーのみを対象としています。
     - 環境変数:システム環境変数は、以前設定されている場合は自動検出され、手動で追加する必要はありません。
-    - [[WinUtils.exe Location]\(WinUtils.exe の場所\)](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe):WinUtils の場所を指定するには、右側にあるフォルダー アイコンをクリックします。
+    - [[WinUtils.exe Location]\(WinUtils.exe の場所\)](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe):WinUtils の場所を指定するには、右側にあるフォルダー アイコンを選択します。
 
-2. 次に、ローカル再生ボタンをクリックします。
+2. 次に、ローカル再生ボタンを選択します。
 
-    ![Intellij の実行/デバッグ構成 (ローカル実行)](./media/intellij-tool-synapse/local-run-synapse01.png)
+    ![Intellij の実行/デバッグ構成 (ローカル実行 2)](./media/intellij-tool-synapse/local-run-synapse01.png)
 
 3. ローカル実行が完了したら、スクリプトに出力が含まれている場合は、 **[data]**  >  **[__default__]** から出力ファイルを確認できます。
 
-    ![Intellij プロジェクトのローカル実行の結果](./media/intellij-tool-synapse/spark-local-run-result.png)
+    ![Intellij プロジェクトのローカル実行の結果 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 
 ### <a name="scenario-2-do-local-debugging"></a>シナリオ 2: ローカル デバッグを実行する
 
 1. **LogQuery** スクリプトを開き、ブレークポイントを設定します。
-2. **[ローカル デバッグ]** アイコンをクリックしてローカル デバッグを実行します。
+2. **[ローカル デバッグ]** アイコンを選択してローカル デバッグを実行します。
 
-    ![Intellij プロジェクトのローカル実行の結果](./media/intellij-tool-synapse/local-debug-synapse.png)
+    ![Intellij プロジェクトのローカル実行の結果 2](./media/intellij-tool-synapse/local-debug-synapse.png)
 
 ## <a name="access-and-manage-synapse-workspace"></a>Synapse ワークスペースへアクセスして管理する
 
@@ -201,9 +201,9 @@ Azure Toolkit for IntelliJ 内の Azure Explorer では、さまざまな操作�
 
 2. ワークスペースを右クリックし、 **[ワークスペースの起動]** を選択すると、Web サイトが開きます。
 
-    ![Spark ジョブ ビューのアプリケーションの詳細](./media/intellij-tool-synapse/launch-workspace-synapse.png)
+    ![Spark ジョブ ビューのアプリケーションの詳細 1](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
-    ![Spark ジョブ ビューのアプリケーションの詳細](./media/intellij-tool-synapse/launch-workspace-result.png)
+    ![Spark ジョブ ビューのアプリケーションの詳細 2](./media/intellij-tool-synapse/launch-workspace-result.png)
 
 ## <a name="spark-console"></a>Spark コンソール
 
@@ -233,7 +233,7 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 
     ![IntelliJ IDEA Spark の自動修正ダイアログ 2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. コンソールは次の図のようになります。 コンソール ウィンドウに「`sc.appName`」と入力し、Ctrl + Enter キーを押します。 結果が表示されます。 赤いボタンをクリックすると、ローカル コンソールを終了できます。
+8. コンソールは次の図のようになります。 コンソール ウィンドウに「`sc.appName`」と入力し、Ctrl + Enter キーを押します。 結果が表示されます。 赤いボタンを選択すると、ローカル コンソールを終了できます。
 
     ![IntelliJ IDEA のローカル コンソールの結果](./media/intellij-tool-synapse/local-console-result.png)
 
@@ -260,13 +260,13 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 5. [Project]\(プロジェクト\) から **myApp** > **src** > **main** > **scala** > **myApp** に移動します。
 
 6. メニュー バーで、 **[Tools]\(ツール\)**  >  **[Spark console]\(Spark コンソール\)**  >  **[Run Spark Livy Interactive Session Console(Scala)]\(Spark Livy Interactive Session Console(Scala) の実行\)** に移動します。
-7. コンソールは次の図のようになります。 コンソール ウィンドウに「`sc.appName`」と入力し、Ctrl + Enter キーを押します。 結果が表示されます。 赤いボタンをクリックすると、ローカル コンソールを終了できます。
+7. コンソールは次の図のようになります。 コンソール ウィンドウに「`sc.appName`」と入力し、Ctrl + Enter キーを押します。 結果が表示されます。 赤いボタンを選択すると、ローカル コンソールを終了できます。
 
     ![IntelliJ IDEA の対話型コンソールの結果](./media/intellij-tool-synapse/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>選択内容を Spark コンソールに送信する
 
-一部のコードをローカルのコンソールまたは Livy Interactive Session Console (Scala) に送信して、スクリプトの結果を事前に確認すると便利です。 Scala ファイル内の一部のコードを強調表示し、 **[Send Selection To Spark console]\(選択内容を Spark コンソールに送信\)** を右クリックします。 選択したコードがコンソールに送信され、実行されます。 結果は、コンソールのコードの後に表示されます。 コンソールでは、エラーが存在するかどうかがチェックされます。
+ローカル コンソールまたは Livy Interactive Session Console(Scala) に何らかのコードを送信することで、スクリプトの結果を確認することをお勧めします。 それを行うには、Scala ファイル内の一部のコードを強調表示し、 **[選択内容を Spark コンソールに送信する]** を右クリックします。 選択したコードがコンソールに送信され、実行されます。 結果は、コンソールのコードの後に表示されます。 コンソールでは、既存のエラーが確認されます。
 
    ![選択内容を Spark コンソールに送信する](./media/intellij-tool-synapse/send-selection-to-console.png)
 

@@ -8,16 +8,19 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052021"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608607"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
 Application Gateway Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性や悪用から Web アプリケーションを保護します。 これには、OWASP コア ルール セット 3.1、3.0、または 2.2.9 に基づいて定義されている規則が使用されます。 これらの規則は、個別に無効にすることができます。 この記事には、現在提供されている規則とルール セットが含まれています。
+
+> [!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="core-rule-sets"></a>コア ルール セット
 

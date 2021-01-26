@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: eeaf6917187c9688bf6a62b98b2fcf64519b1798
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a87bf24c3555f2e6a259064b56b1b630f4abfe27
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543229"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894997"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>チュートリアル:Secret Server (On-Premises) と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543229"
 * ユーザーが自分の Azure AD アカウントを使用して Secret Server (On-Premises) に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Secret Server (On-Premises) では、**SP および IDP** Initiated SSO がサポートされます
+* Secret Server (On-Premises) では、 **SP および IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-secret-server-on-premises-from-the-gallery"></a>ギャラリーから Secret Server (On-Premises) を追加する
 
@@ -49,7 +49,7 @@ Azure AD への Secret Server (On-Premises) の統合を構成するには、ギ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Secret Server (On-Premises)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Secret Server (On-Premises)** 」と入力します。
 1. 結果ウィンドウで **[Secret Server (On-Premises)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -98,7 +98,7 @@ Secret Server (On-Premises) で Azure AD の SSO を構成してテストする�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[SAML 署名証明書]** ダイアログを開きます。
 
-    ![署名オプション](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
+    ![[Certificate (Base64)]\(証明書 (Base64)\) の [Download]\(ダウンロード\) アクションが選択されている [S A M L Signing Certificate]\(S A M L 署名証明書\) セクションを示すスクリーンショット。](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
 1. **[証明書オプション]** で **[SAML 応答とアサーションへの署名]** を選択します。
 
@@ -110,7 +110,7 @@ Secret Server (On-Premises) で Azure AD の SSO を構成してテストする�
 
 ### <a name="configure-secret-server-on-premises-sso"></a>Secret Server (On-Premises) SSO の構成
 
-**Secret Server (On-Premises)** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Secret Server (On-Premises) サポート チーム](https://thycotic.force.com/support/s/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Secret Server (On-Premises)** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Secret Server (On-Premises) サポート チーム](https://thycotic.force.com/support/s/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -144,18 +144,18 @@ Secret Server (On-Premises) で Azure AD の SSO を構成してテストする�
 
 ### <a name="create-secret-server-on-premises-test-user"></a>Secret Server (On-Premises) テスト ユーザーの作成
 
-このセクションでは、Secret Server (On-Premises) で Britta Simon というユーザーを作成します。  [Secret Server (On-Premises) サポート チーム](https://thycotic.force.com/support/s/)と連携しながら、Secret Server (On-Premises) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Secret Server (On-Premises) で Britta Simon というユーザーを作成します。 [Secret Server (On-Premises) サポート チーム](https://thycotic.force.com/support/s/)と連携しながら、Secret Server (On-Premises) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Secret Server (On-Premises) のタイルをクリックすると、SSO を設定した Secret Server (On-Premises) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで Secret Server (On-Premises) のタイルをクリックすると、SSO を設定した Secret Server (On-Premises) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

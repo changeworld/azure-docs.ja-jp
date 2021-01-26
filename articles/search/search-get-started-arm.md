@@ -3,18 +3,18 @@ title: Azure Resource Manager テンプレートを使用してサービスを�
 titleSuffix: Azure Cognitive Search
 description: Azure Resource Manager テンプレートを使用すると、Azure Cognitive Search サービス インスタンスをすばやくデプロイすることができます。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 07/15/2020
-ms.openlocfilehash: c7d11b9e699ec4cba59d2af9e411692cbce35278
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 11/17/2020
+ms.openlocfilehash: 12aa7f123ec5e417d710636f2afb4c60231cefc1
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640176"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746552"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Search をデプロイする
 

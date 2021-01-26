@@ -5,17 +5,17 @@ description: Azure Maps Web SDK で Azure AD シングル サインオン に対
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 72fe4d897c9c202e0c4cd5861525093760036d26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285664"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895615"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>ユーザー サインインでシングル ページ アプリケーションをセキュリティで保護する
 
@@ -34,7 +34,7 @@ ms.locfileid: "87285664"
 
 2. **[名前]** を入力して **[Support account type]\(サポートされるアカウントの種類\)** を選択し、リダイレクト URI を指定します。この URI は、トークンを発行する Azure AD URL を表し、マップ コントロールがホストされる URL でもあります。 詳細なサンプルについては、[Azure Maps Azure AD サンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)に関する記事を参照してください。 次に、 **[登録]** を選択します。  
 
-3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可の追加](./media/how-to-manage-authentication/app-permissions.png)
@@ -67,7 +67,7 @@ ms.locfileid: "87285664"
         </script>   
     ```
 
-7. ユーザーまたはグループの Azure ロール ベースのアクセス制御を構成します。 [RBAC を有効にするには、次のセクションを参照](#grant-role-based-access-for-users-to-azure-maps)してください。
+7. ユーザーまたはグループの Azure ロールベースのアクセス制御 (Azure RBAC) を構成します。 [Azure RBAC を有効にするには、次のセクションを参照](#grant-role-based-access-for-users-to-azure-maps)してください。
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 
@@ -75,7 +75,7 @@ ms.locfileid: "87285664"
 
 シングル ページ アプリケーションのシナリオの詳細については、次を参考にしてください。
 > [!div class="nextstepaction"]
-> [シングルページ アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [シングルページ アプリケーション](../active-directory/develop/scenario-spa-overview.md)
 
 Azure Maps アカウントにおける API 使用状況メトリックを確認します。
 > [!div class="nextstepaction"]

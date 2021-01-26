@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: c13d14ad2d06cbc43d80c05258bdbd3303da4838
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 57bc53c28866b3f16e742c27b6a1600bfe6f44ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036829"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89418825"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する
 

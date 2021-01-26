@@ -3,22 +3,21 @@ title: イベント プロセッサ ホストを使用してイベントを受�
 description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936182"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89319504"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
-> この記事は、以前のバージョンの Azure Event Hubs SDK に適用されます。 新しいバージョンの SDK にコードを移行する方法については、以下の移行ガイドを参照してください。 
+> この記事は、以前のバージョンの Azure Event Hubs SDK に適用されます。 SDK の現行版については、「[アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る](event-processor-balance-partition-load.md)」を参照してください。 新しいバージョンの SDK にコードを移行する方法については、以下の移行ガイドを参照してください。 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> また、[アプリケーションの複数のインスタンス間でのパーティション負荷のバランスを取る](event-processor-balance-partition-load.md)も参照してください。
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
@@ -88,6 +87,8 @@ public class SimpleEventProcessor : IEventProcessor
 
 最後に、コンシューマーは [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスを Event Hubs サービスに登録します。 EventProcessorHost のインスタンスでイベント プロセッサ クラスを登録すると、イベント処理が開始されます。 この登録によって、Event Hubs サービスは、コンシューマー アプリがいくつかのパーティションからイベントを使用することを期待し、使用するイベントをプッシュするたびに [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装コードを呼び出すようになります。 
 
+> [!NOTE]
+> consumerGroupName では、大文字と小文字が区別されます。  consumerGroupName に変更すると、ストリームの開始からパーティションがすべて読み込まれることがあります。
 
 ### <a name="example"></a>例
 

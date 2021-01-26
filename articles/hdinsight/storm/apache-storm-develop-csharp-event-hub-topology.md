@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dac56059455a75f4d64a698c416dc22793432bc8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000313"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545601"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -43,10 +43,10 @@ Microsoft では、Storm トポロジからの Event Hubs との通信に使用�
 
 この例では、次のコンポーネントを使用します。
 
-* __EventHubSpout__: イベント ハブからデータを読み取ります。
-* __EventHubBolt__: イベント ハブにデータを書き込みます。
-* __EventHubSpoutConfig__: EventHubSpout の構成に使用します。
-* __EventHubBoltConfig__: EventHubBolt の構成に使用します。
+* __EventHubSpout__ : イベント ハブからデータを読み取ります。
+* __EventHubBolt__ : イベント ハブにデータを書き込みます。
+* __EventHubSpoutConfig__ : EventHubSpout の構成に使用します。
+* __EventHubBoltConfig__ : EventHubBolt の構成に使用します。
 
 ### <a name="example-spout-usage"></a>スパウトの使用例
 
@@ -68,7 +68,7 @@ SCP.NET は、トポロジに EventHubSpout を追加するためのメソッド
 
 ### <a name="example-bolt-usage"></a>ボルトの使用例
 
-ボルトのインスタンスを作成するには、**JavaComponmentConstructor** メソッドを使用します。 次の例では、**EventHubBolt** の新しいインスタンスを作成および構成する方法を示します。
+ボルトのインスタンスを作成するには、 **JavaComponmentConstructor** メソッドを使用します。 次の例では、 **EventHubBolt** の新しいインスタンスを作成および構成する方法を示します。
 
 ```csharp
 // Java construcvtor for the Event Hub Bolt
@@ -91,7 +91,7 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]  
-> この例では、スパウトの例で行ったように、**EventHubBoltConfig** を作成する **JavaComponentConstructor** を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらの方法でも動作します。 最適と思われる方法をお使いください。
+> この例では、スパウトの例で行ったように、 **EventHubBoltConfig** を作成する **JavaComponentConstructor** を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらの方法でも動作します。 最適と思われる方法をお使いください。
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
 
@@ -107,7 +107,7 @@ topologyBuilder.SetJavaBolt(
 
 * [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-* Java JDK 1.8 以降がインストールされている開発環境。 JDK は [Oracle](https://aka.ms/azure-jdks) からダウンロードできます。
+* Java JDK 1.8 以降がインストールされている開発環境。 JDK は [Oracle](/azure/developer/java/fundamentals/java-jdk-long-term-support) からダウンロードできます。
 
   * **JAVA_HOME** 環境変数は、Java があるディレクトリを指している必要があります。
   * **%JAVA_HOME%/bin** ディレクトリはパス内にある必要があります。
@@ -139,11 +139,11 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 2. [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からソリューションをダウンロードします。
 
-3. **EventHubExample.sln** を開きます。 **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
+3. **EventHubExample.sln** を開きます。 **EventHubWriter** プロジェクトで、 **App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
 
    | Key | 値 |
    | --- | --- |
-   | EventHubPolicyName |writer (*Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
+   | EventHubPolicyName |writer ( *Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |writer ポリシーのキー。 |
    | EventHubNamespace |イベント ハブが含まれている名前空間。 |
    | EventHubName |イベント ハブ名。 |
@@ -159,7 +159,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
    | Key | 値 |
    | --- | --- |
-   | EventHubPolicyName |reader (*listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
+   | EventHubPolicyName |reader ( *listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |reader ポリシーのキー。 |
    | EventHubNamespace |イベント ハブが含まれている名前空間。 |
    | EventHubName |イベント ハブ名。 |
@@ -169,7 +169,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
-1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
+1. **ソリューション エクスプローラー** で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
     ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
@@ -181,7 +181,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
     ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
+4. **ソリューション エクスプローラー** で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
 5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 

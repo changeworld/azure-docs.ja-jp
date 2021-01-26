@@ -2,20 +2,20 @@
 title: PowerShell を使用した Azure AD Domain Services の範囲指定された同期 | Microsoft Docs
 description: Azure AD PowerShell を使用して、Azure AD から Azure Active Directory Domain Services マネージド ドメインへの範囲指定された同期を構成する方法について説明します
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
-ms.openlocfilehash: 197ae37b0c63b19ebe4dcdf2732169be0f357a07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: justinha
+ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293834"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619013"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Azure AD PowerShell を使用して、Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 

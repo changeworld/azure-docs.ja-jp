@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080739"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006731"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -34,11 +34,11 @@ ms.locfileid: "86080739"
 
 ここでは、Hive テーブルのデータが **圧縮されていない** 表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
-**NYC タクシー乗車データ**の実習を行う場合は、次の準備が必要です。
+**NYC タクシー乗車データ** の実習を行う場合は、次の準備が必要です。
 
 * **NYC タクシー乗車データ** ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) を [NYC タクシー乗車データ](https://www.andresmh.com/nyctaxitrips) します。
 * **解凍** します。
-* これらを Azure ストレージ アカウントの既定値 (または適切なコンテナー) に**アップロード**します。このようなアカウント用のオプションは、「[Azure HDInsight クラスターで Azure Storage を使用する](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)」トピックに示されています。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](hive-walkthrough.md#upload)をご覧ください。
+* これらを Azure ストレージ アカウントの既定値 (または適切なコンテナー) に **アップロード** します。このようなアカウント用のオプションは、「[Azure HDInsight クラスターで Azure Storage を使用する](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)」トピックに示されています。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](hive-walkthrough.md#upload)をご覧ください。
 
 ## <a name="how-to-submit-hive-queries"></a><a name="submit"></a>Hive クエリを送信する方法
 Hive クエリは、以下のものを使用して送信できます。
@@ -101,7 +101,7 @@ hive -e "<hive query>" > <local path in the head node>
 
 次の例では、Hive クエリの出力が `C:\apps\temp` ディレクトリ内の `hivequeryoutput.txt` ファイルに書き込まれます。
 
-![Hive クエリの出力](./media/move-hive-tables/output-hive-results-1.png)
+![スクリーンショットには、Hadoop コマンド ライン ウィンドウの Hive クエリの出力が示されています。](./media/move-hive-tables/output-hive-results-1.png)
 
 **Hive クエリの結果を Azure BLOB に出力する**
 
@@ -113,7 +113,7 @@ insert overwrite directory wasb:///<directory within the default container> <sel
 
 次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。 ここでは、ディレクトリ名のみを指定する必要があります (BLOB 名は必要ありません)。 `wasb:///queryoutputdir/queryoutput.txt`のようにディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
-![Hive クエリの出力](./media/move-hive-tables/output-hive-results-2.png)
+![スクリーンショットには、Hadoop コマンド ライン ウィンドウの前のコマンドが示されています。](./media/move-hive-tables/output-hive-results-2.png)
 
 Azure Storage Explorer を使用して Hadoop クラスターの既定のコンテナーを開くと、Hive クエリの出力が次の図のように表示されます。 フィルター (赤色の四角形によって示されています) を適用して、名前に指定された文字を持つ BLOB のみを取得できます。
 
@@ -152,7 +152,7 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 * **\<field separator\>** : Hive テーブルにアップロードするデータ ファイルのフィールドを区切る区切り記号。
 * **\<line separator\>** : データ ファイル内の行を区切る区切り記号。
 * **\<storage location\>** : Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION \<storage location\>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、 *'wasb:///\<directory 1>/'* や *'wasb:///\<directory 1>/\<directory 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
-* **TBLPROPERTIES("skip.header.line.count"="1")** :データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
+* **TBLPROPERTIES("skip.header.line.count"="1")** :データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの **最後に** 追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Hive テーブルへのデータの読み込み
 Hive テーブルにデータを読み込む Hive クエリを次に示します。
@@ -188,7 +188,7 @@ LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partiti
     PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 ```
 
-パーティション テーブルの照会時には、`where` 句の**先頭**にパーティション条件を追加することをお勧めします。それにより、検索の有効性が向上します。
+パーティション テーブルの照会時には、`where` 句の **先頭** にパーティション条件を追加することをお勧めします。それにより、検索の有効性が向上します。
 
 ```hiveql
 select

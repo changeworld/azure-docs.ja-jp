@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325374"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704896"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -23,7 +23,46 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 * Azure サポート契約のお客様は、[Azure portal](https://manage.windowsazure.com/?getsupport=true) でサポート要求を開くことができます。
 * OMI の問題は、[OMI トラブルシューティング ガイド](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)を参考にして診断してください。
 * [GitHub の問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)を提出します。
-* Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。  
+* Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics のトラブルシューティング ツール
+
+Log Analytics エージェントの Linux トラブルシューティング ツールは、Log Analytics エージェントの問題の検出と診断に役立つように設計されたスクリプトです。 それは、インストール時にエージェントに自動的に含まれます。 このツールを実行することが、問題を診断するための最初の手順になります。
+
+### <a name="how-to-use"></a>使い方
+トラブルシューティング ツールは、Log Analytics エージェントがあるコンピューターのターミナル ウィンドウに次のコマンドを貼り付けることで実行できます。`sudo /opt/microsoft/omsagent/bin/troubleshooter`
+
+### <a name="manual-installation"></a>手動インストール
+トラブルシューティング ツールは、Log Analytics エージェントのインストール時に自動的に含まれます。 ただし、何らかの理由でインストールに失敗した場合は、次の手順に従って手動でインストールすることもできます。
+
+1. トラブルシューティング ツール バンドルをコンピューターにコピーします。`wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. バンドルをアンパックします。`tar -xzvf omsagent_tst.tar.gz`
+3. 手動インストールを実行します。`sudo ./install_tst`
+
+### <a name="scenarios-covered"></a>対象となるシナリオ
+トラブルシューティング ツールによって確認されるシナリオの一覧を次に示します。
+
+1. エージェントが異常で、ハートビートが正常に機能していない
+2. エージェントが起動せず、Log analytics サービスに接続できない
+3. エージェント syslog が機能していない
+4. エージェントの CPU/メモリ使用率が高くなっている
+5. エージェントのインストールに問題がある
+6. エージェントのカスタム ログが機能してしない
+7. エージェントのログを収集する
+
+詳細については、[Github のドキュメント](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)をご覧ください。
+
+ >[!NOTE]
+ >問題が発生した場合は、ログ コレクター ツールを実行してください。 ログを最初に用意することは、サポート チームが問題を迅速にトラブルシューティングするのに役立ちます。
+
+## <a name="purge-and-re-install-the-linux-agent"></a>Linux エージェントの消去と再インストール
+
+エージェントのクリーン再インストールによってほとんどの問題が解決されることがわかりました。 実際にこれは、サポートチームがエージェントを未破損状態にするための、サポートからの最初の提案となることがあります。 トラブルシューティング ツールを実行し、ログを収集し、クリーン再インストールを試行することで、問題をより迅速に解決できます。
+
+1. 消去スクリプトをダウンロードします。
+- `$ wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/purge_omsagent.sh`
+2. (sudo アクセス許可で) 消去スクリプトを実行します。
+- `$ sudo sh purge_omsagent.sh`
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要なログの場所とログ コレクター ツール
 
@@ -150,7 +189,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 ### <a name="probable-causes"></a>考えられる原因
 * オンボード中に指定されたプロキシが正しくありません
-* Azure Monitor と Azure Automation サービスのエンドポイントがデータセンターでホワイトリストに登録されていない 
+* Azure Monitor サービスと Azure Automation サービスのエンドポイントが、データセンター内にある承認されたリストに記載されていない 
 
 ### <a name="resolution"></a>解像度
 1. オプション `-v` が有効になった次のコマンドを使用して、Linux 用 Log Analytics エージェントで Azure Monitor に再オンボードします。 これにより、プロキシ経由で Azure Monitor に接続しているエージェントの詳細出力が可能になります。 
@@ -201,23 +240,6 @@ nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/n
 
 3. OMI を再起動します。 <br/>
 `sudo scxadmin -restart`
-
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題点:Azure portal にデータが表示されない
-
-### <a name="probable-causes"></a>考えられる原因
-
-- Azure Monitor へのオンボードに失敗しました
-- Azure Monitor への接続がブロックされています
-- Linux 用 Log Analytics エージェントのデータがバックアップされています
-
-### <a name="resolution"></a>解像度
-1. ファイル `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在するかどうかをチェックして、Azure Monitor のオンボードに成功したかどうかを確認します。
-2. `omsadmin.sh` コマンドライン命令を使用して再オンボードします。
-3. プロキシを使用する場合は、上記のプロキシの解決手順を参照してください。
-4. 場合によっては、Linux 用 Log Analytics エージェントがサービスと通信できないときに、エージェントのデータが最大バッファー サイズ (50 MB) までキューイングされます。 `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` コマンドを実行して、エージェントを再起動する必要があります。 
-
-    >[!NOTE]
-    >この問題は、エージェント バージョン 1.1.0-28 以降で修正されます。
 
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>問題点:転送された Syslog メッセージが表示されない 
@@ -274,7 +296,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 
 ### <a name="resolution"></a>解像度
 1. こちらの[説明](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)に従って、Nagios ファイルから読み取るための omsagent ユーザーを追加します。
-2. `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある Linux 用 Log Analytics エージェントの一般構成ファイルで、Nagios のソースとフィルターの**両方**がコメント解除されていることを確認します。
+2. `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある Linux 用 Log Analytics エージェントの一般構成ファイルで、Nagios のソースとフィルターの **両方** がコメント解除されていることを確認します。
 
     ```
     <source>
@@ -296,6 +318,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Azure Monitor への接続がブロックされています
 * 仮想マシンが再起動されました
 * Linux 用 Log Analytics エージェント パッケージによってインストールされたものより新しいバージョンの OMI パッケージに手動でアップグレードされました
+* OMI がフリーズし、OMS エージェントがブロックされています
 * DSC リソースにより、"*クラスが見つからない*" というエラーが `omsconfig.log` ログ ファイルに記録されています
 * Log Analytics エージェントのデータがバックアップされています
 * DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
@@ -306,6 +329,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 4. プロキシを使用している場合は、上記のプロキシのトラブルシューティング手順を確認します。
 5. 一部の Azure ディストリビューション システムでは、仮想マシンの再起動後に、omid OMI サーバー デーモンが開始しません。 これにより、Audit、ChangeTracking、または UpdateManagement ソリューション関連データが表示されません。 回避するには、`sudo /opt/omi/bin/service_control restart` を実行して omi サーバーを手動で開始します。
 6. OMI パッケージを手動で新しいバージョンにアップグレードした後、Log Analytics エージェントが継続して機能するには、手動で再起動する必要があります。 この手順は、OMI サーバーがアップグレード後に自動的に起動しない一部のディストリビューションで必要です。 `sudo /opt/omi/bin/service_control restart` を実行して OMI を再起動します。
+* 場合によっては、OMI がフリーズすることがあります。 OMS エージェントは、OMI を待機するブロック状態になり、すべてのデータ収集がブロックされる可能性があります。 OMS エージェント プロセスは実行されますが、アクティビティは発生しません。これは、`omsagent.log` に新しいログ行 (送信されたハートビートなど) が存在しないことからもわかります。 `sudo /opt/omi/bin/service_control restart` を使用して OMI を再起動し、エージェントを復旧します。
 7. DSC リソースの "*クラスが見つからない*" というエラーが omsconfig.log に記録されている場合は、`sudo /opt/omi/bin/service_control restart` を実行します。
 8. 場合によっては、Linux 用 Log Analytics エージェントが Azure Monitor に接続できないとき、エージェント上のデータが次のバッファー サイズ全体までバックアップされます。50 MB。 `/opt/microsoft/omsagent/bin/service_control restart` コマンドを実行して、エージェントを再起動する必要があります。
 
@@ -424,7 +448,7 @@ sudo sh ./onboard_agent.sh --purge
 1. Azure portal から拡張機能を削除します。
 2. [指示](../learn/quick-collect-linux-computer.md)に従ってエージェントをインストールします。
 3. 次のコマンドを実行してエージェントを再起動します。`sudo /opt/microsoft/omsagent/bin/service_control restart`
-* 数分待つと、プロビジョニングの状態が**プロビジョニング成功**に変わります。
+* 数分待つと、プロビジョニングの状態が **プロビジョニング成功** に変わります。
 
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>問題点:Log Analytics エージェントがオンデマンドでアップグレードする
@@ -444,4 +468,3 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. `sudo sh ./omsagent-*.universal.x64.sh --upgrade` を実行してパッケージをアップグレードします。
-

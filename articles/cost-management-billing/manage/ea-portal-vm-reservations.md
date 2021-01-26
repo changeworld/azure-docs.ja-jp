@@ -3,17 +3,17 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: aa95cf8b649558dc3164fe12e4268f210301f755
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687042"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348927"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -22,6 +22,12 @@ ms.locfileid: "88687042"
 ## <a name="reservation-exchanges-and-refunds"></a>予約の交換と返金
 
 変化するニーズを満たすために、予約を同じ種類の別の予約と交換できます。 また、予約が不要になった場合は、最大で年間 50,000 米国ドルまでの払い戻しができます。 予約の交換または払い戻しを行うには、Azure portal を使用できます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
+
+### <a name="partial-refunds"></a>一部返金
+
+EA のお客様が予約を返却した場合、年額コミットメントではなく超過分を使用して購入金額の一部が返金されます。
+
+EA Portal には、前月における負の調整として、また今月における正の調整として返金が表示されます。 予約の交換についても同様に表示されます。 クレジット メモでは、元の請求書番号が引用されます。したがって、当初の購入額をクレジット メモで調整したければ、元の請求書番号を参照してください。
 
 ## <a name="reservation-costs-and-usage"></a>予約のコストと使用状況
 
@@ -59,7 +65,7 @@ Azure API を使用して、Azure サービスまたはソフトウェアの予�
 
 Azure 予約仮想マシンインスタンスを購入するには、エンタープライズ Azure 加入契約管理者が _[予約インスタンス]_ 購入オプションを有効にする必要があります。 このオプションは、[Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブの _[加入契約の詳細]_ セクションにあります。
 
-EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](https://go.microsoft.com/fwlink/?linkid=861721)に関するページを参照してください。
+EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](../../virtual-machines/prepay-reserved-vm-instances.md)に関するページを参照してください。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>予約インスタンスの購入の詳細を表示する方法
 

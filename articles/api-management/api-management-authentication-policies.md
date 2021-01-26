@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243717"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071287"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
 
 ##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> 認証ポリシー
 
@@ -67,7 +67,7 @@ ms.locfileid: "86243717"
 -   **ポリシー スコープ:** すべてのスコープ
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> クライアント証明書による認証
- `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](https://go.microsoft.com/fwlink/?LinkID=511599)する必要があります。サムプリントによって識別されます。
+ `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](./api-management-howto-mutual-certificates.md)する必要があります。サムプリントによって識別されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -200,4 +200,4 @@ ms.locfileid: "86243717"
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

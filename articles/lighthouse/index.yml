@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 07/20/2020
-  ms.openlocfilehash: 40352965db20c12e589f52f76869032d1f5f1b10
-  ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+  ms.date: 12/17/2020
+  ms.openlocfilehash: ad312bd1a1797ee6f9e2d474e93d066b4be9c131
+  ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88659876"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98661752"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -35,16 +35,20 @@ landingContent:
     links:
     - text: Azure Lighthouse への顧客のオンボード
       url: ./how-to/onboard-customer.md
+    - text: パートナー ID をリンクする
+      url: ./how-to/partner-earned-credit.md
   - linkListType: concept
     links:
     - text: 推奨セキュリティ プラクティス
       url: ./concepts/recommended-security-practices.md
+    - text: テナント、ロール、ユーザー
+      url: ./concepts/tenants-users-roles.md
     - text: Cloud Solution Provider プログラムの考慮事項
       url: ./concepts/cloud-solution-provider.md
     - text: エンタープライズ シナリオ
       url: ./concepts/enterprise.md
-    - text: テナント、ロール、ユーザー
-      url: ./concepts/tenants-users-roles.md
+    - text: ISV のシナリオ
+      url: ./concepts/isv-scenarios.md
 - title: Marketplace のオファー
   linkLists:
   - linkListType: how-to-guide
@@ -85,6 +89,10 @@ landingContent:
       url: ./how-to/policy-at-scale.md
     - text: 修復できるポリシーをデプロイする
       url: ./how-to/deploy-policy-remediation.md
+    - text: Azure Arc を使用してハイブリッド マシンを管理する
+      url: ./how-to/manage-hybrid-infrastructure-arc.md
+    - text: 移行プロジェクトの管理
+      url: ./how-to/migration-at-scale.md
 - title: リファレンス - SDK
   linkLists:
   - linkListType: reference
@@ -99,6 +107,10 @@ landingContent:
       url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - text: Python
       url: /python/api/azure-mgmt-managedservices
+    - text: Terraform
+      url: https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html
+    - text: Ansible
+      url: https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html#plugins-in-azure-azcollection
 - title: リファレンス - ダウンロード
   linkLists:
   - linkListType: download

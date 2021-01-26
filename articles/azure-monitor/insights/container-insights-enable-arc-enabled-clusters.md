@@ -2,13 +2,13 @@
 title: Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/23/2020
+ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994452"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターの監視を有効にする
 
@@ -21,8 +21,6 @@ PowerShell または Bash スクリプトを使用して、1 つ以上の既存�
 Azure Monitor for containers では、次の機能を除き、[概要](container-insights-overview.md)記事で説明されているとおり Azure Arc 対応 Kubernetes (プレビュー) の監視をサポートしています。
 
 - ライブ データ (プレビュー)
-
-- クラスターノードとポッドから[メトリックを収集](container-insights-update-metrics.md)し、Azure Monitor メトリック データベースに格納する
 
 Azure Monitor for containers では、以下が公式にサポートされています。
 
@@ -38,7 +36,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 - Log Analytics ワークスペース。
 
-    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 - Azure Monitor for containers の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure *共同作成者* ロールのメンバー、および Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 共同作成者*](../platform/manage-access.md#manage-access-using-azure-permissions)のメンバーである必要があります。
 
@@ -63,7 +61,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
     >[!IMPORTANT]
     >Azure Arc 対応 Kubernetes クラスターの監視は、ciprod04162020 以降のバージョンのエージェントに限りサポートされます。
 
-- Powershell のスクリプト化された方法を使用して監視を有効にする場合は、[PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) が必要です。
+- Powershell のスクリプト化された方法を使用して監視を有効にする場合は、[PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6&preserve-view=true) が必要です。
 
 - Bash のスクリプト化された方法を使用して監視を有効にする場合は、[Bash バージョン 4](https://www.gnu.org/software/bash/) が必要です。
 
@@ -106,7 +104,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 1. 次のコマンドを使用し、監視アドオンを使用してクラスターを構成するスクリプトをローカル フォルダーにダウンロードし、保存します。
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. Azure Arc 対応 Kubernetes クラスター リソースのリソース ID を表す `subscriptionId`、`resourceGroupName`、`clusterName` の対応する値を設定することによって、`$azureArcClusterResourceId` 変数を構成します。
@@ -124,7 +122,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 4. 既存の Azure Monitor Log Analytics ワークスペースを使用する場合は、ワークスペースのリソース ID を表す対応する値を使用して `$logAnalyticsWorkspaceResourceId` 変数を構成します。 そうでない場合、変数を `""` に設定すると、リージョンにワークスペースがまだ存在しない場合、クラスター サブスクリプションの既定のリソース グループにスクリプトが既定のワークスペースを作成します。 作成される既定のワークスペースは、*DefaultWorkspace-\<SubscriptionID>-\<Region>* のような形式になります。
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Arc 対応 Kubernetes クラスターがプロキシ サーバー経由で通信する場合は、プロキシ サーバーの URL を使用して変数 `$proxyEndpoint` を構成します。 クラスターがプロキシ サーバー経由で通信しない場合は、値を `""` に設定します。  詳細については、この記事の後半にある「[プロキシ エンドポイントを構成する](#configure-proxy-endpoint)」を参照してください。
@@ -136,6 +134,33 @@ Azure Monitor for containers では、以下が公式にサポートされてい
     ```
 
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
+
+### <a name="using-service-principal"></a>サービス プリンシパルを使用する
+スクリプト *enable-monitoring.ps1* では、対話型デバイス ログインが使用されます。 非対話型のログインを望む場合、既存のサービス プリンシパルを使用するか、「[前提条件](#prerequisites)」の説明にある必須のアクセス許可が与えられたサービス プリンシパルを新規作成できます。 サービス プリンシパルを使用するには、$servicePrincipalClientId、$servicePrincipalClientSecret、$tenantId パラメーターを、*enable-monitoring.ps1* スクリプトに使用するサービス プリンシパルの値と共に渡す必要があります。
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+```
+
+以下のロールの割り当ては、Arc K8s Connected Cluster リソース以外の Azure サブスクリプションで既存の Log Analytics ワークスペースを使用している場合にのみ該当します。
+
+```powershell
+$logAnalyticsWorkspaceResourceId = "<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+New-AzRoleAssignment -RoleDefinitionName 'Log Analytics Contributor'  -ObjectId $servicePrincipal.Id -Scope  $logAnalyticsWorkspaceResourceId
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+次に例を示します。
+
+```powershell
+.\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
+```
+
+
 
 ## <a name="enable-using-bash-script"></a>Bash スクリプトの使用を有効にする
 
@@ -162,7 +187,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 4. 既存の Azure Monitor Log Analytics ワークスペースを使用する場合は、ワークスペースのリソース ID を表す対応する値を使用して `logAnalyticsWorkspaceResourceId` 変数を構成します。 そうでない場合、変数を `""` に設定すると、リージョンにワークスペースがまだ存在しない場合、クラスター サブスクリプションの既定のリソース グループにスクリプトが既定のワークスペースを作成します。 作成される既定のワークスペースは、*DefaultWorkspace-\<SubscriptionID>-\<Region>* のような形式になります。
 
     ```bash
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Arc 対応 Kubernetes クラスターがプロキシ サーバー経由で通信する場合は、プロキシ サーバーの URL を使用して変数 `proxyEndpoint` を構成します。 クラスターがプロキシ サーバー経由で通信しない場合は、値を `""` に設定します。 詳細については、この記事の後半にある「[プロキシ エンドポイントを構成する](#configure-proxy-endpoint)」を参照してください。
@@ -194,6 +219,31 @@ Azure Monitor for containers では、以下が公式にサポートされてい
     ```
 
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
+
+### <a name="using-service-principal"></a>サービス プリンシパルを使用する
+Bash スクリプト *enable-monitoring.sh* では、対話型デバイス ログインが使用されます。 非対話型のログインを望む場合、既存のサービス プリンシパルを使用するか、「[前提条件](#prerequisites)」の説明にある必須のアクセス許可が与えられたサービス プリンシパルを新規作成できます。 サービス プリンシパルを使用するには、*enable-monitoring.sh* Bash スクリプトに使用するサービス プリンシパルの --client-id、--client-secret、--tenant-id 値を渡す必要があります。
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+```
+
+以下のロールの割り当ては、Arc K8s Connected Cluster リソース以外の Azure サブスクリプションで既存の Log Analytics ワークスペースを使用している場合にのみ該当します。
+
+```bash
+logAnalyticsWorkspaceResourceId="<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+az role assignment create --role 'Log Analytics Contributor' --assignee $servicePrincipalClientId --scope $logAnalyticsWorkspaceResourceId
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+次に例を示します。
+
+```bash
+bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
+```
 
 ## <a name="configure-proxy-endpoint"></a>プロキシ エンドポイントを構成する
 

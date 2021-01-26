@@ -1,19 +1,18 @@
 ---
 title: Visual Studio 用の Azure Stream Analytics を使用してライブ データをテストする
 description: ライブ ストリーミング データを使用して Azure Stream Analytics ジョブをローカルにテストする方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 99e9ce85bb1e59b5016e836ff16d03cb3326ec8c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044466"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020368"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
 
@@ -59,7 +58,7 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 * 認証モデルの制限により、Power BI と Azure Data Lake Storage は、出力シンクとしてサポートされていません。
 
-* クラウド入力オプションのみが[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)をサポートしており、ローカル入力オプションではサポートされていません。
+* クラウド入力オプションのみが[日時ポリシー](./stream-analytics-time-handling.md)をサポートしており、ローカル入力オプションではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: a9f050bb25873e4b6ede234c800b00f2c34085d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085278"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821861"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
@@ -158,7 +158,7 @@ HDInsight クラスターのすべてのノードは、Azure Virtual Network 内
 | --- | --- | --- | --- | --- |
 | ブローカー |ワーカー ノード |9092 |Kafka Wire Protocol |クライアント通信に使用 |
 | &nbsp; |Zookeeper ノード |2181 |&nbsp; |クライアントが ZooKeeper への接続に使用するポート |
-| REST プロキシ | Kafka 管理ノード |9400 |HTTPS |[Kafka REST 仕様](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
+| REST プロキシ | Kafka 管理ノード |9400 |HTTPS |[Kafka REST 仕様](/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark ポート
 

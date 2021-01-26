@@ -1,15 +1,17 @@
 ---
 title: チャット ボットで Personalizer を使用する - Personalizer
 description: Personalizer ループを使用して C# .NET チャット ボットをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935655"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565723"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>チュートリアル:.NET チャット ボットで Personalizer を使用する
 
@@ -21,7 +23,7 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 > [!div class="checklist"]
 > * Azure リソースの設定
 > * ボットの構成と実行
-> * ボット エミュレーターを使用したボットとの対話
+> * Bot Framework Emulator を使用してボットと対話する
 > * ボットが Personalizer を使用する場面と方法の理解
 
 
@@ -53,7 +55,7 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 
 ボットはアクションのリストを、コンテキストの特徴とともに Personalizer ループに送信します。 Personalizer は最適な 1 つのアクションをボットに返し、ボットはそれを表示します。
 
-このチュートリアルでは、**アクション**は次の種類のコーヒーとお茶です。
+このチュートリアルでは、**アクション** は次の種類のコーヒーとお茶です。
 
 |コーヒー|お茶|
 |--|--|
@@ -64,7 +66,7 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 * アクション "_と特徴_"
 * コンテキストの特徴
 
-モデルの**特徴**は、チャット ボットのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも "_ありません_"。
+モデルの **特徴** は、チャット ボットのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも _ありません_。
 
 特徴は、アクションをモデル内の現在のコンテキストに合わせるために使用されます。 モデルは、アクション、コンテキスト、それらの特徴に関する Personalizer の過去の知識を表現したものであり、知識や経験に基づいた決定を可能にします。
 
@@ -128,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 このチャット ボットを使用するには、Personalizer および Language Understanding (LUIS) 用の Azure リソースを作成する必要があります。
 
-* [LUIS リソースを作成します](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 作成と予測の両方のリソースが必要であるため、作成手順で **[両方]** を選択します。
+* [LUIS リソースを作成します](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 作成と予測の両方のリソースが必要であるため、作成手順で **[両方]** を選択します。
 * [Personalizer リソースを作成](how-to-create-resource.md)し、Azure portal からキーとエンドポイントをコピーします。 これらの値は、.NET プロジェクトの `appsettings.json` ファイルで設定する必要があります。
 
 ### <a name="create-luis-app"></a>LUIS アプリを作成する
@@ -139,11 +141,11 @@ LUIS を初めて使用する場合は、[サインイン](https://www.luis.ai)�
 1. 次に、同じページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、 **[Import as JSON]\(JSON としてインポート\)** を選択します。
 1. ポップアップ ダイアログで **[ファイルの選択]** を選択し、`/samples/ChatbotExample/CognitiveModels/coffeebot.json` ファイルを選択します。 名前 `Personalizer Coffee bot` を入力します。
 1. LUIS ポータルの右上のナビゲーションで、 **[Train]\(トレーニング\)** ボタンを選択します。
-1. **[Publish]\(発行\)** ボタンを選択して、予測ランタイムの**運用スロット**にアプリを発行します。
+1. **[Publish]\(発行\)** ボタンを選択して、予測ランタイムの **運用スロット** にアプリを発行します。
 1. **[Manage]\(管理\)** 、 **[Settings]\(設定\)** の順に選択します。 **[App ID]** の値をコピーします。 この値は、.NET プロジェクトの `appsettings.json` ファイルで設定する必要があります。
 1. 再度 **[Manage]\(管理\)** セクションで、 **[Azure resources]\(Azure リソース\)** を選択します。 これにより、アプリの関連リソースが表示されます。
 1. **[Add prediction resource]\(予測リソースの追加\)** を選択します。 ポップアップ ダイアログで、サブスクリプションと、このチュートリアルの前のセクションで作成した予測リソースを選択し、 **[Done]\(完了\)** を選択します。
-1. **主キー**と**エンドポイント URL** の値をコピーします。 これらの値は、.NET プロジェクトの `appsettings.json` ファイルで設定する必要があります。
+1. **主キー** と **エンドポイント URL** の値をコピーします。 これらの値は、.NET プロジェクトの `appsettings.json` ファイルで設定する必要があります。
 
 ### <a name="configure-bot-with-appsettingsjson-file"></a>appsettings.json ファイルを使用してボットを構成する
 
@@ -174,7 +176,7 @@ LUIS を初めて使用する場合は、[サインイン](https://www.luis.ai)�
 
 ## <a name="set-up-the-bot-emulator"></a>ボット エミュレーターをセットアップする
 
-1. ボット エミュレーターを開き、 **[Open Bot]\(ボットを開く\)** を選択します。
+1. Bot Framework Emulator を開き、 **[Open Bot]\(ボットを開く\)** を選択します。
 
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="ボット エミュレーターの起動画面のスクリーンショット。":::
 

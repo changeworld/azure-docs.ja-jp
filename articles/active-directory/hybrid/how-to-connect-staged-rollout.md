@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278583"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500225"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
-段階的なロールアウトにより、ドメインを切り替える前に、Azure Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
+段階的なロールアウトにより、ドメインを切り替える前に、Azure AD Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
     
 -  現在、オンプレミスの Multi-Factor 認証サーバーを使用しています。 
 -  認証にスマート カードを使用しています。 
@@ -45,7 +45,7 @@ ms.locfileid: "89278583"
 
 -   クラウド認証に移行するユーザーに必要なすべての適切なテナント ブランドと条件付きアクセスポリシーを構成しました。
 
--   Azure Multi-Factor Authentication の使用を計画している場合は、[セルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication の統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を使用して、ユーザーが認証方法を 1 回で登録できるようにすることをお勧めします。
+-   Azure AD Multi-Factor Authentication の使用を計画している場合は、[セルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication の統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を使用して、ユーザーが認証方法を 1 回で登録できるようにすることをお勧めします。 注: ステージングされたロールアウト中に MyProfile ページを使用してパスワードのリセットやパスワードの変更のために SSPR を使用するときは、Azure AD Connect は新しいパスワード ハッシュを同期する必要があり、これにはリセット後最大 2 分かかることがあります。
 
 -   この段階的なロールアウト機能を使用するには、テナントのグローバル管理者である必要があります。
 
@@ -67,6 +67,8 @@ ms.locfileid: "89278583"
 
 次のシナリオは、段階的なロールアウトではサポートされていません：
 
+- アプリケーションまたはクラウド サービスで、POP3 や SMTP など、レガシ認証が使用されます。
+
 - 特定のアプリケーションは、認証中に「domain_hint」クエリ パラメーターを Azure AD に送信します。 これらのフローは続行され、段階的なロールアウトが有効になっているユーザーは、認証にフェデレーションを引き続き使用します。
 
 <!-- -->
@@ -74,8 +76,8 @@ ms.locfileid: "89278583"
 - 管理者は、セキュリティ グループを使用してクラウド認証をロールアウトできます。 オンプレミスの Active Directory セキュリティグループを使用しているときに、同期の待機時間を回避するには、クラウド セキュリティ グループを使用するようお勧めします。 次の条件が適用されます：
 
     - 機能ごとに最大 10 個のグループを使用できます。 つまり、*パスワードハッシュ同期*、*パススルー認証*、*シームレス SSO*  に対して、それぞれ 10 個のグループを使用できます。
-    - 入れ子になったグループは*サポートされていません*。 このスコープはパブリックプレビューにも適用されます。
-    - 動的グループは、段階的なロールアウトでは*サポートされていません*。
+    - 入れ子になったグループは *サポートされていません*。 このスコープはパブリックプレビューにも適用されます。
+    - 動的グループは、段階的なロールアウトでは *サポートされていません*。
     - グループ内の連絡先オブジェクトがグループ フォームの追加をブロックします。
 
 - それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的なロールアウトでは、ドメインをフェデレーションから管理対象に切り替えません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-pass-through-authentication.md)方法に関する記事を参照してください
@@ -95,11 +97,11 @@ ms.locfileid: "89278583"
 
 ## <a name="pre-work-for-password-hash-sync"></a>パスワード ハッシュ同期の事前作業
 
-1. Azure AD Connect の  [[オプション機能]](how-to-connect-install-custom.md#optional-features)  ページから、 *パスワード ハッシュ同期*  を有効にします。 
+1. Azure AD Connect の [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページから、*パスワード ハッシュ* 同期を有効にします。 
 
    ![Azure Active Directory Connect の「オプション機能」ページのスクリーンショット](media/how-to-connect-staged-rollout/sr1.png)
 
-1. すべてのユーザーのパスワード ハッシュが、Azure AD に同期されるように、完全な *パスワード ハッシュ同期*サイクルが実行されていることを確認します。 *パスワードハッシュ同期*の状態を確認するには、[Azure Active Directory Connect同期によるパスワードハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md) のPowerShell 診断を使用できます。
+1. すべてのユーザーのパスワード ハッシュが、Azure AD に同期されるように、完全な *パスワード ハッシュ同期* サイクルが実行されていることを確認します。 *パスワードハッシュ同期* の状態を確認するには、[Azure Active Directory Connect同期によるパスワードハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md) のPowerShell 診断を使用できます。
 
    ![AAD Connect のトラブルシューティング ログのスクリーンショット](./media/how-to-connect-staged-rollout/sr2.png)
 
@@ -107,13 +109,13 @@ ms.locfileid: "89278583"
 
 ## <a name="pre-work-for-pass-through-authentication"></a>パススルー認証の事前作業
 
-1. *パススルー認証*エージェントを実行する、Windows Server 2012 R2 以降を実行しているサーバーを特定します。 
+1. *パススルー認証* エージェントを実行する、Windows Server 2012 R2 以降を実行しているサーバーを特定します。 
 
-   Azure AD Connect サーバーを *選択しない* でください。 そのサーバーがドメインに参加していて、選択したユーザーを Active Directory で認証し、送信ポートや URL で Azure AD と通信できることを確認します。 詳細については、クイックスタートの「ステップ1：前提条件を確認する」[のセクションを確認します：Azure AD シームレス シングル サインオン](how-to-connect-sso-quick-start.md)。
+   Azure AD Connect サーバーを *選択しない* でください。  そのサーバーがドメインに参加していて、選択したユーザーを Active Directory で認証し、送信ポートや URL で Azure AD と通信できることを確認します。 詳細については、クイックスタートの「ステップ1：前提条件を確認する」[のセクションを確認します：Azure AD シームレス シングル サインオン](how-to-connect-sso-quick-start.md)。
 
-1. [Microsoft Azure AD Connect 認証エージェントをダウンロード](https://aka.ms/getauthagent)して、サーバーにインストールします。 
+1. [Microsoft Azure AD Connect 認証エージェントをダウンロード](https://aka.ms/getauthagent)して、サーバーにインストールします。 
 
-1.  [高可用性](how-to-connect-sso-quick-start.md)を有効にするには、他のサーバーに追加の認証エージェントをインストールします。
+1. [高可用性](how-to-connect-sso-quick-start.md)を有効にするには、他のサーバーに追加の認証エージェントをインストールします。
 
 1. [スマート ロックアウトの設定](../authentication/howto-password-smart-lockout.md)が適切に構成されているか確認します。 そうすることで、ユーザーのオンプレミスの Active Directory Domain Services アカウントが悪意のある攻撃者によってロックアウトされないようにすることができます。
 
@@ -121,31 +123,31 @@ ms.locfileid: "89278583"
 
 ## <a name="pre-work-for-seamless-sso"></a>シームレス SSO の事前作業
 
-PowerShell を使用して、 Active Directory Domain Services フォレストで *シームレス SSO* 有効にします。 複数の Active Directory Domain Services フォレストがある場合は、フォレストごとに個別に有効にします。 *シームレス SSO* は、段階的なロールアウトのために選択したユーザーに対してのみトリガーされます。 既存のフェデレーション設定には影響しません。
+PowerShell を使用して、Active Directory Domain Services フォレストで *シームレス SSO* を有効にします。 複数の Active Directory フォレストがある場合は、各フォレストに対して個別に有効にします。 *シームレス SSO* は、ステージングされたロールアウトを選択したユーザーに対してのみトリガーされます。 既存のフェデレーション設定には影響しません。
 
-次の手順に従って、*シームレス SSO*を有効にします：
+次の手順に従って、*シームレス SSO* を有効にします：
 
 1. Azure AD Connect サーバーにログインします。
 
-2.  *% programfiles%\\Microsoft Azure Active Directory Connect* フォルダーに移動します。
+2. *%programfiles%\\Microsoft Azure Active Directory Connect* フォルダーに移動します。
 
-3. 次のコマンドレットを実行して、*シームレス SSO* PowerShell モジュールをインポートします： 
+3. 次のコマンドレットを実行して、*シームレス SSO* PowerShell モジュールをインポートします： 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. PowerShell を管理者として実行します。 PowerShell で、 `New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドを実行すると、テナントのグローバル管理者資格情報を入力できるペインが開きます。
+4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドを実行すると、テナントのグローバル管理者資格情報を入力できるペインが開きます。
 
-5.  `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドは、この機能が有効になっている Active Directory フォレストの一覧 (「ドメイン」リストを参照) を表示します。 これは、既定ではテナント レベルで false に設定されています。
+5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドは、この機能が有効になっている Active Directory フォレストの一覧 (「ドメイン」リストを参照) を表示します。 これは、既定ではテナント レベルで false に設定されています。
 
    ![Windows PowerShell の出力例](./media/how-to-connect-staged-rollout/sr3.png)
 
-6.  `$creds = Get-Credential` を呼び出します。 プロンプトが表示されたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
+6. `$creds = Get-Credential` を呼び出します。 プロンプトが表示されたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
 
 7. `Enable-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、*シームレス SSO* に必要なこの特定の Active Directory フォレスト用のオンプレミスのドメイン コントローラーから AZUREADSSOACC コンピューターのアカウントを作成します。
 
 8. *シームレス SSO* を使用するには、URL がイントラネット ゾーンに含まれている必要があります。 グループポリシーを使用して、これらの Url をデプロイする方法については、[クイックスタート：Azure AD シームレス シングル サインオン](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature)。
 
-9. 完全なチュートリアルについては、*シームレス SSO* 用の[デプロイ計画](https://aka.ms/SeamlessSSODPDownload) をダウンロードすることもできます。
+9. 完全なチュートリアルについては、*シームレス SSO* 用の [デプロイ計画](https://aka.ms/SeamlessSSODPDownload) をダウンロードすることもできます。
 
 ## <a name="enable-staged-rollout"></a>段階的なロールアウトの有効化
 
@@ -171,13 +173,14 @@ PowerShell を使用して、 Active Directory Domain Services フォレスト�
 
    ![「段階的なロールアウト機能を有効にする (プレビュー) 」ページ](./media/how-to-connect-staged-rollout/sr5.png)
 
-3. 各グループを機能に追加して、*パススルー認証* と *シームレス SSO*を有効にします。 UX のタイムアウトを回避するには、最初に、セキュリティ グループに含まれるメンバーが 200 人以下であることを確認してください。
+3. 各グループを機能に追加して、*パススルー認証* と *シームレス SSO* を有効にします。 UX のタイムアウトを回避するには、最初に、セキュリティ グループに含まれるメンバーが 200 人以下であることを確認してください。
 
    ![[パスワードハッシュ同期のグループを管理する (プレビュー) ] ページ](./media/how-to-connect-staged-rollout/sr6.png)
 
    >[!NOTE]
    >グループ内のメンバーは、段階的なロールアウトに対して自動的に有効になります。 段階的なロールアウトでは、入れ子になったグループと動的グループはサポートされていません。
    >新しいグループを追加すると、グループ内のユーザー (新しいグループ 1 つにつき最大 200 ユーザー) が、即座にマネージド認証を使用するように更新されます。 グループを編集する (ユーザーを追加または削除する) 場合、変更が有効になるまでに最大 24 時間かかることがあります。
+   >シームレス SSO は、ユーザーがシームレス SSO グループ内にあり、PTA または PHS グループのいずれかにも含まれている場合にのみ適用されます。
 
 ## <a name="auditing"></a>監査
 
@@ -195,7 +198,7 @@ PowerShell を使用して、 Active Directory Domain Services フォレスト�
 - *パスワード ハッシュ同期*、*パススルー認証*、*シームレス SSO* に対してグループを追加したときの監査イベント。
 
   >[!NOTE]
-  >グループが段階的なロールアウトのために、*パスワード ハッシュ同期*に追加されたときにログに記録される監査イベント。
+  >グループが段階的なロールアウトのために、*パスワード ハッシュ同期* に追加されたときにログに記録される監査イベント。
 
   ![[機能ロールアウトへのグループの追加] ペイン - [アクティビティ] タブ](./media/how-to-connect-staged-rollout/sr9.png)
 
@@ -209,7 +212,7 @@ PowerShell を使用して、 Active Directory Domain Services フォレスト�
 
 ## <a name="validation"></a>検証
 
-*パスワード ハッシュ同期*または *パススルー認証* を使用したサインイン (ユーザー名とパスワードによるサインイン) をテストするには、次のようにします：
+*パスワード ハッシュ同期* または *パススルー認証* を使用したサインイン (ユーザー名とパスワードによるサインイン) をテストするには、次のようにします：
 
 1. エクストラネットで、プライベート ブラウザー セッションの [アプリ ページ](https://myapps.microsoft.com) に移動し、段階的なロールアウト用に選択したユーザー アカウントの UserPrincipalName (UPN) を入力します。
 
@@ -239,7 +242,7 @@ A:はい。この機能は運用テナントで使用できますが、まずテ
 
 **Q:この機能を使用して、一部のユーザーがフェデレーション認証を使用し、その他のユーザーがクラウド認証を使用するという永続的な "共存" を維持することはできますか？**
 
-A:いいえ。この機能は、フェデレーションからクラウド認証に段階的に移行し、最終的にクラウド認証に切り替えられるように設計されています。 予期しない認証フローにつながる可能性があるため、永続的な混在状態は、お勧めしません。
+A:いいえ。この機能は、クラウド認証をテストする目的で設計されています。 少数のユーザー グループのテストが成功したら、クラウド認証に移行する必要があります。 予期しない認証フローにつながる可能性があるため、永続的な混在状態は、お勧めしません。
 
 **Q:PowerShell を使用して段階的なロールアウトを実行できますか？**
 

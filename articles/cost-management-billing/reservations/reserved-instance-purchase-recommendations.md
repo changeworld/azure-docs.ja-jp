@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684611"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398428"
 ---
 # <a name="reservation-recommendations"></a>Reservation recommendations
 
@@ -25,6 +25,7 @@ Azure 予約インスタンス (RI) の購入に関する推奨事項は、Azure
 2. エンジンが、予約の有無にかかわらず、使用状況データに基づいてコストをシミュレートします。
 3. コストはさまざまな数量に対してシミュレートされ、節約の額が最も大きくなる数量が推奨されます。
 4. ご自分のリソースが定期的にシャットダウンされる場合、シミュレーションでは節約の額が特定されず、購入に関する推奨事項は提供されません。
+5. 推奨事項の算出には、オンデマンド使用率に対する特別な割引が含まれます。
 
 ## <a name="recommendations-in-the-azure-portal"></a>Azure portal における推奨情報
 
@@ -52,11 +53,11 @@ Azure 予約インスタンス (RI) の購入に関する推奨事項は、Azure
 
 予約購入の推奨量は、Azure Advisor から入手できます。 以下の点に注意してください。
 
-- Advisor で提供されるのは、単一サブスクリプションのスコープでの推奨事項のみです。
-- 推奨量は、過去 30 日間の使用傾向を考慮して計算されます。
+- Advisor で提供されるのは、単一サブスクリプションのスコープでの推奨事項のみです。 課金スコープ全体 (課金アカウントまたは課金プロファイル) の推奨事項を表示するには、Azure portal に移動して [予約]、[追加] の順に進み、推奨事項を表示する種類を選択します。
+- 過去 30 日間の利用傾向を考慮した推奨事項を Advisor で利用できます。
 - 推奨量と節約額は、3 年間の予約 (可能な場合) を対象としています。 サービスに対して 3 年間の予約が販売されていない場合、推奨量は 1 年間の予約価格を使用して計算されます。
-- 推奨事項では、オンデマンド使用率に対する特別な割引が考慮されます。
-- 共有スコープの予約を購入した場合、Advisor の予約購入に関する推奨事項が非表示になるまでに最大で 30 日間かかることがあります。
+- 推奨事項の算出には、オンデマンド使用率に対する特別な割引が含まれます。
+- 共有スコープの予約を購入した場合、Advisor の予約購入に関する推奨事項が非表示になるまでに最大で 5 日間かかることがあります。
 
 ## <a name="other-expected-api-behavior"></a>API の予想されるその他の動作
 

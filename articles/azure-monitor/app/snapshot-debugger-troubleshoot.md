@@ -1,19 +1,22 @@
 ---
 title: Azure Application Insights スナップショット デバッガーのトラブルシューティング
-description: この記事では、Application Insights Snapshot Debugger の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
+description: この記事では、開発者が Application Insights スナップショット デバッガーを有効にして使用するのに役立つトラブルシューティングの手順と情報を示します。
 ms.topic: conceptual
-author: brahmnes
+author: cweining
+ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671411"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673554"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
-アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
+アプリケーションで Application Insights スナップショット デバッガーを有効にしても、例外のスナップショットが表示されない場合は、こちらの手順を使用してトラブルシューティングを行うことができます。
+
+スナップショットが生成されない理由としては、さまざまなことが考えられます。 まずスナップショットの正常性チェックを実行することにより、考えられるいくつかの一般的な原因を特定できます。
 
 ## <a name="use-the-snapshot-health-check"></a>スナップショットの正常性チェックを使用する
 いくつかの一般的な問題により、[デバッグ スナップショットを開く] が表示されません。 古い Snapshot Collector を使用します (たとえば、1 日のアップロード上限に達した場合)。そうしないと、スナップショットのアップロードに時間がかかることがあります。 一般的な問題のトラブルシューティングには、Snapshot Health Check を使用します。
@@ -32,25 +35,73 @@ ms.locfileid: "77671411"
 
 公開したアプリケーションで、正しいインストルメンテーション キーを使用していることを確認します。 通常、インストルメンテーション キーは、ApplicationInsights.config ファイルから読み取られます。 値が、ポータルに表示される Application Insights リソースのインストルメンテーション キーと同じであることを確認します。
 
-## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
-アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず「[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)」の手順を実行して [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"***さらに***" [Application Insights ウィンドウで有効にします](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL クライアント設定の確認 (ASP.NET)
 
+ASP.NET アプリケーションが、Azure App Service または仮想マシンの IIS でホストされている場合、SSL セキュリティ プロトコルがないため、お使いのアプリケーションがスナップショット デバッガー サービスに接続できない可能性があります。
+[スナップショット デバッガー エンドポイントには、TLS バージョン 1.2 が必要です](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json)。 SSL セキュリティ プロトコルのセットは、web.config の system.web セクションの httpRuntime targetFramework 値によって有効にされる特性の 1 つです。httpRuntime targetFramework が 4.5.2 以下の場合、TLS 1.2 は既定では含まれていません。
+
+> [!NOTE]
+> httpRuntime targetFramework 値は、アプリケーションのビルド時に使用されるターゲット フレームワークに依存しません。
+
+設定を確認するには、web.config ファイルを開き、system.web セクションを見つけます。 `httpRuntime` の `targetFramework` が 4.6 以上に設定されていることを確認します。
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> httpRuntime targetFramework の値を変更すると、アプリケーションに適用されるランタイムの特性が変更され、その他の微妙な動作の変更が発生する可能性があります。 この変更を行った後は、アプリケーションを十分にテストするようにしてください。 互換性の変更の完全な一覧については、 https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes を参照してください。
+
+> [!NOTE]
+> targetFramework が 4.7 以上の場合、使用可能なプロトコルは Windows によって決定されます。 Azure App Service では、TLS 1.2 を使用できます。 ただし、独自の仮想マシンを使用している場合は、OS で TLS 1.2 を有効にすることが必要になる場合があります。
+
+## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
+.NET Core のプレビュー バージョンを使用している場合、またはアプリケーションによって、依存アセンブリを介して直接または間接的に Application Insights SDK が参照されている場合は、[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)方法に関する記事の手順に従ってください。
+
+## <a name="check-the-diagnostic-services-site-extension-status-page"></a>診断サービスのサイト拡張機能の状態ページを確認する
+スナップショット デバッガーがポータルの[[Application Insights] ペイン](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)から有効にされた場合は、診断サービスのサイト拡張機能によって有効にされています。
+
+この拡張機能の状態ページを確認するには、次の URL に移動します: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
+
+> [!NOTE]
+> 状態ページ リンクのドメインは、クラウドによって異なります。
+このドメインは App Service の Kudu 管理サイトと同じです。
+
+この状態ページには、Profiler と Snapshot Collector エージェントのインストール状態が表示されます。 予期しないエラーが発生した場合は、それが表示され、その修正方法が示されます。
+
+App Service の Kudu 管理サイトを使用して、この状態ページのベース URL を取得できます。
+1. Azure Portal で App Service アプリケーションを開きます。
+2. **[高度なツール]** を選択するか、「**Kudu**」を検索します。
+3. **[Go] \(移動)** を選択します。
+4. Kudu 管理サイトが表示されたら、URL に **`/DiagnosticServices` を追加して、Enter キーを押します**。
+ 最終的には次のようになります: `https://<kudu-url>/DiagnosticServices`
+
+次のような状態ページが表示されます。![診断サービスの状態ページ](./media/diagnostic-services-site-extension/status-page.png)
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>最新バージョンの NuGet にアップグレードする
+スナップショット デバッガーが有効化された方法に基づいて、次のオプションを参照してください。
 
-[ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。 リリース ノートについては https://github.com/Microsoft/ApplicationInsights-Home/issues/167 を参照してください。
+* [ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。
+
+* [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。
+
+最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./snapshot-collector-release-notes.md)。
 
 ## <a name="check-the-uploader-logs"></a>アップローダー ログの確認
 
 スナップショットの作成後、ミニダンプ ファイル (.dmp) がディスク上に作成されます。 個別アップローダー プロセスでは、そのミニダンプ ファイルを作成し、これを関連する PDB と共に Application Insights のスナップショット デバッガーのストレージにアップロードします。 ミニダンプは、正常にアップロードされた後、ディスクから削除されます。 アップローダー プロセスのログ ファイルは、ディスク上に保持されます。 App Service 環境では、これらのログは `D:\Home\LogFiles` にあります。 App Service の Kudu 管理サイトを使用すると、これらのログ ファイルを検索できます。
 
 1. Azure Portal で App Service アプリケーションを開きます。
-2. **[高度なツール]** をクリックするか、**Kudu** を検索します。
-3. **[Go]** をクリックします。
+2. **[高度なツール]** を選択するか、「**Kudu**」を検索します。
+3. **[Go] \(移動)** を選択します。
 4. **[Debug console]** (デバッグ コンソール) ドロップダウン リスト ボックスで、 **[CMD]** を選択します。
-5. **[LogFiles]** をクリックします。
+5. **[LogFiles]** を選択します。
 
-`Uploader_` または `SnapshotUploader_`で始まる名前で拡張子が `.log` であるファイルが 1 つ以上表示されます。 適切なアイコンをクリックしてログ ファイルをダウンロードするか、またはブラウザーでログ ファイルを開きます。
+`Uploader_` または `SnapshotUploader_`で始まる名前で拡張子が `.log` であるファイルが 1 つ以上表示されます。 適切なアイコンを選択してログ ファイルをダウンロードするかブラウザーで開きます。
 ファイル名には、App Service インスタンスを識別する一意のサフィックスが含まれます。 App Service のインスタンスが 1 つ以上のコンピューターでホストされている場合は、コンピューターごとに個別のログ ファイルがあります。 アップローダーは、新しいミニダンプ ファイルを検出すると、ログ ファイルに記録します。 スナップショットとアップロードの成功の例を次に示します。
 
 ```
@@ -82,7 +133,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 > 上記の例は、Microsoft.ApplicationInsights.SnapshotCollector NuGet パッケージのバージョン 1.2.0 です。 以前のバージョンのアップローダー プロセスは `MinidumpUploader.exe` で、ログはこれほど詳しくありません。
 
 インストルメンテーション キーは、前の例では、`c12a605e73c44346a984e00000000000` です。 この値は、アプリケーションのインストルメンテーション キーと一致する必要があります。
-ミニダンプは ID `139e411a23934dc0b9ea08a626db16c5` を持つスナップショットに関連付けられています。 この ID は、Application Insights Analytics で関連する例外テレメトリを検索するために後で使用できます。
+ミニダンプは ID `139e411a23934dc0b9ea08a626db16c5` を持つスナップショットに関連付けられています。 この ID は、後で Application Insights Analytics で関連する例外レコードを検索するために使用できます。
 
 アップローダーは、約 15 分ごとに 1 回新しい PDB をスキャンします。 次に例を示します。
 
@@ -100,11 +151,14 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 App Service にホストされて "_いない_" アプリケーションでは、アップローダー ログは、ミニダンプと同じフォルダー `%TEMP%\Dumps\<ikey>` にあります (`<ikey>` はインストルメンテーション キー)。
 
 ## <a name="troubleshooting-cloud-services"></a>クラウド サービスのトラブルシューティング
-クラウド サービスのロールでは、既定の一時フォルダーが minidump ファイルを保持するためには小さすぎる場合があり、スナップショットが失われる可能性があります。
+クラウド サービスでは、既定の一時フォルダーがミニダンプ ファイルを保持するには小さすぎて、スナップショットが失われる可能性があります。
+
 必要な領域は、アプリケーションの合計ワーキング セットと同時実行スナップショット数によって異なります。
-32 ビット ASP.NET web ロールのワーキング セットは、通常は 200 MB から 500 MB です。
-少なくとも 2 つの同時実行スナップショットを許可します。
-たとえば、アプリケーションが 1 GB の合計ワーキング セットを使用する場合は、スナップショットを格納するために少なくとも 2 GB のディスク領域があることを確認する必要があります。
+
+32 ビット ASP.NET web ロールのワーキング セットは、通常は 200 MB から 500 MB です。 少なくとも 2 つの同時実行スナップショットを許可します。
+
+たとえば、アプリケーションで 1 GB の合計ワーキング セットが使用されている場合は、スナップショットを格納するために少なくとも 2 GB のディスク領域が存在するようにする必要があります。
+
 次の手順に従って、スナップショット専用のローカル リソースを持つクラウド サービス ロールを構成します。
 
 1. クラウド サービス定義 (.csdef) ファイルを編集して、新しいローカル リソースをクラウド サービスに追加します。 次の例では、サイズが 5 GB の `SnapshotStore` というリソースを定義します。
@@ -161,7 +215,7 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 - APPDATA
 - TEMP
 
-適切なフォルダーが見つからない場合は、Snapshot Collector によって "_Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)_ " エラーが報告されます。
+適切なフォルダーが見つからない場合は、Snapshot Collector によって " _"Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)"_ " というエラーが報告されます。
 
 コピーに失敗した場合、Snapshot Collector は `ShadowCopyFailed` エラーを報告します。
 
@@ -196,24 +250,26 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Application Insights 検索を使用してスナップショット付きの例外を検索する
 
-スナップショットが作成されている場合、例外がスローされるとスナップショット ID がタグ付けされます。 Application Insights に例外テレメトリがレポートされると、そのスナップショット ID はカスタム プロパティとして含まれます。 Application Insights の **[検索]** を使用すると、`ai.snapshot.id` カスタム プロパティを使用してすべてのテレメトリを見つけることができます。
+スナップショットが作成されている場合、例外がスローされるとスナップショット ID がタグ付けされます。 Application Insights に例外が報告されると、そのスナップショット ID はカスタム プロパティとして含まれます。 Application Insights の **[検索]** を使用すると、`ai.snapshot.id` カスタム プロパティを持つすべてのレコードを見つけることができます。
 
 1. Azure Portal の Application Insights のリソースを参照します。
-2. **[検索]** をクリックします。
+2. **[Search]** を選択します。
 3. [検索] テキスト ボックスに `ai.snapshot.id` と入力し、Enter キーを押します。
 
 ![ポータルでスナップショット ID を使用してテレメトリを検索](./media/snapshot-debugger/search-snapshot-portal.png)
 
-この検索に結果が返されない場合、アプリケーションが選択した時間範囲に Application Insights にスナップショットをレポートしなかったということです。
+この検索で結果が返されない場合は、選択された時間範囲内に Application Insights に報告されたスナップショットがなかったことを示しています。
 
-アップローダー ログから特定のスナップショット ID を検索するには、[検索] ボックスにその ID を入力します。 既知のスナップショットのテレメトリを検索できない場合、次の手順に従います。
+アップローダー ログから特定のスナップショット ID を検索するには、[検索] ボックスにその ID を入力します。 アップロードされたことがわかっているスナップショットのレコードを検出できない場合は、こちらの手順に従ってください。
 
 1. インストルメンテーション キーを確認することにより、正しい Application Insights のリソースを探していることを再確認します。
 
 2. アップローダー ログからのタイムスタンプを使用して、その時間範囲をカバーするように検索の時間範囲フィルターを調整します。
 
-それでもそのスナップショット ID を持つ例外が表示されない場合、その例外テレメトリが Application Insights にレポートされなかったということです。 このような状況は、スナップショットを取得した後かつ例外テレメトリにレポートする前にアプリケーションがクラッシュした場合に発生する可能性があります。 この場合、`Diagnose and solve problems` で App Service を確認し、予期しない再起動またはハンドルされない例外があったかどうかを確認します。
+それでもそのスナップショット ID の例外が表示されない場合、例外レコードは Application Insights に報告されていません。 この状況は、スナップショットの作成後、例外レコードを報告する前に、アプリケーションがクラッシュした場合に発生する可能性があります。 この場合、`Diagnose and solve problems` で App Service を確認し、予期しない再起動またはハンドルされない例外があったかどうかを確認します。
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>ネットワーク プロキシまたはファイアウォール規則を編集する
 
-アプリケーションがプロキシまたはファイアウォールを介してインターネットに接続する場合は、アプリケーションがスナップショット デバッガーサービスと通信できるように規則を編集する必要があります。 スナップショット デバッガーによって使用される IP は、Azure Monitor サービス タグに含まれています。
+アプリケーションがプロキシまたはファイアウォール経由でインターネットに接続される場合は、スナップショット デバッガー サービスと通信するように規則を更新する必要がある場合があります。
+
+Application Insights スナップショット デバッガーで使用される IP は、Azure Monitor サービス タグに含まれています。 詳細については、[サービス タグに関するドキュメント](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)を参照してください。

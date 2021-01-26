@@ -1,6 +1,6 @@
 ---
 title: Widevine ライセンス テンプレートを使用した Azure Media Services v3 の概要
-description: このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。
+description: Widevine ライセンス テンプレートを使用した Azure Media Services と、それを使用して Widevine ライセンスを構成する方法について説明します。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -14,21 +14,22 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea0eab6d420a4b74de93a1d35e178d6c57c2ad9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298931"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91598142"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Widevine ライセンス テンプレートを使用した Media Services v3 の概要
 
 Azure Media Services では、**Google Widevine** を使用してコンテンツを暗号化できます。 Media Services も Widevine ライセンスを提供するサービスを提供しています。 Azure Media Services API を使用すると、Widevine ライセンスを構成できます。 プレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスが要求を承認すると、サービスがライセンスを発行します。 これはクライアントに送信され、指定されたコンテンツの復号化と再生に使用されます。
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 Widevine ライセンス要求の形式は、JSON メッセージです。  
 
->[!NOTE]
-> 値のない空のメッセージ ("{}") を作成できます。 すると、ライセンス テンプレートが既定値で作成されます。 ほとんどの場合、既定値で問題ありません。 Microsoft に基づくライセンス配信シナリオでは常に既定値が使用されます。 "provider" 値と "content_id" 値を設定する必要がある場合、プロバイダーは Widevine 資格情報を照合する必要があります。
+
 
 ```json
 {  
@@ -60,6 +61,9 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
     }
 }
 ```
+
+>[!NOTE]
+> 値のない空のメッセージ ("{}") を作成できます。 すると、ライセンス テンプレートが既定値で作成されます。 ほとんどの場合、既定値で問題ありません。 Microsoft に基づくライセンス配信シナリオでは常に既定値が使用されます。 "provider" 値と "content_id" 値を設定する必要がある場合、プロバイダーは Widevine 資格情報を照合する必要があります。
 
 ## <a name="json-message"></a>JSON メッセージ
 

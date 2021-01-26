@@ -3,16 +3,16 @@ title: Azure Application Insights を使ってランタイムの例外を診断�
 description: Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98ccaef716ae2390dcbcfbc7c4a1916359115f93
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322433"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210156"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -81,7 +81,7 @@ Snapshot Debugger は、お使いのアプリケーションで最も一般的�
 
 3. 有効な値を持つ最初の呼び出しが **ValidZipCode** であるため、郵便番号が整数に変換できない文字で提供されていたことが確認できます。  これは、修正する必要があるコードのエラーのようです。
 
-    ![スナップショットをデバッグする](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![修正が必要なコード エラーを示すスクリーンショット。    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
 4. このオプションを Visual Studio にダウンロードして、修正する必要がある実際のコードをそこで見つけることができます。 これを行うには、 **[スナップショットのダウンロード]** をクリックします。
 5. スナップショットは、Visual Studio に読み込まれます。
@@ -97,7 +97,7 @@ Application Insights によって収集されたすべてのデータはAzure Lo
 
     ![コード](media/tutorial-runtime-exceptions/codelens.png)
 
-1. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![Analytics](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![複数のクエリを含んだ [Application Insights] ウィンドウを示すスクリーンショット。](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>作業項目を追加する
 Application Insights を Azure DevOps や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。

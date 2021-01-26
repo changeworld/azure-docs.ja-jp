@@ -1,17 +1,17 @@
 ---
 title: Log Analytics ダッシュボードの視覚化のアップグレード
-description: 必要に応じて開始および変更できるクエリ
+description: 強力な分析情報を提供できるクエリを使用して、Log Analytics ダッシュボードの視覚化をアップグレードする方法について説明します。
 ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505773"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547131"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics ダッシュボードの視覚化のアップグレード
 
@@ -42,12 +42,12 @@ Azure のダッシュボードは、Azure 全体の状態を視覚化するた�
 
 ## <a name="stage-1---opt-in-upgrade-message"></a>ステージ 1 - アップグレードのオプトイン メッセージ
 
-Log Analytics のピン留めされたパーツをアップグレードできる場合、Log Analytics のダッシュボードにピン留めされたパーツに新しい "*オプトイン*" 通知が表示され、ユーザーは視覚化をアップグレードできます。 新しい視覚化を体験する場合は、ダッシュボードで視覚化を選択してアップグレードしてください。
+Log Analytics のピン留めされたパーツをアップグレードできる場合、Log Analytics のダッシュボードにピン留めされたパーツに新しい " *オプトイン* " 通知が表示され、ユーザーは視覚化をアップグレードできます。 新しい視覚化を体験する場合は、ダッシュボードで視覚化を選択してアップグレードしてください。
 
  
 ![サイドバー](media/dashboard-upgrade/update-message-1.png)
  
-![サイドバー](media/dashboard-upgrade/update-message-2.png)
+![タイルの視覚化を更新する方法を示すスクリーンショット。](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > ダッシュボードを発行すると、アップグレードを元に戻すことはできません。 ただし、再発行せずにダッシュボードから移動すると、変更が破棄されます。  
@@ -56,7 +56,7 @@ Log Analytics のピン留めされたパーツをアップグレードできる
 
 視覚化をアップグレードした後は、変更を有効にするためにダッシュボードを再発行する必要があります。
 
-![サイドバー](media/dashboard-upgrade/update-message-3.png)
+![アップグレードされた視覚化を示すスクリーンショット。](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>ステージ 2 - すべてのダッシュボードの移行
 
@@ -74,7 +74,7 @@ Log Analytics のピン留めされたパーツをアップグレードできる
 
 ダッシュボードは視覚的な密度が高く、複雑になることがあります。 ダッシュボードの表示を見やすくするために、表示するデータの種類を 25 に制限することによって、視覚化が最適化されています。 データの種類が 25 を超える場合は、Log Analytics によって最適化されます。 大きい順に 25 種類のデータが個別に表示され、残りの値は "その他" の値としてグループ化されます。 次のグラフは、このようなケースを示しています。  
 
-![サイドバー](media/dashboard-upgrade/values-25-limit.png)
+![25 個の異なるデータ型のダッシュボードを示すスクリーンショット。](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>読み込み時のダッシュボードの更新
 

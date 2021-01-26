@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: be62cb9cd9f9e603e60006d5482b59ed37a516ff
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ee88a7cc187644c89aca5656df9ab9ae48a5a056
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375330"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187674"
 ---
 1. Eclipse を起動します。
 
@@ -17,7 +17,7 @@ ms.locfileid: "87375330"
 
    ![[Eclipse Launcher] のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
 
-1. しばらくすると、Eclipse IDE のメイン ウィンドウが表示されます。 **ウェルカム**画面が表示される場合は画面を閉じます。
+1. しばらくすると、Eclipse IDE のメイン ウィンドウが表示されます。 **ウェルカム** 画面が表示される場合は画面を閉じます。
 
 1. Eclipse メニュー バーから、 **[File]**  >  **[New]**  >  **[Project]** を選択して新しいプロジェクトを作成します。
 

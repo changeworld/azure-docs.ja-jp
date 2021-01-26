@@ -1,14 +1,14 @@
 ---
 title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
-ms.date: 08/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520715"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90904083"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -70,7 +70,10 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="excluded-scopes"></a>除外範囲
 
-割り当ての**範囲**には、子リソース コンテナーと子リソースがすべて含まれます。 子リソース コンテナーまたは子リソースに定義を適用しない場合、**notScopes** を設定することで各々を評価から除外できます。 このプロパティは、1 つまたは複数のリソース コンテナーまたはリソースを評価から除外することを可能にする配列です。 **notScopes** は、初回割り当ての作成後、追加または更新できます。
+割り当ての**範囲**には、子リソース コンテナーと子リソースがすべて含まれます。 子リソース コンテナーまたは子リソースに定義を適用しない場合、**notScopes** を設定することでそれぞれを評価から "_除外_" できます。 このプロパティは、1 つまたは複数のリソース コンテナーまたはリソースを評価から除外することを可能にする配列です。 **notScopes** は、初回割り当ての作成後、追加または更新できます。
+
+> [!NOTE]
+> "_除外された_" リソースは、"_適用除外された_" リソースとは異なります。 詳細については、「[Azure Policy でのスコープについて](./scope.md)」を参照してください。
 
 ## <a name="policy-definition-id"></a>ポリシー定義 ID
 

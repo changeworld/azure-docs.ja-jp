@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 03e9f99301444032d867bc1c2f854c807380844e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-js
+ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797736"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91250166"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>チュートリアル:Gatsby サイトを Azure Static Web Apps プレビューに発行する
 
@@ -102,7 +102,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. _[SKU]_ で、 **[Free]** を選択します。
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="詳細情報の入力":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -112,7 +112,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. _[ブランチ]_ では、**master** を選択します。
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 
 ### <a name="build"></a>Build
 
@@ -126,7 +126,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
    この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="ビルド設定":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
@@ -138,7 +138,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. リソース画面で、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。 GitHub アクションが完了するまで 1 - 2 分かかることがあります。
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="デプロイされたアプリケーション":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

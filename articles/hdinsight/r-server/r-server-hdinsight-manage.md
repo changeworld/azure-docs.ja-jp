@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087641"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536285"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -31,8 +31,8 @@ HDInsight で ML Services クラスターに対して複数の同時ユーザー
 
 ![HDI Azure portal のログイン パラメーター](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **クラスター ログイン ユーザー名**: 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
-- **Secure Shell (SSH) ユーザー名**: Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
+- **クラスター ログイン ユーザー名** : 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
+- **Secure Shell (SSH) ユーザー名** : Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
 
 HDInsight の ML Services クラスターで使用されている R Studio Server Community バージョンでは、サインイン メカニズムとして Linux ユーザー名とパスワードのみを受け付けます。 トークンを渡すことはサポートされていません。 そのため、ML Services クラスターで R Studio にアクセスするのが初めての場合は、2 回サインインする必要があります。
 
@@ -74,7 +74,7 @@ sudo passwd <yournewusername>
 
 `https://CLUSTERNAME.azurehdinsight.net/rstudio/` から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
 
-同時に、別のブラウザー ウィンドウから元の資格情報 (既定では *sshuser*) を使用してサインインすることもできます。
+同時に、別のブラウザー ウィンドウから元の資格情報 (既定では *sshuser* ) を使用してサインインすることもできます。
 
 また、新しく追加されたユーザーには Linux システムにおける root 権限はありませんが、リモートの HDFS および WASB ストレージ内のすべてのファイルに対して同じアクセス権があることにも注意してください。
 
@@ -106,7 +106,7 @@ mySparkCluster <- RxSpark(
 )
 ```
 
-詳細については、[Apache Spark コンピューティング コンテキストで RevoScaleR を使用する方法](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)に関するページにある Apache Hadoop クライアントとしての Microsoft Machine Learning Server の使用に関するセクションを参照してください
+詳細については、[Apache Spark コンピューティング コンテキストで RevoScaleR を使用する方法](/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)に関するページにある Apache Hadoop クライアントとしての Microsoft Machine Learning Server の使用に関するセクションを参照してください
 
 ## <a name="use-a-compute-context"></a>コンピューティング コンテキストを使用する
 
@@ -205,9 +205,9 @@ rxSparkDisconnect(myHadoopCluster)
 
    * **worker** についてのみチェック ボックスをオンにします。
 
-   * **パラメーター**: インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
+   * **パラメーター** : インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
 
-   * **このスクリプト操作を保持する**ためのチェック ボックスをオンにします。  
+   * **このスクリプト操作を保持する** ためのチェック ボックスをオンにします。  
 
    > [!NOTE]
    > 1. 既定では、R パッケージはすべて、インストールされている ML Server のバージョンと一貫性のある Microsoft MRAN リポジトリのスナップショットからインストールされます。 より新しいバージョンのパッケージをインストールする場合は、非互換性の問題が発生するリスクが多少あります。 ただし、この種類のインストールは、パッケージ リスト (たとえば `useCRAN bitops, stringr, arules`) の最初の要素として `useCRAN` を指定することにより可能になります。  

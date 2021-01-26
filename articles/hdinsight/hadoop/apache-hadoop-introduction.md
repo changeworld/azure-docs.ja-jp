@@ -8,28 +8,28 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 5e5f02b1684e56496778ab677aa9dc46e7dcd9aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086525"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899630"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop の概要
 
 [Apache Hadoop](https://hadoop.apache.org/) は本来、クラスターでのビッグ データ セットの分散処理および分析のためのオープンソース フレームワークでした。 Hadoop エコシステムには、Apache Hive、Apache HBase、Spark、Kafka、その他の多くの関連するソフトウェアおよびユーティリティが含まれます。
 
-Azure HDInsight は、フル マネージドの、全範囲に対応した、クラウド上のオープンソースのエンタープライズ向け分析サービスです。 Azure HDInsight の Apache Hadoop クラスター タイプでは、HDFS、YARN によるリソース管理、シンプルな MapReduce プログラミング モデルを使用して、バッチ データを並列に処理して分析することができます。
+Azure HDInsight は、フル マネージドの、全範囲に対応した、クラウド上のオープンソースのエンタープライズ向け分析サービスです。 Azure HDInsight の Apache Hadoop クラスター タイプでは、[Apache Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) によるリソース管理、シンプルな [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) プログラミング モデルを使用して、バッチ データを並列に処理して分析することができます。  HDInsight の Hadoop クラスターは、[Azure Blob Storage](../../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md)、[Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) と互換性があります。
 
 HDInsight で利用可能な Hadoop テクノロジ スタック コンポーネントを確認するには、[HDInsight で利用可能なコンポーネントとバージョン](../hdinsight-component-versioning.md)に関する記事を参照してください。 HDInsight の Hadoop については、[HDInsight 向けの Azure の機能](https://azure.microsoft.com/services/hdinsight/)に関するページを参照してください。
 
 ## <a name="what-is-mapreduce"></a>MapReduce とは
 
-Apache Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは、独立したチャンクに分割されます。 各チャンクは、クラスター内のノード全体で並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
+[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは、独立したチャンクに分割されます。 各チャンクは、クラスター内のノード全体で並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
 
-* **Mapper**: 入力データを使用して分析し (通常はフィルターと並べ替え操作を使用)、タプル (キーと値のペア) を出力します。
+* **Mapper** : 入力データを使用して分析し (通常はフィルターと並べ替え操作を使用)、タプル (キーと値のペア) を出力します。
 
-* **Reducer**: Mapper で出力されるタプルを使用して、Mapper データから、より小さい結合結果を作成する要約操作を実行します。
+* **Reducer** : Mapper で出力されるタプルを使用して、Mapper データから、より小さい結合結果を作成する要約操作を実行します。
 
 次の図では、基本的なワード カウント MapReduce ジョブの例を示します。
 
@@ -44,7 +44,7 @@ Apache Hadoop MapReduce は、膨大なデータを処理するジョブを記�
 
 ## <a name="development-languages"></a>開発言語
 
-Java や Java 仮想マシンに基づく言語またはフレームワークは、MapReduce ジョブとして直接実行できます。 このドキュメントで使用されている例は、Java MapReduce アプリケーションです。 C# や Python などの Java 以外の言語、またはスタンドアロンの実行可能ファイルでは **Hadoop ストリーミング**を使用する必要があります。
+Java や Java 仮想マシンに基づく言語またはフレームワークは、[MapReduce ジョブ](..//hadoop/submit-apache-hadoop-jobs-programmatically.md)として直接実行できます。 このドキュメントで使用されている例は、Java MapReduce アプリケーションです。 C# や Python などの Java 以外の言語、またはスタンドアロンの実行可能ファイルでは **Hadoop ストリーミング** を使用する必要があります。
 
 Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と通信します。 mapper と reducer は、STDIN から一度に 1 行ずつデータを読み取り、STDOUT に出力を書き込みます。 mapper と reducer によって読み取りまたは出力が行われる各行は、以下のように、タブ文字で区切られたキーと値のペアの形式である必要があります。
 
@@ -56,6 +56,16 @@ HDInsight での Hadoop ストリーミングの使用例については、以�
 
 * [C# MapReduce ジョブの開発](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
+## <a name="where-do-i-start"></a>どこから始めるか
+
+* [クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Hadoop クラスターを作成する](../hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [チュートリアル: HDInsight で Apache Hadoop ジョブを送信する](../hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する](../hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する](../hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md)
+* [大規模な抽出、変換、および読み込み (ETL)](../hadoop/apache-hadoop-etl-at-scale.md)
+* [データ分析パイプラインを運用化する](../hdinsight-operationalize-data-pipeline.md)
+
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight で Apache Hadoop クラスターを作成する](apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [ポータルを使用して HDInsight で Apache Hadoop クラスターを作成する](../hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [ARM テンプレートを使用して HDInsight 内に Apache Hadoop クラスターを作成する](../hadoop/apache-hadoop-linux-tutorial-get-started.md)

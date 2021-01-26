@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853373"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647598"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -38,7 +38,7 @@ ms.locfileid: "88853373"
 
 Azure AD では、**ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
-要求のマッピング ポリシーは**ポリシー** オブジェクトの一種であり、特定のアプリケーションに対して発行されたトークンに出力される要求を変更します。
+要求のマッピング ポリシーは **ポリシー** オブジェクトの一種であり、特定のアプリケーションに対して発行されたトークンに出力される要求を変更します。
 
 ## <a name="claim-sets"></a>要求セット
 
@@ -239,6 +239,9 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 出力される要求内容とデータの送信元を制御するには、要求のマッピング ポリシーのプロパティを使用します。 ポリシーが設定されていない場合は、アプリケーションが受信するように選んだコア要求セット、基本要求セット、[省略可能な要求](active-directory-optional-claims.md)を含むトークンが発行されます。
 
+> [!NOTE]
+> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。
+
 ### <a name="include-basic-claim-set"></a>Include 基本要求セット
 
 **文字列:** IncludeBasicClaimSet
@@ -250,8 +253,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 - True に設定されている場合、基本要求セット内のすべての要求が、ポリシーの影響を受けるトークンに出力されます。
 - False に設定されている場合、基本要求セット内の要求は、同じポリシーの要求スキーマ プロパティに個別に追加されない限り、トークンに追加されません。
 
-> [!NOTE]
-> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。
+
 
 ### <a name="claims-schema"></a>要求スキーマ
 
@@ -260,7 +262,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 **データ型**: 1 つ以上の要求スキーマ エントリを含む JSON BLOB
 
 **概要:** このプロパティは、基本要求セットやコア要求セットのほか、ポリシーの影響を受けるトークンにどの要求を提示するかを定義します。
-このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**Value**、**Source/ID ペア**、または**Source/ExtensionID ペア**) と、どの要求としてデータを出力するか (**要求の種類**) を指定します。
+このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**Value**、**Source/ID ペア**、または **Source/ExtensionID ペア**) と、どの要求としてデータを出力するか (**要求の種類**) を指定します。
 
 ### <a name="claim-schema-entry-elements"></a>要求スキーマ エントリ要素
 
@@ -301,8 +303,8 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | companyname| 組織名 |
 | User | streetaddress | 番地 |
 | User | postalcode | 郵便番号 |
-| User | preferredlanguange | 優先言語 |
-| User | onpremisesuserprincipalname | オンプレミスの UPN |
+| User | preferredlanguage | 優先言語 |
+| User | onpremisesuserprincipalname | オンプレミスの UPN |*
 | User | mailNickname | メールのニックネーム |
 | User | extensionattribute1 | 拡張属性 1 |
 | User | extensionattribute2 | 拡張属性 2 |
@@ -340,6 +342,8 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 - JwtClaimType には、JWT に出力する要求の名前を含める必要があります。
 - SamlClaimType には、SAML トークンに出力する要求の URI を含める必要があります。
+
+* **onPremisesUserPrincipalName 属性:** 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。 この属性は、代替 ID が構成されている場合にのみ使用できますが、MS Graph ベータ版 (https://graph.microsoft.com/beta/me/ ) から使用することもできます。
 
 > [!NOTE]
 > 制限付き要求セット内の要求の名前と URI を、要求の種類の要素に使用することはできません。 詳細については、この記事の後述の「例外と制限事項」セクションを参照してください。
@@ -417,7 +421,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、「[New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)」を参照してください。
+要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) を使用して、ご自身のアプリケーション オブジェクトの証明書キー資格情報を作成します。
 
 要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。
 
@@ -437,8 +441,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 Azure AD では、特定のサービス プリンシパルに対するトークンに発行された要求をカスタマイズできる場合、多くのシナリオが考えられます。 このセクションでは、要求のマッピング ポリシーの種類を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
 
-> [!NOTE]
-> 要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
+要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
 
 #### <a name="prerequisites"></a>前提条件
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル`:` マネージド ID を使用して Azure SQL Database にアクセスする - Windows - Azure AD
+title: チュートリアル:マネージド ID を使用して Azure SQL Database にアクセスする - Windows - Azure AD
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure SQL Database にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255751"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856514"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 

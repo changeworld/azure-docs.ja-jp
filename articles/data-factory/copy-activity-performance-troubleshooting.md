@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770962"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968893"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -37,11 +37,11 @@ ms.locfileid: "84770962"
 
 | カテゴリ              | パフォーマンスのチューニングのヒント                                      |
 | --------------------- | ------------------------------------------------------------ |
-| データ ストア固有   | **Azure Synpase Analytics (旧称 SQL DW)** へのデータ読み込み: 使用しない場合は、PolyBase または COPY ステートメントを使用することをお勧めします。 |
+| データ ストア固有   | **Azure Synapse Analytics** へのデータ読み込み: 使用しない場合は、PolyBase または COPY ステートメントを使用することをお勧めします。 |
 | &nbsp;                | **Azure SQL Database** との間でのデータのコピー: DTU の使用率が高い場合は、上位レベルへのアップグレードをお勧めします。 |
 | &nbsp;                | **Azure Cosmos DB** との間でのデータのコピー: RU の使用率が高い場合は、より大きな RU にアップグレードすることをお勧めします。 |
-|                       | **SAP テーブル**からのデータのコピー: 大量のデータをコピーする場合は、SAP コネクタのパーティション オプションを利用して並列読み込みを有効にし、最大パーティション数を増やすことをお勧めします。 |
-| &nbsp;                | **Amazon Redshift**からデータを取り込み: 使用されていない場合は、UNLOAD を使用することをお勧めします。 |
+|                       | **SAP テーブル** からのデータのコピー: 大量のデータをコピーする場合は、SAP コネクタのパーティション オプションを利用して並列読み込みを有効にし、最大パーティション数を増やすことをお勧めします。 |
+| &nbsp;                | **Amazon Redshift** からデータを取り込み: 使用されていない場合は、UNLOAD を使用することをお勧めします。 |
 | データ ストアの調整 | コピー中にデータ ストアによって多数の読み取り/書き込み操作が調整されている場合は、データ ストアに対して許可されている要求レートを確認して増やすか、同時実行ワークロードを減らすことをお勧めします。 |
 | 統合ランタイム  | **セルフホステッド統合ランタイム (IR)** を使用し、IR が実行可能なリソースを使用できるようになるまで、コピー アクティビティがキュー内で長時間待機している場合は、IR のスケールアウト/アップをお勧めします。 |
 | &nbsp;                | 最適でないリージョンにある **Azure Integration Runtime** を使用して読み取り/書き込み速度が低下する場合は、別のリージョンの IR を使用するようにを構成することをお勧めします。 |
@@ -74,7 +74,7 @@ ms.locfileid: "84770962"
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3 と Azure Blob の "**プレフィックス**" を使用します。 プレフィックス フィルターは、データ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
@@ -98,7 +98,7 @@ ms.locfileid: "84770962"
 
 - **"シンクへの転送の書き込み"は、長時間の作業継続時間の**:
 
-  - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 例えば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (以前の SQL DW) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
+  - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 たとえば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
 
   - ADF がシンクで調整エラーを報告するかどうか、またはデータ ストアの使用率が高いかどうかを確認します。 その場合は、データ ストアのワークロードを減らすか、データ ストアの管理者に連絡して調整制限または使用可能なリソースを増やしてみてください。
 
@@ -128,7 +128,7 @@ ms.locfileid: "84770962"
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
 
-    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3 と Azure Blob の "**プレフィックス**" を使用します。 プレフィックス フィルターは、データ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
+    - 代わりに、データ ストアのネイティブ フィルターを使用できるかどうかを確認します。具体的には、Amazon S3/Azure Blob/Azure File Storage では "**prefix**"、ADLS Gen1 では "**listAfter/listBefore**" です。 これらのフィルターはデータ ストアのサーバー側フィルターであり、パフォーマンスが大幅に向上します。
 
     - 単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 一般的な例として、「[複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)」 または 「[Amazon S3 から ADLS Gen2](solution-template-migration-s3-azure.md) ソリューションテンプレートにデータを移行する」を参照してください。
 
@@ -160,7 +160,7 @@ ms.locfileid: "84770962"
 
 - **"シンクへの転送の書き込み"は、長時間の作業継続時間の**:
 
-  - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 例えば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (以前の SQL DW) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
+  - 適用する場合は、コネクタ固有のデータ読み込みのベスト プラクティスを採用します。 たとえば、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) にデータをコピーする場合は、PolyBase または COPY ステートメントを使用します。 
 
   - シンク データ ストアへの接続に、セルフホステッド IR マシンの待機時間が短いかどうかを確認してください。 シンクが Azure にある場合は、[このツール](http://www.azurespeed.com/Azure/Latency) を使用して、セルフホステッド IR マシンから Azure リージョンへの待機時間を確認することができます。待機時間が少なければより優れています。
 
@@ -172,17 +172,71 @@ ms.locfileid: "84770962"
 
   - [並列コピー](copy-activity-performance-features.md) を徐々に調整することを検討してください。並列コピーの数が多すぎると、パフォーマンスが低下する可能性があることに注意してください。
 
+
+## <a name="connector-and-ir-performance"></a>コネクタと IR のパフォーマンス
+
+このセクションでは、特定のコネクタの種類または統合ランタイムに関するパフォーマンスのトラブルシューティング ガイドをいくつか紹介します。
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>アクティビティの実行時間が Azure IR と Azure VNet IR のどちらを使用しているかで異なる
+
+データセットが異なる統合ランタイムに基づいている場合、アクティビティの実行時間は異なります。
+
+- **現象**:データセット内で [リンクされたサービス] ドロップダウンを切り替えるだけで、同じパイプライン アクティビティが実行されますが、実行時間は大幅に異なります。 データセットがマネージド仮想ネットワークの統合ランタイムに基づいている場合、実行が完了するまでに平均 2 分以上かかりますが、既定の統合ランタイムに基づいている場合は、約 20 秒で完了します。
+
+- **原因**:パイプライン実行の詳細を確認すると、低速のパイプラインはマネージド VNet (Virtual Network) IR で実行されている一方、通常のパイプラインは Azure IR で実行されていることがわかります。 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド VNet IR は Azure IR よりもキュー時間が長く、各コピー アクティビティが開始するまでにウォームアップとして約 2 分間かかります。これは、Azure IR ではなく、主に VNet 参加で発生します。
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>データを Azure SQL Database に読み込むときにパフォーマンスが低下する
+
+- **現象**:Azure SQL Database にデータをコピーすると、低速になります。
+
+- **原因**:問題の根本原因は、ほとんどの場合、Azure SQL Database 側のボトルネックによってトリガーされます。 以下のいくつかの原因が考えられます。
+
+    - Azure SQL Database のレベルが十分ではありません。
+
+    - Azure SQL Database の DTU の使用率が 100% に近づいています。 [パフォーマンスを監視](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview)して、Azure SQL Database のレベルをアップグレードすることを検討できます。
+
+    - インデックスが正しく設定されていません。 データが読み込まれる前にすべてのインデックスを削除し、読み込みの完了後に再作成します。
+
+    - WriteBatchSize は、スキーマ行のサイズに適合するのに十分な大きさではありません。 問題のプロパティを拡大してみてください。
+
+    - 一括埋め込みではなく、ストアド プロシージャが使用されているため、パフォーマンスが低下することが予想されます。 
+
+- **解決方法**:「[コピー アクティビティのパフォーマンスのトラブルシューティング](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)」を参照してください。
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>大きな Excel ファイルを解析するときのタイムアウトまたはパフォーマンスの低下
+
+- **現象**:
+
+    - Excel データセットの作成、接続またはストアからのスキーマのインポート、データのプレビュー、ワークシートの一覧表示または更新を行う際、Excel ファイルのサイズが大きい場合は、タイムアウト エラーが発生することがあります。
+
+    - コピー アクティビティを使用して、サイズの大きい Excel ファイル (>= 100 MB) から他のデータ ストアにデータをコピーすると、パフォーマンスが低下したり、OOM 問題が発生したりする可能性があります。
+
+- **原因**: 
+
+    - スキーマのインポート、データのプレビュー、Excel データセットでのワークシートの一覧表示などの操作では、タイムアウトは 100 秒で静的です。 大きな Excel ファイルでは、これらの操作がタイムアウト値内で完了しないことがあります。
+
+    - ADF コピー アクティビティは、Excel ファイル全体をメモリに読み込み、データを読み取る指定されたワークシートとセルを検索します。 ADF が使用する基盤となる SDK のために、このような動作になります。
+
+- **解決方法**: 
+
+    - スキーマをインポートする場合は、元のファイルのサブセットとなるより小さいサンプル ファイルを生成し、[接続/ストアからスキーマをインポートする] ではなく、[サンプル ファイルからスキーマをインポートする] を選択します。
+
+    - ワークシートを一覧表示する場合は、ワークシートのドロップダウンで [編集] をクリックし、シート名/インデックスを入力します。
+
+    - 大きな Excel ファイル (> 100 MB) を他のストアにコピーするには、Data Flow Excel ソースを使用します。これにより、ストリーミングの読み取りとパフォーマンスが向上します。
+    
 ## <a name="other-references"></a>その他のリファレンス
 
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報を示します。
 
 * Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
 * Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
-* Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
-* Azure SQL Data Warehouse: その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
+* Azure SQL Database:[パフォーマンスを監視](../azure-sql/database/monitor-tune-overview.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
+* Azure Synapse Analytics:その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure Synapse Analytics のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
-* SQL Server:[パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
-* オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)。
+* SQL Server:[パフォーマンスの監視とチューニング](/sql/relational-databases/performance/monitor-and-tune-for-performance)。
+* オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](/previous-versions//dn567661(v=vs.85))。
 
 ## <a name="next-steps"></a>次のステップ
 コピー アクティビティの他の記事を参照してください。

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2cfa21bc5223af058d412bf3f17f53cb151fc5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707763"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -39,7 +39,7 @@ ms.locfileid: "89297639"
 1. Azure Portal (https://portal.azure.com ) にログインします。
 1. Media Services アカウントに移動し、 **[監視]** の下の **[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。
 
-    ![[診断設定] セクション](media/media-services-diagnostic-logs/logs01.png)
+    ![[モニター] セクションの [診断設定] が強調表示されているスクリーンショット。](media/media-services-diagnostic-logs/logs01.png)
 
 1. **[診断設定の追加]** をクリックします。
 

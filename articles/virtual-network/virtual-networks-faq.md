@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205467"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938802"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
@@ -228,6 +228,9 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ### <a name="is-there-information-available-about-securing-vnets"></a>VNet のセキュリティ保護に関する情報はありますか。
 はい。 詳細については、「[Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
+### <a name="do-virtual-networks-store-customer-data"></a>顧客データは仮想ネットワークに格納されるのですか?
+いいえ。 仮想ネットワークに顧客データは格納されません。 
+
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 
 ### <a name="can-i-manage-vnets-from-code"></a>VNet をコードから管理できますか。
@@ -255,7 +258,6 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
-- SQL MI
 - API Management
 - Active Directory Domain Service (ADDS)
 - Logic Apps
@@ -266,9 +268,9 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>仮想ネットワークが別の Azure Active Directory テナント内のサブスクリプションに属する場合、VNet ピアリングを有効にできますか。
-はい。 サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立できます。 これは、PowerShell または CLI を使用して行うことができます。 portal はまだサポートされていません。
+はい。 サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立できます。 これは、ポータル、PowerShell、または CLI を使用して行うことができます。
 
-### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet ピアリング接続が*開始済み*の状態にあります。接続できないのはなぜですか。
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet ピアリング接続が *開始済み* の状態にあります。接続できないのはなぜですか。
 ピアリング接続が "*開始済み*" の状態にある場合、これは、リンクを 1 つだけ作成していることを意味します。 正常な接続を確立するには、双方向のリンクを作成する必要があります。 VNet A から VNet B にピアリングするには、VNetA から VNetB、および VNetB から VNetAへのリンクを作成する必要があります。 両方のリンクを作成すると、状態が "*接続済み*" に変更されます。
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>VNet ピアリング接続が "*切断*" 状態にあります。ピアリング接続を作成できないのはなぜですか。
@@ -280,14 +282,17 @@ VNet ピアリング接続が "*切断*" 状態にある場合、それは作成
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>一致するまたは重複するアドレス範囲にある 2 つの VNet をピアリングできますか。
 いいえ。 VNet ピアリングを有効にするには、アドレス空間がオーバーラップしない必要があります。
 
+### <a name="can-i-peer-a-vnet-to-two-different-vnets-with-the-the-use-remote-gateway-option-enabled-on-both-the-peerings"></a>両方のピアリングで [リモートゲートウェイを使用する] オプションを有効にした 2 つの異なる VNet に 1 つの VNet をピアリングできますか。
+いいえ。 [リモートゲートウェイを使用する] オプションは、VNet のいずれかに対する 1 つのピアリングでのみ有効にすることができます。
+
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet ピアリング リンクの料金をどれくらいですか。
 VNet ピアリング接続を作成するのに料金はかかりません。 ピアリング接続経由でのデータ転送には料金が発生します。 [こちらを参照](https://azure.microsoft.com/pricing/details/virtual-network/)してください。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet ピアリングのトラフィックは暗号化されますか。
-いいえ。 ピアリングされた VNet のリソース間のトラフィックはプライベートで分離されています。 マイクロソフトのバックボーンに完全に残ります。
+Azure のトラフィックが (Microsoft または Microsoft の代理によって制御されていない、物理的な境界の外部で) データセンター間を移動する場合、基盤となるネットワーク ハードウェア上では [MACsec データリンク層の暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)が使用されます。  これは、VNet ピアリング トラフィックに適用されます。
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>ピアリング接続が "*切断*" 状態にあるのはなぜですか。
-1 つの VNet ピアリング リンクが削除されると、VNet ピアリングは*切断*状態になります。 ピアリング接続を再度確立するには、両方のリンクを削除する必要があります。
+1 つの VNet ピアリング リンクが削除されると、VNet ピアリングは *切断* 状態になります。 ピアリング接続を再度確立するには、両方のリンクを削除する必要があります。
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>VNetA から VNetB にピアリングし、VNetB から VNetC にピアリングすると、VNetA と VNetC がピアリングされたことになりますか。
 いいえ。 推移的なピアリングはサポートされません。 VNetA と VNetC をピアリングする必要があります。
@@ -327,7 +332,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 1. Azure サービスに対するサービス エンドポイントを有効にします。
 2. Azure サービスで VNet ACL を設定します。
 
-最初のステップはネットワーク側の操作であり、2 番目のステップはサービス リソース側の操作です。 どちらのステップも、管理者ロールに付与されている RBAC のアクセス許可に基づいて、同じ管理者または異なる管理者が実行できます。 Azure サービス側で VNet ACL をセットアップする前に、まず仮想ネットワークに対してサービス エンドポイントを有効にすることをお勧めします。 そのためには、上で示した順序で手順を実行し、VNet サービス エンドポイントを設定する必要があります。
+最初のステップはネットワーク側の操作であり、2 番目のステップはサービス リソース側の操作です。 どちらのステップも、管理者ロールに付与されている Azure RBAC のアクセス許可に基づいて、同じ管理者または異なる管理者が実行できます。 Azure サービス側で VNet ACL をセットアップする前に、まず仮想ネットワークに対してサービス エンドポイントを有効にすることをお勧めします。 そのためには、上で示した順序で手順を実行し、VNet サービス エンドポイントを設定する必要があります。
 
 >[!NOTE]
 > 上で説明されているどちらの操作も、許可される VNet とサブネットに Azure サービスへのアクセスを制限する前に、完了する必要があります。 ネットワーク側で Azure サービスに対してサービス エンドポイントを有効にするだけでは、制限付きアクセスは提供されません。 さらに、Azure サービス側で VNet ACL も設定する必要があります。
@@ -410,7 +415,7 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 |---|---|
 |Azure Storage| 100|
 |Azure SQL| 128|
-|Azure SQL Data Warehouse|  128|
+|Azure Synapse Analytics|   128|
 |Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|

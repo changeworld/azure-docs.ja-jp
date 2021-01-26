@@ -3,20 +3,20 @@ title: Azure Data Factory でのタンブリング ウィンドウ トリガー�
 description: タンブリング ウィンドウでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 10/25/2020
+ms.openlocfilehash: 4c40d394e48cb0cd8bc02ef7b37e7ed2b27e13c4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996688"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511554"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "83996688"
 
 タンブリング ウィンドウには、次のトリガーの種類のプロパティがあります。
 
-```
+```json
 {
     "name": "MyTriggerName",
     "properties": {
@@ -47,7 +47,7 @@ ms.locfileid: "83996688"
             "frequency": <<Minute/Hour>>,
             "interval": <<int>>,
             "startTime": "<<datetime>>",
-            "endTime: <<datetime – optional>>,
+            "endTime": <<datetime – optional>>,
             "delay": <<timespan – optional>>,
             "maxConcurrency": <<int>> (required, max allowed: 50),
             "retryPolicy": {
@@ -115,9 +115,9 @@ ms.locfileid: "83996688"
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart および WindowEnd システム変数
 
-**パイプライン**定義 (つまり、クエリの一部) で、タンブリング ウィンドウ トリガーの **WindowStart** および **WindowEnd** システム変数を使用できます。 システム変数は、**トリガー**定義でパイプラインにパラメーターとして渡します。 次の例は、これらの変数をパラメーターとして渡す方法を示しています。
+**パイプライン** 定義 (つまり、クエリの一部) で、タンブリング ウィンドウ トリガーの **WindowStart** および **WindowEnd** システム変数を使用できます。 システム変数は、**トリガー** 定義でパイプラインにパラメーターとして渡します。 次の例は、これらの変数をパラメーターとして渡す方法を示しています。
 
-```
+```json
 {
     "name": "MyTriggerName",
     "properties": {
@@ -147,14 +147,14 @@ ms.locfileid: "83996688"
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>バックフィル シナリオでのウィンドウの実行順序
 
-トリガーの startTime が過去の場合、M=(CurrentTime- TriggerStartTime)/TriggerSliceSize という数式に基づき、トリガーはトリガーのコンカレンシーを考慮して、{M} 回のバックフィル (過去分) の実行を並行して生成してから、今後の実行を行います。 ウィンドウの実行順序は、最も古い間隔から最も新しい間隔までの間で決定論的となります。 現時点では、この動作を変更することはできません。
+トリガーの startTime が過去の場合、M=(CurrentTime- TriggerStartTime)/TumblingWindowSize という数式に基づき、トリガーはトリガーのコンカレンシーを考慮して、{M} 回のバックフィル (過去分) の実行を並行して生成してから、今後の実行を行います。 ウィンドウの実行順序は、最も古い間隔から最も新しい間隔までの間で決定論的となります。 現時点では、この動作を変更することはできません。
 
 ### <a name="existing-triggerresource-elements"></a>既存の TriggerResource 要素
 
 既存の **TriggerResource** 要素の更新には、次の点が適用されます。
 
-* トリガーが作成されると、トリガーの**頻度**要素 (またはウィンドウ サイズ) と**間隔**要素の値を変更することはできません。 このことは triggerRun の再実行と依存関係の評価を適切に機能させるために必要です
-* トリガーの **endTime** 要素の値が変更 (追加または更新) されても、既に処理されたウィンドウの状態はリセット*されません*。 トリガーは新しい **endTime** 値に従います。 新しい **endTime** 値が既に実行されたウィンドウよりも前の場合、トリガーは停止します。 それ以外の場合は、新しい **endTime** 値に達すると、トリガーは停止します。
+* トリガーが作成されると、トリガーの **頻度** 要素 (またはウィンドウ サイズ) と **間隔** 要素の値を変更することはできません。 このことは triggerRun の再実行と依存関係の評価を適切に機能させるために必要です
+* トリガーの **endTime** 要素の値が変更 (追加または更新) されても、既に処理されたウィンドウの状態はリセット *されません*。 トリガーは新しい **endTime** 値に従います。 新しい **endTime** 値が既に実行されたウィンドウよりも前の場合、トリガーは停止します。 それ以外の場合は、新しい **endTime** 値に達すると、トリガーは停止します。
 
 ### <a name="user-assigned-retries-of-pipelines"></a>ユーザー割り当てのパイプラインの再試行
 
@@ -162,7 +162,20 @@ ms.locfileid: "83996688"
 
 ### <a name="tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係
 
-データ ファクトリ内の別のタンブリング ウィンドウ トリガーの実行が成功した後でのみ、タンブリング ウィンドウ トリガーが実行されることを確認する場合は、[タンブリング ウィンドウ トリガーの依存関係を作成](tumbling-window-trigger-dependency.md)します。 
+データ ファクトリ内の別のタンブリング ウィンドウ トリガーの実行が成功した後でのみ、タンブリング ウィンドウ トリガーが実行されることを確認する場合は、[タンブリング ウィンドウ トリガーの依存関係を作成](tumbling-window-trigger-dependency.md)します。
+
+### <a name="cancel-tumbling-window-run"></a>タンブリング ウィンドウの実行のキャンセル
+
+タンブリング ウィンドウ トリガーの実行をキャンセルできるのは、特定のウィンドウが _待機中_、_依存関係の待機中_、または _実行中_ 状態である場合です
+
+* ウィンドウが **実行中** 状態である場合は、関連付けられている _パイプラインの実行_ をキャンセルすると、その後のトリガーの実行が _キャンセル済み_ とマークされます
+* ウィンドウが **待機中** または **依存関係の待機中** 状態の場合は、ウィンドウの監視をキャンセルできます。
+
+![[監視] ページからタンブリング ウィンドウ トリガーをキャンセルする](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+
+キャンセルされたウィンドウを再実行することもできます。 再実行すると _最新の_ パブリッシュされたトリガーの定義が取得され、指定したウィンドウの依存関係が再実行時に _再評価されます_
+
+![以前にキャンセルされた実行に対してタンブリング ウィンドウ トリガーを再実行する](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
 
 ## <a name="sample-for-azure-powershell"></a>Azure PowerShell のサンプル
 

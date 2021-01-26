@@ -2,7 +2,6 @@
 title: LUIS アプリのテスト
 titleSuffix: Azure Cognitive Services
 description: テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.custom: seodec18
@@ -10,19 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73486687"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535850"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
 テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。 
 
-LUIS で、対話的に一度に 1 つずつ発話をテストすることも、発話のバッチを提供することもできます。 テスト中に、現在のアクティブ モデルの予測応答と、発行済みのモデルの予測応答を比較できます。 
+LUIS で、対話形式で一度に 1 つずつ発話をテストすることも、発話のセットを提供することもできます。 テスト中に、現在のアクティブ モデルの予測応答と、発行済みのモデルの予測応答を比較できます。 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>

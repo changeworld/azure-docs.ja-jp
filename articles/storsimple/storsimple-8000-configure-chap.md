@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5f0c022de69823aedbbb34eb369de350b4999c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514359"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91766507"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 
@@ -58,7 +58,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
    
    3. パスワードを確認入力します。
 
-       ![[CHAP イニシエーター]](./media/storsimple-8000-configure-chap/configure-chap6.png)
+       ![CHAP イニシエーター 2](./media/storsimple-8000-configure-chap/configure-chap6.png)
 3. **[保存]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで一方向認証を構成するには
@@ -112,7 +112,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
    2. デバイスの **[パスワード]** を指定します。
    3. パスワードを確認入力します。
 
-       ![[CHAP イニシエーター]](./media/storsimple-8000-configure-chap/configure-chap11.png)
+       ![CHAP イニシエーター 3](./media/storsimple-8000-configure-chap/configure-chap11.png)
 4. **[保存]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで双方向認証を構成するには

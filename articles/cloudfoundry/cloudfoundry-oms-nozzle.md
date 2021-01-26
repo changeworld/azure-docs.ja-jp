@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277353"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021590"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -67,7 +67,7 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
    * **[場所]** :場所を入力します。
    * **価格レベル**:完了するには **[OK]** を選択します。
 
-詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)に関するページを参照してください
+詳細については、[Azure Monitor ログの使用](../azure-monitor/overview.md)に関するページを参照してください
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Azure Marketplace の監視テンプレートを使用して Log Analytics ワークスペースを作成するには:
 
@@ -191,7 +191,7 @@ OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**
 
 ### <a name="2-create-alert-rules"></a>2.アラート ルールの作成
 
-[アラートを作成](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)して、必要に応じてクエリとしきい値をカスタマイズできます。 次のアラートが推奨されます。
+[アラートを作成](../azure-monitor/platform/alerts-overview.md)して、必要に応じてクエリとしきい値をカスタマイズできます。 次のアラートが推奨されます。
 
 | Search query (検索クエリ)                                                                  | 基づくアラートの生成 | 説明                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

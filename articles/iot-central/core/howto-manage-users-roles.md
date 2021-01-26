@@ -8,24 +8,24 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365505"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122979"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central アプリケーションでユーザーとロールを管理する
 
 この記事では、管理者として Azure IoT Central アプリケーションでユーザーを追加、編集、および削除する方法について説明します。 この記事では、Azure IoT Central アプリケーションでロールを管理する方法についても説明します。
 
-**[Administration] (管理)** セクションにアクセスして使用するには、Azure IoT Central アプリケーションの**管理者**ロールが必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの**管理者**ロールに追加されます。
+**[Administration] (管理)** セクションにアクセスして使用するには、Azure IoT Central アプリケーションの **管理者** ロールが必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの **管理者** ロールに追加されます。
 
 ## <a name="add-users"></a>Add users
 
 ユーザーが Azure IoT Central アプリケーションにサインインしてアクセスするには、ユーザー アカウントが必要です。 Azure IoT Central では、Microsoft アカウントと Azure Active Directory アカウントがサポートされています。 Azure Active Directory グループは 現在 Azure IoT Central でサポートされていません。
 
-詳細は、「[Microsoft アカウントのヘルプ](https://support.microsoft.com/products/microsoft-account?category=manage-account)」と「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)」を参照してください。
+詳細は、「[Microsoft アカウントのヘルプ](https://support.microsoft.com/products/microsoft-account?category=manage-account)」と「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../../active-directory/fundamentals/add-users-azure-active-directory.md)」を参照してください。
 
 1. IoT Central アプリケーションにユーザーを追加するには、 **[管理]** セクションの **[ユーザー]** ページに移動します。
     
@@ -34,7 +34,7 @@ ms.locfileid: "80365505"
 
 1. **[Users] (ユーザー)** ページで、 **[+ Add user] (+ ユーザーの追加)** を選択してユーザーを追加します。
 
-1. **ロール**ドロップダウン メニューからユーザーに対するロールを選択します。 ロールの詳細については、この記事の「[ロールの管理](#manage-roles)」セクションを参照してください。
+1. **ロール** ドロップダウン メニューからユーザーに対するロールを選択します。 ロールの詳細については、この記事の「[ロールの管理](#manage-roles)」セクションを参照してください。
 
     > [!div class="mx-imgBorder"]
     >![ユーザーの追加とロールの選択](media/howto-manage-users-roles/add-user-pnp.png)
@@ -53,7 +53,7 @@ IoT Central ユーザー ID を Azure Active Directory から削除し、後か�
 
 ## <a name="delete-users"></a>ユーザーを削除する
 
-ユーザーを削除するには、**ユーザー**ページで 1 つまたは複数のチェック ボックスを選択します｡ 次に、 **[削除]** を選択します。
+ユーザーを削除するには、**ユーザー** ページで 1 つまたは複数のチェック ボックスを選択します｡ 次に、 **[削除]** を選択します。
 
 ## <a name="manage-roles"></a>ロールの管理
 
@@ -64,13 +64,13 @@ IoT Central ユーザー ID を Azure Active Directory から削除し、後か�
 
 ### <a name="administrator"></a>管理者
 
-**管理者**ロールのユーザーは、課金を含め、アプリケーションのすべての部分を管理および制御できます。
+**管理者** ロールのユーザーは、課金を含め、アプリケーションのすべての部分を管理および制御できます。
 
-アプリケーションを作成したユーザーは、自動的に**管理者**ロールに割り当てられます。 **管理者**ロールには、少なくとも 1 人のユーザーが常に存在している必要があります。
+アプリケーションを作成したユーザーは、自動的に **管理者** ロールに割り当てられます。 **管理者** ロールには、少なくとも 1 人のユーザーが常に存在している必要があります。
 
 ### <a name="builder"></a>開発者
 
-**開発者**ロールのユーザーは、アプリのすべての部分を管理できますが、[管理] タブまたは [継続的データ エクスポート] タブで変更を加えることはできません。
+**開発者** ロールのユーザーは、アプリのすべての部分を管理できますが、[管理] タブまたは [継続的データ エクスポート] タブで変更を加えることはできません。
 
 ### <a name="operator"></a>オペレーター
 

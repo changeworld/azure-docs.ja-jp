@@ -3,166 +3,151 @@ title: 検索インデックス上でのクエリ拡張のシノニム
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search インデックス上での検索クエリの範囲を拡張するシノニム マップを作成します。 一覧で指定した同等の語句を含むように範囲が拡大されます。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dce3c484a16918931df80d5201fad090b2c0cb2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 12/18/2020
+ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922635"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732089"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
-検索エンジンのシノニムは、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを暗黙的に拡張する同等の用語を関連付けます。 たとえば、用語 "dog" と、"canine" と "puppy" のシノニムの関連付けを指定すると、"dog"、"canine"、または "puppy" を含むすべてのドキュメントがクエリのスコープ内に収まります。
-
-Azure Cognitive Search では、シノニムの拡張は、クエリ時に行われます。 既存の処理を停止させることなく、シノニム マップをサービスに追加できます。 インデックスを再構築する必要なく、**synonymMaps** プロパティをフィールド定義に追加できます。
+シノニム マップを使用すると、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを拡張する同等の用語を関連付けられます。 たとえば、"dog"、"canine"、"puppy" がシノニムであると仮定すると、"canine" に対するクエリは "dog" を含むドキュメントで一致します。
 
 ## <a name="create-synonyms"></a>シノニムを作成する
 
-シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-get-started-postman.md)と、[シノニム マップの作成](/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Cognitive Search へのシノニムの追加](search-synonyms-tutorial-sdk.md)に関するページから始めることができます。
+シノニム マップは、一度作成すると多数のインデックスで使用できるアセットです。 [サービス レベル](search-limits-quotas-capacity.md#synonym-limits)によって作成できるシノニム マップの数が決まります。これは、Free レベルおよび Basic レベルの 3 つから、Standard レベルの 20 個のシノニム マップにまで及びます。 
 
-サービス側の暗号化の保存で[顧客管理のキー](search-security-manage-encryption-keys.md)を使用している場合は、その保護をシノニム マップのコンテンツに適用することもできます。
+英語版やフランス語版など、言語によって別々のシノニム マップを複数作成したり、コンテンツに技術用語やあいまいな用語が含まれている場合は、辞書を作成したりすることができます。 複数のシノニム マップを作成できますが、現在のところ、フィールドで使用できるのはそのうちの 1 つだけです。
 
-## <a name="use-synonyms"></a>同義語を使用する
+シノニム マップは、シノニム マップ エントリとして機能する名前、形式、および規則で構成されます。 サポートされている形式は `solr` のみで、`solr` 形式によってルールの構成が決まります。
 
-Azure Cognitive Search でのシノニムのサポートは、定義してサービスにアップロードされるシノニム マップに基づいています。 これらのマップは独立したリソース (インデックスやデータ ソースなど) を構成し、検索サービスで、任意のインデックスの任意の検索可能フィールドで使用できます。
-
-シノニム マップとインデックスは独立して保持されます。 シノニム マップを定義して、サービスにアップロードしたら、フィールド定義に **synonymMaps** という新しいプロパティを追加することによって、フィールドでシノニム機能を有効にできます。 シノニム マップの作成、更新、および削除は、常にドキュメント全体の操作になります。つまり、シノニム マップの一部を段階的に作成、更新、または削除することはできません。 1 つのエントリの更新でも、再読み込みが必要になります。
-
-検索アプリケーションにシノニムを組み込むことは、2 段階のプロセスです。
-
-1.  次の API によって、検索サービスにシノニム マップを追加します。  
-
-2.  インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
-
-検索アプリケーションでは、複数のシノニム マップを作成できます (アプリケーションで多言語の顧客ベースをサポートしている場合に言語別など)。 現在、フィールドではそれらのうちの 1 つしか使用できません。 フィールドの synonymMaps プロパティは、いつでも更新できます。
-
-### <a name="synonymmaps-resource-apis"></a>SynonymMaps リソース API
-
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>POST または PUT を使用して、サービスでシノニム マップを追加または更新します。
-
-シノニム マップは、POST または PUT を使用してサービスにアップロードします。 各規則は、改行文字 ('\n') で区切る必要があります。 無料サービスでシノニム マップあたり最大 5,000 規則、およびその他のすべての SKU でマップあたり 20,000 規則を定義できます。 各規則には、最大 20 個の拡張を設定できます。
-
-シノニム マップは、次に説明する Apache Solr 形式である必要があります。 別の形式の既存のシノニム辞書があり、それを直接使用する場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
-
-次の例のように、HTTP POST を使用して、新しいシノニム マップを作成できます。
-
-```synonym-map
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
-    api-key: [admin key]
-
-    {
-       "name":"mysynonymmap",
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
+```http
+POST /synonymmaps?api-version=2020-06-30
+{
+    "name": "geo-synonyms",
+    "format": "solr",
+    "synonyms": "
+        USA, United States, United States of America\n
+        Washington, Wash., WA => WA\n"
+}
 ```
 
-または、PUT を使用し、URI にシノニム マップ名を指定できます。 シノニム マップが存在しない場合、作成されます。
+シノニム マップを作成するには、「[シノニム マップの作成 (REST API)](/rest/api/searchservice/create-synonym-map)」または Azure SDK を使用します。 C# 開発者には、「[C# で Azure Cognitive Search にシノニムを追加する](search-synonyms-tutorial-sdk.md)」から始めることをお勧めします。
 
-```synonym-map
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+## <a name="define-rules"></a>ルールを定義する
 
-    {
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
+マッピング規則は、このドキュメントで説明している Apache Solr のオープンソース シノニム フィルター仕様[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter) に従います。`solr` 形式では、次の 2 種類の規則がサポートされています。
+
++ 同義性 (用語はクエリで同等の代用語になります)
+
++ 明示的なマッピング (クエリ前に用語は 1 つの明示的な用語にマップされます)
+
+各規則は、改行文字 (`\n`) で区切る必要があります。 無料サービスでシノニム マップあたり最大 5,000 個の規則、その他のレベルでマップあたり最大 20,000 個の規則を定義できます。 各規則には、最大 20 個の拡張 (つまり規則内の項目) を設定できます。 詳細については、「[シノニムの制限](search-limits-quotas-capacity.md#synonym-limits)」をご覧ください。
+
+クエリ パーサーでは大文字の用語や大文字と小文字が混在した用語は小文字に変換されますが、コンマやダッシュなどの特殊文字を文字列で保持する場合は、シノニム マップの作成時に適切なエスケープ文字を追加します。 
+
+### <a name="equivalency-rules"></a>同義性規則
+
+同義語の規則は、同じ規則内でコンマで区切られます。 最初の例では、`USA` に対するクエリが `USA`、`"United States"`、または `"United States of America"` に拡張されます。 句で一致させる場合は、クエリ自体を引用符で囲まれた句のクエリにする必要があることに注意してください。
+
+同義性の場合、`dog` のクエリは、`puppy` や `canine` も含めるようにクエリを拡張します。
+
+```json
+{
+"format": "solr",
+"synonyms": "
+    USA, United States, United States of America\n
+    dog, puppy, canine\n
+    coffee, latte, cup of joe, java\n"
+}
 ```
 
-##### <a name="apache-solr-synonym-format"></a>Apache Solr シノニム形式
+### <a name="explicit-mapping"></a>明示的なマッピング
 
-Solr 形式は同等の明示的なシノニム マッピングをサポートします。 マッピング規則は、このドキュメントで説明している Apache Solr のオープンソース シノニム フィルター仕様[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter) に準拠しています。 同等のシノニムのサンプル規則を以下に示します。
+明示的なマッピングの規則は、矢印 `=>` によって示されます。 指定した場合、`=>` の左側に一致する検索クエリの用語のシーケンスが、クエリ時に右側の代替語で置き換えられます。
 
-```
-USA, United States, United States of America
-```
+明示的な場合、`Washington`、`Wash.`、または `WA` に対するクエリは `WA` に書き換えられ、クエリ エンジンは `WA` の用語でのみ一致を検索します。 明示的なマッピングは指定した方向でのみ適用され、この例では、クエリ `WA` が `Washington` に書き換えられることはありません。
 
-上の規則では、検索クエリ "USA" が "USA" または "United States" または "United States of America" に拡張されます。
-
-明示的なマッピングは、"=>" 矢印で示します。 指定した場合、"=>" の左側に一致する検索クエリの用語のシーケンスが、右側の代替で置き換えられます。 次の規則を指定した場合、検索クエリ "Washington"、"Wash."、 または "WA" はすべて "WA" に書き換えられます。 明示的なマッピングは指定した方向でのみ適用され、この例では、クエリ "WA" が "Washington" に書き換えられることはありません。
-
-```
-Washington, Wash., WA => WA
-```
-
-#### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。
-
-```synonym-map
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
-    api-key: [admin key]
+```json
+{
+"format": "solr",
+"synonyms": "
+    Washington, Wash., WA => WA\n
+    California, Calif., CA => CA\n"
+}
 ```
 
-#### <a name="get-a-synonym-map-under-your-service"></a>サービスのシノニム マップを取得します。
+### <a name="escaping-special-characters"></a>特殊文字のエスケープ
 
-```synonym-map
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+コンマや他の特殊文字を含むシノニムを定義する必要がある場合は、次の例のように円記号でエスケープできます。
+
+```json
+{
+"format": "solr",
+"synonyms": "WA\, USA, WA, Washington\n"
+}
 ```
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>サービスのシノニム マップを削除します。
+JSON や C# などの他の言語では、円記号自体が特殊文字であるため、通常、二重にエスケープする必要があります。 たとえば、上記のシノニム マップに対して REST API に送信される JSON は、次のようになります。
 
-```synonym-map
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+```json
+{
+"format":"solr",
+"synonyms": "WA\\, USA, WA, Washington"
+}
 ```
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
+## <a name="upload-and-manage-synonym-maps"></a>シノニム マップをアップロードして管理する
 
-新しいフィールド プロパティ **synonymMaps** を使用して、検索可能フィールドに使用するシノニム マップを指定できます。 シノニム マップは、サービス レベル リソースであり、そのサービスに属するインデックスの任意のフィールドによって参照できます。
+前述のように、クエリおよびインデックス作成ワークロードを中断せずにシノニム マップを作成または更新することができます。 シノニム マップはスタンドアロン オブジェクト (インデックスやデータ ソースなど) であり、これを使用しているフィールドがない限り、更新によってインデックス作成やクエリが失敗することはありません。 ただし、シノニム マップをフィールド定義に追加した後でシノニム マップを削除すると、該当するフィールドを含むクエリが 404 エラーで失敗します。
 
-```synonym-map
-    POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
-    api-key: [admin key]
+シノニム マップの作成、更新、および削除は、常にドキュメント全体の操作になります。つまり、シノニム マップの一部を段階的に更新または削除することはできません。 1 つの規則の更新でも、再読み込みが必要になります。
 
-    {
-       "name":"myindex",
-       "fields":[
-          {
-             "name":"id",
-             "type":"Edm.String",
-             "key":true
-          },
-          {
-             "name":"name",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"en.lucene",
-             "synonymMaps":[
-                "mysynonymmap"
-             ]
-          },
-          {
-             "name":"name_jp",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"ja.microsoft",
-             "synonymMaps":[
-                "japanesesynonymmap"
-             ]
-          }
-       ]
-    }
+## <a name="assign-synonyms-to-fields"></a>フィールドにシノニムを割り当てる
+
+シノニム マップをアップロードした後、`"searchable":true` を含むフィールドで `Edm.String` または `Collection(Edm.String)` 型のフィールドに対してシノニムを有効にすることができます。 前述のように、フィールド定義で使用できるシノニム マップは 1 つだけです。
+
+```http
+POST /indexes?api-version=2020-06-30
+{
+    "name":"hotels-sample-index",
+    "fields":[
+        {
+            "name":"description",
+            "type":"Edm.String",
+            "searchable":true,
+            "synonymMaps":[
+            "en-synonyms"
+            ]
+        },
+        {
+            "name":"description_fr",
+            "type":"Edm.String",
+            "searchable":true,
+            "analyzer":"fr.microsoft",
+            "synonymMaps":[
+            "fr-synonyms"
+            ]
+        }
+    ]
+}
 ```
 
-**synonymMaps** は型 'Edm.String' または 'Collection(Edm.String)' の検索可能フィールドに指定できます。
+## <a name="query-on-equivalent-or-mapped-fields"></a>同義またはマップされたフィールドに対するクエリ
 
-> [!NOTE]
-> フィールドあたり 1 つのシノニム マップのみを指定できます。 複数のシノニム マップを使用する必要がある場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
+シノニムを追加しても、新しい要件はクエリ構造に適用されません。 シノニムの追加前と同じようにして、用語と語句のクエリを発行できます。 唯一の違いは、シノニム マップにクエリ用語が存在する場合、クエリ エンジンは規則に応じて、用語または句を拡張したり、書き換えたりするという点です。
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>他の検索機能へのシノニムの影響
+## <a name="how-synonyms-interact-with-other-features"></a>シノニムと他の機能との対話方法
 
 シノニム機能は、OR 演算子によって元のクエリをシノニムに書き換えます。 このため、検索結果の強調表示とスコアリング プロファイルは元の用語とシノニムを同等として処理します。
 
-シノニム機能は、検索クエリに適用され、フィルターやファセットには適用されません。 同様に、検索候補は元の用語にのみ基づき、シノニムの一致は応答に示されません。
+シノニムはクエリの検索にのみ適用され、フィルター、ファセット、オートコンプリート、または提案ではサポートされません。 オートコンプリートと提案は、元の用語にのみ基づき、シノニムの一致は応答に示されません。
 
 シノニムの拡張は、ワイルドカード検索語句には適用されません。プレフィックス、あいまい検索、および正規表現語句は拡張されません。
 
@@ -173,4 +158,4 @@ Washington, Wash., WA => WA
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [シノニム マップの作成](/rest/api/searchservice/create-synonym-map)
+> [シノニム マップの作成 (REST API)](/rest/api/searchservice/create-synonym-map)

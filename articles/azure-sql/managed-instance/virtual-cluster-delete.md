@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, carlrab, sstein
+ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 87e73ed25ac33777c19c561223f0361d589282b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697002"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791666"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>SQL Managed Instance のマネージド インスタンスの削除後にサブネットを削除する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84697002"
 
 > [!IMPORTANT]
 > - 仮想クラスターを正常に削除するためには、その仮想クラスターにマネージド インスタンスが存在していないことが必要です。 
-> - 仮想クラスターの削除は、約 1.5 時間続く実行時間の長い操作です (最も新しい仮想クラスターの削除時間については、「[マネージド インスタンスの管理操作](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)」を参照してください)。 このプロセスが完了するまで、仮想クラスターはポータル上に引き続き表示されます。
+> - 仮想クラスターの削除は、約 1.5 時間続く実行時間の長い操作です (最も新しい仮想クラスターの削除時間については、「[マネージド インスタンスの管理操作](./sql-managed-instance-paas-overview.md#management-operations)」を参照してください)。 このプロセスが完了するまで、仮想クラスターはポータル上に引き続き表示されます。
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>Azure portal から仮想クラスターを削除する
 
@@ -48,7 +48,7 @@ Azure portal の通知によって、仮想クラスターの削除要求が正�
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>API を使用して仮想クラスターを削除する
 
-API を使用して仮想クラスターを削除するには、[仮想クラスターの削除メソッド](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)に関するページに記載されている URI パラメーターを使用します。
+API を使用して仮想クラスターを削除するには、[仮想クラスターの削除メソッド](/rest/api/sql/virtualclusters/delete)に関するページに記載されている URI パラメーターを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

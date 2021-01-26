@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 016b8bf010f597e963e0901d1ec48486f79bbb35
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931473"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913128"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -35,10 +35,11 @@ _recognition_03_ モデル (2020 年公開) は、現在使用できる最も正
 
 ## <a name="prerequisites"></a>前提条件
 
-AI による顔の検出と識別の概念を理解している必要があります。 そうでない場合は、まず以下の方法ガイドを参照してください。
+AI による顔の検出と識別の概念を理解している必要があります。 そうでない場合は、まずこれらのガイドを参照してください。
 
+* [顔検出の概念](../concepts/face-detection.md)
+* [顔認識の概念](../concepts/face-recognition.md)
 * [画像内の顔を検出する方法](HowtoDetectFacesinImage.md)
-* [画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>指定されたモデルで顔を検出する
 
@@ -52,7 +53,7 @@ AI による顔の検出と識別の概念を理解している必要があり�
 * recognition_03
 
 
-必要に応じて、_returnRecognitionModel_ パラメーター (既定値は **false**) を指定し、_recognitionModel_ が応答で返されるかどうかを指定できます。 したがって、[Face - Detect] REST API の要求 URL は次のようになります。
+必要に応じて、 _returnRecognitionModel_ パラメーター (既定値は **false** ) を指定し、 _recognitionModel_ が応答で返されるかどうかを指定できます。 したがって、[Face - Detect] REST API の要求 URL は次のようになります。
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
@@ -65,9 +66,9 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>指定されたモデルで顔を識別する
 
-Face サービスは画像から顔データを抽出し、([Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、[Face - Identify] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます
+Face サービスは画像から顔データを抽出し、( [Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、 [Face - Identify] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます
 
-**PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する ([PersonGroup - Create] または [LargePersonGroup - Create]) ときに `recognitionModel` パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [PersonGroup - Get] API を使用します。
+**PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する ( [PersonGroup - Create] または [LargePersonGroup - Create]) ときに `recognitionModel` パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、 _returnRecognitionModel_ パラメーターを **true** に設定して [PersonGroup - Get] API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -77,15 +78,15 @@ string personGroupId = "mypersongroupid";
 await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
-このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、_recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
+このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、 _recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
 
-それに対応して、顔検出時に ([Face - Detect] API によって) この **PersonGroup** と比較するために使用するモデルを指定する必要があります。 使用するモデルは常に **PersonGroup** の設定と一致している必要があります。していない場合、互換性のないモデルが原因で操作が失敗します。
+それに対応して、顔検出時に ( [Face - Detect] API によって) この **PersonGroup** と比較するために使用するモデルを指定する必要があります。 使用するモデルは常に **PersonGroup** の設定と一致している必要があります。していない場合、互換性のないモデルが原因で操作が失敗します。
 
 [Face - Identify] API に変更はありません。検出でモデルのバージョンを指定することだけが必要です。
 
 ## <a name="find-similar-faces-with-specified-model"></a>指定されたモデルで似た顔を検索する
 
-類似検索のための認識モデルも指定できます。 [FaceList - Create] または [LargeFaceList - Create] で顔のリストを作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、既定では `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
+類似検索のための認識モデルも指定できます。 [FaceList - Create] または [LargeFaceList - Create] で顔のリストを作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、既定では `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、 _returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -93,7 +94,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 ```
 
-このコードは、特徴抽出のための _recognition_03_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_03_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
+このコードは、特徴抽出のための _recognition_03_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_03_ モデルを使用して検出 ( [Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
 
 [Face - Find Similar] API に変更はありません。検出でモデルのバージョンを指定するだけです。
 
@@ -104,7 +105,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 ## <a name="evaluate-different-models"></a>さまざまなモデルを評価する
 
 独自のデータに対してさまざまな認識モデルのパフォーマンスを比較したい場合は、次の手順を実行する必要があります。
-1. _recognition_01_、_recognition_02_、_recognition_03_ をそれぞれ使用して、3 つの PersonGroup を作成します。
+1. _recognition_01_ 、 _recognition_02_ 、 _recognition_03_ をそれぞれ使用して、3 つの PersonGroup を作成します。
 1. 画像データを使用して顔を検出し、これらの 3 つの **PersonGroup** 内の **Person** に登録します。 
 1. PersonGroup - Train API を使用して PersonGroup をトレーニングします。
 1. 3 つすべての **PersonGroup** に対して Face - Identify でテストを実行し、結果を比較します。
@@ -116,9 +117,9 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
 
-* [Face .NET SDK](../Quickstarts/csharp-sdk.md)
-* [Face Python SDK](../Quickstarts/python-sdk.md)
-* [Face Go SDK](../Quickstarts/go-sdk.md)
+* [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Face Go SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

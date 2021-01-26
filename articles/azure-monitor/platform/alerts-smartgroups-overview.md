@@ -4,12 +4,12 @@ description: スマート グループは、アラートのノイズを減らす
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665495"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186611"
 ---
 # <a name="smart-groups"></a>スマート グループ
 
@@ -23,7 +23,7 @@ ms.locfileid: "77665495"
 
 ## <a name="smart-group-state"></a>スマート グループの状態
 
-スマート グループの状態はアラートの状態と似た概念であり、スマート グループのレベルで解決プロセスを管理することができます。 アラートの状態と同様に、スマート グループが作成されると、**新規**状態になり、**確認済み**または**解決済み**に変更することができます。
+スマート グループの状態はアラートの状態と似た概念であり、スマート グループのレベルで解決プロセスを管理することができます。 アラートの状態と同様に、スマート グループが作成されると、**新規** 状態になり、**確認済み** または **解決済み** に変更することができます。
 
 次のスマート グループの状態がサポートされます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77665495"
 | [Acknowledged] (確認済み) | 管理者がスマート グループを確認し、それに対する作業を開始しました。 |
 | クローズ | 問題が解決されました。 スマート グループが解決した後に、再び開いて別の状態に変更することもできます。 |
 
-[スマート グループの状態を変更する方法についてはこちらを参照してください](https://aka.ms/managing-alert-smart-group-states)。
+[スマート グループの状態を変更する方法についてはこちらを参照してください](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 > [!NOTE]
 >  スマート グループの状態を変更しても、個々のメンバーのアラートの状態は変更されません。
@@ -58,7 +58,5 @@ ms.locfileid: "77665495"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [スマート グループを管理する](https://aka.ms/managing-smart-groups)
-- [アラートとスマート グループの状態を変更する](https://aka.ms/managing-alert-smart-group-states)
-
-
+- [スマート グループを管理する](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [アラートとスマート グループの状態を変更する](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)

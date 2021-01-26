@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory テナントを作成する
-description: アプリケーションを登録および構築するために使用する Azure AD テナントを作成する方法について説明します。
+title: クイックスタート:Azure Active Directory テナントを作成する
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、認証と認可に Microsoft ID プラットフォームを使用するアプリケーションの開発に使用する Azure Active Directory テナントを作成する方法について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120815"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012021"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -26,6 +27,10 @@ Microsoft ID プラットフォームでは、開発者がさまざまなカス�
 テナントは、組織を表したものです。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。
 
 Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分離されていて、職場や学校の ID、コンシューマー ID (Azure AD B2C テナントの場合)、およびアプリの登録の独自の表現があります。 テナント内部のアプリの登録では、自分のテナント内のみ、またはすべてのテナント内のアカウントからの認証を許可できます。
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="determining-environment-type"></a>環境の種類の決定
 
@@ -42,7 +47,7 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 
 多くの開発者は、Azure AD テナントに関連付けられたサービスまたはサブスクリプション (Microsoft 365 や Azure サブスクリプションなど) を通じてテナントを既に持っています。
 
-1. テナントを確認するには、アプリケーションの管理に使用したいアカウントで [Azure portal](https://portal.azure.com)にサインインします。
+1. テナントを確認するには、アプリケーションの管理に使用するアカウントで <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 右上隅を確認します。 テナントがある場合、自動的にそのテナントにログインされ、アカウント名のすぐ下でテナント名を確認できます。
    * Azure portal の右上のアカウント名をポイントすると、名前、電子メール、ディレクトリ/テナント ID (GUID)、ドメインが表示されます。
    * アカウントが複数のテナントに関連付けられている場合は、アカウント名を選択してメニューを開き、そこでテナントを切り替えることができます。 各テナントには独自の ID があります。
@@ -50,7 +55,7 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 > [!TIP]
 > テナント ID を調べる必要がある場合は、次の操作を実行できます。
 > * アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
-> * Azure portal で、 **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
+> * Azure portal で **[Azure Active Directory] を検索し、[プロパティ] > [テナント ID]** を選択します
 
 アカウントに関連付けられた既存のテナントがない場合は、アカウント名の下に GUID が表示されます。次のセクションの手順に従うまで、アプリの登録などのアクションは実行できません。
 
@@ -71,6 +76,5 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アプリを登録](quickstart-register-app.md)し、Microsoft ID プラットフォームと統合します。 
-* [認証の基本](./authentication-vs-authorization.md)について説明します。
-* サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+> [!div class="nextstepaction"]
+> Microsoft ID プラットフォームと統合する[アプリを登録](quickstart-register-app.md)します。

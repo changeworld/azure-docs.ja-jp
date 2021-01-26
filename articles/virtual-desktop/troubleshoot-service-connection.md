@@ -1,22 +1,22 @@
 ---
 title: Windows Virtual Desktop サービスの接続に関するトラブルシューティング - Azure
-description: Windows Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法です。
+description: Windows Virtual Desktop テナント環境でサービス接続を設定するときの問題を解決する方法です。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009377"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108951"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)を参照してください。
 
 Windows Virtual Desktop クライアントの接続に関する問題を解決するには、この記事を使います。
 
@@ -39,6 +39,19 @@ Windows Virtual Desktop クライアントの接続に関する問題を解決�
 3. Web クライアントを使っている場合は、キャッシュされた資格情報の問題がないことを確認します。
 
 4. ユーザーが Azure Active Directory (AD) ユーザー グループのメンバーである場合は、そのユーザー グループが配布グループではなくセキュリティ グループであることを確認します。 Windows Virtual Desktop では Azure AD 配布グループはサポートされません。
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>ユーザーの既存のフィードが失われ、リモート リソースが表示されない (フィードなし)
+
+このエラーは通常、ユーザーがサブスクリプションを 1 つの Azure AD テナントから別のテナントに移動した後に表示されます。 その結果、サービスは以前の Azure AD テナントに関連付けられたままになるため、ユーザーの割り当てを追跡できなくなります。
+
+これを解決するために必要なことは、ユーザーをアプリ グループに再割り当てすることだけです。
+
+これは、CSP プロバイダーによってサブスクリプションが作成されて顧客に譲渡された場合にも、発生する可能性があります。 これを解決するには、リソース プロバイダーを再登録します。
+
+1. Azure portal にサインインします。
+2. **[サブスクリプション]** に移動し、ご使用のサブスクリプションを選択します。
+3. ページの左側にあるメニューで、 **[リソース プロバイダー]** を選択します。
+4. **[Microsoft.DesktopVirtualization]** を見つけて選択し、 **[再登録]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

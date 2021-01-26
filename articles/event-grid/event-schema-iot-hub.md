@@ -2,13 +2,13 @@
 title: Event Grid ソースとしての Azure IoT Hub
 description: この記事では、Azure IoT Hub イベントのプロパティとスキーマについて説明します。 使用可能なイベントの種類、イベントの例、およびイベントのプロパティが一覧表示されます。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113651"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185837"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Event Grid ソースとしての Azure IoT Hub
 この記事では、Azure IoT Hub イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
@@ -26,8 +26,6 @@ Azure IoT Hub から出力されるイベントの種類は次のとおりです
 | Microsoft.Devices.DeviceConnected | デバイスが IoT Hub に接続されると発行されます。 |
 | Microsoft.Devices.DeviceDisconnected | デバイスが IoT Hub から切断されると発行されます。 | 
 | Microsoft.Devices.DeviceTelemetry | 利用統計情報が IoT Hub に送信されると発行されます。 |
-
-デバイス テレメトリ イベントを除くすべてのデバイス イベントは、Event Grid でサポートされているすべてのリージョンで一般提供されています。 デバイス テレメトリ イベントはパブリック プレビュー段階であり、米国東部、米国西部、西ヨーロッパ、[Azure Government](../azure-government/documentation-government-welcome.md)、[Azure China 21Vianet](/azure/china/china-welcome)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。
 
 ### <a name="example-event"></a>イベントの例
 
@@ -160,7 +158,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 データ オブジェクトの内容は、イベント発行元ごとに異なります。 
 
-**デバイス接続**および**デバイス切断** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
+**デバイス接続** および **デバイス切断** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
@@ -176,7 +174,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 | properties | string | アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略可能です。 |
 | system properties | string | [システム プロパティ](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)は、メッセージのコンテンツとソースを特定するのに役立ちます。 デバイス テレメトリ メッセージは、メッセージ システム プロパティで contentType が JSON に設定され、contentEncoding が UTF-8 に設定された有効な JSON 形式でなければなりません。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。  |
 
-**デバイス接続**および**デバイス削除** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
+**デバイス接続** および **デバイス削除** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |

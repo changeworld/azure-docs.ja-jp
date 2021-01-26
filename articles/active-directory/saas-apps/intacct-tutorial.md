@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a0266e62af55f6d775ca1b1ae5ee31d5f10d4249
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535844"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459987"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88535844"
 * ユーザーが自分の Azure AD アカウントを使用して Sage Intacct に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Sage Intacct では、**IDP** Initiated SSO がサポートされます
-* Sage Intacct を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Sage Intacct では、 **IDP** Initiated SSO がサポートされます
+* Sage Intacct を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>ギャラリーからの Sage Intacct の追加
 
@@ -50,7 +50,7 @@ Azure AD への Sage Intacct の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Sage Intacct**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Sage Intacct** 」と入力します。
 1. 結果パネルから **[Sage Intacct]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>Sage Intacct の Azure AD SSO の構成とテスト
@@ -89,7 +89,7 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
     | 属性名  |  ソース属性|
     | ---------------| --------------- |
     | 会社名 | **Sage Intacct の会社 ID** |
-    | name | 値は、Sage Intacct の **[User ID]\(ユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
+    | name | 値は、Sage Intacct の **[User ID]\(ユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「 **Sage Intacct のテスト ユーザーの作成** 」セクションで入力するものです。 |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -163,9 +163,9 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     b. **[ID プロバイダーの種類]** として **[SAML 2.0]** を選択します。
 
-    c. **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    c. **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    d. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[ログイン URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     e. **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** ボックスに貼り付けます。
 
@@ -189,14 +189,14 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 1. **[ユーザー情報]** セクションで、次の手順を実行します。
 
-    ![[User Information]\(ユーザー情報\)](./media/intacct-tutorial/ic790043.png "[ユーザー情報]")
+    ![この手順の情報を入力できる [User Information]\(ユーザー情報\) セクションを示すスクリーンショット。](./media/intacct-tutorial/ic790043.png "[ユーザー情報]")
 
-    a. プロビジョニングする Azure AD アカウントの**ユーザー ID**、**姓**、**名**、**電子メール アドレス**、**役職**、**電話番号**を、 **[User Information (ユーザー情報)]** セクションに入力します。
+    a. プロビジョニングする Azure AD アカウントの **ユーザー ID** 、 **姓** 、 **名** 、 **電子メール アドレス** 、 **役職** 、 **電話番号** を、 **[User Information (ユーザー情報)]** セクションに入力します。
 
     > [!NOTE]
     > 上のスクリーンショットの **[User ID]\(ユーザー ID\)** と、Azure portal の **[ユーザー属性]** セクションの **name** 属性にマップされている **[Source Attribute]\(ソース属性\)** の値が同じになるようにします。
 
-    b. プロビジョニングする Azure AD アカウントの**管理者特権**を選択します。
+    b. プロビジョニングする Azure AD アカウントの **管理者特権** を選択します。
 
     c. **[保存]** をクリックします。 
     
@@ -204,7 +204,7 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 1. **[Single sign-on]\(シングル サインオン\)** タブをクリックし、下のスクリーンショットの **[Federated SSO User ID]\(フェデレーション SSO のユーザー ID\)** と、Azure portal の **[ユーザー属性]** セクションの `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` にマップされている **[Source Attribute]\(ソース属性\)** の値が同じになるようにします。
 
-    ![[User Information]\(ユーザー情報\)](./media/intacct-tutorial/ic790044.png "[ユーザー情報]")
+    ![[Federated S S O user i d]\(フェデレーション S S O ユーザー I D\) を入力できる [User Information]\(ユーザー情報\) セクションを示すスクリーンショット。](./media/intacct-tutorial/ic790044.png "[ユーザー情報]")
 
 > [!NOTE]
 > Azure AD ユーザー アカウントをプロビジョニングするには、Sage Intacct から提供されているその他の Sage Intacct ユーザー アカウント作成ツールまたは API を使用できます。
@@ -213,14 +213,14 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Sage Intacct] タイルをクリックすると、SSO を設定した Sage Intacct に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Sage Intacct] タイルをクリックすると、SSO を設定した Sage Intacct に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

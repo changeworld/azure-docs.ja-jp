@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286072"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219268"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -95,7 +95,7 @@ PowerShell の使用
 
 1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、 **[IP フローの確認]** を選択します。 
 2. VM および NVA の IP アドレスを指定して、トラフィックが任意のネットワーク セキュリティ グループ (NSG) によってブロックされるかどうかを確認します。
-3. トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
+3. トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ** 規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
 
 **NVA および VM が予想されるトラフィックをリッスンしているかどうかを確認する**
 
@@ -127,7 +127,7 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
 ## <a name="advanced-network-administrator-troubleshooting"></a>高度なネットワーク管理者のトラブルシューティング
 
 ### <a name="capture-network-trace"></a>ネットワーク トレースのキャプチャ
-**[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** または **Nmap** を実行しながら、ソース VM、NVA、宛先の VM 上で同時ネットワーク追跡をキャプチャしてから、追跡を停止します。
+**[PsPing](/sysinternals/downloads/psping)** または **Nmap** を実行しながら、ソース VM、NVA、宛先の VM 上で同時ネットワーク追跡をキャプチャしてから、追跡を停止します。
 
 1. 同時ネットワーク追跡をキャプチャするには、次のコマンドを実行します。
 
@@ -140,7 +140,7 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. ソース VM から宛先 VM に対して **PsPing** または **Nmap** を使用します (例: `PsPing 10.0.0.4:80` または `Nmap -p 80 10.0.0.4`)。
-3. [ネットワーク モニター](https://www.microsoft.com/download/details.aspx?id=4865)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
+3. [ネットワーク モニター](https://download.cnet.com/s/network-monitor)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
 
 ### <a name="analyze-traces"></a>トレースの分析
 

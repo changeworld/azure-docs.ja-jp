@@ -1,14 +1,14 @@
 ---
 title: パラメーターを使用して動的ブループリントを作成する
 description: 静的パラメーターと動的パラメーターについて、およびこれらを使用して、セキュリティで保護された動的ブループリントを作成する方法について説明します。
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89651953"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 
@@ -55,17 +55,17 @@ Azure Key Vault の詳細については、[Key Vault の概要](../../../key-va
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 
-1. 既存のブループリントをクリックし、 **[ブループリントを編集する]** をクリックするか、 **[+ ブループリントを作成する]** をクリックして、 **[基本]** タブに情報を入力します。
+1. 既存のブループリントを選択し、 **[ブループリントを編集する]** を選択するか、 **[+ ブループリントを作成する]** を選択して、 **[基本]** タブに情報を入力します。
 
-1. **[次へ: アーティファクト]** をクリックするか、 **[アーティファクト]** タブをクリックします。
+1. **[Next:アーティファクト]** を選択するか、 **[アーティファクト]** タブを選択します。
 
-1. パラメーター オプションを持つブループリントに追加されたアーティファクトの **[パラメーター]** 列に、 **[X of Y parameters populated]\(X/Y のパラメーターが設定されました\)** が表示されます。 パラメーターを編集するには、そのアーティファクト行をクリックします。
+1. パラメーター オプションを持つブループリントに追加されたアーティファクトの **[パラメーター]** 列に、 **[X of Y parameters populated]\(X/Y のパラメーターが設定されました\)** が表示されます。 パラメーターを編集するには、そのアーティファクト行を選択します。
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="ブループリント定義でのブループリントのパラメーター" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="ブループリントの定義と、[X of Y parameters populated]\(X/Y のパラメーターが設定されました\) のメッセージが強調表示されたスクリーンショット。" border="false":::
 
-1. **[成果物の編集]** ページには、クリックしたアーティファクトに適した値オプションが表示されます。 アーティファクトの各パラメーターには、タイトル、値ボックス、チェックボックスがあります。 **静的パラメーター**にするには、チェックボックスをオフに設定します。 次の例では、 _[場所]_ のチェックボックスがオフで、 _[リソース グループ名]_ のチェックボックスはオンになっているため、場所のみが**静的パラメーター**です。
+1. **[成果物の編集]** ページには、選択したアーティファクトに適した値のオプションが表示されます。 アーティファクトの各パラメーターには、タイトル、値ボックス、チェックボックスがあります。 **静的パラメーター**にするには、チェックボックスをオフに設定します。 次の例では、 _[場所]_ のチェックボックスがオフで、 _[リソース グループ名]_ のチェックボックスはオンになっているため、場所のみが**静的パラメーター**です。
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="ブループリント アーティファクトでのブループリントの静的パラメーター" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="ブループリントの定義と、[X of Y parameters populated]\(X/Y のパラメーターが設定されました\) のメッセージが強調表示されたスクリーンショット。" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API で静的パラメーターを設定する
 
@@ -172,11 +172,11 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 
-1. 割り当てるブループリントを右クリックします。 **[ブループリントの割り当て]** を選択するか、割り当てるブループリントをクリックして、 **[ブループリントの割り当て]** ボタンをクリックします。
+1. 割り当てるブループリントを右クリックします。 **[ブループリントの割り当て]** を選択するか、割り当てるブループリントを選択して、 **[ブループリントの割り当て]** ボタンを使用します。
 
 1. **[ブループリントの割り当て]** ページで、 **[アーティファクト パラメーター]** セクションを見つけます。 少なくとも 1 つ以上の**動的パラメーター**を持つアーティファクトごとに、アーティファクトと構成オプションが表示されます。 ブループリントを割り当てる前に、パラメーターに必要な値を指定します。 次の例では、_Name_ がブループリント割り当てを完了するために定義する必要がある**動的パラメーター**です。
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="ブループリント割り当て時のブループリントの動的パラメーター" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="ブループリントの定義と、[X of Y parameters populated]\(X/Y のパラメーターが設定されました\) のメッセージが強調表示されたスクリーンショット。" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API で動的パラメーターを設定する
 
@@ -234,8 +234,8 @@ REST API を使用してブループリントを作成するときに、[ブル�
 ## <a name="next-steps"></a>次のステップ
 
 - [ブループリント関数](../reference/blueprint-functions.md)のリスト を参照してください。
-- [ブループリントのライフサイクル](lifecycle.md)を参照する。
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [ブループリントのライフサイクル](./lifecycle.md)を参照する。
+- [ブループリントの優先順位](./sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](./resource-locking.md)の使用方法を調べる。
 - [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
 - ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

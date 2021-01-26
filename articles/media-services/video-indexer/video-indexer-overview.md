@@ -8,20 +8,24 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744600"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014537"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
+
+[!INCLUDE [regulation](./includes/regulation.md)]
 
 Video Indexer (VI) は、Azure Media Services AI ソリューションであり、Azure Cognitive Services ブランドの一部です。 Video Indexer では、複数のチャンネル (音声、ボーカル、ビジュアル) に基づく機械学習モデルを使用して、(データ分析やコーディング スキルを必要としない) 詳細な分析情報を抽出する機能を提供します。 さらに、モデルのカスタマイズとトレーニングを行うことができます。 このサービスを使用すると、ディープ検索が可能になり、運用コストが削減され、新しい収益化の機会が可能になり、(エントリ バリアが低い) ビデオの大規模なアーカイブで新しいユーザー エクスペリエンスを生み出します。
 
 Video Indexer で分析情報の抽出を開始するには、アカウントを作成してビデオをアップロードする必要があります。 Video Indexer にビデオをアップロードすると、さまざまな AI モデルを実行することで、ビジュアルとオーディオの両方が分析されます。 Video Indexer でビデオを分析すると、分析情報が AI モデルによって抽出されます。
+
+Video Indexer アカウントを作成し、それを Media Services に接続すると、その Media Services アカウントに関連付けられている Azure ストレージ アカウントにメディアとメタデータのファイルが格納されます。 詳細については、「[Azure に接続された Video Indexer アカウントを作成する](connect-to-azure.md)」を参照してください。
 
 次の図はイラストであり、バックエンドで Video Indexer がどのように機能するかについての技術的な説明ではありません。
 
@@ -72,12 +76,12 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 
 * **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、アラビア語、ロシア語、ポルトガル語、ヒンディー語、韓国語などの言語がサポートされています。
 * **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、ロシア語、ポルトガル語などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
-* **複数言語の音声識別と文字起こし** (プレビュー):音声から異なるセグメントにある音声言語を自動的に識別します。 書き起こされるようにメディア ファイルの各セグメントを送信した後、文字起こしが 1 つの統合された文字起こしに結合されます。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
+* **複数言語の音声識別と文字起こし**: 音声から異なるセグメントにある音声言語を自動的に識別します。 書き起こされるようにメディア ファイルの各セグメントを送信した後、文字起こしが 1 つの統合された文字起こしに結合されます。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
 * **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 * **2 チャネル処理**:個別のトランスクリプトを自動検出し、1 つのタイムラインに結合します。
 * **ノイズリダクション**:(Skype フィルターに基づいて) テレフォニー音声やノイズの多い録音を明瞭にします。
 * **トランスクリプトのカスタマイズ** (CRIS):音声テキスト変換のカスタム モデルをトレーニングして、業界固有のトランスクリプトを作成します。 詳細については、「[Video Indexer Web サイトから言語モデルをカスタマイズする](customize-language-model-with-website.md)」と「[Video Indexer API を使用して言語モデルをカスタマイズする](customize-language-model-with-api.md)」をご覧ください。
-* **話者の列挙**:どの話者がどの言葉をいつ話したかをマップして認識します。
+* **話者の列挙**:どの話者がどの言葉をいつ話したかをマップして認識します。 16 人の話者を 1 つの音声ファイルで検出できます。
 * **話者の統計情報**:話者の音声率の統計情報を提供します。
 * **テキストのコンテンツ モデレーション**:音声トランスクリプト内の明示的なテキストを検出します。
 * **音声効果**:拍手、発言、沈黙などの音声効果を識別します。

@@ -3,18 +3,20 @@ title: 変更フィード推定機能を使用する - Azure Cosmos DB
 description: 変更フィード推定機能を使用して、お使いの変更フィード プロセッサの進行状況を分析する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997219"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339840"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、変更フィードを読み取るお使いの[変更フィード プロセッサ](./change-feed-processor.md) インスタンスの進行状況を監視する方法について説明します。
 
@@ -42,7 +44,7 @@ ms.locfileid: "88997219"
 
 ここでは、プロセッサと推定機能の両方の `leaseContainer` と名前が同じです。
 
-他の 2 つのパラメーターはデリゲートです。このデリゲートは、プロセッサによって**読み取られる保留中の変更の数**と、この測定値を取得する時間間隔を表す数値を受け取ります。
+他の 2 つのパラメーターはデリゲートです。このデリゲートは、プロセッサによって **読み取られる保留中の変更の数** と、この測定値を取得する時間間隔を表す数値を受け取ります。
 
 推定を受け取るデリゲートの例は次のとおりです。
 
@@ -64,4 +66,4 @@ ms.locfileid: "88997219"
 以下の記事で、変更フィード プロセッサに関してさらに詳しく知ることができます。
 
 * [変更フィード プロセッサの概要](change-feed-processor.md)
-* [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)
+* [変更フィード プロセッサの開始時刻](./change-feed-processor.md#starting-time)

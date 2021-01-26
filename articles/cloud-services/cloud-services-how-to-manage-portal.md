@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002932"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076710"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure Portal で Cloud Services を管理する
 Azure Portal の **[Cloud Services]** 領域では、次の操作を行うことができます。
@@ -83,7 +83,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 **スワップで、アプリケーションのダウンタイムは発生しますか。どのように対応する必要がありますか。**
 
-前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](../best-practices-retry-general.md)の実装を検討してください。
+前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](/azure/architecture/best-practices/transient-faults)の実装を検討してください。
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>デプロイとクラウド サービスを削除する
 クラウド サービスを削除する前に、既存のデプロイメントをそれぞれ削除する必要があります。
@@ -124,6 +124,3 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [TLS/SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成する
-
-
-

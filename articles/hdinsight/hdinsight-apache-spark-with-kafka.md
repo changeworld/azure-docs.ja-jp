@@ -1,6 +1,6 @@
 ---
 title: Apache Kafka に対する Apache Spark ストリーミング - Azure HDInsight
-description: Apache Spark を使用して、Apache Kafka に対して DStreams によるデータの送信または受信ストリーミングを行う方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
+description: Apache Spark を使用して、Apache Kafka に対して DStreams によるデータの送信または受信ストリーミングを行う方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリーミングします。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086094"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821181"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
@@ -63,7 +63,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     ![HDInsight カスタム デプロイ パラメーター](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
+1. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 
 1. 最後に、 **[購入]** を選択します。 クラスターの作成には約 20 分かかります。
 

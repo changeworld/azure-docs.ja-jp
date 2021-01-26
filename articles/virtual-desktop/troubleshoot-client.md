@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134481"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108968"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング
 
@@ -83,6 +83,20 @@ Web クライアントで資格情報の入力の要求が出続ける場合は�
 3. ブラウザーの Cookie をクリアします。 詳細については、「[Internet Explorer で cookie ファイルを削除する方法](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)」を参照してください。
 4. ブラウザーのキャッシュをクリアします。 詳細については、[お使いのブラウザーのブラウザー キャッシュをクリアする方法](https://binged.it/2RKyfdU)を参照してください。
 5. プライベート モードでブラウザーを開きます。
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows クライアントによって Windows Virtual Desktop (クラシック) フィードがブロックされる
+
+Windows クライアント フィードに Windows Virtual Desktop (クラシック) アプリが表示されない場合は、次の手順に従います。
+
+1. Windows Virtual Desktop (クラシック) に関連付けられているアプリ ID が、条件付きアクセス ポリシーに含まれているかどうかを確認します。
+2. 条件付きアクセス ポリシーにより、Windows Virtual Desktop (クラシック) のアプリ ID 以外のすべてのアクセスがブロックされているかどうかを確認します。 その場合、クライアントがフィードを検出できるようにするために、アプリ ID **9cdead84-a844-4324-93f2-b2e6bb768d07** をポリシーに追加する必要があります。
+
+一覧でアプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07 が見つからない場合は、Windows Virtual Desktop リソース プロバイダーを登録する必要があります。 リソース プロバイダーを登録するには:
+
+1. Azure portal にサインインします。
+2. **[サブスクリプション]** に移動し、ご使用のサブスクリプションを選択します。
+3. ページの左側にあるメニューで、 **[リソース プロバイダー]** を選択します。
+4. **[Microsoft.DesktopVirtualization]** を見つけて選択し、 **[再登録]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

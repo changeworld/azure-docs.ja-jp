@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: e0e29bdc67e70a76b26126a82363bbfaa0b8961b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e5477b0ce45b1e888e472ebf7582607034c55800
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555520"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Confluence の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88555520"
 * Confluence にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Confluence に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,13 +39,12 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * EasySSO for Confluence では、**SP および IDP** Initiated SSO がサポートされます
 * EasySSO for Confluence では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* EasySSO for Confluence を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-easysso-for-confluence-from-the-gallery"></a>ギャラリーからの EasySSO for Confluence の追加
 
 Azure AD への EasySSO for Confluence の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に EasySSO for Confluence を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -55,11 +52,11 @@ Azure AD への EasySSO for Confluence の統合を構成するには、ギャ�
 1. 結果のパネルから **[EasySSO for Confluence]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-confluence"></a>EasySSO for Confluence の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-confluence"></a>EasySSO for Confluence の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、EasySSO for Confluence に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと EasySSO for Confluence の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-EasySSO for Confluence で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+EasySSO for Confluence で Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -72,7 +69,7 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **EasySSO for Confluence** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **EasySSO for Confluence** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -111,7 +108,7 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 
     ![証明書のダウンロードのリンク](./media/easysso-for-confluence-tutorial/certificate.png)
     
-    EasySSO for Confluence の構成を証明書を使って手動で実施する予定の場合には、他にも以下のセクションから**ログイン URL** と **Azure AD ID** をコピーし、コンピューターに保存しておく必要があります。
+    EasySSO for Confluence の構成を証明書を使って手動で実施する予定の場合には、他にも以下のセクションから **ログイン URL** と **Azure AD ID** をコピーし、コンピューターに保存しておく必要があります。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -133,19 +130,23 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 1. アプリケーションの一覧で、 **[EasySSO for Confluence]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-easysso-for-confluence-sso"></a>EasySSO for Confluence SSO の構成
 
-1. 管理者権限で Atlassian Confluence インスタンスにサインインし、 **[Manage Apps]\(アプリの管理\)** セクションに移動します。 
+1. EasySSO for Confluence 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[EasySSO for Confluence のセットアップ]** をクリックすると、EasySSO for Confluence アプリケーションに移動します。 そこから、管理者の資格情報を入力して EasySSO for Confluence にサインインします。 ブラウザー拡張機能によって、アプリケーションが自動的に構成され、手順 3. から 9. が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. EasySSO for Confluence を手動でセットアップする場合は、管理者権限で Atlassian Confluence インスタンスにサインインし、 **[Manage Apps]\(アプリの管理\)** セクションに移動します。 
 
     ![[Manage Apps]\(アプリの管理\)](./media/easysso-for-confluence-tutorial/confluence-admin-1.png)
 
@@ -161,17 +162,17 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 
     ![メタデータ URL](./media/easysso-for-confluence-tutorial/confluence-admin-4.png)
 
-5. **Azure AD SSO** の構成手順で保存した**証明書 (Base64)** または**メタデータ ファイル**を探します。 続行する方法として、次の選択肢があります。
+5. **Azure AD SSO** の構成手順で保存した **証明書 (Base64)** または **メタデータ ファイル** を探します。 続行する方法として、次の選択肢があります。
 
-    a. 自分のコンピューター上のローカル ファイルとしてダウンロードした、アプリのフェデレーション **メタデータ ファイル**を使用します。 **[Upload]\(アップロード\)** をクリックし、ご使用のオペレーティング システムに固有のファイルのアップロード ダイアログに従います
+    a. 自分のコンピューター上のローカル ファイルとしてダウンロードした、アプリのフェデレーション **メタデータ ファイル** を使用します。 **[Upload]\(アップロード\)** をクリックし、ご使用のオペレーティング システムに固有のファイルのアップロード ダイアログに従います
 
     **OR**
 
-    b. (任意のプレーンテキスト エディターで) アプリのフェデレーション **メタデータ ファイル**を開き、ファイルの内容を確認してクリップボードにコピーします。 **[Input]\(入力\)** オプションを選択し、クリップボードの内容をテキスト フィールドに貼り付けます。
+    b. (任意のプレーンテキスト エディターで) アプリのフェデレーション **メタデータ ファイル** を開き、ファイルの内容を確認してクリップボードにコピーします。 **[Input]\(入力\)** オプションを選択し、クリップボードの内容をテキスト フィールドに貼り付けます。
  
     **OR**
 
-    c. すべて手動で構成します。 (任意のプレーンテキスト エディターで) アプリのフェデレーション**証明書 (Base64)** を開き、ファイルの内容を確認してクリップボードにコピーします。 **[IdP Token Signing Certificates]\(IdP トークン署名証明書\)** テキスト フィールドに貼り付けます。 次に、 **[General]\(全般\)** タブに移動し、 **[POST Binding URL]\(POST バインディング URL\)** および **[Entity ID]\(エンティティ ID\)** フィールドに、前に保存した **[ログイン URL]** と **[Azure AD 識別子]** の値をそれぞれ入力します。
+    c. すべて手動で構成します。 (任意のプレーンテキスト エディターで) アプリのフェデレーション **証明書 (Base64)** を開き、ファイルの内容を確認してクリップボードにコピーします。 **[IdP Token Signing Certificates]\(IdP トークン署名証明書\)** テキスト フィールドに貼り付けます。 次に、 **[General]\(全般\)** タブに移動し、 **[POST Binding URL]\(POST バインディング URL\)** および **[Entity ID]\(エンティティ ID\)** フィールドに、前に保存した **[ログイン URL]** と **[Azure AD 識別子]** の値をそれぞれ入力します。
  
 6. ページの下部にある **[Save]\(保存\)** ボタンをクリックします。 メタデータ ファイルまたは証明書ファイルの内容が構成フィールドで解析されていることを確認できます。 これで、EasySSO for Confluence の構成は完了しました。
 
@@ -184,7 +185,7 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 
 ### <a name="create-easysso-for-confluence-test-user"></a>EasySSO for Confluence のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Confluence に作成します。 EasySSO for Confluence では Just-In-Time ユーザー プロビジョニングがサポートされており、既定では**無効**になっています。 ユーザー プロビジョニングを有効にするには、EasySSO プラグイン構成の [General]\(全般\) セクションで、 **[Create user on successful login]\(ログイン成功時にユーザーを作成する\)** オプションを明示的にオンにする必要があります。 Confluence にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを Confluence に作成します。 EasySSO for Confluence では Just-In-Time ユーザー プロビジョニングがサポートされており、既定では **無効** になっています。 ユーザー プロビジョニングを有効にするには、EasySSO プラグイン構成の [General]\(全般\) セクションで、 **[Create user on successful login]\(ログイン成功時にユーザーを作成する\)** オプションを明示的にオンにする必要があります。 Confluence にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ただし、ユーザーが初めてログインした時点での自動ユーザー プロビジョニングを有効にしない場合は、Confluence インスタンスで使用するバックエンド ユーザー ディレクトリ (LDAP や Atlassian Crowd など) にユーザーが存在する必要があります。
 
@@ -194,9 +195,9 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 
 ### <a name="idp-initiated-workflow"></a>IdP-Initiated ワークフロー
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、マイ アプリを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [EasySSO for Confluence] タイルをクリックすると、SSO を設定した Confluence インスタンスに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+マイ アプリで [EasySSO for Confluence] タイルをクリックすると、SSO を設定した Confluence インスタンスに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
 ### <a name="sp-initiated-workflow"></a>SP-Initiated ワークフロー
 
@@ -214,16 +215,6 @@ Azure AD からのリダイレクト後に、次の画面が表示される可�
 
 ログ メッセージの内容について疑問がある場合には、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で EasySSO for Confluence を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって EasySSO for Confluence を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+EasySSO for Confluence を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

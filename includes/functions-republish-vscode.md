@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: glenga
 ms.openlocfilehash: 574756aa9d9bac4aa42febf6a4fca4c62014db3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732475"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010462"
 ---
 1. Visual Studio Code で、F1 キーを選択してコマンド パレットを開きます。 コマンド パレットで、次のコマンドを探して実行します: **Azure Functions: Deploy to function app**。
 
-1. サインしていない場合は、**Azure にサインイン**するよう求められます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。 複数のサブスクリプションがある場合は、自分の関数アプリが含まれている**サブスクリプションを選択**します。
+1. サインしていない場合は、**Azure にサインイン** するよう求められます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。 複数のサブスクリプションがある場合は、自分の関数アプリが含まれている **サブスクリプションを選択** します。
 
 1. Azure で既存の関数アプリを選択します。 関数アプリ内のすべてのファイルが上書きされるという警告が表示された場合は、 **[デプロイ]** を選択して警告を確認して続行します。
 

@@ -3,14 +3,14 @@ title: Azure Automation データ セキュリティ
 description: この記事では、Azure Automation でお客様のプライバシーとデータを保護するしくみについて説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/20/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004649"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046041"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation データの管理
 
@@ -26,11 +26,9 @@ Azure Automation に転送中のデータのセキュリティを確保するに
 
 * DSC ノード
 
-以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 2020 年 9 月から、暗号化プロトコルの TLS 1.2 以降のバージョンの強制が始まります。
+以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 エージェントで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。
 
-エージェントで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。
-
-Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 サポート (これは Hybrid Runbook Worker ロールの依存関係です) については、[Log Analytics エージェントの概要の TLS 1.2 に関する記述](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)を参照してください。 
+Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 サポート (これは Hybrid Runbook Worker ロールの依存関係です) については、[Log Analytics エージェントの概要の TLS 1.2 に関する記述](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)を参照してください。
 
 ### <a name="platform-specific-guidance"></a>プラットフォーム固有のガイダンス
 
@@ -51,7 +49,7 @@ Azure Automation でリソースを削除すると、完全に削除される前
 |:--- |:--- |
 | アカウント |アカウントは、ユーザーによって削除された日から 30 日後に完全に消去されます。 |
 | アセット |アセットは、ユーザーによって削除された日から 30 日後、またはアセットを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 アセットには、変数、スケジュール、資格情報、証明書、Python 2 パッケージ、および接続が含まれます。 |
-| DSC ノード |DSC ノード は、Azure portal または Windows PowerShell の [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) コマンドレットを使用して、Automation アカウントから登録解除された日から 30 日後に、完全に消去されます。 また、ノードは、ノードを保持するアカウントがユーザーによって削除されてから 30 日後に、完全に消去されます。 |
+| DSC ノード |DSC ノード は、Azure portal または Windows PowerShell の [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) コマンドレットを使用して、Automation アカウントから登録解除された日から 30 日後に、完全に消去されます。 また、ノードは、ノードを保持するアカウントがユーザーによって削除されてから 30 日後に、完全に消去されます。 |
 | ジョブ |ジョブは、変更 (ジョブの完了など) が停止または中断された日から 30 日後に、削除されて完全に消去されます。 |
 | モジュール |モジュールは、ユーザーによって削除された日から 30 日後、またはモジュールを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
 | ノード構成/MOF ファイル |古いノード構成は、新しいノード構成が生成された日から 30 日後に、完全に消去されます。 |
@@ -80,7 +78,7 @@ Azure Automation のアセット (証明書、接続、資格情報、スケジ�
 
 ### <a name="dsc-configurations"></a>DSC の構成
 
-Azure portal または Windows PowerShell の [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) コマンドレットを使用して、DSC の構成をスクリプト ファイルにエクスポートできます。 これらの構成を別の Automation アカウントにインポートして使用できます。
+Azure portal または Windows PowerShell の [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration) コマンドレットを使用して、DSC の構成をスクリプト ファイルにエクスポートできます。 これらの構成を別の Automation アカウントにインポートして使用できます。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure Automation での geo レプリケーション
 

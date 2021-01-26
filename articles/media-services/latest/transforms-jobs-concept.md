@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297979"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426782"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services の Transform と Job
 
@@ -58,19 +58,19 @@ ms.locfileid: "89297979"
 
 ### <a name="viewing-schema"></a>スキーマの表示
 
-Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)、またはその他の Media Services v3 SDK のリファレンス ドキュメントでも確認できます。
+Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 ( **StandardEncoderPreset** など) は、 [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)、またはその他の Media Services v3 SDK のリファレンス ドキュメントでも確認できます。
 
 ### <a name="creating-transforms"></a>変換の作成
 
-Transform は、REST、CLI、または公開されている任意の SDK を使用して作成できます。 Media Services v3 の API は Azure Resource Manager によって実行されるため、Resource Manager テンプレートを使用して、Media Services アカウントに Transforms を作成して デプロイすることもできます｡ ロールベースのアクセス制御を使用して､Transforms へのアクセスを管理することができます｡
+Transform は、REST、CLI、または公開されている任意の SDK を使用して作成できます。 Media Services v3 の API は Azure Resource Manager によって実行されるため、Resource Manager テンプレートを使用して、Media Services アカウントに Transforms を作成して デプロイすることもできます｡ Azure ロールベースのアクセス制御を使用して､Transforms へのアクセスを管理することができます。
 
 ### <a name="updating-transforms"></a>変換の更新
 
-[Transform](/rest/api/media/transforms) を更新する必要がある場合は、**Update** 操作を使用します。 これは基になる TransformOutput の記述または優先度を変更することを目的としています。 このような更新は、進行中のすべてのジョブが完了したときに行うことをお勧めします。 レシピを書き直す場合は、新しい Transform を作成する必要があります。
+[Transform](/rest/api/media/transforms) を更新する必要がある場合は、 **Update** 操作を使用します。 これは基になる TransformOutput の記述または優先度を変更することを目的としています。 このような更新は、進行中のすべてのジョブが完了したときに行うことをお勧めします。 レシピを書き直す場合は、新しい Transform を作成する必要があります。
 
 ### <a name="transform-object-diagram"></a>Transform オブジェクトの図
 
-次の図は、**Transform** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。 灰色の矢印は、Job が参照している型を示し、緑の矢印はクラスの派生リレーションシップを示しています。
+次の図は、 **Transform** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。 灰色の矢印は、Job が参照している型を示し、緑の矢印はクラスの派生リレーションシップを示しています。
 
 画像を選択すると、フル サイズで表示されます。  
 
@@ -78,7 +78,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ## <a name="jobs"></a>ジョブ
 
-**ジョブ**は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](/rest/api/media/assets)を使用して指定できます。  
+**ジョブ** は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](/rest/api/media/assets)を使用して指定できます。  
 
 ### <a name="job-input-from-https"></a>HTTPS からのジョブ入力
 
@@ -94,11 +94,11 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ### <a name="updating-jobs"></a>ジョブの更新
 
-ジョブが送信された後、[Job](/rest/api/media/jobs) エンティティの更新操作を使用して、*description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
+ジョブが送信された後、 [Job](/rest/api/media/jobs) エンティティの更新操作を使用して、 *description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
 
 ### <a name="job-object-diagram"></a>ジョブ オブジェクトの図
 
-次の図は、**Job** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。
+次の図は、 **Job** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。
 
 画像をクリックすると、フル サイズで表示されます。  
 

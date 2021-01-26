@@ -5,16 +5,17 @@ services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2e831b3c091b18a5c739275e4c932094ce088ba4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837042"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202608"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -39,6 +40,9 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 ## <a name="installing-the-extension-in-your-vm"></a>VM への拡張機能のインストール
 
 この拡張機能は、Azure PowerShell コマンドレット、Azure CLI スクリプト、ARM テンプレート、Azure portal のいずれかを使用して有効にできます。 詳細については、[拡張機能](features-linux.md)に関するページをご覧ください。
+
+>[!NOTE]
+>診断 VM 拡張機能の一部のコンポーネントは、[Log Analytics VM 拡張機能](./oms-linux.md)にも含まれています。 このアーキテクチャが原因で、両方の拡張機能が同じ ARM テンプレートでインスタンス化されると、競合が発生する可能性があります。 このようなインストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)を使用して、拡張機能が順番にインストールされるようにします。 拡張機能は、どちらの順序でもインストールできます。
 
 このインストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
 
@@ -70,7 +74,30 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 * **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
 * **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
-* 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
+* 既存の Azure サブスクリプションと、データを格納するための既存の汎用ストレージ アカウント。  汎用ストレージ アカウントでは、必須のテーブル ストレージがサポートされます。  BLOB ストレージ アカウントは機能しません。
+* Python 2
+
+### <a name="python-requirement"></a>Python の要件
+
+Linux Diagnostic Extension には、Python 2 が必要です。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。    
+
+ - Red Hat、CentOS、Oracle: `yum install -y python2`
+ - Ubuntu、Debian: `apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+python2 実行可能ファイルに *python* という別名を付ける必要があります。 この別名を設定するために使用できる 1 つの方法を次に示します。
+
+1. 次のコマンドを実行して、既存の別名を削除します。
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. 次のコマンドを実行して、別名を作成します。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>サンプル インストール
 
@@ -108,6 +135,35 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
+#### <a name="azure-cli-sample-for-installing-lad-30-extension-on-the-vmss-instance"></a>LAD 3.0 拡張機能を VMSS インスタンスにインストールするための Azure CLI のサンプル
+
+```azurecli
+#Set your Azure VMSS diagnostic variables correctly below
+$my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
+$my_linux_vmss=<your_azure_linux_vmss_name>
+$my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
+
+# Should login to Azure first before anything else
+az login
+
+# Select the subscription containing the storage account
+az account set --subscription <your_azure_subscription_id>
+
+# Download the sample Public settings. (You could also use curl or any web browser)
+wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
+
+# Build the VMSS resource ID. Replace storage account name and resource ID in the public settings.
+$my_vmss_resource_id=$(az vmss show -g $my_resource_group -n $my_linux_vmss --query "id" -o tsv)
+sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
+sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
+
+# Build the protected settings (storage account SAS token)
+$my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
+$my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
+
+# Finally tell Azure to install and enable the extension
+az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+```
 
 #### <a name="powershell-sample"></a>PowerShell のサンプル
 
@@ -128,7 +184,7 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 # If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
@@ -177,7 +233,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
-storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウント SAS トークン](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)。追加、作成、一覧表示、更新、書き込み権限 (`sp='acluw'`) を付与するコンテナーおよびオブジェクト (`srt='co'`) に適用できます。 先頭の疑問符 (?) を*含めないで*ください。
+storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウント SAS トークン](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)。追加、作成、一覧表示、更新、書き込み権限 (`sp='acluw'`) を付与するコンテナーおよびオブジェクト (`srt='co'`) に適用できます。 先頭の疑問符 (?) を *含めないで* ください。
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
@@ -190,7 +246,7 @@ Resource Manager テンプレート内の SAS トークンを取得するには�
 1. 前述のように、適切なセクションを作成します
 1. [SAS の生成] ボタンをクリックします。
 
-![image](./media/diagnostics-linux/make_sas.png)
+![スクリーンショットには、[Shared access signature] ページと、[SAS の生成] が表示されています。](./media/diagnostics-linux/make_sas.png)
 
 生成された SAS を storageAccountSasToken フィールドにコピーします。先頭の疑問符 ("?") を削除します。
 
@@ -580,7 +636,7 @@ BytesPerSecond | 1 秒あたりの読み取りまたは書き込みバイト数
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-このコマンドは、Azure CLI の Azure Resource Management モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)をご覧ください。
+このコマンドは、Azure CLI の Azure Resource Management モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/cli/azure/authenticate-azure-cli)をご覧ください。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -748,7 +804,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 Azure ポータルを使用して、パフォーマンス データを表示したり、アラートを設定したりします。
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![スクリーンショットには、[使用されたディスク領域]\(Used disk space on\) メトリックが選択され、結果のグラフが Azure portal で表示されています。](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` データは常に Azure Storage テーブルに格納されます。 Azure Storage API は、さまざまな言語とプラットフォームで利用できます。
 
@@ -757,7 +813,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 さらに、次の UI ツールを使用して、Azure Storage のデータにアクセスすることもできます。
 
 * Visual Studio のサーバー エクスプローラー。
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
+* [スクリーンショットには、Azure Storage Exploref のコンテナーとテーブルが示されています](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 

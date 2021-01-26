@@ -1,10 +1,10 @@
 ---
 title: クイック スタート:Python を使用して Azure データ ファクトリを作成する
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
+description: データ ファクトリを使用して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: cc25ce4aa51535bbfd03d99ed413afa66a184fdb
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873298"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508783"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "87873298"
 
 Azure Data Factory は、データドリブン型のワークフローを作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、パイプラインと呼ばれるデータ駆動型ワークフローを作成し、スケジュールを設定できます。
 
-パイプラインは、さまざまなデータ ストアからデータを取り込むことができます。 パイプラインは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使ってデータを処理または変換します。 その出力データは Azure SQL Data Warehouse などのデータ ストアに発行され、ビジネス インテリジェンス (BI) アプリケーションから利用することができます。
+パイプラインは、さまざまなデータ ストアからデータを取り込むことができます。 パイプラインは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使ってデータを処理または変換します。 パイプラインは、ビジネス インテリジェンス (BI) アプリケーションで使用できるように、Azure Synapse Analytics などのデータ ストアに出力データを公開します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (省略可)。
 
-* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。
+* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを **共同作成者** ロールに割り当てます。
 
 ## <a name="create-and-upload-an-input-file"></a>入力ファイルを作成およびアップロードする
 
@@ -58,7 +58,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
 
-1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
+1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
     ```python
@@ -141,7 +141,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-**データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
+**データ ファクトリ** を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
 
 ```python
     # create the resource group
@@ -159,7 +159,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 
-**Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+**Azure Storage のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、コピー ソースとシンク ストアの両方として、Azure Storage のリンクされたサービスを 1 つ作成するだけで済みます。このサービスは、サンプルでは "AzureStorageLinkedService" という名前です。 `<storageaccountname>` と `<storageaccountkey>` を、Azure ストレージ アカウントの名前とキーで置き換えます。
 
@@ -212,7 +212,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-**コピー アクティビティが含まれているパイプライン**を作成する次のコードを **Main** メソッドに追加します。
+**コピー アクティビティが含まれているパイプライン** を作成する次のコードを **Main** メソッドに追加します。
 
 ```python
     # Create a copy activity
@@ -233,7 +233,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
-**パイプラインの実行をトリガーする**次のコードを **Main** メソッドに追加します。
+**パイプラインの実行をトリガーする** 次のコードを **Main** メソッドに追加します。
 
 ```python
     #Create a pipeline run.
@@ -421,7 +421,7 @@ main()
 
 出力例を次に示します。
 
-```json
+```console
 Name: <data factory name>
 Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DataFactory/factories/<data factory name>
 Location: eastus

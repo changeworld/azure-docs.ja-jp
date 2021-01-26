@@ -1,7 +1,7 @@
 ---
 title: ポワソン回帰:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: ポワソン回帰モジュールを使用して、ポワソン回帰モデルを作成する方法について説明します。
+description: Azure Machine Learning デザイナーのポワソン回帰モジュールを使用して、ポワソン回帰モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094631"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420701"
 ---
 # <a name="poisson-regression"></a>ポワソン回帰
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、パイプラインでポワソン回帰モデルを作成します。 ポワソン回帰の目的は、数値 (通常はカウント) を予測することです。 したがって、予測を試みている値が次の条件を満たす場合にのみ、このモジュールを使用して回帰モデルを作成する必要があります。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87094631"
 - ポワソン分布が離散型分布であるため、このメソッドを非整数と使用することが重要でない。
 
 > [!TIP]
-> ターゲットがカウントでない場合、ポワソン回帰が適切なメソッドではない可能性が高くなります。 [デザイナーでその他の回帰モジュール](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms)を試してください。 
+> ターゲットがカウントでない場合、ポワソン回帰が適切なメソッドではない可能性が高くなります。 [デザイナーでその他の回帰モジュール](./module-reference.md#machine-learning-algorithms)を試してください。 
 
 回帰メソッドを設定したら、予測する値のサンプルを含むデータセットを使用して、モデルをトレーニングする必要があります。 その後、トレーニング済みのモデルは、予測に使用できます。
 
@@ -49,7 +49,7 @@ ms.locfileid: "87094631"
 
 ## <a name="how-to-configure-poisson-regression"></a>ポワソン回帰を構成する方法
 
-1. デザイナー (プレビュー) でパイプラインに**ポワソン回帰**モジュールを追加します。 このモジュールは、 **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** の **[回帰]** カテゴリにあります。
+1. デザイナーでパイプラインに **ポワソン回帰** モジュールを追加します。 このモジュールは、 **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** の **[回帰]** カテゴリにあります。
 
 2. 適切な種類のトレーニング データが含まれるデータセットを追加します。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "87094631"
 
     このモジュールでは、L1 正則化と L2 正則化の組み合わせを適用できます。 L1 と L2 の正則化を組み合わせることにより、パラメーター値の絶対値にペナルティを適用することができます。 学習器は、損失の最小化とのトレードオフにおいて、ペナルティを最小限に抑えようとします。
 
-    L1 および L2 の正則化の詳細については、「[機械学習向けの L1 および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」を参照してください。
+    L1 および L2 の正則化の詳細については、「[機械学習向けの L1 および L2 正規化](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)」を参照してください。
 
 6. **L-BFGS のメモリ サイズ**:モデルの調整と最適化のために予約するメモリの量を指定します。
 
@@ -105,4 +105,4 @@ ms.locfileid: "87094631"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

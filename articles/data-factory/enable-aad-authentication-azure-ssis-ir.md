@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 30f5b5990e189cb6942c15b65b6a417ce49f0c2b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563995"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637804"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
@@ -28,7 +28,7 @@ ms.locfileid: "87563995"
 
 - Azure SSIS IR で SSIS パッケージを実行するときに、さまざまな Azure リソースに接続します。
 
-ADF のマネージド ID について詳しくは、「[Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
+ADF のマネージド ID について詳しくは、「[Data Factory のマネージド ID](./data-factory-service-identity.md)」をご覧ください。
 
 > [!NOTE]
 >
@@ -45,9 +45,9 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
 
 既存の Azure AD グループを使用するか、または Azure AD PowerShell を使用して新しいグループを作成できます。
 
-1.  [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールします。
+1.  [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) モジュールをインストールします。
 
-2.   `Connect-AzureAD` を使用してサインインし、次のコマンドレットを実行してグループを作成し、それを変数に保存します。
+2.  `Connect-AzureAD` を使用してサインインし、次のコマンドレットを実行してグループを作成し、それを変数に保存します。
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -66,7 +66,7 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  ADF のマネージド ID をグループに追加します。 「[Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」の記事に従って、プリンシパル マネージド ID オブジェクト ID (たとえば 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc ですが、この目的にマネージド ID アプリケーション ID は使用しないでください) を取得できます。
+3.  ADF のマネージド ID をグループに追加します。 「[Data Factory のマネージド ID](./data-factory-service-identity.md)」の記事に従って、プリンシパル マネージド ID オブジェクト ID (たとえば 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc ですが、この目的にマネージド ID アプリケーション ID は使用しないでください) を取得できます。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -80,7 +80,7 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
 
 ### <a name="configure-azure-ad-authentication-for-sql-database"></a>SQL Database に対する Azure AD 認証を構成する
 
-次の手順を使用して、「 [SQL による Azure AD 認証の構成と管理](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)」を行うことができます。
+次の手順を使用して、[SQL による Azure AD 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)を行うことができます。
 
 1.  Azure Portal で、左側のナビゲーションから **[すべてのサービス]**  ->  **[SQL Server]** を選択します。
 
@@ -96,19 +96,19 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
 
 ### <a name="create-a-contained-user-in-sql-database-representing-the-azure-ad-group"></a>Azure AD グループを表す包含ユーザーを SQL Database に作成する
 
-この次のステップでは、 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)  (SSMS) が必要です。
+この次のステップでは、[Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。
 
 1. SSMS を起動します。
 
 2. **[サーバーに接続]** ダイアログで、 **[サーバー名]** フィールドにサーバー名を入力します。
 
-3. **[認証]** フィールドで、 **[Active Directory - MFA サポートで汎用]** を選択します (他の 2 つの Active Directory 認証の種類を使用することもできます。「[SQL による Azure AD 認証の構成と管理](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)」を参照)。
+3. **[認証]** フィールドで、 **[Active Directory - MFA サポートで汎用]** を選択します (他の 2 つの Active Directory 認証の種類を使用することもできます。「 [SQL による Azure AD 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照)。
 
 4. **[ユーザー名]** フィールドに、サーバー管理者として設定した Azure AD アカウントの名前 (testuser@xxxonline.com など) を入力します。
 
 5. **[接続]** を選択し、サインイン プロセスを完了します。
 
-6. **オブジェクト エクスプローラー**で、 **[データベース]**  ->  **[システム データベース]** フォルダーを展開します。
+6. **オブジェクト エクスプローラー** で、 **[データベース]**  ->  **[システム データベース]** フォルダーを展開します。
 
 7. **マスター** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -128,7 +128,7 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
 
    このコマンドは正常に完了し、包含ユーザーにデータベース (SSISDB) を作成する権限が与えられます。
 
-10. SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、**マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、**SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
+10. SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、 **マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、 **SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 11. クエリ ウィンドウで、次の T-SQL コマンドを入力し、ツールバーの **[実行]** を選択します。
 
@@ -152,17 +152,17 @@ SQL Managed Instance では、ADF のマネージド ID を使用してデータ
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance に対する Azure AD 認証を構成する
 
-[SQL Managed Instance の Azure Active Directory 管理者のプロビジョニング](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)の手順に従います。
+[SQL Managed Instance の Azure Active Directory 管理者のプロビジョニング](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)の手順に従います。
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-sql-managed-instance"></a>ADF のマネージド ID を SQL Managed Instance 内のユーザーとして追加する
 
-この次のステップでは、 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)  (SSMS) が必要です。
+この次のステップでは、[Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。
 
 1.  SSMS を起動します。
 
 2.  **sysadmin** である SQL Server アカウントを使用して、SQL Managed Instance に接続します。 これは、Azure SQL Managed Instance 用 Azure AD サーバー プリンシパル (ログイン) の一般提供が開始されたら削除される一時的な制限事項です。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。"Msg 15247、Level 16、State 1、Line 1 このアクションを実行するアクセス許可がユーザーにありません"
 
-3.  **オブジェクト エクスプローラー**で、 **[データベース]**  ->  **[システム データベース]** フォルダーを展開します。
+3.  **オブジェクト エクスプローラー** で、 **[データベース]**  ->  **[システム データベース]** フォルダーを展開します。
 
 4.  **マスター** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -176,7 +176,7 @@ SQL Managed Instance では、ADF のマネージド ID を使用してデータ
     
     このコマンドは正常に完了し、ADF のマネージド ID にデータベース (SSISDB) を作成する権限が与えられます。
 
-6.  SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、**マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、**SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
+6.  SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、 **マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、 **SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 7.  クエリ ウィンドウで、次の T-SQL コマンドを入力し、ツールバーの **[実行]** を選択します。
 
@@ -191,7 +191,7 @@ SQL Managed Instance では、ADF のマネージド ID を使用してデータ
 
 Azure Portal/ADF アプリで Azure-SSIS IR をプロビジョニングする場合は、 **[SQL の設定]** ページで **[Use AAD authentication with the managed identity for your ADF] (ADF のマネージド ID で AAD 認証を使用する)** オプションを選択します。 次のスクリーンショットは、SSISDB をホストしている SQL Database での IR の設定を示しています。 SSISDB をホストしている SQL Managed Instance での IR には、 **[Catalog Database Service Tier]\(カタログ データベースのサービス レベル)** および **[Allow Azure services to access]\(Azure サービスにアクセスを許可する\)** の設定は適用されませんが、その他の設定は同じです。
 
-Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)」を参照してください。
+Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](./create-azure-ssis-integration-runtime.md)」を参照してください。
 
 ![Azure-SSIS 統合ランタイムの設定](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 
@@ -199,7 +199,7 @@ Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Fac
 
 PowerShell を使用して Azure-SSIS IR をプロビジョニングするには、次のようにします。
 
-1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)  モジュールをインストールします。
+1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) モジュールをインストールします。
 
 2.  スクリプトで `CatalogAdminCredential` パラメーターを設定しないでください。 次に例を示します。
 
@@ -226,8 +226,8 @@ PowerShell を使用して Azure-SSIS IR をプロビジョニングするには
 
 Azure SSIS IR で SSIS パッケージを実行するときに、マネージド ID 認証を使用してさまざまな Azure リソースに接続できます。 現在、次の接続マネージャーでマネージド ID 認証が既にサポートされています。
 
-- [OLE DB 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+- [OLE DB 接続マネージャー](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [ADO.NET 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+- [ADO.NET 接続マネージャー](/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [Azure Storage 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)
+- [Azure Storage 接続マネージャー](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

@@ -1,7 +1,7 @@
 ---
 title: 信頼度スコア - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
+description: ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131159"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346377"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>回答の信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
@@ -62,7 +62,7 @@ ms.locfileid: "87131159"
 ボット フレームワークからは、[C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) または [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs) で options オブジェクトの一部としてスコアを設定します。
 
 ## <a name="improve-confidence-scores"></a>信頼度スコアの向上
-ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 大文字と小文字が区別される[単語変更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)を使用して、KB のキーワードにシノニムを追加することもできます。
+ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 大文字と小文字が区別される[単語変更](/rest/api/cognitiveservices/qnamaker/alterations/replace)を使用して、KB のキーワードにシノニムを追加することもできます。
 
 
 ## <a name="similar-confidence-scores"></a>類似する信頼度スコア
@@ -76,7 +76,7 @@ ms.locfileid: "87131159"
 * 次のいずれかを使用してナレッジ ベースを整理します。
     * 1 つのリソースを 1 つの KB に制限する: 単一の QnA リソース (および結果の Azure Cognitive Search テスト インデックス) を 1 つのナレッジ ベースに制限します。
     * 2 つのリソース (テストに 1 つ、実稼働に 1 つ): 2 つの QnA Maker リソースを、1 つはテストに使用し (独自のテスト インデックスと実稼働インデックスを含みます)、もう 1 つは製品用に使用します (こちらも独自のテスト インデックスと実稼働インデックスを含みます)。
-* また、テストと実稼働の両方のナレッジ ベースに対してクエリを実行する場合は、 **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** などの同じパラメーターを常に使用します。
+* また、テストと実稼働の両方のナレッジ ベースに対してクエリを実行する場合は、**[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** などの同じパラメーターを常に使用します。
 
 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
 
@@ -89,4 +89,3 @@ ms.locfileid: "87131159"
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ベスト プラクティス](./best-practices.md)
-

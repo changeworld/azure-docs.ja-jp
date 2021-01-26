@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/31/2020
+ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 350584984bff82c7dc80aff38044d887f981424c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256755"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059572"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -69,10 +69,10 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-environment"></a>環境の構成 
 
 1. **Postman** アプリを開きます。
-2. 画面の右側で、 **[Manage environment]\(環境の管理\)** オプションを選択します。
+2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]\(環境の管理\)** ダイアログで、 **[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
@@ -117,7 +117,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
     次の **POST** 操作が送信されます。
 
     ```
-    https://login.microsoftonline.com/:tenantId/oauth2/token
+    https://login.microsoftonline.com/:aadTenantDomain/oauth2/token
     ```
 
 4. 応答がトークンと共に返され、"AccessToken" 環境変数がトークン値に設定されます。 "AccessToken" を設定するコードを確認するには、 **[Tests]\(テスト\)** タブをクリックします。 
@@ -170,14 +170,21 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
 
+> [!NOTE]
+> ストレージ アカウントとコンテナーの名前は、実際の環境ファイルのものに置き換えるか、独自に指定してください。
+>
+> この記事の中で後述する手順を実行する際は、必ず有効なパラメーターを要求本文に指定してください。
+
 ### <a name="create-a-transform"></a>変換を作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
 
 新しい [Transform](/rest/api/media/transforms) インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、**TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この記事で説明されているサンプルでは、**AdaptiveStreaming** という名前の組み込みプリセットを使っています。 プリセットは、入力ビデオを入力の解像度とビットレートに基づいて自動生成されるビットレート ラダー (ビットレートと解像度のペア) にエンコードし、ビットレートと解像度の各ペアに対応する、H.264 ビデオと AAC オーディオを含む ISO MP4 ファイルを生成します。 このプリセットについては、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページをご覧ください。
 
@@ -217,7 +224,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="create-a-job"></a>ジョブの作成
 
-[ジョブ](/rest/api/media/jobs)は、作成された**変換**を特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
+[ジョブ](/rest/api/media/jobs)は、作成された **変換** を特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
 
 この例では、ジョブの入力は HTTPS URL ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") に基づいています。
 
@@ -262,7 +269,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
-エンコード ジョブが完了したら、次に、出力**アセット**内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
+エンコード ジョブが完了したら、次に、出力 **アセット** 内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
 
 ストリーミング ロケーターを作成するプロセスは発行と呼ばれます。 既定では、ストリーミング ロケーターは API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存在し続けます。 
 
@@ -271,7 +278,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 > [!IMPORTANT]
 > カスタム [StreamingPolicy](/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 
 
-Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 ストリーミング ロケーターごとに新しい**ストリーミング ポリシー**を作成しないでください。
+Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 ストリーミング ロケーターごとに新しい **ストリーミング ポリシー** を作成しないでください。
 
 1. Postman アプリの左側のウィンドウで、[Streaming Policies and Locators]\(ストリーミング ポリシーとロケーター\) を選択します。
 2. 次に、[Create a Streaming Locator (clear)]\(ストリーミング ロケーターの作成 \(クリア\)\) を選択します。
@@ -355,8 +362,9 @@ Media Service アカウントには、**ストリーミング ポリシー** エ
     ホスト名を取得するには、次の GET 操作を使用できます。
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    また、`resourceGroupName` パラメーターと `accountName` パラメーターは、必ず環境ファイルに合わせてください。 
     
 3. 前のセクション「パスの一覧を取得する」で取得したパス。  
 
@@ -370,7 +378,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> ストリーム配信元の**ストリーミング エンドポイント**が実行されていることを確認してください。
+> ストリーム配信元の **ストリーミング エンドポイント** が実行されていることを確認してください。
 
 ストリーム配信をテストするため、この記事では Azure Media Player を使います。 
 
@@ -382,7 +390,7 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
-一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、**Transform** は再利用し、**ストリーミング ロケーター**などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  
+一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、**Transform** は再利用し、**ストリーミング ロケーター** などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  
 
 リソースを削除するには、削除するリソースの [削除] 操作を選択します。
 

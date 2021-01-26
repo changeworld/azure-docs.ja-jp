@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - クラスターのアッ�
 description: この Azure Kubernetes Service (AKS) のチュートリアルでは、既存の AKS クラスターを最新の使用可能な Kubernetes バージョンにアップグレードする方法を学習します。
 services: container-service
 ms.topic: tutorial
-ms.date: 02/25/2020
-ms.custom: mvc
-ms.openlocfilehash: a89e8bb42bec4323d2189ca93dfe73171c4a128c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 09/30/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 517172b919552a24e9cb12bbaad14eb8cb71b3fd
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887997"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007536"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
@@ -143,10 +143,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * Kubernetes ノードをアップグレードする
 > * 正常なアップグレードを検証する
 
-AKS の詳細については、このリンクに従ってください。
-
-> [!div class="nextstepaction"]
-> [AKS の概要][aks-intro]
+AKS の詳細については、[AKS の概要][aks-intro]に関するページを参照してください。 AKS を使用した完全なソリューションを作成するうえでのガイダンスについては、[AKS ソリューション ガイダンス][aks-solution-guidance]を参照してください。
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -160,3 +157,4 @@ AKS の詳細については、このリンクに従ってください。
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-group-delete]: /cli/azure/group#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE

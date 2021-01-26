@@ -3,9 +3,11 @@
 - name: 概要
   expanded: true
   items:
-    - name: Azure Cognitive Search とは
+    - name: Cognitive Search とは
       href: search-what-is-azure-search.md
-    - name: 新機能
+    - name: 機能の一覧
+      href: search-features-list.md
+    - name: 検索の新機能
       href: whats-new.md
 - name: クイックスタート
   items:
@@ -23,21 +25,23 @@
           href: knowledge-store-create-portal.md
         - name: 検索エクスプローラーを使用したクエリ実行
           href: search-explorer.md
-    - name: ARM テンプレート
-      displayName: Resource Manager
-      href: search-get-started-arm.md
+    - name: Visual Studio Code
+      href: search-get-started-vs-code.md
     - name: C#
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: Node.js
-      href: search-get-started-nodejs.md
-    - name: postman
-      href: search-get-started-postman.md
+    - name: JavaScript
+      href: search-get-started-javascript.md
+    - name: REST
+      href: search-get-started-rest.md
     - name: PowerShell
       href: search-get-started-powershell.md
     - name: Python
       href: search-get-started-python.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: search-get-started-arm.md
 - name: チュートリアル
   items:
     - name: C# アプリの作成
@@ -79,19 +83,21 @@
 - name: サンプル
   items:
     - name: C# のサンプル
-      href: /samples/browse/?languages=csharp&products=azure-cognitive-search
+      href: samples-dotnet.md
     - name: Java のサンプル
-      href: /samples/browse/?languages=java&products=azure-cognitive-search
+      href: samples-java.md
     - name: JavaScript のサンプル
-      href: /samples/browse/?languages=javascript&products=azure-cognitive-search
+      href: samples-javascript.md
     - name: Python のサンプル
-      href: /samples/browse/?languages=python&products=azure-cognitive-search
+      href: samples-python.md
     - name: REST サンプル
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
 - name: 概念
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
+    - name: 関連性のスコアリング
+      href: index-similarity-and-scoring.md
     - name: インデクサー
       href: search-indexer-overview.md
     - name: AI エンリッチメント
@@ -114,8 +120,10 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: インデクサー リソースのセキュリティ保護
+        - name: 保護されたコンテンツへのアクセス
           href: search-indexer-securing-resources.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: インデックスとコンストラクトの作成
@@ -136,13 +144,13 @@
           items:
             - name: シノニムの追加
               href: search-synonyms.md
-            - name: シノニムの例
+            - name: シノニム C# の例
               href: search-synonyms-tutorial-sdk.md
         - name: 複合データ型をモデル化する
           href: search-howto-complex-data-types.md
         - name: リレーショナル データをモデル化する
           href: index-sql-relational-data.md
-    - name: データの取り込み
+    - name: データをインポートする
       items:
         - name: データ インポートの概要
           href: search-what-is-data-import.md
@@ -154,44 +162,16 @@
           href: search-howto-large-index.md
         - name: 同時更新を処理する
           href: search-howto-concurrency.md
-    - name: Azure のみのデータを取り込む
+    - name: Azure データ (インデクサー) をインポートする
       items:
-        - name: インデクサーを構成する
-          href: search-indexer-overview.md
-        - name: インデクサーの監視
-          href: search-howto-monitor-indexers.md
-        - name: インデクサーのスケジュール設定
-          href: search-howto-schedule-indexers.md
-        - name: フィールドのマッピング
-          href: search-indexer-field-mappings.md
-        - name: データ ソース
+        - name: インデクサーの操作
           items:
-            - name: Azure BLOB
-              items:
-                - name: BLOB を検索する
-                  href: search-blob-storage-integration.md
-                - name: AI を使用して BLOB を理解する
-                  href: search-blob-ai-integration.md
-                - name: BLOB インデクサーを構成する
-                  href: search-howto-indexing-azure-blob-storage.md
-                - name: 一対多の BLOB のインデックス作成
-                  href: search-howto-index-one-to-many-blobs.md
-                - name: CSV BLOB のインデックス作成
-                  href: search-howto-index-csv-blobs.md
-                - name: JSON BLOB のインデックス作成
-                  href: search-howto-index-json-blobs.md
-            - name: Azure テーブル
-              href: search-howto-indexing-azure-tables.md
-            - name: Azure Cosmos DB
-              href: search-howto-index-cosmosdb.md
-            - name: Azure Data Lake Storage Gen2
-              href: search-howto-index-azure-data-lake-storage.md
-            - name: SQL Database
-              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: SQL マネージド インスタンス
-              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-            - name: SQL Server VM
-              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+            - name: インデクサーの監視
+              href: search-howto-monitor-indexers.md
+            - name: インデクサーのスケジュール設定
+              href: search-howto-schedule-indexers.md
+            - name: フィールドのマッピング
+              href: search-indexer-field-mappings.md
         - name: マネージド ID を使用して接続する
           items:
             - name: マネージド ID の概要
@@ -202,6 +182,38 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
+        - name: Azure BLOB
+          items:
+            - name: BLOB を検索する
+              href: search-blob-storage-integration.md
+            - name: AI を使用して BLOB を理解する
+              href: search-blob-ai-integration.md
+            - name: BLOB インデクサーを構成する
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 変更および削除された BLOB のインデックス作成
+              href: search-howto-index-changed-deleted-blobs.md
+            - name: 一対多の BLOB のインデックス作成
+              href: search-howto-index-one-to-many-blobs.md
+            - name: プレーンテキストのインデックス作成
+              href: search-howto-index-plaintext-blobs.md
+            - name: CSV BLOB のインデックス作成
+              href: search-howto-index-csv-blobs.md
+            - name: JSON BLOB のインデックス作成
+              href: search-howto-index-json-blobs.md
+            - name: 暗号化された BLOB にインデックスを付ける
+              href: search-howto-index-encrypted-blobs.md
+        - name: Azure テーブル
+          href: search-howto-indexing-azure-tables.md
+        - name: Azure Cosmos DB
+          href: search-howto-index-cosmosdb.md
+        - name: Azure Data Lake Storage Gen2
+          href: search-howto-index-azure-data-lake-storage.md
+        - name: Azure SQL Databases
+          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+        - name: Azure SQL Managed Instance
+          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+        - name: Azure SQL Server VM
+          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
     - name: スキルを使用する (AI)
       items:
         - name: Cognitive Services リソースをアタッチする
@@ -246,9 +258,11 @@
       items:
         - name: クエリの種類と構成
           href: search-query-overview.md
-        - name: 簡単なクエリを作成する
+        - name: 基本的なクエリの作成
+          href: search-query-create.md
+        - name: 単純な構文の使用 (例)
           href: search-query-simple-examples.md
-        - name: 完全な Lucene 構文を使用する
+        - name: 完全な Lucene の使用 (例)
           href: search-query-lucene-examples.md
         - name: 部分的な語句と特殊文字
           href: search-query-partial-matching.md
@@ -286,8 +300,6 @@
       items:
         - name: 結果を操作する
           href: search-pagination-page-layout.md
-        - name: 関連性のスコアリング
-          href: index-similarity-and-scoring.md
         - name: スコアリング プロファイル
           href: index-add-scoring-profiles.md
         - name: 類似性アルゴリズム
@@ -296,10 +308,12 @@
       items:
         - name: レベルの選択
           href: search-sku-tier.md
+        - name: 容量の見積もりと管理
+          href: search-capacity-planning.md
+        - name: コストの見積もり
+          href: search-sku-manage-costs.md
         - name: サービスの制限
           href: search-limits-quotas-capacity.md
-        - name: 容量の調整
-          href: search-capacity-planning.md
         - name: パフォーマンスのためのスケール
           href: search-performance-optimization.md
         - name: マルチテナント アーキテクチャ
@@ -312,9 +326,11 @@
           href: search-api-preview.md
         - name: .NET での開発
           items:
-            - name: Microsoft.Azure.Search (v10) を使用する
+            - name: Azure.Search.Documents を使用する
               href: search-howto-dotnet-sdk.md
-            - name: 作業開始 (v10)
+            - name: Microsoft.Azure.Search を使用する
+              href: search-howto-dotnet-sdk-v10.md
+            - name: 従来のクイックスタート (Microsoft.Azure.Search)
               href: search-get-started-dotnet-v10.md
         - name: SDK をアップグレードする
           items:
@@ -350,12 +366,6 @@
               href: service-configure-firewall.md
             - name: プライベート エンドポイントの作成
               href: service-create-private-endpoint.md
-        - name: ID ベースのアクセス
-          items:
-            - name: セキュリティ フィルター
-              href: search-security-trimming-for-azure-search.md
-            - name: ユーザー ID でフィルター処理する
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: アウトバウンド セキュリティ (インデクサー)
           items:
             - name: IP 範囲に対するアクセス
@@ -364,6 +374,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: プライベート エンドポイント経由のアクセス
               href: search-indexer-howto-access-private.md
+        - name: ドキュメント レベルのセキュリティ
+          items:
+            - name: セキュリティ フィルター
+              href: search-security-trimming-for-azure-search.md
+            - name: ユーザー ID でフィルター処理する
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理する
       items:
         - name: ポータル
@@ -395,7 +411,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/search?view=azure-cli-latest
+      href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
     - name: Resource Manager テンプレート
@@ -413,25 +429,27 @@
     - name: .NET
       items:
         - name: Search API
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: 管理 API
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: Search API
+          href: /java/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: Search API
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: Search API
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: OData 言語のリファレンス
       items:
         - name: 概要
@@ -524,6 +542,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK ファイルのデモ
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC ジョブのデモ
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: トレーニング
       items:
         - name: 入門 (Microsoft Learn)
@@ -532,6 +552,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 開発者向けコース (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: パートナー ソリューション
+      href: resource-partners-knowledge-mining.md
     - name: よく寄せられる質問
       href: search-faq-frequently-asked-questions.md
     - name: 価格

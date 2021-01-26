@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87bfe1109640f158b92f54b945d314ac65a93ddc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666639"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107914"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -51,13 +51,13 @@ Azure データが Log Analytics のインジェスト ポイントで使用可�
 ### <a name="management-solutions-collection"></a>管理ソリューションのコレクション
 一部のソリューションでは、エージェントからデータを収集せず、さらに待機時間がかかるコレクション メソッドを使用する場合があります。 一部のソリューションでは、ほぼリアルタイムでの収集を試みることなく、一定の間隔でデータを収集します。 具体的な例を次に示します。
 
-- Office 365 ソリューションでは、Office 365 Management Activity API (現在はほぼリアルタイムの待機時間を保証していません) を使用して、アクティビティ ログがポーリングされます。
+- Microsoft 365 ソリューションを使用すると、Management Activity API (現在はほぼリアルタイムの待機時間を保証していません) を使用して、アクティビティ ログがポーリングされます。
 - Windows Analytics ソリューション (Update Compliance など) のデータは、毎日の頻度でソリューションによって収集されます。
 
 各ソリューションのコレクションの頻度を判断するには、そのドキュメントを参照してください。
 
 ### <a name="pipeline-process-time"></a>パイプライン処理時間
-([_TimeReceived](log-standard-properties.md#_timereceived) プロパティに指定されているように) ログ レコードは Azure Monitor パイプラインに取り込まれると、テナントが分離され、データが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
+([_TimeReceived](./log-standard-columns.md#_timereceived) プロパティに指定されているように) ログ レコードは Azure Monitor パイプラインに取り込まれると、テナントが分離され、データが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
 
 ### <a name="new-custom-data-types-provisioning"></a>新しいカスタム データ型のプロビジョニング
 新しいカスタム データの型を[カスタム ログ](data-sources-custom-logs.md)または[データ コレクター API](data-collector-api.md) から作成すると、システムにより専用のストレージ コンテナーが作成されます。 これは、最初にこのデータ型が出現したときにのみ発生する 1 回限りのオーバーヘッドです。
@@ -77,8 +77,8 @@ Azure Monitor の最優先事項は、顧客データが失われることがな
 
 | 手順 | プロパティまたは関数 | 説明 |
 |:---|:---|:---|
-| データ ソースで作成されるレコード | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
-| Azure Monitor のインジェスト エンドポイントによって受信されるレコード | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| データ ソースで作成されるレコード | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
+| Azure Monitor のインジェスト エンドポイントによって受信されるレコード | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | ワークスペースに保存され、クエリに使用できるレコード | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>インジェストの待ち時間
@@ -143,4 +143,3 @@ Heartbeat
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Monitor の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) をお読みください。
-

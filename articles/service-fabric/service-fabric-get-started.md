@@ -5,19 +5,19 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 57e5fe236e117932c3cbc2fcf2479f89aaa261d9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c252a1dc86c50327e32816abd99bc206f3b74608
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069071"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902886"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
+> * [Mac OS X](service-fabric-get-started-mac.md)
 >
 >
 
@@ -54,12 +54,6 @@ Service Fabric ツールは、Visual Studio 2017 および 2019 の Azure 開発
 
 * [Microsoft Azure Service Fabric SDK をインストールする][core-sdk]
 
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Visual Studio 2015 を使用するには (Visual Studio 2015 Update 2 以降が必要)
-
-Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer を使用して SDK やランタイムと共にインストールされます。
-
-* [Microsoft Azure Service Fabric SDK とツールのインストール][full-bundle-vs2015]
-
 ### <a name="sdk-installation-only"></a>SDK のみのインストール
 
 SDK のみが必要な場合は、次のパッケージをインストールすることができます。
@@ -68,8 +62,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 
 現在のバージョンは次のとおりです。
 
-* Service Fabric SDK および Tools 4.1.456
-* Service Fabric ランタイム 7.1.456
+* Service Fabric SDK および Tools 4.2.445
+* Service Fabric ランタイム 7.2.445
 
 サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 
@@ -94,8 +88,9 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 
 * [アプリケーションを作成、デプロイ、および管理する方法](service-fabric-tutorial-create-dotnet-app.md)
 * [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
-* [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
+* [GitHub での Service Fabric コード サンプルの確認](/samples/browse/?products=azure)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+* [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"

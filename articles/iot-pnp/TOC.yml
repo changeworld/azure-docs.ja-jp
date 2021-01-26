@@ -4,106 +4,104 @@
   items:
     - name: IoT プラグ アンド プレイとは
       href: overview-iot-plug-and-play.md
-    - name: プレビュー更新版の更新内容
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: 現在のリリースの内容
+      href: overview-iot-plug-and-play-current-release.md
 - name: クイックスタート
   expanded: true
   items:
+    - name: 環境を設定する
+      href: set-up-environment.md
     - name: デバイスを IoT Hub に接続する
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: ソリューションからのデバイスの操作
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
+      href: quickstart-service.md
 - name: チュートリアル
   items:
-    - name: 複数のコンポーネント デバイスに接続する (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: 複数のコンポーネント デバイスに接続する (Java)
-      href: tutorial-multiple-components-java.md
-    - name: 複数のコンポーネント デバイスに接続する (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: 複数のコンポーネント デバイスに接続する (Python)
-      href: tutorial-multiple-components-python.md
+    - name: 複数のコンポーネント デバイスを接続する
+      href: tutorial-multiple-components.md
     - name: MQTT を使用してデバイスを接続する
       href: tutorial-use-mqtt.md
+    - name: MXChip デバイスとの対話 (サンプル)
+      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
+    - name: デバイス モジュールを接続する
+      href: tutorial-migrate-device-to-module.md
+    - name: Time Series Insights Gen2 を使用したデータの接続および分析
+      href: tutorial-configure-tsi.md
 - name: 概念
   items:
     - name: アーキテクチャ
       href: concepts-architecture.md
-    - name: 開発者ガイド
-      href: concepts-developer-guide.md
+    - name: デバイス開発者ガイド
+      href: concepts-developer-guide-device.md
+    - name: サービス開発者ガイド
+      href: concepts-developer-guide-service.md
     - name: コンポーネント
       href: concepts-components.md
     - name: IoT プラグ アンド プレイの規則
       href: concepts-convention.md
+    - name: IoT プラグ アンド プレイ ブリッジ
+      href: concepts-iot-pnp-bridge.md
     - name: Digital Twins
       href: concepts-digital-twin.md
+    - name: デバイス認定
+      href: concepts-certification-program.md
     - name: モデル リポジトリ
       href: concepts-model-repository.md
     - name: ソリューションでのモデルの使用
       href: concepts-model-discovery.md
     - name: モデル パーサー
       href: concepts-model-parser.md
-    - name: 制限とクォータ
-      href: concepts-limits-quotas.md
     - name: 用語集
       href: iot-plug-and-play-glossary.md
 - name: 操作方法ガイド
   items:
     - name: IoT エクスプローラーをインストールして使用する
       href: howto-use-iot-explorer.md
-    - name: Azure IoT CLI 拡張機能をインストールして使用する
-      href: howto-use-iot-pnp-cli.md
+    - name: DTDL 作成ツールをインストールして使用する
+      href: howto-use-dtdl-authoring-tools.md
+    - name: 埋め込み C を使用する
+      href: howto-use-embedded-c.md
     - name: デジタル ツインを管理する
       href: howto-manage-digital-twin.md
     - name: デバイスを認定する
       href: howto-certify-device.md
+    - name: IoT プラグ アンド プレイ ブリッジをインストールして使用する
+      href: howto-use-iot-pnp-bridge.md
+    - name: IoT プラグ アンド プレイ ブリッジを構築、デプロイ、拡張する
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: リファレンス
   items:
     - name: ライブラリと SDK
       href: libraries-sdks.md
     - name: Digital Twin REST API
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: /rest/api/iothub/service/digitaltwin
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
+          href: ./index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT デバイス SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks

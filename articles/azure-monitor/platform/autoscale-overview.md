@@ -4,12 +4,12 @@ description: Microsoft Azure の自動スケール
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073490"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505839"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure の自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -61,11 +61,11 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 
 - **自動スケール設定** は自動スケールエンジンによって読み取られ、スケールアップまたはダウンするかどうかが判断されます。 1 つ以上のプロファイル、ターゲット リソースに関する情報、および通知の設定が含まれています。
 
-  - **自動スケール プロファイル**は、次の要素を組み合わせたものです。
+  - **自動スケール プロファイル** は、次の要素を組み合わせたものです。
 
-    - **容量設定**。インスタンスの数の最小値、最大値、既定値を示します。
-    - **一連のルール**。各ルールに、トリガー (時間またはメトリック) とスケール アクション (スケールアップまたはスケールダウン) が含まれています。
-    - **繰り返し**。自動スケールによってこのプロファイルがいつ有効になるかを示します。
+    - **容量設定** 。インスタンスの数の最小値、最大値、既定値を示します。
+    - **一連のルール** 。各ルールに、トリガー (時間またはメトリック) とスケール アクション (スケールアップまたはスケールダウン) が含まれています。
+    - **繰り返し** 。自動スケールによってこのプロファイルがいつ有効になるかを示します。
 
       さまざまな重複する要件に対処できるように、複数のプロファイルを設定できます。 たとえば、一日 の異なる時間、または曜日に異なる自動スケール プロファイルを設定することができます。
 
@@ -103,10 +103,13 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 | Virtual Machines: Windows スケール セット |[Windows での仮想マシン スケール セットのスケーリング](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux スケール セット |[Linux での仮想マシン スケール セットのスケーリング](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Windows の例 |[VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](autoscale-virtual-machine-scale-sets.md) |
+| Azure App Service |[Azure App Service でアプリをスケールアップする](../../app-service/manage-scale-up.md)|
 | API Management サービス|[Azure API Management インスタンスを自動的にスケーリングする](../../api-management/api-management-howto-autoscale.md)
 | Azure Data Explorer クラスター|[需要の変化に対応するために Azure Data Explorer のクラスターのスケーリングを管理する](/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[Azure App Service でアプリをスケールアップする](../../app-service/manage-scale-up.md)|
 | Logic Apps |[統合サービス環境 (ISE) のキャパシティを追加する](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
+| Spring Cloud |[マイクロサービス アプリケーションの自動スケーリングを設定する](../../spring-cloud/spring-cloud-tutorial-setup-autoscale.md)|
+| Service Bus |[Azure Service Bus 名前空間のメッセージング ユニットを自動的に更新する](../../service-bus-messaging/automate-update-messaging-units.md)|
+
 ## <a name="next-steps"></a>次のステップ
 自動スケールについてさらに学習するには、上の一覧にある自動スケールのチュートリアルを使用するか、以下のリソースを参照してください。
 

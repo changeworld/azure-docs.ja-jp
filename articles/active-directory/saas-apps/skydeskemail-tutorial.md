@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30e94c9737241ff49c29898adcc5e50c6b73a9b1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518678"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>チュートリアル: Azure Active Directory と SkyDesk Email の統合
 
@@ -27,7 +27,7 @@ SkyDesk Email と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで SkyDesk Email に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と SkyDesk Email の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SkyDesk Email では、**SP** Initiated SSO がサポートされます
+* SkyDesk Email では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-skydesk-email-from-the-gallery"></a>ギャラリーからの SkyDesk Email の追加
 
@@ -61,13 +61,13 @@ Azure AD への SkyDesk Email の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SkyDesk Email**」と入力し、結果パネルで **[SkyDesk Email]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **SkyDesk Email** 」と入力し、結果パネルで **[SkyDesk Email]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の SkyDesk Email](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SkyDesk Email で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SkyDesk Email で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SkyDesk Email 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SkyDesk Email で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -106,7 +106,7 @@ SkyDesk Email で Azure AD シングル サインオンを構成するには、�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[SkyDesk Email クライアント サポート チーム](https://www.skydesk.jp/apps/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -126,36 +126,36 @@ SkyDesk Email で Azure AD シングル サインオンを構成するには、�
 
 1. 上部のメニューで、 **[設定]** をクリックし、 **[組織]** を選択します。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![[設定] メニューから [組織] が選択された画面のスクリーンショット。](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. 左側のパネルで **[ドメイン]** をクリックします。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![コントロール パネルから [ドメイン] が選択された画面のスクリーンショット。](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. **[ドメインの追加]** をクリックします。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![[ドメインの追加] が選択された画面のスクリーンショット。](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. 自分のドメイン名を入力し、ドメインを確認します。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![[ドメインの追加] タブのスクリーンショット。ここでドメインを入力することができます。](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. 左側のパネルで **[SAML Authentication (SAML 認証)]** をクリックします。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![コントロール パネルから [SAML Authentication]\(SAML 認証\) が選択された画面のスクリーンショット。](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. **[SAML 認証]** ダイアログ ページで、次の手順に従います。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![[SAML Authentication Details]\(SAML 認証の詳細\) ダイアログ ボックスのスクリーンショット。ここで、説明されている値を入力できます。](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
-    > SAML ベースの認証を使用するには、**ドメインが検証済み**または**ポータル URL** が設定済みである必要があります。 一意の名前でポータル URL を設定できます。
+    > SAML ベースの認証を使用するには、 **ドメインが検証済み** または **ポータル URL** が設定済みである必要があります。 一意の名前でポータル URL を設定できます。
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![名前を入力する [Portal U R L]\(ポータル U R L\) のスクリーンショット。](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[ログイン URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    b. **[ログアウト URL]** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     c. **[パスワード変更 URL]** は省略可能なので、空白のままにします。
 
@@ -181,7 +181,7 @@ SkyDesk Email で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -222,7 +222,7 @@ SkyDesk Email で Azure AD シングル サインオンを構成するには、�
 
 SkyDesk Email 内の左側のパネルで **[User Access (ユーザー アクセス)]** をクリックし、自分のユーザー名を入力します。
 
-![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![コントロール パネルから [User Access]\(ユーザー アクセス\) が選択された画面のスクリーンショット。](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > ユーザーを一括で作成する必要がある場合は、[SkyDesk Email クライアント サポート チーム](https://www.skydesk.jp/apps/support/)にお問い合わせください。
@@ -231,13 +231,12 @@ SkyDesk Email 内の左側のパネルで **[User Access (ユーザー アクセ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SkyDesk Email] タイルをクリックすると、SSO を設定した SkyDesk Email に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SkyDesk Email] タイルをクリックすると、SSO を設定した SkyDesk Email に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -6,17 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: general
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 11/08/2019
+ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e24f1e546de1ce01896e271dbc9155c47f6c2bb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101324"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936262"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用してキー コンテナーを作成する
 
@@ -53,13 +52,13 @@ New-AzResourceGroup -Name 'myResourceGroup" -Location "EastUS"
 - 場所: **EastUS**。
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name "&lt;your-unique-key-vault-name&gt; -ResourceGroupName "myResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
 
 - **Vault Name**:上の --name パラメーターに指定した名前です。
-- **Vault URI (コンテナー URI)** :この例では、これは https://&lt;your-unique-keyvault-name&gt;.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+- **Vault URI (コンテナー URI)** :この例では、これは https://<your-unique-keyvault-name>.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 この時点で、自分の Azure アカウントが唯一、この新しいコンテナーで任意の操作を実行することを許可されています。
 
@@ -75,8 +74,9 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
+このクイックスタートでは、Azure PowerShell を使用してキー コンテナーを作成しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](overview.md)を確認する
-- [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](best-practices.md)を確認する
+- [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
+- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
+

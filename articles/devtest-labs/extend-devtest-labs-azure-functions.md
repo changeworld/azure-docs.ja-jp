@@ -4,10 +4,10 @@ description: Azure Functions を使用して Azure DevTest Labs を拡張する�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476310"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Azure Functions を使用した DevTest Labs の拡張
@@ -22,7 +22,7 @@ Azure Functions を使用して、DevTest Labs で既にサポートされてい
 ## <a name="overview"></a>概要
 [Azure Functions](../azure-functions/functions-overview.md) は Azure のサーバーレス コンピューティング プラットフォームです。 DevTest Labs を使用したソリューションで Azure Functions を使用すると、独自のカスタム コードを使用して既存の機能を拡張することができます。 Azure Functions の詳細については、[Azure Functions のドキュメント](../azure-functions/functions-overview.md)を参照してください。 この記事では、DevTest Labs の要件を満たすことや、シナリオを完成させるのに、Azure Functions がどのように役立つのかを説明するために、ラボの VM の最上位レベルの概要を提供する例を次のように使用します。
 
-**要件/シナリオ例**:ユーザーは、ラボ内のすべての VM に関する詳細 (オペレーティング システム、所有者、適用されるすべての成果物など) を表示できます。  また、**Windows Update の適用**の成果物が最近適用されていない場合は、簡単に適用する方法があります。
+**要件/シナリオ例**:ユーザーは、ラボ内のすべての VM に関する詳細 (オペレーティング システム、所有者、適用されるすべての成果物など) を表示できます。  また、**Windows Update の適用** の成果物が最近適用されていない場合は、簡単に適用する方法があります。
 
 このシナリオを完成させるには、次の図に示すように 2 つの関数を使用します。  
 
@@ -46,19 +46,19 @@ Windows Update の成果物が最近適用されていない VM に対して実�
 ### <a name="step-1-create-a-service-principal"></a>手順 1:サービス プリンシパルの作成 
 最初の手順では、ラボが含まれるサブスクリプションへのアクセス許可を持つサービス プリンシパルを取得します。 サービス プリンシパルは、パスワードベースの認証を使用する必要があります。 これは [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)、または [Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) で実行できます。 使用するサービス プリンシパルが既にある場合は、この手順を省略できます。
 
-サービス プリンシパルの**アプリケーション ID**、**キー**、および**テナント ID** をメモしておきます。 このチュートリアルで後ほど必要になります。 
+サービス プリンシパルの **アプリケーション ID**、**キー**、および **テナント ID** をメモしておきます。 このチュートリアルで後ほど必要になります。 
 
 ### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>手順 2:サンプルをダウンロードして Visual Studio 2019 で開く
 [C# Azure Functions サンプル](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp)のコピーをローカルにダウンロードします (リポジトリを複製するか、[ここ](https://github.com/Azure/azure-devtestlab/archive/master.zip)からリポジトリをダウンロードします)。  
 
 1. Visual Studio 2019 でサンプル ソリューションを開きます。  
-1. Visual Studio の **Azure 開発**ワークロードをインストールします (まだインストールされていない場合)。 **[ツール]**  ->  **[ツールと機能の取得]** メニュー項目からインストールできます。
+1. Visual Studio の **Azure 開発** ワークロードをインストールします (まだインストールされていない場合)。 **[ツール]**  ->  **[ツールと機能の取得]** メニュー項目からインストールできます。
 
     ![[Azure の開発] ワークロード](./media/extend-devtest-labs-azure-functions/azure-development-workload-vs.png)
 1. ソリューションをビルドします。 **[ビルド]** 、 **[ソリューションのビルド]** メニュー項目の順に選択します。
 
 ### <a name="step-3-deploy-the-sample-to-azure"></a>手順 3:サンプルを Azure にデプロイする
-Visual Studio の**ソリューション エクスプローラー** ウィンドウで、**AzureFunctions** プロジェクトを右クリックし、 **[発行]** を選択します。 ウィザードに従って、新規または既存の Azure Functions アプリへの発行を完了します。 Visual studio を使用した Azure Functions の開発とデプロイの詳細については、[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)に関する記事を参照してください。
+Visual Studio の **ソリューション エクスプローラー** ウィンドウで、**AzureFunctions** プロジェクトを右クリックし、 **[発行]** を選択します。 ウィザードに従って、新規または既存の Azure Functions アプリへの発行を完了します。 Visual studio を使用した Azure Functions の開発とデプロイの詳細については、[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)に関する記事を参照してください。
 
 ![[発行] ダイアログ](./media/extend-devtest-labs-azure-functions/publish-dialog.png)
 

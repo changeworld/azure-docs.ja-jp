@@ -6,17 +6,18 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 10/08/2020
+ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782942"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919965"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
-この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。
+この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+
 
 ## <a name="general"></a>全般
 
@@ -30,7 +31,7 @@ ms.locfileid: "88782942"
 メトリックやアクティビティ ログの収集など、自動的に有効になる Azure Monitor の機能は、無料で提供されます。 ログ クエリやアラートなどの他の機能については、関連コストが発生します。 詳細な価格については、[Azure Monitor の価格に関するページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Azure Monitor を有効にするにはどうすればよいですか?
-Azure Monitor は新しい Azure サブスクリプションを作成した時点で有効になり、[アクティビティ ログ](./platform/platform-logs-overview.md)とプラットフォーム [メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 Azure リソースの動作に関するさらに詳細な情報を収集するには[診断設定](platform/diagnostic-settings.md)を作成し、特定のサービスについて収集されたデータについて追加の分析を提供するには[監視ソリューション](insights/solutions.md)と[分析情報](insights/insights-overview.md)を追加します。 
+Azure Monitor は新しい Azure サブスクリプションを作成した時点で有効になり、[アクティビティ ログ](./platform/platform-logs-overview.md)とプラットフォーム [メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 Azure リソースの動作に関するさらに詳細な情報を収集するには[診断設定](platform/diagnostic-settings.md)を作成し、特定のサービスについて収集されたデータについて追加の分析を提供するには[監視ソリューション](insights/solutions.md)と[分析情報](./monitor-reference.md)を追加します。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Monitor にアクセスするにはどうすればよいですか?
 Azure Monitor のすべての機能とデータには、Azure portal の **[モニター]** メニューからアクセスします。 さまざまな Azure サービスのメニューの **[監視]** セクションでは、特定のリソースに対してフィルター処理されたデータを使用して、同じツールにアクセスできます。 Azure Monitor データには、CLI、PowerShell、REST API を使用したさまざまなシナリオでもアクセスできます。
@@ -64,7 +65,7 @@ Azure Monitor では、さまざまなソースからのデータが[ログ](pla
 ## <a name="solutions-and-insights"></a>ソリューションと分析情報
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Monitor での分析情報とはどのようなものですか?
-分析情報では、特定の Azure サービスに対するカスタマイズされた監視エクスペリエンスが提供されます。 Azure Monitor の他の機能と同じメトリックとログが使用されますが、追加データを収集し、Azure portal で独自のエクスペリエンスを提供することができます。 [Azure Monitor での分析情報](insights/insights-overview.md)に関する記事をご覧ください。
+分析情報では、特定の Azure サービスに対するカスタマイズされた監視エクスペリエンスが提供されます。 Azure Monitor の他の機能と同じメトリックとログが使用されますが、追加データを収集し、Azure portal で独自のエクスペリエンスを提供することができます。 [Azure Monitor での分析情報](./monitor-reference.md)に関する記事をご覧ください。
 
 Azure portal で分析情報を表示するには、 **[モニター]** メニューの **[分析情報]** セクション、またはサービスのメニューの **[監視]** セクションを使用します。
 
@@ -76,11 +77,11 @@ Azure portal でソリューションを表示するには、 **[モニター]**
 ## <a name="logs"></a>ログ
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure Monitor ログと Azure Data Explorer の違いは何ですか?
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Monitor ログは、Azure Data Explorer を基にして構築されており、若干の違いはありますが同じ Kusto クエリ言語 (KQL) を使用します。 「[Azure Monitor ログ クエリ言語の違い](log-query/data-explorer-difference.md)」をご覧ください。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Monitor ログは、Azure Data Explorer を基にして構築されており、若干の違いはありますが同じ Kusto クエリ言語 (KQL) を使用します。 「[Azure Monitor ログ クエリ言語の違い](/azure/data-explorer/kusto/query/)」をご覧ください。
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](log-query/log-query-overview.md)」をご覧ください。
-
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータは削除できますか?
 データは、ワークスペースの[保有期間](platform/manage-cost-storage.md#change-the-data-retention-period)に従って削除されます。 プライバシーやコンプライアンス上の理由から、特定のデータを削除することが可能です。 詳細については、「[プライベート データをエクスポートして削除する方法](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
@@ -98,7 +99,7 @@ Azure Monitor によって収集されたすべてのログ データは、Log A
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>エラーが発生する理由:VM から Log Analytics を開くときに、"このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
 多くのリソース プロバイダーは自動的に登録されますが、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>VM から Log Analytics を開くときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>VM から Log Analytics を開くときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 VM ログを表示するには、VM ログを格納するワークスペースに対する読み取りアクセス許可が付与される必要があります。 このような場合、管理者が Azure でのアクセス許可を付与する必要があります。
 
 ## <a name="metrics"></a>メトリック
@@ -223,7 +224,7 @@ WireData
 * [Node.js アプリ](app/nodejs.md)
 * [Azure で動作する Web アプリ](app/azure-web-apps.md)
 * [Azure の Cloud Services](app/cloudservices.md)
-* [Docker で実行中のアプリ サーバー](app/docker.md)
+* [Docker で実行中のアプリ サーバー](./azure-monitor-app-hub.yml)
 * [単一ページの Web アプリ](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Windows デスクトップ アプリ](app/windows-desktop.md)
@@ -241,7 +242,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ### <a name="how-much-does-it-cost"></a>コストはどれくらいですか。
 
-* Application Insights リソースで **[使用量と推定コスト] ページ**を開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
+* Application Insights リソースで **[使用量と推定コスト] ページ** を開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
 * [Azure の [課金] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)を開き、リソース全体での請求額を確認します。
 
 ### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?
@@ -267,6 +268,10 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、 **[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
+
+### <a name="do-new-azure-regions-require-the-use-of-connection-strings"></a>新しい Azure リージョンでは、接続文字列を使用する必要がありますか。
+
+新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./app/sdk-connection-string.md)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Azure Resource Manager のデプロイで `providers('Microsoft.Insights', 'components').apiVersions[0]` を使用できますか?
 
@@ -321,7 +326,6 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 * サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
 * Application Insights で IP アドレスと geo ロケーション データが収集される方法の詳細については、こちらの[記事](./app/ip-collection.md)を参照してください。
 
-
 別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細については、こちらを参照してください](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 [Power BI を使用する](app/export-power-bi.md )と、要求テレメトリを地図上に表示できます。
@@ -339,7 +343,7 @@ Web SDK を含むすべての SDK には、"信頼できるトランスポート
 
 コードでそのようなデータを送信する場合は可能性があります。 また、スタック トレース内の変数に個人データが含まれている場合にも、送信される可能性があります。 その個人データの処理が適切に行われるように、開発チームでリスク評価を実施する必要があります。 [こちら](app/data-retention-privacy.md)から、データ リテンション期間とプライバシーについての詳細を確認してください。
 
-geo ロケーション属性の検索後、クライアント Web アドレスの**すべて**のオクテットは常に 0 に設定されます。
+geo ロケーション属性の検索後、クライアント Web アドレスの **すべて** のオクテットは常に 0 に設定されます。
 
 ### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Web ページのソースに自分のインストルメンテーション キーが表示されます。 
 
@@ -397,6 +401,29 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Application Insights リソースを新しいリージョンに移動するにはどうすればよいですか?
+
+既存の Application Insights リソースをあるリージョンから別のリージョンに移動することは、**現在サポートされていません**。 収集した履歴データを新しいリージョンに **移行することはできません**。 唯一の部分的な回避策は次のとおりです。
+
+1. 新しいリージョンに新しい Application Insights リソース ([クラシック](app/create-new-resource.md)または[ワークスペースベース](./app/create-workspace-resource.md)) を作成します。
+2. 元のリソースに固有のすべての独自のカスタマイズを新しいリソースに再作成します。
+3. 新しいリージョン リソースの[インストルメンテーション キー](app/create-new-resource.md#copy-the-instrumentation-key)または[接続文字列](app/sdk-connection-string.md)を使用するようにアプリケーションを変更します。  
+4. 新しい Application Insights リソースで引き続きすべてが期待どおりに動作していることをテストして確認します。 
+5. この時点で、元のリソースを削除することができます。これにより、**すべての履歴データが失われ ます**。 または、そのデータ保有設定の期間中、履歴レポートの目的で元のリソースを保持します。
+
+新しいリージョンのリソースに対して、通常、手動で再作成または更新する必要がある独自のカスタマイズには、以下のものがありますが、これらに限定されるものではありません。
+
+- カスタム ダッシュボードとブックを再作成します。 
+- カスタム ログまたはメトリック アラートのスコープを再作成または更新します。 
+- 可用性アラートを再作成します。
+- ユーザーが新しいリソースにアクセスするために必要なカスタムの Azure ロールベースのアクセス制御 (Azure RBAC) 設定を再作成します。 
+- インジェスト サンプリング、データ保有、日次上限、およびカスタム メトリックの有効化を含む設定をレプリケートします。 これらの設定は、 **[使用量と推定コスト]** ペインで制御します。
+- [リリース注釈](./app/annotations.md)、[ライブ メトリックとコントロール チャネルの保護](app/live-stream.md#secure-the-control-channel)など、API キーに依存するすべての統合。新しい API キーを生成し、関連する統合を更新する必要があります。 
+- クラシック リソースの連続エクスポートを再構成する必要があります。
+- ワークスペースベースのリソースの診断設定を再構成する必要があります。
+
+> [!NOTE]
+> 新しいリージョンで作成するリソースによってクラシック リソースが置き換えられる場合は、[新しいワークスペースベースのリソースを作成する](app/create-workspace-resource.md)ことのメリットを検討するか、または[既存のリソースをワークスペースベースに移行する](app/convert-classic-resource.md)ことをお勧めします。 
 
 ### <a name="automation"></a>オートメーション
 
@@ -429,7 +456,7 @@ Azure アラートはメトリックにのみ設定できます。 イベント�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>テレメトリを Application Insights ポータルに送信できますか?
 
-Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
+Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>イントラネット Web サーバーを監視できますか?
 
@@ -523,17 +550,58 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 
 このシナリオでは、リバース プロキシ レイヤーでの問題により、502 または 503 の応答がクライアントに返されますが、Application Insights によってすぐにキャプチャされることはありません。 このレイヤーでの問題を検出するには、リバース プロキシから Log Analytics にログを転送し、502/503 の応答を確認するためのカスタム ルールを作成する必要があります。 502 エラーと 503 エラーの一般的な原因の詳細については、Azure App Service の ["502 無効なゲートウェイです" と "503 サービスを利用できません" のトラブルシューティングに関する記事](../app-service/troubleshoot-http-502-http-503.md)を参照してください。     
 
+
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>OpenTelemetry とは
+
+監視のための新しいオープンソース標準です。 詳細については、[https://opentelemetry.io/](https://opentelemetry.io/) をご覧ください。
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Microsoft/Azure Monitor が OpenTelemetry に投資しているのはなぜですか?
+
+次の 3 つの理由から、お客様により良いサービスを提供できると確信しています。
+   1. より多くの顧客シナリオのサポートを可能にする。
+   2. ベンダー ロックインの心配をせずにインストルメント化する。
+   3. 顧客の透明性とエンゲージメントを向上させる。
+
+また、[オープン ソースを採用する](https://opensource.microsoft.com/)という Microsoft の戦略とも一致しています。
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>OpenTelemetry で提供される付加価値は何ですか?
+
+上記の理由に加えて、OpenTelemetry は、より効率的かつ大規模であり、言語間で一貫した設計または構成が提供されます。
+
+### <a name="how-can-i-test-out-opentelemetry"></a>OpenTelemetry をテストするにはどうしたらよいですか?
+
+[https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) で Azure Monitor Application Insights 早期導入者コミュニティにサインアップして参加してください。
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>OpenTelemetry のコンテキストで GA はどういう意味ですか?
+
+OpenTelemetry コミュニティは、[ここで](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)一般提供 (GA) を定義しています。 ただし、OpenTelemetry の "GA" は、既存の Application Insights SDK との機能パリティを意味するものではありません。 Azure Monitor では、[事前に集計されたメトリック](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、[ライブ メトリック](app/live-stream.md)、[アダプティブ サンプリング](app/sampling.md#adaptive-sampling)、[プロファイラー](app/profiler-overview.md)、[スナップショット デバッガー](app/snapshot-debugger.md)などの機能を必要とするお客様に対しては、OpenTelemetry SDK の機能が成熟するまで、現在の Application Insights SDK が今後も推奨されます。
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>運用環境でプレビュー ビルドを使用できますか?
+
+それはお勧めしません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>OpenTelemetry SDK と自動インストルメンテーションの違いは何ですか?
+
+OpenTelemetry の仕様で [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk) は定義されています。 つまり、"SDK" は、アプリケーションのさまざまなコンポーネントにわたってテレメトリ データを収集し、エクスポーターを介して Azure Monitor にデータを送信する、言語固有のパッケージです。
+
+自動インストルメンテーション (バイトコード インジェクション、コード不要、またはエージェントベースと呼ばれることもあります) の概念は、コードを変更せずにアプリケーションをインストルメント化する機能を指します。 例については、[OpenTelemetry Java 自動インストルメンテーションの Readme](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) で詳細を確認してください。
+
+### <a name="whats-the-opentelemetry-collector"></a>OpenTelemetry コレクターとは何ですか?
+
+OpenTelemetry コレクターについては、[GitHub の readme](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector) で説明されています。 現在、Microsoft は OpenTelemetry コレクターを利用しておらず、Azure Monitor の Application Insights に送信するダイレクト エクスポーターに依存しています。
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus と OpenTelemetry の違いは何ですか?
+
+[OpenCensus](https://opencensus.io/) は [OpenTelemetry](https://opentelemetry.io/) の前段階です。 Microsoft は、[OpenTracing ](https://opentracing.io/) と OpenCensus を統合して、世界の単一の監視標準である OpenTelemetry の作成を支援しました。 Azure Monitor の現在の[運用環境で推奨されている Python SDK](app/opencensus-python.md) は OpenCensus に基づいていますが、最終的には、すべての Azure Monitor の SDK が OpenTelemetry に基づくようになります。
+
+
 ## <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
-
-この Microsoft FAQ では、コンテナーの Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
-
-### <a name="health-feature-is-in-private-preview"></a>正常性機能 (プライベート プレビュー)
-
-機能を追加するための一連の変更を行い、お客様からのフィードバックに対処する予定です。 正常性機能は、2020 年 6 月末にプライベート プレビューに移行します。詳細については、[Azure 更新プログラムに関するお知らせ](https://azure.microsoft.com/updates/ci-health-limited-preview/)を参照してください。
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>ノード ビューで *[その他のプロセス]* は何を表していますか?
 
-**[その他のプロセス]** は、ノードのリソース使用率が高い根本原因を明確に理解するために役立ちます。 これによって、コンテナー化されたプロセスとコンテナー化されていないプロセスで使用率を区別できます。
+**[その他のプロセス]** は、ノードのリソース使用率が高い根本原因を明確に理解するのに役立つことを目的としています。 これによって、コンテナー化されたプロセスとコンテナー化されていないプロセスで使用率を区別できます。
 
 これらの **[その他のプロセス]** とは何ですか? 
 
@@ -563,7 +631,7 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 
 他のテーブルを結合して、これらのプロパティ値を結果に含めます。
 
-ContainerID プロパティに結合することによって ```ContainerInventory``` テーブルの Image プロパティと ImageTag プロパティを含めるようにクエリを変更します。 ContainerID プロパティに結合することによって、KubepodInventory テーブルの ContaineName フィールドから (以前に ```ContainerLog``` テーブルにあったときのように) Name プロパティを含めることができます。こちらの方法をお勧めします。
+ContainerID プロパティに結合することによって ```ContainerInventory``` テーブルの Image プロパティと ImageTag プロパティを含めるようにクエリを変更します。 ContainerID プロパティに結合することによって、KubepodInventory テーブルの ContaineName フィールドから (以前に ```ContainerLog``` テーブルにあったときのように) Name プロパティを含めることができます。 このオプションを選択することをお勧めします。
 
 次の例は、結合を使用してこれらのフィールド値を取得する方法を説明するサンプルの詳細なクエリです。
 
@@ -616,13 +684,13 @@ ContainerInventory テーブルには、停止中と実行中両方のコンテ�
 
 "**Microsoft.OperationsManagement へのサブスクリプション登録がない**" というエラーが表示される場合は、ワークスペースが定義されているサブスクリプションでリソース プロバイダー **Microsoft.OperationsManagement** を登録することで解決できます。 これを行う方法に関するドキュメントは、[こちら](../azure-resource-manager/templates/error-register-resource-provider.md)にあります。
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>RBAC 対応の AKS クラスターはサポートされていますか
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Kubernetes RBAC 対応の AKS クラスターはサポートされていますか。
 
-コンテナー監視ソリューションでは RBAC がサポートされていませんが、Azure Monitor for Containers ではサポートされています。 これらのクラスターのデータが示されるブレードでは、ソリューションの詳細ページに正しい情報が表示されない場合があります。
+コンテナー監視ソリューションでは Kubernetes RBAC がサポートされていませんが、Azure Monitor for Containers ではサポートされています。 これらのクラスターのデータが示されるブレードでは、ソリューションの詳細ページに正しい情報が表示されない場合があります。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Helm を使用して kube システム名前空間内のコンテナーのログ収集を有効にするにはどうすればよいですか
 
-Kube システム名前空間内のコンテナーからのログ収集は、既定では無効になっています。 omsagent で環境変数を設定することにより、ログ収集を有効にすることができます。 詳しくは、[コンテナーの Azure Monitor](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers)に関する GitHub のページをご覧ください。 
+Kube システム名前空間内のコンテナーからのログ収集は、既定では無効になっています。 omsagent で環境変数を設定することにより、ログ収集を有効にすることができます。 詳しくは、[コンテナーの Azure Monitor](https://aka.ms/azuremonitor-containers-helm-chart)に関する GitHub のページをご覧ください。 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>omsagent を最新リリースのバージョンに更新するにはどうすればよいですか
 
@@ -660,12 +728,12 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 AKS クラスターに対して Azure Monitor for containers を有効にした後、クラスターがデータを送信していた Log Analytics ワークスペースを削除する場合、クラスターをアップグレードしようとすると失敗します。 これを回避するには、監視を無効にしてから、サブスクリプション内の別の有効なワークスペースを参照して、監視を再度有効にする必要があります。 クラスターのアップグレードをもう一度実行しようとすると、正常に処理され、完了するはずです。  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>エージェントに対して、どのポートとドメインを開くまたはホワイトリスト登録する必要がありますか
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>エージェントに対して開いたり許可したりする必要があるポートとドメインはどれですか?
 
 Azure、Azure US Government、および Azure China 21Vianet クラウドでコンテナー化されたエージェントに必要なプロキシとファイアウォールの構成情報については、「[ネットワーク ファイアウォールの要件](insights/container-insights-onboard.md#network-firewall-requirements)」をご覧ください。
 
+
 ## <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
-この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>既存のワークスペースにオンボードすることはできますか?
 仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[サポートされているリージョン](insights/vminsights-configure-workspace.md#supported-regions)のいずれかにあれば、Azure Monitor for VMs にオンボードするときにそのワークスペースを引き続き使用できます。
@@ -739,8 +807,8 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 
 要求/応答ベースのプロトコル、つまり接続上で単一の要求を送信して単一の応答を受信するプロトコルでは、この概算がうまく機能します。 HTTP(S) (パイプライン処理を伴わないもの) はそれに該当しますが、他のプロトコルでは十分に機能しません。
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics の無料プランを利用している場合、機能の制限はありますか?
-*無料*の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  
+### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics の無料プランを利用している場合、機能の制限はありますか?
+*無料* の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  
 
 この条件下では、VM を開いて左側のウィンドウから **[Insights]\(インサイト\)** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
 

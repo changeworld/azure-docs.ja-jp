@@ -1,97 +1,129 @@
 ---
-title: Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
-description: Azure VMware Solution のプライベート クラウドから必要な情報を取得して、Azure VMware Solution のデプロイまたはプロビジョニングのエラーに対するサービス要求をファイルに取り込む方法について説明します。
+title: Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するサポート
+description: Azure VMware Solution のプライベート クラウドから情報を取得して、Azure VMware Solution のデプロイまたはプロビジョニングのエラーに対するサービス要求を提出します。
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 10/28/2020
+ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752241"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542407"
 ---
-# <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
+# <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するサポート リクエストを開く
 
-この記事では、Azure portal でサービス要求 (SR) を開き、プライベート クラウドでの Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関する支援を受ける方法について説明します。 ただし、まず、Azure portal でいくつかの重要な情報を収集する必要があります。 ほとんどの場合、次のものが必要です。
+この記事では、[サポート リクエスト](https://rc.portal.azure.com/#create/Microsoft.Support)を開き、Azure VMware ソリューションのデプロイまたはプロビジョニングのエラーに関する重要な情報を提供する方法について説明します。 
 
-- 関連付け ID (失敗したデプロイのもの)
-- ExpressRoute 回線 ID (プライベート クラウドの ExpressRoute 回線を使用して既存のプライベート クラウドをスケーリングまたはピアリングしようとして失敗した場合)
+プライベート クラウド上でエラーが発生したときは、Azure portal でサポート リクエストを開く必要があります。 サポート リクエストを開くには、まず Azure portal でいくつかの重要な情報を取得します。
 
-## <a name="collect-the-correlation-id"></a>関連付け ID の収集
+- 関連付け ID
+- Azure ExpressRoute 回線 ID
+- エラー メッセージ
+
+## <a name="get-the-correlation-id"></a>関連付け ID を取得する
  
-まず、関連付け ID を見てみましょう。 プライベート クラウド (または Azure 内の任意のリソース) を作成すると、関連付けられた関連付け ID が生成されます。 各 Azure Resource Manager デプロイでも一意の関連付け ID が生成されます。 この ID により、迅速な SR 作成と解決が可能になります。 
+Azure でプライベート クラウドまたは任意のリソースを作成すると、そのリソースに対して、そのリソースの関連付け ID が自動的に生成されます。 より迅速にリクエストを開き解決するために、サポート リクエストにプライベート クラウドの関連付け ID を含めます。
+
+Azure portal では、2 つの方法でリソースの関連付け ID を取得できます。
+
+* **[概要]** ペイン
+* デプロイ ログ
  
-失敗したプライベート クラウドのデプロイからの出力の例を次に示します。関連付け ID は強調表示されています。
+ ### <a name="get-the-correlation-id-from-the-resource-overview"></a>リソースの概要から関連付け ID を取得する
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。":::
+次に関連付け ID が選択された、失敗したプライベート クラウドのデプロイの操作の詳細の例を示します。
 
-サービス要求に含めるため、この関連付け ID をコピーして保存します。 詳細については、この記事の最後にある「[サポート リクエストの作成](#create-your-support-request)」を参照してください。
+:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="関連付け ID が選択された、失敗したプライベート クラウドのデプロイを示すスクリーンショット。":::
 
-プライベート クラウドをデプロイする前に事前検証段階でエラーが発生した場合、関連付け ID は生成されません。 この場合は、次のような、Azure VMware Solution のプライベート クラウドの作成時に使用した情報を入力するだけで済みます。
+プライベート クラウドの **[概要]** ペインのデプロイ結果にアクセスするには、次のようにします。
 
-- 場所
-- Resource group
-- リソース名
+1. Azure portal で、対象のプライベート クラウドを選択します。
+
+1. 左側のメニューで、 **[概要]** を選択します。
+
+デプロイが開始されると、そのデプロイの結果がプライベート クラウドの **[概要]** ペインに表示されます。
+
+サービス要求に含めるために、プライベート クラウドのデプロイの関連付け ID をコピーして保存します。
+
+### <a name="get-the-correlation-id-from-the-deployment-log"></a>デプロイ ログから関連付け ID を取得する
+
+Azure portal でデプロイのアクティビティ ログを検索することで、失敗したデプロイの関連付け ID を取得できます。
+
+デプロイ ログにアクセスするには、次のようにします。
+
+1. Azure portal で、対象のプライベート クラウドを選択し、通知アイコンを選択します。
+
+   :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Azure portal の通知アイコンを示すスクリーンショット。":::
+
+1. **[通知]** ペインで、 **[アクティビティ ログのその他のイベント]** を選択します。
+
+    :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="[通知] ペインで [アクティビティ ログのその他のイベント] リンクが選択されていることを示すスクリーンショット。":::
+
+1. 失敗したデプロイとその関連付け ID を探すには、リソースの名前またはリソースの作成に使用したその他の情報を検索します。 
+
+    次の例は、pc03 という名前のプライベート クラウド リソースでの検索結果を示します。
  
-### <a name="collect-a-summary-of-errors"></a>エラーの概要の収集
-
-エラーの詳細は、問題の解決にも役立ちます。 上の画面から、次のスクリーンショットに示すように、 **[詳細はこちらをクリック]** (強調表示) を選択し、エラーの概要を表示します。
+    :::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="プライベート クラウド リソースの例の検索結果と、[Create or update a PrivateCloud]\(PrivateCloud の作成または更新\) ペインを示すスクリーンショット。":::
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="エラーの概要。":::
+1. **[アクティビティ ログ]** ペインの検索結果で、失敗したデプロイの操作名を選択します。
 
-ここでも、SR に含めるため、この概要をコピーして保存します。
+1. **[Create or update a PrivateCloud]\(PrivateCloud の作成または更新\)** ペインで、 **[JSON]** タブを選択し、表示されるログで `correlationId` を探します。 `correlationId` の値をコピーして、それをサポート リクエストに含めます。 
  
-### <a name="retrieve-past-deployments"></a>過去のデプロイを取得する
+## <a name="copy-error-messages"></a>エラー メッセージをコピーする
 
-失敗したデプロイを含む過去のデプロイを取得するには、[通知] アイコンを選択してアクセスする、デプロイ アクティビティ ログを検索します。
-
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="通知を開きます。":::
-
-[通知] で、 **[アクティビティ ログのその他のイベント]** を選択します。
-
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="リンク:アクティビティ ログのその他のイベント。":::
-
-次に、リソースの名前、またはリソースの作成で使用した他の一意の情報を検索して、失敗したデプロイとその関連付け ID を検索します。 次の例では、プライベート クラウド リソース (pc03) での検索結果を示します。
+デプロイの問題の解決を支援するために、Azure portal に表示されているエラー メッセージをすべて含めます。 警告メッセージを選択して、エラーの概要を確認します。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="過去に失敗した Azure VMware Solution のデプロイを検索します。":::
- 
-失敗したデプロイの操作名を選択すると、ウィンドウが開き、詳細が表示されます。 [JSON] タブを選択し、[correlationId] を探します。 コピーして SR に含めます。 
- 
-## <a name="collect-the-expressroute-id-uri"></a>ExpressRoute ID (URI) の収集
- 
-プライベート クラウドが既にあり、プライベート クラウドの ExpressRoute 回線を使用してスケーリングまたはピアリングしようとしたときにエラーが発生したとします。 その場合、SR を作成するときに、プライベート クラウドの ExpressRoute ID を使用してそれを識別できます。
+:::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="[エラー] ペインの [概要] タブにあるエラーの詳細を示すスクリーンショット。コピー アイコンが選択されています。":::
 
-ポータルでプライベート クラウドを表示する場合は、 **[接続性] > [ExpressRoute]** を選択し、 **[ExpressRoute ID]** をクリップボードにコピーします。
+エラー メッセージをコピーするには、コピー アイコンを選択します。 コピーしたメッセージを保存し、サポート リクエストに含めます。
+ 
+## <a name="get-the-expressroute-id-uri"></a>ExpressRoute ID (URI) を取得する
+ 
+おそらく、プライベート クラウド ExpressRoute 回線を使用して既存のプライベート クラウドをスケーリングまたはピアリングしようとして失敗しています。 このシナリオでは、ExpressRoute ID をサポート リクエストに含める必要があります。
+
+ExpressRoute ID をコピーするには、次のようにします。
+
+1. Azure portal で、対象のプライベート クラウドを選択します。
+1. 左側のメニューの **[管理]** で、 **[接続]** を選択します。 
+1. 右側のペインで **[ExpressRoute]** タブを選択します。
+1. **ExpressRoute ID** のコピー アイコンを選択し、その値を保存してサポート リクエストで使用します。
  
 :::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute ID をクリップボードにコピーします。"::: 
  
-ExpressRoute ID を新しいサポート リクエストの適切なフィールドに貼り付けます。 詳細については、次のセクション、「[サポート リクエストの作成](#create-your-support-request)」を参照してください。
- 
-> [!NOTE]
-> 場合によっては、事前検証チェックがデプロイ前に失敗する可能性があり、この場合、使用可能な情報はエラーやエラー メッセージだけになります。 これらは、クォータ関連の問題など、さまざまなエラーにおいて役立つため、サポート リクエストにこれらのメッセージを含めることが重要です。 これらの情報を収集するには、前のセクション「[エラーの概要の収集](#collect-a-summary-of-errors)」を参照してください。
+## <a name="pre-validation-failures"></a>事前検証エラー
+
+(デプロイ前の) プライベート クラウドの事前検証チェックに失敗した場合、関連付け ID は生成されません。 このシナリオでは、サポート リクエストに次の情報を提供できます。
+
+- エラーと失敗のメッセージ。 これらのメッセージは、クォータ関連の問題など、多くのエラーで役に立ちます。 この記事で説明されているように、これらのメッセージをコピーし、サポート リクエストに含めることが重要です。
+- Azure VMware Solution プライベート クラウドの作成に使用した情報。
+  - 場所
+  - Resource group
+  - リソース名
 
 ## <a name="create-your-support-request"></a>サポート リクエストの作成
 
-サポート リクエストを作成するための一般的なガイダンスについては、[Azure サポート リクエストを作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。 
+サポート リクエストの作成に関する一般的な情報については、[Azure サポート リクエストを作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。 
 
-ここでは、Azure VMware Solution のデプロイまたはプロビジョニング エラーのための SR の作成に固有の追加のガイダンスを示します。
+Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するサポート リクエストを作成するには、次のようにします。
 
-1. **[ヘルプ]** アイコン、 **[+ 新しいサポート リクエスト]** の順に選択します。
+1. Azure portal で、 **[ヘルプ]** アイコンを選択し、 **[新しいサポート リクエスト]** を選択します。
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="SR の ExpressRoute ID を収集します。":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Azure portal の [新しいサポート リクエスト] ペインのスクリーンショット。":::
 
-2. すべての必須フィールドに入力し、 **[基本]** タブで次の操作を行います。
+1. 必要な情報を入力または選択します。
 
-    - **[問題の種類]** には、 **[構成とセットアップに関する問題]** を選択してください。
+   1. **[基本]** タブで、次の操作を行います。
 
-    - **[問題のサブタイプ]** には、 **[プライベート クラウドのプロビジョニング]** を選択します。
+      1. **[問題の種類]** には、 **[構成とセットアップに関する問題]** を選択してください。
 
-3. **[詳細]** タブでは:
+      1. **[問題のサブタイプ]** には、 **[プライベート クラウドのプロビジョニング]** を選択します。
 
-    - すべての必須フィールドに必要事項を入力します。
+   1. **[詳細]** タブでは:
 
-    - 指定された特定のフィールドに関連付け ID または ExpressRoute ID を貼り付けます。 これら専用のフィールドが表示されない場合は、 **[問題に関する詳細情報を提供してください]** の下のテキスト ボックスに貼り付けます。
+      1. 必要な情報を入力または選択します。
 
-    - エラーの詳細 (コピーしたエラーの概要を含む) を、 **[問題に関する詳細情報を提供してください]** の下のテキスト ボックスに貼り付けます。
+      1. この情報がリクエストされた場所に、関連付け ID または ExpressRoute ID を貼り付けます。 これらの値のための特定のテキスト ボックスが表示されない場合は、 **[問題に関する詳細情報を提供してください]** テキスト ボックスに貼り付けます。
 
-4. 確認してから **[作成]** を選択して SR を作成します。
+    1. エラーの詳細 (コピーしたエラーまたは失敗のメッセージなど) を、 **[問題に関する詳細情報を提供してください]** テキスト ボックスに貼り付けます。
+
+1. 入力内容を見直してから、 **[作成]** を選択してサポート リクエストを作成します。

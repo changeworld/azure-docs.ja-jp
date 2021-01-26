@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013107"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する
 
@@ -52,7 +52,7 @@ Azure Monitor のクラシック メトリック アラートには、メトリ�
 
 * メトリックのしきい値と、前日の実際の値を示すグラフを表示する。
 * 編集または削除する。
-* そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを**無効**または**有効**にする。
+* そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを **無効** または **有効** にする。
 
 ## <a name="with-azure-cli"></a>Azure CLI の場合
 

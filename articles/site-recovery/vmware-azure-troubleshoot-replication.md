@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336207"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -192,6 +192,24 @@ VSS プロバイダー サービスのスタートアップの種類が **[自�
         - VSS サービス
         - Azure Site Recovery VSS プロバイダー
         - VDS サービス
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>エラー ID 95001 - 不十分なアクセス許可
+
+このエラーは、レプリケーションを有効にしようとしたときに、アプリケーション フォルダーに十分なアクセス許可がない場合に発生します。
+
+**修正方法**: この問題を解決するには、IUSR ユーザーが以下のすべてのフォルダーに対する所有者ロールを持っていることを確認してください。
+
+- *C\ProgramData\Microsoft Azure Site Recovery\private*
+- インストール ディレクトリ。 たとえば、インストール ディレクトリが F ドライブの場合、以下に対する正しいアクセス許可を指定します。
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems*
+- インストール ディレクトリの *\pushinstallsvc* フォルダー。 たとえば、インストール ディレクトリが F ドライブの場合、以下に対する正しいアクセス許可を指定します。
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
+- インストール ディレクトリの *\etc* フォルダー。 たとえば、インストール ディレクトリが F ドライブの場合、以下に対する正しいアクセス許可を指定します。
+    - *F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- 以下のパスの下にあるすべての項目
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>次のステップ
 

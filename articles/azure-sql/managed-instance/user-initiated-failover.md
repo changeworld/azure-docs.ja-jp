@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.reviewer: douglas, sstein
+ms.date: 12/16/2020
+ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589505"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825911"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
 
@@ -37,6 +37,15 @@ ms.locfileid: "88589505"
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance で手動フェールオーバーを開始する
 
+### <a name="azure-rbac-permissions-required"></a>必要な Azure RBAC アクセス許可
+
+フェールオーバーを開始するユーザーには、次のいずれかの Azure ロールが必要です。
+
+- サブスクリプションの所有者ロール、または
+- マネージド インスタンス共同作成者ロール、または
+- 次のアクセス許可を持つカスタム ロール:
+  - `Microsoft.Sql/managedInstances/failover/action`
+
 ### <a name="using-powershell"></a>PowerShell の使用
 
 Az.Sql [v2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 以降のバージョンが必要です。 常に最新バージョンの PowerShell を使用できる Azure portal の [Azure Cloud Shell](../../cloud-shell/overview.md) を使用することを検討します。 
@@ -53,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-(BC と GP 両方のサービス レベルに適用) プライマリ ノードのフェールオーバーを開始するには、次の例のように PowerShell コマンド [Invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) を使用します。
+(BC と GP 両方のサービス レベルに適用) プライマリ ノードのフェールオーバーを開始するには、次の例のように PowerShell コマンド [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) を使用します。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -87,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>REST API の使用
 
-継続的テスト パイプラインや自動パフォーマンス問題軽減機能を実装する目的で、SQL Managed Instance のフェールオーバーを自動化する必要がある上級ユーザーの場合、API 呼び出しによってフェールオーバーを開始することで、この機能を実現できます。 詳細については、[Managed Instance のフェールオーバー REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)に関する記事を参照してください。
+継続的テスト パイプラインや自動パフォーマンス問題軽減機能を実装する目的で、SQL Managed Instance のフェールオーバーを自動化する必要がある上級ユーザーの場合、API 呼び出しによってフェールオーバーを開始することで、この機能を実現できます。 詳細については、[Managed Instance のフェールオーバー REST API](/rest/api/sql/managed%20instances%20-%20failover/failover)に関する記事を参照してください。
 
 REST API の呼び出しを使用してフェールオーバーを開始するには、まず、任意の API クライアントを使用して認証トークンを生成します。 生成された認証トークンは、API 要求のヘッダーで Authorization プロパティとして使用されます。これは必須です。
 
@@ -127,11 +136,11 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 GP サービス レベルでは、上記の BC で示されているものと同じ出力を表示することはできません。 これは、GP サービス レベルは 1 つのノードのみに基づいているためです。 GP サービス レベルに対する T-SQL クエリの出力では、フェールオーバーの前後で 1 つのノードのみが表示されます。 フェールオーバー中にクライアントからの接続が失われた場合 (通常は 1 分未満)、フェールオーバーが実行されていることを示します。
 
 > [!NOTE]
-> (実際の短い使用不可ではなく) フェールオーバー プロセスが完了するには、**高負荷**のワークロードで一度に数分かかることがあります。 これは、フェールオーバーが行われる前に、インスタンス エンジンによって、プライマリ上のすべての現在のトランザクションが処理され、セカンダリ ノードでキャッチアップされるためです。
+> (実際の短い使用不可ではなく) フェールオーバー プロセスが完了するには、**高負荷** のワークロードで一度に数分かかることがあります。 これは、フェールオーバーが行われる前に、インスタンス エンジンによって、プライマリ上のすべての現在のトランザクションが処理され、セカンダリ ノードでキャッチアップされるためです。
 
 > [!IMPORTANT]
 > ユーザーが開始した手動フェールオーバーの機能上の制限は次のとおりです。
-> - 同じ Managed Instance では、**30 分**ごとに 1 つのフェールオーバーを開始できます。
+> - 同じ Managed Instance 上では、**15 分** ごとに 1 つのフェールオーバーを開始できます。
 > - BC インスタンスの場合、フェールオーバー要求が受け入れられるには、レプリカのクォーラムが存在している必要があります。
 > - BC インスタンスの場合、フェールオーバーを開始する読み取り可能セカンダリ レプリカを指定することはできません。
 

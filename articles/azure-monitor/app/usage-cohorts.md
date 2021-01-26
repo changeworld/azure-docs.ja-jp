@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671088"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186951"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
@@ -43,7 +43,7 @@ ms.locfileid: "77671088"
     * **期間**: 月の定義です。
     * **UsedAtLeastCustom**: 関心度が高いとしてカウントするために、ユーザーが期間内に何かを使用する必要がある回数。
 
-4. **UsedAtLeastCustom** を **5 日以上**に変更し、 **[期間]** を既定値の 28 日のままとします。
+4. **UsedAtLeastCustom** を **5 日以上** に変更し、 **[期間]** を既定値の 28 日のままとします。
 
     ![関心度の高いユーザー](./media/usage-cohorts/003.png)
 
@@ -131,7 +131,7 @@ _特定の国や地域からのユーザーのコーホートを定義しまし�
 
 ## <a name="learn-more"></a>詳細情報
 
-* [Analytics クエリ言語](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytics クエリ言語](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [ユーザー、セッション、イベント](usage-segmentation.md)
 * [ユーザー フロー](usage-flows.md)
 * [利用状況の概要](usage-overview.md)

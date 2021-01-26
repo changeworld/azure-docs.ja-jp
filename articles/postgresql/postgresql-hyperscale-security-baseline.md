@@ -1,36 +1,36 @@
 ---
-title: Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale
-description: Azure Database for PostgreSQL - Hyperscale セキュリティ ベースラインにより、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
+title: Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale (Citus)
+description: Azure Database for PostgreSQL - Hyperscale (Citus) セキュリティ ベースラインにより、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 524a0cf5d5b48300879f8a8ad650971490e8c062
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563910"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202404"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale (Citus)
 
-Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
+Azure Database for PostgreSQL - Hyperscale (Citus) の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
 **ガイダンス**: Azure Database for PostgreSQL サーバーのファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、Hyperscale (Citus) コーディネーター ノードへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。 ファイアウォールを構成するには、受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成します。 ファイアウォール規則はサーバー レベルで作成できます。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でのファイアウォール規則の構成方法](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-firewall-rules)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でのファイアウォール規則の構成方法](./concepts-hyperscale-firewall-rules.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -40,11 +40,11 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 **ガイダンス**: Azure Policy を使用して、Azure Database for PostgreSQL インスタンスに関連付けられているネットワーク設定とネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Database for PostgreSQL インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
-- [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -52,7 +52,7 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
@@ -60,11 +60,11 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 また、Azure Monitor を介してログを取り込み、Hyperscale (Citus) によって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージにはストレージ アカウントを使用します。 または、Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-- [Hyperscale (Citus) のメトリック](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-monitoring)
+- [Hyperscale (Citus) のメトリック](./concepts-hyperscale-monitoring.md)
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -78,11 +78,11 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 また、Azure Monitor を介してログを取り込み、Hyperscale (Citus) によって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージにはストレージ アカウントを使用します。 または、Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) に対してデータを有効にしてオンボードすることもできます。 
 
-- [Hyperscale (Citus) のメトリック](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-monitoring)
+- [Hyperscale (Citus) のメトリック](./concepts-hyperscale-monitoring.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -92,9 +92,9 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 **ガイダンス**: Azure Monitor 内で、Hyperscale (Citus) ログを保持するために使用される Log Analytics ワークスペースに対して、組織のコンプライアンス規則に従って保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -104,11 +104,11 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 **ガイダンス**: Hyperscale (Citus) インスタンスからのログを分析および監視して、異常な動作がないか確認します。 ログを確認し、ログ データに対してクエリを実行するには、Azure Monitor の Log Analytics を使用します。 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics に関する詳細](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [Log Analytics に関する詳細](../azure-monitor/log-query/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -120,11 +120,11 @@ Azure Database for PostgreSQL - Hyperscale の Azure セキュリティ ベー�
 
 Log Analytics ワークスペースを Azure Sentinel にオンボードします。セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されます。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。
 
-- [Hyperscale (Citus) のメトリック](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-alert-on-metric)
+- [Hyperscale (Citus) のメトリック](./howto-hyperscale-alert-on-metric.md)
 
-- [Azure アクティビティ ログ用に診断設定を構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/platform/activity-log.md)
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -132,7 +132,7 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -142,15 +142,15 @@ Hyperscale (Citus) では、組み込みのロールベースのアクセス制�
 
 さらに、PostgreSQL エンジンはロールを使用してデータベース オブジェクトへのアクセスを制御し、新しく作成された Hyperscale (Citus) サーバー グループにはいくつかのロールが事前に定義されています。 ユーザーの特権を変更するには、PgAdmin や psql などのツールを使用して、標準的な PostgreSQL コマンドを使用します。
 
-- [Azure サブスクリプションのカスタム ロールについて](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) 
+- [Azure サブスクリプションのカスタム ロールについて](../role-based-access-control/custom-roles.md) 
 
-- [Azure Database for PostgreSQL リソース プロバイダーの操作について](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql) 
+- [Azure Database for PostgreSQL リソース プロバイダーの操作について](../role-based-access-control/resource-provider-operations.md#microsoftdbforpostgresql) 
 
-- [Azure Database for PostgreSQL のアクセス管理について](https://docs.microsoft.com/azure/postgresql/concepts-security#access-management])
+- [Azure Database for PostgreSQL のアクセス管理について](./concepts-security.md#access-management)
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する方法](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する方法](./howto-hyperscale-create-users.md)
 
-- [psql を使用して PostgreSQL - Hyperscale (Citus) に接続する方法](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#connect-to-the-database-using-psql)
+- [psql を使用して PostgreSQL - Hyperscale (Citus) に接続する方法](./quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -169,9 +169,9 @@ Hyperscale (Citus) では、組み込みのロールベースのアクセス制�
 
 **ガイダンス**: Hyperscale (Citus) インスタンスへのアクセスに使用される専用管理者アカウントの使用に関する標準的な操作手順を作成します。 Azure リソースを管理する管理者アカウントは、Azure Active Directory に関連付けられています。また、データベースのアクセス許可を管理する、Hyperscale (Citus) サーバー グループ内に存在するローカル サーバー管理者アカウントもあります。 Azure Security Center ID とアクセス管理を使用して、Azure Active Directory 内の管理アカウントの数を監視します。
 
-- [Azure Security Center ID とアクセスについて](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [Azure Security Center ID とアクセスについて](../security-center/security-center-identity-access.md) 
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する方法](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する方法](./howto-hyperscale-create-users.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -181,9 +181,9 @@ Hyperscale (Citus) では、組み込みのロールベースのアクセス制�
 
 **ガイダンス**: Azure portal にアクセスするには、Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-- [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 
 **Azure Security Center の監視**: はい
@@ -194,9 +194,9 @@ Hyperscale (Citus) では、組み込みのロールベースのアクセス制�
 
 **ガイダンス**:Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-- [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -209,9 +209,9 @@ Hyperscale (Citus) では、組み込みのロールベースのアクセス制�
 
 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-- [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -222,7 +222,7 @@ Azure AD のリスク検出を使用して、危険なユーザーの行動に�
 
 **ガイダンス**: ポータルや Azure Resource Manager での IP アドレス範囲または国と地域の特定の論理グループからのアクセスのみを許可するには、条件付きアクセスのネームド ロケーションを使用します。
 
-- [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -234,9 +234,9 @@ Azure AD のリスク検出を使用して、危険なユーザーの行動に�
 
 Hyperscale (Citus) サーバー グループ内のユーザーを Azure Active Directory アカウントに直接関連付けることはできません。 データベース オブジェクトへのアクセスのためのユーザー特権を変更するには、PgAdmin や psql などのツールで、標準的な PostgreSQL コマンドを使用します。
 
-- [ユーザー ロールの特権を変更する](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users#how-to-modify-privileges-for-user-role)
+- [ユーザー ロールの特権を変更する](./howto-hyperscale-create-users.md#how-to-modify-privileges-for-user-role)
 
-- [AAD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 
 
@@ -252,9 +252,9 @@ Azure のデータベース リソースを管理するためのアクセス権�
 
 - [PostgreSQL ユーザーと割り当てられたロールを確認する](https://www.postgresql.org/docs/current/database-roles.html)
 
-- [Azure AD のレポートについて](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートについて](../active-directory/reports-monitoring/index.yml)
 
-- [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -266,7 +266,7 @@ Azure のデータベース リソースを管理するためのアクセス権�
 
 このプロセスを効率化するには、Azure Active Directory ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペースで必要なアラートを構成できます。 
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -279,11 +279,11 @@ Azure のデータベース リソースを管理するためのアクセス権�
 
 さらに調査するために、Azure Sentinel にログを取り込むこともできます。
 
-- [Azure AD Identity Protection の概要](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+- [Azure AD Identity Protection の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -293,7 +293,7 @@ Azure のデータベース リソースを管理するためのアクセス権�
 
 **ガイダンス**: 現在は利用できません。Hyperscale (Citus) では、カスタマー ロックボックスはまだサポートされていません。
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -301,13 +301,13 @@ Azure のデータベース リソースを管理するためのアクセス権�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: タグを使用すると、機密情報を格納または処理する Hyperscale (Citus) インスタンスや関連リソースの追跡に役立ちます。
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -317,13 +317,13 @@ Azure のデータベース リソースを管理するためのアクセス権�
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 管理ロールとファイアウォール規則の組み合わせを使用して、Azure Database for PostgreSQL インスタンスへのネットワーク アクセスを分離して制限します。
 
-- [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則について](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-firewall-rules)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則について](./concepts-hyperscale-firewall-rules.md)
 
-- [Hyperscale (Citus) のロールについて](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [Hyperscale (Citus) のロールについて](./howto-hyperscale-create-users.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -337,9 +337,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 安全に接続するために、信頼された証明機関 (CA) 証明書ファイル (.cer) から生成されたローカルの証明書ファイルがサードパーティ アプリケーションに必要な場合があります。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) での TLS の構成方法](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-ssl-connection-security)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) での TLS の構成方法](./concepts-hyperscale-ssl-connection-security.md)
 
-- [TLS 接続で証明書検証を必要とするアプリケーション](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-ssl-connection-security)
+- [TLS 接続で証明書検証を必要とするアプリケーション](./concepts-hyperscale-ssl-connection-security.md)
 
 
 
@@ -347,15 +347,15 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **責任**: 共有
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Hyperscale (Citus) コントロール プレーン (Azure portal など) へのアクセスを制御します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Hyperscale (Citus) コントロール プレーン (Azure portal など) へのアクセスを制御します。 Azure RBAC は、データベース内のユーザーのアクセス許可には影響しません。
 
 データベース レベルでユーザーの特権を変更するには、PgAdmin や psql などのツールを使用して、標準的な PostgreSQL コマンドを使用します。
 
-- [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-- [Azure Database for PostgreSQL の SQL を使用してユーザー アクセスを構成する方法](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [Azure Database for PostgreSQL の SQL を使用してユーザー アクセスを構成する方法](./howto-hyperscale-create-users.md)
 
 
 **Azure Security Center の監視**: はい
@@ -367,7 +367,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 **ガイダンス**:  
 少なくとも 1 日に 1 回、Azure Database for PostgreSQL Hyperscale (Citus) では、データ ファイルとデータベース トランザクション ログのスナップショット バックアップが作成されます。 バックアップを使用すると、サーバーを、保持期間内の任意の時点に復元できます (保持期間は現在、すべてのクラスターで 35 日です)。すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 PostgreSQL Hyperscale (Citus) オファリングでは、暗号化に Microsoft マネージド キーを使用します。
 
-- [Azure PostgreSQL - Hyperscale (Citus) のバックアップの暗号化について](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Azure PostgreSQL - Hyperscale (Citus) のバックアップの暗号化について](./concepts-hyperscale-backup.md)
 
 
 
@@ -379,7 +379,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: Hyperscale (Citus) の運用インスタンスやその他の重要または関連するリソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -387,13 +387,13 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
 **ガイダンス**: 現在は使用できません。Azure Security Center では、Azure Database for PostgreSQL - Hyperscale (Citus) の脆弱性評価はまだサポートされていません。
 
-- [Azure Security Center の Azure PaaS サービスを対象とする機能](https://docs.microsoft.com/azure/security-center/features-paas)
+- [Azure Security Center の Azure PaaS サービスを対象とする機能](../security-center/features-paas.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -401,17 +401,17 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
 **ガイダンス**: サブスクリプション内のすべてのリソース (Hyperscale (Citus) インスタンスを含む) のクエリや検出を実行するには、Azure Resource Graph を使用します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
-- [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
-- [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -421,7 +421,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: メタデータを提供する Hyperscale (Citus) インスタンスやその他の関連リソースにタグを適用し、論理的に分類してまとめます。
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -431,11 +431,11 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: 必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、Hyperscale (Citus) インスタンスと関連リソースの整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-- [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -451,9 +451,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 また、Azure Resource Graph を使用すると、サブスクリプション内のリソースのクエリまたは検出を行えます。
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -469,9 +469,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 また、Azure Resource Graph を使用すると、サブスクリプション内のリソースのクエリまたは検出を行えます。
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -484,9 +484,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -496,7 +496,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: Azure Conditional Access を使用して Azure Resource Manager を操作するユーザーの権限を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。 これにより、機密情報を含む Hyperscale (Citus) のインスタンスなど、高セキュリティ環境内でのリソースの作成と変更を防ぐことができます。
 
-- [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -504,7 +504,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -512,11 +512,11 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 また、Azure Resource Manager には、テンプレートを JavaScript Object Notation (JSON) でエクスポートする機能があり、構成が確実に組織のセキュリティ要件を満たすかそれを超えるように確認する必要があります。 
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure portal のテンプレートへの単一および複数リソースのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal) 
+- [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md) 
 
 
 
@@ -528,11 +528,11 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。  さらに、Azure Resource Manager テンプレートを使用して、組織に必要な Azure リソースのセキュリティ構成を維持できます。 
 
-- [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-- [コンプライアンスを強制するポリシーの作成と管理](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager テンプレートの概要](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager テンプレートの概要](../azure-resource-manager/templates/overview.md)
 
 
 
@@ -544,9 +544,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: Hyperscale (Citus) インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -556,11 +556,11 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。  さらに、Azure Resource Manager テンプレートを使用して、組織に必要な Azure リソースのセキュリティ構成を維持できます。 
 
-- [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-- [コンプライアンスを強制するポリシーの作成と管理](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager テンプレートの概要](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager テンプレートの概要](../azure-resource-manager/templates/overview.md)
 
 
 
@@ -572,7 +572,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: システム構成のアラート生成、監査、および適用のためのカスタム ポリシーを作成するには、"Microsoft.DBforPostgreSQL" 名前空間で Azure Policy エイリアスを使用します。 Azure ポリシーの [audit]、[deny]、[deploy if not exist] を使用して、Azure Database for PostgreSQL インスタンスおよび関連リソースの構成を自動的に適用します。
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -582,9 +582,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: 現在、Azure Database for PostgreSQL - Hyperscale (Citus) では、マネージド ID は直接はサポートされていません。 Azure Database for PostgreSQL サーバーを作成するときに、管理者ユーザーの資格情報を指定する必要があります。 Azure portal インターフェイスで追加のユーザー ロールを作成できます。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
-- [追加のユーザー ロールを作成する](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users#how-to-create-additional-user-roles)
+- [追加のユーザー ロールを作成する](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -603,7 +603,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
@@ -617,13 +617,13 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
 **ガイダンス**: Azure Database for PostgreSQL – Hyperscale (Citus) では、各ノードのバックアップを自動的に作成し、ローカル冗長ストレージに格納します。 バックアップを使用して、指定した時間に Hyperscale (Citus) クラスターを復元することができます。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](./concepts-hyperscale-backup.md)
 
 **Azure Security Center の監視**: はい
 
@@ -635,7 +635,7 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 可用性ゾーンをサポートする Azure リージョンでは、バックアップ スナップショットは 3 つの可用性ゾーンに格納されます。 少なくとも 1 つの可用性ゾーンがオンラインになっている限り、Hyperscale (Citus) クラスターは復元可能です。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](./concepts-hyperscale-backup.md)
 
 
 **Azure Security Center の監視**: はい
@@ -648,7 +648,7 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 ファイアウォール設定と PostgreSQL サーバーのパラメーターは元のサーバー グループから保持されず、既定値にリセットされます。 ファイアウォールによって、すべての接続が阻止されます。 復元後にこれらの設定を手動で調整する必要があります。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](./concepts-hyperscale-backup.md)
 
 **Azure Security Center の監視**: はい
 
@@ -658,7 +658,7 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 **ガイダンス**: 削除された Hyperscale (Citus) クラスターを復元することはできません。 クラスターを削除すると、そのクラスターに属するすべてのノードが削除され、復旧できなくなります。 管理者は、デプロイ後のクラスターのリソースを誤削除や予期せぬ変更から保護するために、管理ロックを利用できます。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップおよび復元の方法](./concepts-hyperscale-backup.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -666,13 +666,13 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。 
 
-- [Azure Security Center 内でワークフロー自動化を構成する方法](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) 
+- [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md) 
 
 - [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
 
@@ -708,7 +708,7 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。 
 
-- [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -718,9 +718,9 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 **ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。 
 
-- [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export) 
+- [連続エクスポートを構成する方法](../security-center/continuous-export.md) 
 
-- [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -730,7 +730,7 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。 
 
-- [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -738,7 +738,7 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -752,5 +752,5 @@ App Service、Data Lake Storage、Blob Storage、Azure Database for PostgreSQL �
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

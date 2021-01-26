@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の GetCurrentTimestamp
 description: Azure Cosmos DB での SQL システム関数 GetCurrentTimestamp について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6720b0e5d13f2baaaf063fef2244b0c1f1863571
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606931"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341928"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  1970 年 1 月 1 日木曜日 00 時 00 分 00 秒から経過したミリ秒数を返します。
   

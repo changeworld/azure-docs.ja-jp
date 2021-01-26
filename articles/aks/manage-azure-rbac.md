@@ -1,34 +1,33 @@
 ---
-title: Azure から Kubernetes での RBAC を管理する
+title: Azure から Kubernetes での Azure RBAC を管理する
 titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) での Kubernetes 認可に対して Azure RBAC を使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003092"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684221"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に Azure RBAC を使用する (プレビュー)
 
 現時点で既に、[Azure Active Directory (Azure AD) と AKS の間で統合認証](managed-aad.md)を利用できます。 この統合を有効にすると、お客様は、Kubernetes RBAC の対象として Azure AD のユーザー、グループ、またはサービス プリンシパルを使用できます。詳細については、[こちら](azure-ad-rbac.md)を参照してください。
-この機能を使用すると、Kubernetes に対するユーザーの ID と資格情報を個別に管理する必要がなくなります。 ただし、それでも Azure RBAC と Kubernetes RBAC を個別に設定および管理する必要があります。 AKS での認証、認可、RBAC の詳細については、[こちら](concepts-identity.md)を参照してください。
+この機能を使用すると、Kubernetes に対するユーザーの ID と資格情報を個別に管理する必要がなくなります。 ただし、それでも Azure RBAC と Kubernetes RBAC を個別に設定および管理する必要があります。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md)をご覧ください。
 
 このドキュメントでは、Azure のリソース、AKS、Kubernetes のリソースで統一された管理とアクセス制御を可能にする新しいアプローチについて説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS での認証、認可、RBAC の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)を参照してください。
+Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS で RBAC を使用した認証と認可の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)をご覧ください。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>前提条件 
-- プレビューの <https://aka.ms/aad-rbac-sign-up-form> にサインアップします。
 - Azure CLI バージョン 2.9.0 以降があることを確認します
 - `EnableAzureRBACPreview` 機能フラグが有効になっていることを確認します。
 - `aks-preview` [CLI 拡張機能][az-extension-add] v0.4.55 以降がインストールされていることを確認します
@@ -44,7 +43,7 @@ Kubernetes 承認に Azure RBAC を使用する AKS クラスターを作成す�
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-フラグが正常に登録されるには、上記のプレビュー フォームを送信した後に、承認を得る必要があります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+ 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
@@ -73,9 +72,9 @@ az extension update --name aks-preview
 - [マネージド Azure AD 統合](managed-aad.md)が必要です。
 - プレビュー期間中は Kubernetes 認可用の Azure RBAC を既存のクラスターに統合することはできませんが、一般提供 (GA) になるとできます。
 - [kubectl v1.18.3 以降][az-aks-install-cli]を使用します。
-- プレビュー期間中は、Azure CLI を使用して "*名前空間レベル*" のアクセス許可のみを追加できます。
 - CRD を使用していて、カスタム ロール定義を作成している場合、現時点では、CRD をカバーする唯一の方法は `Microsoft.ContainerService/managedClusters/*/read` を提供することです。 AKS では、CRD にさらに詳細なアクセス許可を提供するように取り組んでいます。 残りのオブジェクトについては、特定の API グループを使用できます (例: `Microsoft.ContainerService/apps/deployments/read`)。
 - 新しいロールの割り当ては、承認サーバーに伝達されて更新されるまでに最大で 5 分かかることがあります。
+- 認証用に構成された Azure AD テナントは、AKS クラスターが含まれるサブスクリプションのテナントと同じである必要があります。 
 
 ## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>Azure RBAC とマネージド Azure AD 統合を使用して新しいクラスターを作成する
 
@@ -122,7 +121,7 @@ AKS には、次の 4 つの組み込みロールがあります。
 | Azure Kubernetes Service RBAC クラスター管理者  | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 これにより、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 |
 
 
-**AKS クラスター全体**を対象とするロールの割り当ては、Azure portal でクラスター リソースの [アクセス制御 (IAM)] ブレードを使用して、または次に示すように Azure CLI コマンドを使用して、行うことができます。
+**AKS クラスター全体** を対象とするロールの割り当ては、Azure portal でクラスター リソースの [アクセス制御 (IAM)] ブレードを使用して、または次に示すように Azure CLI コマンドを使用して、行うことができます。
 
 ```bash
 # Get your AKS Resource ID
@@ -135,7 +134,7 @@ az role assignment create --role "Azure Kubernetes Service RBAC Admin" --assigne
 
 ここで、`<AAD-ENTITY-ID>` には、ユーザー名 (user@contoso.com など) や、サービス プリンシパルの ClientID を指定できます。
 
-また、クラスター内の特定の**名前空間**を対象とするロールの割り当てを作成することもできます。
+また、クラスター内の特定の **名前空間** を対象とするロールの割り当てを作成することもできます。
 
 ```azurecli-interactive
 az role assignment create --role "Azure Kubernetes Service RBAC Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
@@ -273,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-- AKS の認証、認可、RBAC の詳細については、[こちら](concepts-identity.md)を参照してください。
+- AKS の認証、認可、Kubernetes RBAC、Azure RBAC の詳細については、[こちら](concepts-identity.md)をご覧ください。
 - Azure RBAC の詳細については、[こちら](../role-based-access-control/overview.md)を参照してください。
 - Kubernetes 承認に対するカスタム Azure ロールを細かく定義するために使用できるすべてのアクションの詳細については、[こちら](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)を参照してください。
 
@@ -285,4 +284,4 @@ az group delete -n MyResourceGroup
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true

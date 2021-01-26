@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0a6cec234c367ceb1c6032e99d64d6ca5bc4805
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 0e524bfe090f0d67b76c13e876f44e83986aeb9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180271"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91334805"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースを復元する
 
@@ -34,7 +34,7 @@ CLI コマンドを実行するには、[Azure Cloud Shell](tutorial-sap-hana-ba
 
 ## <a name="view-restore-points-for-a-backed-up-database"></a>バックアップされたデータベースの復元ポイントを表示する
 
-データベースのすべての復旧ポイントの一覧を表示するには、次のように [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) コマンドレットを使用します。
+データベースのすべての復旧ポイントの一覧を表示するには、次のように [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-show-log-chain) コマンドレットを使用します。
 
 ```azurecli-interactive
 az backup recoverypoint list --resource-group saphanaResourceGroup \
@@ -57,7 +57,7 @@ DefaultRangeRecoveryPoint                                    AzureWorkload      
 ご覧のとおり、上記の一覧には、完全バックアップ、差分バックアップ、ログ バックアップという 3 つの復旧ポイントが含まれています。
 
 >[!NOTE]
->[az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) コマンドレットを使用して、すべての連続したログ バックアップ チェーンの開始ポイントと終了ポイントを表示することもできます。
+>[az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-show-log-chain) コマンドレットを使用して、すべての連続したログ バックアップ チェーンの開始ポイントと終了ポイントを表示することもできます。
 
 ## <a name="prerequisites-to-restore-a-database"></a>データベースを復元するための前提条件
 
@@ -74,7 +74,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 * ログ バックアップを使用して、特定の日付または時刻 (秒) に復元する。 選択された時刻を基に、Azure Backup は完全、差分、または一連のログ バックアップから、必要になる適切なバックアップを自動的に判別します。
 * 特定の完全バックアップまたは差分バックアップに復元することで、特定の復旧ポイントに復元する。
 
-データベースを復元するには、[az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) コマンドレットを使用します。これには、入力の 1 つとして復旧構成オブジェクトが必要です。 このオブジェクトは、[az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) コマンドレットを使用して生成できます。 復旧構成オブジェクトには、復元を実行するためのすべての詳細が含まれています。 いずれかの復元モード (**OriginalWorkloadRestore** または **AlternateWorkloadRestore**)。
+データベースを復元するには、[az restore restore-azurewl](/cli/azure/backup/restore#az-backup-restore-restore-azurewl) コマンドレットを使用します。これには、入力の 1 つとして復旧構成オブジェクトが必要です。 このオブジェクトは、[az backup recoveryconfig show](/cli/azure/backup/recoveryconfig#az-backup-recoveryconfig-show) コマンドレットを使用して生成できます。 復旧構成オブジェクトには、復元を実行するためのすべての詳細が含まれています。 いずれかの復元モード (**OriginalWorkloadRestore** または **AlternateWorkloadRestore**)。
 
 >[!NOTE]
 > **OriginalWorkloadRestore** - 元のソースと同じ SAP HANA インスタンスにデータを復元します。 このオプションでは、元のデータベースが上書きされます。 <br>
@@ -86,11 +86,11 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
 このチュートリアルでは、以前の復元ポイントに復元します。 データベースの[復元ポイントの一覧を表示](#view-restore-points-for-a-backed-up-database)して、復元先のポイントを選択します。 このチュートリアルでは、*7660777527047692711* という名前の復元ポイントを使用します。
 
-上記の復元ポイント名と復元モードを使用し、[az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) コマンドレットを使用して復旧構成オブジェクトを作成します。 このコマンドレットの残りの各パラメーターの意味を見てみましょう。
+上記の復元ポイント名と復元モードを使用し、[az backup recoveryconfig show](/cli/azure/backup/recoveryconfig#az-backup-recoveryconfig-show) コマンドレットを使用して復旧構成オブジェクトを作成します。 このコマンドレットの残りの各パラメーターの意味を見てみましょう。
 
 * **--target-item-name** これは、復元されたデータベースが使用する名前です。 この例では、*restored_database* という名前を使用しました。
 * **--target-server-name** これは、Recovery Services コンテナーに正常に登録され、復元対象のデータベースと同じリージョンにある SAP HANA サーバーの名前です。 このチュートリアルでは、*hxehost* という名前の、保護したものと同じ SAP HANA サーバーにデータベースを復元します。
-* **--target-server-type** SAP HANA データベースを復元するには、**SapHanaDatabase** を使用する必要があります。
+* **--target-server-type** SAP HANA データベースを復元するには、**HANAInstance** を使用する必要があります。
 
 ```azurecli-interactive
 
@@ -113,7 +113,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 {"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-ここで、データベースを復元するには、 [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) コマンドレットを実行します。 このコマンドを使用するには、*recoveryconfig.json* という名前のファイルに保存されている上記の json 出力を入力します。
+ここで、データベースを復元するには、 [az restore restore-azurewl](/cli/azure/backup/restore#az-backup-restore-restore-azurewl) コマンドレットを実行します。 このコマンドを使用するには、*recoveryconfig.json* という名前のファイルに保存されている上記の json 出力を入力します。
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -130,13 +130,13 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
+応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
 
 ## <a name="restore-and-overwrite"></a>復元および上書き
 
 元の場所に復元するには、復元モードとして **OrignialWorkloadRestore** を使用します。 次に、復元ポイントを選択する必要があります。以前の特定の時点または以前の復元ポイントのいずれかを選択できます。
 
-このチュートリアルでは、復元先として以前の特定の時点の "28-11-2019-09:53:00" を選択します。 この復元ポイントは、dd-mm-yyyy, dd-mm-yyyy-hh:mm:ss の形式で指定できます。 復元先として有効な特定の時点を選択するには、[az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) コマンドレットを使用します。これにより、連続したログ チェーン バックアップの間隔が一覧表示されます。
+このチュートリアルでは、復元先として以前の特定の時点の "28-11-2019-09:53:00" を選択します。 この復元ポイントは、dd-mm-yyyy, dd-mm-yyyy-hh:mm:ss の形式で指定できます。 復元先として有効な特定の時点を選択するには、[az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-show-log-chain) コマンドレットを使用します。これにより、連続したログ チェーン バックアップの間隔が一覧表示されます。
 
 ```azurecli-interactive
 az backup recoveryconfig show --resource-group saphanaResourceGroup \
@@ -154,7 +154,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 {"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-ここで、データベースを復元するには、 [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) コマンドレットを実行します。 このコマンドを使用するには、*recoveryconfig.json* という名前のファイルに保存されている上記の json 出力を入力します。
+ここで、データベースを復元するには、 [az restore restore-azurewl](/cli/azure/backup/restore#az-backup-restore-restore-azurewl) コマンドレットを実行します。 このコマンドを使用するには、*recoveryconfig.json* という名前のファイルに保存されている上記の json 出力を入力します。
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -171,15 +171,15 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
+応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
 
 ## <a name="restore-as-files"></a>ファイルとして復元
 
 バックアップ データをデータベースとしてではなくファイルとして復元するために、ここでは復元モードとして **RestoreAsFiles** を使用します。 次に、復元ポイントを選択します。以前の特定の時点または以前の復元ポイントのいずれかを選択できます。 指定されたパスにファイルがダンプされると、それらのファイルをデータベースとして復元したい任意の SAP HANA マシンにそれらを移すことができます。 これらのファイルを任意のマシンに移動できるので、サブスクリプションやリージョンをまたいでデータを復元できるようになりました。
 
-このチュートリアルでは、過去における特定の時点 (`28-11-2019-09:53:00`) を復元先として選択し、バックアップ ファイルのダンプ先に、同じ SAP HANA サーバー上の `/home/saphana/restoreasfiles` を選択します。 この復元ポイントは、**dd-mm-yyyy** または **dd-mm-yyyy-hh:mm:ss** の形式で指定できます。 復元先として有効な特定の時点を選択するには、[az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) コマンドレットを使用します。これにより、連続したログ チェーン バックアップの間隔が一覧表示されます。
+このチュートリアルでは、過去における特定の時点 (`28-11-2019-09:53:00`) を復元先として選択し、バックアップ ファイルのダンプ先に、同じ SAP HANA サーバー上の `/home/saphana/restoreasfiles` を選択します。 この復元ポイントは、**dd-mm-yyyy** または **dd-mm-yyyy-hh:mm:ss** の形式で指定できます。 復元先として有効な特定の時点を選択するには、[az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-show-log-chain) コマンドレットを使用します。これにより、連続したログ チェーン バックアップの間隔が一覧表示されます。
 
-上記の復元ポイント名と復元モードを使用し、[az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) コマンドレットを使用して復旧構成オブジェクトを作成します。 このコマンドレットの残りの各パラメーターの意味を見てみましょう。
+上記の復元ポイント名と復元モードを使用し、[az backup recoveryconfig show](/cli/azure/backup/recoveryconfig#az-backup-recoveryconfig-show) コマンドレットを使用して復旧構成オブジェクトを作成します。 このコマンドレットの残りの各パラメーターの意味を見てみましょう。
 
 * **--target-container-name** これは、Recovery Services コンテナーに正常に登録され、復元対象のデータベースと同じリージョンにある SAP HANA サーバーの名前です。 このチュートリアルでは、*hxehost* という名前の、保護したものと同じ SAP HANA サーバーにデータベースをファイルとして復元します。
 * **--rp-name** ポイントインタイム リストアでは、復元ポイントの名前が **DefaultRangeRecoveryPoint** になります。
@@ -216,7 +216,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 }
 ```
 
-ここで、データベースをファイルとして復元するには、[az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) コマンドレットを実行します。 このコマンドを使用するには、*recoveryconfig.json* という名前のファイルに保存されている上記の json 出力を入力します。
+ここで、データベースをファイルとして復元するには、[az restore restore-azurewl](/cli/azure/backup/restore#az-backup-restore-restore-azurewl) コマンドレットを実行します。 このコマンドを使用するには、*recoveryconfig.json* という名前のファイルに保存されている上記の json 出力を入力します。
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -267,7 +267,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 }
 ```
 
-応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
+応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
 
 ターゲット コンテナーにダンプされるファイルは次のとおりです。
 

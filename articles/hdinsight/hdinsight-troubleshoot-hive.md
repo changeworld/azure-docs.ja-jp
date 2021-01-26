@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75895233"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288962"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
 
@@ -49,7 +49,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. SSH を使用して HDInsight クラスターに接続します。 詳細については、「**その他の情報**」をご覧ください。
+1. SSH を使用して HDInsight クラスターに接続します。 詳細については、「 **その他の情報** 」をご覧ください。
 
 2. Hive クライアント ログを表示するには、次のコマンドを使用します。
 
@@ -120,17 +120,17 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
    サンプル プログラムを最初の引数として指定する必要があります。
 
    有効なプログラム名は次のとおりです。
-    - **ContainerReuseAnalyzer**: DAG のコンテナーの再利用の詳細を出力します。
-    - **CriticalPath**: DAG のクリティカル パスを特定します。
-    - **LocalityAnalyzer**: DAG の局所性の詳細を出力します。
-    - **ShuffleTimeAnalyzer**: DAG のシャッフル時間の詳細を分析します。
-    - **SkewAnalyzer**: DAG の傾きの詳細を分析します。
-    - **SlowNodeAnalyzer**: DAG のノードの詳細を出力します。
-    - **SlowTaskIdentifier**: DAG の遅いタスクの詳細を出力します。
-    - **SlowestVertexAnalyzer**: DAG の最も遅い頂点の詳細を出力します。
-    - **SpillAnalyzer**: DAG の書き込みの詳細を出力します。
-    - **TaskConcurrencyAnalyzer**: DAG のタスク コンカレンシーの詳細を出力します。
-    - **VertexLevelCriticalPathAnalyzer**: DAG のクリティカル パスを頂点レベルで特定します。
+    - **ContainerReuseAnalyzer** : DAG のコンテナーの再利用の詳細を出力します。
+    - **CriticalPath** : DAG のクリティカル パスを特定します。
+    - **LocalityAnalyzer** : DAG の局所性の詳細を出力します。
+    - **ShuffleTimeAnalyzer** : DAG のシャッフル時間の詳細を分析します。
+    - **SkewAnalyzer** : DAG の傾きの詳細を分析します。
+    - **SlowNodeAnalyzer** : DAG のノードの詳細を出力します。
+    - **SlowTaskIdentifier** : DAG の遅いタスクの詳細を出力します。
+    - **SlowestVertexAnalyzer** : DAG の最も遅い頂点の詳細を出力します。
+    - **SpillAnalyzer** : DAG の書き込みの詳細を出力します。
+    - **TaskConcurrencyAnalyzer** : DAG のタスク コンカレンシーの詳細を出力します。
+    - **VertexLevelCriticalPathAnalyzer** : DAG のクリティカル パスを頂点レベルで特定します。
 
 ### <a name="additional-reading"></a>その他の情報
 
@@ -163,10 +163,4 @@ Tez DAG データは次の 2 つの方法で収集できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-- [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-- [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

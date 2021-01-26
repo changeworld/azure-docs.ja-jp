@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
-ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: 82f1a803935c69835906155cf0d522e74d3d2fd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 7846fc84adfbf34ad8db1dbe16a79cb5345e6021
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502496"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336090"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure 内の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法
 

@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311757"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104582"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>サードパーティの Cookie がブロックされている Safari やその他のブラウザーで ITP を扱う
 
@@ -26,7 +26,7 @@ ms.locfileid: "87311757"
 
 ## <a name="what-is-intelligent-tracking-protection-itp"></a>Intelligent Tracking Protection (ITP) とは
 
-Apple Safari では、[Intelligent Tracking Protection](https://webkit.org/tracking-prevention-policy/) (*ITP*) と呼ばれるプライバシー保護機能が既定でオンになっています。 ITP では、"サードパーティ" の Cookie (複数のドメインにまたがる要求の Cookie) がブロックされます。
+Apple Safari では、 [Intelligent Tracking Protection](https://webkit.org/tracking-prevention-policy/) ( *ITP* ) と呼ばれるプライバシー保護機能が既定でオンになっています。 ITP では、"サードパーティ" の Cookie (複数のドメインにまたがる要求の Cookie) がブロックされます。
 
 一般的な形式のユーザー追跡は、バックグラウンドで iframe をサードパーティ サイトに読み込み、Cookie を使用してインターネット経由でユーザーを関連付けることによって行われます。 残念ながら、このパターンは、シングルページ アプリ (SPA) で[暗黙的なフロー](v2-oauth2-implicit-grant-flow.md)を実装するための標準的な方法でもあります。 ユーザー追跡を防ぐためにブラウザーでサードパーティの Cookie をブロックすると、SPA も中断されます。
 
@@ -41,7 +41,7 @@ SPA でユーザーの認証を続行するには、アプリ開発者が[認可
 Microsoft ID プラットフォームの場合、SPA とネイティブ クライアントでは以下の同様のプロトコル ガイダンスに従います。
 
 * [PKCE コード チャレンジ](https://tools.ietf.org/html/rfc7636)を使用する
-    * Microsoft ID プラットフォーム上の SPA では、PKCE が "*必須*" となります。 ネイティブおよび Confidential クライアントでは、PKCE が "*推奨*" されます。
+    * Microsoft ID プラットフォーム上の SPA では、PKCE が " *必須* " となります。 ネイティブおよび Confidential クライアントでは、PKCE が " *推奨* " されます。
 * クライアント シークレットを使用しない
 
 SPA にはさらに 2 つの制約があります。
@@ -49,7 +49,7 @@ SPA にはさらに 2 つの制約があります。
 * ログイン エンドポイントで CORS を有効にするには、[リダイレクト URI が `spa` という種類としてマークされている必要があります](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps)。
 * `spa` リダイレクト URI に認可コード フローを通じて発行される更新トークンには、90 日の有効期間ではなく、24 時間の有効期間があります。
 
-![SPA アプリのコード フロー](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="シングル ページ アプリとセキュリティ トークン サービス エンドポイントの間の OAuth 2 認証コード フローを示す図。" border="false":::
 
 ## <a name="performance-and-ux-implications"></a>パフォーマンスと UX への影響
 

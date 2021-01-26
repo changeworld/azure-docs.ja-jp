@@ -1,84 +1,51 @@
 ---
-title: Azure Data Lake Storage Gen2 のアクセス制御の概要 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 のアクセス制御のしくみを理解する。 Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のような ACL がサポートされています。
+title: Azure Data Lake Storage Gen2 のアクセス制御リスト | Microsoft Docs
+description: Azure Data Lake Storage Gen2 で POSIX のような ACL アクセス制御リストがどのように機能するかを理解する。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030488"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350757"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
+# <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>AzureData Lake Storage Gen2 のアクセス制御リスト (ACL)
 
-Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルが実装されています。 この記事では、Data Lake Storage Gen2 のアクセス制御モデルの基本について説明します。
+Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルが実装されています。 この記事では、Data Lake Storage Gen2 のアクセス制御リストについて説明します。 Azure RBAC を ACL に一緒に組み込む方法と、それらをシステムで評価して認可の決定を行う方法の詳細については、「[Azure Data Lake Storage Gen2 でのアクセス制御モデル](data-lake-storage-access-control-model.md)」を参照してください。
 
-<a id="azure-role-based-access-control-rbac"></a>
+<a id="access-control-lists-on-files-and-directories"></a>
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="about-acls"></a>ACL について
 
-RBAC では、ロールの割り当てを使用して、"*セキュリティ プリンシパル*" にアクセス許可のセットが効果的に適用されます。 "*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求している、Azure Active Directory (AD) で定義されたユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
-
-通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、コンテナー (ファイル システム) のリソースに拡張されています。
-
-お使いのストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+[セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)をファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)* " でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。 セキュリティ プリンシパルがファイルまたはディレクトリに対して操作を実行しようとすると、ACL チェックによって、そのセキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、その操作を実行するための適切なアクセス許可レベルを持っているかどうかが判断されます。
 
 > [!NOTE]
-> ゲスト ユーザーがロールの割り当てを作成することはできません。
+> ACL は同じテナント内のセキュリティ プリンシパルにのみ適用され、共有キーまたは Shared Access Signature (SAS) トークン認証を使用するユーザーには適用されません。 これは、呼び出し元に ID が関連付けられていないため、セキュリティ プリンシパルのアクセス許可ベースの認可を実行できないことが原因です。  
 
-### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>ファイルおよびディレクトリ レベルのアクセス制御リストでのロール割り当ての影響
-
-Azure ロールの割り当ての使用は、アクセス許可の制御として効果的ですが、ACL と比較すると、非常にきめの粗いメカニズムです。 RBAC の最小粒度は、コンテナー レベルで、これは ACL よりも高い優先順位で評価されます。 したがって、セキュリティ プリンシパルにコンテナーのスコープでロールを割り当てた場合、ACL の割り当てに関係なく、そのセキュリティ プリンシパルには、そのコンテナー内の "すべて" のディレクトリとファイルに対してそのロールに関連付けられている承認レベルが適用されます。
-
-[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを通じて、セキュリティ プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作がセキュリティ プリンシパルの Azure ロールの割り当てによって承認されると、承認はすぐに決定され、追加の ACL チェックは実行されません。 また、セキュリティ プリンシパルに Azure ロールの割り当てがない場合や、要求の操作が、割り当てられているアクセス許可と一致しない場合は、要求された操作の実行をセキュリティ プリンシパルが許可されているかどうかを判断するために、ACL チェックが実行されます。
-
-> [!NOTE]
-> セキュリティ プリンシパルにストレージ BLOB データ所有者の組み込みロールが割り当てられている場合、そのセキュリティ プリンシパルは "*スーパー ユーザー*" と見なされ、すべての変更操作 (ディレクトリやファイルの所有権の設定や、自分が所有者ではないディレクトリやファイルへの ACL の設定など) へのフル アクセス権が付与されます。 スーパー ユーザーのアクセス権は、リソースの所有者を変更するために承認された唯一の方法です。
-
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>共有キーと Shared Access Signature (SAS) 認証
-
-Azure Data Lake Storage Gen2 では、認証に共有キーと SAS の方法がサポートされています。 これらの認証方法の特徴は、呼び出し元に ID が関連付けられていないため、セキュリティ プリンシパルのアクセス許可ベースの承認を実行できないことです。
-
-共有キーの場合、呼び出し元は効果的に 'スーパー ユーザー' のアクセス権を得られます。つまり、所有者の設定や ACL の変更を含む、すべてのリソースですべての操作に対してフル アクセス権を持つことになります。
-
-SAS トークンには、トークンの一部として許可されるアクセス許可が含まれます。 SAS トークンに含まれるアクセス許可は、すべての承認の決定に効果的に適用されますが、追加の ACL チェックは行われません。
-
-## <a name="access-control-lists-on-files-and-directories"></a>ファイルとディレクトリのアクセス制御リスト
-
-セキュリティ プリンシパルをファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)* " でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。
-
-> [!NOTE]
-> ACL は、同じテナント内のセキュリティ プリンシパルにのみ適用されます。 
-
-ストレージ アカウント レベルでセキュリティ プリンシパルにロールを割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルに、特定のファイルおよびディレクトリに対する昇格されたアクセス権を付与することができます。
-
-アクセス制御リストを使って、ロール割り当てによって許可されるレベルより低いアクセスのレベルを提供することはできません。 たとえば、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールをセキュリティ プリンシパルに割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルによるディレクトリへの書き込みを禁止することはできません。
-
-
-### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>アクセス制御リストを使ってファイルおよびディレクトリ レベルのアクセス許可を設定する
+## <a name="how-to-set-acls"></a>ACL を設定する方法
 
 ファイルおよびディレクトリ レベルのアクセス許可を設定するには、次のいずれかの記事をご覧ください。
 
 | 環境 | [アーティクル] |
 |--------|-----------|
-|Azure Storage Explorer |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
-|.NET |[.NET を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-dotnet.md)|
-|Java|[Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-java.md)|
-|Python|[Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-python.md)|
-|PowerShell|[PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-cli.md)|
-|REST API |[Path - Update (パス - 更新)](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
+|.NET |[.NET を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
+|Java|[Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
+|Python|[Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
+|PowerShell|[PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
+|Azure CLI|[Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|REST API |[Path - Update (パス - 更新)](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > セキュリティ プリンシパルが "*サービス*" プリンシパルである場合は、関連するアプリ登録のオブジェクト ID ではなく、サービス プリンシパルのオブジェクト ID を使うことが重要です。 サービス プリンシパルのオブジェクト ID を取得するには、Azure CLI を開き、`az ad sp show --id <Your App ID> --query objectId` コマンドを使います。 `<Your App ID>` プレースホルダーは、アプリ登録のアプリ ID に置き換えます。
 
-### <a name="types-of-access-control-lists"></a>アクセス制御リストの種類
+## <a name="types-of-acls"></a>ACL の種類
 
 アクセス制御リストには、"*アクセス ACL*" と "*既定の ACL*" の 2 種類があります。
 
@@ -91,22 +58,22 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 > [!NOTE]
 > 親の既定の ACL を変更しても、既存の子項目のアクセス ACL または既定の ACL には影響しません。
 
-### <a name="levels-of-permission"></a>アクセス許可のレベル
+## <a name="levels-of-permission"></a>アクセス許可のレベル
 
-コンテナー オブジェクトに対するアクセス許可は、**読み取り**、**書き込み**、**実行**であり、次の表に示すように、ファイルとディレクトリに対して使用できます。
+コンテナー オブジェクトに対するアクセス許可は、**読み取り**、**書き込み**、**実行** であり、次の表に示すように、ファイルとディレクトリに対して使用できます。
 
 |            |    ファイル     |   ディレクトリ |
 |------------|-------------|----------|
-| **読み取り (R)** | ファイルの内容を読み取ることができる | ディレクトリの内容を一覧表示するには、**読み取り**と**実行**が必要です。 |
-| **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | ディレクトリに子項目を作成するには、**書き込み**と**実行**が必要です。 |
+| **読み取り (R)** | ファイルの内容を読み取ることができる | ディレクトリの内容を一覧表示するには、**読み取り** と **実行** が必要です。 |
+| **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | ディレクトリに子項目を作成するには、**書き込み** と **実行** が必要です。 |
 | **実行 (X)** | Data Lake Storage Gen2 のコンテキストでは、何も意味しない | ディレクトリの子項目をスキャンするために必要です。 |
 
 > [!NOTE]
-> ACL のみを使用して (RBAC なしで) アクセス許可を付与する場合、ファイルにセキュリティ プリンシパルの読み取りまたは書き込みアクセス権を付与するには、コンテナーとそのファイルまでつながるフォルダー階層内の各フォルダーにセキュリティ プリンシパルの**実行**のアクセス許可を付与する必要があります。
+> ACL のみを使用して (Azure RBAC なしで) アクセス許可を付与する場合、ファイルにセキュリティ プリンシパルの読み取りまたは書き込みアクセス権を付与するには、コンテナーとそのファイルまでつながるフォルダー階層内の各フォルダーにセキュリティ プリンシパルの **実行** のアクセス許可を付与する必要があります。
 
-#### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
+### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
 
-**RWX** は、**読み取り + 書き込み + 実行**を示すために使用されます。 さらに縮約された数値形式もあります。**読み取り = 4**、**書き込み = 2**、**実行 = 1** で、その合計でアクセス許可を表します。 次は一部の例です。
+**RWX** は、**読み取り + 書き込み + 実行** を示すために使用されます。 さらに縮約された数値形式もあります。**読み取り = 4**、**書き込み = 2**、**実行 = 1** で、その合計でアクセス許可を表します。 次は一部の例です。
 
 | 数値形式 | 短縮形式 |      意味     |
 |--------------|------------|------------------------|
@@ -115,13 +82,18 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 | 4            | `R--`        | Read                   |
 | 0            | `---`        | アクセス許可なし         |
 
-#### <a name="permissions-inheritance"></a>アクセス許可の継承
+### <a name="permissions-inheritance"></a>アクセス許可の継承
 
 Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは、項目のアクセス許可は項目自体に格納されます。 つまり、子項目が既に作成された後にアクセス許可を設定すると、項目のアクセス許可を親項目から継承できません。 子項目が作成される前に、親項目で既定のアクセス許可が設定されている場合にのみ、アクセス許可が継承されます。
 
-### <a name="common-scenarios-related-to-permissions"></a>アクセス許可に関連する一般的なシナリオ
+## <a name="common-scenarios-related-to-acl-permissions"></a>ACL アクセス許可に関連する一般的なシナリオ
 
-ストレージ アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次の表に示します。
+次の表は、**Operation** 列に示されている操作を実行するためにセキュリティ プリンシパルを有効にするのに必要な ACL エントリを示します。 
+
+この表は、架空のディレクトリ階層の各レベルを表す列を示しています。 コンテナーのルート ディレクトリ (`\`)、**Oregon** という名前のサブディレクトリ、**Portland** という名前の Oregon ディレクトリのサブディレクトリ、および **Data.txt** という名前の Portland ディレクトリのテキスト ファイルの列があります。 
+
+> [!IMPORTANT]
+> この表は、Azure ロールの割り当てを使用せずに ACL **のみ** を使用していることを前提としています。 Azure RBAC と ACL を組み合わせた同様の表を確認するには、「[アクセス許可の表: Azure RBAC と ACL の組み合わせ](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)」を参照してください。
 
 |    Operation             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -136,7 +108,7 @@ Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは�
 > [!NOTE]
 > 上の 2 つの条件が満たされていれば、ファイルを削除するために、ファイルに対する書き込みアクセス許可は必要ありません。
 
-### <a name="users-and-identities"></a>ユーザーと ID
+## <a name="users-and-identities"></a>ユーザーと ID
 
 すべてのファイルとディレクトリは、以下の ID の個別のアクセス許可を持っています。
 
@@ -150,7 +122,7 @@ Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは�
 
 ユーザーとグループの ID は、Azure Active Directory (Azure AD) の ID です。 そのため、注記がない限り、Data Lake Store Gen2 のコンテキストでの "*ユーザー*" は、Azure AD ユーザー、サービス プリンシパル、マネージド ID、またはセキュリティ グループを意味します。
 
-#### <a name="the-owning-user"></a>所有ユーザー
+### <a name="the-owning-user"></a>所有ユーザー
 
 項目を作成したユーザーは、自動的に項目の所有ユーザーになります。 所有ユーザーは、次のことができます。
 
@@ -158,27 +130,27 @@ Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは�
 * 所有しているファイルの所有グループを変更します。ただし、所有ユーザーが変更後のグループのメンバーでもある必要があります。
 
 > [!NOTE]
-> 所有ユーザーが、ファイルやディレクトリの所有ユーザーを変更することは*できません*。 ファイルまたはディレクトリの所有ユーザーを変更できるのは、スーパー ユーザーだけです。
+> 所有ユーザーが、ファイルやディレクトリの所有ユーザーを変更することは *できません*。 ファイルまたはディレクトリの所有ユーザーを変更できるのは、スーパー ユーザーだけです。
 
-#### <a name="the-owning-group"></a>所有グループ
+### <a name="the-owning-group"></a>所有グループ
 
-POSIX ACL では、すべてのユーザーが*プライマリ グループ*に関連付けられています。 たとえば、ユーザー "Alice" が "finance" グループに属しているとします。 Alice は複数のグループに属している可能性がありますが、1 つのグループが常にプライマリ グループとして指定されています。 POSIX では、Alice がファイルを作成すると、そのファイルの所有グループが彼女のプライマリ グループに設定されます。ここでは、"finance" グループです。 その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
+POSIX ACL では、すべてのユーザーが *プライマリ グループ* に関連付けられています。 たとえば、ユーザー "Alice" が "finance" グループに属しているとします。 Alice は複数のグループに属している可能性がありますが、1 つのグループが常にプライマリ グループとして指定されています。 POSIX では、Alice がファイルを作成すると、そのファイルの所有グループが彼女のプライマリ グループに設定されます。ここでは、"finance" グループです。 その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
 
-##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>新しいファイルまたはディレクトリに対する所有グループの割り当て
+#### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>新しいファイルまたはディレクトリに対する所有グループの割り当て
 
 * **ケース 1**:ルート ディレクトリ "/"。 このディレクトリは、Data Lake Storage Gen2 コンテナーの作成時に作成されます。 この場合、OAuth を使用してコンテナーが作成された場合は、所有グループはそれを作成したユーザーに設定されます。 共有キー、アカウント SAS、またはサービス SAS を使用してコンテナーを作成した場合は、所有者と所有グループは **$superuser** に設定されます。
 * **ケース 2** (その他すべての場合):新しい項目が作成されると、所有グループが親ディレクトリからコピーされます。
 
-##### <a name="changing-the-owning-group"></a>所有グループの変更
+#### <a name="changing-the-owning-group"></a>所有グループの変更
 
 所有グループを変更できるユーザーは次のとおりです。
 * すべてのスーパー ユーザー
 * 所有ユーザー (所有ユーザーが変更後のグループのメンバーでもある場合)
 
 > [!NOTE]
-> 所有グループが、ファイルやディレクトリの ACL を変更することはできません。  ルート ディレクトリの場合 (上記の**ケース 1**)、所有グループはアカウントを作成したユーザーに設定されますが、所有グループを介したアクセス許可の付与に関して、単一ユーザー アカウントは有効ではありません。 この権限は、有効なユーザー グループに対して、該当する場合に割り当てることができます。
+> 所有グループが、ファイルやディレクトリの ACL を変更することはできません。  ルート ディレクトリの場合 (上記の **ケース 1**)、所有グループはアカウントを作成したユーザーに設定されますが、所有グループを介したアクセス許可の付与に関して、単一ユーザー アカウントは有効ではありません。 この権限は、有効なユーザー グループに対して、該当する場合に割り当てることができます。
 
-### <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
+## <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
 
 次の擬似コードは、ストレージ アカウントのアクセス確認アルゴリズムを示しています。
 
@@ -190,63 +162,70 @@ def access_check( user, desired_perms, path ) :
   # path is the file or directory
   # Note: the "sticky bit" isn't illustrated in this algorithm
   
-# Handle super users.
+  # Handle super users.
   if (is_superuser(user)) :
     return True
 
-# Handle the owning user. Note that mask isn't used.
-entry = get_acl_entry( path, OWNER )
-if (user == entry.identity)
-    return ( (desired_perms & entry.permissions) == desired_perms )
+  # Handle the owning user. Note that mask isn't used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
-# Handle the named users. Note that mask IS used.
-entries = get_acl_entries( path, NAMED_USER )
-for entry in entries:
-    if (user == entry.identity ) :
-        mask = get_mask( path )
-        return ( (desired_perms & entry.permissions & mask) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USER )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permissions & mask) == desired_perms)
 
-# Handle named groups and owning group
-member_count = 0
-perms = 0
-entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
-mask = get_mask( path )
-for entry in entries:
-if (user_is_member_of_group(user, entry.identity)) :
-    if ((desired_perms & entry.permissions & mask) == desired_perms)
-        return True 
+  # Handle named groups and owning group
+  member_count = 0
+  perms = 0
+  entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+  mask = get_mask( path )
+  for entry in entries:
+    if (user_is_member_of_group(user, entry.identity)) :
+        if ((desired_perms & entry.permissions & mask) == desired_perms)
+            return True 
         
-# Handle other
-perms = get_perms_for_other(path)
-mask = get_mask( path )
-return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle other
+  perms = get_perms_for_other(path)
+  mask = get_mask( path )
+  return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-#### <a name="the-mask"></a>マスク
+### <a name="the-mask"></a>マスク
 
 アクセス確認アルゴリズムに示されているように、マスクによって、名前付きユーザー、所有グループ、および名前付きグループのアクセスが制限されます。  
 
-> [!NOTE]
-> 新しい Data Lake Storage Gen2 コンテナーでは、ルート ディレクトリ ("/") のアクセス ACL のマスクは、ディレクトリの場合は 750、ファイルの場合は 640 に既定で設定されています。 ファイルは格納専用のシステム内のファイルとは無関係であるため、X ビットを受け取りません。
->
-> マスクは、呼び出しごとに指定できます。 これにより、クラスターなどのさまざまな使用システムが、ファイル操作に対して異なる有効なマスクを持つことができます。 特定の要求でマスクが指定されると、既定のマスクが完全にオーバーライドされます。
+新しい Data Lake Storage Gen2 コンテナーでは、ルート ディレクトリ ("/") のアクセス ACL のマスクは、ディレクトリの場合は **750**、ファイルの場合は **640** に既定で設定されています。 次の表は、これらのアクセス許可レベルのシンボリック表記を示しています。
 
-#### <a name="the-sticky-bit"></a>スティッキー ビット
+|Entity|ディレクトリ|ファイル|
+|--|--|--|
+|所有ユーザー|`rwx`|`r-w`|
+|所有グループ|`r-x`|`r--`|
+|その他|`---`|`---`|
+
+ファイルは格納専用のシステム内のファイルとは無関係であるため、X ビットを受け取りません。 
+
+マスクは、呼び出しごとに指定できます。 これにより、クラスターなどのさまざまな使用システムが、ファイル操作に対して異なる有効なマスクを持つことができます。 特定の要求でマスクが指定されると、既定のマスクが完全にオーバーライドされます。
+
+### <a name="the-sticky-bit"></a>スティッキー ビット
 
 スティッキー ビットは、POSIX コンテナーのより高度な機能です。 Data Lake Storage Gen2 のコンテキストでは、スティッキー ビットが必要になることはあまりありません。 つまり、ディレクトリでスティッキー ビットが有効になっている場合、子項目を削除または名前変更できるのは、子項目を所有しているユーザーのみです。
 
 スティッキー ビットは、Azure portal には表示されません。
 
-### <a name="default-permissions-on-new-files-and-directories"></a>新しいファイルとディレクトリの既定のアクセス許可
+## <a name="default-permissions-on-new-files-and-directories"></a>新しいファイルとディレクトリの既定のアクセス許可
 
 既存のディレクトリの下に新しいファイルまたはディレクトリが作成されると、親ディレクトリの既定の ACL によって、次のものが決定します。
 
 - 子ディレクトリの既定の ACL とアクセス ACL。
 - 子ファイルのアクセス ACL (ファイルには既定の ACL がありません)。
 
-#### <a name="umask"></a>umask
+### <a name="umask"></a>umask
 
-ファイルまたはディレクトリを作成するときに、umask を使用して、子項目に既定の ACL がどのように設定されるかを変更します。 umask は親ディレクトリに設定される 9 ビットの値であり、**所有ユーザー**、**所有グループ**、および**その他**に対する RWX 値が含まれています。
+ファイルまたはディレクトリを作成するときに、umask を使用して、子項目に既定の ACL がどのように設定されるかを変更します。 umask は親ディレクトリに設定される 9 ビットの値であり、**所有ユーザー**、**所有グループ**、および **その他** に対する RWX 値が含まれています。
 
 Azure Data Lake Storage Gen2 に対する umask は、007 に設定される定数値です。 この値の変換値:
 
@@ -256,7 +235,7 @@ Azure Data Lake Storage Gen2 に対する umask は、007 に設定される定�
 | umask.owning_group  |    0         |   `---`      | 所有グループの場合、親の既定の ACL を子のアクセス ACL にコピーします | 
 | umask.other         |    7         |   `RWX`      | その他の場合、子のアクセス ACL 上のすべてのアクセス許可を削除します |
 
-Azure Data Lake Storage Gen2 で umask の値が使用されると、実際上は、既定の ACL が何を示しているかに関係なく、既定では、**その他**に対する値は、新しい子では決して送信されないことを意味します。 
+Azure Data Lake Storage Gen2 で umask 値の値が使用されると、実質的に、既定の ACL が親ディレクトリに定義されていない限り、**other** の値は新しい子では既定で送信されないことを意味してます。 その場合、umask は実質的に無視され、既定の ACL によって定義されたアクセス許可が子項目に適用されます。 
 
 次の疑似コードは、子項目に ACL を作成するときに、unmask がどのように適用されるかを示しています。
 
@@ -276,7 +255,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen2"></a>Data Lake Storage Gen2 の ACL に関する一般的な質問
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL のサポートを有効にする必要はありますか
 
@@ -286,7 +265,25 @@ HNS がオフになっている場合、Azure RBAC の承認規則が引き続�
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>ACL を適用する最善の方法
 
-ACL で割り当て済みのプリンシパルとして常に Azure AD セキュリティ グループを使用します。 個々のユーザーまたはサービス プリンシパルを直接割り当てることを抑止します。 この構造体を使用すると、ユーザーまたはサービス プリンシパルを追加したり削除したりすることができます。ACL をディレクトリ構造全体に再適用する必要はありません。 代わりに、適切な Azure AD セキュリティ グループからユーザーまたはサービス プリンシパルを追加または削除するだけです。 ACL は継承されないため、ACL の再適用には、すべてのファイルとサブディレクトリで ACL を更新する必要があることに注意してください。 
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)] 
+
+### <a name="how-are-azure-rbac-and-acl-permissions-evaluated"></a>Azure RBAC と ACL のアクセス許可はどのように評価されますか?
+
+システムが Azure RBAC と ACL をまとめて評価し、ストレージ アカウント リソースに対する認可の決定を行う方法については、「[アクセス許可の評価方法](data-lake-storage-access-control-model.md#how-permissions-are-evaluated)」を参照してください。
+
+### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Azure ロールの割り当てと ACL エントリにはどのような制限がありますか。
+
+次の表に、Azure RBAC を使用して "粒度の粗い" アクセス許可 (ストレージ アカウントまたはコンテナーに適用されるアクセス許可) を管理し、ACL を使用して "粒度の細かい" アクセス許可 (ファイルとディレクトリに適用されるアクセス許可) を管理する際に考慮する制限の概要ビューを示します。 ACL 割り当て用のセキュリティ グループを使用します。 グループを使用すると、サブスクリプションごとのロール割り当ての最大数と、ファイルやディレクトリごとの ACL エントリの最大数を超える可能性が低くなります。 
+
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-azure-rbac"></a>Data Lake Storage Gen2 は Azure RBAC の継承をサポートしていますか。
+
+Azure ロールの割り当ては継承されます。 割り当ては、サブスクリプション、リソース グループ、ストレージ アカウント リソースからコンテナー リソースに渡されます。
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 は ACL の継承をサポートしていますか。
+
+親ディレクトリの下に作成される新しい子サブディレクトリやファイルについては、既定の ACL を使用して ACL を設定できます。 既存の子項目の ACL を更新するには、目的のディレクトリ階層に対して ACL を再帰的に追加、更新、または削除する必要があります。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する](recursive-access-control-lists.md)」を参照してください。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>ディレクトリとその内容を再帰的に削除するのに必要なアクセス許可を教えてください
 
@@ -330,11 +327,11 @@ OID が表示されます。
 
 サービス プリンシパルの正しい OID を取得したら、Storage Explorer で **[アクセスの管理]** ページに移動して OID を追加し、その OID に対する適切なアクセス許可を割り当てます。 その後、必ず **[保存]** を選択してください。
 
-### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 は ACL の継承をサポートしていますか。
+### <a name="can-i-set-the-acl-of-a-container"></a>コンテナーの ACL を設定できますか。
 
-Azure ロールの割り当ては継承されます。 割り当ては、サブスクリプション、リソース グループ、ストレージ アカウント リソースからコンテナー リソースに渡されます。
+いいえ。 コンテナーに ACL がありません。 ただし、コンテナーのルート ディレクトリの ACL を設定できます。 すべてのコンテナーにはルート ディレクトリがあり、コンテナーと同じ名前を共有します。 たとえば、コンテナーに `my-container` という名前が付けられている場合、ルート ディレクトリの名前は `myContainer/` になります。 
 
-ACL は継承されません。 ただし、親ディレクトリの下に作成される子サブディレクトリやファイルについては、既定の ACL を使用して ACL を設定できます。 
+Azure Storage REST API には [Set Container ACL](/rest/api/storageservices/set-container-acl)という操作が含まれていますが、この操作を使用してコンテナーの ACL またはコンテナーのルート ディレクトリを設定することはできません。 その代わりに、その操作は、コンテナー内の BLOB が[パブリックにアクセス可能かどうか](anonymous-read-access-configure.md)を示します。 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX アクセス制御モデルの詳細はどこで確認できますか
 
@@ -349,4 +346,4 @@ ACL は継承されません。 ただし、親ディレクトリの下に作成
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)
+- 「[Azure Data Lake Storage Gen2 のアクセス制御モデル](data-lake-storage-access-control-model.md)」

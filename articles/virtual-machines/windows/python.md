@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e2558074275f9b97bd4a2fd9a3d111c5de02948
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853417"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201792"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
-[Azure 仮想マシン](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) には、いくつかのサポート Azure リソースが必要です。 この記事では、Python を使って VM リソースを作成、管理、削除する方法について説明します。 学習内容は次のとおりです。
+[Azure 仮想マシン](overview.md) (VM) には、いくつかのサポート Azure リソースが必要です。 この記事では、Python を使って VM リソースを作成、管理、削除する方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Visual Studio プロジェクトを作成する
@@ -342,7 +342,7 @@ compute_client = ComputeManagementClient(
     ```
 
     > [!NOTE]
-    > このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+    > このチュートリアルでは、Windows Server オペレーティング システムのバージョンを実行する仮想マシンを作成します。 他のイメージの選択の詳細については、 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../linux/cli-ps-findimage.md)に関する記事をご覧ください。
     > 
     > 
 
@@ -492,7 +492,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
 
-仮想マシンでは 1 つ以上の[データ ディスク](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を保持することができ、それらは VHD として格納されます。
+仮想マシンでは 1 つ以上の[データ ディスク](../managed-disks-overview.md)を保持することができ、それらは VHD として格納されます。
 
 1. 仮想マシンにデータ ディスクを追加するには、.py ファイルの変数の後に次の関数を追加します。 
 
@@ -559,7 +559,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 1. コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックします。
 
-2. 各リソースの状態が返された後、**Enter** キーを押します。 状態の情報では、プロビジョニングが**成功**状態になっている必要があります。 仮想マシンが作成された後、作成したすべてのリソースを削除する機会があります。 **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 Azure Portal が開いたままになっている場合、新しいリソースを表示するにはブレードの更新が必要になる場合があります。  
+2. 各リソースの状態が返された後、**Enter** キーを押します。 状態の情報では、プロビジョニングが **成功** 状態になっている必要があります。 仮想マシンが作成された後、作成したすべてのリソースを削除する機会があります。 **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 Azure Portal が開いたままになっている場合、新しいリソースを表示するにはブレードの更新が必要になる場合があります。  
 
     このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 アプリケーションが終了してから、すべてのリソースとリソース グループが削除されるまで、数分かかる場合があります。
 

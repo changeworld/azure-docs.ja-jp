@@ -1,14 +1,16 @@
 ---
 title: アプリケーションの設定 - LUIS
 description: Azure Cognitive Services の言語を理解するアプリのアプリケーション設定は、アプリとポータルに格納されています。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/04/2020
-ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0578e3c3c952a475c6beb01ffcf354e19eda6e26
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590989"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91319165"
 ---
 # <a name="app-and-version-settings"></a>アプリとバージョンの設定
 

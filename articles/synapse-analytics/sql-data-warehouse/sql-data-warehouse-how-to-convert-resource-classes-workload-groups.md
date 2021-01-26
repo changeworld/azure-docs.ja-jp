@@ -1,6 +1,6 @@
 ---
 title: リソース クラスからワークロード グループへの変換
-description: Azure SQL Data Warehouse のリソース クラスに似たワークロード グループを作成する方法について説明します。
+description: 専用 SQL プールのリソース クラスに似たワークロード グループを作成する方法について説明します。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192310"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461889"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>リソース クラスからワークロード グループへの変換
 

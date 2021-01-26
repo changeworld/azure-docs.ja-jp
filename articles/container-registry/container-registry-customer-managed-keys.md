@@ -1,35 +1,56 @@
 ---
-title: カスタマー マネージド キーを使用した保存時の暗号化
+title: カスタマー マネージド キーを使用してレジストリを暗号化する
 description: Azure コンテナー レジストリの保存時の暗号化、および Azure Key Vault に格納されているカスタマー マネージド キーを使用して Premium レジストリを暗号化する方法について説明します。
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225888"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620448"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
-イメージや他の成果物を Azure コンテナー レジストリに格納すると、保存時のレジストリの内容は Azure によって[サービス マネージド キー](../security/fundamentals/encryption-models.md)を使用して自動的に暗号化されます。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、Azure CLI と Azure portal を使用する手順について説明します。
+イメージや他の成果物を Azure コンテナー レジストリに格納すると、保存時のレジストリの内容は Azure によって[サービス マネージド キー](../security/fundamentals/encryption-models.md)を使用して自動的に暗号化されます。 Azure Key Vault 内で作成して管理するキー (カスタマー マネージド キー) を使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、Azure CLI と Azure portal を使用する手順について説明します。
 
-カスタマー マネージド キーを使用するサーバー側暗号化は、[Azure Key Vault](../key-vault/general/overview.md) との統合によってサポートされます。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使ってキーを生成したりできます。 Azure Key Vault を使用してキー使用法を監査することもできます。
+カスタマー マネージド キーを使用するサーバー側暗号化は、[Azure Key Vault](../key-vault/general/overview.md) との統合によってサポートされています。 
+
+* 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使ってキーを生成したりできます。 
+* Azure Key Vault を使用してキー使用法を監査することもできます。
+* Azure Key Vault で新しいキーのバージョンが利用可能になったときのレジストリ暗号化キーの自動ローテーションが Azure Container Registry でサポートされています。 レジストリ暗号化キーは手動でローテーションすることもできます。
 
 この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のサービス レベル](container-registry-skus.md)に関する記事を参照してください。
 
 
 ## <a name="things-to-know"></a>注意事項
 
-* 現在カスタマー マネージド キーを有効にできるのは、レジストリを作成するときだけです。
-* レジストリでカスタマー マネージド キーを有効にした後、それを無効にすることはできません。
+* 現在カスタマー マネージド キーを有効にできるのは、レジストリを作成するときだけです。 キーを有効にするときは、"*ユーザー割り当て*" マネージド ID を構成して、キー コンテナーにアクセスします。
+* レジストリでカスタマー マネージド キーを使用して暗号化を有効にすると、この暗号化は無効にできなくなります。  
+* Azure Container Registry でサポートされているのは、RSA または RSA HSM キーのみです。 楕円曲線キーは現在サポートされていません。
 * 現在、カスタマー マネージド キーで暗号化されたレジストリでは、[コンテンツの信頼](container-registry-content-trust.md)はサポートされていません。
 * カスタマー マネージド キーで暗号化されたレジストリでは、現在、[ACR タスク](container-registry-tasks-overview.md)に対する実行ログは 24 時間だけ保持されます。 それより長くログを保持する必要がある場合は、[タスク実行ログのエクスポートと保存](container-registry-tasks-logs.md#alternative-log-storage)に関するガイダンスを参照してください。
 
+
+> [!NOTE]
+> [Key Vault ファイアウォール](../key-vault/general/network-security.md)を持つ仮想ネットワークを使用することで Azure key vault へのアクセスが制限される場合は、追加の構成手順が必要です。 レジストリを作成し、カスタマー マネージド キーを有効にした後、レジストリの "*システム割り当て*" マネージド ID を使用してキーへのアクセスを設定し、Key Vault ファイアウォールをバイパスするようにレジストリを構成します。 この記事の手順に従って、カスタマー マネージド キーを使用して暗号化を有効にし、この記事の後半で、「[高度なシナリオ: Key Vault ファイアウォール](#advanced-scenario-key-vault-firewall)」についてのガイダンスを参照します。
+
+## <a name="automatic-or-manual-update-of-key-versions"></a>キーのバージョンの自動または手動更新
+
+カスタマー マネージド キーで暗号化されたレジストリのセキュリティに関する重要な考慮事項は、暗号化キーを更新 (ローテーション) する頻度です。 Azure Key Vault に格納されているキーの[バージョン](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)は、カスタマー マネージド キーとして使用される場合、組織のコンプライアンス ポリシーによって定期的な更新が必要になることがあります。 
+
+カスタマー マネージド キーを使用してレジストリの暗号化を構成する場合、暗号化に使用するキーのバージョンを更新するには、次の 2 つの方法があります。
+
+* **キーのバージョンを自動的に更新する** - Azure Key Vault で新しいバージョンが利用可能になったときに自動的にカスタマー マネージド キーを更新するには、カスタマー マネージド キーを使用した暗号化を有効にするときに、キーのバージョンを省略します。 レジストリがバージョンなしのキーで暗号化されている場合、Azure Container Registry により、キー コンテナーの新しいキーのバージョンが定期的に確認され、カスタマー マネージド キーが 1 時間以内に更新されます。 最新バージョンのキーが Azure Container Registry によって自動的に使用されます。
+
+* **キーのバージョンを手動で更新する** - レジストリの暗号化に特定のバージョンのキーを使用するには、カスタマー マネージド キーを使用した暗号化を有効にするときに、そのキー バージョンを指定します。 レジストリが特定のキーのバージョンで暗号化されている場合、カスタマー マネージド キーを手動でローテーションするまで、そのバージョンが Azure Container Registry で暗号化に使用されます。
+
+詳細については、この記事の後半にある「[キーのバージョンあり、またはなしのキー ID を選択する](#choose-key-id-with-or-without-key-version)」と「[キーのバージョンを更新する](#update-key-version)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-この記事の Azure CLI の手順を使用するには、Azure CLI バージョン 2.2.0 以降が必要です。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+この記事の Azure CLI の手順を使用するには、Azure CLI バージョン 2.2.0 以降、または Azure Cloud Shell が必要です。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="enable-customer-managed-key---cli"></a>カスタマー マネージド キーを有効にする - CLI
 
@@ -80,16 +101,21 @@ identityPrincipalID=$(az identity show --resource-group <resource-group-name> --
 
 [az keyvault create][az-keyvault-create] を使用して、レジストリ暗号化用のカスタマー マネージド キーを格納するためのキー コンテナーを作成します。
 
-キーまたはキー コンテナーを誤って削除してデータが失われないようにするには、次の設定を有効にする必要があります: **論理的な削除**と**消去保護**。 次の例には、これらの設定のパラメーターが含まれています。
+既定では、新しいキー コンテナーの **[論理的な削除]** 設定が自動的に有効になっています。 キーまたはキー コンテナーを誤って削除することによるデータ損失を防ぐには、 **[消去保護]** 設定も有効にします。
 
 ```azurecli
 az keyvault create --name <key-vault-name> \
   --resource-group <resource-group-name> \
-  --enable-soft-delete \
   --enable-purge-protection
 ```
 
-### <a name="add-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを追加する
+後続の手順で使用するため、キー コンテナーのリソース ID を取得します。
+
+```azurecli
+keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key-vault-name> --query 'id' --output tsv)
+```
+
+### <a name="enable-key-vault-access"></a>キー コンテナーへのアクセスを有効にする
 
 ID でキー コンテナーにアクセスできるように、キー コンテナーのポリシーを構成します。 次の [az keyvault set-policy][az-keyvault-set-policy] コマンドでは、前に作成して環境変数に格納したマネージ ID のプリンシパル ID を渡します。 キーのアクセス許可を **get**、**unwrapKey**、**wrapKey** に設定します。  
 
@@ -99,6 +125,14 @@ az keyvault set-policy \
   --name <key-vault-name> \
   --object-id $identityPrincipalID \
   --key-permissions get unwrapKey wrapKey
+```
+
+または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) (プレビュー) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用して、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+
+```azurecli 
+az role assignment create --assignee $identityPrincipalID \
+  --role "Key Vault Crypto Service Encryption (preview)" \
+  --scope $keyvaultID
 ```
 
 ### <a name="create-key-and-get-key-id"></a>キーを作成してキー ID を取得する
@@ -130,11 +164,20 @@ az keyvault key create \
       "wrapKey",
       "unwrapKey"
     ],
-    "kid": "https://mykeyvault.vault.azure.net/keys/mykey/xxxxxxxxxxxxxxxxxxxxxxxx",
+    "kid": "https://mykeyvault.vault.azure.net/keys/mykey/<version>",
     "kty": "RSA",
 [...]
 ```
-利便性を考えて、この値を環境変数に格納します。
+
+### <a name="choose-key-id-with-or-without-key-version"></a>キーのバージョンあり、またはなしのキー ID を選択する
+
+後で使用できるように、キー ID に選択した形式を $keyID 環境変数に格納します。 バージョンありのキー ID またはバージョンなしのキーを使用できます。
+
+#### <a name="manual-key-rotation---key-id-with-version"></a>手動のキー ローテーション - バージョンありのキー ID
+
+カスタマー マネージド キーを使用してレジストリを暗号化する場合、このキーにより、Azure Container Registry ではキーの手動ローテーションのみが許可されます。
+
+次の例では、キーの `kid` プロパティを格納します。
 
 ```azurecli
 keyID=$(az keyvault key show \
@@ -143,9 +186,24 @@ keyID=$(az keyvault key show \
   --query 'key.kid' --output tsv)
 ```
 
+#### <a name="automatic-key-rotation---key-id-omitting-version"></a>キーの自動ローテーション - バージョンを省略したキー ID 
+
+カスタマー マネージド キーを使用してレジストリを暗号化する場合、このキーにより、Azure Key Vault で新しいキーのバージョンが検出されたときのキーの自動ローテーションが可能になります。
+
+次の例では、キーの `kid` プロパティからバージョンを削除します。
+
+```azurecli
+keyID=$(az keyvault key show \
+  --name <keyname> \
+  --vault-name <key-vault-name> \
+  --query 'key.kid' --output tsv)
+
+keyID=$(echo $keyID | sed -e "s/\/[^/]*$//")
+```
+
 ### <a name="create-a-registry-with-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを作成する
 
-[az acr create][az-acr-create] コマンドを実行して Premium サービス レベルでレジストリを作成し、カスタマー マネージド キーを有効にします。 前に環境変数に格納したマネージ ID のプリンシパル ID とキー ID を渡します。
+[az acr create][az-acr-create] コマンドを実行して Premium サービス レベルでレジストリを作成し、カスタマー マネージド キーを有効にします。 前に環境変数に格納したマネージド ID とキー ID を渡します。
 
 ```azurecli
 az acr create \
@@ -164,14 +222,16 @@ az acr create \
 az acr encryption show --name <registry-name>
 ```
 
-出力は次のようになります。
+レジストリの暗号化に使用されるキーに応じて、出力は次のようになります。
 
 ```console
 {
   "keyVaultProperties": {
     "identity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "keyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789...",
-    "versionedKeyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789..."
+    "versionedKeyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789...",
+    "keyRotationEnabled": true,
+    "lastKeyRotationTimestamp": xxxxxxxx
   },
   "status": "enabled"
 }
@@ -185,35 +245,46 @@ Azure portal で、ユーザー割り当てによる [Azure リソース用マ�
 
 後の手順で ID の名前を使用します。
 
-![Azure portal でユーザー割り当てマネージド ID を作成する](./media/container-registry-customer-managed-keys/create-managed-identity.png)
+:::image type="content" source="media/container-registry-customer-managed-keys/create-managed-identity.png" alt-text="Azure portal でユーザー割り当て ID を作成する":::
 
 ### <a name="create-a-key-vault"></a>Key Vault を作成します
 
-キー コンテナーを作成する手順については、「[クイックスタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/secrets/quick-create-portal.md)」をご覧ください。
+キー コンテナーを作成する手順については、「[クイックスタート: Azure portal を使用してキー コンテナーを作成する](../key-vault/general/quick-create-portal.md)」を参照してください。
 
-カスタマー マネージド キー用のキー コンテナーを作成するときに、 **[基本]** タブで、次の保護設定を有効にします。**論理的な削除**と**消去保護**。 これらの設定は、キーまたはキー コンテナーを誤って削除することでデータが失われないようにするのに役立ちます。
+カスタマー マネージド キー用のキー コンテナーを作成する場合は、 **[基本]** タブで、 **[消去保護]** 設定を有効にします。 この設定は、キーまたはキー コンテナーを誤って削除することによるデータ損失を防ぐのに役立ちます。
 
-![Azure portal でキー コンテナーを作成する](./media/container-registry-customer-managed-keys/create-key-vault.png)
+:::image type="content" source="media/container-registry-customer-managed-keys/create-key-vault.png" alt-text="Azure portal でキー コンテナーを作成する":::
 
-### <a name="add-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを追加する
+### <a name="enable-key-vault-access"></a>キー コンテナーへのアクセスを有効にする
 
 ID でキー コンテナーにアクセスできるように、キー コンテナーのポリシーを構成します。
 
 1. お使いのキー コンテナーに移動します。
 1. **[設定]**  >  **[アクセス ポリシー] > [+ アクセス ポリシーの追加]** を選択します。
 1. **[キーのアクセス許可]** を選択し、 **[取得]** 、 **[キーの折り返しを解除]** 、および **[キーを折り返す]** を選択します。
-1. **[プリンシパルの選択]** を選択し、ユーザー割り当てマネージド ID のリソース名を選択します。  
+1. **[プリンシパルの選択]** で、ユーザー割り当てマネージド ID のリソース名を選択します。  
 1. **[追加]** を選択し、 **[保存]** を選択します。
 
-![キー コンテナーのアクセス ポリシーを作成する](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
+:::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="キー コンテナーのアクセス ポリシーを作成する":::
 
-### <a name="create-key"></a>キーを作成する
+または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) (プレビュー) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+
+1. お使いのキー コンテナーに移動します。
+1. **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
+1. **[ロールの割り当ての追加]** ウィンドウで、次の手順に従います。
+    1. **[Key Vault Crypto Service Encryption (プレビュー)]** ロールを選択します。 
+    1. **ユーザー割り当てマネージド ID** にアクセス権を割り当てます。
+    1. ユーザー割り当てマネージド ID のリソース名を選択し、 **[保存]** を選択します。
+
+### <a name="create-key-optional"></a>キーを作成する (省略可能)
+
+必要に応じて、レジストリの暗号化に使用するキーをキー コンテナーに作成します。 特定のキー バージョンをカスタマー マネージド キーとして選択する場合は、これらの手順に従います。 
 
 1. お使いのキー コンテナーに移動します。
 1. **[設定]**  >  **[キー]** の順に選択します。
 1. **[+ 生成/インポート]** を選択し、キーの一意の名前を入力します。
 1. それ以外については既定値をそのまま使用し、 **[作成]** を選択します。
-1. 作成した後、キーを選択し、現在のキーのバージョンを記録しておきます。
+1. 作成後、そのキーを選択し、次に現在のバージョンを選択します。 そのキー バージョンの **キー識別子** をコピーします。
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry の作成
 
@@ -221,12 +292,13 @@ ID でキー コンテナーにアクセスできるように、キー コンテ
 1. **[基本]** タブで、リソース グループを選択または作成し、レジストリ名を入力します。 **[SKU]** で **[Premium]** を選択します。
 1. **[暗号化]** タブの **[顧客が管理するキー]** で、 **[有効]** を選択します。
 1. **[ID]** で、作成したマネージド ID を選択します。
-1. **[暗号化]** で、 **[Key Vault から選ぶ]** を選択します。
-1. **[Azure Key Vault からのキーの選択]** ウィンドウで、前のセクションで作成したキー コンテナー、キー、およびバージョンを選択します。
+1. **[暗号化]** で、次のいずれかを選択します。
+    * **[キー コンテナーから選ぶ]** を選択し、既存のキー コンテナーとキーを選択するか、 **[新規作成]** を選択します。 選択するキーはバージョン管理されておらず、キーの自動ローテーションが有効になります。
+    * **[キー URI を入力する]** を選択し、キー識別子を直接指定します。 バージョン管理されたキー URI (手動でローテーションする必要があるキーの場合) またはバージョン管理されていないキー URI (キーの自動ローテーションが有効になる) のいずれかを指定できます。 
 1. **[暗号化]** タブで、 **[確認と作成]** を選択します。
 1. **[作成]** を選択して、レジストリ インスタンスをデプロイします。
 
-![Azure portal でコンテナー レジストリを作成する](./media/container-registry-customer-managed-keys/create-encrypted-registry.png)
+:::image type="content" source="media/container-registry-customer-managed-keys/create-encrypted-registry.png" alt-text="Azure portal で、暗号化されたレジストリを作成する":::
 
 ポータルでレジストリの暗号化状態を確認するには、お使いのレジストリに移動します。 **[設定]** で、 **[暗号化]** を選択します。
 
@@ -337,7 +409,6 @@ Resource Manager テンプレートを使用して、レジストリを作成し
     }
   ]
 }
-
 ```
 
 前のセクションの手順に従って、次のリソースを作成します。
@@ -345,10 +416,10 @@ Resource Manager テンプレートを使用して、レジストリを作成し
 * キー コンテナー、名前で識別されます
 * キー コンテナー キー、キー ID で識別されます
 
-次の [az group deployment create][az-group-deployment-create] コマンドを実行し、上のテンプレート ファイルを使用してレジストリを作成します。 要求されたら、新しいレジストリの名前とマネージド ID の名前、および作成したキー コンテナーの名前とキー ID を指定します。
+次の [az deployment group create][az-deployment-group-create] コマンドを実行し、前述のテンプレート ファイルを使用してレジストリを作成します。 要求されたら、新しいレジストリの名前とマネージド ID の名前、および作成したキー コンテナーの名前とキー ID を指定します。
 
 ```bash
-az group deployment create \
+az deployment group create \
   --resource-group <resource-group-name> \
   --template-file CMKtemplate.json \
   --parameters \
@@ -372,30 +443,35 @@ az acr encryption show --name <registry-name>
 
 ## <a name="rotate-key"></a>キーをローテーションする
 
-コンプライアンス ポリシーに応じて、レジストリ暗号化に使用されるカスタマー マネージド キーをローテーションします。 新しいキーを作成するか、キーのバージョンを更新してから、そのキーを使用してデータを暗号化するようにレジストリを更新します。 これらの手順は、Azure CLI または Azure portal を使用して行うこともできます。
+Azure Key Vault でキーのバージョンを更新するか、新しいキーを作成してから、そのキーを使用してデータを暗号化するようにレジストリを更新します。 これらの手順は、Azure CLI または Azure portal を使用して行うこともできます。
 
 キーをローテーションする場合、通常はレジストリの作成時に使用したものと同じ ID を指定します。 必要に応じて、キー アクセス用に新しいユーザー割り当て ID を構成するか、レジストリのシステム割り当て ID を有効にして指定します。
 
 > [!NOTE]
-> キー アクセス用に構成する ID に対して、必要な[キー コンテナーのアクセス ポリシー](#add-key-vault-access-policy)が設定されていることを確認してください。
+> キー アクセス用に構成する ID に対して、必要な[キー コンテナーのアクセス](#enable-key-vault-access)が設定されていることを確認してください。
+
+### <a name="update-key-version"></a>キーのバージョンを更新する
+
+一般的なシナリオでは、カスタマー マネージド キーとして使用されるキーのバージョンを更新します。 レジストリの暗号化の構成方法に応じて、Azure Container Registry のカスタマー マネージド キーは、自動的に更新される、または手動で更新する必要があります。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[az keyvault key][az-keyvault-key] コマンドを使用して、キー コンテナー キーを作成または管理します。 たとえば、新しいキーのバージョンまたは新しいキーを作成するには、[az keyvault key create][az-keyvault-key-create] コマンドを実行します。
+[az keyvault key][az-keyvault-key] コマンドを使用して、キー コンテナー キーを作成または管理します。 新しいキーのバージョンを作成するには、[az keyvault key create][az-keyvault-key-create] コマンドを実行します。
 
 ```azurecli
 # Create new version of existing key
 az keyvault key create \
   –-name <key-name> \
   --vault-name <key-vault-name>
-
-# Create new key
-az keyvault key create \
-  –-name <new-key-name> \
-  --vault-name <key-vault-name>
 ```
 
-次に、[az acr encryption rotate-key][az-acr-encryption-rotate-key] コマンドを実行して、新しいキー ID と構成する ID を渡します。
+次の手順は、レジストリの暗号化の構成方法によって異なります。
+
+* キーのバージョンの更新を検出するようにレジストリが構成されている場合は、カスタマー マネージド キーは 1 時間以内に自動的に更新されます。
+
+* 新しいキーのバージョンの手動更新が必要になるようにレジストリが構成されている場合は、[az acr encryption rotate-key][az-acr-encryption-rotate-key] コマンドを新しいキー ID と構成する ID を渡して実行します。
+
+カスタマー マネージド キーのバージョンを手動で更新するには、次のようにします。
 
 ```azurecli
 # Rotate key and use user-assigned identity
@@ -411,24 +487,27 @@ az acr encryption rotate-key \
   --identity [system]
 ```
 
+> [!TIP]
+> `az acr encryption rotate-key` を実行するとき、バージョンありのキー ID またはバージョンなしのキー ID のいずれかを渡すことができます。 バージョンなしのキー ID を使用すると、その後のキーのバージョンの更新を自動的に検出するようにレジストリが構成されます。
+
 ### <a name="portal"></a>ポータル
 
-レジストリの**暗号化**設定を使用して、カスタマー マネージド キーに使用されるキーのバージョン、キー、キー コンテナー、または ID 設定を更新します。
+レジストリの **[暗号化]** 設定を使用して、カスタマー マネージド キーに使用されるキー コンテナー、キー、または ID 設定を更新します。
 
-たとえば、新しいキー バージョンを生成して構成するには、次のようにします。
+たとえば、新しいキーを構成するには、次のようにします。
 
 1. ポータルで、レジストリに移動します。
 1. **[設定]** で、 **[暗号化]**  >  **[キーの変更]** を選択します。
-1. **[キーの選択]** を選択します。
 
-    ![Azure portal でのキーのローテーション](./media/container-registry-customer-managed-keys/rotate-key.png)
-1. **[Azure Key Vault からのキーの選択]** ウィンドウで、以前に構成したキー コンテナーとキーを選択し、 **[バージョン]** で **[新規作成]** を選択します。
-1. **[キーの作成]** ウィンドウで、 **[生成]** を選択し、 **[作成]** を選択します。
+    :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="Azure portal でのキーのローテーション":::
+1. **[暗号化]** で、次のいずれかを選択します。
+    * **[キー コンテナーから選ぶ]** を選択し、既存のキー コンテナーとキーを選択するか、 **[新規作成]** を選択します。 選択するキーはバージョン管理されておらず、キーの自動ローテーションが有効になります。
+    * **[キー URI を入力する]** を選択し、キー識別子を直接指定します。 バージョン管理されたキー URI (手動でローテーションする必要があるキーの場合) またはバージョン管理されていないキー URI (キーの自動ローテーションが有効になる) のいずれかを指定できます。
 1. キーの選択を完了し、 **[保存]** を選択します。
 
 ## <a name="revoke-key"></a>キーを取り消す
 
-カスタマー マネージド暗号化キーを取り消すには、キー コンテナーのアクセス ポリシーを変更するか、キーを削除します。 たとえば、レジストリによって使用されるマネージド ID のアクセス ポリシーを変更するには、[az keyvault delete-policy][az-keyvault-delete-policy] コマンドを使用します。
+カスタマー マネージド暗号化キーを取り消すには、キー コンテナーのアクセス ポリシーまたはアクセス許可を変更するか、キーを削除します。 たとえば、レジストリによって使用されるマネージド ID のアクセス ポリシーを変更するには、[az keyvault delete-policy][az-keyvault-delete-policy] コマンドを使用します。
 
 ```azurecli
 az keyvault delete-policy \
@@ -439,9 +518,15 @@ az keyvault delete-policy \
 
 キーを取り消すと、レジストリは暗号化キーにアクセスできないため、すべてのレジストリ データへのアクセスが実質的にブロックされます。 キーへのアクセスを有効にするか、削除したキーを復元すると、レジストリによってキーが取得されるので、暗号化されたレジストリ データに再びアクセスできるようになります。
 
-## <a name="advanced-scenarios"></a>高度なシナリオ
+## <a name="advanced-scenario-key-vault-firewall"></a>高度なシナリオ: Key Vault ファイアウォール
 
-### <a name="system-assigned-identity"></a>システム割り当て ID
+Key Vault ファイアウォールがある仮想ネットワークに Azure Key Vault がデプロイされている場合は、レジストリでカスタマー マネージド キーの暗号化を有効にしてから、次の追加の手順を行います。
+
+1. レジストリのシステム割り当て ID を使用するようにレジストリ暗号化を構成します
+1. レジストリを有効にして Key Vault ファイアウォールをバイパスします
+1. カスタマー マネージド キーをローテーションします
+
+### <a name="configure-system-assigned-identity"></a>システム割り当て ID を構成する
 
 暗号化キー用のキー コンテナーにアクセスするために、レジストリのシステム割り当てマネージド ID を構成できます。 Azure リソース用の各種マネージド ID の基本点な事柄については、[概要](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
 
@@ -466,14 +551,36 @@ ID を使用するようにレジストリの暗号化設定を更新するに�
 1. **[設定]** で、 **[暗号化]**  >  **[キーの変更]** を選択します。
 1. **[ID]** で、 **[システム割り当て]** を選択し、 **[保存]** を選択します。
 
-### <a name="key-vault-firewall"></a>Key Vault ファイアウォール
+### <a name="enable-key-vault-bypass"></a>キー コンテナーのバイパスを有効にする
 
-Key Vault ファイアウォールがある仮想ネットワークに Azure Key Vault がデプロイされている場合は、次の手順を実行します。
+Key Vault ファイアウォールを使用して構成されたキー コンテナーにアクセスするには、レジストリでファイアウォールをバイパスする必要があります。 [信頼されたサービス](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)によるアクセスを許可するようにキー コンテナーが構成されていることを確認します。 Azure Container Registry は、信頼されたサービスの 1 つです。
 
-1. レジストリのシステム割り当て ID を使用するようにレジストリ暗号化を構成します。 前のセクションを参照してください。
-2. [信頼されたサービス](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)によるアクセスを許可するようにキー コンテナーを構成します。
+1. ポータルで、キー コンテナーに移動します。
+1. **[設定]**  >  **[ネットワーク]** の順に選択します。
+1. 仮想ネットワークの設定を確認、更新、追加します。 詳しい手順については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/general/network-security.md)」を参照してください。
+1. **[信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可しますか?]** で、 **[はい]** を選択します。 
 
-詳しい手順については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/general/network-security.md)」を参照してください。
+### <a name="rotate-the-customer-managed-key"></a>カスタマー マネージド キーをローテーションする
+
+上記の手順を完了したら、ファイアウォールの背後にあるキー コンテナー内の新しいキーに、キーをローテーションします。 手順については、この記事の「[キーをローテーションする](#rotate-key)」を参照してください。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+### <a name="removing-user-assigned-identity"></a>ユーザー割り当て ID を削除する
+
+暗号化に使用されるユーザー割り当て ID をレジストリから削除しようとすると、次のようなエラー メッセージが表示されることがあります。
+ 
+```
+Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
+```
+ 
+暗号化キーを変更 (ローテーション) することもできません。 この問題が発生した場合、まず、エラー メッセージに表示されている GUID を使用して ID の再割り当てを行ってください。 次に例を示します。
+
+```azurecli
+az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+```
+        
+その後、キーを変更して異なる ID を割り当てれば、元のユーザー割り当て ID を削除することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -490,7 +597,7 @@ Key Vault ファイアウォールがある仮想ネットワークに Azure Key
 [az-group-create]: /cli/azure/group#az-group-create
 [az-identity-create]: /cli/azure/identity#az-identity-create
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 [az-keyvault-create]: /cli/azure/keyvault#az-keyvault-create
 [az-keyvault-key-create]: /cli/azure/keyvault/key#az-keyvault-key-create
 [az-keyvault-key]: /cli/azure/keyvault/key

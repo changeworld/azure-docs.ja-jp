@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334927"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92526133"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -39,6 +39,6 @@ ms.locfileid: "80334927"
 | 最大ファイル アップロード サイズ (WAF) |中規模の V1 WAF ゲートウェイ、100 MB<br>大規模の V1 WAF ゲートウェイ、500 MB<br>V2 WAF、750 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
 | WAF カスタム規則の最大数|100||
-| WAF 除外の最大数|100||
+| Application Gateway あたりの最大 WAF 除外数|40||
 
-<sup>1</sup> WAF 対応 SKU の場合は、最適なパフォーマンスを確保するためにリソース数を 40 に制限することをお勧めします。
+<sup>1</sup> WAF 対応の SKU の場合、リソース数を 40 に制限する必要があります。

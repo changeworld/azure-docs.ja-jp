@@ -1,19 +1,19 @@
 ---
 title: Apache HBase と Apache Phoenix のバックアップおよびレプリケーション - Azure HDInsight
 description: Azure HDInsight で Apache HBase と Apache Phoenix のバックアップおよびレプリケーションを設定する
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 3ed55387034a383e402d027fd5cab60c4a59c23c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705726"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657042"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -52,7 +52,7 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
 * 現在のストレージの場所を指す新しい HDInsight インスタンスを作成します。 新しいインスタンスは、既存のすべてのデータを使用して作成されます。
 
-* `hbase` フォルダーを別の Azure Storage BLOB コンテナーまたは Data Lake Storage の場所にコピーしてから、そのデータで新しいクラスターを起動します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy.md) を使用し、Data Lake Storage の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
+* `hbase` フォルダーを別の Azure Storage BLOB コンテナーまたは Data Lake Storage の場所にコピーしてから、そのデータで新しいクラスターを起動します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy-v10.md) を使用し、Data Lake Storage の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
 
 ## <a name="export-then-import"></a>エクスポート後にインポートする
 
@@ -219,6 +219,12 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -cop
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
+宛先クラスターが ADLS Gen 2 クラスターの場合は、ADLS Gen 2 で使用される構成に合うように前のコマンドを変更してください。
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<account_name>.dfs.core.windows.net=<key> -Dfs.azure.account.auth.type.<account_name>.dfs.core.windows.net=SharedKey -Dfs.azure.always.use.https.<account_name>.dfs.core.windows.net=false -Dfs.azure.account.keyprovider.<account_name>.dfs.core.windows.net=org.apache.hadoop.fs.azurebfs.services.SimpleKeyProvider -snapshot 'Snapshot1' -copy-to 'abfs://<container>@<account_name>.dfs.core.windows.net/hbase'
+```
+
 スナップショットがエクスポートされたら、エクスポート先クラスターのヘッド ノードに SSH で接続し、前に説明したように `restore_snapshot` コマンドを使用してスナップショットを復元します。
 
 スナップショットは、`snapshot` コマンドの時点でのテーブルの完全バックアップを提供します。 スナップショットでは、時間枠ごとに増分スナップショットを実行することも、スナップショットに含める列ファミリのサブセットを指定することもできません。
@@ -245,4 +251,4 @@ HDInsight でレプリケーションを有効にするには、実行中のレ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache HBase のレプリケーションを構成する](apache-hbase-replication.md)
-* [HBase の Import および Export ユーティリティの使用](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [HBase の Import および Export ユーティリティの使用](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

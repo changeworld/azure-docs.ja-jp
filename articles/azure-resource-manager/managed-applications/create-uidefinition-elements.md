@@ -3,18 +3,18 @@ title: UI 定義要素を作成する
 description: Azure Portal の UI 定義を作成するときに使う要素について説明します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 10/27/2020
 ms.author: tomfitz
-ms.openlocfilehash: 8b6c6e78c64f83ca39a29f319a103e893d8d8b38
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3e8bdd85c112d90fd5e10f6e65e48ca6b3f71b6e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923723"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410744"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
 
-この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 
+この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。
 
 ## <a name="schema"></a>スキーマ
 
@@ -56,6 +56,7 @@ ms.locfileid: "88923723"
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
+- [Microsoft.Common.ServicePrincipalSelector](microsoft-common-serviceprincipalselector.md)
 - [Microsoft.Common.Slider](microsoft-common-slider.md)
 - [Microsoft.Common.TagsByResource](microsoft-common-tagsbyresource.md)
 - [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
@@ -63,13 +64,15 @@ ms.locfileid: "88923723"
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
-- [Microsoft.ManagedIdentity.IdentitySelector](microsoft-managedidentity-identityselector.md)
+- [Microsoft.KeyVault.KeyVaultCertificateSelector](microsoft-keyvault-keyvaultcertificateselector.md)
+- [Microsoft.managedidentity を選択します](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Solutions.ArmApiControl](microsoft-solutions-armapicontrol.md)
 - [Microsoft.Solutions.ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
+- [Microsoft.Storage.StorageBlobSelector](microsoft-storage-storageblobselector.md)
 
 ## <a name="next-steps"></a>次のステップ
 

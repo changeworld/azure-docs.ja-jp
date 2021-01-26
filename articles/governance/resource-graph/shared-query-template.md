@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:テンプレートを使用して共有クエリを作成する
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、OS 別に仮想マシンをカウントする Resource Graph 共有クエリを作成します。
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685529"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057010"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して共有クエリを作成する
 
@@ -53,9 +53,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | サブスクリプション | Azure サブスクリプションを選択します。 |
    | Resource group | **[新規作成]** を選択し、名前を指定して、 **[OK]** を選択します。 |
    | 場所 | リージョンを選択します。 たとえば **[米国中部]** です。 |
-   | クエリ名 | 既定値 **Count VMs by OS** をそのまま使用します。 |
-   | クエリ コード | 既定値 `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` をそのまま使用します |
-   | クエリの説明 | 既定値 **This shared query counts all virtual machine resources and summarizes by the OS type.** をそのまま使用します |
+   | クエリ名 | 既定値をそのまま使用します: **Count VMs by OS**。 |
+   | クエリ コード | 既定値をそのまま使用します: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | クエリの説明 | 既定値をそのまま使用します: **This shared query counts all virtual machine resources and summarizes by the OS type.** |
    | 上記の使用条件に同意する | (選択) |
 
 1. **[購入]** を選択します。
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **Count VMs by OS** という名前の共有クエリを選択し、 **[概要]** ページの **[結果]** タブを選択します。
 
-または、Resource Graph エクスプローラーから共有クエリを開くこともできます。
+共有クエリは、Resource Graph エクスプローラーから開くこともできます。
 
 1. ポータルの検索バーから "**Resource Graph エクスプローラー**" を検索して選択します。
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Type]\(種類\)** を _[共有クエリ]_ に変更します。 **Count VMs by OS** が一覧に表示されない場合は、フィルター ボックスを使用して結果を制限します。 **Count VMs by OS** 共有クエリが表示されたら、その名前を選択します。
 
-1. クエリが読み込まれたら、 **[クエリの実行]** を選択します。 結果は、下の **[結果]** タブに表示されます。
+1. クエリが読み込まれたら、 **[クエリの実行]** を選択します。 結果は、 **[結果]** タブに表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

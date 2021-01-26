@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dd46f4033a568a278d7006c0d5aab451496ff47
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804391"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397225"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -36,6 +36,8 @@ ms.locfileid: "84804391"
 
 * 新しい v2 ゲートウェイには、新しいパブリックおよびプライベート IP アドレスがあります。 既存の v1 ゲートウェイに関連付けられている IP アドレスを、v2 にシームレスに移動することはできません。 ただし、既存の (未割り当ての) パブリックまたはプライベート IP アドレスを、新しい v2 ゲートウェイに割り当てることはできます。
 * v1 ゲートウェイが配置されている仮想ネットワーク内の別のサブネットの IP アドレス空間を指定する必要があります。 スクリプトでは、v1 ゲートウェイが既に存在する既存のサブネットに v2 ゲートウェイを作成することはできません。 ただし、既存のサブネットに既に v2 ゲートウェイがあり、十分な IP アドレス空間がある場合は、引き続き動作させることができます。
+* v2 ゲートウェイ サブネットに関連付けられているネットワーク セキュリティ グループまたはユーザー定義のルートがある場合は、移行を成功させるために、それらが [NSG 要件](../application-gateway/configuration-infrastructure.md#network-security-groups)と [UDR](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes)要件に準拠していることを確認します。
+* [仮想ネットワーク サービス エンドポイント ポリシー](../virtual-network/virtual-network-service-endpoint-policies-overview.md)は現在、Application Gateway のサブネットではサポートされません。
 * TLS または SSL 構成を移行するには、v1 ゲートウェイで使用されているすべての TLS または SSL 証明書を指定する必要があります。
 * v1 ゲートウェイで FIPS モードを有効にしている場合は、新しい v2 ゲートウェイに移行されません。 FIPS モードは v2 ではサポートされません。
 * v2 では IPv6 がサポートされていないため、IPv6 が有効になっている v1 ゲートウェイは移行されません。 スクリプトを実行しても、完了しない可能性があります。
@@ -100,8 +102,8 @@ Azure Az モジュールがインストールされていて、それらをア�
      ```
 
    * **subnetAddressRange: [String]:必須** - 新しい v2 ゲートウェイを含む新しいサブネットに割り当てた (または割り当てる) IP アドレス空間です。 これは、CIDR 表記で指定する必要があります。 次に例を示します。10.0.0.0/24。 このサブネットを事前に作成しておく必要はありません。 存在しない場合はスクリプトによって作成されます。
-   * **appgwName: [String]:省略可能**。 新しい Standard_v2 または WAF_v2 ゲートウェイの名前として使用するように指定する文字列です。 このパラメーターが指定されていない場合、サフィックス *_v2* が付加された既存の v1 ゲートウェイの名前が使用されます。
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]:省略可能**。  新しい v2 ゲートウェイにアップロードする必要がある、v1 ゲートウェイの TLS または SSL 証明書を表すために作成する PSApplicationGatewaySslCertificate オブジェクトのコンマ区切りの一覧です。 Standard v1 または WAF v1 ゲートウェイ用に構成された TLS または SSL 証明書のそれぞれに対して、次に示す `New-AzApplicationGatewaySslCertificate` コマンドを使用して新しい PSApplicationGatewaySslCertificate オブジェクトを作成することができます。 TLS または SSL 証明書ファイルへのパスとパスワードが必要です。
+   * **appgwName: [String]:省略可能** 。 新しい Standard_v2 または WAF_v2 ゲートウェイの名前として使用するように指定する文字列です。 このパラメーターが指定されていない場合、サフィックス *_v2* が付加された既存の v1 ゲートウェイの名前が使用されます。
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]:省略可能** 。  新しい v2 ゲートウェイにアップロードする必要がある、v1 ゲートウェイの TLS または SSL 証明書を表すために作成する PSApplicationGatewaySslCertificate オブジェクトのコンマ区切りの一覧です。 Standard v1 または WAF v1 ゲートウェイ用に構成された TLS または SSL 証明書のそれぞれに対して、次に示す `New-AzApplicationGatewaySslCertificate` コマンドを使用して新しい PSApplicationGatewaySslCertificate オブジェクトを作成することができます。 TLS または SSL 証明書ファイルへのパスとパスワードが必要です。
 
      このパラメーターは、v1 ゲートウェイまたは WAF 用に構成された HTTPS リスナーがない場合は省略可能です。 HTTPS リスナーのセットアップが少なくとも 1 つある場合、このパラメーターを指定する必要があります。
 
@@ -116,18 +118,18 @@ Azure Az モジュールがインストールされていて、それらをア�
       ```
 
      スクリプトでは前の例の `$mySslCert1, $mySslCert2` (コンマ区切り) をこのパラメーターの値として渡すことができます。
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:省略可能**。 v2 ゲートウェイのバックエンド インスタンスの認証用の[信頼されたルート証明書](ssl-overview.md)を表すために作成する、PSApplicationGatewayTrustedRootCertificate オブジェクトのコンマ区切りの一覧です。
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:省略可能** 。 v2 ゲートウェイのバックエンド インスタンスの認証用の[信頼されたルート証明書](ssl-overview.md)を表すために作成する、PSApplicationGatewayTrustedRootCertificate オブジェクトのコンマ区切りの一覧です。
    
       ```azurepowershell
       $certFilePath = ".\rootCA.cer"
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      PSApplicationGatewayTrustedRootCertificate オブジェクトの一覧を作成するには、「[New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)」を参照してください。
-   * **privateIpAddress: [String]:省略可能**。 新しい v2 ゲートウェイに関連付ける特定のプライベート IP アドレスです。  新しい v2 ゲートウェイに割り当てる同じ VNet のものである必要があります。 これが指定されていない場合、スクリプトによって v2 ゲートウェイにプライベート IP アドレスが割り当てられます。
-   * **publicIpResourceId: [String]:省略可能**。 新しい v2 ゲートウェイに割り当てる、ご自分のサブスクリプション内の既存のパブリック IP アドレス (Standard SKU) リソースのリソース ID です。 これが指定されていない場合、スクリプトによって同じリソース グループ内の新しいパブリック IP が割り当てられます。 名前は、v2 ゲートウェイの名前に *-IP* が付加されたものになります。
-   * **validateMigration: [switch]:省略可能**。 v2 ゲートウェイの作成と構成のコピーが完了した後に、スクリプトで基本的な構成比較検証を実行する場合は、このパラメーターを使用します。 既定では、検証は行われません。
-   * **enableAutoScale: [switch]:省略可能**。 スクリプトで新しい v2 ゲートウェイを作成した後に自動スケールを有効にする場合は、このパラメーターを使用します。 既定では、自動スケールは無効です。 これは、新しく作成した v2 ゲートウェイで、後からいつでも手動で有効にすることができます。
+      PSApplicationGatewayTrustedRootCertificate オブジェクトの一覧を作成するには、「[New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)」を参照してください。
+   * **privateIpAddress: [String]:省略可能** 。 新しい v2 ゲートウェイに関連付ける特定のプライベート IP アドレスです。  新しい v2 ゲートウェイに割り当てる同じ VNet のものである必要があります。 これが指定されていない場合、スクリプトによって v2 ゲートウェイにプライベート IP アドレスが割り当てられます。
+   * **publicIpResourceId: [String]:省略可能** 。 新しい v2 ゲートウェイに割り当てる、ご自分のサブスクリプション内の既存のパブリック IP アドレス (Standard SKU) リソースのリソース ID です。 これが指定されていない場合、スクリプトによって同じリソース グループ内の新しいパブリック IP が割り当てられます。 名前は、v2 ゲートウェイの名前に *-IP* が付加されたものになります。
+   * **validateMigration: [switch]:省略可能** 。 v2 ゲートウェイの作成と構成のコピーが完了した後に、スクリプトで基本的な構成比較検証を実行する場合は、このパラメーターを使用します。 既定では、検証は行われません。
+   * **enableAutoScale: [switch]:省略可能** 。 スクリプトで新しい v2 ゲートウェイを作成した後に自動スケールを有効にする場合は、このパラメーターを使用します。 既定では、自動スケールは無効です。 これは、新しく作成した v2 ゲートウェイで、後からいつでも手動で有効にすることができます。
 
 1. 適切なパラメーターを使用してスクリプトを実行します。 完了するまで 5 から 7 分かかることがあります。
 
@@ -156,7 +158,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 * **(A レコードを使用して) Standard v1 または WAF v1 ゲートウェイに関連付けられているフロントエンド IP アドレスを指すカスタム DNS ゾーン (例: contoso.com)** 。
 
     Standard_v2 アプリケーション ゲートウェイに関連付けられているフロントエンド IP または DNS ラベルを指すように、DNS レコードを更新することができます。 DNS レコードに構成された TTL に応じて、すべてのクライアント トラフィックが新しい v2 ゲートウェイに移行されるまでに時間がかかる場合があります。
-* **(CNAME レコードを使用して) v1 ゲートウェイに関連付けられた DNS ラベル (例: *myappgw.eastus.cloudapp.azure.com*) を指すカスタム DNS ゾーン (例: contoso.com)** 。
+* **(CNAME レコードを使用して) v1 ゲートウェイに関連付けられた DNS ラベル (例: *myappgw.eastus.cloudapp.azure.com* ) を指すカスタム DNS ゾーン (例: contoso.com)** 。
 
    次の 2 つの選択肢があります。
 
@@ -164,7 +166,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
     これを行うには、v1 と v2 の両方のアプリケーション ゲートウェイの DNS ラベルを [Traffic Manager プロファイル](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)に追加し、カスタム DNS レコード (例: `www.contoso.com`) を Traffic Manager ドメイン (例: contoso.trafficmanager.net) に CNAME します。
   * または、新しい v2 アプリケーション ゲートウェイの DNS ラベルを指すように、カスタム ドメインの DNS レコードを更新することができます。 DNS レコードに構成された TTL に応じて、すべてのクライアント トラフィックが新しい v2 ゲートウェイに移行されるまでに時間がかかる場合があります。
-* **クライアントがアプリケーション ゲートウェイのフロントエンド IP アドレスに接続する**。
+* **クライアントがアプリケーション ゲートウェイのフロントエンド IP アドレスに接続する** 。
 
    新しく作成した v2 アプリケーション ゲートウェイに関連付けられている IP アドレスを使用するように、クライアントを更新します。 IP アドレスを直接使用しないことをお勧めします。 独自のカスタム DNS ゾーン (例: contoso.com) に CNAME できる、アプリケーション ゲートウェイに関連付けられた DNS 名ラベル (例: yourgateway.eastus.cloudapp.azure.com) を使用することを検討してください。
 

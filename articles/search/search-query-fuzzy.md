@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac2690a5f18bb58c29b433f4a07e52096bbd268b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934890"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701587"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>あいまい検索によるスペルミスと入力ミスの修正
 
@@ -73,7 +73,7 @@ Azure Cognitive Search では、用語と距離 (最大 2) 以外に、クエリ
 
 ## <a name="testing-fuzzy-search"></a>あいまい検索のテスト
 
-単純なテストでは、クエリ式を反復処理するために [Search エクスプローラー](search-explorer.md)または [Postman](search-get-started-postman.md) を使用することをお勧めします。 どちらのツールも対話型なので、ひとつの用語の複数のバリエーションをすばやくステップ実行し、返された応答を評価できます。
+単純なテストでは、クエリ式を反復処理するために [Search エクスプローラー](search-explorer.md)または [Postman](search-get-started-rest.md) を使用することをお勧めします。 どちらのツールも対話型なので、ひとつの用語の複数のバリエーションをすばやくステップ実行し、返された応答を評価できます。
 
 結果があいまいな場合は、[検索語句を強調表示](search-pagination-page-layout.md#hit-highlighting)すると応答内の一致を識別しやすくなります。 
 

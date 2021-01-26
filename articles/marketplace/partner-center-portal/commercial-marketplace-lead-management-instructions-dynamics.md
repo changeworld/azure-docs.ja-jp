@@ -4,19 +4,19 @@ description: Microsoft AppSource および Azure Marketplace からのリード�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d07dda82361ff59a43aa6753669bf38f4463059
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120379"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491139"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 Customer Engagement のリード管理を構成する
 
-この記事では、Dynamics 365 Customer Engagement (旧称は Dynamics CRM Online) を設定する方法について説明します。 コマーシャル マーケットプレース オファーのセールス リードを処理するには、「[Customer Engagement と SharePoint Online でのサーバーベース認証の構成](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)」の変更の詳細を参照してください。
+この記事では、Dynamics 365 Customer Engagement (旧称は Dynamics CRM Online) を設定する方法について説明します。 コマーシャル マーケットプレース オファーのセールス リードを処理するには、「[Customer Engagement と SharePoint Online でのサーバーベース認証の構成](/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)」の変更の詳細を参照してください。
 
 >[!NOTE]
 >これらの手順は、Dynamics 365 Customer Engagement 向け Microsoft ホステッド クラウド環境に固有です。 Dynamics オンプレミス環境への直接接続は、現在サポートされていません。 [HTTPS エンドポイント](./commercial-marketplace-lead-management-instructions-https.md)や [Azure テーブル](./commercial-marketplace-lead-management-instructions-azure-table.md)の構成など、他にもリードを受信するためのオプションがあります。
@@ -27,7 +27,7 @@ ms.locfileid: "86120379"
 
 * ソリューションをインストールできるようにするための Dynamics 365 Customer Engagement インスタンスに対する管理者権限。
 * 商用マーケットプレースのオファーからリードを送信するために使用されるリード サービス用の新しいサービス アカウントを作成するためのテナント管理者権限。
-* Office 365 管理ポータルへのアクセス。
+* 管理ポータルへのアクセス。
 * Azure portal へのアクセス。
 
 ## <a name="install-the-solution"></a>ソリューションをインストールする
@@ -106,7 +106,7 @@ Dynamics 365 Customer Engagement 向けに Azure Active Directory を構成す�
 
     ![新しいユーザーを作成する](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-1. **[新規ユーザー]** ペインで、 **[ユーザー: アプリケーション ユーザー]** が選択されていることを確認します。 この接続で使用するユーザーのユーザー名、フル ネーム、メール アドレスを指定します。 また、手順 8. で Azure portal 内で作成したアプリの**アプリケーション ID** を貼り付けます。 **[保存して閉じる]** を選択して、ユーザーの追加を完了します。
+1. **[新規ユーザー]** ペインで、 **[ユーザー: アプリケーション ユーザー]** が選択されていることを確認します。 この接続で使用するユーザーのユーザー名、フル ネーム、メール アドレスを指定します。 また、手順 8. で Azure portal 内で作成したアプリの **アプリケーション ID** を貼り付けます。 **[保存して閉じる]** を選択して、ユーザーの追加を完了します。
 
     ![[新規ユーザー] ペイン](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
@@ -180,7 +180,7 @@ Dynamics 365 Customer Engagement 向けに Office 365 を構成するには、�
 
     ![[リードのターゲット] ボックス](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-1. Dynamics 365 インスタンスの **URL**(例: `https://contoso.crm4.dynamics.com`) を入力します。
+1. Dynamics 365 インスタンスの **URL** (例: `https://contoso.crm4.dynamics.com`) を入力します。
 
 1. **[認証]** の方法として、[Azure Active Directory] または [Office 365] を選択します。 
 1. **[Azure Active Directory]** を選択した場合は、 **[アプリケーション (クライアント) ID]** (例: `23456052-aaaa-bbbb-8662-1234df56788f`)、 **[ディレクトリ ID]** (例: `12345678-8af1-4asf-1234-12234d01db47`)、 **[クライアント シークレット]** (例: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`) を入力します。

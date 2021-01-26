@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513933"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949430"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>StorSimple デバイス マネージャー サービスを使用してジョブを表示および管理する (Update 3 以降)
 
@@ -59,11 +59,11 @@ ms.locfileid: "85513933"
 
 2. **[ジョブ]** ブレードで適切なフィルターを使用してクエリを実行し、関心のあるジョブを表示します。 完了済み、実行中、または取り消し済みのジョブを検索できます。
 
-    ![ジョブ ブレード](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![ジョブ ブレード 2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. ジョブを選択してクリックします。
 
-    ![ジョブ ブレード](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![ジョブ ブレード 3](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. ジョブの詳細ブレードで、状態、詳細、時間統計、およびデータ統計を確認できます。
    
@@ -81,7 +81,7 @@ ms.locfileid: "85513933"
 
 2. 選択したジョブを右クリックしてコンテキスト メニューを呼び出し、 **[キャンセル]** をクリックします。
 
-    ![Job details](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![ジョブの詳細 2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. 確認を求められたら、 **[はい]** をクリックします。 このジョブが取り消されました。
 

@@ -6,15 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.subservice: blobs
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534280"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937289"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ
 
@@ -66,9 +67,12 @@ Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取
 
 Azure Storage のログには、要求の承認方法など、ストレージ アカウントに対して行われた要求の詳細が記録されます。 ログを分析して、どのコンテナーが匿名要求を受信しているかを特定できます。
 
-Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用すると、Azure Storage アカウントに対する要求をログに記録して、匿名要求を評価することができます。 詳細については、「[Azure Storage を監視する](../common/monitor-storage.md)」を参照してください。
+Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用すると、Azure Storage アカウントに対する要求をログに記録して、匿名要求を評価することができます。 詳細については、「[Azure Storage を監視する](./monitor-blob-storage.md)」を参照してください。
 
-Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
+
+> [!NOTE]
+> Azure Monitor での Azure Storage のログ記録のプレビューは、Azure パブリック クラウドでのみサポートされています。 Government クラウドでは、Azure Monitor を使用した Azure Storage のログ記録はサポートされていません。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Azure portal での診断設定の作成
 
@@ -88,7 +92,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 
 診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
 
-Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](../common/monitor-storage-reference.md#resource-logs-preview)」を参照してください。
+Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](./monitor-blob-storage-reference.md#resource-logs-preview)」を参照してください。
 
 #### <a name="query-logs-for-anonymous-requests"></a>匿名要求のログのクエリ
 
@@ -160,7 +164,9 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 ### <a name="check-the-public-access-setting-for-multiple-accounts"></a>複数のアカウントのパブリック アクセス設定を確認する
 
-Azure portal の Azure Resource Graph エクスプローラーを使用すると、複数のストレージ アカウントにまたがって最も高速にパブリック アクセス設定を確認できます。 Resource Graph エクスプローラーの使用方法については、「[クイックスタート: Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](/azure/governance/resource-graph/first-query-portal)」を参照してください。
+Azure portal の Azure Resource Graph エクスプローラーを使用すると、複数のストレージ アカウントにまたがって最も高速にパブリック アクセス設定を確認できます。 Resource Graph エクスプローラーの使用方法については、「[クイックスタート: Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](../../governance/resource-graph/first-query-portal.md)」を参照してください。
+
+既定では、ストレージ アカウントに **AllowBlobPublicAccess** プロパティは設定されておらず、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントによってパブリック アクセスが許可されます。
 
 Resource Graph エクスプローラーで次のクエリを実行すると、ストレージ アカウントの一覧が返され、各アカウントのパブリック アクセス設定が表示されます。
 
@@ -171,19 +177,23 @@ resources
 | project subscriptionId, resourceGroup, name, allowBlobPublicAccess
 ```
 
+次の図は、サブスクリプション全体におけるクエリの結果を示しています。 **AllowBlobPublicAccess** プロパティが明示的に設定されているストレージ アカウントの場合、結果には **true** または **false** として表示されます。 ストレージ アカウントに **AllowBlobPublicAccess** プロパティが設定されていない場合、クエリ結果には空白 (または null) として表示されます。
+
+:::image type="content" source="media/anonymous-read-access-prevent/check-public-access-setting-accounts.png" alt-text="ストレージ アカウント全体のパブリック アクセス設定のクエリ結果を示すスクリーンショット":::
+
 ## <a name="use-azure-policy-to-audit-for-compliance"></a>Azure Policy を使用してコンプライアンスを監査する
 
 多数のストレージ アカウントがある場合、監査を実行して、それらのアカウントがパブリック アクセスを防止するように構成されていることを確認したい場合があります。 一連のストレージ アカウントのコンプライアンスを監査するには、Azure Policy を使用します。 Azure Policy は、Azure リソースにルールを適用するポリシーの作成、割り当て、管理に使用できるサービスです。 Azure Policy を使用すると、それらのリソースが会社の標準やサービス レベル アグリーメントに準拠した状態を維持するのに役立ちます。 詳細については、[Azure Policy の概要](../../governance/policy/overview.md)に関するページを参照してください。
 
 ### <a name="create-a-policy-with-an-audit-effect"></a>Audit 効果を持つポリシーを作成する
 
-Azure Policy は、ポリシー規則がリソースに対して評価されたときに実行される動作を決定する効果をサポートします。 Audit 効果は、リソースが準拠していない場合に警告を生成しますが、要求は停止しません。 効果の詳細については、「[Azure Policy 効果について](../../governance/policy/concepts/effects.md)」を参照してください。
+Azure Policy では、ポリシー規則がリソースに対して評価されたときに実行される動作を決定する効果がサポートされています。 Audit 効果を使用すると、リソースが準拠していない場合に警告が生成されますが、要求は停止されません。 効果の詳細については、「[Azure Policy 効果について](../../governance/policy/concepts/effects.md)」を参照してください。
 
 Azure portal でストレージ アカウントのパブリック アクセス設定のために Audit 効果を持つポリシーを作成するには、次の手順を実行します。
 
 1. Azure portal で、Azure Policy サービスに移動します。
 1. **[作成]** セクションで **[定義]** を選択します。
-1. 新しいポリシー定義を作成するために、 **[ポリシー定義の追加]** を選択します。
+1. **[ポリシー定義の追加]** を選択して、新しいポリシー定義を作成します。
 1. **[定義の場所]** フィールドで、 **[More]\(詳細\)** ボタンを選択して、監査ポリシーのリソースがある場所を指定します。
 1. ポリシーの名前を指定します。 必要に応じて説明およびカテゴリを指定することもできます。
 1. **[ポリシー規則]** で、次のポリシー定義を **policyRule** セクションに追加します。
@@ -277,6 +287,23 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 次の図は、Deny 効果を持つポリシーで、パブリック アクセスが許可されないことが要求されているとき、パブリック アクセスを許可するストレージ アカウント (新しいアカウントの既定) を作成しようとした場合に発生するエラーを示しています。
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>パブリック アクセスを許可または禁止するためのアクセス許可
+
+ストレージ アカウントの **AllowBlobPublicAccess** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または **Microsoft.Storage/storageAccounts/\** _ アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
+
+- Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
+- Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
+- [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
+
+これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する _*Microsoft.Storage/storageAccounts/listkeys/action** が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
+
+ユーザーがストレージ アカウントに対するパブリック アクセスを許可または禁止できるようにするには、ロール割り当てのスコープをストレージ アカウント以上のレベルにする必要があります。 ロール スコープの詳細については、「[Azure RBAC のスコープについて](../../role-based-access-control/scope-overview.md)」を参照してください。
+
+これらのロールを割り当てる際には、ストレージ アカウントを作成したり、そのプロパティを更新したりする機能を必要とするユーザーにのみ割り当てるように、注意してください。 最小限の特権の原則を使用して、ユーザーに、それぞれのタスクを実行するのに必要な最小限のアクセス許可を割り当てるようにします。 Azure RBAC でアクセスを管理する方法の詳細については、「[Azure RBAC のベスト プラクティス](../../role-based-access-control/best-practices.md)」を参照してください。
+
+> [!NOTE]
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者** ロールにはすべてのアクションが含まれているため、これらの管理者ロールのいずれかを持つユーザーも、ストレージ アカウントを作成および管理できます。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

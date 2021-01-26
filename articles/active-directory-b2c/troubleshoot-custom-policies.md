@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384959"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840255"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング
 
@@ -29,7 +29,7 @@ Azure Active Directory B2C (Azure AD B2C) のカスタム ポリシーを使用�
 
 お勧めのエディターを 2 つ挙げると、[Visual Studio Code](https://code.visualstudio.com/) と [Notepad++](https://notepad-plus-plus.org/) があります。
 
-XML スキーマ検証では、XML ファイルをアップロードする前にエラーを識別します。 [スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)のルート フォルダーで、XML スキーマ定義ファイル *TrustFrameworkPolicy_0.3.0.0.xsd* を取得します。 エディターでの検証に XSD スキーマ ファイルを使用する方法については、エディターのドキュメントで *XML ツール*や *XML の検証*に関するページを参照してください。
+XML スキーマ検証では、XML ファイルをアップロードする前にエラーを識別します。 [スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)のルート フォルダーで、XML スキーマ定義ファイル *TrustFrameworkPolicy_0.3.0.0.xsd* を取得します。 エディターでの検証に XSD スキーマ ファイルを使用する方法については、エディターのドキュメントで *XML ツール* や *XML の検証* に関するページを参照してください。
 
 XML ルールのレビューが役に立つ可能性があります。 Azure AD B2C では、検出された XML 形式エラーはすべて拒否されます。 ときどき不適切な形式の XML が原因で、誤解を招くエラー メッセージが表示されることがあります。
 
@@ -64,7 +64,7 @@ XML ポリシー ファイルの検証は、アップロード時に自動的に
 
 * クライアント ブラウザーと Azure AD B2C の間でのメッセージ交換をトレースするには、[Fiddler](https://www.telerik.com/fiddler) を使用します。 これにより、オーケストレーション手順のどこでユーザー体験が失敗するか、ヒントを得ることができます。
 
-* **開発モード**で [Application Insights](troubleshoot-with-application-insights.md) を使用して、Identity Experience Framework のユーザー体験のアクティビティをトレースします。 **開発モード**では、技術プロファイルで定義された各種要求プロバイダーと Identity Experience Framework の間で行われる要求の交換を観察できます。この要求プロバイダーには、ID プロバイダー、API ベースのサービス、Azure AD B2C ユーザー ディレクトリのほか、Azure Multi-Factor Authentication などのサービスがあります。
+* **開発モード** で [Application Insights](troubleshoot-with-application-insights.md) を使用して、Identity Experience Framework のユーザー体験のアクティビティをトレースします。 **開発モード** では、技術プロファイルで定義された各種要求プロバイダーと Identity Experience Framework の間で行われる要求の交換を観察できます。この要求プロバイダーには、ID プロバイダー、API ベースのサービス、Azure AD B2C ユーザー ディレクトリのほか、Azure AD Multi-Factor Authentication などのサービスがあります。
 
 ## <a name="recommended-practices"></a>推奨プラクティス
 

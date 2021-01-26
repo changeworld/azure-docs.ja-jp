@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: マッピング データ フローのビデオ チュートリアル
               href: data-flow-tutorials.md
-        - name: ラングリング データ フローを使用してデータを準備する
-          href: wrangling-data-flow-tutorial.md
+        - name: ラングリングを使用してデータを準備する
+          href: wrangling-tutorial.md
         - name: 外部サービスの使用
           items:
             - name: HDInsight Spark
@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 仮想ネットワークに参加する
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: 系列
+      items:
+        - name: Data Factory 系列データを Azure Purview にプッシュする
+          href: turorial-push-lineage-to-purview.md
     - name: エンド ツー エンドのラボ
       items:
         - name: データ ファクトリとデータ共有を使用したデータ統合
@@ -167,7 +171,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -193,16 +197,18 @@
               href: concepts-data-flow-expression-builder.md
             - name: 式言語
               href: data-flow-expression-functions.md
-        - name: ラングリング データ フローを使用してデータを準備する
+        - name: Power Query のデータ ラングリングを使用したデータの準備
           items:
-            - name: ラングリング データ フローの概要
-              href: wrangling-data-flow-overview.md
+            - name: データ ラングリングの概要
+              href: wrangling-overview.md
             - name: サポートされる関数
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: ロールとアクセス許可
       href: concepts-roles-permissions.md
     - name: 名前付け規則
       href: naming-rules.md
+    - name: データの冗長性
+      href: concepts-data-redundancy.md
 - name: 操作方法ガイド
   items:
     - name: Author
@@ -249,13 +255,15 @@
           href: connector-azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
           href: connector-azure-database-for-postgresql.md
+        - name: Azure Databricks Delta Lake
+          href: connector-azure-databricks-delta-lake.md
         - name: Azure File Storage
           href: connector-azure-file-storage.md
         - name: Azure SQL データベース
           href: connector-azure-sql-database.md
         - name: Azure SQL Managed Instance
           href: connector-azure-sql-managed-instance.md
-        - name: Azure Synapse Analytics (旧称 SQL Data Warehouse)
+        - name: Azure Synapse Analytics
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
           href: connector-azure-table-storage.md
@@ -332,6 +340,8 @@
           items:
             - name: MongoDB (レガシ)
               href: connector-mongodb-legacy.md
+        - name: MongoDB Atlas
+          href: connector-mongodb-atlas.md
         - name: MySQL
           href: connector-mysql.md
         - name: Netezza
@@ -445,6 +455,8 @@
           href: copy-activity-fault-tolerance.md
         - name: データ整合性の検証
           href: copy-activity-data-consistency.md
+        - name: コピー アクティビティ ログ
+          href: copy-activity-log.md
         - name: フォーマットと圧縮のサポート (レガシ)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: データを変換する
@@ -452,6 +464,8 @@
       items:
         - name: データ フローの実行アクティビティ
           href: control-flow-execute-data-flow-activity.md
+        - name: Power Query の実行アクティビティ
+          href: control-flow-power-query-activity.md
         - name: Azure 関数アクティビティ
           href: control-flow-azure-function-activity.md
         - name: カスタム アクティビティ
@@ -542,6 +556,8 @@
           href: data-flow-new-branch.md
         - name: ピボット
           href: data-flow-pivot.md
+        - name: 順位
+          href: data-flow-rank.md
         - name: Select
           href: data-flow-select.md
         - name: シンク
@@ -570,7 +586,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -615,15 +631,19 @@
         - name: Azure 統合ランタイム
           href: create-azure-integration-runtime.md
         - name: セルフホステッド統合ランタイム
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: セルフホステッド統合ランタイムを作成して構成する
+              href: create-self-hosted-integration-runtime.md
+            - name: セルフホステッド統合ランタイムの自動更新と期限切れ通知
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: 共有のセルフホステッド統合ランタイム
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: セルフホステッド統合ランタイムのオートメーション スクリプト
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Azure-SSIS 統合ランタイム
           href: create-azure-ssis-integration-runtime.md
-        - name: 共有のセルフホステッド統合ランタイム
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: セルフホステッド統合ランタイムのオートメーション スクリプト
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Azure での SSIS パッケージの実行
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
@@ -678,6 +698,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
+    - name: 系列
+      items:
+        - name: Data Factory を Azure Purview に接続する
+          href: connect-data-factory-to-azure-purview.md
     - name: シナリオ
       items:
         - name: データ レイクおよび EDW のデータ移行
@@ -698,6 +722,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB から Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
+            - name: スニペットを使用した重複除去と null 値チェック
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: オンプレミスからの SSIS の移行
           items:
             - name: SSIS の移行の概要
@@ -738,10 +764,14 @@
           href: data-factory-troubleshoot-guide.md
         - name: Connectors
           href: connector-troubleshoot-guide.md
+        - name: パイプラインのトリガー
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: データ フロー
           href: data-flow-troubleshoot-guide.md
-        - name: データのコピー ツール
-          href: copy-data-tool-troubleshoot-guide.md
+        - name: 継続的インテグレーションとデプロイ
+          href: ci-cd-github-troubleshoot-guide.md
+        - name: セキュリティとアクセス制御
+          href: security-and-access-control-troubleshoot-guide.md
         - name: セルフホステッド統合ランタイム
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 統合ランタイム
@@ -763,7 +793,7 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
-      href: /python/api/overview/azure/datafactory?view=azure-python
+      href: /python/api/overview/azure/datafactory
 - name: リソース
   items:
     - name: ホワイトペーパー
@@ -775,7 +805,7 @@
     - name: ブログ
       href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 質問をする - Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: 質問をする - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 機能をリクエストする

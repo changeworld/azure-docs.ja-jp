@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651857"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory アプリケーション プロキシの CORS の問題を理解して解決する
 
-[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/)  が原因で、Azure Active Directory アプリケーション プロキシ経由で公開するアプリや API で問題が発生することがあります。 この記事では、Azure AD アプリケーション プロキシでの CORS の問題と解決策について説明します。
+[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) が原因で、Azure Active Directory アプリケーション プロキシ経由で公開するアプリや API で問題が発生することがあります。 この記事では、Azure AD アプリケーション プロキシでの CORS の問題と解決策について説明します。
 
-通常、ブラウザーのセキュリティ機能により、Web ページでは AJAX 要求を別のドメインに送信することはできません。 この制限は、*同一オリジン ポリシー*と呼ばれ、悪意のあるサイトが、別のサイトから機密データを読み取れないようにします。 ただし、他のサイトから Web API を呼び出したほうが良い場合もあります。 W3C 標準である CORS によって、サーバーは同一オリジン ポリシーを緩和したり、一部のクロスオリジン要求を許可して他の要求は拒否したりできます。
+通常、ブラウザーのセキュリティ機能により、Web ページでは AJAX 要求を別のドメインに送信することはできません。 この制限は、*同一オリジン ポリシー* と呼ばれ、悪意のあるサイトが、別のサイトから機密データを読み取れないようにします。 ただし、他のサイトから Web API を呼び出したほうが良い場合もあります。 W3C 標準である CORS によって、サーバーは同一オリジン ポリシーを緩和したり、一部のクロスオリジン要求を許可して他の要求は拒否したりできます。
 
 ## <a name="understand-and-identify-cors-issues"></a>CORS の問題の理解と識別
 
@@ -46,7 +46,7 @@ CORS の問題はブラウザーのデバッグ ツールを使用して識別�
 1. **F12** キーを押してデバッグ コンソールを起動します。
 1. トランザクションを再現し、コンソール メッセージを確認します。 CORS 違反があると、オリジンに関するコンソール エラーが発生します。
 
-次のスクリーンショットでは、 **[Try It]\(テスト\)** ボタンを選択すると、https:\//corswebclient-contoso.msappproxy.net が Access-Control-Allow-Origin ヘッダーに見つからなかったという CORS エラー メッセージが表示されました。
+次のスクリーンショットでは、**[Try It]\(テスト\)** ボタンを選択すると、https:\//corswebclient-contoso.msappproxy.net が Access-Control-Allow-Origin ヘッダーに見つからなかったという CORS エラー メッセージが表示されました。
 
 ![CORS の問題](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -66,7 +66,7 @@ CORSWebClient アプリは、オンプレミスでホストしたときは動作
 
 ### <a name="option-1-set-up-a-custom-domain"></a>オプション 1: カスタム ドメインの設定
 
-アプリのオリジン、コード、またはヘッダーを変更する必要なしに、同じオリジンから公開するには、Azure AD アプリケーション プロキシの[カスタム ドメイン](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)を使用します。 
+アプリのオリジン、コード、またはヘッダーを変更する必要なしに、同じオリジンから公開するには、Azure AD アプリケーション プロキシの[カスタム ドメイン](./application-proxy-configure-custom-domain.md)を使用します。 
 
 ### <a name="option-2-publish-the-parent-directory"></a>オプション 2:親ディレクトリを公開する
 
@@ -117,4 +117,4 @@ Content-Length:17
 ## <a name="see-also"></a>関連項目
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md) 
 - [Azure AD アプリケーション プロキシのデプロイ計画](application-proxy-deployment-plan.md) 
-- [Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス](application-proxy.md) 
+- [Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス](application-proxy.md)

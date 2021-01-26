@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e3e0c10a7ec6b42420db30955ae4911bca27cc0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763654"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651228"
 ---
 # <a name="cloud-app-visibility-and-control"></a>クラウド アプリの可視性と制御
 
@@ -36,8 +36,8 @@ Microsoft Cloud App Discovery (Azure Active Directory Premium P1 機能) を使�
  
 ### <a name="learn-more"></a>詳細情報
 
-- [ネットワーク内のシャドウ IT の検出と管理](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Cloud App Security で検出されたアプリ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [ネットワーク内のシャドウ IT の検出と管理](/cloud-app-security/tutorial-shadow-it)
+- [Cloud App Security で検出されたアプリ](/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>ユーザー セッションの可視性と制御 
 
@@ -53,7 +53,7 @@ Microsoft Cloud App Discovery (Azure Active Directory Premium P1 機能) を使�
  
 ### <a name="learn-more"></a>詳細情報
 
-- [Cloud App Security でセッション制御を使用してアプリを保護する ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Cloud App Security でセッション制御を使用してアプリを保護する ](/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>高度なアプリの可視性と制御 
 
@@ -61,11 +61,11 @@ Microsoft Cloud App Discovery (Azure Active Directory Premium P1 機能) を使�
  
 ### <a name="learn-more"></a>詳細情報  
 
-- [Cloud App Security でアプリに接続する](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Cloud App Security でアプリに接続する](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ネットワーク内のシャドウ IT の検出と管理](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Cloud App Security で検出されたアプリ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [Cloud App Security でセッション制御を使用してアプリを保護する ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Cloud App Security でアプリに接続する](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [ネットワーク内のシャドウ IT の検出と管理](/cloud-app-security/tutorial-shadow-it)
+- [Cloud App Security で検出されたアプリ](/cloud-app-security/discovered-apps)
+- [Cloud App Security でセッション制御を使用してアプリを保護する ](/cloud-app-security/proxy-intro-aad)
+- [Cloud App Security でアプリに接続する](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

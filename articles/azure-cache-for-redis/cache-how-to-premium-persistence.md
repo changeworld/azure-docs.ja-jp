@@ -5,16 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/24/2017
-ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 10/09/2020
+ms.openlocfilehash: 8ae76ca27c8c6f8fed5692b9a2376fff53a52bb6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004807"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536574"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
-Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。
+この記事では、Azure portal から Premium Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 
 
 ## <a name="what-is-data-persistence"></a>データの永続化とは
 [Redis 永続化](https://redis.io/topics/persistence)を使用すると、Redis に格納されたデータを保持できます。 また、スナップショットを取得したりデータをバックアップしたりして、ハードウェア障害のときに読み込むことができます。 これは、Basic レベルや Standard レベルにはない大きな利点です。Basic/Standard レベルでは、すべてのデータはメモリに格納され、Cache ノードがダウンするような障害時にはデータが失われる可能性があります。 
@@ -24,62 +24,21 @@ Azure Cache for Redis では、以下のモデルを使用した Redis 永続化
 * **RDB 永続化** - RDB (Redis データベース) 永続化が構成されている場合、Azure Cache for Redis は、構成可能なバックアップ頻度に基づき Redis バイナリ形式でそのスナップショットをディスクに保持します。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。 RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
 * **AOF 永続化** - AOF (追加専用ファイル) 永続化が構成されている場合、Azure Cache for Redis では、すべての書き込み操作をログに保存します。このログは最低でも 1 秒に 1 回、Azure ストレージ アカウントに保存されます。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、保存されている書き込み操作を使用してキャッシュが再構築されます。 AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
 
-永続化では、自分が所有して管理している Azure Storage アカウントに Redis データが書き込まれます。 その構成は、キャッシュの作成中に **[New Azure Cache for Redis]\(新規 Azure Cache for Redis\)** ブレードから、および既存の Premium キャッシュ用の **[リソース] メニュー**で行います。
+永続化では、自分が所有して管理している Azure Storage アカウントに Redis データが書き込まれます。 その構成は、キャッシュの作成中に **[New Azure Cache for Redis]\(新規 Azure Cache for Redis\)** ブレードから、および既存の Premium キャッシュ用の **[リソース] メニュー** で行います。
 
 > [!NOTE]
 > 
-> Azure Storage では、データは永続化されるときに自動的に暗号化されます。 暗号化には独自のキーを使用できます。 詳細については、「[Azure Key Vault でのカスタマー マネージド キー](/azure/storage/common/storage-service-encryption)」を参照してください。
+> Azure Storage では、データは永続化されるときに自動的に暗号化されます。 暗号化には独自のキーを使用できます。 詳細については、「[Azure Key Vault でのカスタマー マネージド キー](../storage/common/storage-service-encryption.md)」を参照してください。
 > 
 > 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Premium キャッシュを作成するには、 [Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure ポータルだけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Cache for Redis の作成について詳しくは、[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 
-Premium 価格レベルを選択した後、 **[Redis の永続化]** をクリックします。
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="リソースを作成します。":::
+   
+2. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-![[Redis の永続化]][redis-cache-persistence]
-
-次のセクションの手順では、新しい Premium キャッシュで Redis 永続化を構成する方法を示します。 Redis の永続化が構成されたら、 **[作成]** をクリックして、Redis の永続化で新規 Premium キャッシュを作成します。
-
-## <a name="enable-redis-persistence"></a>Redis 永続化の有効化
-
-Redis 永続化は、**[データ永続化]** ブレードで **[RDB]** または **[AOF]** 永続化のいずれかを選択して有効にします。 新規キャッシュでは、前のセクションで説明したように、このブレードにはキャッシュの作成プロセス中にアクセスします。 既存のキャッシュでは、**[データ永続化]** ブレードには、ご利用のキャッシュの **[リソース]** メニューからアクセスします。
-
-![Redis の設定][redis-cache-settings]
-
-
-## <a name="configure-rdb-persistence"></a>RDB 永続化の構成
-
-RDB 永続化を有効にするには、**[RDB]** をクリックします。 以前から有効になっている Premium キャッシュの RDB 永続化を無効にするには、**[無効]** をクリックします。
-
-![Redis RDB 永続化][redis-cache-rdb-persistence]
-
-バックアップの間隔を構成するには、ドロップダウン リストから **[バックアップの頻度]** を選択します。 選択肢は、**15 分**、**30 分**、**60 分**、**6 時間**、**12 時間**、**24 時間**です。 前のバックアップ操作が正常に完了するとこの間隔のカウントダウンが開始し、期間が経過すると新しいバックアップが開始されます。
-
-**[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ボックスの一覧から使用する**プライマリ キー**または**セカンダリ キー**を選択します。 Cache と同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。 
-
-> [!IMPORTANT]
-> 永続化アカウントのストレージ キーを再生成した場合、**[ストレージ キー]** ドロップダウンから目的のキーを再構成する必要があります。
-> 
-> 
-
-**[OK]** をクリックして永続化の構成を保存します。
-
-バックアップ間隔が経過すると、次のバックアップ (または新しいキャッシュの最初のバックアップ) が開始されます。
-
-## <a name="configure-aof-persistence"></a>AOF 永続化の構成
-
-AOF 永続化を有効にするには、**[AOF]** をクリックします。 以前から有効になっている Premium キャッシュの AOF 永続化を無効にするには、**[無効]** をクリックします。
-
-![Redis AOF 永続化][redis-cache-aof-persistence]
-
-AOF 永続化を構成するには、**[最初のストレージ アカウント]** を指定します。 キャッシュと同じリージョンのストレージ アカウントを指定する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。 必要に応じて **[2 つ目のストレージ アカウント]** という追加のストレージ アカウントを構成できます。 2 つ目のストレージ アカウントが構成されていると、レプリカ キャッシュへの書き込みはこの 2 つ目のストレージ アカウントに書き込まれます。 構成済みのストレージ アカウントごとに、**[ストレージ キー]** ボックスの一覧から、使用する **[プライマリ キー]** または **[セカンダリ キー]** を選択します。 
-
-> [!IMPORTANT]
-> 永続化アカウントのストレージ キーを再生成した場合、**[ストレージ キー]** ドロップダウンから目的のキーを再構成する必要があります。
-> 
-> 
-
-AOF 永続化が有効になっていると、キャッシュへの書き込み操作は指定したストレージ アカウント (2 つ目のストレージ アカウントを構成している場合は 2 つのストレージ アカウント) に保存されます。 プライマリとレプリカの両方のキャッシュが削除されるような致命的なエラーが発生した場合は、保存されている AOF ログを使用してキャッシュが再構築されます。
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="リソースを作成します。" と表示されている場合は、キャッシュを使用する準備ができています。 
 
 ## <a name="persistence-faq"></a>永続化の FAQ
 次の一覧は、Azure Cache for Redis の永続化に関するよく寄せられる質問への回答です。
@@ -88,6 +47,7 @@ AOF 永続化が有効になっていると、キャッシュへの書き込み�
 * [AOF 永続化と RDB 永続化を同時に有効にすることはできますか](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [どちらの永続化モデルを選択すべきですか](#which-persistence-model-should-i-choose)
 * [別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することはできますか。](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
 
 
 ### <a name="rdb-persistence"></a>RDB 永続化
@@ -128,8 +88,11 @@ RDB 永続化の場合も AOF 永続化の場合も、以下のように処理�
 * 小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。 詳細については、「[スケーリング中に影響を受けるカスタム データベース](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)」を参照してください
 * 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用します。
 
+### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することはできますか。
+はい、2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することができます。
+
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>キャッシュの作成後に RDB バックアップ頻度を変更できますか
-はい、**[データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「Redis の永続化を構成する」をご覧ください。
+はい、 **[データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「Redis の永続化を構成する」をご覧ください。
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>RDB バックアップ頻度を 60 分に設定しているのに、バックアップの間隔が 60 分より長くなるのはなぜですか
 RDB 永続化のバックアップ頻度の間隔は、その前のバックアップ プロセスが正常に完了するまでは開始しません。 バックアップ間隔を 60 分に設定し、バックアップ プロセスが正常に完了するのに 15 分かかる場合、次のバックアップは、前回のバックアップの開始時刻から 75 分経つまで開始しません。
@@ -148,7 +111,7 @@ AOF 永続化用の 2 つ目のストレージ アカウントは、キャッシ
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>2 つ目のストレージ アカウントを削除するには、どうすればよいですか
 
-AOF 永続化の 2 つ目のストレージ アカウントは、その 2 つ目のストレージ アカウントを最初のストレージ アカウントと同じように設定にすることで削除できます。 手順については、「[AOF 永続化の構成](#configure-aof-persistence)」を参照してください。
+AOF 永続化の 2 つ目のストレージ アカウントは、その 2 つ目のストレージ アカウントを最初のストレージ アカウントと同じように設定にすることで削除できます。 既存のキャッシュでは、 **[データ永続化]** ブレードには、ご利用のキャッシュの **[リソース]** メニューからアクセスします。 AOF の永続化を無効にするには、 **[無効]** をクリックします。
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>再書き込みとは何ですか。キャッシュにどのように影響しますか
 
@@ -177,7 +140,7 @@ AOF ファイルに格納されたデータは、ストレージへのデータ�
 
 
 ## <a name="next-steps"></a>次の手順
-Azure Cache for Redis 機能について詳しく確認します。
+Azure Cache for Redis の機能について
 
 * [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)
 

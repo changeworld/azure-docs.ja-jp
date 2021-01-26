@@ -1,19 +1,19 @@
 ---
 title: クラスター サイズのスケーリング - Azure HDInsight
 description: Azure HDInsight でワークロードに合わせて Apache Hadoop クラスターをエラスティックにスケーリングする
-author: ashishthaps
+author: hrasheed-msft
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006452"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022770"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -32,9 +32,9 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 
 |ユーティリティ | 説明|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
+|[PowerShell Az](/powershell/azure)|[`Set-AzHDInsightClusterSize`](/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell AzureRM](/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[Azure CLI](/cli/azure/) | [`az hdinsight resize`](/cli/azure/hdinsight#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure クラシック CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
@@ -43,14 +43,14 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 これらの方法のいずれかを使用すると、HDInsight クラスターを数分以内にスケールアップまたはスケールダウンできます。
 
 > [!IMPORTANT]  
-> * Azure クラシック CLI は非推奨です。クラシック デプロイ モデルでのみ使用してください。 その他すべてのデプロイについては、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してください。
-> * PowerShell AzureRM モジュールは非推奨です。  可能な限り、[Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)を使用してください。
+> * Azure クラシック CLI は非推奨です。クラシック デプロイ モデルでのみ使用してください。 その他すべてのデプロイについては、[Azure CLI](/cli/azure/) を使用してください。
+> * PowerShell AzureRM モジュールは非推奨です。  可能な限り、[Az モジュール](/powershell/azure/new-azureps-module-az)を使用してください。
 
 ## <a name="impact-of-scaling-operations"></a>スケーリング操作の影響
 
-実行中の HDInsight クラスターにノードを**追加** (スケールアップ) しても、ジョブは影響を受けません。 スケーリング処理の実行中に新しいジョブを安全に送信できます。 スケーリング操作が失敗した場合、その失敗によってクラスターは機能状態のままになります。
+実行中の HDInsight クラスターにノードを **追加** (スケールアップ) しても、ジョブは影響を受けません。 スケーリング処理の実行中に新しいジョブを安全に送信できます。 スケーリング操作が失敗した場合、その失敗によってクラスターは機能状態のままになります。
 
-ノードを**削除** (スケールダウン) すると、保留中または実行中のジョブは、スケーリング操作の完了時に失敗します。 この失敗の原因は、スケーリング処理中にいくつかのサービスが再起動されることにあります。 手動によるスケーリング操作中に、クラスターがセーフ モードで停止することがあります。
+ノードを **削除** (スケールダウン) すると、保留中または実行中のジョブは、スケーリング操作の完了時に失敗します。 この失敗の原因は、スケーリング処理中にいくつかのサービスが再起動されることにあります。 手動によるスケーリング操作中に、クラスターがセーフ モードで停止することがあります。
 
 データ ノード数を変更した場合の影響は、HDInsight でサポートされているクラスターの種類ごとに異なります。
 

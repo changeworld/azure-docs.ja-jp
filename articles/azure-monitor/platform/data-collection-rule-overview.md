@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723862"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315534"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
@@ -49,26 +49,14 @@ ms.locfileid: "88723862"
 
 
 ## <a name="limits"></a>制限
-次の表に、各データ収集ルールに現在適用されている制限を示します。
-
-| 制限 | 値 |
-|:---|:---|
-| データ ソースの最大数 | 10 |
-| パフォーマンス カウンターのカウンター指定子の最大数 | 100 |
-| SysLog 内のファシリティ名の最大数 | 20 |
-| イベントログ内の XPath クエリの最大数 | 100 |
-| データ フローの最大数 | 10 |
-| データ ストリームの最大数 | 10 |
-| 拡張機能の最大数 | 10 |
-| 拡張機能設定の最大サイズ | 32 Kb |
-| Log Analytics ワークスペースの最大数 | 10 |
+各データ収集ルールに適用される制限については、「[Azure Monitor サービスの制限](../service-limits.md#data-collection-rules)」を参照してください。
 
 
 ## <a name="create-a-dcr"></a>DCR を作成する
 現在、DCR を作成する方法は 2 つあります。
 
 - [Azure portal を使用](data-collection-rule-azure-monitor-agent.md)してデータ収集ルールを作成し、1 つまたは複数の仮想マシンに関連付けます。
-- データ収集ルールを JSON で直接編集し、[REST API を使用して送信します](https://docs.microsoft.com/rest/api/monitor/datacollectionrules)。
+- データ収集ルールを JSON で直接編集し、[REST API を使用して送信します](/rest/api/monitor/datacollectionrules)。
 
 ## <a name="sample-data-collection-rule"></a>データ収集ルールのサンプル
 以下のデータ収集ルールのサンプルは Azure 管理エージェントを使用した仮想マシン用で、次の詳細が含まれています。

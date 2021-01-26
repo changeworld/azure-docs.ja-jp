@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 857869b73e76c76075ac9607b64ffbb9d7358b5b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545273"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>チュートリアル:Azure Active Directory と Igloo Software の統合
 
@@ -27,7 +27,7 @@ Igloo Software と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Igloo Software に自動的にサインイン (シングル サインオン) されるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ Igloo Software と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Igloo Software では、**SP** によって開始される SSO がサポートされます
-* Igloo Software では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Igloo Software では、 **SP** によって開始される SSO がサポートされます
+* Igloo Software では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-igloo-software-from-the-gallery"></a>ギャラリーからの Igloo Software の追加
 
@@ -62,13 +62,13 @@ Azure AD への Igloo Software の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Igloo Software**」と入力し、結果パネルの **[Igloo Software]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Igloo Software** 」と入力し、結果パネルの **[Igloo Software]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Igloo Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Igloo Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Igloo Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Igloo Software 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Igloo Software で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -111,7 +111,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Igloo Software クライアント サポート チーム](https://www.igloosoftware.com/services/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -129,7 +129,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Igloo Software 企業サイトにログインします。
 
-2. **コントロール パネル**に移動します。
+2. **コントロール パネル** に移動します。
 
      ![コントロール パネル](./media/igloo-software-tutorial/ic799949.png "コントロール パネル")
 
@@ -147,9 +147,9 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
     a. **[接続名]** テキストボックスに、構成のカスタム名を入力します。
 
-    b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     d. **[POST]\(POST\)** として、 **[Logout Response and Request HTTP Type]\(ログアウト応答と要求 HTTP のタイプ\)** を選択します。
 
@@ -163,11 +163,11 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
     b. **[Identifier Type (識別子の種類)]** として **[Email Address (メール アドレス)]** を選択します。 
 
-    c. **[Email Attribute]** ボックスに、「**emailaddress**」と入力します。
+    c. **[Email Attribute]** ボックスに、「 **emailaddress** 」と入力します。
 
-    d. **[First Name Attribute (名属性)]** ボックスに、「**givenname**」と入力します。
+    d. **[First Name Attribute (名属性)]** ボックスに、「 **givenname** 」と入力します。
 
-    e. **[Last Name Attribute (姓属性)]** ボックスに、「**surname**」と入力します。
+    e. **[Last Name Attribute (姓属性)]** ボックスに、「 **surname** 」と入力します。
 
 7. 次の手順を実行して、構成を完成させます。
 
@@ -195,7 +195,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -240,12 +240,12 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Igloo Software] タイルをクリックすると、SSO を設定した Igloo Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Igloo Software] タイルをクリックすると、SSO を設定した Igloo Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -3,13 +3,13 @@ title: Azure で API Management と Service Fabric を統合する
 description: Azure API Management をすぐに使い始め、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について説明します。
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b89204e2df5c8e79200b780de38d06b1a93c1fa3
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260251"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702193"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -32,7 +32,7 @@ Service Fabric での Azure API Management のデプロイは高度なシナリ�
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Azure Powershell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
 * ネットワーク セキュリティ グループにセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成します。
-* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発** ワークロード、**ASP.NET および Web 開発** ワークロード、 **.NET Core クロス プラットフォーム開発** ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
 ## <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -114,7 +114,7 @@ Visual Studio を管理者として起動し、ASP.NET Core サービスを作�
 
 [Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) は、API Management セキュリティを構成します。 API Management は、Service Fabric クラスターへのアクセス権を持つクライアント証明書を使用して、サービス検出の際にそのクラスターで認証する必要があります。 この記事では、[Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor)を作成したときに指定した証明書と同じものを使用します。この証明書は、クラスターにアクセスするときに既定で使用できます。
 
-この記事では、クライアント認証とクラスター ノード間のセキュリティに同じ証明書を使用します。 Service Fabric クラスターにアクセスするよう構成した別のクライアント証明書がある場合は、その証明書を使用してもかまいません。 Service Fabric クラスターを作成したときに指定したクラスター証明書の秘密キー ファイル (.pfx) の**名前**、**パスワード**、および**データ** (Base 64 エンコード文字列) を指定します。
+この記事では、クライアント認証とクラスター ノード間のセキュリティに同じ証明書を使用します。 Service Fabric クラスターにアクセスするよう構成した別のクライアント証明書がある場合は、その証明書を使用してもかまいません。 Service Fabric クラスターを作成したときに指定したクラスター証明書の秘密キー ファイル (.pfx) の **名前**、**パスワード**、および **データ** (Base 64 エンコード文字列) を指定します。
 
 ### <a name="microsoftapimanagementservicebackends"></a>Microsoft.ApiManagement/service/backends
 
@@ -243,9 +243,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$temp
 
 ```azurecli
 ResourceGroupName="sfclustertutorialgroup"
-az group deployment create --name ApiMgmtNetworkDeployment --resource-group $ResourceGroupName --template-file network-apim.json --parameters @network-apim.parameters.json
+az deployment group create --name ApiMgmtNetworkDeployment --resource-group $ResourceGroupName --template-file network-apim.json --parameters @network-apim.parameters.json
 
-az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json
+az deployment group create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json
 ```
 
 ## <a name="test-it"></a>テストする

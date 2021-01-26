@@ -2,19 +2,16 @@
 title: Azure Monitor ブックと Azure Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを介してデプロイされた作成済みのブックやパラメーター化されたカスタム Azure Monitor ブックを使用して、複雑なレポート作成を簡素化します
 services: azure-monitor
-author: mrbullwinkle
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: mbullwin
-ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504922"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929729"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 

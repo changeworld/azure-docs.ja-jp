@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ba6ae9262fb0e55c53e1b1421c075e555fae8d98
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 55e5ff2af62c903efeab5c4932eae0c9dc9b535c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328031"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842313"
 ---
 # <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal で 1 つの仮想マシンまたは仮想マシン スケール セットで Azure Monitor を有効にする
 この記事では、Azure portal を使用して、仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。 この手順は、次に対して使用できます。
@@ -27,7 +27,7 @@ ms.locfileid: "87328031"
 
 ## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs の有効化
 
-Azure portal から、 **[仮想マシン]** 、 **[仮想マシン スケール セット]** 、または **[マシン - Azure Arc]** を選択し、一覧からリソースを選択します。 メニューの **[監視]** セクションで、 **[Insights]\(分析情報\)** 、次に **[Enable]\(有効にする\)** を選択します。 次の例は Azure 仮想マシンを示していますが、このメニューは Azure 仮想マシン スケール セットまたは Azure Arc の場合も同様です。
+Azure portal から、 **[仮想マシン]** 、 **[仮想マシン スケール セット]** 、または **[サーバー - Azure Arc]** を選択し、一覧からリソースを選択します。 メニューの **[監視]** セクションで、 **[Insights]\(分析情報\)** 、次に **[Enable]\(有効にする\)** を選択します。 次の例は Azure 仮想マシンを示していますが、このメニューは Azure 仮想マシン スケール セットまたは Azure Arc の場合も同様です。
 
 ![VM に対して Azure Monitor for VMs を有効にする](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 

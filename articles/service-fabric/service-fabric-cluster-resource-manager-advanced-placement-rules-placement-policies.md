@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005753"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485503"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric サービスの配置ポリシー
 配置ポリシーは、特定のあまり一般的ではないシナリオでサーバーの配置の制御に使用できる追加の規則です。 このようなシナリオのいくつかの例は、次のとおりです。
@@ -20,6 +20,7 @@ ms.locfileid: "89005753"
 - 環境が地政学的または法的な管理の異なる領域に広がっている場合、またはポリシーの境界を設定する必要があるその他の場合
 - 長距離、低速または信頼性の低いネットワーク リンクを使用するため、通信パフォーマンスまたは待機時間に関する考慮事項があります。
 - 他のワークロードまたはユーザーとの近接性を考慮したベスト エフォートとして、一部のワークロードを併置しておく必要があります。
+- 単一ノードにパーティションのステートレス インスタンスが複数必要な場合
 
 このような要件の多くは、クラスターの障害ドメインとして表されるクラスターの物理レイアウトと一致しています。 
 
@@ -29,6 +30,7 @@ ms.locfileid: "89005753"
 2. 必要なドメイン
 3. 優先ドメイン
 4. レプリカのパッキングを許可しない
+5. ノードでの複数ステートレス インスタンスを許可
 
 次の制御の多くはノード プロパティおよび配置の制約によって構成できますが、なかにはより複雑なものもあります。 簡素化するために、Service Fabric のクラスター リソース マネージャーでは追加の配置ポリシーが用意されています。 配置ポリシーは、指定されたサービス インスタンスごとに構成されます。 また、動的に更新することもできます。
 
@@ -122,6 +124,42 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 では、これらの構成を地理的に分散していないクラスターのサービスに使用することはできるでしょうか。 使用できますが、あまり利点はありません。 シナリオで必要な場合を除き、必須のドメイン、無効なドメイン、および優先されるドメインの構成は避けることをお勧めします。 特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは意味がありません。 異なるハードウェアの構成を複数のドメインや、通常の配置の制約とノードのプロパティを通じて処理される障害ドメインに分散する必要があります。
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>パーティションの複数ステートレス インスタンスの単一ノードへの配置
+**AllowMultipleStatelessInstancesOnNode** 配置ポリシーを使うと、単一ノードにパーティションの複数ステートレス インスタンスを配置できます。 既定では、単一パーティションの複数インスタンスを 1 つのノードに配置することはできません。 -1 サービスを使用している場合でも、特定の名前付きサービスについて、クラスター内のノード数を超えてインスタンスの数をスケーリングすることはできません。 この配置ポリシーによってこの制限が削除されて、InstanceCount をノード数よりも多く指定できるようになります。
+
+"`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion`" などの正常性メッセージを受け取ったことがある場合は、この状況、または似た状況が既に発生していることになります。 
+
+サービスで `AllowMultipleStatelessInstancesOnNode` ポリシーを指定することによって、クラスター内のノード数を超える InstanceCount を設定できます。
+
+コード:
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+PowerShell:
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> 配置ポリシーは現在プレビュー段階であり、`EnableUnsupportedPreviewFeatures` クラスター設定の背後にあります。 これは現在プレビュー機能であるため、プレビュー構成を設定すると、クラスターでアップグレードが実行されなくなります。 つまり、この機能を試すには、新しいクラスターの作成が必要になります。
+>
+
+> [!NOTE]
+> 現時点で、このポリシーは、ExclusiveProcess [サービス パッケージ アクティブ化モード](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)のステートレス サービスでのみサポートされています。
+>
+
+> [!WARNING]
+> 静的ポート エンドポイントと共に使う場合、ポリシーはサポートされません。 両方を組み合わせて使うと、同じノード上で複数のインスタンスが同じポートにバインドしようとして、起動できなくなるような異常なクラスターになる可能性があります。 
+>
+
+> [!NOTE]
+> この配置ポリシーで [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) の値を大きくすると、アプリケーションのアップグレードが停止する可能性があります。 たとえば、5 ノードのクラスターがあり、InstanceCount=10 と設定されている場合、各ノードに 2 つのインスタンスが存在します。 MinInstanceCount=9 を設定した場合、試行されたアプリのアップグレードが停止する可能性があります。MinInstanceCount=8 の場合は、これを回避できます。
+>
 
 ## <a name="next-steps"></a>次のステップ
 - サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。

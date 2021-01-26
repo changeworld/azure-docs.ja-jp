@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/08/2020
+ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad5c2ad76f9ab98a6ad284a0bb50f3a611dc9a00
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6864502a9d338a786e1e77dbf9888a7818bb94e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206027"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748650"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -34,11 +34,11 @@ Web API を呼び出すデーモン アプリケーションのコードを構�
 
 ## <a name="configure-the-authority"></a>機関を構成する
 
-デーモン アプリケーションでは、委任されたアクセス許可ではなく、アプリケーションのアクセス許可が使用されます。 そのため、サポートされているアカウントの種類を、組織のディレクトリ内のアカウントまたは個人用 Microsoft アカウント (例: Skype、Xbox、Outlook.com) にすることはできません。 Microsoft の個人アカウントの場合、デーモン アプリケーションに同意を付与するテナント管理者はいません。 *自分の所属組織のアカウント*または*任意の組織のアカウント*を選択する必要があります。
+デーモン アプリケーションでは、委任されたアクセス許可ではなく、アプリケーションのアクセス許可が使用されます。 そのため、サポートされているアカウントの種類を、組織のディレクトリ内のアカウントまたは個人用 Microsoft アカウント (例: Skype、Xbox、Outlook.com) にすることはできません。 Microsoft の個人アカウントの場合、デーモン アプリケーションに同意を付与するテナント管理者はいません。 *自分の所属組織のアカウント* または *任意の組織のアカウント* を選択する必要があります。
 
-そのため、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
+アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
 
-マルチテナント ツールを提供する ISV の場合は、`organizations` を使用することができます。 ただし、管理者の同意を付与する方法をお客様に説明することも必要になる点に留意してください。 詳細については、「[テナント全体の同意の要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」を参照してください。 また、現在、MSAL には、クライアント資格情報が (証明書ではなく) アプリケーション シークレットである場合にのみ、`organizations` が許可されるという制限があります。
+マルチテナント ツールを提供する場合でも、テナント ID またはドメイン名を使用する必要があります。このフローでは `common` や `organizations` は使用 **しません**。どのテナントを使用する必要があるかをサービスが確実に推測できないためです。
 
 ## <a name="configure-and-instantiate-the-application"></a>アプリケーションを構成してインスタンス化する
 
@@ -51,16 +51,13 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 
 構成ファイルでは、以下を定義します。
 
-- 機関またはクラウド インスタンスとテナント ID。
+- *機関* を構成するクラウド インスタンスとテナント ID。
 - アプリケーションの登録から返されたクライアント ID。
 - クライアント シークレットまたは証明書のいずれか。
 
-> [!NOTE]
-> この記事の残りの部分にある .Net コード スニペットによって、[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) サンプルの [config](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) が参照されます。
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[.NET Core コンソール デーモン](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)のサンプルからの [appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)。
+[*appsettings.json*](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) ファイル内で構成を定義する例を次に示します。 この例は、GitHub の [.NET Core コンソール デーモン](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)のコード サンプルから引用しています。
 
 ```json
 {
@@ -124,9 +121,9 @@ MSAL アプリケーションをインスタンス化するには、(言語に�
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet パッケージをアプリケーションに追加します。
+[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet パッケージをアプリケーションに追加し、`using` ディレクティブをコードに追加してこのパッケージを参照します。
+
 MSAL.NET では、機密クライアント アプリケーションは `IConfidentialClientApplication` インターフェイスによって表されます。
-ソース コードで MSAL.NET 名前空間を使用します。
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -167,6 +164,23 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
+```
+
+`Authority` は、クラウド インスタンスとテナント ID (`https://login.microsoftonline.com/contoso.onmicrosoft.com`、`https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` など) を連結したものです。 「[構成ファイル](#configuration-file)」セクションに示した *appsettings.json* ファイルでは、これらはそれぞれ `Instance` の値と `Tenant` の値で表されます。
+
+前のスニペットを引用したコード サンプルでは、`Authority` は [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) クラスのプロパティであり、次のように定義されています。
+
+```csharp
+/// <summary>
+/// URL of the authority
+/// </summary>
+public string Authority
+{
+    get
+    {
+        return String.Format(CultureInfo.InvariantCulture, Instance, Tenant);
+    }
+}
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -247,7 +261,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-or
+または
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -338,17 +352,14 @@ ConfidentialClientApplication cca =
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=dotnet)
+このシナリオの次の記事である[アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=dotnet)に関する記事に進みます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=python)
+このシナリオの次の記事である[アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=python)に関する記事に進みます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=java)
+このシナリオの次の記事である[アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=java)に関する記事に進みます。
 
 ---

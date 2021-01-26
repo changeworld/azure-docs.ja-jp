@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432747"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778141"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -27,13 +27,13 @@ ms.locfileid: "87432747"
 
 プライベート ストレージ コンテナーへの制限付きアクセス権限を付与するには、Azure ストレージ アカウントの Shared Access Signature (SAS) 機能を使用できます。 SAS は、アカウント キーを公開することなく Azure Storage リソースへの制限付きアクセス権を付与する URI です。 ストレージ アカウント キーで信頼していないが特定のストレージ アカウント リソースへのアクセスを委任するクライアントに SAS を提供できます。 これらのクライアントに共有アクセス署名 URI を配布して、指定した期間にわたってリソースへのアクセスを許可します。
  
-SAS を使用すると、開始時刻や有効期限、アクセス許可 (読み取り/書き込み)、IP 範囲など、BLOB へのアクセスに関するさまざまなパラメーターを定義することができます。 この記事では、Azure CDN と共に SAS を使用する方法について説明します。 作成方法やパラメーター オプションなど、SAS について詳しくは、「[Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)」をご覧ください。
+SAS を使用すると、開始時刻や有効期限、アクセス許可 (読み取り/書き込み)、IP 範囲など、BLOB へのアクセスに関するさまざまなパラメーターを定義することができます。 この記事では、Azure CDN と共に SAS を使用する方法について説明します。 作成方法やパラメーター オプションなど、SAS について詳しくは、「[Shared Access Signatures (SAS) の使用](../storage/common/storage-sas-overview.md)」をご覧ください。
 
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>ストレージ SAS と共に使用するための Azure CDN の設定
 SAS を Azure CDN と共に使用する場合は、次の 3 つのオプションをお勧めします。 すべてのオプションで、動作する SAS が既に作成されていることを前提としています (前提条件をご覧ください)。 
  
 ### <a name="prerequisites"></a>前提条件
-まず、ストレージ アカウントを作成し、資産の SAS を生成します。 保存されている 2 種類のアクセス署名 (サービス SAS またはアカウント SAS) を生成できます。 詳しくは、「[共有アクセス署名の種類](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures)」をご覧ください。
+まず、ストレージ アカウントを作成し、資産の SAS を生成します。 保存されている 2 種類のアクセス署名 (サービス SAS またはアカウント SAS) を生成できます。 詳しくは、「[共有アクセス署名の種類](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures)」をご覧ください。
 
 SAS トークンが生成されたら、URL の末尾に `?sv=<SAS token>` を追加することにより、BLOB ストレージ ファイルにアクセスできます。 この URL は、以下のフォーマットになります。 
 
@@ -44,7 +44,7 @@ SAS トークンが生成されたら、URL の末尾に `?sv=<SAS token>` を�
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-パラメーターの設定について詳しくは、「[SAS parameter considerations](#sas-parameter-considerations)」(SAS パラメーターの考慮事項) と「[Shared Access Signature パラメーター](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)」をご覧ください。
+パラメーターの設定について詳しくは、「[SAS parameter considerations](#sas-parameter-considerations)」(SAS パラメーターの考慮事項) と「[Shared Access Signature パラメーター](../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works)」をご覧ください。
 
 ![CDN SAS 設定](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
@@ -69,15 +69,15 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>オプション 2:書き換えルールを使用して CDN SAS トークンを非表示にする
  
-このオプションは、**Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
+このオプションは、 **Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
  
-1. [ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールが反映されるまで最大で 4 時間かかります。
+1. [ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールが反映されるまで最大で 4 時間かかります。
 
    ![CDN の [管理] ボタン](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
    ![CDN の [ルール エンジン] ボタン](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*sasstoragedemo* という名前のエンドポイントを使用します。
+   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、 *sasstoragedemo* という名前のエンドポイントを使用します。
    
    ソース:   
    `(container1\/.*)`
@@ -100,9 +100,9 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>オプション 3:書き換えルールと共に CDN セキュリティ トークン認証を使用する
 
-Azure CDN セキュリティ トークン認証を使用するには、**Azure CDN Premium from Verizon** プロファイルが必要です。 このオプションは、最も安全かつカスタマイズ可能です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 セキュリティ トークンを作成し、設定したら、すべての CDN エンドポイント URL で必要になります。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。 SAS トークンが後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
+Azure CDN セキュリティ トークン認証を使用するには、 **Azure CDN Premium from Verizon** プロファイルが必要です。 このオプションは、最も安全かつカスタマイズ可能です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 セキュリティ トークンを作成し、設定したら、すべての CDN エンドポイント URL で必要になります。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。 SAS トークンが後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
 
-1. [Azure CDN セキュリティ トークンを作成](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication)し、CDN エンドポイントのルール エンジンと、ユーザーがファイルにアクセスできる場所のパスを使用してアクティブにします。
+1. [Azure CDN セキュリティ トークンを作成](./cdn-token-auth.md#setting-up-token-authentication)し、CDN エンドポイントのルール エンジンと、ユーザーがファイルにアクセスできる場所のパスを使用してアクティブにします。
 
    セキュリティ トークン エンドポイント URL は、次のような形式です。   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
@@ -114,9 +114,9 @@ Azure CDN セキュリティ トークン認証を使用するには、**Azure C
        
    セキュリティ トークン認証のためのパラメーター オプションは、SAS トークンのパラメーター オプションとは異なります。 セキュリティ トークンを作成する際に有効期限を使用する場合は、SAS トークンの有効期限と同じ値に設定する必要があります。 これにより、有効期限が予測可能になります。 
  
-2. コンテナー内のすべての BLOB にアクセスできる SAS トークンを有効にするには、[ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールが反映されるまで最大で 4 時間かかります。
+2. コンテナー内のすべての BLOB にアクセスできる SAS トークンを有効にするには、[ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールが反映されるまで最大で 4 時間かかります。
 
-   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*sasstoragedemo* という名前のエンドポイントを使用します。
+   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、 *sasstoragedemo* という名前のエンドポイントを使用します。
    
    ソース:   
    `(container1\/.*)`
@@ -138,13 +138,13 @@ SAS パラメーターは Azure CDN からは認識できないため、Azure CD
 | --- | --- |
 | [開始] | Azure CDN が BLOB ファイルにアクセスを開始できる時刻。 クロックのずれ (クロック シグナルが各コンポーネントで受信された時刻が異なる) のため、アセットをすぐ使用する必要がある場合は、15 分早い時刻を選択してください。 |
 | End | Azure CDN が BLOB ファイルにアクセスできなくなる時刻。 これより以前に Azure CDN にキャッシュされたファイルは引き続きアクセスできます。 ファイルの有効期限を制御するためには、Azure CDN のセキュリティ トークンに適切な有効期限を設定するか、アセットを削除します。 |
-| 許可された IP アドレス | 省略可能。 **Azure CDN from Verizon** を使用する場合は、このパラメーターを「[Azure CDN from Verizon Edge Server IP Ranges](/azure/cdn/cdn-pop-list-api)」(Azure CDN from Verizon Edge Server の IP 範囲) で定義されている範囲に設定できます。 **Azure CDN from Akamai** を使用する場合、IP アドレスは静的でないため、IP 範囲パラメーターを設定できません。|
+| 許可された IP アドレス | 省略可能。 **Azure CDN from Verizon** を使用する場合は、このパラメーターを「 [Azure CDN from Verizon Edge Server IP Ranges](./cdn-pop-list-api.md)」(Azure CDN from Verizon Edge Server の IP 範囲) で定義されている範囲に設定できます。 **Azure CDN from Akamai** を使用する場合、IP アドレスは静的でないため、IP 範囲パラメーターを設定できません。|
 | 許可されるプロトコル | アカウント SAS を使用して行われた要求に対して許可されるプロトコル。 HTTPS 設定をお勧めします。|
 
 ## <a name="next-steps"></a>次のステップ
 
 SAS の詳細については、次の記事を参照してください。
-- [Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [Shared Access Signature、パート 2: BLOB ストレージでの SAS の作成と使用](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [Shared Access Signatures (SAS) の使用](../storage/common/storage-sas-overview.md)
+- [Shared Access Signature、パート 2: BLOB ストレージでの SAS の作成と使用](../storage/common/storage-sas-overview.md)
 
-トークン認証設定の詳細については、「[トークン認証による Azure Content Delivery Network 資産の保護](https://docs.microsoft.com/azure/cdn/cdn-token-auth)」をご覧ください。
+トークン認証設定の詳細については、「[トークン認証による Azure Content Delivery Network 資産の保護](./cdn-token-auth.md)」をご覧ください。

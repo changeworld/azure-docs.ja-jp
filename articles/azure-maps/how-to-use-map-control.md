@@ -4,17 +4,17 @@ description: Azure Maps でマップ コントロールのクライアント側 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js
+ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035962"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413379"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -26,7 +26,7 @@ Web ページでマップ コントロールを使用するには、次のいず
 
 * [Azure Maps アカウント](quick-demo-map-app.md#create-an-azure-maps-account)を作成し、[プライマリ サブスクリプション キー](quick-demo-map-app.md#get-the-primary-key-for-your-account) (主キーまたはサブスクリプション キーとも呼ばれます) を取得します。
 
-* [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用して Azure Active Directory (AAD) 資格情報を取得します。
+* [認証オプション](/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用して Azure Active Directory (AAD) 資格情報を取得します。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Web ページに新しいマップを作成する
 
@@ -83,7 +83,7 @@ Web ページでマップ コントロールを使用するには、次のいず
     </body>
    ```
 
-5. ここで、マップ コントロールを初期化します。 コントロールを認証するには、Azure Maps サブスクリプション キーを所有するか、[認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)で Azure Active Directory (AAD) 資格情報を使用する必要があります。
+5. ここで、マップ コントロールを初期化します。 コントロールを認証するには、Azure Maps サブスクリプション キーを所有するか、[認証オプション](/javascript/api/azure-maps-control/atlas.authenticationoptions)で Azure Active Directory (AAD) 資格情報を使用する必要があります。
 
     認証にサブスクリプション キーを使用している場合は、`<head>` 要素内の最初の `<script>` 要素の下に、次のスクリプト要素をコピーして貼り付けます。 `<Your Azure Maps Key>` を実際の Azure Maps プライマリ サブスクリプション キーに置き換えます。
 
@@ -99,8 +99,8 @@ Web ページでマップ コントロールを使用するには、次のいず
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
                 }
-            }
-        });
+            });
+       }
     </script>
     ```
 
@@ -120,8 +120,8 @@ Web ページでマップ コントロールを使用するには、次のいず
                     aadAppId: '<Your AAD App Id>',
                     aadTenant: '<Your AAD Tenant Id>'
                 }
-            }
-        });
+            });
+        }
     </script>
    ```
 
@@ -252,6 +252,15 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 Azure Maps REST サービスに直接アクセスする場合は、URL ドメインを `atlas.azure.us` に変更します。 たとえば、検索 API サービスを使用する場合は、URL ドメインを `https://atlas.microsoft.com/search/` から `https://atlas.azure.us/search/` に変更します。
 
+## <a name="javascript-frameworks"></a>JavaScript フレームワーク
+
+JavaScript フレームワークを開発に使用している場合は、次のいずれかのオープンソース プロジェクトが役に立つでしょう。
+
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
+- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
+- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロールの React ラッパー。
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
+
 ## <a name="next-steps"></a>次のステップ
 
 マップを作成して操作する方法について説明します。
@@ -270,7 +279,7 @@ Azure Maps REST サービスに直接アクセスする場合は、URL ドメイ
 > [マップを作成する](map-create.md)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)
 
 Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧については、次を参照してください。
 

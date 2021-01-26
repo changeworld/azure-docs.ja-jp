@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117211"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 > [!div class="checklist"]
 > * 問題に対する回答がコミュニティから得られないか、または実装を試みている機能に関して既存のドキュメントが既に存在するかを検索する方法
 > * 一部のケースにおいて、マイクロソフトのサポート ツールを使用して固有の問題をデバッグするだけでかまわない
-> * 必要な回答が見つけられない場合に、*Stack Overflow* 上で質問する
+> * 必要な回答が見つけられない場合に、 *Stack Overflow* 上で質問する
 > * 認証ライブラリで問題が見つかった場合は *GitHub* の問題として提起する
 > * 最後に、サポート要求をオープンしてサポート担当者と話をする
 

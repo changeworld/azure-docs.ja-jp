@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6f490b6f25112ed8a10bbd865070bd07ea3ee84f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530175"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016952"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "86530175"
 > [!IMPORTANT]
 > Visual Studio 2015 またはそれ以前のバージョンを使用している場合は、このチュートリアルを始める前に、Visual Studio 用の最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。
 >
->確認するには、Visual Studio を起動します。 **[ツール]** メニューの **[拡張機能と更新プログラム]** を選びます。 お使いの Visual Studio に対応した **NuGet パッケージ マネージャー**を探し、バージョンが最新であることを確認します。 最新バージョンでない場合は、アンインストールして、NuGet パッケージ マネージャーを再インストールしてください。
+>確認するには、Visual Studio を起動します。 **[ツール]** メニューの **[拡張機能と更新プログラム]** を選びます。 お使いの Visual Studio に対応した **NuGet パッケージ マネージャー** を探し、バージョンが最新であることを確認します。 最新バージョンでない場合は、アンインストールして、NuGet パッケージ マネージャーを再インストールしてください。
 
 ![Visual Studio 用 NuGet パッケージ マネージャー パッケージが強調表示された [拡張機能と更新プログラム] ダイアログ ボックスのスクリーンショット。][B4]
 
@@ -63,10 +63,10 @@ ms.locfileid: "86530175"
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>WebAPI バックエンドに対してクライアントを認証する
 
-このセクションでは、新しいバックエンドに対して **AuthenticationTestHandler** という名前の新しいメッセージ ハンドラー クラスを作成します。 このクラスは [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) から派生し、メッセージ ハンドラーとして追加されるため、バックエンドに送信されるすべての要求を処理できます。
+このセクションでは、新しいバックエンドに対して **AuthenticationTestHandler** という名前の新しいメッセージ ハンドラー クラスを作成します。 このクラスは [DelegatingHandler](/previous-versions/visualstudio/hh193679(v=vs.118)) から派生し、メッセージ ハンドラーとして追加されるため、バックエンドに送信されるすべての要求を処理できます。
 
 1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
-2. 新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、 **[追加]** を選択して、クラスを生成します。 説明を簡単にするために、このクラスでは、*基本認証*を使用してユーザーを認証します。 実際のアプリでは、任意の認証スキームを使用できます。
+2. 新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、 **[追加]** を選択して、クラスを生成します。 説明を簡単にするために、このクラスでは、*基本認証* を使用してユーザーを認証します。 実際のアプリでは、任意の認証スキームを使用できます。
 3. AuthenticationTestHandler.cs に次の `using` ステートメントを追加します。
 
     ```csharp
@@ -88,7 +88,7 @@ ms.locfileid: "86530175"
 
    それ以外の場合、要求は拒否されます。 この認証は、認証と認可の正規のアプローチではありません。 このチュートリアルのための単なる例にすぎません。
 
-   要求メッセージが認証され、`AuthenticationTestHandler` によって承認される場合、基本認証ユーザーは [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) の現在の要求に添付されます。 HttpContext のユーザー情報は、後で別のコントローラー (RegisterController) で使用され、通知登録の要求に[タグ](https://msdn.microsoft.com/library/azure/dn530749.aspx)を追加します。
+   要求メッセージが認証され、`AuthenticationTestHandler` によって承認される場合、基本認証ユーザーは [HttpContext](/dotnet/api/system.web.httpcontext.current) の現在の要求に添付されます。 HttpContext のユーザー情報は、後で別のコントローラー (RegisterController) で使用され、通知登録の要求に[タグ](/previous-versions/azure/azure-services/dn530749(v=azure.100))を追加します。
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler
@@ -186,7 +186,7 @@ ms.locfileid: "86530175"
     }
     ```
     > [!IMPORTANT]
-    > 先に進む前に、ハブの**名前**と **DefaultFullSharedAccessSignature** を入力します。 
+    > 先に進む前に、ハブの **名前** と **DefaultFullSharedAccessSignature** を入力します。 
     
 7. 次に、**RegisterController** という名前の新しいコントローラーを作成します。 ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
@@ -333,7 +333,7 @@ ms.locfileid: "86530175"
 
     このコードでは、プラットフォーム通知サービス (PNS) の `pns` パラメーターに基づく通知の種類を送信します。 `to_tag` の値はメッセージの *ユーザー名* タグを設定するために使用します。 このタグは、アクティブな通知ハブ登録のユーザー名のタグと一致する必要があります。 通知メッセージは、POST 要求の本文からプルされ、ターゲット PNS に合わせた形式に設定されます。
 
-    サポートされているデバイスで通知の受信に使用される PNS に応じて、各種形式で通知がサポートされています。 たとえば Windows デバイスの場合、別の PNS で直接はサポートされていない [WNS によるトースト通知](https://msdn.microsoft.com/library/windows/apps/br230849.aspx)を使用することもできます。 このような場合、バックエンドが、通知を、サポートを計画しているデバイスの PNS でサポートされている形式に設定する必要があります。 その後、[NotificationHubClient クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx)で適切な送信 API を使用します。
+    サポートされているデバイスで通知の受信に使用される PNS に応じて、各種形式で通知がサポートされています。 たとえば Windows デバイスの場合、別の PNS で直接はサポートされていない [WNS によるトースト通知](/uwp/schemas/tiles/toastschema/schema-root)を使用することもできます。 このような場合、バックエンドが、通知を、サポートを計画しているデバイスの PNS でサポートされている形式に設定する必要があります。 その後、[NotificationHubClient クラス](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient)で適切な送信 API を使用します。
 
     ```csharp
     public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
@@ -390,7 +390,7 @@ ms.locfileid: "86530175"
 
     ![[Microsoft Azure App Service] タイル][B15]
 
-3. **[App Service の作成]** ウィンドウで、Azure アカウントを選択します。 **[変更の種類]**  >  **[Web アプリ]** の順に選択します。 既定の **Web アプリ名**をそのまま保持し、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[App Service プラン]** の順に選択します。
+3. **[App Service の作成]** ウィンドウで、Azure アカウントを選択します。 **[変更の種類]**  >  **[Web アプリ]** の順に選択します。 既定の **Web アプリ名** をそのまま保持し、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[App Service プラン]** の順に選択します。
 
 4. **［作成］** を選択します
 

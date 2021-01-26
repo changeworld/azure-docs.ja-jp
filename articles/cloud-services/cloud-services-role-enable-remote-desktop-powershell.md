@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 13d5be5b1e0bcdf84001f21a45364296d67a5da4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7742267f5ce199f3a5bffc52200374d2323f0622
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013899"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072460"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 
@@ -30,7 +30,7 @@ ms.locfileid: "87013899"
 ## <a name="configure-remote-desktop-from-powershell"></a>PowerShell からリモート デスクトップを構成する
 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットを使用すると、クラウド サービス デプロイの指定したロールまたはすべてのロールでリモート デスクトップを有効にすることができます。 このコマンドレットでは、PSCredential オブジェクトを受け入れる *Credential* パラメーターを使用してリモート デスクトップ ユーザーのユーザー名とパスワードを指定できます。
 
-PowerShell を対話形式で使用している場合は、 [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを呼び出すことで、PSCredential オブジェクトを簡単に設定できます。
+PowerShell を対話形式で使用している場合は、 [Get-Credentials](/powershell/module/microsoft.powershell.security/get-credential) コマンドレットを呼び出すことで、PSCredential オブジェクトを簡単に設定できます。
 
 ```powershell
 $remoteusercredentials = Get-Credential
@@ -38,7 +38,7 @@ $remoteusercredentials = Get-Credential
 
 このコマンドにより、リモート ユーザーのユーザー名とパスワードを安全な方法で入力できるダイアログ ボックスが表示されます。
 
-PowerShell は自動化のシナリオで役立つため、ユーザー操作を必要としない方法で **PSCredential** オブジェクトを設定することもできます。 最初に、セキュリティで保護されたパスワードを設定する必要があります。 まずプレーンテキストのパスワードを指定し、 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)を使用してそのパスワードをセキュリティで保護された文字列に変換します。 次に、 [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx)を使用して、セキュリティで保護されたこの文字列を、暗号化された標準文字列に変換する必要があります。 これで、この暗号化された標準文字列を、 [Set-Content](https://technet.microsoft.com/library/ee176959.aspx)を使用してファイルに保存することができます。
+PowerShell は自動化のシナリオで役立つため、ユーザー操作を必要としない方法で **PSCredential** オブジェクトを設定することもできます。 最初に、セキュリティで保護されたパスワードを設定する必要があります。 まずプレーンテキストのパスワードを指定し、 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)を使用してそのパスワードをセキュリティで保護された文字列に変換します。 次に、 [ConvertFrom-SecureString](/powershell/module/microsoft.powershell.security/convertfrom-securestring)を使用して、セキュリティで保護されたこの文字列を、暗号化された標準文字列に変換する必要があります。 これで、この暗号化された標準文字列を、 [Set-Content](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176959(v=technet.10))を使用してファイルに保存することができます。
 
 パスワードを毎回手動で入力しなくても済むように、セキュリティで保護されたパスワード ファイルを作成することもできます。 また、セキュリティで保護されたパスワード ファイルはプレーン テキスト ファイルよりも適切です。 セキュリティで保護されたパスワード ファイルを作成するには、次の PowerShell を使用します。
 
@@ -47,9 +47,9 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 ```
 
 > [!IMPORTANT]
-> パスワードを設定するときは、 [複雑さの要件](https://technet.microsoft.com/library/cc786468.aspx)を満たしていることを確認してください。
+> パスワードを設定するときは、 [複雑さの要件](/previous-versions/windows/it-pro/windows-server-2003/cc786468(v=ws.10))を満たしていることを確認してください。
 
-セキュリティで保護されたパスワード ファイルから資格情報オブジェクトを作成するには、ファイルの内容を読み取り、 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)を使用して、セキュリティで保護された文字列にもう一度変換する必要があります。
+セキュリティで保護されたパスワード ファイルから資格情報オブジェクトを作成するには、ファイルの内容を読み取り、 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)を使用して、セキュリティで保護された文字列にもう一度変換する必要があります。
 
 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) コマンドレットは、ユーザー アカウントの期限が切れる *日時* を指定する **Expiration** パラメーターも受け入れます。 たとえば、現在の日時から数日後にアカウントの期限が切れるように設定することもできます。
 
@@ -101,5 +101,3 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>その他のリソース
 
 [Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)
-
-

@@ -1,47 +1,40 @@
 ---
 title: Azure アラートでのログ アラートに対する Webhook アクション
-description: この記事では、Log Analytics ワークスペースまたは Application Insights を使用してログ アラート ルールを作成する方法、アラートでデータが HTTP Webhook としてプッシュされる方法、および可能なさまざまなカスタマイズの詳細について説明します。
+description: Webhook アクションを使用したログ アラート プッシュと使用可能なカスタマイズを構成する方法について説明します。
 author: yanivlavi
 ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97c3ead4dbdf0608c6b7cd1be6a9edf242ecd2b5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075269"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510765"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
-[Azure でログ アラートを作成する](alerts-log.md)ときは、[アクション グループを使用して構成](action-groups.md)し、1 つ以上のアクションを実行することができます。 この記事では、使用できるさまざまな Webhook アクションについて説明し、JSON ベースのカスタム Webhook の構成方法を示します。
+
+[ログ アラート](alerts-log.md)は、[Webhook アクション グループの構成](action-groups.md#webhook)をサポートします。 この記事では、使用できるプロパティと、カスタム JSON Webhook の構成方法について説明します。
 
 > [!NOTE]
-> また、Webhook の統合に[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。 共通アラート スキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードを実現できることです。共通アラート スキーマでは、ログ アラートのカスタム JSON オプションが優先されないことに注意してください。 アラート ルール レベルで行ったカスタマイズに関係なく共通のアラート スキーマ ペイロードが選択されている場合は、これに従います。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
-
-## <a name="webhook-actions"></a>Webhook アクション
-
-Webhook アクションでは、1 つの HTTP POST 要求を使用して外部のプロセスを呼び出すことができます。 呼び出されるサービスでは、Webhook がサポートされ、受信したペイロードの使用方法が決定される必要があります。
-
-webhook アクションには、次の表に示すプロパティが必要です。
-
-| プロパティ | 説明 |
-|:--- |:--- |
-| **Webhook URL** |Webhook の URL。 |
-| **Custom JSON payload (カスタム JSON ペイロード)** |アラート作成中にこのオプションが選択されたときに、Webhook と共に送信するカスタム ペイロード。 詳しくは、[ログ アラートの管理](alerts-log.md)に関するページをご覧ください。|
+> 現在、JSON ベースの Webhook は API バージョン `2020-05-01-preview` ではサポートされていません。
 
 > [!NOTE]
-> ログ アラートの **[webhook 用のカスタム Json ペイロードを含む]** オプションの横にある **[View Webhook]\(Webhook の表示\)** ボタンをクリックすると、指定されたカスタマイズ用のサンプル Webhook ペイロードが表示されます。 実際のデータは含まれませんが、ログ アラートに使用される JSON スキーマの見本です。 
+> Webhook 統合には、[共通アラート スキーマ](alerts-common-schema.md)を使用することをお勧めします。 共通アラート スキーマには、Azure Monitor のすべてのアラート サービスで、1 つの拡張可能で統合されたアラート ペイロードを使用できる利点があります。 カスタム JSON ペイロードが定義されているログ アラート ルールの場合、共通スキーマを有効にすると、ペイロード スキーマが[ここ](alerts-common-schema-definitions.md#log-alerts)に記載されたものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあり、より大きいアラートには検索結果は含まれません。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、Log Analytics API を使用してクエリ結果にアクセスする必要があります。
 
-Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。 既定では、ペイロードには次の表に示す値が格納されます。 このペイロードは、独自のカスタム ペイロードに置き換えることができます。 その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めます。
+## <a name="webhook-payload-properties"></a>Webhook ペイロード プロパティ
 
+Webhook アクションを使用して、1 つの HTTP POST 要求を呼び出せます。 呼び出されるサービスでは、Webhook がサポートされ、受信したペイロードの使用方法が認識される必要があります。
+
+既定の Webhook アクション プロパティとそのカスタム JSON パラメーター名は次のとおりです。
 
 | パラメーター | 変数 | 説明 |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |アラート ルールの名前。 |
 | *Severity* |#severity |起動されたログ アラートに設定されている重大度。 |
-| *AlertThresholdOperator* |#thresholdoperator |より大きい、またはより小さいを使用する、アラート ルールのしきい値演算子。 |
+| *AlertThresholdOperator* |#thresholdoperator |アラート ルールのしきい値演算子。 |
 | *AlertThresholdValue* |#thresholdvalue |アラート ルールのしきい値。 |
 | *LinkToSearchResults* |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
 | *LinkToSearchResultsAPI* |#linktosearchresultsapi |アラートを作成したクエリからのレコードを返す Analytics API へのリンク。 |
@@ -54,15 +47,15 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | *SearchQuery* |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
 | *SearchResults* |"IncludeSearchResults": true|最初の 1,000 レコードに制限された、クエリによって JSON テーブルとして返されるレコード。 "IncludeSearchResults": true が、最上位レベルのプロパティとしてカスタム JSON Webhook 定義に追加されます。 |
 | *Dimensions* |"IncludeDimensions": true|JSON セクションとしてそのアラートをトリガーしたディメンション値の組み合わせ。 "IncludeDimensions": true が、最上位レベルのプロパティとしてカスタム JSON Webhook 定義に追加されます。 |
-| *Alert Type*| #alerttype | 構成されたログ アラート ルールの種類であり、[メトリック測定](alerts-unified-log.md#metric-measurement-alert-rules)または[結果の数](alerts-unified-log.md#number-of-results-alert-rules)。|
+| *Alert Type*| #alerttype | 構成されたログ アラート ルールの種類であり、[メトリック測定または結果の数](alerts-unified-log.md#measure)。|
 | *WorkspaceID* |#workspaceid |Log Analytics ワークスペースの ID |
 | *アプリケーション ID* |#applicationid |Application Insights アプリの ID。 |
-| *サブスクリプション ID* |#subscriptionid |使用された Azure サブスクリプションの ID。 
+| *サブスクリプション ID* |#subscriptionid |使用された Azure サブスクリプションの ID。 |
 
-> [!NOTE]
-> 指定されたリンクは、URL で *SearchQuery*、*Search Interval StartTime*、*Search Interval End time* などのパラメーターが Azure portal または API に渡されます。
+## <a name="custom-webhook-payload-definition"></a>カスタム Webhook ペイロード定義
 
-たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。 この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
+上記のパラメーターを使用してカスタム JSON ペイロードを取得するには、 **[webhook 用のカスタム Json ペイロードを含む]** を使用できます。 追加のプロパティを生成することもできます。
+たとえば、 *text* という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。 この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 
 ```json
 
@@ -77,18 +70,21 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
-カスタム webhook 内のすべての変数は、"#searchinterval" のように JSON エンクロージャ内で指定する必要があるため、結果の webhook にも、エンクロージャ内に "00:05:00" のような変数データが含まれることになります。
+カスタム Webhook の変数は、JSON エンクロージャ内で指定する必要があります。 たとえば、上記の Webhook の例で "#searchresultcount" を参照すると、アラートの結果に基づいて出力されます。
 
-カスタム ペイロードに検索結果を含めるには、**IncudeSearchResults** が JSON ペイロードの最上位レベルのプロパティとして設定されていることを確認します。 
+検索結果を含めるには、**IncludeSearchResults** をカスタム JSON の最上位レベルのプロパティとして追加します。 検索結果は JSON 構造体として含まれているため、カスタム定義フィールド内で結果を参照することはできません。 
+
+> [!NOTE]
+> **[webhook 用のカスタム Json ペイロードを含む]** オプションの横にある **[View Webhook]\(Webhook の表示\)** ボタンを使用すると、提供された内容のプレビューが表示されます。 これには実際のデータは含まれませんが、使用される JSON スキーマの見本です。 
 
 ## <a name="sample-payloads"></a>サンプル ペイロード
 このセクションでは、ログ アラートの Webhook のサンプル ペイロードを示します。 サンプル ペイロードには、ペイロードが標準の場合とカスタムの場合の例が含まれます。
 
-### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 Webhook 
-以下のサンプルではどちらも、2 つの列と 2 つの行のみで構成されるダミー ペイロードが示されています。
+### <a name="log-alert-for-log-analytics"></a>Log Analytics のログ アラート
+次のサンプル ペイロードは、Log Analytics に基づくアラートに使用される、標準 Webhook アクションに対するものです。
 
-#### <a name="log-alert-for-log-analytics"></a>Log Analytics のログ アラート
-次のサンプル ペイロードは、Log Analytics に基づくアラートに使用される、"*カスタム JSON オプションが含まれていない*" 標準 Webhook アクションに対するものです。
+> [!NOTE]
+> [重要度] フィールドの値は、[現在の scheduledQueryRules API](alerts-log-api-switch.md) に[従来の Log Analytics Alert API](api-alerts.md) から切り替えた場合に変更されます。
 
 ```json
 {
@@ -152,14 +148,10 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
 }
- ```
+```
 
-> [!NOTE]
-> Log Analytics でログ アラートに対する [API 設定](alerts-log-api-switch.md)を切り替えていた場合、"Severity" フィールドの値が変化することがあります。
-
-
-#### <a name="log-alert-for-application-insights"></a>Application Insights のログ アラート
-次のサンプル ペイロードは、Application Insights に基づくアラートに使用されるときの、"*カスタム JSON オプションが含まれていない*" 標準 Webhook に対するものです。
+### <a name="log-alert-for-application-insights"></a>Application Insights のログ アラート
+次のサンプル ペイロードは、Application Insights リソースに基づくログ アラートに使用されるときの、標準 Webhook に対するものです。
     
 ```json
 {
@@ -225,8 +217,73 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 }
 ```
 
-#### <a name="log-alert-with-custom-json-payload"></a>カスタム JSON ペイロードを使用したログ アラート
-たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、以下を使用できます。 
+### <a name="log-alert-for-other-resources-logs-from-api-version-2020-05-01-preview"></a>その他のリソース ログ (API バージョン `2020-05-01-preview` から) のログ アラート
+
+> [!NOTE]
+> 現時点では、API バージョン `2020-05-01-preview` とリソース中心のログ アラートに関して追加料金は発生しません。  プレビュー段階にある機能の価格は、後で発表され、課金が始まる前に通知されます。 通知期間後も新しい API バージョンとリソース中心ログ アラートを引き続き使用することを選択した場合は、該当する料金が適用されます。
+
+次のサンプル ペイロードは、他のリソース ログ (ワークスペースと Application Insights を除く) に基づくアラートに使用されるときの、標準 Webhook に対するものです。
+
+```json
+{
+    "schemaId": "azureMonitorCommonAlertSchema",
+    "data": {
+        "essentials": {
+            "alertId": "/subscriptions/12345a-1234b-123c-123d-12345678e/providers/Microsoft.AlertsManagement/alerts/12345a-1234b-123c-123d-12345678e",
+            "alertRule": "AcmeRule",
+            "severity": "Sev4",
+            "signalType": "Log",
+            "monitorCondition": "Fired",
+            "monitoringService": "Log Alerts V2",
+            "alertTargetIDs": [
+                "/subscriptions/12345a-1234b-123c-123d-12345678e/resourcegroups/ai-engineering/providers/microsoft.compute/virtualmachines/testvm"
+            ],
+            "originAlertId": "123c123d-1a23-1bf3-ba1d-dd1234ff5a67",
+            "firedDateTime": "2020-07-09T14:04:49.99645Z",
+            "description": "log alert rule V2",
+            "essentialsVersion": "1.0",
+            "alertContextVersion": "1.0"
+        },
+        "alertContext": {
+            "properties": null,
+            "conditionType": "LogQueryCriteria",
+            "condition": {
+                "windowSize": "PT10M",
+                "allOf": [
+                    {
+                        "searchQuery": "Heartbeat",
+                        "metricMeasure": null,
+                        "targetResourceTypes": "['Microsoft.Compute/virtualMachines']",
+                        "operator": "LowerThan",
+                        "threshold": "1",
+                        "timeAggregation": "Count",
+                        "dimensions": [
+                            {
+                                "name": "ResourceId",
+                                "value": "/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm"
+                            }
+                        ],
+                        "metricValue": 0.0,
+                        "failingPeriods": {
+                            "numberOfEvaluationPeriods": 1,
+                            "minFailingPeriodsToAlert": 1
+                        },
+                        "linkToSearchResultsUI": "https://portal.azure.com#@12f345bf-12f3-12af-12ab-1d2cd345db67/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F12345a-1234b-123c-123d-12345678e%2FresourceGroups%2FTEST%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Ftestvm%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToFilteredSearchResultsUI": "https://portal.azure.com#@12f345bf-12f3-12af-12ab-1d2cd345db67/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F12345a-1234b-123c-123d-12345678e%2FresourceGroups%2FTEST%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Ftestvm%22%7D%5D%7D/q/eJzzSE0sKklKTSypUSjPSC1KVQjJzE11T81LLUosSU1RSEotKU9NzdNIAfJKgDIaRgZGBroG5roGliGGxlYmJlbGJnoGEKCpp4dDmSmKMk0A/prettify/1/timespan/2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z",
+                        "linkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/subscriptions/12345a-1234b-123c-123d-12345678e/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/testvm/query?query=Heartbeat%7C%20where%20TimeGenerated%20between%28datetime%282020-07-09T13%3A44%3A34.0000000%29..datetime%282020-07-09T13%3A54%3A34.0000000%29%29&timespan=2020-07-07T13%3a54%3a34.0000000Z%2f2020-07-09T13%3a54%3a34.0000000Z"
+                    }
+                ],
+                "windowStartTime": "2020-07-07T13:54:34Z",
+                "windowEndTime": "2020-07-09T13:54:34Z"
+            }
+        }
+    }
+}
+```
+
+### <a name="log-alert-with-a-custom-json-payload"></a>カスタム JSON ペイロードを使用したログ アラート
+たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、この構成を使用します。 
 
 ```json
     {
@@ -259,7 +316,6 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
         }
     }
 ```
-
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure アラートでのログ アラート](alerts-unified-log.md)について学習します。

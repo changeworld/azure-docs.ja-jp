@@ -6,24 +6,30 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e75eef86a4a0c679a44a61267f94d337538daaa8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962861"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007621"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage にアクセスする
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage (プレビュー) にアクセスする
 
 ::: zone pivot="container-windows"
 
 このガイドでは、App Service で Azure Storage ファイルをネットワーク共有として Windows コンテナーに接続する方法について説明します。 [Azure Files Shares](../storage/files/storage-how-to-use-files-cli.md) および [Premium ファイル共有](../storage/files/storage-how-to-create-premium-fileshare.md)のみがサポートされています。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。
+
+> [!NOTE]
+>App Service の Azure Storage は **プレビュー段階** であり、**運用シナリオ** では **サポートされていません**。
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
 このガイドでは、Azure Storage を Linux コンテナーの App Service にアタッチする方法について説明します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、永続ストレージ、複数のアプリへのアクセス、複数の転送方法などがあります。
+
+> [!NOTE]
+>App Service の Azure Storage は、App Service on Linux と Web App for Containers では **プレビュー段階** にあります。 **運用シナリオ** では **サポートされていません**。
 
 ::: zone-end
 
@@ -53,21 +59,18 @@ ms.locfileid: "88962861"
 
 ::: zone pivot="container-windows"
 
-- App Service の Azure Storage は**プレビュー段階**であり、**運用シナリオ**では**サポートされていません**。
-- App Service の Azure Storage は、現在、独自のコードを使用するシナリオ (コンテナー化されていない Windows アプリ) では**サポートされていません**。
-- App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール**構成の使用を**サポートしていません**。
-- App Service を使用する Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用します。
+- App Service の Azure Storage は、現在、独自のコードを使用するシナリオ (コンテナー化されていない Windows アプリ) では **サポートされていません**。
+- App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール** 構成の使用を **サポートしていません**。
+- App Service を使用する Azure Storage では、アプリあたり **最大 5 つ** のマウント ポイントを指定できます。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
-- App Service の Azure Storage は、App Service on Linux と Web App for Containers では**プレビュー段階**にあります。 **運用シナリオ**では**サポートされていません**。
 - App Service の Azure Storage は、**Azure Files コンテナー** (読み取り/書き込み) と **Azure Blob コンテナー** (読み取り専用) のマウントをサポートしています。
-- App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール**構成の使用を**サポートしていません**。
-- App Service の Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用します。
+- App Service の Azure Storage では、アプリあたり **最大 5 つ** のマウント ポイントを指定できます。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
 ::: zone-end
 
@@ -77,7 +80,7 @@ ms.locfileid: "88962861"
 
 [Azure Storage アカウント、ファイル共有、ディレクトリ](#prerequisites)を作成したら、Azure Storage を使用してアプリを構成できるようになります。
 
-Azure Files 共有を App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類は、AzureFiles である必要があります。
+Azure Files 共有を App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類は、AzureFiles である必要があります。
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -91,7 +94,7 @@ Azure Files 共有にリンクする他のすべてのディレクトリにつ�
 
 [Azure Storage アカウント、ファイル共有、ディレクトリ](#prerequisites)を作成したら、Azure Storage を使用してアプリを構成できるようになります。
 
-ストレージ アカウントを App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類としては、AzureBlob または AzureFiles を使用できます。 この例では、AzureFiles が使用されています。 マウント パス設定は、Azure Storage からマウントするフォルダーに対応します。 "/" に設定すると、Azure Storage 全体がマウントされます。
+ストレージ アカウントを App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類としては、AzureBlob または AzureFiles を使用できます。 この例では、AzureFiles が使用されています。 マウント パス設定は、Azure Storage にマウントするコンテナー内のフォルダーに対応します。 "/" に設定すると、Azure Storage にコンテナー全体がマウントされます。
 
 
 > [!CAUTION]

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012487"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320922"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -53,7 +53,7 @@ SQL Server Management Studio を実行するには、プログラムの一覧か
 
 既定では、既定のデータベース インスタンスがあるデータベース サーバーは自動的に実行されます。 VM 上の SQL Server Management Studio などのツールを使用して、SQL Server データベースにローカルでアクセスできます。 ローカル管理者アカウントには、データベースへの管理者アクセス権があります。
 
-また DSVM には、Python、Machine Learning Server を含む複数の言語で記述されたアプリケーションから SQL Server、Azure SQL データベース、および Azure SQL Data Warehouse と通信するための ODBC ドライバーおよび JDBC ドライバーが付属しています。
+また DSVM には、Python、Machine Learning Server を含む複数の言語で記述されたアプリケーションから SQL Server、Azure SQL データベース、および Azure Synapse Analytics と通信するための ODBC ドライバーおよび JDBC ドライバーが付属しています。
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM での構成とインストール方法 
 
@@ -103,5 +103,4 @@ Azure Blob Storage または Azure Data Lake Storage から、Microsoft MMLSpark
 
 DSVM 上の Spark インスタンスから Blob ストレージまたは Azure Data Lake Storage に格納されているデータにアクセスするには、$SPARK_HOME/conf/core-site.xml.template にあるテンプレートに基づいて `core-site.xml` ファイルを作成して構成する必要があります。 Blob ストレージと Azure Data Lake Storage にアクセスするための適切な資格情報も必要です。 (テンプレート ファイルでは、Blob ストレージおよび Azure Data Lake Storage の構成にプレースホルダーが使用されることに注意してください。)
 
-Azure Data Lake Storage サービス資格情報の作成方法の詳細情報については、[Azure Data Lake Storage Gen1 に対する認証](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)に関する記事を参照してください。 Blob ストレージまたは Azure Data Lake Storage の資格情報が core-site.xml ファイルに入力されると、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照できます。
-
+Azure Data Lake Storage サービス資格情報の作成方法の詳細情報については、[Azure Data Lake Storage Gen1 に対する認証](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)に関する記事を参照してください。 Blob ストレージまたは Azure Data Lake Storage の資格情報が core-site.xml ファイルに入力されると、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照できます。

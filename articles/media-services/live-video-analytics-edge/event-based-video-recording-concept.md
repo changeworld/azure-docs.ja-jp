@@ -3,12 +3,12 @@ title: イベントベースのビデオ記録 - Azure
 description: イベントベースのビデオ記録 (EVR) とは、イベントによってトリガーされるビデオ記録のプロセスのことです。 対象となるイベントは、ビデオ信号自体の処理が原因で発生したもの (動きの検出など) でも、独立したソースからのもの (ドアを開くなど) でもかまいません。  この記事では、イベントベースのビデオ記録に関連するいくつかのユース ケースについて説明します。
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 0a6f7ca4233c195c7494fc6f63e7dfb5bf654c17
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260745"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401605"
 ---
 # <a name="event-based-video-recording"></a>イベントベースのビデオ記録  
  
@@ -34,7 +34,8 @@ ms.locfileid: "84260745"
 
 次の図は、このユース ケースに対応するメディア グラフをグラフィカルに表したものです。 このようなメディア グラフのグラフ トポロジの JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-motion-assets/topology.json)を参照してください。
 
-![モーション検出に基づくビデオ記録](./media/event-based-video-recording/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/motion-detection.svg" alt-text="モーション検出に基づくビデオ記録":::
 
 この図では、カメラからのライブ ビデオ フィードが RTSP ソース ノードによってキャプチャされ、それが[モーション検出プロセッサ](media-graph-concept.md#motion-detection-processor) ノードに配信されます。 ライブ ビデオでモーションが検出されると、モーション検出プロセッサ ノードによってイベントが生成され、それが[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードと IoT Hub メッセージ シンク ノードに送信されます。 後者のノードによってイベントが IoT Edge ハブに送信され、イベントはそこから他の送信先にルーティングされて、アラートがトリガーされます。 
 
@@ -44,7 +45,8 @@ ms.locfileid: "84260745"
 
 このユース ケースでは、別の IoT センサーからのシグナルを使用して、ビデオの記録をトリガーできます。 次の図は、このユース ケースに対応するメディア グラフをグラフィカルに表したものです。 このようなメディア グラフのグラフ トポロジの JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json)を参照してください。
 
-![他のソースからのイベントに基づくビデオ記録](./media/event-based-video-recording/other-sources.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="他のソースからのイベントに基づくビデオ記録":::
 
 この図では、外部センサーによって IoT Edge ハブにイベントが送信されます。 その後イベントは、[IoT Hub メッセージ ソース](media-graph-concept.md#iot-hub-message-source) ノード経由でシグナル ゲート プロセッサ ノードにルーティングされます。 シグナル ゲート プロセッサ ノードの動作は、前のユース ケースと同じです。ノードは、外部イベントによってトリガーされると開き、RTSP ソース ノードからファイル シンク ノード (または資産シンク ノード) へのライブ ビデオ フィードがフローできるようになります。 
 
@@ -54,13 +56,14 @@ ms.locfileid: "84260745"
 
 このユース ケースでは、外部のロジック システムからのシグナルに基づいてビデオ クリップを記録できます。 このようなユース ケースの例は、高速道路の交通状況のビデオ フィードでトラックが検出されたときにだけビデオ クリップを記録する場合です。 次の図は、このユース ケースに対応するメディア グラフをグラフィカルに表したものです。 このようなメディア グラフのグラフ トポロジの JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)を参照してください。
 
-![外部推論モジュールに基づくビデオ記録](./media/event-based-video-recording/external-inferencing-module.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="外部推論モジュールに基づくビデオ記録":::
 
-この図では、RTSP ソース ノードによってカメラからのライブ ビデオ フィードがキャプチャされ、2 つのブランチに配信されています。1 つには[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードがあり、もう 1 つでは [HTTP 拡張](media-graph-concept.md)ノードを使用して外部のロジック モジュールにデータが送信されています。 HTTP 拡張ノードを使用すると、メディア グラフで REST を使用して外部の推論サービスに画像フレーム (JPEG、BMP、または PNG 形式) を送信できます。 このシグナル パスでは、通常、低フレーム レート (5 fps 未満) のみがサポートされます。 [フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードを使用すると、HTTP 拡張ノードに送信されるビデオのフレーム レートを下げることができます。
+この図では、RTSP ソース ノードによってカメラからのライブ ビデオ フィードがキャプチャされ、2 つのブランチに配信されています。1 つには[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードがあり、もう 1 つでは [HTTP 拡張](media-graph-concept.md)ノードを使用して外部のロジック モジュールにデータが送信されています。 HTTP 拡張ノードを使用すると、メディア グラフで REST を使用して外部の推論サービスに画像フレーム (JPEG、BMP、または PNG 形式) を送信できます。 このシグナル パスでは、通常、低フレーム レート (5 fps 未満) のみがサポートされます。 HTTP 拡張機能プロセッサ ノードを使用すると、外部推論モジュールに送信されるビデオのフレーム レートを下げることができます。
 
 外部推論サービスからの結果は、HTTP 拡張ノードによって取得され、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに中継されます。そこでは、外部ロジック モジュールによって結果をさらに処理できます。 たとえば、推論サービスで車両を検出できる場合、ロジック モジュールではバスやトラックなどの特定の車両を探すことができます。 ロジック モジュールでは、目的のものが検出されると、IoT Edge ハブ経由でグラフの IoT Hub メッセージ ソース ノードにイベントを送信することにより、シグナル ゲート プロセッサ ノードをトリガーできます。 シグナル ゲートからの出力では、ファイル シンク ノードまたは資産シンク ノードのいずれかに送信することが示されています。 前者では、ビデオはエッジ デバイス上のローカル ファイル システムに記録されます。 後者の場合は、ビデオは資産に記録されます。
 
-この例を拡張し、フレーム レート フィルター プロセッサ ノードの前の段階でモーション検出プロセッサを使用します。 これにより、高速道路に長時間車両が存在しない場合がある夜間など、推論サービスの負荷が軽減されます。 
+この例を拡張し、HTTP 拡張機能プロセッサ ノードの前の段階でモーション検出プロセッサを使用します。 これにより、高速道路に長時間車両が存在しない場合がある夜間など、推論サービスの負荷が軽減されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

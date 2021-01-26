@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686141"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151514"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics 料金のコストを節約する
 
@@ -27,7 +27,7 @@ Azure Synapse Analytics の使用に関連するストレージまたはネッ�
 
 価格の詳細については、[Azure Synapse Analytics の予約容量プラン](https://azure.microsoft.com/pricing/details/synapse-analytics/)に関するページを参照してください。
 
-Azure Synapse Analytics の予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。 予約の支払いは、[前払いまたは月払い](monthly-payments-reservations.md)で行います。 予約容量を購入するには:
+Azure Synapse Analytics の予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。 予約の支払いは、[前払いまたは月払い](./prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールを所持している必要があります。
 - エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 その設定が無効になっている場合は、EA 管理者である必要があります。

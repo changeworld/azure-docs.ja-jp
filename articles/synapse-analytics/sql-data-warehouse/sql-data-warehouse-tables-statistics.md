@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse SQL を使用したテーブルの統計の作成と更新
-description: Synapse SQL プール内のテーブルに関するクエリ用に最適化された統計の作成と更新のレコメンデーションと例。
+title: テーブルの列の統計を作成および更新する
+description: 専用 SQL プール内のテーブルに関するクエリ用に最適化された統計の作成と更新のレコメンデーションと例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,43 +10,43 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799317"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447939"
 ---
-# <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルの統計
+# <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのテーブルの統計
 
-この記事では、SQL プール内のテーブルに関するクエリ用に最適化された統計の作成と更新のレコメンデーションと例を示します。
+この記事では、専用 SQL プール内のテーブルに関するクエリ用に最適化された統計の作成と更新のレコメンデーションと例を示します。
 
 ## <a name="why-use-statistics"></a>統計を使用する理由
 
-SQL プールがデータに関する情報を多く持っているほど、それに対するクエリを高速に実行できます。 SQL プールにデータを読み込んだ後、データに関する統計を収集することは、クエリの最適化のために実行できる最も重要なことの 1 つです。
+専用 SQL プールがデータに関する情報を多く持っているほど、それに対するクエリを高速に実行できます。 専用 SQL プールにデータを読み込んだ後、データに関する統計を収集することは、クエリの最適化のために実行できる最も重要なことの 1 つです。
 
-SQL プール クエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。
+専用 SQL プール クエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。
 
 たとえば、クエリでフィルター処理されている日付に対して返されるのは 1 行であるとオプティマイザーで推定されると、1 つのプランが選択されます。 選択された日付で返されるのが 100 万行であると推定された場合は、別のプランが返されます。
 
 ## <a name="automatic-creation-of-statistic"></a>統計の自動作成
 
-データベースの AUTO_CREATE_STATISTICS オプションがオンの場合、SQL プールでは足りない統計に対して受信ユーザー クエリが分析されます。
+データベースの AUTO_CREATE_STATISTICS オプションがオンの場合、専用 SQL プールでは足りない統計に対して受信ユーザー クエリが分析されます。
 
 統計が足りない場合、クエリ オプティマイザーでは、クエリ述語または結合条件内の個々の列で統計を作成することで、クエリ プランに対するカーディナリティ評価が改善されます。
 
 > [!NOTE]
 > 既定では､統計の自動作成は有効です｡
 
-SQL プールで AUTO_CREATE_STATISTICS が構成されているかどうかは、次のコマンドを実行することで確認できます。
+専用 SQL プールで AUTO_CREATE_STATISTICS が構成されているかどうかは、次のコマンドを実行することで確認できます。
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-SQL プールで AUTO_CREATE_STATISTICS が構成されていない場合は、次のコマンドを実行してこのプロパティを有効にすることをお勧めします。
+専用 SQL プールで AUTO_CREATE_STATISTICS が構成されていない場合は、次のコマンドを実行してこのプロパティを有効にすることをお勧めします。
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -82,11 +82,11 @@ table_name は、表示する統計が格納されているテーブルの名前
 
 ## <a name="update-statistics"></a>統計を更新します。
 
-ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。 新しい行が SQL プールに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらの追加によってデータの分布が変わり、統計が古くなります。
+ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。 新しい行が専用 SQL プールに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらの追加によってデータの分布が変わり、統計が古くなります。
 
 顧客テーブルの国または地域の列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。
 
-ただし、SQL プールに 1 つの国または地域しか含まれておらず、新しい国または地域のデータを取り込んで複数の国または地域のデータが格納されるようになった場合は、国または地域の列の統計を更新する必要があります。
+ただし、専用 SQL プールに 1 つの国または地域しか含まれておらず、新しい国または地域のデータを取り込んで複数の国または地域のデータが格納されるようになった場合は、国または地域の列の統計を更新する必要があります。
 
 統計更新のレコメンデーションは次の通りです｡
 
@@ -150,9 +150,6 @@ on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
 
->[!TIP]
-> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
-
 **クエリ 2:** 各テーブルで統計が最後に更新された日時を調べて、統計の経過期間を確認します。 
 
 > [!NOTE]
@@ -185,11 +182,11 @@ WHERE
     st.[user_created] = 1;
 ```
 
-たとえば、SQL プールの**日付列**では、通常、統計を頻繁に更新する必要があります。 新しい行が SQL プールに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらの追加によってデータの分布が変わり、統計が古くなります。
+たとえば、専用 SQL プールの **日付列** では、通常、統計を頻繁に更新する必要があります。 新しい行が専用 SQL プールに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらの追加によってデータの分布が変わり、統計が古くなります。
 
 一方、顧客テーブルの性別列の統計は更新する必要がないと考えられます。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。
 
-SQL プールに 1 つの性別しか含まれておらず、新しい要件によって複数の性別が含まれるようになった場合は、性別列の統計を更新する必要があります。
+専用 SQL プールに 1 つの性別しか含まれておらず、新しい要件によって複数の性別が含まれるようになった場合は、性別列の統計を更新する必要があります。
 
 詳しくは、「[統計](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」をご覧ください。
 
@@ -217,7 +214,7 @@ SQL プールに 1 つの性別しか含まれておらず、新しい要件に�
 
 列の統計を作成するには、統計オブジェクトの名前と列の名前を指定します。
 
-次の構文では、既定のオプションをすべて使用しています。 既定で、SQL プールでは統計を作成するときに、テーブルの **20%** がサンプリングされます。
+次の構文では、既定のオプションをすべて使用しています。 既定では、統計を作成するときに、テーブルの **20%** がサンプリングされます。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -315,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>ストアド プロシージャを使用した、データベース内のすべての列の統計の作成
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>ストアド プロシージャを使用した、SQL プール内のすべての列の統計の作成
 
-SQL プールには、SQL Server の sp_create_stats に相当するシステム ストアド プロシージャはありません。 このストアド プロシージャは、まだ統計がないデータベースのすべての列の単一列統計オブジェクトを作成します。
+専用 SQL プールには、SQL Server の sp_create_stats に相当するシステム ストアド プロシージャはありません。 このストアド プロシージャは、まだ統計がない SQL プールのすべての列の単一列統計オブジェクトを作成します。
 
-次の例は、データベースの設計を開始する際に役立ちます。 ニーズに合わせて、このオブジェクトを自由に変更できます。
+次の例は、SQL プールの設計を開始する際に役立ちます。 ニーズに合わせて、このオブジェクトを自由に変更できます。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -462,10 +459,10 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS ステートメントは簡単に使用できます。 このステートメントはテーブルの*すべて*の統計を更新するので、必要以上の処理が実行される可能性があります。 パフォーマンスが問題でない場合は、これが、統計が最新の状態であることを保証する最も簡単で最も包括的な方法です。
+UPDATE STATISTICS ステートメントは簡単に使用できます。 このステートメントはテーブルの *すべて* の統計を更新するので、必要以上の処理が実行される可能性があります。 パフォーマンスが問題でない場合は、これが、統計が最新の状態であることを保証する最も簡単で最も包括的な方法です。
 
 > [!NOTE]
-> テーブルのすべての統計を更新する場合、SQL プールでは、統計オブジェクトごとにテーブルのスキャンを実行してサンプリングします。 テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
+> テーブルのすべての統計を更新する場合、専用 SQL プールでは、統計オブジェクトごとにテーブルのスキャンを実行してサンプリングします。 テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
 
 `UPDATE STATISTICS` プロシージャの実装については、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。 実装方法は前述の `CREATE STATISTICS` プロシージャと若干異なりますが、結果は同じです。
 
@@ -549,7 +546,7 @@ DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されている
 ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。
 
 > [!NOTE]
-> SQL プールでは、統計オブジェクト内のデータを使用してカーディナリティ推定値を計算します。
+> 専用 SQL プールでは、統計オブジェクト内のデータを使用してカーディナリティ推定値を計算します。
 
 ### <a name="show-header-density-and-histogram"></a>ヘッダー、密度、ヒストグラムの表示
 
@@ -581,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() の相違点
 
-SQL Server に比べ、SQL プールでは、DBCC SHOW_STATISTICS() がより厳密に実装されています。
+SQL Server に比べ、専用 SQL プールでは、DBCC SHOW_STATISTICS() がより厳密に実装されています。
 
 - ドキュメントに記載されていない機能はサポートされていません。
 - Stats_stream は使用できません。

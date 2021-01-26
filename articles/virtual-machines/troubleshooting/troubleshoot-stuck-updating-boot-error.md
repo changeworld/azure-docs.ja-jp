@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084020"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734567"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM の起動が Windows Update で停止する
 
@@ -58,7 +58,7 @@ ms.locfileid: "86084020"
     dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
     ```
 
-5. C:\temp\Patch_level.txt ファイルを開き、下から順に読み取ります。 **インストールの保留中**または**アンインストールの保留中**状態にある更新プログラムを特定します。  更新状態のサンプルを次に示します。
+5. C:\temp\Patch_level.txt ファイルを開き、下から順に読み取ります。 **インストールの保留中** または **アンインストールの保留中** 状態にある更新プログラムを特定します。  更新状態のサンプルを次に示します。
 
     ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -80,4 +80,4 @@ ms.locfileid: "86084020"
     > [!NOTE] 
     > パッケージのサイズに応じて、DISM ツールではアンインストールの処理に時間がかかります。 通常、プロセスは 16 分以内に完了します。
 
-7. [OS ディスクを切断して、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk)。 その後、問題が解決されているかどうかを確認します。
+7. [OS ディスクを切断して、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk)。 その後、問題が解決されているかどうかを確認します。

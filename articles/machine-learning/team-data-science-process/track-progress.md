@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78a543fabadcc0d4e1766af1bc5c65aac0dadebe
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358927"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
 
@@ -46,7 +46,7 @@ Azure DevOps でダッシュボードとウィジェットの作成方法とカ�
 
 - **バーンアップ チャート**には、スプリントの作業量の合計と比較して、完了した作業が示されます。
 
-![ダッシュボード](./media/track-progress/dashboard.png)
+![Azure DevOps ダッシュボードの例を示すスクリーンショット。](./media/track-progress/dashboard.png)
 
 ## <a name="next-steps"></a>次のステップ
 

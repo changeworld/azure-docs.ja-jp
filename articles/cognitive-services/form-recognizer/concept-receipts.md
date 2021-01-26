@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751973"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131452"
 ---
-# <a name="receipt-concepts"></a>レシートの概念
+# <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
-Azure Form Recognizer では、その事前構築済みモデルの 1 つを使用してレシートを分析できます。 レシート API では、英語で書かれたレシートから重要な情報 (マーチャント名、取引日時、合計金額、品目など) を抽出します。 
+Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 機能と、レシートを解釈するディープ ラーニング モデルを組み合わせて、英語のレシートから重要な情報を抽出します。 レシート API では、英語で書かれたレシートから重要な情報 (マーチャント名、取引日時、合計金額、品目など) を抽出します。 
 
 ## <a name="understanding-receipts"></a>レシートについて 
 
@@ -27,35 +27,49 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 これらのレシートからデータを自動的に抽出する処理は、一筋縄ではいかない可能性があります。 レシートがしわくちゃになっていて読み取るのが難しかったり、レシートの印刷または手書き部分やスマートフォン画像の品質が低かったりする場合があります。 また、レシートのテンプレートとフィールドは、市場、リージョン、マーチャントなどによって大きく変わることがあります。 データ抽出とフィールド検出の両方におけるこうした課題によって、レシート処理は独特の問題となっています。  
 
-光学式文字認識 (OCR) と事前構築済みレシート モデルを使用することにより、レシート API ではこうしたレシート処理シナリオが可能になり、レシートからマーチャント、チップ、合計、品目などのデータを抽出できます。 この API を使用すれば、モデルのトレーニングは不要となり、レシートを Analyze Receipt API に送信するだけで、データが抽出されます。
+光学式文字認識 (OCR) と事前構築済みレシート モデルを使用することにより、レシート API ではこうしたレシート処理シナリオが可能になり、レシートからマーチャント、チップ、合計、品目などのデータを抽出できます。 この API を使用すれば、モデルのトレーニングは不要となり、レシートの画像を Analyze Receipt API に送信するだけで、データが抽出されます。
 
-![レシートの例](./media/contoso-receipt-small.png)
+![レシートの例](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>レシート API の機能 
 
-事前構築済みのレシート API では、レシート (レストラン、小売業者、または食料品店で通常取得されるレシートの類) の内容を抽出します。
+## <a name="what-does-the-receipt-service-do"></a>レシート サービスの機能 
+
+事前構築済みのレシート サービスでは、レシート (レストラン、小売業者、または食料品店で通常取得されるレシートの類) の内容を抽出します。
 
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-* マーチャント名 
-* マーチャントの住所 
-* マーチャントの電話番号 
-* トランザクション日時 
-* トランザクション時間 
-* 小計 
-* 税 
-* 合計 
-* ヒント 
-* 品目の抽出 (品目数、品目の価格、品目名など)
+|名前| Type | 説明 | Text | 値 (標準化された出力) |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | string | 販売レシートの種類 | Itemized |  |
+| MerchantName | string | レシートを発行しているマーチャントの名前 | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | マーチャントの電話番号の一覧 | 987-654-3210 | +19876543210 |
+| MerchantAddress | string | マーチャントの住所の一覧 | 123 Main St Redmond WA 98052 |  |
+| TransactionDate | date | レシートが発行された日付 | June 06, 2019 | 2019-06-26  |
+| TransactionTime | time | レシートが発行された時刻 | 4:49 PM | 16:49:00  |
+| 合計 | 数値 | レシートの取引合計額 | $14.34 | 14.34 |
+| 小計 | 数値 | レシートの小計 (多くの場合、税金が適用される前) | $12.34 | 12.34 |
+| 税 | 数値 | レシートの税金 (多くの場合、消費税またはそれに相当する税金) | $2.00 | 2.00 |
+| ヒント | 数値 | 購入者によって追加されたチップ | $1.00 | 1.00 |
+| 項目 | オブジェクトの配列 | 抽出された品目 (名前、数量、単価、および合計価格) | |
+| 名前 | string | 項目名 | Surface Pro 6 | |
+| 数量 | 数値 | 各品目の数量 | 1 | |
+| 価格 | 数値 | 各品目単位の個別価格 | $999.00 | 999.00 |
+| 合計価格 | 数値 | 品目の合計価格 | $999.00 | 999.00 |
 
 ### <a name="additional-features"></a>その他の機能
 
 レシート API では、次の情報も返されます。
 
-* レシートの種類 (明細書、クレジット カードなど)
 * フィールドの信頼度 (各フィールドから関連付けられた信頼度の値が返されます)
 * OCR の未加工のテキスト (レシート全体の OCR 抽出テキスト出力)
 * 値、行、単語ごとの境界ボックス
+
+## <a name="try-it-out"></a>試してみる
+
+Form Recognizer レシート サービスを試すには、オンラインのサンプル UI ツールにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
 
 ## <a name="input-requirements"></a>入力の要件
 
@@ -64,7 +78,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 ## <a name="supported-locales"></a>サポート対象のロケール 
 
 * **事前構築済みレシート v2.0** (GA) では、EN-US ロケールでのレシートがサポートされています
-* **事前構築済みレシート v2.1-preview.1** (パブリック プレビュー) では、次の EN レシート ロケールのサポートが追加されています。 
+* **事前構築済みレシート v2.1-preview.2** (パブリック プレビュー) では、次の EN レシート ロケールのサポートが追加されています。 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -73,15 +87,12 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
   > [!NOTE]
   > 言語の入力 
   >
-  > 事前構築済みレシート v2.1-preview.1 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.1 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
-  
- ### <a name="input-requirements"></a>入力要件 
+  > 事前構築済みレシート v2.1-preview.2 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.2 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>Analyze Receipt の操作
 
-[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) では、レシートの画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) では、レシートの画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
@@ -89,7 +100,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Get Analyze Receipt Result の操作
 
-2 番目の手順では、[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult) 操作を呼び出します。 この操作では、Analyze Receipt 操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) 操作を呼び出します。 この操作では、Analyze Receipt 操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -440,7 +451,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 事業経費のファイリングでは、多くの場合、レシートの画像からデータを手動で入力することに時間を費やす必要があります。 レシート API があれば、抽出されたフィールドを使用して、このプロセスを部分的に自動化し、レシートをすばやく分析することができます。  
 
-レシート API には単純な JSON 出力があるため、抽出されたフィールド値をさまざまな方法で使用できます。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。  
+レシート API には単純な JSON 出力があるため、抽出されたフィールド値をさまざまな方法で使用できます。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。  
 
 ### <a name="auditing-and-accounting"></a>監査と会計 
 
@@ -452,11 +463,13 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 レシートには、消費者の行動やショッピングの傾向を分析するために使用できる有益なデータが含まれています。
 
-また、レシート API は [AI Builder の領収書処理機能](https://docs.microsoft.com/ai-builder/prebuilt-receipt-processing)にも採用されています。
+また、レシート API は [AI Builder の領収書処理機能](/ai-builder/prebuilt-receipt-processing)にも採用されています。
 
 ## <a name="next-steps"></a>次のステップ
 
-- クイックスタートに従って、[Python でのレシート API のクイックスタート](./quickstarts/python-receipts.md)を開始します。
-- [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api) について学習します。
-- [Form Recognizer](overview.md) の詳細を確認します。
+- 選択した言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
+## <a name="see-also"></a>関連項目
+
+* [Form Recognizer とは](./overview.md)
+* [REST API リファレンス ドキュメント](./index.yml)

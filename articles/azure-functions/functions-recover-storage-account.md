@@ -3,12 +3,12 @@ title: Azure Functions ランタイムに到達できないエラーのトラブ
 description: 無効なストレージ アカウントのトラブルシューティング方法について説明します。
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385859"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579013"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>"Azure Functions ランタイムに到達できない" エラーのトラブルシューティング
 
@@ -36,7 +36,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 * 必須:
     * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
-* 従量課金プラン関数には必須:
+* 従量課金および Premium プランの関数には必須:
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
     * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
@@ -64,7 +64,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 日ごとの実行クォータが構成されている場合、関数アプリは一時的に無効になり、これにより、多くのポータル コントロールが使用できなくなります。 
 
-[Azure portal](https://portal.azure.com) でクォータを確認するには、関数アプリで **[プラットフォーム機能]**  >  **[関数アプリの設定]** を選択します。 設定した**日ごとの使用量クォータ**を超えている場合は、次のメッセージが表示されます。
+[Azure portal](https://portal.azure.com) でクォータを確認するには、関数アプリで **[プラットフォーム機能]**  >  **[関数アプリの設定]** を選択します。 設定した **日ごとの使用量クォータ** を超えている場合は、次のメッセージが表示されます。
 
   > "関数アプリは日ごとの使用量クォータに達したため、次の 24 時間の時間枠まで停止しています。"
 
@@ -76,7 +76,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 * 関数アプリが[内部で負荷分散された App Service Environment](../app-service/environment/create-ilb-ase.md) 内でホストされ、受信インターネット トラフィックをブロックするように構成されている。
 
-* 関数アプリに、インターネット アクセスをブロックするように構成されている[受信 IP 制限](functions-networking-options.md#inbound-ip-restrictions)が設けられている。 
+* 関数アプリに、インターネット アクセスをブロックするように構成されている[受信 IP 制限](functions-networking-options.md#inbound-access-restrictions)が設けられている。 
 
 Azure portal は、実行中のアプリに対して直接呼び出しを行い、関数の一覧を取得します。また、Kudu エンドポイントに対して HTTP 呼び出しを行います。 プラットフォームレベルの設定は、 **[プラットフォーム機能]** タブで引き続き使用できます。
 

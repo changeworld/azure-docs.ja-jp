@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e7550d0f997182b3938285f1d0a360a31bf05177
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013182"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207463"
 ---
 # <a name="z-fighting-mitigation"></a>Z ファイティングの軽減
 
@@ -21,9 +21,9 @@ ms.locfileid: "89013182"
 
 |状況                        | 結果                               |
 |---------------------------------|:-------------------------------------|
-|通常の Z ファイティング               |![Z ファイティング](./media/zfighting-0.png)|
-|Z ファイティングの軽減が有効    |![Z ファイティング](./media/zfighting-1.png)|
-|チェッカーボードの強調表示が有効|![Z ファイティング](./media/zfighting-2.png)|
+|通常の Z ファイティング               |![赤と緑のクアッドの間に決定的な優先順位はありません](./media/zfighting-0.png)|
+|Z ファイティングの軽減が有効    |![赤いクアッドが優先されます](./media/zfighting-1.png)|
+|チェッカーボードの強調表示が有効|![チェッカーボード パターンでの赤と緑のクアッドの切り替え設定](./media/zfighting-2.png)|
 
 次のコードでは、Z ファイティングの軽減を有効にしています。
 
@@ -53,7 +53,6 @@ void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
 }
 ```
 
-
 > [!NOTE]
 > Z ファイティングの軽減は、レンダリングされるすべてのメッシュに影響を与えるグローバル設定です。
 
@@ -76,6 +75,11 @@ Z ファイティングの軽減は、最大限可能な対策として提供さ
 
 * Z ファイティングの軽減を有効にした場合、パフォーマンスのオーバーヘッドはほとんど発生しません。
 * さらに Z ファイティングのオーバーレイを有効にすると、かなりのパフォーマンスのオーバーヘッドが発生します。ただし、これはシーンによって異なる場合があります。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RemoteManager.ZFightingMitigationSettings プロパティ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C++ RemoteManager::ZFightingMitigationSettings()](/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>次のステップ
 

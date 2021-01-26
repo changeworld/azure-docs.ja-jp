@@ -11,17 +11,17 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
+- devx-track-js
 - devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: f6ac83a0fc32b426a914b76d27c2920ff8ce6731
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500250"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572679"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT Hub との接続をテストする
 
@@ -36,15 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * クラウドからデバイスへの接続を確認する
 > * デバイス ツインの同期を確認する
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルで実行する CLI スクリプトでは、[Microsoft Azure IoT Extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) を使用します。 この拡張機能をインストールするには、次の CLI コマンドを実行します。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -80,7 +72,7 @@ node --version
 
 ![新しいデバイスを追加する](media/tutorial-connectivity/add-device.png)
 
-**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でその接続文字列をクリックし、 **[接続文字列 - 主キー]** の値をコピーします。 接続文字列には、デバイスの*共有アクセス キー*が含まれています。
+**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でその接続文字列をクリックし、 **[接続文字列 - 主キー]** の値をコピーします。 接続文字列には、デバイスの *共有アクセス キー* が含まれています。
 
 ![デバイス接続文字列を取得する](media/tutorial-connectivity/copy-connection-string.png)
 
@@ -273,4 +265,4 @@ IoT Hub が必要でなくなった場合は、ポータルを使用して IoT H
 このチュートリアルでは、デバイス キーを確認し、デバイスからクラウドへの接続を確認し、クラウドからデバイスへの接続を確認し、デバイスのツイン同期を確認する方法を確認しました。 IoT Hub を監視する方法の詳細については、IoT Hub の監視方法に関する記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [診断を使用した監視](iot-hub-monitor-resource-health.md)
+> [IoT Hub の監視](monitor-iot-hub.md)

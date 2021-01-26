@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360182"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973458"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell モジュールを使用した Azure AD 接続性のトラブルシューティング
 
@@ -25,7 +25,7 @@ ADConnectivity ツールは、次のいずれかの場合に使用される Powe
 - インストール時、ネットワーク接続に問題があるために、ユーザーがウィザード上で入力した Active Directory 資格情報を検証できません。
 - インストール後、ユーザーが PowerShell セッションから関数を呼び出した場合。
 
-このツールの場所は**C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** です 
+このツールの場所は **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** です 
 
 ## <a name="adconnectivitytool-during-installation"></a>インストール時の ADConnectivityTool
 
@@ -56,7 +56,7 @@ Azure AD Connect がインストールされた後、ADConnectivityTools PowerSh
 
 ### <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-この関数を呼び出す理由は、ADConnectivityTool.psm1 を PowerShell にインポートした後では、この関数は手動で**しか**呼び出せないためです。 
+この関数を呼び出す理由は、ADConnectivityTool.psm1 を PowerShell にインポートした後では、この関数は手動で **しか** 呼び出せないためです。 
 
 この関数によって実行されるロジックは、指定された AD 資格情報を検証するために Azure AD Connect ウィザードによって実行されるロジックと同じです。  ただし、問題と推奨されている解決方法に関する、より詳細な説明が提供されます。 
 

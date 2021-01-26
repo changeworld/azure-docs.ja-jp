@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684383"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91330912"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM 用 Azure Monitor を使用してパフォーマンスをグラフ化する方法
 
@@ -21,7 +21,7 @@ VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行�
 Azure Monitor for VMs によるパフォーマンス コレクションの制限事項を次に示します。
 
 - Red Hat Linux (RHEL) 6 を実行する仮想マシンでは、**使用可能なメモリ**をご利用いただけません。 このメトリックは、[カーネル バージョン 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) で導入された **MemAvailable** から計算されます。
-- メトリックは、EXT ファイルシステム ファミリ (EXT2、EXT3、EXT4) を使用して、Linux 仮想マシン上のデータ ディスクに対してのみ使用できます。
+- メトリックは、XFS ファイル システムまたは EXT ファイルシステム ファミリ (EXT2、EXT3、EXT4) を使用して、Linux 仮想マシン上のデータ ディスクに対してのみ使用できます。
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Monitor からのマルチ VM のパースペクティブ
 

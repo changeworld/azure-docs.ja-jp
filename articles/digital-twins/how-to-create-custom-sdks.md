@@ -7,27 +7,27 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: devx-track-js
+ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855949"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051566"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
-現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#) 用のものです。 .NET SDK と一般的な API については、「[*Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)」を参照してください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自のデータ プレーン SDK を生成する方法について説明します。
+現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#)、JavaScript、および Java を対象としています。 これらの SDK と一般的な API については、「["*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自のデータ プレーン SDK を生成する方法について説明します。
 
 >[!NOTE]
-> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく[コントロール プレーンの Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)を使用して、この記事の手順を実行します。
+> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく、[コントロール プレーンの Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/)の最新 **コントロール プレーン Swagger** (OpenAPI) ファイルを使用して、この記事の手順を行います。
 
 ## <a name="set-up-your-machine"></a>コンピューターをセットアップする
 
 SDK を生成するには、次のものが必要です。
 * [AutoRest](https://github.com/Azure/autorest)、バージョン 2.0.4413 (バージョン 3 は現在サポートされていません)
 * [Node.js](https://nodejs.org) (AutoRest の前提条件として)
-* Azure Digital Twins [データ プレーン Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) (*digitaltwins.json* という名前)、および例を含む付属のフォルダー。 ローカル コンピューターに Swagger ファイルと例のフォルダーをダウンロードします。
+* [データ プレーンの Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新 Azure Digital Twins **データ プレーン Swagger** (OpenAPI) ファイル、および例を含む付属のフォルダー。  ローカル コンピューターに Swagger ファイル (*digitaltwins.json*) と例のフォルダーをダウンロードします。
 
 お使いのコンピューターに上記の一覧にあるものがすべて備わったら、AutoRest を使用して SDK を作成することができます。
 
@@ -99,17 +99,7 @@ SDK でエラーが発生するたびに (404 などの HTTP エラーを含む)
 
 ツインの追加を試み、この処理で発生するエラーをキャッチするコード スニペットを次に示します。
 
-```csharp
-try
-{
-    await client.DigitalTwins.AddAsync(id, initData);
-    Console.WriteLine($"Created a twin successfully: {id}");
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_errorHandling":::
 
 ### <a name="paging"></a>Paging
 
@@ -117,77 +107,15 @@ AutoRest では、SDK に対して 2 種類のページング パターンが生
 * クエリ API を除くすべての API 向け
 * クエリ API 向け
 
-クエリ以外のページング パターンでは、それぞれの呼び出しに 2 つのバージョンがあります。
-* 最初の呼び出しを行うバージョン (`DigitalTwins.ListEdges()` など)
-* 次のページを取得するためのバージョン。 これらの呼び出しには、"Next" というサフィックスが付いています (`DigitalTwins.ListEdgesNext()`)
+非クエリのページング パターンでは、次のサンプル メソッドは、Azure Digital Twins から外部へのリレーションシップの一覧をページ単位で取得する方法を示しています。
 
-次のコード スニペットは、Azure Digital Twins から外部へのリレーションシップの一覧をページ単位で取得する方法を示しています。
-```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
-    {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
-    }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 2 番目のパターンは、クエリ API に対してのみ生成されます。 `continuationToken` が明示的に使用されます。
 
 このパターンの使用例を次に示します。
 
-```csharp
-string query = "SELECT * FROM digitaltwins";
-string conToken = null; // continuation token from the query
-int page = 0;
-try
-{
-    // Repeat the query while there are pages
-    do
-    {
-        QuerySpecification spec = new QuerySpecification(query, conToken);
-        QueryResult qr = await client.Query.QueryTwinsAsync(spec);
-        page++;
-        Console.WriteLine($"== Query results page {page}:");
-        if (qr.Items != null)
-        {
-            // Query returns are JObjects
-            foreach(JObject o in qr.Items)
-            {
-                string twinId = o.Value<string>("$dtId");
-                Console.WriteLine($"  Found {twinId}");
-            }
-        }
-        Console.WriteLine($"== End query results page {page}");
-        conToken = qr.ContinuationToken;
-    } while (conToken != null);
-} catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error in twin query: ${e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="PagedQuery":::
 
 ## <a name="next-steps"></a>次のステップ
 

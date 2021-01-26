@@ -3,16 +3,16 @@ title: クイック スタート:Azure Monitor Application Insights を使用し
 description: Azure Monitor Application Insights で監視する Node.js Web アプリを迅速にセットアップする手順を説明します
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: e5fc7c71c1ced4542f00fe862699442c6b43bc69
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077307"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210360"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -50,7 +50,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="configure-appinsights-sdk"></a>AppInsights SDK を構成する
 
-1. **[概要]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
+1. **[概要]** を選択し、アプリケーションの **インストルメンテーション キー** をコピーします。
 
    ![Application Insights のインストルメンテーション キーを表示する](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
+3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーション分析情報のインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -74,7 +74,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Azure Portal で監視を開始する
 
-1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
+1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の **概要** ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
    ![Application Insights の概要メニュー](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
@@ -82,7 +82,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights のアプリケーション マップ](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![Application Insights Analytics のグラフ](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -90,7 +90,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights の正常性の概要に関するタイムライン グラフ](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
-   **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
+   **[ページ ビューの読み込み時間]** グラフに **クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
    ```HTML
    <!-- 

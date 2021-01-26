@@ -4,20 +4,50 @@
   items:
     - name: ExpressRoute とは何ですか。
       href: expressroute-introduction.md
-- name: クイック スタート
+- name: クイックスタート
   items:
+    - name: ExpressRoute 回線の作成 - Portal
+      href: expressroute-howto-circuit-portal-resource-manager.md
+    - name: ExpressRoute 回線の作成 - PowerShell
+      href: expressroute-howto-circuit-arm.md
+    - name: ExpressRoute 回線の作成 - CLI
+      href: howto-circuit-cli.md
     - name: ExpressRoute 回線の作成 - ARM テンプレート
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: 回線の作成と変更
-      href: expressroute-howto-circuit-portal-resource-manager.md
     - name: ピアリング構成の作成と変更
-      href: expressroute-howto-routing-portal-resource-manager.md
+      items:
+        - name: Azure portal
+          href: expressroute-howto-routing-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-routing-arm.md
+        - name: Azure CLI
+          href: howto-routing-cli.md
+    - name: ExpressRoute の仮想ネットワーク ゲートウェイを構成する
+      items:
+        - name: Azure portal
+          href: expressroute-howto-add-gateway-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-gateway-resource-manager.md
     - name: ExpressRoute 回線への仮想ネットワークのリンク
-      href: expressroute-howto-linkvnet-portal-resource-manager.md
+      items:
+        - name: Azure portal
+          href: expressroute-howto-linkvnet-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-linkvnet-arm.md
+        - name: Azure CLI
+          href: howto-linkvnet-cli.md
     - name: Microsoft ピアリングにルート フィルターを構成する
-      href: how-to-routefilter-portal.md
+      items:
+        - name: Azure portal
+          href: how-to-routefilter-portal.md
+        - name: Azure PowerShell
+          href: how-to-routefilter-powershell.md
+        - name: Azure CLI
+          href: how-to-routefilter-cli.md
 - name: 概念
   items:
     - name: リモート作業
@@ -26,20 +56,24 @@
           href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
         - name: リモート ユーザー向けのハイブリッド接続
           href: work-remotely-support.md
-    - name: 接続モデル
-      href: expressroute-connectivity-models.md
+    - name: ExpressRoute の使用を開始する前に
+      items:
+        - name: 前提条件
+          href: expressroute-prerequisites.md
+        - name: 接続モデル
+          href: expressroute-connectivity-models.md
+        - name: Workflows
+          href: expressroute-workflows.md
+        - name: ルーティングの要件
+          href: expressroute-routing.md
     - name: 場所とパートナー
       items:
         - name: 場所別のプロバイダー
           href: expressroute-locations-providers.md
         - name: プロバイダー別の場所
           href: expressroute-locations.md
-    - name: 前提条件
-      href: expressroute-prerequisites.md
-    - name: Workflows
-      href: expressroute-workflows.md
-    - name: ルーティングの要件
-      href: expressroute-routing.md
+    - name: ExpressRoute の FAQ
+      href: expressroute-faqs.md
     - name: 回線とピアリング
       items:
         - name: 回線とピアリングについて
@@ -48,10 +82,8 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: クラシックから Resource Manager への回線の移行
           href: expressroute-move.md
-    - name: ExpressRoute 経由での BFD
-      href: expressroute-bfd.md
-    - name: QoS の要件
-      href: expressroute-qos.md
+    - name: ExpressRoute ゲートウェイについて
+      href: expressroute-about-virtual-network-gateways.md
     - name: ExpressRoute FastPath について
       href: about-fastpath.md
     - name: ExpressRoute Direct について
@@ -60,28 +92,20 @@
       href: expressroute-global-reach.md
     - name: ExpressRoute の暗号化について
       href: expressroute-about-encryption.md
-    - name: セキュリティ
+    - name: Azure をパブリック クラウドに接続する
+      href: expressroute-connect-azure-to-public-cloud.md
+    - name: ネットワーク間接続
+      href: cross-network-connectivity.md
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
-        - name: セキュリティ属性
-          href: expressroute-security-controls.md
-    - name: 仮想ネットワーク ゲートウェイについて
-      href: expressroute-about-virtual-network-gateways.md
-    - name: Azure をパブリック クラウドに接続する
-      href: expressroute-connect-azure-to-public-cloud.md
-    - name: バックエンド接続の相互運用性
-      items:
-        - name: 前書きとテスト セットアップ
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: テスト セットアップの構成
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: コントロール プレーンの分析
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: データ プレーンの分析
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
-    - name: ネットワーク間接続
-      href: cross-network-connectivity.md
+    - name: セキュリティ属性
+      href: ./security-baseline.md
+    - name: ExpressRoute 経由での BFD
+      href: expressroute-bfd.md
+    - name: QoS の要件
+      href: expressroute-qos.md
     - name: 高可用性 - 設計
       href: designing-for-high-availability-with-expressroute.md
     - name: ディザスター リカバリー - 計画
@@ -92,87 +116,26 @@
           href: use-s2s-vpn-as-backup-for-expressroute-privatepeering.md
 - name: 操作方法ガイド
   items:
-    - name: 回線の作成と変更
+    - name: ExpressRoute Direct を構成する
       items:
-        - name: Azure portal
-          href: expressroute-howto-circuit-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-circuit-arm.md
-        - name: Azure CLI
-          href: howto-circuit-cli.md
-        - name: Azure Resource Manager テンプレート
-          displayName: 'ARM,resource manager template'
-          href: expressroute-howto-circuit-resource-manager-template.md
-    - name: ピアリング構成の作成と変更
-      items:
-        - name: Azure portal
-          href: expressroute-howto-routing-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-routing-arm.md
-        - name: Azure CLI
-          href: howto-routing-cli.md
-    - name: ExpressRoute 回線への仮想ネットワークのリンク
-      items:
-        - name: Azure portal
-          href: expressroute-howto-linkvnet-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-linkvnet-arm.md
-        - name: Azure CLI
-          href: howto-linkvnet-cli.md
-    - name: 回線を介したトラフィックの暗号化
-      items:
-        - name: Microsoft ピアリング経由のサイト間 VPN を構成する
-          href: site-to-site-vpn-over-microsoft-peering.md
-        - name: Windows ホスト用の IPsec トランスポート モードを構成する
-          href: expressroute-howto-ipsec-transport-private-windows.md
+        - name: ExpressRoute Direct を構成する
+          items:
+            - name: Azure portal
+              href: how-to-expressroute-direct-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-erdirect.md
+            - name: Azure CLI
+              href: expressroute-howto-expressroute-direct-cli.md
+        - name: ExpressRoute Direct ポート用に MACsec を構成する
+          href: expressroute-howto-macsec.md
     - name: ExpressRoute Global Reach を構成する
       items:
+        - name: Azure portal
+          href: expressroute-howto-set-global-reach.md
         - name: Azure PowerShell
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
-    - name: ExpressRoute の仮想ネットワーク ゲートウェイを構成する
-      items:
-        - name: Azure portal
-          href: expressroute-howto-add-gateway-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-add-gateway-resource-manager.md
-    - name: ExpressRoute 接続とサイト間接続の共存を構成する
-      href: expressroute-howto-coexist-resource-manager.md
-    - name: ExpressRoute Direct を構成する
-      items:
-        - name: Azure portal
-          href: how-to-expressroute-direct-portal.md
-        - name: Azure PowerShell
-          href: expressroute-howto-erdirect.md
-        - name: Azure CLI
-          href: expressroute-howto-expressroute-direct-cli.md
-    - name: ExpressRoute Direct ポート用に MACsec を構成する
-      href: expressroute-howto-macsec.md
-    - name: Microsoft ピアリングにルート フィルターを構成する
-      items:
-        - name: Azure portal
-          href: how-to-routefilter-portal.md
-        - name: Azure PowerShell
-          href: how-to-routefilter-powershell.md
-        - name: Azure CLI
-          href: how-to-routefilter-cli.md
-    - name: ピアリングの有効化と無効化
-      href: expressroute-howto-reset-peering.md
-    - name: パブリック ピアリングから Microsoft ピアリングに移行する
-      href: how-to-move-peering.md
-    - name: 回線をクラシックから Resource Manager に移行する
-      href: expressroute-howto-move-arm.md
-    - name: 仮想ネットワークをクラシックから Resource Manager に移行する
-      href: expressroute-migration-classic-resource-manager.md
-    - name: Azure Availability Zones でのゾーン冗長 VNet ゲートウェイの作成
-      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
-    - name: ExpressRoute のルーターの構成
-      items:
-        - name: ルーターの構成
-          href: expressroute-config-samples-routing.md
-        - name: NAT のルーター構成サンプル
-          href: expressroute-config-samples-nat.md
     - name: 監視
       items:
         - name: ExpressRoute の監視、メトリック、およびアラート
@@ -181,24 +144,42 @@
           href: how-to-npm.md
         - name: カスタム アラートを構成して、アドバタイズされるルートを監視する
           href: how-to-custom-route-alert.md
-    - name: 従来および以前の記事
+    - name: ピアリングの管理
       items:
-        - name: 回線の変更
-          href: expressroute-howto-circuit-classic.md
-        - name: ピアリング構成の作成と変更
-          href: expressroute-howto-routing-classic.md
-        - name: ExpressRoute 回線への仮想ネットワークのリンク
-          href: expressroute-howto-linkvnet-classic.md
-        - name: ExpressRoute 接続と S2S 接続の共存の構成
-          href: expressroute-howto-coexist-classic.md
-        - name: VNet へのゲートウェイの追加
-          href: expressroute-howto-add-gateway-classic.md
-        - name: パブリック ピアリングの作成と変更
-          href: about-public-peering.md
+        - name: ピアリングの有効化と無効化
+          items:
+            - name: Azure portal
+              href: expressroute-howto-reset-peering-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-reset-peering.md
+        - name: パブリック ピアリングから Microsoft ピアリングに移行する
+          href: how-to-move-peering.md
+    - name: 回線を介したトラフィックの暗号化
+      items:
+        - name: Microsoft ピアリング経由のサイト間 VPN を構成する
+          href: site-to-site-vpn-over-microsoft-peering.md
+        - name: プライベート ピアリング経由の IPsec VPN
+          href: ../vpn-gateway/site-to-site-vpn-private-peering.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Windows ホスト用の IPsec トランスポート モードを構成する
+          href: expressroute-howto-ipsec-transport-private-windows.md
+    - name: 冗長性
+      items:
+        - name: ExpressRoute 接続とサイト間接続の共存を構成する
+          href: expressroute-howto-coexist-resource-manager.md
+        - name: Azure Availability Zones でのゾーン冗長 VNet ゲートウェイの作成
+          href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: コストの計画と管理
+      href: plan-manage-cost.md
+    - name: クラシックから Resource Manager への移行
+      items:
+        - name: 回線をクラシックから Resource Manager に移行する
+          href: expressroute-howto-move-arm.md
+        - name: 仮想ネットワークをクラシックから Resource Manager に移行する
+          href: expressroute-migration-classic-resource-manager.md
     - name: ベスト プラクティス
       items:
         - name: ネットワーク セキュリティとクラウド サービスのベスト プラクティス
-          href: ../best-practices-network-security.md
+          href: /azure/cloud-adoption-framework/reference/networking-vdc
         - name: ルーティングを最適化する
           href: expressroute-optimize-routing.md
         - name: 非対称ルーティング
@@ -224,16 +205,30 @@
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt586720'
+      href: /rest/api/expressroute/
     - name: REST (クラシック)
-      href: 'https://msdn.microsoft.com/library/azure/dn606310'
+      href: /previous-versions/azure/reference/dn606310(v=azure.100)
     - name: Resource Manager テンプレート
       displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: リソース
   items:
-    - name: ExpressRoute の FAQ
-      href: expressroute-faqs.md
+    - name: ExpressRoute のルーターの構成
+      items:
+        - name: ルーターの構成
+          href: expressroute-config-samples-routing.md
+        - name: NAT のルーター構成サンプル
+          href: expressroute-config-samples-nat.md
+    - name: バックエンド接続の相互運用性
+      items:
+        - name: 前書きとテスト セットアップ
+          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: テスト セットアップの構成
+          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: コントロール プレーンの分析
+          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: データ プレーンの分析
+          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: ケース スタディ
@@ -273,3 +268,17 @@
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/'
         - name: 回線のパブリック ピアリングの設定
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/'
+    - name: 従来および以前の記事
+      items:
+        - name: 回線の変更
+          href: expressroute-howto-circuit-classic.md
+        - name: ピアリング構成の作成と変更
+          href: expressroute-howto-routing-classic.md
+        - name: ExpressRoute 回線への仮想ネットワークのリンク
+          href: expressroute-howto-linkvnet-classic.md
+        - name: ExpressRoute 接続と S2S 接続の共存の構成
+          href: expressroute-howto-coexist-classic.md
+        - name: VNet へのゲートウェイの追加
+          href: expressroute-howto-add-gateway-classic.md
+        - name: パブリック ピアリングの作成と変更
+          href: about-public-peering.md

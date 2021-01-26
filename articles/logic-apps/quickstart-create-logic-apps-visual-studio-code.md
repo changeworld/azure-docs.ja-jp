@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 10/28/2020
+ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131482"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708993"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "87131482"
 
 これらのタスクは [Azure portal](https://portal.azure.com) と Visual Studio でも実行できますが、既にロジック アプリ定義を使い慣れていて、コードで直接作業する場合は、Visual Studio Code の方が迅速に作業を開始できます。 たとえば、既に作成されているロジック アプリを無効化、有効化、削除、更新することができます。 また、Visual Studio Code が実行されている開発プラットフォーム (Linux、Windows、Mac など) からロジック アプリと統合アカウントを操作することもできます。
 
-この記事では、基本的な概念に重点を置いた[クイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)と同じロジック アプリを作成できます。 Visual Studio Code では、ロジック アプリは次の例のようになります。
+この記事では、基本的な概念に重点を置いた[クイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)と同じロジック アプリを作成できます。 [Visual Studio でサンプル アプリを作成する方法について学習する](quickstart-create-logic-apps-with-visual-studio.md)ことも、[Azure コマンド ライン インターフェイス (Azure CLI) を使用してアプリを作成および管理する方法について学習する](quickstart-logic-apps-azure-cli.md)こともできます。 Visual Studio Code では、ロジック アプリは次の例のようになります。
 
 ![ロジック アプリのワークフロー定義の例](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "87131482"
    たとえば、次に示すのは、RSS トリガーと Office 365 Outlook アクションから始まるサンプル ロジック アプリ ワークフロー定義です。 通常、JSON 要素は各セクション内でアルファベット順に表示されます。 ただし、このサンプルでは、ロジック アプリのステップがデザイナーに表示される順序でこれらの要素を大まかに示しています。
 
    > [!IMPORTANT]
-   > このサンプル ロジック アプリの定義を再利用する場合は、@fabrikam.com などの Office 365 組織アカウントが必要です。 架空の電子メール アドレスを実際の電子メール アドレスに置き換えてください。 Outlook.com や Gmail など、別の電子メール コネクタを使用するには、`Send_an_email_action` アクションを、[Azure Logic Apps がサポートしている電子メール コネクタ](../connectors/apis-list.md)から入手できる同様のアクションに置き換えます。
+   > このサンプル ロジック アプリの定義を再利用する場合は、@fabrikam.com などの組織アカウントが必要です。 架空の電子メール アドレスを実際の電子メール アドレスに置き換えてください。 Outlook.com や Gmail など、別の電子メール コネクタを使用するには、`Send_an_email_action` アクションを、[Azure Logic Apps がサポートしている電子メール コネクタ](../connectors/apis-list.md)から入手できる同様のアクションに置き換えます。
    >
    > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 
    > Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 
@@ -224,7 +224,7 @@ Azure portal でロジック アプリを確認するには、次の手順を実
 
 ## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
 
-Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを*上書き*します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
+Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを *上書き* します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
 
 1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
 
@@ -263,7 +263,7 @@ Visual Studio Code では、既に Azure にデプロイされているロジッ
 
 1. 完了したら、変更を保存します。 ([ファイル] メニュー > [保存]、または Ctrl + S キーを押す)
 
-1. 変更内容をアップロードして Azure portal の既存のロジック アプリ*上書き*するように求められたら、 **[アップロード]** を選択します。
+1. 変更内容をアップロードして Azure portal の既存のロジック アプリ *上書き* するように求められたら、 **[アップロード]** を選択します。
 
    この手順では、[Azure portal](https://portal.azure.com) のロジック アプリのアップデートを発行します。
 
@@ -307,4 +307,4 @@ Visual Studio Code では、以前のバージョンのロジック アプリを
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Visual Studio でロジック アプリを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [Visual Studio Code でステートフルおよびステートレスなロジック アプリを作成する (プレビュー)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

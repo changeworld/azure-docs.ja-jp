@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 665bb89d929433db5868eff1c2a5d182d7a94d54
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800281"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336396"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
@@ -306,7 +306,7 @@ Elemental Live オンプレミス エンコーダーは、RTMP シグナル内�
 
 #### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>MPEG DASH MPD、単一期間、Adobe Simple モードのシグナルの例
 
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="dynamic" publishTime="2020-01-07T18:58:03Z" minimumUpdatePeriod="PT0S" timeShiftBufferDepth="PT58M56S" availabilityStartTime="2020-01-07T17:44:47Z" minBufferTime="PT7S">
@@ -357,14 +357,13 @@ Elemental Live オンプレミス エンコーダーは、RTMP シグナル内�
         </AdaptationSet>
     </Period>
 </MPD>
-~~~
-
+```
 
 #### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>EXT-X-CUE タグを使用した HLS プレイリスト、Adobe Simple モードのシグナルの例 (簡潔さのために"..." で切り捨てられています)
 
 次の例は、Adobe "シンプル" モードのシグナルとレガシ [Adobe-Primetime] EXT-X-CUE タグを使用した RTMP 取り込みストリームの、Media Services ダイナミック パッケージャーからの出力を示しています。  
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:8
 #EXT-X-MEDIA-SEQUENCE:0
@@ -401,8 +400,7 @@ Fragments(video=1583487999666666,format=m3u8-aapl-v8)
 #EXTINF:6.400000,no-desc
 Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 ...
-
-~~~
+```
 
 ### <a name="216-cancellation-and-updates"></a>2.1.6 キャンセルと更新
 
@@ -506,7 +504,7 @@ MediaDataBox ("mdat") ボックスは次のような形式で**なければな�
 StreamIndex には "DATA" の Subtype が**なければならず**、CustomAttributes には Name="Schema" かつ Value="urn:scte:scte35:2013:bin" の Attribute が含まれ**なければなりません**。
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>base64 でエンコードされた [SCTE-35] splice_info_section() を示す Smooth クライアントのマニフェストの例
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" TimeScale="10000000" IsLive="true" Duration="0"
   LookAheadFragmentCount="2" DVRWindowLength="6000000000">
@@ -542,7 +540,7 @@ StreamIndex には "DATA" の Subtype が**なければならず**、CustomAttri
     </c>
   </StreamIndex>
 </SmoothStreamingMedia>
-~~~
+```
 
 ## <a name="32-apple-hls-manifest-decoration"></a>3.2 Apple HLS マニフェストの装飾
 
@@ -567,7 +565,7 @@ The **RECOMMENDED** approach in Azure Media Services (version 3 API) is to follo
 
 次の Media Services ダイナミック パッケージャーからの HLS マニフェスト出力の例は、[Adobe-Primetime] の SCTE35 モードの EXT-X-CUE タグを示しています。 
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:8
 #EXT-X-MEDIA-SEQUENCE:0
@@ -719,7 +717,7 @@ Fragments(video=28513485,format=m3u8-aapl-v8)
 #EXTINF:1.501500,no-desc
 Fragments(video=28648620,format=m3u8-aapl-v8)
 
-~~~
+```
 
 
 <!---
@@ -949,7 +947,7 @@ HLS プレーヤーのアプリケーション レイヤーは、TYPE を使っ�
 --->
 
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-PLAYLIST-TYPE:VOD
@@ -1008,7 +1006,7 @@ Fragments(video=4011692972,format=m3u8-aapl)
 #EXTINF:8.008000,no-desc
 Fragments(video=4011702982,format=m3u8-aapl)
 
-~~~
+```
 
 ### <a name="324-hls-message-handling-for-adobe-primetime-ext-x-cue"></a>3.2.4 Adobe Primetime EXT-X-CUE 向けの HLS メッセージ処理
 
@@ -1065,7 +1063,7 @@ EventStream 要素には次の属性があります。
 
 次の例は、Adobe "シンプル" モードのシグナル通知を使用した RTMP ストリームの、Media Services ダイナミック パッケージャーからの EventStream の抜粋を示しています。
 
-~~~ xml
+```xml
 <!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
     <EventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal" timescale="10000000">
         <Event presentationTime="1583497601000000" duration="300000000" id="1085900"/>
@@ -1080,7 +1078,7 @@ EventStream 要素には次の属性があります。
         <Event presentationTime="1583527306666666" duration="300000000" id="4056466"/>
         <Event presentationTime="1583530607333333" duration="300000000" id="4386533"/>
     </EventStream>
-~~~
+```
 
 
 #### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 Adobe SCTE-35 モードを使用した RTMP ストリームの MPEG DASH .mpd マニフェストのシグナル通知の例
@@ -1089,7 +1087,7 @@ EventStream 要素には次の属性があります。
 
 [SCTE-214-1] に基づく xml+bin スタイルのシグナル通知を使用する EventStream 要素の例
 
-~~~ xml
+```xml
 
       <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
         <Event presentationTime="2595092444" duration="11011000" id="1002">
@@ -1103,7 +1101,7 @@ EventStream 要素には次の属性があります。
             </Signal>
         </Event>
       </EventStream>
-~~~
+```
 
 
 
@@ -1119,7 +1117,7 @@ EventStream 要素には次の属性があります。
 次の例は、Adobe "シンプル" モードの広告シグナル通知方法を使用したソース RTMP ストリームの、Media Services ダイナミック パッケージャーからの出力を示しています。 この出力は、"urn:com:adobe:dpi:simple:2015" に設定されている schemeIdUri と "simplesignal" に設定されている value プロパティを使用した EventStream を示す単一期間のマニフェストです。
 各シンプル シグナルは、Event 要素内に、受信したシンプル シグナルに基づいて設定された @presentationTime、@duration、および @id プロパティで示されます。
 
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" mediaPresentationDuration="PT28M1.680S" minBufferTime="PT3S">
@@ -1168,7 +1166,7 @@ EventStream 要素には次の属性があります。
     </Period>
 </MPD>
 
-~~~
+```
 
 <!---
 #### 3.3.3.2 Example MPEG DASH manifest (MPD) with multi-period, EventStream, using Adobe SCTE35 mode signaling
@@ -1322,10 +1320,10 @@ In this case, the output manifest is a multi-period DASH .mpd with an EventStrea
 
 
 #### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe Simple モードの InBandEvenStream エンティティの例
-~~~ xml
+```xml
 
       <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
-~~~
+```
 
 ### <a name="335-dash-message-handling"></a>3.3.5 DASH メッセージの処理
 

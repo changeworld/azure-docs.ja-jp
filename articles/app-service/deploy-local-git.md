@@ -5,13 +5,13 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77152994"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347780"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -31,9 +31,9 @@ ms.locfileid: "77152994"
   git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
   ```
 
-[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-with-kudu-build-server"></a>Kudu ビルド サーバーを使用してデプロイする
 
@@ -45,7 +45,7 @@ Kudu App Service ビルド サーバーを使用してアプリのローカル G
 
 ### <a name="get-the-deployment-url"></a>デプロイ URL を取得する
 
-既存のアプリのローカル Git デプロイを有効にするための URL を取得するには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) を実行します。 \<app-name> と \<group-name> を、アプリの名前とその Azure リソース グループの名前に置き換えます。
+既存のアプリのローカル Git デプロイを有効にするための URL を取得するには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) を実行します。 \<app-name> と \<group-name> を、アプリの名前とその Azure リソース グループの名前に置き換えます。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > Linux App Service プランを使用している場合は、--runtime python|3.7 パラメーターを追加する必要があります
 
 
-Git 対応アプリを新規に作成するには、Cloud Shell で `--deployment-local-git` パラメーターを指定して [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) を実行します。 \<app-name>、\<group-name>、\<plan-name> を、ご利用になる新しい Git アプリの名前、その Azure リソース グループの名前、およびその Azure App Service プランの名前に置き換えます。
+Git 対応アプリを新規に作成するには、Cloud Shell で `--deployment-local-git` パラメーターを指定して [`az webapp create`](/cli/azure/webapp#az-webapp-create) を実行します。 \<app-name>、\<group-name>、\<plan-name> を、ご利用になる新しい Git アプリの名前、その Azure リソース グループの名前、およびその Azure App Service プランの名前に置き換えます。
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
@@ -82,7 +82,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    
 1. `git push azure master` を使用して Azure リモートにプッシュします。 
    
-1. **[Git Credential Manager]** ウィンドウで、ご利用の Azure サインインパスワードではなく、ご利用の[デプロイ ユーザー パスワード](#configure-a-deployment-user)を入力します。
+1. **[Git Credential Manager]** ウィンドウで、ご利用の Azure サインインパスワードではなく、ご利用の [デプロイ ユーザー パスワード](#configure-a-deployment-user)を入力します。
    
 1. 出力結果を確認します。 MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。 
    
@@ -94,7 +94,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 - ご利用の Azure アカウントには、Azure Active Directory への書き込みを行うためのアクセス許可とサービスを作成するためのアクセス許可が必要です。 
   
-- ご利用の Azure アカウントには、Azure サブスクリプションの**所有者**ロールが必要です。
+- ご利用の Azure アカウントには、Azure サブスクリプションの **所有者** ロールが必要です。
 
 - ご自身が、使用する Azure DevOps プロジェクトの管理者である必要があります。
 
@@ -117,7 +117,7 @@ Azure Pipelines (プレビュー) を使用してアプリのローカル Git �
    > [!NOTE]
    > 既存の Azure DevOps 組織が一覧に表示されていない場合は、それをお使いの Azure サブスクリプションにリンクしなければならない場合があります。 詳細については、「[Define your CD release pipeline](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)」(CD リリース パイプラインを定義する) を参照してください。
    
-1. App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、 **[ステージングへのデプロイ]** ページが表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択して、 **[続行]** を選択します。
+1. App Service プランの [価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、 **[ステージングへのデプロイ]** ページが表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択して、 **[続行]** を選択します。
    
 1. **[概要]** ページで設定を確認して、 **[完了]** を選択します。
    
@@ -149,8 +149,8 @@ Git を使用して Azure の App Service アプリに発行すると、次の�
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|アプリが稼働していません。|Azure portal でアプリを起動します。 Web アプリが停止しているとき、Git デプロイは利用できません。|
 |`Couldn't resolve host 'hostname'`|'azure' リモートのアドレス情報が正しくありません。|`git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
-|`src refspec [branchname] does not match any.`|"azure" リモートの master 以外のブランチにプッシュしようとしました。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|メイン ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
+|`src refspec [branchname] does not match any.`|"azure" リモートのメイン以外のブランチにプッシュしようとしました。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|このエラーは、HTTPS 経由で大規模な Git リポジトリをプッシュしようとした場合に発生する可能性があります。|ローカル コンピューター上の Git 構成を変更して `postBuffer` を増やします。 (例: `git config --global http.postBuffer 524288000`)。|
 |`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル**: `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 

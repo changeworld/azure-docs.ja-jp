@@ -7,20 +7,20 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
-ms.date: 06/18/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213008"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116077"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>クイック スタート:COPY ステートメントを使用してデータを一括読み込みする
 
-このクイックスタートでは、シンプルで柔軟性の高い [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)による高スループットのデータ インジェストを使用して、SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
+このクイックスタートでは、高スループットのデータ インジェストを実現する、シンプルで柔軟性のある [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、専用 SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
 
 - さほど権限の高くないユーザーでもデータの読み込みを実行できます。データ ウェアハウスに対する厳格な CONTROL アクセス許可は不要です。
 - 単一の T-SQL ステートメントのみを活用でき、別途データベース オブジェクトを作成する必要はありません。
@@ -34,7 +34,7 @@ ms.locfileid: "85213008"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートでは、SQL プールが既に用意されていることを前提とします。 SQL プールが未作成である場合は、[「作成と接続」の「ポータル」](create-data-warehouse-portal.md)のクイックスタートを参照してください。
+このクイックスタートは、専用 SQL プールが既に用意されていることを前提としています。 専用 SQL プールが作成されていない場合は、[ポータルを使用した作成と接続](create-data-warehouse-portal.md)に関するクイックスタートを参照してください。
 
 ## <a name="set-up-the-required-permissions"></a>必要なアクセス許可を設定する
 
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>次のステップ
 
-- データ読み込みのベスト プラクティスについては、[データ読み込みのベスト プラクティス](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)に関するページを参照してください。
-- データ読み込みのリソースを管理する方法については、[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)に関するページを参照してください。 
+- データ読み込みのベスト プラクティスについては、[データ読み込みのベスト プラクティス](./guidance-for-loading-data.md)に関するページを参照してください。
+- データ読み込みのリソースを管理する方法については、[ワークロードの分離](./quickstart-configure-workload-isolation-tsql.md)に関するページを参照してください。

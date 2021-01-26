@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815931"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575008"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -25,7 +25,7 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure Syn
 
 この記事では、DSVM を使用してデータ サイエンス タスクを実行したり、他の Azure サービスとやりとりしたりする方法について説明します。 DSVM では次のことを実行できます。
 
-- Jupyter ノートブックを使用して、Python 2、Python 3、Microsoft R を使用して、ご自分のデータをブラウザーで実験します (Microsoft R は、パフォーマンスを考慮して設計された、エンタープライズ対応の R バージョンです)。
+- Jupyter Notebook を使用し、Python 2、Python 3、Microsoft R を使用してご自分のデータをブラウザーで実験します。 (Microsoft R は、パフォーマンスを考慮して設計された、エンタープライズ対応の R バージョンです)。
 - DSVM 上で Microsoft Machine Learning Server および Python を使用してデータの探索およびモデルの開発をローカルで行います。
 - Azure portal または PowerShell を使用して Azure リソースを管理します。
 - ご利用の DSVM にマウント可能なドライブとして Azure Files 共有を作成することによってストレージ スペースを拡張し、大規模なデータセット/コードをチーム全体で共有します。
@@ -49,7 +49,7 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure Syn
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-## <a name="use-jupyter-notebooks"></a>Jupyter Notebook の使用
+## <a name="use-jupyter-notebooks"></a>Jupyter Notebook を使用する
 Jupyter Notebook には、データ探索とモデリング用のブラウザーベースの IDE が用意されています。 Jupyter Notebook では Python 2、Python 3、R (オープン ソースおよび Microsoft R Server の両方) のいずれを使用することもできます。
 
 Jupyter Notebook を開始するには、 **[スタート]** メニューまたはデスクトップで **[Jupyter Notebook]** アイコンを選択します。 また、DSVM コマンド プロンプトで既存の Notebook が配置されているディレクトリ、または新しいノートブックを作成するディレクトリから、コマンド ```jupyter notebook``` を実行することもできます。  
@@ -79,9 +79,9 @@ Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能が�
 1. 説明を入力し、環境プレフィックス パス (Anaconda Python 2.7 の場合は **c:\anaconda\envs\python2**) を設定します。
 1. **[自動検出]**  >  **[適用]** の順に選択して環境を保存します。
 
-Python 環境の作成方法の詳細については、[PTVS のドキュメント](https://aka.ms/ptvsdocs)を参照してください。
+Python 環境の作成方法の詳細については、[PTVS のドキュメント](/visualstudio/python/)を参照してください。
 
-これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]**  >  **[Python]** の順に移動し、作成する Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、 **[Python 環境]** を右クリックして、 **[Python 環境の追加/削除]** を選択します。 PTVS の操作方法の詳細については、製品の[製品のドキュメント](https://aka.ms/ptvsdocs)を参照してください。
+これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]**  >  **[Python]** の順に移動し、作成する Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、 **[Python 環境]** を右クリックして、 **[Python 環境の追加/削除]** を選択します。 PTVS の操作方法の詳細については、製品の[製品のドキュメント](/visualstudio/python/)を参照してください。
 
 
 
@@ -91,7 +91,7 @@ DSVM では、仮想マシン上でローカルに分析ソリューションを
 Azure サブスクリプションとクラウド リソースを管理するには、次の 2 つの方法があります。
 + Web ブラウザーを使用して、[Azure portal](https://portal.azure.com) に移動します。
 
-+ PowerShell スクリプトを使用します。 Azure PowerShell は、デスクトップ上のショートカットから、または **[スタート]** メニューから実行します。 詳細については、[Microsoft Azure PowerShell のドキュメント](../../powershell-azure-resource-manager.md)を参照してください。 
++ PowerShell スクリプトを使用します。 Azure PowerShell は、デスクトップ上のショートカットから、または **[スタート]** メニューから実行します。 詳細については、[Microsoft Azure PowerShell のドキュメント](../../azure-resource-manager/management/manage-resources-powershell.md)を参照してください。 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>共有ファイル システムを使用してストレージを拡張する
 データ サイエンティストは、大きなデータセットやコードなどのリソースをチーム内で共有することができます。 DSVM には約 45 GB の使用可能な領域があります。 ご利用のストレージを拡張するには、Azure Files を使用できます。これを 1 つまたは複数の DSVM インスタンスにマウントするか、または REST API 経由でアクセスします。 また、[Azure portal](../../virtual-machines/windows/attach-managed-disk-portal.md) を使用するか、または [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) を使用して、専用の追加データ ディスクを追加することも可能です。 
@@ -162,8 +162,8 @@ Azure Blob Storage は、大規模データにも小規模データにも対応�
 
    ![Azure portal でのストレージ アカウント作成プロセスのスクリーンショット](./media/vm-do-ten-things/create-azure-blob.png)
 
-* コマンドライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` にプレインストールされていることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数上にあるので、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)を参照してください。
-* Azure Storage Explorer ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
+* コマンドライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` にプレインストールされていることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数上にあるので、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy-v10.md)を参照してください。
+* Azure ストレージ エクスプローラー ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
 
    ![ストレージ アカウントにアクセスする Azure Storage Explorer のスクリーンショット](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -192,7 +192,7 @@ AzCopy コマンドを実行して Azure BLOB にコピーすると、対象フ�
 
 ![アップロードされた CSV ファイルを表示する、ストレージ アカウントのスクリーンショット](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>VM から Azure BLOB にデータを移動する: Azure Storage Explorer
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>VM から Azure BLOB にデータを移動する: Azure ストレージ エクスプローラー
 
 Azure Storage Explorer を使用して、ご利用の VM 内のローカル ファイルからデータをアップロードすることもできます。
 
@@ -201,7 +201,7 @@ Azure Storage Explorer を使用して、ご利用の VM 内のローカル フ�
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Azure BLOB からデータを読み取る: Python ODBC
 
-BlobService ライブラリを使用すると、Jupyter ノートブックまたは Python プログラムで BLOB から直接データを読み取ることができます。
+BlobService ライブラリを使用すると、Jupyter Notebook または Python プログラムで BLOB から直接データを読み取ることができます。
 
 まず、必須のパッケージをインポートします。
 
@@ -252,10 +252,10 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![データの最初の 10 行のスクリーンショット](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (旧称 SQL DW) およびデータベース
-Azure Synapse Analytics (旧称 SQL DW) は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
+### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics とデータベース
+Azure Synapse Analytics は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
-Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)に記載されている手順に従ってください。 SQL データ ウェアハウスをプロビジョニングしたら、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を使用して、SQL データ ウェアハウス内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
+Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)に記載されている手順に従ってください。 Azure Synapse Analytics をプロビジョニングした後、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を利用して、Azure Synapse Analytics 内のデータを使用してデータのアップロード、探索、およびモデリングを行うことができます。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB は、クラウドにおける NoSQL データベースです。 それを使用すれば、JSON などのドキュメントを操作することや、そうしたドキュメントを格納してクエリを実行することができます。
@@ -269,7 +269,7 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-データをインポートしたら、Jupyter にアクセスして、*DocumentDBSample* というタイトルのノートブックを開くことができます。 それには、Azure Cosmos DB にアクセスして何らかの基本的なクエリを実行するための Python コードが含まれています。 Azure Cosmos DB の詳細については、サービスの[ドキュメント ページ](https://docs.microsoft.com/azure/cosmos-db/)をご覧ください。
+データをインポートしたら、Jupyter にアクセスして、*DocumentDBSample* というタイトルのノートブックを開くことができます。 それには、Azure Cosmos DB にアクセスして何らかの基本的なクエリを実行するための Python コードが含まれています。 Azure Cosmos DB の詳細については、サービスの[ドキュメント ページ](../../cosmos-db/index.yml)をご覧ください。
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI レポートとダッシュボードを使用する 
 先ほど示した Azure Cosmos DB の例での Volcano JSON ファイルを Power BI Desktop で視覚化することで、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
@@ -326,10 +326,9 @@ DSVM に事前に組み込まれているツールを使用すると、多くの
 
 - [イメージ内で製品を検出するエンド ツー エンド ソリューションを構築するための攻略ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images): イメージ検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの実際のビジネス ドメインに大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
 
-- [音声のディープ ラーニング](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についても説明します。
+- [音声のディープ ラーニング](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についても説明します。
 
 - [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つのニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワークです。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 
 
 ## <a name="summary"></a>まとめ
 この記事では、Microsoft Data Science Virtual Machine 上でできることの一部について説明しました。 DSVM を効果的な分析環境にするためにできることは他にも多数あります。
-

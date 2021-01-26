@@ -1,18 +1,18 @@
 ---
 title: サービス プロバイダーを表示し、管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
-ms.date: 08/12/2020
+ms.date: 12/16/2020
 ms.topic: how-to
-ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167166"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617206"
 ---
 # <a name="view-and-manage-service-providers"></a>サービス プロバイダーを表示し、管理する
 
-顧客は、[Azure portal](https://portal.azure.com) の **[サービス プロバイダー]** ページを使用してサービス プロバイダーの詳細およびオファーを確認したり、[Azure Lighthouse](../overview.md) に特定のリソースを委任したり、新しいサービス プロバイダー オファーを購入したりすることができます。
+[Azure portal](https://portal.azure.com) の **[サービス プロバイダー]** ページでは、[Azure Lighthouse](../overview.md) を使用しているサービス プロバイダーを顧客が制御および可視化することができます。 顧客は、サービス プロバイダーに関する詳細を表示したり、特定のリソースを委任したり、新しいサービス プロバイダーのオファーを購入したり、サービス プロバイダーのアクセス権を削除したりすることができます。
 
 > [!TIP]
 > ここではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
@@ -20,7 +20,7 @@ ms.locfileid: "88167166"
 Azure portal の **[サービス プロバイダー]** ページにアクセスするには、顧客が **[すべてのサービス]** を選択し、 **[サービス プロバイダー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「サービス プロバイダー」または「Azure Lighthouse」と入力して見つけることもできます。
 
 > [!NOTE]
-> **[サービス プロバイダー]** ページを表示するには、顧客のテナントのユーザーが[閲覧者組み込みロール](../../role-based-access-control/built-in-roles.md#reader) (あるいは、閲覧者アクセスが含まれる別の組み込みロール) を保持している必要があります。
+> **[サービス プロバイダー]** ページを表示するには、顧客のテナントのユーザーが [閲覧者組み込みロール](../../role-based-access-control/built-in-roles.md#reader) (あるいは、閲覧者アクセスが含まれる別の組み込みロール) を保持している必要があります。
 >
 > オファーの追加または更新、リソースの委任、オファーの削除を行うには、ユーザーがサブスクリプションの[所有者組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を保持している必要があります。
 
@@ -41,7 +41,7 @@ Azure portal の **[サービス プロバイダー]** ページにアクセス�
 
 サービス プロバイダーのオファーは、顧客が **[サービス プロバイダーのオファー]** ページから **[プランの追加]** を選択するとで新たに追加することができます。 あらかじめその顧客に対し、サービス プロバイダーによってオファーが公開されていることが必要です。 そうすれば顧客が **[プライベート オファー]** 画面でそのオファーを選択し、 **[作成]** を選択することができます。
 
-サービス プロバイダーのオファーを削除したければ、そのオファーに対応する行のごみ箱アイコンを顧客が選択できます。 削除が確定された後は、そのオファーに関して委任されていた顧客リソースにサービス プロバイダーがアクセスすることはできなくなります。
+顧客がサービス プロバイダーのオファーを削除したい場合は、そのオファーの行にあるごみ箱アイコンを選択すれば、いつでも削除できます。 削除が確定された後は、そのオファーに関して委任されていた顧客リソースにサービス プロバイダーがアクセスすることはできなくなります。
 
 ## <a name="delegate-resources"></a>リソースを委任する
 
@@ -76,11 +76,14 @@ Azure portal の **[サービス プロバイダー]** ページにアクセス�
 
 顧客は、Azure Lighthouse に委任されているサブスクリプションやリソース グループを可視化できます。 これは、多数のサブスクリプションを所有している顧客や、管理タスクを実行するユーザーが多い顧客にとって特に有用です。
 
-管理テナントへのスコープの委任を監査するための [Azure Policy 組み込みポリシー定義](../../governance/policy/samples/built-in-policies.md#lighthouse)が用意されています。 監査対象のすべてのサブスクリプションが含まれている管理グループに対して、このポリシーを割り当てることができます。 このポリシーに対するコンプライアンスを確認すると、(ポリシーが割り当てられている管理グループ内の) 委任されたサブスクリプションやリソース グループ が非コンプライアンス状態として表示されます。 結果を見直して、想定外の委任が発生していないことを確認できます。
+[管理テナントへのスコープの委任を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)ための [Azure Policy 組み込みポリシー定義](../../governance/policy/samples/built-in-policies.md#lighthouse)が用意されています。 監査対象のすべてのサブスクリプションが含まれている管理グループに対して、このポリシーを割り当てることができます。 このポリシーに対するコンプライアンスを確認すると、(ポリシーが割り当てられている管理グループ内の) 委任されたサブスクリプションやリソース グループ が非コンプライアンス状態として表示されます。 結果を見直して、想定外の委任が発生していないことを確認できます。
+
+別の[組み込みポリシー定義](../../governance/policy/samples/built-in-policies.md#lighthouse)を使用して、[特定の管理テナントへの委任を制限](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json)できます。 委任を制限するすべてのサブスクリプションが含まれる管理グループにも、このポリシーを同様に適用できます。 ポリシーをデプロイした後、指定したテナント以外のテナントにサブスクリプションを委任しようとすると、拒否されます。
 
 ポリシーを割り当ててコンプライアンス状態の結果を表示する方法の詳細については、「[クイック スタート: ポリシー割り当てを作成する](../../governance/policy/assign-policy-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Lighthouse](../overview.md) の詳細を学習します。
-- サービス プロバイダーが Azure portal の **[マイ カスタマー]** で[顧客を表示したり管理したりする](view-manage-customers.md)方法を学習します。
+- [サービス プロバイダーのアクティビティを監査する](view-service-provider-activity.md)方法について説明します。
+- サービス プロバイダーが Azure portal の **[マイ カスタマー]** で [顧客を表示したり管理したりする](view-manage-customers.md)方法を学習します。

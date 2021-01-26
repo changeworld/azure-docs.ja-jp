@@ -9,20 +9,20 @@ editor: ''
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/07/2020
+ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659468"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977067"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Windows Azure ゲスト エージェントのトラブルシューティング
 
-Windows Azure ゲスト エージェントは、仮想マシン (VM) エージェントです。 これを使用すると、VM が IP アドレス 168.63.129.16 でファブリック コントローラー (VM がホストされている基盤の物理サーバー) と通信できるようになります。 これは、通信を容易にする仮想パブリック IP アドレスです。 詳しくは、「[IP アドレス 168.63.129.16 とは](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)」を参照してください。
+Windows Azure ゲスト エージェントは、仮想マシン (VM) エージェントです。 これを使用すると、VM が IP アドレス 168.63.129.16 でファブリック コントローラー (VM がホストされている基盤の物理サーバー) と通信できるようになります。 これは、通信を容易にする仮想パブリック IP アドレスです。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」を参照してください。
 
- オンプレミスから Azure に移行された VM や、カスタマイズされたイメージを使用して作成された VM には、Windows Azure ゲスト エージェントがインストールされていません。 これらのシナリオでは、手動で VM エージェントをインストールする必要があります。 VM エージェントをインストールする方法の詳細については、「[Azure 仮想マシン エージェントの概要](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)」を参照してください。
+ オンプレミスから Azure に移行された VM や、カスタマイズされたイメージを使用して作成された VM には、Windows Azure ゲスト エージェントがインストールされていません。 これらのシナリオでは、手動で VM エージェントをインストールする必要があります。 VM エージェントをインストールする方法の詳細については、「[Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)」を参照してください。
 
 Windows Azure ゲスト エージェントが正常にインストールされると、次のサービスが VM の services.msc に一覧表示されます。
  
@@ -53,7 +53,7 @@ Azure portal の VM プロパティ ページに移動して、 **[エージェ�
     
     次の PowerShell コマンドを実行すると、VM エージェントが VM にデプロイされているかどうかを確認できます。
     
-    `Get-Az VM -ResourceGroup “RGNAME” – Name “VMNAME” -displayhint expand`
+    `Get-AzVM -ResourceGroupName "RGNAME" -Name "VMNAME" -DisplayHint expand`
     
     出力で、**ProvisionVMAgent** プロパティを見つけ、値が **True** に設定されているかどうかを確認します。 設定されている場合は、エージェントが VM にインストールされていることを意味します。
     
@@ -74,7 +74,7 @@ Azure portal の VM プロパティ ページに移動して、 **[エージェ�
 
     コントロール パネルで、 **[プログラムと機能]** に移動し、Windows Azure ゲスト エージェント サービスがインストールされているかどうかを確認します。
 
-実行中のパッケージ、サービス、プロセスが見つからず、[プログラムと機能] で Windows Azure ゲスト エージェント サービスがインストールされていない場合は、[Windows Azure ゲスト エージェント サービスのインストール](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)を実行してみます。 ゲスト エージェントが正常にインストールされない場合は、[オフラインで VM エージェントをインストール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)できます。
+実行中のパッケージ、サービス、プロセスが見つからず、[プログラムと機能] で Windows Azure ゲスト エージェント サービスがインストールされていない場合は、[Windows Azure ゲスト エージェント サービスのインストール](../extensions/agent-windows.md)を実行してみます。 ゲスト エージェントが正常にインストールされない場合は、[オフラインで VM エージェントをインストール](./install-vm-agent-offline.md)できます。
 
 サービスが表示され、実行されている場合は、サービスを再起動して問題が解決されているかどうかを確認します。 サービスが停止している場合は、サービスを開始して数分待ちます。 その後、 **[エージェントの状態]** が **[準備完了]** として報告されるかどうかを確認します。 これらのサービスがクラッシュしている場合は、一部のサードパーティ プロセスが原因でこれらのサービスがクラッシュする場合があります。 これらの問題のさらなるトラブルシューティングを行う場合は、[Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
 
@@ -111,7 +111,7 @@ Windows Azure ゲスト エージェントは、自動更新機能を備えて�
     ```
     その後、ゲスト エージェント サービスが正常に開始しているかどうかを確認します。
  
-    まれに、ゲスト エージェントが正常にインストールされない場合は、[オフラインで VM エージェントをインストール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)できます。
+    まれに、ゲスト エージェントが正常にインストールされない場合は、[オフラインで VM エージェントをインストール](./install-vm-agent-offline.md)できます。
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>手順 3 VM がファブリック コントローラーに接続できるかどうかを確認する
@@ -189,7 +189,7 @@ VM が WireServer ホスト サーバーに到達できません。
 1. 手順 1 で指定した URL に接続できない場合は、ネットワーク インターフェイスを調べて、インターフェイスが DHCP 対応として設定され、DNS を使用しているかどうかを確認します。 ネットワーク インターフェイスの DHCP の状態を確認するには、次のコマンドを実行します: `netsh interface ip show config`。
 1. DHCP が無効になっている場合は、次のコマンドを実行します (黄色の値をインターフェイスの名前に変更してください): `netsh interface ip set address name="Name of the interface" source=dhcp`。
 1. ファイアウォール、プロキシ、または IP アドレス 168.63.129.16 へのアクセスをブロックするその他のソースが原因で起きる可能性がある問題を確認します。
-1. Windows ファイアウォールまたはサードパーティのファイアウォールによってポート 80、443、32526 へのアクセスがブロックされているかどうかを確認します。 このアドレスをブロックしてはいけない詳しい理由については、「[IP アドレス 168.63.129.16 とは](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)」をご覧ください。
+1. Windows ファイアウォールまたはサードパーティのファイアウォールによってポート 80、443、32526 へのアクセスがブロックされているかどうかを確認します。 このアドレスをブロックしてはいけない詳しい理由については、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」をご覧ください。
 
 ### <a name="guest-agent-is-stuck-stopping"></a>ゲスト エージェントが「停止」中にスタックする  
 

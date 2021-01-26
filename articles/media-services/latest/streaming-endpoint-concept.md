@@ -12,21 +12,21 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297197"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882876"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services のストリーミング エンドポイント (配信元)
 
-Microsoft Azure Media Services では、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント**は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 
+Microsoft Azure Media Services では、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント** は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 
 
-Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定の**ストリーミング エンドポイントを削除することはできません。 このアカウントでは、さらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
+Media Services アカウントを作成すると、**既定** のストリーミング エンドポイントが停止状態で作成されます。 このアカウントでは、さらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
 
 > [!NOTE]
-> ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。
+> ビデオのストリーミングを開始するには、ビデオをストリーミングする **ストリーミング エンドポイント** を開始する必要があります。
 >
 > ストリーミング エンドポイントが実行状態にある場合にのみ課金されます。
 
@@ -45,7 +45,7 @@ Media Services アカウントを作成すると、**既定**のストリーミ�
 
 ## <a name="types"></a>型
 
-**ストリーミング エンドポイント**には、**Standard** (プレビュー) と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。
+**ストリーミング エンドポイント** には、**Standard** (プレビュー) と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。
 
 ストリーミング ユニットの上限は、通常 10 です。 お使いのアカウントの上限を引き上げるには、[こちら](https://azure.microsoft.com/support/create-ticket/)までご連絡ください。
 
@@ -63,7 +63,7 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 
 ## <a name="comparing-streaming-types"></a>ストリーミング タイプの比較
 
-特徴量|Standard|Premium
+機能|Standard|Premium
 ---|---|---
 スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
 CDN|Azure CDN、サードパーティ CDN、または CDN なし。|Azure CDN、サードパーティ CDN、または CDN なし。

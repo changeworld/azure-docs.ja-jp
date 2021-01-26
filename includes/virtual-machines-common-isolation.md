@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/18/2019
-ms.author: azcspmt;ayshak;cynthn
+ms.date: 11/05/2020
+ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: 4f6a6dd28662c98c89dad39da3fd5c967f227dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084053"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96478477"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。 分離されたサイズは、特定のハードウェア世代上に存続して動作し、そのハードウェア世代が廃止されると非推奨となります。
 
@@ -25,15 +25,19 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 現在の分離された仮想マシンのプランには、以下が含まれます。
 * Standard_E64is_v3
 * Standard_E64i_v3
+* Standard_E80ids_v4
+* Standard_E80is_v4
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
 * Standard_F72s_v2
 
+
 > [!NOTE]
 > 分離された VM サイズには、ハードウェアによって限定される有効期間があります。 詳細については以下を参照してください
 
 ## <a name="deprecation-of-isolated-vm-sizes"></a>分離された VM サイズの非推奨化
+
 分離された VM サイズはハードウェアにしばられたサイズであるため、サイズが正式に非推奨となる 12 か月前に、Azure から通知が送付されます。  Azure では、次のハードウェア バージョンでも、お客様がワークロードを移動することを検討できる分離されたサイズの更新されたものが提供されます。
 
 | サイズ | 分離の廃止日 | 
@@ -58,14 +62,19 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 **A**: 分離されたサイズが正式に非推奨となる 12 か月前に通知が送付されます。
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Q:シルバーまたはゴールドの持続性層を利用している Azure Service Fabric ユーザーです。 この変更の影響はありますか?
-**A**: いいえ。 Service Fabric の[持続性層](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 
+**A**: いいえ。 Service Fabric の[持続性層](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>Q:D15_v2 や DS15_v2 の分離に関する廃止のマイルストーンはどのようになっていますか? 
 **A**: 
-| Date | アクション | 
-| --- | --- |
-| 2019 年 11 月 18 日 | D/DS15i_v2 (従量課金制、1 年間の予約インスタンス) を入手可能です |
-| 2020 年 5 月 14 日  | D/DS15i_v2 (1 年間の予約インスタンス) を購入できる最終日です | 
-| 2020 年 5 月 15 日   | D/DS15_v2 分離保証が削除されます | 
-| 2021 年 5 月 15 日  | D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様を除くすべてのお客様)| 
-| 2022 年 11 月 17 日  | 3 年間の予約インスタンスの完了時に D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様の場合) | 
+ 
+| Date | アクション |
+|---|---| 
+| 2019 年 11 月 18 日 | D/DS15i_v2 (従量課金制、1 年間の予約インスタンス) を入手可能です | 
+| 2020 年 5 月 14 日 | D/DS15i_v2 (1 年間の予約インスタンス) を購入できる最終日です | 
+| 2020 年 5 月 15 日 | D/DS15_v2 分離保証が削除されます | 
+| 2021 年 5 月 15 日 | D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様を除くすべてのお客様)| 
+| 2022 年 11 月 17 日 | 3 年間の予約インスタンスの完了時に D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様の場合) |
+
+## <a name="next-steps"></a>次のステップ
+
+お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016456"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -70,7 +71,7 @@ Windows ゲスト エージェントは複数の OS で実行されますが、�
 > [!IMPORTANT]
 > ゲスト ファイアウォールまたはプロキシを使用して *168.63.129.16* へのアクセスをブロックした場合、上記とは関係なく、拡張機能はエラーになります。 ポート 80、443、32526 が必要です。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用してアクセスを許可できます。
 
 Windows ゲスト エージェントには、エージェントのトラフィック要求をリダイレクトするためのプロキシ サーバーのサポートはありません。つまり、Windows ゲスト エージェントでは、カスタムプロキシに依存して (ある場合)、IP 168.63.129.16 経由でインターネット上またはホスト上のリソースにアクセスできます。
 
@@ -92,7 +93,7 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 ### <a name="powershell"></a>PowerShell
 
-個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) を使用して*拡張機能*をフィルター処理します。
+個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) を使用して *拡張機能* をフィルター処理します。
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -286,9 +287,9 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>エージェントの更新プログラム
 
-Windows ゲスト エージェントには*拡張機能処理コード*のみが含まれ、*Windows プロビジョニング コード*は分離されています。 Windows ゲスト エージェントは、アンインストールできます。 Window ゲスト エージェントの自動更新を無効にすることはできません。
+Windows ゲスト エージェントには *拡張機能処理コード* のみが含まれ、*Windows プロビジョニング コード* は分離されています。 Windows ゲスト エージェントは、アンインストールできます。 Window ゲスト エージェントの自動更新を無効にすることはできません。
 
-*拡張機能処理コード*は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード*に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
+*拡張機能処理コード* は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード* に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
 
 実行しているバージョンを確認するには、[インストールされている Windows ゲスト エージェントの検出](agent-windows.md#detect-the-vm-agent)に関するページを参照してください。
 
@@ -355,7 +356,7 @@ AutoUpgradeMinorVersion     : True
 
 1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します
+2. *C:\WindowsAzure\Logs\Plugins\\<extensionName>* の実際の拡張機能ログで詳細を確認します
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 

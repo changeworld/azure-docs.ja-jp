@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Azure, Kinect, 記録, 再生, リーダー, Matroska, MKV, ストリーム, 深度, RGB, カメラ, 色, IMU, オーディオ, センサー
 ms.openlocfilehash: 3dab147b593bf012bd6cd9c95d0195e84a2cbcf1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277832"
 ---
 # <a name="quickstart-record-azure-kinect-sensor-streams-to-a-file"></a>クイック スタート:Azure Kinect センサー ストリームをファイルに記録する

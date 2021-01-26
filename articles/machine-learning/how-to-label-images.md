@@ -1,23 +1,24 @@
 ---
 title: ラベル付けプロジェクトで画像にタグを付ける
 title.suffix: Azure Machine Learning
-description: Azure Machine Learning のラベル付けプロジェクトでデータのタグ付けツールを使用する方法について説明します。
+description: Azure Machine Learning のラベル付けプロジェクトで、データのタグ付けツールを使用して、機械学習用のデータをすばやく準備する方法について説明します。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: data4ml
+ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307201"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060369"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
-プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツール (パブリック プレビュー) を使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
+プロジェクト管理者によって Azure Machine Learning で[データのラベル付けプロジェクトが作成](./how-to-create-labeling-projects.md#create-a-data-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
 > * ラベル付けプロジェクトにアクセスする方法
@@ -111,21 +112,43 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 1. **四角形のボックス** ツール ![四角形のボックス ツール](./media/how-to-label-images/rectangular-box-tool.png) を選択するか、R キーを押します。
 3. ターゲットをクリックして斜めにドラッグすると、大まかな境界ボックスが作成されます。 境界ボックスを調整するには、端または角をドラッグします。
 
-![基本的な境界ボックスの作成を示すスクリーンショット。](./media/how-to-label-images/bounding-box-sequence.png)
+![境界ボックスの作成](./media/how-to-label-images/bounding-box-sequence.png)
 
 境界ボックスを削除するには、作成後に境界ボックスの横に表示される X 形のターゲットをクリックします。
 
 既存の境界ボックスのタグを変更することはできません。 タグの割り当てを間違った場合は、境界ボックスを削除し、正しいタグを使って新しく作成する必要があります。
 
-既定では、既存の境界ボックスを編集できます。 **領域のロック/ロック解除**ツール ![領域のロック/ロック解除ツール](./media/how-to-label-images/lock-bounding-boxes-tool.png) または L キーを使用して、その動作を切り替えます。 領域がロックされている場合は、新しい境界ボックスの形状または位置しか変更できません。
+既定では、既存の境界ボックスを編集できます。 **領域のロック/ロック解除** ツール ![領域のロック/ロック解除ツール](./media/how-to-label-images/lock-bounding-boxes-tool.png) または L キーを使用して、その動作を切り替えます。 領域がロックされている場合は、新しい境界ボックスの形状または位置しか変更できません。
 
-**領域操作**ツール ![領域操作ツール](./media/how-to-label-images/regions-tool.png) または M キーを使用して、既存の境界ボックスを調整します。 形状を調整するには、端または角をドラッグします。 内側をクリックすると、境界ボックス全体をドラッグできるようになります。 領域を編集できない場合は、**領域のロック/ロック解除**ツールを切り替えた可能性があります。
+**領域操作** ツール ![これは、領域操作ツールのアイコンです - 4 つの矢印が中心から外側に向かって上、右、下、および左を指しています。](./media/how-to-label-images/regions-tool.png) または M キーを使用して、既存の境界ボックスを調整します。 形状を調整するには、端または角をドラッグします。 内側をクリックすると、境界ボックス全体をドラッグできるようになります。 領域を編集できない場合は、**領域のロック/ロック解除** ツールを切り替えた可能性があります。
 
 **テンプレートベースのボックス** ツール ![テンプレートベースのボックス ツール](./media/how-to-label-images/template-box-tool.png) または T キーを使用して、同じサイズの複数の境界ボックスを作成します。 画像に境界ボックスがなく、テンプレートベースのボックスをアクティブにすると、ツールによって 50 x 50 ピクセルのボックスが生成されます。 境界ボックスを作成してからテンプレートベースのボックスをアクティブにした場合、新しい境界ボックスはすべて、最後に作成したボックスのサイズになります。 テンプレートベースのボックスは、配置後にサイズを変更できます。 テンプレートベースのボックスのサイズを変更すると、そのボックスのサイズのみが変更されます。
 
-現在の画像に含まれる "*すべて*" の境界ボックスを削除するには、**すべての領域の削除**ツール ![すべての領域の削除ツール](./media/how-to-label-images/delete-regions-tool.png) を選択します。
+現在の画像に含まれる "*すべて*" の境界ボックスを削除するには、**すべての領域の削除** ツール ![すべての領域の削除ツール](./media/how-to-label-images/delete-regions-tool.png) を選択します。
 
 画像の境界ボックスを作成した後、 **[送信]** を選択して作業内容を保存します。そうしないと、進行中の作業は保存されません。
+
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>画像にタグ付けし、画像をセグメント化するためにポリゴンを指定する 
+
+プロジェクトの種類が "インスタンスのセグメント化 (ポリゴン)" である場合は、画像内に 1 つ以上のポリゴンを指定し、各ポリゴンにタグを適用します。 画像に複数の境界ポリゴンを指定し、それぞれに 1 つのタグを適用できます。 **[詳細な指示の表示]** を使用して、プロジェクトで複数の境界ポリゴンを使用するかどうかを判断します。
+
+1. 作成するポリゴンのタグを選択します。
+1. **[ポリゴン領域の描画]** ツール ![[ポリゴン領域の描画] ツール](./media/how-to-label-images/polygon-tool.png) を選択するか、P キーを選択します。
+1. ポリゴンの各ポイントをクリックします。  形状が完成したら、ダブルクリックして終了します。
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="猫と犬のポリゴンを作成する":::
+
+ポリゴンを削除するには、作成後にポリゴンの横に表示される X 形のターゲットをクリックします。
+
+ポリゴンのタグを変更する場合は、 **[領域の移動]** ツールを選択し、ポリゴンをクリックしてから適切なタグを選択します。
+
+既存のポリゴンを編集することができます。 **[領域のロック/ロック解除]** ツール ![[領域のロック/ロック解除] ツールを使用してポリゴンを編集する](./media/how-to-label-images/lock-bounding-boxes-tool.png) または L キーを使用して、その動作を切り替えます。 領域がロックされている場合は、新しいポリゴンの形状または位置しか変更できません。
+
+**ポリゴンのポイントの追加または削除** ツール ![これは、ポリゴンのポイントの追加または削除ツールのアイコンです。](./media/how-to-label-images/add-remove-points-tool.png) または U キーを使用して、既存のポリゴンを調整します。 ポリゴンをクリックして、ポイントを追加または削除します。 領域を編集できない場合は、**領域のロック/ロック解除** ツールを切り替えた可能性があります。
+
+現在の画像に含まれる "*すべて*" のポリゴンを削除するには、 **[すべての領域の削除]** ツール ![[すべての領域の削除] ツール](./media/how-to-label-images/delete-regions-tool.png) を選択します。
+
+画像のポリゴンを作成したら、 **[送信]** を選択して作業内容を保存します。そうしないと、進行中の作業は保存されません。
 
 ## <a name="finish-up"></a>しあげ
 
@@ -135,5 +158,6 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure で画像分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)方法を確認します
+* [Azure で画像分類モデルをトレーニングする](./tutorial-train-models-with-aml.md)方法を確認します
+
 

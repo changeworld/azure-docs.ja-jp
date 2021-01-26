@@ -2,13 +2,13 @@
 title: ナレッジ ベースに対してクエリを実行する - QnA Maker
 description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 11/09/2020
+ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219069"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346207"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>回答を求めてナレッジ ベースに対してクエリを実行する
 
@@ -16,9 +16,11 @@ ms.locfileid: "79219069"
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>QnA Maker がユーザー クエリを処理して最適な回答を選択する方法
 
-トレーニングされ、[公開された](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-![ユーザー クエリのランク付けモデル プロセス](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+トレーニングされ、[公開された](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
+
+![ユーザー クエリのランク付けモデル プロセス](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
 ### <a name="ranker-process"></a>ランカー プロセス
 
@@ -26,7 +28,7 @@ ms.locfileid: "79219069"
 
 |手順|目的|
 |--|--|
-|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) に送信します。|
+|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) に送信します。|
 |2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
 |4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
@@ -36,6 +38,30 @@ ms.locfileid: "79219069"
 |||
 
 使用される特徴は、単語レベルのセマンティクス、コーパスの用語レベルの重要性、2 つのテキスト文字列間の類似性と関連性を判別するディープ ラーニング済みのセマンティック モデルなどですが、これらに限定されません。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+トレーニングされ、[公開された](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
+
+![ユーザー クエリ プレビューのランク付けモデル プロセス](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
+
+### <a name="ranker-process"></a>ランカー プロセス
+
+このプロセスについて次の表で説明します。
+
+|手順|目的|
+|--|--|
+|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) に送信します。|
+|2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
+|3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
+|4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
+|5|QnA Maker によって最新のトランスフォーマー ベースのモデルが使用され、ユーザー クエリと、Azure Cognitive Search からフェッチされた候補 QnA 結果の類似性が判断されます。 トランスフォーマー ベースのモデルはディープラーニングの多言語モデルであり、すべての言語で水平方向に動作し、信頼スコアと新しいランク付け順序を決定します。|
+|6|新しい結果が、ランク順にクライアント アプリケーションに返されます。|
+|||
+
+ランカーは、ユーザー クエリに対して最も一致する QnA ペアを見つけるために、代替の質問と回答をすべて考慮します。 ランカーのみに質問するよう、ランカーを柔軟に構成できます。 
+
+---
 
 ## <a name="http-request-and-response-with-endpoint"></a>エンドポイントの HTTP 要求/応答
 ナレッジ ベースを公開すると、アプリケーション (通常はチャット ボット) に統合できる REST ベースの HTTP エンドポイントがサービスによって作成されます。
@@ -96,7 +122,7 @@ HTTP 応答は、特定のユーザー クエリの最適な一致に基づい�
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [信頼度スコア](./confidence-score.md)

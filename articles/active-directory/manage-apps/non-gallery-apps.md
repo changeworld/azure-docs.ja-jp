@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3483701d34b8fef5b40a411e22b33a73db2de44b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641145"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658742"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>アプリ ギャラリーに記載されていないアプリケーションで Azure AD を使用する
 
 [アプリの追加](add-application-portal.md)に関するクイックスタートでは、Azure AD テナントにアプリを追加する方法について説明しています。
 
-[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)の選択項目に加えて、**ギャラリー以外のアプリケーション**を追加することもできます。 
+[Azure AD アプリケーション ギャラリー](../saas-apps/tutorial-list.md)の選択項目に加えて、**ギャラリー以外のアプリケーション** を追加することもできます。 
 
 ## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Azure AD ギャラリーに記載されていないアプリの機能
 
@@ -33,9 +33,8 @@ ms.locfileid: "88641145"
 - [ユーザー プロビジョニング用の System for Cross-Domain Identity Management (SCIM) プロトコル](../app-provisioning/use-scim-to-provision-users-and-groups.md)を使用するアプリケーションのセルフサービス接続
 - [Office 365 アプリ ランチャー](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)または[マイ アプリ](sso-options.md#linked-sign-on)での任意のアプリケーションへのリンクの追加機能
 
-カスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、[Azure AD の認証シナリオ](../develop/authentication-scenarios.md)に関するページを参照してください。 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) などの最新のプロトコルを使用してユーザーを認証するアプリを開発した場合は、それを Azure portal の[アプリの登録](../develop/quickstart-register-app.md)エクスペリエンスを使用して Microsoft ID プラットフォームに登録できます。
+カスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、[Azure AD の認証シナリオ](../develop/authentication-vs-authorization.md)に関するページを参照してください。 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) などの最新のプロトコルを使用してユーザーを認証するアプリを開発した場合は、それを Azure portal の[アプリの登録](../develop/quickstart-register-app.md)エクスペリエンスを使用して Microsoft ID プラットフォームに登録できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [アプリ管理のクイックスタート シリーズ](view-applications-portal.md)
-

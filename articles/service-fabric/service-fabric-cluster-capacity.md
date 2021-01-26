@@ -4,57 +4,56 @@ description: Service Fabric クラスターの計画時に考慮する必要が�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718103"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576334"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
 クラスターの容量計画は、どの Service Fabric 運用環境にとっても重要です。 主な考慮事項は次のとおりです。
 
-* **クラスターの*ノード タイプ*に関する初期の数とプロパティ**
+* **クラスターの *ノード タイプ* に関する初期の数とプロパティ**
 
-* Azure インフラストラクチャ内での Service Fabric の VM の権限を決定する、**各ノード タイプの*持続性*レベル**
+* Azure インフラストラクチャ内での Service Fabric の VM の権限を決定する、**各ノード タイプの *持続性* レベル**
 
-* **クラスターの*信頼性*レベル**。これにより、Service Fabric システム サービスとクラスター機能全体の安定性が決まります
+* **クラスターの *信頼性* レベル**。これにより、Service Fabric システム サービスとクラスター機能全体の安定性が決まります
 
 この記事では、これらの各領域について、重要な意思決定のポイントを順次説明します。
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>クラスターのノード タイプに関する初期の数とプロパティ
 
-*ノード タイプ*により、クラスター内の一連のノード (仮想マシン) のサイズ、数、およびプロパティが定義されます。 Service Fabric クラスターで定義されているすべてのノード タイプは、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)にマップされます。
+*ノード タイプ* により、クラスター内の一連のノード (仮想マシン) のサイズ、数、およびプロパティが定義されます。 Service Fabric クラスターで定義されているすべてのノード タイプは、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)にマップされます。
 
 各ノード タイプは異なるスケール セットであるため、個別にスケールアップまたはスケールダウン可能で、異なるポートのセットを開いたり、異なる容量メトリックを設けたりすることができます。 ノード タイプと仮想マシン スケール セットの間の関係について詳しくは、[Service Fabric クラスターのノード タイプ](service-fabric-cluster-nodetypes.md)に関するページを参照してください。
 
-各クラスターには、Service Fabric プラットフォームの機能を提供する重要なシステム サービスを実行する、**プライマリ ノード タイプ**が 1 つ必要です。 アプリケーションを実行するためにプライマリ ノード タイプを使用することもできますが、このタイプはシステム サービスの実行専用にすることが推奨されます。
+各クラスターには、Service Fabric プラットフォームの機能を提供する重要なシステム サービスを実行する、**プライマリ ノード タイプ** が 1 つ必要です。 アプリケーションを実行するためにプライマリ ノード タイプを使用することもできますが、このタイプはシステム サービスの実行専用にすることが推奨されます。
 
-**非プライマリ ノード タイプ**を使用すると、アプリケーション ロール (*フロントエンド* サービスや*バックエンド* サービスなど) を定義し、クラスター内でサービスを物理的に分離することができます。 Service Fabric クラスターには、0 個以上の非プライマリ ノードタイプを作成できます。
+**非プライマリ ノード タイプ** を使用すると、アプリケーション ロール (*フロントエンド* サービスや *バックエンド* サービスなど) を定義し、クラスター内でサービスを物理的に分離することができます。 Service Fabric クラスターには、0 個以上の非プライマリ ノードタイプを作成できます。
 
-プライマリ ノード タイプは、Azure Resource Manager のデプロイ テンプレートで、ノード タイプの定義の下にある `isPrimary` 属性を使用して構成されます。 ノード タイプのプロパティの完全な一覧については、「[NodeTypeDescription オブジェクト](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)」を参照してください。 使用例については、[Service Fabric クラスター サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)でいずれかの *AzureDeploy.json* ファイルを開き、 *[ページ内の検索]* で `nodetTypes` オブジェクトを検索します。
+プライマリ ノード タイプは、Azure Resource Manager のデプロイ テンプレートで、ノード タイプの定義の下にある `isPrimary` 属性を使用して構成されます。 ノード タイプのプロパティの完全な一覧については、「[NodeTypeDescription オブジェクト](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)」を参照してください。 使用例については、[Service Fabric クラスター サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)でいずれかの *AzureDeploy.json* ファイルを開き、 *[ページ内の検索]* で `nodeTypes` オブジェクトを検索します。
 
 ### <a name="node-type-planning-considerations"></a>ノード タイプの計画に関する考慮事項
 
 ノード タイプの初期数は、クラスターの目的と、そのクラスターで実行されるアプリケーションとサービスによって異なります。 次の質問について考えてみましょう。
 
-* ***アプリケーションに複数のサービスがあるか、また、そのいずれかを一般に公開したりインターネットに接続したりする必要があるか。***
+* ***アプリケーションに複数のサービスがあるか、またそのいずれかを一般に公開したりインターネットに接続したりする必要があるか?** _
 
     典型的なアプリケーションには、クライアントからの入力を受信する 1 つのフロントエンド ゲートウェイ サービスと、そのフロントエンド サービスと通信する 1 つ以上のバックエンド サービスが含まれていて、フロントエンド サービスとバックエンド サービスの間に別個のネットワークが存在します。 このような場合には、一般に、1 つのプライマリ ノード タイプと、2 つの非プライマリ ノード タイプ (フロントエンド サービス用とバックエンド サービス用にそれぞれ 1 つ) という 3 つのノード タイプが必要です。
 
-* ***アプリケーションを構成するサービスに、インフラストラクチャに関して異なるニーズがあるか (より多くの RAM が必要、より高速な CPU サイクルが必要など)。***
+_ ***アプリケーションを構成するサービスにインフラストラクチャに関して異なるニーズがあるか? (より多くの RAM が必要、より高速な CPU サイクルが必要など)** _
 
-    フロントエンド サービスは、多くの場合、インターネットに対してポートを開いた、より小さな VM (D2 のようなサイズの VM) で実行できます。  計算負荷が高いバックエンド サービスは、インターネットには接続していない、より大きな VM (D4、D6、D15 のようなサイズの VM) で実行する必要がある場合があります。 これらのサービスに対して異なるノード タイプを定義すると、基になっている Service Fabric VM をより効率的かつ安全に使用することができ、それらを個別にスケーリングできるようになります。 必要になるリソースの量を見積もることの詳細については、「[Service Fabric アプリケーションの容量計画](service-fabric-capacity-planning.md)」を参照してください
+    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
-* ***いずれかのアプリケーション サービスを、100 ノードを超えてスケールアウトする必要が生じるか。***
+_ ***いずれかのアプリケーション サービスを 100 ノードを超えてスケールアウトする必要が生じるか?** _
 
-    1 つのノード タイプでは、Service Fabric アプリケーションの仮想マシン スケール セット 1 つあたり 100 ノードを超えて、信頼性高くスケーリングすることができません。 100 を超えるノードを実行するには、追加の仮想マシン スケール セット (したがって追加のノード タイプ) が必要です。
+    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
 
-* ***クラスターが複数の Availability Zones にまたがることになるか。***
+_ ***クラスターが複数の Availability Zones にまたがることになるか?** _
 
-    Service Fabric では、特定のゾーンに固定されるノード タイプをデプロイすることによって、[Availability Zones](../availability-zones/az-overview.md) にまたがるクラスターをサポートし、アプリケーションの高可用性を確保します。 Availability Zones には追加のノード タイプの計画が必要で、最小要件を満たす必要があります。 詳細については、[複数の Availability Zones にまたがる Azure Service Fabric クラスターのプライマリ ノード タイプに推奨されるトポロジ](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)に関するページを参照してください。 
+    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 クラスターの最初の作成でノード タイプの数とプロパティを決定するときには、いったんクラスターをデプロイすれば、(プライマリ以外の) ノード タイプをいつでも追加、変更、または削除できることを念頭に置いてください。 実行中のクラスターで[プライマリ ノード タイプを変更することもできます](service-fabric-scale-up-primary-node-type.md) (ただし、運用環境でそうした操作を行うには、非常に多くの計画と注意が必要です)。
 
@@ -62,7 +61,7 @@ ms.locfileid: "88718103"
 
 ## <a name="durability-characteristics-of-the-cluster"></a>クラスターの持続性の特徴
 
-*持続性レベル*によって、Service Fabric VM が、基になる Azure インフラストラクチャで持つ権限を指定します。 この権限によって、Service Fabric は、Service Fabric のシステム サービスやステートフル サービスのクォーラム要件に影響を与える VM レベルのインフラストラクチャ要求 (再起動、再イメージ化、移行など) を一時停止できます。
+_持続性レベル* によって、Service Fabric VM が基になる Azure インフラストラクチャで持つ権限を指定します。 この権限によって、Service Fabric は、Service Fabric のシステム サービスやステートフル サービスのクォーラム要件に影響を与える VM レベルのインフラストラクチャ要求 (再起動、再イメージ化、移行など) を一時停止できます。
 
 > [!IMPORTANT]
 > 持続性レベルは、ノード タイプごとに設定されます。 何も指定されていない場合は *ブロンズ* サービス レベルが使用されますが、自動 OS アップグレードは提供されません。 運用環境のワークロードには、*Silver* または *Gold* の持続性が推奨されます。
@@ -76,7 +75,7 @@ ms.locfileid: "88718103"
 | ブロンズ          | 1                              | 少なくとも 50 GB のローカル SSD を搭載した VM                                              | Service Fabric クラスターにより延期されることはない           | 長時間の延期は不可                                                    |
 
 > [!WARNING]
-> ブロンズ 持続性を使用する場合、OS イメージの自動アップグレードは使用できません。 [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md) (Azure 以外でホストされているクラスターのみが対象) は、Silver 以上の持続性レベルでは*推奨されません*が、Service Fabric アップグレード ドメインに関しては、Windows 更新プログラムを自動化する唯一のオプションです。
+> ブロンズ 持続性を使用する場合、OS イメージの自動アップグレードは使用できません。 [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md) (Azure 以外でホストされているクラスターのみが対象) は、Silver 以上の持続性レベルでは *推奨されません* が、Service Fabric アップグレード ドメインに関しては、Windows 更新プログラムを自動化する唯一のオプションです。
 
 > [!IMPORTANT]
 > 持続性レベルを問わず、仮想マシン スケール セットに対して[割り当て解除](/rest/api/compute/virtualmachinescalesets/deallocate)操作を実行すると、クラスターが破棄されます。
@@ -124,7 +123,7 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 
 ## <a name="reliability-characteristics-of-the-cluster"></a>クラスターの信頼性の特徴
 
-クラスターの*信頼性レベル*により、クラスターのプライマリ ノード タイプで実行されるシステム サービス レプリカの数が決定されます。 レプリカが増えるほど、システム サービス (したがって全体としてのクラスター) の信頼性が高まります。
+クラスターの *信頼性レベル* により、クラスターのプライマリ ノード タイプで実行されるシステム サービス レプリカの数が決定されます。 レプリカが増えるほど、システム サービス (したがって全体としてのクラスター) の信頼性が高まります。
 
 > [!IMPORTANT]
 > 信頼性レベルはクラスター レベルで設定され、プライマリ ノード タイプのノードの最小数を決定します。 運用環境のワークロードには、Silver (5 ノード以上) またはそれより上の信頼性レベルが必要です。  
@@ -163,9 +162,9 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 
 #### <a name="primary-node-type"></a>プライマリ ノード タイプ
 
-Azure の**運用環境ワークロード**には、少なくとも 5 つのプライマリ ノード (VM インスタンス) と、Silver の信頼性レベルが必要です。 クラスターのプライマリ ノード タイプをシステム サービス専用にし、配置制約を利用してアプリケーションをセカンダリ ノード タイプにデプロイすることをお勧めします。
+Azure の **運用環境ワークロード** には、少なくとも 5 つのプライマリ ノード (VM インスタンス) と、Silver の信頼性レベルが必要です。 クラスターのプライマリ ノード タイプをシステム サービス専用にし、配置制約を利用してアプリケーションをセカンダリ ノード タイプにデプロイすることをお勧めします。
 
-Azure の**テスト ワークロード**では、少なくとも 1 つまたは 3 つのプライマリ ノードを実行できます。 1 つのノード クラスターを構成するには、Resource Manager テンプレートで `reliabilityLevel` 設定が完全に省略されていることを確認します (`reliabilityLevel` に空の文字列値を指定しても十分ではありません)。 Azure portal で 1 つのノード クラスター設定を行った場合、この構成は自動的に行われます。
+Azure の **テスト ワークロード** では、少なくとも 1 つまたは 3 つのプライマリ ノードを実行できます。 1 つのノード クラスターを構成するには、Resource Manager テンプレートで `reliabilityLevel` 設定が完全に省略されていることを確認します (`reliabilityLevel` に空の文字列値を指定しても十分ではありません)。 Azure portal で 1 つのノード クラスター設定を行った場合、この構成は自動的に行われます。
 
 > [!WARNING]
 > 1 ノード クラスターは信頼性のない特別な構成で実行され、スケールアウトはサポートされません。

@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f0782738a8aa57b2bc0b87e1378972e3fa5d31c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70101258"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967858"
 ---
 # <a name="disaster-recovery-principles"></a>ディザスター リカバリーの原則
 
@@ -68,7 +69,7 @@ HANA L インスタンスでは、さまざまな Azure リージョンの HANA 
 - DR Azure リージョンの HANA L インスタンス ユニットに新しくインストールした SAP HANA インスタンスを停止します。
 - PRD ボリュームのマウントを解除し、SAP HANA on Azure サービス管理に連絡します。 ストレージ レプリケーション ターゲットとして機能している間はボリュームにアクセスできないため、ボリュームをユニットにマウントしたままにすることはできません。  
 
-![レプリケーションを確立する前の DR セットアップ手順](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![運用 Azure リージョンの PRD ボリュームと、DR Azure リージョンの PRD ボリューム間のレプリケーション関係示す図。](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 オペレーション チームは、運用 Azure リージョンの PRD ボリュームと、DR Azure リージョンの PRD ボリューム間にレプリケーション関係を確立します。
 

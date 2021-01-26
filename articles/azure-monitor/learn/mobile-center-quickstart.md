@@ -3,17 +3,17 @@ title: Azure Monitor Application Insights を使用してモバイル アプリ�
 description: Azure Monitor Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34c35baf1bd958058bec6642434464711f5e79f6
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322144"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210309"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -124,7 +124,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 
 
-   詳しくは、[Application Insights Analytics](../log-query/log-query-overview.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
+   詳しくは、[Application Insights Analytics](../log-query/log-query-overview.md)に関するページおよび [Log Analytics クエリ言語](/azure/data-explorer/kusto/query/)に関するページをご覧ください。
 
 
 2. **カスタム イベント テレメトリのセグメント化とフィルター。** Application Insights の **[概要]** ページで、目次の **[ユーザー]** を選択します。
@@ -168,4 +168,3 @@ Application Insights リソースを削除するには、次の手順に従い�
 
 > [!div class="nextstepaction"]
 > [どのようにお客様がアプリを使用しているかを理解します](../app/usage-overview.md)
-

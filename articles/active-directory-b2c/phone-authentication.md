@@ -1,5 +1,5 @@
 ---
-title: カスタム ポリシーを使用した電話でのサインアップとサインイン (プレビュー)
+title: カスタム ポリシーを使用した電話のサインアップとサインイン
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でカスタム ポリシーを使用して、アプリケーション ユーザーの電話にワンタイム パスワード (OTP) をテキスト メッセージで送信します。
 services: active-directory-b2c
@@ -8,27 +8,85 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/25/2020
+ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385350"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953578"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C でカスタム ポリシーを使用した電話でのサインアップとサインインを設定する (プレビュー)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C でカスタム ポリシーを使用した電話のサインアップとサインインを設定する
 
 Azure Active Directory B2C (Azure AD B2C) での電話のサインアップとサインインを使用すると、ユーザーは、テキスト メッセージで電話に送信されたワンタイム パスワード (OTP) を使用して、アプリケーションにサインアップしてサインインできます。 ワンタイム パスワードを使用すると、ユーザーがパスワードを忘れたり、パスワードが侵害されたりするリスクを最小限に抑えることができます。
 
 この記事の手順に従ってカスタム ポリシーを使用することで、お客様が電話に送信されたワンタイム パスワードを使用してサインアップし、アプリケーションにサインインできるようになります。
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="pricing"></a>価格
 
 ワンタイム パスワードは SMS テキスト メッセージを使用してお客様のユーザーに送信されるため、お客様は送信されたメッセージごとに課金される場合があります。 価格情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」の「**別料金**」セクションを参照してください。
+
+## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>電話のサインアップとサインインのユーザー エクスペリエンス
+
+電話のサインアップとサインインを使用すると、ユーザーはプライマリ ID として電話番号を使用してアプリにサインアップできます。 サインアップとサインイン時のエンド ユーザーのエクスペリエンスについては、以下で説明します。
+
+> [!NOTE]
+> 以下のサンプル テキストと同様に、サインアップおよびサインインのエクスペリエンスに同意情報を含めることを強くお勧めします。 このサンプル テキストは、参考目的でのみ使用してください。 [CTIA Web サイト](https://www.ctia.org/programs)にある「Short Code Monitoring Handbook」(ショート コード監視に関するハンドブック) を参照し、ご自身のコンプライアンス ニーズを満たすための最終的なテキストと機能の構成に関するガイダンスについては、法務またはコンプライアンスの専門家に相談してください。
+>
+> "*電話番号を入力すると、テキスト メッセージによって送信されるワンタイム パスコードの受信に同意したことになり、 *&lt;挿入: アプリケーション名&gt; にサインインできるようになります*"。標準メッセージとデータの通信料が適用される場合があります。*
+>
+> *&lt;挿入: プライバシーに関する声明へのリンク&gt;*<br/>*&lt;挿入: サービス利用規約へのリンク&gt;*
+
+独自の同意情報を追加するには、次のサンプルをカスタマイズし、表示コントロール (電話でのサインアップとサインインのスターター パック内の Phone-Email-Base.xml ファイル) を使用してセルフアサートされたページで使用される ContentDefinition の LocalizedResources に含めます。
+
+```xml
+<LocalizedResources Id="phoneSignUp.en">        
+    <LocalizedStrings>
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_url">{insert your terms and conditions URL}</LocalizedString>          
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please verify your country code and phone number</LocalizedString>        
+    </LocalizedStrings>      
+</LocalizedResources>
+   ```
+
+### <a name="phone-sign-up-experience"></a>電話のサインアップ エクスペリエンス
+
+ユーザーがアプリケーションのアカウントをまだ持っていない場合は、 **[今すぐサインアップ]** リンクを選択して作成できます。 サインアップ ページが表示されます。ここでユーザーは **[国]** を選択し、電話番号を入力して、 **[コードの送信]** を選択します。
+
+![ユーザーが電話によるサインアップを開始](media/phone-authentication/phone-signup-start.png)
+
+1 回限りの確認コードがユーザーの電話番号に送信されます。 ユーザーは、サインアップ ページで **確認コード** を入力し、 **[コードの確認]** を選択します (ユーザーがコードを取得できなかった場合は、 **[新しいコードを送信します]** を選択できます)。
+
+![ユーザーが電話のサインアップ時にコードを確認する](media/phone-authentication/phone-signup-verify-code.png)
+
+ ユーザーは、サインアップ ページで要求されたその他の情報、たとえば **[表示名]** 、 **[名]** 、 **[姓]** などを入力します (国と電話番号は入力されたままになっています)。 ユーザーが別の電話番号を使用する場合は、 **[番号の変更]** を選択して、サインアップを再開することができます。 完了したら、ユーザーは **[続行]** を選択します。
+
+![ユーザーが追加情報を入力する](media/phone-authentication/phone-signup-additional-info.png)
+
+次に、ユーザーは回復用メールを入力するように求められます。 ユーザーはメール アドレスを入力し、 **[確認コードを送信する]** を選択します。 ユーザーはメールの受信トレイに送信されたコードを取得して、 **[確認コード]** ボックスに入力できます。 次に、ユーザーは **[コードの確認]** を選択します。 
+
+コードが確認されたら、ユーザーは **[作成]** を選択してアカウントを作成します。 または、ユーザーが別のメール アドレスを使用する場合は、 **[電子メールの変更]** を選択できます。
+
+![ユーザーがアカウントを作成する](media/phone-authentication/email-verification.png)
+
+### <a name="phone-sign-in-experience"></a>電話によるサインイン エクスペリエンス
+
+ユーザーが、電話番号を ID として使用している既存のアカウントを持っている場合は、その電話番号を入力し、 **[続行]** を選択します。 **[続行]** を選択して国と電話番号を確定すると、1 回限りの認証コードがそのユーザーの電話に送信されます。 ユーザーが確認コードを入力し、 **[続行]** を選択してサインインします。
+
+![電話によるサインインのユーザー エクスペリエンス](media/phone-authentication/phone-signin-screens.png)
+
+## <a name="deleting-a-user-account"></a>ユーザー アカウントを削除する
+
+場合によっては、Azure AD B2C ディレクトリからユーザーと関連付けられたデータを削除する必要があります。 Azure portal を使用してユーザー アカウントを削除する方法の詳細については、[こちらの手順](/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)を参照してください。 
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +108,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 1. 各ファイル内で、文字列 `yourtenant` を、使用している Azure AD B2C テナントの名前に置き換えます。 たとえば、B2C テナントの名前が *contosob2c* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosob2c.onmicrosoft.com` になります。
 
-1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション (*IdentityExperienceFramework* と *ProxyIdentityExperienceFramework*) の**アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
+1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション (*IdentityExperienceFramework* と *ProxyIdentityExperienceFramework*) の **アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
 
 ## <a name="upload-the-policy-files"></a>ポリシー ファイルをアップロードする
 
@@ -70,7 +128,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
-1. **[カスタム ポリシー]** で、 **[B2C_1A_SignUpOrSignInWithPhone]** を選択します。
+1. **[カスタム ポリシー]** で、**[B2C_1A_SignUpOrSignInWithPhone]** を選択します。
 1. **[アプリケーションの選択]** で、前提条件の完了時に登録した *webapp1* アプリケーションを選択します。
 1. **[応答 URL の選択]** で、`https://jwt.ms` を選択します。
 1. **[今すぐ実行]** を選択し、電子メール アドレスまたは電話番号を使用してサインアップします。
@@ -94,13 +152,8 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>次のステップ
 
-電話のサインアップとサインインのカスタム ポリシー スターター パック (およびその他のスターター パック) を GitHub で見つけることができます。
-
-[Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone]
-
-スターター パックのポリシー ファイルでは、多要素認証の技術プロファイルと電話番号要求変換が使用されています。
-
-* [Azure Multi-Factor Authentication 技術プロファイルを定義する](multi-factor-auth-technical-profile.md)
+電話のサインアップとサインインのカスタム ポリシー スターター パック (およびその他のスターター パック) を GitHub で見つけることができます。[Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone] スターター パックのポリシー ファイルには、多要素認証の技術プロファイルと電話番号要求変換が使用されています。
+* [Azure AD Multi-Factor Authentication 技術プロファイルを定義する](multi-factor-auth-technical-profile.md)
 * [電話番号要求変換を定義する](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->

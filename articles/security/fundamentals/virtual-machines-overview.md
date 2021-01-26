@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229365"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498746"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -51,11 +51,11 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 仮想マシンを保護するマルウェア対策ソフトウェアの詳細については、以下を参照してください。
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-trend)
-* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-symantec)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../../virtual-machines/extensions/trend.md)
+* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Marketplace のセキュリティ ソリューション](https://azure.microsoft.com/marketplace/?term=security)
 
-さらに強力な保護のためには、[Windows Defender の Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) を使用することを検討してください。 Windows Defender の ATP を使用すると、以下が得られます。
+さらに強力な保護のためには、[Windows Defender の Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) を使用することを検討してください。 Windows Defender の ATP を使用すると、以下が得られます。
 
 * [攻撃対象領域の縮小](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [次世代の保護](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -75,22 +75,22 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 
 キーのセキュリティを高めると、暗号化と認証による保護を強化できます。 大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。
 
-Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
+Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
 
 詳細情報:
 
-* [Azure Key Vault とは](/azure/key-vault/key-vault-overview)
-* [Azure Key Vault ブログ](https://blogs.technet.microsoft.com/kv/)
+* [Azure Key Vault とは](../../key-vault/general/overview.md)
+* [Azure Key Vault ブログ](/archive/blogs/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>仮想マシン ディスクの暗号化
 
-Azure Disk Encryption は、Windows および Linux 仮想マシン ディスクを暗号化する新機能です。 Azure Disk Encryption では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
+Azure Disk Encryption は、Windows および Linux 仮想マシン ディスクを暗号化する新機能です。 Azure Disk Encryption では、Windows の業界標準である [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) 機能と Linux の [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
 
 このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 仮想マシン ディスク内のすべてのデータが、Azure Storage での保存時に暗号化されることを保証します。
 
 詳細情報:
 
-* [IaaS VM の Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview)
+* [IaaS VM の Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md)
 * [クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>仮想マシンのバックアップ
@@ -99,8 +99,8 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 
 詳細情報:
 
-* [Azure Backup とは](/azure/backup/backup-introduction-to-azure-backup)
-* [Azure Backup サービス FAQ](/azure/backup/backup-azure-backup-faq)
+* [Azure Backup とは](../../backup/backup-overview.md)
+* [Azure Backup サービス FAQ](../../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -116,9 +116,9 @@ Site Recovery:
 
 詳細情報:
 
-* [Azure Site Recovery とは](/azure/site-recovery/site-recovery-overview)
-* [Azure Site Recovery のしくみ](/azure/site-recovery/site-recovery-components)
-* [Azure Site Recovery によって保護されるワークロードの種類](/azure/site-recovery/site-recovery-workload)
+* [Azure Site Recovery とは](../../site-recovery/site-recovery-overview.md)
+* [Azure Site Recovery のしくみ](../../site-recovery/azure-to-azure-architecture.md)
+* [Azure Site Recovery によって保護されるワークロードの種類](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>仮想ネットワーク
 
@@ -129,7 +129,7 @@ Azure 仮想ネットワークは、物理的な Azure ネットワーク ファ
 詳細情報:
 
 * [Azure のネットワーク セキュリティの概要](network-overview.md)
-* [仮想ネットワークの概要](/azure/virtual-network/virtual-networks-overview)
+* [仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
 * [エンタープライズ シナリオ向けのネットワーク機能とパートナーシップ](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
@@ -138,14 +138,14 @@ Azure Security Center は、脅威の防御、検出、対応を可能にする�
 
 Security Center は、仮想マシンのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
-* 仮想マシンの[セキュリティに関する推奨事項](/azure/security-center/security-center-recommendations)の提供。 推奨事項の例としては、システム更新プログラムの適用、ACL エンドポイント、マルウェア対策の有効化、ネットワーク セキュリティ グループの有効化、ディスク暗号化の適用などがあります。
+* 仮想マシンの[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)の提供。 推奨事項の例としては、システム更新プログラムの適用、ACL エンドポイント、マルウェア対策の有効化、ネットワーク セキュリティ グループの有効化、ディスク暗号化の適用などがあります。
 * 仮想マシンの状態の監視。
 
 詳細情報:
 
-* [Azure Security Center 入門](/azure/security-center/security-center-intro)
-* [Azure Security Center についてよく寄せられる質問](/azure/security-center/security-center-faq)
-* [Azure Security Center 計画および運用](/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
+* [Azure Security Center についてよく寄せられる質問](../../security-center/faq-general.md)
+* [Azure Security Center 計画および運用](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>コンプライアンス
 

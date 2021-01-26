@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0d0d92c41ec15f4b4cf2307ac686b299cc5fb1ff
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cca17aacc914412d34f613adfeba31617c60c455
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262118"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652944"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 
@@ -63,11 +63,11 @@ Azure Media Service .NET SDK を使用しない場合は、[Azure AD Authenticat
 1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。
 2. NuGet パッケージ [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、**Azure Media Services .NET SDK** をインストールします。
 
-    NuGet を使用して参照を追加するには、**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、 **[NuGet パッケージの管理]** を選択します。 次に、**windowsazure.mediaservices** を検索し、 **[インストール]** を選択します。
+    NuGet を使用して参照を追加するには、**ソリューション エクスプローラー** で、プロジェクト名を右クリックし、 **[NuGet パッケージの管理]** を選択します。 次に、**windowsazure.mediaservices** を検索し、 **[インストール]** を選択します。
 
     または
 
-    Visual Studio の**パッケージ マネージャー コンソール**で、次のコマンドを実行します。
+    Visual Studio の **パッケージ マネージャー コンソール** で、次のコマンドを実行します。
 
     ```console
     Install-Package windowsazure.mediaservices -Version 4.0.0.4
@@ -145,16 +145,16 @@ namespace AzureADAuthSample
 
 - Azure AD テナント エンドポイント。 テナント情報は Azure Portal から取得できます。 右上隅のサインインしたユーザーにカーソルを置きます。
 - Media Services リソース URI。
-- Azure AD アプリケーションの値: **クライアント ID** と**クライアント シークレット**。
+- Azure AD アプリケーションの値: **クライアント ID** と **クライアント シークレット**。
 
 **[クライアント ID]** と **[クライアント シークレット]** パラメーターの値は Azure Portal で確認できます。 詳細については、「[Getting started with Azure AD authentication using the Azure portal](media-services-portal-get-started-with-aad.md)」 (Azure Portal を使用する Azure AD Authentication の概要) を参照してください。
 
-次のコード例では、パラメーターとして **AzureAdClientSymmetricKey** を取る**AzureAdTokenCredentials** コンストラクターを使用して、トークンを作成します。
+次のコード例では、パラメーターとして **AzureAdClientSymmetricKey** を取る **AzureAdTokenCredentials** コンストラクターを使用して、トークンを作成します。
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
@@ -165,8 +165,8 @@ Azure AD で使用できるフォームで証明書を作成して構成する�
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 ```
 
 Media Services に対するプログラミングを開始するには、サーバー コンテキストを表す **CloudMediaContext** インスタンスを作成する必要があります。 **CloudMediaContext** コンストラクターに **Media REST Services のリソース URI** を渡す必要もあります。 **Media REST Services のリソース URI** は Azure Portal から取得することもできます。

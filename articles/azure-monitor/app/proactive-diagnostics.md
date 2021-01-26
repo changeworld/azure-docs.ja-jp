@@ -3,12 +3,12 @@ title: Azure Application Insights のスマート検出 | Microsoft Docs
 description: Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305875"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186254"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題と失敗の異常について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](./app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。
@@ -55,10 +55,9 @@ _プレビュー_ とマークされているルールを除く、すべての�
 
 * [メトリックス エクスプローラー](../platform/metrics-charts.md)
 * [Search エクスプローラー](./diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](../log-query/get-started-portal.md)
+* [Analytics - 強力なクエリ言語](../log-query/log-analytics-tutorial.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
 * [手動で構成するメトリックのアラート](../platform/alerts-log.md)
-* [可用性 Web テスト](./monitor-web-app-availability.md) 
-
+* [可用性 Web テスト](./monitor-web-app-availability.md)

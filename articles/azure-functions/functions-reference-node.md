@@ -3,14 +3,14 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.date: 11/17/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810118"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034919"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -20,7 +20,7 @@ Express.js、Node.js、または JavaScript の開発者が、Azure Functions �
 
 | 作業の開始 | 概念| ガイド付き学習 |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code を使用した Node.js 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Node.js 関数](./create-first-function-vs-code-node.md)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./create-first-function-cli-node.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 関数の基本
 
@@ -183,15 +183,38 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
 `dataType` のオプションは、`binary`、`stream`、`string` です。
 
 ## <a name="context-object"></a>context オブジェクト
-ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。 コンテキスト オブジェクトは、バインドからのデータの読み取りや設定、ログの書き込み、およびエクスポートされた関数が同期である場合の `context.done` コールバックに使用できます。
 
-`context` オブジェクトは、常に関数の最初のパラメーターです。 `context.done` や `context.log` などの重要なメソッドがあるので、必ず含める必要があります。 オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
+ランタイムは `context` オブジェクトを使用して、関数とランタイムとの間でデータを受け渡します。 バインドからのデータの読み取りと設定や、ログへの書き込みのために使用される `context` オブジェクトは常に、関数に渡される最初のパラメーターです。
+
+同期コードを備えた関数の場合は、context オブジェクトに、その関数が処理を完了したときに呼び出す `done` コールバックが含まれています。 非同期コードを記述する場合は、`done` を明示的に呼び出す必要はありません。`done` コールバックは暗黙的に呼び出されます。
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+関数に渡されるコンテキストでは、次のプロパティを持つオブジェクトである `executionContext` プロパティが公開されます。
+
+| プロパティ名  | Type  | 説明 |
+|---------|---------|---------|
+| `invocationId` | String | 特定の関数呼び出しのための一意識別子を提供します。 |
+| `functionName` | String | 実行中の関数の名前を提供します。 |
+| `functionDirectory` | String | 関数のアプリ ディレクトリを提供します。 |
+
+次の例は、`invocationId` を返す方法を示しています。
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 
@@ -247,7 +270,7 @@ context.done([err],[propertyBag])
 
 ランタイムにコードが完了したことを知らせます。 関数で [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言を使用する場合、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。 非同期関数は Node 8 以降のバージョンで使用できますが、それにはバージョン 2.x の Functions ランタイムが必要です。
 
-関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために**呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
+関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために **呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
 
 `context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。
 
@@ -267,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
+既定のトレース レベルでストリーミング関数ログに書き込むことができます。他のログ レベルも使用できます。 トレース ログの詳細については、次のセクションを参照してください。 
 
+## <a name="write-trace-output-to-logs"></a>トレース出力をログに書き込む
 
-| Method                 | 説明                                |
-| ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
-| **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
-| **info(_message_)**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
-| **verbose(_message_)** | 詳細なレベルのログに書き込みます。           |
+Functions で、`context.log` メソッドを使用してトレース出力をログとコンソールに書き込みます。 `context.log()` を呼び出すと、既定のトレース レベルである、"_情報_" トレース レベルでログにメッセージが書き込まれます。 Functions は Azure Application Insights と統合されているため、関数アプリのログをより適切にキャプチャすることができます。 Azure Monitor の一部である Application Insights では、アプリケーション テレメトリとトレース出力の両方を収集、視覚的に表示、分析するための機能を使用できます。 詳細については、「[Azure Functions の監視](functions-monitoring.md)」を参照してください。
 
-次の例では、警告トレース レベルでログを書き込んでいます。
+次の例では、情報トレース レベルで呼び出し ID を含む、ログを書き込んでいます。
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-host.json ファイルでは、[ログに対するトレース レベルのしきい値を構成する](#configure-the-trace-level-for-console-logging)ことができます。 ログの書き込みについて詳しくは、後の「[トレース出力をコンソールに書き込む](#writing-trace-output-to-the-console)」をご覧ください。
-
-関数のログの表示とクエリについて詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。
-
-## <a name="writing-trace-output-to-the-console"></a>トレース出力をコンソールに書き込む 
-
-関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 Functions v2.x では、`console.log` を使用するトレース出力は Function App レベルでキャプチャされます。 つまり、`console.log` からの出力は特定の関数呼び出しに関連付けられておらず、特定の関数のログには表示されません。 ただし、Application Insights に伝達されます。 Functions v1.x では、`console.log` を使用してコンソールに書き込むことはできません。
-
-`context.log()` を呼び出すと、既定のトレース レベルである、_情報_ トレース レベルでコンソールにメッセージが書き込まれます。 次のコードは、情報トレース レベルでコンソールに書き込みます。
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-次のコードは、上記のコードと同等です。
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-このコードは、エラー レベルでコンソールに書き込みます。
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。
 
 すべての `context.log` メソッドは、Node.js の [util.format メソッド](https://nodejs.org/api/util.html#util_util_format_format)でサポートされているのと同じパラメーター形式をサポートしています。 既定のトレース レベルを使用して関数ログに書き込む次のようなコードについて考えます。
 
@@ -325,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>コンソール ログのトレース レベルを構成する
+> [!NOTE]  
+> トレース出力の書き込みには、`console.log` を使用しないでください。 `console.log` からの出力は関数アプリ レベルでキャプチャされるため、特定の関数呼び出しには関連付けられておらず、特定の関数のログには表示されません。 また、Functions ランタイムのバージョン 1.x では、`console.log` を使用したコンソールへの書き込みはサポートされていません。
 
-関数 1.x を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
+### <a name="trace-levels"></a>トレース レベル
+
+既定のレベルに加えて、特定のトレース レベルで関数のログを書き込むことができる次の追加のログ記録メソッドがあります。
+
+| メソッド                 | 説明                                |
+| ---------------------- | ------------------------------------------ |
+| **error(_message_)**   | ログにエラーレベルのイベントを書き込みます。   |
+| **warn(_message_)**    | 警告レベルのイベントをログに書き込みます。 |
+| **info(_message_)**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
+| **verbose(_message_)** | 詳細なレベルのログに書き込みます。           |
+
+次の例では、情報レベルではなく、警告トレース レベルで同じログを書き込みます。
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。
+
+### <a name="configure-the-trace-level-for-logging"></a>ログ記録のトレース レベルを構成する
+
+Fuctions を使用して、ログまたはコンソールに書き込むためのしきい値のトレース レベルを定義できます。 具体的なしきい値の設定は、使用している Functions ランタイムのバージョンによって異なります。
+
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+ログに書き込まれるトレースのしきい値を設定するには、host.json ファイルの `logging.logLevel` プロパティを使用します。 この JSON オブジェクトを使用すると、関数アプリのすべての関数に既定のしきい値を定義できます。また、個々の関数に対して特定のしきい値を定義することもできます。 詳しくは、[Azure Functions で監視を構成する](configure-monitoring.md)方法に関するページを参照してください。
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+ログおよびコンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
 
 ```json
 {
@@ -337,7 +358,65 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 }  
 ```
 
-**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json](functions-host-json-v1.md) のリファレンスを参照してください。
+**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json v1.x のリファレンス](functions-host-json-v1.md)を参照してください。
+
+---
+
+### <a name="log-custom-telemetry"></a>カスタム テレメトリをログに記録する
+
+既定では、出力は Functions によってトレースとして Application Insights に書き込まれます。 より細かく制御するには、代わりに [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) を使用して、Application Insights インスタンスにカスタム テレメトリ データを送信することもできます。 
+
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+`tagOverrides` パラメーターにより、関数の呼び出し ID に `operation_Id` を設定します。 この設定により、特定の関数呼び出しについての自動生成されたテレメトリとカスタム テレメトリをすべて関連付けることができます。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP トリガーとバインディング
 
@@ -347,7 +426,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.req` (要求) オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | [説明]                                                    |
+| プロパティ      | 説明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -362,7 +441,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.res` (応答) オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | [説明]                                               |
+| プロパティ  | 説明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -414,7 +493,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 
 ## <a name="scaling-and-concurrency"></a>スケーリングと同時性
 
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](event-driven-scaling.md)」をご覧ください。
 
 ほとんどの Node.js アプリケーションでは、このスケーリング動作で十分です。 CPUにバインドされたアプリケーションの場合、複数の言語ワーカープロセスを使用して、パフォーマンスをさらに向上させることができます。
 
@@ -429,12 +508,20 @@ FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーション�
 | Functions バージョン | Node バージョン (Windows) | Node バージョン (Linux) |
 |---|---| --- |
 | 1.x | 6.11.2 (ランタイムによりロック) | 該当なし |
-| 2.x  | ~8<br/>~10 (推奨)<br/>~12<sup>*</sup> | ~8 (推奨)<br/>~10  |
-| 3.x | ~10<br/>~12 (推奨)  | ~10<br/>~12 (推奨) |
+| 2.x  | `~8`<br/>`~10` (推奨)<br/>`~12` | `node|8`<br/>`node|10` (推奨)  |
+| 3.x | `~10`<br/>`~12` (推奨)<br/>`~14` (プレビュー)  | `node|10`<br/>`node|12` (推奨)<br/>`node|14` (プレビュー) |
 
-<sup>*</sup>Node ~12 は現在、Functions ランタイムのバージョン 2.x で許可されています。 ただし、最適なパフォーマンスを得るには、Node ~12 の Functions ランタイム バージョン 3.x を使用することをお勧めします。 
+ランタイムが使用している現在のバージョンを確認するには、任意の関数から `process.version` をログに記録します。
 
-ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を、サポートされている LTS バージョン (`~10` など) に設定して、Azure のバージョンをターゲットにします。
+### <a name="setting-the-node-version"></a>Node のバージョンを設定する
+
+Windows 関数アプリの場合は、`WEBSITE_NODE_DEFAULT_VERSION` [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)をサポートされている LTS バージョン (`~12` など) に設定して、Azure のバージョンをターゲットにします。
+
+Linux 関数アプリの場合は、次の Azure CLI コマンドを実行して、Node のバージョンを更新します。
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>依存関係の管理
 JavaScript コードでコミュニティ ライブラリを使用するには、次の例で示すように、Azure 内の関数アプリにすべての依存関係がインストールされている必要があります。
@@ -471,26 +558,47 @@ module.exports = function(context) {
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
     関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
 
-4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。  
+4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール** で `npm install` コマンドを実行します。  
     この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
 
 ## <a name="environment-variables"></a>環境変数
 
-Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 2 つ目と 3 つ目の `context.log()` の呼び出しで示されているように、`process.env`を使用してこれらの設定にアクセスできます。ここでは `AzureWebJobsStorage` と `WEBSITE_SITE_NAME` の環境変数をログに記録します。
+ローカル環境とクラウド環境の両方で、運用シークレット (接続文字列、キー、エンドポイント) や環境設定 (プロファイル変数など) など、独自の環境変数を関数アプリに追加します。 これらの設定には、関数コードで `process.env` を使用してアクセスします。
+
+### <a name="in-local-development-environment"></a>ローカル開発環境
+
+ローカルで実行されている場合は、関数プロジェクトに [`local.settings.json` ファイル](/azure/azure-functions/functions-run-local)が含まれています。このファイルに、`Values` オブジェクトの環境変数が格納されます。 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>Azure クラウド環境
+
+Azure で実行されている場合は、関数アプリで[アプリケーション設定](functions-app-settings.md) (サービス接続文字列など) を使用し、これらの設定を実行時に環境変数として公開できます。 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>コードの環境変数にアクセスする
+
+2 つ目と 3 つ目の `context.log()` の呼び出しで示されているように、`process.env` を使用して環境変数としてアプリケーション設定にアクセスします。ここで、`AzureWebJobsStorage` と `WEBSITE_SITE_NAME` の環境変数がログに記録されます。
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-ローカルで実行する場合、アプリ設定は [local.settings.json](functions-run-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
 
 ## <a name="configure-function-entry-point"></a>関数のエントリ ポイントを構成する
 
@@ -572,7 +680,7 @@ VS Code を使用してデバッグするときは、プロジェクトの launc
 
 ## <a name="typescript"></a>TypeScript
 
-Functions ランタイムのバージョン 2.x を対象とする場合、[Visual Studio Code 用の Azure Functions](functions-create-first-function-vs-code.md) と [Azure Functions Core Tools](functions-run-local.md) の両方によって、TypeScript 関数アプリ プロジェクトをサポートするテンプレートを使用して関数アプリを作成することができます。 テンプレートは、`package.json` および `tsconfig.json` プロジェクト ファイルを生成します。これらのプロジェクト ファイルは、これらのツールによって TypeScript コードから JavaScript 関数のトランスパイル、実行、発行を容易にします。
+Functions ランタイムのバージョン 2.x を対象とする場合、[Visual Studio Code 用の Azure Functions](./create-first-function-cli-typescript.md) と [Azure Functions Core Tools](functions-run-local.md) の両方によって、TypeScript 関数アプリ プロジェクトをサポートするテンプレートを使用して関数アプリを作成することができます。 テンプレートは、`package.json` および `tsconfig.json` プロジェクト ファイルを生成します。これらのプロジェクト ファイルは、これらのツールによって TypeScript コードから JavaScript 関数のトランスパイル、実行、発行を容易にします。
 
 生成された `.funcignore` ファイルは、プロジェクトが Azure に発行されるときに除外するファイルを指定するために使用します。  
 
@@ -641,7 +749,7 @@ App Service プランを使用する関数アプリを作成するときは、�
 
 ### <a name="cold-start"></a>コールド スタート
 
-サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート*とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
+サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート* とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
 
 ### <a name="connection-limits"></a>接続の制限
 

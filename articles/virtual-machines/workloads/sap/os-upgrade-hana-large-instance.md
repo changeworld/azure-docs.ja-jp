@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192418"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608692"
 ---
 # <a name="operating-system-upgrade"></a>オペレーティング システムのアップグレード
 このドキュメントでは､HANA ラージ インスタンスでのオペレーティング システムについての詳細を説明します｡
@@ -26,10 +27,13 @@ ms.locfileid: "82192418"
 >[!NOTE]
 >OS のアップグレードはお客様の責任です｡Microsoft の運用サポートができることは､アップグレード中にどのような点に注意を払うべきかについてお答えすることです｡ アップグレードを計画する前にオペレーティング システムのベンダーにも相談するようにしてください｡
 
+> [!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 HLI ユニットのプロビジョニング中に、Microsoft の運用チームはオペレーティング システムをインストールします。
 時間の経過と共に、HLI ユニット上でオペレーティング システムを保守することが必要になります (パッチ適用、チューニング、アップグレードなど)。
 
-オペレーティング システムの大幅な変更 (SP1 から SP2 へのアップグレードなど) を行う前に、サポート チケットを開いて Microsoft Operations チームに連絡し、相談する必要があります。
+オペレーティング システムの大幅な変更 (SP1 から SP2 へのアップグレードなど) を行う前に、サポート チケットを開いて Microsoft Operations チームに連絡し、相談してください。
 
 チケットに含める:
 
@@ -38,11 +42,9 @@ HLI ユニットのプロビジョニング中に、Microsoft の運用チーム
 * 適用を予定しているパッチ レベル。
 * この変更を予定している日付。 
 
-運用チームがサーバー ブレードでファームウェア アップグレードが必要になるかどうかを確認できるように、希望するアップグレード日付の少なくとも 1 週間前にこのチケットを開くことをお勧めします。
-
+希望するアップグレードの少なくとも 1 週間前にこのチケットを開くことをお勧めします。これにより、必要なファームウェア バージョンについて運用チームが把握できるようになります。
 
 各種 Linux バージョンと各種 SAP HANA バージョンのサポート マトリックスについては、[SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581) を確認してください。
-
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -55,16 +57,17 @@ HLI ユニットのプロビジョニング中に、Microsoft の運用チーム
 オペレーティングシステムの構成は、修正プログラムの適用、システムのアップグレード、顧客による変更により、時間の経過と共に、推奨される設定から逸脱する可能性があります。 また、Microsoft では、最適なパフォーマンスと回復性を確保するために、既存のシステムに必要な更新プログラムを特定しています。 次の手順では、ネットワーク パフォーマンス、システムの安定性、および最適な HANA パフォーマンスに関する推奨事項の概要を示します。
 
 ### <a name="compatible-enicfnic-driver-versions"></a>互換性のある eNIC/fNIC ドライバーのバージョン
-  適切なネットワークパフォーマンスとシステムの安定性を確保するために、次の互換性表に示すように、OS 固有の適切なバージョンの eNIC および fNIC ドライバーがインストールされていることを確認することをお勧めします。 サーバーは、互換性のあるバージョンの顧客に配信されます。 OS/カーネルの修正プログラムの適用中に、ドライバーが既定のドライバー バージョンにロールバックされる場合があります。 OS/カーネルの修正プログラム適用操作の実行中に、適切なドライバーのバージョンが実行されていることを確認します。
+  適切なネットワーク パフォーマンスとシステムの安定性を確保するために、次の互換性に関する表に示すように、OS 固有の適切なバージョンの eNIC および fNIC ドライバーがインストールされていることを確認することをお勧めします。 サーバーは、互換性のあるバージョンの顧客に配信されます。 OS/カーネルの修正プログラムの適用中に、ドライバーが既定のドライバー バージョンにロールバックされる場合があります。 OS/カーネルの修正プログラム適用後に、適切なドライバーのバージョンが実行されていることを確認してください。
        
       
   |  OS ベンダー    |  OS パッケージ バージョン     |  Firmware Version  |  eNIC ドライバー |  fNIC ドライバー | 
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3i           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3i           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3i           |  2.3.0.45    |   1.6.0.37   |
-  |   SuSE        |  SLES 12 SP3            |   3.2.3i           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3i           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP5            |   3.2.3i           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7.2               |   3.1.3h           |  2.3.0.39    |   1.6.0.34   |
  
 
@@ -88,6 +91,15 @@ rpm -ivh <enic/fnic.rpm>
 modinfo enic
 modinfo fnic
 ```
+
+#### <a name="steps-for-enicfnic-drivers-installation-during-os-upgrade"></a>OS のアップグレード中に eNIC/fNIC ドライバーをインストールする手順
+
+* OS バージョンをアップグレードします
+* 古い rpm パッケージを削除します
+* インストールされている OS バージョンに合わせて、互換性のある eNIC/fNIC ドライバーをインストールします
+* システムを再起動します
+* 再起動後に、eNIC/fNIC のバージョンを確認します
+
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB 更新エラー
 アップグレード後、SAP on Azure HANA L インスタンス (タイプ I) は起動不可能な状態になることがあります。 以下の手順で、この問題を修正します。
@@ -117,7 +129,6 @@ blacklist edac_core
 ```
 変更を行うには、再起動が必要です。 `lsmod` コマンドを実行し、出力にモジュールが存在しないことを確認します。
 
-
 ### <a name="kernel-parameters"></a>カーネル パラメーター
    `transparent_hugepage`、`numa_balancing`、`processor.max_cstate`、`ignore_ce`、および `intel_idle.max_cstate` の正しい設定が適用されていることを確認します。
 
@@ -126,7 +137,6 @@ blacklist edac_core
 * transparent_hugepage=never
 * numa_balancing=disable
 * mce=ignore_ce
-
 
 #### <a name="execution-steps"></a>実行ステップ
 

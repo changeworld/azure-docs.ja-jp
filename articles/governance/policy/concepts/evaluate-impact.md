@@ -1,18 +1,18 @@
 ---
 title: 新しい Azure ポリシー定義の影響を評価する
 description: Azure 環境に新しいポリシー定義を導入するときの手順について説明します。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544704"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873869"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>新しい Azure ポリシー定義の影響を評価する
 
-Azure Policy は、Azure リソースをビジネス標準に合わせて管理し、コンプライアンス ニーズに対応するための強力なツールです。 ユーザー、プロセス、またはパイプラインによってリソースが作成または更新されるときに、Azure Policy によって要求が確認されます。 ポリシー定義の効果が [Append](./effects.md#deny) または [DeployIfNotExists](./effects.md#deployifnotexists) の場合は、ポリシーによって要求が変更されるか、または追加されます。 ポリシー定義の効果が [Audit](./effects.md#audit) または [AuditIfNotExists](./effects.md#auditifnotexists) の場合は、ポリシーによってアクティビティ ログ エントリが作成されます。 また、ポリシー定義の効果が [Deny](./effects.md#deny) の場合は、ポリシーによって要求の作成または変更が停止されます。
+Azure Policy は、Azure リソースをビジネス標準に合わせて管理し、コンプライアンス ニーズに対応するための強力なツールです。 ユーザー、プロセス、またはパイプラインによってリソースが作成または更新されるときに、Azure Policy によって要求が確認されます。 ポリシー定義の効果が [Modify](./effects.md#modify)、[Append](./effects.md#deny)、または [DeployIfNotExists](./effects.md#deployifnotexists) の場合は、ポリシーによって要求が変更されるか、または追加されます。 ポリシー定義の効果が [Audit](./effects.md#audit) または [AuditIfNotExists](./effects.md#auditifnotexists) の場合は、ポリシーによって、新規および更新されたリソースに対してアクティビティ ログ エントリが作成されます。 また、ポリシー定義の効果が [Deny](./effects.md#deny) の場合は、ポリシーによって要求の作成または変更が停止されます。
 
 これらの結果は、ポリシーが正しく定義されていることがわかっている場合にのみ必要です。 ただし、新しいポリシーによって作業が変更されたりブロックされたりする前に、ポリシーが意図したとおりに動作することを検証することが重要です。 検証では、意図したリソースのみが非準拠であると判断され、準拠しているリソースが誤って結果に含まれないことを確認する必要があります ("_擬陽性_" と呼ばれます)。
 

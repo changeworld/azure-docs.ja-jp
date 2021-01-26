@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124053"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196080"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。
@@ -37,7 +37,7 @@ ms.locfileid: "85124053"
 
 キーの保護は、クラウドでのデータ保護に不可欠です。
 
-[Azure Key Vault](/azure/key-vault/key-vault-overview) は、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault は、キー管理プロセスを合理化し、データにアクセスして暗号化するキーの制御を維持できます。 開発者は、開発やテスト用のキーを数分で作成し、それらを実稼働キーに移行できます。 セキュリティ管理者は、必要に応じて、キーに権限を付与する (取り消す) ことができます。
+[Azure Key Vault](../../key-vault/general/overview.md) は、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault は、キー管理プロセスを合理化し、データにアクセスして暗号化するキーの制御を維持できます。 開発者は、開発やテスト用のキーを数分で作成し、それらを実稼働キーに移行できます。 セキュリティ管理者は、必要に応じて、キーに権限を付与する (取り消す) ことができます。
 
 Key Vault を使用して、コンテナーと呼ばれるセキュリティで保護されたコンテナーを複数作成できます。 これらのコンテナーは、HSM によってバックアップされます。 コンテナーでは、アプリケーション シークレットを一元的に保管することで、セキュリティ情報が過って失われる可能性は低くなります。 さらに、キー コンテナーでは、その中に格納されているすべての情報へのアクセスの制御と記録を行います。 Azure Key Vault は、トランスポート層セキュリティ (TLS) 証明書の要求と更新を処理できます。 堅牢なソリューションに対して証明書のライフ サイクルを管理するための機能を提供します。
 
@@ -46,21 +46,21 @@ Azure Key Vault は、アプリケーション キーとシークレットをサ
 Key Vault を使用するためのセキュリティのベスト プラクティスを次に示します。
 
 **ベスト プラクティス**: 特定のスコープでユーザー、グループ、およびアプリケーションにアクセス権を付与する。   
-**詳細**: RBAC の定義済みロールを使用します。 たとえば、キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みのロールであ [キー コンテナーの共同作成者](/azure/role-based-access-control/built-in-roles)を特定のスコープでそのユーザーに割り当てます。 この場合のスコープは、サブスクリプション、リソース グループ、または特定のキー コンテナーになります。 定義済みのロールがニーズに合わない場合は、[独自のロールを定義](/azure/role-based-access-control/custom-roles)できます。
+**詳細**: Azure RBAC の定義済みロールを使用します。 たとえば、キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みのロールであ [キー コンテナーの共同作成者](../../role-based-access-control/built-in-roles.md)を特定のスコープでそのユーザーに割り当てます。 この場合のスコープは、サブスクリプション、リソース グループ、または特定のキー コンテナーになります。 定義済みのロールがニーズに合わない場合は、[独自のロールを定義](../../role-based-access-control/custom-roles.md)できます。
 
 **ベスト プラクティス**: ユーザーが所有するアクセス権を制御する。   
 **詳細**: キー コンテナーへのアクセスは、2 つの独立したインターフェイス (管理プレーンとデータ プレーン) を使って制御します。 管理プレーンとデータ プレーンのアクセス制御は独立して動作します。
 
-RBAC を使用して、ユーザーが所有するアクセス権を制御します。 たとえば、キー コンテナー内のキーを使用するためのアクセス権をアプリケーションに付与する場合は、キー コンテナー アクセス ポリシーを使用して、データ プレーンのアクセス許可のみを付与する必要があります。このアプリケーションには、管理プレーンへのアクセスは必要ありません。 逆に、ユーザーがコンテナーのプロパティやタグを読み取ることができるが、キー、シークレット、証明書にはアクセスできないようにする場合は、RBAC を使用してそのユーザーに読み取りアクセス権を付与します。データ プレーンへのアクセスは必要ありません。
+Azure RBAC を使用して、ユーザーが所有するアクセス権を制御します。 たとえば、キー コンテナー内のキーを使用するためのアクセス権をアプリケーションに付与する場合は、キー コンテナー アクセス ポリシーを使用して、データ プレーンのアクセス許可のみを付与する必要があります。このアプリケーションには、管理プレーンへのアクセスは必要ありません。 逆に、ユーザーがコンテナーのプロパティやタグを読み取ることができるが、キー、シークレット、証明書にはアクセスできないようにする場合は、Azure RBAC を使用してそのユーザーに読み取りアクセス権を付与します。データ プレーンへのアクセスは必要ありません。
 
 **ベスト プラクティス**: キー コンテナーに証明書を格納する。 お客様の証明書には高い価値があります。 悪人の手に渡れば、お客様のアプリケーションのセキュリティやデータのセキュリティが侵害される可能性があります。   
-**詳細**: Azure Resource Manager では、Azure VM がデプロイされるときに、Azure Key Vault に格納されている証明書をその VM に安全にデプロイできます。 キー コンテナー用の適切なアクセス ポリシーを設定することで、誰が証明書にアクセスできるかを制御することもできます。 別のメリットは、すべての証明書を Azure Key Vault の 1 か所で管理できることです。 詳細については、「[Deploy certificates to VMs from a customer-managed key vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)」(ユーザーが管理する Key Vault から VM に証明書をデプロイする) を参照してください。
+**詳細**: Azure Resource Manager では、Azure VM がデプロイされるときに、Azure Key Vault に格納されている証明書をその VM に安全にデプロイできます。 キー コンテナー用の適切なアクセス ポリシーを設定することで、誰が証明書にアクセスできるかを制御することもできます。 別のメリットは、すべての証明書を Azure Key Vault の 1 か所で管理できることです。 詳細については、「[Deploy certificates to VMs from a customer-managed key vault](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault)」(ユーザーが管理する Key Vault から VM に証明書をデプロイする) を参照してください。
 
 **ベスト プラクティス**: キー コンテナーまたはキー コンテナー オブジェクトが削除された場合に回復できることを確認する。   
 **詳細**: 不注意や悪意によってキー コンテナーまたはキー コンテナー オブジェクトが削除される可能性があります。 Key Vault のソフト削除と消去保護機能を有効にしてください。保存データを暗号化するために使用されるキーに対しては必ず有効にしてください。 これらのキーの削除はデータ損失に相当するため、必要に応じて、削除されたコンテナーとコンテナー オブジェクトを回復できます。 Key Vault の回復操作を定期的に実行してください。
 
 > [!NOTE]
-> ユーザーがキー コンテナーの管理プレーンに対する共同作成者権限 (RBAC) を持っている場合は、キー コンテナー アクセス ポリシーを設定することで、データ プレーンへのアクセス権を自分自身に付与できます。 キー コンテナーに対する共同作成者アクセス権を持つユーザーを厳重に管理して、承認されたユーザーのみがキー コンテナー、キー、シークレット、および証明書にアクセスして管理できるようにすることをお勧めします。
+> ユーザーがキー コンテナーの管理プレーンに対する共同作成者権限 (Azure RBAC) を持っている場合は、キー コンテナー アクセス ポリシーを設定することで、データ プレーンへのアクセス権を自分自身に付与できます。 キー コンテナーに対する共同作成者アクセス権を持つユーザーを厳重に管理して、承認されたユーザーのみがキー コンテナー、キー、シークレット、および証明書にアクセスして管理できるようにすることをお勧めします。
 >
 >
 
@@ -74,7 +74,7 @@ RBAC を使用して、ユーザーが所有するアクセス権を制御しま
 ほとんどの攻撃はエンド ユーザーを標的としているため、エンドポイントが主要な攻撃目標の 1 つとなっています。 エンドポイントをセキュリティ侵害する攻撃者は、ユーザーの資格情報を悪用して組織のデータにアクセスする可能性があります。 ほとんどのエンドポイント攻撃は、ユーザーがローカル ワークステーションの管理者であるという事実を悪用しています。
 
 **ベスト プラクティス**: セキュリティで保護された管理ワークステーションを使用して、機微なアカウント、タスク、およびデータを保護する。   
-**詳細**: ワークステーションの攻撃対象領域を減らすために、[特権アクセスを提供するワークステーション](https://technet.microsoft.com/library/mt634654.aspx)を使用します。 このようなセキュリティで保護された管理ワークステーションを使用することで、攻撃を受ける可能性を減らし、データの安全性を高めることができます。
+**詳細**: ワークステーションの攻撃対象領域を減らすために、[特権アクセスを提供するワークステーション](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)を使用します。 このようなセキュリティで保護された管理ワークステーションを使用することで、攻撃を受ける可能性を減らし、データの安全性を高めることができます。
 
 **ベスト プラクティス**: エンドポイントが保護されていることを保証する。   
 **詳細**: データの保存先 (クラウドまたはオンプレミス) に関わらず、データを利用するすべてのデバイスにセキュリティ ポリシーを必ず適用します。
@@ -84,7 +84,7 @@ RBAC を使用して、ユーザーが所有するアクセス権を制御しま
 データ プライバシー、コンプライアンス、データ主権を確保するうえで、[保存データの暗号化](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。
 
 **ベスト プラクティス**: データを保護するためにディスク暗号化を適用する。   
-**詳細**: [Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) を使用します。 IT 管理者は、それを使用して、Windows と Linux の IaaS VM のディスクを暗号化できます。 Disk Encryption は、業界標準である Windows の BitLocker 機能と Linux の dm-crypt 機能を組み合わせて、OS ディスクとデータ ディスクのボリューム暗号化を行う機能です。
+**詳細**: [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) を使用します。 IT 管理者は、それを使用して、Windows と Linux の IaaS VM のディスクを暗号化できます。 Disk Encryption は、業界標準である Windows の BitLocker 機能と Linux の dm-crypt 機能を組み合わせて、OS ディスクとデータ ディスクのボリューム暗号化を行う機能です。
 
 Azure Storage と Azure SQL Database では、保存データは既定で暗号化され、多くのサービス プランでは、暗号化はオプションとして提供されます。 Azure Key Vault を使用して、データへのアクセスと暗号化を行うキーの制御を維持できます。 詳細については、「[Azure リソース プロバイダー暗号化モデルのサポート](encryption-atrest.md#azure-resource-providers-encryption-model-support)」を参照してください。
 
@@ -102,18 +102,18 @@ Azure Storage と Azure SQL Database では、保存データは既定で暗号�
 Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プラクティスを次に示します。
 
 **ベスト プラクティス**: オンプレミスの複数のワークステーションから Azure 仮想ネットワークへのアクセスをセキュリティで保護する。   
-**詳細**: [サイト間 VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) を使用します。
+**詳細**: [サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) を使用します。
 
 **ベスト プラクティス**: オンプレミスの個々のワークステーションから Azure 仮想ネットワークへのアクセスをセキュリティで保護する。   
-**詳細**: [ポイント対サイト VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) を使用します。
+**詳細**: [ポイント対サイト VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) を使用します。
 
 **ベスト プラクティス**: 大規模なデータ セットは、専用の高速 WAN リンク経由で移動する。   
-**詳細**: [ExpressRoute](/azure/expressroute/expressroute-introduction) を使用します。 ExpressRoute を使用する場合、SSL/TLS などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらに保護を強化できます。
+**詳細**: [ExpressRoute](../../expressroute/expressroute-introduction.md) を使用します。 ExpressRoute を使用する場合、SSL/TLS などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらに保護を強化できます。
 
 **ベスト プラクティス**: Azure portal を通して Azure Storage を操作する。   
-**詳細**: すべてのトランザクションは HTTPS 経由で行われます。 また、HTTPS 経由で [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) を使用して [Azure Storage](https://azure.microsoft.com/services/storage/) を操作することもできます。
+**詳細**: すべてのトランザクションは HTTPS 経由で行われます。 また、HTTPS 経由で [Storage REST API](/rest/api/storageservices/) を使用して [Azure Storage](https://azure.microsoft.com/services/storage/) を操作することもできます。
 
-転送中のデータを保護しない組織は、[中間者攻撃](https://technet.microsoft.com/library/gg195821.aspx)、[盗聴](https://technet.microsoft.com/library/gg195641.aspx)、およびセッション ハイジャックを受ける可能性が高くなります。 このような攻撃は、機密データへのアクセスを取得するための最初の手順として実行される場合があります。
+転送中のデータを保護しない組織は、[中間者攻撃](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14))、[盗聴](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))、およびセッション ハイジャックを受ける可能性が高くなります。 このような攻撃は、機密データへのアクセスを取得するための最初の手順として実行される場合があります。
 
 ## <a name="secure-email-documents-and-sensitive-data"></a>電子メール、ドキュメント、および機微なデータをセキュリティで保護する
 
@@ -138,5 +138,5 @@ Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プ
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+* [Azure セキュリティ チーム ブログ](/archive/blogs/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
 * [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。

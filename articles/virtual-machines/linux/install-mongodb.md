@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e3bc8ed2745e06096e05f17319a8f7896f87f80f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504621"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702040"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
 
@@ -125,10 +125,10 @@ GitHub にある次の Azure クイックスタート テンプレートを使�
 az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment) を実行して MongoDB テンプレートをデプロイします。 メッセージが表示されたら、*newStorageAccountName*、*dnsNameForPublicIP*、管理者ユーザーとパスワードに独自の一意の値を入力します。
+次に、[az deployment group create](/cli/azure/deployment/group) を実行して MongoDB テンプレートをデプロイします。 メッセージが表示されたら、*newStorageAccountName*、*dnsNameForPublicIP*、管理者ユーザーとパスワードに独自の一意の値を入力します。
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
@@ -176,10 +176,10 @@ GitHub にある次の Azure クイックスタート テンプレートを使�
 az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment) を実行して MongoDB テンプレートをデプロイします。 *mongoAdminUsername*、*sizeOfDataDiskInGB*、*configNodeVmSize* など、必要な箇所で独自のリソース名とサイズを定義します。
+次に、[az deployment group create](/cli/azure/deployment/group) を実行して MongoDB テンプレートをデプロイします。 *mongoAdminUsername*、*sizeOfDataDiskInGB*、*configNodeVmSize* など、必要な箇所で独自のリソース名とサイズを定義します。
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --parameters '{"adminUsername": {"value": "azureuser"},
     "adminPassword": {"value": "P@ssw0rd!"},
     "mongoAdminUsername": {"value": "mongoadmin"},
@@ -198,10 +198,10 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-すべての VM インスタンスのデプロイと構成には 1 時間以上かかることがあります。 前のコマンドの最後で `--no-wait` フラグを使用しているので、Azure プラットフォームでテンプレートのデプロイが受け入れられたら、コマンド プロンプトの制御権が戻ります。 そこで [az group deployment show](/cli/azure/group/deployment) を実行してデプロイの状態を確認できます。 次の例では、*myResourceGroup* リソース グループの *myMongoDBCluster* デプロイメントの状態を表示します。
+すべての VM インスタンスのデプロイと構成には 1 時間以上かかることがあります。 前のコマンドの最後で `--no-wait` フラグを使用しているので、Azure プラットフォームでテンプレートのデプロイが受け入れられたら、コマンド プロンプトの制御権が戻ります。 そこで [az deployment group show](/cli/azure/deployment/group) を実行してデプロイの状態を確認できます。 次の例では、*myResourceGroup* リソース グループの *myMongoDBCluster* デプロイメントの状態を表示します。
 
 ```azurecli
-az group deployment show \
+az deployment group show \
     --resource-group myResourceGroup \
     --name myMongoDBCluster \
     --query [properties.provisioningState] \

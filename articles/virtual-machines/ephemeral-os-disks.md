@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837110"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510993"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -34,7 +34,7 @@ ms.locfileid: "87837110"
 
 |                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ**については、[DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
+| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ** については、[DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
 | **サポート対象の VM サイズ**          | All                                                                                          | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M などの VM サイズ                                               |
 | **サポート対象のディスクの種類**           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
 | **リージョンのサポート**              | すべてのリージョン                                                                                  | すべてのリージョン                              |
@@ -42,7 +42,8 @@ ms.locfileid: "87837110"
 | **停止と割り当て解除**      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
 | **特殊化された OS ディスクのサポート** | はい                                                                                          | いいえ                                                                                 |
 | **OS ディスクのサイズ変更**              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
-| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
+| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング       
+| **ページ ファイルの配置**   | Windows の場合、ページ ファイルはリソース ディスクに格納されます                                              | Windows の場合、ページ ファイルは OS ディスクに格納されます   |
 
 ## <a name="size-requirements"></a>サイズの要件
 
@@ -51,7 +52,7 @@ VM およびインスタンス イメージは、最大で VM キャッシュの
 また、エフェメラル ディスクでは、VM サイズで Premium Storage がサポートされていることも必要です。 通常 (常にではありませんが)、 サイズには DSv2 や EsV3 のように名前に `s` があります。 詳細については、[Azure の VM サイズ](sizes.md)に関する記事で Premium Storage をサポートするサイズの詳細を参照してください。
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>プレビュー - エフェメラル OS ディスクを一時ディスクに保存できるようになりました
-エフェメラル OS ディスクは、VM キャッシュに加え、VM の一時ディスクまたはリソース ディスクに保存できるようになりました。 つまり、これからは、VM にキャッシュがないか、キャッシュが十分でなくても、Dav3、Dav4、Eav4、Eav3 など、エフェメラル OS ディスクを保存する一時ディスクまたはリソース ディスクがあれば、エフェメラル OS ディスクを使用できます。 また、VM に十分なキャッシュと一時領域がある場合、[DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) という名前の新しいプロパティを使用し、エフェメラル OS ディスクを格納する場所を指定できるようになります。 現在、この機能はプレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 始めるには、[アクセスをリクエスト](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)してください。
+エフェメラル OS ディスクは、VM キャッシュに加え、VM の一時ディスクまたはリソース ディスクに保存できるようになりました。 つまり、これからは、VM にキャッシュがないか、キャッシュが十分でなくても、Dav3、Dav4、Eav4、Eav3 など、エフェメラル OS ディスクを保存する一時ディスクまたはリソース ディスクがあれば、エフェメラル OS ディスクを使用できます。 また、VM に十分なキャッシュと一時領域がある場合、[DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) という名前の新しいプロパティを使用し、エフェメラル OS ディスクを格納する場所を指定できるようになります。 この機能を使用すると、Windows VM がプロビジョニングされる場合に、OS ディスクに配置されるページファイルが構成されます。 現在、この機能はプレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 始めるには、[アクセスをリクエスト](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)してください。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -85,7 +86,7 @@ az vm create \
 
 スケール セットの場合は、[az-vmss-create](/cli/azure/vmss#az-vmss-create) に同じ `--ephemeral-os-disk true` パラメーターを使用し、`--os-disk-caching` パラメーターを `ReadOnly` に設定します。
 
-## <a name="portal"></a>ポータル   
+## <a name="portal"></a>ポータル
 
 Azure portal で、 **[ディスク]**  タブの **[詳細設定]** セクションを開いて VM をデプロイするときに、エフェメラル ディスクの使用を選択できます。 **[エフェメラル OS ディスクの使用]\(Use ephemeral OS disk\)** で **[はい]** を選択します。
 
@@ -119,7 +120,7 @@ Azure portal で、 **[ディスク]**  タブの **[詳細設定]** セクシ�
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

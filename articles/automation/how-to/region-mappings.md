@@ -1,27 +1,29 @@
 ---
 title: リンクされた Log Analytics ワークスペースでサポートされるリージョン
-description: この記事では、Automation アカウントと Log Analytics ワークスペースとの間でサポートされているリージョン マッピングについて説明します。
+description: この記事では、Azure Automation の特定の機能に関連している、Automation アカウントと Log Analytics ワークスペースとの間でサポートされているリージョン マッピングについて説明します。
+ms.date: 12/15/2020
 services: automation
-ms.service: automation
-ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 06/12/2020
 ms.topic: conceptual
-manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 95537bd54ecb476055608c89ac68a46d410288b6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447858"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590887"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>リンクされた Log Analytics ワークスペースでサポートされるリージョン
 
-Azure Automation では、お使いの VM で、Update Management、Change Tracking とインベントリ、Start/Stop VMs during off-hours の各機能を有効にすることができます。 ただし、サブスクリプション内で Log Analytics ワークスペースと Automation アカウントをリンクすることは、特定のリージョンでのみサポートされています。 リージョン マッピングは Automation アカウントと Log Analytics ワークスペースのみに適用されます。 Log Analytics ワークスペースと Automation アカウントは同じサブスクリプションに含まれている必要がありますが、同じリージョンにデプロイされている別のリソース グループに存在することができます。 詳細については、[Log Analytics ワークスペースと Automation アカウント](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)に関する記事を参照してください。
+Azure Automation では、お使いのサーバーおよび仮想マシンで、Update Management、Change Tracking とインベントリ、Start/Stop VMs during off-hours の各機能を有効にすることができます。 これらの機能は、Log Analytics ワークスペースに依存しているため、ワークスペースを Automation アカウントにリンクする必要があります。 ただし、それらとリンクすることがサポートされているのは、特定のリージョンのみです。 一般に、これらの機能が有効になっていないワークスペースに Automation アカウントをリンクさせる予定の場合、マッピングは適用 *されません*。
+
+この記事では、Automation アカウントでこれらの機能を正常に有効にして使用するために、サポートされているマッピングについて説明します。
+
+詳細については、[Log Analytics ワークスペースと Automation アカウント](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)に関する記事を参照してください。
 
 ## <a name="supported-mappings"></a>サポートされるマッピング
+
+> [!NOTE]
+> 次の表に示すように、Log Analytics と Azure Automation の間に存在できるマッピングは 1 つに限られます。
 
 サポートするマッピングを次の表に示します。
 
@@ -29,7 +31,9 @@ Azure Automation では、お使いの VM で、Update Management、Change Track
 |---|---|
 |**米国**||
 |EastUS<sup>1</sup>|EastUS2|
+|EastUS2<sup>2</sup>|EastUS|
 |WestUS2|WestUS2|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**カナダ**||
 |CanadaCentral|CanadaCentral|
@@ -37,22 +41,29 @@ Azure Automation では、お使いの VM で、Update Management、Change Track
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>2</sup>|ChinaEast2|
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**ヨーロッパ**||
+|NorthEurope|NorthEurope|
+|FranceCentral|FranceCentral|
 |UKSouth|UKSouth|
 |西ヨーロッパ|西ヨーロッパ|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
-|USGovArizona<sup>2</sup>|USGovArizona|
+|USGovArizona<sup>3</sup>|USGovArizona|
+
+
 
 <sup>1</sup> EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、正確なリージョン間のマッピングではありませんが、適切なマッピングです。
 
-<sup>2</sup> このリージョンでは、Update Management のみがサポートされており、現時点では、Change Tracking やインベントリなどの他の機能はご利用いただけません。
+<sup>2</sup> EastUS2 の Log Analytics ワークスペースと Automation アカウントのマッピングは、正確なリージョン間のマッピングではありませんが、適切なマッピングです。
+
+<sup>3</sup> このリージョンでは、Update Management のみがサポートされており、現時点では、Change Tracking やインベントリなどの他の機能はご利用いただけません。
 
 ## <a name="unlink-a-workspace"></a>ワークスペースのリンク解除
 
-ご使用の Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure portal から直接、そのアカウントのリンクを解除できます。 Update Management、Change Tracking とインベントリ、または Start/Stop VMs during off-hours を使用している場合、続行する前にまずこれらを[削除する](move-account.md#remove-features)必要があります。 削除しないと、リンク解除操作を完了できません。 
+ご使用の Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure portal から直接、そのアカウントのリンクを解除できます。 Update Management、Change Tracking とインベントリ、または Start/Stop VMs during off-hours を使用している場合、続行する前にまずこれらを[削除する](move-account.md#remove-features)必要があります。 削除しないと、リンク解除操作を完了できません。
 
 これらの機能を削除した後、以下の手順に従って Automation アカウントのリンクを解除できます。
 
@@ -83,6 +94,6 @@ Azure Automation では、お使いの VM で、Update Management、Change Track
 
 ## <a name="next-steps"></a>次のステップ
 
-* Update Management について、[Update Management の概要](../update-management/update-mgmt-overview.md)に関する記事で学習する。
-* Change Tracking とインベントリについて、「[変更履歴とインベントリの概要](../change-tracking.md)」で学習する。
+* Update Management について、[Update Management の概要](../update-management/overview.md)に関する記事で学習する。
+* Change Tracking とインベントリについて、「[変更履歴とインベントリの概要](../change-tracking/overview.md)」で学習する。
 * Start/Stop VMs during off-hours について、[Start/Stop VMs during off-hours の概要](../automation-solution-vm-management.md)に関する記事で学習する。

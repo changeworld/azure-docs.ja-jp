@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087472"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821249"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
@@ -24,7 +24,7 @@ Automated Machine Learning の一般的なチュートリアルについては�
 すべての新しい HDInsight Spark クラスターには、AzureML AutoML SDK がプレインストールされています。
 
 > [!Note]
-> Azure Machine Learning パッケージは、Python3 conda 環境にインストールされます。 インストールされた Jupyter ノートブックは PySpark3 カーネルを使用して実行する必要があります。
+> Azure Machine Learning パッケージは、Python3 conda 環境にインストールされます。 インストールされた Jupyter Notebook は PySpark3 カーネルを使用して実行する必要があります。
 
 Zeppelin ノートブックを使用して、AutoML を使用することもできます。
 
@@ -35,7 +35,7 @@ Zeppelin ノートブックを使用して、AutoML を使用することもで�
 
 ワークスペースの作成と実験の送信を行うには、認証トークンが必要です。 このトークンは、[Azure AD アプリケーション](../../active-directory/develop/app-objects-and-service-principals.md)を使用して生成できます。 アカウントで多要素認証が有効になっていない場合は、必要な認証トークンを [Azure AD ユーザー](/azure/python/python-sdk-azure-authenticate)を使用して生成することもできます。  
 
-次のコード スニペットでは、**Azure AD アプリケーション**を使用して、認証トークンが作成されます。
+次のコード スニペットでは、**Azure AD アプリケーション** を使用して、認証トークンが作成されます。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -46,7 +46,7 @@ auth_sp = ServicePrincipalAuthentication(
 )
 ```
 
-次のコード スニペットでは、**Azure AD ユーザー**を使用して、認証トークンが作成されます。
+次のコード スニペットでは、**Azure AD ユーザー** を使用して、認証トークンが作成されます。
 
 ```python
 from azure.common.credentials import UserPassCredentials
@@ -55,7 +55,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>データセットの読み込み
 
-Spark での自動化された機械学習では、データに対して遅延評価される不変の操作である**データフロー**が使用されます。  データフローでは、パブリックな読み取りアクセスを使用して BLOB から、または SAS トークンを使用して BLOB URL からデータセットを読み込むことができます。
+Spark での自動化された機械学習では、データに対して遅延評価される不変の操作である **データフロー** が使用されます。  データフローでは、パブリックな読み取りアクセスを使用して BLOB から、または SAS トークンを使用して BLOB URL からデータセットを読み込むことができます。
 
 ```python
 import azureml.dataprep as dprep

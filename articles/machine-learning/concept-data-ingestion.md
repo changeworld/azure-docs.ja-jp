@@ -1,7 +1,7 @@
 ---
 title: データのインジェストと自動化
 titleSuffix: Azure Machine Learning
-description: 機械学習モデルをトレーニングするためのデータ インジェスト オプションについて説明します。
+description: 機械学習モデルのトレーニングに使用できるデータ インジェスト オプションの長所と短所について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 60cf97c4cb650120a4b6e2989b93d96ea120d040
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875321"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360124"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning ワークフローのデータ インジェスト オプション
 
@@ -25,7 +25,7 @@ ms.locfileid: "87875321"
 次の中から選択します。
 + データの抽出、読み込み、および変換を目的として構築された [Azure Data Factory](#azure-data-factory) パイプライン
 
-+ 基本的なデータ インジェスト タスク用のカスタム コード ソリューションを提供する [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk)。
++ データ インジェスト タスク用のカスタム コード ソリューションを提供する [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk)。
 
 + 両方の組み合わせ
 
@@ -33,7 +33,7 @@ ms.locfileid: "87875321"
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) では、データ ソース監視のネイティブ サポートとデータ インジェスト パイプラインのトリガーが提供されています。  
+[Azure Data Factory](../data-factory/introduction.md) では、データ ソース監視のネイティブ サポートとデータ インジェスト パイプラインのトリガーが提供されています。  
 
 次の表は、データ インジェスト ワークフローで Azure Data Factory を使用する場合の長所と短所をまとめたものです。
 
@@ -41,11 +41,11 @@ ms.locfileid: "87875321"
 ---|---
 データの抽出、読み込み、変換を目的として構築されています。|現時点では、Azure Data Factory パイプライン タスクの限定セットが提供されています 
 データ移動とデータ変換を大規模に調整するためのデータ駆動型ワークフローを作成できます。|構築と保守にコストがかかります。 詳細については、Azure Data Factory の [価格に関するページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)を参照してください。
-[Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) や [Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) など、さまざまな Azure ツールと統合 | スクリプトをネイティブに実行せず、代わりにスクリプトの実行を個別のコンピューティングに依存します 
+[Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) や [Azure Functions](../data-factory/control-flow-azure-function-activity.md) など、さまざまな Azure ツールと統合 | スクリプトをネイティブに実行せず、代わりにスクリプトの実行を個別のコンピューティングに依存します 
 データ ソースによってトリガーされるデータ インジェストをネイティブにサポートします| 
 データ準備とモデル トレーニングのプロセスが異なります。|
 Azure Data Factory データフローの埋め込みデータ系列機能|
-コードの作成経験が少ない方向けに、スクリプトを使用しない方法として[ユーザー インターフェイス](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)が提供されています |
+コードの作成経験が少ない方向けに、スクリプトを使用しない方法として[ユーザー インターフェイス](../data-factory/quickstart-create-data-factory-portal.md)が提供されています |
 
 次の手順と図は、Azure Data Factory のデータ インジェスト ワークフローを示しています。
 
@@ -60,7 +60,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 
 ## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
-[Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
+[Python SDK](/python/api/overview/azure/ml) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
 
 次の表は、データ インジェスト タスクに SDK と ML パイプラインの手順を使用する場合の長所と短所をまとめたものです。
 
@@ -70,7 +70,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 データ準備が、すべてのモデル トレーニング実行に含まれます|データ インジェスト スクリプトを作成するための開発スキルが必要です
 [Azure Machine Learning コンピューティング](concept-compute-target.md#azure-machine-learning-compute-managed)など、さまざまなコンピューティング先のデータ準備スクリプトをサポートしています |インジェスト メカニズム作成のユーザー インターフェイスが提供されていません
 
-次の図の Azure Machine Learning パイプラインは、データ インジェストとモデル トレーニングの 2 つの手順で構成されています。 データ インジェストの手順には、Python ライブラリと Python SDK を使用して実行できるタスクが含まれます。たとえば、ローカル/Web ソースからデータを抽出する、欠損値を補完するなどの基本的なデータ変換を行います。 次に、トレーニングの手順で、準備したデータをトレーニング スクリプトへの入力として使用して、機械学習モデルをトレーニングします。 
+次の図の Azure Machine Learning パイプラインは、データ インジェストとモデル トレーニングの 2 つの手順で構成されています。 データ インジェストの手順には、Python ライブラリと Python SDK を使用して実行できるタスクが含まれます。たとえば、ローカル ソースや Web ソースからのデータの抽出、欠損値の補完のようなデータ変換などです。 次に、トレーニングの手順で、準備したデータをトレーニング スクリプトへの入力として使用して、機械学習モデルをトレーニングします。 
 
 ![Azure パイプライン + SDK データ インジェスト](media/concept-data-ingestion/data-ingest-option-two.png)
 

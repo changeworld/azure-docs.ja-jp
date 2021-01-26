@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 940915186176efcb39be03efe6673c138132ebd6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530309"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916305"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>チュートリアル:Azure Active Directory シングル サインオンと Catchpoint の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88530309"
 * Azure AD から Catchpoint へのユーザー アクセスを制御する。
 * Azure AD アカウントを持つユーザーに対して Catchpoint への自動サインインを有効にする。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,20 +39,19 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Catchpoint では、SP Initiated SSO と IDP Initiated SSO がサポートされます。
 * Catchpoint では、Just-In-Time (JIT) ユーザー プロビジョニングがサポートされます。
-* Catchpoint を構成した後、セッション制御を適用できます。 この予防措置により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスの拡張機能です。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-catchpoint-from-the-gallery"></a>ギャラリーからの Catchpoint の追加
 
 Azure AD への Catchpoint の統合を構成するには、マネージド SaaS アプリの一覧に Catchpoint を追加します。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左側のペインで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Catchpoint**」と入力します。
 1. 結果パネルから **[Catchpoint]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>Catchpoint の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-catchpoint"></a>Catchpoint の Azure AD SSO の構成とテスト
 
 SSO を機能させるには、Azure AD ユーザーを Catchpoint のユーザーにリンクする必要があります。 このチュートリアルでは、**B.Simon** というテスト ユーザーを構成します。 
 
@@ -71,10 +68,10 @@ SSO を機能させるには、Azure AD ユーザーを Catchpoint のユーザ�
 
 Azure portal で次の手順に従って、Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. Azure portal にサインインします。
 1. **Catchpoint** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML によるシングル サインオンのセットアップ]** ページで、ペン アイコンを選択して **[基本的な SAML 構成]** の設定を編集します。
+1. **[SAML によるシングル サインオンの設定]** ページで、鉛筆アイコンを選択して **[基本的な SAML 構成]** の設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -104,7 +101,7 @@ Azure portal で次の手順に従って、Azure AD SSO を有効にします。
     | namespace | user.assignedrole |
 
     > [!NOTE]
-    > `namespace` 要求は、アカウント名でマップする必要があります。 このアカウント名は、SAML 応答で返される、Azure AD のロールを使用して設定する必要があります。 Azure AD のロールの詳細については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に関するページを参照してください。
+    > `namespace` 要求は、アカウント名でマップする必要があります。 このアカウント名は、SAML 応答で返される、Azure AD のロールを使用して設定する必要があります。 Azure AD のロールの詳細については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)に関するページを参照してください。
 
 1. **[SAML によるシングル サインオンのセットアップ]** ページに移動します。 **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけます。 **[ダウンロード]** を選択して証明書をお使いのコンピューターに保存します。
 
@@ -133,15 +130,9 @@ Azure portal で次の手順に従って、Azure AD SSO を有効にします。
 1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 1. アプリケーションの一覧で **[Catchpoint]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[B.Simon]** を選択します。 画面の下部にある **[選択]** をクリックします。
-1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーのロールを選択します。 画面の下部にある **[選択]** ボタンをクリックします。
+1. 前述のロールを設定した場合、 **[ロールの選択]** ボックスの一覧からそれを選択できます。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
 ## <a name="configure-catchpoint-sso"></a>Catchpoint の SSO の構成
@@ -173,23 +164,26 @@ Catchpoint では、Just-In-Time ユーザー プロビジョニングがサポ�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-マイ アプリ ポータルで [Catchpoint] タイルを選択すると、SSO が構成された Catchpoint アプリに自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)」を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Catchpoint のサインオン URL にリダイレクトされます。  
+
+* Catchpoint のサインオン URL に直接移動し、そこからログイン フローを開始します。
+
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Catchpoint に自動的にサインインされます 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Catchpoint] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Catchpoint に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+
 
 > [!NOTE]
-> ログイン ページから Catchpoint アプリケーションにサインインしたら、**Catchpoint の資格情報**を入力した後、 **[Company Credentials(SSO)]\(会社の資格情報 (SSO)\)** フィールドに有効な**名前空間**の値を入力し、 **[Login]\(ログイン\)** を選択します。
+> ログイン ページから Catchpoint アプリケーションにサインインしたら、**Catchpoint の資格情報** を入力した後、 **[Company Credentials(SSO)]\(会社の資格情報 (SSO)\)** フィールドに有効な **名前空間** の値を入力し、 **[Login]\(ログイン\)** を選択します。
 > 
 > ![Catchpoint の構成](./media/catchpoint-tutorial/loginimage.png)
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で Catchpoint を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Catchpoint を構成した後、セッション制御を適用できます。 この予防措置により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスの拡張機能です。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

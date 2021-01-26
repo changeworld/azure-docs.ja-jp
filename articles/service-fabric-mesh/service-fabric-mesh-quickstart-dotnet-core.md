@@ -1,17 +1,17 @@
 ---
 title: クイックスタート - Web アプリを Azure Service Fabric Mesh にデプロイする
 description: このクイック スタートでは、Visual Studio を使用して、ASP.NET Core Web サイトを作成し、Azure Service Fabric Mesh に発行する方法を示します。
-author: dkkapur
+author: georgewallace
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75459071"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840321"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>クイック スタート: Web アプリを作成して Azure Service Fabric Mesh にデプロイする
 
@@ -33,7 +33,7 @@ Visual Studio を開き、 **[ファイル]**  >  **[新規]**  >  **[プロジ�
 
 **[ソリューションのディレクトリを作成する]** がオンになっていることを確認し、 **[OK]** をクリックして Service Fabric mesh プロジェクトを作成します。
 
-![Visual Studio: 新しい Service Fabric mesh プロジェクト ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![Service Fabric Mesh プロジェクトを作成する方法を示すスクリーンショット。](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>サービスの作成
 
@@ -67,11 +67,11 @@ Service Fabric Mesh プロジェクトを Azure に発行するには、Visual S
 
 Azure アカウントとサブスクリプションを選択します。 **[場所]** を選択します。 この記事では、 **[米国東部]** を使用します。
 
-**[リソース グループ]** で、 **[\<新しいリソース グループの作成...>]** を選択します。 **[リソース グループの作成]** ダイアログが表示されます。 **[リソース グループ名]** と **[場所]** を設定します。  このクイック スタートでは、場所として **[米国東部]** を使用し、グループに **sfmeshTutorial1RG** という名前を付けます (組織に同じサブスクリプションを使用する複数のユーザーがいる場合は、一意のリソース グループ名を選択します)。  **[作成]** をクリックしてリソース グループを作成し、発行ダイアログに戻ります。
+**[リソース グループ]** で、 **\<Create New Resource Group...>** を選択します。 **[リソース グループの作成]** ダイアログが表示されます。 **[リソース グループ名]** と **[場所]** を設定します。  このクイック スタートでは、場所として **[米国東部]** を使用し、グループに **sfmeshTutorial1RG** という名前を付けます (組織に同じサブスクリプションを使用する複数のユーザーがいる場合は、一意のリソース グループ名を選択します)。  **[作成]** をクリックしてリソース グループを作成し、発行ダイアログに戻ります。
 
-![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![新しいリソース グループの作成方法を示すスクリーンショット。](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-**[Service Fabric アプリケーションの発行]** ダイアログに戻り、 **[Azure Container Registry]** の **[\<Create New Container Registry...>]\(<新しいコンテナー レジストリの作成...>\)** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、 **[コンテナー レジストリ名]** に一意の名前を使用します。 **[場所]** を指定します (このクイック スタートでは、 **[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、 **[作成]** をクリックして発行ダイアログに戻ります。
+**[Service Fabric アプリケーションの発行]** ダイアログに戻り、 **[Azure Container Registry]** の **\<Create New Container Registry...>** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、 **[コンテナー レジストリ名]** に一意の名前を使用します。 **[場所]** を指定します (このクイック スタートでは、 **[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、 **[作成]** をクリックして発行ダイアログに戻ります。
 
 ![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

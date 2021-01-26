@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 5b5c85b599f02cedc3bb1bda84c28ef2169c8e2d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641825"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754047"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -46,7 +49,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | すべてのオペレーティング システムを、移行のために評価することができます。  |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-
+| **Storage** | ローカル ディスク、DAS、JBOD、記憶域スペース、CSV、SMB。 VHD/VHDX が格納されているこれらの Hyper-V ホスト記憶域がサポートされています。 <br/> IDE および SCSI 仮想コントローラーがサポートされています| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
 
@@ -63,7 +66,7 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 **[デバイス]** | **接続**
 --- | ---
 **アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> ポート 443 (HTTPS) で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
-**Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) で、Hyper-V VM のメタデータとパフォーマンスのデータをプルするための受信接続。
+**Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) または 5986 (HTTPS) で、Hyper-V VM のメタデータとパフォーマンスのデータをプルするための受信接続。
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>エージェント ベースの依存関係の分析の要件
 
@@ -83,4 +86,4 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 ## <a name="next-steps"></a>次のステップ
 
-[Hyper-V VM の評価を準備する](tutorial-prepare-hyper-v.md)
+[Hyper-V VM の評価を準備する](./tutorial-discover-hyper-v.md)

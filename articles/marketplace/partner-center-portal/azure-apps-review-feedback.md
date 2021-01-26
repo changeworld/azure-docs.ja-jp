@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320104"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436387"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Azure アプリケーション オファーのレビュー フィードバックの処理
 
@@ -41,9 +41,9 @@ ms.locfileid: "87320104"
 
 1. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージを選択して (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)** )、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。 通常、エラーはログ ファイルの下部に表示されます。
 
-1. ホーム ページの左側にあるメニューで、**ファイル**を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。 検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。 次の例では、2 つの問題が検出されました。
+1. ホーム ページの左側にあるメニューで、**ファイル** を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。 検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。 次の例では、2 つの問題が検出されました。
 
-    [![pull request のホーム ページ](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![[ファイル] と、検出された 2 つの問題が強調表示されたスクリーンショット。](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> "*拡大するには画像をクリックしてください。* "
 
 1. 左側のツリーで各コメント ノードを選択して、周囲のコードのコンテキスト内のコメントに移動します。 チームのプロジェクト内のソース コードを修正し、コメントで説明されている問題を修正します。
@@ -57,4 +57,4 @@ ms.locfileid: "87320104"
 
 ## <a name="next-steps"></a>次のステップ
 
-レビュー PR に記述されている重大な問題を修正したら、[Azure アプリ オファーを再発行する](./create-new-azure-apps-offer.md#publish)必要があります。
+レビュー PR に記述されている重大な問題を修正したら、[Azure アプリ オファーを再発行する](../create-new-azure-apps-offer.md)必要があります。

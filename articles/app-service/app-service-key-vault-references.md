@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557912"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205848"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -30,8 +30,8 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
 
 1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
-    > [!NOTE]
-    > Key Vault 参照では現在、[ネットワーク制限](../key-vault/general/overview-vnet-service-endpoints.md)があるキー コンテナーに格納されているシークレットを解決できません。
+   > [!IMPORTANT]
+   > Key Vault 参照では現在、アプリが [App Service Environment](./environment/intro.md) 内でホストされている場合を除き、[ネットワーク制限](../key-vault/general/overview-vnet-service-endpoints.md)があるキー コンテナーに格納されているシークレットを解決できません。
 
 ## <a name="reference-syntax"></a>参照構文
 
@@ -40,13 +40,13 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 > [!div class="mx-tdBreakAll"]
 > | 参照文字列                                                            | 説明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
+> | SecretUri= _secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
+> | VaultName= _vaultName_ ;SecretName= _secretName_ ;SecretVersion= _secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
 
 > [!NOTE] 
 > バージョンは現在必須項目です。 シークレットをローテーションするとき、アプリケーション構成でバージョンを更新する必要があります。
-
 たとえば、完全な参照は次のようになります。
+
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
