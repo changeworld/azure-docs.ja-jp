@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348927"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597965"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -25,7 +25,7 @@ ms.locfileid: "96348927"
 
 ### <a name="partial-refunds"></a>一部返金
 
-EA のお客様が予約を返却した場合、年額コミットメントではなく超過分を使用して購入金額の一部が返金されます。
+EA のお客様が予約を返却した場合、Azure 前払い (旧称: 年額コミットメント) ではなく超過分を使用して購入金額の一部が返金されます。
 
 EA Portal には、前月における負の調整として、また今月における正の調整として返金が表示されます。 予約の交換についても同様に表示されます。 クレジット メモでは、元の請求書番号が引用されます。したがって、当初の購入額をクレジット メモで調整したければ、元の請求書番号を参照してください。
 

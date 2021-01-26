@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933984"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250793"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を使用した Azure Key Vault の回復の管理
 
@@ -29,6 +29,8 @@ Key Vault の詳細については、以下を参照してください。
 * [PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 * [Azure CLI](/cli/azure/install-azure-cli)
 * キー コンテナー - [Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して作成できます
+* 論理的に削除されたコンテナーに対して操作を実行するには、(サブスクリプション レベルで) 次のアクセス許可がユーザーに必要です。|Microsoft.KeyVault/locations/deletedVaults/read|論理的に削除されたキー コンテナーのプロパティを表示する| |Microsoft.KeyVault/locations/deletedVaults/purge/action|論理的に削除されたキー コンテナーを消去する|
+
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>論理的な削除および消去保護とは
 

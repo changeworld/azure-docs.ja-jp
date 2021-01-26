@@ -6,28 +6,28 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 978a2909202e01d8c58ba9253bfe0b3996b72d56
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 573fc4fac413ceed50246bc6fb8df1d9db021c94
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100883"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247456"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB の価格モデルにより、コストの管理と計画が合理化されます。 Azure Cosmos DB では、データベースに対して行った操作と、データに使用されるストレージに対して課金されます。
 
-- **データベース操作** :データベース操作に対する課金方法は、使用している Azure Cosmos アカウントの種類によって異なります。
+- **データベース操作**:データベース操作に対する課金方法は、使用している Azure Cosmos アカウントの種類によって異なります。
 
-  - **プロビジョニング済みのスループット** : [プロビジョニング済みのスループット](set-throughput.md) (予約済みスループットとも呼ばれます) により、あらゆる規模でハイ パフォーマンスが実現します。 ユーザーが必要なスループットを 1 秒あたりの[要求ユニット](request-units.md) (RU/s) で指定すると、Azure Cosmos DB では構成されたスループットを提供するために必要なリソースが専用に確保されます。 [データベースまたはコンテナーに対してスループットをプロビジョニングする](set-throughput.md)ことができます。 ワークロードのニーズに基づいて、いつでもスループットを増減したり、[自動スケーリング](provision-throughput-autoscale.md)を使用したりできます (ただし、SLA を保証するため、データベースまたはコンテナーでは最低限のスループットを確保する必要があります)。 特定の 1 時間での最大のプロビジョニング スループットに対し、時間単位で請求されます。
+  - **プロビジョニング済みのスループット**:[プロビジョニング済みのスループット](set-throughput.md) (予約済みスループットとも呼ばれます) により、あらゆる規模でハイ パフォーマンスが実現します。 ユーザーが必要なスループットを 1 秒あたりの[要求ユニット](request-units.md) (RU/s) で指定すると、Azure Cosmos DB では構成されたスループットを提供するために必要なリソースが専用に確保されます。 [データベースまたはコンテナーに対してスループットをプロビジョニングする](set-throughput.md)ことができます。 ワークロードのニーズに基づいて、いつでもスループットを増減したり、[自動スケーリング](provision-throughput-autoscale.md)を使用したりできます (ただし、SLA を保証するため、データベースまたはコンテナーでは最低限のスループットを確保する必要があります)。 特定の 1 時間での最大のプロビジョニング スループットに対し、時間単位で請求されます。
 
    > [!NOTE]
    > プロビジョニング済みスループット モデルでは、コンテナーまたはデータベース専用にリソースが割り当てられるので、ワークロードを何も実行しない場合でも、プロビジョニングしたスループットの料金が発生します。
 
-  - **サーバーレス** : [サーバーレス](serverless.md) モードでは、Azure Cosmos アカウントでリソースを作成するときに、スループットをプロビジョニングする必要はありません。 請求期間が終了すると、データベース操作で使用した要求ユニットの量に対して課金されます。
+  - **サーバーレス**:[サーバーレス](serverless.md) モードでは、Azure Cosmos アカウントでリソースを作成するときに、スループットをプロビジョニングする必要はありません。 請求期間が終了すると、データベース操作で使用した要求ユニットの量に対して課金されます。
 
-- **ストレージ** : 対象となる 1 時間にデータおよびインデックスで使用したストレージの合計量 (GB) に対して固定料金が請求されます。 ストレージは使用量に基づいて課金されるため、前もってストレージを予約する必要はありません。 使用したストレージに対してのみ課金されます。
+- **ストレージ**: 対象となる 1 時間にデータおよびインデックスで使用したストレージの合計量 (GB) に対して固定料金が請求されます。 ストレージは使用量に基づいて課金されるため、前もってストレージを予約する必要はありません。 使用したストレージに対してのみ課金されます。
 
 Azure Cosmos DB の価格モデルは、すべての API について同じです。 詳細については、[Azure Cosmos DB の価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)、「[Azure Cosmos DB の課金内容の理解](understand-your-bill.md)」、および [Azure Cosmos DB の価格モデルがお客様にとっていかにコスト効率がよいか](total-cost-ownership.md)に関するページを参照してください。
 
@@ -37,13 +37,13 @@ Azure Cosmos DB アカウントを米国の非政府リージョンにデプロ�
 
 Azure Cosmos DB では、開発者向けに無料のオプションが多数提供されています。 設定できるオプションは次のとおりです。
 
-* **Azure Cosmos DB の Free レベル** : Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります (アカウントの有効期間中)。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](./manage-with-templates.md#free-tier)を使用します。
+* **Azure Cosmos DB の Free レベル**: Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります (アカウントの有効期間中)。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](./manage-with-templates.md#free-tier)を使用します。
 
-* **Azure 無料アカウント** :Azure の [Free レベル](https://azure.microsoft.com/free/)では、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](../cost-management-billing/manage/avoid-charges-free-account.md)に関するページをご覧ください。 Azure Cosmos DB は Azure 無料アカウントの一部です。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU/秒のプロビジョニング済みスループットが 1 年間提供されます。
+* **Azure 無料アカウント**:Azure の [Free レベル](https://azure.microsoft.com/free/)では、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](../cost-management-billing/manage/avoid-charges-free-account.md)に関するページをご覧ください。 Azure Cosmos DB は Azure 無料アカウントの一部です。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、25 GB のストレージと 400 RU/s のプロビジョニング済みスループットが 1 年間提供されます。
 
-* **Azure Cosmos DB を無料で試す** :Azure Cosmos DB では、Azure Cosmos DB を無料で試すアカウントを使用することで、時間制限をのあるエクスペリエンスが提供されます。 Azure Cosmos DB アカウントを作成して、データベースとコレクションを作成し、クイック スタートとチュートリアルを使用してサンプル アプリケーションを実行できます。 Azure アカウントをサブスクライブしたり、クレジット カードを使用したりせずに、サンプル アプリケーションを実行できます。 「[Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」では、Azure Cosmos DB が 1 か月間提供され、何回でもアカウントを更新できます。
+* **Azure Cosmos DB を無料で試す**:Azure Cosmos DB では、Azure Cosmos DB を無料で試すアカウントを使用することで、時間制限をのあるエクスペリエンスが提供されます。 Azure Cosmos DB アカウントを作成して、データベースとコレクションを作成し、クイック スタートとチュートリアルを使用してサンプル アプリケーションを実行できます。 Azure アカウントをサブスクライブしたり、クレジット カードを使用したりせずに、サンプル アプリケーションを実行できます。 「[Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」では、Azure Cosmos DB が 1 か月間提供され、何回でもアカウントを更新できます。
 
-* **Azure Cosmos DB エミュレーター** :Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターは無料で提供され、クラウド サービスとほとんど同じです。 Azure Cosmos DB エミュレーターを使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 運用環境に移行する前に、ローカル環境でエミュレーターを使用してアプリケーションを開発できます。 エミュレーターでのアプリケーションの機能に満足した後で、クラウドの Azure Cosmos DB アカウントを使用するように切り替えると、コストを大幅に削減できます。 エミュレーターについて詳しくは、[開発とテストへの Azure Cosmos DB の使用](local-emulator.md)に関する記事をご覧ください。
+* **Azure Cosmos DB エミュレーター**:Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターは無料で提供され、クラウド サービスとほとんど同じです。 Azure Cosmos DB エミュレーターを使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 運用環境に移行する前に、ローカル環境でエミュレーターを使用してアプリケーションを開発できます。 エミュレーターでのアプリケーションの機能に満足した後で、クラウドの Azure Cosmos DB アカウントを使用するように切り替えると、コストを大幅に削減できます。 エミュレーターについて詳しくは、[開発とテストへの Azure Cosmos DB の使用](local-emulator.md)に関する記事をご覧ください。
 
 ## <a name="pricing-with-reserved-capacity"></a>予約容量での価格
 

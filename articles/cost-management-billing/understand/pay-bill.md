@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: 2983f870d6ab20dac4da487ba03ebf84905f8dcc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 8117f3ca70f51f2d9b11c479803ac33b49f416e7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680313"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540048"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure の請求書の支払い方法
 
@@ -24,6 +24,8 @@ ms.locfileid: "97680313"
 [Microsoft Customer Agreement にアクセスできるかどうかを確認](#check-access-to-a-microsoft-customer-agreement)してください。
 
 Azure の請求書には 2 とおりの支払い方法があります。 課金プロファイルの既定の支払い方法を使用する方法と一括払い ( **[今支払う]** ) を使用する方法です。
+
+Microsoft 担当者を通じて Azure にサインアップした場合、既定の支払い方法が必ず "*小切手または電信送金*" に設定されています。
 
 Azure クレジットがある場合は、請求期間ごとに請求書に自動的に適用されます。
 

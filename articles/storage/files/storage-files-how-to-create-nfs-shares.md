@@ -1,5 +1,5 @@
 ---
-title: NFS 共有を作成する - Azure Files
+title: NFS 共有を作成する - Azure Files (プレビュー)
 description: ネットワーク ファイル システム プロトコルを使用してマウントできる Azure ファイル共有を作成する方法について説明します。
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620948"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602675"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
 

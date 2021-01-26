@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020757"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570042"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Azure AD へのユーザー プロビジョニングの構成
 このチュートリアルでは、SuccessFactors Employee Central から Azure Active Directory に社員データをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
@@ -91,51 +91,61 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ### <a name="create-an-api-permissions-role"></a>API アクセス許可ロールを作成する
 
-* Admin Center にアクセスできるユーザーアカウントで SAP SuccessFactors にログインします。
-* "*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+1. Admin Center にアクセスできるユーザーアカウントで SAP SuccessFactors にログインします。
+1. "*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
   ![アクセス許可ロールを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* [Permission Role List]\(アクセス許可ロール一覧\) で、 **[Create New]\(新規作成\)** をクリックします。
-  > [!div class="mx-imgBorder"]
-  > ![アクセス許可ロールを新規作成する](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* 新しいアクセス許可ロールの **[Role Name]\(ロール名\)** と **[Description]\(説明\)** を追加します。 名前と説明では、このロールが API 使用アクセス許可されていることを示す必要があります。
-  > [!div class="mx-imgBorder"]
-  > ![アクセス許可のロールの詳細](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* [Permission settings]\(アクセス許可の設定\) で、 **[Permission]\(アクセス許可\)** をクリックし、アクセス許可一覧を下にスクロールして **[Manage Integration Tools]\(統合ツールの管理\)** をクリックします。 **[Allow Admin to Access to OData API through Basic Authentication]\(管理者が Websites Basic 認証を介して OData API にアクセスできるようにする\)** チェックボックスを有効にします。
-  > [!div class="mx-imgBorder"]
-  > ![統合ツールを管理する](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* 同じボックス内を下にスクロールし、 **[Employee Central API]** を選択します。 次に示すように、ODATA API を使用して読み取り、ODATA API を使用して編集するためのアクセス許可を追加します。 SuccessFactors への書き戻しシナリオに同じアカウントを使用する場合は、編集オプションを選択してください。 
-  > [!div class="mx-imgBorder"]
-  > ![読み取りと書き込みのアクセス許可](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* **[Done]\(終了)** をクリックします。 **[変更を保存]** をクリックします。
+1. [Permission Role List]\(アクセス許可ロール一覧\) で、 **[Create New]\(新規作成\)** をクリックします。
+    > [!div class="mx-imgBorder"]
+    > ![アクセス許可ロールを新規作成する](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. 新しいアクセス許可ロールの **[Role Name]\(ロール名\)** と **[Description]\(説明\)** を追加します。 名前と説明では、このロールが API 使用アクセス許可されていることを示す必要があります。
+    > [!div class="mx-imgBorder"]
+    > ![アクセス許可のロールの詳細](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. [Permission settings]\(アクセス許可の設定\) で、 **[Permission]\(アクセス許可\)** をクリックし、アクセス許可一覧を下にスクロールして **[Manage Integration Tools]\(統合ツールの管理\)** をクリックします。 **[Allow Admin to Access to OData API through Basic Authentication]\(管理者が Websites Basic 認証を介して OData API にアクセスできるようにする\)** チェックボックスを有効にします。
+    > [!div class="mx-imgBorder"]
+    > ![統合ツールを管理する](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. 同じボックス内を下にスクロールし、 **[Employee Central API]** を選択します。 次に示すように、ODATA API を使用して読み取り、ODATA API を使用して編集するためのアクセス許可を追加します。 SuccessFactors への書き戻しシナリオに同じアカウントを使用する場合は、編集オプションを選択してください。 
+    > [!div class="mx-imgBorder"]
+    > ![読み取りと書き込みのアクセス許可](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+1. 同じアクセス許可ボックスで、 **[User Permissions]\(ユーザー アクセス許可\) -> [Employee Data]\(従業員データ\)** に移動し、サービス アカウントが SuccessFactors テナントから読み取ることができる属性を確認します。 たとえば、SuccessFactors から *Username* 属性を取得するには、この属性の "View (表示)" アクセス許可が付与されている必要があります。 同様に、各属性の表示アクセス許可を確認してください。 
+
+    > [!div class="mx-imgBorder"]
+    > ![従業員データのアクセス許可](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >このプロビジョニング アプリによって取得される属性の詳細な一覧については、[SuccessFactors 属性のリファレンス](../app-provisioning/sap-successfactors-attribute-reference.md)に関するページを参照してください。
+
+1. **[Done]\(終了)** をクリックします。 **[変更を保存]** をクリックします。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API ユーザーのアクセス許可グループを作成する
 
-* SuccessFactors Admin Center で、"*Manage Permission Groups*" を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
-  > [!div class="mx-imgBorder"]
-  > ![アクセス許可グループを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* [Manage Permission Groups]\(アクセス許可グループの管理\) ウィンドウで、 **[Create New]\(新規作成\)** をクリックします。
-  > [!div class="mx-imgBorder"]
-  > ![新しいグループを追加する](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* 新しいグループのグループ名を追加します。 グループ名は、グループが API ユーザー用であることを示す必要があります。
-  > [!div class="mx-imgBorder"]
-  > ![アクセス許可グループ名](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* グループにメンバーを追加します。 たとえば、[People Pool]\(ユーザー プール\) ドロップダウン メニューから **[Username]\(ユーザー名\)** を選択し、統合に使用する API アカウントのユーザー名を入力します。 
-  > [!div class="mx-imgBorder"]
-  > ![Add group members](./media/sap-successfactors-inbound-provisioning/add-group-members.png)\(グループ メンバーの追加\)
-* **[Done]\(完了\)** をクリックして、アクセス許可グループの作成を完了します。
+1. SuccessFactors Admin Center で、"*Manage Permission Groups*" を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![アクセス許可グループを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. [Manage Permission Groups]\(アクセス許可グループの管理\) ウィンドウで、 **[Create New]\(新規作成\)** をクリックします。
+    > [!div class="mx-imgBorder"]
+    > ![新しいグループを追加する](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. 新しいグループのグループ名を追加します。 グループ名は、グループが API ユーザー用であることを示す必要があります。
+    > [!div class="mx-imgBorder"]
+    > ![アクセス許可グループ名](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. グループにメンバーを追加します。 たとえば、[People Pool]\(ユーザー プール\) ドロップダウン メニューから **[Username]\(ユーザー名\)** を選択し、統合に使用する API アカウントのユーザー名を入力します。 
+    > [!div class="mx-imgBorder"]
+    > ![Add group members](./media/sap-successfactors-inbound-provisioning/add-group-members.png)\(グループ メンバーの追加\)
+1. **[Done]\(完了\)** をクリックして、アクセス許可グループの作成を完了します。
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>許可グループに許可ロールを付与する
 
-* SuccessFactors Admin Center で、"*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
-* **[Permission Role List]\(アクセス許可ロール一覧\)** から、API 使用アクセス許可用に作成したロールを選択します。
-* **[Grant this role to]\(このロールに付与するアクセス許可\)** で、 **[Add]\(追加\)** ボタンをクリックします。
-* ドロップダウン メニューから **[Permission Group]\(アクセス許可グループ\)** を選択し、 **[Select]\(選択\)** をクリックして [Groups]\(グループ\) ウィンドウを開き、先ほど作成したグループを検索して選択します。 
-  > [!div class="mx-imgBorder"]
-  > ![アクセス許可グループを追加する](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* アクセス許可グループに対するアクセス許可ロールの付与を確認します。 
-  > [!div class="mx-imgBorder"]
-  > ![アクセス許可ロールおよびグループの詳細](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* **[変更を保存]** をクリックします。
+1. SuccessFactors Admin Center で、"*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+1. **[Permission Role List]\(アクセス許可ロール一覧\)** から、API 使用アクセス許可用に作成したロールを選択します。
+1. **[Grant this role to]\(このロールに付与するアクセス許可\)** で、 **[Add]\(追加\)** ボタンをクリックします。
+1. ドロップダウン メニューから **[Permission Group]\(アクセス許可グループ\)** を選択し、 **[Select]\(選択\)** をクリックして [Groups]\(グループ\) ウィンドウを開き、先ほど作成したグループを検索して選択します。 
+    > [!div class="mx-imgBorder"]
+    > ![アクセス許可グループを追加する](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. アクセス許可グループに対するアクセス許可ロールの付与を確認します。 
+    > [!div class="mx-imgBorder"]
+    > ![アクセス許可ロールおよびグループの詳細](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. **[変更を保存]** をクリックします。
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>SuccessFactors から Azure AD へのユーザー プロビジョニングの構成
 

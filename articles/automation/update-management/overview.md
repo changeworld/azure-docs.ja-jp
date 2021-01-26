@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928428"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185616"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -65,16 +65,16 @@ Update Management では、同期先として構成されたソースに基づ�
 
 ## <a name="clients"></a>クライアント
 
-### <a name="supported-client-types"></a>サポートされているクライアントの種類
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-次の表は、更新プログラムの評価および修正プログラムの適用でサポートされているオペレーティング システムの一覧です。 ファイルの部分置換を適用するには、Hybrid Runbook Worker が必要です。これは、仮想マシンまたはサーバーの Update Management による管理を有効にしたときに自動的にインストールされます。 Hybrid Runbook Worker のシステム要件の詳細については、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」と「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」を参照してください。
+次の表は、更新プログラムの評価および修正プログラムの適用でサポートされているオペレーティング システムの一覧です。 ファイルの部分置換には、システム Hybrid Runbook Worker が必要です。これは、仮想マシンまたはサーバーで Update Management による管理を有効にしたときに自動的にインストールされます。 Hybrid Runbook Worker のシステム要件の詳細については、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」と「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」を参照してください。
 
 > [!NOTE]
 > Linux マシンの更新プログラムの評価は、Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](../how-to/region-mappings.md#supported-mappings)に記載されている特定のリージョンでのみサポートされています。
 
 |オペレーティング システム  |Notes  |
 |---------|---------|
-|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br>Windows Server 2012 R2 (Datacenter、Standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
 |CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
@@ -84,9 +84,9 @@ Update Management では、同期先として構成されたソースに基づ�
 > [!NOTE]
 > Azure 仮想マシン スケール セットは、Update Management を使用して管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 すべての VM インスタンスを一度に更新しないように、段階的に更新をスケジュールする必要があります。 仮想マシン スケールセットのノードを追加するには、「[Azure 以外のマシンを Change Tracking とインベントリに追加する](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)」の手順に従ってください。
 
-### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
+### <a name="unsupported-operating-systems"></a>サポートされていないオペレーティング システム
 
-次の表は、サポートされていないオペレーティング システムの一覧です。
+次の表に、Update Management でサポートされていないオペレーティング システムを示します。
 
 |オペレーティング システム  |Notes  |
 |---------|---------|
@@ -94,15 +94,20 @@ Update Management では、同期先として構成されたソースに基づ�
 |Windows Server 2016 Nano Server     | サポートされていません。       |
 |Azure Kubernetes Service ノード | サポートされていません。 「[Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用する](../../aks/node-updates-kured.md)」で説明されている修正プログラム適用プロセスを使用します。|
 
-### <a name="client-requirements"></a>クライアントの要件
+### <a name="system-requirements"></a>システム要件
 
-オペレーティング システム固有のクライアント要件については、以下の情報を参照してください。 追加のガイダンスについては、「[ネットワークの計画](#ports)」を参照してください。 TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)」のセクションを参照してください。
+オペレーティング システム固有の要件については、次の情報を参照してください。 追加のガイダンスについては、「[ネットワークの計画](#ports)」を参照してください。 TLS 1.2 の要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)」を参照してください。
 
 #### <a name="windows"></a>Windows
 
+ソフトウェアの要件:
+
+- .NET Framework 4.6 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers)。)
+- Windows PowerShell 5.1 が必要です ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。
+
 WSUS サーバーと通信するように Windows エージェントを構成するか、Microsoft Update へのアクセスが必要です。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
-Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)が必要です。 
+Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)が必要です。
 
 既定では、Azure Marketplace からデプロイされた Windows VM は、Windows Update Service から自動更新を受信するように設定されています。 Windows VM をワークスペースに追加しても、この動作は変わりません。 Update Management を使用して更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。
 
@@ -111,7 +116,11 @@ Microsoft Endpoint Configuration Manager は、Update Management と組み合わ
 
 #### <a name="linux"></a>Linux
 
-Linux の場合、マシンでは、プライベートまたはパブリックの更新リポジトリへのアクセス権が必要になります。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 Update Management では、複数の Log Analytics ワークスペースにレポートするように構成されている Linux 用 Log Analytics エージェントはサポートされていません。 マシンには Python 2.x もインストールされている必要があります。
+ソフトウェアの要件:
+
+- マシンでは、プライベートまたはパブリックの更新リポジトリへのアクセス権が必要になります。
+- Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。
+- Python 2.x がインストールされていること。
 
 > [!NOTE]
 > Linux マシンの更新プログラムの評価は、特定のリージョンでのみサポートされています。 Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](../how-to/region-mappings.md#supported-mappings)を参照してください。
@@ -130,11 +139,11 @@ Update Management では、このセクションで説明されているリソ�
 
 ### <a name="hybrid-runbook-worker-groups"></a>Hybrid Runbook Worker のグループ
 
-Update Management を有効にすると、Update Management に含まれている Runbook をサポートするために、Log Analytics ワークスペースに直接接続された Windows マシンが自動的に Hybrid Runbook Worker として構成されます。
+Update Management を有効にすると、Log Analytics ワークスペースに直接接続されているすべての Windows マシンは、Update Management をサポートする runbook をサポートするために、自動的にシステム Hybrid Runbook Worker として構成されます。
 
 Update Management で管理されている各 Windows マシンは、Automation アカウントの [システム ハイブリッド worker グループ] として、[ハイブリッド worker グループ] ペインに表示されます。 グループでは、`Hostname FQDN_GUID` の名前付け規則が使用されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定しようとすると、失敗します。 これらのグループは、Update Management のみをサポートすることを目的としています。 Hybrid Runbook Worker として構成されている Windows マシンの一覧を表示する方法の詳細については、「[Hybrid Runbook Workers の表示](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)」を参照してください。
 
-Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すると、Windows マシンを Automation アカウントの Hybrid Runbook Worker グループに追加して Automation Runbook をサポートすることができます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 で追加されました。
+Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すると、Windows マシンを Automation アカウント内のユーザー Hybrid Runbook Worker グループに追加して Automation Runbook をサポートできます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 で追加されました。
 
 ### <a name="management-packs"></a>管理パック
 

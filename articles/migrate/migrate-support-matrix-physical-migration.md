@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968570"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562642"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
-この記事では、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) で物理サーバーを移行するためのサポートの設定および制限を要約しています。 Azure への移行のための物理サーバーの評価に関する情報を探している場合は、[評価のサポート マトリックス](migrate-support-matrix-physical.md)を確認してください。
+この記事では、以下を使用して物理サーバーを Azure に移行する場合のサポート設定と制限事項について説明します: [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) Azure への移行のための物理サーバーの評価に関する情報を探している場合は、[評価のサポート マトリックス](migrate-support-matrix-physical.md)を確認してください。
 
 ## <a name="migrating-machines-as-physical"></a>物理としてのコンピューターの移行
 
@@ -57,7 +57,6 @@ ms.locfileid: "97968570"
 **NFS** | コンピューター上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。
 **iSCSI ターゲット** | エージェントレス移行では、iSCSI ターゲットを含むコンピューターはサポートされません。
 **マルチパス IO** | サポートされていません。
-**ストレージ vMotion** | サポートされています
 **チーミングされた NIC** | サポートされていません。
 **IPv6** | サポートされていません。
 

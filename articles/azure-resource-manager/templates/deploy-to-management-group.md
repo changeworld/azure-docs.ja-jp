@@ -2,13 +2,13 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95798587"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184018"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM テンプレートを使用した管理グループへのデプロイ
 
@@ -44,6 +44,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 リソースを管理する場合は、以下を使用します。
 
 * [tags](/azure/templates/microsoft.resources/tags)
+
+管理グループは、テナント レベルのリソースです。 ただし、新しい管理グループのスコープをテナントに設定することにより、管理グループのデプロイで管理グループを作成できます。 「[管理グループ](#management-group)」を参照してください。
 
 ## <a name="schema"></a>スキーマ
 
@@ -123,7 +125,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 * 管理グループ内のサブスクリプション
 * 管理グループ内のリソース グループ
 * リソース グループのテナント
-* [拡張リソース](scope-extension-resources.md)はリソースに適用できます
+
+[拡張リソース](scope-extension-resources.md)は、デプロイ ターゲットとは異なるターゲットにスコープ設定できます。
 
 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
@@ -161,15 +164,61 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ### <a name="scope-to-tenant"></a>テナントへのスコープ
 
-`scope` を `/` に設定することで、テナントにリソースを作成できます。 テンプレートをデプロイするユーザーには、[テナントでデプロイするために必要なアクセス権](deploy-to-tenant.md#required-access)が必要です。
+`scope` を `/` に設定することで、テナントにリソースを作成できます。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
 
-`scope` と `location` を設定して、入れ子になったデプロイを使用できます。
+`scope` と `location` を設定した入れ子になったデプロイを使用できます。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-または、管理グループなどの一部のリソースの種類に対して、scope を `/` に設定することもできます。
+または、管理グループなどの一部のリソースの種類に対して、スコープを `/` に設定することもできます。 新しい管理グループの作成については、次のセクションで説明します。
+
+## <a name="management-group"></a>管理グループ
+
+管理グループのデプロイで管理グループを作成するには、管理グループのスコープを `/` に設定する必要があります。
+
+次の例では、ルート管理グループに新しい管理グループを作成します。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+次の例では、親として指定された管理グループに新しい管理グループを作成します。 スコープが `/` に設定されていることに注意してください。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure Policy
 

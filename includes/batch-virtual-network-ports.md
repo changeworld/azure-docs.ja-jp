@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 06/16/2020
+ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: e4f17fbfad1e7e550b3a1e95c93e4b061d0f1c3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993426"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165741"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -29,6 +29,8 @@ ms.locfileid: "95993426"
 * プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。
 
 * VNET を提供するカスタムの DNS サーバーが、Azure Storage エンドポイントを解決できることが必要です。 具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL を解決できる必要があります。
+
+* 同じ VNet または同じサブネットに複数のプールを作成できます (十分なアドレス空間がある場合)。 1 つのプールが複数の VNet または複数のサブネットにまたがって存在することはできません。
 
 その他の VNET 要件は、Batch プールが仮想マシンの構成にあるかクラウド サービスの構成にあるかによって異なります。 VNET に新しいプールをデプロイする場合は、仮想マシンの構成が推奨されます。
 
@@ -67,7 +69,7 @@ ms.locfileid: "95993426"
 
 **[受信セキュリティ規則]**
 
-| ソース IP アドレス | 発信元サービス タグ | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
+| ソース IP アドレス | 発信元サービス タグ | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
 | 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | * | Any | 29876 から 29877 | TCP | Allow |
 | Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | Any | 3389 (Windows)、22 (Linux) | TCP | Allow |
@@ -77,7 +79,7 @@ ms.locfileid: "95993426"
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 到着地 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
+| source | ソース ポート | 宛先 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
 | Any | * | [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
 
@@ -101,13 +103,13 @@ NSG を指定する必要はありません。Batch IP アドレスからプー�
 
 **[受信セキュリティ規則]**
 
-| ソース IP アドレス | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
+| ソース IP アドレス | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- |
 Any <br /><br />実際上は "すべて許可" が必要ですが、Batch サービス以外の IP アドレスをすべてフィルターで除外する ACL 規則が、Batch サービスにより各ノードのレベルで適用されます。 | * | Any | 10100、20100、30100 | TCP | Allow |
 | コンピューティング ノードへの RDP アクセスを許可する場合 (省略可能) | * | Any | 3389 | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
+| source | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- |
 | Any | * | Any | 443  | Any | Allow |

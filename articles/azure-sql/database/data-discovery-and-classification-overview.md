@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132051"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185359"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-データの検出と分類は、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics に組み込まれています。 これにより、データベース内の機密データの検出、分類、ラベル付け、およびレポート作成を行うための高度な機能が提供されます。
+データの検出と分類は、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics に組み込まれています。 これにより、データベース内の機密データの検出、分類、ラベル付け、およびレポート作成を行うための基本的な機能が提供されます。
 
 最も機密性の高いデータには、ビジネス、財務、医療、個人情報などが含まれる場合があります。 このようなデータの検出と分類は、組織の情報保護アプローチにおいて極めて重要な役割を果たすことができます。 次のような場合にインフラストラクチャとして使用できます。
 
@@ -36,11 +36,11 @@ ms.locfileid: "98132051"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>データの検出と分類とは
 
-データの検出と分類には、Azure の一連の高度なサービスと新機能が導入されています。 これにより、データベースだけでなくデータの保護も目的として、SQL Database、SQL Managed Instance、および Azure Synapse の新しい情報保護パラダイムが形成されます。 このパラダイムには次のものが含まれます。
+データの検出と分類には、Azure の一連の基本的なサービスと新機能が導入されています。 これにより、データベースだけでなくデータの保護も目的として、SQL Database、SQL Managed Instance、および Azure Synapse の新しい情報保護パラダイムが形成されます。 このパラダイムには次のものが含まれます。
 
 - **検出と推奨事項:** 分類エンジンは、データベースをスキャンして、機密データが含まれる可能性のある列を識別します。 その後、Azure portal を使って、推奨される分類を確認して適用するための簡単な方法を提供します。
 
-- **ラベル付け:** SQL Server データベース エンジンに追加された新しいメタデータ属性を使用して、機密度の分類ラベルを列に永続的に適用できます。 このメタデータは、機密度に基づく高度な監査と保護のシナリオに利用できます。
+- **ラベル付け:** SQL Server データベース エンジンに追加された新しいメタデータ属性を使用して、機密度の分類ラベルを列に永続的に適用できます。 このメタデータは、機密度に基づく監査と保護のシナリオに利用できます。
 
 - **クエリ結果セットの機密度:** 監査のため、クエリ結果セットの機密度がリアルタイムで計算されます。
 

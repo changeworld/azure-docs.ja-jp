@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 432104c7e2cb9486dfb47a793ae73829d8705b60
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655818"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567483"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -69,14 +69,18 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
+    - [BETTER Mobile Threat Defense](connect-better-mtd.md)
+    - [Beyond Security beSECURE](connect-besecure.md)
     - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
     - [Okta SSO](connect-okta-single-sign-on.md)
     - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 ログ](connect-perimeter-81-logs.md)
+    - [Proofpoint On Demand (POD) の電子メール セキュリティ](connect-proofpoint-pod.md)
     - [Proofpoint TAP](connect-proofpoint-tap.md)
     - [Qualys VM](connect-qualys-vm.md)
+    - [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
@@ -93,6 +97,8 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [AI Vectra 検出](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [Citrix WAF](connect-citrix-waf.md)
+        - [CyberArk Enterprise Password Vault](connect-cyberark.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)
         - [F5 ASM](connect-f5.md)
         - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
@@ -100,13 +106,19 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
+        - [Thycotic Secret Server](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
+        - [WireX Network Forensics Platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [その他の CEF ベースのアプライアンス](connect-common-event-format.md)
     - **ファイアウォール、プロキシ、エンドポイント - Syslog:**
+        - [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
+        - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
         - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Squid Proxy](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [その他の Syslog ベースのアプライアンス](connect-syslog.md)

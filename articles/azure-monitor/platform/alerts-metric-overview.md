@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 01/11/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071053"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572733"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -26,8 +26,8 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- 累計時間 (生のメトリックの値に対して実行される統計。 [サポートされている集計時間](metrics-charts.md#changing-aggregation)には Min、Max、Avg、Total、Count があります):Average
-- 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
+- 集計の種類 (生のメトリック値に対して実行される統計。 [サポートされる集計の種類](./metrics-aggregation-explained.md#aggregation-types)は、最小、最大、平均、合計、カウントです):Average
+- 期間 (メトリック値がチェックされるルック バック期間): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子:より大きい
 - しきい値: 70
@@ -43,8 +43,8 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 動的
-- 累計時間 (生のメトリックの値に対して実行される統計。 [サポートされている集計時間](metrics-charts.md#changing-aggregation)には Min、Max、Avg、Total、Count があります):Average
-- 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
+- 集計の種類 (生のメトリック値に対して実行される統計。 [サポートされる集計の種類](./metrics-aggregation-explained.md#aggregation-types)は、最小、最大、平均、合計、カウントです):Average
+- 期間 (メトリック値がチェックされるルック バック期間): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子:より大きい
 - 秘密度: Medium
@@ -65,6 +65,10 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 
 解決済みの通知が Web フックまたは電子メールで送信されると、Azure portal でのアラート インスタンスの状態 (監視状態と呼ばれる) も解決済みに設定されます。
 
+> [!NOTE]
+>
+> あるアラート ルールで複数の条件を監視している場合、3 つの連続する期間にわたって少なくとも 1 つの条件が満たされなくなると、発生したアラートが解決済みになります。
+
 ### <a name="using-dimensions"></a>ディメンションの使用
 
 Azure Monitor のメトリック アラートでは、1 つのルールによる複数のディメンション値の組み合わせの監視もサポートされます。 複数のディメンションの組み合わせを使用する利点を、例を使って説明します。
@@ -76,7 +80,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - 条件タイプ: 静的
 - Dimensions
   - Instance = InstanceName1, InstanceName2
-- 累計時間: Average
+- 集計の種類:Average
 - 期間: 直近 5 分間
 - 頻度: 1 分
 - 演算子:GreaterThan
@@ -91,7 +95,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - 条件タイプ: 静的
 - Dimensions
   - インスタンス = *
-- 累計時間: Average
+- 集計の種類:Average
 - 期間: 直近 5 分間
 - 頻度: 1 分
 - 演算子:GreaterThan
@@ -108,7 +112,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - 条件タイプ: 動的
 - Dimensions
   - インスタンス = *
-- 累計時間: Average
+- 集計の種類:Average
 - 期間: 直近 5 分間
 - 頻度: 1 分
 - 演算子:GreaterThan
@@ -138,13 +142,13 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 | サービス | パブリック Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
 | 仮想マシン<sup>1</sup>  | **はい** | **はい** | いいえ |
-| SQL Server データベース | **はい** | **はい** | **あり** |
-| SQL Server エラスティック プール | **はい** | **はい** | **あり** |
-| NetApp ファイル容量プール | **はい** | **あり** | **あり** |
+| SQL Server データベース | **はい** | **あり** | **あり** |
+| SQL Server エラスティック プール | **はい** | **あり** | **あり** |
+| NetApp ファイル容量プール | **あり** | **あり** | **あり** |
 | NetApp ファイル ボリューム | **あり** | **あり** | **あり** |
 | キー コンテナー | **あり** | **あり** | **あり** |
-| Azure Cache for Redis | **はい** | **あり** | **あり** |
-| Data Box Edge のデバイス | **はい** | **はい** | **あり** |
+| Azure Cache for Redis | **あり** | **あり** | **あり** |
+| Data Box Edge のデバイス | **はい** | **あり** | **あり** |
 
 <sup>1</sup> 仮想マシンのネットワーク メトリック (受信ネットワーク合計、送信ネットワーク合計、受信フロー数、送信フロー数、受信フローの最大作成速度、送信フローの最大作成速度) に対してはサポートされていません。
 
@@ -176,7 +180,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure でメトリック アラートを作成、表示、管理する方法を学習する](alerts-metric.md)
-- [Azure Monitor メトリックス エクスプローラー内でアラートを作成する方法を学習する](./metrics-charts.md#create-alert-rules)
+- [Azure Monitor メトリックス エクスプローラー内でアラートを作成する方法を学習する](./metrics-charts.md#alert-rules)
 - [Azure Resource Manager のテンプレートを使ってメトリック アラートを配置する方法を学習する](./alerts-metric-create-templates.md)
 - [アクション グループの詳細について学習する](action-groups.md)
 - [動的しきい値の条件タイプの詳細について学習する](alerts-dynamic-thresholds.md)

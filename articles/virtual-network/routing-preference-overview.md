@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912701"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186143"
 ---
 # <a name="what-is-routing-preference-preview"></a>ルーティング優先設定とは (プレビュー)
 
@@ -74,7 +74,7 @@ Azure のルーティング優先設定を使用すると、Azure とインタ�
 
 ## <a name="limitations"></a>制限事項
 
-* ルーティング優先設定は、パブリック IP アドレスの Standard SKU とのみ互換性があります。 パブリック IP アドレスの Basic SKU はサポートされていません。
+* ルーティング優先設定は、パブリック IP アドレスのゾーン冗長 Standard SKU とのみ互換性があります。 パブリック IP アドレスの Basic SKU はサポートされていません。
 * 現在、ルーティング優先設定では IPv4 のパブリック IP アドレスのみがサポートされています。 IPv6 のパブリック IP アドレスはサポートされていません。
 * 複数の NIC を備えた仮想マシンでは、1 種類のルーティング優先設定しか使用できません。
 

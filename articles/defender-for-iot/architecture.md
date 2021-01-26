@@ -11,20 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2020
+ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832576"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201479"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT のアーキテクチャ
 
-この記事では、Defender for IoT ソリューションの機能的なシステム アーキテクチャについて説明します。
+この記事では、Defender for IoT ソリューションの機能的なシステム アーキテクチャについて説明します。 Azure Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
 
-## <a name="defender-for-iot-components"></a>Defender for IoT のコンポーネント
+## <a name="agentless-solution-for-organizations"></a>組織向けのエージェントレス ソリューション
+### <a name="defender-for-iot-components"></a>Defender for IoT のコンポーネント
 
 Defender for IoT は、Azure クラウドとオンプレミスのコンポーネントの両方に接続します。 このソリューションは、複数のリモートの場所を持つ大規模で地理的に分散した環境でのスケーラビリティを考慮して設計されています。 このソリューションを使用すると、国、地域、事業単位、またはゾーンごとの多層分散アーキテクチャを実現できます。 
 
@@ -79,12 +80,12 @@ Defender for IoT センサーを SPAN ポートまたはネットワーク TAP �
 - オンプレミスの管理コンソール
 - Azure ポータル
 
-#### <a name="sensor-console"></a>センサー コンソール
+### <a name="sensor-console"></a>センサー コンソール
 センサー検出はセンサー コンソールに表示され、それらをネットワーク マップ、資産インベントリ、およびさまざまなレポート (リスク評価レポート、データ マイニング クエリ、攻撃ベクトルなど) で表示、調査、分析することができます。 また、コンソールを使用して、センサー エンジンによって検出された脅威を表示および処理したり、情報をパートナー システムに転送したり、ユーザーを管理したりすることもできます。
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender for IoT のセンサー コンソール":::
 
-#### <a name="on-premises-management-console"></a>オンプレミスの管理コンソール
+### <a name="on-premises-management-console"></a>オンプレミスの管理コンソール
 オンプレミスの管理コンソールを使用すると、セキュリティ オペレーション センター (SOC) のオペレーターは、複数のセンサーから 1 つのダッシュボードに集約されたアラートを管理および分析し、OT ネットワークの正常性を全体的に把握できます。
 
 このアーキテクチャは、SOC レベルでのネットワークの包括的な統合ビュー、最適化されたアラート処理、操作上のネットワーク セキュリティの制御を提供します。これにより、意思決定とリスク管理を円滑に行うことができます。
@@ -103,20 +104,23 @@ SOC ワークフローと Runbook に緊密に統合されているため、軽�
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="すべてのアラートと情報を管理します。":::
 
-#### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portal
 
 Azure の Defender for IoT ポータルを使用して、次のようなことができます。
 
 - ソリューション アプライアンスの購入
+
 - ソフトウェアのインストールと更新
 - Azure へのセンサーのオンボード
 - 脅威インテリジェンス パッケージの更新
 
-## <a name="embedded-security-agent-built-in-mode"></a>埋め込まれたセキュリティ エージェント: 組み込みモード
+## <a name="agent-based-solution-for-device-builders"></a>デバイス ビルダー向けのエージェントベースのソリューション
+
+### <a name="embedded-security-agent-built-in-mode"></a>埋め込まれたセキュリティ エージェント: 組み込みモード
 
 **組み込み** モードでは、IoT ハブ内で **[セキュリティ]** オプションをオンにすると、Defender for IoT が有効になります。 リアルタイム監視、推奨事項の提示、アラート機能を備えた組み込みモードでは、デバイスの可視性と比類ないセキュリティが手軽に得られます。 組み込みモードでは、デバイスにエージェントをインストールする必要がありません。ログに記録されたアクティビティに対する高度な分析を使用してフィールド デバイスおよび IoT ハブが分析され、保護されます。
 
-## <a name="embedded-security-agent-enhanced-mode"></a>埋め込まれたセキュリティ エージェント: 拡張モード
+### <a name="embedded-security-agent-enhanced-mode"></a>埋め込まれたセキュリティ エージェント: 拡張モード
 
 **拡張** モードでは、IoT ハブ内で **[セキュリティ]** オプションをオンにし、デバイスに Defender for IoT デバイス エージェントをインストールすると、エージェントによってそのデバイスから生のセキュリティ イベントが収集、集計、分析されます。 未加工のセキュリティ イベントには、IP 接続、プロセス作成、ユーザー ログイン、およびその他のセキュリティ関連情報が含まれる可能性があります。 また、Defender for IoT デバイス エージェントによってイベント集計も処理され、高いネットワーク スループットを回避できます。 エージェントは高度にカスタマイズ可能です。これにより、最速の SLA で重要な情報のみを送信するなど、特定のタスクを実行したり、広範なセキュリティ情報とコンテキストをより大きなセグメントに集計して、高いサービス コストを回避したりできます。
 
@@ -129,6 +133,8 @@ Defender for IoT サービスが有効になると、IoT ハブにより、転�
 Defender for IoT により、分析パイプラインを使用して、実用的な推奨事項およびアラートを生成するためにすべての情報ストリームが結合されます。 パイプラインには、セキュリティ研究者と専門家によって作成されたカスタム ルールと、標準的なデバイスの動作とリスクの分析からの偏差を検索する機械学習モデルの両方が含まれています。
 
 Defender for IoT の推奨事項とアラート (分析パイプライン出力) は、各顧客の Log Analytics ワークスペースに書き込まれます。 ワークスペースおよび未加工のイベントにアラートと推奨事項を含めると、検出された不審なアクティビティの正確な情報を使用して詳細な調査とクエリを行うことができます。
+
+:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="マイクロ エージェントのアーキテクチャ。":::
 
 ## <a name="see-also"></a>関連項目
 

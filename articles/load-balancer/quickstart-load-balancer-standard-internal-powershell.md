@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: d2d266462cb119e4a803b0e1012f5dfbe94a4a6e
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5844b321fd3050bab9288657189ddcd87bba14db
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630566"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562337"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -49,6 +49,12 @@ New-AzResourceGroup -Name 'CreateIntLBQS-rg' -Location 'eastus'
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
+
+このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
+
+内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 
+
+次の図は、このクイックスタートで作成されるリソースを示したものです。
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="クイックスタートで作成される標準的なロード バランサー リソース。" border="false":::
 
@@ -190,7 +196,7 @@ $lbrule = @{
     FrontendIpConfiguration = $feip
     BackendAddressPool = $bePool
 }
-$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset -DisableOutboundSNAT
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset
 
 ## Create the load balancer resource. ##
 $loadbalancer = @{
@@ -206,8 +212,6 @@ $loadbalancer = @{
 New-AzLoadBalancer @loadbalancer
 
 ```
->[!NOTE]
->バックエンド プール内の仮想マシンは、この構成ではアウトバウンド インターネット接続を持ちません。 </br> アウトバウンド接続の提供の詳細については、以下を参照してください。 </br> **[Azure の送信接続](load-balancer-outbound-connections.md)**</br> 接続を提供するためのオプション: </br> **[送信専用のロード バランサーの構成](egress-only.md)** </br> **[Virtual Network NAT とは](../virtual-network/nat-overview.md)**
 
 ## <a name="create-virtual-machines---standard"></a>仮想マシンを作成する - Standard
 
@@ -304,6 +308,12 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
+
+このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
+
+内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 
+
+次の図は、このクイックスタートで作成されるリソースを示したものです。
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="クイックスタートで作成される基本的なロード バランサー リソース。" border="false":::
 

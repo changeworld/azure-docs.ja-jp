@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011951"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232354"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -97,7 +97,7 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 
 ## <a name="add-credentials"></a>資格情報を追加する
 
-資格情報は、Web API にアクセスする Confidential クライアント アプリケーションによって使用されます。 Confidential クライアントの例としては、Web アプリ、その他の Web API、またはサービスおよびデーモン型アプリケーションなどがあります。 資格情報により、アプリケーションはそれ自体として認証され、実行時にユーザーによる操作は必要ありません。
+資格情報は、Web API にアクセスする [Confidential クライアント アプリケーション](msal-client-applications.md)によって使用されます。 Confidential クライアントの例としては、[Web アプリ](scenario-web-app-call-api-overview.md)、その他の [Web API](scenario-protected-web-api-overview.md)、または[サービスおよびデーモン型アプリケーション](scenario-daemon-overview.md)などがあります。 資格情報により、アプリケーションはそれ自体として認証され、実行時にユーザーによる操作は必要ありません。 
 
 証明書とクライアント シークレット (文字列) の両方を資格情報として Confidential クライアント アプリの登録に追加できます。
 
@@ -105,7 +105,7 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 
 ### <a name="add-a-certificate"></a>証明書を追加する
 
-証明書は、"*公開キー*" とも呼ばれ、クライアント シークレットよりも高いレベルの保証を提供するため、推奨される資格情報の種類です。
+証明書は、"*公開キー*" とも呼ばれ、クライアント シークレットよりも高いレベルの保証を提供するため、推奨される資格情報の種類です。 アプリケーションにおける認証方法として証明書を使用する方法について詳しくは、「[Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報](active-directory-certificate-credentials.md)」を参照してください。
 
 1. Azure portal の **[アプリの登録]** でアプリケーションを選択します。
 1. **[証明書およびシークレット]**  >  **[証明書のアップロード]** の順に選択します。
@@ -114,7 +114,7 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 
 ### <a name="add-a-client-secret"></a>クライアント シークレットの追加
 
-クライアント シークレットは、"*アプリケーション パスワード*" とも呼ばれ、アプリで自身を識別するために証明書の代わりに使用できる文字列値です。 2 種類の資格情報を使用する方が簡単で、開発時に多く使用されますが、証明書よりも安全性が低いと考えられています。 運用環境で実行するアプリケーションでは、証明書を使用する必要があります。
+クライアント シークレットは、"*アプリケーション パスワード*" とも呼ばれ、アプリで自身を識別するために証明書の代わりに使用できる文字列値です。 2 種類の資格情報を使用する方が簡単で、開発時に多く使用されますが、証明書よりも安全性が低いと考えられています。 運用環境で実行するアプリケーションでは、証明書を使用する必要があります。 アプリケーションのセキュリティに関する推奨事項について詳しくは、「[Microsoft ID プラットフォームのベスト プラクティスと推奨事項](identity-platform-integration-checklist.md#security)」を参照してください。
 
 1. Azure portal の **[アプリの登録]** でアプリケーションを選択します。
 1. **[証明書およびシークレット]**  >   **[新しいクライアント シークレット]** の順に選択します。
@@ -122,6 +122,8 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 1. 期間を選択します。
 1. **[追加]** を選択します。
 1. クライアント アプリケーション コードで使用するために **シークレットの値を記録** します。このページから離れると、"*二度と表示されません*"。
+
+**注:** シークレットの値と共に生成される ID は、シークレットの ID であり、アプリケーション ID とは異なります。
 
 ## <a name="next-steps"></a>次のステップ
 

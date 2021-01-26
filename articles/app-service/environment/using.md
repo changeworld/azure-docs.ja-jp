@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013534"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209731"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment の使用
 
@@ -51,7 +51,7 @@ ASE 内にアプリを作成するには:
     > 同じ App Service プランに Linux アプリと Windows アプリを含めることはできませんが、それらを同じ App Service 環境に含めることはできます。
     >
 
-1. ** [次へ:監視] ** を選択します。アプリで App Insights を有効にする場合は、作成フロー中のここで、それを行うことができます。 
+1. **Next:監視** を選択します。お使いのアプリで App Insights を有効にする場合は、作成フロー中のここで、それを行うことができます。 
 
 1.  **Next:タグ** を選択します。アプリに必要なすべのタグを追加します  
 

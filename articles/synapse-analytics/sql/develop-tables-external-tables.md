@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120429"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599853"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Azure Data Lake 内のファイルから外部テーブルを作成してクエリを実行する
 
-Data Lake の探索機能を使用することで、ファイルを右クリックするだけで、専用 SQL プールまたはサーバーレス SQL プールを使って外部テーブルを作成してクエリを実行できるようになりました。
+Data Lake の探索機能を使用することで、ファイルを右クリックするだけで、専用 SQL プールまたはサーバーレス SQL プールを使って外部テーブルを作成してクエリを実行できるようになりました。 ADLS Gen2 ストレージ アカウントから外部テーブルを作成するワンクリック ジェスチャーは、Parquet ファイルでのみサポートされます。 
 
 ### <a name="prerequisites"></a>前提条件
 

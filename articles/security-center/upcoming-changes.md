@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915288"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562320"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -31,8 +31,37 @@ ms.locfileid: "97915288"
 
 ## <a name="planned-changes"></a>計画されている変更
 
+- ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
+- [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)
 - [Azure Policy の評価で "適用除外" であったリソースは "準拠" とレポートされる](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [Azure セキュリティ ベンチマークのカバレッジを広げるために追加される、35 個のプレビュー推奨事項](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
+
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化 
+
+**変更予定日:** 2021 年 2 月
+
+次の 2 つの推奨事項が 2021 年 2 月に非推奨化される予定です。
+
+- **システムの更新プログラムを適用するには、マシンを再起動する必要があります**。 これが原因でセキュア スコアに若干の影響が生じる可能性があります。
+- **お使いのマシンに監視エージェントをインストールする必要があります**。 この推奨事項は、オンプレミスのマシンにのみ関係します。また、そのロジックのいくつかは、別の推奨事項 (**お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある**) に移される予定です。 これが原因でセキュア スコアに若干の影響が生じる可能性があります。
+
+連続エクスポートとワークフロー自動化の構成をチェックして、該当する推奨事項が含まれているかどうかを確認することをお勧めします。 また、ダッシュボードまたはそれらを使用する他の監視ツールを適宜更新する必要があります。
+
+これらの推奨事項の詳細については、[セキュリティに関する推奨事項のリファレンス ページ](recommendations-reference.md)を参照してください。
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL データ分類の推奨事項を改善
+
+**変更予定日:** 2021 年第 2 四半期
+
+"**データ分類の適用**" セキュリティ コントロールにおける現行バージョンの推奨事項 "**SQL データベースの機密データを分類する必要がある**" は非推奨となり、より Microsoft のデータ分類戦略に沿った新しいバージョンに置き換えられる予定です。 その結果、次のような影響が出ています。
+
+- 今後、推奨事項はセキュア スコアに影響しません。
+- 今後、セキュリティ コントロール ("データ分類の適用") はセキュア スコアに影響しません。
+- 推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
+
+
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>Azure Policy の評価で "適用除外" であったリソースは "準拠" とレポートされる
 

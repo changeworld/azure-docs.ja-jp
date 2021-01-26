@@ -4,14 +4,14 @@ description: Azure Logic Apps および Power Automate の式に含まれる関�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.topic: reference
+ms.date: 01/13/2021
+ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034297"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234224"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -2532,25 +2532,31 @@ iterationIndexes('<loopName>')
 
 ### <a name="json"></a>json
 
-文字列または XML に対する JSON (JavaScript Object Notation) 型の値またはオブジェクトを返します。
+文字列または XML に対する JSON (JavaScript Object Notation) 型の値、オブジェクト、またはオブジェクトの配列を返します。
 
 ```
 json('<value>')
+json(xml('value'))
 ```
 
-| パラメーター | 必須 | 種類 | 説明 |
+> [!IMPORTANT]
+> 出力の構造を定義する XML スキーマがない場合、入力によっては、予期される形式と大幅に異なる構造の結果が関数から返されることがあります。
+>  
+> この動作により、(重要なビジネス システムやソリューションなどの) 明確に定義されたコントラクトに出力が従う必要があるシナリオでは、この関数は適していません。
+
+| パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | 文字列、XML | 変換する文字列または XML |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*JSON-result*> | JSON ネイティブの型またはオブジェクト | 指定した文字列または XML に対する JSON ネイティブの型の値またはオブジェクト。 文字列が null の場合、この関数は空のオブジェクトを返します。 |
+| <*JSON-result*> | JSON ネイティブの型、オブジェクト、または配列 | 入力文字列または XML からの JSON ネイティブの型の値、オブジェクト、またはオブジェクトの配列。 <p><p>- ルート要素に 1 つの子要素を含む XML を渡すと、この関数はその子要素に対して 1 つの JSON オブジェクトを返します。 <p> - ルート要素に複数の子要素を含む XML を渡すと、この関数はそれらの子要素に対する JSON オブジェクトを含む 1 つの配列を返します。 <p>- 文字列が null 値である場合、この関数は空のオブジェクトを返します。 |
 ||||
 
 *例 1*
 
-この例は、次の文字列を JSON 値に変換します。
+この例では、次の文字列を JSON 値に変換します。
 
 ```
 json('[1, 2, 3]')
@@ -2560,7 +2566,7 @@ json('[1, 2, 3]')
 
 *例 2*
 
-この例は、次の文字列を JSON に変換します。
+この例では、次の文字列を JSON に変換します。
 
 ```
 json('{"fullName": "Sophia Owen"}')
@@ -2568,7 +2574,7 @@ json('{"fullName": "Sophia Owen"}')
 
 返される結果:
 
-```
+```json
 {
   "fullName": "Sophia Owen"
 }
@@ -2576,23 +2582,53 @@ json('{"fullName": "Sophia Owen"}')
 
 *例 3*
 
-この例は、次の XML を JSON に変換します。
+この例では、`json()` および `xml()` の各関数を使用して、ルート要素に 1 つの子要素を含む XML を、その子要素に対する `person` という名前の JSON オブジェクトに変換します。
 
-```
-json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
-```
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 返される結果:
 
 ```json
 {
-   "?xml": { "@version": "1.0" },
+   "?xml": { 
+      "@version": "1.0" 
+   },
    "root": {
-      "person": [ {
+      "person": {
          "@id": "1",
          "name": "Sophia Owen",
          "occupation": "Engineer"
-      } ]
+      }
+   }
+}
+```
+
+*例 4*
+
+この例では、`json()` および `xml()` の各関数を使用して、ルート要素に複数の子要素を含む XML を、それらの子要素に対する JSON オブジェクトを含む `person` という名前の配列に変換します。
+
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+
+返される結果:
+
+```json
+{
+   "?xml": {
+      "@version": "1.0"
+   },
+   "root": {
+      "person": [
+         {
+            "@id": "1",
+            "name": "Sophia Owen",
+            "occupation": "Engineer"
+         },
+         {
+            "@id": "2",
+            "name": "John Doe",
+            "occupation": "Engineer"
+         }
+      ]
    }
 }
 ```
@@ -2610,7 +2646,7 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ... | はい | 配列またはオブジェクト、両方ともは不可 | 共通項目 "*のみ*" を抽出するコレクション |
 |||||
@@ -2640,7 +2676,7 @@ intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8,
 join([<collection>], '<delimiter>')
 ```
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | Array | 結合する項目を含む配列 |
 | <*delimiter*> | はい | String | 結果の文字列内の各文字の間に挿入される区切り記号 |
@@ -2672,7 +2708,7 @@ last('<collection>')
 last([<collection>])
 ```
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列 | 最後の項目を検索するコレクション |
 |||||
@@ -2706,7 +2742,7 @@ last(createArray(0, 1, 2, 3))
 lastIndexOf('<text>', '<searchText>')
 ```
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 検索する部分文字列を含む文字列 |
 | <*searchText*> | はい | String | 検索する部分文字列 |

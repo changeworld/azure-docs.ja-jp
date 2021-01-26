@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549091"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178978"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -89,6 +89,16 @@ ms.locfileid: "96549091"
 また、レプリケーション ルールの一部として 1 つ以上のフィルターを指定して、ブロック BLOB をプレフィックスでフィルター処理することもできます。 プレフィックスを指定すると、ソース コンテナー内のそのプレフィックスと一致する BLOB のみが宛先コンテナーにコピーされます。
 
 ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成すると、宛先コンテナーは読み取り専用になります。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 ただし、宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動することはできます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
+
+## <a name="replication-status"></a>レプリケーションの状態
+
+ソース アカウントの BLOB のレプリケーション状態を確認できます。 詳細については、「[BLOB のレプリケーションの状態を確認する](object-replication-configure.md#check-the-replication-status-of-a-blob)」を参照してください。
+
+ソース アカウントの BLOB のレプリケーションの状態が失敗を示している場合は、次の考えられる原因を調査します。
+
+- 宛先アカウントに対してオブジェクト レプリケーション ポリシーが構成されていることを確認します。
+- 宛先コンテナーがまだ存在することを確認します。
+- 書き込み操作の一部としてカスタマー指定のキーでソース BLOB が暗号化されている場合、オブジェクトのレプリケーションは失敗します。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)」を参照してください。
 
 ## <a name="billing"></a>課金
 

@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116366"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569915"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics のマネージド仮想ネットワーク
 
@@ -52,8 +52,21 @@ Azure Synapse ワークスペースを作成するときに、そのワークス
 
 ![マネージド ワークスペース仮想ネットワークを有効にする](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
+ご利用のワークスペースにマネージド ワークスペース仮想ネットワークを関連付けるよう選択したら、[マネージド プライベート エンドポイント](./synapse-workspace-managed-private-endpoints.md)を使用して、マネージド ワークスペース仮想ネットワークからのアウトバウンド接続を承認済みのターゲットにのみ許可することで、データ流出から保護することができます。 マネージド ワークスペース仮想ネットワークからのアウトバウンド トラフィックを、マネージド プライベート エンドポイント経由するターゲットに制限するには、 **[はい]** を選択します。 
 
-Azure Synapse ワークスペースがマネージド ワークスペース仮想ネットワークに関連付けられているかどうかは、Azure portal の **[概要]** を選択することで確認できます。
+
+>[!IMPORTANT]
+>Synapse ワークスペースのマネージド仮想ネットワークでデータ流出保護が有効になっている場合、メタストアは無効になります。 これらのワークスペースで Spark SQL を使用することはできません。
+
+![マネージド プライベート エンドポイントを使用するアウトバウンド トラフィック](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+
+ワークスペースからのアウトバウンド トラフィックをすべてのターゲットに許可する場合は **[いいえ]** を選択します。
+
+マネージド プライベート エンドポイントの作成先となるターゲットを Azure Synapse ワークスペースから制御することもできます。 ご利用のサブスクリプションと同じ AAD テナント内のリソースに対しては、既定でマネージド プライベート エンドポイントが許可されます。 ご利用のサブスクリプションとは異なる AAD テナント内のリソースに対してマネージド プライベート エンドポイントを作成したい場合は、 **[+ 追加]** を選択して AAD テナントを追加してください。 AAD テナントはドロップダウンから選択できるほか、AAD テナント ID を手動で入力することもできます。
+
+![AAD テナントを追加する](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+
+ワークスペースの作成後、Azure Synapse ワークスペースがマネージド ワークスペース仮想ネットワークに関連付けられているかどうかは、Azure portal の **[概要]** を選択することで確認できます。
 
 ![Azure portal におけるワークスペースの概要](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

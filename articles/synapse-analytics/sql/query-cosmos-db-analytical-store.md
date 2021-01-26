@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121347"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222107"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link プレビューでサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
@@ -205,6 +205,8 @@ FROM OPENROWSET(
 Azure Cosmos DB の値に使用する必要がある SQL 型の詳細については、記事の最後にある [SQL 型のマッピングの規則](#azure-cosmos-db-to-sql-type-mappings)を参照してください。
 
 ## <a name="create-view"></a>ビューを作成する
+
+マスターまたは既定のデータベースにビューを作成することは推奨されず、サポートもされていません。 そのため、ビューのためのユーザー データベースを作成する必要があります。
 
 スキーマを特定したら、Azure Cosmos DB データの上にビューを準備できます。 Azure Cosmos DB アカウント キーを別の資格情報に配置し、`OPENROWSET` 関数からこの資格情報を参照する必要があります。 ビュー定義でアカウント キーを保持しないでください。
 

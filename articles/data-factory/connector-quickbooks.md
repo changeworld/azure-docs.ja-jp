@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/15/2021
+ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529264"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233170"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory を使用して QuickBooks Online からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,15 +52,15 @@ QuickBooks のリンクされたサービスでは、次のプロパティがサ
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**QuickBooks** に設定する必要があります | はい |
 | connectionProperties | QuickBooks への接続方法を定義するプロパティのグループ。 | はい |
-| ***`connectionProperties` の下:*** | | |
+| **_`connectionProperties` の下:_* _ | | |
 | endpoint | QuickBooks Online サーバーのエンドポイント。 (つまり、quickbooks.api.intuit.com)  | はい |
 | companyId | 承認する QuickBooks の会社の会社 ID。 会社 ID を検索する方法については、[会社 ID の検索方法](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)に関する記事を参照してください。 | はい |
-| consumerKey | OAuth 2.0 認証用のコンシューマー キー。 | はい |
-| consumerSecret | OAuth 2.0 認証用のコンシューマー シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| consumerKey | OAuth 2.0 認証用の QuickBooks Online アプリケーションのクライアント ID。 詳細については、[こちら](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)を参照してください。 | はい |
+| consumerSecret | OAuth 2.0 認証用の QuickBooks Online アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | refreshToken | QuickBooks アプリケーションに関連付けられた OAuth 2.0 更新トークン。 詳細については、[こちら](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)を参照してください。 更新トークンは、180 日後に有効期限が切れることに注意してください。 お客様は、更新トークンを定期的に更新する必要があります。 <br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。| はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
 
-**例:**
+_ *例:* *
 
 ```json
 {

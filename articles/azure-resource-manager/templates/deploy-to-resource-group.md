@@ -2,13 +2,13 @@
 title: リソースをリソース グループにデプロイする
 description: Azure Resource Manager テンプレートでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807719"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186228"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM テンプレートを使用したリソース グループへのデプロイ
 
@@ -85,7 +85,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 * 同じサブスクリプションまたは他のサブスクリプション内の他のリソース グループ
 * テナント内の任意のサブスクリプション
 * リソース グループのテナント
-* [拡張リソース](scope-extension-resources.md)はリソースに適用できます
+
+[拡張リソース](scope-extension-resources.md)は、デプロイ ターゲットとは異なるターゲットにスコープ設定できます。
 
 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
@@ -136,6 +137,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 または、管理グループなどの一部のリソースの種類に対して、スコープを `/` に設定することもできます。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+詳細については、「[管理グループ](deploy-to-management-group.md#management-group)」を参照してください。
 
 ## <a name="deploy-to-target-resource-group"></a>ターゲット リソース グループにデプロイする
 

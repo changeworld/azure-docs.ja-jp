@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
-ms.date: 01/14/2020
-ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/14/2021
+ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791343"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233374"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>一時的な接続の問題を解決する手順
 
 1. アプリケーションによって報告されたエラーで発生している既知の障害については、 [Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status) を参照してください。
-2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、これらをアプリケーション エラーとしてユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。
+2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、アプリケーション エラーをユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。
 3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [リソース制限](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached)に関するページを参照してください。
 4. 接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options) を選択して、サポート要求を送信してください。
 
@@ -57,7 +57,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 
 アプリケーションでの一時的エラーの処理の詳細については、「[SQL Database への一時的な接続エラーのトラブルシューティング](troubleshoot-common-connectivity-issues.md)」をご覧ください
 
-ADO.NET を使用するクライアントの *ブロック期間* については、「 [接続プール (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)」をご覧ください。
+ADO.NET を使用するクライアントの *ブロック期間* については、「[接続プール (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)」をご覧ください。
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-your-server"></a>サーバーへの接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました
 
@@ -104,49 +104,46 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 通常、サービス管理者は、次の手順を使用してログイン資格情報を追加します。
 
 1. SQL Server Management Studio (SSMS) を使用して、サーバーにログインします。
-2. 次の SQL クエリを使用して、ログイン名が無効になっているかどうかを確認します。
+2. master データベースで次の SQL クエリを実行して、ログイン名が無効になっているかどうかを確認します。
 
    ```sql
-   SELECT name, is_disabled FROM sys.sql_logins
+   SELECT name, is_disabled FROM sys.sql_logins;
    ```
 
 3. 対応する名前が無効になっている場合は、次のステートメントを使用して有効にします。
 
    ```sql
-   Alter login <User name> enable
+   ALTER LOGIN <User name> ENABLE;
    ```
 
-4. SQL ログイン ユーザー名が存在しない場合は、これらの手順に従って作成します。
-
-   1. SSMS で、 **[セキュリティ]** をダブルクリックして展開します。
-   2. **[ログイン]** を右クリックし、 **[新しいログイン]** を選択します。
-   3. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
+4. SQL ログイン ユーザー名が存在しない場合は、次の SQL クエリを編集して実行し、新しい SQL ログインを作成します。
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = ‘<password, sysname, Change_Password>’
+   WITH PASSWORD = '<password, sysname, Change_Password>';
    GO
    ```
 
-5. **[データベース]** をダブルクリックします。
+5. SSMS オブジェクト エクスプローラーで、 **[データベース]** を展開します。
 6. ユーザーにアクセス許可を付与するデータベースを選択します。
-7. **[セキュリティ]** をダブルクリックします。
-8. **[ユーザー]** を右クリックし、 **[新しいユーザー]** を選択します。
-9. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
+7. **[セキュリティ]** を右クリックし、 **[New]\(新規\)** 、 **[ユーザー]** を選択します。
+8. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
 
    ```sql
    CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
+   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
    GO
-   -- Add user to the database owner role
 
-   EXEC sp_addrolemember N’db_owner’, N’<user_name, sysname, user_name>’
+   -- Add user to the database owner role
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>';
    GO
    ```
 
+   `sp_addrolemember` を使用して、特定のユーザーを特定のデータベース ロールにマップすることもできます。
+
    > [!NOTE]
-   > `sp_addrolemember` を使用して、特定のユーザーを特定のデータベース ロールにマップすることもできます。
+   > Azure SQL Database では、データベース ロールのメンバーシップを管理するために、より新しい [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) 構文を検討してください。  
 
 詳細については、[Azure SQL Database でのデータベースとログインの管理](./logins-create-manage.md)に関するページを参照してください。
 
@@ -183,22 +180,23 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 - 実行時間の長いクエリがあるかどうかを確認します。
 
   > [!NOTE]
-  > これは、問題が解決されない可能性のある最小限のアプローチです。
+  > これは、問題が解決されない可能性のある最小限のアプローチです。 実行時間の長いまたはブロックしているクエリのトラブルシューティングの詳細については、「[Azure SQL Database のブロックの問題の概要と解決策](understand-resolve-blocking.md)」を参照してください。
 
 1. 次の SQL クエリを実行して、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ビューを確認し、ブロックしている要求がないかどうかを調べます。
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. ヘッド ブロッカーの **入力バッファー** を特定します。
-3. ヘッド ブロッカー クエリを調整します。
+1. [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 動的管理関数と問題のあるクエリの session_id を使用して、ヘッド ブロッカーの **入力バッファー** を特定します。次に例を示します。
 
-   詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
+1. ヘッド ブロッカー クエリを調整します。
 
 ブロックしているクエリや実行時間の長いクエリに対応しているにもかかわらず、データベースが常に制限に達する場合は、より多くのリソースを含むエディション ([エディション](https://azure.microsoft.com/pricing/details/sql-database/)) にアップグレードすることを検討してください。
-
-動的管理ビューの詳細については、「[システム動的管理ビュー](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)」をご覧ください。
 
 データベースの制限の詳細については、[SQL Database リソース制限](./resource-limits-logical-server.md)に関するページをご覧ください。
 
@@ -234,7 +232,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name
-   ORDER BY [Table Size (MB)] DESC
+   ORDER BY [Table Size (MB)] DESC;
    ```
 
 2. 現在のサイズが、使用しているエディションでサポートされている最大サイズを超えていない場合は、ALTER DATABASE を使用して MAXSIZE の設定を増やすことができます。
@@ -253,15 +251,21 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 1. sys.dm_exec_requests ビューを確認し、開いているセッションで total_elapsed_time 列の値が大きいものがないか調べます。 次の SQL スクリプトを実行して、この確認を行います。
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. 長時間実行されているクエリの入力バッファーを特定します。
+2. [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 動的管理関数と問題のあるクエリの session_id を使用して、ヘッド ブロッカーの **入力バッファー** を特定します。次に例を示します。
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
 3. クエリを調整します。
 
-また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。
+    > [!Note]
+    > Azure SQL Database におけるブロッキングのトラブルシューティングの詳細については、「[Azure SQL Database のブロックの問題の概要と解決策](understand-resolve-blocking.md)」を参照してください。
 
-詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
+また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>エラー 40551:TEMPDB の使用量が多すぎるため、セッションを終了しました
 
@@ -299,7 +303,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
 | 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](resource-limits-logical-server.md)」を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。 |
-| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。 <br/>それ以外の場合は、後でもう一度やり直してください。 |
+| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。 <br/>その他の場合は、後でもう一度やり直してください。 |
 | 40544 |20 |データベースのサイズ クォータに達しました。 データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。|
 | 40549 |16 |トランザクションが長時間実行されているため、セッションを終了しました。 トランザクションを短くしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。|
 | 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。|
@@ -313,14 +317,14 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 | エラー コード | 重大度 | 説明 | 是正措置 |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 エラスティック プールの記憶域が上限に達したときに、データベースにデータを書き込もうとしています。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md) <br/> |可能であれば、エラスティック プールの DTU を増やすかストレージを追加して、その記憶域の上限を上げることを検討するか、エラスティック プール内の個々のデータベースで使用される記憶域を減らすか、あるいはエラスティック プールからデータベースを削除してください。 エラスティック プールのスケーリングについては、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。|
-| 10929 | 16 |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md) <br/> それ以外の場合は、後でもう一度やり直してください。 データベースあたりの DTU/仮想コア最小値、データベースあたりの DTU/仮想コア最大値。 エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU または仮想コアを増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
+| 1132 | 17 |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 エラスティック プールの記憶域が上限に達したときに、データベースにデータを書き込もうとしています。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md) <br/> |可能であれば、エラスティック プールの DTU を増やすかストレージを追加して、その記憶域の上限を上げることを検討するか、エラスティック プール内の個々のデータベースで使用される記憶域を減らすか、あるいはエラスティック プールからデータベースを削除してください。 エラスティック プールのスケーリングについては、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。 データベースから未使用領域を削除する方法の詳細については、「[Azure SQL Database でデータベースのファイル領域を管理する](file-space-manage.md)」を参照してください。|
+| 10929 | 16 |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md) <br/> その他の場合は、後でもう一度やり直してください。 データベースあたりの DTU/仮想コア最小値、データベースあたりの DTU/仮想コア最大値。 エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU または仮想コアを増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
 | 40844 | 16 |サーバー '%ls' のデータベース '%ls' は、エラスティック プールの '%ls' エディションのデータベースであり、連続コピー リレーションシップを持つことはできません。  |該当なし |
 | 40857 | 16 |サーバー '%ls ' のエラスティック プールが見つかりませんでした。エラスティック プール名は ' %ls ' です。 指定されたエラスティック プールが、指定されたサーバー内にありません。 | 有効なエラスティック プール名を指定してください。 |
 | 40858 | 16 |エラスティック プール '%ls' は サーバー '%ls' に既に存在します。 指定されたエラスティック プールは、指定されたサーバー内に既に存在します。 | 新しいエラスティック プール名を指定してください。 |
 | 40859 | 16 |エラスティック プールでは、サービス階層 '%ls' はサポートされていません。 指定されたサービス階層は、エラスティック プールのプロビジョニングにはサポートされていません。 |正しいエディションを指定するか、既定のサービス階層を使用する場合はサービス階層を空のままにしてください。 |
 | 40860 | 16 |エラスティック プール '%ls' とサービス目標 '%ls' の組み合わせが正しくありません。 エラスティック プールとサービス レベルは、リソース タイプが 'ElasticPool' に指定されている場合にのみ同時に指定できます。 |エラスティック プールとサービス レベルの適切な組み合わせを指定してください。 |
-| 40861 | 16 |データベース エディション '%. *ls' は、エラスティック プールのサービス層 '%.ls' と同じにする必要があります* 。 データベースのエディションがサービス階層と異なります。 |エラスティック プールのサービス階層と異なるデータベース エディションを指定しないでください。  データベースのエディションを指定する必要がないことにご注意ください。 |
+| 40861 | 16 |データベース エディション '%.*ls' は、エラスティック プールのサービス層 '%.ls' と同じにする必要があります*。 データベースのエディションがサービス階層と異なります。 |エラスティック プールのサービス階層と異なるデータベース エディションを指定しないでください。  データベースのエディションを指定する必要がないことにご注意ください。 |
 | 40862 | 16 |エラスティック プールのサービス目標が指定されている場合は、エラスティック プール名を指定する必要があります。 エラスティック プールのサービス目標は、エラスティック プールを一意に識別することはできません。 |エラスティック プールのサービス目標を使用する場合は、エラスティック プール名を指定してください。 |
 | 40864 | 16 |エラスティック プールの DTU は、サービス階層 '%.*ls' に対して (%d) DTU 以上である必要があります。 最小値を下回るエラスティック プールの DTU を設定しようとしています。 |エラスティック プールの DTU を最小値以上に設定し直してください。 |
 | 40865 | 16 |エラスティック プールの DTU は、サービス階層 '%.*ls' に対して (%d) DTU を超えることはできません。 エラスティック プールの DTU を最大値を超える値に設定しようとしています。 |エラスティック プールの DTU を最大値を超えないように設定し直してください。 |
@@ -347,7 +351,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ## <a name="confirm-whether-an-error-is-caused-by-a-connectivity-issue"></a>エラーの原因が接続の問題かどうかを確認する
 
-接続の問題が原因でエラーが発生しているかどうかを確認するには、次のような接続を開くための呼び出しを示すフレームのスタック トレースを確認します ( **SqlConnection** クラスへの参照に注意)。
+接続の問題が原因でエラーが発生しているかどうかを確認するには、次のような接続を開くための呼び出しを示すフレームのスタック トレースを確認します (**SqlConnection** クラスへの参照に注意)。
 
 ```
 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
@@ -356,7 +360,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-クエリの問題によって例外がトリガーされた場合、次のような呼び出し履歴が表示されます ( **SqlCommand** クラスへの参照に注意)。 このような場合は、[クエリを調整](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)します。
+クエリの問題によって例外がトリガーされた場合、次のような呼び出し履歴が表示されます (**SqlCommand** クラスへの参照に注意)。 このような場合は、[クエリを調整](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)します。
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -373,7 +377,7 @@ ClientConnectionId:<Client connection ID>
 
 ## <a name="steps-to-fix-common-connection-issues"></a>一般的な接続に関する問題を修正するための手順
 
-1. アプリケーション サーバーで TCP/IP がクライアント プロトコルとして有効になっていることを確認します。 詳細については、「[クライアント プロトコルの構成](/sql/database-engine/configure-windows/configure-client-protocols)」を参照してください。 SQL ツールがインストールされていないアプリケーション サーバーでは、 **cliconfg.exe** (SQL Server クライアント ネットワーク ユーティリティ) を実行して、TCP/IP が有効になっていることを確認します。
+1. アプリケーション サーバーで TCP/IP がクライアント プロトコルとして有効になっていることを確認します。 詳細については、「[クライアント プロトコルの構成](/sql/database-engine/configure-windows/configure-client-protocols)」を参照してください。 SQL ツールがインストールされていないアプリケーション サーバーでは、**cliconfg.exe** (SQL Server クライアント ネットワーク ユーティリティ) を実行して、TCP/IP が有効になっていることを確認します。
 2. アプリケーションの接続文字列を調べ、正しく構成されていることを確認します。 たとえば、接続文字列で正しいポート (1433) と完全修飾サーバー名が指定されていることを確認します。
 「[接続情報の取得](./connect-query-ssms.md#get-server-connection-information)」をご覧ください。
 3. 接続タイムアウトの値を増やしてみます。 30 秒以上の接続タイムアウトを使用することをお勧めします。

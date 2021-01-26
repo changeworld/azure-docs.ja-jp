@@ -6,13 +6,13 @@ ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
-ms.author: xujing
-ms.openlocfilehash: 101f2cfe57624502764d145351a6343cfdd2a334
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: mimckitt
+ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572866"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210326"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
@@ -24,14 +24,22 @@ ms.locfileid: "96572866"
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketplace から Windows 10 イメージをデプロイする 
-PowerShell、CLI、および Azure Resource Manager テンプレートでのデプロイについては、Windows 10 イメージを次の発行元、プラン、SKU で見つけることができます。
+PowerShell、CLI、および Azure Resource Manager テンプレートでのデプロイについては、Windows 10 イメージを `PublisherName: MicrosoftWindowsDesktop` と `Offer: Windows-10` で見つけることができます。
 
-| OS  |      発行元      |  プラン | Sku |
-|:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+```powershell
+Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
+
+Skus                        Offer      PublisherName           Location 
+----                        -----      -------------           -------- 
+rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
+```
+
+使用可能なイメージの詳細については、「[Azure PowerShell を使用して Azure Marketplace VM イメージを検索して使用する](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)」を参照してください。
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>マルチテナント ホスティング権限の資格を得る 
 マルチテナント ホスティング権限の資格を得て、Azure で Windows 10 イメージを実行するには、次のいずれかのサブスクリプションがユーザーに必要になります。 

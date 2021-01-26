@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743779"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222413"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>組織内での外部コラボレーションの現在の状態を検出する 
 
@@ -46,9 +46,9 @@ ms.locfileid: "97743779"
 
 ### <a name="use-allow-or-deny-lists"></a>許可リストまたは拒否リストを使用する
 
-現在自分がコラボレーションを行っているユーザーや、自分がコラボレーションをブロックしているユーザーを検出するもう 1 つの方法は、 [許可リストまたは拒否リスト](../external-identities/allow-deny-list.md)に追加した組織があるかどうかを確認することです。
+自分の組織で、特定の組織のみとのコラボレーションを許可する必要があるかどうかを検討してください。 または、特定の組織とのコラボレーションをブロックする必要があるかどうかも検討しましょう。  テナント レベルには[許可または拒否リスト](../external-identities/allow-deny-list.md)があります。これを使用すると、ソース (Teams、SharePoint、Azure Portal など) に関係なく、B2B の招待と引き換え全体を制御できます。
+エンタイトルメント管理を使用している場合は、下に示すように、[Specific connected organizations]\(特定の接続済み組織\) 設定を使用して、アクセス パッケージのスコープをパートナーのサブセットに設定することもできます。
 
-自分の組織で、特定の組織のみとのコラボレーションを許可する必要があるかどうかを検討してください。 また、特定の組織とのコラボレーションをブロックする必要があるかどうかも検討しましょう。 これらの設定は、B2B 全体に適用することもできますし、特定のアクセス パッケージのみに適用することもできます。
 
 ![新しいアクセス パッケージを作成する際の許可/拒否リストのスクリーンショット。](media/secure-external-access/2-new-access-package.png)
 

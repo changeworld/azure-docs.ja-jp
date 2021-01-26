@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017937"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164840"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Network Performance Monitor から接続モニターに移行する
 
 Network Performance Monitor (NPM) から機能が向上した新しい接続モニターに、1 回のクリックで、ダウンタイムなしにテストを移行できます。 利点の詳細については、[接続モニター](./connection-monitor-overview.md)に関する記事を参照してください。
 
-
->[!NOTE]
-> サービス接続モニターから接続モニターに移行できるのはテストだけです。
->
 
 ## <a name="key-points-to-note"></a>注意する点
 
@@ -52,7 +48,7 @@ Network Performance Monitor から接続モニターにテストを移行する�
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="Network Performance Monitor から接続モニターにテストを移行する" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. ドロップダウン リストで、お使いのサブスクリプションとワークスペースを選択してから、移行する NPM 機能を選択します。 現時点では、サービス接続モニターからのテストのみを移行できます。  
+1. ドロップダウン リストで、お使いのサブスクリプションとワークスペースを選択してから、移行する NPM 機能を選択します。 
 1. **[インポート]** を選択してテストを移行します。
 
 移行が開始されると、次の変更が行われます。 
@@ -74,5 +70,5 @@ Network Performance Monitor から接続モニターにテストを移行する�
 ## <a name="next-steps"></a>次の手順
 
 接続モニターの詳細については、以下を参照してください。
-* [接続モニターから接続モニターに移行する](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [接続モニター (クラシック) から接続モニターに移行する](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Azure portal を使用して接続モニターを作成する](./connection-monitor-create-using-portal.md)

@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591057"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165004"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -25,7 +25,7 @@ ms.locfileid: "97591057"
 
 ## <a name="what-is-an-application-proxy-connector"></a>アプリケーション プロキシ コネクタとは
 
-コネクタは、オンプレミスにある軽量エージェントで、アプリケーション プロキシ サービスへの送信接続を容易にします。 コネクタは、バックエンド アプリケーションへのアクセス権を持つ Windows Server にインストールする必要があります。 コネクタはコネクタ グループに編成でき、各グループが特定のアプリケーションへのトラフィックを処理します。
+コネクタは、オンプレミスにある軽量エージェントで、アプリケーション プロキシ サービスへの送信接続を容易にします。 コネクタは、バックエンド アプリケーションへのアクセス権を持つ Windows Server にインストールする必要があります。 コネクタはコネクタ グループに編成でき、各グループが特定のアプリケーションへのトラフィックを処理します。 アプリケーション プロキシの詳細と、アプリケーション プロキシ アーキテクチャの図解については、「[Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する](what-is-application-proxy.md#application-proxy-connectors)」を参照してください。
 
 ## <a name="requirements-and-deployment"></a>要件とデプロイ
 

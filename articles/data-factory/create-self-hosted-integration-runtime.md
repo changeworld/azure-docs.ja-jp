@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121640"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217449"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -157,21 +157,21 @@ dmgcmd ACTION args...
 
 |ACTION|args|説明|
 |------|----|-----------|
-|-rn、<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|指定された認証キーおよびノード名を使用して、セルフホステッド統合ランタイム ノードを登録します。|
-|-era、<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|現在のノードでリモート アクセスを有効にして、高可用性クラスターをセットアップします。 または、Azure Data Factory を介さずにセルフホステッド IR に対する資格情報の直接設定を有効にします。 後者を実行するには、同じネットワーク内のリモート コンピューターから **New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用します。|
-|-erac、<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|ノードがコンテナーで実行されているときに、現在のノードへのリモート アクセスを有効にします。|
-|-dra、<br/>-DisableRemoteAccess||現在のノードへのリモート アクセスを無効にします。 マルチノード設定にはリモート アクセスが必要です。 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell コマンドレットは、リモート アクセスが無効な場合でも機能します。 この動作は、コマンドレットがセルフホステッド IR ノードと同じコンピューター上で実行されている場合に当てはまります。|
-|-k、<br/>-Key|"`<AuthenticationKey>`"|以前の認証キーを上書きまたは更新します。 この操作には注意してください。 キーが新しい統合ランタイムのものである場合、これにより以前のセルフホステッド IR ノードがオフラインになる可能性があります。|
-|-gbf、<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|現在のノードのバックアップ ファイルを生成します。 バックアップ ファイルには、ノード キーとデータ ストアの資格情報が含まれています。|
-|-ibf、<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|バックアップ ファイルからノードを復元します。|
-|-r、<br/>-Restart||セルフホステッド統合ランタイムのホスト サービスを再開します。|
-|-s、<br/>-Start||セルフホステッド統合ランタイムのホスト サービスを開始します。|
-|-t、<br/>-Stop||セルフホステッド統合ランタイムのホスト サービスを停止します。|
-|-sus、<br/>-StartUpgradeService||セルフホステッド統合ランタイムのアップグレード サービスを開始します。|
-|-tus、<br/>-StopUpgradeService||セルフホステッド統合ランタイムのアップグレード サービスを停止します。|
-|-tonau、<br/>-TurnOnAutoUpdate||セルフホステッド統合ランタイムの自動更新を有効にします。|
-|-toffau、<br/>-TurnOffAutoUpdate||セルフホステッド統合ランタイムの自動更新を無効にします。|
-|-ssa、<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントおよび仮想アカウントの場合は空のパスワード "" を使用します|
+|`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|指定された認証キーおよびノード名を使用して、セルフホステッド統合ランタイム ノードを登録します。|
+|`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|現在のノードでリモート アクセスを有効にして、高可用性クラスターをセットアップします。 または、Azure Data Factory を介さずにセルフホステッド IR に対する資格情報の直接設定を有効にします。 後者を実行するには、同じネットワーク内のリモート コンピューターから **New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用します。|
+|`-erac`,<br/>`-EnableRemoteAccessInContainer`|"`<port>`" ["`<thumbprint>`"]|ノードがコンテナーで実行されているときに、現在のノードへのリモート アクセスを有効にします。|
+|`-dra`,<br/>`-DisableRemoteAccess`||現在のノードへのリモート アクセスを無効にします。 マルチノード設定にはリモート アクセスが必要です。 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell コマンドレットは、リモート アクセスが無効な場合でも機能します。 この動作は、コマンドレットがセルフホステッド IR ノードと同じコンピューター上で実行されている場合に当てはまります。|
+|`-k`,<br/>`-Key`|"`<AuthenticationKey>`"|以前の認証キーを上書きまたは更新します。 この操作には注意してください。 キーが新しい統合ランタイムのものである場合、これにより以前のセルフホステッド IR ノードがオフラインになる可能性があります。|
+|`-gbf`,<br/>`-GenerateBackupFile`|"`<filePath>`" "`<password>`"|現在のノードのバックアップ ファイルを生成します。 バックアップ ファイルには、ノード キーとデータ ストアの資格情報が含まれています。|
+|`-ibf`,<br/>`-ImportBackupFile`|"`<filePath>`" "`<password>`"|バックアップ ファイルからノードを復元します。|
+|`-r`,<br/>`-Restart`||セルフホステッド統合ランタイムのホスト サービスを再開します。|
+|`-s`,<br/>`-Start`||セルフホステッド統合ランタイムのホスト サービスを開始します。|
+|`-t`,<br/>`-Stop`||セルフホステッド統合ランタイムのホスト サービスを停止します。|
+|`-sus`,<br/>`-StartUpgradeService`||セルフホステッド統合ランタイムのアップグレード サービスを開始します。|
+|`-tus`,<br/>`-StopUpgradeService`||セルフホステッド統合ランタイムのアップグレード サービスを停止します。|
+|`-tonau`,<br/>`-TurnOnAutoUpdate`||セルフホステッド統合ランタイムの自動更新を有効にします。|
+|`-toffau`,<br/>`-TurnOffAutoUpdate`||セルフホステッド統合ランタイムの自動更新を無効にします。|
+|`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントおよび仮想アカウントの場合は空のパスワード "" を使用します|
 
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Microsoft ダウンロード センターからセルフホステッド IR をインストールして登録する
@@ -205,9 +205,9 @@ dmgcmd ACTION args...
 
 アカウントにサービスとしてのログオンの権限があることを確認します。 そうでないと、セルフホステッド統合ランタイムを正常に開始できません。 アクセス許可は、 **[ローカル セキュリティ ポリシー] -> [セキュリティの設定] -> [ローカル ポリシー] -> [ユーザー権利の割り当て] -> [サービスとしてログオン]** で確認できます。
 
-![サービス アカウントのアクセス許可](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![[ローカル セキュリティ ポリシー] のスクリーンショット - [ユーザー権利の割り当て]](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![サービス アカウントのアクセス許可](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+![[サービスとしてログオン] のスクリーンショット、[ユーザー権利の割り当て]](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 
 ## <a name="notification-area-icons-and-notifications"></a>通知領域のアイコンと通知

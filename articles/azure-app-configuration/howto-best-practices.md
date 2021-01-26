@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929091"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200449"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -89,6 +89,10 @@ App Configuration には、Azure portal または CLI のいずれかを使用�
 ## <a name="multi-region-deployment-in-app-configuration"></a>App Configuration での複数リージョンのデプロイ
 
 App Configuration はリージョン単位のサービスです。 リージョンごとに構成が異なるアプリケーションでは、これらの構成を 1 つのインスタンスに格納すると、単一障害点が形成される可能性があります。 リージョンごとに 1 つの App Configuration インスタンスを複数のリージョンにデプロイするのが、より良いオプションである場合があります。 これは、リージョン単位のディザスター リカバリー、パフォーマンス、セキュリティ サイロ化に役立ちます。 リージョンごとに構成すると、調整がインスタンス単位で行われるため、待機時間が短縮され、個別の調整クォータが使用されます。 ディザスター リカバリーの軽減策を適用するには、[複数の構成ストア](./concept-disaster-recovery.md)を使用できます。 
+
+## <a name="client-applications-in-app-configuration"></a>App Configuration でのクライアント アプリケーション 
+
+App Configuration に過剰な要求があると、調整や超過分料金が発生する可能性があります。 アプリケーションでは、現在利用できるキャッシュとインテリジェントな更新を利用して、送信される要求の数が最適化されます。 このプロセスは、構成ストアへの直接接続を避けることにより、大量のクライアント アプリケーションでミラー化できます。 代わりにクライアント アプリケーションはカスタム サービスに接続し、このサービスによって構成ストアとの通信が行われます。 このプロキシ ソリューションを使用することで、クライアント アプリケーションが構成ストアの調整制限に近づかないようにすることができます。 詳細については、[FAQ](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration) に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 11/22/2020
 ms.topic: include
-ms.openlocfilehash: 30de9181fd23a29b28973d01899f0b23fca3ae89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2112cde42ee00b78a82962ee46f53110068977c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014579"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98187230"
 ---
 ## <a name="availability"></a>可用性
 
@@ -20,5 +20,5 @@ ms.locfileid: "96014579"
 |サポートされているレジストリとイメージ:|シェル アクセスによってパブリック インターネットからアクセス可能な ACR レジストリ内の Linux イメージ|
 |サポートされていないレジストリとイメージ:|Windows イメージ<br>"プライベート" レジストリ<br>Azure Private Link などのファイアウォール、サービス エンドポイント、またはプライベート エンドポイントによってアクセスが制限されたレジストリ<br>[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、または OS は含まれない "ディストリビューションレス" イメージ。|
 |必要なロールとアクセス許可:|**セキュリティ閲覧者** および [Azure Container Registry のロールとアクセス許可](../articles/container-registry/container-registry-roles.md)|
-|クラウド:|:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: 商用クラウド<br>:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: US Gov - 現在、プッシュ時のスキャン機能のみがサポートされています。 詳細については、「[イメージはどのような場合にスキャンされますか](../articles/security-center/defender-for-container-registries-introduction.md#when-are-images-scanned)」を参照<br>:::image type="icon" source="../articles/security-center/media/icons/no-icon.png" border="false"::: China Gov、その他の Gov|
+|クラウド:|:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: 商用クラウド<br>:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: US Gov および China Gov - 現在、プッシュ時のスキャン機能のみがサポートされています。 詳細については、「[イメージはどのような場合にスキャンされますか](../articles/security-center/defender-for-container-registries-introduction.md#when-are-images-scanned)」を参照|
 |||

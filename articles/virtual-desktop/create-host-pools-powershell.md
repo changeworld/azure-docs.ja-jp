@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667165"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251456"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell を使用した Windows Virtual Desktop のホスト プールの作成
 
@@ -124,7 +124,7 @@ Windows Virtual Desktop エージェントを登録するには、各仮想マ�
 
 次のいずれかの状況に該当する場合は、エージェントを更新する必要があります。
 
-- 以前に登録されたセッションを新しいホスト プールに移行する必要がある
+- 以前に登録されたセッション ホストを新しいホスト プールに移行する必要がある
 - 更新後にセッション ホストがホスト プールに表示されない
 
 エージェントを更新するには、次の操作を実行します。

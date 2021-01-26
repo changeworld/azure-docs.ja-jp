@@ -1,23 +1,23 @@
 ---
 title: Azure Security Center のリリース ノート
-description: Azure Security Center の新機能と変更点の説明。
+description: Azure Security Center の新機能と変更点の説明
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: overview
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 4e4ee8690822c6caf4a7c5bd69387ea00d6d00a8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955452"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541387"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -32,6 +32,24 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 
 ## <a name="january-2021"></a>2021 年 1 月
+
+12 月の更新プログラムには次のものが含まれます。
+
+- [フィルター処理された推奨事項一覧の CSV エクスポート](#csv-export-of-filtered-list-of-recommendations)
+- [オンプレミスおよびマルチクラウド マシンの脆弱性評価が一般提供されました](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>フィルター処理された推奨事項一覧の CSV エクスポート 
+
+2020 年 11 月には、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)」を参照してください)。 12 月には、それらのフィルターを拡張しました (「[環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)」を参照してください)。 
+
+今回は、フィルター処理された一覧に表示されている推奨事項のみが CSV エクスポートの対象となるよう、 **[Download to CSV]\(CSV にダウンロード\)** ボタンの動作を変更しています。 
+
+たとえば、以下の画像を見ると、一覧がフィルター処理されて 2 つの推奨事項が表示されていることがわかります。 生成された CSV ファイルには、それらの 2 つの推奨事項に関係する各リソースの状態情報が含まれています。   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="フィルター処理された推奨事項を CSV ファイルにエクスポートする":::
+
+詳細については、[Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)を参照してください。
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>オンプレミスおよびマルチクラウド マシンの脆弱性評価が一般提供されました
 

@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759293"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602609"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure ソフトウェア プランへの前払い
 
@@ -32,7 +32,7 @@ SUSE および RedHat のソフトウェア プランは、Azure portal で購�
 必須フィールドに必要事項を入力します。 購入する属性に一致するすべての SUSE Linux VM または RedHat VM に割引が適用されます。 割引が適用されるデプロイの実際の数は、選択したスコープと数量によって変わります。
 3. サブスクリプションを選択します。 それがプランの支払いに使用されます。
 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号: MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
-    - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
+    - Enterprise サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント) の残高から料金が差し引かれるか、超過分として課金されます。
     - 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 4. スコープを選択します。 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) をスコープにすることができます。
     - [単一サブスクリプション] - プランの割引は、サブスクリプションでのマシンの使用に適用されます。

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704335"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562354"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -41,11 +41,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="クイックスタートで作成される標準的なロード バランサー リソース。" border="false":::
-
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
 
 内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 
+
+次の図は、このクイックスタートで作成されるリソースを示したものです。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="クイックスタートで作成される標準的なロード バランサー リソース。" border="false":::
 
 仮想ネットワーク内のプライベート IP アドレスは、ロード バランサー用のフロントエンドとして構成されます (既定の名前は **LoadBalancerFrontend**)。 
 
@@ -199,12 +201,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | 正常性プローブ | **[myHealthProbe]** を選択します。 |
     | アイドル タイムアウト (分) | スライダーを **15** 分に移動します。 |
     | TCP リセット | **[Enabled]** を選択します。 |
-    | アウトバウンド送信元ネットワーク アドレス変換 (SNAT) | **[(Recommended) Use outbound rules to provide backend pool members access to the internet.]\((推奨) アウトバウンド規則を使用してバックエンド プール メンバーにインターネットへのアクセスを提供する\)** を選択します。 |
-
+    
 4. 残りの部分は既定値のままにし、次に **[OK]** を選択します。
-
->[!NOTE]
->バックエンド プール内の仮想マシンは、この構成ではアウトバウンド インターネット接続を持ちません。 </br> アウトバウンド接続の提供の詳細については、以下を参照してください。 </br> **[Azure の送信接続](load-balancer-outbound-connections.md)**</br> 接続を提供するためのオプション: </br> **[送信専用のロード バランサーの構成](egress-only.md)** </br> **[Virtual Network NAT とは](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
@@ -278,11 +276,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="クイックスタートで作成される基本的なロード バランサー リソース。" border="false":::
-
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
 
 内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 
+
+次の図は、このクイックスタートで作成されるリソースを示したものです。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="クイックスタートで作成される基本的なロード バランサー リソース。" border="false":::
 
 仮想ネットワーク内のプライベート IP アドレスは、ロード バランサー用のフロントエンドとして構成されます (既定の名前は **LoadBalancerFrontend**)。 
 

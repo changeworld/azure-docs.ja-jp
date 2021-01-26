@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861904"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566931"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して Hyper-V VM を検出する
 
@@ -42,16 +42,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **要件** | **詳細**
 --- | ---
 **Hyper-V ホスト** | VM が配置されている Hyper-V ホストは、スタンドアロンでも、クラスターに含まれていてもかまいません。<br/><br/> ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスが VM メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。
-**アプライアンスのデプロイ** | Hyper-V には、アプライアンスに VM を割り当てるためのリソースが必要です。<br/><br/> - Windows Server 2016<br/><br/> \- 16 GB の RAM<br/><br/> - 8 つの vCPU<br/><br/> - 約 80 GB のディスク記憶域<br/><br/> - 外部仮想スイッチ<br/><br/> - VM のインターネット アクセス (直接またはプロキシ経由)
+**アプライアンスのデプロイ** | Hyper-V には、アプライアンスに VM を割り当てるためのリソースが必要です。<br/><br/> - 16 GB の RAM、8 個の vCPU、約 80 GB のディスク記憶域。<br/><br/> - 外部仮想スイッチと、アプライアンス VM のインターネット アクセス (直接またはプロキシ経由)。
 **VM** | VM では、任意の Windows または Linux オペレーティング システムを実行できます。 
-
-開始する前に、検出中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---hyper-v)できます。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
 Azure Migrate プロジェクトを作成し、Azure Migrate アプライアンスを登録するには、以下を備えたアカウントが必要です。
 - Azure サブスクリプションに対する共同作成者または所有者のアクセス許可。
-- Azure Active Directory アプリを登録するためのアクセス許可。
+- Azure Active Directory (AAD) アプリを登録するためのアクセス許可。
 
 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。 サブスクリプションの所有者でない場合は、所有者と協力して、次のようにアクセス許可を割り当てます。
 
@@ -71,20 +69,51 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
     ![[ロールの割り当ての追加] ページを開いて、アカウントにロールを割り当てる](./media/tutorial-discover-hyper-v/assign-role.png)
 
-7. ポータルでユーザーを検索し、 **[サービス]** で **[ユーザー]** を選択します。
-8. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
+1. アプライアンスを登録するには、お使いの Azure アカウントに **AAD アプリを登録するためのアクセス許可** が必要です。
+1. Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** に移動します。
+1. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で **アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. [アプリの登録] 設定が [いいえ] に設定されている場合は、テナントまたはグローバル管理者に、必要なアクセス許可を割り当てるよう依頼してください。 テナントまたはグローバル管理者は、AAD アプリの登録を許可するために、**アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V ホストを準備する
 
-Hyper-V ホストに対する管理者アクセス権があるアカウントを設定します。 アプライアンスでは、このアカウントを検出に使用します。
+Hyper-V ホストは手動で準備することも、スクリプトを使用して準備することもできます。 次の表に準備手順がまとめられています。 スクリプトでは、これらを自動的に準備します。
 
-- オプション 1: Hyper-V ホスト マシンに対する管理者アクセス権があるアカウントを準備します。
-- オプション 2:ローカル管理者アカウントまたはドメイン管理者アカウントを準備し、アカウントを次のグループに追加します: Remote Management Users、Hyper-V Administrators、Performance Monitor Users。
+**Step** | **[スクリプト]** | **手動**
+--- | --- | ---
+ホストの要件を確認する | サポートされているバージョンの Hyper-V がホストで実行されていることを確認し、Hyper-V ロールを確認します。<br/><br/>WinRM サービスを有効にし、ホスト上のポート 5985 (HTTP) と 5986 (HTTPS) を開きます (メタデータの収集に必要)。 | ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスが VM メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。
+PowerShell のバージョンを確認する | サポートされている PowerShell バージョンでスクリプトが実行されていることを確認します。 | Hyper-V ホストで PowerShell バージョン4.0 以降が実行されていることを確認します。
+アカウントを作成する | Hyper-V ホストに対する適切なアクセス許可があることを確認します。<br/><br/> 適切なアクセス許可が割り当てられたローカル ユーザー アカウントを作成できます。 | オプション 1: Hyper-V ホスト マシンに対する管理者アクセス権があるアカウントを準備します。<br/><br/> オプション 2:ローカル管理者アカウントまたはドメイン管理者アカウントを準備し、アカウントを次のグループに追加します: Remote Management Users、Hyper-V Administrators、Performance Monitor Users。
+PowerShell リモート処理を有効にする | ホスト上で PowerShell リモート処理を有効にして、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。 | 設定するには、各ホスト上で、管理者として PowerShell コンソールを開き、``` powershell Enable-PSRemoting -force ``` コマンドを実行します。
+Hyper-V 統合サービスを設定する | ホストによって管理されているすべての VM で Hyper-V 統合サービスが有効になっていることを確認します。 | 各 VM で [Hyper-V 統合サービスを有効にします](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md)。<br/><br/> Windows Server 2003 を実行している場合は、[これらの手順に従います](prepare-windows-server-2003-migration.md)。
+VM ディスクがリモート SMB 共有に配置されている場合に資格情報を委任する | 資格情報を委任します。 | ```powershell Enable-WSManCredSSP -Role Server -Force ``` コマンドを実行して、SMB 共有上にディスクがある Hyper-V VM を実行しているホストで、CredSSP が資格情報を委任できるようにします。<br/><br/> このコマンドは、すべての Hyper-V ホスト上でリモートで実行できます。<br/><br/> クラスターに新しいホスト ノードを追加すると、自動的に検出用に追加されますが、CredSSP を手動で有効にする必要があります。<br/><br/> アプライアンスを設定したら、[アプライアンス上で CredSSP を有効にして](#delegate-credentials-for-smb-vhds)、その設定を終了します。 
 
+### <a name="run-the-script"></a>スクリプトを実行する
+
+1. [Microsoft ダウンロード センター](https://aka.ms/migrate/script/hyperv)からスクリプトをダウンロードします。 このスクリプトは、Microsoft によって暗号的に署名されています。
+2. MD5 または SHA256 ハッシュ ファイルを使用して、スクリプトの整合性を検証します。 ハッシュタグの値は以下に記載されています。 このコマンドを実行して、スクリプトのハッシュを生成します。
+
+    ```powershell
+    C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
+    ```
+    使用例:
+
+    ```powershell
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
+    ```
+3. スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
+
+    ```powershell
+    PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
+    ```
+ハッシュ値は次のとおりです。
+
+**ハッシュ** |  **Value**
+--- | ---
+MD5 | 0ef418f31915d01f896ac42a80dc414e
+SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 
@@ -99,26 +128,28 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
    ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-hyper-v/new-project.png)
 
 7. **［作成］** を選択します
-8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。
-
-**Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
+8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。**Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
 
 ![既定で追加された Server Assessment ツールを示すページ](./media/tutorial-discover-hyper-v/added-tool.png)
 
+> [!NOTE]
+> プロジェクトを既に作成している場合は、その同じプロジェクトを使用して追加のアプライアンスを登録することで、より多くの VM を検出して評価できます。[詳細情報](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>アプライアンスを設定する
 
+Azure Migrate: Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスによって、VM 検出が実行され、VM の構成とパフォーマンスのメタデータが Azure Migrate に送信されます。 アプライアンスは、Azure Migrate プロジェクトからダウンロードできる VHD ファイルをデプロイすることで設定できます。
+
+> [!NOTE]
+> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。
+
 このチュートリアルでは、次のように、Hyper-V VM でアプライアンスを設定します。
 
-- アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
-- Azure portal から圧縮された Hyper-V VHD をダウンロードします。
-- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
-- アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
-> [!NOTE]
-> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。
+1. アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
+1. Azure portal から圧縮された Hyper-V VHD をダウンロードします。
+1. アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
+1. アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
 
-
-### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate プロジェクト キーを生成する
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure Migrate プロジェクト キーを生成する
 
 1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
@@ -127,10 +158,9 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
-### <a name="download-the-vhd"></a>VHD をダウンロードする
+### <a name="2-download-the-vhd"></a>2. VHD をダウンロードする
 
-**[2:Azure Migrate アプライアンスをダウンロードする]** で、.VHD ファイルを選択し、 **[ダウンロード]** をクリックします。 
-
+**[2:Azure Migrate アプライアンスをダウンロードする]** で、.VHD ファイルを選択し、 **[ダウンロード]** をクリックします。
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
@@ -156,7 +186,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
         --- | --- | ---
         Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
-### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
+### <a name="3-create-the-appliance-vm"></a>3. アプライアンス VM を作成する
 
 ダウンロードしたファイルをインポートし、VM を作成します。
 
@@ -177,7 +207,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 
 [パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
-### <a name="configure-the-appliance"></a>アプライアンスを構成する
+### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
 
 アプライアンスを初めて設定します。
 
@@ -214,8 +244,6 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 1. 正常にログインしたら、アプライアンス構成マネージャーで前のタブに戻ります。
 4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しいアクセス許可が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD の資格情報を委任する
 

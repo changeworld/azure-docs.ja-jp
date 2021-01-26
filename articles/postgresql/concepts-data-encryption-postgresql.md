@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118457"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567519"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 

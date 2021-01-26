@@ -2,24 +2,24 @@
 title: Azure Data Box の注文方法のチュートリアル | Microsoft Docs
 description: このチュートリアルでは、オンプレミスのデータを Azure にインポートするハイブリッド ソリューション Azure Data Box とその注文方法について説明します。
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186160"
+ms.locfileid: "98210343"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
 Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド ソリューションです。 お客様は、Microsoft 提供の 80 TB (使用可能容量) ストレージ デバイスにデータを転送した後、そのデバイスを Microsoft に返送します。 その後、このデータは Azure にアップロードされます。
 
-このチュートリアルでは、Azure Data Box を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure Data Box を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |Resource group    | 前に選択したリソース グループ。 |
     |Import order name (インポート注文名) | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。    |
 
-    ![Data Box インポート注文ウィザードの [基本] 画面、正しい情報が入力された状態](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Data Box インポート注文ウィザードの [基本] 画面、正しい情報が入力された状態](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. **[データの格納先]** 画面で、**データの格納先** (ストレージ アカウントまたはマネージド ディスク) を選択します。
 
@@ -254,6 +254,10 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     ![Data Box インポート注文ウィザードの [データの格納先] 画面。ストレージ アカウントが選択されています](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
     指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 新しい **汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント** を作成することもできます。
+
+   > [!NOTE]
+   > - Azure Premium FileStorage アカウントを選択した場合、ストレージ アカウント共有にプロビジョニングされたクォータは、ファイル共有にコピーされるデータのサイズまで増えます。 クォータが増やされた後に、たとえば、なんらかの理由で Data Box がデータをコピーできなくても、クォータは再度調整されません。
+   > - このクォータは課金に使用されます。 データをデータセンターにアップロードしたら、ニーズに合わせてクォータを調整する必要があります。 詳細については、[課金の概要](../../articles/storage/files/understanding-billing.md)に関する記事をご覧ください。
 
     仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box を信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法を参照してください。
 
@@ -419,7 +423,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
    |sku| 注文する特定の Data Box デバイス。 有効な値は次のとおりです。"DataBox"、"DataBoxDisk"、"DataBoxHeavy"| "DataBox" |
    |email-list| 注文に関連付けられたメール アドレス。| "gusp@contoso.com" |
    |street-address1| 注文の配送先住所の番地。 | "15700 NE 39th St" |
-   |street-address2| 住所 2 の情報 (部屋番号、建物番号など)。 | "Bld 123" |
+   |street-address2| 住所 2 の情報 (部屋番号、建物番号など)。 | "Building 123" |
    |city| デバイスの配送先となる市区町村。 | "Redmond" |
    |state-or-province| デバイスの配送先となる都道府県。| "WA" |
    |country| デバイスの配送先となる国。 | "米国" |
@@ -538,7 +542,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |DataBoxType [必須]| 注文する特定の Data Box デバイス。 有効な値は次のとおりです。"DataBox"、"DataBoxDisk"、"DataBoxHeavy"| "DataBox" |
     |EmailId [必須]| 注文に関連付けられたメール アドレス。| "gusp@contoso.com" |
     |StreetAddress1 [必須]| 注文の配送先住所の番地。 | "15700 NE 39th St" |
-    |StreetAddress2| 住所 2 の情報 (部屋番号、建物番号など)。 | "Bld 123" |
+    |StreetAddress2| 住所 2 の情報 (部屋番号、建物番号など)。 | "Building 123" |
     |StreetAddress3| 3 つ目の住所情報。 | |
     |City [必須]| デバイスの配送先となる市区町村。 | "Redmond" |
     |StateOrProvinceCode [必須]| デバイスの配送先となる都道府県。| "WA" |
@@ -601,7 +605,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 ### <a name="track-a-single-order"></a>1 つの注文を追跡する
 
-Azure Data Box の既存の注文 1 つに関する追跡情報を取得するには、[az databox job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
+Azure Data Box の既存の 1 つの注文に関する追跡情報を取得するには、[`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ Azure Data Box の既存の注文 1 つに関する追跡情報を取得する�
 
 ### <a name="list-all-orders"></a>すべての注文を一覧表示する
 
-複数のデバイスを注文した場合、[az databox job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) を実行することで、Azure Data Box の注文をすべて表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
+複数のデバイスを注文した場合は、[`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) を実行することで、Azure Data Box のすべての注文を表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
 それぞれの注文のタイム スタンプも表示されます。
 
 ```azurecli
@@ -718,7 +722,7 @@ Azure Data Box の既存の注文 1 つに関する追跡情報を取得する�
 
 ### <a name="list-all-orders"></a>すべての注文を一覧表示する
 
-複数のデバイスを注文した場合、[Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) を実行することで、Azure Data Box の注文をすべて表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
+複数のデバイスを注文した場合は、[`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) を実行することで、Azure Data Box のすべての注文を表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
 それぞれの注文のタイム スタンプも表示されます。
 
 ```azurepowershell
@@ -761,7 +765,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>注文のキャンセル
 
-Azure Data Box の注文をキャンセルするには、[az databox job cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) を実行します。 注文のキャンセル理由を指定する必要があります。
+Azure Data Box の注文をキャンセルするには、[`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) を実行します。 注文のキャンセル理由を指定する必要があります。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ Azure Data Box の注文をキャンセルするには、[az databox job cancel]
 
 ### <a name="delete-an-order"></a>注文を削除する
 
-Azure Data Box の注文をキャンセルした場合、[az databox job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) を使用してその注文を削除できます。
+Azure Data Box の注文をキャンセルした場合は、[`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) を実行してその注文を削除できます。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>注文を削除する
 
-Azure Data Box の注文をキャンセルした場合、[Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) を使用してその注文を削除できます。
+Azure Data Box の注文をキャンセルした場合は、[`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) を実行してその注文を削除できます。
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

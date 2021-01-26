@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: c48a7f4b5b1512ec5bcd289e4fb8bd7884ca7394
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 52f7b328b013fd520787fca420a45ffdc5e9d9b1
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922553"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250810"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)
 
@@ -102,6 +102,8 @@ Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プ
 - マウントの一覧表示 (例: `showmount -a` コマンドを使用)
 
 - エクスポートの一覧表示 (例: `showmount -e` コマンドを使用)
+
+- ハード リンク
 
 - コンテナーを読み取り専用としてエクスポートする
 

@@ -4,12 +4,12 @@ description: 長期保有を指定した Azure Database for PostgreSQL のバッ
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734642"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569489"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -135,7 +135,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
 1. **保持** の設定を定義します。 保持規則を 1 つ以上追加できます。 各保持規則は、特定のバックアップの入力と、それらのバックアップのデータ ストアと保持期間を前提とします。
 
-1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。**バックアップ データ ストア** (ホット層) または **アーカイブ データ ストア** (プレビュー)。 次の **2 つの階層化オプション** のいずれかを選択することで、2 つのデータ ストア間でバックアップを階層化するタイミングを定義できます。
+1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。**バックアップ データ ストア** (Standard レベル) または **アーカイブ データ ストア** (プレビュー)。 次の **2 つの階層化オプション** のいずれかを選択することで、2 つのデータ ストア間でバックアップを階層化するタイミングを定義できます。
 
     - バックアップとアーカイブの両方のデータ ストアに同時にバックアップ コピーを作成する場合は、 **[今すぐ]** コピーすることを選択します。
     - バックアップ データ ストアでバックアップが期限切れになったときにそのバックアップをアーカイブ データ ストアに移動する場合は、 **[On-expiry]\(期限切れ時\)** に移動することを選択します。

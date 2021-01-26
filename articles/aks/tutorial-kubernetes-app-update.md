@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、AKS にデプロイされている既存のアプリケーションを新しいバージョンのアプリケーション コードで更新する方法について説明します。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833913"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250657"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 更新後のコンテナー イメージに変更内容が反映されていることを確認するために、ローカル Web ブラウザーで `http://localhost:8080` を開きます。
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="ローカル Web ブラウザーとローカル ホストを使用して Azure Voting App によって開かれた、更新されたコンテナー イメージの例を示すスクリーンショット。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="ローカル Web ブラウザーで開かれた、ローカルで実行されている Azure 投票アプリの更新されたコンテナー イメージの例を示すスクリーンショット":::
 
 実行中のアプリケーションに、*config_file.cfg* ファイルで指定した更新後の値が表示されます。
 
@@ -143,9 +143,9 @@ azure-vote-front-1297194256-zktw9  1/1       Terminating   0          1m
 kubectl get service azure-vote-front
 ```
 
-次に、ローカル Web ブラウザーを開き、サービスの IP アドレスに移動します。
+次に、Web ブラウザーを開いて、サービスの IP アドレスに移動します。
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="ローカル Web ブラウザーで Azure Voting App によって開かれた、更新されたアプリケーションの例を示すスクリーンショット。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="ローカル Web ブラウザーで開かれた、AKS クラスターで実行されている Azure 投票アプリの更新されたイメージの例を示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953578"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178944"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C でカスタム ポリシーを使用した電話のサインアップとサインインを設定する
 
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 >
 > *&lt;挿入: プライバシーに関する声明へのリンク&gt;*<br/>*&lt;挿入: サービス利用規約へのリンク&gt;*
 
-独自の同意情報を追加するには、次のサンプルをカスタマイズし、表示コントロール (電話でのサインアップとサインインのスターター パック内の Phone-Email-Base.xml ファイル) を使用してセルフアサートされたページで使用される ContentDefinition の LocalizedResources に含めます。
+独自の同意情報を追加するには、次のサンプルをカスタマイズし、表示コントロール ([電話でのサインアップとサインインのスターター パック][starter-pack-phone]内の *Phone_Email_Base.xml* ファイル) を使用してセルフアサートされたページで使用される ContentDefinition の LocalizedResources に含めます。
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        

@@ -6,21 +6,21 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: d4b6fc296ae41667d271e243e9aca9b594e4a5b6
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1a691d8ab212dd436b0dc9f7aafbc19a406b12b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886704"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601775"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
 このクイックスタートでは、Azure CLI を使用してアプリケーション ゲートウェイを作成します。 さらに、それをテストし、正しく動作することを確認します。 
 
-アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
+アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP アドレス、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
 
 また、[Azure PowerShell](quick-create-powershell.md) または [Azure portal](quick-create-portal.md) を使用してこのクイックスタートを完了することもできます。
 
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-the-backend-servers"></a>バックエンド サーバーを作成する
 
-バックエンドには、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、Azure App Service などのマルチテナント バックエンドを含めることができます。 この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、アプリケーション ゲートウェイをテストするために、仮想マシン上に IIS もインストールします。
+バックエンドには、NIC、仮想マシンスケールセット、パブリック IP アドレス、内部 IP アドレス、完全修飾ドメイン名 (FQDN)、および Azure App Service のようなマルチテナント バックエンドを割り当てることができます。 この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、アプリケーション ゲートウェイをテストするために、仮想マシン上に IIS もインストールします。
 
 #### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
 

@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89468540"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222804"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Cloud Shell をデプロイする
-> [!NOTE]
-> この機能はパブリック プレビュー段階です。
 
 通常の Cloud Shell セッションは、リソースとは別の Microsoft ネットワーク内のコンテナーで実行されます。 これは、コンテナー内で実行されているコマンドが、特定の仮想ネットワークからのみアクセスできるリソースにアクセスできないことを意味します。 たとえば、SSH を使用して、Cloud Shell からプライベート IP アドレスのみを持つ仮想マシンに接続したり、kubectl を使用して、アクセスがロックダウンされた Kubernetes クラスターに接続したりすることはできません。 
 
@@ -64,7 +62,7 @@ Cloud Shell に使用される Azure Relay インスタンスは、コンテナ�
 ## <a name="virtual-network-deployment-limitations"></a>仮想ネットワークのデプロイに関する制限事項
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークで Cloud Shell を開始するには、標準の Cloud Shell セッションよりも時間がかかります。
 
-* プレビュー期間中は、仮想ネットワーク内の Cloud Shell でサポートされるリージョンが少なくなっています。 現時点では、次のものに制限されています。WestUS と WestCentralUS。
+* 現在、インド中部以外のすべての Cloud Shell リージョンがサポートされています。 
 
 * [Azure Relay](../azure-relay/relay-what-is-it.md) は無料のサービスではありません。[価格](https://azure.microsoft.com/pricing/details/service-bus/)をご確認ください。 Cloud Shell シナリオでは、Cloud Shell を使用している間、管理者ごとに 1 つのハイブリッド接続が使用されます。 Cloud Shell セッションが完了すると、接続は自動的にシャットダウンされます。
 
@@ -89,9 +87,6 @@ ResourceTypes                             RegistrationState
 必要な VNET が既に接続されている場合は、このセクションをスキップします。
 
 Azure portal で、または Azure CLI や Azure PowerShell などを使用して、リソース グループと、その新しいリソース グループ内に仮想ネットワークを作成します。**リソース グループと仮想ネットワークは同じリージョンに存在する必要があります**。
-
-> [!NOTE]
-> パブリック プレビューの段階は、リソース グループと仮想ネットワークが WestCentralUS または WestUS のいずれかに配置されている必要があります。
 
 ### <a name="arm-templates"></a>ARM テンプレート
 [Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template)を利用して仮想ネットワーク内に Cloud Shell リソースを作成し、[Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template/storage)を使用して必要なストレージを作成します。 リソース名 (主にファイル共有名) をメモしておきます。

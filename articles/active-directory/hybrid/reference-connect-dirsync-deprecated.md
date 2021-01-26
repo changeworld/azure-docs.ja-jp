@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 713ec3a4020434fa73aad2e04676129cf43853be
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014805"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165843"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Sync と Azure Active Directory Sync のアップグレード
-Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Microsoft 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は非推奨となり、2017 年 4 月 13 日以降はサポートされなくなるので、Azure AD Connect へアップグレードする絶好の機会です。
+Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Microsoft 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync (AADSync) は非推奨となり、2017 年 4 月 13 日以降はサポートされなくなったので、Azure AD Connect へアップグレードする絶好の機会です。
 
 非推奨となるこの 2 つの ID 同期ツールは、単一フォレスト顧客用 (DirSync) および複数フォレストとその他の高度なユーザー用 (Azure AD Sync) に提供されていました。 これらの古いツールは、すべてのシナリオで使用できるAzure AD Connect という単一のソリューションに代わりました。 Azure AD Connect は、新機能、機能強化、および新しいシナリオのサポートを提供します。 Azure AD と Microsoft 365 に対してオンプレミスの ID データの同期を継続するには、Azure AD Connect にアップグレードすることを強くお勧めします。 2017 年 12 月 31 日を過ぎると、Microsoft はこれらの古いバージョンの動作を保証しません。
 
@@ -66,7 +66,7 @@ DirSync/Azure AD Sync は、2017 年 4 月 13 日の時点では引き続き機�
 現在使用されているどの DirSync リリースからでもアップグレードできます。 
 
 **Q:FIM または MIM の Azure AD コネクタはどうなりますか。**  
-FIM または MIM の Azure AD コネクタは、**非推奨とは発表されていません**。 このコネクタは **機能凍結**状態で、新しい機能が追加されず、バグの修正プログラムも受信しません。 Microsoft は、このコネクタから Azure AD Connect への移行を計画することをお勧めします。 このコネクタを使用して新しいデプロイメントを開始しないことを強くお勧めします。 このコネクタは、将来非推奨になると発表される予定です。
+FIM または MIM の Azure AD コネクタは、**非推奨とは発表されていません**。 このコネクタは **機能凍結** 状態で、新しい機能が追加されず、バグの修正プログラムも受信しません。 Microsoft は、このコネクタから Azure AD Connect への移行を計画することをお勧めします。 このコネクタを使用して新しいデプロイメントを開始しないことを強くお勧めします。 このコネクタは、将来非推奨になると発表される予定です。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

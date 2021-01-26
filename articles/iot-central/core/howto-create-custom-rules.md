@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126758"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220267"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 
@@ -24,7 +24,7 @@ ms.locfileid: "92126758"
 
 この攻略ガイドでは、以下の方法について説明します。
 
-* *継続的データ エクスポート*を使用してテレメトリをストリーム配信します。
+* *継続的データ エクスポート* を使用してテレメトリをストリーム配信します。
 * デバイスがデータの送信を停止したときに検出する Stream Analytics クエリを作成します。
 * Azure Functions と SendGrid サービスを使用してメール通知を送信します。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
 | リージョン | 最も近いリージョン |
 
-この記事の例とスクリーンショットでは、**米国**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
+この記事の例とスクリーンショットでは、**米国** リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
 
 このアプリケーション テンプレートには、テレメトリを送信する 2 つのシミュレートされたサーモスタット デバイスが含まれます。
 
@@ -351,7 +351,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 この攻略ガイドで学習した内容は次のとおりです。
 
-* *継続的データ エクスポート*を使用してテレメトリをストリーム配信します。
+* *継続的データ エクスポート* を使用してテレメトリをストリーム配信します。
 * デバイスがデータの送信を停止したときに検出する Stream Analytics クエリを作成します。
 * Azure Functions と SendGrid サービスを使用してメール通知を送信します。
 

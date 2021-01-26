@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455170"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219539"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
@@ -23,8 +23,8 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC タクシー データを SQLPOOL1 に読み込む
 
-1. Synapse Studio で **[開発]** ハブに移動し、新しい SQL スクリプトを作成します
-1. スクリプトの [接続先] セクションで、プール "SQLPOOL1" (このチュートリアルの[ステップ 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) で作成したプール) を選択します。
+1. Synapse Studio で **[開発]** ハブに移動し、新しいリソースを追加するための **+** ボタンをクリックして、新しい SQL スクリプトを作成します。
+1. スクリプトの上にある [接続先] ドロップダウン リストで、"SQLPOOL1" プール (このチュートリアルの[ステップ 1](./get-started-create-workspace.md) で作成したプール) を選択します。
 1. 次のコードを入力します。
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,12 +71,13 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. このスクリプトは、約 60 秒で終了します。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます
+1. [実行] ボタンをクリックして、スクリプトを実行します。
+1. このスクリプトは 60 秒以内に終了します。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます。
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>専用 SQL プール内の NYC タクシーのデータを探索する
 
 1. Synapse Studio で、 **[データ]** ハブに移動します。
-1. **[SQLPOOL1]**  >  **[テーブル]** の順に移動します。 複数のテーブルが読み込まれていることがわかります。
+1. **[SQLPOOL1]**  >  **[テーブル]** の順に移動します。 
 1. **dbo.Trip** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\)**  >  **[Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
 1. 新しい SQL スクリプトが作成されて実行されるまで待ちます。
 1. SQL スクリプトの上部の **Connect to** が自動的に **SQLPOOL1** という SQL プールに設定されることに注意してください。
@@ -89,7 +90,7 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
     FROM  dbo.Trip
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
-    ORDER BY PassengerCount
+    ORDER BY PassengerCount;
     ```
 
     このクエリは、合計乗車距離と平均乗車距離が乗客数とどのように関係しているかを示します。
@@ -102,4 +103,3 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
 
 > [!div class="nextstepaction"]
 > [Spark を使用して分析する](get-started-analyze-spark.md)
-

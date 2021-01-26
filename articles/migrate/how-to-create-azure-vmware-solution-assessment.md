@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752075"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567646"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成する
 
@@ -58,27 +58,29 @@ Azure VMware Solution (AVS) の評価作成に使用できるサイズ変更の�
 
     ![Azure Migrate Servers のスクリーンショット。[評価ツール] の下で [評価] が選択されています。](./media/how-to-create-assessment/assess.png)
 
-3. **[サーバーの評価]** で、評価の種類に "Azure VMware Solution (AVS)" を選択し、検出ソースを選択して評価名を指定します。
+3. **[サーバーの評価]** で、評価の種類として "Azure VMware Solution (AVS)" を選択し、検出ソースを選択します。
 
-    ![評価の基本](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="評価の基本の追加":::
 
-4. **[すべて表示]** をクリックして、評価のプロパティを確認します。
+4. **[編集]** をクリックして、評価のプロパティを確認します。
 
-    ![AVS 評価のプロパティ](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="評価のプロパティを確認するための [編集] ボタンの場所":::
 
-5. **[次へ]** をクリックして **評価するマシンを選択** します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+1. **[評価するマシンの選択]**  >  **[評価名]** で、評価の名前を指定します。 
+ 
+1. **[グループの選択または作成]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="VM をグループに追加する":::
 
-6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
+1. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
 
-7. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
+1. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
 
-8. **[評価を作成します]** をクリックして、グループを作成し、評価を実行します。
+1. **[評価を作成します]** をクリックして、グループを作成し、評価を実行します。
 
-    ![AVS の評価を作成する](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
 
-9. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
-
-10. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
+1. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を確認する
@@ -88,6 +90,8 @@ Azure VMware Solution (AVS) の評価の内容は次のとおりです。
 - **Azure VMware Solution (AVS) の対応性**: オンプレミスの VM が Azure VMware Solution (AVS) への移行に適しているかどうか。
 - **AVS ノード数**: VM の実行に必要な AVS ノードの予測数。
 - **すべての AVS ノードの使用率**: すべてのノードにおける CPU、メモリ、および記憶域の使用率の予測。
+    - 使用率では、vCenter Server、NSX Manager (大規模)、NSX Edge など、クラスター管理オーバーヘッドが事前に考慮されます。HCX がデプロイされている場合は、HCX Manager と IX アプライアンスによる消費 (圧縮と重複除去の前の最大 44vCPU (11 CPU)、75 GB の RAM、722 GB のストレージ) も考慮されます。
+    - メモリ、重複除去、圧縮では、現在、メモリについては使用率が 100% に設定され、重複除去と圧縮は 1.5 に設定されています。これらは、今後のリリースでは、ユーザー定義の入力となり、ユーザーは必要なサイズに微調整できます。
 - **月間コスト見積もり**: オンプレミスの VM を実行しているすべての Azure VMware Solution (AVS) ノードの月間推定コスト。
 
 
@@ -97,7 +101,7 @@ Azure VMware Solution (AVS) の評価の内容は次のとおりです。
 
 2. **[評価]** で、評価をクリックして開きます。
 
-    ![AVS 評価の概要](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="AVS 評価の概要":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Azure VMware Solution (AVS) の対応性の確認
 

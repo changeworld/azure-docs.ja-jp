@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - コンテナー レジス�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry インスタンスを作成し、サンプルのアプリケーション コンテナー イメージをアップロードします。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747061"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250623"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR) は、コンテナー イメージ用のプライ
 > * イメージを ACR にアップロードする
 > * レジストリ内のイメージを表示する
 
-追加のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合され、アプリケーションがイメージからデプロイされます。
+後続のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合され、アプリケーションがイメージからデプロイされます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -34,7 +34,7 @@ Azure Container Registry (ACR) は、コンテナー イメージ用のプライ
 
 Azure Container Registry を作成するには、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -60,12 +60,12 @@ az acr login --name <acrName>
 
 現在のローカル イメージの一覧を表示するには、[docker images][docker-images] コマンドを使用します。
 
-```azurecli
+```console
 $ docker images
 ```
-上のコマンド出力には、現在のローカル イメージの一覧が表示されます。
+上記のコマンドの出力では、現在のローカル イメージのリストが示されます。
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -74,7 +74,7 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 ACR で *azure-vote-front* コンテナー イメージを使用するには、イメージにレジストリのログイン サーバー アドレスでタグを付ける必要があります。 このタグは、イメージ レジストリにコンテナー イメージをプッシュするときに、ルーティングするために使用されます。
 
-ログイン サーバー アドレスを取得するには、 [az acr list][az-acr-list] コマンドを使用し、 *loginServer* に対して次のようにクエリを実行します。
+ログイン サーバー アドレスを取得するには、[az acr list][az-acr-list] コマンドを使用し、*loginServer* に対して次のようにクエリを実行します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -104,7 +104,7 @@ tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863
 
 ## <a name="push-images-to-registry"></a>イメージをレジストリにプッシュ
 
-ビルドしてタグ付けしたイメージと共に、 *azure-vote-front* イメージを ACR インスタンスにプッシュします。 [docker push][docker-push] を使用して、次のように、イメージ名に独自の *acrLoginServer* アドレスを指定します。
+ビルドしてタグ付けしたイメージと共に、*azure-vote-front* イメージを ACR インスタンスにプッシュします。 [docker push][docker-push] を使用して、次のように、イメージ名に独自の *acrLoginServer* アドレスを指定します。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 次の出力例では、レジストリ内で利用可能なイメージとして *azure-vote-front* を示しています。
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 次の出力例は、前の手順でタグを付けた *v1* イメージを示しています。
 
-```
+```output
 Result
 --------
 v1

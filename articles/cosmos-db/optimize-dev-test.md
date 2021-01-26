@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: b0e2cc3f23a8c39e51523e6f6fd974ebf46f7322
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097449"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247524"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB での開発とテストのコストを最適化する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Free レベルは、アカウントの有効期間中は無期限に存続し、
 
 ## <a name="azure-free-account"></a>Azure 無料アカウント
 
-Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.microsoft.com/free)では、Azure クレジットとリソースが一定の期間無料で提供されています。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 このエクスペリエンスでは、すべての開発者が簡単に無料で、Azure Cosmos DB の機能をテストしたり、他の Azure サービスと統合したりできます。 Azure の無料アカウントでは、最初の 30 日間使用できる 200 ドルのクレジットが手に入ります。 サービスの利用を開始した後でも、アップグレードするまでは無料で利用できます。 始めるには、[Azure 無料アカウント](https://azure.microsoft.com/free)のページをご覧ください。
+Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.microsoft.com/free)では、Azure クレジットとリソースが一定の期間無料で提供されています。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、25 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 このエクスペリエンスでは、すべての開発者が簡単に無料で、Azure Cosmos DB の機能をテストしたり、他の Azure サービスと統合したりできます。 Azure の無料アカウントでは、最初の 30 日間使用できる 200 ドルのクレジットが手に入ります。 サービスの利用を開始した後でも、アップグレードするまでは無料で利用できます。 始めるには、[Azure 無料アカウント](https://azure.microsoft.com/free)のページをご覧ください。
 
 ## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB サーバーレス
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684221"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249637"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に Azure RBAC を使用する (プレビュー)
 
@@ -115,7 +115,7 @@ AKS には、次の 4 つの組み込みロールがあります。
 
 | Role                                | 説明  |
 |-------------------------------------|--------------|
-| Azure Kubernetes Service RBAC ビューアー  | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 ロールまたはロールのバインドを表示することはできません。 このロールでは、`Secrets` の表示は許可されません。これは、Secrets の内容を読み取ると、名前空間の ServiceAccount 資格情報にアクセスでき、それにより名前空間の任意の ServiceAccount として API にアクセスできるようになるためです (特権エスカレーションの形式)  |
+| Azure Kubernetes Service RBAC 閲覧者  | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 ロールまたはロールのバインドを表示することはできません。 このロールでは、`Secrets` の表示は許可されません。これは、Secrets の内容を読み取ると、名前空間の ServiceAccount 資格情報にアクセスでき、それにより名前空間の任意の ServiceAccount として API にアクセスできるようになるためです (特権エスカレーションの形式)  |
 | Azure Kubernetes Service RBAC ライター | 名前空間内のほとんどのオブジェクトに対する読み取りと書き込みのアクセスが許可されます。 このロールでは、ロールまたはロールのバインドを表示または変更することはできません。 ただし、このロールを使用すると、`Secrets` にアクセスし、名前空間内の任意の ServiceAccount としてポッドを実行できるので、名前空間内の任意の ServiceAccount の API アクセス レベルを取得するために使用できます。 |
 | Azure Kubernetes Service RBAC 管理者  | 名前空間内で付与されることが意図された、管理者アクセスが許可されます。 名前空間内でロールおよびロール バインドを作成する能力など、名前空間 (またはクラスター スコープ) 内のほとんどのリソースへの読み取りおよび書き込みアクセスが許可されます。 このロールでは、リソース クォータまたは名前空間自体への書き込みアクセスは許可されません。 |
 | Azure Kubernetes Service RBAC クラスター管理者  | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 これにより、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 |

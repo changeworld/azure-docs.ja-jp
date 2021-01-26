@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 4ca9ababbeb7843f1a014a4bd51a5e24a74acbae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 12/31/2020
+ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322937"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209408"
 ---
 # <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してデータを分析する
 
@@ -23,10 +23,11 @@ ms.locfileid: "93322937"
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Blob Storage の NYC タクシー データを分析する
 
-1. **[Linked]\(リンク済み\)** の下にある **[Data]\(データ\)** ハブで **[Azure Blob Storage]** を右クリックし、 **[nyc_tlc_yellow]、[SELECT TOP 100 rows]\(上位 100 行を選択する\)** の順に選択します
+1. **[リンク済み]** の下の **[データ]** ハブで、 **[Azure Blob Storage]** を右クリックし、 **[Sample Datasets]\(サンプル データセット\) > [nyc_tlc_yellow] > [New SQL Script]\(新しい SQL スクリプト\)** の順に選択して、 **[SELECT TOP 100 rows]\(上位 100 行の選択\)** を選択します。
 1. これにより、次のコードを含む新しい SQL スクリプトが作成されます。
 
     ```
+    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -42,7 +43,7 @@ ms.locfileid: "93322937"
 Spark データベース内のテーブルは自動的に表示され、サーバーレス SQL プールによるクエリを実行できます。
 
 1. Synapse Studio で **[開発]** ハブに移動し、新しい SQL スクリプトを作成します。
-1. **[接続先]** を **[serverless SQL pool]\(サーバーレス SQL プール\)** に設定します。
+1. **[接続先]** を **組み込み** のサーバーレス SQL プールに設定します。
 1. スクリプトに次のテキストを貼り付けて、スクリプトを実行します。
 
     ```sql

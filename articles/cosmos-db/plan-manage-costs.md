@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 3632c098f865b1e5c4e76709a83176035be7abc2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351829"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602134"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,9 +71,9 @@ Azure portal から Azure Cosmos DB リソースの使用を開始するとき�
 
    :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure portal でのコスト見積もり":::
 
-Azure サブスクリプションに使用制限がある場合は、Azure により、クレジット額を超える支出が防止されます。 Azure リソースを作成して使用するときに、クレジットが使用されます。 クレジットの上限に達すると、その請求期間の残りの期間は、デプロイしたリソースが無効にされます。 クレジットの上限は変更できませんが、上限を取り除くことは可能です。 使用制限の詳細については、「[Azure の使用制限](../cost-management-billing/manage/spending-limit.md)」を参照してください。
+Azure サブスクリプションに使用制限がある場合は、Azure により、クレジット額を超える支出が防止されます。 Azure リソースを作成して使用するときに、クレジットが使用されます。 クレジットの上限に達すると、その請求期間の残りの期間は、デプロイしたリソースが無効にされます。 クレジットの上限は変更できませんが、上限を取り除くことは可能です。 使用制限の詳細については、「[Azure の使用制限](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。
 
-Azure Cosmos DB の料金は、Azure Enterprise Agreement の年額コミットメントのクレジットを使用して支払うことができます。 ただし、年額コミットメントのクレジットを使用して、サードパーティ製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+Azure Cosmos DB の料金は、Azure 前払い (旧称: 年額コミットメント) のクレジットを使用して支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
 
 ## <a name="monitor-costs"></a>コストを監視する
 
@@ -83,7 +83,7 @@ Azure Cosmos DB でリソースを使用するとコストが発生します。 
 
 Azure Cosmos DB のコストをコスト分析で表示するには、次の操作を行います。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal ](https://portal.azure.com)にサインインします。
 
 1. Azure portal でスコープを開き、メニューから **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** を選択します。
 

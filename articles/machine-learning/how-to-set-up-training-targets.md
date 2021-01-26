@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127653"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251116"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 トレーニング スクリプトを実行するコンピューティング ターゲットを選択します。 ScriptRunConfig でコンピューティング ターゲットが指定されていない場合、または `compute_target='local'` である場合は、Azure ML によってスクリプトがローカルで実行されます。 
 
 この記事のコード例では、「前提条件」セクションのコンピューティング ターゲット `my_compute_target` が既に作成されていることを前提としています。
+
+>[!Note]
+>Azure Databricks は、モデル トレーニングのコンピューティング先としてサポートされていません。 データ準備およびデプロイのタスクには Azure Databricks を使用できます。 
 
 ## <a name="create-an-environment"></a>環境の作成
 Azure Machine Learning [環境](concept-environments.md)は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、Docker イメージ、環境変数、およびソフトウェア設定が指定されます。 また、実行時間 (Python、Spark、または Docker) も指定されます。

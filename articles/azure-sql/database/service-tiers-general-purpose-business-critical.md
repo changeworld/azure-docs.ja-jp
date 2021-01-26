@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5a30846a6e2aaf85ded2e55641aa5fba9507a29
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512030"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165775"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,7 @@ Azure SQL Database には追加のサービス レベルがあります。
   - Premium または Business Critical サービス レベルでのストレージの場合は、250 GB 単位でサイズを増減します。
 - General Purpose サービス レベルでは、`tempdb` は接続されている SSD を使用します。このストレージ コストは、仮想コアの価格に含まれます。
 - Business Critical サービス レベルでは、`tempdb` は、MDF ファイルおよび LDF ファイルと接続されている SSD を共有します。`tempdb` ストレージ コストは、仮想コアの価格に含まれます。
+- DTU Premium サービス レベルでは、`tempdb` は、MDF および LDF ファイルと接続されている SSD を共有します。
 - SQL Managed Instance でのストレージ サイズは、32 GB の倍数で指定する必要があります。
 
 

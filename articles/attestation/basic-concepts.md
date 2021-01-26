@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921616"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572818"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -28,9 +28,7 @@ ms.locfileid: "96921616"
 
 ## <a name="attestation-provider"></a>構成証明プロバイダー
 
-構成証明プロバイダーは、Microsoft.Attestation という名前の Azure リソース プロバイダーに属しています。 リソース プロバイダーは、Azure Attestation の REST コントラクトを提供するサービス エンドポイントであり、[Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用してデプロイされます。 構成証明プロバイダーはそれぞれ、検出可能な特定のポリシーに従います。 
-
-構成証明プロバイダーは、構成証明タイプごとに既定のポリシーを使用して作成されます (VBS エンクレーブには既定のポリシーがないことに注意してください)。 SGX の既定のポリシーについて詳しくは、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
+構成証明プロバイダーは、Microsoft.Attestation という名前の Azure リソース プロバイダーに属しています。 リソース プロバイダーは、Azure Attestation の REST コントラクトを提供するサービス エンドポイントであり、[Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用してデプロイされます。 構成証明プロバイダーはそれぞれ、検出可能な特定のポリシーに従います。 構成証明プロバイダーは、構成証明タイプごとに既定のポリシーを使用して作成されます (VBS エンクレーブには既定のポリシーがないことに注意してください)。 SGX の既定のポリシーについて詳しくは、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
 
 ### <a name="regional-default-provider"></a>リージョンにおける既定のプロバイダー
 
@@ -38,11 +36,16 @@ Azure Attestation には、リージョンごとに既定のプロバイダー�
 
 | リージョン | 構成証明の URI | 
 |--|--|
+| 米国東部 | `https://sharedeus.eus.attest.azure.net` | 
+| 米国西部 | `https://sharedwus.wus.attest.azure.net` | 
 | 英国南部 | `https://shareduks.uks.attest.azure.net` | 
+| 英国西部| `https://sharedukw.ukw.attest.azure.net  ` | 
+| カナダ東部 | `https://sharedcae.cae.attest.azure.net` | 
+| カナダ中部 | `https://sharedcac.cac.attest.azure.net` | 
+| 北ヨーロッパ | `https://sharedneu.neu.attest.azure.net` | 
+| 西ヨーロッパ| `https://sharedweu.weu.attest.azure.net` | 
 | 米国東部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
 | 米国中部 | `https://sharedcus.cus.attest.azure.net` | 
-| 米国東部| `https://sharedeus.eus.attest.azure.net` | 
-| カナダ中部 | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>構成証明要求
 
@@ -58,7 +61,7 @@ Azure Attestation により、提供された "Quote" が検証され、その�
 
 構成証明プロバイダーの既定のポリシーで要件を満たすことができない場合、お客様は、Azure Attestation でサポートされるリージョンであれば、どこにでもカスタム ポリシーを作成できます。 ポリシー管理は、Azure Attestation がお客様に提供する重要な機能です。 ポリシーは構成証明タイプ固有であり、エンクレーブを識別したり、出力トークンに要求を追加したり、出力トークン内の要求に変更を加えたりするときに使用できます。 
 
-既定のポリシーの内容とサンプルについては、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
+ポリシーのサンプルについては、[構成証明ポリシーの例](policy-examples.md)を参照してください。
 
 ## <a name="benefits-of-policy-signing"></a>ポリシーに署名することの利点
 
@@ -80,25 +83,55 @@ SGX エンクレーブに対して生成された JWT の例:
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-"exp"、"iat"、"iss"、"nbf" などの要求は [JWT RFC](https://tools.ietf.org/html/rfc7517) によって定義され、それ以外は Azure Attestation によって生成されます。 詳細については、[Azure Attestation によって発行される要求](claim-sets.md)に関するページを参照してください。
+上で使用されている要求のいくつかは、非推奨と見なされてはいますが、完全にサポートされています。  今後作成するすべてのコードおよびツールには、非推奨となっていない要求名の使用をお勧めします。 詳細については、[Azure Attestation によって発行される要求](claim-sets.md)に関するページを参照してください。
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 

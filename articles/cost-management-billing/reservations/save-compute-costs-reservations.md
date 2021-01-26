@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560493"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602047"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -56,7 +56,7 @@ Azure Databricks を除くすべての予約は、1 時間単位で適用され�
 
 ## <a name="how-is-a-reservation-billed"></a>予約はどのように課金されますか 
 
-予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 予約コストは年額コミットメントの残高から差し引かれます (可能な場合)。 年額コミットメントの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、前払い購入では、アカウントに登録されているクレジット カードに直接課金されます。 月支払いの場合は請求書に表示され、クレジット カードに毎月請求されます。 請求書による課金の場合、次回の請求書に料金が表示されます。 
+予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 予約コストは Azure 前払い (旧称: 年額コミットメント) の残高から差し引かれます (可能な場合)。 Azure 前払いの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、前払い購入では、アカウントに登録されているクレジット カードに直接課金されます。 月支払いの場合は請求書に表示され、クレジット カードに毎月請求されます。 請求書による課金の場合、次回の請求書に料金が表示されます。 
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>既定で予約を管理できるユーザー
 

@@ -1,26 +1,26 @@
 ---
-title: モデルをデプロイする方法と場所
+title: 機械学習モデルをデプロイする方法
 titleSuffix: Azure Machine Learning
-description: Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、FPGA など、Azure Machine Learning モデルをデプロイする方法と場所について説明します。
+description: 機械学習モデルをデプロイする方法と場所について説明します。 Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、および FPGA にデプロイします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070424"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185803"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
+# <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする
 
-Web サービスとして Azure クラウドに、または Azure IoT Edge デバイスに機械学習モデルをデプロイする方法を説明します。
+機械学習またはディープ ラーニング モデルを Web サービスとして Azure クラウドにデプロイする方法について説明します。 また、Azure IoT Edge デバイスにデプロイすることもできます。
 
 モデルをどこにデプロイするかに関係なく、ワークフローは同様です。
 
@@ -31,7 +31,7 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 1. モデルをコンピューティング ターゲットにデプロイします。
 1. 結果の Web サービスをテストします。
 
-デプロイ ワークフローに関連する概念の詳細については、[Azure Machine Learning でのモデルの管理、デプロイ、監視](concept-model-management-and-deployment.md)に関する記事を参照してください。
+機械学習デプロイ ワークフローに関連する概念の詳細については、[Azure Machine Learning でのモデルの管理、デプロイ、監視](concept-model-management-and-deployment.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -197,7 +197,7 @@ Azure Machine Learning 以外でトレーニングされたモデルの使用の
 }
 ```
 
-これにより、受信要求の処理に向けて、デプロイで `./working_dir` ディレクトリ内のファイル `score.py` が使用されることが指定されます。
+これにより、受信要求を処理するために、機械学習デプロイで `./working_dir` ディレクトリ内のファイル `score.py` が使用されることが指定されます。
 
 推論構成に関する詳細な説明については、[こちらの記事を参照](./reference-azure-machine-learning-cli.md#inference-configuration-schema)してください。 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>モデルをデプロイする
+## <a name="deploy-your-machine-learning-model"></a>機械学習モデルをデプロイする
 
 これでモデルをデプロイする準備が整いました。 
 

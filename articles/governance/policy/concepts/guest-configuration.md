@@ -1,14 +1,14 @@
 ---
 title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071835"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210122"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -101,11 +101,11 @@ Azure のゲスト構成リソース プロバイダーと通信するには、�
 
 ## <a name="managed-identity-requirements"></a>マネージド ID の要件
 
-イニシアチブ「[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)」のポリシー定義を使用すると、システムによって割り当てられたマネージド ID が有効になります (まだ存在しない場合)。 ID の作成を管理するイニシアチブには、2 つのポリシー定義があります。 ポリシー定義内の IF 条件により、Azure のマシン リソースの現在の状態に基づいて正しい動作が保証されます。
+イニシアチブ「_仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする_」のポリシー定義を使用すると、システムによって割り当てられたマネージド ID が有効になります (まだ存在しない場合)。 ID の作成を管理するイニシアチブには、2 つのポリシー定義があります。 ポリシー定義内の IF 条件により、Azure のマシン リソースの現在の状態に基づいて正しい動作が保証されます。
 
-現時点でマシンにマネージド ID がない場合、有効なポリシーは次のようになります。[\[プレビュー\]: ID のない仮想マシンでゲスト構成の割り当てを有効にするためにシステム割り当てマネージド ID を追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+現時点でマシンにマネージド ID がない場合、有効なポリシーは次のようになります。[ID のない仮想マシンでゲスト構成の割り当てを有効にするためにシステム割り当てマネージド ID を追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-現時点でマシンにユーザー割り当てのシステム ID がある場合、有効なポリシーは次のようになります。[\[プレビュー\]: ユーザー割り当て ID を持つ仮想マシンでゲスト構成の割り当てを有効にするためにシステム割り当てマネージド ID を追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+現時点でマシンにユーザー割り当てのシステム ID がある場合、有効なポリシーは次のようになります。[ユーザー割り当て ID がある VM でゲスト構成の割り当てを有効にするためにシステム割り当てマネージド ID を追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
@@ -120,7 +120,7 @@ Azure Policy は、ゲスト構成リソース プロバイダーの **complianc
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>業界の基準に従ってオペレーティング システムの設定を監査する
 
-Azure Policy の 1 つのイニシアティブでは、"ベースライン" に従ってオペレーティング システムの設定を監査する機能が提供されます。 _\[[プレビュー]\]: Azure セキュリティ ベースライン設定と一致しない Windows VM を監査する_ という定義には、Active Directory グループ ポリシーに基づく一連の規則が含まれています。
+Azure Policy の 1 つのイニシアティブでは、"ベースライン" に従ってオペレーティング システムの設定を監査します。 _\[[プレビュー]\]: Windows マシンはAzure セキュリティ ベースラインの要件を満たす必要がある_”　という定義には、Active Directory グループ ポリシーに基づく一連の規則が含まれています。
 
 ほとんどの設定は、パラメーターとして使用できます。 パラメーターを使用すると、監査対象をカスタマイズできます。
 要件に合わせてポリシーを調整するか、またはポリシーを業界の規制標準などのサード パーティ情報にマップします。

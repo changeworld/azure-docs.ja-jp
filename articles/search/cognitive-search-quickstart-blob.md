@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: 8151c9ce177d0cd54826603d1a395a8d5828b623
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133822"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179267"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "98133822"
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、次のサービスを作成します。
+作業を開始する前に、次の前提条件を満たしておく必要があります。
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
 

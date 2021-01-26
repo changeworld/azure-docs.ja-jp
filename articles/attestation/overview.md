@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748775"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610150"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (プレビュー)
 
@@ -39,6 +39,12 @@ SGX とは、特定の Intel CPU モデルでサポートされているハー�
 [Open Enclave](https://openenclave.io/sdk/) (OE) は、開発者が TEE ベースのアプリケーションの構築に利用する、単一の統合エンクレーブ抽象化の作成を目的としたライブラリのコレクションです。 これは、プラットフォームの特異性を最小限に抑える、セキュリティ保護されたユニバーサルなアプリ モデルを提供します。 Microsoft では、これを、SGX などのハードウェアベースのエンクレーブ テクノロジをだれもが使えるようにし、Azure での利用を拡大するための重要な手段と考えています。
 
 OE は、エンクレーブ証拠の検証に関する特定の要件を標準化します。 これにより、OE は Azure Attestation の非常に適切な構成証明コンシューマーと見なされます。
+
+### <a name="tpm-attestation"></a>TPM の構成証明 
+
+プラットフォームの状態を証明するためには、トラステッド プラットフォーム モジュール (TPM) ベースの構成証明が不可欠です。 TPM は、測定結果 (証拠) に暗号の有効性を提供するセキュリティ コプロセッサおよび信頼のルートとしての役割を果たします。 TPM が搭載されたデバイスは、機能の状態の有効性をブート中に検出する要求と共に構成証明を利用して、ブート整合性が損なわれていないことを証明できます。 
+
+クライアント アプリケーションは TPM 構成証明を利用するように設計できます。プラットフォームが安全であることが確認された後にのみ機密性の高いタスクが実行されるよう委任します。 このようなアプリケーションでは、Azure Attestation を利用して定期的にプラットフォーム内で信頼を確立し、その機能を使用して機密データにアクセスすることができます。
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure Attestation は TEE で実行可能
 

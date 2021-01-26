@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/16/2020
-ms.openlocfilehash: f21b72cd519c1615d8273bf316a8d0ccad039672
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/12/2021
+ms.openlocfilehash: 8195cffed077a77c0ad66fda1126e2f3ea53d5f0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546162"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179148"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -139,7 +139,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 ユーザー、グループ、およびアクセス許可の操作はサポートされています。 ローカル管理については、「[Apache Ambari ビューに対してユーザーを承認する](./hdinsight-authorize-users-to-ambari.md)」をご覧ください。 ドメイン参加済みクラスターについては、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/hdinsight-security-overview.md)に関する記事をご覧ください。
 
 > [!WARNING]  
-> Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
+> Linux ベースの HDInsight クラスターで、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードを削除または変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
 ### <a name="hosts"></a>Hosts
 
@@ -214,7 +214,7 @@ Ambari ビューを使うと、開発者は Apache Ambari ビュー フレーム
 
 Ambari の次の操作は、HDInsight ではサポートされていません。
 
-* __メトリック コレクター サービスの移動__ 。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 この操作は、HDInsight ではサポートされていません。
+* __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 この操作は、HDInsight ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

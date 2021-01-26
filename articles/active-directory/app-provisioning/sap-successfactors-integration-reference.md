@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969516"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569455"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory のプロビジョニングと SAP SuccessFactors の統合方法 
 
@@ -55,21 +55,22 @@ SuccessFactors のすべてのユーザーについて、Azure AD プロビジ�
 | 6  | User                                   | employmentNav/userNav        | Always (常に)           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | Always (常に)           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Always (常に)           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | `company` または `companyId` 属性がマップされている場合のみ |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | `department` または `departmentId` 属性がマップされている場合のみ |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | `businessUnit` または `businessUnitId` 属性がマップされている場合のみ |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | `costCenter` または `costCenterId` 属性がマップされている場合のみ |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | `division` または `divisionId` 属性がマップされている場合のみ |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | `jobCode` または `jobCodeId` 属性がマップされている場合のみ |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | `payGrade` 属性がマップされている場合のみ |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | `location` 属性がマップされている場合のみ |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | マッピングに次の属性のいずれかが含まれている場合: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | `eventReason` 属性がマップされている場合のみ |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | `assignmentType` がマップされている場合のみ |
-| 20 | EmploymentType 候補リスト                | employmentNav/jobInfoNav/employmentTypeNav | `employmentType` がマップされている場合のみ |
-| 21 | EmployeeClass 候補リスト                 | employmentNav/jobInfoNav/employeeClassNav | `employeeClass` がマップされている場合のみ |
-| 22 | EmplStatus 候補リスト                    | employmentNav/jobInfoNav/emplStatusNav | `emplStatus` がマップされている場合のみ |
-| 23 | AssignmentType 候補リスト                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | `assignmentType` がマップされている場合のみ |
+| 9  | ユーザーのマネージャー                         | employmentNav/userNav/manager/empInfo | 常時  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | `company` または `companyId` 属性がマップされている場合のみ |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | `department` または `departmentId` 属性がマップされている場合のみ |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | `businessUnit` または `businessUnitId` 属性がマップされている場合のみ |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | `costCenter` または `costCenterId` 属性がマップされている場合のみ |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | `division` または `divisionId` 属性がマップされている場合のみ |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | `jobCode` または `jobCodeId` 属性がマップされている場合のみ |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | `payGrade` 属性がマップされている場合のみ |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | `location` 属性がマップされている場合のみ |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | マッピングに次の属性のいずれかが含まれている場合: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | `eventReason` 属性がマップされている場合のみ |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | `assignmentType` がマップされている場合のみ |
+| 21 | EmploymentType 候補リスト                | employmentNav/jobInfoNav/employmentTypeNav | `employmentType` がマップされている場合のみ |
+| 22 | EmployeeClass 候補リスト                 | employmentNav/jobInfoNav/employeeClassNav | `employeeClass` がマップされている場合のみ |
+| 23 | EmplStatus 候補リスト                    | employmentNav/jobInfoNav/emplStatusNav | `emplStatus` がマップされている場合のみ |
+| 24 | AssignmentType 候補リスト                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | `assignmentType` がマップされている場合のみ |
 
 ## <a name="how-full-sync-works"></a>完全同期のしくみ
 属性マッピングに基づいて、完全同期では、Azure AD プロビジョニング サービスにより、次の "GET" OData API クエリが送信されて、すべてのアクティブ ユーザーの有効なデータがフェッチされます。 
@@ -291,11 +292,11 @@ Employee Central のユーザーに複数の同時実行ジョブがある場合
 
 | \# | シナリオの要件 | メールのプライマリ <br> フラグの値 | 勤務先の電話番号 <br> プライマリ フラグの値 | 携帯電話 <br> プライマリ フラグの値 | 勤務先の電話番号 <br> mapping | 携帯電話 <br> mapping |
 |--|--|--|--|--|--|--|
-| 1 | * プライマリとして勤務先メールだけを設定する。 <br> * 電話番号は設定しない。 | true | TRUE | false | \[設定しない\] | \[設定しない\] | 
-| 2 | * SuccessFactors では、勤務先メールと勤務先電話がプライマリである <br> * 常に、Azure AD 電話番号を勤務先電話に送信し、モバイルを携帯電話に送信する。 | true | TRUE | false | telephoneNumber | mobile | 
+| 1 | * プライマリとして勤務先メールだけを設定する。 <br> * 電話番号は設定しない。 | true | true | false | \[設定しない\] | \[設定しない\] | 
+| 2 | * SuccessFactors では、勤務先メールと勤務先電話がプライマリである <br> * 常に、Azure AD 電話番号を勤務先電話に送信し、モバイルを携帯電話に送信する。 | true | true | false | telephoneNumber | mobile | 
 | 3 | * SuccessFactors では、勤務先メールと携帯電話がプライマリである <br> * 常に、Azure AD 電話番号を勤務先電話に送信し、モバイルを携帯電話に送信する | TRUE | false | true |  telephoneNumber | mobile | 
 | 4 | * SuccessFactors では、勤務先メールがプライマリである <br> * Azure AD では、勤務先電話番号があるかどうかを調べ、ある場合はモバイル番号もあるかどうかを調べて、モバイル番号が存在しない場合にのみ、勤務先電話番号をプライマリとしてマークする。 | true | 式マッピングを使用する: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 式マッピングを使用する: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
-| 5 | * SuccessFactors では、勤務先メールと勤務先電話がプライマリである。 <br> * Azure AD では、モバイルが使用可能な場合は、それを勤務先電話として設定し、それ以外の場合は telephoneNumber を使用する。 | true | TRUE | false | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[設定しない\] | 
+| 5 | * SuccessFactors では、勤務先メールと勤務先電話がプライマリである。 <br> * Azure AD では、モバイルが使用可能な場合は、それを勤務先電話として設定し、それ以外の場合は telephoneNumber を使用する。 | true | true | false | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[設定しない\] | 
 
 * 書き戻し属性マッピングに電話番号のマッピングがない場合は、メールのみが書き戻しに含まれます。
 * Employee Central での新規雇用オンボードの間に、勤務先のメールと電話番号を使用できない場合があります。 オンボードの間に勤務先メールと勤務先電話をプライマリとして設定する必要がある場合は、新規雇用の作成の間に勤務先の電話とメールにダミーの値を設定できます。これは、最終的に書き戻しアプリによって更新されます。

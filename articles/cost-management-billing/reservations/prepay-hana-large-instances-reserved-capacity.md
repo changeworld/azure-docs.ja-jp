@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151505"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599112"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Azure 予約を使用して SAP HANA Large Instances に保存する
 
@@ -224,7 +224,7 @@ armclient get /providers/microsoft.capacity/reservationOrders/22222222-2222-2222
 
   **Reserved Resource type** `SapHana`
 
-  **Subscription** 予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft 顧客契約である必要があります。 年額コミットメント残高から料金が差し引かれるか(使用可能な場合)、超過料金として課金されます。
+  **Subscription** 予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft 顧客契約である必要があります。 Azure 前払い (旧称: 年額コミットメント) 残高から料金が差し引かれるか (使用可能な場合)、超過料金として課金されます。
 
   **Scope** 予約のスコープは、1 つのスコープである必要があります。
 

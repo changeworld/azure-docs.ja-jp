@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807571"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232796"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -73,7 +73,7 @@ ms.locfileid: "97807571"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
-[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -912,8 +912,8 @@ Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagen
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Azure Extension for SAP を構成する
 
 > [!NOTE]
-> 一般的なサポートに関する声明:Azure Extension for SAP に関するサポートが必要な場合は、常にコンポーネント BC-OP-NT-AZR (Windows の場合) または BC-OP-LNX-AZR で SAP に関するインシデントを開始してください。
-> 共同のお客様を支援するために、SAP サポート システムで作業している専門の Microsoft サポート エンジニアが存在します。
+> 一般的なサポートに関する声明:  
+> Azure Extension for SAP のサポートは、SAP のサポート チャネルを通じて提供されます。 Azure Extension for SAP に関するサポートが必要な場合は、[SAP サポート](https://support.sap.com/)でサポート ケースをオープンしてください。 
 
 [Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]に関するセクションの説明に従って VM を準備すると、Azure VM エージェントが仮想マシンにインストールされます。 次に、Azure グローバル データセンターの Azure 拡張リポジトリで入手できる Azure Extension for SAP をデプロイします。 詳しくは、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide-9.1]」をご覧ください。
 

@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501604"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202914"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成を別のリージョンに移動する
 
 メンテナンス コントロール構成を別の Azure リージョンに移動するには、この記事の手順に従ってください。 構成を移動する場合、さまざまな理由が考えられます。 たとえば、新しい Azure リージョンを利用するため、特定のリージョンでのみ利用可能な機能やサービスをデプロイするため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためなどがあります。
 
-カスタマイズされたメンテナンス構成でメンテナンス コントロールを使用すると、プラットフォームの更新プログラムを [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM、Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
+[メンテナンス コントロール](maintenance-control.md)を、カスタマイズされたメンテナンス構成と共に使用すると、プラットフォームの更新プログラムを VM、および Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
 
 - メンテナンス コントロール構成を移動するが、構成に関連付けられているリソースは移動しない場合、この記事の手順に従います。
 - メンテナンス構成に関連付けられているリソースを移動するが、構成自体は移動しない場合、[こちらの手順](move-region-maintenance-configuration-resources.md)に従います。
@@ -38,7 +38,7 @@ ms.locfileid: "86501604"
 
 ## <a name="prepare-and-move"></a>準備と移動 
 
-1. 各サブスクリプションのすべてのメンテナンス構成を取得します。 このためには、CLI の [az maintenance configuration list](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) コマンドを実行します。$subId を、ご使用のサブスクリプション ID に置き換えてください。
+1. 各サブスクリプションのすべてのメンテナンス構成を取得します。 このためには、CLI の [az maintenance configuration list](/cli/azure/ext/maintenance/maintenance/configuration#ext-maintenance-az-maintenance-configuration-list) コマンドを実行します。$subId を、ご使用のサブスクリプション ID に置き換えてください。
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table

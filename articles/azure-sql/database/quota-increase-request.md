@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967703"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251856"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のクォータの増加を要求する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-この記事では、Azure SQL Database と Azure SQL Managed Instance のクォータの増加を要求する方法について説明します。 また、リージョンへのサブスクリプション アクセスを有効にする方法についても説明します。
+この記事では、Azure SQL Database と Azure SQL Managed Instance のクォータの増加を要求する方法について説明します。 また、リージョンへのサブスクリプション アクセスを有効にする方法や、リージョンでの特定のハードウェアの有効化を要求する方法についても説明します。
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a>新しいサポート リクエストを作成する
 
@@ -62,8 +62,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 - サーバーあたりのデータベース トランザクション ユニット (DTU)
 - サブスクリプションあたりのサーバー
-- M シリーズのリージョン アクセス
-- リージョン アクセス
+- サブスクリプションまたは特定のハードウェアへのリージョン アクセス
 
 ### <a name="database-transaction-units-dtus-per-server"></a>サーバーあたりのデータベース トランザクション ユニット (DTU)
 
@@ -109,30 +108,15 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
    ![リージョン アクセスの要求](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>リージョンでの特定のハードウェアの有効化を要求する
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+使用する[ハードウェアの世代](service-tiers-vcore.md#hardware-generations)が自分のリージョンで使用できない場合は (「[ハードウェアの可用性](service-tiers-vcore.md#hardware-availability)」を参照)、次の手順を使用してそれを要求できます。
 
-1. Select the **M-series region access** quota type.
+1. **[その他のクォータ要求]** というクォータの種類を選択します。
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. **[説明]** フィールドに、ハードウェアの世代の名前や、それを必要とするリージョンの名前を含む要求を入力します。
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL Managed Instance のクォータの種類
-
-クォータの種類 **SQL Managed Instance** については、次の手順に従います。
-
-1. **[リージョン]** リストで、ターゲットにする Azure リージョンを選択します。
-
-1. **[サブネット]** と **[仮想コア]** について要求する新しい制限を入力します。
-
-   ![SQL Managed Instance のクォータの詳細](./media/quota-increase-request/quota-details-managed-instance.png)
-
-詳細については、[Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md)に関するページを参照してください。
+   ![新しいリージョンでハードウェアを要求する](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>要求を送信する
 

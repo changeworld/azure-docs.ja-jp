@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188753"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247167"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>オファーをレビューしてコマーシャル マーケットプレースへ公開する方法
 
@@ -150,7 +150,7 @@ ms.locfileid: "96188753"
 ### <a name="previewing-and-approving-your-offer"></a>オファーのプレビューと承認
 
 > [!IMPORTANT]
-> 購入と設定のフローを徹底的に検証するには、自分のオファーがプレビュー段階にある間にそれを購入してください。 まず、課金を処理しないよう、[サポート チケット](https://aka.ms/marketplacesupport)で Microsoft に通知します。
+> 購入と設定のフローを徹底的に検証するには、自分のオファーがプレビュー段階にある間にそれを購入してください。 まず、課金を処理しないよう、[サポート チケット](https://aka.ms/marketplacesupport)で Microsoft に通知します。 [問い合わせ] リストに掲載されるプランの場合は、プレビュー期間中に [問い合わせ] の詳細を提供して、リードが想定どおりに作成されることをテストしてください。
 
 **[オファーの概要]** ページの **[一般公開する]** ボタンの下にプレビュー リンクが表示されます。 プランの作成時に選択したオプションに応じて、AppSource プレビュー、Azure Marketplace プレビュー、またはその両方へのリンクが表示されます。 Microsoft からプランを販売することを選択した場合、プレビュー対象ユーザーに追加されたユーザーは、この段階で確実に要件を満たすために、プランの取得とデプロイをテストすることができます。
 

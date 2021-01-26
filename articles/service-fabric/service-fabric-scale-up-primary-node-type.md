@@ -1,71 +1,173 @@
 ---
 title: Azure Service Fabric のプライマリ ノード タイプをスケールアップする
-description: ノードの種類を追加して Service Fabric クラスターをスケーリングする方法について説明します。
-ms.topic: article
-ms.date: 08/06/2020
+description: 新しいノード タイプを追加し、前のものを削除して、Service Fabric クラスターを垂直方向にスケーリングします。
+ms.date: 12/11/2020
 ms.author: pepogors
-ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: how-to
+ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89228717"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251183"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>ノードの種類を追加して Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
-この記事では、クラスターにノードの種類を追加して Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 
-次のチュートリアル内のサンプル テンプレートは、[Service Fabric のプライマリ ノード タイプのスケーリング サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Primary-NodeType-Scaling-Sample)にあります。
+この記事では、最小限のダウンタイムで Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスター ノードをアップグレードする一般的な方法は次のとおりです。
+
+1. アップグレードされた (または変更された) 仮想マシン スケール セットの SKU および構成を使用する新しいノード タイプを Service Fabric クラスターに追加します。 この手順では、スケール セットの新しいロード バランサー、サブネット、およびパブリック IP の設定も必要になります。
+
+1. 元のスケール セットとアップグレードしたスケール セットの両方が並行して実行したら、システム サービス (またはステートフル サービスのレプリカ) が新しいスケール セットに移行するように、一度に 1 つずつ元のノード インスタンスを無効にします。
+
+1. クラスターと新しいノードが正常であることを確認してから、削除したノードの元のスケール セット (および関連リソース) とノードの状態を削除します。
+
+以下で、、5 つのノードを含む 1 つのスケールセットを使用する、[シルバー持続性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)が設定されたサンプル クラスターのプライマリ ノード タイプ VM の VM サイズとオペレーティング システムを更新するプロセスについて説明します。 プライマリ ノード タイプを次のようにアップグレードします。
+
+- VM サイズ *Standard_D2_V2* から *Standard D4_V2* へ、および
+- VM オペレーティング システム *Windows Server 2016 Datacenter with Containers* から *Windows Server 2019 Datacenter with Containers* へ。
 
 > [!WARNING]
-> クラスターの状態が異常な場合は、プライマリ ノード タイプのスケールアップ手順を試行しないでください。クラスターがさらに不安定になります。
+> 運用クラスターでこの手順を実行する前に、サンプル テンプレートを調べて、テスト クラスターに対してプロセスを検証することをお勧めします。 クラスターが短期間使用できなくなる場合もあります。
 >
+> クラスターの状態が異常な場合は、プライマリ ノード タイプのスケールアップ手順を試行しないでください。クラスターがさらに不安定になります。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+このサンプル アップグレード シナリオを完了するために使用する、ステップバイステップの Azure デプロイ テンプレートは https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade にあります。
 
-## <a name="process-to-upgrade-the-size-and-operating-system-of-the-primary-node-type"></a>プライマリ ノード タイプのサイズとオペレーティング システムをアップグレードするためのプロセス
-次に示すのは、プライマリ ノード タイプの VM の VM サイズとオペレーティング システムを更新するためのプロセスです。  アップグレードの後、プライマリ ノード タイプの VM は Standard D4_V2 のサイズになり、コンテナー搭載 Windows Server 2019 Datacenter を実行します。
+## <a name="set-up-the-test-cluster"></a>テスト クラスターをセットアップする
 
-> [!WARNING]
-> 運用クラスターでこの手順を実行する前に、サンプル テンプレートを調べて、テスト クラスターに対してプロセスを検証することをお勧めします。 クラスターが短期間使用できなくなる場合もあります。 
+最初の Service Fabric テスト クラスターをセットアップしてみましょう。 まず、このシナリオを実行するために使用する Azure Resource Manager サンプル テンプレートを[ダウンロード](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)します。
 
-### <a name="deploy-the-initial-service-fabric-cluster"></a>初期の Service Fabric クラスターをデプロイする 
-サンプルに沿って実行する場合は、1 つのプライマリ ノード タイプを持つ初期のクラスターと、1 つのスケール セット [Service Fabric - 初期のクラスター](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json)をデプロイします。 既存の Service Fabric クラスターが既にデプロイされている場合は、この手順をスキップできます。 
+次に、Azure アカウントにサインインします。
 
-1. Azure アカウントにログインします。 
 ```powershell
-# sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId "<your subscription ID>"
+# Sign in to your Azure account
+Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
-2. 新しいリソース グループを作成します。 
-```powershell
-# create a resource group for your cluster deployment
-$resourceGroupName = "myResourceGroup"
-$location = "WestUS"
 
-New-AzResourceGroup `
-    -Name $resourceGroupName `
-    -Location $location
+次に、[*parameters.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/parameters.json) ファイルを開き、`clusterName` の値を (Azure 内で) 一意のものに更新します。
+
+次のコマンドを実行すると、新しい自己署名証明書を生成し、テスト クラスターをデプロイできます。 使用する証明書が既にある場合は、「[既存の証明書を使用してクラスターをデプロイする](#use-an-existing-certificate-to-deploy-the-cluster)」に進んでください。
+
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>自己署名証明書を生成してクラスターをデプロイする
+
+まず、Service Fabric クラスターのデプロイに必要な変数を割り当てます。 `resourceGroupName`、`certSubjectName`、`parameterFilePath`、および `templateFilePath` の値を、特定のアカウントと環境に合わせて調整します。
+
+```powershell
+# Assign deployment variables
+$resourceGroupName = "sftestupgradegroup"
+$certOutputFolder = "c:\certificates"
+$certPassword = "Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$certSubjectName = "sftestupgrade.southcentralus.cloudapp.azure.com"
+$parameterFilePath = "C:\parameters.json"
+$templateFilePath = "C:\Initial-TestClusterSetup.json"
 ```
-3. テンプレート ファイル内のパラメーター値を入力します。 
-4. 手順 2. で作成されたリソース グループにクラスターをデプロイします。 
-```powershell
-# deploy the template files to the resource group created above
-$templateFilePath = "C:\AzureDeploy-1.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
 
+> [!NOTE]
+> 新しい Service Fabric クラスターをデプロイするコマンドを実行する前に、`certOutputFolder` の場所がローカル コンピューターに存在することを確認してください。
+
+次に、Service Fabric テスト クラスターをデプロイします。
+
+```powershell
+# Deploy the initial test cluster
+New-AzServiceFabricCluster `
+    -ResourceGroupName $resourceGroupName `
+    -CertificateOutputFolder $certOutputFolder `
+    -CertificatePassword $certPassword `
+    -CertificateSubjectName $certSubjectName `
+    -TemplateFile $templateFilePath `
+    -ParameterFile $parameterFilePath
+```
+
+デプロイが完了したら、ローカル コンピューターで *.pfx* ファイル (`$certPfx`) を見つけて、証明書ストアにインポートします。
+
+```powershell
+cd c:\certificates
+$certPfx = ".\sftestupgradegroup20200312121003.pfx"
+
+Import-PfxCertificate `
+     -FilePath $certPfx `
+     -CertStoreLocation Cert:\CurrentUser\My `
+     -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
+```
+
+この操作によって、証明書の拇印が返されます。ここでこれを使用して、[新しいクラスターに接続し](#connect-to-the-new-cluster-and-check-health-status)、その正常性状態を確認できます。 (クラスターのデプロイの代替方法である次のセクションはスキップしてください)。
+
+### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>既存の証明書を使用してクラスターをデプロイする
+
+既存の Azure Key Vault 証明書を代わりに使用して、テスト クラスターをデプロイすることもできます。 これを行うには、[Key Vault への参照](#obtain-your-key-vault-references)と証明書の拇印への参照を取得する必要があります。
+
+```powershell
+# Key Vault variables
+$certUrlValue = "https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
+$sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+```
+
+次に、クラスターのリソース グループ名を指定し、`templateFilePath` と `parameterFilePath` の場所を設定します。
+
+> [!NOTE]
+> 指定されたリソース グループは既に存在し、Key Vault と同じリージョンに存在している必要があります。
+
+```powershell
+$resourceGroupName = "sftestupgradegroup"
+$templateFilePath = "C:\Initial-TestClusterSetup.json"
+$parameterFilePath = "C:\parameters.json"
+```
+
+最後に、次のコマンドを実行して初期テスト クラスターをデプロイします。
+
+```powershell
+# Deploy the initial test cluster
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath
+    -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-### <a name="add-a-new-primary-node-type-to-the-cluster"></a>クラスターに新しいプライマリ ノード タイプを追加する
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>新しいクラスターに接続して正常性状態を確認する
+
+クラスターに接続し、そのノードの 5 つすべてが正常であることを確認します (`clusterName` および `thumb` 変数を実際の値に置き換えてください)。
+
+```powershell
+# Connect to the cluster
+$clusterName = "sftestupgrade.southcentralus.cloudapp.azure.com:19000"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+
+Connect-ServiceFabricCluster `
+    -ConnectionEndpoint $clusterName `
+    -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCertThumbprint $thumb  `
+    -FindType FindByThumbprint `
+    -FindValue $thumb `
+    -StoreLocation CurrentUser `
+    -StoreName My
+
+# Check cluster health
+Get-ServiceFabricClusterHealth
+```
+
+これで、アップグレード手順を開始する準備ができました。
+
+## <a name="deploy-a-new-primary-node-type-with-upgraded-scale-set"></a>アップグレードしたスケール セットを使用して新しいプライマリ ノード タイプをデプロイする
+
+ノード タイプをアップグレード (垂直方向にスケーリング) するには、まず、新しいスケール セットとサポート リソースを使用する新しいノード タイプをデプロイする必要があります。 新しいスケール セットは、元のスケール セットと同様に、プライマリ (`isPrimary: true`) としてマークされます (非プライマリ ノード タイプのアップグレードを実行している場合を除きます)。 次のセクションで作成されるリソースは、最終的にはクラスター内の新しいプライマリ ノード タイプになり、元のプライマリ ノード タイプのリソースは削除されます。
+
+### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>アップグレードしたスケール セットでクラスター テンプレートを更新する
+
+ここでは、新しいプライマリ ノード タイプとサポート リソースを追加するための、元のクラスター デプロイ テンプレートのセクションごとの変更点を示します。
+
+この手順に必要な変更は、[*Step1-AddPrimaryNodeType.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/Step1-AddPrimaryNodeType.json) テンプレート ファイルで既に行われています。これらの変更の詳細については、以下で説明します。 必要に応じて、説明をスキップし、[Key Vault 参照の取得](#obtain-your-key-vault-references)と、クラスターに新しいプライマリ ノード タイプを追加する[更新したテンプレートのデプロイ](#deploy-the-updated-template)を進めることができます。
+
 > [!Note]
-> 次の手順で作成されたリソースは、スケーリング操作が完了すると、クラスター内の新しいプライマリ ノード タイプになります。 初期のサブネット、パブリック IP、ロード バランサー、仮想マシン スケール セット、ノードの種類から、必ず一意の名前を使用するようにしてください。 
+> 元のノード タイプ、スケール セット、ロード バランサー、パブリック IP、および元のプライマリ ノード タイプのサブネットと重複しない名前を使用するようにしてください。これらのリソースは、このプロセスの後の手順で削除するためです。
 
-次のすべての手順が完了したテンプレートは、[Service Fabric - 新しいノードの種類のクラスター](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json)で見つけることができます。 次の手順には、新しいリソースの変更が強調表示された部分的なリソース スニペットが含まれています。  
+#### <a name="create-a-new-subnet-in-the-existing-virtual-network"></a>既存の仮想ネットワーク内に新しいサブネットを作成する
 
-1. 既存の仮想ネットワーク内に新しいサブネットを作成します。
 ```json
 {
     "name": "[variables('subnet1Name')]",
@@ -74,7 +176,9 @@ New-AzResourceGroupDeployment `
     }
 }
 ```
-2. 一意の domainNameLabel で新しいパブリック IP リソースを作成します。 
+
+#### <a name="create-a-new-public-ip-with-a-unique-domainnamelabel"></a>一意の domainNameLabel を持つ新しいパブリック IP を作成する
+
 ```json
 {
     "apiVersion": "[variables('publicIPApiVersion')]",
@@ -83,7 +187,7 @@ New-AzResourceGroupDeployment `
     "location": "[variables('computeLocation')]",
     "properties": {
     "dnsSettings": {
-        "domainNameLabel": "[concat(variables('dnsName'),'-','nt2')]"
+        "domainNameLabel": "[concat(variables('dnsName'),'-','nt1')]"
     },
     "publicIPAllocationMethod": "Dynamic"
     },
@@ -93,20 +197,25 @@ New-AzResourceGroupDeployment `
     }
 }
 ```
-3. 上で作成されたパブリック IP に依存する新しいロード バランサー リソースを作成します。 
+
+#### <a name="create-a-new-load-balancer-for-the-public-ip"></a>パブリック IP 用の新しいロード バランサーを作成する
+
 ```json
 "dependsOn": [
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. 新しい VM SKU とスケールアップ先の OS SKU を使用する新しい仮想マシン スケール セットを作成します。 
 
-ノードの種類の参照 
+#### <a name="create-a-new-virtual-machine-scale-set-with-upgraded-vm-and-os-skus"></a>(アップグレードされた VM および OS SKU を使用して) 新しい仮想マシン スケール セットを作成する
+
+ノードの種類の参照
+
 ```json
 "nodeTypeRef": "[variables('vmNodeType1Name')]"
 ```
 
 VM の SKU
+
 ```json
 "sku": {
     "name": "[parameters('vmNodeType1Size')]",
@@ -115,7 +224,8 @@ VM の SKU
 }
 ```
 
-OS SKU 
+OS SKU
+
 ```json
 "imageReference": {
     "publisher": "[parameters('vmImagePublisher1')]",
@@ -125,134 +235,12 @@ OS SKU
 }
 ```
 
-次のスニペットは、Service Fabric クラスターの新しいノード型の作成に使用される新しい仮想マシン スケール セット リソースの例です。 ワークロードに必要な追加の拡張機能が、確実に含まれているようにする必要があります。 
+また、ワークロードに必要な追加の拡張機能を確実に含めるようにしてください。
 
-```json
-    {
-      "apiVersion": "[variables('vmssApiVersion')]",
-      "type": "Microsoft.Compute/virtualMachineScaleSets",
-      "name": "[variables('vmNodeType1Name')]",
-      "location": "[variables('computeLocation')]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
-        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
-      ],
-      "properties": {
-        "overprovision": "[variables('overProvision')]",
-        "upgradePolicy": {
-          "mode": "Automatic"
-        },
-        "virtualMachineProfile": {
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
-                "properties": {
-                  "type": "ServiceFabricNode",
-                  "autoUpgradeMinorVersion": true,
-                  "protectedSettings": {
-                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
-                  },
-                  "publisher": "Microsoft.Azure.ServiceFabric",
-                  "settings": {
-                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
-                    "dataPath": "D:\\SvcFab",
-                    "durabilityLevel": "Bronze",
-                    "enableParallelJobs": true,
-                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
-                    "certificate": {
-                      "thumbprint": "[parameters('certificateThumbprint')]",
-                      "x509StoreName": "[parameters('certificateStoreValue')]"
-                    }
-                  },
-                  "typeHandlerVersion": "1.0"
-                }
-              }
-            ]
-          },
-          "networkProfile": {
-            "networkInterfaceConfigurations": [
-              {
-                "name": "[concat(variables('nicName'), '-1')]",
-                "properties": {
-                  "ipConfigurations": [
-                    {
-                      "name": "[concat(variables('nicName'),'-',1)]",
-                      "properties": {
-                        "loadBalancerBackendAddressPools": [
-                          {
-                            "id": "[variables('lbPoolID1')]"
-                          }
-                        ],
-                        "loadBalancerInboundNatPools": [
-                          {
-                            "id": "[variables('lbNatPoolID1')]"
-                          }
-                        ],
-                        "subnet": {
-                          "id": "[variables('subnet1Ref')]"
-                        }
-                      }
-                    }
-                  ],
-                  "primary": true
-                }
-              }
-            ]
-          },
-          "osProfile": {
-            "adminPassword": "[parameters('adminPassword')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "computernamePrefix": "[variables('vmNodeType1Name')]",
-            "secrets": [
-              {
-                "sourceVault": {
-                  "id": "[parameters('sourceVaultValue')]"
-                },
-                "vaultCertificates": [
-                  {
-                    "certificateStore": "[parameters('certificateStoreValue')]",
-                    "certificateUrl": "[parameters('certificateUrlValue')]"
-                  }
-                ]
-              }
-            ]
-          },
-          "storageProfile": {
-            "imageReference": {
-              "publisher": "[parameters('vmImagePublisher1')]",
-              "offer": "[parameters('vmImageOffer1')]",
-              "sku": "[parameters('vmImageSku1')]",
-              "version": "[parameters('vmImageVersion1')]"
-            },
-            "osDisk": {
-              "caching": "ReadOnly",
-              "createOption": "FromImage",
-              "managedDisk": {
-                "storageAccountType": "[parameters('storageAccountType')]"
-              }
-            }
-          }
-        }
-      },
-      "sku": {
-        "name": "[parameters('vmNodeType1Size')]",
-        "capacity": "[parameters('nt1InstanceCount')]",
-        "tier": "Standard"
-      },
-      "tags": {
-        "resourceType": "Service Fabric",
-        "clusterName": "[parameters('clusterName')]"
-      }
-    },
+#### <a name="add-a-new-primary-node-type-to-the-cluster"></a>クラスターに新しいプライマリ ノード タイプを追加する
 
-```
+新しいノード タイプ (vmNodeType1Name) に独自の名前、サブネット、IP、ロード バランサー、およびスケール セットを設定したので、元のノード タイプの他のすべての変数 (`nt0applicationEndPort`、 `nt0applicationStartPort`、 `nt0fabricTcpGatewayPort` など) を再利用できます。
 
-5. 上で作成された仮想マシン スケール セットを参照する新しいノードの種類をクラスターに追加します。 このノードの種類の **isPrimary** プロパティは true に設定する必要があります。 
 ```json
 "name": "[variables('vmNodeType1Name')]",
 "applicationPorts": {
@@ -270,72 +258,97 @@ OS SKU
 "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
 "vmInstanceCount": "[parameters('nt1InstanceCount')]"
 ```
-6. 更新された ARM テンプレートをデプロイします。 
+
+テンプレートとパラメーター ファイルにすべての変更を実装したら、次のセクションに進み、Key Vault 参照を取得して、クラスターに更新をデプロイします。
+
+### <a name="obtain-your-key-vault-references"></a>Key Vault 参照を取得する
+
+更新された構成をデプロイするには、まず、Key Vault に格納されているクラスター証明書へのいくつかの参照が必要です。 これらの値を見つける最も簡単な方法は、Azure portal を使用することです。 必要なものは次のとおりです。
+
+* **クラスター証明書の Key Vault URL。** Azure portal の Key Vault で、 **[証明書]**  > *目的の証明書* >  **[シークレット識別子]** を選択します。
+
+    ```powershell
+    $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
+    ```
+
+* **クラスター証明書の拇印。** ([初期クラスターに接続](#connect-to-the-new-cluster-and-check-health-status)して、その正常性の状態を確認している場合は、既にこれを持っている可能性があります)。Azure portal で同じ証明書ブレード ( **[証明書]**  > *目的の証明書*) から、**X.509 SHA-1 の拇印 (16 進数)** をコピーします。
+
+    ```powershell
+    $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+    ```
+
+* **Key Vault のリソース ID。** Azure portal の Key Vault から、 **[プロパティ]**  >  **[リソース ID]** を選択します。
+
+    ```powershell
+    $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
+    ```
+
+### <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
+
+必要に応じて `templateFilePath` を調整し、次のコマンドを実行します。
+
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-2.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+# Deploy the new node type and its resources
+$templateFilePath = "C:\Step1-AddPrimaryNodeType.json"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-デプロイが完了すると、Service Fabric クラスターにはノードの種類が 2 つ存在するようになります。 
+デプロイが完了したら、クラスターの正常性を再度確認し、両方のノード タイプのすべてのノードが正常であることを確認します。
 
-### <a name="remove-the-existing-node-type"></a>既存のノードの種類を削除する 
-リソースのデプロイが完了したら、元のプライマリ ノード タイプのノードを無効にしていくことができます。 ノードを無効にすると、システム サービスが、上記の手順でデプロイされた新しいプライマリ ノード タイプに移行されます。
+```powershell
+Get-ServiceFabricClusterHealth
+```
 
-1. Service Fabric クラスター リソースのプライマリ ノード タイプ プロパティを false に設定します。 
+## <a name="migrate-seed-nodes-to-the-new-node-type"></a>シード ノードを新しいノード タイプに移行する
+
+現在、元のノード タイプを非プライマリとして更新し、そのノードの無効化を開始する準備ができています。 ノードが無効になると、クラスターのシステム サービスおよびシード ノードが新しいスケール セットに移行されます。
+
+### <a name="unmark-the-original-node-type-as-primary"></a>元のノード タイプからプライマリのマークを解除する
+
+最初に、元のノード タイプのテンプレート内の `isPrimary` の指定を解除します。
+
 ```json
 {
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
     "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
 }
 ```
-2. 元のノードの種類の更新された isPrimary プロパティを使用してテンプレートをデプロイします。 元のノードの種類のプライマリ フラグが false に設定されたテンプレートは、[Service Fabric - プライマリ ノード タイプ false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json) で見つけることができます。
+
+次に、その更新を含むテンプレートをデプロイします。 これにより、新しいスケール セットへのシード ノードの移行が開始されます。
 
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+$templateFilePath = "C:\Step2-UnmarkOriginalPrimaryNodeType.json"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-3. ノードの種類 0 のノードを無効にします。 
+> [!Note]
+> 新しいスケール セットへのシード ノードの移行が完了するまでしばらく時間がかかります。 データの整合性を確保するため、一度に変更できるシード ノードは 1 つだけです。 各シード ノードの変更には、クラスターの更新が必要であるため、シード ノードの交換には、2 回のクラスターのアップグレード (ノードの追加と削除のために 1 回ずつ) が必要です。 このサンプル シナリオで 5 つのシード ノードをアップグレードすると、10 回のクラスターのアップグレードが発生します。
+
+新しいスケール セットへのシード ノードの移行を監視するには、Service Fabric Explorer を使用します。 元のノード タイプ (nt0vm) のノードはすべて **[Is Seed Node]\(シード ノードです\)** 列が *false* になっているはずです。新しいノード タイプ (nt1vm) のものは *true* になります。
+
+### <a name="disable-the-nodes-in-the-original-node-type-scale-set"></a>元のノー ド タイプのスケール セット内のノードを無効にする
+
+すべてのシード ノードが新しいスケール セットに移行されたら、元のスケール セットのノードを無効にできます。
+
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-
-Write-Host "Connected to cluster"
-
-
-$nodeType = "nt1vm" # specify the name of node type
-$nodes = Get-ServiceFabricNode 
+# Disable the nodes in the original scale set.
+$nodeType = "nt0vm"
+$nodes = Get-ServiceFabricNode
 
 Write-Host "Disabling nodes..."
 foreach($node in $nodes)
@@ -348,14 +361,23 @@ foreach($node in $nodes)
   }
 }
 ```
-* ブロンズの持続性の場合は、すべてのノードが無効な状態になるまで待ちます。
-* シルバーおよびゴールドの持続性の場合は、一部のノードが無効になり、残りは無効化中の状態になります。 無効化中の状態のノードの詳細タブを確認し、インフラストラクチャ サービス パーティションのクォーラムを確保しているときにそれらがすべて停止している場合は、続行しても安全です。
 
-> [!Note]
-> この手順は完了に時間がかかる場合があります。 
+Service Fabric Explorer を使用して、元のスケール セットのノードの *[Disabling]\(無効化中\)* から *[Disabled]\(無効\)* 状態への進行状況を監視します。
 
-4. ノードの種類 0 のデータを停止します。 
+:::image type="content" source="./media/scale-up-primary-node-type/service-fabric-explorer-node-status.png" alt-text="無効なノードの状態を示す Service Fabric Explorer":::
+
+シルバーおよびゴールド持続性の場合、一部のノードは [Disabled]\(無効\) 状態になりますが、その他は *[Disabling]\(無効化中\)* 状態のまま残ることがあります。 Service Fabric Explorer で、[Disabling]\(無効化中\) 状態のノードの **[詳細]** タブを確認してください。 種類が *EnsurePartitionQuorem* (インフラストラクチャ サービス パーティションのクォーラムを確保する) の "*安全性チェックの保留中*" が表示されている場合は、続行しても安全です。
+
+:::image type="content" source="./media/scale-up-primary-node-type/service-fabric-explorer-node-status-disabling.png" alt-text="'EnsurePartitionQuorum' という種類の安全性チェックの保留中が表示されている場合は、データの停止と、'無効化' 状態で停止しているノードの削除を進めることができます。":::
+
+クラスターがブロンズ持続性の場合は、すべてのノードが *[Disabled]\(無効\)* 状態になるまで待ちます。
+
+### <a name="stop-data-on-the-disabled-nodes"></a>無効化されたノードでデータを停止する
+
+ここで、無効化されたノードでデータを停止できます。
+
 ```powershell
+# Stop data on the disabled nodes.
 foreach($node in $nodes)
 {
   if ($node.NodeType -eq $nodeType)
@@ -366,44 +388,62 @@ foreach($node in $nodes)
   }
 }
 ```
-5. 元の仮想マシン スケール セット内のノードの割り当てを解除します。 
+
+## <a name="remove-the-original-node-type-and-cleanup-its-resources"></a>元のノード タイプを削除し、そのリソースをクリーンアップする
+
+元のノード タイプとそれに関連付けられているリソースを削除して、垂直スケーリングの手順を終了する準備ができています。
+
+### <a name="remove-the-original-scale-set"></a>元のスケール セットを削除する
+
+まず、ノード タイプのバッキング スケール セットを削除します。
+
 ```powershell
-$scaleSetName="nt1vm"
-$scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+$scaleSetName = "nt0vm"
+$scaleSetResourceType = "Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
-> [!Note]
-> Standard SKU パブリック IP と Standard SKU ロード バランサーを既に使用している場合、手順 6. と 7. は省略可能です。 この場合は、同じロード バランサーのもとで仮想マシン スケール セット/ノードの種類を複数使用できます。 
 
-6. これで、元の IP およびロード バランサー リソースを削除できるようになりました。 この手順では、DNS 名も更新します。 
+### <a name="delete-the-original-ip-and-load-balancer-resources"></a>元の IP およびロード バランサー リソースを削除する
+
+ここで、元の IP およびロード バランサー リソースを削除できます。 この手順では、DNS 名も更新します。
+
+> [!Note]
+> *Standard* SKU のパブリック IP およびロード バランサーを既に使用している場合、この手順は省略可能です。 この場合は、同じロード バランサーで複数のスケール セットやノード タイプを使用できます。
+
+次のコマンドを実行します。`$lbname` の値は、必要に応じて変更します。
 
 ```powershell
-$lbname="LB-cluster-name-nt1vm"
-$lbResourceType="Microsoft.Network/loadBalancers"
-$ipResourceType="Microsoft.Network/publicIPAddresses"
-$oldPublicIpName="PublicIP-LB-FE-nt1vm"
-$newPublicIpName="PublicIP-LB-FE-nt2vm"
+# Delete the original IP and load balancer resources
+$lbName = "LB-sftestupgrade-nt0vm"
+$lbResourceType = "Microsoft.Network/loadBalancers"
+$ipResourceType = "Microsoft.Network/publicIPAddresses"
+$oldPublicIpName = "PublicIP-LB-FE-nt0vm"
+$newPublicIpName = "PublicIP-LB-FE-nt1vm"
 
-$oldprimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $resourceGroupName
-$primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
-$primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
+$oldPrimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $resourceGroupName
+$primaryDNSName = $oldPrimaryPublicIP.DnsSettings.DomainNameLabel
+$primaryDNSFqdn = $oldPrimaryPublicIP.DnsSettings.Fqdn
 
-Remove-AzResource -ResourceName $lbname -ResourceType $lbResourceType -ResourceGroupName $resourceGroupName -Force
+Remove-AzResource -ResourceName $lbName -ResourceType $lbResourceType -ResourceGroupName $resourceGroupName -Force
 Remove-AzResource -ResourceName $oldPublicIpName -ResourceType $ipResourceType -ResourceGroupName $resourceGroupName -Force
 
 $PublicIP = Get-AzPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $resourceGroupName
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
-``` 
-
-7. 新しい IP を参照するようにクラスター上の管理エンドポイントを更新します。 
-```json
-  "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-8. ノードの種類 0 からノードの状態を削除します。
+
+### <a name="remove-node-state-from-the-original-node-type"></a>元のノード タイプからノードの状態を削除する
+
+元のノード タイプのノードでは、 **[正常性状態]** に *[エラー]* が表示されるようになります。 クラスターからそれらのノードの状態を削除します。
+
 ```powershell
+# Remove state of the obsolete nodes from the cluster
+$nodeType = "nt0vm"
+$nodes = Get-ServiceFabricNode
+
+Write-Host "Removing node state..."
 foreach($node in $nodes)
 {
   if ($node.NodeType -eq $nodeType)
@@ -414,7 +454,25 @@ foreach($node in $nodes)
   }
 }
 ```
-9. ARM テンプレート内の Service Fabric リソースから元のノードの種類の参照を削除します。 
+
+これで、Service Fabric Explorer には、新しいノード タイプ (nt1vm) である 5 つのノードのみがすべて *[OK]* の正常性状態の値で表示されるはずです。 クラスターの正常性状態には、引き続き *[エラー]* が表示されます。 次に、最新の変更内容と再デプロイを反映するようにテンプレートを更新することで、それを修復します。
+
+### <a name="update-the-deployment-template-to-reflect-the-newly-scaled-up-primary-node-type"></a>新しくスケールアップされたプライマリ ノード タイプを反映するようにデプロイ テンプレートを更新する
+
+この手順に必要な変更は、[*Step3-CleanupOriginalPrimaryNodeType.json*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/Step3-CleanupOriginalPrimaryNodeType.json) テンプレート ファイルで既に行われています。以降のセクションで、これらのテンプレートの変更について詳しく説明します。 必要に応じて、説明をスキップし、[更新されたテンプレートのデプロイ](#deploy-the-finalized-template)を進めて、このチュートリアルを完了することができます。
+
+#### <a name="update-the-cluster-management-endpoint"></a>クラスター管理エンドポイントを更新する
+
+(*vmNodeType0Name* を *vmNodeType1Name* で更新することで) 新しい IP を参照するようにデプロイ テンプレートのクラスター `managementEndpoint` を更新します。
+
+```json
+  "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
+```
+
+#### <a name="remove-the-original-node-type-reference"></a>元のノード タイプの参照を削除する
+
+デプロイ テンプレート内の Service Fabric リソースから元のノード タイプの参照を削除します。
+
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -432,7 +490,11 @@ foreach($node in $nodes)
 "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
 "vmInstanceCount": "[parameters('nt0InstanceCount')]"
 ```
-シルバー以上の持続性クラスターの場合のみ、テンプレート内のクラスター リソースを更新し、次に示すように、クラスター リソースのプロパティの下に applicationDeltaHealthPolicies を追加することによって fabric:/System のアプリケーションの正常性を無視するように正常性ポリシーを構成します。 以下のポリシーでは既存のエラーが無視されますが、新しい正常性エラーは許可されません。
+
+#### <a name="configure-health-policies-to-ignore-existing-errors"></a>既存のエラーを無視するように正常性ポリシーを構成する
+
+シルバー以上の持続性クラスターの場合のみ、テンプレート内のクラスター リソースを更新し、以下に示すように、クラスター リソースのプロパティの下に *applicationDeltaHealthPolicies* を追加することで `fabric:/System` のアプリケーションの正常性を無視するように正常性ポリシーを構成します。 以下のポリシーでは既存のエラーが無視されますが、新しい正常性エラーは許容されません。
+
 ```json
 "upgradeDescription":  
 { 
@@ -465,25 +527,55 @@ foreach($node in $nodes)
  } 
 }
 ```
-10. ARM テンプレートから、元のノードの種類に関連するその他のすべてのリソースを削除します。 これらの元のリソースがすべて削除されたテンプレートについては、[Service Fabric - 新しいノードの種類のクラスター](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json)に関するページを参照してください。
 
-11. 変更した Azure Resource Manager テンプレートをデプロイします。 ** この手順にはしばらく時間がかかります (通常は最大 2 時間)。 このアップグレードでは、InfrastructureService に対する設定が変更されるため、ノードの再起動が必要になります。 この場合、forceRestart は無視されます。 パラメーター upgradeReplicaSetCheckTimeout は、パーティションが安全な状態になるまで Service Fabric が待機する最大時間を指定します (まだ安全な状態でない場合)。 ノード上のすべてのパーティションが安全性チェックに合格すると、Service Fabric はそのノードでアップグレードを進めます。 パラメーター upgradeTimeout の値は 6 時間まで短縮できますが、最大の安全性を確保するには 12 時間を使用する必要があります。
-その後、ポータルの Service Fabric リソースが準備完了と表示されていることを確認します。 
+#### <a name="remove-supporting-resources-for-the-original-node-type"></a>元のノード タイプのサポート リソースを削除する
+
+ARM テンプレートとパラメーター ファイルから、元のノード タイプに関連するその他のすべてのリソースを削除します。 次の部分を削除します。
+
+```json
+    "vmImagePublisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "vmImageOffer": {
+      "value": "WindowsServer"
+    },
+    "vmImageSku": {
+      "value": "2016-Datacenter-with-Containers"
+    },
+    "vmImageVersion": {
+      "value": "latest"
+    },
+```
+
+#### <a name="deploy-the-finalized-template"></a>完成したテンプレートをデプロイする
+
+最後に、変更した Azure Resource Manager テンプレートをデプロイします。
 
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-4.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+# Deploy the updated template file
+$templateFilePath = "C:\Step3-CleanupOriginalPrimaryNodeType"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-これで、クラスターのプライマリ ノード タイプがアップグレードされました。 デプロイされたアプリケーションが正常に機能すること、クラスターの正常性に問題がないことを確認します。
+> [!NOTE]
+> この手順にはしばらく時間がかかります (通常は最大 2 時間)。
+
+このアップグレードでは *InfrastructureService* に対する設定が変更されるため、ノードの再起動が必要になります。 この場合、*forceRestart* は無視されます。 パラメーター `upgradeReplicaSetCheckTimeout` には、パーティションが (まだ安全な状態でない場合に) 安全な状態になるまで Service Fabric が待機する最大時間を指定します。 ノード上のすべてのパーティションが安全性チェックに合格すると、Service Fabric はそのノードでアップグレードを進めます。 パラメーター `upgradeTimeout` の値は 6 時間に短縮できますが、最大の安全確保のために 12 時間とする必要があります。
+
+デプロイが完了したら、Azure portal で、Service Fabric リソースの状態が *[準備完了]* であることを確認します。 新しい Service Fabric Explorer エンドポイントに接続できること、**クラスターの正常性状態** が *[OK]* であること、デプロイされたすべてのアプリケーションが正常に機能することを確認します。
+
+これで、クラスターのプライマリ ノード タイプが垂直方向にスケーリングされました。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [クラスターにノード タイプを追加する](virtual-machine-scale-set-scale-node-type-scale-out.md)方法について学習します。
 * [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。
 * [Azure クラスターをスケールインまたはスケールアウト](service-fabric-tutorial-scale-cluster.md)します。

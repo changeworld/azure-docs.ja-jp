@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
-ms.openlocfilehash: 2478148f946ddc88e571b76396544b028455ec75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 82e1c6bdcd508bf1844223b331bf8363efa7b573
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132107"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555323"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 
@@ -72,7 +72,7 @@ Azure Storage と SQL には固定の IP アドレスがないため、これら
 
 ### <a name="issue"></a>問題
 
-エラーの説明に、"Failed to establish an outbound connection from the cluster for the communication with the HDInsight resource provider. Please ensure that outbound connectivity is allowed. (HDInsight リソース プロバイダーとの通信のためのクラスターからの送信接続の確立に失敗しました。送信接続が許可されていることを確認してください。)" と記載されています。
+エラーの説明に、"Failed to establish an outbound connection from the cluster for the communication with the HDInsight resource provider. Please ensure that outbound connectivity is allowed. (HDInsight リソース プロバイダーとの通信のためのクラスターからの送信接続の確立に失敗しました。送信接続が許可されていることを確認してください。)"
 
 ### <a name="cause"></a>原因
 
@@ -153,7 +153,7 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 ### <a name="resolution"></a>解決方法
 
-[Az PowerShell SDK](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-5.3.0&viewFallbackFrom=azps-4.2.0) に記載されているように、`Get-AzVirtualNetwork` の有効なパラメーターを使用します。
+[Az PowerShell SDK](/powershell/module/az.network/get-azvirtualnetwork) に記載されているように、`Get-AzVirtualNetwork` の有効なパラメーターを使用します。
 
 ---
 

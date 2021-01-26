@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516972"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186194"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
@@ -53,7 +53,11 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>どの .NET または .NET Core イメージ レイヤーをコンテナーに使用すればよいですか。 
 
-お客様の要件を満たす最小のイメージを使用します。 Linux の場合は、.NET Core 2.1 のリリース以降のサポートされている *runtime-alpine* .NET Core イメージを使用できます。 Windows で、完全な .NET Framework を使用している場合は、Windows Server Core イメージ ( *4.7.2-windowsservercore-ltsc2016* などのランタイム専用イメージ) を使用する必要があります。 ランタイム専用イメージの方が小さいのですが、.NET SDK を必要とするワークロードをサポートしていません。
+お客様の要件を満たす最小のイメージを使用します。 Linux の場合は、.NET Core 2.1 のリリース以降のサポートされている *runtime-alpine* .NET Core イメージを使用できます。 Windows で、完全な .NET Framework を使用している場合は、Windows Server Core イメージ (*4.7.2-windowsservercore-ltsc2016* などのランタイム専用イメージ) を使用する必要があります。 ランタイム専用イメージの方が小さいのですが、.NET SDK を必要とするワークロードをサポートしていません。
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>ACI と互換性があるのは、どの種類のコンテナー レジストリですか。
+
+ACI では、ACR や、DockerHub などの他のサードパーティ製コンテナー レジストリからのイメージのプルがサポートされています。 また、ACI では、OCR と互換性があり、インターネットに公開されているエンドポイントがある限り、オンプレミス レジストリからのイメージのプルもサポートされます。
 
 ## <a name="availability-and-quotas"></a>可用性とクォータ
 

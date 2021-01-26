@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 09/30/2020
-ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/15/2021
+ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793145"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251218"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ Azure SQL Database と Azure SQL Managed Instance で使用される仮想コア
 |-|**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
-|ストレージ|リモート ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング** :<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング** :<br/>5 GB - 3 TB<br/>**SQL Managed Instance** :32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング** :<br/>5 GB – 4 TB<br/>**SQL Managed Instance** :<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
-|IOPS とスループット (概算)|**SQL Database** : [単一データベース](resource-limits-vcore-single-databases.md)と [エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。<br/>**SQL Managed Instance** : [Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md#service-tier-characteristics)に関するページを参照してください。|[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS とスループットはワークロードによって異なります。|
+|ストレージ|リモート ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**SQL Managed Instance**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**SQL Managed Instance**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
+|IOPS とスループット (概算)|**SQL Database**:[単一データベース](resource-limits-vcore-single-databases.md)と [エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。<br/>**SQL Managed Instance**:[Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md#service-tier-characteristics)に関するページを参照してください。|[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS とスループットはワークロードによって異なります。|
 |可用性|1 レプリカ、読み取りスケール レプリカなし|3 レプリカ、1 [読み取りスケール レプリカ](read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](read-scale-out.md)|
 |バックアップ|[ 読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/geo-redundant-design.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../..//storage/common/geo-redundant-design.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージでのスナップショット ベースのバックアップ。 このようなスナップショットを使用して復元することで、高速復元が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間または数日ではなく、数分で完了)。|
 |メモリ内|サポートされていません|サポートされています|サポートされていません|
@@ -69,7 +69,7 @@ Azure SQL Database と Azure SQL Managed Instance で使用される仮想コア
 
 ## <a name="hardware-generations"></a>ハードウェアの世代
 
-仮想コア モデルのハードウェアの世代オプションには、Gen 4/5、M シリーズ、Fsv2 シリーズがあります。 ハードウェアの世代では、一般に、ワークロードのパフォーマンスに影響を与えるコンピューティングおよびメモリの制限とその他の特性を定義します。
+仮想コア モデルのハードウェアの世代オプションには、Gen 4/5、M シリーズ、Fsv2 シリーズ、DC シリーズがあります。 ハードウェアの世代では、一般に、ワークロードのパフォーマンスに影響を与えるコンピューティングおよびメモリの制限とその他の特性を定義します。
 
 ### <a name="gen4gen5"></a>Gen4/Gen5
 
@@ -84,7 +84,6 @@ Gen4/Gen5 が利用可能なリージョンについては、[Gen4/Gen5 の可�
 - Fsv2 を使用すると、他のハードウェアよりも仮想コアあたりのメモリと tempdb が少なくなります。そのため、これらの制限の影響を受けるワークロードでは、Gen5 または M シリーズを代わりに検討する必要があります。  
 
 Fsv2 シリーズは、General Purpose レベルでのみサポートされています。 Fsv2 シリーズが利用可能なリージョンについては、[Fsv2 シリーズの可用性](#fsv2-series-1)に関するセクションを参照してください。
-
 
 ### <a name="m-series"></a>M シリーズ
 
@@ -101,6 +100,22 @@ M シリーズにアクセスするには、サブスクリプションの種類
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
 -->
 
+### <a name="dc-series"></a>DC シリーズ
+
+> [!NOTE]
+> DC シリーズは現在、**パブリック プレビュー** 段階にあります。
+
+- DC シリーズのハードウェアでは、Software Guard Extensions (Intel SGX) テクノロジを搭載した Intel プロセッサが使用されています。
+- DC シリーズは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) のために必要で、これは他のハードウェア構成ではサポートされていません。
+- DC シリーズは、セキュリティで保護されたエンクレーブが設定された Always Encrypted によって提供される、機密データを処理して機密クエリ処理機能を必要とするワークロード用に設計されています。
+- DC シリーズのハードウェアでは、バランスの取れたコンピューティングおよびメモリ リソースが提供されます。
+
+DC シリーズは、プロビジョニング済みコンピューティングでのみサポートされており (サーバーレスはサポートされていません)、またゾーン冗長性はサポートされていません。 DC シリーズが利用可能なリージョンについては、[DC シリーズの可用性](#dc-series-1)に関するセクションを参照してください。
+
+#### <a name="azure-offer-types-supported-by-dc-series"></a>DC シリーズでサポートされている Azure オファーの種類
+
+DC シリーズにアクセスするには、サブスクリプションの種類を、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーにする必要があります。  DC シリーズでサポートされている Azure オファーの種類の一覧については、[使用制限のない現在のオファー](https://azure.microsoft.com/support/legal/offer-details)を参照してください。
+
 ### <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
 
 
@@ -110,6 +125,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |第 5 世代     |**プロビジョニング済みコンピューティング**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、Intel® SP-8160 (Skylake)\* プロセッサ、および Intel® 8272CL (Cascade Lake) 2.5 GHz\* プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)<br><br>**サーバーレス コンピューティング**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz プロセッサおよび Intel® SP-8160 (Skylake)* プロセッサ<br>- 最大 40 個の仮想コアを自動スケール (1 仮想コア = 1 ハイパースレッド)|**プロビジョニング済みコンピューティング**<br>- 仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング<br><br>**サーバーレス コンピューティング**<br>- 仮想コアあたり最大 24 GB を自動スケール<br>- 最大 120 GB を自動スケール|
 |Fsv2 シリーズ     |- Intel® 8168 (Skylake) プロセッサ<br>- すべての主要なターボ クロック速度 (3.4 GHz) と、最大 1 コアのターボ クロック速度 (3.7 GHz) を実現します。<br>- 最大 72 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 1.9 GB<br>- 最大 136 GB をプロビジョニング|
 |M シリーズ     |- Intel® E7-8890 v3 2.5 GHz プロセッサおよび Intel® 8280M 2.7 GHz (Cascade Lake) プロセッサ<br>- 最大 128 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 29 GB<br>- 最大 3.7 TB をプロビジョニング|
+|DC シリーズ     | - Intel XEON E-2288G プロセッサ<br>- Intel Software Guard Extension (Intel SGX) を搭載<br>- 最大 8 個の仮想コアをプロビジョニング (1 仮想コア = 1 物理コア) | 仮想コアあたり 4.5 GB |
 
 \* [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel® SP-8160 (Skylake) プロセッサを使用するデータベースのハードウェア世代は Gen6 と表示され、Intel® 8272CL (Cascade Lake) を使用するデータベースのハードウェア世代は Gen7 と表示されます。 すべての Gen5 データベースのリソース制限は、プロセッサの種類 (Broadwell、Skylake、Cascade Lake) に関係なく同じです。
 
@@ -225,6 +241,15 @@ On the **Details** page, provide the following:
 
 Approved support requests are typically fulfilled within 5 business days.
 -->
+
+#### <a name="dc-series"></a>DC シリーズ
+
+> [!NOTE]
+> DC シリーズは現在、**パブリック プレビュー** 段階にあります。
+
+DC シリーズは、次のリージョンで使用できます: カナダ中部、カナダ東部、米国東部、北ヨーロッパ、英国南部、西ヨーロッパ、米国西部。
+
+現在サポートされていないリージョンで DC シリーズが必要な場合は、「[Azure SQL Database と SQL Managed Instance のクォータの増加を要求する](quota-increase-request.md)」の手順に従って[サポート チケットを送信してください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>次のステップ
 

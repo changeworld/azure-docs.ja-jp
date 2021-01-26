@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516130"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232677"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>ロールとアクセス許可を定義する
 
-サービス プロバイダーは、1 人の顧客に対して複数のタスクを実行でき、その場合は、スコープごとに異なるアクセスが必要になります。 適切な[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)をテナント内のユーザーに割り当てるために、必要な数の認可を定義することができます。
+サービス プロバイダーは、1 人の顧客に対して複数のタスクを実行でき、その場合は、スコープごとに異なるアクセスが必要になります。 適切な [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を割り当てるために、必要な数の承認を定義することができます。 各承認には、管理テナント内の Azure AD ユーザー、グループ、またはサービス プリンシパルを指す **principalId** が含まれています。
 
-管理しやすくするため、ロールごとに Azure AD ユーザー グループを使用することをお勧めします。 これにより、アクセス権を持つグループに個々のユーザーを柔軟に追加または削除できるようになるため、ユーザー変更を行うためにオンボード プロセスを繰り返す必要がなくなります。 サービス プリンシパルにロールを割り当てることができます。これは、自動化のシナリオで役立ちます。
+> [!NOTE]
+> 明示的に指定されていない限り、Azure Lighthouse ドキュメント内で言及されている "ユーザー" は、承認に含まれる Azure AD ユーザー、グループ、またはサービス プリンシパルに該当します。
+
+管理しやすくするため、可能な限り、個々のユーザーではなく、ロールごとに Azure AD ユーザー グループを使用することをお勧めします。 これにより、アクセス権を持つグループに個々のユーザーを柔軟に追加または削除できるようになるため、ユーザー変更を行うためにオンボード プロセスを繰り返す必要がなくなります。 サービス プリンシパルにロールを割り当てることもできます。これは、自動化のシナリオで役立ちます。
 
 > [!IMPORTANT]
 > Azure AD グループのアクセス許可を追加するには、 **[グループの種類]** を **[セキュリティ]** に設定する必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-承認を定義する場合は、ユーザーがジョブの完了に必要なアクセス許可のみを持つように、必ず最小限の特権の原則に従ってください。 サポートされているロールに関するガイドラインと情報については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../concepts/tenants-users-roles.md)」を参照してください。
+承認を定義する場合は、ユーザーがジョブの完了に必要なアクセス許可のみを持つように、必ず最小限の特権の原則に従ってください。 サポートされているロールとベスト プラクティスについては、「[Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール](../concepts/tenants-users-roles.md)」を参照してください。
 
 承認を定義するために、アクセスを許可するサービス プロバイダー テナントの各ユーザー、各ユーザー グループ、または各サービス プリンシパルの ID 値を知っておく必要があります。 また、割り当てる各組み込みロールのロール定義 ID も必要になります。 それらをまだ持っていない場合は、サービス プロバイダー テナント内から次のコマンドを実行して取得することができます。
 
@@ -195,7 +198,7 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ためには必要なことです。  ユーザーは、サポート インシデントを作成することもできます。  ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
+上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上のサポートされている Azure 組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。  ユーザーは、サポート インシデントを作成することもできます。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、この **principalId** に適用されません。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートをデプロイする
 
@@ -278,7 +281,7 @@ az deployment sub create --name <deploymentName> \
 3. Resource Manager テンプレートで指定したオファー名の付いたサブスクリプションが表示されることを確認します。
 
 > [!NOTE]
-> デプロイが完了してから Azure portal に更新が反映されるまで数分かかる場合があります。
+> デプロイが完了してから Azure portal に更新が反映されるまで最大 15 分かかる場合があります。 ブラウザーを更新するか、サインインしてからサインアウトするか、または新しいトークンを要求することで Azure Resource Manager トークンを更新すると、更新プログラムをすぐに確認できる場合があります。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ az account list
 - 委任されたサブスクリプションに対して、**Microsoft.ManagedServices** リソース プロバイダーを登録する必要があります。 これはデプロイ中に自動的に行われますが、行われない場合は、[手動で登録](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)できます。
 - 認可には、"[所有者](../../role-based-access-control/built-in-roles.md#owner)" 組み込みロール、または "[DataActions](../../role-based-access-control/role-definitions.md#dataactions)" を持つ組み込みロールが割り当てられたユーザーを含めることはできません。
 - グループは、[**グループの種類**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types)を **Microsoft 365** ではなく **Security** に設定して作成する必要があります。
+- [入れ子になったグループ](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)では、アクセスが有効になるまでにさらなる遅延が発生する場合があります。
 - Azure portal にリソースを表示する必要のあるユーザーは[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または閲覧者アクセス権を含む別の組み込みロール) を割り当てられている必要があります。
 
 ## <a name="next-steps"></a>次のステップ

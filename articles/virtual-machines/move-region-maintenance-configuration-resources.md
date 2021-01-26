@@ -6,18 +6,18 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4d9f3a5f73e5832e9ff22ed2cd4c215811c845
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501655"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197559"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成のリソースを別のリージョンに移動する
 
 メンテナンス コントロール構成に関連付けられているリソースを別の Azure リージョンに移動するには、この記事に従ってください。 構成を移動する場合、さまざまな理由が考えられます。 たとえば、新しい Azure リージョンを利用するため、特定のリージョンでのみ利用可能な機能やサービスをデプロイするため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためなどがあります。
 
-カスタマイズされたメンテナンス構成でメンテナンス コントロールを使用すると、プラットフォームの更新プログラムを [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM、Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
+[メンテナンス コントロール](maintenance-control.md)を、カスタマイズされたメンテナンス構成と共に使用すると、プラットフォームの更新プログラムを VM、および Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
 
 - メンテナンス構成に関連付けられているリソースを移動するが、構成自体は移動しない場合、この記事に従います。
 - メンテナンス コントロール構成を移動するが、構成に関連付けられているリソースは移動しない場合、[こちらの手順](move-region-maintenance-configuration.md)に従います。
@@ -61,7 +61,7 @@ ms.locfileid: "86501655"
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. CLI の [az maintenance assignment](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) コマンドを使用してメンテナンス構成を取得する場合:
+3. CLI の [az maintenance assignment](/cli/azure/ext/maintenance/maintenance/assignment) コマンドを使用してメンテナンス構成を取得する場合:
 
     - Azure Dedicated Host の場合:
 

@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) でのクラスター構成
 description: Azure Kubernetes Service (AKS) でクラスターを構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606914"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201112"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -21,10 +21,52 @@ AKS クラスターの作成の一環として、ニーズに合わせてクラ�
 
 AKS では現在、1.18.8 以降のバージョンの Kubernetes のクラスターについては、一般提供において、ノードのオペレーティング システム (OS) として Ubuntu 18.04 をサポートしています。 1\.18.x より前のバージョンについては、AKS Ubuntu 16.04 が引き続き既定のベース イメージになります。 Kubernetes v1.18.x 以降、既定のベースは AKS Ubuntu 18.04 です。
 
-> [!IMPORTANT]
-> Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールは、ノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
-> 
-> 1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。 [Ubuntu 18.04 ノード プールをテストする](#use-aks-ubuntu-1804-existing-clusters-preview)方法を参照してください。
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>一般公開された AKS Ubuntu 18.04 を新しいクラスターで使用する
+
+Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 1\.18 より前のサポートされている Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、クラスターまたはノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
+
+1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。 [Ubuntu 18.04 ノード プールをテストする](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)方法を参照してください。
+
+`AKS Ubuntu 18.04` ノード イメージを使用してクラスターを作成するには、下に示すように、kubernetes v1.18 以降を実行するクラスターを作成するだけです。
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>一般公開された AKS Ubuntu 18.04 を既存のクラスターで使用する
+
+Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 1\.18 より前のサポートされている Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、クラスターまたはノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
+
+1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。 [Ubuntu 18.04 ノード プールをテストする](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)方法を参照してください。
+
+クラスターまたはノード プールで `AKS Ubuntu 18.04` ノード イメージを使用する準備ができている場合は、単純に下のように 1.18 以降にアップグレードできます。
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+1 つのノード プールのみをアップグレードする場合は、次のようにします。
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>一般公開された AKS Ubuntu 18.04 を既存のクラスターでテストする
+
+Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
+
+運用ノード プールをアップグレードする前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
+
+`AKS Ubuntu 18.04` ノード イメージを使用してノード プールを作成するには、kubernetes v1.18 以降を実行するノード プールを作成するだけです。 クラスターのコントロール プレーンも、少なくとも v1.18 以降である必要がありますが、他のノード プールは古い kubernetes バージョンのままでも構いません。
+下では、まずコントロール プレーンをアップグレードした後、新しいノード イメージ OS バージョンを受け取る新しいノード プールを v1.18 を使用して作成します。
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>新しいクラスターで AKS Ubuntu 18.04 を使用する (プレビュー)
 
 次のセクションでは、Kubernetes バージョン 1.18.x をまだ使用していない、あるいはこの機能が一般提供される前、OS の構成プレビューで作成されたクラスター上で AKS Ubuntu 18.04 を使用し、テストする方法について説明します。
 
@@ -57,8 +99,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/U
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>新しいクラスターで AKS Ubuntu 18.04 を使用する (プレビュー)
 
 クラスターが作成されるときに Ubuntu 18.04 を使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、Ubuntu 18.04 を既定の OS として設定します。
 

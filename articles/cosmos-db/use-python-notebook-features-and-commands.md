@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340415"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165826"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB の Python ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -123,6 +123,8 @@ Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
 出力統計を使用すると、項目のアップロードに使用される有効な RU/秒を計算できます。 たとえば、25000 の RU が 38 秒で使用された場合、有効な RU/秒は 25000ru/38 秒 = 658 RU/秒になります。
+
+ファイル (CSV や JSON ファイルなど) をローカル ノートブックのワークスペースに保存できます。 ノートブックにセルを追加してファイルを保存することをお勧めします。 これらのファイルは、ノートブック環境の統合ターミナルで表示できます。 "ls" コマンドを使用すると、保存したファイルを表示できます。 ただし、これらのファイルはワークスペースをリセットすると削除されます。 そのため、ローカル ワークスペースではなく、GitHub やストレージ アカウントなどの永続的なストレージを使用することをお勧めします。
 
 ## <a name="run-another-notebook-in-current-notebook"></a>現在のノートブックで別のノートブックを実行する 
 ``%%run`` マジック コマンドを使用すると、現在のノートブックから、ワークスペース内の別のノートブックを実行できます。 次の構文を使用します。

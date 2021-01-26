@@ -2,14 +2,14 @@
 title: Azure Service Bus を使用したパフォーマンス向上のためのベスト プラクティス
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655630"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539428"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -24,22 +24,27 @@ Service Bus を使用すると、クライアントは次の 3 つのプロト�
 2. Service Bus メッセージング プロトコル (SBMP)
 3. ハイパーテキスト転送プロトコル (HTTP)
 
-AMQP は、Service Bus への接続を維持するため、最も効率的です。 また、バッチとプリフェッチも実装されます。 明示的に示されていない限り、この記事のすべてのコンテンツで AMQP または SBMP を使用するものとします。
+AMQP は、Service Bus への接続を維持するため、最も効率的です。 [バッチ](#batching-store-access)と[プリフェッチ](#prefetching)も実装されています。 明示的に示されていない限り、この記事のすべてのコンテンツで AMQP または SBMP を使用するものとします。
 
 > [!IMPORTANT]
 > SBMP は、.NET Framework のみで使用できます。 AMQP は、.NET Standard の既定です。
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>適切な Service Bus .NET SDK の選択
-2つのサポート対象の Azure Service Bus .NET SDK があります。 これらの API はよく似ており、どちらを選択すればよいかはわかりにくいかもしれません。 判断に役立つ次の表を参照してください。 最新でパフォーマンスが高く、クロスプラットフォーム互換であるため、Microsoft.Azure.ServiceBus SDK を使用することをお勧めします。 また、Websocket 経由の AMQP がサポートされており、オープンソースプロジェクトの Azure .NET SDK コレクションに含まれています。
+サポート対象の Azure Service Bus .NET SDK は、3 種類あります。 これらの API はよく似ており、どちらを選択すればよいかはわかりにくいかもしれません。 判断に役立つ次の表を参照してください。 Azure.Messaging.ServiceBus SDK は最新のもので、その他の SDK よりもこれを使用することをお勧めします。 Azure.Messaging.ServiceBus SDK と Microsoft.Azure.ServiceBus SDK はどちらも最新でパフォーマンスが高く、クロスプラットフォーム互換です。 また、これらは WebSocket 経由の AMQP をサポートしており、オープンソース プロジェクトの Azure .NET SDK コレクションの一部となっています。
 
 | NuGet パッケージ | プライマリ名前空間 | 最小プラットフォーム | プロトコル |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
+| [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 .NET Standard プラットフォームの最小サポートの詳細については、「[.NET 実装サポート](/dotnet/standard/net-standard#net-implementation-support)」を参照してください。
 
 ## <a name="reusing-factories-and-clients"></a>ファクトリとクライアントの再利用
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+サービスと相互操作する Service Bus オブジェクト ([ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)、[ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)、[ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)、[ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) など) は、依存関係の挿入のため、シングルトンとして登録する必要があります (または、一度インスタンス化して共有します)。 ServiceBusClient は、依存関係の挿入のため、[ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs) に登録できます。 
+
+これらのオブジェクトは、各メッセージの送信または受信後に閉じたり破棄したりしないことをお勧めします。 エンティティ固有のオブジェクト (ServiceBusSender/Receiver/Processor) を閉じるたり破棄したりすると、Service Bus サービスへのリンクが解除されます。 ServiceBusClient を破棄すると、Service Bus サービスへの接続が切断されます。 接続の確立は高価な操作であり、同じ ServiceBusClient を再利用し、同じ ServiceBusClient インスタンスから必要なエンティティ固有のオブジェクトを作成すると、回避することができます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ AMQP は、Service Bus への接続を維持するため、最も効率的です
 送信、受信、削除などの操作には、時間がかかります。 この時間には、Service Bus サービスが操作を処理するための時間や、要求と応答の待機時間が含まれます。 時間あたりの操作数を増やすには、操作を同時に実行する必要があります。
 
 クライアントは **非同期** 操作を実行することによって、同時実行操作のスケジュールを設定します。 前の要求が完了する前に次の要求が開始されます。 次のコード スニペットは、非同期送信操作の例です。
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 次のコードは、非同期受信操作の例です。
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -168,6 +223,9 @@ Service Bus は "受信して削除" 操作のトランザクションをサポ�
 
 クライアント側のバッチ処理により、キューまたはトピックのクライアントはメッセージの送信を一定期間遅らせることができます。 クライアントがこの期間内に追加のメッセージを送信すると、1 つのバッチで複数のメッセージが送信されます。 また、クライアント側のバッチ処理では、キューまたはサブスクリプションのクライアントが、複数の **完了** 要求を 1 つの要求でバッチ処理します。 バッチ処理を使用できるのは、非同期の **送信** と **完了** 操作のみです。 同期操作はすぐに Service Bus サービスに送信されます。 バッチ処理はピークや受信の操作では行われません。また、クライアント間でも行われません。
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+.NET Standard SDK のバッチ機能では、操作するプロパティがまだ公開されていません。
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
 .NET Standard SDK のバッチ機能では、操作するプロパティがまだ公開されていません。
@@ -218,6 +276,19 @@ var factory = MessagingFactory.Create(namespaceUri, settings);
 
 新しいキュー、トピック、サブスクリプションを作成すると、バッチ処理ストア アクセスは既定で有効になります。
 
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+バッチ処理ストア アクセスを無効にするには、`ServiceBusAdministrationClient` のインスタンスが必要です。 キューの説明から、`EnableBatchedOperations` プロパティを `false` に設定する `CreateQueueOptions` を作成します。
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
 バッチ処理ストア アクセスを無効にするには、`ManagementClient` のインスタンスが必要です。 キューの説明から、`EnableBatchedOperations` プロパティを `false` に設定するキューを作成します。
@@ -231,8 +302,8 @@ var queue = await managementClient.CreateQueueAsync(queueDescription);
 ```
 
 詳細については、次の記事を参照してください。
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
@@ -248,8 +319,8 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 ```
 
 詳細については、次の記事を参照してください。
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ---
@@ -270,6 +341,12 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 プリフェッチは課金対象のメッセージ操作数に影響を与えません。また、Service Bus クライアント プロトコルでのみ利用できます。 HTTP プロトコルはプリフェッチをサポートしません。 プリフェッチは同期受信操作と非同期受信操作の両方で使用できます。
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+詳細については、次の `PrefetchCount` プロパティを参照してください。
+
+- [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
 詳細については、次の `PrefetchCount` プロパティを参照してください。
@@ -287,10 +364,6 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>プリフェッチと ReceiveBatch
-
-> [!NOTE]
-> Microsoft.Azure.ServiceBus SDK はバッチ関数を公開しないため、このセクションは、WindowsAzure.ServiceBus SDK にのみ適用されます。
-
 複数のメッセージをまとめてプリフェッチするという概念はメッセージのバッチ処理 (`ReceiveBatch`) と似ていますが、いくつかの小さな違いがあり、これらの方法を一緒に使用する場合には覚えておく必要があります。
 
 プリフェッチはクライアント (`QueueClient` および `SubscriptionClient`) 上での構成 (つまりモード) であり、`ReceiveBatch` は (要求 - 応答のセマンティクスが含まれる) 操作です。
@@ -309,7 +382,7 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 ## <a name="development-and-testing-features"></a>開発およびテストの機能
 
 > [!NOTE]
-> Microsoft.Azure.ServiceBus SDK ではこの関数が公開されないため、このセクションは、WindowsAzure.ServiceBus SDK にのみ適用されます。
+> Microsoft.Azure.ServiceBus と Azure.Messaging.ServiceBus ではこの機能が公開されていないため、このセクションは WindowsAzure.ServiceBus SDK にのみ適用されます。
 
 Service Bus には、開発専用に使用され、**運用環境の構成では絶対に使用しない** ようにする必要がある機能が 1 つあります。それは、[`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering]です。
 
@@ -372,9 +445,9 @@ Service Bus によって、エンティティに最大 1000 件コンカレン�
 * バッチ処理ストア アクセスを有効なままにします。 このアクセスによって、エンティティ全体の負荷が軽減されます。 これにより、メッセージをキューまたはトピックに書き込む全体的なレートも下がります。
 * プリフェッチ数を小さい値 (PrefetchCount = 10 など) に設定します。 この数の設定によって、他の受信側が大量のメッセージをキャッシュしている間に受信側がアイドル状態になることを防止できます。
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>サブスクリプションの数が少ないトピック
+### <a name="topic-with-a-few-subscriptions"></a>いくつかのサブスクリプションが含まれるトピック
 
-目標: サブスクリプションの数が少ないトピックのスループットを最大にします。 メッセージは多くのサブスクリプションで受信されます。これはすべてのサブスクリプションの受信レートを合わせると送信レートを超えることを意味します。 送信側の数は小です。 サブスクリプションあたりの受信側の数は小です。
+目標: いくつかのサブスクリプションが含まれるトピックのスループットを最大にします。 メッセージは多くのサブスクリプションで受信されます。これはすべてのサブスクリプションの受信レートを合わせると送信レートを超えることを意味します。 送信側の数は小です。 サブスクリプションあたりの受信側の数は小です。
 
 スループットを最大化するには、これらのガイドラインに従ってください。
 

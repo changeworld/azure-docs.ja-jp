@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: bd155ea3c98231cf20fa7c62325e3c2ecfb89920
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780605"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185922"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
 
@@ -31,7 +31,9 @@ ms.locfileid: "96780605"
 サブスクリプションを作成するには、登録アカウントの所有者ロールが必要です。 そのロールを取得する方法は 2 つあります。
 
 * 登録のエンタープライズ管理者は、ユーザーを[アカウント所有者に設定](https://ea.azure.com/helpdocs/addNewAccount)できます (サインインが必要)。これにより、ユーザーは登録アカウントの所有者になります。
-* 登録アカウントの既存の所有者が、[アクセス許可を付与](grant-access-to-create-subscription.md)できます。 同様に、サービス プリンシパルを使用して EA サブスクリプションを作成する場合は、[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](grant-access-to-create-subscription.md)必要があります。
+* 登録アカウントの既存の所有者が、[アクセス許可を付与](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)できます。 同様に、サービス プリンシパルを使用して EA サブスクリプションを作成する場合は、[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)必要があります。 
+  > [!NOTE]
+  > 登録アカウントに対する所有者アクセス許可の付与には、必ず正しい API バージョンを使用してください。 この記事およびその中で記載されている API では、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API を使用します。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 [2015-07-01 バージョン](grant-access-to-create-subscription.md)を使用して行った以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
 
 ## <a name="find-accounts-you-have-access-to"></a>アクセスできるアカウントを検索します。
 

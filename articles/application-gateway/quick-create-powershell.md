@@ -6,21 +6,21 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8073d1e18b08a6deb0175f8eaf18de382e93e299
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331099"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601854"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送
 
 このクイックスタートでは、Azure PowerShell を使用してアプリケーション ゲートウェイを作成します。 さらに、それをテストし、正しく動作することを確認します。 
 
-アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
+アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP アドレス、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
 
 また、[Azure CLI](quick-create-cli.md) または [Azure portal](quick-create-portal.md) を使用してこのクイックスタートを完了することもできます。
 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。  アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。  Application Gateway 用に新しいサブネットを作成するか、既存のサブネットを使用することができます。 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 ユース ケースに従って、Application Gateway のフロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
+お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。  アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。  Application Gateway 用に新しいサブネットを作成するか、既存のサブネットを使用することができます。 この例では 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 ユース ケースに従って、Application Gateway のフロントエンド IP アドレスを [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP アドレスを選択します。
 
 1. `New-AzVirtualNetworkSubnetConfig` を使用して、サブネット構成を作成します。
 2. `New-AzVirtualNetwork` を使用して、サブネット構成を使用して仮想ネットワークを作成します。 
@@ -81,7 +81,7 @@ New-AzPublicIpAddress `
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP 構成とフロントエンド ポートの作成
 
 1. `New-AzApplicationGatewayIPConfiguration` を使用して、お客様が作成したサブネットをアプリケーション ゲートウェイに関連付けるための構成を作成します。 
-2. `New-AzApplicationGatewayFrontendIPConfig` を使用して、お客様が先ほど作成したパブリック IP アドレスをアプリケーション ゲートウェイに割り当てるための構成を作成します。 
+2. `New-AzApplicationGatewayFrontendIPConfig` を使用して、先ほど作成したパブリック IP アドレスをアプリケーション ゲートウェイに割り当てるための構成を作成します。 
 3. `New-AzApplicationGatewayFrontendPort` を使用して、アプリケーション ゲートウェイにアクセスするためのポート 80 を割り当てます。
 
 ```azurepowershell-interactive
@@ -101,7 +101,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>バックエンド プールの作成
 
-1. `New-AzApplicationGatewayBackendAddressPool` を使用して、アプリケーション ゲートウェイのバックエンド プールを作成します。 現時点では、バックエンド プールは空になります。 次のセクションでバックエンド サーバーの NIC を作成するときに、それらをバックエンド プールに追加することになります。
+1. `New-AzApplicationGatewayBackendAddressPool` を使用して、アプリケーション ゲートウェイのバックエンド プールを作成します。 現時点では、バックエンド プールは空です。 次のセクションでバックエンド サーバーの NIC を作成するときに、それらをバックエンド プールに追加することになります。
 2. `New-AzApplicationGatewayBackendHttpSetting` を使用して、バックエンド プールの設定を構成します。
 
 ```azurepowershell-interactive
@@ -164,7 +164,9 @@ New-AzApplicationGateway `
 
 ### <a name="backend-servers"></a>バックエンド サーバー
 
-Application Gateway を作成したら、Web サイトのホストとなるバックエンド仮想マシンを作成します。 バックエンドは、NIC、Virtual Machine Scale Sets、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure App Service などのマルチテナント バックエンドで構成できます。 この例では、Azure によってアプリケーション ゲートウェイのバックエンド サーバーとして使用される 2 つの仮想マシンを作成します。 また、仮想マシンに IIS をインストールして、Azure によってアプリケーション ゲートウェイが正常に作成されたことを確認します。
+Application Gateway を作成したら、Web サイトのホストとなるバックエンド仮想マシンを作成します。 バックエンドは、NIC、仮想マシンスケールセット、パブリック IP アドレス、内部 IP アドレス、完全修飾ドメイン名 (FQDN)、および Azure App Service のようなマルチテナント バックエンドで構成できます。 
+
+この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、仮想マシンに IIS をインストールして、Azure によってアプリケーション ゲートウェイが正常に作成されたことを確認します。
 
 #### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
 
@@ -173,7 +175,7 @@ Application Gateway を作成したら、Web サイトのホストとなるバ�
 3. `New-AzVMConfig` を使用して、仮想マシンの構成を作成します。
 4. `New-AzVM` を使用して、仮想マシンを作成します。
 
-次のコード サンプルを実行して仮想マシンを作成するときに、Azure から資格情報の入力を求められます。 ユーザー名として「*azureuser*」を入力し、パスワードを入力します。
+次のコード サンプルを実行して仮想マシンを作成するときに、Azure から資格情報の入力を求められます。 ユーザー名とパスワードを入力します。
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -224,7 +226,9 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-IIS はアプリケーション ゲートウェイを作成するのに必要ではありませんが、このクイック スタートでは、Azure によってアプリケーション ゲートウェイが正常に作成されたかどうかを確認するためにインストールしました。 IIS を使用してアプリケーション ゲートウェイをテストします。
+IIS はアプリケーション ゲートウェイを作成するのに必要ではありませんが、このクイックスタートでは、Azure によってアプリケーション ゲートウェイが正常に作成されたかどうかを確認するためにインストールしました。
+
+IIS を使用してアプリケーション ゲートウェイをテストします。
 
 1. `Get-AzPublicIPAddress` を実行して、アプリケーション ゲートウェイのパブリック IP アドレスを取得します。 
 2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 ブラウザーを更新したら、仮想マシンの名前が表示されるはずです。 応答が有効であれば、アプリケーション ゲートウェイが正常に作成され、バックエンドと正常に接続できることが保証されます。

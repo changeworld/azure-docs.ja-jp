@@ -7,16 +7,16 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a763d8b65049cd9f301379c2c038a1d799114653
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836603"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562711"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Defender for IoT ポータルでセンサーをオンボードして管理する
 
-この記事では、Defender for IoT ポータルでセンサーのオンボード、表示、管理を行う方法について説明します。
+この記事では、[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)でセンサーのオンボード、表示、管理を行う方法について説明します。
 
 ## <a name="onboard-sensors"></a>センサーをオンボードする
 
@@ -26,9 +26,9 @@ ms.locfileid: "97836603"
 
 登録するには、次の手順を実行します。
 
-1. Defender for IoT portal の **[ようこそ]** ページに移動します。
+1. [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の **[ようこそ]** ページに移動します。
 1. **[センサーのオンボード]** を選択します。
-1. センサー名を作成します。 インストールしたセンサーの IP アドレスを名前の一部として含めるか、識別しやすい名前を使用することをお勧めします。 そうすることで追跡が容易になるほか、Azure Defender for IoT ポータルでの登録名と、センサー コンソールに表示されるデプロイ済みセンサーの IP との間で名前の一貫性が確保されます。
+1. センサー名を作成します。 インストールしたセンサーの IP アドレスを名前の一部として含めるか、識別しやすい名前を使用することをお勧めします。 そうすることで追跡が容易になるほか、Azure [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)での登録名と、センサー コンソールに表示されるデプロイ済みセンサーの IP との間で名前の一貫性が確保されます。
 1. センサーを Azure サブスクリプションと関連付けます。
 1. **[クラウド接続]** トグルを使用してセンサーの管理モードを選択します。 このトグルがオンの場合、センサーはクラウド接続になります。 このトグルがオフの場合、センサーはローカル管理になります。
 
@@ -52,7 +52,7 @@ ms.locfileid: "97836603"
 
 ## <a name="view-onboarded-sensors"></a>オンボードされたセンサーを表示する
 
-Defender for IoT portal ポータルでは、オンボード センサーに関する基本的な情報を表示できます。 
+[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)で、オンボード センサーに関する基本的な情報を表示できます。 
 
 1. **[サイトとセンサー]** を選択します。
 1. **[サイトとセンサー]** ページで、フィルターと検索ツールを使用して、必要なセンサーの情報を見つけます。
@@ -66,7 +66,7 @@ Defender for IoT portal ポータルでは、オンボード センサーに関�
 
 ## <a name="manage-onboarded-sensors"></a>オンボード センサーを管理する
 
-センサーに関連する管理タスクについては、Defender for IoT ポータルを使用します。
+センサーに関連する管理タスクでは、[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)を使用します。
 
 ### <a name="export"></a>エクスポート
 
@@ -89,7 +89,7 @@ Defender for IoT portal ポータルでは、オンボード センサーに関�
 
 センサーが管理されているモードを更新することをお勧めします。 例:
 
-- **ローカル管理モードではなく、クラウド接続モードで作業する**:これを行うには、クラウド接続センサーのアクティブ化ファイルを使用して、ローカル接続センサーのアクティブ化ファイルを更新します。 再アクティブ化後は、センサーと Defender for IoT ポータルの両方にセンサーの検出が表示されます。 再アクティブ化ファイルが正常にアップロードされると、新しく検出されたアラート情報が Azure に送信されます。
+- **ローカル管理モードではなく、クラウド接続モードで作業する**:これを行うには、クラウド接続センサーのアクティブ化ファイルを使用して、ローカル接続センサーのアクティブ化ファイルを更新します。 再アクティブ化後は、センサーと [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の両方にセンサー検出が表示されます。 再アクティブ化ファイルが正常にアップロードされると、新しく検出されたアラート情報が Azure に送信されます。
 
 - **クラウド接続モードではなく、ローカル接続モードで作業する**:これを行うには、ローカル管理センサーのアクティブ化ファイルを使用して、クラウド接続センサーのアクティブ化ファイルを更新します。 再アクティブ化後は、そのセンサーにのみセンサーの検出情報が表示されます。
 
@@ -97,7 +97,7 @@ Defender for IoT portal ポータルでは、オンボード センサーに関�
 
 センサーを再アクティブ化するには
 
-1. Defender for IoT ポータルの **[サイトとセンサー]** ページに移動します。
+1. [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の **[サイトとセンサー]** ページに移動します。
 
 2. 新しいアクティブ化ファイルをアップロードするセンサーを選択します。
 

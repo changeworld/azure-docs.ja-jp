@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616248"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185820"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -60,7 +60,7 @@ ms.locfileid: "94616248"
 
 この段階では、各エンティティ (ユーザー、投稿など) の内容の詳細については考えていません。 これらのエンティティをテーブル、列、外部キーなどの観点から変換する方法を把握する必要があるので、このステップは、通常、リレーショナル ストアについて設計するときに最初に取り組むことの 1 つです。書き込み時にスキーマが適用されないドキュメント データベースでは、これはそれほど重要なことではありません。
 
-最初からアクセス パターンを明らかにすることが重要である主な理由は、この要求の一覧がテスト スイートになるためです。 データ モデルの作業を繰り返すたびに、各要求を検討してパフォーマンスとスケーラビリティを確認します。
+最初からアクセス パターンを明らかにすることが重要である主な理由は、この要求の一覧がテスト スイートになるためです。 データ モデルの作業を繰り返すたびに、各要求を検討してパフォーマンスとスケーラビリティを確認します。 各モデルで使用される要求ユニットを計算して最適化します。 これらのすべてのモデルでは、既定のインデックス作成ポリシーが使用されますが、これは特定のプロパティのインデックスを作成することでオーバーライドすることができ、それによって RU の使用量と待機時間をさらに向上させることができます。
 
 ## <a name="v1-a-first-version"></a>V1: 最初のバージョン
 

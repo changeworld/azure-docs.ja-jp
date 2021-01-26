@@ -3,12 +3,12 @@ title: Batch プールの構成を Cloud Services から Virtual Machines に移
 description: プールの構成を最新の推奨構成に更新する方法について説明します
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969029"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234309"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch プールの構成を Cloud Services から Virtual Machines に移行する
 
@@ -22,7 +22,7 @@ Batch プールは、[cloudServiceConfiguration](https://docs.microsoft.com/rest
 
 既存のアクティブなプールを "cloudServiceConfiguration" から "virtualMachineConfiguration" に更新することはできません。新しいプールを作成する必要があります。 "virtualMachineConfiguration" を使用したプールの作成は、すべての Batch API、コマンドライン ツール、Azure portal、および Batch Explorer UI でサポートされています。
 
-[.NET](tutorial-parallel-dotnet.md) と [Python](tutorial-parallel-python.md) のチュートリアルでは、"virtualMachineConfiguration" を使用してプールを作成する例を紹介しています。
+**[.NET](tutorial-parallel-dotnet.md) と [Python](tutorial-parallel-python.md) のチュートリアルでは、"virtualMachineConfiguration" を使用してプールを作成する例を紹介しています。**
 
 ## <a name="pool-configuration-differences"></a>プールの構成の違い
 

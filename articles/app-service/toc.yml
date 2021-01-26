@@ -108,7 +108,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 推奨事項
           href: security-recommendations.md
@@ -259,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: リソース イベントの取得
           href: get-resource-events.md
+        - name: 正常性チェック
+          href: monitor-instances-health-check.md
         - name: Linux コンテナーへの SSH セッションを開く
           href: configure-linux-open-ssh-session.md
     - name: アプリの管理

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96839707"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223365"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 
@@ -316,6 +316,11 @@ CLI で共通レプリカ数を指定するには、`az sig image-version create
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>マネージド イメージを使用して作成された仮想マシン スケール セットを、共有イメージ ギャラリーのイメージを使用するように更新できますか?
 
 はい。OS の種類、Hyper-V の世代、およびデータ ディスク レイアウトがイメージ間で一致している限り、マネージド イメージから共有イメージ ギャラリーのイメージにスケール セット イメージ参照を更新できます。
+
+## <a name="troubleshoot-shared-image-gallery-issues"></a>共有イメージ ギャラリーの問題のトラブルシューティングを行う
+共有イメージ ギャラリーのリソースに対して何らかの操作を実行する際に問題が発生した場合は、[トラブルシューティング ガイド](troubleshooting-shared-images.md)の一般的なエラーの一覧を参照してください。
+
+さらに、[Q&A](/answers/topics/azure-virtual-machines-images.html) で質問を投稿し、`azure-virtual-machines-images` のタグを付けることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

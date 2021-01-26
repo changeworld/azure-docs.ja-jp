@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2cf28565818f6de4d52b57040a80c21d0e03a76c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938802"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218521"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -36,7 +36,7 @@ VNet を使用して次のことが行えます。
 * ハイブリッド クラウドのシナリオを有効にします。 VNet は、さまざまなハイブリッド クラウド シナリオをサポートする柔軟性を提供します。 メインフレームなどのオンプレミス システムと Unix システムの任意の型へのクラウド ベースのアプリケーションを安全に接続することができます。
 
 ### <a name="how-do-i-get-started"></a>開始するには?
-「[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)」にアクセスし、開始します。 このコンテンツには、すべての VNet 機能の概要とデプロイに関する情報が示されています。
+「[Virtual Network のドキュメント](./index.yml)」にアクセスし、開始します。 このコンテンツには、すべての VNet 機能の概要とデプロイに関する情報が示されています。
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>クロスプレミス接続を使用しないで VNet を使用できますか。
 はい。 プレミスに接続せずに VNet を使用することができます。 たとえば、Microsoft Windows Server Active Directory ドメイン コントローラーと SharePoint ファームを Azure VNet 内のみで実行できます。
@@ -52,7 +52,7 @@ VNet を使用して次のことが行えます。
 * Azure portal
 * PowerShell
 * Azure CLI
-* ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。 「[Configure a VNet using a network configuration file (ネットワーク構成ファイルを使用した VNet の構成)](virtual-networks-using-network-configuration-file.md)」を参照してください。
+* ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。 「[Configure a VNet using a network configuration file (ネットワーク構成ファイルを使用した VNet の構成)](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)」を参照してください。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNet でどのアドレス範囲が使用できるでしょうか。
 [RFC 1918](https://tools.ietf.org/html/rfc1918) で列挙されているアドレス範囲を使用することをお勧めします。これらの範囲は、プライベートのルーティング不能なアドレス空間用に、IETF によって留保されています。
@@ -162,7 +162,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
   - **Resource Manager**:動的または静的な方法を使用して割り当てられたプライベート IP アドレスは、リソースが削除されるまで、仮想マシン (Resource Manager) に割り当てられたままになります。 異なるのは、静的な方法の場合はユーザーが割り当てるアドレスを選択し、動的な方法の場合は Azure が選択するという点です。 
   - **クラシック**:動的な方法を使用して割り当てられたプライベート IP アドレスは、仮想マシン (クラシック) VM が停止 (割り当て解除) 状態になった後で再起動されたときに変更される可能性があります。 クラシック デプロイ モデルを使用してデプロイされるリソースのプライベート IP アドレスを固定する必要がある場合は、静的な方法を使用してプライベート IP アドレスを割り当ててください。
 
-* **パブリック:** 必要に応じて、Azure Resource Manager デプロイ モデルを使用してデプロイされた VM に接続されている NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てることができます。 クラシック デプロイ モデルを使用してデプロイされたすべての VM および Cloud Services ロール インスタンスは、"*動的な*" パブリック仮想 IP (VIP) アドレスが割り当てられたクラウド サービス内に存在します。 パブリックな "*静的*" IP アドレスは、[予約済み IP アドレス](virtual-networks-reserved-public-ip.md)と呼ばれ、必要に応じて VIP として割り当てることができます。 パブリック IP アドレスは、クラシック デプロイ モデルを使用してデプロイされた個々の VM または Cloud Services ロール インスタンスに割り当てることができます。 これらのアドレスは、[インスタンス レベルのパブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスと呼ばれ、動的に割り当てることができます。
+* **パブリック:** 必要に応じて、Azure Resource Manager デプロイ モデルを使用してデプロイされた VM に接続されている NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てることができます。 クラシック デプロイ モデルを使用してデプロイされたすべての VM および Cloud Services ロール インスタンスは、"*動的な*" パブリック仮想 IP (VIP) アドレスが割り当てられたクラウド サービス内に存在します。 パブリックな "*静的*" IP アドレスは、[予約済み IP アドレス](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)と呼ばれ、必要に応じて VIP として割り当てることができます。 パブリック IP アドレスは、クラシック デプロイ モデルを使用してデプロイされた個々の VM または Cloud Services ロール インスタンスに割り当てることができます。 これらのアドレスは、[インスタンス レベルのパブリック IP (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) アドレスと呼ばれ、動的に割り当てることができます。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>後で作成する VM 用にプライベート IP アドレスを予約することはできますか。
 いいえ。 プライベート IP アドレスを予約することはできません。 プライベート IP アドレスが使用可能な場合は、DHCP サーバーによって VM またはロール インスタンスに割り当てられます。 その VM は、プライベート IP アドレスを割り当てたい VM である場合も、そうでない場合もあります。 ただし、既に作成した VM のプライベート IP アドレスを、使用可能なプライベート IP アドレスに変更することができます。
@@ -177,7 +177,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 Nothing。 IP アドレス (パブリック VIP、パブリック、プライベート) は、クラウド サービス デプロイ スロットまたは VM に割り当てられたままとなります。
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>VNet 内の別のサブネットへ、再デプロイせずに移動できますか。
-はい。 詳細については、「[VM またはロール インスタンスを別のサブネットに移動する方法](virtual-networks-move-vm-role-to-subnet.md)」を参照してください。
+はい。 詳細については、「[VM またはロール インスタンスを別のサブネットに移動する方法](/previous-versions/azure/virtual-network/virtual-networks-move-vm-role-to-subnet)」を参照してください。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>VM に静的な MAC アドレスを構成できますか。
 いいえ。 MAC アドレスを静的に構成することはできません。
@@ -220,7 +220,7 @@ Azure Storage、Azure SQL Database などの一部の Azure PaaS サービスを
 Vnet は、他の VNet から、および Azure インフラストラクチャでホストされている他のサービスから、完全に分離されています。 VNet は、トラスト バウンダリです。
 
 ### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>受信または送信トラフィック フローを VNet に接続されたリソースに制限することはできますか。
-はい。 VNet 内の個々のサブネット、VNet に接続された NIC、またはその両方に[ネットワーク セキュリティ グループ](security-overview.md)を適用できます。
+はい。 VNet 内の個々のサブネット、VNet に接続された NIC、またはその両方に[ネットワーク セキュリティ グループ](./network-security-groups-overview.md)を適用できます。
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>VNet に接続されたリソースの間にファイアウォールを実装することはできますか。
 はい。 Azure Marketplace を通じて複数のベンダーから提供されている[ファイアウォール ネットワーク仮想アプライアンス](https://azure.microsoft.com/marketplace/?term=firewall)をデプロイできます。
@@ -234,13 +234,13 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 
 ### <a name="can-i-manage-vnets-from-code"></a>VNet をコードから管理できますか。
-はい。 [Azure Resource Manager](/rest/api/virtual-network) デプロイ モデルと[クラシック](https://go.microsoft.com/fwlink/?LinkId=296833) デプロイ モデルで、VNet 用の REST API を使用できます。
+はい。 [Azure Resource Manager](/rest/api/virtual-network) デプロイ モデルと[クラシック](/previous-versions/azure/ee460799(v=azure.100)) デプロイ モデルで、VNet 用の REST API を使用できます。
 
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 次のツールを使用できます。
-- Azure Portal。[Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
+- Azure Portal。[Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) および[クラシック](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) デプロイメント モデルを使用して VNet をデプロイするために使用します。
 - PowerShell。[Resource Manager](/powershell/module/az.network) および[クラシック](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
-- Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
+- Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
 
 ## <a name="vnet-peering"></a>VNET ピアリング
 
@@ -289,7 +289,7 @@ VNet ピアリング接続が "*切断*" 状態にある場合、それは作成
 VNet ピアリング接続を作成するのに料金はかかりません。 ピアリング接続経由でのデータ転送には料金が発生します。 [こちらを参照](https://azure.microsoft.com/pricing/details/virtual-network/)してください。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet ピアリングのトラフィックは暗号化されますか。
-Azure のトラフィックが (Microsoft または Microsoft の代理によって制御されていない、物理的な境界の外部で) データセンター間を移動する場合、基盤となるネットワーク ハードウェア上では [MACsec データリンク層の暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)が使用されます。  これは、VNet ピアリング トラフィックに適用されます。
+Azure のトラフィックが (Microsoft または Microsoft の代理によって制御されていない、物理的な境界の外部で) データセンター間を移動する場合、基盤となるネットワーク ハードウェア上では [MACsec データリンク層の暗号化](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)が使用されます。  これは、VNet ピアリング トラフィックに適用されます。
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>ピアリング接続が "*切断*" 状態にあるのはなぜですか。
 1 つの VNet ピアリング リンクが削除されると、VNet ピアリングは *切断* 状態になります。 ピアリング接続を再度確立するには、両方のリンクを削除する必要があります。
@@ -319,7 +319,7 @@ Azure のトラフィックが (Microsoft または Microsoft の代理によっ
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>ネットワーク インターフェイスで仮想ネットワーク TAP 構成を有効にする場合、運用環境のトラフィックのパフォーマンスについて考慮することがありますか。
 
-仮想ネットワーク TAP はプレビュー段階です。 プレビュー期間中は、サービス レベル アグリーメントはありません。 運用環境のワークロードでは機能を使用しないでください。 TAP 構成で仮想マシンのネットワーク インターフェイスを有効にすると、運用トラフィックを送信するために仮想マシンに割り当てられている Azure ホスト上の同じリソースを使用して、ミラーリング機能が実行され、ミラー化されたパケットが送信されます。 運用トラフィックとミラー化されたトラフィックを送信するのに十分なリソースを仮想マシンが利用できるように、[Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切な仮想マシン サイズを選択してください。
+仮想ネットワーク TAP はプレビュー段階です。 プレビュー期間中は、サービス レベル アグリーメントはありません。 運用環境のワークロードでは機能を使用しないでください。 TAP 構成で仮想マシンのネットワーク インターフェイスを有効にすると、運用トラフィックを送信するために仮想マシンに割り当てられている Azure ホスト上の同じリソースを使用して、ミラーリング機能が実行され、ミラー化されたパケットが送信されます。 運用トラフィックとミラー化されたトラフィックを送信するのに十分なリソースを仮想マシンが利用できるように、[Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切な仮想マシン サイズを選択してください。
 
 ### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>仮想ネットワーク TAP では、[Linux](create-vm-accelerated-networking-cli.md) または [Windows](create-vm-accelerated-networking-powershell.md) に対する高速ネットワークはサポートされていますか。
 
@@ -370,7 +370,7 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 Azure サービスへのアクセスを 1 つの仮想ネットワーク内または複数の仮想ネットワークにまたがる複数のサブネットに限定するには、サブネットごとに個別にネットワーク側でサービス エンドポイントを有効にしてから、Azure サービス側で適切な VNet ACL を設定することによって、Azure サービス リソースへのアクセスをすべてのサブネットに限定します。
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>仮想ネットワークから Azure サービスへの送信トラフィックをフィルター処理しながら、サービス エンドポイントを使用するには、どうすればよいですか。
-仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)に関するページを参照してください。
+仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](/azure/architecture/reference-architectures/dmz/nva-ha)に関するページを参照してください。
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>仮想ネットワーク アクセス制御リスト (ACL) が有効になっている Azure サービス アカウントに、VNet の外部からアクセスするとどうなりますか。
 HTTP 403 または HTTP 404 エラーが返されます。
@@ -392,12 +392,15 @@ Azure サービス アカウントの削除は独立した操作であり、ネ�
 
 ### <a name="does-the-service-endpoint-route-always-take-precedence"></a>サービス エンドポイントのルートは常に優先されますか。
 サービス エンドポイントでは、BGP ルートより優先されるシステム ルートが追加され、サービス エンドポイントのトラフィックに対して最適なルーティングが提供されます。 サービス エンドポイントでは常に、ユーザーの仮想ネットワークから Microsoft Azure のバックボーン ネットワーク上のサービスへのサービス トラフィックが、直接受け取られます。 Azure でのルートの選択方法の詳細については、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」を参照してください。
+
+### <a name="do-service-endpoints-work-with-icmp"></a>サービス エンドポイントは ICMP で機能しますか。
+いいえ。サービス エンドポイントが有効になっているサブネットから送信される ICMP トラフィックは、目的のエンドポイントへのサービス トンネル パスを使用しません。 サービス エンドポイントでは TCP トラフィックのみが処理されます。 つまり、サービス エンドポイントを使用してエンドポイントへの待機時間または接続をテストする場合、ping や tracert などのツールでは、サブネット内のリソースが使用する実際のパスは表示されません。
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>サービス エンドポイントではサブネット上の NSG はどのように動作しますか。
 Azure サービスに到達するには、NSG で送信接続を許可する必要があります。 NSG がすべてのインターネット送信トラフィックに対して開かれている場合、サービス エンドポイントのトラフィックは動作するはずです。 サービス タグを使用して、サービス IP にみに送信トラフィックを制限することもできます。  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>サービス エンドポイントを設定するにはどのようなアクセス許可が必要ですか。
-サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットのアクセス許可 "**Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action**" を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。 組み込みロールと、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
+サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットのアクセス許可 "**Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action**" を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。 組み込みロールと、特定のアクセス許可を[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>VNet サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することはできますか。 
@@ -406,7 +409,7 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) は VNet サービス エンドポイントをサポートしますか。
 
-サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 VNet サービス エンドポイントをサポートする Azure サービスの完全な一覧は[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)で確認できます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするために使用されます。 ADLS Gen 1 の場合、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 [Azure Data Lake Store Gen 1 の VNet 統合](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細をご覧ください
+サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 VNet サービス エンドポイントをサポートする Azure サービスの完全な一覧は[こちら](./virtual-network-service-endpoints-overview.md)で確認できます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするために使用されます。 ADLS Gen 1 の場合、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 [Azure Data Lake Store Gen 1 の VNet 統合](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細をご覧ください
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>VNet から設定できる VNet サービス エンドポイントの数に制限はありますか。
 仮想ネットワーク内の VNet サービス エンドポイントの合計数に制限はありません。 Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 制限の例を次の表に示します。 
@@ -425,10 +428,6 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 >[!NOTE]
 > 制限は、Azure サービスの判断で変更される可能性があります。 サービスについて詳しくは、それぞれのサービス ドキュメントをご覧ください。 
 
-
-
-
-  
 
 
 

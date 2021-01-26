@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063146"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208541"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -57,8 +57,7 @@ ms.locfileid: "98063146"
 
 MSAL により、トークンが自動的に更新され、デバイス上の他のアプリとの間のシングル サインオン (SSO) が提供されて、アカウントが管理されます。
 
-> [!NOTE]
-> このチュートリアルでは、Android 用の MSAL を使用する簡単な例を紹介します。 わかりやすくするため、単一アカウント モードのみを使用します。 さらに複雑なシナリオを試したい方は、GitHub で完成版の[コード サンプル](https://github.com/Azure-Samples/ms-identity-android-java/)を参照してください。
+このチュートリアルでは、Android 用の MSAL を使用する簡単な例を紹介します。 わかりやすくするため、単一アカウント モードのみを使用します。 さらに複雑なシナリオを試したい方は、GitHub で完成版の[コード サンプル](https://github.com/Azure-Samples/ms-identity-android-java/)を参照してください。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 Android アプリケーションがまだない場合は、次の手順に従って新しいプロジェクトを設定します。
@@ -85,8 +84,8 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 1. プロジェクトのパッケージ名を入力します。 コードをダウンロードした場合、この値は `com.azuresamples.msalandroidapp` です。
 1. **[Android アプリの構成]** ページの **[署名ハッシュ]** セクションで、 **[Generating a development Signature Hash]\(開発用署名ハッシュの生成\)** を選択します。 そして、お使いのプラットフォームに使用する KeyTool コマンドをコピーします。
 
-   > [!Note]
-   > KeyTool.exe は、Java Development Kit (JDK) の一部としてインストールされます。 KeyTool コマンドを実行するには、OpenSSL ツールもインストールする必要があります。 詳細については、[キーの生成に関する Android のドキュメント](https://developer.android.com/studio/publish/app-signing#generate-key)を参照してください。
+
+     KeyTool.exe は、Java Development Kit (JDK) の一部としてインストールされます。 KeyTool コマンドを実行するには、OpenSSL ツールもインストールする必要があります。 詳細については、[キーの生成に関する Android のドキュメント](https://developer.android.com/studio/publish/app-signing#generate-key)を参照してください。
 
 1. KeyTool によって生成された **署名ハッシュ** を入力します。
 1. **[構成]** をクリックし、後でアプリを構成するときに入力できるように、 **[Android の構成]** ページに表示される **[MSAL 構成]** を保存しておきます。  
@@ -122,8 +121,7 @@ Android アプリケーションがまだない場合は、次の手順に従っ
     }
    ```
 
-   >[!NOTE]
-   >このチュートリアルでは、単一アカウント モードでアプリを構成する方法についてのみ説明します。 [単一アカウント モードと複数アカウント モードの比較](./single-multi-account.md)および[アプリの構成](./msal-configuration.md)の詳細については、ドキュメントを参照してください
+     このチュートリアルでは、単一アカウント モードでアプリを構成する方法についてのみ説明します。 [単一アカウント モードと複数アカウント モードの比較](./single-multi-account.md)および[アプリの構成](./msal-configuration.md)の詳細については、ドキュメントを参照してください
 
 4. **app** > **src** > **main** > **AndroidManifest.xml** で、以下の `BrowserTabActivity` アクティビティをアプリケーション本文に追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
 
@@ -144,8 +142,11 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 
     `android:host=` は、Azure portal で登録したパッケージ名に置き換えます。
     `android:path=` は、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL で **エンコードしない** でください。 署名ハッシュの先頭に `/` があることを確認します。
-    >[!NOTE]
-    >`android:host` の値を置き換える "パッケージ名" は次のようになります: "com.azuresamples.msalandroidapp"。`android:path` の値を置き換える "署名ハッシュ" は、次のようになります: "/1wIqXSqBj7w+h11ZifsnqwgyKrY="。これらの値は、アプリの登録の [認証] ブレードでも検索できます。 リダイレクト URI は次のようになります: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D"。 この値の最後にある署名ハッシュは URL でエンコードされていますが、`android:path` の値では署名ハッシュは URL でエンコードされていては **なりません**。
+    
+    `android:host` 値を置き換える "パッケージ名" は、"com.azuresamples.msalandroidapp" のようになります。
+    `android:path` 値を置き換える "署名ハッシュ" は、"/1wIqXSqBj7w+h11ZifsnqwgyKrY=" のようになります。
+    
+    これらの値は、アプリの登録の [認証] ブレードでも確認できます。 リダイレクト URI は次のようになります: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D"。 この値の最後にある署名ハッシュは URL でエンコードされていますが、`android:path` の値では署名ハッシュは URL でエンコードされていては **なりません**。
 
 ## <a name="use-msal"></a>MSAL の使用
 

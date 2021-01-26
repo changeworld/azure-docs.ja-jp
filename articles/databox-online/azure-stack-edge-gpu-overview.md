@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937068"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570101"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro とは
 
@@ -71,7 +71,7 @@ Azure Stack Edge Pro ソリューションは、Azure Stack Edge リソース、
 
 Azure Stack Edge Pro 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じリージョンにある必要はありません。
 
-- **リソースの提供** - このプレビュー リリースでは、米国東部、西ヨーロッパ、東南アジアの各リージョンでリソースが提供されます。
+- **リソースの提供** - このリリースでは、米国東部、西ヨーロッパ、東南アジアの各リージョンでリソースが提供されます。
 
 - **デバイスの可用性** - Azure Stack Edge Pro デバイスが使用可能なすべての国またはリージョンの一覧については、[Azure Stack Edge Pro の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)に関するページの **[Azure Stack Edge Pro]** タブにある **[可用性]** セクションにアクセスしてください。
     

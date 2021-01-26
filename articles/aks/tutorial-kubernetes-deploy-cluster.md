@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - クラスターのデプ�
 description: この Azure Kubernetes Service (AKS) のチュートリアルでは、AKS クラスターを作成し、kubectl を使用して Kubernetes マスター ノードに接続します。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684072"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250640"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル:Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -21,7 +21,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 > * Kubernetes CLI (kubectl) をインストールする
 > * kubectl を構成して AKS クラスターに接続する
 
-追加のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイし、スケーリングおよび更新します。
+後続のチュートリアルでは、Azure 投票アプリケーションをクラスターにデプロイし、スケーリングして更新します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -33,9 +33,9 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 AKS クラスターでは、Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用できます。 これらのコントロールを使用すると、ユーザーに割り当てられているロールに基づいてリソースへのアクセスを定義できます。 ユーザーに複数のロールが割り当てられている場合は、アクセス許可が組み合わされます。また、アクセス許可のスコープを 1 つの名前空間またはクラスター全体に設定できます。 Azure CLI の既定では、AKS クラスターを作成するときに Kubernetes RBAC が自動的に有効になります。
 
-[az aks create][] を使用して AKS クラスターを作成します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました ("*米国東部*" リージョン)。 次の例ではリージョンが指定されず、AKS クラスターも "*米国東部*" リージョンで作成されます。 AKS のリソース制限とリージョン可用性に関する詳細については、「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、利用可能なリージョン][quotas-skus-regions]」を参照してください。
+[az aks create][] を使用して AKS クラスターを作成します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました ("*米国東部*" リージョン)。 次の例ではリージョンが指定されず、AKS クラスターも "*米国東部*" リージョンで作成されます。 AKS のリソース制限と利用可能なリージョンの詳細については、「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、利用可能なリージョン][quotas-skus-regions]」をご覧ください。
 
-AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルが自動的に作成されます (指定しなかったため)。 この場合、このサービス プリンシパルは、前のチュートリアルで作成した Azure Container Registry (ACR) インスタンスから[イメージをプルする権利を付与][container-registry-integration]されます。 管理しやすくするために、サービス プリンシパルの代わりに[マネージド ID](use-managed-identity.md) を使用することもできることに注意してください。
+AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルが自動的に作成されます (指定しなかったため)。 この場合、このサービス プリンシパルは、前のチュートリアルで作成した Azure Container Registry (ACR) インスタンスから[イメージをプルする権利を付与][container-registry-integration]されます。 コマンドを正常に実行するには、Azure サブスクリプションに **所有者** または **Azure アカウント管理者** ロールが必要です。
 
 ```azurecli
 az aks create \
@@ -46,7 +46,7 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-ACR からイメージをプルするようにサービス プリンシパルを手動で構成することもできます。 詳細については、[サービス プリンシパルによる ACR 認証](../container-registry/container-registry-auth-service-principal.md)または[プル シークレットを使用した Kubernetes からの認証](../container-registry/container-registry-auth-kubernetes.md)に関するページを参照してください。
+**所有者** または **Azure アカウント管理者** ロールを不要にするために、ACR からイメージをプルするようにサービス プリンシパルを手動で構成することもできます。 詳細については、[サービス プリンシパルによる ACR 認証](../container-registry/container-registry-auth-service-principal.md)または[プル シークレットを使用した Kubernetes からの認証](../container-registry/container-registry-auth-kubernetes.md)に関するページを参照してください。 管理しやすくするために、サービス プリンシパルの代わりに[マネージド ID](use-managed-identity.md) を使用することもできます。
 
 数分してデプロイが完了すると、この AKS デプロイに関する情報が JSON 形式で表示されます。
 
@@ -76,8 +76,9 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 ```
 
 ## <a name="next-steps"></a>次のステップ

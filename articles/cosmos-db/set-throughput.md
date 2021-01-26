@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/19/2021
+ms.openlocfilehash: a03ad1eb893c97671d7ab60cc38708115a73d260
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170827"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602394"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -109,7 +109,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 実際の最小 RU/秒は、アカウントの構成によって異なる場合があります。 ただし、通常、最大値は次のようになります。
 
 * 400 RU/秒 
-* 現在のストレージ (GB 単位) × 10 RU/秒 (コンテナーまたはデータベースに 1 TB 以上のデータが含まれていない限り。Microsoft の[高ストレージと低スループット プログラム](#high-storage-low-throughput-program)をご覧ください)
+* 現在のストレージ (GB * 10 RU/秒) (この制約は、場合によっては緩和できます。「[高ストレージ/低スループット プログラム](#high-storage-low-throughput-program)」を参照してください)
 * データベースまたはコンテナーでプロビジョニングされた最高 RU ÷ 100
 
 ### <a name="changing-the-provisioned-throughput"></a>プロビジョニング済みのスループットの変更
@@ -139,7 +139,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 これは、大量のデータを格納する必要があるが、それに比べてスループット要件が低いという状況では問題になる可能性があります。 これらのシナリオにより適切に対応するために、Azure Cosmos DB には、資格のあるアカウントに対して 1 GB あたりの RU/秒の制約を減らす **"高ストレージ/低スループット" プログラム** が導入されました。
 
-現在、対象となるアカウントでは 1 TB を超えるデータを含む、コンテナーまたは共有スループット データベースを少なくとも 1 つ備える必要があります。 このプログラムに参加してご自分の完全な適格性を評価するには、[このアンケート](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)に記入するだけで済みます。 その後、Azure Cosmos DB チームがフォローアップし、お客様のオンボードを進めます。
+このプログラムに参加してご自分の完全な適格性を評価するには、[このアンケート](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)に記入するだけで済みます。 その後、Azure Cosmos DB チームがフォローアップし、お客様のオンボードを進めます。
 
 ## <a name="comparison-of-models"></a>モデルの比較
 次の表は、標準 (手動) のスループットをデータベースでプロビジョニングする場合と、コンテナーでプロビジョニングする場合とでの比較を示したものです。 

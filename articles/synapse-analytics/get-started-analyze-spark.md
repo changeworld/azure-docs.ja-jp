@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 3b5f5d64498922e9fc35942ff4570d801aa6c516
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 12/31/2020
+ms.openlocfilehash: 2feabda5ea3f0c0748b92de9fcb7ef05abbdcf4c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118882"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209442"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 
@@ -23,25 +23,25 @@ ms.locfileid: "98118882"
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark を使用して Blob Storage の NYC タクシー データを分析する
 
-1. **[データ]** ハブで、 **[新しいリソースの追加]** ( **[リンク済み]** の上にある [+] ボタン)、 **[ギャラリーの参照]** の順に選択します。
-1. **[NYC Taxi & Limousine Commission - yellow taxi trip records]\(NYC タクシー & リムジン協会 - イエロー タクシー運行記録\)** を選択します。
-1. ページの下部で、 **[続行]**  >  **[データセットの追加]** を選択します。
-1. **[Linked]\(リンク済み\)** の **[データ]** ハブで **[Azure Blob Storage]** を右クリックし、 **[Sample Datasets]\(サンプル データセット\)**  >  **[nyc_tlc_yellow]** を選択します。
-1. **[New notebook]\(新しいノートブック\)** を選択し、次のコードを使用して新しいノートブックを作成します。
+1. **[データ]** ハブで、 **+** ボタン ( **[新しいリソースの追加]** ) をクリックし、 **[ギャラリーの参照]** をクリックします。 
+1. **NYC Taxi & Limousine Commission - yellow taxi trip records (NYC タクシー & リムジン協会 - イエロー タクシー運行記録)** を見つけてクリックします。 
+1. ページの下部にある **[続行]** をクリックし、 **[データセットの追加]** をクリックします。 
+1. しばらくしたら、 **[リンク済み]** の下の **[データ]** ハブで、 **[Azure Blob Storage]** を右クリックし、 **[Sample Datasets]\(サンプル データセット\) >> [nyc_tlc_yellow] >> [新しいノートブック]** の順に選択して、 **[Load to Data Frame]\(データ フレームに読み込む\)** を選択します。
+1. これにより、次のコードを含む新しいノートブックが作成されます。
+    ```
 
-    ```py
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
     data_df = data.to_spark_dataframe()
+    # Display 10 rows
     display(data_df.limit(10))
     ```
-
-1. ノートブックの **[Attach to]\(接続先\)** メニューで、サーバーレス Spark プールを選択します。
+1. ノートブックの **[アタッチ先]** メニューで、前に作成した **Spark1** サーバーレス Spark プールを選択します。
 1. セルで **[実行]** を選択します。
 1. データフレームのスキーマを表示するだけの場合は、次のコードを使用してセルを実行します。
+    ```
 
-    ```py
     data_df.printSchema()
     ```
 
@@ -52,7 +52,8 @@ ms.locfileid: "98118882"
 1. Synapse Studio で、 **[開発]** ハブに移動します。
 1. **[+]**  >  **[ノートブック]** を選択します。
 1. ノートブックの上部にある **[アタッチ先]** の値を **[Spark1]** に設定します。
-1. **[コードの追加]** を選択してノートブックのコード セルを追加し、次のテキストを入力します。
+1. 新しいノートブックの最初のコード セルに、次のコードを入力します。
+
 
     ```scala
     %%spark
@@ -61,16 +62,16 @@ ms.locfileid: "98118882"
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. セルで **[実行]** を選択します。
-1. **[データ]** ハブで **[データベース]** を右クリックして、 **[更新]** を選択します。 次のデータベースが表示されます。
 
-    - **SQLPOOL1 (SQL)**
-    - **nyctaxi (Spark)**
+1. スクリプトを実行します。 これには 2 から 3 分かかることがあります。
+1. **[データ]** ハブの **[ワークスペース]** タブで、 **[データベース]** を右クリックし、 **[最新の情報に更新]** を選択します。 これで、一覧に **nyctaxi (Spark)** データベースが表示されます。
+
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark とノートブックを使用して NYC タクシーのデータを分析する
 
 1. ノートブックに戻ります。
-1. 新しいコード セルを作成し、次のテキストを入力します。
+1. 新しいコード セルを作成し、次のコードを入力します。 
+
 
    ```py
    %%pyspark
@@ -79,7 +80,8 @@ ms.locfileid: "98118882"
    ```
 
 1. このセルを実行して、**nyctaxi** Spark データベースに読み込んだ NYC Taxi データを表示します。
-1. 次のコードを実行して、先ほど専用 SQL プール **SQLPOOL1** で行ったのと同じ分析を実行します。 このコードにより、**nyctaxi.passengercountstats** という名前のテーブルに分析の結果が保存されて表示されます。
+1. 新しいコード セルを作成し、次のコードを入力します。 このセルを実行して、先ほど専用 SQL プール **SQLPOOL1** で行ったのと同じ分析を実行します。 このコードにより、**nyctaxi.passengercountstats** というテーブルに分析の結果が保存されて表示されます。
+
 
    ```py
    %%pyspark
@@ -102,7 +104,7 @@ ms.locfileid: "98118882"
 
 先ほど、専用 SQL プール テーブル **SQLPOOL1.dbo.Trip** のデータを Spark テーブル **nyctaxi.trip** にコピーしました。 次に、データを Spark テーブル **nyctaxi.passengercountstats** に集約しました。 今度は、**nyctaxi.passengercountstats** のデータを **SQLPOOL1.dbo.PassengerCountStats** という専用 SQL プール テーブルにコピーします。
 
-ノートブックで次のセルを実行します。 集約された Spark テーブルが専用 SQL プール テーブルにコピーされます。
+1. 新しいコード セルを作成し、次のコードを入力します。 ノートブックでこのセルを実行します。 集約された Spark テーブルが専用 SQL プール テーブルにコピーされます。
 
 ```scala
 %%spark

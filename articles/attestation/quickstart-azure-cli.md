@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937221"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208439"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Attestation を設定する
 
-Azure CLI を使用して Azure Attestation を導入し、構成証明を設定します。
+[Azure CLI を使用して Azure Attestation](/cli/azure/ext/attestation/attestation?view=azure-cli-latest) を導入します。
 
 ## <a name="get-started"></a>はじめに
 
@@ -65,7 +65,7 @@ Azure CLI を使用して Azure Attestation を導入し、構成証明を設定
 
 構成証明プロバイダーの作成と管理に使用できるコマンドは以下のとおりです。
 
-1. [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) コマンドを実行して構成証明プロバイダーを作成します。
+1. [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) コマンドを実行して、ポリシー署名要件なしで構成証明プロバイダーを作成します。
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ az attestation policy set --name testatt1 --resource-group testrg --attestation-
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>次のステップ

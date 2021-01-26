@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968589"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250997"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -59,13 +59,13 @@ Azure portal (https://portal.azure.com) にサインインする
 
 6. 使用するデータベース ユーザー名を入力します。 データベース ユーザーに **監視** および **カタログ読み取り** ロールが割り当てられていることを確認します。 
 
-7. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
+7. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="プロバイダー情報を追加するときの構成オプションの画像です。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>高可用性クラスター (Pacemaker) プロバイダー
 
-1. ドロップダウンから **[高可用性クラスター (Pacemaker)]** を選択します。 
+1. ドロップダウンから **[High-availability cluster (Pacemaker)]\(高可用性クラスター (Pacemaker)\)** を選択します。 
 
    > [!IMPORTANT]
    > 高可用性クラスター (Pacemaker) プロバイダーを構成するには、各ノードに ha_cluster_provider がインストールされていることを確認します。 詳細については、[HA クラスター エクスポーター](https://github.com/ClusterLabs/ha_cluster_exporter#installation)に関するセクションを参照してください。
@@ -74,14 +74,26 @@ Azure portal (https://portal.azure.com) にサインインする
  
 3. システム ID (SID)、ホスト名、およびクラスター名を入力します。
 
-4. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
+4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="画像は HA クラスター Pacemaker プロバイダーに関連するオプションを示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
+### <a name="os-linux-provider"></a>OS (Linux) プロバイダー 
+
+1. ドロップダウンから [OS (Linux)] を選択します 
+
+> [!IMPORTANT]
+> OS (Linux) プロバイダーを構成するには、各 BareMetal インスタンスに Node_Exporter がインストールされていることを確認してください。 詳細については、「 [Node_Exporter](https://github.com/prometheus/node_exporter)」を参照してください
+
+2. 名前を入力します。これは、BareMetal インスタンスの識別子になります。
+3. Node Exporter エンドポイントを http://IP:9100/metrics の形式で入力します。
+4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]**  を選択してデプロイを完了します。 
+
+
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server プロバイダー
 
-1. Microsoft SQL Server プロバイダーを追加する前に、SQL Server Management Studio で次のスクリプトを実行して、プロバイダーの構成に必要な適切なアクセス許可を持っているユーザーを作成する必要があります。
+1. Microsoft SQL Server プロバイダーを追加する前に、SQL Server Management Studio で次のスクリプトを実行して、プロバイダーの構成に必要な適切なアクセス許可を持つユーザーを作成する必要があります。
 
    ```sql
    USE [<Database to monitor>]
@@ -112,7 +124,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 3. Microsoft SQL Server に関連付けられている情報を使用して、フィールドに入力します。 
 
-4. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
+4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="画像は Microsoft SQL Server プロバイダーの追加に関連する情報を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

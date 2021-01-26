@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361315"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233867"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -32,11 +32,11 @@ Azure の VM には多様なサイズと種類があり、パフォーマンス�
 
 高速ネットワークは、ネットワーク パフォーマンス (待ち時間、スループット、CPU 使用率など) の向上を目的として設計された機能です。 高速ネットワークは仮想マシンのスループットを向上させますが、向上できるのは仮想マシンに割り当てられた帯域幅までです。 高速ネットワークの詳細については、[Windows](create-vm-accelerated-networking-powershell.md) または [Linux](create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークに関する記事を参照してください。
  
-Azure の仮想マシンには、少なくとも 1 つ (複数可) のネットワーク インターフェイスが接続されている必要があります。 仮想マシンに割り当てられる帯域幅は、仮想マシンに接続されているすべてのネットワーク インターフェイス全体の送信トラフィックの合計です。 つまり、帯域幅は仮想マシンごとに割り当てられており、仮想マシンに接続されているネットワーク インターフェイスの数は関係ありません。 さまざまな Azure VM サイズがサポートするネットワーク インターフェイスの数については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure VM サイズに関するページを参照してください。 
+Azure の仮想マシンには、少なくとも 1 つ (複数可) のネットワーク インターフェイスが接続されている必要があります。 仮想マシンに割り当てられる帯域幅は、仮想マシンに接続されているすべてのネットワーク インターフェイス全体の送信トラフィックの合計です。 つまり、帯域幅は仮想マシンごとに割り当てられており、仮想マシンに接続されているネットワーク インターフェイスの数は関係ありません。 さまざまな Azure VM サイズがサポートするネットワーク インターフェイスの数については、[Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure VM サイズに関するページを参照してください。 
 
 ## <a name="expected-network-throughput"></a>想定されるネットワーク スループット
 
-VM の各サイズで想定される送信スループットとサポートされるネットワーク インターフェイスの数については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure VM サイズに関するページを参照してください。 型 (汎用など) を選択し、結果として表示されるページでサイズ シリーズ (Dv2 シリーズなど) を選択します。 各シリーズの表の最後に、**最大 NIC 数/想定ネットワーク パフォーマンス (Mbps)** というネットワーク仕様の列があります。 
+VM の各サイズで想定される送信スループットとサポートされるネットワーク インターフェイスの数については、[Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure VM サイズに関するページを参照してください。 型 (汎用など) を選択し、結果として表示されるページでサイズ シリーズ (Dv2 シリーズなど) を選択します。 各シリーズの表の最後に、**最大 NIC 数/想定ネットワーク パフォーマンス (Mbps)** というネットワーク仕様の列があります。 
 
 このスループット制限が仮想マシンに適用されます。 スループットは、次の要因には影響されません。
 - **ネットワーク インターフェイスの数**: 帯域幅の制限は、仮想マシンからのすべての送信トラフィックの累積です。
@@ -52,15 +52,13 @@ VM の各サイズで想定される送信スループットとサポートさ�
 
 ![転送アプライアンスを経由した TCP 通信のためのフローの数](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>フローの制限と推奨事項
+## <a name="flow-limits-and-active-connections-recommendations"></a>フローの制限とアクティブな接続に関する推奨事項
 
-現在、Azure のネットワーク スタックは、CPU コアが 8 個を超える VM での良好なパフォーマンスには 250K 個の合計ネットワーク フロー、および CPU コアが 8 個未満の VM での良好なパフォーマンスには 100K 個の合計フローをサポートしています。 この制限を超えると、ネットワーク パフォーマンスは、ハード制限である 500K 個の合計フロー (250K 個の受信と 250K 個の送信) まで追加フローに対して適切に低下し、それ以降は追加フローが破棄されます。
+現在、Azure のネットワーク スタックでは、1 つの VM について合計 100 万個のフロー (50 万個の受信と 50 万個の送信) がサポートされています。 異なるシナリオで 1 つの VM によって処理できるアクティブな接続の合計数は以下のとおりです。
+- VNET に属している VM では、すべての VM サイズについて、50 万個の "*_アクティブな接続_*" を処理できます。"_*_各方向のアクティブ フロー数_*_" は 50 万個です。  
+- ゲートウェイ、プロキシ、ファイアウォールなどのネットワーク仮想アプライアンス (NVA) を使用している VM では、上の図に示されているように、ネクスト ホップへの新しい接続のセットアップ時に転送と追加の新しいフローが作成されるため、25 万個の "_*_アクティブな接続_*_" を処理できます。"*_各方向のアクティブ フロー数_*" は 50 万個です。 
 
-| パフォーマンス レベル | CPU コアが 8 個未満の VM | CPU コアが 8 個を超える VM |
-| ----------------- | --------------------- | --------------------- |
-|<b>良好なパフォーマンス</b>|100K 個のフロー |250K 個のフロー|
-|<b>パフォーマンスの低下</b>|100K 個を超えるフロー|250K 個を超えるフロー|
-|<b>フローの制限</b>|500K 個のフロー|500K 個のフロー|
+この制限に達すると、追加の接続は切断されます。 接続の確立と終了はパケット処理ルーチンと CPU を共有するため、接続の確立と終了の頻度もネットワーク パフォーマンスに影響を与える場合があります。 予測されるトラフィック パターンに対してワークロードをベンチマークし、パフォーマンスのニーズを満たすようにワークロードを適切にスケールアウトすることをお勧めします。
 
 [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) では、ネットワーク フローの数や、VM または VMSS インスタンスでのフロー作成の頻度を追跡するためのメトリックを使用できます。
 

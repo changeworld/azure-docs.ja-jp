@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541812"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201435"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>リダイレクトを使用して Azure Database for MySQL に接続する
 
@@ -21,6 +21,9 @@ ms.locfileid: "94541812"
 [Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 5.6、5.7、または 8.0 を使用して、Azure Database for MySQL サーバーを作成します。 
 
 詳細については、[Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md) または [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) を使用した Azure Database for MySQL サーバーの作成を参照してください。
+
+> [!IMPORTANT]
+> リダイレクトは、[Azure Database for MySQL 用の Private Link](concepts-data-access-security-private-link.md) では現在サポートされていません。
 
 ## <a name="enable-redirection"></a>リダイレクトを有効化する
 

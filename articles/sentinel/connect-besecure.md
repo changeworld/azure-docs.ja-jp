@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2020
+ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: f6fd6920fafe4c1080cb5539e4e0222d9d6e18cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 313f201aeabd470850b27d979dc5253f80e82a55
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102705"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541166"
 ---
 # <a name="connect-your-beyond-security-besecure-to-azure-sentinel"></a>Beyond Security beSECURE を Azure Sentinel に接続する
 
 > [!IMPORTANT]
-> Azure Sentinel の Beyond Security beSECURE データ コネクタは、現在パブリック プレビュー段階にあります。 この機能は、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Beyond Security beSECURE コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Beyond Security beSECURE コネクタを使用すると、Azure Sentinel にすべての beSECURE セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 beSECURE と Azure Sentinel の統合には、REST API を使用します。
 
@@ -36,7 +36,9 @@ Beyond Security beSECURE コネクタを使用すると、Azure Sentinel にす�
 
 beSECURE を使用すると、ログと統合したり、ログを Azure Sentinel に直接エクスポートしたりできます。
 
-1. Azure Sentinel ポータルで、 **[データ コネクタ]** をクリックして、 **[Beyond Security beSECURE (プレビュー)]** 、 **[コネクタ ページを開く]** の順に選択します。
+1. Azure Sentinel のナビゲーション メニューで、 **[データ コネクタ]** を選択します。
+
+1. **[データ コネクタ]** ギャラリーから、 **[Beyond Security beSECURE (Preview)]\(Beyond Security beSECURE (プレビュー)\)** を選択し、 **[コネクタ ページを開く]** を選択します。
 
 1. スキャンの結果、スキャンの状態、監査証跡ログを Azure Sentinel に送信するように beSECURE ソリューションを構成するには、以下の手順を実行します。
 
@@ -50,7 +52,10 @@ beSECURE を使用すると、ログと統合したり、ログを Azure Sentine
     1. Azure Sentinel を有効にする
 
     **Azure Sentinel 設定で beSECURE を指定します。**
-      - " *ワークスペース ID* " と " *主キー* " 値を [Azure Sentinel コネクタ] ページからコピーして、beSECURE 構成に貼り付け、 **[変更]** をクリックします。
+
+      "*ワークスペース ID*" と "*主キー*" 値を [Azure Sentinel コネクタ] ページからコピーして、beSECURE 構成に貼り付け、 **[変更]** をクリックします。
+      
+      :::image type="content" source="media/connectors/workspace-id-primary-key.png" alt-text="{ワークスペース ID と主キー}":::
 
 ## <a name="find-your-data"></a>データの検索
 
@@ -59,7 +64,7 @@ beSECURE を使用すると、ログと統合したり、ログを Azure Sentine
   - `beSECURE_ScanEvents_CL`
   - `beSECURE_Audit_CL`
 
-Log Analytics の beSECURE ログに対してクエリを実行するには、クエリ ウィンドウの上部に、上記のいずれかのテーブル名を入力します。
+分析ルール、ハンティング クエリ、調査、または Azure Sentinel 内の他の任意の場所で beSECURE のログを照会するには、クエリ ウィンドウの上部で、上記のテーブル名のいずれかを入力します。
 
 ## <a name="validate-connectivity"></a>接続の検証
 ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。

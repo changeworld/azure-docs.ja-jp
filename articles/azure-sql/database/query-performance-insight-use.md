@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222345"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -155,7 +155,7 @@ Query Performance Insight は簡単に使用できます。
 
 Query Performance Insight の 2 つのメトリック (実行時間と実行回数) は、潜在的なボトルネックの特定に役立つ場合があります。
 
-実行時間の長いクエリは、長期にわたるリソースのロック、他のユーザーのブロック、スケーラビリティの制限を引き起こす最大の原因と考えられます。 これらは、最適化に最も適した要素でもあります。
+実行時間の長いクエリは、長期にわたるリソースのロック、他のユーザーのブロック、スケーラビリティの制限を引き起こす最大の原因と考えられます。 これらは、最適化に最も適した要素でもあります。 詳細については、「[Azure SQL のブロックの問題を理解して解決する](understand-resolve-blocking.md)」を参照してください。
 
 実行時間の長いクエリを特定するには、次のようにします。
 
