@@ -3,16 +3,19 @@ title: AMQP 1.0 での Azure Service Bus と .NET | Microsoft Docs
 description: この記事では、AMQP (Advanced Messaging Queuing Protocol) を使用して .NET アプリケーションから Azure Service Bus を使用する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067105"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233935"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
 AMQP 1.0 は、Service Bus パッケージ バージョン 2.1 以降でサポートされています。 [NuGet][NuGet] から Service Bus ビットをダウンロードすることによって確実に最新バージョンを入手できます。
+
+> [!NOTE]
+> Advanced Message Queuing Protocol (AMQP) か Service Bus Messaging Protocol (SBMP) と共に Service Bus 向け .NET ライブラリを使用できます。 AMQP は .NET ライブラリで使用される既定のプロトコルです。 AMQP プロトコル (既定) を使用し、設定を変えないことをお勧めします。 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
 
@@ -41,6 +44,14 @@ AMQP 1.0 は、Service Bus パッケージ バージョン 2.1 以降でサポ�
 `namespace` と `SAS key` は、Service Bus 名前空間を作成するときに、[Azure portal][Azure portal] から取得します。 詳細については、「[Azure portal を使用して Service Bus 名前空間を作成する][Create a Service Bus namespace using the Azure portal]」を参照してください。
 
 AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付加します。 この表記により、クライアント ライブラリに対して、AMQP 1.0 を使用して Service Bus に接続するように通知します。
+
+### <a name="amqp-over-websockets"></a>AMQP over WebSocket
+AMQP over WebSockets を使用するには、接続文字列の `TransportType` を `AmqpWebSockets` に設定します。 たとえば、 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`と指定します。 
+
+.NET Microsoft.Azure.ServiceBus ライブラリを使用している場合、[ServiceBusConnection.TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) を [TransportType 列挙型](/dotnet/api/microsoft.azure.servicebus.transporttype)の AmqpWebSockets に設定します。
+
+.NET Azure.Messaging.ServiceBus ライブラリを使用している場合、[ServiceBusClient.TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) を [ServiceBusTransportType 列挙型](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)の AmqpWebSockets に設定します。
+
 
 ## <a name="message-serialization"></a>メッセージのシリアル化
 
@@ -99,7 +110,7 @@ Service Bus .NET API の動作は、AMQP を使用する場合と既定のプロ
 * **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** : リンクに適用する初期のクレジットを制御します。 既定値は 0 です。
 * **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)** : 接続オープン時のネゴシエーションで提供される最大 AMQP フレーム サイズを制御します。 既定値は 65,536 バイトです。
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** : 転送がバッチ可能である場合、この値でディスポジションを送信する場合の最大遅延が決まります。 既定では、送信側/受信側によって継承されます。 個々の送信側/受信側は、既定値 (20 ミリ秒) をオーバーライドできます。
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : AMQP 接続を TLS 接続で確立するかどうかを制御します。 既定値は **true**です。
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : AMQP 接続を TLS 接続で確立するかどうかを制御します。 既定値は **true** です。
 
 ## <a name="next-steps"></a>次のステップ
 

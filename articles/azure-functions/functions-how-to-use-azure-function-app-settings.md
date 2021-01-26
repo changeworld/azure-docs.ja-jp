@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035208"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598486"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 
@@ -19,11 +19,6 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 関数アプリ内の個々の関数は、共に配置され、共にスケーリングされます。 同じ関数アプリ内のすべての関数は、関数アプリがスケーリングされるときに、インスタンスごとに同じリソースを使用します。 
 
 接続文字列、環境変数、およびその他のアプリケーション設定は、関数アプリごとに別に定義されます。 関数アプリ間で共有する必要があるすべてのデータは、外部の永続化されたストアに格納する必要があります。
-
-この記事では、お使いの関数アプリを構成および管理する方法を説明します。 
-
-> [!TIP]  
-> 多くの構成オプションは、[Azure CLI] を使用して管理することもできます。 
 
 ## <a name="get-started-in-the-azure-portal"></a>Azure portal での作業開始
 
@@ -37,15 +32,17 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>アプリケーション設定を操作する
 
-**[アプリケーションの設定]** タブでは、関数アプリに使用される設定を管理します。 これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。 また、Azure CLI を使用してアプリケーション設定にアクセスすることもできます。
+[Azure portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) から、および [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) や [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) を使用して、アプリケーション設定を管理することができます。 アプリケーション設定は [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) から、および [Visual Studio](functions-develop-vs.md#function-app-settings) から管理することもできます。 
 
-### <a name="portal"></a>ポータル
+これらの設定は暗号化されて格納されます。 詳細については、[アプリケーション設定のセキュリティ](security-concepts.md#application-settings)に関する記述を参照してください。
 
-ポータルに設定を追加するには、 **[新しいアプリケーション設定]** を選択して新しいキーと値のペアを追加します。
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+**[アプリケーションの設定]** タブでは、関数アプリに使用される設定を管理します。 ポータルで値を表示するには、 **[値を表示する]** を選択する必要があります。 ポータルに設定を追加するには、 **[新しいアプリケーション設定]** を選択して新しいキーと値のペアを追加します。
 
 ![Azure portal の関数アプリの設定。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) コマンドでは、次の例のように、既存のアプリケーションの設定を返します。
 
@@ -63,6 +60,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
 
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting) コマンドレットからは、次の例のように、既存のアプリケーション設定が返されます。 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting) コマンドでは、アプリケーション設定を追加または更新します。 次の例では、`CUSTOM_FUNCTION_APP_SETTING` という名前のキーと `12345` の値で設定を作成しています。
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
+
 ### <a name="use-application-settings"></a>アプリケーションの設定
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
@@ -71,7 +84,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="hosting-plan-type"></a>ホスティング プランの種類
 
-関数アプリを作成するときに、アプリが実行される App Service ホスティング プランも作成します。 プランには、1 つ以上の関数アプリを含めることができます。 関数の機能、スケーリング、価格は、プランの種類によって異なります。 詳細については、「[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)」ページを参照してください。
+関数アプリを作成するときに、アプリが実行されるホスティング プランも作成します。 プランには、1 つ以上の関数アプリを含めることができます。 関数の機能、スケーリング、価格は、プランの種類によって異なります。 詳細については、「[Azure Functions のホスティング オプション](functions-scale.md)」を参照してください。
 
 自分の関数アプリで使用されているプランの種類は、Azure portal、Azure CLI、または Azure PowerShell API を使用して確認できます。 
 
@@ -118,6 +131,75 @@ $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionAp
 
 ---
 
+## <a name="plan-migration"></a>プランの移行
+
+Windows では、Azure CLI コマンドを使用して、従量課金プランと Premium プランの間で関数アプリを移行できます。 具体的なコマンドは、移行の方向によって異なります。 Dedicated (App Service) プランへの直接移行は現在サポートされていません。
+
+この移行は Linux ではサポートされていません。
+
+### <a name="consumption-to-premium"></a>従量課金から Premium へ
+
+Windows で従量課金プランから Premium プランに移行するには、次の手順を使用します。
+
+1. 次のコマンドを実行して、既存の関数アプリと同じリージョンおよびリソース グループに新しい App Service プラン (エラスティック Premium) を作成します。  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. 次のコマンドを実行して、既存の関数アプリを新しい Premium プランに移行します
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. 以前の従量課金アプリ プランが不要になった場合は、新しい関数アプリ プランに正常に移行したことを確認した後で元のものを削除します。 次のコマンドを実行して、リソース グループ内のすべての従量課金プランの一覧を取得します。
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    移行元である、サイトがないプランは安全に削除できます。
+
+1. 次のコマンドを実行して、移行元の従量課金プランを削除します。
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Premium から従量課金へ
+
+Windows で Premium プランから従量課金プランに移行するには、次の手順を使用します。
+
+1. 次のコマンドを実行して、既存の関数アプリと同じリージョンおよびリソース グループに新しい関数アプリ (従量課金) を作成します。 このコマンドにより、関数アプリが実行される新しい従量課金プランも作成されます。
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. 次のコマンドを実行して、既存の関数アプリを新しい従量課金プランに移行します。
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. 手順 1 で作成した関数アプリを削除します。これは、既存の関数アプリを実行するために作成されたプランのみが必要であるためです。
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. 以前の Premium 関数アプリ プランが不要になった場合は、新しい関数アプリ プランに正常に移行したことを確認した後で元のものを削除します。 プランが削除されていない場合は、Premium プランに対して引き続き課金されることに注意してください。 次のコマンドを実行して、リソース グループ内のすべての Premium プランの一覧を取得します。
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. 次のコマンドを実行して、移行元の Premium プランを削除します。
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>プラットフォーム機能
 

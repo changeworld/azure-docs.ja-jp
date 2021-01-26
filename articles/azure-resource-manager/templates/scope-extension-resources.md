@@ -2,21 +2,24 @@
 title: 拡張リソースの種類のスコープ
 description: 拡張リソースの種類を展開するときに scope プロパティを使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681354"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179981"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>ARM テンプレートで拡張リソースのスコープを設定する
 
-拡張リソースは、別のリソースを変更するリソースです。 たとえば、アクセスを制限するために、リソースにロールを割り当てることができます。 ロールの割り当ては、拡張リソースの種類の 1 つです。
+拡張リソースは、別のリソースを変更するリソースです。 たとえば、リソースにロールを割り当てることができます。 ロールの割り当ては、拡張リソースの種類の 1 つです。
 
 拡張リソースの種類の完全な一覧については、「[他のリソースの機能を拡張するリソースの種類](../management/extension-resource-types.md)」を参照してください。
 
 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して展開されている場合に、拡張リソースの種類のスコープを設定する方法について説明します。 リソースに適用するときに拡張リソースで使用できる scope プロパティについて説明します。
+
+> [!NOTE]
+> スコープ プロパティは、拡張リソースの種類でのみ使用できます。 拡張の種類ではないリソースの種類に別のスコープを指定するには、入れ子になっているか、リンクされたデプロイを使用します。 詳細については、[リソース グループへのデプロイ](deploy-to-resource-group.md)、[サブスクリプションのデプロイ](deploy-to-subscription.md)、[管理グループへのデプロイ](deploy-to-management-group.md)、[テナントのデプロイ](deploy-to-tenant.md)に関するページを参照してください。
 
 ## <a name="apply-at-deployment-scope"></a>展開スコープで適用する
 

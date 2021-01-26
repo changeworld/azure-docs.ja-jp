@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491644"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599791"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -42,7 +42,7 @@ Azure で MySQL をホストするには、他にもいくつかの選択肢が�
 * [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/): クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
 * [無料評価版](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
 * [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**: 無料評価版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
-* [エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
+* [エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 マーケットプレースでの購入はすべて、Azure 前払い (旧称: 年額コミットメント) とは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Azure Marketplace から Web アプリケーションと MySQL に 3.50 ドルを課金されているのはなぜですか。
 既定のデータベース オプションは Titan で、価格は 3.50 ドルです。 データベースの作成時には価格が表示されないため、このデータベースを誤って購入してしまった可能性があります。 今後プロセスの改善に努めてまいりますが、それまでは、Web アプリケーションとデータベースについて選択した価格レベルをすべて確認してから、 **[作成]** をクリックしてリソースのデプロイを開始してください。
@@ -94,10 +94,10 @@ Web Apps には Basic 以上の価格レベルを使用してください。 Cle
 * 新しいデータベースを使用するようにアプリケーションを更新します。
 * 既存の ClearDB データベースを削除します。
 
-MySQL (ClearDB) を使用して新しい Web アプリケーションを作成するか、MySQL データベース (ClearDB) を作成する場合、選択したサブスクリプションによってサービスの支払い方法が変わります。 EA サブスクリプションの場合は、Azure Portal で ClearDB などのサード パーティ サービスを調達することができます。 EA サブスクリプションは年額コミットメントとは別に課金され、四半期ごとに未払い分が請求されます。 EA のお客様は、サード パーティの Marketplace サービスの支払いのために、クレジット カードなどの支払方法を設定する必要があります。
+MySQL (ClearDB) を使用して新しい Web アプリケーションを作成するか、MySQL データベース (ClearDB) を作成する場合、選択したサブスクリプションによってサービスの支払い方法が変わります。 EA サブスクリプションの場合は、Azure Portal で ClearDB などのサード パーティ サービスを調達することができます。 EA サブスクリプションは Azure 前払いとは別に課金され、四半期ごとに未払い分が請求されます。 EA のお客様は、サード パーティの Marketplace サービスの支払いのために、クレジット カードなどの支払方法を設定する必要があります。
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>EA サブスクリプションでの ClearDB リソースの料金はどこで確認できますか。
-ダイレクト EA のお客様の場合、Azure Marketplace の料金はエンタープライズ ポータルに表示されます。 なお、Marketplace での購入および使用はすべて年額コミットメントとは別に課金され、四半期ごとに未払い分が請求されます。 EA のお客様は、サード パーティのサービス プロバイダーに直接お支払いいただく必要があります。そのためには、EA アカウントでクレジット カードなどの支払方法を有効にします。
+ダイレクト EA のお客様の場合、Azure Marketplace の料金はエンタープライズ ポータルに表示されます。 なお、マーケットプレースでの購入および使用はすべて Azure 前払いとは別に課金され、四半期ごとに未払い分が請求されます。 EA のお客様は、サード パーティのサービス プロバイダーに直接お支払いいただく必要があります。そのためには、EA アカウントでクレジット カードなどの支払方法を有効にします。
 
 インダイレクト EA のお客様の場合は、エンタープライズ ポータルの **[サブスクリプションの管理]** ページで Azure Marketplace のサブスクリプションを確認できますが、価格は非表示になっています。 Marketplace の料金については、LSP にお問い合わせください。
 

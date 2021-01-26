@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616611"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573396"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -141,7 +141,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[コンピューティングとネットワークのプロパティ] ウィンドウ":::
 
    - **Azure VM 名**:必要に応じて、Azure の要件を満たすように名前を変更します。
-   - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。
+   - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/disks-scalability-targets.md)」を参照してください。
    - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する [リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
    - **可用性セット**:仮想マシンがフェールオーバー後に [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
      - 指定されたリソース グループに属している可用性セットだけが一覧表示されます。

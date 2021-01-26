@@ -5,19 +5,24 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
-ms.date: 10/19/2020
+ms.date: 1/19/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f4e93deb40799cbcc9c86aff454e250f1ab71712
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 777c78047ec9bf195c5e0c823aa0edfb287b3998
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963336"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598307"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
 この記事では、[H シリーズ](../../sizes-hpc.md)と [N シリーズ](../../sizes-gpu.md)の HPC および GPU VM を使用する場合の最も一般的な問題とその解決方法について説明します。
+
+## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB、HC、HBv2、NDv2 の高速ネットワーク
+
+[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が、RDMA および InfiniBand 対応および SR-IOV 対応の VM サイズの [HB](../../hb-series.md)、[HC](../../hc-series.md)、[HBv2](../../hbv2-series.md) および [NDv2](../../ndv2-series.md) で利用できるようになりました。 この機能により、Azure イーサネット ネットワーク上でのスループット (最大 30 Gbps) と待機時間が改善されます。 これは InfiniBand ネットワーク上の RDMA 機能とは別のものですが、この機能の一部のプラットフォーム変更は、InfiniBand を介してジョブを実行するときに特定の MPI 実装の動作に影響を与える可能性があります。 具体的には、一部の VM の InfiniBand インターフェイスの名前がわずかに異なる場合があります (以前の mlx5_0 とは異なり mlx5_1)。これは、特に UCX インターフェイスを (通常は OpenMPI と HPC-X と一緒に) 使用する場合には、MPI コマンド ラインを微調整する必要があります。
+これに関する詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965)を参照してください。発生した問題に対処する方法についても記載されています。
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>N シリーズ VM への InfiniBand ドライバーのインストール
 

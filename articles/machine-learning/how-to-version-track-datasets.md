@@ -1,7 +1,7 @@
 ---
 title: データセットのバージョン管理
 titleSuffix: Azure Machine Learning
-description: データセットを最適にバージョン管理する方法と、機械学習パイプラインでバージョン管理がどのように機能するかについて説明します。
+description: 機械学習のデータセットをバージョン管理する方法と、機械学習パイプラインでバージョン管理がどのように機能するかについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133448"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538166"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
+# <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning データセットをバージョン管理および追跡する
 
 この記事では、再現性のために Azure Machine Learning データセットをバージョン管理する方法について説明します。 データセットのバージョン管理は、将来の実験のために特定のバージョンのデータセットを適用できるように、データの状態をブックマークする方法です。
 

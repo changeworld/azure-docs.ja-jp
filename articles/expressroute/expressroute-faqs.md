@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: deb5f07340f44e7ae4da3372fd17e484d500e6ab
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462049"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573260"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -256,7 +256,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>同じ ExpressRoute 回線に接続されている仮想ネットワークは互いに通信できますか。
 
-はい。 同じ ExpressRoute 回線に接続されている仮想ネットワークにデプロイされた仮想マシンは互いに通信できます。
+はい。 同じ ExpressRoute 回線に接続されている仮想ネットワークにデプロイされた仮想マシンは互いに通信できます。 この通信を容易にするために、[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定することをお勧めします。
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>仮想ネットワーク用のサイト間接続を、ExpressRoute と併用できますか。
 

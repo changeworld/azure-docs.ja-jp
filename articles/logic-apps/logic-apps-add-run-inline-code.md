@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922505"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179607"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "96922505"
   > [!NOTE]
   > `require()` 関数は、JavaScript を実行するインライン コード アクションではサポートされていません。
 
-このアクションによりコード スニペットが実行され、そのスニペットの出力が `Result` という名前のトークンとして返されます。 ロジック アプリのワークフローの後続のアクションで、このトークンを使用できます。 コードの関数を作成する別のシナリオでは、ロジック アプリ内で[代わりに Azure 関数の作成および呼び出し](../logic-apps/logic-apps-azure-functions.md)を試みてください。
+このアクションによりコード スニペットが実行され、そのスニペットの出力が `Result` という名前のトークンとして返されます。 ロジック アプリのワークフローの後続のアクションで、このトークンを使用できます。 コードの関数を作成する別のシナリオでは、ロジック アプリ内で[代わりに Azure Functions を使用して関数を作成して呼び出して](../logic-apps/logic-apps-azure-functions.md)みてください。
 
 この記事では、職場または学校アカウントに新しい電子メールが届いたときに、サンプルのロジック アプリがトリガーされます。 このコード スニペットでは、電子メール本文に表示されているすべての電子メール アドレスが抽出されて、返されます。
 

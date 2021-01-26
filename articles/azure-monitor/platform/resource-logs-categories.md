@@ -4,12 +4,12 @@ description: Azure Monitor のリファレンス - Azure リソース ログで�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 12/09/2020
-ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931231"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232249"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -34,7 +34,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 まだ何かが不足している場合は、この記事の下部にある GitHub コメントを開くことができます。
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -44,7 +44,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -53,7 +53,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -63,7 +63,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -74,7 +74,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -83,7 +83,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -94,7 +94,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -106,7 +106,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -115,7 +115,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -124,7 +124,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -133,7 +133,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -142,7 +142,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -151,7 +151,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -162,7 +162,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -172,7 +172,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -185,7 +185,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -194,7 +194,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft.Databricks/workspaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -212,7 +212,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -223,7 +223,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -233,7 +233,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -245,7 +245,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -255,7 +255,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -265,7 +265,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -275,7 +275,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -284,7 +284,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -295,7 +295,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -304,7 +304,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -315,7 +315,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -328,7 +328,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -340,7 +340,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -362,7 +362,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -372,7 +372,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -388,7 +388,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -398,7 +398,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -407,7 +407,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -417,7 +417,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -432,7 +432,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -441,7 +441,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -451,7 +451,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -470,7 +470,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -479,7 +479,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -494,7 +494,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -503,7 +503,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -512,7 +512,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -525,7 +525,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -534,7 +534,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -545,7 +545,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -555,7 +555,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -564,7 +564,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -573,7 +573,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -583,7 +583,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -593,7 +593,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -604,7 +604,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -615,7 +615,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -624,7 +624,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -637,7 +637,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -646,7 +646,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -655,7 +655,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -677,7 +677,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -686,7 +686,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -695,7 +695,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -704,7 +704,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -713,7 +713,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -724,7 +724,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.Sql/managedInstances/databases
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -736,7 +736,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -760,7 +760,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -771,7 +771,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -782,7 +782,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
  
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -793,7 +793,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-コスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
+エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
  
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -804,7 +804,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -814,7 +814,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse ワークスペース
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -826,7 +826,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -835,7 +835,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -849,7 +849,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 |カテゴリ |カテゴリの表示名|
 |---|---|
@@ -858,7 +858,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 
 |カテゴリ |カテゴリの表示名|
@@ -873,7 +873,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
 
-コスト:Free 
+エクスポートのコスト:Free 
 
 
 |カテゴリ |カテゴリの表示名|

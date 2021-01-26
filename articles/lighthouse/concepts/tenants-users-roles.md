@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023944"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233918"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 
@@ -18,7 +18,10 @@ ms.locfileid: "96023944"
 
 この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に "*オンボード*" する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
 
-いずれのオンボード方法を選択しても、*承認* を定義する必要があります。 各承認では、委任されたリソースへのアクセス権を持つ管理テナントのユーザーアカウント、およびこれらの各ユーザーがこれらのリソースに対して持つアクセス許可を設定する組み込みのロールを指定します。
+いずれのオンボード方法を選択しても、*承認* を定義する必要があります。 承認ワークフローごとに、委任されたリソースへのアクセス権が与えられる **principalId** と、これらの各ユーザーがこれらのリソースに対して持つアクセス許可を設定する組み込みのロールが指定されます。 この **principalId** により、管理テナントの Azure AD ユーザー、グループ、サービス プリンシパルが定義されます。
+
+> [!NOTE]
+> 明示的に指定されていない限り、Azure Lighthouse ドキュメント内での "ユーザー" への参照は、承認に含まれる Azure AD ユーザー、グループ、またはサービス プリンシパルに適用できます。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>ユーザーとロールを定義するためのベスト プラクティス
 

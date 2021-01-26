@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516191"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598876"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516191"
 
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorization-code-flow.md)として Facebook アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Facebook アカウントを持っていない場合は、[https://www.facebook.com/](https://www.facebook.com/) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウントを使用してサインインできるようにするには、[Facebook アプリのダッシュボード](https://developers.facebook.com/)でアプリケーションを作成する必要があります。 詳細については、[アプリ開発](https://developers.facebook.com/docs/development)のページを参照してください。 まだ Facebook アカウントを持っていない場合は、[https://www.facebook.com/](https://www.facebook.com/) でサインアップできます。
 
 1. Facebook アカウントの資格情報を使用して、[開発者向けの Facebook](https://developers.facebook.com/)にサインインします。
 1. まだ登録していない場合は、Facebook 開発者として登録する必要があります。 これを行うには、ページの右上隅にある **[Get Started]\(スタートガイド\)** を選択し、Facebook のポリシーに同意して登録手順を完了します。
@@ -60,7 +60,7 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
+## <a name="configure-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
@@ -70,25 +70,6 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 1. **[クライアント ID]** には、前に作成した Facebook アプリケーションのアプリ ID を入力します。
 1. **[クライアント シークレット]** には、記録したアプリ シークレットを入力します。
 1. **[保存]** を選択します。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
-
-1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
-
-   ```xml
-   <TechnicalProfile Id="Facebook-OAUTH">
-     <Metadata>
-     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
-       <Item Key="client_id">00000000000000</Item>
-   ```
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>ユーザー フローに Facebook ID プロバイダーを追加する 
 
@@ -103,6 +84,17 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
+
+1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
 
 ## <a name="upload-and-test-the-policy"></a>ポリシーをアップロードしてテストします。
 

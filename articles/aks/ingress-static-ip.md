@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターの静的パブリッ
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: eb58bbe127349aaebed3b1eb00281cf2938c1933
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e6777946b0c83eb7f7eb6f3230bb95da2313e741
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681586"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246232"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
@@ -103,7 +103,7 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 次のようにパブリック IP アドレスの FQDN を照会すると、DNS 名ラベルが適用されていることを確認できます。
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 これでイングレス コントローラーは IP アドレスまたは FQDN 経由でアクセスできるようになります。
@@ -169,8 +169,12 @@ spec:
 発行者を作成するには、`kubectl apply` コマンドを使用します。
 
 ```
-$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+```
 
+出力は次の例のようになります。
+
+```
 clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
@@ -307,8 +311,12 @@ spec:
 `kubectl apply` コマンドを使用してイングレス リソースを作成します。
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+```
 
+出力は次の例のようになります。
+
+```
 ingress.extensions/hello-world-ingress created
 ```
 

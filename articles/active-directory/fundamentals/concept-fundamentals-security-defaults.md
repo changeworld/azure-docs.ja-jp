@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029908"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600136"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -76,7 +76,7 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 これらの攻撃者は、アクセス権を取得した後、元のアカウント所有者に代わって機密性の高い情報へのアクセスを要求できます。 ディレクトリ全体をダウンロードして、組織全体に対してフィッシング攻撃を実行することさえできます。 
 
-すべてのユーザーを対象にした保護を向上させるための一般的な方法の 1 つは、全員に Multi-Factor Authentication を要求するなど、より強力な形式のアカウント検証を要求することです。 ユーザーが Multi-Factor Authentication の登録を完了すると、必要に応じて追加の認証を求められるようになります。 この機能は、SaaS アプリケーションを含めて、Azure AD に登録されているすべてのアプリケーションを保護します。
+すべてのユーザーを対象にした保護を向上させるための一般的な方法の 1 つは、全員に Multi-Factor Authentication を要求するなど、より強力な形式のアカウント検証を要求することです。 ユーザーが Multi-Factor Authentication の登録を完了すると、必要に応じて追加の認証を求められるようになります。 ユーザーは、主に、新しいデバイスまたはアプリケーションを使用して認証するとき、または重要な役割とタスクを実行するときに求められます。 この機能は、SaaS アプリケーションを含めて、Azure AD に登録されているすべてのアプリケーションを保護します。
 
 ### <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
 

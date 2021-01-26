@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962399"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232303"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -420,8 +420,8 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 - 統合 Windows 認証は、"*フェデレーション+* " ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) に対してのみ使用できます。 Azure AD で直接作成され、Active Directory のサポートのないユーザー ("*マネージド*" ユーザーと呼ばれます) はこの認証フローを使用できません。 この制限は、ユーザー名とパスワードのフローには影響しません。
 - IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プラットフォーム (UWP) の各プラットフォーム用に作成されたアプリを対象としています。
 - IWA では[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) はバイパスされません。 MFA が構成されている状況では、MFA チャレンジが必要な場合に IWA が失敗する可能性があります。これは、MFA でユーザーの操作が必要になるためです。
-  > [!NOTE]
-  > これには注意が必要です。 IWA は非対話型ですが、MFA にはユーザーの操作が必要です。 ID プロバイダーが MFA の実行を要求するタイミングの制御は、ユーザーではなくテナント管理者が行います。 弊社の観測によると、MFA が必要なのは、他の国/地域からサインインする場合と VPN 経由で企業ネットワークに接続されていない場合です。ただし、VPN 経由で接続されている場合であっても MFA が必要になる可能性があります。 確定的なルール セットを想定しないでください。 Azure AD では、AI を使用して、MFA が必要かどうかを継続的に学習します。 IWA が失敗した場合は、対話型認証やデバイス コード フローなどのユーザー プロンプトにフォールバックしてください。
+  
+    IWA は非対話型ですが、MFA にはユーザーの操作が必要です。 ID プロバイダーが MFA の実行を要求するタイミングの制御は、ユーザーではなくテナント管理者が行います。 弊社の観測によると、MFA が必要なのは、他の国/地域からサインインする場合と VPN 経由で企業ネットワークに接続されていない場合です。ただし、VPN 経由で接続されている場合であっても MFA が必要になる可能性があります。 確定的なルール セットを想定しないでください。 Azure AD では、AI を使用して、MFA が必要かどうかを継続的に学習します。 IWA が失敗した場合は、対話型認証やデバイス コード フローなどのユーザー プロンプトにフォールバックしてください。
 
 - `PublicClientApplicationBuilder` で渡される機関の要件は次のとおりです。
   - `https://login.microsoftonline.com/{tenant}/` の形式でテナント化されている。ここで、`tenant` は、テナント ID を表す GUID またはテナントに関連付けられているドメインです。
@@ -602,14 +602,13 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
 ### <a name="this-flow-isnt-recommended"></a>推奨されないフロー
 
-アプリケーションでユーザーにパスワードを求めることは安全でないため、このフローは "*推奨されません*"。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。 Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 [デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
+アプリケーションでユーザーにパスワードを求めることは安全でないため、ユーザー名とパスワードのフローは "*推奨されません*"。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 [デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
 
-> [!NOTE]
-> DevOps シナリオなど、場合によっては、ユーザー名とパスワードを使用すると便利です。 ただし、独自の UI を提供する対話型のシナリオでユーザー名とパスワードを使用したい場合は、別の方法について検討してください。 ユーザー名とパスワードを使用すると、いくつかのことを放棄することになります。
->
-> - 最新の ID の核となる概念。 共有シークレットが傍受される可能性があるため、パスワードはフィッシングされて再生される可能性があります。 これは、パスワードレスとは互換性がありません。
-> - 対話式操作がないため、MFA を実行する必要がユーザーがサインインできない。
-> - ユーザーがシングル サインオン (SSO) できない。
+DevOps シナリオなど、場合によっては、ユーザー名とパスワードを使用すると便利です。 ただし、独自の UI を提供する対話型のシナリオでユーザー名とパスワードを使用したい場合は、別の方法について検討してください。 ユーザー名とパスワードを使用すると、いくつかのことを放棄することになります。
+
+- 最新の ID の核となる概念。 共有シークレットが傍受される可能性があるため、パスワードはフィッシングされて再生される可能性があります。 これは、パスワードレスとは互換性がありません。
+- 対話式操作がないため、MFA を実行する必要がユーザーがサインインできない。
+- ユーザーがシングル サインオン (SSO) できない。
 
 ### <a name="constraints"></a>制約
 

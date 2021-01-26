@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740591"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233969"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
@@ -52,6 +52,9 @@ Azure Monitor for VMs は、Arc 拡張サービスが利用可能なリージョ
 
 Azure Monitor for VMs では、Log Analytics エージェントと Dependency Agent をサポートするすべてのオペレーティング システムがサポートされています。 完全な一覧については、[Azure Monitor エージェントの概要](../platform/agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
 
+> [!IMPORTANT]
+> パブリック プレビュー段階の間、Azure Monitor for VMs のゲストの正常性機能では、オペレーティング システムのサポートが制限されています。 詳細な一覧については、「[Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする](vminsights-health-enable.md)」を参照してください。
+
 Azure Monitor for VMs をサポートする Dependency Agent の Linux サポートについては、次の考慮事項の一覧を確認してください。
 
 - 既定と SMP Linux のカーネル リリースのみがサポートされています。
@@ -63,7 +66,7 @@ Azure Monitor for VMs をサポートする Dependency Agent の Linux サポー
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
 Azure Monitor for VMs には Log Analytics ワークスペースが必要です。 このワークスペースの詳細と要件については、「[Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する](vminsights-configure-workspace.md)」を参照してください。
 ## <a name="agents"></a>エージェント
-Azure Monitor for VMs では、監視する各仮想マシンまたは仮想マシン スケール セットに、次の 2 つのエージェントをインストールする必要があります。 これらのエージェントをインストールしてワークスペースに接続することは、リソースをオンボードするための唯一の要件です。
+Azure Monitor for VMs では、監視する各仮想マシンまたは仮想マシン スケール セットに、次の 2 つのエージェントをインストールする必要があります。 リソースをオンボードするには、これらのエージェントをインストールし、ワークスペースに接続します。  これらのエージェントのネットワーク要件については、「[ネットワークの要件](../platform/log-analytics-agent.md#network-requirements)」を参照してください。
 
 - [Log Analytics エージェント](../platform/log-analytics-agent.md)。 仮想マシンまたは仮想マシン スケール セットからイベントおよびパフォーマンス データを収集し、Log Analytics ワークスペースに配信します。 Azure リソース上の Log Analytics エージェントのデプロイ方法では、[Windows](../../virtual-machines/extensions/oms-windows.md) および [Linux](../../virtual-machines/extensions/oms-linux.md) 用の VM 拡張機能を使用します。
 - Dependency Agent。 仮想マシンで実行されているプロセス、および外部プロセスの依存関係に関する検出データを収集します。これは、[Azure Monitor for VMs のマップの機能](vminsights-maps.md)で使用されます。 Dependency Agent は、Azure Monitor へのデータの配信に関して Log Analytics エージェントに依存しています。 Azure リソース上の Dependency Agent のデプロイ方法では、[Windows](../../virtual-machines/extensions/agent-dependency-windows.md) および [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 用の VM 拡張機能を使用します。

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 26097408d0b83b043f4a25183146c892fc4b48ad
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127704"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538552"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API の一般的な問題のトラブルシューティング
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "98127704"
 | 67 | CannotCreateIndex | インデックスを作成する要求を完了できません。 | 1 つのコンテナー内に最大 500 の単一フィールド インデックスを作成できます。 複合インデックスには最大 8 つのフィールドを含めることができます (複合インデックスはバージョン 3.6 以降でサポートされます)。 |
 | 115 | CommandNotSupported | 試行された要求はサポートされていません。 | 追加の詳細情報はエラーに記載されています。 使用されているデプロイでこの機能が重要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) でサポート チケットを作成してお問い合わせください。 |
 | 11000 | DuplicateKey | 挿入しようとしているドキュメントのシャード キー (Azure Cosmos DB パーティション キー) が既にコレクションに存在するか、一意なインデックス フィールド制約に違反しています。 | update() 関数を使用して、既存のドキュメントを更新してください。 一意なインデックス フィールド制約に違反している場合は、シャードまたはパーティションにまだ存在しないフィールド値を使用してドキュメントを挿入または更新してください。 |
-| 16500 | TooManyRequests  | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済みの要求ユニット レートを超えたために調整されました。 | Azure portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングすることを検討してください。または、操作を再試行できます。 SSR (サーバー側の再試行) を有効にした場合、Azure Cosmos DB は、このエラーが原因で失敗した要求を自動的に再試行します。 |
+| 16500 | TooManyRequests  | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済みの要求ユニット レートを超えたために調整されました。 | Azure portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングすることを検討してください。または、操作を再試行できます。 [SSR を有効にした](prevent-rate-limiting-errors.md)場合 (サーバー側の再試行)、Azure Cosmos DB はこのエラーで失敗する要求を自動的に再試行します。 |
 | 16501 | ExceededMemoryLimit | マルチテナント サービスとしての操作が、クライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 例: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | 認識されないパイプライン ステージ名。 | 集計パイプライン要求のステージ名が認識されませんでした。 | 要求ですべての集計パイプライン名が有効であることを確認してください。 |
 | - | MongoDB ワイヤ バージョンの問題 | 古いバージョンの MongoDB ドライバーは、Azure Cosmos アカウントの名前を接続文字列から検出できません。 | Cosmos DB の MongoDB 用 API の接続文字列用の末尾に *appName=@**accountName**@* を追加します。***accountName*** は Cosmos DB アカウント名です。 |

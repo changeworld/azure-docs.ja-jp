@@ -1,14 +1,14 @@
 ---
 title: 修復できるポリシーをデプロイする
 description: Azure Lighthouse を通して修復タスクを使用するポリシーをデプロイするには、顧客テナント内にマネージド ID を作成する必要があります。
-ms.date: 12/17/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670493"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233884"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
@@ -19,9 +19,9 @@ ms.locfileid: "97670493"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>顧客のテナント内でマネージド ID にロールを割り当てることができるユーザーを作成する
 
-Azure Lighthouse に顧客をオンボードする際には、[Azure Resource Manager テンプレート](onboard-customer.md#create-an-azure-resource-manager-template)と、顧客テナント内の委任されたリソースにアクセスできる、管理主体となるテナントのユーザー、ユーザー グループ、サービス プリンシパルを定義しているパラメーター ファイルを使用します。 パラメーター ファイルでは、ファイルに定義した各ユーザー (**principalId**) に対して、アクセス権のレベルを定めた [組み込みロール](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) が割り当てられます。
+Azure Lighthouse に顧客をオンボードするときには、[Azure Resource Manager テンプレート](onboard-customer.md#create-an-azure-resource-manager-template)とパラメーター ファイルを使用し、顧客テナント内の委任されたリソースにアクセスを付与する承認ワークフローを定義します。 承認ごとに、管理テナントの Azure AD ユーザー、グループ、サービス プリンシパルに対応する **principalId** と、付与される [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)に対応する **roleDefinitionId** が指定されます。
 
-ある **principalId** に顧客テナント内でのマネージド ID の作成を許可するには、**roleDefinitionId** を **ユーザー アクセス管理者** に設定する必要があります。 このロールは一般にサポートされているものではありませんが、今回のように、このアクセス許可が設定されているユーザーがマネージド ID に対していくつかの組み込みロールを割り当てられるようにするシナリオでは利用が可能です。 これらのロールは、**delegatedRoleDefinitionIds** プロパティで定義します。 そこには、ユーザー アクセス管理者または所有者を除き、あらゆる組み込みロールを指定できます。
+ある **principalId** に顧客テナント内でのマネージド ID の作成を許可するには、**roleDefinitionId** を **ユーザー アクセス管理者** に設定する必要があります。 このロールは一般にサポートされているものではありませんが、今回のように、このアクセス許可が設定されているユーザー アカウントがマネージド ID に対していくつかの組み込みロールを割り当てられるようにするシナリオでは利用が可能です。 これらのロールは **delegatedRoleDefinitionIds** プロパティに定義されており、ユーザー アクセスの管理者と所有者を除き、あらゆる[サポートされている Azure 組み込みロール](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)を含めることができます。
 
 顧客のオンボードが終わると、この承認で作成された **principalId** が、顧客テナント内のマネージド ID にこれらの組み込みロールを割り当てることができるようになります。 ただし、ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可が付与されることはありません。
 

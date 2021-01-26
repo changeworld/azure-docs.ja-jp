@@ -3,12 +3,12 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532105"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233850"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -20,7 +20,7 @@ ms.locfileid: "90532105"
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md)、または[その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md)、または [その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
     * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](./create-new-resource.md)のみを行ってください。* "
 
@@ -65,7 +65,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="retention---how-many-users-come-back"></a>リテンション期間 - サービスの利用を再開したユーザーの数
 
-リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
+リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
 
 - どのような特定の機能により、どのような特定のユーザーが使用を再開したかを把握します 
 - 実際のユーザー データに基づいて仮説を立てます 
@@ -79,7 +79,9 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="custom-business-events"></a>カスタム ビジネス イベント
 
-アプリでユーザーが何を行っているかを明確に把握するには、カスタム イベントをログに記録するコード行を挿入すると便利です。 これらのイベントにより、特定のボタンのクリックなどの詳細なユーザー アクションから、購入、ゲームに勝つなどのより重要なビジネス イベントまで追跡できます。 
+アプリでユーザーが何を行っているかを明確に把握するには、カスタム イベントをログに記録するコード行を挿入すると便利です。 これらのイベントにより、特定のボタンのクリックなどの詳細なユーザー アクションから、購入、ゲームに勝つなどのより重要なビジネス イベントまで追跡できます。
+
+[Click Analytics Auto-collection Plugin](javascript-click-analytics-plugin.md) を使用してカスタム イベントを回収することもできます。
 
 ページ ビューでは、役立つイベントを表すことができる場合もありますが、通常そうではないことがほとんどです。 ユーザーは、製品を購入しなくても製品ページを開くことができます。 
 

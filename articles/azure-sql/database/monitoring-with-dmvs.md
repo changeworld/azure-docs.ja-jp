@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493644"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219132"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>動的管理ビューを使用した Microsoft Azure SQL Database および Azure SQL Managed Instance のパフォーマンスの監視
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL Database および Azure SQL Managed Instance では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。 このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
+Microsoft Azure SQL Database および Azure SQL Managed Instance では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。 この記事では、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
 
 Microsoft Azure SQL Database および Azure SQL Managed Instance では、動的管理ビューの 3 つのカテゴリが部分的にサポートされています。
 
@@ -254,12 +254,12 @@ GO
 
 IO パフォーマンスに関する問題を特定する場合、`tempdb` の問題に関連している待機の種類の上位は `PAGELATCH_*` です (`PAGEIOLATCH_*` ではありません)。 ただし、`PAGELATCH_*` 待機は必ずしも `tempdb` 競合があることを意味しません。  この待機は、同一のデータ ページを対象とする同時要求が原因で、ユーザーオブジェクト データ ページ競合が発生していることを意味する場合もあります。 `tempdb` 競合をさらに確認するには、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) を使用して、wait_resource 値が `2:x:y` で始まることを確認します。ここで、2 は `tempdb` (データベース ID)、`x` はファイル ID、`y` はページ ID です。  
 
-tempdb 競合では、`tempdb` が使用されるアプリケーション コードを減らすか、または書き直すのが一般的な方法です。  `tempdb` の一般的な使用領域には以下があります。
+tempdb 競合では、`tempdb` が使用されるアプリケーション コードを減らすか、書き直すのが一般的な方法です。  `tempdb` の一般的な使用領域には以下があります。
 
 - 一時テーブル
 - テーブル変数
 - テーブル値パラメーター
-- バージョン ストアの使用 (実行時間の長いトランザクションに特に関連)
+- バージョン ストアの使用 (実行時間の長いトランザクションに関連)
 - 並べ替え、ハッシュ結合、スプールが使用されるクエリ プランがあるクエリ
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>テーブル変数と一時テーブルが使用される上位のクエリ
@@ -563,7 +563,7 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
@@ -589,7 +589,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![The sys.resource_stats catalog view](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -699,7 +699,7 @@ AND D.name = 'MyDatabase';
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 SQL Server のワークロードを分析する場合は、特定のデータベースが対象になるようにクエリを変更してください。 このクエリは、Azure への移行を検討している場合に、データベースの潜在的なセッションのニーズを判断するのに役立ちます。
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 ここでも、これらのクエリはある時点の数を返します。 時間をかけて複数のサンプルを集めると、セッションの使用状況を正確に把握できます。
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>クエリのブロックの監視
 
-クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。 ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。 sys.dm_tran_locks ビューを使用すると、データベースで現在ロックされているアクティビティに関する情報を取得することができます。 サンプル コードについては、「[sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)」を参照してください。
+クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。 ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。 sys.dm_tran_locks ビューを使用すると、データベースで現在ロックされているアクティビティに関する情報を取得することができます。 サンプル コードについては、「[sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)」を参照してください。 ブロッキングのトラブルシューティングの詳細については、[Azure SQL のブロックの問題の概要と解決策](understand-resolve-blocking.md)に関するページを参照してください。
 
 ### <a name="monitoring-query-plans"></a>クエリ プランの監視
 
