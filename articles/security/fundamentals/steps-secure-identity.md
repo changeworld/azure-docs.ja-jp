@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842024"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602444"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -81,7 +81,7 @@ Azure AD で直接 ID を作成した場合、[PowerShell を使用してユー�
 
 組織がパススルー認証またはフェデレーションによるハイブリッド ID ソリューションを使用する場合、次の 2 つの理由から、パスワード ハッシュ同期を有効にする必要があります。
 
-* Azure AD 管理の[資格情報が漏洩したユーザー](../../active-directory/identity-protection/overview-identity-protection.md) レポートでは、"闇サイト" で公開されているユーザー名とパスワードのペアについて、警告を受け取れます。 驚くほど大量のパスワードが、後にセキュリティ侵害されるサードパーティ サイトでのパスワードの再利用、フィッシング、マルウェアによって漏洩しています。 Microsoft は、これらの漏洩した資格情報の多くを発見し、それらがお客様の組織の資格情報に一致する場合に、このレポートでお客様に報告します。しかしそのためには、[パスワード ハッシュの同期を有効にしておく](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)必要があります。
+* Azure AD 管理の[資格情報が漏洩したユーザー](../../active-directory/identity-protection/overview-identity-protection.md) レポートでは、"闇サイト" で公開されているユーザー名とパスワードのペアについて、警告を受け取れます。 驚くほど大量のパスワードが、後にセキュリティ侵害されるサードパーティ サイトでのパスワードの再利用、フィッシング、マルウェアによって漏洩しています。 Microsoft は、漏洩した資格情報を多数発見しており、それらがお客様の組織の資格情報に一致する場合に、このレポートでお客様に報告します。ただし、そのためには、[パスワード ハッシュの同期を有効にしておくか](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)、クラウド専用 ID を所有している必要があります。
 * (たとえばランサムウェア攻撃で) オンプレミスの障害が発生した場合、[パスワード ハッシュ同期を使用するクラウド認証](../../active-directory/hybrid/choose-ad-authn.md)に切り替えることができます。このバックアップ認証方法では、Azure Active Directory による認証が構成されたアプリ (Microsoft 365 など) へのアクセスを継続できます。 この場合、IT スタッフはオンプレミスの停止が解決されるまで、個人のメール アカウントに頼ってデータを共有する必要はありません。
 
 [パスワード ハッシュ同期](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)のしくみについて、詳しくご確認ください。

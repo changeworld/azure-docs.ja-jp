@@ -4,17 +4,17 @@ description: BLOB データにアクセスできるように、アーカイブ �
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545936"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165673"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
@@ -29,9 +29,13 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>リハイドレートの進行状況を監視する
+
+リハイドレート中に、BLOB のプロパティの取得操作を使用して **アーカイブ ステータス** 属性をチェックし、層変更がいつ完了したかを確認します。 ステータスは、変更先の層に応じて "rehydrate-pending-to-hot" または "rehydrate-pending-to-cool" になります。 完了すると、アーカイブ ステータス プロパティが削除され、BLOB の **アクセス層** プロパティに新しい階層としてホット層またはクール層が反映されます。
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>アーカイブ済み BLOB をオンライン層にコピーする
 
-アーカイブ BLOB をリハイドレートしたくない場合は、[[BLOB のコピー]](/rest/api/storageservices/copy-blob) 操作の実行を選択できます。 オンラインのホット層またはクール層で、使用する新しい BLOB が作成されている間、元の BLOB はアーカイブ内で未変更のままとなります。 [BLOB のコピー] 操作では、オプションの *x-ms-rehydrate-priority* プロパティを Standard または High に設定して、BLOB コピーを作成する優先順位を指定することもできます。
+アーカイブ BLOB をリハイドレートしたくない場合は、[[BLOB のコピー]](/rest/api/storageservices/copy-blob) 操作の実行を選択できます。 オンラインのホット層またはクール層で、使用する新しい BLOB が作成されている間、元の BLOB はアーカイブ内で未変更のままとなります。 **[BLOB のコピー]** 操作では、オプションの *x-ms-rehydrate-priority* プロパティを Standard または High に設定して、BLOB コピーを作成する優先順位を指定することもできます。
 
 アーカイブからの BLOB のコピーは、選択されたリハイドレートの優先度によっては数時間かかることがあります。 **[BLOB のコピー]** 操作では、バックグラウンドでアーカイブ ソース BLOB が読み取られ、選択された移動先の層に新しいオンライン BLOB が作成されます。 BLOB を一覧表示すると新しい BLOB が表示される場合がありますが、ソース アーカイブ BLOB からの読み取りが完了し、データが新しいオンライン コピー先 BLOB に書き込まれるまでは、データを使用することができません。 新しい BLOB は独立したコピーであり、変更や削除を行ってもソース アーカイブ BLOB には影響しません。
 

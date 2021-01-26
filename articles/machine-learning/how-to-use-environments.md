@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826047"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601321"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -131,6 +131,8 @@ myenv.docker.base_image_registry="your_registry_location"
 #### <a name="use-your-own-dockerfile"></a>独自の Dockerfile を使用する 
 
 カスタム Dockerfile を指定することもできます。 Docker ```FROM``` コマンドを使用していずれかの Azure Machine Learning 基本イメージから開始し、独自のカスタム ステップを追加する方法が最も簡単です。 Python 以外のパッケージを依存関係としてインストールする必要がある場合は、この方法を使用します。 基本イメージは必ず [なし] に設定してください。
+
+Python は Azure Machine Learning における暗黙の依存関係であるため、カスタム dockerfile の場合、Python がインストールされていることが必要になります。
 
 ```python
 # Specify docker steps as a string. 

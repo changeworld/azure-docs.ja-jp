@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151514"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599096"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics 料金のコストを節約する
 
@@ -46,7 +46,7 @@ Azure Synapse Analytics の予約サイズは、使用するコンピューテ�
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. サブスクリプションを選択します。 [サブスクリプション] リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
-   - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
+   - エンタープライズ サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント) 残高から料金が差し引かれるか、超過分として課金されます。
    - 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 4. スコープを選択します。 [スコープ] リストを使用して、サブスクリプション スコープを選択します。
    - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。

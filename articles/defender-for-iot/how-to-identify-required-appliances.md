@@ -4,15 +4,15 @@ description: 認定済みの Defender for IoT センサーとオンプレミス�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836871"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246572"
 ---
 # <a name="identify-required-appliances"></a>必要なアプライアンスを特定する
 
@@ -254,28 +254,6 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 ## <a name="dell-r340-bom"></a>Dell R340 の BOM
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 の BOM。":::
-
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB でのデプロイ: Neousys Nuvo-5006LP
-
-| コンポーネント | 技術仕様 |
-|--|--|
-| 建設 | アルミニウム、ファンレス、防塵設計 |
-| Dimensions | 240 (幅) x 225 (奥行) x 77 (高さ) mm |
-| Weight | 3.1 kg (CPU、メモリ、HDD を含む) |
-| CPU | Intel Core i5-6500TE (6 M キャッシュ、最大 3.30 GHz) S1151 |
-| チップセット | Intel Q170 プラットフォーム コントローラー ハブ |
-| メモリ | 8 GB DDR4 2133 MHz 広温度対応 SODIMM |
-| ストレージ | 128 GB 3ME3 広温度対応 mSATA SSD |
-| ネットワーク コントローラー | 6 x ギガビット イーサネット ポート (Intel I219 に準拠) |
-| デバイス アクセス | 4 つの USB: 前面に 2 つ、背面に 2 つ、内部に 1 つ |
-| 電源アダプター | 120/240 VAC - 20 VDC/6 A |
-| 取り付け | 取り付けキット、DIN レール |
-| 動作温度 | \-25°C - 70°C |
-| ストレージの温度 | \-40°C - 85°C |
-| 湿度 | 10% - 90% (結露なし) |
-| 振動 | 動作時、5 Grms、5 - 500 Hz、3 軸 <br>(SSD 使用、IEC60068-2-64 に準拠) |
-| 衝撃 | 動作時、50 Grms、持続時間 11 ミリ秒の正弦半波 (SSD 使用、IEC60068-2-27 に準拠) |
-| EMC | CE/FCC クラス A (EN 55022、EN 55024、EN 55032 に準拠) |
 
 ## <a name="next-steps"></a>次のステップ
 

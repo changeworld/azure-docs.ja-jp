@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575960"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246470"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
 
@@ -97,11 +97,30 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
 1. 作成した AKS クラスターを選択します。
 
-1. **[デプロイ]** を選択します。
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット":::
 
+    リアルタイム エンドポイントの **[詳細]** 設定を変更することもできます。
+    
+    |[詳細] 設定|Description|
+    |---|---|
+    |Application Insights の診断とデータ収集を有効にする| Azure Application Insights を有効にして、デプロイされたエンドポイントからデータを収集するかどうか。 </br> 既定値: false |
+    |スコアリング タイムアウト| Web サービスのスコアリング呼び出しに適用するタイムアウト (ミリ秒)。</br>既定での動作は次のとおりです。60000|
+    |Auto scale enabled\(自動スケーリングの有効化\)|   Web サービスの自動スケールを有効にするかどうか。</br>既定値は: true|
+    |最小レプリカ数| この Web サービスを自動スケールするときに使用するコンテナーの最小数。</br>既定での動作は次のとおりです。1|
+    |最大レプリカ数| この Web サービスを自動スケールするときに使用するコンテナーの最大数。</br> 既定での動作は次のとおりです。10|
+    |ターゲット使用率|オートスケーラーがこの web サービスに対してメンテナンスを試行する目標使用率 (最大 100%)。</br> 既定での動作は次のとおりです。70|
+    |更新間隔|自動スケーラーがこの Web サービスのスケーリングを試みる頻度 (秒)。</br> 既定での動作は次のとおりです。1|
+    |CPU 予約容量|この Web サービスに割り当てる CPU コアの数。</br> 既定での動作は次のとおりです。0.1|
+    |メモリ予約容量|この Web サービスに割り当てるメモリの量 (GB 単位)。</br> 既定での動作は次のとおりです。0.5|
+        
+
+1. **[デプロイ]** を選択します。 
+
     デプロイが完了すると、キャンバスの上に成功通知が表示されます。 これには数分かかる可能性があります。
+
+> [!TIP]
+> リアルタイム エンドポイント設定ボックスで、 **[コンピューティングの種類]** に **[Azure コンテナー インスタンス]** を選択すると、**Azure コンテナー インスタンス** (ACI) にデプロイすることもできます。
+> Azure コンテナー インスタンスは、テストまたは開発に使用されます。 必要な RAM が 48 GB 未満である CPU ベースの小規模なワークロードには、ACI を使用します。
 
 ## <a name="view-the-real-time-endpoint"></a>リアルタイム エンドポイントを表示する
 

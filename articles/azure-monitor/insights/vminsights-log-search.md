@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186730"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234054"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 
@@ -92,7 +92,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 #### <a name="naming-and-classification"></a>命名と分類
 
-便宜上、接続のリモート側の IP アドレスは RemoteIp プロパティに加えられています。 受信接続の場合、RemoteIp は SourceIp と同じですが、送信接続の場合は DestinationIp と同じです。 RemoteDnsCanonicalNames プロパティは、RemoteIp 向けにマシンにより報告される DNS 正規名を表します。 RemoteDnsQuestions プロパティと RemoteClassification プロパティは、将来の使用のために予約されています。 
+便宜上、接続のリモート側の IP アドレスは RemoteIp プロパティに加えられています。 受信接続の場合、RemoteIp は SourceIp と同じですが、送信接続の場合は DestinationIp と同じです。 RemoteDnsCanonicalNames プロパティは、RemoteIp 向けにマシンにより報告される DNS 正規名を表します。 RemoteDnsQuestions プロパティは、RemoteIp のマシンによって報告された DNS の質問を表します。 RemoveClassification プロパティは、将来に使用するために予約されています。 
 
 #### <a name="geolocation"></a>地理的位置情報
 

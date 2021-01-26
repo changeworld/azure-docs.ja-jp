@@ -4,15 +4,15 @@ description: Windows Server の Azure ファイル共有の高速キャッシュ
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005331"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539245"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -52,9 +52,11 @@ driveletter:\ にアクセスできません。
 <a id="server-registration-missing-subscriptions"></a>**サーバー登録で一部の Azure サブスクリプションが一覧に表示されない**  
 ServerRegistration.exe を使用してサーバーを登録している場合、[Azure サブスクリプション] ドロップダウンをクリックしたとき、サブスクリプションが表示されません。
 
-この問題は、ServerRegistration.exe で現在、マルチテナント環境がサポートされていないために発生します。 この問題は、Azure File Sync エージェントの今後の更新で修正される予定です。
+この問題は、ServerRegistration.exe が最初の 5 つの Azure AD テナントからのみサブスクリプションを取得するために発生します。 
 
-この問題を回避するには、次の PowerShell コマンドを使用してサーバーを登録します。
+サーバーのサーバー登録テナントの制限を増やすには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync の下に 5 より大きい値を持つ ServerRegistrationTenantLimit という名前の DWORD 値を作成します。
+
+また、次の PowerShell コマンドを使用してサーバーを登録することで、この問題を回避することもできます。
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -199,10 +201,27 @@ Set-AzStorageSyncServerEndpoint `
 - **GetNextJob の完了状態が 0** であると記録されている場合、サーバーは Azure File Sync サービスと通信できます。 
     - サーバーでタスク マネージャーを開き、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスが実行されていることを確認します。 プロセスが実行されていない場合は、最初にサーバーの再起動を試みます。 サーバーを再起動しても問題が解決しない場合は、Azure File Sync [エージェントのバージョン](./storage-files-release-notes.md)を最新のものにアップグレードします。 
 
-- **GetNextJob の完了状態が -2134347756** であると記録されている場合、サーバーはファイアウォールまたはプロキシが原因で Azure File Sync サービスと通信できません。 
+- **GetNextJob completed with status: -2134347756** がログに記録されている場合、サーバーはファイアウォール、プロキシ、または TLS 暗号スイートの順序の構成が原因で Azure File Sync サービスと通信できません。 
     - サーバーがファイアウォールの背後にある場合は、送信ポート 443 が許可されていることを確認します。 ファイアウォールで特定のドメインへのトラフィックが制限されている場合は、ファイアウォールの[ドキュメント](./storage-sync-files-firewall-and-proxy.md#firewall)に記載されているドメインにアクセスできることを確認します。
     - サーバーがプロキシの背後にある場合は、プロキシの[ドキュメント](./storage-sync-files-firewall-and-proxy.md#proxy)に記載されている手順に従って、コンピューター全体またはアプリ固有のプロキシ設定を構成します。
     - このサービス エンドポイントへのネットワーク接続を確認するには、Test-StorageSyncNetworkConnectivity コマンドレットを使用します。 詳細については、[サービス エンドポイントへのネットワーク接続のテスト](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)に関するページを参照してください。
+    - TLS 暗号スイートの順序がサーバーで構成されている場合は、グループ ポリシーまたは TLS コマンドレットを使用して、暗号スイートを追加できます。
+        - グループ ポリシーを使用するには、「[グループ ポリシーを使用した TLS 暗号スイートの順序の構成](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)」を参照してください。
+        - TLS コマンドレットを使用するには、「[TLS PowerShell コマンドレットを使用した TLS 暗号スイートの順序の構成](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)」を参照してください。
+    
+        現在、Azure File Sync では TLS 1.2 プロトコル用の次の暗号スイートがサポートされています。  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - **GetNextJob の完了状態が -2134347764** であると記録されている場合、サーバーは証明書の有効期限切れまたは削除が原因で Azure File Sync サービスと通信できません。  
     - サーバーで次の PowerShell コマンドを実行して、認証に使用される証明書をリセットしてください。
@@ -897,6 +916,22 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **修復が必要か** | いいえ |
 
 このエラーは、データ インジェスト操作のタイムアウト期間が経過したときに発生します。 同期が進行中である (AppliedItemCount が 0 より大きい) 場合、このエラーは無視してもかまいません。 「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
+
+<a id="-2134375814"></a>**サーバーでサーバー エンドポイント パスが見つからないため、同期に失敗しました。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (10 進値)** | -2134375814 |
+| **エラー文字列** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **修復が必要か** | はい |
+
+このエラーは、サーバー エンドポイント パスとして使用されているディレクトリの名前が変更または削除されている場合に発生します。 ディレクトリの名前が変更されている場合は、ディレクトリの名前を元の名前に戻し、ストレージ同期エージェント サービス (FileSyncSvc) を再起動します。
+
+ディレクトリが削除されている場合は、次の手順を実行して既存のサーバー エンドポイントを削除し、新しいパスを使用して新しいサーバー エンドポイントを作成します。
+
+1. 「[サーバー エンドポイントを削除する](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)」に記載されている手順に従って、同期グループのサーバー エンドポイントを削除します。
+2. 「[サーバー エンドポイントを追加する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)」に記載されている手順に従って、同期グループに新しいサーバー エンドポイントを作成します。
 
 ### <a name="common-troubleshooting-steps"></a>一般的なトラブルシューティング手順
 <a id="troubleshoot-storage-account"></a>**ストレージ アカウントが存在することを確認します。**  

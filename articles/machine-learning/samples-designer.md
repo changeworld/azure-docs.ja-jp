@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555500"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556173"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのパイプラインとデータセットのサンプル
 
@@ -72,7 +72,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="classification"></a>分類
 
-以下の組み込みの分類のサンプルを確認します。 ドキュメント リンクのないサンプルの詳細については、代わりにサンプルを開いてモジュールのコメントをご確認ください。
+以下の組み込みの分類のサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
@@ -84,13 +84,15 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="computer-vision"></a>Computer Vision
 
-以下の組み込みの Computer Vision のサンプルを確認します。 ドキュメント リンクのないサンプルの詳細については、代わりにサンプルを開いてモジュールのコメントをご確認ください。
+以下の組み込みの Computer Vision のサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
 
+| サンプル タイトル | 説明 | 
+| --- | --- |
 | DenseNet を使用した画像の分類 | Computer Vision モジュールを使用して、PyTorch DenseNet を基にした画像の分類モデルを構築します。| 
 
 ## <a name="recommender"></a>レコメンダー
 
-以下の組み込みのレコメンダーのサンプルを確認します。 ドキュメント リンクのないサンプルの詳細については、代わりにサンプルを開いてモジュールのコメントをご確認ください。
+以下の組み込みのレコメンダーのサンプルを確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
@@ -99,7 +101,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="utility"></a>ユーティリティ
 
-機械学習のユーティリティと機能を示すサンプルの詳細を確認します。 ドキュメント リンクのないサンプルの詳細については、代わりにサンプルを開いてモジュールのコメントをご確認ください。
+機械学習のユーティリティと機能を示すサンプルの詳細を確認します。 サンプルの詳細については、デザイナーでサンプルを開いて、モジュールのコメントをご覧ください。
 
 | サンプル タイトル | 説明 | 
 | --- | --- |

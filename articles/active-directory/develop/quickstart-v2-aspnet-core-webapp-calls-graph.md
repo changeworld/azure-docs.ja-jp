@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 349caa9a4fa34d87e0a4d99089a1063be66307f4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017563"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178689"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>クイックスタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ
 
@@ -38,7 +38,7 @@ ms.locfileid: "98017563"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. [Azure portal の [アプリの登録]](https://aka.ms/aspnetcore-webapp-calls-graph-quickstart-v2) に移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetCoreWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >

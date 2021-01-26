@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121364"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234258"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -37,6 +37,8 @@ ms.locfileid: "98121364"
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 * このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
+
+このチュートリアルでは、Azure Kubernetes Service を Linux ノードで実行することを前提としています。
 
 ## <a name="use-managed-identities"></a>マネージド ID の使用
 
@@ -77,6 +79,8 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
     ![principalId と clientId の値が強調表示されている Azure CLI のスクリーンショット](../media/kubernetes-key-vault-2.png) ![subscriptionId と nodeResourceGroup の値が強調表示されている Azure CLI のスクリーンショット](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Helm とシークレット ストア CSI ドライバーをインストールする
+> [!NOTE]
+> 以下のインストールは、Linux 上の AKS でのみ機能します。 シークレット ストア CSI ドライバーのインストールの詳細については、「[シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure)」をご覧ください。 
 
 シークレット ストア CSI ドライバーをインストールするには、最初に [Helm](https://helm.sh/docs/intro/install/) をインストールする必要があります。
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 6a13d0a0ac0b37b5faf59e19cd13e5c3c2ee94dc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965563"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539280"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
 
@@ -53,7 +53,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 このチュートリアルを完了するには、以下を実行する必要があります。
 
 * スループットの見積もり、パーティション キーの選択、インデックス作成ポリシーなど、[移行前の手順を完了](../cosmos-db/mongodb-pre-migration.md)します。
-* [Azure Cosmos DB の MongoDB 用 API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+* [Azure Cosmos DB の MongoDB 用 API アカウントを作成](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)し、[SSR (サーバー側の再試行)](../cosmos-db/prevent-rate-limiting-errors.md) を有効にします。
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これにより、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。
 
     > [!NOTE]

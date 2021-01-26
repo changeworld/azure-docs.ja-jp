@@ -2,13 +2,13 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807629"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186211"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ
 
@@ -145,7 +145,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 * テナント内の管理グループ
 * subscriptions
 * リソース グループ
-* [拡張リソース](scope-extension-resources.md)はリソースに適用できます
+
+[拡張リソース](scope-extension-resources.md)は、デプロイ ターゲットとは異なるターゲットにスコープ設定できます。
 
 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
@@ -184,6 +185,8 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 次のテンプレートを使うと、管理グループを作成できます。
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
+
+テナントにデプロイするためのアクセス許可がアカウントにない場合でも、別のスコープにデプロイすることによって管理グループを作成できます。 詳細については、「[管理グループ](deploy-to-management-group.md#management-group)」を参照してください。
 
 ## <a name="assign-role"></a>ロールを割り当てる
 

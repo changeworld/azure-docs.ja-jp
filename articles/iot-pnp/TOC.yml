@@ -65,10 +65,12 @@
       href: howto-manage-digital-twin.md
     - name: デバイスを認定する
       href: howto-certify-device.md
-    - name: IoT プラグ アンド プレイ ブリッジをインストールして使用する
+    - name: IoT プラグ アンド プレイ ブリッジのサンプルを接続する方法
       href: howto-use-iot-pnp-bridge.md
-    - name: IoT プラグ アンド プレイ ブリッジを構築、デプロイ、拡張する
+    - name: IoT プラグ アンド プレイ ブリッジのビルドとデプロイ
       href: howto-build-deploy-extend-pnp-bridge.md
+    - name: IoT プラグ アンド プレイ ブリッジの拡張
+      href: howto-author-pnp-bridge-adapter.md
 - name: リファレンス
   items:
     - name: ライブラリと SDK

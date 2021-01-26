@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064727"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600287"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET を使用してクライアント アプリケーションを初期化する
 この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -166,3 +166,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
         .Build();
 ```
+
+## <a name="next-steps"></a>次の手順
+
+クライアント アプリケーションを初期化したら、次のタスクは、ユーザーのサインイン、認証された API アクセス、またはその両方のサポートを追加することです。
+
+アプリケーション シナリオのドキュメントには、ユーザーのサインインと、そのユーザーに代わって API にアクセスするためのアクセス トークンの取得に関するガイダンスが記載されています。
+
+- [ユーザーをサインインさせる Web アプリ:サインインとサインアウト](scenario-web-app-sign-user-sign-in.md)
+- [Web API を呼び出す Web アプリ: トークンを取得する](scenario-web-app-call-api-acquire-token.md)

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132603"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598268"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>請求およびコスト管理の自動化シナリオ
 
@@ -103,7 +103,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Enterprise Reporting API と Consumption API の違いは何ですか? それぞれはいつ使用すればよいですか?
 これらの API には同様の機能セットがあり、同じ領域の課金とコスト管理に関する問題に対応できます。 ただし、対象ユーザーが異なります。
 
-- Enterprise Reporting API は、交渉された年額コミットメントとカスタムの価格設定にアクセス可能な Enterprise Agreement を Microsoft と締結したお客様のみが利用できます。 使用するには、[Enterprise Portal](https://ea.azure.com) で取得できるキーが必要です。 この API の説明については、「[企業ユーザー向けの Reporting API の概要](enterprise-api.md)」を参照してください。
+- Enterprise Reporting API は、交渉された Azure 前払い (旧称: 年額コミットメント) とカスタムの価格設定にアクセス可能な Enterprise Agreement を Microsoft と締結したお客様のみが利用できます。 使用するには、[Enterprise Portal](https://ea.azure.com) で取得できるキーが必要です。 この API の説明については、「[企業ユーザー向けの Reporting API の概要](enterprise-api.md)」を参照してください。
 
 - Consumption API は、いくつかの例外はありますが、すべてのユーザーが利用できます。 詳細については、「[Azure Consumption API の概要](consumption-api-overview.md)」と [Azure Consumption API リファレンス](/rest/api/consumption/)のページを参照してください。 用意されている API を最新の開発シナリオに対するソリューションとして使用することをお勧めします。
 
@@ -112,7 +112,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 - [Usage Details API](/rest/api/consumption/usagedetails) は、測定インスタンスあたりの Azure の使用状況とコスト情報を提供します。 提供されるデータは、Azure のコスト測定システム経由で既に渡され、他の適用可能な変更と共にコストが適用されます。
 
-   - 前払いの年額コミットメントの使用の原因となる変更
+   - Azure 前払いの使用の原因となる変更
    - Azure によって検出された使用状況の不一致の原因となる変更
 
 - [Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) では、Azure のコスト測定システムを経由する前の生の Azure 使用状況情報が提供されます。 このデータは、Azure の課金測定システムの後に表示される使用状況または課金額とは相関関係がない場合があります。

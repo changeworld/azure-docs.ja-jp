@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 8667fc3c5224b1f75a9beeb95b6e1261c768c14d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347916"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199259"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する
 
@@ -96,6 +96,16 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 次の例では、前の例で作成されたユーザー委任 SAS を、シミュレートされたクライアント アプリケーションからテストします。 SAS が有効であれば、クライアント アプリケーションで BLOB の内容を読み取ることができます。 SAS が無効な場合 (たとえば、有効期限が切れている場合)、Azure Storage によってエラー コード 403 (禁止) が返されます。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListBlobsWithSasAsync":::
+
+## <a name="get-a-user-delegation-sas-for-a-directory"></a>ディレクトリ用のユーザー委任 SAS を取得する
+
+次のコード例は、階層型名前空間が有効にされているときに、ディレクトリ用のユーザー委任 SAS を生成する方法を示しています。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
+
+次の例では、前の例で作成されたユーザー委任 SAS を、シミュレートされたクライアント アプリケーションからテストします。 SAS が有効であれば、クライアント アプリケーションでこのディレクトリに対するファイル パスの一覧を表示することができます。 SAS が無効な場合 (たとえば、有効期限が切れている場合)、Azure Storage によってエラー コード 403 (禁止) が返されます。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListFilePathsWithDirectorySasAsync":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

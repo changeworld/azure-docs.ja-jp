@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308819"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222226"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database と Azure Synapse Analytics サーバーのリソース制限
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ ms.locfileid: "93308819"
 - データベースまたはエラスティック プールのサービス レベルまたはコンピューティング サイズを高くします。 [シングルトンのリソースの拡大縮小に関する記事](single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](elastic-pool-scale.md)を参照してください。
 - ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 - [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (並列処理の最大限度) の設定を減らします。
-- クエリのワークロードを最適化して、発生回数とクエリ ブロックの時間を削減します。
+- クエリのワークロードを最適化して、発生回数とクエリ ブロックの時間を削減します。 詳細については、「[Azure SQL のブロックの問題を理解して解決する](understand-resolve-blocking.md)」を参照してください。
 
 ### <a name="memory"></a>メモリ
 
@@ -113,9 +113,9 @@ Azure SQL Database には、高可用性とディザスター リカバリー、
 
 ユーザー ワークロードと内部プロセスによる最近のリソース消費の詳細な内訳は、[sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) および [sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) ビューで報告されます。 これらのビューで参照されているリソース プールとワークロード グループの詳細については、「[リソース管理](#resource-governance)」を参照してください。 これらのビューでは、関連付けられているリソース プールおよびワークロード グループにおける、ユーザー ワークロードと特定の内部プロセスによるリソース使用量が報告されます。
 
-パフォーマンスの監視とトラブルシューティングのコンテキストでは、 **ユーザーの CPU 消費量** (`avg_cpu_percent`、`cpu_percent`) と、ユーザー ワークロードと内部プロセスによる **合計 CPU 消費量** (`avg_instance_cpu_percent`、`sqlserver_process_core_percent`) の両方を考慮することが重要です。
+パフォーマンスの監視とトラブルシューティングのコンテキストでは、**ユーザーの CPU 消費量** (`avg_cpu_percent`、`cpu_percent`) と、ユーザー ワークロードと内部プロセスによる **合計 CPU 消費量** (`avg_instance_cpu_percent`、`sqlserver_process_core_percent`) の両方を考慮することが重要です。
 
-**ユーザー CPU 消費量** は、各サービス目標におけるユーザー ワークロードの上限に対する割合として計算されます。 **ユーザー CPU 使用率** が 100% の場合は、ユーザー ワークロードがサービス目標の上限に達したことを示します。 一方、 **合計 CPU 消費量** が 70 から 100% の範囲に達した場合は、報告される **ユーザー CPU 消費量** が 100% を大幅に下回ったままであっても、ユーザー ワークロードのスループットのフラット化とクエリの待機時間増が見られる可能性があります。 これは、コンピューティング リソースが適度に割り当てられている、より小さいサービス目標を使用していても、[高密度エラスティック プール](elastic-pool-resource-management.md)のような比較的集中的なユーザー ワークロードの場合に、発生する可能性が高くなります。 また、データベースの新しいレプリカを作成する場合など、内部プロセスで一時的に追加のリソースが必要な場合は、小さいサービス目標でも発生する可能性があります。
+**ユーザー CPU 消費量** は、各サービス目標におけるユーザー ワークロードの上限に対する割合として計算されます。 **ユーザー CPU 使用率** が 100% の場合は、ユーザー ワークロードがサービス目標の上限に達したことを示します。 一方、**合計 CPU 消費量** が 70 から 100% の範囲に達した場合は、報告される **ユーザー CPU 消費量** が 100% を大幅に下回ったままであっても、ユーザー ワークロードのスループットのフラット化とクエリの待機時間増が見られる可能性があります。 これは、コンピューティング リソースが適度に割り当てられている、より小さいサービス目標を使用していても、[高密度エラスティック プール](elastic-pool-resource-management.md)のような比較的集中的なユーザー ワークロードの場合に、発生する可能性が高くなります。 また、データベースの新しいレプリカを作成する場合など、内部プロセスで一時的に追加のリソースが必要な場合は、小さいサービス目標でも発生する可能性があります。
 
 **合計 CPU 消費量** が高い場合の軽減オプションは、前に説明したものと同じであり、サービス目標を高くする、ユーザー ワークロードを最適化することが含まれます。
 

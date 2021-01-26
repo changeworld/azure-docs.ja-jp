@@ -1,7 +1,7 @@
 ---
-title: 自動機械学習の実験でクロス検証とデータの分割を構成する
+title: 自動機械学習でのデータの分割とクロス検証
 titleSuffix: Azure Machine Learning
-description: 自動機械学習の実験のためにクロス検証とデータセットの分割を構成する方法について説明します
+description: 自動機械学習の実験のためにデータセットの分割とクロス検証を構成する方法について説明します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,25 +11,25 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360107"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599059"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
 
-この記事では、自動機械学習、AutoML、実験のトレーニング/検証データの分割とクロス検証を構成するための、さまざまなオプションについて説明します。
+この記事では、自動機械学習 (自動 ML) の実験のために、トレーニング データと検証データの分割をクロス検証設定とあわせて構成するためのさまざまなオプションについて説明します。
 
-Azure Machine Learning では、AutoML を使用して複数の ML モデルを構築する場合、各子実行では、そのモデルの品質メトリック (精度や加重 ACU など) を計算することによって関連モデルを検証する必要があります。 これらのメトリックは、各モデルで行われた予測を、検証データの過去の観測からの実際のラベルと比較することによって計算されます。 
+Azure Machine Learning では、自動 ML を使用して複数の ML モデルを構築する場合、各子実行でそのモデルの品質メトリック (精度や加重 AUC など) を計算することによって関連モデルを検証する必要があります。 これらのメトリックは、各モデルで行われた予測を、検証データの過去の観測からの実際のラベルと比較することによって計算されます。 [検証の種類に基づいたメトリックの計算方法の詳細については、こちらを参照してください。](#metric-calculation-for-cross-validation-in-machine-learning) 
 
-AutoML の実験では、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) で検証の設定をカスタマイズする方法について説明します。 
+自動 ML の実験によって、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) で検証の設定をカスタマイズする方法について説明します。 
 
 コードを使用しないエクスペリエンスの詳細については、[Azure Machine Learning Studio での自動機械学習の実験の作成](how-to-use-automated-ml-for-ml-models.md)に関するページを参照してください。 
 
 > [!NOTE]
-> 現時点でスタジオでは、トレーニング/検証データの分割とクロス検証のオプションがサポートされていますが、検証セットに個別のデータ ファイルを指定することはできません。 
+> 現時点でスタジオでは、トレーニングと検証データの分割とクロス検証オプションの両方がサポートされていますが、検証セットに個別のデータ ファイルを指定することはできません。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,15 +39,15 @@ AutoML の実験では、モデルの検証が自動的に実行されます。 
 
 * Azure Machine Learning SDK を使用した自動機械学習の実験の設定に関する知識。 [チュートリアル](tutorial-auto-train-models.md)または[方法](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
 
-* ML の概念としてのクロス検証とトレーニング/検証のデータの分割に関する知識。 概要については、以下を参照してください。
+* 機械学習の概念としてのトレーニングと検証データの分割およびクロス検証に関する知識。 概要については、以下を参照してください。
 
-    * [機械学習におけるトレーニング、検証、およびテストのセットについて](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [機械学習におけるトレーニング、検証、およびテスト データについて](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [クロス検証について](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [機械学習でのクロス検証について](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default--data-splits-and-cross-validation"></a>既定のデータの分割とクロス検証
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>機械学習での既定のデータ分割とクロス検証
 
-[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは **含まれていません** 。
+[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは **含まれていません**。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -62,16 +62,16 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-`validation_data` または `n_cross_validation` のいずれかのパラメーターを明示的に指定しない場合は、指定された 1 つのデータ セット `training_data` の行数に応じて、AutoML によって既定の方法が適用されます。
+`validation_data` または `n_cross_validation` のいずれかのパラメーターを明示的に指定しない場合は、1 つのデータセット `training_data` で指定された行数に応じて、自動 ML によって既定の方法が適用されます。
 
 |トレーニング&nbsp;データ&nbsp;のサイズ| 検証の方法 |
 |---|-----|
 |**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
-|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は** 、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は** 、3 つのフォールドが使用されます。
+|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
 
 ## <a name="provide-validation-data"></a>検証データを指定する
 
-この場合は、1 つのデータ ファイルから始めて、トレーニング セットと検証セットに分割するか、検証セット用に個別のデータ ファイルを指定することができます。 どちらの方法でも、`AutoMLConfig` オブジェクトの `validation_data` パラメーターによって、検証セットとして使用するデータが割り当てられます。 このパラメーターは、[Azure Machine Learning データセット](how-to-create-register-datasets.md)または Pandas データフレームの形式のデータセットのみを受け入れます。   
+この場合は、1 つのデータ ファイルから始めて、トレーニング データと検証データ セットに分割するか、検証セット用に個別のデータ ファイルを指定することができます。 どちらの方法でも、`AutoMLConfig` オブジェクトの `validation_data` パラメーターによって、検証セットとして使用するデータが割り当てられます。 このパラメーターは、[Azure Machine Learning データセット](how-to-create-register-datasets.md)または Pandas データフレームの形式のデータセットのみを受け入れます。   
 
 次のコード例では、トレーニングと検証に使用する `dataset` 内の指定されたデータの一部を明示的に定義します。
 
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>検証セットのサイズを指定する
 
-この場合、実験には 1 つのデータセットのみが指定されています。 つまり、`validation_data` パラメーターは **指定されず** 、指定されたデータセットは `training_data` パラメーターに割り当てられます。  `AutoMLConfig` オブジェクトでは、検証用にトレーニング データの一部を提示するように `validation_size` パラメーターを設定できます。 これは、検証セットが指定された初期の `training_data` から AutoML によって分割されることを意味します。 この値は 0.0 より大きく 1.0 未満である必要があります (たとえば、0.2 は、データの 20% が検証データ用に提示されることを意味します)。
+この場合、実験には 1 つのデータセットのみが指定されています。 つまり、`validation_data` パラメーターは **指定されず**、指定されたデータセットは `training_data` パラメーターに割り当てられます。  `AutoMLConfig` オブジェクトでは、検証用にトレーニング データの一部を提示するように `validation_size` パラメーターを設定できます。 これは、検証セットが指定された初期の `training_data` から AutoML によって分割されることを意味します。 この値は 0.0 より大きく 1.0 未満である必要があります (たとえば、0.2 は、データの 20% が検証データ用に提示されることを意味します)。
 
 次のコード例をご覧ください。
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > `cv_split_column_names` を `training_data` および `label_column_name` と共に使用するには、Azure Machine Learning Python SDK バージョン 1.6.0 以降をアップグレードしてください。 以前のバージョンの SDK の場合は、`cv_splits_indices` の使用を参照してください。ただし、`X` と `y` のデータセット入力のみで使用されていることに注意してください。 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>機械学習でのクロス検証のメトリック計算
+
+K 分割またはモンテカルロ クロス検証を使用すると、各検証のフォールドでメトリックが計算され、集計されます。 この集計操作は、スカラー メトリックの平均であり、グラフの合計です。 クロス検証中に計算されるメトリックは、すべてのフォールドに基づいているため、トレーニング セットのすべてのサンプルです。 [自動機械学習のメトリックの詳細については、こちらを参照してください。](how-to-understand-automated-ml.md)
+
+カスタム検証セットまたは自動的に選択された検証セットを使用すると、モデルの評価メトリックは、トレーニング データではなく、その検証セットからのみ計算されます。
 
 ## <a name="next-steps"></a>次のステップ
 

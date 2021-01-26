@@ -1,8 +1,6 @@
 ---
 title: セルフホステッド統合ランタイムの自動更新と期限切れ通知
 description: セルフホステッド統合ランタイムの自動更新と期限切れ通知について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
@@ -11,12 +9,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 6a6c897d92d469fd6247dd51f2bacb91032ac123
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8c51839e760dcca32bfc0d150c5e4d10767d95a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121932"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222685"
 ---
 # <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>セルフホステッド統合ランタイムの自動更新と期限切れ通知
 
@@ -33,7 +31,7 @@ ms.locfileid: "98121932"
 
 セルフホステッド統合ランタイム クライアントで最終更新の日付と時刻を確認できます。
 
-![自動更新を有効にする](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
+![更新時刻の確認のスクリーンショット](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
 
 > [!NOTE]
 > セルフホステッド統合ランタイムの安定性を確保するために、2 つのバージョンをリリースしても、それが自動的に更新されるのは毎月 1 回だけです。 そのため、自動更新されたバージョンが、実際の最新バージョンの以前のバージョンであることに気付く場合があります。 最新バージョンを取得する場合は、[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)に移動できます。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d691807f673dcd6c8147c9ff18a95c6ce0c88ae6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349975"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247439"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>チュートリアル:Blink を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -50,7 +50,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="setup-blink-for-provisioning"></a>プロビジョニングのために Blink を設定する
 
-1. SCIM トークンを要求するには、[サポート ケース](https://support.joinblink.com)のログに記録するか、**Blink サポート** (support@joinblink.com) 宛にメールで送信します。 。
+1. SCIM トークンを要求するには、[サポート ケース](https://support.joinblink.com)のログに記録するか、**Blink サポート** (support@joinblink.com) 宛にメールで送信します。
 
 2.  **SCIM 認証トークン** をコピーします。 この値を、Azure portal で Blink アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
@@ -117,7 +117,23 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
 9. **[属性マッピング]** セクションで、Azure AD から Blink に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Blink のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Blink のユーザー属性](media/blink-provisioning-tutorial/user-attributes.png)
+   |属性|Type|フィルター処理のサポート|
+   |---|---|---|
+   |userName|String|&check;|
+   |active|Boolean|
+   |title|String|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+   |urn:ietf:params:scim:schemas:extension:blink:2.0:User:company|String|
+   urn:ietf:params:scim:schemas:extension:blink:2.0:User:description|String|
+   urn:ietf:params:scim:schemas:extension:blink:2.0:User:location|String|
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -137,11 +153,23 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+* [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+* [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
+
+
+## <a name="change-log"></a>ログの変更
+
+* 2021 年 1 月 14 日 - カスタム拡張属性 **company**、**description**、**location** を追加しました。
+
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)

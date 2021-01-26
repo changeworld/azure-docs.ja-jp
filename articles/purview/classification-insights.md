@@ -1,18 +1,18 @@
 ---
-title: Purview の分析情報を使用したデータの分類レポート (プレビュー)
-description: このハウツーガイドでは、データに関する Purview の分析情報分類レポートを表示して使用する方法について説明します。
+title: Purview Insights を使用した Azure Purview のデータに関する分類レポート
+description: この攻略ガイドでは、データに関する Purview の分類レポートを表示して使用する方法について説明します。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938887"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196539"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関する分類の分析情報
 
@@ -33,7 +33,9 @@ Purview の分析情報の使用を開始する前に、次の手順を完了し
 
 - Azure リソースを設定し、関連するアカウントにテスト データを設定している
 
-- 各データ ソースのテスト データに対するスキャンを設定して完了している 
+- 各データ ソースのテスト データに対するスキャンを設定して完了している
+
+- [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)を持つアカウントを使用して Purview にサインインします。
 
 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」を参照してください。
 

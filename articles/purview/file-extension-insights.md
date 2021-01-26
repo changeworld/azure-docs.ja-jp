@@ -1,18 +1,18 @@
 ---
-title: Purview の分析情報を使用したデータのファイル拡張子レポート
-description: このハウツーガイドでは、データに関する Purview の分析情報のファイル拡張子レポートを表示して使用する方法について説明します。
+title: Purview Insights を使用した Azure Purview のデータに関するファイル拡張子レポート
+description: この攻略ガイドでは、データに関する Purview ファイル拡張子レポートを表示して使用する方法について説明します。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746286"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202625"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関するファイル拡張子の分析情報 
 
@@ -33,6 +33,9 @@ Purview の分析情報の使用を開始する前に、次の手順を完了し
 - Azure リソースを設定し、関連するアカウントにテスト データを設定している
 
 - 各データ ソースのテスト データに対するスキャンを設定して完了している
+
+- [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)を持つアカウントを使用して Purview にサインインします。
+
 
 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」を参照してください。
 
@@ -96,7 +99,7 @@ Azure Purview は資産をスキャンするとき、データ資産内のファ
 グリッドを並べ替えるには、列のヘッダーを選択して、その列で並べ替えます。
 ## <a name="next-steps"></a>次のステップ
 
-Azure Purview の分析情報レポートの詳細について学習する
+Azure Purview の分析情報レポートの詳細について学習します
 > [!div class="nextstepaction"]
 > [用語集の分析情報](glossary-insights.md)
 

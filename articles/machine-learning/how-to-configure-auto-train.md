@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134366"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600065"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、**Pandas DataFrame** または **Azure Machine Learning TabularDataset** に読み込むことができます。 [データセットの詳細情報](how-to-create-register-datasets.md).
 
-トレーニング データの要件:
+機械学習でのトレーニング データの要件:
 - データは表形式である必要があります。
 - 予測する値、ターゲット列は、データ内にある必要があります。
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>トレーニング、検証、テストのデータ
 
-`AutoMLConfig` コンストラクターでは、個別の **トレーニングおよび検証セット** を直接指定できます。 AutoML 実験用に[データの分割とクロス検証を構成する方法](how-to-configure-cross-validation-data-splits.md)に関するページをご確認ください。 
+`AutoMLConfig` コンストラクターでは、個別の **トレーニング データと検証データのセット** を直接指定できます。 AutoML 実験用に[データの分割とクロス検証を構成する方法](how-to-configure-cross-validation-data-splits.md)に関するページをご確認ください。 
 
-`validation_data` または `n_cross_validation` パラメーターを明示的に指定しなかった場合、AutoML で検証の実行方法を決定するための既定の手法が適用されます。 この決定は、`training_data` パラメーターに割り当てられたデータセット内の行の数によって異なります。 
+`validation_data` または `n_cross_validation` パラメーターを明示的に指定しない場合、自動 ML では、既定の手法を適用して検証の実行方法を決定します。 この決定は、`training_data` パラメーターに割り当てられたデータセット内の行の数によって異なります。 
 
 |トレーニング&nbsp;データ&nbsp;のサイズ| 検証の方法 |
 |---|-----|

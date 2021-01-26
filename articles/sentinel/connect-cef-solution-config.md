@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: fec3f25c4b401ff7c3bc73d249b716b9c12e6529
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 80e5cc18888b0e014fc1f617ca27dee05146472e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548547"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567685"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>手順 2: CEF メッセージを送信するように、セキュリティ ソリューションを構成する
 
@@ -31,15 +31,20 @@ ms.locfileid: "96548547"
 
 - [AI Vectra 検出](connect-ai-vectra-detect.md)
 - [Check Point](connect-checkpoint.md)
-- [Cisco](connect-cisco.md)
+- [Cisco ASA](connect-cisco.md)
+- [Citrix WAF](connect-citrix-waf.md)
+- [CyberArk Enterprise Password Vault](connect-cyberark.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
-- [F5 ASM](connect-f5.md)  
+- [F5 ASM](connect-f5.md)
 - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
 - [Fortinet](connect-fortinet.md)
 - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
+- [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
+- [WireX Network Forensics Platform](connect-wirex-systems.md)
 - [Zscaler](connect-zscaler.md)
 ## <a name="configure-any-other-solution"></a>その他のソリューションを構成する
 
@@ -60,9 +65,9 @@ ms.locfileid: "96548547"
 > [!NOTE]
 > **TimeGenerated フィールドのソースの変更**
 >
-> - 既定では、Log Analytics エージェントでは、エージェントが Syslog デーモンからイベントを受信した時刻がスキーマの *TimeGenerated* フィールドに設定されます。 そのため、ソース システムでイベントが生成された時刻は Azure Sentinel に記録されません。
+> - 既定では、Log Analytics エージェントでは、エージェントが Syslog デーモンからイベントを受信した時刻がスキーマの *TimeGenerated* フィールドに設定されます。 その結果、ソース システムでイベントが生成された時刻は Azure Sentinel に記録されません。
 >
-> - ただし、次のコマンドを実行すると、`TimeGenerated.py` スクリプトをダウンロードして実行できます。 このスクリプトにより、エージェントによる受信時刻ではなくソース システムの元の時刻を *TimeGenerated* フィールドに設定するように、Log Analytics エージェントが構成されます。
+> - ただし、次のコマンドを実行すると、 `TimeGenerated.py` スクリプトをダウンロードして実行できます。 このスクリプトにより、エージェントによる受信時刻ではなくソース システムの元の時刻を *TimeGenerated* フィールドに設定するように、Log Analytics エージェントが構成されます。
 >
 >    ```bash
 >    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}

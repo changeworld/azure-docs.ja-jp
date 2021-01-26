@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881511"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195876"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -194,6 +194,29 @@ foreach ($webapp in $webapp_list)
 ### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Lighthouse サブスクリプションはサポートされていません
 
 - **Microsoft ChangeAnalysis リソース プロバイダーの照会に失敗し**、「*Azure lighthouse サブスクリプションはサポートされていません。変更はサブスクリプションのホーム テナントでのみ行えます*」というようなメッセージを受け取ります。 変更分析リソース プロバイダーの登録に現時点で制限があり、ホーム テナントにないユーザーの Azure Lighthouse サブスクリプションを介して行うことができません。 この制限は、近い将来に解決される予定です。 これが障害となっている問題である場合、サービス プリンシパルを作成し、アクセスを許可するためのロールを明示的に割り当てることによって回避できます。  詳細については、changeanalysishelp@microsoft.com にお問い合わせください。
+
+### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>変更の取得中にエラーが発生しました。 このページを最新の情報に更新するか、後で戻って変更内容を表示してください
+
+これは、変更を読み込めなかったときにアプリケーション変更分析サービスによって表示される一般的なエラー メッセージです。 いくつかの既知の原因は次のとおりです。
+- クライアント デバイスからのインターネット接続エラー
+- 変更分析サービスが一時的に利用できないため、通常は、数分後にページを最新の情報に更新すると、この問題は解決されます。 エラーが解決しない場合は、changeanalysishelp@micorosoft.com にお問い合わせください
+
+### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>一部の変更を表示するのに十分なアクセス許可がありません。 Azure サブスクリプション管理者に連絡してください
+
+これは、現在のユーザーが変更を表示するのに十分なアクセス許可を持っていないことを示す一般的な未承認エラー メッセージです。 Azure Resource Graph と Azure Resource Manager によって返されるインフラストラクチャの変更を表示するには、少なくともリソースに対する閲覧者アクセス権が必要です。 Web アプリのゲスト内のファイルの変更と構成の変更については、少なくとも共同作成者ロールが必要です。
+
+### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Microsoft.ChangeAnalysis リソース プロバイダーを登録できませんでした
+このメッセージは、UI によってリソース プロバイダーの登録の要求が送信された直後に何かが失敗し、それがアクセス許可の問題に関係していないことを示しています。 一時的なインターネット接続の問題である可能性があります。 ページを更新し、インターネット接続を確認してみてください。 エラーが解決しない場合は、changeanalysishelp@microsoft.com にお問い合わせください
+ 
+### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>Microsoft.ChangeAnalysis リソース プロバイダーを登録するための十分なアクセス許可がありません。 Azure サブスクリプション管理者に連絡してください。
+このエラー メッセージは、現在のサブスクリプションのロールに、関連付けられている **Microsoft.Support/register/action** スコープがないことを意味します。 これは、サブスクリプションの所有者ではなく、同僚を通じて共有アクセス許可を取得した場合に発生する可能性があります。 つまり、リソース グループへの表示アクセス権です。 これを解決するには、サブスクリプションの所有者に問い合わせて、**Microsoft.ChangeAnalysis** リソースプロバイダーを登録します。 これは、Azure portal の **サブスクリプション | リソース プロバイダー** から行うことができ、```Microsoft.ChangeAnalysis``` を検索し、UI で、または Azure PowerShell や Azure CLI を使用して登録します。
+
+PowerShell を使用してリソース プロバイダーを登録します。 
+
+```PowerShell
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+```
 
 ## <a name="next-steps"></a>次のステップ
 

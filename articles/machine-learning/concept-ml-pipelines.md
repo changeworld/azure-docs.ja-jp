@@ -1,41 +1,30 @@
 ---
-title: Azure Machine Learning パイプラインとは
+title: 機械学習パイプラインとは
 titleSuffix: Azure Machine Learning
-description: 機械学習 (ML) パイプラインによって機械学習ワークフローを構築、最適化、管理する方法について説明します。
+description: 機械学習パイプラインによって機械学習ワークフローを構築、最適化、管理する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: ee3d7d1cf285573db894d64549cf79babb517d95
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131289"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185708"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
-この記事では、Azure Machine Learning パイプラインを使用して、機械学習ワークフローの構築、最適化、管理を行う方法について説明します。 これらのワークフローには、次のような多くの利点があります。 
-
-+ 簡便性
-+ 速度
-+ 再現性
-+ 柔軟性
-+ バージョン管理と追跡
-+ モジュール性 
-+ 品質保証
-+ コスト管理
-
-これらの利点は、機械学習プロジェクトが純粋な探索を超えてイテレーションに移行するとすぐに重要になります。 単純なワンステップ パイプラインでも役に立つことがあります。 機械学習プロジェクトは、多くの場合、複雑な状態にあり、1 つのワークフローを正確に完成させることが簡単なプロセスにするための救済方法になることがあります。
+この記事では、機械学習パイプラインを使用して、機械学習ワークフローの構築、最適化、管理を行う方法について説明します。 
 
 <a name="compare"></a>
-### <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure パイプライン テクノロジを使用すべきか
+## <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure パイプライン テクノロジを使用すべきか
 
-Azure クラウドでは、目的が異なるさまざまなパイプラインが提供されています。 次の表に、それらのさまざまなパイプラインとその用途を示します。
+Azure クラウドには、それぞれ目的が異なる複数の種類のパイプラインが用意されています。 次の表に、それらのさまざまなパイプラインとその用途を示します。
 
 | シナリオ | プライマリ ペルソナ | Azure オファリング | OSS オファリング | Canonical パイプ | 長所 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
@@ -43,7 +32,7 @@ Azure クラウドでは、目的が異なるさまざまなパイプライン�
 | データのオーケストレーション (データ準備) | データ エンジニア | [Azure Data Factory のパイプライン](../data-factory/concepts-pipelines-activities.md) | Apache Airflow | データ -> データ | 厳密に型指定された移動、データ中心のアクティビティ |
 | コードとアプリのオーケストレーション (CI/CD) | アプリ開発者/Ops | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | コード + モデル -> アプリとサービス | ほとんどのオープンで柔軟なアクティビティのサポート、承認キュー、ゲートを使用したフェーズ | 
 
-## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML パイプラインでできること
+## <a name="what-can-machine-learning-pipelines-do"></a>機械学習パイプラインでできること
 
 Azure Machine Learning パイプラインは、独立して実行できる完全な機械学習タスクのワークフローです。 サブタスクは、パイプライン内の一連のステップとしてカプセル化されます。 Azure Machine Learning パイプラインは、Python スクリプトを呼び出すのと同じくらいシンプルなものにすることができるため、ほとんどのことを実行 "_できます_"。 パイプラインは、次のような機械学習タスクに重点を置く "_必要があります_"。
 
@@ -64,9 +53,9 @@ Azure portal または[ワークスペースのランディング ページ (プ
 
 ### <a name="analyzing-dependencies"></a>依存関係の分析
 
-多くのプログラミング エコシステムは、リソース、ライブラリ、またはコンパイルの依存関係を調整するツールを備えています。 一般に、これらのツールでは、ファイルのタイムスタンプを使用して依存関係を計算します。 ファイルが変更されると、ファイルとその依存のみが更新 (ダウンロード、再コンパイル、またはパッケージ化) されます。 Azure ML パイプラインでは、この概念が拡張されています。 パイプラインでは、従来のビルド ツールと同様に、ステップ間の依存関係が計算され、必要な再計算のみが実行されます。 
+多くのプログラミング エコシステムは、リソース、ライブラリ、またはコンパイルの依存関係を調整するツールを備えています。 一般に、これらのツールでは、ファイルのタイムスタンプを使用して依存関係を計算します。 ファイルが変更されると、ファイルとその依存のみが更新 (ダウンロード、再コンパイル、またはパッケージ化) されます。 Azure Machine Learning パイプラインでは、この概念が拡張されます。 パイプラインでは、従来のビルド ツールと同様に、ステップ間の依存関係が計算され、必要な再計算のみが実行されます。 
 
-ただし、Azure ML パイプラインでの依存関係の分析は、単純なタイムスタンプよりも洗練されています。 すべてのステップを別のハードウェアやソフトウェア環境で実行できます。 データの準備は時間のかかるプロセスですが、強力な GPU を搭載したハードウェア上で実行する必要はありません。特定のステップでは、OS 固有のソフトウェアが必要な場合があります。分散トレーニングを使用する必要がある場合があります。 
+ただし、Azure Machine Learning パイプラインでの依存関係の分析は、単純なタイムスタンプよりも洗練されています。 すべてのステップを別のハードウェアやソフトウェア環境で実行できます。 データの準備は時間のかかるプロセスですが、強力な GPU を搭載したハードウェア上で実行する必要はありません。特定のステップでは、OS 固有のソフトウェアが必要な場合があります。分散トレーニングを使用する必要がある場合があります。 
 
 Azure Machine Learning により、パイプラインのステップ間のすべての依存関係が自動的に調整されます。 このオーケストレーションには、Docker イメージのスピンアップとスピンダウン、コンピューティング リソースのアタッチとデタッチ、一貫した自動的な方法でステップ間のデータ移動などが含まれます。
 
@@ -92,7 +81,7 @@ Azure Machine Learning により、パイプラインのステップ間のすべ
 
 [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) では、パイプラインは `azureml.pipeline.core` モジュールで定義されている Python オブジェクトです。 [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?preserve-view=true&view=azure-ml-py) オブジェクトには、1 つ以上の [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) オブジェクトの順序付けられたシーケンスが含まれています。 `PipelineStep` クラスは抽象であり、実際のステップは [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?preserve-view=true&view=azure-ml-py)、[PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?preserve-view=true&view=azure-ml-py)、[DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) などのサブクラスになります。 [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?preserve-view=true&view=azure-ml-py) クラスでは、パイプライン間で共有できる、再利用可能な一連のステップが保持されます。 `Pipeline` は `Experiment` の一部として実行されます。
 
-Azure ML パイプラインは、Azure Machine Learning ワークスペースに関連付けられています。パイプライン ステップは、そのワークスペース内で使用可能なコンピューティング ターゲットに関連付けられています。 詳細については、「[Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する](./how-to-manage-workspace.md)」または「[Azure Machine Learning でのコンピューティング先とは](./concept-compute-target.md)」を参照してください。
+Azure Machine Learning パイプラインは、Azure Machine Learning ワークスペースに関連付けられています。パイプライン ステップは、そのワークスペース内で使用可能なコンピューティング先に関連付けられています。 詳細については、「[Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する](./how-to-manage-workspace.md)」または「[Azure Machine Learning でのコンピューティング先とは](./concept-compute-target.md)」を参照してください。
 
 ### <a name="a-simple-python-pipeline"></a>単純な Python パイプライン
 
@@ -129,7 +118,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 `input_data` は [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) のインスタンスであり、`output_data` は [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) のインスタンスです。 `OutputFileDatasetConfig` の場合、既定の動作はパス `/dataset/{run-id}/{output-name}` の下で `workspaceblobstore` データストアに出力をコピーすることです。`run-id` は実行の ID であり、`output-name` は、開発者が指定していない場合、自動生成された値です。
+スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 `input_data` は [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) のインスタンスであり、`output_data` は [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) のインスタンスです。 `OutputFileDatasetConfig` の場合、既定の動作はパス `/dataset/{run-id}/{output-name}` の下で `workspaceblobstore` データストアに出力をコピーすることです。`run-id` は実行の ID であり、`output-name` は、開発者が指定していない場合に自動生成される値です。
 
 配列 `steps` には、1 つの要素 (データ オブジェクトを使用して `compute_target` 上で実行する `PythonScriptStep`) が保持されます。 次に、このコードによって `Pipeline` オブジェクト自体がインスタンス化され、ワークスペースとステップの配列が渡されます。 `experiment.submit(pipeline)` を呼び出すと、Azure ML パイプラインの実行が開始されます。 `wait_for_completion()` を呼び出すと、パイプラインが終了するまでブロックされます。 
 
@@ -158,8 +147,7 @@ pipeline_run.wait_for_completion()
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure ML パイプラインは、初期の開発段階で価値の提供を開始する強力な機能です。 チームとプロジェクトの規模が大きくなるにつれてその価値は増加します。 この記事では、Azure Machine Learning Python SDK でパイプラインを指定し、Azure で調整する方法について説明しました。 いくつかの単純なソース コードについて説明し、使用可能な `PipelineStep` クラスをいくつか紹介しました。 Azure ML パイプラインを使用するタイミングと、Azure でそれらを実行する方法について理解しておく必要があります。 
-
+Azure Machine Learning パイプラインは、初期の開発段階で価値の提供を開始する強力な機能です。 チームとプロジェクトの規模が大きくなるにつれてその価値は増加します。 この記事では、Azure Machine Learning Python SDK でパイプラインを指定し、Azure で調整する方法について説明しました。 いくつかの単純なソース コードについて説明し、使用可能な `PipelineStep` クラスをいくつか紹介しました。 Azure Machine Learning パイプラインを使用するタイミングと、Azure でそれらが実行される方法について理解しておく必要があります。 
 
 + [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法を学習します。
 

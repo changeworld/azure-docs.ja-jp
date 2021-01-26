@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/21/2020
-ms.openlocfilehash: c9b7d796612981f0e8194be84b0ed141721f644d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/31/2020
+ms.openlocfilehash: 3a2636ec73d20f3011d8413c794e68ef41b1829c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862379"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209187"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -30,11 +30,12 @@ ms.locfileid: "96862379"
 1. [Azure portal](https://portal.azure.com) を開き、上部で **Synapse** を検索します。
 1. 検索結果の **[サービス]** で、 **[Azure Synapse Analytics]** を選択します。
 1. **[追加]** を選択してワークスペースを作成します。
-1. **[基本]** で、使用する **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リージョン]** を入力し、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
-1. **[Data Lake Storage Gen 2 の選択]** に移動します。 
-1. **[新規作成]** をクリックし、「**contosolake**」という名前を付けます。
-1. **[ファイル システム]** をクリックし、**users** という名前を付けます。 これにより、**users** というコンテナーが作成されます。
+1. **[基本]** タブの [プロジェクトの詳細] で、使用する **サブスクリプション**、**リソース グループ**、**リージョン** を入力し、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
+1. **[Data Lake Storage Gen 2 の選択]** で、 **[From subscription]\(サブスクリプションから\)** のボタンをクリックします。
+1. **[アカウント名]** で、 **[新規作成]** をクリックし、新しいストレージ アカウントに **contosolake** などの名前を付けます。この名前は一意である必要があります。
+1. **[File system name]\(ファイル システム名\)** で、 **[新規作成]** をクリックし、**users** という名前を付けます。 これにより、**users** というストレージ コンテナーが作成されます。
 1. ワークスペースでは、このストレージ アカウントを Spark テーブルおよび Spark アプリケーション ログの "プライマリ" ストレージ アカウントとして使用します。
+1. "Data Lake Storage Gen2 アカウントのストレージ BLOB データ共同作成者ロールを自分に割り当てる" ためのボックスをオンにします。 
 1. **[確認と作成]**  >  **[作成]** の順に選択します。 ワークスペースの準備は数分で完了します。
 
 > [!NOTE]
@@ -45,8 +46,14 @@ ms.locfileid: "96862379"
 
 Azure Synapse ワークスペースが作成された後、Synapse Studio を開く方法は 2 つあります。
 
-* [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開きます。 **[概要]** セクションの上部にある **[Open Synapse Studio]\(Synapse Studio を開く\)** を選択します。
+* [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開き、Synapse ワークスペースの **[概要]** セクションで、[Synapse Studio の起動] ボックスの **[開く]** を選択します。
 * `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
+
+
+## <a name="the-built-in-serverless-sql-pool"></a>組み込みのサーバーレス SQL プール
+
+各ワークスペースは、**組み込み** と呼ばれる、事前構築されたサーバーレス SQL プールを備えています。 このプールを削除することはできません。 サーバーレス SQL プールでは、専用 SQL プールで容量を予約しなくても SQL を使用できます。 専用 SQL プールとは異なり、サーバーレス SQL プールの課金は、プールに割り当てられた容量の数ではなく、クエリを実行するためにスキャンされたデータの量に基づきます。
+
 
 ## <a name="create-a-dedicated-sql-pool"></a>専用 SQL プールを作成する
 
@@ -61,6 +68,7 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 > [!NOTE] 
 > ワークスペースに新しい専用 SQL プール (以前の SQL DW) を作成すると、専用の SQL プールのプロビジョニング ページが開きます。 プロビジョニングは、論理 SQL サーバー上で行われます。
 
+
 ## <a name="create-a-serverless-apache-spark-pool"></a>サーバーレス Apache Spark プールを作成する
 
 1. Synapse Studio の左側のペインで、 **[管理]**  >  **[Apache Spark プール]** を選択します。
@@ -72,9 +80,6 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 
 Spark プールから Azure Synapse に対して、使用する Spark リソースの数が指示されます。 支払いの対象となるのは、使用したリソースの分だけです。 プールの使用を能動的に停止すると、リソースは自動的にタイムアウトし、リサイクルされます。
 
-## <a name="the-built-in-serverless-sql-pool"></a>組み込みのサーバーレス SQL プール
-
-各ワークスペースは、**組み込み** と呼ばれる、事前構築されたサーバーレス SQL プールを備えています。 このプールを削除することはできません。 サーバーレス SQL プールでは、専用 SQL プールで容量を予約しなくても SQL を使用できます。 専用 SQL プールとは異なり、サーバーレス SQL プールの課金は、プールに割り当てられた容量の数ではなく、クエリを実行するためにスキャンされたデータの量に基づきます。
 
 ## <a name="next-steps"></a>次の手順
 

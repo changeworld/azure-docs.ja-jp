@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656056"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538388"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Azure DDoS Protection からデータを接続する
 
@@ -38,7 +38,7 @@ ms.locfileid: "94656056"
 
 1. データ コネクタ ギャラリーから **[Azure DDoS Protection]** を選択し、プレビュー ペインで **[Open Connector Page]\(コネクタ ページを開く\)** を選択します。
 
-1. 接続するログが存在するすべてのファイアウォールで **診断ログ** を有効にします。
+1. 接続するログが存在するすべてのパブリック IP アドレスで **診断ログ** を有効にします。
 
     1. **[Open Diagnostics settings]\(診断設定を開く\)** リンクを選択し、リストから **[パブリック IP アドレス]** リソースを選択します。
 

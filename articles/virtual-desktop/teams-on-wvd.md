@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505548"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217840"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
 >[!IMPORTANT]
->Teams のメディア最適化は、Microsoft 365 Government (GCC) 環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
+>Teams のメディア最適化は、Microsoft 365 Government (GCC) と　GCC-High　環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
 
 >[!NOTE]
 >Microsoft Teams のメディア最適化は、Windows 10 マシン上の Windows デスクトップ クライアントのみ利用できます。 メディア最適化の利用には、Windows デスクトップ クライアントのバージョン 1.2.1026.0 以降が必要です。
@@ -140,7 +140,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 
 ### <a name="calls-and-meetings"></a>通話と会議
 
-- Windows Virtual Desktop 環境内の Teams デスクトップ クライアントは、ライブ イベントをサポートしていません。 現時点でライブ イベントに参加する場合には、代わりにリモート セッション内で [Teams Web クライアント](https://teams.microsoft.com)を使用することをお勧めします。
+- Windows Virtual Desktop 環境内の Teams デスクトップ クライアントでは、ライブ イベントの作成はサポートされませんが、ライブ イベントに参加することはできます。 現時点でライブ イベントを作成する場合には、代わりにリモート セッション内で [Teams Web クライアント](https://teams.microsoft.com)を使用することをお勧めします。
 - 通話、会議とも、現時点ではアプリケーションの共有をサポートしていません。 デスクトップ セッションは、デスクトップ共有をサポートしています。
 - 制御の付与と取得は、現時点ではサポートされていません。
 - Windows Virtual Desktop 上の Teams は、一度に 1 つの着信ビデオ入力のみをサポートしています。 つまり、だれかが画面を共有しようとすると、そのたびに会議リーダーの画面に代わってそのユーザーの画面が表示されます。

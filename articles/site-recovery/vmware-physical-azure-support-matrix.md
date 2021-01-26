@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 6cc67a6af9e11e5667479eadfe277d400c2d4947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492218"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573056"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -57,6 +57,9 @@ IIS | 以下を実行します。<br/><br/> - 既定の Web サイトが事前�
 NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合)
 IP アドレスの種類 | 静的
 Port | コントロール チャネルのオーケストレーションに使用される 443<br/>データ転送用の 9443
+
+> [!NOTE]
+オペレーティング システムは、英語ロケールでインストールする必要があります。 インストール後のロケールの変換によって、潜在的な問題が発生する可能性があります。
 
 ## <a name="replicated-machines"></a>レプリケートされるマシン
 
@@ -231,6 +234,7 @@ Docker ディスク構成 | いいえ
 ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB | はい
 論理ボリューム管理 (LVM)| シック プロビジョニング - はい <br></br> シン プロビジョニング - いいえ
 ゲスト/サーバー - 記憶域スペース | いいえ
+ゲスト/サーバー - NVMe インターフェイス | いいえ
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ
 ゲスト/サーバー - ディスクの除外 | はい
 ゲスト/サーバー マルチパス (MPIO) | いいえ

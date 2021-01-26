@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896924"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601154"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 
@@ -36,7 +36,7 @@ Azure Maps Web SDK は、次のデスクトップ ブラウザーをサポート
 - Microsoft Edge (現在と以前のバージョン)
 - Google Chrome (現在と以前のバージョン)
 - Mozilla Firefox (現在と以前のバージョン)
-- Apple Safari (Mac OS X) (現在と以前のバージョン)
+- Apple Safari (macOS X) (現在と以前のバージョン)
 
 このアーティクルで後述する「[Target legacy browsers](#Target-Legacy-Browsers) (レガシ ブラウザーをターゲット)」も参照してください。
 
@@ -63,7 +63,7 @@ Azure Maps Web SDK は、次のモバイル ブラウザーをサポートして
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>レガシ ブラウザーを対象にする
 
-WebGL をサポートしていない、または制限付きでのみサポートしている古いブラウザーを対象とする場合があります。 このような場合は、[リーフレット](https://leafletjs.com/)などのオープンソース マップ コントロールと一緒に Azure Maps サービスを使うことをお勧めします。 次に例を示します。
+WebGL をサポートしていない、または制限付きでのみサポートしている古いブラウザーを対象とする場合があります。 このような場合は、[リーフレット](https://leafletjs.com/)などのオープンソース マップ コントロールと一緒に Azure Maps サービスを使うことをお勧めします。 オープン ソースの [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet)を使用する例を次に示します。
 
 <br/>
 
@@ -71,6 +71,7 @@ WebGL をサポートしていない、または制限付きでのみサポー�
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a>」Pen を表示します。
 </iframe>
 
+Leaflet で Azure Maps を使用した追加のコード サンプルについては、[こちら](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

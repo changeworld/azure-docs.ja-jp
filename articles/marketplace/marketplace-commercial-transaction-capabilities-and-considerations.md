@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822388"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600381"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -160,7 +160,7 @@ BYOL のコスト構造は次のとおりです。
 
 **クレジット カードと月次請求書** - 顧客は、クレジット カードと月次請求書を使用して支払うこともできます。 この場合、ソフトウェア ライセンス料金は、エンタープライズ契約のシナリオと同様に、Azure 固有の使用コストとは別に明細コストとして課金されます。
 
-**無料クレジットと年額コミットメント** - エンタープライズ契約の年額コミットメントを前払いすることや、Azure で使用するための無料クレジットの提供を受けることを選択する顧客もいます。 これらのクレジットは、Azure の使用料金の支払いに使用できますが、公開元のソフトウェア ライセンス料金の支払いには使用できません。
+**無料クレジットと Azure 前払い** - エンタープライズ契約の Azure 前払い (旧称: 年額コミットメント) を使用して Azure を前払いすることを選択する顧客もいれば、Azure で使用するための無料クレジットの提供を受けている顧客もいます。 これらのクレジットは、Azure の使用料金の支払いに使用できますが、公開元のソフトウェア ライセンス料金の支払いには使用できません。
 
 **課金と回収** - 公開元のソフトウェア ライセンスの課金は、顧客が選択した請求方法を使用して提示され、請求のタイムラインに従います。 エンタープライズ契約を結んでいない顧客には、Marketplace でのソフトウェア ライセンス料が毎月請求されます。 エンタープライズ契約を結んでいる顧客は、四半期ごとに提示される請求書を通して月単位で課金されます。
 

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967484"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570084"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
 
@@ -42,7 +42,7 @@ SAP Netweaver および SAP HANA 用に Azure NetApp Files を検討するとき
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります
 - データベース サーバーから ANF ボリュームへの待機時間が計測されており、1 ミリ秒未満であることを確認します
 - Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください
-- 大きなボリュームでより高いパフォーマンスを実現するために、可能であれば、/sapmnt、/usr/sap/trans などに対して 1 つのボリュームを使用するなど、ボリュームを "統合" してみてください。 if possible  
+- 大きなボリュームでより高いパフォーマンスを実現するために、可能であれば、/sapmnt、/usr/sap/trans などに対して 1 つのボリュームを使用するなど、ボリュームを "統合" してみてください。 可能な場合  
 - Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。   
 - 仮想マシン上の <b>sid</b>adm のユーザー ID と `sapsys` のグループ ID は、Azure NetApp Files の構成と一致している必要があります。 
@@ -69,10 +69,10 @@ LIF と 1 つの Linux セッションの最大スループットは、1.2 か�
 | 1 TB (テラバイト) | 16 MB/秒 | 64 MB/秒 | 128 MB/秒 |
 | 2 TB | 32 MB/秒 | 128 MB/秒 | 256 MB/秒 |
 | 4 TB | 64 MB/秒 | 256 MB/秒 | 512 MB/秒 |
-| 10 TB | 160 MB/秒 | 640 MB/秒 | 1.280 MB/秒 |
-| 15 TB | 240 MB/秒 | 960 MB/秒 | 1.400 MB/秒 |
-| 20 TB | 320 MB/秒 | 1.280 MB/秒 | 1.400 MB/秒 |
-| 40 TB | 640 MB/秒 | 1.400 MB/秒 | 1.400 MB/秒 |
+| 10 TB | 160 MB/秒 | 640 MB/秒 | 1,280 MB/秒 |
+| 15 TB | 240 MB/秒 | 960 MB/秒 | 1,400 MB/秒 |
+| 20 TB | 320 MB/秒 | 1,280 MB/秒 | 1,400 MB/秒 |
+| 40 TB | 640 MB/秒 | 1,400 MB/秒 | 1,400 MB/秒 |
 
 データは、ストレージ バックエンドの同じ SSD に書き込まれていることを理解しておくことが重要です。 容量プールからのパフォーマンス クォータは、環境を管理できるように作成されています。
 ストレージ KPI は、すべての HANA データベース サイズで同じです。 ほとんどの場合、この想定は現実と顧客の期待を反映していません。 HANA システムのサイズは、必ずしも小規模なシステムでは必要なストレージのスループットが低く、大規模なシステムでは必要なストレージのスループットが高いことを意味しません。 しかし、一般的には、より大きな HANA データベース インスタンスでは、より高いスループットの要件があると考えられます。 基となるハードウェアに対する SAP のサイズ設定ルールにより、このような大規模な HANA インスタンスでは、インスタンスの再起動後にデータをロードするようなタスクでも、より多くの CPU リソースと、より多くの並列処理を提供しています。 そのため、ボリュームのサイズは顧客の期待と要件に合わせて採用する必要があります。 純粋な容量の要件だけで判断すべきではありません。

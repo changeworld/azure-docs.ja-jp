@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854929"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567102"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -163,6 +163,8 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
     - レプリケーション アプライアンスのパスフレーズを取得できます。 現在のパスフレーズを表示するには、コマンド ラインで **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v** を実行します。
     - パスフレーズを再生成しないでください。 そうすると接続が切断され、レプリケーション アプライアンスを再登録しなければならなくなります。
 
+> [!NOTE]
+> VMware の VM または物理マシンを移行する場合、 */Platform* パラメーターに *VMware* を指定します。
 
 ### <a name="install-on-windows"></a>Windows へのインストール
 
@@ -230,38 +232,41 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
     -  可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションを選択した場合は、[コンピューティング] タブで選択した各マシンに使用する可用性ゾーンを指定する必要があります。このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。
     -  可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択されたターゲット リソース グループに 1 つ以上の可用性セットが必要です。
     - [インフラストラクチャ冗長は必要ありません] オプション (移行されたマシンに対してこれらの可用性構成がいずれも不要な場合)。
-12. **[Azure ハイブリッド特典]** で、
+    
+12. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
+    - プラットフォーム マネージド キーを使用した保存時の暗号化
+    - カスタマー マネージド キーを使用した保存時の暗号化
+    - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
+
+   > [!NOTE]
+   > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](https://go.microsoft.com/fwlink/?linkid=2151800)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
+  
+13. **[Azure ハイブリッド特典]** で、
 
     - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
     - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
-    ![ターゲットの設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![ターゲットの設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
+14. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
     - **可用性ゾーン**:使用する可用性ゾーンを指定します。
     - **可用性セット**:使用する可用性セットを指定します。
 
-> [!NOTE]
-> 仮想マシンのセットごとに別の可用性オプションを選択する場合は、手順 1 に進み、仮想マシンの 1 つのセットのレプリケーションを開始した後に別の可用性オプションを選択して各手順を繰り返します。
+![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-   ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
-
-13. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
+15. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
     - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
 
     ![ディスクの設定](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-
-14. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
+16. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 
 > [!NOTE]
 > レプリケーションが開始される前であれば、 **[管理]**  >  **[マシンのレプリケート]** でレプリケーションの設定をいつでも更新できます。 レプリケーションの開始後は、設定を変更することができません。
-
-
 
 ## <a name="track-and-monitor"></a>追跡して監視する
 

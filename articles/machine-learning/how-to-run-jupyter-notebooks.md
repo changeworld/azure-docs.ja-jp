@@ -1,7 +1,7 @@
 ---
 title: ワークスペースで Jupyter Notebooks を実行する方法
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio のワークスペースから離れずに Jupyter Notebooks を実行する方法について説明します。
+description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter ノートブックを実行する方法について説明します。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,25 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325414"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599311"
 ---
 
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
-
-Azure Machine Learning Studio のワークスペースで Jupyter Notebooks を直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
-
-次のことを実行できます。
-
-* ワークスペースで Jupyter Notebooks を作成する
-* ノートブックから実験を実行する
-* ノートブック環境を変更する
-* ノートブックの実行に使用されるコンピューティング インスタンスの詳細を検索する
+Azure Machine Learning スタジオのワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +39,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="[新しいファイルの作成]":::
 
 1. ファイルに名前を付けます。 
-1. Jupyter Notebook Files の場合は、ファイルの種類として **[ノートブック]** を選択します。
+1. Jupyter ノートブック ファイルの場合は、ファイルの種類として **[ノートブック]** を選択します。
 1. ファイル ディレクトリを選択します。
 1. **［作成］** を選択します
 
@@ -107,7 +98,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 
 コンピューティング インスタンスの実行中に、任意の Python ノートブックで [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) によるコード補完を使用することもできます。
 
-Notebook ツールバーから Jupyter または JupyterLab を起動することもできます。  Azure Machine Learning では、Jupyter または JupyterLab からの更新プログラムの提供やバグの修正は行われません。これは、Microsoft サポートの範囲に含まれないオープン ソース製品であるためです。
+ノートブックのツールバーから Jupyter または JupyterLab を起動することもできます。  Azure Machine Learning では、Jupyter または JupyterLab からの更新プログラムの提供やバグの修正は行われません。これは、Microsoft サポートの範囲に含まれないオープン ソース製品であるためです。
 
 ### <a name="focus-mode"></a>フォーカス モード
 
@@ -153,46 +144,52 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
  
 ノートブックのメニューで **[チェックポイント]** を選択して、名前付きチェックポイントを作成し、保存されているチェックポイントにノートブックを戻すことができます。
 
-
-### <a name="useful-keyboard-shortcuts"></a>便利なキーボード ショートカット
-
-|[キーボード]  |アクション  |
-|---------|---------|
-|Shift + Enter     |  セルを実行する       |
-|Ctrl + Space | IntelliSense をアクティブにする |
-|Ctrl + M (Windows)     |  ノートブックのタブ トラップを有効または無効にします。       |
-|Ctrl + Shift + M (Mac と Linux)     |    ノートブックのタブ トラップを有効または無効にします。     |
-|Tab (タブ トラップが有効な場合) | '\t' 文字 (インデント) を追加します
-|Tab (タブ トラップが無効な場合) | フォーカスを次のフォーカス可能な項目に変更します (セルの削除ボタン、実行ボタンなど)
-
 ## <a name="delete-a-notebook"></a>ノートブックを削除する
 
-**Samples** ノートブックを削除することは " *できません* "。  これらのノートブックは Studio の一部であり、新しい SDK が発行されるたびに更新されます。  
+**Samples** ノートブックを削除することは "*できません*"。  これらのノートブックは Studio の一部であり、新しい SDK が発行されるたびに更新されます。  
 
-**ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 " *できます* "。
+**ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 "*できます*"。
 
 * Studio で、フォルダーまたはファイルの末尾にある **[...]** を選択します。  必ずサポートされているブラウザー (Microsoft Edge、Chrome、または Firefox) を使用してください。
-* 任意の Notebook ツールバーから [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
+* 任意のノートブック ツールバーから [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
 * Jupyter または JupyterLab で付属のツールを使用します。
 
-## <a name="run-an-experiment"></a>実験を実行する
+## <a name="run-a-notebook-or-python-script"></a>ノートブックまたは Python スクリプトを実行する
 
-ノートブックから実験を実行するには、まず、実行中の[コンピューティング インスタンス](concept-compute-instance.md)に接続します。 コンピューティング インスタンスがない場合は、次の手順に従って作成します。 
+ノートブックまたは Python スクリプトを実行するには、まず、実行中の[コンピューティング インスタンス](concept-compute-instance.md)に接続します。 コンピューティング インスタンスがない場合は、次の手順に従って作成します。 
 
-1. Notebook ツールバーの **[+]** を選択します。 
+1. ノートブックまたはスクリプトのツールバーで **[+]** を選択します。 
 2. コンピューティングに名前を付け、 **[仮想マシン サイズ]** を選択します。 
 3. **［作成］** を選択します
-4. コンピューティング インスタンスがノートブックに自動的に接続され、セルを実行できるようになります。
+4. コンピューティング インスタンスがファイルに自動的に接続されます。  これで、コンピューティング インスタンスの左側にあるツールを使用して、ノートブック セルまたは Python スクリプトを実行できるようになります
 
 作成したコンピューティング インスタンスを表示および使用できるのは自分のみです。  **ユーザー ファイル** は VM とは別に格納され、ワークスペース内のすべてのコンピューティング インスタンス間で共有されます。
 
 ### <a name="view-logs-and-output"></a>ログと出力を表示する
 
-[Notebook ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、実行の進行状況とログを表示します。 ウィジェットは非同期であり、トレーニングが終了するまで更新情報が表示されます。 Azure Machine Learning ウィジェットは、Jupyter および JupterLab でもサポートされています。
+[ノートブック ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、実行の進行状況とログを表示します。 ウィジェットは非同期であり、トレーニングが終了するまで更新情報が表示されます。 Azure Machine Learning ウィジェットは、Jupyter および JupterLab でもサポートされています。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="スクリーンショット: Jupyter ノートブック ウィジェット ":::
+
+## <a name="explore-variables-in-the-notebook"></a>ノートブックの変数を調べる
+
+Notebook ツールバーの **変数エクスプローラー** ツールを使用すると、ノートブックに作成されているすべての変数の名前、型、長さ、サンプル値が表示されます。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="スクリーンショット: 変数エクスプローラー ツール":::
+
+ツールを選択して、変数エクスプローラー ウィンドウを表示します。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="スクリーンショット: 変数エクスプローラー ウィンドウ":::
+
+## <a name="navigate-with-a-toc"></a>目次を使用して移動する
+
+目次を表示または非表示にするには、ノートブック ツールバーの **[目次]** ツールを使用します。  見出しを使用してマークダウン セルを開始し、それを目次に追加します。 目次のエントリをクリックして、ノートブック内のそのセルまでスクロールします。  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="スクリーンショット: ノートブックの目次":::
 
 ## <a name="change-the-notebook-environment"></a>ノートブック環境を変更する
 
-Notebook ツールバーを使用すると、ノートブックを実行する環境を変更できます。  
+ノートブックのツールバーを使用すると、ノートブックを実行する環境を変更できます。  
 
 このようなアクションを実行しても、ノートブックの状態またはノートブック内の変数の値は変更されません。
 
@@ -213,9 +210,9 @@ Notebook ツールバーを使用すると、ノートブックを実行する�
 
 ### <a name="add-new-kernels"></a>新しいカーネルを追加する
 
-Notebook によって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
+ノートブックによって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
 
-1. Notebook ツールバーの [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択します。
+1. ノートブックのツールバーで [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択します。
 1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
     ```shell
     conda create -y --name newenv
@@ -234,7 +231,7 @@ Notebook によって、接続されたコンピューティング インスタ�
     ```
 
 > [!NOTE]
-> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、 **現在実行中のカーネル** にパッケージを自動的にインストールします
+> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、**現在実行中のカーネル** にパッケージを自動的にインストールします
 
 任意の[使用可能な Jupyter カーネル](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)をインストールできます。
 
@@ -257,9 +254,92 @@ Notebook によって、接続されたコンピューティング インスタ�
 |  [緑] |カーネル接続済み、アイドル、ビジー|
 |  グレー |カーネルが接続されていません |
 
-## <a name="find-compute-details"></a>コンピューティングの詳細を確認する 
+## <a name="shortcut-keys"></a>ショートカット キー
+Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブックにはモーダル ユーザー インターフェイスがあります。 キーボードの動作は、ノートブック セルのモードによって異なります。 Azure Machine Learning Studio ノートブックでは、特定のコード セルに対して、コマンド モードと編集モードという 2 つのモードがサポートされています。
 
-コンピューティング インスタンスの詳細については、 [Studio](https://ml.azure.com) の **コンピューティング** に関するページを参照してください。
+### <a name="command-mode-shortcuts"></a>コマンド モードのショートカット
+
+入力を求めるテキスト カーソルがない場合、セルはコマンド モードになります。 セルがコマンド モードの場合、ノートブックを全体として編集できますが、個々のセルに入力することはできません。 `ESC` キーを押すか、マウスを使用してセルのエディター領域の外側を選択し、コマンド モードに入ります。  アクティブなセルの左側の境界線は青い実線で、 **[実行]** ボタンは青です。
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="コマンド モードのノートブック セル ":::
+
+| ショートカット                      | 説明                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | 編集モードを開始する             |        
+| Shift + Enter                 | セルを実行し、下のものを選択する         |     
+| Ctrl/Command + Enter       | セルの実行                            |
+| Alt + Enter                   | セルを実行し、下にコード セルを挿入する    |
+| Ctrl/Command + Alt + Enter | セルを実行し、下にマークダウン セルを挿入する|
+| Alt + R                       | [すべて実行]      |                       
+| Y                             | セルをコードに変換する    |                         
+| M                             | セルをマークダウンに変換する  |                       
+| ↑/K                          | 上のセルを選択する    |               
+| ↓/J                        | 下のセルを選択する    |               
+| A                             | 上にコード セルを挿入する  |            
+| B                             | 下にコード セルを挿入する   |           
+| Ctrl/Command + Shift + A   | 上にマークダウン セルを挿入する    |      
+| Ctrl/Command + Shift + B   | 下にマークダウン セルを挿入する   |       
+| X                             | 選択したセルを切り取る    |               
+| C                             | 選択したセルをコピーする   |               
+| Shift + V                     | 選択したセルを上に貼り付ける           |
+| V                             | 選択したセルを下に貼り付ける    |       
+| D D                           | 選択したセルを削除する|                
+| O                             | TextWriter         |              
+| Shift + O                     | 出力のスクロールを切り替える   |          
+| I I                           | カーネルを中断する |                   
+| 0 0                           | カーネルを再開する |                     
+| Shift + Space                 | 上にスクロール  |                         
+| Space                         | 下にスクロール|
+| タブ                           | フォーカスを次のフォーカス可能な項目に移動する (タブ トラップが無効になっている場合)|
+| Ctrl/Command + S           | ノートブックを保存する |                      
+| 1                             | h1 に変更する|                       
+| 2                             | h2 に変更する|                        
+| 3                             | h3 に変更する|                        
+| 4                             | h4 に変更する |                       
+| 5                             | h5 に変更する |                       
+| 6                             | h6 に変更する |                       
+
+### <a name="edit-mode-shortcuts"></a>編集モードのショートカット
+
+編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域を選択し、編集モードに入ります。 アクティブなセルの左側の境界線は緑のハッチで、 **[実行]** ボタンは緑です。 また、編集モードではセルにカーソル プロンプトが表示されます。
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="編集モードのノートブック セル":::
+
+次のキーストローク ショートカットを使用すると、編集モードのときに Azure Machine Learning ノートブックのコードをより簡単に移動して実行できます。
+
+| ショートカット                      | 説明|                                     
+| ----------------------------- | ----------------------------------------------- |
+| エスケープ                        | コマンド モードを開始する|  
+| Ctrl/Command + Space       | IntelliSense をアクティブにする |
+| Shift + Enter                 | セルを実行し、下のものを選択する |                         
+| Ctrl/Command + Enter       | セルの実行  |                                      
+| Alt + Enter                   | セルを実行し、下にコード セルを挿入する  |              
+| Ctrl/Command + Alt + Enter | セルを実行し、下にマークダウン セルを挿入する  |          
+| Alt + R                       | すべてのセルを実行する     |                              
+| ［上へ］                            | カーソルを上または前のセルに移動する    |             
+| [下へ]                          | カーソルを下または次のセルに移動する |                  
+| Ctrl/Command + S           | ノートブックを保存する   |                                
+| Ctrl/Command + ↑          | セルの先頭に移動する   |                             
+| Ctrl/Command + ↓        | セルの末尾に移動する |                                 
+| タブ                           | コード補完またはインデント (タブ トラップが有効になっている場合) |
+| Ctrl/Command + M           | タブ トラップを有効または無効にする  |                       
+| Ctrl/Command + ]           | インデントする |                                         
+| Ctrl/Command + [           | インデントを解除する  |                                        
+| Ctrl/Command + A           | すべて選択する|                                      
+| Ctrl/Command + Z           | 元に戻す |                                           
+| Ctrl/Command + Shift + Z   | やり直す |                                           
+| Ctrl/Command + Y           | やり直す |                                           
+| Ctrl/Command + Home        | セルの先頭に移動する|                                
+| Ctrl/Command + End         | セルの末尾に移動する   |                               
+| Ctrl/Command + 左        | 1 単語左に移動する |                               
+| Ctrl/Command + →       | 1 単語右に移動する |                              
+| Ctrl/Command + Backspace   | 前の単語を削除する |                             
+| Ctrl/Command + Delete      | 後の単語を削除する |                              
+| Ctrl/Command + /           | cu でコメントを切り替える
+
+## <a name="find-compute-details"></a>コンピューティングの詳細を確認する
+
+コンピューティング インスタンスの詳細については、[Studio](https://ml.azure.com) の **コンピューティング** に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

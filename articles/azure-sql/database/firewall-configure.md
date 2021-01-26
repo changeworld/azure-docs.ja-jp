@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452492"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602225"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ ms.locfileid: "96452492"
 
 - ポータルまたは PowerShell を使用するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
 - Transact-SQL を使用するには、サーバーレベル プリンシパル ログインまたは Azure Active Directory 管理者として "*マスター*" データベースに接続する必要があります。 (サーバー レベルの IP ファイアウォール規則は、Azure レベルのアクセス許可を持つユーザーが最初に作成する必要があります。)
+
+> [!NOTE]
+> Azure portal から新しい論理 SQL サーバーを作成するとき、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定は、既定では **[いいえ]** に設定されます。
 
 ### <a name="database-level-ip-firewall-rules"></a>データベース レベルの IP ファイアウォール規則
 
@@ -270,7 +273,7 @@ Azure SQL Database に期待どおりにアクセスできない場合は、次�
 ## <a name="next-steps"></a>次のステップ
 
 - 企業ネットワーク環境で、Azure データセンターで使用されるコンピューティング IP アドレス範囲 (SQL 範囲を含む) からの受信通信が許可されていることを確認します。 これらの IP アドレスを許可リストに追加することが必要な場合があります。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。  
-- サーバー レベルの IP ファイアウォール規則の作成に関するクイックスタートについては、[Azure SQL Database での単一データベースの作成](single-database-create-quickstart.md)に関するページを参照してください。
+- [Azure SQL Database での単一データベースの作成](single-database-create-quickstart.md)に関するクイックスタートを参照してください。
 - オープンソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法のヘルプについては、[Azure SQL Database のクライアント クイックスタート コード サンプル](connect-query-content-reference-guide.md#libraries)に関するページを参照してください。
 - 他に開くことが必要な可能性のあるポートについては、SQL Database の外部と内部に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)に関する記事で参照してください
 - Azure SQL Database のセキュリティの概要については、[データベースの保護](security-overview.md)に関する記事を参照してください。

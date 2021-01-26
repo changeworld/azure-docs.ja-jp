@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184571"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234445"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor ログ データを Power BI にインポートする
 
@@ -27,6 +27,9 @@ Azure Monitor の [Log Analytics ワークスペース](manage-access.md) から
 
 ## <a name="export-query"></a>クエリをエクスポートする
 まず、Power BI データセットに取り込むデータを返す[ログ クエリ](../log-query/log-query-overview.md)を作成します。  次にそのクエリを Power BI Desktop で使用できる [Power Query (M) 言語](/powerquery-m/power-query-m-language-specification)にエクスポートします。
+
+> [!WARNING]
+> 実行に長時間かかることがないように、[クエリを最適化](../log-query/query-optimization.md)しないと、タイムアウトするおそれがあることにご注意ください。 エクスポートされたクエリの **timespan** 値に、クエリによって取得されるデータの期間が定義されていることにご注意ください。 クエリから返されるデータの量を制限するために必要な最小の timespan を使用します。
 
 1. データセットのデータを抽出するために [Log Analytics にログ クエリを作成します](../log-query/log-analytics-tutorial.md)。
 2. **[エクスポート]**  >  **[Power BI Query (M)]** の順に選択します。  これにより、**PowerBIQuery.txt** という名前のテキスト ファイルにクエリがエクスポートされます。 

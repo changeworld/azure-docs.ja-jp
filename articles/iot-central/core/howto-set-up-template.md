@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033410"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202965"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
 
@@ -42,8 +42,16 @@ IoT Central アプリケーションでは、デバイス テンプレートは�
 
 - IoT Central でデバイス テンプレートを設計し、[そのデバイス モデルをデバイス コードに実装します](concepts-telemetry-properties-commands.md)。
 - [Azure Certified for IoT デバイス カタログ](https://aka.ms/iotdevcat)からデバイス テンプレートをインポートします。 IoT Central の要件に合わせてデバイス テンプレートをカスタマイズします。
+> [!NOTE]
+> IoT Central には、同じファイル内のすべての参照先インターフェイスを含む完全なモデルが必要です。モデル リポジトリからモデルをインポートする場合は、キーワード "expanded" を使用して完全なバージョンを取得してください。
+次に例を示します。 https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - [Digital Twins Definition Language (DTDL) バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を使用して、デバイス モデルを作成します。 Visual Studio Code には、DTDL モデルの作成をサポートする拡張機能が用意されています。 詳細については、「[DTDL オーサリング ツールをインストールして使用する](../../iot-pnp/howto-use-dtdl-authoring-tools.md)」を参照してください。 次に、そのモデルをパブリック モデル リポジトリに発行します。 詳細については、「[デバイス モデル リポジトリ](../../iot-pnp/concepts-model-repository.md)」を参照してください。 モデルからデバイス コードを実装し、実際のデバイスを IoT Central アプリケーションに接続します。 IoT Central は、パブリック リポジトリからデバイス モデルを検索してインポートし、デバイス テンプレートを生成します。 その後、IoT Central アプリケーションが必要とするクラウド プロパティ、カスタマイズ、およびダッシュボードをデバイス テンプレートに追加できます。
 - DTDL を使用してデバイス モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス モデルを手動でインポートし、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、ダッシュボードを追加します。
+
+> [!TIP]
+> IoT Central には、同じファイル内のすべての参照先インターフェイスを含む完全なモデルが必要です。 モデル リポジトリからモデルをインポートする場合は、キーワード *expanded* を使用して完全なバージョンを取得してください。
+> たとえば、[https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json) です。
 
 また、[REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) または [CLI](howto-manage-iot-central-from-cli.md) を使用して、IoT Central アプリケーションにデバイス テンプレートを追加することもできます。
 
@@ -119,7 +127,7 @@ IoT Central でデバイス テンプレートを作成するには、次の手�
 
 テレメトリ機能の構成設定を次の表に示します。
 
-| フィールド | 説明 |
+| フィールド | [説明] |
 | ----- | ----------- |
 | 表示名 | ダッシュボードとフォームで使用されるテレメトリ値の表示名。 |
 | 名前 | テレメトリ メッセージ内のフィールドの名前。 IoT Central によって表示名からこのフィールドの値が生成されますが、必要に応じて独自の値を選択できます。 このフィールドは英数字である必要があります。 |
@@ -139,7 +147,7 @@ IoT Central でデバイス テンプレートを作成するには、次の手�
 
 プロパティ機能の構成設定を次の表に示します。
 
-| フィールド | 説明 |
+| フィールド | [説明] |
 | ----- | ----------- |
 | 表示名 | ダッシュボードとフォームで使用されるプロパティ値の表示名。 |
 | 名前 | プロパティの名前。 IoT Central によって表示名からこのフィールドの値が生成されますが、必要に応じて独自の値を選択できます。 このフィールドは英数字である必要があります。 |
@@ -160,7 +168,7 @@ IoT Central からデバイス コマンドを呼び出すことができます�
 
 コマンド機能の構成設定を次の表に示します。
 
-| フィールド | 説明 |
+| フィールド | [説明] |
 | ----- | ----------- |
 | 表示名 | ダッシュボードとフォームで使用されるコマンドの表示名。 |
 | 名前 | コマンドの名前。 IoT Central によって表示名からこのフィールドの値が生成されますが、必要に応じて独自の値を選択できます。 このフィールドは英数字である必要があります。 |
@@ -199,7 +207,7 @@ cloud-to-device メッセージ:
 
 クラウド プロパティの構成設定を次の表に示します。
 
-| フィールド | 説明 |
+| フィールド | [説明] |
 | ----- | ----------- |
 | 表示名 | ダッシュボードとフォームで使用されるクラウド プロパティ値の表示名。 |
 | 名前 | クラウド プロパティの名前。 IoT Central によって表示名からこのフィールドの値が生成されますが、必要に応じて独自の値を選択できます。 |

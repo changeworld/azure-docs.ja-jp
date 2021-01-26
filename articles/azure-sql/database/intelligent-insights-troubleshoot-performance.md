@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488835"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220390"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -128,7 +128,9 @@ SQL エンジンで実行されたトランザクションが、使用がロッ�
 
 問題を緩和する最も簡単で安全な方法は、トランザクションを常に短くして、最もコストの高いクエリのロック フットプリントを低減させることです。 大きい操作のバッチを小さい操作に分割できます。 クエリをできるだけ効率化して、クエリのロック フットプリントを低減させることをお勧めします。 大規模なスキャンは、デッドロックの可能性を高め、データベースの全体のパフォーマンスに悪影響を及ぼすので、減らします。 ロックの原因として特定されたクエリについては、新しいインデックスを作成したり、既存のインデックスに列を追加したりして、テーブル スキャンを回避できます。
 
-その他の推奨事項については、「[SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)」をご覧ください。
+その他の提案については、以下を参照してください。
+- [Azure SQL のブロックの問題を理解して解決する](understand-resolve-blocking.md)
+- [SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>MAXDOP の増加
 

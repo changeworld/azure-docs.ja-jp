@@ -3,12 +3,12 @@ title: Azure Functions ランタイムに到達できないエラーのトラブ
 description: 無効なストレージ アカウントのトラブルシューティング方法について説明します。
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9f6592b6d5ef88127a9dfca1e868564be0aa4ed5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579013"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217296"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>"Azure Functions ランタイムに到達できない" エラーのトラブルシューティング
 
@@ -16,15 +16,15 @@ ms.locfileid: "94579013"
 
 > "エラー: Azure Functions ランタイムに到達できません。 ストレージ構成の詳細については、ここをクリックしてください。"
 
-この問題は、Azure Functions ランタイムが起動できない場合に発生します。 この問題が発生する最も一般的な理由は、関数アプリでそのストレージ アカウントへのアクセスが失われていることです。 詳細については、「[ストレージ アカウントの要件](./functions-create-function-app-portal.md#storage-account-requirements)」をご覧ください。
+この問題は、Functions ランタイムが起動できない場合に発生します。 これが発生する最も一般的な理由は、関数アプリでそのストレージ アカウントへのアクセスが失われていることです。 詳細については、「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」をご覧ください。
 
-この記事の残りの部分では、各ケースを特定して解決する方法など、このエラーの次の原因をトラブルシューティングする際に役立ちます。
+この記事の残りの部分は、各ケースを特定して解決する方法など、このエラーの具体的な原因をトラブルシューティングする際に役立ちます。
 
 ## <a name="storage-account-was-deleted"></a>ストレージ アカウントが削除された
 
 すべての関数アプリには、操作するためのストレージ アカウントが必要です。 そのアカウントが削除されると、関数は機能しません。
 
-まず、アプリケーションの設定でご自分のストレージ アカウント名を検索します。 `AzureWebJobsStorage` または `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のいずれかに、接続文字列でラップされたストレージ アカウントの名前が含まれています。 詳細については、「[Azure Functions のアプリケーション設定のリファレンス](./functions-app-settings.md#azurewebjobsstorage)」をご覧ください。
+まず、アプリケーションの設定でご自分のストレージ アカウント名を検索します。 `AzureWebJobsStorage` または `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のいずれかに、接続文字列の一部としてストレージ アカウントの名前が含まれています。 詳細については、「[Azure Functions のアプリケーション設定のリファレンス](./functions-app-settings.md#azurewebjobsstorage)」をご覧ください。
 
 Azure portal でご自分のストレージ アカウントを検索して、まだ存在するかどうかを確認します。 削除されている場合は、ストレージ アカウントを作成し直して、ストレージ接続文字列を置き換えます。 関数コードが失われるため、もう一度デプロイする必要があります。
 
@@ -44,7 +44,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 ### <a name="guidance"></a>ガイダンス
 
-* これらの設定のいずれに対しても、"スロット設定" をオンにしないでください。 デプロイ スロットをスワップすると、関数アプリが中断されます。
+* これらの設定のいずれに対しても、**スロット設定** をオンにしないでください。 デプロイ スロットをスワップすると、関数アプリが中断されます。
 * 自動デプロイの一環としてこれらの設定を変更しないようにしてください。
 * これらの設定は、作成時に指定して有効にする必要があります。 これらの設定が含まれない自動デプロイでは、関数アプリが実行されなくなります。後から設定を追加しても実行されません。
 
@@ -56,7 +56,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 関数アプリは、ストレージ アカウントにアクセスできる必要があります。 ストレージ アカウントへの関数アプリのアクセスをブロックする一般的な問題は次のとおりです。
 
-* ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで関数アプリが App Service Environment にデプロイされた。
+* ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで関数アプリが App Service Environment (ASE) にデプロイされた。
 
 * ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関する記事を参照してください。
 
@@ -72,7 +72,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 ## <a name="app-is-behind-a-firewall"></a>アプリがファイアウォールの内側にある
 
-次のいずれかの理由により、関数ランタイムに到達できない可能性があります。
+次のいずれかの理由により、関数アプリに到達できない可能性があります。
 
 * 関数アプリが[内部で負荷分散された App Service Environment](../app-service/environment/create-ilb-ase.md) 内でホストされ、受信インターネット トラフィックをブロックするように構成されている。
 
@@ -80,8 +80,8 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 Azure portal は、実行中のアプリに対して直接呼び出しを行い、関数の一覧を取得します。また、Kudu エンドポイントに対して HTTP 呼び出しを行います。 プラットフォームレベルの設定は、 **[プラットフォーム機能]** タブで引き続き使用できます。
 
-App Service Environment 構成を確認するには、次の操作を行います。
-1. App Service Environment が存在するサブネットのネットワーク セキュリティ グループ (NSG) に移動します。
+ASE の構成を確認するには、次のようにします。
+1. ASE が存在するサブネットのネットワーク セキュリティ グループ (NSG) に移動します。
 1. アプリケーションにアクセスしているコンピューターのパブリック IP から送信されるトラフィックを許可する受信規則を検証します。 
    
 また、アプリを実行している仮想ネットワーク、または仮想ネットワークで実行されている仮想マシンに接続されているコンピューターからポータルを使用することもできます。 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831773"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562677"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -58,7 +58,7 @@ Log Analytics 専用クラスターの課金の詳細については、[こち�
 
 ## <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
 
-構成手順の一部はすぐに完了できないため、非同期的に実行されます。 応答の状態には、次のいずれかが含まれます。'InProgress'、'Updating'、'Deleting'、'Succeeded、'Failed' (エラー コードを伴う)。 REST を使用している場合、応答では最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに Azure-AsyncOperation プロパティを持つヘッダーが返されます。
+構成手順の一部はすぐに完了できないため、非同期的に実行されます。 応答の状態には、次のいずれかが含まれます。'InProgress'、'Updating'、'Deleting'、'Succeeded、'Failed' (エラー コードを伴う)。 REST を使用している場合、応答では最初に HTTP 状態コード 202 (承認済み) と Azure-AsyncOperation プロパティを持つヘッダーが返されます。
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *Response*
 
-200 OK とヘッダーである必要があります。
+202 (承認済み) とヘッダーである必要があります。
 
 ### <a name="check-cluster-provisioning-status"></a>クラスターのプロビジョニング状態を確認する
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *Response*
 
-200 OK とヘッダー。
+202 (承認済み) とヘッダー。
 
 ### <a name="check-workspace-link-status"></a>ワークスペースのリンク状態を確認する
   

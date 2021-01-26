@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795939"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216633"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch モデルを大規模にトレーニングする
 
 この記事では、Azure Machine Learning を使用して、[PyTorch](https://pytorch.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。
 
-この記事のサンプル スクリプトは、PyTorch の転移学習[チュートリアル](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)に基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワーク (DNN) を構築するために使用されます。 転移学習は、ある問題を解決することで得られた知識を、異なるが関連している問題に適用する手法です。 これは、最初からトレーニングするよりも必要なデータ、時間、コンピューティング リソースが少なくなるので、トレーニング プロセスを短縮します。
+この記事のサンプル スクリプトは、PyTorch の転移学習[チュートリアル](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)に基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワーク (DNN) を構築するために使用されます。 転移学習は、ある問題を解決することで得られた知識を、異なるが関連している問題に適用する手法です。 これは、最初からトレーニングするよりも必要なデータ、時間、コンピューティング リソースが少なくなるので、トレーニング プロセスを短縮します。 転移学習の詳細については、[ディープ ラーニングと機械学習](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning)に関する記事を参照してください。
 
 PyTorch のディープ ラーニング モデルを一からトレーニングする場合でも、既存のモデルをクラウドに持ち込む場合でも、Azure Machine Learning のエラスティック クラウド コンピューティング リソースを使用して、オープンソースのトレーニング ジョブをスケールアウトできます。 Azure Machine Learning を使用して、運用レベルのモデルをビルド、デプロイ、バージョン管理、および監視することができます。 
 

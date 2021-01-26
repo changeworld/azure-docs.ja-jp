@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173211"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219914"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
@@ -28,8 +28,8 @@ ms.locfileid: "96173211"
  - セルフサービス用にアプリを構成して、グループをアプリに割り当てる
 
 > [!NOTE]
-> この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Microsoft 365 グループへのアクセスを管理できるように、[Microsoft 365 のセルフサービス グループを設定する](../enterprise-users/groups-self-service-management.md)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、[Microsoft 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)に関するページと、「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」を参照してください。
-
+> * この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Microsoft 365 グループへのアクセスを管理できるように、[Microsoft 365 のセルフサービス グループを設定する](../enterprise-users/groups-self-service-management.md)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、[Microsoft 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)に関するページと、「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」を参照してください。
+> * ユーザーは、**ゲスト招待元** ロールが与えられている場合にのみ、ゲストを招待できます。
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>アクセス パネルからアプリにゲスト ユーザーを招待する
 
 セルフサービス用にアプリが構成された後、アプリケーション所有者は自身のアクセス パネルを使用して、共有するアプリにゲスト ユーザーを招待できます。 ゲスト ユーザーは、必ずしも事前に Azure AD に追加されている必要はありません。 

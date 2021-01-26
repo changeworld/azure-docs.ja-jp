@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914112"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223076"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>オープンソースと Azure Machine Learning プロジェクトとの統合
 
@@ -42,11 +42,11 @@ ms.locfileid: "97914112"
 
 オープンソースのディープ ラーニング フレームワークとハウツー ガイドには次のものがあります。
 
- *  [PyTorch](https://github.com/pytorch/pytorch): [PyTorch の転移学習を使用してディープ ラーニングの画像分類モデルをトレーニングする](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch): [転移学習を使用してディープ ラーニングの画像分類モデルをトレーニングする](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [TensorFlow を使用して手書きの数字を認識する](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [Keras を使用して画像を分析するニューラル ネットワークを構築する](how-to-train-keras.md)
 
-ディープ ラーニング モデルのゼロからのトレーニングには、しばしば、多くの時間、データ、およびコンピューティング リソースが必要です。 転移学習を使用することで、トレーニング プロセスをショートカットできます。 転移学習は、ある問題を解決することで得られた知識を、異なるが関連している問題に適用する手法です。 つまり、既存のモデルを別の目的で使用できます。 転移学習の詳細については、[ディープ ラーニングに関する記事](concept-deep-learning-vs-machine-learning.md#transfer-learning)を参照してください。
+ディープ ラーニング モデルのゼロからのトレーニングには、しばしば、多くの時間、データ、およびコンピューティング リソースが必要です。 転移学習を使用することで、トレーニング プロセスをショートカットできます。 転移学習は、ある問題を解決することで得られた知識を、異なるが関連している問題に適用する手法です。 つまり、既存のモデルを別の目的で使用できます。 転移学習の詳細については、[ディープ ラーニングと機械学習に関する記事](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning)を参照してください。
 
 ### <a name="reinforcement-learning-ray-rllib"></a>強化学習: Ray RLLib
 

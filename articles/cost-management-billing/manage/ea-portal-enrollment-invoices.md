@@ -3,18 +3,18 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030724"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598082"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -238,7 +238,7 @@ Azure 前払いを超過分に適用するには、次の条件を満たす必�
 
 ### <a name="enterprise-agreement-units-of-measure"></a>エンタープライズ契約の測定単位
 
-エンタープライズ契約の測定単位は、多くの場合、Microsoft Online Services 契約プログラム (MOSA) などの他のプログラムのものとは異なります。 この違いは、多くのサービスでは、正規化された価格を提供するために測定単位が集約されることを意味します。 Azure エンタープライズ ポータルの [使用状況の概要] ビューに表示される測定単位は、常にエンタープライズ測定となります。 各サービスの現在の測定単位と変換の完全なリストは、[フレンドリ サービス名](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx)という Excel ファイルで提供されています。
+エンタープライズ契約の測定単位は、多くの場合、Microsoft Online Services 契約プログラム (MOSA) などの他のプログラムのものとは異なります。 この違いは、多くのサービスでは、正規化された価格を提供するために測定単位が集約されることを意味します。 Azure エンタープライズ ポータルの [使用状況の概要] ビューに表示される測定単位は、常にエンタープライズ測定となります。 各サービスの現在の測定単位と変換の完全なリストは、[サポート リクエスト](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を送信することで提供されます。
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用状況の詳細レポートと使用状況の概要ページの間の変換
 
@@ -324,13 +324,6 @@ Azure 前払いは、Azure サービスに対する前払い金額です。 Azur
 請求書は、請求期間が終了した翌月に発行されます。 請求の頻度が月単位の場合、両方のパートナーについて 9 月分の請求書が 10 月に発行されます。 請求期間が四半期単位または年単位の場合、前に関連付けられていたパートナーの下での使用についてはその期間分について前に関連付けられていたパートナーから請求され、残りは請求の頻度に基づいて新しいパートナーから請求されます。
 
 ## <a name="next-steps"></a>次のステップ
-
-- 次の Excel ファイルでは、Azure サービスに関する詳細が提供され、毎月 6 日と 20 日に更新されます。
-
-   | タイトル | 説明 | ファイル名 |
-   | --- | --- | --- |
-   | [フレンドリ サービス名](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | すべてのアクティブなサービスが一覧表示され、次のものが含まれます。 <br>  <ul><li>サービス カテゴリ</li>   <li>フレンドリ サービス名</li>   <li>前払い名と部品番号</li> <li>消費名と部品番号</li>   <li>測定単位</li>   <li>報告された使用量と表示されたエンタープライズ ポータルの使用量の間の変換係数</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [サービス ダウンロード フィールド](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | このスプレッドシートでは、利用状況のダウンロード レポート内のサービス関連フィールドのすべての可能な組み合わせのリストが提供されます。 | Service\_Download\_Fields.xlsx |
 
 - 請求書と料金の詳細については、「[Azure Enterprise Agreement 請求書を理解する](../understand/review-enterprise-agreement-bill.md)」を参照してください。
 - Azure エンタープライズ ポータルの使用を開始する場合は、[Azure EA ポータルの概要](ea-portal-get-started.md)に関するページを参照してください。

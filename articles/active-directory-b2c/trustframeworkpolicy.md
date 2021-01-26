@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386886"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178842"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -46,7 +46,7 @@ ms.locfileid: "97386886"
 | PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
 | PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
 | DeploymentMode | いいえ | 指定できる値: `Production` または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
-| UserJourneyRecorderEndpoint | いいえ | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
+| UserJourneyRecorderEndpoint | いいえ | ログ記録に使用されるエンドポイント。 属性が存在する場合は、値を `urn:journeyrecorder:applicationinsights` に設定する必要があります。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
 
 
 次の例は、**TrustFrameworkPolicy** 要素を指定する方法を示しています。

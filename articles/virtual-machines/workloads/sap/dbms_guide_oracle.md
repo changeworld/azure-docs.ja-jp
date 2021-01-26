@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965257"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569438"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines Oracle DBMS のデプロイ
 
@@ -445,15 +445,19 @@ SAP インストール マニュアルによると、Oracle 関連のファイ�
 
 ### <a name="storage-configuration"></a>ストレージの構成
 
-Azure 上の Oracle Database ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)または [Azure Managed Disks](../../managed-disks-overview.md) に基づいています。
+ext4、xfs、NFSv4.1 (Azure NetApp Files (ANF) のみ) または Oracle ASM (リリース/バージョンの要件については、SAP ノート [#2039619](https://launchpad.support.sap.com/#/notes/2039619) を参照) のファイル システムが、Azure の Oracle Database ファイルに対してサポートされています。 すべてのデータベース ファイルを、VHD、Managed Disks、または ANF をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされ、[Azure ページ BLOB ストレージ](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、[Azure Managed Disks](../../managed-disks-overview.md)、または [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) に基づきます。
 
-Oracle Linux UEK カーネルでは、[Azure Premium SSD](../../premium-storage-performance.md#disk-caching) をサポートするには少なくとも UEK バージョン 4 が必要です。
+最小要件を以下に示します。 
+
+- Oracle Linux UEK カーネルでは、[Azure Premium SSD](../../premium-storage-performance.md#disk-caching) をサポートするには少なくとも UEK バージョン 4 が必要です。
+- ANF を使用する Oracle の場合、サポートされる最小の Oracle Linux は 8.2 です。
+- ANF を使用する Oracle の場合、サポートされる最小の Oracle バージョンは 19c (19.8.0.0) です。
 
 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」の記事を参照して、DBMS ワークロードに適した特定の Azure ブロック ストレージの種類の詳細を確認してください。
 
-[Azure マネージド ディスク](../../managed-disks-overview.md)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium SSD](../../disks-types.md) の使用も強くお勧めします。
+Azure ブロック ストレージを使用する場合、Oracle Database のデプロイのために [Azure Managed Disks](../../managed-disks-overview.md) と [Azure Premium SSD](../../disks-types.md) を使用することを強くお勧めします。
 
-ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、「 
+Azure NetApp Files を除く他の共有ディスク、ネットワーク ドライブ、または Azure File サービス (AFS) のようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、「 
 
 - [Microsoft Azure File サービスの概要](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -469,10 +473,10 @@ Azure ディスクに対する IOPS スループットにはクォータが存�
 
 | コンポーネント | ディスク | キャッシュ | ストライプ化* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA & mirrlogB | Premium または Ultra Disk | なし | 不要 |
-| /oracle/\<SID>/origlogaB & mirrlogA | Premium または Ultra Disk | なし | 不要 |
-| /oracle/\<SID>/sapdata1...n | Premium または Ultra Disk | 読み取り専用 | Premium に対して使用できます |
-| /oracle/\<SID>/oraarch | Standard | なし | 不要 |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium、Ultra Disk、または ANF | なし | 不要 |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium、Ultra Disk、または ANF | なし | 不要 |
+| /oracle/\<SID>/sapdata1...n | Premium、Ultra Disk、または ANF | 読み取り専用 | Premium に対して使用できます |
+| /oracle/\<SID>/oraarch | Standard または ANF | なし | 不要 |
 | Oracle Home、`saptrace`、... | OS ディスク (Premium) | | 不要 |
 
 *ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM
@@ -483,13 +487,13 @@ Oracle のオンラインの再実行ログをホストするためのディス�
 
 | コンポーネント | ディスク | キャッシュ | ストライプ化* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | Premium または Ultra Disk | None | Premium に対して使用できます  |
-| /oracle/\<SID>/origlogaB | Premium または Ultra Disk | None | Premium に対して使用できます |
-| /oracle/\<SID>/mirrlogAB | Premium または Ultra Disk | None | Premium に対して使用できます |
-| /oracle/\<SID>/mirrlogBA | Premium または Ultra Disk | None | Premium に対して使用できます |
-| /oracle/\<SID>/sapdata1...n | Premium または Ultra Disk | 読み取り専用 | Premium に推奨  |
-| /oracle/\<SID>/sapdata(n+1)* | Premium または Ultra Disk | None | Premium に対して使用できます |
-| /oracle/\<SID>/oraarch* | Premium または Ultra Disk | なし | 不要 |
+| /oracle/\<SID>/origlogaA | Premium、Ultra Disk、または ANF | None | Premium に対して使用できます  |
+| /oracle/\<SID>/origlogaB | Premium、Ultra Disk、または ANF | None | Premium に対して使用できます |
+| /oracle/\<SID>/mirrlogAB | Premium、Ultra Disk、または ANF | None | Premium に対して使用できます |
+| /oracle/\<SID>/mirrlogBA | Premium、Ultra Disk、または ANF | None | Premium に対して使用できます |
+| /oracle/\<SID>/sapdata1...n | Premium、Ultra Disk、または ANF | 読み取り専用 | Premium に推奨  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium、Ultra Disk、または ANF | None | Premium に対して使用できます |
+| /oracle/\<SID>/oraarch* | Premium、Ultra Disk、または ANF | なし | 不要 |
 | Oracle Home、`saptrace`、... | OS ディスク (Premium) | 不要 |
 
 *ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM
@@ -500,6 +504,10 @@ Oracle のオンラインの再実行ログをホストするためのディス�
 
 
 Azure Premium Storage を使用するときに高い IOPS が必要な場合は、LVM (Logical Volume Manager) または MDADM を使用して、マウントされた複数のディスクの上に 1 つの大きな論理ボリュームを作成することをお勧めします。 LVM または MDADM の利用方法に関するガイドラインとポインターについて詳しくは、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」をご覧ください。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化し、マウントされた複数のディスク全体にファイルを手動で分散する手間を省きます。
+
+Azure NetApp Files を使用する予定の場合は、dNFS クライアントが正しく構成されていることを確認してください。 サポートされている環境を整えるには、dNFS を使用することが必須です。 dNFS の構成の詳細については、[Direct NFS での Oracle Database の作成](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA)に関する記事を参照してください。
+
+Oracle Database 用に Azure NetApp Files ベースの NFS を使用する例については、[Azure NetApp Files を使用した SAP AnyDB (Oracle 19c) のデプロイ](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)に関するブログを参照してください。
 
 
 #### <a name="write-accelerator"></a>書き込みアクセラレータ

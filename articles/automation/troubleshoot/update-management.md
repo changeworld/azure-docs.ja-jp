@@ -2,15 +2,15 @@
 title: Azure Automation Update Management に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929278"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246266"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -144,13 +144,11 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-4. クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)必要があります。
+    クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)必要があります。
 
-5. マシンがクエリ結果に表示される場合は、スコープの構成の問題を調べます。 [スコープの構成](../update-management/scope-configuration.md)では、Update Management 用に構成されるマシンが決定されます。
+    コンピューターがクエリ結果に一覧表示されている場合は、**Solutions** プロパティの下に **updates** が一覧表示されていることを確認します。 これにより、Update Management に登録されていることが確認できます。 そうでない場合は、スコープ構成に問題がないかどうかを確認します。 [スコープの構成](../update-management/scope-configuration.md)では、Update Management 用に構成されるマシンが決定されます。 対象のコンピューターのスコープ構成を構成するには、「[ワークスペースでのマシンの有効化](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 
-6. ワークスペースに表示されているマシンが Update Management に表示されない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 これを行う方法については、「[ワークスペースでのマシンの有効化](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
-
-7. ワークスペースで、次のクエリを実行します。
+4. ワークスペースで、次のクエリを実行します。
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Error details: Failed to enable the Update solution
    | sort by TimeGenerated desc
    ```
 
-8. `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` という結果が表示される場合、ワークスペースに定義されたクォータに達したため、データの保存が停止されています。 ワークスペースで **[使用量と推定コスト]** の **[データ ボリュームの管理]** に移動して、クォータを変更または削除します。
+   `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` という結果が表示される場合、ワークスペースに定義されたクォータに達したため、データの保存が停止されています。 ワークスペースで **[使用量と推定コスト]** の **[データ ボリュームの管理]** に移動して、クォータを変更または削除します。
 
-9. 問題が解決しない場合は、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」の手順に従って、Windows 用のハイブリッド worker を再インストールしてください。 Linux の場合は、「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」の手順に従います。
+5. 問題が解決しない場合は、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」の手順に従って、Windows 用のハイブリッド worker を再インストールしてください。 Linux の場合は、「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」の手順に従います。
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>シナリオ:サブスクリプションで Automation リソース プロバイダーを登録できない
 
@@ -425,7 +423,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 該当する場合は、更新プログラムの展開に[動的グループ](../update-management/configure-groups.md)を使用します。 さらに、次の手順を実行できます。
 
-1. コンピューターまたはサーバーが[要件](../update-management/overview.md#client-requirements)を満たしていることを確認します。
+1. コンピューターまたはサーバーが[要件](../update-management/overview.md#system-requirements)を満たしていることを確認します。
 2. Hybrid Runbook Worker エージェントのトラブルシューティングツールを使用して、Hybrid Runbook Worker への接続を確認します。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>シナリオ:展開なしで更新プログラムがインストールされる

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127211"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562745"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -95,7 +95,7 @@ N/A
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-REST を使用している場合、応答では最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
+REST を使用している場合、応答では最初に HTTP 状態コード 202 (承認済み) と *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -200,7 +200,7 @@ Content-type: application/json
 1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
 2. クラスターに GET 要求を送信し、*KeyVaultProperties* のプロパティを調べます。 最近更新されたキーが応答で返されます。
 
-キーの更新が完了すると、GET 要求に対する応答は次のようになります。200 OK とヘッダー
+キーの更新が完了すると、GET 要求に対する応答は次のようになります。202 (承認済み) とヘッダー
 ```json
 {
   "identity": {

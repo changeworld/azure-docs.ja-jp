@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183058"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210020"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -110,7 +110,7 @@ App Service には、サービスの管理に使用されるエンドポイン�
 
 IP ベースのアクセス制限機能は、アプリに到達するために使用できる IP アドレスを制限する必要がある場合に役に立ちます。 IPv4 と IPv6 の両方がサポートされます。 この機能のユース ケースをいくつか示します。
 * 明確に定義された一連のアドレスからアプリへのアクセスを制限する。 
-* Azure Front Door などの負荷分散サービス経由で受信するトラフィックへのアクセスを制限する。 Azure Front Door に受信トラフィックをロックダウンする場合は、147.243.0.0/16 と 2a01:111:2050::/44 からのトラフィックを許可する規則を作成します。 
+* 既知のエグレス IP アドレスを持つ外部の負荷分散サービスまたは他のネットワーク アプライアンス経由のトラフィックへのアクセスを制限します。 
 
 この機能を有効化する方法については、[アクセス制限の構成][iprestrictions]に関する記事を参照してください。
 
@@ -126,7 +126,20 @@ IP ベースのアクセス制限機能は、アプリに到達するために�
 ![Application Gateway でのサービス エンドポイントの使用方法を示す図。](media/networking-features/service-endpoints-appgw.png)
 
 アプリでサービス エンドポイントを構成する方法の詳細については、「[Azure App Service のアクセス制限][serviceendpoints]」を参照してください。
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>サービス タグに基づくアクセス制限規則 (プレビュー)
+[Azure サービス タグ][servicetags]は、Azure サービスの明確に定義された一連の IP アドレスです。 サービス タグは、さまざまな Azure サービスで使用される IP 範囲をグループ化します。また、さらに特定のリージョンにスコープ設定されることがよくあります。 これにより、特定の Azure サービスからの "*受信*" トラフィックをフィルター処理できます。 
 
+タグの完全な一覧と詳細については、上記のサービス タグのリンクを参照してください。 この機能を有効化する方法については、[アクセス制限の構成][iprestrictions]に関する記事を参照してください。
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>アクセス制限規則での HTTP ヘッダー フィルタリング (プレビュー)
+アクセス制限規則ごとに、追加の HTTP ヘッダー フィルタリングを追加できます。 これにより、受信要求をさらに検査し、特定の HTTP ヘッダー値に基づいてフィルター処理できます。 各ヘッダーには、1 つの規則につき最大 8 つの値を含めることができます。 現在サポートされている HTTP ヘッダーの一覧を次に示します。 
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+HTTP ヘッダー フィルタリングのユース ケースをいくつか示します。
+* ホスト名を転送するプロキシ サーバーからのトラフィックへのアクセスを制限する
+* サービス タグ規則と X-Azure-FDID ヘッダー制限を使用して、特定の Azure Front Door インスタンスへのアクセスを制限する
 ### <a name="private-endpoint"></a>プライベート エンドポイント
 
 プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントにより、お客様の仮想ネットワークからのプライベート IP アドレスを使用して、Web アプリが実質的に仮想ネットワークに取り込まれます。 この機能は、Web アプリへの "*受信*" フロー専用です。
@@ -299,3 +312,4 @@ App Service をスキャンすると、受信接続用に公開されている�
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

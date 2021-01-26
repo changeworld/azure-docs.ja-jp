@@ -3,15 +3,15 @@ title: データへのアクセスをセキュリティで保護する
 description: Azure Logic Apps で、入力、出力、要求ベースのトリガー、実行履歴、管理タスク、その他のリソースへのアクセスをセキュリティで保護します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: rarayudu, logicappspm
+ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034511"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251065"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -911,6 +911,10 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 > ロジック アプリで処理される機密情報を保護するには、セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。
 > パラメーターの使用とセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](#secure-action-parameters)」を参照してください。
 
+<a name="authentication-types-supported-triggers-actions"></a>
+
+#### <a name="authentication-types-for-triggers-and-actions-that-support-authentication"></a>認証がサポートされているトリガーおよびアクションの認証の種類
+
 次の表では、認証の種類を選択できるトリガーとアクションで使用できる認証の種類を示します。
 
 | 認証の種類 | サポートされているトリガーとアクション |
@@ -919,12 +923,12 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [管理対象 ID](#managed-identity-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook |
+| [管理対象 ID](#managed-identity-authentication) | **組み込みのトリガーとアクション** <p><p>Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook <p><p>**マネージド コネクタ** <p><p>Azure AD Identity Protection、Azure Automation、Azure コンテナー インスタンス、Azure Data Explorer、Azure Data Factory、Azure Data Lake、Azure Event Grid、Azure IoT Central V3、Azure Key Vault、 Azure Log Analytics、Azure Monitor ログ、Azure Resource Manager、Azure Sentinel、Azure AD を使用した HTTP <p><p>**注**:マネージド コネクタのサポートは、現在プレビュー段階です。 |
 |||
 
 <a name="basic-authentication"></a>
 
-### <a name="basic-authentication"></a>[基本認証]
+#### <a name="basic-authentication"></a>[基本認証]
 
 [[基本]](../active-directory-b2c/secure-rest-api.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
@@ -955,7 +959,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 <a name="client-certificate-authentication"></a>
 
-### <a name="client-certificate-authentication"></a>クライアント証明書認証
+#### <a name="client-certificate-authentication"></a>クライアント証明書認証
 
 [[クライアント証明書]](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
@@ -994,7 +998,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
-### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
+#### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
 Request トリガーでは、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を使用して、ロジック アプリの [Azure AD 承認ポリシー](#enable-oauth)を設定した後に受信呼び出しを認証できます。 **Active Directory OAuth** の認証の種類を提供するその他のすべてのトリガーとアクションについては、次のプロパティ値を指定します。
 
@@ -1034,7 +1038,7 @@ Request トリガーでは、[Azure Active Directory Open Authentication](../act
 
 <a name="raw-authentication"></a>
 
-### <a name="raw-authentication"></a>Raw 認証
+#### <a name="raw-authentication"></a>Raw 認証
 
 **[未加工]** オプションが使用可能な場合は、[OAuth 2.0 プロトコル](https://oauth.net/2/)に従っていない [認証スキーム](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml)を使用する必要があるときに、この認証の種類を使用できます。 この種類では、送信要求で送信する Authorization ヘッダーの値を手動で作成し、トリガーまたはアクションでそのヘッダー値を指定します。
 
@@ -1077,15 +1081,17 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 <a name="managed-identity-authentication"></a>
 
-### <a name="managed-identity-authentication"></a>マネージド ID の認証
+#### <a name="managed-identity-authentication"></a>マネージド ID の認証
 
-[特定のトリガーまたはアクション](#add-authentication-outbound)で [[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての *単一* の ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+[マネージド ID 認証がサポートされているトリガーまたはアクション](#add-authentication-outbound)で [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用できる場合、ロジック アプリでは、Azure Active Directory (Azure AD) で保護された Azure リソースへのアクセスの認証用に、資格情報、シークレット、Azure AD トークンではなく、 システム割り当て ID または手動で作成した *1 つ* のユーザー割り当て ID を使用できます。 この ID は、ユーザーに代わって Azure が管理します。ユーザーがシークレットを管理したり、Azure AD トークンを直接使用したりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
 1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 
 1. Azure 関数でマネージド ID を使用できるようにするには、先に [Azure Functions の認証を有効](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions)にします。
 
-1. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
+1. マネージド ID の使用がサポートされているトリガーまたはアクションで、次の情報を指定します。
+
+   **組み込みのトリガーとアクション**
 
    | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
    |---------------------|-----------------|----------|-------|-------------|
@@ -1094,7 +1100,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
    | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用の[アクセス トークン](../active-directory/develop/access-tokens.md)がすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**: **[対象ユーザー]** プロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と *正確に一致する* ようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
    |||||
 
-   たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ManagedServiceIdentity` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
+   たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 たとえば、この HTTP アクション定義では、認証の `type` が `ManagedServiceIdentity` と指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
 
    ```json
    "HTTP": {
@@ -1111,6 +1117,15 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
       "runAfter": {}
    }
    ```
+
+   **マネージド コネクタのトリガーおよびアクション**
+
+   | プロパティ (デザイナー) | 必須 | 値 | 説明 |
+   |---------------------|----------|-------|-------------|
+   | **接続名** | はい | <*connection-name*> ||
+   | **管理対象 ID** | はい | **システム割り当てマネージド ID** <br>or <br> <*user-assigned-managed-identity-name*> | 使用する認証の種類 |
+   |||||
+
 
 <a name="block-connections"></a>
 

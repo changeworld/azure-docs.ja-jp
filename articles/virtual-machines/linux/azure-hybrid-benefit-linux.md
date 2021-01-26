@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858809"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209136"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
 
@@ -47,6 +47,9 @@ RHEL の Azure ハイブリッド特典は、次の両方の条件を満たす R
 
 - Azure での使用に適した、アクティブまたは未使用の RHEL サブスクリプションがある
 - [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) プログラムを使用して、Azure で使用する 1 つ以上のサブスクリプションを有効にしている
+
+> [!IMPORTANT]
+> [cloud-access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) プログラムで正しいサブスクリプションを確実に有効にします。
 
 Red Hat の特典の使用を開始するには:
 
@@ -223,5 +226,5 @@ A:いいえ、できません。 VDC は、AHB を含め、Azure ではサポー
 | ----- | ---------- |
 | "The action could not be completed because our records show that you have not successfully enabled Red Hat Cloud Access on your Azure subscription…."\(お使いの Azure サブスクリプションで Red Hat Cloud Access が正常に有効化されていないと記録されているため、この操作を完了できませんでした……\) | RHEL VM で特典を使用するには、まず [Azure サブスクリプションを Red Hat Cloud Access に登録する](https://access.redhat.com/management/cloud)必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法を確認する](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

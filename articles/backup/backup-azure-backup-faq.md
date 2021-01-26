@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327153"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572529"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -61,6 +61,10 @@ ms.locfileid: "96327153"
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Recovery Services コンテナーからオンプレミスにデータを移動するにはどうすればよいですか。
 
 Data Box を使用して Recovery Services コンテナーからオンプレミスにデータを直接エクスポートすることはサポートされていません。 データはストレージ アカウントに復元する必要があります。その後、[Data Box](../databox/data-box-overview.md) または [Import/Export](../storage/common/storage-import-export-service.md) を使ってオンプレミスに移動できます。
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>geo 冗長ストレージ (GRS) コンテナーで、リージョンをまたがる復元 (CRR) 機能が有効になっている場合とそうでない場合では、どのような違いがありますか。
+
+[CRR](azure-backup-glossary.md#cross-region-restore-crr) 機能が有効になっていない [GRS](azure-backup-glossary.md#grs) コンテナーの場合、Azure によってプライマリ リージョンでの障害が宣言されるまで、セカンダリ リージョンのデータにはアクセスできません。 このような場合、セカンダリ リージョンから復元が行われます。 CRR が有効になっている場合、プライマリ リージョンが稼働している場合でも、セカンダリ リージョンでの復元をトリガーできます。
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 

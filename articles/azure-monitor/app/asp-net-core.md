@@ -4,12 +4,12 @@ description: ASP.NET Core Web アプリケーションの可用性、パフォ�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904535"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249110"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -69,7 +69,7 @@ Visual Studio for Mac の場合は、[手動のガイダンス](#enable-applicat
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -232,7 +232,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Microsoft.ApplicationInsights.AspNetCore SDK 2.15.0 以降の構成に関する推奨事項
 
-Microsoft.ApplicationInsights.AspNetCore SDK バージョン [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 以降、アプリケーション `IConfiguration` インスタンスを使用する instrumentationkey を含む、`ApplicationInsightsServiceOptions` で使用可能なすべての設定を構成することをお勧めします。 次の例に示すように、設定は "ApplicationInsights" セクションの下に記されている必要があります。 appsettings.json の次のセクションは、インストルメンテーション キーを構成し、アダプティブ サンプリングとパフォーマンス カウンターの収集も無効にします。
+Microsoft.ApplicationInsights.AspNetCore SDK バージョン [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 以降では、アプリケーションの `IConfiguration` インスタンスを使用する instrumentationkey を含む、`ApplicationInsightsServiceOptions` で使用可能なすべての設定を構成することをお勧めします。 次の例に示すように、設定は "ApplicationInsights" セクションの下に記載されている必要があります。 appsettings.json の次のセクションは、インストルメンテーション キーを構成し、アダプティブ サンプリングとパフォーマンス カウンターの収集も無効にします。
 
 ```json
 {

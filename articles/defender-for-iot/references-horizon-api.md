@@ -4,15 +4,15 @@ description: このガイドでは、よく使用される Horizon メソッド�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/7/2020
+ms.date: 1/5/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 39770fe7aa7b11cae03304fda8901e81e0f1877a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976906"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208415"
 ---
 # <a name="horizon-api"></a>Horizon API 
 
@@ -20,17 +20,19 @@ ms.locfileid: "97976906"
 
 ### <a name="getting-more-information"></a>詳細情報の入手先
 
-Horizon および CyberX プラットフォームでの作業の詳細については、以下を参照してください。
+Horizon および Defender for IoT プラットフォームでの作業の詳細については、次の情報を参照してください。
 
-- Horizon Open Development Environment (ODE) SDK については、CyberX の担当者にお問い合わせください。
+- Horizon Open Development Environment (ODE) SDK については、Defender for IoT の担当者にお問い合わせください。
 - サポートとトラブルシューティングの情報については、<support@cyberx-labs.com> にお問い合わせください。
-- CyberX コンソールから Cyberx ユーザー ガイドにアクセスするには、:::image type="icon" source="media/references-horizon-api/profile-icon.png"::: を選択し、 **[Download User Guide]\(ユーザー ガイドのダウンロード\)** を選択します。
+
+- Defender for IoT コンソールから Defender for IoT ユーザー ガイドにアクセスするには、:::image type="icon" source="media/references-horizon-api/profile.png"::: を選択し、 **[Download User Guide]\(ユーザー ガイドのダウンロード\)** を選択します。
+
 
 ## `horizon::protocol::BaseParser`
 
 すべてのプラグインの概要です。 これには 2 つのメソッドがあります。
 
-- 自分の上位で定義されたプラグイン フィルターの処理用。 この方法で、Horizon はパーサーとの通信方法を認識します
+- 自分の上位で定義されたプラグイン フィルターの処理用。 この方法で、Horizon によってパーサーとの通信方法が認識されます。
 - 実際のデータの処理用。
 
 ## `std::shared_ptr<horizon::protocol::BaseParser> create_parser()`
@@ -39,7 +41,7 @@ Horizon および CyberX プラットフォームでの作業の詳細につい�
 
 ### <a name="parameters"></a>パラメーター 
 
-なし
+[なし] :
 
 ### <a name="return-value"></a>戻り値
 
@@ -69,12 +71,12 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ### <a name="parameters"></a>パラメーター
 
-- データの格納と、SDK 関連のオブジェクト (ILayer、フィールドなど) の作成を担当する SDK 制御ユニット。
+- データの格納と、SDK 関連のオブジェクト (ILayer やフィールドなど) の作成を担当する SDK 制御ユニット。
 - 生パケットのデータを読み取るためのヘルパー。 これは、config.json で定義したバイト順で既に設定されています。
 
 ### <a name="return-value"></a>戻り値 
 
-処理の結果です。 [成功]、[Malformed]\(不正な形式\)、[Sanity]\(サニティ\) のいずれかになります。
+処理の結果です。 *[成功]* 、 *[不正な形式]* 、または *[Sanity]\(サニティ\)* のいずれかになります。
 
 ## `horizon::protocol::SanityFailureResult: public horizon::protocol::ParserResult`
 
@@ -90,7 +92,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ## `horizon::protocol::MalformedResult: public horizon::protocol::ParserResult`
 
-形式に誤りがある結果。これは、パケットをプロトコルとして既に認識していたものの、一部の検証に誤りがあったことを示しています (予約済みのビットがオンになっている、一部のフィールドが不足しているなど)
+形式に誤りがある結果。これは、パケットをプロトコルとして既に認識していたものの、一部の検証に誤りがあったことを示しています (予約済みのビットがオンになっている、または一部のフィールドが不足している)。
 
 ## `horizon::protocol::MalformedResult::MalformedResult(uint64_t)`
 
@@ -110,24 +112,24 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection)`
 
-コンストラクター
+コンストラクターです。
 
 ### <a name="parameters"></a>パラメーター 
 
-- 識別された場合は、パケットの方向。 値には REQUEST、RESPONSE を指定できます
+- 識別された場合は、パケットの方向。 値には *REQUEST*、または *RESPONSE* を指定できます。
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection, const std::vector<uint64_t> &)`
 
-コンストラクター
+コンストラクターです。
 
 ### <a name="parameters"></a>パラメーター
 
-- パケットの方向 (識別されている場合) は、REQUEST、RESPONSE のいずれかにすることができます
+- パケットの方向 (識別されている場合) は、*REQUEST*、*RESPONSE* のいずれかにすることができます。
 - [警告]。 これらのイベントは失敗しませんが、Horizon に通知されます。
 
 ## `horizon::protocol::SuccessResult(const std::vector<uint64_t> &)`
 
-コンストラクター
+コンストラクターです。
 
 ### <a name="parameters"></a>パラメーター 
 
@@ -135,11 +137,11 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ## `HorizonID HORIZON_FIELD(const std::string_view &)`
 
-フィールド名への文字列ベースの参照 (例: function_code) を HorizonID に変換します
+フィールド名への文字列ベースの参照 (たとえば、function_code) を HorizonID に変換します。
 
 ### <a name="parameters"></a>パラメーター 
 
-- 変換する文字列
+- 変換する文字列。
 
 ### <a name="return-value"></a>戻り値
 
@@ -155,11 +157,11 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ## `horizon::protocol::management::IFieldManagement &horizon::protocol::management::IProcessingUtils::getFieldsManager()`
 
-フィールド管理オブジェクトを取得します。これは、ILayer などのさまざまなオブジェクトに対するフィールドの作成を担当します
+フィールド管理オブジェクトを取得します。これは、さまざまなオブジェクト (たとえば、ILayer) に対するフィールドの作成を担当します。
 
 ### <a name="return-value"></a>戻り値
 
-マネージャーへの参照
+マネージャーへの参照。
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, uint64_t)`
 
@@ -167,9 +169,9 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ### <a name="parameters"></a>パラメーター 
 
-- 前に作成したレイヤー
-- HORIZON_FIELD マクロによって作成された HorizonID
-- 格納する生の値
+- 前に作成したレイヤー。
+- **HORIZON_FIELD** マクロによって作成された HorizonID。
+- 格納する生の値。
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::string)`
 
@@ -177,19 +179,19 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ### <a name="parameters"></a>パラメーター  
 
-- 前に作成したレイヤー
-- HORIZON_FIELD マクロによって作成された HorizonID
-- 格納する生の値
+- 前に作成したレイヤー。
+- **HORIZON_FIELD** マクロによって作成された HorizonID。
+- 格納する生の値。
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::vector<char> &)`
 
-要求された ID を持つ新しい生の値 (バイトの配列) フィールドをレイヤーに作成します。 メモリは移動されるため、注意してください。この値を再び使用することはできません
+要求された ID を持つ新しい生の値 (バイトの配列) フィールドをレイヤーに作成します。 メモリは移動されることにご注意ください。この値を再び使用することはできません。
 
 ### <a name="parameters"></a>パラメーター
 
-- 前に作成したレイヤー
-- HORIZON_FIELD マクロによって作成された HorizonID
-- 格納する生の値
+- 前に作成したレイヤー。
+- **HORIZON_FIELD** マクロによって作成された HorizonID。
+- 格納する生の値。
 
 ## `horizon::protocol::IFieldValueArray &horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, horizon::protocol::FieldValueType)`
 
@@ -197,40 +199,40 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ### <a name="parameters"></a>パラメーター
 
-- 前に作成したレイヤー
-- HORIZON_FIELD マクロによって作成された HorizonID
-- 配列内に格納される値の型
+- 前に作成したレイヤー。
+- **HORIZON_FIELD** マクロによって作成された HorizonID。
+- 配列内に格納される値の型。
 
 ### <a name="return-value"></a>戻り値
 
-値を追加する必要のある配列への参照
+値を追加する必要のある配列への参照。
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, uint64_t)`
 
-前に作成した配列に新しい整数値を追加します
+前に作成した配列に新しい整数値を追加します。
 
 ### <a name="parameters"></a>パラメーター
 
-- 前に作成した配列
-- 配列に格納される生の値
+- 前に作成した配列。
+- 配列に格納される生の値。
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::string)`
 
-前に作成した配列に新しい文字列値を追加します。 メモリは移動されるため、注意してください。この値を再び使用することはできません
+前に作成した配列に新しい文字列値を追加します。 メモリは移動されることにご注意ください。この値を再び使用することはできません。
 
 ### <a name="parameters"></a>パラメーター
 
-- 前に作成した配列
-- 配列に格納される生の値
+- 前に作成した配列。
+- 配列に格納される生の値。
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::vector<char> &)`
 
-前に作成した配列に新しい生の値を追加します。 メモリは移動されるため、注意してください。この値を再び使用することはできません
+前に作成した配列に新しい生の値を追加します。 メモリは移動されることにご注意ください。この値を再び使用することはできません。
 
 ### <a name="parameters"></a>パラメーター
 
-- 前に作成した配列
-- 配列に格納される生の値
+- 前に作成した配列。
+- 配列に格納される生の値。
 
 ## `bool horizon::general::IDataBuffer::validateRemainingSize(size_t)`
 
@@ -238,11 +240,11 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ### <a name="parameters"></a>パラメーター
 
-存在する必要があるバイト数 
+存在する必要のあるバイト数。
 
 ### <a name="return-value"></a>戻り値
 
-バッファーに少なくとも X バイトが含まれている場合は True。 それ以外の場合は false です。
+バッファーに少なくとも X バイトが含まれている場合は True。 それ以外の場合は、`False` となります。
 
 ## `uint8_t horizon::general::IDataBuffer::readUInt8()`
 
@@ -282,12 +284,12 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 ### <a name="parameters"></a>パラメーター 
 
-- データのコピー先のメモリ領域
-- メモリ領域のサイズ。このパラメーターでは、コピーするバイト数も定義します
+- データのコピー先のメモリ領域。
+- メモリ領域のサイズ。このパラメーターでは、コピーするバイト数も定義します。
 
 ## `std::string_view horizon::general::IDataBuffer::readString(size_t)`
 
-バッファーから文字列への読み取り
+バッファーから文字列への読み取り。
 
 ### <a name="parameters"></a>パラメーター 
 

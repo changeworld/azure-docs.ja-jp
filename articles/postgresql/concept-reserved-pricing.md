@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: dcc6cc40c936876c856326e330b67ef465f90cde
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 8343c06992c896986ba26a90171e25f9c8c4f2f8
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240445"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600103"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Azure Database for PostgreSQL の前払い - 予約容量を持つ Single Server 計算リソース
 
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL では計算リソースを前払いすること�
 Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal.azure.com/) で購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 * 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
-* Enterprise サブスクリプションの場合、 [EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
+* Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 * クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Database for PostgreSQL の予約容量を購入できます。 </br>
 
 エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
@@ -53,7 +53,7 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 
 | フィールド | 説明 |
 | :------------ | :------- |
-| サブスクリプション   | Azure Database for PostgreSQL の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、Azure Database for PostgreSQL の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
+| サブスクリプション   | Azure Database for PostgreSQL の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、Azure Database for PostgreSQL の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント残高) から料金が差し引かれるか、超過分として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 | Scope | 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: </br></br> **共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている Azure Database for PostgreSQL サーバーに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</br></br> **単一サブスクリプション** - 仮想コアの予約割引はこのサブスクリプションの Azure Database for PostgreSQL サーバーに適用されます。 </br></br> **1 つのリソース グループ** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の Azure Database for PostgreSQL サーバーに適用されます。
 | リージョン | Azure Database for PostgreSQL 予約容量の予約の対象となる Azure リージョン。
 | デプロイの種類 | 予約を購入する Azure Database for PostgreSQL リソースの種類。

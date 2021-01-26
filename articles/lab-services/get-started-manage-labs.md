@@ -3,12 +3,12 @@ title: Azure Lab Services の概要
 description: この記事では、Azure Lab Services の使用を開始する方法について説明します。
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602667"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165044"
 ---
 # <a name="get-started-with-lab-services"></a>Lab Services の概要 
 
@@ -109,56 +109,7 @@ VM への接続の問題を学生が経験している場合、または他の�
 
 ## <a name="manage-users-in-a-lab"></a>ラボのユーザーを管理する
 
-教師は、学生ユーザーをラボに追加し、その時間クォータを監視することができます。 
-
-### <a name="add-users-by-email-address"></a>メール アドレスでユーザーを追加する
-
-1. [Azure Lab Services Web サイト](https://labs.azure.com/)から、ウィンドウの左側にある **[ユーザー]** クリックします。
-1. ウィンドウの上部で、 **[ユーザーの追加]** をクリックし、 **[メール アドレスによる追加]** を選択します。 
-1. 右側に表示される **[ユーザーの追加]** ウィンドウで、学生のメール アドレスを別個の行に入力します。または、セミコロンで区切って 1 行に入力します。
-1. **[保存]** をクリックします。
-1. これで、ユーザーの一覧がメール アドレス、状態、招待、クォータ時間で更新されます。
-
-    学生がラボに登録されると、その名前が Azure Active Directory の姓と名で更新されます。
-
-    > [!NOTE]
-    > ユーザーに対して [アクセスの制限] オプションの切り替えをオンにしたままにします。 これは、リストに存在するユーザーだけが、受け取った登録リンクを使用してラボに登録できることを意味します。
-
-### <a name="add-users-using-a-spreadsheet"></a>スプレッドシートを使用してユーザーを追加する 
-
-ユーザーのメール アドレスを含む CSV ファイルをアップロードしてユーザーを追加することもできます。
-
-1. Microsoft Excel で、学生のメール アドレスを 1 列で列挙する CSV ファイルを作成します。
-1. [Azure Lab Services Web サイト](https://labs.azure.com/)で、 **[ユーザー]** ページの上部にある **[ユーザーの追加]** ボタンをクリックします。
-1. **[CSV のアップロード]** を選択します。
-1. 学生のメール アドレスを含む CSV ファイルを選択し、 **[開く]** をクリックします。
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="スプレッドシートを使用してユーザーを追加する":::
-1. これで、右側のウィンドウにメール アドレスが表示されます。 **[保存]** をクリックします。
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="ユーザーの登録":::
-
-### <a name="register-users"></a>ユーザーを登録する
-
-ユーザーをラボに追加した後は、VM にアクセスするために登録する必要があります。 これを行うには、ポータルからユーザーを招待します。これにより、ラボへの登録リンクを含む電子メールが送信されます。 または、登録リンクをコピーして、電子メールまたはその他の学生とのコミュニケーション形式に貼り付けます。
-
-1. **[ユーザー]** ページの一覧から、1 人または複数の学生を選択します。
-
-    選択した学生の行で、一覧内のエンベロープ アイコンを選択するか、画面の上部にある **[招待]** をクリックします。
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="招待状を送信する":::
-    
-    **[Send invitation by email]\(メールで招待を送信する\)** ウィンドウで、学生へのオプションのメッセージ (ユーザー名とパスワードなど) を入力し、 **[送信]** をクリックします。 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="メールで招待を送信する":::
-
-    または、同じ **[ユーザー]** ページで、画面の上部にある **[登録リンク]** ボタンをクリックすることもできます。 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="ユーザー登録リンク":::
-    
-    テキスト フィールドから登録リンクをコピーし、電子メールまたはお好みのセキュリティで保護されたメッセージング ツールに貼り付けます。  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="ユーザー登録の送信":::
+教師は、学生ユーザーをラボに追加し、その時間クォータを監視することができます。 メール アドレスまたはスプレッドシートの一覧を使用してユーザーを追加する方法の詳細については、「[ラボ ユーザーを追加および管理する](how-to-configure-student-usage.md)」を参照してください。
 
 ユーザーを招待するか、リンクを共有した後、 **[ユーザー]** ページの **[状態]** 列で、どのユーザーが正常に登録されたかを監視できるようになります。 
 

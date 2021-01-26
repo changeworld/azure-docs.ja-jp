@@ -973,6 +973,8 @@
           href: managed-instance/virtual-cluster-delete.md
         - name: カスタム DNS の構成
           href: managed-instance/custom-dns-configure.md
+        - name: DNS 構成の同期
+          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
         - name: ネットワーク構成の同期
           href: managed-instance/azure-app-sync-network-configuration.md
         - name: 管理エンドポイント IP アドレスの検索

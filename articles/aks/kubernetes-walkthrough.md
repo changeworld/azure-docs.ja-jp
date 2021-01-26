@@ -3,7 +3,7 @@ title: クイック スタート:Azure CLI を使用して AKS クラスター�
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、Azure CLI を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: e69db59789dbaf45c0830ba6e6ac3afbe87f9a19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: afa1aaafe7ea339eb82e35039980009908295008
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029432"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248617"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -49,7 +49,7 @@ Azure リソース グループは、Azure リソースが展開され管理さ�
 az group create --name myResourceGroup --location eastus
 ```
 
-次の出力例では、正常に作成されたリソース グループが示されています。
+次の例のような出力は、リソース グループが正常に作成されたことを示します。
 
 ```json
 {
@@ -297,10 +297,10 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-browse
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483285"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179033"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure Storage の暗号化のためのカスタマー マネージド キー
 
@@ -78,7 +78,7 @@ Azure Storage の暗号化では、2048、3072、および 4096 のサイズの 
 
     キーのバージョンが明示的に指定されている場合は、新しいバージョンを作成するときに、新しいキー バージョンの URI を使用するようにストレージ アカウントを手動で更新する必要があります。 新しいバージョンのキーを使用するようにストレージ アカウントを更新する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」または「[Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
 
-カスタマー マネージド キーのキー バージョンを更新しても、ストレージ アカウントのデータの再暗号化はトリガーされません。 ユーザーがこれ以上操作を行う必要はありません。
+キーのバージョンを更新すると、ルート暗号化キーの保護が変更されますが、Azure Storage アカウント内のデータは再暗号化されません。 ユーザーがこれ以上操作を行う必要はありません。
 
 > [!NOTE]
 > キーを交換するには、コンプライアンス ポリシーに従って、キー コンテナーまたはマネージド HSM に新しいバージョンのキーを作成します。 キーを手動で交換することも、スケジュールに基づいてキーを交換する関数を作成することもできます。

@@ -4,15 +4,15 @@ description: この記事では、センサー コンソールにサインイン
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836863"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538568"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>センサーをアクティブ化してセットアップする
 
@@ -65,10 +65,13 @@ ms.locfileid: "97836863"
 コンソールでは、次の証明書の種類がサポートされています。
 
 - プライベートおよびエンタープライズ キー インフラストラクチャ (プライベート PKI)
+
 - 公開キー基盤 (パブリック PKI)
+
 - アプライアンスのローカルで生成された (ローカルで自己署名された) もの 
 
-  > [重要] 既定の自己署名証明書は使用しないことをお勧めします。 この証明書はセキュリティで保護されていないため、テスト環境でのみ使用してください。 証明書の所有者を検証できないため、システムのセキュリティを維持できません。 実稼働ネットワークには、このオプションを使用しないでください。
+  > [!IMPORTANT]
+  > 既定の自己署名証明書は使用しないことをお勧めします。 この証明書はセキュリティで保護されていないため、テスト環境でのみ使用してください。 証明書の所有者を検証できないため、システムのセキュリティを維持できません。 実稼働ネットワークには、このオプションを使用しないでください。
 
 ### <a name="sign-in-and-activate-the-sensor"></a>サインインしてセンサーをアクティブ化する
 

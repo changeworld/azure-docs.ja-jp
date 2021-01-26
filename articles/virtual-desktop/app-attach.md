@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400830"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185769"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを作成する (プレビュー)
 
@@ -39,6 +39,17 @@ MSIX アプリのアタッチ パッケージからのアプリをホストす�
 6. **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** を選択します。
 7. 証明書ストアの選択ウィンドウで、 **[信頼されたユーザー]** を選択して、 **[OK]** をクリックします。
 8. **[次へ]** 、 **[完了]** の順に選択します。
+
+## <a name="enable-microsoft-hyper-v"></a>Microsoft Hyper-V を有効にする
+
+ステージングするには `Mount-VHD` コマンドが必要であり、ステージングを解除するには `Dismount-VHD` が必要であるため、Microsoft Hyper-V を有効にする必要があります。
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>この変更には、仮想マシンの再起動が必要です。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを準備する
 

@@ -4,12 +4,12 @@ description: Azure リソースの更新または削除をユーザーに禁止�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555670"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602207"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -28,7 +28,7 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 
 ## <a name="considerations-before-applying-locks"></a>ロック適用前の考慮事項
 
-ロックを適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
+ロックを適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 ロックにより、Azure Resource Manager API への POST 要求を必要とする操作を防ぐことができます。 ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
 
 * ロックを **ストレージ アカウント** に設定すると、どのユーザーもキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
 

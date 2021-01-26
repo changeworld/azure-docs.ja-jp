@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 01/19/2021
 ms.author: b-juche
-ms.openlocfilehash: a66b5d59415aad7abf3e8dc95c7498b5d774d640
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071274"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600122"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -77,7 +77,12 @@ ms.locfileid: "98071274"
 * [SUSE Linux Enterprise Server 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [Red Hat Enterprise Linux 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 
+### <a name="sap-anydb"></a>SAP AnyDB
+
+* [Azure NetApp Files を使用して SAP AnyDB (Oracle 19c) をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
+
 ### <a name="sap-iq-nls"></a>SAP IQ-NLS
+
 *   [SUSE Linux Enterprise Server で Azure NetApp Files を利用し、SAP IQ-NLS HA Solution をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP 技術コミュニティとブログ記事 

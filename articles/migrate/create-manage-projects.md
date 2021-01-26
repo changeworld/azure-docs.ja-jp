@@ -1,21 +1,21 @@
 ---
 title: Azure Migrate プロジェクトの作成と管理
 description: Azure Migrate でプロジェクトを検索、作成、管理、および削除します。
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753826"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567787"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
-この記事では、[Azure Migrate](migrate-services-overview.md) プロジェクトを作成、管理、および削除する方法について説明します。
+この記事では、[Azure Migrate](migrate-services-overview.md) プロジェクトを作成、管理、および削除する方法について説明します。 従来の Azure Migrate プロジェクトを使用している場合は、それらのプロジェクトを削除し、手順に従って新しい Azure Migrate プロジェクトを作成してください。 従来の Azure Migrate プロジェクトまたはコンポーネントは Azure Migrate にアップグレードできません。
 
 Azure Migrate のプロジェクトは、評価または移行しようとしている環境から収集された検出、評価、移行のメタデータを格納するために使用されます。 プロジェクト内で、検出された資産を追跡し、評価を作成して、Azure への移行を調整することができます。  
 

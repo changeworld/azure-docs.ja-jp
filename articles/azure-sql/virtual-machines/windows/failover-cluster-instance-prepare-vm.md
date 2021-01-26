@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358012"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223161"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -68,7 +68,7 @@ Azure VM ゲスト フェールオーバー クラスターでは、サーバー
 両方の仮想マシンを配置します。
 
 - 可用性セットを使用している場合は、可用性セットと同じ Azure リソース グループ内。
-- ドメイン コントローラーと同じ仮想ネットワーク上。
+- ドメイン コントローラーと同じ仮想ネットワーク上、またはドメイン コントローラーへの適切な接続がある仮想ネットワーク上。
 - 両方の仮想マシン、およびこのクラスター上で最終的に使用するすべての FCI 用に十分な IP アドレス空間を持つサブネット内。
 - Azure 可用性セット内または可用性ゾーン内。
 

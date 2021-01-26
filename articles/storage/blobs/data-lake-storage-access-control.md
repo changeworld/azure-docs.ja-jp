@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350757"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185905"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>AzureData Lake Storage Gen2 のアクセス制御リスト (ACL)
 
@@ -60,7 +60,7 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 
 ## <a name="levels-of-permission"></a>アクセス許可のレベル
 
-コンテナー オブジェクトに対するアクセス許可は、**読み取り**、**書き込み**、**実行** であり、次の表に示すように、ファイルとディレクトリに対して使用できます。
+コンテナー内のディレクトリとファイルに対するアクセス許可は、**読み取り**、**書き込み**、**実行** です。これらは、次の表に示すようにファイルとディレクトリに対して使用できます。
 
 |            |    ファイル     |   ディレクトリ |
 |------------|-------------|----------|
@@ -69,7 +69,7 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 | **実行 (X)** | Data Lake Storage Gen2 のコンテキストでは、何も意味しない | ディレクトリの子項目をスキャンするために必要です。 |
 
 > [!NOTE]
-> ACL のみを使用して (Azure RBAC なしで) アクセス許可を付与する場合、ファイルにセキュリティ プリンシパルの読み取りまたは書き込みアクセス権を付与するには、コンテナーとそのファイルまでつながるフォルダー階層内の各フォルダーにセキュリティ プリンシパルの **実行** のアクセス許可を付与する必要があります。
+> ACL のみを使用して (Azure RBAC なしで) アクセス許可を付与する場合、セキュリティ プリンシパルにファイルの読み取りまたは書き込みアクセス権を付与するには、コンテナーのルート フォルダー、およびそのファイルに至るフォルダー階層内の各フォルダーに対する **実行** アクセス許可をセキュリティ プリンシパルに付与する必要があります。
 
 ### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
 

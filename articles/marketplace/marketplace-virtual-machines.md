@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628290"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600403"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>仮想マシンのオファーを計画する方法
 
@@ -73,7 +73,7 @@ VM オファーには、1 つ以上のプランが必要です。 プランで�
 VM は商取引が可能で、従量課金制またはライセンス持ち込み (BYOL) のライセンス モデルを使用します。 商用トランザクションは Microsoft がホストし、公開元に代わって顧客に請求します。 公開元にとっては、顧客と Microsoft との間で推奨される支払い関係 (Enterprise Agreement など) を利用できる利点があります。 詳細については、「[コマーシャル マーケットプレースの販売機能](./marketplace-commercial-transaction-capabilities-and-considerations.md)」を参照してください。
 
 > [!NOTE]
-> Enterprise Agreement に関連付けられている年額コミットメントは VM の Azure 利用には使えますが、公開元のソフトウェア ライセンス料金には使えません。
+> Enterprise Agreement に関連付けられている Azure 前払い (旧称: 年額コミットメント) は、VM の Azure 利用には使えますが、公開元のソフトウェア ライセンス料金には使えません。
 
 ### <a name="licensing-options"></a>ライセンス オプション
 

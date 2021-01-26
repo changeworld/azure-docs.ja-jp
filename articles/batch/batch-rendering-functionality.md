@@ -3,14 +3,14 @@ title: レンダリングの機能
 description: Azure Batch の標準の機能は、レンダリングのワークロードとアプリの実行に使用されます。 Batch には、レンダリングのワークロードをサポートする特定の機能が含まれています。
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107472"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234275"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -18,7 +18,15 @@ Azure Batch の標準の機能は、レンダリングのワークロードと�
 
 プール、ジョブ、タスクなどの Batch の概念の概要については、[こちらの記事](./batch-service-workflow-features.md)をご覧ください。
 
-## <a name="batch-pools"></a>Batch プール
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>カスタム VM イメージと標準アプリケーション ライセンスを使用した Batch プール
+
+他のワークロードやアプリケーションの種類と同様に、カスタム VM イメージは、必要なレンダリング アプリケーションとプラグインを使用して作成できます。カスタム VM イメージは [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) に配置され、[Batch プールの作成に使用できます](batch-sig-images.md)。
+
+タスクのコマンド ライン文字列では、カスタム VM イメージの作成時に使用するアプリケーションとパスを参照する必要があります。
+
+ほとんどのレンダリング アプリケーションでは、ライセンス サーバーから取得されるライセンスが必要になります。 既存のオンプレミス ライセンス サーバーがある場合は、プールとライセンス サーバーの両方を同じ[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に配置する必要があります。 Batch プールとライセンス サーバー VM が同じ仮想ネットワーク上にあれば、Azure VM でライセンス サーバーを実行することもできます。
+
+## <a name="batch-pools-using-rendering-vm-images"></a>レンダリング VM イメージを使用した Batch プール
 
 ### <a name="rendering-application-installation"></a>レンダリング アプリケーションのインストール
 
@@ -28,7 +36,7 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 
 プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](./tutorial-rendering-cli.md)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
-| Publisher | プラン | Sku | Version |
+| Publisher | プラン | Sku | バージョン |
 |---------|---------|---------|--------|
 | batch (バッチ) | rendering-centos73 | rendering | latest |
 | batch (バッチ) | rendering-windows2016 | rendering | latest |
@@ -71,13 +79,13 @@ Arnold 2017 コマンド ライン|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018 コマンド ライン|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM のファミリ
+## <a name="azure-vm-families"></a>Azure VM のファミリ
 
 他のワークロードと同様に、レンダリング アプリケーションのシステム要件はさまざまで、ジョブとプロジェクトによってパフォーマンス要件は異なります。  Azure では、最小のコスト、価格とパフォーマンスの最適なバランス、最高のパフォーマンスなど、ユーザーの要件に応じて各種 VM ファミリを利用できます。
 Arnold などの一部のレンダリング アプリケーションは CPU ベースです。V-Ray や Blender Cycles は CPU か GPU、またはその両方を使用する場合があります。
 利用可能な VM ファミリと VM のサイズについて詳しくは、「[VM の種類とサイズ](../virtual-machines/sizes.md)」をご覧ください。
 
-### <a name="low-priority-vms"></a>優先順位の低い VM
+## <a name="low-priority-vms"></a>優先順位の低い VM
 
 他のワークロードと同様に、Batch のプールでレンダリング用に優先順位の低い VM を利用できます。  優先順位の低い VM は通常の専用の VM と同じパフォーマンスを発揮しますが、Azure の余剰キャパシティを使用し、大幅な割引が適用されます。  優先順位の低い VM を使用するデメリットは、利用可能な容量によっては、これらの VM が割り当てられなかったりいつでも割り込まれたりする可能性がある点です。 この理由から、優先順位の低い VM はすべてのレンダリング ジョブには適しません。 たとえば、イメージのレンダリングに数時間かかる場合、VM が先取りされること が原因でそれらのイメージのレンダリングに中断や再起動が発生することは受け入れられない可能性があります。
 
@@ -88,7 +96,7 @@ Arnold などの一部のレンダリング アプリケーションは CPU ベ�
 ジョブやタスクでレンダリング固有のサポートは不要です。  主な構成項目はタスク コマンドラインであり、必要なアプリケーションを参照する必要があります。
 Azure Marketplace の VM イメージが使用されている場合は、ベスト プラクティスとして、環境変数を使用してパスとアプリケーション実行可能ファイルを指定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 

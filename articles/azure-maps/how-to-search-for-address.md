@@ -3,17 +3,17 @@ title: Azure Maps Search Service を使用して場所を検索する
 description: Azure Maps Search Service について説明します。 この一連の API を使用して、ジオコーディング、逆ジオコーディング、あいまい検索、および交差点住所の逆引き検索を行う方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/05/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910986"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598360"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
@@ -169,7 +169,7 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
 
     :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="交差道路の検索":::
   
-3. **[送信]** をクリックして、応答の本体を確認します。 応答に `Occidental Avenue South` という `crossStreet` の値が含まれていることがわかります。
+3. **[送信]** をクリックして、応答の本体を確認します。 応答に `South Atlantic Street` という `crossStreet` の値が含まれていることがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.date: 01/18/2021
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602599"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600977"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>仮想マシンの認定に関するトラブルシューティング
 
@@ -22,20 +22,6 @@ Azure Marketplace に仮想マシン (VM) イメージを公開する際に、Az
 
 > [!NOTE]
 > この記事に関する質問または改善のための提案がある場合は、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。
-
-## <a name="approved-base-image"></a>承認された基本イメージ
-
-更新を含むイメージを再発行する要求を送信すると、パート番号の検証テスト ケースが失敗する可能性があります。 失敗した場合、イメージは承認されません。
-
-このエラーは、別の発行元に属する基本イメージを使用しており、そのイメージを更新した場合に発生します。 この場合、イメージの発行は許可されません。
-
-この問題を解決するには、Azure Marketplace からイメージを取得し、それに対して変更を加えます。 詳細については、次の記事を参照してください。
-
-- [Linux イメージ](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows イメージ](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> Azure Marketplace から取得していない Linux ベースのイメージを使用している場合は、最初のパーティションを 2,048 KB オフセットできます。 これにより、フォーマットされていない領域を、新しい課金情報を追加するために使用でき、Azure で Azure Marketplace への VM の公開を進めることができます。  
 
 ## <a name="vm-extension-failure"></a>VM 拡張機能のエラー
 
@@ -73,18 +59,18 @@ VM 拡張機能が正しくアクティブ化されていることを確認す�
 |1|無効な仮想ハード ディスク (VHD)|VHD フッターにある指定された Cookie の値が正しくない場合、VHD は無効と見なされます。|イメージを再作成して、要求を送信します。|
 |2|無効な BLOB の種類|使用されたブロックがページの種類ではなく、BLOB の種類であるため、VM のプロビジョニングが失敗しました。|イメージを再作成して、要求を送信します。|
 |3|プロビジョニングのタイムアウト、または正しく一般化されていない|VM の一般化に問題があります。|一般化を使用してイメージを再作成し、要求を送信します。|
+|
 
 > [!NOTE]
 > VM の一般化の詳細については、以下を参照してください。
 > - [Linux ドキュメント](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows ドキュメント](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
 
-
 ## <a name="vhd-specifications"></a>VHD の仕様
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix Cookie とその他の VHD の仕様
 
-'conectix' 文字列は VHD 仕様の一部です。 これは、ファイル作成者を識別する 8 バイトの Cookie として VHD フッターで定義されています。 Microsoft によって作成されたすべての VHD ファイルにこの Cookie があります。 
+'conectix' 文字列は VHD 仕様の一部です。 これは、ファイル作成者を識別する 8 バイトの Cookie として VHD フッターで定義されています。 Microsoft によって作成されたすべての VHD ファイルにこの Cookie があります。
 
 VHD でフォーマットされた BLOB には、この形式の 512 バイトのフッターが必要です。
 
@@ -106,7 +92,7 @@ Checksum|4
 一意の ID|16
 Saved State\(保存された状態\)|1
 予約されています。|427
-
+|
 
 ### <a name="vhd-specifications"></a>VHD の仕様
 
@@ -152,6 +138,7 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 |8|クライアント Alive 間隔|ClientAliveInterval を 180 に設定します。 アプリケーションで必要な場合は、30 から 235 の範囲で設定できます。 エンド ユーザーに対して SSH を有効にする場合は、説明に従ってこの値を設定する必要があります。|
 |9|OS アーキテクチャ|64 ビットのオペレーティング システムのみがサポートされています。|
 |10|自動更新|Linux エージェントの自動更新が有効になっているかどうかを特定します。|
+|
 
 ### <a name="common-test-case-errors"></a>一般的なテストケース エラー
 
@@ -163,14 +150,14 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 | 2 | Bash 履歴テスト ケース | 送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えていると、エラーが発生します。 Bash 履歴ファイルに潜在的な機密情報が含まれることのないようにするため、このサイズは 1 KB に制限されています。 | 別の作業用 VM に VHD をマウントし、サイズが 1 KB 以下に減少するように変更を加えて解決してください。 たとえば、`.bash` 履歴ファイルを削除します。 |
 | 3 | 必要なカーネル パラメーターのテスト ケース | このエラーは、`console` の値が `ttyS0` に設定されていない場合に発生します。 次のコマンドを実行して確認します。 <br /> `cat /proc/cmdline` | `console` の値を `ttyS0` に設定し、要求を再送信します。 |
 | 4 | ClientAlive 間隔のテスト ケース | ツールキットで、このテスト ケースに対して失敗の結果が返された場合は、`ClientAliveInterval` の値が不適切です。 | `ClientAliveInterval` の値を 235 以下に設定してから、要求を再送信してください。 |
-
+|
 
 ### <a name="windows-test-cases"></a>Windows のテスト ケース
 
 ツールキットで実行される Windows テスト ケースの一覧と、テストの検証の説明を次の表に示します。
 
 |シナリオ |テスト ケース|説明|
-|---|---|---|---|
+|---|---|---|
 |1|OS アーキテクチャ|Azure では 64 ビットのオペレーティング システムのみがサポートされています。|
 |2|ユーザー アカウントの依存関係|アプリケーションの実行は、管理者アカウントに依存することはできません。|
 |3|フェールオーバー クラスター|Windows Server のフェールオーバー クラスタリング機能はまだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
@@ -188,8 +175,9 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 |15|SNMP サービス|簡易ネットワーク管理プロトコル (SNMP) サービス機能は、まだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
 |16|Windows インターネット ネーム サービス|Windows インターネット ネーム サービス。 このサーバー機能はまだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
 |17|ワイヤレス LAN サービス|ワイヤレス LAN サービス。 このサーバー機能はまだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
+|
 
-前述のテスト ケースでエラーが発生した場合、解決策については、表の **[説明]** 列を参照してください。 詳細については、サポート チームにお問い合わせください。 
+前述のテスト ケースでエラーが発生した場合、解決策については、表の **[説明]** 列を参照してください。 詳細については、サポート チームにお問い合わせください。
 
 ## <a name="data-disk-size-verification"></a>データ ディスク サイズの確認
 
@@ -205,6 +193,7 @@ OS ディスク サイズの制限については、次のルールを参照し�
 |---|---|
 |Linux|1 GB から 1023 GB|
 |Windows|30 GB から 250 GB|
+|
 
 VM を使用すると基になるオペレーティング システムにアクセスできるため、VHD のサイズが VHD に対して十分な大きさであることを確認します。 ディスクはダウンタイムなしでは展開できません。 30 GB から 50 GB のディスク サイズを使用します。
 
@@ -212,6 +201,7 @@ VM を使用すると基になるオペレーティング システムにアク�
 |---|---|---|
 |> 500 テビバイト (TiB)|該当なし|例外の承認については、サポート チームにお問い合わせください。|
 |250-500 TiB|BLOB サイズとの差異が > 200 ギビバイト (GiB)|例外の承認については、サポート チームにお問い合わせください。|
+|
 
 > [!NOTE]
 > ディスク サイズを大きくすると、コストが高くなり、セットアップとレプリケーションのプロセスで遅延が発生します。 この遅延とコストのために、サポート チームでは、例外の承認に対する正当な理由を求める場合があります。
@@ -222,7 +212,7 @@ WannaCry ウイルスに関連する潜在的な攻撃を防ぐには、すべ�
 
 イメージ ファイルのバージョンは、`C:\windows\system32\drivers\srv.sys` または `srv2.sys` で確認できます。
 
-次の表は、修正プログラムが適用された Windows Server の最小バージョンを示しています。 
+次の表は、修正プログラムが適用された Windows Server の最小バージョンを示しています。
 
 |OS|Version|
 |---|---|
@@ -231,6 +221,7 @@ WannaCry ウイルスに関連する潜在的な攻撃を防ぐには、すべ�
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|NA|
+|
 
 > [!NOTE]
 > WindowsServer2019 には、必須のバージョン要件はありません。
@@ -243,14 +234,14 @@ Linux イメージを送信するときに、カーネル バージョンの問�
 
 次のいずれかのカーネル バージョンでイメージがインストールされていない場合は、適切な修正プログラムを使用してそれを更新してください。 次の必要な修正プログラムを使用してイメージを更新した後で、サポート チームに必要な承認を要求します。
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |OS ファミリ|Version|カーネル|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
-||14.04 LTS|4.15.0-1049-*-azure|
+||14.04 LTS|4.15.0-1049-\*-azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
@@ -283,14 +274,15 @@ Linux イメージを送信するときに、カーネル バージョンの問�
 |Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK は上記の RHEL に従う|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS Stable 2079.6.0|4.19.43*|
-||Beta 2135.3.1|4.19.50*|
-||Alpha 2163.2.1|4.19.50*|
+|CoreOS Stable 2079.6.0|4.19.43\*|
+||Beta 2135.3.1|4.19.50\*|
+||Alpha 2163.2.1|4.19.50\*|
 |Debian|jessie (security)|3.16.68-2|
 ||jessie backports|4.9.168-1+deb9u3|
 ||stretch (security)|4.9.168-1+deb9u3|
 ||Debian GNU/Linux 10 (buster)|Debian 6.3.0-18+deb9u1|
 ||buster、sid (stretch backports)|4.19.37-5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>イメージのサイズはメガバイトの倍数である必要がある
 
@@ -316,26 +308,24 @@ SSH が無効になっているイメージを使用して認定プロセスの�
 3. 認定要求を再送信します。
 
 ## <a name="download-failure"></a>ダウンロードの失敗
-    
+
 共有アクセス署名 (SAS) URL を使用して VM イメージをダウンロードするときに発生する問題については、次の表を参照してください。
 
-|シナリオ|エラー|理由|解決策|
-|---|---|---|---|
-|1|見つからない BLOB|VHD が削除されているか、指定された場所から移動されている可能性があります。|| 
-|2|BLOB が使用中|VHD は別の内部プロセスによって使用されています。|SAS URL を使用してダウンロードする場合、VHD は使用済みの状態である必要があります。|
-|3|無効な SAS URL|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
-|4|無効な署名|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
-|6|HTTP 条件ヘッダー|SASL URL が無効です。|正しい SAS URL を取得してください。|
-|7|無効な VHD 名|VHD 名にパーセント記号 (`%`) や引用符 (`"`) などの特殊文字が含まれているかどうかを確認します。|特殊文字を削除して VHD ファイルの名前を変更します。|
+|エラー|理由|解決策|
+|---|---|---|
+|見つからない BLOB|VHD が削除されているか、指定された場所から移動されている可能性があります。|| 
+|BLOB が使用中|VHD は別の内部プロセスによって使用されています。|SAS URL を使用してダウンロードする場合、VHD は使用済みの状態である必要があります。|
+|無効な SAS URL|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
+|無効な署名|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
+|HTTP 条件ヘッダー|SASL URL が無効です。|正しい SAS URL を取得してください。|
+|無効な VHD 名|VHD 名にパーセント記号 (`%`) や引用符 (`"`) などの特殊文字が含まれているかどうかを確認します。|特殊文字を削除して VHD ファイルの名前を変更します。|
+|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>最初の MB (2048 KB) パーティション (Linux のみ)
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>最初のパーティションは 1 MB (2048 セクター) で開始する
 
-VHD を送信するときに、VHD の最初の 2048 KB が空であることを確認します。 そうでない場合、要求は失敗します。
+[独自のイメージを構築](azure-vm-create-using-own-image.md)する場合は、OS ディスクの最初の 2048 セクター (1 MB) が空であることを確認します。 これを行わないと、発行は失敗します。 この要件は、(データ ディスクではなく) OS ディスクにのみ適用されます。 [承認済みのベースから](azure-vm-create-using-approved-base.md)イメージを構築する場合は、この要件をスキップしてかまいません。
 
->[!NOTE]
->Azure Marketplace から取得した Azure Windows 基本イメージの上に構築されたものなど、一部の特殊なイメージの場合、課金タグがあるかどうかが確認されます。課金タグが存在し、使用可能な内部値に一致する場合は、MB パーティションが無視されます。
-
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>空の VHD に最初の MB (2048 KB) パーティションを作成する
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>空の VHD に 1 MB (2048 セクターで、各セクター 512 バイト) のパーティションを作成する
 
 これらの手順は Linux のみに適用されます。
 
@@ -386,21 +376,21 @@ VHD を送信するときに、VHD の最初の 2048 KB が空であることを
    1. _first sector_ の値として「2048」を入力します。 _last sector_ は既定値のままにすることができます。
 
       >[!IMPORTANT]
-      >既存のデータは 2048 KB まで消去されます。 新しいパーティションを作成する前に、VHD をバックアップしてください。
+      >既存のデータは 2048 セクター (各セクター 512 バイト) まで消去されます。 新しいパーティションを作成する前に、VHD をバックアップしてください。
 
       ![Putty クライアント コマンド ラインのスクリーンショット。消去されたデータのコマンドと出力を示しています。](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. 「`w`」を入力して、パーティションの作成を確認します。 
+   1. 「`w`」を入力して、パーティションの作成を確認します。
 
       ![Putty クライアント コマンド ラインのスクリーンショット。パーティションを作成するためのコマンドを示しています。](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. コマンド `n fdisk /dev/sdb` を実行して「`p`」を入力することで、パーティション テーブルを検証できます。 パーティションがオフセット値 2048 で作成されていることがわかります。 
+   1. コマンド `n fdisk /dev/sdb` を実行して「`p`」を入力することで、パーティション テーブルを検証できます。 パーティションがオフセット値 2048 で作成されていることがわかります。
 
       ![Putty クライアント コマンド ラインのスクリーンショット。2048 のオフセットを作成するためのコマンドを示しています。](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. VM から VHD をデタッチし、VM を削除します。
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>VHD 上の既存のデータを移動して、最初の MB (2048 KB) のパーティションを作成する
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>VHD 上の既存のデータを移動して、1 MB (2048 セクターで、各セクター 512 バイト) のパーティションを作成する
 
 これらの手順は Linux のみに適用されます。
 
@@ -468,11 +458,11 @@ VHD を送信するときに、VHD の最初の 2048 KB が空であることを
 
 Azure Marketplace から取得したすべてのイメージを再利用する場合は、オペレーティング システムの VHD を一般化する必要があります。
 
-* **Linux** の場合、次のプロセスでは、Linux VM を一般化して別の VM として再デプロイします。
+- **Linux** の場合、次のプロセスでは、Linux VM を一般化して別の VM として再デプロイします。
 
   SSH ウィンドウで、コマンド `sudo waagent -deprovision+user` を入力します。
 
-* **Windows** の場合、`sysreptool` を使用して Windows イメージを一般化します。
+- **Windows** の場合、`sysreptool` を使用して Windows イメージを一般化します。
 
   `sysreptool` ツールの詳細については、「[Sysprep (システム準備) の概要](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)」を参照してください。
 
@@ -568,7 +558,7 @@ Bash 履歴を削除するには:
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>セキュリティの脆弱性または悪用に対処した新しい VM イメージを提供する
 
-これらの手順を完了するには、追加する VM イメージの技術資産を準備します。 詳細については、[承認済みのベースを使用した仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページと、[VM イメージの SAS URI の作成](azure-vm-get-sas-uri.md)に関するページを参照してください。
+これらの手順を完了するには、追加する VM イメージの技術資産を準備します。 詳細については、[承認済みベースを使用した仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自イメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページ、および [VM イメージの SAS URI の生成](azure-vm-get-sas-uri.md)に関するページを参照してください。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のペインで、 **[コマーシャル マーケットプレース]**  >  **[概要]** を選択します。

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 925a0270c50d20790c093eaf193d66e0acd4cd11
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.date: 01/14/2021
+ms.openlocfilehash: 82871a09916b2b64f74e25088f5e75ac60a40678
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347406"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202506"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -71,6 +71,7 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 | secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | sessionToken | [一時的なセキュリティ認証情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)の認証を使用する場合に適用されます。 AWS から[一時的なセキュリティ認証情報を要求](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken)する方法について学習します。<br>AWS の一時的な認証情報は、設定に基づいて 15 分から 36 時間で有効期限が切れることにご注意ください。 アクティビティの実行時、特に運用ワークロードの場合に、認証情報が有効であることを確認してください。たとえば、定期的に更新して Azure Key Vault に格納できます。<br>このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
 | serviceUrl | 公式の Amazon S3 サービス以外の S3 対応ストレージ プロバイダーからデータをコピーする場合、カスタム S3 エンドポイントを指定します。 たとえば、Google Cloud Storage からデータをコピーするには、`https://storage.googleapis.com` と指定します。 | いいえ |
+| forcePathStyle | 仮想ホスト形式のアクセスではなく、S3 の[パス形式のアクセス](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access)を使用するかどうかを示します。 指定できる値は **false** (既定値)、**true** です。<br>公式の Amazon S3 サービス以外の S3 対応ストレージ プロバイダーに接続していて、そのデータ ストアでパス形式のアクセスが必要な場合 ([Oracle Cloud Storage](https://docs.oracle.com/iaas/Content/Object/Tasks/s3compatibleapi.htm) など) は、このプロパティを true に設定します。 パス形式のアクセスが必要かどうかについては、各データ ストアのドキュメントを確認してください。 |いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!TIP]

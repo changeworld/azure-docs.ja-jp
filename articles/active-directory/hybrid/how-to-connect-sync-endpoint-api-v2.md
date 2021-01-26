@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608301"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567621"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect 同期 V2 エンドポイント API 
 Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、次のものがサポートされています。
@@ -28,7 +28,7 @@ Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイ�
 > [!NOTE]
 > 現在、新しいエンドポイントでは、書き戻される Microsoft 365 グループに対するグループ サイズの制限は構成されていません。 これにより、Active Directory と同期サイクルの待機時間に影響がある可能性があります。 グループ サイズは段階的に増やすことをお勧めします。  
 
-## <a name="pre-requisites"></a>前提条件  
+## <a name="prerequisites"></a>前提条件  
 新しい V2 エンドポイントを使用するには、[Azure AD Connect バージョン 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) 以降を使用し、以下で説明するデプロイ手順に従って、Azure AD Connect サーバーに対して V2 エンドポイントを有効にする必要があります。   
 
 ## <a name="deployment-guidance"></a>展開のガイダンス 

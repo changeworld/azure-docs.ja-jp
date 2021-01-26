@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309666"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569421"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -18,6 +18,9 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 
 ## <a name="updates-summary"></a>更新の概要
 
+- 2021 年 1 月
+  - [Azure ディスク バックアップ (プレビュー)](disk-backup-overview.md)
+  - [カスタマー マネージド キーを使用した保存時の暗号化の一般提供が開始されました](encryption-at-rest-with-cmk.md)
 - 2020 年 11 月
   - [Azure ファイル共有 (AFS) バックアップ用の Azure Resource Manager テンプレート](#azure-resource-manager-template-for-afs-backup)
   - [Azure VM 上の SAP HANA データベースの増分バックアップ](#incremental-backups-for-sap-hana-databases)
@@ -31,6 +34,18 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS)](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー)
+
+Azure ディスク バックアップは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそのスナップショットを保持することで [Azure マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)のスナップショット ライフサイクル管理を提供する、ターンキー ソリューションを提供します。 インフラストラクチャ コストなしでディスク スナップショットを管理でき、カスタム スクリプトも管理費用も必要ありません。 これは、1 日に複数回のバックアップをサポートする[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots)を使用してマネージド ディスクの特定時点のバックアップを作成する、クラッシュ整合性バックアップ ソリューションです。 また、エージェントレスのソリューションでもあり、運用アプリケーションのパフォーマンスに影響しません。 実行中の Azure 仮想マシンに OS とデータ ディスク (共有ディスクを含む) が現在接続されているかどうかにかかわらず、この両方のバックアップと復元がサポートされます。
+
+詳細については、「[Azure ディスク バックアップ (プレビュー)](disk-backup-overview.md)」を参照してください。
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した保存時の暗号化
+
+カスタマー マネージド キーを使用した保存時の暗号化サポートの一般提供が開始されました。 これにより、Azure Key Vault に格納されている独自のキーを使用して、Recovery Services コンテナー内のバックアップ データを暗号化できます。 Recovery Services コンテナーでバックアップの暗号化に使用される暗号化キーは、ソースの暗号化に使用されるものとは異なる場合があります。 データは、AES 256 ベースのデータ暗号化キー (DEK) を使用して保護され、このキーは、Key Vault に格納されているご自身のキーを使用して保護されます。 プラットフォーム マネージド キー (既定で利用可能) を使用した暗号化と比較すると、キーをより細かく制御できるため、コンプライアンスのニーズをより適切に満たすことができます。
+
+詳細については、「[カスタマー マネージド キーを使用したバックアップ データの暗号化](encryption-at-rest-with-cmk.md)」を参照してください。
 
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>AFS バックアップ用の Azure Resource Manager テンプレート
 

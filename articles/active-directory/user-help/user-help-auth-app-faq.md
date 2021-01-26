@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928326"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251507"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -33,13 +33,17 @@ Microsoft Authenticator アプリは、Azure AD Authenticator アプリに置き
 
 **A**: デバイスを登録すると、ご自身のデバイスから組織のサービスにアクセスできるようになります。また、組織からご自身のデバイスへのアクセスは許可されません。
 
-## <a name="too-many-app-permissions"></a>アプリのアクセス許可が多すぎる
+### <a name="too-many-app-permissions"></a>アプリのアクセス許可が多すぎる
 
 **Q**: アプリで多くのアクセス許可が要求されるのはなぜですか。
 
-**A**: 要求される可能性があるアクセス許可の完全な一覧と、アプリでの用途を次に示します。 表示される具体的なアクセス許可は、スマートフォンの種類によって異なります。
+**A**: 要求される可能性があるアクセス許可の完全な一覧と、アプリでの用途を次に示します。 表示される具体的なアクセス許可は、スマートフォンの種類によって異なります。 組織は、ユーザーに特定のリソースへのアクセスを許可する前に、ユーザーの **場所** を把握する必要がある場合があります。 組織が場所を要求するポリシーを持っている場合にのみ、このアクセス許可がアプリから要求されます。
 
-- **場所**。 組織は、ユーザーに特定のリソースへのアクセスを許可する前に、ユーザーの所在地を把握する必要がある場合があります。 組織が場所を要求するポリシーを持っている場合にのみ、このアクセス許可がアプリから要求されます。 
+### <a name="error-adding-account"></a>アカウントの追加でのエラー
+
+**Q**: 自分のアカウントを追加しようとすると、次のエラー メッセージが表示されます。「現在、追加しようとしているアカウントは無効です。 この問題を解決するには、管理者にご連絡ください (一意性検証)」。 どうすればよいですか。
+
+**A**: 管理者に連絡して、一意性検証の問題が原因でアカウントを Authenticator に追加できないことを知らせてください。 管理者が組織内でユーザーを検索できるように、お使いのサインイン ユーザー名を提供する必要があります。
 
 ### <a name="legacy-apns-support-deprecated"></a>レガシ APN のサポートは廃止されました。
 

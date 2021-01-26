@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562278"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185956"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
@@ -54,19 +54,10 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
 
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-自動更新を無効にした後に、Hyper-V を有効にする必要があります。これは、`Mount-VHD` コマンドを使用してステージングを行い、Dismount-VHD を使用してステージング解除を行うからです。
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 
 >[!NOTE]
->この変更には、仮想マシンの再起動が必要です。
+>Hyper-v を有効にした後で、仮想マシンを再起動することをお勧めします。
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>MSIX アプリ アタッチ管理インターフェイスを構成する
 
@@ -235,7 +226,7 @@ MSIX パッケージをホスト プールから削除するには、次のよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) で、コミュニティにこの機能に関する質問を行うことができます。
+[Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、コミュニティにこの機能に関する質問をします。
 
 また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
 

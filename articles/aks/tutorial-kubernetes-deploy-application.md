@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576491"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250181"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -21,7 +21,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 > * Kubernetes でアプリケーションを実行する
 > * アプリケーションをテストする
 
-追加のチュートリアルでは、このアプリケーションがスケールアウトされて更新されます。
+後続のチュートリアルでは、このアプリケーションがスケールアウトされ、更新されます。
 
 このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
@@ -49,7 +49,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-*microsoft* は、実際の ACR ログイン サーバー名に置き換えてください。 イメージ名は、マニフェスト ファイルの 51 行目にあります。 次の例は、既定のイメージ名を示しています。
+*microsoft* は、実際の ACR ログイン サーバー名に置き換えてください。 イメージ名は、マニフェスト ファイルの 60 行目にあります。 次の例は、既定のイメージ名を示しています。
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 次の出力例では、AKS クラスター内で正常に作成されたリソースが示されています。
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -98,19 +98,19 @@ kubectl get service azure-vote-front --watch
 
 最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 *EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 アプリケーションが動作していることを確認するには、Web ブラウザーを開いてサービスの外部 IP アドレスにアクセスします。
 
-![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="ローカル Web ブラウザーで開かれた、AKS クラスターで実行されている Azure 投票アプリのコンテナー イメージを示すスクリーンショット" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。 コンテナーのステータスを表示するには、`kubectl get pods` コマンドを使用します。 コンテナー イメージがプルできない場合は、「[Azure Kubernetes Service から Azure Container Registry の認証を受ける](cluster-container-registry-integration.md)」を参照してください。
 

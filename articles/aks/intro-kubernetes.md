@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681552"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246198"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -66,7 +66,7 @@ AKS は GPU 対応ノード プールの作成をサポートしています。 
 
 ### <a name="confidential-computing-nodes-public-preview"></a>コンフィデンシャル コンピューティング ノード (パブリック プレビュー)
 
-AKS では、Intel SGX ベースのコンフィデンシャル コンピューティング ノード プール (DCSv2 VM) の作成をサポートしています。 コンフィデンシャル コンピューティング ノードを使用すると、ハードウェアベースの、信頼できる、分離された実行環境 (エンクレーブ) でコンテナーを実行できます。 コンテナー間の分離を、構成証明を通じたコード整合性と組み合わせることで、多層防御によるコンテナー セキュリティ戦略を支援できます。 コンフィデンシャル コンピューティング ノードは、機密コンテナー (既存の Docker アプリ) とエンクレーブ対応のコンテナーの両方をサポートします。
+AKS では、Intel SGX ベースのコンフィデンシャル コンピューティング ノード プール (DCSv2 VM) の作成をサポートしています。 コンフィデンシャル コンピューティング ノードを使用すると、ハードウェアベースの信頼できる実行環境 (エンクレーブ) でコンテナーを実行できます。 コンテナー間の分離を、構成証明を通じたコード整合性と組み合わせることで、多層防御によるコンテナー セキュリティ戦略を支援できます。 コンフィデンシャル コンピューティング ノードは、機密コンテナー (既存の Docker アプリ) とエンクレーブ対応のコンテナーの両方をサポートします。
 
 詳細については、[AKS のコンフィデンシャル コンピューティング ノード][conf-com-node]に関するページを参照してください
 
@@ -80,7 +80,7 @@ AKS では、Intel SGX ベースのコンフィデンシャル コンピュー�
 
 ## <a name="virtual-networks-and-ingress"></a>仮想ネットワークとイングレス
 
-AKS クラスターは、既存の仮想ネットワークにデプロイできます。 この構成では、クラスター内のすべてのポッドに仮想ネットワーク内の IP アドレスが割り当てられて、クラスター内の他のポッドや仮想ネットワーク内の他のノードと、直接通信することができます。 ポッドは、ExpressRoute やサイト間 (S2S) VPN 接続を経由してピアリングされた仮想ネットワーク内の他のサービスや、オンプレミス ネットワークとも接続できます。
+AKS クラスターは、既存の仮想ネットワークにデプロイできます。 この構成では、クラスター内のすべてのポッドに仮想ネットワーク内の IP アドレスが割り当てられて、クラスター内の他のポッドや仮想ネットワーク内の他のノードと、直接通信することができます。 また、ポッドは、ピアリングされた仮想ネットワーク内の他のサービスにも、ExpressRoute またはサイト間 (S2S) VPN 接続を経由してオンプレミス ネットワークにも接続できます。
 
 詳細については、[AKS のアプリケーションにおけるネットワークの概念][aks-networking]に関するページを参照してください。
 
@@ -98,9 +98,9 @@ Kubernetes には、Helm、Visual Studio Code 用の Kubernetes 拡張機能な�
 
 その上、Azure Dev Spaces では、高速で反復的な Kubernetes 開発エクスペリエンスをチームに提供しています。 最小限の構成で、AKS 内で直接、コンテナーの実行とデバッグを行えます。 始める際には、[Azure Dev Spaces][azure-dev-spaces] に関するページを参照してください。
 
-Azure DevOps プロジェクトには、既存のコードや Git リポジトリを Azure に取り込むための簡単なソリューションが用意されています。 この DevOps プロジェクトによって自動的に、Azure DevOps Services 内に AKS などの Azure リソースや CI 用のビルド パイプラインを含むリリース パイプラインを作成し、CD 用のリリース パイプラインを設定して、その後、監視用の Azure Application Insights リソースを作成することができます。
+DevOps Starter では、既存のコードおよび Git リポジトリを Azure に取り込むための簡単なソリューションを提供しています。 DevOps Starter によって自動的に、Azure DevOps Services 内に AKS などの Azure リソースや CI 用のビルド パイプラインを含むリリース パイプラインを作成し、CD 用のリリース パイプラインを設定して、その後、監視用の Azure Application Insights リソースを作成することができます。
 
-詳細については、[Azure DevOps プロジェクト][azure-devops]に関するページを参照してください。
+詳細については、[DevOps Starter][azure-devops] に関するページを参照してください。
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker イメージのサポートとプライベート コンテナー レジストリ
 

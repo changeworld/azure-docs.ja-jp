@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/18/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369261"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602463"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure ロールの定義について
 
@@ -291,11 +291,27 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions` アクセス許可には、許可された `Actions` から除外される管理操作を指定します。 制限対象の操作を除外する方が、許可する操作セットを容易に定義できる場合は、`NotActions` アクセス許可を使用します。 ロール (有効なアクセス許可) によって付与されたアクセスは、`Actions` 操作から `NotActions` 操作を引くことによって計算されます。
+`NotActions` アクセス許可では、許可された `Actions` (ワイルドカード (`*`) を使用) から取り除く (除外する) 管理操作を指定します。 `Actions` (ワイルドカード (`*`) を使用) から取り除く方が、許可する一連の操作を容易に定義できる場合は、`NotActions` アクセス許可を使用します。 ロール (有効なアクセス許可) によって付与されたアクセスは、`Actions` 操作から `NotActions` 操作を引くことによって計算されます。
+
+`Actions - NotActions = Effective management permissions`
+
+次の表に、[Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement) ワイルドカード操作の有効なアクセス許可の例を 2 つ示します。
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | 有効な管理アクセス許可 |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | "*なし*" | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
 > `NotActions` で特定の操作を除外したロールをユーザーに割り当てたうえで、同じユーザーにその操作へのアクセス権を付与する別のロールを割り当てた場合、ユーザーはその操作の実行が許可されます。 `NotActions` は拒否ルールとは異なり、特定の操作を除外する必要があるときに、許可の対象となる一連の操作を指定しやすくすることを目的としたものに過ぎません。
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>NotActions と拒否の割り当ての違い
+
+`NotActions` と拒否の割り当ては同じではなく、別の目的に使用されます。 `NotActions` は、ワイルドカード (`*`) 操作から特定のアクションを取り除くための便利な方法です。
+
+拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 詳細については、[Azure 拒否割り当ての概要](deny-assignments.md)に関するページを参照してください。
 
 ## <a name="dataactions"></a>DataActions
 
@@ -311,7 +327,17 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions` アクセス許可では、許可された `DataActions` から除外されるデータ操作を指定します。 ロール (有効なアクセス許可) によって付与されたアクセスは、`DataActions` 操作から `NotDataActions` 操作を引くことによって計算されます。 各リソース プロバイダーは、それぞれの API セットを提供し、データ操作をサポートします。
+`NotDataActions` アクセス許可では、許可された `DataActions` (ワイルドカード (`*`) を使用) から取り除く (除外する) データ操作を指定します。 `DataActions` (ワイルドカード (`*`) を使用) から取り除く方が、許可する一連の操作を容易に定義できる場合は、`NotDataActions` アクセス許可を使用します。 ロール (有効なアクセス許可) によって付与されたアクセスは、`DataActions` 操作から `NotDataActions` 操作を引くことによって計算されます。 各リソース プロバイダーは、それぞれの API セットを提供し、データ操作をサポートします。
+
+`DataActions - NotDataActions = Effective data permissions`
+
+次の表に、[Microsoft.Storage](resource-provider-operations.md#microsoftstorage) ワイルドカード操作の有効なアクセス許可の例を 2 つ示します。
+
+> [!div class="mx-tableFixed"]
+> | DataActions | NotDataActions | 有効なデータ アクセス許可 |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | "*なし*" | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
 > `NotDataActions` であるデータ操作を除外したロールをユーザーに割り当てたうえで、同じユーザーにそのデータ操作へのアクセス権を付与する別のロールを割り当てた場合、ユーザーはそのデータ操作の実行が許可されます。 `NotDataActions` は拒否ルールとは異なり、特定のデータ操作を除外する必要があるときに、許可の対象となる一連のデータ操作を指定しやすくすることを目的としたものに過ぎません。

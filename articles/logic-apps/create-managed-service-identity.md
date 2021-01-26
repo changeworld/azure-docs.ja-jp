@@ -3,31 +3,48 @@ title: マネージド ID による認証
 description: 資格情報やシークレットを使用してサインインすることなく、マネージド ID を使用して Azure Active Directory で保護されたリソースにアクセスする
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034171"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251597"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
-サインインすることなく他の Azure Active Directory (Azure AD) によって保護される他のリソースに容易にアクセスして ID の認証を行うため、ロジック アプリは、資格情報やシークレットではなく [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。
+Azure Active Directory (Azure AD) によって保護される他のリソースに容易にアクセスして ID の認証を行うために、ロジック アプリでは、資格情報、シークレット、Azure AD トークンではなく、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前のマネージド サービス ID (MSI) ) を使用できます。 この ID は、ユーザーに代わって Azure が管理します。ユーザーがシークレットを管理したり、Azure AD トークンを直接使用したりする必要がないため、資格情報の保護に役立ちます。
 
-Azure Logic Apps では、"[*システム割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" と "[*ユーザー割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" の両方のマネージド ID がサポートされます。 ロジック アプリでは、システムによって割り当てられた ID または "*単一*" のユーザー割り当て ID のいずれかを使用できます。これは、ロジック アプリのグループ全体で共有できますが、両方を共有することはできません。 現在、[特定の組み込みトリガーおよびアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)でのみマネージド ID がサポートされ、マネージド コネクタや接続はサポートされません。以下に例を示します。
+Azure Logic Apps では、"[*システム割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" と "[*ユーザー割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" の両方のマネージド ID がサポートされます。 ロジック アプリまたは個々の接続では、システム割り当て ID または "*単一*" のユーザー割り当て ID のいずれかを使用できます。これは、ロジック アプリのグループ全体で共有できますが、両方を共有することはできません。
 
-* HTTP
-* Azure Functions
+## <a name="where-can-logic-apps-use-managed-identities"></a>ロジック アプリでマネージド ID を使用できる場所
+
+現時点では、認証にマネージド ID を使用できるのは、Azure AD OAuth がサポートされている[特定の組み込みのトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)および[特定のマネージド コネクタ](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)のみです。 たとえば、次のような選択肢があります。
+
+**組み込みのトリガーとアクション**
+
 * Azure API Management
 * Azure App Service
+* Azure Functions
+* HTTP
+* HTTP および Webhook
+
+**マネージド コネクタ**
+
+* Azure Automation
+* Azure Event Grid
+* Azure Key Vault
+* Azure Monitor ログ
+* Azure Resource Manager
+* HTTP with Azure AD
+
+マネージド コネクタのサポートは、現在プレビュー段階です。 現在の一覧については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を参照してください。
 
 この記事では、ロジック アプリ用に両方の種類のマネージド ID を設定する方法について説明します。 詳細については、以下のトピックを参照してください。
 
-* [マネージド ID がサポートされているトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [送信呼び出しでサポートされている認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [マネージド ID がサポートされているトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [ロジック アプリのマネージド ID に関する制限](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [マネージド ID を使用した Azure AD 認証がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
@@ -39,7 +56,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
 * アクセスするターゲット Azure リソース。 このリソースでは、マネージ ID のロールを追加します。これにより、ロジック アプリはターゲット リソースへのアクセスを認証できます。
 
-* [トリガーまたはマネージド ID をサポートするアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)を使用する必要があるロジック アプリ。
+* [マネージド ID がサポートされているトリガーまたはアクション](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)を使用する必要があるロジック アプリ。
 
 ## <a name="enable-managed-identity"></a>マネージド ID の有効化
 
@@ -70,7 +87,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
    > [!NOTE]
    > マネージド ID を 1 つだけ持つことができるというエラーが表示される場合、ロジック アプリは既にユーザー割り当て ID に関連付けられています。 システム割り当て ID を追加できるようにするには、まず、ロジック アプリからユーザー割り当て ID を "*削除*" する必要があります。
 
-   これで、ロジック アプリでシステム割り当て ID を使用できるようになりました。この ID は Azure Active Directory に登録され、オブジェクト ID で表されます。
+   これで、ロジック アプリでシステム割り当て ID を使用できるようになりました。これは Azure AD に登録され、オブジェクト ID で表されます。
 
    ![システム割り当て ID のオブジェクト ID](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
@@ -160,7 +177,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    ![ユーザー割り当てマネージド ID を作成する](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 使用するリソース グループの名前。 新しいグループを作成するか、既存のグループを選択します。 この例では、`fabrikam-managed-identities-RG` という名前の新しいグループを作成します。 |
@@ -294,6 +311,8 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 ### <a name="assign-access-in-the-azure-portal"></a>Azure portal 上でアクセスを割り当てる
 
+マネージド ID がアクセスできる必要があるターゲット Azure リソースで、ターゲット リソースへのロールベースのアクセス権をその ID に付与します。
+
 1. [Azure portal](https://portal.azure.com) で、マネージド ID にアクセス権を与える Azure リソースに移動します。
 
 1. リソースのメニューから、 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]** を選択します。ここで、そのリソースの現在のロールの割り当てを確認できます。 ツール バーで、 **[追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
@@ -345,7 +364,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 ## <a name="authenticate-access-with-managed-identity"></a>マネージド ID を利用してアクセスを認証する
 
-[ロジック アプリに対してマネージド ID を有効](#azure-portal-system-logic-app)にし、[その ID にターゲット リソースまたはエンティティへのアクセス権を付与](#access-other-resources)したら、その ID を[マネージド ID がサポートされているトリガーとアクション](logic-apps-securing-a-logic-app.md#managed-identity-authentication)で使用できます。
+[ロジック アプリに対してマネージド ID を有効](#azure-portal-system-logic-app)にし、[その ID にターゲット リソースまたはエンティティへのアクセス権を付与](#access-other-resources)したら、その ID を[マネージド ID がサポートされているトリガーとアクション](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)で使用できます。
 
 > [!IMPORTANT]
 > システム割り当て ID を使用する Azure 関数がある場合は、先に [Azure Functions の認証を有効](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions)にします。
@@ -354,44 +373,120 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. まだ行っていない場合は、[マネージド ID がサポートされているトリガーまたはアクション](logic-apps-securing-a-logic-app.md#managed-identity-authentication)を追加します。
+1. まだ行っていない場合は、[マネージド ID がサポートされているトリガーまたはアクション](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)を追加します。
 
-   たとえば、HTTP トリガーまたはアクションでは、ロジック アプリに対して有効にしたシステム割り当て ID を使用できます。 一般に、HTTP トリガーまたはアクションでは、次のプロパティを使用して、アクセスするリソースまたはエンティティを指定します。
+   > [!NOTE]
+   > すべてのトリガーとアクションで認証の種類を追加できるわけではありません。 詳細については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を参照してください。
 
-   | プロパティ | 必須 | 説明 |
-   |----------|----------|-------------|
-   | **方法** | はい | 実行する操作によって使用される HTTP メソッド |
-   | **URI** | はい | ターゲットの Azure リソースまたはエンティティにアクセスするためのエンドポイント URL。 URI 構文には、通常、Azure リソースまたはサービスの[リソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) が含まれています。 |
-   | **ヘッダー** | いいえ | コンテンツ タイプなど、送信要求に含める必要がある (または含めたい) ヘッダーの値 |
-   | **クエリ** | いいえ | 特定の操作のパラメーターや実行する操作の API バージョンなど、要求に含める必要がある (または含めたい) クエリ パラメーター |
-   | **認証** | はい | ターゲット リソースまたはエンティティへのアクセスの認証に使用する認証の種類 |
-   ||||
+1. 追加したトリガーまたはアクションで、次の手順に従います。
 
-   具体的な例として、以前に ID 用のアクセスを設定した Azure Storage アカウントの BLOB に対して [Snapshot Blob 操作](/rest/api/storageservices/snapshot-blob)を実行するとします。 しかし、[Azure Blob Storage コネクタ](/connectors/azureblob/)では現在、この操作が提供されていません。 代わりに、[HTTP アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)または別の [BLOB サービス REST API 操作](/rest/api/storageservices/operations-on-blobs)を使用して、この操作を実行できます。
+   * **マネージド ID の使用がサポートされている組み込みのトリガーおよびアクション**
 
-   > [!IMPORTANT]
-   > HTTP 要求とマネージド ID を使用してファイアウォールの背後にある Azure Storage アカウントにアクセスするには、[信頼された Microsoft サービスによるアクセスを許可する例外](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)を使用してストレージ アカウントを設定する必要もあります。
+     1. **[認証]** プロパティがまだ表示されていない場合は、そのプロパティを追加します。
 
-   [Snapshot Blob 操作](/rest/api/storageservices/snapshot-blob)を実行するには、HTTP アクションで次のプロパティを指定します。
+     1. **[認証の種類]** で **[マネージド ID]** を選択します。
 
-   | プロパティ | 必須 | 値の例 | 説明 |
-   |----------|----------|---------------|-------------|
-   | **方法** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
-   | **URI** | はい | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | この構文を使用する Azure Global (パブリック) 環境内の Azure Blob Storage ファイルのリソース ID |
-   | **ヘッダー** | Azure Storage の場合 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Azure Storage の操作には、`x-ms-blob-type`、`x-ms-version`、および `x-ms-date` ヘッダー値が必要です。 <p><p>**重要**:Azure Storage の発信 HTTP トリガーおよびアクションの要求では、ヘッダーに `x-ms-version` プロパティと実行する操作の API バージョンが必要です。 `x-ms-date` は現在の日付である必要があります。 それ以外の場合、ロジック アプリは `403 FORBIDDEN` エラーで失敗します。 現在の日付を必要な形式で取得するには、例の値で式を使用します。 <p>詳細については、以下のトピックを参照してください。 <p><p>- [要求ヘッダー - Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure Storage サービスのバージョン管理](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **クエリ** | スナップショット BLOB 操作の場合のみ | `comp` = `snapshot` | 操作のクエリ パラメーターの名前と値。 |
-   |||||
+     詳細については、「[例:マネージド ID を使用して組み込みのトリガーまたはアクションを認証する](#authenticate-built-in-managed-identity)」を参照してください。
+ 
+   * **マネージド ID の使用がサポートされているマネージド コネクタ のトリガーおよびアクション**
 
-   上記すべてのプロパティ値を示す HTTP アクションの例:
+     1. テナントの選択ページで、 **[マネージド ID を使用して接続する]** を選択します。
 
-   ![Azure リソースにアクセスするための HTTP アクションを追加する](./media/create-managed-service-identity/http-action-example.png)
+     1. 次のページで、接続名を指定します。
 
-1. 次に、HTTP アクションに **Authentication** プロパティを追加します。 **[新しいパラメーターの追加]** 一覧で **[認証]** を選択します。
+        既定では、マネージド ID の一覧に表示されるのは、現在有効になっているマネージド ID のみです。これは、ロジック アプリで有効化できるのは、一度に 1 つのマネージド ID のみであるためです。次に例を示します。
+
+        ![接続名ページと選択されたマネージド ID を示すスクリーンショット。](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+     詳細については、「[例:マネージド ID を使用してマネージド コネクタのトリガーまたはアクションを認証する](#authenticate-managed-connector-managed-identity)」を参照してください。
+
+     マネージド ID を使用するために作成した接続は、マネージ ID を使用する場合のみ動作する特殊な接続の種類です。 実行時には、ロジック アプリで有効になっているマネージ ID がその接続で使用されます。 この構成は、ロジック アプリのリソース定義の `parameters` オブジェクトに保存されます。これには、`$connections` オブジェクトが含まれ、この中に、接続のリソース ID へのポインターと、ユーザー割り当て ID が有効になっている場合はその ID のリソース ID が入っています。
+
+     この例は、ロジック アプリでシステム割り当てマネージド ID を有効にした場合の構成内容を示しています。
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     この例は、ロジック アプリでユーザー割り当てマネージド ID を有効にした場合の構成内容を示しています。
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     実行時には、ロジック アプリ内のすべてのマネージド コネクタのトリガーおよびアクションでマネージド ID が使用されるように設定されているかどうかと、必要なすべてのアクセス許可が、トリガーとアクションで指定されたターゲット リソースにアクセスするためにマネージド ID を使用するように設定されているかが確認されます。 成功した場合、マネージド ID に関連付けられている Azure AD トークンが取得され、その ID を使用してターゲット リソースへのアクセスが認証され、トリガーとアクション内の構成済み操作が実行されます。
+
+<a name="authenticate-built-in-managed-identity"></a>
+
+#### <a name="example-authenticate-built-in-trigger-or-action-with-a-managed-identity"></a>例:マネージド ID を使用して組み込みのトリガーまたはアクションを認証する
+
+HTTP トリガーまたはアクションでは、ロジック アプリに対して有効にしたシステム割り当て ID を使用できます。 一般に、HTTP トリガーまたはアクションでは、次のプロパティを使用して、アクセスするリソースまたはエンティティを指定します。
+
+| プロパティ | 必須 | 説明 |
+|----------|----------|-------------|
+| **方法** | はい | 実行する操作によって使用される HTTP メソッド |
+| **URI** | はい | ターゲットの Azure リソースまたはエンティティにアクセスするためのエンドポイント URL。 URI 構文には、通常、Azure リソースまたはサービスの[リソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) が含まれています。 |
+| **ヘッダー** | いいえ | コンテンツ タイプなど、送信要求に含める必要がある (または含めたい) ヘッダーの値 |
+| **クエリ** | いいえ | 特定の操作のパラメーターや実行する操作の API バージョンなど、要求に含める必要がある (または含めたい) クエリ パラメーター |
+| **認証** | はい | ターゲット リソースまたはエンティティへのアクセスの認証に使用する認証の種類 |
+||||
+
+具体的な例として、以前に ID 用のアクセスを設定した Azure Storage アカウントの BLOB に対して [Snapshot Blob 操作](/rest/api/storageservices/snapshot-blob)を実行するとします。 しかし、[Azure Blob Storage コネクタ](/connectors/azureblob/)では現在、この操作が提供されていません。 代わりに、[HTTP アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)または別の [BLOB サービス REST API 操作](/rest/api/storageservices/operations-on-blobs)を使用して、この操作を実行できます。
+
+> [!IMPORTANT]
+> HTTP 要求とマネージド ID を使用してファイアウォールの背後にある Azure Storage アカウントにアクセスするには、[信頼された Microsoft サービスによるアクセスを許可する例外](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)を使用してストレージ アカウントを設定する必要もあります。
+
+[Snapshot Blob 操作](/rest/api/storageservices/snapshot-blob)を実行するには、HTTP アクションで次のプロパティを指定します。
+
+| プロパティ | 必須 | 値の例 | 説明 |
+|----------|----------|---------------|-------------|
+| **方法** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
+| **URI** | はい | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | この構文を使用する Azure Global (パブリック) 環境内の Azure Blob Storage ファイルのリソース ID |
+| **ヘッダー** | Azure Storage の場合 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Azure Storage の操作には、`x-ms-blob-type`、`x-ms-version`、および `x-ms-date` ヘッダー値が必要です。 <p><p>**重要**:Azure Storage の発信 HTTP トリガーおよびアクションの要求では、ヘッダーに `x-ms-version` プロパティと実行する操作の API バージョンが必要です。 `x-ms-date` は現在の日付である必要があります。 それ以外の場合、ロジック アプリは `403 FORBIDDEN` エラーで失敗します。 現在の日付を必要な形式で取得するには、例の値で式を使用します。 <p>詳細については、以下のトピックを参照してください。 <p><p>- [要求ヘッダー - Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure Storage サービスのバージョン管理](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+| **クエリ** | スナップショット BLOB 操作の場合のみ | `comp` = `snapshot` | 操作のクエリ パラメーターの名前と値。 |
+|||||
+
+上記すべてのプロパティ値を示す HTTP アクションの例:
+
+![Azure リソースにアクセスするための HTTP アクションを追加する](./media/create-managed-service-identity/http-action-example.png)
+
+1. HTTP アクションを追加した後、HTTP アクションに **Authentication** プロパティを追加します。 **[新しいパラメーターの追加]** 一覧で **[認証]** を選択します。
 
    ![HTTP アクションに "認証" プロパティを追加する](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
-   > すべてのトリガーとアクションで認証の種類を追加できるわけではありません。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
+   > すべてのトリガーとアクションで認証の種類を追加できるわけではありません。 詳細については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を参照してください。
 
 1. **[認証タイプ]** 一覧から、 **[マネージド ID]** を選択します。
 
@@ -422,6 +517,32 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    * [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する](../storage/common/storage-auth-aad.md)
    * [Azure Active Directory を使用して Azure Storage へのアクセスを承認する](/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
+
+1. 必要な方法でロジック アプリの構築を続行します。
+
+<a name="authenticate-managed-connector-managed-identity"></a>
+
+#### <a name="example-authenticate-managed-connector-trigger-or-action-with-a-managed-identity"></a>例:マネージド ID を使用してマネージド コネクタのトリガーまたはアクションを認証する
+
+Azure Resource Manager アクションの **リソースの読み取り** では、ロジック アプリに対して有効にしたマネージド ID を使用できます。 この例では、システム割り当てマネージド ID を使用する方法を示します。
+
+1. ワークフローにアクションを追加した後、テナントの選択ページで **[マネージド ID を使用して接続する]** を選択します。
+
+   ![Azure Resource Manager アクションと [マネージド ID を使用して接続する] が選択された状態を示すスクリーンショット。](./media/create-managed-service-identity/select-connect-managed-identity.png)
+
+   これで、このアクションに、マネージド ID のリストを含む接続名ページが表示されるようになりました。このリストには、ロジック アプリで現在有効になっているマネージド ID の種類が含まれます。
+
+1. 接続名ページで、接続の名前を入力します。 マネージド ID のリストからマネージド ID (この例では **[システム割り当てマネージド ID]** ) を選択し、 **[作成]** を選択します。 ユーザー割り当てマネージド ID を有効にした場合は、代わりにその ID を選択します。
+
+   ![接続名が入力され、[システム割り当てマネージド ID] が選択されている Azure Resource Manager アクションを示すスクリーンショット。](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+   マネージド ID が有効になっていない場合、接続を作成しようとすると次のエラーが表示されます。
+
+   *You must enable managed identity for your logic app and then grant required access to the identity in the target resource.* (ロジック アプリに対してマネージド ID を有効にし、ターゲット リソースにおいてその ID に必要なアクセス権を付与する必要があります。)
+
+   ![マネージド ID が有効になっていない場合のエラーが発生した Azure Resource Manager アクションを示すスクリーンショット。](./media/create-managed-service-identity/system-assigned-managed-identity-disabled.png)
+
+1. 接続が正常に作成されると、デザイナーはマネージド ID 認証を使用して動的な値、コンテンツ、またはスキーマを取得できます。
 
 1. 必要な方法でロジック アプリの構築を続行します。
 

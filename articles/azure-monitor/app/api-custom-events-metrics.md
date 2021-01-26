@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780503"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233748"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics でのカスタム イベント
 
-テレメトリは、[Application Insights Analytics](../log-query/log-query-overview.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。
+テレメトリは、[Application Insights ログのタブ](../log-query/log-query-overview.md)または[使用エクスペリエンス](usage-overview.md)の `customEvents` テーブルにあります。 イベントは、`trackEvent(..)` または[クリック分析自動収集プラグイン](javascript-click-analytics-plugin.md)から取得できます。
+
+ 
 
 [サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、したがって `customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
 
@@ -1122,4 +1124,3 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * [イベントおよびログを検索する](./diagnostic-search.md)
 * [トラブルシューティング](../faq.md)
-

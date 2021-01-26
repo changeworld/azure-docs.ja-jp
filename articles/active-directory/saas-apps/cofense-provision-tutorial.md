@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 56b75d34bed65dae53c88eab6a16d848083ccc73
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 084592a8db47a94a0fcd683105f749f514c05ea3
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179114"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247575"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Cofense Recipient Sync を構成する
 
@@ -165,9 +165,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
-1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+* [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+* [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。 
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 1 月 15 日 - objectId -> externalId マッピングについて、"オブジェクトの作成中のみ" から "Always (常時)" への変更を実装しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

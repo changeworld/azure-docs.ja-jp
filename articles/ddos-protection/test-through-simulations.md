@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900362"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537838"
 ---
 # <a name="test-through-simulations"></a>シミュレーションを通じたテスト
 
@@ -42,9 +42,9 @@ Microsoft は、セルフサービスのトラフィック ジェネレーター
     |---------      |---------                                          |
     |ターゲット IP アドレス           | テストするパブリック IP アドレスのいずれかを入力します。                     |
     |ポート番号   | 「_443_」を入力します。                       |
-    |DDoS プロファイル | 使用可能な値は、**DNS Flood**、**NTPv2 Flood**、**SSDP Flood**、**TCP SYN Flood**、**UDP 64B Flood**、**UDP 128B Flood**、**UDP 256B Flood**、**UDP 512B Flood**、**UDP 1024B Flood**、**UDP 1514B Flood**、**UDP Fragmentation** **UDP Memcached** などです。|
-    |テスト サイズ       | 使用可能な値は、**100K pps, 50 Mbps and 4 source IPs**、**200K pps, 100 Mbps and 8 source IPs**、**400K pps, 200Mbps and 16 source IPs**、**800K pps, 400 Mbps and 32 source IPs** などです。                                  |
-    |テスト継続時間 | 使用可能な値は、**10 Minutes**、**15 Minutes**、**20 Minutes**、**25 Minutes**、**30 Minutes** などです。|
+    |DDoS プロファイル | 指定できる値は `DNS Flood`、`NTPv2 Flood`、`SSDP Flood`、`TCP SYN Flood`、`UDP 64B Flood`、`UDP 128B Flood`、`UDP 256B Flood`、`UDP 512B Flood`、`UDP 1024B Flood`、`UDP 1514B Flood`、`UDP Fragmentation`、`UDP Memcached` です。|
+    |テスト サイズ       | 指定できる値は `100K pps, 50 Mbps and 4 source IPs`、`200K pps, 100 Mbps and 8 source IPs`、`400K pps, 200Mbps and 16 source IPs`、`800K pps, 400 Mbps and 32 source IPs` です。                                  |
+    |テスト継続時間 | 指定できる値は `10 Minutes`、`15 Minutes`、`20 Minutes`、`25 Minutes`、`30 Minutes` です。|
 
 以下のようになります。
 

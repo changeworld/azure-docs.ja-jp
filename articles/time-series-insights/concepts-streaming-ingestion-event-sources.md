@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 4e83cca79a4dc99533ab17cca7e96e1ac802d598
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020795"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232184"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -45,13 +45,25 @@ ms.locfileid: "95020795"
 
 - 環境の[スループット速度制限](./concepts-streaming-ingress-throughput-limits.md)またはパーティションごとの制限を超えないようにします。
 
-- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成します。
+- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成します。 推奨アラート条件については、下の「[運用ワークロード](./concepts-streaming-ingestion-event-sources.md#production-workloads)」を参照してください。 
 
 - ストリーミング インジェストは、準リアルタイム データおよび最近のデータにのみ使用します。履歴データのストリーミングはサポートされていません。
 
 - プロパティをエスケープする方法と JSON [データをフラット化して格納する](./concepts-json-flattening-escaping-rules.md)方法を理解します。
 
 - イベント ソース接続文字列を指定する場合は、最小限の特権の原則に従います。 Event Hubs の場合は、*send* 要求のみの共有アクセス ポリシーを構成し、IoT Hub の場合は、*service connect* アクセス許可のみを使用します。
+
+## <a name="production-workloads"></a>運用ワークロード
+
+上記のベスト プラクティスに加えて、ビジネスに不可欠なワークロードには次を実装することをお勧めします。 
+
+- IoT Hub または Event Hub データ保有期間を最大の 7 日間に増やします。
+
+- Azure portal で環境アラートを作成します。 プラットフォーム [メトリクス](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics)に基づくアラートでは、エンドツーエンドのパイプライン動作を評価できます。 アラートを作成して管理する手順については、[こちら](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)をご覧ください。 推奨アラート条件:
+
+     - IngressReceivedMessagesTimeLag が 5 分以上
+     - IngressReceivedBytes が 0
+- IoT Hub または Event Hub のパーティション間で取り込み負荷のバランスを維持します。
 
 ### <a name="historical-data-ingestion"></a>履歴データのインジェスト
 

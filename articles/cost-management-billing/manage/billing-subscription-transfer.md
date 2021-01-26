@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027868"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601521"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -72,6 +72,18 @@ Azure サブスクリプションの課金所有権を受け取った場合は�
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)」を参照してください。
    1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。
 1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure Portal](https://portal.azure.com) で更新できます。 詳細については、「[Azure アカウントにパートナー ID をリンクする](link-partner-id.md)」を参照してください
+
+## <a name="cancel-a-transfer-request"></a>譲渡要求のキャンセル
+
+アクティブにできる移転リクエストは一度に 1 つだけです。 移転リクエストは 15 日間有効です。 15 日が経過すると、移転リクエストは期限切れとなります。
+
+移転リクエストを取り消すには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[サブスクリプション]** に移動して、移転リクエストを送信するサブスクリプションを選択し、 **[Transfer billing ownership]\(課金所有権の譲渡\)** を選択します。
+1. ページ下部の **[Cancel the transfer request]\(譲渡要求を取り消す\)** を選択します。
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="[Transfer billing ownership]\(課金所有権の譲渡\) ウィンドウと [Cancel the transfer request]\(譲渡要求を取り消す\) オプションの表示例" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

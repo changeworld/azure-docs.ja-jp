@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860951"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165146"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -142,6 +142,12 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 >* デバイスが Azure AD Connect の同期スコープから削除され、再び追加された場合。
 >
 >どちらの場合も、これらの各デバイス上でデバイスを手動で再登録する必要があります。 デバイスが以前に登録されているかどうかを確認するには、[dsregcmd コマンドを使用してデバイスのトラブルシューティングを行います](troubleshoot-device-dsregcmd.md)。
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>Q:Windows 10 デバイス上の同じユーザー セッションで 3 つを超える Azure AD ユーザー アカウントを追加できないのはなぜですか?
+
+**A**: Azure AD には、Windows 10 1803 リリースでの複数の Azure AD アカウントのサポートが追加されました。 ただし、Windows 10 では、トークン要求のサイズを制限し、信頼性の高いシングルサインオン (SSO) を可能にするため、1 つのデバイス上での Azure AD アカウントの数が 3 つに制限されます。 3 つのアカウントが追加されると、後続のアカウントに関するエラーがユーザーに表示されます。 エラー画面の問題に関するその他の情報には、"Add account operation is blocked because accout limit is reached" (アカウントの上限に達したため、アカウントの追加操作がブロックされます) という理由を示すメッセージが表示されます。 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD Join の FAQ

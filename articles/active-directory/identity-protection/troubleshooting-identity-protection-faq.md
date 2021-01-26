@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028898"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183117"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
@@ -31,7 +31,7 @@ Identity Protection で **ユーザー リスクを無視する** と、Identity
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="why-is-a-user-is-at-risk"></a>ユーザーがリスクにさらされるのはなぜですか?
+### <a name="why-is-a-user-at-risk"></a>ユーザーがリスクにさらされるのはなぜですか?
 
 Azure AD Identity Protection のお客様であれば、[危険なユーザー](howto-identity-protection-investigate-risk.md#risky-users)のビューにアクセスして、危険度の高いユーザーをクリックしてください。 下部のドロワーの [リスクの履歴] タブに、ユーザー リスクが変化する原因となったすべてのイベントが表示されます。 そのユーザーの危険なサインインをすべて表示するには、[ユーザーの危険なサインイン] をクリックします。 このユーザーの危険の検出をすべて表示するには、[ユーザーのリスクの検出] をクリックします。
 

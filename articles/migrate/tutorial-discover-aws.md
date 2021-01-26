@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 8fb17dc880b74da3ca4e96df10946878fde31909
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797079"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541412"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>チュートリアル:Server Assessment を使用して AWS インスタンスを検出する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **要件** | **詳細**
 --- | ---
-**アプライアンス** | Azure Migrate アプライアンスを実行する EC2 VM が必要です。 このマシンには以下が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。 Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。<br/><br/> - 16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチ。<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
+**アプライアンス** | Azure Migrate アプライアンスを実行する EC2 VM が必要です。 このマシンには以下が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。<br/> _Windows Server 2019 がインストールされているマシンでのアプライアンスの実行はサポートされていません_。<br/><br/> - 16 GB の RAM、8 個の vCPU、約 80 GB のディスク記憶域、外部仮想スイッチ。<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
 **Windows インスタンス** | WinRM ポート 5985 (HTTP) で受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータをプルできるようにします。
 **Linux インスタンス** | ポート22 (TCP) で受信接続を許可します。<br/><br/> インスタンスでは、既定のシェルとして `bash` を使用する必要があります。そうしないと検出は失敗します。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Migrate プロジェクトを作成し、Azure Migrate アプライアンスを登録するには、以下を備えたアカウントが必要です。
 - Azure サブスクリプションに対する共同作成者または所有者のアクセス許可。
-- Azure Active Directory アプリを登録するためのアクセス許可。
+- Azure Active Directory (AAD) アプリを登録するためのアクセス許可。
 
 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。 サブスクリプションの所有者でない場合は、所有者と協力して、次のようにアクセス許可を割り当てます。
 
@@ -67,18 +67,20 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
     ![[ロールの割り当ての追加] ページを開いて、アカウントにロールを割り当てる](./media/tutorial-discover-aws/assign-role.png)
 
-7. ポータルでユーザーを検索し、 **[サービス]** で **[ユーザー]** を選択します。
-8. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
+1. アプライアンスを登録するには、お使いの Azure アカウントに **AAD アプリを登録するためのアクセス許可** が必要です。
+1. Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** に移動します。
+1. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-aws/register-apps.png)
 
+1. [アプリの登録] 設定が [いいえ] に設定されている場合は、テナントまたはグローバル管理者に、必要なアクセス許可を割り当てるよう依頼してください。 テナントまたはグローバル管理者は、AAD アプリの登録を許可するために、**アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-aws-instances"></a>AWS インスタンスを準備する
 
 アプライアンスが AWS インスタンスへのアクセスに使用できるアカウントを設定します。
 
-- Windows サーバーの場合、検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 そのユーザー アカウントを、Remote Management Users、Performance Monitor Users、Performance Log Users の各グループに追加します。
- - Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。
+- **Windows サーバー** の場合、検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 そのユーザー アカウントを、Remote Management Users、Performance Monitor Users、Performance Log Users の各グループに追加します。
+ - **Linux サーバー** の場合、検出する Linux サーバーのルート アカウントが必要です。 代わりの方法については、[サポート マトリックス](migrate-support-matrix-physical.md#physical-server-requirements)の説明を参照してください。
 - Azure Migrate では、AWS インスタンスを検出するときにパスワード認証が使用されます。 AWS インスタンスは、既定ではパスワード認証をサポートしていません。 インスタンスを検出するには、パスワード認証を有効にする必要があります。
     - Windows マシンの場合、WinRM ポート 5985 (HTTP) を許可します。 これにより、リモート WMI 呼び出しが可能になります。
     - Linux マシンの場合:
@@ -105,11 +107,12 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
    ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-aws/new-project.png)
 
 7. **［作成］** を選択します
-8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。
-
-**Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
+8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
 
 ![既定で追加された Server Assessment ツールを示すページ](./media/tutorial-discover-aws/added-tool.png)
+
+> [!NOTE]
+> プロジェクトを既に作成している場合は、その同じプロジェクトを使用して追加のアプライアンスを登録することで、より多くのサーバーを検出して評価できます。[詳細をご覧ください](create-manage-projects.md#find-a-project)。
 
 ## <a name="set-up-the-appliance"></a>アプライアンスを設定する
 
@@ -120,17 +123,14 @@ Azure Migrate アプライアンスは、次の操作を行うために Azure Mi
 
 Azure Migrate アプライアンスに関する[詳細を確認](migrate-appliance.md)します。
 
-
-## <a name="appliance-deployment-steps"></a>アプライアンスのデプロイ手順
-
 アプライアンスを設定するには、次のようにします。
-- アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
-- Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
-- ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
-- PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
-- アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
+1. アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
+1. Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
+1. ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
+1. PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
+1. アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
 
-### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate プロジェクト キーを生成する
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure Migrate プロジェクト キーを生成する
 
 1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
@@ -139,10 +139,9 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
-### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
+### <a name="2-download-the-installer-script"></a>2. インストーラー スクリプトをダウンロードする
 
 **[2:Azure Migrate アプライアンスをダウンロードします]** で、 **[ダウンロード]** をクリックします。
-
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
@@ -167,7 +166,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
         物理 (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
 インストーラー スクリプトでは以下が実行されます。
 
 - エージェントと、物理サーバーの検出と評価のための Web アプリケーションをインストールする。
@@ -196,13 +195,11 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
 [パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
-### <a name="configure-the-appliance"></a>アプライアンスを構成する
+### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
 
 アプライアンスを初めて設定します。
 

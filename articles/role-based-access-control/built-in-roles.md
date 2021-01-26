@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655035"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538529"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -119,6 +119,9 @@ ms.locfileid: "97655035"
 > | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Purview データ キュレーター](#purview-data-curator) | Microsoft.Purview データ キュレーターでは、カタログ データ オブジェクトの作成、読み取り、変更、削除や、オブジェクト間のリレーションシップの確立を行うことができます。 このロールはプレビュー段階にあり、変更される可能性があります。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Purview データ リーダー](#purview-data-reader) | Microsoft.Purview データ リーダーは、カタログ データ オブジェクトを読み取ることができます。 このロールはプレビュー段階にあり、変更される可能性があります。 | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Purview データ ソース管理者](#purview-data-source-administrator) | Microsoft.Purview データ ソース管理者は、データ ソースとデータ スキャンを管理できます。 このロールはプレビュー段階にあり、変更される可能性があります。 | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Schema Registry Contributor (プレビュー)](#schema-registry-contributor-preview) | Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Schema Registry Reader (プレビュー)](#schema-registry-reader-preview) | Schema Registry グループおよびスキーマの読み取りと一覧表示を行います。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **ブロックチェーン** |  |  |
@@ -4888,6 +4891,133 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
 }
 ```
 
+### <a name="purview-data-curator"></a>Purview データ キュレーター
+
+Microsoft.Purview データ キュレーターでは、カタログ データ オブジェクトの作成、読み取り、変更、削除や、オブジェクト間のリレーションシップの確立を行うことができます。 このロールはプレビュー段階にあり、変更される可能性があります。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/read | Microsoft Purview プロバイダーのアカウント リソースを読み取ります。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/data/read | データ オブジェクトを読み取ります。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/data/write | データ オブジェクトを作成、更新、および削除します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read",
+        "Microsoft.Purview/accounts/data/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Curator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-reader"></a>Purview データ リーダー
+
+Microsoft.Purview データ リーダーは、カタログ データ オブジェクトを読み取ることができます。 このロールはプレビュー段階にあり、変更される可能性があります。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/read | Microsoft Purview プロバイダーのアカウント リソースを読み取ります。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/data/read | データ オブジェクトを読み取ります。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
+  "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-source-administrator"></a>Purview データ ソース管理者
+
+Microsoft.Purview データ ソース管理者は、データ ソースとデータ スキャンを管理できます。 このロールはプレビュー段階にあり、変更される可能性があります。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/read | Microsoft Purview プロバイダーのアカウント リソースを読み取ります。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/scan/read | データ ソースとスキャンを読み取ります。 |
+> | [Microsoft.Purview](resource-provider-operations.md#microsoftpurview)/accounts/scan/write | データ ソースの作成、更新、削除、およびスキャンの管理を行います。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
+  "name": "200bba9e-f0c8-430f-892b-6f0794863803",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/scan/read",
+        "Microsoft.Purview/accounts/scan/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Source Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="schema-registry-contributor-preview"></a>Schema Registry Contributor (プレビュー)
 
 Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。
@@ -6536,7 +6666,7 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 }
 ```
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel 共同作成者
@@ -7015,7 +7145,9 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | "*なし*" |  |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/write | eventSubscription を作成または更新します。 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | eventSubscription を削除します。 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/delete | eventSubscription を削除します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7035,7 +7167,11 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
     {
-      "actions": [],
+      "actions": [
+        "Microsoft.EventGrid/eventSubscriptions/write",
+        "Microsoft.EventGrid/eventSubscriptions/read",
+        "Microsoft.EventGrid/eventSubscriptions/delete"
+      ],
       "notActions": [],
       "dataActions": [
         "Microsoft.KeyVault/vaults/keys/read",
@@ -7438,6 +7574,9 @@ Security Center の表示アクセス許可。 推奨事項、警告、セキュ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/*/read | セキュリティ コンポーネントとポリシーの読み取り |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
+> | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | ダウンロード可能な IoT Defender パッケージ情報を取得します |
+> | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | サブスクリプション クォータ データを含むマネージャー アクティブ化ファイルをダウンロードします |
+> | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | IoT センサーのリセット パスワード ファイルをダウンロードします |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -7464,6 +7603,9 @@ Security Center の表示アクセス許可。 推奨事項、警告、セキュ
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
         "Microsoft.Support/*/read",
+        "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
+        "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
+        "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -8611,8 +8753,8 @@ connectedClusters リソースを作成するため、あらゆるユーザー�
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Kubernetes/connectedClusters/Write |  |
-> | Microsoft.Kubernetes/connectedClusters/read |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | connectedClusters を書き込みます |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | connectedClusters を読み取ります |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617121"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220696"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning におけるディープ ラーニングと機械学習の違い
 
@@ -57,7 +57,7 @@ ms.locfileid: "97617121"
 |  **実行時間** | トレーニングにあまり時間はかかりません (数秒から数時間の範囲)。 | ディープ ラーニング アルゴリズムには多くのレイヤーがあるため、通常、トレーニングには長い時間がかかります。 |
 |  **出力** | 通常、出力はスコアや分類などの数値になります。 | 出力には、テキスト、スコア、サウンドなど、複数の形式を使用できます。 |
 
-## <a name="transfer-learning"></a>転移学習
+## <a name="what-is-transfer-learning"></a>転移学習とは何か
 
 ディープ ラーニング モデルをトレーニングするには、多くの場合、大量のトレーニング データ、ハイエンドのコンピューティング リソース (GPU、TPU)、および長いトレーニング時間が必要になります。 これらのいずれかが使用できないシナリオでは、"*転移学習*" と呼ばれる手法を使用して、トレーニング プロセスを短縮することができます。
 
@@ -65,7 +65,7 @@ ms.locfileid: "97617121"
 
 ニューラル ネットワークの構造により、通常、最初のレイヤー セットには下位レベルの特徴が含まれる一方で、最後のレイヤー セットには、問題のドメインにより近い上位レベルの特徴が含まれています。 最後のレイヤーを新しいドメインまたは問題で使用するように用途変更することにより、新しいモデルをトレーニングするために必要な時間、データ、およびコンピューティング リソースを大幅に削減できます。 たとえば、自動車を認識するモデルが既にある場合は、転移学習を使用して、トラック、オートバイ、およびその他の種類の車両も認識するように、そのモデルの用途変更を行うことができます。
 
-Azure Machine Learning でオープンソース フレームワークを使用して、画像分類に転移学習を適用する方法:[Pytorch モデルを使用した画像の分類](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)について説明します。
+Azure Machine Learning でオープンソース フレームワークを使用して画像分類に転移学習を適用する方法について説明します。[転移学習を使用してディープ ラーニング PyTorch モデルをトレーニングする](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
 
 ## <a name="deep-learning-use-cases"></a>ディープ ラーニングのユース ケース
 

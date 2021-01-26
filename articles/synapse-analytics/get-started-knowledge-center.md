@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460268"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209204"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -39,22 +39,22 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Blob Storage を探索する
 
-1. **[Knowledge Center]** に移動して、 **[Use samples immediately]\(サンプルをすぐに使用する\)** をクリックします。
-1. **[Query data with SQL]\(SQL を使用してデータを照会する\)** を選択します。 
-1. **[Use samples immediately]\(サンプルをすぐに使用する\)** をクリックします。
-1. これにより、新しい SQL スクリプトが作成されます。
+1. **[Knowledge Center]** に移動し、 **[Use samples immediately]\(サンプルをすぐに使用する\)** をクリックします。
+1. **[Query data with SQL]\(SQL を使用してデータを照会する\)** を選択します。
+1. **[Use sample]\(サンプルを使用する\)** をクリックします。
+1. 新しいサンプル SQL スクリプトが開きます。
 1. 最初のクエリ (28 行目から 32 行目) までスクロールして、クエリ テキストを選択します。
-1. [実行] をクリックします。 選択したテキストが実行されます。
+1. [実行] をクリックします。 選択したコードだけが実行されます。
 
 ## <a name="loading-more-nyc-taxi-data"></a>ニューヨーク市のタクシー データの追加の読み込み
-1. **[ナレッジ センター]** に移動し、 **[ギャラリーを参照]** をクリックします。 
+1. **[Knowledge Center]** に移動し、 **[ギャラリーを参照]** をクリックします。
 1. 上部にある **[SQL スクリプト]** タブを選択します。
-1. **[ニューヨークのタクシー データを読み込む]** を選択します。
-1. **[入力]** で、 **[既存のプールを選択する]** を選択し、 **[SQLDB1]** を選択します。
+1. **[Load the New York Taxicab dataset]\(ニューヨークのタクシー データセットを読み込む\)** データ インジェスト サンプルを選択し、 **[続行]** をクリックします。
+1. **[SQL プール]** で、 **[既存のプールを選択する]** を選択して **[SQLPOOL1]** を選択し、前に作成した **SQLPOOL1** データベースを選択します。
 1. **[スクリプトを開く]** をクリックします。
-1. 新しい SQL スクリプトが表示されます。
+1. 新しいサンプル SQL スクリプトが開きます。
 1. **[実行]**
-1. これにより、すべてのニューヨーク市のタクシー データに対して複数のテーブルが作成され、T-SQL COPY コマンドを使用して読み込まれます。
+1. これにより、すべてのニューヨーク市のタクシー データに対して複数のテーブルが作成され、T-SQL COPY コマンドを使用して読み込まれます。 前のクイック スタートの手順でこれらのテーブルを作成済みの場合は、存在しないテーブルの CREATE と COPY を実行するコードだけを選択して実行します。
 
     > [!NOTE] 
     > 専用 SQL プール (以前の SQL DW) に対する SQL スクリプトのサンプル ギャラリーを使用する場合、使用できるのは、既存の専用 SQL プール (以前の SQL DW) だけです。

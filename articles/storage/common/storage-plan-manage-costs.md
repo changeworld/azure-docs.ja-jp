@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498202"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601308"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure BLOB ストレージのコストを計画および管理する
 
@@ -41,7 +41,7 @@ Azure Storage アカウントを作成し、データの転送を開始する前
 4. 残りのオプションを変更して、それらが見積もりに与える影響を確認します。
 
    > [!NOTE]
-   > Azure Blob Storage の料金は、Azure Enterprise Agreement の年額コミットメントのクレジットを使用して支払うことができます。 ただし、年額コミットメントのクレジットを使用して、サードパーティ製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+   > Azure Blob Storage の料金は、Azure 前払い (旧称: 年額コミットメント) のクレジットを使用して支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
 
 ## <a name="optimize-costs"></a>コストを最適化する
 
@@ -75,16 +75,16 @@ Azure Storage の予約容量を使用して BLOB データのストレージ �
 
 ## <a name="create-budgets"></a>予算を作成する
 
-[予算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知するアラートを作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 ただし、これらはより高いレベルでコストを追跡するように設計されているため、Azure Storage のコストなど、個々の Azure サービスのコストを管理する機能が限定されていることがあります。
+[予算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知するアラートを作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 ただし、これらはより高いレベルでコストを追跡するように設計されているため、Azure Storage のコストなど、個々の Azure サービスのコストを管理する機能が限定されていることがあります。
 
 ## <a name="monitor-costs"></a>コストを監視する
 
-Azure Storage で Azure リソースを使用する場合、コストが発生します。 リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。Azure Storage の使用を開始するとただちにコストが発生します。 コストは、Azure portal の [[コスト分析]](../../cost-management-billing/costs/quick-acm-cost-analysis.md) ペインで確認できます。
+Azure Storage で Azure リソースを使用する場合、コストが発生します。 リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。Azure Storage の使用を開始するとただちにコストが発生します。 コストは、Azure portal の [[コスト分析]](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ペインで確認できます。
 
 コスト分析を使用すると、さまざまな期間について、Azure Storage のコストをグラフや表で表示できます。 たとえば、日単位、現在の月、以前の月、年単位などがあります。 予算や予想コストを基準としてコストを表示することもできます。 長期にわたるより長い期間のビューに切り替えると、支出の傾向を特定し、超過出費が発生した可能性のある時期を確認するのに役立ちます。 予算を作成したら、それを超えた場合を簡単に確認できます。
 
 >[!NOTE]
-> コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../../cost-management-billing/costs/understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../../cost-management-billing/costs/assign-access-acm-data.md)に関するページを参照してください。
+> コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 Azure Storage のコストをコスト分析で表示するには、次の操作を行います。
 

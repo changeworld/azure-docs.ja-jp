@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132479"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179165"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
@@ -35,7 +35,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | コンテナーの論理的な削除を有効にする | コンテナーの論理的な削除を使用すると、削除されてしまったコンテナーを回復できます。 コンテナーの論理的な削除の詳細については、「[コンテナーの論理的な削除 (プレビュー)](./soft-delete-container-overview.md)」を参照してください。 | - |
 | アカウントの誤った削除を防止するためにストレージ アカウントをロックする | 組織内の他のユーザーによって誤って削除または変更されないようにするために、Azure Resource Manager リソース (サブスクリプション、リソース グループ、ストレージ アカウントなど) をロックできます。 ストレージ アカウントをロックしても、そのアカウント内のデータが削除されなくなるわけではありません。 そのアカウント自体が削除されなくなるだけです。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
 | ビジネスに不可欠なデータを不変 BLOB に保存する | BLOB データを WORM (Write Once, Read Many) 状態で保存するように、訴訟ホールドと時間ベースの保持ポリシーを構成します。 保持期間中は、不変の状態で保存された BLOB を読み取ることはできますが、変更や削除を行うことはできません。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。 | - |
-| ストレージ アカウントへの安全な転送 (HTTPS) を必須とする | ??? | - |
+| ストレージ アカウントへの安全な転送 (HTTPS) を必須とする | ストレージ アカウントに対して安全な転送が必要な場合は、ストレージ アカウントへの要求をすべて HTTPS 経由で行う必要があります。 HTTP 経由で行われた要求はすべて拒否されます。 Microsoft では、すべてのストレージ アカウントに対して常に、セキュリティで保護された転送を要求することをお勧めしています。 詳細については、「[セキュリティで保護された接続を確保するために安全な転送を要求する](../common/storage-require-secure-transfer.md)」を参照してください。 | - |
 | Shared Access Signature (SAS) トークンを HTTPS 接続のみに制限する | クライアントが SAS トークンを使用して BLOB データにアクセスするときに HTTPS を要求することで、盗聴のリスクを最小限に抑えることができます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。 | - |
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理

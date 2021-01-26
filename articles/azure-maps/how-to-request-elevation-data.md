@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094201"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602423"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure Maps の Elevation Service (プレビュー) を使用して標高データを要求する
 
@@ -471,7 +471,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 
 ### <a name="get-elevation-data-by-polyline-path"></a>ポリライン パスを使用して標高データを取得する
 
-次のサンプル Web ページは、マップ コントロールを使用して、パスに沿って標高データを表示する方法を示しています。 ユーザーは、左上隅にある `PolyLine` アイコンをクリックしてマップ上にポリラインを描画することでパスを定義します。 その後、マップ コントロールでは、右上隅にあるキーで指定されている色で、標高データがレンダーされます。
+次のサンプル Web ページは、マップ コントロールを使用して、パスに沿って標高データを表示する方法を示しています。 ユーザーは、左上隅にある `Polyline` アイコンをクリックしてマップ上にポリラインを描画することでパスを定義します。 その後、マップ コントロールでは、右上隅にあるキーで指定されている色で、標高データがレンダーされます。
 
 <br/>
 

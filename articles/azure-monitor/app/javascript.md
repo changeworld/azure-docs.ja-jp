@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858554"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234360"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -23,7 +23,7 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 > 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=js)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
-2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) または[接続文字列](#connection-string-setup)をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` または `connectionString` 設定に追加します。
+2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) または [接続文字列](#connection-string-setup)をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` または `connectionString` 設定に追加します。
 3. 次の 2 つの方法のいずれかを使用して、Application Insights JavaScript SDK を Web ページまたはアプリに追加します。
     * [npm のセットアップ](#npm-based-setup)
     * [JavaScript スニペット](#snippet-based-setup)
@@ -196,7 +196,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | correlationHeaderDomains |  | 特定のドメインの関連付けヘッダーを有効にします。 |
 | disableFlushOnBeforeUnload | false | 既定値は false です。 true の場合、onBeforeUnload イベントによってトリガーされても、flush メソッドは呼び出されません。 |
 | enableSessionStorageBuffer | true | 既定値は true です。 true の場合、未送信のすべてのテレメトリを含むバッファーがセッション ストレージに格納されます。 バッファーはページの読み込み時に復元されます。 |
-| isCookieUseDisabled | false | 既定値は false です。 true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。|
+| isCookieUseDisabled | false | 既定値は false です。 true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。 これにより、ユーザーとセッションの Cookie が無効になり、使用状況ブレードとエクスペリエンスが利用できなくなります。 |
 | cookieDomain | null | カスタム Cookie ドメイン。 これは、サブドメイン間で Application Insights Cookie を共有する場合に便利です。 |
 | isRetryDisabled | false | 既定値は false です。 false の場合、206 (部分的な成功)、408 (タイムアウト)、429 (要求が多すぎる)、500 (内部サーバー エラー)、503 (サービス利用不可)、および 0 (オフライン、検出された場合のみ) で再試行します。 |
 | isStorageUseDisabled | false | true の場合、SDK によってローカルおよびセッション ストレージに対するデータの格納や読み取りは行われません。 既定値は false です。 |
@@ -266,7 +266,8 @@ Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
-| [Angular](javascript-angular-plugin.md) |
+| [Angular](javascript-angular-plugin.md)|
+| [クリック分析自動収集](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
 

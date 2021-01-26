@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360175"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539885"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -42,7 +42,7 @@ Azure Machine Learning を使用すると、クラウド内のデータに簡単
 
     1. 自動機械学習 (自動 ML) 実験の実行、機械学習パイプライン、または [Azure Machine Learning デザイナー](concept-designer.md)などの Azure Machine Learning ソリューションで直接使用します。
 
-4. データ ドリフトを検出するために、モデルの出力データセット用の[データセット モニター](#data-drift)を作成します。 
+4. データ ドリフトを検出するために、モデルの出力データセット用の[データセット モニター](#drift)を作成します。 
 
 5. データ ドリフトが検出された場合は、入力データセットを更新し、それに応じてモデルを再トレーニングします。
 
@@ -50,7 +50,8 @@ Azure Machine Learning を使用すると、クラウド内のデータに簡単
 
 ![Azure ストレージ サービスからデータストアに遷移し、そこからデータセットに遷移することを示す図。 データセットからモデル トレーニングに遷移し、そこからデータ ドリフトに遷移して、データセットに戻ります。](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>データストア
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>データストアを使用してストレージに接続する
 
 Azure Machine Learning データストアには、Azure ストレージ サービスへの接続情報が安全に保持されるため、ご自身のスクリプトでそのコードを書く必要はありません。 ストレージ アカウントに簡単に接続し、下位の Azure ストレージ サービスのデータにアクセスするために、[データストアを登録および作成します](how-to-access-data.md)。 
 
@@ -65,7 +66,8 @@ Azure Machine Learning データストアには、Azure ストレージ サー�
 + Databricks ファイル システム
 + Azure Database for MySQL
 
-## <a name="datasets"></a>データセット
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>データセットを使用してストレージ内のデータを参照する
 
 Azure Machine Learning のデータセットは、データのコピーではありません。 データセットを作成すると、ストレージ サービスのデータへの参照とそのメタデータのコピーが作成されます。 
 
@@ -105,7 +107,7 @@ Azure Machine Learning のデータセットは、データのコピーではあ
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>データのラベル付け
+## <a name="label-data-with-data-labeling-projects"></a>データ ラベル付けプロジェクトを使用してデータにラベルを付ける
 
 大量のデータにラベルを付けることは、多くの場合、機械学習プロジェクトでは困難でした。 画像の分類やオブジェクトの検出など、Computer Vision コンポーネントを使用するそれらには、通常、何千ものイメージとそれに対応するラベルが必要です。
 
@@ -115,7 +117,7 @@ Azure Machine Learning を使用すると、ラベル付けプロジェクトの
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>データ ドリフト
+## <a name="monitor-model-performance-with-data-drift"></a>データの誤差を使用してモデルのパフォーマンスを監視する
 
 機械学習においてデータの誤差とは、モデルのパフォーマンスの低下につながるモデルの入力データの変更のことです。 これはモデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データ ドリフトの監視はモデルのパフォーマンスに関する問題の検出に役立ちます。
 

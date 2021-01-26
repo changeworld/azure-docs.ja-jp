@@ -5,13 +5,13 @@ author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a65ac8d52c17a288447193fb8c0fba2c6e6c5554
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/18/2021
+ms.openlocfilehash: e9e13f0254cdefd9a6b4887d8ab97dd54ad9810d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201265"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539662"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Azure Database for MySQL のルート CA の変更について
 
@@ -21,9 +21,7 @@ Azure Database for MySQL では、[データベース サーバーに接続す�
 > お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2020 年 10 月 26 日から 2021 年 2 月 15 日まで延長しました。 この延長により、ユーザーが影響を受ける場合に、クライアントの変更を実装するのに十分なリード タイムを提供できるのではないかと考えています。
 
 > [!NOTE]
-> バイアスフリーなコミュニケーション
->
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_マスター_" および "_スレーブ_" という単語が含まれています。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これらを排他的な単語と認めています。 これらの単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 >
 
 ## <a name="what-update-is-going-to-happen"></a>予定されている更新
@@ -76,13 +74,20 @@ Azure Database for MySQL の sslmode を理解するには、[SSL モードの�
 
   * .NET (MySQL Connector/NET、MySQLConnector) ユーザーの場合は、Windows 証明書ストアの信頼されたルート証明機関に **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書をインポートします。
 
-        ![Azure Database for MySQL .net cert](media/overview/netconnecter-cert.png)
+    :::image type="content" source="media/overview/netconnecter-cert.png" alt-text="Azure Database for MySQL の .net 証明書の図":::
 
   * SSL_CERT_DIR を使用する Linux 上の .NET ユーザーの場合は、**BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が SSL_CERT_DIR によって示されるディレクトリに存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書ファイルを作成します。
 
-  * その他の (MySQL Client/MySQL Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) ユーザーの場合は、2 つの CA 証明書ファイルを次のような形式にマージできます。</b>
+  * その他の (MySQL Client/MySQL Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) ユーザーの場合は、2 つの CA 証明書ファイルを次のような形式にマージできます。
 
-     </br>-----BEGIN CERTIFICATE-----  </br>(ルート CA1: BaltimoreCyberTrustRoot.crt.pem)  </br>-----END CERTIFICATE-----  </br>-----BEGIN CERTIFICATE-----  </br>(ルート CA2: DigiCertGlobalRootG2.crt.pem)  </br>-----END CERTIFICATE-----
+      ```
+      -----BEGIN CERTIFICATE-----
+      (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      (Root CA2: DigiCertGlobalRootG2.crt.pem)
+      -----END CERTIFICATE-----
+      ```
 
 * 元のルート CA pem ファイルを、結合されたルート CA ファイルに置き換えて、アプリケーションやクライアントを再起動します。
 * 将来的に、サーバー側に新しい証明書がデプロイされた後は、CA pem ファイルを DigiCertGlobalRootG2.crt.pem に変更することができます。

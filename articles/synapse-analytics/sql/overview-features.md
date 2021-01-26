@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 629a063d80c9f1bb1a9ae3d56783e07491149f24
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 30241716a7a0034bcfb4b90437a083b0a1f34952
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118243"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555340"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -55,7 +55,7 @@ Synapse SQL で使用されるクエリ言語では、従量課金モデルに�
 | **INSERT ステートメント** | はい | いいえ |
 | **UPDATE ステートメント** | はい | いいえ |
 | **DELETE ステートメント** | はい | いいえ |
-| **MERGE ステートメント** | いいえ | いいえ |
+| **MERGE ステートメント** | はい ([プレビュー](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15)) | いいえ |
 | **[トランザクション](develop-transactions.md)** | はい | はい。メタデータ オブジェクトで該当します。 |
 | **[ラベル](develop-label.md)** | はい | いいえ |
 | **データ読み込み** | はい。 推奨されるユーティリティは [COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントです。ただし、データ読み込みでは一括読み込み (BCP) と [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) の両方がサポートされます。 | いいえ |

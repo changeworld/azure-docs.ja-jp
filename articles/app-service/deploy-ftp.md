@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605078"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209255"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -111,7 +111,7 @@ FTP デプロイのトラブルシューティングを行うための最初の�
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP 接続してコードを発行できません。 問題を解決するには、どうすればよいですか。
 入力したホスト名と[資格情報](#open-ftp-dashboard)が正しいかどうかを確認してください。 また、使用しているマシン上の次の FTP ポートが、ファイアウォールによってブロックされていないことも確認します。
 
-- FTP コントロール接続ポート: 21
+- FTP コントロール接続ポート: 21、990
 - FTP データ接続ポート: 989、10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。

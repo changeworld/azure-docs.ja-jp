@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901934"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567724"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>ネットワークの概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -74,7 +74,7 @@ PostgreSQL フレキシブル サーバーで仮想ネットワークを使用�
 プライベート アクセス (VNet 統合) を使用するフレキシブル サーバーを [Azure portal](how-to-manage-virtual-network-portal.md) または [Azure CLI](how-to-manage-virtual-network-cli.md) で作成する方法を参照してください。
 
 > [!NOTE]
-> カスタム DNS サーバーを使用する場合は、FQDN of Azure Database for MySQL - フレキシブル サーバーの FQDN を解決する DNS フォワーダーを使用する必要があります。 「[独自の DNS サーバーを使用する名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
+> カスタム DNS サーバーを使用する場合は、Azure Database for PostgreSQL - フレキシブル サーバーの FQDN を解決する DNS フォワーダーを使用する必要があります。 「[独自の DNS サーバーを使用する名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
 
 ## <a name="public-access-allowed-ip-addresses"></a>パブリック アクセス (許可された IP アドレス)
 パブリック アクセスの方法には、次のような特性があります。

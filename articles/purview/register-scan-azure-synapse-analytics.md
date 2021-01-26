@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920263"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567265"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure Synapse Analytics の登録とスキャン
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics (旧称 SQL DW) では、メタデータとスキーマ�
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-Azure Purview では、Azure Synapse Analytics の[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)のスキャンはサポートされません。
+Azure Purview では、Azure Synapse Analytics の[ビュー](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true)のスキャンはサポートされません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ Azure Purview では、Azure Synapse Analytics の[ビュー](https://docs.micro
  
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
-Azure Blob Storage の認証を設定するには、次の 3 つの方法があります。
+Azure Synapse Analytics の認証を設定するには、次の 3 つの方法があります。
 
 - マネージド ID
 - SQL 認証
@@ -45,7 +45,7 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 
 ### <a name="managed-identity-recommended"></a>マネージド ID (推奨) 
    
-Purview アカウントには独自のマネージド ID があり、これは基本的に作成時の Purview の名前になっています。 「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)」の前提条件とチュートリアルに従い、Purview の正確なマネージド ID 名を使用して Azure Synapse Analytics (旧称 SQL DW) に Azure AD ユーザーを作成する必要があります。
+Purview アカウントには独自のマネージド ID があり、これは基本的に作成時の Purview の名前になっています。 「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)」の前提条件とチュートリアルに従い、Purview の正確なマネージド ID 名を使用して Azure Synapse Analytics (旧称 SQL DW) に Azure AD ユーザーを作成する必要があります。
 
 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
@@ -102,7 +102,7 @@ GO
 
 ### <a name="sql-authentication"></a>SQL 認証
 
-まだお持ちでない場合は、「[CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)」の手順に従って、Azure Synapse Analytics (旧称 SQL DW) のログインを作成できます。
+まだお持ちでない場合は、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1)」の手順に従って、Azure Synapse Analytics (旧称 SQL DW) のログインを作成できます。
 
 選択した認証方法が **SQL 認証** の場合は、パスワードを取得して、キー コンテナーに格納する必要があります。
 

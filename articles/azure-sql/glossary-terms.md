@@ -11,13 +11,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/22/2020
-ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/09/2020
+ms.openlocfilehash: 8bd1e312463cf89ae30d54bc4a32a497fc7a9a78
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619782"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249654"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "91619782"
 |サービス階層|Basic、Standard、Premium、General Purpose、Hyperscale、Business Critical|仮想コア モデルのサービス レベルについては、「[SQL Database サービス レベル](database/service-tiers-vcore.md#service-tiers)」を参照してください。 DTU モデルのサービス階層については、[DTU モデル](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers)に関するページを参照してください。|
 |コンピューティング レベル|サーバーレス コンピューティング|[サーバーレス コンピューティング](database/service-tiers-vcore.md#compute-tiers)
 ||プロビジョニング済みコンピューティング|[プロビジョニング済みコンピューティング](database/service-tiers-vcore.md#compute-tiers)
-|コンピューティング世代|第 5 世代、M シリーズ、Fsv2 シリーズ|[ハードウェアの世代](database/service-tiers-vcore.md#hardware-generations)
+|コンピューティング世代|Gen5、M シリーズ、Fsv2 シリーズ、DC シリーズ|[ハードウェアの世代](database/service-tiers-vcore.md#hardware-generations)
 |サーバー エンティティ| サーバー |[論理 SQL サーバー](database/logical-servers.md)|
 |リソースの種類|仮想コア|単一データベース、エラスティック プール用のコンピューティング リソースに提供される CPU コア。 |
 ||コンピューティング サイズとストレージ容量|コンピューティング サイズとは、単一データベースまたはエラスティック プールで使用できる CPU、メモリ、およびその他の非ストレージ関連のリソースの最大量です。  ストレージ サイズとは、単一データベースまたはエラスティック プールに使用可能なストレージの量です。 仮想コア モデルのサイズ設定オプションについては、[仮想コア単一データベース](database/resource-limits-vcore-single-databases.md)と[仮想コア エラスティック プール](database/resource-limits-vcore-elastic-pools.md)に関するページを参照してください。  (../managed-instance/resource-limits.md)。  DTU モデルのサイズ設定オプションについては、[DTU 単一データベース](database/resource-limits-dtu-single-databases.md)と [DTU エラスティック プール](database/resource-limits-dtu-elastic-pools.md)に関するページを参照してください。
@@ -53,7 +53,3 @@ ms.locfileid: "91619782"
 |サーバー エンティティ|Managed Instance またはインスタンス| SQL Managed Instance はそれ自体がサーバーであるため、該当なし |
 |リソースの種類|仮想コア|SQL Managed Instance 用のコンピューティング リソースに提供される CPU コア。|
 ||コンピューティング サイズとストレージ容量|コンピューティング サイズとは、SQL Managed Instance 用の CPU、メモリ、およびその他の非ストレージ関連のリソースの最大量です。  ストレージ サイズとは、SQL Managed Instance で使用可能なストレージの量です。  サイズ設定オプションについては、[SQL Managed Instance](managed-instance/resource-limits.md) に関するページを参照してください。 |
-
-## <a name="sql-on-azure-vm"></a>Azure VM 上の SQL
-
-ここにはさらに内容が必要

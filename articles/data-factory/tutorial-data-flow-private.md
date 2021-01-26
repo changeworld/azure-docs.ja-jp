@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497131"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249442"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>マッピング データ フローを使用して安全にデータを変換する
 
@@ -34,6 +34,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 > * データ フロー アクティビティを監視します。
 
 ## <a name="prerequisites"></a>前提条件
+
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * **Azure ストレージ アカウント**。 Data Lake Storage を、*ソース* と *シンク* のデータ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)に関するページを参照してください。 *ストレージ アカウントで、選択したネットワークからのアクセスのみが許可されていることを確認します。* 
 
@@ -64,12 +65,14 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Data Factory マネージド仮想ネットワークに Azure IR を作成する
+
 この手順では、Azure IR を作成し、Data Factory マネージド仮想ネットワークを有効にします。
 
 1. Data Factory ポータルで、 **[管理]** に移動し、 **[新規]** を選択して新しい Azure IR を作成します。
 
    ![新しい Azure IR の作成を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. **Azure** IR オプションを選択します。
+1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、必要な機能に基づいて作成する統合ランタイムを選択します。 このチュートリアルでは、 **[Azure、セルフホステッド]** を選択し、 **[続行]** をクリックします。 
+1. **[Azure]** を選択し、 **[続行]** をクリックして、Azure Integration ランタイムを作成します。
 
    ![新しい Azure IR を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/azure-ir.png)
 

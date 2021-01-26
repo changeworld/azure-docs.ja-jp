@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524251"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572189"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM を移動するためのサポート
 
@@ -113,7 +113,7 @@ Azure RBAC ポリシー | サポートされていません | VM の Azure ロ�
 
 ## <a name="supported-vm-storage-settings"></a>サポートされる VM ストレージ設定
 
-この表は、Azure VM の OS ディスク、データ ディスク、一時ディスクに対するサポートをまとめたものです。 [Linux](../virtual-machines/linux/disk-scalability-targets.md) VM と [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM でのパフォーマンスの問題を回避するため、VM ディスクの制限とターゲットを守ることが重要です。
+この表は、Azure VM の OS ディスク、データ ディスク、一時ディスクに対するサポートをまとめたものです。 [マネージド ディスク](../virtual-machines/disks-scalability-targets.md)でのパフォーマンスの問題を回避するため、VM ディスクの制限とターゲットを監視することが重要です。
 
 > [!NOTE]
 > ターゲット VM のサイズは、ソース VM と同じかそれ以上である必要があります。 検証に使用されるパラメーターは、データ ディスクの数、NIC の数、使用可能な CPU、GB 単位のメモリです。 不適切な場合は、エラーが発行されます。

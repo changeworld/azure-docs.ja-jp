@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962433"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250980"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -345,7 +345,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 最初の値は、**zones** プロパティで、仮想マシン スケール セットに存在する Availability Zones を指定します。
 * 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。 **3 つの AZ にまたがるスケールセットでは、"singlePlacementGroup = true" の場合でも、最大 300 VM までスケールアップできます。**
-* 3 つ目の値は、"zoneBalance" であり、省略可能です。true に設定されている場合、厳密なゾーン バランシングが有効になります。 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) について確認します。
+* 3 つ目の値は、"zoneBalance" であり、true に設定されている場合、厳密なゾーン バランシングが確実に行われます。 ゾーン間で VM が不均等に分散されないようにするには、これを true に設定することをお勧めします。 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) について確認します。
 * FaultDomain と UpgradeDomain のオーバーライドは、構成する必要はありません。
 
 ```json
@@ -357,7 +357,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
     "zones": ["1", "2", "3"],
     "properties": {
         "singlePlacementGroup": "true",
-        "zoneBalance": false
+        "zoneBalance": true
     }
 }
 ```

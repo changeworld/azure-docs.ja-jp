@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814433"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601352"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure の消費コミットメントのベネフィット
 
@@ -24,7 +24,7 @@ ms.locfileid: "97814433"
 
 お客様が高品質のソリューションを確実に受け取ることができるように、Microsoft はこのプログラムに参加しているすべてのオファーを検証しています。
 
-このベネフィットを利用するには、ご利用の Azure 契約に関連付けられているサブスクリプションを使用して、該当するオファーを Azure Marketplace で購入するだけです。 Azure の前払いおよび年額コミットメントは、このベネフィットの対象にはなりません。
+このベネフィットを利用するには、ご利用の Azure 契約に関連付けられているサブスクリプションを使用して、該当するオファーを Azure Marketplace で購入するだけです。 Azure 前払い (旧称: 年額コミットメント) は、このベネフィットの対象にはなりません。
 
 > [!IMPORTANT]
 > このマーケットプレースのベネフィットの前に署名された CtC 契約には、除外が適用される場合があります。 資格に関してご不明な点がある場合は、Microsoft アカウントの責任者にお問い合わせください。

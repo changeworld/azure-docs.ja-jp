@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915676"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247014"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プール (プレビュー) を使用する 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -49,7 +49,7 @@ Synapse ワークスペースで、 **[開発]** タブをクリックし、 **+
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL スクリプトで、ワークスペースのサーバーレス SQL エンドポイントを使用できるようにする":::
 
-**RetailCosmosDB** という名前の新しいデータベースと、Synapse Link 対応コンテナーに SQL ビューを作成します。 次のコマンドは、データベースを作成する方法を示しています。
+**マスター** または **既定** のデータベースにビューを作成することは推奨されず、サポートもされていません。 **RetailCosmosDB** という名前の新しいデータベースと、Synapse Link 対応コンテナーに SQL ビューを作成します。 次のコマンドは、データベースを作成する方法を示しています。
 
 ```sql
 -- Create database

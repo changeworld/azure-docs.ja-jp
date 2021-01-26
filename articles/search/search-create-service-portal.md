@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/14/2020
-ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102814"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249756"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -30,7 +30,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 次のサービス プロパティは、サービスの有効期間にわたって固定されます。これらのいずれかを変更するには、新しいサービスが必要です。 これらは固定されているため、各プロパティを入力するときに使用の影響を考慮してください。
 
 * サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
-* サービス レベル[によって料金が変わり](search-sku-tier.md)、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
+* [サービス レベル](search-sku-tier.md)によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
 * サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに配置するか、対象の機能が提供されているリージョンに配置する必要があります。 
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
@@ -59,11 +59,11 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 リソースを単一グループに結合していない場合、または関連のないソリューションで使用されるリソースが既存のリソース グループに格納されている場合は、Azure Cognitive Search リソース用の新しいリソース グループを作成します。 
 
-:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="ポータルでリソースを作成する" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="新しいリソース グループを作成する" border="false":::
 
 時間が経つと共に、現在のコストと予想されるコストをまとめて追跡したり、個々のリソースの料金を確認したりできるようになります。 次のスクリーンショットは、複数のリソースを 1 つのグループにまとめたときに表示されるコスト情報の種類を示しています。
 
-:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="ポータルでリソースを作成する" border="false":::
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="リソース グループ レベルでコストを管理する" border="false":::
 
 > [!TIP]
 > グループを削除するとその中のすべてのサービスが削除されるため、リソース グループによってクリーンアップが簡略化されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。
@@ -94,7 +94,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 ### <a name="requirements"></a>必要条件
 
- AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンに検索サービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です* 。
+ AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンに検索サービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です*。
 
  事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
@@ -114,11 +114,11 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 必要な入力作業を終えたら、サービスの作成に進みます。 
 
-:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="ポータルでリソースを作成する" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="サービスの確認と作成" border="false":::
 
 サービスは数分以内にデプロイされます。 Azure 通知を使用して進行状況を監視できます。 今後アクセスしやすくするために、サービスをご自分のダッシュ ボードにピン留めすることを検討してください。
 
-:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="ポータルでリソースを作成する" border="false":::
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="サービスの監視とピン留め" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>キーと URL エンドポイントを取得する
 
@@ -128,7 +128,7 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 2. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
 
-   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="ポータルでリソースを作成する" border="false":::
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="URL エンドポイントを含むサービスの概要ページ" border="false":::
 
 ポータル ベースのタスクにエンドポイントとキーは必要ありません。 ポータルは、ご利用の Azure Cognitive Search リソースにあらかじめ管理者権限付きでリンクされています。 ポータルのチュートリアルについては、[クイック スタート: ポータルで Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)方法のページから始めてください。
 
@@ -136,9 +136,9 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Cognitive Search サービスの Standard レベルを選択している場合は、レプリカとパーティションの 2 つのディメンションでご利用のサービスをスケーリングできます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
 
-***パーティション*** を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
+"**_パーティション_* _" を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
 
-***レプリカ*** を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
+"_*_レプリカ_*_" を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
 
 リソースを追加すると、月ごとの請求が増加します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使うと、リソース追加の課金への影響を把握できます。 負荷に基づいてリソースを調整できることに注意してください。 たとえば、リソースを増やして完全な初期インデックスを作成した後、増分インデックス作成に適したレベルまでリソースを減らすことができます。
 
@@ -146,10 +146,10 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 > サービスでは、[読み取り専用の SLA の場合は 2 つのレプリカ、読み取り/書き込み SLA の場合は 3 つのレプリカ](https://azure.microsoft.com/support/legal/sla/search/v1_0/)が必要です。
 
 1. Azure Portal で検索サービス ページを開きます。
-2. 左のナビゲーション ウィンドウで、 **[設定]**  >  **[スケール]** を選択します。
+2. 左側のナビゲーション ペインで、_ *[設定]* * > **[スケール]** を選択します。
 3. スライダーを使って、いずれかの種類のリソースを追加します。
 
-:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="ポータルでリソースを作成する" border="false":::
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="レプリカとパーティションを使用して容量を追加する" border="false":::
 
 > [!Note]
 > パーティションごとのストレージと速度がより高いレベルで向上します。 詳細については、[容量と制限](search-limits-quotas-capacity.md)に関するページをご覧ください。

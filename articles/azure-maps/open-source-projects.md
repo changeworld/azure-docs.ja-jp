@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680748"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601597"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -65,6 +65,12 @@ ms.locfileid: "97680748"
 | [Azure Maps .NET UWP IoT リモート コントロール](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | これは、Azure Maps サービスと IoT Hub サービスを使用して、リモートで制御される地図を構築する方法を示すサンプル アプリケーションです。 |
 | [Azure Maps を使用した IoT 空間分析の実装](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 |
 
+**サード パーティのマップ コントロール プラグイン**
+
+| プロジェクト名 | 説明 |
+|-|-|
+| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
+ 
 **ツールとリソース**
 
 | プロジェクト名 | 説明 |

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c752bc6ae49f009056067545fde292dc29027d5d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208133"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールのベスト プラクティス
 
@@ -25,9 +25,9 @@ ms.locfileid: "96457893"
 
 サーバーレス SQL プールを使用すると、Azure ストレージ アカウント内のファイルに対してクエリを実行できます。 ローカル ストレージやインジェストの機能は備えていません。 したがって、クエリが対象とするすべてのファイルは、サーバーレス SQL プールの外部にあります。 ストレージからのファイルの読み取りに関連するものはすべて、クエリのパフォーマンスに影響を与える可能性があります。
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Azure ストレージ アカウントとサーバーレス SQL プールの併置
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>ストレージとサーバーレス SQL プールを併置する
 
-待機時間を最小限に抑えるには、Azure ストレージ アカウントとサーバーレス SQL プールのエンドポイントを併置します。 ワークスペースの作成中にプロビジョニングされたストレージ アカウントとエンドポイントは同じリージョンに配置されます。
+待機時間を最小限に抑えるには、Azure Storage アカウントまたは CosmosDB 分析ストレージとサーバーレス SQL プールのエンドポイントを併置します。 ワークスペースの作成中にプロビジョニングされたストレージ アカウントとエンドポイントは同じリージョンに配置されます。
 
 最適なパフォーマンスを得るために、サーバーレス SQL プールを使用して他のストレージ アカウントにアクセスする場合は、それらが同じリージョンにあることを確認してください。 同じリージョンにない場合、リモート リージョンとエンドポイントのリージョン間でデータをネットワーク転送するときの待機時間が長くなります。
 
@@ -44,9 +44,9 @@ ms.locfileid: "96457893"
 
 可能であれば、ファイルを準備してパフォーマンスを向上させることができます。
 
-- CSV と JSON を Parquet に変換します。 Parquet は、列形式です。 圧縮されるため、同じデータを含む CSV または JSON ファイルよりもファイル サイズが小さくなります。 サーバーレス SQL プールでは、読み取るために必要な時間が短くなりストレージ要求も少なくなります。
+- 大きな CSV と JSON を Parquet に変換します。 Parquet は、列形式です。 圧縮されるため、同じデータを含む CSV または JSON ファイルよりもファイル サイズが小さくなります。 サーバーレス SQL プールでは、Parquet ファイルを読み取る場合にクエリで必要ない列と行をスキップできます。 サーバーレス SQL プールでは、読み取るために必要な時間が短くなりストレージ要求も少なくなります。
 - クエリが 1 つの大きなファイルを対象としている場合は、複数の小さなファイルに分割すると効果があります。
-- CSV ファイルのサイズを 10 GB 未満にしてください。
+- CSV ファイルのサイズは 100 MB から 10 GB の間に維持するようにしてください。
 - 1 つの OPENROWSET パスまたは外部テーブル LOCATION に対して、ファイルのサイズを同じにすることをお勧めします。
 - パーティションを異なるフォルダーまたはファイル名に格納して、データをパーティション分割します。 「[filename および filepath 関数を使用して特定のパーティションを対象にする](#use-filename-and-filepath-functions-to-target-specific-partitions)」を参照してください。
 
@@ -129,7 +129,7 @@ CSV ファイルに対してクエリを実行するときに、パフォーマ�
 
 ## <a name="manually-create-statistics-for-csv-files"></a>CSV ファイルの統計を手動で作成する
 
-サーバーレス SQL プールでは、統計に基づいて最適なクエリ実行プランを生成します。 必要時に、Parquet ファイルの列に対して統計が自動的に作成されます。 現時点では、CSV ファイルの列に対して統計は自動的には作成されず、クエリで使用する列 (特に、DISTINCT、JOIN、WHERE、ORDER BY、GROUP BY で使用される列) については、統計を手動で作成する必要があります。 詳細については、[サーバーレス SQL プールの統計](develop-tables-statistics.md#statistics-in-serverless-sql-pool) をご覧ください。
+サーバーレス SQL プールでは、統計に基づいて最適なクエリ実行プランを生成します。 必要時に、Parquet ファイルの列に対して統計が自動的に作成されます。 現時点では、CSV ファイルの列に対して統計は自動的には作成されず、クエリで使用する列 (特に、DISTINCT、JOIN、WHERE、ORDER BY、GROUP BY で使用される列) については、統計を手動で作成する必要があります。 詳細については、[サーバーレス SQL プールの統計情報](develop-tables-statistics.md#statistics-in-serverless-sql-pool)に関するトピックを確認してください。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS を使用してクエリのパフォーマンスと結合を強化する
 

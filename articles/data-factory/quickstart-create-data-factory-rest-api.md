@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 06/10/2019
+ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 48928c5c4f3a2787e8f00e4084daacf6a64f1ea7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 34a2e423e06782b0d43766cccac9319ce68239d4
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461580"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569472"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
 
@@ -303,7 +303,7 @@ $response | ConvertTo-Json
 ```
 ## <a name="create-pipeline"></a>パイプラインの作成
 
-この例では、このパイプラインには 1 つのアクティビティが含まれており、2 つのパラメーター (入力 BLOB パスと出力 BLOB パス) を受け取ります。 これらのパラメーターの値は、パイプラインがトリガー/実行されたときに設定されます。 コピー アクティビティは、入力と出力として、前の手順で作成された同じ BLOB データセットを参照します。 データセットが入力データセットとして使用される場合は、入力パスが指定されます。 また、データセットが出力データセットとして使用される場合は、出力パスが指定されます。
+この例では、このパイプラインに Copy アクティビティが 1 つ含まれています。 Copy アクティビティは、入力と出力として、前の手順で作成された "InputDataset" と "OutputDataset" を参照します。
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -383,10 +383,7 @@ $response | ConvertTo-Json
 
 ## <a name="create-pipeline-run"></a>パイプラインの実行を作成する
 
-この手順では、パイプラインで指定された **inputPath** と **outputPath** パラメーターの値を、ソースおよびシンクの BLOB パスの実際の値に設定し、パイプラインの実行をトリガーします。 応答本文で返されたパイプライン実行 ID は、後で API を監視する際に使用されます。
-
-**inputPath** と **outputPath** の値を、ソースおよびシンクの BLOB パスに置き換え、ファイルを保存する前にデータをコピーします。
-
+この手順では、パイプラインの実行をトリガーします。 応答本文で返されたパイプライン実行 ID は、後で API を監視する際に使用されます。
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"

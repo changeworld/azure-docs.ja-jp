@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857558"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165962"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続するように Azure を構成する
 
@@ -39,9 +39,9 @@ ms.locfileid: "97857558"
 
 ## <a name="define-service-principal"></a>サービス プリンシパルを定義する
 
-アクション グループ サービスには、ServiceNow を使用して認証するために、AAD アプリケーションから認証トークンを取得するためのアクセス許可が必要です。 これらのアクセス許可を付与するには、アクション グループ サービスのサービス プリンシパルをテナントに作成する必要があります。
-この目的のためには、この [PowerShell コマンド](./action-groups.md#secure-webhook-powershell-script)を使用できます。 (テナント管理者特権が必要です)。
-省略可能な手順として、作成したアプリのマニフェストにアプリケーション ロールを定義できます。これによって、さらにアクセスを制限して、この特定のロールを持つ特定のアプリケーションのみがメッセージを送信できるようになります。 このロールは、アクション グループのサービス プリンシパルに割り当てられている必要があります。 \
+アクション グループ サービスはファースト パーティ アプリケーションです。そのため、ServiceNow を使用して認証するために、AAD アプリケーションから認証トークンを取得するためのアクセス許可があります。
+省略可能な手順として、作成したアプリのマニフェストにアプリケーション ロールを定義できます。これによって、さらにアクセスを制限して、この特定のロールを持つ特定のアプリケーションのみがメッセージを送信できるようになります。 このロールは、アクション グループのサービス プリンシパルに割り当てられている必要があります (テナント管理特権が必要です)。
+
 この手順は、同じ [PowerShell コマンド](./action-groups.md#secure-webhook-powershell-script)を使用して実行できます。
 
 ## <a name="create-a-secure-webhook-action-group"></a>セキュア Webhook アクション グループを作成する

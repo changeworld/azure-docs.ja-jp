@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 10/15/2020
-ms.openlocfilehash: c2260cc0d2c6b889b44c738576e33abceebe23f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444405"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209816"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Synapse ワークスペースを監視する
 
@@ -25,8 +25,8 @@ ms.locfileid: "96444405"
 
 Synapse Studio を開き、 **[監視]** ハブに移動します。 ここには、ワークスペースで発生したすべてのアクティビティの履歴と、現在アクティブになっているアクティビティが表示されます。 
 
-* **[Integration]\(統合\)** で、パイプライン、トリガー、統合ランタイムを監視できます
-* **[アクティビティ]** で、Spark と SQL のアクティビティを監視できます。 
+* **[統合]** では、パイプライン、トリガー、統合ランタイムを監視できます。
+* **[アクティビティ]** では、Spark と SQL のアクティビティを監視できます。 
 
 ## <a name="integration"></a>統合
 
@@ -36,15 +36,15 @@ Synapse Studio を開き、 **[監視]** ハブに移動します。 ここに�
 
 ## <a name="apache-spark-activities"></a>Apache Spark アクティビティ
 
-1. **[Integration]\(統合\) > [アクティビティ] > [Apache Spark applications]\(Apache Spark アプリケーション\)** の順に移動します。 これで、ご利用のワークスペース内で実行中の、または実行されたすべての Spark アプリケーションを確認できます。
+1. **[アクティビティ] > [Apache Spark applications]\(Apache Spark アプリケーション\)** の順に移動します。 これで、ご利用のワークスペース内で実行中の、または実行されたすべての Spark アプリケーションを確認できます。
 1. 現在実行されていないアプリケーションを見つけて、その **[アプリケーション名]** をクリックします。 これで、その Spark アプリケーションの詳細を確認できます。
 1. Apache Spark に慣れている場合は、 **[Spark History Server]** をクリックすることで、標準の Apache Spark History Server UI を見つけることができます。
 
 ## <a name="sql-activities"></a>SQL アクティビティ
 
-1. **[Integration]\(統合\) > [アクティビティ] > [SQL requests]\(SQL 要求\)** の順に移動します。
+1. **[アクティビティ] > [SQL requests]\(SQL 要求\)** の順に移動します。
 1. このビューでは、SQL 要求を確認できます。
-1. 監視する **[プール]** を選択します。 これで、そのプールにあるご利用のワークスペース内で実行中の、または実行されたすべての SQL 要求を確認できます。
+1. **[プール]** フィルターから、監視する **プール** を選択します。 これで、そのプールにあるご利用のワークスペース内で実行中の、または実行されたすべての SQL 要求を確認できます。
 1. 特定の SQL 要求を検索し、その項目の上にマウス ポインターを置きます。 マウス ポインターを合わせると、SQL スクリプト アイコンが表示されるのがわかります。
 1. SQL スクリプト アイコンをクリックして、SQL 要求の全文を表示します。
 

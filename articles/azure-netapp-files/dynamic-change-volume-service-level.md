@@ -12,20 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 78cc68d2be600cec78c433ae3eae1de09d31ac94
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579081"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251813"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する
 
 > [!IMPORTANT] 
-> * この機能のパブリック プレビュー登録は、通知があるまで保留中です。 
-> * 現時点では、レプリケーション先のボリュームのサービス レベルの動的な変更はサポートされていません。
+> 現時点では、レプリケーション先のボリュームのサービス レベルの動的な変更はサポートされていません。
 
 既存のボリュームのサービス レベルは変更できます。それには、目的のボリュームで使用したい[サービス レベル](azure-netapp-files-service-levels.md)を使用中の別の容量プールに、目的のボリュームを移動します。 ボリュームのサービス レベルのインプレース変更では、データを移行する必要はありません。 ボリュームへのアクセスにも影響はありません。  
 
@@ -38,27 +37,27 @@ ms.locfileid: "94579081"
 * ボリュームを別の容量プールに移動した後は、以前のボリューム アクティビティ ログとボリューム メトリックにアクセスできなくなります。 ボリュームは、新しい容量プールのもとで新しいアクティビティ ログとメトリックを使用して開始されます。
 
 * 上位のサービス レベルの容量プールにボリュームを移動する場合 (たとえば、*Standard* から *Premium* または *Ultra* サービス レベルに移動する) は、下位のサービス レベルの容量プールにそのボリュームを *再度* 移動する (たとえば、*Ultra* から *Premium* または *Standard* へ移動する) には、少なくとも 7 日待機する必要があります。  
-<!-- 
-## Register the feature
 
-The feature to move a volume to another capacity pool is currently in preview. If you are using this feature for the first time, you need to register the feature first.
+## <a name="register-the-feature"></a>機能を登録する
 
-1. Register the feature: 
+ボリュームを別の容量プールに移動する機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、まず機能を登録する必要があります。
+
+1. 機能を登録します。 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
 
-2. Check the status of the feature registration: 
+2. 機能の登録の状態を確認します。 
 
     > [!NOTE]
-    > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is **Registered** before continuing.
+    > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
---> 
+また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+ 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>ボリュームを別の容量プールに移動する
 
 1.  [ボリューム] ページで、サービス レベルを変更するボリュームを右クリックします。 **[Change Pool] (プールの変更)** を選択します。
@@ -76,3 +75,4 @@ You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view
 
 * [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
 * [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [ボリュームの容量プールの変更に関する問題のトラブルシューティング](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)

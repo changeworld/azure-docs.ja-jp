@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559966"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249604"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でデータをスキャンする
 
@@ -189,6 +189,8 @@ Azure Purview アカウントを作成すると、そのアカウントと同じ
 1. 以上の手順を Azure Data Lake Storage Gen2 についても行います。
 
 ### <a name="scan-your-data-sources"></a>データ ソースをスキャンする
+
+1. [Azure portal](https://portal.azure.com) で Azure Purview リソースに移動し、 *[Open Purview Studio]\(Purview Studio を開く\)* を選択します。 Purview Studio のホーム ページに自動的に移動します。
 
 1. カタログの Web ページで **[Sources]\(ソース\)** を選択し、 **[登録]** を選択します。 次に、 **[Azure Blob Storage]** 、 **[続行]** の順に選択します。
 

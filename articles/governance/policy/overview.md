@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803954"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220730"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -83,7 +83,7 @@ Azure Policy のリソースに対するアクセス許可は、さまざまな�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy の対象となるリソース
 
-Azure 内のすべてのリソースおよび Arc 対応リソースが、Azure Policy の評価の対象となります。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
+Azure Policy は、Arc 対応リソースを含め、サブスクリプションレベルまたはそれ以下のレベルにあるすべての Azure リソースを評価します。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
 
 ### <a name="recommendations-for-managing-policies"></a>ポリシー管理に関する推奨事項
 

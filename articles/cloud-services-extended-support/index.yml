@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Azure Cloud Services (延長サポート) のドキュメント
+summary: Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法について説明します。 仮想マシン ホストを管理して、ソフトウェアを構成、修正、インストールする方法について説明します。
+metadata:
+  title: Azure Cloud Services (延長サポート) のドキュメント
+  description: Cloud Services を使用して、可用性とスケーラビリティが高いクラウド アプリケーションや API をホストして実行する方法について説明します。
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98743654"
+landingContent:
+- title: Cloud Services (延長サポート) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cloud Services (延長サポート) とは
+      url: overview.md
+    - text: デプロイの前提条件
+      url: deploy-prerequisite.md
+    - text: 構成ファイルとパッケージ化
+      url: cloud-services-model-and-package.md
+- title: チュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: PowerShell を使用したデプロイ
+      url: deploy-powershell.md
+    - text: Azure Portal を使用したデプロイ
+      url: deploy-portal.md
+    - text: ARM テンプレートを使用したデプロイ
+      url: deploy-template.md
+    - text: Visual Studio を使用してデプロイする
+      url: deploy-visual-studio.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 利用できるサイズ
+      url: available-sizes.md
+    - text: よく寄せられる質問
+      url: faq.md
+- title: ハウツー ガイド
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Extensions
+      url: extensions.md
+    - text: アラートを有効にする
+      url: enable-alerts.md
+    - text: スケーリングを構成する
+      url: configure-scaling.md
+    - text: 証明書
+      url: certificates-and-key-vault.md
+- title: サンプル
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: クラウド サービス デプロイを作成する
+      url: sample-create-cloud-service.md
+    - text: クラウド サービス デプロイに関する情報を取得する
+      url: sample-get-cloud-service.md
+    - text: クラウド サービス デプロイを更新する
+      url: sample-update-cloud-service.md
+    - text: クラウド サービス デプロイをリセットする
+      url: sample-reset-cloud-service.md
+- title: スキーマ情報
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 構成スキーマ
+      url: schema-cscfg-file.md
+    - text: 定義スキーマ
+      url: schema-csdef-file.md
+    - text: ロール定義スキーマ
+      url: schema-cscfg-role.md

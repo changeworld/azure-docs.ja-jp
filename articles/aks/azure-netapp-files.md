@@ -4,12 +4,12 @@ description: Azure NetApp Files と Azure Kubernetes Service を統合する方�
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126255"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196012"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files と Azure Kubernetes Service を統合する
 
@@ -28,14 +28,14 @@ ms.locfileid: "93126255"
 Azure NetApp Files を使用した場合、次の制限が適用されます。
 
 * Azure NetApp Files は、[選択された Azure リージョン][anf-regions]でのみ利用できます。
-* Azure NetApp Files を使用するには、Azure NetApp Files サービスへのアクセス権が必要です。 アクセスを申請するには、[Azure NetApp Files 順番待ちリスト送信フォーム][anf-waitlist]を使用できます。 Azure NetApp Files サービスには、Azure NetApp Files チームから正式な確認メールが届くまでアクセスすることができません。
+* Azure NetApp Files を使用するには、Azure NetApp Files サービスへのアクセス権が必要です。 アクセスを申請するには、[Azure NetApp Files 順番待ちリスト送信フォーム][anf-waitlist]を使用するか、 https://azure.microsoft.com/services/netapp/#getting-started にアクセスできます。 Azure NetApp Files サービスには、Azure NetApp Files チームから正式な確認メールが届くまでアクセスすることができません。
 * AKS クラスターの初期展開後は、Azure NetApp Files の静的プロビジョニングのみがサポートされます。
 * Azure NetApp Files で動的プロビジョニングを使用するには [NetApp Trident](https://netapp-trident.readthedocs.io/) バージョン 19.07 以降をインストールして構成します。
 
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files の構成
 
 > [!IMPORTANT]
-> *Microsoft.NetApp* リソース プロバイダーを登録する前に、サブスクリプションの [Azure NetApp Files 順番待ちリスト送信フォーム][anf-waitlist]を記入する必要があります。 Azure NetApp Files チームから正式な確認メールが届くまで、リソース プロバイダーを登録することはできません。
+> *Microsoft.NetApp* リソース プロバイダーを登録する前に、該当するサブスクリプションの [Azure NetApp Files 順番待ちリスト送信フォーム][anf-waitlist]を記入するか、 https://azure.microsoft.com/services/netapp/#getting-started にアクセスする必要があります。 Azure NetApp Files チームから正式な確認メールが届くまで、リソース プロバイダーを登録することはできません。
 
 *Microsoft.NetApp* リソース プロバイダーを登録します。
 
@@ -46,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > この処理には、完了までに時間がかかる場合があります。
 
-AKS で使用するための Azure NetApp アカウントを作成する場合は、 **ノード** リソース グループ内にアカウントを作成する必要があります。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある *myAKSCluster* という名前の AKS クラスターのノード リソース グループを取得しています。
+AKS で使用するための Azure NetApp アカウントを作成する場合は、**ノード** リソース グループ内にアカウントを作成する必要があります。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある *myAKSCluster* という名前の AKS クラスターのノード リソース グループを取得しています。
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -56,7 +56,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-[az netappfiles account create][az-netappfiles-account-create] を使用して、その **ノード** リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、 *MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
+[az netappfiles account create][az-netappfiles-account-create] を使用して、その **ノード** リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、*MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
 
 ```azurecli
 az netappfiles account create \
@@ -65,7 +65,7 @@ az netappfiles account create \
     --account-name myaccount1
 ```
 
-[az netappfiles pool create][az-netappfiles-pool-create] を使用して新しい容量プールを作成します。 次の例では、 *Premium* サービス レベルの 4 TB の *mypool1* という名前の新しい容量プールを作成します。
+[az netappfiles pool create][az-netappfiles-pool-create] を使用して新しい容量プールを作成します。 次の例では、*Premium* サービス レベルの 4 TB の *mypool1* という名前の新しい容量プールを作成します。
 
 ```azurecli
 az netappfiles pool create \
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2
@@ -169,7 +171,7 @@ spec:
 kubectl apply -f pv-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolume の " *状態* " が " *使用可能* " であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolume の "*状態*" が "*使用可能*" であることを確認します。
 
 ```console
 kubectl describe pv pv-nfs
@@ -199,7 +201,7 @@ spec:
 kubectl apply -f pvc-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolumeClaim の " *状態* " が " *使用可能* " であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolumeClaim の "*状態*" が "*使用可能*" であることを確認します。
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -237,7 +239,7 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、ポッドが " *実行中* " であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、ポッドが "*実行中*" であることを確認します。
 
 ```console
 kubectl describe pod nginx-nfs

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461379"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209629"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
@@ -32,7 +32,7 @@ Spark で作成、管理される外部テーブルは、サーバーレス SQL 
 
 Spark を使用して、Spark で作成されたデータベースを管理します。 たとえば、サーバーレス Apache Spark プール ジョブを使用してそれを削除したり、Spark からその内部にテーブルを作成したりします。
 
-サーバーレス SQL プールでそのようなデータベースにオブジェクトを作成したり、データベースの削除を試みたりすると、操作は成功しますが、元の Spark データベースは変更されません。
+サーバーレス SQL プールからそのようなデータベースにオブジェクトを作成したり、データベースを削除したりしようとすると、操作に失敗します。 サーバーレス SQL プールを介して元の Spark データベースに変更を加えることはできません。
 
 ## <a name="expose-a-spark-table-in-sql"></a>SQL での Spark テーブルの公開
 

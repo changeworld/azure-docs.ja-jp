@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107924"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555731"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -56,7 +56,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されないことに注意してください。
 
-さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph API に対するアクセス許可を除く) に "_同意する_" 権限を付与します。
+このロールでは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph API に対するアプリケーション アクセス許可を除く) に "_同意する_" 権限も付与されます。
 
 > [!IMPORTANT]
 > この例外は、"_他の_" アプリ (たとえば、Microsoft 以外のアプリや自分が登録したアプリなど) に対するアクセス許可には引き続き同意できるが、Azure AD 自体に対するアクセス許可には同意できないことを意味します。 アプリ登録の一環としてこれらのアクセス許可を "_要求_" することはできますが、 これらのアクセス許可を "_許可する_" (つまり、同意する) には、Azure AD 管理者が必要です。つまり、悪意のあるユーザーは、ディレクトリ全体に書き込み可能なアプリを作成してそれに同意し、そのアプリのアクセス許可を通じて自分自身をグローバル管理者に昇格させるなどの方法によって、自分のアクセス許可を簡単に昇格させることはできません。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 26fb70592a75910ae21d327e53569eda12dfea97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704896"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197372"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -96,6 +96,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 | 5 | シェル バンドルはルートとして実行する必要があります。または、オンボード中に 403 エラーが返されました。 `sudo` を使用してコマンドを実行してください。 |
 | 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent-*x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-* x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
 | 17 | OMS パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
+| 18 | OMSConfig パッケージのインストールに失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 19 | OMI パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 20 | SCX パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 21 | プロバイダー キットのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |

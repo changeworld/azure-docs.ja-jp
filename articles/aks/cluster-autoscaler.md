@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542643"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223144"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -110,7 +110,7 @@ az aks update \
   --max-count 5
 ```
 
-上の例では、 *myAKSCluster* の単一のノード プールにあるクラスター オートスケーラーを更新して、最小値を *1* ノード、最大値を *5* ノードにします。
+上の例では、*myAKSCluster* の単一のノード プールにあるクラスター オートスケーラーを更新して、最小値を *1* ノード、最大値を *5* ノードにします。
 
 > [!NOTE]
 > クラスター オートスケーラーでは、各ノード プールに設定された最小数と最大数に基づいてスケーリングが決定されますが、最小数または最大数が更新された後にそれが適用されません。 たとえば、現在のノード数が 3 のときに最小値を 5 に設定しても、プールはすぐに 5 にはスケールアップされません。 ノード プールの最小値が現在のノード数よりも大きい値になると、2 つの新しいノードを必要とするほど十分な数の、オートスケーラー イベントをトリガーするスケジュールできないポッドが存在するときに、この新しい最小または最大の設定が適用されます。 スケール イベントの後、新しい数の制限が適用されます。
@@ -130,14 +130,15 @@ az aks update \
 | scale-down-unneeded-time         | ノードが不要になってからスケールダウンの対象になるまでの時間                  | 10 分    |
 | scale-down-unready-time          | 準備ができていないノードが不要になってからスケールダウンの対象になるまでの時間         | 20 分    |
 | scale-down-utilization-threshold | 要求されたリソースの合計を容量で割った値として定義される、ノード利用レベル。これを下回るノードはスケールダウンの対象と見なすことができます。 | 0.5 |
-| max-graceful-termination-sec     | ノードのスケールダウンを試みるときに、クラスター オートスケーラーがポッドの終了を待機する最大秒数。 | 600 秒   |
+| max-graceful-termination-sec     | ノードのスケールダウンを試みるときに、クラスター オートスケーラーがポッドの終了を待機する最大秒数 | 600 秒   |
 | balance-similar-node-groups      | 類似のノード プールを検出し、その間でノード数のバランスを取ります                 | false         |
-| expander                         | スケールアップで使用するノード プール [expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) の種類 指定できる値: `most-pods`、`random`、`least-waste` | random | 
+| expander                         | スケールアップで使用するノード プール [expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) の種類 指定できる値: `most-pods`、`random`、`least-waste`、`priority` | random | 
 | skip-nodes-with-local-storage    | true の場合、EmptyDir や HostPath などのローカル ストレージを備えたポッドがあるノードは、クラスター オートスケーラーによって削除されなくなります | true |
 | skip-nodes-with-system-pods      | true の場合、ポッドのあるノードは、クラスター オートスケーラーによって kube-system から削除されなくなります (DaemonSet またはミラー ポッドを除く) | true | 
-| max-empty-bulk-delete            | 同時に削除できる空ノードの最大数。                      | 10 ノード      |
-| new-pod-scale-up-delay           | バーストまたはバッチ スケールのように、kubernetes スケジューラによってすべてのポッドがスケジュールされる前に CA を動作させたくないシナリオの場合、一定の期間に達する前のスケジュールされていないポッドを無視するように CA に指示できます。                                                                                                                | 10 秒    |
-| max-total-unready-percentage     | クラスター内の準備が完了していないノードの最大割合。 この割合を超えると、CA の動作は停止されます | 45% | 
+| max-empty-bulk-delete            | 同時に削除できる空ノードの最大数                       | 10 ノード      |
+| new-pod-scale-up-delay           | バーストまたはバッチ スケールのように、Kubernetes スケジューラによってすべてのポッドがスケジュールされる前に CA を動作させたくないシナリオの場合、一定の期間に達する前のスケジュールされていないポッドを無視するように CA に指示できます。                                                                                                                | 0 秒    |
+| max-total-unready-percentage     | クラスター内の準備が完了していないノードの最大割合。 この割合を超えると、CA の動作は停止されます | 45% |
+| max-node-provision-time          | オートスケーラーがノードがプロビジョニングされるのを待機する最大時間                           | 約 15 分    |   
 | ok-total-unready-count           | max-total-unready-percentage に関係なく、準備が完了していないノードの許可されている数            | 3 ノード       |
 
 > [!IMPORTANT]

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696232"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539688"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -55,7 +55,7 @@ ms.locfileid: "97696232"
     > [!Important]
     > テナント設定のページを表示するには、Power BI 管理者である必要があります。
 
-1. **[開発者向け設定]**  >  **[Allow service principals to use read-only Power BI admin APIs (Preview)]\(読み取り専用 Power BI Admin API の使用をサービス プリンシパルに許可 (プレビュー)\)** を選択します。
+1. **[管理者 API 設定]**  >  **[Allow service principals to use read-only Power BI admin APIs (Preview)]\(読み取り専用 Power BI Admin API の使用をサービス プリンシパルに許可 (プレビュー)\)** を選択します。
 1. **[特定のセキュリティ グループ]** を選択します。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="サービス プリンシパルが読み取り専用 Power BI Admin API のアクセス許可を取得できるようにする方法を示す画像":::

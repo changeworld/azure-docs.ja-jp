@@ -329,7 +329,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: MSAL.NET でのログ
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: キャッシュからトークンを取得する
               href: msal-net-acquire-token-silently.md
             - name: トークン キャッシュのシリアル化
@@ -371,7 +371,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: MSAL.js でのログ記録
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: iOS および macOS 用の MSAL
           items:
             - name: iOS および macOS 用の MSAL の違い
@@ -401,7 +401,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: iOS および macOS 用の MSAL でのログ記録
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: MSAL for Python
           items:
             - name: カスタム トークン キャッシュのシリアル化
@@ -414,7 +414,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: Python 用の MSAL でのログ記録
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: MSAL for Java
           items:
             - name: カスタム トークン キャッシュのシリアル化
@@ -429,7 +429,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: MSAL for Java でのログ記録
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: MSAL for Android
           items:
             - name: アカウントとテナント プロファイル
@@ -449,7 +449,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: Android 用の MSAL でのログ記録
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: トークンと要求のカスタマイズ
       items:
         - name: ロール要求の構成

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064421"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232337"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>チュートリアル:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -59,8 +59,8 @@ ms.locfileid: "98064421"
 
 このガイドでは、Microsoft Graph API に対してクエリを実行するボタンとサインアウトするボタンを表示するアプリケーションを作成します。また、呼び出しの結果を含むテキスト ボックスも表示します。
 
-> [!NOTE]
-> これを作成する代わりに、このサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)し、[アプリケーション登録](#register-your-application "アプリケーションの登録手順")の手順までスキップして、実行前にコード サンプルを構成します。
+> [!Tip]
+> このチュートリアルでビルドするプロジェクトの完成バージョンを確認する場合は、[GitHub からダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)できます。
 
 ### <a name="create-your-application"></a>アプリケーションの作成
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 UI スレッドでの UI 操作がサポートされている必要があります。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
+MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 UI スレッドでの UI 操作がサポートされている必要があります。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
 
 #### <a name="more-information-about-signing-out"></a>サインアウトに関する詳細情報<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ Microsoft Graph API は、ユーザーのプロファイルを読み込むため
 
 アプリケーションのコンテキストでユーザーの予定表にアクセスするには、`Calendars.Read` の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、`acquireTokenSilent` の呼び出しに `Calendars.Read` スコープを追加します。
 
-> [!NOTE]
-> スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
+スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
 
 ## <a name="known-issues"></a>既知の問題
 

@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - クラスターのアッ�
 description: この Azure Kubernetes Service (AKS) のチュートリアルでは、既存の AKS クラスターを最新の使用可能な Kubernetes バージョンにアップグレードする方法を学習します。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 517172b919552a24e9cb12bbaad14eb8cb71b3fd
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007536"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251337"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
@@ -37,22 +37,22 @@ ms.locfileid: "97007536"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-次の例では、現在のバージョンが *1.15.11* であることがわかります。また、 *[Upgrades]* の下に、利用可能なバージョンが示されています。
+次の例では、現在のバージョンが *1.18.10* であることがわかります。また、 *[Upgrades]* の下に、利用可能なバージョンが示されています。
 
 ```json
 {
   "agentPoolProfiles": null,
   "controlPlaneProfile": {
-    "kubernetesVersion": "1.15.11",
+    "kubernetesVersion": "1.18.10",
     ...
     "upgrades": [
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.8"
+        "kubernetesVersion": "1.19.1"
       },
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.9"
+        "kubernetesVersion": "1.19.3"
       }
     ]
   },
@@ -82,7 +82,7 @@ az aks upgrade \
 > [!NOTE]
 > 一度に 1 つのマイナー バージョンのみをアップグレードできます。 たとえば、*1.14.x* から *1.15.x* にアップグレードすることはできますが、*1.14.x* から *1.16.x* に直接アップグレードすることはできません。 *1.14.x* から *1.16.x* にアップグレードするには、まず *1.14.x* から *1.15.x* にアップグレードします。その後、*1.15.x* から *1.16.x* にもう一度アップグレードします。
 
-次の出力例の抜粋には、*1.16.8* にアップグレードした結果が示されています。 *kubernetesVersion* が *1.16.8* としてレポートされていることがわかります。
+次の出力例の抜粋には、*1.19.1* にアップグレードした結果が示されています。 *kubernetesVersion* が *1.19.1* としてレポートされていることがわかります。
 
 ```json
 {
@@ -100,7 +100,7 @@ az aks upgrade \
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.16.8",
+  "kubernetesVersion": "1.19.1",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -115,12 +115,12 @@ az aks upgrade \
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-次の出力例は、AKS クラスターで *KubernetesVersion 1.16.8* が実行されていることを示しています。
+次の出力例は、AKS クラスターで *KubernetesVersion 1.19.1* が実行されていることを示しています。
 
-```
+```output
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.19.1               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する

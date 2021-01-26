@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 639b810cbb99496f84b76fc96124145a019fb625
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705542"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541344"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>チュートリアル:Server Assessment を使用して物理サーバーを検出する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **要件** | **詳細**
 --- | ---
-**アプライアンス** | Azure Migrate アプライアンスを実行するマシンが必要です。 このマシンには以下が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。 _(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_<br/><br/> - 16-GB RAM、8 個の vCPU、約 80 GB のディスク記憶域<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
+**アプライアンス** | Azure Migrate アプライアンスを実行するマシンが必要です。 このマシンには以下が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。<br/> _(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_<br/><br/> - 16 GB RAM、8 個の vCPU、約 80 GB のディスク記憶域<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
 **Windows サーバー** | WinRM ポート 5985 (HTTP) で受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータをプルできるようにします。
 **Linux サーバー** | ポート22 (TCP) で受信接続を許可します。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Migrate プロジェクトを作成し、Azure Migrate アプライアンスを登録するには、以下を備えたアカウントが必要です。
 - Azure サブスクリプションに対する共同作成者または所有者のアクセス許可。
-- Azure Active Directory アプリを登録するためのアクセス許可。
+- Azure Active Directory (AAD) アプリを登録するためのアクセス許可。
 
 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。 サブスクリプションの所有者でない場合は、所有者と協力して、次のようにアクセス許可を割り当てます。
 
@@ -67,19 +67,20 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
     ![[ロールの割り当ての追加] ページを開いて、アカウントにロールを割り当てる](./media/tutorial-discover-physical/assign-role.png)
 
-7. ポータルでユーザーを検索し、 **[サービス]** で **[ユーザー]** を選択します。
-8. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
+1. アプライアンスを登録するには、お使いの Azure アカウントに **AAD アプリを登録するためのアクセス許可** が必要です。
+1. Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** に移動します。
+1. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-physical/register-apps.png)
 
-9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で **アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. [アプリの登録] 設定が [いいえ] に設定されている場合は、テナントまたはグローバル管理者に、必要なアクセス許可を割り当てるよう依頼してください。 テナントまたはグローバル管理者は、AAD アプリの登録を許可するために、**アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-physical-servers"></a>物理サーバーを準備する
 
 アプライアンスが物理サーバーへのアクセスに使用できるアカウントを設定します。
 
-- Windows サーバーの場合は、ドメイン参加済みのマシンにはドメイン アカウントを、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
-- Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
+- **Windows サーバー** の場合、ドメイン参加済みのマシンにはドメイン アカウントを、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+- **Linux サーバー** の場合、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
 
 **コマンド** | **目的**
 --- | --- |
@@ -102,23 +103,25 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
    ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-physical/new-project.png)
 
 7. **［作成］** を選択します
-8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。
-
-**Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
+8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
 
 ![既定で追加された Server Assessment ツールを示すページ](./media/tutorial-discover-physical/added-tool.png)
 
+> [!NOTE]
+> プロジェクトを既に作成している場合は、その同じプロジェクトを使用して追加のアプライアンスを登録することで、より多くのサーバーを検出して評価できます。[詳細をご覧ください](create-manage-projects.md#find-a-project)。
 
 ## <a name="set-up-the-appliance"></a>アプライアンスを設定する
 
-アプライアンスを設定するには、次のようにします。
-- アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
-- Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
-- ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
-- PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
-- アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
+Azure Migrate アプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンスのメタデータが Azure Migrate に送信されます。 このアプライアンスは、Azure Migrate プロジェクトからダウンロードできる PowerShell スクリプトを実行することで設定できます。
 
-### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate プロジェクト キーを生成する
+アプライアンスを設定するには、次のようにします。
+1. アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
+2. Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
+3. ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
+4. PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
+5. アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
+
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure Migrate プロジェクト キーを生成する
 
 1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
@@ -127,10 +130,9 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
 1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
-### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
+### <a name="2-download-the-installer-script"></a>2. インストーラー スクリプトをダウンロードする
 
 **[2:Azure Migrate アプライアンスをダウンロードします]** で、 **[ダウンロード]** をクリックします。
-
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
@@ -155,7 +157,7 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
         物理 (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
 インストーラー スクリプトでは以下が実行されます。
 
 - エージェントと、物理サーバーの検出と評価のための Web アプリケーションをインストールする。
@@ -184,13 +186,11 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
 
 問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
 [パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
-### <a name="configure-the-appliance"></a>アプライアンスを構成する
+### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
 
 アプライアンスを初めて設定します。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008486"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209833"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
@@ -103,7 +103,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ### <a name="how-to-get-consistent-ordering"></a>一貫した順序付けを実現する方法
 
-一貫した順序付けがアプリケーションの要件である場合は、フィールドに対して [ **`$orderby`** ](query-odata-filter-orderby-syntax.md) 式を明示的に定義できます。 結果の順序付けに使用できるのは、 **`sortable`** としてインデックスが付けられたフィールドだけです。 **`orderby`** パラメーターの値を指定して、フィールド名と、地理空間の値に対する [ **`geo.distance()` 関数**](query-odata-filter-orderby-syntax.md)の呼び出しを含める場合、 **`$orderby`** で一般的に使用されるフィールドには評価、日付、および場所のフィールドがあります。
+一貫した順序付けがアプリケーションの要件である場合は、フィールドに対して [ **`$orderby`** 式](query-odata-filter-orderby-syntax.md)を明示的に定義できます。 結果の順序付けに使用できるのは、 **`sortable`** としてインデックスが付けられたフィールドだけです。 **`orderby`** パラメーターの値を指定して、フィールド名と、地理空間の値に対する [ **`geo.distance()` 関数**](query-odata-filter-orderby-syntax.md)の呼び出しを含める場合、 **`$orderby`** で一般的に使用されるフィールドには評価、日付、および場所のフィールドがあります。
 
 一貫性を高める別の方法として、[カスタム スコアリング プロファイル](index-add-scoring-profiles.md)を使用する方法があります。 スコアリング プロファイルを使用すると、検索結果内の項目のランク付けをより細かく制御できるため、特定のフィールドで見つかる一致を向上させることができます。 追加のスコアリング ロジックにより、各ドキュメントの検索スコアがさらに離れるため、レプリカ間のわずかな違いのオーバーライドに役立ちます。 このアプローチには[ランク付けアルゴリズム](index-ranking-similarity.md)をお勧めします。
 

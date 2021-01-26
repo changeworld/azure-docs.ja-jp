@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 448f2b3e42e98d78652a005f5d1c11f55acdebb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021186"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180100"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>クイック スタート:Azure.Search.Documents クライアント ライブラリを使用して検索インデックスを作成する
 
@@ -396,9 +396,9 @@ Azure Cognitive Search における検索ドキュメントは、インデック
 
         response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
-        ```
+    ```
 
-1. In the second query, search on a term, add a filter that selects documents where Rating is greater than 4, and then sort by Rating in descending order. Filter is a boolean expression that is evaluated over [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) fields in an index. Filter queries either include or exclude values. As such, there is no relevance score associated with a filter query. 
+1. 2 つ目のクエリでは、語句を検索し、Rating が 4 を超えるドキュメントを選択するフィルターを追加したうえで、Rating の降順で並べ替えます。 フィルターは、インデックス内の [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) フィールドに対して評価されるブール式です。 フィルター クエリでは、値は包含されるか除外されるかのどちらかです。 そのため、フィルター クエリに関しては関連性スコアはありません。 
 
     ```csharp
     Console.WriteLine("Query #2: Search on 'hotels', filter on 'Rating gt 4', sort by Rating in descending order...\n");

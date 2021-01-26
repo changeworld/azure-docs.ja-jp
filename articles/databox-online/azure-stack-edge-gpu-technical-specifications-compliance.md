@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839947"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573328"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU を備えた Azure Stack Edge Pro の技術仕様とコンプライアンス 
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro デバイスには、コンピューティングとメモ�
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
 | CPU                     | 2 X Intel Xeon Silver 4214 (Cascade Lake) CPU            |
-| メモリ                  | 128 (8x16 GB) GB RAM                     |
+| メモリ                  | 128 (8x16 GB) GB RAM <br> Dell 互換 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC 登録済み RDIMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>コンピューティング アクセラレーション仕様
@@ -56,7 +56,7 @@ Azure Stack Edge Pro デバイスには、PORT1 から PORT6 までの 6 つの�
 
 | 仕様           | 説明                 |
 |-------------------------|----------------------------|
-|  ネットワーク インターフェイス    | **1 GbE インターフェイス x 2** - 1 つの管理インターフェイスのポート 1 は初期セットアップに使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセット時には、インターフェイスは静的 IP に戻ります。 <br>別のインターフェイスのポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>**25 GbE インターフェイス x 4** – これらのデータ インターフェイス (ポート 3 からポート 6) は、DHCP (既定) または静的 としてユーザーが構成できます。 これらは 10 GbE インターフェイスとしても動作可能です。  | 
+|  ネットワーク インターフェイス    | **1 GbE インターフェイス x 2** - 1 つの管理インターフェイスのポート 1 は初期セットアップに使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセット時には、インターフェイスは静的 IP に戻ります。 <br>別のインターフェイスのポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>**25 GbE インターフェイス x 4** – これらのデータ インターフェイス (ポート 3 からポート 6) は、DHCP (既定) または静的 としてユーザーが構成できます。 また、これらは 10 GbE インターフェイスとしても動作可能です。  | 
 
 Azure Stack Edge Pro デバイスには、次のネットワーク ハードウェアがあります。
 
@@ -68,7 +68,7 @@ Mellanox カードの詳細を次に示します。
 | パラメーター           | 説明                 |
 |-------------------------|----------------------------|
 | モデル    | ConnectX®-4 Lx EN ネットワーク インターフェイス カード                      |
-| モデルの説明               | 25GbE デュアルポート SFP28、PCIe 3.0 x8、ROHS R6                    |
+| モデルの説明               | 25 GbE デュアルポート SFP28、PCIe3.0 x8、ROHS R6                    |
 | デバイスの部品番号 (R640) | MCX4121A-ACAT  |
 | PSID (R640)           | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Azure Stack Edge Pro デバイスには、それぞれ 1.6 TB の容量を持つ
 |    ブート SATA ソリッドステート ドライブ (SSD)      |    1                  |
 |    ブート SSD 容量                       |    240 GB             |
 |    合計容量                          |    8.0 TB             |
-|    合計の使用可能な容量*                  |    約 4.19 TB          |
+|    使用可能な合計容量                   |    約 4.19 TB          |
+|    RAID 構成                      |    ミラーリングとパリティを組み合わせた記憶域スペース ダイレクト  |
 |    SAS コントローラー                          |    HBA330 12 Gbps     |
-
-
-*"*パリティの回復性と、内部使用のための領域予約の後。* "
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,7 +148,8 @@ Your Azure Stack Edge Pro device also contains the following hardware:
 |     エンクロージャ                           |     運用上の仕様                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    エアフロー                              |    システムのエアフローは前面から背面方向です。 システムは低圧の背面排気環境で運用する必要があります。 <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    最大高度 (運用時)        |    3048 メートル (10,000 フィート)、ディレーティング時の最大動作温度は[動作温度のディレーティング仕様](#operating-temperature-de-rating-specifications)によって決定されます。                                                                                |
+| イングレス プロテクション (IP)                 |    このような種類の室内用ラック マウント装置は、通常、イングレス プロテクション (電撃防止エンクロージャに対する固体および液体からの保護) のテストは実施されません。 製造元の安全性評価では、IPXO (イングレス プロテクションなし) と示されます。  |
+|    最大高度 (運用時)        |    3,048 メートル (10,000 フィート)。ディレーティング時の最大動作温度は、[動作温度のディレーティング仕様](#operating-temperature-de-rating-specifications)によって決定します。                                                                                |
 |    最大高度 (非運用時)    |    12,000 メーター (39,370 フィート)                                                                                                                                                                                         |
 |    衝撃 (運用時)                   |    6 つの方向で 11 ミリ秒間 6 G                                                                                                                                                                         |
 |    衝撃 (非運用時)               |    6 つの方向で 2 ミリ秒間 71 G                                                                                                                                                                           |

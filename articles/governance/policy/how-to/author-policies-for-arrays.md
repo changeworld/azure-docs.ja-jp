@@ -3,12 +3,12 @@ title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920459"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220747"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -16,10 +16,8 @@ ms.locfileid: "94920459"
 
 - 複数のオプションを提供する、[定義パラメーター](../concepts/definition-structure.md#parameters)の型
 - **in** または **notIn** の条件を使用した [ポリシー ルール](../concepts/definition-structure.md#policy-rule)の一部
-- [\[\*\] エイリアス](../concepts/definition-structure.md#understanding-the--alias)を評価して以下を評価するポリシー ルールの一部。
-  - **None**、**Any**、または **All** などのシナリオ
-  - **count** を使用した複雑なシナリオ
-- 既存の配列を置き換えたり追加する [append 効果](../concepts/effects.md#append)において
+- 条件を満たす配列メンバーの数をカウントするポリシー ルールの一部
+- 既存の配列を更新するための [append](../concepts/effects.md#append) と [modify](../concepts/effects.md#modify) 効果の中
 
 この記事では、Azure Policy によるそれぞれの使用について説明し、複数の定義例を紹介します。
 
@@ -99,48 +97,121 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 - Azure PowerShell:コマンドレット [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) とパラメーター **PolicyParameter**
 - REST API:要求本文の一部としての _PUT_ [作成](/rest/api/resources/policyassignments/create)操作において、**properties.parameters** プロパティの値として
 
-## <a name="array-conditions"></a>配列条件
+## <a name="using-arrays-in-conditions"></a>条件内で配列を使用する
 
-パラメーターの _array_
-**type** を一緒に使用できるポリシー ルール [条件](../concepts/definition-structure.md#conditions)は、`in` と `notIn` に限られます。 条件 `equals` を持つ次のポリシー定義を例として取り上げます。
+### <a name="in-and-notin"></a>`In` および `notIn`
+
+`in` と `notIn` の条件は、配列の値に対してのみ機能します。 これらは、配列内に値が存在するかどうかを確認します。 配列には、リテラル JSON 配列または配列パラメーターへの参照を指定できます。 以下に例を示します。
 
 ```json
 {
-  "policyRule": {
-    "if": {
-      "not": {
-        "field": "location",
-        "equals": "[parameters('allowedLocations')]"
-      }
-    },
-    "then": {
-      "effect": "audit"
-    }
-  },
-  "parameters": {
-    "allowedLocations": {
-      "type": "Array",
-      "metadata": {
-        "description": "The list of allowed locations for resources.",
-        "displayName": "Allowed locations",
-        "strongType": "location"
-      }
-    }
-  }
+      "field": "tags.environment",
+      "in": [ "dev", "test" ]
 }
 ```
 
-Azure portal からこのポリシー定義を作成しようとすると、次のエラー メッセージのようなエラーが発生します。
+```json
+{
+      "field": "location",
+      "notIn": "[parameters('allowedLocations')]"
+}
+```
 
-- 「The policy '{GUID}' could not be parameterized because of validation errors.(ポリシー「{GUID}」は検証エラーのためにパラメーター化できませんでした。) Please check if policy parameters are properly defined.(ポリシー パラメーターが正しく定義されていることを確認してください。) The inner exception 'Evaluation result of language expression '[parameters('allowedLocations')]' is type 'Array', expected type is 'String'.'.(内部例外「言語式「[parameters('allowedLocations')]」の評価結果は型「Array」ですが、予想された型は「String」です。)」
+### <a name="value-count"></a>値のカウント
 
-条件 `equals` の予想される **type** は _string_ です。 **allowedLocations** は **type** _array_ と定義されるので、ポリシー エンジンは、言語式を評価してエラーをスローします。 `in` および `notIn` の条件では、ポリシー エンジンは言語式で **type** _array_ を予想します。 このエラー メッセージを解決するには、`equals` を `in` または `notIn` のどちらかに変更します。
+[値のカウント](../concepts/definition-structure.md#value-count)式は、条件を満たしている配列メンバーの数をカウントします。 これにより、反復ごとに異なる値を使用して、同じ条件を複数回評価できます。 たとえば、次の条件では、リソース名がパターンの配列のいずれかのパターンと一致するかどうかを確認します。
+
+```json
+{
+    "count": {
+        "value": [ "test*", "dev*", "prod*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+式を評価するために、Azure Policy は `[ "test*", "dev*", "prod*" ]` の各メンバーに対して 1 回ずつ `where` 条件を 3 回評価し、`true` に評価された回数をカウントします。 各反復では、現在の配列メンバーの値が、`count.name`によって定義された `pattern` インデックス名とペアになります。 これでこの値は、特殊なテンプレート関数 `current('pattern')` を呼び出すことで `where` 条件内で参照できるようになります。
+
+| イテレーション | `current('pattern')` 戻り値 |
+|:---|:---|
+| 1 | `"test*"` |
+| 2 | `"dev*"` |
+| 3 | `"prod*"` |
+
+結果のカウントが 0 より大きい場合にのみ、条件は true になります。
+
+上記の条件をより汎用的にするには、リテラル配列ではなく、パラメーター参照を使用します。
+
+ ```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+**値のカウント** 式が他のどの **count** 式にも含まれていない場合、`count.name` は省略可能になり、`current()` 関数は引数を指定せずに使用できます。
+
+```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+**値のカウント** では複合オブジェクトの配列もサポートされるため、より複雑な条件を指定できます。 たとえば、次の条件では、各名前パターンに必要なタグ値が定義され、リソース名がパターンに一致するかどうかが確認されますが、必要なタグ値がありません。
+
+```json
+{
+    "count": {
+        "value": [
+            { "pattern": "test*", "envTag": "dev" },
+            { "pattern": "dev*", "envTag": "dev" },
+            { "pattern": "prod*", "envTag": "prod" },
+        ],
+        "name": "namePatternRequiredTag",
+        "where": {
+            "allOf": [
+                {
+                    "field": "name",
+                    "like": "[current('namePatternRequiredTag').pattern]"
+                },
+                {
+                    "field": "tags.env",
+                    "notEquals": "[current('namePatternRequiredTag').envTag]"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
+有用な例については、「[値のカウントの例](../concepts/definition-structure.md#value-count-examples)」を参照してください。
 
 ## <a name="referencing-array-resource-properties"></a>配列リソース プロパティの参照
 
 多くのユース ケースでは、評価されたリソースで配列プロパティを操作する必要があります。 一部のシナリオでは、配列全体を参照する必要があります (たとえば、その長さを確認するなど)。 それ以外では、各配列メンバーに条件を適用する必要があります (たとえば、すべてのファイアウォール規則によってインターネットからのアクセスがブロックされるようにします)。 Azure Policy がリソース プロパティを参照できるさまざまな方法と、これらの参照が配列プロパティを参照するときの動作を理解することは、これらのシナリオに対応する条件を記述するための鍵となります。
 
 ### <a name="referencing-resource-properties"></a>リソース プロパティの参照
+
 リソース プロパティは、[エイリアス](../concepts/definition-structure.md#aliases)を使用して Azure Policy によって参照できます。Azure Policy 内のリソース プロパティの値を参照する方法は 2 つあります。
 
 - [フィールド](../concepts/definition-structure.md#fields)条件を使用して、選択した **すべての** リソース プロパティが条件を満たしているかどうかを確認します。 例:
@@ -219,9 +290,9 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 }
 ```
 
-`objectArray` 内のすべての `property` プロパティの値が `"value"` と等しい場合、この条件は true です。
+`objectArray` 内のすべての `property` プロパティの値が `"value"` と等しい場合、この条件は true です。 その他の例については、「[その他の \[\*\] エイリアスの例](#appendix--additional--alias-examples)」を参照してください。
 
-`field()` 関数を使用して配列エイリアスを参照すると、返される値は、選択された値すべての配列になります。 この動作は、テンプレート関数をリソース プロパティ値に適用する機能である `field()` 関数の一般的なユース ケースが非常に限られていることを意味します。 この場合に使用できるテンプレート関数は、配列の引数を受け入れるものだけです。 たとえば、`[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` で配列の長さを取得することはできます。 ただし、テンプレート関数を各配列メンバーに適用し、それを目的の値と比較するといった、より複雑なシナリオは `count` 式を使用した場合にのみ可能です。 詳細については、「[count 式](#count-expressions)」を参照してください。
+`field()` 関数を使用して配列エイリアスを参照すると、返される値は、選択された値すべての配列になります。 この動作は、テンプレート関数をリソース プロパティ値に適用する機能である `field()` 関数の一般的なユース ケースが非常に限られていることを意味します。 この場合に使用できるテンプレート関数は、配列の引数を受け入れるものだけです。 たとえば、`[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` で配列の長さを取得することはできます。 ただし、テンプレート関数を各配列メンバーに適用し、それを目的の値と比較するといった、より複雑なシナリオは `count` 式を使用した場合にのみ可能です。 詳細については、「[フィールドのカウント式](#field-count-expressions)」を参照してください。
 
 要約として、次のリソース コンテンツの例と、さまざまなエイリアスによって返される選択された値を参照してください。
 
@@ -275,9 +346,9 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray')]` | `[[ 1, 2 ], [ 3, 4 ]]` |
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray[*]')]` | `[1, 2, 3, 4]` |
 
-## <a name="count-expressions"></a>Count 式
+### <a name="field-count-expressions"></a>フィールドのカウント式
 
-[Count](../concepts/definition-structure.md#count) 式は、ある条件を満たす配列メンバーの数をカウントし、その数を対象の値と比較します。 `Count` は、`field` 条件と比較して、配列の評価においてより直感的で幅広い用途があります。 の構文は次のとおりです。
+[フィールドのカウント](../concepts/definition-structure.md#field-count)式は、ある条件を満たす配列メンバーの数をカウントし、その数を対象の値と比較します。 `Count` は、`field` 条件と比較して、配列の評価においてより直感的で幅広い用途があります。 の構文は次のとおりです。
 
 ```json
 {
@@ -289,7 +360,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 }
 ```
 
-"where" 条件なしで使用する場合、`count` は単に配列の長さを返します。 前のセクションのリソース コンテンツの例では、`stringArray` には 3 つのメンバーが含まれるため、次の `count` 式は `true` に評価されます。
+`where` 条件なしで使用する場合、`count` は単に配列の長さを返します。 前のセクションのリソース コンテンツの例では、`stringArray` には 3 つのメンバーが含まれるため、次の `count` 式は `true` に評価されます。
 
 ```json
 {
@@ -314,6 +385,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 `count` の累乗が `where` 条件に含まれます。 これが指定されている場合、Azure Policy は配列メンバーを列挙し、それぞれを条件に対して評価し、`true` に評価された配列メンバーの数をカウントします。 具体的には、`where` 条件の評価の各反復で、Azure Policy は 1 つの配列メンバー ***i** _ を選択し、 _* **_i_*_ が配列の唯一のメンバーであるかのように_* `where` 条件に対してリソース コンテンツを評価します。 各反復で使用できる配列メンバーを 1 つだけにすると、個々の配列メンバーに複雑な条件を適用する方法を使用できます。
 
 例:
+
 ```json
 {
   "count": {
@@ -337,6 +409,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 したがって、`count` は `1` を返します。
 
 より複雑な式を次に示します。
+
 ```json
 {
   "count": {
@@ -366,6 +439,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 したがって、`count` は `1` を返します。
 
 (現在列挙されている配列メンバーのみに対する変更を含む) 要求内容 **全体** に対して `where` 式が評価されるという事実は、`where` 条件が配列外部のフィールドも参照できるということを意味します。
+
 ```json
 {
   "count": {
@@ -384,6 +458,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 | 2 | `tags.env` => `"prod"` | `true` |
 
 入れ子になった count 式も許可されています。
+
 ```json
 {
   "count": {
@@ -417,9 +492,33 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
 
-### <a name="the-field-function-inside-where-conditions"></a>`where` 条件内の `field()` 関数
+#### <a name="accessing-current-array-member-with-template-functions"></a>テンプレート関数を使用して現在の配列メンバーにアクセスする
 
-`where` 条件内で `field()` 関数が動作する方法は、次の概念に基づいています。
+テンプレート関数を使用する場合は、`current()` 関数を使用して、現在の配列メンバーの値、またはそのいずれかのプロパティの値にアクセスします。 現在の配列メンバーの値にアクセスするには、`count.field` で定義されたエイリアスまたはそのいずれかの子エイリアスを、引数として `current()` 関数に渡します。 以下に例を示します。
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+        "value": "[current('Microsoft.Test/resourceType/objectArray[*].property')]",
+        "like": "value*"
+    }
+  },
+  "equals": 2
+}
+
+```
+
+| イテレーション | `current()` 戻り値 | `where` の評価結果 |
+|:---|:---|:---|
+| 1 | `objectArray[*]` の最初のメンバーの `property` の値: `value1` | `true` |
+| 2 | `objectArray[*]` の最初のメンバーの `property` の値: `value2` | `true` |
+
+#### <a name="the-field-function-inside-where-conditions"></a>where 条件内の field 関数
+
+`field()` 関数は、**count** 式が **存在条件** の内部にない限り、現在の配列メンバーの値へのアクセスにも使用できます (`field()` 関数は常に、**if** 条件で評価されたリソースを参照します)。
+評価された配列を参照する場合の `field()` の動作は、次の概念に基づいています。
 1. 配列エイリアスは、すべての配列メンバーから選択された値のコレクションに解決されます。
 1. 配列エイリアスを参照する `field()` 関数は、選択された値を含む配列を返します。
 1. カウントされた配列エイリアスを `where` 条件内で参照すると、現在の反復で評価される配列メンバーから選択された 1 つの値を含むコレクションが返されます。
@@ -465,7 +564,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"b"` | `true` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"c"` | `true` |
 
-有用な例については、「[カウントの例](../concepts/definition-structure.md#count-examples)」を参照してください。
+有用な例については、「[フィールドのカウントの例](../concepts/definition-structure.md#field-count-examples)」を参照してください。
 
 ## <a name="modifying-arrays"></a>配列の変更
 
@@ -487,6 +586,59 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `addOrReplace` 操作による `modify` | Azure Policy により、各配列メンバーの既存の `action` プロパティが追加されるか、または置き換えられます。 |
 
 詳細については、「[Append の例](../concepts/effects.md#append-examples)」を参照してください。
+
+## <a name="appendix--additional--alias-examples"></a>付録 - その他の [*] エイリアスの例
+
+要求コンテンツ内の配列の 'すべて' または 'いずれか' のメンバーが条件を満たしているかどうかを確認するには、[フィールドのカウント式](#field-count-expressions)を使用することをお勧めします。 ただし、一部の単純な条件では、配列エイリアスを指定したフィールド アクセサーを使用することで同じ結果を得ることができます (「[配列メンバー コレクションの参照](#referencing-the-array-members-collection)」の説明を参照してください)。 これは、許容された **count** 式の制限を超えるポリシー ルールで役立つ可能性があります。 一般的なユース ケースの例を次に示します。
+
+下のシナリオ テーブルのポリシー ルール例:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            <-- Condition (see table below) -->
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+下のシナリオ テーブルの **IpRules** 配列は次のようになります。
+
+```json
+"ipRules": [
+    {
+        "value": "127.0.0.1",
+        "action": "Allow"
+    },
+    {
+        "value": "192.168.1.1",
+        "action": "Allow"
+    }
+]
+```
+
+下の条件例ごとに、`<field>` を `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` に置き換えます。
+
+以下の結果は、条件と、上記のポリシー ルール例および既存の値の配列とを組み合わせたものです。
+
+|条件 |結果 | シナリオ |説明 |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |なし |一致なし |1 つの配列要素が false (127.0.0.1 != 127.0.0.1) として、もう 1 つが true (127.0.0.1 != 192.168.1.1) として評価されるので、**notEquals** 条件が _false_ になり、効果はトリガーされません。 |
+|`{<field>,"notEquals":"10.0.4.1"}` |ポリシー効果 |一致なし |両方の配列要素が true (10.0.4.1 != 127.0.0.1 および 10.0.4.1 != 192.168.1.1) として評価されるので、**notEquals** 条件が _true_ になり、効果はトリガーされます。 |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |ポリシー効果 |1 つまたは複数の一致あり |1 つの配列要素が false (127.0.0.1 != 127.0.0.1) として、もう 1 つが true (127.0.0.1 != 192.168.1.1) として評価されるので、**notEquals** 条件は _false_ になります。 論理演算子は true (**not** _false_) として評価されるので、効果はトリガーされます。 |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |なし |1 つまたは複数の一致あり |両方の配列要素が true (10.0.4.1 != 127.0.0.1 および 10.0.4.1 != 192.168.1.1) として評価されるので、**notEquals** 条件は _true_ になります。 論理演算子は false (**not** _true_) として評価されるので、効果はトリガーされません。 |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |ポリシー効果 |一部一致なし |1 つの配列要素が true (127.0.0.1 == 127.0.0.1) として、もう 1 つが false (127.0.0.1 == 192.168.1.1) として評価されるので、**Equals** 条件が _false_ になります。 論理演算子は true (**not** _false_) として評価されるので、効果はトリガーされます。 |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |ポリシー効果 |一部一致なし |両方の配列要素が false (10.0.4.1 == 127.0.0.1 および 10.0.4.1 == 192.168.1.1) として評価されるので、**Equals** 条件は _false_ になります。 論理演算子は true (**not** _false_) として評価されるので、効果はトリガーされます。 |
+|`{<field>,"Equals":"127.0.0.1"}` |なし |すべて一致 |1 つの配列要素が true (127.0.0.1 == 127.0.0.1) として、もう 1 つが false (127.0.0.1 == 192.168.1.1) として評価されるので、**Equals** 条件が _false_ になり、効果はトリガーされません。 |
+|`{<field>,"Equals":"10.0.4.1"}` |なし |すべて一致 |両方の配列要素が false (10.0.4.1 == 127.0.0.1 および 10.0.4.1 == 192.168.1.1) として評価されるので、**Equals** 条件が _false_ になり、効果はトリガーされません。 |
 
 ## <a name="next-steps"></a>次のステップ
 

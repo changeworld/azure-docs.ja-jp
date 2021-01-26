@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825693"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251371"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -21,7 +21,7 @@ ms.locfileid: "97825693"
 > * アプリケーションを実行する Kubernetes ポッドを手動でスケーリングする
 > * アプリのフロントエンドを実行する自動スケーリング ポッドを構成する
 
-追加のチュートリアルでは、Azure Vote アプリケーションが新しいバージョンに更新されます。
+後続のチュートリアルでは、Azure 投票アプリケーションが新しいバージョンに更新されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -39,7 +39,7 @@ kubectl get pods
 
 次の出力例を見ると、フロントエンド ポッドとバックエンド ポッドが 1 つずつ存在することがわかります。
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -51,7 +51,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-AKS によって追加のポッドが作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、追加したポッドがクラスターで利用できる状態になります。
+AKS によって追加のポッドが正常に作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、ポッドがクラスターで利用可能になります。
 
 ```console
 kubectl get pods
@@ -131,7 +131,7 @@ spec:
 
 `kubectl apply` を使用して、`azure-vote-hpa.yaml` マニフェスト ファイルに定義されているオートスケーラーを適用します。
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 クラスターが正常にスケーリングされると、出力は次の例のようになります。
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,

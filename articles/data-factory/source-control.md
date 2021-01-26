@@ -208,7 +208,7 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 ### <a name="creating-feature-branches"></a>feature ブランチの作成
 
-データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main`) は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main`) は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして feature ブランチを作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
 
 ![新しいブランチを作成する](media/author-visually/new-branch.png)
 
@@ -253,7 +253,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 *   Data Factory に対する読み取りアクセス許可は、チーム メンバー全員に必要です。
 *   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある **リソース グループ** で、**Data Factory 共同作成者** ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
 
-コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されている pull request のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
+コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[feature ブランチの作成](source-control.md#creating-feature-branches)」に記載されている pull request のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault からのパスワードの使用
 
