@@ -101,7 +101,7 @@ az sql server firewall-rule create \
   	| jq
 ```
 
-### <a name="configure-a-azure-sql-database"></a>Azure SQL データベースを構成する
+### <a name="configure-a-azure-sql-database"></a>Azure SQL Database を構成する
 
 先ほど作成した Azure SQL Database サーバーは空です。 Java アプリケーションで使用できるデータベースはありません。 次のコマンドを実行し、`demo` という名前の新しいデータベースを作成します。
 
@@ -148,7 +148,7 @@ az sql db create \
 - Java 8
 - 最近の Java 用 SQL Server ドライバー
 
-### <a name="prepare-a-configuration-file-to-connect-to-azure-sql-database"></a>Azure SQL データベースに接続するための構成ファイルを準備する
+### <a name="prepare-a-configuration-file-to-connect-to-azure-sql-database"></a>Azure SQL Database に接続するための構成ファイルを準備する
 
 *src/main/resources/application.properties* ファイルを作成して、以下を追加します。
 
@@ -174,7 +174,7 @@ CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR
 
 ### <a name="connect-to-the-database"></a>データベースに接続する
 
-次に、JDBC を使用して Azure SQL データベースのデータを格納および取得する Java コードを追加します。
+次に、JDBC を使用して Azure SQL Database のデータを格納および取得する Java コードを追加します。
 
 次のコードを含んだ *src/main/java/DemoApplication.java* ファイルを作成します。
 
@@ -317,7 +317,7 @@ public class Todo {
 
 このクラスは、*schema.sql* スクリプトを実行する際に作成した `todo` テーブルにマップされるドメイン モデルです。
 
-### <a name="insert-data-into-azure-sql-database"></a>Azure SQL データベースにデータを挿入する
+### <a name="insert-data-into-azure-sql-database"></a>Azure SQL Database にデータを挿入する
 
 *src/main/java/DemoApplication.java* ファイルの main メソッドの後に、データベースにデータを挿入するための次のメソッドを追加します。
 
@@ -353,7 +353,7 @@ insertData(todo, connection);
 [INFO   ] Closing database connection
 ```
 
-### <a name="reading-data-from-azure-sql-database"></a>Azure SQL データベースからデータを読み取る
+### <a name="reading-data-from-azure-sql-database"></a>Azure SQL Database からデータを読み取る
 
 先ほど挿入したデータを読み取って、コードが正しく動作することを確認しましょう。
 
@@ -441,7 +441,7 @@ updateData(todo, connection);
 [INFO   ] Closing database connection 
 ```
 
-### <a name="deleting-data-in-azure-sql-database"></a>Azure SQL データベースからデータを削除する
+### <a name="deleting-data-in-azure-sql-database"></a>Azure SQL Database からデータを削除する
 
 最後に、先ほど挿入したデータを削除しましょう。
 
@@ -484,7 +484,7 @@ deleteData(todo, connection);
 
 ## <a name="conclusion-and-resources-clean-up"></a>結論とリソースのクリーンアップ
 
-お疲れさまでした。 JDBC を使用して、Azure SQL データベースでデータを格納および取得する Java アプリケーションを作成しました。
+お疲れさまでした。 JDBC を使用して、Azure SQL Database でデータを格納および取得する Java アプリケーションを作成しました。
 
 このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
 

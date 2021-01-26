@@ -110,7 +110,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 ロジック アプリによって添付ファイルが BLOB としてストレージ コンテナーに正しく保存されるかどうかを確認できるように、ストレージ アカウントに Storage Explorer を接続します。
 
-1. Microsoft Azure ストレージ エクスプローラーを起動します。
+1. Microsoft Azure Storage Explorer を起動します。
 
    Storage Explorer に、ストレージ アカウントへの接続を求めるメッセージが表示されます。
 

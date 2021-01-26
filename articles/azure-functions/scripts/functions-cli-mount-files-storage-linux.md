@@ -1,6 +1,6 @@
 ---
-title: ファイル共有を Python 関数アプリにマウントする - Azure CLI
-description: Azure CLI を使用して、サーバーレス Python 関数アプリを作成し、既存のファイル共有をマウントします。
+title: ファイル共有を Python Function App にマウントする - Azure CLI
+description: Azure CLI を使用して、サーバーレス Python Function App を作成し、既存のファイル共有をマウントします。
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
@@ -11,12 +11,12 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/08/2021
 ms.locfileid: "98035123"
 ---
-# <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Azure CLI を使用してファイル共有を Python 関数アプリにマウントする
+# <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Azure CLI を使用してファイル共有を Python Function App にマウントする
 
-この Azure Functions サンプル スクリプトでは、関数アプリを作成し、Azure Files に共有を作成します。 次に、関数からデータにアクセスできるように、共有をマウントします。  
+この Azure Functions サンプル スクリプトでは、Function App を作成し、Azure Files に共有を作成します。 次に、関数からデータにアクセスできるように、共有をマウントします。  
 
 >[!NOTE]
->作成された関数アプリは、Python バージョン 3.7 上で実行されます。 Azure Functions では、[Python バージョン 3.6 および 3.8](../functions-reference-python.md#python-version) もサポートされます。
+>作成された Function App は、Python バージョン 3.7 上で実行されます。 Azure Functions では、[Python バージョン 3.6 および 3.8](../functions-reference-python.md#python-version) もサポートされます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,8 +43,8 @@ ms.locfileid: "98035123"
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Function App を作成します。 |
 | [az storage share create](/cli/azure/storage/share#az-storage-share-create) | ストレージ アカウントに Azure Files 共有を作成します。 | 
 | [az storage directory create](/cli/azure/storage/directory#az-storage-directory-create) | 共有内にディレクトリを作成します。 |
-| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | 共有を関数アプリにマウントします。 |
-| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | 関数アプリにマウントされたファイル共有を表示します。 | 
+| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | 共有を Function App にマウントします。 |
+| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | Function App にマウントされたファイル共有を表示します。 | 
 
 ## <a name="next-steps"></a>次のステップ
 

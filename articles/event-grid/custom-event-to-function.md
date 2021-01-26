@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:カスタム イベントを Azure 関数に送信する - Event Grid
-description: クイック スタート:Azure Event Grid と Azure CLI (または Azure portal) を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 エンドポイントに Azure 関数を使用します。
+title: クイック スタート:カスタム イベントを Azure Functions に送信する - Event Grid
+description: クイック スタート:Azure Event Grid と Azure CLI (または Azure portal) を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 エンドポイントに Azure Functions を使用します。
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
@@ -10,13 +10,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/25/2020
 ms.locfileid: "95996349"
 ---
-# <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure 関数にカスタム イベントをルーティングする
+# <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure Functions にカスタム イベントをルーティングする
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 Azure Functions は、サポートされているイベント ハンドラーの 1 つです。 この記事では、Azure portal を使用し、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 イベントを Azure 関数に送信します。
+Azure Event Grid は、クラウドのイベント処理サービスです。 Azure Functions は、サポートされているイベント ハンドラーの 1 つです。 この記事では、Azure portal を使用し、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 イベントを Azure Functions に送信します。
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-azure-function"></a>Azure 関数の作成
+## <a name="create-azure-function"></a>Azure Functions の作成
 カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成します。 
 
 1. 「[関数アプリを作成する](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)」の手順に従って関数アプリを作成します。

@@ -49,7 +49,7 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 > * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 拡張機能](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 

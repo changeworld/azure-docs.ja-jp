@@ -196,6 +196,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 - [Storage PowerShell コマンドレット](/powershell/module/az.storage)
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
-- [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+- [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

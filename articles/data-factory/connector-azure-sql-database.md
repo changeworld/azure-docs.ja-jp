@@ -66,7 +66,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティを **AzureSqlDatabase** に設定する必要があります。 | はい |
-| connectionString | **connectionString** プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 <br/>Azure Key Vault にパスワードまたはサービス プリンシパル キーを設定することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
+| connectionString | **connectionString** プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 <br/>Azure Key Vault にパスワードまたはサービス プリンシパル キーを設定することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Azure Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | tenant | ドメイン名やテナント ID など、アプリケーションが存在するテナントの情報を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |

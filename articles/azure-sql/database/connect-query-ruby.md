@@ -46,11 +46,11 @@ ms.locfileid: "92672537"
   
 - ご使用のオペレーティング システムに対応した Ruby とそれに関連するソフトウェア:
   
-  - **macOS** :Homebrew、rbenv と ruby-build、Ruby、FreeTDS、TinyTDS をインストールします。 「[Create Ruby apps using SQL Server on macOS (macOS での SQL Server を使用した Ruby アプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)」の手順 1.2、1.3、1.4、1.5、2.1 をご覧ださい。
+  - **macOS**:Homebrew、rbenv と ruby-build、Ruby、FreeTDS、TinyTDS をインストールします。 「[Create Ruby apps using SQL Server on macOS (macOS での SQL Server を使用した Ruby アプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)」の手順 1.2、1.3、1.4、1.5、2.1 をご覧ださい。
   
-  - **Ubuntu** :Ruby に対する前提条件、rbenv と ruby-build、Ruby、FreeTDS、TinyTDS をインストールします。 「[Create Ruby apps using SQL Server on Ubuntu (Ubuntu での SQL Server を使用した Ruby アプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)」の手順 1.2、1.3、1.4、1.5、2.1 をご覧ださい。
+  - **Ubuntu**:Ruby に対する前提条件、rbenv と ruby-build、Ruby、FreeTDS、TinyTDS をインストールします。 「[Create Ruby apps using SQL Server on Ubuntu (Ubuntu での SQL Server を使用した Ruby アプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)」の手順 1.2、1.3、1.4、1.5、2.1 をご覧ださい。
   
-  - **Windows** :Ruby、Ruby Devkit、TinyTDS をインストールします。 「[Ruby 開発用に開発環境を構成する](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)」をご覧ください。
+  - **Windows**:Ruby、Ruby Devkit、TinyTDS をインストールします。 「[Ruby 開発用に開発環境を構成する](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)」をご覧ください。
 
 ## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
 
@@ -60,14 +60,14 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
-3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL マネージド インスタンスまたは Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL Managed Instance または Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 > [!NOTE]
 > Azure VM 上の SQL Server の接続情報については、[SQL Server インスタンスへの接続](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)に関するページをご覧ください。
 
 ## <a name="create-code-to-query-your-database-in-azure-sql-database"></a>Azure SQL Database のデータベースに対してクエリを実行するコードを作成する
 
-1. 任意のテキストまたはコード エディターで新しいファイル ( *sqltest.rb* ) を作成します。
+1. 任意のテキストまたはコード エディターで新しいファイル (*sqltest.rb*) を作成します。
 
 1. 次のコードを追加します。 `<server>`、`<database>`、`<username>`、`<password>` を Azure SQL Database のデータベースからの値で置き換えます。
 

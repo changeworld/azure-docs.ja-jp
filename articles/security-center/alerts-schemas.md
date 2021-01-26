@@ -44,7 +44,7 @@ ms.locfileid: "92789218"
 以下に示したのは、次の宛先に渡されるアラート イベントのスキーマです。
 
 - Security Center のワークフロー オートメーション内に構成された Azure Logic Apps インスタンス
-- Security Center の連続エクスポート機能を使用する Azure イベント ハブ
+- Security Center の連続エクスポート機能を使用する Azure Event Hub
 
 ワークフロー オートメーション機能の詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
 

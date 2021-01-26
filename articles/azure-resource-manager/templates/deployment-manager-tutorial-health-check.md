@@ -65,7 +65,7 @@ CreateADMRollout.Parameters.json を開き、**projectName** と **artifactSourc
 * Resource Manager テンプレートは、[https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json) にあります。 Azure 関数を作成するには、このテンプレートをデプロイします。
 * Azure 関数のソース コードの ZIP ファイルは、[https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
 
-Azure 関数をデプロイするには、 **[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次のスクリプトを貼り付けます。  コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
+Azure 関数をデプロイするには、 **[使ってみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次のスクリプトを貼り付けます。  コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName

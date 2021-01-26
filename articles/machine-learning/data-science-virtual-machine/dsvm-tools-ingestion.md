@@ -69,7 +69,7 @@ ms.locfileid: "93308985"
 | サンプルへのリンク      | [CosmosDB インポート データ](../../cosmos-db/import-data.md)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+## <a name="azure-storage-explorer"></a>Azure Azure Storage Explorer
 
 | カテゴリ | 値 |
 | ------------- | ------------- |

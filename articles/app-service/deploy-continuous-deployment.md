@@ -69,7 +69,7 @@ Bitbucket または GitHub の場合は、Azure App Service がお使いのリ�
    - GitHub の場合、ドロップダウンから、継続的にデプロイする **組織**、**リポジトリ**、および **ブランチ** を選択します。
      
      > [!NOTE]
-     > リポジトリが表示されない場合は、GitHub で Azure App Service を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]**  >  **[アプリケーション]**  >  **[Authorized OAuth Apps]\(認可された OAuth アプリ\)** の順に移動します。 **[Azure App Service]** を選択し、次に **[許可]\(Grant\)** を選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
+     > リポジトリが表示されない場合は、GitHub で Azure App Service を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[Settings]**  >  **[Applications]**  >  **[Authorized OAuth Apps]\(認可された OAuth アプリ\)** の順に移動します。 **[Azure App Service]** を選択し、次に **[許可]\(許可\)** を選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
      
    - Bitbucket の場合、継続的にデプロイする Bitbucket の **チーム**、**リポジトリ**、**ブランチ** を選択します。
      

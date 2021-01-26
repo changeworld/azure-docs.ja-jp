@@ -16,7 +16,7 @@ ms.locfileid: "97936789"
 
 この記事では、PowerShell を使用して Azure Functions を作成する方法について詳しく説明します。
 
-PowerShell Azure 関数 (関数) は、トリガーされた時点で実行される PowerShell スクリプトとして表されます。 それぞれの関数スクリプトには、関連する `function.json` ファイルが存在し、関数の動作 (トリガー方法や入力および出力パラメーターなど) が定義されています。 詳細については、[トリガーとバインディングに関する記事](functions-triggers-bindings.md)を参照してください。 
+PowerShell Azure Functions (関数) は、トリガーされた時点で実行される PowerShell スクリプトとして表されます。 それぞれの関数スクリプトには、関連する `function.json` ファイルが存在し、関数の動作 (トリガー方法や入力および出力パラメーターなど) が定義されています。 詳細については、[トリガーとバインディングに関する記事](functions-triggers-bindings.md)を参照してください。 
 
 他の種類の関数と同様、PowerShell スクリプト関数も、`function.json` ファイルで定義されているすべての入力バインディングの名前に対応したパラメーターを受け入れます。 また、関数を開始したトリガーに関する追加情報を含む `TriggerMetadata` パラメーターも渡されます。
 

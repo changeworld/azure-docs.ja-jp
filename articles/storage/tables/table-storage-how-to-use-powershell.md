@@ -38,7 +38,7 @@ Azure Table Storage は NoSQL データストアであり、これを使用す�
 > PowerShell からこの Azure 機能を使用するには、`Az` モジュールがインストールされている必要があります。 `AzTable` の現在のバージョンは、以前の AzureRM モジュールと互換性がありません。
 > 必要に応じて、[Az モジュールの最新のインストール手順](/powershell/azure/install-az-ps)に従ってください。
 
-Azure PowerShell をインストールまたは更新した後は、エンティティを管理するコマンドを含む **AzTable** モジュールをインストールする必要があります。 このモジュールをインストールするには、PowerShell を管理者として実行し、 **Install-Module** コマンドを使用します。
+Azure PowerShell をインストールまたは更新した後は、エンティティを管理するコマンドを含む **AzTable** モジュールをインストールする必要があります。 このモジュールをインストールするには、PowerShell を管理者として実行し、**Install-Module** コマンドを使用します。
 
 > [!IMPORTANT]
 > モジュール名の互換性の理由から、PowerShell ギャラリーではこれと同じモジュールが古い名前 `AzureRmStorageTables` でまだ公開されています。 このドキュメントでは、新しい名前のみを参照します。
@@ -57,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>場所の一覧を取得する
 
-使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 これらの例では、 **eastus** を使用しています。 後で使用するために、この値を変数 **location** に保存します。
+使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 これらの例では、**eastus** を使用しています。 後で使用するために、この値を変数 **location** に保存します。
 
 ```powershell
 Get-AzLocation | select Location
@@ -68,7 +68,7 @@ $location = "eastus"
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、 *pshtablesrg* という名前のリソース グループを *eastus* リージョンに作成しています。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、*pshtablesrg* という名前のリソース グループを *eastus* リージョンに作成しています。
 
 ```powershell
 $resourceGroup = "pshtablesrg"
@@ -165,4 +165,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [PowerShell - AzureRmStorageTable/AzTable PS モジュール v2.0 からの Azure テーブルの操作](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
-* [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

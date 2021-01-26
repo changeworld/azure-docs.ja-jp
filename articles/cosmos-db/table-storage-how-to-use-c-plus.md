@@ -99,7 +99,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、 *Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
+Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、*Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
 
 ### <a name="retrieve-your-connection-string"></a>接続文字列の取得
 
@@ -508,7 +508,7 @@ Visual Studio Community エディションの場合、インクルード ファ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 Azure Storage および Azure Cosmos DB の Table API について詳しくは、次のリンクを参照してください。
 

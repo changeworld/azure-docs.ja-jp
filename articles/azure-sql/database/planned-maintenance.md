@@ -21,7 +21,7 @@ ms.locfileid: "91333037"
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL データベースおよび Azure SQL Managed Instance 内のデータベースに計画メンテナンス イベントを準備する方法について説明します。
+Azure SQL Database および Azure SQL Managed Instance 内のデータベースに計画メンテナンス イベントを準備する方法について説明します。
 
 ## <a name="what-is-a-planned-maintenance-event"></a>計画メンテナンス イベントとは
 

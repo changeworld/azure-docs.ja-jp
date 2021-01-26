@@ -142,7 +142,7 @@ ContainerRegistryLoginEvents
 
 ログを Log Analytics に送信することに加えて、または別の方法として、Azure ストレージ アカウントをログの保存先として選択するのが一般的です。 ログを Azure Storage にアーカイブするには、診断設定を使用してアーカイブを有効にする前に、ストレージ アカウントを作成します。
 
-また、診断ログ イベントを [Azure イベント ハブ](../event-hubs/event-hubs-about.md)にストリーム配信することもできます。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
+また、診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-about.md)にストリーム配信することもできます。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

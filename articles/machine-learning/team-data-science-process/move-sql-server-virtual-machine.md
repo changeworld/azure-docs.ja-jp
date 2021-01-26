@@ -22,7 +22,7 @@ ms.locfileid: "93320334"
 
 この記事では、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。 このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
-Machine Learning 用に Azure SQL Database にデータを移動するためのオプションに関する説明は、「 [Azure Machine Learning 用に Azure SQL データベースにデータを移動する](move-sql-azure.md)」を参照してください。
+Machine Learning 用に Azure SQL Database にデータを移動するためのオプションに関する説明は、「 [Azure Machine Learning 用に Azure SQL Database にデータを移動する](move-sql-azure.md)」を参照してください。
 
 次の表は、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションをまとめたものです。
 
@@ -41,8 +41,8 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 ## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
-* **Azure サブスクリプション** 。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント** 。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+* **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 * **Azure VM 上に SQL Server** がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/overview.md)」を参照してください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
@@ -58,7 +58,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 > [!NOTE]
 > **BCP 用のデータの場所**  
-> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../../storage/common/storage-use-azcopy-v10.md)、[Azure ストレージ エクスプローラー](https://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
+> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../../storage/common/storage-use-azcopy-v10.md)、[Azure Storage Explorer](https://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
 >
 >
 

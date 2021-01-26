@@ -34,7 +34,7 @@ ms.locfileid: "92783880"
 アプリケーションは実行時に接続文字列にアクセスして、Azure Storage に対する要求を承認する必要があります。 接続文字列は次の方法で保存できます。
 
 * 接続文字列は、環境変数に保存することができます。
-* デスクトップまたはデバイスで実行するアプリケーションの場合は、 **app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
+* デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
 * Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](/previous-versions/azure/reference/ee758710(v=azure.100))に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新して [Azurite ストレージ エミュレーター](../common/storage-use-azurite.md)とクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
@@ -57,10 +57,10 @@ Azure Storage アカウントへの接続文字列は、次の形式で作成し
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、" *HTTPS の使用を強くお勧めします* "。
+Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、"*HTTPS の使用を強くお勧めします*"。
 
 > [!TIP]
-> お使いのストレージ アカウントの接続文字列は、[Azure Portal](https://portal.azure.com) に見つかります。 ストレージ アカウントのメニュー ブレードの **設定** > 、 **アクセス キー** の順に移動して、両方のプライマリおよびセカンダリのアクセス キーの接続文字列を確認できます。
+> お使いのストレージ アカウントの接続文字列は、[Azure Portal](https://portal.azure.com) に見つかります。 ストレージ アカウントのメニュー ブレードの **設定** > 、**アクセス キー** の順に移動して、両方のプライマリおよびセカンダリのアクセス キーの接続文字列を確認できます。
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Shared Access Signature を使用して接続文字列を作成する
@@ -142,5 +142,5 @@ EndpointSuffix=core.chinacloudapi.cn;
 ## <a name="next-steps"></a>次のステップ
 
 * [ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)
-* [Azure ストレージ エクスプローラー](storage-explorers.md)
+* [Azure Storage Explorer](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)

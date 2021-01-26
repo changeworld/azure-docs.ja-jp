@@ -43,7 +43,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 
 テンプレートをデプロイすることで、ExpressRoute 回線を作成するには:
 
-1. 次のコード ブロックの **[試してみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -63,12 +63,12 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU レベル**によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 *Local*、*Standard、または *Premium* を指定できます。 SKU を *[Standard] または [Premium]* から *[Local]* に変更することはできません。
-   * **SKU ファミリ**によって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
-   * **ピアリングの場所**とは、Microsoft とピアリングしている物理的な場所です。
+   * **SKU レベル** によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 *Local*、*Standard、または *Premium* を指定できます。 SKU を *[Standard] または [Premium]* から *[Local]* に変更することはできません。
+   * **SKU ファミリ** によって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
+   * **ピアリングの場所** とは、Microsoft とピアリングしている物理的な場所です。
 
      > [!IMPORTANT]
-     > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに**リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
+     > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに **リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
 
     リソース グループ名は、**rg** が追加された Service Bus 名前空間名です。
 
@@ -88,8 +88,8 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 次の情報をメモしておきます。
 
 * ExpressRoute 回線からすべての仮想ネットワークのリンクを解除する必要があります。 この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
-* ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が**プロビジョニング中**または**プロビジョニング済み**の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
-* サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が**未プロビジョニング**に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
+* ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が **プロビジョニング中** または **プロビジョニング済み** の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
+* サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が **未プロビジョニング** に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
 
 ExpressRoute 回線は、次の PowerShell コマンドを実行して削除できます。
 

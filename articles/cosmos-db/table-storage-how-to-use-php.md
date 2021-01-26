@@ -21,7 +21,7 @@ ms.locfileid: "93079633"
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは PHP で記述されており、[Azure Storage Table PHP クライアント ライブラリ][download]を使います。 紹介するシナリオは、 **テーブルの作成と削除** 、 **テーブルのエンティティの挿入、削除、および照会** などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
+この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは PHP で記述されており、[Azure Storage Table PHP クライアント ライブラリ][download]を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会** などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
@@ -65,7 +65,7 @@ Storage Table service API または Azure Cosmos DB API を使うには、次の
 * [require_once][require_once] ステートメントを使ってオートローダー ファイルを参照する
 * 使うクラスを参照する
 
-次の例では、オートローダー ファイルをインクルードし、 **TableRestProxy** クラスを参照する方法を示します。
+次の例では、オートローダー ファイルをインクルードし、**TableRestProxy** クラスを参照する方法を示します。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -102,7 +102,7 @@ Azure Cosmos DB テーブル クライアントをインスタンス化するに
 $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-Azure Table service クライアントまたは Azure Cosmos DB クライアントを作成するには、 **TableRestProxy** クラスを使う必要があります。 次のようにすることができます。
+Azure Table service クライアントまたは Azure Cosmos DB クライアントを作成するには、**TableRestProxy** クラスを使う必要があります。 次のようにすることができます。
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使って複数の外部ソースに対して接続文字列を確認する
@@ -149,7 +149,7 @@ catch(ServiceException $e){
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
-エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、 **TableRestProxy->insertEntity** に渡します。 エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。 これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 システムは `PartitionKey` を使って多くのストレージ ノードにテーブルのエンティティを自動的に配布します。 `PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
+エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。 エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。 これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 システムは `PartitionKey` を使って多くのストレージ ノードにテーブルのエンティティを自動的に配布します。 `PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -185,7 +185,7 @@ catch(ServiceException $e){
 
 テーブルのプロパティと型については、「[Table サービス データ モデルについて][table-data-model]」を参照してください。
 
-**TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、 **insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。 これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。 各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。 エンティティが既に存在する場合、 **insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、 **insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。 次の例は、 **insertOrMergeEntity** を使用する方法を示しています。 `PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。 ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。 `Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。 これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
+**TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、**insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。 これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。 各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。 エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。 次の例は、**insertOrMergeEntity** を使用する方法を示しています。 `PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。 ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。 `Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。 これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -259,7 +259,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>パーティション内のすべてのエンティティを取得する
 
-エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルとエンティティのクエリ][filters]」を参照してください)。 パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition_name* " を使用します。 次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
+エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルとエンティティのクエリ][filters]」を参照してください)。 パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition_name*" を使用します。 次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -367,7 +367,7 @@ foreach($entities as $entity){
 
 ## <a name="update-an-entity"></a>エンティティを更新する
 
-既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使った後、 **TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null** に設定して、プロパティを削除できることに注意してください。
+既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使った後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null** に設定して、プロパティを削除できることに注意してください。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -427,11 +427,11 @@ catch(ServiceException $e){
 }
 ```
 
-コンカレンシーのチェック用に、削除するエンティティの Etag を設定できます。そのためには、 **DeleteEntityOptions-&gt;setEtag** メソッドを使い、 **DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
+コンカレンシーのチェック用に、削除するエンティティの Etag を設定できます。そのためには、**DeleteEntityOptions-&gt;setEtag** メソッドを使い、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
 
 ## <a name="batch-table-operations"></a>バッチ テーブル処理
 
-**TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。 ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、 **BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。 処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。
+**TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。 ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、**BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。 処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。
 
 * **addInsertEntity** (insertEntity 処理を追加)
 * **addUpdateEntity** (updateEntity 処理を追加)
@@ -521,7 +521,7 @@ catch(ServiceException $e){
 
 これで、Azure Table service と Azure Cosmos DB の基本を学習できました。さらに詳しく学習するには、次のリンク先をご覧ください。
 
-* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 * [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)
 

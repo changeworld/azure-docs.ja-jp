@@ -42,8 +42,8 @@ Azure Storage または Azure Cosmos DB を使用するには、Ruby Azure パ�
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems を使用してパッケージを取得する
 
-1. **PowerShell** (Windows)、 **ターミナル** (Mac)、 **Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
-2. コマンド ウィンドウに「 **gem install azure-storage-table** 」と入力して、gem と依存関係をインストールします。
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
+2. コマンド ウィンドウに「**gem install azure-storage-table**」と入力して、gem と依存関係をインストールします。
 
 ### <a name="import-the-package"></a>パッケージをインポートする
 
@@ -59,7 +59,7 @@ Azure ストレージ アカウントまたは Azure Cosmos DB Table API アカ�
 
 ### <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
 
-Azure Storage モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、 **Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+Azure Storage モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
@@ -85,7 +85,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 
 ## <a name="create-a-table"></a>テーブルを作成する
 
-**Azure::Storage::Table::TableService** オブジェクトを使用して、テーブルとエンティティを操作できます。 テーブルを作成するには、 **create_table()** メソッドを使用します。 次の例では、テーブルを作成し、既に存在している場合はエラーを出力します。
+**Azure::Storage::Table::TableService** オブジェクトを使用して、テーブルとエンティティを操作できます。 テーブルを作成するには、**create_table()** メソッドを使用します。 次の例では、テーブルを作成し、既に存在している場合はエラーを出力します。
 
 ```ruby
 azure_table_service = Azure::Storage::Table::TableService.new
@@ -98,7 +98,7 @@ end
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
-エンティティを追加するには、エンティティのプロパティを定義するハッシュ オブジェクトを最初に作成します。 すべてのエンティティについて、 **PartitionKey** と **RowKey** を指定する必要があることに注意してください。 これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 Azure Storage では、テーブルのエンティティを多数のストレージ ノードに自動的に配布するために **PartitionKey** を使用します。 **PartitionKey** が同じエンティティは同じノードに格納されます。 **RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
+エンティティを追加するには、エンティティのプロパティを定義するハッシュ オブジェクトを最初に作成します。 すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることに注意してください。 これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 Azure Storage では、テーブルのエンティティを多数のストレージ ノードに自動的に配布するために **PartitionKey** を使用します。 **PartitionKey** が同じエンティティは同じノードに格納されます。 **RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
 
 ```ruby
 entity = { "content" => "test entity",
@@ -115,7 +115,7 @@ azure_table_service.insert_entity("testtable", entity)
 * **insert_or_merge_entity():** 既存のエンティティを置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 * **insert_or_replace_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-次の例は、 **update_entity()** を使用してエンティティを更新する方法を示しています。
+次の例は、**update_entity()** を使用してエンティティを更新する方法を示しています。
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -123,7 +123,7 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-**update_entity()** と **merge_entity()** では、更新されるエンティティが存在しない場合、更新操作は失敗します。 したがって、既に存在しているかどうかに関係なくエンティティを格納するには、 **insert_or_replace_entity()** または **insert_or_merge_entity()** を使用する必要があります。
+**update_entity()** と **merge_entity()** では、更新されるエンティティが存在しない場合、更新操作は失敗します。 したがって、既に存在しているかどうかに関係なくエンティティを格納するには、**insert_or_replace_entity()** または **insert_or_merge_entity()** を使用する必要があります。
 
 ## <a name="work-with-groups-of-entities"></a>エンティティのグループを操作する
 
@@ -141,7 +141,7 @@ results = azure_table_service.execute_batch(batch)
 
 ## <a name="query-for-an-entity"></a>エンティティを照会する
 
-テーブル内のエンティティを照会するには、 **get_entity()** メソッドを使用して、テーブル名、 **PartitionKey** 、および **RowKey** を渡します。
+テーブル内のエンティティを照会するには、**get_entity()** メソッドを使用して、テーブル名、**PartitionKey**、および **RowKey** を渡します。
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
@@ -150,7 +150,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 
 ## <a name="query-a-set-of-entities"></a>エンティティのセットを照会する
 
-テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、 **query_entities()** メソッドを使用します。 次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
+テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query_entities()** メソッドを使用します。 次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -173,7 +173,7 @@ result, token = azure_table_service.query_entities("testtable", query)
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
 
-エンティティを削除するには、 **delete_entity()** メソッドを使用します。 目的のエンティティを含んでいるテーブルの名前、PartitionKey、および エンティティの RowKey を渡します。
+エンティティを削除するには、**delete_entity()** メソッドを使用します。 目的のエンティティを含んでいるテーブルの名前、PartitionKey、および エンティティの RowKey を渡します。
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")
@@ -181,7 +181,7 @@ azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
 ## <a name="delete-a-table"></a>テーブルを削除する
 
-テーブルを削除するには、 **delete_table()** を使用して、削除するテーブルの名前を渡します。
+テーブルを削除するには、**delete_table()** を使用して、削除するテーブルの名前を渡します。
 
 ```ruby
 azure_table_service.delete_table("testtable")
@@ -189,6 +189,6 @@ azure_table_service.delete_table("testtable")
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Ruby デベロッパー センター](https://azure.microsoft.com/develop/ruby/)
 * [Microsoft Azure Storage Table Client Library for Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table)

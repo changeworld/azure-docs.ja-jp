@@ -39,15 +39,15 @@ ms.locfileid: "96019958"
 
 * .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-それでは、GitHub からサンプル .NET アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos アカウントに格納されているデータに対して一括操作を実行します。 アプリケーションを複製するために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
+それでは、GitHub からサンプル .NET アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos アカウントに格納されているデータに対して一括操作を実行します。 アプリケーションをクローンするために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
 
 ```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-複製されたリポジトリには、2 つのサンプル "BulkImportSample" と "BulkUpdateSample" が含まれています。 どちらかのサンプル アプリケーションを開き、App.config ファイルの接続文字列を Azure Cosmos DB アカウントの接続文字列に更新し、ソリューションをビルドして実行します。
+クローンされたリポジトリには、2 つのサンプル "BulkImportSample" と "BulkUpdateSample" が含まれています。 どちらかのサンプル アプリケーションを開き、App.config ファイルの接続文字列を Azure Cosmos DB アカウントの接続文字列に更新し、ソリューションをビルドして実行します。
 
 "BulkImportSample" アプリケーションでは、ランダムなドキュメントを生成し、Azure Cosmos アカウントに一括インポートします。 "BulkUpdateSample" アプリケーションでは、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたドキュメントを一括更新します。 次のセクションでは、これらのサンプル アプリケーションのコードを確認します。
 

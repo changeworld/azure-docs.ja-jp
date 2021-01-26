@@ -52,7 +52,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 
 さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
 | [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
@@ -73,7 +73,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 - Azure SQL Database のサブスクライバーは、どのリージョンであってもかまいません。  
 - SQL Server 上の単一パブリケーションで、Azure SQL Database と、SQL Server (オンプレミスの SQL Server と Azure 仮想マシンの SQL Server) の両方のサブスクライバーをサポートできます。  
 - レプリケーションの管理、監視、およびトラブルシューティングは、Azure SQL Database からではなく SQL Server から実行する必要があります。  
-- SQL Database については、 **sp_addsubscription** で `@subscriber_type = 0` のみがサポートされています。  
+- SQL Database については、**sp_addsubscription** で `@subscriber_type = 0` のみがサポートされています。  
 - Azure SQL Database では、双方向、即時、更新可能、またはピア ツー ピアのレプリケーションはサポートされていません。
 
 ## <a name="replication-architecture"></a>レプリケーション アーキテクチャ  
@@ -85,7 +85,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 ### <a name="typical-replication-scenario"></a>一般的なレプリケーション シナリオ  
 
 1. SQL Server データベースで、トランザクション レプリケーション パブリケーションを作成します。  
-2. SQL Server で、 **新しいサブスクリプション ウィザード** または Transact-SQL ステートメントを使用して、Azure SQL Database のサブスクリプションに対するプッシュを作成します。  
+2. SQL Server で、**新しいサブスクリプション ウィザード** または Transact-SQL ステートメントを使用して、Azure SQL Database のサブスクリプションに対するプッシュを作成します。  
 3. Azure SQL Database の単一およびプールされたデータベースでは、初期データ セットはスナップショットです。このスナップショットは、スナップショット エージェントによって作成され、ディストリビューション エージェントによって配布および適用されます。 SQL Managed Instance パブリッシャーでは、データベース バックアップを使用して Azure SQL Database サブスクライバーをシードすることもできます。
 
 ### <a name="data-migration-scenario"></a>データ移行シナリオ  
@@ -127,7 +127,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 パブリケーションおよびプッシュ サブスクリプションを作成します。 詳細については、次を参照してください。
   
 - [パブリケーションを作成する](/sql/relational-databases/replication/publish/create-a-publication)
-- [プッシュ サブスクリプションを作成する](/sql/relational-databases/replication/create-a-push-subscription/)。サーバー名をサブスクライバーとして ( **N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL Database 名を宛先データベースとして ( **AdventureWorks** など) 使用します。  
+- [プッシュ サブスクリプションを作成する](/sql/relational-databases/replication/create-a-push-subscription/)。サーバー名をサブスクライバーとして (**N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用します。  
 
 ## <a name="see-also"></a>参照  
 

@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:フェールオーバー グループに SQL Managed Instance を追加する
 titleSuffix: Azure SQL Managed Instance
-description: このチュートリアルでは、プライマリとセカンダリの Azure SQL マネージド インスタンスの間にフェールオーバー グループを作成する方法について説明します。
+description: このチュートリアルでは、プライマリとセカンダリの Azure SQL Managed Instance の間にフェールオーバー グループを作成する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: high-availability
@@ -69,7 +69,7 @@ Azure portal を使用して、リソース グループとプライマリ マ�
 
     ![SQL マネージド インスタンスを選択する](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. **[Create Azure SQL Managed Instance]\(Azure SQL マネージド インスタンスの作成\)** ページの **[基本]** タブで、以下を実行します。
+1. **[Create Azure SQL Managed Instance]\(Azure SQL Managed Instance の作成\)** ページの **[基本]** タブで、以下を実行します。
     1. **[プロジェクトの詳細]** で、ドロップダウンから自分の **サブスクリプション** を選び、リソース グループを **新規作成** することを選択します。 「`myResourceGroup`」など、リソース グループの名前を入力します。 
     1. **[SQL Managed Instance Details]\(SQL マネージド インスタンスの詳細\)** で、マネージド インスタンスの名前と、マネージド インスタンスをデプロイするリージョンを指定します。 **[コンピューティングとストレージ]** は既定値のままにしておきます。 
     1. **[管理者アカウント]** で、`azureuser` などの管理者ログインと、複雑な管理者パスワードを指定します。 
@@ -463,7 +463,7 @@ Azure portal を使用してセカンダリ マネージド インスタンス�
 
     ![SQL マネージド インスタンスを選択する](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. **[Create Azure SQL Managed Instance]\(Azure SQL マネージド インスタンスの作成\)** ページの **[基本]** タブで、セカンダリ マネージド インスタンスを構成するために必要なフィールドに入力します。 
+1. **[Create Azure SQL Managed Instance]\(Azure SQL Managed Instance の作成\)** ページの **[基本]** タブで、セカンダリ マネージド インスタンスを構成するために必要なフィールドに入力します。 
 
    次の表には、セカンダリ マネージド インスタンスに必要な値が示されています。
  

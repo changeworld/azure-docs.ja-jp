@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/10/2020
 ms.locfileid: "97027562"
 ---
-# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>チュートリアル:個々の Azure サブスクリプションの請求書を確認する
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>チュートリアル:個々の Azure サブスクリプションの課金書を確認する
 
 この記事では、従量課金制または Visual Studio Azure サブスクリプションの請求書について説明します。 請求期間ごとに、通常は電子メールで請求書を受け取ります。 請求書は、Azure の請求を記載したものです。 請求書と同じコスト情報を、Azure portal でも利用できます。 このチュートリアルでは、請求書を、詳細な毎日の使用状況ファイルおよび Azure portal でのコスト分析と比較します。
 

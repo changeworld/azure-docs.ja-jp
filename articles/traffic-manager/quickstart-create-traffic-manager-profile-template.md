@@ -43,7 +43,7 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -68,10 +68,10 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
     テンプレートのデプロイによって、2 つの外部エンドポイントがあるプロファイルが作成されます。 **Endpoint1** は、`www.microsoft.com` のターゲット エンドポイントを使用し、その場所は **北ヨーロッパ** です。 **Endpoint2** は、`docs.microsoft.com` のターゲット エンドポイントを使用し、その場所は **米国中南部** です。
 
-    リソース グループの名前は、 **rg** が付加されたプロジェクト名です。
+    リソース グループの名前は、**rg** が付加されたプロジェクト名です。
 
     > [!NOTE]
-    > テンプレートが正常にデプロイされるためには、 **uniqueDNSname** がグローバルに一意の名前である必要があります。 デプロイが失敗した場合は、手順 1. からやり直します。
+    > テンプレートが正常にデプロイされるためには、**uniqueDNSname** がグローバルに一意の名前である必要があります。 デプロイが失敗した場合は、手順 1. からやり直します。
 
     テンプレートのデプロイには数分かかります。 完了すると、次のように出力されます。
 

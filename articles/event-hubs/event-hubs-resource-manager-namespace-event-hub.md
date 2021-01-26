@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートをデプロイするには、次の手順に従います。
 
-1. 次のコード ブロックの **[試してみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -90,7 +90,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Event Hubs 名前空間を作成し、その名前空間にイベント ハブを作成しました。 イベント ハブとの間でイベントを送信または受信するためのステップ バイ ステップの手順については、以下の**イベントの送受信**のチュートリアルを参照してください。
+この記事では、Event Hubs 名前空間を作成し、その名前空間にイベント ハブを作成しました。 イベント ハブとの間でイベントを送信または受信するためのステップ バイ ステップの手順については、以下の **イベントの送受信** のチュートリアルを参照してください。
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)

@@ -16,11 +16,11 @@ ms.locfileid: "89227901"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および組み込みの HTTP Webhook コネクタを使用すると、サービス エンドポイントをサブスクライブし、特定のイベントを待機し、それらのイベントに基づいて実行する自動化されたタスクとワークフローを作成でき、そのエンドポイントを定期的に確認または*ポーリング*する必要はありません。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および組み込みの HTTP Webhook コネクタを使用すると、サービス エンドポイントをサブスクライブし、特定のイベントを待機し、それらのイベントに基づいて実行する自動化されたタスクとワークフローを作成でき、そのエンドポイントを定期的に確認または *ポーリング* する必要はありません。
 
 Webhook ベースのワークフローの例を次に示します。
 
-* [Azure イベント ハブ](https://github.com/logicappsio/EventHubAPI)からアイテムが到着するのを待ってからロジック アプリの実行をトリガーする。
+* [Azure Event Hub](https://github.com/logicappsio/EventHubAPI)からアイテムが到着するのを待ってからロジック アプリの実行をトリガーする。
 * 承認を待ってからワークフローを続行する。
 
 この記事では、ロジック アプリがサービス エンドポイントでのイベントを受信してそれに応答できるように Webhook トリガーと Webhook アクションを使用する方法について説明します。
@@ -35,7 +35,7 @@ Webhook アクションもイベントに基づいており、指定されたサ
 * 応答を待機しているときにロジック アプリの実行がキャンセルされた場合
 * ロジック アプリがタイムアウトになる前
 
-たとえば、Office 365 Outlook コネクタの[**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの一例です。 Webhook アクションを使用することで、このパターンをあらゆるサービスに適用できます。
+たとえば、Office 365 Outlook コネクタの [**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの一例です。 Webhook アクションを使用することで、このパターンをあらゆるサービスに適用できます。
 
 詳細については、以下のトピックを参照してください。
 
@@ -86,7 +86,7 @@ Webhook アクションもイベントに基づいており、指定されたサ
 
    ![トリガー プロパティをさらに追加する](./media/connectors-native-webhook/http-webhook-trigger-add-properties.png)
 
-   たとえば、認証を使用する必要がある場合は、**サブスクライブ - 認証**と**サブスクライブ解除 - 認証**プロパティを追加します。 HTTP Webhook に使用できる認証の種類の詳細については、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
+   たとえば、認証を使用する必要がある場合は、**サブスクライブ - 認証** と **サブスクライブ解除 - 認証** プロパティを追加します。 HTTP Webhook に使用できる認証の種類の詳細については、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
 
 1. トリガーが起動したときに実行されるアクションを使用して、ロジック アプリのワークフローを引き続き構築します。
 
@@ -132,7 +132,7 @@ Webhook アクションもイベントに基づいており、指定されたサ
 
    ![アクション プロパティをさらに追加する](./media/connectors-native-webhook/http-webhook-action-add-properties.png)
 
-   たとえば、認証を使用する必要がある場合は、**サブスクライブ - 認証**と**サブスクライブ解除 - 認証**プロパティを追加します。 HTTP Webhook に使用できる認証の種類の詳細については、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
+   たとえば、認証を使用する必要がある場合は、**サブスクライブ - 認証** と **サブスクライブ解除 - 認証** プロパティを追加します。 HTTP Webhook に使用できる認証の種類の詳細については、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
 
 1. 完了したら、忘れずに対象のロジック アプリを保存してください。 デザイナーのツール バーで、 **[保存]** を選択します。
 

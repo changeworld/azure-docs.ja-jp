@@ -32,7 +32,7 @@ Azure HDInsight クラスターには、クラスター ノードとして仮想
 - VM 上のプロセス テーブルには、プロセスが完了しているエントリが多数あるが、"終了状態" と示されている。
 
 > [!NOTE]
-> 再起動によってデータが失われる可能性があるため、 **HBase** クラスターと **Kafka** クラスターでは VM を再起動できません。
+> 再起動によってデータが失われる可能性があるため、**HBase** クラスターと **Kafka** クラスターでは VM を再起動できません。
 
 ## <a name="use-powershell-to-reboot-vms"></a>PowerShell を使用して VM を再起動する
 
@@ -52,7 +52,7 @@ Azure HDInsight クラスターには、クラスター ノードとして仮想
 
 ## <a name="use-a-rest-api-to-reboot-vms"></a>REST API を使用して VM を再起動する
 
-API ドキュメントの **試してみる** 機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
+API ドキュメントの **使ってみる** 機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
 
 1. ノードを一覧表示します。 クラスター ノードの一覧は、REST API または Ambari から取得できます。 詳細については、[HDInsight list hosts REST API の操作](/rest/api/hdinsight/virtualmachines/listhosts)に関するページを参照してください。
 
@@ -60,7 +60,7 @@ API ドキュメントの **試してみる** 機能を使用して、HDInsight 
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、 *NodeType(wn/hn/zk/gw)*  + *x* + *クラスター名の最初の 6 文字* のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
+1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、*NodeType(wn/hn/zk/gw)*  + *x* + *クラスター名の最初の 6 文字* のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview

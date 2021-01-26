@@ -45,9 +45,9 @@ CDN キャッシュ規則を設定して、Azure portal からキャッシュの
 BLOB の `Cache-Control` ヘッダーを設定するための推奨される方法は、Azure Portal でのキャッシュ規則の使用です。 CDN キャッシュ規則の詳細については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページを参照してください。
 
 > [!NOTE] 
-> キャッシュ規則は、 **Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Azure CDN ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Azure CDN ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
 
-**[CDN キャッシュ規則] ページに移動するには** :
+**[CDN キャッシュ規則] ページに移動するには**:
 
 1. Azure Portal で、CDN プロファイルを選択してから、BLOB のエンドポイントを選択します。
 
@@ -76,9 +76,9 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 1. **[Custom caching rules] (カスタム キャッシュ規則)** で、次の 2 つの一致条件を作成します。
 
-     A. 最初の一致条件では、 **[一致条件]** を **[パス]** に設定し、 **[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「4」と入力します。
+     A. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「4」と入力します。
 
-    B. 2 番目の一致条件では、 **[一致条件]** を **[パス]** に設定し、 **[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「2」と入力します。
+    B. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「2」と入力します。
 
     ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
@@ -152,8 +152,8 @@ class Program
 
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>他の方法を使った Cache-Control ヘッダーの設定
 
-### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
-[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使うと、 *CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
+### <a name="azure-storage-explorer"></a>Azure Storage Explorer
+[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
 
 Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新するには、以下の操作を行います。
    1. BLOB を選択し、コンテキスト メニューから **[プロパティ]** を選択します。 

@@ -85,7 +85,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     $location="eastus"
     ```
 
-1. Azure 関数が必要とする新しいストレージ アカウントの名前の変数を設定します。
+1. Azure Functions が必要とする新しいストレージ アカウントの名前の変数を設定します。
 
     ```bash
     functionstorage="<name of the storage account to be used by the function>"
@@ -95,7 +95,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     $functionstorage="<name of the storage account to be used by the function>"
     ```
 
-1. Azure 関数用のストレージ アカウントを作成します。
+1. Azure Functions 用のストレージ アカウントを作成します。
 
     ```bash
     az storage account create --name $functionstorage --location $location \
@@ -123,7 +123,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     $functionapp="<name of the function app>"
     ```
 
-1. Azure 関数を作成します。
+1. Azure Functions を作成します。
 
     ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \
@@ -263,7 +263,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 1.  **[統合]** を選択し、 **[イベント グリッド トリガー]** を選択して、 **[Event Grid サブスクリプションの作成]** を選択します。
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="ポータルで Thumbnail 関数を選択する" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Azure portal で [Event Grid サブスクリプションの追加] に移動する" :::
 
 1. 次の表で指定されているようにイベント サブスクリプションを設定します。
     

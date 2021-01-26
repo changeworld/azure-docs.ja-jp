@@ -71,13 +71,13 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 | TD | チャド | なし | 21 |
 | TH | タイ | なし | 20 |
 | TW | 台湾 | なし | 20 |
-| US | United States | 13 | 18 |
+| US | 米国 | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年齢制限のオプション
 
 ### <a name="allowing-minors-without-parental-consent"></a>保護者の同意がない未成年者を許可する
 
-サインアップ、サインイン、またはその両方を許可するユーザー フローでは、同意のない未成年者にアプリケーションの使用を許可することを選択できます。 保護者の同意がない未成年者は、通常どおりにサインインまたはサインアップすることが許可され、Active Directory B2C では**legalAgeGroupClassification** 要求を含む ID トークンが発行されます。 この要求では、保護者の同意の収集や **consentProvidedForMinor** フィールドの更新など、ユーザーのエクスペリエンスが定義されます。
+サインアップ、サインイン、またはその両方を許可するユーザー フローでは、同意のない未成年者にアプリケーションの使用を許可することを選択できます。 保護者の同意がない未成年者は、通常どおりにサインインまたはサインアップすることが許可され、Active Directory B2C では **legalAgeGroupClassification** 要求を含む ID トークンが発行されます。 この要求では、保護者の同意の収集や **consentProvidedForMinor** フィールドの更新など、ユーザーのエクスペリエンスが定義されます。
 
 ### <a name="blocking-minors-without-parental-consent"></a>保護者の同意がない未成年者をブロックする
 

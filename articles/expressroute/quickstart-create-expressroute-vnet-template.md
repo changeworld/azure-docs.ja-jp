@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet)からのものです。
 
-このクイックスタートでは、サービス プロバイダーに *Equinix* を使用して ExpressRoute 回線を作成します。 この回線には、帯域幅 *50 Mbps* 、ピアリングの場所を " *ワシントン DC* " とする *Premium SKU* が使用されます。 プライベート ピアリングは、プライマリ サブネット *192.168.10.16/30* とセカンダリ サブネット *192.168.10.20/30* を使用して有効化されます。 また、" *HighPerformance ExpressRoute ゲートウェイ* " と共に仮想ネットワークが作成されます。
+このクイックスタートでは、サービス プロバイダーに *Equinix* を使用して ExpressRoute 回線を作成します。 この回線には、帯域幅 *50 Mbps*、ピアリングの場所を "*ワシントン DC*" とする *Premium SKU* が使用されます。 プライベート ピアリングは、プライマリ サブネット *192.168.10.16/30* とセカンダリ サブネット *192.168.10.20/30* を使用して有効化されます。 また、"*HighPerformance ExpressRoute ゲートウェイ*" と共に仮想ネットワークが作成されます。
 
 :::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
@@ -51,7 +51,7 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -74,7 +74,7 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
 
 1. 値を入力します。
 
-    リソース グループの名前は、 **rg** が付加されたプロジェクト名です。
+    リソース グループの名前は、**rg** が付加されたプロジェクト名です。
 
     テンプレートのデプロイには約 20 分かかります。 完了すると、次のように出力されます。
 
@@ -92,11 +92,11 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
 
 1. リソース グループには、次の画面に示したリソースが含まれている必要があります。
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager テンプレートの PowerShell デプロイ出力":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute デプロイ リソース グループ":::
 
 1. ExpressRoute 回線 **er-ck01** を選択して、回線の状態が **有効** であること、プロバイダーの状態が **未プロビジョニング** であること、プライベート ピアリングの状態が **プロビジョニング済み** であることを確認します。
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager テンプレートの PowerShell デプロイ出力":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute デプロイ回線":::
 
 > [!NOTE]
 > 仮想ネットワークを回線にリンクさせるには、まずプロバイダーを呼び出してプロビジョニング プロセスを完了する必要があります。

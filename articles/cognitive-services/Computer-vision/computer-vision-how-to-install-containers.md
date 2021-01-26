@@ -207,7 +207,7 @@ ApiKey={API_KEY}
 Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.2/read/analyze` 操作と `GET /vision/v3.2/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
 
 
-Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
+Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(使ってみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 

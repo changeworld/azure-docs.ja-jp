@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/30/2020
 ms.locfileid: "96350570"
 ---
-# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート:Java を使用して、Azure コグニティブ サービスである Bing Web Search REST API で Web を検索する
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート:Java を使用して、Azure Cognitive Services である Bing Web Search REST API で Web を検索する
 
 > [!WARNING]
 > Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。

@@ -35,7 +35,7 @@ ms.locfileid: "92221011"
 
      * __[Archive to a storage account]__ (ストレージ アカウントへのアーカイブ) を選択して、Azure ストレージ アカウントにログを保存します。 データをアーカイブする場合には、このオプションを使用します。 このオプションを選択する場合は、ログの保存先の Azure ストレージ アカウントを指定する必要があります。
 
-     * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure イベント ハブにログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
+     * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
      * __[Send to Log Analytics]\(Log Analytics に送信\)__ を選択して、Azure Monitor サービスにデータを送信します。 Azure Monitor ログを使ってログを収集し分析する場合は、このオプションを使用します。
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。  要求ログは、すべての API 要求をキャプチャします。 監査ログは、その API 要求によってトリガーされるすべての操作を記録します。
@@ -129,7 +129,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Requests**など。 |
+| category |String |ログのカテゴリ。 **Requests** など。 |
 | operationName |String |ログに記録される操作の名前。 GetAggregatedJobHistory など。 |
 | resultType |String |操作の状態。200 など。 |
 | callerIpAddress |String |要求を行うクライアントの IP アドレス |
@@ -179,7 +179,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Audit**など。 |
+| category |String |ログのカテゴリ。 **Audit** など。 |
 | operationName |String |ログに記録される操作の名前。 JobSubmitted など。 |
 | resultType |String |ジョブの状態 (operationName) の副状態。 |
 | resultSignature |String |ジョブの状態 (operationName) に関する追加の詳細。 |

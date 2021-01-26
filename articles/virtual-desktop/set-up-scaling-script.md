@@ -233,12 +233,12 @@ Azure Automation アカウントで実行アカウントを作成するには、
     スクリプトを実行すると、次の図に示すように、Azure Logic Apps がリソース グループに表示されます。
 
     >[!div class="mx-imgBorder"]
-    >![Azure ロジック アプリの例を表す概要ページの画像。](media/logic-app.png)
+    >![Azure Logic Apps の例を表す概要ページの画像。](media/logic-app.png)
 
     繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure Logic Apps の自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure Logic Apps デザイナーに移動します。
 
     >[!div class="mx-imgBorder"]
-    >![Azure ロジック アプリ デザイナーの画像。 ユーザーが繰り返し時間と Webhook ファイルを編集するための [繰り返し] および [Webhook] メニューが開いています。](media/logic-apps-designer.png)
+    >![Azure Logic Apps デザイナーの画像。 ユーザーが繰り返し時間と Webhook ファイルを編集するための [繰り返し] および [Webhook] メニューが開いています。](media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>スケーリング ツールを管理する
 

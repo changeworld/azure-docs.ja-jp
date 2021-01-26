@@ -49,7 +49,7 @@ Azure IoT Edge デバイス:
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * Azure Machine Learning ワークスペース。 [Azure portal での Azure Machine Learning の使用の開始](../machine-learning/tutorial-1st-experiment-sdk-setup.md)に関するページの手順に従って作成し、その使用方法について学習します。
-  * ワークスペース名、リソース グループ、およびサブスクリプション ID をメモしておきます。 これらの値はすべて、Azure portal のワークスペースの概要で確認できます。 チュートリアルの後半でこれらの値を使用して、ワークスペース リソースに Azure Notebooks ファイルを接続します。
+  * ワークスペース名、リソース グループ、およびサブスクリプション ID をメモしておきます。 これらの値はすべて、Azure Portal のワークスペースの概要で確認できます。 チュートリアルの後半でこれらの値を使用して、ワークスペース リソースに Azure Notebooks ファイルを接続します。
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning モジュールを作成してデプロイする
 
@@ -100,7 +100,7 @@ Azure IoT Edge デバイス:
 
    これでレジストリ名、リポジトリ名およびタグがわかったので、コンテナーの完全なイメージ パスがわかります。 イメージのパスは、 **\<registry_name\>.azurecr.io/tempanomalydetection:1** のようになります。 イメージ パスを使用して、IoT Edge デバイスにこのコンテナーをデプロイすることができます。
 
-5. コンテナー レジストリの **[設定]** で **[アクセス キー]** を選択します。 **ログイン サーバー**、管理者ユーザーの**ユーザー名**、および**パスワード**を含む、多くのアクセス資格情報が表示されるはずです。
+5. コンテナー レジストリの **[設定]** で **[アクセス キー]** を選択します。 **ログイン サーバー**、管理者ユーザーの **ユーザー名**、および **パスワード** を含む、多くのアクセス資格情報が表示されるはずです。
 
    これらの資格情報は、レジストリからコンテナー イメージをプルするアクセス許可を IoT Edge デバイスに付与するために、デプロイ マニフェストに含めることができます。
 

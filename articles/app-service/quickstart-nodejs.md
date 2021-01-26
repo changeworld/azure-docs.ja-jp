@@ -59,17 +59,17 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
 
 このセクションでは、VS Code と Azure App Service 拡張機能を使用して自分の Node.js アプリを Azure にデプロイします。
 
-1. ターミナルで、 *nodejs-docs-hello-world* フォルダーにいることを確認し、次のコマンドを使用して Visual Studio Code を起動します。
+1. ターミナルで、*nodejs-docs-hello-world* フォルダーにいることを確認し、次のコマンドを使用して Visual Studio Code を起動します。
 
     ```bash
     code .
     ```
 
-1. VS Code のアクティビティ バーで Azure のロゴを選択し、 **Azure App Service** エクスプローラーを表示します。 **[サインイン: Azure]** を選択して、指示に従います。 (エラーが発生した場合は、以下の「[Azure サインインのトラブルシューティング](#troubleshooting-azure-sign-in)」を参照してください)。サインインすると、エクスプローラーにご使用の Azure サブスクリプションの名前が表示されます。
+1. VS Code のアクティビティ バーで Azure のロゴを選択し、**Azure App Service** エクスプローラーを表示します。 **[サインイン: Azure]** を選択して、指示に従います。 (エラーが発生した場合は、以下の「[Azure サインインのトラブルシューティング](#troubleshooting-azure-sign-in)」を参照してください)。サインインすると、エクスプローラーにご使用の Azure サブスクリプションの名前が表示されます。
 
     ![Azure へのサインイン](media/quickstart-nodejs/sign-in.png)
 
-1. VS Code の **Azure App Service** エクスプローラーで青色の上矢印アイコンを選択して、自分のアプリを Azure にデプロイします。 ( **コマンド パレット** ( **Ctrl** + **Shift** + **P** キー) から同じコマンドを呼び出すこともできます。「Web アプリにデプロイ」と入力し、 **[Azure App Service: Web アプリにデプロイ]** を選択します)。
+1. VS Code の **Azure App Service** エクスプローラーで青色の上矢印アイコンを選択して、自分のアプリを Azure にデプロイします。 (**コマンド パレット** (**Ctrl** + **Shift** + **P** キー) から同じコマンドを呼び出すこともできます。「Web アプリにデプロイ」と入力し、 **[Azure App Service: Web アプリにデプロイ]** を選択します)。
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。":::
         
@@ -80,7 +80,7 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
     - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
     - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
 
-1. 自分の Web アプリ用にグローバルに一意な名前を入力し、 **Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 ("A-Z"、"a-z"、"0-9") およびハイフン ("-") のみを使用する必要があります。
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 ("A-Z"、"a-z"、"0-9") およびハイフン ("-") のみを使用する必要があります。
 
 1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
 
@@ -97,7 +97,7 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
 
     ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
 
-1. " **Always deploy the workspace "nodejs-docs-hello-world" to (app name) (ワークスペース "nodejs-docs-hello-world" を常に (アプリ名) にデプロイ)** " というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+1. "**Always deploy the workspace "nodejs-docs-hello-world" to (app name) (ワークスペース "nodejs-docs-hello-world" を常に (アプリ名) にデプロイ)** " というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
 
 1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに "Hello World!" と表示されます。
 
@@ -172,7 +172,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Docker ツール](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 * [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 または、[Node Pack for Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。
 ::: zone-end
@@ -188,7 +188,7 @@ Azure アカウントをお持ちでない場合は、無料アカウントに[�
 
 ### <a name="sign-in"></a>サインイン
 
-拡張機能のインストール後、自分の Azure アカウントにログインします。 アクティビティ バーで Azure のロゴを選択し、 **Azure App Service** エクスプローラーを表示します。 **[サインイン: Azure]** を選択して、指示に従います。
+拡張機能のインストール後、自分の Azure アカウントにログインします。 アクティビティ バーで Azure のロゴを選択し、**Azure App Service** エクスプローラーを表示します。 **[サインイン: Azure]** を選択して、指示に従います。
 
 ![Azure にサインイン](./media/quickstart-nodejs/sign-in.png)
 
@@ -207,7 +207,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 続行する前に、すべての前提条件がインストールされ、構成されていることを確認してください。
 
-VS Code では、ステータス バーに自分の Azure メール アドレスが、 **Azure App Service** エクスプローラーに自分のサブスクリプションが表示されます。
+VS Code では、ステータス バーに自分の Azure メール アドレスが、**Azure App Service** エクスプローラーに自分のサブスクリプションが表示されます。
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
@@ -268,7 +268,7 @@ code .
 :::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="デプロイの青い矢印が選択されている、Visual Studio Code の Azure App Service メニューのスクリーンショット。":::
 
 > [!TIP]
-> **コマンド パレット** (Ctrl + Shift + P) からデプロイすることもできます。「deploy to web app」と入力し、 **Azure App Service: Deploy to Web App** コマンドを実行します。
+> **コマンド パレット** (Ctrl + Shift + P) からデプロイすることもできます。「deploy to web app」と入力し、**Azure App Service: Deploy to Web App** コマンドを実行します。
 
 1. 現在開いているディレクトリ (`myExpressApp`) を選択します。
 

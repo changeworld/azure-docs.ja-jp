@@ -24,12 +24,12 @@ ms.locfileid: "91444868"
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。
 
 > [!IMPORTANT]
-> 接続アーキテクチャについては、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) を参照してください。
+> 接続アーキテクチャについては、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL Database 接続アーキテクチャ) を参照してください。
 >
 
 ## <a name="outside-vs-inside"></a>外部と内部
 
-Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
+Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の *外部* と *内部* のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
 
 ### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部:* クライアントをデスクトップ コンピューター上で実行
 
