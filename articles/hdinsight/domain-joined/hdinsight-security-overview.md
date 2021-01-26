@@ -63,7 +63,7 @@ HDInsight では、プラットフォーム マネージド キーと[カスタ�
 
 ### <a name="compliance"></a>コンプライアンス
 
-Azure コンプライアンス認証は、正式な認定資格を含むさまざまな種類の保証に基づいています。 また、構成証明、検証、承認にも基づいています。 さらに、独立したサードパーティの監査会社による評価や、 Microsoft によって作成された契約の修正、自己評価、顧客向けのガイダンス ドキュメントにも基づきます。 HDInsight のコンプライアンス情報については、[Microsoft セキュリティセンター](https://www.microsoft.com/trust-center)と [Microsoft Azure コンプライアンスの概要](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。
+Azure コンプライアンス認証は、正式な認定資格を含むさまざまな種類の保証に基づいています。 また、構成証明、検証、承認にも基づいています。 さらに、独立したサードパーティの監査会社による評価や、 Microsoft によって作成された契約の修正、自己評価、顧客向けのガイダンス ドキュメントにも基づきます。 HDInsight のコンプライアンス情報については、[Microsoft Trust Center](https://www.microsoft.com/trust-center)と [Microsoft Azure コンプライアンスの概要](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。
 
 ## <a name="shared-responsibility-model"></a>共同責任モデル
 

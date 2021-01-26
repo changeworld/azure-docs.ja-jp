@@ -29,7 +29,7 @@ Azure Functions との Application Insights の統合は、無料で試すこと
 > [!IMPORTANT]
 > Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 サンプリングは、既定で有効になっています。 データがないと思われる場合は、特定の監視シナリオに合わせてサンプリング設定を調整するだけで済みます。 詳細については、「[サンプリングを構成する](configure-monitoring.md#configure-sampling)」を参照してください。
 
-関数アプリで使用できる Application Insights 機能の完全な一覧については、「[Azure Functions でサポートされる Application Insights の機能」 ](../azure-monitor/app/azure-functions-supported-features.md)を参照してください。
+Function App で使用できる Application Insights 機能の完全な一覧については、「[Azure Functions でサポートされる Application Insights の機能」 ](../azure-monitor/app/azure-functions-supported-features.md)を参照してください。
 
 ## <a name="application-insights-integration"></a>Application Insights の統合
 
@@ -110,7 +110,7 @@ Application Insights を使用すると、利用統計情報を長期的スト�
 関数も Azure Monitor と統合されるため、診断設定を使用しても、Azure Monitor ログを含むさまざまな送信先に利用統計情報を送信できます。 詳細については、「[Azure Monitor ログを使用した Azure Functions の監視](functions-monitor-log-analytics.md)」を参照してください。
 
 ## <a name="scale-controller-logs"></a>コントローラー ログをスケーリングする
-
+ 
 _この機能はプレビュー段階にあります。_ 
 
 [Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、関数アプリのためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 

@@ -1,5 +1,5 @@
 ---
-title: ワークスペースで Jupyter ノートブックを実行する方法
+title: ワークスペースで Jupyter Notebooks を実行する方法
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter ノートブックを実行する方法について説明します。
 services: machine-learning
@@ -18,7 +18,6 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/20/2021
 ms.locfileid: "98599311"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 
 Azure Machine Learning スタジオのワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
@@ -29,7 +28,7 @@ Azure Machine Learning スタジオのワークスペースで Jupyter ノート
 
 ## <a name="create-notebooks"></a><a name="create"></a> ノートブックを作成する
 
-Azure Machine Learning ワークスペースで、新しい Jupyter ノートブックを作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
+Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks を作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
 
 新しいノートブックを作成するには: 
 

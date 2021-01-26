@@ -15,9 +15,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/26/2020
 ms.locfileid: "92545482"
 ---
-# <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure IoT ハブとストレージ アカウントをデプロイする
+# <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure IoT Hub とストレージ アカウントをデプロイする
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、メッセージを Azure Storage にルーティングする IoT ハブとそのメッセージを保持するストレージ アカウントを作成します。 仮想 IoT デバイスをハブに手動で追加してメッセージを送信した後、その接続情報を *arm-read-write* と呼ばれるアプリケーションで構成して、デバイスからハブにメッセージを送信するようにします。 ハブは、そのハブに届いたメッセージを自動的にストレージ アカウントへとルーティングするように構成されます。 このクイックスタートの最後には、ストレージ アカウントを開いて、送信されたメッセージを確認することができます。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、メッセージを Azure Storage にルーティングする IoT Hub とそのメッセージを保持するストレージ アカウントを作成します。 仮想 IoT デバイスをハブに手動で追加してメッセージを送信した後、その接続情報を *arm-read-write* と呼ばれるアプリケーションで構成して、デバイスからハブにメッセージを送信するようにします。 ハブは、そのハブに届いたメッセージを自動的にストレージ アカウントへとルーティングするように構成されます。 このクイックスタートの最後には、ストレージ アカウントを開いて、送信されたメッセージを確認することができます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![リソース グループの選択](./media/horizontal-arm-route-messages/01-select-resource-group.png)
 
-1. ARM テンプレートをデプロイするときに作成された IoT ハブとストレージ アカウントが表示されます。 テンプレートが完全にデプロイされるのを待って続行してください。 次に、ご自分のリソース グループを選択してリソースを表示します。
+1. ARM テンプレートをデプロイするときに作成された IoT Hub とストレージ アカウントが表示されます。 テンプレートが完全にデプロイされるのを待って続行してください。 次に、ご自分のリソース グループを選択してリソースを表示します。
 
    ![リソース グループ内のリソースを表示する](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
@@ -130,7 +130,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    > [!NOTE]
    > これらのメッセージは UTF-32 および Base64 でエンコードされています。 メッセージを復元して ASCII として読み取るためには、Base64 と UTF-32 からデコードする必要があります。 興味がある方は、ルーティングのチュートリアルで説明されている ReadOneRowFromFile メソッドを使用して、これらのメッセージ ファイルのうちから 1 つを読み取り、ASCII にデコードしてみてください。 ReadOneRowFromFile は、このクイックスタートで解凍した IoT C# サンプル リポジトリにあります。 このフォルダーの最上位を起点とするパスは、 *./iot-hub/Tutorials/Routing/SimulatedDevice/Program.cs* です。 ブール値の `readTheFile` は true に設定し、ディスク上のファイルのパスはハードコーディングしてください。これにより、ファイルの先頭行が開かれて変換されます。
 
-IoT ハブとストレージ アカウントを作成する ARM テンプレートをデプロイし、そのハブにメッセージを送信するプログラムを実行しました。 そのメッセージは、確認を行える場所であるストレージ アカウントに自動的に格納されます。
+IoT Hub とストレージ アカウントを作成する ARM テンプレートをデプロイし、そのハブにメッセージを送信するプログラムを実行しました。 そのメッセージは、確認を行える場所であるストレージ アカウントに自動的に格納されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
