@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883250"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220815"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -261,7 +261,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="conditions"></a>条件
 
-条件では、**field** または **value** アクセサーが特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
+条件は、値が特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 **match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。 **match** と **notMatch** では大文字と小文字が区別されますが、_stringValue_ を評価するその他すべての条件では大文字と小文字が区別されません。 大文字と小文字が区別されない代替手段は、**matchInsensitively** と **notMatchInsensitively** で使用できます。
 
-**\[\*\] エイリアス** 配列フィールド値では、配列内の各要素は、要素間で論理 **積** を使用して個別に評価されます。 詳細については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
-
 ### <a name="fields"></a>フィールド
 
-条件は、フィールドを使用して構成されます。 フィールドでは、リソース要求ペイロード内のプロパティが照合され、リソースの状態が記述されます。
-
+リソース要求のペイロード内のプロパティの値が特定の条件を満たすかどうかを評価する条件は、**field** 式を使用して形成できます。
 次のフィールドがサポートされています。
 
 - `name`
@@ -305,6 +302,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `kind`
 - `type`
 - `location`
+  - location フィールドは、さまざまな形式をサポートするように正規化されます。 たとえば、`East US 2` は `eastus2` と等しいと見なされます。
   - 場所に依存しないリソースに対しては **global** を使用します。
 - `id`
   - 評価されているリソースのリソース ID を返します。
@@ -324,6 +322,10 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 > [!NOTE]
 > `tags.<tagName>`、`tags[tagName]`、および`tags[tag.with.dots]` は、タグ フィールドを宣言する方法としてまだ受け付けられます。 ただし、推奨される式は上に示したものです。
+
+> [!NOTE]
+> **\[\*\] エイリアス** を参照する **field** 式では、配列内の各要素は、要素間で論理 **積** を使用して個別に評価されます。
+> 詳細については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
 
 #### <a name="use-tags-with-parameters"></a>パラメーターを含むタグを使用する
 
@@ -355,7 +357,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="value"></a>値
 
-条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。 **value** は、サポートされる任意の [条件](#conditions)と組み合わせられます。
+値が特定の条件を満たすかどうかを評価する条件は、**value** 式を使用して形成できます。 値には、リテラル、[パラメーター](#parameters)の値、または[サポートされているテンプレート関数](#policy-functions)の戻り値を指定できます。
 
 > [!WARNING]
 > _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、[enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。
@@ -440,9 +442,11 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="count"></a>Count
 
-条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、**count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式の各 [\[\*\] alias](#understanding-the--alias) 配列メンバーを評価して _true_ の結果を合計し、式の演算子と比較します。 **count** 式は 1 つの **policyRule** 定義に最大 3 回まで追加できます。
+特定の条件を満たす配列のメンバーの数をカウントする条件は、**count** 式を使用して形成できます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式に対して各配列メンバーを評価して、_true_ の結果を合計し、式の演算子と比較します。
 
-**count** 式の構造は次の通りです。
+#### <a name="field-count"></a>フィールドのカウント
+
+要求ペイロード内の配列のいくつのメンバーが条件式を満たしているかをカウントします。 **フィールドのカウント** 式の構造は次の通りです。
 
 ```json
 {
@@ -456,16 +460,62 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 }
 ```
 
-**count** では、次のプロパティを使用します。
+**フィールドのカウント** では、次のプロパティを使用します。
 
-- **count.field** (必須):配列へのパスを含みます。また、配列のエイリアスである必要があります。 配列が含まれていない場合、式の評価は _false_ となり、条件式は考慮されません。
-- **count.where** (オプション):**count.field** の [\[\*\] alias](#understanding-the--alias) の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、"field" のパスを持つすべての配列メンバーの評価は _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。
+- **count.field** (必須):配列へのパスを含みます。また、配列のエイリアスである必要があります。
+- **count.where** (オプション):`count.field` の [\[\*\] エイリアス](#understanding-the--alias)の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、"field" のパスを持つすべての配列メンバーの評価は _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。
   このプロパティ内では、[論理演算子](#logical-operators)を使用して複雑な評価要件を作成できます。
 - **\<condition\>** (必須):値は、**count.where** 条件式を満たした項目数と比較されます。 数値の[条件](../concepts/definition-structure.md#conditions)を使用する必要があります。
 
-Azure Policy で配列プロパティを操作する方法の詳細 (count 式の評価方法に関する詳細な説明を含む) については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
+**フィールドのカウント** 式では、1 つの **policyRule** 定義内で同じフィールド配列を最大 3 回列挙できます。
 
-#### <a name="count-examples"></a>カウントの例
+Azure Policy で配列プロパティを操作する方法の詳細 (**field count** 式の評価方法に関する詳細な説明を含む) については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
+
+#### <a name="value-count"></a>値のカウント
+条件を満たす配列のメンバーの数をカウントします。 配列には、リテラル配列または[配列パラメーターへの参照](#using-a-parameter-value)を指定できます。 **値のカウント** 式の構造は次の通りです。
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+**値のカウント** では、次のプロパティを使用します。
+
+- **count.value** (必須):評価する配列。
+- **count.name** (必須):アルファベットと数字で構成されるインデックス名。 現在の反復で評価される配列メンバーの値の名前を定義します。 この名前は `count.where` 条件内の現在の値を参照するために使用されます。 **count** 式が別の **count** 式の子に含まれていない場合は省略可能です。 指定しない場合、インデックス名は暗黙的に `"default"` に設定されます。
+- **count.where** (オプション):`count.value` の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、すべての配列メンバーの評価は _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。 このプロパティ内では、[論理演算子](#logical-operators)を使用して複雑な評価要件を作成できます。 現在列挙されている配列メンバーの値には、[current](#the-current-function) 関数を呼び出してアクセスできます。
+- **\<condition\>** (必須):値は、`count.where` 条件式を満たした項目数と比較されます。 数値の[条件](../concepts/definition-structure.md#conditions)を使用する必要があります。
+
+次の制限が適用されます。
+- **値のカウント** 式は 1 つの **policyRule** 定義で最大 10 回使用できます。
+- 各 **値のカウント** 式では、最大 100 回の反復を実行できます。 この回数には、親の **値のカウント** 式によって実行される反復の回数が含まれます。
+
+#### <a name="the-current-function"></a>current 関数
+
+`current()` 関数は、`count.where` 条件内でのみ使用できます。 これにより、**count** 式の評価によって現在列挙されている配列メンバーの値が返されます。
+
+**値のカウントの使用法**
+
+- `current(<index name defined in count.name>)`. たとえば、 `current('arrayMember')`と指定します。
+- `current()`. **値のカウント** 式が別の **count** 式の子でない場合にのみ使用できます。 上記と同じ値を返します。
+
+呼び出しによって返される値がオブジェクトの場合、プロパティ アクセサーがサポートされます。 たとえば、 `current('objectArrayMember').property`と指定します。
+
+**フィールドのカウントの使用法**
+
+- `current(<the array alias defined in count.field>)`. たとえば、「 `current('Microsoft.Test/resource/enumeratedArray[*]')` 」のように入力します。
+- `current()`. **フィールドのカウント** 式が別の **count** 式の子でない場合にのみ使用できます。 上記と同じ値を返します。
+- `current(<alias of a property of the array member>)`. たとえば、「 `current('Microsoft.Test/resource/enumeratedArray[*].property')` 」のように入力します。
+
+#### <a name="field-count-examples"></a>フィールドのカウントの例
 
 例 1:配列が空かどうかをチェックします
 
@@ -550,18 +600,162 @@ Azure Policy で配列プロパティを操作する方法の詳細 (count 式�
 }
 ```
 
-例 6:`where` 条件内で `field()` 関数を使用して、現在評価されている配列メンバーのリテラル値にアクセスします。 この条件により、偶数の "_優先度_" 値を持つセキュリティ規則がないことが確認されます。
+例 6:`where` 条件内で `current()` 関数を使用して、テンプレート関数内で現在列挙されている配列メンバーの値にアクセスします。 この条件では、仮想ネットワークのアドレス プレフィックスが 10.0.0.0/24 の CIDR 範囲に含まれていないかどうかを確認します。
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+例 7:`where` 条件内で `field()` 関数を使用して、現在列挙されている配列メンバーの値にアクセスします。 この条件では、仮想ネットワークのアドレス プレフィックスが 10.0.0.0/24 の CIDR 範囲に含まれていないかどうかを確認します。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>値のカウントの例
+
+例 1:リソース名が、指定された名前パターンのいずれかと一致するかどうかを確認します。
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+例 2:リソース名が、指定された名前パターンのいずれかと一致するかどうかを確認します。 `current()` 関数ではインデックス名を指定しません。 結果は前の例と同じです。
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+例 3: リソース名が、配列パラメーターによって指定された名前パターンのいずれかと一致するかどうかを確認します。
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+例 4:仮想ネットワークのアドレス プレフィックスのいずれかが、承認されたプレフィックスの一覧にないかどうかを確認します。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+例 5:すべての予約済み NSG ルールが NSG に定義されていることを確認します。 予約済み NSG ルールのプロパティは、オブジェクトを含む配列パラメーターで定義します。
+
+パラメーター値:
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+ポリシー:
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ Azure Policy では、次の種類の効果をサポートしています。
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **range**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
     - **targetRange**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
@@ -639,6 +832,8 @@ Azure Policy では、次の種類の効果をサポートしています。
     - CIDR 範囲 (例: `10.0.0.0/24`、`2001:0DB8::/110`)
     - 開始 IP アドレスと終了 IP アドレスで定義される範囲 (例: `192.168.0.1-192.168.0.9`、`2001:0DB8::-2001:0DB8::3:FFFF`)
 
+- `current(indexName)`
+    - [count 式](#count)の内部でのみ使用できる特殊な関数。
 
 #### <a name="policy-function-example"></a>ポリシー関数の例
 
