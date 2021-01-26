@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: c769fd86f432d135542c1f09b83ea5a01c6ab0a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011562"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250606"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -42,7 +42,7 @@ ms.locfileid: "98011562"
 - 対話型認証またはデバイス コード フローを使用する場合は、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用します。 この構成を実現するには、アプリケーションの **[認証]** セクションで対応する URL を選択します。
 
   > [!IMPORTANT]
-  > 現在、MSAL.NET は、Windows で実行されるデスクトップ アプリケーションでは、既定で別のリダイレクト URI を使用しています (`urn:ietf:wg:oauth:2.0:oob`)。 今後、この既定を変更することを予定しているため、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用することをお勧めします。
+  > セキュリティ上のベスト プラクティスとして、リダイレクト URI には `https://login.microsoftonline.com/common/oauth2/nativeclient` を使用することをお勧めします。  リダイレクト URI が指定されていない場合、MSAL.NET では、推奨されていない既定の `urn:ietf:wg:oauth:2.0:oob` が使用されます。  この既定値は、次のメジャー リリースで破壊的変更として更新されます。
 
 - macOS 用のネイティブ Objective-C または Swift アプリを構築する場合は、アプリケーションのバンドル識別子に基づいて、`msauth.<your.app.bundle.id>://auth` の形式でリダイレクト URI を登録します。 `<your.app.bundle.id>` をご使用のアプリケーションのバンドル ID に置き換えます。
 - アプリで統合 Windows 認証またはユーザー名とパスワードのみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 これらのフローは、Microsoft ID プラットフォーム v2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。

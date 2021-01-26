@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858639"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569982"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>考慮事項 
+* サブスクリプションごとに、一度に実行できるトラブルシューティング操作は 1 つだけです。 別のトラブルシューティング操作を実行するには、前の操作が完了するまで待ちます。 前の操作が完了しない内に、さらに操作をトリガーすると、それ以降の操作が失敗します。 
 * CLI のバグ: Azure CLI を使用してコマンドを実行する場合は、VPN Gateway とストレージ アカウントが同じリソース グループに存在する必要があります。 異なるリソース グループにリソースがあるお客様は、代わりに PowerShell または Azure portal を使用できます。  
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: Azure Relay に関する FAQ | Microsoft Docs
 description: この記事では、Azure Relay サービスに関連する、よく寄せられる質問の一部の回答を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131850"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250055"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -70,7 +70,7 @@ Azure Relay へのメッセージ送信は、そのメッセージを受信す�
 ## <a name="quotas"></a>Quotas (クォータ)
 | クォータ名 | Scope |  Notes | 値 |
 | --- | --- | --- | --- |
-| リレーの同時リスナー |Entity |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
+| リレーの同時リスナー |エンティティ (ハイブリッド接続または WCF リレー) |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
 | あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続 |名前空間 |- |5,000 |
 | サービス名前空間ごとのリレー エンドポイント |名前空間 |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) と [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) リレーのメッセージ サイズ |名前空間 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |

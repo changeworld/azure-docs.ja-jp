@@ -1,7 +1,7 @@
 ---
-title: azureml-datasets を使用したトレーニング
+title: Machine learning データセットを使用したトレーニング
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning データセットを使用した ML モデル トレーニングのために、ローカルまたはリモートのコンピューティングで自分のデータを使用できるようにする方法について説明します。
+description: Azure Machine Learning データセットを使用してモデルをトレーニングするために、ローカルまたはリモート コンピューティングで独自のデータを使用できるようにする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,14 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108592"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539664"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
-
+# <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 
 この記事では、[Azure Machine Learning データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)を使用して、機械学習モデルのトレーニングを行う方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。 
 
@@ -41,7 +40,7 @@ Azure Machine Learning データセットにより、[ScriptRunConfig](/python/a
 > [!Note]
 > 一部の Dataset クラスは、[azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
 
-## <a name="use-datasets-directly-in-training-scripts"></a>トレーニング スクリプトでデータセットを直接使用する
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Machine learning トレーニング スクリプトでデータセットを使用する
 
 データセットとしてまだ登録されていない構造化データがある場合は、TabularDataset を作成し、それをローカルまたはリモートの実験用のトレーニング スクリプトで直接使用します。
 
@@ -90,6 +89,7 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-training-run"></a>トレーニングの実行を構成する
+
 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) オブジェクトは、トレーニング実行を構成および送信するために使用されます。
 
 このコードでは、以下を指定する ScriptRunConfig オブジェクト `src` を作成します
@@ -141,6 +141,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
 ### <a name="configure-the-training-run"></a>トレーニングの実行を構成する
+
 `ScriptRunConfig` コンストラクターの `arguments` パラメーターを介してマウントする場合は、データセットを引数として渡すことをお勧めします。 そうすることで、引数を介してトレーニング スクリプトのデータ パス (マウント ポイント) を取得します。 これにより、任意のクラウド プラットフォームで、ローカル デバッグとリモート トレーニングに、同じトレーニング スクリプトを使用できるようになります。
 
 次の例では、`arguments` を介して FileDataset を渡す ScriptRunConfig を作成します。 実行を送信すると、`mnist_ds` データセットによって参照されるデータ ファイルがコンピューティング先にマウントされます。
@@ -160,7 +161,7 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>トレーニング スクリプトでデータを取得する
+### <a name="retrieve-data-in-your-training-script"></a>トレーニング スクリプトのデータを取得する
 
 次のコードは、スクリプトでデータを取得する方法を示しています。
 
@@ -222,10 +223,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+## <a name="get-datasets-in-machine-learning-scripts"></a>Machine learning スクリプトでデータセットを取得する
 
-## <a name="directly-access-datasets-in-your-script"></a>スクリプトでデータセットに直接アクセスする
-
-登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用して、ワークスペースと登録済みデータセットに名前でアクセスします。 既定では、`Dataset` クラスの [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
+登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 複数の実験で登録済みデータセットにアクセスするには、以下のコードを使用してワークスペースにアクセスし、以前送信した実行で使用されたデータセットを取得します。 既定では、`Dataset` クラスの [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
 
 ```Python
 %%writefile $script_folder/train.py
@@ -244,7 +244,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="accessing-source-code-during-training"></a>トレーニング中のソース コードへのアクセス
+## <a name="access-source-code-during-training"></a>トレーニング中のソース コードへのアクセス
 
 Azure BLOB ストレージは、スループット速度が Azure ファイル共有よりも高く、並列で開始される多数のジョブに対応します。 このため、ソース コード ファイルの転送については、BLOB ストレージを使用するように実行を構成することをお勧めします。
 
