@@ -1,8 +1,8 @@
-- name: Cloud Services のドキュメント
+- name: Cloud Services (クラシック) のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Cloud Services とは
+    - name: Cloud Services (クラシック) とは
       href: cloud-services-choose-me.md
     - name: クラウド サービスの構成ファイルとパッケージ化
       href: cloud-services-model-and-package.md
@@ -14,7 +14,7 @@
       href: cloud-services-python-ptvs.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

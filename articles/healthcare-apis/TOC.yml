@@ -93,6 +93,11 @@
           href: export-data.md
         - name: 匿名化エクスポート
           href: de-identified-export.md
+    - name: データの変換
+      expanded: false
+      items:
+        - name: $convert-data と FHIR Converter 拡張機能のテンプレート
+          href: convert-data.md
     - name: ID オブジェクト ID を見つける
       href: find-identity-object-ids.md
     - name: 診断ログと指標
