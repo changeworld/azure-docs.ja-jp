@@ -1,6 +1,6 @@
 ---
-title: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
-description: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
+title: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
+description: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -18,10 +18,10 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/27/2020
 ms.locfileid: "92676504"
 ---
-# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
+# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この記事では、サーバーで *[Azure サービスを許可する]* に *[オフ]* が設定されている場合に Azure SQL データベースをインポートまたはエクスポートする方法について説明します。 このワークフローでは、インポートまたはエクスポート操作を行う SqlPackage を実行するために Azure 仮想マシンを使用します。
+この記事では、サーバーで *[Azure サービスを許可する]* に *[オフ]* が設定されている場合に Azure SQL Database をインポートまたはエクスポートする方法について説明します。 このワークフローでは、インポートまたはエクスポート操作を行う SqlPackage を実行するために Azure 仮想マシンを使用します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

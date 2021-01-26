@@ -21,7 +21,6 @@ ms.locfileid: "96019227"
 
 ![関連するデータを検索する](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
-
 上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](/previous-versions/msp-n-p/jj554200(v=pandp.10))からの[具体化されたビュー パターン](/previous-versions/msp-n-p/dn589782(v=pandp.10))の使用があります。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン

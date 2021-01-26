@@ -69,7 +69,7 @@ ms.locfileid: "96009383"
 - Azure DDoS Protection Standard を有効にする必要がある
 - SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 - SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
-- SQL サーバーでの脅威検出のデプロイ
+- SQL Server での脅威検出のデプロイ
 - Windows Server 用の既定の Microsoft IaaSAntimalware 拡張機能のデプロイ
 
 ## <a name="9-secure-user-management"></a>9 ユーザー管理のセキュリティ保護 
@@ -95,7 +95,7 @@ Azure リソースにできるユーザーとそのアクセス許可は、Azure
 - 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-このブループリントでは、SQL サーバーと Service Fabric に対する Azure Active Directory 認証の使用を監査する Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。
+このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用を監査する Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
@@ -148,7 +148,7 @@ Azure リソースにできるユーザーとそのアクセス許可は、Azure
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。
 割り当てられたポリシーでは、指定された Log Analytics ワークスペースにログを送信していない仮想マシンがないかどうかも監査されます。
 
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
 - 診断設定の監査
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ

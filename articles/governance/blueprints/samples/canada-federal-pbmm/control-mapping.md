@@ -70,7 +70,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="ac-7-security-attributes"></a>AC-7 セキュリティ属性
 
-Azure SQL Database 用の高度なデータ セキュリティであるデータ検出および分類機能を使用すると、データベース内の機密データを検出、分類、ラベル付け、および保護することができます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。 Advanced Data Security は、情報が組織の適切なセキュリティ属性に関連付けられていることを確認するために役立ちます。 このブループリントでは、SQL サーバーに対する Advanced Data Security の使用を監視および強制する [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure SQL Database 用の高度なデータ セキュリティであるデータ検出および分類機能を使用すると、データベース内の機密データを検出、分類、ラベル付け、および保護することができます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。 Advanced Data Security は、情報が組織の適切なセキュリティ属性に関連付けられていることを確認するために役立ちます。 このブループリントでは、SQL Server に対する Advanced Data Security の使用を監視および強制する [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
@@ -285,9 +285,9 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL サーバーでの監査のデプロイ
+- SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL サーバーでの脅威検出のデプロイ
+- SQL Server での脅威検出のデプロイ
 
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 

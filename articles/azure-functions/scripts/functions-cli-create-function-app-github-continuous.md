@@ -1,6 +1,6 @@
 ---
-title: GitHub デプロイを使用して関数アプリを作成する - Azure CLI
-description: Azure Functions を使用して、関数アプリを作成し、GitHub リポジトリから関数コードをデプロイします。
+title: GitHub デプロイを使用して Function App を作成する - Azure CLI
+description: Azure Functions を使用して、Function App を作成し、GitHub リポジトリから関数コードをデプロイします。
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/06/2021
 ms.locfileid: "97934392"
 ---
-# <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる関数アプリを Azure で作成する
+# <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる Function App を Azure で作成する
 
 この Azure Functions のサンプル スクリプトでは、[従量課金プラン](../consumption-plan.md)を使用して、関数アプリと関連リソースが作成されます。 また、GitHub レポジトリから継続的にデプロイされるように関数コードを構成します。 
 

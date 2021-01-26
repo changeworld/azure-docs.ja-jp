@@ -479,7 +479,7 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 ## <a name="unlink-cluster"></a>クラスターのリンク解除
 
-1. メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Spark / Hive: Unlink a Cluster**」と入力します。  
+1. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** の順に移動し、「**Spark / Hive: Unlink a Cluster**」と入力します。  
 
 2. リンクを解除するクラスターを選択します。  
 
@@ -487,7 +487,7 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 ## <a name="sign-out"></a>サインアウトする  
 
-メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
+メニュー バーから、 **[表示]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
 ## <a name="issues-changed"></a>問題の変更
 

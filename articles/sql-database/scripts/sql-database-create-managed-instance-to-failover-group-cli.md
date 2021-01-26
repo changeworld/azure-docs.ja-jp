@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323568"
 ---
-# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL マネージド インスタンスをフェールオーバー グループに作成する
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL Managed Instance をフェールオーバー グループに作成する
 
 この Azure CLI サンプルでは、2 つのマネージド インスタンスを作成し、それらをフェールオーバー グループに追加して、プライマリ マネージド インスタンスからセカンダリ マネージド インスタンスへのフェールオーバーをテストします。
 

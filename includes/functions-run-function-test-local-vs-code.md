@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/07/2020
 ms.locfileid: "96842286"
 ---
-## <a name="run-the-function-locally"></a>関数をローカルで実行する
+## <a name="run-the-function-locally"></a>Functions をローカルで実行する
 
 Visual Studio Code を [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md) と統合することで、このプロジェクトをローカルの開発用コンピューター上で実行してから、Azure に発行することができます。
 

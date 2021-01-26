@@ -122,7 +122,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 5. 既存の仮想ネットワークを選択するか、新たに作成します。
 
-    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット SQL マネージド インスタンスへのアクセスが提供されます。
+    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット SQL Managed Instance へのアクセスが提供されます。
 
     Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事を参照してください。
 

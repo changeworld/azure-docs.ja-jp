@@ -28,7 +28,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 このセクションのテンプレートを使用して、開発者ポータルの API ページの内容をカスタマイズできます。  
   
 -   [API リスト](#APIList)  
--   [操作](#Product)  
+-   [Operation](#Product)  
 -   [コード サンプル](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
@@ -115,7 +115,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ```  
   
 ## <a name="operation"></a><a name="Product"></a> Operation  
- **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
+ **Operation**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
  ![開発者ポータルの操作ページ](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開発者ポータル テンプレートの操作ページ")  
   

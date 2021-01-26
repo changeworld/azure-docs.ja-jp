@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (C#) | Microsoft Docs
-description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
+description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT Hub にシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT Hub から利用統計情報を読み取ります。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -89,7 +89,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 3. また、サービス アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、"_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
