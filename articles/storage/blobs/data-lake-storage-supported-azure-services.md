@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cbbbf4ddc651c535cb1266257990f149c80b4742
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562499"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879866"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされている Azure のサービス
 
@@ -39,12 +39,12 @@ Azure のサービスを使用して、データを取り込み、分析を実�
 |HDInsight |一般公開|はい|はい|[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage Gen2 で HDFS CLI を使用する](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |一般公開|はい|はい|[IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|一般公開|はい|はい|[Power BI を使用して Data Lake Storage Gen2 のデータを分析する](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (旧称 SQL Data Warehouse)|一般公開|はい|はい|[ストレージ アカウント内のデータを分析する](/azure/synapse-analytics/get-started-analyze-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (旧称 SQL Data Warehouse)|一般公開|はい|はい|[ストレージ アカウント内のデータを分析する](../../synapse-analytics/get-started-analyze-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |SQL Server Integration Services (SSIS)|一般公開|はい|はい|[Azure Storage 接続マネージャー](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure Data Explorer|一般公開|はい|はい|[Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|プレビュー|はい|はい|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|まだサポートされていません|適用なし|適用なし|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../cdn/cdn-overview.md)|
-|Azure SQL Database|まだサポートされていません|適用なし|適用できません|[Azure SQL Database とは何ですか?](/azure/azure-sql/database/sql-database-paas-overview)|
+|Azure SQL Database|まだサポートされていません|適用なし|適用できません|[Azure SQL Database とは何ですか?](../../azure-sql/database/sql-database-paas-overview.md)|
 
 ## <a name="see-also"></a>関連項目
 

@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763389"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880929"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>ポータルおよび API でアニメーション化されたキャラクターの検出 (プレビュー) を使用する 
 
@@ -35,7 +35,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 > [!NOTE]
 > 両方のアカウントは同じリージョンに存在する必要があります。 現在、Custom Vision の統合は日本リージョンではサポートされていません。
 
-Custom Vision アカウントにアクセスできる有料アカウントでは、モデルとタグ付けされたイメージが表示されます。 詳細については、 [Custom Vision の分類子の改善](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)に関するページをご覧ください。 
+Custom Vision アカウントにアクセスできる有料アカウントでは、モデルとタグ付けされたイメージが表示されます。 詳細については、 [Custom Vision の分類子の改善](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)に関するページをご覧ください。 
 
 モデルのトレーニングは、Video Indexer でのみ行い、Custom Vision Web サイトを使用して行わないでください。 
 
@@ -108,7 +108,7 @@ Custom Vision アカウントにアクセスできる有料アカウントでは
 1. 有料アカウントのみ: Custom Vision でグループを確認します 
 
     > [!NOTE]
-    > Custom Vision アカウントにアクセスできる有料アカウントでは、モデルとタグ付けされたイメージが表示されます。 詳細については、 [Custom Vision の分類子の改善](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)に関するページをご覧ください。 モデルのトレーニングは Video Indexer でのみ行い (このトピックで説明したように)、Custom Vision Web サイトを使用して行わないように注意することが重要です。 
+    > Custom Vision アカウントにアクセスできる有料アカウントでは、モデルとタグ付けされたイメージが表示されます。 詳細については、 [Custom Vision の分類子の改善](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)に関するページをご覧ください。 モデルのトレーニングは Video Indexer でのみ行い (このトピックで説明したように)、Custom Vision Web サイトを使用して行わないように注意することが重要です。 
 
     1. Video Indexer の **[カスタム モデル]** ページにアクセスし、 **[アニメーション化されたキャラクター]** タブを選択します。 
     1. 作業しているモデルの [編集] ボタンをクリックして、それを Custom Vision で管理します。 

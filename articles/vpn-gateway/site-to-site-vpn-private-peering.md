@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657892"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880527"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を構成する
 
@@ -72,7 +72,7 @@ Azure からオンプレミス ネットワークへのトラフィックにも�
 
 ## <a name="portal-steps"></a><a name="portal"></a>ポータルの手順
 
-1. サイト間接続を構成します。 手順については、[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。 必ず、ゾーン冗長ゲートウェイ SKU をゲートウェイに対して選択してください。 
+1. サイト間接続を構成します。 手順については、[サイト間接続](./tutorial-site-to-site-portal.md)に関する記事を参照してください。 必ず、ゾーン冗長ゲートウェイ SKU をゲートウェイに対して選択してください。 
 
    ゾーン冗長 SKU は、SKU の末尾に "AZ" が付いています。 たとえば、**VpnGw1AZ** のようになります。 ゾーン冗長ゲートウェイは、可用性ゾーン サービスが使用可能なリージョンでのみ利用できます。 可用性ゾーンがサポートされているリージョンの詳細については、[可用性ゾーンがサポートされているリージョン](../availability-zones/az-region.md)に関する記事を参照してください。
 
@@ -89,7 +89,7 @@ Azure からオンプレミス ネットワークへのトラフィックにも�
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell ステップ
 
-1. サイト間接続を構成します。 手順については、「[サイト間 VPN の構成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)」の記事を参照してください。 必ず、ゾーン冗長ゲートウェイ SKU をゲートウェイに対して選択してください。 ゾーン冗長 SKU は、SKU の末尾に "AZ" が付いています。 たとえば、VpnGw1AZ のようになります。
+1. サイト間接続を構成します。 手順については、「[サイト間 VPN の構成](./tutorial-site-to-site-portal.md)」の記事を参照してください。 必ず、ゾーン冗長ゲートウェイ SKU をゲートウェイに対して選択してください。 ゾーン冗長 SKU は、SKU の末尾に "AZ" が付いています。 たとえば、VpnGw1AZ のようになります。
 1. 次の PowerShell コマンドを使用して、ゲートウェイ上でプライベート IP を使用するようにフラグを設定します。
 
    ```azurepowershell-interactive

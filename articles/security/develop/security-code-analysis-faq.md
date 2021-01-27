@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543046"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879917"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 ご不明な点がある場合は、 詳細については、次の FAQ を参照してください。
@@ -163,7 +163,7 @@ ms.locfileid: "87543046"
  - [Azure AD マネージド サービス ID (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service および Azure Functions でのマネージド ID](../../app-service/overview-managed-identity.md)
- - [AppAuthentication ライブラリ](../../key-vault/general/service-to-service-authentication.md)
+ - [AppAuthentication ライブラリ](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 詳細については、ブログ記事「[クラウドで安全にシークレットを管理する](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)」を参照してください。

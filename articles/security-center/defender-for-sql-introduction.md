@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881369"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -27,7 +27,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 |----|:----|
 |リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**マシン上の SQL サーバー向け Azure Defender** - 一般提供 (GA) |
 |価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
-|保護される SQL のバージョン:|[Azure 仮想マシン上の SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc 対応 SQL サーバー](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Windows マシン上のオンプレミス SQL サーバー (Azure Arc なし)<br>Azure SQL [単一データベース](../azure-sql/database/single-database-overview.md)および[エラスティック プール](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (旧称 SQL DW) 専用 SQL プール](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|保護される SQL のバージョン:|[Azure 仮想マシン上の SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc 対応 SQL サーバー](/sql/sql-server/azure-arc/overview)<br>Windows マシン上のオンプレミス SQL サーバー (Azure Arc なし)<br>Azure SQL [単一データベース](../azure-sql/database/single-database-overview.md)および[エラスティック プール](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (旧称 SQL DW) 専用 SQL プール](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) China Gov (**一部のみ**: SQL サーバーの脆弱性評価とアラートのサブセット。 Behavioral Threat Protection は利用できません。)|
 |||
 
@@ -43,7 +43,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 - **マシン上の SQL サーバー向け Azure Defender** では、Azure ネイティブの SQL Server の保護を拡張してハイブリッド環境を完全にサポートし、Azure、他のクラウド環境、さらにはオンプレミスのマシンでホストされている SQL サーバー (サポートされているすべてのバージョン) を保護します。
     - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - オンプレミスの SQL サーバー:
-        - [Azure Arc 対応 SQL Server (プレビュー)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc 対応 SQL Server (プレビュー)](/sql/sql-server/azure-arc/overview)
         - [Windows マシン上で実行される SQL Server (Azure Arc なし)](../azure-monitor/platform/agent-windows.md)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567852"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878920"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Salesforce Service Cloud を Azure Sentinel に接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "98567852"
 
 - ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
-- 関数アプリを作成するには、Azure Functions に対する読み取りと書き込みのアクセス許可が必要です。 [Azure Functions](/azure/azure-functions/) の詳細を確認してください。
+- 関数アプリを作成するには、Azure Functions に対する読み取りと書き込みのアクセス許可が必要です。 [Azure Functions](../azure-functions/index.yml) の詳細を確認してください。
 
 - 次の Salesforce REST API 資格情報が必要です。**Salesforce API ユーザー名**、**Salesforce API パスワード**、**Salesforce セキュリティ トークン**、**Salesforce コンシューマー キー**、**Salesforce コンシューマー シークレット**。 Salesforce REST API の詳細については、[こちら](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm)を参照してください。
 

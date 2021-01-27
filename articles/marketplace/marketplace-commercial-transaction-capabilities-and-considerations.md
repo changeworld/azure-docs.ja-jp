@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600381"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880744"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -90,7 +90,7 @@ Microsoft では、Microsoft のコマーシャル マーケットプレース�
 
 顧客がコマーシャル マーケットプレースからお客様のトランザクション オファーを購入すると、20% の標準ストア サービス料金が課金されます。 この料金の詳細については、「[Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560)」のセクション 5c を参照してください。
 
-コマーシャル マーケットプレースに公開する特定の取引可能なオファーについては、減額された 10% のストア サービス料金の対象となる場合があります。 オファーが対象となるには、Microsoft によって Azure IP 共同販売インセンティブ対象に指定されている必要があります。 Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 資格が満たされると、Azure IP 共同販売インセンティブ対象の状態が失われるまで、翌月の 1 日に有効なすべてのトランザクションについて、サービス料金の減額を受けます。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)に関する記事を参照してください。
+コマーシャル マーケットプレースに公開する特定の取引可能なオファーについては、減額された 10% のストア サービス料金の対象となる場合があります。 オファーが対象となるには、Microsoft によって Azure IP 共同販売インセンティブ対象に指定されている必要があります。 Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 資格が満たされると、Azure IP 共同販売インセンティブ対象の状態が失われるまで、翌月の 1 日に有効なすべてのトランザクションについて、サービス料金の減額を受けます。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。
 
 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、マネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS ソリューションに適用されます。 1 つの Microsoft Teams アプリまたは少なくとも 2 つの Microsoft 365 アドイン (Excel、PowerPoint、Word、Outlook、SharePoint) に関連付けられており、Microsoft AppSource に公開されている有料 SaaS オファーでもこの割引が受けられます。
 

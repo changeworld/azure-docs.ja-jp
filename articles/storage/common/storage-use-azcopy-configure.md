@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897860"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881046"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -22,7 +22,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 > [!NOTE]
 > AzCopy で作業を始める際に役立つコンテンツを探している場合は、以下のいずれかの記事を参照してください。
 > - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-> - [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+> - [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 > - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 > - [AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ディスク領域を節約するために、すべてのプラン ファイルとログ ファイルをローカル コンピューターから削除する場合は、`azcopy jobs clean` コマンドを使用します。
 
 1 つのジョブのみに関連付けられているプラン ファイルとログ ファイルを削除するには、`azcopy jobs rm <job-id>` を使用します。 この例の `<job-id>` というプレースホルダーをジョブのジョブ ID に置き換えてください。
-
-

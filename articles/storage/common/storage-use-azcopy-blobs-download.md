@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630039"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880120"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする
 
@@ -143,7 +143,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 #### <a name="download-a-blob-snapshot"></a>BLOB のスナップショットをダウンロードする
 
-BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](/azure/storage/blobs/snapshots-overview)をダウンロードできます。 
+BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](../blobs/snapshots-overview.md)をダウンロードできます。 
 
 |    |     |
 |--------|-----------|

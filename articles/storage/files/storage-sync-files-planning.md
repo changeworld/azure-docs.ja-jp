@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492094"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880577"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -50,6 +50,9 @@ Azure File Sync のデプロイには、次の 3 つの基本的な管理オブ�
 ストレージ同期サービスで同期グループを作成する前に、まずストレージ同期サービスで Windows Server を登録する必要があります。 これにより、**登録済みサーバー** オブジェクトが作成され、これはサーバー (またはクラスター) とストレージ同期サービス間の信頼関係を表します。 ストレージ同期サービスを登録するには、まずサーバーに Azure File Sync エージェントをインストールする必要があります。 個々のサーバーまたはクラスターは、同時に 1 つのストレージ同期サービスのみに登録できます。
 
 同期グループには、1 つのクラウド エンドポイント (Azure ファイル共有) と 1 つ以上のサーバー エンドポイントが含まれます。 サーバー エンドポイント オブジェクトには、**クラウドを使った階層化** 機能を構成する設定が含まれています。これにより Azure File Sync のキャッシュ機能が提供されます。Azure ファイル共有と同期するには、Azure ファイル共有を含むストレージ アカウントが、ストレージ同期サービスと同じ Azure リージョンに存在している必要があります。
+
+> [!Important]  
+> 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
 ### <a name="management-guidance"></a>管理ガイダンス
 Azure File Sync をデプロイする場合は、次のことをお勧めします。
@@ -147,7 +150,7 @@ NTFS ボリュームのみがサポートされます。ReFS、FAT、FAT32 お�
 
 次の表に、NTFS ファイル システムの機能の相互運用の状態を示します。 
 
-| 特徴量 | サポートの状態 | Notes |
+| 機能 | サポートの状態 | Notes |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされています | Windows スタイルの随意アクセス制御リストは Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 Azure ファイル共有を直接マウントするときに ACL を適用することもできますが、これには追加の構成が必要です。 詳細については、[ID に関するセクション](#identity)を参照してください。 |
 | ハード リンク | スキップ | |
@@ -384,6 +387,6 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 ## <a name="next-steps"></a>次のステップ
 * [ファイアウォールとプロキシの設定の考慮事項](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files のデプロイの計画](storage-files-planning.md)
-* [Azure Files をデプロイする](storage-files-deployment-guide.md)
+* [Azure Files をデプロイする](./storage-how-to-create-file-share.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
 * [Azure File Sync の監視](storage-sync-files-monitoring.md)
