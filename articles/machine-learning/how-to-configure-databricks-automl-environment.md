@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7c5544ec5f89cfbf2451c19430a99b64825f90bc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740965"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872606"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と AutoML を含む開発環境をセットアップする 
 
@@ -119,7 +119,7 @@ AutoML 構成では、Azure Databricks を使用するときに次のパラメ�
 + これらのサンプルは、ワークスペースから直接インポートしてください。 次を参照してください。![インポートの選択](./media/how-to-configure-environment/azure-db-screenshot.png)
 ![パネルのインポ―ト](./media/how-to-configure-environment/azure-db-import.png)
 
-+ [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](how-to-create-your-first-pipeline.md)する方法を確認します。
++ [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](./how-to-create-machine-learning-pipelines.md)する方法を確認します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660544"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872402"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
@@ -44,7 +44,7 @@ VNet 間接続を作成するときに、ローカル ネットワーク ゲー�
 
 ### <a name="site-to-site-ipsec"></a>サイト間 (IPsec)
 
-複雑なネットワーク構成で作業している場合は、代わりに[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)を使用して VNet を接続する方がよい場合もあります。 サイト間 IPsec の手順に従う場合は、ローカル ネットワーク ゲートウェイを手動で作成して構成します。 各 VNet のローカル ネットワーク ゲートウェイは、他方の VNet をローカル サイトとして扱います。 これらの手順では、トラフィックをルーティングするための追加のアドレス空間をローカル ネットワーク ゲートウェイに指定することができます。 VNet のアドレス空間が変更されたら、対応するローカル ネットワーク ゲートウェイを手動で更新する必要があります。
+複雑なネットワーク構成で作業している場合は、代わりに[サイト間接続](./tutorial-site-to-site-portal.md)を使用して VNet を接続する方がよい場合もあります。 サイト間 IPsec の手順に従う場合は、ローカル ネットワーク ゲートウェイを手動で作成して構成します。 各 VNet のローカル ネットワーク ゲートウェイは、他方の VNet をローカル サイトとして扱います。 これらの手順では、トラフィックをルーティングするための追加のアドレス空間をローカル ネットワーク ゲートウェイに指定することができます。 VNet のアドレス空間が変更されたら、対応するローカル ネットワーク ゲートウェイを手動で更新する必要があります。
 
 ### <a name="vnet-peering"></a>VNET ピアリング
 
@@ -200,7 +200,7 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 
 ## <a name="add-additional-connections"></a>さらに接続を追加する
 
-さらに接続を追加する場合は、接続の作成元となる仮想ネットワーク ゲートウェイに移動し、 **[接続]** を選択します。 別の VNet 間接続を作成することも、オンプレミスの場所への IPsec サイト間接続を作成することもできます。 作成する接続の種類に合わせて、 **[接続の種類]** を調整してください。 追加の接続を作成する前に、仮想ネットワークのアドレス空間が、接続先のアドレス空間と重複していないことを確認してください。 サイト間接続を作成する手順については、[サイト間接続の作成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。
+さらに接続を追加する場合は、接続の作成元となる仮想ネットワーク ゲートウェイに移動し、 **[接続]** を選択します。 別の VNet 間接続を作成することも、オンプレミスの場所への IPsec サイト間接続を作成することもできます。 作成する接続の種類に合わせて、 **[接続の種類]** を調整してください。 追加の接続を作成する前に、仮想ネットワークのアドレス空間が、接続先のアドレス空間と重複していないことを確認してください。 サイト間接続を作成する手順については、[サイト間接続の作成](./tutorial-site-to-site-portal.md)に関するページを参照してください。
 
 ## <a name="vnet-to-vnet-faq"></a>VNet 間接続に関してよく寄せられる質問
 

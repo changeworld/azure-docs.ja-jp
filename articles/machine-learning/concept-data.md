@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539885"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872011"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -101,8 +101,8 @@ Azure Machine Learning のデータセットは、データのコピーではあ
      + [自動 ML の実験](how-to-use-automated-ml-for-ml-models.md)
      + [デザイナー](tutorial-designer-automobile-price-train-score.md#import-data)
      + [ノートブック](how-to-train-with-datasets.md)
-     + [Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)
-+ [機械学習パイプライ](how-to-create-your-first-pipeline.md)ンでの[バッチ推論](./tutorial-pipeline-batch-scoring-classification.md)によるスコアリングのためのデータセットにアクセスします。
+     + [Azure Machine Learning パイプライン](./how-to-create-machine-learning-pipelines.md)
++ [機械学習パイプライ](./how-to-create-machine-learning-pipelines.md)ンでの[バッチ推論](./tutorial-pipeline-batch-scoring-classification.md)によるスコアリングのためのデータセットにアクセスします。
 + [データ ドリフト](#drift)の検出のためのデータセット モニターを設定します。
 
 <a name="label"></a>

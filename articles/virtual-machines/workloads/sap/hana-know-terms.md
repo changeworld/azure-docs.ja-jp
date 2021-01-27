@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e4e223e7932f7fc8699c04a94b079b7f16e3d5
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 326e2a436f07d841a0b3196a4abddd5ee0f8b67c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873588"
 ---
 # <a name="know-the-terms"></a>用語の確認
 
@@ -36,7 +36,7 @@ ms.locfileid: "98198902"
 - **Azure 上の SAP HANA (L インスタンス):** さまざまな Azure リージョンの L インスタンス スタンプにデプロイされた SAP HANA TDI 認定ハードウェア上で HANA インスタンスを実行する、Azure におけるプランの正式名称。 関連用語の *HANA L インスタンス* は、*SAP HANA on Azure (L インスタンス)* の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
 - **クロスプレミス**:オンプレミスのデータ センターと Azure の間で、サイト間接続、マルチサイト接続、または Azure ExpressRoute 接続を利用する Azure サブスクリプションに VM をデプロイするシナリオを指します。 この種のデプロイは、共通の Azure ドキュメントでもクロスプレミス シナリオとして説明されています。 この接続の目的は、オンプレミスのドメイン、オンプレミスの Azure Active Directory/OpenLDAP、およびオンプレミスの DNS を Azure に拡張することです。 オンプレミスのランドスケープが、Azure サブスクリプションの Azure 資産に拡張されます。 この拡張により、VM をオンプレミス ドメインに含めることができます。 
 
-   オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM 上でサービス (DBMS サービスなど) を実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM 間での通信と名前解決が可能です。 このシナリオが、ほとんどの SAP 資産をデプロイする際の一般的な方法です。 詳しくは、[Azure VPN Gateway ](../../../vpn-gateway/vpn-gateway-about-vpngateways.md)に関する記事、および[Azure Portal を使用したサイト間接続の仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事をご覧ください。
+   オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM 上でサービス (DBMS サービスなど) を実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM 間での通信と名前解決が可能です。 このシナリオが、ほとんどの SAP 資産をデプロイする際の一般的な方法です。 詳しくは、[Azure VPN Gateway ](../../../vpn-gateway/vpn-gateway-about-vpngateways.md)に関する記事、および[Azure Portal を使用したサイト間接続の仮想ネットワークの作成](../../../vpn-gateway/tutorial-site-to-site-portal.md)に関する記事をご覧ください。
 - **Tenant**: HANA L インスタンス スタンプにデプロイされたお客様は、"*テナント*" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 別のテナントに割り当てられているストレージ ユニットやコンピューティング ユニットは、HANA L インスタンス スタンプ レベルで相互に認識したり通信したりすることはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも HANA L インスタンス スタンプ レベルでテナント間が通信することはありません。
 - **SKU カテゴリ**:HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
     - **Type I クラス**:S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、および S224m

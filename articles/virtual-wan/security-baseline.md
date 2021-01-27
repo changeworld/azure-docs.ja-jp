@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f124c0b4af69338ad10f7247a4260b4a348beb5
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a0acbe84a98bc63e5806d25241811c0a7591b897
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131204"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872623"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>Virtual WAN 用の Azure セキュリティ ベースライン
 
@@ -22,7 +22,7 @@ Azure セキュリティ ベンチマークに対する Virtual WAN の完全な
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-controls-v2-network-security.md)」を参照してください。*
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: 内部トラフィック用のセキュリティを実装する
 
@@ -62,9 +62,9 @@ Azure Firewall を使用して、インターネットや他の外部の場所�
 
 Azure Virtual Network に対する攻撃から資産を保護するには、Azure が提供する DDoS Protection を選択します。 Azure Security Center を使用して、ネットワーク関連リソースに関する構成ミスのリスクを検出します。
 
-- [Azure Firewall のドキュメント](/azure/firewall)
+- [Azure Firewall のドキュメント](../firewall/index.yml)
 
-- [Azure portal を使用した Azure DDoS Protection Standard の管理](/azure/virtual-network/manage-ddos-protection) 
+- [Azure portal を使用した Azure DDoS Protection Standard の管理](../ddos-protection/manage-ddos-protection.md) 
 
 - [Azure Security Center の推奨事項](../security-center/recommendations-reference.md#recs-networking)
 
@@ -88,9 +88,9 @@ Azure Virtual Network に対する攻撃から資産を保護するには、Azur
 
 - [サービス タグの概要と使用](../virtual-network/service-tags-overview.md)
 
-- [アプリケーション セキュリティ グループの概要と使用](/azure/virtual-network/security-overview#application-security-groups)
+- [アプリケーション セキュリティ グループの概要と使用](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-- [Azure Firewall のドキュメント](/azure/firewall/)
+- [Azure Firewall のドキュメント](../firewall/index.yml)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -100,9 +100,9 @@ Azure Virtual Network に対する攻撃から資産を保護するには、Azur
 
 **ガイダンス**:セキュリティで保護された DNS 機能は、Azure Firewall を使用して Virtual WAN に提供されます。 クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役となる DNS プロキシとして機能するように、Azure Firewall を構成します。 カスタム DNS サーバーの構成では、DNS 解決の不一致を回避するために DNS プロキシを有効にし、ネットワーク ルールで完全修飾ドメイン名のフィルタリングを有効にします。 
 
-- [Azure Firewall のドキュメント](/azure/firewall/)
+- [Azure Firewall のドキュメント](../firewall/index.yml)
 
-- [Azure Firewall の DNS 設定](/azure/firewall/dns-settings)
+- [Azure Firewall の DNS 設定](../firewall/dns-settings.md)
 
 - [プライベート リンクを使用して DNS フォワーダーとして Azure Firewall を使用する](https://github.com/adstuart/azure-privatelink-dns-azurefirewall)
 
@@ -112,7 +112,7 @@ Azure Virtual Network に対する攻撃から資産を保護するには、Azur
 
 ## <a name="identity-management"></a>ID 管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management).* 」を参照してください。
+*詳細については、[Azure セキュリティ ベンチマークの「ID 管理](../security/benchmarks/security-controls-v2-identity-management.md).* 」を参照してください。
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1:Azure Active Directory を中央 ID および認証システムとして標準化する
 
@@ -189,7 +189,7 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 ## <a name="privileged-access"></a>特権アクセス
 
-*詳細については、[Azure セキュリティ ベンチマークの「特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「特権アクセス](../security/benchmarks/security-controls-v2-privileged-access.md)」を参照してください。*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2:ビジネス クリティカルなシステムへの管理アクセスを制限する
 
@@ -211,7 +211,7 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、[Azure セキュリティ ベンチマークの「データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-controls-v2-data-protection.md)」を参照してください。*
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4:転送中の機密情報を暗号化する
 
@@ -229,7 +229,7 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 ## <a name="asset-management"></a>アセット管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「アセット管理](../security/benchmarks/security-controls-v2-asset-management.md)」を参照してください。*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1:セキュリティ チームが資産のリスクを確実に可視化できるようにする
 
@@ -253,7 +253,7 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 **ガイダンス**:Azure リソース、リソース グループ、サブスクリプションにタグを適用して、それらを論理的に分類できます。 各タグは、名前と値のペアで構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。 Azure Virtual WAN は Azure Resource Manager ベースのリソースのデプロイもサポートするため、資産テンプレートのエクスポートもできます。 
 
-- [リソースの名前付けとタグ付けの意思決定ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [リソースの名前付けとタグ付けの意思決定ガイド](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 - [Azure Security Center の資産インベントリ管理](../security-center/asset-inventory.md)
 
@@ -284,7 +284,7 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 ## <a name="logging-and-threat-detection"></a>ログと脅威検出
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](../security/benchmarks/security-controls-v2-logging-threat-detection.md)」を参照してください。*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1:Azure リソースの脅威検出を有効にする
 
@@ -337,7 +337,7 @@ Virtual WAN ではさまざまな診断ログも使用でき、Azure portal で�
 
 - [Virtual WAN のログとメトリック](logs-metrics.md)
 
-- [Azure Firewall のログとメトリック](/azure/firewall/logs-and-metrics)
+- [Azure Firewall のログとメトリック](../firewall/logs-and-metrics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -368,11 +368,11 @@ Virtual WAN ではさまざまな診断ログも使用でき、Azure portal で�
 
 - [Virtual WAN のログとメトリック](logs-metrics.md)
 
-- [Azure Firewall のログとメトリック](/azure/firewall/logs-and-metrics)
+- [Azure Firewall のログとメトリック](../firewall/logs-and-metrics.md)
 
 Azure Virtual WAN のセキュリティは、Azure Firewall を通じて提供されます。 
 
-- [Azure Firewall のドキュメント](/azure/firewall/overview)
+- [Azure Firewall のドキュメント](../firewall/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -394,7 +394,7 @@ Azure Virtual WAN のセキュリティは、Azure Firewall を通じて提供�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-controls-v2-incident-response.md)」を参照してください。*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: 準備 – インシデント対応プロセスを Azure 用に更新する
 
@@ -476,7 +476,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -498,7 +498,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="posture-and-vulnerability-management"></a>体制と脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)」を参照してください。*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: 定期的に攻撃シミュレーションを実施する
 
@@ -517,7 +517,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="endpoint-security"></a>エンドポイント セキュリティ
 
-*詳細については、[Azure セキュリティ ベンチマークの「エンドポイントのセキュリティ](/azure/security/benchmarks/security-controls-v2-endpoint-security)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「エンドポイントのセキュリティ](../security/benchmarks/security-controls-v2-endpoint-security.md)」を参照してください。*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1:エンドポイントでの検出と対応 (EDR) を使用する
 
@@ -535,7 +535,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="governance-and-strategy"></a>ガバナンスと戦略
 
-*詳細については、[Azure セキュリティ ベンチマークの「ガバナンスと戦略](/azure/security/benchmarks/security-controls-v2-governance-strategy)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ガバナンスと戦略](../security/benchmarks/security-controls-v2-governance-strategy.md)」を参照してください。*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: 資産の管理とデータ保護の戦略を定義する 
 
@@ -560,15 +560,15 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 -   適切な暗号化標準
 
 詳細については、次のリファレンスを参照してください。
-- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure のセキュリティの基礎 - Azure のデータ セキュリティ、暗号化、ストレージ](../security/fundamentals/encryption-overview.md)
 
-- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure セキュリティ ベンチマーク - アセット管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure セキュリティ ベンチマーク - データ保護](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -596,7 +596,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 **ガイダンス**:個々の資産とそれらがホストされている環境に対するリスクを継続的に測定し、軽減します。 高い価値を持つ資産と、攻撃に晒される可能性の高い部分 (公開されたアプリケーション、ネットワークのイングレス ポイントとエグレス ポイント、ユーザーと管理者のエンドポイントなど) を優先します。
 
-- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -637,7 +637,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 詳細については、次のリファレンスを参照してください。
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md)
 
@@ -665,9 +665,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure セキュリティ ベンチマーク - ID 管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks//security-controls-v2-privileged-access)
+- [Azure セキュリティ ベンチマーク - 特権アクセス](../security/benchmarks//security-controls-v2-privileged-access.md)
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -699,9 +699,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ログと脅威検出](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - インシデント対応](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -715,5 +715,5 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

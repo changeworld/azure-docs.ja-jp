@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913625"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873248"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -142,4 +142,4 @@ Data Lake Storage Gen2 からのデータのダウンロードに使用できる
 |Azure Data Factory | [Azure Data Factory の Copy アクティビティ](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](./data-lake-storage-use-distcp.md) |
 |Azure Storage Explorer|[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md)|
-|AzCopy ツール|[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)|
+|AzCopy ツール|[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-v10.md#transfer-data)|

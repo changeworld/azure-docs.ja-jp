@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0e256f2fe4b8d4275e331e0fe1fadd67e1d96655
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: bdc9cbf942b88af93befa34f73eb3a90469cfcef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567845"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873503"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>Proofpoint On Demand Email Security (POD) ソリューションを Azure Sentinel に接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "98567845"
 
 - ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
-- 関数アプリを作成するには、Azure Functions に対する読み取りと書き込みのアクセス許可が必要です。 [Azure Functions](/azure/azure-functions/) の詳細を確認してください。
+- 関数アプリを作成するには、Azure Functions に対する読み取りと書き込みのアクセス許可が必要です。 [Azure Functions](../azure-functions/index.yml) の詳細を確認してください。
 
 - 次の Websocket API 資格情報が必要です。ProofpointClusterID、ProofpointToken。 Websocket API の詳細については、[こちら](https://proofpointcommunities.force.com/community/s/article/Proofpoint-on-Demand-Pod-Log-API)を参照してください。
 

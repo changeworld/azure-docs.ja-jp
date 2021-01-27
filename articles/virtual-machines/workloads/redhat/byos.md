@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803818"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872894"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -194,7 +194,7 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 
     この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
-- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../linux/shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
+- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
 
     ```azurecli
     az vm create –image \
