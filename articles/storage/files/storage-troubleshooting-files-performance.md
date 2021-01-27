@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 729c3e46cf329c525ce9204b26d4c6aefa04c89d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724665"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632497"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -46,7 +46,7 @@ ms.locfileid: "97724665"
 ### <a name="solution"></a>解決策
 
 - Standard ファイル共有を使用している場合は、ストレージ アカウントで [[大きいファイルの共有]](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) を有効にします。 大きいファイルの共有では、共有あたり最大 10,000 IOPS がサポートされています。
-- Premium ファイル共有を使用している場合は、プロビジョニングされたファイル共有のサイズを増やして IOPS の上限を上げます。 詳細については、「[Premium ファイル共有のプロビジョニングについて](./understanding-billing.md#provisioned-billing)」をご覧ください。
+- Premium ファイル共有を使用している場合は、プロビジョニングされたファイル共有のサイズを増やして IOPS の上限を上げます。 詳細については、「[Premium ファイル共有のプロビジョニングについて](./understanding-billing.md#provisioned-model)」をご覧ください。
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>原因 2:メタデータまたは名前空間の過大なワークロード
 

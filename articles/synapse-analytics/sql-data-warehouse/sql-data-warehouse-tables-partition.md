@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a59c24100b433719ccfd3a9ea1b6a676695d381
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448022"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673436"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>専用 SQL プールでのテーブルのパーティション分割
 
@@ -58,9 +58,9 @@ ms.locfileid: "96448022"
 
 専用 SQL プールには、SQL Server よりも簡単なパーティションの定義方法が導入されています。 パーティション関数とパーティション構成は、SQL Server のものであるため、専用 SQL プールでは使用されません。 代わりに、必要なのは、パーティション分割された列と境界点を特定することだけです。 
 
-パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。 SQL Server および専用 SQL プールでは、テーブルごとに 1 つのパーティション列がサポートされます。このパーティション列で、範囲指定によるパーティションを指定することができます。 パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。 SQL Server および専用 SQL プールでは、テーブルごとに 1 つのパーティション列がサポートされます。このパーティション列で、範囲指定によるパーティションを指定することができます。 パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
-次の例では、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用して、FactInternetSales テーブルを OrderDateKey 列でパーティション分割します。
+次の例では、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、FactInternetSales テーブルを OrderDateKey 列でパーティション分割します。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -90,8 +90,8 @@ WITH
 
 SQL Server のパーティション定義を専用 SQL プールに移行するには、次の操作を行います。
 
-- SQL Server の[パーティション構成](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を除去します。
-- [パーティション関数](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)の定義を CREATE TABLE に追加します。
+- SQL Server の[パーティション構成](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を除去します。
+- [パーティション関数](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)の定義を CREATE TABLE に追加します。
 
 パーティション分割されたテーブルを SQL Server インスタンスから移行する場合、各パーティションに含まれる行数を調べるうえで以下の SQL が役立つ場合があります。 専用 SQL プールで同じパーティション分割の粒度を使用する場合、パーティションごとの行数が 60 の倍数で減少することに注意してください。  
 
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>パーティションの切り替え
 
-専用 SQL プールでは、パーティションの分割、結合、および切り替えがサポートされています。 これらの各機能は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用して実行されます。
+専用 SQL プールでは、パーティションの分割、結合、および切り替えがサポートされています。 これらの各機能は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して実行されます。
 
 2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。 テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。 パーティション境界が同じでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
 

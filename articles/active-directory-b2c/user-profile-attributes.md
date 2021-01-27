@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178723"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675748"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -160,7 +160,7 @@ Azure AD B2C の (ローカル アカウントの) パスワード ポリシー�
 
 ## <a name="mfa-phone-number-attribute"></a>MFA 電話番号属性
 
-多要素認証 (MFA) に電話を使用する場合は、ユーザー ID を確認するために携帯電話を使用します。 新しい電話番号をプログラムによって[追加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)し、電話番号の[更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、[取得](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)、[削除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)を行うには、MS Graph API [phone authentication method](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod) を使用します。
+多要素認証 (MFA) に電話を使用する場合は、ユーザー ID を確認するために携帯電話を使用します。 新しい電話番号をプログラムによって[追加](/graph/api/authentication-post-phonemethods)し、電話番号の[更新](/graph/api/b2cauthenticationmethodspolicy-update)、[取得](/graph/api/b2cauthenticationmethodspolicy-get)、[削除](/graph/api/phoneauthenticationmethod-delete)を行うには、MS Graph API [phone authentication method](/graph/api/resources/phoneauthenticationmethod) を使用します。
 
 Azure AD B2C の[カスタム ポリシー](custom-policy-overview.md)では、電話番号は要求の種類 `strongAuthenticationPhoneNumber` を通じて利用できます。
 

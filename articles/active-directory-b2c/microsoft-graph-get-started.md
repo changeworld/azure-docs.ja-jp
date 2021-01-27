@@ -1,5 +1,5 @@
 ---
-title: Microsoft Graph を使用してリソースを管理する
+title: Microsoft Graph アプリケーションを登録する
 titleSuffix: Azure AD B2C
 description: 必要な Graph API アクセス許可が付与されたアプリケーションを登録することにより、Microsoft Graph を使用した Azure AD B2C リソースの管理について準備します。
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954003"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675188"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
+# <a name="register-a-microsoft-graph-application"></a>Microsoft Graph アプリケーションを登録する
 
 [Microsoft Graph][ms-graph] を使用すると、顧客のユーザー アカウントやカスタム ポリシーなど、Azure AD B2C テナント内の多くのリソースを管理できます。 [Microsoft Graph API][ms-graph-api] を呼び出すスクリプトまたはアプリケーションを作成することによって、次のようなテナント管理タスクを自動化できます。
 
@@ -83,14 +83,15 @@ OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C �
 1. **[追加]** を選択します。 アクセス許可が完全に反映されるまでに数分かかる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
+
 管理アプリケーションを登録し、必要なアクセス許可を付与したので、お使いのアプリケーションとサービス (たとえば、Azure Pipelines) はその資格情報とアクセス許可を使用して、Microsoft Graph API と対話することができます。 
 
 * [Azure AD からアクセス トークンを取得する](/graph/auth-v2-service#4-get-an-access-token)
 * [アクセス トークンを使用して Microsoft Graph を呼び出す](/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph でサポートされている B2C 操作](microsoft-graph-operations.md)
-* [Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する](manage-user-accounts-graph-api.md)
+* [Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する](microsoft-graph-operations.md)
 * [Azure AD Reporting API を使って監査ログを取得する](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->
 [ms-graph]: /graph/
-[ms-graph-api]: https://docs.microsoft.com/graph/api/overview
+[ms-graph-api]: /graph/api/overview

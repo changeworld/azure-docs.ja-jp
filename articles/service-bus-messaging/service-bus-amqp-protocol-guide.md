@@ -3,12 +3,12 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736716"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624491"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -73,7 +73,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 送信ポートの要件
 
-TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
+TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
 
 ![宛先ポートの一覧][4]
 
@@ -240,14 +240,14 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 | 注釈マップ キー | 使用法 | API 名 |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | メッセージがエンティティ上に出現する時刻を宣言します。 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-key | メッセージを受信するパーティションを指示する、アプリケーションで定義されたキー。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | 転送キュー経由でメッセージを送信するためにトランザクションが使用される場合の、アプリケーションで定義されたパーティション キーの値。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-enqueued-time | メッセージをエンキューする実際の時刻を表す、サービスで定義された UTC 時刻。 インポート時には無視されます。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-number | メッセージに割り当てられる、サービスで定義された一意の番号。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | サービスで定義された、エンキューされるメッセージのシーケンス番号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | サービスで定義される。 メッセージがキュー/サブスクリプションでロックされるまでの日時。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-source | サービスで定義される。 配信不能キューからメッセージが受信された場合の、元のメッセージのソース。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | メッセージがエンティティ上に出現する時刻を宣言します。 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-key | メッセージを受信するパーティションを指示する、アプリケーションで定義されたキー。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-via-partition-key | 転送キュー経由でメッセージを送信するためにトランザクションが使用される場合の、アプリケーションで定義されたパーティション キーの値。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-enqueued-time | メッセージをエンキューする実際の時刻を表す、サービスで定義された UTC 時刻。 インポート時には無視されます。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-sequence-number | メッセージに割り当てられる、サービスで定義された一意の番号。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | サービスで定義された、エンキューされるメッセージのシーケンス番号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-locked-until | サービスで定義される。 メッセージがキュー/サブスクリプションでロックされるまでの日時。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-deadletter-source | サービスで定義される。 配信不能キューからメッセージが受信された場合の、元のメッセージのソース。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>トランザクション機能
 

@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564469"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632243"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Azure Active Directory (Azure AD) Identity Protection からデータを接続する
 
@@ -24,7 +24,6 @@ ms.locfileid: "85564469"
 
 - [Azure AD Premium P2 サブスクリプション](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザーが必要です。
-
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Azure AD Identity Protection に接続する
 

@@ -11,25 +11,25 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 9c9f5972cdd2690b86610ea585bdd82d736ed163
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76f9fb4ed5c3b88b3a1f69e352f50079586ec336
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792142"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663334"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブ (プレビュー) を作成および管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、T-SQL を使用してエラスティック ジョブを使い始めるためのシナリオの例を多数提供します。
 
-これらの例では、" [*ジョブ データベース*](job-automation-overview.md#job-database)" で利用できる [ストアド プロシージャ](#job-stored-procedures)と [ビュー](#job-views)を使います。
+これらの例では、"[*ジョブ データベース*](job-automation-overview.md#job-database)" で利用できる [ストアド プロシージャ](#job-stored-procedures)と [ビュー](#job-views)を使います。
 
-ジョブの作成、構成、実行、管理には、Transact-SQL (T-SQL) を使います。 エラスティック ジョブ エージェントの作成は T-SQL ではサポートされていないので、最初に、ポータルまたは [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) を使って " *エラスティック ジョブ エージェント* " を作成する必要があります。
+ジョブの作成、構成、実行、管理には、Transact-SQL (T-SQL) を使います。 エラスティック ジョブ エージェントの作成は T-SQL ではサポートされていないので、最初に、ポータルまたは [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) を使って "*エラスティック ジョブ エージェント*" を作成する必要があります。
 
 ## <a name="create-a-credential-for-job-execution"></a>ジョブ実行用の資格情報を作成する
 
-スクリプトを実行するためにターゲット データベースに接続するには、資格情報を使います。 資格情報を使ってスクリプトを正常に実行するには、ターゲット グループによって指定されているデータベースに対する適切なアクセス許可が必要です。 [論理 SQL サーバー](logical-servers.md)やプールのターゲット グループ メンバーを使うときは、ジョブの実行時にサーバーやプールを展開する前に資格情報を更新するために使うマスター資格情報を作成することを強くお勧めします。 データベース スコープの資格情報は、ジョブ エージェント データベース上で作成されます。 ターゲット データベース上での " *ログインの作成* " と " *ログイン データベース アクセス許可を付与するためのログインからのユーザーの作成* " の両方に、同じ資格情報を使う必要があります。
+スクリプトを実行するためにターゲット データベースに接続するには、資格情報を使います。 資格情報を使ってスクリプトを正常に実行するには、ターゲット グループによって指定されているデータベースに対する適切なアクセス許可が必要です。 [論理 SQL サーバー](logical-servers.md)やプールのターゲット グループ メンバーを使うときは、ジョブの実行時にサーバーやプールを展開する前に資格情報を更新するために使うマスター資格情報を作成することを強くお勧めします。 データベース スコープの資格情報は、ジョブ エージェント データベース上で作成されます。 ターゲット データベース上での "*ログインの作成*" と "*ログイン データベース アクセス許可を付与するためのログインからのユーザーの作成*" の両方に、同じ資格情報を使う必要があります。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -51,7 +51,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>ターゲット グループ (サーバー) を作成する
 
 次の例では、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 -- Connect to the job database specified when creating the job agent
@@ -63,8 +63,8 @@ EXEC jobs.sp_add_target_group 'ServerGroup1'
 EXEC jobs.sp_add_target_group_member
 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name='mymastercred', --credential required to refresh the databases in a server
-@server_name='server1.database.windows.net'
+@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net'
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -73,8 +73,8 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 
 ## <a name="exclude-an-individual-database"></a>データベースを個別に除外する
 
-次の例では、 *MappingDB* という名前のデータベースを除く、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+次の例では、*MappingDB* という名前のデータベースを除く、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -87,16 +87,16 @@ GO
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in a server
-@server_name=N'London.database.windows.net'
+@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
+@server_name = N'London.database.windows.net'
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in a server
-@server_name='server2.database.windows.net'
+@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server2.database.windows.net'
 GO
 
 --Exclude a database target member from the server target group
@@ -105,7 +105,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.windows.net',
-@database_name =N'MappingDB'
+@database_name = N'MappingDB'
 GO
 
 --View the recently created target group and target group members
@@ -116,7 +116,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>ターゲット グループ (プール) を作成する
 
 次の例では、1 つまたは複数のエラスティック プール内のすべてのデータベースをターゲットにする方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -128,9 +128,9 @@ EXEC jobs.sp_add_target_group 'PoolGroup'
 EXEC jobs.sp_add_target_group_member
 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name='mymastercred', --credential required to refresh the databases in a server
-@server_name='server1.database.windows.net',
-@elastic_pool_name='ElasticPool-1'
+@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net',
+@elastic_pool_name = 'ElasticPool-1'
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -140,20 +140,20 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>多数のデータベースに新しいスキーマをデプロイする
 
 次の例では、すべてのデータベースに新しいスキーマをデプロイする方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name='CreateTableTest', @description='Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
 
 -- Add job step for create table
-EXEC jobs.sp_add_jobstep @job_name='CreateTableTest',
-@command=N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
+EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
+@command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name='myjobcred',
-@target_group_name='PoolGroup'
+@credential_name = 'myjobcred',
+@target_group_name = 'PoolGroup'
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>組み込みパラメーターを使用したデータ収集
@@ -188,7 +188,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 3. internal_execution_id 列上の `IX_<TableName>_Internal_Execution_ID` という名前の非クラスター化インデックス。
 4. 上記のすべての権限 (データベースに対する `CREATE TABLE` 権限を除く)。
 
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -198,15 +198,15 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
-@job_name='ResultsJob',
-@command= N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name='myjobcred',
-@target_group_name='PoolGroup',
-@output_type='SqlDatabase',
-@output_credential_name='myjobcred',
-@output_server_name='server1.database.windows.net',
-@output_database_name='<resultsdb>',
-@output_table_name='<resutlstable>'
+@job_name = 'ResultsJob',
+@command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
+@credential_name = 'myjobcred',
+@target_group_name = 'PoolGroup',
+@output_type = 'SqlDatabase',
+@output_credential_name = 'myjobcred',
+@output_server_name = 'server1.database.windows.net',
+@output_database_name = '<resultsdb>',
+@output_table_name = '<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
 
@@ -215,17 +215,17 @@ EXEC jobs.sp_add_target_group 'MasterGroup'
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name='MasterGroup',
-@target_type='SqlDatabase',
-@server_name='server1.database.windows.net',
-@database_name='master'
+@target_group_name = 'MasterGroup',
+@target_type = 'SqlDatabase',
+@server_name = 'server1.database.windows.net',
+@database_name = 'master'
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
-@job_name='ResultsPoolsJob',
-@description='Demo: Collection Performance data from all pools',
-@schedule_interval_type='Minutes',
-@schedule_interval_count=15
+@job_name = 'ResultsPoolsJob',
+@description = 'Demo: Collection Performance data from all pools',
+@schedule_interval_type = 'Minutes',
+@schedule_interval_count = 15
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -246,19 +246,19 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name='myjobcred',
-@target_group_name='MasterGroup',
-@output_type='SqlDatabase',
-@output_credential_name='myjobcred',
-@output_server_name='server1.database.windows.net',
-@output_database_name='resultsdb',
-@output_table_name='resutlstable'
+@credential_name = 'myjobcred',
+@target_group_name = 'MasterGroup',
+@output_type = 'SqlDatabase',
+@output_credential_name = 'myjobcred',
+@output_server_name = 'server1.database.windows.net',
+@output_database_name = 'resultsdb',
+@output_table_name = 'resutlstable'
 ```
 
 ## <a name="view-job-definitions"></a>ジョブの定義を表示する
 
 次の例では、現在のジョブの定義を表示する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -278,7 +278,7 @@ select * from jobs.jobsteps
 ## <a name="begin-unplanned-execution-of-a-job"></a>ジョブの計画されていない実行を開始する
 
 次の例では、ジョブをすぐに開始する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -300,22 +300,22 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>ジョブの実行をスケジュールする
 
 次の例では、後で実行するようにジョブのスケジュールを設定する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 EXEC jobs.sp_update_job
-@job_name='ResultsJob',
+@job_name = 'ResultsJob',
 @enabled=1,
-@schedule_interval_type='Minutes',
-@schedule_interval_count=15
+@schedule_interval_type = 'Minutes',
+@schedule_interval_count = 15
 ```
 
 ## <a name="monitor-job-execution-status"></a>ジョブの実行状態を監視する
 
 次の例では、すべてのジョブの実行状態の詳細を表示する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -343,7 +343,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>ジョブを取り消す
 
 次の例では、ジョブを取り消す方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -361,7 +361,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>古いジョブの履歴を削除する
 
 次の例では、特定の日付より前のジョブ履歴を削除する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -375,7 +375,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>ジョブとそのすべてのジョブ履歴を削除する
 
 次の例では、特定のジョブとそれに関連するすべてのジョブ履歴を削除する方法を示します。  
-" [*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent

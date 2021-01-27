@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034919"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674135"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -426,7 +426,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.req` (要求) オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | 説明                                                    |
+| プロパティ      | [説明]                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -441,7 +441,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.res` (応答) オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | 説明                                               |
+| プロパティ  | [説明]                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -567,7 +567,7 @@ module.exports = function(context) {
 
 ### <a name="in-local-development-environment"></a>ローカル開発環境
 
-ローカルで実行されている場合は、関数プロジェクトに [`local.settings.json` ファイル](/azure/azure-functions/functions-run-local)が含まれています。このファイルに、`Values` オブジェクトの環境変数が格納されます。 
+ローカルで実行されている場合は、関数プロジェクトに [`local.settings.json` ファイル](./functions-run-local.md)が含まれています。このファイルに、`Values` オブジェクトの環境変数が格納されます。 
 
 ```json
 {

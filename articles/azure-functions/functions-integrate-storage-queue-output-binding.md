@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2821a16e0b72b32cc392b7ae626d782734458a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982015"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674203"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -22,13 +22,13 @@ Azure Functions では、入力および出力バインディングによって�
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- 「[Azure Portal で初めての関数を作成する](functions-create-first-azure-function.md)」の指示に従い、「**リソースのクリーンアップ**」の手順は実行しないでください。 ここで使用する関数と Function App は、そのクイックスタートで作成します。
+- 「[Azure Portal で初めての関数を作成する](./functions-get-started.md)」の指示に従い、「**リソースのクリーンアップ**」の手順は実行しないでください。 ここで使用する関数と Function App は、そのクイックスタートで作成します。
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>出力バインディングを追加する
 
 このセクションでは、Portal UI を使用して、前に作成した関数にキュー ストレージの出力バインディングを追加します。 このバインディングにより、最小限のコードの記述でキューにメッセージを作成できるようになります。 ストレージ接続のオープン、キューの作成、キューへの参照の取得などのタスクのためにコードを記述する必要はありません。 Azure Functions ランタイムおよびキューの出力バインディングが、ユーザーに代わってこれらのタスクを処理します。
 
-1. Azure Portal で、「[Azure Portal で初めての関数を作成する](functions-create-first-azure-function.md)」で作成した Function App の Function App ページを開きます。 ページを開くには、**関数アプリ**を検索して選択します。 次に、関数アプリを選択します。
+1. Azure Portal で、「[Azure Portal で初めての関数を作成する](./functions-get-started.md)」で作成した Function App の Function App ページを開きます。 ページを開くには、**関数アプリ** を検索して選択します。 次に、関数アプリを選択します。
 
 1. 関数アプリを選択し、前のクイックスタートで作成した関数を選択します。
 
@@ -38,7 +38,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[Azure Queue Storage]** というバインディングの種類を選択して、このスクリーンショットの次の表で指定されている設定を追加します。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="関数の出力バインディングを作成します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Azure portal 内の関数に Queue Storage の出力バインディングを追加します。" border="true":::
     
     | 設定      |  推奨値   | 説明                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,11 +94,11 @@ Azure Functions では、入力および出力バインディングによって�
 1. コードの変更が保存されたら、 **[テスト]** を選択します。
 1. テストが下の画像と一致することを確認し、 **[実行]** を選択します。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="関数の出力バインディングを作成します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Azure portal でキュー ストレージのバインディングをテストします。" border="true":::
 
-    **要求本文**に `name` 値 *Azure* が含まれていることに注意してください。 この値は、関数が呼び出されたときに作成されるキュー メッセージに表示されます。
+    **要求本文** に `name` 値 *Azure* が含まれていることに注意してください。 この値は、関数が呼び出されたときに作成されるキュー メッセージに表示されます。
     
-    ここで **[実行]** を選択する代わりに、ブラウザーで URL を入力してクエリ文字列に `name` 値を指定することで、関数を呼び出すことができます。 このブラウザーの方法は、[前のクイック スタート](functions-create-first-azure-function.md#test-the-function)で示されています。
+    ここで **[実行]** を選択する代わりに、ブラウザーで URL を入力してクエリ文字列に `name` 値を指定することで、関数を呼び出すことができます。 このブラウザーの方法は、[前のクイック スタート](./functions-get-started.md)で示されています。
 
 1. ログを確認して、関数が成功したことを確認します。 
 
@@ -111,11 +111,11 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[アプリケーション設定]** で、 **[AzureWebJobsStorage]** を選択します。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="関数の出力バインディングを作成します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="スクリーンショットには、AzureWebJobsStorage が選択されている構成ページが示されています。" border="true":::
 
 1. アカウント名を検索してメモします。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="関数の出力バインディングを作成します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="AzureWebJobsStorage に接続されているストレージ アカウントを検索します。" border="true":::
 
 ### <a name="examine-the-output-queue"></a>出力キューを確認する
 

@@ -3,15 +3,15 @@ title: 監査ログ - Azure Database for MariaDB
 description: Azure Database for MariaDB で利用できる監査ログと、各種ログ レベルを有効にするため利用可能なパラメーターについて説明します。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: e66eaf62b54759222421b17ebc7e33b82e018338
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3032cb8f5ce399822de65c867d1f32da254c9948
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541761"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663759"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監査ログ
 

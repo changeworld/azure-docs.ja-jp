@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562694"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625167"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -34,7 +34,7 @@ NPM の様々な機能に対するプラットフォーム要件を、以下に�
 - NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>NPM 内の監視ノードとして Linux マシンを使用できますか。
-Linux ベースのノードを使用してネットワークを監視する機能が一般提供されました。 [こちら](../../virtual-machines/extensions/oms-linux.md)でエージェントにアクセスします。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
+Linux ベースのノードを使用してネットワークを監視する機能が一般提供されました。 [こちら](../../virtual-machines/extensions/oms-linux.md)でエージェントにアクセスします。 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視で使用するノードのサイズ要件はありますか。
 ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 このソリューションには、その CPU 使用率が 5% を超えた場合に監視プロセスを停止する機能があります。

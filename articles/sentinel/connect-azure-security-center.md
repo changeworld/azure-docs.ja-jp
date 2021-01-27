@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655954"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633046"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Security Center からの Azure Defender アラート データを接続する
 
@@ -39,6 +39,8 @@ Azure Defender アラート コネクタを使用して、[Azure Security Center
 1. Azure Defender アラートに対して Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
 
 ## <a name="next-steps"></a>次のステップ
+
 このドキュメントでは、Azure Defender を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。

@@ -8,17 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398217"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621880"
 ---
 # <a name="configure-private-link"></a>プライベート リンクを構成する
-
-> [!IMPORTANT]
-> この機能はパブリック プレビュー段階であり、サービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 プライベート リンクを使用すると、プライベート エンドポイント経由で Azure API for FHIR にアクセスできます。プライベート エンドポイントは、仮想ネットワークのプライベート IP アドレスを使用してプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート リンクを使用すると、パブリック DNS を経由せずに、Vnet から Microsoft のサービスにファースト パーティ サービスとして安全にアクセスできます。 この記事では、Azure API for FHIR のプライベート エンドポイントを作成、テスト、および管理する方法について説明します。
 
@@ -90,6 +87,6 @@ FHIR リソースのプライベート エンドポイントを作成しても�
 
 ### <a name="delete"></a>削除
 
-プライベート エンドポイントは、Azure portal の [概要] ブレード (下記) を使用するか、[ネットワーク (プレビュー)] の [プライベート エンドポイント接続] タブにある [削除] オプションを使用する方法でのみ削除できます。[削除] ボタンをクリックすると、プライベート エンドポイントとそれに関連付けられている NIC が削除されます。 FHIR リソースへのすべてのプライベート エンドポイントを削除し、パブリック ネットワーク アクセスが無効になっている場合、FHIR サーバーに対する要求は行われません。 FHIR リソースを削除または移動する前に、すべてのプライベート エンドポイントを FHIR リソースから削除する必要があります。
+プライベート エンドポイントは、Azure portal の [概要] ブレード (下記) を使用するか、[ネットワーク (プレビュー)] の [プライベート エンドポイント接続] タブにある [削除] オプションを使用する方法でのみ削除できます。[削除] ボタンをクリックすると、プライベート エンドポイントとそれに関連付けられている NIC が削除されます。 FHIR リソースへのすべてのプライベート エンドポイントを削除し、パブリック ネットワーク アクセスが無効になっている場合、FHIR サーバーに対する要求は行われません。
 
 ![プライベート エンドポイントの削除](media/private-link/private-link-delete.png)

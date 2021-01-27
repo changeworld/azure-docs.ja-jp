@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968536"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610983"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -211,31 +211,30 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
    ![正常にインストールされた PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. コマンド プロンプトを使用して **pip install numpy == 1.19.3** を実行してから、VSCode ウィンドウを再度読み込んでください。
 
-8. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** に移動するか、**Shift + Ctrl + P** キーボード ショートカットを使用して、「**Python: Select Interpreter to start Jupyter Server**」と入力します。
+7. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** に移動するか、**Shift + Ctrl + P** キーボード ショートカットを使用して、「**Python: Select Interpreter to start Jupyter Server**」と入力します。
 
    ![インタープリターを選択して Jupyter サーバーを起動する](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. 下の Python オプションを選択します。
+8. 下の Python オプションを選択します。
 
    ![下のオプションを選択する](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** に移動するか、**Shift + Ctrl + P** キーボード ショートカットを使用して、「**Developer: Reload Window**」と入力します。
+9. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** に移動するか、**Shift + Ctrl + P** キーボード ショートカットを使用して、「**Developer: Reload Window**」と入力します。
 
     ![ウィンドウを再度読み込む](./media/hdinsight-for-vscode/reload-window.png)
 
-11. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
+10. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-12. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive / Synapse:Pyspark Interactive]** を選択してクエリを送信します。 
+11. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive / Synapse:Pyspark Interactive]** を選択してクエリを送信します。 
 
     ![PySpark Interactive のコンテキスト メニュー](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、**Python Interactive** の結果が新しいタブに表示されます。PySpark をクリックすると、カーネルが **PySpark / Synapse Pyspark** に切り替わり、コードが正常に実行されます。 Synapse Pyspark カーネルに切り替える場合は、Azure portal で自動設定を無効にすることが推奨されます。 そうしないと、クラスターをウェイクアップし、初めて使用するために Synapse カーネルを設定するのに時間がかかることがあります。 このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックも送信できます。
+12. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、**Python Interactive** の結果が新しいタブに表示されます。PySpark をクリックすると、カーネルが **PySpark / Synapse Pyspark** に切り替わり、コードが正常に実行されます。 Synapse Pyspark カーネルに切り替える場合は、Azure portal で自動設定を無効にすることが推奨されます。 そうしないと、クラスターをウェイクアップし、初めて使用するために Synapse カーネルを設定するのに時間がかかることがあります。 このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックも送信できます。
 
     ![PySpark Interactive の Python Interactive ウィンドウ](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. 「 **%%info**」と入力し、Shift + Enter キーを押してジョブ情報を表示します (省略可能)。
+13. 「 **%%info**」と入力し、Shift + Enter キーを押してジョブ情報を表示します (省略可能)。
 
     ![PySpark Interactive: ジョブ情報の表示](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -479,7 +478,7 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 ## <a name="unlink-cluster"></a>クラスターのリンク解除
 
-1. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** の順に移動し、「**Spark / Hive: Unlink a Cluster**」と入力します。  
+1. メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Spark / Hive: Unlink a Cluster**」と入力します。  
 
 2. リンクを解除するクラスターを選択します。  
 
@@ -487,7 +486,7 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 ## <a name="sign-out"></a>サインアウトする  
 
-メニュー バーから、 **[表示]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
+メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
 ## <a name="issues-changed"></a>問題の変更
 

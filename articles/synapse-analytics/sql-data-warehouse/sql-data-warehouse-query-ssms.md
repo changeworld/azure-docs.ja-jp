@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b142c88b0003281237dad125080930c0dd4d3bee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115771"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673605"
 ---
 # <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続する
 
@@ -35,7 +35,7 @@ SQL Server Management Studio (SSMS) を使用して専用 SQL プール (旧称 
 このチュートリアルを使用するには、次のものが必要です。
 
 * 既存の専用 SQL プール。 作成するには、[専用 SQL プール (旧称 SQL DW) の作成](create-data-warehouse-portal.md)に関するページを参照してください。
-* SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)していない場合はダウンロードします (無料)。
+* SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)していない場合はダウンロードします (無料)。
 * 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プール (旧称 SQL DW)](sql-data-warehouse-connect-overview.md) に関するページを参照してください。
 
 ## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1.専用 SQL プール (旧称 SQL DW) への接続

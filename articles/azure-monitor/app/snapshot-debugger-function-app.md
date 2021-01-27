@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 12/18/2020
-ms.openlocfilehash: 3060bd6ea8d7fbc4a4bf005b84cd07d420987ab6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: d86455eae0834f29099c7d5c96f8326408daf519
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696317"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675531"
 ---
 # <a name="enable-snapshot-debugger-for-net-and-net-core-apps-in-azure-functions"></a>Azure Functions で .NET および .NET Core アプリのスナップショット デバッガーを有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "97696317"
 
 ## <a name="prerequisites"></a>[前提条件]
 
-* [関数アプリで Application Insights の監視を有効にする](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#add-to-an-existing-function-app)
+* [関数アプリで Application Insights の監視を有効にする](../../azure-functions/configure-monitoring.md#add-to-an-existing-function-app)
 
 ## <a name="enable-snapshot-debugger"></a> スナップショット デバッガーを有効にする
 
@@ -147,5 +147,5 @@ namespace SnapshotCollectorAzureFunction
 
 - 例外をトリガーできるアプリケーションへのトラフィックを生成します。 その後、Application Insights インスタンスにスナップショットが送信がされるまで 10 ～ 15 分待機します。
 - Azure portal で[スナップショットを確認します](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)。
-- 関数アプリのユース ケースに基づいてスナップショット デバッガーの構成をカスタマイズします。 詳細については、[host.json のスナップショット構成](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsightssnapshotconfiguration)に関するページを参照してください。
+- 関数アプリのユース ケースに基づいてスナップショット デバッガーの構成をカスタマイズします。 詳細については、[host.json のスナップショット構成](../../azure-functions/functions-host-json.md#applicationinsightssnapshotconfiguration)に関するページを参照してください。
 - スナップショット デバッガーの問題のトラブルシューティングについては、[スナップショット デバッガーのトラブルシューティング](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)のページを参照してください。

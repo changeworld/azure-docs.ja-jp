@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655372"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632184"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Azure Sentinel に Office 365 のログを接続する
 
 [Office 365](/office/) のログ コネクタは、**Exchange**、**SharePoint** (**OneDrive** を含む)、そして今回追加された **Teams** でユーザーと管理者の実行中のアクティビティに関する情報を Azure Sentinel に取り込みます。 この情報には、ファイルのダウンロード、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作、Teams イベント (チャット イベント、チーム イベント、メンバー イベント、チャンネル イベントなど) などのアクションの詳細と、アクションを実行したユーザーの詳細が含まれます。 Office 365 のログを Azure Sentinel に接続することで、ブックでのこのデータの表示と分析、カスタム アラートの作成のためのこのデータに対するクエリの実行、調査プロセスの改善のためのこのデータの組み込みが可能になり、Office 365 のセキュリティをより深く把握できるようになります。
-
-> [!IMPORTANT]
-> Office 365 ログ コネクタの **Microsoft Teams ログ向け拡張機能** は現在、パブリック プレビューの段階にあります。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

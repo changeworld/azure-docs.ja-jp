@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109098"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660252"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 
@@ -66,9 +66,10 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 このオプションを使用して、SAML サービス プロバイダーとして Azure AD B2C を使用することもできます。 [詳細については、こちらを参照してください](identity-provider-adfs.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>DevOps シナリオ用のアプリケーション
+
 その他のアカウントの種類を使用して、たとえば、Microsoft Graph を使用して Identity Experience Framework ポリシーをアップロードしたり、ユーザーをプロビジョニングしたりといった、DevOps シナリオを管理するアプリを作成できます。 [Microsoft Graph アプリケーションを登録して Azure AD B2C リソースを管理する方法](microsoft-graph-get-started.md)を参照してください。
 
-アクセス許可の多くは Azure B2C コンシューマー ユーザーには適用されないため、すべての Microsoft Graph のアクセス許可が表示されない場合があります。 [Microsoft Graph を使用したユーザー管理の詳細については、こちらを参照してください](manage-user-accounts-graph-api.md)。
+アクセス許可の多くは Azure B2C コンシューマー ユーザーには適用されないため、すべての Microsoft Graph のアクセス許可が表示されない場合があります。 [Microsoft Graph を使用したユーザー管理の詳細については、こちらを参照してください](microsoft-graph-operations.md)。
 
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>管理者の同意と offline_access+openid スコープ
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->

@@ -32,7 +32,7 @@ ms.locfileid: "89500132"
 
 1. **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** で **[ゲートウェイ]** を選択します。
 2. デプロイするセルフホステッド ゲートウェイ リソースを選択します。
-3. **[Deployment]\(デプロイ\)** を選択します。
+3. **[Deployment]/(デプロイ/)** を選択します。
 4. **[トークン]** テキスト ボックスのアクセス トークンは、既定の **[有効期限]** 値と **[秘密鍵]** 値に基づいて自動生成されました。 必要に応じて、いずれかまたは両方のコントロールで値を選択し、新しいトークンを生成します。
 5. **[デプロイ スクリプト]** の下にある **[Kubernetes]** タブを選択します。
 6. **\<gateway-name\>.yml** ファイル リンクを選択し、YAML ファイルをダウンロードします。
@@ -70,13 +70,13 @@ ms.locfileid: "89500132"
 ### <a name="namespace"></a>名前空間
 Kubernetes [名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)を使用すると、1 つのクラスターを複数のチーム、プロジェクト、またはアプリケーションに分割する際に役立ちます。 名前空間からはリソースと名前の範囲が与えられます。 リソース クォータとアクセス制御ポリシーに関連付けることができます。
 
-Azure portal からは、**既定**の名前空間でセルフホステッド ゲートウェイ リソースを作成するコマンドが与えられます。 この名前空間は自動的に作成され、あらゆるクラスターに存在します。削除できません。
+Azure portal からは、**既定** の名前空間でセルフホステッド ゲートウェイ リソースを作成するコマンドが与えられます。 この名前空間は自動的に作成され、あらゆるクラスターに存在します。削除できません。
 運用環境の別の名前空間にセルフホステッド ゲートウェイを[作成およびデプロイ](https://kubernetesbyexample.com/ns/)することを検討してください。
 
 ### <a name="number-of-replicas"></a>レプリカの数
 運用環境に適したレプリカの最小数は 2 です。
 
-既定では、セルフホステッド ゲートウェイは、**RollingUpdate** デプロイ[戦略](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy)を使用してデプロイされます。 既定値を確認し、特に使用するレプリカの数が多い場合は、[maxUnavailable](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#max-unavailable) および [maxSurge](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#max-surge) フィールドに明示的に設定することを検討してください。
+既定では、セルフホステッド ゲートウェイは、**RollingUpdate** デプロイ [戦略](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy)を使用してデプロイされます。 既定値を確認し、特に使用するレプリカの数が多い場合は、[maxUnavailable](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#max-unavailable) および [maxSurge](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#max-surge) フィールドに明示的に設定することを検討してください。
 
 ### <a name="container-resources"></a>コンテナー リソース
 既定では、Azure portal で提供される YAML ファイルには、コンテナー リソース要求が指定されていません。
@@ -94,7 +94,7 @@ Azure portal からは、**既定**の名前空間でセルフホステッド �
 リソース要求を 2 コアと 2 GiB に設定することから始めることをお勧めします。 ロード テストを実行し、結果に基づいてスケールアップ、スケールダウン、スケールアウト、スケールインします。
 
 ### <a name="container-image-tag"></a>コンテナー イメージ タグ
-Azure portal に用意されている YAML ファイルでは、**最新の**タグが使用されます。 このタグでは常に、最新版のセルフホステッド ゲートウェイ コンテナー イメージが参照されます。
+Azure portal に用意されている YAML ファイルでは、**最新の** タグが使用されます。 このタグでは常に、最新版のセルフホステッド ゲートウェイ コンテナー イメージが参照されます。
 
 新しいバージョンへの意図しないアップグレードを避けるために、運用環境で特定のバージョン タグを使用することを検討してください。
 

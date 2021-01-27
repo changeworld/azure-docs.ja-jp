@@ -7,20 +7,16 @@ ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8089b1e74e88db81c1c15ad2cbf2072abcfff241
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538388"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621347"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Azure DDoS Protection からデータを接続する
-
-> [!IMPORTANT]
-> Azure Sentinel の Azure DDoS Protection データ コネクタは、現在パブリック プレビュー段階にあります。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 分散型サービス拒否 (DDoS) 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。 [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する堅固な防御が提供されます。 Azure DDoS Protection ログを Azure Sentinel に接続すると、ブック内でのログ データの表示、ログ データを使用したカスタム アラートの作成、および調査改善に向けたログ データの組み込みを行うことができます。 
 

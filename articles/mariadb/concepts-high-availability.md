@@ -3,15 +3,15 @@ title: 高可用性 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB での高可用性について情報を提供します
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241346"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664335"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での高可用性
 Azure Database for MariaDB サービスでは、[99.99%](https://azure.microsoft.com/support/legal/sla/MariaDB) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されます。 Azure Database for MariaDB は、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性を提供します。 Azure Database for MariaDB は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。

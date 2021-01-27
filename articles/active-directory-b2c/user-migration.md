@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178808"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661155"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
-別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは *事前移行* と *シームレスな移行* という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
+別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは *事前移行* と *シームレスな移行* という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](microsoft-graph-operations.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
 
 ## <a name="pre-migration"></a>事前移行
 
@@ -34,7 +34,7 @@ ms.locfileid: "98178808"
 - ユーザーのプレーンテキストの資格情報 (ユーザー名とパスワード) にアクセスできる。
 - 資格情報が暗号化されているが、復号化できる。
 
-プログラムによってユーザー アカウントを作成する方法の詳細については、「[Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する](manage-user-accounts-graph-api.md)」を参照してください。
+プログラムによってユーザー アカウントを作成する方法の詳細については、「[Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する](microsoft-graph-operations.md)」を参照してください。
 
 ## <a name="seamless-migration"></a>シームレスな移行
 

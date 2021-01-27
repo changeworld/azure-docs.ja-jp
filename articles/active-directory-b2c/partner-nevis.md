@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629393"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674995"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>パスワードレス認証のために Azure Active Directory B2C を使用して Nevis を構成するチュートリアル
 
@@ -30,9 +30,9 @@ ms.locfileid: "97629393"
 
 - Azure AD サブスクリプション。 所有していない場合は、[無料アカウント](https://azure.microsoft.com/free/)を入手してください。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
-- Nevis をサインアップ ポリシー フローに統合する場合は、[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)を使用するように構成された Azure AD B2C 環境。
+- Nevis をサインアップ ポリシー フローに統合する場合は、[カスタム ポリシー](./custom-policy-get-started.md)を使用するように構成された Azure AD B2C 環境。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -134,9 +134,9 @@ ms.locfileid: "97629393"
 
 4. 変更内容をファイルに **保存** します。
 
-5. [指示](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account)に従って、**nevis.html** ファイルを Azure BLOB ストレージにアップロードします。
+5. [指示](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account)に従って、**nevis.html** ファイルを Azure BLOB ストレージにアップロードします。
 
-6. [指示](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors)に従って、このファイルのクロスオリジン リソース共有 (CORS) を有効にします。
+6. [指示](./customize-ui-with-html.md#3-configure-cors)に従って、このファイルのクロスオリジン リソース共有 (CORS) を有効にします。
 
 7. アップロードが完了し、CORS が有効になったら、一覧で **nevis.html** ファイルを選択します。
 
@@ -268,6 +268,6 @@ ms.locfileid: "97629393"
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

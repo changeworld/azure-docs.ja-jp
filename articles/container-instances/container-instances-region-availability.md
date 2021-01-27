@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763895"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661376"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -40,6 +40,7 @@ ms.locfileid: "96763895"
 | 米国東部 | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
 | 米国東部 2 | 4 | 16 | 4 | 16 | 50 | 該当なし |
 | フランス中部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
+| ドイツ中西部 | 3 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 東日本 | 2 | 8 | 4 | 16 | 50 | 該当なし |
 | 韓国中部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 米国中北部 | 2 | 3.5 | 4 | 16 | 50 | K80、P100、V100 |
@@ -48,6 +49,7 @@ ms.locfileid: "96763895"
 | 東南アジア | 4 | 16 | 4 | 16 | 50 | P100、V100 |
 | インド南部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 英国南部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
+| アラブ首長国連邦北部 | 3 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 米国中西部| 4 | 16 | 4 | 16 | 50 | 該当なし |
 | 西ヨーロッパ | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
 | 米国西部 | 4 | 16 | 4 | 16 | 50 | 該当なし |

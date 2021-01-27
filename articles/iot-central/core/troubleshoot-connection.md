@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990892"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673236"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -35,11 +35,11 @@ ms.locfileid: "94990892"
 
 `az cli` ツールと `azure-iot` 拡張機能をまだインストールしていない場合はインストールします。
 
-`az cli` のインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+`az cli` のインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-`azure-iot` 拡張機能を[インストール](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation)するには、次のコマンドを実行します。
+`azure-iot` 拡張機能を[インストール](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation)するには、次のコマンドを実行します。
 
-```cmd/bash
+```azurecli
 az extension add --name azure-iot
 ```
 
@@ -50,20 +50,20 @@ az extension add --name azure-iot
 
 次のコマンドを使用して、IoT Central アプリケーションを含むサブスクリプションにサインインします。
 
-```cmd/bash
+```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
 デバイスから送信されているテレメトリを監視するには、次のコマンドを使用します。
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 デバイスが IoT Central に正常に接続されている場合、次のような出力が表示されます。
 
-```cmd/bash
+```output
 Monitoring telemetry.
 Filtering on device: device-001
 {
@@ -82,13 +82,13 @@ Filtering on device: device-001
 
 デバイスと IoT Central の間で交換されているプロパティの更新を監視するには、次のプレビュー コマンドを使用します。
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 デバイスからプロパティの更新が正常に送信されている場合、次のような出力が表示されます。
 
-```cmd/bash
+```output
 Changes in reported properties:
 version : 32
 {'state': 'true', 'name': {'value': {'value': 'Contoso'}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac
@@ -106,7 +106,7 @@ rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 
 データがモニターに表示されていない場合は、次のコマンドを実行して、デバイスのプロビジョニング状態を確認します。
 
-```cmd/bash
+```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
@@ -176,13 +176,13 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 - テレメトリを検証するには、次のプレビュー コマンドを使用します。
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - プロパティの更新を検証するには、次のプレビュー コマンドを使用します
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
@@ -190,7 +190,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 次の出力は、検証コマンドからのエラーおよび警告メッセージの例を示しています。
 
-```cmd/bash
+```output
 Validating telemetry.
 Filtering on device: v22upeoqx6.
 Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happens first).

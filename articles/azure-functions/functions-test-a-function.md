@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601392"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674152"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -36,8 +36,8 @@ ms.locfileid: "96601392"
 
 環境を設定するには、関数を作成し、アプリをテストします。 次の手順では、テストをサポートするために必要なアプリと関数を作成できます。
 
-1. [新しい関数アプリを作成](./functions-create-first-azure-function.md)して **Functions** という名前を付けます
-2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して **MyHttpTrigger** という名前を付けます。
+1. [新しい関数アプリを作成](./functions-get-started.md)して **Functions** という名前を付けます
+2. [テンプレートから HTTP 関数を作成](./functions-get-started.md)して **MyHttpTrigger** という名前を付けます。
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して **MyTimerTrigger** という名前を付けます。
 4. ソリューションで [xUnit テスト アプリを作成](https://xunit.net/docs/getting-started/netcore/cmdline)して **Functions.Tests** という名前を付けます。
 5. NuGet を使用して、テスト アプリから [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します

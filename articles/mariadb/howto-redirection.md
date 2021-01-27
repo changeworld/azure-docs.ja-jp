@@ -3,15 +3,15 @@ title: リダイレクトを使用して接続する - Azure Database for MariaD
 description: この記事では、リダイレクトを使用して Azure Database for MariaDB に接続するようにアプリケーションを構成する方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 29f2ab8f70af2ca19cbffcbba6db39c5a93445fe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537426"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664904"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>リダイレクトを使用して Azure Database for MariaDB に接続する
 

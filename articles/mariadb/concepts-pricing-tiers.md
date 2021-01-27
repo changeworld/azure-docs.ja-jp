@@ -3,15 +3,15 @@ title: 価格レベル - Azure Database for MariaDB
 description: コンピューティング世代、ストレージの種類、ストレージのサイズ、仮想コア、メモリ、バックアップのリテンション期間など、Azure Database for MariaDB のさまざまな価格レベルについて説明します。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536287"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664250"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 

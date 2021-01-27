@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3bacec27f5253741b340688374d64402fdbc2836
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202591"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610388"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。 PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンのコンカレンシー制御など、エンタープライズ対応の機能が含まれます。 また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます). 12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
@@ -35,7 +35,7 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 1. 次のコマンドを実行して、ルート (admin) に切り替えます。
 
     ```console
-    # sudo su -
+    sudo su -
     ```
 
 2. 一部のディストリビューションには、PostgreSQL をインストールする前にインストールする必要がある依存アプリケーションがあります。 次の一覧でお使いのディストリビューションを確認し、適切なコマンドを実行してください。
@@ -43,27 +43,27 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
    * Red Hat ベースの Linux:
 
         ```console
-        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
    * Debian ベースの Linux:
 
         ```console
-        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
         ```
 
    * Suse Linux:
 
         ```console
-        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
 3. PostgreSQL をルート ディレクトリにダウンロードし、パッケージを解凍します。
 
     ```console
-    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+    wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-    # tar jxvf  postgresql-9.3.5.tar.bz2
+    tar jxvf  postgresql-9.3.5.tar.bz2
     ```
 
     上に示したのは例です。 [Index of /pub/source/](https://ftp.postgresql.org/pub/source/)で、詳細なダウンロード アドレスを参照できます。
@@ -71,15 +71,15 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 4. ビルドを開始するには、以下のコマンドを実行します。
 
     ```console
-    # cd postgresql-9.3.5
+    cd postgresql-9.3.5
 
-    # ./configure --prefix=/opt/postgresql-9.3.5
+    ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
 5. ドキュメント (HTML およびマニュアル ページ) や追加モジュール (`contrib`) など、ビルドできるものをすべてビルドする場合は、代わりに次のコマンドを実行します。
 
     ```console
-    # gmake install-world
+    gmake install-world
     ```
 
     次の確認メッセージが表示されます。
@@ -92,23 +92,23 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 1. (省略可能) シンボリック リンクを作成して、バージョン番号を含まないように PostgreSQL の参照を短縮します。
 
     ```console
-    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ln -s /opt/postgresql-9.3.5 /opt/pgsql
     ```
 
 2. データベース用のディレクトリを作成します。
 
     ```console
-    # mkdir -p /opt/pgsql_data
+    mkdir -p /opt/pgsql_data
     ```
 
 3. root 以外のユーザーを作成し、そのユーザーのプロファイルを変更します。 この新しいユーザーに切り替えます (この例では *postgres* )。
 
     ```console
-    # useradd postgres
+    useradd postgres
    
-    # chown -R postgres.postgres /opt/pgsql_data
+    chown -R postgres.postgres /opt/pgsql_data
    
-    # su - postgres
+    su - postgres
     ```
    
    > [!NOTE]
@@ -135,13 +135,13 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 5. *bash_profile* ファイルを実行します。
 
     ```console
-    $ source .bash_profile
+    source .bash_profile
     ```
 
 6. 次のコマンドを使用してインストールを検証します。
 
     ```console
-    $ which psql
+    which psql
     ```
 
     インストールが成功した場合は、次の応答が表示されます。
@@ -153,13 +153,13 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 7. PostgreSQL のバージョンをチェックすることもできます。
 
     ```sql
-    $ psql -V
+    psql -V
     ```
 
 8. ディスクを初期化します。
 
     ```console
-    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
     ```
 
     次の出力が表示されます。
@@ -172,17 +172,17 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 次のコマンドを実行します。
 
 ```console
-# cd /root/postgresql-9.3.5/contrib/start-scripts
+cd /root/postgresql-9.3.5/contrib/start-scripts
 
-# cp linux /etc/init.d/postgresql
+cp linux /etc/init.d/postgresql
 ```
 
 /etc/init.d/postgresql ファイルの 2 つの変数を変更します。 prefix には、PostgreSQL のインストール パス **/opt/pgsql** を設定します。 PGDATA には、PostgreSQL のデータ ストレージ パス **/opt/pgsql_data** を設定します。
 
 ```config
-# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
 ![インストール プレフィックスとデータ ディレクトリを示すスクリーンショット。](./media/postgresql-install/no2.png)
@@ -190,19 +190,19 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 実行可能なようにファイルを変更します。
 
 ```console
-# chmod +x /etc/init.d/postgresql
+chmod +x /etc/init.d/postgresql
 ```
 
 PostgreSQL を開始します。
 
 ```console
-# /etc/init.d/postgresql start
+/etc/init.d/postgresql start
 ```
 
 PostgreSQL のエンドポイントがオンかどうかを確認します。
 
 ```console
-# netstat -tunlp|grep 1999
+netstat -tunlp|grep 1999
 ```
 
 次の出力が表示されます。
@@ -213,19 +213,19 @@ PostgreSQL のエンドポイントがオンかどうかを確認します。
 postgres ユーザーに再び切り替えます。
 
 ```console
-# su - postgres
+su - postgres
 ```
 
 Postgres データベースを作成します。
 
 ```console
-$ createdb events
+createdb events
 ```
 
 先に作成したイベント データベースに接続します。
 
 ```console
-$ psql -d events
+psql -d events
 ```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Postgres テーブルの作成および削除

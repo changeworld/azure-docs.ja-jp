@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 71ee21c971b71c4000a123d1561e7e93d21203e1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882519"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629149"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -186,7 +186,7 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
 
 ## <a name="azure-cli-instructions"></a>Azure CLI の手順
 
-最初に、Azure CLI バージョン 2.0 以降がインストールされていることを確認してください。 [インストーラーをダウンロード](/cli/azure/install-azure-cli?view=azure-cli-latest)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
+最初に、Azure CLI バージョン 2.0 以降がインストールされていることを確認してください。 [インストーラーをダウンロード](/cli/azure/install-azure-cli)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
 
 次のコードを実行します。
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888778"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673334"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する
 
@@ -22,13 +22,14 @@ ms.locfileid: "90888778"
 
 ## <a name="generate-credential"></a>資格情報を生成する
 キー コンテナーにアクセスするキーを生成するには、ローカル コンピューター上で次のコマンドを実行します。
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 `--scopes` パラメーターでスコープを指定すると、リソースへのキーのアクセスが制限されます。  これを使うと、頑丈な箱のみにアクセスできます。
 
 結果:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -41,7 +42,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-次に、[GitHub リポジトリを設定して Azure で認証する](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)方法の説明に従って、結果を GitHub の**シークレット**に保存します。
+次に、[GitHub リポジトリを設定して Azure で認証する](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)方法の説明に従って、結果を GitHub の **シークレット** に保存します。
 
 ## <a name="add-access-policies-for-the-credential"></a>資格情報のアクセス ポリシーを追加する
 上記で作成した資格情報を使うと、キー コンテナーに関する一般的な情報のみを取得できます。保存されているコンテンツは取得できません。  キー コンテナーに保存されているシークレットを取得するには、資格情報のアクセス ポリシーを設定する必要があります。
@@ -59,12 +60,12 @@ Azure portal の **[Key Vault]** ダッシュボードに移動し、 **[アク�
 ## <a name="generate-full-scope-azure-credential"></a>完全なスコープの Azure 資格情報を生成する
 これは、建物のすべてのドアを開くことができるマスター キーです。 この手順は前の手順と似ていますが、ここではスコープを変更してマスター キーを生成します。
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 この場合も、結果は次のようになります。
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ JSON 文字列全体をコピーします。  **[Key Vault]** ダッシュボー
 ## <a name="combine-credentials-in-github-actions"></a>GitHub Actions で資格情報を結合する
 CICD パイプラインの実行時に使用する資格情報を設定します。
 
-```
+```console
 on: [push]
 
 jobs:

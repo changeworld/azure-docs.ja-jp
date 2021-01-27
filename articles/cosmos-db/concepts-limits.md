@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368741"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598672"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -37,7 +37,7 @@ ms.locfileid: "97368741"
 | コンテナーあたりの最大ストレージ | 無制限 |
 | データベースあたりの最大ストレージ | 無制限 |
 | アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は非推奨になってきています) | 2 GB |
-| 1 GB あたりに必要な最小 RU/秒 | 10 RU/秒<br>**注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。 |
+| 1 GB あたりに必要な最小 RU/秒 | 10 RU/秒<br>**注:** お使いのアカウントが ["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象である場合、この最小値を下げることができます。 |
 
 > [!NOTE]
 > ストレージまたはスループットにより高い制限が必要なパーティション キーを持つワークロードを管理するためのベスト プラクティスについては、「[合成パーティション キーの作成](synthetic-partition-keys.md)」を参照してください。
@@ -60,7 +60,7 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 例:400 RU/秒と 0 GB のストレージでプロビジョニングされたコンテナーがあるとします。 スループットを 50,000 RU/秒に増やし、20 GB のデータをインポートします。 この時点で、最小 RU/秒は `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/秒になります。 時間の経過と共に、ストレージは 200 GB まで増えました。 この時点で、最小 RU/秒は `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/秒になります。 
 
-**注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、["高ストレージ低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。
+**注:** お使いのアカウントが ["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象である場合は、ストレージの GB あたりの最小スループット 10 RU/秒を下げることができます。
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>共有スループット データベースでの最小スループット 
 手動スループットで共有スループット データベースに必要とされる最小スループットを見積もるには、次のようにして最大値を得ます。
@@ -72,7 +72,7 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 例:400 RU/秒、15 GB のストレージ、10 個のコンテナーでプロビジョニングされたデータベースがあるとします。 この時点で、最小 RU/秒は `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/秒になります。 データベースに 30 個のコンテナーがあった場合、最小 RU/秒は `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/秒になります。 
 
-**注:** コンテナーまたはデータベースに 1 TB を超えるデータが含まれている場合、アカウントは、["高ストレージ低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象となる可能性があります。
+**注:** お使いのアカウントが ["高ストレージ/低スループット" プログラム](set-throughput.md#high-storage-low-throughput-program)の対象である場合は、ストレージの GB あたりの最小スループット 10 RU/秒を下げることができます。
 
 要約すると、最小プロビジョニング済み RU の制限を次に示します。 
 
@@ -256,7 +256,8 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 
 Cosmos DB 試用版は、米国中部、北ヨーロッパ、および東南アジア リージョンでのみグローバル分散をサポートしています。 Azure Cosmos DB 試用版アカウントに対して Azure サポート チケットを作成することはできません。 ただし、既存のサポート プランを所有するサブスクライバーにはサポートが提供されます。
 
-## <a name="free-tier-account-limits"></a>Free レベルのアカウントの制限
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Azure Cosmos DB Free レベル アカウントの制限
+
 次の表は、[Azure Cosmos DB の Free レベルのアカウント](optimize-dev-test.md#azure-cosmos-db-free-tier)に対する制限を一覧表示しています。
 
 | リソース | 既定の制限 |
@@ -268,7 +269,10 @@ Cosmos DB 試用版は、米国中部、北ヨーロッパ、および東南ア�
 | 共有スループット データベースの最大数 | 5 |
 | 共有スループット データベース内のコンテナーの最大数 | 25 <br>Free レベルのアカウントでは、最大 25 個のコンテナーを使用する共有スループット データベースの最小 RU/秒は 400 RU/秒です。 |
 
-  上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。
+上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。
+
+> [!NOTE]
+> Azure Cosmos DB Free レベルは、Azure 無料アカウントとは異なります。 Azure 無料アカウントでは、Azure クレジットおよびリソースが一定の期間無料で提供されます。 この無料アカウントの一部として Azure Cosmos DB を使用する場合、25 GB のストレージと 400 RU/秒のプロビジョニング済みスループットが 12 か月間利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

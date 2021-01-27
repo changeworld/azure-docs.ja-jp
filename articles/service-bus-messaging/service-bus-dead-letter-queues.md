@@ -4,12 +4,12 @@ description: Service Bus の配信不能キューについて説明します。 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301025"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630100"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -30,7 +30,7 @@ DLQ は自動的にクリーンアップされません。 DLQ から明示的�
 
 ![DLQ のメッセージ数](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) を使用して、DLQ のメッセージ数を取得することもできます。 
+Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) を使用して、DLQ のメッセージ数を取得することもできます。 
 
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
 

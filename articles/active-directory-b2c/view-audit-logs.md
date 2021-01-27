@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952728"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661104"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -223,4 +223,4 @@ if ($oauth.access_token -ne $null) {
 
 ## <a name="next-steps"></a>次のステップ
 
-他の管理タスクを自動化することもできます。たとえば、[Microsoft Graph を使用して Azure AD B2C ユーザーアカウントを管理します](manage-user-accounts-graph-api.md)。
+他の管理タスクを自動化することもできます。たとえば、[Microsoft Graph を使用して Azure AD B2C ユーザーアカウントを管理します](microsoft-graph-operations.md)。

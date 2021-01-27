@@ -11,12 +11,12 @@ ms.date: 04/02/2019
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: cc6a58b4ef78aca60d2a26870980e032c0b11a52
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e28eeac131c737d673cac947a3fda30239180a62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463221"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673588"
 ---
 # <a name="using-stored-procedures-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールにストアド プロシージャを使用する
 
@@ -73,7 +73,7 @@ GO
 EXEC prc_nesting
 ```
 
-専用 SQL プールでは、現時点では [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) はサポートされていません。 このため、入れ子レベルを追跡する必要があります。 入れ子レベルの制限である 8 を超えることはほとんどありません。 ただし、超える場合は、入れ子レベルをこの制限内に収めるようにコードを修正する必要があります。
+専用 SQL プールでは、現時点では [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) はサポートされていません。 このため、入れ子レベルを追跡する必要があります。 入れ子レベルの制限である 8 を超えることはほとんどありません。 ただし、超える場合は、入れ子レベルをこの制限内に収めるようにコードを修正する必要があります。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 

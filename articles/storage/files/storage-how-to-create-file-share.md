@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724801"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673808"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -129,7 +129,7 @@ Azure CLI を使用してストレージ アカウントを作成するには、
 
 ストレージ アカウントとそれに続くファイル共有の作成を簡略化するために、いくつかのパラメーターを変数に格納します。 変数の内容は任意の値に置き換えることができますが、ストレージ アカウント名はグローバルに一意である必要があることに注意してください。
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="westus2"
@@ -137,7 +137,7 @@ region="westus2"
 
 Standard Azure ファイル共有を格納できるストレージ アカウントを作成するには、次のコマンドを使用します。 `--sku` パラメーターは、必要な冗長性の種類に関連しています。geo 冗長または geo ゾーン冗長ストレージ アカウントが必要な場合は、`--enable-large-file-share` パラメーターも削除する必要があります。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -149,7 +149,7 @@ az storage account create \
 
 Premium Azure ファイル共有を格納できるストレージ アカウントを作成するには、次のコマンドを使用します。 `--sku` パラメーターが、`Premium` とローカル冗長 (`LRS`) の必要な冗長レベルの両方を含むように変更されていることに注意してください。 `--kind` パラメーターは `StorageV2` ではなく `FileStorage` です。これは、GPv2 ストレージ アカウントではなく、FileStorage ストレージ アカウントに Premium ファイル共有を作成する必要があるためです。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -172,7 +172,7 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 
 - Standard ファイル共有の場合、それはエンド ユーザーがアクセスできない Azure ファイル共有の上限です。 Standard ファイル共有のクォータの主な目的は、予算です。つまり、"このファイル共有は、この点を超えて拡張させない" ということです。 クォータが指定されていない場合、Standard ファイル共有は最大 100 TiB (ストレージ アカウントに対して大きいファイルの共有プロパティが設定されていない場合は 5 TiB) にまたがることができます。
 
-- Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味するようにオーバーロードされます。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有をプロビジョニングする場合は、次の 2 つの要素を考慮する必要があります。1) 領域使用率の観点から共有の将来の成長、および 2) ワークロードに必要な IOPS。 プロビジョニング済みの GiB ごとに、追加の予約済み IOPS とバースト IOPS が付与されます。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-billing)に関するセクションを参照してください。
+- Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味するようにオーバーロードされます。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有をプロビジョニングする場合は、次の 2 つの要素を考慮する必要があります。1) 領域使用率の観点から共有の将来の成長、および 2) ワークロードに必要な IOPS。 プロビジョニング済みの GiB ごとに、追加の予約済み IOPS とバースト IOPS が付与されます。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-model)に関するセクションを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 ストレージ アカウントを作成したばかりの場合は、[デプロイ] 画面から **[リソースに移動]** を選択して移動できます。 ストレージ アカウントを既に作成してある場合は、それを含むリソース グループを介して移動できます。 ストレージ アカウントで、 **[ファイル共有]** というラベルの付いたタイルを選択します (ストレージ アカウントの目次を介して **ファイル共有** に移動することもできます)。
@@ -233,7 +233,7 @@ New-AzRmStorageShare `
 > [!Important]  
 > Premium ファイル共有の場合、`--quota` パラメーターでは、ファイル共有のプロビジョニング済みのサイズが参照されます。 ファイル共有のプロビジョニング済みサイズは、使用量に関係なく、課金の対象となる容量です。 Standard ファイル共有は、プロビジョニング済みサイズではなく、使用量に基づいて課金されます。
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \
@@ -285,7 +285,7 @@ Update-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 次の Azure CLI コマンドは、このドキュメントのこれまでのセクションで説明したように、`$resourceGroupName`、`$storageAccountName`、`$shareName` 変数が設定されていることを前提としています。
 
-```bash
+```azurecli
 az storage share-rm update \
     --resource-group $resourceGroupName \
     --storage-account $storageAccountName \

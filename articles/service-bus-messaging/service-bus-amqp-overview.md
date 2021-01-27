@@ -3,12 +3,12 @@ title: Azure Service Bus での AMQP 1.0 の概要
 description: オープン標準プロトコルである Advanced Message Queuing Protocol (AMQP) が Azure Service Bus によってどのようにサポートされているかについて説明します。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709284"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632886"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus での AMQP 1.0 サポート
 Azure Service Bus クラウド サービスでは、主要な通信手段として [Advanced Message Queuing Protocol (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) が使用されています。 Microsoft は、AMQP を開発および進化させるために、過去 10 年間にわたって、お客様および競合するメッセージング ブローカーのベンダーの両方を含む、業界全体のパートナーと協力して、[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)において新しい拡張機能を開発してきました。 AMQP 1.0 は、ISO/IEC 標準です ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
@@ -64,11 +64,11 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 Azure SDK 経由でサポートされているすべての Service Bus クライアント ライブラリが AMQP 1.0 を使用します。
 
-- [.NET 用 Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Java 用 Azure Service Bus ライブラリ](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [.NET 用 Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Java 用 Azure Service Bus ライブラリ](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Java JMS 2.0 用 Azure Service Bus プロバイダー](how-to-use-java-message-service-20.md)
-- [JavaScript および TypeScript 用の Azure Service Bus モジュール](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Python 用 Azure Service Bus ライブラリ](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [JavaScript および TypeScript 用の Azure Service Bus モジュール](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Python 用 Azure Service Bus ライブラリ](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 

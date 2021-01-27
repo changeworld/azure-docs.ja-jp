@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225837"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675979"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Azure CLI を使用して別のギャラリーからイメージをコピーする
 
@@ -161,6 +161,6 @@ az sig image-version create \
 
 [一般化された](vm-generalized-image-version-cli.md)イメージ バージョンまたは[特殊化された](vm-specialized-image-version-cli.md)イメージ バージョンから VM を作成します。
 
-また、イメージ バージョンの作成の自動化に役立つ [Azure Image Builder (プレビュー)](./linux/image-builder-overview.md) をお試しください。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)にも使用できます。 
+また、イメージ バージョンの作成の自動化に役立つ [Azure Image Builder (プレビュー)](./image-builder-overview.md) をお試しください。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)にも使用できます。 
 
 購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

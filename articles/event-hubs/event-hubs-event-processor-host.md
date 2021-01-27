@@ -4,12 +4,12 @@ description: この記事では、チェックポイント処理、リース、�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319504"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622064"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
@@ -42,7 +42,7 @@ Event Hubs をスケーリングするための鍵となるのは、パーティ
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor インターフェイス
 
-最初に、使用するアプリケーションでは、[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。これには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) という 4 つのメソッドが含まれます。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
+最初に、使用するアプリケーションでは、[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。これには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor#methods) という 4 つのメソッドが含まれます。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -82,7 +82,7 @@ public class SimpleEventProcessor : IEventProcessor
 - **hostName:** 各コンシューマー インスタンスの名前。 **EventProcessorHost** の各インスタンスは、コンシューマー グループ内でこの変数の一意の値を持つ必要があります。したがって、この値をハードコーディングしないでください。
 - **eventHubPath:** イベント ハブの名前。
 - **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として " **$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
-- **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する**リッスン** アクセス許可が付与されている必要があります。
+- **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する **リッスン** アクセス許可が付与されている必要があります。
 - **storageConnectionString:** 内部リソースの管理に使用されるストレージ アカウント。
 
 最後に、コンシューマーは [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスを Event Hubs サービスに登録します。 EventProcessorHost のインスタンスでイベント プロセッサ クラスを登録すると、イベント処理が開始されます。 この登録によって、Event Hubs サービスは、コンシューマー アプリがいくつかのパーティションからイベントを使用することを期待し、使用するイベントをプッシュするたびに [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装コードを呼び出すようになります。 
@@ -150,7 +150,7 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 
 ## <a name="control-event-processor-host-options"></a>イベント プロセッサ ホストのオプションを制御する
 
-さらに、[RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) の 1 つのオーバーロードは、[EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) オブジェクトをパラメーターとして受け取ります。 このパラメーターを使用して、[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) 自体の動作を制御します。 [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) は、4 つのプロパティと 1 つのイベントを定義します。
+さらに、[RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) の 1 つのオーバーロードは、[EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) オブジェクトをパラメーターとして受け取ります。 このパラメーターを使用して、[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) 自体の動作を制御します。 [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) は、4 つのプロパティと 1 つのイベントを定義します。
 
 - [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) の呼び出しで受け取るコレクションの最大サイズ。 このサイズは最小サイズではありません。最大サイズのみです。 受信するメッセージが少ない場合、**ProcessEventsAsync** は、使用可能な数だけ実行されます。
 - [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): クライアントが受信する必要があるメッセージの上限を決定するための、基になる AMQP チャネルによって使用される値。 この値は、[MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) 以上である必要があります。
@@ -163,7 +163,7 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 受信エポックのしくみは次のようになっています。
 
 ### <a name="with-epoch"></a>エポックあり
-エポックはパーティション/リースの所有権を適用する目的でサービスによって使用される一意の識別子 (エポック値) です。 [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) メソッドを利用し、エポックベースのレシーバーを作成します。 このメソッドにより、エポックベースのレシーバーが作成されます。 指定のコンシューマー グループからの特定のイベント ハブ パーティションに対してレシーバーが作成されます。
+エポックはパーティション/リースの所有権を適用する目的でサービスによって使用される一意の識別子 (エポック値) です。 [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver) メソッドを利用し、エポックベースのレシーバーを作成します。 このメソッドにより、エポックベースのレシーバーが作成されます。 指定のコンシューマー グループからの特定のイベント ハブ パーティションに対してレシーバーが作成されます。
 
 このエポック機能によって、ある時点においてコンシューマー グループにレシーバーが 1 つだけになることが保証されます。この機能では、次のルールが使用されます。
 
@@ -172,7 +172,7 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 - エポック値 e1 のレシーバーが存在し、エポック値 e2 で新しいレシーバーが作成されるとき、e1 > e2 であれば、e2 のレシーバーは作成できず、エポック e1 のレシーバーが既に存在するという旨のエラーが表示されます。
 
 ### <a name="no-epoch"></a>エポックなし
-[CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) メソッドを利用し、エポックベースではないレシーバーを作成します。 
+[CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver) メソッドを利用し、エポックベースではないレシーバーを作成します。 
 
 ストリーム処理では、1 つのコンシューマー グループで複数のレシーバーを作成することがあります。 このようなシナリオをサポートする目的で、エポックなしでレシーバーを作成できます。その場合、コンシューマー グループで最大 5 つの同時レシーバーが許可されます。
 

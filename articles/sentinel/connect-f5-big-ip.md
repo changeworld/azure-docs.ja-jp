@@ -15,21 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e895640daeb3fbbba2f2708969ee4cf856bf1033
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588282"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621183"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP アプライアンスを接続する 
 
-> [!IMPORTANT]
-> Azure Sentinel の F5 BIG-IP データ コネクタは、現在パブリック プレビュー段階にあります。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 F5 BIG-IP コネクタを使用すると、すべての F5 BIG-IP のログを簡単に Azure Sentinel に接続して、ワークブックの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 F5 BIG-IP と Azure Sentinel の統合には、REST API を使用します。
-
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -38,7 +33,7 @@ F5 BIG-IP コネクタを使用すると、すべての F5 BIG-IP のログを�
 
 F5 BIG-IP では、ログを統合して、Azure Sentinel に直接エクスポートできます。
 
-1. Azure Sentinel ポータルで、 **[Data connectors]\(データ コネクタ\)** をクリックし、 **[F5 BIG IP]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。 
+1. Azure Sentinel ポータルで、**[Data connectors]\(データ コネクタ\)** をクリックし、**[F5 BIG IP]** を選択して、**[Open connector page]\(コネクタ ページを開く\)** を選択します。 
 1. F5 BIG IP を接続するには、JSON 宣言をシステムの API エンドポイントにポストする必要があります。 この実行方法の手順については、[F5 BIG-IP と Azure Sentinel との統合](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)に関する記事をご覧ください。
 8. F5 BIG IP コネクタのページで、「[Streaming data to Azure Log Analytics](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)」の下の説明に従って、ワークスペース ID とプライマリ キーをコピーして貼り付けます。
 1. F5 BIG IP の手順を完了すると、Azure Sentinel コネクタのページに、接続されたデータの種類が表示されます。
