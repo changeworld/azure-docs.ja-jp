@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585736"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875146"
 ---
 # <a name="monitoring-azure-files"></a>Azure Files の監視
 
@@ -677,6 +677,6 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 - [Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure Storage メトリックの移行](../common/storage-metrics-migration.md)
 - [Azure Files のデプロイの計画](./storage-files-planning.md)
-- [Azure Files のデプロイ方法](./storage-files-deployment-guide.md)
+- [Azure Files のデプロイ方法](./storage-how-to-create-file-share.md)
 - [Azure Files のトラブルシューティング - Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure Files のトラブルシューティング - Linux](./storage-troubleshoot-linux-file-connection-problems.md)

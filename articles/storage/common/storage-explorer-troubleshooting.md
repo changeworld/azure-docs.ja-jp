@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900656"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875738"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -70,13 +70,13 @@ BLOB コンテナーまたはキューにアクセスする場合、Azure 資格
 ### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
 
 Storage Explorer を使用するために必要なアクセス許可を提供できる Azure 組み込みロールがいくつかあります。 そうしたロールの一部を以下に示します。
-- [所有者](/azure/role-based-access-control/built-in-roles#owner):リソースへのアクセスを含め、すべてを管理します。
-- [共同作成者](/azure/role-based-access-control/built-in-roles#contributor):リソースへのアクセスを除き、すべてを管理します。
-- [閲覧者](/azure/role-based-access-control/built-in-roles#reader):リソースを読み取って一覧表示します。
-- [ストレージ アカウント共同作業者](/azure/role-based-access-control/built-in-roles#storage-account-contributor): ストレージ アカウントの完全な管理。
-- [ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
-- [ストレージ BLOB データ共同作成者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
-- [ストレージ BLOB データ閲覧者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
+- [所有者](../../role-based-access-control/built-in-roles.md#owner):リソースへのアクセスを含め、すべてを管理します。
+- [共同作成者](../../role-based-access-control/built-in-roles.md#contributor):リソースへのアクセスを除き、すべてを管理します。
+- [閲覧者](../../role-based-access-control/built-in-roles.md#reader):リソースを読み取って一覧表示します。
+- [ストレージ アカウント共同作業者](../../role-based-access-control/built-in-roles.md#storage-account-contributor): ストレージ アカウントの完全な管理。
+- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
+- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
+- [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
 
 > [!NOTE]
 > アカウントキーへのアクセスは、所有者、共同作成者、ストレージ アカウント共同作成者の各ロールによって許可されます。

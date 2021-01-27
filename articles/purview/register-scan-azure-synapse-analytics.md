@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567265"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875011"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure Synapse Analytics の登録とスキャン
 
@@ -45,7 +45,7 @@ Azure Synapse Analytics の認証を設定するには、次の 3 つの方法�
 
 ### <a name="managed-identity-recommended"></a>マネージド ID (推奨) 
    
-Purview アカウントには独自のマネージド ID があり、これは基本的に作成時の Purview の名前になっています。 「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)」の前提条件とチュートリアルに従い、Purview の正確なマネージド ID 名を使用して Azure Synapse Analytics (旧称 SQL DW) に Azure AD ユーザーを作成する必要があります。
+Purview アカウントには独自のマネージド ID があり、これは基本的に作成時の Purview の名前になっています。 「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md)」の前提条件とチュートリアルに従い、Purview の正確なマネージド ID 名を使用して Azure Synapse Analytics (旧称 SQL DW) に Azure AD ユーザーを作成する必要があります。
 
 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
@@ -87,7 +87,7 @@ GO
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>サービス プリンシパルに Azure Synapse Analytics (旧称 SQL DW) へのアクセス権を付与する
 
-さらに、「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)」の前提条件とチュートリアルに従って、Azure Synapse Analytics に Azure AD ユーザーを作成する必要もあります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
+さらに、「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md)」の前提条件とチュートリアルに従って、Azure Synapse Analytics に Azure AD ユーザーを作成する必要もあります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ GO
 
 - [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
 - [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
-

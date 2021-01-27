@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539688"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874908"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -26,7 +26,7 @@ ms.locfileid: "98539688"
 認証を設定するには、セキュリティ グループを作成し、カタログのマネージド ID を追加します。
 
 1. [Azure portal](https://portal.azure.com) で、**Azure Active Directory** を検索します。
-1. 「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)」に従って、Azure Active Directory で新しいセキュリティ グループを作成します。
+1. 「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」に従って、Azure Active Directory で新しいセキュリティ グループを作成します。
 
     > [!Tip]
     > 使用するセキュリティ グループが既にある場合は、この手順を省略できます。

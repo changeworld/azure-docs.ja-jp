@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489770"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874385"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -178,7 +178,7 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 
 詳細情報:
 
-* [Azure Portal を使用してサイト間 VPN 接続を持つ Resource Manager VNet を作成する](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure Portal を使用してサイト間 VPN 接続を持つ Resource Manager VNet を作成する](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [VPN Gateway について](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>オンプレミス ネットワークから仮想ネットワークへの専用 WAN リンクによる接続

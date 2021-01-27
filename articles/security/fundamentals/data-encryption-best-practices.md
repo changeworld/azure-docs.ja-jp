@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 414445f90c3be4c55166f6a0ecead25074d6ed74
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196080"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874115"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。
@@ -102,7 +102,7 @@ Azure Storage と Azure SQL Database では、保存データは既定で暗号�
 Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プラクティスを次に示します。
 
 **ベスト プラクティス**: オンプレミスの複数のワークステーションから Azure 仮想ネットワークへのアクセスをセキュリティで保護する。   
-**詳細**: [サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) を使用します。
+**詳細**: [サイト間 VPN](../../vpn-gateway/tutorial-site-to-site-portal.md) を使用します。
 
 **ベスト プラクティス**: オンプレミスの個々のワークステーションから Azure 仮想ネットワークへのアクセスをセキュリティで保護する。   
 **詳細**: [ポイント対サイト VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) を使用します。
