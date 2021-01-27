@@ -9,18 +9,16 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: f60534f7d319bfe0b9e8e7bd4447770bcd6d45e3
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 11e47e83da09699d60ada11539dbb2f000f075db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134434"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788674"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>クイックスタート: Azure App Service on Linux を使用して Python アプリを作成する
 
 このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](overview.md#app-service-on-linux) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上でローカル [Azure コマンドライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用して、Flask または Django のいずれかのフレームワークを使用したサンプルをデプロイします。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
-
-**一般的な用語の定義** については、「[Azure 用語の概略](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json)」を参照してください。
 
 > [!TIP]
 > Visual Studio Code の使用を希望する場合は、 **[Visual Studio Code App Service のクイックスタート](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** に従ってください。

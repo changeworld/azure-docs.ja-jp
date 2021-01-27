@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.openlocfilehash: 7db546ec9038403bd9e34f637e9d9de368277d52
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400304"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880001"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>クイックスタート: Azure PowerShell または Azure CLI を使用して Azure Purview アカウントを作成する
 
@@ -27,9 +27,9 @@ ms.locfileid: "97400304"
 
 * Azure へのサインインに使用するユーザー アカウントは、共同作成者ロールまたは所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
 
-* 所有する [Azure Active Directory テナント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+* 所有する [Azure Active Directory テナント](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
 
-* テンプレートをデプロイするクライアント マシンに Azure PowerShell または Azure CLI をインストールします ([コマンド ライン デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-cli#command-line-deployment))。
+* テンプレートをデプロイするクライアント マシンに Azure PowerShell または Azure CLI をインストールします ([コマンド ライン デプロイ](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment))。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

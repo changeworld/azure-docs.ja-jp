@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27294f91fd6c79b10a85678a7acd60de56cf1ca4
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562340"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805456"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Azure CLI を使用した Azure での仮想マシンのバックアップ
 
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> CLI を使用して一度に複数の VM のバックアップを有効にするときは、1 つのポリシーに 100 を超える VM が関連付けられていないことを確認します。 これは、[推奨されるベスト プラクティス](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)です。 現時点では、100 を超える VM がある場合に PowerShell クライアントは明示的にブロックしませんが、このチェックは将来追加される予定です。
+> CLI を使用して一度に複数の VM のバックアップを有効にするときは、1 つのポリシーに 100 を超える VM が関連付けられていないことを確認します。 これは、[推奨されるベスト プラクティス](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy)です。 現時点では、100 を超える VM がある場合に PowerShell クライアントは明示的にブロックしませんが、このチェックは将来追加される予定です。
 
 ## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
 

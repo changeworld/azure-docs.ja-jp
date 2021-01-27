@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219030"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796946"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Synapse ワークスペースを作成する
 
@@ -50,31 +50,12 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
     |SqlPassword| セキュリティで保護されたパスワードを選択します。|
     |||
 
-2. Azure Synapse ワークスペースのコンテナーとしてリソース グループを作成します。
+1. Azure Synapse ワークスペースのコンテナーとしてリソース グループを作成します。
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. ADLS Gen 2 ストレージ アカウント キーを取得します。
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. ADLS Gen 2 ストレージ エンドポイント URL を取得します。
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. (オプション) ADLS Gen2 のストレージ アカウント キーとエンドポイントは、次のようにしていつでも確認できます。
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. Azure Synapse ワークスペースを作成します。
+1. Azure Synapse ワークスペースを作成します。
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -86,14 +67,14 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
       --location $Region
     ```
 
-7. Azure Synapse ワークスペースの Web URL と開発 URL を取得します。
+1. Azure Synapse ワークスペースの Web URL と開発 URL を取得します。
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. ご使用のマシンから Azure Synapse ワークスペースへのアクセスを許可するファイアウォール規則を作成します。
+1. ご使用のマシンから Azure Synapse ワークスペースへのアクセスを許可するファイアウォール規則を作成します。
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -103,7 +84,7 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. 環境変数 `WorkspaceWeb` に格納された Azure Synapse ワークスペースの Web URL アドレスを開いてワークスペースにアクセスします。
+1. 環境変数 `WorkspaceWeb` に格納された Azure Synapse ワークスペースの Web URL アドレスを開いてワークスペースにアクセスします。
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"

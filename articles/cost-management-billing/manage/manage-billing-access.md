@@ -7,17 +7,17 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166218"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897427"
 ---
-# <a name="manage-access-to-billing-information-for-azure"></a>Azure の課金情報へのアクセスの管理
+# <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
 Azure portal では自分のアカウントの課金情報へのアクセス権を他のユーザーに付与できます。 課金ロールの種類と課金情報へのアクセス権を付与するための手順は、請求先アカウントの種類によって異なります。 請求先アカウントの種類を確認するには、「[請求先アカウントの種類を確認する](#check-the-type-of-your-billing-account)」を参照してください。
 
@@ -38,7 +38,7 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 - Reader
 - 請求閲覧者
 
-これらのロールは、[Azure portal](https://portal.azure.com/) で課金情報にアクセスすることができます。 これらのロールが割り当てられているユーザーは、[Billing API](usage-rate-card-overview.md) を使用して請求書と使用状況の詳細をプログラムで取得することもできます。
+これらのロールは、[Azure portal](https://portal.azure.com/) で課金情報にアクセスすることができます。 これらのロールが割り当てられているユーザーは、[Billing API](consumption-api-overview.md#usage-details-api) を使用して請求書と使用状況の詳細をプログラムで取得することもできます。
 
 ロールを割り当てるには、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 

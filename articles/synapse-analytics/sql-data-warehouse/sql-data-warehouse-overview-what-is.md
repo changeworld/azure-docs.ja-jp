@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115822"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685227"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) とは
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics は、エンタープライズ データ ウェアハウ
 
 専用 SQL プール (以前の SQL DW) は、Synapse SQL を使用するときにプロビジョニングされる分析リソースのコレクションを表します。 専用 SQL プール (以前の SQL DW) のサイズは、Data Warehouse ユニット (DWU) によって決まります。
 
-専用 SQL プールの作成後、簡単な [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL クエリを使用してビッグ データをインポートしてから、分散クエリ エンジンの機能を利用してハイ パフォーマンスの分析を実行することができます。 データの統合と分析を進めると、専用 SQL プール (以前の SQL DW) は、企業がより迅速で確実な分析情報を得るために信頼できる唯一の真実になります。
+専用 SQL プールの作成後、簡単な [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL クエリを使用してビッグ データをインポートしてから、分散クエリ エンジンの機能を利用してハイ パフォーマンスの分析を実行することができます。 データの統合と分析を進めると、専用 SQL プール (以前の SQL DW) は、企業がより迅速で確実な分析情報を得るために信頼できる唯一の真実になります。
 
 > [!NOTE]
 >詳細については、[Azure Synapse Analytics のドキュメント](../overview-what-is.md)を参照してください。

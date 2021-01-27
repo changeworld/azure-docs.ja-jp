@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460638"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677506"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>クイックスタート: Azure portal でワークロード グループを使用して専用 SQL プールのワークロードの分離を構成する
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-`DataLoads` ワークロード グループを使用するには、[ワークロード分類子](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を作成して、このワークロード グループに要求をルーティングする必要があります。  [ワークロード分類子の作成](quickstart-create-a-workload-classifier-portal.md)に関するクイックスタートに進んで、`DataLoads` 用のワークロード分類子を作成してください。
+`DataLoads` ワークロード グループを使用するには、[ワークロード分類子](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を作成して、このワークロード グループに要求をルーティングする必要があります。  [ワークロード分類子の作成](quickstart-create-a-workload-classifier-portal.md)に関するクイックスタートに進んで、`DataLoads` 用のワークロード分類子を作成してください。
 
 ## <a name="see-also"></a>関連項目
 ワークロード管理のためにワークロードを監視する方法の詳細については、[ワークロードの重要度の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。

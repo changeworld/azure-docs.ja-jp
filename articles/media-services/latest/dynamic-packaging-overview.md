@@ -1,6 +1,5 @@
 ---
 title: Azure Media Services v3 のダイナミック パッケージ
-titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services でのダイナミック パッケージの概要について説明します。
 author: myoungerman
 manager: femila
@@ -14,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016827"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897647"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -90,13 +89,13 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
     エンコードされたファイルが既にあり、ファイルをコピーしてストリーミングするだけであれば、[CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) および [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API を使用します。 結果として、ストリーミング マニフェスト (.ism ファイル) を含む新しい MP4 ファイルが作成されます。
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 [ストリーミング ロケーター](streaming-locators-concept.md)を作成して発行します。
-1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、*ストリーミング エンドポイント*が行います。
+1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、*ストリーミング エンドポイント* が行います。
     
 次の図は、ダイナミック パッケージのワークフローを使用したオンデマンド ストリーミングを示しています。
 
 ![ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローの図](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-上の画像のダウンロード パスは、"*ストリーミング エンドポイント*" (配信元) を通じて直接 MP4 ファイルをダウンロードできることを示すためにのみ存在します (ダウンロードできることを示す[ストリーミング ポリシー](streaming-policy-concept.md)は、ストリーミング ロケーターで指定します)。<br/>ダイナミック パッケージャーによってファイルが変更されることはありません。 "*ストリーミング エンドポイント*" (配信元) 機能をバイパスする必要がある場合は、Azure Blob Storage API を使用して、プログレッシブ ダウンロード用に MP4 に直接アクセスすることができます。 
+上の画像のダウンロード パスは、"*ストリーミング エンドポイント*" (配信元) を通じて直接 MP4 ファイルをダウンロードできることを示すためにのみ存在します (ダウンロードできることを示す [ストリーミング ポリシー](streaming-policy-concept.md)は、ストリーミング ロケーターで指定します)。<br/>ダイナミック パッケージャーによってファイルが変更されることはありません。 "*ストリーミング エンドポイント*" (配信元) 機能をバイパスする必要がある場合は、Azure Blob Storage API を使用して、プログレッシブ ダウンロード用に MP4 に直接アクセスすることができます。 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
 
@@ -177,7 +176,7 @@ Media Services ダイナミック パッケージでは現在、[ドルビー �
 
 ## <a name="manifests"></a>マニフェスト
 
-Media Services の*ダイナミック パッケージ*では、HLS、MPEG-DASH、Smooth Streaming のストリーミング クライアント マニフェストが、URL 内の形式セレクターに基づいて動的に生成されます。  
+Media Services の *ダイナミック パッケージ* では、HLS、MPEG-DASH、Smooth Streaming のストリーミング クライアント マニフェストが、URL 内の形式セレクターに基づいて動的に生成されます。  
 
 マニフェスト ファイルには、トラックの種類 (オーディオ、ビデオ、またはテキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の "チャンク" です。
 

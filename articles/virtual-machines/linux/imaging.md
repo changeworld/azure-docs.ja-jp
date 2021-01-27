@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842619"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878784"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成
 
@@ -29,7 +29,7 @@ Azure では、VHD をプラットフォームに取り込み、[マネージド
 
 Azure マネージド ディスクは単一の VHD です。 既存の VHD を取得してそこからマネージド ディスクを作成することも、空のマネージド ディスクをゼロから作成することもできます。 VM にディスクをアタッチすることでマネージド ディスクから VM を作成できますが、使用できるのは 1 つの VM を含む 1 つの VHD のみです。 OS のプロパティを変更することはできません。Azure は VM をオンにして、そのディスクを使用して起動しようとします。 
 
-Azure イメージは、複数の OS ディスクとデータ ディスクで構成できます。 マネージド イメージを使用して VM を作成すると、プラットフォームによってイメージのコピーが作成され、それを使用して VM が作成されます。そのため、マネージド イメージでは、複数の VM で同じイメージを再利用することがサポートされます。 また、Azure には、グローバル レプリケーション、[共有イメージ ギャラリー](shared-image-galleries.md)を使用したバージョン管理など、イメージの高度な管理機能も用意されています。 
+Azure イメージは、複数の OS ディスクとデータ ディスクで構成できます。 マネージド イメージを使用して VM を作成すると、プラットフォームによってイメージのコピーが作成され、それを使用して VM が作成されます。そのため、マネージド イメージでは、複数の VM で同じイメージを再利用することがサポートされます。 また、Azure には、グローバル レプリケーション、[共有イメージ ギャラリー](../shared-image-galleries.md)を使用したバージョン管理など、イメージの高度な管理機能も用意されています。 
 
 
 
@@ -65,7 +65,7 @@ Azure では、一般化されたイメージと専用イメージの 2 種類�
 Linux イメージを作成するときは、次の 2 つのオプションがあります。
 
 - 開発環境とテスト環境で簡単に VM を作成するためのマネージド イメージ。
-- 大規模にイメージを作成および共有するための[共有イメージ ギャラリー](shared-image-galleries.md)。
+- 大規模にイメージを作成および共有するための[共有イメージ ギャラリー](../shared-image-galleries.md)。
 
 
 ### <a name="managed-images"></a>マネージド イメージ
@@ -76,7 +76,7 @@ Linux イメージを作成するときは、次の 2 つのオプションが�
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure 共有イメージ ギャラリー (SIG)
 
-イメージを大規模に作成、管理、共有するには、[共有イメージ ギャラリー](shared-image-galleries.md)をお勧めします。 共有イメージ ギャラリーを使用すると、イメージに関連する構造と編成を構築できます。  
+イメージを大規模に作成、管理、共有するには、[共有イメージ ギャラリー](../shared-image-galleries.md)をお勧めします。 共有イメージ ギャラリーを使用すると、イメージに関連する構造と編成を構築できます。  
 
 - 一般化されたイメージと専用イメージの両方がサポートされます。
 - 第 1 世代と第 2 世代の両方のイメージがサポートされます。

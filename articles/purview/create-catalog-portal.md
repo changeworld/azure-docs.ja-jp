@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115788"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880035"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Purview アカウントを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "98115788"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 所有する [Azure Active Directory テナント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+* 所有する [Azure Active Directory テナント](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
 
 * ご使用のアカウントには、サブスクリプションにリソースを作成するためのアクセス許可が必要です。
 
@@ -35,7 +35,7 @@ ms.locfileid: "98115788"
     > Azure Policy をお持ちでない場合や、Azure Policy はあるものの、**ストレージ アカウント** と **EventHub 名前空間** の作成が禁止されていない場合、この手順を実行する必要はありません。
 
     1. Azure portal に移動し、 **[ポリシー]** を検索します。
-    1. [カスタム ポリシー定義の作成](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)に関するチュートリアルに従うか、`not` 演算子と `resourceBypass` タグを使用して既存のポリシーに 2 つの例外を追加します。
+    1. [カスタム ポリシー定義の作成](../governance/policy/tutorials/create-custom-policy-definition.md)に関するチュートリアルに従うか、`not` 演算子と `resourceBypass` タグを使用して既存のポリシーに 2 つの例外を追加します。
 
         ```json
         {
@@ -83,7 +83,7 @@ ms.locfileid: "98115788"
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="ポリシーの定義の作成方法を示すスクリーンショット。":::
 
-    1. 作成したカスタム ポリシーを使用して、[ポリシーの割り当てを作成](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)します。
+    1. 作成したカスタム ポリシーを使用して、[ポリシーの割り当てを作成](../governance/policy/assign-policy-portal.md)します。
 
         [ ![ポリシーの割り当ての作成方法を示すスクリーンショット](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ Azure Purview アカウントの **Purview データ キュレーター** デー
 
 1. **[ロールの割り当ての追加]** を選択します。
 
-1. [ロール] には、セキュリティ プリンシパルの使用目的に応じて「**Purview データ キュレーター ロール**」または「**Purview データ ソース管理者ロール**」と入力します (詳細については、「[カタログのアクセス許可](catalog-permissions.md)」および「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください)。
+1. [ロール] には、セキュリティ プリンシパルの使用目的に応じて「**Purview データ キュレーター ロール**」または「**Purview データ ソース管理者ロール**」と入力します (詳細については、「[カタログのアクセス許可](catalog-permissions.md)」および「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください)。
 
 1. **[アクセスの割り当て先]** は、既定値の **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** のままにします。
 

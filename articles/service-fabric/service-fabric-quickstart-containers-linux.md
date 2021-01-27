@@ -4,12 +4,12 @@ description: このクイック スタートでは、アプリケーションの
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741919"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788164"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -25,7 +25,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 1. サブスクリプションを所有していない場合は、始める前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成します。
 
-2. [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) をインストールします。
+2. [Azure CLI](/cli/azure/install-azure-cli-apt) をインストールします。
 
 3. [Service Fabric SDK と CLI](service-fabric-get-started-linux.md#installation-methods) をインストールします。
 
@@ -101,13 +101,13 @@ Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明�
     sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. インストール スクリプトを使用して投票アプリケーション定義をクラスターにコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。  PEM 証明書ファイルは、 *install.sh* ファイルと同じディレクトリに置く必要があります。
+2. インストール スクリプトを使用して投票アプリケーション定義をクラスターにコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。  PEM 証明書ファイルは、*install.sh* ファイルと同じディレクトリに置く必要があります。
 
     ```bash
     ./install.sh
     ```
 
-3. Web ブラウザーを開き、クラスターの Service Fabric Explorer エンドポイントに移動します。 エンドポイントの形式は、 **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** です (例: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`)。 </br>
+3. Web ブラウザーを開き、クラスターの Service Fabric Explorer エンドポイントに移動します。 エンドポイントの形式は、**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** です (例: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`)。 </br>
 
 4. **Applications** ノードを展開し、投票アプリケーションの種類と作成したインスタンスのエントリがあることを確認します。
 
@@ -168,7 +168,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 
 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。 サブスクリプション ID は、Azure portal にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete コマンド](/cli/azure/group?view=azure-cli-latest)を使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。 サブスクリプション ID は、Azure portal にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete コマンド](/cli/azure/group)を使用します。
 
 ```azurecli
 az login

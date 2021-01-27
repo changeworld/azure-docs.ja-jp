@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: c65f32cc3ce56ddf3fd235de8c002528e7a3cebd
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2b1b68b32ccd5a4dda0b71736da4e2d1e2566b6b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791444"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348018"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
 
@@ -21,8 +21,8 @@ SQL FQDN を使用して Azure Firewall アプリケーション規則を構成�
 SQL FQDN では、以下のトラフィックをフィルター処理できます。
 
 - VNets から Azure SQL Database または Azure Synapse Analytics へのトラフィック。 次に例を示します。*sql server1.database.windows.net* へのアクセスのみ許可します。
-- オンプレミスから Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
-- スポーク間から Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
+- オンプレミスから Vnet で実行されている Azure SQL Managed Instance または SQL IaaS へ。
+- スポーク間から Vnet で実行されている Azure SQL Managed Instance または SQL IaaS へ。
 
 SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql/database/connectivity-architecture.md#connection-policy)のみでサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](features.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
 SQL IaaS のトラフィックに既定以外のポートを使用する場合は、ファイアウォール アプリケーション規則でこれらのポートを構成できます。
@@ -96,7 +96,7 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 3. 適切なプロトコル、ポート、および SQL FQDN をアプリケーション規則に追加し、 **[保存]** を選択します。
    ![SQL FQDN を使用したアプリケーション規則](media/sql-fqdn-filtering/application-rule-sql.png)
 4. ファイアウォールを通過するトラフィックをフィルター処理する VNet 内の仮想マシンから SQL にアクセスします。 
-5. [Azure Firewall ログ](./firewall-workbook.md)を検証し、トラフィックが許可されていることを確認します。
+5. [Azure Firewall ログ](log-analytics-samples.md)を検証し、トラフィックが許可されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

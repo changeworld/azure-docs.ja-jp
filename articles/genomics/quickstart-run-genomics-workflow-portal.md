@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349369"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787353"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、サンプル入力データを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 Microsoft Genomics サービスで使用できる他の入力 ファイルの種類の詳細については、[一組の FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) に関するページをご覧ください。 "Genomics Tutorial.ipynb" ファイルをダウンロードし、[Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) などのノートブック リーダーでファイルを開いて実行することで、[Azure Notebooks の例](https://aka.ms/genomicsnotebook)を使用してこのチュートリアルを調べることもできます。
+この記事では、サンプル入力データを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 Microsoft Genomics サービスで使用できる他の入力 ファイルの種類の詳細については、[一組の FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) に関するページをご覧ください。 "Genomics Tutorial.ipynb" ファイルをダウンロードし、[Jupyter](https://notebooks.azure.com) などのノートブック リーダーでファイルを開いて実行することで、[Azure Notebooks の例](https://aka.ms/genomicsnotebook)を使用してこのチュートリアルを調べることもできます。

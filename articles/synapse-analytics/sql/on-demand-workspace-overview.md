@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463176"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682972"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール 
 
@@ -75,7 +75,7 @@ ms.locfileid: "96463176"
 
 サポートされている T-SQL:
 
-- SQL 関数の大部分を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 領域がサポートされます
+- SQL 関数の大部分を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 領域がサポートされます
 - CETAS - CREATE EXTERNAL TABLE AS SELECT
 - ビューとセキュリティのみに関連する DDL ステートメント
 
@@ -83,13 +83,13 @@ ms.locfileid: "96463176"
 
 - テーブル
 - トリガー
-- マテリアライズドビュー
+- 具体化されたビュー
 - ビューとセキュリティに関連しない DDL ステートメント
 - DML ステートメント
 
 ### <a name="extensions"></a>拡張機能
 
-サーバーレス SQL プールでは、データ レイク内のファイルに格納されているデータに対するインプレース クエリをスムーズに実行できるように、次の機能を追加して既存の [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を拡張します。
+サーバーレス SQL プールでは、データ レイク内のファイルに格納されているデータに対するインプレース クエリをスムーズに実行できるように、次の機能を追加して既存の [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 関数を拡張します。
 
 [複数のファイルまたはフォルダーに対するクエリの実行](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -125,7 +125,7 @@ ms.locfileid: "96463176"
 
 - **Azure Active Directory 認証**:
 
-  この認証方法では、Azure Active Directory によって管理されている ID を使用します。 Azure AD ユーザーの場合、多要素認証を有効にできます。 [可能であれば](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、Active Directory 認証 (統合セキュリティ) を使用します。
+  この認証方法では、Azure Active Directory によって管理されている ID を使用します。 Azure AD ユーザーの場合、多要素認証を有効にできます。 [可能であれば](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、Active Directory 認証 (統合セキュリティ) を使用します。
 
 #### <a name="authorization"></a>承認
 

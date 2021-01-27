@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489413"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630049"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (Python)
 この記事では、Python を使用して Service Bus トピックにメッセージを送信したり、そのトピックのサブスクリプションからメッセージを受信したりする方法について説明します。 
@@ -217,4 +217,4 @@ Azure portal で、使用する Service Bus 名前空間に移動します。 **
 - [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
     - **sync_samples** フォルダーには、Service Bus を同期的な方法で扱う方法を紹介したサンプルが格納されています。 このクイック スタートで使用したのは、こちらの方法です。 
     - **async_samples** フォルダーには、Service Bus を非同期的な方法で扱う方法を紹介したサンプルが格納されています。 
-- [azure-servicebus のリファレンス ドキュメント](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [azure-servicebus のリファレンス ドキュメント](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

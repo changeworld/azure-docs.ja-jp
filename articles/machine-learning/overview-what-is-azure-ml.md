@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2019
+ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b4cb3117464bfd32e17df4a1dbfdf7efd4ecbe6
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a9d471e81c348bfaa92c5d15774517f0d9e0e43f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127772"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683359"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -25,8 +25,6 @@ Azure Machine Learning は、従来の ML からディープ ラーニング、�
 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 
 
 また、このサービスは、PyTorch、TensorFlow、scikit-learn、Ray RLlib など、ディープ ラーニングや強化のための一般的なオープン ソース ツールと連携します。 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
 > **無料試用版**  Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。 Azure サービスを使用するクレジットを取得できます。 このクレジットを使い切った後に、アカウントを保持して、[無料の Azure サービス](https://azure.microsoft.com/free/)を使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。
@@ -130,7 +128,6 @@ Azure Storage アカウントやコンピューティング先などのリソー
 - 任意の方法で最初の実験を作成します。
 - + [個人の開発環境で使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)
   + [コンピューティング インスタンスで Jupyter Notebook を使用して ML モデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-1st-r-experiment.md) 
   + [自動化された機械学習を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md) 
   + [デザイナーのドラッグ アンド ドロップ機能を使用して、トレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md) 
   + [Machine Learning CLI を使用して、モデルをトレーニングおよびデプロイする](tutorial-train-deploy-model-cli.md)

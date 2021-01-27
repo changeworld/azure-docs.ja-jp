@@ -4,12 +4,12 @@ description: 統合タスクに最適化された Microsoft クラウド サー�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934868"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685563"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure における統合と自動化の適切なサービスを選ぶ
 
@@ -79,7 +79,7 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 |  | 関数 | WebJobs と WebJobs SDK |
 | --- | --- | --- |
 |**[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と [自動スケーリング](event-driven-scaling.md)**|✔||
-|**[ブラウザーでの開発とテスト](functions-create-first-azure-function.md)** |✔||
+|**[ブラウザーでの開発とテスト](./functions-get-started.md)** |✔||
 |**[従量課金制の価格](consumption-plan.md)**|✔||
 |**[Logic Apps との統合](functions-twitter-email.md)**|✔||
 | **イベントのトリガー** |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
@@ -124,4 +124,4 @@ Power Automate、Logic Apps、および Functions の統合は、今後ますま
 
 * [Power Automate の概要](/power-automate/getting-started)
 * [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* [初めての Azure 関数の作成](./functions-get-started.md)

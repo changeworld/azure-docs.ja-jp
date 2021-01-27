@@ -2,23 +2,23 @@
 title: アプリ登録の作成への制限を削除する - Azure AD | Microsoft Docs
 description: Azure AD Active Directory に無制限のアプリの登録を許可するカスタム ロールを割り当てる
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: quickstart
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a78296d3fd040b047c2a6cc3761d429883aa9d1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 260b0621bf204c6d7593b3696c602665c42ad77e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378790"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740858"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>クイック スタート:無制限のアプリの登録を作成するアクセス許可を付与する
 
@@ -29,15 +29,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-custom-role-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してカスタム ロールを作成する
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択してから、 **[新しいカスタム ロール]** を選択します。
+1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択してから、**[新しいカスタム ロール]** を選択します。
 
     ![[ロールと管理者] ページでロールを作成または編集する](./media/quickstart-app-registration-limits/new-custom-role.png)
 
-1. **[基本]** タブで、ロールの [名前] として「Application Registration Creator」(アプリケーション登録作成者) を指定し、[ロールの説明] に「Can create an unlimited number of application registrations」(無制限の数のアプリケーションの登録を作成できる) と入力して、 **[次へ]** を選択します。
+1. **[基本]** タブで、ロールの [名前] として「Application Registration Creator」(アプリケーション登録作成者) を指定し、[ロールの説明] に「Can create an unlimited number of application registrations」(無制限の数のアプリケーションの登録を作成できる) と入力して、**[次へ]** を選択します。
 
     ![[基本] タブでカスタム ロールの名前と説明を指定する](./media/quickstart-app-registration-limits/basics-tab.png)
 
-1. **[アクセス許可]** タブで、検索ボックスに「microsoft.directory/applications/create」と入力し、必要なアクセス許可の横にあるチェックボックスをオンにした後、 **[次へ]** を選択します。
+1. **[アクセス許可]** タブで、検索ボックスに「microsoft.directory/applications/create」と入力し、必要なアクセス許可の横にあるチェックボックスをオンにした後、**[次へ]** を選択します。
 
     ![[アクセス許可] タブでカスタム ロールのアクセス許可を選択する](./media/quickstart-app-registration-limits/permissions-tab.png)
 
@@ -47,8 +47,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[Azure Active Directory]** を選択し、次に **[ロールと管理者]** を選択します。
-1. [アプリケーション登録作成者] ロールを選択し、 **[割り当ての追加]** を選択します。
-1. 目的のユーザーを選択し、 **[選択]** をクリックして、ユーザーをロールに追加します。
+1. [アプリケーション登録作成者] ロールを選択し、**[割り当ての追加]** を選択します。
+1. 目的のユーザーを選択し、**[選択]** をクリックして、ユーザーをロールに追加します。
 
 これで完了です。 このクイックスタートでは、無制限の数のアプリの登録を作成するアクセス許可を持つカスタム ロールを作成した後、そのロールをユーザーに割り当てることに成功しました。
 

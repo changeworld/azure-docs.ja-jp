@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120446"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734749"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = 列または入れ子になったプロパティへの [JSON パス式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 既定の[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)は lax です。
+json_path = 列または入れ子になったプロパティへの [JSON パス式](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)。 既定の[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE)は lax です。
 
 > [!NOTE]
 > 厳格モードでは、指定されたパスが存在しない場合、エラーが発生してクエリが失敗します。 lax モードでは、クエリが成功し、JSON パス式が NULL に評価されます。
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>JSON パスを使用して列を指定する
 
-WITH 句で [JSON パス式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)を使用する例を次に示します。lax パス モードと厳格モードの違いについても説明しています。 
+WITH 句で [JSON パス式](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)を使用する例を次に示します。lax パス モードと厳格モードの違いについても説明しています。 
 
 ```sql
 SELECT 

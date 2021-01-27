@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Service Bus トピッ�
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: cd95b84c4b55279b40f95eef65cb2490a55d1780
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 46dc6bed7e51a5157d7eb42dac75c0240d440780
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630243"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881620"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (Java)
 このクイックスタートでは、Azure Service Bus トピックにメッセージを送信してそのトピックのサブスクリプションからメッセージを受信する Java コードを、azure-messaging-servicebus パッケージを使用して作成します。
@@ -225,7 +225,7 @@ Azure portal の Service Bus 名前空間の **[概要]** ページで、**受�
 次のドキュメントおよびサンプルを参照してください。
 
 - [Java 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [GitHub のサンプル](https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [GitHub のサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Java API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 

@@ -27,17 +27,17 @@ Azure Functions では、Function App インスタンスを作成するときに
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
-関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントには、BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントが含まれます。
+Function App を作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントには、BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントが含まれます。
 
 ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)」を参照してください。 
 
-お使いの関数アプリで既存のストレージ アカウントを使用することは可能ですが、必ずこれらの要件を満たしている必要があります。 Azure portal で、関数アプリの作成フローの一部として作成されたストレージ アカウントでは、これらのストレージ アカウント要件を満たしていることが保証されます。 ポータルでは、関数アプリの作成中に既存のストレージ アカウントを選択すると、サポートされていないアカウントが除外されます。 このフローでは、作成している関数アプリと同じリージョンにある既存のストレージ アカウントのみを選択できます。 詳細については、「[ストレージ アカウントの場所](#storage-account-location)」を参照してください。
+お使いの Function App で既存のストレージ アカウントを使用することは可能ですが、必ずこれらの要件を満たしている必要があります。 Azure portal で、Function App の作成フローの一部として作成されたストレージ アカウントでは、これらのストレージ アカウント要件を満たしていることが保証されます。 ポータルでは、関数アプリの作成中に既存のストレージ アカウントを選択すると、サポートされていないアカウントが除外されます。 このフローでは、作成している関数アプリと同じリージョンにある既存のストレージ アカウントのみを選択できます。 詳細については、「[ストレージ アカウントの場所](#storage-account-location)」を参照してください。
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>ストレージ アカウントに関するガイダンス
 
-すべての Function App には、操作するためのストレージ アカウントが必要です。 そのアカウントが削除されると、Function App は実行されません。 ストレージ関連の問題をトラブルシューティングするには、[ストレージ関連の問題をトラブルシューティングする方法](functions-recover-storage-account.md)に関する記事を参照してください。 Function App によって使用されるストレージ アカウントには、次の追加の考慮事項が適用されます。
+すべての関数アプリには、操作するためのストレージ アカウントが必要です。 そのアカウントが削除されると、関数アプリは実行されません。 ストレージ関連の問題をトラブルシューティングするには、[ストレージ関連の問題をトラブルシューティングする方法](functions-recover-storage-account.md)に関する記事を参照してください。 関数アプリによって使用されるストレージ アカウントには、次の追加の考慮事項が適用されます。
 
 ### <a name="storage-account-location"></a>ストレージ アカウントの場所
 
@@ -71,7 +71,7 @@ Azure Functions では、Function App インスタンスを作成するときに
 
 "_この機能は現在、Linux で実行されている場合にのみ使用できます。_ " 
 
-既存の Azure Files 共有を Linux Function App にマウントすることができます。 Linux Function App に共有をマウントすることにより、既存の機械学習モデルや、関数内のその他のデータを活用できます。 既存の共有を Linux Function App にマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用できます。 
+既存の Azure Files 共有を Linux 関数アプリにマウントすることができます。 Linux 関数アプリに共有をマウントすることにより、既存の機械学習モデルや、関数内のその他のデータを活用できます。 既存の共有を Linux 関数アプリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用できます。 
 
 このコマンドで、`share-name` は既存の Azure Files 共有の名前で、`custom-id` は、Function App にマウントされたときに共有を一意に定義する任意の文字列にすることができます。 また、`mount-path` は、Function App で共有にアクセスするためのパスです。 `mount-path` は、`/dir-name` の形式にする必要があり、`/home` で開始することはできません。
 

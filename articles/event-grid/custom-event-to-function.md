@@ -3,12 +3,12 @@ title: クイック スタート:カスタム イベントを Azure Functions �
 description: クイック スタート:Azure Event Grid と Azure CLI (または Azure portal) を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 エンドポイントに Azure Functions を使用します。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996349"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791729"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure Functions にカスタム イベントをルーティングする
 
@@ -19,7 +19,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 ## <a name="create-azure-function"></a>Azure Functions の作成
 カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成します。 
 
-1. 「[関数アプリを作成する](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)」の手順に従って関数アプリを作成します。
+1. 「[関数アプリを作成する](../azure-functions/functions-get-started.md)」の手順に従って関数アプリを作成します。
 2. **Event Grid トリガー** を使用して関数を作成します。 このトリガーを初めて使用する場合は、[インストール] をクリックして拡張機能をインストールする必要があります。
     1. **[関数アプリ]** ページで、左側のメニューの **[関数]** を選択し、[テンプレート] で **[Event Grid]** を検索して、 **[Azure Event Grid trigger]\(Azure Event Grid トリガー\)** を選択します。 
 

@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116077"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681338"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>クイック スタート:COPY ステートメントを使用してデータを一括読み込みする
 
-このクイックスタートでは、高スループットのデータ インジェストを実現する、シンプルで柔軟性のある [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、専用 SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
+このクイックスタートでは、高スループットのデータ インジェストを実現する、シンプルで柔軟性のある [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用して、専用 SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
 
 - さほど権限の高くないユーザーでもデータの読み込みを実行できます。データ ウェアハウスに対する厳格な CONTROL アクセス許可は不要です。
 - 単一の T-SQL ステートメントのみを活用でき、別途データベース オブジェクトを作成する必要はありません。

@@ -7,17 +7,17 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0b32158ad58a663f7d85b9814bb4f2c1c55e4178
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5cb767c639c7ff1d9888085caa036571376cc596
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922458"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734149"
 ---
 # <a name="examples-of-an-attestation-policy-signer-certificate"></a>構成証明ポリシー署名者証明書の例
 
 構成証明プロバイダーに関連付けられているポリシー署名者証明書は、署名済みのポリシーを Microsoft Azure Attestation が検証する際に使用されます。
-[ポリシーに署名することの利点](/azure/attestation/basic-concepts/#benefits-of-policy-signing)の詳細を学習します
+[ポリシーに署名することの利点](./basic-concepts.md#benefits-of-policy-signing)の詳細を学習します
 
 **プロバイダーの作成フローで使用されるポリシー署名者証明書のファイル形式**
 

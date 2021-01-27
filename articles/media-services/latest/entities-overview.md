@@ -1,6 +1,5 @@
 ---
 title: Media Services エンティティのフィルター処理、順序付け、およびページング
-titleSuffix: Azure Media Services
 description: Azure Media Services v3 エンティティのフィルター処理、順序付け、およびページングについて説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f562927fcbcf66ca7006ac2d100520311ac917
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300189"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897885"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
 
@@ -44,7 +43,7 @@ ms.locfileid: "89300189"
 
 - `gt`:フィールドが定数値 "*より大きい*" かどうかをテストします。
 - `lt`:フィールドが定数値 "*より小さい*" かどうかをテストします。
-- `ge`:フィールドが定数値*以上である*かどうかをテストします。
+- `ge`:フィールドが定数値 *以上である* かどうかをテストします。
 - `le`:フィールドが定数値 "*以下である*" かどうかをテストします。
 
 ## <a name="filter"></a>Assert

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583216"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786641"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
 
@@ -89,7 +89,7 @@ Data Box Gateway ソリューションは、Data Box Gateway リソース、Data
 
 Data Box Gateway 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
-- **リソースの使用可能性** - Azure Data Box Gateway リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)」をご覧ください。 Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
+- **リソースの使用可能性** - Azure Data Box Gateway リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)」をご覧ください。 Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](../azure-government/documentation-government-welcome.md)」を参照してください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。
 
@@ -101,4 +101,3 @@ Data Box Gateway 物理デバイス、Azure リソース、データ転送先の
 - [Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)を確認する。
 - [Data Box Gateway の制限事項](data-box-gateway-limits.md)を理解する。
 - Azure portal で [Azure Data Box Gateway](data-box-gateway-deploy-prep.md) を配置する。
-

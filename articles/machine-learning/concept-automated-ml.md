@@ -51,7 +51,7 @@ ms.locfileid: "98072226"
 
 ### <a name="time-series-forecasting"></a>時系列予測
 
-予測を行うことは、収益、在庫、販売、顧客需要にかかわらず、あらゆるビジネスに不可欠です。 自動 ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 詳細については、[時系列予測のための自動機械学習](how-to-auto-train-forecast.md)に関する記事を参照してください。 
+予測を行うことは、収益、在庫、販売、顧客需要にかかわらず、あらゆるビジネスに不可欠です。 自動化された ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 詳細については、[時系列予測のための自動機械学習](how-to-auto-train-forecast.md)に関する記事を参照してください。 
 
 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるという利点があります。 自動 ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
 
@@ -62,6 +62,7 @@ ms.locfileid: "98072226"
 * ローリング オリジン クロス検証
 * 構成可能なラグ
 * ローリング ウィンドウの集計機能
+
 
 予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [売上予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需要予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)、[飲料生産の予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
@@ -97,7 +98,10 @@ ms.locfileid: "98072226"
 
 [リモート コンピューティング先](how-to-auto-train-remote.md)の使用方法を学習します。
 
+
+
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
+
 
 ## <a name="feature-engineering"></a>特徴エンジニアリング
 
@@ -110,7 +114,7 @@ ms.locfileid: "98072226"
 
 ### <a name="automatic-featurization-standard"></a>自動特徴量化 (標準)
 
-すべての自動機械学習実験において、アルゴリズムが十分に実行されるよう、自動的にデータの規模が調整され、正規化されます。 モデル トレーニングの間、次のいずれかのスケーリング手法または正規化手法が各モデルに適用されます。 AutoML がモデル内の[オーバーフィットや不均衡データを防止する](concept-manage-ml-pitfalls.md)方法について説明します。
+自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、自動的にデータの規模が調整され、正規化されます。 モデル トレーニングの間、次のいずれかのスケーリング手法または正規化手法が各モデルに適用されます。 AutoML がモデル内の[オーバーフィットや不均衡データを防止する](concept-manage-ml-pitfalls.md)方法について説明します。
 
 |スケーリング&nbsp;&&nbsp;正規化| 説明 |
 | ------------- | ------------- |
@@ -141,7 +145,7 @@ ms.locfileid: "98072226"
 
 初期アンサンブルが並べ替えられた [Caruana のアンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用して、アンサンブル内で使用するモデルを決定します。 大まかに言えば、このアルゴリズムでは、最適な個別スコアを持つ最大 5 つのモデルを使用してアンサンブルを初期化し、これらのモデルが最適なスコアの 5% のしきい値内にあることを確認して、不適切な初期アンサンブルを回避します。 その後、各アンサンブルの繰り返しに対して、新しいモデルが既存のエンティティに追加され、結果のスコアが計算されます。 新しいモデルによって既存のアンサンブル スコアが向上した場合、アンサンブルはその新しいモデルを含むように変更されます。
 
-自動機械学習の既定のアンサンブル設定を変更する方法については、[ハウツー](how-to-configure-auto-train.md#ensemble)を参照してください。
+自動化された機械学習の既定のアンサンブル設定を変更する方法については、[ハウツー](how-to-configure-auto-train.md#ensemble)を参照してください。
 
 ## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>ローカルおよびリモートで管理されている ML のコンピューティング先に関するガイダンス
 
@@ -255,7 +259,7 @@ Azure Machine Learning には、自動 ML を使用するための 2 つのエ�
 
 ## <a name="automl--onnx"></a>AutoML & ONNX
 
-Azure Machine Learning では、自動 ML を使用して Python モデルを構築し、それを ONNX 形式に変換できます。 ONNX 形式になったモデルは、さまざまなプラットフォームやデバイスで実行することができます。 [ONNX での ML モデルの能率化](concept-onnx.md)に関する詳細をご覧ください。
+Azure Machine Learning では、自動化された ML を使用して Python モデルを構築し、それを ONNX 形式に変換できます。 ONNX 形式になったモデルは、さまざまなプラットフォームやデバイスで実行することができます。 [ONNX での ML モデルの能率化](concept-onnx.md)に関する詳細をご覧ください。
 
 ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#select-your-experiment-type)についてご確認ください。
 

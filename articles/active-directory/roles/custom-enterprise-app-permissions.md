@@ -2,22 +2,22 @@
 title: Azure Active Directory のカスタム ロールに対するアプリのアクセス許可 | Microsoft Docs
 description: Azure portal、PowerShell、Graph API におけるカスタム Azure AD ロールに対するエンタープライズ アプリのアクセス許可について見ていきます。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 39d9cf9ed87c8a8f45cb2a6239292562035d31e3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 110da0a12336415d9d9c781e24684d7e2af8bc9d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379640"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741657"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するエンタープライズ アプリケーションのアクセス許可
 

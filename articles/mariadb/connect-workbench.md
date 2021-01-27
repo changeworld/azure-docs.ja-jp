@@ -3,16 +3,16 @@ title: クイック スタート:MySQL Workbench による接続 - Azure Databas
 description: このクイック スタートでは、MySQL Workbench を使用して、Azure Database for MariaDB に接続し、データを照会するための手順を紹介します。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4426e1d1b22c521dc436dc7e304d57e57b1812c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541098"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664386"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>クイック スタート:Azure Database for MariaDB: MySQL Workbench を使った接続とデータの照会
 

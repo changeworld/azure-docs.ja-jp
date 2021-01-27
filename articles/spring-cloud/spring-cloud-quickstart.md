@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 416f997475e35f8e784679ca0826f7af38d756c7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880306"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
 
@@ -351,9 +351,6 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Initializr のページ](media/spring-cloud-quickstart-java/initializr-page.png)
-
-> [!NOTE]
-> Microsoft は、アプリと Eureka 間の TLS 認証に関する Spring Boot 2.4 の問題を特定しました。現在、Spring コミュニティと協力してその解決に取り組んでいます。 回避策については、[ FAQ](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) を参照してください。
 
 1. すべての依存関係が設定されたら、 **[生成]** をクリックします。 パッケージをダウンロードしてアンパックし、次のように `src/main/java/com/example/hellospring/HelloController.java` を追加して、単純な Web アプリケーション用の Web コントローラーを作成します。
 

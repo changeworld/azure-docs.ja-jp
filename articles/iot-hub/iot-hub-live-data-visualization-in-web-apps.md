@@ -27,7 +27,7 @@ ms.locfileid: "97588796"
 
 ## <a name="what-you-learn"></a>学習内容
 
-このチュートリアルでは、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT Hub で受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT Hub のデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
+このチュートリアルでは、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT ハブで受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -67,7 +67,7 @@ az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGr
 
 ## <a name="get-a-service-connection-string-for-your-iot-hub"></a>IoT Hub のサービス接続文字列を取得する
 
-IoT ハブは、いくつかの既定のアクセス ポリシーを使用して作成されます。 そのようなポリシーの 1 つとして **サービス** ポリシーがあります。これは、サービスが IoT ハブのエンドポイントを読み書きするのに十分なアクセス許可を提供します。 サービス ポリシーに準拠する IoT ハブの接続文字列を取得するには、次のコマンドを実行します。
+IoT Hub は、いくつかの既定のアクセス ポリシーを使用して作成されます。 そのようなポリシーの 1 つとして **サービス** ポリシーがあります。これは、サービスが IoT Hub のエンドポイントを読み書きするのに十分なアクセス許可を提供します。 サービス ポリシーに準拠する IoT Hub の接続文字列を取得するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service

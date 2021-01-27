@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740506"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677616"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -90,7 +90,7 @@ ms.locfileid: "97740506"
 | 特徴量 | ML Studio (クラシック) | Azure Machine Learning |
 |---| --- | --- |
 | ドラッグ アンド ドロップ インターフェイス | クラシック エクスペリエンス | 更新されたエクスペリエンス - [Azure Machine Learning デザイナー](concept-designer.md)| 
-| コード SDK | サポートされていない | [Azure Machine Learning Python](/python/api/overview/azure/ml/) および [R](tutorial-1st-r-experiment.md) SDK との完全な統合 |
+| コード SDK | サポートされていない | [Azure Machine Learning Python](/python/api/overview/azure/ml/) および [R](https://github.com/Azure/azureml-sdk-for-r) SDK との完全な統合 |
 | 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
 | コンピューティング ターゲットのトレーニング | 独自のコンピューティング ターゲット、CPU のサポートのみ | カスタマイズできる広範な[トレーニング コンピューティング先](concept-compute-target.md#train)。 GPU と CPU のサポートが含まれます | 
 | デプロイのコンピューティング ターゲット | 独自の Web サービス形式 (カスタマイズ不可) | カスタマイズできる広範な[デプロイ コンピューティング先](concept-compute-target.md#deploy)。 GPU と CPU のサポートが含まれます |

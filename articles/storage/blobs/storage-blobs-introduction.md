@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8e3f0435d9856d2b602a4f2b6f604aee05e040ba
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505207"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703591"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -70,7 +70,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 - **Azure Data Factory** では、Azure リソースのアカウント キー、Shared Access Signature、サービス プリンシパル、またはマネージド ID を使用した BLOB Storage 間のデータのコピーをサポートしています。 詳しくは、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 - **blobfuse** は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Linux ファイル システムでは、blobfuse を使用して、お客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 詳しくは、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)」をご覧ください。
 - **Azure Data Box** サービスは、大規模なデータセットやネットワーク上の制約によって有線でのデータのアップロードが非現実的になったときに、オンプレミスのデータを Blob Storage に転送するために使用できるサービスです。 データのサイズに応じて、[Azure Data Box Disk](../../databox/data-box-disk-overview.md)、[Azure Data Box](../../databox/data-box-overview.md)、または [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) デバイスを Microsoft に要求できます。 その後にデータをそれらのデバイスにコピーし、Microsoft に送り返すことで、Blob Storage にアップロードすることができます。
-- **Azure Import/Export サービス** を使用して、お客様が用意したハード ディスクを使用して、大量のデータをお客様のストレージ アカウントにインポートまたはお客様のストレージ アカウントからエクスポートすることができます。 詳しくは、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../common/storage-import-export-service.md)に関する記事をご覧ください。
+- **Azure Import/Export サービス** を使用して、お客様が用意したハード ディスクを使用して、大量のデータをお客様のストレージ アカウントにインポートまたはお客様のストレージ アカウントからエクスポートすることができます。 詳しくは、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../../import-export/storage-import-export-service.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b78c2d5c03c95249c7f708f2d660d32c834f123e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451651"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676097"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>sqlcmd を使用して Synapse SQL に接続する
 
@@ -25,10 +25,10 @@ ms.locfileid: "96451651"
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) コマンド ライン ユーティリティを使用して、Synapse SQL 内のサーバーレス SQL プールおよび専用 SQL プールに接続し、クエリを実行することができます。  
+[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) コマンド ライン ユーティリティを使用して、Synapse SQL 内のサーバーレス SQL プールおよび専用 SQL プールに接続し、クエリを実行することができます。  
 
 ## <a name="1-connect"></a>1.接続する
-[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて Synapse SQL データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
+[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて Synapse SQL データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
 
 * **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します。
 * **データベース (-d):** データベース名
@@ -78,7 +78,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ### <a name="use-dedicated-sql-pool"></a>専用 SQL プールを使用する
 
-接続後、インスタンスに対してサポートされているすべての [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) ステートメントを発行できます。 この例では、クエリは対話モードで送信されます。
+接続後、インスタンスに対してサポートされているすべての [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (T-SQL) ステートメントを発行できます。 この例では、クエリは対話モードで送信されます。
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -99,7 +99,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ### <a name="use-serverless-sql-pool"></a>サーバーレス SQL プールを使用する
 
-接続後、インスタンスに対してサポートされているすべての [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) ステートメントを発行できます。  次の例では、クエリが対話モードで送信されます。
+接続後、インスタンスに対してサポートされているすべての [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (T-SQL) ステートメントを発行できます。  次の例では、クエリが対話モードで送信されます。
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -120,4 +120,4 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 
 ## <a name="next-steps"></a>次のステップ
 
-sqlcmd のオプションの詳細については、[sqlcmd のドキュメント](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)を参照してください。
+sqlcmd のオプションの詳細については、[sqlcmd のドキュメント](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を参照してください。

@@ -24,7 +24,7 @@ ms.locfileid: "92146771"
 
 ## <a name="what-you-learn"></a>学習内容
 
-Azure IoT Hub が受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT Hub 内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
+Azure IoT ハブが受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT ハブ内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -84,7 +84,7 @@ Azure IoT Hub が受信したリアルタイム センサー データを Power 
 
    **エンドポイント**: **[メッセージング]** を選びます。
 
-   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT Hub に使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT Hub 上で既定で作成され、IoT Hub によって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
+   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT ハブに使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT ハブ上で既定で作成され、IoT ハブによって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
 
    **[共有アクセス ポリシー キー]** :このフィールドは、共有アクセス ポリシー名の選択内容に基づいて自動的に入力されます。
 

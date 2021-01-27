@@ -31,19 +31,19 @@ T-SQL ストリーミングは次の場合に役立ちます。
 
 ## <a name="how-does-t-sql-streaming-work"></a>T-SQL ストリーミングのしくみ
 
-T-SQL ストリーミングは、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md#how-does-stream-analytics-work) とまったく同じ方法で動作します。 たとえば、リアルタイム データ ストリーミングを処理するために、" *ストリーミング ジョブ* " の概念が使用されます。 
+T-SQL ストリーミングは、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md#how-does-stream-analytics-work) とまったく同じ方法で動作します。 たとえば、リアルタイム データ ストリーミングを処理するために、"*ストリーミング ジョブ*" の概念が使用されます。 
 
 ストリーム分析ジョブは次のもので構成されます。
 
-- **ストリーム入力** :データ ストリームを読み取るデータ ソースへの接続が定義されます。 現在、Azure SQL Edge では次の種類のストリーム入力がサポートされています。
+- **ストリーム入力**:データ ストリームを読み取るデータ ソースへの接続が定義されます。 現在、Azure SQL Edge では次の種類のストリーム入力がサポートされています。
     - Edge ハブ
     - Kafka (現在、Kafka 入力のサポートは Intel/AMD64 バージョンの Azure SQL Edge でのみ利用可能です)。
 
-- **ストリーム出力** :データ ストリームを書き込むデータ ソースへの接続が定義されます。 現在、Azure SQL Edge では次の種類のストリーム出力がサポートされています。
+- **ストリーム出力**:データ ストリームを書き込むデータ ソースへの接続が定義されます。 現在、Azure SQL Edge では次の種類のストリーム出力がサポートされています。
     - Edge ハブ
-    - SQL (SQL 出力には、Azure SQL Edge のインスタンス内のローカル データベースか、リモートの SQL サーバーまたは Azure SQL データベースを指定できます)。 
+    - SQL (SQL 出力には、Azure SQL Edge のインスタンス内のローカル データベースか、リモートの SQL サーバーまたは Azure SQL Database を指定できます)。 
 
-- **ストリーム クエリ** :入力ストリームがストリーム出力に書き込まれる前に適用される変換、集計、フィルター、並べ替え、結合が定義されます。 ストリーム クエリは、Stream Analytics で使用されているものと同じクエリ言語に基づいています。 詳細については、[Stream Analytics クエリ言語](/stream-analytics-query/stream-analytics-query-language-reference)に関するページを参照してください。
+- **ストリーム クエリ**:入力ストリームがストリーム出力に書き込まれる前に適用される変換、集計、フィルター、並べ替え、結合が定義されます。 ストリーム クエリは、Stream Analytics で使用されているものと同じクエリ言語に基づいています。 詳細については、[Stream Analytics クエリ言語](/stream-analytics-query/stream-analytics-query-language-reference)に関するページを参照してください。
 
 > [!IMPORTANT]
 > Stream Analytics とは異なり、現在、T-SQL ストリーミングでは[ルックアップでの参照データの使用](../stream-analytics/stream-analytics-use-reference-data.md)や[ストリーム ジョブでの UDF および UDA の使用](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c)はサポートされていません。

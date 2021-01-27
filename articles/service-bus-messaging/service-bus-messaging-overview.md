@@ -3,12 +3,12 @@ title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: この記事では、フル マネージド エンタープライズ統合メッセージ ブローカーである Azure Service Bus の概要を簡単に説明します。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755737"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881603"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 Microsoft Azure Service Bus は、メッセージ キューとパブリッシュとサブスクライブ トピックを備えたフル マネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用され、次のような利点があります。
@@ -32,7 +32,7 @@ Microsoft Azure Service Bus は、メッセージ キューとパブリッシュ
     2. 処理の結果を 1 つ以上の異なるキューにポストする。
     3. 元のキューから入力メッセージを移動する。 
     
-    結果は、入力メッセージの正常な解決など、成功した場合にのみ、ダウンストリーム コンシューマーから確認できるようになり、これにより、1 回限りの処理セマンティクスが可能になります。 このトランザクション モデルは、より大きなソリューション コンテキストにおける[補正トランザクション](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) パターンの堅牢な基盤です。 
+    結果は、入力メッセージの正常な解決など、成功した場合にのみ、ダウンストリーム コンシューマーから確認できるようになり、これにより、1 回限りの処理セマンティクスが可能になります。 このトランザクション モデルは、より大きなソリューション コンテキストにおける[補正トランザクション](/azure/architecture/patterns/compensating-transaction) パターンの堅牢な基盤です。 
 * *メッセージ セッション*。 厳密なメッセージの順序付けやメッセージの遅延を必要とする、ワークフローと多重転送の高スケールな調整を実装します。
 
 Apache ActiveMQ などの他のメッセージ ブローカーに慣れている場合、Service Bus の概念はご存じの概念と似ています。 Service Bus はサービスとしてのプラットフォーム (PaaS) であるため、重要な違いは、次のアクションについて心配する必要がないことです。 これらの作業は Azure が代わりに行います。 
@@ -138,11 +138,11 @@ Service Bus は、[AMQP 1.0](service-bus-amqp-overview.md) 標準および [HTTP
 
 完全にサポートされている Service Bus クライアント ライブラリを Azure SDK 経由で利用できます。
 
-- [.NET 用 Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Java 用 Azure Service Bus ライブラリ](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [.NET 用 Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Java 用 Azure Service Bus ライブラリ](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Java JMS 2.0 用 Azure Service Bus プロバイダー](how-to-use-java-message-service-20.md)
-- [JavaScript および TypeScript 用の Azure Service Bus モジュール](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Python 用 Azure Service Bus ライブラリ](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [JavaScript および TypeScript 用の Azure Service Bus モジュール](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Python 用 Azure Service Bus ライブラリ](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure Service Bus のプライマリ プロトコルは AMQP 1.0 です](service-bus-amqp-overview.md)。AMQP 1.0 に準拠している任意のプロトコル クライアントから使用できます。 いくつかのオープンソース AMQP クライアントには、Service Bus の相互運用性を明示的に示すサンプルが含まれています。 AMQP 1.0 クライアントで Service Bus の機能を直接使用する方法については、[AMQP 1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)を参照してください。
 

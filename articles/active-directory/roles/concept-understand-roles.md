@@ -2,23 +2,23 @@
 title: Azure Active Directory のロールの概念について
 description: Azure Active Directory におけるリソースのスコープと併せて Azure Active Directory の組み込みおよびカスタム ロールを理解する方法について説明します。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
 ms.date: 11/20/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803903"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740348"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory のロールについて
 

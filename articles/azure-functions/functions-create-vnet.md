@@ -58,7 +58,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
     | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 | 
-    | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup` または Function App で作成したリソース グループを選択します。 Function App、WordPress VM、およびホスティング プランに同じリソース グループを使用すれば、このチュートリアルの完了時にリソースを簡単にクリーンアップできます。 |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup` または関数アプリで作成したリソース グループを選択します。 関数アプリ、WordPress VM、およびホスティング プランに同じリソース グループを使用すれば、このチュートリアルの完了時にリソースを簡単にクリーンアップできます。 |
     | **仮想マシン名** | VNET Wordpress | VM 名は、リソース グループ内で一意である必要があります |
     | **[リージョン](https://azure.microsoft.com/regions/)** | (ヨーロッパ) 西ヨーロッパ | 近くのリージョン、または VM にアクセスする関数に近いリージョンを選択します。 |
     | **[サイズ]** | B1s | **[サイズの変更]** を選択してから、B1s 標準イメージを選択します。これには 1 つの vCPU と 1 GB のメモリがあります。 |
@@ -121,7 +121,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[OK]** を選択して、サブネットを追加します。 **[VNet 統合]** ページおよび **[ネットワーク機能の状態]** ページを閉じ、Function App のページに戻ります。
 
-Function App から WordPress サイトが実行している仮想ネットワークにアクセスできるようになりました。 次に、[Azure Functions プロキシ](functions-proxies.md)を使用して、WordPress サイトからファイルを返します。
+関数アプリから WordPress サイトが実行している仮想ネットワークにアクセスできるようになりました。 次に、[Azure Functions プロキシ](functions-proxies.md)を使用して、WordPress サイトからファイルを返します。
 
 ## <a name="create-a-proxy-to-access-vm-resources"></a>VM リソースにアクセスするためのプロキシを作成する
 

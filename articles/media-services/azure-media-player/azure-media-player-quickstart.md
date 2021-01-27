@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 3d8ff1d2f121501152673c8375ef3d26aab10f1a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511741"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879192"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player クイックスタート
 Azure Media Player は簡単にセットアップできます。 たった数分で、Azure Media Services アカウントからメディア コンテンツの基本的な再生機能が利用できます。 このセクションでは、詳細は説明せず、基本的な手順を示します。 以降のセクションで、Azure Media Player を設定および構成する方法の詳細を説明します。  以下の組み込みをドキュメントの `<head>` に追加するだけです。
@@ -63,4 +63,4 @@ Azure Media Player は簡単にセットアップできます。 たった数分
 
 ## <a name="next-steps"></a>次のステップ ##
 
-- [Azure Media Player のフル セットアップ](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Azure Media Player のフル セットアップ](./azure-media-player-full-setup.md)

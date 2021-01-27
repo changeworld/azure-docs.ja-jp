@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
-ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563145"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881705"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud とは
 
@@ -27,7 +27,7 @@ Azure Spring Cloud へのアプリケーションのデプロイには多くの�
 * コンテナー化の依存関係なしで迅速に開発およびデプロイする。
 * 運用ワークロードを効率的かつ簡単に監視する。
 
-Azure Spring Cloud では、Java [Spring Boot](https://spring.io/projects/spring-boot) と ASP.NET Core [Steeltoe](https://steeltoe.io/) の両方のアプリがサポートされています。 Steeltoe に対するサポートは、現在、パブリック プレビューとして提供されています。 パブリック プレビューの提供では、公式リリースの前に新機能をお試しいただけます。 パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。 詳細については、[FAQ](https://azure.microsoft.com/support/faq/) をご覧ください。または、[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
+Azure Spring Cloud では、Java [Spring Boot](https://spring.io/projects/spring-boot) と ASP.NET Core [Steeltoe](https://steeltoe.io/) の両方のアプリがサポートされています。 Steeltoe に対するサポートは、現在、パブリック プレビューとして提供されています。 パブリック プレビューの提供では、公式リリースの前に新機能をお試しいただけます。 パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。 詳細については、[FAQ](https://azure.microsoft.com/support/faq/) をご覧ください。または、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
 
 ## <a name="service-overview"></a>サービスの概要
 
@@ -64,7 +64,7 @@ Azure エコシステムの一部として、Azure Spring Cloud は、ストレ�
     * [他の Azure サービスとの統合](spring-cloud-tutorial-bind-cosmos.md): Spring Boot アプリケーションを手動で構成するのではなく、選択した Azure サービスをアプリケーションに自動的にバインドできます。たとえば、アプリケーションを Azure Cosmos DB データベースにバインドできます。
     * [自動化](spring-cloud-howto-cicd.md): 継続的インテグレーションと継続的デリバリーのツールを使用すると、最小限の労力とリスクで、既存のアプリケーションにすばやく更新プログラムをデプロイできます。 Azure DevOps は、これらの主要なタスクの整理と制御に役立ちます。 
     * [トラブルシューティング](spring-cloud-howto-self-diagnose-solve.md): Azure Spring Cloud 診断は、アプリのトラブルシューティングに役立つ対話型エクスペリエンスを提供します。 構成は必要ありません。 問題が見つかった場合、Azure Spring Cloud 診断によって問題点が特定され、問題のトラブルシューティングと解決に役立つ情報が示されます。
-    * [移行](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud):既存の Spring Cloud アプリケーションまたは Spring Boot アプリケーションを移行して、Azure Spring Cloud で実行します。
+    * [移行](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud):既存の Spring Cloud アプリケーションまたは Spring Boot アプリケーションを移行して、Azure Spring Cloud で実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

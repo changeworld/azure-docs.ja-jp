@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
-ms.openlocfilehash: 874da5ffcd2777648bb06c6e702932d64a32e59c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 740563935e12d5a7418bada2a18b48fb573f6e7d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681889"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679009"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>クイックスタート: Azure Maps を使用して Android アプリを作成する
 
@@ -59,7 +59,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
 
 >[!NOTE]
-> Azure Maps のプライマリ キーではなく Azure サブスクリプション キーを使用した場合、マップは正しく表示されません。 また、セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)」を参照してください。
+> Azure Maps のプライマリ キーではなく Azure サブスクリプション キーを使用した場合、マップは正しく表示されません。 また、セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](../key-vault/secrets/tutorial-rotation-dual.md)」を参照してください。
 
 ![Azure portal で主キー Azure Maps キーを取得する](media/quick-android-map/get-key.png)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: b23b5d516479cb28948a601c6bd71309500e73f1
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 56644ab6cacfd811a23fb89b9bf6a10c87542db3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825788"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876785"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
 
@@ -84,7 +84,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ::: zone-end
 
 > [!TIP]
-> 構成サーバーにプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)を参照してください。
+> 構成サーバーにプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](./spring-cloud-tutorial-config-server.md)を参照してください。
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server のトラブルシューティング
 

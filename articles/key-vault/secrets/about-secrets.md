@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705270"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786041"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -84,7 +84,7 @@ Key Vault でアクセスを制御するための攻略ガイドについては�
 
 ## <a name="azure-storage-account-key-management"></a>Azure ストレージ アカウント キーの管理
 
-Key Vault では、[Azure ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview) キーを管理できます。
+Key Vault では、[Azure ストレージ アカウント](../../storage/common/storage-account-overview.md) キーを管理できます。
 
 - Key Vault の内部では、Azure ストレージ アカウントを使用してキーの一覧表示 (同期) ができます。 
 - Key Vault は定期的にキーを再生成 (ローテーション) します。
@@ -92,7 +92,7 @@ Key Vault では、[Azure ストレージ アカウント](https://docs.microsof
 - Key Vault では、ストレージ アカウントと従来のストレージ アカウントの両方のキーが管理されます。
 
 詳細については、次を参照してください。
-- [ストレージ アカウントのアクセス キー](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [ストレージ アカウントのアクセス キー](../../storage/common/storage-account-keys-manage.md)
 - [Azure Key Vault でのストレージ アカウント キーの管理](../secrets/overview-storage-keys.md)
 
 
