@@ -68,7 +68,7 @@ ms.locfileid: "93341843"
 5. サインアップの場合は、API Management に対応するアカウントを作成する必要があります。 [ユーザーを作成] します。 このとき、ユーザー ID をユーザー ストア内のユーザー ID と同じに設定するか、または追跡が可能な ID に設定してください。
 6. ユーザーが正常に認証されたら、次の操作を行います。
    
-   * API Management REST API を使用して[共有アクセス トークンを要求します]
+   * API Management REST API を使用して[Request a shared access token]
    * 上記の API 呼び出しによって受け取った SSO URL に returnUrl クエリ パラメーターを付加します。
      
      > 例: `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
@@ -127,7 +127,7 @@ ms.locfileid: "93341843"
      > 
    * 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。 2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
 3. **operation** で要求された操作の種類 (課金、追加の質問など) に基づいて、製品のサブスクリプションを処理します。
-4. お客様の側で製品へのユーザーのサブスクリプションを正常に処理できたら、API Management 製品へのユーザーのサブスクリプション処理を行います。そのためには、[サブスクリプションのための REST API を呼び出します]。
+4. お客様の側で製品へのユーザーのサブスクリプションを正常に処理できたら、API Management 製品へのユーザーのサブスクリプション処理を行います。そのためには、[calling the REST API for subscriptions]。
 
 ## <a name="example-code"></a><a name="delegate-example-code"> </a>コード例
 

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740766"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879563"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Azure Time Series Insights Gen2 からのデータを Power BI で視覚化する
 
@@ -112,10 +112,10 @@ Azure Time Series Insights は、クラウド内の時系列データを格納�
 レポートの作成が完了したら、Power BI Reporting Services にパブリッシュして、自分が属する組織内の他のユーザーと共有することができます。
 
 ## <a name="advanced-editing"></a>高度な編集
-データセットを既に Power BI に読み込んでいるが、クエリ (日付/時刻や環境 ID パラメーターなど) を変更する場合、Power BI の詳細エディター機能を使用してこれを行うことができます。 **Power Query エディター** を使用して変更を加える方法の詳細については、[Power BI のドキュメント](https://docs.microsoft.com/power-bi/desktop-query-overview)を参照してください。 
+データセットを既に Power BI に読み込んでいるが、クエリ (日付/時刻や環境 ID パラメーターなど) を変更する場合、Power BI の詳細エディター機能を使用してこれを行うことができます。 **Power Query エディター** を使用して変更を加える方法の詳細については、[Power BI のドキュメント](/power-bi/desktop-query-overview)を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 
-* [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview) の詳細を参照してください。
+* [Power BI Desktop](/power-bi/desktop-query-overview) の詳細を参照してください。
 
 * Azure Time Series Insights Gen2 での[データのクエリ](concepts-query-overview.md)について学習します。

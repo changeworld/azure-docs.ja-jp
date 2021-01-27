@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: de97640ab462ac8ea7342d235d0fad802c232179
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783370"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878309"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -38,7 +38,7 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 

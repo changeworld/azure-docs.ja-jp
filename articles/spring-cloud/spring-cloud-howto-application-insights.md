@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fb1c6f2b541e537bcb52c55fcfd87bbebe37b8e5
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: c4871c3de8028eec1b6184c1d03ac2180b50f57d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831943"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881352"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud での Application Insights Java In-Process Agent (プレビュー)
 
@@ -83,7 +83,7 @@ Application Insights には、次のようにさまざまな観察できるパ�
 
   [ ![IPA 8](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* 左側のナビゲーション ペインで **[可用性]** をクリックし、[[Availability tests in Application Insights]\(Application Insights での可用性テスト\)](/azure/azure-monitor/app/monitor-web-app-availability) を作成して Web アプリの可用性と応答性を監視します。
+* 左側のナビゲーション ペインで **[可用性]** をクリックし、[[Availability tests in Application Insights]\(Application Insights での可用性テスト\)](../azure-monitor/app/monitor-web-app-availability.md) を作成して Web アプリの可用性と応答性を監視します。
 
   [ ![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 

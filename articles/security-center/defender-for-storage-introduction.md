@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606727"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881386"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage の概要
 
@@ -54,7 +54,7 @@ Azure Defender for Storage の利点は次のとおりです。
 アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。 アラートは、Azure Sentinel、他のサードパーティ製 SIEM、またはその他の外部ツールにエクスポートできます。
 
 > [!TIP]
-> サブスクリプション レベルで [Azure Defender for Storage を構成する](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center)ことをお勧めしますが、[個別のストレージ アカウントで構成する](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal)こともできます。
+> サブスクリプション レベルで [Azure Defender for Storage を構成する](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)ことをお勧めしますが、[個別のストレージ アカウントで構成する](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal)こともできます。
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>マルウェアのハッシュ評価分析とは

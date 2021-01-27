@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202659"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878123"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web Application Firewall の Azure セキュリティ ベースライン
 
@@ -406,7 +406,7 @@ Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、
 
 Azure WAF は、規則によって検出された侵入や攻撃を防止モードでブロックします。 攻撃者に "403 不正アクセス" の例外が送信され、接続が終了します。 防止モードでは、このような攻撃を WAF ログに記録します。
 
-- [Application Gateway と Azure Security Center の統合の概要](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [Application Gateway と Azure Security Center の統合の概要](../security-center/security-center-partner-integration.md)
 
 - [Application Gateway での WAF のモード](ag/ag-overview.md#waf-modes)
 

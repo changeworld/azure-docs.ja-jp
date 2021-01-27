@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 473b2e4ac3443d204b39331d9cefaa6c71122439
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740642"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881671"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 
@@ -28,7 +28,7 @@ Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) への�
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
-* ローカルでデバッグするには、モデルを [Azure Machine Learning コンピューティング インスタンス](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm)にデプロイするか、ローカル システム上に機能する Docker をインストールします。
+* ローカルでデバッグするには、モデルを [Azure Machine Learning コンピューティング インスタンス](./how-to-deploy-local-container-notebook-vm.md)にデプロイするか、ローカル システム上に機能する Docker をインストールします。
 
     Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
 

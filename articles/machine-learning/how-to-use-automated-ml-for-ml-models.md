@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796059"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879749"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -216,7 +216,7 @@ Included | トレーニングに含める列を指定します。
 1. **[デプロイ]** を選択します。 デプロイの完了には 20 分程度かかる場合があります。
     デプロイが開始されると、 **[モデルの概要]** タブが表示されます。 **[Deploy status]\(デプロイの状態\)** セクションで、デプロイの進行状況を確認します。 
 
-これで、予測を生成するための運用 Web サービスが作成されました。 予測をテストするには、[Power BI の組み込みの Azure Machine Learning サポート](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)からサービスのクエリを実行します。
+これで、予測を生成するための運用 Web サービスが作成されました。 予測をテストするには、[Power BI の組み込みの Azure Machine Learning サポート](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)からサービスのクエリを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

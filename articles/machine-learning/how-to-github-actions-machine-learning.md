@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: f5abeee3b1e1e44f5ce0423fc7f8170644d74508
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605027"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880476"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning で GitHub Actions を使用する
 
-Azure Machine Learning でモデルをトレーニングするために [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) を使ってみましょう。 
+Azure Machine Learning でモデルをトレーニングするために [GitHub Actions](https://docs.github.com/en/actions) を使ってみましょう。 
 
 > [!NOTE]
 > Azure Machine Learning 向けの GitHub Actions は現状のまま提供されており、Microsoft によって完全にはサポートされていません。 特定のアクションで問題が発生した場合は、アクションのリポジトリでイシューを開いてください。 たとえば、aml-deploy アクションで問題が発生した場合は、[https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) リポジトリで問題を報告してください。
@@ -228,4 +228,4 @@ jobs:
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](how-to-create-your-first-pipeline.md)
+> [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](./how-to-create-machine-learning-pipelines.md)

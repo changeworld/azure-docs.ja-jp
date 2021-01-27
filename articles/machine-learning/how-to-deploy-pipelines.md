@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034090"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879395"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>機械学習パイプラインを発行して追跡する
 
@@ -32,7 +32,7 @@ ms.locfileid: "97034090"
 
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)を使用します
 
-* 機械学習パイプラインを作成して実行します。その際は、「[チュートリアル: バッチ スコアリング用の Azure Machine Learning パイプラインを作成する](tutorial-pipeline-batch-scoring-classification.md)」に従います。 その他のオプションについては、「[Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](how-to-create-your-first-pipeline.md)」を参照してください
+* 機械学習パイプラインを作成して実行します。その際は、「[チュートリアル: バッチ スコアリング用の Azure Machine Learning パイプラインを作成する](tutorial-pipeline-batch-scoring-classification.md)」に従います。 その他のオプションについては、「[Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](./how-to-create-machine-learning-pipelines.md)」を参照してください
 
 ## <a name="publish-a-pipeline"></a>パイプラインを発行する
 

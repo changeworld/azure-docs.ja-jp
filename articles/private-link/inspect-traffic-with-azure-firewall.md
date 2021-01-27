@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017238"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879175"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
 
@@ -92,7 +92,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 このアーキテクチャは、次のいずれかを使用してオンプレミス ネットワークとの接続を構成した場合に実装できます。 
 
 * [ExpressRoute](..\expressroute\expressroute-introduction.md)
-* [サイト間 VPN](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md) 
+* [サイト間 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 
 
 セキュリティの要件により、プライベート エンドポイントを介して公開されるサービスへのクライアント トラフィックをセキュリティ アプライアンス経由でルーティングする必要がある場合は、このシナリオをデプロイします。
 

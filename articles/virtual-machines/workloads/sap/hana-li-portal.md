@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827514"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882486"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 
@@ -94,7 +94,7 @@ HANA Large Instance ユニットの一覧で 1 つのユニットをクリック
 - Revision 4
 
 Revision 4 は HANA Large Instances の最新アーキテクチャ リリースであり、Azure VM と、Revision 4 のスタンプまたは行にデプロイされた HANA Large Instance ユニット間のネットワーク待機時間が大幅に改善されています。
-もう 1 つの非常に重要な情報が、概要の右下隅にあります。それは、デプロイされた HANA Large Instance ユニットのそれぞれに対して自動的に作成される Azure 近接通信配置グループの名前です。 SAP アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接通信配置グループを参照する必要があります。 HANA Large Instance ユニットに関連付けられた [Azure 近接通信配置グループ](../../linux/co-location.md)を使用することで、Azure VM が確実に HANA Large Instance ユニットに近接してデプロイされるようにします。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
+もう 1 つの非常に重要な情報が、概要の右下隅にあります。それは、デプロイされた HANA Large Instance ユニットのそれぞれに対して自動的に作成される Azure 近接通信配置グループの名前です。 SAP アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接通信配置グループを参照する必要があります。 HANA Large Instance ユニットに関連付けられた [Azure 近接通信配置グループ](../../co-location.md)を使用することで、Azure VM が確実に HANA Large Instance ユニットに近接してデプロイされるようにします。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
 
 ヘッダーの右側の列の追加フィールドでは、HANA Large Instance ユニットの電源の状態について通知されます。
 

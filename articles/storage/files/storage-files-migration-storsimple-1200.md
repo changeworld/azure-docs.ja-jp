@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630483"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882282"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
@@ -234,5 +234,5 @@ Windows Server に十分な空き容量がある場合は、コマンドを再�
 Azure File Sync のコンテンツ:
 
 * [AFS の概要](./storage-sync-files-planning.md)
-* [AFS デプロイ ガイド](storage-files-deployment-guide.md)
+* [AFS デプロイ ガイド](./storage-how-to-create-file-share.md)
 * [AFS のトラブルシューティング](storage-sync-files-troubleshoot.md)
