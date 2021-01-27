@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d3aa0ca83b28708fde81cba12993ac6e79e79a88
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180202"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760620"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub Actions ワークフローを設定して、静的 Web サイトを Azure Storage にデプロイする
 
-ワークフローを使用して静的サイトを Azure Storage アカウントにデプロイすることによって、[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) を開始します。 GitHub Actions ワークフローを設定すると、サイトのコードに変更を加えたときに、GitHub から Azure にサイトを自動的にデプロイできるようになります。
+ワークフローを使用して静的サイトを Azure Storage アカウントにデプロイすることによって、[GitHub Actions](https://docs.github.com/en/actions) を開始します。 GitHub Actions ワークフローを設定すると、サイトのコードに変更を加えたときに、GitHub から Azure にサイトを自動的にデプロイできるようになります。
 
 > [!NOTE]
 > [Azure Static Web Apps](../../static-web-apps/index.yml) を使用している場合は、GitHub Actions ワークフローを手動で設定する必要はありません。

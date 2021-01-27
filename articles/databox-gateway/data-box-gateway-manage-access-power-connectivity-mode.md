@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581125"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786810"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway のアクセス、電源、接続モードを管理する
 
@@ -68,7 +68,7 @@ Azure Data Box Gateway、IoT Hub、Azure Storage リソースを作成するに�
 
 `Read all directory objects` を実行できるように、Active Directory テナントに対する `User` アクセス権を取得しておく必要があります。 ゲスト ユーザーには、`Read all directory objects` に対するアクセス許可がありません。 ご自分がゲストである場合、アクティブ化キーの生成、ご利用のデバイス上での共有の作成、ユーザーの作成などの操作は失敗します。
 
-Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
+Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](/graph/permissions-reference)」を参照してください。
 
 ### <a name="register-resource-providers"></a>リソース プロバイダーを登録する
 
@@ -95,7 +95,7 @@ Data Box Gateway デバイスの場合、`Microsoft.DataBoxEdge` を登録する
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-リソース プロバイダーの登録方法の詳細については、[リソース プロバイダー登録エラーの解決](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)に関する記事を参照してください。
+リソース プロバイダーの登録方法の詳細については、[リソース プロバイダー登録エラーの解決](../azure-resource-manager/templates/error-register-resource-provider.md)に関する記事を参照してください。
 
 ## <a name="manage-connectivity-mode"></a>接続モードを管理する
 

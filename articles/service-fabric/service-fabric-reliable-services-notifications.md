@@ -6,19 +6,19 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021954"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784581"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知
 通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知は 2 種類のオブジェクトでサポートされます: *Reliable State Manager* および *Reliable Dictionary*。
 
 通知を使用する一般的な理由は次のとおりです。
 
-* セカンダリ インデックスなどのマテリアライズドビューや、レプリカの状態の集計フィルター ビューを構築するため。 たとえば、Reliable Dictionary のすべてのキーの並べ替えられたインデックスなどがあります。
+* セカンダリ インデックスなどの具体化されたビューや、レプリカの状態の集計フィルター ビューを構築するため。 たとえば、Reliable Dictionary のすべてのキーの並べ替えられたインデックスなどがあります。
 * 監視データ (過去 1 時間に追加されたユーザーの数など) を送信するため。
 
 通知は操作の適用の一環として発生します。 そのため、通知はできるだけ速やかに処理する必要があり、同期イベントには負荷の高い操作を含めないようにする必要があります。
@@ -42,7 +42,7 @@ Reliable State Manager のコレクションは、次の 3 つの状況で再構
 * 完全コピー: レプリカが構成セットに参加できるようにするには、レプリカを構築しておく必要があります。 場合によっては、プライマリ レプリカの Reliable State Manager の状態の完全コピーを、アイドル状態のセカンダリ レプリカに適用する必要があります。 セカンダリ レプリカの Reliable State Manager は、プライマリ レプリカから取得した Reliable State のセットを含む **NotifyStateManagerChangedEventArgs** を使用して、イベントを発生させます。
 * 復元: ディザスター リカバリー シナリオでは、**RestoreAsync** を介して、レプリカの状態をバックアップから復元できます。 そうした場合、プライマリ レプリカの Reliable State Manager は、バックアップから復元した Reliable State のセットを含む **NotifyStateManagerChangedEventArgs** を使用して、イベントを発生させます。
 
-トランザクション通知または State Manager 通知を登録するには、Reliable State Manager で **TransactionChanged** イベントまたは **StateManagerChanged** イベントに登録する必要があります。 これらのイベント ハンドラーに登録する一般的な場所は、ステートフル サービスのコンストラクターです。 コンストラクターで登録すると、 **IReliableStateManager**の有効期間中の変更によって発生した通知を見落とすことがなくなります。
+トランザクション通知または State Manager 通知を登録するには、Reliable State Manager で **TransactionChanged** イベントまたは **StateManagerChanged** イベントに登録する必要があります。 これらのイベント ハンドラーに登録する一般的な場所は、ステートフル サービスのコンストラクターです。 コンストラクターで登録すると、 **IReliableStateManager** の有効期間中の変更によって発生した通知を見落とすことがなくなります。
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -56,7 +56,7 @@ public MyService(StatefulServiceContext context)
 **TransactionChanged** イベント ハンドラーでは、**NotifyTransactionChangedEventArgs** を使用してイベントの詳細を提供します。 これには、変更の種類を示す Action プロパティ (例: **NotifyTransactionChangedAction.Commit**) と、 変更されたトランザクションへの参照を提供する Transaction プロパティが含まれます。
 
 > [!NOTE]
-> 現時点では、 **TransactionChanged** イベントは、トランザクションがコミットされた場合にのみ発生します。 その場合、Action が **NotifyTransactionChangedAction.Commit**になります。 ただし、今後、他の種類のトランザクションの状態変更によってイベントが発生する可能性があります。 そのため、Action を確認し、Action が予想していたものである場合にのみ、そのイベントを処理することをお勧めします。
+> 現時点では、 **TransactionChanged** イベントは、トランザクションがコミットされた場合にのみ発生します。 その場合、Action が **NotifyTransactionChangedAction.Commit** になります。 ただし、今後、他の種類のトランザクションの状態変更によってイベントが発生する可能性があります。 そのため、Action を確認し、Action が予想していたものである場合にのみ、そのイベントを処理することをお勧めします。
 > 
 > 
 
@@ -211,4 +211,4 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * [Reliable Collection](service-fabric-work-with-reliable-collections.md)
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)
-* [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

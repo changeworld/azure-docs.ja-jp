@@ -4,16 +4,16 @@ description: GitHub Actions を使用して Azure Resource Manager テンプレ�
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 67d4ac51e3e1f84f6a9acd0fc94d5818355d3954
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674334"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762088"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub Actions を使用した ARM テンプレートのデプロイ
 
-[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、プル要求や問題に対して共同作業を行ったりするために使用します。
+[GitHub Actions](https://docs.github.com/en/actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、プル要求や問題に対して共同作業を行ったりするために使用します。
 
 [Azure Resource Manager テンプレートのデプロイ アクション](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)を使って、Azure Resource Manager テンプレート (ARM テンプレート) の Azure へのデプロイを自動化します。
 
@@ -21,7 +21,7 @@ ms.locfileid: "97674334"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub アカウント。 ない場合は、[無料](https://github.com/join)でサインアップしてください。
-    - Resource Manager テンプレートとワークフロー ファイルを保存するための GitHub リポジトリ。 リポジトリを作成するには、[新しいリポジトリの作成](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)に関するページをご覧ください。
+    - Resource Manager テンプレートとワークフロー ファイルを保存するための GitHub リポジトリ。 リポジトリを作成するには、[新しいリポジトリの作成](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)に関するページをご覧ください。
 
 
 ## <a name="workflow-file-overview"></a>ワークフロー ファイルの概要

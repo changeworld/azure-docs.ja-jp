@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f6daee6d4cfc3c074e004fb3835f62218e48d9ff
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3bf137f968082e677f45c20947793232b9181220
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581340"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786614"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -40,7 +40,7 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 
 お客様のデータをクラウドで長期的に保持したい場合、Data Box Gateway を使用します。 長期保有にはストレージのアーカイブ層を使用できます。
 
-アーカイブ層は、ほとんどアクセスされることのないデータを 180 日間以上格納するために最適化されています。 アーカイブ層は、ストレージ コストが最も低くなりますが、アクセス コストが最も高くなります。 詳細については、「[アーカイブ アクセス層](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)」を参照してください。
+アーカイブ層は、ほとんどアクセスされることのないデータを 180 日間以上格納するために最適化されています。 アーカイブ層は、ストレージ コストが最も低くなりますが、アクセス コストが最も高くなります。 詳細については、「[アーカイブ アクセス層](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
 
 ### <a name="move-data-to-the-archive-tier"></a>データをアーカイブ層に移動する
 
@@ -48,14 +48,14 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 
 - [Data Box Gateway 経由のデータ転送](data-box-gateway-deploy-add-shares.md)に関するページで説明されている通常の転送手順を通じて、Data Box Gateway デバイスを使用してデータを Azure にアップロードします。
 - データがアップロードされた後、それをアーカイブ層に移動する必要があります。 BLOB 層の設定には 2 つの方法があり、Azure PowerShell スクリプトまたは Azure Storage ライフサイクル管理ポリシーを使用します。  
-    - Azure PowerShell を使用する場合、次の[手順](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)に従って、データをアーカイブ層に移動します。
+    - Azure PowerShell を使用する場合、次の[手順](../databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier)に従って、データをアーカイブ層に移動します。
     - Azure ライフサイクル管理を使用する場合、次の手順に従って、データをアーカイブ層に移動します。
-        - アーカイブ層を使用するには、BLOB ライフサイクル管理サービスのプレビューに[登録](/azure/storage/common/storage-lifecycle-management-concepts)します。
-        - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)します。
+        - アーカイブ層を使用するには、BLOB ライフサイクル管理サービスのプレビューに[登録](../storage/blobs/storage-lifecycle-management-concepts.md)します。
+        - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](../storage/blobs/storage-lifecycle-management-concepts.md#archive-data-after-ingest)します。
 - BLOB は、アーカイブとしてマークされると、ホット層またはコールド層に移動されない限り、ゲートウェイによる変更ができなくなります。 ファイルがローカル ストレージにある場合、ローカル コピーに対して行われる変更 (削除を含む) は、アーカイブ層にアップロードされません。
 - アーカイブ ストレージ内のデータを読み取るには、BLOB 層をホットかクールに変更して、データをリハイドレートする必要があります。 ゲートウェイ上の[共有を更新](data-box-gateway-manage-shares.md#refresh-shares)しても、BLOB はリハイドレートされません。
 
-詳細については、[Azure Blob Storage のライフサイクルを管理する方法](/azure/storage/common/storage-lifecycle-management-concepts)をご確認ください。
+詳細については、[Azure Blob Storage のライフサイクルを管理する方法](../storage/blobs/storage-lifecycle-management-concepts.md)をご確認ください。
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>増分転送に先立つ初期一括転送
 
@@ -65,10 +65,10 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 
 以下の手順に従って、データを Data Box にコピーして Azure Storage にアップロードします。
 
-1. [お客様の Data Box を注文します](/azure/databox/data-box-deploy-ordered)。
-2. [お客様の Data Box を設定します](/azure/databox/data-box-deploy-set-up)。
-3. [SMB 経由でデータを Data Box にコピーします](/azure/databox/data-box-deploy-copy-data)。
-4. [Data Box を返送し、Azure へのデータ アップロードを確認します](/azure/databox/data-box-deploy-picked-up)。
+1. [お客様の Data Box を注文します](../databox/data-box-deploy-ordered.md)。
+2. [お客様の Data Box を設定します](../databox/data-box-deploy-set-up.md)。
+3. [SMB 経由でデータを Data Box にコピーします](../databox/data-box-deploy-copy-data.md)。
+4. [Data Box を返送し、Azure へのデータ アップロードを確認します](../databox/data-box-deploy-picked-up.md)。
 5. Azure へのデータ アップロードが完了したら、すべてのデータは Azure ストレージ コンテナー内にあるはずです。 Data Box 用のストレージ アカウントで、BLOB (およびファイル) コンテナーに移動して、すべてのデータがコピーされたことを確認します。 コンテナー名をメモしておきます。これは、後でこの名前を使用するためです。 たとえば、次のスクリーンショットでは、`databox` コンテナーが増分転送に使用されます。
 
     ![Data Box 上のデータが含まれたコンテナー](media/data-box-gateway-use-cases/data-container.png)

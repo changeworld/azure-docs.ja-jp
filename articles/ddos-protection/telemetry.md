@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915081"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787300"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS 保護テレメトリの表示と構成
 
@@ -34,7 +34,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 > [!NOTE]
 > Azure portal 上では **[集計]** に複数のオプションが表示されますが、下の表に示す集計の種類のみが各メトリックに対してサポートされます。 紛らわしくて申し訳ありませんが、現在解決に向けて取り組み中です。
 
-Azure DDoS Protection Standard では、次の[メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses)を利用できます。 これらのメトリックを、診断設定を使用してエクスポートすることもできます (「[DDoS 診断ログの表示と構成](diagnostic-logging.md)」を参照してください)。
+Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)を利用できます。 これらのメトリックを、診断設定を使用してエクスポートすることもできます (「[DDoS 診断ログの表示と構成](diagnostic-logging.md)」を参照してください)。
 
 
 | メトリック | メトリックの表示名 | ユニット | 集計の種類 | 説明 |

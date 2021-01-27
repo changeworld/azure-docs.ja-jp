@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Syslog データを接続する | Microsoft Docs
-description: アプライアンスと Sentinel の間で Linux マシン上のエージェントを使用して、Syslog をサポートするマシンまたはアプライアンスを Azure Sentinel に接続します。 
+description: アプライアンスと Sentinel の間で Linux マシン上のエージェントを使用して、Syslog をサポートするマシンまたはアプライアンスを Azure Sentinel に接続します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566150"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747192"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog を使用して Linux ベースのソースからデータを収集する
 
@@ -32,7 +32,7 @@ Linux 用 Log Analytics エージェント (旧称 OMS エージェント) を�
 
 ## <a name="how-it-works"></a>しくみ
 
-**Syslog** は、Linux に共通のイベント ログ プロトコルです。 仮想マシンまたはアプライアンスに **Linux 用 Log Analytics エージェント**がインストールされている場合は、インストール ルーチンによって、TCP ポート 25224 でエージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 次に、エージェントは、HTTPS 経由で Log Analytics ワークスペースにメッセージを送信します。ここで、メッセージは、 **[Azure Sentinel] > [ログ]** の Syslog テーブルのイベント ログ エントリに解析されます。
+**Syslog** は、Linux に共通のイベント ログ プロトコルです。 仮想マシンまたはアプライアンスに **Linux 用 Log Analytics エージェント** がインストールされている場合は、インストール ルーチンによって、TCP ポート 25224 でエージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 次に、エージェントは、HTTPS 経由で Log Analytics ワークスペースにメッセージを送信します。ここで、メッセージは、 **[Azure Sentinel] > [ログ]** の Syslog テーブルのイベント ログ エントリに解析されます。
 
 詳細については、「[Azure Monitor の Syslog データ ソース](../azure-monitor/platform/data-sources-syslog.md)」を参照してください。
 
@@ -120,8 +120,12 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
 
 2. Syslog 情報が収集されるまで、十分な時間をかけます。 その後、 **[Azure Sentinel - Logs]\(Azure Sentinel - ログ\)** に移動して、次のクエリをコピーして貼り付けます。
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     必要に応じて **[Time range]\(時間の範囲\)** を変更し、 **[実行]** を選択します。

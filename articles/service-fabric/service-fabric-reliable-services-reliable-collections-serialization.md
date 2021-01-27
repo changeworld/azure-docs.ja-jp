@@ -4,12 +4,12 @@ description: Azure Service Fabric で Reliable Collection オブジェクトを�
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018622"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784361"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -20,7 +20,7 @@ Reliable State Manager には組み込みのシリアライザーが格納され
 
 ## <a name="built-in-serializers"></a>組み込みのシリアライザー
 
-Reliable State Manager には一般的な型のための組み込みのシリアライザーが含まれているため、既定で効率的にシリアル化できます。 その他の型については、Reliable State Manager は [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1) を使用します。
+Reliable State Manager には一般的な型のための組み込みのシリアライザーが含まれているため、既定で効率的にシリアル化できます。 その他の型については、Reliable State Manager は [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer) を使用します。
 型が変わらないことが明らかで、型の名前などの情報を含める必要がないため、組み込みのシリアライザーの方が効率的です。
 
 Reliable State Manager には、次の型用の組み込みのシリアライザーがあります。 
@@ -140,7 +140,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 
 ## <a name="next-steps"></a>次のステップ
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
-  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
   * [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
   * [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。

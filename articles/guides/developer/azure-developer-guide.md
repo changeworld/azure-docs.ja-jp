@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165061"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786471"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -84,7 +84,7 @@ VM の場合は細かいレベルで制御できるため、Azure 上で PaaS �
 
 > **いつ使用するか**: 他の Azure サービス、Web ベースのイベント、またはスケジュールに応じてトリガーされるコードがある場合に、Azure Functions を使用します。 また、完全なホスト型プロジェクトのオーバーヘッドが必要ない場合、またはコードの実行時にのみ料金を支払いたい場合にも Functions を使用できます。 詳細については、「[Azure Functions の作業開始](../../azure-functions/functions-overview.md)」を参照してください。
 >
-> **作業開始**: ポータルから [初めて関数を作成する](../../azure-functions/functions-create-first-azure-function.md)には、Functions のクイックスタート チュートリアルに従います。
+> **作業開始**: ポータルから [初めて関数を作成する](../../azure-functions/functions-get-started.md)には、Functions のクイックスタート チュートリアルに従います。
 >
 > **今すぐ試す**:Azure Functions を使用すると、Azure アカウントを新規登録することなくコードを実行できます。 今すぐ試して[初めての Azure 関数を作成](https://tryappservice.azure.com/)しましょう。
 

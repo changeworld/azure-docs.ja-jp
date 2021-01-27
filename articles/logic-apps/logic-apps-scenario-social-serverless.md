@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520751"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784814"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
@@ -48,7 +48,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 1. ロジック アプリ デザイナーのトリガーの下で、 **[新しいステップ]** を選択します。
 
-2. **テキスト分析**コネクタを検索します。
+2. **テキスト分析** コネクタを検索します。
 
 3. **[Detect Sentiment (センチメントの検出)]** アクションを選択します。
 
@@ -67,7 +67,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 ## <a name="process-data-with-azure-functions"></a>Azure Functions でのデータ処理
 
-関数を作成する前に、Azure サブスクリプションで関数アプリを作成します。 また、ロジック アプリで関数を直接呼び出すには、関数が HTTP トリガー バインディングを持つ必要があります。たとえば、**HttpTrigger** テンプレートを使用します。 詳しくは、[Azure Portal で最初の関数アプリと関数を作成する方法](../azure-functions/functions-create-first-azure-function.md)に関するページを参照してください。
+関数を作成する前に、Azure サブスクリプションで関数アプリを作成します。 また、ロジック アプリで関数を直接呼び出すには、関数が HTTP トリガー バインディングを持つ必要があります。たとえば、**HttpTrigger** テンプレートを使用します。 詳しくは、[Azure Portal で最初の関数アプリと関数を作成する方法](../azure-functions/functions-get-started.md)に関するページを参照してください。
 
 このシナリオでは、Azure 関数の要求本文としてツイート テキストを使用します。 関数コードで、ツイート テキストがキーワードまたはフレーズを含むかどうかを判定するロジックを定義します。 シナリオに応じて、単純または複雑な関数を作成します。
 関数の最後で、データと共にロジック アプリへの応答を返します。データには、たとえば `containsKeyword` のような単純なブール値や複合オブジェクトを使用します。

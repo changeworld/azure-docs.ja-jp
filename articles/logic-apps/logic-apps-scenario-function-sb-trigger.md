@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000336"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784936"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
 
@@ -24,7 +24,7 @@ ms.locfileid: "96000336"
 
 * Azure Service Bus 名前空間。 名前空間がない場合は、[最初に名前空間を作成](../service-bus-messaging/service-bus-create-namespace-portal.md)します。
 
-* 関数のコンテナーである関数アプリ。 関数アプリがない場合は、[最初に関数アプリを作成](../azure-functions/functions-create-first-azure-function.md)し、ランタイム スタックとして .NET を選択するようにしてください。
+* 関数のコンテナーである関数アプリ。 関数アプリがない場合は、[最初に関数アプリを作成](../azure-functions/functions-get-started.md)し、ランタイム スタックとして .NET を選択するようにしてください。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 

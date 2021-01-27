@@ -6,12 +6,12 @@ ms.author: nidutta
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.openlocfilehash: 4b95e4f164eb2c1d0a881cf9ab14696c3cbed4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121936"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788131"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>HDInsight で .NET for Apache Spark のバージョンを v1.0 に更新する
 
@@ -42,9 +42,9 @@ ms.locfileid: "98121936"
 
 2. [install-worker.sh](https://github.com/dotnet/spark/blob/master/deployment/install-worker.sh) スクリプトをダウンロードして、手順 1 でダウンロードしたワーカー バイナリを、HDI クラスターのすべてのワーカー ノードにインストールします。  
 
-3. 前述のファイルを、ご使用のクラスターがアクセスできる Azure Storage アカウントにアップロードします。 詳細については、[.NET for Apache Spark HDI のデプロイに関する記事](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure)を参照してください。
+3. 前述のファイルを、ご使用のクラスターがアクセスできる Azure Storage アカウントにアップロードします。 詳細については、[.NET for Apache Spark HDI のデプロイに関する記事](/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure)を参照してください。
 
-4. スクリプト アクションを使用して、クラスターのすべてのワーカー ノードで `install-worker.sh` スクリプトを実行します。 詳細については、[.NET for Apache Spark HDI のデプロイに関する記事](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action)を参照してください。
+4. スクリプト アクションを使用して、クラスターのすべてのワーカー ノードで `install-worker.sh` スクリプトを実行します。 詳細については、[.NET for Apache Spark HDI のデプロイに関する記事](/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action)を参照してください。
 
 ### <a name="update-your-application-to-use-specific-version"></a>特定のバージョンを使用するようにアプリケーションを更新する
 
@@ -58,4 +58,4 @@ ms.locfileid: "98121936"
 
 ## <a name="next-steps"></a>次のステップ
 
-[.NET for Apache Spark アプリケーションを HDInsight にデプロイする](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment)
+[.NET for Apache Spark アプリケーションを HDInsight にデプロイする](/dotnet/spark/tutorials/hdinsight-deployment)

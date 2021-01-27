@@ -3,12 +3,12 @@ title: Azure Lab Services - カスタム イメージを Shared Image Gallery �
 description: カスタム イメージを Shared Image Gallery にアップロードする方法について説明します。 大学の IT 部門は、イメージのインポートが特に有益であることがわかります。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e2f38b0cab87eab27181ddef79d0c02bd8c9bdb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654645"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787165"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>カスタム イメージを Shared Image Gallery にアップロードする
 
@@ -66,5 +66,5 @@ Azure Lab Services でラボを作成するための独自のカスタム イメ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [共有イメージ ギャラリーの概要](../virtual-machines/windows/shared-image-galleries.md)
+* [共有イメージ ギャラリーの概要](../virtual-machines/shared-image-galleries.md)
 * [Shared Image Gallery を使用する方法](how-to-use-shared-image-gallery.md)

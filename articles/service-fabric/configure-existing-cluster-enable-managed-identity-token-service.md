@@ -3,12 +3,12 @@ title: 既存の Service Fabric クラスターでマネージド ID のサポ�
 description: 既存の Azure Service Fabric クラスターでマネージド ID のサポートを有効にする方法を次に示します
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: dc341688cae6d98f53be10351e4e4572a3539e4e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574702"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790041"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>既存の Service Fabric クラスターでマネージド ID のサポートを構成する
 
@@ -39,7 +39,7 @@ Service Fabric アプリケーションで [Azure リソースのマネージド
 ]
 ```
 
-また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットで、`forceRestart` は、再起動を有効にするための必須の設定です。 残りのパラメーターについては、以下で説明する値を使用するか、またはクラスター リソースに既に使用されている既存のカスタム値を使用します。 ファブリックのアップグレード ポリシー ('upgradeDescription') は、Azure portal で Service Fabric リソースの [ファブリックのアップグレード] を選択して表示するか、または resources.azure.com で表示することができます。 アップグレード ポリシー ('upgradeDescription') の既定のオプションは、PowerShell または resources.azure.com で表示することはできません。 詳細については、「[ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)」 を参照してください。  
+また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットで、`forceRestart` は、再起動を有効にするための必須の設定です。 残りのパラメーターについては、以下で説明する値を使用するか、またはクラスター リソースに既に使用されている既存のカスタム値を使用します。 ファブリックのアップグレード ポリシー ('upgradeDescription') は、Azure portal で Service Fabric リソースの [ファブリックのアップグレード] を選択して表示するか、または resources.azure.com で表示することができます。 アップグレード ポリシー ('upgradeDescription') の既定のオプションは、PowerShell または resources.azure.com で表示することはできません。 詳細については、「[ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy)」 を参照してください。  
 
 ```json
 "upgradeDescription": {

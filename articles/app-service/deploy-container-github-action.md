@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1fe09970bcb9b9432b9b6f22de04bb24f1e84fa8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604976"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761767"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのカスタム コンテナーのデプロイ
 
-[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) を使用すると、自動化されたソフトウェア開発ワークフローを柔軟に構築できます。 [Azure Web Deploy アクション](https://github.com/Azure/webapps-deploy)を使用すれば、カスタム コンテナーを [App Service ](overview.md) にデプロイするワークフローを、GitHub Actions を使用して自動化できます。
+[GitHub Actions](https://docs.github.com/en/actions) を使用すると、自動化されたソフトウェア開発ワークフローを柔軟に構築できます。 [Azure Web Deploy アクション](https://github.com/Azure/webapps-deploy)を使用すれば、カスタム コンテナーを [App Service ](overview.md) にデプロイするワークフローを、GitHub Actions を使用して自動化できます。
 
 ワークフローは、お使いのリポジトリの `/.github/workflows/` パスの YAML (.yml) ファイルに定義されます。 この定義には、ワークフローに含まれるさまざまな手順とパラメーターが含まれています。
 
@@ -39,7 +39,7 @@ Azure App Service のコンテナー ワークフロー ファイルには、次
 
 GitHub Actions 用の Azure App Services での認証で推奨される方法は、発行プロファイルを使用することです。 サービス プリンシパルを使用して認証することもできますが、そのプロセスにはさらに多くの手順が必要です。 
 
-発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
+発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/publish-profile)
 
@@ -50,7 +50,7 @@ GitHub Actions 用の Azure App Services での認証で推奨される方法は
 1. **[概要]** ページで、 **[発行プロファイルの取得]** オプションを選択します。
 
     > [!NOTE]
-    > 2020 年 10 月の時点で、Linux Web アプリでは、**ファイルをダウンロードする前に**、アプリ設定 `WEBSITE_WEBDEPLOY_USE_SCM` を `true` に設定する必要があります。 この要件は、今後削除される予定です。 一般的な Web アプリの設定を構成する方法については、「[Azure portal で App Service アプリを構成する](/azure/app-service/configure-common)」を参照してください。  
+    > 2020 年 10 月の時点で、Linux Web アプリでは、**ファイルをダウンロードする前に**、アプリ設定 `WEBSITE_WEBDEPLOY_USE_SCM` を `true` に設定する必要があります。 この要件は、今後削除される予定です。 一般的な Web アプリの設定を構成する方法については、「[Azure portal で App Service アプリを構成する](./configure-common.md)」を参照してください。  
 
 1. ダウンロードしたファイルを保存します。 このファイルの内容を使用して、GitHub シークレットを作成します。
 
@@ -273,7 +273,7 @@ GitHub には、一連のアクションが別々のリポジトリにありま�
 
 - [Docker でのログイン/ログアウト](https://github.com/Azure/docker-login)
 
-- [ワークフローをトリガーするイベント](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [ワークフローをトリガーするイベント](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [K8s のデプロイ](https://github.com/Azure/k8s-deploy)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005369"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786522"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -52,7 +52,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 次のドキュメントを使用して、オンプレミス ネットワークに接続されている Azure Virtual Network を作成する方法を学習してください。
 
-* [Azure Portal の使用](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure Portal の使用](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Azure PowerShell の使用](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Azure CLI の使用](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 

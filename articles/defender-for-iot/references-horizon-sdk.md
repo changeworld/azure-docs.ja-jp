@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210425"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746021"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizon の独自プロトコル dissector
 
@@ -885,7 +885,7 @@ Horizon SDK で式が呼び出され、それが *true* になるたびに、セ
 
 たとえば、TCP に基づく値の場合、IPv4 レイヤーの値を使用できます。 このレイヤーから、パケットの送信元や送信先などの値を抽出できます。
 
-これを実現するには、`whitelist` プロパティを使用して JSON 構成ファイルを更新する必要があります。
+これを実現するには、`whitelists` プロパティを使用して JSON 構成ファイルを更新する必要があります。
 
 ## <a name="allow-list-data-mining-fields"></a>許可リスト (データ マイニング) フィールド
 

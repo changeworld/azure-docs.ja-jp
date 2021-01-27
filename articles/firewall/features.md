@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652146"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788232"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -101,7 +101,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
-すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 Azure Monitor ログのサンプルについては、「[Azure Firewall の Azure Monitor ログ](log-analytics-samples.md)」をご覧ください。
+すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 Azure Monitor ログのサンプルについては、「[Azure Firewall の Azure Monitor ログ](./firewall-workbook.md)」をご覧ください。
 
 詳細については、[「Azure Firewall のログとメトリックを監視する](./firewall-diagnostics.md)」を参照してください。 
 

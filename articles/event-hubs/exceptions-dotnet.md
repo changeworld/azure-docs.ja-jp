@@ -3,8 +3,7 @@ title: Azure Event Hubs - .NET の例外
 description: この記事では、Azure Event Hubs .NET メッセージングの例外と推奨アクションの一覧を示します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 ms.date: 09/23/2020
-ms.author: shvija
-ms.openlocfilehash: 6a1d7c969d31033ae9d00d212cc8f1a45abbeda1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: spelluru
+ms.openlocfilehash: af2d820fd255d041ade21a00d7d7a9ac6b12fcba
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340484"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745904"
 ---
 # <a name="eventhubsexception---net"></a>EventHubsException - .NET
 **EventHubsException** は、Event Hubs に固有の操作によって問題 (サービス内のエラーとクライアント固有の両方のエラーを含む) が発生した場合にトリガーされます。 

@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073395"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743017"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
+
 OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
 
 **2014 年 9 月 2 日** : Windows Server 2008 オペレーティング システムに基づく Azure ゲスト オペレーティング システム (ゲスト OS) ファミリ 1.x が正式に提供終了となりました。 ファミリ 1 を使用して新しいサービスをデプロイしようとする試みまたは既存のサービスをアップグレードしようとする試みはすべて失敗し、ゲスト OS ファミリ 1 の提供が終了したことを示すエラー メッセージが表示されます。

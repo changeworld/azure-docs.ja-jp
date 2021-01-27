@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358849"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788266"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -112,7 +112,7 @@ Azure CLI を使用して診断ログを有効にするには、次の手順を�
 
 [Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)は、カウンターおよびイベント ログ ファイルを収集します。 このツールには、ログを分析するための視覚化と強力な検索機能が含まれています。
 
-Azure Firewall のログ分析のサンプル クエリについては、「[Azure Firewall Log Analytics のサンプル](log-analytics-samples.md)」を参照してください。
+Azure Firewall のログ分析のサンプル クエリについては、「[Azure Firewall Log Analytics のサンプル](./firewall-workbook.md)」を参照してください。
 
 [Azure Firewall ブック](firewall-workbook.md)により、Azure Firewall のデータ分析のための柔軟なキャンバスが提供されます。 これを使用して、Azure portal 内で高度な視覚的レポートを作成できます。 Azure 全体でデプロイされる複数のファイアウォールを活用し、それらを結合して、統合された対話型エクスペリエンスにすることができます。
 

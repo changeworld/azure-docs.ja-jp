@@ -3,12 +3,12 @@ title: Reliable Collection のトランザクションとロック モード
 description: Azure Service Fabric Reliable State Manager と Reliable Collection トランザクションとロック。
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576725"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784344"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
 
@@ -18,7 +18,7 @@ ms.locfileid: "96576725"
 
 * **原子性**:トランザクションはアトミック作業ユニットである必要があります。 つまり、そのすべてのデータ変更が実行されるか、いずれもが実行されないということです。
 * **整合性**:トランザクションの完了時に、すべてのデータが一貫した状態になければなりません。 すべての内部データ構造は、トランザクション終了時に正しくなければなりません。
-* **分離**:同時実行トランザクションによって行われる変更は、他の同時実行トランザクションによって行われる変更と相互に独立している必要があります。 [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) 内の操作に使用される分離レベルは、操作を実行する [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) によって決まります。
+* **分離**:同時実行トランザクションによって行われる変更は、他の同時実行トランザクションによって行われる変更と相互に独立している必要があります。 [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) 内の操作に使用される分離レベルは、操作を実行する [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) によって決まります。
 * **持続性**:トランザクションが完了すると、その影響は完全にシステム内に存在します。 システム障害が発生しても、変更結果は持続されます。
 
 ### <a name="isolation-levels"></a>分離レベル
@@ -84,4 +84,4 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 * [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)
 * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
-* [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

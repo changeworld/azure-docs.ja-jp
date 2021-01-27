@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 59eb56dd188edf258c3631cde957c0864454ad76
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604925"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762661"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
-[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) を使用して、GitHub からワークフローの自動化と [Azure App Service](overview.md) へのデプロイを実行します。 
+[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions) を使用して、GitHub からワークフローの自動化と [Azure App Service](overview.md) へのデプロイを実行します。 
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -63,7 +63,7 @@ App Service デプロイ センターを使用して、GitHub Actions の使用�
 
 GitHub Actions 用の Azure App Services での認証で推奨される方法は、発行プロファイルを使用することです。 サービス プリンシパルを使用して認証することもできますが、そのプロセスにはさらに多くの手順が必要です。 
 
-発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
+発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/applevel)
 
@@ -746,7 +746,7 @@ GitHub には、一連のアクションが別々のリポジトリにありま�
 
 - [Docker でのログイン/ログアウト](https://github.com/Azure/docker-login)
 
-- [ワークフローをトリガーするイベント](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [ワークフローをトリガーするイベント](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [K8s のデプロイ](https://github.com/Azure/k8s-deploy)
 

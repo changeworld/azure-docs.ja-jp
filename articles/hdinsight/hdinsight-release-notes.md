@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883352"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786353"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -48,7 +48,7 @@ HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日�
 
 ## <a name="behavior-changes"></a>動作の変更
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>スケーリング操作の前に NSG ルール チェックを追加する
-HDInsight では、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) のチェックがスケーリング操作で追加されました。 クラスターの作成に加えて、クラスターのスケーリングについても同じ検証が行われます。 この検証により、予測できないエラーを防ぐことができます。 検証が成功しなかった場合、スケーリングは失敗します。 NSG と UDR を正しく構成する方法の詳細については、「[HDInsight 管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)」を参照してください。
+HDInsight では、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) のチェックがスケーリング操作で追加されました。 クラスターの作成に加えて、クラスターのスケーリングについても同じ検証が行われます。 この検証により、予測できないエラーを防ぐことができます。 検証が成功しなかった場合、スケーリングは失敗します。 NSG と UDR を正しく構成する方法の詳細については、「[HDInsight 管理 IP アドレス](./hdinsight-management-ip-addresses.md)」を参照してください。
 
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。
@@ -84,4 +84,3 @@ HDInsight は、両方の問題に対して、実行中のすべてのクラス�
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

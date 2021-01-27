@@ -3,27 +3,27 @@ title: Azure DevTest Labs での共有イメージ ギャラリーの構成 | Mi
 description: Azure DevTest Labs で、ラボのリソースの作成時に、共有の場所からユーザーがイメージにアクセスできるよう、共有イメージ ギャラリーを構成する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327979"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788423"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
-DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
+DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
 
 - イメージのマネージド グローバル レプリケーション
 - 容易な管理のためのイメージのバージョン管理とグループ化
 - 可用性ゾーンをサポートするリージョンでゾーン冗長ストレージ (ZRS) アカウントを使用して、イメージの可用性を高めます。 ZRS では、ゾーンの障害に対する回復性の向上が提供されます。
 - Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サブスクリプション間やテナント間で共有します。
 
-詳細については、[共有イメージ ギャラリーのドキュメント](../virtual-machines/windows/shared-image-galleries.md)を参照してください。 
+詳細については、[共有イメージ ギャラリーのドキュメント](../virtual-machines/shared-image-galleries.md)を参照してください。 
  
 メンテナンスが必要なマネージド イメージや社内全体で利用可能にしたいマネージド イメージが多数ある場合は、イメージを簡単に更新して共有できるリポジトリとして、共有イメージ ギャラリーを使用できます。 ラボ所有者は、既存の共有イメージ ギャラリーをラボにアタッチできます。 このギャラリーがアタッチされると、ラボ ユーザーはこれらの最新のイメージからマシンを作成できます。 この機能の主な利点は、DevTest Labs で共有イメージのメリットをラボ間、サブスクリプション間、リージョン間で利用できることです。 
 
 > [!NOTE]
-> Shared Image Gallery サービスに関連するコストについては、[Shared Image Gallery の料金](../virtual-machines/windows/shared-image-galleries.md#billing)に関するページを参照してください。
+> Shared Image Gallery サービスに関連するコストについては、[Shared Image Gallery の料金](../virtual-machines/shared-image-galleries.md#billing)に関するページを参照してください。
 
 ## <a name="considerations"></a>考慮事項
 - ラボにアタッチできる共有イメージ ギャラリーは一度に 1 つだけです。 別のギャラリーをアタッチする場合は、既存のものをデタッチして別のものをアタッチする必要があります。 

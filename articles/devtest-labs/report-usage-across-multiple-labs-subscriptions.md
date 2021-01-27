@@ -3,12 +3,12 @@ title: 複数のラボとサブスクリプションにわたる Azure DevTest L
 description: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152195"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789940"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する
 
@@ -82,5 +82,5 @@ Azure 関数では、長期的なストレージにデータをプッシュす�
     ユーザーはハイ パフォーマンス (高コスト) の VM サイズを選択していますか。
 -   どの Marketplace イメージが使用されていますか。
 
-    カスタム イメージは最も一般的な VM ベースであり、[Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md) や [Image ファクトリ](image-factory-create.md)などの共通のイメージ ストアを構築する必要があります。
+    カスタム イメージは最も一般的な VM ベースであり、[Shared Image Gallery](../virtual-machines/shared-image-galleries.md) や [Image ファクトリ](image-factory-create.md)などの共通のイメージ ストアを構築する必要があります。
 -   使用されているカスタム イメージと使用されていないカスタム イメージ。

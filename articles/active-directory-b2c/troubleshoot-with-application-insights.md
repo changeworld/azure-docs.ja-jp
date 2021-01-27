@@ -12,21 +12,21 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132059"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746004"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
 この記事では、カスタム ポリシーの問題を診断できるよう、Active Directory B2C (Azure AD B2C) からログを収集する手順を説明します。 Application Insights は、例外を診断したり、アプリケーションのパフォーマンスの問題を視覚化したりするための手段を提供します。 Azure AD B2C には、Application Insights にデータを送信するための機能が含まれます。
 
-ここで説明する詳細なアクティビティ ログは、カスタム ポリシーを開発している間 **だけ** 、有効にする必要があります。
+ここで説明する詳細なアクティビティ ログは、カスタム ポリシーを開発している間 **だけ**、有効にする必要があります。
 
 > [!WARNING]
-> 運用環境では、`DeploymentMode` を `Developer` に設定しないでください。 ログを使うと、ID プロバイダーとの間で送受信されるすべての要求を収集できます。 開発者には、Application Insights ログで収集されるすべての個人データに対する責任があります。 これらの詳細ログは、ポリシーが **開発者モード** で配置されている場合にのみ収集されます。
+> 運用環境では、`DeploymentMode` を `Development` に設定しないでください。 ログを使うと、ID プロバイダーとの間で送受信されるすべての要求を収集できます。 開発者には、Application Insights ログで収集されるすべての個人データに対する責任があります。 これらの詳細ログは、ポリシーが **開発者モード** で配置されている場合にのみ収集されます。
 
 ## <a name="set-up-application-insights"></a>Application Insights を設定する
 
@@ -43,7 +43,7 @@ ms.locfileid: "92132059"
 
 ## <a name="configure-the-custom-policy"></a>カスタム ポリシーを構成する
 
-1. 証明書利用者 (RP) ファイルを開きます (例: *SignUpOrSignin.xml* ).
+1. 証明書利用者 (RP) ファイルを開きます (例: *SignUpOrSignin.xml*).
 1. 次の属性を `<TrustFrameworkPolicy>` 要素に追加します:
 
    ```xml

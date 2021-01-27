@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724750"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790293"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -29,7 +29,7 @@ ms.locfileid: "97724750"
 > キー コンテナーを新しいサブスクリプションに移動することを決める前に、必ずこの変更の影響について理解し、この記事のガイダンスに慎重に従うようにしてください。
 > 管理対象サービス ID (MSI) を使用している場合は、このドキュメントの最後にある移動後の手順を参照してください。 
 
-[Azure Key Vault](overview.md) は、それが作成されたサブスクリプションの既定の [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) テナント ID に自動的に関連付けられます。 こちらの[ガイド](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)に従って、サブスクリプションに関連付けられているテナント ID を見つけることができます。 また、すべてのアクセス ポリシー エントリとロールの割り当てもこのテナント ID に関連付けられます。  テナント A からテナント B に Azure サブスクリプションを移行した場合、テナント B のサービス プリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次の操作を行う必要があります。
+[Azure Key Vault](overview.md) は、それが作成されたサブスクリプションの既定の [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) テナント ID に自動的に関連付けられます。 こちらの[ガイド](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)に従って、サブスクリプションに関連付けられているテナント ID を見つけることができます。 また、すべてのアクセス ポリシー エントリとロールの割り当てもこのテナント ID に関連付けられます。  テナント A からテナント B に Azure サブスクリプションを移行した場合、テナント B のサービス プリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次の操作を行う必要があります。
 
 * そのサブスクリプションにあるすべての既存のキー コンテナーに関連付けられたテナント ID を、テナント B に変更する。
 * すべての既存のアクセス ポリシー エントリを削除する。
@@ -37,8 +37,8 @@ ms.locfileid: "97724750"
 
 Azure Key Vault と Azure Active Directory の詳細については、次を参照してください
 - [Azure Key Vault について](overview.md)
-- [Azure Active Directory とは](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-- [テナント ID を検索する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
+- [Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)
+- [テナント ID を検索する方法](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)
 
 ## <a name="limitations"></a>制限事項
 
@@ -49,11 +49,11 @@ Azure Key Vault と Azure Active Directory の詳細については、次を参�
 
 ## <a name="prerequisites"></a>[前提条件]
 
-* キー コンテナーが存在する現在のサブスクリプションに対する[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)レベル以上のアクセス権。 ロールは [Azure portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) を使用して割り当てることができます。
-* キー コンテナーを移動するサブスクリプションに対する[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)レベル以上のアクセス権。ロールは [Azure portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) を使用して割り当てることができます。
-* 新しいサブスクリプションのリソース グループ。 これは [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)、または [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli) を使用して作成できます。
+* キー コンテナーが存在する現在のサブスクリプションに対する[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)レベル以上のアクセス権。 ロールは [Azure portal](../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、または [PowerShell](../../role-based-access-control/role-assignments-powershell.md) を使用して割り当てることができます。
+* キー コンテナーを移動するサブスクリプションに対する[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)レベル以上のアクセス権。ロールは [Azure portal](../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、または [PowerShell](../../role-based-access-control/role-assignments-powershell.md) を使用して割り当てることができます。
+* 新しいサブスクリプションのリソース グループ。 これは [Azure portal](../../azure-resource-manager/management/manage-resource-groups-portal.md)、[PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md)、または [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md) を使用して作成できます。
 
-既存のロールは、[Azure portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal)、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)、または [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest) を使用して確認できます。
+既存のロールは、[Azure portal](../../role-based-access-control/role-assignments-list-portal.md)、[PowerShell](../../role-based-access-control/role-assignments-list-powershell.md)、[Azure CLI](../../role-based-access-control/role-assignments-list-cli.md)、または [REST API](../../role-based-access-control/role-assignments-list-rest.md) を使用して確認できます。
 
 
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>キー コンテナーを新しいサブスクリプションに移動する
@@ -96,7 +96,7 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 ### <a name="update-access-policies-and-role-assignments"></a>アクセス ポリシーとロールの割り当てを更新する
 
 > [!NOTE]
-> Key Vault で [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) アクセス許可モデルを使用している場合。 キー コンテナーのロールの割り当ても削除する必要があります。 ロールの割り当ては、[Azure portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) を使用して削除できます。 
+> Key Vault で [Azure RBAC](../../role-based-access-control/overview.md) アクセス許可モデルを使用している場合。 キー コンテナーのロールの割り当ても削除する必要があります。 ロールの割り当ては、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、または [PowerShell](../../role-based-access-control/role-assignments-powershell.md) を使用して削除できます。 
 
 これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリまたはロールの割り当てが削除されたので、新しいアクセス ポリシー エントリまたはロールの割り当てを設定します。
 
@@ -106,9 +106,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [PowerShell を使用してアクセス ポリシーを割り当てる](assign-access-policy-powershell.md)
 
 ロールの割り当てを追加する方法については、以下を参照してください。
-- [ポータルを使用してロールの割り当てを追加する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Azure CLI を使用してロールの割り当てを追加する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [PowerShell を使用してロールの割り当てを追加する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+- [ポータルを使用してロールの割り当てを追加する](../../role-based-access-control/role-assignments-portal.md)
+- [Azure CLI を使用してロールの割り当てを追加する](../../role-based-access-control/role-assignments-cli.md)
+- [PowerShell を使用してロールの割り当てを追加する](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>マネージド ID を更新する

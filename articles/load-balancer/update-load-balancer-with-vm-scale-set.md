@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/30/2020
 ms.author: irenehua
-ms.openlocfilehash: f8f664375e53a1cef28b0c7b95207770434f67fa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d5614490bfd2cfb67b6b7afd7b7b8643bbf754bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893242"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790091"
 ---
 # <a name="how-to-updatedelete-azure-load-balancer-used-by-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets で使用される Azure Load Balancer を更新または削除する方法
 
 ## <a name="how-to-set-up-azure-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>仮想マシン スケール セットをスケールアウトするために Azure Load Balancer を設定する方法
-  * Load Balancer に[インバウンド NAT プール](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest)が設定されていること、および仮想マシン スケール セットが Load Balancer のバックエンド プールに配置されていることを確認します。 新しい仮想マシン インスタンスが仮想マシン スケール セットに追加されると、Azure Load Balancer によって、インバウンド NAT プールに新しいインバウンド NAT 規則が自動的に作成されます。 
+  * Load Balancer に[インバウンド NAT プール](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest)が設定されていること、および仮想マシン スケール セットが Load Balancer のバックエンド プールに配置されていることを確認します。 新しい仮想マシン インスタンスが仮想マシン スケール セットに追加されると、Azure Load Balancer によって、インバウンド NAT プールに新しいインバウンド NAT 規則が自動的に作成されます。 
   * インバウンド NAT プールが適切に設定されているかどうかを確認するには、次の手順に従います。 
   1. Azure Portal ( https://portal.azure.com ) にサインインします。
   
@@ -35,7 +35,7 @@ ms.locfileid: "97893242"
 ## <a name="how-to-add-inbound-nat-rules"></a>インバウンド NAT 規則を追加する方法 
   * 個々のインバウンド NAT 規則を追加することはできません。 ただし、仮想マシン スケール セット内のすべてのインスタンスのフロントエンド ポート範囲とバックエンド ポートが定義されたインバウンド NAT 規則のセットを追加することは可能です。
   * 仮想マシン スケール セットのインバウンド NAT 規則のセット全体を追加するには、まず、Load Balancer でインバウンド NAT プールを作成し、次に、仮想マシン スケール セットのネットワーク プロファイルからインバウンド NAT プールを参照する必要があります。 CLI を使用した完全な例を次に示します。
-  * 新しいインバウンド NAT プールのフロントエンド ポート範囲が、既存のインバウンド NAT プールと重複しないようにする必要があります。 既存のインバウンド NAT プールの設定を表示するには、この [CLI コマンド](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)を使用します。
+  * 新しいインバウンド NAT プールのフロントエンド ポート範囲が、既存のインバウンド NAT プールと重複しないようにする必要があります。 既存のインバウンド NAT プールの設定を表示するには、この [CLI コマンド](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)を使用します。
 ```azurecli-interactive
 az network lb inbound-nat-pool create 
         -g MyResourceGroup 
@@ -92,7 +92,7 @@ az network lb inbound-nat-pool update
    
 1. **[フロントエンド IP アドレスの追加]** ページで値を入力し、 **[OK]** を選択します。
 
-1. 新しい負荷分散規則が必要な場合は、このチュートリアルの[手順 5.](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) と[手順 6.](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) に従ってください。
+1. 新しい負荷分散規則が必要な場合は、このチュートリアルの[手順 5.](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) と[手順 6.](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) に従ってください。
 
 1. 必要に応じて、新しく作成したフロントエンド IP 構成を使用して、インバウンド NAT 規則の新しいセットを作成します。 例については、[前のセクション] のこちらを参照してください。
 

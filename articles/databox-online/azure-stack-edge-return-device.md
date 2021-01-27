@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903676"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784479"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスを返却する
 
@@ -84,7 +84,7 @@ ms.locfileid: "90903676"
 
     ![デバイスの返却 3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. **プライバシー条項**を確認し、確認してプライバシー条項に同意したというメモに対してチェックボックスをオンにします。
+4. **プライバシー条項** を確認し、確認してプライバシー条項に同意したというメモに対してチェックボックスをオンにします。
 
 5. **[Initiate return]\(返却の開始\)** を選択します。
 
@@ -101,7 +101,7 @@ ms.locfileid: "90903676"
 集荷をスケジュールするには、次の手順を行います。
 
 1. デバイスをシャットダウンします。 ローカル Web UI で、 **[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
-2. **[シャットダウン]** を選択します。 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして続行します。 詳細については、「[電源を管理する](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)」を参照してください。
+2. **[シャットダウン]** を選択します。 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして続行します。 詳細については、「[電源を管理する](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)」を参照してください。
 3. 電源ケーブルを外して、デバイスからネットワーク ケーブルをすべて取り外します。
 4. 自分の箱または Azure から受け取った空き箱を使用して、出荷パッケージを準備します。 デバイスとそのデバイスに同梱されていた電源コードを箱に入れます。
 5. Azure から受け取った出荷ラベルをパッケージに貼り付けます。
