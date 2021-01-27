@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394603"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879496"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 
@@ -34,7 +34,7 @@ ms.locfileid: "89394603"
 3. Azure VPN ゲートウェイとローカル ネットワーク ゲートウェイの間に Azure VPN 接続を作成して構成します
 4. ローカル ネットワーク ゲートウェイで表されるオンプレミスの VPN デバイスを構成して、Azure VPN ゲートウェイとの実際の S2S VPN トンネルを確立します
 
-ステップ 1 ～ 3 は、Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)、または [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md) を使って実行できます。 最後のステップには、Azure の外部でオンプレミスの VPN デバイスを構成する作業が含まれます。 この機能では、Azure VPN ゲートウェイ、仮想ネットワーク、オンプレミス ネットワークの各アドレス プレフィックスや、VPN 接続のプロパティなどに対応する値が既に設定されている、お使いの VPN デバイス用の構成スクリプトをダウンロードできます。 スクリプトを基にして使い始めることも、構成コンソールでオンプレミスの VPN デバイスにスクリプトを直接適用することもできます。
+ステップ 1 ～ 3 は、Azure [Portal](./tutorial-site-to-site-portal.md)、[PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)、または [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md) を使って実行できます。 最後のステップには、Azure の外部でオンプレミスの VPN デバイスを構成する作業が含まれます。 この機能では、Azure VPN ゲートウェイ、仮想ネットワーク、オンプレミス ネットワークの各アドレス プレフィックスや、VPN 接続のプロパティなどに対応する値が既に設定されている、お使いの VPN デバイス用の構成スクリプトをダウンロードできます。 スクリプトを基にして使い始めることも、構成コンソールでオンプレミスの VPN デバイスにスクリプトを直接適用することもできます。
 
 > [!IMPORTANT]
 > * VPN デバイスごとに構成スクリプトの構文は異なり、モデルとファームウェアのバージョンに大きく依存します。 使用可能なテンプレートに対するデバイスのモデルとバージョンの情報に特に注意してください。
@@ -49,7 +49,7 @@ ms.locfileid: "89394603"
 
 Azure VPN ゲートウェイ、ローカル ネットワーク ゲートウェイ、およびそれらを接続する接続リソースを作成します。 次のページではその手順が説明されています。
 
-* [Azure Portal でサイト間接続を作成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure Portal でサイト間接続を作成する](./tutorial-site-to-site-portal.md)
 
 接続リソースを作成した後、以下の手順に従って VPN デバイス構成スクリプトをダウンロードします。
 
@@ -99,4 +99,4 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 ## <a name="next-steps"></a>次のステップ
 
-引き続き[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)を構成してください。
+引き続き[サイト間接続](./tutorial-site-to-site-portal.md)を構成してください。

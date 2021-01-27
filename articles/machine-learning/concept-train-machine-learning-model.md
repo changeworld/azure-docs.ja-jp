@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555891"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880946"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -76,7 +76,7 @@ Azure Machine Learning の汎用トレーニング ジョブは、[ScriptRunConf
 機械学習パイプラインでは、前述のトレーニング方法を使用できます。 パイプラインは、ワークフローの作成だけに関するものではないため、モデルのトレーニング以外のものも含まれます。 パイプラインでは、自動機械学習または実行構成を使用してモデルをトレーニングできます。
 
 * [Azure Machine Learning の ML パイプラインとは](concept-ml-pipelines.md)
-* [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](how-to-create-your-first-pipeline.md)
+* [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](./how-to-create-machine-learning-pipelines.md)
 * [チュートリアル:バッチ スコアリングに Azure Machine Learning パイプラインを使用する](tutorial-pipeline-batch-scoring-classification.md)
 * [例:機械学習パイプラインの場合の Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [例:自動機械学習を使用したパイプライン](https://aka.ms/pl-automl)
@@ -109,7 +109,6 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 
 詳細については、次の記事を参照してください。
 
-* [チュートリアル:ロジスティック回帰モデルを作成する](tutorial-1st-r-experiment.md)
 * [Azure Machine Learning SDK for R リファレンス](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー

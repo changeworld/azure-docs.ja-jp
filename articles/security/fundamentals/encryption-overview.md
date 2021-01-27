@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410217"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879716"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -45,11 +45,11 @@ Azure では、サービスが管理するキー、Key Vault でユーザーが�
 
 3 つのサーバー側暗号化モデルにはそれぞれ異なるキー管理の特徴があり、ユーザーの要件によっていずれかを選択できます。
 
-- **サービスが管理するキー** : オーバーヘッドを軽減しながら、利便性を損なわずに制御できます。
+- **サービスが管理するキー**: オーバーヘッドを軽減しながら、利便性を損なわずに制御できます。
 
-- **ユーザーが管理するキー** : Bring Your Own Key (BYOK) などでキーを制御したり、新しいキーを生成したりできます。
+- **ユーザーが管理するキー**: Bring Your Own Key (BYOK) などでキーを制御したり、新しいキーを生成したりできます。
 
-- **ユーザーが制御するハードウェア上でサービスが管理するキー** : Microsoft の管理外の独自のリポジトリでキーを管理できます。 このような特徴は Host Your Own Key (HYOK) と呼ばれます。 ただし、構成が複雑になるため、ほとんどの Azure サービスではこのモデルはサポートされていません。
+- **ユーザーが制御するハードウェア上でサービスが管理するキー**: Microsoft の管理外の独自のリポジトリでキーを管理できます。 このような特徴は Host Your Own Key (HYOK) と呼ばれます。 ただし、構成が複雑になるため、ほとんどの Azure サービスではこのモデルはサポートされていません。
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -181,7 +181,7 @@ Azure Portal、PowerShell、または Azure CLI を使用して、仮想ネッ�
 
 詳細については、次を参照してください。
 
-[Azure Portal でサイト間接続を作成する](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Azure Portal でサイト間接続を作成する](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [PowerShell でサイト間接続を作成する](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 

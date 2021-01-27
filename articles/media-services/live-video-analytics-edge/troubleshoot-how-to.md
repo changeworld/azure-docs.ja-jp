@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060233"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878292"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -66,7 +66,7 @@ Azure portal を使用して、ダイレクト メソッドを使用してメデ
     * 500 - IoT Edge ランタイムでエラーが発生しました。
 
     > [!TIP]
-    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** に関する記事を参照してください。
+    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** に関する記事を参照してください。
 ### <a name="post-deployment-direct-method-error-code"></a>デプロイ後:ダイレクト メソッドのエラー コード
 1. 状態 `501 code` のコードが表示された場合は、ダイレクト メソッド名が正確であることを確認してください。 メソッド名と要求ペイロードが正確である場合は、成功コード = 200 と共に結果が返されます。 
 1. 要求ペイロードが不正確な場合は、状態 `400 code` と、ダイレクト メソッド呼び出しに関する問題の診断に役立つエラー コードとメッセージを示す応答ペイロードが表示されます。
@@ -96,7 +96,7 @@ Live Video Analytics は、IoT Edge デバイスに IoT Edge モジュールと�
 * [IoT Edge モジュールがデプロイに成功したのに、デバイスに表示されなくなる](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
     > [!TIP]
-    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** に関する記事を参照してください。
+    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** に関する記事を参照してください。
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live Video Analytics による外部モジュールの操作
 
 メディア グラフ拡張プロセッサ経由の Live Video Analytics では、メディア グラフを拡張し、他の IoT Edge モジュールに対して HTTP または gRPC プロトコルを使用してデータを送受信することができます。 [具体的な例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)として、メディア グラフでは、Yolo v3 などの外部推論モジュールへビデオ フレームをイメージとして送信し、HTTP プロトコルを使用して JSON ベースの分析結果を受け取ることができます。 このようなトポロジでは、イベントの送信先は主に IoT ハブです。 ハブで推論イベントが表示されない場合は、次の点を確認します。
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[.NET の gRPC でのログ記録と診断](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true)には、gRPC サーバーから複数の診断ログを収集するためのいくつかのガイダンスが用意されています。 
+[.NET の gRPC でのログ記録と診断](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1)には、gRPC サーバーから複数の診断ログを収集するためのいくつかのガイダンスが用意されています。 
 
 ### <a name="a-failed-grpc-connection"></a>失敗した gRPC 接続 
 
@@ -282,7 +282,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Live Video Analytics は監視していないか、ハードウェア リソース監視を用意していません。 開発者は、ハードウェア製造元の監視ソリューションを使用する必要があります。 ただし、Kubernetes コンテナーを使用する場合は、[Kubernetes ダッシュボード](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)を使用してデバイスを監視できます。 
 
-また、.NET Core ドキュメントの gRPC は、「[パフォーマンスのベストプラクティス](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true)」および「[負荷分散](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true)」に関する重要な情報も共有します。  
+また、.NET Core ドキュメントの gRPC は、「[パフォーマンスのベストプラクティス](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1)」および「[負荷分散](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing)」に関する重要な情報も共有します。  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>どのフレームも受信しない場合および "不明" プロトコル エラーを受信している場合の推論サーバーのトラブルシューティング 
 
@@ -296,7 +296,7 @@ Live Video Analytics は監視していないか、ハードウェア リソー�
    ```
 
    コマンドによって短い文字列の乱雑なテキストが出力された場合、Telnet は正常に推論サーバーへの接続を開き、バイナリ gRPC チャネルを開くことができました。 これが表示されない場合、Telnet はネットワーク エラーを報告します。 
-* 推論サーバーでは、gRPC ライブラリで追加のログ記録を有効にすることができます。 これにより、gRPC チャネル自体に関する追加情報が提供されます。 この操作は言語によって異なりますが、ここでは [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) での手順を説明します。 
+* 推論サーバーでは、gRPC ライブラリで追加のログ記録を有効にすることができます。 これにより、gRPC チャネル自体に関する追加情報が提供されます。 この操作は言語によって異なりますが、ここでは [C#](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) での手順を説明します。 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>最初のバッファーの結果を返さずに gRPC のバッファーからより多くのイメージを選択する
 

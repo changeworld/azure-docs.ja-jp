@@ -3,12 +3,12 @@ title: メッセージ レプリケーションとリージョン間フェデレ
 description: この記事では、Azure Service Bus でのイベント レプリケーションとリージョン間フェデレーションの概要について説明します。
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803274"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880829"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>メッセージ レプリケーションとリージョン間フェデレーション
 
@@ -150,7 +150,7 @@ Azure Functions は [Azure マネージド ID](../active-directory/managed-ident
 
 さらに、Azure Functions を使用すると、レプリケーション タスクをすべての Azure メッセージング サービス用の Azure 仮想ネットワークや[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)と直接統合することができ、[Azure Monitor](../azure-monitor/overview.md) と簡単に統合できます。
 
-最も重要なのは、Azure Functions には、[Azure Event Hubs](../azure-functions/functions-bindings-service-bus.md)、[Azure IoT Hub](../azure-functions/functions-bindings-event-iot.md)、[Azure Service Bus](../azure-functions/functions-bindings-service-bus.md)、[Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)、[Azure Queue Storage](/azure/azure-functions/functions-bindings-storage-queue)、[RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) 用のカスタム拡張機能、[Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) のための、あらかじめ構築されたスケーラブルなトリガーと出力バインドがあることです。 多くのトリガーは、ドキュメント化されたメトリックに基づいて、同時実行インスタンスの数を増減することにより、スループットのニーズに動的に適応します。 
+最も重要なのは、Azure Functions には、[Azure Event Hubs](../azure-functions/functions-bindings-service-bus.md)、[Azure IoT Hub](../azure-functions/functions-bindings-event-iot.md)、[Azure Service Bus](../azure-functions/functions-bindings-service-bus.md)、[Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)、[Azure Queue Storage](../azure-functions/functions-bindings-storage-queue.md)、[RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) 用のカスタム拡張機能、[Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) のための、あらかじめ構築されたスケーラブルなトリガーと出力バインドがあることです。 多くのトリガーは、ドキュメント化されたメトリックに基づいて、同時実行インスタンスの数を増減することにより、スループットのニーズに動的に適応します。 
 
 Azure Functions の従量課金プランを使用すると、レプリケーションに使用できるメッセージがない場合は、事前に構築されたトリガーをゼロにスケールダウンすることさえできます。これにより、再度スケールアップできるよう構成を維持するためのコストが発生しなくなります。 従量課金プランを使用する場合の主な欠点は、この状態からレプリケーション タスクを "ウェイクアップする" ための待機時間が、インフラストラクチャが実行されたままになるホスティング プランより大幅に長くなることです。  
 
@@ -167,4 +167,4 @@ Azure Functions の従量課金プランを使用すると、レプリケーシ�
 - [Azure Event Hubs へのイベントのルーティング](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
 - [Azure Event Hubs からのイベントの取得](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
-[1]: ./media/service-bus-auto-forwarding/IC628632.gif 
+[1]: ./media/service-bus-auto-forwarding/IC628632.gif

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694805"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882401"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の登録とスキャン
 
@@ -48,7 +48,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 1. **[ロール]** に **[ストレージ BLOB データ リーダー]** を設定し、 **[選択]** 入力ボックスに Azure Purview アカウント名を入力します。 次に、 **[保存]** を選択して、このロールの割り当てを Purview アカウントに付与します。
 
 > [!Note]
-> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)」の手順を参照してください
+> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/common/storage-auth-aad.md)」の手順を参照してください
 
 #### <a name="account-key"></a>アカウント キー
 

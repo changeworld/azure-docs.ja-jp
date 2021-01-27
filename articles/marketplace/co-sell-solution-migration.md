@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043780"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880357"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM からコマーシャル マーケットプレースへの共同販売ソリューションの移行
 
@@ -44,7 +44,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
 ソリューションを OCP GTM からインポートする前に、こちらの手順を実行してください。
 
-1. 会社の[発行元リスト](https://partner.microsoft.com/dashboard/account/v3/publishers/list)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions)を参照してください。
+1. 会社の[発行元リスト](https://partner.microsoft.com/dashboard/account/v3/publishers/list)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](./partner-center-portal/manage-account.md#define-user-roles-and-permissions)を参照してください。
 2. リストに記載されているいずれかの連絡先に連絡し、"*マネージャー*" または "*開発者*" としてコマーシャル マーケットプレースに [ユーザーを追加](https://partner.microsoft.com/dashboard/account/usermanagement)するように依頼します。これは、ソリューションを編集したり発行したりできるのはこれらのロールだけだからです。
 3. 開発者と協力して、ソリューションを OCP GTM アカウントからコマーシャル マーケットプレースに移動します。
 4. 次のうちどれを実行するかを決定します。
@@ -156,4 +156,3 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 - [CSP パートナーによる再販](cloud-solution-providers.md)
 - [パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - これらの [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) を表示する
-

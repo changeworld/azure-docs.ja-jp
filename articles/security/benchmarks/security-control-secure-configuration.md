@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409027"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880171"
 ---
 # <a name="security-control-secure-configuration"></a>セキュリティ コントロールセキュリティで保護された構成
 
@@ -88,9 +88,9 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 
 - [Azure portal で Windows 仮想マシンを作成する](../../virtual-machines/windows/quick-create-portal.md)
 
-- [VM テンプレートをダウンロードする方法に関する情報](../../virtual-machines/windows/download-template.md)
+- [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
@@ -118,7 +118,7 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 
 - [Azure RBAC を構成する方法](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共有イメージ ギャラリーの概要](../../virtual-machines/windows/shared-image-galleries.md)
+- [共有イメージ ギャラリーの概要](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 

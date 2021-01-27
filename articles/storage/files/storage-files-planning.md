@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724232"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879849"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -131,6 +131,6 @@ Advanced Threat Protection (ATP) for Azure Storage には、ストレージ ア�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-* [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
+* [Azure Files のデプロイ方法](./storage-how-to-create-file-share.md)
 * [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)
 * [シナリオに適した移行ガイドを見つけるには、移行の概要に関する記事をご覧ください。](storage-files-migration-overview.md)

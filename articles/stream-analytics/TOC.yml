@@ -39,7 +39,7 @@
     - name: カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
     - name: IoT Edge ジョブを作成する
-      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
       maintainContext: true
 - name: サンプル
   items:
@@ -81,9 +81,9 @@
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Azure Data Lake Storage Gen 1
           href: azure-data-lake-storage-gen1-output.md
-        - name: Azure SQL Database
+        - name: Azure SQL データベース
           href: sql-database-output.md
-        - name: SQL Database のパフォーマンス
+        - name: SQL データベースのパフォーマンス
           href: stream-analytics-sql-output-perf.md
         - name: Azure Synapse Analytics
           href: azure-synapse-analytics-output.md

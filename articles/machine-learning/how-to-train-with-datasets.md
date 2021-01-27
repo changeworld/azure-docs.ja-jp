@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881688"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 
 この記事では、[Azure Machine Learning データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)を使用して、機械学習モデルのトレーニングを行う方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。 
 
-Azure Machine Learning データセットにより、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)などの Azure Machine Learning トレーニング機能とのシームレスな統合が提供されます。
+Azure Machine Learning データセットにより、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)、[Azure Machine Learning パイプライン](./how-to-create-machine-learning-pipelines.md)などの Azure Machine Learning トレーニング機能とのシームレスな統合が提供されます。
 
 モデル トレーニングに向けてデータを使用できるようにする準備はできていないものの、データ探索用のノートブックにデータを読み込みたい場合は、[データセット内でデータを探索する](how-to-create-register-datasets.md#explore-data)方法に関する記事を参照してください。 
 
@@ -263,7 +263,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**: 
-  * アウトバウンド [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)規則がなく、`azureml-sdk>=1.12.0` を使用している場合は、`azureml-dataset-runtime` とその依存関係を更新して、特定のマイナー バージョンの最新版にします。または、それを実行で使用している場合は、修正プログラムを含む最新パッチが適用されるように、お使いの環境を再作成します。 
+  * アウトバウンド [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)規則がなく、`azureml-sdk>=1.12.0` を使用している場合は、`azureml-dataset-runtime` とその依存関係を更新して、特定のマイナー バージョンの最新版にします。または、それを実行で使用している場合は、修正プログラムを含む最新パッチが適用されるように、お使いの環境を再作成します。 
   * `azureml-sdk<1.12.0` を使用している場合は、最新バージョンにアップグレードします。
   * アウトバウンド NSG 規則がある場合は、サービス タグ `AzureResourceMonitor` のすべてのトラフィックを許可するアウトバウンド規則があることを確認します。
 
@@ -293,4 +293,4 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 * FileDatasets を使用して[画像分類モデルをトレーニングする](https://aka.ms/filedataset-samplenotebook)。
 
-* [パイプラインを使用してデータセットをトレーニングする](how-to-create-your-first-pipeline.md)。
+* [パイプラインを使用してデータセットをトレーニングする](./how-to-create-machine-learning-pipelines.md)。

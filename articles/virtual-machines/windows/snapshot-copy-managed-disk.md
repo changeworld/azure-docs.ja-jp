@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 255b34fc683628846d2776d9db7a0fbe8fe32a45
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: dd19729f8b119946a12220d4b0c434f0b039989a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202081"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879665"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>ポータルまたは PowerShell を使用してスナップショットを作成する
 
@@ -82,4 +82,4 @@ ms.locfileid: "98202081"
 
 ## <a name="next-steps"></a>次のステップ
 
-スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md)」のサンプルを参照してください。
+スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot)」のサンプルを参照してください。

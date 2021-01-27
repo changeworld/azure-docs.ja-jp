@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538166"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880069"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning データセットをバージョン管理および追跡する
 
@@ -119,7 +119,7 @@ dataset2.register(workspace = workspace,
 
 データセットは、[ML の各パイプライン](concept-ml-pipelines.md) ステップの入力および出力として使用できます。 パイプラインを再実行すると、各パイプライン ステップの出力は新しいデータセット バージョンとして登録されます。
 
-パイプラインを再実行するたびに、ML パイプラインによって、各ステップの出力が新しいフォルダーに格納されます。 この動作により、バージョン管理された出力データセットを再現できます。 パイプラインのデータセットについては[こちら](how-to-create-your-first-pipeline.md#steps)をご覧ください。
+パイプラインを再実行するたびに、ML パイプラインによって、各ステップの出力が新しいフォルダーに格納されます。 この動作により、バージョン管理された出力データセットを再現できます。 パイプラインのデータセットについては[こちら](./how-to-create-machine-learning-pipelines.md#steps)をご覧ください。
 
 ```Python
 from azureml.core import Dataset

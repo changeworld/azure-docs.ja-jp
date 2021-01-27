@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440829"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880086"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Gateway ポイント対サイトを使用したリモート作業
 
@@ -65,7 +65,7 @@ Azure ポイント対サイトのソリューションはクラウド ベース�
 4. Azure Virtual Network ゲートウェイに接続するようにオンプレミスのデバイスを構成します。
 5. Azure portal からポイント対サイト プロファイルをダウンロードし、クライアントに配布します
 
-サイト間 VPN トンネルを設定する方法については、[このリンク](vpn-gateway-howto-site-to-site-resource-manager-portal.md)を参照してください。
+サイト間 VPN トンネルを設定する方法については、[このリンク](./tutorial-site-to-site-portal.md)を参照してください。
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
 

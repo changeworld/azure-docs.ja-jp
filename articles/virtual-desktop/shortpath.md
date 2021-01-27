@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134400"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876700"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop の RDP Shortpath (プレビュー)
 
@@ -53,12 +53,12 @@ RDP Shortpath では、セッション ホストの証明書を使用して、�
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath ネットワーク接続の図" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>必要条件
+## <a name="requirements"></a>要件
 
 RDP Shortpath をサポートするには、Windows Virtual Desktop クライアントに、セッション ホストへの直接の通信経路が必要です。 直接の通信経路を取得するには、次のテクノロジのいずれかを使用します。
 
 * [ExpressRoute プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md)
-* [サイト間 VPN (IPsec ベース)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [サイト間 VPN (IPsec ベース)](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [ポイント間 VPN (IPsec ベース)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [パブリック IP アドレスの割り当て](../virtual-network/virtual-network-public-ip-address.md)
 

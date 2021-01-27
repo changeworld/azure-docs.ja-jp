@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7e59c8ecc0d7af341ddc1ea79aa42460e00fa444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880103"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -38,7 +38,7 @@ Windows PowerShell および Azure REST API を使用して複数のサイトに
 
 次のようなクロスプレミス接続がサポートされています。
 
-* サイト間接続 - IPsec (IKE v1 および IKE v2) 経由での VPN 接続。 この種類の接続には、VPN デバイスまたは RRAS が必要です。 詳細については、[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。
+* サイト間接続 - IPsec (IKE v1 および IKE v2) 経由での VPN 接続。 この種類の接続には、VPN デバイスまたは RRAS が必要です。 詳細については、[サイト間接続](./tutorial-site-to-site-portal.md)に関するページを参照してください。
 * ポイント対サイト接続 – SSTP (Secure Socket トンネリング プロトコル) 経由での VPN 接続または IKE v2。 この接続では、VPN デバイスは不要です。 詳細については、[ポイント対サイト接続](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。
 * VNet 間接続 - この種類の接続は、サイト間構成の場合と同じです。 VNet 間接続では IPsec (IKE v1 および IKE v2) 経由で VPN 接続を確立します。 VPN デバイスは不要です。 詳細については、[VNet 間接続](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください。
 * マルチサイト接続 - これはサイト間構成の一種で、複数のオンプレミス サイトから仮想ネットワークに接続するものです。 詳細については、[マルチサイト接続](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)に関するページを参照してください。
@@ -70,13 +70,13 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
 
-いいえ。 Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
+いいえ。  Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
 1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
 1. ゲートウェイを削除します。
    - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [必要な種類の新しいゲートウェイを作成し、VPN のセットアップを完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)。
+1. [必要な種類の新しいゲートウェイを作成し、VPN のセットアップを完了します](./tutorial-site-to-site-portal.md#VNetGateway)。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' は必要ですか。
 
@@ -175,7 +175,7 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 ## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>ポイント対サイト接続の認証の種類を変更するにはどうすればよいですか?
 
-ポイント対サイト接続の認証方法を変更するには、VPN ゲートウェイの下にある **[ポイント対サイト構成]** セクションに移動し、目的のオプション ボタンをオンにします。 現在のオプションは、 **[Azure 証明書]、[RADIUS 認証]、[Azure Active Directory]** です。 現在のクライアントは、変更後、新しいプロファイルがダウンロードされ、クライアント上で構成されるまで**接続できない場合がある**ことに注意してください。
+ポイント対サイト接続の認証方法を変更するには、VPN ゲートウェイの下にある **[ポイント対サイト構成]** セクションに移動し、目的のオプション ボタンをオンにします。 現在のオプションは、 **[Azure 証明書]、[RADIUS 認証]、[Azure Active Directory]** です。 現在のクライアントは、変更後、新しいプロファイルがダウンロードされ、クライアント上で構成されるまで **接続できない場合がある** ことに注意してください。
 
 ## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>ネイティブ Azure 証明書認証を使用したポイント対サイト
 

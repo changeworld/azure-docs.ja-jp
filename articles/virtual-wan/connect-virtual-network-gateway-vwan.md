@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922961"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880374"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -91,7 +91,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 
 このセクションでは、Azure VPN Gateway ローカル ネットワーク ゲートウェイを 2 つ作成します。 前の手順で入手した構成ファイルには、ゲートウェイの構成に関する設定が格納されています。 その設定を使用し、Azure VPN Gateway ローカル ネットワーク ゲートウェイを作成および構成していきます。
 
-1. 上に挙げた設定を使用してローカル ネットワーク ゲートウェイを作成します。 VPN Gateway ローカル ネットワーク ゲートウェイの作成方法の詳細については、VPN Gateway に関する記事の[ローカル ネットワーク ゲートウェイの作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)に関するセクションを参照してください。
+1. 上に挙げた設定を使用してローカル ネットワーク ゲートウェイを作成します。 VPN Gateway ローカル ネットワーク ゲートウェイの作成方法の詳細については、VPN Gateway に関する記事の[ローカル ネットワーク ゲートウェイの作成](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)に関するセクションを参照してください。
 
    * **[IP アドレス]** - 構成ファイルの *gatewayconfiguration* にある Instance0 の IP アドレスを使用します。
    * **[BGP]** - 接続に BGP を使用する場合は、 **[BGP 設定の構成]** をオンにして ASN "65515" を入力します。 IP アドレスは BGP ピアのものを入力します。 構成ファイルの *gatewayconfiguration* にある "Instance0 BgpPeeringAddresses" を使用してください。
@@ -105,7 +105,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5.接続を作成する
 
-このセクションでは、VPN Gateway ローカル ネットワーク ゲートウェイと仮想ネットワーク ゲートウェイの間の接続を作成します。 VPN Gateway の接続を作成する手順については、[接続の構成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)に関するページを参照してください。
+このセクションでは、VPN Gateway ローカル ネットワーク ゲートウェイと仮想ネットワーク ゲートウェイの間の接続を作成します。 VPN Gateway の接続を作成する手順については、[接続の構成](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)に関するページを参照してください。
 
 1. ポータルで仮想ネットワーク ゲートウェイに移動し、 **[接続]** をクリックします。 [接続] ページの上部にある **[+追加]** をクリックして **[接続の追加]** ページを開きます。
 2. **[接続の追加]** ページで、接続に関する次の値を構成します。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 542ad18b18e3fc024e3a26792abfedb1e17727c9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484432"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882333"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -229,4 +229,4 @@ Azure 環境のセットアップと構成が完了した後に、今度はネ�
 ## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
-- [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
+- [VM デプロイ Azure CLI サンプルを探索する](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

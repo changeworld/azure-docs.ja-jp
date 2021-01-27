@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 987281bd13b7ac053f07a4ef1fb7605c85686d56
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898625"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878665"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -362,7 +362,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
 
-**Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
+**Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
 
 **互換性のないサービス**:プラットフォームの現行の制約に起因し、一部の Azure サービスは NSG フロー ログでサポートされていません。 互換性のないサービスには現在、次が含まれます。
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)

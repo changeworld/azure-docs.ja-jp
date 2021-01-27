@@ -9,17 +9,18 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019227"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879597"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
 
 ![関連するデータを検索する](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
+
 
 上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](/previous-versions/msp-n-p/jj554200(v=pandp.10))からの[具体化されたビュー パターン](/previous-versions/msp-n-p/dn589782(v=pandp.10))の使用があります。  
 
@@ -710,7 +711,7 @@ foreach (var e in entities)
 クライアント アプリケーションでのコンカレンシーと更新操作の処理方法に設計が及ぼす影響についても考慮が必要です。  
 
 ### <a name="managing-concurrency"></a>コンカレンシーを管理する
-既定では、テーブル サービスは個々 のエンティティのレベルで **挿入**、**マージ**、**削除** 操作に対しオプティミスティック コンカレンシー チェックを実行しますが、クライアントは、テーブル サービスがこれらのチェックをバイパスするよう強制することもできます。 Table service でのコンカレンシーの管理方法については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../../storage/common/storage-concurrency.md)」をご覧ください。  
+既定では、テーブル サービスは個々 のエンティティのレベルで **挿入**、**マージ**、**削除** 操作に対しオプティミスティック コンカレンシー チェックを実行しますが、クライアントは、テーブル サービスがこれらのチェックをバイパスするよう強制することもできます。 Table service でのコンカレンシーの管理方法については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../blobs/concurrency-manage.md)」をご覧ください。  
 
 ### <a name="merge-or-replace"></a>マージまたは置換
 **TableOperation** クラスの **置換** のメソッドは、常に、Table service の完全なエンティティを置換します。 格納されたエンティティに存在するプロパティを要求に含めない場合、要求により、格納されたエンティティからそのプロパティが削除されます。 格納されたエンティティからプロパティを明示的に削除しない場合は、すべてのプロパティを要求に含める必要があります。  

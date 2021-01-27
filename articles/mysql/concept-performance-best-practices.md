@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354890"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880408"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Azure Database for MySQL のパフォーマンスを最適化するためのベスト プラクティス - 単一サーバー
 
@@ -29,7 +29,7 @@ Azure 仮想マシン、Azure Kubernetes、または App Services を使用す�
 
 新しい接続を確立することは、常にコストが高く時間のかかる作業です。 アプリケーションは、データベース接続を要求するときに、新しい接続の作成よりも、既存のアイドル状態のデータベース接続の割り当てを優先します。  適切な接続を実践するためのいくつかのオプションを次に示します。
 
-- **ProxySQL**:組み込みの接続プールを提供する [ProxySQL](https://proxysql.com/) を使用します。また、アプリケーション コードへの変更によって、必要に応じて、複数の読み取りレプリカに対して[ワークロードを負荷分散](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)させます。
+- **ProxySQL**:組み込みの接続プールを提供する [ProxySQL](https://proxysql.com/) を使用します。また、アプリケーション コードへの変更によって、必要に応じて、複数の読み取りレプリカに対して [ワークロードを負荷分散](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)させます。
 
 - **Heimdall Data Proxy**:また、ベンダー中立の専用プロキシ ソリューションである Heimdall Data Proxy を利用することもできます。 クエリのキャッシュと、レプリケーションのラグ検出を使用した読み取りまたは書き込みの分割がサポートされています。 [Heimdall Proxy を使用して MySQL のパフォーマンスを向上させる](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/accelerate-mysql-performance-with-the-heimdall-proxy/ba-p/1063349)方法も参照してください。  
 
@@ -46,9 +46,9 @@ Azure 仮想マシン、Azure Kubernetes、または App Services を使用す�
 
 Azure Database for MySQL のパフォーマンスのベスト プラクティスは、作業セットがほぼ完全にメモリ内に存在するように、十分な RAM を割り当てることです。 
 
-- [MySQL サーバーのメトリック](https://docs.microsoft.com/azure/mysql/concepts-monitoring)を使用して、メモリの使用率が[制限](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers)に達しているかどうかを確認します。 
+- [MySQL サーバーのメトリック](./concepts-monitoring.md)を使用して、メモリの使用率が[制限](./concepts-pricing-tiers.md)に達しているかどうかを確認します。 
 - このような数値に対してアラートを設定して、サーバーが制限に達したときに迅速に対処して修正できるようにします。 定義されている制限に基づいて、データベースの SKU をスケールアップして、より大きいコンピューティング サイズにするか、またはより適切な価格レベルにすることで、パフォーマンスが大幅に向上するかどうかを確認します。 
-- スケーリング操作の後に、パフォーマンスの数値が大幅に低下しなくなるまでスケールアップします。 DB インスタンスのメトリックの監視の詳細については、[MySQL DB のメトリック](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics)に関する記事を参照してください。
+- スケーリング操作の後に、パフォーマンスの数値が大幅に低下しなくなるまでスケールアップします。 DB インスタンスのメトリックの監視の詳細については、[MySQL DB のメトリック](./concepts-monitoring.md#metrics)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

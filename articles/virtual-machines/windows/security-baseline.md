@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c0fbc2c7830961ca8820e874daaffcf0c58faab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202115"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879682"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -845,7 +845,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-* [VM テンプレートをダウンロードする方法に関する情報](./download-template.md)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -889,7 +889,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ほとんどのシナリオで、Microsoft ベース VM テンプレートと Azure Automation Desired State Configuration を組み合わせると、セキュリティ要件を満たし、それを維持するために役立つ可能性があります。
 
-* [VM テンプレートをダウンロードする方法に関する情報](./download-template.md)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Resource Manager テンプレートの作成に関する情報](./ps-template.md)
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95526121"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880710"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -65,7 +65,7 @@ Standard パフォーマンスでは、最もコスト効率の高い方法で�
 
 既存の Standard パフォーマンス ストレージ アカウントを Premium パフォーマンスのブロック BLOB ストレージ アカウントに変換することはできません。 Premium パフォーマンス ストレージ アカウントに移行するには、BlockBlobStorage アカウントを作成し、データを新しいアカウントに移行する必要があります。 詳細については、「[ブロック BLOB ストレージ アカウントの作成](storage-blob-create-account-block-blob.md)」を参照してください。
 
-ストレージ アカウント間で BLOB をコピーするには、最新バージョンの [AzCopy](../common/storage-use-azcopy-blobs.md) コマンドライン ツールを使用できます。 データの移動と変換には、Azure Data Factory などの他のツールを使用することもできます。
+ストレージ アカウント間で BLOB をコピーするには、最新バージョンの [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) コマンドライン ツールを使用できます。 データの移動と変換には、Azure Data Factory などの他のツールを使用することもできます。
 
 ## <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
 

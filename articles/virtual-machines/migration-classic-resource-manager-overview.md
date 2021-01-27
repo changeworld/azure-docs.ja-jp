@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 44b89aae2f446a13207c8e3b586892ad085bd790
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897118"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879412"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>プラットフォームでサポートされている、Linux のクラシックから Azure Resource Manager への IaaS リソースの移行
 
@@ -24,7 +24,7 @@ ms.locfileid: "97897118"
 
 この記事では、プラットフォームでサポートされる移行ツールの概要、Azure Service Manager (ASM) (別名クラシックな Resource Manager (ARM)) デプロイ モデルからリソースを移行する方法、およびサブスクリプション内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/management/overview.md)の詳細を参照してください。 
 
-ASM では、2 つの異なるコンピューティング製品がサポートされています。Azure Virtual Machines (クラシック) (別名 IaaS VM) と [Azure Cloud Services (クラシック)](https://docs.microsoft.com/azure/cloud-services/) (別名 PaaS VM または Web と worker ロール) です。 このドキュメントでは、Azure Virtual Machines (クラシック) の移行についてのみ説明します。
+ASM では、2 つの異なるコンピューティング製品がサポートされています。Azure Virtual Machines (クラシック) (別名 IaaS VM) と [Azure Cloud Services (クラシック)](../cloud-services/index.yml) (別名 PaaS VM または Web と worker ロール) です。 このドキュメントでは、Azure Virtual Machines (クラシック) の移行についてのみ説明します。
 
 ## <a name="goal-for-migration"></a>移行の目的
 Resource Manager では、テンプレートを使用して複雑なアプリケーションをデプロイできます。また、VM の拡張機能を使用して仮想マシンを構成し、アクセス管理とタグ付けを統合します。 Azure Resource Manager には、仮想マシンの可用性セットへのスケーラブルな並列デプロイも含まれます。 さらに、新しいモデルでは、計算、ネットワーク、ストレージの個別のライフサイクル管理が提供されます。 最後に、仮想ネットワークでの仮想マシンの実行によって、セキュリティが既定で有効になることが重要視されています。
@@ -39,7 +39,7 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 * ストレージ アカウント
 * 仮想ネットワーク
 * VPN ゲートウェイ
-* [ExpressRoute ゲートウェイ](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(仮想ネットワークと同じサブスクリプション内にある場合のみ)_
+* [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-move-arm.md) _(仮想ネットワークと同じサブスクリプション内にある場合のみ)_
 * ネットワーク セキュリティ グループ
 * ルート テーブル
 * 予約済み IP

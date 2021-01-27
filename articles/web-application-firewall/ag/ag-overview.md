@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621027"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879429"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 
@@ -157,7 +157,7 @@ Application Gateway のログは、[Azure Monitor](../../azure-monitor/overview.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-introduction.md) は、脅威の防御、検出、対応を可能にする機能です。 Azure リソースのセキュリティに対する可視性と制御を強化します。 Application Gateway は [Security Center と統合されています](../../application-gateway/application-gateway-integration-security-center.md)。 Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、Application Gateway の WAF が推奨されます。 Security Center から直接ファイアウォールを作成します。 これらの WAF インスタンスは Security Center と統合されます。 それらによって、アラートおよび正常性情報がレポートとして Security Center に送信されます。
+[Security Center](../../security-center/security-center-introduction.md) は、脅威の防御、検出、対応を可能にする機能です。 Azure リソースのセキュリティに対する可視性と制御を強化します。 Application Gateway は [Security Center と統合されています](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions)。 Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、Application Gateway の WAF が推奨されます。 Security Center から直接ファイアウォールを作成します。 これらの WAF インスタンスは Security Center と統合されます。 それらによって、アラートおよび正常性情報がレポートとして Security Center に送信されます。
 
 ![Security Center の概要ウィンドウ](../media/ag-overview/figure1.png)
 

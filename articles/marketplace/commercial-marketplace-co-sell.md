@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/08/2020
-ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ca090d9bd4f5968b0404cb73af9f8d21197e695d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904910"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880963"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの共同販売オプション
 
-**[Microsoft と共同販売する]** タブでの情報入力はすべて省略できます。 [共同販売の準備完了と IP 共同販売インセンティブ対象の状態](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)になっている必要があります。 提供された情報は、顧客のニーズに対するその適合度を評価する際にお客様のオファーの詳細を確認するために Microsoft のセールス チームによって使用されます。 お客様が直接使用することはできません。 詳細については、[Microsoft との共同販売](https://partner.microsoft.com/membership/co-sell-with-microsoft)に関するページを参照してください。
+**[Microsoft と共同販売する]** タブでの情報入力はすべて省略できます。 [共同販売の準備完了と IP 共同販売インセンティブ対象の状態](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)になっている必要があります。 提供された情報は、顧客のニーズに対するその適合度を評価する際にお客様のオファーの詳細を確認するために Microsoft のセールス チームによって使用されます。 お客様が直接使用することはできません。 詳細については、[Microsoft との共同販売](https://partner.microsoft.com/membership/co-sell-with-microsoft)に関するページを参照してください。
 
 パートナー センターの共同販売オプションは、以下のオファリング タイプで使用できます。
 

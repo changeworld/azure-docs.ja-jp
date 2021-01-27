@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa5c2a0070ea0c3a0963f97fc1a04670eeaa4827
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: efa951ce5a15460e3eacfd4c7abecfac17106b4e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701893"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880510"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションまたはコードなしアタッチとは
 
@@ -23,17 +23,17 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 
 統合が多く追加されるほど、自動インストルメンテーション機能のマトリックスは複雑になります。 次の表は、さまざまなリソース プロバイダー、言語、環境のサポートに関して、現在の状態を示しています。
 
-|環境/リソース プロバイダー          | .NET            | .NET Core       | Java            | Node.js         |
-|---------------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service on Windows           | GA、OnBD*       | GA、オプトイン      | プライベート プレビュー | プライベート プレビュー |
-|Azure App Service on Linux             | 該当なし             | サポートされていません   | プライベート プレビュー | パブリック プレビュー  |
-|Azure App Service on AKS               | 該当なし             | 設計中       | 設計中       | 設計中       |
-|Azure Functions - 基本                | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       |
-|Azure Functions Windows - 依存関係 | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   |
-|Azure Kubernetes Service               | 該当なし             | 設計中       | エージェント経由   | 設計中       |
-|Azure VM Windows                      | パブリック プレビュー  | サポートされていません   | サポートされていません   | サポートされていません   |
-|オンプレミスの VM Windows                | GA、オプトイン      | サポートされていません   | エージェント経由   | サポートされていません   |
-|スタンドアロン エージェント - 任意の環境            | サポートされていません   | サポートされていません   | GA              | サポートされていません   |
+|環境/リソース プロバイダー          | .NET            | .NET Core       | Java            | Node.js         | Python          |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|Azure App Service on Windows           | GA、OnBD*       | GA、オプトイン      | プライベート プレビュー | プライベート プレビュー | サポートされていません   |
+|Azure App Service on Linux             | 該当なし             | サポートされていません   | プライベート プレビュー | パブリック プレビュー  | サポートされていません   |
+|Azure App Service on AKS               | 該当なし             | 設計中       | 設計中       | 設計中       | サポートされていません   |
+|Azure Functions - 基本                | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       |
+|Azure Functions Windows - 依存関係 | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   | サポートされていません   |
+|Azure Kubernetes Service               | 該当なし             | 設計中       | エージェント経由   | 設計中       | サポートされていません   |
+|Azure VM Windows                      | パブリック プレビュー  | サポートされていません   | サポートされていません   | サポートされていません   | サポートされていません   |
+|オンプレミスの VM Windows                | GA、オプトイン      | サポートされていません   | エージェント経由   | サポートされていません   | サポートされていません   |
+|スタンドアロン エージェント - 任意の環境            | サポートされていません   | サポートされていません   | GA              | サポートされていません   | サポートされていません   |
 
 *OnBD は On by Default (既定でオン) の短縮形です。サポートされている環境でアプリをデプロイすると、Application Insights が自動的に有効になります。 
 
