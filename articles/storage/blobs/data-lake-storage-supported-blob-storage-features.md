@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545831"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879311"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |不変ストレージ|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)|
 |コンテナーの論理的な削除|プレビュー|プレビュー|[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)|
 |Azure Storage インベントリ|プレビュー|プレビュー|[Azure Storage インベントリを使用して BLOB データを管理する (プレビュー)](blob-inventory.md)|
-|BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](storage-blob-soft-delete.md)|
+|BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](./soft-delete-blob-overview.md)|
 |blobfuse|一般公開|一般公開|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |匿名パブリック アクセス |一般公開|一般公開| 「[コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する](anonymous-read-access-configure.md)」を参照してください。|
 |カスタマー マネージド アカウントのフェールオーバー|まだサポートされていません|まだサポートされていません|[ディザスター リカバリーとアカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

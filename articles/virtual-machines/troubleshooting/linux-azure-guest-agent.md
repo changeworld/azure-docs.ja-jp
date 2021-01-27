@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586399"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878699"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>Azure Linux エージェントのトラブルシューティング
 
-[Azure Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)を使用すると、仮想マシン (VM) が IP アドレス 168.63.129.16 でファブリック コントローラー (VM がホストされている基盤の物理サーバー) と通信できるようになります。
+[Azure Linux エージェント](../extensions/agent-linux.md)を使用すると、仮想マシン (VM) が IP アドレス 168.63.129.16 でファブリック コントローラー (VM がホストされている基盤の物理サーバー) と通信できるようになります。
 
 >[!NOTE]
 >この IP アドレスは、通信を容易にする仮想パブリック IP アドレスです。ブロックしないでください。 詳しくは、「[IP アドレス 168.63.129.16 とは](../../virtual-network/what-is-ip-address-168-63-129-16.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-エージェントの状態とバージョンを見て、現在もサポートされていることを確認します。 「[Azure での仮想マシン エージェントの最小バージョンのサポート](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)」を参照のうえ、バージョン サポートをご確認ください。あるいは、状態とバージョンを見つける手順については、「[WALinuxAgent FAQ](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output)」を参照してください。
+エージェントの状態とバージョンを見て、現在もサポートされていることを確認します。 「[Azure での仮想マシン エージェントの最小バージョンのサポート](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)」を参照のうえ、バージョン サポートをご確認ください。あるいは、状態とバージョンを見つける手順については、「[WALinuxAgent FAQ](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output)」を参照してください。
 
 ## <a name="troubleshoot-a-not-ready-status"></a>準備中状態のトラブルシューティング
 
@@ -64,7 +64,7 @@ ms.locfileid: "97586399"
    AutoUpdate.Enabled=y
    ```
 
-   Azure Linux エージェントを更新する方法の詳細については、「[VM で Azure Linux エージェントを更新する方法](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent)」を参照してください。
+   Azure Linux エージェントを更新する方法の詳細については、「[VM で Azure Linux エージェントを更新する方法](../extensions/update-linux-agent.md)」を参照してください。
 
 1. VM がファブリック コントローラーに接続できることを確認します。 curl などのツールを使用して、VM がポート 80、443、32526 で 168.63.129.16 に接続できるかどうかをテストします。 VM が想定どおりに接続されない場合は、ポート 80、443、32526 を介した送信方向の通信が VM のローカル ファイアウォールで開いているかどうかを確認します。 この IP アドレスがブロックされると、VM エージェントが予期しない動作を示す可能性があります。
 

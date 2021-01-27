@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97917991"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879277"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "97917991"
 
 マネージド サービスを公開するには、Cloud Platform の Gold または Silver Microsoft コンピテンシーを獲得している必要があります。 このコンピテンシーにより、専門知識を顧客に示すことができます。 詳細については、[Microsoft Partner Network のコンピテンシー](https://partner.microsoft.com/membership/competencies)に関するページを参照してください。
 
-Azure Marketplace に公開するには、オファーが、適用される[コマーシャル マーケットプレース認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)をすべて満たしている必要があります。
+Azure Marketplace に公開するには、オファーが、適用される[コマーシャル マーケットプレース認定ポリシー](/legal/marketplace/certification-policies)をすべて満たしている必要があります。
 
 ## <a name="customer-leads"></a>潜在顧客
 

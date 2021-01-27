@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: サービスの再起動、シャットダウン、または停止
       href: boot-error-troubleshoot-windows.md
-    - name: Linux 仮想マシンのフル OS ディスクに関する問題
-      href: os-disk-full-linux.md
 - name: 予期しない再起動
   items:
     - name: 接続された VHD による VM の予期しない再起動
@@ -153,7 +151,7 @@
         - name: 一般的なエラーのトラブルシューティング
           href: troubleshoot-rdp-general-error.md
         - name: 認証エラーのトラブルシューティング
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: 静的 IP に起因する VM の RDP エラーのトラブルシューティング

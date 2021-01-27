@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015999"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878827"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "96015999"
 
 ## <a name="create-an-image-definition"></a>イメージ定義を作成する 
 
-イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](../articles/virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 ギャラリー内でギャラリー イメージ定義を作成します。 この例では、ギャラリー イメージが *myImageDefinition* という名前になっています。
 
@@ -44,7 +44,7 @@ ms.locfileid: "96015999"
 1. **[イメージの定義名]** で、「*myImageDefinition*」と入力します。
 1. **[オペレーティング システム]** では、ソース VM に基づいて適切なオプションを選択します。  
 1. **[VM の生成]** では、ソース VM に基づいてオプションを選択します。 ほとんどの場合、これは *[Gen 1]* になります。 詳細については、[第 2 世代 VM に対するサポート](../articles/virtual-machines/generation-2.md)に関するページを参照してください。
-1. **[オペレーティング システムの状態]** では、ソース VM に基づいて適切なオプションを選択します。 詳細については、[一般化と特殊化](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)に関するページを参照してください。
+1. **[オペレーティング システムの状態]** では、ソース VM に基づいて適切なオプションを選択します。 詳細については、[一般化と特殊化](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)に関するページを参照してください。
 1. **[発行元]** では、「*myPublisher*」と入力します。 
 1. **[プラン]** では、「*myOffer*」と入力します。
 1. **[SKU]** では、「*mySKU*」と入力します。

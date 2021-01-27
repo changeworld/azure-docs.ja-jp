@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602605"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879243"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース プログラムのサポート
 
 マイクロソフトでは、さまざまな製品やサービスについてサポートを提供します。 適切でタイムリーな回答を得るには、正しいサポート チームを見つけることが重要です。 次のシナリオを検討して、お問い合わせを適切なチームに送るのに役立ててください。
 
 - あなたが発行元であり、お客様から質問を受けた場合、お客様には  [Azure portal](https://portal.azure.com/) のサポート リンクからサポートを依頼するようにお願いしてください。
-- 発行元の方で、Azure で実行されているアプリケーションでセキュリティの問題を検出した場合は、「[セキュリティ イベント サポート チケットをログに記録する方法](/azure/security/fundamentals/event-support-ticket)」を参照してください。 発行元は、Azure Marketplace で提供しているソフトウェアやサービス オファリングのセキュリティ インシデントや脆弱性を含め、疑わしいセキュリティ イベントをできるだけ早い機会に報告しなければなりません。
+- 発行元の方で、Azure で実行されているアプリケーションでセキュリティの問題を検出した場合は、「[セキュリティ イベント サポート チケットをログに記録する方法](../security/fundamentals/event-support-ticket.md)」を参照してください。 発行元は、Azure Marketplace で提供しているソフトウェアやサービス オファリングのセキュリティ インシデントや脆弱性を含め、疑わしいセキュリティ イベントをできるだけ早い機会に報告しなければなりません。
 - あなたが発行元であり、ご自分のアプリやサービスに関する質問がある場合は、次のサポート オプションを確認してください。
 
 ## <a name="get-help-or-open-a-support-ticket"></a>ヘルプを使用する、またはサポート チケットを開く

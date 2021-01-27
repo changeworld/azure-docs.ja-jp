@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356176"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879158"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -37,7 +37,7 @@ ms.locfileid: "97356176"
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
@@ -284,7 +284,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-pattern** string コピーするときにこれらのファイルのみを含めます。 このオプションでは、ワイルドカード文字 (*) がサポートされます。 `;` を使用してファイルを区切ります。
 
-**--list-of-versions** string  各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB を指している必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があるため、これを徹底します。 AzCopy は、指定されたバージョンをコピー先フォルダーにダウンロードします。 詳細については、「[前のバージョンの BLOB をダウンロードする](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)」を参照してください。
+**--list-of-versions** string  各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB を指している必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があるため、これを徹底します。 AzCopy は、指定されたバージョンをコピー先フォルダーにダウンロードします。 詳細については、「[前のバージョンの BLOB をダウンロードする](./storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
 **--log-level** string ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 既定値は `INFO` です。 
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993199"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878886"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Azure VPN Gateway で BGP を構成する方法
 
@@ -45,19 +45,19 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 **図 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="ネットワークのアーキテクチャと設定を示す図" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="仮想ネットワーク ゲートウェイの設定を示す図" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1.TestVNet1 の作成と構成
 
-この手順では、TestVNet1 を作成して構成します。 Azure 仮想ネットワークと VPN ゲートウェイを作成して構成するには、[ゲートウェイの作成に関するチュートリアル](vpn-gateway-tutorial-create-gateway-powershell.md)の手順に従います。 次のスクリーンショットの参照設定を使用します。
+この手順では、TestVNet1 を作成して構成します。 Azure 仮想ネットワークと VPN ゲートウェイを作成して構成するには、[ゲートウェイの作成に関するチュートリアル](./tutorial-create-gateway-portal.md)の手順に従います。 次のスクリーンショットの参照設定を使用します。
 
 * Virtual Network:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="対応するアドレス プレフィックスを使用した TestVNet1":::
 
 * サブネット:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1 サブネット":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2.BGP パラメーターを指定して TestVNet1 の VPN ゲートウェイを作成する
 
@@ -67,11 +67,11 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 1. パラメーターを次に示すように入力します。
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="VNG1 の作成":::
 
 1. このページの強調表示されている **[Configure BGP]\(BGP の構成\)** セクションで、次の設定を構成します。
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="BGP の構成":::
 
    * BGP 構成セクションを表示するには、 **[Configure BGP]\(BGP の構成\)**  -  **[Enabled]\(有効\)** を選択します。
 
@@ -79,7 +79,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 
    * **[Azure APIPA BGP IP address]\(Azure APIPA BGP IP アドレス\)** フィールドは省略可能です。 オンプレミスの VPN デバイスで、BGP に APIPA アドレスを使用する場合は、Azure で予約されている VPN 用の APIPA アドレス範囲 (**169.254.21.0** から **169.254.22.255**) のアドレスを選択する必要があります。 この例では、169.254.21.11 を使用します。
 
-   * アクティブ/アクティブ VPN ゲートウェイを作成している場合は、BGP セクションに、追加の **2 番目のカスタム Azure APIPA BGP IP アドレス**が表示されます。 許可されている APIPA 範囲 (**169.254.21.0** から **169.254.22.255**) とは異なるアドレスを指定します。
+   * アクティブ/アクティブ VPN ゲートウェイを作成している場合は、BGP セクションに、追加の **2 番目のカスタム Azure APIPA BGP IP アドレス** が表示されます。 許可されている APIPA 範囲 (**169.254.21.0** から **169.254.22.255**) とは異なるアドレスを指定します。
 
    > [!IMPORTANT]
    >
@@ -96,7 +96,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 1. 仮想ネットワーク ゲートウェイのリソースに移動し、 **[構成]** ページを選択して、BGP 構成情報が次のスクリーンショットのように表示されることを確認します。 このページで、Azure VPN ゲートウェイのすべての BGP 構成情報を確認できます:ASN、パブリック IP アドレス、および Azure 側の対応する BGP ピア IP アドレス (既定および APIPA)。
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP ゲートウェイ":::
 
 1. **[構成]** ページで、次の構成変更を行うことができます。
 
@@ -107,22 +107,22 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 ## <a name="part-2-configure-bgp-on-cross-premises-s2s-connections"></a><a name ="crosspremises"></a>パート 2:クロスプレミス サイト間接続で BGP を構成する
 
-クロスプレミス接続を確立するには、オンプレミスの VPN デバイスを表す "*ローカル ネットワーク ゲートウェイ*" と、[サイト間接続の作成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページで説明しているように、VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる "*接続*" を作成する必要があります。 この記事には、BGP 構成パラメーターを指定するために必要な追加のプロパティが記載されています。
+クロスプレミス接続を確立するには、オンプレミスの VPN デバイスを表す "*ローカル ネットワーク ゲートウェイ*" と、[サイト間接続の作成](./tutorial-site-to-site-portal.md)に関するページで説明しているように、VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる "*接続*" を作成する必要があります。 この記事には、BGP 構成パラメーターを指定するために必要な追加のプロパティが記載されています。
 
 **図 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="ネットワークのアーキテクチャと設定を示す図" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="IPsec を示す図" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1.ローカル ネットワーク ゲートウェイで BGP を構成する
 
 この手順では、ローカル ネットワーク ゲートウェイで BGP を構成します。 例として、次のスクリーンショットを使用します。 このスクリーンショットは、図 3 で指定したパラメーターを使用したローカル ネットワーク ゲートウェイ (Site5) を示しています。
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="ローカル ネットワーク ゲートウェイに BGP を構成する":::
 
 #### <a name="important-configuration-considerations"></a>構成に関する重要な考慮事項
 
 * ASN および BGP ピア IP アドレスは、オンプレミスの VPN ルーター構成と一致する必要があります。
-* このネットワークに接続するために BGP を使用しようとしている場合のみ、**アドレス空間**を空のままにすることができます。 Azure VPN ゲートウェイにより、対応する IPsec トンネルへの BGP ピア IP アドレスのルートが内部的に追加されます。 Azure VPN ゲートウェイとこの特定のネットワークの間に BGP を使用しようとして**いない**場合は、この**アドレス空間**の有効なアドレス プレフィックスの一覧を指定**する必要があります**。
+* このネットワークに接続するために BGP を使用しようとしている場合のみ、**アドレス空間** を空のままにすることができます。 Azure VPN ゲートウェイにより、対応する IPsec トンネルへの BGP ピア IP アドレスのルートが内部的に追加されます。 Azure VPN ゲートウェイとこの特定のネットワークの間に BGP を使用しようとして **いない** 場合は、この **アドレス空間** の有効なアドレス プレフィックスの一覧を指定 **する必要があります**。
 * 必要に応じて、オンプレミスの BGP ピア IP として **APIPA IP アドレス** (169.254. x. x) を使用することもできます。 ただし、Azure VPN ゲートウェイについては、この記事で前述したように、APIPA IP アドレスも指定する必要があります。そうしないと、BGP セッションはこの接続に対して確立できません。
 * ローカル ネットワーク ゲートウェイの作成時に BGP 構成情報を入力するか、ローカル ネットワーク ゲートウェイ リソースの **[構成]** ページで BGP 構成を追加または変更することができます。
 
@@ -130,7 +130,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 この例では、オンプレミスの BGP ピア IP アドレスとして APIPA アドレス (169.254.100.1) を使用します。
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="ローカル ネットワーク ゲートウェイの APIPA と BGP":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2.BGP を有効にしてサイト間接続を構成する
 
@@ -140,13 +140,13 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 BGP を有効にして新しい接続を作成するには、 **[接続の追加]** ページで値を入力し、 **[BGP を有効にする]** オプションをオンにして、この接続で BGP を有効にします。 **[OK]** を選択して、接続を作成します。
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="BGP を使用した IPsec クロスプレミス接続":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>既存の接続を更新する
 
 接続の BGP オプションを変更する場合は、接続リソースの **[構成]** ページに移動し、次の例で強調表示されている **[BGP]** オプションを切り替えます。 **[保存]** を選択してすべての変更を保存します。
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="ネットワークのアーキテクチャと設定を示す図":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="接続の BGP を更新する":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>パート 3:VNet 間接続で BGP を構成する
 
@@ -160,7 +160,7 @@ VNet 間接続で BGP を有効または無効にする手順は、[パート 2]
 
 **図 4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="ネットワークのアーキテクチャと設定を示す図" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="完全なネットワークを示す図" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

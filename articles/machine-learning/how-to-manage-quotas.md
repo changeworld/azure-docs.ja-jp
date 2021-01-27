@@ -5,17 +5,18 @@ description: Azure Machine Learning のリソースにおけるクォータと�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878954"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
@@ -81,7 +82,7 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 + **リージョンあたりのクラスター** の既定の制限は 200 です。 これらは、トレーニング クラスターとコンピューティング インスタンスの間で共有されます (コンピューティング インスタンスは、クォータの目的では 1 つのノード クラスターと見なされます)。
 
 > [!TIP]
-> クォータの引き上げを依頼する VM ファミリの詳細については、[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)に関するページを参照してください。 たとえば、GPU VM ファミリは、ファミリ名が "N" で始まります (例: NCv3 シリーズ)
+> クォータの引き上げを依頼する VM ファミリの詳細については、[Azure の仮想マシンのサイズ](../virtual-machines/sizes.md)に関するページを参照してください。 たとえば、GPU VM ファミリは、ファミリ名が "N" で始まります (例: NCv3 シリーズ)
 
 次の表は、プラットフォームにおけるその他の制限を示しています。 例外をリクエストするには、**テクニカル** サポート チケットを通じて AzureML 製品チームに連絡してください。
 

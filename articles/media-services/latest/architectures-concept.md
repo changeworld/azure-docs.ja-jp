@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ff8704feb2997cd89bbd2bf8cb8801818112732f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533997"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879209"
 ---
 # <a name="media-services-architectures"></a>Media Services アーキテクチャ
 
@@ -29,7 +29,7 @@ ms.locfileid: "96533997"
 
 このソリューションは、以下の Azure マネージド サービスに基づいて構築されています。Media Services と Content Delivery Network。 これらのサービスは高可用性環境で実行され、パッチが適用され、サポートされているので、実行される環境ではなく、ソリューションに注力できます。
 
-Azure アーキテクチャ センターの「[デジタルメディアのライブス トリーミング](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream)」を参照してください。
+Azure アーキテクチャ センターの「[デジタルメディアのライブス トリーミング](/azure/architecture/solution-ideas/articles/digital-media-live-stream)」を参照してください。
 
 ## <a name="video-on-demand-digital-media"></a>ビデオ オンデマンド デジタル メディア
 
@@ -37,13 +37,13 @@ Azure アーキテクチャ センターの「[デジタルメディアのライ
 
 このソリューションは、以下の Azure で管理されるサービスに基づいて構築されています。Blob Storage、Content Delivery Network および Azure Media Player です。 これらのサービスは高可用性環境で実行され、パッチが適用され、サポートされているので、実行される環境ではなく、ソリューションに注力できます。
 
-Azure アーキテクチャ センターの「[ビデオ オンデマンド デジタル メディア](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video)」を参照してください。
+Azure アーキテクチャ センターの「[ビデオ オンデマンド デジタル メディア](/azure/architecture/solution-ideas/articles/digital-media-video)」を参照してください。
 
 ## <a name="gridwich-media-processing-system"></a>Gridwich メディア処理システム
 
 Gridwich システムには、Azure でメディア資産を処理および配信するためのベスト プラクティスが実装されています。 Gridwich システムはメディア専用ですが、メッセージ処理およびイベント フレームワークは、任意のステートレス イベント処理ワークフローに適用できます。
 
-Azure アーキテクチャ センターの「[Gridwich メディア処理システム](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture)」を参照してください。
+Azure アーキテクチャ センターの「[Gridwich メディア処理システム](/azure/architecture/reference-architectures/media-services/gridwich-architecture)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

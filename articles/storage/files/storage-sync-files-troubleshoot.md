@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539245"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878801"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -206,8 +206,8 @@ Set-AzStorageSyncServerEndpoint `
     - サーバーがプロキシの背後にある場合は、プロキシの[ドキュメント](./storage-sync-files-firewall-and-proxy.md#proxy)に記載されている手順に従って、コンピューター全体またはアプリ固有のプロキシ設定を構成します。
     - このサービス エンドポイントへのネットワーク接続を確認するには、Test-StorageSyncNetworkConnectivity コマンドレットを使用します。 詳細については、[サービス エンドポイントへのネットワーク接続のテスト](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)に関するページを参照してください。
     - TLS 暗号スイートの順序がサーバーで構成されている場合は、グループ ポリシーまたは TLS コマンドレットを使用して、暗号スイートを追加できます。
-        - グループ ポリシーを使用するには、「[グループ ポリシーを使用した TLS 暗号スイートの順序の構成](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)」を参照してください。
-        - TLS コマンドレットを使用するには、「[TLS PowerShell コマンドレットを使用した TLS 暗号スイートの順序の構成](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)」を参照してください。
+        - グループ ポリシーを使用するには、「[グループ ポリシーを使用した TLS 暗号スイートの順序の構成](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)」を参照してください。
+        - TLS コマンドレットを使用するには、「[TLS PowerShell コマンドレットを使用した TLS 暗号スイートの順序の構成](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)」を参照してください。
     
         現在、Azure File Sync では TLS 1.2 プロトコル用の次の暗号スイートがサポートされています。  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -931,7 +931,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 ディレクトリが削除されている場合は、次の手順を実行して既存のサーバー エンドポイントを削除し、新しいパスを使用して新しいサーバー エンドポイントを作成します。
 
 1. 「[サーバー エンドポイントを削除する](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)」に記載されている手順に従って、同期グループのサーバー エンドポイントを削除します。
-2. 「[サーバー エンドポイントを追加する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)」に記載されている手順に従って、同期グループに新しいサーバー エンドポイントを作成します。
+2. 「[サーバー エンドポイントを追加する](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)」に記載されている手順に従って、同期グループに新しいサーバー エンドポイントを作成します。
 
 ### <a name="common-troubleshooting-steps"></a>一般的なトラブルシューティング手順
 <a id="troubleshoot-storage-account"></a>**ストレージ アカウントが存在することを確認します。**  
