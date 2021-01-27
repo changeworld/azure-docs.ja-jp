@@ -65,7 +65,7 @@ ms.locfileid: "94410744"
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
 - [Microsoft.KeyVault.KeyVaultCertificateSelector](microsoft-keyvault-keyvaultcertificateselector.md)
-- [Microsoft.managedidentity を選択します](microsoft-managedidentity-identityselector.md)
+- [Microsoft.managedidentity.IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Solutions.ArmApiControl](microsoft-solutions-armapicontrol.md)
