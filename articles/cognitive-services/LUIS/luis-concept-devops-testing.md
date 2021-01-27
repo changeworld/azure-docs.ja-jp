@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561224"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788453"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps のテスト
 
@@ -28,7 +28,7 @@ LUIS アプリには、継続的インテグレーション ワークフロー�
 この種のテストは、[LUIS ポータル](https://www.luis.ai/)から実行できる[対話型テスト](./luis-concept-test.md)に似ています。
 
 - **バッチ テスト** - バッチ テストは、現在のトレーニング済みモデルのパフォーマンスを測定するために、そのモデルに関して実行する包括的なテストです。 単体テストとは異なり、バッチ テストは、成功か失敗かを判定するものではありません。 バッチ テストで期待されるのは、期待される意図とエンティティがすべてのテストで返されることではありません。 バッチ テストは、それぞれの意図とエンティティの正確性をアプリで確認したり、時間の経過に沿って改善を比較したりするための助けとなります。  
-この種のテストは、LUIS ポータルから対話形式で実行できる[バッチ テスト](./luis-concept-batch-test.md)と同じです。
+この種のテストは、LUIS ポータルから対話形式で実行できる[バッチ テスト](./luis-how-to-batch-test.md)と同じです。
 
 単体テストは、プロジェクトの開始時から使用することができます。 バッチ テストは、LUIS アプリのスキーマの開発が完了した後、その正確性の向上に取り組む段階ではじめて真価が発揮されます。
 
@@ -42,7 +42,7 @@ LUIS アプリには、継続的インテグレーション ワークフロー�
 * 期待される意図
 * 期待されるエンティティ
 
-JSON 形式のファイルでテストのグループを定義するには、LUIS [バッチ ファイル構文](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities)を使用します。 次に例を示します。
+JSON 形式のファイルでテストのグループを定義するには、LUIS [バッチ ファイル構文](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities)を使用します。 次に例を示します。
 
 ```JSON
 [
@@ -85,7 +85,7 @@ JSON 形式のファイルでテストのグループを定義するには、LUI
 
 #### <a name="designing-batch-tests"></a>バッチ テストを設計する
 
-バッチ テスト セットには、LUIS アプリに含まれるすべての意図とすべてのエンティティをテストするように設計された多数のテスト ケースが含まれている必要があります。 バッチ テスト セットの定義については、[LUIS ポータルでのバッチ テスト](./luis-concept-batch-test.md)に関するページを参照してください。
+バッチ テスト セットには、LUIS アプリに含まれるすべての意図とすべてのエンティティをテストするように設計された多数のテスト ケースが含まれている必要があります。 バッチ テスト セットの定義については、[LUIS ポータルでのバッチ テスト](./luis-how-to-batch-test.md)に関するページを参照してください。
 
 ### <a name="running-tests"></a>テストを実行する
 
@@ -93,7 +93,7 @@ LUIS ポータルには、対話型テストを支援する機能が用意され
 
 * [**対話型テスト**](./luis-concept-test.md)では、サンプル発話を送信して、LUIS によって認識された意図とエンティティの応答を受け取ることができます。 テストの成功は、目視で確認します。
 
-* [**バッチ テスト**](./luis-concept-batch-test.md)では、バッチ テスト ファイルを入力に使用して、アクティブなトレーニング済みバージョンを検証し、その予測の正確性を測定できます。 バッチ テストは、アクティブなバージョンに含まれる各意図やエンティティの精度を表示するのに役立ち、結果がグラフで表示されます。
+* [**バッチ テスト**](./luis-how-to-batch-test.md)では、バッチ テスト ファイルを入力に使用して、アクティブなトレーニング済みバージョンを検証し、その予測の正確性を測定できます。 バッチ テストは、アクティブなバージョンに含まれる各意図やエンティティの精度を表示するのに役立ち、結果がグラフで表示されます。
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>自動ビルド ワークフローでテストを実行する
 

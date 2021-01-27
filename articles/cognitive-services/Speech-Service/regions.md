@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854861"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786793"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -69,7 +69,7 @@ Speech SDK を介して **意図認識** を使用できるリージョンは以
 
 ### <a name="voice-assistants"></a>音声アシスタント
 
-[Speech SDK](speech-sdk.md) は、以下のリージョンで [Direct Line Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) による **音声アシスタント** 機能をサポートしています。
+[Speech SDK](speech-sdk.md) は、以下のリージョンで [Direct Line Speech](./direct-line-speech.md) による **音声アシスタント** 機能をサポートしています。
 
 | グローバル リージョン | リージョン           | リージョン識別子    |
 | ------------- | ---------------- | -------------------- |

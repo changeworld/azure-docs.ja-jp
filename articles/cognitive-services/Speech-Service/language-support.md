@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: e51354b1c2905d0532ce4eb49236dda8550f98a4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600076"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662932"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -128,8 +128,6 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 ## <a name="text-to-speech"></a>テキスト読み上げ
 
 Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。 [音声/リスト API](rest-text-to-speech.md#get-a-list-of-voices) を使用して、特定のリージョン/エンドポイントごとにサポートされている言語と音声の完全な一覧を取得することもできます。 
-
-ニューラル音声などの話し方を構成および調整する方法については、音声合成マークアップ言語の[使用方法](speech-synthesis-markup.md#adjust-speaking-styles)に関するページを参照してください。
 
 > [!IMPORTANT]
 > 価格は、標準音声、カスタム音声、ニューラル音声ごとに異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)のページを参照してください。
@@ -289,6 +287,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
+ニューラル音声 (話し方など) を構成および調整する方法については、「[音声合成マークアップ言語](speech-synthesis-markup.md#adjust-speaking-styles)」を参照してください。
+
 > [!IMPORTANT]
 > `en-US-JessaNeural` 音声が `en-US-AriaNeural` に変更されました。 前に "Jessa" を使用していた場合は、"Aria" に変換します。
 
@@ -392,30 +392,10 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 ### <a name="customization"></a>カスタマイズ
 
-Custom Voice は、標準およびニューラル レベルで使用できます。 サポートされている言語は、これら 2 つのレベルで異なります。 
-
-| Language | Locale | Standard | ニューラル |
-|--|--|--|--|
-| 中国語 (標準、簡体字) | `zh-CN` | はい | はい |
-| 中国語 (標準、簡体字)、英語バイリンガル | `zh-CN` バイリンガル | はい | はい |
-| 英語 (オーストラリア) | `en-AU` | いいえ | はい |
-| 英語 (インド) | `en-IN` | はい | はい |
-| 英語 (イギリス) | `en-GB` | はい | はい |
-| 英語 (米国) | `en-US` | はい | はい |
-| フランス語 (カナダ) | `fr-CA` | いいえ | はい |
-| フランス語 (フランス) | `fr-FR` | はい | はい |
-| ドイツ語 (ドイツ) | `de-DE` | はい | はい |
-| イタリア語 (イタリア) | `it-IT` | はい | はい |
-| 日本語 (日本) | `ja-JP` | いいえ | はい |
-| 韓国語 (韓国) | `ko-KR` | いいえ | はい |
-| ポルトガル語 (ブラジル) | `pt-BR` | はい | はい |
-| スペイン語 (メキシコ) | `es-MX` | はい | はい |
-| スペイン語 (スペイン) | `es-ES` | いいえ | はい |
-
-カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
+音声のカスタマイズは、`de-DE`、`en-GB`、`en-IN`、`en-US`、`es-MX`、`fr-FR`、`it-IT`、`pt-BR`、および `zh-CN` に使用できます。 カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
 
 > [!NOTE]
-> Custom Voice では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 標準方法を使用した中国語 - 英語バイリンガル モデルのトレーニングは、北ヨーロッパと米国中北部のみで使用できます。 カスタム ニューラル音声のトレーニングは、英国南部と米国東部で使用できます。 
+> Custom Voice では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 すべてのロケールの音声トレーニングは、任意のサイズのトレーニング データから始めることができる `en-US` と `zh-CN` を除き、2,000 以上の発話のデータ セットから始まります。
 
 ## <a name="speech-translation"></a>音声翻訳
 
@@ -517,7 +497,7 @@ Custom Voice は、標準およびニューラル レベルで使用できます
 |スペイン語 (メキシコ)     | es-MX     | 該当なし |     はい |     はい|
 |スペイン語 (スペイン)     | es-ES | 該当なし     | はい |     はい|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

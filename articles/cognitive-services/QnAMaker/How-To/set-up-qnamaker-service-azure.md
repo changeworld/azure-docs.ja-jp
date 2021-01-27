@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: baa071c8967c97cb5df2b8f522b3737436bdb359
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108194"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787707"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -130,12 +130,12 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>QnA Maker App Service をホストするように App Service Environment を構成する
 App Service Environment (ASE) を使用して、QnA Maker App Service をホストできます。 次の手順に従ってください。
 
-1. App Service Environment を作成し、"外部" としてマークします。 手順については、[チュートリアル](https://docs.microsoft.com/azure/app-service/environment/create-external-ase)を参照してください。
+1. App Service Environment を作成し、"外部" としてマークします。 手順については、[チュートリアル](../../../app-service/environment/create-external-ase.md)を参照してください。
 2.  App Service Environment 内に App Service を作成します。
     * App Service の構成を確認し、アプリケーション設定として "PrimaryEndpointKey" を追加します。 'PrimaryEndpointKey' の値は、“\<app-name\>-PrimaryEndpointKey” に設定されている必要があります。 アプリ名は、App Service の URL で定義されています。 たとえば、App Service の URL が "mywebsite.myase.p.azurewebsite.net" の場合、アプリ名は "mywebsite" になります。 この場合、'PrimaryEndpointKey' の値は “mywebsite-PrimaryEndpointKey” に設定されている必要があります。
     * Azure Search サービスを作成します。
     * Azure Search とアプリの設定が適切に構成されていることを確認します。 
-      この[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)を参照してください。
+      この[チュートリアル](../reference-app-service.md?tabs=v1#app-service)を参照してください。
 3.  App Service Environment に関連付けられているネットワーク セキュリティ グループを更新します。
     * 事前に作成された受信セキュリティ規則を要件に従って更新します。
     * ソースが 'Service Tag'、ソース サービス タグが 'CognitiveServicesManagement' の新しい受信セキュリティ規則を追加します。

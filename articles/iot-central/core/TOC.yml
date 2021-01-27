@@ -157,6 +157,8 @@
               href: howto-use-app-templates.md
             - name: アプリケーションの正常性を監視する
               href: howto-monitor-application-health.md
+            - name: V2 アプリケーションを V3 へ移行する
+              href: howto-migrate.md
             - name: アプリケーションに関する情報
               href: howto-get-app-info.md
             - name: X.509 証明書のロール

@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: 829514637b72582dbb317970b0d23f92eb11bcad
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862297"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703328"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -373,13 +373,6 @@ v2.6.0 以降の音声テキスト変換コンテナーでは、自分独自の�
 # <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
 *カスタム音声変換* コンテナーは Custom Speech モデルに依存します。 カスタム モデルは、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を利用して[トレーニング](how-to-custom-speech-train-model.md)されている必要があります。
-
-> [!IMPORTANT]
-> Custom Speech モデルは、次のいずれかのモデルバージョンでトレーニングが必要になります。
-> * **20181201 (v3.3 統合)**
-> * **20190520 (v4.14 統合)**
-> * **20190701 (v4.17 統合)**<br>
-> ![Custom Speech トレーニング コンテナー モデル](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
 コンテナーを実行するには、Custom **Speech モデル ID** が必須です。 Custom Speech ポータルの **[トレーニング]** ページにあります。 Custom Speech ポータルから、 **[トレーニング]** ページに移動し、モデルを選択します。
 <br>

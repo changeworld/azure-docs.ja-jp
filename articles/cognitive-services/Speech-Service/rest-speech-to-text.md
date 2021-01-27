@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033644"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790615"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
 Speech to Text には、2 つの異なる REST API があります。 各 API は特別な目的を果たし、異なるエンドポイントのセットを使用します。
 
 以下に、Speech to Text REST API を示します。
-- [Speech to Text REST API v 3.0](#speech-to-text-rest-api-v30): [バッチ文字起こし](batch-transcription.md)および [Custom Speech](custom-speech-overview.md) に使用されます。 v3.0 は、[v2.0 の後継](/azure/cognitive-services/speech-service/migrate-v2-to-v3)です。
+- [Speech to Text REST API v 3.0](#speech-to-text-rest-api-v30): [バッチ文字起こし](batch-transcription.md)および [Custom Speech](custom-speech-overview.md) に使用されます。 v3.0 は、[v2.0 の後継](./migrate-v2-to-v3.md)です。
 - [Speech to Text REST API for short audio](#speech-to-text-rest-api-for-short-audio): [Speech SDK](speech-sdk.md) の代替手段として、OnLine 文字起こしに使用されます。 この API を使用する要求では、要求ごとに最大 60 秒の音声を送信できます。 
 
 ## <a name="speech-to-text-rest-api-v30"></a>Speech to Text REST API v3.0
@@ -45,7 +45,7 @@ REST API v3.0 には、次のような機能が含まれています。
 
 REST API v3.0 とバッチ文字起こしの使用例については、[こちらの記事](batch-transcription.md)を参照してください。
 
-Speech to Text REST API v2.0 を使用している場合は、[こちらのガイド](/azure/cognitive-services/speech-service/migrate-v2-to-v3)で v3.0 への移行方法を参照してください。
+Speech to Text REST API v2.0 を使用している場合は、[こちらのガイド](./migrate-v2-to-v3.md)で v3.0 への移行方法を参照してください。
 
 Speech to Text REST API v3.0 の全リファレンスについては、[こちら](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)を参照してください。
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/04/2021
 ms.author: trbye
-ms.openlocfilehash: 786f9587ab223cf87a48cd791f366049b94af59b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: c770ca3d619ea443fd5a320f91f3bfae56732bac
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97866055"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792379"
 ---
 まず、`KeywordRecognitionModel` を返す `FromFile()` 静的関数を使用して、キーワード モデル ファイルを読み込みます。 Speech Studio からダウンロードした `.table` ファイルへのパスを使用します。 また、既定のマイクを使用して `AudioConfig` を作成し、オーディオ構成を使用して新しい `KeywordRecognizer` をインスタンス化します。
 
@@ -35,6 +35,6 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 
 Speech SDK の他のクラスでは、キーワード認識を使用した継続的認識 (音声認識と意図認識の両方) がサポートされています。 これにより、継続的認識に通常使用するものと同じコードを使用でき、キーワード モデルの `.table` ファイルを参照できます。
 
-音声変換の場合、[クイックスタート](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-to-text?tabs=script%2Cbrowser%2Cwindowsinstall&pivots=programming-language-csharp#continuous-recognition)に示されているデザイン パターンに従って、継続的認識を設定します。 次に、`recognizer.StartContinuousRecognitionAsync()` の呼び出しを `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` に置き換え、`KeywordRecognitionModel` オブジェクトを渡します。 キーワード認識を使用した継続的認識を停止するには、`recognizer.StopContinuousRecognitionAsync()` ではなく `recognizer.StopKeywordRecognitionAsync()` を使用します。
+音声変換の場合、[クイックスタート](../../../get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=script%2cbrowser%2cwindowsinstall#continuous-recognition)に示されているデザイン パターンに従って、継続的認識を設定します。 次に、`recognizer.StartContinuousRecognitionAsync()` の呼び出しを `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` に置き換え、`KeywordRecognitionModel` オブジェクトを渡します。 キーワード認識を使用した継続的認識を停止するには、`recognizer.StopContinuousRecognitionAsync()` ではなく `recognizer.StopKeywordRecognitionAsync()` を使用します。
 
-意図認識では、[`StartKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) および [`StopKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) 関数と同じパターンを使用します。
+意図認識では、[`StartKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) および [`StopKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) 関数と同じパターンを使用します。

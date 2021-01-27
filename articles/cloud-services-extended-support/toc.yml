@@ -21,10 +21,10 @@
   expanded: true
 - name: 概念
   items:
+    - name: 拡張機能
+      href: extensions.md
     - name: 使用可能な VVM のサイズ
       href: available-sizes.md
-    - name: よく寄せられる質問
-      href: faq.md
     - name: ゲスト OS の修正プログラム
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: ゲスト OS の提供終了
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration スキーマ
           href: schema-cscfg-networkconfiguration.md
+    - name: よく寄せられる質問
+      href: faq.md
 - name: 操作方法
   items:
-    - name: 拡張機能の概要
-      href: extensions.md
     - name: リモート デスクトップ拡張機能を適用する
       href: enable-rdp.md
     - name: WAD 拡張機能を適用する
@@ -73,6 +73,8 @@
       href: sample-reset-cloud-service.md
 - name: 関連項目
   items:
+    - name: サンプル デプロイ ファイル
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Az.CloudService モジュール
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell コマンドレット
@@ -81,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: リソース
   items:
     - name: Azure のロードマップ

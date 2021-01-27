@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: b19fb3f86be46a5db60fb87f9c7f5c3e28ac6428
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965148"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689862"
 ---
 ## <a name="install-the-container"></a>コンテナーをインストールする
 
@@ -84,7 +84,7 @@ Azure [Web App for Containers](https://azure.microsoft.com/services/app-service/
 
 Azure CLI を使用してこの PowerShell スクリプトを実行し、HTTPS 経由でサブスクリプションとコンテナー イメージを使用して、Web App for Containers を作成します。 スクリプトが完了するまで (約 25 から 30 分) 待ってから、最初の要求を送信します。
 
-```bash
+```azurecli
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            #    and AppSerivce to be attached to.
@@ -118,7 +118,7 @@ Azure portal を使用して ACI リソースをデプロイする手順につ�
 > [!NOTE] 
 > Azure Container Instances には、組み込みドメインに対する HTTPS のサポートは含まれません。 HTTPS が必要な場合は、証明書の作成とドメインの登録など、手動で構成する必要があります。 この手順については、以下の NGINX を参照してください。
 
-```bash
+```azurecli
 $subscription_name = ""                    # The name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            # and AppService to be attached to.

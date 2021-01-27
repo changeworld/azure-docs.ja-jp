@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359848"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790429"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -101,7 +101,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 > Web アプリを作成するときに、承認と認証を構成することもできます。 これは、開始するために必要なことではありません。 
 
 > [!IMPORTANT]
-> Web アプリが `https` アドレスで表示されるようにするために、TLS を有効にしなければならない場合があります。 [TLS エンドポイントを有効にする](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl)ための手順に従って、Web アプリの TLS/SSL を有効にするサイドカー コンテナーを設定してください。
+> Web アプリが `https` アドレスで表示されるようにするために、TLS を有効にしなければならない場合があります。 [TLS エンドポイントを有効にする](../../container-instances/container-instances-container-group-ssl.md)ための手順に従って、Web アプリの TLS/SSL を有効にするサイドカー コンテナーを設定してください。
 
 ### <a name="azure-cli"></a>Azure CLI
 

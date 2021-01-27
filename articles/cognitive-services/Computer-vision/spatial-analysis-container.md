@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186089"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737338"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -62,7 +62,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) ランタイム。
 
 #### <a name="azure-vm-with-gpu"></a>[GPU 搭載 Azure VM](#tab/virtual-machine)
-この例では、1 つの K80 GPU が搭載された [NC シリーズ VM](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) を使用します。
+この例では、1 つの K80 GPU が搭載された [NC シリーズ VM](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用します。
 
 ---
 
@@ -309,13 +309,13 @@ sudo az iot hub device-identity show-connection-string --device-id my-edge-devic
 sudo systemctl restart iotedge
 ```
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
 
 Azure CLI を使用して、以下の手順に従ってコンテナーをデプロイします。
 
 #### <a name="azure-vm-with-gpu"></a>[GPU 搭載 Azure VM](#tab/virtual-machine)
 
-GPU 搭載 Azure 仮想マシンを使用して、空間分析を実行することもできます。 次の例では、1 つの K80 GPU が搭載された [NC シリーズ](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) VM を使用します。
+GPU 搭載 Azure 仮想マシンを使用して、空間分析を実行することもできます。 次の例では、1 つの K80 GPU が搭載された [NC シリーズ](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM を使用します。
 
 #### <a name="create-the-vm"></a>VM を作成する
 
@@ -335,7 +335,7 @@ VM のサイズを特定するには、[See all sizes]\(すべてのサイズを
 
 次に、VM を作成します。 作成したら、Azure portal で VM リソースに移動し、左側のペインから `Extensions` を選択します。 拡張機能ウィンドウが表示され、使用可能なすべての拡張機能が表示されます。 `NVIDIA GPU Driver Extension` を選択し、[作成] をクリックして、ウィザードを完了します。
 
-拡張機能が正常に適用されたら、Azure portal の VM メイン ページに移動し、`Connect` をクリックします。 VM には、SSH または RDP のいずれかを介してアクセスできます。 ビジュアライザー ウィンドウ (後で説明します) の表示が有効になるので、RDP は役に立ちます。 [こちらの手順](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)に従い、VM へのリモート デスクトップ接続を開いて、RDP アクセスを構成します。
+拡張機能が正常に適用されたら、Azure portal の VM メイン ページに移動し、`Connect` をクリックします。 VM には、SSH または RDP のいずれかを介してアクセスできます。 ビジュアライザー ウィンドウ (後で説明します) の表示が有効になるので、RDP は役に立ちます。 [こちらの手順](../../virtual-machines/linux/use-remote-desktop.md)に従い、VM へのリモート デスクトップ接続を開いて、RDP アクセスを構成します。
 
 ### <a name="verify-graphics-drivers-are-installed"></a>グラフィック ドライバーがインストールされていることを確認する
 
@@ -426,7 +426,7 @@ VM の設定と構成が完了したので、次の手順に従って空間分�
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
-独自の設定と操作の選択によって [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 用の配置マニフェストを更新したら、以下の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) コマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイできます。
+独自の設定と操作の選択によって [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 用の配置マニフェストを更新したら、以下の [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) コマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイできます。
 
 ```azurecli
 sudo az login
@@ -457,7 +457,7 @@ sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge 
 
 ## <a name="redeploy-or-delete-the-deployment"></a>再デプロイする、またはデプロイを削除する
 
-デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) を使用することができます。
+デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) を使用することができます。
 
 ## <a name="use-the-output-generated-by-the-container"></a>コンテナーによって生成された出力を使用する
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019315"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788487"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Language Understanding (LUIS) アプリをビルドするためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。
@@ -141,7 +141,7 @@ LUIS による予測を正確に行うには、各意図 (None 意図を除く) 
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>すべきこと: ご自身のアプリのパフォーマンスを監視する
 
-[バッチ テスト](luis-concept-batch-test.md) セットを使用して予測精度を監視します。
+[バッチ テスト](./luis-how-to-batch-test.md) セットを使用して予測精度を監視します。
 
 [発話の例](luis-concept-utterance.md)またはエンドポイント発話として使用されていない発話のセットを個別に保持します。 ご自身のテスト セット用のアプリは改善し続けてください。 実際のユーザーの発話が反映されるようにテスト セットを調整します。 このテスト セットを使用して、アプリの各イテレーションまたはバージョンを評価します。
 

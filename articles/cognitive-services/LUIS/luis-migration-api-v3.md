@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018788"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624305"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
@@ -66,9 +66,6 @@ Bot Framework、Bing Spell Check V7 を使用する場合、または LUIS ア�
 
 Bot Framework の Version 4.7 がリリースされるまで、引き続き V2 API 予測エンドポイントを使用してください。
 
-## <a name="v2-api-deprecation"></a>V2 API の非推奨
-
-V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨にはなりません (2020 年 6 月 8 日まで)。
 
 ## <a name="endpoint-url-changes"></a>エンドポイント URL の変更
 
@@ -268,9 +265,6 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 
 予測ランタイムにアプリを拡張する方法についての[概念](schema-change-prediction-runtime.md)について説明します。
 
-## <a name="deprecation"></a>非推奨
-
-V2 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨になることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

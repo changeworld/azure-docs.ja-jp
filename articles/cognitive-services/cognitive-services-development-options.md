@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349471"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873571"
 ---
 # <a name="cognitive-services-development-options"></a>Cognitive Services の開発オプション
 
@@ -125,7 +125,7 @@ Cognitive Services を使用してアプリケーションまたはワークフ�
 | 重要な要素 | サービス | カスタマイズ UI | クイック スタート |
 |--------|---------|------------------|------------|
 | 視覚 | Custom Vision | https://www.customvision.ai/ | [クイックスタート](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| 視覚 | Form Recognizer | サンプル ラベル付けツール | [クイックスタート](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| 視覚 | Form Recognizer | [サンプル ラベル付けツール](https://fott-preview.azurewebsites.net/) | [クイックスタート](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
 | 決定 | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [クイックスタート](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | 決定 | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [クイックスタート](./metrics-advisor/quickstarts/web-portal.md) |
 | 決定 | Personalizer | UI は、Azure portal の Personalizer リソースで使用できます。 | [クイックスタート](./personalizer/quickstart-personalizer-sdk.md) |

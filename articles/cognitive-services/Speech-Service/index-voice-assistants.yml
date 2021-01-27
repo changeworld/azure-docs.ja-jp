@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 8b10f817abf73172018e904eb46d4c9e20b844e2
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: f9f5a2934a012ba93accc050ebebee7c844312fc
+  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95015387"
+  ms.lasthandoff: 01/26/2021
+  ms.locfileid: "98786237"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:
@@ -47,11 +47,11 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 単純なコマンドを使用してアプリケーションを作成する
-      url: how-to-custom-commands-create-application-with-simple-commands.md
+      url: ./how-to-develop-custom-commands-application.md
     - text: コマンドにパラメーターを追加する
-      url: how-to-custom-commands-add-parameters-to-commands.md
+      url: ./how-to-develop-custom-commands-application.md
     - text: パラメーターに検証を追加し、修正を求めるプロンプトを表示する
-      url: how-to-custom-commands-add-parameter-configuration.md
+      url: ./how-to-develop-custom-commands-application.md
     - text: Speech SDK を使用して統合する
       url: how-to-custom-commands-setup-speech-sdk.md
     - text: Azure DevOps を使用してカスタム コマンド アプリの継続的配置を設定する

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535850"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787555"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
@@ -33,10 +33,10 @@ LUIS で、対話形式で一度に 1 つずつ発話をテストすることも
 対話型テストは、LUIS ポータルの **[Test]\(テスト\)** パネルから実行します。 発話を入力すると、意図とエンティティがどのように識別され、スコア付けされるかを確認することができます。 テスト パネルで発話の意図とエンティティが期待どおりに予測されない場合、LUIS によってその発話が新しい発話として **[Intent]\(意図\)** ページにコピーされます。 次に、エンティティのその発話の部分にラベルを付け、LUIS をトレーニングします。 
 
 ## <a name="batch-testing"></a>バッチ テスト
-一度に複数の発話をテストする場合は、[バッチ テスト](luis-concept-batch-test.md)に関するページを参照してください。
+一度に複数の発話をテストする場合は、[バッチ テスト](./luis-how-to-batch-test.md)に関するページを参照してください。
 
 ## <a name="endpoint-testing"></a>エンドポイント テスト
-最大 2 つのバージョンのアプリで、[エンドポイント](luis-glossary.md#endpoint)を使用してテストを実行できます。 アプリのメインまたはライブ バージョンを**運用**エンドポイントとして使用し、2 つ目のバージョンを**ステージング** エンドポイントに追加します。 この方法では、[LUIS](luis-reference-regions.md) Web サイトの [テスト] ウィンドウにある現在のモデルと、2 つの異なるエンドポイントにある 2 つのバージョンの合計 3 つのバージョンの発話が提供されます。 
+最大 2 つのバージョンのアプリで、[エンドポイント](luis-glossary.md#endpoint)を使用してテストを実行できます。 アプリのメインまたはライブ バージョンを **運用** エンドポイントとして使用し、2 つ目のバージョンを **ステージング** エンドポイントに追加します。 この方法では、[LUIS](luis-reference-regions.md) Web サイトの [テスト] ウィンドウにある現在のモデルと、2 つの異なるエンドポイントにある 2 つのバージョンの合計 3 つのバージョンの発話が提供されます。 
 
 すべてのエンドポイントのテストが、ユーザーの使用量クォータに加算されます。 
 

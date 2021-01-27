@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955214"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787014"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
@@ -99,7 +99,7 @@ ms.locfileid: "97955214"
 
 バッチ テストの結果を確認するには、 **[See results]\(結果の表示\)** を選択します。 このテスト結果は、アクティブなバージョンで、テストの発話がどのように予測されるかをグラフィカルに示しています。
 
-バッチのグラフには、結果の 4 つのセクションが表示されます。 グラフの右側にはフィルターがあります。 このフィルターには意図とエンティティが含まれています。 [グラフのセクション](luis-concept-batch-test.md#batch-test-results)またはグラフ内の点を選択すると、関連付けられた発話がグラフの下に表示されます。
+バッチのグラフには、結果の 4 つのセクションが表示されます。 グラフの右側にはフィルターがあります。 このフィルターには意図とエンティティが含まれています。 [グラフのセクション](#review-batch-results-for-intents)またはグラフ内の点を選択すると、関連付けられた発話がグラフの下に表示されます。
 
 グラフの上にカーソルを置いている間は、マウス ホイールでグラフ内の表示を拡大または縮小できます。 これは、まとめて緊密にクラスタ化されたグラフ上に多数の点が存在する場合に役立ちます。
 
@@ -166,7 +166,7 @@ LUIS ポータルのグラフでは、次の操作を実行できます。
 
 ## <a name="batch-testing-using-the-rest-api"></a>REST API を使用したバッチ テスト 
 
-LUIS では、LUIS ポータルと REST API を使用してバッチ テストを行うことができます。 REST API のエンドポイントを下に示します。 LUIS ポータルを使用したバッチ テストの詳細については、[チュートリアル: バッチ テストのデータ セット](luis-tutorial-batch-testing.md)に関する記事を参照してください。 下の完全な URL を使用して、プレースホルダーの値を独自の LUIS 予測キーとエンドポイントに置き換えます。 
+LUIS では、LUIS ポータルと REST API を使用してバッチ テストを行うことができます。 REST API のエンドポイントを下に示します。 LUIS ポータルを使用したバッチ テストの詳細については、[チュートリアル: バッチ テストのデータ セット]()に関する記事を参照してください。 下の完全な URL を使用して、プレースホルダーの値を独自の LUIS 予測キーとエンドポイントに置き換えます。 
 
 必ずヘッダーで LUIS キーを `Ocp-Apim-Subscription-Key` に追加し、さらに `Content-Type` を `application/json` に設定してください。
 
@@ -265,5 +265,3 @@ API によって返されるオブジェクトはいくつかあります。
 
 * [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md)
 * [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md)
-* [このチュートリアルでのバッチ テストについて](luis-tutorial-batch-testing.md)
-* [バッチ テストの概念について](luis-concept-batch-test.md)

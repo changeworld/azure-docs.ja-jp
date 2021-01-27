@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131452"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792084"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
-Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 機能と、レシートを解釈するディープ ラーニング モデルを組み合わせて、英語のレシートから重要な情報を抽出します。 レシート API では、英語で書かれたレシートから重要な情報 (マーチャント名、取引日時、合計金額、品目など) を抽出します。 
+Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と、レシートを解釈するディープ ラーニング モデルを組み合わせて、英語のレシートから重要な情報を抽出します。 レシート API では、英語で書かれたレシートから重要な情報 (マーチャント名、取引日時、合計金額、品目など) を抽出します。 
 
 ## <a name="understanding-receipts"></a>レシートについて 
 

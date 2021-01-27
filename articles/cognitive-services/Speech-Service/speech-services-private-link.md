@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196123"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786844"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>プライベート エンドポイント経由で Speech Services を使用する
 
@@ -293,7 +293,7 @@ Speech Services には、[音声テキスト変換](rest-speech-to-text.md)お�
 音声テキスト変換には、2 つの REST API があります。 各 API は、異なる目的に対応し、使用するエンドポイントが異なり、プライベート エンドポイントが有効なシナリオで使用するときは異なるアプローチを必要とします。
 
 Speech to Text REST API は次のとおりです。
-- [Speech to Text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) は、[バッチ文字起こし](batch-transcription.md)と [Custom Speech](custom-speech-overview.md) に使用されます。 v3.0 は、[v2.0 の後継](/azure/cognitive-services/speech-service/migrate-v2-to-v3)です
+- [Speech to Text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) は、[バッチ文字起こし](batch-transcription.md)と [Custom Speech](custom-speech-overview.md) に使用されます。 v3.0 は、[v2.0 の後継](./migrate-v2-to-v3.md)です
 - [Speech to Text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) は、オンライン文字起こしに使用されます 
 
 プライベート エンドポイントのシナリオでは、Speech to Text REST API for short audio と Text to Speech REST API の使用方法は同じです。 これは、この記事で後ほど説明する [Speech SDK の場合](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)と同じです。 

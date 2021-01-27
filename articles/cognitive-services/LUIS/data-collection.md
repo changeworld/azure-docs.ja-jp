@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: bb00595a5d5be130bf6c1177004bf3042ef8f9f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c901d4024292ad03a9195ad0cbd226f473917ee4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327189"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738086"
 ---
 # <a name="data-collection-for-your-app"></a>アプリのデータ収集
 
@@ -71,7 +71,7 @@ LUIS では、テキストをデータとして使って LUIS アプリをトレ
 
 ## <a name="test-data-selection-for-batch-testing"></a>バッチ テスト用のテスト データの選択
 
-発話をトレーニングするための上記の原則はすべて、[テスト セット](luis-concept-batch-test.md)に使用する発話に適用されます。 意図とエンティティの分散は、できる限り、実際の分散を反映するようにしてください。
+発話をトレーニングするための上記の原則はすべて、[テスト セット](./luis-how-to-batch-test.md)に使用する発話に適用されます。 意図とエンティティの分散は、できる限り、実際の分散を反映するようにしてください。
 
 トレーニング セットの発話をテスト セットで再利用しないでください。 結果が不適切に偏って、運用環境での LUIS アプリの実際の動作が正しく示されなくなります。
 

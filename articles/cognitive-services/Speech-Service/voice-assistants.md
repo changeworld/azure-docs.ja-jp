@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 09859be61029242e987603e01b5c3fba8dffb2ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483888"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790447"
 ---
 # <a name="what-is-a-voice-assistant"></a>音声アシスタントとは
 
@@ -66,7 +66,7 @@ ms.locfileid: "96483888"
 
 * [GitHub 上の音声アシスタントのサンプル](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 * [チュートリアル:C# Speech SDK で、Azure Bot Service を使用して構築したアシスタントを音声対応にする](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [チュートリアル:単純な音声コマンドを使用してカスタム コマンド アプリケーションを作成する](how-to-custom-commands-create-application-with-simple-commands.md)
+* [チュートリアル:単純な音声コマンドを使用してカスタム コマンド アプリケーションを作成する](./how-to-develop-custom-commands-application.md)
 
 ## <a name="customization"></a>カスタマイズ
 

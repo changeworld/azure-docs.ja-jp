@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601767"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786878"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
@@ -136,4 +136,4 @@ ms.locfileid: "98601767"
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、既存のアプリケーションを使用しました。 次に、[操作方法に関するセクション](how-to-custom-commands-create-application-with-simple-commands.md)で、カスタム コマンド アプリケーションを最初から設計、開発、デバッグ、テスト、統合する方法について学習します。
+この記事では、既存のアプリケーションを使用しました。 次に、[操作方法に関するセクション](./how-to-develop-custom-commands-application.md)で、カスタム コマンド アプリケーションを最初から設計、開発、デバッグ、テスト、統合する方法について学習します。

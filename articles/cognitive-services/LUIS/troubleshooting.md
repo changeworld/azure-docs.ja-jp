@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96000132"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787538"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -177,7 +177,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 * LUIS による意図間の区別を向上させるには、さらにラベルを追加します。
 * LUIS による学習速度を上げるには、ドメイン固有のボキャブラリを導入するフレーズ リスト機能を追加します。
 
-[バッチ テスト](luis-tutorial-batch-testing.md)に関するチュートリアルをご覧ください。
+[バッチ テスト](./luis-how-to-batch-test.md)に関するチュートリアルをご覧ください。
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>アプリをエクスポートした後、(新しいアプリ ID を持つ) 新しいアプリに再インポートすると、LUIS の予測スコアが異なります。 なぜこのようになるのですか?
 

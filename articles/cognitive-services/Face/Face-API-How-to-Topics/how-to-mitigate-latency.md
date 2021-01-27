@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606734"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682464"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>方法: Face サービスを使用するときの待機時間を軽減する
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 その後、Face サービスでリモート サーバーから画像をダウンロードする必要があります。 Face サービスからリモート サーバーへの接続が低速である場合は、検出メソッドの応答時間に影響します。
 
-これを回避するには、[Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。
+これを回避するには、[Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。 次に例を示します。
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>サイズの大きいアップロード
 
@@ -58,7 +62,10 @@ System.Collections.Generic.IList<DetectedFace> faces = await client.Face.DetectW
 - ファイルのサイズに比例して、サービスによる処理時間が長くなります。
 
 軽減策:
-- [Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。
+- [Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。 次に例を示します。
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - アップロードするファイルを小さくすることを検討します。
     - [顔検出の入力データ](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data)および[顔認識の入力データ](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)に関するガイドラインを参照してください。
     - 顔検出の場合、検出モデル `DetectionModel.Detection01` を使用しているときは、画像ファイルのサイズを小さくすると処理速度が向上します。 検出モデル `DetectionModel.Detection02` を使用しているときは、画像ファイルが 1920 x 1080 より小さい場合にのみ、画像ファイルのサイズを小さくすると処理速度が向上します。
