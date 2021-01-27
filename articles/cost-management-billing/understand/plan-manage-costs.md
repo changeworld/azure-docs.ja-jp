@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032815"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898564"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure のコストの管理を計画する
 
@@ -125,7 +125,7 @@ Azure portal で、VM の自動シャットダウンと Advisor の推奨事項�
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Billing および Consumption API と統合する
 
-Azure の [Billing](/rest/api/billing/) と [Consumption](/rest/api/consumption/) API を使用して、請求データとコスト データをプログラムから入手することもできます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](../manage/usage-rate-card-overview.md)」をご覧ください。
+Azure の [Billing](/rest/api/billing/) と [Consumption](/rest/api/consumption/) API を使用して、請求データとコスト データをプログラムから入手することもできます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](../manage/consumption-api-overview.md#usage-details-api)」をご覧ください。
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> その他のリソースと特殊なケース
 
