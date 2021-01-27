@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 812bbb2507310d088c42fa1cf2cad4c330755892
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072328"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683376"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -101,7 +101,7 @@ run = exp.submit(source_directory=script_folder,
 
   + [独自の環境を使用する](tutorial-1st-experiment-sdk-setup-local.md)
   + [Python ノートブックを使用する](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown を使用する](tutorial-1st-r-experiment.md) 
+  + [R Markdown を使用する](https://github.com/Azure/azureml-sdk-for-r) 
   + [自動機械学習を使用する](tutorial-designer-automobile-price-train-score.md) 
   + [デザイナーのドラッグ アンド ドロップ機能を使用する](tutorial-first-experiment-automated-ml.md) 
   + [CLI に対する ML 拡張機能を使用する](tutorial-train-deploy-model-cli.md)

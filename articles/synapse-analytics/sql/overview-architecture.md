@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462716"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679620"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL アーキテクチャ 
 
@@ -67,7 +67,7 @@ Synapse SQL では、制御ノードで分散クエリ エンジンが実行さ�
 
 コンピューティング ノードは計算能力を提供します。 
 
-専用 SQL プールでは、処理のためにディストリビューションがコンピューティング ノードにマップされます。 プールでは、追加のコンピューティング リソースの料金を支払うと、ディストリビューションが、使用可能なコンピューティング ノードに再マッピングされます。 コンピューティング ノード数の範囲は 1 から 60 で、専用 SQL プールのサービス レベルによって決定されます。 各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[Synapse SQL のシステム ビュー](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)に関する記事をご覧ください。
+専用 SQL プールでは、処理のためにディストリビューションがコンピューティング ノードにマップされます。 プールでは、追加のコンピューティング リソースの料金を支払うと、ディストリビューションが、使用可能なコンピューティング ノードに再マッピングされます。 コンピューティング ノード数の範囲は 1 から 60 で、専用 SQL プールのサービス レベルによって決定されます。 各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[Synapse SQL のシステム ビュー](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true)に関する記事をご覧ください。
 
 サーバーレス SQL プールでは、各コンピューティング ノードに、タスクとタスクを実行する一連のファイルが割り当てられます。 タスクは分散クエリ実行の単位であり、実際には、ユーザーが送信したクエリの一部です。 自動スケーリングは、ユーザー クエリの実行に十分なコンピューティング ノードを利用できるようにするために有効です。
 

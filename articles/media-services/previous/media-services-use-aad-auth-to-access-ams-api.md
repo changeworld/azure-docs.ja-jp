@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a26359c46caa8085384313f1c385c5740abc0b32
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425907"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694539"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス 
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
@@ -48,8 +48,8 @@ Azure Media REST 要求を成功させるには、呼び出すユーザーに、
  
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 
-- **ユーザー認証** 。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
-- **サービス プリンシパル認証** 。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービスなどです。
+- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
+- **サービス プリンシパル認証**。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービスなどです。
 
 ### <a name="user-authentication"></a>ユーザー認証 
 

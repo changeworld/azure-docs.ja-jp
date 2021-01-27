@@ -4,12 +4,12 @@ description: カスタム メトリックを使用して Web アプリをリア�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c50f7e57c520321d752d6d46e36c45c615b5e785
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803580"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679468"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -36,7 +36,7 @@ Live Metrics Stream を使用すると、次のことが可能になります。
    * [ASP.NET Core](./asp-net-core.md) - Live Metrics は既定で有効になっています。
    * [.NET/.NET Core Console/Worker](./worker-service.md)- Live Metrics は既定で有効になっています。
    * [.NET Applications - コードを使用して有効にします](#enable-livemetrics-using-code-for-any-net-application)。
-    * [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) - Live Metrics は既定で有効になっています。
+    * [Java](./java-in-process-agent.md) - Live Metrics は既定で有効になっています。
    * [Node.js](./nodejs.md#live-metrics)
 
 2. [Azure ポータル](https://portal.azure.com)で、アプリの Application Insights リソースを開いてから、Live Stream を開きます。

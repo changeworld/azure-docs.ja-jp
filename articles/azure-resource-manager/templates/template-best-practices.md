@@ -3,12 +3,12 @@ title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレート (ARM テンプレート) を作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724988"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696348"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -26,7 +26,7 @@ ms.locfileid: "97724988"
 * 出力値 64 個
 * テンプレート式内で 24,576 文字
 
-入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)に関する記事をご覧ください。
+入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)に関する記事をご覧ください。
 
 ## <a name="resource-group"></a>Resource group
 

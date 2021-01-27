@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659545"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703854"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -37,7 +37,7 @@ ms.locfileid: "89659545"
 
 認証が済むと、ユーザー プリンシパル名 (UPN) が認証トークンから読み取られます。 次に、認証システムは、ユーザーのドメインに対応するレプリケートされたパーティションとコンテナーを特定します。 ユーザーの存在、有効状態、ロールに関する情報は、承認システムがターゲット テナントへのアクセスをそのセッションのユーザーに対して承認するかどうかを決定するのに役立ちます。 承認された特定のアクション (具体的には、ユーザーの作成やパスワードのリセットなど) を実行すると、テナント管理者がコンプライアンスへの取り組みや調査の管理に使う監査証跡が作成されます。
 
-データの量や帯域幅の可用性などの考慮事項によって、インターネット接続を使用してオンプレミスのデータ センターから Azure Storage にデータを移動することが必ずしも適していない場合があります。 [Azure Storage Import/Export Service](../../storage/common/storage-import-export-service.md) は、BLOB ストレージ内の大容量データを配置/取得するためのハードウェア ベースのオプションを提供します。 このオプションでは、[BitLocker で暗号化された](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) ハード ディスク ドライブを直接 Azure のデータセンターに発送していただき、クラウド オペレーターがストレージ アカウントにコンテンツをアップロードしたり、Azure のデータをドライブにダウンロードしたりした後に返送します。 このプロセスで受け付けできるのは、(ジョブのセットアップ中にサービス自体によって生成された BitLocker キーを使用して) 暗号化されたディスクのみです。 BitLocker キーは別途 Azure に提供されるため、帯域外でキーが共有されます。
+データの量や帯域幅の可用性などの考慮事項によって、インターネット接続を使用してオンプレミスのデータ センターから Azure Storage にデータを移動することが必ずしも適していない場合があります。 [Azure Storage Import/Export Service](../../import-export/storage-import-export-service.md) は、BLOB ストレージ内の大容量データを配置/取得するためのハードウェア ベースのオプションを提供します。 このオプションでは、[BitLocker で暗号化された](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) ハード ディスク ドライブを直接 Azure のデータセンターに発送していただき、クラウド オペレーターがストレージ アカウントにコンテンツをアップロードしたり、Azure のデータをドライブにダウンロードしたりした後に返送します。 このプロセスで受け付けできるのは、(ジョブのセットアップ中にサービス自体によって生成された BitLocker キーを使用して) 暗号化されたディスクのみです。 BitLocker キーは別途 Azure に提供されるため、帯域外でキーが共有されます。
 
 転送中のデータは、さまざまなシナリオで発生する可能性があるため、Microsoft Azure では[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)を使用して、ホストレベルとゲストレベルのファイアウォール、IP パケットのフィルタリング、ポートのブロック、HTTPS エンドポイントなどの手段を採用しながら、テナントのトラフィックを相互に分離していることを知っておくと役立ちます。 ただし、インフラストラクチャ間やインフラストラクチャとお客様 (オンプレミス) の間など、Azure の内部通信の大部分も暗号化されます。 もう 1 つの重要なシナリオが Azure データセンター内での通信です。マイクロソフトでは、VM が別の VM の IP アドレスで偽装や盗聴を一切できないようにするためにネットワークを管理しています。 Azure Storage または SQL Databases にアクセスする場合、または Cloud Services に接続する場合は、TLS/SSL が使用されます。 この場合、TLS/SSL 証明書の取得とテナント インフラストラクチャへのデプロイは、お客様の管理者が行います。 同じデプロイ内の Virtual Machines 間を移動するデータ トラフィック、または Microsoft Azure Virtual Network 経由で単一デプロイのテナント間を移動するデータ トラフィックは、HTTPS や SSL/TLS などの暗号化された通信プロトコルを介して保護できます。
 

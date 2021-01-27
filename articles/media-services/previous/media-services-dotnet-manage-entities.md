@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b615e6526eb4187d354c4e276147743156b10bc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d90e48d15e20b21f4c6032547517b3190cb46085
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266017"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695613"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "89266017"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 このトピックでは、.NET で Azure Media Services エンティティを管理する方法を説明します。
 

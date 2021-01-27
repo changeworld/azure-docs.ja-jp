@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843606"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680520"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
 
@@ -31,7 +31,7 @@ Azure Spring Cloud では Azure CLI のログ ストリーミングを使って�
 ## <a name="use-cli-to-tail-logs"></a>ログ末尾に CLI を使用する
 
 リソース グループとサービス インスタンス名を繰り返し指定するのを避けるには、既定のリソース グループ名とクラスター名を設定します。
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
@@ -39,11 +39,11 @@ az configure --defaults spring-cloud=<service instance name>
 
 ### <a name="tail-log-for-app-with-single-instance"></a>1 つのインスタンスを持つアプリのログ末尾
 auth-service という名前のアプリにインスタンスが 1 つしかない場合は、次のコマンドを使用してアプリ インスタンスのログを表示できます。
-```
+```azurecli
 az spring-cloud app logs -n auth-service
 ```
 これにより、次のログが返されます。
-```
+```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
 2020-01-15 01:54:40.482  INFO [auth-service,,,] 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
@@ -58,12 +58,12 @@ az spring-cloud app logs -n auth-service
 
 まず、次のコマンドを使用して、アプリ インスタンス名を取得できます。
 
-```
+```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
 結果:
 
-```
+```output
 Name                                         Status    DiscoveryStatus
 -------------------------------------------  --------  -----------------
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
@@ -72,7 +72,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
 次に、オプション `-i/--instance` オプションを使用して、アプリ インスタンスのログをストリーミングできます。
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
@@ -81,11 +81,11 @@ az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-p
 ### <a name="continuously-stream-new-logs"></a>新しいログを継続的にストリーミングする
 既定では、`az spring-cloud ap log tail` は、アプリ コンソールにストリーミングされた既存のログのみを出力し、終了します。 新しいログをストリーミングする場合は、次のように -f (--follow) を追加します。  
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -f
 ``` 
 サポートされているすべてのログ オプションを確認するには:
-``` 
+```azurecli
 az spring-cloud app logs -h 
 ```
 

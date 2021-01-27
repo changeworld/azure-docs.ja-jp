@@ -8,24 +8,24 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 53fb11216e65ebead43c02a7153d937c37b841a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655171"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681062"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
 仮想マシン (VM) のコピーを複数作成し、Azure で開発およびテストに使用するには、VM または OS VHD のマネージド イメージをキャプチャします。 イメージを大規模に作成、保存、共有する方法については、「[共有イメージ ギャラリー](../shared-images-cli.md)」を参照してください。
 
-1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](shared-image-galleries.md) イメージを使用します。
+1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](../shared-image-galleries.md) イメージを使用します。
 
 マネージド イメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
 
 バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から特別な Linux VHD をアップロードする方法については、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](upload-vhd.md)」を参照してください。  
 
-**Azure VM Image Builder (パブリック プレビュー)** サービスを使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](./image-builder-overview.md)に関する記事を参照してください。
+**Azure VM Image Builder (パブリック プレビュー)** サービスを使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
 
 イメージを作成する前に、次の項目が必要です。
 

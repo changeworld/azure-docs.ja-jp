@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351850"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695799"
 ---
 # <a name="media-services-regional-availability"></a>Media Services のリージョン別の提供状況
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 最新のバージョンである [Media Services v3](../latest/media-services-overview.md) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 最新のバージョンである [Media Services v3](../latest/media-services-overview.md) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Microsoft Azure Media Services (AMS) を使用すると、各種クライアント (テレビ、PC、モバイル デバイスなど) へのオンデマンド ストリーミング配信とライブ ストリーミング配信の両方で、ビデオやオーディオのコンテンツを安全にアップロード、保存、エンコード、パッケージ化できます。
 
@@ -40,7 +40,7 @@ Azure グローバル インフラストラクチャ全体の詳細について�
 
 ## <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 
-Media Services のお客様は、 **Standard** と **Premium** のいずれかのストリーミング エンドポイントを選択できます。
+Media Services のお客様は、**Standard** と **Premium** のいずれかのストリーミング エンドポイントを選択できます。
 
 |名前|Status|リージョン
 |---|---|---|
@@ -53,7 +53,7 @@ Media Services のお客様は、 **Standard** と **Premium** のいずれか�
 
 ## <a name="encoding-media-processors"></a>Encoding メディア プロセッサ
 
-AMS には、 **Media Encoder Standard** と **Media Encoder Premium ワークフロー** という 2 つのオンデマンド エンコーダーが用意されています。 詳細については、「[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)」を参照してください。
+AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフロー** という 2 つのオンデマンド エンコーダーが用意されています。 詳細については、「[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)」を参照してください。
 
 |メディア プロセッサ名|Status|リージョン
 |---|---|---|

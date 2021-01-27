@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104752"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683744"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
@@ -86,7 +86,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 
 ### <a name="setting-up-the-frontend-environment"></a>フロントエンド環境のセットアップ
 
-「[Function App を作成する](./functions-create-first-azure-function.md#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
+「[Function App を作成する](./functions-get-started.md)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
 
 1. ポータルで新しいフロントエンドの Function App に移動します。
 1. **[プラットフォーム機能]** 、 **[アプリケーションの設定]** の順に選択します。
@@ -112,7 +112,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="HTTP 関数のカスタマイズ":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="プロキシの作成":::
 
     Azure Functions プロキシでは `/api` ベース パス プレフィックスは提供されません。これはルート テンプレートに含める必要があります。 `%HELLO_HOST%` 構文では、以前作成したアプリ設定が参照されます。 解決済みの URL は元の関数を指定します。
 
@@ -195,5 +195,5 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 - [Azure Functions API (プレビュー) のドキュメント](./functions-openapi-definition.md)
 
 
-[Create your first function]: ./functions-create-first-azure-function.md
+[Create your first function]: ./functions-get-started.md
 [Azure Functions プロキシの操作]: ./functions-proxies.md

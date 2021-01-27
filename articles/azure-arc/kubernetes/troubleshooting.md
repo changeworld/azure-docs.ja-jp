@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586161"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684091"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc 対応 Kubernetes のトラブルシューティング (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "97586161"
 ### <a name="azure-cli-set-up"></a>Azure CLI のセットアップ
 az connectedk8s または az k8sconfiguration CLI コマンドを使用する前に、az が正しい Azure サブスクリプションに対して機能するように設定されていることを確認します。
 
-```console
+```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
@@ -79,7 +79,7 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 指定された kubeconfig ファイルに、Azure Arc エージェントをインストールするための十分なアクセス許可が含まれていない場合、Azure CLI コマンドは Kubernetes API を呼び出そうとしたときにエラーを返します。
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
@@ -94,7 +94,7 @@ Error: list: failed to list: secrets is forbidden: User "myuser" cannot list res
 
 Azure Arc エージェントのインストールでは、ターゲット クラスターで一連のコンテナーを実行する必要があります。 クラスターが低速のインターネット接続を介して実行されている場合、コンテナー イメージのプルに、Azure CLI のタイムアウトよりも時間がかかることがあります。
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.

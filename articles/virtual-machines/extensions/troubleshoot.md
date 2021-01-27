@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127143"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676761"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 - 右クリックして [タスクの終了] を選択する。 プロセスは自動的に再起動されます
 
 
-"VM の再適用" を実行して、VM に新しい GoalState をトリガーすることもできます。 VM の[再適用](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply)は、2020 年に導入された API であり、VM の状態を再適用します。 VM の短時間のダウンタイムを許容できるタイミングでこれを行うことをお勧めします。 再適用自体では VM は再起動されず、また再適用を呼び出しても大抵の場合は VM が再起動されることはありませんが、再適用によって新しい目標状態がトリガーされたときに VM モデルに対する他の一部の保留中の更新が適用され、他の変更で再起動が必要になるという非常に小さなリスクがあります。 
+"VM の再適用" を実行して、VM に新しい GoalState をトリガーすることもできます。 VM の[再適用](/rest/api/compute/virtualmachines/reapply)は、2020 年に導入された API であり、VM の状態を再適用します。 VM の短時間のダウンタイムを許容できるタイミングでこれを行うことをお勧めします。 再適用自体では VM は再起動されず、また再適用を呼び出しても大抵の場合は VM が再起動されることはありませんが、再適用によって新しい目標状態がトリガーされたときに VM モデルに対する他の一部の保留中の更新が適用され、他の変更で再起動が必要になるという非常に小さなリスクがあります。 
 
 Azure portal:
 

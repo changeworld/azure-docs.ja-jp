@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8fee7eca780d81dcd5d9fa9359ab59994256db07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592298"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678776"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -112,7 +112,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli-initial-setup"></a>CLI を使用して Key Vault へのプライベート リンク接続を確立する (初期セットアップ)
 
-```console
+```azurecli
 az login                                                         # Login to Azure CLI
 az account set --subscription {SUBSCRIPTION ID}                  # Select your Azure Subscription
 az group create -n {RESOURCE GROUP} -l {REGION}                  # Create a new Resource Group
@@ -136,7 +136,7 @@ az network private-dns link vnet create --resource-group {RG} --virtual-network 
 ```
 
 ### <a name="add-private-dns-records"></a>プライベート DNS レコードを追加する
-```console
+```azurecli
 # https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
 az network private-dns zone list -g $rg_name
 az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
@@ -148,18 +148,18 @@ nslookup $vault_name.privatelink.vaultcore.azure.net
 ```
 
 ### <a name="create-a-private-endpoint-automatically-approve"></a>プライベート エンドポイントを作成する (自動的に承認する) 
-```console
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
 ```
 
 ### <a name="create-a-private-endpoint-manually-request-approval"></a>プライベート エンドポイントを作成する (承認を手動で要求する) 
-```console
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
 ```
 
 ### <a name="manage-private-link-connections"></a>プライベート リンク接続を管理する
 
-```console
+```azurecli
 # Show Connection Status
 az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
 

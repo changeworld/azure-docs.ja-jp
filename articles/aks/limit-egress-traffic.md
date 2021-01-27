@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685756"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -128,7 +128,7 @@ _ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP ト�
 
 | 送信先 FQDN                                                               | Port          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
+| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
 
 これらの FQDN をブロックして許可しない場合、[ノード イメージのアップグレード](node-image-upgrade.md)または[クラスターのアップグレード](upgrade-cluster.md)を行うと、ノードは OS の更新プログラムのみを受け取ります。
 
@@ -745,7 +745,7 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 
 以下を実行して、サービス IP を取得します。
 ```bash
-SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 以下を実行して、NAT 規則を追加します。

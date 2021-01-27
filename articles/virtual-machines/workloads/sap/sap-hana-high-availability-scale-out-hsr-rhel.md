@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489124"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685614"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -165,7 +165,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
     b. 次のコマンドを実行して、`inter` および `hsr` サブネットに接続された、追加のネットワーク インターフェイスに対して高速ネットワークを有効にします。  
 
-    ```
+    ```azurecli
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db1-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db2-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db3-inter --accelerated-networking true
@@ -256,7 +256,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 1. **[A]** 仮想マシン上にホスト ファイルを維持します。 すべてのサブネットのエントリを含めます。 この例では、次のエントリが `/etc/hosts` に追加されています。  
 
-    ```
+    ```bash
      # Client subnet
      10.23.0.11 hana-s1-db1
      10.23.0.12 hana-s1-db1
@@ -303,7 +303,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 1. **[AH]** HANA データベース ボリュームのマウント ポイントを作成します。  
 
-    ```
+    ```bash
     mkdir -p /hana/shared
     ```
 
@@ -313,7 +313,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     > [!IMPORTANT]
     > Azure NetApp Files の既定のドメイン構成 ( **`defaultv4iddomain.com`** ) と一致するように、VM 上の `/etc/idmapd.conf` に NFS ドメインを設定していることを確認します。 NFS クライアント (つまり、VM) と NFS サーバー (つまり、Azure NetApp 構成) のドメイン構成が一致しない場合、VM にマウントされている Azure NetApp ボリューム上のファイルのアクセス許可は `nobody` と表示されます。  
 
-    ```
+    ```bash
     sudo cat /etc/idmapd.conf
     # Example
     [General]
@@ -326,7 +326,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 3. **[AH]** `nfs4_disable_idmapping` を確認します。 これは、**Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
    この手順は、Azure NetAppFiles NFSv4.1 を使用する場合にのみ必要です。  
 
-    ```
+    ```bash
     # Check nfs4_disable_idmapping 
     cat /sys/module/nfs/parameters/nfs4_disable_idmapping
     # If you need to set nfs4_disable_idmapping to Y
@@ -342,20 +342,20 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 4. **[AH1]** SITE1 HANA DB VM に共有 Azure NetApp Files ボリュームをマウントします。  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s1 /hana/shared
     ```
 
 5. **[AH2]** SITE2 HANA DB VM に共有 Azure NetApp Files ボリュームをマウントします。  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s2 /hana/shared
     ```
 
 
 10. **[AH]** 対応する `/hana/shared/` ファイル システムが、NFS プロトコル バージョン **NFSv4** を使用しているすべての HANA DB VM にマウントされていることを確認します。  
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -372,25 +372,25 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 **論理ボリューム マネージャー (LVM)** を使用してディスク レイアウトを設定します。 次の例は、各 HANA 仮想マシンに 3 つのデータ ディスクがアタッチされていて、これを使用して 2 つのボリュームを作成することを前提としています。
 
 1. **[AH]** すべての使用できるディスクの一覧を出力します。
-    ```
+    ```bash
     ls /dev/disk/azure/scsi1/lun*
     ```
 
    出力例:
 
-    ```
+    ```bash
     /dev/disk/azure/scsi1/lun0  /dev/disk/azure/scsi1/lun1  /dev/disk/azure/scsi1/lun2 
     ```
 
 2. **[AH]** 使用するすべてのディスクの物理ボリュームを作成します。
-    ```
+    ```bash
     sudo pvcreate /dev/disk/azure/scsi1/lun0
     sudo pvcreate /dev/disk/azure/scsi1/lun1
     sudo pvcreate /dev/disk/azure/scsi1/lun2
     ```
 
 3. **[AH]** データ ファイル用のボリューム グループを作成します。 ログ ファイル用に 1 つ、SAP HANA の共有ディレクトリ用に 1 つのボリューム グループを作成します。
-    ```
+    ```bash
     sudo vgcreate vg_hana_data_HN1 /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
     sudo vgcreate vg_hana_log_HN1 /dev/disk/azure/scsi1/lun2
     ```
@@ -402,7 +402,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    > データまたはログ ボリュームごとに複数の物理ボリュームを使用する場合は、`-i` スイッチを使用して基になる物理ボリュームの数を設定します。 ストライプ ボリュームを作成するときにストライプ サイズを指定するには、`-I` スイッチを使用します。  
    > ストライプ サイズやディスク数など、推奨されるストレージ構成については、[SAP HANA VM ストレージ構成](./hana-vm-operations-storage.md)に関する記事を参照してください。  
 
-    ```
+    ```bash
     sudo lvcreate -i 2 -I 256 -l 100%FREE -n hana_data vg_hana_data_HN1
     sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_HN1
     sudo mkfs.xfs /dev/vg_hana_data_HN1/hana_data
@@ -410,7 +410,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     ```
 
 5. **[AH]** マウント ディレクトリを作成し、すべての論理ボリュームの UUID をコピーします。
-    ```
+    ```bash
     sudo mkdir -p /hana/data/HN1
     sudo mkdir -p /hana/log/HN1
     # Write down the ID of /dev/vg_hana_data_HN1/hana_data and /dev/vg_hana_log_HN1/hana_log
@@ -418,20 +418,20 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     ```
 
 6. **[AH]** 論理ボリュームの `fstab` エントリを作成してマウントします。
-    ```
+    ```bash
     sudo vi /etc/fstab
     ```
 
    `/etc/fstab` ファイルに次の行を挿入します。
 
-    ```
+    ```bash
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_data_HN1-hana_data /hana/data/HN1 xfs  defaults,nofail  0  2
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_log_HN1-hana_log /hana/log/HN1 xfs  defaults,nofail  0  2
     ```
 
    新しいボリュームをマウントします。
 
-    ```
+    ```bash
     sudo mount -a
     ```
 
@@ -444,27 +444,27 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 1. **[AH]** HANA をインストールする前に、ルート パスワードを設定します。 インストールが完了した後で、ルート パスワードを無効にすることができます。 `root` として `passwd` コマンドを実行します。  
 
 2. **[1,2]** `/hana/shared` のアクセス許可を変更します 
-    ```
+    ```bash
     chmod 775 /hana/shared
     ```
 
 3. **[1]** パスワードの入力を求められることなく、このサイトの HANA DB VM である **hana-s1-db2** および **hana-s1-db3** に SSH 経由でログインできることを確認します。  
    そうでない場合は、[キーベースの認証の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)に関するページに記載されているように、ssh キーを交換します。  
-    ```
+    ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
 4. **[2]** パスワードの入力を求められることなく、このサイトの HANA DB VM である **hana-s2-db2** および **hana-s2-db3** に SSH 経由でログインできることを確認します。  
    そうでない場合は、[キーベースの認証の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)に関するページに記載されているように、ssh キーを交換します。  
-    ```
+    ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
     ```
 
 5. **[AH]** HANA 2.0 SP4 に必要な追加のパッケージをインストールします。 詳細については、RHEL 7 向けの SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824) を参照してください。 
 
-    ```
+    ```bash
     # If using RHEL 7
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1
     # If using RHEL 8
@@ -473,7 +473,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 
 6. **[A]** HANA のインストールに干渉しないように、ファイアウォールを一時的に無効にします。 HANA のインストールが完了したら、再度有効にすることができます。 
-    ```
+    ```bash
     # Execute as root
     systemctl stop firewalld
     systemctl disable firewalld
@@ -485,7 +485,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    a. HANA のインストール ソフトウェア ディレクトリから、**hdblcm** プログラムを `root` で起動します。 `internal_network` パラメーターを使用して、内部 HANA のノード間通信に使用されるサブネットのアドレス空間を渡します。  
 
-    ```
+    ```bash
     ./hdblcm --internal_network=10.23.1.128/26
     ```
 
@@ -522,7 +522,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    global.ini を表示し、内部 SAP HANA のノード間通信が正しく構成されていることを確認します。 **communication** セクションを確認します。 `inter` サブネットに対するアドレス空間があり、`listeninterface` が `.internal` に設定されている必要があります。 **internal_hostname_resolution** セクションを確認します。 `inter` サブネットに属する HANA 仮想マシンの IP アドレスが含まれている必要があります。  
 
-   ```
+   ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
      # Example from SITE1 
      [communication]
@@ -536,7 +536,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 4. **[1,2]** SAP note [2080991](https://launchpad.support.sap.com/#/notes/0002080991) の説明に従って、共有されていない環境でのインストールのための `global.ini` を準備します。  
 
-   ```
+   ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     [persistence]
     basepath_shared = no
@@ -544,14 +544,14 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 4. **[1,2]** SAP HANA を再起動して、変更をアクティブにします。  
 
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem
    ```
 
 6. **[1,2]** クライアント インターフェイスが `client` サブネットの IP アドレスを使用して通信するようになっていることを確認します。  
 
-    ```
+    ```bash
     # Execute as hn1adm
     /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "password" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result - example from SITE 2
@@ -562,13 +562,13 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 7. **[AH]** HANA のインストール エラーを回避するために、データ ディレクトリとログ ディレクトリのアクセス許可を変更します。  
 
-   ```
+   ```bash
     sudo chmod o+w -R /hana/data /hana/log
    ```
 
 8. **[1]** セカンダリ HANA ノードをインストールします。 このステップでは、例として SITE 1 での手順を示します。  
    a. 常駐の **hdblcm** プログラムを `root` で開始します。    
-    ```
+    ```bash
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
     ```
@@ -602,21 +602,21 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    **hn1** adm としてデータベースをバックアップします。
 
-    ```
+    ```bash
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
     hdbsql -d HN1 -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupHN1')"
     ```
 
    システム PKI ファイルをセカンダリ サイトにコピーします。
 
-    ```
+    ```bash
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/data/SSFS_HN1.DAT hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/data/
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/key/SSFS_HN1.KEY  hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/key/
     ```
 
    プライマリ サイトを作成します。
 
-    ```
+    ```bash
     hdbnsutil -sr_enable --name=HANA_S1
     ```
 
@@ -624,7 +624,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     
    2 番目のサイトを登録して、システム レプリケーションを開始します。 <hanasid\>adm として次のコマンドを実行します。
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopWait 600 10
     hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2
     sapcontrol -nr 03 -function StartSystem
@@ -634,7 +634,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    レプリケーションの状態をチェックし、すべてのデータベースが同期されるまで待機します。
 
-    ```
+    ```bash
     sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
     # | Database | Host          | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
     # |          |               |       |              |           |         |           | Host          | Port      | Site ID   | Site Name | Active Status | Mode        | Status      | Status Details |
@@ -657,12 +657,12 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 4. **[1,2]** HANA システム レプリケーション仮想ネットワーク インターフェイスを通じて、HANA システム レプリケーションの通信が行われるように、HANA の構成を変更します。   
    - 両方のサイトで HANA を停止します
-    ```
+    ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem HDB
     ```
 
    - global.ini を編集して、HANA システム レプリケーションのホスト マッピングを追加します。`hsr` サブネットの IP アドレスを使用します。  
-    ```
+    ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     #Add the section
     [system_replication_hostname_resolution]
@@ -675,7 +675,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     ```
 
    - 両方のサイトで HANA を開始します
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem HDB
    ```
 
@@ -683,7 +683,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 5. **[AH]** ファイアウォールを再度有効にします。  
    - ファイアウォールを再度有効にする
-       ```
+       ```bash
        # Execute as root
        systemctl start firewalld
        systemctl enable firewalld
@@ -694,7 +694,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
        > [!IMPORTANT]
        > HANA のノード間通信とクライアント トラフィックを許可するファイアウォール規則を作成します。 必要なポートは、[すべての SAP 製品の TCP/IP ポート](https://help.sap.com/viewer/ports)のページにあります。 次にコマンドは 1 つの例にすぎません。 このシナリオでは、システム番号 03 が使用されています。
 
-       ```
+       ```bash
         # Execute as root
         sudo firewall-cmd --zone=public --add-port=30301/tcp --permanent
         sudo firewall-cmd --zone=public --add-port=30301/tcp
@@ -753,19 +753,19 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 1. **[1,2]** 両方のレプリケーション サイトで SAP HANA を停止します。 <sid\>adm として実行します。  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
 2. **[AH]** インストールのためにすべての HANA DB VM に一時的にマウントされていた、ファイル システム `/hana/shared` をマウント解除します。 マウントを解除する前に、ファイル システムを使用しているプロセスとセッションを停止する必要があります。 
  
-    ```
+    ```bash
     umount /hana/shared 
     ```
 
 3. **[1]** 無効な状態の `/hana/shared` 用のファイル システム クラスター リソースを作成します。 リソースは `--disabled` オプションを使用して作成されます。これは、マウントを有効にする前に場所の制約を定義する必要があるためです。  
 
-    ```
+    ```bash
     # /hana/shared file system for site 1
     pcs resource create fs_hana_shared_s1 --disabled ocf:heartbeat:Filesystem device=10.23.1.7:/HN1-shared-s1  directory=/hana/shared \
     fstype=nfs options='defaults,rw,hard,timeo=600,rsize=262144,wsize=262144,proto=tcp,intr,noatime,sec=sys,vers=4.1,lock,_netdev' op monitor interval=20s on-fail=fence timeout=40s OCF_CHECK_LEVEL=20 \
@@ -787,7 +787,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 4. **[1]** ノード属性を構成して検証します。 レプリケーション サイト 1 のすべての SAP HANA DB ノードには属性 `S1` が割り当てられ、レプリケーション サイト 2 のすべての SAP HANA DB ノードには属性 `S2` が割り当てられます。  
 
-    ```
+    ```bash
     # HANA replication site 1
     pcs node attribute hana-s1-db1 NFS_SID_SITE=S1
     pcs node attribute hana-s1-db2 NFS_SID_SITE=S1
@@ -801,7 +801,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     ```
 
 5. **[1]** NFS ファイル システムをマウントする場所を決定する制約を構成し、ファイル システム リソースを有効にします。  
-    ```
+    ```bash
     # Configure the constraints
     pcs constraint location fs_hana_shared_s1-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S1
     pcs constraint location fs_hana_shared_s2-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S2
@@ -814,7 +814,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
  
 6. **[AH]** 両方のサイトのすべての HANA DB VM で、`/hana/shared` に ANF ボリュームがマウントされていることを確認します。
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -827,7 +827,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 7. **[1]** 属性リソースを構成します。 `hana/shared` の NFS マウントがマウントされている場合に、属性を `true` に設定する制約を構成します。  
 
-    ```
+    ```bash
     # Configure the attribure resources
     pcs resource create hana_nfs_s1_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s1_active
     pcs resource create hana_nfs_s2_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s2_active
@@ -843,7 +843,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    > 構成に NFS でマウントされている /`hana/shared` 以外の他のファイル システムが含まれている場合は、ファイル システム間に順序の依存関係がなくなるよう、`sequential=false` オプションを含めます。 NFS でマウントされたすべてのファイル システムは、対応する属性リソースの前に起動する必要がありますが、互いに決まった順序で起動する必要はありません。 詳細については、[HANA ファイル システムが NFS 共有である場合の、Pacemaker クラスターでの SAP HANA スケールアウト HSR の構成方法](https://access.redhat.com/solutions/5423971)に関するページを参照してください。  
 
 8. **[1]** HANA クラスター リソースの作成準備として、pacemaker をメンテナンス モードにします。  
-    ```
+    ```bash
     pcs property set maintenance-mode=true
     ```
 
@@ -851,7 +851,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 1. **[A]** マジョリティ メーカーを含むすべてのクラスター ノードに HANA スケールアウト リソース エージェントをインストールします。    
 
-    ```
+    ```bash
     yum install -y resource-agents-sap-hana-scaleout 
     ```
 
@@ -862,14 +862,14 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 2. **[1,2]** HANA "システム レプリケーション フック" をインストールします。 フックは、各システム レプリケーション サイトの HANA DB ノードの 1 つにインストールする必要があります。 SAP HANA は、まだ停止している必要があります。        
 
    1. フックを `root` で準備します 
-    ```
+    ```bash
      mkdir -p /hana/shared/myHooks
      cp /usr/share/SAPHanaSR-ScaleOut/SAPHanaSR.py /hana/shared/myHooks
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
    2. `global.ini` を調整します
-    ```
+    ```bash
     # add to global.ini
     [ha_dr_provider_SAPHanaSR]
     provider = SAPHanaSR
@@ -881,7 +881,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     ```
 
 3. **[AH]** クラスターでは、<sid\>adm のクラスター ノードで sudoers 構成が必要です。 この例では、新しいファイルを作成することで実現します。 `root` としてコマンドを実行します。    
-    ``` 
+    ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # SAPHanaSR-ScaleOut needs for srHook
      Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
@@ -892,13 +892,13 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
 4. **[1,2]** 両方のレプリケーション サイトで SAP HANA を開始します。 <sid\>adm として実行します。  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StartSystem 
     ```
 
 5. **[1]** フックのインストールを確認します。 アクティブな HANA システム レプリケーション サイトで、<sid\>adm として実行します。   
 
-    ```
+    ```bash
     cdtrace
      awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
      { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
@@ -917,7 +917,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
     
    2. 次に、HANA トポロジ リソースを作成します。  
       RHEL **7.x** クラスターを構築する場合は、次のコマンドを使用します。  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopologyScaleOut \
        SID=HN1 InstanceNumber=03 \
        op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600
@@ -926,7 +926,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       ```
 
       RHEL **8.x** クラスターを構築する場合は、次のコマンドを使用します。  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopology \
        SID=HN1 InstanceNumber=03 meta clone-node-max=1 interleave=true \
        op methods interval=0s timeout=5 \
@@ -940,7 +940,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       > この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。  
  
       RHEL **7.x** クラスターを構築する場合は、次のコマンドを使用します。    
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op start interval=0 timeout=3600 op stop interval=0 timeout=3600 op promote interval=0 timeout=3600 \
@@ -951,7 +951,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       ```
 
       RHEL **8.x** クラスターを構築する場合は、次のコマンドを使用します。  
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op demote interval=0s timeout=320 op methods interval=0s timeout=5 \
@@ -965,7 +965,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       > 失敗したプライマリ インスタンスが自動的にセカンダリとして登録されるのを防ぐために、完全なフェールオーバー テストを実行している間、AUTOMATED_REGISTER を **no** に設定することをベスト プラクティスとしてお勧めします。 フェールオーバー テストが正常に完了したら、AUTOMATED_REGISTER を **yes** に設定します。こうすることで、引き継ぎ後のシステム レプリケーションが自動的に再開されるようになります。 
 
    4. 仮想 IP と関連するリソースを作成します。  
-      ```
+      ```bash
       pcs resource create vip_HN1_03 ocf:heartbeat:IPaddr2 ip=10.23.0.18 op monitor interval="10s" timeout="20s"
       sudo pcs resource create nc_HN1_03 azure-lb port=62503
       sudo pcs resource group add g_ip_HN1_03 nc_HN1_03 vip_HN1_03
@@ -973,7 +973,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    5. クラスターの制約を作成します  
       RHEL **7.x** クラスターを構築する場合は、次のコマンドを使用します。  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then msl_SAPHana_HN1_HDB03
 
@@ -983,7 +983,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       ```
  
       RHEL **8.x** クラスターを構築する場合は、次のコマンドを使用します。  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then SAPHana_HN1_HDB03-clone
 
@@ -993,7 +993,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       ```
 
 7. **[1]** クラスターのメンテナンス モードを解除します。 クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。  
-    ```
+    ```bash
     sudo pcs property set maintenance-mode=false
     #If there are failed cluster resources, you may need to run the next command
     pcs resource cleanup
@@ -1007,7 +1007,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 1. テストを開始する前に、クラスターと SAP HANA システムのレプリケーション状態を確認します。  
 
    a. 失敗したクラスター アクションがないことを確認します  
-     ```
+     ```bash
      #Verify that there are no failed cluster actions
      pcs status
      # Example
@@ -1044,7 +1044,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    b. SAP HANA システム レプリケーションが同期されていることを確認します
 
-      ```
+      ```bash
       # Verify HANA HSR is in sync
       sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
       #| Database | Host        | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary| Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -1074,7 +1074,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    **予測される結果**: `/hana/shared` を "*読み取り専用*" として再マウントすると、ファイル システムに対して読み取り/書き込み操作を実行する監視操作は失敗します。これは、ファイル システムへの書き込みができないためです。そして、HANA リソースのフェールオーバーがトリガーされます。 HANA ノードが NFS 共有へのアクセスを失った場合も、同じ結果が予想されます。  
      
    クラスター リソースの状態を確認するには、`crm_mon` または `pcs status` を実行します。 テスト開始前のリソースの状態:
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1103,7 +1103,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
       ```
 
    プライマリ レプリケーション サイトの VM のいずれかで `/hana/shared` の失敗をシミュレートするには、次のコマンドを実行します。
-      ```
+      ```bash
       # Execute as root 
       mount -o ro /hana/shared
       # Or if the above command returns an error
@@ -1114,7 +1114,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
          
    再起動された VM でクラスターが開始されていない場合は、次を実行してクラスターを開始します。 
 
-      ```
+      ```bash
       # Start the cluster 
       pcs cluster start
       ```
@@ -1122,7 +1122,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
    クラスターが起動すると、ファイル システム `/hana/shared` が自動的にマウントされます。     
    AUTOMATED_REGISTER="false" に設定した場合は、セカンダリ サイトで SAP HANA システム レプリケーションを構成する必要があります。 この場合、次のコマンドを実行して、SAP HANA をセカンダリとして再構成することができます。   
 
-      ```
+      ```bash
       # Execute on the secondary 
       su - hn1adm
       # Make sure HANA is not running on the secondary site. If it is started, stop HANA
@@ -1135,7 +1135,7 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 
    テスト後のリソースの状態は次のようになります。 
 
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured

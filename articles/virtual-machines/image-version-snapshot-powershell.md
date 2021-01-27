@@ -9,20 +9,20 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300257"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679536"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>PowerShell を使用して Shared Image Gallery 内の Managed Disk またはスナップショットからイメージを作成する
 
 Shared Image Gallery に移行したい既存のスナップショットまたは Managed Disk がある場合は、Managed Disk またはスナップショットから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースの Managed Disk またはスナップショットを削除できます。 [Azure CLI](image-version-snapshot-cli.md) を使用して、Shared Image Gallery 内の Managed Disk またはスナップショットからイメージを作成することもできます。
 
 イメージ ギャラリー内のイメージには 2 つのコンポーネントがあります。この例ではそれを作成します。
-- **イメージ定義**には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 
-- **イメージ バージョン**は、Shared Image Gallery の使用時に VM の作成に使用されるものです。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 VM を作成するとき、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
+- **イメージ定義** には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 
+- **イメージ バージョン** は、Shared Image Gallery の使用時に VM の作成に使用されるものです。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 VM を作成するとき、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -90,7 +90,7 @@ $gallery = Get-AzGallery `
 
 イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 この例では、スナップショットまたは Managed Disk が使用中の VM からのものであり、一般化されていないことを前提としています。 (Windows では Sysprep、Linux では [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` を実行した後の) 一般化された OS から Managed Disk またはスナップショットを取得した場合は、`-OsState` を `generalized` に変更します。 
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](./windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、イメージ定義は *myImageDefinition* という名前で、特殊化された Windows OS 用です。 Linux OS を使用してイメージの定義を作成するには、`-OsType Linux` を使用します。 
 

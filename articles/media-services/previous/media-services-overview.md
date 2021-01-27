@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
-ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 08a419f021e0315468cb6fa5917b30bb2977d958
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348748"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695511"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "93348748"
 > * [Version 2](media-services-overview.md)
 
 > [!NOTE]
-> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Microsoft Azure Media Services (AMS) は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、各種クライアント (TV、PC、モバイル デバイスなど) へのオンデマンドとライブ ストリーミングでの配信でビデオやオーディオのコンテンツの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
 
@@ -78,7 +78,7 @@ Media Services ソリューションを構築するために、以下を使用�
 
 ## <a name="code-samples"></a>コード サンプル
 
-**Azure のコード サンプル** ギャラリーで、 [Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)を検索すると、複数のコード サンプルが見つかります。
+**Azure のコード サンプル** ギャラリーで、[Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)を検索すると、複数のコード サンプルが見つかります。
 
 ## <a name="concepts"></a>概念
 

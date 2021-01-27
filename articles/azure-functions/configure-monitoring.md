@@ -4,12 +4,12 @@ description: 監視のために関数アプリを Application Insights に接続
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937282"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684710"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Functions の監視を構成する方法
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、**APPINSIGHTS_INSTRUMENTATIONKEY** という名前のアプリ設定に指定されている必要があります。
 
-[Azure portal](functions-create-first-azure-function.md) で、または [Azure Functions Core Tools](./create-first-function-cli-csharp.md) を使用してコマンド ラインから、あるいは [Visual Studio Code](./create-first-function-vs-code-csharp.md) を使用して関数アプリを作成すると、Application Insights 統合が既定で有効になります。 Application Insights リソースは関数アプリと同じ名前を持ち、同じリージョンまたは最も近いリージョンのどちらかで作成されます。
+[Azure portal](./functions-get-started.md) で、または [Azure Functions Core Tools](./create-first-function-cli-csharp.md) を使用してコマンド ラインから、あるいは [Visual Studio Code](./create-first-function-vs-code-csharp.md) を使用して関数アプリを作成すると、Application Insights 統合が既定で有効になります。 Application Insights リソースは関数アプリと同じ名前を持ち、同じリージョンまたは最も近いリージョンのどちらかで作成されます。
 
 ### <a name="new-function-app-in-the-portal"></a>ポータルでの新しい関数アプリ
 

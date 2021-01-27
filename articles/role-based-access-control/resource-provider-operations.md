@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539091"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700603"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -1464,7 +1464,7 @@ Azure サービス:[Azure Data Box](../databox/index.yml)
 
 ### <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
-Azure サービス:[Azure Import/Export](../storage/common/storage-import-export-service.md)
+Azure サービス:[Azure Import/Export](../import-export/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

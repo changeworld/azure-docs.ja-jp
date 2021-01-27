@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 92e93c3746308d2d6c1a489efc6b5c866b0ad2d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152331"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682632"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Azure SignalR Service のプライベート エンドポイントを使用する
 
@@ -71,7 +71,7 @@ Azure SignalR Service の所有者は、[Azure portal](https://portal.azure.com)
 | ``foobar.service.signalr.net``                        | CNAME | ``foobar.privatelink.service.signalr.net``            |
 | ``foobar.privatelink.service.signalr.net``            | A     | 10.1.1.5                                              |
 
-この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから**同じ接続文字列を使用して** Azure SignalR Service にアクセスできます。
+この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから **同じ接続文字列を使用して** Azure SignalR Service にアクセスできます。
 
 ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントでは、Azure SignalR Service エンドポイントの FQDN をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して `foobar.privatelink.service.signalr.net` の A レコードを構成する必要があります。
 
@@ -126,55 +126,55 @@ Azure SignalR Service のプライベート エンドポイントに推奨され
 ### <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベート エンドポイントを作成する
 
 1. Azure CLI にログインする
-    ```console
+    ```azurecli
     az login
     ```
 1. Azure サブスクリプションを選択する
-    ```console
+    ```azurecli
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```
 1. 新しいリソース グループを作成する
-    ```console
+    ```azurecli
     az group create -n {RG} -l {AZURE REGION}
     ```
 1. Microsoft.SignalRService をプロバイダーとして登録します
-    ```console
+    ```azurecli
     az provider register -n Microsoft.SignalRService
     ```
 1. 新しい Azure SignalR サービスを作成します
-    ```console
+    ```azurecli
     az signalr create --name {NAME} --resource-group {RG} --location {AZURE REGION} --sku Standard_S1
     ```
 1. 仮想ネットワークを作成します
-    ```console
+    ```azurecli
     az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
     ```
 1. サブネットの追加
-    ```console
+    ```azurecli
     az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
     ```
 1. 仮想ネットワーク ポリシーを無効にする
-    ```console
+    ```azurecli
     az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
     ```
 1. プライベート DNS ゾーンを追加する
-    ```console
+    ```azurecli
     az network private-dns zone create --resource-group {RG} --name privatelink.service.signalr.net
     ```
 1. 仮想ネットワークにプライベート DNS ゾーンをリンクする
-    ```console
+    ```azurecli
     az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.service.signalr.net --name {dnsZoneLinkName} --registration-enabled true
     ```
 1. プライベート エンドポイントを作成する (自動的に承認する)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION}
     ```
 1. プライベート エンドポイントを作成する (承認を手動で要求する)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
     ```
 1. 接続状態を表示する
-    ```console
+    ```azurecli
     az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
     ```
 

@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b59e256f137bc8e1b13cb92d477e32bc01629ac5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120157"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679898"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのデータ読み込み戦略
 
@@ -24,7 +24,7 @@ ms.locfileid: "98120157"
 
 抽出、読み込み、および変換 (ELT) プロセスを使用すると、組み込みの分散クエリ処理機能が利用され、読み込み前のデータ変換に必要なリソースを排除できます。
 
-専用 SQL プールでは、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) や [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) などの一般的な SQL Server オプションを含む多くの読み込み方法がサポートされていますが、データを読み込むための最速かつ最もスケーラブルな方法は、PolyBase 外部テーブルと [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用する方法です。
+専用 SQL プールでは、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) や [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) などの一般的な SQL Server オプションを含む多くの読み込み方法がサポートされていますが、データを読み込むための最速かつ最もスケーラブルな方法は、PolyBase 外部テーブルと [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用する方法です。
 
 PolyBase と COPY ステートメントを使用すると、Azure Blob Storage または Azure Data Lake Store に格納されている外部データに T-SQL 言語でアクセスできます。 読み込み時の柔軟性を最大限に高めるために、COPY ステートメントを使用することをお勧めします。
 
@@ -52,7 +52,7 @@ ELT を実装するための基本的な手順は次のとおりです。
 
 PolyBase および COPY ステートメントを使用すると、UTF-8 および UTF-16 でエンコードされた区切りテキストまたは CSV ファイルから、データを読み込むことができます。 区切りテキストまたは CSV ファイルに加え、ORC や Parquet などの Hadoop ファイル形式からも読み込みます。 また、PolyBase および COPY ステートメントは、Gzip および Snappy 圧縮ファイルからもデータを読み込むことができます。
 
-拡張 ASCII、固定幅形式、および WinZip や XML などの入れ子形式は、サポートされていません。 SQL Server からエクスポートする場合は、[bcp コマンドライン ツール](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用して、区切りテキスト ファイルにデータをエクスポートすることができます。
+拡張 ASCII、固定幅形式、および WinZip や XML などの入れ子形式は、サポートされていません。 SQL Server からエクスポートする場合は、[bcp コマンドライン ツール](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用して、区切りテキスト ファイルにデータをエクスポートすることができます。
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2.データを Azure Blob Storage または Azure Data Lake Store に配置する
 
@@ -76,9 +76,9 @@ PolyBase を使用している場合は、読み込み前に、専用 SQL プー
 
 外部テーブルを定義するには、データ ソース、テキスト ファイルの形式、テーブル定義を指定する必要があります。 必要な T-SQL 構文の参照記事は次のとおりです。
 
-- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 Parquet ファイルを読み込む場合、次の SQL データ型マッピングを使用します。
 
@@ -132,7 +132,7 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 
 - データが非リレーショナル ソースから読み込まれる場合は、データを行と列に変換する必要があります。 データの読み込み元がリレーショナル ソースの場合も、非リレーショナル ソースの場合も、データを読み込むテーブルの列定義に合わせてデータを変換する必要があります。
 - 変換先テーブルの列とデータ型に合わせて、テキスト ファイルのデータを書式設定します。 外部テキスト ファイルと専用 SQL プール テーブルの間でデータ型の不整合があると、読み込みの際に行が拒否されます。
-- テキスト ファイル内のフィールドは終端記号で区切ります。  ソース データに含まれていない文字または文字シーケンスを使用するようにしてください。 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) で指定した終端記号を使用します。
+- テキスト ファイル内のフィールドは終端記号で区切ります。  ソース データに含まれていない文字または文字シーケンスを使用するようにしてください。 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) で指定した終端記号を使用します。
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.PolyBase または COPY ステートメントを使用してデータを読み込む
 
@@ -142,15 +142,15 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 
 データを読み込むには、次のいずれかの読み込みオプションを使用できます。
 
-- [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
+- [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
 - [T-SQL を使用したPolyBase](./load-data-from-azure-blob-storage-using-copy.md) では、外部データ オブジェクトを定義する必要があります。
 - [Azure Data Factory (ADF) を使用した PolyBase および COPY ステートメント](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
-- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
+- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
 - [Azure Databricks を使用した PolyBase](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) - PolyBase を使用して、テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームからテーブルにデータを書き込むことができます。
 
 ### <a name="other-loading-options"></a>その他の読み込みオプション
 
-PolyBase と COPY ステートメントの他に、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) または [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) を使用できます。 bcp では、Azure Blob Storage を通さずにデータベースに直接読み込みます。また、小規模の読み込みのみを対象とします。
+PolyBase と COPY ステートメントの他に、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) または [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) を使用できます。 bcp では、Azure Blob Storage を通さずにデータベースに直接読み込みます。また、小規模の読み込みのみを対象とします。
 
 > [!NOTE]
 > これらのオプションの読み込みパフォーマンスは、PolyBase および COPY ステートメントと比べて低速です。

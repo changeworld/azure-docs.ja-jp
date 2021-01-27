@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014105"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694886"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -28,7 +28,7 @@ ms.locfileid: "92014105"
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
 
 > [!NOTE]
-> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム] に投稿してください。 
 

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: e5449dc26197a0aa2e2b0da49ad9e5ca4fb19e82
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fb8cd45842e2f9b64048aa939f7b6adc9b0e6e0a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185761"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703684"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure Resource Manager リソース グループを管理する
 
@@ -69,7 +69,7 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 
 「[Deploy resources to an existing resource group (リソースを既存のリソース グループにデプロイする)](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)」をご覧ください。
 
-リソース グループのデプロイを検証するには、[Test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0) をご覧ください。
+リソース グループのデプロイを検証するには、[Test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment) をご覧ください。
 
 ## <a name="deploy-a-resource-group-and-resources"></a>リソース グループとリソースをデプロイする
 

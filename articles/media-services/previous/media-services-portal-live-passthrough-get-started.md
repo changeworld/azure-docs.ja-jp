@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 08d1e9cd281cf41a79d1b30d709062c01abbab33
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040731"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695443"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "93040731"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 このチュートリアルでは、Azure ポータルを使用して、パススルー配信用に構成された **チャネル** を作成する手順を紹介します。 
 

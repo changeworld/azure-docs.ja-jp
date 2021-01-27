@@ -12,23 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fb34051f7d4b24190806dde939c8cc6d9c2a4896
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462501"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679949"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
 
 列レベルのセキュリティでは、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、テーブルの列へのアクセスを制御できます。
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-この動画が投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)が Azure Synapse の専用 SQL プールで使用できるようになりました。
+この動画が投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)が Azure Synapse の専用 SQL プールで使用できるようになりました。
 
 列レベルのセキュリティにより、アプリケーションのセキュリティの設計とコーディングが簡略化されるため、列のアクセスを制限して機密データを保護することができます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、列レベルのセキュリティは、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。
 
-列レベルのセキュリティは [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (Azure AD) 認証がどちらもサポートされます。
+列レベルのセキュリティは [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (Azure AD) 認証がどちらもサポートされます。
 
 ![最初の列は、ヘッダーに閉じた南京錠が示され、セルがオレンジ色になっており、その他の列は白色のセルである概略テーブルを示す図。](./media/column-level-security/cls.png)
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349924"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682717"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>マネージド イメージを Shared Image Gallery に複製する
 
@@ -54,7 +54,7 @@ $gallery = Get-AzGallery `
 
 イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 マネージド イメージは常に一般化されているため、`-OsState generalized` を設定する必要があります。 
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](./windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、イメージ定義は *myImageDefinition* という名前で、一般化された Windows OS 用です。 Linux OS を使用してイメージの定義を作成するには、`-OsType Linux` を使用します。 
 

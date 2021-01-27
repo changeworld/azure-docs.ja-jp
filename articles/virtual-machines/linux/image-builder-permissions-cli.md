@@ -7,12 +7,12 @@ ms.date: 05/06/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: f598ed3e2aef2f53b90b213d0bd1b002f56bd30c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 19320b8b497202c473f72f4751daf2110a347080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517752"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676769"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する
 
@@ -58,7 +58,7 @@ Azure ユーザー割り当て ID の詳細については、ID の作成方法�
 
 ## <a name="allow-image-builder-to-distribute-images"></a>Image Builder にイメージの配布を許可する
 
-Azure Image Builder を使用してイメージ (マネージド イメージまたは Shared Image Gallery) を配布するには、これらのリソース グループにイメージを挿入することを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが構築されているリソース グループに対するアクセス許可を付与する必要があります。 Azure Image Builder には、サブスクリプション内の他のリソース グループのリソースにアクセスするアクセス許可が **ありません** 。 ビルドが失敗しないようにするには、アクセスを許可する明示的なアクションを実行する必要があります。
+Azure Image Builder を使用してイメージ (マネージド イメージまたは Shared Image Gallery) を配布するには、これらのリソース グループにイメージを挿入することを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが構築されているリソース グループに対するアクセス許可を付与する必要があります。 Azure Image Builder には、サブスクリプション内の他のリソース グループのリソースにアクセスするアクセス許可が **ありません**。 ビルドが失敗しないようにするには、アクセスを許可する明示的なアクションを実行する必要があります。
 
 イメージを配布するために、リソース グループに対する共同作成者アクセス許可をユーザー割り当てマネージド ID に付与する必要はありません。 ただし、ユーザー割り当てマネージド ID には、配布リソース グループに次の Azure `Actions` アクセス許可が必要です。
 
@@ -238,4 +238,4 @@ Image Builder テンプレートでは、ユーザー割り当てマネージド
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、[Azure Image Builder の概要](image-builder-overview.md)に関する記事を参照してください。
+詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。

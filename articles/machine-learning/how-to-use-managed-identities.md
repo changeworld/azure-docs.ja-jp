@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311037"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683342"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
-[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、" *リソースへのアクセスに必要な最低限のアクセス許可* " でワークスペースを構成できます。 
+[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、"*リソースへのアクセスに必要な最低限のアクセス許可*" でワークスペースを構成できます。 
 
 Azure Machine Learning ワークスペースを信頼できる方法で構成する場合、ワークスペースに関連付けられているさまざまなサービスのアクセス レベルが適切であることを確認することが重要です。 たとえば機械学習ワークフロー時に、ワークスペースでは、Docker イメージ用に Azure Container Registry (ACR) と、トレーニング データ用にストレージ アカウントへのアクセスが必要です。 
 
@@ -38,7 +38,7 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 - [Machine Learning service 用 Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)
 - [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-- ロールを割り当てるには、Azure サブスクリプションのログインに [マネージド ID オペレーター](../role-based-access-control/built-in-roles.md#managed-identity-operator) ロール、または必要なアクション ( __所有者__ など) を付与するその他のロールが含まれている必要があります。
+- ロールを割り当てるには、Azure サブスクリプションのログインに [マネージド ID オペレーター](../role-based-access-control/built-in-roles.md#managed-identity-operator) ロール、または必要なアクション (__所有者__ など) を付与するその他のロールが含まれている必要があります。
 - [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の作成と操作に慣れている必要があります。
 
 ## <a name="configure-managed-identities"></a>マネージド ID の構成
@@ -59,7 +59,7 @@ ACR 管理者ユーザーがサブスクリプション ポリシーによって
 ```--admin-enabled``` 引数を設定せずに [Azure CLI から ACR を作成する](../container-registry/container-registry-get-started-azure-cli.md)か、管理者ユーザーを有効にせずに Azure portal から ACR を作成します。 次に、Azure Machine Learning ワークスペースを作成するときに、ACR の Azure リソース ID を指定します。 次の例は、既存の ACR を使用する新しい Azure ML ワークスペースを作成する方法を示しています。
 
 > [!TIP]
-> `--container-registry` パラメーターの値を取得するには、[az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) コマンドを使用して ACR の情報を表示します。 `id` フィールドに、ACR のリソース ID が表示されます。
+> `--container-registry` パラメーターの値を取得するには、[az acr show](/cli/azure/acr#az_acr_show) コマンドを使用して ACR の情報を表示します。 `id` フィールドに、ACR のリソース ID が表示されます。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ az ml workspace create -w <workspace name> \
 
     このコマンドにより、次のテキストのような値が返されます。 テキストの最後の部分 (ACR インスタンス名) のみが必要です。
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 

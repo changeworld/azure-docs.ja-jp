@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: bab5a86cdf8e3fa6b17866fe4088b28ed3ece6f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0cf081fb7723972013d61f385c823a3b0c4d2aee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307298"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679519"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 
-この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../windows/shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
+この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) です。 
@@ -217,7 +217,7 @@ VM に SSH 接続します。
 ssh aibuser@<publicIpAddress>
 ```
 
-SSH 接続が確立されるとすぐに、イメージが*当日のメッセージ*でカスタマイズされたことがわかります。
+SSH 接続が確立されるとすぐに、イメージが *当日のメッセージ* でカスタマイズされたことがわかります。
 
 ```console
 *******************************************************
@@ -298,4 +298,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure 共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。
+詳細については、[Azure 共有イメージ ギャラリー](../shared-image-galleries.md)に関するページを参照してください。

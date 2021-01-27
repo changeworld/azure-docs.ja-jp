@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: bc297be14b1a32cc836686dd25e98a78d3e95d31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e865a648a5086f96222e4e1c0af33c37995aa808
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184379"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693640"
 ---
 ### <a name="media-services-v3-latest"></a>Media Services v3 (最新)
 
@@ -18,7 +18,7 @@ Azure Media Services の最新のバージョンをご確認ください。
 * [概要](../articles/media-services/latest/media-services-overview.md)
 * [概念](../articles/media-services/latest/concepts-overview.md)
 * [開発を始める](../articles/media-services/latest/media-services-apis-overview.md)
-* [v2 から v3 への移行ガイダンス](../articles/media-services/latest/migrate-from-v2-to-v3.md)
+* [v2 から v3 への移行ガイダンス](../articles/media-services/latest/migrate-v-2-v-3-migration-introduction.md)
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (レガシ)
 

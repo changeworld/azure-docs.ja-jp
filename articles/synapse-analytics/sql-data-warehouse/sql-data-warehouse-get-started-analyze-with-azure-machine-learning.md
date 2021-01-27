@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 5348c0ed5d80e2738bb865ca3ec1ddf5aaed009a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118049"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678661"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 
@@ -161,4 +161,4 @@ Azure Data Lake Storage でデータが使用できるようになったら、Az
 
 Azure Machine Learning の詳細については、[Azure での機械学習の概要](../../machine-learning/overview-what-is-azure-ml.md)に関するページを参照してください。
 
-データ ウェアハウスの組み込みのスコアリングについて、[こちら](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を参照してください。
+データ ウェアハウスの組み込みのスコアリングについて、[こちら](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)を参照してください。

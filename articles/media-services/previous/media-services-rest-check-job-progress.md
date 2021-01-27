@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 429e443ea0de665632cbacaee13a3ff3be443b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 252495df8189f677ada66b67b8a845b320c81aca
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263401"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694918"
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 ジョブの状態プロパティを使用して、ジョブの状態を調べることができます。 状態プロパティの詳細については、 [Job Entity Properties (Job エンティティのプロパティ)](/rest/api/media/operations/job#job_entity_properties)をご覧ください。
 

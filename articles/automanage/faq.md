@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 2b15389ae35a63c71ac4cb9e167e578e7e1e690e
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695764"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696178"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問
 
@@ -28,7 +28,6 @@ ms.locfileid: "97695764"
 
 Azure Automanage を有効にするための前提条件は次のとおりです。
 - Windows Server VM のみ
-- VM が実行されている必要があります
 - VM はサポート対象のリージョンに存在する必要があります
 - ユーザーは正しいアクセス許可を持っている必要があります
 - スケール セット以外の VM のみ

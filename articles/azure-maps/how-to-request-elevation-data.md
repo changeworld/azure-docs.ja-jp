@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602423"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684057"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure Maps の Elevation Service (プレビュー) を使用して標高データを要求する
 
@@ -22,7 +22,7 @@ ms.locfileid: "98602423"
 > Azure Maps の Elevation Service は、現在パブリック プレビューの段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Maps の [Elevation Service](https://docs.microsoft.com/rest/api/maps/elevation) は、地表の任意の場所の標高データのクエリを実行するための API を提供します。 サンプリングされた標高データは、パス沿い、定義された境界ボックス内、または特定の座標を指定して要求できます。 また、[Render V2 - Get Map Tile API](https://docs.microsoft.com/rest/api/maps/renderv2) を使用して、タイル形式で標高データを取得することもできます。 タイルは、GeoTIFF ラスター形式で提供されます。 この記事では、Azure Maps の Elevation Service と Get Map Tile API を使用して標高データを要求する方法について説明します。 標高データは、GeoJSON 形式と GeoTiff 形式の両方で要求できます。
+Azure Maps の [Elevation Service](/rest/api/maps/elevation) は、地表の任意の場所の標高データのクエリを実行するための API を提供します。 サンプリングされた標高データは、パス沿い、定義された境界ボックス内、または特定の座標を指定して要求できます。 また、[Render V2 - Get Map Tile API](/rest/api/maps/renderv2) を使用して、タイル形式で標高データを取得することもできます。 タイルは、GeoTIFF ラスター形式で提供されます。 この記事では、Azure Maps の Elevation Service と Get Map Tile API を使用して標高データを要求する方法について説明します。 標高データは、GeoJSON 形式と GeoTiff 形式の両方で要求できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>ラスター タイル形式で標高データを要求する
 
-ラスター タイル形式で標高データを要求するには、[Render V2 - Get Map Tile API](https://docs.microsoft.com/rest/api/maps/renderv2) を使用します。 タイルが見つかると、API によってタイルが GeoTIFF として返されます。 それ以外の場合、API によって 0 が返されます。 すべてのラスター DEM タイルで、geoid (海水面) の地球モードが使用されています。 この例では、エベレスト山の標高データを要求します 。
+ラスター タイル形式で標高データを要求するには、[Render V2 - Get Map Tile API](/rest/api/maps/renderv2) を使用します。 タイルが見つかると、API によってタイルが GeoTIFF として返されます。 それ以外の場合、API によって 0 が返されます。 すべてのラスター DEM タイルで、geoid (海水面) の地球モードが使用されています。 この例では、エベレスト山の標高データを要求します 。
 
 >[!TIP]
 >世界地図の特定の領域にあるタイルを取得するには、適切なズーム レベルの正しいタイルを見つける必要があります。 また、WorldDEM には世界中の陸地がすべて含まれていますが、海は含まれていません。  詳細については、「[Zoom levels and tile grid](zoom-levels-and-tile-grid.md)」(ズーム レベルとタイル グリッド) を参照してください。
@@ -58,9 +58,9 @@ Elevation Service (プレビュー) API を使用して、GeoJSON 形式で標�
 
 * [Get Data for Points](/rest/api/maps/elevation/getdataforpoints)
 * [Post Data for Points](/rest/api/maps/elevation/postdataforpoints)
-* [Get Data for Polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [Post Data for Polyline](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [Get Data for Bounding Box](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [Get Data for Polyline](/rest/api/maps/elevation/getdataforpolyline)
+* [Post Data for Polyline](/rest/api/maps/elevation/postdataforpolyline)
+* [Get Data for Bounding Box](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > 返すデータが無い場合、すべての API によって `0` が返されます。
@@ -126,11 +126,11 @@ Elevation Service (プレビュー) API を使用して、GeoJSON 形式で標�
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>ポリラインに沿った標高データ サンプルの要求
 
-この例では、[Get Data for Polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) を使用して、 エベレスト山とチャムラン山の座標を結ぶ直線に沿う、等間隔での 5 つの標高データを要求します。 どちらの座標も、経度と緯度の形式で定義する必要があります。 `samples` パラメーターに値を指定しない場合、サンプルの数は既定で 10 に設定されます。 サンプルの最大数は 2,000 です。
+この例では、[Get Data for Polyline](/rest/api/maps/elevation/getdataforpolyline) を使用して、 エベレスト山とチャムラン山の座標を結ぶ直線に沿う、等間隔での 5 つの標高データを要求します。 どちらの座標も、経度と緯度の形式で定義する必要があります。 `samples` パラメーターに値を指定しない場合、サンプルの数は既定で 10 に設定されます。 サンプルの最大数は 2,000 です。
 
 次に、Get Data for Polyline を使用して、パスに沿って 3 つの等間隔の標高データのサンプルを要求します。 ここでは、3 つの経度と緯度の座標ペアを渡すことで、サンプルの正確な位置を定義します。
 
-最後に、[Post Data For Polyline API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) を使用して、同じ 3 つの等間隔のサンプルの標高データを要求します。
+最後に、[Post Data For Polyline API](/rest/api/maps/elevation/postdataforpolyline) を使用して、同じ 3 つの等間隔のサンプルの標高データを要求します。
 
 URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定されています。
 
@@ -229,7 +229,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
     }
     ```
 
-7. 次に、[Post Data For Polyline API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) を呼び出して、同じ 3 つの地点の標高データを取得します。 [builder]\(ビルダー\) タブで **POST** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
+7. 次に、[Post Data For Polyline API](/rest/api/maps/elevation/postdataforpolyline) を呼び出して、同じ 3 つの地点の標高データを取得します。 [builder]\(ビルダー\) タブで **POST** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 
 ### <a name="request-elevation-data-by-bounding-box"></a>境界ボックスによる標高データの要求
 
-次に、[Get Data for Bounding Box](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox) を使用して、 レーニア山 (ワシントン州) の近くの標高データを要求します。 標高データは、境界ボックス内の等間隔の位置から返されます。 2 つの緯度と経度の座標のセットによって定義される境界領域 (南緯度, 西経度 | 北緯度, 東経度) は、行と列に分割されます。 境界ボックスの端は、2 つの行と 2 つの列を占めます。 行と列の交点で作成されたグリッドの頂点の標高が返されます。 1 つの要求で最大 2,000 の標高を返すことができます。
+次に、[Get Data for Bounding Box](/rest/api/maps/elevation/getdataforboundingbox) を使用して、 レーニア山 (ワシントン州) の近くの標高データを要求します。 標高データは、境界ボックス内の等間隔の位置から返されます。 2 つの緯度と経度の座標のセットによって定義される境界領域 (南緯度, 西経度 | 北緯度, 東経度) は、行と列に分割されます。 境界ボックスの端は、2 つの行と 2 つの列を占めます。 行と列の交点で作成されたグリッドの頂点の標高が返されます。 1 つの要求で最大 2,000 の標高を返すことができます。
 
 この例では、行 = 3、列 = 6 を指定します。 応答では、標高の値が 18 個返されます。 次の図では、標高の値は南西隅から順に並べられ、西から東、南から北へと続きます。  標高ポイントは、返された順に番号が振られます。
 
@@ -488,15 +488,15 @@ Azure Maps Elevation (プレビュー) API の詳細については、次を参�
 > [Elevation (プレビュー) - 緯度と経度の座標データを取得する](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [Elevation (プレビュー) - Get Data for Bounding Box](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Elevation (プレビュー) - Get Data for Bounding Box](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Elevation (プレビュー) - Get Data for Polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Elevation (プレビュー) - Get Data for Polyline](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [Render V2 – Get Map Tile](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [Render V2 – Get Map Tile](/rest/api/maps/renderv2)
 
 Azure Maps REST API シリーズの完全な一覧については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST API シリーズ](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST API シリーズ](/rest/api/maps/)

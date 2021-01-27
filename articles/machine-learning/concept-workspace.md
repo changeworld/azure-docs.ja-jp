@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701655"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683442"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -134,6 +134,5 @@ Azure Machine Learning の利用を開始するには、以下を参照してく
 + [ワークスペースの作成と管理](how-to-manage-workspace.md)
 + [チュートリアル: ](tutorial-1st-experiment-sdk-setup-local.md)個人の開発環境で Azure Machine Learning の使用を開始する
 + [チュートリアル: コンピューティング インスタンスで初めての ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)
-+ [チュートリアル:R SDK による Azure Machine Learning の利用を開始する](tutorial-1st-r-experiment.md)
 + [チュートリアル:自動機械学習を使用して最初の分類モデルを作成する](tutorial-first-experiment-automated-ml.md) 
 + [チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)

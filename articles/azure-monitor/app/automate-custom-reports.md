@@ -4,12 +4,12 @@ description: Azure Application Insights データを利用して 日/週/月 1 �
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010607"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680452"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -33,7 +33,7 @@ ms.locfileid: "96010607"
 
 * [Power Automate を利用してレポートを自動化する](../platform/logicapp-flow-connector.md)
 * [Logic Apps を利用してレポートを自動化する](automate-with-logic-apps.md)
-* Monitoring シナリオで "Application Insights scheduled digest" [Azure 関数](../../azure-functions/functions-create-first-azure-function.md)テンプレートを利用する。 この関数は SendGrid を使って電子メールを配信します。 
+* Monitoring シナリオで "Application Insights scheduled digest" [Azure 関数](../../azure-functions/functions-get-started.md)テンプレートを利用する。 この関数は SendGrid を使って電子メールを配信します。 
 
     ![Azure 関数テンプレート](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Azure Function App を作成します。(Application Insights で新しい Function App を監視する必要がある場合にのみ、Application Insights を _[オン]_ にする必要があります)
 
-   [関数アプリの作成](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)方法については、Azure Functions のドキュメントを参照してください。
+   [関数アプリの作成](../../azure-functions/functions-get-started.md)方法については、Azure Functions のドキュメントを参照してください。
 
 2. 新しい Function App のデプロイが完了したら、 **[リソースに移動]** を選択します。
 
@@ -154,4 +154,3 @@ availabilityResults
 * [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/)の詳細を見る
 * [Logic Apps](../../logic-apps/logic-apps-overview.md) の詳細を見る
 * [Microsoft Power Automate](https://ms.flow.microsoft.com) についての詳細を見る。
-

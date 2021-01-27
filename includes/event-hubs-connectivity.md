@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/19/2020
+ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978876"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689910"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
 Azure Event Hubs でイベントを送受信するために、次のプロトコルを使用できます。
@@ -36,10 +36,10 @@ HTTPS ポートは、ポート 5671 で AMQP が使用されている場合に�
 
 | 言語 | オプション   |
 | -------- | ----- |
-| .NET     | [EventHubConnectionOptions.TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) プロパティが [EventHubsTransportType.AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) または [EventHubsTransportType.AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
-| Java     | [com.microsoft.azure.eventhubs.EventProcessorClientBuilder.transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) が [AmqpTransportType.AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) または [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| ノード  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) に `webSocketOptions` プロパティがある。 |
-| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) が [TransportType.Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) または [TransportType.AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+| .NET     | [EventHubConnectionOptions.TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype) プロパティが [EventHubsTransportType.AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) または [EventHubsTransportType.AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) |
+| Java     | [com.microsoft.azure.eventhubs.EventProcessorClientBuilder.transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype) が [AmqpTransportType.AMQP](/java/api/com.azure.core.amqp.amqptransporttype) または [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) |
+| ノード  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions) に `webSocketOptions` プロパティがある。 |
+| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient) が [TransportType.Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype) または [TransportType.AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>どのような IP アドレスを許可する必要がありますか。
 Azure を使用している場合、使用している、または使用しようとしているすべての Azure サービスにアクセスするために、企業のファイアウォールまたはプロキシで特定の IP アドレス範囲または URL を許可することが必要になる場合があります。 Event Hubs によって使用される IP アドレスでトラフィックが許可されていることを確認します。 Azure Event Hubs によって使用される IP アドレスについては、「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」を参照してください。

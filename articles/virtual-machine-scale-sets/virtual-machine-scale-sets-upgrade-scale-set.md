@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358743"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684595"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -350,7 +350,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更 **できません**。
 - **サブネット** - 元のサブネットと新しいサブネットが同じ仮想ネットワークにある限り、スケール セットのサブネットは変更できます。
-- **imageReferenceSku** - イメージ参照 SKU は、動作保証済み [Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)、Windows サーバー/クライアント イメージ、[プラン情報](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)のないイメージ向けに更新できます。 
+- **imageReferenceSku** - イメージ参照 SKU は、動作保証済み [Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)、Windows サーバー/クライアント イメージ、[プラン情報](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)のないイメージ向けに更新できます。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>変更するために割り当て解除が必要なプロパティ
 一部のプロパティは、スケール セット内の VM の割り当てが解除されている場合に、特定の値にのみ変更できます。 これには次のようなプロパティがあります。

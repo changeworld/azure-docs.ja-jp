@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 46a165ea7fa21c02e859c16027086695f1f378c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462802"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678476"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを最適化する
 
@@ -85,7 +85,7 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 
 ## <a name="optimizing-deletes"></a>削除の最適化
 
-DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
+DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -117,7 +117,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>更新の最適化
 
-UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
+UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
 
 次の例では、最小ログ記録ができるように、テーブルの完全更新を CTAS に変換しています。
 
@@ -414,7 +414,7 @@ END
 
 最善の策としては、実行中のデータ変更トランザクションが完了してから、専用 SQL プールの一時停止またはスケーリングを実行します。 ただし、このシナリオは、常に実用的であるわけではありません。 ロールバックに長時間かかる可能性を軽減するのに役立つ次のオプションを検討してください。
 
-* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して書き換える
+* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して書き換える
 * 操作をチャンクに分割し、行のサブセットに対して実行する
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 902bcaa97658802b35fb523a1213e6bbd47f357f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740472"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684510"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする
 Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -127,9 +127,9 @@ Azure Monitor for VMs のゲストの正常性でのモニターの構成は、[
 New-AzResourceGroupDeployment -Name GuestHealthDataCollectionRule -ResourceGroupName my-resource-group -TemplateFile Health.DataCollectionRule.template.json -TemplateParameterFile Health.DataCollectionRule.template.parameters.json
 ```
 
-# <a name="cli"></a>[CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDataCollectionRule --resource-group my-resource-group --template-file Health.DataCollectionRule.template.json --parameters Health.DataCollectionRule.template.parameters.json
 ```
 
@@ -267,9 +267,9 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 New-AzResourceGroupDeployment -Name GuestHealthDeployment -ResourceGroupName my-resource-group -TemplateFile azure-monitor-deploy.json -TemplateParameterFile azure-monitor-deploy.parameters.json
 ```
 
-# <a name="cli"></a>[CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDeployment --resource-group my-resource-group --template-file Health.VirtualMachine.template.json --parameters Health.VirtualMachine.template.parameters.json
 ```
 

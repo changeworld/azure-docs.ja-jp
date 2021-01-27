@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ae1d19ee3da59c43722ca1ea720eb441f6dd484
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264166"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696212"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>ストレージ暗号化によるコンテンツの暗号化
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 >
 
 この記事では、AMS ストレージの暗号化の概要を紹介し、ストレージ暗号化が実行されたコンテンツをアップロードする方法を示します。
@@ -64,7 +64,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 ## <a name="storage-encryption-overview"></a>ストレージ暗号化の概要
 AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗号化を適用します。  AES-CTR モードは、任意の長さのデータを暗号化できるブロック暗号です。埋め込みの必要はありません。 AES アルゴリズムを使用してカウンター ブロックを暗号化し、AES の出力と、暗号化または復号化するデータの排他論理和をとるという演算です。  使用されるカウンター ブロックを構築するには、InitializationVector の値をカウンター値のバイト 0 から 7 にコピーし、カウンター値のバイト 8 から 15 はゼロに設定します。 16 バイトのカウンター ブロックのうち、バイト 8 から 15 (つまり、下位バイト) は単純な符号なし 64 ビット整数として使用されます。それ以降に処理されるデータのブロックごとに 1 ずつ増分され、ネットワーク バイト順は維持されます。 整数が最大値 (0xFFFFFFFFFFFFFFFF) に達すると、増分によってゼロにリセットされます (バイト 8 から 15)。残りの 64 ビットのカウンター (バイト 0 から 7) には影響がありません。   AES-CTR モード暗号化のセキュリティを維持するには、コンテンツ キーごとに指定されたキー識別子の InitializationVector 値をファイルごとに一意にする必要があります。また、ファイルの長さを 2^64 ブロック未満にする必要があります。  この一意の値によって、カウンター値が特定のキーに再利用されないようにすることができます。 CTR モードの詳細については、[こちらの wiki ページ](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) ("InitializationVector" ではなく "Nonce" という用語を使用する wiki 記事) を参照してください。
 
-**ストレージ暗号化**で AES 256 ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージ暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
+**ストレージ暗号化** で AES 256 ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージ暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
 
 ストレージで暗号化された資産を配信するためには、資産の配信ポリシーを構成して、コンテンツの配信方法を Media Services に指示する必要があります。 資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシー (AES、共通暗号化、暗号化なしなど) を使用してコンテンツをストリーミングする必要があります。
 
@@ -118,7 +118,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
     ---|---
     Id | "nb:kid:UUID:\<NEW GUID>" 形式を使用して生成される ContentKey ID です。
     ContentKeyType | コンテンツ キーの種類は、キーを定義する整数です。 ストレージ暗号化形式の場合、値は 1 です。
-    EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。 このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。 たとえば、次の .NET コードをご覧ください。**EncryptSymmetricKeyData** メソッドの定義は[こちら](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)にあります。
+    EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。 このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。 たとえば、次の .NET コードをご覧ください。**EncryptSymmetricKeyData** メソッドの定義は [こちら](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)にあります。
     ProtectionKeyId | コンテンツ キーの暗号化に使用したストレージ暗号化 X.509 証明書の保護キー ID です。
     ProtectionKeyType | コンテンツ キーの暗号化に使用した保護キーの暗号化の種類です。 例では、この値には StorageEncryption(1) を使用しています。
     Checksum |コンテンツ キー用に MD5 で計算されたチェックサムです。 コンテンツ ID をコンテンツ キーで暗号化してコンピューティングします。 コード例では、チェックサムの計算方法を示しています。

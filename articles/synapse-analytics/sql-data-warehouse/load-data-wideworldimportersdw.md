@@ -11,16 +11,16 @@ ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134502"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685427"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>チュートリアル:Azure Synapse Analytics SQL プールにデータを読み込む
 
-このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure Synapse Analytics SQL プール内のデータ ウェアハウスに WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、次のことを行います。
+このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure Synapse Analytics SQL プール内のデータ ウェアハウスに WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) を使って、次のことを行います。
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) をダウンロードしてインストールします。
 
 このチュートリアルでは、次の[チュートリアル](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)から SQL 専用プールを既に作成しているものと想定しています。 
 
@@ -111,7 +111,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     CREATE MASTER KEY;
     ```
 
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部の国際輸入業者のデータの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
+4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部の国際輸入業者のデータの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -122,7 +122,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     );
     ```
 
-5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。  
+5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -137,7 +137,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     );
     ```
 
-6. 次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを実行して、外部ファイルの形式のスキーマを作成します。 ext スキーマを使って、作成しようとしている外部テーブルを構造化できます。 データが格納される標準テーブルは、wwi スキーマで構造化します。
+6. 次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを実行して、外部ファイルの形式のスキーマを作成します。 ext スキーマを使って、作成しようとしている外部テーブルを構造化できます。 データが格納される標準テーブルは、wwi スキーマで構造化します。
 
     ```sql
     CREATE SCHEMA ext;
@@ -431,7 +431,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!NOTE]
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
 
-このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントによって外部テーブルから選択されると、データ ウェアハウスのリレーショナル テーブルにデータがインポートされます。
+このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントによって外部テーブルから選択されると、データ ウェアハウスのリレーショナル テーブルにデータがインポートされます。
 
 このスクリプトでは、wwi.dimension_Date テーブルと wwi.fact_Sale テーブルへのデータの読み込みは行いません。 これらのテーブルは、大量の行を格納できるようにするため、後続の手順で生成されます。
 

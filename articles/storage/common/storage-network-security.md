@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13d1ad0b1b5e32ea2ca86e7556dd910c542bcbe2
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9032576f3705c360ebf53d8fdb4d6c15f77f450e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070560"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703506"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -379,7 +379,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細については、こちらを参照してください](../../event-hubs/event-hubs-capture-overview.md)。 |
 | Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細については、こちらを参照してください](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。 |
-| Azure Import Export      | Microsoft.ImportExport     | Azure Storage Import/Export サービスを使用すると、Azure Storage にデータをインポートしたり、Azure Storage からデータをエクスポートしたりできます。 [詳細については、こちらを参照してください](./storage-import-export-service.md)。  |
+| Azure Import Export      | Microsoft.ImportExport     | Azure Storage Import/Export サービスを使用すると、Azure Storage にデータをインポートしたり、Azure Storage からデータをエクスポートしたりできます。 [詳細については、こちらを参照してください](../../import-export/storage-import-export-service.md)。  |
 | Azure Monitor            | Microsoft.Insights         | リソース ログ、Azure Active Directory サインインと監査ログ、Microsoft Intune ログなど、セキュリティで保護されたストレージ アカウントへの監視データの書き込みを許可します。 [詳細については、こちらを参照してください](../../azure-monitor/platform/roles-permissions-security.md)。 |
 | Azure のネットワーク         | Microsoft.Network          | Network Watcher および Traffic Analytics サービスを含め、ネットワーク トラフィック ログを格納し、分析します。 [詳細については、こちらを参照してください](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](../../site-recovery/azure-to-azure-tutorial-enable-replication.md)。 |

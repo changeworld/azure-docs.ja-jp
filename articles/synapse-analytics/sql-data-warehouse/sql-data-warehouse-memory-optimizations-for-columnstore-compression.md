@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d668c3e505d6849d3cde52d52698a95c1c5647d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453714"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676164"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>専用 SQL プールの列ストア インデックスの行グループの品質を最大限に高める 
 
@@ -28,7 +28,7 @@ ms.locfileid: "96453714"
 
 行グループに多くの行がある場合、データ圧縮が向上します。つまり、ディスクから読み取るデータが少なくなります。
 
-行グループの詳細については、「[列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+行グループの詳細については、「[列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ## <a name="target-size-for-rowgroups"></a>行グループのターゲット サイズ
 
@@ -42,11 +42,11 @@ ms.locfileid: "96453714"
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、エラーが生成されます。
 
-一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」セクションを参照してください。
+一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」セクションを参照してください。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 
-行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) には、SQL DB に一致するビュー定義が含まれます)。
+行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) には、SQL DB に一致するビュー定義が含まれます)。
 
 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
 

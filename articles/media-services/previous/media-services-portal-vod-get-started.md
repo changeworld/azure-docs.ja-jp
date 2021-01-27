@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cc3e26895f6bd11ba4f2e5f0b04e4dd36a4fcab
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018986"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695291"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal を使用したオン デマンド コンテンツ配信の概要
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 このチュートリアルでは、Azure Portal での Azure Media Services アプリケーションによる基本的なビデオ オン デマンド コンテンツ配信サービスの実装手順を紹介します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "92018986"
 アダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services では、ダイナミック パッケージが使用できます。 ダイナミック パッケージでは、アダプティブ ビットレート MP4 エンコード コンテンツを、Media Services でサポートされている Just-In-Time ストリーミング形式で配信できます。 例としては、Apple HTTP ライブ ストリーミング (HLS)、Microsoft Smooth Streaming、Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれます) などがあります。 Media Services アダプティブ ビットレート ストリーミングを使用すると、これらの各ストリーミング形式の事前にパッケージ化されたバージョンを格納しなくても、ビデオを配信できます。
 
 > [!NOTE]
-> Media Services アカウントの作成時に、既定のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+> Media Services アカウントの作成時に、既定のストリーミング エンドポイントが自分のアカウントに追加され、**停止** 状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。 
 
 ストリーミング エンドポイントを開始するには、次の手順に従います。
 

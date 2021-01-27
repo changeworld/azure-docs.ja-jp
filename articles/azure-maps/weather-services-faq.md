@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903872"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678131"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure Maps Weather Service (プレビュー) のよく寄せられる質問 (FAQ)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96903872"
 > Azure Maps Weather Service は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-この記事では、Azure Maps [Weather Service](https://docs.microsoft.com/rest/api/maps/weather) のデータや機能に関する一般的な質問への回答を示します。 次のトピックが含まれています。
+この記事では、Azure Maps [Weather Service](/rest/api/maps/weather) のデータや機能に関する一般的な質問への回答を示します。 次のトピックが含まれています。
 
 * データ ソースとデータ モデル
 * Weather Service の対象範囲と可用性
@@ -59,7 +59,7 @@ AccuWeather には、主に、多数の国家政府気象機関とのパート�
 
 **さまざまな国/地域に対して、どのような種類の対象範囲を期待できますか?**
 
-Weather Service の対象範囲は、国/地域ごとに異なります。 すべての国/地域ですべての機能が使用できるわけではありません。 詳細については、[対象範囲のドキュメント](https://docs.microsoft.com/azure/azure-maps/weather-coverage)を参照してください。
+Weather Service の対象範囲は、国/地域ごとに異なります。 すべての国/地域ですべての機能が使用できるわけではありません。 詳細については、[対象範囲のドキュメント](./weather-coverage.md)を参照してください。
 
 ## <a name="data-update-frequency"></a>データの更新頻度
 
@@ -79,7 +79,7 @@ Azure Maps の Forecast API は、最大 30 分間キャッシュされます。
 
 **Azure Maps Web SDK は Weather Service (プレビュー) 統合をネイティブにサポートしていますか?**
 
-Azure Maps の Web SDK は、サービス モジュールを提供します。 このサービス モジュールは、 JavaScript または TypeScript を使用して、Web または Node.js アプリケーションで Azure Maps REST サービスを簡単に使用できるようにするヘルパー ライブラリです。 使用を開始するには、この[ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)を参照してください。
+Azure Maps の Web SDK は、サービス モジュールを提供します。 このサービス モジュールは、 JavaScript または TypeScript を使用して、Web または Node.js アプリケーションで Azure Maps REST サービスを簡単に使用できるようにするヘルパー ライブラリです。 使用を開始するには、この[ドキュメント](./how-to-use-services-module.md)を参照してください。
 
 **Azure Maps Android SDK は Weather Service (プレビュー) 統合をネイティブにサポートしていますか?**
 
@@ -91,26 +91,26 @@ Web SDK モジュールと同様の Java/Android 用のサービス モジュー
 
 **Azure Maps Power BI ビジュアルは Azure Maps の気象タイルをサポートしていますか?**
 
-はい。 レーダーおよび赤外線衛星タイルを Microsoft Power BI ビジュアルに移行する方法については、[Power BI ビジュアルへのタイル レイヤーの追加](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer)に関するページを参照してください。 
+はい。 レーダーおよび赤外線衛星タイルを Microsoft Power BI ビジュアルに移行する方法については、[Power BI ビジュアルへのタイル レイヤーの追加](./power-bi-visual-add-tile-layer.md)に関するページを参照してください。 
 
 **レーダーおよび衛星タイルに使用される色はどのように解釈したらよいですか?**
 
-Azure Maps [Weather の概念に関する記事](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale)には、レーダーおよび衛星タイルに使用される色を解釈するために役立つガイドが含まれています。 この記事では、色のサンプルと 16 進カラー コードについて説明しています。
+Azure Maps [Weather の概念に関する記事](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale)には、レーダーおよび衛星タイルに使用される色を解釈するために役立つガイドが含まれています。 この記事では、色のサンプルと 16 進カラー コードについて説明しています。
  
 **レーダーおよび衛星タイルのアニメーションを作成できますか?**
 
-はい。 リアルタイムのレーダーおよび衛星タイルに加えて、Azure Maps の顧客は、地図のオーバーレイを使用してデータの視覚化を強化するために過去と将来のタイルを要求できます。 これは、[Get Map Tile v2 API](https://aka.ms/AzureMapsWeatherTiles ) を直接呼び出すか、または Azure Maps Web SDK 経由でタイルを要求することによって行うことができます。 レーダー タイルは、以前は最大 1.5 時間、将来は最大 2 時間提供されます。 これらのタイルは 5 分間隔で入手できます。 赤外線タイルは、以前は最大 3 時間提供され、10 分間隔で入手できます。 詳細については、オープンソースの気象タイル アニメーションの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)を参照してください。  
+はい。 リアルタイムのレーダーおよび衛星タイルに加えて、Azure Maps の顧客は、地図のオーバーレイを使用してデータの視覚化を強化するために過去と将来のタイルを要求できます。 これは、[Get Map Tile v2 API](/rest/api/maps/renderv2/getmaptilepreview) を直接呼び出すか、または Azure Maps Web SDK 経由でタイルを要求することによって行うことができます。 レーダー タイルは、以前は最大 1.5 時間、将来は最大 2 時間提供されます。 これらのタイルは 5 分間隔で入手できます。 赤外線タイルは、以前は最大 3 時間提供され、10 分間隔で入手できます。 詳細については、オープンソースの気象タイル アニメーションの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)を参照してください。  
 
 **さまざまな天候のアイコンを提供していますか?**
 
-はい。 アイコンとそれに対応するコードは、[ここ](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)で見つけることができます。 応答で *iconCode* を返すのは、Weather Service (プレビュー) API の一部 ([Get Current Conditions API](https://aka.ms/azuremapsweathercurrentconditions) など) だけであることに注意してください。 詳細については、現在の WeatherConditions のオープンソースの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)を参照してください。
+はい。 アイコンとそれに対応するコードは、[ここ](./weather-services-concepts.md#weather-icons)で見つけることができます。 応答で *iconCode* を返すのは、Weather Service (プレビュー) API の一部 ([Get Current Conditions API](/rest/api/maps/weather/getcurrentconditionspreview) など) だけであることに注意してください。 詳細については、現在の WeatherConditions のオープンソースの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 この FAQ でご質問の回答が得られない場合は、次のチャネル (エスカレーション順) を通してお問い合わせいただくことができます。
 
 * この記事のコメント セクション。
-* [Azure Maps の MSFT Q&A ページ](https://docs.microsoft.com/answers/topics/azure-maps.html)。
+* [Azure Maps の MSFT Q&A ページ](/answers/topics/azure-maps.html)。
 * Microsoft サポート。 新しいサポート要求を作成するには、[Azure portal](https://portal.azure.com/) の [ヘルプ] タブで、 **[ヘルプとサポート]** ボタンを選択してから **[新しいサポート要求]** を選択します。
 * 機能要求を送信するための [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps)。
 

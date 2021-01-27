@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052224"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702770"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server ファイルおよびフォルダーを Azure にバックアップする
 
@@ -38,7 +38,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 
 バックアップ ポリシーを作成するには:
 
-1. MARS エージェントをダウンロードして登録した後、エージェント コンソールを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。  
+1. MARS エージェントをダウンロードして登録した後、エージェント コンソールを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup** を検索すると見つかります。  
 
 1. **[アクション]** で、 **[バックアップのスケジュール]** を選択します。
 
@@ -104,7 +104,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 1. ステージングの場所にバックアップ データを書き込みます。
 1. AzureOfflineBackupDiskPrep ツールを使用して、ステージングの場所から 1 つまたは複数の SATA ディスクにデータをコピーします。
 
-    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](../storage/common/storage-import-export-service.md)」を参照してください。
+    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](../import-export/storage-import-export-service.md)」を参照してください。
 1. SATA ディスクを Azure データセンターに送信します。
 
     Azure データセンターでは、ディスク データが Azure ストレージ アカウントにコピーされます。 Azure Backup によってストレージ アカウントからコンテナーにデータがコピーされ、増分バックアップがスケジュールされます。

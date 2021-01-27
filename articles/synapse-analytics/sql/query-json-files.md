@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5703e4ac3d4a545041c7d258f0b1f0e7c79a33b5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8dc07a3aa954a74ba594eb99da1ea3ee59610c9b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462617"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678323"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して JSON ファイルのクエリを実行する
 
@@ -126,7 +126,7 @@ from openrowset(
 
 ### <a name="query-json-files-using-json_value"></a>JSON_VALUE を使用して JSON ファイルに対してクエリを実行する
 
-以下のクエリは、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、JSON ドキュメントからスカラー値 (タイトル、発行元) を取得する方法を示しています。
+以下のクエリは、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、JSON ドキュメントからスカラー値 (タイトル、発行元) を取得する方法を示しています。
 
 ```sql
 select
@@ -146,7 +146,7 @@ order by JSON_VALUE(doc, '$.geo_id') desc
 
 ### <a name="query-json-files-using-openjson"></a>OPENJSON を使用して JSON ファイルに対してクエリを実行する
 
-次のクエリでは [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用します。 これは、セルビアで報告された COVID の統計情報を取得します。
+次のクエリでは [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用します。 これは、セルビアで報告された COVID の統計情報を取得します。
 
 ```sql
 select

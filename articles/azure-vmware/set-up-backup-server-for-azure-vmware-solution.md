@@ -3,12 +3,12 @@ title: Azure VMware Solution 向けに Azure Backup Server を設定する
 description: Azure Backup Server を使用して仮想マシンをバックアップするように Azure VMware Solution 環境を設定します。
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517380"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703404"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware Solution 向けに Azure Backup Server を設定する
 
@@ -16,8 +16,8 @@ Azure Backup Server は、事業継続とディザスター リカバリー (BCD
 
 Azure Backup Server では次の場所にバックアップ データを格納できます。
 
-- **ディスク** : 短期的な記憶の場合、Azure Backup Server ではデータがディスク プールにバックアップされます。
-- **Azure** : 短期と長期両方のオフプレミスへの記憶の場合、ディスク プールに格納されている Azure Backup Server データを、Azure Backup を使用して Microsoft Azure クラウドにバックアップできます。
+- **ディスク**: 短期的な記憶の場合、Azure Backup Server ではデータがディスク プールにバックアップされます。
+- **Azure**: 短期と長期両方のオフプレミスへの記憶の場合、ディスク プールに格納されている Azure Backup Server データを、Azure Backup を使用して Microsoft Azure クラウドにバックアップできます。
 
 Azure Backup Server を使用して、データをソースまたは別の場所に復元します。 このように、予定されていた問題または予期しない問題のために元のデータを使用できない場合は、データを代わりの場所に復元できます。
 
@@ -107,7 +107,7 @@ Azure Backup Server にはインストール用のディスクが必要です。
 バックアップ データを Azure に格納すると、Azure Backup Server VM 上のバックアップ インフラストラクチャが減ります。 運用復旧 (バックアップ) の場合、Azure Backup Server では VM に接続された Azure ディスクにバックアップ データが格納されます。 ディスクと記憶域スペースが VM に接続された後は、記憶域は Azure Backup Server によって自動的に管理されます。 ストレージのサイズは、各 Azure VM に接続されているディスクの数とサイズによって変わります。 Azure VM の各サイズには、接続できるディスクの最大数があります。 たとえば、A2 は 4 ディスク、A3 は 8 ディスク、A4 は 16 ディスクです。 ここでも、ディスクのサイズと数によってバックアップ記憶域プールの合計容量が決まります。
 
 > [!IMPORTANT]
-> Azure Backup Server に接続されたディスク上に、運用復旧データを 5 日より長く保持しては " *いけません* "。 5 日より長く経過したデータは、Recovery Services コンテナーに格納します。
+> Azure Backup Server に接続されたディスク上に、運用復旧データを 5 日より長く保持しては "*いけません*"。 5 日より長く経過したデータは、Recovery Services コンテナーに格納します。
 
 Azure にバックアップ データを保存するには、Recovery Services コンテナーを作成または使用します。 Azure Backup Server ワークロードのバックアップを準備するときに、[Recovery Services コンテナーを構成](#create-a-recovery-services-vault)します。 構成が済むと、オンライン バックアップ ジョブが実行されるたびに、コンテナーに復旧ポイントが作成されます。 各 Recovery Services コンテナーには、最大 9,999 個の復旧ポイントが保持されます。 作成された復旧ポイントの数と保持期間によっては、バックアップ データを何年も保持できます。 たとえば、毎月の復旧ポイントを作成して 5 年間保持することができます。
 
@@ -118,9 +118,9 @@ Azure にバックアップ データを保存するには、Recovery Services �
 
 展開をスケーリングするには、次の選択肢があります。
 
-- **スケールアップ** :Azure Backup Server VM のサイズを A シリーズから DS3 シリーズに増やし、ローカル ストレージを増やします。
-- **データのオフロード** : 古いデータを Azure に送信し、Azure Backup Server マシンに接続されたストレージに最新のデータのみを保持します。
-- **スケールアウト** :Azure Backup Server マシンをさらに追加してワークロードを保護します。
+- **スケールアップ**:Azure Backup Server VM のサイズを A シリーズから DS3 シリーズに増やし、ローカル ストレージを増やします。
+- **データのオフロード**: 古いデータを Azure に送信し、Azure Backup Server マシンに接続されたストレージに最新のデータのみを保持します。
+- **スケールアウト**:Azure Backup Server マシンをさらに追加してワークロードを保護します。
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -142,7 +142,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    ![左側のメニューから、 [すべてのサービス] を選択します。](../backup/media/backup-create-rs-vault/click-all-services.png)
 
-1. **[すべてのサービス]** ダイアログ ボックスで「 **Recovery Services** 」と入力し、一覧から **Recovery Services コンテナー** を選択します。
+1. **[すべてのサービス]** ダイアログ ボックスで「**Recovery Services**」と入力し、一覧から **Recovery Services コンテナー** を選択します。
 
    ![[Recovery Services コンテナー] と入力して選択します。](../backup/media/backup-create-rs-vault/all-services.png)
 
@@ -158,10 +158,10 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    ![Recovery Services コンテナーを構成します。](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Name** :コンテナーを識別するフレンドリ名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
-   - **サブスクリプション** :使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+   - **Name**:コンテナーを識別するフレンドリ名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+   - **サブスクリプション**:使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
    - **[リソース グループ]** :既存のリソース グループを使用するか、新しいリソース グループを作成します。 サブスクリプションの使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン リストからリソースを選択します。 新しいリソース グループを作成するには、 **[新規作成]** を選択し、名前を入力します。
-   - **[場所]** :コンテナーの地理的リージョンを選択します。 Azure VMware Solution の仮想マシンを保護するためのコンテナーは、Azure VMware Solution のプライベート クラウドと同じリージョンに作成する " *必要があります* "。
+   - **[場所]** :コンテナーの地理的リージョンを選択します。 Azure VMware Solution の仮想マシンを保護するためのコンテナーは、Azure VMware Solution のプライベート クラウドと同じリージョンに作成する "*必要があります*"。
 
 1. Recovery Services コンテナーを作成する準備ができたら、 **[作成]** を選択します。
 
@@ -194,7 +194,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 1. Recovery Services コンテナーが既に開かれている場合は、次のステップに進みます。 Recovery Services コンテナーを開いておらず、Azure portal を表示している場合は、メイン メニューの **[参照]** を選択します。
 
-   1. リソースの一覧で、「 **Recovery Services** 」と入力します。
+   1. リソースの一覧で、「**Recovery Services**」と入力します。
 
    1. 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
@@ -210,7 +210,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    ![[設定] オプションが既定で開きます。 閉じている場合は、 [設定] を選択して開きます。](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
-1. **[バックアップ]** を選択して、 **作業の開始** ウィザードを開きます。
+1. **[バックアップ]** を選択して、**作業の開始** ウィザードを開きます。
 
    ![[バックアップ] を選択して、作業の開始ウィザードを開きます。](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
@@ -230,7 +230,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    1. **[ダウンロード]** リンクを選択して、Azure Backup Server をインストールします。
 
-   1. 1. **[Already downloaded or using the latest Azure Backup Server installation]\(既にダウンロード済み、または最新の Azure Backup Server インストールの使用\)** を選択し、 **[ダウンロード]** を選択してコンテナーの資格情報をダウンロードします。 Azure Backup Server を Recovery Services コンテナーに登録するときに、これらの資格情報を使用します。 リンク先のダウンロード センターで、ソフトウェア パッケージをダウンロードします。
+   1. **[Already downloaded or using the latest Azure Backup Server installation]\(既にダウンロード済み、または最新の Azure Backup Server インストールの使用\)** を選択し、 **[ダウンロード]** を選択してコンテナーの資格情報をダウンロードします。 Azure Backup Server を Recovery Services コンテナーに登録するときに、これらの資格情報を使用します。 リンク先のダウンロード センターで、ソフトウェア パッケージをダウンロードします。
 
    :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="インフラストラクチャの準備 - Azure Backup Server":::
 
@@ -248,7 +248,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 > [!WARNING]
 > セットアップ ファイルを抽出するには、少なくとも 4 GB の空き領域が必要です。
 
-1. すべてのファイルをダウンロードした後、 **MicrosoftAzureBackupInstaller.exe** をダブルクリックして **Microsoft Azure Backup** セットアップ ウィザードを開き、 **[次へ]** を選択します。
+1. すべてのファイルをダウンロードした後、**MicrosoftAzureBackupInstaller.exe** をダブルクリックして **Microsoft Azure Backup** セットアップ ウィザードを開き、 **[次へ]** を選択します。
 
 1. ファイルの抽出先の場所を選択し、 **[次へ]** を選択します。
 
@@ -263,7 +263,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 ### <a name="install-the-software-package"></a>ソフトウェア パッケージをインストールする
 
-1. セットアップ ウィンドウの **[インストール]** で、 **Microsoft Azure Backup** を選択してセットアップ ウィザードを開きます。
+1. セットアップ ウィンドウの **[インストール]** で、**Microsoft Azure Backup** を選択してセットアップ ウィザードを開きます。
 
    ![セットアップ ウィンドウの [インストール] で、Microsoft Azure Backup を選択してセットアップ ウィザードを開きます。](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
@@ -278,7 +278,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
    ![Azure Backup Server のインストール パッケージには、必要となる適切な SQL Server バイナリがバンドルされています。](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
-   > 独自の SQL Server インスタンスを使用する場合、サポートされる SQL Server のバージョンは、SQL Server 2014 SP1 以降、2016、2017 です。 すべての SQL Server のバージョンが、Standard または Enterprise 64 ビットである必要があります。 Azure Backup Server によって使用されるインスタンスは、ローカルのみにする必要があります。リモートにすることはできません。 Azure Backup Server で既存の SQL Server インスタンスを使用する場合は、セットアップでは、SQL Server の " *名前付きインスタンス* " の使用のみがサポートされます。
+   > 独自の SQL Server インスタンスを使用する場合、サポートされる SQL Server のバージョンは、SQL Server 2014 SP1 以降、2016、2017 です。 すべての SQL Server のバージョンが、Standard または Enterprise 64 ビットである必要があります。 Azure Backup Server によって使用されるインスタンスは、ローカルのみにする必要があります。リモートにすることはできません。 Azure Backup Server で既存の SQL Server インスタンスを使用する場合は、セットアップでは、SQL Server の "*名前付きインスタンス*" の使用のみがサポートされます。
 
    エラーが発生し、マシンの再起動を推奨された場合は、そのようにして、 **[再確認]** を選択します。 SQL Server の構成に問題がある場合は、SQL Server のガイドラインに従って SQL Server を再構成します。 その後、SQL Server の既存のインスタンスを使用して、Azure Backup Server のインストールまたはアップグレードを再試行します。
 
@@ -304,7 +304,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    * **[サービス アカウント]** : **[ビルトイン アカウントを使用する]** を **[ネットワーク サービス]** にする必要があります。
    * **[Web サービスの URL]** : **[仮想ディレクトリ]** を **ReportServer_\<SQLInstanceName>** にする必要があります。
-   * **データベース** : **[データベース名]** を **ReportServer$\<SQLInstanceName>** にする必要があります。
+   * **データベース**: **[データベース名]** を **ReportServer$\<SQLInstanceName>** にする必要があります。
    * **[Web ポータル URL]** : **[仮想ディレクトリ]** を **Reports_\<SQLInstanceName>** にする必要があります。
 
    SSRS の構成について詳しくは、[こちら](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode)をご覧ください。

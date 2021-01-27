@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0a73651b11c9ca6f7cb34deb755543c3b5a6d710
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f8e4925f721b307abd85a8b881caff3e5fc04fde
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042985"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685664"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
-Azure コマンドライン インターフェイスを使用して **IoT Edge の自動展開**を作成して、多数のデバイスの進行中のデプロイを一度に管理します。 IoT Edge の自動展開は、IoT Hub の[自動デバイス管理](../iot-hub/iot-hub-automatic-device-management.md)機能の一部です。 デプロイは、複数のモジュールを複数のデバイスにデプロイし、モジュールの状態と正常性を追跡し、必要に応じて変更できる動的プロセスです。
+Azure コマンドライン インターフェイスを使用して **IoT Edge の自動展開** を作成して、多数のデバイスの進行中のデプロイを一度に管理します。 IoT Edge の自動展開は、IoT Hub の[自動デバイス管理](../iot-hub/iot-hub-automatic-device-management.md)機能の一部です。 デプロイは、複数のモジュールを複数のデバイスにデプロイし、モジュールの状態と正常性を追跡し、必要に応じて変更できる動的プロセスです。
 
 詳細については、「[1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動展開について](module-deployment-monitoring.md)」を参照してください。
 
@@ -170,7 +170,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 
 ## <a name="identify-devices-using-tags"></a>タグを使用したデバイスの識別
 
-デプロイを作成する前に、影響を与えるデバイスを指定できる必要があります。 Azure IoT Edge では、デバイス ツイン内の**タグ**を使用してデバイスを識別します。 各デバイスには、対象のソリューションにとって意味のある方法で定義した複数のタグを設定することができます。 たとえば、スマート ビルのキャンパスを管理している場合は、デバイスに次のタグを追加できます。
+デプロイを作成する前に、影響を与えるデバイスを指定できる必要があります。 Azure IoT Edge では、デバイス ツイン内の **タグ** を使用してデバイスを識別します。 各デバイスには、対象のソリューションにとって意味のある方法で定義した複数のタグを設定することができます。 たとえば、スマート ビルのキャンパスを管理している場合は、デバイスに次のタグを追加できます。
 
 ```json
 "tags":{
@@ -191,7 +191,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 
 デプロイを作成するには、[az iot edge deployment create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) コマンドを使用します。
 
-```cli
+```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
@@ -224,7 +224,7 @@ Azure CLI を使用してデプロイを監視するには、「[IoT Edge デプ
 
 デプロイを更新するには、[az iot edge deployment update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) コマンドを使用します。
 
-```cli
+```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
@@ -245,7 +245,7 @@ deployment update コマンドは、次のパラメーターを受け取りま�
 
 デプロイを削除するには、[az iot edge deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) コマンドを使用します。
 
-```cli
+```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 

@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5e3d7e61b6c2a6ad3c121da9c0198c95ac24850
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265917"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694573"
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
-Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の Streamingendpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能が変更されます (詳細については、以下で説明する「**ストリーミングのタイプとバージョン**」のセクションを参照してください)。
+Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント** は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が **既定** の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の Streamingendpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能が変更されます (詳細については、以下で説明する「**ストリーミングのタイプとバージョン**」のセクションを参照してください)。
 
 Azure Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。**CdnProvider**、**CdnProfile**、**StreamingEndpointVersion**。 これらのプロパティについて詳しくは、[こちら](/rest/api/media/operations/streamingendpoint)をご覧ください。 
 
-Azure Media Services アカウントを作成すると、既定の標準ストリーミング エンドポイントが**停止**状態で作成されます。 既定のストリーミング エンドポイントは削除できません。 対象のリージョンで使用できる Azure CDN によっては、新しく作成された既定のストリーミング エンドポイントに "StandardVerizon" CDN プロバイダー統合も既定で含まれます。 
+Azure Media Services アカウントを作成すると、既定の標準ストリーミング エンドポイントが **停止** 状態で作成されます。 既定のストリーミング エンドポイントは削除できません。 対象のリージョンで使用できる Azure CDN によっては、新しく作成された既定のストリーミング エンドポイントに "StandardVerizon" CDN プロバイダー統合も既定で含まれます。 
                 
 > [!NOTE]
 > Azure CDN 統合は、ストリーミング エンドポイントを開始する前に無効にすることができます。 CDN を有効にするかどうかを問わず、`hostname` とストリーミング URL は同じままにします。
@@ -109,13 +109,13 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 クラシック|Standard|オプトインが必要
 クラシック|Premium| スケール (追加のストリーミング ユニット)
 Standard/Premium|クラシック|利用不可 (ストリーミング エンドポイントのバージョンが 1.0 の場合。 scaleunits を「0」に設定してクラシックに変更することは可能)
-Standard (CDN あり/なし)|同じ構成の Premium|**開始済み**状態で可能。 (Azure Portal 使用)
-Premium (CDN あり/なし)|同じ構成の Standard|**開始済み**状態で可能 (Azure Portal 使用)
-Standard (CDN あり/なし)|別の構成の Premium|**停止**状態で可能 (Azure Portal 使用)。 実行中の状態では不可。
-Premium (CDN あり/なし)|別の構成の Standard|**停止**状態で可能 (Azure Portal 使用)。 実行中の状態では不可。
-バージョン 1.0、SU > = 1、CDN あり|CDN なしの Standard/Premium|**停止**状態で可能。 **開始済み**状態では不可。
-バージョン 1.0、SU > = 1、CDN あり|Standard、CDN あり/なし|**停止**状態で可能。 **開始済み**状態では不可。 バージョン 1.0 の CDN は削除し、新しい CDN を作成して起動。
-バージョン 1.0、SU > = 1、CDN あり|Premium、CDN あり/なし|**停止**状態で可能。 **開始済み**状態では不可。 クラシック CDN は削除し、新しい CDN を作成して起動。
+Standard (CDN あり/なし)|同じ構成の Premium|**開始済み** 状態で可能。 (Azure Portal 使用)
+Premium (CDN あり/なし)|同じ構成の Standard|**開始済み** 状態で可能 (Azure Portal 使用)
+Standard (CDN あり/なし)|別の構成の Premium|**停止** 状態で可能 (Azure Portal 使用)。 実行中の状態では不可。
+Premium (CDN あり/なし)|別の構成の Standard|**停止** 状態で可能 (Azure Portal 使用)。 実行中の状態では不可。
+バージョン 1.0、SU > = 1、CDN あり|CDN なしの Standard/Premium|**停止** 状態で可能。 **開始済み** 状態では不可。
+バージョン 1.0、SU > = 1、CDN あり|Standard、CDN あり/なし|**停止** 状態で可能。 **開始済み** 状態では不可。 バージョン 1.0 の CDN は削除し、新しい CDN を作成して起動。
+バージョン 1.0、SU > = 1、CDN あり|Premium、CDN あり/なし|**停止** 状態で可能。 **開始済み** 状態では不可。 クラシック CDN は削除し、新しい CDN を作成して起動。
 
 ## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。

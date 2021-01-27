@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: e841d1922beb3f0276ff94cacbbdf566b23cdf6e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d6e64ed7476b3f9fd5427c2f3d26855bc4d5f97d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017286"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695765"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
@@ -34,7 +34,7 @@ Media Services を使い始める場合、コーデックとファイル形式�
 
 Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはSmooth Streamingでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 ストリーミング エンドポイントの課金は、エンドポイントが**実行中**状態のときに発生します。
+Media Services アカウントの作成時に、**既定** のストリーミング エンドポイントが **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。 ストリーミング エンドポイントの課金は、エンドポイントが **実行中** 状態のときに発生します。
 
 Media Services では、次のオンデマンド エンコーダーがサポートされています。
 

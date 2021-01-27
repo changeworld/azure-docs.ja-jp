@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895598"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684074"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "92895598"
 
 Azure AD の認証を行うセキュリティで保護された Web サービス アプリケーションを作成します。 
 
-1. Azure portal で関数を作成します。 詳細については、[Azure 関数の作成](../azure-functions/functions-create-first-azure-function.md)に関する記事を参照してください。
+1. Azure portal で関数を作成します。 詳細については、[Azure 関数の作成](../azure-functions/functions-get-started.md)に関する記事を参照してください。
 
 2. シングル ページ Web アプリケーションからアクセスできるように、Azure 関数で CORS ポリシーを構成します。 これにより、ブラウザー クライアントが Web アプリケーションの許可された配信元に安全にアクセスできるようになります。 詳細については、「[CORS 機能の追加](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality)」を参照してください。
 
@@ -102,7 +102,7 @@ Azure AD の認証を行うセキュリティで保護された Web サービス
 
 ## <a name="grant-role-based-access"></a>ロールベースのアクセス権を付与する
 
-" *Azure ロールベースのアクセス制御 (Azure RBAC)* " のアクセス権を付与するには、システム割り当て ID を 1 つ以上の Azure ロールの定義に割り当てます。 Azure Maps に使用できる Azure ロールの定義を表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「 *Azure Maps* 」で始まるロールを検索します。
+"*Azure ロールベースのアクセス制御 (Azure RBAC)* " のアクセス権を付与するには、システム割り当て ID を 1 つ以上の Azure ロールの定義に割り当てます。 Azure Maps に使用できる Azure ロールの定義を表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。
 
 1. **[Azure Maps アカウント]** にアクセスします。 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]** の順に選択します。
 

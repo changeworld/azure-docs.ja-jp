@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041983"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694732"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Azure Media Services で Azure AD Authentication を使用する場合は、次の 2 つの方法のいずれかで認証できます。
 
-- **ユーザー認証** : Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
-- **サービス プリンシパルの認証** : サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
+- **ユーザー認証**: Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
+- **サービス プリンシパルの認証**: サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
     このチュートリアルでは、Azure AD サービス **プリンシパル認証** を使用して、REST で AMS API にアクセスする方法を説明します。 
 
     > [!NOTE]
-    > Azure Media Services に接続するほとんどのアプリケーションでは、 **サービス プリンシパル** が推奨されるベスト プラクティスです。 
+    > Azure Media Services に接続するほとんどのアプリケーションでは、**サービス プリンシパル** が推奨されるベスト プラクティスです。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -124,7 +124,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 ## <a name="get-the-access-token-using-postman"></a>Postman を使用してアクセス トークンを取得する
 
-このセクションでは、 **Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token* " という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
+このセクションでは、**Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token*" という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
 
 1. **Postman** を開きます。
 2. **[POST]** を選択します。
@@ -166,7 +166,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>アクセス トークンを使用して **Assets** API をテストする
 
-このセクションでは、 **Postman** を使用して **Assets** API にアクセスする方法について説明します。
+このセクションでは、**Postman** を使用して **Assets** API にアクセスする方法について説明します。
 
 1. **Postman** を開きます。
 2. **[GET]** を選択します。

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2b6ea68d069b90293ab35024bebf3fbdc8acb592
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: f275064bd4accd0ca12acf3e71713f39d3860be2
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197678"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696457"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
@@ -25,7 +25,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 
 |Application |クラスターのタイプ | 説明 |
 |---|---|---|
-|[AtScale Intelligence Platform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |AtScale では、HDInsight クラスターがスケールアウト OLAP サーバーに変換され、Microsoft Excel、Power BI、Tableau Software、QlikView など、ユーザーが既に所有し慣れ親しんでいる BI ツールを使用して、何十億ものデータ行を対話形式でクエリすることができます。 |
+|[AtScale Intelligence Platform](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |AtScale では、HDInsight クラスターがスケールアウト OLAP サーバーに変換され、Microsoft Excel、Power BI、Tableau Software、QlikView など、ユーザーが既に所有し慣れ親しんでいる BI ツールを使用して、何十億ものデータ行を対話形式でクエリすることができます。 |
 |[CDAP for HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |hbase |CDAP は、Hadoop の評価時間を加速し、IT によるセルフサービス データの提供を可能にする、史上初の一元管理されたビッグ データ用統合プラットフォームです。 オープン ソースかつ拡張可能な CDAP により、イノベーションへの障壁が取り除かれます。 要件:4 つのリージョン ノード、最小 D3 v2。 |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |分析用のデータを準備、調査、および管理するための Datameer のセルフサービスかつスケーラブルなプラットフォームでは、複雑なマルチソース データのビジネスに即応できる貴重な情報への転換を加速することにより、エンタープライズ クラスのより迅速で、より高度な洞察が可能になります。 |
 |[Dataiku DSS on HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop、Spark |エンタープライズ データ サイエンス プラットフォームの Dataiku DSS では、データ サイエンティストやデータ アナリストが共同作業を行い、新しいデータ製品およびサービスをより効率的に設計し実行して、生データをインパクトのある予測に変換することができます。 |

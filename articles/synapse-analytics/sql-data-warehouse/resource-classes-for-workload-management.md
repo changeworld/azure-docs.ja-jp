@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289533"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685329"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure Synapse Analytics のリソース クラスを使用したワークロード管理
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 リソース クラスは、ユーザーにデータベース ロールを割り当てることによって実装されます。 ユーザーがクエリを実行すると、クエリはユーザーのリソース クラスで実行されます。 たとえば、ユーザーが staticrc10 データベース ロールのメンバーの場合、クエリは少量のメモリを使用して実行されます。 データベース ユーザーが xlargerc または staticrc80 データベース ロールのメンバーの場合、クエリは大量のメモリを使用して実行されます。
 
-ユーザーのリソース クラスを大きくするには、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、ユーザーをより大きなリソース クラスのデータベース ロールに追加します。  次のコードでは、largerc データベース ロールにユーザーを追加します。  各要求はシステム メモリの 22% を取得します。
+ユーザーのリソース クラスを大きくするには、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、ユーザーをより大きなリソース クラスのデータベース ロールに追加します。  次のコードでは、largerc データベース ロールにユーザーを追加します。  各要求はシステム メモリの 22% を取得します。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-リソース クラスを小さくするには、[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用します。  'loaduser' が他のどのリソース クラスのメンバーでもない場合、既定の smallrc リソース クラスに、3% のメモリを割り当てられて追加されます。  
+リソース クラスを小さくするには、[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用します。  'loaduser' が他のどのリソース クラスのメンバーでもない場合、既定の smallrc リソース クラスに、3% のメモリを割り当てられて追加されます。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

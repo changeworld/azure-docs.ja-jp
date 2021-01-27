@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 67cb4868ee8d4190c47e23315bf2a22e5c847ff1
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8144c588d4b6794cadc0577bf63dabc2cc3e0efd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121177"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677288"
 ---
 # <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Azure Synapse の SQL プールでトランザクションを使用する 
 
@@ -30,7 +30,7 @@ ms.locfileid: "98121177"
 
 SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー SQL プールの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
 
-有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を確認してください。
+有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を確認してください。
 
 ## <a name="transaction-size"></a>トランザクション サイズ
 

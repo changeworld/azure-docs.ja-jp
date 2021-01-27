@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: bc101e6bb743b9290593937a4d1bac656430b438
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120038"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685312"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL プール向けの開発に関するベスト プラクティス
 
@@ -24,7 +24,7 @@ ms.locfileid: "98120038"
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>新しい製品の機能強化でクエリのパフォーマンスを調整する
 
-- [マテリアライズドビューを使用したパフォーマンスのチューニング](performance-tuning-materialized-views.md)
+- [具体化されたビューを使用したパフォーマンスのチューニング](performance-tuning-materialized-views.md)
 - [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](performance-tuning-ordered-cci.md)
 - [結果セットのキャッシュを使用したパフォーマンスのチューニング](performance-tuning-result-set-caching.md)
 
@@ -80,7 +80,7 @@ SQL プールでは、バックグラウンドでデータを 60 個のデータ
 
 パーティション分割されていないテーブルについては、DELETE を使用する代わりに、CTAS を使用して、テーブルに保持するデータを書き込むことを検討してください。  CTAS にかかる時間が同じ場合でも、トランザクション ログが最小限に抑えられ、必要なときにすばやく取り消すことができるため、CTAS は非常に安全に実行できる操作です。
 
-[トランザクションの概要](sql-data-warehouse-develop-transactions.md)、[トランザクションの最適化](sql-data-warehouse-develop-best-practices-transactions.md)、[テーブル パーティション](sql-data-warehouse-tables-partition.md)、[TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md) に関するページも参照してください。
+[トランザクションの概要](sql-data-warehouse-develop-transactions.md)、[トランザクションの最適化](sql-data-warehouse-develop-best-practices-transactions.md)、[テーブル パーティション](sql-data-warehouse-tables-partition.md)、[TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md) に関するページも参照してください。
 
 ## <a name="use-the-smallest-possible-column-size"></a>できる限り最小の列サイズを使用する
 
@@ -114,7 +114,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 > [!TIP]
 > 列ストア テーブルに対してクエリを実行する場合は、必要な列のみを選択すると、クエリの実行速度が向上します。  
 
-[テーブル インデックス](sql-data-warehouse-tables-index.md)、[列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[列ストア インデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)に関するページも参照してください。
+[テーブル インデックス](sql-data-warehouse-tables-index.md)、[列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[列ストア インデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)に関するページも参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

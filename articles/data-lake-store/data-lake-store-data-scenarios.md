@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452235"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702499"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -88,7 +88,7 @@ Web サーバー ログ データをアップロードする場合、または�
 数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。 このような場合は、次のオプションを使用できます。
 
 * **Azure ExpressRoute の使用**。 Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。 これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)をご覧ください。
-* **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../storage/common/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage Blob から Data Lake Storage Gen1 にデータをコピーできます。
+* **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../import-export/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage Blob から Data Lake Storage Gen1 にデータをコピーできます。
 
   > [!NOTE]
   > Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 195 GB 以下である必要があります。

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 103e4453ecf848822db0d82bc13e93b0c8c68331
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654627"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702136"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -66,7 +66,7 @@ A. Data Box Disk は配送先と同じ国/地域内でのデータ インジェ�
 
 ### <a name="option-1"></a>オプション 1:  
 
-データを含む[サポートされているディスク](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)を、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)を使用して、カナダのソースの場所から Azure 米国西部のデータセンターに発送します。
+データを含む[サポートされているディスク](../import-export/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)を、[Azure Import/Export サービス](../import-export/storage-import-export-service.md)を使用して、カナダのソースの場所から Azure 米国西部のデータセンターに発送します。
 
 ### <a name="option-2"></a>オプション 2:
 

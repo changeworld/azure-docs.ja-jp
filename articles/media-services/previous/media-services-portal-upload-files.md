@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb301cd719d98d806e2a9e539cd81e6778461bb
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257060"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695308"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード
 
@@ -32,7 +32,7 @@ ms.locfileid: "89257060"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 ポータルを使用した最新のアップロード ファイルについては、「[ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信](../latest/manage-assets-quickstart.md)」を参照してください。<br/>また、次の項目も確認してください。[Media Services v3](../latest/index.yml)。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 ポータルを使用した最新のアップロード ファイルについては、「[ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信](../latest/manage-assets-quickstart.md)」を参照してください。<br/>また、次の項目も確認してください。[Media Services v3](../latest/index.yml)。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Azure Media Services で、デジタル ファイルをアセットにアップロードします。 アセットには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (および各ファイルのメタデータ) を含めることができます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 

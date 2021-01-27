@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233748"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678114"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -534,7 +534,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 応答時間と外部コードの呼び出しの成功率を追跡するには、TrackDependency 呼び出しを使用します。 結果は、ポータルの依存関係グラフに表示されます。 依存関係呼び出しが行われるたびに、以下のコード スニペットを追加する必要があります。
 
 > [!NOTE]
-> .NET および .NET Core の場合は、関連付けに必要な `DependencyTelemetry` プロパティと、開始時刻や期間などの他のプロパティを設定する `TelemetryClient.StartOperation` (拡張機能) メソッドを代わりに使用できるため、下の例のようにカスタム タイマーを作成する必要はありません。 詳細については、こちらの記事の[出力方向の依存関係の追跡に関するセクション](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)を参照してください。
+> .NET および .NET Core の場合は、関連付けに必要な `DependencyTelemetry` プロパティと、開始時刻や期間などの他のプロパティを設定する `TelemetryClient.StartOperation` (拡張機能) メソッドを代わりに使用できるため、下の例のようにカスタム タイマーを作成する必要はありません。 詳細については、こちらの記事の[出力方向の依存関係の追跡に関するセクション](./custom-operations-tracking.md#outgoing-dependencies-tracking)を参照してください。
 
 *C#*
 

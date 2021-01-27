@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860305"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678206"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -28,7 +28,7 @@ ms.locfileid: "96860305"
 
 継続的アクセス評価の初期実装では、Exchange、Teams、SharePoint Online に重点を置いています。
 
-CAE を使用するようにアプリケーションを準備する方法については、「[継続的アクセス評価が有効になった API をアプリケーションで使用する方法](/azure/active-directory/develop/app-resilience-continuous-access-evaluation)」を参照してください。
+CAE を使用するようにアプリケーションを準備する方法については、「[継続的アクセス評価が有効になった API をアプリケーションで使用する方法](../develop/app-resilience-continuous-access-evaluation.md)」を参照してください。
 
 ### <a name="key-benefits"></a>主な利点
 

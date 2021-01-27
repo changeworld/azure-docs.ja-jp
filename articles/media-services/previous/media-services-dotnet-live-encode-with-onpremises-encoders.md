@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d513a11761fec64c8d0732a61740475be52d727f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 438e13abc04c959895cd371dfc29ce93d9b63f41
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262035"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695630"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>.NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "89262035"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 このチュートリアルでは、Azure Media Services .NET SDK を使用して、パススルー配信用に構成された **チャネル** を作成する手順を紹介します。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "89262035"
 
 * Azure アカウント。
 * Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
-* コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
+* コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態であることを確認してください。 
 * 開発環境の設定。 詳細については、「 [環境を設定する](media-services-set-up-computer.md)」を参照してください。
 * Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](media-services-configure-wirecast-live-encoder.md)。
 

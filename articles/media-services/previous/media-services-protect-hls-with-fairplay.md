@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2f9b3cdd0b2080a26a9b1948263a7638dc66f2b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7290b5972bc81555bce102446923efd59ed2b34
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259746"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695139"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 >
 
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
@@ -39,7 +39,7 @@ Azure Media Services では、次の形式を使用して HTTP ライブ スト�
     **AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。 **FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。 OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。
 * **Microsoft PlayReady**
 
-次の図は、**HLS + FairPlay または PlayReady 動的暗号化**ワークフローを示しています。
+次の図は、**HLS + FairPlay または PlayReady 動的暗号化** ワークフローを示しています。
 
 ![動的暗号化ワークフローの図](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 

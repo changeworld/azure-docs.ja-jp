@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435102"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685066"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>プロビジョニング エージェントを使用せずに一般化されたイメージを作成する
 
@@ -180,7 +180,7 @@ VM に Python がインストールされていないか使用できない場合
 
 このデモでは、最新の Linux ディストリビューションの最も一般的な init システムである systemd を使用します。 そのため、この準備完了の報告メカニズムを適切なタイミングで実行するための最も簡単でネイティブな方法は、systemd サービス ユニットを作成することです。 次のユニット ファイルを `/etc/systemd/system` に追加できます (この例では、ユニット ファイル `azure-provisioning.service`)。
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ WantedBy=multi-user.target
 
 filesystem のユニットで、次を実行して有効にします。
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ $ sudo systemctl enable azure-provisioning.service
 
 開発用マシンに戻り、次を実行して、ベース VM からイメージを作成できるように準備します。
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 この VM からイメージを作成します。
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 これで、イメージから新しい VM (または複数の VM) を作成する準備ができました。
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 この VM は正常にプロビジョニングするはずです。 新しくプロビジョニングする VM にログインすると、準備完了の報告を行う systemd サービスの出力を確認できるようになります。
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

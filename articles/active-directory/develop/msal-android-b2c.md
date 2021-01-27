@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131646"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680367"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 
@@ -36,7 +36,7 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 
 アプリ用の構成ファイルの場合、2 つの `authorities` が宣言されます。 ポリシーごとに 1 つです。 各機関の `type` プロパティは `B2C` です。
 
->注:B2C アプリケーションの場合、`account_mode` を **MULTIPLE** に設定する必要があります。 [複数のアカウントのパブリック クライアント アプリ](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application)の詳細については、ドキュメントを参照してください。
+>注:B2C アプリケーションの場合、`account_mode` を **MULTIPLE** に設定する必要があります。 [複数のアカウントのパブリック クライアント アプリ](./single-multi-account.md#multiple-account-public-client-application)の詳細については、ドキュメントを参照してください。
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json

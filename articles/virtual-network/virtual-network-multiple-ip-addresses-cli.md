@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217092"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680571"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -38,7 +38,7 @@ ms.locfileid: "98217092"
 3. コマンド シェルで、`az login` コマンドを使用してログインし、使用中のサブスクリプションを選択します。
 4. 以下のスクリプトを Linux または Mac コンピューターで実行して、VM を作成します。 このスクリプトは、リソース グループ、1 つの仮想ネットワーク (VNet)、3 つの IP 構成を持つ 1 つの NIC、この NIC が関連付けられた VM を作成します。 NIC、パブリック IP アドレス、仮想ネットワーク、および VM リソースはすべて、同一の場所およびサブスクリプション内に存在する必要があります。 すべてのリソースが同一のリソース グループ内に存在する必要はありませんが、以下のスクリプトでは同一グループ内に配置しています。
 
-```bash
+```azurecli
     
 #!/bin/sh
     

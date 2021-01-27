@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267736"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696474"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 この記事では、Webhook を使用する方法を説明します。
 
@@ -132,7 +132,7 @@ project.json ファイルには、依存関係が含まれています。
 
 Webhook は、署名キー (資格情報) が通知エンドポイントを構成するときに渡される署名キーと一致していることを想定しています。 署名キーは、Azure Media Services からの Webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
 
-次の webhook 定義コードでは、**VerifyWebHookRequestSignature** メソッドが、通知メッセージを検証します。 この検証の目的は、メッセージが Azure Media Services によって送信されており、改ざんされていないことを確認することです。 この署名は、トランスポート層セキュリティ (TLS) 経由のクエリ パラメーターとして**コード**値を含んでいるため、Azure Functions では省略可能です。 
+次の webhook 定義コードでは、**VerifyWebHookRequestSignature** メソッドが、通知メッセージを検証します。 この検証の目的は、メッセージが Azure Media Services によって送信されており、改ざんされていないことを確認することです。 この署名は、トランスポート層セキュリティ (TLS) 経由のクエリ パラメーターとして **コード** 値を含んでいるため、Azure Functions では省略可能です。 
 
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。

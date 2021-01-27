@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: fc89790c7d268bcfa0c08bd26249bc91979d7fca
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7fb84d544138b771170f95b5df71c33087252564
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186900"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679485"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -113,7 +113,7 @@ Azure portal で、各仮想マシンのホストについて収集されたプ�
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
 ```
 
-```CLI
+```azurecli
 az monitor diagnostic-settings create \
 --name VM-Diagnostics 
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \

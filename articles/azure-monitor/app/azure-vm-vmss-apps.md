@@ -3,12 +3,12 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6bc70b3d9a1a7a2d3fffb71ad28f2cf64cbd323b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461732"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677945"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -17,7 +17,7 @@ ms.locfileid: "96461732"
 この記事では、Application Insights エージェントを使用した Application Insights 監視の有効化について説明した後、大規模なデプロイのプロセスを自動化するための事前ガイダンスを提供します。
 
 > [!IMPORTANT]
-> **Azure VM と VMSS** で実行される ASP.NET アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.Net アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)を使用します。これは一般提供されていて完全にサポートされます。
+> **Azure VM と VMSS** で実行される ASP.NET アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.Net アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](./status-monitor-v2-overview.md)を使用します。これは一般提供されていて完全にサポートされます。
 > Azure VM と VMSS のプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めしません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 

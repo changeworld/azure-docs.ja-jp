@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117777"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677106"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに Azure Data Lake Storage からデータを読み込む
 
-このガイドでは、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 すべての認証方法で COPY ステートメントを使用する簡単な例については、[専用 SQL プールを使用してデータを安全に読み込む](./quickstart-bulk-load-copy-tsql-examples.md)に関する記事を参照してください。
+このガイドでは、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 すべての認証方法で COPY ステートメントを使用する簡単な例については、[専用 SQL プールを使用してデータを安全に読み込む](./quickstart-bulk-load-copy-tsql-examples.md)に関する記事を参照してください。
 
 > [!NOTE]  
 > COPY ステートメントに関するご意見や問題の報告は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) をダウンロードしてインストールします。
 
 このチュートリアルを実行するには、次のものが必要です。
 
@@ -133,6 +133,6 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > [データ ウェアハウス用のテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)
 
 読み込みの例とリファレンスに関する詳細については、次のドキュメントを確認してください。
-- [COPY ステートメントのリファレンス ドキュメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [COPY ステートメントのリファレンス ドキュメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [各認証方法での COPY の例](./quickstart-bulk-load-copy-tsql-examples.md)
 - [単一テーブルでの COPY に関するクイック スタート](./quickstart-bulk-load-copy-tsql.md)

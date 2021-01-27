@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453637"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685193"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) をセキュリティで保護する
 
@@ -81,9 +81,9 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 ユーザーがデータベースで実行できる操作をさらに制限する方法がいくつかあります。
 
-* 詳細な[アクセス許可](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)により、データベース内の個々の列、テーブル、ビュー、スキーマ、プロシージャ、およびその他のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。
-* db_datareader と db_datawriter 以外の[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。 組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
-* [ストアド プロシージャ](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用すると、データベースで実行できるアクションを制限できます。
+* 詳細な[アクセス許可](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)により、データベース内の個々の列、テーブル、ビュー、スキーマ、プロシージャ、およびその他のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。
+* db_datareader と db_datawriter 以外の[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。 組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
+* [ストアド プロシージャ](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用すると、データベースで実行できるアクションを制限できます。
 
 次の例では、ユーザー定義スキーマに対する読み取りアクセス許可を付与します。
 
@@ -98,7 +98,7 @@ Azure portal または Azure Resource Manager API を使用したデータベー
 
 Transparent Data Encryption (TDE) を使用すると、保存データを暗号化および暗号化解除することにより、悪意のあるアクティビティの脅威から保護できます。 データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。 TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。
 
-SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 使用される暗号化アルゴリズムは、AES-256 です。 TDE の一般的な説明については、「 [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 使用される暗号化アルゴリズムは、AES-256 です。 TDE の一般的な説明については、「 [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 データベースは、[Azure portal](sql-data-warehouse-encryption-tde.md) または [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) を使用して暗号化できます。
 

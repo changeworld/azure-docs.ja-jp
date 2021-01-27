@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 10e43332728ea70d27c08cf4d3dfe116c83b3f1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120106"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679806"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用したデータの読み込みのベスト プラクティス
 
@@ -47,7 +47,7 @@ ORC ファイル形式でデータをエクスポートすると、大きなテ�
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-専用 SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
+専用 SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -79,7 +79,7 @@ ORC ファイル形式でデータをエクスポートすると、大きなテ�
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>複数のユーザーによる読み込みの許可 (PolyBase)
 
-多くの場合、複数のユーザーが 1 つの専用 SQL プールにデータを読み込む必要があります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。
+多くの場合、複数のユーザーが 1 つの専用 SQL プールにデータを読み込む必要があります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (PolyBase) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。
 
 読み込みを実行するすべてのユーザーに、すべてのスキーマに対する制御アクセス権を付与したくない場合があります。 アクセス許可を制限するには、DENY CONTROL ステートメントを使用します。
 
@@ -114,7 +114,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SqLBulkCopy API または bcp を使用するときはバッチ サイズを増やす
 
-COPY ステートメントを使用して読み込むと、専用 SQL プールで最大のスループットが得られます。 COPY を使用して読み込むことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
+COPY ステートメントを使用して読み込むと、専用 SQL プールで最大のスループットが得られます。 COPY を使用して読み込むことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
 
 > [!TIP]
 > 最適なバッチ サイズの容量を決定するために推奨されるベースラインは、10 万行から 100 万行のバッチ サイズです。
@@ -130,11 +130,11 @@ COPY ステートメントを使用して読み込むと、専用 SQL プール�
 
 ダーティなレコードを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。
 
-外部データ レコードのサブセットがダーティである場合は、[CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
+外部データ レコードのサブセットがダーティである場合は、[CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
 
 ## <a name="inserting-data-into-a-production-table"></a>運用テーブルにデータを挿入する
 
-[INSERT ステートメント](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)で小さなテーブルに 1 回だけ読み込む場合や、検索を定期的に再読み込みする場合は、`INSERT INTO MyLookup VALUES (1, 'Type 1')` などのステートメントで十分です。  ただし、単一挿入は、一括読み込みを実行するほど効率的ではありません。
+[INSERT ステートメント](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)で小さなテーブルに 1 回だけ読み込む場合や、検索を定期的に再読み込みする場合は、`INSERT INTO MyLookup VALUES (1, 'Type 1')` などのステートメントで十分です。  ただし、単一挿入は、一括読み込みを実行するほど効率的ではありません。
 
 一日に何千もの単一の挿入がある場合は、一括読み込みができるように、挿入をバッチ化します。  単一の挿入をファイルに追加する処理を開発し、定期的にファイルを読み込む別の処理を作成します。
 
@@ -158,7 +158,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 Azure Storage のアカウント キーを切り替えるには:
 
-キーが変更されているストレージ アカウントごとに、[ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を発行します。
+キーが変更されているストレージ アカウントごとに、[ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を発行します。
 
 例:
 

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196505"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684544"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder サービスの DevOps タスク
 
@@ -71,10 +71,10 @@ Image Builder が実行されるサブスクリプションをドロップダウ
  
 ### <a name="location"></a>場所
 
-場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](../windows/image-builder-overview.md#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Shared Image Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
+場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](../image-builder-overview.md#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Shared Image Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
 
 ### <a name="managed-identity-required"></a>マネージド ID (必須)
-Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、[こちら](./image-builder-overview.md#permissions)を参照してください。
+Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、[こちら](../image-builder-overview.md#permissions)を参照してください。
 
 ### <a name="vnet-support"></a>VNET のサポート
 
@@ -335,4 +335,4 @@ template name:  t_1556938436xxx
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、[Azure Image Builder の概要](image-builder-overview.md)に関する記事をご覧ください。
+詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事をご覧ください。

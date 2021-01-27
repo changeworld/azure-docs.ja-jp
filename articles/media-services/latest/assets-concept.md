@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 99101f31ec955c822c784180dd8b04bfb8e5f73c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6f4cfcc07496179908c8349f4282a7633379cd3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695825"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure Media Services v3 のアセット
 
@@ -30,7 +30,7 @@ Azure Media Services では、[アセット](/rest/api/media/assets)は中核的
 
 Media Services は、アカウントが汎用 v2 (GPv2) ストレージを使用している場合に、BLOB 層をサポートします。 GPv2 を使用して、[クール ストレージまたはアーカイブ ストレージ](../../storage/blobs/storage-blob-storage-tiers.md)にファイルを移動できます。 **アーカイブ** ストレージは、(エンコード後などに) 不要になったソース ファイルをアーカイブするのに適しています。
 
-**アーカイブ** ストレージ層は、既にエンコードされ、エンコード ジョブの出力が出力 BLOB コンテナーに配置されている非常に大きなソース ファイルの場合のみ推奨されます。 アセットに関連付け、コンテンツのストリーム配信や分析に使用する出力コンテナー内の BLOB は、**ホット**または**クール** ストレージ層に存在する必要があります。
+**アーカイブ** ストレージ層は、既にエンコードされ、エンコード ジョブの出力が出力 BLOB コンテナーに配置されている非常に大きなソース ファイルの場合のみ推奨されます。 アセットに関連付け、コンテンツのストリーム配信や分析に使用する出力コンテナー内の BLOB は、**ホット** または **クール** ストレージ層に存在する必要があります。
 
 ## <a name="naming"></a>名前を付ける 
 
@@ -48,4 +48,4 @@ Media Services は、アカウントが汎用 v2 (GPv2) ストレージを使用
 
 ## <a name="see-also"></a>関連項目
 
-[Media Services v2 と v3 の違い](migrate-from-v2-to-v3.md)
+[Media Services v2 と v3 の違い](migrate-v-2-v-3-migration-introduction.md)

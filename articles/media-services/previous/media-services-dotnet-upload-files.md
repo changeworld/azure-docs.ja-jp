@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9e9f1dc0ce303b45ad2d43c0c9365edc197f7d8e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250541"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695596"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Media Services で、デジタル ファイルをアセットにアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-アセット内のこれらのファイルを **アセットファイル**といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+アセット内のこれらのファイルを **アセットファイル** といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -167,7 +167,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 アップロードする資産の数が多い場合は、次の点を考慮してください。
 
 * **CloudMediaContext** オブジェクトは、スレッドごとに作成してください。 **CloudMediaContext** クラスはスレッドセーフではありません。
-* NumberOfConcurrentTransfers を既定値の 2 から、たとえば 5 のようなより大きな値に増やしてください。 このプロパティの設定は、 **CloudMediaContext**のすべてのインスタンスに影響を与えます。 
+* NumberOfConcurrentTransfers を既定値の 2 から、たとえば 5 のようなより大きな値に増やしてください。 このプロパティの設定は、 **CloudMediaContext** のすべてのインスタンスに影響を与えます。 
 * ParallelTransferThreadCount は、既定値の 10 のままにしてください。
 
 ## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Media Services .NET SDK を使用したアセットの一括取り込み
@@ -239,7 +239,7 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 
 **IngestManifest** の Statistics プロパティをポーリングすることによって、**IngestManifest** に関連付けられているすべての資産の一括インジェストの進行状況を確認できます。 進行状況の情報を更新するためには、Statistics プロパティをポーリングするごとに、新しい **CloudMediaContext** を使用する必要があります。
 
-次の例では、IngestManifest を、その **Id**でポーリングしています。
+次の例では、IngestManifest を、その **Id** でポーリングしています。
 
 ```csharp
     static void MonitorBulkManifest(string manifestID)

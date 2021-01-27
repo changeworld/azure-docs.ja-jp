@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a735817f59e43e1a9e5d2a513f1ad397f18aab8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 92a0cc93b4d159a4ba87c1cadc2d0dedc0a28b2d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232320"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683812"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -168,7 +168,7 @@ Azure portal でデバイスの設定を表示または管理するには、次�
 - **Azure AD 参加または Azure AD 登録となるデバイスには多要素認証が必須** - デバイスを Azure AD に参加させるか、登録するための追加認証要素を提供するよう、ユーザーに求めることを選択できます。 既定値は **No** です。 デバイスの登録または参加時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure AD Multi-Factor Authentication サービスの詳細については、[Azure AD Multi-Factor Authentication の概要](../authentication/concept-mfa-howitworks.md)に関するページを参照してください。 
 
 > [!NOTE]
-> **Azure AD 参加または Azure AD 登録となるデバイスには多要素認証が必須** になるようにする設定は、Azure AD 参加 (一部の例外あり) または Azure AD 登録のデバイスに適用されます。 この設定は、Hybrid Azure AD Join を使用したデバイス、[Azure 内の Azure AD 参加済み VM](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure)、および [Windows Autopilot の自己デプロイ モード](/mem/autopilot/self-deploying)を使用する Azure AD 参加済みデバイスには適用されません。
+> **Azure AD 参加または Azure AD 登録となるデバイスには多要素認証が必須** になるようにする設定は、Azure AD 参加 (一部の例外あり) または Azure AD 登録のデバイスに適用されます。 この設定は、Hybrid Azure AD Join を使用したデバイス、[Azure 内の Azure AD 参加済み VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure)、および [Windows Autopilot の自己デプロイ モード](/mem/autopilot/self-deploying)を使用する Azure AD 参加済みデバイスには適用されません。
 
 - **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができる、Azure AD に参加しているか Azure AD に登録されているデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 既定値は **50** です。
 

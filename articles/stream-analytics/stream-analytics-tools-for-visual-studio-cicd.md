@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019892"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693377"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>統合と開発に Azure Stream Analytics CI/CD NuGet パッケージを使用する 
 この記事では、Azure Stream Analytics CI/CD NuGet パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
@@ -51,7 +51,7 @@ parameters.json ファイルの既定のパラメーターは、Visual Studio �
       "value": null
     },
 ```
-[Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を確認してください。
+[Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](../azure-resource-manager/templates/deploy-powershell.md)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)方法を確認してください。
 
 出力シンクとしての Azure Data Lake Store Gen1 にマネージド ID を使用するには、Azure にデプロイする前に、PowerShell を使用してサービス プリンシパルへのアクセス許可を提供する必要があります。 詳細については、[Resource Manager テンプレートによってマネージド ID を使用した ADLS Gen1 のデプロイを行う](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)方法を確認してください。
 

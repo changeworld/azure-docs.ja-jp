@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601664"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685108"
 ---
 # <a name="create-an-image-from-a-vm"></a>VM からイメージを作成する
 
 既存の VM を使用し、同じ VM を複数作成する場合、Azure PowerShell を利用し、その VM から Shared Image Gallery にイメージを作成できます。 [Azure CLI](image-version-vm-cli.md) を利用して VM からイメージを作成することもできます。
 
-Azure PowerShell を利用し、[特殊な VM と一般の VM](./windows/shared-image-galleries.md#generalized-and-specialized-images) の両方からイメージをキャプチャできます。 
+Azure PowerShell を利用し、[特殊な VM と一般の VM](./shared-image-galleries.md#generalized-and-specialized-images) の両方からイメージをキャプチャできます。 
 
 イメージ ギャラリー内のイメージには 2 つのコンポーネントがあります。この例ではそれを作成します。
 - **イメージ定義** には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 
@@ -77,7 +77,7 @@ Stop-AzVM `
 
 イメージ定義を作成するとき、すべての情報が正しくなるようにしてください。 (Windows の場合は Sysprep、Linux の場合は waagent -deprovision を使用して) VM を一般化している場合は、`-OsState generalized` を使用してイメージ定義を作成する必要があります。 VM を一般化していない場合、`-OsState specialized` を利用してイメージ定義を作成します。
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](./windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307281"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678257"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -87,7 +87,7 @@ location は、カスタム イメージを作成するリージョンです。 
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS ディスク (Win および Linux) のサイズは増やすこと**だけ**が可能です。これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 OS ディスクのサイズをソース イメージのサイズより小さくすることはできません。
+既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS ディスク (Win および Linux) のサイズは増やすこと **だけ** が可能です。これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 OS ディスクのサイズをソース イメージのサイズより小さくすることはできません。
 
 ```json
  {
@@ -154,7 +154,7 @@ API ではイメージ ビルド用のソースを定義する "SourceType" が�
 > 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
-Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../windows/image-builder-overview.md#os-support)を参照してください。 
+Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../image-builder-overview.md#os-support)を参照してください。 
 
 ```json
         "source": {

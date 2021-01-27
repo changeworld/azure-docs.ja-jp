@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39b89f8d303c10eead63839420141a74d3d3c74c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18720d99bc8cf0e237e25ea13f686970573d5704
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452773"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678442"
 ---
 # <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) 用のデータベースの照合順序のサポート 
 
@@ -111,4 +111,4 @@ ms.locfileid: "96452773"
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-プロパティのパラメーターとして "Collation" が渡された場合、DatabasePropertyEx 関数から現在データベースで指定されている照合順序が返されます。 詳細については、「[DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+プロパティのパラメーターとして "Collation" が渡された場合、DatabasePropertyEx 関数から現在データベースで指定されている照合順序が返されます。 詳細については、「[DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510993"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684561"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -26,7 +26,7 @@ ms.locfileid: "97510993"
 - 一時ディスクと同様に、待機時間が短縮されます。 
 - エフェメラル OS ディスクは無料で、OS ディスクのストレージ コストはかかりません。
 - それらはすべての Azure リージョンで使用できます。 
-- エフェメラル OS ディスクは、[共有イメージ ギャラリー](./linux/shared-image-galleries.md)でサポートされています。 
+- エフェメラル OS ディスクは、[共有イメージ ギャラリー](./shared-image-galleries.md)でサポートされています。 
  
 
  

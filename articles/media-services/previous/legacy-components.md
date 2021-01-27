@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d85cbeb99264b5b730fe585fd39f658e6448467f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 495b6bc68e79e50a0bda773e7229225595236fac
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515765"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694344"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services のレガシ コンポーネント
 
@@ -49,4 +49,4 @@ ms.locfileid: "92515765"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Media Services v2 から v3 への移行のガイダンス](../latest/migrate-from-v2-to-v3.md)
+[Media Services v2 から v3 への移行のガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)

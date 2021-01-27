@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557449"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698069"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -191,6 +191,8 @@ ms.locfileid: "95557449"
 1. **[別の承認者の追加]** をクリックして、一覧から代理承認者を選択します。
 
     ![アクセス パッケージ - ポリシー - 別の承認者の追加](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+    [最初の承認者] に [承認者としてのマネージャー] を選択した場合、別の承認者フィールドで選択できる、 **[別の承認者としての第 2 レベルのマネージャー]** の追加オプションがあります。 このオプションを選択した場合は、システムが第 2 レベルのマネージャーを見つけられない場合に、要求の転送先のフォールバック承認者を追加する必要があります。
 
 1. **[Forward to alternate approver(s) after how many days]\(別の承認者へ転送するまでの日数\)** ボックスに、承認者が要求を承認または拒否する必要がある日数を入力します。 要求期間内に承認者が要求を承認または拒否しなかった場合、要求の有効期限が切れ (タイムアウト)、ユーザーはアクセス パッケージに対する別の要求を送信する必要が生じます。 
 
