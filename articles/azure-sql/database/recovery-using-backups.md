@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797215"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795334"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,8 +53,8 @@ Standard または Premium のサービス レベルを使用している場合�
 
 | **デプロイ オプション** | **処理される同時要求の最大数** | **送信される同時要求の最大数** |
 | :--- | --: | --: |
-|**単一データベース (サブスクリプションごと)**|10|60|
-|**エラスティック プール (プールごと)**|4|200|
+|**単一データベース (サブスクリプションごと)**|30|100|
+|**エラスティック プール (プールごと)**|4|2000|
 
 
 サーバー全体を復元するための組み込みの方法はありません。 このタスクを実行する方法の例については、「[Azure SQL Database: サーバーの完全復旧](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)」を参照してください。

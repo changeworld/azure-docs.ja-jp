@@ -3,12 +3,12 @@ title: 証明書を使用して Windows 上のクラスターをセキュリテ�
 description: Azure Service Fabric スタンドアロンまたはオンプレミスのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護します。
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686125"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791039"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -355,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
+これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
 
 
 クラスターを削除するには、Service Fabric パッケージをダウンロードしたクラスターのノードに接続し、コマンド ラインを開いてパッケージ フォルダーに移動します。 そして次のコマンドを実行します。

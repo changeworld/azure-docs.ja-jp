@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9932c11332a616928d59c213d4f4806feb81cfe2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708698"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791647"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
-この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
+この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および **共有プロセス** モデルと **排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
 
 先に進む前に、「[Service Fabric でのアプリケーションのモデル化][a1]」で説明されているさまざまな概念とリレーションシップをよく理解しておいてください。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "91708698"
 
 ホスティング モデルを理解するための例を紹介します。 たとえば、"MyAppType" という *ApplicationType* があり、これは "MyServiceType" という *ServiceType* を持つものとします。 'MyServiceType' は、'MyServicePackage' という *ServicePackage* によって提供され、'MyServicePackage' は 'MyCodePackage' という *CodePackage* を持ちます。 'MyCodePackage' は、'MyServiceType' という *ServiceType* を実行時に登録します。
 
-3 ノード クラスターがあるとして、"MyAppType" というタイプの **fabric:/App1** という*アプリケーション*を作成します。 この **fabric:/App1** というアプリケーションの内部に、"MyServiceType" タイプのサービス **fabric:/App1/ServiceA** を作成します。 このサービスには、2 つのパーティション (たとえば、**P1** と **P2**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、最終的にノードにデプロイされるこのアプリケーションのビューを示しています。
+3 ノード クラスターがあるとして、"MyAppType" というタイプの **fabric:/App1** という *アプリケーション* を作成します。 この **fabric:/App1** というアプリケーションの内部に、"MyServiceType" タイプのサービス **fabric:/App1/ServiceA** を作成します。 このサービスには、2 つのパーティション (たとえば、**P1** と **P2**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、最終的にノードにデプロイされるこのアプリケーションのビューを示しています。
 
 
 ![最終的にノードにデプロイされるこのアプリケーションのビューを示す図。][node-view-one]
@@ -107,7 +107,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ## <a name="work-with-a-deployed-service-package"></a>デプロイされたサービス パッケージの操作
 ノード上の *ServicePackage* のアクティブなコピーは、[デプロイされたサービス パッケージ][p3]と呼ばれます。 専有プロセス モデルを使ってサービスを作成した場合、特定のアプリケーションに、同じ *ServicePackage* の複数のサービス パッケージがデプロイされる可能性があります。 デプロイされているサービス パッケージに固有の操作を実行する場合は、**ServicePackageActivationId** を指定して、デプロイされている特定のサービス パッケージを示す必要があります。 たとえば、[デプロイされたサービス パッケージの正常性を報告する][p4]場合、または[デプロイされたサービス パッケージのコード パッケージを再起動する][p5]場合は、ID を指定します。
 
-デプロイされたサービス パッケージの **ServicePackageActivationId** は、ノードで[デプロイされたサービス パッケージ][p3]のリストのクエリを実行することで確認できます。 ノード上にある、[デプロイされたサービスのタイプ][p6]、[デプロイされたレプリカ][p7]、[デプロイされたコード パッケージ][p8]のクエリを実行すると、クエリ結果には親のデプロイされたサービス パッケージの **ServicePackageActivationId** も含まれます。
+デプロイされたサービス パッケージの **ServicePackageActivationId** は、ノードで [デプロイされたサービス パッケージ][p3]のリストのクエリを実行することで確認できます。 ノード上にある、[デプロイされたサービスのタイプ][p6]、[デプロイされたレプリカ][p7]、[デプロイされたコード パッケージ][p8]のクエリを実行すると、クエリ結果には親のデプロイされたサービス パッケージの **ServicePackageActivationId** も含まれます。
 
 > [!NOTE]
 >- 共有プロセス ホスティング モデルでは、特定のノード上の特定のアプリケーションに対して、*ServicePackage* のコピーが 1 つだけアクティブ化されます。 このコピーの **ServicePackageActivationId** は "*空の文字列*" であるため、デプロイされたサービス パッケージに関連する操作を行うときに、この ID を指定する必要はありません。 
@@ -116,7 +116,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 > - **ServicePackageActivationId** を指定しないと、既定で "*空の文字列*" になります。 デプロイされたサービス パッケージが共有プロセス モデルでアクティブ化されている場合は、そのパッケージに対して操作が行われます。 それ以外の場合は、操作が失敗します。
 >
-> - **ServicePackageActivationId** のクエリを 1 回行ってキャッシュに格納する方法は使わないでください。 ID は動的に生成され、さまざまな理由で変化することがあります。 **ServicePackageActivationId** を必要とする操作を行う前にまず、ノードに[デプロイされたサービス パッケージ][p3]のリストのクエリを行う必要があります。 その後、クエリ結果の **ServicePackageActivationId** を使って、本来の操作を実行します。
+> - **ServicePackageActivationId** のクエリを 1 回行ってキャッシュに格納する方法は使わないでください。 ID は動的に生成され、さまざまな理由で変化することがあります。 **ServicePackageActivationId** を必要とする操作を行う前にまず、ノードに [デプロイされたサービス パッケージ][p3]のリストのクエリを行う必要があります。 その後、クエリ結果の **ServicePackageActivationId** を使って、本来の操作を実行します。
 >
 >
 
@@ -151,7 +151,7 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 
 ここで、たとえばアプリケーション **fabric:/SpecialApp** を作成します。 **fabric:/SpecialApp** の内部に、専有プロセス モデルで次の 2 つのサービスを作成します。
 
-- "MyServiceTypeA" タイプのサービス **fabric:/SpecialApp/ServiceA** と、2 つのパーティション (たとえば、**P1** と**P2**) およびパーティションごとに 3 つのレプリカ。
+- "MyServiceTypeA" タイプのサービス **fabric:/SpecialApp/ServiceA** と、2 つのパーティション (たとえば、**P1** と **P2**) およびパーティションごとに 3 つのレプリカ。
 - "MyServiceTypeB" タイプのサービス **fabric:/SpecialApp/ServiceB** と、2 つのパーティション (**P3** と **P4**) およびパーティションごとに 3 つのレプリカ。
 
 特定のノード上で、両方のサービスはそれぞれ 2 つのレプリカを持ちます。 サービスを専有プロセス モデルで作成したため、Service Fabric は各レプリカについて "MyServicePackge" の新しいコピーをアクティブ化します。 "MultiTypeServicePackage" の各アクティブ化によって、"MyCodePackageA" と "MyCodePackageB" のコピーが開始します。 ただし、"MultiTypeServicePackage" がアクティブ化されたレプリカをホストするのは、"MyCodePackageA" または "MyCodePackageB" のどちらか 1 つだけです。 次の図で、このノードのビューを示します。
@@ -172,7 +172,7 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
 
-Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。
+Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーションをパッケージ化][a4]して展開できるようにします。

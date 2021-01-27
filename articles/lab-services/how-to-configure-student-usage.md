@@ -3,12 +3,12 @@ title: Azure Lab Services のラボの使用設定を構成する
 description: ラボの学生数の構成、学生のラボへの登録、学生が VM を使用できる時間数の制御などを行う方法について説明します。
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602633"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791965"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "96602633"
 
 ユーザーを手動で追加または削除しなくて済むように、ラボ ユーザー リストを既存の Azure Active Directory (Azure AD) グループに同期することができるようになりました。 
 
-組織の Azure Active Directory 内に Azure AD グループを作成して、組織のリソースやクラウドベースのアプリへのアクセスを管理できます。 詳細については、[Azure AD グループ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)に関する記事をご覧ください。 組織で Microsoft Office 365 または Azure サービスを使用している場合、組織には Azure Active Directory を管理する管理者が既に存在します。 
+組織の Azure Active Directory 内に Azure AD グループを作成して、組織のリソースやクラウドベースのアプリへのアクセスを管理できます。 詳細については、[Azure AD グループ](../active-directory/fundamentals/active-directory-manage-groups.md)に関する記事をご覧ください。 組織で Microsoft Office 365 または Azure サービスを使用している場合、組織には Azure Active Directory を管理する管理者が既に存在します。 
 
 ### <a name="sync-users-with-azure-ad-group"></a>ユーザーを Azure AD グループと同期する
 

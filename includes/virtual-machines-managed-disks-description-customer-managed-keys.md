@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bf79fe8766d36fe59595be43250341d49b5460c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560739"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98792369"
 ---
 ユーザー独自のキーを使用して、各マネージド ディスクのレベルで暗号化を管理できます。 カスタマー マネージド キーを使用したサーバー側でのマネージド ディスクの暗号化により、Azure Key Vault との統合されたエクスペリエンスが提供されます。 [ご使用の RSA キー](../articles/key-vault/keys/hsm-protected-keys.md)を Key Vault にインポートするか、Azure Key Vault で新しい RSA キーを生成することができます。 
 
@@ -22,8 +22,6 @@ Azure マネージド ディスクは[エンベロープ暗号化](../articles/s
 #### <a name="full-control-of-your-keys"></a>キーのフル コントロール
 
 DEK の暗号化と暗号化解除にキーを使用するための、Key Vault 内のマネージド ディスクへのアクセス権の付与を行う必要があります。 これにより、データとキーを完全に制御できます。 任意の時点で、キーを無効にしたり、マネージド ディスクへのアクセスを取り消したりすることができます。 また、Azure Key Vault 監視で暗号化キーの使用状況を監査して、マネージド ディスクまたは他の信頼された Azure サービスのみがキーにアクセスしていることを確認することもできます。
-
-キーを無効にするか削除すると、そのキーを使用しているディスクを持つ VM はすべて自動的にシャットダウンされます。 この後、キーが再度有効になるか、新しいキーを割り当てない限り、VM は使用できません。
 
 Premium SSD、Standard SSD、Standard HDD の場合:キーを無効にするか削除すると、そのキーを使用しているディスクを持つ VM はすべて自動的にシャットダウンされます。 この後、キーが再度有効になるか、新しいキーを割り当てない限り、VM は使用できません。    
 

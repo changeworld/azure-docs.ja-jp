@@ -15,16 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93efaedbb0596382b0601a17098311e075618b7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077859"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791982"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>PowerShell を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 この記事では、次のことについて説明します。
 
@@ -174,7 +172,7 @@ mstsc /v:<publicIpAddress>
 
 リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされて開かれます。 ユーザー名とパスワードを入力し (VM の作成時に入力した資格情報を指定するために、必要に応じて **[その他]** 、 **[別のアカウントを使う]** を選択することもあります)、 **[OK]** をクリックします。 サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
 
-*myVm1* VM では、Windows ファイアウォールを介してインターネット制御メッセージ プロトコル (ICMP) を有効にして、後で PowerShell を使用して*myVm2* からこの VM に ping を実行できるようにします。
+*myVm1* VM では、Windows ファイアウォールを介してインターネット制御メッセージ プロトコル (ICMP) を有効にして、後で PowerShell を使用して *myVm2* からこの VM に ping を実行できるようにします。
 
 ```powershell
 New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4

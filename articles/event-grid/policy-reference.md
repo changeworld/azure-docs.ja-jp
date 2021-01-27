@@ -1,15 +1,15 @@
 ---
 title: Azure Event Grid 用の組み込みポリシー定義
 description: Azure Event Grid 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 2643dac6c37258da7bf8e81ce831dd04652cc7ce
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 12e67d2212acb1de0e67eaec8c915e505d5594f9
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050913"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805967"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>Azure Event Grid 用の Azure Policy 組み込み定義
 

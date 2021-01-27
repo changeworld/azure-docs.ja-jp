@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL 用の組み込みポリシー定義
 description: Azure Database for MySQL 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 57a1ffe3ec5412d3dce83723540c4460de106592
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3eb7ec9ff8db28abb58136e0492bd9ce3cdeeff7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051032"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808170"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Azure Policy 組み込み定義
 

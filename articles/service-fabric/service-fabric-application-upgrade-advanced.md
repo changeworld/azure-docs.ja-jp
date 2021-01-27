@@ -3,20 +3,20 @@ title: アプリケーションのアップグレードに関する高度なト�
 description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6604300328f2d243077ba341a9028221438dce9d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022991"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792050"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
 
 ## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>アプリケーションのアップグレード中にサービスの種類を追加または削除する
 
-アップグレードの一環として、発行したアプリケーションに新しいサービスの種類を追加した場合、その新しいサービスの種類はデプロイされているアプリケーションに追加されます。 このようなアップグレードは、既にアプリケーションの一部であるサービス インスタンスには影響しませんが、追加されたサービスの種類のインスタンスを作成して、新しいサービスの種類をアクティブにする必要があります (「[New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)」を参照)。
+アップグレードの一環として、発行したアプリケーションに新しいサービスの種類を追加した場合、その新しいサービスの種類はデプロイされているアプリケーションに追加されます。 このようなアップグレードは、既にアプリケーションの一部であるサービス インスタンスには影響しませんが、追加されたサービスの種類のインスタンスを作成して、新しいサービスの種類をアクティブにする必要があります (「[New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice)」を参照)。
 
-同様に、アップグレードの一環として、アプリケーションからサービスの種類を削除することもできます。 ただし、アップグレードに進む前に、削除するサービスの種類のサービス インスタンスをすべて削除する必要があります (「[Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)」を参照)。
+同様に、アップグレードの一環として、アプリケーションからサービスの種類を削除することもできます。 ただし、アップグレードに進む前に、削除するサービスの種類のサービス インスタンスをすべて削除する必要があります (「[Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice)」を参照)。
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>ステートレス サービスの計画的なダウンタイム中に接続がドロップされないようにする
 
@@ -114,7 +114,7 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 
 *Monitored* モードでは、Service Fabric が正常性ポリシーを適用して、アップグレードの進行中にアプリケーションの正常性を確認します。 正常性ポリシーに違反すると、指定した *FailureAction* に応じて、アップグレードが中断されるか、自動的にロールバックされます。
 
-*UnmonitoredManual* モードでは、アプリケーション管理者がアップグレードの進行を完全に制御します。 このモードは、カスタムの正常性評価ポリシーを適用する場合や、一般的でないアップグレードを実行して、正常性の監視を完全にバイパスする場合 (アプリケーションが既にデータ損失の状態にある場合など) に便利です。 このモードでアップグレードを実行すると、各 UD の完了後にアップグレードが中断し、[Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) を使用して明示的に再開する必要があります。 アップグレードが中断し、ユーザーが再開できる状態になると、そのアップグレードの状態は *RollforwardPending* と表示されます (「[UpgradeState](/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)」を参照)。
+*UnmonitoredManual* モードでは、アプリケーション管理者がアップグレードの進行を完全に制御します。 このモードは、カスタムの正常性評価ポリシーを適用する場合や、一般的でないアップグレードを実行して、正常性の監視を完全にバイパスする場合 (アプリケーションが既にデータ損失の状態にある場合など) に便利です。 このモードでアップグレードを実行すると、各 UD の完了後にアップグレードが中断し、[Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade) を使用して明示的に再開する必要があります。 アップグレードが中断し、ユーザーが再開できる状態になると、そのアップグレードの状態は *RollforwardPending* と表示されます (「[UpgradeState](/dotnet/api/system.fabric.applicationupgradestate)」を参照)。
 
 最後に、*UnmonitoredAuto* モードは、ユーザーの入力が不要で、アプリケーションの正常性ポリシーが評価されないため、サービスの開発時やテスト時に迅速にアップグレードを繰り返し実行する場合に便利です。
 
@@ -180,7 +180,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
 ```
 
-ここで、**Start-ServiceFabricApplicationUpgrade** コマンドレットを使用してアプリケーションをアップグレードします。 この例では監視付きのアップグレードを示していますが、監視されていないアップグレードも使用できます。 このコマンドレットに指定できるフラグの詳細については、[Azure Service Fabric PowerShell モジュール リファレンス](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)をご覧ください。
+ここで、**Start-ServiceFabricApplicationUpgrade** コマンドレットを使用してアプリケーションをアップグレードします。 この例では監視付きのアップグレードを示していますが、監視されていないアップグレードも使用できます。 このコマンドレットに指定できるフラグの詳細については、[Azure Service Fabric PowerShell モジュール リファレンス](/powershell/module/servicefabric/start-servicefabricapplicationupgrade#parameters)をご覧ください。
 
 ```PowerShell
 PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
@@ -205,11 +205,11 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>アプリケーションのアップグレードをロールバックする
 
-アップグレードは 3 つのモード (*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual*) のいずれかでロールフォワードできますが、ロールバックできるのは *UnmonitoredAuto* または *UnmonitoredManual* モードのみです。 *UnmonitoredAuto* モードでのロールバックは、*UpgradeReplicaSetCheckTimeout* の既定値が異なる点を除き、ロールフォワードと同じように動作します (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)。 *UnmonitoredManual* モードでのロールバックは、ロールフォワードと同じように動作します。つまり、ロールバックは各 UD の完了後に中断し、[Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) を使用して明示的に再開してロールバックを続行する必要があります。
+アップグレードは 3 つのモード (*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual*) のいずれかでロールフォワードできますが、ロールバックできるのは *UnmonitoredAuto* または *UnmonitoredManual* モードのみです。 *UnmonitoredAuto* モードでのロールバックは、*UpgradeReplicaSetCheckTimeout* の既定値が異なる点を除き、ロールフォワードと同じように動作します (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)。 *UnmonitoredManual* モードでのロールバックは、ロールフォワードと同じように動作します。つまり、ロールバックは各 UD の完了後に中断し、[Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade) を使用して明示的に再開してロールバックを続行する必要があります。
 
-*Monitored* モードで *FailureAction* に *Rollback* を指定し、アップグレードの正常性ポリシーに違反した場合 (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)、または [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) を明示的に使用した場合に、ロールバックが自動的にトリガーされます。
+*Monitored* モードで *FailureAction* に *Rollback* を指定し、アップグレードの正常性ポリシーに違反した場合 (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)、または [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback) を明示的に使用した場合に、ロールバックが自動的にトリガーされます。
 
-ロールバック中、*UpgradeReplicaSetCheckTimeout* の値とモードは、[Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) を使用していつでも変更できます。
+ロールバック中、*UpgradeReplicaSetCheckTimeout* の値とモードは、[Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade) を使用していつでも変更できます。
 
 ## <a name="next-steps"></a>次のステップ
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。

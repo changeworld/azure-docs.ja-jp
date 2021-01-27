@@ -3,12 +3,12 @@ title: 委任を更新する
 description: Azure Lighthouse に以前オンボードされた顧客の委任を更新する方法について説明します。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093419"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791341"
 ---
 # <a name="update-a-delegation"></a>委任を更新する
 
@@ -58,9 +58,9 @@ ms.locfileid: "97093419"
 
 ## <a name="updating-managed-service-offers"></a>マネージド サービス オファーを更新する
 
-Azure Marketplace に発行されたマネージド サービス オファーを通じて顧客をオンボードし、認可を更新する場合は、その顧客のプランで更新された使用する[認可](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)と共に、[オファーの新しいバージョンを発行する](../../marketplace/partner-center-portal/update-existing-offer.md)ことで、委任を更新できます。 その後、顧客は Azure portal で最新バージョンに更新できます。
+Azure Marketplace に発行されたマネージド サービス オファーを通じて顧客をオンボードし、認可を更新する場合は、その顧客のプランで更新された使用する[認可](../../marketplace/plan-managed-service-offer.md)と共に、[オファーの新しいバージョンを発行する](../../marketplace/partner-center-portal/update-existing-offer.md)ことで、委任を更新できます。 その後、顧客は Azure portal で最新バージョンに更新できます。
 
-管理テナントを変更する場合は、顧客が受け入れられるように、[新しいマネージド サービス オファーを作成して発行する](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)必要があります。
+管理テナントを変更する場合は、顧客が受け入れられるように、[新しいマネージド サービス オファーを作成して発行する](../../marketplace/plan-managed-service-offer.md)必要があります。
 
 > [!TIP]
 > 前述のように、同じ顧客と管理テナントの間で、複数の異なるオファーを使用しないことをお勧めします。 同じ管理テナントを使用する同じ顧客に対して新しいオファーを発行する場合は、顧客が新しいオファーを受け入れる前に、前のオファーを必ず削除してください。

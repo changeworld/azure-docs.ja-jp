@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724716"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871097"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -116,4 +116,4 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 仮想ネットワークでの Azure Machine Learning の使用の詳細については、[仮想ネットワークの概要](how-to-network-security-overview.md)に関するページを参照してください。
 
-プライベート エンドポイントの DNS 構成への統合については、「[Azure プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)」をご覧ください。
+プライベート エンドポイントの DNS 構成への統合については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。

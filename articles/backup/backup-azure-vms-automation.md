@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797062"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804789"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 保護ポリシーを定義したら、アイテムのポリシーも有効にする必要があります。 [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) を使用して、保護を有効にします。 保護を有効にするには、アイテムとポリシーの 2 つのオブジェクトが必要です。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
 
 > [!IMPORTANT]
-> PowerShell を使用して一度に複数の VM のバックアップを有効にするときは、1 つのポリシーに 100 を超える VM が関連付けられていないことを確認します。 これは、[推奨されるベスト プラクティス](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)です。 現時点では、100 を超える VM がある場合に PowerShell クライアントでは明示的にブロックされませんが、このチェックは将来追加される予定です。
+> PowerShell を使用して一度に複数の VM のバックアップを有効にするときは、1 つのポリシーに 100 を超える VM が関連付けられていないことを確認します。 これは、[推奨されるベスト プラクティス](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy)です。 現時点では、100 を超える VM がある場合に PowerShell クライアントでは明示的にブロックされませんが、このチェックは将来追加される予定です。
 
 以下の例では、ポリシー NewPolicy を使用してアイテム V2VM の保護を有効にします。 例は、VM が暗号化されるかどうか、暗号化の種類によって異なります。
 

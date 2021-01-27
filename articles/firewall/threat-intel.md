@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655069"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791461"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理
 
@@ -27,7 +27,7 @@ ms.locfileid: "83655069"
 
 既定では、脅威インテリジェンスベースのフィルター処理は、アラート モードで有効になっています。 この機能の無効化やモードの変更は、ポータルのインターフェイスがお住まいの地域で使用可能になるまで実行できません。
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="ファイアウォールの脅威インテリジェンス":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="脅威インテリジェンス ベースのフィルタリング ポータルのインターフェイス":::
 
 ## <a name="logs"></a>ログ
 
@@ -53,6 +53,6 @@ ms.locfileid: "83655069"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall Log Analytics のサンプル](log-analytics-samples.md)を参照する
+- [Azure Firewall Log Analytics のサンプル](./firewall-workbook.md)を参照する
 - [Azure Firewall のデプロイおよび構成](tutorial-firewall-deploy-portal.md)方法について説明する
 - [マイクロソフト セキュリティ インテリジェンス レポート](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)を確認する

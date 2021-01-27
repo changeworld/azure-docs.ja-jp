@@ -3,19 +3,19 @@ title: SQL Server から Azure VM 上の SQL Server (移行ガイド)
 description: このガイドに従って、個々の SQL Server データベースを Azure Virtual Machines (VM) 上の SQL Server に移行できます。
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325921"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797890"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>移行ガイド:SQL Server から Azure VM 上の SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]

@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275245"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797736"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Azure Defender for servers の概要
 
@@ -97,4 +97,4 @@ Azure Defender for servers には、次のような脅威検出および保護�
 - アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
 
 - > [!div class="nextstepaction"]
-    > [Azure Defender を有効にする](security-center-pricing.md)
+    > [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)

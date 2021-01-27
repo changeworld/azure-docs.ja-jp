@@ -3,12 +3,12 @@ title: Azure Service Fabric アプリケーション リソース モデル
 description: この記事では、Azure Resource Manager を使用した Azure Service Fabric アプリケーションの管理の概要を説明します。
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: f4fbd775ab479437c350dc24b9b5511f7a614c8b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576096"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790725"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
@@ -171,13 +171,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 Resource Manager でアプリケーション リソース モデルを使用してデプロイされたアプリケーションを削除するには、次のようにします。
 
-1. [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
+1. [Get-AzResource](/powershell/module/az.resources/get-azresource) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーション リソースを削除します。
+1. [Remove-AzResource](/powershell/module/az.resources/remove-azresource) コマンドレットを使用して、アプリケーション リソースを削除します。
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

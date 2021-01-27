@@ -3,12 +3,12 @@ title: 委任へのアクセスを削除する
 description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608454"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791358"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 
@@ -41,7 +41,7 @@ ms.locfileid: "96608454"
     ] 
 ```
 
-このロールは、Azure Marketplace に公開するための [マネージド サービス オファーを作成する](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)ときに、**承認** で選択することもできます。
+このロールは、Azure Marketplace に公開するための [マネージド サービス オファーを作成する](../../marketplace/plan-managed-service-offer.md)ときに、**承認** で選択することもできます。
 
 このアクセス許可を持つユーザーは、次のいずれかの方法で委任を削除できます。
 

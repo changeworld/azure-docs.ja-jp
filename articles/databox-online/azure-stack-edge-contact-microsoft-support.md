@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 411757f4ef4e33ccbc8a69ca2b40598b51c6d13b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033950"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790835"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro と Azure Data Box Gateway のサポート チケットを開く
 
@@ -99,4 +99,4 @@ ms.locfileid: "98033950"
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Stack Edge Pro に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)方法について説明します。
-[Data Box Gateway に関する問題のトラブルシューティング](data-box-gateway-troubleshoot.md)方法を確認します。
+[Data Box Gateway に関する問題のトラブルシューティング](../databox-gateway/data-box-gateway-troubleshoot.md)方法を確認します。

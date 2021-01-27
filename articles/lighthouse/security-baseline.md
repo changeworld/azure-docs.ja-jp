@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 93d444d781edbcfe4ab171460668aeb328070bff
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: cd43b6c7b11cde17bc9f9923374baf3416e5b370
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201639"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791864"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure Lighthouse 用の Azure セキュリティ ベースライン
 
@@ -208,7 +208,7 @@ Azure Lighthouse を使用するサービス プロバイダーは、Azure AD �
 
 - [特権アクセス ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [特権アクセス ワークステーションを展開する](../active-directory/devices/howto-azure-managed-workstation.md)
+- [特権アクセス ワークステーションを展開する](/security/compass/privileged-access-deployment)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -306,7 +306,7 @@ Azure Lighthouse を使用すると、Azure 組み込みロールを使用して
 
 ## <a name="logging-and-threat-detection"></a>ログと脅威検出
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](../security/benchmarks/security-controls-v2-logging-threat-detection.md)」を参照してください。*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1:Azure リソースの脅威検出を有効にする
 
@@ -522,7 +522,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="posture-and-vulnerability-management"></a>体制と脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)」を参照してください。*
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1: Azure サービスのセキュリティで保護された構成を確立する 
 
@@ -614,9 +614,9 @@ Azure Blueprints を使用すると、1 つのブループリント定義で、A
 
 - [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - アセット管理](../security/benchmarks/security-controls-v2-incident-response.md)
 
-- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure セキュリティ ベンチマーク - データ保護](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -644,7 +644,7 @@ Azure Blueprints を使用すると、1 つのブループリント定義で、A
 
 **ガイダンス**:個々の資産とそれらがホストされている環境に対するリスクを継続的に測定し、軽減します。 高い価値を持つ資産と、攻撃に晒される可能性の高い部分 (公開されたアプリケーション、ネットワークのイングレス ポイントとエグレス ポイント、ユーザーと管理者のエンドポイントなど) を優先します。
 
-- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -684,7 +684,7 @@ Azure Blueprints を使用すると、1 つのブループリント定義で、A
 詳細については、次のリファレンスを参照してください。
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
 - [Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md)
 
@@ -712,9 +712,9 @@ Azure Blueprints を使用すると、1 つのブループリント定義で、A
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure セキュリティ ベンチマーク - ID 管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure セキュリティ ベンチマーク - 特権アクセス](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -746,9 +746,9 @@ Azure Blueprints を使用すると、1 つのブループリント定義で、A
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ログと脅威検出](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - インシデント対応](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

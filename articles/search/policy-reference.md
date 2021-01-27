@@ -1,18 +1,18 @@
 ---
 title: Azure Cognitive Search 用の組み込みポリシー定義
 description: Azure Cognitive Search 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 543b6468fa830b422f310142b962173dbad030e2
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 28c7d5bcd5921f9ae09496d4e7248bad93e6842c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049570"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806689"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Azure Cognitive Search 用の Azure Policy 組み込み定義
 

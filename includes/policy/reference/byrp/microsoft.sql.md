@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1fdc59f0358a40af46fc5fdfeebe838a12cc1794
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 00534fbe988dd0935afa6c841f6af11b42425f6b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050997"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802741"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -25,8 +25,8 @@ ms.locfileid: "98050997"
 |[SQL DB Transparent Data Encryption のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86a912f6-9a06-4e26-b447-11b16ba8659f) |SQL データベースで Transparent Data Encryption を有効にします |DeployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Deploy.json) |
 |[SQL Server での脅威検出のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F36d49e87-48c4-4f2e-beed-ba4ed02b71f5) |このポリシーでは、SQL サーバーで脅威検出が有効になっていることを確認します。 |DeployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DeployTdOnSqlServers_Deploy.json) |
 |[Azure SQL データベースの長期的な geo 冗長バックアップを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd38fc420-0735-4ef3-ac11-c806f651a570) |このポリシーは、長期的な geo 冗長バックアップが有効になっていないすべての Azure SQL データベースを監査します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_SQLDatabase_AuditIfNotExists.json) |
-|[Azure SQL Database のプライベート エンドポイント接続を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7698e800-9299-47a6-b3b6-5a0fee576eed) |Azure SQL Database にプライベート エンドポイントを使用する場合、トラフィックは特定のプライベート リンク リソースに対してセキュリティで保護されます。 プラットフォームによってアクセス制御が実行され、指定されたプライベート リンク リソースのみに到達するネットワーク接続が検証されます。 この制御により、同じ Azure サービス上でホストされている他のリソースへのアクセスを防止する組み込みの流出保護を提供することで、自分のリソースにネットワーク セキュリティ レイヤーが追加されます。 |監査 |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PrivateEndpoint_Audit.json) |
-|[Azure SQL Database のパブリック ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1b8ca024-1d5c-4dec-8995-b1a932b41780) |パブリック ネットワーク アクセス プロパティを無効にすると、Azure SQL Database へのアクセスがプライベート エンドポイントのみに制限されるため、セキュリティが強化されます。 この構成により、IP または仮想ネットワーク ベースのファイアウォール規則に一致するすべてのログインが拒否されます。 |監査 |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PublicNetworkAccess_Audit.json) |
+|[Azure SQL Database のプライベート エンドポイント接続を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7698e800-9299-47a6-b3b6-5a0fee576eed) |プライベート エンドポイント接続は、Azure SQL Database へのプライベート接続を有効にすることで、通信のセキュリティを強化します。 |Audit、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PrivateEndpoint_Audit.json) |
+|[Azure SQL Database のパブリック ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1b8ca024-1d5c-4dec-8995-b1a932b41780) |パブリック ネットワーク アクセス プロパティを無効にすると、Azure SQL Database へのアクセスがプライベート エンドポイントのみに制限されるため、セキュリティが強化されます。 この構成により、IP または仮想ネットワーク ベースのファイアウォール規則に一致するすべてのログインが拒否されます。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PublicNetworkAccess_Audit.json) |
 |[SQL データベースの機密データを分類する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcc9835f2-9f6b-4cc8-ab4a-f8ef615eb349) |Azure Security Center は、SQL データベースのデータ検出と分類スキャンの結果を監視し、監視とセキュリティの向上のためにデータベース内の機密データを分類するように推奨します |AuditIfNotExists、Disabled |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbDataClassification_Audit.json) |
 |[重要なアクティビティをキャプチャするには、SQL 監査設定に Action-Groups を構成しなければならない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ff426e2-515f-405a-91c8-4f2333442eb5) |完全な監査ログを実行するには、AuditActionsAndGroups プロパティに少なくとも SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP、FAILED_DATABASE_AUTHENTICATION_GROUP、BATCH_COMPLETED_GROUP を含める必要があります |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_ActionsAndGroups_Audit.json) |
 |[SQL データベースでは GRS バックアップ冗長の使用を避ける](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13) |データ所在地の規則によってデータを特定のリージョン内に保持することが求められる場合、データベースの既定の geo 冗長ストレージをバックアップに使用することを避ける必要があります。 注:T-SQL を使用してデータベースを作成する場合、Azure Policy は適用されません。 明示的に指定されていない場合、geo 冗長バックアップ ストレージを備えたデータベースは T-SQL を使用して作成されます。 |Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDb_BlockGrsBackupRedundancy_Deny.json) |

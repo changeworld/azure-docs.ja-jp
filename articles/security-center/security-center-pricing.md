@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121296"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805360"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー リスクへの対応に役立つインテリジェント検出などの機能が提供されます。

@@ -4,12 +4,12 @@ description: C# を使用して Azure Functions を開発する方法につい�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936925"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806323"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -21,7 +21,7 @@ C# 開発者の方は、次の記事のいずれかに関心があるかもし�
 
 | 作業の開始 | 概念| ガイド付き学習とサンプル |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio の使用](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code の使用](create-first-function-vs-code-csharp.md)</li><li>[コマンド ライン ツールの使用](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li><li>[Visual Studio 開発](functions-develop-vs.md)</li><li>[依存関係の挿入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[C# のサンプル](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[Visual Studio の使用](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code の使用](create-first-function-vs-code-csharp.md)</li><li>[コマンド ライン ツールの使用](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li><li>[Visual Studio 開発](functions-develop-vs.md)</li><li>[依存関係の挿入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[C# のサンプル](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Azure Portal での C# の使用](functions-create-function-app-portal.md)に関するガイダンスを探している場合は、[C# スクリプト (.csx) 開発者向けリファレンス](functions-reference-csharp.md)をご覧ください。
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871538"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -53,7 +53,7 @@ ms.locfileid: "98132955"
 
 - 一部の既存のデータ。 この記事では、[Azure Blob コンテナー](../storage/blobs/storage-blobs-overview.md)の使用方法について簡単に説明します。
 
-- 省略可能:既存の機械学習パイプライン ([Azure Machine Learning SDK を使用した機械学習パイプラインの作成および実行](how-to-create-your-first-pipeline.md)に関する記事に記載されているものなど)。
+- 省略可能:既存の機械学習パイプライン ([Azure Machine Learning SDK を使用した機械学習パイプラインの作成および実行](./how-to-create-machine-learning-pipelines.md)に関する記事に記載されているものなど)。
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>既存のデータに `Dataset` オブジェクトを使用する 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>中間データに `OutputFileDatasetConfig` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) オブジェクトはパイプライン ステップから出力される一時的なデータ **および** 永続出力データに使用できます。 `OutputFileDatasetConfig` は、BLOB ストレージ、ファイル共有、adlsgen1、または adlsgen2 へのデータの書き込みをサポートしています。 マウント モードとアップロード モードの両方をサポートしています。 マウント モードでは、マウントされたディレクトリに書き込まれたファイルは、ファイルを閉じたときに永続的に保存されます。 アップロード モードでは、出力ディレクトリに書き込まれたファイルがジョブの最後にアップロードされます。 ジョブが失敗した場合、または取り消された場合、出力ディレクトリはアップロードされません。
+`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) オブジェクトはパイプライン ステップから出力される一時的なデータ **および** 永続出力データに使用できます。 `OutputFileDatasetConfig` は、BLOB ストレージ、ファイル共有、adlsgen1、または adlsgen2 へのデータの書き込みをサポートしています。 マウント モードとアップロード モードの両方をサポートしています。 マウント モードでは、マウントされたディレクトリに書き込まれたファイルは、ファイルを閉じたときに永続的に保存されます。 アップロード モードでは、出力ディレクトリに書き込まれたファイルがジョブの最後にアップロードされます。 ジョブが失敗した場合、または取り消された場合、出力ディレクトリはアップロードされません。
 
  `OutputFileDatasetConfig` オブジェクトの既定の動作では、ワークスペースの既定のデータストアに書き込みます。 `arguments` パラメーターを使用して `OutputFileDatasetConfig` オブジェクトを `PythonScriptStep` に渡します。
 
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)
-* [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](how-to-create-your-first-pipeline.md)
+* [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](./how-to-create-machine-learning-pipelines.md)

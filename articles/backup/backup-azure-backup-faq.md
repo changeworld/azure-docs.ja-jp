@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572529"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806640"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -60,7 +60,7 @@ ms.locfileid: "98572529"
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Recovery Services コンテナーからオンプレミスにデータを移動するにはどうすればよいですか。
 
-Data Box を使用して Recovery Services コンテナーからオンプレミスにデータを直接エクスポートすることはサポートされていません。 データはストレージ アカウントに復元する必要があります。その後、[Data Box](../databox/data-box-overview.md) または [Import/Export](../storage/common/storage-import-export-service.md) を使ってオンプレミスに移動できます。
+Data Box を使用して Recovery Services コンテナーからオンプレミスにデータを直接エクスポートすることはサポートされていません。 データはストレージ アカウントに復元する必要があります。その後、[Data Box](../databox/data-box-overview.md) または [Import/Export](../import-export/storage-import-export-service.md) を使ってオンプレミスに移動できます。
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>geo 冗長ストレージ (GRS) コンテナーで、リージョンをまたがる復元 (CRR) 機能が有効になっている場合とそうでない場合では、どのような違いがありますか。
 
@@ -70,7 +70,7 @@ Data Box を使用して Recovery Services コンテナーからオンプレミ�
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Azure VM のバックアップに使用される Azure Backup エージェントについてよく寄せられる質問は、どこで確認できますか。
 
-- Azure VM 上で実行されるエージェントについては、この [FAQ](backup-azure-vm-backup-faq.md) をご覧ください。
+- Azure VM 上で実行されるエージェントについては、この [FAQ](backup-azure-vm-backup-faq.yml) をご覧ください。
 - Azure ファイル フォルダーのバックアップに使用されるエージェントについては、こちらの [FAQ](backup-azure-file-folder-backup-faq.md) をご覧ください。
 
 ## <a name="general-backup"></a>一般的なバックアップ
@@ -236,5 +236,5 @@ Microsoft Azure Recovery Services (MARS) エージェントによって使用さ
 
 その他のよく寄せられる質問をお読みください。
 
-- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.md)
+- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.yml)
 - Azure Backup エージェントについて[よく寄せられる質問](backup-azure-file-folder-backup-faq.md)

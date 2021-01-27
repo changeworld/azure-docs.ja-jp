@@ -7,16 +7,14 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d9c8df4fe296bcd40f26847233fcd49bcab573c0
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 23d00acc03ee879036a823f0c3d7fe2f67902e31
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709450"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797013"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Security Center の機能は、クラウド セキュリティの 2 つの大きな柱をカバーしています。
 
@@ -101,4 +99,4 @@ Azure Defender には、仮想マシンとコンテナー レジストリの脆�
 この記事では、Azure Defender の利点について説明しました。 
 
 > [!div class="nextstepaction"]
-> [Azure Defender を有効にする](security-center-pricing.md)
+> [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)

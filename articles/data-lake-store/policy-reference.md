@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 用の組み込みポリシー定義
 description: Azure Data Lake Storage Gen1 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a79a1a2d77893087c73e96f17f05eff55b301520
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 25db09f087d88e7d4171fe4335aef62ec338de1b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048618"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805759"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 用の Azure Policy 組み込み定義
 

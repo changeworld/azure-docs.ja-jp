@@ -4,12 +4,12 @@ description: Service Fabric のリモート処理では、クライアントと�
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576657"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791579"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
 
@@ -160,7 +160,7 @@ V2 スタックを有効にするには、次の方法を使用できます。
    </Resources>
    ```
 
-2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 名前空間の [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) を使用します。
+2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 名前空間の [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener) を使用します。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ V2 スタックを有効にするには、次の方法を使用できます。
     }
    ```
 
-3. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 名前空間の [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) を使用してクライアントを作成します。
+3. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 名前空間の [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) を使用してクライアントを作成します。
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
     }
    ```
 
-3. リモート処理インターフェイスに[アセンブリ属性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)を追加します。
+3. リモート処理インターフェイスに[アセンブリ属性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute)を追加します。
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -279,7 +279,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
    </Resources>
    ```
 
-2. [リモート処理 V2 リスナーを使用します](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用される既定のサービス エンドポイント リソース名は、"ServiceEndpointV2_1" です。 これはサービス マニフェストで定義されている必要があります。
+2. [リモート処理 V2 リスナーを使用します](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener)。 使用される既定のサービス エンドポイント リソース名は、"ServiceEndpointV2_1" です。 これはサービス マニフェストで定義されている必要があります。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
     }
    ```
 
-3. V2 [クライアント ファクトリ](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)を使用します。
+3. V2 [クライアント ファクトリ](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory)を使用します。
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {

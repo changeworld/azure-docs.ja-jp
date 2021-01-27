@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185708"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871555"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -118,7 +118,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 `input_data` は [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) のインスタンスであり、`output_data` は [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) のインスタンスです。 `OutputFileDatasetConfig` の場合、既定の動作はパス `/dataset/{run-id}/{output-name}` の下で `workspaceblobstore` データストアに出力をコピーすることです。`run-id` は実行の ID であり、`output-name` は、開発者が指定していない場合に自動生成される値です。
+スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 `input_data` は [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) のインスタンスであり、`output_data` は [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) のインスタンスです。 `OutputFileDatasetConfig` の場合、既定の動作はパス `/dataset/{run-id}/{output-name}` の下で `workspaceblobstore` データストアに出力をコピーすることです。`run-id` は実行の ID であり、`output-name` は、開発者が指定していない場合に自動生成される値です。
 
 配列 `steps` には、1 つの要素 (データ オブジェクトを使用して `compute_target` 上で実行する `PythonScriptStep`) が保持されます。 次に、このコードによって `Pipeline` オブジェクト自体がインスタンス化され、ワークスペースとステップの配列が渡されます。 `experiment.submit(pipeline)` を呼び出すと、Azure ML パイプラインの実行が開始されます。 `wait_for_completion()` を呼び出すと、パイプラインが終了するまでブロックされます。 
 
@@ -149,7 +149,7 @@ pipeline_run.wait_for_completion()
 
 Azure Machine Learning パイプラインは、初期の開発段階で価値の提供を開始する強力な機能です。 チームとプロジェクトの規模が大きくなるにつれてその価値は増加します。 この記事では、Azure Machine Learning Python SDK でパイプラインを指定し、Azure で調整する方法について説明しました。 いくつかの単純なソース コードについて説明し、使用可能な `PipelineStep` クラスをいくつか紹介しました。 Azure Machine Learning パイプラインを使用するタイミングと、Azure でそれらが実行される方法について理解しておく必要があります。 
 
-+ [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法を学習します。
++ [最初のパイプラインを作成する](./how-to-create-machine-learning-pipelines.md)方法を学習します。
 
 + [大量のデータに対してバッチ予測を実行する](tutorial-pipeline-batch-scoring-classification.md )方法を学習します。
 

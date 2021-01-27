@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 263e45928642aa74d682fc490e424a24deeb8076
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485503"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790683"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric サービスの配置ポリシー
 配置ポリシーは、特定のあまり一般的ではないシナリオでサーバーの配置の制御に使用できる追加の規則です。 このようなシナリオのいくつかの例は、次のとおりです。
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 現時点で、このポリシーは、ExclusiveProcess [サービス パッケージ アクティブ化モード](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)のステートレス サービスでのみサポートされています。
+> 現時点で、このポリシーは、ExclusiveProcess [サービス パッケージ アクティブ化モード](/dotnet/api/system.fabric.description.servicepackageactivationmode)のステートレス サービスでのみサポートされています。
 >
 
 > [!WARNING]
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> この配置ポリシーで [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) の値を大きくすると、アプリケーションのアップグレードが停止する可能性があります。 たとえば、5 ノードのクラスターがあり、InstanceCount=10 と設定されている場合、各ノードに 2 つのインスタンスが存在します。 MinInstanceCount=9 を設定した場合、試行されたアプリのアップグレードが停止する可能性があります。MinInstanceCount=8 の場合は、これを回避できます。
+> この配置ポリシーで [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) の値を大きくすると、アプリケーションのアップグレードが停止する可能性があります。 たとえば、5 ノードのクラスターがあり、InstanceCount=10 と設定されている場合、各ノードに 2 つのインスタンスが存在します。 MinInstanceCount=9 を設定した場合、試行されたアプリのアップグレードが停止する可能性があります。MinInstanceCount=8 の場合は、これを回避できます。
 >
 
 ## <a name="next-steps"></a>次のステップ

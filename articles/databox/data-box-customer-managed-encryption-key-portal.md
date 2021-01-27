@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e6b588ddea5bf4b4c92e89d9cebb37b09b9a86af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185531"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791546"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する
 
@@ -95,7 +95,7 @@ Azure portal で、カスタマー マネージド キーを既存の Data Box �
 
 7. このリソースのカスタマー マネージド キーを管理するために使用する ID の種類を選択します。 注文の作成時に生成された **システム割り当て** ID を使用することも、ユーザー割り当て ID を選択することもできます。
 
-    ユーザー割り当て ID は、リソースへのアクセスの管理に使用できる独立したリソースです。 詳細については、[マネージド ID の種類](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+    ユーザー割り当て ID は、リソースへのアクセスの管理に使用できる独立したリソースです。 詳細については、[マネージド ID の種類](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
     ![ID の種類を選択する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -103,7 +103,7 @@ Azure portal で、カスタマー マネージド キーを既存の Data Box �
 
     ![使用する ID を選択する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    ここでは、新しい ユーザー ID を作成することはできません。 作成方法については、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)」を参照してください。
+    ここでは、新しい ユーザー ID を作成することはできません。 作成方法については、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」を参照してください。
 
     選択したユーザー ID が **[暗号化の種類]** の設定に表示されます。
 
@@ -187,9 +187,9 @@ Azure portal で、カスタマー マネージド キーを既存の Data Box �
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| カスタマー マネージド キーが無効化されたため、パスキーをフェッチできませんでした。| 回復可能 (キー バージョンを有効にした場合)。|
 | SsemUserErrorEncryptionKeyExpired| カスタマー マネージド キーの有効期限が切れたため、パスキーをフェッチできませんでした。| 回復可能 (キー バージョンを有効にした場合)。|
-| SsemUserErrorKeyDetailsNotFound| カスタマー マネージド キーが見つからなかったため、パスキーをフェッチできませんでした。| キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../key-vault/general/move-subscription.md)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| カスタマー マネージド キーが見つからなかったため、パスキーをフェッチできませんでした。| キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../key-vault/general/move-subscription.md)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException | カスタマー マネージド キーが適用されましたが、キーへのアクセスが許可されていないか、無効になっているか、ファイアウォールが有効になっているためキー コンテナーにアクセスできませんでした。 | カスタマー マネージド キーへのアクセスを有効にするには、選択した ID をキー コンテナーに追加します。 キー コンテナーでファイアウォールが有効になっている場合は、システム割り当て ID に切り替えて、カスタマー マネージド キーを追加します。 詳細については、[キーを有効にする方法](#enable-key)に関する記事を参照してください。 |
-| SsemUserErrorKeyVaultDetailsNotFound| カスタマー マネージド キーの関連づけられているキー コンテナーが見つからなかったため、パスキーをフェッチできませんでした。 | キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../key-vault/general/move-subscription.md)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| カスタマー マネージド キーの関連づけられているキー コンテナーが見つからなかったため、パスキーをフェッチできませんでした。 | キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../key-vault/general/move-subscription.md)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | カスタマー マネージド キーが見つからなかったため、パスキーをフェッチできませんでした。| 回復可能。次のことを確認してください。 <ol><li>キー コンテナーのアクセス ポリシーに引き続き MSI が含まれている。</li><li>ID は、システムによって割り当てられたものである。</li><li>キー コンテナーのアクセス ポリシーで、この ID に対して Get、Wrap、および Unwrap のアクセス許可を有効にします。</li></ol>|
 | SsemUserErrorUserAssignedLimitReached | 追加可能なユーザー割り当て ID 合計数の最大値に達したため、新しいユーザー割り当て ID を追加できませんでした。 | ユーザーID を減らすか、リソースから一部のユーザー割り当てID を削除してから、操作を再試行してください。 |
 | SsemUserErrorCrossTenantIdentityAccessForbidden | マネージド ID アクセス操作に失敗しました。 <br> 注:これは、サブスクリプションが別のテナントに移動された場合のシナリオを対象としています。 顧客は、ID を新しいテナントに手動で移動する必要があります。 詳細については、PFA メールを参照してください。 | 選択した ID は、サブスクリプションが存在する新しいテナントに移動してください。 詳細については、[キーを有効にする方法](#enable-key)に関する記事を参照してください。 |

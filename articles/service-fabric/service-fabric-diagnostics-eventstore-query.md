@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 286c59938413a912c005181fca12f6698a7bc55e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 6bed26227542cbf3ffc13ecc018aef9e659d026e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042881"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791630"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>クラスター イベントに対して EventStore API のクエリを実行する
 
@@ -111,7 +111,7 @@ Body:
 
 ## <a name="query-the-eventstore-programmatically"></a>プログラムによる EventStore のクエリ
 
-[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
+[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
 
 Service Fabric クライアントを設定したら、次のように EventStore にアクセスしてイベントのクエリを実行できます: `sfhttpClient.EventStore.<request>`
 

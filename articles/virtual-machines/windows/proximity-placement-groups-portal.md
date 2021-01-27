@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45d7977dda4870be9a087b3277dd1db828c91178
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010726"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871436"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>ポータルを使用して、近接通信配置グループを作成します。
 
-各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
+各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](../co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
 
 近接通信配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 近接通信配置グループは、短い待ち時間が要件であるワークロードに役立ちます。
 
@@ -77,4 +77,3 @@ VM が可用性セットの一部である場合は、VM を追加する前に�
 ## <a name="next-steps"></a>次のステップ
 
 [Azure PowerShell](proximity-placement-groups.md) を使用して近接通信配置グループを作成することもできます。
-

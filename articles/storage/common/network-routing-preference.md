@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514200"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797636"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する (プレビュー)
 
@@ -65,9 +66,36 @@ Azure でのルーティング優先設定の詳細については、「[ルー�
 
 Azure Storage のルーティング優先設定は、次のリージョンで利用できます。
 
-- フランス南部
-- 米国中北部
+- 米国中部 
+- 米国中部 EUAP
+- 米国東部 
+- 米国東部 2
+- 米国東部 2 
+- 米国東部 2 EUAP
+- 米国中南部
 - 米国中西部
+- 米国西部 
+- 米国西部 2 
+- フランス中部 
+- フランス南部 
+- ドイツ北部 
+- ドイツ中西部 
+- 米国中北部
+- 北ヨーロッパ 
+- ノルウェー東部 
+- スイス北部
+- スイス西部
+- 英国南部 
+- 英国西部 
+- 西ヨーロッパ 
+- アラブ首長国連邦中部
+- 東アジア 
+- 東南アジア 
+- 東日本 
+- 西日本 
+- インド西部
+- オーストラリア東部 
+- オーストラリア南東部 
 
 Azure Storage のルーティング優先設定のプレビューには、次の既知の問題が影響します。
 

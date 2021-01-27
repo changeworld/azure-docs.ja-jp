@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a78bfc2b4f0c372c915647c0afa40263079af8e5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8b10e850fd3ae0282785164596f537652148a716
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746074"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791005"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell を使用した複数の IP 構成での負荷分散
 
@@ -46,7 +46,7 @@ ms.locfileid: "92746074"
     $myResourceGroup = "contosofabrikam"
     ```
 
-    詳細については、[リソース グループの作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページの手順 2. を参照してください。
+    詳細については、[リソース グループの作成](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページの手順 2. を参照してください。
 
 3. VM を格納する[可用性セットを作成](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json)します。 このシナリオでは、次のコマンドを使用します。
 
@@ -54,14 +54,14 @@ ms.locfileid: "92746074"
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. [Windows VM の作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 3. ～ 5. に従って、単一の NIC を持つ VM を作成する準備をします。 手順 6.1. を実行し、手順 6.2. の代わりに次のコマンドを実行します。
+4. [Windows VM の作成](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 3. ～ 5. に従って、単一の NIC を持つ VM を作成する準備をします。 手順 6.1. を実行し、手順 6.2. の代わりに次のコマンドを実行します。
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    次に、[Windows VM の作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 6.3. ～ 6.8. を実行します。
+    次に、[Windows VM の作成](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 6.3. ～ 6.8. を実行します。
 
 5. 各 VM に 2 番目の IP 構成を追加します。 [仮想マシンに複数の IP アドレスを割り当てる](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add)操作に関する記事の手順に従います。 次の構成設定を使用します。
 

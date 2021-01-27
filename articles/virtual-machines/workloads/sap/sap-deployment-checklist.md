@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916288"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871521"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -66,7 +66,7 @@ ms.locfileid: "97916288"
     - 高可用性とディザスター リカバリーのアーキテクチャ。
         - RTO と RPO に基づいて、必要な高可用性とディザスター リカバリー アーキテクチャの概要を定義します。
         - 1 つのゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS パッケージでは同期ホット スタンバイの同期メソッドが提供されており、運用システム用に推奨されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)」と関連ドキュメントから始めて、さまざまなデータベースについての SAP 関連ドキュメントもチェックしてください。
-           たとえば、[こちら](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows Server フェールオーバー クラスタリングを使用することは、サポートされていません。 代わりに次のようなソリューションを使用してください。
+           たとえば、[こちら](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows Server フェールオーバー クラスタリングを使用することは、サポートされていません。 代わりに次のようなソリューションを使用してください。
            - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle データの保護](../oracle/configure-oracle-dataguard.md)
            - [HANA システム レプリケーション](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -137,7 +137,7 @@ ms.locfileid: "97916288"
         - SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション レイヤー VM と DBMS VM との間のネットワーク待機時間をテストして評価します。 [SAP サポート ノート #1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度または良好な範囲でなければなりません。 [この記事](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットとの間のトラフィックには例外が適用されます。
         - Direct Server Return を使用するように ILB のデプロイが設定されていることを確認します。 DBMS レイヤーでの高可用性構成用に Azure ILB が使用されている場合、この設定により待機時間が短縮されます。
         - Azure Load Balancer を Linux ゲスト オペレーティング システムと共に使用している場合、Linux ネットワーク パラメーター **net.ipv4.tcp_timestamps** が **0** に設定されていることを確認します。 この推奨事項は、[SAP ノート #2382421](https://launchpad.support.sap.com/#/notes/2382421) の以前のバージョンの推奨事項と競合しています。 その SAP ノートは、Azure ロード バランサーと連携するように、このパラメーターを **0** に設定する必要があるという記述に更新されました。
-        - 最適なネットワーク待ち時間を実現するために [Azure 近接通信配置グループ](../../linux/co-location.md)の使用を検討します。 詳細については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」を参照してください。
+        - 最適なネットワーク待ち時間を実現するために [Azure 近接通信配置グループ](../../co-location.md)の使用を検討します。 詳細については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」を参照してください。
    4. 高可用性とディザスター リカバリーのデプロイ。
         - 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション レイヤーをデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](../../manage-availability.md)にデプロイされることを確認します。
         - SAP セントラル サービスと DBMS に対して高可用性が必要ない場合は、これらの VM を SAP アプリケーション レイヤーと同じ可用性セットにデプロイできます。
@@ -209,7 +209,7 @@ ms.locfileid: "97916288"
 8.  Azure での新しい HANA 認定 SKU については、[SAP の Web サイト](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)を確認してください。 新しい SKU の価格と使用を予定していたものの価格を比較します。 最終的に、価格性能比が最適なものを使用するために、必要な変更を行います。
 9.  新しい VM の種類を使用するようにデプロイ スクリプトを調整し、使用したい Azure の新機能を組み込みます。
 10. インフラストラクチャをデプロイした後、SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション レイヤー VM と DBMS VM の間のネットワーク待機時間をテストして評価します。 [SAP サポート ノート #1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度または良好な範囲でなければなりません。 [この記事](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットとの間のトラフィックには例外が適用されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md#azure-network-considerations)」および「[Azure における SAP HANA インフラストラクチャの構成と運用](./hana-vm-operations.md)」で説明されている制限が自分のデプロイに該当しないことを確認します。
-11. 「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」という記事に説明されているように、正しい [Azure 近接通信配置グループ](../../linux/co-location.md)に VM がデプロイされることを確認します。
+11. 「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」という記事に説明されているように、正しい [Azure 近接通信配置グループ](../../co-location.md)に VM がデプロイされることを確認します。
 11. ワークロードを適用する前に、概念実証フェーズに記載されている他のすべてのチェックを実行します。
 12. ワークロードを適用しながら、Azure でのシステムのリソース使用量を記録します。 この使用量と以前のプラットフォームのレコードを比較します。 大きな違いがある場合は、将来のデプロイで VM のサイズを調整します。 ダウンサイズすると、VM のストレージとネットワークの帯域幅も減少することに留意してください。
     - [Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ ms.locfileid: "97916288"
     - SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤーとの間の通信パスに [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)がないこと。
     - アプリケーション セキュリティ グループとネットワーク セキュリティ グループの規則で、必要であり計画されていた通信が許可され、必要な場合は通信がブロックされること。
     - 前に説明したようにタイムアウトの設定が正しく指定されていること。
-    - 「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」という記事に説明されているように、正しい [Azure 近接通信配置グループ](../../linux/co-location.md)に VM がデプロイされていること。
+    - 「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」という記事に説明されているように、正しい [Azure 近接通信配置グループ](../../co-location.md)に VM がデプロイされていること。
     - SAP アプリケーション レイヤーの VM と DBMS の VM との間のネットワーク待機時間が、SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) の説明に従ってテストおよび検証されていること。 [SAP サポート ノート #1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度または良好な範囲でなければなりません。 [この記事](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットとの間のトラフィックには例外が適用されます。
     - 必要に応じて適切な暗号化方法で暗号化が実装されたこと。
     - インターフェイスおよび他のアプリケーションが、新しくデプロイされたインフラストラクチャに接続できること。

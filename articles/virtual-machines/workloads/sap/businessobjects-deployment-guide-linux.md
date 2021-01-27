@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: da04e7704274336f7f92237c1d7c30459caa7bc8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936483"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806168"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -555,7 +555,7 @@ SAP BOBI プラットフォームの包括的なバックアップと復元の�
 
 Azure において、アプリケーション サーバーおよび接続されているすべてのディスクをバックアップする最も簡単な方法は、[Azure Backup](../../../backup/backup-overview.md) サービスを使用することです。 それにより、VM 上のデータが誤って破壊されることを防ぐために、独立した、分離されたバックアップが提供されます。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーリングはシンプルで、バックアップは最適化され、必要に応じて簡単に復元することができます。
 
-バックアップ プロセスの一環として、スナップショットが取得され、運用環境のワークロードに影響を与えることなく、データが Recovery Services コンテナーに転送されます。 スナップショットによって、「[スナップショットの整合性](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency)」の記事で説明されているように、さまざまなレベルの一貫性が提供されます。 また、選択的なディスク バックアップと復元の機能を使用して、VM 内のデータ ディスクのサブセットをバックアップすることもできます。 詳細については、[Azure VM バックアップ](../../../backup/backup-azure-vms-introduction.md)のドキュメントと「[よくあるご質問 - Azure VM のバックアップ](../../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
+バックアップ プロセスの一環として、スナップショットが取得され、運用環境のワークロードに影響を与えることなく、データが Recovery Services コンテナーに転送されます。 スナップショットによって、「[スナップショットの整合性](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency)」の記事で説明されているように、さまざまなレベルの一貫性が提供されます。 また、選択的なディスク バックアップと復元の機能を使用して、VM 内のデータ ディスクのサブセットをバックアップすることもできます。 詳細については、[Azure VM バックアップ](../../../backup/backup-azure-vms-introduction.md)のドキュメントと「[よくあるご質問 - Azure VM のバックアップ](../../../backup/backup-azure-vm-backup-faq.yml)」を参照してください。
 
 #### <a name="backup--restore-for-file-repository-server"></a>ファイル リポジトリ サーバーのバックアップと復元
 

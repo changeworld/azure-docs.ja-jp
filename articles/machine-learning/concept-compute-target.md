@@ -9,14 +9,13 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1d3a7be429f730dd4dbd71bade1e3e51ea73c10f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188651"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791174"
 ---
-
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
 "*コンピューティング ターゲット*" とは、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする、指定されたコンピューティング リソースまたは環境のことです。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すると、コードを変更しなくても、後でコンピューティング環境を容易に変更できます。
@@ -124,7 +123,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 > [!NOTE]
 > Azure Machine Learning は、Azure Compute がサポートするすべての VM サイズをサポートしているわけではありません。 使用可能な VM サイズを一覧表示するには、次のいずれかのメソッドを使用します。
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>コンピューティングの分離

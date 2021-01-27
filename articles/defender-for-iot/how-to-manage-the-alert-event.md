@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 023b33732b80198c4ed187328e8d18314f385f94
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836594"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803518"
 ---
 # <a name="manage-alert-events"></a>アラート イベントの管理
 
@@ -107,7 +107,5 @@ ms.locfileid: "97836594"
 2. アラートにマウス ポインターを移動すると、そのアラートがミュートされているかどうかがわかります。  
 
 ## <a name="see-also"></a>関連項目
-
-[レポートの生成](how-to-generate-reports.md)
 
 [監視するトラフィックを制御する](how-to-control-what-traffic-is-monitored.md)

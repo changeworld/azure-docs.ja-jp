@@ -3,12 +3,12 @@ title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195791"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791948"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -56,7 +56,7 @@ Event Hubs によって、1 つのパーティション キー値を共有する
 >
 > [Event Hubs Capture](event-hubs-capture-overview.md) は Azure Blob Storage および Azure Data Lake Storage に直接統合されており、その統合を通じて[イベントを Azure Synapse に直接フローさせる](store-captured-data-data-warehouse.md)ことができます。
 >
-> アプリケーションの[イベント ソーシング](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) パターンを使用する場合は、スナップショット戦略を Event Hubs の保持期間の制限に合わせる必要があります。 期間の開始時点からのすべての未加工イベントで、具体化されたビューを再構築しようとしないでください。 そのような戦略は、アプリケーションをしばらく本稼働させて十分に使用した後、プロジェクション ビルダーが、最新および継続中の変更に追い付こうとしながら数年分の変更イベントを使用しなければならなくなった場合に必ず後悔するようになります。 
+> アプリケーションの[イベント ソーシング](/azure/architecture/patterns/event-sourcing) パターンを使用する場合は、スナップショット戦略を Event Hubs の保持期間の制限に合わせる必要があります。 期間の開始時点からのすべての未加工イベントで、具体化されたビューを再構築しようとしないでください。 そのような戦略は、アプリケーションをしばらく本稼働させて十分に使用した後、プロジェクション ビルダーが、最新および継続中の変更に追い付こうとしながら数年分の変更イベントを使用しなければならなくなった場合に必ず後悔するようになります。 
 
 
 ### <a name="publisher-policy"></a>発行元ポリシー

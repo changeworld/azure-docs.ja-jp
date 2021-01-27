@@ -4,12 +4,12 @@ description: Service Fabric クラスターの計画時に考慮する必要が�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576334"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790700"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -146,7 +146,7 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 | 7 または 8 | ゴールド |
 | 9 以上 | Platinum |
 
-クラスターのサイズ (すべてのノード タイプの VM インスタンスの総数) を増減するときには、クラスターの信頼性のレベルを別のレベルに更新することを検討してください。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。  アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行します。
+クラスターのサイズ (すべてのノード タイプの VM インスタンスの総数) を増減するときには、クラスターの信頼性のレベルを別のレベルに更新することを検討してください。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。  アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) を実行します。
 
 ### <a name="capacity-planning-for-reliability"></a>信頼性に関する容量計画
 

@@ -1,15 +1,15 @@
 ---
 title: Azure Backup 用の組み込みポリシー定義
 description: Azure Backup 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 543c44134c9855b146db3d07e75416533120deb8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 7a16493fd5f547ed9a2ac3891201d3aa160ecdc7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051406"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805422"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-backup"></a>Azure Backup 用の Azure Policy 組み込み定義
 

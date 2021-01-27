@@ -79,7 +79,7 @@
         - name: FAQ - バックアップ センター
           href: backup-center-faq.yml
         - name: FAQ - Azure VM のバックアップ
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: FAQ - MARS エージェント
           href: backup-azure-file-folder-backup-faq.md
         - name: FAQ - Azure Files のバックアップ

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/26/2020
 ms.author: shhazam
-ms.openlocfilehash: ed6c88826b41df0bdfef8cbbcb2569b3cea8f868
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832388"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807882"
 ---
-# <a name="getting-started-with-defender-for-iot"></a>Defender for IoT での作業を開始する
+# <a name="get-started-with-defender-for-iot"></a>Defender for IoT での作業を開始する
 
 この記事では、Azure Defender for IoT を設定するために実行する手順の概要について説明します。 このプロセスでは、次のことを行う必要があります。
 

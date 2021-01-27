@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034766"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791881"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>Azure Logic Apps から関数を呼び出す
 
@@ -31,7 +31,7 @@ Azure Functions を使用せずにコード スニペットを実行するには
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* 関数アプリ。自分が作成する関数と共に Azure Functions 内に作成される関数用のコンテナーです。 関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、Azure portal でロジック アプリの外部で関数を作成するか、ロジック アプリ デザイナーで[ロジック アプリの内部から](#create-function-designer)関数を作成することができます。
+* 関数アプリ。自分が作成する関数と共に Azure Functions 内に作成される関数用のコンテナーです。 関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-get-started.md)。 次に、Azure portal でロジック アプリの外部で関数を作成するか、ロジック アプリ デザイナーで[ロジック アプリの内部から](#create-function-designer)関数を作成することができます。
 
 * ロジック アプリを操作するときは、既存であるか新規であるかに関係なく、同じ要件が関数アプリと関数に適用されます。
 
@@ -102,9 +102,9 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>ロジック アプリの内部で関数を作成する
 
-ロジック アプリ デザイナーに組み込みの Azure Functions アクションを使用して、ロジック アプリのワークフローから関数を直接作成できますが、この方法を使用できるのは、JavaScript で記述された関数の場合のみです。 その他の言語の場合は、Azure portal の Azure Functions 機能を使用して関数を作成できます。 詳細については、「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+ロジック アプリ デザイナーに組み込みの Azure Functions アクションを使用して、ロジック アプリのワークフローから関数を直接作成できますが、この方法を使用できるのは、JavaScript で記述された関数の場合のみです。 その他の言語の場合は、Azure portal の Azure Functions 機能を使用して関数を作成できます。 詳細については、「[Azure Portal で初めての関数を作成する](../azure-functions/functions-get-started.md)」を参照してください。
 
-ただし、Azure で関数を作成する前に、関数のコンテナーである関数アプリをあらかじめ用意しておく必要があります。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+ただし、Azure で関数を作成する前に、関数のコンテナーである関数アプリをあらかじめ用意しておく必要があります。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-get-started.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 

@@ -3,15 +3,15 @@ title: Azure Lab Services で共有イメージ ギャラリーを使用する |
 description: 共有イメージ ギャラリーを使用するようにラボ アカウントを構成して、ユーザーが他のユーザーとイメージを共有したり、他のユーザーがイメージを使用してラボでテンプレート VM を作成したりできるようにする方法について説明します。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: d9f4e75163f591680cc8f85ac42c1b6ada5f2365
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647768"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791392"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
-この記事では、教育者やラボ管理者がテンプレート仮想マシンのイメージを[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)に保存して、他のユーザーがラボを作成するために使用できるようにする方法について説明します。 
+この記事では、教育者やラボ管理者がテンプレート仮想マシンのイメージを[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に保存して、他のユーザーがラボを作成するために使用できるようにする方法について説明します。 
 
 > [!IMPORTANT]
 > 共有イメージ ギャラリーの使用中は、Azure Lab Services では、128 GB 未満の OS ディスク領域を持つイメージのみがサポートされます。 128 GB を超えるディスク領域を持つイメージ、または複数のディスクのイメージは、ラボの作成時に仮想マシン イメージの一覧に表示されません。
@@ -48,7 +48,7 @@ ms.locfileid: "94647768"
     共有イメージ ギャラリーにイメージを保存すると、別のラボを作成するときにギャラリーからそのイメージを使用できるようになります。 ラボのコンテキスト外で共有イメージ ギャラリーにイメージをアップロードすることもできます。 詳細については、[共有イメージ ギャラリーの概要](../virtual-machines/shared-images-powershell.md)に関するページを参照してください。 
 
     > [!IMPORTANT]
-    > 共有イメージ ギャラリーに、Azure Lab Services 内の [ラボのテンプレート イメージを保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)すると、そのイメージは **特殊化されたイメージ** としてギャラリーにアップロードされます。 [特殊化されたイメージ](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images)には、マシン固有の情報とユーザー プロファイルが保持されます。 一般化されたイメージは、引き続き Azure Lab Services の外部のギャラリーに直接アップロードできます。    
+    > 共有イメージ ギャラリーに、Azure Lab Services 内の [ラボのテンプレート イメージを保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)すると、そのイメージは **特殊化されたイメージ** としてギャラリーにアップロードされます。 [特殊化されたイメージ](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)には、マシン固有の情報とユーザー プロファイルが保持されます。 一般化されたイメージは、引き続き Azure Lab Services の外部のギャラリーに直接アップロードできます。    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>共有イメージ ギャラリーのイメージを使用する
 教師は、新しいラボの作成中に、共有イメージ ギャラリーから利用できるカスタム イメージをテンプレート用に選択できます。
@@ -60,4 +60,4 @@ ms.locfileid: "94647768"
 
 
 ## <a name="next-steps"></a>次のステップ
-共有イメージ ギャラリーの詳細については、[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)に関するページを参照してください。
+共有イメージ ギャラリーの詳細については、[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に関するページを参照してください。

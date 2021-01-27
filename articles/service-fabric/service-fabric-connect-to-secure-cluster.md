@@ -4,12 +4,12 @@ description: Service Fabric クラスターへのクライアント アクセス
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ce0325f7aebac92eb1e7deadd6f6875b75b3755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008813"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791123"
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -156,7 +156,7 @@ Service Fabric SDK によって、クラスター管理用に [FabricClient](/do
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-リライアブル サービス内など、クラスター内から実行しているコードでは、クラスター アドレスを指定*せずに* FabricClient を作成します。 FabricClient は、追加のネットワーク ホップなしで、コードを現在実行中のノードのローカル管理ゲートウェイに接続します。
+リライアブル サービス内など、クラスター内から実行しているコードでは、クラスター アドレスを指定 *せずに* FabricClient を作成します。 FabricClient は、追加のネットワーク ホップなしで、コードを現在実行中のノードのローカル管理ゲートウェイに接続します。
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -232,7 +232,7 @@ catch (Exception e)
 
 次の例では、Microsoft.IdentityModel.Clients.ActiveDirectory, Version: 2.19.208020213 を使用しています。
 
-AAD トークンの取得の詳細については、[Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) に関するページを参照してください。
+AAD トークンの取得の詳細については、[Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory) に関するページを参照してください。
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

@@ -3,12 +3,12 @@ title: アプリケーションでマネージド ID を使用する
 description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108519"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871063"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法
 
@@ -30,7 +30,7 @@ Azure Identity SDK で Service Fabric がサポートされるようになりま
 Service Fabric のサポートは、これらの言語の次のバージョンで利用できます。 
 - [C# (バージョン 1.3.0)](https://www.nuget.org/packages/Azure.Identity)。 [C# のサンプル](https://github.com/Azure-Samples/service-fabric-managed-identity)を参照してください。
 - [Python (バージョン 1.5.0)](https://pypi.org/project/azure-identity/)。 [Python のサンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)を参照してください。
-- [Java (バージョン 1.2.0)](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)。
+- [Java (バージョン 1.2.0)](/java/api/overview/azure/identity-readme)。
 
 資格情報の初期化、および資格情報を使用した Azure Key Vault からのシークレットのフェッチに関する C# のサンプルを次に示します。
 
