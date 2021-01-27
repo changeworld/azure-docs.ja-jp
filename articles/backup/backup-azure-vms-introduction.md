@@ -3,12 +3,12 @@ title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968995"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733572"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
@@ -121,7 +121,7 @@ VM バックアップを構成するときは、次のプラクティスに従�
 - 1 つのコンテナーから複数の VM を復元する場合は、ターゲットのストレージ アカウントがスロットルされないようにするために、それぞれ異なる[汎用 v2 ストレージ アカウント](../storage/common/storage-account-upgrade.md)を使用することを強くお勧めします。 たとえば、VM ごとに異なるストレージ アカウントが必要です。 たとえば、10 個の VM を復元する場合は、10 個の異なるストレージ アカウントを使用します。
 - インスタント リストアでの Premium Storage を使用している VM のバックアップについては、割り当てられた合計記憶域スペースの *50%* の空き領域を割り当てることが推奨されます。これは最初のバックアップに **のみ** 必要です。 最初のバックアップが完了すると、バックアップに 50% の空き領域は不要になります。
 - ストレージ アカウントあたりのディスク数の制限は、サービスとしてのインフラストラクチャ (IaaS) VM で実行されているアプリケーションがディスクにどれくらいアクセスするかによって決まります。 通常、1 つのストレージ アカウント上に 5 ～ 10 個以上のディスクが存在する場合は、一部のディスクを別のストレージ アカウントに移動して負荷を分散します。
-- PowerShell を使用してマネージド ディスクが含まれている VM を復元するには、追加のパラメーター **_TargetResourceGroupName_* _ を指定して、マネージド ディスクの復元先となるリソース グループを指定します。詳細については[こちら](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks)を参照してください。
+- PowerShell を使用してマネージド ディスクが含まれている VM を復元するには、追加のパラメーター **_TargetResourceGroupName_* _ を指定して、マネージド ディスクの復元先となるリソース グループを指定します。詳細については [こちら](./backup-azure-vms-automation.md#restore-managed-disks)を参照してください。
 
 ## <a name="backup-costs"></a>バックアップのコスト
 

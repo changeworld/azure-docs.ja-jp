@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317724"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730889"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>パスワードレス VPN 用の Azure Active Directory シングル サインオンと F5 BIG-IP の統合
 
@@ -24,13 +24,13 @@ ms.locfileid: "96317724"
 
 BIG-IP SSL-VPN を Azure AD と統合すると、以下を含む[多くの重要なメリット](f5-aad-integration.md)が得られます。
 
-- [Azure AD の事前認証および認可](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)によるゼロ トラスト ガバナンスの強化
+- [Azure AD の事前認証および認可](../../app-service/overview-authentication-authorization.md)によるゼロ トラスト ガバナンスの強化
 
 - [VPN サービスに対するパスワードレス認証](https://www.microsoft.com/security/business/identity/passwordless)
 
 - 1 つのコントロール プレーンからの ID とアクセスの管理 - [Azure portal](https://portal.azure.com/#home)
 
-しかし、このように優れた価値が追加されるにもかかわらず、従来の VPN は依然として「内部は信頼され、外部は信頼されない」というネットワーク境界の概念を前提としています。 企業の資産がエンタープライズ データ センターの内部に限定されず、固定された境界のないマルチクラウド環境にまたがって存在するようになったため、このモデルでは真のゼロ トラスト体制を効果的に実現できなくなりました。 このため、お客様には、[アプリケーションごとにアクセス](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)を管理する際に、ID 主導のアプローチへの移行を検討することをお勧めします。
+しかし、このように優れた価値が追加されるにもかかわらず、従来の VPN は依然として「内部は信頼され、外部は信頼されない」というネットワーク境界の概念を前提としています。 企業の資産がエンタープライズ データ センターの内部に限定されず、固定された境界のないマルチクラウド環境にまたがって存在するようになったため、このモデルでは真のゼロ トラスト体制を効果的に実現できなくなりました。 このため、お客様には、[アプリケーションごとにアクセス](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)を管理する際に、ID 主導のアプローチへの移行を検討することをお勧めします。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -47,9 +47,9 @@ F5 BIG-IP に関する事前の経験や知識は必要ありませんが、次�
 
 - Azure AD [無料サブスクリプション](https://azure.microsoft.com/trial/get-started-active-directory/) (またはそれ以上)
 
-- ユーザー ID を[オンプレミス ディレクトリから Azure AD に同期する](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)必要がある。
+- ユーザー ID を[オンプレミス ディレクトリから Azure AD に同期する](../hybrid/how-to-connect-sync-whatis.md)必要がある。
 
-- Azure AD アプリケーション管理者の[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator)を持つアカウント
+- Azure AD アプリケーション管理者の[アクセス許可](../roles/permissions-reference.md#application-administrator)を持つアカウント
 
 - BIG-IP との間でクライアント トラフィックをルーティングする既存の BIG-IP インフラストラクチャ、または [BIG-IP Virtual Edition を Azure にデプロイする](f5-bigip-deployment-guide.md)。
 
@@ -64,7 +64,7 @@ F5 BIG-IP に関する事前の経験や知識は必要ありませんが、次�
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>Azure AD ギャラリーから F5 BIG-IP を追加する
 
-BIG-IP との間に SAML フェデレーション信頼を設定すると、公開された VPN サービスへのアクセスを許可する前に、Azure AD BIG-IP で事前認証と[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を Azure AD に渡すことができます。
+BIG-IP との間に SAML フェデレーション信頼を設定すると、公開された VPN サービスへのアクセスを許可する前に、Azure AD BIG-IP で事前認証と[条件付きアクセス](../conditional-access/overview.md)を Azure AD に渡すことができます。
 
 1. アプリケーション管理者の権限を持つアカウントを使用して、Azure AD ポータルにサインインします
 
@@ -105,7 +105,7 @@ BIG-IP との間に SAML フェデレーション信頼を設定すると、公�
 
 ![ユーザー属性とクレームを示す画像](media/f5-sso-vpn/user-attributes-claims.png)
 
-BIG-IP で公開されたサービスで想定しているその他の特定の要求を自由に追加できます。ただし、既定のセットに追加して定義された要求は、Azure AD に設定された属性として存在する場合にのみ発行されることに注意してください。 同様に、ディレクトリの[ロールまたはグループ](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims)のメンバーシップも、要求として発行する前に Azure AD 内のユーザー オブジェクトに対して定義する必要があります。
+BIG-IP で公開されたサービスで想定しているその他の特定の要求を自由に追加できます。ただし、既定のセットに追加して定義された要求は、Azure AD に設定された属性として存在する場合にのみ発行されることに注意してください。 同様に、ディレクトリの[ロールまたはグループ](../hybrid/how-to-connect-fed-group-claims.md)のメンバーシップも、要求として発行する前に Azure AD 内のユーザー オブジェクトに対して定義する必要があります。
 
 ![フェデレーション メタデータのダウンロード リンクを示す画像](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -299,11 +299,11 @@ VPN オブジェクトを構成したら、SAML 認証でそのサービスを�
 
 - [パスワードの終わり、これからはパスワードレス](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [条件付きアクセスとは](../conditional-access/overview.md)
 
 - [リモート作業を可能にする Microsoft ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [すべてのアプリを Azure AD と統合するための 5 つの手順](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [すべてのアプリを Azure AD と統合するための 5 つの手順](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -312,4 +312,4 @@ VPN オブジェクトを構成したら、SAML 認証でそのサービスを�
 ![VPN ランチャーを示す画像](media/f5-sso-vpn/vpn-launcher.png)
 
 VPN タイルを選択すると、BIG-IP Edge Client がインストールされ、SHA 用に構成された VPN 接続が確立されます。
-F5 VPN アプリケーションは、Azure AD 条件付きアクセスのターゲット リソースとしても表示される必要があります。 条件付きアクセスのポリシーを作成し、ユーザーの Azure AD [パスワードレス認証](https://www.microsoft.com/security/business/identity/passwordless)も有効にするための[ガイダンス](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies)をご覧ください。
+F5 VPN アプリケーションは、Azure AD 条件付きアクセスのターゲット リソースとしても表示される必要があります。 条件付きアクセスのポリシーを作成し、ユーザーの Azure AD [パスワードレス認証](https://www.microsoft.com/security/business/identity/passwordless)も有効にするための[ガイダンス](../conditional-access/concept-conditional-access-policies.md)をご覧ください。

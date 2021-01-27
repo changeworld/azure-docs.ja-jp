@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8dd3c60c3d1b714ab75b496a94ba4bd5aec4e43d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: cd5b709843ba2d98170aaa58eb5c3cc1ec8883af
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558472"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734683"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
 
@@ -48,7 +48,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 - [GitHub](https://github.com/) で作成されたアカウント
 - [Git](https://git-scm.com/)
 - [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-- Bash 環境用に [Azure Cloud Shell](/azure/cloud-shell/quickstart) が構成されている。
+- Bash 環境用に [Azure Cloud Shell](../cloud-shell/quickstart.md) が構成されている。
 - GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。
 
 ## <a name="create-an-oauth-app"></a>OAuth アプリを作成する

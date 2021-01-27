@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5fd5cf419adb137df5c578e3b17b88749215be5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919159"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724712"
 ---
 # <a name="build-resilience-with-credential-management"></a>資格情報管理を使用して回復性を強化する
 
@@ -61,7 +61,7 @@ ms.locfileid: "95919159"
 
 * Windows Server Active Directory から同期されるハイブリッド アカウントで[パスワード ハッシュ同期](../hybrid/whatis-phs.md)をオンにします。 このオプションは、AD FS などのフェデレーション サービスと共に有効にでき、フェデレーション サービスで障害が発生した場合にフォールバックを提供します。
 
-* [多要素認証方法の使用状況を分析して](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)、ユーザーのエクスペリエンスを向上させます。
+* [多要素認証方法の使用状況を分析して](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)、ユーザーのエクスペリエンスを向上させます。
 
 * [回復性のあるアクセス制御戦略を実装する](../authentication/concept-resilient-controls.md)
 

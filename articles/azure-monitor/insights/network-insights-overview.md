@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: e4b555f4727d2d1fb5b64814ae07aa15b78da42c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510925"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734158"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor for Networks
 
-Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの[正常性](../../service-health/resource-health-checks-resource-types.md)と[メトリック](../platform/metrics-supported.md)を構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-preview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 さらには、他のネットワーク[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)機能を提供します。
+Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの[正常性](../../service-health/resource-health-checks-resource-types.md)と[メトリック](../platform/metrics-supported.md)を構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-overview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 さらには、他のネットワーク[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)機能を提供します。
 
 Azure Monitor for Networks は、監視の主要コンポーネントを中心に構成されています。
 - [ネットワークの正常性とメトリック](#networkhealth)

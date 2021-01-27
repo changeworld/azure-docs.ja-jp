@@ -1,6 +1,6 @@
 ---
-title: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
-description: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
+title: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
+description: Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676504"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724171"
 ---
-# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
+# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL データベースをインポートまたはエクスポートする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この記事では、サーバーで *[Azure サービスを許可する]* に *[オフ]* が設定されている場合に Azure SQL Database をインポートまたはエクスポートする方法について説明します。 このワークフローでは、インポートまたはエクスポート操作を行う SqlPackage を実行するために Azure 仮想マシンを使用します。
+この記事では、サーバーで *[Azure サービスを許可する]* に *[オフ]* が設定されている場合に Azure SQL データベースをインポートまたはエクスポートする方法について説明します。 このワークフローでは、インポートまたはエクスポート操作を行う SqlPackage を実行するために Azure 仮想マシンを使用します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -77,7 +77,7 @@ ms.locfileid: "92676504"
 
 次の手順では、仮想マシンのパブリック IP アドレスのためのサーバー レベルの IP ファイアウォール規則を作成し、仮想マシンからの接続を有効にします。
 
-1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページでデータベースを選択します。 データベースの概要ページが開き、完全修飾サーバー名 ( **servername.database.windows.net** など) と、さらに構成するためのオプションが表示されます。
+1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページでデータベースを選択します。 データベースの概要ページが開き、完全修飾サーバー名 (**servername.database.windows.net** など) と、さらに構成するためのオプションが表示されます。
 
 2. サーバーやそのデータベースに接続するときに使用するために、この完全修飾サーバー名をコピーします。
 
@@ -111,7 +111,7 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 スケールとパフォーマンスのために、ほとんどの運用環境では、Azure portal の使用ではなく SqlPackage の使用をお勧めします。 `BACPAC` ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)」をご覧ください。
 
-次の SqlPackage コマンドでは、 **AdventureWorks2017** データベースがローカル ストレージから Azure SQL データベースにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
+次の SqlPackage コマンドでは、**AdventureWorks2017** データベースがローカル ストレージから Azure SQL データベースにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -147,7 +147,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 コストを削減するには、Premium Azure ファイル共有よりコストの低い Azure BLOB を使用します。 ただし、それには、インポートまたはエクスポート操作の前に BLOB とローカル ファイル システムの間で [.BACPAC ファイル](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)をコピーする必要があります。 その結果、このプロセスにかかる時間は長くなります。
 
-.BACPAC ファイルをアップロードまたはダウンロードするには、「[AzCopy と Blob Storage でデータを転送する](../../storage/common/storage-use-azcopy-blobs.md)」および「[AzCopy とファイル ストレージでデータを転送する](../../storage/common/storage-use-azcopy-files.md)」 を参照してください。
+.BACPAC ファイルをアップロードまたはダウンロードするには、「[AzCopy と Blob Storage でデータを転送する](../../storage/common/storage-use-azcopy-v10.md#transfer-data)」および「[AzCopy とファイル ストレージでデータを転送する](../../storage/common/storage-use-azcopy-files.md)」 を参照してください。
 
 環境によっては、[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../../storage/common/storage-network-security.md)ことが必要になる場合があります
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032764"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724273"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -63,7 +63,7 @@ Azure AD 管理ポータルへのアクセスを制限する | このオプシ�
 
 権限 | 設定の説明
 ---------- | ------------
-Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス制限 (プレビュー)) | このオプションを **[Guest users have the same access as members]\(ゲスト ユーザーにメンバーと同じアクセス権を付与する\)** に設定すると、メンバー ユーザーのアクセス許可すべてがゲスト ユーザーに既定で付与されます。<p>このオプションを **[Guest user access is restricted to properties and memberships of their own directory objects]\(ゲスト ユーザーのアクセスを、自分のディレクトリ オブジェクトのプロパティとメンバーシップに制限する\)** に設定すると、ゲスト アクセスは既定で自分のユーザー プロファイルのみに制限されます。 ユーザー プリンシパル名、ObjectId、または表示名で検索する場合でも、他のユーザーへのアクセスは許可されなくなりました。 グループ メンバーシップを含むグループ情報へのアクセスも許可されなくなりました。<p>**注**:この設定では、Microsoft Teams など、一部の Microsoft 365 サービスの参加しているグループへのアクセスは禁止されません。 詳細については、[Microsoft Teams のゲストのアクセス](https://docs.microsoft.com/MicrosoftTeams/guest-access)に関する記事を参照してください。<p>このアクセス許可の設定に関係なく、ゲスト ユーザーを管理者の役割に追加できます。
+Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス制限 (プレビュー)) | このオプションを **[Guest users have the same access as members]\(ゲスト ユーザーにメンバーと同じアクセス権を付与する\)** に設定すると、メンバー ユーザーのアクセス許可すべてがゲスト ユーザーに既定で付与されます。<p>このオプションを **[Guest user access is restricted to properties and memberships of their own directory objects]\(ゲスト ユーザーのアクセスを、自分のディレクトリ オブジェクトのプロパティとメンバーシップに制限する\)** に設定すると、ゲスト アクセスは既定で自分のユーザー プロファイルのみに制限されます。 ユーザー プリンシパル名、ObjectId、または表示名で検索する場合でも、他のユーザーへのアクセスは許可されなくなりました。 グループ メンバーシップを含むグループ情報へのアクセスも許可されなくなりました。<p>**注**:この設定では、Microsoft Teams など、一部の Microsoft 365 サービスの参加しているグループへのアクセスは禁止されません。 詳細については、[Microsoft Teams のゲストのアクセス](/MicrosoftTeams/guest-access)に関する記事を参照してください。<p>このアクセス許可の設定に関係なく、ゲスト ユーザーを管理者の役割に追加できます。
 ゲストは招待ができる | このオプションを [はい] に設定すると、ゲストは他のゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
 メンバーは招待ができる | このオプションを [はい] に設定すると、自分のディレクトリの管理者以外のメンバーがゲストを招待できるようになります。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)に関する記事を参照してください。
 管理者とゲスト招待元ロールのユーザーは招待ができる | このオプションを [はい] に設定すると、管理者と "ゲスト招待元" ロールのユーザーがゲストを招待できます。 [はい] に設定すると、[メンバーは招待ができる] 設定に関係なく、ゲスト招待元ロールのユーザーはゲストを招待できます。 詳しくは、[B2B コラボレーションの招待の委任](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user)に関する記事を参照してください。

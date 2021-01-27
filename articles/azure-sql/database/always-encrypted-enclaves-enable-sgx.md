@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4c77103dbb043ef9d6af9a4078b3e574ab5f953f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253235"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733758"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>Azure SQL Database に対して Intel SGX を有効にする 
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253235"
 > [!NOTE]
 > Azure SQL Database のセキュリティで保護されたエンクレーブが設定された Always Encrypted は、現在、**パブリック プレビュー** 段階にあります。
 
-Azure SQL Database の[セキュリティで保護されたエンクレーブが設定された Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) では、[Intel Software Guard Extensions (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) のエンクレーブが使用されます。 Intel SGX を使用できるようにするには、データベースで[仮想コア モデル](service-tiers-vcore.md)と [DC シリーズ](service-tiers-vcore.md#dc-series)のハードウェアの世代を使用する必要があります。
+Azure SQL Database の[セキュリティで保護されたエンクレーブが設定された Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) では、[Intel Software Guard Extensions (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) のエンクレーブが使用されます。 Intel SGX を使用できるようにするには、データベースで[仮想コア モデル](service-tiers-vcore.md)と [DC シリーズ](service-tiers-vcore.md#dc-series)のハードウェアの世代を使用する必要があります。
 
 Intel SGX エンクレーブを有効にするように DC シリーズのハードウェアの世代を構成することは、Azure SQL Database 管理者の責任です。 「[SGX エンクレーブと構成証明を構成する場合のロールと責任](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)」を参照してください。
 

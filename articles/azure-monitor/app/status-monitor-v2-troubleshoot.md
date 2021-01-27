@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616832"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732580"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
@@ -55,7 +55,7 @@ ms.locfileid: "97616832"
 ### <a name="powershell-versions"></a>PowerShell のバージョン
 この製品は、PowerShell v5.1 を使用して作成およびテストされています。
 このモジュールは、PowerShell バージョン 6 または 7 との互換性がありません。
-PowerShell v5.1 は、新しいバージョンと併せて使用することをお勧めします。 詳細については、「[PowerShell 7 を Windows PowerShell 5.1 とサイド バイ サイドで使用する](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)」を参照してください。
+PowerShell v5.1 は、新しいバージョンと併せて使用することをお勧めします。 詳細については、「[PowerShell 7 を Windows PowerShell 5.1 とサイド バイ サイドで使用する](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)」を参照してください。
 
 ### <a name="conflict-with-iis-shared-configuration"></a>IIS 共有構成との競合
 

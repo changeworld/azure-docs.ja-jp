@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4cd37128893309be5a1e362671b9e28dcc436b1b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f6e9009040d2d02702f8a71c352716491d07d1f7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356210"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704306"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>SQL Server データベースを Azure 仮想マシン上の SQL Server に移行する
 
@@ -68,7 +68,7 @@ ms.locfileid: "97356210"
 | [URL へのバックアップを実行し、その URL から Azure 仮想マシンに復元する](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 以上 | SQL Server 2012 SP1 CU2 以上 | SQL Server 2016 の場合は 12.8 TBまで、それ以外の場合は 1 TB まで | これは、Azure Storage を使用してバックアップ ファイルを VM に移動するもう 1 つの方法です。 |
 | [データ ファイルとログ ファイルをデタッチして Azure Blob Storage にコピーした後、URL から Azure 仮想マシンの SQL Server にアタッチする](#detach-and-attach-from-a-url) | SQL Server 2005 以降 |SQL Server 2014 以降 | [Azure VM ストレージの制限](../../../index.yml) | この方法は、特にデータベースのサイズが非常に大きい場合に、 [Azure BLOB ストレージ サービスを使用してこれらのファイルを格納](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) し、Azure VM で実行されている SQL Server にファイルをアタッチするときに使用します。 |
 | [オンプレミスのマシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい仮想マシンをデプロイする](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](../../../index.yml) |[ご自身の SQL Server ライセンスを使用する](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)場合、古いバージョンの SQL Server で実行するデータベースを移行する場合、または他のユーザー データベースやシステム データベースに依存しているデータベースの移行の一部として、データベース システムとユーザー データベースを一緒に移行する場合に使用します。 |
-| [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-a-hard-drive) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](../../../index.yml) |[Windows の Import/Export サービス](../../../storage/common/storage-import-export-service.md) は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
+| [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-a-hard-drive) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](../../../index.yml) |[Windows の Import/Export サービス](../../../import-export/storage-import-export-service.md) は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
 | [Azure のレプリカ追加ウィザードの使用](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability) |SQL Server 2012 以降 |SQL Server 2012 以降 |[Azure VM ストレージの制限](../../../index.yml) |ダウンタイムが最小限になります。AlwaysOn のオンプレミスのデプロイがあるときに使います。 |
 | [SQL Server のトランザクション レプリケーションを使用する](/sql/relational-databases/replication/transactional/transactional-replication) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](../../../index.yml) |ダウンタイムを最小限にする必要があり、Always On のオンプレミスのデプロイがないときに使用します。 |
 
@@ -83,7 +83,7 @@ ms.locfileid: "97356210"
 
 ## <a name="backup-to-url-and-restore-from-url"></a>URL へのバックアップと URL からの復元
 
-ローカル ファイルにバックアップするのではなく、[URL へのバックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)を使用し、後でその URL から VM に復元できます。 SQL Server 2016 では、ストライプ バックアップ セットがサポートされています。 それらはパフォーマンスのために推奨されており、BLOB ごとのサイズ制限を超える場合は必須です。 データベースのサイズが非常に大きい場合は、[Windows の Import/Export サービス](../../../storage/common/storage-import-export-service.md)をお勧めします。
+ローカル ファイルにバックアップするのではなく、[URL へのバックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)を使用し、後でその URL から VM に復元できます。 SQL Server 2016 では、ストライプ バックアップ セットがサポートされています。 それらはパフォーマンスのために推奨されており、BLOB ごとのサイズ制限を超える場合は必須です。 データベースのサイズが非常に大きい場合は、[Windows の Import/Export サービス](../../../import-export/storage-import-export-service.md)をお勧めします。
 
 ## <a name="detach-and-attach-from-a-url"></a>URL からデタッチとアタッチを行う
 
@@ -106,7 +106,7 @@ ms.locfileid: "97356210"
 
 ## <a name="ship-a-hard-drive"></a>ハード ドライブを発送する
 
-ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../../../storage/common/storage-import-export-service.md)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。 このサービスでは、データを含む 1 台以上のハード ドライブを Azure データ センターに発送し、そのデータ センターでデータがストレージ アカウントにアップロードされます。
+ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../../../import-export/storage-import-export-service.md)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。 このサービスでは、データを含む 1 台以上のハード ドライブを Azure データ センターに発送し、そのデータ センターでデータがストレージ アカウントにアップロードされます。
 
 ## <a name="next-steps"></a>次のステップ
 

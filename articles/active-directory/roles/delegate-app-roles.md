@@ -3,23 +3,23 @@ title: アプリケーション管理の管理者アクセス許可を委任す�
 description: Azure Active Directory でアプリケーション アクセス管理のアクセス許可を付与する
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad21e15d33dabba74d338b339e4b2fdc25df52e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e36a29048d97798c2e1621fbdc957bde51b5a383
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379215"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740603"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
@@ -89,7 +89,7 @@ Azure AD には、すべてのアプリケーションに対する Azure AD で�
 
 カスタム ロールの作成とカスタム ロールの割り当ては別々の手順です。
 
-- [カスタムの *ロール定義* を作成](custom-create.md)し、 [あらかじめ設定されている一覧からアクセス許可をその定義に追加](custom-available-permissions.md)します。 これらは、組み込みロールで使用されるものと同じアクセス許可です。
+- [カスタムの *ロール定義* を作成](custom-create.md)し、[あらかじめ設定されている一覧からアクセス許可をその定義に追加](custom-available-permissions.md)します。 これらは、組み込みロールで使用されるものと同じアクセス許可です。
 - [*ロールの割り当て* を作成](custom-assign-powershell.md)し、カスタム ロールを割り当てます。
 
 この分離により、1 つのロール定義を作成し、それを異なる *スコープ* で何度も割り当てることができます。 カスタム ロールは、組織全体のスコープで割り当てることも、単一の Azure AD オブジェクトの場合はそのスコープで割り当てることもできます。 オブジェクト スコープの例としては、単一のアプリ登録があります。 異なるスコープを使用すると、組織内のすべてのアプリ登録に対して同じロール定義を Sally に割り当て、次に Contoso Expense Reports アプリ登録に対してのみ Naveen に割り当てることができます。

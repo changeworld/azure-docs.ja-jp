@@ -3,12 +3,12 @@ title: Node.js 向け Azure Batch クライアント ライブラリを使用す
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106701"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737288"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
@@ -38,7 +38,7 @@ Node.js クライアントは、準備タスク (後述) と、ストレージ �
 
 > [!TIP]
 > 上記リンクから入手できる Node.js クライアントには、Azure Function App としてデプロイするための具体的なコードが含まれていません。 Function App を作成するための手順については、以下のリンクを参照してください。
-> - [Function App の作成](../azure-functions/functions-create-first-azure-function.md)
+> - [Function App の作成](../azure-functions/functions-get-started.md)
 > - [タイマー トリガー関数の作成](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>アプリケーションのビルド

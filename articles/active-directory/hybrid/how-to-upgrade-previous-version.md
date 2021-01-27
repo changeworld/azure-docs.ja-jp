@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094218"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729992"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect:旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。  構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
 
 >[!NOTE]
-> Azure AD Connect の最新リリースでサーバーを最新の状態に保つことが重要です。 AADConnect に対するアップグレードは絶えず行われており、これらのアップグレードには、セキュリティの問題およびバグの修正プログラムの他、サービス性、パフォーマンス、スケーラビリティの向上が含まれます。 最新バージョンを確認し、バージョン間で行われた変更点を把握するには、[リリース バージョン履歴](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history)に関する記事を参照してください
+> Azure AD Connect の最新リリースでサーバーを最新の状態に保つことが重要です。 AADConnect に対するアップグレードは絶えず行われており、これらのアップグレードには、セキュリティの問題およびバグの修正プログラムの他、サービス性、パフォーマンス、スケーラビリティの向上が含まれます。 最新バージョンを確認し、バージョン間で行われた変更点を把握するには、[リリース バージョン履歴](./reference-connect-version-history.md)に関する記事を参照してください
 
 >[!NOTE]
 > 現在、Azure AD Connect は、任意のバージョンから最新バージョンへのアップグレードがサポートされています。 DirSync または ADSync のインプレース アップグレードはサポートされておらず、スウィング移行が必要となります。  DirSync からアップグレードする場合は、[Azure AD 同期ツール (DirSync) からのアップグレード](how-to-dirsync-upgrade-get-started.md)に関するページまたは「[Swing migration (スウィング移行)](#swing-migration)」セクションを参照してください。  </br>実際には、極端に古いバージョンをご使用の場合、Azure AD Connect には直接関係のない問題が発生する可能性はあります。 何年にもわたって運用されてきたサーバーは通常、さまざまなパッチが適用されており、その一部が考慮されていないことも考えられます。  一般に、12 か月から 18 か月間アップグレードを行っていないお客様は、スウィング アップグレードを検討してください。スウィング アップグレードが最も慎重でリスクの少ない選択肢です。

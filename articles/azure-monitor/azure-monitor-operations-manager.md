@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251830"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736147"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Operations Manager の既存のお客様向けの Azure Monitor
-この記事では、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) を現在使用しており、ビジネス アプリケーションやその他のリソースを Azure に移行する際に [Azure Monitor](overview.md) への移行を計画しているお客様に向けたガイダンスを提供します。 最終的な目標はクラウドへの全面的な移行であり、ビジネス面と IT 運用の要件について妥協することなく、可能な限り多くの Operations Manager 機能を Azure Monitor に置き換えると想定しています。 
+この記事では、[System Center Operations Manager](/system-center/scom/welcome) を現在使用しており、ビジネス アプリケーションやその他のリソースを Azure に移行する際に [Azure Monitor](overview.md) への移行を計画しているお客様に向けたガイダンスを提供します。 最終的な目標はクラウドへの全面的な移行であり、ビジネス面と IT 運用の要件について妥協することなく、可能な限り多くの Operations Manager 機能を Azure Monitor に置き換えると想定しています。 
 
 この記事に記載されている特定の推奨事項は、Azure Monitor と Operations Manager に機能が追加されると変化します。 ただし、基本的な方法は一貫して残るでしょう。
 
@@ -22,13 +22,13 @@ ms.locfileid: "98251830"
 > ここで説明するいくつかの Azure Monitor 機能を実装するにはコストがかかります。そのため、環境全体に展開する前にその価値を評価する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
-この記事は、[Operations Manager](https://docs.microsoft.com/system-center/scom) を既に使用しており、[Azure Monitor](overview.md) について少なくとも基本的知識があることを前提としています。 これら 2 つの完全な比較については、「[クラウド監視ガイド:監視プラットフォームの概要](/azure/cloud-adoption-framework/manage/monitor/platform-overview)」を参照してください。 その記事では、ここに記載されている推奨事項の一部を理解する助けになる、これら 2 つの具体的な機能の違いが詳しく説明されています。 
+この記事は、[Operations Manager](/system-center/scom) を既に使用しており、[Azure Monitor](overview.md) について少なくとも基本的知識があることを前提としています。 これら 2 つの完全な比較については、「[クラウド監視ガイド:監視プラットフォームの概要](/azure/cloud-adoption-framework/manage/monitor/platform-overview)」を参照してください。 その記事では、ここに記載されている推奨事項の一部を理解する助けになる、これら 2 つの具体的な機能の違いが詳しく説明されています。 
 
 
 ## <a name="general-strategy"></a>全般的な方針
 プラットフォームが根本的に異なっているため、Operations Manager から Azure Monitor にアセットを変換する移行ツールはありません。 代わりに、Operations Manager を使用し続けしている間に、移行によって[標準的な Azure Monitor 実装](deploy.md)を構成します。 Azure Monitor をカスタマイズして、さまざまなアプリケーションやコンポーネントの要件を満たす場合や、より多くの機能が追加された場合は、Operations Manager で、さまざまな管理パックおよびエージェントの、インベントリからの削除を開始できます。
 
-この記事で推奨される一般的な方針は、[クラウド監視ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)と同じです。このガイドでは、クラウドへの段階的移行を行えるようする[ハイブリッド クラウド監視](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring)の方針が勧められています。 一部の機能が重複する可能性もありますが、この方針では、新しいプラットフォームに慣れながら既存のビジネス プロセスを維持できます。 Operations Manager の機能から離れるのは、Azure Monitor に置き換え可能なときだけです。 複数の監視ツールを使用すると複雑さが増しますが、オンプレミスまたは他のクラウド内に存在する可能性があるサーバー ソフトウェアやインフラストラクチャ コンポーネントを監視する Operations Manager の機能を維持しながら、次世代のクラウド ワークロードを監視する Azure Monitor の機能を活用できます。 
+この記事で推奨される一般的な方針は、[クラウド監視ガイド](/azure/cloud-adoption-framework/manage/monitor/)と同じです。このガイドでは、クラウドへの段階的移行を行えるようする[ハイブリッド クラウド監視](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring)の方針が勧められています。 一部の機能が重複する可能性もありますが、この方針では、新しいプラットフォームに慣れながら既存のビジネス プロセスを維持できます。 Operations Manager の機能から離れるのは、Azure Monitor に置き換え可能なときだけです。 複数の監視ツールを使用すると複雑さが増しますが、オンプレミスまたは他のクラウド内に存在する可能性があるサーバー ソフトウェアやインフラストラクチャ コンポーネントを監視する Operations Manager の機能を維持しながら、次世代のクラウド ワークロードを監視する Azure Monitor の機能を活用できます。 
 
 
 ## <a name="components-to-monitor"></a>監視するコンポーネント
@@ -37,7 +37,7 @@ ms.locfileid: "98251830"
 クラウド以前には、Operations Manager を使用してすべてのレイヤーを監視していました。 サービスとしてのインフラストラクチャ (IaaS) を使用して移行を開始するときは、仮想マシンについては引き続き Operations Manager を使用しますが、クラウド リソースについては Azure Monitor の使用を開始します。 その後、サービスとしてのプラットフォーム (PaaS) を使用して、最新アプリケーションに移行するときには、Azure Monitor により焦点を合わせて、Operations Manager 機能のインベントリからの削除を開始できます。
 
 
-![クラウド モデル](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![クラウド モデル](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 これらのレイヤーは、以下のカテゴリに単純化することができます。これらのカテゴリについては、この記事の残りの部分で説明します。 環境内のすべての監視ワークロードが、これらのカテゴリのいずれかにぴたりと該当するとは限りませんが、それぞれが、適用する一般的推奨事項の特定カテゴリに十分に近いものである必要があります。
 

@@ -4,16 +4,16 @@ description: カスタム イメージ プールは、Batch ワークロード�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327306"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731363"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
-仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用するか、[Shared Image Gallery のイメージ](../virtual-machines/windows/shared-image-galleries.md)を使用してカスタム イメージを作成するかのいずれかの方法で、仮想マシンのプールを作成することができます。
+仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用するか、[Shared Image Gallery のイメージ](../virtual-machines/shared-image-galleries.md)を使用してカスタム イメージを作成するかのいずれかの方法で、仮想マシンのプールを作成することができます。
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Shared Image Gallery の利点
 
@@ -31,7 +31,7 @@ ms.locfileid: "96327306"
 - **大量のデータを一度にコピー。** マネージド共有イメージの静的データの部分を、マネージド イメージのデータ ディスクにコピーすることで作成できます。 この作業は 1 回行うだけで、プールの各ノードでデータを使用できるようになります。
 - **プールのサイズを拡張する。** Shared Image Gallery を使用すれば、より多くの共有イメージ レプリカに加えてカスタマイズされたイメージを使用して、より大きなプールを作成できます。
 - **マネージド イメージだけをカスタム イメージとして使用するよりもパフォーマンスが向上します。** Shared Image のカスタム イメージ プールの場合、安定状態になるまでの時間は最大 25% 速くなり、VM のアイドル待機時間は最大で 30% 短くなります。
-- **管理を容易にするイメージのバージョン管理とグループ化。** イメージのグループ化の定義には、イメージが作成された理由、対象の OS、イメージの使用に関する情報などの情報が含まれます。 イメージをグループ化すると、イメージを簡単に管理できるようになります。 詳細については、「[イメージ定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)」を参照してください。
+- **管理を容易にするイメージのバージョン管理とグループ化。** イメージのグループ化の定義には、イメージが作成された理由、対象の OS、イメージの使用に関する情報などの情報が含まれます。 イメージをグループ化すると、イメージを簡単に管理できるようになります。 詳細については、「[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -226,4 +226,4 @@ client.pool.add(new_pool)
 ## <a name="next-steps"></a>次のステップ
 
 - Batch の詳細については、「[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)」を参照してください。
-- [Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md) に関するページをご覧ください。
+- [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) に関するページをご覧ください。

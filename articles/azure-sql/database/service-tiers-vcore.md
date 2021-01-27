@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251218"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735513"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -106,7 +106,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 > DC シリーズは現在、**パブリック プレビュー** 段階にあります。
 
 - DC シリーズのハードウェアでは、Software Guard Extensions (Intel SGX) テクノロジを搭載した Intel プロセッサが使用されています。
-- DC シリーズは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) のために必要で、これは他のハードウェア構成ではサポートされていません。
+- DC シリーズは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) のために必要で、これは他のハードウェア構成ではサポートされていません。
 - DC シリーズは、セキュリティで保護されたエンクレーブが設定された Always Encrypted によって提供される、機密データを処理して機密クエリ処理機能を必要とするワークロード用に設計されています。
 - DC シリーズのハードウェアでは、バランスの取れたコンピューティングおよびメモリ リソースが提供されます。
 

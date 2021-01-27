@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 928b8118c614d7d16293c8d6e0cec194a270314e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955469"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729925"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -155,7 +155,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 * **IP 範囲** 
 
-   現在、Azure AD のプロビジョニング サービスは特定の IP 範囲下で動作します。そのため、必要であれば他の IP 範囲を制限し、それらの特定の IP 範囲をアプリケーションの許可リストに追加して、Azure AD プロビジョニング サービスからアプリケーションへのトラフィック フローを許可することができます。「[IP 範囲](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)」を参照してください。
+   現在、Azure AD のプロビジョニング サービスは特定の IP 範囲下で動作します。そのため、必要であれば他の IP 範囲を制限し、それらの特定の IP 範囲をアプリケーションの許可リストに追加して、Azure AD プロビジョニング サービスからアプリケーションへのトラフィック フローを許可することができます。「[IP 範囲](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

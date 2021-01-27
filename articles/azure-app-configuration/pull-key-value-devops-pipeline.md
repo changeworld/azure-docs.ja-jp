@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914962"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728093"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプルする
 
@@ -47,7 +47,7 @@ ms.locfileid: "97914962"
 
 タスクで App Configuration ストアにアクセスできるように、タスク内で使用するサービス接続に適切な App Configuration のロールを割り当てます。
 
-1. ターゲットの App Configuration ストアに移動します。 App Configuration ストアの設定のチュートリアルについては、Azure App Configuration のクイックスタートのいずれかで「[App Configuration ストアを作成する](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store)」を参照してください。
+1. ターゲットの App Configuration ストアに移動します。 App Configuration ストアの設定のチュートリアルについては、Azure App Configuration のクイックスタートのいずれかで「[App Configuration ストアを作成する](./quickstart-dotnet-core-app.md#create-an-app-configuration-store)」を参照してください。
 1. 左側で、 **[アクセス制御 (IAM)]** を選択します。
 1. 上部にある **[+ 追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。
 1. **[ロール]** の中から、**App Configuration データ リーダー** を選択します。 このロールを使用すると、タスクで App Configuration ストアから読み取ることができます。 

@@ -2,23 +2,23 @@
 title: エンタープライズ アプリ アクセスの割り当て用のカスタム ロール アクセス許可 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory でエンタープライズ アプリ アクセス用のカスタム Azure AD ロールを作成して割り当てる
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378552"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741147"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリを管理するためのカスタム ロールを割り当てる
 
@@ -46,7 +46,7 @@ ms.locfileid: "93378552"
 > カスタム ロールは組織全体のレベルで作成および管理され、組織の [概要] ページからのみ使用できます。
 
 1. 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択してから、 **[新しいカスタム ロール]** を選択します。
+1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択してから、**[新しいカスタム ロール]** を選択します。
 
     ![Azure AD のロール一覧から新しいカスタム ロールを追加する](./media/custom-enterprise-apps/new-custom-role.png)
 

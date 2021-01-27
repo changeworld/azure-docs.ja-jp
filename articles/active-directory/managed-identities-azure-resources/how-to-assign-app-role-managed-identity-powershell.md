@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631178"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732100"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>PowerShell を使用してマネージド ID アクセスをアプリケーション ロールに割り当てる
 
@@ -36,7 +36,7 @@ Azure リソースのマネージド ID により、Azure Active Directory の I
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
     - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[試してみる]** ボタンを使用して開くことができます。
-    - 最新バージョンの [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) をインストールすることにより、ローカル環境でスクリプトを実行します。
+    - 最新バージョンの [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) をインストールすることにより、ローカル環境でスクリプトを実行します。
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>マネージド ID アクセスを別のアプリケーションのアプリ ロールに割り当てる
 

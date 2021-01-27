@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498559"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724679"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>ID およびアクセス管理インフラストラクチャで回復性を強化する
 
@@ -32,7 +32,7 @@ Azure Active Directory は、組織のリソースに対する認証や認可な
 
 * ID 運用チーム
 
-[アプリケーション開発者](https://aka.ms/azureadresilience/developer)および [Azure AD B2C システム](resilience-b2c.md)を対象としたドキュメントも参照してください。
+[アプリケーション開発者](./resilience-app-development-overview.md)および [Azure AD B2C システム](resilience-b2c.md)を対象としたドキュメントも参照してください。
 
 ## <a name="what-is-resilience"></a>回復性とは
 
@@ -44,7 +44,7 @@ ID インフラストラクチャのコンテキストにおいて、回復性�
 
 Azure AD のようなトークンベースの認証システムでは、ユーザーのアプリケーション (クライアント) は、アプリケーションやその他のリソースにアクセスする前に、ID システムからセキュリティ トークンを取得する必要があります。 有効期間中、クライアントは、アプリケーションにアクセスするために、同じトークンを複数回提示できます。
 
-アプリケーションに提示されたトークンの有効期限が切れると、そのトークンはアプリケーションによって拒否され、クライアントは Azure AD から新しいトークンを取得する必要があります。 新しいトークンを取得するには、資格情報のプロンプトなどのユーザー操作や、認証システムのその他の要件を満たすことが必要になる場合があります。 有効期間が長いトークンを使用して認証呼び出しの頻度を減らすことで、不要なやりとりが減ります。 ただし、トークンの有効期間と、ポリシー評価数を減らすことで生じるリスクとのバランスを取る必要があります。 トークンの有効期間の管理について詳しくは、[再認証プロンプトの最適化](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)に関するこちらの記事を参照してください。
+アプリケーションに提示されたトークンの有効期限が切れると、そのトークンはアプリケーションによって拒否され、クライアントは Azure AD から新しいトークンを取得する必要があります。 新しいトークンを取得するには、資格情報のプロンプトなどのユーザー操作や、認証システムのその他の要件を満たすことが必要になる場合があります。 有効期間が長いトークンを使用して認証呼び出しの頻度を減らすことで、不要なやりとりが減ります。 ただし、トークンの有効期間と、ポリシー評価数を減らすことで生じるリスクとのバランスを取る必要があります。 トークンの有効期間の管理について詳しくは、[再認証プロンプトの最適化](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)に関するこちらの記事を参照してください。
 
 ## <a name="ways-to-increase-resilience"></a>回復性を向上させる方法
 次の図は、回復性を向上させるための 6 つの具体的な方法を示しています。 各方法の詳細については、この記事の「次のステップ」部分でリンクされている記事をご覧ください。

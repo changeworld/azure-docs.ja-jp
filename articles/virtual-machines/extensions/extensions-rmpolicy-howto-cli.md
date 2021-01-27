@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955652"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737644"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -98,7 +98,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
-ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest) を使用して作成します。
+ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment) を使用して作成します。
 
 この例において、規則とパラメーターは、使用しているクラウド シェル内で、.json ファイルとして作成、格納したファイルです。
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 この例では、[az policy assignment create](/cli/azure/policy/assignment) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、Linux VM Access や Linux 用のカスタム スクリプト拡張機能をインストールできません。 ポリシーを割り当てるには、必ずリソース グループが存在している必要があります。
 
-[az account list](/cli/azure/account?view=azure-cli-latest) を使用して、この例の ID の代わりに使用するご自身のサブスクリプション ID を取得します。
+[az account list](/cli/azure/account) を使用して、この例の ID の代わりに使用するご自身のサブスクリプション ID を取得します。
 
 
 ```azurecli-interactive

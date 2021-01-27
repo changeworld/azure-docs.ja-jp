@@ -3,23 +3,23 @@ title: 管理単位スコープを使用してロールを割り当ておよび�
 description: Azure Active Directory で管理単位を使用してロールの割り当てのスコープを制限します。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ed2741c7dd754127a57642703b650a70637c63
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ecfa9186ef42d4822c9b3053d76b7c0160841621
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393440"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740399"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
@@ -52,7 +52,7 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. Azure portal で、 **Azure AD** に移動します。
+1. Azure portal で、**Azure AD** に移動します。
 
 1. **[管理単位]** を選択し、ユーザー ロール スコープの割り当て先にする管理単位を選択します。 
 
@@ -105,7 +105,7 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 
 [Azure AD の管理単位セクション](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)に、管理単位スコープを使用して作成されたすべてのロール割り当てを表示できます。 
 
-1. Azure portal で、 **Azure AD** に移動します。
+1. Azure portal で、**Azure AD** に移動します。
 
 1. 左側のペインで **[管理単位]** を選択し、表示するロール割り当ての一覧の管理単位を選択します。 
 

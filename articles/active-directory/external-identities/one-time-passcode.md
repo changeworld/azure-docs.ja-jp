@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703587"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725497"
 ---
 # <a name="email-one-time-passcode-authentication"></a>電子メール ワンタイム パスコード認証
 
@@ -102,7 +102,7 @@ ms.locfileid: "97703587"
 
 ![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-ただし、この機能からオプトアウト し、2021 年 3 月にそれが自動的に有効になることを希望する場合は、Microsoft Graph API の [email authentication method configuration リソースの種類](https://aka.ms/exid-graphemailauth)を使用して、既定の設定に戻すことができます。 既定の設定に戻すと、 **[ゲストの電子メール ワンタイム パスコード]** の下で次のオプションが使用可能になります。
+ただし、この機能からオプトアウト し、2021 年 3 月にそれが自動的に有効になることを希望する場合は、Microsoft Graph API の [email authentication method configuration リソースの種類](/graph/api/resources/emailauthenticationmethodconfiguration)を使用して、既定の設定に戻すことができます。 既定の設定に戻すと、 **[ゲストの電子メール ワンタイム パスコード]** の下で次のオプションが使用可能になります。
 
 - **[2021 年 3 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** 。 (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 3 月に自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
 

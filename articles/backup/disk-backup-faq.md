@@ -3,12 +3,12 @@ title: Azure ディスク バックアップに関してよく寄せられる質
 description: Azure ディスク バックアップに関してよく寄せられる質問への回答を紹介します
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4c4c9f4b8388fed95a19c49b705981b9b9bce2e0
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556906"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734564"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー段階) に関してよく寄せられる質問
 
@@ -37,23 +37,23 @@ Azure ディスク バックアップでは、マネージド ディスクの運
 
 ### <a name="why-must-the-snapshot-resource-group-be-in-same-subscription-as-that-of-the-disk-being-backed-up"></a>スナップショット リソース グループをバックアップ対象のディスクと同じサブスクリプションに含める必要があるのはなぜですか?
 
-特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 そのため、バックアップするディスクと同じサブスクリプション内のリソース グループを選択してください。 詳細については、マネージド ディスクの[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions)に関するページをご覧ください。
+特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 そのため、バックアップするディスクと同じサブスクリプション内のリソース グループを選択してください。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md#restrictions)に関するページをご覧ください。
 
 ### <a name="why-do-i-need-to-provide-role-assignments-to-be-able-to-configure-backups-perform-scheduled-and-on-demand-backups-and-restore-operations"></a>バックアップの構成、スケジュールされたバックアップとオンデマンド バックアップの実行、および復元操作を可能にするために、ロールの割り当てを行う必要があるのはなぜですか?
 
-Azure ディスク バックアップでは、最小限の特権アプローチを使用して、サブスクリプションのマネージド ディスクを検出、保護、および復元します。 これを実現するために、Azure Backup では、[バックアップ コンテナー](backup-vault-overview.md)のマネージド ID を使用して、他の Azure リソースにアクセスします。 システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認してください。 既定で、バックアップ コンテナーには、バックアップ対象のディスクへのアクセス、定期的なスナップショットの作成、リテンション期間後のスナップショットの削除、およびバックアップからのディスクの復元を行うアクセス許可がありません。 バックアップ コンテナーのマネージド ID にロールの割り当てを明示的に付与することで、サブスクリプションのリソースに対するアクセス許可を管理することができます。
+Azure ディスク バックアップでは、最小限の特権アプローチを使用して、サブスクリプションのマネージド ディスクを検出、保護、および復元します。 これを実現するために、Azure Backup では、[バックアップ コンテナー](backup-vault-overview.md)のマネージド ID を使用して、他の Azure リソースにアクセスします。 システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。 既定で、バックアップ コンテナーには、バックアップ対象のディスクへのアクセス、定期的なスナップショットの作成、リテンション期間後のスナップショットの削除、およびバックアップからのディスクの復元を行うアクセス許可がありません。 バックアップ コンテナーのマネージド ID にロールの割り当てを明示的に付与することで、サブスクリプションのリソースに対するアクセス許可を管理することができます。
 
 ### <a name="why-does-backup-policy-limit-the-retention-duration"></a>バックアップ ポリシーによってリテンション割引期間を制限するのはなぜですか?
 
-Azure ディスク バックアップでは、ディスクあたりのスナップショット数が 200 に制限された増分スナップショットが使用されます。 スケジュールされたバックアップとは別にオンデマンド バックアップを作成するには、バックアップ ポリシーによって合計バックアップ数を 180 に制限します。 詳細については、マネージド ディスクの[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions)に関するページをご覧ください。
+Azure ディスク バックアップでは、ディスクあたりのスナップショット数が 200 に制限された増分スナップショットが使用されます。 スケジュールされたバックアップとは別にオンデマンド バックアップを作成するには、バックアップ ポリシーによって合計バックアップ数を 180 に制限します。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md#restrictions)に関するページをご覧ください。
 
 ### <a name="how-does-the-hourly-and-daily-backup-frequency-work-in-the-backup-policy"></a>バックアップ ポリシーでは、時間単位と日単位のバックアップ頻度がどのように機能しますか?
 
-Azure ディスク バックアップでは、1 日に複数のバックアップを作成できます。 頻繁にバックアップする必要がある場合は、 **[毎時]** バックアップ頻度を選択します。 **[時間]** で選択した間隔に基づいてバックアップがスケジュールされます。 たとえば、 **[4 時間ごと]** を選択した場合、バックアップが 1 日のうちで均等に分散されるように、ほぼ 4 時間ごとにバックアップが作成されます。 1 日 1 回のバックアップで十分な場合は、 **[毎日]** バックアップ頻度を選択します。 毎日のバックアップ頻度では、バックアップを作成する時刻を指定できます。 この時刻は、バックアップが完了する時刻ではなく、バックアップの開始時刻を示していることに注意してください。 バックアップ操作を完了するために必要な時間は、連続するバックアップ間のチャーン率など、さまざまな要因によって異なります。 ただし、Azure ディスク バックアップは[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal)を使用するエージェントレス バックアップであり、実稼働アプリケーションのパフォーマンスには影響しません。
+Azure ディスク バックアップでは、1 日に複数のバックアップを作成できます。 頻繁にバックアップする必要がある場合は、 **[毎時]** バックアップ頻度を選択します。 **[時間]** で選択した間隔に基づいてバックアップがスケジュールされます。 たとえば、 **[4 時間ごと]** を選択した場合、バックアップが 1 日のうちで均等に分散されるように、ほぼ 4 時間ごとにバックアップが作成されます。 1 日 1 回のバックアップで十分な場合は、 **[毎日]** バックアップ頻度を選択します。 毎日のバックアップ頻度では、バックアップを作成する時刻を指定できます。 この時刻は、バックアップが完了する時刻ではなく、バックアップの開始時刻を示していることに注意してください。 バックアップ操作を完了するために必要な時間は、連続するバックアップ間のチャーン率など、さまざまな要因によって異なります。 ただし、Azure ディスク バックアップは[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md)を使用するエージェントレス バックアップであり、実稼働アプリケーションのパフォーマンスには影響しません。
 
 ### <a name="why-does-the-backup-vaults-redundancy-setting-not-apply-to-the-backups-stored-in-operational-tier-the-snapshot-resource-group"></a>バックアップ コンテナーの冗長性設定が、運用階層 (スナップショット リソース グループ) に格納されているバックアップに適用されないのはなぜですか?
 
-Azure Backup では、マネージド ディスクの[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions)が使用され、親ディスクのストレージの種類に関係なく、最後のスナップショット以降のディスクの差分変更のみが Standard HDD ストレージに保存されます。 信頼性を向上させるため、ゾーン冗長ストレージ (ZRS) をサポートするリージョンで、既定で増分スナップショットが ZRS に保存されます。 Azure Disk Backup では現在、バックアップ コンテナー ストレージにバックアップをコピーしないマネージド ディスクの運用バックアップがサポートされています。 そのため、バックアップ コンテナーのバックアップ ストレージの冗長性設定は回復ポイントに適用されません。
+Azure Backup では、マネージド ディスクの[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md#restrictions)が使用され、親ディスクのストレージの種類に関係なく、最後のスナップショット以降のディスクの差分変更のみが Standard HDD ストレージに保存されます。 信頼性を向上させるため、ゾーン冗長ストレージ (ZRS) をサポートするリージョンで、既定で増分スナップショットが ZRS に保存されます。 Azure Disk Backup では現在、バックアップ コンテナー ストレージにバックアップをコピーしないマネージド ディスクの運用バックアップがサポートされています。 そのため、バックアップ コンテナーのバックアップ ストレージの冗長性設定は回復ポイントに適用されません。
 
 ### <a name="can-i-use-backup-center-to-configure-backups-and-manage-backup-instances-for-azure-disks"></a>バックアップ センターを使用して、バックアップを構成し、Azure ディスクのバックアップ インスタンスを管理できますか?
 
@@ -61,7 +61,7 @@ Azure Backup では、マネージド ディスクの[増分スナップショ�
 
 ### <a name="why-do-i-need-to-create-a-backup-vault-and-not-use-a-recovery-services-vault"></a>Recovery Services コンテナーを使用せずに、バックアップ コンテナーを作成する必要があるのはなぜですか?
 
-バックアップ コンテナーは、Azure Backup によってサポートされる特定の新しいワークロードのバックアップ データを格納する Azure のストレージ エンティティです。 バックアップ コンテナーを使用すると、Azure Database for PostgreSQL サーバー、Azure Disks、および Azure Backup によってサポートされる新しいワークロードなど、さまざまな Azure サービスのバックアップ データを保持できます。 バックアップ コンテナーを使用すると、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 詳細については、[バックアップ コンテナー](https://docs.microsoft.com/azure/backup/backup-vault-overview)に関するページを参照してください。
+バックアップ コンテナーは、Azure Backup によってサポートされる特定の新しいワークロードのバックアップ データを格納する Azure のストレージ エンティティです。 バックアップ コンテナーを使用すると、Azure Database for PostgreSQL サーバー、Azure Disks、および Azure Backup によってサポートされる新しいワークロードなど、さまざまな Azure サービスのバックアップ データを保持できます。 バックアップ コンテナーを使用すると、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 詳細については、[バックアップ コンテナー](./backup-vault-overview.md)に関するページを参照してください。
 
 ### <a name="can-the-disk-to-be-backed-up-and-the-backup-vault-be-in-different-subscriptions"></a>バックアップ対象のディスクとバックアップ コンテナーを異なるサブスクリプションに含めることができますか?
 

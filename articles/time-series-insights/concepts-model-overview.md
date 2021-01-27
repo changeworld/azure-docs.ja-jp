@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b37934ff3b867b83c2c958d52bea2dd4db01354
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021764"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736803"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 のタイム シリーズ モデル
 
@@ -75,7 +75,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 [![タイム シリーズ モデルの概要グラフ](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-タイム シリーズ モデルは、[Azure Time Series Insights Explorer]() を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](/rest/api/time-series-insights/reference-model-apis) を使用して管理できます。
+タイム シリーズ モデルは、[Azure Time Series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/concepts-ux-panels) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](/rest/api/time-series-insights/reference-model-apis) を使用して管理できます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 

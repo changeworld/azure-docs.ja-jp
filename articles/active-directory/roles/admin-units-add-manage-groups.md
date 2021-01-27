@@ -3,23 +3,23 @@ title: 管理単位のグループを追加、削除、一覧表示する - Azur
 description: Azure Active Directory で管理単位のグループとそのロールのアクセス許可を管理します。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d628903f98f96fc205c9a6c9196a90b251e52af2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394749"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740552"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のグループを追加して管理する
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 * **[グループ]** ウィンドウで、次を行います。
 
-  1. Azure portal で、 **Azure AD** に移動します。
+  1. Azure portal で、**Azure AD** に移動します。
   1. **[グループ]** を選択し、管理単位に割り当てるグループを選択します。 
   1. 左側のウィンドウで、 **[管理単位]** を選択して、グループが割り当てられている管理単位を一覧表示します。 
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 * **[管理単位]**  >  **[すべてのグループ]** ウィンドウで次を行います。
 
-  1. Azure portal で、 **Azure AD** に移動します。
+  1. Azure portal で、**Azure AD** に移動します。
   
   1. 左側のウィンドウで、 **[管理単位]** を選択してから **[すべてのグループ]** を選択します。 
      管理単位に既に割り当てられているグループは、右側のウィンドウに表示されます。 
@@ -97,7 +97,7 @@ Request body
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. Azure portal で、 **Azure AD** に移動します。
+1. Azure portal で、**Azure AD** に移動します。
 
 1. 左側のウィンドウで **[管理単位]** を選択し、グループを表示する管理単位を選択します。 既定では、左側のウィンドウで **[すべてのユーザー]** が選択されています。 
 
@@ -141,7 +141,7 @@ Request body
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. Azure portal で、 **Azure AD** に移動します。
+1. Azure portal で、**Azure AD** に移動します。
 
 1. 左側のウィンドウで、 **[グループ]** を選択して、グループの一覧を表示します。
 
@@ -175,7 +175,7 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 - グループ概要から削除する:
 
-  1. Azure portal で、 **Azure AD** に移動します。
+  1. Azure portal で、**Azure AD** に移動します。
   1. 左側のウィンドウで **[グループ]** を選択し、管理単位から削除するグループのプロファイルを開きます。
   1. 左側のウィンドウで **[管理単位]** を選択して、そのグループが割り当てられているすべての管理単位を一覧表示します。 
   1. グループが削除される管理単位を選択してから、 **[Remove from administrative unit] (管理単位から削除する)** を選択します。
@@ -184,7 +184,7 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 - 管理単位から削除する:
 
-  1. Azure portal で、 **Azure AD** に移動します。
+  1. Azure portal で、**Azure AD** に移動します。
   1. 左側のウィンドウで **[管理単位]** を選択し、グループが割り当てられている管理単位を選択します。
   1. 左側のウィンドウで **[グループ]** を選択して、管理単位に割り当てられているすべてのグループを一覧表示します。
   1. 削除するグループを選択し、 **[グループを削除する]** を選択します。

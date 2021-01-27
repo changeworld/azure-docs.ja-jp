@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094337"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728861"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントでは、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
@@ -183,11 +183,10 @@ Log Analytics ワークスペースにアクセスするには、設定済みの
 - [カスタマー マネージド (セキュリティ) キー](customer-managed-keys.md) - カスタマー マネージド キーを使用して、Log Analytics ワークスペースに送信されるデータを暗号化できます。 Azure Key Vault を使用する必要があります。 
 - [プライベート/ユーザー マネージド ストレージ](private-storage.md) - 個人の暗号化されたストレージ アカウントを管理し、それを使用して監視データを格納するように Log Analytics に指示します 
 - [Private Link ネットワーク](private-link-security.md) - Azure Private Link を使用すると、プライベート エンドポイントを使用して Azure PaaS サービス (Azure Monitor を含む) をご使用の仮想ネットワークに安全に接続できます。 
-- [Azure カスタマー ロックボックス](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) - Microsoft Azure 用カスタマー ロックボックスには、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。
+- [Azure カスタマー ロックボックス](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) - Microsoft Azure 用カスタマー ロックボックスには、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。
 
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics で Azure VM のデータを収集する方法については、[Azure VM のクイック スタート](../learn/quick-collect-azurevm.md)に関するページをご覧ください。  
 
 *  環境内の物理または仮想の Windows または Linux コンピューターからデータを収集する場合は、[Linux コンピューターのクイック スタート](../learn/quick-collect-linux-computer.md)または [Windows コンピューターのクイック スタート](../learn/quick-collect-windows-computer.md)に関するページをご覧ください
-

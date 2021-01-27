@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919161"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724843"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>開発するデーモン アプリケーションで認証と認可の回復性を向上させる
 
@@ -26,7 +26,7 @@ ms.locfileid: "95919161"
 
 ## <a name="use-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID を使用する
 
-Microsoft Azure でデーモン アプリを構築している開発者は、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用できます。 マネージド ID により、開発者はシークレットと資格情報を管理する必要がなくなります。 この機能を使用すると、証明書の有効期限、ローテーション エラー、または信頼に関連したミスを回避することによって回復性が向上します。 また、特に回復性の向上を目的としたいくつかの組み込み機能も用意されています。
+Microsoft Azure でデーモン アプリを構築している開発者は、[Azure リソースのマネージド ID](../managed-identities-azure-resources/overview.md) を使用できます。 マネージド ID により、開発者はシークレットと資格情報を管理する必要がなくなります。 この機能を使用すると、証明書の有効期限、ローテーション エラー、または信頼に関連したミスを回避することによって回復性が向上します。 また、特に回復性の向上を目的としたいくつかの組み込み機能も用意されています。
 
 マネージド ID は、Microsoft ID からの有効期限の長いアクセス トークンと情報を使用して、既存のトークンの有効期限が切れる前の長い期間内に新しいトークンを事前に取得します。 新しいトークンの取得を試行している間、アプリは継続して実行できます。
 
@@ -34,11 +34,11 @@ Microsoft Azure でデーモン アプリを構築している開発者は、[Az
 
 ## <a name="use-the-microsoft-authentication-library"></a>Microsoft Authentication Library を使用する
 
-マネージド ID を使用しないデーモン アプリの開発者は、[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) を使用できます。これにより、認証と認可の実装が単純化され、回復性のためのベスト プラクティスが自動的に使用されます。 MSAL を使用すると、必要なクライアント資格情報を提供するプロセスが容易になります。 たとえば、証明書ベースの資格情報を使用するときに、アプリケーションで JSON Web トークン アサーションの作成と署名を実装する必要がありません。
+マネージド ID を使用しないデーモン アプリの開発者は、[Microsoft Authentication Library (MSAL)](../develop/msal-overview.md) を使用できます。これにより、認証と認可の実装が単純化され、回復性のためのベスト プラクティスが自動的に使用されます。 MSAL を使用すると、必要なクライアント資格情報を提供するプロセスが容易になります。 たとえば、証明書ベースの資格情報を使用するときに、アプリケーションで JSON Web トークン アサーションの作成と署名を実装する必要がありません。
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>.NET 開発者向けの Microsoft.Identity.Web を使用する
 
-ASP.NET Core でデーモン アプリを構築している開発者は、[Microsoft Identity.Web](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web) ライブラリを使用できます。 このライブラリは、MSAL 上に構築されており、ASP.NET Core アプリでの認可の実装をより簡単に行うことができます。 これには、複数のリージョンで実行できる分散アプリ向けの[分散トークン キャッシュ](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache)戦略がいくつか含まれています。
+ASP.NET Core でデーモン アプリを構築している開発者は、[Microsoft Identity.Web](../develop/microsoft-identity-web.md) ライブラリを使用できます。 このライブラリは、MSAL 上に構築されており、ASP.NET Core アプリでの認可の実装をより簡単に行うことができます。 これには、複数のリージョンで実行できる分散アプリ向けの[分散トークン キャッシュ](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache)戦略がいくつか含まれています。
 
 ## <a name="cache-and-store-tokens"></a>トークンをキャッシュおよび格納する
 
@@ -48,7 +48,7 @@ ASP.NET Core でデーモン アプリを構築している開発者は、[Micro
 
 ## <a name="properly-handle-service-responses"></a>サービスの応答を適切に処理する
 
-最後に、アプリケーションはすべてのエラー応答を処理する必要がありますが、応答によっては、回復性に影響を与える可能性があるものもあります。 アプリケーションが HTTP 429 応答コード (Too Many Requests) を受信した場合、Microsoft ID によって要求が調整されています。 アプリによって行われる要求が多すぎる状態が続くと、トークンを受信できないように、アプリは調整されたままになります。 [Retry-After]\(再試行までの時間\) 応答フィールドの時間 (秒単位) が経過するまでは、アプリケーションはトークンの再取得を試行するべきではありません。 429 応答の受信は、多くの場合、アプリケーションでトークンのキャッシュと再利用が正しく行われていないことを示しています。 開発者は、アプリケーションでトークンがどのようにキャッシュされて再利用されているかを確認する必要があります。
+最後に、アプリケーションはすべてのエラー応答を処理する必要がありますが、応答によっては、回復性に影響を与える可能性があるものもあります。 アプリケーションが HTTP 429 応答コード (Too Many Requests) を受信した場合、Microsoft ID によって要求が調整されています。 アプリによって行われる要求が多すぎる状態が続くと、トークンを受信できないように、アプリは調整されたままになります。 [Retry-After]\(再試行までの時間\) 応答フィールドの時間 (秒単位) が経過するまでは、アプリケーションはトークンの再取得を試行するべきではありません。 429 応答の受信は、多くの場合、アプリケーションでトークンのキャッシュと再利用が正しく行われていないことを示しています。 開発者は、アプリケーションでどのようにトークンがキャッシュされて再利用されているかを確認する必要があります。
 
 アプリケーションが HTTP 5xx 応答コードを受信した場合、アプリは高速再試行ループに入ってはなりません。 存在する場合、アプリケーションは、429 応答の場合と同じ Retry-After (再試行までの時間) 処理に従う必要があります。 応答によって "Retry-After" ヘッダーが提供されていない場合は、応答後 5 秒以上経過してから最初の再試行を行うようにして、指数バックオフ再試行を実装することをお勧めします。
 

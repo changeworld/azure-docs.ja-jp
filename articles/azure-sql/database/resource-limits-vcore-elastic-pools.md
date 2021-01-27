@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/15/2021
-ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251490"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737559"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用したエラスティック プールに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -218,7 +218,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 |TempDB の最大データ サイズ (GB)|83.25|92.5|111|148|166.5|333|
 |ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
-|プールあたりの最大データ IOPS <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|プールあたりの最大データ IOPS <sup>2</sup>|5760|6400|7680|10240|11520|12800|
 |プールあたりの最大ログ レート (MBps)|48|48|48|48|48|48|
 |プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |プールあたりの最大同時ログイン (要求) 数 <sup>3</sup>|1800|2000|2400|3200|3600|7200|

@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 7c4d9f3a5f73e5832e9ff22ed2cd4c215811c845
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197559"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730508"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成のリソースを別のリージョンに移動する
 
@@ -49,7 +49,7 @@ ms.locfileid: "98197559"
     $adh | Dedicated ホスト名 | "myHost"
     $adhParentName | 親リソース名 | "HostGroup"
     
-2. PowerShell の [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) コマンドを使用してメンテナンス構成を取得する場合:
+2. PowerShell の [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment) コマンドを使用してメンテナンス構成を取得する場合:
 
     - Azure Dedicated Host の場合、次のコマンドを実行します。
         ```

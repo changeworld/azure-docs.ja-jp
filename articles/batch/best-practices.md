@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934290"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732413"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -149,7 +149,7 @@ Batch ノードでタスクをスケジュールするとき、それをタス�
 
 ### <a name="isolated-nodes"></a>分離ノード
 
-コンプライアンスまたは規制要件があるワークロードには、分離された VM サイズの使用を検討してください。 仮想マシン構成モードでサポートされている分離サイズには、`Standard_E80ids_v4`、`Standard_M128ms`、`Standard_F72s_v2`、`Standard_G5`、`Standard_GS5`、`Standard_E64i_v3` があります。 分離された VM サイズの詳細については、「[Azure における仮想マシンの分離性](https://docs.microsoft.com/azure/virtual-machines/isolation)」をご覧ください。
+コンプライアンスまたは規制要件があるワークロードには、分離された VM サイズの使用を検討してください。 仮想マシン構成モードでサポートされている分離サイズには、`Standard_E80ids_v4`、`Standard_M128ms`、`Standard_F72s_v2`、`Standard_G5`、`Standard_GS5`、`Standard_E64i_v3` があります。 分離された VM サイズの詳細については、「[Azure における仮想マシンの分離性](../virtual-machines/isolation.md)」をご覧ください。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>オペレーティング システム サービスのインターフェイスを使用して、実行時間の長いサービスを管理する
 

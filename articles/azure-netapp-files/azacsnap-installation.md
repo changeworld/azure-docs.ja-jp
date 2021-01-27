@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632165"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737169"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールをインストールする (プレビュー)
 
@@ -34,9 +34,9 @@ ms.locfileid: "97632165"
 
 ガイドラインに従って、スナップショットとディザスター リカバリー コマンドを設定して実行します。 スナップショット ツールをインストールして使用する前に、次の手順をルートとして行うことをお勧めします。
 
-1. **OS に修正プログラムを適用する**: 修正プログラムの適用と SMT の設定については、「[SAP HANA on Azure (L インスタンス) のインストールと構成の方法](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux)」を参照してください。
+1. **OS に修正プログラムを適用する**: 修正プログラムの適用と SMT の設定については、「[SAP HANA on Azure (L インスタンス) のインストールと構成の方法](../virtual-machines/workloads/sap/hana-installation.md#operating-system)」を参照してください。
 1. **時間同期を設定する**。 お客様は NTP と互換性のあるタイム サーバーを指定し、それに応じて OS を構成する必要があります。
-1. **HANA をインストールする**: HANA のインストール手順については、「[HANA データベースへの SAP NetWeaver のインストール](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/)」を参照してください。
+1. **HANA をインストールする**: HANA のインストール手順については、「[HANA データベースへの SAP NetWeaver のインストール](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)」を参照してください。
 1. **[ストレージとの通信を有効にする](#enable-communication-with-storage)** (詳細については、別のセクションを参照): お客様は秘密および公開キーのペアを使用して SSH を設定し、ストレージ バックエンドでの設定のために Microsoft Operations に対してスナップショット ツールが実行される予定の各ノードの公開キーを提供する必要があります。
    1. **Azure NetApp Files の場合 (詳細については別のセクションを参照)** : お客様はサービス プリンシパル認証ファイルを生成する必要があります。
    1. **Azure L インスタンスの場合 (詳細については別のセクションを参照)** : お客様は秘密および公開キーのペアを使用して SSH を設定し、ストレージ バックエンドでの設定のために Microsoft Operations に対してスナップショット ツールが実行される予定の各ノードの公開キーを提供する必要があります。

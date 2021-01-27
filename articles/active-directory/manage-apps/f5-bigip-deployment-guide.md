@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095187"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730659"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル
 
@@ -264,7 +264,7 @@ BIG-IP システムは Web 構成 UI を使用して管理します。この UI 
 
 - BIG-IP-VM の内部ネットワークに接続された VPN クライアントから
 
-- [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)経由で公開する
+- [Azure AD アプリケーション プロキシ](./application-proxy-add-on-premises-application.md)経由で公開する
 
 残りの構成に進む前に、最も適切な方法を決定する必要があります。 必要に応じて、インターネットから Web 構成に直接接続できます。そのためには、パブリック IP を使用して BIG-IP のプライマリ IP アドレスを構成します。 次に、そのプライマリ IP への 8443 トラフィックを許可する NSG ルールを追加します。 ソースを必ず独自の信頼された IP に限定してください。そうしないと、だれでも接続できるようになります。
 
@@ -276,7 +276,7 @@ BIG-IP システムは Web 構成 UI を使用して管理します。この UI 
 
 また、基になる SSH 環境を介して BIG-IP システムを管理することもできます。これは通常、コマンドライン (CLI) タスクとルートレベルのアクセスに使用されます。 CLI への接続には、次のようにいくつかのオプションがあります。
 
-- [Azure Bastion サービス](https://docs.microsoft.com/azure/bastion/bastion-overview):任意の場所から VNet 内の任意の VM に高速かつ安全に接続できます
+- [Azure Bastion サービス](../../bastion/bastion-overview.md):任意の場所から VNet 内の任意の VM に高速かつ安全に接続できます
 
 - JIT アプローチを使用して、PuTTY のような SSH クライアント経由で直接接続する
 
@@ -423,7 +423,7 @@ BIG-IP システムが完全にプロビジョニングされたら、その構�
 
 6. ユーザー構成セット (UCS) のアーカイブをローカルに保存するため、バックアップのリンクを選択して **[ダウンロード]** を選択します。
 
-オプションの手順として、[Azure スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)を使用してシステム ディスク全体のバックアップを実行することもできます。これは、Web 構成のバックアップとは異なり、TMOS のバージョン間のテストや新しいシステムへのロールバックを行うための代替策になります。
+オプションの手順として、[Azure スナップショット](../../virtual-machines/windows/snapshot-copy-managed-disk.md)を使用してシステム ディスク全体のバックアップを実行することもできます。これは、Web 構成のバックアップとは異なり、TMOS のバージョン間のテストや新しいシステムへのロールバックを行うための代替策になります。
 
 ```PowerShell
 # Install modules

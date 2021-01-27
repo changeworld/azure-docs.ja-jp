@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201350"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725012"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -60,7 +60,7 @@ Microsoft 365 クラウド環境は、広範な監視とセキュリティのイ
 
      *  Azure マネージド ワークステーションを使用してのみアクセスされる。
 
-これらは制限付きの使用アカウントです。 **これらは、Microsoft 365 で管理者特権を持つオンプレミス アカウントであってはなりません。** 詳細については、[Microsoft 365 の管理者ロールの概要](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)に関するページを参照してください。
+これらは制限付きの使用アカウントです。 **これらは、Microsoft 365 で管理者特権を持つオンプレミス アカウントであってはなりません。** 詳細については、[Microsoft 365 の管理者ロールの概要](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)に関するページを参照してください。
 また、[Azure Active Directory での Microsoft 365 用のロール](../roles/m365-workload-docs.md)に関するページも参照してください。
 
 *  **Microsoft 365 からデバイスを管理します。** Azure AD Join とクラウドベースのモバイル デバイス管理 (MDM) を使用して、オンプレミスのデバイス管理インフラストラクチャへの依存関係を排除します。これは、デバイスとセキュリティ制御を侵害するおそれがあるものです。
@@ -82,7 +82,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 * Azure AD と Microsoft 365 の特権ロールには、クラウド専用アカウントを使用します。
 
-* Microsoft 365 と Azure AD を管理するための特権アクセス用に、[特権アクセス デバイス](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles)をデプロイします。
+* Microsoft 365 と Azure AD を管理するための特権アクセス用に、[特権アクセス デバイス](/security/compass/privileged-access-devices#device-roles-and-profiles)をデプロイします。
 
 *  特権ロールを持つすべての人間アカウントへの Just-In-Time (JIT) アクセス用に [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) をデプロイし、ロールのアクティブ化に強力な認証が必要であるようにします。
 
@@ -92,7 +92,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 * [緊急アクセス アカウント](../roles/security-emergency-access.md)をデプロイし、資格情報の保存にオンプレミスのパスワード コンテナーを使わないようにします。
 
-詳細については、このトピックについての詳細なガイダンスが記載されている「[特権アクセスのセキュリティ保護](https://aka.ms/SPA)」を参照してください。 [Azure AD の管理者向けのセキュリティで保護されたアクセス プラクティス](../roles/security-planning.md)に関するページも参照してください。
+詳細については、このトピックについての詳細なガイダンスが記載されている「[特権アクセスのセキュリティ保護](/security/compass/overview)」を参照してください。 [Azure AD の管理者向けのセキュリティで保護されたアクセス プラクティス](../roles/security-planning.md)に関するページも参照してください。
 
 ### <a name="use-cloud-authentication"></a>クラウド認証を使用する 
 
@@ -100,15 +100,15 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 * [パスワードなしの認証をデプロイする](../authentication/howto-authentication-passwordless-deployment.md): パスワードのない資格情報をデプロイすることで、パスワードの使用を可能な限り減らします。 これらの資格情報は、クラウド内でネイティブに管理および検証されます。 次の中から選択します。
 
-   * [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Authenticator アプリ](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 セキュリティ キー](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [Multi-Factor Authentication を展開する](https://aka.ms/deploymentplans/mfa): [Azure AD MFA を使用して複数の強力な資格情報](../fundamentals/resilience-in-credentials.md)をプロビジョニングします。 このようにすると、クラウド リソースへのアクセスには、操作可能なオンプレミスのパスワードに加えて、Azure AD で管理される資格情報が必要になります。
+* [Multi-Factor Authentication を展開する](../authentication/howto-mfa-getstarted.md): [Azure AD MFA を使用して複数の強力な資格情報](../fundamentals/resilience-in-credentials.md)をプロビジョニングします。 このようにすると、クラウド リソースへのアクセスには、操作可能なオンプレミスのパスワードに加えて、Azure AD で管理される資格情報が必要になります。
 
-   * 詳細については、[Azure Active Directory での回復性があるアクセス制御管理戦略の作成](https://aka.ms/resilientaad)に関するページを参照してください。
+   * 詳細については、[Azure Active Directory での回復性があるアクセス制御管理戦略の作成](./resilience-overview.md)に関するページを参照してください。
 
 **制限事項とトレードオフ**
 
@@ -131,7 +131,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
    *  ディレクトリ内の参照グループおよびその他のプロパティへのゲスト アクセスを制限します。 外部コラボレーション設定を使用して、ゲストが所属していないグループを読み取る機能を制限します。 
 
-    *   Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成してから、[アクセスをブロックするポリシーを実装します](/azure/role-based-access-control/conditional-access-azure-management)。 
+    *   Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成してから、[アクセスをブロックするポリシーを実装します](../../role-based-access-control/conditional-access-azure-management.md)。 
 
 * **切断されたフォレスト:** [Azure AD クラウド プロビジョニング](../cloud-provisioning/what-is-cloud-provisioning.md)を使用します。 これにより、切断されたフォレストに接続できるようになり、オンプレミスの侵害の影響を広げるおそれがあるフォレスト間の接続や信頼関係を確立する必要がなくなります。 * 
  
@@ -143,7 +143,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 クラウド グループを使用すると、オンプレミス インフラストラクチャからのコラボレーションとアクセスを切り離すことができます。
 
-* **コラボレーション:** 最新のコラボレーションのために Microsoft 365 グループと Microsoft Teams を使用します。 オンプレミスの配布リストの使用を停止し、[Outlook の Microsoft 365 グループに配布リストをアップグレードします](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide)。
+* **コラボレーション:** 最新のコラボレーションのために Microsoft 365 グループと Microsoft Teams を使用します。 オンプレミスの配布リストの使用を停止し、[Outlook の Microsoft 365 グループに配布リストをアップグレードします](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide)。
 
 * **アクセス:** Azure AD セキュリティ グループまたは Microsoft 365 グループを使用して、Azure AD 内のアプリケーションへのアクセスを承認します。
 * **Office 365 のライセンス:** グループベースのライセンスを使用し、クラウド専用グループを使用して Office 365 にプロビジョニングします。 これにより、グループ メンバーシップの制御がオンプレミスのインフラストラクチャから切り離されます。
@@ -156,7 +156,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 Azure AD の機能を使用して、デバイスを安全に管理します。
 
--   **Windows 10 ワークステーションを使用する:** MDM ポリシーを使用して、[Azure AD Join を使用したデバイスをデプロイ](../devices/azureadjoin-plan.md)します。 完全に自動化されたプロビジョニング エクスペリエンスを実現するには、[Windows Autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot) を有効にします。
+-   **Windows 10 ワークステーションを使用する:** MDM ポリシーを使用して、[Azure AD Join を使用したデバイスをデプロイ](../devices/azureadjoin-plan.md)します。 完全に自動化されたプロビジョニング エクスペリエンスを実現するには、[Windows Autopilot](/mem/autopilot/windows-autopilot) を有効にします。
 
     -   Windows 8.1 以前のコンピューターを廃止します。
 
@@ -164,7 +164,7 @@ Azure AD の機能を使用して、デバイスを安全に管理します。
 
     -   すべてのデバイス管理ワークロードの権限のソースとして [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) を使用します。
 
--   Microsoft 365 と Azure AD を管理するための特権アクセス用に、[**特権アクセス デバイスをデプロイ**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles)します。
+-   Microsoft 365 と Azure AD を管理するための特権アクセス用に、[**特権アクセス デバイスをデプロイ**](/security/compass/privileged-access-devices#device-roles-and-profiles)します。
 
  ## <a name="workloads-applications-and-resources"></a>ワークロード、アプリケーション、リソース 
 
@@ -181,19 +181,19 @@ Azure AD の機能を使用して、デバイスを安全に管理します。
 
 *  **アプリケーションとワークロード サーバー**
 
-   * サーバーを必要としたアプリケーションまたはリソースは、Azure IaaS に移行して [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) を使用することにより、オンプレミスの AD での信頼と依存関係を切り離すことができます。 この分離を実現するには、Azure AD DS に使用される仮想ネットワークが、企業ネットワークに接続できないようにする必要があります。
+   * サーバーを必要としたアプリケーションまたはリソースは、Azure IaaS に移行して [Azure AD Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) を使用することにより、オンプレミスの AD での信頼と依存関係を切り離すことができます。 この分離を実現するには、Azure AD DS に使用される仮想ネットワークが、企業ネットワークに接続できないようにする必要があります。
 
-   * [資格情報の階層化](https://aka.ms/TierModel)に関するガイダンスに従ってください。 通常、アプリケーション サーバーは階層 1 の資産と見なされます。
+   * [資格情報の階層化](/security/compass/privileged-access-access-model#ADATM_BM)に関するガイダンスに従ってください。 通常、アプリケーション サーバーは階層 1 の資産と見なされます。
 
  ## <a name="conditional-access-policies"></a>条件付きアクセス ポリシー
 
-Azure AD の条件付きアクセスを使用して、信号を解釈し、それに基づいて認証の決定を行います。 詳細については、[条件付きアクセスのデプロイ計画](https://aka.ms/deploymentplans/ca)に関するページを参照してください。
+Azure AD の条件付きアクセスを使用して、信号を解釈し、それに基づいて認証の決定を行います。 詳細については、[条件付きアクセスのデプロイ計画](../conditional-access/plan-conditional-access.md)に関するページを参照してください。
 
 * [レガシ認証プロトコル](../fundamentals/auth-sync-overview.md): 可能な場合は常に、条件付きアクセスを使用して、[レガシ認証プロトコルをブロック](../conditional-access/howto-conditional-access-policy-block-legacy.md)します。 また、アプリケーション固有の構成を使用して、アプリケーション レベルでレガシ認証プロトコルを無効にします。
 
-   * [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) と [SharePoint Online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) に固有の詳細を参照してください。
+   * [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) と [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) に固有の詳細を参照してください。
 
-* 推奨される [ID とデバイスのアクセス構成](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)を実装します。
+* 推奨される [ID とデバイスのアクセス構成](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)を実装します。
 
 * 条件付きアクセスが含まれないバージョンの Azure AD を使用している場合は、[Azure AD のセキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用していることを確認します。
 
@@ -206,13 +206,13 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 組織に固有のシナリオに加えて、次の主要なシナリオを監視します。 たとえば、ビジネス クリティカルなアプリケーションとリソースへのアクセスを、予防的に監視する必要があります。
 
-* **疑わしいアクティビティ**: すべての [Azure AD リスク イベント](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation)で、疑わしいアクティビティを監視する必要があります。 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) は、Azure Security Center とネイティブに統合されています。
+* **疑わしいアクティビティ**: すべての [Azure AD リスク イベント](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)で、疑わしいアクティビティを監視する必要があります。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) は、Azure Security Center とネイティブに統合されています。
 
    * 場所ベースのシグナルで多くのノイズが検出されないよう、ネットワークの[ネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を定義します。 
 *  **ユーザー/エンティティ行動分析 (UEBA) のアラート** UEBA を使用して、異常検出に関する分析情報を得ます。
-   * Microsoft Cloud App Discovery (MCAS) により、[クラウドでの UEBA](https://docs.microsoft.com/cloud-app-security/tutorial-ueba) が提供されます。
+   * Microsoft Cloud App Discovery (MCAS) により、[クラウドでの UEBA](/cloud-app-security/tutorial-ueba) が提供されます。
 
-   * [Azure ATP からオンプレミスの UEBA を統合する](https://docs.microsoft.com/defender-for-identity/install-step2)ことができます。 MCAS により、Azure AD Identity Protection からのシグナルが読み取られます。 
+   * [Azure ATP からオンプレミスの UEBA を統合する](/defender-for-identity/install-step2)ことができます。 MCAS により、Azure AD Identity Protection からのシグナルが読み取られます。 
 
 * **緊急アクセス アカウントのアクティビティ**: [緊急アクセス アカウント](../roles/security-emergency-access.md)を使用したすべてのアクセスを監視し、調査のためにアラートを作成する必要があります。 この監視には次のものを含める必要があります。 
 
@@ -223,7 +223,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
    * グループ メンバーシップのすべての更新。 
 
    *    アプリケーションの割り当て。 
-* **特権ロールのアクティビティ**: [Azure AD PIM によって生成されるセキュリティ アラート](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts)を構成して確認します。
+* **特権ロールのアクティビティ**: [Azure AD PIM によって生成されるセキュリティ アラート](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)を構成して確認します。
     ユーザーが直接割り当てられたときに常にアラートを生成することで、PIM の外部での特権ロールの直接割り当てを監視します。
 * **Azure AD のテナント全体の構成**: テナント全体の構成が変更されたら常に、システムでアラートが生成されるようにする必要があります。 これらには以下のものが含まれますが、限定されはしません
   *  カスタム ドメインの更新  
@@ -254,11 +254,11 @@ Azure Sentinel のような SIEM システムなどの一貫したツールセ�
 
    * リスク イベント 
 
-Azure AD により、サインイン アクティビティ ログと監査ログのための [Azure Monitor の統合](../reports-monitoring/concept-activity-logs-azure-monitor.md)が提供されます。 リスク イベントは、[Microsoft Graph API](https://aka.ms/AzureADSecuredAzure/32b) を使用して取り込むことができます。 [Azure Monitor ログに Azure AD ログをストリーム配信する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)ことができます。
+Azure AD により、サインイン アクティビティ ログと監査ログのための [Azure Monitor の統合](../reports-monitoring/concept-activity-logs-azure-monitor.md)が提供されます。 リスク イベントは、[Microsoft Graph API](/graph/api/resources/identityriskevent) を使用して取り込むことができます。 [Azure Monitor ログに Azure AD ログをストリーム配信する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)ことができます。
 
 * **ハイブリッド インフラストラクチャの OS セキュリティ ログ。** すべてのハイブリッド ID インフラストラクチャ OS ログをアーカイブし、 <br>階層 0 システムとして注意深く監視する必要があります (セキュリティ、外部からのアクセスの影響を考えて)。 これには次のものが含まれます 
 
-   *  Azure AD Connect という単一のソリューションに代わりました。 [Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e) をデプロイし、ID の同期を監視する必要があります。
+   *  Azure AD Connect という単一のソリューションに代わりました。 [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md) をデプロイし、ID の同期を監視する必要があります。
 
    *  アプリケーション プロキシ エージェント 
 

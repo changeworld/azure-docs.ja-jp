@@ -3,23 +3,23 @@ title: 管理単位のユーザーを追加、削除、一覧表示する - Azur
 description: Azure Active Directory で管理単位のユーザーとそのロールのアクセス許可を管理します
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395531"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740518"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のユーザーを追加して管理する
 
@@ -135,13 +135,13 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 2 つの方法のいずれかで、管理単位からユーザーを削除できます。 
 
-* Azure portal で、 **Azure AD** に移動し、 **[ユーザー]** を選択します。 
+* Azure portal で、**Azure AD** に移動し、 **[ユーザー]** を選択します。 
   1. ユーザーを選択して、ユーザーのプロファイルを開きます。 
   1. ユーザーを削除する管理単位を選択し、 **[Remove from administrative unit] (管理単位から削除する)** を選択します。
 
      ![ユーザーのプロファイル ペインで管理単位からユーザーを削除する方法を示しているスクリーンショット。](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 
-* Azure portal で、 **Azure AD** に移動し、 **[管理単位]** を選択します。
+* Azure portal で、**Azure AD** に移動し、 **[管理単位]** を選択します。
   1. ユーザーを削除する管理単位を選択します。 
   1. ユーザーを選択し、 **[メンバーの削除]** を選択します。
   
@@ -165,7 +165,7 @@ Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 
 複数のユーザーを管理単位から削除するには、次の手順を実行します。
 
-1. Azure portal で、 **Azure AD** に移動します。
+1. Azure portal で、**Azure AD** に移動します。
 
 1. **[管理単位]** を選択し、ユーザーを削除する管理単位を選択できます。 
 

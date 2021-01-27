@@ -3,18 +3,18 @@ title: Visual Studio でリソース グループ プロジェクトを作成、
 description: Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372648"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704416"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
 Visual Studio では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、Web ホスト、Web サイト、および Web サイトのコードをデプロイできます。 Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。 この記事では、Web アプリをデプロイします。
 
-この記事では、[Azure の開発および ASP.NETのワークロードがインストールされている Visual Studio 2019 以降](/visualstudio/install/install-visual-studio?view=vs-2019)を使用する方法について説明します。 Visual Studio 2017 を使用しても、操作内容はほとんど同じです。
+この記事では、[Azure の開発および ASP.NETのワークロードがインストールされている Visual Studio 2019 以降](/visualstudio/install/install-visual-studio)を使用する方法について説明します。 Visual Studio 2017 を使用しても、操作内容はほとんど同じです。
 
 ## <a name="create-azure-resource-group-project"></a>Azure リソース グループ プロジェクトを作成する
 
@@ -171,7 +171,7 @@ AzureRM モジュール スクリプトの場合は、Visual Studio を使用し
 
     ![プロジェクトの追加](./media/create-visual-studio-deployment-project/add-project.png)
 
-1. **ASP.NET Core Web アプリケーション**を追加します。
+1. **ASP.NET Core Web アプリケーション** を追加します。
 
     ![Web アプリの追加](./media/create-visual-studio-deployment-project/add-app.png)
 

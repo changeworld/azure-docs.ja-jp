@@ -3,22 +3,22 @@ title: マイ スタッフを使用してユーザーの管理を委任する (�
 description: マイ スタッフと管理単位を使用して、ユーザーの管理を委任します
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373451"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740144"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>マイ スタッフを使用してユーザーを管理する (プレビュー)
 
@@ -42,7 +42,7 @@ ms.locfileid: "92373451"
 * お使いのサブスクリプションに関連付けられている Azure Active Directory テナント。
 
   * 必要に応じて、[Azure Active Directory テナントを作成](../fundamentals/sign-up-organization.md)するか、[ご利用のアカウントに Azure サブスクリプションを関連付け](../fundamentals/active-directory-how-subscriptions-associated-directory.md)ます。
-* SMS ベース認証を有効にするには、Azure AD テナントでの " *グローバル管理者* " 特権が必要です。
+* SMS ベース認証を有効にするには、Azure AD テナントでの "*グローバル管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD または Microsoft 365 ライセンスのいずれかを保持している必要があります。
 
   * [Azure AD Premium P1 または P2](https://azure.microsoft.com/pricing/details/active-directory/)

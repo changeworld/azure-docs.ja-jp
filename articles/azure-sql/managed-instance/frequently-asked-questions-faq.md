@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779868"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724018"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ Managed Instance は、Azure portal、[PowerShell](/powershell/module/az.sql/rem
 
 1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 データベースが 100 GB 未満の場合は、これが推奨される方法です。
 
-データベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、 [トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)を使用できます。
+データベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)を使用できます。
 
 マネージド インスタンスから取得したネイティブの COPY_ONLY バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。 詳細については、「[コピーのみのバックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)」を参照してください。
 
@@ -161,7 +161,7 @@ SQL Server インスタンスを移行するには、「[Azure SQL Managed Insta
 
 **Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?**
 
-マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL Managed Instance と SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
+マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
 
 **Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?**
 
@@ -173,7 +173,7 @@ SQL Server インスタンスを移行するには、「[Azure SQL Managed Insta
 - [自動チューニング](../database/automatic-tuning-overview.md)では、AI と機械学習に基づく継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードが実現されます。
 -   [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 
 
-パフォーマンスをさらにチューニングするには、 [アプリケーションとデータベースのチューニング](../database/performance-guidance.md#tune-your-database)の *ベスト プラクティス* をいくつか適用することを検討してください。
+パフォーマンスをさらにチューニングするには、[アプリケーションとデータベースのチューニング](../database/performance-guidance.md#tune-your-database)の *ベスト プラクティス* をいくつか適用することを検討してください。
 ワークロードが多数の小さなトランザクションで構成されている場合は、待機時間を短縮しスループットを向上させるために[接続の種類をプロキシからリダイレクト モードに切り替える](connection-types-overview.md#changing-connection-type)ことを検討してください。
 
 ## <a name="monitoring-metrics-and-alerts"></a>監視、メトリック、およびアラート
@@ -210,7 +210,7 @@ SQL Managed Instance のストレージ サイズは選択したサービス レ
 
 **インスタンスに割り当てられたストレージ スペースは、コンピューティング リソースとは別に増やすことができますか?**
 
-はい。コンピューティングとは別に、アドオン ストレージをある程度まで購入できます。 この *表* にある " [インスタンスの予約済み最大ストレージ](resource-limits.md#hardware-generation-characteristics)" を参照してください。
+はい。コンピューティングとは別に、アドオン ストレージをある程度まで購入できます。 この *表* にある "[インスタンスの予約済み最大ストレージ](resource-limits.md#hardware-generation-characteristics)" を参照してください。
 
 **General Purpose サービス レベルでストレージのパフォーマンスを最適化するにはどうすればよいですか?**
 
@@ -339,7 +339,7 @@ Managed Instance コントロールからパブリック エンドポイント�
 > [!IMPORTANT]
 > [2020 年 9 月 22 日、Microsoft は、新しく作成された仮想クラスターのグローバル仮想ネットワーク ピアリングを発表しました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 これは、グローバル仮想ネットワーク ピアリングが、発表日以降に空のサブネットに作成された SQL Managed Instance に加え、それらのサブネットに作成された後続のすべてのマネージド インスタンスに対してサポートされることを意味します。 SQL Managed Instance のその他すべてのピアリングについては、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
 
-Express Route 回線のピアリングおよびグローバル仮想ネットワーク ピアリングが不可能な場合、サイト間 VPN 接続 ([Azure portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) を作成することが、他の唯一のオプションとなります。
+Express Route 回線のピアリングおよびグローバル仮想ネットワーク ピアリングが不可能な場合、サイト間 VPN 接続 ([Azure portal](../../vpn-gateway/tutorial-site-to-site-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) を作成することが、他の唯一のオプションとなります。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>データ窃盗リスクを軽減する  
 
@@ -410,7 +410,7 @@ Azure Cloud Shell を使用して Managed Instance の TDE プロテクターを
 はい。SQL Managed Instance に復元するために、データベースを復号化する必要はありません。 暗号化されたバックアップ ファイルからデータを読み取れるように、ソース システム上で暗号化キーの保護機能として使用される証明書またはキーを SQL Managed Instance に提供する必要があります。 その方法は次の 2 つです。
 
 - *SQL Managed Instance に証明書の保護機能をアップロードする。* これを実行できるのは、PowerShell を使用した場合のみです。 この[サンプル スクリプト](./tde-certificate-migrate.md)にプロセス全体が記述されています。
-- *非対称キーの保護機能を Azure Key Vault にアップロードし、SQL Managed Instance がその保護機能を指すように指定する。* この方法は、暗号化キーの格納にも Key Vault 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 キーを暗号化キーの保護機能として使用せず、SQL Managed Instance によって暗号化されたデータベースが復元される際にキーを利用できるようにするだけの場合は、 [BYOK TDE の設定](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)手順を実行し、 **[選択したキーを既定の TDE 保護機能にします]** チェック ボックスはオフにしてください。
+- *非対称キーの保護機能を Azure Key Vault にアップロードし、SQL Managed Instance がその保護機能を指すように指定する。* この方法は、暗号化キーの格納にも Key Vault 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 キーを暗号化キーの保護機能として使用せず、SQL Managed Instance によって暗号化されたデータベースが復元される際にキーを利用できるようにするだけの場合は、[BYOK TDE の設定](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)手順を実行し、 **[選択したキーを既定の TDE 保護機能にします]** チェック ボックスはオフにしてください。
 
 暗号化保護機能を SQL Managed Instance で利用できるようにしたら、標準のデータベース復元手順を進めることができます。
 

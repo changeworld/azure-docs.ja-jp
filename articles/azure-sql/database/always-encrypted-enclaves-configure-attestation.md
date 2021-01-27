@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253242"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733822"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Azure SQL 論理サーバー用に Azure Attestation を構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253242"
 
 [Microsoft Azure Attestation](../../attestation/overview.md) は、Intel Software Guard Extensions (Intel SGX) エンクレーブなどの高信頼実行環境 (TEE) を証明するためのソリューションです。 
 
-Azure SQL Database での[セキュリティで保護されたエンクレーブが設定された Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) に対して使用される Intel SGX エンクレーブを証明するために Azure Attestation を使用するには、次のことを行う必要があります。
+Azure SQL Database での[セキュリティで保護されたエンクレーブが設定された Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) に対して使用される Intel SGX エンクレーブを証明するために Azure Attestation を使用するには、次のことを行う必要があります。
 
 1. [構成証明プロバイダー](../../attestation/basic-concepts.md#attestation-provider)を作成し、推奨される構成証明ポリシーを使用して構成します。
 
@@ -114,7 +114,7 @@ Write-Host "Your attestation URL is: " $attestationUrl
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Azure portal を使用してアクセス許可を割り当てる
 
-構成証明プロバイダーの構成証明リーダー ロールに Azure SQL サーバーの ID を割り当てるには、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」の一般的な手順に従います。 **[ロールの割り当ての追加]** ペインで、次のようにします。
+構成証明プロバイダーの構成証明リーダー ロールに Azure SQL サーバーの ID を割り当てるには、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」の一般的な手順に従います。 **[ロールの割り当ての追加]** ペインで、次のようにします。
 
 1. **[Role]\(ロール\)** ドロップダウンで、 **[Attestation Reader]\(構成証明リーダー\)** ロールを選択します。
 1. **[選択]** フィールドに、検索する Azure SQL サーバーの名前を入力します。
@@ -143,11 +143,11 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment)」を参照してください。
+詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [セキュリティで保護されたエンクレーブが設定された Always Encrypted のキーを管理する](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [セキュリティで保護されたエンクレーブが設定された Always Encrypted のキーを管理する](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
 ## <a name="see-also"></a>関連項目
 

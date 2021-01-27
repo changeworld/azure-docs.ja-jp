@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938241"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724910"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>開発するクライアント アプリケーションで認証と認可の回復性を向上させる
 
@@ -24,13 +24,13 @@ ms.locfileid: "96938241"
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用する
 
-[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) は、[Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop)の重要な部分です。 これにより、トークンの取得、管理、キャッシュ、および更新が簡素化されて管理され、回復性のためのベスト プラクティスが使用されます。 MSAL は、開発者が実装の詳細について心配することなく、セキュリティで保護されたソリューションを実現できるように設計されています。
+[Microsoft Authentication Library (MSAL)](../develop/msal-overview.md) は、[Microsoft ID プラットフォーム](../develop/index.yml)の重要な部分です。 これにより、トークンの取得、管理、キャッシュ、および更新が簡素化されて管理され、回復性のためのベスト プラクティスが使用されます。 MSAL は、開発者が実装の詳細について心配することなく、セキュリティで保護されたソリューションを実現できるように設計されています。
 
-MSAL では、トークンがキャッシュされ、サイレント トークン取得パターンが使用されます。 また、Windows UWP、iOS、Android など、セキュリティで保護されたストレージがネイティブに提供されるプラットフォームではトークン キャッシュが自動的にシリアル化されます。 開発者は、[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)、[MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-token-cache-serialization)、[MSAL for Java](https://docs.microsoft.com/azure/active-directory/develop/msal-java-token-cache-serialization)、および [MSAL for Python](https://docs.microsoft.com/azure/active-directory/develop/msal-python-token-cache-serialization) を使用している場合、シリアル化の動作をカスタマイズできます。
+MSAL では、トークンがキャッシュされ、サイレント トークン取得パターンが使用されます。 また、Windows UWP、iOS、Android など、セキュリティで保護されたストレージがネイティブに提供されるプラットフォームではトークン キャッシュが自動的にシリアル化されます。 開発者は、[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)、[MSAL.NET](../develop/msal-net-token-cache-serialization.md)、[MSAL for Java](../develop/msal-java-token-cache-serialization.md)、および [MSAL for Python](../develop/msal-python-token-cache-serialization.md) を使用している場合、シリアル化の動作をカスタマイズできます。
 
 ![MSAL を使用して Microsoft ID を呼び出すアプリケーションを含むデバイスの画像](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-MSAL を使用する場合、トークンのキャッシュ、更新、およびサイレント取得が自動的にサポートされます。 単純なパターンを使用して、先進認証に必要なトークンを取得できます。 多くの言語がサポートされます。また、言語とシナリオに応じたサンプルを、[[サンプル]](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) ページで見つけることができます。
+MSAL を使用する場合、トークンのキャッシュ、更新、およびサイレント取得が自動的にサポートされます。 単純なパターンを使用して、先進認証に必要なトークンを取得できます。 多くの言語がサポートされます。また、言語とシナリオに応じたサンプルを、[[サンプル]](../develop/sample-v2-code.md) ページで見つけることができます。
 
 ## <a name="c"></a>[C#](#tab/csharp)
 
@@ -105,7 +105,7 @@ MSAL を使用していない場合は、これらの回復性があるパター
 
 ### <a name="serialize-and-persist-tokens"></a>トークンをシリアル化および永続化する
 
-アプリは、トークン キャッシュを安全にシリアル化して、アプリのインスタンス間でトークンが永続化されるようにする必要があります。 トークンは、有効期間内である限り再利用できます。 [更新トークン](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)、そして次第に[アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)が何時間も発行されています。 この有効期間中に、ユーザーによってアプリケーションが何度も起動される可能性があります。 アプリが起動されると、使用できる有効なアクセスまたは更新トークンがあるかどうかが確認されます。 これにより、Microsoft ID への不要な呼び出しが回避されるため、アプリの回復性とパフォーマンスが向上します。
+アプリは、トークン キャッシュを安全にシリアル化して、アプリのインスタンス間でトークンが永続化されるようにする必要があります。 トークンは、有効期間内である限り再利用できます。 [更新トークン](../develop/v2-oauth2-auth-code-flow.md#refresh-the-access-token)、そして次第に[アクセス トークン](../develop/access-tokens.md)が何時間も発行されています。 この有効期間中に、ユーザーによってアプリケーションが何度も起動される可能性があります。 アプリが起動されると、使用できる有効なアクセスまたは更新トークンがあるかどうかが確認されます。 これにより、Microsoft ID への不要な呼び出しが回避されるため、アプリの回復性とパフォーマンスが向上します。
 
 ![アプリケーションによって Microsoft ID への呼び出しが行われても、その呼び出しは、アプリケーションが実行されているデバイス上のトークン キャッシュとトークン ストアを通過します](media/resilience-client-app/token-store.png)
 
@@ -136,14 +136,14 @@ MSAL を使用していない場合は、これらの回復性があるパター
 
 ### <a name="tokens"></a>トークン
 
-ID トークンとアクセス トークンには、サブジェクトに関する情報を提供する標準の要求が含まれています。 これらについては、「[Microsoft ID プラットフォームの ID トークン](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)」と「[Microsoft ID プラットフォーム アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)」で説明されています。 アプリに必要な情報が既にトークンに含まれている場合、そのデータを取得する最も効率的な方法は、トークン要求を使用することです。それにより、情報を個別に取得するための追加ネットワーク呼び出しのオーバーヘッドが削減されるためです。 ネットワーク呼び出し回数が減るということは、アプリケーションの全体的な回復性が向上することを意味します。
+ID トークンとアクセス トークンには、サブジェクトに関する情報を提供する標準の要求が含まれています。 これらについては、「[Microsoft ID プラットフォームの ID トークン](../develop/id-tokens.md)」と「[Microsoft ID プラットフォーム アクセス トークン](../develop/access-tokens.md)」で説明されています。 アプリに必要な情報が既にトークンに含まれている場合、そのデータを取得する最も効率的な方法は、トークン要求を使用することです。それにより、情報を個別に取得するための追加ネットワーク呼び出しのオーバーヘッドが削減されるためです。 ネットワーク呼び出し回数が減るということは、アプリケーションの全体的な回復性が向上することを意味します。
 
 > [!NOTE]
 > 一部のアプリケーションでは、UserInfo エンドポイントを呼び出して、認証したユーザーに関する要求が取得されます。 アプリが受信できる ID トークンで利用できる情報は、UserInfo エンドポイントから取得できる情報の上位集合です。 アプリは、UserInfo エンドポイントを呼び出す代わりに、ID トークンを使用してユーザーに関する情報を取得する必要があります。
 
-アプリ開発者は、[オプションの要求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)によって標準のトークン要求を補強できます。 一般的なオプションの要求の 1 つは、[グループ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims#configuring-groups-optional-claims)です。 グループ要求を追加するには、いくつかの方法があります。 "Application Group" オプションでは、アプリケーションに割り当てられたグループのみが含まれます。 "All" または "Security groups" オプションでは、同じテナント内のすべてのアプリのグループが含まれます。これにより、多くのグループをトークンに追加できます。 自分のケースに応じて効果を評価することが重要です。トークンが肥大化し、グループの完全な一覧を取得するための追加呼び出しが必要になることで、トークンでグループを要求することによって得られる効率性が打ち消される可能性があるからです。
+アプリ開発者は、[オプションの要求](../develop/active-directory-optional-claims.md)によって標準のトークン要求を補強できます。 一般的なオプションの要求の 1 つは、[グループ](../develop/active-directory-optional-claims.md#configuring-groups-optional-claims)です。 グループ要求を追加するには、いくつかの方法があります。 "Application Group" オプションでは、アプリケーションに割り当てられたグループのみが含まれます。 "All" または "Security groups" オプションでは、同じテナント内のすべてのアプリのグループが含まれます。これにより、多くのグループをトークンに追加できます。 自分のケースに応じて効果を評価することが重要です。トークンが肥大化し、グループの完全な一覧を取得するための追加呼び出しが必要になることで、トークンでグループを要求することによって得られる効率性が打ち消される可能性があるからです。
 
-トークン内でグループを使用する代わりに、アプリ ロールを使用して含めることができます。 開発者は、アプリと API に対して[アプリ ロール](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)を定義できます。顧客は、ポータルまたは API を使用して自分のディレクトリからそれらを管理できます。 IT 担当者は、ロールをさまざまなユーザーやグループに割り当てて、どのユーザーがどのコンテンツや機能にアクセスできるかを制御できます。 アプリケーションや API に対してトークンが発行されると、ユーザーに割り当てられたロールが、トークン内のロール要求で使用可能になります。 トークンでこの情報を直接取得することにより、追加の API 呼び出しを行わずに済みます。
+トークン内でグループを使用する代わりに、アプリ ロールを使用して含めることができます。 開発者は、アプリと API に対して[アプリ ロール](../develop/howto-add-app-roles-in-azure-ad-apps.md)を定義できます。顧客は、ポータルまたは API を使用して自分のディレクトリからそれらを管理できます。 IT 担当者は、ロールをさまざまなユーザーやグループに割り当てて、どのユーザーがどのコンテンツや機能にアクセスできるかを制御できます。 アプリケーションや API に対してトークンが発行されると、ユーザーに割り当てられたロールが、トークン内のロール要求で使用可能になります。 トークンでこの情報を直接取得することにより、追加の API 呼び出しを行わずに済みます。
 
 最後に、IT 管理者は、テナント内の特定の情報に基づいて要求を追加することもできます。 たとえば、企業は、企業固有のユーザー ID を持つ拡張機能を使用できます。
 
@@ -155,26 +155,26 @@ Microsoft Graph には、組織内の生産性、ID、およびセキュリテ�
 
 すべての Microsoft 365 にアクセスするために、アプリで必要なトークンは 1 つだけです。 これは、複数のトークンを必要とする Microsoft Exchange や Microsoft SharePoint などの Microsoft 365 コンポーネントに固有の古い API を使用する場合に比べて回復性が高くなります。
 
-Microsoft Graph API を使用するときは、[Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) を使用することをお勧めします。 Microsoft Graph SDK は、Microsoft Graph にアクセスする高品質かつ効率的で、回復性を備えたアプリケーションの構築を簡素化するように設計されています。
+Microsoft Graph API を使用するときは、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用することをお勧めします。 Microsoft Graph SDK は、Microsoft Graph にアクセスする高品質かつ効率的で、回復性を備えたアプリケーションの構築を簡素化するように設計されています。
 
 認可の決定については、開発者は、一部の Microsoft Graph 呼び出しの代わりに、トークンに含まれている要求をどのような場合に使用するかを検討する必要があります。 前述のように、開発者はトークン内でグループ、アプリ ロール、およびオプションの要求を要求できます。 回復性の観点からは、Microsoft Graph を認可に使用すると、Microsoft ID (Microsoft Graph にアクセスするためのトークンを取得するため) と Microsoft Graph 自体に依存する追加のネットワーク呼び出しが必要になります。 ただし、アプリケーションがデータ レイヤーとして Microsoft Graph に既に依存している場合は、認可のために Graph に依存しても、追加のリスクを負うことにはなりません。
 
 ## <a name="use-broker-authentication-on-mobile-devices"></a>モバイル デバイスでブローカー認証を使用する
 
-モバイル デバイスでは、Microsoft Authenticator のような認証ブローカーを使用すると、回復性が向上します。 ブローカーによって、システム ブラウザーや埋め込み WebView などの他のオプションの場合よりも多くの利点が得られます。 認証ブローカーは、[プライマリ更新トークン](https://docs.microsoft.com/azure/active-directory/devices/concept-primary-refresh-token) (PRT) を利用できます。これにはユーザーとデバイスに関する要求が含まれおり、デバイスから他のアプリケーションにアクセスするための認証トークンを取得するために使用できます。 アプリケーションへのアクセスを要求するために PRT が使用されると、そのデバイスと MFA の要求は Azure AD によって信頼されます。 これにより、デバイスを再度認証するための追加手順が回避されて、回復性が向上します。 ユーザーは同じデバイス上で複数の MFA プロンプトによってチャレンジされないため、外部サービスへの依存関係を減らすことで回復性を高め、ユーザー エクスペリエンスを向上させることができます。
+モバイル デバイスでは、Microsoft Authenticator のような認証ブローカーを使用すると、回復性が向上します。 ブローカーによって、システム ブラウザーや埋め込み WebView などの他のオプションの場合よりも多くの利点が得られます。 認証ブローカーは、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md) (PRT) を利用できます。これにはユーザーとデバイスに関する要求が含まれおり、デバイスから他のアプリケーションにアクセスするための認証トークンを取得するために使用できます。 アプリケーションへのアクセスを要求するために PRT が使用されると、そのデバイスと MFA の要求は Azure AD によって信頼されます。 これにより、デバイスを再度認証するための追加手順が回避されて、回復性が向上します。 ユーザーは同じデバイス上で複数の MFA プロンプトによってチャレンジされないため、外部サービスへの依存関係を減らすことで回復性を高め、ユーザー エクスペリエンスを向上させることができます。
 
 ![アプリケーションによって Microsoft ID への呼び出しが行われても、その呼び出しは、アプリケーションが実行されているデバイス上のトークン キャッシュとトークン ストアおよび認証ブローカーを通過します](media/resilience-client-app/authentication-broker.png)
 
 ブローカー認証は、MSAL によって自動的にサポートされます。 ブローカー認証の使用の詳細については、次のページを参照してください。
 
-- [macOS と iOS で SSO を構成する](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-macos-ios#sso-through-authentication-broker-on-ios)
-- [方法: Android で MSAL を使用してクロスアプリ SSO を有効にする](https://docs.microsoft.com/azure/active-directory/develop/msal-android-single-sign-on)
+- [macOS と iOS で SSO を構成する](../develop/single-sign-on-macos-ios.md#sso-through-authentication-broker-on-ios)
+- [方法: Android で MSAL を使用してクロスアプリ SSO を有効にする](../develop/msal-android-single-sign-on.md)
 
 ## <a name="adopt-continuous-access-evaluation"></a>継続的アクセス評価を採用する
 
-[継続的アクセス評価 (CAE)](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) は、有効期間が長いトークンを使用してアプリケーションのセキュリティと回復性を高めることができる最新の開発です。 CAE は、OpenID Foundation の Shared Signals と Events Working Groupで開発されている新たな業界標準です。 CAE では、短いトークンの有効期間に依存するのではなく、[重大なイベント](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation)と[ポリシーの評価](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを取り消すことができます。 一部のリソース API の場合、リスクとポリシーがリアルタイムで評価されるため、CAE によってトークンの有効期間を最大 28 時間まで大幅に延ばすことができます。 リソース API とアプリケーションで CAE が採用されると、Microsoft ID は、取り消し可能で、長時間有効なアクセス トークンを発行できるようになります。 これらの有効期間が長いトークンは、MSAL によって事前に更新されます。
+[継続的アクセス評価 (CAE)](../conditional-access/concept-continuous-access-evaluation.md) は、有効期間が長いトークンを使用してアプリケーションのセキュリティと回復性を高めることができる最新の開発です。 CAE は、OpenID Foundation の Shared Signals と Events Working Groupで開発されている新たな業界標準です。 CAE では、短いトークンの有効期間に依存するのではなく、[重大なイベント](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)と[ポリシーの評価](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを取り消すことができます。 一部のリソース API の場合、リスクとポリシーがリアルタイムで評価されるため、CAE によってトークンの有効期間を最大 28 時間まで大幅に延ばすことができます。 リソース API とアプリケーションで CAE が採用されると、Microsoft ID は、取り消し可能で、長時間有効なアクセス トークンを発行できるようになります。 これらの有効期間が長いトークンは、MSAL によって事前に更新されます。
 
-CAE は初期段階にありますが、アプリケーションで使用されているリソース (API) で CAE が採用されている場合は、[CAE を活用するクライアント アプリケーションを今すぐ開発](../develop/app-resilience-continuous-access-evaluation.md)できます。 CAE を採用するリソースが増えるにつれて、アプリケーションでも、それらのリソースに対する CAE 対応トークンを取得できるようになります。 Microsoft Graph API と [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) では、2021 年の早期に CAE 機能のプレビューが行われます。 CAE に関する Microsoft Graph のパブリック プレビューへの参加をご希望の場合は、こちらからその旨をお知らせください: [https://aka.ms/GraphCAEPreview](https://aka.ms/GraphCAEPreview)。
+CAE は初期段階にありますが、アプリケーションで使用されているリソース (API) で CAE が採用されている場合は、[CAE を活用するクライアント アプリケーションを今すぐ開発](../develop/app-resilience-continuous-access-evaluation.md)できます。 CAE を採用するリソースが増えるにつれて、アプリケーションでも、それらのリソースに対する CAE 対応トークンを取得できるようになります。 Microsoft Graph API と [Microsoft Graph SDK](/graph/sdks/sdks-overview) では、2021 年の早期に CAE 機能のプレビューが行われます。 CAE に関する Microsoft Graph のパブリック プレビューへの参加をご希望の場合は、こちらからその旨をお知らせください: [https://aka.ms/GraphCAEPreview](https://aka.ms/GraphCAEPreview)。
 
 リソース API を開発する場合は、[Shared Signals と Events WG](https://openid.net/wg/sse/) に参加されることをお勧めします。 Microsoft は、Microsoft ID とリソース プロバイダー間のセキュリティ イベントの共有を可能にするために、こちらのグループと連携しています。
 

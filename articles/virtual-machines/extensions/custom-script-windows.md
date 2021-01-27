@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: d336d38465d601c1cbd4c1e88c0928ab17a1a18f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976845"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735715"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -287,7 +287,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-カスタム スクリプト拡張機能をスケール セットにデプロイするには、「[Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)」を参照してください。
+カスタム スクリプト拡張機能をスケール セットにデプロイするには、「[Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)」を参照してください。
 
 ## <a name="classic-vms"></a>クラシック VM
 

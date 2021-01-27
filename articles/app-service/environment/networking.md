@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013492"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735035"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment のネットワーク
 
@@ -52,7 +52,7 @@ ASEv2 とは異なり、ASEv3 では、必要に応じて制限なしに、ネ�
 
 ## <a name="dns"></a>DNS
 
-ASE 内のアプリでは、VNet の構成で使用されている DNS が使用されます。 ASE を指すように DNS サーバーを構成するには、「[App Service Environment の使用](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration)」の手順に従います。 一部のアプリで、VNet が構成されているものとは異なる DNS サーバーを使用するようにしたい場合は、アプリ設定 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を使用して、アプリごとに手動でそれを設定できます。 アプリの設定 WEBSITE_DNS_ALT_SERVER により、セカンダリ DNS サーバーが構成されます。 セカンダリ DNS サーバーは、プライマリ DNS サーバーからの応答がない場合にのみ使用されます。 
+ASE 内のアプリでは、VNet の構成で使用されている DNS が使用されます。 ASE を指すように DNS サーバーを構成するには、「[App Service Environment の使用](./using.md#dns-configuration)」の手順に従います。 一部のアプリで、VNet が構成されているものとは異なる DNS サーバーを使用するようにしたい場合は、アプリ設定 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を使用して、アプリごとに手動でそれを設定できます。 アプリの設定 WEBSITE_DNS_ALT_SERVER により、セカンダリ DNS サーバーが構成されます。 セカンダリ DNS サーバーは、プライマリ DNS サーバーからの応答がない場合にのみ使用されます。 
 
 ## <a name="preview-limitation"></a>プレビューでの制限事項
 
@@ -61,4 +61,3 @@ ASEv3 で利用できないネットワーク機能がいくつかあります�
 • FTP • リモート デバッグ • 外部ロード バランサーのデプロイ • コンテナー デプロイのためにプライベート コンテナー レジストリにアクセスする機能 • グローバルにピアリングされた Vnet を呼び出す機能 • サービス エンドポイントまたはプライベート エンドポイントのセキュリティで保護されたストレージ アカウントを使用してバックアップ/リストアする機能 • サービス エンドポイントまたはプライベート エンドポイントのセキュリティで保護された keyvault アカウントでアプリ設定の keyvault 参照を使用する機能 • サービス エンドポイントまたはプライベート エンドポイントのセキュリティで保護されたストレージ アカウントに BYOS を使用する機能 • 送信トラフィックでの Network Watcher または NSG フローの使用
     
     
-

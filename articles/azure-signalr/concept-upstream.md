@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763117"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724059"
 ---
 # <a name="upstream-settings"></a>アップストリームの設定
 
@@ -59,7 +59,7 @@ http://host.com/chat/api/messages/broadcast
 
 1. システム割り当て ID またはユーザー割り当て ID を追加します。 [Azure portal でのマネージド ID の追加](./howto-use-managed-identity.md#add-a-system-assigned-identity)に関する説明を参照してください。
 
-2. Key Vault のアクセス ポリシーで、マネージド ID に対する読み取りアクセス許可をシークレットに付与します。 [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)に関する説明を参照してください。
+2. Key Vault のアクセス ポリシーで、マネージド ID に対する読み取りアクセス許可をシークレットに付与します。 [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)に関する説明を参照してください。
 
 3. 機密テキストをアップストリーム URL パターンの構文 `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` に置き換えます。
 

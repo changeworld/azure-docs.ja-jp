@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792941"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704642"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>ネットワーク帯域幅が低速またはない場合の大規模なデータセットのデータ転送
  
@@ -68,4 +68,4 @@ ms.locfileid: "92792941"
 
     - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
     - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
-    - [Import/Export を使用してデータを転送する](./storage-import-export-data-to-blobs.md)。
+    - [Import/Export を使用してデータを転送する](../../import-export/storage-import-export-data-to-blobs.md)。

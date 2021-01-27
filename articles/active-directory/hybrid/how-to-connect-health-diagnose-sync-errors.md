@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028932"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728239"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -139,7 +139,7 @@ Azure AD で競合する属性を持つユーザーは、修正プログラム�
 Azure AD のクラウド ベースのユーザーは、ソース アンカーを持つことはできません。 この場合、ソース アンカーの更新はサポートされていません。 オンプレミスから手動で修正する必要があります。 
 
 **修正プロセスで値を更新できませんでした。**
-[UserWriteback in Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback) などの特定の設定はサポートされていません。 この設定を無効にしてください。 
+[UserWriteback in Azure AD Connect](./how-to-connect-preview.md#user-writeback) などの特定の設定はサポートされていません。 この設定を無効にしてください。 
 
 ## <a name="faq"></a>よく寄せられる質問
 **Q.** **[修正の適用]** の実行が失敗した場合はどうなりますか。  

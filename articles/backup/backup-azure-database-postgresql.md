@@ -4,12 +4,12 @@ description: 長期保有を指定した Azure Database for PostgreSQL のバッ
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569489"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737574"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -31,7 +31,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
 |サポート  |詳細  |
 |---------|---------|
-|サポートされているデプロイ   |  [Azure Database for PostgreSQL - 単一サーバー](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|サポートされているデプロイ   |  [Azure Database for PostgreSQL - 単一サーバー](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |サポート対象の Azure リージョン |  米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、ブラジル南部、カナダ中部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、ドイツ中西部、スイス北部、スイス西部、東アジア、東南アジア、東日本、西日本、韓国中部、韓国南部、インド中部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2、アラブ首長国連邦北部  |
 |サポートされる Azure PostgreSQL のバージョン    |   9.5、9.6、10、11      |
 

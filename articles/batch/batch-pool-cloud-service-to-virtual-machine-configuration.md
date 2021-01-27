@@ -3,16 +3,16 @@ title: Batch プールの構成を Cloud Services から Virtual Machines に移
 description: プールの構成を最新の推奨構成に更新する方法について説明します
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234309"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731501"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch プールの構成を Cloud Services から Virtual Machines に移行する
 
-Batch プールは、[cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) または [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) を使用して作成できます。 "virtualMachineConfiguration" は、すべての Batch 機能をサポートするため、推奨される構成です。 "cloudServiceConfiguration" プールでは、すべての機能はサポートされず、新しい機能は計画されていません。
+Batch プールは、[cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) または [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) を使用して作成できます。 "virtualMachineConfiguration" は、すべての Batch 機能をサポートするため、推奨される構成です。 "cloudServiceConfiguration" プールでは、すべての機能はサポートされず、新しい機能は計画されていません。
 
 "cloudServiceConfiguration" プールを使用している場合は、"virtualMachineConfiguration" プールを使用するように移行することを強くお勧めします。 これにより、拡大された [VM シリーズの選択](batch-pool-vm-sizes.md)、Linux VM、[コンテナー](batch-docker-container-workloads.md)、[Azure Resource Manager 仮想ネットワーク](batch-virtual-network.md)、および[ノード ディスクの暗号化](disk-encryption.md)など、すべての Batch 機能を利用できるようになります。
 
@@ -41,4 +41,4 @@ Batch プールは、[cloudServiceConfiguration](https://docs.microsoft.com/rest
 
 - [プール構成](nodes-and-pools.md#configurations)について学習します。
 - [プールのベスト プラクティス](best-practices.md#pools)について学習します。
-- [プールの追加](https://docs.microsoft.com/rest/api/batchservice/pool/add)および[virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) の REST API リファレンス。
+- [プールの追加](/rest/api/batchservice/pool/add)および[virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) の REST API リファレンス。

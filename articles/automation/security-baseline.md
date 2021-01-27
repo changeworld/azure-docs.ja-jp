@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200840"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737254"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -556,7 +556,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation の TLS 1.2 の適用](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure Automation の TLS 1.2 の適用](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure Security Center の監視**: はい
 
@@ -938,7 +938,7 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 ほとんどのシナリオで、Microsoft ベース VM テンプレートと Azure Automation State Configuration を組み合わせると、セキュリティ要件を満たして維持することができます。
 
-* [VM テンプレートをダウンロードする方法に関する情報](../virtual-machines/windows/download-template.md)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 

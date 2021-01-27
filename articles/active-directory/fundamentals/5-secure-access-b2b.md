@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0d63df3e5525b200723db209d05e5eb5013e23
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222362"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725394"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションによって管理コラボレーションに移行する 
 
@@ -100,7 +100,7 @@ B2B Azure AD を有効にすると、既定では、直接リンクや電子メ�
 
 Azure AD のエンタイトルメント管理を使用する場合は、外部ユーザーが回答する質問を構成できます。 これらの質問はその後、承認者に示され、承認者の意思決定に役立ちます。 承認者が承認しているアクセスに関連する情報を得られるように、[アクセス パッケージ ポリシー](../governance/entitlement-management-access-package-approval-policy.md)ごとに異なる一連の質問を構成することができます。 たとえば、あるアクセス パッケージがベンダーへのアクセスを目的としている場合、要求元にベンダーの契約番号を要求できます。 供給元を対象とした別のアクセス パッケージでは、原産国を要求できます。
 
-セルフサービス ポータルを使用する場合は、[API コネクタ](../external-identities/api-connectors-overview.md)を使用して、サインアップ時にユーザーに関する追加の属性を収集できます。 その後、これらの属性を使用してアクセス権を割り当てることができます。 たとえば、サインアップ プロセス中に供給元 ID を収集する場合、その属性を使用して、その供給元のグループまたはアクセス パッケージに動的に割り当てることができます。 Azure portal でカスタム属性を作成し、セルフサービス サインアップのユーザー フローでそれらを使用できます。 また、[Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) を使用してこれらの属性を読み書きすることもできます。 
+セルフサービス ポータルを使用する場合は、[API コネクタ](../external-identities/api-connectors-overview.md)を使用して、サインアップ時にユーザーに関する追加の属性を収集できます。 その後、これらの属性を使用してアクセス権を割り当てることができます。 たとえば、サインアップ プロセス中に供給元 ID を収集する場合、その属性を使用して、その供給元のグループまたはアクセス パッケージに動的に割り当てることができます。 Azure portal でカスタム属性を作成し、セルフサービス サインアップのユーザー フローでそれらを使用できます。 また、[Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md) を使用してこれらの属性を読み書きすることもできます。 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Azure AD ユーザーへの招待の引き換えに関するトラブルシューティング
 
@@ -132,7 +132,7 @@ Azure AD を使用しているコラボレーション パートナーの招待�
 
 * **Azure portal へのアクセスをブロックする。まれに必要となる例外を作成できます**。 
 
-   * すべてのゲスト ユーザーと外部ユーザーのどちらかを含む条件付きアクセス ポリシーを作成してから、[アクセスをブロックするポリシーを実装します](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)。
+   * すべてのゲスト ユーザーと外部ユーザーのどちらかを含む条件付きアクセス ポリシーを作成してから、[アクセスをブロックするポリシーを実装します](../../role-based-access-control/conditional-access-azure-management.md)。
 
  
 
@@ -185,7 +185,7 @@ Teams では、既定で外部アクセスが許可されます。つまり、�
 
 ### <a name="direct-sharing-through-sharepoint-and-onedrive"></a>SharePoint と OneDrive を使用した直接共有
 
-SharePoint と OneDrive を使用して直接共有すると、エンタイトルメント管理プロセス外でユーザーを追加できます。 これらの構成の詳細については、[Microsoft Teams、SharePoint、および OneDrive for business を使用したアクセスの管理](9-secure-access-teams-sharepoint.md)に関するページを参照してください。また、必要に応じて、[ユーザーの個人用 OneDrive の使用をブロックする](https://docs.microsoft.com/office365/troubleshoot/group-policy/block-onedrive-use-from-office)こともできます。
+SharePoint と OneDrive を使用して直接共有すると、エンタイトルメント管理プロセス外でユーザーを追加できます。 これらの構成の詳細については、[Microsoft Teams、SharePoint、および OneDrive for business を使用したアクセスの管理](9-secure-access-teams-sharepoint.md)に関するページを参照してください。また、必要に応じて、[ユーザーの個人用 OneDrive の使用をブロックする](/office365/troubleshoot/group-policy/block-onedrive-use-from-office)こともできます。
 
 ### <a name="sending-documents-through-email"></a>電子メールを使用したドキュメントの送信
 
@@ -197,9 +197,9 @@ SharePoint と OneDrive を使用して直接共有すると、エンタイト�
 
 未承認のアプリケーションの管理の詳細については、以下を参照してください。
 
-* [接続されているアプリを管理する](https://docs.microsoft.com/cloud-app-security/governance-actions)
+* [接続されているアプリを管理する](/cloud-app-security/governance-actions)
 
-* [アプリケーションを承認および却下する](https://docs.microsoft.com/cloud-app-security/governance-discovery)
+* [アプリケーションを承認および却下する](/cloud-app-security/governance-discovery)
 
  
 ### <a name="next-steps"></a>次のステップ

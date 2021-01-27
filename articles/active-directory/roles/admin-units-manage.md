@@ -3,23 +3,23 @@ title: 管理単位を追加および削除する - Azure Active Directory | Mic
 description: Azure Active Directory で管理単位を使用してロールのアクセス許可のスコープを制限します。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe76d21d948525421790f574830da7b3a163216
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395395"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740450"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する
 
@@ -85,7 +85,7 @@ Azure AD では、管理ロールのスコープの単位として不要にな�
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. Azure portal で、 **Azure AD** に移動し、 **[管理単位]** を選択します。 
+1. Azure portal で、**Azure AD** に移動し、 **[管理単位]** を選択します。 
 1. 削除する管理単位を選択してから、 **[削除]** を選択します。 
 1. 管理単位の削除を確認するには、 **[はい]** を選択します。 管理単位が削除されます。
 

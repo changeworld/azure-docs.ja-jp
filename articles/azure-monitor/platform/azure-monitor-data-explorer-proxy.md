@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060454"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733185"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ
-Azure Monitor では、Azure Data Explorer、[Application Insights](/azure/azure-monitor/app/app-insights-overview)、および [Log Analytics](/azure/azure-monitor/platform/data-platform-logs) 間のクロスサービス クエリがサポートされています。 それにより、Log Analytics または Application Insights ツールを使用して Azure Data Explorer クラスターに対してクエリを実行し、それをクロスサービス クエリで参照することができます。 この記事では、クロスサービス クエリを作成する方法について説明します。
+Azure Monitor では、Azure Data Explorer、[Application Insights](../app/app-insights-overview.md)、および [Log Analytics](./data-platform-logs.md) 間のクロスサービス クエリがサポートされています。 それにより、Log Analytics または Application Insights ツールを使用して Azure Data Explorer クラスターに対してクエリを実行し、それをクロスサービス クエリで参照することができます。 この記事では、クロスサービス クエリを作成する方法について説明します。
 
 次の図は、Azure Monitor のクロスサービス フローを示しています。
 
@@ -62,8 +62,8 @@ union customEvents, CL1 | take 10
 
 Azure Data Explorer リソースがテナント A にあり、Log Analytics ワークスペースがテナント B にある場合は、次の方法のいずれかを使用します。
 
-*  Azure Data Explorer を使用すると、異なるテナントにプリンシパルのロールを追加できます。 テナント B のユーザー ID を、許可されているユーザーとして Azure Data Explorer クラスターに追加します。 Azure Data Explorer クラスター上の [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) プロパティにテナント B が含まれていることを確認します。テナント B でクロスクエリ全体を実行します。
-*  [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) を使用して、Azure Monitor リソースをテナント A に射影します。
+*  Azure Data Explorer を使用すると、異なるテナントにプリンシパルのロールを追加できます。 テナント B のユーザー ID を、許可されているユーザーとして Azure Data Explorer クラスターに追加します。 Azure Data Explorer クラスター上の [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) プロパティにテナント B が含まれていることを確認します。テナント B でクロスクエリ全体を実行します。
+*  [Lighthouse](../../lighthouse/index.yml) を使用して、Azure Monitor リソースをテナント A に射影します。
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>さまざまなテナントから Azure Data Explorer クラスターに接続する
 
@@ -72,6 +72,6 @@ Kusto Explorer によって、ユーザー アカウントの所属元である�
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>次のステップ
-* [クエリを作成する](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [Azure Monitor でクロスリソース ログ クエリを実行する](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [クエリを作成する](/azure/data-explorer/write-queries)
+* [Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する](/azure/data-explorer/query-monitor-data)
+* [Azure Monitor でクロスリソース ログ クエリを実行する](../log-query/cross-workspace-query.md)

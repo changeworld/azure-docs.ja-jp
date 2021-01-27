@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/15/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a1cfabf6ccbb5d580bcad36694cd2e1a74155714
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 52e491c88d3483f21aa74f1a9f176246033bee3c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540420"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735794"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>マネージド ディスクの増分スナップショットの作成
 
@@ -33,7 +33,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 インストールが完了したら、`Connect-AzAccount` を使用して PowerShell セッションにログインします。
 
-Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) と `-Incremental` パラメーターで設定し、`-Snapshot` パラメーターを介してそれを [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) に変数として渡します。
+Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](/powershell/module/az.compute/new-azsnapshotconfig) と `-Incremental` パラメーターで設定し、`-Snapshot` パラメーターを介してそれを [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) に変数として渡します。
 
 ```PowerShell
 $diskName = "yourDiskNameHere>"

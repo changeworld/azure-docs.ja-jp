@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630294"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724443"
 ---
 # <a name="resilient-end-user-experience"></a>回復性があるエンドユーザー エクスペリエンス
 
@@ -34,19 +34,19 @@ ms.locfileid: "97630294"
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>ユーザー フローとカスタム ポリシーのいずれかを選択する  
 
-最も一般的な ID タスクを設定しやすくするために、Azure AD B2C には組み込みの構成可能な[ユーザー フロー](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview)が用意されています。 また、独自の[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)を作成することもできます。これにより、高い柔軟性が得られます。 ただし、カスタム ポリシーを使用するのは、複雑なシナリオに対応する場合に限ることをお勧めします。
+最も一般的な ID タスクを設定しやすくするために、Azure AD B2C には組み込みの構成可能な[ユーザー フロー](../../active-directory-b2c/user-flow-overview.md)が用意されています。 また、独自の[カスタム ポリシー](../../active-directory-b2c/custom-policy-overview.md)を作成することもできます。これにより、高い柔軟性が得られます。 ただし、カスタム ポリシーを使用するのは、複雑なシナリオに対応する場合に限ることをお勧めします。
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>ユーザー フローとカスタム ポリシーのどちらにするか決定する方法
 
 組み込みのユーザー フローでビジネス要件を満たすことができる場合は、そちらを選択します。 Microsoft によって広範囲でテストされているため、これらの ID ユーザー フローのポリシー レベルの機能、パフォーマンス、またはスケールの検証に必要なテストを最小限に抑えることができます。 その場合でも、アプリケーションの機能、パフォーマンス、スケールをテストする必要があります。
 
-ビジネス要件を満たすために[カスタム ポリシーを選択する](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)場合は、アプリケーション レベルのテストに加え、ポリシー レベルでも機能、パフォーマンス、スケールをテストする必要があります。
+ビジネス要件を満たすために[カスタム ポリシーを選択する](../../active-directory-b2c/custom-policy-get-started.md)場合は、アプリケーション レベルのテストに加え、ポリシー レベルでも機能、パフォーマンス、スケールをテストする必要があります。
 
-[ユーザー フローとカスタム ポリシーを比較する](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies)記事を参照して、決定に役立ててください。
+[ユーザー フローとカスタム ポリシーを比較する](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies)記事を参照して、決定に役立ててください。
 
 ## <a name="choose-multiple-idps"></a>複数の IDP を選択する
 
-Facebook などの[外部 ID プロバイダー](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers)を使用する場合は、外部プロバイダーが使用できなくなった場合に備えて、代替の計画を準備しておく必要があります。
+Facebook などの[外部 ID プロバイダー](../../active-directory-b2c/technical-overview.md#external-identity-providers)を使用する場合は、外部プロバイダーが使用できなくなった場合に備えて、代替の計画を準備しておく必要があります。
 
 ### <a name="how-to-set-up-multiple-idps"></a>複数の IDP を設定する方法
 
@@ -58,11 +58,11 @@ Facebook などの[外部 ID プロバイダー](https://docs.microsoft.com/azur
 
  2. ユーザーがサインインした後に[他の ID を自分のアカウントにリンク](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking)することを許可するように、プロファイル ポリシーを構成します。
 
- 3. 障害発生時にはユーザーに通知し、[代替の IDP に切り替える](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri)ことができるようにします。
+ 3. 障害発生時にはユーザーに通知し、[代替の IDP に切り替える](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)ことができるようにします。
 
 ## <a name="availability-of-multi-factor-authentication"></a>多要素認証の可用性
 
-[多要素認証 (MFA) に電話サービス](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)を使用する場合は、代替のサービス プロバイダーを検討する必要があります。 ローカルの通信会社や電話サービス プロバイダーでは、サービスの中断が発生する場合があります。
+[多要素認証 (MFA) に電話サービス](../../active-directory-b2c/phone-authentication.md)を使用する場合は、代替のサービス プロバイダーを検討する必要があります。 ローカルの通信会社や電話サービス プロバイダーでは、サービスの中断が発生する場合があります。
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>代替 MFA の選択方法  
 

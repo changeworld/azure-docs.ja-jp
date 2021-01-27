@@ -5,19 +5,19 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598698"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736223"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service のコストを計画および管理する
 
 <!-- Check out the following published examples:
-- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs)
-- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs)
-- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)
+- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](../cosmos-db/plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](../storage/common/storage-plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](../machine-learning/concept-plan-manage-cost.md)
 -->
 
 <!-- Note for Azure service writer: Links to Cost Management articles are full URLS with the ?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn campaign suffix. Leave those URLs intact. They're used to measure traffic to Cost Management articles.
@@ -25,7 +25,7 @@ ms.locfileid: "98598698"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-この記事では、Azure App Service のコストを計画および管理する方法について説明します。 コストを見積もるサービスのリソースを追加する前に、まず、App Service のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 App Service リソースの使用を開始した後、[Cost Management](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure App Service のコストは、Azure の請求に記載された月額料金の一部にすぎません。 この記事では、App Service のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
+この記事では、Azure App Service のコストを計画および管理する方法について説明します。 コストを見積もるサービスのリソースを追加する前に、まず、App Service のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 App Service リソースの使用を開始した後、[Cost Management](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure App Service のコストは、Azure の請求に記載された月額料金の一部にすぎません。 この記事では、App Service のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
 
 ## <a name="relevant-costs-for-app-service"></a>App Service の関連コスト
 
@@ -36,10 +36,10 @@ App Service は Azure インフラストラクチャ上で実行され、コス�
 App Service で使用する機能に応じて、コストが発生する次のリソースが作成される場合があります。
 
 - **App Service プラン**  App Service アプリをホストするために必要です。
-- **Isolated レベル**  App Service 環境には、[Virtual Network](/azure/virtual-network/) が必要です。
-- **バックアップ**  バックアップを作成するには、[ストレージ アカウント](/azure/storage/)が必要です。
-- **診断ログ**  ログ オプションとして[ストレージ アカウント](/azure/storage/)を選択するか、[Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) と統合します。
-- **App Service 証明書**  Azure で購入する証明書は、[Azure Key Vault](/azure/key-vault/) で保持する必要があります。
+- **Isolated レベル**  App Service 環境には、[Virtual Network](../virtual-network/index.yml) が必要です。
+- **バックアップ**  バックアップを作成するには、[ストレージ アカウント](../storage/index.yml)が必要です。
+- **診断ログ**  ログ オプションとして [ストレージ アカウント](../storage/index.yml)を選択するか、[Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) と統合します。
+- **App Service 証明書**  Azure で購入する証明書は、[Azure Key Vault](../key-vault/index.yml) で保持する必要があります。
 
 App Service のその他のコスト リソースは次のとおりです (詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください)。
 
@@ -114,7 +114,7 @@ App Service プランでは、複数のアプリをホストできます。 デ�
 > [!NOTE]
 > **Premium V3** では、Windows コンテナーと Linux コンテナーの両方がサポートされます。 
 
-希望する価格レベルを選択したら、アイドル状態のインスタンスを最小限に抑える必要があります。 スケールアウト配置では、使用率が低いコンピューティング インスタンスで無駄なコストが発生する可能性があります。 **Standard** レベル以上で利用可能な[自動スケールを構成する](../azure-monitor/platform/autoscale-get-started.md)必要があります。 スケールアウト スケジュールおよびメトリックベースのスケールアウト ルールを作成すると、いつでも、料金は実際に必要なインスタンスに対してのみ発生します。
+希望する価格レベルを選択したら、アイドル状態のインスタンスを最小限に抑える必要があります。 スケールアウト配置では、使用率が低いコンピューティング インスタンスで無駄なコストが発生する可能性があります。 **Standard** レベル以上で利用可能な [自動スケールを構成する](../azure-monitor/platform/autoscale-get-started.md)必要があります。 スケールアウト スケジュールおよびメトリックベースのスケールアウト ルールを作成すると、いつでも、料金は実際に必要なインスタンスに対してのみ発生します。
 
 ### <a name="azure-reservations"></a>Azure の予約
 
@@ -155,7 +155,7 @@ App Service のみのコストを表示する例を次に示します。
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-[予算](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 
+[予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 
 
 監視の粒度をさらに細かく示す必要がある場合は、Azure の特定のリソースまたはサービスに対するフィルターを使用して予算を作成できます。 フィルターを使用すると、追加のコストがかかる新しいリソースが誤って作成されないようにすることができます。 予算を作成するときに使用可能なフィルター オプションの詳細については、[グループとフィルターのオプション](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関する記事を参照してください。
 
@@ -168,8 +168,8 @@ App Service のみのコストを表示する例を次に示します。
 - Azure Storage での価格のしくみについて詳しく説明します。 「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
 - [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
 - [コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。
-- [予期しないコストを回避](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
-- [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講します。
+- [予期しないコストを回避](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
+- [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講します。
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976185"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736256"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -400,9 +400,9 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 システム準備ツール (`sysprep.exe`) は、Windows インストールをリセットするために使用できるプロセスです。
 Sysprep は、個人データをすべて削除し、コンポーネントをいくつかリセットすることによって、"すぐに使用できる" エクスペリエンスを提供します。
 
-`sysprep.exe` は通常、特定の構成を持つ他の複数の VM のデプロイ元となるテンプレートを作成するために実行します。 このテンプレートは、*一般化されたイメージ*と呼ばれます。
+`sysprep.exe` は通常、特定の構成を持つ他の複数の VM のデプロイ元となるテンプレートを作成するために実行します。 このテンプレートは、*一般化されたイメージ* と呼ばれます。
 
-1 つのディスクから 1 つの VM のみを作成する場合は、Sysprep を使用する必要はありません。 代わりに、*特殊化されたイメージ*から VM を作成することができます。 特殊化されたディスクから VM を作成する方法については、以下を参照してください。
+1 つのディスクから 1 つの VM のみを作成する場合は、Sysprep を使用する必要はありません。 代わりに、*特殊化されたイメージ* から VM を作成することができます。 特殊化されたディスクから VM を作成する方法については、以下を参照してください。
 
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
 - [特殊化された VHD ディスクからの VM の作成](./create-vm-specialized-portal.md)
@@ -433,7 +433,7 @@ Windows ベースのコンピューターにインストールされているロ
 これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化された VHD のアップロードと Azure での新しい VM の作成](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)に関するページをご覧ください。
 
 >[!NOTE]
-> カスタム *unattend.xml* ファイルはサポートされていません。 **additionalUnattendContent** プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する *unattend.xml* ファイルに [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
+> カスタム *unattend.xml* ファイルはサポートされていません。 **additionalUnattendContent** プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する *unattend.xml* ファイルに [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>仮想ディスクを容量固定の VHD に変換する
 

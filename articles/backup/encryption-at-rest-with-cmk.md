@@ -3,12 +3,12 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562762"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735862"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -77,7 +77,7 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 
 **PowerShell の場合:**
 
-[Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) コマンドを使用して、Recovery Services コンテナーのシステム割り当てマネージド ID を有効にします。
+[Update-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) コマンドを使用して、Recovery Services コンテナーのシステム割り当てマネージド ID を有効にします。
 
 例:
 
@@ -121,7 +121,7 @@ Type        : SystemAssigned
 
 **PowerShell の場合**:
 
-[Set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) コマンドを使用して、カスタマー マネージド キーを使用した暗号化を有効にし、使用する暗号化キーの割り当てまたは更新を行います。
+[Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) コマンドを使用して、カスタマー マネージド キーを使用した暗号化を有効にし、使用する暗号化キーの割り当てまたは更新を行います。
 
 例:
 
@@ -290,7 +290,7 @@ Recovery Services コンテナーの格納データは、[こちら](./backup-az
 
 **PowerShell の場合**:
 
-[Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) コマンドをパラメーター [`-DiskEncryptionSetId <string>`] と共に使用して、復元されたディスクの暗号化に使用される [DES の指定](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset)を行います。 VM バックアップからのディスクの復元の詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)を参照してください。
+[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) コマンドをパラメーター [`-DiskEncryptionSetId <string>`] と共に使用して、復元されたディスクの暗号化に使用される [DES の指定](/powershell/module/az.compute/get-azdiskencryptionset)を行います。 VM バックアップからのディスクの復元の詳細については、[こちらの記事](./backup-azure-vms-automation.md#restore-an-azure-vm)を参照してください。
 
 例:
 

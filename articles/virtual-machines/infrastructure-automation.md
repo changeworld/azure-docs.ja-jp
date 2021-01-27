@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198001"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730640"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 
@@ -87,8 +87,8 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [Azure CLI で Linux VM を作成し、カスタム スクリプト拡張機能を使用する](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)。
-- [Azure PowerShell で Windows VM を作成し、カスタム スクリプト拡張機能を使用する](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)。
+- [Azure CLI で Linux VM を作成し、カスタム スクリプト拡張機能を使用する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json)。
+- [Azure PowerShell で Windows VM を作成し、カスタム スクリプト拡張機能を使用する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis)。
 
 
 ## <a name="packer"></a>Packer
@@ -126,7 +126,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 各項目の詳細情報
 
-- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts)。
+- [Azure DevOps Services](/azure/devops/user-guide/index)。
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -144,7 +144,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 - [Resource Manager テンプレートを使用してスポット VM をデプロイする](./linux/spot-template.md)。
 - [Resource Manager テンプレートから Windows 仮想マシンを作成する](./windows/ps-template.md)。
-- [VM のテンプレートをダウンロードする](./windows/download-template.md)。
+- [VM のテンプレートをダウンロードする](/previous-versions/azure/virtual-machines/windows/download-template)。
 - [Azure Image Builder テンプレートを作成する](./linux/image-builder-json.md)。
 
 ## <a name="next-steps"></a>次のステップ

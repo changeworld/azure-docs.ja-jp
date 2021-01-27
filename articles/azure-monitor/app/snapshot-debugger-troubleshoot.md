@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673554"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732729"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションで Application Insights スナップショット デバッガーを有効にしても、例外のスナップショットが表示されない場合は、こちらの手順を使用してトラブルシューティングを行うことができます。
@@ -272,4 +272,4 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 
 アプリケーションがプロキシまたはファイアウォール経由でインターネットに接続される場合は、スナップショット デバッガー サービスと通信するように規則を更新する必要がある場合があります。
 
-Application Insights スナップショット デバッガーで使用される IP は、Azure Monitor サービス タグに含まれています。 詳細については、[サービス タグに関するドキュメント](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)を参照してください。
+Application Insights スナップショット デバッガーで使用される IP は、Azure Monitor サービス タグに含まれています。 詳細については、[サービス タグに関するドキュメント](../../virtual-network/service-tags-overview.md)を参照してください。

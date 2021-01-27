@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecde474abf3c814b7c3afa4ae18d044868785cf5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919172"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724927"
 ---
 # <a name="resilience-through-developer-best-practices"></a>開発者のベスト プラクティスによる回復性
 
@@ -28,7 +28,7 @@ ms.locfileid: "95919172"
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用する
 
-[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) と [ASP.NET 用 Microsoft identity Web 認証ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries)によって、アプリケーションに必要なトークンの取得、管理、キャッシュ、および更新が簡素化されます。 これらのライブラリは、アプリケーションの回復性を向上させる機能を含め、特に Microsoft ID をサポートするために最適化されています。
+[Microsoft Authentication Library (MSAL)](../develop/msal-overview.md) と [ASP.NET 用 Microsoft identity Web 認証ライブラリ](../develop/reference-v2-libraries.md)によって、アプリケーションに必要なトークンの取得、管理、キャッシュ、および更新が簡素化されます。 これらのライブラリは、アプリケーションの回復性を向上させる機能を含め、特に Microsoft ID をサポートするために最適化されています。
 
 開発者は、MSAL の最新リリースを採用し、最新の状態を維持する必要があります。 アプリケーションで[認証と認可の回復性を向上させる方法](resilience-app-development-overview.md)に関する記事を参照してください。 可能であれば、独自の認証スタックを実装することは避け、適切に確立されたライブラリを使用してください。
 
@@ -40,7 +40,7 @@ Microsoft Azure AD B2C ディレクトリ サービスによって、1 日に何
 
 - **サインイン時のディレクトリへの書き込み関数を避ける**: カスタム ポリシーで前提条件 (if 句) を使用せずにサインイン時に書き込みを実行しないでください。 サインイン時に書き込みを必要とするユース ケースの 1 つとして、[ユーザー パスワードの Just-In-Time 移行](https://github.com/azure-ad-b2c/user-migration/tree/master/seamless-account-migration)があります。 サインインのたびに書き込みを必要とするシナリオは避けてください。
 
-  - ユーザー体験での[前提条件](https://docs.microsoft.com/azure/active-directory-b2c/userjourneys)は、次のようになります。
+  - ユーザー体験での[前提条件](../../active-directory-b2c/userjourneys.md)は、次のようになります。
 
   ``
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
@@ -50,7 +50,7 @@ Microsoft Azure AD B2C ディレクトリ サービスによって、1 日に何
   ``
   - [CAPTCHA システムと統合して](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration)、ボットによるサインアップに対する抵抗力を構築します。
 
-  - [ロード テストのサンプル](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing)を使用して、サインアップとサインインをシミュレートします。 
+  - [ロード テストのサンプル](../../active-directory-b2c/best-practices.md#testing)を使用して、サインアップとサインインをシミュレートします。 
 
 - **調整について理解する**: ディレクトリでは、アプリケーションとテナント両方のレベルの調整ルールが実装されています。 Read/GET、Write/POST、Update/PUT、および Delete/DELETE の操作にはさらにレート制限があり、各操作には異なる制限があります。
 
@@ -62,11 +62,11 @@ Microsoft Azure AD B2C ディレクトリ サービスによって、1 日に何
 
   - 移行タイムラインを理解して、計画します。 Microsoft Graph を使用して Azure AD B2C にユーザーを移行する計画を立てる場合は、アプリケーションとテナントの制限を考慮して、ユーザーの移行を完了するために必要な時間を計算してください。 2 つのアプリケーションを使用してユーザー作成ジョブまたはスクリプトを分割する場合は、アプリケーションごとの制限を使用できます。 それでも、テナントごとのしきい値内に収める必要があります。
 
-  - 他のアプリケーションに対する移行ジョブの影響を理解します。 他の依存アプリケーションによって処理されるライブ トラフィックを考慮して、テナント レベルでの調整やライブ アプリケーション用のリソース不足を引き起こさないようにします。 詳しくは、「[Microsoft Graph 調整ガイド](https://docs.microsoft.com/graph/throttling)」をご覧ください。
+  - 他のアプリケーションに対する移行ジョブの影響を理解します。 他の依存アプリケーションによって処理されるライブ トラフィックを考慮して、テナント レベルでの調整やライブ アプリケーション用のリソース不足を引き起こさないようにします。 詳しくは、「[Microsoft Graph 調整ガイド](/graph/throttling)」をご覧ください。
   
 ## <a name="extend-token-lifetimes"></a>トークンの有効期間を延長する
 
-まれに、Azure AD B2C 認証サービスが新しいサインアップとサインインを完了できない場合でも、サインインしているユーザーに対して軽減策を提供できます。 [構成](https://docs.microsoft.com/azure/active-directory-b2c/configure-tokens)を使用すると、既にサインインしているユーザーがアプリケーションからサインアウトするか、アクティビティがないために[セッション](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior)がタイムアウトになるまで、中断を認識することなくアプリケーションの使用を継続できるようにすることが可能です。
+まれに、Azure AD B2C 認証サービスが新しいサインアップとサインインを完了できない場合でも、サインインしているユーザーに対して軽減策を提供できます。 [構成](../../active-directory-b2c/configure-tokens.md)を使用すると、既にサインインしているユーザーがアプリケーションからサインアウトするか、アクティビティがないために[セッション](../../active-directory-b2c/session-behavior.md)がタイムアウトになるまで、中断を認識することなくアプリケーションの使用を継続できるようにすることが可能です。
 
 ビジネス要件と必要なエンドユーザー エクスペリエンスによって、Web およびシングルページ アプリケーション (SPA) のトークン更新の頻度が決まります。
 
@@ -82,7 +82,7 @@ Microsoft Azure AD B2C ディレクトリ サービスによって、1 日に何
 
   - API ゲートウェイを認証プロキシとして使用するようにアプリケーションを構築します。 この構成では、SPA は認証なしで読み込まれ、API ゲートウェイに対して API 呼び出しが行われます。 API ゲートウェイは、ポリシーに基づく[承認コードの付与](https://oauth.net/2/grant-types/authorization-code/)を使用して、サインイン プロセスを経てユーザーを送信し、ユーザーを認証します。 その後、API ゲートウェイとクライアント間の認証セッションは、認証 Cookie を使用して維持されます。 API は、API ゲートウェイによって取得されたトークン、または証明書、クライアント資格情報、API キーなどの他の直接認証方法を使用して、API ゲートウェイから処理されます。
 
-  - Proof Key for Code Exchange (PKCE) とクロスオリジン リソース共有 (CORS) のサポートを使用して、[SPA を暗黙的な許可](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/)から[承認コード付与のフロー](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application)に移行します。 アプリケーションを MSAL.js 1.x から MSAL.js 2.x に移行して、Web アプリケーションの回復性を実現します。
+  - Proof Key for Code Exchange (PKCE) とクロスオリジン リソース共有 (CORS) のサポートを使用して、[SPA を暗黙的な許可](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/)から[承認コード付与のフロー](../../active-directory-b2c/implicit-flow-single-page-application.md)に移行します。 アプリケーションを MSAL.js 1.x から MSAL.js 2.x に移行して、Web アプリケーションの回復性を実現します。
 
   - モバイル アプリケーションの場合は、更新とアクセス トークンの両方の有効期間を延長することをお勧めします。
 
@@ -90,25 +90,25 @@ Microsoft Azure AD B2C ディレクトリ サービスによって、1 日に何
 
 ## <a name="configure-single-sign-on"></a>シングル サインオンを構成する
 
-[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)を使用すると、ユーザーは 1 つのアカウントで 1 回サインインすると、複数のアプリケーションにアクセスできます。 アプリケーションは、プラットフォームまたはドメイン名に関係なく、Web、モバイル、シングル ページ アプリケーション (SPA) のいずれも可能です。 ユーザーが初めてアプリケーションにサインインすると、Azure AD B2C によって [Cookie ベースのセッション](https://docs.microsoft.com/azure/active-directory-b2c/session-overview)が保持されます。
+[シングル サインオン (SSO)](../manage-apps/what-is-single-sign-on.md)を使用すると、ユーザーは 1 つのアカウントで 1 回サインインすると、複数のアプリケーションにアクセスできます。 アプリケーションは、プラットフォームまたはドメイン名に関係なく、Web、モバイル、シングル ページ アプリケーション (SPA) のいずれも可能です。 ユーザーが初めてアプリケーションにサインインすると、Azure AD B2C によって [Cookie ベースのセッション](../../active-directory-b2c/session-behavior.md)が保持されます。
 
 それ以降の認証要求では、Azure AD B2C によって Cookie ベースのセッションが読み取られて検証され、アクセス トークンが発行されます。ユーザーにサインインを求めるメッセージが再び表示されることはありません。 SSO がポリシーまたはアプリケーションで、制限されたスコープを使用して構成されている場合、後で他のポリシーやアプリケーションにアクセスするには、新しい認証が必要になります。
 
 ### <a name="how-to-configure-sso"></a>SSO を構成する方法
 
-テナント内の複数のアプリケーションおよびユーザー フローで同じユーザー セッションを共有できるように、テナント全体 (既定) を対象とするように [SSO を構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start)します。 テナント全体の構成では、新しい認証に対して最も高い回復性が提供されます。  
+テナント内の複数のアプリケーションおよびユーザー フローで同じユーザー セッションを共有できるように、テナント全体 (既定) を対象とするように [SSO を構成](../hybrid/how-to-connect-sso-quick-start.md)します。 テナント全体の構成では、新しい認証に対して最も高い回復性が提供されます。  
 
 ## <a name="safe-deployment-practices"></a>安全なデプロイ プラクティス
 
-サービスを中断させる最も一般的な要因は、コードと構成の変更です。 継続的インテグレーションと継続的デリバリー (CI/CD) のプロセスとツールを導入することで、迅速なデプロイを大規模に行うことが可能になり、テストおよび運用環境へのデプロイ時の人的エラーが減少します。 エラーの削減、効率、および整合性のために CI/CD を導入します。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) は、CI/CD の 1 つの例です。
+サービスを中断させる最も一般的な要因は、コードと構成の変更です。 継続的インテグレーションと継続的デリバリー (CI/CD) のプロセスとツールを導入することで、迅速なデプロイを大規模に行うことが可能になり、テストおよび運用環境へのデプロイ時の人的エラーが減少します。 エラーの削減、効率、および整合性のために CI/CD を導入します。 [Azure Pipelines](/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) は、CI/CD の 1 つの例です。
 
 ## <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 
 分散型サービス拒否 (DDoS) 攻撃、SQL インジェクション、クロスサイト スクリプティング、リモート コード実行、および [OWASP トップ 10](https://owasp.org/www-project-top-ten/) に記載されている他の多くのものなどの既知の脆弱性からアプリケーションを保護します。 Web アプリケーション ファイアウォール (WAF) をデプロイすることで、一般的な悪用と脆弱性から防御できます。
 
-- Azure [WAF](https://docs.microsoft.com/azure/web-application-firewall/overview) を使用します。これにより、攻撃に対する一元的な保護が提供されます。
+- Azure [WAF](../../web-application-firewall/overview.md) を使用します。これにより、攻撃に対する一元的な保護が提供されます。
 
-- Azure AD B2C を使用している場合は、WAF を Azure AD [Identity Protection および条件付きアクセスと共に使用して、多層保護を提供](https://docs.microsoft.com/azure/active-directory-b2c/conditional-access-identity-protection-overview)します。  
+- Azure AD B2C を使用している場合は、WAF を Azure AD [Identity Protection および条件付きアクセスと共に使用して、多層保護を提供](../../active-directory-b2c/conditional-access-identity-protection-overview.md)します。  
 
 ## <a name="secrets-rotation"></a>シークレットのローテーション
 
@@ -116,9 +116,9 @@ Azure AD B2C では、アプリケーション、API、ポリシー、および�
 
 ### <a name="how-to-implement-secret-rotation"></a>シークレットのローテーションを実装する方法
 
-- サポートされているリソースに対して[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用して、Azure AD 認証がサポートされているサービスに対して認証を行います。 マネージド ID を使用すると、資格情報のローテーションを含め、リソースの管理を自動的に行うことができます。
+- サポートされているリソースに対して[マネージド ID](../managed-identities-azure-resources/overview.md) を使用して、Azure AD 認証がサポートされているサービスに対して認証を行います。 マネージド ID を使用すると、資格情報のローテーションを含め、リソースの管理を自動的に行うことができます。
 
-- Azure AD B2C に構成されているすべての[キーと証明書](https://docs.microsoft.com/azure/active-directory-b2c/policy-keys-overview)のインベントリを取得します。 この一覧には、カスタム ポリシー、[API](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api)、署名 ID トークン、および SAML の証明書で使用されるキーが含まれている可能性が高いです。
+- Azure AD B2C に構成されているすべての[キーと証明書](../../active-directory-b2c/policy-keys-overview.md)のインベントリを取得します。 この一覧には、カスタム ポリシー、[API](../../active-directory-b2c/secure-rest-api.md)、署名 ID トークン、および SAML の証明書で使用されるキーが含まれている可能性が高いです。
 
 - CI/CD を使用して、予想されるピーク シーズンから 2 か月以内に期限が切れることになっているシークレットをローテーションします。 証明書に関連付けられている秘密キーの推奨される最大暗号化期間は 1 年です。
 
@@ -130,7 +130,7 @@ Azure AD B2C では、アプリケーション、API、ポリシー、および�
 
 ### <a name="how-to-test-apis"></a>API をテストする方法
 
-テスト計画には、[包括的な API テスト](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing)を含めることをお勧めします。 プロモーションや休日のトラフィックによって今後見込まれる急上昇に対応した計画を立てる場合は、新しい推定値を使用してロード テストを修正する必要があります。 API とコンテンツ配信ネットワーク (CDN) のロード テストは、運用ではなく、開発者環境で実施してください。
+テスト計画には、[包括的な API テスト](../../active-directory-b2c/best-practices.md#testing)を含めることをお勧めします。 プロモーションや休日のトラフィックによって今後見込まれる急上昇に対応した計画を立てる場合は、新しい推定値を使用してロード テストを修正する必要があります。 API とコンテンツ配信ネットワーク (CDN) のロード テストは、運用ではなく、開発者環境で実施してください。
 
 ## <a name="next-steps"></a>次のステップ
 

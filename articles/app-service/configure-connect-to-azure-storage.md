@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e75eef86a4a0c679a44a61267f94d337538daaa8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007621"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736206"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage (プレビュー) にアクセスする
 
@@ -39,7 +39,7 @@ ms.locfileid: "97007621"
 
 - [Azure App Service の既存の Windows コンテナー アプリ](quickstart-custom-container.md)
 - [Azure ファイル共有の作成](../storage/files/storage-how-to-use-files-cli.md)
-- [Azure File 共有へのファイルのアップロード](../storage/files/storage-files-deployment-guide.md)
+- [Azure File 共有へのファイルのアップロード](../storage/files/storage-how-to-create-file-share.md)
 
 ::: zone-end
 

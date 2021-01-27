@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad36c2a7f47948d9362b85e78355e6046cda703
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919123"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724629"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>継続的アクセス評価を使用して回復性を強化する
 
-[継続的アクセス評価](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) (CAE) を使用すると、Azure AD アプリケーションで重要なイベントをサブスクライブし、それらのイベントを評価して適用することができます。 評価の対象となるイベントには次のものが含まれます。
+[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md) (CAE) を使用すると、Azure AD アプリケーションで重要なイベントをサブスクライブし、それらのイベントを評価して適用することができます。 評価の対象となるイベントには次のものが含まれます。
 
 * ユーザー アカウントが削除または無効化された
 
@@ -48,11 +48,11 @@ Microsoft は業界と連携して、サードパーティのアプリケーシ�
 
 ## <a name="how-do-i-implement-cae"></a>CAE を実装する方法
 
-* Azure AD セキュリティ構成で [CAE を有効化](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation)します。
+* Azure AD セキュリティ構成で [CAE を有効化](../conditional-access/concept-continuous-access-evaluation.md)します。
 
-* 組織で使用されている Microsoft Office ネイティブ アプリケーションが[互換性のあるバージョン](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation)であることを確認します。
+* 組織で使用されている Microsoft Office ネイティブ アプリケーションが[互換性のあるバージョン](../conditional-access/concept-continuous-access-evaluation.md)であることを確認します。
 
-* [再認証プロンプトを最適化します](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)。
+* [再認証プロンプトを最適化します](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
  
 ## <a name="next-steps"></a>次のステップ

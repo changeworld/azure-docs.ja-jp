@@ -4,12 +4,12 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 8a30c0a0527f98cc00f7888299c09f1f26c3dd09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708434"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735216"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
@@ -19,7 +19,7 @@ ms.locfileid: "97708434"
 
 > [!NOTE]
 > * アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは **できません**。
-> * カテゴリが Security の Activity Log Alerts は [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) への[新しいアップグレードされたフロー](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal)でも定義できます
+> * カテゴリが Security の Activity Log Alerts は [ServiceNow](../../security-center/export-to-siem.md) への[新しいアップグレードされたフロー](../../security-center/continuous-export.md?tabs=azure-portal)でも定義できます
 
 通常、アクティビティ ログ アラートを作成して、通知を受け取るのは次の場合です。
 

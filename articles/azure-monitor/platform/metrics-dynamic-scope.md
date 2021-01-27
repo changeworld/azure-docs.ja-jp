@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5f5f75e63a0b201144329a6e2b7c0d503de54692
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250487"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736475"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーで複数のリソースを表示する
 
@@ -33,7 +33,7 @@ ms.locfileid: "98250487"
 ![複数のリソースと互換性のあるリソースのメニューを示すスクリーンショット。](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> 複数のリソース、リソース グループ、またはサブスクリプションのメトリックスを視覚化するには、サブスクリプション レベルの監視閲覧者のアクセス許可が付与されている必要があります。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+> 複数のリソース、リソース グループ、またはサブスクリプションのメトリックスを視覚化するには、サブスクリプション レベルの監視閲覧者のアクセス許可が付与されている必要があります。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 複数のリソースのメトリックを視覚化するには、まず、リソース スコープ ピッカー内で複数のリソースを選択します。 
 
@@ -81,13 +81,12 @@ ms.locfileid: "98250487"
 
 ## <a name="pin-multiple-resource-charts"></a>複数リソースのグラフをピン留めする 
 
-リソース グループおよびサブスクリプション全体のメトリックスを視覚化する複数リソースのグラフを使用するには、サブスクリプション レベルの "*監視閲覧者*" のアクセス許可を持っている必要があります。 複数リソースのグラフをピン留めするダッシュボードのすべてのユーザーに、十分なアクセス許可が付与されていることを確認します。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+リソース グループおよびサブスクリプション全体のメトリックスを視覚化する複数リソースのグラフを使用するには、サブスクリプション レベルの "*監視閲覧者*" のアクセス許可を持っている必要があります。 複数リソースのグラフをピン留めするダッシュボードのすべてのユーザーに、十分なアクセス許可が付与されていることを確認します。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-複数リソースのグラフをダッシュボードにピン留めするには、「[ダッシュボードへのピン留め](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards)」を参照してください。 
+複数リソースのグラフをダッシュボードにピン留めするには、「[ダッシュボードへのピン留め](./metrics-charts.md#pinning-to-dashboards)」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 
 * [メトリックス エクスプローラーのトラブルシューティング](metrics-troubleshoot.md)
 * [Azure サービスで使用可能なメトリックのリストを表示する](metrics-supported.md)
 * [構成されたグラフの例を参照する](metric-chart-samples.md)
-

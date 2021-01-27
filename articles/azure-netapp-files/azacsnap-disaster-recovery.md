@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632164"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730872"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用したディザスター リカバリー (プレビュー)
 
@@ -40,7 +40,7 @@ Azure Large Instance プラットフォームには、ストレージ ボリュ�
 - ストレージ レプリケーションが動作していること。 ストレージ レプリケーションのセットアップは、DR の自動プロビジョニング時に、Microsoft 運用チームによって実行されます。 ユーザーは、DR サイトで `azacsnap -c details --details replication` コマンドを使用してストレージ レプリケーションを監視できます。
 - プライマリ ロケーションにストレージ スナップショットが設定および構成されていること。
 - プライマリ インスタンスと同じ SID で、プライマリに対する DR サイトに HANA インスタンスがインストールされていること。
-- 「[Azure での SAP HANA L インスタンスの高可用性とディザスター リカバリー](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」で説明されている DR フェールオーバーの手順を読んで理解していること
+- 「[Azure での SAP HANA L インスタンスの高可用性とディザスター リカバリー](../virtual-machines/workloads/sap/hana-failover-procedure.md)」で説明されている DR フェールオーバーの手順を読んで理解していること
 - DR の場所にストレージ スナップショットが設定および構成されていること。
 - DR ストレージ ボリュームと、DR サーバーの関連情報を使用して、構成ファイル (`DR.json` など) が作成されていること。
 - DR サイトで次の手順が完了していること。

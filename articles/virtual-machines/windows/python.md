@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d99f9326b3113742fdc0c14a4ae39d552df47edd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201792"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730158"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -567,4 +567,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 ## <a name="next-steps"></a>次のステップ
 
 - デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../azure-resource-manager/templates/deployment-history.md)」を参照してください。
-- [Azure Python ライブラリ](/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。
+- [Azure Python ライブラリ](/python/api/overview/azure/)の詳細をご覧ください。

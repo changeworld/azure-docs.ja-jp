@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222396"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725180"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>エンタイトルメント管理を使用して外部アクセスを管理する 
 
@@ -94,15 +94,15 @@ ms.locfileid: "98222396"
 
 ## <a name="using-automation-in-entitlement-management"></a>エンタイトルメント管理でのオートメーションの使用
 
-[Microsoft Graph を使用して実行できるエンタイトルメント管理機能](https://docs.microsoft.com/graph/tutorial-access-package-api)としては、次のようなものがあります
+[Microsoft Graph を使用して実行できるエンタイトルメント管理機能](/graph/tutorial-access-package-api)としては、次のようなものがあります
 
-* [アクセス パッケージを管理する](https://docs.microsoft.com/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [アクセス パッケージを管理する](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [アクセス レビューを管理する](https://docs.microsoft.com/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [アクセス レビューを管理する](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [接続済み組織を管理する](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [接続済み組織を管理する](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [エンタイトルメント管理の設定を管理する](https://docs.microsoft.com/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [エンタイトルメント管理の設定を管理する](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>推奨事項 
 
@@ -112,7 +112,7 @@ ms.locfileid: "98222396"
 
 * ディレクトリに既に B2B ユーザーが存在する場合は、それらのユーザーを適切なアクセス パッケージに直接割り当てることもできます。
 
-* アクセスは、[Azure portal](../governance/entitlement-management-access-package-assignments.md) か、または [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) を使用して割り当てることができます。
+* アクセスは、[Azure portal](../governance/entitlement-management-access-package-assignments.md) か、または [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) を使用して割り当てることができます。
 
 **ID ガバナンス設定を使用して、アクセス パッケージが期限切れになったときにディレクトリからユーザーが削除されるようにしましょう**。
 
@@ -173,4 +173,3 @@ ms.locfileid: "98222396"
 
  
 
- 

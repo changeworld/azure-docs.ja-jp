@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222243"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725080"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Microsoft Teams、SharePoint、OneDrive for Business への外部アクセスをセキュリティで保護する 
 
@@ -77,7 +77,7 @@ Microsoft 365 での共有は、Azure Active Directory (Azure AD) の [[外部 I
 
 ## <a name="govern-access-in-teams"></a>Teams でのアクセスの管理
 
-[Teams においては、外部ユーザー (組織外部のあらゆるユーザー) とゲスト ユーザー (ゲスト アカウントを持つユーザー) が区別されます](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH)。 [Teams 管理ポータル](https://admin.teams.microsoft.com/company-wide-settings/external-communications)の [組織全体の設定] でコラボレーション設定を管理します。 
+[Teams においては、外部ユーザー (組織外部のあらゆるユーザー) とゲスト ユーザー (ゲスト アカウントを持つユーザー) が区別されます](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b)。 [Teams 管理ポータル](https://admin.teams.microsoft.com/company-wide-settings/external-communications)の [組織全体の設定] でコラボレーション設定を管理します。 
 
 > [!NOTE]
 > Azure Active Directory の外部 ID コラボレーション設定は、有効なアクセス許可を制御します。 Teams で制限を厳しくすることができますが、Azure AD で設定されている内容を緩和することはできません。
@@ -88,13 +88,13 @@ Microsoft 365 での共有は、Azure Active Directory (Azure AD) の [[外部 I
 
 Teams で外部アクセスを管理する方法の詳細については、次のリソースを参照してください。
 
-* [Microsoft Teams での外部アクセスの管理](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [Microsoft Teams での外部アクセスの管理](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 ID モデルと Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 ID モデルと Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Microsoft Teams の ID モデルと認証](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Microsoft Teams の ID モデルと認証](/MicrosoftTeams/identify-models-authentication)
 
-* [Microsoft Teams の秘密度ラベル](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [Microsoft Teams の秘密度ラベル](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>SharePoint と OneDrive でのアクセスの管理
 
@@ -102,9 +102,9 @@ SharePoint 管理者は、多くの設定をコラボレーションに対して
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>Azure AD B2B との SharePoint および OneDrive の統合
 
-外部コラボレーションを管理するための全体的な戦略の一部として、[Azure AD B2B との SharePoint および OneDrive の統合のプレビューを有効にする](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)ことをお勧めします。
+外部コラボレーションを管理するための全体的な戦略の一部として、[Azure AD B2B との SharePoint および OneDrive の統合のプレビューを有効にする](/sharepoint/sharepoint-azureb2b-integration-preview)ことをお勧めします。
 
-Azure AD B2B によって、ゲスト ユーザーの認証と管理を行うことができます。 SharePoint および OneDrive の統合により、[Azure AD B2B ワンタイム パスコード](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode)が、ファイル、フォルダー、リスト項目、ドキュメント ライブラリ、およびサイトの外部共有のために使用されます。 この機能を使用すると、既存の[セキュリティで保護された外部共有の受信者のエクスペリエンス](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release)からアップグレードされたエクスペリエンスが提供されます。
+Azure AD B2B によって、ゲスト ユーザーの認証と管理を行うことができます。 SharePoint および OneDrive の統合により、[Azure AD B2B ワンタイム パスコード](../external-identities/one-time-passcode.md)が、ファイル、フォルダー、リスト項目、ドキュメント ライブラリ、およびサイトの外部共有のために使用されます。 この機能を使用すると、既存の[セキュリティで保護された外部共有の受信者のエクスペリエンス](/sharepoint/what-s-new-in-sharing-in-targeted-release)からアップグレードされたエクスペリエンスが提供されます。
 
 > [!NOTE]
 > Azure AD B2B 統合のプレビューを有効にした場合、SharePoint と OneDrive の共有には、Azure AD 組織の関係の設定が適用されます (たとえば、 **[メンバーは招待ができる]** や **[ゲストは招待ができる]** など)。
@@ -171,9 +171,9 @@ Azure AD B2B との統合を有効にした場合、ファイルおよびフォ�
 
 SharePoint への外部アクセスの管理の詳細については、以下を参照してください。
 
-* [SharePoint 外部共有の概要](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [SharePoint 外部共有の概要](/sharepoint/external-sharing-overview)
 
-* [SharePoint および OneDrive の Azure AD B2B との統合](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [SharePoint および OneDrive の Azure AD B2B との統合](/sharepoint/sharepoint-azureb2b-integration-preview)
 
 #### <a name="next-steps"></a>次のステップ
 

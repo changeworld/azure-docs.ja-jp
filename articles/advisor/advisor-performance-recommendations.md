@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98248430"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735530"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -179,7 +179,7 @@ Windows Virtual Desktop (WVD) を使用して、お客様の VM はユーザー�
 
 Advisor では、深さ優先が負荷分散アルゴリズムとして設定されているホスト プールがあること、およびそのホスト プールのセッション上限が 999999 以上であることが検出されます。 深さ優先の負荷分散では、最大セッション数を使用して、1 つのセッション ホストで同時セッションを持つことができるユーザーの最大数が決定されます。 最大セッション数が高すぎる場合、すべてのユーザー セッションは同じセッション ホストに送られるので、パフォーマンスと信頼性の問題が発生します。 そのため、ホスト プールを深さ優先で負荷分散するように設定する場合は、VM のデプロイと容量の構成に応じて、適切な最大セッション数を設定する必要があります。 
 
-Windows Virtual Desktop での負荷分散の詳細については、「[Windows 仮想デスクトップの負荷分散方法の構成](/azure/virtual-desktop/troubleshoot-set-up-overview)」を参照してください。
+Windows Virtual Desktop での負荷分散の詳細については、「[Windows 仮想デスクトップの負荷分散方法の構成](../virtual-desktop/troubleshoot-set-up-overview.md)」を参照してください。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

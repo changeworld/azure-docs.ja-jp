@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222332"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725213"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3.外部アクセスのセキュリティ プランを作成する 
 
@@ -93,7 +93,7 @@ ms.locfileid: "98222332"
 | 高リスク| 外部ユーザーに対しては常に MFA を必須とする |
 
 
-現在、[多要素認証はテナント内の B2B ユーザーに対して適用する](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa)ことができます。 
+現在、[多要素認証はテナント内の B2B ユーザーに対して適用する](../external-identities/b2b-tutorial-require-mfa.md)ことができます。 
 
 **ユーザーベースとデバイスベースのサインイン条件**。
 
@@ -106,11 +106,11 @@ ms.locfileid: "98222332"
 
 現在、デバイスの状態をポリシーへの入力として使用するには、デバイスをテナントに登録するか、または参加させる必要があります。 
 
-[ID 保護のリスクベースのポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)を使用することは可能です。 ただし、ユーザーのホーム テナントで問題を軽減する必要があります。
+[ID 保護のリスクベースのポリシー](../conditional-access/howto-conditional-access-policy-risk.md)を使用することは可能です。 ただし、ユーザーのホーム テナントで問題を軽減する必要があります。
 
-[ネットワークの場所](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)については、自分が所有している IP アドレス範囲へのアクセスを制限することができます。 これは、外部パートナーが自社のサイトにアクセスしているときにのみ、アプリケーションにアクセスできるようにしたい場合に使用できます。
+[ネットワークの場所](../conditional-access/howto-conditional-access-policy-location.md)については、自分が所有している IP アドレス範囲へのアクセスを制限することができます。 これは、外部パートナーが自社のサイトにアクセスしているときにのみ、アプリケーションにアクセスできるようにしたい場合に使用できます。
 
-[条件付きアクセス ポリシーの詳細についてご確認ください](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)。
+[条件付きアクセス ポリシーの詳細についてご確認ください](../conditional-access/overview.md)。
 
 ## <a name="document-access-review-policies"></a>アクセス レビュー ポリシーの文書化
 
@@ -126,13 +126,13 @@ ms.locfileid: "98222332"
 
 * **エンタイトルメント管理のアクセス レビュー**。 エンタイトルメント管理の機能を使用して、次のことを行いましょう
 
-   * [アクセス パッケージの期限切れ処理を自動化](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy)し、パッケージ内のリソースへの外部ユーザー アクセスを適切に失効させる。
+   * [アクセス パッケージの期限切れ処理を自動化](../governance/entitlement-management-access-package-lifecycle-policy.md)し、パッケージ内のリソースへの外部ユーザー アクセスを適切に失効させる。
 
-   * アクセス レビューの[必須レビュー頻度](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create)を設定する。
+   * アクセス レビューの[必須レビュー頻度](../governance/entitlement-management-access-reviews-create.md)を設定する。
 
-   * 1 つのパートナーのすべてのユーザーをグループ化するために[接続済み組織](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization)を使用している場合は、ビジネス所有者とパートナー代表者による定期的なレビューをスケジュールする。
+   * 1 つのパートナーのすべてのユーザーをグループ化するために[接続済み組織](../governance/entitlement-management-organization.md)を使用している場合は、ビジネス所有者とパートナー代表者による定期的なレビューをスケジュールする。
 
-* **Microsoft 365 グループ**。 外部ユーザーを招待する Microsoft 365 グループの[グループ有効期限ポリシー](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide)を設定しましょう。 
+* **Microsoft 365 グループ**。 外部ユーザーを招待する Microsoft 365 グループの[グループ有効期限ポリシー](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide)を設定しましょう。 
 
 * **その他のオプション**。 外部ユーザーがエンタイトルメント管理アクセス パッケージや Microsoft 365 グループの外部にアクセスできる場合は、アカウントを非アクティブにしたり削除したりするタイミングをレビューするためのビジネス プロセスを設定しましょう。 例:
 
@@ -146,9 +146,9 @@ ms.locfileid: "98222332"
 
 アクセス制御の対象と、それらの資産を共通アクセス用にグループ化する方法、そしてサインインとアクセス レビューに関する必要なポリシーが確認できたら、次はプランの実行方法を決定していきます。 
 
-一部の機能 ([エンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)など) は、Azure AD Premium 2 (P2) ライセンスでのみ使用できます。 Microsoft 365 E5 と Office 365 E5 のライセンスには、Azure AD P2 ライセンスが含まれています。 
+一部の機能 ([エンタイトルメント管理](../governance/entitlement-management-overview.md)など) は、Azure AD Premium 2 (P2) ライセンスでのみ使用できます。 Microsoft 365 E5 と Office 365 E5 のライセンスには、Azure AD P2 ライセンスが含まれています。 
 
-Microsoft 365、Office 365、Azure AD のその他の組み合わせでも、外部ユーザーを管理するための一部の機能が使用できます。 詳細については、[Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) に関する記事を参照してください。
+Microsoft 365、Office 365、Azure AD のその他の組み合わせでも、外部ユーザーを管理するための一部の機能が使用できます。 詳細については、[Information Protection](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) に関する記事を参照してください。
 
 > [!NOTE]
 > ライセンスはユーザー単位です。 そのため、Azure AD P2 や Microsoft 365 E5 レベルでは、特定のユーザー (管理者やビジネス所有者など) に対してアクセス制御を委任することができ、すべてのユーザーに対してライセンスを有効にする必要がありません。 最初の 5 万件分の外部ユーザーは無料です。 他の内部ユーザーに対して P2 ライセンスを有効にしなかった場合、それらのユーザーはアクセス パッケージなどのエンタイトルメント管理機能を使用できなくなります。 
@@ -180,7 +180,7 @@ Azure AD P2 と Microsoft 365 E5 には、セキュリティとガバナンス�
 
 ### <a name="entitlement-management"></a>エンタイトルメント管理 
 
-[エンタイトルメント管理アクセス パッケージ](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create)では、グループ、チーム、アプリケーション、および SharePoint サイトへのアクセス権について、プロビジョニングとプロビジョニング解除を行うことができます。 どの接続済み組織にアクセスを許可するかや、セルフサービス要求を許可するかどうか、またアクセスを許可するためにどのような承認ワークフローが必要か (必要な場合) を定義できます。 アクセスの有効期間が必要以上に長くならないようにするために、各アクセス パッケージの有効期限ポリシーとアクセス レビューを定義することもできます。 
+[エンタイトルメント管理アクセス パッケージ](../governance/entitlement-management-access-package-create.md)では、グループ、チーム、アプリケーション、および SharePoint サイトへのアクセス権について、プロビジョニングとプロビジョニング解除を行うことができます。 どの接続済み組織にアクセスを許可するかや、セルフサービス要求を許可するかどうか、またアクセスを許可するためにどのような承認ワークフローが必要か (必要な場合) を定義できます。 アクセスの有効期間が必要以上に長くならないようにするために、各アクセス パッケージの有効期限ポリシーとアクセス レビューを定義することもできます。 
 
  
 

@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224251"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725788"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database のブロックの問題の概要と解決策
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -345,7 +345,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
     サーバーにクエリを送信した後、すべてのアプリケーションでは、完了までにすべての結果行を直ちにフェッチする必要があります。 アプリケーションですべての結果行をフェッチしない場合、テーブルへのロックが残され、他のユーザーがブロックされる可能性があります。 サーバーに SQL ステートメントを透過的に送信するアプリケーションを使用している場合、アプリケーションですべての結果行をフェッチする必要があります。 そうしない場合 (およびそうするように構成できない場合)、ブロックの問題を解決できない可能性があります。 問題を回避するには、正常に動作していないアプリケーションをレポート データベースまたは意思決定支援データベースに制限することができます。
     
     > [!NOTE]
-    > Azure SQL Database に接続するアプリケーションの[再試行ロジックのガイダンス](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors)を参照してください。 
+    > Azure SQL Database に接続するアプリケーションの[再試行ロジックのガイダンス](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)を参照してください。 
     
     **解決方法**:完了までに結果のすべての行をフェッチするように、アプリケーションを書き直す必要があります。 これにより、サーバー側ページングを実行するクエリの [ORDER BY 句での OFFSET および FETCH ](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned)の使用が妨げられるわけではありません。
 

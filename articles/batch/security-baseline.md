@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197712"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737237"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 用の Azure セキュリティ ベースライン
 
@@ -62,9 +62,9 @@ Batch を完全に Azure セキュリティ ベンチマークにマップする
 
 **ガイダンス**: DDoS 攻撃からの保護のために、Azure Batch プールを保護する仮想ネットワークで Azure DDoS (分散型サービス拒否) Standard 保護を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-- [DDoS 保護を構成する方法](/azure/virtual-network/manage-ddos-protection)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Security Center の統合された脅威インテリジェンスについて](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -126,7 +126,7 @@ Batch を完全に Azure セキュリティ ベンチマークにマップする
 
 リソースに対するアクションをそのタグに基づいて検索または実行するには、Azure PowerShell または Azure CLI を使用できます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 - [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ Batch を完全に Azure セキュリティ ベンチマークにマップする
 
 **ガイダンス**: ネットワーク リソース構成を監視し、Azure Batch プールに関連したネットワーク リソースの変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view) 
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -188,7 +188,7 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 - [Azure Batch アカウントから診断ログを収集する方法](batch-diagnostics.md#batch-diagnostics)
 
-- [Azure Batch プール ノードにリモート接続する方法](/azure/batch/batch-api-basics#error-handling)
+- [Azure Batch プール ノードにリモート接続する方法](./batch-service-workflow-features.md#basic-workflow)
 
 **Azure Security Center の監視**: はい
 
@@ -260,9 +260,9 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 さらに、Azure Security Center ID とアクセス管理の推奨事項を使用できます。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -324,7 +324,7 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 **ガイダンス**:Azure Batch アプリケーションの認証を Azure Active Directory と統合している場合は、環境内で疑わしいアクティビティや安全でないアクティビティが発生したとき、ログとアラートの生成に Azure Active Directory セキュリティ レポートを使用します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -378,7 +378,7 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 **ガイダンス**:ユーザー ID に関連する検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory リスク検出および Identity Protection 機能を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 **ガイダンス**: 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -418,7 +418,7 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 - [仮想ネットワーク内に Azure Batch プールを作成する方法](batch-virtual-network.md)
 
-- [Azure Storage アカウントをセキュリティで保護する方法](/azure/storage/common/storage-security-guide)
+- [Azure Storage アカウントをセキュリティで保護する方法](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -434,7 +434,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-- [Azure Storage アカウントをセキュリティで保護する方法](/azure/storage/common/storage-security-guide)
+- [Azure Storage アカウントをセキュリティで保護する方法](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -462,7 +462,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-- [Azure Storage アカウントをセキュリティで保護する方法](/azure/storage/common/storage-security-guide)
+- [Azure Storage アカウントをセキュリティで保護する方法](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -498,9 +498,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Azure ディスク暗号化を使用すると、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすことができます。 すべてのマネージド ディスク、スナップショット、イメージ、および既存のディスクに書き込まれるデータは、保存時に、プラットフォーム マネージド キーを使用して自動的に暗号化されます。
 
-- [Azure Storage アカウントの暗号化キーを管理する方法](/azure/storage/common/storage-encryption-keys-portal)
+- [Azure Storage アカウントの暗号化キーを管理する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [カスタマー マネージド暗号化キーを構成する方法](/azure/storage/common/storage-encryption-keys-portal)
+- [カスタマー マネージド暗号化キーを構成する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [ディスク暗号化が有効になっているプールを作成する方法](disk-encryption.md)
 
@@ -580,7 +580,7 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -602,11 +602,11 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 
 **ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -701,7 +701,7 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 
 **ガイダンス**: Azure Batch アカウントおよびプールの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Batch" 名前空間で Azure Policy エイリアスを使用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 
 **ガイダンス**:お使いの Azure Batch アカウント、プール、または関連リソースにカスタマイズした Azure Policy 定義を使用している場合は、Azure Repos を使用してご自分のコードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -791,7 +791,7 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 - サブネットはネットワーク セキュリティ グループに関連付けられている必要がある -ストレージ アカウントは仮想ネットワーク サービス エンドポイントを使用する必要がある
 - Batch アカウントで診断ログを有効にする必要がある
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -884,7 +884,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 - [Azure Storage アカウントのストレージ冗長性を構成する方法](../storage/common/storage-redundancy.md)
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center の監視**: はい
 
@@ -894,9 +894,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 **ガイダンス**: Azure Storage アカウントまたは Azure Batch の実装に関連したその他のリソースのための独自のキーを管理している場合は、バックアップされたキーの復元を定期的にテストします。
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [PowerShell を使用してカスタマー マネージド キーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [PowerShell を使用してカスタマー マネージド キーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -906,7 +906,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 **ガイダンス**: Azure Key Vault が Azure Batch プール ストレージ アカウントに関連したキーを保持するために使用されている場合は、偶発的な削除や悪意のある削除からキーを保護するために、Azure Key Vault で論理的な削除を有効にします。
 
-- [Azure Key Vault で論理的な削除を有効にする方法](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Azure Key Vault で論理的な削除を有効にする方法](../key-vault/general/key-vault-recovery.md)
 
 **Azure Security Center の監視**: はい
 
@@ -994,5 +994,5 @@ Microsoft が管理しているクラウド インフラストラクチャ、サ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

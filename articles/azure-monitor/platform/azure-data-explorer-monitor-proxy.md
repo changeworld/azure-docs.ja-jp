@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060539"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731702"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor でデータのクエリを実行する (プレビュー)
 
-Azure Data Explorer では、Azure Data Explorer、[Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)、[Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs) 間のクロス サービス クエリがサポートされています。 Azure Data Explorer ツールを使用して Log Analytics/Application Insights ワークスペースに対してクエリを実行し、クロス サービス クエリでその内容を参照することができます。 この記事では、クロス サービス クエリを作成する方法と、Azure Data Explorer の Web UI に Log Analytics/Application Insights ワークスペースを追加する方法について説明します。
+Azure Data Explorer では、Azure Data Explorer、[Application Insights (AI)](../app/app-insights-overview.md)、[Log Analytics (LA)](./data-platform-logs.md) 間のクロス サービス クエリがサポートされています。 Azure Data Explorer ツールを使用して Log Analytics/Application Insights ワークスペースに対してクエリを実行し、クロス サービス クエリでその内容を参照することができます。 この記事では、クロス サービス クエリを作成する方法と、Azure Data Explorer の Web UI に Log Analytics/Application Insights ワークスペースを追加する方法について説明します。
 
 Azure Data Explorer のクロス サービス クエリのフローは次のとおりです。:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer プロキシのフロー":::
 
@@ -62,7 +62,7 @@ Kusto クエリをサポートするクライアント ツールを使用して�
 > * データベース名は、クロス サービス クエリで指定したリソースと同じ名前にする必要があります。 名前は大文字と小文字が区別されます。
 > * クロス クラスター クエリでは、Application Insights アプリと Log Analytics ワークスペースの名前付けが正しいことを確認してください。
 > * 名前に特殊文字が含まれている場合は、クロス サービス クエリの URL エンコードで置き換えられます。
-> * 名前に [KQL 識別子の名前規則](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)を満たしていない文字が含まれている場合は、ダッシュ **-** 文字で置き換えられます。
+> * 名前に [KQL 識別子の名前規則](/azure/data-explorer/kusto/query/schema-entities/entity-names)を満たしていない文字が含まれている場合は、ダッシュ **-** 文字で置き換えられます。
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>Azure Data Explorer クライアント ツールからの Log Analytics/Application Insights ワークスペースでの直接クエリ
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Azure Data Explorer からのクロス サービス クエリ":::
 
-union の代わりに [`join` 演算子](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)を使用するには、それを Azure Data Explorer ネイティブ クラスターに対して実行するための [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) が必要になる場合があります。
+union の代わりに [`join` 演算子](/azure/data-explorer/kusto/query/joinoperator)を使用するには、それを Azure Data Explorer ネイティブ クラスターに対して実行するための [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) が必要になる場合があります。
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>一方のテナントの Azure Data Explorer クラスターのデータを他方の Azure Monitor リソースと結合する
 
@@ -98,9 +98,9 @@ union の代わりに [`join` 演算子](https://docs.microsoft.com/azure/data-e
 
 Azure Data Explorer リソースがテナント 'A' にあり、Log Analytics ワークスペースがテナント 'B' にある場合は、次の 2 つの方法のいずれかを使用します。
 
-1. Azure Data Explorer を使用すると、異なるテナントにプリンシパルのロールを追加できます。 Azure Data Explorer クラスターにテナント 'B' のユーザー ID を許可されているユーザーとして追加します。 Azure Data Explorer クラスター上の *['TrustedExternalTenant'](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* プロパティにテナント 'B' が含まれていることを検証します。 テナント 'B' でクロスクエリを完全に実行します。
+1. Azure Data Explorer を使用すると、異なるテナントにプリンシパルのロールを追加できます。 Azure Data Explorer クラスターにテナント 'B' のユーザー ID を許可されているユーザーとして追加します。 Azure Data Explorer クラスター上の *['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster)* プロパティにテナント 'B' が含まれていることを検証します。 テナント 'B' でクロスクエリを完全に実行します。
 
-2. [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) を使用して、Azure Monitor リソースをテナント 'A' に射影します。
+2. [Lighthouse](../../lighthouse/index.yml) を使用して、Azure Monitor リソースをテナント 'A' に射影します。
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>さまざまなテナントから Azure Data Explorer クラスターに接続する
 
 Kusto Explorer では、ユーザー アカウントが最初に属しているテナントに自動的にサインインされます。 同じユーザー アカウントを使用して他のテナントのリソースにアクセスするには、接続文字列に `tenantId` を明示的に指定する必要があります: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`**TenantId**
@@ -134,4 +134,4 @@ Log Analytics または Application Insights のクラスターを呼び出す�
 ## <a name="next-steps"></a>次のステップ
 
 - [Log Analytics ワークスペースと Application Insights のデータ構造](data-platform-logs.md)の詳細をご覧ください。
-- [Azure Data Explorer のクエリの記述](https://docs.microsoft.com/azure/data-explorer/write-queries)に関するページをご覧ください。
+- [Azure Data Explorer のクエリの記述](/azure/data-explorer/write-queries)に関するページをご覧ください。

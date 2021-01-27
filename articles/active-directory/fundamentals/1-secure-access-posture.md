@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222447"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725443"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>外部アクセスに対するセキュリティ体制を決定する 
 
@@ -69,7 +69,7 @@ IT 管理アクセスと委任アクセスでは、目標がそれぞれ異な�
 
 * **アプリケーション、データ、およびコンテンツ** へのアクセスを制御する。 これは、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) と [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) のバージョンに応じて、さまざまな方法で実現できます。 
 
-* **攻撃対象領域を減らす**。 [Privileged Identity Management](../privileged-identity-management/pim-configure.md)、[データ損失防止 (DLP)](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)、および[暗号化](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)の機能によって、攻撃対象領域を削減できます。
+* **攻撃対象領域を減らす**。 [Privileged Identity Management](../privileged-identity-management/pim-configure.md)、[データ損失防止 (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)、および[暗号化](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)の機能によって、攻撃対象領域を削減できます。
 
 * **アクティビティと監査ログを定期的にレビューし、コンプライアンスを確認する**。 IT は、エンタイトルメント管理を通じてアクセスに関する意思決定をビジネス所有者に委任できます。アクセス レビューは、継続的なアクセスを定期的に確認するための手段となります。 秘密度ラベルを使用した自動データ分類を導入すれば、機密コンテンツの暗号化を自動化し、エンド ユーザーである従業員がコンプライアンスに簡単に準拠できるようにすることができます。
 
@@ -96,4 +96,3 @@ IT 管理アクセスと委任アクセスでは、目標がそれぞれ異な�
 9. [Microsoft Teams、OneDrive、SharePoint へのアクセスをセキュリティで保護する](9-secure-access-teams-sharepoint.md)
  
 
- 

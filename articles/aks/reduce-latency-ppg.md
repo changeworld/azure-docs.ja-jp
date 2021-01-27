@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: fa81e293bc5e53a852bdb404f9e6d41c4297647b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: c30051008474a32ae6c847ee3f840c8ae35b469b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349037"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726809"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>近接配置グループを使用して待機時間を短縮する
 
 > [!Note]
 > AKS 上で近接配置グループを使用すると、コロケーションはエージェント ノードにのみ適用されます。 ノード間、および対応するホストされたポッド間の待機時間が短縮されます。 コロケーションは、クラスターのコントロール プレーンの配置には影響しません。
 
-Azure にアプリケーションをデプロイするときに、複数のリージョンまたは可用性ゾーンに仮想マシン (VM) インスタンスを分散すると、ネットワーク待機時間が発生し、アプリケーションの全体的なパフォーマンスに影響を及ぼす可能性があります。 近接配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 ゲーム、エンジニアリング シミュレーション、高頻度取引 (HFT) などの一部のアプリケーションでは、短い待機時間と、短時間で完了するタスクが必要です。 これらのようなハイ パフォーマンス コンピューティング (HPC) シナリオでは、クラスターのノード プールに[近接配置グループ](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) を使用することを検討します。
+Azure にアプリケーションをデプロイするときに、複数のリージョンまたは可用性ゾーンに仮想マシン (VM) インスタンスを分散すると、ネットワーク待機時間が発生し、アプリケーションの全体的なパフォーマンスに影響を及ぼす可能性があります。 近接配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 ゲーム、エンジニアリング シミュレーション、高頻度取引 (HFT) などの一部のアプリケーションでは、短い待機時間と、短時間で完了するタスクが必要です。 これらのようなハイ パフォーマンス コンピューティング (HPC) シナリオでは、クラスターのノード プールに[近接配置グループ](../virtual-machines/co-location.md#proximity-placement-groups) (PPG) を使用することを検討します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -48,7 +48,7 @@ Azure にアプリケーションをデプロイするときに、複数のリ�
 
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>近接配置グループを使用して新しい AKS クラスターを作成する
 
-次の例では、 [az group create][az-group-create] コマンドを使用して、 *myResourceGroup* という名前のリソース グループを *centralus* リージョンに作成しています。 次いで、 *myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。
+次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *centralus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。
 
 高速ネットワークを使用すると、仮想マシンのネットワーク パフォーマンスが大幅に向上します。 近接配置グループと高速ネットワークを併用するのが理想的です。 既定では、AKS により[サポートされている仮想マシン インスタンス](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)で高速ネットワークが使用されます。これには、2 つ以上の vCPU を持つほとんどの Azure 仮想マシンが含まれます。
 
@@ -133,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add

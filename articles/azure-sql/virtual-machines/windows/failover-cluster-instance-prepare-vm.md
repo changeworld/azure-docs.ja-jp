@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223161"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737797"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "98223161"
 
 ## <a name="configure-vm-availability"></a>VM の可用性を構成する 
 
-フェールオーバー クラスター機能を使用するには、仮想マシンを[可用性セット](../../../virtual-machines/linux/tutorial-availability-sets.md)または[可用性ゾーン](../../../availability-zones/az-overview.md#availability-zones)に配置する必要があります。 可用性セットを選択する場合は、[近接配置グループ](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)を使用して、VM を近くに配置することができます。 実際、近接配置グループは、Azure 共有ディスクを使用するための前提条件です。 
+フェールオーバー クラスター機能を使用するには、仮想マシンを[可用性セット](../../../virtual-machines/linux/tutorial-availability-sets.md)または[可用性ゾーン](../../../availability-zones/az-overview.md#availability-zones)に配置する必要があります。 可用性セットを選択する場合は、[近接配置グループ](../../../virtual-machines/co-location.md#proximity-placement-groups)を使用して、VM を近くに配置することができます。 実際、近接配置グループは、Azure 共有ディスクを使用するための前提条件です。 
 
 目的のクラスター構成に適した VM 可用性オプションを慎重に選択します。 
 

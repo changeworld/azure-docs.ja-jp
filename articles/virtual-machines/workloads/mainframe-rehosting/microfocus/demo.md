@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915778"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733151"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
@@ -28,7 +28,7 @@ CICS とは、Customer Information Control System (顧客情報管理システ�
 
 - [SQL Server 2017 Express エディション](https://www.microsoft.com/sql-server/sql-server-editions-express)。 ダウンロードして、Enterprise Developer VM にインストールします。 Enterprise Server では、CICS リージョンの管理用データベースが必要になります。また BankDemo アプリケーションでも、BANKDEMO という SQL Server データベースが使用されます。 このデモでは、両方のデータベースに SQL Server Express を使用していることを前提とします。 インストールの際には、基本インストールを選択してください。
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS)。 SSMS は、データベースの管理と T-SQL スクリプトの実行に使用されます。 ダウンロードして、Enterprise Developer VM にインストールします。
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 SSMS は、データベースの管理と T-SQL スクリプトの実行に使用されます。 ダウンロードして、Enterprise Developer VM にインストールします。
 
 - 最新のサービス パックが適用された [Visual Studio 2019](https://azure.microsoft.com/downloads/) か、[Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) (無料でダウンロードできます)。
 

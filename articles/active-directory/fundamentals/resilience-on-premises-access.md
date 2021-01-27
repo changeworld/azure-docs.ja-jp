@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919127"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724662"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>アプリケーション プロキシを使用したアプリケーション アクセスで回復性を強化する
 
@@ -27,7 +27,7 @@ ms.locfileid: "95919127"
 ユーザーは、アプリケーション プロキシ経由で公開された URL を使用して、オンプレミスのリソースにアクセスします。 Azure AD サインイン ページにリダイレクトされます。 次に、Azure AD のアプリケーション プロキシ サービスは、企業ネットワーク内のアプリケーション プロキシ コネクタにトークンを送信します。これにより、トークンがオンプレミスの Active Directory に渡され、認証されたユーザーはオンプレミスのリソースにアクセスできるようになります。 次の図では、[コネクタ](../manage-apps/application-proxy-connectors.md)は[コネクタ グループ](../manage-apps/application-proxy-connector-groups.md)内に示されています。
 
 > [!IMPORTANT]
-> アプリケーション プロキシ経由でアプリケーションを公開する場合は、[アプリケーション プロキシ コネクタのキャパシティ プランニングと適切な冗長性](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning)を実装する必要があります。
+> アプリケーション プロキシ経由でアプリケーションを公開する場合は、[アプリケーション プロキシ コネクタのキャパシティ プランニングと適切な冗長性](../manage-apps/application-proxy-connectors.md#capacity-planning)を実装する必要があります。
 
 ![アプリケーション y のアーキテクチャ図](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 
@@ -52,7 +52,7 @@ Azure AD アプリケーション プロキシを使用したリモート アク
 
 * [継続的アクセス評価 (CAE) を使用して回復性を強化する](resilience-with-continuous-access-evaluation.md)
 
-* [外部ユーザー認証の回復性を強化する](resilience-b2b-authentication.md)
+* [外部ユーザー認証で回復性を強化する](resilience-b2b-authentication.md)
 
 * [ハイブリッド認証で回復性を強化する](resilience-in-hybrid.md)
 

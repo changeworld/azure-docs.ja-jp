@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928768"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723882"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -99,9 +99,9 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 
 | データ ストレージ システム | ソースとしてサポート | シンクとしてサポート |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (JSON のサポートはなし) | はい | ○ (非バイナリ コピーのみ) |
-| ADLS Gen2 (JSON のサポートはなし) | はい | はい |
-| Azure BLOB (JSON のサポートはなし) | はい | はい |
+| ADLS Gen1 | はい | ○ (非バイナリ コピーのみ) |
+| ADLS Gen2 | はい | はい |
+| Azure BLOB | はい | はい |
 | Azure Cosmos DB (SQL API) | はい | はい |
 | Azure Cosmos DB (Mongo API) | はい | はい |
 | Azure Cognitive Search | はい | はい |

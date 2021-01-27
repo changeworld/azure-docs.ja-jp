@@ -4,18 +4,18 @@ description: Azure Import/Export サービスを使用してネットワーク�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892016"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704365"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 オフライン シード処理プロセスにより、Azure Backup はディスクを使ってオフライン バックアップ データを Azure にアップロードすることができます。
 
-Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../storage/common/storage-import-export-service.md)と緊密に統合されています。 このサービスを使用すると、ディスクを使用して初期バックアップ データを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 次の図では、ワークフローの手順の概要を示します。
+Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../import-export/storage-import-export-service.md)と緊密に統合されています。 このサービスを使用すると、ディスクを使用して初期バックアップ データを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 次の図では、ワークフローの手順の概要を示します。
 
   ![オフラインでのインポート ワークフロー プロセスの概要](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -64,12 +64,12 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
         ![リソース プロバイダーの登録](./media/backup-azure-backup-import-export/registerimportexport.png)
 
 * ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 たとえば、500 GB のファイル サーバーをバックアップする場合は、500 GB 以上のステージング領域を確保します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
-* ディスクを Azure に送付するときは、2.5 インチの SSD、あるいは 2.5 インチまたは 3.5 インチの SATA II/III 内蔵ハード ドライブのみを使用してください。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-requirements.md#supported-hardware)をご覧ください。
+* ディスクを Azure に送付するときは、2.5 インチの SSD、あるいは 2.5 インチまたは 3.5 インチの SATA II/III 内蔵ハード ドライブのみを使用してください。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../import-export/storage-import-export-requirements.md#supported-hardware)をご覧ください。
 * SATA ドライブは、ステージング場所から SATA ドライブへのバックアップ データのコピーが行われるコンピューター ("*コピー用コンピューター*" と呼ばれます) に接続されている必要があります。 コピー用コンピューターで BitLocker を確実に有効にします。
 
 ## <a name="workflow"></a>ワークフロー
 
-このセクションでは、データを Azure データセンターに送付したり、Azure Storage にアップロードしたりできるように、オフライン バックアップ ワークフローについて説明します。 インポート サービスやプロセスの他の側面について質問がある場合は、[Azure Import/Export サービスの概要に関するドキュメント](../storage/common/storage-import-export-service.md)をご覧ください。
+このセクションでは、データを Azure データセンターに送付したり、Azure Storage にアップロードしたりできるように、オフライン バックアップ ワークフローについて説明します。 インポート サービスやプロセスの他の側面について質問がある場合は、[Azure Import/Export サービスの概要に関するドキュメント](../import-export/storage-import-export-service.md)をご覧ください。
 
 ## <a name="initiate-offline-backup"></a>オフライン バックアップを開始する
 
@@ -202,7 +202,7 @@ Azure インポート ジョブの処理にかかる時間は状況に応じて�
 
 ### <a name="monitor-azure-import-job-status"></a>Azure インポート ジョブの状態の監視
 
-Azure portal からインポート ジョブの状態を監視できます。 **[インポート/エクスポート ジョブ]** ページにアクセスして、目的のジョブを選択します。 インポート ジョブの状態について詳しくは、「[Azure Import/Export サービスとは](../storage/common/storage-import-export-service.md)」をご覧ください。
+Azure portal からインポート ジョブの状態を監視できます。 **[インポート/エクスポート ジョブ]** ページにアクセスして、目的のジョブを選択します。 インポート ジョブの状態について詳しくは、「[Azure Import/Export サービスとは](../import-export/storage-import-export-service.md)」をご覧ください。
 
 ### <a name="finish-the-workflow"></a>ワークフローの完了
 
@@ -218,4 +218,4 @@ Azure portal からインポート ジョブの状態を監視できます。 **
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Import/Export サービス ワークフローについて質問がある場合は、[Microsoft Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送](../storage/common/storage-import-export-service.md)に関するページを参照してください。
+* Azure Import/Export サービス ワークフローについて質問がある場合は、[Microsoft Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送](../import-export/storage-import-export-service.md)に関するページを参照してください。

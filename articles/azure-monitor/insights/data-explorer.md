@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918003"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734176"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor for Azure Data Explorer (プレビュー)
 
@@ -49,7 +49,7 @@ Azure Monitor から、クラスターの主要なパフォーマンス メト�
 
 ドロップダウン リストのカウンター タイルには、選択したサブスクリプション内の Azure Data Explorer クラスターの総数がロールアップされ、選択されている数が反映されます。 キープ アライブ、CPU、インジェスト使用率、キャッシュ使用率の各列には、条件付き色分けがあります。 オレンジで色分けされたセルには、クラスターの持続可能ではない値が含まれています。 
 
-各メトリックが表す内容について理解を深めるために、[Azure Data Explorer のメトリック](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics)に関するドキュメントを参照することをお勧めします。
+各メトリックが表す内容について理解を深めるために、[Azure Data Explorer のメトリック](/azure/data-explorer/using-metrics#cluster-metrics)に関するドキュメントを参照することをお勧めします。
 
 ### <a name="query-performance-tab"></a>[クエリ パフォーマンス] タブ
 
@@ -81,7 +81,7 @@ Azure Data Explorer クラスターから Azure Data Explorer クラスター用
 
 これらのビューには、Azure Monitor 分析情報ビュー内から Azure Data Explorer クラスターのリソース名を選択してアクセスすることもできます。
 
-Azure Monitor for Azure Data Explorer では、ログとメトリックを組み合わせて、グローバルな監視ソリューションを提供します。 ログベースの視覚化を含めるには、[Azure Data Explorer クラスターの診断ログを有効にし、Log Analytics ワークスペースに送信する](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)必要があります。 有効にする必要がある診断ログは、**Command**、**Query**、**TableDetails**、**TableUsageStatistics** です。
+Azure Monitor for Azure Data Explorer では、ログとメトリックを組み合わせて、グローバルな監視ソリューションを提供します。 ログベースの視覚化を含めるには、[Azure Data Explorer クラスターの診断ログを有効にし、Log Analytics ワークスペースに送信する](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)必要があります。 有効にする必要がある診断ログは、**Command**、**Query**、**TableDetails**、**TableUsageStatistics** です。
 
 !["Enable Logs for Monitoring\(監視のログを有効にする\)" というテキストが表示された青いボタンのスクリーンショット](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ Azure Monitor for Azure Data Explorer では、ログとメトリックを組み
 
 - クラスターの可用性と全体的な状態を強調表示して、正常性をすばやく評価するメトリック タイル。
 
-- アクティブな [Advisor の推奨事項](https://docs.microsoft.com/azure/data-explorer/azure-advisor)と[リソースの正常性](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health)状態の概要。
+- アクティブな [Advisor の推奨事項](/azure/data-explorer/azure-advisor)と[リソースの正常性](/azure/data-explorer/monitor-with-resource-health)状態の概要。
 
 - CPU およびメモリの上位コンシューマーと一意のユーザーの数を経時的に示すグラフ。
 
@@ -114,7 +114,7 @@ Azure Monitor for Azure Data Explorer では、ログとメトリックを組み
 
 **[テーブル]** タブには、クラスター内のテーブルの最新および過去のプロパティが表示されます。 最も多くの領域を消費しているテーブルを確認し、増加の過程を、テーブル サイズ、ホット データ、行数で経時的に追跡できます。
 
-**[キャッシュ]** タブでは、実際のクエリのルックバック パターンを分析し、構成済みのキャッシュ ポリシーと比較できます (テーブルごと)。 最も多くのクエリで使用されているテーブルと、まったく照会されていないテーブルを特定し、キャッシュ ポリシーを適宜調整できます。 特定のテーブルについて、キャッシュ ポリシーの特定の推奨事項を Azure Advisor で取得できます (現時点では、キャッシュに関する推奨事項は、[Azure Advisor メイン ダッシュボード](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) からのみ利用できます)。推奨事項は、過去 30 日間の実際のクエリのルックバックと、少なくとも 95% のクエリに対して最適化されていないキャッシュ ポリシーに基づいています。 Azure Advisor のキャッシュ削減の推奨事項は、"データの制限がある" クラスター (つまり、CPU 使用率とインジェスト使用率が低いにもかかわらず、データ容量が大きいために、スケールインまたはスケールダウンできなかったクラスター) で利用できます。
+**[キャッシュ]** タブでは、実際のクエリのルックバック パターンを分析し、構成済みのキャッシュ ポリシーと比較できます (テーブルごと)。 最も多くのクエリで使用されているテーブルと、まったく照会されていないテーブルを特定し、キャッシュ ポリシーを適宜調整できます。 特定のテーブルについて、キャッシュ ポリシーの特定の推奨事項を Azure Advisor で取得できます (現時点では、キャッシュに関する推奨事項は、[Azure Advisor メイン ダッシュボード](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) からのみ利用できます)。推奨事項は、過去 30 日間の実際のクエリのルックバックと、少なくとも 95% のクエリに対して最適化されていないキャッシュ ポリシーに基づいています。 Azure Advisor のキャッシュ削減の推奨事項は、"データの制限がある" クラスター (つまり、CPU 使用率とインジェスト使用率が低いにもかかわらず、データ容量が大きいために、スケールインまたはスケールダウンできなかったクラスター) で利用できます。
 
 [![キャッシュの詳細のスクリーンショット](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ Azure Monitor for Azure Data Explorer では、ログとメトリックを組み
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>使用状況、テーブル、またはキャッシュ セクションに Azure Data Explorer クラスターのデータが表示されないのはなぜですか。
 
-ログベースのデータを表示するには、監視する Azure Data Explorer クラスターごとに[診断ログを有効にする](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)必要があります。 これは、各クラスターの診断設定で行うことができます。 Log Analytics ワークスペースにデータを送信する必要があります。 有効にする必要がある診断ログは、Command、Query、TableDetails、TableUsageStatistics です。
+ログベースのデータを表示するには、監視する Azure Data Explorer クラスターごとに[診断ログを有効にする](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)必要があります。 これは、各クラスターの診断設定で行うことができます。 Log Analytics ワークスペースにデータを送信する必要があります。 有効にする必要がある診断ログは、Command、Query、TableDetails、TableUsageStatistics です。
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Azure Data Explorer クラスターのログを既に有効にしていますが、[Commands and Queries]\(コマンドとクエリ\) でデータを表示できないのはなぜですか。
 

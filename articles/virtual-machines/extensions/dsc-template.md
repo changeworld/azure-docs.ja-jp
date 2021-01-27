@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 01a41e9acccdb40bf198031d13c3ea3f13c079ce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180151"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735692"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -32,7 +32,7 @@ ms.locfileid: "98180151"
 
 以下のスニペットは、テンプレートの **Resource** セクションに含まれます。
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet)」をご覧ください。
+詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension)」をご覧ください。
 
 ```json
 {
@@ -85,7 +85,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 **[拡張機能]** の下に DSC 拡張機能の詳細を追加します。
 
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)」をご覧ください。
+詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension)」をご覧ください。
 
 ```json
 "extensionProfile": {

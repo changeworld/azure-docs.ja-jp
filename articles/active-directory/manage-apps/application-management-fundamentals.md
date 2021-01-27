@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656409"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736971"
 ---
 # <a name="application-management-best-practices"></a>アプリケーション管理のベスト プラクティス
 
@@ -33,9 +33,9 @@ ms.locfileid: "94656409"
 | アプリについて Azure AD アプリケーション ギャラリーをチェックする  | Azure AD には、エンタープライズ シングル サインオン (SSO) に対応した、事前に統合された何千ものアプリケーションが含まれるギャラリーがあります。 アプリ固有のセットアップのガイダンスについては、[SaaS アプリのチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。  | 
 | SAML ベースのフェデレーション SSO を使用する  | アプリケーションがサポートしている場合は、パスワード ベースの SSO や ADFS ではなく、SAML ベースのフェデレーション SSO を Azure AD で使用します。  | 
 | 証明書の署名には SHA-256 を使用する  | Azure AD は、既定では SHA-256 アルゴリズムを使用して、SAML 応答に署名します。 アプリケーションで SHA-1 が必要な場合以外は、SHA-256 を使用します (「[証明書署名オプション](certificate-signing-options.md)」と[アプリケーションのサインインの問題](application-sign-in-problem-application-error.md)に関するページを参照してください。)  | 
-| ユーザー割り当てを要求する  | 既定では、ユーザーは自分への割り当てなしにエンタープライズ アプリケーションにアクセスできます。 ただし、アプリケーションでロールが公開されている場合、またはユーザーのマイ アプリにアプリケーションを表示する場合は、ユーザー割り当てが必要です。 ([アプリケーションの統合に関する開発者ガイド](developer-guidance-for-integrating-applications.md)を参照してください。)  | 
+| ユーザー割り当てを要求する  | 既定では、ユーザーは自分への割り当てなしにエンタープライズ アプリケーションにアクセスできます。 ただし、アプリケーションでロールが公開されている場合、またはユーザーのマイ アプリにアプリケーションを表示する場合は、ユーザー割り当てが必要です。  | 
 | マイ アプリをユーザー向けにデプロイする | `https://myapps.microsoft.com` の[マイ アプリ](end-user-experiences.md)は、割り当てられたクラウドベースのアプリケーションのために、単一のエントリ ポイントをユーザーに提供する Web ベースのポータルです。 グループ管理やセルフサービス パスワード リセットなどの追加機能が追加されても、ユーザーはマイ アプリでそれらを見つけることができます。 詳細については、「[マイ アプリのデプロイの計画](access-panel-deployment-plan.md)」を参照してください。
-| グループの割り当てを使用する  | サブスクリプションに含まれる場合は、グループをアプリケーションに割り当てて、継続的なアクセス管理をグループ所有者に委任できるようにします。 ([アプリケーションの統合に関する開発者ガイド](developer-guidance-for-integrating-applications.md)を参照してください。)   | 
+| グループの割り当てを使用する  | サブスクリプションに含まれる場合は、グループをアプリケーションに割り当てて、継続的なアクセス管理をグループ所有者に委任できるようにします。  | 
 | 証明書管理のためのプロセスを確立する | 署名証明書の最長有効期間は 3 年です。 証明書の期限切れによる停止を防止または最小限にするには、ロールとメール配布リストを使用して、証明書関連の変更通知が厳重に監視されるようにします。 |
 
 ## <a name="provisioning-recommendations"></a>プロビジョニングに関する推奨事項

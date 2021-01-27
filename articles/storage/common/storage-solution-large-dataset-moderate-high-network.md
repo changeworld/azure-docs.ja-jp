@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573937"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704625"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
  
@@ -95,7 +95,7 @@ ms.locfileid: "96573937"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Import/Export でデータを転送する方法を学習します](./storage-import-export-data-to-blobs.md)。
+- [Import/Export でデータを転送する方法を学習します](../../import-export/storage-import-export-data-to-blobs.md)。
 - 以下の方法を理解します
 
     - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。

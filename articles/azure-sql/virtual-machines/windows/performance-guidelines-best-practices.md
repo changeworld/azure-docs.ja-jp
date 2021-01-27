@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2b4e8d980ee2b5c69687fc7ad8975e26fe38071a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6ba30436b363353ad183396e07111b33ca912dbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360120"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737440"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のパフォーマンスに関するガイドライン
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,7 +43,7 @@ Azure Virtual Machines 上の SQL Server の最適なパフォーマンスを実
 
 | 領域 | 最適化 |
 | --- | --- |
-| [VM サイズ](#vm-size-guidance) | - [Standard_M8-4ms](/azure/virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)、または [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。 <br/><br/> - SQL Server ワークロードの最適なパフォーマンスを得るために、[メモリ最適化済み](../../../virtual-machines/sizes-memory.md)仮想マシン サイズを使用します。 <br/><br/> - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) シリーズ、[M-](/azure/virtual-machines/m-series)、[Mv2-](../../../virtual-machines/mv2-series.md) シリーズでは、OLTP ワークロードに必要な、最適なメモリと仮想コアの比率を提供します。 M シリーズの VM はどちらも、ミッション クリティカルなワークロードに必要な、最も高いメモリと仮想コアの比率を提供し、データ ウェアハウスのワークロードにも最適です。 <br/><br/> - ミッション クリティカルおよびデータ ウェアハウスのワークロードには、より高いメモリと仮想コアの比率が必要になる場合があります。 <br/><br/> - SQL Server のパフォーマンスが最適になるように SQL Server の設定とストレージ オプションが構成されているため、Azure 仮想マシンのマーケットプレース イメージを活用します。 <br/><br/> - ターゲット ワークロードのパフォーマンス特性を収集し、それらを使用してお客様のビジネスに適した VM サイズを決定します。|
+| [VM サイズ](#vm-size-guidance) | - [Standard_M8-4ms](../../../virtual-machines/m-series.md)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)、または [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。 <br/><br/> - SQL Server ワークロードの最適なパフォーマンスを得るために、[メモリ最適化済み](../../../virtual-machines/sizes-memory.md)仮想マシン サイズを使用します。 <br/><br/> - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) シリーズ、[M-](../../../virtual-machines/m-series.md)、[Mv2-](../../../virtual-machines/mv2-series.md) シリーズでは、OLTP ワークロードに必要な、最適なメモリと仮想コアの比率を提供します。 M シリーズの VM はどちらも、ミッション クリティカルなワークロードに必要な、最も高いメモリと仮想コアの比率を提供し、データ ウェアハウスのワークロードにも最適です。 <br/><br/> - ミッション クリティカルおよびデータ ウェアハウスのワークロードには、より高いメモリと仮想コアの比率が必要になる場合があります。 <br/><br/> - SQL Server のパフォーマンスが最適になるように SQL Server の設定とストレージ オプションが構成されているため、Azure 仮想マシンのマーケットプレース イメージを活用します。 <br/><br/> - ターゲット ワークロードのパフォーマンス特性を収集し、それらを使用してお客様のビジネスに適した VM サイズを決定します。|
 | [Storage](#storage-guidance) | - TPC-E および TPC_C ベンチマークによる Azure Virtual Machines 上の SQL Server のパフォーマンスの詳細なテストについては、[OLTP のパフォーマンスの最適化](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)に関するブログを参照してください。 <br/><br/> - 最適な価格/パフォーマンス比の利点を得るために [Premium SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) を使用します。 データ ファイルに対しては[読み取り専用キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)を、ログ ファイルに対してはキャッシュなしを構成します。 <br/><br/> - ワークロードで 1 ミリ秒未満のストレージ待機時間が必要な場合は、[Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disk)を使用します。 詳細については、[Ultra Disk への移行](storage-migrate-to-ultradisk.md)に関するページを参照してください。 <br/><br/> - ディスクの種類を選択する前に、[アプリケーションを監視](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist)することによって、SQL Server データ、ログ、および Temp DB ファイルのストレージ待機時間の要件を収集します。 1 ミリ秒未満のストレージ待機時間が必要な場合は Ultra ディスクを使用し、それ以外の場合は Premium SSD を使用します。 短い待機時間がログ ファイルにのみ必要であり、データ ファイルには必要ない場合は、ログ ファイルに対してのみ、必要な IOPS とスループットのレベルで [Ultra ディスクをプロビジョニング](../../../virtual-machines/disks-enable-ultra-ssd.md)します。 <br/><br/>  - 標準ストレージは、開発とテストの目的またはバックアップ ファイルにのみ推奨されます。運用ワークロードには使用しないでください。 <br/><br/> - [ストレージ アカウント](../../../storage/common/storage-account-create.md)と SQL Server VM を同じリージョンに保持します。<br/><br/> - ストレージ アカウントで [Azure geo 冗長ストレージ](../../../storage/common/storage-redundancy.md) (geo レプリケーション) を無効にします。  |
 | [ディスク](#disks-guidance) | - 少なくとも 2 つの [Premium SSD ディスク](../../../virtual-machines/disks-types.md#premium-ssd) (ログ ファイル用に 1 つとデータ ファイル用に 1 つ) を使用します。 <br/><br/> - 1 ミリ秒未満の IO 待機時間が必要なワークロードの場合は、M シリーズの書き込みアクセラレータを有効にし、Es および DS シリーズでの Ultra SSD ディスクの使用を考慮します。 <br/><br/> - データ ファイルをホストするディスクで[読み取り専用キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)を有効にします。<br/><br/> - [SQL Server データ、ログ、および TempDB ファイルのストレージを構成](storage-configuration.md)するときに、ワークロードに必要な追加の 20% Premium IOPS/スループット容量を追加します。 <br/><br/> - データベース ストレージまたはログに、オペレーティング システム ディスクまたは一時ディスクを使用することは避けてください。<br/><br/> - ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。  **重要**:Azure Virtual Machines ディスクのキャッシュ設定を変更するときは、SQL Server サービスを停止してください。<br/><br/> - 複数の Azure データ ディスクをストライプして、ストレージ スループットを向上させます。<br/><br/> - ドキュメントに記載されている割り当てサイズでフォーマットします。 <br/><br/> - ミッション クリティカルな SQL Server ワークロードのために、TempDB をローカル SSD の `D:\` ドライブに配置します (適切な VM サイズを選択した後に行います)。 Azure portal または Azure クイックスタート テンプレートから VM を作成し、[ローカル ディスクに Temp DB を配置する](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)場合は、それ以上のアクションは必要ありません。その他のすべての場合は、再起動後の障害を防止するために、[SSD を使用した TempDB の格納](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/)のブログにある手順に従ってください。 ローカル ドライブの容量が Temp DB サイズに対して十分でない場合は、[読み取り専用キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)を備えた Premium SSD ディスク上の[ストライプされた](../../../virtual-machines/premium-storage-performance.md)ストレージ プールに Temp DB を配置します。 |
 | [I/O](#io-guidance) |- データベース ページの圧縮を有効にします。<br/><br/> - データ ファイルの瞬時初期化を有効にします。<br/><br/> - データベースの自動拡張を制限します。<br/><br/> - データベースの自動圧縮を無効にします。<br/><br/> - システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/> - SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/> - 既定のバックアップとデータベース ファイルの場所を構成します。<br/><br/> - [メモリ内のロックされたページを有効にします](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows)。<br/><br/> - インストールされている SQL Server バージョンの[最新の累積的な更新プログラム](/sql/database-engine/install-windows/latest-updates-for-microsoft-sql-server)を評価して適用します。 |
@@ -83,11 +83,11 @@ SQL Server のデータ ウェアハウス環境では多くの場合、サイ�
 
 #### <a name="m-and-mv2-series"></a>M および Mv2 シリーズ
 
-[M シリーズ](/azure/virtual-machines/m-series)は、一部の最大の SQL Server ワークロードに適した仮想コア数とメモリを提供します。  
+[M シリーズ](../../../virtual-machines/m-series.md)は、一部の最大の SQL Server ワークロードに適した仮想コア数とメモリを提供します。  
 
 [Mv2 シリーズ](../../../virtual-machines/mv2-series.md)は、最大の仮想コア数とメモリを備えており、ミッション クリティカルおよびデータ ウェアハウス ワークロードに推奨されています。 Mv2 シリーズ インスタンスはメモリ最適化済み VM サイズで、非常に優れたコンピューティング性能によって大規模なメモリ内データベースとワークロードをサポートし、リレーショナル データベース サーバー、大規模キャッシュ、インメモリ分析に最適な、メモリと CPU の高い比率を提供します。
 
-たとえば、[Standard_M64ms](/azure/virtual-machines/m-series) のメモリと仮想コアの比率は 28 です。
+たとえば、[Standard_M64ms](../../../virtual-machines/m-series.md) のメモリと仮想コアの比率は 28 です。
 
 SQL Server のパフォーマンスにとって魅力的な M および Mv2 シリーズの機能の一部には、[Premium Storage](../../../virtual-machines/premium-storage-performance.md) と [Premium Storage キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)のサポート、[Ultra ディスク](../../../virtual-machines/disks-enable-ultra-ssd.md)のサポート、[書き込みアクセラレータ](../../../virtual-machines/how-to-enable-write-accelerator.md)などがあります。
 
@@ -193,7 +193,7 @@ vCPU の数を、元の VM サイズの半分または 4 分の 1 に制限す�
 
 これらの新しい VM サイズでは、識別しやすいように、アクティブな vCPU の数を指定するサフィックスが付加されています。 
 
-たとえば、[M64-32ms](../../../virtual-machines/constrained-vcpu.md) には 32 個の SQL Server 仮想コアと、[M64ms](/azure/virtual-machines/m-series) のメモリ、IO、スループットのライセンスが必要であり、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) には 16 個の仮想コアのみのライセンスが必要です。  しかし、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) では、SQL Server のライセンス コストは M64ms の 4 分の 1 になりますが、仮想マシンのコンピューティング コストは同じです。
+たとえば、[M64-32ms](../../../virtual-machines/constrained-vcpu.md) には 32 個の SQL Server 仮想コアと、[M64ms](../../../virtual-machines/m-series.md) のメモリ、IO、スループットのライセンスが必要であり、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) には 16 個の仮想コアのみのライセンスが必要です。  しかし、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) では、SQL Server のライセンス コストは M64ms の 4 分の 1 になりますが、仮想マシンのコンピューティング コストは同じです。
 
 > [!NOTE] 
 > - それでも中規模から大規模のデータ ウェアハウスのワークロードでは[制約付き仮想コア VM](../../../virtual-machines/constrained-vcpu.md) が有効である可能性がありますが、データ ウェアハウスのワークロードは一般に、並列で実行されるクエリ プランによって少ない数のユーザーとプロセスで大量のデータを処理するという特徴があります。 

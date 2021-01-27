@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b75f4c85831fe66158da875c21af60ee73531026
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683133"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728258"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
@@ -101,7 +101,7 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>ボリューム スナップショット
 
-Azure ディスクの CSI ドライバーでは、[永続ボリュームのスナップショット](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)の作成がサポートされています。 この機能の一部として、ドライバーでは、`incremental` パラメーターに設定されている値 (既定では true) に応じて、"*完全*" または "[*増分*" スナップショット](../virtual-machines/windows/disks-incremental-snapshots.md)のいずれかを実行できます。
+Azure ディスクの CSI ドライバーでは、[永続ボリュームのスナップショット](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)の作成がサポートされています。 この機能の一部として、ドライバーでは、`incremental` パラメーターに設定されている値 (既定では true) に応じて、"*完全*" または "[*増分*" スナップショット](../virtual-machines/disks-incremental-snapshots.md)のいずれかを実行できます。
 
 すべてのパラメーターの詳細については、[ボリューム スナップショット クラスのパラメーター](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass)に関するページを参照してください。
 

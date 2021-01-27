@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps を使用して Azure Arc 対応の Kubernetes クラスターを構成する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、コンテナー
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955333"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737186"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
@@ -48,7 +48,7 @@ Git リポジトリには、Namespace、ConfigMap、Deployment、DaemonSet な�
 
 `k8sconfiguration` の Azure CLI 拡張機能を使用して、接続されたクラスターを [Git リポジトリの例](https://github.com/Azure/arc-k8s-demo)にリンクしてください。 この構成に `cluster-config` と名前を付け、`cluster-config` 名前空間にオペレーターを配置するようにエージェントに指示し、オペレーターに `cluster-admin` アクセス許可を与えます。
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > HTTPS Helm リリースのプライベート認証は、バージョン 1.2.0 以上の Helm 演算子グラフでのみサポートされます。  既定ではバージョン 1.2.0 が使用されます。
 > HTTPS Helm リリースのプライベート認証は現在、Azure Kubernetes Services のマネージド クラスターではサポートされていません。
-> プロキシを介して Git リポジトリにアクセスするために Flux が必要な場合は、プロキシ設定を使用して Azure Arc エージェントを更新する必要があります。 [詳細情報](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> プロキシを介して Git リポジトリにアクセスするために Flux が必要な場合は、プロキシ設定を使用して Azure Arc エージェントを更新する必要があります。 [詳細情報](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>追加のパラメーター
 
@@ -179,7 +179,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Azure CLI を使用して、`sourceControlConfiguration` の作成が成功したことを確認します。
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ kubectl -n itops get all
 > 名前空間スコープを持つ sourceControlConfiguration を作成した後、名前空間で `edit` ロールがバインドされているユーザーは、この名前空間にワークロードをデプロイできます。 名前空間スコープを持つこの `sourceControlConfiguration` が削除されると、その名前空間はそのまま残り、他のワークロードが中断されることを防ぐために削除されません。  必要に応じて、kubectl を使用してこの名前空間を手動で削除できます。
 > `sourceControlConfiguration` が削除されても、追跡対象の Git リポジトリからのデプロイの結果としてクラスターに加えられた変更は削除されません。
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 

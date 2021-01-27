@@ -8,17 +8,17 @@ ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6a071956565a8bbc31e5be362c41a7c39d8f551
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490732"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738052"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 
 さまざまなオファリングがある中、Azure Backup では、Azure VM で実行されている SQL Server などのワークロードをバックアップするためのサポートが提供されます。 SQL アプリケーションは Azure VM 内で実行されているため、バックアップ サービスがアプリケーションにアクセスして必要な詳細をフェッチするにはアクセス許可が必要です。
-そのため、Azure Backup では、ユーザーによってトリガーされる登録プロセスの間に、SQL Server が実行されている VM に、 **AzureBackupWindowsWorkload** 拡張機能がインストールされます。
+そのため、Azure Backup では、ユーザーによってトリガーされる登録プロセスの間に、SQL Server が実行されている VM に、**AzureBackupWindowsWorkload** 拡張機能がインストールされます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -102,7 +102,7 @@ AzureBackupWindowsWorkload 拡張機能を仮想マシンに追加する推奨�
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-SQL アプリケーションが含まれる Azure VM を、Recovery Services コンテナーに "登録" する必要があります。 登録の間に、AzureBackupWindowsWorkload 拡張機能が VM にインストールされます。 VM を登録するには、 [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) コマンドレットを使います。
+SQL アプリケーションが含まれる Azure VM を、Recovery Services コンテナーに "登録" する必要があります。 登録の間に、AzureBackupWindowsWorkload 拡張機能が VM にインストールされます。 VM を登録するには、 [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) コマンドレットを使います。
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>

@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790629"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734581"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のタイム ゾーン
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "92790629"
 
 サポートされている一連のタイム ゾーンは、マネージド インスタンスの基になるオペレーティング システムから継承されます。 また、新しいタイム ゾーン定義を取得して既存のものに変更を反映させるために、定期的に更新されています。
 
-[夏時間/タイム ゾーンの変更ポリシー](https://aka.ms/time)により、2010 年以降のヒストリカルな正確さが保証されます。
+[夏時間/タイム ゾーンの変更ポリシー](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support)により、2010 年以降のヒストリカルな正確さが保証されます。
 
 サポートされているタイム ゾーンの名前を記載したリストは、[sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) システム ビューを介して公開されています。
 

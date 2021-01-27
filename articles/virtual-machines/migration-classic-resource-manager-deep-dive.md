@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: ff3e8916a6634c564aa98b21b7e8d7c89fa1b17e
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: bc12d626d8a331981cbbad015b376b826c617209
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897180"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735134"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 
@@ -163,11 +163,11 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 | 受信 NAT のルール |受信 NAT のルール |VM に定義されている入力エンドポイントは、移行中、ロード バランサーで受信ネットワーク アクセス変換ルールに変換されます。 |
 | VIP アドレス |DNS 名のあるパブリック IP アドレス |仮想 IP アドレスがパブリック IP アドレスになり、ロード バランサーに関連付けられます。 仮想 IP は、それに割り当てられている入力エンドポイントがある場合にのみ移行することができます。 |
 | 仮想ネットワーク |仮想ネットワーク |仮想ネットワークとそのすべてのプロパティが Resource Manager デプロイ モデルに移行されます。 `-migrated`という名前で新しいリソース グループが作成されます。 |
-| 予約済み IP |静的割り当て方法のあるパブリック IP アドレス |ロード バランサーに関連付けられている予約済み IP が、クラウド サービスまたは仮想マシンの移行に伴って移行されます。 関連付けられていない予約済み IP は、[Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip?view=azuresmps-4.0.0) を使用して移行できます。  |
+| 予約済み IP |静的割り当て方法のあるパブリック IP アドレス |ロード バランサーに関連付けられている予約済み IP が、クラウド サービスまたは仮想マシンの移行に伴って移行されます。 関連付けられていない予約済み IP は、[Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip) を使用して移行できます。  |
 | VM ごとのパブリック IP アドレス |動的割り当て方法のあるパブリック IP アドレス |VM に関連付けられているパブリック IP アドレスは、割り当て方法が静的に設定されているパブリック IP アドレス リソースとして変換されます。 |
-| NSG |NSG |サブネットに関連付けられているネットワーク セキュリティ グループは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの NSG は削除されません。 ただし、NSG の管理プレーン操作は、移行中はブロックされます。 関連付けられていない NSG は、[Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) を使用して移行できます。|
+| NSG |NSG |サブネットに関連付けられているネットワーク セキュリティ グループは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの NSG は削除されません。 ただし、NSG の管理プレーン操作は、移行中はブロックされます。 関連付けられていない NSG は、[Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup) を使用して移行できます。|
 | DNS サーバー |DNS サーバー |仮想ネットワークまたは VM に関連付けられている DNS サーバーは、該当するリソース移行の一環として、すべてのプロパティと共に移行されます。 |
-| UDR |UDR |サブネットに関連付けられているユーザー定義のルートは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの UDR は削除されません。 UDR の管理プレーン操作は、移行中はブロックされます。 関連付けられていない UDR は、[Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable?view=azuresmps-4.0.0) を使用して移行できます。 |
+| UDR |UDR |サブネットに関連付けられているユーザー定義のルートは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの UDR は削除されません。 UDR の管理プレーン操作は、移行中はブロックされます。 関連付けられていない UDR は、[Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable) を使用して移行できます。 |
 | VM のネットワーク構成の IP 転送プロパティ |NIC の IP 転送プロパティ |VM上 の IP 転送プロパティは、移行中、ネットワーク インターフェイスでプロパティに変換されます。 |
 | 複数の IP のあるロード バランサー |複数のパブリック IP リソースのあるロード バランサー |移行後、ロード バランサーが関連付けられているすべてのパブリック IP がパブリック IP リソースに変換され、ロード バランサーに関連付けられます。 |
 | VM の内部 DNS 名 |NIC の内部 DNS 名 |移行中、VM の内部 DNS サフィックスは、NIC の "InternalDomainNameSuffix" という名前の読み取り専用プロパティに移行されます。 サフィックス名は移行後もそのままで、VM 解決は前と同じように動作し続けます。 |

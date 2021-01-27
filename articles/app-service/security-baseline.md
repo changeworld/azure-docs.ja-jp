@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197933"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736090"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service 用の Azure セキュリティ ベースライン
 
@@ -71,7 +71,7 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-- [App Service の監視と保護を有効にする方法](/azure/security-center/defender-for-app-service-introduction)
+- [App Service の監視と保護を有効にする方法](../security-center/defender-for-app-service-introduction.md)
 
 **Azure Security Center の監視**: はい
 
@@ -168,7 +168,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integration)
+- [「App Service 環境をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
 
 **Azure Security Center の監視**: はい
 
@@ -205,7 +205,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integration)
+- [「App Service 環境をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -221,7 +221,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restrictions)
+- [Azure App Service のアクセス制限](./app-service-ip-restrictions.md)
 
 **Azure Security Center の監視**: 適用なし
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581308"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735266"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Azure Kubernetes Service (AKS) ノード プールのノード構成をカスタマイズする (プレビュー)
 
@@ -132,7 +132,7 @@ az extension update --name aks-preview
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | この値により、`hugepages` をより多く使用できるように、カーネルでメモリの最適化をアグレッシブに使用する必要があるかどうかが制御されます。 | 
 
 > [!IMPORTANT]
-> 検索のしやすさと読みやすさを高めるために、このドキュメントには OS 設定が名前で記載されていますが、構成 JSON ファイルまたは AKS API には [camelCase の大文字と小文字の規則](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions)を使用して追加する必要があります。
+> 検索のしやすさと読みやすさを高めるために、このドキュメントには OS 設定が名前で記載されていますが、構成 JSON ファイルまたは AKS API には [camelCase の大文字と小文字の規則](/dotnet/standard/design-guidelines/capitalization-conventions)を使用して追加する必要があります。
 
 次の内容を持つ新しいファイル `kubeletconfig.json` を作成します。
 

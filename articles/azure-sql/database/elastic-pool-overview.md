@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008590"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732696"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Azure SQL Database におけるエラスティック プールを利用した複数のデータベースの管理およびスケーリング
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,7 +156,7 @@ Azure Portal でエラスティック プールを作成できる方法には次
 
 Azure Portal では、エラスティック プールとそのプール内のデータベースの使用率を監視できます。 また、エラスティック プールに対して複数の変更を行い、すべての変更を同時に送信できます。 このような変更としては、データベースの追加または削除、エラスティック プールの設定の変更、データベース設定の変更などがあります。
 
-組み込みの[パフォーマンス監視](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance)および[アラート ツール](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)と、パフォーマンス評価とを組み合わせて使用できます。  さらに、SQL Database では、監視を容易にするために[メトリックとリソース ログを出力する](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal)ことができます。
+組み込みの[パフォーマンス監視](./performance-guidance.md)および[アラート ツール](./alerts-insights-configure-portal.md)と、パフォーマンス評価とを組み合わせて使用できます。  さらに、SQL Database では、監視を容易にするために[メトリックとリソース ログを出力する](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal)ことができます。
 
 ## <a name="customer-case-studies"></a>お客様導入事例
 

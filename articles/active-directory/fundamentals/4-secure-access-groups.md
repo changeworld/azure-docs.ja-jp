@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222379"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725246"
 ---
 # <a name="securing-external-access-with-groups"></a>グループを使用して外部アクセスをセキュリティで保護する 
 
@@ -48,13 +48,13 @@ ms.locfileid: "98222379"
 
    * *既定では、すべてのテナント メンバーが Azure AD セキュリティ グループを作成できます*。 
 
-      * [管理者以外のユーザーに対して portal へのアクセスを制限](../develop/howto-restrict-your-app-to-a-set-of-users.md)でき、[PowerShell](../users-groups-roles/groups-troubleshooting.md) のグループ作成機能を無効にすることができます。 
+      * [管理者以外のユーザーに対して portal へのアクセスを制限](../develop/howto-restrict-your-app-to-a-set-of-users.md)でき、[PowerShell](../enterprise-users/groups-troubleshooting.md) のグループ作成機能を無効にすることができます。 
 
-      * また、[Azure Active Directory でセルフサービス グループ管理を設定する](../users-groups-roles/groups-self-service-management.md)こともできます。 
+      * また、[Azure Active Directory でセルフサービス グループ管理を設定する](../enterprise-users/groups-self-service-management.md)こともできます。 
 
    * *既定では、すべてのユーザーが M365 グループを作成でき、グループは、テナント内のすべて (内部および外部) のユーザーが参加できるように開かれています*。 
 
-      * [Microsoft 365 グループの作成](https://docs.microsoft.com/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide)を特定のセキュリティ グループのメンバーに制限できます。 この設定を構成するには、Windows PowerShell を使用します。 
+      * [Microsoft 365 グループの作成](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide)を特定のセキュリティ グループのメンバーに制限できます。 この設定を構成するには、Windows PowerShell を使用します。 
 
 * **ユーザーをグループに招待できる必要があるのは誰ですか?** すべてのグループ メンバーが他のメンバーを追加できますか、それともグループ所有者のみがメンバーを追加できますか?
 
@@ -80,7 +80,7 @@ ms.locfileid: "98222379"
 
 ![動的メンバーシップの規則の構成を示すスクリーンショット。](media/secure-external-access/4-dynamic-membership-rules.png)
 
-動的グループの詳細については、「[Azure Active Directory で動的グループを作成または更新する](../users-groups-roles/groups-create-rule.md)」を参照してください。
+動的グループの詳細については、「[Azure Active Directory で動的グループを作成または更新する](../enterprise-users/groups-create-rule.md)」を参照してください。
 
 ### <a name="do-not-use-groups-for-multiple-purposes"></a>複数の目的でグループを使用しない
 
@@ -117,7 +117,7 @@ Azure AD セキュリティ グループおよび Microsoft 365 グループは�
 
 ## <a name="azure-ad-security-groups"></a>Azure AD セキュリティ グループ 
 
-[Azure AD セキュリティ グループ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)にはユーザーまたはデバイスを含めることができ、次のものへのアクセスを管理するために使用できます 
+[Azure AD セキュリティ グループ](./active-directory-manage-groups.md)にはユーザーまたはデバイスを含めることができ、次のものへのアクセスを管理するために使用できます 
 
 * Microsoft 365 アプリなどの Azure リソース、および Dropbox の ServiceNow などのサービスとしてのソフトウェア (SaaS) アプリ。
 
@@ -127,11 +127,11 @@ Azure AD セキュリティ グループおよび Microsoft 365 グループは�
 
 Azure AD セキュリティ グループは、次の目的でも使用できます。
 
-* M365、Dynamics 365、Enterprise Mobility and Security などのサービスのライセンスを割り当てる。 詳細については、[グループベースのライセンス](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal)に関する記事を参照してください。
+* M365、Dynamics 365、Enterprise Mobility and Security などのサービスのライセンスを割り当てる。 詳細については、[グループベースのライセンス](./active-directory-licensing-whatis-azure-portal.md)に関する記事を参照してください。
 
-* 昇格された権限を割り当てる。 詳細については、[クラウド グループを使用してロールの割り当てを管理する (プレビュー)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept) に関する記事を参照してください。 
+* 昇格された権限を割り当てる。 詳細については、[クラウド グループを使用してロールの割り当てを管理する (プレビュー)](../roles/groups-concept.md) に関する記事を参照してください。 
 
-[Azure portal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) でグループを作成するには、[Azure Active Directory]、[グループ] の順に移動します。 [PowerShell コマンドレット](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)を使用して Azure AD セキュリティ グループを作成することもできます。 
+[Azure portal](./active-directory-groups-create-azure-portal.md) でグループを作成するには、[Azure Active Directory]、[グループ] の順に移動します。 [PowerShell コマンドレット](../enterprise-users/groups-settings-v2-cmdlets.md)を使用して Azure AD セキュリティ グループを作成することもできます。 
 
 > [!NOTE]
 > セキュリティ グループは、最大 1,500 のアプリケーションの割り当てに使用できますが、それ以上には使用できません。 
@@ -146,17 +146,17 @@ Azure AD セキュリティ グループは、次の目的でも使用できま�
 
 ハイブリッド組織には、オンプレミスのインフラストラクチャと Azure AD クラウド インフラストラクチャの両方があります。 Active Directory を使用する多くのハイブリッド組織では、セキュリティ グループをオンプレミスで作成し、それらをクラウドに同期します。 この方法を使用すると、セキュリティ グループに追加できるのは、オンプレミス内のユーザーのみになります。
 
-**オンプレミスの侵害を利用して Microsoft 365 テナントへのアクセスが取得される危険性があるため、オンプレミスのインフラストラクチャを侵害から保護する必要があります**。 ガイダンスについては、[オンプレミスへの攻撃から Microsoft 365 を保護する方法](https://aka.ms/protectm365)に関する記事を参照してください。
+**オンプレミスの侵害を利用して Microsoft 365 テナントへのアクセスが取得される危険性があるため、オンプレミスのインフラストラクチャを侵害から保護する必要があります**。 ガイダンスについては、[オンプレミスへの攻撃から Microsoft 365 を保護する方法](./protect-m365-from-on-premises-attacks.md)に関する記事を参照してください。
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 グループ
 
-[Microsoft 365 グループ](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)は、M365 全体でのすべてのアクセスを管理する基本的なメンバーシップ サービスです。 これは、[Azure portal](https://portal.azure.com/)、または [M365 ポータル](https://admin.microsoft.com/)から作成できます。 M365 グループを作成すると、コラボレーションに使用されるリソース グループへのアクセスを付与することになります。 これらのリソースの完全な一覧については、「[管理者向け Microsoft 365 グループの概要](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)」を参照してください。
+[Microsoft 365 グループ](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)は、M365 全体でのすべてのアクセスを管理する基本的なメンバーシップ サービスです。 これは、[Azure portal](https://portal.azure.com/)、または [M365 ポータル](https://admin.microsoft.com/)から作成できます。 M365 グループを作成すると、コラボレーションに使用されるリソース グループへのアクセスを付与することになります。 これらのリソースの完全な一覧については、「[管理者向け Microsoft 365 グループの概要](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)」を参照してください。
 
 M365 グループでは、ロールについて次のような違いがあります。
 
 * **所有者** - グループ所有者は、メンバーの追加または削除を行うことができます。また、共有の受信トレイから会話を削除したり、グループ設定を変更したりできる固有のアクセス許可を持つことができます。 グループ所有者は、グループ名の変更、説明や画像の更新などを行うことができます。
 
-* **メンバー** - メンバーは、グループ内のすべてのものにアクセスできますが、グループ設定を変更することはできません。 既定では、グループのメンバーは自分のグループにゲストを招待できますが、管理者は[この設定を制御](https://docs.microsoft.com/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide)できます。
+* **メンバー** - メンバーは、グループ内のすべてのものにアクセスできますが、グループ設定を変更することはできません。 既定では、グループのメンバーは自分のグループにゲストを招待できますが、管理者は[この設定を制御](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide)できます。
 
 * **ゲスト** - グループのゲストは、組織外部のメンバーです。 既定では、ゲストに対して、チーム内の機能が多少制限されます。
 
