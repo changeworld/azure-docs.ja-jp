@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 4f1fd0f88c7165a409644029f247b090df285138
-  ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+  ms.openlocfilehash: ad47bde23a7125bac60c9f61687e3ff4e94b7a01
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2020
-  ms.locfileid: "94506041"
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98877698"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
     - text: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
       url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティングについて説明します。
-      url: ./troubleshoot-authentication-error-rdp-vm.md
+      url: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
     - text: VM ゲスト ネットワーク カードが無効になっている
       url: ./troubleshoot-rdp-nic-disabled.md
 - title: パスワードのリセット

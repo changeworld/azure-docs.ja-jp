@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f0f9b79e193c06b6492cfffcbf25811edb5c40d3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 2ecc2bfe6bdc06ede61e6c4d1e6eccfc9ef6323a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967023"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878004"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI で特殊化されたイメージ バージョンを使用してスケール セットを作成する
 
-共有イメージ ギャラリーに格納されている[特殊化されたイメージ バージョン](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)からスケール セットを作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、「[一般化されたイメージからスケール セットを作成する](instance-generalized-image-version-cli.md)」を参照してください。
+共有イメージ ギャラリーに格納されている[特殊化されたイメージ バージョン](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)からスケール セットを作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、「[一般化されたイメージからスケール セットを作成する](instance-generalized-image-version-cli.md)」を参照してください。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -54,7 +54,7 @@ az vmss create \
 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Image Builder (プレビュー)](../virtual-machines/linux/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
+[Azure Image Builder (プレビュー)](../virtual-machines/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 

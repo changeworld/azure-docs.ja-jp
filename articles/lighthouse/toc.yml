@@ -45,6 +45,14 @@
           href: security-baseline.md
 - name: 操作方法ガイド
   items:
+    - name: 顧客のアクション
+      items:
+        - name: サービス プロバイダーを表示し、管理する
+          displayName: 'customer, update, visibility, control'
+          href: ./how-to/view-manage-service-providers.md
+        - name: サービス プロバイダーのアクティビティを表示する
+          displayName: 'monitor, log, customer, visibility, transparency, control'
+          href: ./how-to/view-service-provider-activity.md
     - name: Azure Lighthouse への顧客のオンボード
       displayName: resource management
       href: ./how-to/onboard-customer.md
@@ -87,14 +95,6 @@
           href: ./how-to/deploy-policy-remediation.md
     - name: Azure Sentinel の統合
       href: ./how-to/manage-sentinel-workspaces.md
-    - name: 顧客のアクション
-      items:
-        - name: サービス プロバイダーを表示し、管理する
-          displayName: 'customer, update'
-          href: ./how-to/view-manage-service-providers.md
-        - name: サービス プロバイダーのアクティビティを表示する
-          displayName: 'monitor, log'
-          href: ./how-to/view-service-provider-activity.md
 - name: リファレンス
   items:
     - name: Azure CLI

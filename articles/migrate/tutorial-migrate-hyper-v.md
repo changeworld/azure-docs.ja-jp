@@ -9,12 +9,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 48fe0c737cf7005676a5c803107b4402c7039141
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752755"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878174"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. Hyper-V ホストの移行の要件と、VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements)します。
 3. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。
 4. [Hyper-V VM を評価](tutorial-assess-hyper-v.md)したうえで Azure に移行することをお勧めしますが、必須ではありません。
-5. 既に作成されているプロジェクトに移動するか、[新しいプロジェクトを作成](https://docs.microsoft.com/azure/migrate/create-manage-projects)します。
+5. 既に作成されているプロジェクトに移動するか、[新しいプロジェクトを作成](./create-manage-projects.md)します。
 6. ご使用の Azure アカウントのアクセス許可を確認します。Azure アカウントには、VM を作成し、Azure マネージド ディスクに書き込むためのアクセス許可が必要です。
 
 ## <a name="download-and-install-the-provider"></a>プロバイダーをダウンロードしてインストールする

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962450"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878512"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -263,7 +263,7 @@ Azure のファイル サービスにファイルを転送しようとした場�
 -   書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
 -   次のように適切なコピー方法を使用します。
     -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
-    -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](./storage-files-deployment-guide.md#robocopy) を使用します。
+    -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](./storage-how-to-create-file-share.md) を使用します。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 または Windows Server 2012 R2 に関する考慮事項
 
@@ -406,8 +406,8 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 5. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。 
 6. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 有効な Kerberos トークンがない場合、klist get cifs/storage-account-name.file.core.windows.net コマンドレットを実行し、エラー コードを調べ、チケット取得失敗の根本原因を探ります。
 7. CheckStorageAccountDomainJoined: AD 認証が有効になっており、アカウントの AD プロパティが設定されているかどうかを確認します。 有効になっていない場合、[こちら](./storage-files-identity-ad-ds-enable.md)の指示を参照し、Azure Files で AD DS 認証を有効にします。 
-8. CheckUserRbacAssignment:Azure Files にアクセスするための共有レベルのアクセス許可を付与するために、AD ユーザーに適切な RBAC ロールの割り当てがあるかどうかを確認します。 ない場合は、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)の指示を参照して、共有レベルのアクセス許可を構成してください。 (AzFilesHybrid バージョン 0.2.3 以降でサポートされています)
-9. CheckUserFileAccess:AD ユーザーに Azure Files にアクセスするための適切なディレクトリ/ファイル アクセス許可 (Windows ACL) があるかどうかを確認します。 ない場合は、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions)の指示を参照して、ディレクトリ/ファイル レベルのアクセス許可を構成してください。 (AzFilesHybrid バージョン 0.2.3 以降でサポートされています)
+8. CheckUserRbacAssignment:Azure Files にアクセスするための共有レベルのアクセス許可を付与するために、AD ユーザーに適切な RBAC ロールの割り当てがあるかどうかを確認します。 ない場合は、[こちら](./storage-files-identity-ad-ds-assign-permissions.md)の指示を参照して、共有レベルのアクセス許可を構成してください。 (AzFilesHybrid バージョン 0.2.3 以降でサポートされています)
+9. CheckUserFileAccess:AD ユーザーに Azure Files にアクセスするための適切なディレクトリ/ファイル アクセス許可 (Windows ACL) があるかどうかを確認します。 ない場合は、[こちら](./storage-files-identity-ad-ds-configure-permissions.md)の指示を参照して、ディレクトリ/ファイル レベルのアクセス許可を構成してください。 (AzFilesHybrid バージョン 0.2.3 以降でサポートされています)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
 

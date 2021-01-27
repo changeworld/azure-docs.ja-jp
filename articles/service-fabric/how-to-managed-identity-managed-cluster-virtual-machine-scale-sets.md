@@ -4,19 +4,19 @@ description: この記事では、Service Fabric マネージド クラスター
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96839715"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878428"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Service Fabric マネージド クラスターのノード　タイプにマネージド ID を追加する (プレビュー)
 
-Service Fabric 管理対象クラスター内の各ノード タイプは、仮想マシン スケール セットによって提供されます。 マネージド クラスターのノード タイプでマネージド ID を使用できるようにするために、プロパティ `vmManagedIdentity` が、使用される ID の一覧 `userAssignedIdentities` を含むノード タイプ定義に追加されました。 機能には、マネージド ID を非マネージド クラスター内でどのように使用できるか (たとえば、[Azure Key Vault 仮想マシン スケール セット拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)でマネージド ID を使用するなど) が反映されます。
+Service Fabric 管理対象クラスター内の各ノード タイプは、仮想マシン スケール セットによって提供されます。 マネージド クラスターのノード タイプでマネージド ID を使用できるようにするために、プロパティ `vmManagedIdentity` が、使用される ID の一覧 `userAssignedIdentities` を含むノード タイプ定義に追加されました。 機能には、マネージド ID を非マネージド クラスター内でどのように使用できるか (たとえば、[Azure Key Vault 仮想マシン スケール セット拡張機能](../virtual-machines/extensions/key-vault-windows.md)でマネージド ID を使用するなど) が反映されます。
 
 
-ノード タイプでマネージド ID を利用する Service Fabric マネージド クラスターのデプロイの例については、[こちらのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)を参照してください。 サポートされているリージョンの一覧については、「[マネージド クラスターに関してよく寄せられる質問](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview)」をご覧ください。
+ノード タイプでマネージド ID を利用する Service Fabric マネージド クラスターのデプロイの例については、[こちらのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)を参照してください。 サポートされているリージョンの一覧については、「[マネージド クラスターに関してよく寄せられる質問](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview)」をご覧ください。
 
 > [!NOTE]
 > 現在、この機能でサポートされているのはユーザー割り当て ID みです。
@@ -26,7 +26,7 @@ Service Fabric 管理対象クラスター内の各ノード タイプは、仮�
 作業を開始する前に、次のことを行います。
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-* PowerShell の使用を計画している場合は、CLI リファレンス コマンドを実行するために Azure CLI を[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+* PowerShell の使用を計画している場合は、CLI リファレンス コマンドを実行するために Azure CLI を[インストール](/cli/azure/install-azure-cli)します。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する 
 
@@ -131,4 +131,4 @@ New-AzRoleAssignment -PrincipalId fbc587f2-66f5-4459-a027-bcd908b9d278 -RoleDefi
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Service Fabric マネージド クラスターにアプリをデプロイする](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [Service Fabric マネージド クラスターにアプリをデプロイする](./tutorial-managed-cluster-deploy-app.md)

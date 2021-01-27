@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916458"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878495"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS ファイル共有に関するトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "97916458"
 Azure Files では、英数字の UID/GID は許可されていません。 そのため、idmapping を無効にする必要があります。 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>原因 2: idmapping は無効になっていたが、無効なファイル名またはディレクトリ名が検出された後に再度有効化された
-idmapping が正しく無効になっている場合でも、idmapping を無効にする設定が上書きされる場合があります。 たとえば、Azure Files が無効なファイル名を検出すると、エラーが返されます。 この特定のエラー コードが発生すると、NFS v 4.1 Linux クライアントは idmapping を再度有効にすることを決定し、今後の要求は再び英数字の UID/GID を使用して送信されます。 Azure Files でサポートされていない文字の一覧については、こちらの[記事](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)をご覧ください。 コロンは、サポートされていない文字の 1 つです。 
+idmapping が正しく無効になっている場合でも、idmapping を無効にする設定が上書きされる場合があります。 たとえば、Azure Files が無効なファイル名を検出すると、エラーが返されます。 この特定のエラー コードが発生すると、NFS v 4.1 Linux クライアントは idmapping を再度有効にすることを決定し、今後の要求は再び英数字の UID/GID を使用して送信されます。 Azure Files でサポートされていない文字の一覧については、こちらの[記事](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)をご覧ください。 コロンは、サポートされていない文字の 1 つです。 
 
 ### <a name="workaround"></a>回避策
 idmapping が無効になっており、再度有効にするものがないことを確認してから、次の手順を実行します。
@@ -68,7 +68,7 @@ NFS は、次の構成のストレージ アカウントでのみ使用できま
 - レベル - Premium
 - アカウントの種類 - FileStorage
 - 冗長性 - LRS
-- リージョン - [サポートされているリージョンの一覧](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- リージョン - [サポートされているリージョンの一覧](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>解決策
 

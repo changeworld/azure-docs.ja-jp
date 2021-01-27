@@ -7,19 +7,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656958"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878055"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
 この記事では、Azure Portal を使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事の手順は、クラシック デプロイ モデルに適用され、現在のデプロイ モデルである Resource Manager には適用されません。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](./tutorial-site-to-site-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -33,7 +33,7 @@ ms.locfileid: "94656958"
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
-* クラシック デプロイ モデルで作業することを確認します。 Resource Manager デプロイ モデルで作業する場合は、[サイト間接続の作成 (Resource Manager)](vpn-gateway-howto-site-to-site-resource-manager-portal.md) に関する記事を参照してください。 Resource Manager デプロイ モデルはレガシーであるため、このクラシック モデルを使用することをお勧めします。
+* クラシック デプロイ モデルで作業することを確認します。 Resource Manager デプロイ モデルで作業する場合は、[サイト間接続の作成 (Resource Manager)](./tutorial-site-to-site-portal.md) に関する記事を参照してください。 Resource Manager デプロイ モデルはレガシーであるため、このクラシック モデルを使用することをお勧めします。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。

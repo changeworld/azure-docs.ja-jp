@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179165"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878089"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
@@ -30,7 +30,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、Azure ロールベースの優れたアクセス制御 (Azure RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。 | - |
-| すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
+| すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
 | BLOB の論理的な削除を有効にする | BLOB の論理的な削除を使用すると、削除されてしまった BLOB データを回復できます。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)に関するページを参照してください。 | - |
 | コンテナーの論理的な削除を有効にする | コンテナーの論理的な削除を使用すると、削除されてしまったコンテナーを回復できます。 コンテナーの論理的な削除の詳細については、「[コンテナーの論理的な削除 (プレビュー)](./soft-delete-container-overview.md)」を参照してください。 | - |
 | アカウントの誤った削除を防止するためにストレージ アカウントをロックする | 組織内の他のユーザーによって誤って削除または変更されないようにするために、Azure Resource Manager リソース (サブスクリプション、リソース グループ、ストレージ アカウントなど) をロックできます。 ストレージ アカウントをロックしても、そのアカウント内のデータが削除されなくなるわけではありません。 そのアカウント自体が削除されなくなるだけです。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
@@ -63,7 +63,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 信頼された Microsoft サービスによるストレージ アカウントへのアクセスを許可する | ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外を追加して、信頼された Microsoft サービスがストレージ アカウントにアクセスできるようにすることによって、他の Azure サービスからの要求を許可できます。 信頼された Microsoft サービスの例外の追加の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。| - |
 | プライベート エンドポイントを使用する | プライベート エンドポイントによって、Azure 仮想ネットワーク (VNet) からストレージ アカウントにプライベート IP アドレスが割り当てられます。 これにより、VNet とストレージ アカウントの間のすべてのトラフィックがプライベート リンクで保護されます。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する](../../private-link/tutorial-private-endpoint-storage-portal.md)」を参照してください。 | - |
 | VNet サービス タグを使用する | サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 Azure Storage でサポートされるサービス タグの詳細については、[Azure サービス タグの概要](../../virtual-network/service-tags-overview.md)に関する記事を参照してください。 サービス タグを使用してアウトバウンド ネットワーク ルールを作成する方法を示すチュートリアルについては、[PaaS リソースへのアクセスの制限](../../virtual-network/tutorial-restrict-network-access-to-resources.md)に関するページを参照してください。 | - |
-| 特定のネットワークへのネットワーク アクセスを制限する | アクセスを必要とするクライアントをホストしているネットワークへのネットワーク アクセスを制限すると、リソースがネットワーク攻撃にさらされる危険性が軽減されます。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
+| 特定のネットワークへのネットワーク アクセスを制限する | アクセスを必要とするクライアントをホストしているネットワークへのネットワーク アクセスを制限すると、リソースがネットワーク攻撃にさらされる危険性が軽減されます。 | [はい](../../security-center/security-center-remediate-recommendations.md) |
 | ネットワーク ルーティング設定の構成 | Azure ストレージ アカウントに対してネットワークのルーティング優先設定を構成し、Microsoft グローバル ネットワークまたはインターネット ルーティングを使用して、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定することができます。 詳細については、「[Azure Storage に対してネットワークのルーティング優先設定を構成する](../common/network-routing-preference.md)」を参照してください。 | - |
 
 ## <a name="loggingmonitoring"></a>ログ記録または監視

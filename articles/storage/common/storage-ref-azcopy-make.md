@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ad64d56899a9a54f4c8aede78ba6b4f2b77b8249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d9645e614730d2eb5fad8bca30486e9afef618
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331541"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878343"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -30,7 +30,7 @@ azcopy make [resourceURL] [flags]
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
