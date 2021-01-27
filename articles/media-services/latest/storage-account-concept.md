@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916322"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882248"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
@@ -56,7 +56,7 @@ Media Services v3 では、Storage API シリーズを使用してファイル�
 <sup>1</sup> Media Services v3 では、ストレージの暗号化 (AES-256 暗号化) は、Media Services v2 で資産を作成した場合の下位互換性のためにのみサポートされています。つまり、v3 は既存のストレージ暗号化済み資産で動作しますが、新規作成はできません。
 
 ## <a name="double-encryption"></a>二重暗号化
-Media Services では、二重暗号化がサポートされています。  二重暗号化の詳細については、[Azure の二重暗号化](https://docs.microsoft.com/azure/security/fundamentals/double-encryption)に関するページを参照してください。
+Media Services では、二重暗号化がサポートされています。  二重暗号化の詳細については、[Azure の二重暗号化](../../security/fundamentals/double-encryption.md)に関するページを参照してください。
 
 ## <a name="storage-account-errors"></a>ストレージ アカウント エラー
 

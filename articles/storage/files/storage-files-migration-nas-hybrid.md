@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629208"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882265"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用してネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
 
@@ -227,5 +227,5 @@ Azure File Sync の問題のトラブルシューティングについては、�
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事は、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプを理解するのに役立ちます。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
 * [AFS の概要](./storage-sync-files-planning.md)
-* [AFS デプロイ ガイド](storage-files-deployment-guide.md)
+* [AFS デプロイ ガイド](./storage-how-to-create-file-share.md)
 * [AFS のトラブルシューティング](storage-sync-files-troubleshoot.md)

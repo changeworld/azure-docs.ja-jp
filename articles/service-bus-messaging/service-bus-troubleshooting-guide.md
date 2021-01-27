@@ -3,12 +3,12 @@ title: Azure Service Bus のトラブルシューティング ガイド | Micros
 description: Azure Service Bus の使用時に発生する可能性のあるいくつかの問題のトラブルシューティングに関するヒントと推奨事項について説明します。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126871"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881216"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus のトラブルシューティング ガイド
 この記事では、Azure Service Bus の使用時に発生する可能性のあるいくつかの問題のトラブルシューティングに関するヒントと推奨事項について説明します。 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 この ID には、Service Bus トピックにアクセスするためのアクセス許可がありません。 
 
 ### <a name="resolution"></a>解像度
-このエラーを解決するには、[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) ライブラリをインストールします。  詳しくは、「[ローカル開発用における認証](../key-vault/general/service-to-service-authentication.md#local-development-authentication)」をご覧ください。 
+このエラーを解決するには、[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) ライブラリをインストールします。  詳しくは、「[ローカル開発用における認証](/dotnet/api/overview/azure/service-to-service-authentication#local-development-authentication)」をご覧ください。 
 
 ロールにアクセス許可を割り当てる方法については、「[Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する](service-bus-managed-service-identity.md)」をご覧ください。
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 110d7186db97f6fac91b8fd785384a1c2ed7a8cd
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 8b56d7294237c39d085a30a701ead3bde309759a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301683"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882367"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行中によく発生するエラー
 
@@ -41,7 +41,7 @@ ms.locfileid: "96301683"
 | HostedService {hosted-service-name} のデプロイ {deployment-name} には、物理 BLOB サイズ ({size-of-the-vhd-blob-backing-the-data-disk} バイト) が VM データ ディスクの論理サイズ ({size-of-the-data-disk-specified-in-the-vm-api} バイト) と一致しないデータ ディスク {data-disk-name} を持つ VM {vm-name} が含まれています。 移行は、Azure Resource Manager VM のデータ ディスクのサイズを指定せずに続行されます。 | このエラーは、VM API モデルのサイズを更新せずに VHD の BLOB サイズを変更した場合に発生します。 対応策の詳細な手順を[以下](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes)に示します。|
 | クラウド サービス {クラウド サービス名} 内の VM {VM 名} のメディア リンク {データ ディスク URI} を使用してデータ ディスク {データ ディスク名} を検証中にストレージ例外が発生しました。 この仮想マシンが VHD メディア リンクにアクセスできることを確認してください。 | このエラーは、VM のディスクが削除された場合、またはディスクにアクセスできなくなった場合に発生します。 VM のディスクが存在することを確認してください。|
 | HostedService {cloud-service-name} 内の VM {vm-name} に、Azure Resource Manager でサポートされない BLOB 名 {vhd-blob-name} の MediaLink {vhd-uri} があるディスクが含まれています。 | このエラーは、BLOB の名前に "/" が含まれている場合に発生します。この記号は現在、コンピューティング リソース プロバイダーでサポートされていません。 |
-| HostedService {cloud-service-name} 内のデプロイ {deployment-name} はリージョン範囲に含まれていないため、移行することができません。 このデプロイをリージョン範囲に移動する方法については、https:\//aka.ms/regionalscope を参照してください。 | 2014 年、Azure は、ネットワーク リソースをクラスター レベル スコープからリージョン スコープに移動すると発表しました。 詳細については、「[https://aka.ms/regionalscope](https://aka.ms/regionalscope)」を参照してください。 移行中のデプロイで更新操作が行われていない場合に、このエラーが発生します。その場合は、自動的にリージョン スコープに移動されます。 このエラーを回避するには、エンドポイントを VM に追加するか、データ ディスクを VM に追加してから、移行を再試行してください。 <br> 「[Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)」または「[クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](/azure/virtual-machines/linux/attach-disk-portal)」を参照してください。|
+| HostedService {cloud-service-name} 内のデプロイ {deployment-name} はリージョン範囲に含まれていないため、移行することができません。 このデプロイをリージョン範囲に移動する方法については、https:\//aka.ms/regionalscope を参照してください。 | 2014 年、Azure は、ネットワーク リソースをクラスター レベル スコープからリージョン スコープに移動すると発表しました。 詳細については、「[https://aka.ms/regionalscope](https://aka.ms/regionalscope)」を参照してください。 移行中のデプロイで更新操作が行われていない場合に、このエラーが発生します。その場合は、自動的にリージョン スコープに移動されます。 このエラーを回避するには、エンドポイントを VM に追加するか、データ ディスクを VM に追加してから、移行を再試行してください。 <br> 「[Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)」または「[クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](./linux/attach-disk-portal.md)」を参照してください。|
 | Virtual Network {vnet-name} の移行はサポートされていません。この Virtual Network にはゲートウェイ以外の PaaS 展開が含まれいるためです。 | このエラーは、Virtual Network に接続されている Application Gateway サービスや API Management サービスなどのゲートウェイ以外の PaaS デプロイがある場合に発生します。|
 
 

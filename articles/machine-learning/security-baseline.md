@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202642"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881318"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -879,9 +879,9 @@ Microsoft によって公開された Azure Marketplace の仮想マシン イ�
 
 - [Azure portal で Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md)
 
-- [VM テンプレートをダウンロードする方法に関する情報](../virtual-machines/windows/download-template.md)
+- [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 **Azure Security Center の監視**: 適用外
 
@@ -911,7 +911,7 @@ Azure Machine Learning では、作業を追跡するために Git リポジト�
 
 - [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共有イメージ ギャラリーの概要](../virtual-machines/windows/shared-image-galleries.md)
+- [共有イメージ ギャラリーの概要](../virtual-machines/shared-image-galleries.md)
 
 - [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
 

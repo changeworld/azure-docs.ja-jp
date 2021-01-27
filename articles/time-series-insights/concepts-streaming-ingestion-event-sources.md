@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232184"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881807"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -45,7 +45,7 @@ ms.locfileid: "98232184"
 
 - 環境の[スループット速度制限](./concepts-streaming-ingress-throughput-limits.md)またはパーティションごとの制限を超えないようにします。
 
-- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成します。 推奨アラート条件については、下の「[運用ワークロード](./concepts-streaming-ingestion-event-sources.md#production-workloads)」を参照してください。 
+- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成します。 推奨アラート条件については、下の「[運用ワークロード](./concepts-streaming-ingestion-event-sources.md#production-workloads)」を参照してください。
 
 - ストリーミング インジェストは、準リアルタイム データおよび最近のデータにのみ使用します。履歴データのストリーミングはサポートされていません。
 
@@ -55,14 +55,14 @@ ms.locfileid: "98232184"
 
 ## <a name="production-workloads"></a>運用ワークロード
 
-上記のベスト プラクティスに加えて、ビジネスに不可欠なワークロードには次を実装することをお勧めします。 
+上記のベスト プラクティスに加えて、ビジネスに不可欠なワークロードには次を実装することをお勧めします。
 
 - IoT Hub または Event Hub データ保有期間を最大の 7 日間に増やします。
 
-- Azure portal で環境アラートを作成します。 プラットフォーム [メトリクス](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics)に基づくアラートでは、エンドツーエンドのパイプライン動作を評価できます。 アラートを作成して管理する手順については、[こちら](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)をご覧ください。 推奨アラート条件:
+- Azure portal で環境アラートを作成します。 プラットフォーム [メトリクス](./how-to-monitor-tsi-reference.md#metrics)に基づくアラートでは、エンドツーエンドのパイプライン動作を評価できます。 アラートを作成して管理する手順については、[こちら](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)をご覧ください。 推奨アラート条件:
 
-     - IngressReceivedMessagesTimeLag が 5 分以上
-     - IngressReceivedBytes が 0
+  - IngressReceivedMessagesTimeLag が 5 分以上
+  - IngressReceivedBytes が 0
 - IoT Hub または Event Hub のパーティション間で取り込み負荷のバランスを維持します。
 
 ### <a name="historical-data-ingestion"></a>履歴データのインジェスト

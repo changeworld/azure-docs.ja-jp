@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3fd1e644d69fe1d721526afcacb362adca48bf7a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e44e7c5d04695d5bd65d2eedc5474889a707c8bd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882146"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する (プレビュー)
 
@@ -22,9 +22,9 @@ ms.locfileid: "97831807"
 
 ## <a name="prerequisites"></a>[前提条件]
 
-* [Application Insights ガイドの Java インプロセス エージェント](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights#enable-java-in-process-agent-for-application-insights)に関する記事から、Java インプロセス エージェントを有効にします。 
+* [Application Insights ガイドの Java インプロセス エージェント](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights)に関する記事から、Java インプロセス エージェントを有効にします。 
 
-* [Application Insights ガイド](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)に関する記事から、Resilience4J メトリックのディメンション コレクションを有効にします。
+* [Application Insights ガイド](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)に関する記事から、Resilience4J メトリックのディメンション コレクションを有効にします。
 
 * 開発用コンピューターでまだ使用したことがない場合は、git、Maven、Java をインストールします。
 
@@ -41,7 +41,7 @@ cd spring-cloud-circuitbreaker-demo && mvn clean package -DskipTests
 
 2. エンドポイントを使用してアプリケーションを作成します
 
-```azcli
+```azurecli
 az spring-cloud app create --name resilience4j --is-public \
     -s ${asc-service-name} -g ${asc-resource-group}
 az spring-cloud app create --name reactive-resilience4j --is-public \
@@ -50,7 +50,7 @@ az spring-cloud app create --name reactive-resilience4j --is-public \
 
 3. アプリケーションを展開する。
 
-```azcli
+```azurecli
 az spring-cloud app deploy -n resilience4j \
     --jar-path ./spring-cloud-circuitbreaker-demo-resilience4j/target/spring-cloud-circuitbreaker-demo-resilience4j-0.0.1.BUILD-SNAPSHOT.jar \
     -s ${service_name} -g ${resource_group}
@@ -91,7 +91,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >
 > ゲートウェイ アプリケーションから提供された URL に移動し、次のようにして [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) からエンドポイントにアクセスします。
 >
->   ```
+>   ```console
 >   /get
 >   /get/delay/{seconds}
 >   /get/fluxdelay/{seconds}
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>関連項目
 
-* [Application Insights](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights)
+* [Application Insights](./spring-cloud-howto-application-insights.md)
 * [分散トレース](spring-cloud-tutorial-distributed-tracing.md)
 * [サーキット ブレーカー ダッシュボード](spring-cloud-tutorial-circuit-breaker.md)

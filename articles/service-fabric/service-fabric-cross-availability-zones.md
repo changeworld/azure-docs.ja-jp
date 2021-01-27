@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250980"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876212"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -345,7 +345,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 最初の値は、**zones** プロパティで、仮想マシン スケール セットに存在する Availability Zones を指定します。
 * 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。 **3 つの AZ にまたがるスケールセットでは、"singlePlacementGroup = true" の場合でも、最大 300 VM までスケールアップできます。**
-* 3 つ目の値は、"zoneBalance" であり、true に設定されている場合、厳密なゾーン バランシングが確実に行われます。 ゾーン間で VM が不均等に分散されないようにするには、これを true に設定することをお勧めします。 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) について確認します。
+* 3 つ目の値は、"zoneBalance" であり、true に設定されている場合、厳密なゾーン バランシングが確実に行われます。 ゾーン間で VM が不均等に分散されないようにするには、これを true に設定することをお勧めします。 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing) について確認します。
 * FaultDomain と UpgradeDomain のオーバーライドは、構成する必要はありません。
 
 ```json
@@ -416,9 +416,9 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>複数の Availability Zones を持つノードの種類への移行
 すべての移行シナリオで、複数の可用性ゾーンがサポートされる新しい nodeType を追加する必要があります。 既存の nodeType を移行して複数のゾーンをサポートすることはできません。
-[こちら](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type )の記事には、新しい nodeType を追加し、さらに IP や LB リソースなどの新しい nodeType に必要な他のリソースを追加する詳細な手順が記載されています。 同じ記事には、複数の可用性ゾーンを持つ nodeType がクラスターに追加された後、既存の nodeType をインベントリから削除する方法も記載されています。
+[こちら](./service-fabric-scale-up-primary-node-type.md)の記事には、新しい nodeType を追加し、さらに IP や LB リソースなどの新しい nodeType に必要な他のリソースを追加する詳細な手順が記載されています。 同じ記事には、複数の可用性ゾーンを持つ nodeType がクラスターに追加された後、既存の nodeType をインベントリから削除する方法も記載されています。
 
-* 基本的な LB および IP リソースを使用している nodeType からの移行:これは、AZ ごとに 1 つのノードの種類を持つソリューションについて、[ここで](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip)既に説明されています。 
+* 基本的な LB および IP リソースを使用している nodeType からの移行:これは、AZ ごとに 1 つのノードの種類を持つソリューションについて、[ここで](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip)既に説明されています。 
     新しいノード の種類の場合、唯一の違いは、AZ ごとに 1 つではなく、すべての AZ について仮想マシン スケール セットが 1 つ、ノードの種類が 1 つだけであるということです。
 * 標準 SKU LB および IP リソースを NSG で使用している nodeType からの移行: 前に説明したものと同じ手順に従いますが、新しい LB、IP、NSG リソースを追加する必要はなく、同じリソースを新しい nodeType で再利用できます。
 

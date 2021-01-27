@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572172"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881637"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>環境イメージのビルドのトラブルシューティング
 
@@ -153,12 +153,12 @@ pip のサブプロセスのエラー:
 
 考えられる問題:
 - コンテナー レジストリのパス名が正しく解決されていない可能性があります。 イメージ名に二重スラッシュが使用されていること、および Linux と Windows のホストでスラッシュの方向が正しいことを確認してください。
-- 仮想ネットワークの背後にあるコンテナー レジストリで、[サポートされていないリージョン](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)内のプライベート エンドポイントを使用している場合は、ポータルからサービス エンドポイント (パブリック アクセス) を使用してコンテナー レジストリを構成し、再試行してください。
-- 仮想ネットワークの背後にコンテナー レジストリを配置した後、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)を実行して、ワークスペースがコンテナー レジストリ インスタンスと通信できるようにします。
+- 仮想ネットワークの背後にあるコンテナー レジストリで、[サポートされていないリージョン](/azure/private-link/private-link-overview#availability)内のプライベート エンドポイントを使用している場合は、ポータルからサービス エンドポイント (パブリック アクセス) を使用してコンテナー レジストリを構成し、再試行してください。
+- 仮想ネットワークの背後にコンテナー レジストリを配置した後、[Azure Resource Manager テンプレート](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)を実行して、ワークスペースがコンテナー レジストリ インスタンスと通信できるようにします。
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>ワークスペース コンテナー レジストリで 401 エラーが発生する
 
-[ws.sync_keys()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) を使用してストレージ キーを再同期します。
+[ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) を使用してストレージ キーを再同期します。
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>環境で "Waiting for other conda operations to finish..." (他の Conda 操作の完了を待機しています...) というエラーが継続してスローされる
 
@@ -166,7 +166,7 @@ pip のサブプロセスのエラー:
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>カスタム Docker イメージがレジストリに存在しない
 
-[正しいタグ](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment)が使用されていて、`user_managed_dependencies = True` であることを確認します。 `Environment.python.user_managed_dependencies = True` を使用すると、conda が無効になり、ユーザーがインストールしたパッケージが使用されます。
+[正しいタグ](/azure/machine-learning/how-to-use-environments#create-an-environment)が使用されていて、`user_managed_dependencies = True` であることを確認します。 `Environment.python.user_managed_dependencies = True` を使用すると、conda が無効になり、ユーザーがインストールしたパッケージが使用されます。
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>次の一般的な仮想ネットワークの問題のいずれかが発生する
 
@@ -184,9 +184,9 @@ pip のサブプロセスのエラー:
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>ストレージのネットワーク セキュリティが有効になっているときは実験を実行できない
 
-既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする場合は、MicrosoftContainerRegistry および AzureFrontDoor.FirstParty の[サービス タグ](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network)を使用して、Azure Container Registry とその依存関係を許可リストに載せる必要があります。
+既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする場合は、MicrosoftContainerRegistry および AzureFrontDoor.FirstParty の[サービス タグ](/azure/machine-learning/how-to-enable-virtual-network)を使用して、Azure Container Registry とその依存関係を許可リストに載せる必要があります。
 
- 詳細については、[仮想ネットワークの有効化](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)に関する記事を参照してください。
+ 詳細については、[仮想ネットワークの有効化](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)に関する記事を参照してください。
 
 ### <a name="you-need-to-create-an-icm"></a>ICM を作成する必要がある
 

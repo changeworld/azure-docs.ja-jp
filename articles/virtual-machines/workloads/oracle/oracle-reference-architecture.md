@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486744"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882299"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
 
@@ -207,7 +207,7 @@ Oracle Data Guard は、システム管理、ユーザー定義、コンポジ�
 
 Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../manage-availability.md)に関するページをご覧ください。 
 
-仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) または [Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
+仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) または [Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
 
 ## <a name="architecture-and-design-considerations"></a>アーキテクチャと設計に関する考慮事項
 
@@ -216,7 +216,7 @@ Oracle ワークロードを Azure にデプロイする場合、ホスト OS �
 - リージョン内で高可用性を実現するには、可用性ゾーンを使用します。
 - Oracle データベースには、Ultra ディスク (使用可能な場合) か Premium ディスクの使用をご検討ください。
 - スタンバイ Oracle データベースは、Oracle Data Guard を使用して別の Azure リージョンに設定することをご検討ください。
-- アプリケーションとデータベース層の間の待機時間を短縮するには、[近接通信配置グループ](../../../virtual-machines/linux/co-location.md#proximity-placement-groups)の使用をご検討ください。
+- アプリケーションとデータベース層の間の待機時間を短縮するには、[近接通信配置グループ](../../co-location.md#proximity-placement-groups)の使用をご検討ください。
 - 管理、監視、ログのため、[Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) を設定します。
 - データベースのストレージ管理を合理化するには、Oracle Automatic Storage Management (ASM) の使用をご検討ください。
 - データベースへの修正プログラムと更新プログラムの適用を管理してダウンタイムが発生しないようにするには、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) を使用します。

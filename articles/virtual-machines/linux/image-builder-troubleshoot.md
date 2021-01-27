@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52801d0d7b02bb3637b5edb03072bde04a023de9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969978"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881790"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
 
@@ -586,7 +586,7 @@ template name:  t_1556938436xxx
 
 ビルドがユーザーによって取り消されなかった場合は、Azure DevOps ユーザー エージェントによって取り消されました。 最も可能性が高いのは、Azure DevOps の機能により、1 時間のタイムアウトが発生した場合です。 プライベート プロジェクトとエージェントを使用している場合は、60 分のビルド時間が得られます。 ビルドがタイムアウトを超えた場合、DevOps によって実行中のタスクが取り消されます。
 
-Azure DevOps の機能と制限事項の詳細については、「[Microsoft によってホストされるエージェント](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)」を参照してください
+Azure DevOps の機能と制限事項の詳細については、「[Microsoft によってホストされるエージェント](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)」を参照してください
  
 #### <a name="solution"></a>解決策
 
@@ -674,4 +674,4 @@ Support Subtopic: Azure Image Builder
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、[Azure Image Builder の概要](image-builder-overview.md)に関する記事を参照してください。
+詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。

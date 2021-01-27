@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 050e6b5007b9fbaedc412d8062430f1c2c1691fd
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7bca683ea075710aa6fc677fcf457ceb2e0e5098
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923945"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881013"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
@@ -236,7 +236,7 @@ AzCopy は、ストレージ アカウント間でのファイル コピーに�
 
 #### <a name="download-from-a-share-snapshot"></a>共有スナップショットからのダウンロード
 
-ファイルまたはディレクトリの特定のバージョンをダウンロードするには、共有スナップショットの **DateTime** 値を参照します。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](/azure/storage/files/storage-snapshots-files)」を参照してください。 
+ファイルまたはディレクトリの特定のバージョンをダウンロードするには、共有スナップショットの **DateTime** 値を参照します。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。 
 
 |    |     |
 |--------|-----------|
@@ -251,7 +251,7 @@ AzCopy を使用し、ファイルを他のストレージ アカウントにコ
 
 AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) [API](/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。 `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、これらの操作のスループットを上げることができます。 詳しくは、「[スループットを最適化する](storage-use-azcopy-configure.md#optimize-throughput)」をご覧ください。
 
-また、共有スナップショットの **DateTime** 値を参照して、特定のバージョンのファイルをコピーすることもできます。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](/azure/storage/files/storage-snapshots-files)」を参照してください。 
+また、共有スナップショットの **DateTime** 値を参照して、特定のバージョンのファイルをコピーすることもできます。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。 
 
 このセクションには、次の例が含まれています。
 

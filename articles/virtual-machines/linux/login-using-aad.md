@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 3e50b6209c7790853158a1d2be2f42d625b6753b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510891"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882129"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -201,7 +201,7 @@ Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute
 Access denied
 ```
 > [!NOTE]
-> Azure のロールの割り当てに関する問題が発生した場合は、「[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)」を参照してください。
+> Azure のロールの割り当てに関する問題が発生した場合は、「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md#azure-role-assignments-limit)」を参照してください。
 
 ### <a name="continued-ssh-sign-in-prompts"></a>SSH サインイン画面が繰り返し表示される
 

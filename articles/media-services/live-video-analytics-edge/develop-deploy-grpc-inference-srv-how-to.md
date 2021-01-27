@@ -3,12 +3,12 @@ title: gRPC 推論サーバーの開発とデプロイ - Azure
 description: この記事では、gRPC 推論サーバーを開発およびデプロイする方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97417511"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881654"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>攻略ガイド - gRPC 推論サーバーの開発とデプロイ
 
@@ -26,9 +26,9 @@ ms.locfileid: "97417511"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [サポートされている Linux オペレーティング システム](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス、または Windows マシン。
+* [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス、または Windows マシン。
 * マシンに [Docker がインストール](https://docs.docker.com/desktop/#download-and-install)されている。
-* [IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux)がインストールされている。
+* [IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)がインストールされている。
 
 ## <a name="grpc-implementation-steps"></a>gRPC の実装手順
 
@@ -197,7 +197,7 @@ gRPC サーバーのポート接続を構成し初期化したので、次は着
         1. 処理のために、バイト配列内のイメージを変換します。 次のメソッドを参照してください: `GetBytes(Bitmap image)`
         
             現在使用しているサンプル プロセッサは、JPG でエンコードされたイメージ フレームのみをサポートしており、ピクセル形式ではサポートしていません。 カスタム プロセッサが別のエンコードや形式をサポートしている場合は、プロセッサ クラスの `IsMediaFormatSupported` メソッドを更新します。
-        1. [ColorMatrix クラス](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true)を使用して、画像をグレー スケールに変換します。 次のメソッドを参照してください: `ToGrayScale(Image source)`。
+        1. [ColorMatrix クラス](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1)を使用して、画像をグレー スケールに変換します。 次のメソッドを参照してください: `ToGrayScale(Image source)`。
         1. グレー スケールの画像を取得した後、グレー スケールの平均バイト数を計算します。
         1. 平均値が 127 未満の場合は、画像を "濃色" として分類し、それ以外の場合は、信頼度の値を 1.0 として "薄色" として分類します。 次のメソッドを参照してください: `ProcessImage(List<Image> images)`。
 
@@ -213,7 +213,7 @@ gRPC サーバーのポート接続を構成し初期化したので、次は着
 
 gRPC 拡張モジュールを作成したので、次に、メディア グラフ トポロジを作成してデプロイします。
 
-1. Visual Studio Code を使用し、[こちらの手順](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution)に従って Docker にサインインします。
+1. Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution)に従って Docker にサインインします。
 1. Visual Studio Code で、src/edge に移動します。 .env ファイルと、いくつかの展開テンプレート ファイルがあります。
 
     展開テンプレートは、エッジ デバイスの配置マニフェストを参照しています。 そこには、いくつかのプレースホルダー値が含まれています。 .env ファイルには、それらの変数の値が格納されています。
@@ -309,4 +309,3 @@ gRPC 拡張モジュールを作成したので、次に、メディア グラ�
 ## <a name="next-steps"></a>次のステップ
 
 [お使いのモデルでのライブ ビデオ](use-your-model-quickstart.md) クイックスタートで述べられた **イベントの監視の準備をする** 手順に従って、サンプルを実行し、結果を解釈します。 また、[gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json)、[CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json)、EVRtoAssetsByGrpcExtension、[EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json) などの gRPC トポロジのサンプルを確認してください。
-

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523353"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881874"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Azure ディスクを Windows VM のゲスト ディスクにマップする方法
 
@@ -29,11 +29,11 @@ VM のゲスト ディスクをバックアップする Azure ディスクの特
 
 ## <a name="finding-the-lun"></a>LUN の検索
 
-LUN を検索する方法は 2 つあります。[記憶域スペース](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview)を使用しているかどうかによって、どちらの方法を選択するかが異なります。
+LUN を検索する方法は 2 つあります。[記憶域スペース](/windows-server/storage/storage-spaces/overview)を使用しているかどうかによって、どちらの方法を選択するかが異なります。
 
 ### <a name="disk-management"></a>ディスクの管理
 
-記憶域プールを使用していない場合は、[[ディスクの管理]](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) を使用して LUN を見つけることができます。
+記憶域プールを使用していない場合は、[[ディスクの管理]](/windows-server/storage/disk-management/overview-of-disk-management) を使用して LUN を見つけることができます。
 
 1. VM に接続し、[ディスクの管理] を開きます (a.)。 [スタート] ボタンを右クリックし、[ディスクの管理] を選択します (a.)。 [検索の開始] ボックスに `diskmgmt.msc` を入力することもできます。
 1. 下のウィンドウでいずれかのディスクを右クリックし、[プロパティ] を選択します。
