@@ -191,7 +191,7 @@
           href: luis-how-to-azure-subscription.md
         - name: アプリとバージョンの設定
           href: how-to-application-settings-portal.md
-        - name: 作成者とコラボレーター
+        - name: 作成者と共同作成者
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
         - name: バージョンの利用

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ed41a2f3e967cc947f671b73e3f44aabf8c4034c
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 8ae693d7f6974415eac294289288879d9668604c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967723"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735597"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>チュートリアル: Azure Active Directory と UltiPro の統合
 
@@ -153,7 +153,7 @@ UltiPro に対する Azure AD SSO を構成してテストするには、次の�
 
 * UltiPro のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [UltiPro] タイルをクリックすると、UltiPro のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [UltiPro] タイルをクリックすると、UltiPro のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43e085725ceb5db718c9b4c9c9d83787964d63
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813532"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Meraki Dashboard の統合
 
@@ -97,7 +97,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
     | `https://dashboard.meraki.com/saml/attributes/role` | user.assignedroles |
 
     > [!NOTE]
-    > Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)を参照してください。
+    > Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)を参照してください。
 
 1. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
@@ -191,7 +191,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Meraki Dashboard に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Meraki Dashboard] タイルをクリックすると、SSO を設定した Meraki Dashboard に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Meraki Dashboard] タイルをクリックすると、SSO を設定した Meraki Dashboard に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

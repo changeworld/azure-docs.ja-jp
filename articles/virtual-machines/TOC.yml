@@ -125,7 +125,7 @@
                   href: ./workloads/sap/hana-operations-model.md
                 - name: 互換性のあるオペレーティング システム
                   href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
-        - name: Architecture
+        - name: アーキテクチャ
           items:
             - name: 全般的なアーキテクチャ
               href: ./workloads/sap/hana-architecture.md
@@ -438,7 +438,7 @@
       href: /azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
-        - name: Architecture
+        - name: アーキテクチャ
           href: ./linux/ibm-db2-purescale-azure.md
         - name: デプロイ
           href: ./linux/deploy-ibm-db2-purescale-azure.md
@@ -601,24 +601,24 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: スポット仮想マシン
+      displayName: 'pre-empt, preempt, spot'
+      items:
+        - name: 概要
+          href: spot-vms.md
+        - name: CLI
+          href: ./linux/spot-cli.md
+        - name: ポータル
+          href: spot-portal.md
+        - name: PowerShell
+          href: ./windows/spot-powershell.md
+        - name: ARM テンプレート
+          displayName: template ARM
+          href: ./linux/spot-template.md
+        - name: エラー コード
+          href: error-codes-spot.md
     - name: 購入オプション
       items:
-        - name: スポット VM
-          displayName: 'pre-empt, preempt, spot'
-          items:
-            - name: 概要
-              href: spot-vms.md
-            - name: CLI
-              href: ./linux/spot-cli.md
-            - name: ポータル
-              href: spot-portal.md
-            - name: PowerShell
-              href: ./windows/spot-powershell.md
-            - name: ARM テンプレート
-              displayName: template ARM
-              href: ./linux/spot-template.md
-            - name: エラー コード
-              href: error-codes-spot.md
         - name: Azure ハイブリッド特典
           items:
             - name: Linux
@@ -1747,7 +1747,7 @@
         - name: 価格
           href: ../backup/azure-backup-pricing.md
         - name: よく寄せられる質問
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: ../backup/backup-azure-vm-backup-faq.yml
     - name: 障害復旧
       items:
         - name: 概要

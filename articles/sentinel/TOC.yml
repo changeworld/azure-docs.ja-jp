@@ -223,14 +223,26 @@
           href: bookmarks.md
         - name: ライブストリームを使用した検出
           href: livestream.md
-        - name: REST-API を使用したハンティング クエリの管理
-          href: hunting-with-rest-api.md
     - name: Azure Sentinel の削除
       href: offboard.md
 - name: リファレンス (新規)
   items:
+    - name: Azure RBAC ロール
+      items:
+        - name: すべての Azure ロール
+          href: /azure/role-based-access-control/built-in-roles#all
+        - name: Azure Sentinel のロール
+          href: /azure/role-based-access-control/built-in-roles#security
     - name: REST API
-      href: /rest/api/securityinsights/
+      items:
+        - name: Azure Sentinel REST-API
+          href: /rest/api/securityinsights/
+        - name: REST-API を使用したハンティング クエリの管理
+          href: hunting-with-rest-api.md
+        - name: REST-API を使用してウォッチリストを管理する
+          href: watchlist-with-rest-api.md
+    - name: Azure Sentinel Logic Apps コネクタ
+      href: /connectors/azuresentinel/
     - name: ネットワーク正規化スキーマ
       href: normalization-schema.md
     - name: UEBA エンリッチメント

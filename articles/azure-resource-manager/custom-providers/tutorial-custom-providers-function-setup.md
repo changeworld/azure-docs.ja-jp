@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948954"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737322"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure カスタム プロバイダー用の Azure Functions を設定する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91948954"
 > [!NOTE]
 > このチュートリアルでは、Azure 関数アプリを使用するシンプルなサービス エンドポイントを作成します。 ただしカスタム プロバイダーは、パブリックにアクセスできる任意のエンドポイントを使用できます。 その代替候補としては、Azure Logic Apps や Azure API Management、Azure App Service の Web Apps 機能などが挙げられます。
 
-このチュートリアルを始めるには、まず、[Azure portal で初めての Azure 関数アプリを作成する](../../azure-functions/functions-create-first-azure-function.md)チュートリアルを先に行う必要があります。 そのチュートリアルでは、Azure portal で変更可能な .NET Core の Webhook 関数を作成します。 このチュートリアルの土台にもなっているチュートリアルです。
+このチュートリアルを始めるには、まず、[Azure portal で初めての Azure 関数アプリを作成する](../../azure-functions/functions-get-started.md)チュートリアルを先に行う必要があります。 そのチュートリアルでは、Azure portal で変更可能な .NET Core の Webhook 関数を作成します。 このチュートリアルの土台にもなっているチュートリアルです。
 
 ## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage のバインディングをインストールする
 

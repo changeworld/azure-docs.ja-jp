@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a00087d557e4244a6551b84623e2c34461623eb3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b2558b4b3bcd60acba3bf47d4a973a2b6de7424f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916543"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AppNeta Performance Monitor の統合
 
@@ -106,7 +106,7 @@ AppNeta Performance Monitor に対して Azure AD SSO を構成してテスト�
     | | |
 
     > [!NOTE]
-    > **groups** は、Azure AD で **Role** にマップされている Appneta のセキュリティ グループを指しています。 Azure AD でカスタム ロールを作成する方法を説明している[この](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)ドキュメントを参照してください。
+    > **groups** は、Azure AD で **Role** にマップされている Appneta のセキュリティ グループを指しています。 Azure AD でカスタム ロールを作成する方法を説明している[この](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)ドキュメントを参照してください。
 
     1. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -172,9 +172,9 @@ AppNeta Performance Monitor に対して Azure AD SSO を構成してテスト�
 
 * AppNeta Performance Monitor のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [AppNeta Performance Monitor] タイルをクリックすると、AppNeta Performance Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [AppNeta Performance Monitor] タイルをクリックすると、AppNeta Performance Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-AppNeta Performance Monitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+AppNeta Performance Monitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

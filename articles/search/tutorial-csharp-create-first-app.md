@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939724"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791680"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して最初の検索アプリを作成する
 
@@ -77,7 +77,7 @@ Microsoft がホストするパブリック サンプル検索インデックス
 
 1. これは hotels インデックスであるため、ホテルの検索に使用するいくつかの単語 (例、"wifi"、"眺望"、"バー"、"駐車場") を入力し、結果を確認します。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="「pool」の検索" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="「wifi」の検索" border="true":::
 
 うまくいけば、プロジェクトがスムーズに実行され、Web アプリが起動します。 より高度な検索で使用する重要なコンポーネントの多くは、この 1 つのアプリに含まれています。そのため、一通り体験し、ステップ バイ ステップで再作成してみるとよいでしょう。 以降のセクションでは、これらの手順について説明します。
 
@@ -87,17 +87,17 @@ Microsoft がホストするパブリック サンプル検索インデックス
 
 1. Visual Studio で、 **[新規]**  >  **[プロジェクト]** 、 **[ASP.NET Core Web アプリケーション]** の順に選択します。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="「pool」の検索" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="クラウド プロジェクトを作成する" border="true":::
 
 1. プロジェクトに "FirstSearchApp" などの名前を付け、場所を設定します。 **［作成］** を選択します
 
 1. **[Web アプリケーション (Model-View-Controller)]** プロジェクト テンプレートを選択します。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="「pool」の検索" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="MVC プロジェクトを作成する" border="true":::
 
 1. クライアント ライブラリをインストールします。 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** で、 **[参照]** を選択し、"azure.search.documents" を検索します。 ライセンス契約と依存関係に同意して、**Azure.Search.Documents** (バージョン 11 以降) をインストールします。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="「pool」の検索" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="NuGet を使用して Azure ライブラリを追加する" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure Cognitive Search を初期化する
 
@@ -114,7 +114,7 @@ Microsoft がホストするパブリック サンプル検索インデックス
 
 1. ソリューション エクスプローラーでそのファイルを選択し、 **[出力ディレクトリにコピー]** の設定を **[新しい場合はコピーする]** に変更します。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="「pool」の検索" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="アプリの設定を出力にコピーする" border="true":::
 
 ## <a name="model-data-structures"></a>データ構造のモデルを作成する
 
@@ -412,7 +412,7 @@ Index.cshtml の内容をすべて削除し、次の手順でファイルを再�
 
 ## <a name="define-methods"></a>メソッドを定義する
 
-この手順では、**ホーム コントローラー**の内容を変更します。
+この手順では、**ホーム コントローラー** の内容を変更します。
 
 1. HomeController.cs ファイルを開き、**using** ステートメントを次で置き換えます。
 
@@ -534,15 +534,15 @@ Azure Cognitive Search の呼び出しは、**RunQueryAsync** メソッド内に
 
 1. **[デバッグ]**  >  **[デバッグなしで開始]** を選択するか、**F5** キーを押します。 アプリが想定どおりに動作すると、最初の Index ビューが表示されます。
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="「pool」の検索" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="アプリを開く" border="true":::
 
 1. "beach" などのクエリ文字列 (または任意のテキスト) を入力し、検索アイコンをクリックして要求を送信します。
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="「pool」の検索" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="「beach」の検索" border="true":::
 
 1. 「five star」と入力してみてください。 このクエリでは結果が返されないことに注意してください。 より高度な検索では、「five star」を「luxury」のシノニムとして扱い、その結果を返します。 [シノニム](search-synonyms.md)のサポートは Azure Cognitive Search で利用できますが、これについてはこのチュートリアル シリーズでは説明していません。
 
-1. 検索テキストとして「hot」を入力してみてください。 「hotel」という単語を含むエントリは_返されません_。 いくつかの結果が返されますが、この検索では単語全体を検索しています。
+1. 検索テキストとして「hot」を入力してみてください。 「hotel」という単語を含むエントリは _返されません_。 いくつかの結果が返されますが、この検索では単語全体を検索しています。
 
 1. 「pool」、「sunshine」、「view」など、その他の単語を試してみてください。 Azure Cognitive Search は非常に単純な動作をしていますが、それでも納得できるレベルであることがわかります。
 
@@ -554,7 +554,7 @@ Azure Cognitive Search の呼び出しは、**RunQueryAsync** メソッド内に
 
 2. アプリを実行し、検索テキストに「bar」と入力して検索アイコンをクリックします。 例外が発生し、エラー ビューが表示されるはずです。
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="「pool」の検索" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="エラーを強制する" border="true":::
 
     > [!Important]
     > エラー ページで内部エラー番号を返すのは、セキュリティ上のリスクと見なされます。 アプリを一般的な用途に使用する場合は、エラーが発生した場合に返される内容について、安全なベスト プラクティスを調査してください。

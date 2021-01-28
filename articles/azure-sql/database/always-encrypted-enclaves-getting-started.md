@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252165"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733816"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted の使用を Azure SQL Database で開始する
 
@@ -25,7 +25,7 @@ ms.locfileid: "98252165"
 > [!NOTE]
 > Azure SQL Database のセキュリティで保護されたエンクレーブが設定された Always Encrypted は、現在、**パブリック プレビュー** 段階にあります。
 
-このチュートリアルでは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) の使用を Azure SQL Database で開始する方法について説明します。 次のことを示します。
+このチュートリアルでは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) の使用を Azure SQL Database で開始する方法について説明します。 次のことを示します。
 
 > [!div class="checklist"]
 > - セキュリティで保護されたエンクレーブが設定された Always Encrypted をテストおよび評価するための環境を作成する方法。
@@ -33,11 +33,11 @@ ms.locfileid: "98252165"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure PowerShell と [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) が必要です。
+このチュートリアルでは、Azure PowerShell と [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) が必要です。
 
 ### <a name="powershell-requirements"></a>PowerShell の要件
 
-Azure PowerShell をインストールして実行する方法については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure)に関するページを参照してください。 
+Azure PowerShell をインストールして実行する方法については、[Azure PowerShell の概要](/powershell/azure)に関するページを参照してください。 
 
 構成証明の操作をサポートするうえで必要な Az モジュールの最小バージョン:
 
@@ -66,7 +66,7 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
 
 ### <a name="ssms-requirements"></a>SSMS の要件
 
-SSMS をダウンロードする方法については、「[SQL Server Management Studio (SSMS) のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」を参照してください。
+SSMS をダウンロードする方法については、「[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」を参照してください。
 
 SSMS の必要な最小バージョンは 18.8 です。
 
@@ -75,7 +75,7 @@ SSMS の必要な最小バージョンは 18.8 です。
 
  この手順では、DC シリーズのハードウェア構成を使用して、新しい Azure SQL Database 論理サーバーと新しいデータベースを作成します。 Azure SQL Database のセキュリティで保護されたエンクレーブが設定された Always Encrypted では、DC シリーズのハードウェア構成でサポートされている Intel SGX エンクレーブが使用されます。 詳細については、「[DC シリーズ](service-tiers-vcore.md#dc-series)」を参照してください。
 
-1. PowerShell コンソールを開き、Azure にサインインします。 必要に応じて、このチュートリアルに使用する[サブスクリプションに切り替えます](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps)。
+1. PowerShell コンソールを開き、Azure にサインインします。 必要に応じて、このチュートリアルに使用する[サブスクリプションに切り替えます](/powershell/azure/manage-subscriptions-azureps)。
 
   ```PowerShell
   Connect-AzAccount
@@ -356,10 +356,10 @@ SSMS の必要な最小バージョンは 18.8 です。
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルを完了すると、次のいずれかのチュートリアルに進むことができます。
-- [チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用する .NET アプリケーションの開発](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)」をご覧ください。
-- [チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用する .NET Framework アプリケーションの開発](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [チュートリアル:ランダム化された暗号化を使用してエンクレーブ対応の列でインデックスを作成して使用する](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用する .NET アプリケーションの開発](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)」をご覧ください。
+- [チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用する .NET Framework アプリケーションの開発](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [チュートリアル:ランダム化された暗号化を使用してエンクレーブ対応の列でインデックスを作成して使用する](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>参照
 
-- [セキュリティで保護されたエンクレーブが設定された Always Encrypted を構成して使用する](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [セキュリティで保護されたエンクレーブが設定された Always Encrypted を構成して使用する](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

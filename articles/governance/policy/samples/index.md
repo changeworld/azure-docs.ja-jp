@@ -1,14 +1,14 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のビルトインのインデックス。 カテゴリ タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成など。
-ms.date: 10/14/2020
+ms.date: 01/25/2021
 ms.topic: sample
-ms.openlocfilehash: 0c73273f94822873c410564f13ba43f0b679f0ff
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a7492f6b12e8adffc6ba28da750e51ecdeb1878f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077917"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805571"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
@@ -37,8 +37,10 @@ ms.locfileid: "92077917"
 
 次に示すのは、[法令遵守](../concepts/regulatory-compliance.md)の組み込みです。
 
-- [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md)
+- [Azure セキュリティ ベンチマーク v2](./azure-security-benchmark.md)
+- [Azure セキュリティ ベンチマーク v1](./azure-security-benchmarkv1.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
+- [CMMC レベル 3](./cmmc-l3.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)

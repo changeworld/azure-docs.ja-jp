@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/27/2020
 ms.author: jeedes
-ms.openlocfilehash: f91f3b1af5631ea168ce59791e516d434ee0b7e8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9747abb5b614c5a59b56159399c3386a831b3337
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354813"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735052"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-proprofs-knowledge-base"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ProProfs Knowledge Base の統合
 
@@ -124,11 +124,9 @@ ProProfs Knowledge Base に対して Azure AD SSO を構成してテストする
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した ProProfs Knowledge Base に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [ProProfs Knowledge Base] タイルをクリックすると、SSO を設定した ProProfs Knowledge Base に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [ProProfs Knowledge Base] タイルをクリックすると、SSO を設定した ProProfs Knowledge Base に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-ProProfs Knowledge Base を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+ProProfs Knowledge Base を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

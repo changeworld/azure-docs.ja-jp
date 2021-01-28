@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005309"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791932"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
@@ -46,7 +46,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -56,7 +56,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 ([Visual Studio](https://visualstudio.microsoft.com/vs/) と ["C++ によるデスクトップ開発"](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ワークロード) をマシンにインストールしておくことが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 ([Visual Studio](https://visualstudio.microsoft.com/vs/) と ["C++ によるデスクトップ開発"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ワークロード) をマシンにインストールしておくことが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. Azure IoT C SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -87,7 +87,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。
+    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。
 
     ビルドに成功すると、`cmake` ディレクトリに Visual Studio ソリューションが生成されます。 出力の最後の数行は次のようになります。
 
@@ -351,7 +351,7 @@ HSM ハードウェアは必須ではありませんが、証明書の秘密キ�
 
 Windows 以外のデバイスでは、証明書チェーンをコードから証明書ストアとして渡すことができます。
 
-Windows ベースのデバイスでは、Windows の[証明書ストア](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores)に署名証明書 (ルートと中間) を追加する必要があります。 そうしないと、トランスポート層セキュリティ (TLS) を使用した安全なチャネルで署名証明書が DPS に転送されなくなります。
+Windows ベースのデバイスでは、Windows の[証明書ストア](/windows/win32/secauthn/certificate-stores)に署名証明書 (ルートと中間) を追加する必要があります。 そうしないと、トランスポート層セキュリティ (TLS) を使用した安全なチャネルで署名証明書が DPS に転送されなくなります。
 
 Windows ベースのデバイスの証明書ストアに署名証明書を追加するには:
 

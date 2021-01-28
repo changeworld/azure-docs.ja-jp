@@ -10,23 +10,23 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733058"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788739"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>チュートリアル:マネージド ID を使用して Key Vault を .NET の Azure Web アプリに接続する
 
 [Azure Key Vault](./overview.md) は、資格情報やその他のシークレットをより安全に格納する方法を提供します。 ただし、それらを取得するためには、コードから Key Vault に対する認証を行う必要があります。 [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用し、Azure Active Directory (Azure AD) 内で自動的に管理される ID を Azure サービスに付与することで、この問題を解決することができます。 この ID を使用して、コードに資格情報が表示されていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
-このチュートリアルでは、Azure Web アプリケーションを作成して [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) にデプロイします。 [.NET 用 Azure Key Vault シークレット クライアント ライブラリ](/dotnet/api/overview/azure/key-vault)と [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して、マネージド ID を使用した Azure Key Vault に対する Azure Web アプリの認証を行います。 各種の開発言語や Azure PowerShell、Azure portal を使用する場合でも、基本的な原則は同じです。
+このチュートリアルでは、Azure Web アプリケーションを作成して [Azure App Service](../../app-service/overview.md) にデプロイします。 [.NET 用 Azure Key Vault シークレット クライアント ライブラリ](/dotnet/api/overview/azure/key-vault)と [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して、マネージド ID を使用した Azure Key Vault に対する Azure Web アプリの認証を行います。 各種の開発言語や Azure PowerShell、Azure portal を使用する場合でも、基本的な原則は同じです。
 
 このチュートリアルで紹介する Azure App Service Web アプリケーションとデプロイの詳細については、以下を参照してください。
-- [App Service の概要](https://docs.microsoft.com/azure/app-service/overview)
-- [Azure App Service での ASP.NET Core Web アプリの作成](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
-- [Azure App Service へのローカル Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+- [App Service の概要](../../app-service/overview.md)
+- [Azure App Service での ASP.NET Core Web アプリの作成](../../app-service/quickstart-dotnetcore.md)
+- [Azure App Service へのローカル Git デプロイ](../../app-service/deploy-local-git.md)
 
 ## <a name="prerequisites"></a>[前提条件]
 
@@ -67,7 +67,7 @@ Web ブラウザーでアプリ (`http://localhost:5000`) に移動します。
 
 正常にデプロイしたアプリ  というメッセージがサンプル アプリによってページに表示されます。
 
-Azure 用に Web アプリケーションを作成する方法の詳細については、[Azure App Service での ASP.NET Core Web アプリの作成](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)に関するページを参照してください。
+Azure 用に Web アプリケーションを作成する方法の詳細については、[Azure App Service での ASP.NET Core Web アプリの作成](../../app-service/quickstart-dotnetcore.md)に関するページを参照してください。
 
 ## <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
@@ -228,7 +228,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 正常にデプロイしたアプリ  先ほど `http://localhost:5000` にアクセスしたときに表示されたメッセージが表示されます。
 
-Git を使用した Web アプリケーションのデプロイの詳細については、「[Azure App Service へのローカル Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)」を参照してください
+Git を使用した Web アプリケーションのデプロイの詳細については、「[Azure App Service へのローカル Git デプロイ](../../app-service/deploy-local-git.md)」を参照してください
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Key Vault に接続するように Web アプリを構成する
 
@@ -264,7 +264,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>"
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>キー コンテナーにアクセスするようアプリを変更する
 
-このチュートリアルでは、デモンストレーションとして [Azure Key Vault シークレット クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme)を使用します。 [Azure Key Vault 証明書クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)や [Azure Key Vault キー クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme)を使用することもできます。
+このチュートリアルでは、デモンストレーションとして [Azure Key Vault シークレット クライアント ライブラリ](/dotnet/api/overview/azure/security.keyvault.secrets-readme)を使用します。 [Azure Key Vault 証明書クライアント ライブラリ](/dotnet/api/overview/azure/security.keyvault.certificates-readme)や [Azure Key Vault キー クライアント ライブラリ](/dotnet/api/overview/azure/security.keyvault.keys-readme)を使用することもできます。
 
 #### <a name="install-the-packages"></a>パッケージのインストール
 

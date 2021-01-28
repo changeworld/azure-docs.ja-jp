@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935409"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762946"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R の配置を準備する
 
@@ -121,11 +121,11 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 7. **配送先住所** を選択します。
 
-    - 既にデバイスがある場合は、 **[I already have a device]\(既にデバイスを持っています\)** のコンボ ボックスを選択します。
+   - 既にデバイスがある場合は、 **[I already have a device]\(既にデバイスを持っています\)** のコンボ ボックスを選択します。
 
      ![リソースを作成する 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
+   - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
      ![リソースを作成する 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -145,9 +145,12 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     
     ![Azure Stack Edge Pro リソースに移動する](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
     
-    Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
+Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
-   注文処理の間に問題が発生した場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
+> [!NOTE]
+> 一度に複数の注文を作成したい場合や既存の注文を複製したい場合は、[「Azure サンプル」のスクリプト](https://github.com/Azure-Samples/azure-stack-edge-order)をご利用ください。 詳細については、Readme ファイルを参照してください。
+
+注文処理の間に問題が発生した場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
 
 ## <a name="get-the-activation-key"></a>アクティブ化キーの取得
 

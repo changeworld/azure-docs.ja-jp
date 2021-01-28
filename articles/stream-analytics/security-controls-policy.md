@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Stream Analytics に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 10fc21cf2e5dceeb3441fa538958b74ae79fccb1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6067a3d1bd1da3d541622b87098db6f781aa737e
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050844"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796977"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Azure Policy 規制コンプライアンス コントロール
 

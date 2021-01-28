@@ -134,7 +134,7 @@
               items:
                 - name: 概要
                   href: explore-data.md
-                - name: Azure BLOB Storage の調査
+                - name: Azure Blob Storage の調査
                   href: explore-data-blob.md
                 - name: VM 上の SQL の調査
                   href: explore-data-sql-server.md

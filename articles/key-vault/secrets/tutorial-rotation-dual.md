@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913772"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786007"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報があるリソースを対象にシークレットのローテーションを自動化する
 
@@ -234,8 +234,8 @@ az storage account keys list -n vaultrotationstorage
 
 ## <a name="next-steps"></a>次のステップ
 
-- チュートリアル:[1 組の資格情報を使用するシークレットのローテーション](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- チュートリアル:[1 組の資格情報を使用するシークレットのローテーション](./tutorial-rotation.md)
 - 概要:[Azure Event Grid での Key Vault の監視](../general/event-grid-overview.md)
-- 方法:[Azure portal で初めての関数を作成する](../../azure-functions/functions-create-first-azure-function.md)
+- 方法:[Azure portal で初めての関数を作成する](../../azure-functions/functions-get-started.md)
 - 方法: [Key Vault シークレットが変更されたときにメールを受信する](../general/event-grid-logicapps.md)
 - リファレンス: [Azure Key Vault 用の Azure Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)

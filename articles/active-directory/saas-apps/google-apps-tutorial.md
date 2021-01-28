@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/11/2021
 ms.author: jeedes
-ms.openlocfilehash: eeb5f3e2a87dcc56b8e2ef0bf17309e184c3d65b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: a846899ba8f9b9e7c0d2e54744f5e5044ca7a2d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019399"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
@@ -132,8 +132,8 @@ Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテス
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
 
     ```http
-    https://www.google.com
-    https://www.google.com/a/<yourdomain.com>
+    https://www.google.com/acs
+    https://www.google.com/a/<yourdomain.com>/acs
     ```
 
 1. **[基本的な SAML 構成]** セクションで、**Google Cloud Platform** を構成する場合は次の手順で行います。
@@ -152,8 +152,8 @@ Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテス
     c. **[応答 URL]** ボックスに、 のパターンを使用して URL を入力します。 
     
     ```http
-    https://www.google.com
-    https://www.google.com/a/<yourdomain.com>
+    https://www.google.com/acs
+    https://www.google.com/a/<yourdomain.com>/acs
     ```
 
     > [!NOTE]
@@ -249,7 +249,7 @@ Google Cloud (G Suite) Connector では、自動ユーザー プロビジョニ�
 
 * Google Cloud (G Suite) Connector のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Google Cloud (G Suite) Connector] タイルをクリックすると、Google Cloud (G Suite) Connector のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Google Cloud (G Suite) Connector] タイルをクリックすると、Google Cloud (G Suite) Connector のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

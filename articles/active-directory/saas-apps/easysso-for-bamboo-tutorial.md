@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97725091"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Bamboo の統合
 
@@ -199,7 +199,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、マイ アプリを使用して Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+マイ アプリで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ### <a name="sp-initiated-workflow"></a>SP-Initiated ワークフロー
 

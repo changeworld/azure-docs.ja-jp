@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: ディザスター リカバリー プランを設定する
       href: disaster-recovery.md
+    - name: KDC プロキシを設定する
+      href: key-distribution-center-proxy.md
+    - name: RD ゲートウェイのロールを設定する
+      href: rd-gateway-role.md
 - name: 概念
   items:
     - name: 組み込みのロール
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: データの場所
       href: data-locations.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

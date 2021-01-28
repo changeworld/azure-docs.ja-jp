@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e3d81bfaba572361304224932fadb7da5b1cc3f8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8ddc94301ae8954fb0a35827ebd21e090c9dfe89
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912889"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734700"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -64,7 +64,7 @@ Premium Storage ディスクをプロビジョニングすると、Standard Stor
 
 このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、次のコマンドを使用して仮想マシンを作成します。
 
-[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
+[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して、仮想マシンの管理者アカウントに必要なユーザー名とパスワードを設定します。
 
 
 [New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。 VM の管理者アカウントのユーザー名とパスワードを入力するよう求められます。

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/13/2020
+ms.date: 01/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: b8711fa468cf361a42ed996c5b5dc50372d6cf90
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593724"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746155"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して複数のデータ ソースのデータにインデックスを付ける
 

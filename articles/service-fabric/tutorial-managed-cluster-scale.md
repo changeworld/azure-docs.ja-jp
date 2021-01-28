@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスターをスケールアウトす
 description: このチュートリアルでは、Service Fabric マネージド クラスターのノード タイプをスケールアウトする方法について説明します。
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 01b299744d462496296884211eff08b7a9c64687
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316137"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785433"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターをスケールアウトする (プレビュー)
 
@@ -28,7 +28,7 @@ ms.locfileid: "92316137"
 ## <a name="prerequisites"></a>前提条件
 
 * Service Fabric マネージド クラスター ("[*マネージド クラスターのデプロイ*](tutorial-managed-cluster-deploy.md)" に関するページを参照)。
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) 以降 (「[*Azure PowerShell のインストール*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)」を参照)。
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) 以降 (「[*Azure PowerShell のインストール*](/powershell/azure/install-az-ps)」を参照)。
 
 ## <a name="scale-a-service-fabric-managed-cluster"></a>Service Fabric マネージド クラスターをスケーリングする
 スケーリングしたいノード タイプのノード数を増減させるには、インスタンス数を変更します。 ノード タイプの名前は、クラスター デプロイの Azure Resource Manager テンプレート (ARM テンプレート) または Service Fabric Explorer で確認できます。  

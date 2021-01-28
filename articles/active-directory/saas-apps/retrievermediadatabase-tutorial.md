@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 32ca39685772272ae93ccbe0c2afcbd1f66894b1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 786925799d19bf01e8edebbf85de04d92213298b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354803"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732847"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retrievermediadatabase"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RetrieverMediaDatabase の統合
 
@@ -118,10 +118,8 @@ RetrieverMediaDatabase に対して Azure AD SSO を構成してテストする�
 
 1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した RetrieverMediaDatabase に自動的にサインインされます
 
-1. Microsoft マイ アプリを使用することができます。 マイ アプリで [RetrieverMediaDatabase] タイルをクリックすると、SSO を設定した RetrieverMediaDatabase に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+1. Microsoft マイ アプリを使用することができます。 マイ アプリで [RetrieverMediaDatabase] タイルをクリックすると、SSO を設定した RetrieverMediaDatabase に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-RetrieverMediaDatabase を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+RetrieverMediaDatabase を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

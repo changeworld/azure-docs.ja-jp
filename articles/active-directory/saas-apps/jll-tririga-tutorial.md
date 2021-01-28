@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
-ms.openlocfilehash: fbf0b6f929fc0999249298f5f271a86ccf3bef39
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b33db1b766d99aeb8d0a08f6396b5384948f118e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602917"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jll-tririga"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JLL TRIRIGA の統合
 
@@ -140,11 +140,9 @@ JLL TRIRIGA に対して Azure AD SSO を構成してテストするには、次
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した JLL TRIRIGA に自動的にサインインされます
 
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [JLL TRIRIGA] タイルをクリックすると、SSO を設定した JLL TRIRIGA に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [JLL TRIRIGA] タイルをクリックすると、SSO を設定した JLL TRIRIGA に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-JLL TRIRIGA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+JLL TRIRIGA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

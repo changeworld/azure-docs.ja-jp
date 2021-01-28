@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: e1858047e9fc64be67cdea82aaca8113135f0b2a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250742"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736979"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -206,7 +206,7 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Sage Intacct に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sage Intacct] タイルをクリックすると、SSO を設定した Sage Intacct に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sage Intacct] タイルをクリックすると、SSO を設定した Sage Intacct に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

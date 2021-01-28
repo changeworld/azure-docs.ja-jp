@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 7e641af184351aa0d975738439c88724027751dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882757"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Imperva Data Security の統合
 
@@ -132,11 +132,9 @@ Imperva Data Security に対して Azure AD SSO を構成してテストする�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Imperva Data Security に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Imperva Data Security] タイルをクリックすると、SSO を設定した Imperva Data Security に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Imperva Data Security] タイルをクリックすると、SSO を設定した Imperva Data Security に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Imperva Data Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Imperva Data Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

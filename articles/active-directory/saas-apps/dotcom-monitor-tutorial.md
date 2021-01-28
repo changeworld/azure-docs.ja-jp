@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 1dc321200c7fe85b3f4bd5099d6ca0714e4ca63a
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 6f7b2abecdfae1e8f943cd45df7e4c42f1ddd978
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914333"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736627"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Dotcom-Monitor の統合
 
@@ -93,7 +93,7 @@ Dotcom-Monitor に対して Azure AD SSO を構成してテストするには、
     | ロール | user.assignedroles |
 
     > [!NOTE]
-    > Azure AD でカスタム ロールを作成する方法についての詳しいガイダンスは、[ここ](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)に記載されています。
+    > Azure AD でカスタム ロールを作成する方法についての詳しいガイダンスは、[ここ](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)に記載されています。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -143,7 +143,7 @@ Dotcom-Monitor に対して Azure AD SSO を構成してテストするには、
 
 * Dotcom-Monitor のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Dotcom-Monitor] タイルをクリックすると、Dotcom-Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Dotcom-Monitor] タイルをクリックすると、Dotcom-Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

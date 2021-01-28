@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702176"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788030"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -809,7 +809,7 @@ Service Fabric クラスターを作成した後は、ノード タイプ (仮�
 > [!WARNING]
 > 運用環境のクラスターからノード タイプを削除するために Remove-AzServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
 
-ノード タイプを削除するには、[Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) コマンドレットを実行します。  ノード タイプの[持続性レベル][durability]は Silver または Gold でなければなりません。このコマンドレットは、ノード タイプに関連付けられているスケール セットを削除します。完了するまでに時間がかかります。  その後、削除する各ノードに対して [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) コマンドレットを実行します。これにより、ノードの状態が削除され、クラスターからノードが削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別のノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
+ノード タイプを削除するには、[Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) コマンドレットを実行します。  ノード タイプの[持続性レベル][durability]は Silver または Gold でなければなりません。このコマンドレットは、ノード タイプに関連付けられているスケール セットを削除します。完了するまでに時間がかかります。  その後、削除する各ノードに対して [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) コマンドレットを実行します。これにより、ノードの状態が削除され、クラスターからノードが削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別のノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

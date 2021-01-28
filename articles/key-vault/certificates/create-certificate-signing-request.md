@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059655"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789029"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Key Vault で CSR を作成、マージする
 
@@ -123,7 +123,7 @@ CSR の作成時にその他の情報を追加したい場合は、それを **S
 
 - CSR を監視または管理するにはどうすればよいですか?
 
-     「[証明書作成の監視と管理](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)」を参照してください。
+     「[証明書作成の監視と管理](./create-certificate-scenarios.md)」を参照してください。
 
 - **エラーの種類 "The public key of the end-entity certificate in the specified X.509 certificate content does not match the public part of the specified private key. Please check if certificate is valid (指定された x.509 証明書の内容に含まれるエンド エンティティ証明書の公開キーが、指定された秘密キーの公開部分と一致しません。証明書が有効かどうかをご確認ください)"** が表示されました。どうすればよいですか?
 

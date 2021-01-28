@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914690"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736654"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
@@ -75,7 +75,7 @@ VM がハードウェア全体に適切に分散されるようにするには�
 
 [New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成するときに、`-AvailabilitySetName` パラメーターを使用して可用性セットの名前を指定します。
 
-まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential

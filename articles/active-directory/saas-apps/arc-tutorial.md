@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: fe6f4a1c66b07a518c4bccad9027c4d16e3d18a6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0b1be3aa251b0248d3bbd859a183c7483fd9e38c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913854"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735366"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-publishing---sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Arc Publishing - SSO の統合
 
@@ -104,7 +104,7 @@ Arc Publishing - SSO に対して Azure AD SSO を構成してテストするに
     | groups | user.assignedroles |
 
     > [!NOTE]
-    > ここで、**group** 属性は **user.assignedroles** とマップされます。 これらは、アプリケーションでグループ名をマップし直すために Azure AD で作成されたカスタム ロールです。 Azure AD でカスタム ロールを作成する方法についての詳しいガイダンスは、[ここ](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)に記載されています。
+    > ここで、**group** 属性は **user.assignedroles** とマップされます。 これらは、アプリケーションでグループ名をマップし直すために Azure AD で作成されたカスタム ロールです。 Azure AD でカスタム ロールを作成する方法についての詳しいガイダンスは、[ここ](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)に記載されています。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -163,9 +163,9 @@ Arc Publishing - SSO に対して Azure AD SSO を構成してテストするに
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Arc Publishing - SSO に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Arc Publishing - SSO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Arc Publishing - SSO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Arc Publishing - SSO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Arc Publishing - SSO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Arc Publishing - SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Arc Publishing - SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

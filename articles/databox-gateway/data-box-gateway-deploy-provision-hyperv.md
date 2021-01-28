@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740659"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791563"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする
 
@@ -84,7 +84,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 ## <a name="bitlocker-considerations"></a>BitLocker の考慮事項
 
 * Data Box Gateway 仮想マシンの BitLocker を有効にすることをお勧めします。 既定では、BitLocker は有効になっていません。 詳細については、次を参照してください。
-  * [Hyper-V マネージャーでの暗号化サポート設定](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [Hyper-V マネージャーでの暗号化サポート設定](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [仮想マシンでの BitLocker のサポート](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>ハイパーバイザーで仮想デバイスをプロビジョニングする

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511061"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735341"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>チュートリアル:Azure Active Directory シングル サインオンと AwareGo の統合
 
@@ -139,11 +139,9 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 * AwareGo のサインイン ページに直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリに移動します。 マイ アプリで **[AwareGo]** タイルを選択すると、AwareGo サインイン ページにリダイレクトされます。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+* Microsoft マイ アプリに移動します。 マイ アプリで **[AwareGo]** タイルを選択すると、AwareGo サインイン ページにリダイレクトされます。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
 
-AwareGo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、アプリの条件付きアクセス制御を拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
-
-
+AwareGo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、アプリの条件付きアクセス制御を拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。

@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure でホストされてい�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aa5b09b627db6bd3a3d573c32e7e68a359e2c04d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60c43adddd4799a639c2d58e0293086eb1776588
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738993"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791090"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>チュートリアル: Azure で実行されている Service Fabric クラスターを削除する
 
@@ -43,7 +43,7 @@ ms.locfileid: "92738993"
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Service Fabric クラスターを含むリソース グループを削除する
 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットまたは [az group delete](/cli/azure/group?view=azure-cli-latest) コマンドを使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットまたは [az group delete](/cli/azure/group) コマンドを使用します。
 
 ```powershell
 Connect-AzAccount
