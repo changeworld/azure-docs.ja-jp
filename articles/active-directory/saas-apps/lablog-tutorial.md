@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 8f4bd2159cea659eb2e9040381b13f796bf12c7f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d52ea8d6af84568f9dd458aefdecd36d3b36457d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020768"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lablog"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LabLog の統合
 
@@ -147,11 +147,9 @@ LabLog に対する Azure AD SSO を構成してテストするには、次の�
 
 * LabLog のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [LabLog] タイルをクリックすると、LabLog のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [LabLog] タイルをクリックすると、LabLog のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-LabLog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+LabLog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

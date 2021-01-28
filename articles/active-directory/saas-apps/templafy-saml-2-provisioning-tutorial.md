@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 057b437c5d88c4f292e08828482e5dca0d2ca5b4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612103"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696010"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Templafy SAML2 を構成する
 
@@ -133,7 +133,26 @@ Azure AD での自動ユーザー プロビジョニングに対応するよう�
 
 9. **[属性マッピング]** セクションで、Azure AD から Templafy SAML2 に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で Templafy SAML2 のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Templafy SAML2 のユーザー属性](media/templafy-saml-2-provisioning-tutorial/user-attribute.png)
+   |属性|Type|フィルター処理のサポート|
+   |---|---|---|
+   |userName|String|&check;|
+   |active|Boolean|
+   |displayName|String|
+   |title|String|
+   |preferredLanguage|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |phoneNumbers[type eq "fax"].value|String|
+   |externalId|String|
+   |addresses[type eq "work"].locality|String|
+   |addresses[type eq "work"].postalCode|String|
+   |addresses[type eq "work"].region|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Templafy]\(Azure Active Directory グループを Templafy に同期する\)** を選択します。
 
@@ -141,7 +160,12 @@ Azure AD での自動ユーザー プロビジョニングに対応するよう�
 
 11. **[属性マッピング]** セクションで、Azure AD から Templafy SAML2 に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で Templafy SAML2 のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Templafy SAML2 のグループ属性](media/templafy-saml-2-provisioning-tutorial/group-attribute.png)
+      |属性|Type|フィルター処理のサポート|
+      |---|---|---|
+      |displayName|String|&check;|
+      |members|リファレンス|
+      |externalId|String|      
+
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

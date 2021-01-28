@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 62cf7c979be83454ae2433befcdbf4f5d8e5524f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516545"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683057"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -35,7 +35,7 @@ ms.locfileid: "94516545"
 
 ## <a name="overview"></a>概要
 
-[共有イメージ ギャラリー](shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
 
 共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
 
@@ -92,11 +92,11 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 イメージ定義の種類が適切であることを確認します。 (Windows の場合は Sysprep、Linux の場合は waagent -deprovision を使用して) VM を一般化している場合は、`--os-state generalized` を使用して、一般化されたイメージ定義を作成する必要があります。 既存のユーザー アカウントを削除せずに VM を使用する場合は、`--os-state specialized` を使用して、特殊化されたイメージ定義を作成します。
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/linux/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
 
-この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
+この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
 ```azurecli-interactive 
 az sig image-definition create \

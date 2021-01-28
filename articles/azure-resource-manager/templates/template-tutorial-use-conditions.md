@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4affc2add2822702c1d5395f81efe01eeedf448b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669314"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696026"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>チュートリアル:ARM テンプレートでの条件の使用
 
@@ -31,7 +31,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) で条件に�
 このチュートリアルでは、条件を使用する基本的なシナリオについてのみ説明します。 詳細については、次を参照してください。
 
 * [テンプレート ファイルの構造:条件](conditional-resource-deployment.md)。
-* [ARM テンプレートのリソースを条件付きでデプロイする](/azure/architecture/building-blocks/extending-templates/conditional-deploy)。
+* [ARM テンプレートのリソースを条件付きでデプロイする](/azure/architecture/guide/azure-resource-manager/advanced-templates/conditional-deploy)。
 * [テンプレート関数:If](./template-functions-logical.md#if)。
 * [Azure Resource Manager テンプレートの比較関数](./template-functions-comparison.md)
 

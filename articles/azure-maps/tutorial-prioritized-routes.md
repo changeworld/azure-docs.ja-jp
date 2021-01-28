@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896703"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625001"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索して表示する
 
@@ -121,7 +121,7 @@ ms.locfileid: "92896703"
 
 2. **MapTruckRoute.html** ファイルを保存し、ブラウザーでページを更新します。 ロサンゼルスなどの任意の都市にズームインすると、現在のトラフィック フロー データと共に街路が表示されます。
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="マップ上にトラフィックを表示する":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ ms.locfileid: "92896703"
 
 3. **TruckRoute.html** を保存し、ブラウザーを更新します。 これで、マップの中心がシアトルに設定されました。 涙形の青いピンは、始点をマークしています。 円形の青いピンは、終点をマークしています。
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="起点と終点が表示されたマップ":::
 
 <a id="multipleroutes"></a>
 
@@ -206,7 +206,7 @@ ms.locfileid: "92896703"
 このセクションでは、Azure Maps Route Service を使用して、輸送モードに基づいて、ある地点から別の地点への道順を取得する方法について説明します。 2 つの輸送モード (トラックと車) を使用します。
 
 >[!TIP]
->Route Service には、距離、渋滞状況、および使用する輸送モードに基づいて、" *最速* "、" *最短* "、" *エコ* "、または " *スリリング* " なルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
+>Route Service には、距離、渋滞状況、および使用する輸送モードに基づいて、"*最速*"、"*最短*"、"*エコ*"、または "*スリリング*" なルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
 
 1. `GetMap` 関数のコントロールの `ready` イベント ハンドラー内で、JavaScript コードに以下を追加します。
 
@@ -277,7 +277,7 @@ ms.locfileid: "92896703"
 
 4. **TruckRoute.html** ファイルを保存し、Web ブラウザーを更新します。 これで、マップにトラックと自家用車のルートが表示されます。
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Azure Route Service を使用したマップ上の自家用車と営業車のルート":::
 
     トラックのルートは太い青の線を使用して表示されます。 自家用車のルートは細い紫の線を使用して表示されます。 自家用車のルートは、I-90 経由でワシントン湖を渡っています。この道路は住宅地の下のトンネルを通過します。 このトンネルは住宅地に近いため、危険廃棄物の積み荷が制限されています。 トラックのルートは、積み荷の種類を `USHazmatClass2` に指定したので、別の高速道路を使うようにルート指定されています。
 
@@ -285,7 +285,9 @@ ms.locfileid: "92896703"
 
 [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)こともできます。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
+クリーンアップが必要なリソースはありません。
 
 ## <a name="next-steps"></a>次の手順
 

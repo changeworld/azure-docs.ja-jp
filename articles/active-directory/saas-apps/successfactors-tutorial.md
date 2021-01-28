@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: fba29f77d67c5b571253b842f865ae29a6ccfacd
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a903eb6000cdd5212ad358cae4952e27a4719070
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968383"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725263"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SuccessFactors の統合
 
@@ -225,7 +225,7 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 
 * SuccessFactors のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [SuccessFactors] タイルをクリックすると、SuccessFactors のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [SuccessFactors] タイルをクリックすると、SuccessFactors のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

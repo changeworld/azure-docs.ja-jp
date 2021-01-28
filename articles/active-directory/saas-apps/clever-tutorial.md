@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7275bd8bc51d5f2889c7fc9365e9187040049876
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 29384457f946eff5708c319e14161d670adf6ca8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722251"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Clever の統合
 
@@ -137,7 +137,7 @@ Clever の場合は、[Clever クライアント サポート チーム](https:/
 
 * Clever のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clever] タイルをクリックすると、Clever のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clever] タイルをクリックすると、Clever のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

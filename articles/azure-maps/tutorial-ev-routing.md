@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905742"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680334"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -27,7 +27,7 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * クラウドの [Azure Notebooks](../notebooks/index.yml) 上で Jupyter Notebook ファイルを作成して実行する。
+> * クラウドの [Azure Notebooks](https://notebooks.azure.com) 上で Jupyter Notebook ファイルを作成して実行する。
 > * Python で Azure Maps REST API シリーズを呼び出す。
 > * 電気自動車の消費モデルに基づいて到達可能範囲を調べる。
 > * 到達可能範囲 (つまり等時線) 内にある電気自動車充電スタンドを検索する。
@@ -49,7 +49,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 このチュートリアルに沿って作業を進めるには、Azure Notebooks プロジェクトを作成し、Jupyter Notebook ファイルをダウンロードして、実行する必要があります。 Jupyter Notebook ファイルには、本チュートリアルのシナリオを実装する Python コードが含まれています。 Azure Notebooks プロジェクトを作成し、Jupyter Notebook ドキュメントをそれにアップロードするには、次の手順を実行します。
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします 詳細については、「[クイック スタート: サインインとユーザー ID の設定](../notebooks/quickstart-sign-in-azure-notebooks.md)」を参照してください。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします 詳細については、「[クイック スタート: サインインとユーザー ID の設定](https://notebooks.azure.com)」を参照してください。
 1. パブリック プロファイル ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![[マイ プロジェクト] ボタン](./media/tutorial-ev-routing/myproject.png)
@@ -399,9 +399,13 @@ display(Image(staticMapImage))
 * [Get Route Directions](/rest/api/maps/route/getroutedirections)
 * [Azure Maps REST API シリーズ](./consumption-model.md)
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
+
 ## <a name="next-steps"></a>次の手順
 
 Azure Notebooks の詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

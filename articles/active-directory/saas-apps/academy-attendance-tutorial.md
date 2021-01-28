@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 06b538f0f218beab2549b027a5da9dcc594969a4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12752e3d3cc08e8a13e9679725fbb6678c4bbd71
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586858"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Academy Attendance の統合
 
@@ -97,7 +97,7 @@ Academy Attendance に対して Azure AD SSO を構成してテストするに�
     | role      | user.assignedroles |
 
     > [!NOTE]
-    > Academy Attendance では、 **[Lecturer]\(講師\)** と **[Student]\(学生\)** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でカスタム ロールを作成する方法を説明している[この](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)ドキュメントを参照してください。
+    > Academy Attendance では、 **[Lecturer]\(講師\)** と **[Student]\(学生\)** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でカスタム ロールを作成する方法を説明している[この](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)ドキュメントを参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -147,9 +147,9 @@ Academy Attendance に対して Azure AD SSO を構成してテストするに�
 
 * Academy Attendance のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Academy Attendance] タイルをクリックすると、Academy Attendance サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Academy Attendance] タイルをクリックすると、Academy Attendance サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Academy Attendance を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Academy Attendance を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

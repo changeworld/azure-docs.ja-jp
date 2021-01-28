@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588133"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701714"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション
 
@@ -39,12 +39,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * テンプレートのリポジトリの作成に使用する **GitHub アカウント**。 持っていない場合は、[無料で作成](https://github.com)できます。 GitHub リポジトリの使用に関する詳細については、[GitHub リポジトリの構築](/azure/devops/pipelines/repos/github)に関するページを参照してください。
 * **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ](https://www.atlassian.com/git/tutorials/install-git)を参照してください。
-* **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成](/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
+* **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成](/azure/devops/organizations/accounts/create-organization)に関するページを参照してください。
 * (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
 
-GitHub を使用して、Resource Manager テンプレートを含むプロジェクトのソース コードを保存します。 その他のサポートされているリポジトリを使用する場合は、[Azure DevOps でサポートされているリポジトリ](/azure/devops/pipelines/repos/?view=azure-devops)に関するページを参照してください。
+GitHub を使用して、Resource Manager テンプレートを含むプロジェクトのソース コードを保存します。 その他のサポートされているリポジトリを使用する場合は、[Azure DevOps でサポートされているリポジトリ](/azure/devops/pipelines/repos/)に関するページを参照してください。
 
 ### <a name="create-a-github-repository"></a>GitHub リポジトリを作成する
 

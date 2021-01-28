@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802628"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696365"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>チュートリアル用にソフトウェアをインストールしてリソースを設定する
 
@@ -32,7 +32,6 @@ ms.locfileid: "97802628"
 5. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020) の最新バージョンをインストールします。 次のスクリプトでは、AZ PowerShell が最新バージョン (3.5.0、2020 年 2 月) である必要があります。
 6. [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) をインストールして、IoT Edge ソリューションをデバッグ、実行、およびテストする環境を設定します。
 7. Docker をインストールする。
-8. チュートリアルで使用される DACPAC ファイルをダウンロードします。 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>PowerShell スクリプトを使用した Azure リソースのデプロイ
 

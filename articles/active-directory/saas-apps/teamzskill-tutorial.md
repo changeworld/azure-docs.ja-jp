@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 643cfd1efcc03f0a5d36e4ba53213bba18fc422d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 22e237a3451c87fd4867949b9aa94d19b6fcbbdf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914656"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729447"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TeamzSkill の統合
 
@@ -106,7 +106,7 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
     | role | user.assignedroles |
 
     > [!NOTE]
-    > TeamzSkill では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)を参照してください。
+    > TeamzSkill では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

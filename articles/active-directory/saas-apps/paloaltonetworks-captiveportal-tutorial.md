@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 0e16cb3d24f9dd33b156bca72ce1c99e7aae957a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1b9c9182b8ffc6e9ea2e05fd4863783f111f81dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963606"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
 
@@ -150,7 +150,7 @@ Palo Alto Networks Captive Portal で Azure AD シングル サインオンを�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks Captive Portal] タイルをクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks Captive Portal] タイルをクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

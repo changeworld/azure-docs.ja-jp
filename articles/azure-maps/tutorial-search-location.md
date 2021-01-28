@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896662"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624969"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 
@@ -246,6 +246,10 @@ ms.locfileid: "92896662"
     ![Azure マップ コントロールと Search Service](./media/tutorial-search-location/popup-map.png)
 
 このチュートリアルの完全なコードを表示するには、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)をクリックしてください。 ライブ サンプルを表示するには、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)をクリックしてください。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
 
 ## <a name="next-steps"></a>次の手順
 

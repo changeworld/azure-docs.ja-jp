@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905776"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625100"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -935,6 +935,10 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
  * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017)と[空間データに対するニアレストネイバーのクエリ](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017)に関するページを参照してください。
 
 [完全なソース コード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)や[ライブ サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)を見たり、[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)を使用して Azure Maps の対象範囲と機能について詳しく理解したりできます。 また、[データドリブンのスタイルの式を使用](data-driven-style-expressions-web-sdk.md)して、ビジネス ロジックに適用することもできます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
 
 ## <a name="next-steps"></a>次の手順
 

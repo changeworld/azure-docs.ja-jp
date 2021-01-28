@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739707"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731253"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "97739707"
 
 Azure Pipelines では、オンプレミスまたは任意のクラウド上の仮想マシンにデプロイするための機能が完備された CI/CD 自動化ツールのセットが提供されます。
 
-このチュートリアルで設定する YAML ベースの CI/CD パイプラインでは、それぞれがアプリを実行する Web サーバーとして機能する Linux 仮想マシンがリソースとして含まれる Azure Pipelines [環境](/azure/devops/pipelines/process/environments?view=azure-devops)に、アプリをデプロイします。
+このチュートリアルで設定する YAML ベースの CI/CD パイプラインでは、それぞれがアプリを実行する Web サーバーとして機能する Linux 仮想マシンがリソースとして含まれる Azure Pipelines [環境](/azure/devops/pipelines/process/environments)に、アプリをデプロイします。
 
 学習内容は次のとおりです。
 
@@ -41,7 +41,7 @@ Azure Pipelines では、オンプレミスまたは任意のクラウド上の�
   [無料の Azure DevOps Services 組織](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)を取得できます。
 
   > [!NOTE]
-  > 詳細については、[Azure DevOps Services への接続](/azure/devops/organizations/projects/connect-to-projects?view=vsts)に関する記事をご覧ください。
+  > 詳細については、[Azure DevOps Services への接続](/azure/devops/organizations/projects/connect-to-projects)に関する記事をご覧ください。
 
 *  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](./tutorial-manage-vm.md)」をご覧ください。
 
@@ -222,7 +222,7 @@ jobs:
        tags: web
    ```
 2. 環境内の各仮想マシンに対して定義した **タグ** を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
-デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)をご覧ください。
+デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job)をご覧ください。
 
 3. デプロイ方法として、`runOnce` または `rolling` を指定できます。 
 

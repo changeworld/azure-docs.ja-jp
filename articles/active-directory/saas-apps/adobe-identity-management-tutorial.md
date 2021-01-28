@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 18c626a11724b585bf699f8be470b439177991ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fdca04c645e1bb956c8e9f294c702b639c8e2f74
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250848"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Identity Management の統合
 
@@ -164,7 +164,7 @@ Adobe Identity Management に対する Azure AD SSO を構成してテストす�
 
 * Adobe Identity Management のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adobe Identity Management] タイルをクリックすると、Adobe Identity Management のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adobe Identity Management] タイルをクリックすると、Adobe Identity Management のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

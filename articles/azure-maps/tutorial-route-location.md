@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896682"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624985"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
 
@@ -174,7 +174,7 @@ ms.locfileid: "92896682"
 
 3. **MapRoute.html** を保存し、ブラウザーを更新します。 これで、マップの中心がシアトルに設定されました。 涙形の青いピンは、始点をマークしています。 円形の青いピンは、終点をマークしています。
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="マップ上の起点と終点を結ぶルートを表示する":::
 
 <a id="getroute"></a>
 
@@ -183,7 +183,7 @@ ms.locfileid: "92896682"
 このセクションでは、Azure Maps Route Directions API を使用して、ルートの道順と、特定ポイント間の推定到着時間を取得する方法について説明します。
 
 >[!TIP]
->Azure Maps Route Service には、距離、渋滞状況、使用する輸送モードに基づく、" *最速* "、" *最短* "、" *エコ* "、" *スリリング* " などのさまざまなルートの種類を基にルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
+>Azure Maps Route Service には、距離、渋滞状況、使用する輸送モードに基づく、"*最速*"、"*最短*"、"*エコ*"、"*スリリング*" などのさまざまなルートの種類を基にルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
 
 1. `GetMap` 関数のコントロールの `ready` イベント ハンドラー内で、JavaScript コードに以下を追加します。
 
@@ -216,9 +216,13 @@ ms.locfileid: "92896682"
 
 3. **MapRoute.html** ファイルを保存し、Web ブラウザーを更新します。 マップに、始点から終点までのルートが表示されます。
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure マップ コントロールと Route Service":::
 
 サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)でご覧いただけます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

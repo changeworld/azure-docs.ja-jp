@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683206"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678165"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -27,7 +27,7 @@ ms.locfileid: "97683206"
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * クラウド内の [Azure Notebooks](../notebooks/index.yml) でデータ ファイルを操作する。
+> * クラウド内の [Azure Notebooks](https://notebooks.azure.com) でデータ ファイルを操作する。
 > * ファイルからデモ データを読み込む。
 > * Python で Azure Maps REST API シリーズを呼び出す。
 > * マップ上に場所データをレンダリングする。
@@ -197,9 +197,13 @@ Azure Maps の REST API を Azure Notebooks 内で呼び出す方法について
 
 Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](./consumption-model.md) に関する記事を参照してください。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
+
 ## <a name="next-steps"></a>次の手順
 
 Azure Notebooks の詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

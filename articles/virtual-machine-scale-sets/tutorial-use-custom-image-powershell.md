@@ -9,12 +9,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 8a0ee8565d22e935535bbe1e830d8399b2489f5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 803bbf485d783fc160d1f2644a56e1339f73690e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527525"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678307"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 
@@ -80,7 +80,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>イメージ定義を作成する 
 
-イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、ギャラリー イメージは *myGalleryImage* という名前で、特殊化されたイメージ用に作成されています。 
 
@@ -256,7 +256,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure では、Packer 上に構築された [Azure VM Image Builder](../virtual-machines/windows/image-builder-overview.md) サービスも提供しています。 テンプレートにカスタマイズを記述するだけで、イメージの作成が処理されます。 
+Azure では、Packer 上に構築された [Azure VM Image Builder](../virtual-machines/image-builder-overview.md) サービスも提供しています。 テンプレートにカスタマイズを記述するだけで、イメージの作成が処理されます。 
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure PowerShell を使用してスケール セットにカスタム VM イメージを作成して使用する方法について学習しました。

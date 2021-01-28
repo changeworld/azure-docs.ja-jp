@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895973"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680267"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
@@ -26,7 +26,7 @@ ms.locfileid: "97895973"
 > * Microsoft ID プラットフォームを使用して、[認証と承認](authentication-vs-authorization.md)に Azure Active Directory (Azure AD) を使用するように構成された新しい Blazor WebAssembly アプリを作成する
 > * 保護された Web API (この場合は [Microsoft Graph](/graph/overview)) からデータを取得する
 
-このチュートリアルでは .NET Core 3.1 を使用します。 .NET のドキュメントに、ASP.NET Core 5.0 を使用して [Blazor WebAssembly アプリのセキュリティを確保する方法](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api)が記載されています。 
+このチュートリアルでは .NET Core 3.1 を使用します。 .NET のドキュメントに、ASP.NET Core 5.0 を使用して [Blazor WebAssembly アプリのセキュリティを確保する方法](/aspnet/core/blazor/security/webassembly/graph-api)が記載されています。 
 
 [Blazor Server のチュートリアル](tutorial-blazor-server.md)も用意されています。 
 
@@ -80,7 +80,7 @@ Microsoft ID プラットフォームを使用して Azure AD でのログイン
 
 [Microsoft Graph](/graph/overview) は、Microsoft 365 データへのアクセスをユーザーに提供する API を備え、Microsoft ID プラットフォームによって発行されたトークンをサポートしているため、保護された API の例として使用するのに適しています。 このセクションでは、Microsoft Graph を呼び出して、ユーザーのメールをアプリケーションの [Fetch data]\(データのフェッチ\) ページに表示するコードを追加します。
 
-このセクションは、保護された API を名前付きクライアントから呼び出す一般的なアプローチを使用して記述されています。 同じ方法は、他の保護された API を呼び出す場合にも使用できます。 ただし、Microsoft Graph を自分のアプリケーションから呼び出す予定がある場合は、Graph SDK を使用することで定型的なコードを減らすことができます。 [Graph SDK の使用方法](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)は、.NET のドキュメントに記載されています。
+このセクションは、保護された API を名前付きクライアントから呼び出す一般的なアプローチを使用して記述されています。 同じ方法は、他の保護された API を呼び出す場合にも使用できます。 ただし、Microsoft Graph を自分のアプリケーションから呼び出す予定がある場合は、Graph SDK を使用することで定型的なコードを減らすことができます。 [Graph SDK の使用方法](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)は、.NET のドキュメントに記載されています。
 
 開始する前に、必要なアクセス許可を変更するため、アプリからログアウトしてください。そうしないと、現在のトークンは機能しません。 まだしていない場合は、以下のコードを更新する前に、もう一度アプリを実行して **[ログアウト]** を選択します。
 

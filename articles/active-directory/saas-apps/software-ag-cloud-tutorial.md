@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: f6f56958fb63e73e254a45e7cf8ad457be8269ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607645"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726141"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
 
@@ -155,6 +155,4 @@ Software AG Cloud で Microsoft Azure がプロバイダーとして構成され
 
 ## <a name="next-steps"></a>次の手順
 
-Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

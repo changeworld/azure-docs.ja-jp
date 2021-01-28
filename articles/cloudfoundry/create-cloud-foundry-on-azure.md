@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040791"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682616"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -42,23 +42,29 @@ ssh-keygen -t rsa -b 2048
 
 > [!NOTE]
 >
-> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest) を使用できます。
+> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](/cli/azure/ad/sp) を使用できます。
 
 1. Azure アカウントにサインインします。
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI のログイン](media/deploy/az-login-output.png )
  
-    後で使用するために、 **サブスクリプション ID** としての "id" 値と、"tenantId" 値をコピーします。
+    後で使用するために、**サブスクリプション ID** としての "id" 値と、"tenantId" 値をコピーします。
 
 2. この構成の既定のサブスクリプションを設定します。
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. PCF 用の Azure Active Directory アプリケーションを作成します。 一意の英数字のパスワードを指定します。 後で使用するために、パスワードを **clientSecret** として格納します。
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     後で使用するために、出力内の "appId" 値を **clientID** としてコピーします。
 
@@ -68,23 +74,31 @@ ssh-keygen -t rsa -b 2048
 
 4. 新しいアプリ ID でサービス プリンシパルを作成します。
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. サービス プリンシパルのアクセス許可のロールは、共同作成者として設定します。
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     以下を使用することもできます
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![サービス プリンシパルのロールの割り当て](media/deploy/svc-princ.png )
 
 6. アプリ ID、パスワード、およびテナント ID を使用して、サービス プリンシパルに正しくサインインできることを確認します。
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. 次の形式の .json ファイルを作成します。 先ほどコピーした **サブスクリプション ID** 、 **tenantID** 、 **clientID** 、 **clientSecret** の各値を使用します。 ファイルを保存します。
+7. 次の形式の .json ファイルを作成します。 先ほどコピーした **サブスクリプション ID**、**tenantID**、**clientID**、**clientSecret** の各値を使用します。 ファイルを保存します。
 
     ```json
     {
@@ -99,7 +113,7 @@ ssh-keygen -t rsa -b 2048
 
 1. [Pivotal Network](https://network.pivotal.io) アカウントに登録またはサインインします。
 2. ページの右上隅にある自分のプロファイル名を選択します。 **[プロファイルの編集]** を選択します。
-3. ページの一番下までスクロールして、 **LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン** の値です。
+3. ページの一番下までスクロールして、**LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン** の値です。
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Azure で Cloud Foundry クラスターをプロビジョニングする
 

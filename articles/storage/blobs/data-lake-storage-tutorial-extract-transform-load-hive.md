@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912656"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661935"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
-* **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+* **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 * **Secure Shell (SSH) クライアント**:詳細については、[SSH を使用した HDInsight (Hadoop) への接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

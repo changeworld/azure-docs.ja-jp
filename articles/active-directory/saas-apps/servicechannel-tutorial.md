@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 039f13838edf80f6f80c1821c868c8b99549f72f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 413ffa54a7413ad9b2482a3a8b6c698b34116301
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916475"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729841"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceChannel の統合
 
@@ -83,7 +83,7 @@ ServiceChannel に対して Azure AD SSO を構成してテストするには、
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[ServiceChannel クライアント サポート チーム](https://servicechannel.zendesk.com/hc/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. ロール要求はあらかじめ構成されているため、自分で構成する必要はありませんが、それらを Azure AD に作成する必要があります。こちらの[記事](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)に従ってください。 要求に関する詳細なガイダンスについては、ServiceChannel ガイドの[ここ](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)を参照してください。
+1. ロール要求はあらかじめ構成されているため、自分で構成する必要はありませんが、それらを Azure AD に作成する必要があります。こちらの[記事](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)に従ってください。 要求に関する詳細なガイダンスについては、ServiceChannel ガイドの[ここ](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -131,7 +131,7 @@ ServiceChannel に対して Azure AD SSO を構成してテストするには、
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した ServiceChannel に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [ServiceChannel] タイルをクリックすると、SSO を設定した ServiceChannel に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [ServiceChannel] タイルをクリックすると、SSO を設定した ServiceChannel に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

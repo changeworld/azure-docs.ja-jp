@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: aa45c2c6ca779669411c3f7c2d2e322d8f647a3a
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: d1d29e939ab01f6311b665eaec8425b7cd38f207
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915251"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729463"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>チュートリアル:Shmoop For Schools と Azure Active Directory の統合
 
@@ -94,7 +94,7 @@ Shmoop For Schools に対して Azure AD SSO を構成してテストするに�
     | role      | user.assignedroles |
 
     > [!NOTE]
-    > Shmoop For Schools では、**[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)を参照してください。
+    > Shmoop For Schools では、**[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)を参照してください。
 
 1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
@@ -143,7 +143,7 @@ Shmoop For Schools に対して Azure AD SSO を構成してテストするに�
 
 * Shmoop For Schools のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Shmoop For Schools] タイルをクリックすると、Shmoop For Schools のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Shmoop For Schools] タイルをクリックすると、Shmoop For Schools のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

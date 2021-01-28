@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 77b2d41e28f39debea2d28ad8287e9ce2679d8ad
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 84c74d5c1452cf5945aa4f66c3ed3c6af48681b3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538600"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726147"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler の統合
 
@@ -104,7 +104,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
     f. **[保存]** をクリックします。
 
     > [!NOTE]
-    > Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)をクリックしてください。
+    > Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)をクリックしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -233,7 +233,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 * Zscaler のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler] タイルをクリックすると、Zscaler のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler] タイルをクリックすると、Zscaler のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

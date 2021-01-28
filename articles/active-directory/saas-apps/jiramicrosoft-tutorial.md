@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4793cad25e34e2e318dd205ba5f474d4529d13d5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 75b8230a1027bbf3ff3d73fb35ce65107c2db7e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183899"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -254,7 +254,7 @@ JIRA SAML SSO by Microsoft に対して Azure AD シングル サインオンを
 
 * JIRA SAML SSO by Microsoft のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリの [JIRA SAML SSO by Microsoft] タイルをクリックすると、JIRA SAML SSO by Microsoft のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [JIRA SAML SSO by Microsoft] タイルをクリックすると、JIRA SAML SSO by Microsoft のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

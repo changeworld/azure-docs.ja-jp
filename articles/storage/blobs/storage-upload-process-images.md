@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: c20c78cb3c946c666b1640ccac6f86c9b52387ea
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843878"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676576"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -55,7 +55,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 次の例では、`myResourceGroup` という名前のリソース グループを作成します。
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location southeastasia
 ```
 
@@ -72,7 +72,7 @@ az group create --name myResourceGroup --location southeastasia
 
 次のコマンドの `<blob_storage_account>` プレースホルダーを、BLOB ストレージ アカウントのグローバルな一意の名前に置き換えます。
 
-```bash
+```azurecli
 blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia \
@@ -130,7 +130,7 @@ BLOB ストレージ アカウント名とキーをメモしておきます。 �
 
 次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
-```bash
+```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
@@ -144,7 +144,7 @@ Web アプリでは、GitHub サンプル リポジトリからデプロイさ�
 
 次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"*指定された名前 `<web_app>` の Web サイトは既に存在します*" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
 
-```bash
+```azurecli
 webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
@@ -164,7 +164,7 @@ App Service は、コンテンツを Web アプリにデプロイするさまざ
 
 サンプル プロジェクトには、[ASP.NET MVC](https://www.asp.net/mvc) アプリが含まれています。 そのアプリは、画像を受け取り、ストレージ アカウントに保存して、サムネイル コンテナーから画像を表示します。 Web アプリは、[Azure.Storage](/dotnet/api/azure.storage)、[Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs)、および [Azure.Storage.Blobs.Models](/dotnet/api/azure.storage.blobs.models) 名前空間を使用して、Azure Storage サービスと対話します。
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
@@ -180,7 +180,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
@@ -200,7 +200,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 このサンプル Web アプリでは、[.NET 用 Azure Storage API](/dotnet/api/overview/azure/storage) シリーズを使用して、画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -220,7 +220,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 このサンプル Web アプリでは、[JavaScript 用の Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)を使用して画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey

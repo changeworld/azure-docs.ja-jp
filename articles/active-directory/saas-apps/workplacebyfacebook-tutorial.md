@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060658"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725509"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workplace by Facebook の統合
 
@@ -205,7 +205,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 * Workplace by Facebook のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Workplace by Facebook] タイルをクリックすると、Workplace by Facebook のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Workplace by Facebook] タイルをクリックすると、Workplace by Facebook のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>Workplace by Facebook (モバイル) の SSO をテストする
 

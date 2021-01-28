@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 008866cce2ed52b1504f1ac3356965450cf7b103
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: ddb188b31b6085af5e163972daa7a86f71402a99
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97410122"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727807"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentsquare-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Contentsquare SSO の統合
 
@@ -130,10 +130,8 @@ Contentsquare SSO に対して Azure AD SSO を構成してテストするには
 
 * Contentsquare SSO のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Contentsquare SSO] タイルをクリックすると、Contentsquare SSO サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Contentsquare SSO] タイルをクリックすると、Contentsquare SSO サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Contentsquare SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Contentsquare SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -3,12 +3,12 @@ title: Azure Event Hubs - リアルタイム イベントでのデータの異�
 description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655681"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623461"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -349,7 +349,7 @@ Power BI アカウントにログインします。 **[マイ ワークスペー
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。
+リソース グループを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを使います。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

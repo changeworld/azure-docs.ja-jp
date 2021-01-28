@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537754"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674320"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -40,7 +40,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 > [!NOTE]
 > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のアプリおよびサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
-+ この記事では、[Azure portal から初めての関数を作成する方法](functions-create-first-azure-function.md)に関するページで作成したリソースを使用して作業を開始します。
++ この記事では、[Azure portal から初めての関数を作成する方法](./functions-get-started.md)に関するページで作成したリソースを使用して作業を開始します。
 リソースの作成が済んでいない場合は、すぐにこれらの手順に従って Function App を作成してください。
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成

@@ -3,17 +3,17 @@ title: CLI スクリプト - サーバーのパラメーターを変更する - 
 description: このサンプル CLI スクリプトは、すべての利用可能なサーバー構成を一覧表示し、Azure Database for MariaDB の構成を更新します。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: c7a46f98f74648ccae9f9f9f94c218d42056decb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 41b298b60377b8f6b3ad667157f8915876a0baa8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536808"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664650"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの構成を一覧表示および更新する
 このサンプル CLI スクリプトは、Azure Database for MariaDB サーバーのすべての利用可能な構成パラメーターとその許容値を一覧表示し、*innodb_lock_wait_timeout* を既定値以外の値に設定します。

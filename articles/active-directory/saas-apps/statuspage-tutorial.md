@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 40cb3c6e326cbacfbfb9879cfa92b5780d86fe99
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724206"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729636"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と StatusPage の統合
 
@@ -206,7 +206,7 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した StatusPage に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [StatusPage] タイルをクリックすると、SSO を設定した StatusPage に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [StatusPage] タイルをクリックすると、SSO を設定した StatusPage に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

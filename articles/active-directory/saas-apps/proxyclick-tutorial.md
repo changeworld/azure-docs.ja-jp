@@ -60,7 +60,7 @@ Azure AD への Proxyclick の統合を設定するには、ギャラリーか�
 
     ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-4. 検索ボックスに、「 **Proxyclick** 」と入力します。 検索結果で **[Proxyclick]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに、「**Proxyclick**」と入力します。 検索結果で **[Proxyclick]** を選択し、 **[追加]** を選択します。
 
      ![[検索結果]](common/search-new-app.png)
 
@@ -92,7 +92,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -179,9 +179,9 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「 **BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 

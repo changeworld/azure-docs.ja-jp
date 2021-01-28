@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 6df44b0de8f4578de6dca61c4423b4e24c39e5f9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 360aad288b4f91cb784e0f0e0cfd7dea47a140fc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916220"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727942"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-certent-equity-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Certent Equity Management の統合
 
@@ -96,7 +96,7 @@ Certent Equity Management に対して Azure AD SSO を構成してテストす�
     | ROLE | user.assignedroles |
 
     > [!NOTE]
-    > Azure AD で **役割** を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)をクリックしてください。
+    > Azure AD で **役割** を構成する方法については、[ここ](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)をクリックしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -144,9 +144,9 @@ Certent Equity Management に対して Azure AD SSO を構成してテストす�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Certent Equity Management に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Certent Equity Management] タイルをクリックすると、SSO を設定した Certent Equity Management に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Certent Equity Management] タイルをクリックすると、SSO を設定した Certent Equity Management に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Certent Equity Management を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Certent Equity Management を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

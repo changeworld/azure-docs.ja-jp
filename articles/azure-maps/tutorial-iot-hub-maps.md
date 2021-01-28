@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563060"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678274"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -161,15 +161,15 @@ IoT ハブを使用すると、IoT アプリケーションとそれが管理す
 > [!NOTE]
 > Event Grid でデバイス テレメトリ イベントを発行する機能は、現在、パブリック プレビュー段階です。 この機能は、以下を除くすべての Logic Apps リージョンで利用できます。米国東部、米国西部、西ヨーロッパ、Azure Government、Azure China 21Vianet、Azure Germany。
 
-*ContosoRental* リソース グループに IoT ハブを作成するには、[IoT ハブの作成](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)に関するセクションの手順に従います。
+*ContosoRental* リソース グループに IoT ハブを作成するには、[IoT ハブの作成](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub)に関するセクションの手順に従います。
 
 ## <a name="register-a-device-in-your-iot-hub"></a>IoT ハブにデバイスを登録する
 
-デバイスは、IoT ハブ ID レジストリに登録されていない限り、IoT ハブに接続できません。 ここでは、*InVehicleDevice* という名前のデバイスを 1 つ作成します。 IoT ハブ内にデバイスを作成して登録するには、「[IoT ハブに新しいデバイスを登録する](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)」の手順に従います。 デバイスのプライマリ接続文字列を必ずコピーしてください。 この情報は後で必要になります。
+デバイスは、IoT ハブ ID レジストリに登録されていない限り、IoT ハブに接続できません。 ここでは、*InVehicleDevice* という名前のデバイスを 1 つ作成します。 IoT ハブ内にデバイスを作成して登録するには、「[IoT ハブに新しいデバイスを登録する](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub)」の手順に従います。 デバイスのプライマリ接続文字列を必ずコピーしてください。 この情報は後で必要になります。
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>関数を作成して Event Grid サブスクリプションを追加する
 
-Azure Functions はサーバーレス コンピューティング サービスです。これを使用すると、コンピューティング インフラストラクチャの明示的なプロビジョニングや管理を行うことなく、小規模なコード ("関数") を実行できます。 詳細については、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) に関するページをご覧ください。
+Azure Functions はサーバーレス コンピューティング サービスです。これを使用すると、コンピューティング インフラストラクチャの明示的なプロビジョニングや管理を行うことなく、小規模なコード ("関数") を実行できます。 詳細については、[Azure Functions](../azure-functions/functions-overview.md) に関するページをご覧ください。
 
 関数は、特定のイベントによってトリガーされます。 ここでは、Event Grid トリガーによってトリガーされる関数を作成します。 IoT ハブのデバイス テレメトリ イベント用のイベント サブスクリプションを作成して、トリガーと関数の間の関係を作成します。 デバイス テレメトリ イベントが発生すると、関数はエンドポイントとして呼び出され、前に IoT ハブに登録したデバイスの関連データを受け取ります。
 
@@ -223,7 +223,7 @@ Azure Functions はサーバーレス コンピューティング サービス�
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>IoT ハブのメッセージ ルーティングを使用してイベントをフィルター処理する
 
-Azure 関数に Event Grid サブスクリプションを追加すると、指定された IoT ハブにメッセージング ルートが自動的に作成されます。 メッセージ ルーティングを使用すると、各種データ型をさまざまなエンドポイントにルーティングできます。 たとえば、デバイス テレメトリのメッセージ、デバイスのライフサイクル イベント、デバイス ツインの変更イベントをルーティングできます。 詳細については、[IoT ハブのメッセージ ルーティングの使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)に関するページをご覧ください。
+Azure 関数に Event Grid サブスクリプションを追加すると、指定された IoT ハブにメッセージング ルートが自動的に作成されます。 メッセージ ルーティングを使用すると、各種データ型をさまざまなエンドポイントにルーティングできます。 たとえば、デバイス テレメトリのメッセージ、デバイスのライフサイクル イベント、デバイス ツインの変更イベントをルーティングできます。 詳細については、[IoT ハブのメッセージ ルーティングの使用](../iot-hub/iot-hub-devguide-messages-d2c.md)に関するページをご覧ください。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT ハブでのメッセージ ルーティングのスクリーンショット。":::
 
@@ -232,7 +232,7 @@ Azure 関数に Event Grid サブスクリプションを追加すると、指�
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="メッセージ ルーティングのフィルター処理のスクリーンショット。":::
 
 >[!TIP]
->IoT device-to-cloud メッセージを照会するさまざまな方法があります。 メッセージ ルーティング構文の詳細については、[IoT Hub のメッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax)に関するページを参照してください。
+>IoT device-to-cloud メッセージを照会するさまざまな方法があります。 メッセージ ルーティング構文の詳細については、[IoT Hub のメッセージ ルーティング](../iot-hub/iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>テレメトリ データを IoT Hub に送信する
 
@@ -283,6 +283,10 @@ Azure Maps REST API シリーズの完全な一覧については、次を参照
 Azure で IoT の認定を受けたデバイスの一覧を取得するには、次のページにアクセスします。
 
 * [Azure 認定デバイス](https://catalog.azureiotsolutions.com/)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
 
 ## <a name="next-steps"></a>次の手順
 
