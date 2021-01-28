@@ -393,7 +393,7 @@
     - name: 課金自動化のシナリオ
       href: manage/cost-management-automation-scenarios.md
     - name: Azure Billing API の概要
-      href: manage/usage-rate-card-overview.md
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure Billing REST API
       href: /rest/api/billing
     - name: Azure Consumption API の概要

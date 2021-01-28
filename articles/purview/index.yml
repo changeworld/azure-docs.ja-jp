@@ -6,15 +6,15 @@ metadata:
   description: 組織がデータ ソースを検索、把握、活用できるように Azure Purview を使用する方法について説明します。 チュートリアルや REST API リファレンスなどのドキュメントで、登録されたデータ ソースをデータ コンシューマーが検索し、領域の専門家によって提供される知識を取得できるデータ リポジトリの計画と構成の方法を紹介します。
   ms.service: purview
   ms.topic: landing-page
-  author: hrasheed-msft
-  ms.author: hrasheed
+  author: JasonWHowell
+  ms.author: jasonh
   ms.date: 11/29/2020
-  ms.openlocfilehash: 378a335653acf31275c312bcf4fa53b36bfa614e
-  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+  ms.openlocfilehash: c9e9a32ca5c77082186f15a0eae3f3430347a02b
+  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96549438"
+  ms.lasthandoff: 01/28/2021
+  ms.locfileid: "98926917"
 landingContent:
 - title: Azure Purview について
   linkLists:

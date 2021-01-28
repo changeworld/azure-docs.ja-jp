@@ -187,7 +187,7 @@
         - name: Azure PowerShell
           href: /powershell/
     - name: 課金
-      href: ../../cost-management-billing/manage/usage-rate-card-overview.md
+      href: ../../cost-management-billing/manage/consumption-api-overview.md
 - name: リソース
   items:
     - name: Azure の制限とクォータ

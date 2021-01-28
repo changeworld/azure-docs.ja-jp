@@ -125,7 +125,7 @@
                   href: ./workloads/sap/hana-operations-model.md
                 - name: 互換性のあるオペレーティング システム
                   href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
-        - name: アーキテクチャ
+        - name: Architecture
           items:
             - name: 全般的なアーキテクチャ
               href: ./workloads/sap/hana-architecture.md
@@ -438,7 +438,7 @@
       href: /azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
-        - name: アーキテクチャ
+        - name: Architecture
           href: ./linux/ibm-db2-purescale-azure.md
         - name: デプロイ
           href: ./linux/deploy-ibm-db2-purescale-azure.md
@@ -474,7 +474,7 @@
               href: av2-series.md
             - name: 負荷の急増に対応できる B シリーズ
               href: sizes-b-series-burstable.md
-            - name: DCv2 シリーズ
+            - name: DCsv2 シリーズ
               href: dcv2-series.md
             - name: Dv2 および DSv2 シリーズ
               href: dv2-dsv2-series.md

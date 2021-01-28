@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: チュートリアル
   items:
-    - name: Azure に接続された新しいアカウントを作成する
+    - name: 新しいアカウントを作成する
       href: connect-to-azure.md
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
