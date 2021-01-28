@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: d9f3fa67a0d3eee303ed307f1d64d30955348869
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f319e77bd4801a2844a54ba8eba955c2b062fe7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222498"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934291"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>チュートリアル:Azure PowerShell を使用した NAT ゲートウェイの作成と NAT サービスのテスト
 
@@ -53,7 +53,7 @@ $rg = New-AzResourceGroup -Name $rgname -Location $loc
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-インターネットにアクセスするには、NAT ゲートウェイに 1 つ以上のパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIPsource** というパブリック IP アドレス リソースを作成します。 このコマンドの結果は、後で使用できるように **$publicIPsource** という名前の変数に格納されます。
+インターネットにアクセスするには、NAT ゲートウェイに 1 つ以上のパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroupNAT** に **myPublicIPsource** というパブリック IP アドレス リソースを作成します。 このコマンドの結果は、後で使用できるように **$publicIPsource** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $pipname = 'myPublicIPsource'
@@ -67,7 +67,7 @@ New-AzPublicIpAddress -Name $pipname -ResourceGroupName $rg.ResourceGroupName -A
 
 ### <a name="create-a-public-ip-prefix"></a>パブリック IP プレフィックスの作成
 
- [New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIPprefixsource** というパブリック IP プレフィックス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIPPrefixsource** という名前の変数に格納されます。
+ [New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix) を使用して、**myResourceGroupNAT** に **myPublicIPprefixsource** というパブリック IP プレフィックス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIPPrefixsource** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $prefixname = 'mypublicIPprefixsource'
@@ -104,7 +104,7 @@ New-AzNatGateway -Name $natname -ResourceGroupName $rg.ResourceGroupName -Public
 
 仮想ネットワークを作成し、サブネットをゲートウェイに関連付けます。
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest) を使用して **myVnetsource** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) を使用して、**myResourceGroupNAT** 内に **mySubnetsource** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。  コマンドの結果は、後で使用できるように **$subnetsource** および **$vnetsource** という名前の変数に格納されます。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して **myVnetsource** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、**myResourceGroupNAT** 内に **mySubnetsource** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。  コマンドの結果は、後で使用できるように **$subnetsource** および **$vnetsource** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $subnetname = 'mySubnetsource'
@@ -128,7 +128,7 @@ NAT ゲートウェイをテストする前に、ソース VM を作成する必
 
 ### <a name="create-public-ip-for-source-vm"></a>ソース VM のパブリック IP の作成
 
-VM へのアクセスに使用するパブリック IP を作成します。  [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIPVM** というパブリック IP アドレス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIpsourceVM** という名前の変数に格納されます。
+VM へのアクセスに使用するパブリック IP を作成します。  [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroupNAT** に **myPublicIPVM** というパブリック IP アドレス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIpsourceVM** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $sku = 'Standard'
@@ -142,7 +142,7 @@ New-AzPublicIpAddress -Name $pipvmname -ResourceGroupName $rg.ResourceGroupName 
 
 ### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>NSG の作成と VM の SSH エンドポイントの公開
 
-Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH の受信アクセスを許可する NSG を作成します。 NAT サービスはフロー方向を認識します。 NAT ゲートウェイが同じサブネット上に構成された後は、この NSG は送信に使用されません。 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) を使用して、**myNSGsource** という名前の NSG リソースを作成します。 [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) を使用して、**myResourceGroupNAT** に **ssh** という名前の SSH アクセス用の NSG ルールを作成します。 このコマンドの結果は、後で使用できるように **$nsgsource** という名前の変数に格納されます。
+Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH の受信アクセスを許可する NSG を作成します。 NAT サービスはフロー方向を認識します。 NAT ゲートウェイが同じサブネット上に構成された後は、この NSG は送信に使用されません。 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、**myNSGsource** という名前の NSG リソースを作成します。 [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、**myResourceGroupNAT** に **ssh** という名前の SSH アクセス用の NSG ルールを作成します。 このコマンドの結果は、後で使用できるように **$nsgsource** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $rnm = 'ssh'
@@ -162,7 +162,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg.ResourceGroupName -Name $nsnm 
 
 ### <a name="create-nic-for-source-vm"></a>ソース VM の NIC の作成
 
-[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) を使用して、**myNicsource** という名前のネットワーク インターフェイスを作成します。 このコマンドにより、パブリック IP アドレスとネットワーク セキュリティ グループが関連付けられます。 このコマンドの結果は、後で使用できるように **$nicsource** という名前の変数に格納されます。
+[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、**myNicsource** という名前のネットワーク インターフェイスを作成します。 このコマンドにより、パブリック IP アドレスとネットワーク セキュリティ グループが関連付けられます。 このコマンドの結果は、後で使用できるように **$nicsource** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $nin = 'myNicsource'
@@ -226,7 +226,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigsource -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-構成定義を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) を使用して **myResourceGroupNAT** に **myVMsource** という名前の VM を作成します。
+構成定義を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して **myResourceGroupNAT** に **myVMsource** という名前の VM を作成します。
 
 ```azurepowershell-interactive
 New-AzVM -ResourceGroupName $rg.ResourceGroupName -VM $vmConfigsource -Location $rg.Location
@@ -243,7 +243,7 @@ New-AzVM -ResourceGroupName $rg.ResourceGroupName -VM $vmConfigsource -Location 
 
 宛先の仮想マシンを配置する仮想ネットワークを作成する必要があります。  これらのコマンドは、ソース VM の手順と同じです。 宛先エンドポイントを公開するための若干の変更が追加されています。
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest) を使用して **myVnetdestination** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) を使用して、**myResourceGroupNAT** 内に **mySubnetdestination** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。  コマンドの結果は、後で使用できるように **$subnetdestination** および **$vnetdestination** という名前の変数に格納されます。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して **myVnetdestination** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、**myResourceGroupNAT** 内に **mySubnetdestination** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。  コマンドの結果は、後で使用できるように **$subnetdestination** および **$vnetdestination** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $sbdn = 'mySubnetdestination'
@@ -261,7 +261,7 @@ New-AzVirtualNetwork -Name $vdn -ResourceGroupName $rg.ResourceGroupName -Addres
 
 ### <a name="create-public-ip-for-destination-vm"></a>宛先 VM のパブリック IP の作成
 
-宛先 VM へのアクセスに使用するパブリック IP を作成します。  [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIPdestinationVM** というパブリック IP アドレス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIpdestinationVM** という名前の変数に格納されます。
+宛先 VM へのアクセスに使用するパブリック IP を作成します。  [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroupNAT** に **myPublicIPdestinationVM** というパブリック IP アドレス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIpdestinationVM** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $sku = 'Standard'
@@ -275,7 +275,7 @@ New-AzPublicIpAddress -Name $pipd -ResourceGroupName $rg.ResourceGroupName -Allo
 
 ### <a name="create-an-nsg-and-expose-ssh-and-http-endpoint-for-vm"></a>NSG の作成と VM の SSH および HTTP エンドポイントの公開
 
-Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH の受信アクセスを許可する NSG を作成します。 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) を使用して、**myNSGdestination** という名前の NSG リソースを作成します。 [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) を使用して、**ssh** という名前の SSH アクセス用の NSG ルールを作成します。  [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) を使用して、**http** という名前の HTTP アクセス用の NSG ルールを作成します。 両方のルールが **myResourceGroupNAT** に作成されます。 このコマンドの結果は、後で使用できるように **$nsgdestination** という名前の変数に格納されます。
+Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH の受信アクセスを許可する NSG を作成します。 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、**myNSGdestination** という名前の NSG リソースを作成します。 [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、**ssh** という名前の SSH アクセス用の NSG ルールを作成します。  [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、**http** という名前の HTTP アクセス用の NSG ルールを作成します。 両方のルールが **myResourceGroupNAT** に作成されます。 このコマンドの結果は、後で使用できるように **$nsgdestination** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $snm = 'ssh'
@@ -300,7 +300,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg.ResourceGroupName -Name $nsnm 
 
 ### <a name="create-nic-for-destination-vm"></a>宛先 VM の NIC の作成
 
-[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) を使用して、**myNicdestination** という名前のネットワーク インターフェイスを作成します。 このコマンドにより、パブリック IP アドレスとネットワーク セキュリティ グループが関連付けられます。 このコマンドの結果は、後で使用できるように **$nicdestination** という名前の変数に格納されます。
+[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、**myNicdestination** という名前のネットワーク インターフェイスを作成します。 このコマンドにより、パブリック IP アドレスとネットワーク セキュリティ グループが関連付けられます。 このコマンドの結果は、後で使用できるように **$nicdestination** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $nnm = 'myNicdestination'
@@ -350,7 +350,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigdestination -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-構成定義を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) を使用して **myResourceGroupNAT** に **myVMdestination** という名前の VM を作成します。
+構成定義を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して **myResourceGroupNAT** に **myVMdestination** という名前の VM を作成します。
 
 ```azurepowershell-interactive
 
@@ -362,7 +362,7 @@ New-AzVM -ResourceGroupName $rg.ResourceGroupName -VM $vmConfigdestination -Loca
 
 ## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>宛先 VM における Web サーバーの準備とペイロードのテスト
 
-まず、宛先 VM の IP アドレスを検出する必要があります。  VM のパブリック IP アドレスを取得するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress?view=latest) を使用します。 
+まず、宛先 VM の IP アドレスを検出する必要があります。  VM のパブリック IP アドレスを取得するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 
 
 ```azurepowershell-interactive
 $pipname = 'myPublicIPdestinationVM'
@@ -404,7 +404,7 @@ sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
 
 ## <a name="prepare-test-on-source-vm"></a>ソース VM におけるテストの準備
 
-まず、ソース VM の IP アドレスを検出する必要があります。  VM のパブリック IP アドレスを取得するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress?view=latest) を使用します。 
+まず、ソース VM の IP アドレスを検出する必要があります。  VM のパブリック IP アドレスを取得するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 
 
 ```azurepowershell-interactive
 $pipname = 'myPublicIPsourceVM'
@@ -466,7 +466,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name $rg.ResourceGroupName

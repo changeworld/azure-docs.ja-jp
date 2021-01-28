@@ -1,19 +1,16 @@
 ---
 title: チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
 description: Azure HDInsight で Kafka REST プロキシを使用して Apache Kafka 操作を実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539481"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944019"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
 
@@ -56,8 +53,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |location|LOCATION をクラスターの作成先リージョンに置き換えます。 有効な場所の一覧については、`az account list-locations` コマンドを使用してください。|
     |clusterName|CLUSTERNAME を、新しいクラスターのグローバルに一意な名前に置き換えます。|
     |storageAccount|STORAGEACCOUNTNAME を新しいストレージ アカウントの名前に置き換えます。|
-    |httpPassword|PASSWORD をクラスター ログイン ( **admin** ) のパスワードに置き換えます。|
-    |sshPassword|PASSWORD を Secure Shell のユーザー名 ( **sshuser** ) のパスワードに置き換えます。|
+    |httpPassword|PASSWORD をクラスター ログイン (**admin**) のパスワードに置き換えます。|
+    |sshPassword|PASSWORD を Secure Shell のユーザー名 (**sshuser**) のパスワードに置き換えます。|
     |securityGroupName|SECURITYGROUPNAME を、Kafka REST プロキシのクライアント AAD セキュリティ グループ名に置き換えます。 `az-hdinsight-create` の `--kafka-client-group-name` パラメーターには、この変数が渡されます。|
     |securityGroupID|SECURITYGROUPID を、Kafka REST プロキシのクライアント AAD セキュリティ グループ ID に置き換えます。 `az-hdinsight-create` の `--kafka-client-group-id` パラメーターには、この変数が渡されます。|
     |storageContainer|クラスターによって使用されるストレージ コンテナー。このチュートリアルでは、現状のままにしておいてください。 この変数は、クラスターの名前を使用して設定されます。|

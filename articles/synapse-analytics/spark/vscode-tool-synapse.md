@@ -2,19 +2,19 @@
 title: チュートリアル - Spark & Hive Tools for VSCode (Spark アプリケーション)
 description: チュートリアル - Spark & Hive Tools for VSCode を使用して、Python で記述された Spark アプリケーションを開発し、サーバーレス Apache Spark プールに送信します。
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: eb4a4c2c8d1d52690a07b784640d20d96ff2d600
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445679"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943776"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>チュートリアル:VSCode で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 

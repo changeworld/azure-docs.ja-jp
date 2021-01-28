@@ -1,19 +1,16 @@
 ---
 title: チュートリアル:Data Factory を使用した Azure HDInsight でのオンデマンド クラスター
 description: チュートリアル - Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: ea4f8c33a906bff96ea93f9a7aea3e6f625556cb
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 762938ebb4785a54224771e96c5bca274721dc30
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945976"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 
@@ -39,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * インストール済みの PowerShell [Az モジュール](/powershell/azure/)。
 
-* Azure Active Directory サービス プリンシパル。 サービス プリンシパルを作成したら、リンク先の記事の手順に従って、 **アプリケーション ID** と **認証キー** を必ず取得してください。 このチュートリアルで、後ほどこれらの値が必要になります。 また、サービス プリンシパルが、サブスクリプションまたはクラスターが作成されるリソース グループの *共同作成者* ロールのメンバーであることを確認してください。 必要な値を取得し、適切なロールを割り当てる手順については、[Azure Active Directory サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事をご覧ください。
+* Azure Active Directory サービス プリンシパル。 サービス プリンシパルを作成したら、リンク先の記事の手順に従って、**アプリケーション ID** と **認証キー** を必ず取得してください。 このチュートリアルで、後ほどこれらの値が必要になります。 また、サービス プリンシパルが、サブスクリプションまたはクラスターが作成されるリソース グループの *共同作成者* ロールのメンバーであることを確認してください。 必要な値を取得し、適切なロールを割り当てる手順については、[Azure Active Directory サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事をご覧ください。
 
 ## <a name="create-preliminary-azure-objects"></a>予備の Azure オブジェクトを作成します。
 
@@ -51,13 +48,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. Azure リソース グループを作成します。
 3. Azure Storage アカウントを作成します。
 4. ストレージ アカウントに BLOB コンテナーを作成します。
-5. サンプル HiveQL スクリプト ( **partitionweblogs.hql** ) を BLOB コンテナーにコピーします。 このスクリプトは、[https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) で入手できます。 サンプル スクリプトは、別のパブリック BLOB コンテナーで既に使用できます。 下記の PowerShell スクリプトでは、作成された Azure ストレージ アカウントにこれらのファイルのコピーを作成します。
+5. サンプル HiveQL スクリプト (**partitionweblogs.hql**) を BLOB コンテナーにコピーします。 このスクリプトは、[https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) で入手できます。 サンプル スクリプトは、別のパブリック BLOB コンテナーで既に使用できます。 下記の PowerShell スクリプトでは、作成された Azure ストレージ アカウントにこれらのファイルのコピーを作成します。
 
 ### <a name="create-storage-account-and-copy-files"></a>ストレージ アカウントを作成してファイルをコピーする
 
 > [!IMPORTANT]  
 > スクリプトを使って作成する Azure リソース グループと Azure ストレージ アカウントの名前を指定します。
-> スクリプトによって出力された **リソース グループ名** 、 **ストレージ アカウント名** 、 **ストレージ アカウント キー** を書き留めます。 これらは、次のセクションで必要になります。
+> スクリプトによって出力された **リソース グループ名**、**ストレージ アカウント名**、**ストレージ アカウント キー** を書き留めます。 これらは、次のセクションで必要になります。
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -160,7 +157,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 1. **[概要]** ビューには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 ストレージ アカウント名を選択します。
 1. **[コンテナー]** タイルを選択します。
 1. **adfgetstarted** コンテナーを選択します。 **`hivescripts`** というフォルダーが表示されます。
-1. このフォルダーを開き、サンプル スクリプト ファイル ( **partitionweblogs.hql** ) があることを確認します。
+1. このフォルダーを開き、サンプル スクリプト ファイル (**partitionweblogs.hql**) があることを確認します。
 
 ## <a name="understand-the-azure-data-factory-activity"></a>Azure Data Factory のアクティビティを理解する
 
@@ -177,7 +174,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 2. クラスター上で HiveQL スクリプトを実行することによって入力データが処理されます。 このチュートリアルの Hive アクティビティに関連付けられた HiveQL スクリプトは、次のアクションを実行します。
 
-    * 既存のテーブル ( *hivesampletable* ) を使用して別のテーブル ( **HiveSampleOut** ) を作成します。
+    * 既存のテーブル (*hivesampletable*) を使用して別のテーブル (**HiveSampleOut**) を作成します。
     * **HiveSampleOut** テーブルに、元の *hivesampletable* の特定の列だけを設定します。
 
 3. HDInsight Hadoop クラスターは、処理が完了し、(TimeToLive 設定で) 構成された時間アイドル状態になると、削除されます。 この TimeToLive アイドル時間内に次のデータ スライスを処理できる場合、スライスを処理するために同じクラスターが使用されます。  
@@ -215,8 +212,8 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 このセクションでは、データ ファクトリ内に 2 つのリンクされたサービスを作成します。
 
-* Azure ストレージ アカウントをデータ ファクトリにリンクする、 **Azure Storage のリンクされたサービス** 。 このストレージは、オンデマンドの HDInsight クラスターによって使用されます。 また、クラスター上で実行される Hive スクリプトも含まれています。
-* **オンデマンドの HDInsight のリンクされたサービス** 。 Azure Data Factory によって、HDInsight クラスターが自動的に作成され、Hive スクリプトが実行されます。 HDInsight クラスターは、事前に構成された時間だけアイドル状態になったら削除されます。
+* Azure ストレージ アカウントをデータ ファクトリにリンクする、**Azure Storage のリンクされたサービス**。 このストレージは、オンデマンドの HDInsight クラスターによって使用されます。 また、クラスター上で実行される Hive スクリプトも含まれています。
+* **オンデマンドの HDInsight のリンクされたサービス**。 Azure Data Factory によって、HDInsight クラスターが自動的に作成され、Hive スクリプトが実行されます。 HDInsight クラスターは、事前に構成された時間だけアイドル状態になったら削除されます。
 
 ### <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 

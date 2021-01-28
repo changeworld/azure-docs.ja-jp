@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f1b00273314c845a36c7efdb9cf9f4de9d5cdd46
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580573"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937339"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
@@ -50,11 +50,11 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 
 開始する前に次の点を確認します。
 
-* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。
+* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。
 * Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
     - Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-- Microsoft Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
+- Microsoft Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](/graph/permissions-reference)」を参照してください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-gateway-device"></a>Data Box Gateway デバイスの場合
@@ -90,7 +90,7 @@ Data Box Gateway リソースを作成するには、Azure portal で次の手�
 1. Microsoft Azure の資格情報を使用して、次のいずれかのポータルにサインインします。
 
     - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
-    - Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用した Azure Government への接続](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)に関する記事をご確認ください。
+    - Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用した Azure Government への接続](../azure-government/documentation-government-get-started-connect-with-portal.md)に関する記事をご確認ください。
     
 2. **[+ リソースの作成]** を選択します。
 
@@ -193,5 +193,3 @@ OR
 
 > [!div class="nextstepaction"]
 > [VMware で Data Box Gateway をプロビジョニングする](./data-box-gateway-deploy-provision-vmware.md)
-
-

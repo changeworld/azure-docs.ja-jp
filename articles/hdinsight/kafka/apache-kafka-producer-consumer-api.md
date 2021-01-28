@@ -1,19 +1,16 @@
 ---
 title: チュートリアル:Apache Kafka Producer と Consumer API - Azure HDInsight
 description: HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法を説明します。 このチュートリアルでは、これらの API を Java アプリケーションから HDInsight 上の Kafka で使用する方法を学習します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629308"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945180"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル:Apache Kafka Producer および Consumer API の使用
 
@@ -217,9 +214,9 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 
 ## <a name="common-issues-faced"></a>発生する一般的な問題
 
-1. **トピックの作成が失敗する** クラスターで Enterprise Security Pack が有効になっている場合は、 [プロデューサーとコンシューマー用に事前に作成した JAR ファイルを使用](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)します。 ESP jar は、[`DomainJoined-Producer-Consumer` サブディレクトリ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)内のコードから作成できます。 プロデューサーとコンシューマーのプロパティには、ESP が有効なクラスター用の追加のプロパティ `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` があります。
+1. **トピックの作成が失敗する** クラスターで Enterprise Security Pack が有効になっている場合は、[プロデューサーとコンシューマー用に事前に作成した JAR ファイルを使用](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)します。 ESP jar は、[`DomainJoined-Producer-Consumer` サブディレクトリ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)内のコードから作成できます。 プロデューサーとコンシューマーのプロパティには、ESP が有効なクラスター用の追加のプロパティ `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` があります。
 
-2. **ESP が有効なクラスターでの障害** : 生成と消費の操作が失敗し、ESP が有効なクラスターを使用している場合は、すべての Ranger ポリシーにユーザー `kafka` が存在していることを確認してください。 存在しない場合は、すべての Ranger ポリシーに追加してください。
+2. **ESP が有効なクラスターでの障害**: 生成と消費の操作が失敗し、ESP が有効なクラスターを使用している場合は、すべての Ranger ポリシーにユーザー `kafka` が存在していることを確認してください。 存在しない場合は、すべての Ranger ポリシーに追加してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

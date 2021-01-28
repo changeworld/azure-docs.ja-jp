@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: aaa75988e1177590a0ff6f4ca2e00f92de68789f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580664"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937204"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する
 
@@ -57,7 +57,7 @@ ms.locfileid: "96580664"
 
     3. 共有を配置するストレージ アカウントを指定します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。 コンテナーが既に存在する場合は、そのコンテナーが使用されます。
        > [!IMPORTANT]
-       > Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+       > Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
     
     4. ブロック BLOB、ページ BLOB、またはファイルから **[ストレージ サービス]** を選択します。 選択されるサービスの種類は、Azure に存在するデータの形式によって変わります。 たとえば、このインスタンスでは、BLOB ブロックとして Azure にデータを配置するため、ブロック BLOB を選択します。 ページ BLOB を選択する場合は、データに 512 バイトが割り当てられていることを確認する必要があります。 たとえば、VHDX は常に 512 バイトでアラインされています。
    
