@@ -33,8 +33,6 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
-      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
     - name: マネージド ID を使用して Azure Spring Cloud アプリから Azure Functions を呼び出す
       href: spring-cloud-tutorial-managed-identities-functions.md
 - name: 概念
@@ -101,6 +99,18 @@
           href: spring-cloud-howto-application-insights.md
         - name: Resilience4J サーキット ブレーカー メトリック
           href: spring-cloud-howto-circuit-breaker-metrics.md
+    - name: ネットワーク
+      items:
+        - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
+          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+        - name: プライベート ネットワークのアプリケーションにアクセスする
+          href: spring-cloud-access-app-virtual-network.md
+        - name: アプリケーションをインターネットに公開する
+          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+        - name: VNET での Azure Spring Cloud の実行に関するお客様の責任
+          href: spring-cloud-vnet-customer-responsibilities.md
+        - name: 仮想ネットワークでの Azure Spring Cloud のトラブルシューティング
+          href: spring-cloud-troubleshooting-vnet.md
     - name: セキュリティで保護
       items:
         - name: システム割り当てマネージド ID を有効化する
@@ -140,7 +150,7 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
 - name: DevOps の展開
   items:
     - name: Azure DevOps を使用した CI/CD

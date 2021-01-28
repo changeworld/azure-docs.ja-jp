@@ -2,18 +2,15 @@
 title: チュートリアル:HDInsight Apache Storm からストレージへ - Azure/Data Lake
 description: チュートリアル - Apache Storm を使用して、Azure HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545448"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932547"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 
@@ -160,7 +157,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
     hdfs.url: wasbs:///
     ```
 
-    ファイルを保存するには、 __Ctrl + X__ キーを押してから __Y__ キー、 __Enter__ キーの順に押します。 このファイル内の値により、ストレージの URL と、データが書き込まれるディレクトリ名が設定されます。
+    ファイルを保存するには、__Ctrl + X__ キーを押してから __Y__ キー、__Enter__ キーの順に押します。 このファイル内の値により、ストレージの URL と、データが書き込まれるディレクトリ名が設定されます。
 
 1. 次のコマンドを使用して、トポロジを開始します。
 

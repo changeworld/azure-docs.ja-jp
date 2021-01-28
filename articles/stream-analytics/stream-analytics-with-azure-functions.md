@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: ffc056a97d3c0fd14bab186614015a9352a34077
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 74e09e61a6132858d716686bdb6687bb670f0d33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015149"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879513"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -53,7 +53,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する
 
-1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 このセクションでは、CSharp 言語を使用して、関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function)する方法について説明します。  
+1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-get-started.md)に関するセクションを参照してください。 このセクションでは、CSharp 言語を使用して、関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-get-started.md)する方法について説明します。  
 
 2. **run.csx** 関数を参照します。 これを以下のコードで更新します **"\<your Azure Cache for Redis connection string goes here\>"** を、前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に置き換えます。 
 

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881030"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
 
@@ -108,7 +108,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 * `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
 
-`sync` コマンドの詳細については、「[Synchronize files (ファイルの同期)](storage-use-azcopy-blobs.md#synchronize-files)」を参照してください。
+`sync` コマンドの詳細については、「[Synchronize files (ファイルの同期)](./storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
 ## <a name="create-a-scheduled-task"></a>スケジュールされたタスクを作成する
 
@@ -182,7 +182,7 @@ AzCopy の詳細については、以下の記事を参照してください。
 
 * [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 
-* [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+* [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 
 * [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 

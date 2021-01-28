@@ -6,12 +6,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746167"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880561"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>チュートリアル:Azure portal を使用して VPN ゲートウェイを作成、管理する
 
@@ -103,7 +103,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 VPN ゲートウェイが完成したら、接続を構成することができます。 以下の記事には、最も一般的ないくつかの構成を作成する方法が紹介されています。
 
 > [!div class="nextstepaction"]
-> [サイト間 VPN 接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [サイト間 VPN 接続](./tutorial-site-to-site-portal.md)
 
 > [!div class="nextstepaction"]
 > [ポイント対サイト VPN 接続](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

@@ -1,19 +1,16 @@
 ---
 title: 'Azure HDInsight: Java のサンプル'
 description: HDInsight SDK for Java を使用した一般的なタスクの Java サンプルは、GitHub でご覧いただけます。
-author: hrasheed-msft
 ms.custom: devx-track-java
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: c7c89706d749151b5a59667282eb6675fd18dc8c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 178767847757660163515ec286eba48e1050f506
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535367"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931895"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java のサンプル
 

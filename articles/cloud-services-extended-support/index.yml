@@ -10,12 +10,12 @@ metadata:
   author: mimckitt
   ms.author: mimckitt
   ms.date: 03/06/2020
-  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
-  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.openlocfilehash: efbdf689b895278445f022d15473591e09a691f9
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98743654"
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98878733"
 landingContent:
 - title: Cloud Services (延長サポート) について
   linkLists:
@@ -47,6 +47,8 @@ landingContent:
       url: available-sizes.md
     - text: よく寄せられる質問
       url: faq.md
+    - text: ゲスト OS のリリース ニュース
+      url: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
 - title: ハウツー ガイド
   linkLists:
   - linkListType: how-to-guide
@@ -63,6 +65,8 @@ landingContent:
   linkLists:
   - linkListType: sample
     links:
+    - text: サンプル テンプレート
+      url: https://github.com/Azure-Samples/cloud-services-extended-support
     - text: クラウド サービス デプロイを作成する
       url: sample-create-cloud-service.md
     - text: クラウド サービス デプロイに関する情報を取得する

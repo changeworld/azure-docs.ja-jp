@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695192"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879783"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 
@@ -252,7 +252,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 この自動機械学習チュートリアルでは、Azure Machine Learning の自動 ML インターフェイスを使用して分類モデルの作成とデプロイを行いました。 詳細と次の手順については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Web サービスを使用する](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Web サービスを使用する](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
 + 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」の記事を参照してください。

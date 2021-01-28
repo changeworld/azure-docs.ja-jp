@@ -194,9 +194,9 @@
     - name: Logic Apps のセキュリティ ベースライン
       href: ../../logic-apps/security-baseline.md
     - name: Microsoft Cloud App Security ベースライン
-      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
+      href: /cloud-app-security/security-baseline
     - name: Microsoft Defender for Identity のセキュリティ ベースライン
-      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
+      href: /defender-for-identity/security-baseline
     - name: Network Watcher のセキュリティベースライン
       href: ../../network-watcher/security-baseline.md
     - name: Power BI のベースライン
@@ -229,3 +229,5 @@
       href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway のセキュリティ ベースライン
       href: ../../vpn-gateway/security-baseline.md
+    - name: Windows Virtual Desktop のセキュリティ ベースライン
+      href: ../../virtual-desktop/security-baseline.md

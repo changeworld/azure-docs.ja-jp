@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 896b4db433164471f41aa09791ede5d677028bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015002"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896615"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>チュートリアル:PowerShell Runbook を作成する
 
@@ -55,7 +55,7 @@ PowerShell Runbook のライフサイクル、機能、管理は、PowerShell �
 
 3. **[Runbook の作成]** を選択して、新しい Runbook を作成します。
 
-4. Runbook に **MyFirstRunbook-PowerShell**という名前を付けます。
+4. Runbook に **MyFirstRunbook-PowerShell** という名前を付けます。
 
 5. ここでは、[PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成します。 **[Runbook の種類]** に **[PowerShell]** を選択します。
 
@@ -131,7 +131,7 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。 これを行うには、Automation アカウントの作成時に自動的に作成された実行アカウントを使用して Runbook で認証できなければなりません。
 
-下の例のように、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) コマンドレットで Run As 接続が行われます。 複数のサブスクリプションにわたってリソースを管理しようとしている場合は、`AzContext` パラメーターを [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0) と共に使用する必要があります。
+下の例のように、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットで Run As 接続が行われます。 複数のサブスクリプションにわたってリソースを管理しようとしている場合は、`AzContext` パラメーターを [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) と共に使用する必要があります。
 
 > [!NOTE]
 > PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は `Connect-AzAccount` の別名です。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](../automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
@@ -188,7 +188,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
    }
    ```
 
-4. **テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
+4. **テスト ウィンドウ** をクリックして、Runbook をテストできるようにします。
 
 5. **[開始]** をクリックしてテストを開始します。 完了すると、次のような出力が表示され、アカウントの基本情報が表示されます。 この出力は、実行アカウントが有効であることを確認します。
 
@@ -198,7 +198,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。 仮想マシンを起動するコマンドを追加してみましょう。 Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前を Runbook にハードコーディングできます。
 
-1. Runbook スクリプトに [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) コマンドレットを追加し、仮想マシンを起動します。 下の画像のように、名前が `VMName` でリソース グループ名が `ResourceGroupName` の仮想マシンがコマンドレットによって開始されます。
+1. Runbook スクリプトに [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) コマンドレットを追加し、仮想マシンを起動します。 下の画像のように、名前が `VMName` でリソース グループ名が `ResourceGroupName` の仮想マシンがコマンドレットによって開始されます。
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -221,7 +221,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
    Start-AzVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    ```
 
-2. Runbook を保存し、**テスト ウィンドウ**をクリックしてテストできるようにします。
+2. Runbook を保存し、**テスト ウィンドウ** をクリックしてテストできるようにします。
 
 3. **[開始]** をクリックしてテストを開始します。 終わったら、仮想マシンが開始されたことを確認します。
 
@@ -275,7 +275,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 ## <a name="next-steps"></a>次のステップ
 
 * PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](/powershell/scripting/overview)を参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。
 * グラフィカル Runbook の使用を開始するには、「[グラフィカル Runbook を作成する](automation-tutorial-runbook-graphical.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)」を参照してください。
 * Runbook の種類と利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](../automation-runbook-types.md)」を参照してください。
