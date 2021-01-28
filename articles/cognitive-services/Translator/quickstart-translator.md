@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator サービス, テキストの翻訳, テキストの表記変換, 言語の検出
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369530"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733496"
 ---
 # <a name="quickstart-get-started-with-translator"></a>クイックスタート: Translator を使ってみる
 
@@ -59,7 +59,7 @@ ms.locfileid: "94369530"
 # <a name="java"></a>[Java](#tab/java)
 
 * 自分のプロジェクト用に作業ディレクトリを作成します (例: `mkdir sample-project`)。
-* Gradle を使用して自分のプロジェクトを初期化します (`gradle init --type basic`)。 **DSL** を選択するよう求められたら、 **Kotlin** を選択します。
+* Gradle を使用して自分のプロジェクトを初期化します (`gradle init --type basic`)。 **DSL** を選択するよう求められたら、**Kotlin** を選択します。
 * `build.gradle.kts` を更新します。 サンプルに応じて `mainClassName` を更新する必要があることに注意してください。
   ```java
   plugins {
@@ -123,7 +123,7 @@ REST を介して Translator サービスを呼び出すときは、必ず各要
 
 ## <a name="keys-and-endpoints"></a>[Keys and endpoints]\(キーとエンドポイント)
 
-このページのサンプルでは、わかりやすくするために、ハードコーディングされたキーとエンドポイントを使用しています。 **終わったらコードからキーを削除し** 、 **公開しない** よう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../cognitive-services-security.md)に関するページを参照してください。
+このページのサンプルでは、わかりやすくするために、ハードコーディングされたキーとエンドポイントを使用しています。 **終わったらコードからキーを削除し**、**公開しない** よう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../cognitive-services-security.md)に関するページを参照してください。
 
 ## <a name="translate-text"></a>テキストを翻訳する 
 
@@ -968,7 +968,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 `translate` エンドポイントから表記変換を取得するには、`toScript` パラメーターを使用します。
 
-> ![注] 使用できる言語と表記変換のオプションの完全な一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
+> [!NOTE]
+> 使用できる言語と表記変換オプションの完全な一覧については、[言語サポート](language-support.md)に関するページを参照してください。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 `transliterate` エンドポイントを使用して表記変換を取得することもできます。 表記変換エンドポイントを使用する場合は、ソース言語 (`language`)、ソースの書記法またはアルファベット (`fromScript`)、および出力の書記法またはアルファベット (`toScript`) をパラメーターとして指定する必要があります。 この例では、สวัสดี の表記変換を取得します。 
 
-> ![注] 使用できる言語と表記変換のオプションの完全な一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
+> [!NOTE]
+> 使用できる言語と表記変換オプションの完全な一覧については、[言語サポート](language-support.md)に関するページを参照してください。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

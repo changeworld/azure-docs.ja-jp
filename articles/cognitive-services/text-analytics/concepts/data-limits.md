@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 9ba9fe7ca73e874fb55c228e22b884a86de736cf
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028133"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661461"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
 
-この記事では、サイズの制限と、Text Analytics API にデータを送信できるレートの制限について説明します。 
+この記事では、サイズの制限と、Text Analytics API にデータを送信できるレートの制限について説明します。 価格は、データ制限またはレート制限による影響を受けないことに注意してください。 価格は、Text Analytics リソースの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)」に従います。
 
 ## <a name="data-limits"></a>データ制限
 

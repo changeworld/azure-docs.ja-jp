@@ -4,13 +4,13 @@ description: この記事では、Azure Cognitive Services Language Understandin
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/12/2021
-ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 01/21/2021
+ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179131"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693597"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -21,6 +21,7 @@ ms.locfileid: "98179131"
 ### <a name="january-2021"></a>2021 年 1 月
 
 * V3 Prediction API で、[Bing Spellcheck API](luis-how-to-publish-app.md#spelling-correction) がサポートされるようになりました。
+* リージョン ポータル (au.luis.ai と eu.luis.ai) は、単一のポータルと URL に統合されています。 これらのポータルのいずれかを使用していた場合は、luis.ai に自動的にリダイレクトされます。
 
 ### <a name="december-2020"></a>2020 年 12 月
 
