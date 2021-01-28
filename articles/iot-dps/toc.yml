@@ -116,10 +116,16 @@
       href: concepts-device-oem-security-practices.md
 - name: 操作方法ガイド
   items:
-    - name: IoT Hub に対する MXChip IoT DevKit の接続
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: カスタム割り当てポリシーを使用したデバイスのプロビジョニング
-      href: how-to-use-custom-allocation-policies.md
+    - name: 開発
+      items:
+        - name: IoT Hub に対する MXChip IoT DevKit の接続
+          href: how-to-connect-mxchip-iot-devkit.md
+        - name: デバイスから追加データを送信する方法
+          href: how-to-send-additional-data.md
+        - name: カスタム割り当てポリシーを使用したデバイスのプロビジョニング
+          href: how-to-use-custom-allocation-policies.md
+        - name: MQTT プロトコルを使用した DPS との通信
+          href: iot-dps-mqtt-support.md
     - name: Device Provisioning Service の管理
       items:
         - name: 登録の管理 - ポータル
@@ -138,8 +144,6 @@
           href: how-to-control-access.md
         - name: IP フィルター処理を構成する
           href: iot-dps-ip-filtering.md
-        - name: Azure CLI を使用した Device Provisioning Service の構成
-          href: how-to-manage-dps-with-cli.md
     - name: IoT Edge デバイスのプロビジョニング
       items:
         - name: Linux
@@ -148,12 +152,8 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: デバイスから追加データを送信する方法
-      href: how-to-send-additional-data.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-dps.md
-    - name: MQTT プロトコルを使用した DPS との通信
-      href: iot-dps-mqtt-support.md
 - name: リファレンス
   items:
     - name: REST API

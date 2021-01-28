@@ -1,5 +1,5 @@
 - name: Azure Data Box Gateway のドキュメント
-  href: /azure/databox-gateway/
+  href: ./index.yml
 - name: 概要
   Expanded: true
   items:
