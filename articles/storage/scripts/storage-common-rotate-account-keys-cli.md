@@ -34,7 +34,7 @@ ms.locfileid: "92370408"
 次のコマンドを実行して、リソース グループ、ストレージ アカウント、すべての関連リソースを削除します。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAzure Blob ストレージ
+az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
