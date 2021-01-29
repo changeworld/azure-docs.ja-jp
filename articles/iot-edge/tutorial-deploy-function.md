@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Functions をモジュールとして展開する - Azure IoT Edge
-description: このチュートリアルでは、Azure 関数を IoT Edge モジュールとして開発した後、エッジ デバイスに展開します。
+description: このチュートリアルでは、Azure Functions を IoT Edge モジュールとして開発した後、エッジ デバイスに展開します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -237,7 +237,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードが含まれる Azure 関数モジュールを作成しました。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードが含まれる Azure Functions モジュールを作成しました。
 
 引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
 

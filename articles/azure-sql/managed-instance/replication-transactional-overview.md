@@ -39,7 +39,7 @@ ms.locfileid: "92790816"
 
 ### <a name="components"></a>コンポーネント
 
-トランザクション レプリケーションの主要なコンポーネントは、次の図の **パブリッシャー** 、 **ディストリビューター** 、 **サブスクライバー** です。  
+トランザクション レプリケーションの主要なコンポーネントは、次の図の **パブリッシャー**、**ディストリビューター**、**サブスクライバー** です。  
 
 ![SQL Database を使用したレプリケーション](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -154,7 +154,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 [アクティブ geo レプリケーション](../database/active-geo-replication-overview.md)は、トランザクション レプリケーションを使用している SQL Managed Instance ではサポートされていません。 アクティブ geo レプリケーションの代わりに、[自動フェールオーバー グループ](../database/auto-failover-group-overview.md)を使用します。ただし、パブリケーションをプライマリ マネージド インスタンスから[手動で削除](transact-sql-tsql-differences-sql-server.md#replication)し、フェールオーバー後にセカンダリ SQL Managed Instance 上で再作成する必要があることにご注意ください。
 
-geo レプリケーションが、 [フェールオーバー グループ](../database/auto-failover-group-overview.md)の **パブリッシャー** または **ディストリビューター** SQL Managed Instance 上で有効化されている場合、フェールオーバーが発生した後、SQL Managed Instance 管理者が、古いプライマリ上のすべてのパブリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
+geo レプリケーションが、[フェールオーバー グループ](../database/auto-failover-group-overview.md)の **パブリッシャー** または **ディストリビューター** SQL Managed Instance 上で有効化されている場合、フェールオーバーが発生した後、SQL Managed Instance 管理者が、古いプライマリ上のすべてのパブリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
 
 1. データベース上で実行されているレプリケーション ジョブがある場合は、すべて停止します。
 1. パブリッシャーからサブスクリプションのメタデータを削除するには、パブリッシャー データベース上で次のスクリプトを実行します。
@@ -197,7 +197,7 @@ Geo レプリケーションが、フェイルオーバーの **サブスクラ�
 - [SQL Managed Instance パブリッシャーとサブスクライバーの間でのレプリケーションの構成](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [SQL Managed Instance パブリッシャー、SQL Managed Instance ディストリビューター、SQL Server サブスクライバー間でのレプリケーションの構成](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [パブリケーションを作成します](/sql/relational-databases/replication/publish/create-a-publication)。
-- [プッシュ サブスクリプションの作成](/sql/relational-databases/replication/create-a-push-subscription): サーバー名をサブスクライバーとして (たとえば `N'azuresqldbdns.database.windows.net` を使用し、Azure SQL Database 名のデータベースを宛先データベース (たとえば、 **Adventureworks** として使用します。 )
+- [プッシュ サブスクリプションの作成](/sql/relational-databases/replication/create-a-push-subscription): サーバー名をサブスクライバーとして (たとえば `N'azuresqldbdns.database.windows.net` を使用し、Azure SQL Database 名のデータベースを宛先データベース (たとえば、**Adventureworks** として使用します。 )
 
 ## <a name="see-also"></a>関連項目  
 

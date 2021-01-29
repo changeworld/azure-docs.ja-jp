@@ -50,8 +50,8 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 ## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
-* **Azure サブスクリプション** 。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント** 。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+* **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 * **Azure SQL Database** へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、[Microsoft Azure SQL Database の概要](../../azure-sql/database/single-database-create-quickstart.md)に関するページをご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
@@ -138,7 +138,7 @@ SQL Server のテーブル定義は、次の JSON ファイルで指定されて
 
 ここでは列名が含まれていません。 ここで列名を含めることで、列名を副選択できます (詳細については、[ADF のドキュメント](../../data-factory/copy-activity-overview.md)のトピックを参照してください)。
 
-テーブルの JSON 定義を *onpremtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\onpremtabledef.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
+テーブルの JSON 定義を *onpremtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\onpremtabledef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp �
 }
 ```
 
-テーブルの JSON 定義を *bloboutputtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\bloboutputtabledef.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
+テーブルの JSON 定義を *bloboutputtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\bloboutputtabledef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-テーブルの JSON 定義を *AzureSqlTable.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\AzureSqlTable.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
+テーブルの JSON 定義を *AzureSqlTable.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\AzureSqlTable.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -294,7 +294,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-パイプラインのこの JSON 定義を *pipelinedef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、 *C:\temp\pipelinedef.json* )。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にパイプラインを作成します。
+パイプラインのこの JSON 定義を *pipelinedef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\pipelinedef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にパイプラインを作成します。
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

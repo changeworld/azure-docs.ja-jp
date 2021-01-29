@@ -53,11 +53,11 @@ ms.locfileid: "96009383"
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
 - SQL Managed Instance で脆弱性評価を有効にする必要があります
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要があります
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
 
 ## <a name="53-protective-monitoring"></a>5.3 保護的監視
 
@@ -67,7 +67,7 @@ ms.locfileid: "96009383"
 - 安全なアプリケーションの定義のために適応型アプリケーション制御をマシンで有効にする必要がある
 - ディザスター リカバリーが構成されていない仮想マシンの監査
 - Azure DDoS Protection Standard を有効にする必要がある
-- SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL Managed Instance の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 - SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 - SQL Server での脅威検出のデプロイ
 - Windows Server 用の既定の Microsoft IaaSAntimalware 拡張機能のデプロイ
@@ -95,7 +95,7 @@ Azure リソースにできるユーザーとそのアクセス許可は、Azure
 - 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用を監査する Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。
+このブループリントでは、SQL サーバーと Service Fabric に対する Azure Active Directory 認証の使用を監査する Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
