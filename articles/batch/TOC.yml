@@ -101,13 +101,11 @@
   items:
     - name: Batch アカウントの管理
       items:
-        - name: アカウントの管理
-          href: batch-manage-account-basics.md
-        - name: ポータルで Batch アカウントを管理する
+        - name: Azure portal で Batch アカウントを管理する
           href: batch-account-create-portal.md
         - name: Batch Management .NET で Batch アカウントを管理する
           href: batch-management-dotnet.md
-        - name: コスト分析と予算
+        - name: コスト分析の取得と予算の設定
           href: budget.md
         - name: Batch アカウントでプライベート エンドポイントを使用する
           href: private-connectivity.md
@@ -291,16 +289,18 @@
       href: 'https://azure.microsoft.com/updates/'
     - name: Batch コミュニティ
       href: 'https://github.com/Azure/Batch'
+    - name: Batch Explorer
+      href: 'https://azure.github.io/BatchExplorer/'
     - name: Batch のフィードバック
       href: 'https://feedback.azure.com/forums/269742-batch'
-    - name: Batch に関する Microsoft Q&A 質問ページ
-      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
       href: /archive/blogs/windowshpc/
     - name: Azure での HPC
       href: /azure/architecture/topics/high-performance-computing/
+    - name: Batch に関する Microsoft Q&A 質問ページ
+      href: /answers/topics/azure-batch.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 料金計算ツール

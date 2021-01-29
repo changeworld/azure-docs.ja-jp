@@ -296,8 +296,8 @@
         - name: コンテナーに対する Azure Monitor
           href: ../azure-monitor/insights/container-insights-overview.md
           maintainContext: true
-        - name: マスター コンポーネント ログの表示
-          href: view-master-logs.md
+        - name: コントロール プレーン コンポーネントのログを表示する
+          href: view-control-plane-logs.md
         - name: kubelet ログの表示
           href: kubelet-logs.md
         - name: コンテナー データをリアルタイムで表示する

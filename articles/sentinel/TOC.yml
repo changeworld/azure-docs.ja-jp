@@ -225,7 +225,7 @@
           href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
-- name: リファレンス (新規)
+- name: リファレンス
   items:
     - name: Azure RBAC ロール
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: REST-API を使用してウォッチリストを管理する
           href: watchlist-with-rest-api.md
+    - name: Azure Monitor データ参照
+      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel Logic Apps コネクタ
       href: /connectors/azuresentinel/
     - name: ネットワーク正規化スキーマ
       href: normalization-schema.md
+    - name: データ ソース スキーマ リファレンス
+      href: data-source-schema-reference.md
+    - name: Kusto クエリ言語
+      items:
+        - name: Kusto クエリの概要
+          href: /azure/data-explorer/kusto/query/
+        - name: Kusto クエリ言語のクイック リファレンス
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA エンリッチメント
       href: ueba-enrichments.md
 - name: リソース
