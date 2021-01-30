@@ -125,7 +125,7 @@
                   href: ./workloads/sap/hana-operations-model.md
                 - name: 互換性のあるオペレーティング システム
                   href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
-        - name: Architecture
+        - name: アーキテクチャ
           items:
             - name: 全般的なアーキテクチャ
               href: ./workloads/sap/hana-architecture.md
@@ -438,7 +438,7 @@
       href: /azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
-        - name: Architecture
+        - name: アーキテクチャ
           href: ./linux/ibm-db2-purescale-azure.md
         - name: デプロイ
           href: ./linux/deploy-ibm-db2-purescale-azure.md
@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: 既存の Bash スクリプトの実行
               href: ./linux/cloudinit-bash-script.md
-            - name: cloud-init のための既存の VM の準備
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: プロビジョニング エージェントを使用せずに Linux イメージを作成する
           href: ./linux/no-agent.md
         - name: Linux エージェントのプロビジョニングを無効にする
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: セキュリティ
+          items:
+            - name: Azure Policy によるセキュリティ制御
+              href: ./security-controls-policy-image-builder.md
         - name: VNET を使用する
           items:
             - name: CLI
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH 接続
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP 接続
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: アクセス制御の使用
@@ -1741,7 +1742,7 @@
         - name: 複数の VM のバックアップ
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 復元オプション
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: サポート マトリックス
           href: ../backup/backup-support-matrix-iaas.md
         - name: 価格

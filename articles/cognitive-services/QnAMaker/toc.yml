@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: 表示形式
       href: reference-markdown-format.md
+    - name: プライベート リンク
+      href: reference-private-endpoint.md
     - name: Batch のテスト形式
       href: reference-tsv-format-batch-testing.md
     - name: 暗号化

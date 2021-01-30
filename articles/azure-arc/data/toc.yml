@@ -96,6 +96,8 @@
       items:
         - name: Azure Arc 対応 PostgreSQL Hyperscale とは
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
+        - name: 制限事項
+          href: limitations-postgresql-hyperscale.md
     - name: クイックスタート
       items:
         - name: サポートされているバージョン

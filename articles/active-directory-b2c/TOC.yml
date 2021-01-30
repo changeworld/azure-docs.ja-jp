@@ -188,14 +188,17 @@
       items:
         - name: ユーザー入力の構成
           href: configure-user-input.md
-        - name: 会社のブランド化を使用して UI をカスタマイズする
-          href: company-branding.md
+        - name: UI のカスタマイズ
+          displayName: company branding
+          href: customize-ui.md
         - name: HTML テンプレートを使用して UI をカスタマイズする
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript とページ レイアウト
           href: javascript-and-page-layout.md
         - name: 言語をカスタマイズする
           href: language-customization.md
+          displayName: localization
         - name: パスワードの複雑さ
           href: password-complexity.md
         - name: メールの確認を無効にする
@@ -259,12 +262,13 @@
           items:
             - name: Application Insights を使用したログの収集
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: ポリシー検証
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
         - name: Usage analytics
           href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
         - name: リファレンス
           items:
             - name: TrustFrameworkPolicy
@@ -452,6 +456,8 @@
           href: user-migration.md
 - name: リファレンス
   items:
+    - name: サービスの制限と制約
+      href: service-limits.md
     - name: アプリの登録
       href: app-registrations-training-guide.md
     - name: 課金モデル

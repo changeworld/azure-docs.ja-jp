@@ -50,7 +50,7 @@
         - name: ギャラリーに記載されていないアプリの計画
           href: non-gallery-apps.md
         - name: マイ アプリのデプロイの計画
-          href: access-panel-deployment-plan.md
+          href: my-apps-deployment-plan.md
     - name: シングル サインオン
       items:
         - name: シングル サインオンのデプロイを計画する

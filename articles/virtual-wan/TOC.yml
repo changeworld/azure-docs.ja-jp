@@ -41,22 +41,22 @@
       items:
         - name: 仮想ハブのルーティングについて
           href: about-virtual-hub-routing.md
-        - name: ルーティングのシナリオ
-          items:
-            - name: 任意の環境間
-              href: scenario-any-to-any.md
-            - name: VNet の分離
-              href: scenario-isolate-vnets.md
-            - name: VNet の分離 - カスタム
-              href: scenario-isolate-vnets-custom.md
-            - name: 共有サービスの VNet
-              href: scenario-shared-services-vnet.md
-            - name: NVA 経由のルーティング
-              href: scenario-route-through-nva.md
-            - name: NVA 経由のルーティング - カスタム
-              href: scenario-route-through-nvas-custom.md
-            - name: Azure Firewall - カスタム
-              href: scenario-route-between-vnets-firewall.md
+    - name: ルーティングのシナリオ
+      items:
+        - name: 任意の環境間
+          href: scenario-any-to-any.md
+        - name: VNet の分離
+          href: scenario-isolate-vnets.md
+        - name: VNet の分離 - カスタム
+          href: scenario-isolate-vnets-custom.md
+        - name: 共有サービスの VNet
+          href: scenario-shared-services-vnet.md
+        - name: NVA 経由のルーティング
+          href: scenario-route-through-nva.md
+        - name: NVA 経由のルーティング - カスタム
+          href: scenario-route-through-nvas-custom.md
+        - name: Azure Firewall - カスタム
+          href: scenario-route-between-vnets-firewall.md
     - name: 監視
       items:
         - name: Virtual WAN に関する Azure Monitor の分析情報について
