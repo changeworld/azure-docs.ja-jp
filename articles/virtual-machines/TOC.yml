@@ -1742,7 +1742,7 @@
         - name: 複数の VM のバックアップ
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 復元オプション
-          href: ../backup/backup-azure-arm-restore-vms.md
+          href: /azure/backup/backup-azure-arm-restore-vms
         - name: サポート マトリックス
           href: ../backup/backup-support-matrix-iaas.md
         - name: 価格

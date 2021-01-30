@@ -76,6 +76,8 @@
               items:
                 - name: セキュリティ ベースライン
                   href: security-baseline.md
+                - name: Azure Policy によるセキュリティ制御
+                  href: ./security-controls-policy.md
                 - name: セキュリティを確認する
                   href: data-box-security.md
             - name: ACL とメタデータの転送

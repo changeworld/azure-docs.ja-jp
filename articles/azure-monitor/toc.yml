@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -586,10 +586,12 @@
                   href: platform/it-service-management-connector-secure-webhook-connections.md
                 - name: Azure 構成のセキュリティで保護されたエクスポート
                   href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
-                - name: BMC
-                  href: platform/itsmc-secure-webhook-connections-bmc.md
-                - name: ServiceNow
-                  href: platform/itsmc-secure-webhook-connections-servicenow.md
+                - name: ITSM Connector パートナーのセットアップ
+                  items:
+                    - name: BMC
+                      href: platform/itsmc-secure-webhook-connections-bmc.md
+                    - name: ServiceNow
+                      href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: クラシック アラート ルールを移行する
           items:
             - name: クラシック アラートについて

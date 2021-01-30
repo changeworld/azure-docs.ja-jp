@@ -43,9 +43,11 @@
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: Security
+    - name: ベスト プラクティス
+      href: best-practices.md
+    - name: セキュリティ
       items:
-        - name: セキュリティの概要
+        - name: 概要
           href: security-overview.md
         - name: キー コンテナーへのアクセスをセキュリティで保護する
           href: secure-your-key-vault.md

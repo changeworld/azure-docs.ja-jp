@@ -64,6 +64,8 @@
           href: api-management-error-handling-policies.md
     - name: セキュリティ
       items:
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: サブスクリプション

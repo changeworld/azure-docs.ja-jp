@@ -278,6 +278,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Azure Policy の組み込み
+          href: ./policy-reference.md
     - name: リソース
       items:
         - name: リリース

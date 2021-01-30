@@ -86,6 +86,8 @@
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
 - name: 操作方法ガイド
   items:
     - name: スケール

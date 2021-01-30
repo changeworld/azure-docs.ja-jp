@@ -157,6 +157,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: 一般的な問題の検出
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: よく寄せられる質問
               href: container-registry-faq.md
 - name: タスク
