@@ -1,6 +1,6 @@
 ---
-title: Azure Portal で初めての関数を作成する
-description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
+title: Azure Portal で初めての Function を作成する
+description: Azure Portal を使用して、サーバーレス実行のための最初の Azure Function を作成する方法について説明します。
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
@@ -15,7 +15,7 @@ ms.locfileid: "98222719"
 
 Azure Functions を使用すると、最初に仮想マシン (VM) を作成したり、Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。 この記事では、Azure Functions を使用して Azure portal で "hello world" の HTTP トリガー関数を作成する方法について説明します。
 
-[関数をローカルで開発](functions-develop-local.md)し、Azure の関数アプリに公開することをお勧めします。  
+[関数をローカルで開発](functions-develop-local.md)し、Azure の Function App に公開することをお勧めします。  
 次のいずれかのリンクを使用して、選択したローカル開発環境と言語で作業を開始します。
 
 | Visual Studio Code | ターミナル/コマンド プロンプト | Visual Studio |
@@ -30,11 +30,11 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
+関数の実行をホストするための Function App が存在する必要があります。  Function App を使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-次に、新しい関数アプリで関数を作成します。
+次に、新しい Function App で関数を作成します。
 
 ## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>HTTP トリガー関数の作成
 

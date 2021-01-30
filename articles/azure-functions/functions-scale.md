@@ -14,18 +14,17 @@ ms.locfileid: "97936765"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions のホスティング オプション
 
-Azure で関数アプリを作成するときは、アプリのホスティング プランを選択する必要があります。 Azure Functions で利用できる基本のホスティング プランは 3 つあります。[従量課金プラン](consumption-plan.md)、[Premium プラン](functions-premium-plan.md)、[専用 (App Service) プラン](dedicated-plan.md)です。 すべてのホスティング プランは、Linux と Windows 仮想マシンの両方で、一般提供 (GA) されています。
+Azure で Function App を作成するときは、アプリのホスティング プランを選択する必要があります。 Azure Functions で利用できる基本のホスティング プランは 3 つあります。[従量課金プラン](consumption-plan.md)、[Premium プラン](functions-premium-plan.md)、[専用 (App Service) プラン](dedicated-plan.md)です。 すべてのホスティング プランは、Linux と Windows 仮想マシンの両方で、一般提供 (GA) されています。
 
 お客様が選択したホスティング プランによって、次の動作が決まります。
 
-* Function App をスケールする方法。
-* 各 Function App インスタンスに利用できるリソース。
+*  Function App をスケールする方法。
+* 各 Function App  インスタンスに利用できるリソース。
 * Azure Virtual Network 接続などの高度な機能のサポート。
 
 この記事では、さまざまなホスティング プランの詳しい比較を、Kubernetes ベースのホスティングと共に示します。
 
 ## <a name="overview-of-plans"></a>プランの概要
-
 
 次に、Functions の 3 つの主要なホスティング プランの利点をまとめます。
 
@@ -100,9 +99,9 @@ Azure で関数アプリを作成するときは、アプリのホスティン�
 | --- | --- |
 | **[従量課金プラン](consumption-plan.md)** | 関数が実行された時間に対してだけ支払います。 課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 |
 | **[Premium プラン](functions-premium-plan.md)** | Premium プランは、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 プランごとに少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 このプランでは、最も予測可能な価格が提供されます。 |
-| * *[専用プラン](dedicated-plan.md)* | App Service プランの関数アプリに対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
+| * *[専用プラン](dedicated-plan.md)* | App Service プランの Function App に対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
 | **[App Service Environment (ASE)](dedicated-plan.md)** | インフラストラクチャの支払いを行うための ASE には一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 App Service プランの vCPU あたりのコストもあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 |
-| **[Kubernetes](functions-kubernetes-keda.md)**| お支払いは Kubernetes クラスターのコストだけです。関数に対する追加の課金はありません。 関数アプリは、通常のアプリと同じように、クラスターのアプリケーションのワークロードとして実行されます。 |
+| **[Kubernetes](functions-kubernetes-keda.md)**| お支払いは Kubernetes クラスターのコストだけです。関数に対する追加の課金はありません。  Function App は、通常のアプリと同じように、クラスターのアプリケーションのワークロードとして実行されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 
