@@ -172,6 +172,8 @@
           href: concept-enterprise-security.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
     - name: 信頼できる ML
       items:
         - name: 信頼できる ML の概要
@@ -609,6 +611,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ユーザー フォーラム
       href: /answers/topics/azure-machine-learning.html
+    - name: Microsoft Learn
+      href: /learn/browse/?expanded=azure&products=azure-machine-learning
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Microsoft の ML 製品の比較
