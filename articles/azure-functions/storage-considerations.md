@@ -23,7 +23,7 @@ Azure Functions では、Function App インスタンスを作成するときに
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |
 
 > [!IMPORTANT]
-> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File ストレージに保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
+> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
