@@ -128,3 +128,9 @@
       href: production-readiness.md
     - name: 透明性と責任ある AI の原則
       href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'

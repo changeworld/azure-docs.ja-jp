@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: Resource Manager テンプレートを使って Automation アカウントを作成する
           href: quickstart-create-automation-account-template.md
+        - name: 実行アカウント
+          items:
+            - name: 実行アカウントを作成する
+              href: create-run-as-account.md
+            - name: Azure 実行アカウントを削除する
+              href: delete-run-as-account.md
+            - name: 実行アカウントを管理する
+              href: manage-runas-account.md
         - name: アマゾン ウェブ サービスで認証を構成する
           href: automation-config-aws-account.md
         - name: Azure AD による認証を構成する
           href: automation-use-azure-ad.md
         - name: Automation によって使用される DNS レコードを管理する
           href: how-to/automation-region-dns-records.md
-        - name: Automation 実行アカウントを管理する
-          href: manage-runas-account.md
         - name: Automation アカウントに非公開で接続する
           href: how-to/private-link-security.md
         - name: ロールのアクセス許可とセキュリティの管理
