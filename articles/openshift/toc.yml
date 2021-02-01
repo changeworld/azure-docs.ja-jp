@@ -16,6 +16,10 @@
       href: tutorial-delete-cluster.md
 - name: 操作方法ガイド
   items:
+    - name: クラスターの操作
+      items:
+        - name: ARO クラスターをアップグレードする
+          href: howto-upgrade.md
     - name: ネットワーク
       items:
         - name: プライベート ARO クラスターを作成する
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: 組み込みのコンテナー レジストリを使用する
           href: built-in-container-registry.md
+        - name: Azure Container Registry を使用する
+          href: howto-use-acr-with-aro.md
     - name: セキュリティと認証
       items:
         - name: Azure Active Directory 認証を構成する (CLI)

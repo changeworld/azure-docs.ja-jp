@@ -126,20 +126,58 @@
           href: security-baseline.md
 - name: 操作方法ガイド
   items:
-    - name: インデックスとコンストラクトの作成
+    - name: 計画
+      items:
+        - name: レベルの選択
+          href: search-sku-tier.md
+        - name: 容量の見積もりと管理
+          href: search-capacity-planning.md
+        - name: コストの見積もり
+          href: search-sku-manage-costs.md
+        - name: サービスの制限
+          href: search-limits-quotas-capacity.md
+        - name: パフォーマンスのためのスケール
+          href: search-performance-optimization.md
+        - name: マルチテナント アーキテクチャ
+          href: search-modeling-multitenant-saas-applications.md
+    - name: 開発
+      items:
+        - name: API のバージョン
+          href: search-api-versions.md
+        - name: プレビュー機能
+          href: search-api-preview.md
+        - name: .NET での開発
+          items:
+            - name: Azure.Search.Documents を使用する
+              href: search-howto-dotnet-sdk.md
+            - name: Microsoft.Azure.Search を使用する
+              href: search-howto-dotnet-sdk-v10.md
+            - name: 従来のクイックスタート (Microsoft.Azure.Search)
+              href: search-get-started-dotnet-v10.md
+        - name: SDK をアップグレードする
+          items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: REST API をアップグレードする
+          href: search-api-migration.md
+    - name: インデックス
       items:
         - name: インデックスを作成する
           href: search-what-is-an-index.md
         - name: 複数言語インデックスの作成
           href: search-language-support.md
-        - name: アナライザー
-          items:
-            - name: アナライザーの追加
-              href: search-analyzers.md
-            - name: 言語アナライザーの追加
-              href: index-add-language-analyzers.md
-            - name: カスタム アナライザーの追加
-              href: index-add-custom-analyzers.md
         - name: シノニム
           items:
             - name: シノニムの追加
@@ -150,7 +188,15 @@
           href: search-howto-complex-data-types.md
         - name: リレーショナル データをモデル化する
           href: index-sql-relational-data.md
-    - name: データをインポートする
+    - name: アナライザー
+      items:
+        - name: アナライザーの追加
+          href: search-analyzers.md
+        - name: 言語アナライザーの追加
+          href: index-add-language-analyzers.md
+        - name: カスタム アナライザーの追加
+          href: index-add-custom-analyzers.md
+    - name: データ
       items:
         - name: データ インポートの概要
           href: search-what-is-data-import.md
@@ -162,16 +208,14 @@
           href: search-howto-large-index.md
         - name: 同時更新を処理する
           href: search-howto-concurrency.md
-    - name: Azure データ (インデクサー) をインポートする
+    - name: インデクサー
       items:
-        - name: インデクサーの操作
-          items:
-            - name: インデクサーの監視
-              href: search-howto-monitor-indexers.md
-            - name: インデクサーのスケジュール設定
-              href: search-howto-schedule-indexers.md
-            - name: フィールドのマッピング
-              href: search-indexer-field-mappings.md
+        - name: インデクサーの作成
+          href: search-howto-create-indexers.md
+        - name: インデクサーのスケジュール設定
+          href: search-howto-schedule-indexers.md
+        - name: フィールド マッピングの定義
+          href: search-indexer-field-mappings.md
         - name: マネージド ID を使用して接続する
           items:
             - name: マネージド ID の概要
@@ -214,7 +258,7 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Azure SQL Server VM
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-    - name: スキルを使用する (AI)
+    - name: スキルセット
       items:
         - name: Cognitive Services リソースをアタッチする
           href: cognitive-search-attach-cognitive-services.md
@@ -282,7 +326,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis (プレビュー)
               href: search-more-like-this.md
-    - name: Assert
+    - name: フィルタ
       items:
         - name: フィルターの概要
           href: search-filters.md
@@ -304,52 +348,6 @@
           href: index-add-scoring-profiles.md
         - name: 類似性アルゴリズム
           href: index-ranking-similarity.md
-    - name: プラン
-      items:
-        - name: レベルの選択
-          href: search-sku-tier.md
-        - name: 容量の見積もりと管理
-          href: search-capacity-planning.md
-        - name: コストの見積もり
-          href: search-sku-manage-costs.md
-        - name: サービスの制限
-          href: search-limits-quotas-capacity.md
-        - name: パフォーマンスのためのスケール
-          href: search-performance-optimization.md
-        - name: マルチテナント アーキテクチャ
-          href: search-modeling-multitenant-saas-applications.md
-    - name: 開発
-      items:
-        - name: API のバージョン
-          href: search-api-versions.md
-        - name: プレビュー機能一覧
-          href: search-api-preview.md
-        - name: .NET での開発
-          items:
-            - name: Azure.Search.Documents を使用する
-              href: search-howto-dotnet-sdk.md
-            - name: Microsoft.Azure.Search を使用する
-              href: search-howto-dotnet-sdk-v10.md
-            - name: 従来のクイックスタート (Microsoft.Azure.Search)
-              href: search-get-started-dotnet-v10.md
-        - name: SDK をアップグレードする
-          items:
-            - name: .NET SDK 11.0
-              href: search-dotnet-sdk-migration-version-11.md
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Management SDK
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: REST API をアップグレードする
-          href: search-api-migration.md
     - name: Security
       items:
         - name: データの暗号化
@@ -400,6 +398,8 @@
           href: search-monitor-logs-powerbi.md
         - name: クエリ アクティビティの監視
           href: search-monitor-queries.md
+        - name: インデクサーの監視
+          href: search-howto-monitor-indexers.md
         - name: 検索トラフィックの分析
           href: search-traffic-analytics.md
     - name: トラブルシューティング

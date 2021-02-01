@@ -30,6 +30,12 @@
       href: oracle-reference-architecture.md
     - name: Oracle DB の構築
       href: oracle-design.md
+    - name: Oracle Database のバックアップ戦略
+      href: oracle-database-backup-strategies.md
+    - name: Azure Storage を使用した Oracle Database のバックアップ
+      href: oracle-database-backup-azure-storage.md
+    - name: Azure Backup を使用した Oracle Database のバックアップ
+      href: oracle-database-backup-azure-backup.md
     - name: Oracle のディザスター リカバリー オプション
       href: oracle-disaster-recovery.md
 - name: 操作方法ガイド

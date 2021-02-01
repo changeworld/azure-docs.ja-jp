@@ -45,8 +45,12 @@
       href: spring-cloud-concept-metrics.md
     - name: Azure Spring Boot アクチュエータ
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: セキュリティ コントロール
-      href: spring-cloud-concept-security-controls.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ コントロール
+          href: spring-cloud-concept-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
     - name: アプリの状態について
       href: spring-cloud-concept-app-status.md
     - name: ディザスター リカバリーを計画する
@@ -99,6 +103,8 @@
           href: spring-cloud-howto-application-insights.md
         - name: Resilience4J サーキット ブレーカー メトリック
           href: spring-cloud-howto-circuit-breaker-metrics.md
+        - name: 構造化されたアプリケーション ログ
+          href: spring-cloud-structured-app-log.md
     - name: ネットワーク
       items:
         - name: 仮想ネットワークに Azure Spring Cloud をデプロイする

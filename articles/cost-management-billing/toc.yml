@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: Azure Consumption REST API
       href: /rest/api/consumption
-    - name: Resource Manager テンプレート
+    - name: Consumption REST API ARM 予算テンプレート
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API のサンプル
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: Cost Management - Azure PowerShell
+    - name: コスト管理用の Azure PowerShell のコマンドレット
       href: /powershell/module/Az.CostManagement
     - name: 課金自動化のシナリオ
       href: manage/cost-management-automation-scenarios.md
-    - name: Azure Billing API の概要
+    - name: Azure Retail Prices REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure Billing REST API
       href: /rest/api/billing
@@ -400,11 +400,7 @@
       href: manage/consumption-api-overview.md
     - name: Azure Consumption REST API
       href: /rest/api/consumption
-    - name: RateCard REST API
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: Usage REST API
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: Enterprise Reporting の概要
+    - name: Enterprise Reporting REST API の概要
       href: manage/enterprise-api.md
     - name: Enterprise Reporting REST API
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
@@ -412,13 +408,13 @@
       items:
         - name: 予約 REST API
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: 予約 - Azure PowerShell
+        - name: 予約用の Azure PowerShell コマンドレット
           href: /powershell/module/azurerm.reservations
-        - name: 予約 - CLI
+        - name: 予約用の Azure CLI
           href: /cli/azure/reservations/reservation
-        - name: Cost Management - Consumption Usage Details REST API
+        - name: Usage Details REST API
           href: /rest/api/consumption/usagedetails
-        - name: Cost Management - Consumption Reservations Details REST API
+        - name: Reservations Details REST API
           href: /rest/api/consumption/reservationsdetails
 - name: リソース
   items:

@@ -698,10 +698,12 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
-    - name: 系列
+    - name: Data Catalog とガバナンス
       items:
         - name: Data Factory を Azure Purview に接続する
           href: connect-data-factory-to-azure-purview.md
+        - name: Purview を使用した ADF でのデータの検出と探索
+          href: how-to-discover-explore-purview-data.md
     - name: シナリオ
       items:
         - name: データ レイクおよび EDW のデータ移行
@@ -796,10 +798,6 @@
       href: /python/api/overview/azure/datafactory
 - name: リソース
   items:
-    - name: データ フロー予約容量の概要
-      href: data-flow-reserved-capacity-overview.md
-    - name: データ フローの予約料金について
-      href: data-flow-understand-reservation-charges.md
     - name: ホワイトペーパー
       href: whitepapers.md
     - name: よく寄せられる質問

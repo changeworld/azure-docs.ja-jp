@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: アカウントのバックアップと回復
       href: user-help-auth-app-backup-recovery.md
+    - name: Authenticator アプリにパスワードをインポートする
+      href: user-help-authenticator-app-import-passwords.md
     - name: よく寄せられる質問
       href: user-help-auth-app-faq.md
 - name: マイ アカウント ポータルのヘルプ
