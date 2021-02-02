@@ -47,7 +47,7 @@ Data Box または Data Box Heavy の注文時にアカウントの新規作成�
 
 Data Box デバイスのデータを既定の層にアップロードした後、そのデータを既定以外の層に移動することもできます。 データを既定以外の層に移動するには、2 つの方法があります。
 
-- **Azure BLOB ストレージ ライフ サイクル管理** - ポリシー ベースのアプローチを使用して、データを自動的に階層制御したり、ライフ サイクル終了時に期限切れにしたりできます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
+- **Azure Blob Storage ライフ サイクル管理** - ポリシー ベースのアプローチを使用して、データを自動的に階層制御したり、ライフ サイクル終了時に期限切れにしたりできます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
 - **スクリプト** - Azure PowerShell でスクリプトを使用して、BLOB レベルの階層制御を有効にできます。 BLOB に対する層を設定するには、`SetBlobTier` 操作を呼び出します。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Azure PowerShell を使用して、BLOB 層を設定する
