@@ -30,7 +30,7 @@ HDInsight で Apache Hadoop クラスターを作成するときに、**Azure Bl
 - [HDInsight での Azure Blob Storage の使用](../hdinsight-hadoop-use-blob-storage.md)
 - [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
-## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>ML Services クラスターで Azure BLOB ストレージ アカウントを使用する
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>ML Services クラスターで Azure Blob Storage アカウントを使用する
 
 次の手順は、ML Services クラスターを作成するときに複数のストレージ アカウントを指定した場合に、ML Services クラスターでのデータ アクセスと操作に対して、どのようにセカンダリ アカウントを使用するかを説明します。 ここでは、ストレージ アカウント **storage1** と、**container1** と呼ばれる既定のコンテナー、および **storage2** と **container2** を想定しています。
 
