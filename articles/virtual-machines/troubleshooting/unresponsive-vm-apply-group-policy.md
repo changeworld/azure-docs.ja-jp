@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7160ec9564ede21eab0a205b2d66a7d566639506
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526012"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632658"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>グループ ポリシーの [ローカル ユーザーとグループ] ポリシーの適用時に VM が応答しない
 
@@ -31,7 +31,7 @@ ms.locfileid: "86526012"
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012 R2)。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012 R2)。":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012)。":::
 
 ## <a name="cause"></a>原因
 
@@ -47,6 +47,9 @@ ms.locfileid: "86526012"
 ## <a name="resolution"></a>解決方法
 
 ### <a name="process-overview"></a>プロセスの概要
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正することができます。
 
 1. [修復 VM を作成してアクセスする](#step-1-create-and-access-a-repair-vm)
 1. [ポリシーを無効にする](#step-2-disable-the-policy)
@@ -66,7 +69,23 @@ ms.locfileid: "86526012"
 1. 修復 VM で、レジストリ エディターを開きます。
 1. **HKEY_LOCAL_MACHINE** キーを見つけて、メニューから **[ファイル]**  >  **[ハイブの読み込み]** の順に選択します。
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012 R2)。" /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="強調表示された HKEY_LOCAL_MACHINE と [ハイブの読み込み] が表示されているメニューのスクリーンショット。":::
+
+    - [ハイブの読み込み] を使用すると、オフライン システムからレジストリ キーを読み込むことができます。 この場合、システムは修復 VM に接続されている破損したディスクです。
+    - システム全体の設定は `HKEY_LOCAL_MACHINE` に格納され、"HKLM" と略記できます。
+1. 接続されたディスクで、`\windows\system32\config\SOFTWARE` ファイルにアクセスして開きます。
+
+    1. 名前の入力を求められたら、「BROKENSOFTWARE」と入力します。
+    1. BROKENSOFTWARE が読み込まれたことを確認するには、**HKEY_LOCAL_MACHINE** を展開し、追加した BROKENSOFTWARE キーを探します。
+1. BROKENSOFTWARE に移動し、読み込まれたハイブに CleanupProfile キーが存在するかどうかを確認します。
+
+    1. キーが存在する場合は、CleanupProfile ポリシーが設定されています。 その値は、保持ポリシーを日数で表します。 キーの削除を続行します。
+    1. キーが存在しない場合、CleanupProfile ポリシーは設定されていません。 接続されている OS ディスクの Windows ディレクトリにある memory.dmp ファイルを含めて、[サポート チケットを送信します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+
+1. 次のコマンドを使用して、CleanupProfiles キーを削除します。
+
+    ```
+    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
 1.  次のコマンドを使用して、BROKENSOFTWARE ハイブをアンロードします。
 

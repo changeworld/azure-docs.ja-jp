@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126888"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704433"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
@@ -47,6 +47,8 @@ ms.locfileid: "98126888"
 - アルファベット以外の文字や、英数字が混在する語句は、発音どおりの文字で書き表します。
 - 単語として発音される略語は、編集しません ("radar"、"laser"、"RAM"、"NATO" など)。
 - 個々の文字として発音される略語は、各文字をスペースで区切って書き表します。
+- 音声を使用する場合、数値は音声に一致する単語として文字起こしされます (たとえば、"101" は "one oh one" または "one hundred and one" と発音される可能性があります)。
+- "yeah yeah yeah yeah" など、文字、単語、または単語のグループを 3 回より多く繰り返すことは避けます。 このような繰り返しを含む行は、Speech Service によって削除される可能性があります。
 
 次に、文字起こしに対して行う必要がある正規化の例をいくつか示します。
 

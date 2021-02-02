@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573243"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661597"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -65,7 +65,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
 4. イベント ハブを Azure Digital Twins インスタンスにリンクする Azure Digital Twins [エンドポイント](concepts-route-events.md#create-an-endpoint)を作成します。
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. ツイン更新イベントをエンドポイントに送信するための[ルート](concepts-route-events.md#create-an-event-route)を Azure Digital Twins で作成します。 このルートのフィルターでは、エンドポイントに渡されるツイン更新メッセージのみが許可されます。
@@ -89,11 +89,16 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
 
 Azure Functions で Event Hubs を使用する方法の詳細については、"[*Azure Functions に対する Azure Event Hubs トリガー*](../azure-functions/functions-bindings-event-hubs-trigger.md)" に関するページを参照してください。
 
-発行された関数アプリ内で、関数のコードを次のコードに置き換えます。
+発行した関数アプリ内で **ProcessDTUpdatetoTSI** という名前の新しい関数を追加します。コードは次のとおりです。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-ここからは、関数で作成した JSON オブジェクトを、Time Series Insights に接続されている 2 番目のイベント ハブに送信します。
+>[!NOTE]
+>`dotnet add package` コマンドまたは Visual Studio NuGet パッケージ マネージャーを使用して、プロジェクトにパッケージを追加することが必要になる場合があります。
+
+次に、新しい Azure 関数を **発行** します。 この方法の手順については、「[*方法: データを処理するための Azure 関数の設定*](how-to-create-azure-function.md#publish-the-function-app-to-azure)に関するページを参照してください。
+
+今後、この関数で作成した JSON オブジェクトが 2 番目のイベント ハブに送信され、それが Time Series Insights に接続されます。 そのイベント ハブは、次のセクションで作成します。
 
 後ほど、この関数で独自のイベント ハブに接続するために使用するいくつかの環境変数も設定します。
 
@@ -130,7 +135,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. 取得した接続文字列を使用して、接続文字列が含まれるアプリ設定を関数アプリに作成します。
+2. その結果の *primaryConnectionString* 値を使用して、接続文字列が含まれるアプリ設定を関数アプリに作成します:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
 
-次に、2 番目のイベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorials-set-up-tsi-environment.md)" に関するページを参照してください。
+次に、2 番目の (TSI) イベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorials-set-up-tsi-environment.md)" に関するページを参照してください。
 
-1. Azure portal で、Time Series Insights リソースの作成を始めます。 
+1. Azure portal で、Time Series Insights 環境の作成を始めます。 
     1. **Gen2 (L1)** 価格レベルを選択します。
     2. この環境に対する **時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「[*時系列 ID の選択のベスト プラクティス*](../time-series-insights/how-to-select-tsid.md)」を参照してください。
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights 環境用の作成ポータル UX。Gen2(L1) 価格レベルが選択されていて、時系列 ID プロパティの名前は $dtId である" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. **[Next:イベント ソース]** を選択し、上記の Event Hubs 情報を選択します。 新しい Event Hubs コンシューマー グループを作成する必要もあります。
+2. **Next:イベント ソース** を選択し、前述の TSI イベント ハブ情報を選択します。 新しい Event Hubs コンシューマー グループを作成する必要もあります。
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights 環境イベント ソースの作成ポータル UX。上記のイベント ハブ情報を使用してイベント ソースを作成している。また、新しいコンシュー マーグループも作成している。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Time Series Insights へのデータの送信を始めるには、Azure Digital 
 
 現在は、データが Time Series Insights インスタンスに流れているはずであり、分析する準備ができました。 次の手順のようにして、受信したデータを調べます。
 
-1. [Azure portal](https://portal.azure.com) で、Time Series Insights インスタンスを開きます (ポータルの検索バーでインスタンスの名前を検索できます)。 インスタンスの概要で示されている *Time Series Insights Explorer URL* にアクセスします。
+1. [Azure portal](https://portal.azure.com) で、Time Series Insights 環境を開きます (ポータルの検索バーで環境の名前を検索できます)。 インスタンスの概要で示されている *Time Series Insights Explorer URL* にアクセスします。
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights 環境の概要タブで Time Series Insights Explorer の URL を選択する":::
 

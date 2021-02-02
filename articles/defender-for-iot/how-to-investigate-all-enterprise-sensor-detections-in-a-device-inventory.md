@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836587"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625466"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>デバイス インベントリのすべてのエンタープライズ センサー検出を調査する
 
@@ -67,7 +67,7 @@ ms.locfileid: "97836587"
 
 - デバイスにサインインしているユーザー
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="資産インベントリ画面のデータ テーブル。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="デバイス インベントリ画面のデータ テーブル。":::
 
 次のいずれかによってデータを統合できます。
 
@@ -131,13 +131,13 @@ Defender for IoT テクニカル サポートと連携して、Web API クエリ
 
 デバイス インベントリをフィルター処理して、目的の列を表示することができます。 たとえば、PLC デバイス情報を表示できます。
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="資産インベントリのスクリーンショット。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="デバイス インベントリのスクリーンショット。":::
 
 このフィルターは、このウィンドウを離れるとクリアされます。
 
 同じフィルターを複数回使用する場合は、必要なフィルターまたはフィルターの組み合わせを保存することができます。 左側のウィンドウを開いて、保存したフィルターを表示できます。
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="資産インベントリ画面。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="デバイス インベントリの画面。":::
 
 デバイス インベントリをフィルター処理するには、次の操作を行います。
 
@@ -187,7 +187,7 @@ Defender for IoT テクニカル サポートと連携して、Web API クエリ
 
 - **デバイスのプロパティの表示**: たとえば、デバイスとデバイスの基本的なプロパティを監視しているセンサーなどです。 デバイスを右クリックすると、デバイスのプロパティが表示されます。
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="[資産のプロパティ] ビューのスクリーンショット。":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="デバイスのプロパティ ビューのスクリーンショット。":::
 
 - **デバイスに関連付けられているアラート:** デバイスを右クリックすると、関連するアラートが表示されます。
 

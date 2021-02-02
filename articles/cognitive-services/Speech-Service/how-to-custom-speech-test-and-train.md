@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209782"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702204"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -174,7 +174,7 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 
 さらに、次の制限を考慮します。
 
-* 文字を 5 回以上繰り返さないようにします。 例: "aaaa" や "uuuu"。
+* 文字、単語、または単語のグループを 3 回より多く繰り返すことは避けます。 たとえば、"aaaa"、"yeah yeah yeah yeah"、または "that's it that's it that's it that's it" です。 繰り返し回数が多すぎる行は、Speech サービスによって削除される可能性があります。
 * 特殊文字または 上記 `U+00A1` の UTF-8 文字は使用しないでください。
 * URI は拒否されます。
 

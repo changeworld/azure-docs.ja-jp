@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 01/15/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803920"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762901"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "97803920"
 ポイントインタイム リストアの詳細については、「[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)」を参照してください。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。 また、誤って削除されるのを防ぐために、コンテナーと BLOB の論理的な削除を有効にすることをお勧めします。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」および「[BLOB の論理的な削除](soft-delete-blob-overview.md)」を参照してください。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>ポイントインタイム リストアを有効にして構成する
 
@@ -52,19 +52,16 @@ Azure portal を使用してポイントインタイム リストアを構成す
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell を使用してポイントインタイム リストアを構成するには、まず、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.6.0 以降をインストールします。 その後、Enable-AzStorageBlobRestorePolicy コマンドを呼び出して、ストレージ アカウントのポイントインタイム リストアを有効にします。
+PowerShell を使用してポイントインタイム リストアを構成するには、まず、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.6.0 以降をインストールします。 その後、[Enable-AzStorageBlobRestorePolicy](/powershell/module/az.storage/enable-azstorageblobrestorepolicy) コマンドを呼び出して、ストレージ アカウントのポイントインタイム リストアを有効にします。
 
-次の例では、論理的な削除を有効にし、論理的な削除の保持期間を設定し、変更フィードとバージョン管理を有効にした後、ポイントインタイム リストアを有効にします。    例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
+次の例では、論理的な削除を有効にし、論理的な削除の保持期間を設定し、変更フィードとバージョン管理を有効にした後、ポイントインタイム リストアを有効にします。 例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
 
 ```powershell
-# Sign in to your Azure account.
-Connect-AzAccount
-
 # Set resource group and account variables.
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 
-# Enable soft delete with a retention of 14 days.
+# Enable blob soft delete with a retention of 14 days.
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
@@ -87,11 +84,33 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI を使用してポイントインタイム リストアを構成するには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 次に、[az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) コマンドを呼び出して、ポイントインタイム リストアと、ストレージ アカウントのその他の必須なデータ保護設定を有効にします。
+
+次の例では、論理的な削除を有効にして論理的な削除の保持期間を 14 日に設定し、変更フィードとバージョン管理を有効にし、復元期間が 7 日に設定されているポイントインタイム リストアを有効にします。 例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-delete-retention true \
+    --delete-retention-days 14 \
+    --enable-versioning true \
+    --enable-change-feed true \
+    --enable-restore-policy true \
+    --restore-days 7
+```
+
 ---
 
-## <a name="perform-a-restore-operation"></a>復元操作を実行する
+## <a name="choose-a-restore-point"></a>復元ポイントを選択する
 
-復元操作を実行するときは、復元ポイントを UTC **DateTime** 値として指定する必要があります。 コンテナーと BLOB は、その日付と時刻にそれぞれの状態に復元されます。 復元操作が完了するまでに数分かかる場合があります。
+復元ポイントは、データが復元される日時です。 Azure Storage では常に、UTC の日付または時刻値が復元ポイントとして使用されます。 ただし、Azure portal を使用すると、復元ポイントをローカル時刻で指定し、その日付または時刻値を UTC の日付または時刻値に変換して復元操作を実行できます。
+
+PowerShell または Azure CLI で復元操作を実行する場合は、復元ポイントを UTC の日付または時刻値として指定する必要があります。 復元ポイントに UTC 時刻値ではなくローカル時刻値を指定したとしても、場合によっては復元操作が期待どおりに動作することがあります。 たとえば、UTC から 5 時間を引いた時刻がローカル時刻の場合、現地時刻の値を指定すると、指定した値より 5 時間早い復元ポイントが生成されます。 その 5 時間の間に復元対象の範囲内のデータに変更が加えられていない場合は、指定した時間値にかかわらず、復元操作で同じ結果が得られます。 予期しない結果を避けるために、復元ポイントには UTC 時刻を指定することをお勧めします。
+
+## <a name="perform-a-restore-operation"></a>復元操作を実行する
 
 ストレージ アカウント内のすべてのコンテナーを復元することも、1 つまたは複数のコンテナー内の BLOB の範囲を復元することもできます。 BLOB の範囲は、辞書式 (つまり、辞書の順) で定義されます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。 範囲の開始は含まれ、範囲の終了は含まれません。
 
@@ -108,7 +127,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 >
 > ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
 >
-> 一連のデータの復元にかかる時間は、復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトのアカウントで毎日 3,000 オブジェクトが追加され、1,000 オブジェクトが削除される場合、過去 30 日間のポイントまで復元するのに約 2 時間必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
+> 一連のデータの復元にかかる時間は、復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトを持つアカウントで毎日 3,000 オブジェクトが追加され、毎日 1,000 オブジェクトが削除される場合、過去 30 日間のポイントまで復元するのに約 2 時間必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 
@@ -128,7 +147,7 @@ Azure portal を使用してストレージ アカウント内のすべてのコ
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell を使用してストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、**Restore-AzStorageBlobRange** コマンドを呼び出します。 既定では、**Restore-AzStorageBlobRange** コマンドは非同期的に実行され、**PSBlobRestoreStatus** 型のオブジェクトが返されます。これを使用して、復元操作の状態を確認できます。
+PowerShell を使用してストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、**Restore-AzStorageBlobRange** コマンドを呼び出して、復元ポイントを UTC の日付または時刻値で指定します。 既定では、**Restore-AzStorageBlobRange** コマンドは非同期的に実行され、**PSBlobRestoreStatus** 型のオブジェクトが返されます。これを使用して、復元操作の状態を確認できます。
 
 次の例では、ストレージ アカウント内のコンテナーを、現時点から 12 時間前の状態に非同期的に復元し、復元操作の一部のプロパティを確認します。
 
@@ -136,7 +155,7 @@ PowerShell を使用してストレージ アカウント内のすべてのコ�
 # Specify -TimeToRestore as a UTC value
 $restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddHours(-12)
+    -TimeToRestore (Get-Date).ToUniversalTime().AddHours(-12)
 
 # Get the status of the restore operation.
 $restoreOperation.Status
@@ -153,6 +172,22 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI を使用してストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、[az storage blob restore](/cli/azure/storage/blob#az_storage_blob_restore) コマンドを呼び出して、復元ポイントを UTC の日付または時刻値で指定します。
+
+次の例では、ストレージ アカウント内のすべてのコンテナーを、指定した日付と時刻の 12 時間前の状態に非同期的に復元します。 復元操作の状態を確認するには、次のように [az storage account show](/cli/azure/storage/account#az_storage_account_show) を呼び出します。
+
+```azurecli
+az storage blob restore \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --no-wait
+```
+
+**az storage blob restore** コマンドを同期的に実行し、復元操作が完了するまで実行時にブロックするには、`--no-wait` パラメーターを省略します。
 
 ---
 
@@ -244,6 +279,25 @@ $restoreOperation.Parameters.BlobRanges
 ```
 
 復元操作を同期的に実行し、完了するまで実行時にブロックするには、コマンドに **-WaitForComplete** パラメーターを含めます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+BLOB の範囲を復元するには、[az storage blob restore](/cli/azure/storage/blob#az_storage_blob_restore) コマンドを呼び出し、`--blob-range` パラメーターに対してコンテナーの辞書式範囲と BLOB 名を指定します。 複数の範囲を指定するには、個別の範囲ごとに `--blob-range` パラメーターを指定します。
+
+たとえば、*container1* という名前の単一のコンテナー内の BLOB を復元する場合は、*container1* で始まり、*container2* で終わる範囲を指定できます。 開始と終了の範囲に指定されたコンテナーが存在している必要はありません。 範囲の終了は含まれないため、ストレージ アカウントに *container2* という名前のコンテナーが含まれていたとしても、*container1* という名前のコンテナーのみが復元されます。
+
+復元するコンテナー内の BLOB のサブセットを指定するには、スラッシュ (/) を使用して、コンテナー名と BLOB プレフィックス パターンを区切ります。 次の例では、名前が `d` から `f` までの文字で始まるコンテナー内の BLOB の範囲を非同期的に復元します。
+
+```azurecli
+az storage blob restore \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --blob-range container1 container2
+    --blob-range container3/d container3/g
+    --no-wait
+```
+
+**az storage blob restore** コマンドを同期的に実行し、復元操作が完了するまで実行時にブロックするには、`--no-wait` パラメーターを省略します。
 
 ---
 
