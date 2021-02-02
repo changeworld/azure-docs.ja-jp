@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2021
 ms.locfileid: "98249518"
 ---
-# <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure BLOB ストレージから SQL データベースに安全にデータをコピーする
+# <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Blob Storage から SQL データベースに安全にデータをコピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -137,7 +137,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 ### <a name="configure-a-source"></a>ソースを構成する
 
 >[!TIP]
->このチュートリアルでは、ソース データ ストアの認証の種類として "**アカウント キー**" を使用します。 また、必要に応じて、**SAS URI**、**サービス プリンシパル**、**マネージド ID** など、サポートされている他の認証方法を選ぶこともできます。 詳細については、「[Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する](./connector-azure-blob-storage.md#linked-service-properties)」の対応するセクションを参照してください。
+>このチュートリアルでは、ソース データ ストアの認証の種類として "**アカウント キー**" を使用します。 また、必要に応じて、**SAS URI**、**サービス プリンシパル**、**マネージド ID** など、サポートされている他の認証方法を選ぶこともできます。 詳細については、「[Azure Data Factory を使用して Azure Blob Storage のデータをコピーおよび変換する](./connector-azure-blob-storage.md#linked-service-properties)」の対応するセクションを参照してください。
 >
 >さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細な説明と図解については、「[Azure Key Vault への資格情報の格納](./store-credentials-in-key-vault.md)」を参照してください。
 
