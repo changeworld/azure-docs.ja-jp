@@ -49,7 +49,7 @@ ms.locfileid: "94358373"
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage.png "ロールの割り当ての追加")
 
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
-    1. Azure BLOB ストレージでは、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    1. Azure Blob Storage では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
     1. Azure Data Lake Storage Gen2 では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
     1. Azure テーブル ストレージでは、 **閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
 5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
@@ -71,8 +71,8 @@ ms.locfileid: "94358373"
 
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
 * **type**
-    * Azure BLOB ストレージ: `azureblob`
-    * Azure テーブル ストレージ: `azuretable`
+    * Azure Blob Storage: `azureblob`
+    * Azure Table Storage: `azuretable`
     * Azure Data Lake Storage Gen2: [こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)を使用してプレビューにサインアップすると、この **種類** が提供されます。
 * **credentials**
     * マネージド ID を使用して認証する場合、 **credentials** 形式は、マネージド ID を使用しない場合とは異なります。 ここでは、アカウント キーまたはパスワードのない ResourceId を指定します。 ResourceId には、ストレージ アカウントのサブスクリプション ID、ストレージ アカウントのリソース グループ、およびストレージ アカウント名を含める必要があります。
@@ -140,7 +140,7 @@ BLOB インデクサーのインデクサー定義の例:
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、「[インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
