@@ -33,7 +33,7 @@ Azure アーカイブ層はオフラインであり、ストレージ コスト�
 
 Data Box または Data Box Heavy のデータは、ストレージ アカウントに関連付けられているストレージ層にアップロードされます。 ストレージ アカウントの作成時、アクセス層をホットまたはコールドとして指定できます。 このデータは、ワークロードのアクセス パターンとコストに応じて、既定の層から別のストレージ層に移動できます。
 
-オブジェクト ストレージ データの階層制御は、BLOB ストレージ アカウントまたは General Purpose v2 (GPv2) アカウントでのみ可能です。 General Purpose v1 (GPv1) アカウントは階層制御をサポートしていません。 データに対して適切なストレージ層を選択するには、「[Azure Blob ストレージ:Premium ストレージ層、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
+オブジェクト ストレージ データの階層制御は、BLOB ストレージ アカウントまたは General Purpose v2 (GPv2) アカウントでのみ可能です。 General Purpose v1 (GPv1) アカウントは階層制御をサポートしていません。 データに対して適切なストレージ層を選択するには、「[Azure Blob Storage:Premium ストレージ層、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 
 ## <a name="set-a-default-blob-tier"></a>既定の BLOB 層を設定する
 
