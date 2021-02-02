@@ -32,7 +32,7 @@ ms.locfileid: "97674139"
 
 連続エクスポートでは、次の Azure のストレージ機能または構成は **サポートされません**。
 
-* [VNET/Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)と Azure BLOB ストレージの併用。
+* [VNET/Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)と Azure Blob Storage の併用。
 
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "97674139"
 
 ストレージにデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 
-最初のエクスポートが完了すると、Azure BLOB ストレージ コンテナーに次のような構造が表示されます。(これは収集するデータに応じて異なります。)
+最初のエクスポートが完了すると、Azure Blob Storage コンテナーに次のような構造が表示されます。(これは収集するデータに応じて異なります。)
 
 |名前 | 説明 |
 |:----|:------|
