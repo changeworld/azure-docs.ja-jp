@@ -14,7 +14,7 @@ ms.locfileid: "92206545"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>モデルの変換に Azure Blob Storage を使用する
 
-[モデルの変換](model-conversion.md)サービスでは、入力データを取得して出力データを格納できるように、Azure BLOB ストレージへのアクセスが必要です。 この記事では、それを行う最も一般的な手順について説明します。
+[モデルの変換](model-conversion.md)サービスでは、入力データを取得して出力データを格納できるように、Azure Blob Storage へのアクセスが必要です。 この記事では、それを行う最も一般的な手順について説明します。
 
 ## <a name="prepare-azure-storage-accounts"></a>Azure Storage アカウントを準備する
 
