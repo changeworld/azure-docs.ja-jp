@@ -36,7 +36,7 @@ Azure Time Series Insights Gen2 環境を作成するときには、次のオプ
 [![ストレージの概要](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
 
 > [!WARNING]
-> コールド ストア データが存在する Azure Blob ストレージ アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
+> コールド ストア データが存在する Azure Blob Storage アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
 
 ## <a name="data-availability"></a>データの可用性
 
