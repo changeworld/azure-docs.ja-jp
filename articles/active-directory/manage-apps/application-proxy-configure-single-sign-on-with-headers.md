@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503185"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660704"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Azure AD アプリ プロキシを使用したオンプレミスのアプリに対するヘッダーベースのシングル サインオン (プレビュー)
 
@@ -88,6 +88,10 @@ Azure Active Directory (Azure AD) アプリケーション プロキシ は、�
 1. 新しいブラウザーまたはプライベート ブラウザー ウィンドウを開いて、以前にキャッシュされたヘッダーがクリアされていることを確認します。 次に、[アプリケーション プロキシ] 設定から  **[外部 URL]**   に移動します。
 2. サインインには、アプリに割り当てたテスト アカウントを使用します。 SSO を使用してアプリケーションの読み込みとサインインが可能な場合は、正しくできています。 
 
+## <a name="considerations"></a>考慮事項
+
+- アプリケーション プロキシは、オンプレミスまたはプライベート クラウド上のアプリへのリモート アクセスを提供するために使用されます。 アプリケーション プロキシは、企業ネットワークから内部向けに送信されるトラフィックを処理するためには推奨されません。
+- ヘッダーベースの認証アプリケーションへのアクセスは、コネクタまたはその他の許可されたヘッダーベースの認証ソリューションからのトラフィックのみに制限する必要があります。 通常、これを行うには、ファイアウォールまたはアプリケーション サーバーの IP 制限を使用し、アプリケーションへのネットワーク アクセスを制限します。
 
 ## <a name="next-steps"></a>次のステップ
 

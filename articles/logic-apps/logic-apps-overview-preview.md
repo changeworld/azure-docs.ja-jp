@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936126"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760622"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概要:Azure Logic Apps プレビュー
 
@@ -138,6 +138,8 @@ Azure Logic Apps プレビューには、現在および追加の機能が多数
 * ロジック アプリとそのワークフローを Visual Studio Code から、Azure や [Docker コンテナー](/dotnet/core/docker/introduction)などのさまざまなホスティング環境に直接発行またはデプロイします。
 
 * Azure サブスクリプションとロジック アプリの設定でサポートされている場合は、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用してロジック アプリに対して診断ログとトレース機能を有効にします。
+
+* **Logic Apps (プレビュー)** リソースの個々のワークフローで使用されるマネージド接続のアクセス キーを再生成します。 このタスクでは、[**Logic Apps** リソースに対して同じ手順を実行しますが、ロジック アプリのリソース レベルではなく、個々のワークフロー レベルで実行します](logic-apps-securing-a-logic-app.md#regenerate-access-keys)。
 
 > [!NOTE]
 > 現在の既知の問題の詳細については、[GitHub の Logic Apps パブリック プレビューでの既知の問題に関するページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015948"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937836"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ![Azure に接続する 3 つのローカル項目がある UserSync App を示す図。対話的にトークンを取得して Azure A D に接続する Start dot Auth、管理者の同意を得て Azure A D に接続する AccountController、およびユーザーを読み取って Microsoft Graph に接続する SyncController。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-このサンプルで使用されている概念の詳細については、[ID プラットフォーム エンドポイントのクライアント資格情報プロトコルに関するドキュメント](v2-oauth2-client-creds-grant-flow.md)を参照してください。
+このサンプルで使用されている概念の詳細については、[ID プラットフォームのクライアント資格情報プロトコルに関するドキュメント](v2-oauth2-client-creds-grant-flow.md)をご覧ください。
 
 ## <a name="clone-or-download-this-repository"></a>このリポジトリをクローンまたはダウンロードする
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録しておきます。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[ログアウト URL]** を `https://localhost:44316/Account/EndSession` に設定します。
+1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** を `https://localhost:44316/Account/EndSession` に設定します。
 1. **[暗黙的な許可]** セクションで、 **[アクセス トークン]** と **[ID トークン]** を選択します。 このサンプルでは、ユーザーのサインインと API の呼び出しのために、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
 1. **[保存]** を選択します。
 1. **[管理]** で、 **[証明書とシークレット]** を選択します。
@@ -227,7 +227,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 1. <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> に戻ります。
 1. 左側のペインで、 **[Azure Active Directory]** サービス、 **[アプリの登録]** の順に選択します。
 1. **dotnet-web-daemon-v2** アプリケーションを選択します。
-1. アプリケーションの **[認証]** ページで、 **[ログアウト URL]** フィールドをサービスのアドレスに更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`を使用します。
+1. アプリケーションの **[認証]** ページで、 **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** フィールドをサービスのアドレスで更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`を使用します。
 1. **[ブランド]** メニューで、 **[ホーム ページ URL]** をサービスのアドレスに更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`を使用します。
 1. 構成を保存します。
 1. 同じ URL を、 **[認証]**  >  **[リダイレクト URI]** メニューの値のリストに追加します。 複数のリダイレクト URL がある場合には、リダイレクト URL ごとにそのアプリ サービスの URI を使用している新しいエントリを用意する必要があります。

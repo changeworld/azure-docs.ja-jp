@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145652"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747342"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -32,7 +32,7 @@ Postman を使用するには、次の詳細情報が必要です。
 
 - ご使用の FHIR サーバーの URL (例: `https://MYACCOUNT.azurehealthcareapis.com`)
 - ご使用の FHIR サーバーの ID プロバイダー `Authority` (例: `https://login.microsoftonline.com/{TENANT-ID}`)
-- 構成済みの `audience`。 通常、これは FHIR サーバーの URL です (例: `https://MYACCOUNT.azurehealthcareapis.com` や `https://azurehealthcareapis.com` のみ)。
+- 構成済みの `audience`。 通常、これは FHIR サーバーの URL です (例: `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` や `https://azurehealthcareapis.com` のみ)。
 - FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)の `client_id` (またはアプリケーション ID)。
 - クライアント アプリケーションの `client_secret` (またはアプリケーション シークレット)。
 

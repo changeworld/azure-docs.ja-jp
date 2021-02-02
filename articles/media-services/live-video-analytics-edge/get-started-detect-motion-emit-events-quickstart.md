@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060403"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631938"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -26,6 +26,10 @@ ms.locfileid: "98060403"
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+  > [!NOTE]
+  > サービス プリンシパルを作成するためのアクセス許可を与えられた Azure サブスクリプションが必要です (**owner role** には、そのアクセス許可があります)。 適切なアクセス許可がない場合は、適切なアクセス許可をアカウント管理者に申請してください。  
+
 * 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
 * 開発用マシンが接続されているネットワークで、ポート 5671 経由の Advanced Message Queuing Protocol (AMQP) が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT Hub と通信できるようになります。
 
@@ -85,7 +89,7 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
 Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、次の手順に従います。
 
 1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
-1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
+1. 右クリックして、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::

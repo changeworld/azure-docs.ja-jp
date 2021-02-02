@@ -4,12 +4,12 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0d7b98c44b85e17d084994bbcaa285c55c7a5e4d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880846"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>クイックスタート: Visual Studio Code と Python を使用して Azure に関数を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "97967992"
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 3.x。
 
-+ [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/) が Azure Functions (x64) でサポートされます。
++ [Azure Functions でサポートされているバージョンの Python](supported-languages.md#languages-by-runtime-version)
 
 + [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかにインストールされた [Visual Studio Code](https://code.visualstudio.com/)。
 

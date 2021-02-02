@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566931"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897512"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して Hyper-V VM を検出する
 
@@ -83,7 +83,7 @@ Hyper-V ホストは手動で準備することも、スクリプトを使用し
 
 **Step** | **[スクリプト]** | **手動**
 --- | --- | ---
-ホストの要件を確認する | サポートされているバージョンの Hyper-V がホストで実行されていることを確認し、Hyper-V ロールを確認します。<br/><br/>WinRM サービスを有効にし、ホスト上のポート 5985 (HTTP) と 5986 (HTTPS) を開きます (メタデータの収集に必要)。 | ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスが VM メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。
+ホストの要件を確認する | サポートされているバージョンの Hyper-V がホストで実行されていることを確認し、Hyper-V ロールを確認します。<br/><br/>WinRM サービスを有効にし、ホスト上のポート 5985 (HTTP) と 5986 (HTTPS) を開きます (メタデータの収集に必要)。 | ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスが VM メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。<br/><br/> このスクリプトは、英語以外のロケールのホストでは現在サポートされていません。  
 PowerShell のバージョンを確認する | サポートされている PowerShell バージョンでスクリプトが実行されていることを確認します。 | Hyper-V ホストで PowerShell バージョン4.0 以降が実行されていることを確認します。
 アカウントを作成する | Hyper-V ホストに対する適切なアクセス許可があることを確認します。<br/><br/> 適切なアクセス許可が割り当てられたローカル ユーザー アカウントを作成できます。 | オプション 1: Hyper-V ホスト マシンに対する管理者アクセス権があるアカウントを準備します。<br/><br/> オプション 2:ローカル管理者アカウントまたはドメイン管理者アカウントを準備し、アカウントを次のグループに追加します: Remote Management Users、Hyper-V Administrators、Performance Monitor Users。
 PowerShell リモート処理を有効にする | ホスト上で PowerShell リモート処理を有効にして、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。 | 設定するには、各ホスト上で、管理者として PowerShell コンソールを開き、``` powershell Enable-PSRemoting -force ``` コマンドを実行します。

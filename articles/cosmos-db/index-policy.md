@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019178"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681652"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 > Azure Cosmos DB では、Lazy インデックス作成モードもサポートされます。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に **一貫性がなくなったり、不完全になったり** します。 Cosmos コンテナーに対してクエリを実行する場合は、Lazy インデックス作成を選択しないでください。 新しいコンテナーでは、Lazy インデックス作成を選択できません。 [Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に連絡して、除外を要求することができます (Lazy インデックス作成をサポートしない[サーバーレス](serverless.md) モードで Azure Cosmos アカウントを使用している場合を除きます)。
 
 既定では、インデックス作成ポリシーは `automatic` に設定されます。 これはインデックス作成ポリシーの `automatic` プロパティを `true` に設定することで行います。 このプロパティを `true` に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成できます。
+
+## <a name="index-size"></a><a id="index-size"></a>インデックス サイズ
+
+Azure Cosmos DB の合計使用ストレージは、データ サイズとインデックス サイズ両方の組み合わせです。 インデックス サイズのいくつかの機能を次に示します。
+
+* インデックス サイズは、インデックス作成ポリシーによって異なります。 すべてのプロパティのインデックスが作成されている場合、インデックス サイズはデータ サイズよりも大きくなることがあります。
+* データが削除されると、インデックスはほぼ連続して圧縮されます。 ただし、少量のデータを削除する場合は、インデックス サイズの減少をすぐに確認できないことがあります。
+* インデックス サイズは、次の場合に大きくなることがあります。
+
+  * パーティション分割期間 - インデックス領域は、パーティション分割が完了した後に解放されます。
+  * パーティションが分割されると、パーティション分割の実行中に、インデックス領域が一時的に拡大します。 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> プロパティ パスを含める/除外する
 

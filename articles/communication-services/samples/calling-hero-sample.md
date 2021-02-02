@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d73024c6c227a0ef0b05a871b455411e93cb70ba
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043729"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761784"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 
@@ -109,6 +109,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 - [Calling クライアント ライブラリ](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
+- [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する
 
 ## <a name="additional-reading"></a>その他の情報
 

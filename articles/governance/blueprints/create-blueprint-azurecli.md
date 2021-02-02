@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:Azure CLI を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と Azure CLI を使用して、成果物を作成、定義、デプロイします。
-ms.date: 10/14/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
-ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920561"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875213"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>クイック スタート:Azure CLI で Azure Blueprint を定義して割り当てる
 
@@ -16,7 +16,8 @@ ms.locfileid: "94920561"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+- 過去に Azure Blueprints を使用したことがない場合は、Azure CLI から `az provider register --namespace Microsoft.Blueprint` を使用してリソース プロバイダーを登録してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

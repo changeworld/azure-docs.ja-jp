@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 01/22/2021
+ms.openlocfilehash: 48450218975f2c6ee14e12af8d722942e8db1347
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070901"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695850"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
 
@@ -76,6 +76,9 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 - [SQL 認証](#sql-authentication)
 - Azure AD アプリケーション トークン認証:[サービス プリンシパル](#service-principal-authentication)
 - Azure AD アプリケーション トークン認証:[Azure リソースのマネージド ID](#managed-identity)
+
+>[!TIP]
+>Azure Synapse **サーバーレス** SQL プールに対して、リンクされたサービスを UI から作成する場合は、サブスクリプションから参照するのではなく、[手動で入力] を選択します。
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
@@ -272,8 +275,8 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | **_`partitionSettings` の下:_* | | |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される *整数型または日付/日時型* (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定されない場合は、テーブルのインデックスまたは主キーが自動検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
-| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
-| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 
 **以下の点に注意してください。**
 
@@ -391,7 +394,7 @@ Azure Synapse Analytics にデータをコピーするには、コピー アク�
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ。<br/>一括挿入を使用する場合に適用します。        |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure Synapse Analytics に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 | tableOption | ソースのスキーマに基づいて[自動的にシンク テーブルを作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します (存在しない場合)。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
-| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションのために、Azure Synapse Analytics DWU などのメトリックが収集されます。これにより、マスター DB への追加アクセスが発生します。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
+| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションを目的として、Azure Synapse Analytics DWU などのメトリックが収集されます。これにより、マスター DB への追加アクセスが発生します。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics シンクの例
 
@@ -780,6 +783,7 @@ Azure Synapse Analytics に固有の設定は、ソース変換の **[Source Opt
 
 - ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
 - Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。
+- Azure Synapse **サーバーレス** SQL プールをソースとして使用する場合、ステージングの有効化はサポートされていません。
 
 **Query**: [Input] フィールドで [Query] を選択した場合は、ソースに対する SQL クエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは **Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、テーブルを返す SQL の UDF です。 このクエリでは、お使いのデータ フローで使用できるソース テーブルが生成されます。 テスト対象またはルックアップ対象の行を減らすうえでも、クエリの使用は有効な手段です。
 
@@ -838,7 +842,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | ブール型                        |
+| bit                                   | Boolean                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
 | Datetime                              | DateTime                       |

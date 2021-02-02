@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503575"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757680"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -67,31 +67,6 @@ IR マシンで瞬間的にメモリが大量に使用された場合、新し�
 #### <a name="resolution"></a>解決方法
 
 IR ノードでリソース使用量とアクティビティの同時実行を確認してください。 1 つの IR ノードでの同時実行が過剰にならないように、アクティビティ実行の内部およびトリガーの時間を調整します。
-
-
-### <a name="ssltls-certificate-issue"></a>SSL/TLS 証明書の問題
-
-#### <a name="symptoms"></a>現象
-
-( **[Self-hosted IR Configuration Manager]\(セルフホステッド IR Configuration Manager\)**  >  **[イントラネットからのリモート アクセス]** を選択した後に) 証明書を選択して Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 証明書 (詳細) を有効にしようとすると、次のエラーが表示されます。
-
-"Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was 'abc.microsoft.com' but the remote endpoint provided DNS claim 'microsoft.com'. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity 'microsoft.com' as the Identity property of EndpointAddress when creating channel proxy." (リモート アクセス設定が無効です。送信メッセージの ID 検査が失敗しました。リモート エンドポイントの予期される DNS ID は 'abc.microsoft.com' でしたが、リモート エンドポイントによって DNS 要求 'microsoft.com' が提供されました。これが正当なリモート エンドポイントの場合は、チャネル プロキシを作成する際に DNS ID 'microsoft.com' を EndpointAddress の ID プロパティとして明示的に指定することにより、この問題を解決できます。)
-
-前の例では、選択した証明書に "microsoft.com" が追加されています。
-
-#### <a name="cause"></a>原因
-
-これは、Windows Communication Foundation (WCF) の既知の問題です。 WCF SSL/TLS 検証では、 **[サブジェクト代替名]** (SAN) フィールドの最後の DNSName のみが確認されます。 
-
-#### <a name="resolution"></a>解決方法
-
-Azure Data Factory v2 セルフホステッド IR では、ワイルドカード証明書がサポートされています。 この問題は通常、SSL 証明書が正しくないことが原因で発生します。 SAN の最後の DNSName が有効である必要があります。 
-
-DNSName を確認して修正するには、次の手順を実行します。 
-
-1. 管理コンソールを開きます。
-1. **[証明書の詳細]** の下で、 **[サブジェクト]** と **[サブジェクト代替名]** の両方のボックスの値を再確認します。 たとえば、"DNS 名 = microsoft.com.com" は有効な名前ではありません。
-1. 証明書発行会社に連絡し、正しくない DNSName を取り除いてください。
 
 ### <a name="concurrent-jobs-limit-issue"></a>コンカレント ジョブの制限の問題
 

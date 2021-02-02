@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (C#) | Microsoft Docs
-description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT Hub にシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT Hub から利用統計情報を読み取ります。
+title: クイックスタート - Azure IoT Hub への利用統計情報の送信に関するクイックスタート (C#) | Microsoft Docs
+description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: b515274ef4bcf494c071ddb487590ff9cdccf4c0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 914df5b80dee7da041b268a3aaf25ac493d0cf5b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121485"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624441"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>クイックスタート: デバイスから IoT ハブにテレメトリを送信してサービス アプリケーションで読み取る (.NET)
 
@@ -89,7 +89,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 3. また、サービス アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、"_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}

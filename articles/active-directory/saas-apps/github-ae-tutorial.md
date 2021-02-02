@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: ab30124918ac47ba6296f05388ad94b50febde5d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3628cb6dbb397b561ff91ba6b6747293a39fd602
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180899"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub AE の統合
 
@@ -87,6 +87,20 @@ GitHub AE で Azure AD SSO を構成してテストするには、次の構成�
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[GitHub AE クライアント サポート チーム](mailto:support@github.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+
+
+1. GitHub AE アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/default-attributes.png)
+
+1. その他に、GitHub AE アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+    
+    | 名前 |  ソース属性|
+    | ----------- | --------- |
+    | administrator | true |
+
+    > [!NOTE]
+    > 要求を追加する手順については、[リンク](https://docs.github.com/en/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)に従ってください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

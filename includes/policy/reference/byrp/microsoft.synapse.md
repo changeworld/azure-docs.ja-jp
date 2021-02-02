@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a0751e7e4c90f04cd5e28610e2c62dbec6a7adcf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: bedb152a8fecfdb1ee699f431e4e43ef3ceed564
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051201"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806153"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,3 +19,4 @@ ms.locfileid: "98051201"
 |[Azure Synapse ワークスペースのマネージド ワークスペース仮想ネットワークを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |マネージド ワークスペース仮想ネットワークを有効にすると、そのワークスペースが他のワークスペースから分離されたネットワークであることが保証されます。 また、この仮想ネットワークにデプロイされるデータ統合と Spark リソースによって、Spark のアクティビティに関してユーザー レベルの分離性が確保されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |
 |[Azure Synapse ワークスペースのプライベート エンドポイント接続を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72d11df1-dd8a-41f7-8925-b05b960ebafc) |プライベート エンドポイントを構成すると、Azure Synapse ワークスペースに非公開で接続することができます。 これは、Azure Synapse ワークスペースにセキュリティで保護された通信チャネルを適用するために使用されます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateLinks_Audit.json) |
 |[Synapse マネージド プライベート エンドポイントは、承認された Azure Active Directory テナント内のリソースにのみ接続する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a003702-13d2-4679-941b-937e58c443f0) |承認された Azure Active Directory (Azure AD) テナント内のリソースへの接続のみを許可することによって、Synapse ワークスペースを保護します。 承認された Azure AD テナントは、ポリシーの割り当て中に定義できます。 |Audit, Disabled, Deny |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_DataExfiltrationPrevention_Deny.json) |
+|[Synapse ワークスペースで脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0049a6b3-a662-4f3e-8635-39cf44ace45a) |Synapse ワークスペースで定期的な SQL 脆弱性評価スキャンを構成することで、潜在的な脆弱性を検出、追跡、修復します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/ASC_SQLVulnerabilityAssessmentOnSynapse_Audit.json) |

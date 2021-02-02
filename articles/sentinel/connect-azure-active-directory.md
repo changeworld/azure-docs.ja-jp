@@ -13,25 +13,22 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 279f54c3de964580cc37d1288a6e1b7726348e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb89d2a4e719e34ad5ea31656dc9e3c02472b07d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208626"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802250"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) からデータを接続する
-
-
 
 Azure Sentinel の組み込みコネクタを使用して、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) からデータを収集し、それを Azure Sentinel にストリーミングできます。 コネクタを使用すると、[サインイン ログ](../active-directory/reports-monitoring/concept-sign-ins.md)と[監査ログ](../active-directory/reports-monitoring/concept-audit-logs.md)をストリーミングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-
-- 任意の Azure AD ライセンス (Free、O365、P1、P2) があれば、Azure Sentinel にサインイン ログを取り込むことができます。 Azure Monitor (Log Analytics) と Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
+- Azure Sentinel にサインイン ログを取り込むには、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) サブスクリプションが必要です。 Azure Monitor (Log Analytics) と Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
 
 - ユーザーには、ワークスペースの Azure Sentinel 共同作成者ロールを割り当てる必要があります。
 
@@ -39,18 +36,25 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 
 - 接続の状態を確認できるようにするために、ユーザーは Azure AD 診断設定に対する読み取りおよび書き込みアクセス許可を持っている必要があります。 
 
-
 ## <a name="connect-to-azure-active-directory"></a>Azure Active Directory に接続する
 
 1. Azure Sentinel で、ナビゲーション メニューから **[Data connectors]\(データ コネクタ\)** を選択します。
 
 1. データ コネクタ ギャラリーで、 **[Azure Active Directory]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-1. Azure Sentinel にストリーミングするログの隣のチェック ボックスをオンにして、 **[接続]** をクリックします。
+1. Azure Sentinel にストリーミングする種類のログの隣のチェック ボックスをオンにして、 **[接続]** をクリックします。 次の種類のログから選択できます。
 
-1. Azure AD のアラートによって Azure Sentinel でインシデントが生成されるようにするかどうかを選択できます。 **[Create incidents]\(インシデントの作成\)** で **[有効化]** を選択して、接続されたセキュリティ サービスで生成されたアラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 次に、 **[分析]** でこのルールを編集してから、 **[Active rules]\(アクティブなルール\)** を選択します。
+    - **サインイン ログ**:マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
+    - **[監査ログ]** :ユーザーとグループの管理、マネージド アプリケーション、ディレクトリ アクティビティに関するシステム アクティビティ情報。
 
-1. Azure AD のアラートのクエリを実行するために Log Analytics 内の関連スキーマを使用するには、クエリ ウィンドウで「`SigninLogs`」または「`AuditLogs`」と入力します。
+## <a name="find-your-data"></a>データの検索
+
+接続が正常に確立されると、次のテーブルの **[LogManagement]** セクションの下にある **[ログ]** にデータが表示されます。
+
+- `SigninLogs`
+- `AuditLogs`
+
+Azure AD ログを照会するには、クエ リ ウィンドウの上部に関連テーブル名を入力します。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Active Directory を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。

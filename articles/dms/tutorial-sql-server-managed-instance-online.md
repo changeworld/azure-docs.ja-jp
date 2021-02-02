@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 02adb6f47b907fea402f8b312b3f4e8e117927ed
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350111"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693682"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -122,7 +122,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 5. 既存の仮想ネットワークを選択するか、新たに作成します。
 
-    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット SQL Managed Instance へのアクセスが提供されます。
+    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット SQL マネージド インスタンスへのアクセスが提供されます。
 
     Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事を参照してください。
 
@@ -211,7 +211,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
     | | |
     |--------|---------|
-    |**SMB ネットワーク場所の共有** | Azure Database Migration Service が移行に使用できる、完全なデータベース バックアップ ファイルとトランザクション ログのバックアップ ファイルを収納する、ローカルな SMB ネットワーク共有または Azure ファイル共有です。 ソースの SQL Server インスタンスを実行しているサービス アカウントには、このネットワーク共有での読み取り/書き込み権限がなければなりません。 たとえば、ネットワーク共有のサーバーの FQDN または IP アドレスを "\\\servername.domainname.com\backupfolder" または "\\\IP address\backupfolder" と指定します。 パフォーマンスを向上するために、移行するデータベースごとに個別のフォルダーを使用することをお勧めします。 **[詳細設定]** オプションを使用すると、データベース レベルのファイル共有パスを指定できます。 |
+    |**SMB ネットワーク場所の共有** | Azure Database Migration Service が移行に使用できる、完全なデータベース バックアップ ファイルとトランザクション ログのバックアップ ファイルを収納する、ローカルな SMB ネットワーク共有または Azure ファイル共有です。 ソースの SQL Server インスタンスを実行しているサービス アカウントには、このネットワーク共有での読み取り/書き込み権限がなければなりません。 たとえば、ネットワーク共有のサーバーの FQDN または IP アドレスを "\\\servername.domainname.com\backupfolder" または "\\\IP address\backupfolder" と指定します。 パフォーマンスを向上するために、移行するデータベースごとに個別のフォルダーを使用することをお勧めします。 **[詳細設定]** オプションを使用すると、データベース レベルのファイル共有パスを指定できます。 SMB 共有への接続時に問題が発生した場合は、[SMB 共有](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity)に関するページを参照してください。 |
     |**ユーザー名** | 上で指定したネットワーク共有に対するフル コントロール権限が Windows ユーザーにあることを確認してください。 Azure Database Migration Service により、ユーザーの資格情報を借用することで、復元操作のために、Azure Storage コンテナーにバックアップ ファイルがアップロードされます。 Azure ファイル共有を使用している場合は、先頭に AZURE\ を付けたストレージ アカウント名をユーザー名として使用してください。 |
     |**パスワード** | ユーザーのパスワード。 Azure ファイル共有を使用している場合は、ストレージ アカウント キーをパスワードとして使用してください。 |
     |**Azure Storage Account のサブスクリプション** | Azure Storage Account を収納するサブスクリプションを選択します。 |

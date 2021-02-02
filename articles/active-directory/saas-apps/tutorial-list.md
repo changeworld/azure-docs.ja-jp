@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 2e4746b8beb722f74681beb9afe8c5dd1115539c
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 1cfd296ae051192f83b6d256de539da6c076328b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831599"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622847"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -55,6 +55,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | :--- | :--- |
 | ![ロゴ - 8x8](./media/tutorial-list/active-directory-saas-8x8-virtual-office-tutorial.png)| [8x8](8x8virtualoffice-tutorial.md)|
 | ![ロゴ - AcquireIO](./media/tutorial-list/active-directory-saas-acquireio-tutorial.png)| [AcquireIO](acquireio-tutorial.md)|
+| ![ロゴ - Adobe Identity Management](./media/tutorial-list/active-directory-saas-adobe-identity-management-tutorial.png)| [Adobe Identity Management](adobe-identity-management-tutorial.md)|
 | ![ロゴ - Aha!](./media/tutorial-list/active-directory-saas-aha-tutorial.png)| [Aha!](aha-tutorial.md)|
 | ![ロゴ - AlertOps](./media/tutorial-list/active-directory-saas-alertops-tutorial.png)| [AlertOps](alertops-tutorial.md)|
 | ![ロゴ - Amplitude](./media/tutorial-list/active-directory-saas-amplitude-tutorial.png)| [Amplitude](amplitude-tutorial.md)|
@@ -96,6 +97,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - Kanbanize](./media/tutorial-list/active-directory-saas-kanbanize-tutorial.png)| [Kanbanize](kanbanize-tutorial.md)|
 | ![ロゴ - Knowledge Anywhere LMS](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Knowledge Anywhere LMS](knowledge-anywhere-lms-tutorial.md)|
 | ![ロゴ - Litmus](./media/tutorial-list/active-directory-saas-litmus-tutorial.png)| [Litmus](litmus-tutorial.md)|
+| ![ロゴ - Marketo](./media/tutorial-list/active-directory-saas-marketo-tutorial.png)| [Marketo](marketo-tutorial.md)|
 | ![ロゴ - Meraki Dashboard](./media/tutorial-list/active-directory-saas-meraki-dashboard-tutorial.png)| [Meraki Dashboard](meraki-dashboard-tutorial.md)|
 | ![ロゴ - monday.com](./media/tutorial-list/active-directory-saas-mondaycom-tutorial.png)| [monday.com](mondaycom-tutorial.md)|
 | ![ロゴ - MyWorkDrive](./media/tutorial-list/active-directory-saas-myworkdrive-tutorial.png)| [MyWorkDrive](myworkdrive-tutorial.md)|

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562677"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98609946"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -512,27 +512,25 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 - クラスターにワークスペースをリンクし、その後、リンクを解除することができます。 特定のワークスペースでのワークスペース リンク操作の回数は、30 日間に 2 回に制限されています
 
-- クラスターへのワークスペースのリンクは、Log Analytics クラスターのプロビジョニングが完了したことを確認した後でのみ、実行する必要があります。 完了前にワークスペースに送信されたデータは削除され、復旧できなくなります。
-
 - クラスターの別のリソース グループまたはサブスクリプションへの移動は、現時点ではサポートされていません。
-
-- 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
 
 - ロックボックスは、現在、中国では使用できません。 
 
-- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を行い、`"isDoubleEncryptionEnabled"` プロパティの値を検査します。二重暗号化が有効になっているクラスターの場合は `true` です。 
-  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、二重暗号化なしでクラスターを作成できます。 REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` プロパティを追加します。
+- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を送信し、二重暗号化が有効になっているクラスターの `isDoubleEncryptionEnabled` の値が `true` かどうかを検査します。 
+  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
   - クラスターの作成後に、二重暗号化の設定を変更することはできません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 - クラスターを作成するときに競合エラーが発生する場合は、過去 14 日以内にクラスターを削除し、それが論理的な削除状態にある可能性があります。 クラスター名は、論理的な削除の期間中は予約されたままであり、その名前で新しいクラスターを作成することはできません。 この名前は、論理的な削除の期間の後、クラスターが完全に削除されたときに解放されます。
 
-- 操作の実行中にクラスターを更新すると、操作は失敗します。
+- クラスターがプロビジョニング中または更新中の状態のときにクラスターを更新すると、更新は失敗します。
 
 - クラスターの作成、クラスターのキーの更新、クラスターの削除などの一部の操作には長時間かかるため、完了までにしばらく時間がかかる場合があります。 操作の状態を確認するには、次の 2 つの方法があります。
   - REST を使用している場合、応答から Azure-AsyncOperation URL 値をコピーし、「[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)」に従います。
   - GET 要求をクラスターまたはワークスペースに送信し、応答を観察します。 たとえば、リンクされていないワークスペースには、*features* の下に *clusterResourceId* が存在しません。
+
+- 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
 
 - エラー メッセージ
   

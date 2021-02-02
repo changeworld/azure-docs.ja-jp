@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f1a1d43f9bfc960628447a3c20e7dab2ac701dc5
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588592"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762571"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -101,6 +101,10 @@ SSL 証明書のアップロード後に、ポータルに「証明書が無効�
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>既定値と「長い」バックエンド タイムアウトの長さはどれくらいですか。 タイムアウトは延長できますか。
 
 既定の長さは 85 秒です。 「長い」設定は 180 秒です。 タイムアウト制限を延長することはできません。
+
+### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>サービス プリンシパルでは、Powershell または Microsoft Graph API を使用して Application Proxy を管理できますか。
+
+いいえ。現在これはサポートされていません。
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>アプリケーションで読み込むランディング ページを変更する方法を教えてください。
 

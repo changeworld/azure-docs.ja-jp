@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246759"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892569"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>チュートリアル - SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>チュートリアル:SCIM エンドポイントのプロビジョニングを開発および計画する
 
 アプリケーション開発者は System for Cross-Domain Identity Management (SCIM) ユーザー管理 API を使用し、アプリケーションと Azure AD の間のユーザーとグループの自動プロビジョニングを有効にできます。 この記事では、SCIM エンドポイントを構築し、Azure AD プロビジョニング サービスと統合する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
-SCIM は、/Users エンドポイントと /Groups エンドポイントという 2 つのエンドポイントの標準化された定義です。 これはオブジェクトの作成、更新、削除を行うための共通の REST 動詞を使用するほか、グループ名、ユーザー名、名、姓、電子メールなどの共通属性に対して定義済みのスキーマを使用します。 SCIM 2.0 REST API を提供するアプリでは、独自のユーザー管理 API を使用する煩わしさを軽減するか、なくすことができます。 たとえば、準拠している SCIM クライアントは、JSON オブジェクトの HTTP POST を /Users エンドポイントに送信して新しいユーザー エントリを作成する方法を認識しています。 同じ基本的なアクションに対して若干異なる API を必要とするのではなく、SCIM 標準に準拠しているアプリでは、既存のクライアント、ツール、およびコードをすぐに利用できます。 
+SCIM は、2 つのエンドポイント (`/Users` エンドポイントと `/Groups` エンドポイント) の標準化された定義です。 これはオブジェクトの作成、更新、削除を行うための共通の REST 動詞を使用するほか、グループ名、ユーザー名、名、姓、電子メールなどの共通属性に対して定義済みのスキーマを使用します。 SCIM 2.0 REST API を提供するアプリでは、独自のユーザー管理 API を使用する煩わしさを軽減するか、なくすことができます。 たとえば、準拠している SCIM クライアントは、JSON オブジェクトの HTTP POST を `/Users` エンドポイントに送信して新しいユーザー エントリを作成する方法を認識しています。 同じ基本的なアクションに対して若干異なる API を必要とするのではなく、SCIM 標準に準拠しているアプリでは、既存のクライアント、ツール、およびコードをすぐに利用できます。 
 
 ![SCIM を使用した Azure AD からアプリへのプロビジョニング](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -56,7 +57,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|name.lastName|lastName|
-|workMail|Emails[type eq “work”].value|Mail|
+|workMail|emails[type eq "work"].value|Mail|
 |manager|manager|manager|
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
 |status|active|isSoftDeleted (ユーザーに格納されない計算値)|
@@ -748,7 +749,9 @@ Azure AD プロビジョニング サービスは、現在、[こちら](https:/
 
 これでスキーマを設計し、Azure AD SCIM の実装を理解したので、SCIM エンドポイントの開発を開始できます。 最初から開始して完全に独自の実装を構築するのではなく、SCIM コミュニティによって発行された多数のオープンソース SCIM ライブラリを使用できます。
 
-Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード](https://aka.ms/SCIMReferenceCode)は、開発を開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
+例を含め、SCIM エンドポイントを構築する方法に関するガイダンスについては、[サンプル SCIM エンドポイントの開発](use-scim-to-build-users-and-groups-endpoints.md)に関する記事をご覧ください。
+
+Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード例](https://aka.ms/SCIMReferenceCode)は、開発をすぐに開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
 
    > [!Note]
    > 参照コードは、SCIM エンドポイントの構築を開始するのに役立ち、"現状のまま" 提供されることを目的としています。 コードのビルドと保守に役立つため、コミュニティからの貢献は歓迎されます。
@@ -1127,11 +1130,17 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインします。 [開発者プログラム](https://developer.microsoft.com/office/dev-program)にサインアップすることにより、P2 ライセンスで Azure Active Directory の無料試用版にアクセスできることに注意してください
 2. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 ギャラリーから追加されたアプリを含む、構成済みのすべてのアプリの一覧が表示されます。
-3. **[+ 新しいアプリケーション]**  >  **[すべて]**  >  **[ギャラリー以外のアプリケーション]** の順に選択します。
-4. アプリケーションの名前を入力し、 **[追加]** を選択してアプリ オブジェクトを作成します。 新しいアプリがエンタープライズ アプリケーションの一覧に追加され、そのアプリの管理画面が開きます。
+3. **[+ 新しいアプリケーション]**  >  **[+ 独自のアプリケーションの作成]** の順に選択します。
+4. アプリケーションの名前を入力し、 *[ギャラリーに見つからないその他のアプリケーションを統合します]* オプションを選択します。 **[追加]** を選択して、アプリ オブジェクトを作成します。 新しいアプリがエンタープライズ アプリケーションの一覧に追加され、そのアプリの管理画面が開きます。
 
-   ![Azure AD アプリケーション ギャラリーを示すスクリーンショット](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
-   *Azure AD アプリケーション ギャラリー*
+   ![Azure AD アプリケーション ギャラリーを示すスクリーンショット](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+    "*Azure AD アプリケーション ギャラリー*"
+
+   > [!NOTE]
+   > 古いアプリ ギャラリー エクスペリエンスを使用している場合は、次の画面ガイドに従ってください。
+   
+   ![古い Azure AD アプリ ギャラリー エクスペリエンスを示すスクリーンショット](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+    "*古い Azure AD アプリ ギャラリー エクスペリエンス*"
 
 5. アプリの管理画面で、左側のパネルにある **[プロビジョニング]** を選択します。
 6. **[プロビジョニング モード]** メニューの **[自動]** を選択します。
@@ -1235,6 +1244,7 @@ OAuth コード付与フローの手順は次のとおりです。
 
 ## <a name="related-articles"></a>関連記事
 
+* [サンプル SCIM エンドポイントを開発する](use-scim-to-build-users-and-groups-endpoints.md)
 * [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)

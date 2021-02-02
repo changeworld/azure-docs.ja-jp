@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612689"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98798580"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -199,6 +199,9 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 ハブの VPN スループットの合計は、VPN ゲートウェイの選択されたスケール ユニットに基づき、最大で 20 Gbps となります。 スループットはすべての既存の接続によって共有されます。 接続内の各トンネルは最大 1 Gbps をサポートできます。
 
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN 接続で NAT-T を使用できますか。
+はい。NAT トラバーサル (NAT-T) がサポートされています。 Virtual WAN VPN Gateway によって、NAT に類似する機能が、内部パケットで IPsec トンネルに対して実行されることはありません。 この構成では、オンプレミスのデバイスによって IPSec トンネルが開始されるようにします。
+
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>仮想ハブの 20 Gbps の設定がポータルに表示されません。 どのように構成すればよいですか。
 
 ポータルでハブ内の VPN ゲートウェイに移動し、スケール ユニットをクリックして適切な設定に変更します。
@@ -221,7 +224,7 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、または Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
 
-仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。
+仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。 既定のルートはハブ間で伝達されません。
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Virtual WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか
 

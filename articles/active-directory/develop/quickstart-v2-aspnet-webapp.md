@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178587"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754411"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
 
@@ -169,7 +169,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID |
 > | `Authority`    | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は `https://login.microsoftonline.com/{tenant}/v2.0`。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
-> | `RedirectUri`  | Microsoft ID プラットフォーム エンドポイントに対する認証後にユーザーが送られる URL |
+> | `RedirectUri`  | Microsoft ID プラットフォームに対する認証後にユーザーが送られる URL |
 > | `PostLogoutRedirectUri`     | サインオフ後にユーザーが送られる URL |
 > | `Scope`     | 要求されているスコープのスペース区切りリスト |
 > | `ResponseType`     | 認証からの応答に ID トークンが含まれていることを要求します |
