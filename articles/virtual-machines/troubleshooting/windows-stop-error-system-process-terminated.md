@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8af656e00c457dfa3d438f0cb104d85ccc687745
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976999"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661240"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows STOP エラー 0xC000021A ステータス システム プロセスが停止しました
 
@@ -48,12 +48,16 @@ ms.locfileid: "91976999"
 
 ### <a name="collect-the-memory-dump-file"></a>メモリ ダンプ ファイルを収集する
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップからの VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
+
+
 この問題を解決するには、クラッシュ ダンプを分析する必要があります。 クラッシュのメモリ ダンプ ファイルを収集し、サポートにお問い合わせください。 ダンプ ファイルを収集するには、次の手順を行います。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
 
 1.  [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
-2.  **リモート デスクトップ接続**を使用して、修復 VM に接続します。
+2.  **リモート デスクトップ接続** を使用して、修復 VM に接続します。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
 

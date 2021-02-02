@@ -1,14 +1,14 @@
 ---
 title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 01/27/2021
+ms.date: 02/01/2021
 ms.topic: sample
-ms.openlocfilehash: 7865a3ea5be374f36de70e62c7bc215fc88d04a5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915694"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225143"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -28,7 +28,7 @@ ms.locfileid: "98915694"
 | [FedRAMP High](./fedramp-h/index.md) | FedRAMP High への準拠に役立つ一連のポリシーを提供します。 |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | HIPAA HITRUST への準拠に役立つ一連のポリシーを提供します。 |
 | [IRS 1075](./irs-1075/index.md) | IIRS 1075 に準拠するための規定を提供します。|
-| [ISO 27001](./iso27001/index.md) | ISO 27001 に準拠するための規定を提供します。 |
+| [ISO 27001](./iso-27001-2013.md) | ISO 27001 に準拠するための規定を提供します。 |
 | [ISO 27001 共有サービス](./iso27001-shared/index.md) | ISO 27001 構成証明に役立つ一連の準拠インフラストラクチャ パターンおよびポリシー ガードレールを提供します。 |
 | [ISO 27001 App Service Environment/SQL Database ワークロード](./iso27001-ase-sql-workload/index.md) | [ISO 27001 共有サービス](./iso27001-shared/index.md) ブルー プリントのサンプルへの追加のインフラストラクチャを提供します。 |
 | [メディア](./media/index.md) | メディア MPAA への準拠に役立つ一連のポリシーを提供します。 |

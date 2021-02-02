@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/04/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 1ce594d9e3ffddf781c61717ae4534f0c7bd40f8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: beb658474e49f9b47900d8481dab0424dae8c5be
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681892"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661393"
 ---
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Windows STOP エラー - 0x0000007E システム スレッド例外が処理されませんでした
 
@@ -35,6 +35,10 @@ ms.locfileid: "94681892"
 
 ## <a name="solution"></a>解決策
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップからの VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
+
+
 この問題を解決するには、まずそのクラッシュのメモリ ダンプ ファイルを収集してから、そのファイルを Microsoft サポートに送信する必要があります。 ダンプ ファイルを収集するには、次の 2 つのセクションの手順に従ってください。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
@@ -45,7 +49,7 @@ ms.locfileid: "94681892"
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
 
 1. 修復 VM で、接続されている OS ディスクの Windows フォルダーに移動します。 たとえば、接続されている OS ディスクに割り当てられたドライブ文字のラベルが *F* である場合は、`F:\Windows` に移動します。
-1. *memory.dmp* ファイルを見つけてから、メモリ ダンプ ファイルを添付して[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
+1. *memory.dmp* ファイルを見つけてから、メモリ ダンプ ファイルを添付して [サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
 1. *memory.dmp* ファイルが見つからない場合は、ガイドに従って、[マスク不可能割り込み (NMI) 呼び出しを使用してクラッシュ ダンプ ファイルを生成](/windows/client-management/generate-kernel-or-complete-crash-dump)します。
 
 NMI 呼び出しの詳細については、[Azure シリアル コンソールでの NMI 呼び出し](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)に関するユーザー ガイドを参照してください。

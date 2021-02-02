@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: d49aa50b1b8843dfb5c3d32983ff0bb129543bb0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837318"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624576"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -44,7 +44,7 @@ ms.locfileid: "97837318"
 
 5. **[完了]** を選択します。 作成したトークンは、 **[アクセス トークン]** ダイアログ ボックスに表示されます。
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="入力されたトークンを含む [アセット トークン] ダイアログ ボックスのスクリーンショット":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="入力されたトークンを含む [デバイス トークン] ダイアログ ボックスのスクリーンショット":::
 
    **[Used]\(使用日\)** は、このトークンを持つ外部呼び出しが最後に受信された日時を示します。
 

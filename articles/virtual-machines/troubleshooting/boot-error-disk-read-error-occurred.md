@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069154"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629727"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>ブート エラーのトラブルシューティング - ディスク読み取りエラーが発生しました
 
@@ -33,11 +33,14 @@ ms.locfileid: "87069154"
 
 ## <a name="cause"></a>原因
 
-このエラー メッセージは、ディスクの構造が破損していて読み取ることができないことを示します。 第 1 世代の VM を使用している場合は、ブート構成データが含まれるディスク パーティションが**アクティブ**に設定されていない可能性もあります。
+このエラー メッセージは、ディスクの構造が破損していて読み取ることができないことを示します。 第 1 世代の VM を使用している場合は、ブート構成データが含まれるディスク パーティションが **アクティブ** に設定されていない可能性もあります。
 
 ## <a name="solution"></a>解決策
 
 ### <a name="process-overview"></a>プロセスの概要
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップからの VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 1. 修復 VM を作成してアクセスします。
 1. 解決策を選択します。
@@ -56,7 +59,7 @@ ms.locfileid: "87069154"
 
 ### <a name="set-partition-status-to-active"></a>パーティションの状態をアクティブに設定する
 
-第 1 世代の VM を使用している場合は、BCD ストアを保持している OS パーティションが**アクティブ**としてマークされていることを確認する必要があります。 第 2 世代の VM を使用している場合は、「[ディスク パーティションを修正する](#fix-the-disk-partition)」に進んでください。状態フラグは後の世代で非推奨になっています。
+第 1 世代の VM を使用している場合は、BCD ストアを保持している OS パーティションが **アクティブ** としてマークされていることを確認する必要があります。 第 2 世代の VM を使用している場合は、「[ディスク パーティションを修正する](#fix-the-disk-partition)」に進んでください。状態フラグは後の世代で非推奨になっています。
 
 1. 管理者特権でコマンド プロンプト (cmd.exe) を開きます。
 1. 「**diskpart**」と入力して、**DISKPART** ツールを起動します。
@@ -80,7 +83,7 @@ ms.locfileid: "87069154"
 
    ![diskpart の **detail partition** コマンドの出力ウィンドウ。Partition 1 が **Active: Yes** に設定されています。](./media/disk-read-error-occurred/5.png)
 
-1. パーティションが**アクティブ**に設定されていない場合は、「**active**」と入力してアクティブ フラグを変更します。
+1. パーティションが **アクティブ** に設定されていない場合は、「**active**」と入力してアクティブ フラグを変更します。
 1. 「**detail partition**」と入力して、状態の変更が正常に完了したことを確認し、出力に以下が含まれることを確認します: **Active: Yes**。 
 1. **exit** と入力して DISKPART ツールを終了し、ご自分の構成の変更を保存します。
 
@@ -100,7 +103,7 @@ ms.locfileid: "87069154"
 1. 管理者として、管理者特権でのコマンド プロンプト セッションを開きます。
 1. 次のコマンドを実行します。
 
-   **シリアル コンソールを有効にする**:
+   **シリアル コンソールの有効化**:
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -143,4 +146,4 @@ ms.locfileid: "87069154"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) に従って VM を再構築します。

@@ -488,7 +488,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-maintenance-portal.md
-        - name: ネットワーク
+        - name: ネットワーキング
           items:
             - name: プライベート アクセス (VNet 統合)
               items:
@@ -611,6 +611,8 @@
           items:
             - name: 監視と調整
               href: concepts-hyperscale-monitoring.md
+            - name: 監査ログ
+              href: concepts-hyperscale-audit.md
         - name: 構成オプション
           href: concepts-hyperscale-configuration-options.md
         - name: 予約容量の前払い

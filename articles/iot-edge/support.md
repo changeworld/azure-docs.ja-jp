@@ -4,16 +4,16 @@ description: Azure IoT Edge デーモンとランタイムを実行できるオ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b1bd437da50ae5989e46ac5c5f881b28b0e99703
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539903"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630532"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
@@ -50,27 +50,46 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 
 ホスト OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと常に一致する必要があります。 つまり、Linux コンテナーは Linux 上でのみ、Windows コンテナーは Windows 上でのみ使用できます。 Windows を使用している場合は、プロセス分離コンテナーのみがサポートされます (Hyper-V 分離コンテナーはサポートされません)。  
 
-<br>
-<center>
-
-![ホスト OS がゲスト OS に一致する](./media/support/edge-on-device.png)
-</center>
+IoT Edge for Linux on Windows では、Windows ホストで実行されている Linux 仮想マシンで IoT Edge を使用します。 この方法で、Windows デバイス上で Linux モジュールを実行できます。
 
 ### <a name="tier-1"></a>レベル 1
 
-次の表に示すシステムは、一般提供またはパブリック プレビューにおいて、Microsoft によってサポートされており、新しいリリースごとにテストされています。 
+次の表に示すシステムは、一般提供またはパブリック プレビューにおいて、Microsoft によってサポートされており、新しいリリースごとにテストされています。
+
+Azure IoT Edge は、Linux コンテナーまたは Windows コンテナーとしてビルドされたモジュールをサポートします。 Linux コンテナーは、Linux デバイスにデプロイすることも、IoT Edge for Linux on Windows を使用して Windows デバイスにデプロイすることもできます。 Windows コンテナーは、Windows デバイスにのみ展開できます。
+
+#### <a name="linux-containers"></a>Linux コンテナー
+
+Linux コンテナーとしてビルドされたモジュールは、Linux デバイスまたは Windows デバイスにデプロイできます。 Linux デバイスの場合、IoT Edge ランタイムはホスト デバイスに直接インストールされます。 Windows デバイスの場合、IoT Edge ランタイムでビルドされた Linux 仮想マシンは、ホスト デバイスで実行されます。
+
+IoT Edge for Linux on Windows は現在パブリックプレビュー段階ですが、Windows デバイスで IoT Edge を実行する場合に推奨される方法です。
 
 | オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | パブリック プレビュー  |
-| [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | パブリック プレビュー |
-| [Windows 10 IoT Enterprise](/windows/iot-core/windows-iot-enterprise) ビルド 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows 10 IoT Core](/windows/iot-core/windows-iot-core) ビルド 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server 2019](/windows-server/get-started-19/rel-notes-19) ビルド 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server IoT 2019](/windows/iot-core/windows-server) ビルド 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | パブリック プレビュー  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | パブリック プレビュー |
+| Windows 10 Pro | パブリック プレビュー |  |  |
+| Windows 10 Enterprise | パブリック プレビュー |  |  |
+| Windows 10 IoT Enterprise | パブリック プレビュー |  |  |
+| Windows Server 2019 | パブリック プレビュー |  |  |
 
-上記の Windows オペレーティング システムは、Windows 上で Windows コンテナーを実行するデバイスの要件です。これは、運用環境でサポートされる唯一の構成です。 Windows 用の Azure IoT Edge インストール パッケージを使用すると、Windows 上で Linux コンテナーを使用できます。ただし、この構成は開発およびテスト専用です。 
+すべての Windows オペレーティング システムは、バージョン 1809 (ビルド 17763) 以降である必要があります。
+
+#### <a name="windows-containers"></a>Windows コンテナー
+
+Windows コンテナーとしてビルドされたモジュールは、Windows デバイスにのみ展開できます。
+
+| オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Windows 10 IoT Enterprise | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+
+<sup>1</sup> バージョン 1.0.10 以降、Windows 10 IoT Core はサポートされません
+
+すべての Windows オペレーティング システムはバージョン 1809 (ビルド 17763) である必要があります。 Windows の IoT Edge には、Windows の特定のビルドが必要です。これは、Windows コンテナーのバージョンがホストの Windows デバイスのバージョンと正確に一致する必要があるためです。 現在、Windows コンテナーはビルド 17763 のみを使用しています。
 
 ### <a name="tier-2"></a>レベル 2
 

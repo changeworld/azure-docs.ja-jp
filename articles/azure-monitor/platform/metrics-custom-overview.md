@@ -1,24 +1,24 @@
 ---
 title: Azure Monitor のカスタム メトリック (プレビュー)
 description: Azure Monitor のカスタム メトリックと、それらのモデリング方法について説明します。
-author: ancav
+author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce081896292ec92c41dabc735df828ed167d86e7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639904"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788504"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
 Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](./metrics-supported.md)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 
 
-より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。 これらの**カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
+より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。 これらの **カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
 
 Azure Monitor のカスタム メトリックは現在、パブリック プレビューの段階にあります。 
 
@@ -105,7 +105,6 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |トランザクション 1|トランザクション 2|トランザクション 3|トランザクション 4|
 |---|---|---|---|
 |7 ミリ秒|4 ミリ秒|13 ミリ秒|16 ミリ秒|
-|
 
 その場合、結果として Azure Monitor に送信されるメトリックは次のようになります。
 * 最小:4
@@ -134,7 +133,8 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
         "metric": "Memory Bytes in Use",
         "namespace": "Memory Profile",
         "dimNames": [
-          "Process"        ],
+          "Process"
+        ],
         "series": [
           {
             "dimValues": [
@@ -168,13 +168,13 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 出力される前に Azure Monitor でカスタム メトリックを事前定義する必要はありません。 発行された各メトリック データ ポイントには、名前空間、名前、およびディメンションの情報が含まれています。 そのため、カスタム メトリックが Azure Monitor に最初に出力された際に、メトリックの定義が自動的に作成されます。 このメトリック定義はその後、そのメトリック定義によってメトリックが出力された対象である任意のリソースで検出可能です。
 
 > [!NOTE]  
-> Azure Monitor では、カスタム メトリックの**単位**の定義はまだサポートされていません。
+> Azure Monitor では、カスタム メトリックの **単位** の定義はまだサポートされていません。
 
 ## <a name="using-custom-metrics"></a>カスタム メトリックの使用
 カスタム メトリックが Azure Monitor に送信されたら、Azure portal を使ってそれらを参照し、Azure Monitor REST API を使ってクエリを実行できます。 また、アラートを作成して、特定の条件が満たされたときに通知が送られるようにすることもできます。
 
 > [!NOTE]
-> カスタム メトリックを表示するには、閲覧者または共同作成者ロールである必要があります。
+> カスタム メトリックを表示するには、閲覧者または共同作成者ロールである必要があります。 「[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)」を参照してください。 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Azure portal からカスタム メトリックを参照する
 1.    [Azure ポータル](https://portal.azure.com)にアクセスします。
@@ -184,34 +184,19 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 5.    カスタム メトリックのメトリック名前空間を選択します。
 6.    カスタム メトリックを選択します。
 
+> [!NOTE]
+> Azure portal でメトリックを表示する方法の詳細については、「[Azure メトリックス エクスプローラーの概要](./metrics-getting-started.md)」を参照してください。
+
 ## <a name="supported-regions"></a>サポートされているリージョン
-パブリック プレビュー期間中、カスタム メトリックを発行する機能は一部の Azure リージョンでのみ利用できます。 つまりメトリックは、サポートされているいずれかのリージョンにあるリソースに対してしか発行できません。 次の表は、カスタム メトリックがサポートされている Azure リージョンを示したものです。 この表には、それらのリージョンにあるリソースのメトリックが発行される、対応エンドポイントも示してあります。
+パブリック プレビュー期間中、カスタム メトリックを発行する機能は一部の Azure リージョンでのみ利用できます。 つまりメトリックは、サポートされているいずれかのリージョンにあるリソースに対してしか発行できません。 Azure リージョンの詳細については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。 以下のエンドポイントで使用される Azure リージョン コードは、空白が削除されただけのリージョンの名前です。次の表に、カスタム メトリックでサポートされている Azure リージョンのセットの一覧を示します。 この表には、それらのリージョンにあるリソースのメトリックが発行される、対応エンドポイントも示してあります。
 
 |Azure リージョン |リージョンのエンドポイントのプレフィックス|
 |---|---|
-| **米国およびカナダ** | |
-|米国中西部 | https:\//westcentralus.monitoring.azure.com |
-|米国西部 2       | https:\//westus2.monitoring.azure.com |
-|米国中北部 | https:\//northcentralus.monitoring.azure.com
-|米国中南部| https:\//southcentralus.monitoring.azure.com |
-|米国中部      | https:\//centralus.monitoring.azure.com |
-|カナダ中部 | https:\//canadacentral.monitoring.azure.com |
-|米国東部| https:\//eastus.monitoring.azure.com |
-|米国東部 2 | https:\//eastus2.monitoring.azure.com |
-| **ヨーロッパ** | |
-|北ヨーロッパ    | https:\//northeurope.monitoring.azure.com |
-|西ヨーロッパ     | https:\//westeurope.monitoring.azure.com |
-|英国南部 | https:\//uksouth.monitoring.azure.com
-|フランス中部 | https:\//francecentral.monitoring.azure.com |
-| **アフリカ** | |
-|南アフリカ北部 | https:\//southafricanorth.monitoring.azure.com |
-| **アジア** | |
-|インド中部 | https:\//centralindia.monitoring.azure.com |
-|オーストラリア東部 | https:\//australiaeast.monitoring.azure.com |
-|東日本 | https:\//japaneast.monitoring.azure.com |
-|東南アジア  | https:\//southeastasia.monitoring.azure.com |
-|東アジア | https:\//eastasia.monitoring.azure.com |
-|韓国中部   | https:\//koreacentral.monitoring.azure.com |
+| すべてのパブリック クラウド リージョン | https://<Azure リージョン コード>.monitoring.azure.com |
+| **Azure Government** | |
+| US Gov アリゾナ | https:\//usgovarizona.monitoring.azure.us |
+| **中国** | |
+| 中国東部 2 | https:\//chinaeast2.monitoring.azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>待機時間とストレージのリテンション期間
 
