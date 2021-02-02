@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484279"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746749"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -63,10 +63,22 @@ HANA のストレージ構成を選択する際の基本原則は次のとおり
 - 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」および[ディスクの種類の選択](../../disks-types.md)に関する記事に基づいて、ストレージの種類を決定します。
 - VM のサイズ設定や決定を行うときは、VM の全体的な I/O スループットと IOPS の上限を考慮します。 VM の全体的なストレージ スループットについては、「[メモリ最適化済み仮想マシンのサイズ](../../sizes-memory.md)」をご覧ください。
 - ストレージ構成を決定するときは、 **/hana/data** ボリューム構成で VM の全体的なスループットの上限を超えないようにします。 セーブポイントの書き込みにより、SAP HANA は I/O を積極的に発行できます。 セーブポイントを書き込むと、 **/hana/data** ボリュームのスループットの上限にすぐに達する可能性があります。 **/hana/data** ボリュームが構築されているディスクのスループットが、VM で許可されるスループットよりも高い場合、セーブポイントの書き込みで使用されるスループットが、再実行ログ書き込みのスループット要求の妨げとなる状況に陥る可能性があります。 アプリケーションのスループットに影響を与える可能性のある状況
-- Azure Premium Storage を使用している場合、最も安価な構成は、論理ボリューム マネージャーを使用して、 **/hana/data** および **/hana/log** ボリュームを構築するためのストライプ セットを構築することです。
+
 
 > [!IMPORTANT]
 > ストレージ構成の提案は、最初の方向性を示すことを目的としています。 ワークロードを実行し、ストレージの使用パターンを分析すると、提供されているストレージ帯域幅または IOPS をすべて使用しているわけではないことに気付く場合があります。 その場合は、ストレージのダウンサイジングを検討してください。 逆に、これらの構成で推奨されているストレージ スループットよりも多くのスループットがワークロードに必要な場合もあります。 その結果、より多くの容量、IOPS、またはスループットをデプロイすることが必要となります。 必要なストレージ容量、必要なストレージ待ち時間、必要なストレージ スループットと IOPS、最も安価な構成のバランスの面で、ユーザーと HANA ワークロードにとって適切な妥協点を見つけ、それに合わせて調整できるように、Azure には機能や価格がそれぞれ異なるさまざまなストレージの種類が用意されています。
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>ストライプ セットと SAP HANA データ ボリュームのパーティション分割
+Azure Premium Storage を使用すると、複数の Azure ディスクにわたって **/hana/data** または **/hana/log** ボリューム、またはその両方をストライピングするときに、最適な価格/パフォーマンス比に達しない場合があります。 より大きなディスク ボリュームをデプロイするほど、必要な IOPS またはスループットが増え、そうしなくて済みます。 これまでは、Linux の一部である LVM と MDADM ボリューム マネージャーを使用することで、これが実現されていました。 ディスクをストライピングする方法は、数十年間使用され、よく知られています。 これらのストライプ ボリュームは、必要になる可能性のある IOPS またはスループットの能力を利用できるようになるためにメリットがありますが、これらのストライプ ボリュームの管理に関しては複雑さが増します。 ボリュームの容量に拡張する必要がある場合は特にそうなります。 少なくとも **/hana/data** に対しては、SAP は複数の Azure ディスクにまたがるストライピングと同じ目標を達成する代替方法を導入しました。 SAP HANA 2.0 SPS03 以降、HANA IndexServer は、さまざまな Azure ディスクに配置されている複数の HANA データ ファイル間で I/O アクティビティをストライピングできます。 この利点は、複数の Azure ディスクにまたがるストライプ ボリュームの作成と管理を行う必要がないことです。 データ ボリュームのパーティション分割の SAP HANA 機能の詳細については、次を参照してください。
+
+- [HANA 管理者ガイド](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [SAP HANA に関するブログ - データ ボリュームのパーティション分割](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP ノート #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP ノート #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+詳細を読むと、この機能を利用することで、ボリューム マネージャー ベースのストライプ セットの複雑さが解消されることが明らかになります。 また、HANA データ ボリュームのパーティション分割は、Azure Premium Storage のような Azure ブロック ストレージに対して機能するだけでないこともわかります。 この機能は、これらの共有に IOPS またはスループットの制限がある場合に備えて、NFS 共有間でストライピングするためにも使用できます。  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O Scheduler モード
 Linux には、数種類の I/O スケジューリング モードがあります。 Linux ベンダーおよび SAP が一般的に推奨しているのは、ディスク ボリュームの I/O スケジューラ モードを **mq-deadline** または **kyber** モードから **noop** (マルチ キュー以外) モードまたは **none** (マルチ キューの場合) モードに再構成することです。 詳細については、[SAP ノートの #1984787](https://launchpad.support.sap.com/#/notes/1984787) を参照してください。 

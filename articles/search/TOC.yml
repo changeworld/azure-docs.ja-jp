@@ -230,7 +230,7 @@
           items:
             - name: BLOB を検索する
               href: search-blob-storage-integration.md
-            - name: AI を使用して BLOB を理解する
+            - name: BLOB での AI エンリッチメント
               href: search-blob-ai-integration.md
             - name: BLOB インデクサーを構成する
               href: search-howto-indexing-azure-blob-storage.md

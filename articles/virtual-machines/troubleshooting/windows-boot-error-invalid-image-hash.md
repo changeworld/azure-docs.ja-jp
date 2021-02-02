@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969604"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629574"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows ブート マネージャー エラー - 0xC0000428 無効なイメージ ハッシュ状態
 
@@ -65,6 +65,9 @@ VM を構築するために使用されたイメージが、RTM (工場出荷版
 - Azure では、プレビュー バージョンである Windows のすべてのイメージの説明の中に、運用環境での試用を意図するものではなく、指定された試用期間のみの使用、または "プレビュー リリース" としてのみの使用が可能であるという注記が含まれています。
 
 ## <a name="solution"></a>解決策
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップからの VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 ご利用のイメージがプレビュー イメージである場合は、使用するイメージの有効期限を延長する方法がないので、プレビュー以外のイメージを使用して[新しい VM をデプロイ](../windows/quick-create-portal.md)する必要があります。 次の手順を使用すれば、プレビュー イメージを使用していたかどうかを容易に特定できると共に、この VM から新しい VM にデータを転送する場合に役立つリソースが得られます。 イメージがプレビュー イメージであることを明確に識別しても、それが現在有効期限切れになっている場合、イメージの回復は不可能です。
 

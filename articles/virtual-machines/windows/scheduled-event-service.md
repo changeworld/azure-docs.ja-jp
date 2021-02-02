@@ -1,20 +1,20 @@
 ---
-title: Azure で Windows VM 用にスケジュールされたイベントを監視する
+title: Azure で VM 用にスケジュールされたイベントを監視する
 description: Azure 仮想マシンでスケジュールされているイベントを監視する方法について説明します。
 author: mysarn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483302"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702272"
 ---
-# <a name="monitoring-scheduled-events"></a>スケジュールされたイベントの監視
+# <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM のスケジュールされたイベントを監視する
 
 更新プログラムは Azure のさまざまな部分に毎日適用され、そこで実行されているサービスをセキュリティで保護された最新の状態に保ちます。 計画された更新に加えて、計画外のイベントが発生することもあります。 たとえば、ハードウェアの性能低下や障害が検出された場合、Azure サービスでは計画外メンテナンスの実行が必要になることがあります。 ライブ マイグレーションとメモリ保持更新を使用し、通常は更新の影響を厳密にチェックするため、ほとんどの場合、これらのイベントは顧客に対してほぼ透過的に行われ、影響を与えることはなく、仮想マシンがせいぜい数秒凍結するくらいです。 ただし、アプリケーションによっては、仮想マシンが数秒凍結しただけで影響を受ける可能性があります。 こうしたアプリケーションの最適なエクスペリエンスを確保するためにも、今後の Azure メンテナンスについて事前に把握しておくことが重要です。 [Scheduled Events サービス](scheduled-events.md)には、今後のメンテナンスに関する通知を受けるためのプログラマティック インターフェイスが用意されているため、メンテナンスに適切に対応できます。 
 
@@ -39,7 +39,7 @@ Scheduled Events は、すべての Azure 仮想マシン上で使用できる [
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする
 
-これで、可用性セット内に 2 つの初期 VM が作成されました。 次に、同じ可用性セット内に myCollectorVM という 3 番目の VM を作成する必要があります。 
+これで、可用性セット内に 2 つの初期 VM が作成されました。 次に、同じ可用性セット内に `myCollectorVM` という 3 番目の VM を作成する必要があります。 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -150,7 +150,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
     | project-away RenderedDescription,ReqJson
     ```
 
-1. **[保存]** を選択してから、名前として「*logQuery*」を入力し、種類は **[クエリ]** のままとし、 *[カテゴリ]* に「**VMLogs**」と入力して、 **[保存]** を選択します。 
+1. **[保存]** を選択してから、名前として「`ogQuery`」を入力し、種類は **[クエリ]** のままとし、 `VMLogs` に「**VMLogs**」と入力して、 **[保存]** を選択します。 
 
     ![クエリの保存](./media/notifications/save-query.png)
 
@@ -160,7 +160,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 1. **[しきい値]** に「*0*」を入力して、 **[完了]** を選択します。
 1. **[アクション]** で、 **[アクショングループの作成]** を選択します。 **[アクション グループの追加]** ページが開きます。
 1. **[アクション グループ名]** に「*myActionGroup*」と入力します。
-1. **[短い名前]** に「**myActionGroup**」と入力します。
+1. **[短い名前]** に「*myActionGroup*」と入力します。
 1. **[リソース グループ]** で、**myResourceGroupAvailability** を選択します。
 1. [アクション] の **[アクション名]** に「**電子メール**」 と入力し、 **[電子メール/SMS/プッシュ/音声]** を選択します。 **[電子メール/SMS/プッシュ/音声]** ページが開きます。
 1. **[電子メール]** を選択し、ご自分の電子メール アドレスを入力して、 **[OK]** を選択します。
