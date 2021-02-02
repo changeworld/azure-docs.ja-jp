@@ -4,22 +4,22 @@ description: Azure ファイル共有のプロビジョニングおよび従量�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831467"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632480"
 ---
 # <a name="understanding-azure-files-billing"></a>Azure Files の課金の概要
 Azure Files には、プロビジョニングと従量課金制という 2 つの異なる課金モデルが用意されています。 プロビジョニング モデルは Premium ファイル共有でのみ使用できます。これは、**FileStorage** ストレージ アカウントの種類でデプロイされたファイル共有です。 従量課金制モデルは Standard ファイル共有でのみ使用できます。Standard ファイル共有は、**汎用バージョン 2 (GPv2)** ストレージ アカウントの種類でデプロイされたファイル共有です。 この記事では、Azure Files の毎月の請求書を理解できるように、両方のモデルがどのように機能するかについて説明します。
 
 Azure Files の現在の価格については、[Azure Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
 
-## <a name="provisioned-billing"></a>プロビジョニングの課金
+## <a name="provisioned-model"></a>プロビジョニング モデル
 Azure Files では、Premium ファイル共有にプロビジョニング モデルが使用されます。 プロビジョニング ビジネス モデルでは、使用量に基づいて請求されるのではなく、Azure Files サービスにストレージ要件を事前に指定します。 これはオンプレミスでハードウェアを購入する場合と似ています。この場合、特定の量のストレージを使用する Azure ファイル共有をプロビジョニングするときに、使用するかどうかに関係なく、そのストレージの料金を支払います。オンプレミスの物理メディアにかかるコストを支払い始めるのが、領域を使い始めるときではないことと同じです。 オンプレミスの物理メディアを購入する場合とは異なり、プロビジョニング ファイル共有は、ストレージと IO のパフォーマンス特性に応じて動的にスケールアップまたはスケールダウンすることができます。
 
 Premium ファイル共有をプロビジョニングするときは、ワークロードに必要な GiB 数を指定します。 プロビジョニングする GiB ごとに、固定比率で追加の IOPS とスループットを使用できるようになります。 保証されているベースライン IOPS に加えて、各 Premium ファイル共有はベスト エフォート ベースでバーストをサポートしています。 IOPS とスループットの数式は次のとおりです。
@@ -63,7 +63,7 @@ Premium ファイル共有をプロビジョニングするときは、ワーク
 
 新しいファイル共有は、そのバースト バケットに全数のクレジットが含まれると開始されます。 サーバーによる調整のために共有 IOPS がベースライン IOPS を下回った場合、バースト クレジットは発生しません。
 
-## <a name="pay-as-you-go-billing"></a>従量課金制の課金
+## <a name="pay-as-you-go-model"></a>従量課金制モデル
 Azure Files には、Standard ファイル共有に従量課金制ビジネス モデルが使用されます。 従量課金制ビジネス モデルの場合、支払う金額は、プロビジョニングされた量ではなく、実際に使用する量によって決まります。 大まかに言えば、ディスクに格納されているデータの量と、そのデータの使用状況に基づいて追加のトランザクション セットに対してコストを支払います。 従量課金制モデルの方がコスト効率が高くなる可能性があります。なぜなら、ワークロードのデータ フットプリントが時間の経過と共に変化する場合、将来の成長、パフォーマンスの要件、またはプロビジョニング解除を考慮して、過剰なプロビジョニングを行う必要がないためです。 一方、従量課金制モデルはエンドユーザーの使用量によって決まるため、予算編成プロセスの一環として従量課金制モデルを計画することが困難な場合もあります。
 
 ### <a name="differences-in-standard-tiers"></a>Standard レベルの相違点

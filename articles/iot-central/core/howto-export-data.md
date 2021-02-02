@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065390"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760907"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -35,6 +35,8 @@ ms.locfileid: "98065390"
 ## <a name="prerequisites"></a>前提条件
 
 データ エクスポート機能を使用するには、[V3 アプリケーション](howto-get-app-info.md)が必要です。また、[データ エクスポート](howto-manage-users-roles.md)のアクセス許可が必要です。
+
+V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central アプリケーションの移行](howto-migrate.md)に関する記事を参照してください。
 
 ## <a name="set-up-export-destination"></a>エクスポート先の設定
 

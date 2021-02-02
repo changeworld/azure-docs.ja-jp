@@ -1,5 +1,5 @@
 ---
-title: ワークスペースで Jupyter Notebooks を実行する方法
+title: ワークスペースで Jupyter ノートブックを実行する方法
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter ノートブックを実行する方法について説明します。
 services: machine-learning
@@ -11,13 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599311"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685580"
 ---
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 
 Azure Machine Learning スタジオのワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
@@ -28,7 +29,7 @@ Azure Machine Learning スタジオのワークスペースで Jupyter ノート
 
 ## <a name="create-notebooks"></a><a name="create"></a> ノートブックを作成する
 
-Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks を作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
+Azure Machine Learning ワークスペースで、新しい Jupyter ノートブックを作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
 
 新しいノートブックを作成するには: 
 
@@ -151,7 +152,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 **ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 "*できます*"。
 
 * Studio で、フォルダーまたはファイルの末尾にある **[...]** を選択します。  必ずサポートされているブラウザー (Microsoft Edge、Chrome、または Firefox) を使用してください。
-* 任意のノートブック ツールバーから [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
+* 任意のノートブック ツールバーから [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
 * Jupyter または JupyterLab で付属のツールを使用します。
 
 ## <a name="run-a-notebook-or-python-script"></a>ノートブックまたは Python スクリプトを実行する
@@ -212,7 +213,7 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
 
 ノートブックによって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
 
-1. ノートブックのツールバーで [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択します。
+1. ノートブックのツールバーで [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択します。
 1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
     ```shell
     conda create -y --name newenv
@@ -229,6 +230,7 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
     conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+1. カーネルをインストールしたら、ページを最新の情報に更新してノートブックを開いてください。 カーネルの一覧に新しいカーネルが表示されます。
 
 > [!NOTE]
 > Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、**現在実行中のカーネル** にパッケージを自動的にインストールします
@@ -341,7 +343,14 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 
 コンピューティング インスタンスの詳細については、[Studio](https://ml.azure.com) の **コンピューティング** に関するページを参照してください。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
+
+* コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して <instance-name>.<region>.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli)に関する記事をご覧ください。
+    
 ## <a name="next-steps"></a>次のステップ
 
 * [最初の実験を実行する](tutorial-1st-experiment-sdk-train.md)
 * [スナップショットを使用してファイル ストレージをバックアップする](../storage/files/storage-snapshots-files.md)
+* [セキュリティで保護された環境での作業](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

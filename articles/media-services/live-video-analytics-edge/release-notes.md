@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121245"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629778"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 
@@ -51,9 +51,12 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 * シンク ノードのディスク領域管理のサポートが追加されました。
 * `MediaGraphGrpcExtension` ノードで、1 つの gRPC サーバー内で複数の AI モデルを使用するための [extensionConfiguration](grpc-extension-protocol.md) プロパティがサポートされるようになりました。
 * [Prometheus 形式](https://prometheus.io/docs/practices/naming/)で Live Video Analytics モジュール メトリックを収集できるようになりました。 [Azure Monitor でメトリックを収集し、表示する方法の詳細はこちらで](monitoring-logging.md#azure-monitor-collection-via-telegraf)ご覧ください。 
+* 出力の選択をフィルター処理する機能が追加されました。 `outputSelectors` を使用して、任意のグラフ ノードに **オーディオのみ**、**ビデオのみ**、または **オーディオとビデオの両方** を渡すことができます。 
 * フレーム レート フィルター プロセッサは、**非推奨** となります。  
     * グラフ拡張機能のプロセッサ ノード自体でフレーム レート管理を使用できるようになりました。
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code 拡張機能
+* [Live Video Analytics on IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) - LVA メディア グラフの管理に役立つ Visual Studio Code 拡張機能がリリースされました。 この拡張機能は **LVA 2.0 モジュール** と連携し、非常に滑らかで使いやすいグラフィカル インターフェイスによってメディア グラフの編集と管理を提供します。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 このリリース タグは、モジュールの 2020 年 9 月の更新用です:

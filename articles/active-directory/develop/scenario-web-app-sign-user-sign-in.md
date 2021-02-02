@@ -1,5 +1,6 @@
 ---
-title: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443553"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752999"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
 
@@ -213,7 +214,7 @@ def _get_token_from_cache(scope=None):
 Web アプリからのサインアウトに必要なのは、サインインしたアカウントに関する情報を Web アプリの状態から削除することだけではありません。
 サインアウトするには、Web アプリによってユーザーが Microsoft ID プラットフォーム `logout` エンドポイントにリダイレクトされる必要もあります。
 
-Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリが `logout` エンドポイントに移動しなかった場合、ユーザーは資格情報を再入力しなくてもアプリに再認証されます。 理由は、Microsoft ID プラットフォーム エンドポイントとの有効なシングル サインイン セッションがあるからです。
+Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリが `logout` エンドポイントに移動しなかった場合、ユーザーは資格情報を再入力しなくてもアプリに再認証されます。 理由は、Microsoft ID プラットフォームとの有効なシングル サインイン セッションがあるからです。
 
 詳細については、「[Microsoft ID プラットフォームと OpenID Connect プロトコル](v2-protocols-oidc.md)」ドキュメントの「[サインアウト要求を送信する](v2-protocols-oidc.md#send-a-sign-out-request)」セクションを参照してください。
 

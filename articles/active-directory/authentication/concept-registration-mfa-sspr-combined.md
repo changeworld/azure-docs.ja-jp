@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743906"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621795"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
@@ -30,18 +30,18 @@ ms.locfileid: "96743906"
 > [!div class="nextstepaction"]
 > [結合されたセキュリティ登録を有効にする](howto-registration-mfa-sspr-combined.md)
 
-![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![ユーザーの登録済みのセキュリティ情報を示しているマイ アカウント](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
 新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/security-info-setup-signin.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
 
 Azure AD の結合されたセキュリティ情報の登録は、Azure Germany や Azure China 21Vianet などの各国のクラウドでは現在利用できません。 Azure US Government では使用できます。
 
 > [!IMPORTANT]
-> 元のプレビューと拡張版の両方の統合された登録エクスペリエンスが有効になっているユーザーには、新しい動作が示されます。 両方のエクスペリエンスが有効になっているユーザーには、新しい [マイ プロファイル] エクスペリエンスのみが表示されます。 新しい ”*マイ プロファイル*” は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動することによって [My Profile] (マイ プロファイル) を表示できます。
+> 元のプレビューと拡張版の両方の統合された登録エクスペリエンスが有効になっているユーザーには、新しい動作が示されます。 両方のエクスペリエンスが有効になっているユーザーには [マイ アカウント] エクスペリエンスのみが表示されます。 *[マイ アカウント]* は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myaccount.microsoft.com](https://myaccount.microsoft.com) に移動することによって [マイ アカウント] を表示できます。
 >
 > セキュリティ情報オプションにアクセスしようとすると、「申し訳ございません。サインインできませんでした」などのエラー メッセージが表示される場合があります。 サードパーティの Cookie をブロックする構成またはグループ ポリシー オブジェクトが Web ブラウザーに設定されていないことを確認します。
 
-”*マイ プロファイル*” ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語でレンダリングされるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。
+*[マイ アカウント]* ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語でレンダリングされるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。
 
 強制的に特定の言語にする場合は、URL の末尾に `?lng=<language>` を追加することができます。`<language>` は、レンダリングする言語のコードです。
 
@@ -116,7 +116,7 @@ SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報
 
 ### <a name="manage-mode"></a>管理モード
 
-ユーザーは [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動するか、または [マイ プロファイル] から **[セキュリティ情報]** を選択することによって管理モードにアクセスできます。 そこから、ユーザーは方法の追加、既存の方法の削除または変更、既定の方法の変更などを実行できます。
+ユーザーは [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動するか、または [マイ アカウント] から **[セキュリティ情報]** を選択することによって管理モードにアクセスできます。 そこから、ユーザーは方法の追加、既存の方法の削除または変更、既定の方法の変更などを実行できます。
 
 ## <a name="key-usage-scenarios"></a>主な使用シナリオ
 
@@ -126,17 +126,17 @@ SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報
 
 ユーザーは、必要なすべてのセキュリティ情報をまだ設定していない状態で Azure portal に移動します。 ユーザー名とパスワードを入力した後、ユーザーはセキュリティ情報を設定するよう求められます。 ユーザーは次に、ウィザードに示されている手順に従って、必要なセキュリティ情報を設定します。 ユーザーは、設定によって許可される場合、既定で表示されるもの以外の方法を設定することを選択できます。 ウィザードが完了した後、ユーザーは、設定した方法と Multi-Factor Authentication の既定の方法を確認します。 設定プロセスを完了するために、ユーザーは情報を確認し、Azure Portal に進みます。
 
-### <a name="set-up-security-info-from-my-profile"></a>[My Profile] (マイ プロファイル) からセキュリティ情報を設定する
+### <a name="set-up-security-info-from-my-account"></a>[マイ アカウント] からセキュリティ情報を設定する
 
 管理者は登録を適用していません。
 
-必要なすべてのセキュリティ情報をまだ設定していないユーザーが [https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動します。 ユーザーは左側のウィンドウで **[セキュリティ情報]** を選択します。 そこから、ユーザーは方法を追加することを選択し、自分が使用できるいずれかの方法を選択した後、手順に従ってその方法を設定します。 完了すると、設定された方法が [セキュリティ情報] ページに表示されます。
+必要なすべてのセキュリティ情報をまだ設定していないユーザーが [https://myaccount.microsoft.com](https://myaccount.microsoft.com) に移動します。 ユーザーは左側のウィンドウで **[セキュリティ情報]** を選択します。 そこから、ユーザーは方法を追加することを選択し、自分が使用できるいずれかの方法を選択した後、手順に従ってその方法を設定します。 完了すると、設定された方法が [セキュリティ情報] ページに表示されます。
 
-### <a name="delete-security-info-from-my-profile"></a>[My Profile] (マイ プロファイル) からセキュリティ情報を削除する
+### <a name="delete-security-info-from-my-account"></a>[マイ アカウント] からセキュリティ情報を削除する
 
 少なくとも 1 つの方法を以前に設定しているユーザーが [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動します。 ユーザーは、以前に登録された方法のいずれかを削除することを選択します。 完了すると、その方法は [セキュリティ情報] ページに表示されなくなります。
 
-### <a name="change-the-default-method-from-my-profile"></a>[マイ プロファイル] から既定の方法を変更する
+### <a name="change-the-default-method-from-my-account"></a>[マイ アカウント] から既定の方法を変更する
 
 Multi-Factor Authentication に使用できる少なくとも 1 つの方法を以前に設定しているユーザーが [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動します。 ユーザーは、現在の既定の方法を別の既定の方法に変更します。 完了すると、新しい既定の方法が [セキュリティ情報] ページに表示されます。
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703808"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630295"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -24,7 +24,7 @@ ms.locfileid: "97703808"
 
 自分が所有して運用する VNet を介した Azure リソース (IoT Hub を含む) への接続を制限したい場合があります。 これらの理由には以下のものが含まれます。
 
-* パブリック インターネットへの接続の露出を防ぐことにより、IoT Hub にネットワークの分離を導入する。
+* パブリック インターネットへの接続の露出を防ぐことにより、IoT ハブにネットワークの分離を導入する。
 
 * オンプレミスのネットワーク資産からのプライベート接続エクスペリエンスを有効にし、データとトラフィックが Azure バックボーン ネットワークに直接送信されるようにする。
 
@@ -70,6 +70,9 @@ ms.locfileid: "97703808"
 
 :::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="それぞれ IoT Hub プライベート リンクが指定されている、2 つのプライベート エンドポイントを示す画像":::
 
+IoT Hub の [IP フィルター](iot-hub-ip-filtering.md)によって、必要に応じて、組み込みのエンドポイントへのパブリック アクセスを制御できます。 
+
+IoT ハブへのパブリック ネットワーク アクセスを完全にブロックするには、[パブリック ネットワーク アクセスをオフにする](iot-hub-public-network-access.md)か、IP フィルターを使用してすべての IP をブロックし、組み込みのエンドポイントに規則を適用するオプションを選択します。
 
 ### <a name="pricing-for-private-link"></a>Private Link の価格
 
@@ -81,14 +84,13 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 
 ### <a name="turn-on-managed-identity-for-iot-hub"></a>IoT Hub のマネージド ID を有効にする
 
-他のサービスが IoT Hub を信頼された Microsoft サービスとして検出できるようにするには、システムに割り当てられたマネージド ID が必要です。
+他のサービスが IoT ハブを信頼された Microsoft サービスとして検出できるようにするには、システムに割り当てられたマネージド ID が必要です。
 
 1. IoT Hub ポータルで **[ID]** に移動します。
 
 1. **[状態]** の下で **[オン]** を選択し、 **[保存]** をクリックします。
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub のマネージド ID を有効にする方法を示すスクリーンショット":::
-
 
 Azure CLI を使用してマネージド ID を有効にするには:
 

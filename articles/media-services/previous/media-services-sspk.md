@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: eb88d2cf96cc8557f2b8c729554106530cf6f956
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732395"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629625"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -128,6 +128,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Hong Kong Konka Ltd
 * Innolux Corporation
 * Innopia Technologies, Inc
+* Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
 * K-Tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia Co., Ltd.
 * KDDI Corporation

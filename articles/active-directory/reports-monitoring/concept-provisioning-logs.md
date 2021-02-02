@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600753"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726303"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -37,14 +37,18 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
     - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
 
-このトピックでは、プロビジョニング レポートの概要を説明します。
+このトピックでは、プロビジョニング ログの概要を説明します。 次のような質問に対する回答が提供されます。 
+
+* ServiceNow で正常に作成されたグループ
+* Adobe から正常に削除されたユーザー
+* Active Directory で正常に作成された Workday のユーザー 
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 * アプリケーションの所有者は、自分が所有するアプリケーションのログを表示できます
 * セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、アプリケーション管理者、クラウド アプリケーション管理者のいずれかのロールであるユーザー
-* [provisioningLogs アクセス許可](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)を持つカスタム ロールのユーザー
+* [provisioningLogs アクセス許可](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)を持つカスタム ロールのユーザー
 * グローバル管理者
 
 
@@ -52,14 +56,16 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 すべてのプロビジョニング アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 
 
-## <a name="provisioning-logs"></a>プロビジョニング ログ
 
-プロビジョニング ログから、次の情報を得ることができます。
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>プロビジョニング ログとの対話方法 
+お客様は、4 つの方法を使用してプロビジョニング ログと対話できます。
 
-* ServiceNow で正常に作成されたグループ
-* Adobe から正常に削除されたユーザー
-* DropBox で作成に失敗したユーザー
+1. 下の説明に従って、Azure portal からログにアクセスします。
+1. プロビジョニング ログを [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) にストリーミングすることで、データ保持を延長したり、カスタムのダッシュボード、アラート、クエリを構築したりすることができます。
+1. [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) のクエリを実行して、プロビジョニング ログを見つけます。
+1. プロビジョニング ログを CSV ファイルまたは json としてダウンロードします。
 
+## <a name="access-the-logs-from-the-azure-portal"></a>Azure portal からログにアクセスする
 [Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[監視]** セクションで **[プロビジョニング ログ]** を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
 
 ![プロビジョニング ログ](./media/concept-provisioning-logs/access-provisioning-logs.png "プロビジョニング ログ")
@@ -205,10 +211,57 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 **[変更されたプロパティ]** には、古い値と新しい値が表示されます。 古い値が存在しない場合、古い値の列は空白になります。 
 
-
 ### <a name="summary"></a>まとめ
 
 **[概要]** タブには、ソース システムとターゲット システムのオブジェクトの発生内容の概要と識別子が表示されます。 
+
+## <a name="download-logs-as-csv-or-json"></a>ログを CSV または JSON としてダウンロードする
+
+Azure portal のログに移動してダウンロードをクリックすることで、プロビジョニング ログを後で使用するためにダウンロードすることができます。 ファイルは、選択したフィルター条件に基づいてフィルター処理されます。 ダウンロードにかかる時間とダウンロードのサイズを減らすために、フィルターをできるだけ具体的にすることをお勧めします。 CSV のダウンロードは次の 3 つのファイルに分かれています。
+
+* ProvisioningLogs:プロビジョニングの手順と変更されたプロパティを除く、すべてのログをダウンロードします。
+* ProvisioningLogs_ProvisioningSteps:プロビジョニングの手順と変更 ID を含みます。 変更 ID を使用して、イベントを他の 2 つのファイルと結合できます。
+* ProvisioningLogs_ModifiedProperties:変更された属性と変更 ID を含みます。 変更 ID を使用して、イベントを他の 2 つのファイルと結合できます。
+
+#### <a name="opening-the-json-file"></a>JSON ファイルを開く
+JSON ファイルを開くには、[Microsoft Visual Studio Code](https://aka.ms/vscode) などのテキスト エディターを使用します。 Visual Studio Code では構文の強調表示があるため、読み取りやすくなります。 また JSON ファイルは [Microsoft Edge](https://aka.ms/msedge) などのブラウザーを使用して、編集不能な形式で開くこともできます。 
+
+#### <a name="prettifying-the-json-file"></a>JSON ファイルを読みやすくする
+JSON ファイルは、ダウンロードのサイズを削減するために、縮小された形式でダウンロードされます。 これにより、ペイロードが読みづらくなる可能性があります。 ファイルを読みやすくするための 2 つの方法を確認してください。
+
+1. Visual Studio Code を使用して JSON を書式設定する
+
+[こちら](https://code.visualstudio.com/docs/languages/json#_formatting)に定義されている手順に従って、Visual Studio Code を使用して JSON ファイルを書式設定します。
+
+2. PowerShell を使用して JSON を書式設定する
+
+このスクリプトによって、JSON はタブとスペース使用した読みやすい形式で出力されます。 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>JSON ファイルを解析する
+
+ここでは、PowerShell を使用して JSON ファイルを操作するためのサンプル コマンドをいくつか紹介します。 使い慣れた任意のプログラミング言語を使用できます。  
+
+まず、次を実行して [JSON ファイルを読み取ります](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1)。
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+これで、自分のシナリオに従ってデータを解析できるようになりました。 次にいくつかの例を示します。 
+
+1. JsonFile 内のすべての jobID を出力する
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. アクションが "create" であったイベントのすべての changeId を出力する
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
@@ -234,7 +287,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |InsufficientRights、MethodNotAllowed、NotPermitted、Unauthorized| Azure AD はターゲット アプリケーションによって認証できましたが、更新を実行する権限がありませんでした。 ターゲット アプリケーションによって提供された手順と、それぞれのアプリケーションの[チュートリアル](../saas-apps/tutorial-list.md)を確認してください。|
 |UnprocessableEntity|ターゲット アプリケーションが予期しない応答を返しました。 ターゲット アプリケーションの構成が正しくないか、ターゲット アプリケーションに、その動作を妨げているサービスの問題がある可能性があります。|
 |WebExceptionProtocolError |ターゲット アプリケーションへの接続中に HTTP プロトコル エラーが発生しました。 することはありません。 この試行は 40 分で自動的に中止されます。|
-|InvalidAnchor|プロビジョニング サービスによって以前作成または照合されたユーザーは存在しなくなりました。 そのユーザーが存在することを確認してください。 すべてのユーザーを強制的に再照合するには、MS Graph API を使用して[ジョブを再開](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)します。 プロビジョニングを再開すると初期サイクルがトリガーされ、完了するまで時間がかかる場合があることに注意してください。 また、プロビジョニング サービスが操作に使用するキャッシュが削除されます。これは、テナント内のすべてのユーザーとグループが再度評価される必要があり、特定のプロビジョニング イベントが削除される可能性があることを意味します。|
+|InvalidAnchor|プロビジョニング サービスによって以前作成または照合されたユーザーは存在しなくなりました。 そのユーザーが存在することを確認してください。 すべてのユーザーを強制的に再照合するには、MS Graph API を使用して[ジョブを再開](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)します。 プロビジョニングを再開すると初期サイクルがトリガーされ、完了するまで時間がかかる場合があります。 また、プロビジョニング サービスが操作に使用するキャッシュが削除されます。これは、テナント内のすべてのユーザーとグループが再度評価される必要があり、特定のプロビジョニング イベントが削除される可能性があることを意味します。|
 |NotImplemented | ターゲット アプリから予期しない応答が返されました。 アプリの構成が正しくないか、ターゲット アプリに、その動作を妨げているサービスの問題がある可能性があります。 ターゲット アプリケーションによって提供された手順と、それぞれのアプリケーションの[チュートリアル](../saas-apps/tutorial-list.md)を確認してください。 |
 |MandatoryFieldsMissing、MissingValues |必須の値がないため、ユーザーを作成できませんでした。 ソース レコード内の不足している属性値を修正するか、一致する属性の構成を調べて、必須フィールドが省略されていないことを確認します。 一致する属性の構成に関する[詳細を確認](../app-provisioning/customize-application-attributes.md)してください。|
 |SchemaAttributeNotFound |ターゲット アプリケーションに存在しない属性が指定されたため、操作を実行できませんでした。 属性のカスタマイズに関する[ドキュメント](../app-provisioning/customize-application-attributes.md)を参照し、構成が正しいことを確認してください。|

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c687b5b18c9cf7b0920b23f49e3c7a2607e0a89f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353665"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791022"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -187,7 +187,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
 
 * Azure Cosmos DB は厳密な JSON 項目だけをサポートします。 型システムおよび式は、JSON 型のみを扱うように制限されます。 詳細については、[JSON の仕様](https://www.json.org/)に関する記事を参照してください。  
 
-* Cosmos コンテナーは、JSON 項目のスキーマなしのコレクションです。 コンテナー項目内および項目全体の関係は、含有関係によって暗黙的にキャプチャされ、主キーと外部キーの関係ではキャプチャされません。 この機能は、この記事で後述する項目間結合に重要です。
+* Cosmos コンテナーは、JSON 項目のスキーマなしのコレクションです。 コンテナー項目内および項目全体の関係は、含有関係によって暗黙的にキャプチャされ、主キーと外部キーの関係ではキャプチャされません。 この機能は、「[Azure Cosmos DB での結合](sql-query-join.md)」で説明されている項目間結合に対して重要です。
 
 ## <a name="next-steps"></a>次のステップ
 

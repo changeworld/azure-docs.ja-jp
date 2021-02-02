@@ -1,28 +1,24 @@
 ---
 title: Microsoft Azure Cloud Services のデプロイの問題についてよくあるご質問 | Microsoft Docs
 description: この記事では、Microsoft Azure Cloud Services のデプロイについてよくあるご質問を紹介します。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980625"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742218"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題:よく寄せられる質問 (FAQ)
+# <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) のデプロイの問題: よく寄せられる質問 (FAQ)
 
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 この記事では、[Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) のデプロイの問題についてよくあるご質問を紹介します。 サイズについては、 [Cloud Services VM サイズのページ](cloud-services-sizes-specs.md) を参照してください。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,9 +59,9 @@ ms.locfileid: "75980625"
 
 詳細については、「[クラウド サービスの更新方法](cloud-services-update-azure-service.md)」を参照してください。
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Service Management API または PowerShell から Azure Resource Manager ストレージ アカウントを使用して Cloud Services をデプロイすることができません。なぜでしょうか。 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Service Management API または PowerShell から Azure Resource Manager ストレージ アカウントを使用して Cloud Services をデプロイすることができません。なぜでしょうか。 
 
-Cloud Services はクラシック リソースです。クラシック リソースは Azure Resource Manager モデルと直接の互換性がないため、Azure Resource Manager のストレージ アカウントに関連付けることができません。 いくつかの選択肢を次に示します。 
+Cloud Services はクラシック リソースです。クラシック リソースは Azure Resource Manager モデルと直接の互換性がないため、Azure Resource Manager のストレージ アカウントに関連付けることができません。 いくつかの選択肢を次に示します。 
 
 - REST API を使用してデプロイする。
 
@@ -73,7 +69,7 @@ Cloud Services はクラシック リソースです。クラシック リソー
 
 - [Azure Portal](https://portal.azure.com) を使用してデプロイする。
 
-    [Azure Portal](https://portal.azure.com) からデプロイすれば、Azure Resource Manager リソースとクラシック リソースとの間の通信を可能にするプロキシ/shim を経由して呼び出しが行われるため正常に実行できます。 
+    [Azure Portal](https://portal.azure.com) からデプロイすれば、Azure Resource Manager リソースとクラシック リソースとの間の通信を可能にするプロキシ/shim を経由して呼び出しが行われるため正常に実行できます。 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Azure Portal がデプロイ用のストレージ アカウントの提供を要求するのはなぜですか。
 

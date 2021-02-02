@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963351"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805216"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>トークンの有効期間ポリシーを構成する (プレビュー)
 Microsoft ID プラットフォームによって発行されたアクセス トークン、SAML トークン、または ID トークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 詳細については、[構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
@@ -87,7 +87,7 @@ Microsoft ID プラットフォームによって発行されたアクセス ト
 > [!IMPORTANT]
 > 2020 年 5 月時点で、新しいテナントでは更新トークンとセッション トークンの有効期間を構成できません。  既に構成されているテナントでは、2021 年 1 月 30 日まで、更新トークンとセッション トークンのポリシーを変更できます。  2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新とセッション トークンの構成が考慮されなくなります。 廃止後も、アクセス トークン、SAML トークン、ID トークンの有効期間を構成することはできます。
 >
-> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)」をお読みください。
+> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」をお読みください。
 >
 > 廃止後に条件付きアクセスを使用しない場合、更新トークンとセッション トークンは廃止日の[既定の構成](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)に設定され、有効期間を変更することはできなくなります。
 

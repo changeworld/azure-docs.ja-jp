@@ -2,7 +2,7 @@
 title: Azure AD ロールの説明とアクセス許可 - Azure Active Directory | Microsoft Docs
 description: 管理者ロールは、ユーザーの追加、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 search.appverid: MET150
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555731"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879479"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -429,7 +429,7 @@ Windows Defender ATP および EDR | ロールを割り当てる<br>コンピュ
 場所 | できること
 --- | ---
 [Microsoft 365 セキュリティ センター](https://protection.office.com) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティの脅威アラートの表示、調査、対応
-Identity Protection Center | セキュリティ閲覧者ロールのすべてのアクセス許可<br>さらに、パスワードのリセットを除く Identity Protection センターのすべての操作を行う権限
+Azure AD Identity Protection | セキュリティ閲覧者ロールのすべてのアクセス許可<br>さらに、パスワードのリセットとアラート電子メールの構成を除く Identity Protection センターのすべての操作を行う権限。
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | セキュリティ閲覧者ロールのすべてのアクセス許可
 [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティ アラートの表示、調査、対応
 Windows Defender ATP および EDR | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティ アラートの表示、調査、対応
@@ -1971,6 +1971,7 @@ M365 利用状況分析および生産性スコアのテナント レベルの�
 認証管理者 | 認証管理者 | c4e39bd9-1100-46d3-8c65-fb160da0071f
 攻撃のペイロードの作成者 | 攻撃のペイロードの作成者 | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
 攻撃のシミュレーションの管理者 | 攻撃のシミュレーションの管理者 | c430b396-e693-46cc-96f3-db01bf8bb62a
+Azure AD 参加済みデバイスのローカル管理者 | Azure AD 参加済みデバイスのローカル管理者 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Azure DevOps 管理者 | Azure DevOps 管理者 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection 管理者 | Azure Information Protection 管理者 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF キーセット管理者 | B2C IEF キーセット管理者 | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1978,24 +1979,23 @@ B2C IEF ポリシー管理者 | B2C IEF ポリシー管理者 | 3edaf663-341e-44
 課金管理者 | 課金管理者 | b0f54661-2d74-4c50-afa3-1ec803f12efe
 クラウド アプリケーション管理者 | クラウド アプリケーション管理者 | 158c047a-c907-4556-b7ef-446551a6b5f7
 クラウド デバイス管理者 | クラウド デバイス管理者 | 7698a772-787b-4ac8-901f-60d6b08affd2
-会社の管理者 | 全体管理者 | 62e90394-69f5-4237-9190-012177145e10
 コンプライアンス管理者 | コンプライアンス管理者 | 17315797-102d-40b4-93e0-432062caca18
 コンプライアンス データ管理者 | コンプライアンス データ管理者 | e6d1a23a-da11-4be4-9570-befc86d067a7
 条件付きアクセス管理者 | 条件付きアクセス管理者 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-CRM サービス管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f5787879f96a
 カスタマー ロックボックスのアクセス承認者 | カスタマー ロックボックスのアクセス承認者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 デスクトップ Analytics 管理者 | デスクトップ Analytics 管理者 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-デバイス管理者 | デバイス管理者 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 デバイスの参加 | 非推奨 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 デバイス マネージャー | 非推奨 | 2b499bcd-da44-4968-8aec-78e1674fa64d
 デバイス ユーザー | 非推奨 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 ディレクトリ リーダー | ディレクトリ閲覧者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 ディレクトリ同期アカウント | 使用するべきではないため、表示されません | d29b2b05-8046-44ba-8758-1e26182fcf32
 ディレクトリ ライター | ディレクトリ ライター | 9360feb5-f418-4baa-8175-e2a00bac4301
-Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Dynamics 365 管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f5787879f96a
+Exchange 管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID ユーザー フロー管理者 | 外部 ID ユーザー フロー管理者 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID ユーザー フロー属性管理者 | 外部 ID ユーザー フロー属性管理者 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 外部 ID プロバイダー管理者 | 外部 ID プロバイダー管理者 | be2f45a1-457d-42af-a067-6ec1fa63bc45
+グローバル管理者 | 全体管理者 | 62e90394-69f5-4237-9190-012177145e10
 グローバル閲覧者 | グローバル閲覧者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 グループ管理者 | グループ管理者 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 ゲスト招待元 | ゲスト招待元 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2003,10 +2003,9 @@ Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d
 ハイブリッド ID の管理者 | ハイブリッド ID の管理者 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Insights 管理者 | Insights 管理者 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Insights ビジネス リーダー | Insights ビジネス リーダー | 31e939ad-9672-4796-9c2e-873181342d2d
-Intune サービス管理者 | Intune 管理者 | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Intune 管理者 | Intune 管理者 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理者 | Kaizala 管理者 | 74ef975b-6605-40af-a5d2-b9539d836353
 ライセンス管理者 | ライセンス管理者 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Lync サービス管理者 | Skype for Business 管理者 | 75941009-915a-4869-abe7-691bff18279e
 メッセージ センターのプライバシー閲覧者 | メッセージ センターのプライバシー閲覧者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 メッセージ センター閲覧者 | メッセージ センター閲覧者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Modern Commerce ユーザー | Modern Commerce ユーザー | d24aef57-1500-4070-84db-2666f29cf966
@@ -2015,7 +2014,7 @@ Office アプリ管理者 | Office アプリ管理者 | 2b745bdf-0803-4d80-aa65-
 パートナー レベル 1 のサポート | 使用するべきではないため、表示されません | 4ba39ca4-527c-499a-b93d-d9b492c50246
 パートナー レベル 2 のサポート | 使用するべきではないため、表示されません | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 パスワード管理者 | パスワード管理者 | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Power BI サービス管理者 | Power BI 管理者 | a9ea8996-122f-4c74-9520-8edcd192826c
+Power BI 管理者 | Power BI 管理者 | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform 管理者 | Power Platform 管理者 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 プリンター管理者 | プリンター管理者 | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 プリンター技術者 | プリンター技術者 | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
@@ -2028,15 +2027,16 @@ Search エディター | Search エディター | 8835291a-918c-4fd7-a9ce-faa49f
 セキュリティ オペレーター | セキュリティ オペレーター | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 セキュリティ閲覧者 | セキュリティ閲覧者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 サービス サポート管理者 | サービス サポート管理者 | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint サービス管理者 | SharePoint 管理者 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+SharePoint 管理者 | SharePoint 管理者 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Skype for Business 管理者 | Skype for Business 管理者 | 75941009-915a-4869-abe7-691bff18279e
 Teams 通信管理者 | Teams 通信管理者 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信サポート エンジニア | Teams 通信サポート エンジニア | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信サポート スペシャリスト | Teams 通信サポート スペシャリスト | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams デバイス管理者 | Teams デバイス管理者 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Teams サービス管理者 | Teams サービス管理者 | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Teams 管理者 | Teams 管理者 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 使用状況の概要のレポート閲覧者 | 使用状況の概要のレポート閲覧者 | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | 使用できないため、表示されません | a0b1b346-4d3e-4e8b-98f8-753987be4970
-ユーザー アカウント管理者 | ユーザー管理者 | fe930be7-5e62-47db-91af-98c3a49a38b1
+ユーザー管理者 | ユーザー管理者 | fe930be7-5e62-47db-91af-98c3a49a38b1
 デバイスの社内参加 | 非推奨 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>非推奨のロール
@@ -2057,15 +2057,11 @@ PowerShell または MS Graph API によって返されるすべてのロール�
 
 API 名 | Azure portal での名前 | Notes
 -------- | ------------------- | -------------
-会社の管理者 | グローバル管理者 | [わかりやすくするために名前が変更されました](permissions-reference.md#role-template-ids)
-CRM サービス管理者 | Dynamics 365 管理者 | [現在の製品のブランドが反映されています](permissions-reference.md#role-template-ids)
 デバイスの参加 | 非推奨 | [非推奨になったロールのドキュメント](permissions-reference.md#deprecated-roles)
 デバイス マネージャー | 非推奨 | [非推奨になったロールのドキュメント](permissions-reference.md#deprecated-roles)
 デバイス ユーザー | 非推奨 | [非推奨になったロールのドキュメント](permissions-reference.md#deprecated-roles)
 ディレクトリ同期アカウント | 使用するべきではないため、表示されません | [ディレクトリ同期アカウントのドキュメント](permissions-reference.md#directory-synchronization-accounts)
-ディレクトリ ライター | 使用するべきではないため、表示されません | [ディレクトリ ライターのドキュメント](permissions-reference.md#directory-writers)
 ゲスト ユーザー | 使用できないため、表示されません  | NA
-Lync サービス管理者 | Skype for Business 管理者 | [現在の製品のブランドが反映されています](permissions-reference.md#role-template-ids)
 Partner Tier 1 サポート | 使用するべきではないため、表示されません | [Partner Tier 1 サポートのドキュメント](permissions-reference.md#partner-tier1-support)
 Partner Tier 2 サポート | 使用するべきではないため、表示されません | [Partner Tier 2 サポートのドキュメント](permissions-reference.md#partner-tier2-support)
 制限されたゲストユーザー | 使用できないため、表示されません | NA

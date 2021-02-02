@@ -171,7 +171,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -586,7 +586,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -716,6 +716,10 @@
               href: data-migration-guidance-hdfs-azure-storage.md
             - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
               href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Azure Machine Learning
+          items:
+            - name: データ インジェスト
+              href: ../machine-learning/how-to-data-ingest-adf.md?toc=/azure/data-factory/toc.json&bc=/azure/data-factory/breadcrumb/toc.json
         - name: マッピング データ フローを使用した変換
           items:
             - name: 固定幅のテキスト ファイルを処理する

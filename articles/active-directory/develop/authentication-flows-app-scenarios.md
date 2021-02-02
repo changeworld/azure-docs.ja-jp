@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762936"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755790"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
-Microsoft ID プラットフォーム (v2.0) エンドポイントは、さまざまなモダン アプリケーション アーキテクチャのための認証をサポートしています。 アーキテクチャはいずれも、業界標準のプロトコル [OAuth 2.0 and OpenID Connect](active-directory-v2-protocols.md) に基づいています。 アプリケーションでは、[Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用して ID が認証され、保護された API にアクセスするためのトークンが取得されます。
+Microsoft ID プラットフォームは、さまざまなモダン アプリケーション アーキテクチャのための認証をサポートしています。 アーキテクチャはいずれも、業界標準のプロトコル [OAuth 2.0 and OpenID Connect](active-directory-v2-protocols.md) に基づいています。 アプリケーションでは、[Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用して ID が認証され、保護された API にアクセスするためのトークンが取得されます。
 
 この記事では、認証フローと、アプリケーションでそれらを使用するシナリオについて説明します。
 
@@ -79,7 +79,7 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
 
 ## <a name="application-scenarios"></a>アプリケーションのシナリオ
 
-Microsoft ID プラットフォーム エンドポイントは、これらのアプリ アーキテクチャのための認証をサポートしています。
+Microsoft ID プラットフォームでは、これらのアプリ アーキテクチャのための認証がサポートされています。
 
 - シングルページ アプリ
 - Web Apps
@@ -95,7 +95,7 @@ Microsoft ID プラットフォーム エンドポイントは、これらのア
 
 最新の Web アプリの多くは、クライアント側のシングル ページ アプリケーションとして構築されています。 これらのアプリケーションでは、JavaScript またはフレームワーク (Angular、Vue、React など) が使用されています。 このようなアプリケーションは、Web ブラウザー内で稼働します。
 
-シングルページ アプリケーションは、認証の特性の点で、従来からあるサーバー側の Web アプリとは異なります。 Microsoft ID プラットフォームを使うと、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするためのトークンを取得することができます。 Microsoft ID プラットフォームは、JavaScript アプリケーション用の次の 2 つの付与タイプを提供しています。 
+シングルページ アプリケーションは、認証の特性の点で、従来からあるサーバー側の Web アプリとは異なります。 Microsoft ID プラットフォームを使うと、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするためのトークンを取得することができます。 Microsoft ID プラットフォームでは、JavaScript アプリケーション用の 2 つの付与タイプが提供されています。 
 
 | MSAL.js (2.x) | MSAL.js (1.x) |
 |---|---|
@@ -160,7 +160,7 @@ MSAL iOS と MSAL Android では、既定でシステム Web ブラウザーが�
 
 ### <a name="protected-web-api"></a>保護された Web API
 
-Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 保護された Web API は、アクセス トークンを使用して呼び出されます。 トークンは、API のデータの保護と受信要求の認証に役立てられます。 Web API の呼び出し元によって、HTTP 要求の Authorization ヘッダーにアクセス トークンが付加されます。
+Microsoft ID プラットフォームを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 保護された Web API は、アクセス トークンを使用して呼び出されます。 トークンは、API のデータの保護と受信要求の認証に役立てられます。 Web API の呼び出し元によって、HTTP 要求の Authorization ヘッダーにアクセス トークンが付加されます。
 
 ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス トークンを検証する必要があります。 この検証には、ASP.NET JWT ミドルウェアを使用します。 検証は MSAL.NET ではなく、[.NET ライブラリ用の IdentityModel 拡張機能](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)によって行われます。
 

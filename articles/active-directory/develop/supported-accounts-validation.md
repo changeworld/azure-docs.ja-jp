@@ -1,5 +1,6 @@
 ---
-title: サポートされるアカウントの種類別の検証の相違点 - Microsoft ID プラットフォーム | Azure
+title: サポートされているアカウントの種類別の検証の相違点 | Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームにアプリを登録する際にサポートされる、アカウントの種類のさまざまなプロパティの検証の違いについて説明します。
 author: SureshJa
 ms.author: sureshja
@@ -10,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336346"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752974"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>サポートされているアカウントの種類別の検証の相違点 (signInAudience)
 

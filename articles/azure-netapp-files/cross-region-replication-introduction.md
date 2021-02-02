@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937476"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696093"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -37,6 +37,7 @@ Azure NetApp Files ボリューム レプリケーションは、現在、次の
 * 米国中南部および米国中部 
 * 米国中南部および米国東部
 * 米国中南部および米国東部 2 
+* 米国東部および米国東部 2  
 * 米国東部 2 および米国中部 
 * オーストラリア東部およびオーストラリア南東部
 * カナダ中部およびカナダ東部

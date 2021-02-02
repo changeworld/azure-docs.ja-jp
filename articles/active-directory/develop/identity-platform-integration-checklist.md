@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063792"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755259"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -104,7 +104,7 @@ ms.locfileid: "98063792"
 
 v2.0 についての詳細な情報:
 
-* [Microsoft ID プラットフォーム (v2.0 の概要)](v2-overview.md)
+* [Microsoft ID プラットフォーム (概要)](v2-overview.md)
 * [Microsoft ID プラットフォーム プロトコル リファレンス](active-directory-v2-protocols.md)
 * [アクセス トークン リファレンス](access-tokens.md)
 * [ID トークン リファレンス](id-tokens.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032917"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878224"
 ---
 # <a name="using-snat-for-outbound-connections"></a>アウトバウンド接続での SNAT の使用
 

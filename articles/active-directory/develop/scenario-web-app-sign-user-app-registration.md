@@ -1,5 +1,6 @@
 ---
-title: ユーザーがサインインするための Web アプリの登録 - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインさせる Web アプリを登録する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーがサインインするための Web アプリを登録する方法について学習します
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011528"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756273"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 

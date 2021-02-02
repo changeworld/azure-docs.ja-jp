@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/12/2020
+ms.date: 01/22/2020
 ms.author: b-juche
-ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133159"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726682"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -51,6 +51,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
     | `Unix`    | NFS   | NFSv3 モード ビット   | UNIX  | NFS と Windows   |
     | `Ntfs`    | Windows   | NTFS ACL     | NTFS  |NFS と Windows|
 * NFS を使用して NTFS セキュリティ スタイル ボリュームをマウントする UNIX ユーザーは、UNIX `root` の場合は Windows ユーザー `root`、その他のすべてのユーザーの場合は `pcuser` として認証されます。 NFS の使用中、ボリュームをマウントする前に、これらのユーザー アカウントが Active Directory に存在していることを確認してください。 
+* デュアルプロトコル ボリュームを作成するために、サーバー ルート CA 証明書は必要ありません。 これは、LDAP over TLS が有効になっている場合にのみ必要です。
 
 
 ## <a name="create-a-dual-protocol-volume"></a>デュアルプロトコル ボリュームを作成する

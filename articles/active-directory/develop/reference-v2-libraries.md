@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームの認証ライブラリ
-description: Microsoft ID プラットフォーム エンドポイントに使用される互換性のあるクライアント ライブラリとサーバー ミドルウェア ライブラリ、および関連するライブラリ、ソース、サンプル リンク。
+description: Microsoft ID プラットフォームに使用される互換性のあるクライアント ライブラリとサーバー ミドルウェア ライブラリ、および関連するライブラリ、ソース、サンプル リンク。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064571"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756663"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft ID プラットフォームの認証ライブラリ
 
-[Microsoft ID プラットフォーム エンドポイント](../azuread-dev/azure-ad-endpoint-comparison.md)では、業界標準のプロトコルである OAuth 2.0 と OpenID Connect 1.0 がサポートされています。 Microsoft Authentication Library (MSAL) は Microsoft ID プラットフォーム エンドポイントと連動するように設計されています。 OAuth 2.0 と OpenID Connect 1.0 がサポートされているオープンソース ライブラリを使用することもできます。
+[Microsoft ID プラットフォーム](../azuread-dev/azure-ad-endpoint-comparison.md)では、業界標準のプロトコルである OAuth 2.0 と OpenID Connect 1.0 がサポートされています。 Microsoft Authentication Library (MSAL) は Microsoft ID プラットフォームと連動するように設計されています。 OAuth 2.0 と OpenID Connect 1.0 がサポートされているオープンソース ライブラリを使用することもできます。
 
 Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。 たとえば、[Microsoft が従っている][Microsoft-SDL]方法などです。 プロトコル用に手作業でコーディングする場合は、Microsoft SDL などの手法に従う必要があります。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。
 
@@ -30,7 +30,7 @@ Microsoft セキュリティ開発ライフサイクル (Security Development Li
 
 ## <a name="types-of-libraries"></a>ライブラリの種類
 
-Microsoft ID プラットフォーム エンドポイントは、次の 2 種類のライブラリに対応します。
+Microsoft ID プラットフォームは、2 種類のライブラリに対応します。
 
 * **クライアント ライブラリ**:ネイティブ クライアントとサーバーでは、クライアント ライブラリを使用して、Microsoft Graph などのリソースを呼び出すためのアクセス トークンが取得されます。
 * **サーバー ミドルウェア ライブラリ**:Web アプリは、ユーザーのサインインにサーバー ミドルウェア ライブラリを使用します。 Web API は、サーバー ミドルウェア ライブラリを使用して、ネイティブ クライアントまたは他のサーバーによって送信されるトークンを検証します。
@@ -40,9 +40,9 @@ Microsoft ID プラットフォーム エンドポイントは、次の 2 種類
 ライブラリには、次の 2 種類のサポート カテゴリがあります:
 
 * **Microsoft によるサポート**:Microsoft は、これらのライブラリの修正プログラムを提供するほか、これらのライブラリに対する SDL の適正評価を行っています。
-* **互換性**:Microsoft では、基本的なシナリオでこれらのライブラリがテストされ、Microsoft ID プラットフォーム エンドポイントで動作することが確認されています。 Microsoft では、これらのライブラリの修正プログラムは提供されていません。また、Microsoft では、これらのライブラリのレビューも実施されていません。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。
+* **互換性**:Microsoft は、基本的なシナリオでこれらのライブラリをテストしており、これらのライブラリが Microsoft ID プラットフォームで動作することを確認しました。 Microsoft では、これらのライブラリの修正プログラムは提供されていません。また、Microsoft では、これらのライブラリのレビューも実施されていません。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。
 
-Microsoft ID プラットフォーム エンドポイントで動作するライブラリの一覧については、以下のセクションを参照してください。
+Microsoft ID プラットフォームで動作するライブラリの一覧については、以下のセクションを参照してください。
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft がサポートするクライアント ライブラリ
 
@@ -98,16 +98,16 @@ Web アプリケーションと Web API を保護するには、ミドルウェ�
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS、macOS、Android  | [React Native App 認証](https://github.com/FormidableLabs/react-native-app-auth) | [バージョン 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native App 認証](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-標準に準拠しているライブラリの場合は、Microsoft ID プラットフォーム エンドポイントを使用できます。 サポートの入手先を知っておくことが重要です。
+標準に準拠しているライブラリの場合は、Microsoft ID プラットフォームを使用できます。 サポートの入手先を知っておくことが重要です。
 
 * ライブラリ コードの問題と新機能に関する要望については、ライブラリ所有者にお問い合わせください。
 * サービス側のプロトコルの実装の問題と新機能に関する要望については、Microsoft にお問い合わせください。
 * プロトコルに追加機能を求める場合、[機能要求を提出](https://feedback.azure.com/forums/169401-azure-active-directory)してください。
-* Microsoft ID プラットフォーム エンドポイントが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題があれば、[サポート依頼を作成](../../azure-portal/supportability/how-to-create-azure-support-request.md)してください。
+* Microsoft ID プラットフォームが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題が見つかった場合は、[サポート リクエストを作成](../../azure-portal/supportability/how-to-create-azure-support-request.md)してください。
 
 ## <a name="related-content"></a>関連コンテンツ
 
-Microsoft ID プラットフォーム エンドポイントの詳細については、「[Microsoft ID プラットフォームの概要][AAD-App-Model-V2-Overview]」を参照してください。
+Microsoft ID プラットフォームの詳細については、「[Microsoft ID プラットフォームの概要][AAD-App-Model-V2-Overview]」を参照してください。
 
 <!--Image references-->
 

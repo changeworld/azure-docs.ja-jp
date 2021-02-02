@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060641"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755475"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -97,8 +97,9 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
->| system.cpu.usage | system.cpu.usage | Percent | システム全体の最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中にすべての CPU がアイドル状態であったことを意味します。一方、値 1.0 は、最近の観測期間中にすべての CPU が 100% の稼働状態であったことを意味します。|
->| process.cpu.usage | アプリの CPU 使用率 (%) | Percent | Java 仮想マシン プロセスの最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
+>| system.cpu.usage | system.cpu.usage | Percent | システム全体の最近の CPU 使用率 (非推奨のため、使用をお勧めしません)。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中にすべての CPU がアイドル状態であったことを意味します。一方、値 1.0 は、最近の観測期間中にすべての CPU が 100% の稼働状態であったことを意味します。|
+>| process.cpu.usage | アプリの CPU 使用率 (%) | Percent | Java 仮想マシン プロセスの最近の CPU 使用率 (非推奨のため、使用をお勧めしません)。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
+>| AppCpuUsage | アプリの CPU 使用率 (プレビュー) | Percent | このアプリに割り当てられた CPU に対する JVM プロセスの最近の CPU 使用率 (0.0 と 1.0 の間の倍精度浮動小数点型の値)。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
 >| jvm.memory.committed | jvm.memory.committed | バイト | JVM で使用できることが保証されているメモリの量を表します。 JVM がシステムに対してメモリを解放する場合があり、保証されているメモリが初期値よりも少なくなる可能性があります。 保証されているメモリは、常に使用量以上になります。 |
 >| jvm.memory.used | jvm.memory.used | バイト | 現在使用されているメモリの量を表します (バイト単位)。 |
 >| jvm.memory.max | jvm.memory.max | バイト | メモリ管理に使用できるメモリの最大量を表します。 最大量が定義されている場合、使用されるメモリおよび保証されるメモリの量は常にそれ以下になります。 使用されているメモリ量が最大メモリ量以下であっても、保証されているメモリ量よりも使用されるメモリ量が大きくなるように使用されるメモリ量を増やそうとすると、メモリ割り当てが失敗する可能性があります (たとえば、システムの仮想メモリが不足している場合)。 |

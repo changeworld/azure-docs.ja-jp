@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでホストベース
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183296"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787826"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) でのホストベースの暗号化 (プレビュー)
 
@@ -26,34 +26,32 @@ ms.locfileid: "96183296"
 ### <a name="prerequisites"></a>前提条件
 
 - `aks-preview` CLI 拡張機能 v0.4.55 以降がインストールされていることを確認します
-- `Microsoft.Compute` の `EncryptionAtHost` 機能フラグが有効になっていることを確認します。
 - `Microsoft.ContainerService` の `EnableEncryptionAtHostPreview` 機能フラグが有効になっていることを確認します。
 
+VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 サブスクリプション ID と共に encryptionAtHost@microsoft.com に電子メールを送信して、サブスクリプションに対して機能を有効にします。
+
 ### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost` プレビュー機能の登録
+
+> [!IMPORTANT]
+> コンピューティング リソースに対してこの機能を有効にするために、ご自分のサブスクリプション ID と共に encryptionAtHost@microsoft.com に電子メールを送信する必要があります。 これらのリソースに対して、自分でこれを有効にすることはできません。 コンテナー サービスでは自分で有効にすることができます。
 
 ホストベースの暗号化を使用する AKS クラスターを作成するには、サブスクリプションで `EnableEncryptionAtHostPreview` および `EncryptionAtHost` 機能フラグを有効にする必要があります。
 
 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EncryptionAtHost` 機能フラグを登録します。
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、`Microsoft.ContainerService` および `Microsoft.Compute` の各リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 

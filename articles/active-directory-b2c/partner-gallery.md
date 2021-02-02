@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070866"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703209"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -51,6 +51,7 @@ Microsoft は、MFA とパスワードレス認証に関して次の ISV と提�
 |:-------------------------|:--------------|
 | ![Hypr ロゴのスクリーンショット](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) は、パスワードを公開キー暗号化に置き換えることによって、不正行為、フィッシング、資格情報の再利用を排除するパスワードレス認証プロバイダーです。 |
 | ![itsme ロゴのスクリーンショット](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) は、ユーザーがカード リーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに安全にサインインできる、eiDAS (Electronic Identification, Authentication and Trust Services) に準拠したデジタル ID ソリューションです。 |
+|![Keyless ロゴのスクリーンショット。](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) は、顔の生体認証スキャンの形式で認証を行い、不正行為、フィッシング、および資格情報の再利用を排除するパスワードレス認証プロバイダーです。
 | ![Nevis ロゴのスクリーンショット](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) を使用すると、パスワードレス認証が有効になり、強力な顧客認証と PSD2 のトランザクション要件に準拠するために、Nevis Access アプリによる、モバイルファーストの完全にブランド化されたエンド ユーザー エクスペリエンスが提供されます。 |
 | ![Trusona ロゴのスクリーンショット](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 統合を使用すると、安全にサインインし、パスワードレス認証、MFA、およびデジタル ライセンス スキャンを有効にすることができます。 |
 | ![Twilio ロゴのスクリーンショット。](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) は、SMS ワンタイム パスワード (OTP)、時間ベースのワンタイム パスワード (TOTP)、およびプッシュ通知を使用して MFA を有効にしたり、PSD2 の SCA 要件に準拠したりするための複数のソリューションを提供しています。 |
@@ -78,9 +79,9 @@ Microsoft は、セキュリティに関して次の ISV と提携していま�
 
 ## <a name="additional-information"></a>関連情報
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
 
 ## <a name="next-steps"></a>次のステップ
 

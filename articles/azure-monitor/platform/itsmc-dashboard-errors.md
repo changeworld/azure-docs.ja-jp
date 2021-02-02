@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602197"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762762"
 ---
-# <a name="errors-in-the-connector-status"></a>コネクタの状態のエラー
+# <a name="errors-in-the-connector-status-section"></a>[コネクタの状態] セクションのエラー
 
-コネクタの状態のリストで、ITSM コネクタの問題を解決するのに役立つエラーを見つけることができます。
+ダッシュボードのコネクタの状態リスト セクションで、ITSM コネクタの問題を解決するのに役立つエラーを見つけることができます。
 
 ## <a name="status-common-errors"></a>状態の一般的なエラー
 
@@ -27,13 +27,13 @@ ms.locfileid: "98602197"
   * ServiceNow インスタンスにデプロイされたカスタム スクリプトが原因で、インシデントが無視される。
   * "OMS インテグレーター アプリ" のコード自体が ServiceNow 側 (onBefore スクリプトなど) で変更された。
 
-    **解決方法**:データ インポート パスのすべてのカスタム スクリプトまたはコードの変更を無効にします。
+  **解決方法**:すべてのカスタム スクリプトまたはコードの変更を無効にします。
 
 * **Error**: "{"error":{"message":"Operation Failed","detail":"ACL Exception Update Failed due to security constraints"}" ("{"エラー":{"メッセージ":"操作が失敗しました","詳細":"セキュリティ制約が原因で ACL 例外の更新が失敗しました"}")
 
     **原因**:ServiceNow のアクセス許可の構成に誤りがある。
 
-    **解決方法**:すべてのロールが[指定](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)どおりに適切に割り当てられていることを確認します。
+    **解決方法**:すべてのロールが [指定](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)どおりに適切に割り当てられていることを確認します。
 
 * **Error**: "An error occurred while sending the request. (この要求の送信中にエラーが発生しました。)"
 
@@ -58,7 +58,7 @@ ms.locfileid: "98602197"
     **原因**:ITSM Connector が削除された。
 
     **解決方法**:ITSM Connector が削除された一方で、それに関連付けられている ITSM アクション グループがまだ定義されています。 この問題を解決するには、2 つの方法があります。
-  * 該当するアクションを見つけ、無効にするか削除する。
+  * 該当するアクション グループを見つけ、無効にするか削除する。
   * 既存の ITSM Connector を使用するように[アクション グループを再構成する](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
   * [新しい ITSM Connector を作成し](./itsmc-definition.md#create-an-itsm-connection)、[それを使用するようにアクション グループを再構成する](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 

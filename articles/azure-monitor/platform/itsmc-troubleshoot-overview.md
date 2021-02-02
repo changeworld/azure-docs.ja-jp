@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601904"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761983"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Connector での問題のトラブルシューティング
 
@@ -43,24 +43,23 @@ Service Map を使用している場合は、次に示すように、ITSM ソリ
 
 ![Log Analytics の画面を示すスクリーンショット。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>ITSM 接続のトラブルシューティング
-
-- ITSM システムに接続できず、"**接続の保存中にエラーが発生しました**" というメッセージが表示される場合、次の手順を実行してください。
-   - ServiceNow、Cherwell、Provance の接続の場合:  
-     - 各接続のユーザー名、パスワード、クライアント ID、クライアント シークレットが正しく入力されていることを確認します。  
-     - 対応する ITSM 製品で、接続を作成するための十分な特権を持っていることを確認します。  
-   - Service Manager 接続の場合:  
-     - Web アプリが正常にデプロイされていること、およびハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](./itsmc-connections-scsm.md#configure-the-hybrid-connection)の作成に関するドキュメントで説明しているように Web アプリの URL に移動します。  
-
-- Log Analytics アラートが発生しても ITSM 製品内に作業項目が作成されない場合、構成項目が作成されなかったり作業項目にリンクされなかったりする場合、その他の情報が必要な場合は、以下のリソースを参照してください。
-   -  ITSMC: このソリューションには、[接続の概要](itsmc-dashboard.md)、作業項目、コンピューターなどが表示されます。 **[コネクタの状態]** というラベルのタイルを選択します。 そうすると、適切なクエリを使用して **ログ検索** が行われます。 詳細については、`LogType_S` が `ERROR` になっているログ レコードを参照してください。
-   テーブル内のメッセージの詳細については、[こちら](itsmc-dashboard-errors.md)を参照してください。
-   - **[ログ検索]** ページ:クエリ `*ServiceDeskLog_CL*` を使用して、エラーと関連情報を直接表示します。
-
-## <a name="common-symptoms---how-it-should-be-resolved"></a>一般的な症状 - 解決方法
+## <a name="common-symptoms---how-should-it-be-resolved"></a>一般的な症状 - 解決方法
 
 下の一覧に、一般的な症状とその解決方法を記載します。
 
+* **現象**:ITSM システムに接続できず、"**接続の保存中にエラーが発生しました**" というメッセージが表示される場合。
+
+    **原因**: 原因として考えられるのは、次のいずれかです。
+    * 資格情報が間違っています
+     * 十分な特権がありません
+     * Web アプリを正しくデプロイする必要があります
+
+    **解決方法**:
+    * ServiceNow、Cherwell、Provance の接続の場合:
+        * 各接続のユーザー名、パスワード、クライアント ID、クライアント シークレットが正しく入力されていることを確認します。  
+        * ServiceNow の場合:対応する ITSM 製品で、[指定どおり](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)に接続を作成するための十分な特権を持っていることを確認します。
+  * Service Manager 接続の場合:  
+      * Web アプリが正常にデプロイされていること、およびハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](./itsmc-connections-scsm.md#configure-the-hybrid-connection)の作成に関するドキュメントで説明しているように Web アプリの URL に移動します。  
 * **現象**:重複する作業項目が作成される
 
     **原因**: 原因として考えられるのは、次の 2 つのいずれかです。
