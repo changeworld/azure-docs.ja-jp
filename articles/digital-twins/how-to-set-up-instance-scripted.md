@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044307"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664454"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -29,11 +29,13 @@ ms.locfileid: "98044307"
 
 ## <a name="prerequisites-download-the-script"></a>前提条件:スクリプトのダウンロード
 
-このサンプル スクリプトは PowerShell で記述されています。 これは、[**Azure Digital Twins のエンドツーエンド サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをコンピューターにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[ZIP のダウンロード]* ボタンを選択します。
+このサンプル スクリプトは PowerShell で記述されています。 これは、[**Azure Digital Twins のエンドツーエンド サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをマシンにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[コードの参照]* ボタンを選択します。 これにより、サンプル用の GitHub リポジトリに移動します。サンプルは、 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、 *.ZIP* 形式でダウンロードできます。
 
-これにより、サンプル プロジェクトが _**Azure_Digital_Twins_end_to_end_samples.zip**_ としてコンピューターにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリのビュー。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
 
-解凍したフォルダー内で、このデプロイ スクリプトは _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1**_ に配置されています。
+これにより、 *.ZIP* フォルダーが **digital-twins-samples-master.zip** としてお使いのマシンにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
+
+解凍したフォルダー内で、このデプロイ スクリプトは _digital-twins-samples-master > scripts > **deploy.ps1**_ に配置されています。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ ms.locfileid: "98044307"
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] アイコンが選択されていることを示す Cloud Shell ウィンドウ":::
 
-    お使いのコンピューター上の _**deploy.ps1**_ ファイルに移動し (_Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1**_)、[開く] をクリックします。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
+    お使いのマシン上の _**deploy.ps1**_ ファイルに移動し (_digital-twins-samples-master > scripts > **deploy.ps1**_)、[開く] をクリックします。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
 
 4. Cloud Shell ウィンドウで `./deploy.ps1` コマンドを送信することによってスクリプトを実行します。 次のコマンドをコピーできます (Cloud Shell に貼り付けるには、Windows と Linux では **Ctrl+Shift+V**、macOS では **Cmd+Shift+V** を使用できます。 右クリック メニューを使用することもできます)。
 

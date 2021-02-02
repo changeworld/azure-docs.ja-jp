@@ -3,12 +3,12 @@ title: Azure Service Bus の geo ディザスター リカバリー | Microsoft 
 description: フェールオーバーに地理上の地域を使用して、Azure Service Bus のディザスター リカバリーを実行する方法
 ms.topic: article
 ms.date: 01/04/2021
-ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b25fd1befded253c79267b1b016cef979005d01e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862367"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676457"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -48,6 +48,8 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 
 -  *プライマリ/セカンダリ名前空間*: エイリアスに対応する名前空間です。 プライマリ名前空間が "アクティブ" となり、メッセージを受け取ります (既存の名前空間の場合もあれば、新しい名前空間の場合もあります)。 セカンダリ名前空間は "パッシブ" で、メッセージを受け取りません。 両者間のメタデータは同期しているため、どちらでもアプリケーション コードや接続文字列を変更せずにメッセージをシームレスに受信できます。 確実にアクティブな名前空間にだけメッセージを送信するためには、エイリアスを使用する必要があります。 
 
+    > [!IMPORTANT]
+    > geo ディザスター リカバリー機能を使用するには、プライマリ名前空間とセカンダリ名前空間のサブスクリプションとリソース グループが同じである必要があります。
 -  *Metadata*:名前空間に関連付けられているサービスのエンティティ (キュー、トピック、サブスクリプションなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけであることに注意してください。 メッセージはレプリケートされません。
 
 -  *フェールオーバー*:セカンダリの名前空間をアクティブ化するプロセスです。

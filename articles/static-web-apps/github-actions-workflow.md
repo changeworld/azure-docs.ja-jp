@@ -107,7 +107,7 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 | 名前  | 説明 |
 |---------|---------|
 |`build_and_deploy_job` | `on` プロパティに一覧表示されているブランチに対してコミットをプッシュするか pull request を開くと実行されます。 |
-|`close_pull_request_job` | pull request を閉じたときにのみ実行され、これにより、pull request から作成されたステージング環境が削除されます。 |
+|`close_pull_request_job` |  pull request を閉じたときにのみ実行され、これにより、 pull request から作成されたステージング環境が削除されます。 |
 
 ## <a name="steps"></a>手順
 
@@ -118,7 +118,7 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 | ジョブ  | 手順  |
 |---------|---------|
 | `build_and_deploy_job` |<ol><li>Action の環境のリポジトリをチェックアウトします。<li>リポジトリをビルドして Azure Static Web Apps にデプロイします。</ol>|
-| `close_pull_request_job` | <ol><li>pull request が終了したことを Azure Static Web Apps に通知します。</ol>|
+| `close_pull_request_job` | <ol><li> pull request が終了したことを Azure Static Web Apps に通知します。</ol>|
 
 ## <a name="build-and-deploy"></a>ビルドとデプロイ
 

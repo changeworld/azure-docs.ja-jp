@@ -32,9 +32,9 @@ SSISDB の移行は、次の記事で説明されているように、DMS を使
 
 ## <a name="ssis-jobs-to-sql-managed-instance-agent"></a>SSIS ジョブを SQL Database Managed Instance エージェントに移行する
 
-SQL マネージド インスタンスには、オンプレミスの SQL Server エージェントと同様に、ネイティブの第一級のスケジューラがあります。  [Azure SQL Managed Instance エージェント経由で SSIS パッケージを実行](how-to-invoke-ssis-package-managed-instance-agent.md)できます。
+SQL Managed Instance には、オンプレミスの SQL Server エージェントと同様に、ネイティブの第一級のスケジューラがあります。  [Azure SQL Managed Instance エージェント経由で SSIS パッケージを実行](how-to-invoke-ssis-package-managed-instance-agent.md)できます。
 
-SSIS ジョブの移行ツールはまだ使用できないため、スクリプト/手動コピーを使用して、オンプレミスの SQL Server エージェントから SQL Managed Instance エージェントに移行する必要があります。
+SSIS ジョブの移行ツールはまだ使用できないため、スクリプト/手動コピーを使用して、オンプレミスの SQL Server エージェントから SQL Managed Instance  エージェントに移行する必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

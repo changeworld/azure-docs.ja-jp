@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538582"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623756"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>オンプレミス管理コンソールをアクティブにしてセットアップする 
 
@@ -147,13 +147,13 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 ## <a name="set-up-a-site"></a>サイトをセットアップする
 
-既定のエンタープライズ マップでは、複数のレベルの地理的な場所に従って、アセットの全体的なビューが提供されます。
+既定のエンタープライズ マップでは、複数のレベルの地理的な場所に従って、デバイスの全体的なビューが提供されます。
 
-組織の構造とユーザーのアクセス許可が複雑になっている場合は、アセットのビューが必要になることがあります。 このような場合、サイトのセットアップは、標準のサイトまたはゾーンの構造に加えて、グローバルな組織構造によって決定される場合があります。
+組織の構造とユーザーのアクセス許可が複雑になっている場合は、デバイスのビューが必要になることがあります。 このような場合、サイトのセットアップは、標準のサイトまたはゾーンの構造に加えて、グローバルな組織構造によって決定される場合があります。
 
 この環境をサポートするには、組織の部署、リージョン、サイト、ゾーンに基づいたグローバルなビジネスのトポロジを作成する必要があります。 また、アクセス グループを使用して、これらのエンティティに関するユーザー アクセス許可を定義する必要があります。
 
-アクセス グループを使用すると、ユーザーが Defender for IoT プラットフォームのアセットを管理および分析する場所をより良く制御できます。
+アクセス グループを使用すると、ユーザーが Defender for IoT プラットフォームのデバイスを管理および分析する場所をより適切に制御できます。
 
 ### <a name="how-it-works"></a>しくみ
 
@@ -215,7 +215,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 ## <a name="create-enterprise-zones"></a>エンタープライズ ゾーンを作成する
 
-ゾーンは論理エンティティであり、さまざまな特性に応じて、サイト内のアセットをグループに分割することができます。 たとえば、生産ライン、支所、サイト領域、またはアセットの種類のグループを作成できます。 組織に適した特性に基づいてゾーンを定義できます。
+ゾーンは論理エンティティであり、さまざまな特性に応じて、サイト内のデバイスをグループに分割することができます。 たとえば、生産ライン、支所、サイト領域、またはデバイスの種類のグループを作成できます。 組織に適した特性に基づいてゾーンを定義できます。
 
 ゾーンは、サイト構成プロセスの一環として構成します。
 
@@ -223,7 +223,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 次の表には、 **[サイトの管理]** ウィンドウのパラメーターが示されています。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |--|--|
 | 名前 | センサーの名前。 この名前はセンサーからのみ変更できます。 詳細については、Defender for IoT ユーザー ガイドを参照してください。 |
 | IP | センサーの IP アドレス。 |
@@ -231,7 +231,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 | 接続 | センサーの接続状態。 状態は、 **[接続済み]** または **[切断]** です。 |
 | 前回のアップグレード | 前回のアップグレードの日付。 |
 | [アップグレードの進行状況] | 進行状況バーには、次のようなアップグレード プロセスの状態が示されます。<br />- パッケージをアップロードしています<br />- インストールの準備をしています<br />- プロセスを停止しています<br />- データをバックアップしています<br />- スナップショットを作成しています<br />- 構成を更新しています<br />- 依存関係を更新しています<br />- ライブラリを更新しています<br />- データベースにパッチを適用しています<br />- プロセスを開始しています<br />- システムの正常性を検証しています<br />- 検証に成功しました<br />- 成功<br />- 失敗<br />- アップグレードを開始しました<br />- インストールを開始していますogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >アップグレードの詳細については、[Microsoft サポート](https://support.microsoft.com/)を参照してください。 |
-| アセット | センサーによって監視される OT アセットの数。 |
+| デバイス | センサーによって監視される OT デバイスの数。 |
 | 警告 | そのセンサーでのアラートの数。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | ゾーンにセンサーを割り当てできるようにします。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| 切断されたセンサーをサイトから削除できるようにします。 |

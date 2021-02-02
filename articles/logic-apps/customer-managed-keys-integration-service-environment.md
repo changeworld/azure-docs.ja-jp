@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741050"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629676"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
 Azure Logic Apps は Azure Storage を利用して、データを格納し、自動的に[保存データを暗号化](../storage/common/storage-service-encryption.md)します。 この暗号化によってデータが保護され、組織のセキュリティとコンプライアンスの要件を満たすことができます。 既定では、Azure Storage は Microsoft マネージド キーを使用してデータを暗号化します。 Azure Storage の暗号化の仕組みについて詳しくは、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」と「[Azure Data Encryption-at-Rest](../security/fundamentals/encryption-atrest.md)」を参照してください。
 
-ロジック アプリをホストするための[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成し、Azure Storage で使用される暗号化キーをより詳細に制御したい場合は、[Azure Key Vault](../key-vault/general/overview.md) を使用して、独自のキーを設定、使用、管理することができます。 この機能は "Bring Your Own Key" (BYOK) とも呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。
+ロジック アプリをホストするための[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成し、Azure Storage で使用される暗号化キーをより詳細に制御したい場合は、[Azure Key Vault](../key-vault/general/overview.md) を使用して、独自のキーを設定、使用、管理することができます。 この機能は "Bring Your Own Key" (BYOK) と呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。 この機能を使用すると、Azure Storage で [プラットフォーム マネージド キーを使用した二重暗号化または "*インフラストラクチャの暗号化*"](../security/fundamentals/double-encryption.md) が自動的に有効になります。 詳細については、「[インフラストラクチャの暗号化を使用してデータを二重に暗号化する](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)」を参照してください。
 
 このトピックでは、Logic Apps REST API を使って ISE を作成するときに使用する、独自の暗号化キーを設定および指定する方法を示します。 Logic Apps REST API で ISE を作成する一般的な手順については、「[Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する](../logic-apps/create-integration-service-environment-rest-api.md)」を参照してください。
 

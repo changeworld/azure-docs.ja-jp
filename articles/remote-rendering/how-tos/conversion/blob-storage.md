@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206545"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762771"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>モデルの変換に Azure Blob Storage を使用する
 
-[モデルの変換](model-conversion.md)サービスでは、入力データを取得して出力データを格納できるように、Azure BLOB ストレージへのアクセスが必要です。 この記事では、それを行う最も一般的な手順について説明します。
+[モデルの変換](model-conversion.md)サービスでは、入力データを取得して出力データを格納できるように、Azure Blob Storage へのアクセスが必要です。 この記事では、それを行う最も一般的な手順について説明します。
 
 ## <a name="prepare-azure-storage-accounts"></a>Azure Storage アカウントを準備する
 

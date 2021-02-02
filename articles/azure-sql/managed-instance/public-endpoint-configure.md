@@ -41,17 +41,17 @@ ms.locfileid: "92788283"
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Azure portal でマネージド インスタンスのパブリック エンドポイントを有効にする
 
 1. Azure portal (<https://portal.azure.com/.>) を起動します。
-1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL マネージド インスタンス** を選択します。
+1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL Managed Instance** を選択します。
 1. **[セキュリティ]** の設定で、 **[仮想ネットワーク]** タブを選択します。
 1. 仮想ネットワークの構成ページで **[有効]** を選択し、 **[保存]** アイコンを選択して構成を更新します。
 
-![パブリック エンドポイントが有効になっている SQL マネージド インスタンスの仮想ネットワーク ページを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-config.png)
+![パブリック エンドポイントが有効になっている SQL Managed Instance の仮想ネットワーク ページを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>PowerShell を使用してマネージド インスタンスのパブリック エンドポイントを有効にする
 
 ### <a name="enable-public-endpoint"></a>パブリック エンドポイントの有効化
 
-次の PowerShell コマンドを実行します。 **subscription-id** を実際のサブスクリプション ID に置き換えます。 また、 **rg-name** を実際のマネージド インスタンスのリソース グループに置き換え、 **mi-name** を実際のマネージド インスタンスの名前に置き換えます。
+次の PowerShell コマンドを実行します。 **subscription-id** を実際のサブスクリプション ID に置き換えます。 また、**rg-name** を実際のマネージド インスタンスのリソース グループに置き換え、**mi-name** を実際のマネージド インスタンスの名前に置き換えます。
 
 ```powershell
 Install-Module -Name Az
@@ -82,7 +82,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>ネットワーク セキュリティ グループでパブリック エンドポイント トラフィックを許可する
 
-1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、 **SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
+1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、**SQL Managed Instance** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
 
     ![仮想ネットワークとサブネットの値を確認できる仮想ネットワーク構成ページを示すスクリーンショット](./media/public-endpoint-configure/mi-overview.png)
 
@@ -92,7 +92,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. そのマネージド インスタンスが含まれているリソース グループに戻ります。 前に書き留めておいた **ネットワーク セキュリティ グループ** の名前が表示されるはずです。 名前を選択して、ネットワーク セキュリティ グループの構成ページに移動します。
 
-1. **[受信セキュリティ規則]** タブを選択し、 **deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で **追加** します。 </br> </br>
+1. **[受信セキュリティ規則]** タブを選択し、**deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で **追加** します。 </br> </br>
 
     |設定  |推奨値  |説明  |
     |---------|---------|---------|
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>マネージド インスタンスのパブリック エンドポイントの接続文字列を取得する
 
 1. パブリック エンドポイントに対して有効になっている マネージド インスタンスの構成ページに移動します。 **[設定]** 構成の下にある **[接続文字列]** タブを選択します。
-1. パブリック エンドポイントのホスト名が <mi_name>. **public** .<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
+1. パブリック エンドポイントのホスト名が <mi_name>.**public**.<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
 
     ![パブリック エンドポイントとプライベート エンドポイントの接続文字列を示すスクリーンショット。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

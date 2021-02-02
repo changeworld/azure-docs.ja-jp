@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 342d0aabe2222393f33aa4ce93646da9f29cf1fb
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926463"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879967"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory を使用して Xero からデータをコピーする
 
@@ -35,11 +35,8 @@ Xero から、サポートされている任意のシンク データ ストア�
 
 具体的には、この Xero コネクタは以下をサポートします。
 
-- Xero [プライベート アプリケーション](https://developer.xero.com/documentation/getting-started/getting-started-guide) (パブリック アプリケーションは非サポート)。
+- OAuth 2.0 および OAuth 1.0 認証。 OAuth 1.0 の場合、コネクタでは Xero の[プライベート アプリケーション](https://developer.xero.com/documentation/getting-started/getting-started-guide)はサポートされますが、パブリック アプリケーションはサポートされていません。
 - "Reports" を除くすべて Xero テーブル (API エンドポイント)。
-- OAuth 1.0 および OAuth 2.0 認証。
-
-Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -53,15 +50,15 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Xero** | はい |
+| type | type プロパティは、次のように設定する必要があります:**Xero** | はい |
 | connectionProperties | Xero への接続方法を定義するプロパティ グループ。 | はい |
 | **_`connectionProperties` の下:_* _ | | |
 | host | Xero サーバーのエンドポイント (`api.xero.com`)。  | はい |
 | authenticationType | 使用できる値は `OAuth_2.0` と `OAuth_1.0` です。 | はい |
-| consumerKey | Xero アプリケーションに関連付けられているコンシューマー キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー (「[Create a public/private key pair (公開/秘密キー ペアの作成)](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)」を参照してください)。 `openssl genrsa -out privatekey.pem 512` を使用した _ *numbits が 512 である privatekey.pem の生成* * は、1024 ではサポートされないことに注意してください。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| consumerKey | OAuth 2.0 の場合は、Xero アプリケーションの *クライアント ID* を指定します。<br>OAuth 1.0 の場合は、Xero アプリケーションに関連付けられているコンシューマー キーを指定します。<br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| privateKey | OAuth 2.0 の場合は、Xero アプリケーションの **クライアント シークレット** を指定します。<br>OAuth 1.0 の場合は、Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キーを指定します ([公開/秘密キー ペアの作成](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)に関するページを参照)。 `openssl genrsa -out privatekey.pem 512` を使用し、numbits に 512 を指定して、**privatekey.pem を生成します。** 1024 はサポートされていません。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/><br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenantId | Xero アプリケーションに関連付けられているテナント ID。 OAuth 2.0 認証に適用されます。<br>[アクセスを許可されているテナントの確認](https://developer.xero.com/documentation/oauth2/auth-flow)セクションで、テナント ID の取得方法を確認してください。 | OAuth 2.0 認証の場合、はい |
-| refreshToken | OAuth 2.0 認証に適用されます。<br/>OAuth 2.0 更新トークンが Xero アプリケーションに関連付けられ、アクセス トークンを更新するために使用されます。アクセス トークンは 30 分後に有効期限が切れます。 Xero 承認フローのしくみと更新トークンの取得方法については、[こちらの記事](https://developer.xero.com/documentation/oauth2/auth-flow)を参照してください。 更新トークンを取得するには、[offline_access スコープ](https://developer.xero.com/documentation/oauth2/scopes)を要求する必要があります。 <br/>**既知の制限** :Xero では、更新トークンは、アクセス トークンを更新するために使用された後でリセットされることに注意してください。 運用ワークロードの場合、各コピー アクティビティを実行する前に、ADF で使用するための有効な更新トークンを設定する必要があります。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | OAuth 2.0 認証の場合、はい |
+| refreshToken | OAuth 2.0 認証に適用されます。<br/>OAuth 2.0 更新トークンが Xero アプリケーションに関連付けられ、アクセス トークンを更新するために使用されます。アクセス トークンは 30 分後に有効期限が切れます。 Xero 承認フローのしくみと更新トークンの取得方法については、[こちらの記事](https://developer.xero.com/documentation/oauth2/auth-flow)を参照してください。 更新トークンを取得するには、[offline_access スコープ](https://developer.xero.com/documentation/oauth2/scopes)を要求する必要があります。 <br/>**既知の制限**:Xero では、更新トークンは、アクセス トークンを更新するために使用された後でリセットされることに注意してください。 運用ワークロードの場合、各コピー アクティビティを実行する前に、ADF で使用するための有効な更新トークンを設定する必要があります。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | OAuth 2.0 認証の場合、はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
 | useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
@@ -79,11 +76,11 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
                 "authenticationType":"OAuth_2.0", 
                 "consumerKey": {
                     "type": "SecureString",
-                    "value": "<consumer key>"
+                    "value": "<client ID>"
                 },
                 "privateKey": {
                     "type": "SecureString",
-                    "value": "<private key>"
+                    "value": "<client secret>"
                 },
                 "tenantId": "<tenant ID>", 
                 "refreshToken": {
@@ -143,7 +140,7 @@ Xero からデータをコピーするには、データセットの type プロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **XeroObject** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**XeroObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -173,7 +170,7 @@ Xero からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **XeroSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**XeroSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Contacts"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

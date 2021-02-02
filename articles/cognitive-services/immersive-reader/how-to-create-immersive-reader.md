@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2503355a24a7452ca1ff9886a80f2956897889c4
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368731"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630397"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -143,21 +143,27 @@ ms.locfileid: "94368731"
     }
     ```
 
-1. 必要に応じてパラメーターを指定して、関数 `Create-ImmersiveReaderResource` を実行します。
+1. 関数 `Create-ImmersiveReaderResource` を実行します。以下の '<PARAMETER_VALUES>' プレースホルダーには、必要に応じて独自の値を指定します。
 
     ```azurepowershell-interactive
+    Create-ImmersiveReaderResource -SubscriptionName '<SUBSCRIPTION_NAME>' -ResourceName '<RESOURCE_NAME>' -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' -ResourceSKU '<RESOURCE_SKU>' -ResourceLocation '<RESOURCE_LOCATION>' -ResourceGroupName '<RESOURCE_GROUP_NAME>' -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>' -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+    ```
+
+    コマンド全体は次のようになります。 こちらでは、わかりやすくするためにパラメーターごとに改行しているので、コマンド全体を確認できます。 このコマンドをこのままコピーしたり、使用したりしないでください。 上記のコマンドをコピーし、独自の値を指定して使用してください。 この例では、上の '<PARAMETER_VALUES>' に対してダミーの値が使用されています。 これらの値に対して独自の名前を使用するので、実際のものはこれとは異なります。
+
+    ```
     Create-ImmersiveReaderResource
-      -SubscriptionName '<SUBSCRIPTION_NAME>' `
-      -ResourceName '<RESOURCE_NAME>' `
-      -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' `
-      -ResourceSKU '<RESOURCE_SKU>' `
-      -ResourceLocation '<RESOURCE_LOCATION>' `
-      -ResourceGroupName '<RESOURCE_GROUP_NAME>' `
-      -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' `
-      -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
-      -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
-      -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
-      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+        -SubscriptionName 'MyOrganizationSubscriptionName'
+        -ResourceName 'MyOrganizationImmersiveReader'
+        -ResourceSubdomain 'MyOrganizationImmersiveReader'
+        -ResourceSKU 'S0'
+        -ResourceLocation 'westus2'
+        -ResourceGroupName 'MyResourceGroupName'
+        -ResourceGroupLocation 'westus2'
+        -AADAppDisplayName 'MyOrganizationImmersiveReaderAADApp'
+        -AADAppIdentifierUri 'https://MyOrganizationImmersiveReaderAADApp'
+        -AADAppClientSecret 'SomeStrongPassword'
+        -AADAppClientSecretExpiration '2021-12-31'
     ```
 
     | パラメーター | 説明 |
@@ -165,7 +171,7 @@ ms.locfileid: "94368731"
     | SubscriptionName |イマーシブ リーダー リソースで使用する Azure サブスクリプションの名前。 リソースを作成するには、サブスクリプションが必要です。 |
     | ResourceName |  英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。|
     | ResourceSubdomain |イマーシブ リーダー リソースには、カスタム サブドメインが必要です。 サブドメインは、イマーシブ リーダー サービスを呼び出してリーダーを起動する際に、SDK によって使用されます。 サブドメインはグローバルに一意である必要があります。 サブドメインには英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
-    | ResourceSKU |オプション: `S0`。 使用可能な各 SKU の詳細については、[Cognitive Services の価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)を参照してください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
+    | ResourceSKU |オプション:`S0` (Standard レベル) または `S1` (教育/非営利組織)。 使用可能な各 SKU の詳細については、[Cognitive Services の価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)を参照してください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceLocation |オプションは、`eastus`、`eastus2`、`southcentralus`、`westus`、`westus2`、`australiaeast`、`southeastasia`、`centralindia`、`japaneast`、`northeurope`、`uksouth`、`westeurope` です。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceGroupName |リソースは、サブスクリプション内のリソース グループに作成されます。 既存のリソース グループの名前を指定します。 リソース グループがまだ存在しない場合は、この名前を使用して新しく作成されます。 |
     | ResourceGroupLocation |リソース グループが存在しない場合は、グループの作成先の場所を指定する必要があります。 場所の一覧を表示するには、`az account list-locations` を実行します。 返された結果の *name* プロパティ (スペースなし) を使用します。 リソース グループが既に存在する場合、このパラメーターは省略可能です。 |

@@ -49,7 +49,7 @@ ms.locfileid: "97590139"
 
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs への継続的データ エクスポートをセットアップする
-最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure イベント ハブへの継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](../core/howto-export-data.md)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
+最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure Event Hub への継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](../core/howto-export-data.md)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
 
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI ストリーミング データセットを作成する

@@ -1,6 +1,6 @@
 ---
 title: 気象パートナーの統合
-description: 気象データ プロバイダーが FarmBeats と統合する方法について説明します。
+description: 気象データ プロバイダーが FarmBeats と統合する方法についてDescriptionします。
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
@@ -117,8 +117,8 @@ Docker プログラムには、ブートストラップとジョブという 2 �
 
 ブートストラップ コンポーネントは、顧客が FarmBeats で Docker の登録を開始したときに実行される必要があります。 次の引数 (`arg1` と `arg2`) がプログラムに渡されます。
 
-- **FarmBeats API エンドポイント** : API 要求用の FarmBeats API エンドポイント。 このエンドポイントにより、FarmBeats のデプロイに対する API 呼び出しが行われます。
-- **Azure Functions URL** : 独自のエンドポイント。 この URL により、FarmBeats API に対するアクセス トークンが提供されます。 この URL で `GET` を呼び出して、アクセス トークンを取得できます。
+- **FarmBeats API エンドポイント**: API 要求用の FarmBeats API エンドポイント。 このエンドポイントにより、FarmBeats のデプロイに対する API 呼び出しが行われます。
+- **Azure Functions URL**: 独自のエンドポイント。 この URL により、FarmBeats API に対するアクセス トークンが提供されます。 この URL で `GET` を呼び出して、アクセス トークンを取得できます。
 
 ブートストラップにより、ユーザーがジョブを実行して気象データを取得するために必要なメタデータが作成されます。 詳細については、[リファレンス実装](https://github.com/azurefarmbeats/noaa_docker)を参照してください。 
 
@@ -127,8 +127,8 @@ Docker プログラムには、ブートストラップとジョブという 2 �
  > [!NOTE]
  > [リファレンス実装](https://github.com/azurefarmbeats/noaa_docker)で説明されているように *bootstrap_manifest.json* ファイルを更新する場合は、次のメタデータを作成する必要はありません。 必要なメタデータは、ブートストラップ プログラムによりマニフェスト ファイルを使用して作成されます。
 
-- /**WeatherDataModel** : WeatherDataModel メタデータは、気象データを表します。 これは、ソースによって提供されるデータ セットに対応します。 たとえば、DailyForecastSimpleModel により、平均温度、湿度、降水の情報が 1 日に 1 回提供される場合があります。 これに対し、DailyForecastAdvancedModel からは、1 時間ごとの細分性でさらに多くの情報が提供される場合があります。 任意の数の気象データ モデルを作成できます。
-- /**JobType** : FarmBeats には、拡張可能なジョブ管理システムが用意されています。 気象データ プロバイダーは、さまざまなデータセットと API (たとえば、GetDailyForecasts) を使用します。 これらのデータ セットと API は、JobType を使用して FarmBeats で有効にすることができます。 ジョブの種類が作成された後、顧客は、その種類のジョブをトリガーして、自分がいる場所や気になるファームなどの気象データを取得できます。 詳細については、[FarmBeats の Swagger](https://aka.ms/farmbeatsswagger) で JobType API と Job API を参照してください。
+- /**WeatherDataModel**: WeatherDataModel メタデータは、気象データを表します。 これは、ソースによって提供されるデータ セットに対応します。 たとえば、DailyForecastSimpleModel により、平均温度、湿度、降水の情報が 1 日に 1 回提供される場合があります。 これに対し、DailyForecastAdvancedModel からは、1 時間ごとの細分性でさらに多くの情報が提供される場合があります。 任意の数の気象データ モデルを作成できます。
+- /**JobType**: FarmBeats には、拡張可能なジョブ管理システムが用意されています。 気象データ プロバイダーは、さまざまなデータセットと API (たとえば、GetDailyForecasts) を使用します。 これらのデータ セットと API は、JobType を使用して FarmBeats で有効にすることができます。 ジョブの種類が作成された後、顧客は、その種類のジョブをトリガーして、自分がいる場所や気になるファームなどの気象データを取得できます。 詳細については、[FarmBeats の Swagger](https://aka.ms/farmbeatsswagger) で JobType API と Job API を参照してください。
 
 ### <a name="jobs"></a>ジョブ
 
@@ -142,8 +142,8 @@ Docker プログラムには、ブートストラップとジョブという 2 �
 
 WeatherDataModel | [説明] |
 --- | ---
-名前  | 気象データ モデルの名前。 |
-説明  | モデルについてのわかりやすい説明。 |
+Name  | 気象データ モデルの名前。 |
+Description  | モデルについてのわかりやすい説明。 |
 Properties  | データ プロバイダーによって定義される追加プロパティ。 |
 weatherMeasures > Name  | 気象メジャーの名前。 たとえば、humidity_max。 |
 weatherMeasures > DataType  | Double または Enum。 Enum の場合は、measureEnumDefinition が必要です。 |
@@ -156,7 +156,7 @@ weatherMeasures > Description  | メジャーについてのわかりやすい�
 
 JobType | 説明 |
 --- | ---
-名前  | ジョブの名前。 たとえば、Get_Daily_Forecast。 顧客は、このジョブを実行して気象データを取得します。|
+Name  | ジョブの名前。 たとえば、Get_Daily_Forecast。 顧客は、このジョブを実行して気象データを取得します。|
 pipelineDetails > parameters > name  | パラメーターの名前。 |
 pipelineDetails > parameters > type | パラメーターの型。 指定できる値は、String、Int、Float、Bool、Array です。 |
 pipelineDetails > parameters > isRequired | パラメーターのブール値。 パラメーターが必須の場合、値は true です。 それ以外の場合、値は false です。 既定値は true です。 |
@@ -169,7 +169,7 @@ WeatherDataLocation | 説明 |
 --- | ---
 weatherDataModelId  | ブートストラップ プロセスの間に作成された対応する WeatherDataModel の ID。|
 location  | 緯度、経度、高度。 |
-名前 | オブジェクト名。 |
+Name | オブジェクト名。 |
 説明 | 気象データの場所の説明。 |
 farmId | (省略可能) ファームの ID。 顧客は、この ID をジョブ パラメーターの一部として指定します。 |
 Properties  | 製造元から提供されるその他のプロパティ。
@@ -190,7 +190,7 @@ Connector Docker コンポーネントにより、メタデータの更新を送
 
 ## <a name="weather-data-telemetry-specifications"></a>気象データ (テレメトリ) の仕様
 
-気象データは、処理のために Azure イベント ハブにプッシュされる正規のメッセージにマップされます。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 
+気象データは、処理のために Azure Event Hub にプッシュされる正規のメッセージにマップされます。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 
 
 気象データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 詳細については、[イベント ハブへのテレメトリの送信](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)に関するページを参照してください。
 
