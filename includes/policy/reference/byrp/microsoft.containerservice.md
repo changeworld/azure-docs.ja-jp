@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a8499b2695f32917619c94defc06738de925db04
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 58789b0e132a850165b67789aef95340ec3dcc7f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805516"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99214570"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Kubernetes Services では、許可する IP の範囲を定義する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Kubernetes Service Management API へのアクセスは、特定の範囲の IP にのみ API アクセスに許可して制限する必要があります。 許可されたネットワークのアプリケーションのみがクラスターにアクセスできるよう、許可する IP 範囲にアクセスを制限することをお勧めします。 |Audit、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
-|[Kubernetes Service (AKS) 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Kubernetes Service (AKS) 用の Azure Policy アドオンを使用すると、Open Policy Agent (OPA) に対する受付制御 Webhook である Gatekeeper V3 を拡張して、整合性のある一元的な方法で、大規模な強制と保護をお使いのクラスターに適用できます。 |Audit、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
+|[Kubernetes Service (AKS) 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Kubernetes Service (AKS) 用の Azure Policy アドオンを使用すると、Open Policy Agent (OPA) に対する受付制御 Webhook である Gatekeeper V3 を拡張して、整合性のある一元的な方法で、大規模な強制と保護をお使いのクラスターに適用できます。 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Azure Kubernetes Service クラスターのオペレーティング システムとデータ ディスクは両方とも、カスタマー マネージド キーで暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |カスタマー マネージド キーを使用して OS とデータ ディスクを暗号化することで、キー管理をより細かく制御し、柔軟性を高めることができます。 これは、さまざまな規制や業界のコンプライアンス標準での一般的な要件です。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |
 |[Azure Policy アドオンを Azure Kubernetes Service クラスターにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Azure Policy アドオンを使用して、Azure Kubernetes Service (AKS) クラスターのコンプライアンスの状態を管理およびレポートします。 詳細については、[https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc) を参照してください。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[GitOps を Kubernetes クラスターにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |このポリシーでは、Kubernetes クラスターに "sourceControlConfiguration" をデプロイして、定義された Git リポジトリから信頼できる情報のソースをクラスターが確実に取得できるようにします。 このポリシーの使用方法については、[https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) を参照してください。 |DeployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
