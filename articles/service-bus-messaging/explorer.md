@@ -3,12 +3,12 @@ title: Azure Service Bus Explorer を使用して Service Bus に対してデー
 description: この記事では、ポータルベースの Azure Service Bus Explorer を使用して Azure Service Bus データにアクセスする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684843"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092219"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer を使用して Service Bus に対してデータ操作を実行する (プレビュー)
 
@@ -37,9 +37,9 @@ Service Bus Explorer ツールを使用するには、次のタスクを実行�
     - [クイックスタート - キューを作成する](service-bus-quickstart-portal.md)
     - [クイックスタート - トピックを作成する](service-bus-quickstart-topics-subscriptions-portal.md)
 - 名前空間で次のいずれかのロールのメンバーであることを確認します。 
-    - [Service Bus データ所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
-    - [Contributor](../role-based-access-control/built-in-roles.md#contributor) 
-    - [所有者](/role-based-access-control/built-in-roles.md#owner)
+    - [Service Bus データ所有者](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
+    - [Contributor](/azure/role-based-access-control/built-in-roles#contributor) 
+    - [所有者](/azure/role-based-access-control/built-in-roles#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Service Bus Explorer の使用
