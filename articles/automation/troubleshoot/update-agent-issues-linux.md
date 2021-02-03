@@ -2,19 +2,15 @@
 title: Azure Automation での Linux Update エージェントに関する問題のトラブルシューティング
 description: この記事では、Update Management で Linux Windows Update エージェントの問題を解決する方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/25/2021
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: carmonm
-ms.openlocfilehash: a7ac5e8324d9979b17ee93d16b3e007fe7916a8a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2fd92d79a3322b17f528194b9d39c26bf4c93b0c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762625"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896259"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Update エージェントに関する問題のトラブルシューティング
 

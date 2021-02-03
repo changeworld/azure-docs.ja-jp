@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757544"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917834"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -30,9 +30,6 @@ Azure Monitor により、Microsoft マネージド キー (MMK) を使用して
 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
 
 Log Analytics 専用クラスターには、1000 GB/日以上の容量予約[価格モデル](../log-query/logs-dedicated-clusters.md#cluster-pricing-model)を使用します。
-
-> [!IMPORTANT]
-> 一時的な容量の制約があるため、クラスターを作成する前に事前登録する必要があります。 Microsoft に連絡するか、サポート要求を開いてサブスクリプション ID を登録してください。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Monitor でのカスタマー マネージド キーの動作
 
@@ -68,7 +65,6 @@ Azure Monitor は、マネージド ID を使用して Azure Key Vault にアク
 
 ### <a name="customer-managed-key-provisioning-steps"></a>カスタマー マネージド キーのプロビジョニング手順
 
-1. サブスクリプションを登録してクラスターを作成できるようにする
 1. Azure Key Vault の作成とキーの格納
 1. クラスターの作成
 1. Key Vault へのアクセス許可の付与
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>サブスクリプションを許可する
-
-Microsoft への連絡先を使用するか、Log Analytics でサポート リクエストを開いて、サブスクリプション ID を伝えます。
 
 ## <a name="storing-encryption-key-kek"></a>暗号化キー (KEK) の格納
 
@@ -182,7 +174,7 @@ Azure Key Vault で現在のバージョンのキーを選択して、キー識�
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -303,7 +295,7 @@ Bring Your Own Storage (BYOS) を使用して、それをワークスペース�
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -347,7 +339,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
