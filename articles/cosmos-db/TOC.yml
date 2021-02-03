@@ -966,8 +966,6 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
               href: cassandra-migrate-cosmos-db-databricks.md
-            - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
-              href: cassandra-migrate-cosmos-db-databricks.md
             - name: 移行 - Apache Kafka を使用して PostgreSQL から Cassandra API へ
               href: postgres-migrate-cosmos-db-kafka.md
         - name: Change Feed
