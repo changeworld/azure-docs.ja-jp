@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 914581e6610e027d9440495f56f4facfb1fb9a9a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 29eafcae9442215e23e80b946fc35314e23100d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349437"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937239"
 ---
 # <a name="teams-interoperability"></a>Teams の相互運用性
 
@@ -40,7 +40,7 @@ Communication Services ユーザーが Teams の会議に参加すると、通�
 予定されている Teams の会議に Communication Services ユーザーが参加できるのは、匿名での参加が[会議の設定](/microsoftteams/meeting-settings-in-teams)で有効にされている場合に限られます。
 
 ## <a name="teams-in-government-clouds-gcc"></a>Government Clouds (GCC) のチーム
-現時点では、Azure Communication Services の相互運用性は、[Microsoft 365 government clouds (GCC)](https://docs.microsoft.com/MicrosoftTeams/plan-for-government-gcc) を使用するチーム デプロイに対して許可されていません。 
+現時点では、Azure Communication Services の相互運用性は、[Microsoft 365 government clouds (GCC)](/MicrosoftTeams/plan-for-government-gcc) を使用するチーム デプロイに対して許可されていません。 
 
 ## <a name="next-steps"></a>次の手順
 
