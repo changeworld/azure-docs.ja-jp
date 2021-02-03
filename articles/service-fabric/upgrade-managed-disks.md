@@ -3,12 +3,12 @@ title: Azure Managed Disks を使用するためにクラスター ノードを�
 description: クラスターのダウンタイムをほとんどまたはまったく発生させずに、Azure Managed Disks を使用するように既存の Service Fabric クラスターをアップグレードする方法を次に示します。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c374c4536309a13abcf8c882b041a9c5357878e5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316155"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090656"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure Managed Disks を使用するためにクラスター ノードをアップグレードする
 
@@ -30,11 +30,11 @@ ms.locfileid: "92316155"
 > [!CAUTION]
 > この手順では、クラスター DNS への依存関係がある場合 ([Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) にアクセスする場合など) にのみ、停止が発生します。 アーキテクチャ上の[フロントエンド サービスのベスト プラクティス](/azure/architecture/microservices/design/gateway)は、ノードの種類の前に何らかの種類の[ロード バランサー](/azure/architecture/guide/technology-choices/load-balancing-overview)を使用して、停止を発生させずにノード交換を可能にすることです。
 
-アップグレード シナリオを完了するために使用する Azure Resource Manager の [テンプレートとコマンドレット](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)を次に示します。 テンプレートの変更については、次の「[プライマリ ノードの種類のアップグレードされたスケール セットをデプロイする](#deploy-an-upgraded-scale-set-for-the-primary-node-type)」を参照してください。
+アップグレード シナリオを完了するために使用する Azure Resource Manager の [テンプレートとコマンドレット](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)を次に示します。 テンプレートの変更については、次の「[プライマリ ノードの種類のアップグレードされたスケール セットをデプロイする](#deploy-an-upgraded-scale-set-for-the-primary-node-type)」を参照してください。
 
 ## <a name="set-up-the-test-cluster"></a>テスト クラスターをセットアップする
 
-最初の Service Fabric テスト クラスターをセットアップしてみましょう。 まず、このシナリオを実行するために使用する Azure Resource Manager サンプル テンプレートを[ダウンロード](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)します。
+最初の Service Fabric テスト クラスターをセットアップしてみましょう。 まず、このシナリオを実行するために使用する Azure Resource Manager サンプル テンプレートを[ダウンロード](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)します。
 
 次に、Azure アカウントにサインインします。
 
@@ -156,9 +156,9 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>プライマリ ノードの種類のアップグレードされたスケール セットをデプロイする
 
-ノードの種類をアップグレードするか、*垂直方向にスケーリングする*には、そのノードの種類の仮想マシン スケール セットのコピーをデプロイする必要があります。これは、目的のアップグレード/変更とその独自の個別のサブネットと受信 NAT アドレス プールを含むことを除いて、元のスケール セット (同じ `nodeTypeRef`、`subnet`、`loadBalancerBackendAddressPools` への参照を含む) と同じです。 プライマリ ノードの種類をアップグレードするので、元のスケール セットと同様に、新しいスケール セットがプライマリ (`isPrimary: true`) としてマークされます。 (プライマリ以外のノードの種類のアップグレードの場合は、単にこれを省略してください)。
+ノードの種類をアップグレードするか、*垂直方向にスケーリングする* には、そのノードの種類の仮想マシン スケール セットのコピーをデプロイする必要があります。これは、目的のアップグレード/変更とその独自の個別のサブネットと受信 NAT アドレス プールを含むことを除いて、元のスケール セット (同じ `nodeTypeRef`、`subnet`、`loadBalancerBackendAddressPools` への参照を含む) と同じです。 プライマリ ノードの種類をアップグレードするので、元のスケール セットと同様に、新しいスケール セットがプライマリ (`isPrimary: true`) としてマークされます。 (プライマリ以外のノードの種類のアップグレードの場合は、単にこれを省略してください)。
 
-便宜上、*Upgrade-1NodeType-2ScaleSets-ManagedDisks* [ テンプレート](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json)および[パラメーター](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) ファイルで、必要な変更が既に行われています。
+便宜上、*Upgrade-1NodeType-2ScaleSets-ManagedDisks* [ テンプレート](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json)および [パラメーター](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) ファイルで、必要な変更が既に行われています。
 
 以下のセクションでは、テンプレートの変更点について詳しく説明します。 必要に応じて、説明をスキップし、[アップグレード手順の次のステップ](#obtain-your-key-vault-references)に進んでもかまいません。
 
@@ -320,7 +320,7 @@ foreach($name in $nodeNames){
 }
 ```
 
-Service Fabric Explorer を使用して、新しいスケール セットへのシード ノードの移行と、元のスケール セットのノードの*無効にしています*から*無効*状態への進行状況を監視します。
+Service Fabric Explorer を使用して、新しいスケール セットへのシード ノードの移行と、元のスケール セットのノードの *無効にしています* から *無効* 状態への進行状況を監視します。
 
 ![無効なノードの状態を示す Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
 
@@ -343,7 +343,7 @@ Remove-AzVmss `
 Write-Host "Removed scale set $scaleSetName"
 ```
 
-Service Fabric Explorer では、削除されたノード (つまり、*クラスターの正常性状態*) が *エラー*状態で表示されるようになります。
+Service Fabric Explorer では、削除されたノード (つまり、*クラスターの正常性状態*) が *エラー* 状態で表示されるようになります。
 
 ![エラー状態の無効なノードを示す Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
 
@@ -373,6 +373,6 @@ foreach($name in $nodeNames){
 
 関連項目:
 
-* [サンプル:Azure Managed Disks を使用するためにクラスター ノードをアップグレードする](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [サンプル:Azure Managed Disks を使用するためにクラスター ノードをアップグレードする](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)
 
 * [垂直方向のスケーリングに関する考慮事項](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f660bd17954afb4ae02da77e93d4d9cc36f3d355
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8488325613b05d54b352a19a06860e08f1779877
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763280"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063116"
 ---
 # <a name="logging-in-msal-for-python"></a>Python 用の MSAL でのログ記録
 
@@ -55,5 +55,3 @@ Python でのログ記録の詳細については、Python の「[Logging: how-t
 ## <a name="next-steps"></a>次のステップ
 
 追加のコード サンプルについては、「[Microsoft ID プラットフォームのコード サンプル](sample-v2-code.md)」を参照してください。
-
----

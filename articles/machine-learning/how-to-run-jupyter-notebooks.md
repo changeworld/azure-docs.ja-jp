@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685580"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061836"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 
@@ -255,89 +255,6 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
 |---------|---------|
 |  [緑] |カーネル接続済み、アイドル、ビジー|
 |  グレー |カーネルが接続されていません |
-
-## <a name="shortcut-keys"></a>ショートカット キー
-Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブックにはモーダル ユーザー インターフェイスがあります。 キーボードの動作は、ノートブック セルのモードによって異なります。 Azure Machine Learning Studio ノートブックでは、特定のコード セルに対して、コマンド モードと編集モードという 2 つのモードがサポートされています。
-
-### <a name="command-mode-shortcuts"></a>コマンド モードのショートカット
-
-入力を求めるテキスト カーソルがない場合、セルはコマンド モードになります。 セルがコマンド モードの場合、ノートブックを全体として編集できますが、個々のセルに入力することはできません。 `ESC` キーを押すか、マウスを使用してセルのエディター領域の外側を選択し、コマンド モードに入ります。  アクティブなセルの左側の境界線は青い実線で、 **[実行]** ボタンは青です。
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="コマンド モードのノートブック セル ":::
-
-| ショートカット                      | 説明                          |
-| ----------------------------- | ------------------------------------|
-| Enter                         | 編集モードを開始する             |        
-| Shift + Enter                 | セルを実行し、下のものを選択する         |     
-| Ctrl/Command + Enter       | セルの実行                            |
-| Alt + Enter                   | セルを実行し、下にコード セルを挿入する    |
-| Ctrl/Command + Alt + Enter | セルを実行し、下にマークダウン セルを挿入する|
-| Alt + R                       | [すべて実行]      |                       
-| Y                             | セルをコードに変換する    |                         
-| M                             | セルをマークダウンに変換する  |                       
-| ↑/K                          | 上のセルを選択する    |               
-| ↓/J                        | 下のセルを選択する    |               
-| A                             | 上にコード セルを挿入する  |            
-| B                             | 下にコード セルを挿入する   |           
-| Ctrl/Command + Shift + A   | 上にマークダウン セルを挿入する    |      
-| Ctrl/Command + Shift + B   | 下にマークダウン セルを挿入する   |       
-| X                             | 選択したセルを切り取る    |               
-| C                             | 選択したセルをコピーする   |               
-| Shift + V                     | 選択したセルを上に貼り付ける           |
-| V                             | 選択したセルを下に貼り付ける    |       
-| D D                           | 選択したセルを削除する|                
-| O                             | TextWriter         |              
-| Shift + O                     | 出力のスクロールを切り替える   |          
-| I I                           | カーネルを中断する |                   
-| 0 0                           | カーネルを再開する |                     
-| Shift + Space                 | 上にスクロール  |                         
-| Space                         | 下にスクロール|
-| タブ                           | フォーカスを次のフォーカス可能な項目に移動する (タブ トラップが無効になっている場合)|
-| Ctrl/Command + S           | ノートブックを保存する |                      
-| 1                             | h1 に変更する|                       
-| 2                             | h2 に変更する|                        
-| 3                             | h3 に変更する|                        
-| 4                             | h4 に変更する |                       
-| 5                             | h5 に変更する |                       
-| 6                             | h6 に変更する |                       
-
-### <a name="edit-mode-shortcuts"></a>編集モードのショートカット
-
-編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域を選択し、編集モードに入ります。 アクティブなセルの左側の境界線は緑のハッチで、 **[実行]** ボタンは緑です。 また、編集モードではセルにカーソル プロンプトが表示されます。
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="編集モードのノートブック セル":::
-
-次のキーストローク ショートカットを使用すると、編集モードのときに Azure Machine Learning ノートブックのコードをより簡単に移動して実行できます。
-
-| ショートカット                      | 説明|                                     
-| ----------------------------- | ----------------------------------------------- |
-| エスケープ                        | コマンド モードを開始する|  
-| Ctrl/Command + Space       | IntelliSense をアクティブにする |
-| Shift + Enter                 | セルを実行し、下のものを選択する |                         
-| Ctrl/Command + Enter       | セルの実行  |                                      
-| Alt + Enter                   | セルを実行し、下にコード セルを挿入する  |              
-| Ctrl/Command + Alt + Enter | セルを実行し、下にマークダウン セルを挿入する  |          
-| Alt + R                       | すべてのセルを実行する     |                              
-| ［上へ］                            | カーソルを上または前のセルに移動する    |             
-| [下へ]                          | カーソルを下または次のセルに移動する |                  
-| Ctrl/Command + S           | ノートブックを保存する   |                                
-| Ctrl/Command + ↑          | セルの先頭に移動する   |                             
-| Ctrl/Command + ↓        | セルの末尾に移動する |                                 
-| タブ                           | コード補完またはインデント (タブ トラップが有効になっている場合) |
-| Ctrl/Command + M           | タブ トラップを有効または無効にする  |                       
-| Ctrl/Command + ]           | インデントする |                                         
-| Ctrl/Command + [           | インデントを解除する  |                                        
-| Ctrl/Command + A           | すべて選択する|                                      
-| Ctrl/Command + Z           | 元に戻す |                                           
-| Ctrl/Command + Shift + Z   | やり直す |                                           
-| Ctrl/Command + Y           | やり直す |                                           
-| Ctrl/Command + Home        | セルの先頭に移動する|                                
-| Ctrl/Command + End         | セルの末尾に移動する   |                               
-| Ctrl/Command + 左        | 1 単語左に移動する |                               
-| Ctrl/Command + →       | 1 単語右に移動する |                              
-| Ctrl/Command + Backspace   | 前の単語を削除する |                             
-| Ctrl/Command + Delete      | 後の単語を削除する |                              
-| Ctrl/Command + /           | cu でコメントを切り替える
 
 ## <a name="find-compute-details"></a>コンピューティングの詳細を確認する
 

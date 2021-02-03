@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: dominicbetts
+ms.author: dobett
 ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789772"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062680"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -234,11 +234,8 @@ Azure Device SDK では、デバイス コードを最も簡単に実装する�
 IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接続オプションを使用します。
 
 - [デバイスからクラウドへのメッセージ](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [Cloud-to-Device メッセージング](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
+- [cloud-to-device メッセージング](../../iot-hub/iot-hub-devguide-messages-c2d.md)
 - [デバイス ツイン](../../iot-hub/iot-hub-devguide-device-twins.md)
-
-> [!NOTE]
-> Azure でサポートされるようになりました
 
 次の表では、Azure IoT Central デバイスの機能が IoT Hub の機能にどのように対応しているかをまとめたものです。
 

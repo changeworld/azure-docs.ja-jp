@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight for Visual Studio Code
 description: Spark & Hive Tools (Azure HDInsight) for Visual Studio Code を使用する方法について説明します。 これらのツールを使用して、クエリとスクリプトを作成して送信します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610983"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946145"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 

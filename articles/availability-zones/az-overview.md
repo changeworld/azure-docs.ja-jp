@@ -1,18 +1,19 @@
 ---
 title: Azure のリージョンと Availability Zones
 description: 技術要件および規制要件を満たすために、Azure のリージョンと Availability Zones について説明します。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
-ms.date: 08/27/2020
-ms.author: cynthn
+ms.topic: conceptual
+ms.date: 01/26/2021
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b19f5c3ae0666a0b0e9b0255f848f5924d9d3910
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874741"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955802"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure のリージョンと Availability Zones
 
