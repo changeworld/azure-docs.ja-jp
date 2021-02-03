@@ -329,6 +329,8 @@
               href: platform/data-sources-linux-applications.md
             - name: IIS ログ
               href: platform/data-sources-iis-logs.md
+            - name: Windows データのイベント トレーシング
+              href: platform/data-sources-event-tracing-windows.md
             - name: カスタム ログ
               href: platform/data-sources-custom-logs.md
             - name: カスタム フィールド

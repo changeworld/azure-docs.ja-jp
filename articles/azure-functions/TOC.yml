@@ -281,9 +281,10 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: タイマー トリガー
               href: functions-create-scheduled-function.md
-        - name: バインドの追加
+        - name: サービスへの接続
           items:
-            - name: バインドの追加方法
+            - name: サービスへの接続方法
+              displayName: 'bindings,integrate'
               href: add-bindings-existing-function.md
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -395,7 +396,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: 統合
       items:
-        - name: バインドの追加
+        - name: サービスへの接続
           items:
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md

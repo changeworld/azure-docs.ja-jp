@@ -43,6 +43,8 @@
   items:
     - name: Azure Functions を使用して、信頼される認証サービスを構築する
       href: tutorials/trusted-service-tutorial.md
+    - name: Communication Services 用の Web アプリを準備する (Node.js)
+      href: tutorials/building-app-start.md
 - name: 概念
   expanded: false
   items:

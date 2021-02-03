@@ -49,6 +49,8 @@
           href: scenario-isolate-vnets.md
         - name: VNet の分離 - カスタム
           href: scenario-isolate-vnets-custom.md
+        - name: 仮想ネットワークとブランチの分離
+          href: scenario-isolate-virtual-networks-branches.md
         - name: 共有サービスの VNet
           href: scenario-shared-services-vnet.md
         - name: NVA 経由のルーティング

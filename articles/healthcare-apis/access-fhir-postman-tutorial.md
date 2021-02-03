@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 02/07/2019
-ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/01/2021
+ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747342"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259018"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -23,7 +23,8 @@ ms.locfileid: "98747342"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure 内の FHIR エンドポイント。 これは、マネージド Azure API for FHIR またはオープンソースの FHIR Server for Azure を使用して設定できます。 [Azure portal](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md)、または [Azure CLI](fhir-paas-cli-quickstart.md) を使用して、マネージド Azure API for FHIR を設定します。
-- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)
+- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)。
+- FHIR サービスにアクセスするためのアクセス許可 ("FHIR データ共同作成者" など) をクライアント アプリケーションに付与済みである。 詳細については、「[FHIR 用に Azure RBAC を構成する](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)」を参照してください。
 - Postman がインストールされている。 これは [https://www.getpostman.com](https://www.getpostman.com) から入手できます
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR サーバーと認証の詳細

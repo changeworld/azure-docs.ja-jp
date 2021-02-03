@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747527"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252119"
 ---
 # <a name="features"></a>特徴
 
@@ -41,8 +41,8 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | 検索                         | Partial   | 部分的   | 部分的   | 下記参照                                           |
-| chained search                 | いいえ        | はい       | いいえ        |                                           |
-| reverse chained search         | いいえ        | いいえ        | いいえ        |                                            |
+| chained search                 | いいえ        | はい       | いいえ        |                                                     |
+| reverse chained search         | いいえ        | はい       | いいえ        |                                                     |
 | capabilities                   | はい       | はい       | はい       |                                                     |
 | batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
@@ -72,39 +72,39 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |`:exact`               | はい       | はい       | はい       |         |
 |`:contains`            | はい       | はい       | はい       |         |
 |`:text`                | はい       | はい       | はい       |         |
+|`:[type]` (参照)  | はい       | はい       | はい       |         |
+|`:not`                 | はい       | はい       | はい       |         |
+|`:below` (URI)         | はい       | はい       | はい       |         |
+|`:above` (URI)         | いいえ        | いいえ        | いいえ        | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 |`:in` (トークン)          | いいえ        | いいえ        | いいえ        |         |
 |`:below` (トークン)       | いいえ        | いいえ        | いいえ        |         |
 |`:above` (トークン)       | いいえ        | いいえ        | いいえ        |         |
 |`:not-in` (トークン)      | いいえ        | いいえ        | いいえ        |         |
-|`:[type]` (参照)  | いいえ        | いいえ        | いいえ        |         |
-|`:below` (URI)         | はい       | はい       | はい       |         |
-|`:not`                 | いいえ        | いいえ        | いいえ        |         |
-|`:above` (URI)         | いいえ        | いいえ        | いいえ        | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | 一般的な検索パラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | はい       | はい       | はい       |         |
 | `_lastUpdated`          | はい       | はい       | はい       |         |
 | `_tag`                  | はい       | はい       | はい       |         |
-| `_profile`              | 部分的   | 部分的   | 部分的   | STU3 でのみサポートされています。R4 ではサポートされていません |
+| `_list`                 | はい       | はい       | はい       |         |
+| `_type`                 | はい       | はい       | はい       | イシュー [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | はい       | はい       | はい       |         |
+| `_profile`              | 部分的   | 部分的   | 部分的   | STU3 でのみサポートされています。R4 ではサポートされていません |
 | `_text`                 | いいえ        | いいえ        | いいえ        |         |
 | `_content`              | いいえ        | いいえ        | いいえ        |         |
-| `_list`                 | はい       | はい       | はい       |         |
 | `_has`                  | いいえ        | いいえ        | いいえ        |         |
-| `_type`                 | はい       | はい       | はい       |         |
 | `_query`                | いいえ        | いいえ        | いいえ        |         |
 | `_filter`               | いいえ        | いいえ        | いいえ        |         |
 
 | 検索結果のパラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | 部分的        | 部分的   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
+| `_elements`             | はい       | はい       | はい       | イシュー [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
 | `_count`                | はい       | はい       | はい       | `_count` の上限は 100 文字です。 100 より大きい値に設定すると、100 個だけが返され、バンドルで警告が返されます。 |
-| `_include`              | はい       | はい       | Yes       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
-| `_revinclude`           | はい       | はい       | Yes       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
-| `_summary`              | Partial   | Partial   | 部分的   | `_summary=count` がサポートされています |
-| `_total`                | Partial   | Partial   | Partial   | _total=non および _total=accurate      |
-| `_elements`             | はい       | はい       | はい       |         |
+| `_include`              | はい       | はい       | はい       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
+| `_revinclude`           | はい       | はい       | はい       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても [:iterate のサポートは含まれません](https://github.com/microsoft/fhir-server/issues/1313)。 イシュー [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
+| `_summary`              | 部分的   | Partial   | Partial   | `_summary=count` がサポートされています |
+| `_total`                | Partial   | 部分的   | 部分的   | `_total=none` および `_total=accurate`      |
+| `_sort`                 | 部分的   | 部分的   | 部分的   |   `_sort=_lastUpdated` がサポートされています       |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
 | `containedType`         | いいえ        | いいえ        | いいえ        |         |
 | `_score`                | いいえ        | いいえ        | いいえ        |         |
