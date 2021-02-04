@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 523b081b59bd2f4c45c1ceeb9f39c58f4e3b02b1
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944222"
+ms.locfileid: "98986906"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 
@@ -55,7 +55,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     画面の上部に、コンプライアンスの状態の概要と、サポートされる一連のコンプライアンス規制を示すダッシュボードが表示されます。 お客様の全体的なコンプライアンス スコアのほか、それぞれの標準に関連した合否評価の件数を確認できます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. お客様に関連するコンプライアンス標準のタブを選択します (1)。 標準が適用されているサブスクリプション (2) と、その標準に関するすべての制御の一覧 (3) が表示されます。 該当する制御について、その制御に関連付けられた合否評価の詳細 (4) と、影響を受けたリソースの数 (5) を確認できます。 一部の制御は淡色表示されます。それらの制御には、Security Center の評価が関連付けられていません。 これらの要件を確認し、実際の環境でそれらを評価してください。 そうしたものの中には、技術的なものではなくプロセスに関連したものがあります。
 

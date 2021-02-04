@@ -3,12 +3,12 @@ title: 空間分析用の Computer Vision でライブ ビデオを分析する 
 description: このチュートリアルでは、Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f8a828d27b69fedefe7ccbc2ad7290bf300afc16
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632945"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526791"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -110,8 +110,8 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/var/media"
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/var/media"
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
     CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"   

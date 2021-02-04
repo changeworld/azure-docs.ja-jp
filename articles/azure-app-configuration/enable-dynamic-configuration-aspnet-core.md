@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 7072720e2600221e7b8ad8d2337577b65b079afb
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: e894caddd037738645a37ccb43265a24d56e8afe
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660685"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493806"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -186,6 +186,7 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     {
         services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        services.AddAzureAppConfiguration();
     }
     ```
     ---

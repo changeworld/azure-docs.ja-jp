@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8b46d08da87565d133962c23e8281b221544d9ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897512"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092519"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して Hyper-V VM を検出する
 
@@ -87,7 +87,7 @@ Hyper-V ホストは手動で準備することも、スクリプトを使用し
 PowerShell のバージョンを確認する | サポートされている PowerShell バージョンでスクリプトが実行されていることを確認します。 | Hyper-V ホストで PowerShell バージョン4.0 以降が実行されていることを確認します。
 アカウントを作成する | Hyper-V ホストに対する適切なアクセス許可があることを確認します。<br/><br/> 適切なアクセス許可が割り当てられたローカル ユーザー アカウントを作成できます。 | オプション 1: Hyper-V ホスト マシンに対する管理者アクセス権があるアカウントを準備します。<br/><br/> オプション 2:ローカル管理者アカウントまたはドメイン管理者アカウントを準備し、アカウントを次のグループに追加します: Remote Management Users、Hyper-V Administrators、Performance Monitor Users。
 PowerShell リモート処理を有効にする | ホスト上で PowerShell リモート処理を有効にして、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。 | 設定するには、各ホスト上で、管理者として PowerShell コンソールを開き、``` powershell Enable-PSRemoting -force ``` コマンドを実行します。
-Hyper-V 統合サービスを設定する | ホストによって管理されているすべての VM で Hyper-V 統合サービスが有効になっていることを確認します。 | 各 VM で [Hyper-V 統合サービスを有効にします](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md)。<br/><br/> Windows Server 2003 を実行している場合は、[これらの手順に従います](prepare-windows-server-2003-migration.md)。
+Hyper-V 統合サービスを設定する | ホストによって管理されているすべての VM で Hyper-V 統合サービスが有効になっていることを確認します。 | 各 VM で [Hyper-V 統合サービスを有効にします](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> Windows Server 2003 を実行している場合は、[これらの手順に従います](prepare-windows-server-2003-migration.md)。
 VM ディスクがリモート SMB 共有に配置されている場合に資格情報を委任する | 資格情報を委任します。 | ```powershell Enable-WSManCredSSP -Role Server -Force ``` コマンドを実行して、SMB 共有上にディスクがある Hyper-V VM を実行しているホストで、CredSSP が資格情報を委任できるようにします。<br/><br/> このコマンドは、すべての Hyper-V ホスト上でリモートで実行できます。<br/><br/> クラスターに新しいホスト ノードを追加すると、自動的に検出用に追加されますが、CredSSP を手動で有効にする必要があります。<br/><br/> アプライアンスを設定したら、[アプライアンス上で CredSSP を有効にして](#delegate-credentials-for-smb-vhds)、その設定を終了します。 
 
 ### <a name="run-the-script"></a>スクリプトを実行する
