@@ -151,7 +151,7 @@
           items:
             - name: GitHub のアクション
               href: quickstart-mysql-github-actions.md
-    - name: ネットワーキング
+    - name: ネットワーク
       items:
         - name: 仮想ネットワーク サービス エンドポイント
           items:
@@ -173,7 +173,7 @@
             - name: Azure CLI を使用した Private Link の構成
               href: howto-configure-privatelink-cli.md
               displayName: 'private link, private endpoint'
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: concepts-security.md
@@ -196,7 +196,7 @@
             - name: TLS の構成
               href: howto-tls-configurations.md
               displayName: 'TLS, security, development'
-            - name: Advanced Threat Protection
+            - name: 高度な脅威保護
               items:
                 - name: 概念
                   href: concepts-data-access-and-security-threat-protection.md
@@ -412,6 +412,10 @@
       items:
         - name: フレキシブル サーバーとは
           href: flexible-server/overview.md
+        - name: サポートされているバージョン
+          href: flexible-server/concepts-supported-versions.md
+        - name: コンピューティングとストレージ
+          href: flexible-server/concepts-compute-storage.md
     - name: クイックスタート
       expanded: true
       items:
@@ -437,93 +441,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-    - name: チュートリアル
-      items:
-        - name: Azure Kubernetes での WordPress
-          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
-        - name: データベースを使用した PHP (Laravel) アプリを作成する
-          href: flexible-server/tutorial-php-database-app.md
-        - name: プライベート Web アプリを使用して接続する
-          href: flexible-server/tutorial-webapp-server-vnet.md
-    - name: 概念
-      items:
-        - name: サーバー
-          href: flexible-server/concept-servers.md
-        - name: サポートされているバージョン
-          href: flexible-server/concepts-supported-versions.md
-        - name: 制限事項
-          href: flexible-server/concepts-limitations.md
-        - name: コンピューティングとストレージ
-          href: flexible-server/concepts-compute-storage.md
-        - name: ネットワーキング
-          href: flexible-server/concepts-networking.md
-          displayName: 'virtual network, IP address, public access'
-        - name: メンテナンス
-          href: flexible-server/concepts-maintenance.md
-        - name: ビジネス継続性
-          items:
-            - name: ビジネス継続性の概要
-              href: flexible-server/concepts-business-continuity.md
-            - name: バックアップと復元
-              href: flexible-server/concepts-backup-restore.md
-            - name: 高可用性
-              href: flexible-server/concepts-high-availability.md
-        - name: 監視とログ
-          items:
-            - name: サーバー パラメーター
-              href: flexible-server/concepts-server-parameters.md
-            - name: 低速クエリ ログ
-              href: flexible-server/concepts-slow-query-logs.md
-            - name: 監査ログ
-              href: flexible-server/concepts-audit-logs.md
-            - name: メトリック
-              href: flexible-server/concepts-monitoring.md
-        - name: レプリケーション
-          items:
-            - name: 読み取りレプリカ
-              href: flexible-server/concepts-read-replicas.md
-    - name: 操作方法ガイド
-      items:
-        - name: サーバーを管理する
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
-              href: flexible-server/how-to-manage-server-cli.md
-        - name: メンテナンス
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-maintenance-portal.md
-        - name: サーバーを停止または起動する
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-stop-start-server-portal.md
-        - name: サーバーの復元
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-restore-server-portal.md
-        - name: 高可用性
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-configure-high-availability.md
-        - name: ネットワーキング
-          items:
-            - name: プライベート アクセス (VNet 統合)
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-manage-virtual-network-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-virtual-network-cli.md
-            - name: パブリック アクセス (許可された IP アドレス)
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-manage-firewall-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
-              items:
-                - name: TLS/SSL を使用して接続する
-                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: TLS/SSL を使用して接続する
+          href: flexible-server/how-to-connect-tls-ssl.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal
@@ -532,32 +451,104 @@
             - name: Azure CLI
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
-        - name: 監視とログ
-          items:
-            - name: メトリックに基づいたアラートの作成
-              href: flexible-server/how-to-alert-on-metric.md
-            - name: 低速クエリ ログ
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-            - name: 監査ログ
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-        - name: サーバーの再起動
+        - name: データベースとユーザーを作成する
+          href: howto-create-users.md
+          displayName: users
+        - name: 監視サーバー
+          href: flexible-server/how-to-alert-on-metric.md
+    - name: アプリケーション開発
+      items:
+        - name: Azure Kubernetes での WordPress
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
+        - name: データベースを使用した PHP (Laravel) アプリを作成する
+          href: flexible-server/tutorial-php-database-app.md
+        - name: プライベート Web アプリを使用して接続する
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Server Management
+      items:
+        - name: 概念
+          href: flexible-server/concept-servers.md
+        - name: サーバー パラメーター
+          href: flexible-server/concepts-server-parameters.md
+        - name: 制限事項
+          href: flexible-server/concepts-limitations.md
+        - name: サーバーを管理する
           items:
             - name: Azure portal
-              href: flexible-server/how-to-restart-server-portal.md
-        - name: レプリケーション
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Azure portal を使用してサーバーを停止または起動する
+          href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Azure portal を使用してサーバーを再起動する
+          href: flexible-server/how-to-restart-server-portal.md
+    - name: ネットワーク
+      items:
+        - name: 概念
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: プライベート アクセス (VNet 統合)
+          items:
+            - name: Azure portal を使用してプライベート アクセスを構成する
+              href: flexible-server/how-to-manage-virtual-network-portal.md
+            - name: Azure CLI を使用してプライベート アクセスを構成する
+              href: flexible-server/how-to-manage-virtual-network-cli.md
+        - name: パブリック アクセス (許可された IP アドレス)
+          items:
+            - name: Azure portal を使用してパブリック アクセスを構成する
+              href: flexible-server/how-to-manage-firewall-portal.md
+            - name: Azure CLI を使用してパブリック アクセスを構成する
+              href: flexible-server/how-to-manage-firewall-cli.md
+    - name: サービスのメンテナンス
+      items:
+        - name: 予定メンテナンス
+          href: flexible-server/concepts-maintenance.md
+        - name: Azure portal を使用して予定メンテナンスを構成する
+          href: flexible-server/how-to-maintenance-portal.md
+    - name: 高可用性
+      items:
+        - name: ビジネス継続性の概要
+          href: flexible-server/concepts-business-continuity.md
+        - name: 高可用性
+          href: flexible-server/concepts-high-availability.md
+        - name: Azure portal を使用して可用性を構成する
+          href: flexible-server/how-to-configure-high-availability.md
+    - name: 監視とログ
+      items:
+        - name: 概念
+          href: flexible-server/concepts-monitoring.md
+        - name: 低速クエリ ログ
+          items:
+            - name: 概念
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Azure portal を使用して低速クエリ ログを構成する
+              href: flexible-server/how-to-configure-slow-query-logs-portal.md
+        - name: 監査ログ
+          items:
+            - name: 概念
+              href: flexible-server/concepts-audit-logs.md
+            - name: 監査ログの構成
+              href: flexible-server/how-to-configure-audit-logs-portal.md
+    - name: レプリケーション
+      items:
+        - name: 読み取りレプリカ
+          href: flexible-server/concepts-read-replicas.md
+        - name: 読み取りレプリカの作成
           items:
             - name: Azure portal を使用した読み取りレプリカの作成
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: 読み取りレプリカ Azure CLI の作成
+            - name: Azure CLI を使用した読み取りレプリカの作成
               href: flexible-server/how-to-read-replicas-cli.md
-        - name: トラブルシューティング
-          items:
-            - name: 接続エラー
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+    - name: バックアップと復元
+      items:
+        - name: 概念
+          href: flexible-server/concepts-backup-restore.md
+        - name: Azure portal を使用してサーバーを復元する
+          href: flexible-server/how-to-restore-server-portal.md
+    - name: トラブルシューティング
+      items:
+        - name: 接続エラーのトラブルシューティング
+          href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: 移行
   items:
     - name: mysqldump または phpmyadmin でデータを移行する

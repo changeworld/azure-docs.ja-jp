@@ -171,7 +171,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -223,6 +223,8 @@
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
+        - name: 自動発行
+          href: continuous-integration-deployment-improvements.md
     - name: Connectors
       items:
         - name: コネクタの概要
@@ -586,7 +588,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md

@@ -278,6 +278,8 @@
           items:
             - name: メトリック グラフの使用
               href: azure-stack-edge-monitor.md
+            - name: デバイス イベント アラートの管理
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes ダッシュボードの使用
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Azure Monitor の使用
