@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: クエリ
       items:
-        - name: クエリの種類と構成
-          href: search-query-overview.md
         - name: 基本的なクエリの作成
           href: search-query-create.md
+        - name: クエリの種類と構成
+          href: search-query-overview.md
         - name: 単純な構文の使用 (例)
           href: search-query-simple-examples.md
         - name: 完全な Lucene の使用 (例)
