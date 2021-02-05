@@ -4,6 +4,15 @@
   items:
     - name: Virtual WAN とは
       href: virtual-wan-about.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: ARM テンプレート
+      expanded: true
+      items:
+        - name: Any-to-Any ルーティング
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
 - name: チュートリアル
   expanded: true
   items:
@@ -27,7 +36,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md

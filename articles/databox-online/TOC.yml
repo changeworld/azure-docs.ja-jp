@@ -176,6 +176,10 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Marketplace 経由の GPU モジュール
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: FPGA デバイスからのモジュール
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
+            - name: Azure portal 経由のモジュール
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: Kubernetes ワークロードをデプロイする
           items:
             - name: kubectl を使用

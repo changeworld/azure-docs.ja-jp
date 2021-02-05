@@ -432,6 +432,9 @@
     - name: API Management API のセキュリティ保護
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: 電話ベースの MFA をセキュリティで保護する
+      href: phone-based-mfa.md
+      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: ログと監視
       items:
         - name: 監査ログ
