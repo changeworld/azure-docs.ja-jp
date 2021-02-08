@@ -760,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: 価格について
       items:
+        - name: データ フロー予約容量の概要
+          href: data-flow-reserved-capacity-overview.md
+        - name: データ フローの予約料金について
+          href: data-flow-understand-reservation-charges.md
         - name: コストの計画と管理
           href: plan-manage-costs.md
         - name: 価格の例
