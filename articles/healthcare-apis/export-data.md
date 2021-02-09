@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920259"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627265"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR データをエクスポートする方法
 
@@ -30,12 +30,15 @@ Azure API For FHIR では、次のレベルでの $export がサポートされ�
 * [患者](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
 * [患者のグループ*](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) - Azure API for FHIR では、関連するすべてのリソースがエクスポートされますが、グループの特性はエクスポートされません: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
+データがエクスポートされると、リソースの種類ごとに個別のファイルが作成されます。 エクスポートされるファイルが大きくなりすぎないようにするために、エクスポートされた 1 つのファイルのサイズが 64 MB を超えたら新しいファイルを作成します。 この結果、リソースの種類ごとに複数のファイルが取得され、列挙されます (つまり、Patient-1.ndjson、Patient-2.ndjson)。 
 
 
 > [!Note] 
 > リソースが複数のリソースから成るコンパートメント内にある場合、または複数のグループに存在する場合は、`Patient/$export` と `Group/[ID]/$export` によって重複するリソースがエクスポートされることがあります。
 
 さらに、キュー登録中に場所ヘッダーによって返された URL を介したエクスポートの状態の確認と、現行のエクスポート ジョブのキャンセルもサポートされています。
+
+
 
 ## <a name="settings-and-parameters"></a>設定とパラメーター
 
