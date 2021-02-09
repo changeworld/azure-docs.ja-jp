@@ -1,19 +1,23 @@
 ---
 title: Azure Database for MySQL 単一サーバーでのメジャー バージョンのアップグレード
 description: この記事では、Azure Database for MySQL 単一サーバーでメジャー バージョンをアップグレードする方法について説明します
-author: ambhatna
-ms.author: ambhatna
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 1/13/2021
-ms.openlocfilehash: b62f4ebc61ac27478788d8b2bae5e4145f87ac8b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 1/28/2021
+ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630202"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220838"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバーでのメジャー バージョンのアップグレード
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+>
 
 > [!IMPORTANT]
 > Azure database for MySQL 単一サーバーのメジャー バージョンのアップグレードは、パブリック プレビュー段階にあります。
@@ -23,9 +27,8 @@ ms.locfileid: "98630202"
 この機能を使用すると、データを移動したり、アプリケーションの接続文字列を変更したりしなくても、ボタンをクリックするだけで MySQL 5.6 サーバーを MySQL 5.7 にインプレース アップグレードできます。
 
 > [!Note]
-> * メジャー バージョンのアップグレードは、MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードにのみ使用できます。<br>
-> * メジャー バージョンのアップグレードは、レプリカ サーバーではまだサポートされていません。
-> * アップグレード操作中は、サーバーを使用できなくなります。 したがって、計画メンテナンス期間中にアップグレードを実行することをお勧めします。
+> * メジャー バージョンのアップグレードは、MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードにのみ使用できます。
+> * アップグレード操作中は、サーバーを使用できなくなります。 したがって、計画メンテナンス期間中にアップグレードを実行することをお勧めします。 [読み取りレプリカを使用して、MySQL 5.6 から MySQL 5.7 へのメジャーバージョンのアップグレードを最小限のダウンタイムで実行する](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)こともできます。
 
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal"></a>Azure portal を使用して MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードを実行する
 
@@ -57,12 +60,58 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
    このアップグレードでは、Azure CLI のバージョン 2.16.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 az version を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、az upgrade を実行します。
 
 2. サインインしたら、[az mysql server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) コマンドを実行します。
-    
+
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
    ```
    
    コマンド プロンプトに "-Running" (実行中) というメッセージが表示されます。 このメッセージが表示されなくなると、バージョンのアップグレードが完了しています。
+
+## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal"></a>Azure portal を使用して、読み取りレプリカで MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードを実行する
+
+1. [Azure portal](https://portal.azure.com/) で、既存の Azure Database for MySQL 5.6 読み取りレプリカ サーバーを選択します。
+
+2. **[概要]** ページのツール バーで **[アップグレード]** ボタンをクリックします。
+
+3. **[アップグレード]** セクションで、 **[OK]** を選択して、Azure Database for MySQL 5.6 読み取りレプリカ サーバーを 5.7 サーバーにアップグレードします。
+
+   :::image type="content" source="./media/how-to-major-version-upgrade-portal/upgrade.png" alt-text="Azure Database for MySQL - 概要 - アップグレード":::
+
+4. アップグレードが成功したことを確認する通知が表示されます。
+
+5. **[概要]** ページで、Azure Database for MySQL の読み取りレプリカ サーバーのバージョンが 5.7 であることを確認します。
+
+6. ここで、プライマリ サーバーにアクセスし、そこで[メジャー バージョンのアップグレード](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal)を実行します。
+
+## <a name="perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas"></a>読み取りレプリカを使用して、MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードを最小限のダウンタイムで実行する
+
+読み取りレプリカを利用すると、MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードを最小限のダウンタイムで実行することができます。 この考え方は、サーバーの読み取りレプリカを最初に 5.7 にアップグレードし、後でアプリケーションをフェールオーバーして読み取りレプリカをポイントし、それを新しいプライマリにするというものです。
+
+1. [Azure portal](https://portal.azure.com/) で、既存の Azure Database for MySQL 5.6 を選択します。
+
+2. プライマリ サーバーから[読み取りレプリカ](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica)を作成します。
+
+3. [読み取りレプリカをバージョン 5.7 にアップグレード](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal)します。
+
+4. レプリカ サーバーがバージョン 5.7 で実行されていることを確認したら、アプリケーションからプライマリ サーバーへの接続を停止します。
+ 
+5. レプリケーションの状態を確認し、すべてのデータが同期されるように、レプリカがすべてプライマリに追いついていることを確認し、プライマリで確実に新しい操作が実行されないようにします。
+
+   レプリカ サーバーで [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) コマンドを呼び出して、レプリケーションの状態を確認します。
+
+   ```sql
+   SHOW SLAVE STATUS\G
+   ```
+
+   `Slave_IO_Running` と `Slave_SQL_Running` の状態が "yes" で、`Seconds_Behind_Master` の値が "0" であれば、レプリケーションは正常に機能しています。 `Seconds_Behind_Master` は、レプリカの遅れの程度を示しています。 この値が "0" 以外である場合、レプリカで更新処理が実行されていることを意味します。 `Seconds_Behind_Master` が "0" であることを確認したら、安全にレプリケーションを停止できます。
+
+6. [レプリケーションを停止](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server)して、読み取りレプリカをプライマリに昇格します。
+
+7. サーバー 5.7 を実行している新しいプライマリ (以前のレプリカ) にアプリケーションをポイントします。 各サーバーには一意の接続文字列があります。 ソースではなく、(以前の) レプリカを指すようにアプリケーションを更新します。
+
+> [!Note]
+> このシナリオでダウンタイムが発生するのは、手順 4、5、6 の間だけです。
+
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

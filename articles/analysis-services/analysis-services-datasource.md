@@ -4,15 +4,15 @@ description: Azure Analysis Services の表形式 1200 以上のデータ モデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685597"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493822"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -128,7 +128,9 @@ Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authenticati
 
 ## <a name="oauth-credentials"></a>OAuth 資格情報
 
-インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、Power Query を使用して資格情報を設定します。
+"*インメモリ*" モードを使用する 1,400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 有効なトークンを生成するには、Power Query を使用して資格情報を設定します。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 
+> [!NOTE]
+> ゲートウェイ経由でアクセスされるデータ ソースでは、マネージド トークンの更新がサポートされていません。 たとえば、1 つまたは複数のマッシュアップ クエリ データ ソースがゲートウェイ経由でアクセスされたり、[ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) プロパティが **true** に設定されたりします。 
 
 直接クエリモードは OAuth 資格情報ではサポートされていません。
 

@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 01/27/2021
+ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806878"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220855"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -92,7 +92,7 @@ ms.locfileid: "98806878"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | automationAccounts | resource group | 6-50 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | automationAccounts | リソース グループとリージョン <br>(下記の「注」を参照)。 | 6-50 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
 > | automationAccounts/certificates | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。  |
 > | automationAccounts/connections | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
 > | automationAccounts/credentials | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
@@ -101,6 +101,9 @@ ms.locfileid: "98806878"
 > | automationAccounts/variables | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
 > | automationAccounts/watchers | Automation アカウント | 1 ～ 63 |  英数字、アンダースコア、およびハイフン。<br><br>文字で開始します。 |
 > | automationAccounts / webhooks | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
+
+> [!NOTE]
+> Automation アカウント名は、リージョンおよびリソース グループごとに一意です。 削除された Automation アカウントの名前は、すぐには使用できない場合があります。
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 

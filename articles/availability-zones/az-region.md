@@ -1,18 +1,19 @@
 ---
 title: Availability Zones をサポートする Azure サービス
 description: Azure に高可用性で回復力のあるアプリケーションを作成できるように、Availability Zones ではリソースの実行に使用できる物理的に独立した場所が提供されています。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
-ms.date: 12/17/2020
-ms.author: cynthn
+ms.topic: conceptual
+ms.date: 01/26/2021
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3916cd43a42ef273a45a9992b45d8b9f043c9364
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874610"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226626"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -46,19 +47,19 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 ## <a name="azure-regions-with-availability-zones"></a>Azure のリージョンと Availability Zones
 
 
-| アメリカ           | ヨーロッパ         | ドイツ              | アフリカ              | アジア太平洋   |
-|--------------------|----------------|----------------------|---------------------|----------------|
-|                    |                |                      |                     |                |
-| カナダ中部     | フランス中部 | ドイツ中西部 | 南アフリカ北部* | 東日本     |
-| 米国中部         | 北ヨーロッパ   |                      |                     | 東南アジア |
-| 米国東部            | 英国南部       |                      |                     | オーストラリア東部 |
-| 米国東部 2          | 西ヨーロッパ    |                      |                     |                |
-| 米国中南部 |                |                      |                     |                |
-| US Gov バージニア* |                |                      |                     |                |
-| 米国西部 2        |                |                      |                     |                |
+| アメリカ           | ヨーロッパ               | アフリカ              | アジア太平洋   |
+|--------------------|----------------------|---------------------|----------------|
+|                    |                      |                     |                |
+| カナダ中部     | フランス中部       | 南アフリカ北部* | 東日本     |
+| 米国中部         | ドイツ中西部 |                     | 東南アジア |
+| 米国東部            | 北ヨーロッパ         |                     | オーストラリア東部 |
+| 米国東部 2          | 英国南部             |                     |                |
+| 米国中南部 | 西ヨーロッパ          |                     |                |
+| US Gov バージニア* |                      |                     |                |
+| 米国西部 2        |                      |                     |                |
 
 
-これらのリージョンの Availability Zones および利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 Availability Zones のサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)」を参照してください。
+\* これらのリージョンの Availability Zones および利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 Availability Zones のサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)」を参照してください。
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Availability Zones をサポートしている Azure サービス

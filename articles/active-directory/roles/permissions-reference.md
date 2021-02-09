@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/05/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879479"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428776"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -69,15 +69,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="authentication-administrator"></a>[認証管理者](#authentication-administrator-permissions)
 
-このロールのユーザーは、一部のユーザーのパスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録を管理者以外のユーザー、または一部のロールに割り当てられているユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることもできます。 これらのアクションは、管理者以外のユーザー、または次の 1 つ以上のロールが割り当てられているユーザーにのみ適用されます。
+このロールのユーザーは、一部のユーザーのパスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録を管理者以外のユーザー、または一部のロールに割り当てられているユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることもできます。 認証管理者がユーザーのパスワードをリセットできるかどうかは、ユーザーが割り当てられているロールに依存します。 認証管理者がパスワードをリセットできるロールの一覧については、「[パスワード リセットのアクセス許可](#password-reset-permissions)」を参照してください。
 
-* 認証管理者
-* ディレクトリ リーダー
-* ゲスト招待元
-* メッセージ センター閲覧者
-* レポート閲覧者
-
-[特権認証管理者](#privileged-authentication-administrator)ロールには、すべてのユーザーに対して再登録と多要素認証を強制する権限があります。
+[特権認証管理者](#privileged-authentication-administrator)ロールには、すべてのユーザーに対して再登録と多要素認証を強制できるアクセス許可があります。
 
 > [!IMPORTANT]
 > このロールのユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーの資格情報を変更するということは、そのユーザーの ID とアクセス許可を引き受けることができるということを意味します。 次に例を示します。
@@ -222,18 +216,13 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * 従業員とパートナー向けの Azure AD 組織: (たとえば Gmail との) フェデレーションの追加は、まだ招待に応じていないすべてのゲストの招待にすぐに影響します。 「[Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](../external-identities/google-federation.md)」を参照してください。
 * Azure Active Directory B2C 組織:(たとえば Facebook、または別の Azure AD 組織との) フェデレーションの追加は、ユーザー フロー (組み込みポリシーとも呼ばれます) で ID プロバイダーがオプションとして追加されるまで、エンド ユーザー フローにすぐに影響することはありません。 例については、[ID プロバイダーとしての Microsoft アカウントの構成](../../active-directory-b2c/identity-provider-microsoft-account.md)に関するページを参照してください。  ユーザー フローを変更するには、"B2C ユーザー フロー管理者" の制限されたロールが必要です。
 
-### <a name="global-administrator--company-administrator"></a>[全体管理者/会社の管理者](#company-administrator-permissions)
+### <a name="global-administrator"></a>[全体管理者](#global-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらに全体管理者は、[アクセスを昇格させる](../../role-based-access-control/elevate-access-global-admin.md)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、全体管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
-
-> [!NOTE]
-> Microsoft Graph API と Azure AD PowerShell では、このロールは "社内管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
->
->
+このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらにグローバル管理者は、[アクセスを昇格させる](../../role-based-access-control/elevate-access-global-admin.md)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、グローバル管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数のグローバル管理者がいてもかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
 ### <a name="global-reader"></a>[グローバル閲覧者](#global-reader-permissions)
 
-このロールのユーザーは、Microsoft 365 の各サービスにわたって設定と管理情報を読み取ることができますが、管理アクションを実行することはできません。 グローバル閲覧者は、全体管理者に対応する読み取り専用のロールです。 計画、監査、調査については、全体管理者ではなくグローバル閲覧者を割り当てます。 Exchange 管理者など、制限付きの他の管理者ロールとグローバル閲覧者を組み合わせて使用すると、全体管理者ロールを割り当てる必要がなく作業が楽になります。 グローバル閲覧者は、Microsoft 365 管理センター、Exchange 管理センター、SharePoint 管理センター、Teams 管理センター、セキュリティ センター、コンプライアンス センター、Azure AD 管理センター、デバイス管理の管理センターと連動します。
+このロールのユーザーは、Microsoft 365 の各サービスにわたって設定と管理情報を読み取ることができますが、管理アクションを実行することはできません。 グローバル閲覧者は、グローバル管理者に対応する読み取り専用のロールです。 計画、監査、調査については、グローバル管理者ではなくグローバル閲覧者を割り当てます。 Exchange 管理者など、制限付きの他の管理者ロールとグローバル閲覧者を組み合わせて使用すると、全体管理者ロールを割り当てる必要がなく作業が楽になります。 グローバル閲覧者は、Microsoft 365 管理センター、Exchange 管理センター、SharePoint 管理センター、Teams 管理センター、セキュリティ センター、コンプライアンス センター、Azure AD 管理センター、デバイス管理の管理センターと連動します。
 
 > [!NOTE]
 > グローバル閲覧者ロールには現在、制限事項がいくつか与えられています。
@@ -258,14 +247,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="helpdesk-administrator"></a>[ヘルプデスク管理者](#helpdesk-administrator-permissions)
 
-このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者は、管理者ではない他のユーザーまたは次のロールのみが割り当てられているユーザーについて、パスワードをリセットし、更新トークンを無効にすることができます。
-
-* ディレクトリ リーダー
-* ゲスト招待元
-* ヘルプデスク管理者
-* メッセージ センター閲覧者
-* パスワード管理者
-* レポート閲覧者
+このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者がユーザーのパスワードをリセットして更新トークンを無効にできるかどうかは、ユーザーが割り当てられているロールに依存します。 ヘルプデスク管理者がパスワードをリセットして更新トークンを無効にできるロールの一覧については、「[パスワード リセットのアクセス許可](#password-reset-permissions)」を参照してください。
 
 > [!IMPORTANT]
 > このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 次に例を示します。
@@ -276,7 +258,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
 >- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
-ユーザーのサブセットに管理アクセス許可を委任する、およびポリシーを適用するには、[管理単位 (現在、パブリック プレビュー段階にあります)](administrative-units.md) を使用します。
+ユーザーのサブセットに管理アクセス許可を委任する、およびポリシーを適用するには、[管理単位](administrative-units.md)を使用します。
 
 このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD での名前である "ヘルプデスク管理者" は、Azure AD PowerShell および Microsoft Graph API での名前に一致するようになりました。
 
@@ -349,11 +331,7 @@ Modern Commerce ユーザー ロールを持つユーザーは、通常、他の
 
 ### <a name="password-administrator"></a>[パスワード管理者](#password-administrator-permissions)
 
-このロールのユーザーは、制限付きでパスワードを管理することができます。 このロールでは、サービス要求を管理したり、サービスの正常性を監視したりすることはできません。 パスワード管理者は、管理者ではない他のユーザーまたは次のロールのメンバーについてのみ、パスワードをリセットすることができます。
-
-* ディレクトリ リーダー
-* ゲスト招待元
-* パスワード管理者
+このロールのユーザーは、制限付きでパスワードを管理することができます。 このロールでは、サービス要求を管理したり、サービスの正常性を監視したりすることはできません。 パスワード管理者がユーザーのパスワードをリセットできるかどうかは、ユーザーが割り当てられているロールに依存します。 パスワード管理者がパスワードをリセットできるロールの一覧については、「[パスワード リセットのアクセス許可](#password-reset-permissions)」を参照してください。
 
 ### <a name="power-bi-administrator"></a>[Power BI 管理者](#power-bi-service-administrator-permissions)
 
@@ -376,13 +354,7 @@ Modern Commerce ユーザー ロールを持つユーザーは、通常、他の
 
 ### <a name="privileged-authentication-administrator"></a>[特権認証管理者](#privileged-authentication-administrator-permissions)
 
-このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (MFA や FIDO など) に対する再登録をユーザーに強制することができます。また、'このデバイスに MFA を記憶する' 機能を取り消して、すべてのユーザーが次回サインインするときに MFA の入力を求めることができます。 [認証管理者](#authentication-administrator)ロールでは、管理者以外のユーザーと、次の Azure AD ロールに割り当てられているユーザーに対してのみ、再登録と MFA を強制できます。
-
-* 認証管理者
-* ディレクトリ リーダー
-* ゲスト招待元
-* メッセージ センター閲覧者
-* レポート閲覧者
+このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (MFA や FIDO など) に対する再登録をユーザーに強制することができます。また、'このデバイスに MFA を記憶する' 機能を取り消して、すべてのユーザーが次回サインインするときに MFA の入力を求めることができます。
 
 ### <a name="privileged-role-administrator"></a>[特権ロール管理者](#privileged-role-administrator-permissions)
 
@@ -505,11 +477,12 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できる (表参照) ほか、パスワードの有効期限ポリシーを更新できます。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 ユーザー管理者には、ほとんどの管理者ロールのユーザーについて、一部のユーザー プロパティを管理するためのアクセス許可が与えられません。 このロールのユーザーには、MFA を管理するためのアクセス許可がありません。 この制限の例外に相当するロールを次の表にまとめています。
 
-| **権限** | **できること** |
+| ユーザー管理者のアクセス許可 | Notes |
 | --- | --- |
-|一般的なアクセス許可|<p>ユーザーとグループを作成する</p><p>ユーザー ビューの作成と管理</p><p>Office サポート チケットの管理<p>パスワードの有効期限ポリシーを更新する|
-| <p>すべての管理者を含むすべてのユーザーに対して</p>|<p>ライセンスを管理する</p><p>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する</p>
-| 管理者以外のユーザー、または次の制限付き管理者ロールのいずれかに対してのみ:<ul><li>ディレクトリ リーダー<li>グループ管理者<li>ゲスト招待元<li>ヘルプデスク管理者<li>メッセージ センター閲覧者<li>パスワード管理者<li>レポート閲覧者<li>ユーザー管理者|<p>削除と復元</p><p>無効化と有効化</p><p>更新トークンを無効にする</p><p>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する</p><p>[パスワードのリセット]</p><p>(FIDO) デバイス キーを更新する</p>|
+| ユーザーとグループを作成する<br/>ユーザー ビューの作成と管理<br/>Office サポート チケットの管理<br/>パスワードの有効期限ポリシーを更新する |  |
+| ライセンスを管理する<br/>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する | すべての管理者を含むすべてのユーザーに適用されます |
+| 削除と復元<br/>無効化と有効化<br/>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する<br/>(FIDO) デバイス キーを更新する | 管理者以外のユーザー、または次のいずれかのロールのユーザーに適用されます。<ul><li>ヘルプデスク管理者</li><li>ロールのないユーザー</li><li>ユーザー管理者</li></ul> |
+| 更新トークンを無効にする<br/>[パスワードのリセット] | ユーザー管理者がパスワードをリセットして更新トークンを無効にできるロールの一覧については、「[パスワード リセットのアクセス許可](#password-reset-permissions)」を参照してください。 |
 
 > [!IMPORTANT]
 > このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 次に例を示します。
@@ -577,6 +550,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/standard/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="application-developer-permissions"></a>アプリケーション開発者のアクセス許可
 
@@ -652,6 +626,7 @@ Azure Information Protection サービスのすべての側面を管理できま
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/standard/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF キーセット管理者のアクセス許可
 
@@ -730,6 +705,7 @@ Identity Experience Framework での信頼フレームワーク ポリシーの�
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/standard/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="cloud-device-administrator-permissions"></a>クラウド デバイス管理者のアクセス許可
 
@@ -747,9 +723,9 @@ Azure AD でデバイスを管理するためのフル アクセス。
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
 
-### <a name="company-administrator-permissions"></a>会社の管理者のアクセス許可
+### <a name="global-administrator-permissions"></a>グループ管理者のアクセス許可
 
-Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft サービスを管理できます。 このロールは、全体管理者ロールとも呼ばれます。 
+Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft サービスを管理できます。
 
 > [!NOTE]
 > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
@@ -1749,10 +1725,12 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | microsoft.directory/cloudAppSecurity/allProperties/allTasks | Microsoft Cloud App Security の読み取りと構成。 |
 | microsoft.directory/identityProtection/allProperties/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
 | microsoft.directory/privilegedIdentityManagement/allProperties/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
+| microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティの読み取り。 |
 | microsoft.intune/allEntities/allTasks | Intune の全側面の管理。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | セキュリティ/コンプライアンス センターの読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Windows Defender Advanced Threat Protection の読み取りと構成。 |
+
 
 ### <a name="security-reader-permissions"></a>セキュリティ閲覧者のアクセス許可
 
@@ -2067,6 +2045,31 @@ Partner Tier 2 サポート | 使用するべきではないため、表示さ�
 制限されたゲストユーザー | 使用できないため、表示されません | NA
 User | 使用できないため、表示されません | NA
 デバイスの社内参加 | 非推奨 | [非推奨になったロールのドキュメント](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>パスワード リセットのアクセス許可
+
+列見出しは、パスワードをリセットできるロールを表します。 テーブルの行には、パスワードをリセットできるロールが含まれます。
+
+パスワードをリセットできる | 認証管理者 | ヘルプデスク管理者 | パスワード管理者 | [ユーザー管理者] | 特権認証管理者 | グローバル管理者
+------ | ------ | ------ | ------ | ------ | ------ | ------
+認証管理者 | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+ディレクトリ リーダー | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+グローバル管理者 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+グループ管理者 | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+ゲスト | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+ゲスト招待元 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+ヘルプデスク管理者 | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+メッセージ センター閲覧者 | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+パスワード管理者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+特権認証管理者 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+特権ロール管理者 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+レポート閲覧者 | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+制限付きゲスト | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+ユーザー (管理者ロールなし) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+[ユーザー管理者] | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+使用状況の概要のレポート閲覧者 | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* グローバル管理者は、自分のグローバル管理者の割り当てを削除することはできません。 これは、組織にグローバル管理者がいなくなる状況を防ぐためです。
 
 ## <a name="next-steps"></a>次のステップ
 

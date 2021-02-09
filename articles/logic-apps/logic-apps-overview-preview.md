@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760622"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430799"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概要:Azure Logic Apps プレビュー
 
@@ -168,6 +168,8 @@ Azure portal で新しいロジック アプリの種類を作成するか、Vis
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>変更された、制限付き、使用できない、またはサポートされていない機能
 
 Azure Logic Apps プレビューでは、これらの機能が変更されているか、現在制限されているか、使用できないか、またはサポートされていません。
+
+* **OS のサポート**: 現在、Visual Studio Code のデザイナーは Linux OS で動作しませんが、Logic Apps Preview ランタイムを使用するロジック アプリを Linux ベースの仮想マシンにデプロイすることはできます。 現在のところ、Windows または macOS の Visual Studio Code でロジック アプリを構築してから、Linux ベースの仮想マシンにデプロイすることができます。
 
 * **トリガーとアクション**: スライディング ウィンドウやバッチなど、一部の組み込みトリガーは使用できません。 ワークフローを開始するには、[組み込みの Recurrence、Request、HTTP、HTTP Webhook、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 組み込みのトリガーとアクションは、Azure Logic Apps プレビュー ランタイムでネイティブに実行されますが、マネージド コネクタは Azure にデプロイされます。 デザイナーでは、組み込みのトリガーとアクションは **[組み込み]** タブに表示されますが、マネージド コネクタのトリガーとアクションは **[Azure]** タブに表示されます。
 
