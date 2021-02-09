@@ -1,7 +1,7 @@
 ---
-title: ワークスペースで Jupyter ノートブックを実行する方法
+title: ワークスペースで Jupyter Notebooks を実行する方法
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter ノートブックを実行する方法について説明します。
+description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter Notebooks を実行する方法について説明します。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -18,9 +18,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2021
 ms.locfileid: "99061836"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebooks を実行する方法
 
-Azure Machine Learning スタジオのワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
+Azure Machine Learning スタジオのワークスペースで Jupyter Notebooks を直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,7 @@ Azure Machine Learning スタジオのワークスペースで Jupyter ノート
 
 ## <a name="create-notebooks"></a><a name="create"></a> ノートブックを作成する
 
-Azure Machine Learning ワークスペースで、新しい Jupyter ノートブックを作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
+Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks を作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
 
 新しいノートブックを作成するには: 
 
@@ -40,7 +40,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="[新しいファイルの作成]":::
 
 1. ファイルに名前を付けます。 
-1. Jupyter ノートブック ファイルの場合は、ファイルの種類として **[ノートブック]** を選択します。
+1. Jupyter Notebooks  ファイルの場合は、ファイルの種類として **[ノートブック]** を選択します。
 1. ファイル ディレクトリを選択します。
 1. **［作成］** を選択します
 
@@ -170,7 +170,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 
 [ノートブック ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、実行の進行状況とログを表示します。 ウィジェットは非同期であり、トレーニングが終了するまで更新情報が表示されます。 Azure Machine Learning ウィジェットは、Jupyter および JupterLab でもサポートされています。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="スクリーンショット: Jupyter ノートブック ウィジェット ":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="スクリーンショット: Jupyter Notebooks  ウィジェット ":::
 
 ## <a name="explore-variables-in-the-notebook"></a>ノートブックの変数を調べる
 
