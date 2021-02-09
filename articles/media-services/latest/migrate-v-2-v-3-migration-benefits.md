@@ -1,5 +1,5 @@
 ---
-title: ステップ 1 - Media Services API V3 に移行する利点を理解する | Microsoft Docs
+title: Media Services API V3 への移行の利点
 description: この記事では、Media Services V2 から V3 に移行する利点について説明します。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1e3fae35ff249b4435cf2fdcd2bf691bc393d56
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689535"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955073"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>ステップ 1 - Media Services API V3 に移行する利点を理解する
 

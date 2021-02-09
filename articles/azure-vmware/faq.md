@@ -2,13 +2,13 @@
 title: よく寄せられる質問
 description: Azure VMware Solution についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 1/27/2021
+ms.openlocfilehash: 3ef3d1b9e6fc76b5f09acf8c300dbea901b4aef2
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218588"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072270"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -79,6 +79,12 @@ Azure Bastion は、Azure VMware Solution がインターネットに公開さ�
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>既存の ExpressRoute ゲートウェイを使用して、Azure VMware Solution に接続できますか?
 はい。 仮想ネットワークあたり 4 つの ExpressRoute 回路という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。 オンプレミスから ExpressRoute 経由で Azure VMware Solution にアクセスするには、ExpressRoute Global Reach が必要です。これは、ExpressRoute ゲートウェイでは、それに接続されている回路との間で推移的なルーティングが提供されないためです。
+
+### <a name="why-does-azure-vmware-solution-use-a-public-4-byte-autonomous-system-number-asn"></a>Azure VMware Solution で 4 バイトのパブリック自律システム番号 (ASN) が使用されるのはなぜですか?
+Azure VMware Solution では、公式に登録された 4 バイトのパブリック ASN を使用することで、お客様がオンプレミスで Azure VMware Solution への顧客のルーティング パスに使用するプライベート ASN との競合が起きないことを保証しています。
+ 
+### <a name="how-can-i-use-expressroute-to-connect-to-azure-vmware-solution-if-the-on-premises-expressroute-carrier-partnersisps-dont-support-4-byte-asn"></a>オンプレミスの ExpressRoute キャリア パートナー/ISP が 4 バイトの ASN をサポートしていない場合、ExpressRoute を使用して Azure VMware Solution に接続するにはどうすればよいですか?
+ExpressRoute 経由で Azure VMware Solution に接続する唯一の方法は、お客様の環境およびオンプレミスの ExpressRoute キャリア パートナー/ISP が、BGP プレフィックス ASN パス アドバタイズメントにおいて、4 バイト ASN をサポートしているか、4 バイトから 2 バイト ASN への下位互換性を有していることです。
 
 ## <a name="compute-network-storage-and-backup"></a>コンピューティング、ネットワーク、ストレージ、およびバックアップ
 
@@ -258,7 +264,7 @@ VMware HCX Enterprise は、Azure VMware Solution で、*プレビュー* の機
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Azure VMware Solution に対するホスト クォータの増量はどのようにリクエストすればよいですか?
 
-CSP によって管理されるサブスクリプションの場合、顧客はパートナーに要求を送信する必要があります。 その後、パートナー チームは Microsoft と協力して、サブスクリプションのクォータを増やします。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」をご覧ください。 
+CSP によって管理されるサブスクリプションの場合、顧客はパートナーに要求を送信する必要があります。 その後、パートナー チームは Microsoft と協力して、サブスクリプションのクォータを増やします。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」を参照してください。 
 
 EA サブスクリプションの場合は、次の手順を使用します。 まず、次のものが必要になります。
 

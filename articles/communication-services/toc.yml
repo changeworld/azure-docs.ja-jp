@@ -51,6 +51,8 @@
   items:
     - name: Azure Functions を使用して、信頼される認証サービスを構築する
       href: tutorials/trusted-service-tutorial.md
+    - name: C# を使用して HMAC 署名で HTTP 要求に署名する
+      href: tutorials/hmac-header-tutorial.md
     - name: Communication Services 用の Web アプリを準備する (Node.js)
       href: tutorials/building-app-start.md
 - name: 概念
@@ -88,6 +90,8 @@
       href: concepts/client-and-server-architecture.md
     - name: 通話のフロー
       href: concepts/call-flows.md
+    - name: 通話フローのトポロジ
+      href: concepts/detailed-call-flows.md
     - name: クライアント ライブラリと REST API
       href: concepts/sdk-options.md
     - name: 価格モデル
@@ -108,6 +112,8 @@
       href: concepts/metrics.md
     - name: トラブルシューティング
       href: concepts/troubleshooting-info.md
+    - name: 既知の問題
+      href: concepts/known-issues.md
 - name: サンプル
   items:
     - name: グループ通話のヒーロー サンプル

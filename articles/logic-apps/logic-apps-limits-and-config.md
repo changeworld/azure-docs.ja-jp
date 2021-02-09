@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/22/2021
-ms.openlocfilehash: b16e95c231096b7b37175cda5233019696fba19c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 01/25/2021
+ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726517"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054756"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -380,27 +380,42 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
 
 <a name="configuration"></a>
+<a name="firewall-ip-configuration"></a>
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>ファイアウォールの構成:IP アドレスとサービス タグ
 
-受信および送信呼び出しで Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。 **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の [Power Automate](/power-automate/getting-started) 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
+ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [受信](#inbound)と [送信](#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。
 
-> [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、このセクションの後半で説明する各リージョンの Logic Apps IP アドレスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。
-> これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
->
-> * **LogicAppsManagement**:Logic Apps サービスの受信 IP アドレスのプレフィックスを表します。
-> * **LogicApps**:Logic Apps サービスの送信 IP アドレスのプレフィックスを表します。
+たとえば、米国西部リージョンのロジック アプリが、組み込みのトリガーとアクション ([HTTP トリガーやアクションなど](../connectors/connectors-native-http.md)) を介して送信または受信する呼び出しをサポートする場合、ファイアウォールでは、"*すべて*" の Azure Logic Apps サービスの受信 IP アドレス "*および*" 米国西部リージョンに存在する送信 IP アドレスへのアクセスを許可する必要があります。
 
-* [Azure China 21Vianet](/azure/china/) については、Azure Storage, SQL Server や Office 365 Outlook など、[カスタム コネクタ](../logic-apps/custom-connector-overview.md)や[マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)で固定または予約済みの IP アドレスを利用できません。
+また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ送信 IP アドレス](#outbound)へのアクセスを許可する必要もあります。 さらに、オンプレミスのリソースにアクセスするカスタム コネクタを [Azure 内のオンプレミス データ ゲートウェイ リソース](logic-apps-gateway-connection.md)を介して使用する場合は、ゲートウェイのインストールをセットアップして、対応する *マネージド コネクタ[送信 IP アドレス](#outbound)* へのアクセスを許可する必要があります。
 
-* ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、Logic Apps サービスで使用されるすべての [受信](#inbound) "*および*" [送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの **受信** と **送信** の見出しの下に、リージョン別に並べ替えられて表示されます。
+ゲートウェイでの通信設定の設定の詳細については、次のトピックを参照してください。
 
-* [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される *すべて* の [送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの **送信** の見出しの下に、リージョン別に並べ替えられて表示されます。
+* [オンプレミス データ ゲートウェイの通信設定を調整する](/data-integration/gateway/service-gateway-communication)
+* [オンプレミス データ ゲートウェイのプロキシ設定を構成する](/data-integration/gateway/service-gateway-proxy)
 
-* 統合サービス環境 (ISE) 内で実行されるロジック アプリの通信を有効にするため、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)ことを確認してください。
+<a name="ip-setup-considerations"></a>
 
-* [ファイアウォールとファイアウォール規則](../storage/common/storage-network-security.md)を使用する Azure ストレージアカウントへのアクセスに関する問題がロジック アプリにある場合は、[アクセスを有効にするためのさまざまなオプション](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)があります。
+### <a name="firewall-ip-configuration-considerations"></a>ファイアウォールの IP 構成に関する考慮事項
+
+IP アドレスを使用してファイアウォールを設定する前に、次の考慮事項を確認してください。
+
+* [Power Automate](/power-automate/getting-started) を使用している場合、**HTTP** 要求や **HTTP + OpenAPI** などの一部のアクションは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate の制限と構成](/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
+
+* [Azure China 21Vianet](/azure/china/) については、Azure Storage、SQL Server や Office 365 Outlook など、[カスタム コネクタ](../logic-apps/custom-connector-overview.md)や[マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)で固定または予約済みの IP アドレスを利用できません。
+
+* [統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) 内で実行されるロジック アプリの場合は、[これらのポートも開いて](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)いることを確認してください。
+
+* 作成するセキュリティ規則を簡素化するために、必要に応じて、各リージョンに IP アドレス プレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+
+  * **LogicAppsManagement**:Logic Apps サービスの受信 IP アドレスのプレフィックスを表します。
+
+  * **LogicApps**:Logic Apps サービスの送信 IP アドレスのプレフィックスを表します。
+
+  * **AzureConnectors**:Logic Apps サービスへの受信 Webhook コールバックと、Azure Storage や Azure Event Hubs などの各サービスへの送信呼び出しを行う、マネージド コネクタの IP アドレス プレフィックスを表します。
+
+* [ファイアウォールとファイアウォール規則](../storage/common/storage-network-security.md)を使用する Azure ストレージ アカウントへのアクセスに関する問題がロジック アプリにある場合は、[アクセスを有効にするためのさまざまなその他のオプション](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)があります。
 
   たとえば、ロジック アプリは、ファイアウォール規則を使用し、同じリージョンに存在するストレージ アカウントに直接アクセスすることはできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を許可する場合、Azure Table Storage または Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、代わりに HTTP のトリガーとアクションを利用できます。 その他のオプションについては、[ファイアウォールの内側でストレージ アカウントにアクセスする](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)方法に関する記事を参照してください。
 
@@ -411,9 +426,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 このセクションには、Azure Logic Apps サービスのみの受信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 受信 IP アドレス](#azure-government-inbound)」を参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。
-> マネージド コネクタの場合は、リージョンごとに受信マネージド コネクタの IP アドレス プレフィックスを指定する代わりに、必要に応じて **AzureConnectors** サービス タグを使用することができます。
-> これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。 必要に応じて、各リージョンに対して受信マネージド コネクタの IP アドレス プレフィックスを指定するのでなく、**AzureConnectors** サービス タグを、Logic Apps サービスへの受信 Webhook コールバックを行うマネージド コネクタに対して使用することもできます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
 
 <a name="multi-tenant-inbound"></a>
 
@@ -479,8 +492,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 このセクションには、Azure Logic Apps サービスとマネージド コネクタの送信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 送信 IP アドレス](#azure-government-outbound)」を参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。
-> このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。 
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。 必要に応じて、各リージョンに対して送信マネージド コネクタの IP アドレス プレフィックスを指定するのでなく、**AzureConnectors** サービス タグを、Microsoft Azure Storage または Azure Event Hubs などのそれぞれのサービスに対する送信呼び出しを行うマネージド コネクタに対して使用することもできます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
 
 <a name="multi-tenant-outbound"></a>
 

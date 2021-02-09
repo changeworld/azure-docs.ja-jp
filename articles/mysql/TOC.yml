@@ -1,6 +1,7 @@
 - name: Azure Database for MySQL のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure DB for MySQL とは
       href: overview.md
@@ -12,7 +13,6 @@
       href: concepts-version-policy.md
       displayName: version policy
 - name: シングル サーバー
-  expanded: true
   items:
     - name: シングル サーバーのドキュメント
       href: single-server/index.yml
