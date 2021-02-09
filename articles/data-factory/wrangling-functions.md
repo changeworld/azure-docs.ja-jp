@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633683"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896665"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>データ ラングリングのための Power Query の変換関数
 
@@ -24,7 +24,7 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 
 現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 マッシュアップを作成しているとき、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 サポートされている Power Query M 関数の一覧を次に示します。
 
@@ -96,7 +96,7 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 | Table.Distinct | 重複する行の削除はサポートされていません。 |
 | Table.RemoveLastN | 下端の行の削除はサポートされていません。 |
 | Table.RowCount | サポートされていませんが、値 1 が含まれるカスタム列を追加した後、その列を List.Sum で集計することによって実現できます。 Table.Group はサポートされています。 | 
-| 行レベルのエラー処理 | 行レベルのエラー処理は現在サポートされていません。 たとえば、列から数値以外の値を除外する方法の 1 つは、テキスト列を数値に変換することです。 変換が失敗したすべてのセルはエラー状態になり、フィルター処理する必要があります。 このシナリオは、ラングリング データ フローでは使用できません。 |
+| 行レベルのエラー処理 | 行レベルのエラー処理は現在サポートされていません。 たとえば、列から数値以外の値を除外する方法の 1 つは、テキスト列を数値に変換することです。 変換が失敗したすべてのセルはエラー状態になり、フィルター処理する必要があります。 このシナリオは、スケールアウトされた M では実現できません。 |
 | Table.Transpose | サポートされていません |
 | Table.Pivot | サポートされていません |
 

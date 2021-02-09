@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742218"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896479"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) のデプロイの問題: よく寄せられる質問 (FAQ)
 
@@ -50,9 +50,9 @@ ms.locfileid: "98742218"
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>サブスクリプションまたはサービスの制限/クォータ/制約が原因でクラウド サービスのデプロイが失敗することがあるのはなぜですか。
 クラウド サービスのデプロイは、割り振る必要のあるリソースが、リージョン/データセンター レベルでサービスに提供できる既定または最大のクォータを超えた場合に、失敗することがあります。 詳細については、「[Cloud Services の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)」を参照してください。
 
-ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal => [サブスクリプション] => \<appropriate subscription> => [Usage + quota] (使用量 + クォータ)。
+ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal  => [サブスクリプション]  => \<appropriate subscription> => [Usage + quota]\(使用量 + クォータ\)。
 
-リソース使用量/消費量に関連する情報は、Azure 課金 API を使用して取得することもできます。 「[Azure Resource Usage API (プレビュー)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)」を参照してください。
+リソース使用量/消費量に関連する情報は、Azure 課金 API を使用して取得することもできます。 「[Azure Consumption API の概要](../cost-management-billing/manage/consumption-api-overview.md)」を参照してください。
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>デプロイしたクラウド サービス VM のサイズを、再デプロイせずに変更するにはどうしたらよいですか。
 デプロイしたクラウド サービスの VM サイズを、再デプロイせずに変更することはできません。 VM サイズは CSDEF に組み込まれており、これを更新するには再デプロイが必要です。

@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a313633c6c1799136b8b8911ae780ca13be5d2c3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756129"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090223"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -48,7 +48,7 @@ OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.
 
 ## <a name="request-an-authorization-code"></a>承認コードを要求する
 
-承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。 この要求では、クライアントは、ユーザーからの `openid`、`offline_access`、および `https://graph.microsoft.com/mail.read ` のアクセス許可を要求します。  `Directory.ReadWrite.All` を使用した組織のディレクトリへのデータの書き込みなど、一部のアクセス許可は管理者によって制限されます。 アプリケーションが組織のユーザーにこれらのアクセス許可のいずれかへのアクセスを要求すると、ユーザーは、アプリのアクセス許可に同意する権限がないという内容のエラー メッセージを受け取ります。 管理者によって制限されるスコープへのアクセスを要求するには、社内管理者から直接要求する必要があります。  詳細については、「[管理者によって制限されるアクセス許可](v2-permissions-and-consent.md#admin-restricted-permissions)」を参照してください。
+承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。 この要求では、クライアントは、ユーザーからの `openid`、`offline_access`、および `https://graph.microsoft.com/mail.read ` のアクセス許可を要求します。  `Directory.ReadWrite.All` を使用した組織のディレクトリへのデータの書き込みなど、一部のアクセス許可は管理者によって制限されます。 アプリケーションが組織のユーザーにこれらのアクセス許可のいずれかへのアクセスを要求すると、ユーザーは、アプリのアクセス許可に同意する権限がないという内容のエラー メッセージを受け取ります。 管理者によって制限されるスコープへのアクセスを要求するには、全体管理者から直接要求する必要があります。  詳細については、「[管理者によって制限されるアクセス許可](v2-permissions-and-consent.md#admin-restricted-permissions)」を参照してください。
 
 ```
 // Line breaks for legibility only

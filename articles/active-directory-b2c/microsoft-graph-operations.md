@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805237"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952234"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -35,18 +35,33 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 - [ユーザーの更新](/graph/api/user-update)
 - [ユーザーの削除](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>ユーザーの電話番号の管理
+## <a name="user-phone-number-management-beta"></a>ユーザーの電話番号の管理 (ベータ)
+
+[SMS または音声通話](identity-provider-local.md#phone-sign-in-preview)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/authentication-post-phonemethods)
-- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
-- [アップデート](/graph/api/b2cauthenticationmethodspolicy-update)
+- [リスト](/graph/api/authentication-list-phonemethods)
+- [Get](/graph/api/phoneauthenticationmethod-get)
+- [アップデート](/graph/api/phoneauthenticationmethod-update)
 - [削除](/graph/api/phoneauthenticationmethod-delete)
 
-ユーザーのサインイン電話番号の管理の詳細については、[B2C 認証方法](/graph/api/resources/b2cauthenticationmethodspolicy)に関する記事を参照してください。
+[リスト](/graph/api/authentication-list-phonemethods)操作では、有効な電話番号のみが返されます。 リスト操作で使用するためには、次の電話番号を有効にする必要があります。 
 
-## <a name="identity-providers-user-flow"></a>ID プロバイダー（ユーザーフロー）
+![電話によるサインインを有効にする](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
-Azure AD B2C テナントのユーザーフローで使用できる ID プロバイダーを管理します。
+## <a name="self-service-password-reset-email-address-beta"></a>セルフサービス パスワード リセットのメール アドレス (ベータ)
+
+パスワードをリセットするために[ユーザー名サインイン アカウント](identity-provider-local.md#username-sign-in)で使用できるメール アドレス。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/emailauthenticationmethod) に関する記事を参照してください。
+
+- [追加](/graph/api/emailauthenticationmethod-post)
+- [リスト](/graph/api/emailauthenticationmethod-list)
+- [Get](/graph/api/emailauthenticationmethod-get)
+- [アップデート](/graph/api/emailauthenticationmethod-update)
+- [削除](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>ID プロバイダー
+
+Azure AD B2C テナントのユーザー フローで使用できる [ID プロバイダー](add-identity-provider.md)を管理します。
 
 - [Azure AD B2C テナントに登録されている ID プロバイダーの一覧表示](/graph/api/identityprovider-list)
 - [ID プロバイダーの追加](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +77,13 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 - [ユーザー フローを作成する](/graph/api/identitycontainer-post-b2cuserflows)
 - [ユーザー フローの取得](/graph/api/b2cidentityuserflow-get)
 - [ユーザー フローの削除](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a>ユーザー フローの認証方法 (ベータ)
+
+ローカル アカウントを使用してユーザーが登録を実行できるメカニズムを選択します。 ローカル アカウントは、Azure AD が ID アサーションを行うアカウントです。 詳細については、「[b2cAuthenticationMethodsPolicy リソースの種類](/graph/api/resources/b2cauthenticationmethodspolicy)」を参照してください。
+
+- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [アップデート](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>カスタム ポリシー
 

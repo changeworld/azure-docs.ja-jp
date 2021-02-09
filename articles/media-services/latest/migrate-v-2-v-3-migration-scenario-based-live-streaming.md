@@ -1,5 +1,5 @@
 ---
-title: ライブ ストリーミングのための Media Services v2 から v3 への移行シナリオに基づくガイダンス | Microsoft Docs
+title: Media Services のライブ ストリーミングの移行ガイダンス
 description: この記事では、Azure Media Services v2 から v3 への最小移行に役立つライブ ストリーミングのシナリオベースのガイダンスを提供します。
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 89fcf85b20d11664d5d1caa3fbe142fa5bbdbebc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689495"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955294"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>ライブ ストリーミングのシナリオベースの移行ガイダンス
 

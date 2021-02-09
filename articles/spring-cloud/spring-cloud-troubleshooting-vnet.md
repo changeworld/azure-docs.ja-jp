@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c2b0488663233546411b3a1b5ac1b1eb6c0b899c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8491eb02fd61f291904d57990b3785ce93239964
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887094"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935259"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>仮想ネットワークでの Azure Spring Cloud のトラブルシューティング
 
@@ -39,7 +39,7 @@ Resource Manager テンプレートを使用して Azure Spring Cloud サービ�
 |------|------|
 | Azure Spring Cloud によって作成されたリソースは、ポリシーによって許可されていません。 | ネットワーク リソースは、Azure Spring Cloud を独自の仮想ネットワークにデプロイするときに作成されます。 これらの作成をブロックする [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) が定義されているかどうかを確認してください。 作成できなかったリソースがエラー メッセージに表示されます。 |
 | サブネットにルート テーブルが関連付けられている場合は、関連付けを解除してください。 | 現在、既存のルート テーブルに関連付けられているサブネットに Azure Spring Cloud をデプロイすることはサポートされていません。関連付けを解除してから、もう一度お試しください。 |
-| 必要なトラフィックがホワイトリストに登録されていません。 | 必要なトラフィックが確実にホワイトリストに登録されるには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](spring-cloud-vnet-customer-responsibilities.md)」を参照してください。 |
+| 必要なトラフィックが許可リストに登録されていません。 | 必要なトラフィックを許可リストに登録するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](spring-cloud-vnet-customer-responsibilities.md)」を参照してください。 |
 
 ## <a name="my-application-cant-be-registered"></a>アプリケーションを登録できない
 

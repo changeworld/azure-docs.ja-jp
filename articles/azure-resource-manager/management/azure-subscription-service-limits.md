@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802896"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920471"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -175,6 +175,10 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
+
+## <a name="azure-quantum-limits"></a>Azure Quantum の制限
+
+[!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
 ## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
 

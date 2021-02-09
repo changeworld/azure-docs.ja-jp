@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804945"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895970"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
 
 ## <a name="overview"></a>概要
-Log Analytics ワークスペースのデータ エクスポートを構成すると、ワークスペースで選択されたテーブルに送信された新しいデータはすべて、自動的にストレージ アカウントにエクスポートされるか、ほぼリアルタイムで対象のイベント ハブにエクスポートされます。
+Log Analytics ワークスペースのデータ エクスポートを構成すると、ワークスペースで選択されたテーブルに送信された新しいデータはすべて、1 時間ごとの追加 BLOB でストレージ アカウントに自動的にエクスポートされるか、ほぼリアルタイムで対象のイベント ハブにエクスポートされます。
 
 ![データ エクスポートの概要](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 ## <a name="export-destinations"></a>エクスポート先
 
 ### <a name="storage-account"></a>ストレージ アカウント
-データは、Azure Monitor に到達すると、ほぼリアルタイムでストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+データは、Azure Monitor に到達し、1 時間ごとの追加 BLOB に格納されると、ストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
 
 ストレージ アカウントの BLOB パスは、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
 

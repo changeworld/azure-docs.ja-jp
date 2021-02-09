@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954751"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -25,9 +25,6 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 - **[マルチワークスペース](../log-query/cross-workspace-query.md)** - お客様が運用に複数のワークスペースを使用している場合、専用クラスターの使用をお勧めします。 すべてのワークスペースが同じクラスター上にある場合は、クロスワークスペース クエリの実行速度が速くなります。 割り当てられた容量予約レベルですべてのクラスターのインジェストが考慮されるため、専用クラスターを使用する方がコスト効率が高くなる可能性もあります。その一部が小さく、容量予約の割引の対象になっていない場合でも、すべてのワークスペースに適用されます。
 
 専用クラスターでは、1 日あたり少なくとも 1 TB のデータ インジェストの容量を使用してコミットを行う必要があります。 専用クラスターへの移行は簡単です。 データの損失やサービスの中断はありません。 
-
-> [!IMPORTANT]
-> 運用環境デプロイでは、専用クラスターが承認され、完全にサポートされます。 ただし、一時的な容量の制約があるため、この機能を使用するには事前登録が必要です。 連絡先を Microsoft に登録して、サブスクリプション ID を提供します。
 
 ## <a name="management"></a>管理 
 
@@ -84,10 +81,12 @@ Authorization: Bearer <token>
 
 "*クラスター*" リソースを作成した後、*sku*、*keyVaultProperties、*billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
 
+リージョンごと、サブスクリプションごとに最大 2 つのアクティブ クラスターを使用できます。 クラスターは、削除されても、14 日間は予約されています。 リージョンごと、サブスクリプションごとに最大 4 つの (アクティブな、または最近削除された) 予約済みクラスターを使用できます。
+
 > [!WARNING]
 > クラスターの作成によって、リソース割り当てとプロビジョニングがトリガーされます。 この操作が完了するまでに最大 1 時間かかります。 非同期的に実行することをお勧めします。
 
-クラスターを作成するユーザー アカウントには、Azure リソースの作成に関する標準的なアクセス許可 (`Microsoft.Resources/deployments/*`) およびクラスターの書き込みアクセス許可 `(Microsoft.OperationalInsights/clusters/write)` が必要です。
+クラスターを作成するユーザー アカウントには、Azure リソースの作成に関する標準的なアクセス許可 `Microsoft.Resources/deployments/*` およびクラスターの書き込みアクセス許可 `Microsoft.OperationalInsights/clusters/write` が必要です。このために、ロールの割り当てで、この特定のアクション、`Microsoft.OperationalInsights/*` または `*/write` を使用します。
 
 ### <a name="create"></a>作成 
 
@@ -506,7 +505,9 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 ## <a name="limits-and-constraints"></a>制限および制約
 
-- リージョンおよびサブスクリプションごとのクラスターの最大数は 2 です
+- リージョンおよびサブスクリプションごとのアクティブ クラスターの最大数は 2 です
+
+- リージョンおよびサブスクリプションごとの (アクティブな、または最近削除された) 予約済みクラスターの最大数は 4 です 
 
 - クラスターにリンクされたワークスペースの最大数は 1000 です
 

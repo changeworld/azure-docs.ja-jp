@@ -1,6 +1,6 @@
 ---
-title: Media Services v2 から v3 への移行のチェックリスト | Microsoft Docs
-description: この記事は、Azure Media Services v2 から v3 への最小移行に役立つチェックリストです。
+title: Media Services v2 から v3 への移行のセットアップ
+description: この記事は、Azure Media Services v2 から v3 に移行するための環境のセットアップに役立ちます。
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7d9597c16778a4ded7c1e2a7ed3ad5535b75cfde
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1f9e0816a3533008a01f26ca7c0e712abfa23e8e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689494"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946243"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>手順 3 - V3 REST API またはクライアント SDK に移行するための設定
 
