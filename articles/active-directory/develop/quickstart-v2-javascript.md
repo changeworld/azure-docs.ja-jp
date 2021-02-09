@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754159"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225716"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -55,13 +55,14 @@ ms.locfileid: "98754159"
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 > 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 **[管理]** で、 **[認証]** を選択します。
-> 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 左側のパネルが開きます。 そこで、**Web アプリケーション** のリージョンを選択します。
-> 1. 引き続き左側で、 **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 次に、 **[アクセス トークン]** と **[ID トークン]** を選択します。
+> 1. **[プラットフォーム構成]**  >  **[プラットフォームを追加]** を選択します。 **[Web]** を選択します。
+> 1. **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 
+> 1. **[暗黙的な許可およびハイブリッド フロー]** で、 **[アクセス トークン]** と **[ID トークン]** を選択します。
 > 1. **[構成]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、`redirectUri` を `http://localhost:3000/` として追加し、 **[暗黙の付与]** を有効にします。
+> このクイックスタートのサンプル コードは、**リダイレクト URI** を `http://localhost:3000/` とし、 **[暗黙的な許可]** を有効にする必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >

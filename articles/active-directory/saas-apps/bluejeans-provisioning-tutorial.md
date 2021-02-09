@@ -11,77 +11,75 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e155a253910cc5ee3f4fc71cf9ea66ced5cb46f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742116"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053857"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル: BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを BlueJeans にプロビジョニングまたは BlueJeans からプロビジョニング解除するように構成するために、BlueJeans と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために BlueJeans と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[BlueJeans](https://www.bluejeans.com/pricing) に対するユーザーのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
-> [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * BlueJeans でユーザーを作成する
+> * アクセスが不要になった BlueJeans のユーザーを削除する
+> * Azure AD と BlueJeans の間でのユーザー属性の同期を維持する
+> * BlueJeans に[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial)する (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* Azure AD テナント
-* [My Company](https://www.BlueJeans.com/pricing) プラン (有効になっているのが望ましい) を使用した BlueJeans テナント
-* Admin アクセス許可がある BlueJeans のユーザー アカウント
+* [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
+* プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* [My Company](https://www.bluejeans.com/pricing) プラン (有効になっているのが望ましい) を使用した BlueJeans テナント。
+* Admin アクセス許可がある BlueJeans のユーザー アカウント。
+* BlueJeans Enterprise で SCIM プロビジョニングが有効になっていること。
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Standard プラン以上の BlueJeans チームで使用できる [BlueJeans API](https://BlueJeans.github.io/developer) が必要です。
 
-## <a name="adding-bluejeans-from-the-gallery"></a>ギャラリーからの BlueJeans の追加
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
+2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+3. [Azure AD と BlueJeans の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。
 
-Azure AD で自動ユーザー プロビジョニング用に BlueJeans を構成する前に、Azure AD アプリケーション ギャラリーから BlueJeans を管理対象の SaaS アプリケーションの一覧に追加する必要があります。
+## <a name="step-2-configure-bluejeans-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD によるプロビジョニングをサポートするように BlueJeans を構成する
 
-**Azure AD アプリケーション ギャラリーから BlueJeans を追加するには、次の手順を実行します。**
+1. BlueJeans 管理コンソールにログインします。 [Group Settings]\(グループ設定\) の [Security]\(セキュリティ\) に移動します。
+2. **[Single Sign On]\(シングル サインオン\)** と **[Configure Now]\(今すぐ構成\)** を選択します。
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+    ![now](./media/bluejeans-provisioning-tutorial/configure.png)
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+3. **[Provision & Integration]\(プロビジョニングと統合\)** ウィンドウで **[Create and manage user accounts through IDP]\(ユーザー アカウントの作成と管理を IDP で行う\)** を選択し、 **[GENERATE TOKEN]\(トークンの生成\)** をクリックします。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+    ![generate](./media/bluejeans-provisioning-tutorial/token.png)
+    
+4. トークンをコピーして保存します。 
+5. BlueJeans テナントの URL は `https://api.bluejeans.com/v2/scim` です。 前の手順で取得した **テナント URL** と **シークレット トークン** が、Azure portal の BlueJeans アプリケーションの [プロビジョニング] タブに入力されます。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+## <a name="step-3-add-bluejeans-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから BlueJeans を追加する
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+Azure AD アプリケーション ギャラリーから BlueJeans を追加して、BlueJeans へのプロビジョニングの管理を開始します。 SSO のために BlueJeans を以前に設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-application-portal.md)を参照してください。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-4. 検索ボックスに「**BlueJeans**」と入力し、結果パネルで **[BlueJeans]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーをアプリケーションに割り当てることができます。 ユーザーの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-    ![結果一覧の BlueJeans](common/search-new-app.png)
+* BlueJeans にユーザーを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
-## <a name="assigning-users-to-bluejeans"></a>BlueJeans へのユーザーの割り当て
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーでテストします。 プロビジョニングのスコープが割り当て済みユーザーに設定される場合、これを制御するには、1 人または 2 人のユーザーをアプリに割り当てます。 スコープがすべてのユーザーに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
+## <a name="step-5-configure-automatic-user-provisioning-to-bluejeans"></a>手順 5. BlueJeans への自動ユーザー プロビジョニングを構成する
 
-自動ユーザー プロビジョニングを構成して有効にする前に、BlueJeans へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを BlueJeans に割り当てることができます。
-
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-bluejeans"></a>ユーザーを BlueJeans に割り当てる際の重要なヒント
-
-* 単一の Azure AD ユーザーを BlueJeans に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
-
-* BlueJeans にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
-
-## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>BlueJeans への自動ユーザー プロビジョニングの構成
-
-このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて BlueJeans のユーザーやグループを作成、更新、削除する手順について説明します。
-
-> [!TIP]
-> BlueJeans では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[BlueJeans シングル サインオンのチュートリアル](bluejeans-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+このセクションでは、Azure AD でのユーザーの割り当てに基づいて、TestApp でユーザーが作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Azure AD で BlueJeans の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[BlueJeans]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -91,26 +89,26 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションで、BlueJeans の [テナントの URL] と [シークレット トークン] を入力します。 **[テスト接続]** をクリックして、Azure AD から BlueJeans への接続を確保します。 接続できない場合は、使用中の BlueJeans アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. 手順 2. で取得した BlueJeans の [テナントの URL] と [シークレット トークン] を **[管理者資格情報]** セクションに入力します。 **[テスト接続]** をクリックして、Azure AD から BlueJeans への接続を確保します。 接続できない場合は、使用中の BlueJeans アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![トークン](common/provisioning-testconnection-tenanturltoken.png)
 
 
-6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーのメール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-7. **[保存]** をクリックします。
+7. **[保存]** を選択します。
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to BlueJeans]\(Azure Active Directory ユーザーを BlueJeans に同期する\)** を選択します。
 
-9. **[属性マッピング]** セクションで、Azure AD から BlueJeans に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で BlueJeans のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+9. **[属性マッピング]** セクションで、Azure AD から BlueJeans に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で BlueJeans のユーザー アカウントとの照合に使用されます。 [照合する対象の属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、その属性に基づいたユーザーのフィルター処理が BlueJeans API で確実にサポートされている必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
 |属性|Type|フィルター処理のサポート|
 |---|---|---|
@@ -137,9 +135,14 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって BlueJeans に対して実行されたすべてのアクションが記載されています。
+この操作によって、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -153,9 +156,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-
-<!--Image references-->
-
-[1]: ./media/bluejeans-provisioning-tutorial/tutorial_general_01.png
-[2]: ./media/bluejeans-tutorial/tutorial_general_02.png
-[3]: ./media/bluejeans-tutorial/tutorial_general_03.png

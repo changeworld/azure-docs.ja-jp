@@ -1,5 +1,5 @@
 ---
-title: Azure CLI のサンプル スクリプト - アカウント資格情報のリセット
+title: アカウントの資格情報をリセットする - CLI
 description: Azure CLI スクリプトを使用して、アカウントの資格情報をリセットし、app.config 設定を取得します。
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b9b95af79b8aac11f56fe576f860d719b5fb50e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6fe958c9300d6a6feeb6926f84dbecf565dfafc1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897681"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954346"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI の例: アカウント資格情報のリセット
 

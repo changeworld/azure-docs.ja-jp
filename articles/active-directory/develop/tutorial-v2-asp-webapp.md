@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753099"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226306"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -383,7 +383,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 1. 手順 1. で Visual Studio からコピーした SSL URL (たとえば `https://localhost:44368/`) を **[応答 URI]** に追加します。
 1. **[登録]** を選択します。
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[暗黙的な許可]** セクションで、 **[ID トークン]** を選択し、 **[保存]** を選択します。
+1. **[暗黙的な許可およびハイブリッド フロー]** セクションで **[ID トークン]** を選択し、 **[保存]** を選択します。
 1. `configuration\appSettings` セクションのルート フォルダーにある web.config ファイルに、次のコードを追加します。
 
     ```xml

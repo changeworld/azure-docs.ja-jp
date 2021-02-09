@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 01/26/2021
 ms.author: banders
-ms.openlocfilehash: 40eb6bbb952596e015be7c1ed29dbefb3fb6016d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12c13b8a65296fb0ee74e0ee0449b604facf2f48
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897715"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051263"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>請求およびコスト管理の自動化シナリオ
 
@@ -49,8 +49,8 @@ ms.locfileid: "98897715"
 | Usage Details               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Billing Periods             |             X             |         X        |           X          |         X        |                    |           |
 | Invoices                    |             X             |         X        |           X          |         X        |                    |           |
-| RateCard                    |             X             |                  |           X          |         X        |          X         |           |
-| Unrated Usage               |             X             |                  |           X          |                  |          X         |           |
+| Azure Retail Prices                    |             X             |                  |           X          |         X        |                    |           |
+
 
 > [!NOTE]
 > シナリオと API の対応には、Enterprise Consumption API は含まれていません。 可能であれば、新しい開発シナリオに対して一般的な Consumption API を使用します。
@@ -74,9 +74,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 -    [Usage Details API](/rest/api/consumption/usagedetails):Microsoft からすべての Azure リソースの料金と使用状況の情報が取得されます。 情報は、現在 1 日あたり測定あたり 1 回発行される使用状況詳細レコード形式で提供されます。 その情報を使用すると、すべてのリソースのコストを合算したり、特定のリソースのコスト/使用状況を調査したりすることができます。
 
--    [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)):Web Direct のお客様の場合、測定レートが取得されます。 その後、返された情報をリソース使用状況情報と共に使用して、予想される請求書を手動で計算することができます。
-
--    [Unrated Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)):Azure による測定/課金の前に、生の使用状況情報が取得されます。
+-    [Azure Retail Prices](/rest/api/cost-management/retail-prices/azure-retail-prices): 従量課金制価格を含む測定レートが取得されます。 その後、返された情報をリソース使用状況情報と共に使用して、予想される請求書を手動で計算することができます。
 
 ### <a name="billing"></a>課金
 -    [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods):分析する請求期間を、その期間の請求書 ID と共に決定します。 Invoices API で請求書 ID を使用できます。
@@ -107,16 +105,6 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 - Consumption API は、いくつかの例外はありますが、すべてのユーザーが利用できます。 詳細については、「[Azure Consumption API の概要](consumption-api-overview.md)」と [Azure Consumption API リファレンス](/rest/api/consumption/)のページを参照してください。 用意されている API を最新の開発シナリオに対するソリューションとして使用することをお勧めします。
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Usage Details API と Usage API の違いは何ですか?
-これらの API は、根本的に異なるデータを提供します。
-
-- [Usage Details API](/rest/api/consumption/usagedetails) は、測定インスタンスあたりの Azure の使用状況とコスト情報を提供します。 提供されるデータは、Azure のコスト測定システム経由で既に渡され、他の適用可能な変更と共にコストが適用されます。
-
-   - Azure 前払いの使用の原因となる変更
-   - Azure によって検出された使用状況の不一致の原因となる変更
-
-- [Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) では、Azure のコスト測定システムを経由する前の生の Azure 使用状況情報が提供されます。 このデータは、Azure の課金測定システムの後に表示される使用状況または課金額とは相関関係がない場合があります。
-
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Invoice API と Usage Details API の違いは何ですか?
 これらの API は、同じデータの異なるビューを提供します。
 
@@ -129,7 +117,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 - [Price Sheet API](/rest/api/consumption/pricesheet) は、1 社のお客様向けの交渉されたカスタムの価格を提供します。
 
-- [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) では、Web Direct のお客様に適用される公開価格が提供されます。
+- [Azure Retail Prices API](/rest/api/cost-management/retail-prices/azure-retail-prices) では、Web Direct のお客様に適用される公開従量課金制価格が提供されます。
 
 ## <a name="next-steps"></a>次のステップ
 

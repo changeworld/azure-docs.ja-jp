@@ -1,8 +1,23 @@
 ---
-title:Azure Media Services イベントを Azure Log Analytics に格納する:Azure Media Services の説明:Azure Media Services イベントを Azure Log Analytics に格納する方法を学習します。
-services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: ms.topic: tutorial ms.date:08/24/2020 ms.author: inhenkel
+title: Media Services イベントを Azure Log Analytics に格納する
+description: Azure Media Services イベントを Azure Log Analytics に格納する方法を学習します。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: tutorial
+ms.date: 08/24/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954531"
 ---
-
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>チュートリアル:Azure Media Services イベントを Azure Log Analytics に格納する
 
 ## <a name="azure-media-services-events"></a>Azure Media Services イベント

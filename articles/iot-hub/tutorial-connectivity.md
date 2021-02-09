@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621446"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538700"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -66,15 +66,15 @@ node --version
 
 ポータルにサインインし、IoT ハブに移動します。 次に、**IoT デバイス** ツールに移動します。
 
-![IoT デバイス ツール](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="IoT デバイス ツール":::
 
-新しいデバイスを登録するには、 **[+ 追加]** をクリックし、 **[デバイス ID]** を **MyTestDevice** に設定して **[保存]** をクリックします。
+新しいデバイスを登録するには、 **[+ 新規]** をクリックし、 **[デバイス ID]** を **MyTestDevice** に設定して、 **[保存]** をクリックします。
 
-![新しいデバイスを追加する](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="新しいデバイスを追加する":::
 
-**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でその接続文字列をクリックし、 **[接続文字列 - 主キー]** の値をコピーします。 接続文字列には、デバイスの *共有アクセス キー* が含まれています。
+**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でこのデバイスをクリックし、 **[プライマリ接続文字列]** の値をコピーします。 接続文字列には、デバイスの *共有アクセス キー* が含まれています。
 
-![デバイス接続文字列を取得する](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="デバイスの接続文字列を取得する}":::
 
 IoT ハブにテレメトリを送信する **MyTestDevice** をシミュレートするには、前にダウンロードした Node.js のシミュレートされたデバイス アプリケーションを実行します。
 
@@ -176,7 +176,7 @@ SAS トークンを使用してハブに接続しようとすると、ターミ�
 まず、次のコマンドを使用して、シミュレートされたデバイスの現在の接続文字列を取得します。
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 メッセージを送信するシミュレートされたデバイスを実行するには、ダウンロードしたコードの **iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
@@ -218,7 +218,7 @@ az iot hub invoke-device-method --device-id MyTestDevice --method-name TestMetho
 
 ![シミュレートされたデバイスでダイレクト メソッド呼び出しを受信する](media/tutorial-connectivity/receive-method-call.png)
 
-シミュレートされたデバイスがダイレクト メソッド呼び出しを正常に受信すると、ハブに受信確認を返します。
+シミュレートされたデバイスは、ダイレクト メソッド呼び出しを正常に受信すると、ハブに受信確認を返します。
 
 ![ダイレクト メソッドの受信確認を受信する](media/tutorial-connectivity/method-acknowledgement.png)
 

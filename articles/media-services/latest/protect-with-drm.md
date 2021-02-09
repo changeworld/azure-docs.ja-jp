@@ -1,9 +1,25 @@
 ---
-title:Azure Media Services DRM の暗号化とライセンス配信サービス:Azure Media Services の説明:Microsoft PlayReady、Google Widevine、または Apple FairPlay のライセンスで暗号化されたストリームを、DRM 動的暗号化とライセンス販売サービスを使用して配信する方法について説明します。
-services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
-
-ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date:08/31/2020 ms.author: inhenkel ms.custom: seodec18
-
+title: Media Services DRM の暗号化とライセンス配信
+description: Microsoft PlayReady、Google Widevine、または Apple FairPlay のライセンスで暗号化されたストリームを、DRM 動的暗号化とライセンス販売サービスを使用して配信する方法について説明します。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955175"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 

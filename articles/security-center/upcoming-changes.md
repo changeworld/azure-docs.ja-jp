@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757713"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475592"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -38,7 +38,7 @@ ms.locfileid: "98757713"
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes ワークロード保護の推奨事項が間もなく一般提供 (GA) リリースへ
 
-**変更予定日:** 2021 年 1 月
+**変更予定日:** 2021 年 2 月
 
 「[Kubernetes ワークロードを保護する](kubernetes-workload-protections.md)」で説明されている Kubernetes ワークロード保護の推奨事項は、現在プレビュー段階です。 プレビュー段階の推奨事項の観点からリソースが異常と見なされることはなく、これらの推奨事項はセキュア スコアの計算にも含まれません。
 
@@ -83,7 +83,7 @@ Kubernetes ワークロード保護の推奨事項は次のとおりです。
 
 **変更予定日:** 2021 年第 2 四半期
 
-"**データ分類の適用**" セキュリティ コントロールにおける現行バージョンの推奨事項 "**SQL データベースの機密データを分類する必要がある**" は非推奨となり、より Microsoft のデータ分類戦略に沿った新しいバージョンに置き換えられる予定です。 その結果、次のような影響が出ています。
+"**データ分類の適用**" セキュリティ コントロールにおける現行バージョンの推奨事項 "**SQL データベースの機密データを分類する必要がある**" は、より Microsoft のデータ分類戦略に沿った新しいバージョンに置き換えられる予定です。 その結果、次のような影響が出ています。
 
 - 今後、推奨事項はセキュア スコアに影響しません。
 - 今後、セキュリティ コントロール ("データ分類の適用") はセキュア スコアに影響しません。

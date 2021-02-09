@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798580"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500418"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -140,6 +140,10 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure Virtual WAN への支店接続とは
 
 ブランチまたは VPN デバイスから Azure Virtual WAN への接続は、仮想ハブ内の VPN サイトと Azure VPN Gateway を仮想的に接続する VPN 接続にすぎません。
+
+### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>オンプレミスの VPN デバイスに、Azure Virtual WAN VPN ゲートウェイへのトンネルが 1 つしかなかった場合はどうなりますか。
+
+Azure Virtual WAN 接続は、2 つのトンネルから成ります。 Virtual WAN VPN ゲートウェイは、アクティブ/アクティブ モードで仮想ハブにデプロイされます。つまり、オンプレミス デバイスから各インスタンスを終点とするトンネルが別々に存在します。すべてのユーザーには、これが推奨されます。 ただし、Virtual WAN VPN ゲートウェイ インスタンス 1 つに対してユーザーがトンネルを 1 つしか確保していない場合、なんらかの理由 (メンテナンス、パッチなど) でゲートウェイ インスタンスがオフラインになると、トンネルはセカンダリ アクティブ インスタンスに移動され、再接続が生じることがあります。 また、BGP セッションはインスタンス間で移動されないことに注意してください。
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>オンプレミスの VPN デバイスは、複数のハブに接続できますか。
 
