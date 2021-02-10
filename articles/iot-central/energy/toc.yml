@@ -5,6 +5,7 @@
     - name: Azure IoT Central を使用したエネルギー ソリューションの構築
       href: overview-iot-central-energy.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: スマート メーター監視アプリを作成する
       href: tutorial-smart-meter-app.md

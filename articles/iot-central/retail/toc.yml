@@ -5,6 +5,7 @@
     - name: Azure IoT Central を使用した小売ソリューションの構築
       href: overview-iot-central-retail.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: ストア内の分析チェックアウト
       items:

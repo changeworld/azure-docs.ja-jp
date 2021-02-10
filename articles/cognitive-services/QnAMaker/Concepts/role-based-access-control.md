@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954108"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988027"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>他の作成者や編集者との共同作業
 
@@ -46,7 +46,7 @@ QnA Maker リソースに設定された Azure ロールベースのアクセス
 
 ## <a name="authenticate-by-qna-maker-portal"></a>QnA Maker ポータルによる認証
 
-QnA Maker ポータルを使用して作成および共同作業を行う場合、[コラボレーター用のリソースに適切なロールを追加する](../index.yml)と、QnA Maker ポータルによってすべてのアクセス許可が管理されます。
+QnA Maker ポータルを使用して作成および共同作業を行う場合、コラボレーター用のリソースに適切なロールを追加すると、QnA Maker ポータルによってすべてのアクセス許可が管理されます。
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>QnA Maker API および SDK による認証
 
@@ -54,4 +54,4 @@ REST または SDK を介して API を使用して作成および共同作業�
 
 ## <a name="next-step"></a>次のステップ
 
-* [言語](../index.yml)および[クライアント アプリケーション](../index.yml)用のナレッジ ベースを設計する
+* 言語およびクライアント アプリケーション用のナレッジ ベースを設計する

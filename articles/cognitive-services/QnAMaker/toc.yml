@@ -30,6 +30,8 @@
       href: Concepts/azure-resources.md
     - name: データ ソースとコンテンツ
       href: Concepts/data-sources-and-content.md
+    - name: Azure ロールベースのアクセス制御 (Azure RBAC)
+      href: Concepts/role-based-access-control.md
     - name: ランカー プロセス
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -46,7 +48,7 @@
     - name: Azure のリソースを管理する
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: QnA Maker アプリの管理
+    - name: QnA Maker のリソース アクセスを管理する
       href: How-To/manage-qna-maker-app.md
     - name: アクティブ ラーニングを有効にする
       href: How-To/use-active-learning.md
@@ -92,8 +94,6 @@
       href: Concepts/confidence-score.md
     - name: トラブルシューティング
       href: troubleshooting.md
-    - name: 質問と回答のペア
-      href: Concepts/question-answer-set.md
     - name: 正確な回答
       href: reference-precise-answering.md
     - name: セキュリティで保護された SharePoint ファイルの追加
@@ -105,14 +105,6 @@
       href: reference-app-service.md
     - name: コンテンツ形式のガイドライン
       href: reference-document-format-guidelines.md
-    - name: コンテンツとデータの形式
-      items:
-        - name: コンテンツ形式のガイドライン
-          href: reference-document-format-guidelines.md
-        - name: URL
-          href: reference-document-type-url.md
-        - name: データのインポートとエクスポートのガイドライン
-          href: reference-data-guidelines.md
     - name: 表示形式
       href: reference-markdown-format.md
     - name: プライベート リンク

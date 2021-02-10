@@ -530,6 +530,8 @@
   items:
     - name: Azure コミュニティ サポート
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: パートナーの紹介
+      href: resource-partners-knowledge-mining.md
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: フィードバック フォーラム (UserVoice)
@@ -554,8 +556,6 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 開発者向けコース (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: パートナー ソリューション
-      href: resource-partners-knowledge-mining.md
     - name: よく寄せられる質問
       href: search-faq-frequently-asked-questions.md
     - name: 価格

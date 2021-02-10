@@ -40,7 +40,7 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: チュートリアル
   items:
-    - name: 動的な構成の有効化
+    - name: ポーリング モデルを使用して動的な構成を有効にする
       items:
         - name: ASP.NET Core
           href: enable-dynamic-configuration-aspnet-core.md
@@ -52,6 +52,10 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
+    - name: プッシュ モデルを使用して動的な構成を有効にする
+      items:
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
     - name: 機能フラグの使用
       items:
         - name: ASP.NET Core

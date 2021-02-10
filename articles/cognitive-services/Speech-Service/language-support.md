@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 118ab33c8d8ce46559957236daa21ba494655e69
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662932"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526281"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -392,10 +392,30 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 ### <a name="customization"></a>カスタマイズ
 
-音声のカスタマイズは、`de-DE`、`en-GB`、`en-IN`、`en-US`、`es-MX`、`fr-FR`、`it-IT`、`pt-BR`、および `zh-CN` に使用できます。 カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
+Custom Voice は、標準およびニューラル レベルで使用できます。 サポートされている言語は、これら 2 つのレベルで異なります。 
+
+| Language | Locale | Standard | ニューラル |
+|--|--|--|--|
+| 中国語 (標準、簡体字) | `zh-CN` | はい | はい |
+| 中国語 (標準、簡体字)、英語バイリンガル | `zh-CN` バイリンガル | はい | はい |
+| 英語 (オーストラリア) | `en-AU` | いいえ | はい |
+| 英語 (インド) | `en-IN` | はい | はい |
+| 英語 (イギリス) | `en-GB` | はい | はい |
+| 英語 (米国) | `en-US` | はい | はい |
+| フランス語 (カナダ) | `fr-CA` | いいえ | はい |
+| フランス語 (フランス) | `fr-FR` | はい | はい |
+| ドイツ語 (ドイツ) | `de-DE` | はい | はい |
+| イタリア語 (イタリア) | `it-IT` | はい | はい |
+| 日本語 (日本) | `ja-JP` | いいえ | はい |
+| 韓国語 (韓国) | `ko-KR` | いいえ | はい |
+| ポルトガル語 (ブラジル) | `pt-BR` | はい | はい |
+| スペイン語 (メキシコ) | `es-MX` | はい | はい |
+| スペイン語 (スペイン) | `es-ES` | いいえ | はい |
+
+カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
 
 > [!NOTE]
-> Custom Voice では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 すべてのロケールの音声トレーニングは、任意のサイズのトレーニング データから始めることができる `en-US` と `zh-CN` を除き、2,000 以上の発話のデータ セットから始まります。
+> Custom Voice では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 標準方法を使用した中国語 - 英語バイリンガル モデルのトレーニングは、北ヨーロッパと米国中北部のみで使用できます。 カスタム ニューラル音声のトレーニングは、英国南部と米国東部で使用できます。
 
 ## <a name="speech-translation"></a>音声翻訳
 
@@ -497,7 +517,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 |スペイン語 (メキシコ)     | es-MX     | 該当なし |     はい |     はい|
 |スペイン語 (スペイン)     | es-ES | 該当なし     | はい |     はい|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

@@ -58,6 +58,8 @@
 - name: 概念
   expanded: false
   items:
+    - name: Teams の相互運用性
+      href: concepts/teams-interop.md
     - name: チャット
       items:
         - name: チャット クライアント ライブラリの概要
@@ -78,8 +80,6 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 音声とビデオに関する概念
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Teams の相互運用性
-          href: concepts/voice-video-calling/teams-interop.md
     - name: UI フレームワーク
       items:
         - name: UI フレームワークの概要

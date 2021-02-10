@@ -766,6 +766,8 @@
                   href: troubleshoot-not-found.md
                 - name: 承認されていない問題のトラブルシューティング
                   href: troubleshoot-unauthorized.md
+                - name: 禁止の問題のトラブルシューティング
+                  href: troubleshoot-forbidden.md
                 - name: 複数リージョン環境での可用性の問題
                   href: troubleshoot-sdk-availability.md
             - name: .NET

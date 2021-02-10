@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 57d3607b2076b7a5990361278c8c1372fff1b711
-  ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+  ms.openlocfilehash: 2f792ffb95323444d8666c4c676025995f5db438
+  ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/01/2021
-  ms.locfileid: "99225591"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "99979472"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -71,6 +71,12 @@ productDirectory:
     - ai-machine-learning
     - analytics
     url: /azure/databricks/
+  - title: Health Bot
+    summary: 仮想医療アシスタントの開発向けに特化されたマネージド サービス。
+    imageSrc: media/index/health-bot-logo.svg
+    azureCategories:
+    - ai-machine-learning
+    url: /azure/health-bot/
   - title: Azure Machine Learning
     summary: 実験とモデル管理ができる、エンドツーエンドのスケーラブルで信頼性の高いプラットフォームで、すべてのユーザーが AI を使えるようにする
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -1129,13 +1135,13 @@ productDirectory:
     azureCategories:
     - security
     url: security-center/azure-defender.md
-  - title: Azure Defender for IoT (プレビュー)
+  - title: Azure Defender for IoT
     summary: アンマネージドとマネージド両方の IoT または OT デバイスの継続的なアセット管理と脅威検出
     imageSrc: ./media/index/defender-iot.svg
     azureCategories:
     - security
     - iot
-    url: ./security-center/azure-defender.md
+    url: ./defender-for-iot/index.yml
   - title: Azure DDoS Protection
     summary: お客様のアプリケーションを分散型サービス拒否 (DDoS) 攻撃から保護
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg

@@ -6,16 +6,16 @@ ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5809494fb8b619569316a24816a2e5d943dee6b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a739907ce0a3b0b6dfcb8791b51d0ea5e7e76e7
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013131"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594012"
 ---
 # <a name="stage-space"></a>ステージ空間
 
-HoloLens 2 のようなヘッド トラッキング データを提供するデバイスで ARR を実行すると、頭部姿勢がユーザー アプリケーションとサーバーの両方に送信されます。 この頭部の変化が定義されている空間は、*ステージ空間*と呼ばれます。
+HoloLens 2 のようなヘッド トラッキング データを提供するデバイスで ARR を実行すると、頭部姿勢がユーザー アプリケーションとサーバーの両方に送信されます。 この頭部の変化が定義されている空間は、*ステージ空間* と呼ばれます。
 
 ローカルとリモートのコンテンツを配置するため、クライアントとサーバーの両方で、ステージ空間とワールド空間が同じであることを前提としています。 ユーザーがカメラの上にさらに変化を加えることにした場合は、ローカルとリモートのコンテンツを正しく配置するために、サーバーにも送信する必要があります。
 
@@ -33,9 +33,9 @@ HoloLens 2 のようなヘッド トラッキング データを提供するデ�
 > [デスクトップ シミュレーション](../../concepts/graphics-bindings.md)では、カメラのワールド空間における位置はユーザー アプリケーションによって提供されます。 この場合、ステージ空間の原点の設定は既にカメラの変化に乗算されているため、スキップする必要があります。
 
 ```cs
-void ChangeStageSpace(AzureSession session)
+void ChangeStageSpace(RenderingSession session)
 {
-    StageSpaceSettings settings = session.Actions.StageSpaceSettings;
+    StageSpaceSettings settings = session.Connection.StageSpaceSettings;
 
     // Set position and rotation to the world-space transform of the stage space.
     settings.Position = new Double3(0, 0, 0);
@@ -44,9 +44,9 @@ void ChangeStageSpace(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeStageSpace(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<StageSpaceSettings> settings = session->Actions()->GetStageSpaceSettings();
+    ApiHandle<StageSpaceSettings> settings = session->Connection()->GetStageSpaceSettings();
 
     // Set position and rotation to the world-space transform of the stage space.
     settings->SetPosition({0, 0, 0});

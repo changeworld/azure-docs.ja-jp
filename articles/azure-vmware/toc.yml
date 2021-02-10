@@ -107,7 +107,7 @@
         - name: デプロイの失敗のサポート リクエストをオープンする
           href: fix-deployment-provisioning-failures.md
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
 - name: リファレンス
   items:
     - name: Azure CLI

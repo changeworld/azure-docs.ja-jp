@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790479"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525740"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -60,9 +60,11 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 | 韓国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 北ヨーロッパ | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 南アフリカ北部 | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南アジア | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国中西部 | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -277,5 +279,5 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 ## <a name="next-steps"></a>次のステップ
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
-- [長い形式の音声の非同期合成](./long-audio-api.md)
+- [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [カスタム音声の概要](how-to-custom-voice.md)

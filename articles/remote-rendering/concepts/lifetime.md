@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0945b35f7aff8e93a1a3ba23b89db288db3d8efa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80679409"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593893"
 ---
 # <a name="object-and-resource-lifetime"></a>オブジェクトとリソースの有効期間
 
-Azure Remote Rendering では、**オブジェクト**と**リソース**の 2 つの種類は区別されます。
+Azure Remote Rendering では、**オブジェクト** と **リソース** の 2 つの種類は区別されます。
 
 ## <a name="object-lifetime"></a>オブジェクトの有効期間
 
@@ -32,7 +32,7 @@ Azure Remote Rendering では、**オブジェクト**と**リソース**の 2 �
 
 ### <a name="built-in-resources"></a>組み込みリソース
 
-Azure Remote Rendering には、いくつかの組み込みリソースが含まれています。それらは、`AzureSession.Actions.LoadXYZAsync()` の呼び出し時に、それぞれの識別子の前に `builtin://` を付加することによって読み込むことができます。 使用可能な組み込みリソースは、それぞれの機能のドキュメントに記載されています。 たとえば、[空の章](../overview/features/sky.md)には、組み込まれている空のテクスチャが一覧表示されています。
+Azure Remote Rendering には、いくつかの組み込みリソースが含まれています。それらは、`RenderingSession.Connection.LoadXYZAsync()` の呼び出し時に、それぞれの識別子の前に `builtin://` を付加することによって読み込むことができます。 使用可能な組み込みリソースは、それぞれの機能のドキュメントに記載されています。 たとえば、[空の章](../overview/features/sky.md)には、組み込まれている空のテクスチャが一覧表示されています。
 
 ## <a name="general-lifetime"></a>一般的な有効期間
 

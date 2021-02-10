@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131129"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585094"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル 
 
@@ -35,7 +35,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 |:-----|:----|:----|:----|
 | ContactNames | オブジェクトの配列 | 名刺から抽出された連絡先の名前 | [{ "FirstName":"John", "LastName":"Doe" }] |
 | FirstName | string | 連絡先の名 | "John" | 
-| LastName | string | 連絡先の姓 |   "Doe" | 
+| LastName | string | 連絡先の姓 |     "Doe" | 
 | CompanyNames | 文字列の配列 | 名刺から抽出された会社名 | ["Contoso"] | 
 | Departments | 文字列の配列 | 連絡先の部署または組織 | ["R&D"] | 
 | JobTitles | 文字列の配列 | リストされている連絡先の役職 | ["Software Engineer"] | 
@@ -45,7 +45,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 | MobilePhones | 電話番号の配列 | 名刺から抽出された携帯電話番号 | ["+19876543210"] |
 | Fax | 電話番号の配列 | 名刺から抽出された Fax 電話番号 | ["+19876543211"] |
 | WorkPhones | 電話番号の配列 | 名刺から抽出された勤務先電話番号 | ["+19876543231"] |
-| OtherPhones    | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
+| OtherPhones     | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
 
 
 また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。  

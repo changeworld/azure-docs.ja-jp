@@ -5,9 +5,12 @@
     - name: Azure IoT Central を使用したヘルスケア ソリューションの構築
       href: overview-iot-central-healthcare.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: 患者の継続的なモニタリング アプリを作成する
       href: tutorial-continuous-patient-monitoring.md
+    - name: 正常性データ トリアージ ダッシュボードを作成する
+      href: howto-health-data-triage.md
 - name: 概念
   items:
     - name: 患者の継続的なモニタリングのアーキテクチャ
@@ -18,8 +21,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: 操作方法ガイド
   items:
-    - name: 正常性データ トリアージ ダッシュボードを作成する
-      href: howto-health-data-triage.md
     - name: デバイスを接続して開発する
       items:
         - name: Rigado Cascade 500 を準備して接続する
