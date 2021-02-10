@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951312"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539486"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 

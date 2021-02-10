@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 99703acc4965a38337a39fe23cc19cafddd1531d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791122"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550880"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -53,7 +53,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 
 Azure は絶えずデータの脅威を監視します。 Azure SQL を使用すると、次のことができます。
 
-- インテリジェントで、かつ[高度な脅威検出](../security/fundamentals/threat-detection.md#advanced-threat-detection-features-other-azure-services)とプロアクティブな脆弱性評価アラートを使用して、潜在的な脅威をリアルタイムで修復します。 
+- インテリジェントで、かつ[高度な脅威検出](../security/fundamentals/threat-detection.md#threat-protection-features-other-azure-services)とプロアクティブな脆弱性評価アラートを使用して、潜在的な脅威をリアルタイムで修復します。 
 - T-SQL、認証、ネットワーク、キー管理など、[組み込みのセキュリティ制御](https://azure.microsoft.com/overview/security/)を使用して、業界をリードする多層的な保護を実現します。 
 - クラウド データベース サービスの中で最も包括的な[コンプライアンス](https://azure.microsoft.com/overview/trusted-cloud/compliance/)を活用します。 
 

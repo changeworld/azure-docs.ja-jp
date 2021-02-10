@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e987f96402f4c922bdaca8ecf32348bc99c34199
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798034"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575383"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用の Azure セキュリティ ベースライン
 
@@ -64,7 +64,7 @@ Azure で 2 つ以上の仮想ネットワークを接続するには、Virtual 
 
 - [Azure VPN の概要](../vpn-gateway/vpn-gateway-about-vpngateways.md) 
 
-- [仮想ネットワーク ピアリング](/azure/virtual-network/virtual-network-peering-overvie)
+- [仮想ネットワーク ピアリング](/azure/virtual-network/virtual-network-peering-overview)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -96,7 +96,7 @@ Windows Virtual Desktop は Web アプリを実行するためのものではな
 
 - [Azure Marketplace にはサードパーティの IDS 機能が含まれる](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
-- [Microsoft Defender の ATP EDR 機能](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [Microsoft Defender の ATP EDR 機能](/bs-cyrl-ba/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -310,7 +310,7 @@ Azure AD アクセス レビューを使用して、グループ メンバーシ
 
 Azure Active Directory (Azure AD)、Microsoft Defender Advanced Threat Protection (ATP)、または Microsoft Intune を使用して、管理タスクのためにセキュリティで保護されたマネージド ユーザー ワークステーションを展開します。 セキュリティで保護されたワークステーションを一元管理して、強力な認証、ソフトウェアとハードウェアのベースライン、制限された論理アクセスとネットワーク アクセスなどのセキュリティで保護された構成を実施できます。
 
-- [特権アクセス ワークステーションを理解する](/azure/active-directory/devices/concept-azure-managed-workstation) 
+- [特権アクセス ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [特権アクセス ワークステーションを展開する](/azure/active-directory/devices/howto-azure-managed-workstation)
 
@@ -488,7 +488,7 @@ Azure 仮想マシンのインベントリを使用して、Virtual Machines 上
 
 ## <a name="logging-and-threat-detection"></a>ログと脅威検出
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)」を参照してください。*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1:Azure リソースの脅威検出を有効にする
 
@@ -684,7 +684,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="posture-and-vulnerability-management"></a>体制と脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)」を参照してください。*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: コンピューティング リソースにセキュリティで保護された構成を確立する
 
@@ -765,9 +765,9 @@ Azure Automation Update Management またはサードパーティのソリュー
 
 サードパーティ製ソフトウェアにはサードパーティの修正プログラム管理ソリューションを使用し、Configuration Manager には System Center Updates Publisher を使用します。
 
-- [Azure で仮想マシンに対して Update Management を構成する方法](/azure/automation/automation-update-management) 
+- [Azure で仮想マシンに対して Update Management を構成する方法](/azure/automation/update-management/overview) 
 
-- [Azure VM の更新プログラムとパッチの管理](/azure/automation/automation-tutorial-update-management)
+- [Azure VM の更新プログラムとパッチの管理](/azure/automation/update-management/manage-updates-for-vm)
 
 - [Microsoft Endpoint Configuration Manager を Windows Virtual Desktop 向けに構成する](configure-automatic-updates.md)
 
@@ -928,9 +928,9 @@ Azure Backup のセキュリティ機能の概要 (/azure/backup/security-overvi
 
 - [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure セキュリティ ベンチマーク - アセット管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure セキュリティ ベンチマーク - データ保護](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -958,7 +958,7 @@ Azure Backup のセキュリティ機能の概要 (/azure/backup/security-overvi
 
 **ガイダンス**:個々の資産とそれらがホストされている環境に対するリスクを継続的に測定し、軽減します。 高い価値を持つ資産と、攻撃に晒される可能性の高い部分 (公開されたアプリケーション、ネットワークのイングレス ポイントとエグレス ポイント、ユーザーと管理者のエンドポイントなど) を優先します。
 
-- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -999,7 +999,7 @@ Azure Backup のセキュリティ機能の概要 (/azure/backup/security-overvi
 詳細については、次のリファレンスを参照してください。
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md)
 
@@ -1027,9 +1027,9 @@ Azure Backup のセキュリティ機能の概要 (/azure/backup/security-overvi
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ID 管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure セキュリティ ベンチマーク - ID 管理](/azure/automation/update-management/overview)
 
-- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure セキュリティ ベンチマーク - 特権アクセス](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -1061,9 +1061,9 @@ Azure Backup のセキュリティ機能の概要 (/azure/backup/security-overvi
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure セキュリティ ベンチマーク - ログと脅威検出](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure セキュリティ ベンチマーク - インシデント対応](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

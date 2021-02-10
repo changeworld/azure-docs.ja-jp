@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567483"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555928"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -66,11 +66,13 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
 - **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
     
+    - [Agari のフィッシング対策とブランド保護](connect-agari-phishing-defense.md)
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
     - [BETTER Mobile Threat Defense](connect-better-mtd.md)
     - [Beyond Security beSECURE](connect-besecure.md)
+    - [Cisco Umbrella](connect-cisco-umbrella.md)
     - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -95,6 +97,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
     - **ファイアウォール、プロキシ、エンドポイント - CEF:**
         - [AI Vectra 検出](connect-ai-vectra-detect.md)
+        - [Akamai セキュリティ イベント](connect-akamai-security-events.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Citrix WAF](connect-citrix-waf.md)
@@ -104,6 +107,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
+        - [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
         - [Thycotic Secret Server](connect-thycotic-secret-server.md)
@@ -113,6 +117,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Zscaler](connect-zscaler.md)
         - [その他の CEF ベースのアプライアンス](connect-common-event-format.md)
     - **ファイアウォール、プロキシ、エンドポイント - Syslog:**
+        - [Active Directory 用の Alsid](connect-alsid-active-directory.md)
         - [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
@@ -122,6 +127,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [その他の Syslog ベースのアプライアンス](connect-syslog.md)
+    - [Apache HTTP Server](connect-apache-http-server.md)
     - DLP ソリューション
     - [脅威インテリジェンス プロバイダー](connect-threat-intelligence.md)
     - [DNS マシン](connect-dns.md) - DNS マシンに直接インストールされたエージェント
@@ -132,7 +138,6 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 ## <a name="agent-connection-options"></a>エージェントの接続オプション<a name="agent-options"></a>
 
 外部のアプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントのデプロイは、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
-
 
 ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 

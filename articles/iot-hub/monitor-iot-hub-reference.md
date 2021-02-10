@@ -5,13 +5,14 @@ author: robinsh
 ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
+ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: 609c44991e7deca183321758fabdef80b71210c5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460856"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581603"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub の監視データのリファレンス
 
@@ -559,7 +560,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | device-to-cloud メッセージのサイズ (バイト単位) |
 | **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
@@ -593,7 +594,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | String | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
 | **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
@@ -625,7 +626,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | ルーティング エンドポイントの名前 |
 | **endpointType** | String | ルーティング エンドポイントの種類 |

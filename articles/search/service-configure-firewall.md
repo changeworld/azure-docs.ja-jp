@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932799"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573247"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Azure Cognitive Search 用に IP ファイアウォールを構成する
 
@@ -31,7 +31,7 @@ Azure portal で IP アクセス制御ポリシーを設定するには、Azure 
 Azure portal では、CIDR 形式で IP アドレスと IP アドレス範囲を指定できます。 CIDR 表記の例として、8.8.8.0/24 があります。これは、8.8.8.0 から 8.8.8.255 の範囲の IP を表しています。
 
 > [!NOTE]
-> Azure Cognitive Search サービスに対して IP アクセス制御ポリシーを有効にした後は、許可された IP アドレス範囲リストに含まれていないマシンからのデータ プレーンへの要求はすべて拒否されます。 IP 規則が構成されている場合は、Azure portal の一部の機能が無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
+> Azure Cognitive Search サービスに対して IP アクセス制御ポリシーを有効にした後は、許可された IP アドレス範囲リストに含まれていないマシンからのデータ プレーンへの要求はすべて拒否されます。 IP 規則が構成されている場合は、Azure portal の一部の機能が無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。 ポータルの代わりに、[VS Code 拡張機能](https://aka.ms/vscode-search)を使用して、サービス内のさまざまなコンポーネントを操作することもできます。
 
 ### <a name="requests-from-your-current-ip"></a>現在ご利用の IP からの要求
 

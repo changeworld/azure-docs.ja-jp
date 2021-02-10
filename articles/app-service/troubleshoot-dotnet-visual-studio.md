@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147742"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576584"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -469,7 +469,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
     :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="ファイルが抽出された後の .zip ファイルのフォルダー構造のスクリーンショット。":::
 
    * アプリケーション トレース ログは、*LogFiles\Application* フォルダーの *.txt* ファイルに記録されます。
-   * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
+   * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22) などのツールを使って行うことができます。
    * 詳細なエラー メッセージのログは、*LogFiles\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
 
      (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。 *Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)  
@@ -678,7 +678,7 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 ### <a name="analyzing-web-server-logs"></a>Web サーバーのログの分析
 Web サーバーのログの分析の詳細については、次のリソースを参照してください。
 
-* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.iis.net/downloads/community/2010/04/log-parser-22)<br/>
   Web サーバーのログ ( *.log* ファイル) に記録されているデータを表示するためのツールです。
 * [IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。

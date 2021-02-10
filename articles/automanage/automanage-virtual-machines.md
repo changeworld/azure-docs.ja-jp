@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695672"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550786"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -42,7 +42,6 @@ Azure Automanage に仮想マシンをオンボードすると、各ベスト �
 仮想マシンで Azure Automanage を有効にする前に、いくつかの前提条件を考慮する必要があります。
 
 - Windows Server VM のみ
-- VM が実行されている必要があります
 - VM はサポートされているリージョン内に存在する必要があります (次の段落を参照)
 - ユーザーは正しいアクセス許可を持っている必要があります (次の段落を参照)
 - 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません

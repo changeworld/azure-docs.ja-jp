@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 7a6499756e2db57ee31097bb6ea5125cb1abf55d
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: ea3a36fdc9ff9458677f43ef43bd7f45ea4652bd
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225277"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576635"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -253,7 +253,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | --- | --- | --- |
 | **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |シンガポール |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/)** | Equinix、Cologix | トロント、モントリオール |
-| **[Alaska Communications](https://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |Seattle |
+| **[Alaska Communications](https://www.alaskacommunications.com/Business)** |Equinix |Seattle |
 | **[Altice Business](https://golightpath.com/transport)** |Equinix |ニューヨーク、ワシントン DC |
 | **[アルテリア・ネットワークス株式会社](https://www.arteria-net.com/business/service/cloud/sca/)** |Equinix |東京 |
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |ダラス|

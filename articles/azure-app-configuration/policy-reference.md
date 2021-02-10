@@ -1,18 +1,18 @@
 ---
 title: Azure App Configuration 用の組み込みポリシー定義
 description: Azure App Configuration 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 9cd7e5274ec0d9ed839b3f66c01d1f13e73e9aac
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 3116b177f8903534f99ce34c1a8556db45464e7e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219029"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555465"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Azure App Configuration 用の Azure Policy 組み込み定義
 

@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252612"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575485"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -504,7 +504,7 @@ SAP からロジック アプリのトリガーに IDoc パケットを送信で
   * これらのセグメントを SAP にリリースしてもらうには、SAP システムの ABAP エンジニアに連絡してください。
 ### <a name="asynchronous-request-reply-for-triggers"></a>トリガーの非同期要求-応答
 
-SAP コネクタでは、Logic Apps トリガー用の Azure の[非同期要求-応答パターン](/azure/architecture/patterns/async-request-reply.md)がサポートされています。 このパターンを使用すると、既定の同期要求-応答パターンであれば失敗していた要求を成功させることができます。 
+SAP コネクタでは、Logic Apps トリガー用の Azure の[非同期要求-応答パターン](/azure/architecture/patterns/async-request-reply)がサポートされています。 このパターンを使用すると、既定の同期要求-応答パターンであれば失敗していた要求を成功させることができます。 
 
 > [!TIP]
 > 複数の応答アクションを持つロジック アプリでは、すべての応答アクションで同じ要求-応答パターンを使用する必要があります。 たとえば、ロジック アプリで複数の応答アクションが可能なスイッチ コントロールを使用している場合は、すべての応答アクションで同期または非同期の同じ要求-応答パターンを使用するように設定する必要があります。 

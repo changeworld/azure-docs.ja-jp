@@ -1,15 +1,15 @@
 ---
 title: Azure Automation 用の組み込みポリシー定義
 description: Azure Automation 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 35e728adf4d858dd6bdbbe76735d3706cf4235e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 775bc106336fd9e11719b9885ddfd250750fecae
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220787"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558084"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-automation"></a>Azure Automation 用の Azure Policy 組み込み定義
 

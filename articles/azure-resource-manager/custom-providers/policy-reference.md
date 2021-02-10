@@ -1,17 +1,17 @@
 ---
 title: Azure カスタム リソース プロバイダーの組み込みポリシー定義
 description: Azure カスタム リソース プロバイダー用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a2393fcb5c8a0c758d023742909d2759a6bd23a0
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1e0089642817ba3a619e7a2bf5b57765b577ff1e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220940"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560930"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Azure カスタム リソースプロバイダー用の Azure Policy 組み込み定義
 

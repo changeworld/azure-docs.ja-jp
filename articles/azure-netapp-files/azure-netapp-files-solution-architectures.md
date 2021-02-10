@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/03/2021
 ms.author: b-juche
-ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881454"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537781"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -73,6 +73,7 @@ ms.locfileid: "98881454"
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [SAP HANA Azure 仮想マシンのストレージ構成](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
 * [Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SUSE Linux Enterprise Server 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [Red Hat Enterprise Linux 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493043"
+ms.locfileid: "99509369"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -124,14 +124,6 @@ ms.locfileid: "99493043"
 | -------- | -----|------ |----|----|----|-------|---|----|
 | シノニムマップの最大数 |3 |3|5 |10 |20 |20 | 10 | 10 |
 | マップごとの規則の最大数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
-
-## <a name="queries-per-second-qps"></a>秒間クエリ (QPS)
-
-QPS の見積もりは、すべての顧客ごとに個別に開発する必要があります。 インデックスのサイズと複雑さ、クエリのサイズと複雑さ、およびトラフィックの量が QPS を決定する主な要因です。 このような要因が不明な場合は、意義のある見積もりを用意する方法はありません。
-
-見積もりは、専用リソース (Basic および Standard レベル) 上で実行されるサービスに基づいて計算される場合、予測可能性がより高くなります。 より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。 見積もりを行う方法のガイダンスについては、[Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事を参照してください。
-
-ストレージ最適化レベル (L1 および L2) では、Standard レベルよりもクエリ スループットが低く、待機時間が長くなります。
 
 ## <a name="data-limits-ai-enrichment"></a>データの制限 (AI エンリッチメント)
 

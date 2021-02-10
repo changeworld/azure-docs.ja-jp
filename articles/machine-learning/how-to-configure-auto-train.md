@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954717"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526468"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -420,7 +420,7 @@ Web サービスにデプロイするためのモデルをダウンロードま�
   * 属性エラー:例: `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
   この問題を回避するには、`AutoML` SDK トレーニングのバージョンに応じて次の 2 つの手順のいずれかを行います。
-    * `AutoML` SDK トレーニングのバージョンが 1.13.0 より新しい場合、`pandas == 0.25.1` と `sckit-learn==0.22.1` が必要です。 バージョンが一致しない場合、下に示すように、scikit-learn と pandas を適切なバージョンにアップグレードします。
+    * `AutoML` SDK トレーニングのバージョンが 1.13.0 より新しい場合、`pandas == 0.25.1` と `scikit-learn==0.22.1` が必要です。 バージョンが一致しない場合、下に示すように、scikit-learn と pandas を適切なバージョンにアップグレードします。
       
       ```bash
          pip install --upgrade pandas==0.25.1

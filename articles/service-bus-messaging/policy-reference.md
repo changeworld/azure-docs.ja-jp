@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus Messaging 用の組み込みポリシー定義
 description: Azure Service Bus Messaging 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d1842eb1c05862a06abc30ef22e8b55364aed951
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: fc696bd102b0756ce38bb7e8530ffce3e3d74834
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094302"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559903"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Azure Service Bus Messaging 用の Azure Policy 組み込み定義
 

@@ -1,18 +1,18 @@
 ---
 title: Azure 仮想マシン スケール セット用の組み込みポリシー定義
 description: Azure 仮想マシン スケール セット用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 96377f8b115b915fc21cab26132865607bbac639
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 7d02db9cb9256b7a7f3db3d5db48874be1d93a16
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095891"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560942"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セット用の Azure Policy 組み込み定義
 

@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service 用の組み込みポリシー定義
 description: Azure Kubernetes Service 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 17615dc5b9e1ccff3c35a561bc8e31ad1ec136aa
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 9ae2339585616c1da993d47a1172d8ec8eddb372
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221416"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557504"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Kubernetes Service 用の Azure Policy 組み込み定義
 
