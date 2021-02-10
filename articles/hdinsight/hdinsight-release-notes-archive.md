@@ -4,19 +4,47 @@ description: Azure HDInsight のリリース ノート (アーカイブ)。 Hado
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 10/07/2020
-ms.openlocfilehash: 8e6f27c378a6cea8fffbdcda58c4fc3bb865e51e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932170"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988544"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
 ## <a name="summary"></a>まとめ
 
 Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
+
+## <a name="release-date-11182020"></a>リリース日: 2020 年 11 月 18 日
+
+このリリースは HDInsight 3.6 と HDInsight 4.0 の両方に適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更が見られない場合は、お客様のリージョンで数日以内にリリースがライブになるまでお待ちください。
+
+### <a name="new-features"></a>新機能
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>保存時におけるカスタマー マネージド キー暗号化の自動キー ローテーション
+このリリース以降、お客様はカスタマー マネージド キーの暗号化に、バージョンレスの Azure KeyValut 暗号化キー URL を使用できます。 HDInsight は、有効期限が切れたとき、または新しいバージョンに置き換えられたときに、自動的にキーをローテーションします。 詳細については[ここ](./disk-encryption.md)を参照してください。
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark、Hadoop、および ML Services 用のさまざまな Zookeeper 仮想マシン サイズを選択する機能
+これまで、HDInsight では、Spark、Hadoop、ML Services のクラスターの種類に対して Zookeeper ノード サイズのカスタマイズはサポートされていませんでした。 既定値は A2_v2 および A2 の仮想マシン サイズであり、無料で提供されます。 このリリース以降、お客様のシナリオに最も適した Zookeeper 仮想マシン サイズを選択できます。 A2_v2 および A2 以外の仮想マシン サイズの Zookeeper ノードには課金されます。 A2_v2 および A2 の仮想マシンは引き続き無料で提供されます。
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このリリース以降、サービスは徐々に [Azure 仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)に移行されます。 このプロセス全体に数か月かかる可能性があります。 リージョンとサブスクリプションが移行された後は、新しく作成された HDInsight クラスターは、お客様が操作することなく、仮想マシン スケール セット上で動作するようになります。 破壊的変更は想定されていません。
+
+### <a name="deprecation"></a>非推奨
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3.6 ML Services クラスターの非推奨
+HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポート終了となります。 2021 年 1 月 1 日以降は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#available-versions)で確認してください。
+
+#### <a name="disabled-vm-sizes"></a>無効な VM サイズ
+2020 年 11 月 16 日以降、新規のお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 過去 3 か月間、これらの VM サイズを使用していた既存のお客様は、影響を受けません。 2021 年 1 月 9 日以降は、すべてのお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 既存のクラスターはそのまま実行されます。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
+
+### <a name="behavior-changes"></a>動作の変更
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>スケーリング操作の前に NSG ルール チェックを追加する
+HDInsight では、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) のチェックがスケーリング操作で追加されました。 クラスターの作成に加えて、クラスターのスケーリングについても同じ検証が行われます。 この検証により、予測できないエラーを防ぐことができます。 検証が成功しなかった場合、スケーリングは失敗します。 NSG と UDR を正しく構成する方法の詳細については、「[HDInsight 管理 IP アドレス](./hdinsight-management-ip-addresses.md)」を参照してください。
+
+### <a name="component-version-change"></a>コンポーネントのバージョンの変更
+このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](./hdinsight-component-versioning.md)を参照してください。
 
 ## <a name="release-date-11092020"></a>リリース日: 2020 年 11 月 9 日
 
@@ -595,11 +623,11 @@ Apache Storm と ML サービスは、HDInsight 4.0 では使用できません�
 
     b.  [**Apache Kafka 1.0 の新機能**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新** _: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、好みの言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
+*  ***Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新***: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、好みの言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
 
-_***Azure Data Lake Storage Gen2 のサポート** _: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
+*  ***Azure Data Lake Storage Gen2 のサポート***: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
 
-_***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)** _: (プレビュー) [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
+*  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
 
 ### <a name="component-versions"></a>コンポーネントのバージョン
 
@@ -797,7 +825,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 このリリースは、次のパッチに加えて、Hive 1.2.1 と Hive 2.1.0 を提供します。
 
-_ *Hive 2.1.1 の Apache のパッチ:* *
+**Hive 1.2.1 の Apache のパッチ:**
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697): ObjectInspectorConvertors\#UnionConvertor によって問題のある変換が行われる。
 

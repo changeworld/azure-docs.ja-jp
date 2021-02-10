@@ -3,7 +3,7 @@ title: Azure DDoS Protection Standard の DDoS 保護アラートの表示およ
 description: Azure DDoS Protection Standard の DDoS 保護アラートの表示および構成について説明します。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 2d72027082ed2b57b28a15a736c35801ba88188c
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915149"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832523"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS 保護アラートの表示と構成
 
@@ -41,13 +41,14 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 これらのテンプレートを使用すると、診断ログを有効にしたすべてのパブリック IP アドレスに対してアラートを構成できます。 そのため、これらのアラート テンプレートを使用するには、まず、診断設定が有効になっている Log Analytics ワークスペースが必要です。 「[DDoS 診断ログの表示と構成](diagnostic-logging.md)」を参照してください。
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor のアラート ルール
-この [Azure Monitor アラート ルール](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started)では、アクティブな DDoS 軽減が発生したことを検出するための単純なクエリが実行されます。 これは、攻撃を受ける可能性があることを示します。 アクション グループを使用すると、アラートの結果としてアクションを呼び出すことができます。
+
+この [Azure Monitor アラート ルール](https://aka.ms/DDOSmitigationstatus)では、アクティブな DDoS 軽減が発生したことを検出するための単純なクエリが実行されます。 これは、攻撃を受ける可能性があることを示します。 アクション グループを使用すると、アラートの結果としてアクションを呼び出すことができます。
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
 ### <a name="azure-monitor-alert-rule-with-logic-app"></a>ロジック アプリを使用した Azure Monitor のアラート ルール
 
-この[テンプレート](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/DDoS%20Mitigation%20Alert%20Enrichment)では、強化された DDoS 軽減アラートの必要なコンポーネント(Azure Monitor のアラート ルール、アクション グループ、およびロジック アプリ) を展開します。 このプロセスの結果は、IP に関連付けられているリソースに関する情報など、攻撃を受けた IP アドレスの詳細を含む電子メール アラートです。 リソースの所有者は、セキュリティ チームと共に、電子メールの受信者として追加されます。 基本的なアプリケーションの可用性テストも実行され、結果は電子メール アラートに含められます。
+この[テンプレート](https://aka.ms/ddosalert)では、強化された DDoS 軽減アラートの必要なコンポーネント(Azure Monitor のアラート ルール、アクション グループ、およびロジック アプリ) を展開します。 このプロセスの結果は、IP に関連付けられているリソースに関する情報など、攻撃を受けた IP アドレスの詳細を含む電子メール アラートです。 リソースの所有者は、セキュリティ チームと共に、電子メールの受信者として追加されます。 基本的なアプリケーションの可用性テストも実行され、結果は電子メール アラートに含められます。
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
@@ -60,7 +61,7 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 3. 灰色のナビゲーション バーで、 **[新しいアラート ルール]** を選択します。 
 4. 独自の値を入力または選択するか次の例の値を入力し、残りの既定値はそのまま受け入れて、 **[アラート ルールの作成]** を選択します。
 
-    |設定                  |[値]                                                                                               |
+    |設定                  |値                                                                                               |
     |---------                |---------                                                                                           |
     | スコープ                   | **[リソースの選択]** を選択します。 </br> ログに記録するパブリック IP アドレスを含む **サブスクリプション** を選択し、 **[リソースの種類]** で **[パブリック IP アドレス]** を選択してから、メトリックのログを記録する特定のパブリック IP アドレスを選択します。 </br> **[Done]** を選択します。 | 
     | 条件 | **[条件の選択]** を選択します。 </br> シグナル名で、 **[DDoS 攻撃中かどうか]** を選択します。 </br> **[演算子]** で、 **[次の値以上]** を選択します。 </br> **[集計の種類]** で、 **[最大]** を選択します。 </br> **[しきい値]** で、「*1*」と入力します。 **[DDoS 攻撃中かどうか]** メトリックの場合、**0** は攻撃を受けていないことを示し、**1** は攻撃を受けていることを示します。 </br> **[Done]** を選択します。 | 

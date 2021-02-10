@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98a16e0a60ddf149e8f0e1a092051f3e98ea8225
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002566"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627064"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -104,7 +104,7 @@ Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に
 
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオに使用できます。 
 
-- [対象となる開発/テスト プラン](../windows/client-images.md#eligible-offers)内で、Azure ギャラリーから Windows 10 イメージを使用できます。 
+- [対象となる開発/テスト プラン](../windows/client-images.md)内で、Azure ギャラリーから Windows 10 イメージを使用できます。 
 - また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](../windows/prepare-for-upload-vhd-image.md)し、[Azure にアップロード](../windows/upload-generalized-managed.md)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
 
 この[記事](../windows/client-images.md)では、Azure で Windows クライアントを実行するための資格要件と、Azure ギャラリーのイメージの使用について説明します。

@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056952"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806157"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>パスワードを Microsoft Authenticator アプリにインポートする
 
@@ -39,21 +39,21 @@ Android および Apple 携帯電話の Google Chrome ユーザーは、いく�
 
 1. Android 携帯電話では右上、iOS デバイスでは右下にある ![Google Chrome の省略記号メニュー](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png)をタップしてから **[設定]** をタップします。
 
-   &nbsp; | &nbsp;
+   プラットフォーム | Link
    ---------- | --------
    Android | ![Google Chrome の [設定] メニューの場所](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Google Chrome の [設定] メニュー アイコン](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. **[設定]** で、 **[パスワード]** を開きます。
 
-   &nbsp; | &nbsp;
+   プラットフォーム | Link
    ---------- | --------
    Android | ![Andoid 版 Chrome の [パスワード] コマンドの場所](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Apple 版 Chrome の [パスワード] コマンドの場所](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. Android デバイスでは右上、iOS デバイスでは右下にある ![Google Chrome の省略記号メニュー](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png)をタップしてから **[パスワードをエクスポート]** をタップします。
 
-   &nbsp; | &nbsp;
+   プラットフォーム | Link
    ---------- | --------
    Android | ![Android 版 Chrome の [パスワードをエクスポート] の場所](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Apple 版 Chrome の [パスワードをエクスポート] の場所](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ Android および Apple 携帯電話の Google Chrome ユーザーは、いく�
 
 1. パスワードがエクスポートされると、インポート先のアプリを選択するよう Chrome から求められます。 **Authenticator** を選択してパスワードのインポートを開始します。完了すると、インポートの状態が通知されます。
 
-   &nbsp; | &nbsp;
+   プラットフォーム | Link
    ---------- | --------
    Android | ![Chrome のパスワードをインポートする場所 (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Chrome のパスワードをインポートする場所 (Apple)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ Firefox ではデスクトップ ブラウザーからしかパスワードを�
 
       1. エクスポートした CSV ファイルを、推奨された安全な方法を使用して Android または iOS 携帯電話に転送し、ダウンロードします。 次に、CSV ファイルを Authenticator アプリと共有してインポートを開始します。
 
-         &nbsp; | &nbsp;
+         プラットフォーム | Link
          ---------- | --------
          Android | ![Chrome のパスワードをインポートする場所 (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Chrome のパスワードをインポートする場所 (Apple)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ LastPass では、デスクトップ ブラウザーからのパスワードの�
 
       1. エクスポートした CSV ファイルを、推奨された安全な方法を使用してスマートフォンに転送し、ダウンロードします。 次に、CSV ファイルを Authenticator アプリと共有してインポートを開始します。
 
-         &nbsp; | &nbsp;
+         プラットフォーム | Link
          ---------- | --------
          Android | ![LastPass のパスワードをインポートする場所 (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![LastPass のパスワードをインポートする場所 (Apple)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ Bitwarden では、デスクトップ ブラウザーからのパスワードの
 
       1. エクスポートした CSV ファイルを、推奨された安全な方法を使用してスマートフォンに転送し、ダウンロードします。 次に、CSV ファイルを Authenticator アプリと共有してインポートを開始します。
 
-         &nbsp; | &nbsp;
+         プラットフォーム | Link
          ---------- | --------
          Android | ![Bitwarden のパスワードをインポートする場所 (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Bitwarden のパスワードをインポートする場所 (Apple)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ Roboform では、デスクトップ アプリからのパスワードのエク�
 
       1. エクスポートした CSV ファイルを、推奨された安全な方法を使用してスマートフォンに転送し、ダウンロードします。 次に、CSV ファイルを Authenticator アプリと共有してインポートを開始します。
 
-         &nbsp; | &nbsp;
+         プラットフォーム | Link
          ---------- | --------
          Android | ![Roboform のパスワードをインポートする場所 (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Roboform のパスワードをインポートする場所 (Apple)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Roboform では、デスクトップ アプリからのパスワードのエク�
 
       1. エクスポートした CSV ファイルを、推奨された安全な方法を使用してスマートフォンに転送し、ダウンロードします。 次に、CSV ファイルを Authenticator アプリと共有してインポートを開始します。
 
-         &nbsp; | &nbsp;
+         プラットフォーム | Link
          ---------- | --------
          Android | ![パスワードの CSV をインポートする場所 (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![パスワードの CSV をインポートする場所 (Apple)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)

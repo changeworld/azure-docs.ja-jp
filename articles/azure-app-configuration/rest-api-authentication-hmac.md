@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4b5a073459fad734a11d3a75718240d0ebbb486a
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932712"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981393"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 認証 - REST API リファレンス
 
@@ -22,7 +22,7 @@ HTTP 要求は、HMAC SHA256 認証スキームを使用して認証できます
 - **資格情報** - \<Access Key ID\>
 - **シークレット** - base64 でデコードされたアクセス キー値。 ``base64_decode(<Access Key Value>)``
 
-資格情報 (`id` とも呼ばれます) とシークレット (`value` とも呼ばれます) の値は Azure App Configuration のインスタンスから取得する必要があります。 これを行うには、[Azure portal](https://portal.azure.com) または [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) を使用します。
+資格情報 (`id` とも呼ばれます) とシークレット (`value` とも呼ばれます) の値は Azure App Configuration のインスタンスから取得する必要があります。 これを行うには、[Azure portal](https://portal.azure.com) または [Azure CLI](/cli/azure/) を使用します。
 
 要求ごとに、認証に必要なすべての HTTP ヘッダーを指定します。 最低限必要なのは以下のとおりです。
 

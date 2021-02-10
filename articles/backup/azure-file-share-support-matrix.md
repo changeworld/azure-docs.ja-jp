@@ -4,12 +4,12 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378034"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819862"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
@@ -19,7 +19,7 @@ ms.locfileid: "89378034"
 
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure ファイル共有のバックアップの GA リージョン
 
-Azure ファイル共有のバックアップは、以下を**除く**すべてのリージョンで利用できます。ドイツ中部 (ソブリン)、ドイツ北東部 (ソブリン)、中国東部、中国東部 2、中国北部、中国北部 2、US Gov アイオワ
+Azure ファイル共有のバックアップは、以下を **除く** すべてのリージョンで利用できます。ドイツ中部 (ソブリン)、ドイツ北東部 (ソブリン)、中国東部、中国東部 2、中国北部、中国北部 2、US Gov アイオワ
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
@@ -60,7 +60,7 @@ Azure ファイル共有のバックアップは、以下を**除く**すべて�
 | 設定                                                      | 制限   |
 | ------------------------------------------------------------ | ------- |
 | 1 日あたりの復元の最大数                           | 10      |
-| 復元あたりのファイルの最大数                         | 10      |
+| 復元あたりのファイルの最大数                         | 99      |
 | 大きいファイル共有の場合に、復元あたりの推奨される最大復元サイズ | 15 TiB |
 
 ## <a name="retention-limits"></a>保有の制限

@@ -104,7 +104,7 @@ python src/train.py                             # train model
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> コントロール スクリプトを作成する
 
-下のコントロール スクリプトと "Hello World" の送信に使用したコントロール スクリプトとの違いは、環境を設定するための行をいくつか追加することです。 is that you add a couple of extra lines to set the environment.
+下のコントロール スクリプトと "Hello World" の送信に使用したコントロール スクリプトとの違いは、 環境を設定するための行をいくつか追加することです。
 
 `tutorial` ディレクトリに `04-run-pytorch.py` という名前の新しい Python ファイルを作成します。
 
