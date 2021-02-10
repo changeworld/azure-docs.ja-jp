@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896513"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008164"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング
 
@@ -148,7 +148,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 機能のリソースを削除すると、ワークスペースのリンクを解除できます。 ご利用のワークスペースおよび Automation アカウントから、これらの機能の既存の成果物をクリーンアップすることが重要です。
 
 * Update Management の場合は、Automation アカウントから、**更新プログラムのデプロイ (スケジュール)** を削除します。
-* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントの機能コンポーネントに対するロックを解除します。 詳細については、「[機能を削除する](../automation-solution-vm-management.md#remove-the-feature)」を参照してください。
+* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントの機能コンポーネントに対するロックを解除します。 詳細については、「[機能を削除する](../automation-solution-vm-management-remove.md)」を参照してください。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows 拡張機能用の Log Analytics のエラー
 

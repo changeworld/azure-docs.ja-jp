@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da71db47e396ee1d699cbc72dd51b5c7f9b1a12
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091464"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988879"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -48,7 +48,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 以前は、カスタム/BYOA アプリケーションでプロビジョニングを設定するときに、シークレット トークン フィールドを空のままにすることができました。 この機能は、テストに使用することのみを目的としていました。 このフィールドが必須になるように、UI が更新されます。 
 
-お客様は、ブラウザーの URL で機能フラグを使用することで、このテスト目的用の要件を回避できます。 [詳細については、こちらを参照してください](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery)。
+お客様は、ブラウザーの URL で機能フラグを使用することで、このテスト目的用の要件を回避できます。 [詳細については、こちらを参照してください](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery)。
  
 ---
 
