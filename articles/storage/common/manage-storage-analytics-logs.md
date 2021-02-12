@@ -26,7 +26,7 @@ ms.locfileid: "99221473"
 > - [Azure Blob Storage の監視](../blobs/monitor-blob-storage.md)
 > - [Azure Files の監視](../files/storage-files-monitoring.md)
 > - [Azure Queue Storage の監視](../queues/monitor-queue-storage.md)
-> - [Azure Table ストレージの監視](../tables/monitor-table-storage.md)
+> - [Azure Table Storage の監視](../tables/monitor-table-storage.md)
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
