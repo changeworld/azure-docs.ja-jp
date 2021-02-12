@@ -51,7 +51,7 @@ ms.locfileid: "94358373"
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
     1. Azure Blob Storage では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
     1. Azure Data Lake Storage Gen2 では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
-    1. Azure テーブル ストレージでは、 **閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
+    1. Azure Table Storage では、 **閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
 5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
 6.  検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
@@ -59,7 +59,7 @@ ms.locfileid: "94358373"
 
     ![ストレージ BLOB データ閲覧者ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "ストレージ BLOB データ閲覧者ロールの割り当てを追加する")
 
-    Azure テーブル ストレージの例を次に示します。
+    Azure Table Storage の例を次に示します。
 
     ![閲覧者とデータ アクセスのロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "閲覧者とデータ アクセスのロールの割り当てを追加する")
 
