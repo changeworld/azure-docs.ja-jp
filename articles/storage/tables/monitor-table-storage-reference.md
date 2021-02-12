@@ -1,6 +1,6 @@
 ---
-title: Azure Table ストレージ監視データのリファレンス | Microsoft Docs
-description: Azure Table ストレージからのデータを監視するためのログとメトリックのリファレンス。
+title: Azure Table Storage 監視データのリファレンス | Microsoft Docs
+description: Azure Table Storage からのデータを監視するためのログとメトリックのリファレンス。
 author: normesta
 services: azure-monitor
 ms.service: azure-monitor
@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/07/2020
 ms.locfileid: "96780299"
 ---
-# <a name="azure-table-storage-monitoring-data-reference"></a>Azure Table ストレージ監視データのリファレンス
+# <a name="azure-table-storage-monitoring-data-reference"></a>Azure Table Storage 監視データのリファレンス
 
 Azure Storage の監視データの収集と分析の詳細については、「[Azure Storage の監視](monitor-table-storage.md)」を参照してください。
 
@@ -79,5 +79,5 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 
 ## <a name="see-also"></a>関連項目
 
-- Azure Storage の監視の詳細については、「[Azure Table ストレージの監視](monitor-table-storage.md)」を参照してください。
+- Azure Storage の監視の詳細については、「[Azure Table Storage の監視](monitor-table-storage.md)」を参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
