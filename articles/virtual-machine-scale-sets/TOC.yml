@@ -195,7 +195,7 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/security-policy.md
@@ -329,9 +329,10 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: スケール セット テンプレートを変換してマネージド ディスクを使用する
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: 専用ホストの使用 (プレビュー)
-          href: ../virtual-machines/dedicated-hosts.md
+        - name: 専用ホストの使用
           items:
+            - name: 概要
+              href: ../virtual-machines/dedicated-hosts.md
             - name: CLI
               href: ../virtual-machines/linux/dedicated-hosts-cli.md
             - name: PowerShell

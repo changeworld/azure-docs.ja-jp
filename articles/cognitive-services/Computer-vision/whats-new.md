@@ -10,16 +10,32 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99490879"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007399"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Read API v3.2 のパブリック プレビューが 73 言語の OCR に対応
+クラウド サービスおよび Docker コンテナーとして利用できるようになった Computer Vision の Read API v3.2 パブリック プレビューでは、次の更新が行われています。
+* [OCR が 73 言語に対応](./language-support.md#optical-character-recognition-ocr)。簡易字中国語と繁体字中国語、日本語、韓国語、ラテン語系の言語が含まれます。
+* テキスト行出力に自然な読みの順序を使用。
+* テキスト行に対する手書きスタイルの分類と信頼度スコア (ラテン語系の言語のみ)。
+* 複数ページから成るドキュメントで選択ページのみのテキストを抽出。
+* オンプレミス デプロイ用の[ディストリビューションレス コンテナー](./computer-vision-how-to-install-containers.md?tabs=version-3-2)として利用可能。
+
+Read API については、[こちら](concept-recognizing-text.md)を参照してください。
+
+> [!div class="nextstepaction"]
+> [Read API v3.2 パブリック プレビューを使用する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+
 
 ## <a name="january-2021"></a>2021 年 1 月
 
