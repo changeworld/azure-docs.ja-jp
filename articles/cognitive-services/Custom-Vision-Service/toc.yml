@@ -31,7 +31,7 @@
   items:
     - name: モデルのテスト
       href: test-your-model.md
-    - name: 分類子の改善
+    - name: アプリを改善する
       href: getting-started-improving-your-classifier.md
     - name: ドメインの選択
       href: select-domain.md

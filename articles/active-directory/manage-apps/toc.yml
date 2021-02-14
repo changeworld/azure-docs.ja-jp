@@ -105,7 +105,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: Security
+        - name: セキュリティ
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -158,6 +158,8 @@
           href: migration-resources.md
         - name: Azure への AD FS アプリの移行
           href: migrate-adfs-apps-to-azure.md
+        - name: アプリケーション認証を Azure Active Directory に移行する
+          href: migrate-application-authentication-to-azure-active-directory.md
         - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
           href: migrate-adfs-application-activity.md
     - name: オンプレミス コネクタの構成

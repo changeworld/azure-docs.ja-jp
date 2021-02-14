@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 525872ca3ad2558c327b7b856254319d3db2dc7f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724936"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593995"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
@@ -74,8 +74,8 @@ Unity Hub を開き、*ARR\azure-remote-rendering\Unity\Quickstart* フォルダ
 ![ARR アカウント情報](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> **AccountDomain** を `<region>.mixedreality.azure.com` に設定します。`<region>` は、[お近くの利用可能なリージョンのいずれか](../reference/regions.md)です。
-> **AccountAuthenticationDomain** を、Azure portal に表示される[アカウント ドメイン](../how-tos/create-an-account.md#retrieve-the-account-information)に設定します。
+> **RemoteRenderingDomain** を `<region>.mixedreality.azure.com` に設定します。`<region>` は、[お近くの利用可能なリージョンのいずれか](../reference/regions.md)です。
+> **AccountDomain** を、Azure portal に表示される[アカウント ドメイン](../how-tos/create-an-account.md#retrieve-the-account-information)に設定します。
 
 後でこのプロジェクトを HoloLens にデプロイし、そのデバイスから Remote Rendering サービスに接続します。 デバイスに資格情報を入力する簡単な方法がないため、クイックスタート サンプルでは **Unity シーンに資格情報を保存** します。
 
