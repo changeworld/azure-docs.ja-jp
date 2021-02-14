@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124896"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832047"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
 
@@ -73,6 +73,13 @@ VS Code で、ローカルの *live-video-analytics* リポジトリ フォル�
 1. VS Code ターミナルを使用して **npm version patch** コマンドを実行します。 このビルド スクリプトは、コンテナー レジストリにイメージをデプロイします。 ビルドが成功したかどうかは、VS Code のターミナル ウィンドウの出力に表示されます。
 
 1. ビルドが完了するたびに、**LvaEdgeGatewayModule** イメージのバージョンが増分されます。 配置マニフェスト ファイルには、このバージョンを使用する必要があります。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
+
+1. IoT Central アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動します。 次に、 **[削除]** を選択します。
+1. Azure portal で、**lva-rg** リソース グループを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ metadata:
   author: dikamath
   ms.author: dikamath
   ms.date: 11/19/2020
-  ms.openlocfilehash: dc7d344ea33686cc32d2817886ee2cafa829cf1b
-  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.openlocfilehash: f5b22f1211076ee0d7990103586659c12eae66c9
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/09/2021
-  ms.locfileid: "100006718"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100092691"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -66,6 +66,8 @@ landingContent:
       url: tutorial-expressroute-global-reach-private-cloud.md
     - text: プライベート クラウドをスケーリングする
       url: tutorial-scale-private-cloud.md
+    - text: プライベート クラウドを削除する
+      url: tutorial-delete-private-cloud.md
 - title: Azure VMware Solution を拡張する
   linkLists:
   - linkListType: how-to-guide

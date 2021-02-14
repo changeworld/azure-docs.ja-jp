@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Go または Rust の関数を作成�
 description: Visual Studio Code の Azure Functions 拡張機能を使用して、Azure Functions のカスタム ハンドラーとして Go 関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法について説明します。
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a3ef7bdd19badf7a7deaa8376440016e39e0d14b
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493662"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809570"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に Go または Rust の関数を作成する
 
@@ -262,7 +262,7 @@ HTTP トリガー関数は、*HttpExample* フォルダー内の *function.json*
     ```cmd
     set GOOS=linux
     set GOARCH=amd64
-    go build hello.go
+    go build handler.go
     ```
 
     *host.json* の `defaultExecutablePath` を `handler.exe` から `handler` に変更します。 この指示により、関数アプリは Linux バイナリを実行するようになります。
@@ -337,7 +337,7 @@ HTTP トリガー関数は、*HttpExample* フォルダー内の *function.json*
 
     + **Application Insights Resource の選択**: [`+ Create Application Insights resource`] を選択します。 この名前は Azure 内でグローバルに一意である必要があります。 プロンプトで提示された名前を使用してもかまいません。
 
-    + **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの[リージョン](https://azure.microsoft.com/regions/)を選択してください。この拡張機能は、Azure に作成されている個々のリソースの状態を通知領域に表示します。
+    + **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの [リージョン](https://azure.microsoft.com/regions/)を選択してください。この拡張機能は、Azure に作成されている個々のリソースの状態を通知領域に表示します。
 
     :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure リソース作成の通知":::
 
