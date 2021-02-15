@@ -299,6 +299,8 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: '[評価とレビュー] ダッシュボード'
       href: partner-center-portal/ratings-reviews.md
+    - name: 従量制課金に対する異常検出
+      href: anomaly-detection.md
     - name: Analytics の一般的な質問
       href: analytics-faq.md
 - name: ポリシーと利用規約
