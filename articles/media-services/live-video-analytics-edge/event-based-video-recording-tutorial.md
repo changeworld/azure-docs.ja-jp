@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: f54659cc279b68113150f2f49d18e938f2500030
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fda727a1abb488910d52b756455d2b6843e0e8b1
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526265"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550254"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -195,6 +195,12 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="組み込みイベント エンドポイントの監視を開始する":::
+
+    > [!NOTE]
+    > IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     
 ## <a name="run-the-program"></a>プログラムの実行
 
@@ -210,7 +216,7 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 1. <!--In Visual Studio Code, go-->src/cloud-to-device-console-app/operations.js に移動します。
 1. **GraphTopologySet** ノードで、次を編集します。
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/2.0/topology.json"`
     
 1. 次に、**GraphInstanceSet** ノードと **GraphTopologyDelete** ノードで、次のように編集します。
 
