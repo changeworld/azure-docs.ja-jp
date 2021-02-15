@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050240"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576246"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
@@ -274,12 +274,15 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルのプロジェクトは、次のチュートリアル ("[*エンド ツー エンドのソリューションを接続する方法のチュートリアル*](tutorial-end-to-end.md)") の土台となっています。 次のチュートリアルに進む場合は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き使用します。
-* この場合、サンプル アプリの `DeleteAllTwins` コマンドと `DeleteAllModels` コマンドをそれぞれ使用して、ツインとモデルをインスタンスから消去してください。 次のチュートリアルに備えて白紙の状態にすることができます。
+このチュートリアルを終えたら、次に行う作業に応じて、削除するリソースを選択できます。
+
+* **次のチュートリアルに進む場合** は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き次のチュートリアルで使用します。
+
+* **Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係をすべて削除する場合** は、サンプル アプリの `DeleteAllTwins` コマンドと `DeleteAllModels` コマンドをそれぞれ使用して、インスタンスからツインとモデルを削除することができます。 次のチュートリアルに備えて白紙の状態にすることができます。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダーを削除します。
+さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 
 ## <a name="next-steps"></a>次のステップ 
 

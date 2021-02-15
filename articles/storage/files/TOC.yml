@@ -93,8 +93,6 @@
           href: storage-how-to-create-file-share.md
         - name: Azure File Sync のデプロイ
           href: storage-sync-files-deployment-guide.md
-        - name: Premium ファイル共有を作成する
-          href: storage-how-to-create-premium-fileshare.md
         - name: NFS 共有を作成する
           href: storage-files-how-to-create-nfs-shares.md
         - name: Premium ファイル共有を使用した SQL Server FCI
