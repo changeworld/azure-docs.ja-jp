@@ -210,6 +210,8 @@
                       href: connect-zscaler.md
                 - name: 手順 3 接続を検証する
                   href: connect-cef-verify.md
+        - name: カスタム コネクタを作成する
+          href: create-custom-connector.md
         - name: 脅威インテリジェンスの接続
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
@@ -255,8 +257,6 @@
           href: hunting-with-rest-api.md
         - name: REST-API を使用してウォッチリストを管理する
           href: watchlist-with-rest-api.md
-    - name: Azure Monitor データ参照
-      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel Logic Apps コネクタ
       href: /connectors/azuresentinel/
     - name: ネットワーク正規化スキーマ
@@ -275,8 +275,6 @@
   items:
     - name: 有用なリソース
       href: resources.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
       href: /archive/blogs/azuresecurity/
     - name: リージョン別の提供状況
