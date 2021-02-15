@@ -338,7 +338,7 @@
         - name: MySQL を使用したアプリのビルド
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
-        - name: Open Liberty または WebSphere Liberty アプリのデプロイ
+        - name: Open Liberty または WebSphere Liberty を使用したアプリのビルド
           href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md

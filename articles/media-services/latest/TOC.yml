@@ -13,6 +13,8 @@
   items:
     - name: 環境を設定する
       items:
+        - name: テナント ID を検索する
+          href: how-to-set-azure-tenant.md
         - name: Azure サブスクリプションを検索する
           href: how-to-set-azure-subscription.md
         - name: Media Services アカウントを作成する
@@ -70,6 +72,8 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
+        - name: 信頼されたストレージの有効化
+          href: tutorial-trusted-storage-rest.md
         - name: リモート ファイルのエンコードとストリーム配信 (REST)
           href: stream-files-tutorial-with-rest.md
         - name: カスタマー マネージド キーと REST API
@@ -305,6 +309,12 @@
           displayName: 'migration, samples'
 - name: 操作方法ガイド
   items:
+    - name: テナントとサブスクリプションを検索する
+      items:
+        - name: テナント ID を検索する
+          href: how-to-set-azure-tenant.md
+        - name: サブスクリプション ID の検索
+          href: how-to-set-azure-subscription.md
     - name: アセットの作成とメディアのアップロード
       items:
         - name: アセットを作成する
