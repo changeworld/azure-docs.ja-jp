@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL および UK NHS ブループリント サンプルをデプロイする
 description: ブループリント アーティファクトのパラメーターの詳細を含む、UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ手順。
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 14e832397c21f183c94720bc71f06530d9caaf14
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0c917134e5807283ceb0e7ce693037824794a6ef
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420327"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627552"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ
 
@@ -64,11 +64,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    - 基本
 
-     - **サブスクリプション** :ブループリント サンプルのコピーを保存した管理グループ内の 1 つ以上のサブスクリプションを選択します。 複数のサブスクリプションを選択すると、入力したパラメーターを使用して、それぞれに対して割り当てが作成されます。
-     - **割り当て名** :名前は、ブループリントの名前に基づいてあらかじめ設定されています。
+     - **サブスクリプション**:ブループリント サンプルのコピーを保存した管理グループ内の 1 つ以上のサブスクリプションを選択します。 複数のサブスクリプションを選択すると、入力したパラメーターを使用して、それぞれに対して割り当てが作成されます。
+     - **割り当て名**:名前は、ブループリントの名前に基づいてあらかじめ設定されています。
        必要に応じて変更することも、そのままにしておくこともできます。
      - **[場所]** :マネージド ID を作成するリージョンを選択します。 Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。 詳細については、[Azure リソースの管理対象 ID の概要](../../../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
-     - **ブループリント定義ラベル** :ブループリント サンプルのコピーの **発行済み** バージョンを選択します。
+     - **ブループリント定義ラベル**:ブループリント サンプルのコピーの **発行済み** バージョンを選択します。
 
    - ロックの割り当て
 
@@ -85,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. すべてのパラメーターの入力が完了したら、ページの下部にある **[割り当て]** を選択します。 ブループリントの割り当てが作成され、アーティファクトのデプロイが開始されます。 デプロイに要する時間は、約 1 時間です。 デプロイの状態を確認するには、ブループリントの割り当てを開きます。
 
 > [!WARNING]
-> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、 **無料** でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
+> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、**無料** でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
 
 ## <a name="artifact-parameters-table"></a>アーティファクトのパラメーター表
 
@@ -94,8 +94,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |UK OFFICIAL または UK NHS のブループリント イニシアチブ|ポリシー割り当て |診断ログを監査するリソースの種類 (ポリシー: UK OFFICIAL または UK NHS のブループリント イニシアチブ) |診断ログ設定が有効になっていない場合に監査するリソースの種類の一覧。  指定できる値については、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../../../azure-monitor/platform/resource-logs-schema.md)」をご覧ください。 |
-|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は " _なし_ " です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
-|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は " _なし_ " です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
+|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は "_なし_" です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
+|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は "_なし_" です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 
 ## <a name="next-steps"></a>次のステップ
 

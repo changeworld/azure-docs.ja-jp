@@ -212,6 +212,8 @@
       items:
         - name: インデクサーの作成
           href: search-howto-create-indexers.md
+        - name: インデクサーの実行またはリセット
+          href: search-howto-run-reset-indexers.md
         - name: インデクサーのスケジュール設定
           href: search-howto-schedule-indexers.md
         - name: フィールド マッピングの定義
