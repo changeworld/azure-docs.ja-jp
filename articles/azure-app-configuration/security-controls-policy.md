@@ -1,18 +1,18 @@
 ---
 title: Azure App Configuration 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure App Configuration に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c589452e74adc96c626143ed13ca459e0df60c5f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b150d388ed870d278d7c6536f56ab9ae53011cd0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091172"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092479"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-configuration"></a>Azure App Configuration 用の Azure Policy 規制コンプライアンス コントロール
 

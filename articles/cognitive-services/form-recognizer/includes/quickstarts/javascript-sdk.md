@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948047"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584653"
 ---
 > [!IMPORTANT]
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
@@ -81,15 +81,15 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `FormRecognizerClient` には、以下を目的とした操作が用意されています。
 
- * 対象のカスタム フォームを認識するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。 これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。
+ * 対象のカスタム フォームを分析するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。 これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。
  * モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。 フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。
  * Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、領収書から一般的なフィールドを認識する。 これらのフィールドとメタデータは、`RecognizedReceipt` のコレクションとして返されます。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `FormTrainingClient` には、以下を目的とした操作が用意されています。
 
-* カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を認識する。 モデルによって認識されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。 トレーニング データセットの作成について詳しくは、[ラベル付けなしのモデル トレーニングに関するサービス ドキュメント](#train-a-model-without-labels)を参照してください。
-* 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を認識するように、カスタム モデルをトレーニングする。 モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。 トレーニング データセットへのラベルの適用について詳しくは、[ラベル付けを使用したモデル トレーニングに関するサービス ドキュメント](#train-a-model-with-labels)を参照してください。
+* カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。 モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。 トレーニング データセットの作成について詳しくは、[ラベル付けなしのモデル トレーニングに関するサービス ドキュメント](#train-a-model-without-labels)を参照してください。
+* 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を分析するように、カスタム モデルをトレーニングする。 モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。 トレーニング データセットへのラベルの適用について詳しくは、[ラベル付けを使用したモデル トレーニングに関するサービス ドキュメント](#train-a-model-with-labels)を参照してください。
 * アカウントに作成されたモデルを管理する。
 * Form Recognizer リソース間でカスタム モデルをコピーする。
 
@@ -128,7 +128,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
-Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。 指定された URI にあるファイルの内容を認識するには、`beginRecognizeContentFromUrl` メソッドを使用します。
+Form Recognizer を使用すると、ドキュメント内の表、行、および単語を分析できます。モデルをトレーニングする必要はありません。 レイアウトの抽出の詳細については、[レイアウトの概念ガイド](../../concept-layout.md)を参照してください。 指定された URI にあるファイルの内容を分析するには、`beginRecognizeContentFromUrl` メソッドを使用します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
@@ -152,31 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="analyze-receipts"></a>領収書を分析する
 
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
-
-URI からの領収書を認識するには、`beginRecognizeReceiptsFromUrl` メソッドを使用します。 次のコードは、指定された URI で領収書を処理し、主要なフィールドと値をコンソールに出力します。
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
-
-> [!TIP]
-> ローカルにある領収書の画像を認識することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
-
-### <a name="output"></a>出力
-
-```console
-status: notStarted
-status: running
-status: succeeded
-First receipt:
-  Receipt Type: 'Itemized', with confidence of 0.659
-  Merchant Name: 'Contoso Contoso', with confidence of 0.516
-  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
-    Item Name: '8GB RAM (Black)', with confidence of 0.916
-    Item Name: 'SurfacePen', with confidence of 0.858
-  Total: '1203.39', with confidence of 0.774
-```
 
 ## <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
 
@@ -187,7 +163,7 @@ First receipt:
 
 ### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
 
-カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を認識できるようにします。
+カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を分析できるようにします。
 
 次の関数は、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 
 
@@ -320,6 +296,32 @@ Field Signature has value 'undefined' with a confidence score of undefined
 Field Subtotal has value 'undefined' with a confidence score of undefined
 Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
+```
+
+## <a name="analyze-receipts"></a>領収書を分析する
+
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。
+
+URI からレシートを分析するには、`beginRecognizeReceiptsFromUrl` メソッドを使用します。 次のコードは、指定された URI で領収書を処理し、主要なフィールドと値をコンソールに出力します。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
+
+> [!TIP]
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) のメソッドを参照してください (**beginRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
+
+### <a name="output"></a>出力
+
+```console
+status: notStarted
+status: running
+status: succeeded
+First receipt:
+  Receipt Type: 'Itemized', with confidence of 0.659
+  Merchant Name: 'Contoso Contoso', with confidence of 0.516
+  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
+    Item Name: '8GB RAM (Black)', with confidence of 0.916
+    Item Name: 'SurfacePen', with confidence of 0.858
+  Total: '1203.39', with confidence of 0.774
 ```
 
 ## <a name="manage-your-custom-models"></a>カスタム モデルを管理する

@@ -3,12 +3,12 @@ title: チュートリアル - Azure に vSphere クラスターをデプロイ�
 description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966311"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093949"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
 
@@ -74,25 +74,6 @@ az group create --name myResourceGroup --location eastus
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
-
-## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する
-
-Azure VMware Solution のプライベート クラウドが不要になった場合は、削除できます。 Azure VMware Solution のプライベート クラウドには、分離されたネットワーク ドメイン、専用サーバー ホスト上の 1 つ以上のプロビジョニング済み vSphere クラスター、およびいくつかの仮想マシンが含まれます。 プライベート クラウドを削除すると、すべての仮想マシン、そのデータ、およびクラスターが削除されます。 専用のベアメタル ホストは安全にワイプされ、空きプールに返されます。 顧客用にプロビジョニングされたネットワーク ドメインは削除されます。  
-
-> [!CAUTION]
-> プライベート クラウドを削除する操作は、元に戻すことができません。 プライベート クラウドを削除すると、実行中のすべてのワークロードとコンポーネントが中止され、パブリック IP アドレスを含むすべてのプライベート クラウド データと構成設定が破棄されるので、データを復旧することはできなくなります。
-
-### <a name="prerequisites"></a>前提条件
-
-プライベート クラウドを削除した場合、仮想マシンとそのデータを復旧する方法はありません。 後で仮想マシンのデータが必要になる場合、管理者はまず、プライベート クラウドを削除する前に、すべてのデータをバックアップする必要があります。
-
-### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する手順
-
-1. Azure portal で [Azure VMware Solutions] ページにアクセスします。
-
-2. 削除するプライベート クラウドを選択します。
- 
-3. プライベート クラウドの名前を入力し、 **[はい]** を選択します。 数時間で、削除プロセスが完了します。  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware コマンド
 

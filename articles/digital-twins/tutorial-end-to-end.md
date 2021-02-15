@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684007"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575807"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -401,18 +401,15 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。 
+このチュートリアルを終えたら、次に行う作業に応じて、削除するリソースを選択できます。
 
-[Azure Cloud Shell](https://shell.azure.com) から [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 これにより、リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、Azure Functions アプリが、両方の機能やストレージなどの関連するリソースを含めて削除されます。
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) という CLI コマンドを使用して、目的の要素を削除することができます。
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true)を使用して個別に削除できます。
 
-最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダーを削除します。
+さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
