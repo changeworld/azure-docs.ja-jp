@@ -1,18 +1,18 @@
 ---
 title: Azure Event Hubs 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Event Hubs に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a1c93972a1a936a4482ce06a30f29b37d8554e79
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d6eeac86e35856b8b70d259c367f0174f3e9ebba
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094353"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095700"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>Azure Event Hubs 用の Azure Policy 規制コンプライアンス コントロール
 

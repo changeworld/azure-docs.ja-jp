@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
-ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928451"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979846"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD パイプラインとの統合
 
@@ -35,9 +35,9 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 
 ### <a name="prerequisites"></a>前提条件
 
-ローカルでビルドする場合、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をまだインストールしていない場合は、ダウンロードしてインストールします。
+ローカルでビルドする場合、[Azure CLI](/cli/azure/install-azure-cli) をまだインストールしていない場合は、ダウンロードしてインストールします。
 
-(たとえば Azure DevOps で) クラウド ビルドを実行するには、必ず [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をビルド システムにインストールします。
+(たとえば Azure DevOps で) クラウド ビルドを実行するには、必ず [Azure CLI](/cli/azure/install-azure-cli) をビルド システムにインストールします。
 
 ### <a name="export-an-app-configuration-store"></a>App Configuration ストアをエクスポートする
 
@@ -107,4 +107,4 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 このチュートリアルでは、Azure App Configuration データをデプロイ パイプラインで使用するためにエクスポートしました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)
