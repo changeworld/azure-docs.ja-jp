@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 93eb2ab4df77afd3c2a55a04db2d39591a46e726
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d9f2637166c3807e36f4304e9394bf2ecf91d88c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507788"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573808"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -563,6 +563,12 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 3. **lva-sample-device** を右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。
 
     ![IoT Hub イベントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
+
+    > [!NOTE]
+    > IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     
 **[出力]** ウィンドウに次のメッセージが表示されます。
 
@@ -595,13 +601,6 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
         }
         }
     ]
-    },
-    "applicationProperties": {
-    "topic": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.media/mediaservices/{amsAccountName}",
-    "subject": "/graphInstances/Sample-Graph-1/processors/motionDetection",
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",
-    "eventTime": "2020-05-19T07:45:34.404Z",
-    "dataVersion": "1.0"
     }
 }
 ```
