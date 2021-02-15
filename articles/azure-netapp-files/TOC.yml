@@ -125,7 +125,7 @@
           href: troubleshoot-capacity-pools.md
         - name: リージョン間レプリケーションのトラブルシューティング
           href: troubleshoot-cross-region-replication.md
-        - name: デュアルプロトコル ボリュームのトラブルシューティング
+        - name: SMB またはデュアルプロトコル ボリュームのトラブルシューティング
           href: troubleshoot-dual-protocol-volumes.md
         - name: NFSv4.1 Kerberos ボリュームのトラブルシューティング
           href: troubleshoot-nfsv41-kerberos-volumes.md
