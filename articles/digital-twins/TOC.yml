@@ -52,7 +52,11 @@
             - name: スクリプト化バージョン
               href: how-to-set-up-instance-scripted.md
         - name: Private Link でプライベート アクセスを有効にする
-          href: how-to-enable-private-link.md
+          items:
+            - name: ポータルのバージョン
+              href: how-to-enable-private-link-portal.md
+            - name: CLI のバージョン
+              href: how-to-enable-private-link-cli.md
         - name: アプリ認証コードを作成する
           href: how-to-authenticate-client.md
         - name: アプリの登録を作成する
@@ -103,12 +107,16 @@
       items:
         - name: エンドポイントとルートを管理する
           items:
-            - name: API と CLI のバージョン
-              href: how-to-manage-routes-apis-cli.md
             - name: ポータルのバージョン
               href: how-to-manage-routes-portal.md
+            - name: API と CLI のバージョン
+              href: how-to-manage-routes-apis-cli.md
         - name: ルーティング イベントのマネージド ID を有効にする
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: ポータルのバージョン
+              href: how-to-enable-managed-identities-portal.md
+            - name: CLI のバージョン
+              href: how-to-enable-managed-identities-cli.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
