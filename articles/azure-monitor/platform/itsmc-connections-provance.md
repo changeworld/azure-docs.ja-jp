@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 19d2ef1d4d711738d60938aac502dfd490e021a1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0cdbcf0a895a2fc9b81df464f364e04aa79abf99
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729569"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006770"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>Provance を IT Service Management Connector に接続する
 
 この記事では、Provance インスタンスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。
 
 > [!NOTE]
-> Cherwell や Provance のお客様には、統合の別の方法として、[Webhook アクション](./action-groups.md#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
+> 2020 年 10 月 1 日以降、新規のお客様が Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。
+> 既存の ITSM 接続はサポートされます。
 
 以降のセクションでは、Provance 製品を Azure の ITSMC に接続する方法について詳細に説明します。
 

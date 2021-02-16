@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754513"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525197"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>ユーザー フローの電話でのサインアップとサインインを設定する (プレビュー)
 
@@ -89,7 +89,7 @@ ms.locfileid: "96754513"
 9. **[ソーシャル ID プロバイダー]** で、このユーザー フローに対して許可するその他の ID プロバイダーを選択します。
 
    > [!NOTE]
-   > 多要素認証 (MFA) は規定で無効になっています。 電話でのサインアップのユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
+   > サインアップのユーザー フローでは、多要素認証 (MFA) は既定で無効になっています。 電話でのサインアップのユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
 
 1. **[ユーザー属性とトークン要求]** セクションで、サインアップ中にユーザーから収集して送信する要求と属性を選択します。 たとえば、 **[Show more]\(さらに表示\)** を選択し、 **[国/リージョン]** 、 **[表示名]** 、 **[郵便番号]** の属性と要求を選択します。 **[OK]** を選択します。
 

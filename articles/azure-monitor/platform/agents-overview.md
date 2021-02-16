@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: d1350248e3819863a30ecf21ff68bb7b9488b6ef
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 33758391b3715dae3928812a38ac2ee4e1baffb6
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232932"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981427"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -145,8 +145,9 @@ Telegraf エージェントは、次のような場合に使用します。
 | Windows Server 2016 Core                                 |   |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
-| Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ)  | X | x | X | X |
+| Windows Server 2008 R2 SP1                               | X | X | X | X |
+| Windows Server 2008 R2                                   |   | X | X | x |
+| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro<br>(サーバー シナリオのみ)  | X | X | X | X |
 | Windows 8 Enterprise および Pro<br>(サーバー シナリオのみ)  |   | X | X |   |
 | Windows 7 SP1<br>(サーバー シナリオのみ)                 |   | X | X |   |
 
@@ -154,31 +155,36 @@ Telegraf エージェントは、次のような場合に使用します。
 
 | オペレーティング システム | Azure Monitor エージェント | Log Analytics エージェント | 依存関係エージェント | 診断拡張機能 | 
 |:---|:---:|:---:|:---:|:---:
-| Amazon Linux 2017.09                                     |   | X |   |   |
-| CentOS Linux 8                                           |   | X | X |   |
-| CentOS Linux 7                                           | X | X | X | X |
-| CentOS Linux 6                                           |   | X |   |   |
-| CentOS Linux 6.5 以降                                        |   | X | X | X |
-| Debian 9                                                 | X | X | x | X |
-| Debian 8                                                 |   | X | X |   |
-| Debian 7                                                 |   |   |   | X |
-| OpenSUSE 13.1+                                           |   |   |   | X |
-| Oracle Linux 8                                           |   | X |   |   |
-| Oracle Linux 7                                           | X | X |   | X |
-| Oracle Linux 6                                           |   | X |   |   |
-| Oracle Linux 6.4+                                        |   | X |   | X |
-| Red Hat Enterprise Linux Server 8                        |   | X | X |   |
-| Red Hat Enterprise Linux Server 7                        | X | X | X | X |
-| Red Hat Enterprise Linux Server 6                        |   | X | X |   |
-| Red Hat Enterprise Linux Server 6.7 以降                     |   | X | X | X |
-| SUSE Linux Enterprise Server 15.1                        |   | X |   |   |
-| SUSE Linux Enterprise Server 15                          | X | X | X |   |
-| SUSE Linux Enterprise Server 12                          | X | X | X | X |
-| Ubuntu 20.04 LTS                                         |   | X | X |   |
-| Ubuntu 18.04 LTS                                         | X | X | X | X |
-| Ubuntu 16.04 LTS                                         | X | X | X | X |
-| Ubuntu 14.04 LTS                                         |   | X |   | X |
+| Amazon Linux 2017.09                                        |   | X |   |   |
+| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 7                                              | X | X | X | X |
+| CentOS Linux 6                                              |   | X |   |   |
+| CentOS Linux 6.5 以降                                           |   | X | X | X |
+| Debian 10 <sup>1</sup>                                      | X |   |   |   |
+| Debian 9                                                    | X | X | x | X |
+| Debian 8                                                    |   | X | X |   |
+| Debian 7                                                    |   |   |   | X |
+| OpenSUSE 13.1+                                              |   |   |   | X |
+| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 7                                              | X | X |   | X |
+| Oracle Linux 6                                              |   | X |   |   |
+| Oracle Linux 6.4+                                           |   | X |   | X |
+| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 7                           | X | x | X | X |
+| Red Hat Enterprise Linux Server 6                           |   | X | X |   |
+| Red Hat Enterprise Linux Server 6.7 以降                        |   | X | X | X |
+| SUSE Linux Enterprise Server 15.2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
+| SUSE Linux Enterprise Server 15.1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15                             | X | X | X |   |
+| SUSE Linux Enterprise Server 12                             | X | X | X | X |
+| Ubuntu 20.04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 18.04 LTS                                            | X | X | X | X |
+| Ubuntu 16.04 LTS                                            | X | X | X | X |
+| Ubuntu 14.04 LTS                                            |   | X |   | X |
 
+<sup>1</sup> マシンに Python 3 がインストールされている必要があります。
+
+<sup>2</sup> Syslog イベントの収集に関する既知の問題。 現在、パフォーマンス データのみがサポートされています。
 #### <a name="dependency-agent-linux-kernel-support"></a>依存関係エージェントの Linux カーネル サポート
 
 依存関係エージェントはカーネル レベルで動作するため、サポートもカーネルのバージョンに依存します。 次の表は、Linux OS のメジャーおよびマイナー リリースと依存関係エージェントでサポートされているカーネル バージョンの一覧です。

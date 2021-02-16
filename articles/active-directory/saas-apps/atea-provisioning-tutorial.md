@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 67b114ac355b293db61d00b89816ab73aaa2e5b2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430698"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550270"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>チュートリアル:Atea を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -48,7 +48,7 @@ ms.locfileid: "99430698"
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Atea を構成する
 
-Azure AD でのプロビジョニングをサポートするように Iris Intranet を構成するには、[Atea サポート チーム](mailto:servicedesk@atea.dk)にメールで連絡して、**テナント URL** と **シークレット トークン** を取得する必要があります。 これらの値を、Azure portal で Atea のアプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** および **[テナント URL]** フィールドに入力します。
+Azure AD でのプロビジョニングをサポートするように Atea を構成するには、Atea サポート チーム (<SSO.Support@atea.com>) までメールをお寄せください。
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Atea を追加する
 

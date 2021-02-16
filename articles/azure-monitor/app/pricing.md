@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531328"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556131"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -186,7 +186,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 * **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](./sampling.md)。
 
-* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](./javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。
+* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](./javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。 Ajax 呼び出しを無効にすると [JavaScript の相関関係](./javascript.md#enable-correlation)が無効になることに注意してください。
 
 * **不要なモジュールの無効化**: [ApplicationInsights.config を編集](./configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 

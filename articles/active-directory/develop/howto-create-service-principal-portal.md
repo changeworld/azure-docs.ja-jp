@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014945"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581756"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -115,7 +115,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>サインインするためのテナントとアプリ ID の値を取得する
 
-プログラムでサインインするときは、認証要求およびアプリケーション ID と共にテナント ID を渡す必要があります。  証明書または認証キーも必要です (次のセクションで説明します)。 これらの値を取得するには、次の手順に従います。
+プログラムでサインインするときは、認証要求およびアプリケーション ID と共にテナント ID を渡します。  証明書または認証キーも必要です (次のセクションで説明します)。 これらの値を取得するには、次の手順に従います。
 
 1. **[Azure Active Directory]** を選択します。
 1. Azure AD の **[アプリの登録]** から、アプリケーションを選択します。
@@ -162,7 +162,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 
 1. **[追加]** を選択します。
 
-アプリケーション登録ポータルで証明書をアプリケーションに登録したら、クライアント アプリケーションで証明書を使用できるようにする必要があります。
+アプリケーション登録ポータルで証明書をアプリケーションに登録した後、クライアント アプリケーション コードで証明書を使用できるようにします。
 
 ### <a name="option-2-create-a-new-application-secret"></a>オプション 2:新しいアプリケーション シークレットを作成する
 

@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 73fc13cf2a49d7cacd7540d06c6d0afd9cea68e5
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: a24ece3c0b75d0d0d22e13c6e5367c27fbaeab66
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729574"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006787"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>Cherwell を IT Service Management Connector に接続する
 
 この記事では、Cherwell インスタンスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。
 
 > [!NOTE]
-> Cherwell や Provance のお客様には、統合の別の方法として、[Webhook アクション](./action-groups.md#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
+> 2020 年 10 月 1 日以降、新規のお客様が Cherwell ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。
+> 既存の ITSM 接続はサポートされます。
 
 以降のセクションでは、Cherwell 製品を Azure の ITSMC に接続する方法について詳細に説明します。
 

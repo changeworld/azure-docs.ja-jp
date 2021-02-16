@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064846"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583978"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer ブラウザーに関する既知の問題 (MSAL.js)
 
@@ -39,7 +39,7 @@ Internet Explorer で実行できるアプリケーションで MSAL.js を使�
 エンド ユーザーがポップアップを受け入れた場合、運用環境 (たとえば、Azure Web Apps) へのアプリケーションのデプロイは、通常、問題なく機能します。 Microsoft では、Internet Explorer 11 でこのテストを行いました。
 
 ### <a name="running-locally"></a>ローカルでの実行
-Internet Explorer で動作するアプリケーションをローカルで実行およびデバッグする場合は、次の点に注意する必要があります (アプリケーションを *http://localhost:1234* として実行すると想定します)。
+Internet Explorer で動作するアプリケーションをローカルで実行およびデバッグする場合は、次の点に注意してください (アプリケーションを *http://localhost:1234* として実行すると想定します)。
 
 - Internet Explorer には、"保護モード" というセキュリティ メカニズムが備わっています。このため、MSAL.js が正常に動作しません。 また、サインイン後にページが http://localhost:1234/null にリダイレクトされるという現象が発生する可能性もあります。
 

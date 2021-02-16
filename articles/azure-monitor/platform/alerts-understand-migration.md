@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e57b3dd31455db245103469874c517fe54479110
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875922"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526909"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>新しいアラートへの移行オプションについて
 
-従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。 残りのアラート移行である [Azure Government クラウド](../../azure-government/documentation-government-welcome.md)と [Azure China 21Vianet](https://docs.azure.cn/) については、近日中に新しい日付が発表されます。
+パブリック クラウド ユーザーに対するクラシック アラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。 残りのアラート移行である [Azure Government クラウド](../../azure-government/documentation-government-welcome.md)と [Azure China 21Vianet](https://docs.azure.cn/) については、近日中に新しい日付が発表されます。
 
 この記事では、手動移行と自発的移行ツールがどのように機能するかについて説明します。このツールは、残りのアラート ルールを移行するために使用されます。 また、一般的な問題をいくつか取り上げて、その解決方法を紹介します。
 

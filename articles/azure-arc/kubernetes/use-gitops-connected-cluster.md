@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps を使用して Azure Arc 対応の Kubernetes クラスターを構成する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、コンテナー
-ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737186"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988700"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
@@ -148,17 +148,17 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 `--helm-operator-params`:*省略可能*: Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
 
-`--helm-operator-chart-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は1.2.0 です。
+`--helm-operator-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 '1.2.0' 以降を使用します。 既定値は1.2.0 です。
 
 `--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値は 'default' です。 最大 23 文字。
 
-`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ``` のように指定します。
+`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ``` のように指定します。
 
 --operator-params でサポートされているオプション
 
 | オプション | 説明 |
 | ------------- | ------------- |
-| --git-branch  | Kubernetes マニフェストに使用する Git リポジトリのブランチ。 既定値は 'master' です。 |
+| --git-branch  | Kubernetes マニフェストに使用する Git リポジトリのブランチ。 既定値は 'master' です。 新しいリポジトリではルート ブランチの名前が 'main' になっていますが、その場合は --git-branch=main を設定する必要があります。 |
 | --git-path  | Flux から Kubernetes マニフェストを特定するための Git リポジトリ内の相対パス。 |
 | --git-readonly | Git リポジトリは読み取り専用と見なされます。Flux では書き込みが試行されなくなります。 |
 | --manifest-generation  | 有効にすると、Flux によって .flux.yaml が検索され、Kustomize または他のマニフェスト ジェネレーターが実行されます。 |
@@ -226,16 +226,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 }
 ```
 
-`sourceControlConfiguration` が作成されると、内部でいくつかの処理が行われます。
+`sourceControlConfiguration` が作成または更新されると、内部でいくつかの処理が行われます。
 
-1. Azure Arc `config-agent` では、Azure Resource Manager の新規または更新された構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`) が監視されます
-1. `config-agent` を使用すると、新しい`Pending` 構成が通知されます
-1. `config-agent` を使用すると、構成プロパティが読み取られ、`flux` のマネージド インスタンスのデプロイが準備されます
-    * `config-agent` を使用すると、ターゲットの名前空間が作成されます
-    * `config-agent` を使用すると、適切なアクセス許可 (`cluster` または `namespace` スコープ) を持つ Kubernetes サービス アカウントが準備されます
-    * `config-agent` を使用すると、`flux` のインスタンスがデプロイされます
-    * `flux` を使用すると、SSH キーが生成され、公開キーがログに記録されます (Flux が生成したキーで SSH のオプションを使用している場合)
-1. `config-agent` を使用すると、Azure の `sourceControlConfiguration` リソースに状態が報告されます
+1. Azure Arc `config-agent` によって新規または更新された構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`) の Azure Resource Manager が監視され、新しい `Pending` 構成が認識されます。
+1. `config-agent` によって構成プロパティが読み取られ、ターゲットの名前空間が作成されます。
+1. Azure Arc `controller-manager` によって適切なアクセス許可 (`cluster` または `namespace` スコープ) を持つ Kubernetes サービス アカウントが準備され、`flux` のインスタンスがデプロイされます。
+1. Flux が生成したキーで SSH のオプションを使用している場合、`flux` を使用すると、SSH キーが生成され、公開キーがログに記録されます。
+1. `config-agent` により、Azure の `sourceControlConfiguration` リソースに状態が報告されます。
 
 プロビジョニング プロセスが実行されている間、`sourceControlConfiguration` はいくつかの状態に遷移します。 上記の `az k8sconfiguration show ...` のコマンドを使用して進行状況を監視します。
 

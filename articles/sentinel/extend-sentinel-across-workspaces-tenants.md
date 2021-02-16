@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757121"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006685"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -98,7 +98,7 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 <!-- Bookmark added for backward compatibility with old heading -->
 クロスワークスペース クエリをスケジュールされた分析ルールに含めることができるようになりました。ただし、次の制限事項があります。
 
-- 1 つのクエリに含めることができるワークスペースは、最大 15 個です。
+- 1 つのクエリに含めることができるワークスペースは、最大 20 個です。
 - クエリで参照されているすべてのワークスペースに、Azure Sentinel をデプロイする必要があります。
 
 > [!NOTE] 
@@ -127,7 +127,7 @@ Azure Sentinel には事前に読み込まれたクエリ例が用意されて�
 
 複数の Azure Sentinel ワークスペースを構成して管理するには、Azure Sentinel 管理 API の使用を自動化する必要があります。 アラート ルール、ハンティング クエリ、ブック、プレイブックなど、Azure Sentinel リソースのデプロイを自動化する方法の詳細については、「[Azure Sentinel の拡張: API、統合、管理の自動化](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885)」を参照してください。
 
-また、Azure Sentinel をコードとして管理するための統合されたコミュニティ提供の方法、およびプライベート GitHub リポジトリからのリソースのデプロイと構成については、「[コードとしての Azure Sentinel のデプロイと管理](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928)」および「[Azure Lighthouse と Sentinel の DevOps 機能の結合](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966)」も参照してください。 
+また、Azure Sentinel をコードとして管理するための統合されたコミュニティ提供の方法、およびプライベート GitHub リポジトリからのリソースのデプロイと構成については、[コードとしての Azure Sentinel のデプロイと管理](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928)に関するページと、[Azure Lighthouse と Azure Sentinel の DevOps 機能の結合](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966)に関するページも参照してください。 
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure Lighthouse を使用したテナント間でのワークスペースの管理
 

@@ -3,12 +3,12 @@ title: Azure Monitor for containers を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンス、および明らかになっているパフォーマンスに関する問題を把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943823"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806011"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする
 
@@ -35,6 +35,12 @@ ms.locfileid: "98943823"
 ## <a name="prerequisites"></a>前提条件
 
 始める前に、次の要件を満たしていることを確認します。
+
+> [!IMPORTANT]
+> Log Analytics のコンテナー化された Linux エージェント (replicaset ポッド) を使用すると、クラスター内の Kubelet で保護されたポート (10250) 上のすべての Windows ノードに API 呼び出しを行い、ノードとコンテナーのパフォーマンスに関連するメトリックが収集されます。 Windows ノードとコンテナーのパフォーマンスに関連するメトリックの収集が機能するためには、インバウンドとアウトバウンドの両方で、クラスターの仮想ネットワークの Kubelet で保護されたポート (:10250) が開かれている必要があります。
+>
+> Windows ノードを持つ Kubernetes クラスターがある場合は、クラスターの仮想ネットワークのインバウンドとアウトバウンドの両方で、Kubelet で保護されたポート (:10250) が開かれていることを確認し、ネットワーク セキュリティ グループとネットワーク ポリシーを構成してください。
+
 
 - Log Analytics ワークスペースがあります。
 

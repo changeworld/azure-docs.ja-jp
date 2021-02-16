@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878123"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807871"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web Application Firewall の Azure セキュリティ ベースライン
 
@@ -135,7 +135,7 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 
 **ガイダンス**:Azure Sentinel、サードパーティ SIEM などの中央のセキュリティ ログ管理ソリューションに送信されるように、Azure Web Application Firewall (WAF) のログを構成します。 これらのログには、Azure アクティビティ、診断、およびリアルタイムの WAF ログが含まれます。これらのログは、Azure Monitor、Excel、Power BI などのさまざまなツールで表示できます。 Azure Web Application Firewall のログでは、Azure WAF で評価、照合、ブロックされているデータについての分析情報が提供されます。
 
-Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を提供する組み込みの Azure WAF ブックがあります。 このブックにはイベントや一致したルール、ブロックされたルールなど、ファイアウォールのログに記録されるあらゆる情報が含まれます。 このテレメトリを使用して、Sentinel によって収集された WAF イベントに基づいて、プレイブックの自動化を開始し、通知または修復アクションを実行することができます。
+Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を提供する組み込みの Azure WAF ブックがあります。 このブックにはイベントや一致したルール、ブロックされたルールなど、ファイアウォールのログに記録されるあらゆる情報が含まれます。 このテレメトリを使用して、Azure Sentinel によって収集された WAF イベントに基づいて、プレイブックの自動化を開始し、通知または修復アクションを実行できます。
 
 - [アクティビティ ログを表示する](../azure-resource-manager/management/view-activity-logs.md)
 

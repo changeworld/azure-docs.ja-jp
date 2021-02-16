@@ -2,13 +2,13 @@
 title: 概念 - ネットワークの相互接続性
 description: Azure VMware Solution におけるネットワークと相互接続性の重要な側面とユース ケースについて説明します。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/02/2021
+ms.openlocfilehash: bc8a2f8c07a2a4fe37c4899dc33d5173a99dc423
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475422"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538977"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution におけるネットワークと相互接続性の概念
 
@@ -59,10 +59,11 @@ Azure VMware Solution プライベート クラウドには、次のようなユ
 
 ## <a name="next-steps"></a>次のステップ 
 
-これらのネットワークと相互接続性の概念について理解したので、次のことについて学習します。
+Azure VMware Solution のネットワークと相互接続性の概念について理解したら、次の事項の学習に進むことができます。
 
 - [Azure VMware Solution のストレージの概念](concepts-storage.md)。
 - [Azure VMware Solution の ID の概念](concepts-identity.md)
+- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

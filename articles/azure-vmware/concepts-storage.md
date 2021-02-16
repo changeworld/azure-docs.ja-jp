@@ -2,13 +2,13 @@
 title: 概念 - ストレージ
 description: Azure VMware Solution プライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/02/2021
+ms.openlocfilehash: 522e4f651b36532ac0c144b3889b2b67c91dc77b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062797"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536952"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Solution のストレージの概念
 
@@ -40,7 +40,11 @@ vSAN データストアでは、既定で保存データの暗号化が使用さ
 
 ## <a name="next-steps"></a>次のステップ
 
-次のステップでは、[プライベート クラウドの ID の概念][concepts-identity]について説明します。
+Azure VMware Solution ストレージに関する概念を理解したら、次の事項の学習に進むことができます。
+
+- [プライベート クラウドの ID の概念](concepts-identity.md)
+- [Azure VMware Solution の vSphere ロールベースのアクセス制御](concepts-role-based-access-control.md)
+- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external-->
 

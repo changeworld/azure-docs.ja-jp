@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943894"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988432"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -632,7 +632,7 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="RowKey および PartitionKey に姓が格納されている従業員の従業員 ID の一覧を含む従業員インデックス エンティティを示すスクリーンショット。":::
 
-`EmployeeIDs` プロパティには、`RowKey` と `PartitionKey` に格納されている姓を持つ従業員の従業員 ID リストが含まれています。  
+`EmployeeDetails` プロパティには、`RowKey` に格納されている姓を持つ従業員の従業員 ID と部署名のペアのリストが含まれています。
 
 インデックス エンティティが従業員エンティティとは別のパーティションにあるため、EGT を使用して一貫性を保つことはできません。 インデックス エンティティが従業員エンティティと最終的に一貫していることを確認してください。  
 

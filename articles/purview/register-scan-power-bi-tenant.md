@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874908"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807548"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -84,7 +84,7 @@ Power BI テナントの Admin API に接続するためのカタログのアク
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="選択可能なデータ ソースの一覧を示す画像":::
 
-1. Power BI インスタンスにフレンドリ名を付けます。
+3. Power BI インスタンスにフレンドリ名を付けます。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Power BI データ ソースのフレンドリ名を示す画像":::
 
@@ -94,17 +94,21 @@ Power BI テナントの Admin API に接続するためのカタログのアク
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="登録された Power BI データ ソース":::
 
-1. スキャンに名前を付けます。 サポートされている認証方法は **[マネージド ID]** のみであることに留意してください。
+    > [!Note]
+    > Power BI の場合、データ ソースの登録とスキャンは 1 つのインスタンスに対してのみ許可されています。
+
+
+4. スキャンに名前を付けます。 サポートされている認証方法は **[マネージド ID]** のみであることに留意してください。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Power BI スキャンの設定を示す画像":::
 
     スキャンの名前の長さは 3 から 63 文字で、文字、数字、アンダースコア、およびハイフンのみを使用できます。  スペースは使用できません。
 
-1. スキャン トリガーを設定します。 オプションとしては、 **[1 度]** 、 **[7 日ごと]** 、 **[30 日ごと]** があります。
+5. スキャン トリガーを設定します。 オプションとしては、 **[1 度]** 、 **[7 日ごと]** 、 **[30 日ごと]** があります。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="スキャン トリガーの画像":::
 
-1. **[Review new scan]\(新しいスキャンを確認\)** で **[保存および実行]** を選択してスキャンを開始します。
+6. **[Review new scan]\(新しいスキャンを確認\)** で **[保存および実行]** を選択してスキャンを開始します。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Power BI の保存および実行画面の画像":::
 

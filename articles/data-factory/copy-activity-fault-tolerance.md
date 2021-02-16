@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 0fb6beb776f5a553e85f690d49e3433f93b9ee16
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593649"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809543"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -58,7 +58,8 @@ ADF では、バイナリ ファイルをコピーするときに、次のフォ
     "skipErrorFile": { 
         "fileMissing": true, 
         "fileForbidden": true, 
-        "dataInconsistency": true 
+        "dataInconsistency": true,
+        "invalidFileName": true     
     }, 
     "validateDataConsistency": true, 
     "logSettings": {
@@ -83,6 +84,7 @@ skipErrorFile | データの移動中にスキップするエラーの種類を�
 fileMissing | ADF によりコピーされるのと同時に、他のアプリケーションによって削除されているファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: 他のアプリケーションによって削除されているファイルをスキップして、残りの部分をコピーします。 <br/> - False: データ移動中にソース ストアからいずれかのファイルが削除された場合、コピー アクティビティを中止します。 <br/>このプロパティは既定で true に設定されていることに注意してください。 | True (既定値) <br/>False | いいえ
 fileForbidden | ファイルまたはフォルダーの ACL により、ADF で構成されている接続よりも高いアクセス許可レベルが要求されているときに、その特定のファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: そのファイルをスキップして、残りの部分をコピーします。 <br/> - False: フォルダーまたはファイルに対してアクセス許可の問題が発生した場合に、コピー アクティビティを中止します。 | True <br/>False (既定値) | いいえ
 dataInconsistency | ソース ストアとコピー先ストアの間で整合性のないデータをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: 整合性のないデータをスキップして、残りの部分をコピーします。 <br/> -False: 整合性のないデータが見つかった場合、コピー アクティビティを中止します。 <br/>このプロパティは、validateDataConsistency を True に設定した場合にのみ有効であることに注意してください。 | True <br/>False (既定値) | いいえ
+invalidFileName | 保存先ストアに対してファイル名が無効な場合に特定のファイルをスキップするかどうかを決定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つ。 <br/> -True: 無効なファイル名を持つファイルをスキップして、残りの部分をコピーします。 <br/> -False: ファイルに無効なファイル名が付けられている場合、コピー アクティビティを中止します。 <br/>このプロパティは、任意のストレージ ストアからバイナリ ファイルを ADLS Gen2 にコピーする場合、またはバイナリ ファイルを AWS S3 から任意のストレージ ストアにコピーする場合に機能することに注意してください。 | True <br/>False (既定値) | いいえ
 logSettings  | スキップされたオブジェクト名をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
 path | ログ ファイルのパス。 | ログ ファイルの格納に使用するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
@@ -166,7 +168,7 @@ Timestamp,Level,OperationName,OperationItem,Message
     次に例を示します。データを SQL サーバーから SQL データベースにコピーします。 シンクの SQL データベースでは主キーが定義されていますが、ソースの SQL サーバーではそのような主キーは定義されていません。 ソースに存在する重複している行は、シンクにはコピーできません。 コピー アクティビティでは、ソース データの最初の行のみがシンクにコピーされます。 それ以降のソース行に重複している主キーの値が含まれている場合、互換性のないものとして検出され、スキップされます。
 
 >[!NOTE]
->- PolyBase を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むには、コピー アクティビティの拒否ポリシーで "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" を指定して PolyBase のネイティブ フォールト トレランス設定を構成します。 PolyBase 互換性のない行は、次に示すように、通常どおり Blob または ADLS へのリダイレクトを有効にできます。
+>- PolyBase を使用して Azure Synapse Analytics にデータを読み込むには、コピー アクティビティの拒否ポリシーで "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" を指定して PolyBase のネイティブ フォールト トレランス設定を構成します。 PolyBase 互換性のない行は、次に示すように、通常どおり Blob または ADLS へのリダイレクトを有効にできます。
 >- コピー アクティビティが [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift) を呼び出すように構成されている場合、この機能は適用されません。
 >- コピー アクティビティが [SQL シンクからストアド プロシージャ](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink)を呼び出すように構成されている場合、この機能は適用されません。
 

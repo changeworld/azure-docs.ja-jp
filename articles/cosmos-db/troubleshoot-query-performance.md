@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475728"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524309"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ WHERE c.description = "Malabar spinach, cooked"
 - Left
 - Substring - ただし、最初の num_expr が 0 の場合のみ
 
-インデックスを使用せず、各ドキュメントを読み込む必要がある一般的なシステム関数は、次のとおりです。
+`WHERE` 句で使用されたときに、インデックスを使用せず、各ドキュメントを読み込む必要がある一般的なシステム関数は、次のとおりです。
 
 | **システム関数**                     | **最適化のアイデア**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| UPPER/LOWER                             | システム関数を使用して比較のためにデータを正規化する代わりに、挿入時に大文字と小文字を正規化します。 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` のようなクエリが、```SELECT * FROM c WHERE c.name = 'BOB'``` になります。 |
+| UPPER/LOWER                         | システム関数を使用して比較のためにデータを正規化する代わりに、挿入時に大文字と小文字を正規化します。 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` のようなクエリが、```SELECT * FROM c WHERE c.name = 'BOB'``` になります。 |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | クエリ実行前に現在の時刻を計算し、その文字列値を `WHERE` 句で使用します。 |
 | 数学関数 (非集計) | クエリで値を頻繁に計算する必要がある場合は、JSON ドキュメントのプロパティとして値を格納することを検討します。 |
+
+`SELECT` 句で使用された場合、非効率的なシステム関数は、クエリでインデックスを使用する方法に影響しません。
 
 ### <a name="improve-string-system-function-execution"></a>文字列システム関数の実行を改善する
 

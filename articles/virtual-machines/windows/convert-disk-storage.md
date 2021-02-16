@@ -1,5 +1,5 @@
 ---
-title: マネージド ディスク ストレージを Standard SSD と Premium SSD の間で変換する
+title: Azure PowerShell を使用してマネージド ディスク ストレージを Standard SSD と Premium SSD の間で変換する
 description: Azure PowerShell を使用し、Azure マネージド ディスクを Standard から Premium に、または Premium から Standard に変換する方法。
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d81cd0ac57a5a18d90144584e8705cbffcba6f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13159e527fac76a1a79118e9363b94904935a2be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871430"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807497"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する
 
@@ -112,7 +112,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ポータルの**仮想マシン**の一覧から VM を選択します。
+2. ポータルの **仮想マシン** の一覧から VM を選択します。
 3. VM が停止していない場合、VM の **[概要]** ウィンドウの一番上で **[停止]** を選択し、VM が停止するまで待ちます。
 3. VM のウィンドウで、メニューから **[ディスク]** を選択します。
 4. 変換するディスクを選択します。

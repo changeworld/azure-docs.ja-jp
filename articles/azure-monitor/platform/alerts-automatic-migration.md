@@ -4,16 +4,16 @@ description: 自動移行プロセスのしくみについて説明します。
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6a2d032c6aa33b72fe422638df45ca48bf8b1036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3550dcef174a4d970917fabfda3c4fd2a8df4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847285"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526553"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>クラシック アラート ルールの自動移行プロセスについて
 
-[以前発表された](monitoring-classic-retirement.md)ように、Azure Monitor の、従来のアラートは廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 提供終了プロセスの一環として、Azure portal には、お客様自身で移行を行えるように、[移行ツール](alerts-using-migration-tool.md)が用意されています。
+[以前発表した](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 提供終了プロセスの一環として、Azure portal には、お客様自身で移行を行えるように、[移行ツール](alerts-using-migration-tool.md)が用意されています。
 この記事では、自動移行プロセスについて説明します。これは、発生する可能性のある問題の解決に役立ちます。
 
   > [!NOTE]
@@ -21,9 +21,9 @@ ms.locfileid: "87847285"
 
 ## <a name="what-will-happen-during-the-automatic-migration-process"></a>自動移行プロセス中に起こること
 
-- **2019 年 9 月 1 日**以降、[特定のメトリック](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)に対するものを例外として、新しいクラシック アラート ルールを作成することはできなくなります。
+- **2019 年 9 月 1 日** 以降、[特定のメトリック](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)に対するものを例外として、新しいクラシック アラート ルールを作成することはできなくなります。
 - この例外に該当する場合、お客様は追って発表されるまでクラシック アラート ルールの新規作成とクラシック アラートの使用を継続できます。
-- **2019 年 9 月 1 日**以降、クラシック アラートの移行は、クラシック アラートを使用するすべてのお客様に対して一括で実行されます。
+- **2019 年 9 月 1 日** 以降、クラシック アラートの移行は、クラシック アラートを使用するすべてのお客様に対して一括で実行されます。
 - 移行できない特定のクラシック アラート ルールは、自主的移行ツールを使用する場合と同様にそのまま残されます。 これらのクラシック アラート ルールは、追って発表されるまでは引き続きサポートされます。 ただし、無効なクラシック アラート ルールは機能しないため、削除されます。
 削除されたターゲット リソースを監視しているクラシック アラート ルールや、[サポートされなくなったメトリック](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics)に対するクラシック アラート ルールは、無効と見なされます。
 - ご使用のサブスクリプションの移行が開始されると、問題が発生しない限り、移行は 1 時間以内に完了します。 お客様は [Azure Monitor の移行ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)で移行の状態を監視できます。

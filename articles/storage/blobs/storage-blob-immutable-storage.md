@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9654ff6eab53acfe3e656afdcacd758c548232ba
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010063"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979141"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
@@ -53,6 +53,10 @@ Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホー�
 Azure Blob Storage の不変ストレージでは、時間ベースのリテンションと訴訟ホールドの 2 種類の WORM (不変) ポリシーがサポートされています。 時間ベースのリテンション ポリシーまたは訴訟ホールドをコンテナーに適用すると、既存のすべての BLOB が 30 秒以内に不変 WORM 状態に移行します。 そのポリシーで保護されたコンテナーにアップロードされるすべての新しい BLOB も不変状態に移行します。 すべての BLOB が不変ストレージに格納されると、不変ポリシーが承認され、不変コンテナー内のすべての上書きまたは削除操作は許可されなくなります。
 
 また、コンテナーおよびストレージ アカウントの削除は、訴訟ホールド ポリシーまたはロック済み時間ベースのポリシーによって保護されている BLOB がコンテナー内にある場合は許可されません。 訴訟ホールド ポリシーでは、BLOB、コンテナー、およびストレージ アカウントが削除に対して保護されます。 ロックされていない時間ベースのポリシーとロック済み時間ベースのポリシーでは、指定された時間について BLOB の削除から保護されます。 ロックされていない時間ベースのポリシーとロック済み時間ベースのポリシーでは、コンテナー内に少なくとも 1 つの BLOB が存在する場合にのみ、コンテナーの削除から保護されます。 "*ロック済み*" 時間ベースのポリシーが設定されたコンテナーのみが、ストレージ アカウントの削除から保護されます。ロックされていない時間ベースのポリシーが設定されたコンテナーは、ストレージ アカウントの削除から保護もコンプライアンスも提供されません。
+
+次の図は、時間ベースの保持ポリシーと訴訟ホールドが有効になっている間、どのように書き込みと削除操作が防止されるかを示しています。
+
+:::image type="content" source="media/storage-blob-immutable-storage/worm-diagram.png" alt-text="保持ポリシーと訴訟ホールドが書き込みと削除操作を防止する方法を示す図":::
 
 時間ベースの保持ポリシーを設定およびロックする方法の詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](storage-blob-immutability-policies-manage.md)」を参照してください。
 

@@ -4,12 +4,12 @@ description: Azure Application Insights によって収集と格納が行われ�
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493772"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549560"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights で Azure Functions のテレメトリを分析する 
 
@@ -139,6 +139,18 @@ traces
 次のテレメトリ クエリは、従量課金プランで実行される関数のコストに影響を与えるメトリックに特有のものです。
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor のメトリック
+
+Application Insights によって収集されるテレメトリ データに加えて、[Azure Monitor メトリック](../azure-monitor/platform/data-platform-metrics.md)から、関数アプリがどのように実行されているかに関するデータも取得できます。 [App Service アプリで使用できる通常のメトリック](../app-service/web-sites-monitor.md#understand-metrics)と共に、目的の関数に固有の 2 つのメトリックがあります。
+
+| メトリック | 説明 |
+| ---- | ---- |
+| **FunctionExecutionCount** | 関数の実行回数は、関数アプリが実行された回数を示します。 これは、アプリ内で関数が実行された回数に関連付けられています。 現在、このメトリックは、Linux で実行されている Premium および Dedicated (App Service) のプランではサポートされていません。 |
+| **FunctionExecutionUnits** | 関数の実行単位は、実行時間とメモリ使用量を組み合わせたものです。  現在、Azure Monitor では、メモリ データのメトリックは使用できません。 ただし、アプリのメモリ使用量を最適化したい場合は、Application Insights によって収集されるパフォーマンス カウンター データを使用できます。 現在、このメトリックは、Linux で実行されている Premium および Dedicated (App Service) のプランではサポートされていません。|
+
+Application Insights データを使用して従量課金プランのコストを計算する方法の詳細については、「[従量課金プランのコストの見積もり](functions-consumption-costs.md)」を参照してください。 Monitor エクスプローラーを使用してメトリックを表示する方法の詳細については、[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754816"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583927"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -145,7 +145,7 @@ MSAL.NET では、トークン キャッシュがシールド クラスとなり
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが (組織用の) AAD アカウントでサインインできるようにします。 [ADAL.NET での機関の検証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)に関するページを参照してください
 
-v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
+v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用します。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告:v1.0 Web API に対応するスコープに 1 つまたは 2 つのスラッシュがある場合
 
-Azure Resource Manager API (https://management.core.windows.net/) に対応するスコープを書き込む場合は、次のスコープを要求する必要があります (2 つのスラッシュに注意)
+Azure Resource Manager API (https://management.core.windows.net/) ) に対応するスコープを書き込む場合は、次のスコープを要求します (2 つのスラッシュに注意してください)。
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};

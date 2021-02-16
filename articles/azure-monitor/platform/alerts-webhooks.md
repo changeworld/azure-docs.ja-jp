@@ -6,17 +6,17 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1519dbe9439f1d56a558082f993b15b4a312ecfa
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852108"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526875"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 
 > [!WARNING]
-> この記事では、古いクラシック メトリック アラートの使用方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
+> この記事では、古いクラシック メトリック アラートの使用方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 パブリック クラウド ユーザーに対するクラシック アラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
 >
 
 webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。 

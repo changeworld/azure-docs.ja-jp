@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 02611bdf9689d2f62f661f558fd547ea46bd4d36
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744130"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576010"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1.3 のリリース ノート
 
@@ -28,15 +28,15 @@ Update 1.3 はソフトウェア バージョン 10.0.10319.0 に対応してい
 
 ## <a name="whats-new-in-update-13"></a>Update 1.3 の新機能
 
-この更新プログラムには、以下に示す機能強化が含まれています。
+この更新プログラムには、次の機能強化が含まれています。KB4540725
 
 - トランスポート層セキュリティ (TLS) 1.2 は必須の更新プログラムであり、インストールする必要があります。 今回のリリースから、TLS 1.2 はすべての Azure portal 通信の標準プロトコルになります。
 - ガベージ コレクションのバグ修正によって、デバイスとストレージ アカウントが 2 つの離れたリージョンにあるときに、ガベージ コレクション サイクルのパフォーマンスが向上します。
 - BLOB タイムアウトによるバックアップ エラーを修正します。
 - 更新された OS/.NET Framework のセキュリティ パッチ。
-  - [KB4540725](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4540725\V1.001\free\NEU\X64):2020 年 3 月の SSU (サービス スタック更新プログラム)
-  - [KB4565541](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4565541\V1.014\free\NEU\X64):2020 年 7 月のロールアップ
-  - [KB4565622](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Partner\DOTNET47x\KB4565622\V1.000\free\NEU\x64):2020 年 7 月の .NET Framework 更新プログラム
+  - [KB4540725](https://support.microsoft.com/topic/servicing-stack-update-for-windows-8-1-rt-8-1-and-server-2012-r2-march-10-2020-cfa082a3-0b58-a8a3-7dc7-ab424de91b86):2020 年 3 月の SSU (サービス スタック更新プログラム)
+  - [KB4565541](https://support.microsoft.com/topic/july-14-2020-kb4565541-monthly-rollup-fed6b2b1-3d23-5981-34df-9215a8d8ce01):2020 年 7 月のロールアップ
+  - [KB4565622](https://support.microsoft.com/topic/security-and-quality-rollup-for-net-framework-4-6-4-6-1-4-6-2-4-7-4-7-1-4-7-2-for-windows-8-1-rt-8-1-and-windows-server-2012-r2-kb4565622-b7320848-1889-a624-da01-719f55ee8a00):2020 年 7 月の .NET Framework 更新プログラム
 
 ## <a name="download-update-13"></a>Update 1.3 のダウンロード
 

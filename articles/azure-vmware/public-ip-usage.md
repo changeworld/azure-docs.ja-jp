@@ -2,13 +2,13 @@
 title: Azure VMware Solution でパブリック IP 機能を使用する方法
 description: この記事では、Azure Virtual WAN でパブリック IP 機能を使用する方法について説明します。
 ms.topic: how-to
-ms.date: 10/28/2020
-ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.date: 02/04/2021
+ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517905"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581382"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware Solution でパブリック IP 機能を使用する方法
 
@@ -116,11 +116,11 @@ Web サーバーによって、その要求が受信され、要求された情�
 
    :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Firewall Manager でファイアウォール ポリシーを作成する方法のスクリーンショット" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
-1. **[基本]** タブで、必要な詳細を指定し、 **[次へ : DNS 設定]** を選択します。 
+1. **[基本]** タブで、必要な詳細を指定し、 **[次へ: DNS 設定]** を選択します。 
 
-1. **[DNS]** タブで、 **[無効にする]** を選択してから、 **[次へ : 規則]** を選択します。
+1. **[DNS]** タブで、 **[無効にする]** を選択してから、 **[Next:Rules]\(次へ: 規則\)** を選択します。
 
-1. **[規則コレクションの追加]** を選択して、次の詳細を指定し、 **[追加]** を選択してから、 **[次へ : 脅威インテリジェンス**] を選択します。
+1. **[規則コレクションの追加]** を選択して、下の詳細を指定し、 **[追加]** を選択してから、 **[次へ: 脅威インテリジェンス**] を選択します。
 
    -  名前
    -  規則コレクションの種類 - DNAT
@@ -128,15 +128,15 @@ Web サーバーによって、その要求が受信され、要求された情�
    -  規則コレクションのアクション - 許可
    -  規則の名前
    -  ソースの種類 - **IPaddress**
-   -  ソース - * *\** _
-   -  プロトコル – _ *TCP**
+   -  ソース - **\***
+   -  プロトコル – **TCP**
    -  宛先ポート – **80**
    -  送信先の種類 – **IP アドレス**
    -  宛先 – **パブリック IP アドレス**
    -  変換されたアドレス – **Azure VMware Solution Web サーバーのプライベート IP アドレス**
    -  変換されたポート - **Azure VMware Solution Web サーバーのポート**
 
-1. 既定値のままにして、 **[次へ : ハブ]** を選択します。
+1. 既定値のままにして、 **[次へ: ハブ]** を選択します。
 
 1. **[Associate virtual hub]\(仮想ハブの関連付け\)** を選択します。
 
@@ -144,11 +144,11 @@ Web サーバーによって、その要求が受信され、要求された情�
 
    :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="セキュリティ保護付き仮想ハブに変換されるように選択したハブを示すスクリーンショット。" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. **次へ :タグ** を選択します。 
+1. **タグ** を選択します。 
 
 1. (省略可能) 名前と値のペアを作成して、リソースを分類します。 
 
-1. **[次へ :確認および作成]** を選択してから、 **[作成]** を選択します。
+1. **Next:確認および作成** を選択してから、**作成** を選択します。
 
 ## <a name="limitations"></a>制限事項
 
@@ -156,5 +156,7 @@ SDDC ごとに 100 個のパブリック IP を使用できます。
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Virtual WAN](../virtual-wan/virtual-wan-about.md) でのパブリック IP アドレスの使用について、さらに学習します。
+Azure VMware Solution でパブリック IP 機能を使用する方法について理解したので、次の事項の学習に進むことができます。
 
+- [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md) でパブリック IP アドレスを使用する。
+- [Azure VMware Solution への IPSec トンネルを作成する](create-ipsec-tunnel.md)。

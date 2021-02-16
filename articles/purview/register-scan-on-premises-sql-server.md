@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b5f4218cfcd5f9ccfbe43efac46e2f70fdc30905
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555901"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574959"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>オンプレミスの SQL Server の登録とスキャン
 
@@ -50,33 +50,32 @@ Azure Purview は、SQL Server での[ビュー](/sql/relational-databases/views
 
 ### <a name="sql-authentication"></a>SQL 認証
 
-SQL ID には、プライマリ データベースへのアクセス権が必要です。 この場所は `sys.databases` が格納される場所です。 Purview スキャナーは、サーバー内のすべての SQL DB インスタンスを検出するために、`sys.databases` を列挙する必要があります。
+SQL アカウントには、**master** データベースへのアクセス権が必要です。 これは、`sys.databases` が master データベース内にあるためです。 Purview スキャナーは、サーバー上のすべての SQL データベースを検出するために、`sys.databases` を列挙する必要があります。
 
 #### <a name="using-an-existing-server-administrator"></a>既存のサーバー管理者の使用
 
 既存のサーバー管理者 (sa) ユーザーを使用してオンプレミスの SQL Server をスキャンする予定がある場合は、次のことを確認してください。
 
-1. `sa` が Windows 認証方法ではありません。
+1. `sa` が Windows 認証アカウントではない。
 
-2. 使用する予定のサーバー レベルのユーザーが、public および sysadmin のサーバー ロールを持っている必要があります。 これを確認するには、SQL Server Management Studio (SSMS) に移動し、サーバーに接続し、セキュリティに移動します。次に、使用する予定のログインを選択し、 **[プロパティ]** を右クリックして **[サーバー ロール]** を選択します。
+2. 使用する予定のサーバー レベルのログインが、public および sysadmin のサーバー ロールを持っている。 これを確認するには、サーバーに接続し、SQL Server Management Studio (SSMS) に移動し、セキュリティに移動します。次に、使用する予定のログインを選択し、 **[プロパティ]** を右クリックして **[サーバー ロール]** を選択します。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="サーバー レベルのログイン。":::
-
-3. データベースは、各データベースに対して少なくとも db_datareader レベルのアクセス権を持つユーザーにマップされます。
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping-sa.png" alt-text="sa のユーザー マッピング。":::
 
 #### <a name="creating-a-new-login-and-user"></a>新しいログインとユーザーの作成
 
 新しいログインとユーザーを作成して SQL Server をスキャンできるようにするには、次の手順に従います。
 
+> [!Note]
+   > 下のすべての手順は、[こちら](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)で提供されているコードを使用して実行できます。
+
 1. SQL Server Management Studio (SSMS) に移動してサーバ＾に接続し、セキュリティに移動し、[ログイン] を右クリックして新しいログインを作成します。 必ず SQL 認証を選択します。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="新しいログインとユーザーを作成します。":::
 
-2. 左側のナビゲーションで [サーバー ロール] を選択し、public と sysadmin の両方を選択します。
+2. 左側のナビゲーションで [サーバー ロール] を選択し、public ロールが割り当てられていることを確認します。
 
-3. 左側のナビゲーションで [ユーザー マッピング] を選択し、マップ内のすべてのデータベースを選択します。
+3. 左側のナビゲーションで [ユーザー マッピング] を選択し、マップ内のすべてのデータベースを選択し、データベース ロール: **db_datareader** を選択します。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="ユーザー マッピング。":::
 
@@ -88,8 +87,7 @@ SQL ID には、プライマリ データベースへのアクセス権が必要
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>キー コンテナーへの SQL ログイン パスワードの格納と、Purview での資格情報の作成
 
-1. Azure portal で、ご自身のキー コンテナーに移動します。
-1. **[設定] > [シークレット]** の順に選択します。
+1. Azure portal で、キー コンテナーに移動します。 **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、**名前** と **値** を SQL Server ログインの *パスワード* として入力します。
 1. **[作成]** を選択して完了します。
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。

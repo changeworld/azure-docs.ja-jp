@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625416"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509437"
 ---
 # <a name="import-device-information-to-a-sensor"></a>デバイス情報をセンサーにインポートする
 
@@ -172,7 +172,7 @@ IP アドレス、OS、パッチ レベルをインポートするには:
 
 認可の状態をインポートするには:
 
-1. Defender for IoT ヘルプ センターから、[authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして保存します。 このファイルを CSV として保存したことを確認します。
+1. Defender for IoT ヘルプ センターから、[authorized_devices - examples.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして保存します。 このファイルを CSV として保存したことを確認します。
 
 2. 以下のように情報を入力します。
 

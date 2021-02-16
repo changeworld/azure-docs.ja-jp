@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2687141ea870b0af0a4405ebef2261c5a303c767
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090223"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584114"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -44,7 +44,7 @@ OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.
 
 `access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
 
-この場合、アプリの登録にアクセスし、アプリのリダイレクト URI を `spa` 型に更新する必要があります。
+この場合、アプリの登録にアクセスし、アプリのリダイレクト URI を `spa` 型に更新します。
 
 ## <a name="request-an-authorization-code"></a>承認コードを要求する
 

@@ -6,17 +6,17 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc0be351253a15bf9039839c8cae2246681d41e2
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944477"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526655"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
 > [!NOTE]
-> [前に発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 これらのアラートの提供終了日はさらに延長されています。 間もなく新しい日付が発表されます。
+> [以前発表した](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 これらのアラートの提供終了日はさらに延長されています。 間もなく新しい日付が発表されます。
 >
 
 お使いのクラシック アラート ルールを新しいアラート ルールに自主的に移行する場合は、2 つのシステムの間に違いがいくつか存在することに注意してください。 この記事では、その相違点と、変更に備える方法について説明します。

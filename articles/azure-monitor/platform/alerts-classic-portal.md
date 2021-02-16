@@ -5,17 +5,17 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 4b0d3acda56c3f45128d1cc7cefcc4eb938281a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8b4cdd834c0db6869fdf804b43914eaa74b14319
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943795"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525553"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する
 
 > [!WARNING]
-> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 パブリック クラウド ユーザーに対するクラシック アラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
 >
 
 Azure Monitor のクラシック メトリック アラートには、メトリックのいずれかがしきい値を超えた場合に通知を受け取る方法が用意されています。 クラシック メトリック アラートは、ディメンションを持たないメトリックについてのみアラートを生成できるようにする古い機能です。 クラシック メトリック アラートよりも機能が向上したメトリック アラートと呼ばれる新しい機能が既にあります。 新しいメトリック アラート機能の詳細については、[メトリック アラートの概要](./alerts-metric-overview.md)に関するページをご覧ください。 この記事では、Azure portal、Azure CLI、および PowerShell を使用して、クラシック メトリック アラート ルールを作成、表示、管理する方法について説明します。

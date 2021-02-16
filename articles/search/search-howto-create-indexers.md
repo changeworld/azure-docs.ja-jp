@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430047"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509386"
 ---
-# <a name="create-a-search-indexer"></a>検索インデクサーを作成する
+# <a name="creating-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの作成
 
 検索インデクサーを使用すると、外部データ ソースから検索サービスの検索インデックスにドキュメントとコンテンツを転送するための、自動化されたワークフローが提供されます。 もともとの設計では、Azure のデータ ソースからテキストとメタデータが抽出され、ドキュメントが JSON にシリアル化されて、結果のドキュメントがインデックス作成のために検索エンジンに渡されます。 その後、ディープ コンテンツ処理のための [AI エンリッチメント](cognitive-search-concept-intro.md)をサポートするように拡張されています。 
 
@@ -99,7 +99,7 @@ AI エンリッチメントはこの記事の範囲には含まれません。 �
 
 ### <a name="use-a-rest-client"></a>REST クライアントを使用する
 
-Postman と Visual Studio Code (Azure Cognitive Search 用の拡張機能を備えているもの) はどちらも、インデクサー クライアントとして機能できます。 どちらのツールを使用しても、検索サービスに接続し、インデクサーと他のオブジェクトを作成する要求を送信できます。 REST クライアントを使用してオブジェクトを作成する方法がわかるチュートリアルと例が多数提供されています。 
+Postman と Visual Studio Code (Azure Cognitive Search 用の拡張機能を備えているもの) はどちらも、インデクサー クライアントとして機能できます。 どちらのツールを使用しても、検索サービスに接続し、[インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer) 要求を送信できます。 REST クライアントを使用してオブジェクトを作成する方法がわかるチュートリアルと例が多数提供されています。 
 
 各クライアントの詳細については、最初に次のいずれかの記事を参照してください。
 
@@ -110,7 +110,7 @@ Postman と Visual Studio Code (Azure Cognitive Search 用の拡張機能を備�
 
 ### <a name="use-an-sdk"></a>SDK を使用する
 
-Cognitive Search の場合、一般公開される機能は Azure SDK によって実装されています。 そのため、任意の SDK を使用してインデクサー関連のオブジェクトを作成できます。 それらのすべてで、インデクサーと関連オブジェクト (スキルセットなど) を作成するためのメソッドを提供する **SearchIndexerClient** が実装されています。
+Cognitive Search の場合、一般公開される機能は Azure SDK によって実装されています。 そのため、任意の SDK を使用してインデクサー関連のオブジェクトを作成できます。 それらのすべてで、インデクサーと関連オブジェクト (スキルセットなど) を作成するためのメソッドを持つ **SearchIndexerClient** が提供されます。
 
 | Azure SDK | Client | 例 |
 |-----------|--------|----------|

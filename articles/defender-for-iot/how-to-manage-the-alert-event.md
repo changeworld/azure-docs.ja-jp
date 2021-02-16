@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803518"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508745"
 ---
 # <a name="manage-alert-events"></a>アラート イベントの管理
 
@@ -45,7 +45,7 @@ ms.locfileid: "98803518"
 
 軽減策または調査を実施した後、 **[確認]** を選択してアラートを非表示にするようセンサーに指示できます。 イベントが再度検出されると、アラートが再度トリガーされます。
 
-アラートを非表示にするには:
+アラートをクリアするには:
 
   - **[確認]** を選択します。
 
@@ -70,9 +70,9 @@ ms.locfileid: "98803518"
 
 ### <a name="what-traffic-is-muted"></a>どのようなトラフィックがミュートされるのか
 
-ミュートになるシナリオには、イベントに対して検出されたネットワーク デバイスとトラフィックが含まれます。 アラートのタイトルには、ミュートされるトラフィックが記述されます。
+ミュートになるシナリオには、ネットワーク デバイスと、イベントに対して検出されたトラフィックが含まれます。 アラートのタイトルには、ミュートされるトラフィックが記述されます。
 
-ミュート状態になっているデバイスが、アラートに画像として表示されます。 2 つのデバイスが表示されている場合、それらの間のトラフィックがミュートされます。
+ミュート状態になっているデバイスが、アラートに画像として表示されます。 2 つのデバイスが表示されている場合、それらの間のアラートされた特定のトラフィックがミュートされます。
 
 **例 1**
 

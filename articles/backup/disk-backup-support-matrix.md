@@ -4,12 +4,12 @@ description: Azure ディスク バックアップのサポート設定と制限
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: d6a8276de9674266415604e8654034f129da8f50
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430949"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806106"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure ディスク バックアップのサポート マトリックス (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "99430949"
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-次のリージョンでは、Azure ディスク バックアップをプレビューでご利用いただけます。米国西部、米国中西部、米国東部 2、カナダ中部、英国西部、オーストラリア中部、韓国中部、韓国南部、西日本、東アジア、アラブ首長国連邦北部、ブラジル南部、インド中部。 
+次のリージョンでは、Azure ディスク バックアップをプレビューでご利用いただけます。米国西部、米国中西部、米国東部 2、カナダ中部、英国西部、スイス北部、スイス西部、オーストラリア中部、オーストラリア中部 2、韓国中部、韓国南部、西日本、東日本、東アジア、アラブ首長国連邦北部、ブラジル南部、インド中部。 
 
 他のリージョンについては、利用可能になったときに発表されます。
 

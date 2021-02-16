@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d094e1760db1ddfcff520b0022a232735d21d355
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184112"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525824"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API バージョンの提供終了
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、API の提供終了を少なくともその 12 か月前に通知します。 **OperationalInsights** リソース プロバイダー API の新しいバージョン (2020-08-01) がリリースされたため、2024 年 2 月 29 日に以前の API バージョンは廃止されます。
@@ -67,6 +67,15 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
     ```
 
 
-## <a name="next-steps"></a>次の手順
+### <a name="more-information"></a>詳細情報
+質問がある場合は、[技術コミュニティの専門家]( https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor)から回答を得ることができます。 サポート プランに加入していて技術的な支援が必要な場合は、[サポート リクエスト]( https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成してください。 
+1.  *[問題の種類]* で **[技術]** を選択します。 
+2.  *[サブスクリプション]* でご使用のサブスクリプションを選択します。 
+3.  *[サービス]* で、 **[使用中のサービス]** を選択し、 **[Log Analytics]** を選択します。 
+4.  *[Summary]\(要約\)* に、問題の説明を入力します。 
+5.  *[問題の種類]* で、[**Log Analytics workspace management]\(Log Analytics ワークスペースの管理\)** を選択します。  
+6.  *[Problem subtype]\(問題のサブタイプ\)* で、 **[ARM templates, PowerShell and CLI]\(ARM テンプレート、PowerShell、および CLI\)** を選択します。 
+
+## <a name="next-steps"></a>次のステップ
 
 - [OperationalInsights ワークスペース API についてのリファレンス](/rest/api/loganalytics/workspaces)をご覧ください。

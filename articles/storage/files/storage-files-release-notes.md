@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 2/2/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8dba607ae746c26dd80a8e036bcd75930a1e8b01
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131476"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538393"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,6 +25,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
+| V11.2 リリース - [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021 年 2 月 2 日 | サポート対象 - フライティング |
 | V11.1 リリース - [KB4539951](https://support.microsoft.com/en-us/help/4539951)| 11.1.0.0 | 2020 年 11 月 4 日 | サポートされています |
 | V10.1 リリース - [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | サポートされています |
 | 2020 年 5 月の更新プログラム ロールアップ - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | サポートされています |
@@ -48,6 +49,32 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-11200"></a>エージェント バージョン 11.2.0.0
+次のリリース ノートは、2021 年 2 月 2 日にリリースされた Azure File Sync エージェントのバージョン 11.2.0.0 を対象としています。 これらは、バージョン 11.1.0.0 に関して記載されているリリース ノートへの追記です。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題 
+- 項目ごとのエラーの数が多いために同期セッションがキャンセルされると、項目ごとのエラーを修正するためにカスタム同期セッションが必要であると Azure File Sync サービスによって判断された場合、新しいセッションが開始されたときに同期が調整されることがあります。
+- Register-AzStorageSyncServer コマンドレットを使用したサーバーの登録が、"ハンドルされない例外" エラーで失敗することがあります。
+- サーバー上で許可されるサーバー エンドポイント パスを構成するするための新しい PowerShell コマンドレット (Add-StorageSyncAllowedServerEndpointPath)。 このコマンドレットは、Azure File Sync のデプロイがクラウド ソリューション プロバイダー (CSP) またはサービス プロバイダーによって管理され、顧客がサーバー上で許可されているサーバー エンドポイント パスを構成する必要があるシナリオに役立ちます。 サーバー エンドポイントを作成するとき、指定されたパスが許可リストに含まれていない場合、サーバー エンドポイントの作成は失敗します。 これはオプションの機能であり、サポートされているすべてのパスは、サーバー エンドポイントを作成するときに既定で許可されることに注意してください。  
+
+    
+    - 許可されるサーバー エンドポイント パスを追加するには、サーバーで次の PowerShell コマンドを実行します。
+
+    ```powershell
+    Import-Module 'C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll' -verbose
+    Add-StorageSyncAllowedServerEndpointPath -Path <path>
+    ```  
+
+    - サポートされているパスの一覧を取得するには、次の PowerShell コマンドを実行します。
+    
+    ```powershell
+    Get-StorageSyncAllowedServerEndpointPath
+    ```     
+    - パスを削除するには、次の PowerShell コマンドを実行します。
+    
+    ```powershell
+    Remove-StorageSyncAllowedServerEndpointPath -Path <path>
+    ```  
 ## <a name="agent-version-11100"></a>エージェント バージョン 11.1.0.0
 次のリリース ノートは、2020 年 11 月 4 日にリリースされた Azure File Sync エージェントのバージョン 11.1.0.0 を対象としています。
 

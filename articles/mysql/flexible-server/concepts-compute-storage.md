@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052348"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581450"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -102,15 +102,14 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 ストレージの自動拡張は、Azure Database for MySQL フレキシブル サーバーでは、まだ使用できません。
 
 ## <a name="iops"></a>IOPS
-最小有効 IOPS は、すべてのコンピューティング サイズで 100 であり、最大有効 IOPS は、次の属性の両方で決まります。 
-- コンピューティング: 最大有効 IOPS は、選択したコンピューティング サイズの最大使用可能 IOPS によって制限されることがあります。
-- ストレージ: すべてのコンピューティング レベルで、プロビジョニングされたストレージ サイズにより 3:1 の比率で IOPS がスケーリングされます。
 
-プロビジョニングされたストレージを増やすか、より大きなコンピューティング サイズに移行する (IOPS がコンピューティングによって制限される場合) ことで、使用可能な有効 IOPS をスケーリングできます。 プレビューでは、サポートされる最大有効 IOPS は 20,000 IOPS です。
+Azure Database for MySQL – フレキシブル サーバーでは、追加の IOPS のプロビジョニングがサポートされます。 この機能を使用すると、無償の IOPS 制限を超えて追加の IOPS をプロビジョニングできます。 この機能を使用すると、ワークロードの要件に基づいてプロビジョニングされる IOPS の数をいつでも増減できます。 
 
-コンピューティングとストレージの両方の組み合わせを使用したコンピューティング サイズごとの最大有効 IOPS の詳細については、次の図を参照してください。 
+最小 IOPS はすべてのコンピューティング サイズで 100 であり、最大 IOPS は選択したコンピューティング サイズによって決まります。 プレビューでは、サポートされる最大 IOPS は 20,000 IOPS です。
 
-| コンピューティング サイズ         | 最大有効 IOPS  | 
+コンピューティング サイズごとの最大 IOPS の詳細については、以下を参照してください。 
+
+| コンピューティング サイズ         | 最大 IOPS        | 
 |----------------------|---------------------|
 | **バースト可能**        |                     |
 | Standard_B1s         | 320                 |
@@ -133,11 +132,14 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-最大有効 IOPS は、コンピューティング サイズごとの使用可能な最大 IOPS によって異なります。 次の数式を見て、列 *[キャッシュされていない最大ディスク スループット:IOPS/MBps]* を、[B シリーズ](../../virtual-machines/sizes-b-series-burstable.md)、[Ddsv4 シリーズ](../../virtual-machines/ddv4-ddsv4-series.md)、および [Edsv4 シリーズ](../../virtual-machines/edv4-edsv4-series.md)のドキュメントで調べてください。
+最大 IOPS は、コンピューティング サイズごとの使用可能な最大 IOPS によって決まります。 列 *[キャッシュが無効な場合の最大ディスク スループット:IOPS/MBps]* を、[B シリーズ](../../virtual-machines/sizes-b-series-burstable.md)、[Ddsv4 シリーズ](../../virtual-machines/ddv4-ddsv4-series.md)、および [Edsv4 シリーズ](../../virtual-machines/edv4-edsv4-series.md)のドキュメントで調べてください。
 
-**最大有効 IOPS** = 最小 ( *「キャッシュされていない最大ディスク スループット:IOPS/MBps」* ( ストレージが 3 GiB でプロビジョニングされたコンピューティング サイズの)
+> [!Important]
+> **無償の IOPS** は、コンピューティング サイズの "キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps"、GiB * 3 でプロビジョニングされたストレージのうちの小さい方と同等になります。<br>
+> **最小 IOPS** は、すべてのコンピューティング サイズで 100 です。<br>
+> **最大 IOPS** は、選択したコンピューティング サイズによって決まります。 プレビューでは、サポートされる最大 IOPS は 20,000 IOPS です。
 
-Azure portal (Azure Monitor を含む) での自分の I/O 使用量は、[IO の割合](./concepts-monitoring.md)メトリクスを使用して監視できます。 より多くの IOPS が必要な場合は、コンピューティング サイズまたはプロビジョニングされたストレージによって制限されているかどうかを理解することが必要になります。 それに従って、サーバーのコンピューティングまたはプロビジョニングされたストレージをスケーリングしてください。
+Azure portal (Azure Monitor を含む) での自分の I/O 使用量は、[IO の割合](./concepts-monitoring.md)メトリクスを使用して監視できます。 コンピューティングに基づき、より多くの IOPS が必要になり、その後、最大 IOPS が必要になった場合は、サーバーのコンピューティングをスケーリングする必要があります。
 
 ## <a name="backup"></a>バックアップ
 

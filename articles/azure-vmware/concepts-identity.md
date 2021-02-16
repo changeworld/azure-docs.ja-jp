@@ -2,13 +2,13 @@
 title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
-ms.date: 11/11/2020
-ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 02/02/2021
+ms.openlocfilehash: 0f58cbdaa641af24cef53c3cfd9604cf1b0c1c3b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536100"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538943"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
@@ -53,7 +53,11 @@ CloudAdmin グループにより、vCenter での特権が提供されます。 
   
 ## <a name="next-steps"></a>次のステップ
 
-次のステップでは、[プライベート クラウドのアップグレードの概念][concepts-upgrades]について説明します。
+Azure VMware Solution のアクセスと ID に関する概念を理解したら、次の事項の学習に進むことができます。
+
+- [プライベート クラウドのアップグレードの概念](concepts-upgrades.md)
+- [Azure VMware Solution の vSphere ロールベースのアクセス制御](concepts-role-based-access-control.md)
+- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 

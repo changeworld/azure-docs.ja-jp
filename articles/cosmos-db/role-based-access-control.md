@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943747"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526943"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB での Azure ロールベースのアクセス制御
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,8 @@ Azure Cosmos DB でサポートされている組み込みのロールは次の�
 |---------|---------|
 |[DocumentDB Account Contributor](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Azure Cosmos DB アカウントを管理できます。|
 |[Cosmos DB アカウント閲覧者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。|
-|[Cosmos バックアップ オペレーター](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Azure Cosmos データベースまたはコンテナーの復元要求を送信できます。 データにアクセスしたり、Data Explorer を使用したりすることはできません。|
+|[Cosmos バックアップ オペレーター](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Azure portal の定期的バックアップ対応データベースまたはコンテナーについての復元要求を送信できます。 Azure portal でバックアップ間隔と保有期間を変更できます。 データにアクセスしたり、Data Explorer を使用したりすることはできません。  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | 継続的バックアップモードで Azure Cosmos DB アカウントの復元操作を実行できます。|
 |[Cosmos DB オペレーター](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Azure Cosmos のアカウント、データベース、コンテナーをプロビジョニングできます。 データにアクセスしたり、Data Explorer を使用したりすることはできません。|
 
 > [!IMPORTANT]
@@ -36,7 +37,7 @@ Azure Cosmos DB でサポートされている組み込みのロールは次の�
 
 Azure portal の **[アクセス制御 (IAM)]** ウィンドウは、Azure Cosmos リソースに対して Azure ロールベースのアクセス制御を構成するために使用されます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。 次のスクリーンショットは、Azure portal のアクセス制御 (IAM) を使用した Active Directory 統合 (Azure RBAC) を示しています。
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure portal のアクセス制御 (IAM) - データベース セキュリティを示す":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure portal のアクセス制御 (IAM) - データベース セキュリティを示しています。":::
 
 ## <a name="custom-roles"></a>カスタム ロール
 

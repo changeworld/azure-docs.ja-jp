@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736223"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573366"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service のコストを計画および管理する
 
@@ -125,7 +125,7 @@ App Service プランでは、複数のアプリをホストできます。 デ�
 
 予約インスタンスの価格は、最大で予約したインスタンス数まで、サブスクリプション内の適用可能なインスタンスに適用されます。 予約インスタンスは請求に関するものであり、特定のコンピューティング インスタンスに関連付けられません。 予約期間中はいつでも、実行したインスタンス数が予約数よりも少ない場合でも、予約インスタンスの料金を支払うことになります。 予約期間中はいつでも、実行したインスタンス数が予約数よりも多い場合、追加インスタンスに対して通常の発生料金を支払うことになります。
 
-**Isolated** レベル (App Service 環境) でも、割引価格の 1 年間および 3 年間の予約がサポートされます。 詳細については、「[Azure App Service Isolated スタンプに予約割引を適用する方法](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md)」を参照してください。
+**Isolated** レベル (App Service 環境) でも、割引価格の 1 年間および 3 年間の予約がサポートされます。 詳細については、[Azure App Service に予約割引を適用する方法](../cost-management-billing/reservations/reservation-discount-app-service.md)に関する記事を参照してください。
 
 ## <a name="monitor-costs"></a>コストを監視する
 

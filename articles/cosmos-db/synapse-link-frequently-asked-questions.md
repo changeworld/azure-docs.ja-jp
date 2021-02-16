@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488716"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627779"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -111,7 +111,7 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 
 ### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>分析データの TTL はコンテナーと項目の両方のレベルでサポートされますか?
 
-現時点では、分析データの TTL はコンテナー レベルでのみ構成でき、項目レベルでの分析の TTL の設定はサポートされていません。
+現時点では、分析データの TTL はコンテナー レベルでのみ構成でき、項目レベルでの分析 TTL の設定はサポートされていません。
 
 ### <a name="after-setting-the-container-level--analytical-ttl-on-an-azure-cosmos-db-container-can-i-change-to-a-different-value-later"></a>Azure Cosmos DB コンテナーでコンテナー レベルの分析の TTL を設定した後に、別の値に変更できますか?
 

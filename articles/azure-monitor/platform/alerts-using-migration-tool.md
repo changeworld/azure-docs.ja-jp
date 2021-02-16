@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4f17afc6fb5001b4bbee16fe84697b58d062b292
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536032"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526926"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
-[以前に発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは廃止されましたが、新しいアラートがまだサポートされていないリソースでは、引き続き制限付きで使用できます。 クラシック アラート ルールを使用しているお客様と、移行を自分でトリガーしたいと考えているお客様を対象に、Azure portal では移行ツールが用意されていました。 この記事では、その移行ツールを使用する方法について説明します。このツールは、その他の発表が保留されているアラートにも使用されます。
+[以前発表した](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 クラシック アラート ルールを使用しているお客様と、移行を自分でトリガーしたいと考えているお客様を対象に、Azure portal では移行ツールが用意されていました。 この記事では、その移行ツールを使用する方法について説明します。このツールは、その他の発表が保留されているアラートにも使用されます。
 
 ## <a name="benefits-of-new-alerts"></a>新しいアラートの利点
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064396"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806275"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Azure Storage を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび復旧する
 
@@ -31,19 +31,19 @@ ms.locfileid: "99064396"
    ssh azureuser@<publicIpAddress>
    ```
    
-2. **_root_* _ ユーザーに切り替えます。
+2. ***ルート*** ユーザーに切り替えます。
  
    ```bash
    sudo su -
    ```
     
-3. oracle ユーザーを _*_ /etc/sudoers_*_ ファイルに追加します。
+3. oracle ユーザーを ***/etc/sudoers*** ファイルに追加します。
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. この手順では、_vmoracle19c* という仮想マシンで実行されている Oracle インスタンス (test) があることを前提としています。
+4. この手順では、*vmoracle19c* という仮想マシンで実行されている Oracle インスタンス (test) があることを前提としています。
 
    ユーザーを *oracle* ユーザーに切り替えます。
 
@@ -182,31 +182,31 @@ Azure Files をマウントする場合は、`cache=none` を使用してファ�
 
 1. Azure portal で File Storage を構成する
 
-    Azure portal で、* **[+ リソースの作成]** _ を選択し、_*_[ストレージ アカウント]_*_ を検索して選択します。
+    Azure portal で、* **[+ リソースの作成]** _ を選択し、_ *_[ストレージ アカウント]_** を検索して選択します。
     
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/storage-1.png)
+    ![リソースを作成してストレージ アカウントを選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/storage-1.png)
     
-2. [ストレージ アカウントの作成] ページで、既存のリソース グループ _*_rg-oracle_*_ を選択し、ストレージ アカウントに _*_oracbkup1_*_ という名前を付けて、[アカウントの種類] として _*_[Storage V2 (generalpurpose v2)]\(Storage V2 (汎用 V2)\)_*_ を選択します。 [レプリケーション] を _*_[ローカル冗長ストレージ (LRS)]_*_ に変更し、[パフォーマンス] を _*_[標準]_*_ に設定します。 [場所] が、リソース グループ内の他のすべてのリソースと同じリージョンに設定されていることを確認します。 
+2. [ストレージ アカウントの作成] ページで、既存のリソース グループ ***rg-oracle** _ を選択し、ストレージ アカウントに _*_oracbkup1_*_ という名前を付けて、[アカウントの種類] として _*_[Storage V2 (generalpurpose v2)]\(Storage V2 (汎用 V2)\)_*_ を選択します。 [レプリケーション] を _*_[ローカル冗長ストレージ (LRS)]_*_ に変更し、[パフォーマンス] を _* _[標準]_ ** に設定します。 [場所] が、リソース グループ内の他のすべてのリソースと同じリージョンに設定されていることを確認します。 
     
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-1.png)
+    ![既存のリソース グループを選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. _*_[詳細設定]_*_ タブをクリックし、Azure Files で、_*_[大きいファイルの共有]_*_ を _*_[有効]_*_ に設定します。 [確認および作成] をクリックして、 [作成] をクリックします。
+3. * **[詳細設定]** _ タブをクリックし、Azure Files で、_*_[大きいファイルの共有]_*_ を _* _[有効]_ ** に設定します。 [確認および作成] をクリックして、 [作成] をクリックします。
     
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. ストレージ アカウントが作成されたら、リソースに移動し、_*_[ファイル共有]_*_ を選択します。
-    
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. _*_ [+ ファイル共有_] *_ をクリックし、_* _[新しいファイル共有]_ *_ ブレードで、ファイル共有に _* _orabkup1_ *_ という名前を付けます。_* _[クォータ]_ *_ を _* _10240_ *_ GiB に設定し、階層として、_* _[トランザクション最適化]_ *をチェックします。クォータは、ファイル共有を拡張できる上限を反映します。Standard Storage を使用しているため、リソースは従量課金制であり、プロビジョニングされていないことから、10 TiB に設定しても、使用した分を超えるコストは発生しません。バックアップ戦略で、より多くのストレージが必要な場合は、すべてのバックアップを保持する適切なレベルにクォータを設定する必要があります。 [新しいファイル共有] ブレードが完了したら、_* _[作成]_ *_ をクリックします。
-    
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-4.png)
+    ![大きいファイルの共有を有効に設定する場所を示すスクリーンショット。](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. 作成したら、[ファイル共有の設定] ページの _*_[orabkup1]_*_ をクリックします。 
-    _*_[接続]_*_ タブをクリックして [接続] ブレードを開き、_*_[Linux]_*_ タブをクリックします。SMB プロトコルを使用してファイル共有をマウントするために提供されているコマンドをコピーします。 
+4. ストレージ アカウントが作成されたら、リソースに移動し、***[ファイル共有]*** を選択します。
+    
+    ![ファイル共有を選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. * **[+ ファイル共有]** _ をクリックし、_*_[新しいファイル共有]_*_ ブレードで、ファイル共有に _*_orabkup1_*_ という名前を付けます。 _*_[クォータ]_*_ を _*_10240_*_ GiB に設定し、階層として、_*_[トランザクション最適化]_*_ をチェックします。 クォータは、ファイル共有を拡張できる上限を反映します。 Standard Storage を使用しているため、リソースは従量課金制であり、プロビジョニングされていないことから、10 TiB に設定しても、使用した分を超えるコストは発生しません。 バックアップ戦略で、より多くのストレージが必要な場合は、すべてのバックアップを保持する適切なレベルにクォータを設定する必要があります。   [新しいファイル共有] ブレードが完了したら、_* _[作成]_ ** をクリックします。
+    
+    ![新しいファイル共有を追加する場所が示されているスクリーンショット。](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. 作成したら、[ファイル共有の設定] ページの ***[orabkup1]*** をクリックします。 
+    * **[接続]** _ タブをクリックして [接続] ブレードを開き、_ *_[Linux]_** タブをクリックします。SMB プロトコルを使用してファイル共有をマウントするために提供されているコマンドをコピーします。 
     
     ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ Azure Files をマウントする場合は、`cache=none` を使用してファ�
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. 次のコマンドでは、RMAN を使用して、不足しているデータファイルを復元し、データベースを復旧します。

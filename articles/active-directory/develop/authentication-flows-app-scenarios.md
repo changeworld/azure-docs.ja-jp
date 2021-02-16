@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4147adb004947c22ec39349f408d794bca160ef5
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220166"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582181"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -162,7 +162,7 @@ MSAL iOS と MSAL Android では、既定でシステム Web ブラウザーが�
 
 Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 保護された Web API は、アクセス トークンを使用して呼び出されます。 トークンは、API のデータの保護と受信要求の認証に役立てられます。 Web API の呼び出し元によって、HTTP 要求の Authorization ヘッダーにアクセス トークンが付加されます。
 
-ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス トークンを検証する必要があります。 この検証には、ASP.NET JWT ミドルウェアを使用します。 検証は MSAL.NET ではなく、[.NET ライブラリ用の IdentityModel 拡張機能](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)によって行われます。
+ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス トークンを検証します。 この検証には、ASP.NET JWT ミドルウェアを使用します。 検証は MSAL.NET ではなく、[.NET ライブラリ用の IdentityModel 拡張機能](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)によって行われます。
 
 詳細については、[保護された Web API](scenario-protected-web-api-overview.md)に関するページを参照してください。
 

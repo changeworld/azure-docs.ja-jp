@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944516"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581688"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
@@ -88,9 +88,10 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 #### <a name="resolution"></a>解決方法
 
 この問題を解決するには、以下の手順を実行します。
-- 「[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints)」という記事を参照してください。 この手順では、プライベート DNS ゾーンまたはサーバーを構成して、Data Factory の FQDN をプライベート IP アドレスに解決します。
 
-- 長期的なソリューションとして、カスタム DNS を使用することをお勧めします。 ただし、プライベート DNS ゾーンまたはサーバーを構成したくない場合は、次の一時的ソリューションを試してください。
+- オプションとして、Data Factory の "プライベート リンク DNS ゾーン" の下に "仮想ネットワークのリンク" を手動で追加することをお勧めします。 詳細については、「[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints)」という記事を参照してください。 この手順では、プライベート DNS ゾーンまたはカスタム DNS サーバーを構成して、Data Factory の FQDN をプライベート IP アドレスに解決します。 
+
+- ただし、プライベート DNS ゾーンまたはカスタム DNS サーバーを構成したくない場合は、次の一時的なソリューションを試してください。
 
   1. Windows で host ファイルを変更し、プライベート IP (Azure Data Factory のプライベート エンドポイント) を Azure Data Factory の FQDN にマップします。
   

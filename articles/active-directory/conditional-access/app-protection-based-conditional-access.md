@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881163"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575773"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする
 
@@ -34,7 +34,7 @@ ms.locfileid: "97881163"
 > 一部のアプリケーションは、承認済みアプリケーションとしてサポートされないか、アプリケーション保護ポリシーをサポートしません。 適格なクライアント アプリの一覧については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
 
 > [!NOTE]
-> 付与の制御の [選択したコントロールのいずれかが必要] は、 OR 句と似ています。 これは、ポリシー内で使用され、ユーザーが **[アプリの保護ポリシーが必要]** または **[承認済みクライアント アプリを必須にする]** のいずれかの付与の制御をサポートするアプリを利用できるようにします。 アプリが両方のポリシーでサポートされている場合は、 **[アプリの保護ポリシーが必要]** が適用されます。 **アプリ保護ポリシーを必須にする** 付与の制御がサポートされているアプリの詳細については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
+> 付与の制御の [選択したコントロールのいずれかが必要] は、 OR 句と似ています。 これは、ポリシー内で使用され、ユーザーが **[アプリの保護ポリシーが必要]** または **[承認済みクライアント アプリを必須にする]** のいずれかの付与の制御をサポートするアプリを利用できるようにします。 アプリでその付与の制御がサポートされている場合は、 **[アプリの保護ポリシーが必要]** が適用されます。 **アプリ保護ポリシーを必須にする** 付与の制御がサポートされているアプリの詳細については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
 
 ## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>シナリオ 1:Microsoft 365 アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする
 

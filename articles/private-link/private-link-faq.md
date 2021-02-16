@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901540"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582011"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -26,7 +26,7 @@ ms.locfileid: "97901540"
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Private Link を使用すると、トラフィックはどのように送信されますか。
 トラフィックは、Microsoft バックボーンを使用してプライベートに送信されます。 トラフィックはインターネットを経由しません。 Azure プライベート リンクには、顧客データが格納されません。
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>サービス エンドポイントとプライベート エンドポイントの違いは何ですか。
+### <a name="what-is-the-difference-between-service-endpoints-and-private-endpoints"></a>サービス エンドポイントとプライベート エンドポイントの違いは何ですか。
 - プライベート エンドポイントでは、詳細なセグメンテーションを提供する特定のサービスの背後にある特定のリソースへのネットワーク アクセスが許可されます。 トラフィックは、パブリック エンドポイントを使用せずにオンプレミスからサービス リソースに到達できます。
 - サービス エンドポイントは、公的にルーティング可能な IP アドレスのままです。  プライベート エンドポイントは、プライベート エンドポイントが構成されている仮想ネットワークのアドレス空間にあるプライベート IP です。
 
@@ -34,6 +34,9 @@ ms.locfileid: "97901540"
 複数プライベート リンク リソースの種類では、プライベート エンドポイント経由のアクセスがサポートされます。 リソースには、Azure PaaS サービスとユーザー独自の Private Link サービスが含まれます。 これは一対多の関係です。 
 
 1 つの Private Link サービスでは複数のプライベート エンドポイントから接続を受信できます。 1 つのプライベート エンドポイントは 1 つの Private Link サービスに接続します。    
+
+### <a name="do-i-need-to-disable-network-policies-for-private-link"></a>Private Link ではネットワーク ポリシーを無効にする必要がありますか。
+はい。 プライベート エンドポイントと Private Link サービスでは、どちらも正常に機能させるためにネットワーク ポリシーを無効にする必要があります。 これらの両方に、互いに独立したプロパティがあります。
 
 ## <a name="private-endpoint"></a>プライベート エンドポイント 
  
@@ -44,7 +47,7 @@ ms.locfileid: "97901540"
 不正解です。 プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
  
 ### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>プライベート エンドポイントから Azure Active Directory テナントをまたいで Private Link サービスに接続できますか? 
-はい。 プライベート エンドポイントでは、Azure Active Directory テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。 テナントをまたいで接続するプライベート エンドポイントには、手動による要求の承認が必要です。 
+正解です。 プライベート エンドポイントでは、Azure Active Directory テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。 テナントをまたいで接続するプライベート エンドポイントには、手動による要求の承認が必要です。 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できますか。
 正解です。 プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できます。

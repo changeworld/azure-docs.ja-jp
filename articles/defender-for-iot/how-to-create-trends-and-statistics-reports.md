@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 8bfbacc77843c7978bcb1d364bd93f5e09381144
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811569"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509488"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>センサーの傾向と統計のレポート
 
@@ -26,19 +26,29 @@ ms.locfileid: "98811569"
 ダッシュボードは、次の種類の情報をグラフィカルに説明するウィジェットで構成されています。
 
 - ポート別のトラフィック
+- ポート別の上位トラフィック
 - チャネル帯域幅
 - 合計帯域幅
 - アクティブ TCP 接続
+- VLAN 別の上位の帯域幅
 - デバイス:
   - 新しいデバイス
   - ビジー状態のデバイス
   - ベンダー別のデバイス
   - OS 別のデバイス
+  - VLAN あたりのデバイス数
   - 切断されたデバイス
 - 時間別の接続の切断
 - 種類別のインシデントのアラート
 - データベース テーブルへのアクセス
 - プロトコル解析ウィジェット
+- DELTAV
+  - DeltaV roc 操作の分布
+  - 名前別の DeltaV roc イベント
+  - 時間別の DeltaV イベント
+- AMS
+  - サーバー ポート別の AMS トラフィック
+  - コマンド別の AMS トラフィック
 - イーサネットと IP アドレス:
   - CIP サービス別のイーサネットと IP アドレスのトラフィック
   - CIP クラス別のイーサネットと IP アドレスのトラフィック
@@ -49,6 +59,15 @@ ms.locfileid: "98811569"
 - Siemens S7:
   - 制御機能別の S7 トラフィック
   - サブ機能別の S7 トラフィック
+- VLAN
+  - VLAN あたりのデバイス数
+  - VLAN 別の上位の帯域幅
+- 60870-5-104
+  - ASDU 別の IEC-60870 トラフィック
+- BACNET
+  - BACnet サービス
+- DNP3
+  - 機能別の DNP3 トラフィック
 - SRTP:
   - サービス コード別の SRTP トラフィック
   - 日別の SRTP エラー

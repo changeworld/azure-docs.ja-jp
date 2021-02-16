@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043746"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536817"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Cognitive Search .NET SDK バージョン 11 へのアップグレード
 
@@ -168,8 +168,8 @@ Azure Cognitive Search クライアント ライブラリの各バージョン�
 
 バージョン 11 では、まだ次のバージョン 10 機能を使用できません。 これらの機能を必要とする場合は、サポートされるまで移行をお待ちください。
 
-+ 地理空間型
 + [ナレッジ ストア](knowledge-store-concept-intro.md)
++ 地理空間型 - 地理空間型のファースト クラスのサポートは、まだ準備中です。 現時点では、[Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) パッケージを使用して、地理的な操作をサポートすることができます。 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) および [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) についての例があります。
 
 <a name="UpgradeSteps"></a>
 

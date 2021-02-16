@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762875"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834325"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -42,6 +42,8 @@ ms.locfileid: "98762875"
 - [BLOB のバージョン管理](versioning-overview.md):ソース アカウントと宛先アカウントの両方で有効にする必要があります。 BLOB のバージョン管理を有効にする方法については、「[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)」をご覧ください。
 
 変更フィードと BLOB バージョン管理を有効にすると、追加のコストが発生する場合があります。 詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
+
+オブジェクト レプリケーションは、汎用 v2 ストレージ アカウントでのみサポートされます。 ソース アカウントと宛先のアカウントの両方が汎用 v2 である必要があります。 
 
 ## <a name="how-object-replication-works"></a>オブジェクト レプリケーションのしくみ
 

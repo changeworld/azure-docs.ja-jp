@@ -3,12 +3,12 @@ title: レジストリに関するネットワークの問題のトラブルシ�
 description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052163"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525078"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -105,20 +105,20 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 ### <a name="configure-service-access"></a>サービス アクセスを構成する
 
-現在、Azure Security Center では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 また、次のサービスのリソースは、ネットワーク制限があるコンテナー レジストリにアクセスできません。
+現時点では、ネットワークが制限されたコンテナー レジストリへのアクセスは、次のいくつかの Azure サービスでは許可されていません。
 
-* Azure DevOps Services 
-* Azure Container Instances
-* Azure Container Registry タスク
+* Azure Security Center では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 
+* Azure App Service や Azure Container Instances を含む特定の Azure サービスのリソースは、ネットワークが制限されたコンテナー レジストリにアクセスすることはできません。
 
 コンテナー レジストリに対するこれらの Azure サービスのアクセスや統合が必要な場合は、ネットワークの制限を解除します。 たとえば、レジストリのプライベート エンドポイントを削除するか、レジストリのパブリック アクセス規則を削除または変更します。
+
+2021 年 1 月以降、選択した信頼されたサービスからの[アクセスを許可](allow-access-trusted-services.md)するように、ネットワーク制限付きレジストリを構成できます。
 
 関連リンク:
 
 * [Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
 * [フィードバック](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)の提供
-* [パブリック IP ネットワーク ルールを構成する](container-registry-access-selected-networks.md)
-* [Azure Private Link を使用して Azure Container Registry にプライベートで接続する](container-registry-private-link.md)
+* [信頼されたサービスがネットワーク制限付きコンテナー レジストリに安全にアクセスできるようにする](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>高度なトラブルシューティング
@@ -140,5 +140,5 @@ Azure Firewall または同様のソリューションがネットワークに�
   * [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md) 
   * [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 * [コミュニティ サポート](https://azure.microsoft.com/support/community/) オプション
-* [Microsoft Q&A](/answers/products/)
+* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [サポート チケットを開く](https://azure.microsoft.com/support/create-ticket/)

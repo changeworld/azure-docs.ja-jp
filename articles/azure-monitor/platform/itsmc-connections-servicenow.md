@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 222257f5045984a71c2aee9de83b5fa420306728
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223391"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573417"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow を IT Service Management Connector に接続する
 
@@ -123,7 +123,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
    | --- | --- |
    | **Connection Name**   | ITSMC に接続する ServiceNow インスタンスの名前を入力します。 この名前は、後で ITSM 作業項目を構成したり、詳細な分析を表示したりするときに Log Analytics で使用します。 |
    | **パートナーの種類**   | **[ServiceNow]** を選択します。 |
-   | **サーバー URL**   | ITSMC に接続する ServiceNow インスタンスの URL を入力します。 この URL は、 *.servicenow.com* というサフィックスが付いたサポートされている SaaS バージョンを指している必要があります (たとえば、 https://XXXXX.service-now.com/) )。|
+   | **サーバー URL**   | ITSMC に接続する ServiceNow インスタンスの URL を入力します。 この URL は、 *.servicenow.com* というサフィックスが付いたサポートされている SaaS バージョンを指している必要があります (たとえば、`https://XXXXX.service-now.com/`)。|
    | **ユーザー名**   | ITSMC への接続をサポートするために ServiceNow アプリで作成した統合ユーザー名を入力します。|
    | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**:このユーザー名とパスワードは、認証トークンのみを生成するために使用されます。 ITSMC サービス内のどこにも格納されません。  |
    | **クライアント ID**   | 先ほど生成した、OAuth2 認証に使用するクライアント ID を入力します。 クライアント ID とシークレットの生成の詳細については、[OAuth の設定](https://old.wiki/index.php/OAuth_Setup)に関する記事を参照してください。 |

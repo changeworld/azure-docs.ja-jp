@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 37f1c9f59b6ffb45e1b874d2a6969bf263d2d5eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341367"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627350"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB リソース モデル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB はフルマネージドのサービスとしてのプラットフォーム (PaaS) です。 Azure Cosmos DB の使用を開始するには、最初に、Azure サブスクリプション内に Azure Cosmos アカウントを作成し、その下にデータベース、コンテナー、項目を作成する必要があります。 この記事では、Azure Cosmos DB リソース モデルと、リソース モデル階層内のさまざまなエンティティについて説明します。
 
-Azure Cosmos アカウントは、グローバルな分散と高可用性の基本単位です。 Azure Cosmos アカウントには固有の DNS 名が含まれており、Azure portal、Azure CLI、または別の言語固有の SDK を使用してアカウントを管理できます。 詳細については、[Azure Cosmos アカウントの管理方法](how-to-manage-database-account.md)に関するページを参照してください。 データやスループットを複数の Azure リージョンにグローバルに分散させる場合は、お使いのアカウントに、いつでも Azure リージョンを追加したり、削除したりすることができます。 アカウントは、単一リージョンまたは複数の書き込みリージョンを持つように構成できます。 詳細については、[アカウントに Azure リージョンを追加および削除する方法](how-to-manage-database-account.md)に関するページを参照してください。 アカウントに対して[既定の一貫性](consistency-levels.md)レベルを構成できます。
+Azure Cosmos アカウントは、グローバルな分散と高可用性の基本単位です。 Azure Cosmos アカウントには固有の DNS 名が含まれており、Azure portal または Azure CLI を使用するか、別の言語固有の SDK を使用してアカウントを管理できます。 詳細については、[Azure Cosmos アカウントの管理方法](how-to-manage-database-account.md)に関するページを参照してください。 データやスループットを複数の Azure リージョンにグローバルに分散させる場合は、お使いのアカウントに、いつでも Azure リージョンを追加したり、削除したりすることができます。 アカウントは、単一リージョンまたは複数の書き込みリージョンを持つように構成できます。 詳細については、[アカウントに Azure リージョンを追加および削除する方法](how-to-manage-database-account.md)に関するページを参照してください。 アカウントに対して[既定の一貫性](consistency-levels.md)レベルを構成できます。
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos アカウントの要素
 
@@ -63,9 +63,9 @@ Azure Cosmos コンテナーは、プロビジョニング スループットと
 
 コンテナーを作成するときには、次のいずれかのモードでスループットを構成します。
 
-* **専用プロビジョニング スループット モード** : コンテナーにプロビジョニングされたスループットは、そのコンテナー専用に予約され、SLA によってバックアップされます。 詳細については、[コンテナーでのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)に関するページを参照してください。
+* **専用プロビジョニング スループット モード**: コンテナーにプロビジョニングされたスループットは、そのコンテナー専用に予約され、SLA によってバックアップされます。 詳細については、[コンテナーでのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)に関するページを参照してください。
 
-* **共有プロビジョニング スループット モード** : これらのコンテナーでは、同じデータベース内の他のコンテナー (専用プロビジョニング スループットで構成されたコンテナーを除く) とプロビジョニング スループットを共有します。 つまり、データベース上のプロビジョニング スループットは、すべての "共有スループット" コンテナー間で共有されます。 詳細については、[データベースでのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。
+* **共有プロビジョニング スループット モード**: これらのコンテナーでは、同じデータベース内の他のコンテナー (専用プロビジョニング スループットで構成されたコンテナーを除く) とプロビジョニング スループットを共有します。 つまり、データベース上のプロビジョニング スループットは、すべての "共有スループット" コンテナー間で共有されます。 詳細については、[データベースでのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。
 
 > [!NOTE]
 > 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみになります。 コンテナーを作成した後に専用スループット モードから共有スループット モード (またはその逆) に切り替えるには、新しいコンテナーを作成して、その新しいコンテナーにデータを移行する必要があります。 データの移行は、Azure Cosmos DB の変更フィード機能を使用して行うことができます。

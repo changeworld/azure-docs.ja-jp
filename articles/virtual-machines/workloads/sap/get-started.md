@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258921"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549390"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -84,6 +84,9 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 ## <a name="change-log"></a>変更履歴
 
+- 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を更新するために、「[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)」を変更
+- 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を追加するために、「[Azure での SLES に対する Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)」を変更 
+- 2021 年 2 月 3 日: 記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」で SUSE 用の I/O スケジューラ設定をより詳細に記述
 - 2021 年 2 月 1 日: [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)へのリンクを追加するための [RHEL での ANF を使用した SAP HANA の高可用性のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)、[RHEL における Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)、[SLES で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-suse.md)、[RHEL で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-rhel.md)の変更
 - 2021 年 1 月 23 日:記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」および「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1](./hana-vm-operations-netapp.md)」のディスク ボリューム マネージャーを使用せずに、異なる Azure ディスクまたは NFS 共有間で HANA データ ファイルに対する I/O 操作をストライピングする機能として、HANA データ ボリューム パーティション分割機能が導入されました。
 - 2021 年 1 月 18 日: [SAP ワークロード用 Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)時の Oracle 向け Azure NetApp Files ベースの NFS のサポート追加、およびドキュメント「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)」の表内の小数の調整

@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108672"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539435"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
@@ -184,6 +184,7 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 次のクイック スタート サンプルでは IoT Edge からもサポートされる言語を使用するため、BLOB ストレージ モジュールと共に IoT Edge モジュールとして言語をデプロイできます。
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * Iot Edge モジュール (v1.4.0 以前) 上の Azure Blob Storage は、WindowsAzure.Storage 9.3.3 SDK と互換性があります。また、v1.4.1 では、Azure.Storage.Blobs 12.8.0 SDK もサポートされています。
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * バージョン 2.1 より前の Python SDK には、このモジュールが BLOB の作成時刻を返さないという既知の問題があります。 この問題により、list_blobs (BLOB の一覧表示) などの一部のメソッドが機能しません。 回避策として、BLOB クライアントで API バージョンを「'2017-04-17'」に明示的に設定します。 例: `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [追加 BLOB のサンプル](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -292,7 +293,7 @@ IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が
 
 ## <a name="release-notes"></a>リリース ノート
 
-このモジュール用の [Docker Hub のリリース ノート](https://hub.docker.com/_/microsoft-azure-blob-storage)です
+こちらは、このモジュール用の [Docker Hub のリリース ノート](https://hub.docker.com/_/microsoft-azure-blob-storage)です。 バグの修正と修復に関連する詳細情報は、特定のバージョンのリリース ノートで確認できる場合があります。
 
 ## <a name="suggestions"></a>検索候補
 

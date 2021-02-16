@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 235d54d36965ac5d8d173354b2223247806a1fff
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803665"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625079"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>ML のトレーニングの実行でログ記録を有効にする
 
@@ -51,13 +51,15 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ログ �
 
 1. ログ記録ロジック `train.py` を含むトレーニング スクリプトを作成します。
 
-   [!code-python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)
+   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
 1. ```train.py``` スクリプトを送信して、ユーザー管理の環境内で実行します。 スクリプト フォルダー全体がトレーニング用に送信されます。
 
-   [!notebook-python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)
-   [!notebook-python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)]
+
+
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
     `show_output` パラメーターを使用すると詳細なログ記録が有効になり、これによってトレーニング プロセスからの詳細情報と、リモート リソースまたはコンピューティング先に関する情報を見ることができます。 次のコードを使用して、実験を送信するときに詳細ログ記録を有効にします。
 
@@ -92,7 +94,7 @@ Azure Machine Learning デザイナーにおけるメトリックのログ記録
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE aml-clone-in-azure-notebook](https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/includes/aml-clone-for-examples.md)
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

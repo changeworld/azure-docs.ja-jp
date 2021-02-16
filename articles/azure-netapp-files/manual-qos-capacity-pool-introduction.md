@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993991"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581127"
 ---
 # <a name="manual-qos-capacity-pool"></a>手動 QoS 容量プール
 
@@ -29,7 +29,7 @@ ms.locfileid: "91993991"
 
 [QoS の種類](azure-netapp-files-understand-storage-hierarchy.md#qos_types)は、容量プールの属性です。 Azure NetApp Files では、自動 (既定) と手動の 2 種類の QoS 容量プールが提供されます。  
 
-*手動* QoS 容量プールでは、ボリュームの容量とスループットを個別に割り当てることができます。 手動 QoS 容量プールで作成されたすべてのボリュームの合計スループットは、プールの合計スループットによって制限されます。 プール サイズとサービス レベルのスループットの組み合わせによって決まります。 
+*手動* QoS 容量プールでは、ボリュームの容量とスループットを個別に割り当てることができます。 最小および最大のスループット レベルについては、「[Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md#resource-limits)」を参照してください。 手動 QoS 容量プールで作成されたすべてのボリュームの合計スループットは、プールの合計スループットによって制限されます。 プール サイズとサービス レベルのスループットの組み合わせによって決まります。 
 
 *自動* QoS 容量プールでは、ボリュームに割り当てられたサイズ クォータに比例して、プール内のボリュームに、スループットが自動的に割り当てられます。  
 

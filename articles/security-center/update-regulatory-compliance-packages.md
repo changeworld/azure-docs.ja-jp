@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986685"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548866"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
 Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 **規制コンプライアンス ダッシュボード** では、特定のコンプライアンス要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
 
@@ -123,5 +123,5 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 関連資料については、次のページを参照してください。
 
 - [Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)
-- [Security Center の規制コンプライアンス ダッシュ ボード](security-center-compliance-dashboard.md)
+- [Security Center の規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md) - Security Center および外部のツールを使用して規制コンプライアンス データを追跡およびエクスポートする方法について説明します。
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)

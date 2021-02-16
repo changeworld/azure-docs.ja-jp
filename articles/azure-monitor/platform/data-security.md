@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1e0dbd23fa14c1bd79275d3f9ff6a164293ac19
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728861"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007348"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントでは、[Azure トラスト センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
@@ -173,6 +173,8 @@ Windows または管理サーバー エージェントのキャッシュされ�
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データは、リージョンの Azure Event Hub に格納され、データは最終的に保存されます。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、生データを処理してデータベースに取り込みます。
 
 データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料* プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは暗号化されます。
+
+データベース ストレージのデータは、取り込んだ後に変更することはできませんが、[*purge* API パス](personal-data-mgmt.md#delete)で削除することはできます。 データを変更することはできませんが、一部の認証では、データを不変の状態に保ち、ストレージ内で変更や削除ができないようにする必要があります。 データの不変性は、[不変ストレージ](../../storage/blobs/storage-blob-immutability-policies-manage.md)として構成されているストレージ アカウントへの[データ エクスポート](logs-data-export.md)を使用して実現することができます。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 Log Analytics ワークスペースにアクセスするには、設定済みの組織アカウントまたは Microsoft アカウントを使用して Azure Portal にサインインします。 ポータルと Log Analytics サービス間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、Azure Portal セッションが終了します。

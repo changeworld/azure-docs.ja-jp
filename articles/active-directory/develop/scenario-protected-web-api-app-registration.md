@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756454"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584382"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -58,7 +58,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 通常、スコープの形式は `resourceURI/scopeName` です。 Microsoft Graph の場合、スコープにはショートカットがあります。 たとえば、`User.Read` は `https://graph.microsoft.com/user.read` のショートカットです。
 
-アプリの登録時に、次のパラメーターを定義する必要があります。
+アプリの登録時に、これらのパラメーターを定義します。
 
 - リソース URI
 - 1 つまたは複数のスコープ
@@ -68,7 +68,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 クライアント アプリケーションに対して、スコープは Web API に対する "*委任されたアクセス許可*" として表示され、アプリ ロールは "*アプリケーション アクセス許可*" として表示されます。
 
-スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定する必要があります。
+スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定します。
 
 - ユーザーに表示される場合。
 - 管理者の同意を許可できる、テナント管理者に表示される場合。
@@ -99,7 +99,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 #### <a name="exposing-application-permissions-app-roles"></a>アプリケーションのアクセス許可 (アプリ ロール) の公開
 
-アプリケーションのアクセス許可を公開するには、マニフェストを編集する必要があります。
+アプリケーションのアクセス許可を公開するには、マニフェストを編集します。
 
 1. ご利用のアプリケーションのアプリケーション登録の場合は、 **[マニフェスト]** を選択します。
 1. マニフェストを編集するには、`appRoles` の設定を見つけて、アプリケーション ロールを追加します。 ロールの定義は、次のサンプル JSON ブロックで提供されています。

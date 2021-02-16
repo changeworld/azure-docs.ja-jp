@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a8d3ded1d11a350ff53ffda71348b2cc707760b8
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878937"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008419"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -81,10 +81,12 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](log-query/log-query-overview.md)」をご覧ください。
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータは削除できますか?
 データは、ワークスペースの[保有期間](platform/manage-cost-storage.md#change-the-data-retention-period)に従って削除されます。 プライバシーやコンプライアンス上の理由から、特定のデータを削除することが可能です。 詳細については、「[プライベート データをエクスポートして削除する方法](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
+### <a name="is-log-analytics-storage-immutable"></a>Log Analytics ストレージは不変ですか?
+データベース ストレージのデータは、取り込んだ後に変更することはできませんが、プライベート データを削除するための [*purge* API パス](platform/personal-data-mgmt.md#delete)で削除することはできます。 データを変更することはできませんが、一部の認証では、データを不変の状態に保ち、ストレージ内で変更や削除ができないようにする必要があります。 データの不変性は、[不変ストレージ](../storage/blobs/storage-blob-immutability-policies-manage.md)として構成されているストレージ アカウントへの[データ エクスポート](platform/logs-data-export.md)を使用して実現することができます。
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Log Analytics ワークスペースとはどのようなものですか?
 Azure Monitor によって収集されたすべてのログ データは、Log Analytics ワークスペースに保存されます。 ワークスペースは、基本的に、さまざまなソースからログ データが収集されるコンテナーです。 すべての監視データに対して 1 つの Log Analytics ワークスペースを使用する場合や、複数のワークスペースが必要な場合があります。 「[Azure Monitor ログのデプロイの設計](platform/design-logs-deployment.md)」をご覧ください。

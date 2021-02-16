@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063486"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583843"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
@@ -91,7 +91,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 ### <a name="step-4-set-uiviewcontroller"></a>手順 4:Set UIViewController()
 
-引き続き *AppDelegate.cs* ファイルで、オブジェクト ウィンドウを設定する必要があります。 通常、Xamarin iOS ではオブジェクト ウィンドウを設定する必要はありませんが、ブローカーとの間で応答を送受信するには、オブジェクト ウィンドウが必要です。
+引き続き *AppDelegate.cs* ファイルで、オブジェクト ウィンドウを設定します。 通常、Xamarin iOS ではオブジェクト ウィンドウを設定する必要はありませんが、ブローカーとの間で応答を送受信するには、オブジェクト ウィンドウが必要です。
 
 オブジェクト ウィンドウを設定するには、次の手順を実行します。
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>手順 4:アプリの登録にリダイレクト URI を追加する
 
-MSAL では、URL を使用してブローカーが呼び出され、アプリに戻されます。 そのラウンド トリップを完了するには、[Azure portal](https://portal.azure.com) を使用して、アプリに対する **リダイレクト URI** を登録する必要があります。
+MSAL では、URL を使用してブローカーが呼び出され、アプリに戻されます。 そのラウンド トリップを完了するには、[Azure portal](https://portal.azure.com) を使用して、アプリに対する **リダイレクト URI** を登録します。
 
 アプリケーションのリダイレクト URI の形式は、APK の署名に使用された証明書によって異なります。 次に例を示します。
 
