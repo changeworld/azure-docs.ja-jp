@@ -131,8 +131,8 @@
               displayName: 'Active Directory, roles, permissions'
               href: how-to-create-and-manage-users.md
             - name: グローバル ユーザー アクセス制御の定義
-              displayName: 'business unit, site, region'
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region, user'
         - name: 監視するトラフィックを制御する
           displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
           href: how-to-control-what-traffic-is-monitored.md
@@ -140,8 +140,8 @@
           displayName: 'disconnect, connect, activation file, sensor backup'
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: 個々のセンサーの管理
-          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
         - name: クラウドでセンサーを管理する
           href: how-to-manage-sensors-on-the-cloud.md
         - name: オンプレミスの管理コンソールを管理する
@@ -153,10 +153,13 @@
           items:
             - name: デバイス インベントリのすべてのエンタープライズ センサー検出を調査する
               href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+              displayName: classification
             - name: デバイス インベントリのセンサー検出を調査する
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+              displayName: 'classification, Windows registry'
         - name: センサー デバイス マップを操作する
           href: how-to-work-with-the-sensor-device-map.md
+          displayName: 'connections, Purdue, zoom'
         - name: センサーによって検出されたアラートを操作する
           items:
             - name: センサーでのアラートの操作
@@ -165,8 +168,10 @@
               href: how-to-view-alerts.md
             - name: アラートで提供される情報の表示
               href: how-to-view-information-provided-in-alerts.md
+              displayName: PCAP
             - name: アラート イベントの管理
               href: how-to-manage-the-alert-event.md
+              displayName: 'PCAP, acknowledge, learn, mute, policy'
             - name: アラート インシデント対応を高速化する
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
@@ -175,18 +180,21 @@
               displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: グローバル、地域、ローカルの脅威に関する分析情報を得る
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
+          displayName: 'site, business unit, region, map'
         - name: オンプレミス管理コンソールをでアラートを操作する
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: レポートを作成します
           items:
             - name: リスク評価レポートの作成
               href: how-to-create-risk-assessment-reports.md
+              displayName: 'vulnerability, security score, score'
             - name: 攻撃ベクトル レポートの作成
               href: how-to-create-attack-vector-reports.md
             - name: データ マイニング レポートの作成
               href: how-to-create-data-mining-queries.md
             - name: 傾向と統計レポートの作成
-              href: how-to-create-data-mining-queries.md
+              href: how-to-create-trends-and-statistics-reports.md
+              displayName: 'widgets, charts'
         - name: デバイス情報を強化する
           items:
             - name: デバイス通知を操作する
