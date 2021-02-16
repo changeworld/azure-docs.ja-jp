@@ -2,13 +2,13 @@
 title: Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/08/2021
+ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629049"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988633"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
@@ -188,4 +188,8 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 ## <a name="next-steps"></a>次の手順
 
-他の構成例については、「[Azure Application Gateway のドキュメント](../application-gateway/index.yml)」を参照してください。
+Application Gateway を使用した Azure VMware ソリューションで実行されている Web アプリの保護について理解したので、次のことを確認する必要がある可能性があります。
+
+- [さまざまなシナリオ向けの Azure Application Gateway の構成](../application-gateway/configuration-overview.md)。
+- [Azure VMware Solution ワークロードを分散するための Traffic Manager のデプロイ](deploy-traffic-manager-balance-workloads.md)。
+- [Azure NetApp Files と Azure VMware Solution ベースのワークロードの統合](netapp-files-with-azure-vmware-solution.md)。

@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd97aef5d8c959aeb2e0314e051790fd0421585
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930927"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806937"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Azure Sentinel データ正規化スキーマ リファレンス
 
 ## <a name="terminology"></a>用語
 
-次の用語が、Sentinel のスキーマで使用されます。
+次の用語が、Azure Sentinel のスキーマで使用されます。
 
-| 用語 | 定義 |
+| 項目 | 定義 |
 | ---- | ---------- |
 | レポート デバイス | レコードを Azure Sentinel に送信するシステム。 レコードのサブジェクト システムではない場合があります。 |
 | Record | レポート デバイスから送信されるデータの単位。 これは多くの場合、"ログ"、"イベント"、または "アラート" と呼ばれますが、必ずしもこれらのいずれかである必要はありません。 |
@@ -82,7 +82,7 @@ ms.locfileid: "90930927"
 | EventStartTime | 日付/時刻 | 「データ型」をご覧ください | イベントが開始した時刻 | event |
 | TimeGenerated | 日付/時刻 | 「データ型」をご覧ください | レポート ソースによって報告された、イベントが発生した時刻。 | カスタム フィールド |
 | EventTimeIngested | 日付/時刻 | 「データ型」をご覧ください | イベントが Azure Sentinel に取り込まれたされた時刻。 Azure Sentinel によって追加されます。 | event |
-| EventUid | Guid (文字列) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Sentinel が行をマークするために使用する一意の識別子。 | event |
+| EventUid | Guid (文字列) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Azure Sentinel が行をマークするために使用する一意の識別子。 | event |
 | NetworkApplicationProtocol | String | HTTPS | 接続またはセッションで使用されるアプリケーション レイヤー プロトコル。 | ネットワーク |
 | DstBytes | INT | 32455 | 接続またはセッションで送信先から送信元に送信されたバイト数。 | 宛先 |
 | SrcBytes | INT | 46536 | 接続またはセッションで送信元から送信先に送信されたバイト数。 | source |

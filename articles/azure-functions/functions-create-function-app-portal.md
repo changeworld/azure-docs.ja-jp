@@ -4,18 +4,21 @@ description: Azure Portal を使用して、サーバーレス実行のための
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: bebef4e8964576b968af8f8aebd06030ca0d0227
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 63e9c87d1d94d6b803c27862bc9f2755e02f3111
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222719"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980944"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
 Azure Functions を使用すると、最初に仮想マシン (VM) を作成したり、Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。 この記事では、Azure Functions を使用して Azure portal で "hello world" の HTTP トリガー関数を作成する方法について説明します。
 
-[関数をローカルで開発](functions-develop-local.md)し、Azure の Function App に公開することをお勧めします。  
+>[!NOTE]
+>ポータル内編集は、JavaScript、PowerShell、TypeScript、および C# スクリプト関数でのみサポートされています。<br><br>C# クラス ライブラリ、Java、Python 関数については、ポータルで関数アプリを作成できますが、関数をローカルでも作成してから、それらを Azure に公開する必要があります。 
+
+代わりに、[関数をローカルで開発](functions-develop-local.md)し、Azure の関数アプリに公開することをお勧めします。  
 次のいずれかのリンクを使用して、選択したローカル開発環境と言語で作業を開始します。
 
 | Visual Studio Code | ターミナル/コマンド プロンプト | Visual Studio |
@@ -30,7 +33,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。  Function App を使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
+関数の実行をホストするための Function App が存在する必要があります。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 

@@ -5,22 +5,25 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741045"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627342"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する
 
 ACL の継承は、親ディレクトリの下に作成された新しい子項目に対して既に利用可能です。 また、親ディレクトリの既存の子項目に対して ACL を再帰的に追加、更新、および削除することもできます。それぞれの子項目に対してこれらの変更を個別に行う必要はありません。
 
 [ライブラリ](#libraries) | [サンプル](#code-samples) | [ベスト プラクティス](#best-practice-guidelines)
+
+> [!NOTE]
+> Azure Storage Explorer では、ACL を再帰的に適用する機能がサポートされるようになりました。 詳細については、[Azure Storage Explorer で ACL を再帰的に適用する方法](data-lake-storage-explorer.md#apply-acls-recursively)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

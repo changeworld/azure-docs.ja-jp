@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072406"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806411"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Azure Backup を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび回復する
 
@@ -697,7 +697,7 @@ VM 全体を復元するには、次の手順を実行します。
 
    1. Azure portal で、 **[+ リソースの作成]** を選択し、 **[ストレージ アカウント]** を検索して選択します。
     
-      ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/storage-1.png)
+      ![リソースの作成場所を示すスクリーンショット。](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. [ストレージ アカウントの作成] ページで、既存のリソース グループ **rg-oracle** を選択し、ストレージ アカウントに **oracrestore** という名前を付けて、[アカウントの種類] として **[ストレージ V2 (汎用 v2)]** を選択します。 [レプリケーション] を **[ローカル冗長ストレージ (LRS)]** に変更し、[パフォーマンス] を **[標準]** に設定します。 [場所] が、リソース グループ内の他のすべてのリソースと同じリージョンに設定されていることを確認します。 
@@ -877,7 +877,7 @@ VM が復元されたら、元の IP アドレスを新しい VM に再割り当
 
 5.  次に、VM 復元操作で作成された NIC はプライマリ インターフェイスとして構成されているため、デタッチする必要があります。 **[ネットワーク インターフェイスのデタッチ]** をクリックし、**vmoracle19c-nic-XXXXXXXXXXXX** のような新しい NIC を選択し、 **[OK]** をクリックします
 
-    ![IP アドレスの値](./media/oracle-backup-recovery/create-ip-05.png)
+    ![[ネットワーク インターフェイスのデタッチ] を選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/create-ip-05.png)
     
     再作成した VM には、元の IP アドレスとネットワーク セキュリティ グループの規則に関連付けられている元の NIC が使用されるようになります
     

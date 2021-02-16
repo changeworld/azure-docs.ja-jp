@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709442"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981342"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R の安全性のための指示
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
 | アイコン | 説明 |
 |:--- |:--- |
 | ![最初にすべての手順をお読みください](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | 最初にすべての手順をお読みください |
-| ![危険シンボル](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危険シンボル |
+| ![注意アイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **注意:** | 重要だが、危険に関連するものではない情報を示します。 || ![危険シンボル](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危険シンボル |
 | ![傾け注意を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | 転倒注意|
 | ![大きな重量を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | 重量物の危険|
 | ![感電を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | 感電の危険 |
@@ -88,6 +88,7 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
   * 電源コードにアクセスするための十分な空間がある。これは、電源コードを製品の主電源を切断するのに使用するためです。
 * この製品には、イーサネット ケーブルは付属していません。 電磁干渉を減らすため、Cat 6 シールド付きツイストペア (STP) ケーブルを使用することをお勧めします。
 * 機器の周囲の空気が十分に循環するような作業場に機器を設置してください。機器が動作している間は、フロント カバーとバック カバーが完全に取り外されていることを確認してください。
+* この製品には、イーサネット ケーブルは付属していません。 電磁干渉を減らすため、Cat 6 シールド付き (STP) ケーブルを使用することが推奨されます。
 * 導電性の汚染物質がない温度管理された場所に機器を設置し、機器の周囲の空気が適切に循環できるようにします。
 * 機器を液体の近くや湿度の高い環境に置かないでください。
 * 液体や異物がシステム内に入らないようにしてください。 システムの上や近くに飲料やその他の液体容器を置かないでください。
@@ -207,7 +208,7 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![通知のアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知:** &nbsp;Microsoft から明示的な承認を受けずに機器を変更すると、機器を操作するユーザーの権限が無効になる可能性があります。
+> ![通知のアイコン - 2](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知:** &nbsp;Microsoft から明示的な承認を受けずに機器を変更すると、機器を操作するユーザーの権限が無効になる可能性があります。
 
 カナダと米国の場合:
 

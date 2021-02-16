@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660782"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807141"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスのインポート
 
@@ -36,7 +36,7 @@ Azure Sentinel のようなセキュリティ情報イベント管理 (SIEM) ソ
 - 組み込みの **分析** ルール テンプレートを使用して、インポートした脅威インテリジェンスを利用したセキュリティのアラートとインシデントを生成します。
 - Azure Sentinel で、**脅威インテリジェンス ブック** を使用して、脅威インテリジェンスに関する重要な情報を視覚化します。
 
-また、脅威インテリジェンスによって、 **[ハンティング]** や **[ノートブック]** などの他の Azure Sentinel エクスペリエンスにも有用なコンテキストが提供されます。これらのエクスペリエンスについては、この記事では取り上げていませんが、Notebooks 内での CTI の使用について書かれた、[Sentinel での Jupyter Notebooks に関する Ian Hellen によるこちらの優れたブログ記事](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)で取り上げられています。
+また、脅威インテリジェンスによって、 **[ハンティング]** や **[ノートブック]** などの他の Azure Sentinel エクスペリエンスにも有用なコンテキストが提供されます。これらのエクスペリエンスについては、この記事では取り上げていませんが、Notebooks 内での CTI の使用について書かれた、[Azure Sentinel での Jupyter Notebooks に関する Ian Hellen によるこちらの優れたブログ記事](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)で取り上げられています。
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>脅威インテリジェンス用の Azure Sentinel データ コネクタ
 

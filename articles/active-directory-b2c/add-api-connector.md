@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 9117474c3cbf5087a5b63512fcc17c4771bf7aa6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343877"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805514"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API コネクタをサインアップ ユーザー フローに追加する (プレビュー)
 
@@ -36,7 +36,7 @@ ms.locfileid: "96343877"
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
 7. API の認証情報を指定します。
 
-   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できる "ダミー" の **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https []()://contoso.azurewebsites.net/api/endpoint <b>?code=0123456789</b>)。
+   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できる "ダミー" の **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: `https://contoso.azurewebsites.net/api/endpoint?code=0123456789`)。
 
    ![新しい API コネクタを構成する](./media/add-api-connector/api-connector-config.png)
 8. **[保存]** を選択します。
@@ -103,7 +103,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
 
-サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、**_属性コレクション ページ_* _ (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
+サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>この手順で API に送信される要求の例
 ```http
@@ -241,7 +241,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、_*[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 要求に `_<extensions-app-id>_` が含まれている必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。  |
 
 ### <a name="example-of-a-blocking-response"></a>ブロック応答の例

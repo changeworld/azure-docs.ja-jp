@@ -3,12 +3,12 @@ title: サポートされているコンテンツの形式
 description: Docker と互換性のあるコンテナー イメージ、Helm チャート、OCI イメージ、OCI 成果物など、Azure Container Registry でサポートされているコンテンツ形式について説明します。
 ms.topic: article
 ms.date: 08/30/2019
-ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a54c65d149a27ed9eae85c3308d657ed3471a3
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84695268"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008334"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry 内でサポートされているコンテンツの形式
 
@@ -20,11 +20,11 @@ Azure Container Registry 内のプライベート リポジトリを使用して
 
 * [Docker Image Manifest V2、Schema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker Image Manifest V2、Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - 1 つの "image:tag" 参照の下にマルチプラットフォーム イメージを格納することをレジストリに許可するマニフェスト一覧が含まれます
+* [Docker Image Manifest V2、Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - 1 つの `image:tag` 参照の下に[マルチアーキテクチャ イメージ](push-multi-architecture-images.md)を格納することをレジストリに許可するマニフェスト一覧が含まれます
 
 ## <a name="oci-images"></a>OCI イメージ
 
-Azure Container Registry では、[Open Container Initiative (OCI) イメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に準拠するイメージをサポートしています。 パッケージ形式には、[Singularity Image Format (SIF)](https://github.com/sylabs/sif) が含まれています。
+Azure Container Registry では、[Open Container Initiative (OCI) イメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md) (省略可能な[イメージ インデックス](https://github.com/opencontainers/image-spec/blob/master/image-index.md)仕様を含む) に準拠するイメージをサポートしています。 パッケージ形式には、[Singularity Image Format (SIF)](https://github.com/sylabs/sif) が含まれています。
 
 ## <a name="oci-artifacts"></a>OCI 成果物
 

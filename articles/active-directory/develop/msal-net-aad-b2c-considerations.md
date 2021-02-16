@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614916"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580829"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
 MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) でソーシャル ID を持つユーザーをサインインさせることができます。 Azure AD B2C はポリシーの概念を基に構築されています。 MSAL.NET では、ポリシーを指定するということは、機関を提供することです。
 
-- パブリック クライアント アプリケーションをインスタンス化するときは、機関の一部としてポリシーを指定する必要があります。
+- パブリック クライアント アプリケーションをインスタンス化するときは、機関の一部としてポリシーを指定します。
 - ポリシーを適用するときは、`authority` パラメーターを受け取る `AcquireTokenInteractive` のオーバーライドを呼び出します。
 
 この記事は、MSAL.NET 3.x に適用されます。 MSAL.NET 2.x については、GitHub の MSAL.NET Wiki にある「[MSAL 2.x での Azure AD B2C の詳細](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)」を参照してください。

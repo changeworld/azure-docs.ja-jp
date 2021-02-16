@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c441c9f81477a586c3e153e23b1fc63f2f76344
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931631"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819929"
 ---
-# <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Defender for IoT の C# ベースのセキュリティ エージェントをデプロイする
+# <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Defender for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
 このガイドでは、Defender for IoT の C# ベースのセキュリティ エージェントを Windows にインストールする方法について説明します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "90931631"
 
 * 前提条件のインストール。
 * サービス ユーザーを追加する (対話型サインインは無効)。
-* **システム サービス**としてエージェントをインストールする。
+* **システム サービス** としてエージェントをインストールする。
 * 指定された認証パラメーターでエージェントを構成する。
 
 追加のヘルプについては、PowerShell で Get-Help コマンドを使用してください。
@@ -115,7 +115,7 @@ Get-Help の例: ```Get-Help .\InstallSecurityAgent.ps1```
    ```
 
     > [!NOTE]
-    > トラブルシューティングの終了後は、ログ記録を**無効**にすることをお勧めします。 ログ記録を**有効**のままにしておくと、ログ ファイルのサイズとデータの使用量が増加します。
+    > トラブルシューティングの終了後は、ログ記録を **無効** にすることをお勧めします。 ログ記録を **有効** のままにしておくと、ログ ファイルのサイズとデータの使用量が増加します。
 
 1. 次の PowerShell またはコマンド ラインを実行して、エージェントを再起動します。
 

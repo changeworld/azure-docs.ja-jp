@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915166"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806309"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS 診断ログの表示と構成
 
@@ -128,7 +128,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>すべてのパブリック IP で診断ログを有効にする
 
-この[テンプレート](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy)を使用すると、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にする Azure Policy 定義を作成できます。
+この[テンプレート](https://aka.ms/ddosdiaglogs)を使用すると、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にする Azure Policy 定義を作成できます。
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
@@ -142,7 +142,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection のブック
 
-この Azure Resource Manager (ARM) テンプレートを使用して、攻撃分析ブックをデプロイできます。 このブックを使用すると、複数のフィルター可能なパネルにわたって攻撃データを視覚化して、危機にさらされているものを簡単に把握できます。 
+[この Azure Resource Manager (ARM) テンプレート](https://aka.ms/ddosworkbook)を使用して、攻撃分析ブックをデプロイできます。 このブックを使用すると、複数のフィルター可能なパネルにわたって攻撃データを視覚化して、危機にさらされているものを簡単に把握できます。 
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 

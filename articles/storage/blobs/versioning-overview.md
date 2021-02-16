@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96001883"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980284"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
@@ -37,6 +37,10 @@ BLOB のバージョン管理を有効にする方法については、「[BLOB 
 バージョンによって、指定された時点での BLOB の状態がキャプチャされます。 ストレージ アカウントに対して BLOB のバージョン管理が有効になっている場合、BLOB が変更または削除されるたびに、Azure Storage によって新しいバージョンの BLOB が自動的に作成されます。
 
 バージョン管理が有効になっている BLOB を作成すると、新しい BLOB が現在のバージョンの BLOB (またはベース BLOB) になります。 その後、その BLOB を変更すると、変更される前の BLOB の状態をキャプチャするバージョンが Azure Storage によって作成されます。 変更された BLOB は、新しい現在のバージョンになります。 BLOB を変更するたびに、新しいバージョンが作成されます。
+
+次の図は、書き込み操作と削除操作でバージョンがどのように作成され、以前のバージョンがどのように現在のバージョンに昇格されるかを示しています。
+
+:::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="BLOB のバージョン管理のしくみを示す図":::
 
 BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)」を参照してください。
 

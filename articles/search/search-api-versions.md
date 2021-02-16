@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422724"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820519"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -87,7 +87,7 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターはまだサポートされていません。 |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターのネイティブ サポートはまだ提供されていません。 地理的な操作には、[Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) パッケージをお勧めします。 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) および [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) についての例があります。 |
 | [Microsoft.Azure.Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | リリース日: 2019 年 5 月。 Search REST api-version=2019-05-06 を対象としています。|
 | [Microsoft.Azure.Management.Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Management REST api-version=2020-08-01 を対象としています。  |
 | Microsoft.Azure.Management.Search 3.0.0 | Stable | Management REST api-version=2015-08-19 を対象としています。  |

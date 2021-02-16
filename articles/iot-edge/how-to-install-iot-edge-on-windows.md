@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 3470e07c1b5673efa6cd015e43e077828da1573e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703667"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008572"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)
 
@@ -27,6 +27,8 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
 
 >[!NOTE]
 >Windows 上の IoT Edge for Linux は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階にあります。
+>
+>Windows 上の IoT Edge for Linux は、Windows 環境で Azure IoT Edge を使用する場合に推奨されるエクスペリエンスですが、Windows コンテナーも引き続き利用できます。 Windows コンテナーの使用を優先する場合は、[Azure IoT Edge for Windows のインストールと管理](how-to-install-iot-edge-windows-on-windows.md)に関する攻略ガイドを参照してください。
 
 ## <a name="prerequisites"></a>[前提条件]
 
@@ -64,7 +66,7 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
 
    1. **[Feeds]\(フィード\)** タブを選択し、 **[Add]\(追加\)** を選択します。
 
-   1. テキスト ボックスに「 https://aka.ms/wac-insiders-feed 」と入力し、 **[Add]\(追加\)** を選択します。
+   1. テキスト ボックスに「 https://aka.ms/wac-insiders-feed 」と入力し、 **[追加]** を選択します。
 
    1. フィードを追加した後、 **[Available extensions]\(利用できる拡張\)** タブに移動します。拡張機能一覧の更新に少し時間がかかる場合があります。
 
@@ -296,7 +298,7 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
 1. テキスト エディターに次のコマンドをコピーします。 プレースホルダーのテキストを実際の詳細情報に置き換えます。
 
    ```azurepowershell-interactive
-   Provision-EflowVm -provisioningType x509 -scopeId <ID_SCOPE_HERE> -registrationId <REGISTRATION_ID_HERE> -identityCertLocWin <ABSOLUTE_CERT_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityPkLocWin <ABSOLUTE_PRIVATE_KEY_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityCertLocWin <ABSOLUTE_CERT_DEST_PATH_ON_LINUX_MACHINE -identityPkLocVm <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_LINUX_MACHINE>
+   Provision-EflowVm -provisioningType x509 -scopeId <ID_SCOPE_HERE> -registrationId <REGISTRATION_ID_HERE> -identityCertLocWin <ABSOLUTE_CERT_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityPkLocWin <ABSOLUTE_PRIVATE_KEY_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityCertLocVm <ABSOLUTE_CERT_DEST_PATH_ON_LINUX_MACHINE -identityPkLocVm <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_LINUX_MACHINE>
    ```
 
 1. [Azure portal](https://ms.portal.azure.com/) で、お使いの DPS インスタンスに移動します。

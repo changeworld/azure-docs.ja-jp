@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492435"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007314"
 ---
 # <a name="it-service-management-connector-overview"></a>IT Service Management Connector 概要
 
@@ -32,7 +32,8 @@ ITSMC は、次の ITSM ツールとの接続をサポートしています。
 -   Cherwell
 
    >[!NOTE]
-> Cherwell や Provance のお客様には、統合の別の方法として、[Webhook アクション](./action-groups.md#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
+> 2020 年 10 月 1 日以降、新規のお客様が Cherwell と Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。
+> 既存の ITSM 接続はサポートされます。
 
 ITSMC を使用すると、次のことができます。
 

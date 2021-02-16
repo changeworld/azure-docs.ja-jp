@@ -3,12 +3,12 @@ title: イベント配信、マネージド サービス ID、およびプライ
 description: この記事では、Azure イベント グリッド トピックに対してマネージド サービス ID を有効にする方法を説明します。 これを使用して、サポートされている配信先にイベントを転送します。
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054419"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007773"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信
 この記事では、Azure イベント グリッド カスタム トピックまたはドメインに対して、[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>Azure CLI の使用 - Azure Storage キュー 
-このセクションでは、Azure CLI を使用し、システム割り当て ID の使用を有効にして、イベントを Azure Storage キューに配信する方法を学びます。 ID は、ストレージ アカウントの **ストレージ BLOB データ共同作成者** ロールのメンバーである必要があります。
+このセクションでは、Azure CLI を使用し、システム割り当て ID の使用を有効にして、イベントを Azure Storage キューに配信する方法を学びます。 ID は、ストレージ アカウントの **ストレージ キュー データ メッセージ送信者** ロールのメンバーである必要があります。 また、配信不能処理に使用されるストレージ アカウントの **ストレージ BLOB データ共同作成者** ロールのメンバーである必要もあります。
 
 #### <a name="define-variables"></a>変数の定義  
 

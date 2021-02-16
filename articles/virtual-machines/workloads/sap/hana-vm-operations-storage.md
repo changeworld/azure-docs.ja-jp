@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/23/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 48d1c04e59d316ac19000f5b890c0cb1c96fb213
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746749"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549441"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -81,7 +81,13 @@ Azure Premium Storage を使用すると、複数の Azure ディスクにわた
 
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O Scheduler モード
-Linux には、数種類の I/O スケジューリング モードがあります。 Linux ベンダーおよび SAP が一般的に推奨しているのは、ディスク ボリュームの I/O スケジューラ モードを **mq-deadline** または **kyber** モードから **noop** (マルチ キュー以外) モードまたは **none** (マルチ キューの場合) モードに再構成することです。 詳細については、[SAP ノートの #1984787](https://launchpad.support.sap.com/#/notes/1984787) を参照してください。 
+Linux には、数種類の I/O スケジューリング モードがあります。 Linux ベンダーおよび SAP が一般的に推奨しているのは、ディスク ボリュームの I/O スケジューラ モードを **mq-deadline** または **kyber** モードから **noop** モード (マルチ キュー以外) または **none** モード (マルチ キューの場合) に再構成することです (SLES saptune プロファイルでまだ行っていない場合)。 詳細については、次を参照してください。 
+
+- [SAP ノート #1984787](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP ノート #2578899](https://launchpad.support.sap.com/#/notes/2578899) 
+- [SLES 12 SP4 の noop 設定の問題](https://www.suse.com/support/kb/doc/?id=000019547)
+
+Red Hat では、さまざまな SAP アプリケーションの特定のチューニング プロファイルによって確立されたとおりの設定にします。
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション

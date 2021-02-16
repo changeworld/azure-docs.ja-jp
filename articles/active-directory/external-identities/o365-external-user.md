@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515508"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008130"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 の外部共有と Azure Active Directory (Azure AD) B2B コラボレーション
 
@@ -32,8 +32,7 @@ OneDrive/SharePoint Online には、独自の招待マネージャーがあり�
 
 - Azure AD B2B コラボレーションで招待されたユーザーは、OneDrive/SharePoint Online 共有の各ダイアログ ボックスで選択できます。 OneDrive/SharePoint Online で招待されたユーザーも、招待に応じた後は、Azure AD に表示されます。
 
-- ライセンスの要件が異なります。 ライセンスについて詳しくは、[Azure AD B2B のライセンスに関する記事](./external-identities-pricing.md)と、[SharePoint Online の外部共有の概要に関する記事の「外部ユーザーとは」](/sharepoint/external-sharing-overview#what-happens-when-users-share)をご覧ください。
-
+- ライセンスの要件が異なります。 ライセンスについて詳しくは、[Azure AD External Identities のライセンス](./external-identities-pricing.md)と、[SharePoint Online の外部共有の概要](/sharepoint/external-sharing-overview)に関するページをご覧ください。
 OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共有を管理するには、OneDrive/SharePoint Online の外部共有の設定を **[Allow sharing only with the external users that already exist in your organization's directory]\(既にディレクトリに存在する外部ユーザーのみに共有を許可する\)** に設定します。 ユーザーは外部の共有サイトに移動し、管理者が追加した外部コラボレーターを選択できます。 管理者は、B2B コラボレーションの招待 API を通じて、外部コラボレーターを追加できます。
 
 

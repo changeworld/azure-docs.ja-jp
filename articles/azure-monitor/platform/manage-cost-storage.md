@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/24/2020
+ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f0508f903cf2daa4c387ff51ecba2f5af7d99694
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882485"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007944"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -40,7 +40,7 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
   
 従量課金制モデルに加えて、Log Analytics には **容量予約** レベルがあります。これにより、従量課金制の料金と比較して 25 % も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超える使用量は、従量課金制で請求されます。 容量予約レベルには、31 日間のコミットメント期間があります。 コミットメント期間中は、より高いレベルの容量予約レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低い容量予約レベルに戻ることはできません。 容量予約レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制および容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
 
-イベントのデータ サイズは、すべての価格レベルで、このイベントの Log Analytics に格納されているプロパティの文字列形式から計算されます。データがエージェントから送信されたか、インジェスト プロセス中に追加されたかは関係ありません。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 AzureActivity、Heartbeat、Usage 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように `_IsBillable` プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
+イベントのデータ サイズは、すべての価格レベルで、このイベントの Log Analytics に格納されているプロパティの文字列形式から計算されます。データがエージェントから送信されたか、インジェスト プロセス中に追加されたかは関係ありません。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 AzureActivity、Heartbeat、Usage 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように `_IsBillable` プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
 
 また、[Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)、 [構成管理](https://azure.microsoft.com/pricing/details/automation/) などの一部のソリューションには、独自の価格モデルがあります。 
 
@@ -66,11 +66,11 @@ Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料
 
 現在 Azure Monitor ログを使用している場合は、最近の使用パターンに基づいてコストがどのくらいになるかを容易に理解できます。 これには、データ使用状況を確認して分析するために **Log Analytics の [使用量と推定コスト]** を使用します。 これにより、各ソリューションによって収集されるデータの量、保持されるデータの量、および取り込まれたデータ量と無料使用量を超える追加リテンション期間に基づいたコストの推定値が示されます。
 
-![使用量と推定コスト](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
+:::image type="content" source="media/manage-cost-storage/usage-estimated-cost-dashboard-01.png" alt-text="使用量と推定コスト":::
 
 データを詳細に調査するには、 **[使用量と推定コスト]** ページでグラフの右上にあるアイコンをクリックします。 これで、このクエリを操作して使用状況の詳細を調査できます。  
 
-![ログ ビュー](media/manage-cost-storage/logs.png)
+:::image type="content" source="media/manage-cost-storage/logs.png" alt-text="ログ ビュー":::
 
 **[使用量と推定コスト]** ページでは、該当の月のデータ ボリュームを確認できます。 これには、受信して Log Analytics ワークスペースに格納されたすべての課金対象データが含まれます。  
  
@@ -90,8 +90,8 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 2. それぞれの価格レベルについての推定コストを確認します。 この見積もりは、過去 31 日間の使用量に基づいているため、このコストの見積もりは、通常の使用状況を表す直近の 31 日間に依存します。 次の例では、過去 31 日間のデータ パターンに基づいて、このワークスペースのコストが 100 GB/日の容量予約レベル (#2) と比較して従量課金制レベル (#1) ではどれほど低くなるかを確認することができます。  
 
-    ![価格レベル](media/manage-cost-storage/pricing-tier-estimated-costs.png)
-
+:::image type="content" source="media/manage-cost-storage/pricing-tier-estimated-costs.png" alt-text="価格レベル":::
+    
 3. 過去 31 日間の使用量に基づいて推定コストを確認した後、価格レベルを変更する場合は、 **[選択 ]** をクリックします。  
 
 `sku` パラメーター (Azure Resource Manager テンプレートの `pricingTier`) を使用して [Azure Resource Manager 経由で価格レベルを設定](../samples/resource-manager-workspace.md)することもできます。 
@@ -132,7 +132,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
-次の手順では、ワークスペースにログ データを保持する期間を構成する方法について説明します。 ワークスペース レベルでのデータ保有期間は、従来の Free 価格レベルを使用している場合を除き、すべてのワークスペースで 30 から 730 日 (2 年) に構成できます。より長いデータ保有期間の価格については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 個々のデータ型の保有期間は、最短 4 日に設定できます。 
+次の手順では、ワークスペースにログ データを保持する期間を構成する方法について説明します。 ワークスペース レベルでのデータ保持期間は、従来の Free 価格レベルを使用している場合を除き、すべてのワークスペースで 30 ～ 730 日 (2 年) に構成できます。 個々のデータ型の保有期間は、最短 4 日に設定できます。 データ保持期間の延長の価格の[詳細](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。  730 日を超えてデータを保持するには、[Log Analytics ワークスペースのデータのエクスポート](logs-data-export.md)を使用することを検討してください。
 
 ### <a name="workspace-level-default-retention"></a>ワークスペース レベルの既定の保有期間
 
@@ -142,11 +142,11 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 2. **[使用とコストの見積もり]** ページの上部にある **[データ保有期間]** をクリックします。
 3. ウィンドウで、スライダーを移動して日数を増減し、 **[OK]** をクリックします。  *無料* プランをご利用の場合は、データ保持期間を変更できません。この設定を制御するには、有料プランにアップグレードする必要があります。
 
-    ![ワークスペースのデータ保持設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
+:::image type="content" source="media/manage-cost-storage/manage-cost-change-retention-01.png" alt-text="ワークスペースのデータ保持設定の変更":::
 
 保持期間が短縮された場合、新しい保持設定よりも古いデータが削除されるまでには、数日の猶予期間があります。 
 
-このデータ保持期間は、`retentionInDays` パラメーターを使用して [Azure Resource Manager 経由で設定](../samples/resource-manager-workspace.md)することもできます。 データの保持期間を 30 日に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用して、(数日の猶予期間を除去し) より古いデータの即時消去をトリガーできます。 これは、即時のデータ削除が不可欠なコンプライアンス関連のシナリオに役立ちます。 この即時消去機能は、Azure Resource Manager 経由でのみ公開されています。 
+**[データ保有期間]** ページでは、30、31、60、90、120、180、270、365、550、および 730 日の保有期間設定を使用できます。 別の設定が必要な場合は、[Azure Resource Manager](../samples/resource-manager-workspace.md) で `retentionInDays` パラメーターを使用して構成できます。 データの保持期間を 30 日に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用して、(数日の猶予期間を除去し) より古いデータの即時消去をトリガーできます。 これは、即時のデータ削除が不可欠なコンプライアンス関連のシナリオに役立ちます。 この即時消去機能は、Azure Resource Manager 経由でのみ公開されています。 
 
 30 日の保持期間があるワークスペースでは、実際には 31 日間分のデータを保持することができます。 データを 30 日間しか保持しないことが不可欠な場合は、Azure Resource Manager を使用して保持期間を 30 日に設定したうえで、`immediatePurgeDataOn30Days` パラメーターを指定します。  
 
@@ -230,7 +230,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 2. 選択したワークスペースの **[使用とコストの見積もり]** ページの上部にある **[Data Cap]\(データの上限\)** をクリックします。 
 3. 日次上限が既定で **[オフ]** になっていますか。 有効にするには、 **[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。
 
-    ![Log Analytics のデータ制限の構成](media/manage-cost-storage/set-daily-volume-cap-01.png)
+:::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Log Analytics のデータ制限の構成":::
     
 1 日の上限は、「[ワークスペース - 作成または更新](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)」で説明されているように、`WorkspaceCapping` の下の `dailyQuotaGb` パラメーターを設定することにより、ARM を介して構成できます。 
 
@@ -245,8 +245,10 @@ Usage
 | extend TimeGenerated=datetime_add("hour",-1*DailyCapResetHour,TimeGenerated)
 | where TimeGenerated > startofday(ago(31d))
 | where IsBillable
-| summarize IngestedGbBetweenDailyCapResets=sum(_BilledSize)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
+| summarize IngestedGbBetweenDailyCapResets=sum(Quantity)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
 ```
+
+(Usage データ型では、`Quantity` の単位は MB です。)
 
 ### <a name="alert-when-daily-cap-reached"></a>1 日の上限に達したら警告する
 
@@ -485,6 +487,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | syslog                     | [syslog の構成](data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |
 | AzureDiagnostics           | [リソース ログの収集](./diagnostic-settings.md#create-in-azure-portal)を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
+| Application Insights | [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) のオプションを確認します。 |
+| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | [AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) を使用して、監査設定を調整します。 |
+| Azure Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](https://docs.microsoft.com/azure/sentinel/connect-data-sources)を確認します。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>ノードごとの価格レベルでの課金対象のノードの取得
 

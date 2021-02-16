@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3bf910d3309285c8b700c39af68fb90715f8863a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045395"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987713"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
@@ -21,6 +21,9 @@ ms.locfileid: "98045395"
 
 1. IP の割り当て方法を動的から静的に変更します。
 2. PowerShell スクリプトを実行して、アップグレードとトラフィックの移行を完了します。
+
+> [!IMPORTANT]
+> スクリプトは現在メンテナンス中です。 Basic SKU と Standard SKU からパブリック IP アドレスをアップグレードする方法については、[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade?tabs=option-upgrade-cli%2Coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli)を参照してください。
 
 ## <a name="upgrade-overview"></a>アップグレードの概要
 

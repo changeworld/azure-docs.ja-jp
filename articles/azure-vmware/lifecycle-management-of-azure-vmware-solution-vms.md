@@ -2,13 +2,13 @@
 title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062898"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988524"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -110,3 +110,11 @@ Azure Monitor は、クラウドおよびオンプレミス環境からのテレ
     - [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-log.md)。
     - 自動アクションと通知を設定するための[アクション ルール](../azure-monitor/platform/alerts-action-rules.md)。
     - [IT Service Management Connector を使用して Azure を ITSM ツールに接続する](../azure-monitor/platform/itsmc-overview.md)。
+    
+ ## <a name="next-steps"></a>次のステップ
+
+Azure のネイティブ ツールを使用して、Azure VMware Solution VM をそれらのライフサイクルを通して管理する方法を理解したので、次のことについて確認する必要がある可能性があります。
+
+- [Azure Security Center による Azure VMware Solution VM の保護](azure-security-integration.md)。
+- [Azure VMware Solution 向けの Azure Backup Server の設定](set-up-backup-server-for-azure-vmware-solution.md)。
+- [ハブ アンド スポークのアーキテクチャでの Azure VMware Solution の統合](concepts-hub-and-spoke.md)。

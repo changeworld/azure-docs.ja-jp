@@ -7,16 +7,23 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks, kubernetes
-ms.openlocfilehash: 93ffa3ded4d0771438c5d6a2dc23e6e184f04fe2
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227567"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007136"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
 
-このガイドでは、Open Liberty オペレーターを使用して、Java、Java EE、[Jakarta EE](https://jakarta.ee/)、[MicroProfile](https://microprofile.io/) のアプリケーションを Open Liberty または WebSphere Liberty ランタイムで実行した後、コンテナー化されたアプリケーションを AKS クラスターにデプロイする方法を示します。 Open Liberty オペレーターにより、Open Liberty Kubernetes クラスターで実行されるアプリケーションのデプロイと管理が簡単になります。 また、オペレーターを使用したトレースやダンプの収集など、より高度な操作を実行することもできます。 この記事では、Liberty アプリケーションの準備、アプリケーションの Docker イメージの構築、コンテナー化されたアプリケーションの AKS クラスターでの実行について説明します。  Open Liberty の詳細については、[Open Liberty プロジェクトのページ](https://openliberty.io/)を参照してください。 IBM WebSphere Liberty の詳細については、[WebSphere Liberty の製品ページ](https://www.ibm.com/cloud/websphere-liberty)を参照してください。
+この記事では、次の方法を示します。  
+* Open Liberty または WebSphere Liberty ランタイムで、Java、Java EE、Jakarta EE、または MicroProfile アプリケーションを実行します。
+* Open Liberty コンテナー イメージを使用して、アプリケーションの Docker イメージを構築します。
+* Open Liberty オペレーターを使用して、コンテナー化されたアプリケーションを AKS クラスターにデプロイします。   
+
+Open Liberty オペレーターにより、Kubernetes クラスターで実行されるアプリケーションのデプロイと管理が簡単になります。 Open Liberty オペレーターにより、トレースやダンプの収集など、より高度な操作を実行することもできます。 
+
+Open Liberty の詳細については、[Open Liberty プロジェクトのページ](https://openliberty.io/)を参照してください。 IBM WebSphere Liberty の詳細については、[WebSphere Liberty の製品ページ](https://www.ibm.com/cloud/websphere-liberty)を参照してください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,25 +31,29 @@ ms.locfileid: "99227567"
 
 * この記事では、Azure CLI の最新バージョンが必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 * このガイドのコマンドを (Azure Cloud Shell ではなく) ローカルで実行する場合:
-  * Unix のようなオペレーティング システム (Ubuntu、macOS など) がインストールされているローカル マシンを準備します。
+  * Unix のようなオペレーティング システム (Ubuntu、macOS、Linux 用 Windows サブシステムなど) がインストールされているローカル マシンを準備します。
   * Java SE 実装 (たとえば [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) をインストールします。
   * [Maven](https://maven.apache.org/download.cgi) 3.5.0 以上をインストールします。
   * お使いの OS 用の [Docker](https://docs.docker.com/get-docker/) をインストールします。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create) コマンドを使用して、*eastus* に *java-liberty-project* というリソース グループを作成します。 これは、後で Azure Container Registry (ACR) インスタンスと AKS クラスターを作成するために使用されます。 
+Azure リソース グループは、Azure リソースが展開され管理される論理グループです。  
+
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して、*eastus* の場所に *java-liberty-project* というリソース グループを作成します。 このリソース グループは、後で Azure Container Registry (ACR) インスタンスと AKS クラスターを作成するために使用されます。 
 
 ```azurecli-interactive
-az group create --name java-liberty-project --location eastus
+RESOURCE_GROUP_NAME=java-liberty-project
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
 ## <a name="create-an-acr-instance"></a>ACR インスタンスを作成する
 
-[az acr create](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az_acr_create) コマンドを使用して ACR インスタンスを作成します。 次の例では、*youruniqueacrname* という名前の ACR インスタンスを作成します。 *youruniqueacrname* が Azure 内で一意であることを確認します。
+[az acr create](/cli/azure/acr#az_acr_create) コマンドを使用して ACR インスタンスを作成します。 次の例では、*youruniqueacrname* という名前の ACR インスタンスを作成します。 *youruniqueacrname* が Azure 内で一意であることを確認します。
 
 ```azurecli-interactive
-az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
+REGISTRY_NAME=youruniqueacrname
+az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
 しばらくすると、次のものを含む JSON 出力が表示されます。
@@ -55,10 +66,9 @@ az acr create --resource-group java-liberty-project --name youruniqueacrname --s
 
 ### <a name="connect-to-the-acr-instance"></a>ACR インスタンスに接続する
 
-ACR インスタンスにイメージをプッシュするには、最初にログインする必要があります。 次のコマンドを実行して、接続を確認します。
+イメージをプッシュする前に、ACR インスタンスにサインインする必要があります。 次のコマンドを実行して、接続を確認します。
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
 USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
 PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
@@ -70,10 +80,11 @@ ACR インスタンスに正常にログインした場合は、コマンド出�
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
-AKS クラスターを作成するには、[az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create](/cli/azure/aks#az_aks_create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 ```azurecli-interactive
-az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
+CLUSTER_NAME=myAKSCluster
+az aks create --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --node-count 1 --generate-ssh-keys --enable-managed-identity
 ```
 
 数分後、コマンドが完了し、次のものを含むクラスターに関する情報が JSON 形式で返されます。
@@ -87,16 +98,16 @@ az aks create --resource-group java-liberty-project --name myAKSCluster --node-c
 
 ### <a name="connect-to-the-aks-cluster"></a>AKS クラスターに接続する
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli) コマンドを使用します。
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli](/cli/azure/aks#az_aks_install_cli) コマンドを使用します。
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials) コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --overwrite-existing
 ```
 
 > [!NOTE]
@@ -144,6 +155,7 @@ AKS クラスターに Liberty アプリケーションをデプロイして実�
 1. このガイドのサンプル コードをクローンします。 サンプルは [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks) にあります。
 1. ディレクトリをローカル クローンの `javaee-app-simple-cluster` に変更します。
 1. `mvn clean package` を実行してアプリケーションをパッケージ化します。
+1. `mvn liberty:dev` を実行してアプリケーションをテストします。 成功すると、コマンドの出力に `The defaultServer server is ready to run a smarter planet.` が表示されます。 `CTRL-C` を使用してアプリケーションを停止します。
 1. 以下のいずれかのコマンドを実行してアプリケーション イメージをビルドし、ACR インスタンスにプッシュします。
    * 軽量のオープン ソース Java™ ランタイムとして Open Liberty を使用する場合は、Open Liberty 基本イメージを使用してビルドします。
 
@@ -206,24 +218,24 @@ AKS クラスターに Liberty アプリケーションをデプロイして実�
 kubectl get service javaee-app-simple-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:31732/TCP   68s
+javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
-*EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わるまで待ってから、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。
+*EXTERNAL-IP* アドレスが *保留中* から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。
 
-Web ブラウザーでサービスの外部 IP アドレスとポート (上記の例では `52.152.189.57:9080`) を開き、アプリケーションのホーム ページを表示します。 ページの左上にアプリケーション レプリカのポッド名が表示されることを確認します。 数分待ってページを最新の情報に更新すると、AKS クラスターによって提供される負荷分散のため、別のポッド名が表示される可能性があります。
+Web ブラウザーでサービスの外部 IP アドレス (上記の例では `52.152.189.57`) を開き、アプリケーションのホーム ページを表示します。 ページの左上にアプリケーション レプリカのポッド名が表示されることを確認します。 数分待ってページを最新の情報に更新すると、AKS クラスターによって提供される負荷分散のため、別のポッド名が表示されます。
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/java-liberty-app-aks-deployed-success.png" alt-text="AKS に正常にデプロイされた Java Liberty アプリケーション":::
+:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="AKS に正常にデプロイされた Java Liberty アプリケーション":::
 
 >[!NOTE]
 > - 現在、アプリケーションでは HTTPS は使用されていません。 [独自の証明書を使用して TLS を有効にする](ingress-own-tls.md)ことをお勧めします。
 
 ## <a name="clean-up-the-resources"></a>リソースのクリーンアップ
 
-Azure の課金を回避するには、不要なリソースをクリーンアップする必要があります。  クラスターが必要なくなったら、[az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) コマンドを使って、リソース グループ、コンテナー サービス、コンテナー レジストリ、およびすべての関連リソースを削除してください。
+Azure の課金を回避するには、不要なリソースをクリーンアップする必要があります。  クラスターが必要なくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使って、リソース グループ、コンテナー サービス、コンテナー レジストリ、およびすべての関連リソースを削除してください。
 
 ```azurecli-interactive
-az group delete --name java-liberty-project --yes --no-wait
+az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>次のステップ

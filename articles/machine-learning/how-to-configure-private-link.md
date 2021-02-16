@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842704"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979183"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する
 
@@ -35,7 +35,8 @@ Azure Private Link では、プライベート エンドポイントを使用し
 
 ## <a name="limitations"></a>制限事項
 
-Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
+* Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
+* プライベート リンクで保護されたワークスペースのパブリック アクセスを有効にしていて、パブリック インターネット経由で Azure Machine Learning スタジオを使用する場合、デザイナーなどの一部の機能から自分のデータにアクセスできないことがあります。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>プライベート エンドポイントを使用するワークスペースを作成する
 
@@ -158,6 +159,31 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 > 接続の一時的な中断を回避するために、Private Link を有効にした後で、ワークスペースに接続しているコンピューターの DNS キャッシュをフラッシュすることをお勧めします。 
 
 Azure Virtual Machines について詳しくは、「[Virtual Machines のドキュメント](../virtual-machines/index.yml)」を参照してください。
+
+## <a name="enable-public-access"></a>パブリック アクセスを有効にする
+
+プライベート エンドポイントを使用してワークスペースを構成した後で、必要に応じてワークスペースへのパブリック アクセスを有効にすることができます。 これを実行しても、プライベート エンドポイントは削除されません。 プライベート アクセスに加えて、パブリック アクセスも有効になります。 プライベート リンクが有効なワークスペースへのパブリック アクセスを有効にするには、次の手順を使用します。
+
+# <a name="python"></a>[Python](#tab/python)
+
+プライベート エンドポイントを削除するには、[Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) を使用します。
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+ws.update(allow_public_access_when_behind_vnet=True)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) コマンドが用意されています。 ワークスペースへのパブリック アクセスを有効にするには、パラメーター `--allow-public-access true` を追加します。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+現在、ポータルを使用してこの機能を有効にする方法はありません。
+
+---
 
 
 ## <a name="next-steps"></a>次の手順

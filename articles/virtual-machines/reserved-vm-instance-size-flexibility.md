@@ -1,25 +1,25 @@
 ---
 title: 仮想マシン サイズの柔軟性 - Azure Reserved VM Instances
 description: 予約 VM インスタンスを購入する際に適用されるサイズ シリーズについて説明します。
-author: manish-shukla01
+author: yashesvi
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.author: yashar
+ms.openlocfilehash: cf8f2f794be4340de4419457872ed5ff4bb4a686
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855503"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980441"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性
 
 予約 VM インスタンスを購入する場合は、インスタンス サイズの柔軟性または容量の優先度を選択します。 予約 VM インスタンスの最適化設定の設定または変更の詳細については、「[予約 VM インスタンスの最適化設定を変更する](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)」を参照してください。
 
-インスタンス サイズの柔軟性に向けて最適化された予約仮想マシン インスタンスを使用して、購入した予約を同じインスタンス サイズの柔軟性グループ内の仮想マシン (VM) サイズに適用できます。 たとえば、(Standard_DS5_v2 などの) DSv2 シリーズに記載されている VM サイズの予約を購入した場合、同じインスタンス サイズの柔軟性グループに記載されているその他の 4 つのサイズに予約割引を適用できます。
+インスタンス サイズの柔軟性に向けて最適化された予約仮想マシン インスタンスを使用して、購入した予約を同じインスタンス サイズの柔軟性グループ内の仮想マシン (VM) サイズに適用できます。 たとえば、Standard_DS3_v2 などの DSv2 シリーズに記載されている VM サイズの予約を購入した場合、同じインスタンス サイズの柔軟性グループに記載されているその他のサイズに予約割引を適用できます。
 
 - Standard_DS1_v2
 - Standard_DS2_v2

@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326156"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833084"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
 
 [Network Performance Monitor](network-performance-monitor.md) の Azure ExpressRoute モニター機能を使用して、ブランチ オフィスと Azure の間のエンド ツー エンド接続とパフォーマンスを Azure ExpressRoute 経由で監視できます。 主な利点は次のとおりです。 
 
@@ -53,8 +56,8 @@ NSG の詳細については、 [ネットワーク セキュリティ グル�
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>ExpressRoute ピアリング接続の監視を有効にする 
 
 1. 監視するプライベート ピアリング接続を選びます。
-2. 右側のウィンドウで、 **[このピアリングを監視する]** チェック ボックスをオンにします。 
-3. この接続の正常性イベントを作成する場合は、 **[このピアリングの正常性監視を有効にする]** をオンにします。 
+2. 右側のウィンドウで、**[このピアリングを監視する]** チェック ボックスをオンにします。 
+3. この接続の正常性イベントを作成する場合は、**[このピアリングの正常性監視を有効にする]** をオンにします。 
 4. 監視条件を選択します。 しきい値を入力して、正常性イベントの生成に関するカスタムしきい値を設定できます。 ピアリング接続に対して選択したしきい値を条件の値が上回ると、正常性イベントが生成されます。 
 5. **[エージェントの追加]** を選び、このピアリング接続を監視するために使う監視エージェントを選びます。 接続の両端にエージェントを追加したことを確認します。 このピアリングに接続されている仮想ネットワークには少なくとも 1 つのエージェントが必要です。 また、少なくとも 1 つのオンプレミスのエージェントがこのピアリングに接続されている必要もあります。 
 6. **[保存]** を選んで構成を保存します。 
@@ -93,7 +96,7 @@ Network Performance Monitor ダッシュ ボードには、ExpressRoute 回線�
 
 ### <a name="circuit-topology"></a>回線トポロジ 
 
-回線トポロジを表示するには、 **[トポロジ]** タイルを選びます。 この操作により、選択した回線またはピアリングのトポロジ ビューが表示されます。 トポロジ ダイアグラムには、ネットワーク上の各セグメントの待ち時間が表示され、各レイヤー 3 ホップがダイアグラムのノードで表現されます。 いずれかのホップを選ぶと、そのホップについてのさらに詳しい情報が表示されます。 視認性を高めて表示範囲をオンプレミスのホップにまで広げるには、 **[フィルター]** の下のスライダー バーを動かします。 スライダー バーを左右に動かすと、トポロジ グラフに表示されるホップ数が増減します。 各セグメントの待ち時間が視覚的に確認できるので、ネットワーク上のセグメントの中で、待ち時間の長いセグメントを短時間で切り分けることができます。
+回線トポロジを表示するには、**[トポロジ]** タイルを選びます。 この操作により、選択した回線またはピアリングのトポロジ ビューが表示されます。 トポロジ ダイアグラムには、ネットワーク上の各セグメントの待ち時間が表示され、各レイヤー 3 ホップがダイアグラムのノードで表現されます。 いずれかのホップを選ぶと、そのホップについてのさらに詳しい情報が表示されます。 視認性を高めて表示範囲をオンプレミスのホップにまで広げるには、**[フィルター]** の下のスライダー バーを動かします。 スライダー バーを左右に動かすと、トポロジ グラフに表示されるホップ数が増減します。 各セグメントの待ち時間が視覚的に確認できるので、ネットワーク上のセグメントの中で、待ち時間の長いセグメントを短時間で切り分けることができます。
 
 ![ExpressRoute のトポロジ](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
@@ -141,4 +144,3 @@ Network Performance Monitor は、いくつかの回線接続の問題を診断�
 
 ## <a name="next-steps"></a>次のステップ
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../log-query/log-query-overview.md)します。
-

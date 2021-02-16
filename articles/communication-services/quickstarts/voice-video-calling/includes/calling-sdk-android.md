@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5d81e37ab547d12e33cfacb9725d9bdb22666142
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628712"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628969"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -111,7 +111,9 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>ユーザーおよび PSTN と 1:n の通話を行う
 > [!WARNING]
-> 現在、PSTN 通話は使用できません。ユーザーと PSTN 番号への 1:n の通話を行うには、通話先の電話番号を指定する必要があります。
+> 現在、PSTN 通話は使用できません
+
+ユーザーおよび PSTN 番号との 1:n の通話を行うには、通話先の電話番号を指定する必要があります。
 PSTN 通話を許可するように Communication Services リソースを構成する必要があります。
 ```java
 CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);

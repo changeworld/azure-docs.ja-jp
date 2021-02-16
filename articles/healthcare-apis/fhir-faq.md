@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746715"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104622"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -115,6 +115,9 @@ Azure API for FHIR で、[コンパートメント検索](https://www.hl7.org/fh
 ### <a name="how-does-export-work"></a>$export はどのように動作しますか?
 
 $export は、FHIR 仕様 (https://hl7.org/fhir/uv/bulkdata/export/index.html ) に含まれています。 FHIR サービスが管理対象 ID とストレージ アカウントで構成されていて、管理対象 ID がそのストレージ アカウントにアクセスできる場合、FHIR API で $export を呼び出すだけで、すべての FHIR リソースがストレージ アカウントにエクスポートされます。 詳細については、[$export の記事](./export-data.md)を確認してください。
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>匿名化エクスポートは、患者レベルとグループ レベルで同様に使用できますか?
+匿名化エクスポートは、現在、フル システム エクスポート (/$export) でのみサポートされており、患者のエクスポート (/Patient/$export) ではサポートされていません。 患者レベルでも使用できるようにする作業を行っています。
 
 ## <a name="using-azure-api-for-fhir"></a>Azure API for FHIR の使用
 
