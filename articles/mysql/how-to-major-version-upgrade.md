@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220838"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509572"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバーでのメジャー バージョンのアップグレード
 
@@ -121,15 +121,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>これによってサーバーのダウンタイムは発生しますか? その場合、長さはどのくらいですか?
 
-はい、アップグレード プロセス中はサーバーを使用できなくなります。ですから、この操作は、計画メンテナンス期間中に実行することをお勧めします。 推定ダウンタイムは、データベースのサイズ、プロビジョニングされたストレージのサイズ (プロビジョニングされた IOPS)、およびデータベース上のテーブルの数によって異なります。 アップグレード時間は、サーバー上のテーブルの数に直接比例します。Basic SKU サーバーは、標準ストレージ プラットフォームにあるため、アップグレード時間が長くなることが予想されます。 サーバー環境のダウンタイムを推定するために、最初にサーバーの復元済みコピーにアップグレードを実行することをお勧めします。  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>それはレプリカ サーバーではまだサポートされていないと記載されています。 具体的には何を意味するのでしょうか?
-
-現在、メジャーバージョンのアップグレードはレプリカ サーバーではサポートされていません。つまり、レプリケーションに使用されるサーバー (ソース サーバーまたはレプリカ サーバー) には実行しないでください。 レプリカ サーバーでのアップグレード機能のサポートが追加される前に、レプリケーションに使用されるサーバーのアップグレードをテストする場合は、次の手順を実行することをお勧めします。
-
-1. 計画メンテナンス中に、[レプリケーションを停止します。そして、レプリカ サーバーの名前とすべての構成情報 (ファイアウォール設定、サーバー パラメーター構成 (ソース サーバーとは異なる場合)) を取得した後にレプリカ サーバー](howto-read-replicas-portal.md) を削除します。
-2. ソース サーバーのアップグレードを実行します。
-3. 手順 1. で取得したものと同じ名前と構成設定を使用して、新しい読み取りレプリカ サーバーをプロビジョニングします。 新しいレプリカ サーバーは、ソース サーバーが v5.7 にアップグレードされた後に、自動的に v5.7 になります。
+はい、アップグレード プロセス中はサーバーを使用できなくなります。ですから、この操作は、計画メンテナンス期間中に実行することをお勧めします。 推定ダウンタイムは、データベースのサイズ、プロビジョニングされたストレージのサイズ (プロビジョニングされた IOPS)、およびデータベース上のテーブルの数によって異なります。 アップグレード時間は、サーバー上のテーブルの数に直接比例します。Basic SKU サーバーは、標準ストレージ プラットフォームにあるため、アップグレード時間が長くなることが予想されます。 サーバー環境のダウンタイムを推定するために、最初にサーバーの復元済みコピーにアップグレードを実行することをお勧めします。 [読み取りレプリカを使用して、MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードを最小限のダウンタイムで実行する](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)ことを検討してください。
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>2021 年 2 月 5 日までに MySQL v5.6 サーバーをアップグレードすることを選択しなかった場合はどうなりますか?
 

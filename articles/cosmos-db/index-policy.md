@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475102"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526758"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -309,8 +309,7 @@ ORDER BY c.firstName, c.lastName
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
 
-
-## <a name="modifying-the-indexing-policy"></a>インデックス作成ポリシーの変更
+## <a name="index-transformationmodifying-the-indexing-policy"></a><index-transformation>インデックス作成ポリシーの変更
 
 コンテナーのインデックス作成ポリシーは、[Azure portal またはサポートされている SDK のいずれかを使用して](how-to-manage-indexing-policy.md)いつでも更新できます。 インデックス作成ポリシーを更新すると、古いインデックスから新しいものへの変換がトリガーされ、オンラインでその場で実行されます (そのため、この操作中に記憶域が追加で消費されることはありません)。 古いインデックス作成ポリシーは、新しいポリシーに効率的に変換され、コンテナー上での書き込み可用性、読み取り可用性、またはプロビジョニングされたスループットが影響を受けることはありません。 インデックス変換は非同期操作であり、完了までにかかる時間は、プロビジョニングされたスループット、項目の数、およびそれらのサイズによって決まります。
 

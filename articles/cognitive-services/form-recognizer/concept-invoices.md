@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845569"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585077"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
@@ -107,7 +107,7 @@ JSON 出力には次の 3 つの部分があります。
 ## <a name="next-steps"></a>次のステップ
 
 - [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自の請求書とサンプルを試してみてください。
-- 選択した言語で Form Recognizer を使用して請求書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
+- 選択した開発言語で Form Recognizer を使用して請求書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

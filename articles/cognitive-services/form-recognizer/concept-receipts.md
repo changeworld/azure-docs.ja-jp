@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792084"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585043"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
@@ -467,7 +467,7 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 選択した言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
+- 選択した開発言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

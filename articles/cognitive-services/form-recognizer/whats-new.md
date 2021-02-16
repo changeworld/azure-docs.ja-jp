@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: f6d610db01b465306cdaaafa9b1308dba63ff9ca
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936148"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581263"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -209,7 +209,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 ## <a name="next-steps"></a>次のステップ
 
-選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。
+選択した開発言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

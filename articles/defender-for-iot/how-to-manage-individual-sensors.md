@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621216"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508762"
 ---
 # <a name="manage-individual-sensors"></a>個々のセンサーの管理
 
@@ -367,7 +367,7 @@ CLI コマンドを使用する場合:
 
 1. センサーを **[センサー管理]** ウィンドウから削除します。
 
-1. 新しい名前で登録します。
+1. 新しい名前で再登録します。
 
 1. 新しいアクティブ化ファイルをダウンロードします。
 

@@ -1,0 +1,59 @@
+---
+title: カスタム ニューラル音声の概要 - Speech Service
+titleSuffix: Azure Cognitive Services
+description: カスタム ニューラル音声は、独自のオーディオ データをサンプルとして提供することによって、アプリケーション用にカスタマイズされた 1 つの合成音声を作成できるようにする、テキスト読み上げ機能です。
+services: cognitive-services
+author: trevorbye
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: conceptual
+ms.date: 02/01/2020
+ms.author: trbye
+ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525264"
+---
+# <a name="what-is-custom-neural-voice"></a>カスタム ニューラル音声とは
+
+カスタム ニューラル音声は、[テキスト読み上げ](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) (TTS) 機能です。この機能を使用すると、サンプルとして独自のオーディオ データを提供することによって、アプリケーション用に独自にカスタマイズされた 1 つの合成音声を作成できます。 テキスト読み上げは、選択した音声のように聞こえる機械学習モデルを使用して、テキストを合成音声に変換することによって機能します。 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) を使用すると、アプリが[事前に構築された音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)モデル、またはカスタム ニューラル音声機能を使用して開発された独自の[カスタム音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data)を使用して発話することが可能になります。 カスタム ニューラル音声は、自然な音声を作成するニューラル TTS テクノロジをベースにしています。これは、人間の声と比べて区別がつかない音声になることがよくあります。
+カスタム ニューラル音声のリアルで自然な声は、ブランドや擬人化したコンピューターを表し、ユーザーが自然な方法で対話的にアプリケーションと応答することが可能になります。
+
+> [!NOTE]
+> カスタム ニューラル音声機能には登録が必要です。この機能へのアクセスは、Microsoft の資格条件と使用条件に基づいて制限されます。 この機能を使用する場合は、[取り込みフォーム](https://aka.ms/customneural)を使用してユース ケースを登録する必要があります。
+
+## <a name="the-basics-of-custom-neural-voice"></a>カスタム ニューラル音声の基本
+
+カスタム ニューラル音声に使用される、基になるニューラル TTS テクノロジは、次の 3 つの主要なコンポーネントで構成されています。テキスト アナライザー、ニューラル音響モデル、ニューラル ボコーダー。 テキストから自然な合成音声を生成するには、まずテキストがテキスト アナライザーに入力されます。これにより、音素シーケンスの形式で出力が提供されます。 音素は、特定の言語である単語を別の単語と区別するための基本的なサウンド単位です。 音素のシーケンスは、テキストで提供された単語の発音を定義します。 
+
+次に、音素シーケンスは、音色、話し方のスタイル、速度、語調、ストレス パターンなどの音声信号を定義する音響の特徴を予測するためにニューラル音響モデルに入力されます。 最後に、ニューラル ボコーダーが音響特徴を可聴波に変換して、合成音声が生成されるようにします。
+
+![カスタム ニューラル音声の概要画像。](./media/custom-voice/cnv-intro.png)
+
+ニューラル TTS 音声モデルは、人間の声の録音サンプルに基づいて、ディープ ニューラル ネットワークを使用してトレーニングされます。 この[ブログ](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)では、ニューラル TTS が最先端のニューラル音声合成モデルとどのように連携するかについて説明します。 また、このブログでは、対象話者からの 2 時間未満 (または 2,000 個未満の録音された発言) の音声データを使用して、ユニバーサル基本モデルを適合させる方法と、対象話者の音声で読み上げる方法についても説明します。 ニューラル ボコーダーのトレーニング方法については、この[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)を参照してください。
+
+カスタム ニューラル音声のカスタマイズ機能により、ニューラル TTS エンジンをユーザーのシナリオに合わせて調整できます。 カスタム ニューラル音声を作成するには、[Speech Studio](https://speech.microsoft.com/customvoice) を使用して、録音された音声とそれに対応するスクリプトをアップロードし、モデルをトレーニングして、音声をカスタム エンドポイントにデプロイします。 ユース ケースによっては、カスタム ニューラル音声をリアルタイム (スマート仮想アシスタントで使用する場合など) でテキストを音声に変換するか、オフライン (オーディオ ブックや E ラーニング アプリケーションの指示として使用する場合など) でユーザーが入力したテキスト入力と一緒にオーディオ コンテンツを生成するために使用できます。 これは、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=script%2Cwindowsinstall&pivots=programming-language-csharp)、または [Web ポータル](https://speech.microsoft.com/audiocontentcreation)を使用して提供されます。
+
+## <a name="terms-and-definitions"></a>用語と定義
+
+| **用語**      | **定義**                                                                                                                                                                                                                                                                                                                                                                                       |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 音声モデル   | 対象話者独自の音声特性を模倣できる、テキスト読み上げモデル。 *音声モデル* は、*音声フォント* または *合成音声* とも呼ばれます。 音声モデルは、人間が判読できないバイナリ形式のパラメーターのセットであり、音声録音は含まれていません。 人間の声の音声を取得する、または構築するためにリバース エンジニアリングすることはできません。 |
+| ボイス タレント  | 音声が録音され、ボイス タレントの声のように聞こえることを意図した音声モデルを作成するために使用される個人または対象話者。                                                                                                                                                                                                                                                   |
+| 標準 TTS  | 従来のプログラミングまたは統計的手法を使用して、音声を再混在させて照合できるように音声言語を音声のスニペットに分解する TTS の標準または "従来の" 方法。                                                                                                                                                                                                    |
+| ニューラル TTS    | 手続き型プログラミングや統計的手法を使用するのではなく、発音を自然な音声に組み合わせる方法を "学習" するディープ ニューラル ネットワークを使用するニューラル TTS 合成スピーチ。 ニューラル TTS では、対象のボイス タレントの録音に加えて、多くの異なる話者の音声録音で作成されたソース ライブラリまたは基本モデルを使用します。          |
+| トレーニング データ | ボイス タレントの音声録音と、関連付けられたテキスト文字起こしを含むカスタム ニューラル音声トレーニング データ セット。                                                                                                                                                                                                                                                               |
+| ペルソナ       | ペルソナは、音声を発する人を表します。 優れたペルソナ設計では、既に作成されている利用可能な音声モデルを選択しているか、新しいボイス タレントをキャスティングして録音することによってゼロから開始したかにかかわらず、すべての音声の作成を通知します。                                                                                                |
+| スクリプト        | スクリプトは、ボイス タレントが話す発話を含むテキスト ファイルです。 ("*発話*" という用語には、文全体と短いフレーズの両方が含まれます。)                                                                                                                                                                                                                               |
+
+## <a name="responsible-use-of-ai"></a>AI の責任ある使用
+
+責任を持ってカスタム ニューラル音声を使用する方法については、[透明性に関するメモ](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)を参照してください。 Microsoft の透明性に関するメモは、AI テクノロジがどのように機能するか、システム所有者がシステムのパフォーマンスと動作に影響を与える可能性がある選択肢、およびテクノロジ、人、環境などのシステム全体について検討することの重要性を理解するためのものです。
+
+## <a name="next-steps"></a>次のステップ
+
+* [カスタム音声の概要](how-to-custom-voice.md)
+* [Custom Voice エンドポイントを作成して使用する](how-to-custom-voice-create-voice.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704433"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560290"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
@@ -166,6 +166,10 @@ ms.locfileid: "98704433"
 | Frankfurter Ring | frankfurter ring         |
 | ¡Eine Frage!     | eine frage               |
 | wir, haben       | wir haben                |
+
+### <a name="text-normalization-for-japanese"></a>日本語のテキストの正規化
+
+日本語 (ja-JP) では、各文に対して最大 90 文字の長さがあります。 長い文を含む行は破棄されます。 これよりも長いテキストを追加するには、間にピリオドを挿入します。
 
 ## <a name="next-steps"></a>次の手順
 

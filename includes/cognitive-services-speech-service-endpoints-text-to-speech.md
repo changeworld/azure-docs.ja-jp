@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 650ce0cc9586118b30593767c6a3ddb92f494ac3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972652"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569593"
 ---
 ### <a name="standard-and-neural-voices"></a>標準およびニューラル音声
 
@@ -67,3 +67,14 @@ ms.locfileid: "95972652"
 | 西ヨーロッパ | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 米国西部 | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 米国西部 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+
+### <a name="custom-neural-voice"></a>カスタム ニューラル音声
+
+次の表は、カスタム ニューラル音声機能のリージョン サポートの詳細を示しています。
+
+| 機能 | サポートされているリージョン |
+|---|---|
+| 音声モデル ホスティング | 米国東部、米国西部 2、米国中南部、東南アジア、英国南部、西ヨーロッパ、オーストラリア東部 |
+| リアルタイムの文字 | 米国東部、米国西部 2、米国中南部、東南アジア、英国南部、西ヨーロッパ、オーストラリア東部 |
+| 文字数 (長い音声出力) | 米国東部、西ヨーロッパ、英国南部、東南アジア、インド中部 |
+| カスタム ニューラル トレーニング | 米国東部、英国南部 |

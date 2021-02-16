@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088940"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537798"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
@@ -113,6 +113,9 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>ホストされた非同期 Web API に対する API 要求を作成する
 
 コンテナーとホストされた Web API の両方について、POST 要求を作成する必要があります。 [Postman](text-analytics-how-to-call-api.md)、cURL コマンド、または [Text Analytics for Health のホストされた API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)の **API テスト コンソール** を使用して、POST 要求をすばやく作成し、目的のリージョンのホストされた Web API に送信することができます。 
+
+> [!NOTE]
+> 非同期 `/analyze` と `/health` の両方のエンドポイントは、次のリージョンでのみ使用できます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。  これらのエンドポイントへの要求を成功させるには、これらのリージョンのいずれかでリソースが作成されていることを確認してください。
 
 次に示すのは、Text Analytics for Health API 要求の POST 本文に添付される JSON ファイルの例です。
 

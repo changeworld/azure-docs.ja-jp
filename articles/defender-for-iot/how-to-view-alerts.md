@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4803691a82a97cd2be5fa3beafd4419010e7a9c9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837042"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509073"
 ---
 # <a name="view-alerts"></a>アラートを表示する
 
@@ -84,7 +84,7 @@ ms.locfileid: "97837042"
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-security.png" alt-text="[アラート] 画面のセキュリティ。":::
 
-## <a name="alert-window-options"></a>[アラート] ウィンドウのオプション
+## <a name="alert-page-options"></a>[アラート] ページのオプション
 
 アラート メッセージには、次のアクションが用意されています。
 
@@ -101,6 +101,8 @@ ms.locfileid: "97837042"
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: を選択すると、すべてのアラートを学習および確認します。
 
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: を選択すると、アラートの一覧を CSV ファイルにエクスポートし、エクスポート オプションを選択します。 通常の CSV へのエクスポー トオプションの場合は、 **[アラートのエクスポート]** を選択します。 または、アラートに関する追加情報用に別の行を CSV ファイルに追加する可能性がある場合は、 **[アラートの拡張エクスポート]** を選択します。
+
+## <a name="alert-pop-up-window-options"></a>アラート ポップアップ ウィンドウのオプション
 
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-pdf.png" border="false"::: アイコンを選択すると、アラート レポートを PDF ファイルとしてダウンロードします。
 
