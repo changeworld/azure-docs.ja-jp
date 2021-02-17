@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127483"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979295"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
@@ -27,6 +27,10 @@ BLOB の論理的な削除では、お客様のデータが誤って変更また
 ## <a name="about-soft-delete-for-blobs"></a>BLOB の論理的な削除について
 
 ストレージ アカウントで BLOB の論理的な削除が有効になっている場合は、オブジェクトが削除された後も、指定したデータ保持期間中は復旧することができます。 この保護の範囲は、上書きされたために消去されたすべての BLOB データ (ブロック BLOB、追加 BLOB、ページ BLOB) に及びます。
+
+次の図は、BLOB の論理的な削除が有効になっている場合に、削除された BLOB を復元する方法を示しています。
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="論理的に削除された BLOB を復元する方法を示す図":::
 
 BLOB の論理的な削除は有効になっているが、BLOB のバージョン管理が有効になっていない場合、既存の BLOB またはスナップショット内のデータが削除されると、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 指定された保持期間が経過すると、オブジェクトは完全に削除されます。
 

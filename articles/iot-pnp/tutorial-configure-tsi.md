@@ -1,24 +1,29 @@
 ---
-title: Azure Time Series Insights を使用して Azure IoT プラグ アンド プレイ デバイスのテレメトリを格納および分析する
-description: Time Series Insights 環境を設定し、IoT ハブを接続して、IoT プラグ アンド プレイ デバイスからのテレメトリを表示、分析します。
+title: チュートリアル - Azure Time Series Insights を使用して Azure IoT プラグ アンド プレイ デバイスのテレメトリを格納および分析する
+description: チュートリアル - Time Series Insights 環境を設定し、IoT ハブを接続して、IoT プラグ アンド プレイ デバイスからのテレメトリを表示、分析します。
 author: lyrana
 ms.author: lyhughes
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905089"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834359"
 ---
-# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>プレビュー チュートリアル: Time Series Insights Gen2 環境を作成および構成する
+# <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>チュートリアル:Time Series Insights Gen2 環境を作成および構成する
 
 このチュートリアルでは、[Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) 環境を作成し、IoT プラグ アンド プレイ ソリューションと連携するよう構成する方法について説明します。 Time Series Insights を使用すると、モノのインターネット (IoT) のスケールで時系列データを収集、処理、格納、照会、視覚化できます。
 
-まず、Time Series Insights 環境をプロビジョニングし、ストリーミング イベント ソースとして IoT ハブを接続します。 次に、モデルの同期を実行して、[時系列モデル](../time-series-insights/concepts-model-overview.md)を作成します。 温度コントローラーおよびサーモスタット デバイスに使用した [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) のサンプル モデル ファイルを使用します。
+このチュートリアルでは、次のことを行いました。
+
+> [!div class="checklist"]
+> * Time Series Insights 環境をプロビジョニングし、ストリーミング イベント ソースとして IoT ハブを接続します。
+> * モデルの同期を実行して、[時系列モデル](../time-series-insights/concepts-model-overview.md)を作成します。
+> * 温度コントローラーおよびサーモスタット デバイスに使用した [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) のサンプル モデル ファイルを使用します。
 
 > [!NOTE]
 > この Time Series Insights と IoT プラグ アンド プレイの統合はプレビュー段階です。 DTDL デバイス モデルを Time Series Insights の時系列モデルにマップする方法は変更される可能性があります。 
@@ -222,10 +227,11 @@ Time Series Insights Explorer で、左側のモデル アイコンを選択し�
 
 ![thermostat2 のインスタンスの型を変更する方法を示すスクリーンショット。](./media/tutorial-configure-tsi/charting-values.png)
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-* 間隔のサイズ設定や Y 軸コントロールなど、さまざまなグラフ作成オプションの詳細については、「[Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md)」を参照してください。
-
-* 実際の環境の時系列モデルの詳細な概要については、「[Azure Time Series Insights Gen2 の時系列モデル](../time-series-insights/concepts-model-overview.md)」を参照してください。
-
-* クエリ API と Time Series Expression の構文の詳細については、[Azure Time Series Insights Gen2 クエリ API](/rest/api/time-series-insights/reference-query-apis) に関するページを参照してください。
+> [!div class="nextstepaction"]
+> 間隔のサイズ設定や Y 軸コントロールなど、さまざまなグラフ作成オプションの詳細については、「[Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md)」を参照してください。

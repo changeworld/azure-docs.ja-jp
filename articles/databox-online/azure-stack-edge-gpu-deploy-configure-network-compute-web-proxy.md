@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954650"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594605"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -56,15 +56,13 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
     
     ![ローカル Web UI の [ネットワーク設定] ページ](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. ネットワーク設定を変更するには、ポートを選択し、表示される右側のペインで IP アドレス、サブネット、ゲートウェイ、プライマリ DNS、およびセカンダリ DNS を変更します。 
 
     - ポート 1 を選択すると、静的として事前に構成されていることがわかります。 
 
         ![ローカル Web UI のポート 1 の [ネットワーク設定]](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-3.png)
 
-    - [ポート 2]、[ポート 3]、[ポート 4]、または [ポート 5] を選択した場合、これらのポートはすべて既定で DHCP と構成されます。
+    - [ポート 2]、[ポート 3]、[ポート 4]、または [ポート 5] を選択した場合、これらのポートはすべて既定で DHCP として構成されます。
 
         ![ローカル Web UI のポート 3 の [ネットワーク設定]](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-4.png)
 
@@ -74,6 +72,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
    * DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
    * 使用するネットワーク インターフェイスは、IPv4 として構成できます。
    * 25 Gbps インターフェイスでは、RDMA (Remote Direct Access Memory) モードを iWarp または RoCE (RDMA over Converged Ethernet) に設定できます。 低待機時間が主な要件であり、スケーラビリティが問題にならない場合は、RoCE を使用します。 待機時間が重要な要件であり、使いやすさとスケーラビリティも優先度が高い場合は、iWARP が最適な候補です。
+   * ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。 
    * ポートのシリアル番号は、ノードのシリアル番号に対応しています。
 
     デバイス ネットワークが構成されると、ページは以下のように更新されます。
@@ -81,12 +80,11 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
     ![ローカル Web UI の [ネットワーク設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * デバイスに接続する別の IP アドレスがない限り、ネットワーク インターフェイスのローカル IP アドレスを静的から DHCP に切り替えないことをお勧めします。 あるネットワーク インターフェイスを使用していて、DHCP に切り替えた場合、DHCP アドレスを判別する方法がありません。 DHCP アドレスに変更する場合は、デバイスがサービスでアクティブになるまで待機してから変更してください。 その後、サービスについて Azure portal の **[デバイスのプロパティ]** にすべてのアダプターの IP が表示されます。
+     > [!NOTE]
+     > デバイスに接続する別の IP アドレスがない限り、ネットワーク インターフェイスのローカル IP アドレスを静的から DHCP に切り替えないことをお勧めします。 あるネットワーク インターフェイスを使用していて、DHCP に切り替えた場合、DHCP アドレスを判別する方法がありません。 DHCP アドレスに変更する場合は、デバイスがサービスでアクティブになるまで待機してから変更してください。 その後、サービスについて Azure portal の **[デバイスのプロパティ]** にすべてのアダプターの IP が表示されます。
 
 
-    ネットワーク設定を構成して適用したら、[次へ] を選択します。コンピューティング ネットワークを構成するためのコンピューティングを実行します。
+    ネットワーク設定を構成して適用したら、コンピューティング ネットワークを構成するために **[Next: Compute]\(次へ: コンピューティング\)** を選択します。
 
 ## <a name="enable-compute-network"></a>コンピューティング ネットワークを有効にする
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
 ms.author: ginle
-ms.openlocfilehash: ae78aa80594e46b02d77adcafed961e801780d4f
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6dff16f4a68f3db4ff841141e7d7025e794cca8f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430261"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100105183"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>保存状態のカスタマー マネージド キーを構成する
 
@@ -26,7 +26,7 @@ Azure では通常、これを実現するために、お客様の Azure Key Vau
 - [Azure Key Vault インスタンスにアクセス ポリシーを追加する](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance)
 - [Azure Key Vault でキーを生成する](../cosmos-db/how-to-setup-cmk.md#generate-a-key-in-azure-key-vault)
 
-## <a name="specify-the-azure-key-vault-key"></a>Azure Key Vault キーを指定する
+## <a name="using-azure-portal"></a>Azure Portal の使用
 
 Azure portal で Azure API for FHIR アカウントを作成すると、[追加の設定] タブの [データベースの設定] に [データの暗号化] 構成オプションが表示されます。既定では、[サービス マネージド キー] オプションが選択されます。 
 
@@ -44,9 +44,100 @@ Azure portal で Azure API for FHIR アカウントを作成すると、[追加�
 
 さらに、指定したキーの新しいバージョンを作成することができます。その後、サービスが中断されることなく、既存のデータはその新しいバージョンで暗号化されます。 また、キーへのアクセス権を削除することで、データへのアクセス権を削除することもできます。 キーが無効になると、クエリがエラーになります。 キーが再度有効になると、クエリが再び正常に実行されるようになります。
 
+
+
+
+## <a name="using-azure-powershell"></a>Azure PowerShell の使用
+
+Azure Key Vault キー URI を使用して、次の PowerShell コマンドを実行することで、CMK を構成できます。
+
+```powershell
+New-AzHealthcareApisService
+    -Name "myService"
+    -Kind "fhir-R4"
+    -ResourceGroupName "myResourceGroup"
+    -Location "westus2"
+    -CosmosKeyVaultKeyUri "https://<my-vault>.vault.azure.net/keys/<my-key>"
+```
+
+## <a name="using-azure-cli"></a>Azure CLI の使用
+
+PowerShell の方法と同様に、`key-vault-key-uri` パラメーターで Azure Key Vault キー URI を渡し、次の CLI コマンドを実行することで、CMK を構成できます。 
+
+```azurecli-interactive
+az healthcareapis service create
+    --resource-group "myResourceGroup"
+    --resource-name "myResourceName"
+    --kind "fhir-R4"
+    --location "westus2"
+    --cosmos-db-configuration key-vault-key-uri="https://<my-vault>.vault.azure.net/keys/<my-key>"
+
+```
+## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+
+**properties** オブジェクトの **keyVaultKeyUri** プロパティで Azure Key Vault キー URI を渡すことで、CMK を構成できます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "services_myService_name": {
+            "defaultValue": "myService",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.HealthcareApis/services",
+            "apiVersion": "2020-03-30",
+            "name": "[parameters('services_myService_name')]",
+            "location": "westus2",
+            "kind": "fhir-R4",
+            "properties": {
+                "accessPolicies": [],
+                "cosmosDbConfiguration": {
+                    "offerThroughput": 400,
+                    "keyVaultKeyUri": "https://<my-vault>.vault.azure.net/keys/<my-key>"
+                },
+                "authenticationConfiguration": {
+                    "authority": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47",
+                    "audience": "[concat('https://', parameters('services_myService_name'), '.azurehealthcareapis.com')]",
+                    "smartProxyEnabled": false
+                },
+                "corsConfiguration": {
+                    "origins": [],
+                    "headers": [],
+                    "methods": [],
+                    "maxAge": 0,
+                    "allowCredentials": false
+                }
+            }
+        }
+    ]
+}
+```
+
+次の PowerShell スクリプトを使用して、テンプレートをデプロイできます。
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$accountLocation = "West US 2"
+$keyVaultKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-key>"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile "deploy.json" `
+    -accountName $accountName `
+    -location $accountLocation `
+    -keyVaultKeyUri $keyVaultKeyUri
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、保存状態のカスタマー マネージド キーを構成する方法について説明しました。 この後は、Azure Cosmos DB の FAQ セクションを参照してください。 
+この記事では、Azure portal、PowerShell、CLI、Resource Manager テンプレートを使用して、保存時のカスタマー マネージド キーを構成する方法について説明しました。 その他の質問については、Azure Cosmos DB の FAQ セクションをご覧ください。 
  
 >[!div class="nextstepaction"]
 >[Cosmos DB: カスタマー マネージド キーを設定する方法](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#frequently-asked-questions)

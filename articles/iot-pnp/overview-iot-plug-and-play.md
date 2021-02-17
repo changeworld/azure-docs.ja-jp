@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486298"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594571"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT プラグ アンド プレイとは
 
@@ -45,11 +45,13 @@ IoT プラグ アンド プレイは、次の 2 種類の開発者にとって�
 
 ## <a name="use-iot-plug-and-play-devices"></a>IoT プラグ アンド プレイ デバイスを使用する
 
-ソリューション ビルダーは、IoT プラグ アンド プレイ デバイスを使用する、クラウドでホストされた IoT ソリューションを開発できます。 [IoT Hub](../iot-hub/about-iot-hub.md) を使用します。これは、マネージド クラウド サービスであり、ご利用の IoT アプリケーションとデバイスとの間で、セキュリティで保護された双方向通信を行うためのメッセージ ハブとして機能します。
+ソリューション ビルダーは、[IoT Central](../iot-central/core/overview-iot-central.md) または [IoT Hub](../iot-hub/about-iot-hub.md) を使用して、IoT プラグ アンド プレイ デバイスを使用する、クラウドでホストされた IoT ソリューションを開発できます。
 
-IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると、[Azure IoT エクスプローラー](./howto-use-iot-explorer.md) ツールを使用することで、インターフェイス内で定義されている、モデルを構成するテレメトリ、プロパティ、およびコマンドを表示できます。
+IoT Central の Web UI では、デバイスの状態を監視し、ルールを作成し、ライフ サイクル全体を通して何百万ものデバイスとそのデータを管理することができます。 IoT プラグ アンド プレイ デバイスは、カスタマイズ可能なダッシュボードを使用してデバイスを監視および制御できる IoT Central アプリケーションに直接接続します。 IoT Central Web UI のデバイス テンプレートを使用して、DTDL モデルを作成および編集することもできます。
 
-Windows または Linux ゲートウェイに接続されている既存のセンサーがある場合は、[IoT プラグ アンド プレイ ブリッジ](./concepts-iot-pnp-bridge.md)を使用してこれらのセンサーを接続し、([サポートされているプロトコル](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)用の) デバイス ソフトウェア/ファームウェアを記述することなく IoT プラグ アンド プレイ デバイスを作成することができます。
+マネージド クラウド サービスである IoT Hub は、ご利用の IoT アプリケーションとデバイスとの間で、セキュリティで保護された双方向通信を行うためのメッセージ ハブとして機能します。 IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると、[Azure IoT エクスプローラー](./howto-use-iot-explorer.md) ツールを使用することで、DTDL モデル内で定義されているテレメトリ、プロパティ、およびコマンドを表示できます。
+
+Windows または Linux ゲートウェイに接続されている既存のセンサーがある場合は、[IoT プラグ アンド プレイ ブリッジ](./concepts-iot-pnp-bridge.md)を使用してこれらのセンサーを接続し、([サポートされているプロトコル](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)用の) デバイス ソフトウェアまたはファームウェアを記述することなく IoT プラグ アンド プレイ デバイスを作成することができます。
 
 ## <a name="develop-an-iot-device-application"></a>IoT デバイス アプリケーションを開発する
 
@@ -73,4 +75,4 @@ Windows または Linux ゲートウェイに接続されている既存のセ�
 IoT プラグ アンド プレイの概要を説明したので、次の手順では、クイックスタートのいずれかを試してみましょう。
 
 - [デバイスを IoT Hub に接続する](./quickstart-connect-device.md)
-- [ソリューションからのデバイスの操作](./quickstart-service.md)
+- [ソリューションからデバイスを操作する](./quickstart-service.md)

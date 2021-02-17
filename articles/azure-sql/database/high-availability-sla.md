@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: sashan
-ms.author: sashan
-ms.reviewer: sstein, sashan
+author: emlisa
+ms.author: emlisa
+ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095442"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593420"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ General Purpose レベル向けのゾーン冗長構成には、次の 2 つの�
 ![General Purpose 向けのゾーン冗長構成](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> ゾーン冗長データベースがサポートされているリージョンの最新情報については、「[リージョン別のサービスのサポート](../../availability-zones/az-region.md)」を参照してください。 ゾーン冗長構成は Gen5 コンピューティング ハードウェアが選択されている場合のみ利用できます。 この機能は、SQL Managed Instance では使用できません。
+> ゾーン冗長構成は Gen5 コンピューティング ハードウェアが選択されている場合のみ利用できます。 この機能は、SQL Managed Instance では使用できません。 General Purpose レベルのゾーン冗長構成は、次のリージョンでのみ利用できます。米国東部、米国東部 2、米国西部 2、北ヨーロッパ、西ヨーロッパ、東南アジア、オーストラリア東部、東日本、英国南部、およびフランス中部。
 
 > [!NOTE]
 > 80 個の仮想コアを備えたサイズの General Purpose データベースでは、ゾーン冗長構成によるパフォーマンスの低下が発生する可能性があります。 また、バックアップ、復元、データベース コピー、Geo DR のリレーションシップの設定などの操作では、1 TB を超える単一データベースのパフォーマンスが低下する可能性があります。 

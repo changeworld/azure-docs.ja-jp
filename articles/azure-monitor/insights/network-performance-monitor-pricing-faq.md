@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539654"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832880"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
 
 お客様のフィードバックを参考にして、最近、Azure のさまざまな監視サービスに[新しい価格エクスペリエンス](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)が導入されました。 この記事では、Azure [Network Performance Monitor](../../networking/network-monitoring-overview.md) (NPM) に関連する価格の変更を、読みやすい質問と回答の形式で説明します。
 
@@ -26,7 +29,7 @@ Network Performance Monitor は 3 つのコンポーネントで構成されま�
 
 ## <a name="performance-monitor"></a>パフォーマンス モニター
 
-**古いモデルではパフォーマンス モニターの使用量はどのように請求されていましたか。**
+**古いモデルではパフォーマンス モニターの使用量はどのように請求されていましたか?**
 
 NPM の請求は、以下の 2 つのコンポーネントの使用量と消費量に基づいていました。
 * **ノード数**:すべての代理トランザクションは、ノードで開始して終了します。 ノードはエージェントまたは Microsoft Monitoring Agent とも呼ばれます。
@@ -34,14 +37,14 @@ NPM の請求は、以下の 2 つのコンポーネントの使用量と消費�
 
 古いモデルの請求額は、ノードの数と、生成されるデータの量に基づいて計算されました。 
 
-**新しいモデルではパフォーマンス モニターの使用量はどのように課金されますか。**
+**新しいモデルではパフォーマンス モニターの使用量はどのように課金されますか?**
 
 NPM のパフォーマンス モニター機能は、次の組み合わせに基づいて課金されるようになりました。 
 
 * 監視対象のサブネット リンク数
 * データ ボリューム
 
-**サブネット リンクとは何ですか。**
+**サブネット リンクとは何ですか?**
 
 パフォーマンス モニターは、ネットワーク上の複数の場所の間の接続を監視します。 あるサブネット上のノードまたはエージェントのグループと、別のサブネット上のノードのグループの間の接続を、サブネット リンクと呼びます。
 
@@ -49,11 +52,11 @@ NPM のパフォーマンス モニター機能は、次の組み合わせに基
 
 いいえ。 請求の目的では、サブネット A からサブネット B へのすべての接続が 1 つのサブネット リンクにまとめられます。 請求は 1 つの接続について行われます。 パフォーマンス モニターは引き続き、各サブネット上のさまざまなエージェントの間の接続を監視します。
 
-**サブネット リンクの監視にはどのようなコストがかかりますか。**
+**サブネット リンクの監視にはどのようなコストがかかりますか?**
 
 1 つのサブネット リンクの 1 か月間の監視コストについては、「[Ping メッシュ](https://azure.microsoft.com/pricing/details/network-watcher/)」セクションをご覧ください。
 
-**パフォーマンス モニターが生成するデータについては、どのように課金されますか。**
+**パフォーマンス モニターが生成するデータについては、どのように課金されますか?**
 
 データ インジェスト (Azure Monitor での Log Analytics ワークスペースへのデータのアップロード、処理、インデックス付け) の料金については、[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)で、Log Analytics の「データ インジェスト」セクションをご覧ください。 データ保有 (つまり、最初の月を超える、顧客のオプションで保持されるデータ) の料金については、「データ保有期間」セクションの[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)でもご確認いただけます。
 
@@ -68,7 +71,7 @@ ExpressRoute モニターの料金は、監視中に生成されたデータの�
 
 回線の数またはピアリングの種類 (プライベート ピアリング、Microsoft ピアリングなど) に基づいて課金されることはありません。 前に説明したように、データの量に基づいて課金されます。
 
-**ExpressRoute で 1 つの回線を監視する場合、生成されるデータの量はどれくらいですか。**
+**ExpressRoute で 1 つの回線を監視する場合、生成されるデータの量はどれくらいですか?**
 
 ExpressRoute でプライベート ピアリング接続を監視する場合、1 か月に生成されるデータの量は次のようになります。
 
@@ -84,7 +87,7 @@ ExpressRoute でプライベート ピアリング接続を監視する場合、
 
 上のテーブルに従って、50 パーセンタイルのお客様は、192 MB のデータに対して課金されます。 最初の月は 2.30 米国ドル/GB なので、回線の監視にかかるコストは 0.43 米国ドル (= 192 * 2.30 / 1024) です。
 
-**データ量の変動にはどのような理由がありますか。**
+**データ量の変動にはどのような理由がありますか?**
 
 生成される監視データの量は、次のような複数の要因に依存します。
 * エージェント数。 エージェントの数が多いほど、障害分離の精度が向上します。
@@ -109,6 +112,6 @@ ExpressRoute でプライベート ピアリング接続を監視する場合、
 
 1 か月間のエンドポイント監視コストについては、「[接続監視](https://azure.microsoft.com/pricing/details/network-watcher/)」セクションをご覧ください。 データの料金については、「データ インジェスト」セクションで、Log Analytics の[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)をご覧ください。
 
-## <a name="references"></a>References
+## <a name="references"></a>関連項目
 
-[Log Analytics の価格に関する FAQ](https://azure.microsoft.com/pricing/details/log-analytics/):FAQ のセクションには、Free レベル、ノード単位の価格、価格に関するその他の詳細についての情報があります。
+[Log Analytics の価格に関する FAQ](https://azure.microsoft.com/pricing/details/log-analytics/) - FAQ のセクションには、Free レベル、ノード単位の価格、価格に関するその他の詳細についての情報があります。

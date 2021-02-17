@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 614a13a140453e3c7ed55a7fc0f9173626ad2f2f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856725"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627713"
 ---
 1. **[VPN サイトの接続]** を選択して、 **[サイトの接続]** ページを開きます。
 
@@ -26,9 +26,9 @@ ms.locfileid: "91856725"
    * **[Propagate Default Route]\(既定のルートを伝達する\)** の適切なオプションを選択します。 **[有効]** オプションを選択すると、仮想ハブは、学習した既定のルートをこの接続に伝達できます。 このフラグは、Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブにより既定のルートが既に学習されている場合、または接続されている別のサイトでトンネリングが強制的に有効にされている場合のみ、接続に対して既定のルートの伝達を有効にします。 既定のルートの起点は Virtual WAN ハブ内にありません。
 
 2. **[接続]** を選択します。
-3. 数分以内に、サイトに接続と接続性の状態が表示されます。
+3. 数分後、サイトに接続と接続性の状態が表示されます。
 
-   ![スクリーンショットには、VPN サイト間接続と接続状態が示されています。](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![スクリーンショットには、サイト間接続と接続性の状態が示されています。](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **接続の状態:** これは、VPN サイトを Azure ハブの VPN ゲートウェイに接続する接続の Azure リソースの状態です。 このコントロール プレーンの操作が正常に終了すると、Azure VPN ゲートウェイとオンプレミスの VPN デバイスは、接続の確立に進みます。
 

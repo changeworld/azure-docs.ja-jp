@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 915aca5f7400496aacb3c3cf248120dff39d747c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465029"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594453"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R のネットワークを構成する
 
@@ -126,6 +126,7 @@ ms.locfileid: "96465029"
    - ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
    - DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
    - 使用するネットワーク インターフェイスは、IPv4 として構成できます。
+   - ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。
    - ポートのシリアル番号は、ノードのシリアル番号に対応しています。 K シリーズ デバイスの場合、シリアル番号は 1 つだけ表示されます。
 
      >[!NOTE] 
@@ -152,7 +153,7 @@ ms.locfileid: "96465029"
     > Azure Stack Edge の Kubernetes では、172.27.0.0/16 サブネットがポッドに使用され、172.28.0.0/16 サブネットがサービスに使用されています。 これらがご利用のネットワークで使用されていないことを確認してください。 これらのサブネットがご利用のネットワークで既に使用されている場合は、デバイスの PowerShell インターフェイスから `Set-HcsKubeClusterNetworkInfo` コマンドレットを実行することで、これらのサブネットを変更できます。 詳細については、「[Kubernetes ポッドとサービス サブネットの変更](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets)」を参照してください。
 
 
-1. **Kubernetes 外部サービス IP** を割り当てます。 これらは、負荷分散 IP アドレスでもあります。 これらの連続した IP アドレスは、Kubernetes クラスターの外部に公開するサービス用であり、公開するサービスの数に応じて静的 IP 範囲を指定します。 
+1. **Kubernetes 外部サービス IP** を割り当てます。 これらは、負荷分散 IP アドレスでもあります。 これらの連続した IP アドレスは、Kubernetes クラスターの外部に公開するサービス用です。公開するサービスの数に応じて、静的 IP 範囲を指定します。 
     
     > [!IMPORTANT]
     > Azure Stack Edge Mini R Hub サービスからコンピューティング モジュールにアクセスするには、最低 1 つの IP アドレスを指定することを強くお勧めします。 必要に応じて、クラスターの外部からアクセスする必要がある他のサービスまたは IoT Edge モジュールに追加の IP アドレス (サービスやモジュールごとに 1 つ) を指定することもできます。 サービス IP アドレスは後で更新できます。 
@@ -161,14 +162,14 @@ ms.locfileid: "96465029"
 
     ![ローカル UI の [コンピューティング] ページ 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
-1. 構成の適用には数分かかり、ブラウザーの更新が必要になる場合があります。 指定したポートでコンピューティングが有効になっていることを確認できます。 
+1. 構成の適用には数分かかり、ブラウザーを最新の情報に更新することが必要になる場合があります。 指定したポートでコンピューティングが有効になっていることを確認できます。 
  
     ![ローカル UI の [コンピューティング] ページ 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-4.png)
 
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシを構成する
+## <a name="configure-web-proxy"></a>Web プロキシの
 
 これはオプション構成です。
 

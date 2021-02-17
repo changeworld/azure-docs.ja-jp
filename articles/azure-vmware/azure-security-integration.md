@@ -2,13 +2,13 @@
 title: Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 description: Azure Security Center の 1 つのダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護する方法について説明します。
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061466"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584959"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
@@ -36,7 +36,12 @@ Log Analytics ワークスペースによってログが収集されたら、Azu
 
 - Azure ネイティブ サービスは、Azure、Azure VMware Solution、オンプレミス サービス内にあるハイブリッド環境のセキュリティために使用できます。
 - Log Analytics ワークスペースを使用して、データまたはログを単一ポイントに収集し、同じデータを異なる Azure ネイティブ サービスに提示することができます。
-- Azure Security Center には、ファイル整合性の監視、ファイルレス攻撃の検出、オペレーティング システム パッチの評価、セキュリティに関する誤った構成の評価、エンドポイント保護の評価などのセキュリティ機能が用意されています。
+- Azure Security Center には、次のようなさまざまな機能が用意されています。
+    - ファイルの整合性の監視
+    - ファイルレス攻撃の検出
+    - オペレーティング システムのパッチ評価 
+    - セキュリティの誤った構成の評価
+    - エンドポイント保護の評価
 - Azure Sentinel では、以下のことができます。
     - クラウドの規模でデータを収集します。オンプレミスと複数のクラウド内の両方で、すべてのユーザー、デバイス、アプリケーション、インフラストラクチャが対象です。
     - 以前は検出されなかった脅威を検出します。
@@ -183,7 +188,7 @@ Azure Sentinel は、Log Analytics ワークスペースの上に構築されて
 
 6. **[インシデントの設定]** タブで、 **[この分析ルールによってトリガーされるアラートからインシデントを作成する]** を有効にして、 **[次へ:自動応答>]** を選択します。
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel で新しいルールを作成するための分析ルール ウィザードのスクリーンショット。[この分析ルールによってトリガーされるアラートからインシデントを作成する] が有効になっていることを示しています。":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel で新しいルールを作成するための分析ルール ウィザードのスクリーンショット。[この分析ルールによってトリガーされるアラートからインシデントを作成する] が有効として表示されています。":::
 
 7. **Next:確認>** を選択します。
 
@@ -235,6 +240,8 @@ Windows サーバーへのサインインの試みが 3 回失敗すると、作
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用方法を確認します。
-- [Azure Defender](../security-center/azure-defender.md) によって提供される幅広い保護について確認します。
-- [Azure Sentinel の高度なマルチステージ攻撃の検出](../azure-monitor/learn/quick-create-workspace.md)について確認します。
+Azure VMware Solution VM を保護する方法について説明したので、次のことについて学習します。
+
+- [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用。
+- [Azure Sentinel での高度なマルチステージ攻撃の検出](../azure-monitor/learn/quick-create-workspace.md)。
+- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
