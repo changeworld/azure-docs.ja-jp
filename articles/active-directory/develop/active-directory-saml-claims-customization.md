@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756072"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102701"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -81,10 +81,8 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 
 また、Azure AD で定義したあらゆるクレームに定数 (静的) 値を割り当てることができます。 定数値は次の手順で割り当ててください。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> の **[ユーザー属性とクレーム]** セクションで、**編集** アイコンをクリックしてクレームを編集します。
-
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> の **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、**編集** アイコンをクリックしてクレームを編集ます。
 1. 変更する必要があるクレームをクリックします。
-
 1. 組織に応じて **[ソース属性]** に引用符を付けずに定数値を入力し、 **[保存]** をクリックします。
 
     ![Azure portal の [Org Attributes & Claims]\(組織の属性と要求\) セクション](./media/active-directory-saml-claims-customization/organization-attribute.png)

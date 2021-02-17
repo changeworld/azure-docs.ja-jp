@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537308"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097638"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティの概要
 
@@ -113,12 +113,6 @@ Azure Cognitive Search では、Resource Manager を使用して、サービス�
 
 > [!Note]
 > Azure 全体のメカニズムを使用して、サブスクリプションまたはリソースをロックし、管理者権限を持つユーザーが検索サービスを誤って、または許可なく削除しないようにすることができます。 詳細については、[リソースのロックによる予期せぬ削除の防止](../azure-resource-manager/management/lock-resources.md)に関するページを参照してください。
-
-## <a name="threat-protection"></a>脅威の防止
-
-検索サービスのコンテンツへのアクセスは、クエリを通じてのみ行われます。 検索サービスがクエリ攻撃の対象である場合、システムがピーク時の容量に近づくにつれて、クエリが削除されます。 
-
-スロットルの動作は API によって異なります。 クエリ API (検索/提案/オートコンプリート) とインデックス作成 API は、サービスの負荷に基づいて動的に調整されます。 インデックス API とサービス操作 API には、静的な要求レート制限があります。 [スロットル制限](search-limits-quotas-capacity.md#throttling-limits)で、静的なレート要求の制限を確認できます。 スロットルの動作の詳細については、[クエリ要求の監視](search-monitor-queries.md)に関する記事を参照してください。
 
 <a name="encryption"></a>
 

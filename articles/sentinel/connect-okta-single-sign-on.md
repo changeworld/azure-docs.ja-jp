@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 05a9b8009d896a2ee87df3e1c4493d249a887566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e76aea8a3fc59827664900a6d5686e2e725e258d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083924"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093117"
 ---
 # <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>Azure 関数を使用して Okta シングル サインオンを Azure Sentinel に接続する
 
@@ -40,7 +40,7 @@ Azure Functions は、Okta シングル サインオンから直接イベント�
 
 1. **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-1. **Okta シングル サインオン**ページの指示に従います。
+1. **Okta シングル サインオン** ページの指示に従います。
 
 ## <a name="find-your-data"></a>データの検索
 
@@ -48,7 +48,7 @@ Azure Functions は、Okta シングル サインオンから直接イベント�
 
 ## <a name="validate-connectivity"></a>接続の検証
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

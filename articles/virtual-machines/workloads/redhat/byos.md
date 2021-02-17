@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872894"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391022"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -30,9 +30,6 @@ Red Hat Enterprise Linux (RHEL) イメージは、従量課金制またはサブ
 - Red Hat Gold Image からプロビジョニングされた VM は、RHEL 従量課金制イメージに関連付けられている RHEL 料金がかかりません。
 - イメージには、権利がありません。 Red Hat から直接更新プログラムを取得するために、Red Hat のサブスクリプション マネージャーを使用して VM を登録およびサブスクライブする必要があります。
 - [Azure ハイブリッド特典](../../linux/azure-hybrid-benefit-linux.md)を使用して、従量課金制イメージから BYOS に切り替えることができます。 ただし、最初にデプロイされた BYOS から従量課金制に Linux イメージの課金モデルを切り替えることはできません。 課金モデルを BYOS から従量課金制に切り替えるには、それぞれのイメージから VM を再デプロイする必要があります。
-
->[!NOTE]
-> 現在、第 2 世代の RHEL BYOS イメージは、マーケットプレースのオファーから入手できません。 第 2 世代の RHEL BYOS イメージが必要な場合は、Red Hat サブスクリプション管理の Cloud Access ダッシュボードにアクセスしてください。 詳細については、[Red Hat のドキュメント](https://access.redhat.com/articles/4847681)を参照してください。
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Red Hat Gold Image にアクセスするための要件と条件
 

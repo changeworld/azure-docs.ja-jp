@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805797"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546807"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -93,9 +93,9 @@ Azure Resource Manager に接続するには、署名チェーンとエンドポ
 
 テストと開発に使用する場合にのみ、Windows PowerShell を使用して、ローカル システムで証明書を作成できます。 クライアントの証明書を作成するときは、次のガイドラインに従ってください。
 
-1. 最初に、署名チェーンのルート証明書を作成する必要があります。 詳細については、「[署名チェーン証明書を作成する](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate)」の手順を参照してください。
+1. 最初に、署名チェーンのルート証明書を作成する必要があります。 詳細については、「[署名チェーン証明書を作成する](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate)」の手順を参照してください。
 
-2. 次に、BLOB と Azure Resource Manager のエンドポイント証明書を作成できます。 これらのエンドポイントは、ローカル Web UI の **[デバイス]** ページから取得できます。 [エンドポイント証明書の作成](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates)手順を参照してください。
+2. 次に、BLOB と Azure Resource Manager のエンドポイント証明書を作成できます。 これらのエンドポイントは、ローカル Web UI の **[デバイス]** ページから取得できます。 [エンドポイント証明書の作成](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates)手順を参照してください。
 
 3. これらのすべての証明書について、サブジェクト名とサブジェクトの別名が、次のガイドラインに準拠していることを確認します。
 
@@ -105,26 +105,26 @@ Azure Resource Manager に接続するには、署名チェーンとエンドポ
     |BLOB ストレージ|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |両方のエンドポイントに対するマルチ SAN の単一の証明書|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-証明書の詳細については、[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)方法に関するページを参照してください。
+証明書の詳細については、[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)方法に関するページを参照してください。
 
 ### <a name="upload-certificates-on-the-device"></a>デバイスに証明書をアップロードする
 
 前の手順で作成した証明書は、クライアントの個人用ストアに保存されます。 これらの証明書は、デバイスにアップロードできるように、クライアントで適切なフォーマット ファイルにエクスポートする必要があります。
 
-1. ルート証明書は、 *.cer* ファイル拡張子を持つ DER フォーマット ファイルとしてエクスポートする必要があります。 詳細な手順については、[証明書を .cer フォーマット ファイルとしてエクスポート](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format)に関するセクションを参照してください。
+1. ルート証明書は、 *.cer* ファイル拡張子を持つ DER フォーマット ファイルとしてエクスポートする必要があります。 詳細な手順については、[証明書を .cer フォーマット ファイルとしてエクスポート](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format)に関するセクションを参照してください。
 
-2. エンドポイント証明書は、秘密キーを使用して *.pfx* ファイルとしてエクスポートする必要があります。 詳細な手順については、[秘密キーを使用して証明書を .pfx ファイルとしてエクスポート](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
+2. エンドポイント証明書は、秘密キーを使用して *.pfx* ファイルとしてエクスポートする必要があります。 詳細な手順については、[秘密キーを使用して証明書を .pfx ファイルとしてエクスポート](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
 
-3. 次に、ローカル Web UI の **[証明書]** ページの **[+ 証明書の追加]** オプションを使用して、ルート証明書とエンドポイント証明書をデバイスにアップロードします。 証明書をアップロードするには、「[証明書のアップロード](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)」の手順に従います。
+3. 次に、ローカル Web UI の **[証明書]** ページの **[+ 証明書の追加]** オプションを使用して、ルート証明書とエンドポイント証明書をデバイスにアップロードします。 証明書をアップロードするには、「[証明書のアップロード](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)」の手順に従います。
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>Azure PowerShell を実行しているクライアントで証明書をインポートする
 
 Azure Resource Manager API を呼び出す Windows クライアントで、デバイスとの信頼関係を確立する必要があります。 このためには、前の手順で作成した証明書を、Windows クライアントの適切な証明書ストアにインポートする必要があります。
 
-1. *.cer* 拡張子を持つ DER 形式としてエクスポートしたルート証明書は、クライアント システムの信頼されたルート証明機関にインポートされるはずです。 詳細な手順については、[信頼されたルート証明機関ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
+1. *.cer* 拡張子を持つ DER 形式としてエクスポートしたルート証明書は、クライアント システムの信頼されたルート証明機関にインポートされるはずです。 詳細な手順については、[信頼されたルート証明機関ストアへの証明書のインポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
 
-2. *.pfx* としてエクスポートしたエンドポイント証明書は、 *.cer* としてエクスポートする必要があります。 この *.cer* は、お使いのシステム上の **個人用** 証明書ストアにインポートされます。 詳細な手順については、[個人用ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
+2. *.pfx* としてエクスポートしたエンドポイント証明書は、 *.cer* としてエクスポートする必要があります。 この *.cer* は、お使いのシステム上の **個人用** 証明書ストアにインポートされます。 詳細な手順については、[個人用ストアへの証明書のインポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
 
 ## <a name="step-3-install-powershell-on-the-client"></a>手順 3:クライアントに PowerShell をインストールする 
 

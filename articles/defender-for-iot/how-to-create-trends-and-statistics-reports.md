@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: c28e2f1c24d39ceb915be9f4f6f222d70de9ee73
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509488"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522225"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>センサーの傾向と統計のレポート
 
@@ -93,7 +93,7 @@ ms.locfileid: "99509488"
 
 既定では、過去 7 日間の検出結果が表示されます。 フィルター ツールを使用してこの範囲を変更できます。 たとえば、フリー テキスト検索です。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [リスク評価レポート](how-to-create-risk-assessment-reports.md)
 [センサー データ マイニング クエリ](how-to-create-data-mining-queries.md)
