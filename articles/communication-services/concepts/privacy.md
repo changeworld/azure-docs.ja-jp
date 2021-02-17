@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572035"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
@@ -73,7 +73,7 @@ Azure Communication Services では、Communication Services リソースに関�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor とログ分析
 
-Azure Communication Services は、サービスの動作の正常性と使用状況を把握するためにログ データを Azure Monitor に送ります。 これらのログには、フィールド データとして Communication Services の ID や電話番号が含まれているものもあります。 個人データである可能性のあるデータを削除するには、[Azure Monitor に対してこちらの手順を使用](../../azure-monitor/platform/personal-data-mgmt.md)してください。 また、[Azure Monitor で既定の保持期間](../../azure-monitor/platform/manage-cost-storage.md)を構成することもできます。
+Azure Communication Services は、サービスの動作の正常性と使用状況を把握するためにログ データを Azure Monitor に送ります。 これらのログには、フィールド データとして Communication Services の ID や電話番号が含まれているものもあります。 個人データである可能性のあるデータを削除するには、[Azure Monitor に対してこちらの手順を使用](../../azure-monitor/logs/personal-data-mgmt.md)してください。 また、[Azure Monitor で既定の保持期間](../../azure-monitor/logs/manage-cost-storage.md)を構成することもできます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
