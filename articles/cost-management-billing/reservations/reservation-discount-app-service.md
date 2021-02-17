@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577395"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369732"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Azure App Service の Premium v3 インスタンスと Isolated スタンプに予約割引を適用する方法
 
@@ -40,10 +40,6 @@ Azure 予約割引は、実行中の Premium v3 インスタンスに 1 時間�
 4.  Hour 4 では、インスタンス 1 の実行時間が 0.5 時間、インスタンス 2 の実行時間が 1 時間です。 インスタンス 1 は予約購入分で全額充当されます。またインスタンス 2 の 0.5 時間も充当されます。 残りの 0.5 時間については従量課金制の料金が発生します。
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[予約の使用状況](understand-reserved-instance-usage-ea.md)に関するページを参照してください。
-
-### <a name="discount-can-apply-to-different-sizes"></a>さまざまなサイズに割引を適用できる
-
-Premium v3 予約インスタンスを購入するときに、 **[最適化の対象: インスタンス サイズの柔軟性]** を選択した場合、割引範囲は、選択した Premium v3 インスタンスのサイズに適用されます。 また、同じシリーズのインスタンス サイズの柔軟性グループに存在する他のインスタンス サイズにも適用できます。
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>Isolated スタンプに予約割引を適用する方法
 
