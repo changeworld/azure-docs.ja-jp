@@ -3,14 +3,14 @@ title: テンプレート デプロイの what-if
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/05/2021
 ms.author: tomfitz
-ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673972"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591626"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -21,10 +21,6 @@ what-if 操作は Azure PowerShell、Azure CLI、または REST API 操作で使
 ## <a name="install-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする
 
 PowerShell で What-if を使用するには、**Az モジュールの 4.2 以降** のバージョンが必要です。
-
-ただし、必要なモジュールをインストールする前に、PowerShell Core (6.x または 7.x) があることを確認してください。 PowerShell 5.x 以前を使用している場合は [PowerShell](/powershell/scripting/install/installing-powershell) のバージョンを更新してください。 必要なモジュールを PowerShell 5.x 以前にインストールすることはできません。
-
-### <a name="install-latest-version"></a>最新バージョンをインストールする
 
 モジュールをインストールするには、次を使用します。
 
@@ -326,7 +322,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 what-if 操作では、[デプロイ モード](deployment-modes.md)の使用がサポートされています。 完全モードに設定すると、テンプレートに含まれていないリソースは削除されます。 次の例では、[リソースが定義されていないテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)を完全モードでデプロイします。
 
-テンプレートをデプロイする前に変更のプレビューを表示するには、デプロイ コマンドで confirm スイッチ パラメーターを使用します。 変更が期待通りである場合は、デプロイを完了することを確認します。
+テンプレートをデプロイする前に変更のプレビューを表示するには、デプロイ コマンドで confirm スイッチ パラメーターを使用します。 変更が期待どおりの場合は、デプロイを完了すると応答します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0fcea6a44f5379ff3da5b348ae45486be6c2516a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045514"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831316"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
@@ -33,15 +33,22 @@ Azure Firewall を使用する場合は、__宛先ネットワーク アドレ�
 
 Azure Machine Learning __コンピューティング インスタンス__ または __コンピューティング クラスター__ を使用する場合は、Azure Machine Learning リソースを含むサブネットの [ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 このルートによって、`BatchNodeManagement` と `AzureMachineLearning` リソースの IP アドレス __から__ コンピューティング インスタンスとコンピューティング クラスターのパブリック IP にトラフィックが強制的に送信されます。
 
-これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
+これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 プライマリ リージョンは、ワークスペースが配置されているところです。
+
+セカンダリ リージョンを見つけるには、[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md#azure-regional-pairs)に関するページを参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
+
+Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 
 * [Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードし、`BatchNodeManagement.<region>` と `AzureMachineLearning.<region>` のファイルを検索する。ここで、`<region>` は Azure リージョンです。
 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョンの情報を除外します。
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョン (プライマリ) と米国中部リージョン (セカンダリ) の情報を除外します。
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+    # Get primary region IPs
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+    # Get secondary region IPs
+    az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
     ```
 
     > [!TIP]
@@ -86,6 +93,7 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 
     | **ホスト名** | **目的** |
     | ---- | ---- |
+    | **graph.windows.net** | Azure Machine Learning コンピューティング インスタンスまたはクラスターによって使用されます。 |
     | **anaconda.com**</br>**\*.anaconda.com** | 既定のパッケージをインストールするために使用されます。 |
     | **\*.anaconda.org** | リポジトリ データを取得するために使用されます。 |
     | **pypi.org** | 既定のインデックスからの依存関係 (存在する場合) を一覧表示するために使用されます。ユーザー設定によってこのインデックスが上書きされることはありません。 インデックスが上書きされる場合は、 **\*pythonhosted.org** も許可する必要があります。 |
@@ -115,6 +123,7 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
 | Azure portal | management.azure.com | management.azure.us | management.azure.cn |
+| Azure Resource Manager | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
 
 **Azure Machine Learning ホスト**
 
@@ -138,6 +147,7 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 | **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | コンピューティング クラスター/インスタンス | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
+| コンピューティング クラスター/インスタンス | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | コンピューティング インスタンス | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | コンピューティング インスタンス | \*.instances.azureml.ms |  |  |
 

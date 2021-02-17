@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3289db9b0f27aa528e027ab2e355852947187e76
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 9a4bda216a91efc8139c1f87c5c350c50ae8741d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98187415"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980943"
 ---
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "98187415"
     | **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Function App を作成するための新しいリソース グループの名前。 |
     | **関数アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。  |
     |**発行**| コード | コード ファイルまたは Docker コンテナーの発行オプション。 |
-    | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 ポータルでの編集は現在、[Python 開発](../articles/azure-functions/functions-reference-python.md)ではサポートされません。 |
+    | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 ポータル内編集は、JavaScript、PowerShell、TypeScript、および C# スクリプトでのみ利用できます。 C# クラス ライブラリ、Java、Python の関数は[ローカルで開発](../articles/azure-functions/functions-develop-local.md#local-development-environments)する必要があります。  |
     |**Version**| バージョン番号 | インストールされているランタイムのバージョンを選択します。 |
     |**リージョン**| 優先リージョン | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
 

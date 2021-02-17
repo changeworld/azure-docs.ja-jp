@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: ad0010a1885c1e9bac8fa2341771cedc12115adc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 11c1d76b5784587f234455f81595778897569eb1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96464619"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594352"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R のネットワークを構成する
 
@@ -72,6 +72,7 @@ ms.locfileid: "96464619"
    * ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
    * DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
    * 使用するネットワーク インターフェイスは、IPv4 として構成できます。
+   * ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。
    * ポートのシリアル番号は、ノードのシリアル番号に対応しています。
     <!--* On the 25-Gbps interfaces, you can set the RDMA (Remote Direct Access Memory) mode to iWarp or RoCE (RDMA over Converged Ethernet). Where low latencies are the primary requirement and scalability is not a concern, use RoCE. When latency is a key requirement, but ease-of-use and scalability are also high priorities, iWARP is the best candidate.-->
     デバイス ネットワークが構成されると、ページは以下のように更新されます。
@@ -120,7 +121,7 @@ ms.locfileid: "96464619"
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシを構成する
+## <a name="configure-web-proxy"></a>Web プロキシの
 
 これはオプション構成です。
 

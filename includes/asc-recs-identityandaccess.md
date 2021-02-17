@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7487262faa8af74af26ac2123686a8e202254e76
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: e1d2039ba3a667e40740acd7781090c9c0cf5281
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797168"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007616"
 ---
 このカテゴリには **21 個** の推奨事項があります。
 
@@ -20,7 +20,7 @@ ms.locfileid: "98797168"
 |Azure Defender for Key Vault を有効にする必要がある |Azure Security Center には、Azure Defender for Key Vault が含まれており、セキュリティ インテリジェンスのレイヤーが追加されます。<br>Azure Defender for Key Vault によって、異常であり、害を及ぼす可能性のある、Key Vault アカウントに対するアクセスまたは悪用の試みが検出されます。<br><br>重要:この推奨事項の修復によって、キー コンテナーを保護するための料金が発生します。 このサブスクリプションにキー コンテナーがない場合、料金は発生しません。<br>今後、このサブスクリプションにキー コンテナーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Azure Defender for Key Vault の詳細をご覧ください。</a><br />(関連ポリシー:[Azure Defender for Key Vault を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |高 |
 |非推奨のアカウントをサブスクリプションから削除する必要がある |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[非推奨のアカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)) |高 |
 |所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)) |高 |
-|Key Vault で診断ログを有効にする必要がある |ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br />(関連ポリシー:[Key Vault における診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |低 |
+|Key Vault で診断ログを有効にする必要がある |ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br />(関連ポリシー:[Key Vault のリソース ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |低 |
 |所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |所有者アクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9)) |高 |
 |読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |読み取りアクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60)) |高 |
 |書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |書き込みアクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4)) |高 |

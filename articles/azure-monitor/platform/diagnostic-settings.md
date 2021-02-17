@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e1a1c62cafd982d44be3e06b98fc8c30461021c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927733"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979982"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -175,6 +175,24 @@ Resource Manager テンプレートを使用して診断設定を作成または
 
 ## <a name="create-using-azure-policy"></a>Azure Policy を使用して作成する
 診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
+
+## <a name="metric-category-is-not-supported-error"></a>メトリック カテゴリがサポートされないエラー
+診断設定をデプロイすると、次のエラー メッセージが表示されます。
+
+   "メトリック カテゴリ '*xxxx*' はサポートされていません"
+
+次に例を示します。 
+
+   "メトリック カテゴリ 'ActionsFailed' はサポートされていません"
+
+この場合、以前はデプロイに成功しました。 
+
+この問題は、Resource Manager テンプレート、診断設定 REST API、Azure CLI または Azure PowerShell を使用するときに発生します。 Azure portal を介して作成された診断設定は、サポートされているカテゴリ名のみが表示されるため、影響を受けません。
+
+この問題は、基になる API の最近の変更が原因で発生します。 'AllMetrics' 以外のメトリック カテゴリはサポートされておらず、少数の非常に特殊な Azure サービスの場合を除き、一度もサポートされたことはありません。 以前は、診断設定のデプロイ時に他のカテゴリ名は無視されていました。 Azure Monitor バックエンドでは単にこれらのカテゴリは 'AllMetrics' にリダイレクトされました。  2021 年 2 月の時点で、提供されたメトリック カテゴリが正確であることを明確に確認するためにバックエンドが更新されました。 この変更が原因で一部のデプロイに失敗しました。
+
+このエラーが発生した場合は、メトリック カテゴリ名をすべて 'AllMetrics' に置き換えるようにデプロイを更新して問題を解決してください。 以前にデプロイで複数のカテゴリを追加していた場合は、'AllMetrics' 参照を持つ 1 つのみを保持する必要があります。 引き続き問題が発生する場合は、Azure portal を通じて Azure サポートにお問い合わせください。 
+
 
 
 ## <a name="next-steps"></a>次のステップ

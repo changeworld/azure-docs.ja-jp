@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657025"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805092"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化
 
@@ -105,11 +105,11 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
 #### <a name="using-the-parsers"></a>パーサーの使用
 
-有効にすると、メタパーサーを使用して、現在有効なすべてのパーサーの統一されたビューに対してクエリを実行できます。 これを行うには、Sentinel ログ ページにアクセスし、メタパーサーに対してクエリを実行します。
+有効にすると、メタパーサーを使用して、現在有効なすべてのパーサーの統一されたビューに対してクエリを実行できます。 これを行うには、Azure Sentinel ログ ページにアクセスし、メタパーサーに対してクエリを実行します。
 
 :::image type="content" source="./media/normalization/query-parser.png" alt-text="パーサーのクエリ":::
  
-[クエリ エクスプローラー] をクリックして、Sentinel ログ ページのクエリ エクスプローラーを使用して、メタパーサーや個々のパーサーにアクセスすることもできます。
+[クエリ エクスプローラー] をクリックして、ログ ページのクエリ エクスプローラーを使用して、メタパーサーや個々のパーサーにアクセスすることもできます。
 
 :::image type="content" source="./media/normalization/query-explorer.png" alt-text="クエリ エクスプローラー":::
 

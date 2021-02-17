@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6f83df22465a2dc5fb871ae4e2c6dedd75e00075
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785839"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834223"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -56,7 +56,7 @@ Standard Load Balancer を使用して実現できる主なシナリオは、次
 
 - **[IPv6](../virtual-network/ipv6-overview.md)** の **[負荷分散](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** のサポートを有効にする。
 
-- Standard Load Balancer は [Azure Monitor](../azure-monitor/overview.md) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。 [Azure Load Balancer の分析情報](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) には、これらのメトリックがわかりやすく可視化された事前構成済みのダッシュボードが用意されています。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
+- Standard Load Balancer は [Azure Monitor](../azure-monitor/overview.md) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。 [[Azure Load Balancer の分析情報]](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) には、これらのメトリックがわかりやすく可視化された事前構成済みのダッシュボードが用意されています。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
 
 - **[複数のポート、複数の IP アドレス、またはその両方](./load-balancer-multivip-overview.md)** にサービスを負荷分散する。
 

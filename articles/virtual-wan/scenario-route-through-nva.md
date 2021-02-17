@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424761"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626662"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 
@@ -61,7 +61,7 @@ NVA スポークは Virtual WAN によって管理されていないことを考
   * 関連付けられたルート テーブル: **[Default]**
   * ルート テーブルへの伝達: **[Default]**
 
-ただし、このシナリオでは、どの静的ルートを構成するかを考える必要があります。 各静的ルートには 2 つのコンポーネントがあります。 **図 1** に示されているように、1 つは Virtual WAN ハブ内にあり、各スポークに使用する接続を Virtual WAN コンポーネントに伝え、もう 1 つは、その特定の接続内にあり、NVA (または複数の NVA の前に配置されているロード バランサー) に割り当てられた具体的な IP アドレスをポイントしています。
+ただし、このシナリオでは、どの静的ルートを構成するかを考える必要があります。 各静的ルートには 2 つのコンポーネントがあります。**図 1** に示されているように、1 つは Virtual WAN ハブ内にあり、各スポークに使用する接続を Virtual WAN コンポーネントに伝え、もう 1 つは、その特定の接続内にあり、NVA (または複数の NVA の前に配置されているロード バランサー) に割り当てられた具体的な IP アドレスをポイントしています。
 
 **図 1**
 
@@ -87,13 +87,13 @@ NVA VNet、NVA 以外の VNet、およびブランチで、すべての NVA ス�
 
 ## <a name="architecture"></a><a name="architecture"></a>アーキテクチャ
 
-**図 2** には、2 つのハブ ( **Hub1** と **Hub2** ) があります。
+**図 2** には、2 つのハブ (**Hub1** と **Hub2**) があります。
 
 * **Hub1** と **Hub2** は、NVA VNet の **VNet 2** および **VNet 4** に直接接続されています。
 
-* **VNet 5** と **VNet 6** は、 **VNet 2** とピアリングされています。
+* **VNet 5** と **VNet 6** は、**VNet 2** とピアリングされています。
 
-* **VNet 7** と **VNet 8** は、 **VNet 4** とピアリングされています。
+* **VNet 7** と **VNet 8** は、**VNet 4** とピアリングされています。
 
 * **VNet 5、6、7、8** は間接的なスポークであり、仮想ハブに直接接続されてはいません。
 
@@ -105,13 +105,13 @@ NVA VNet、NVA 以外の VNet、およびブランチで、すべての NVA ス�
 
 NVA 経由のルーティングを設定するには、次のような手順を検討します。
 
-1. NVA スポークの VNet 接続を明らかにします。 これらは、 **図 2** における **VNet 2 の接続 (eastusconn)** と **VNet 4 の接続 (weconn)** です。
+1. NVA スポークの VNet 接続を明らかにします。 これらは、**図 2** における **VNet 2 の接続 (eastusconn)** と **VNet 4 の接続 (weconn)** です。
 
    UDR が設定されていることを確認します。
    * VNet 5 および VNet 6 から VNet 2 NVA IP へ
    * VNet 7 および VNet 8 から VNet 4 NVA IP へ 
    
-   VNet 5、6、7、8 を仮想ハブに直接接続する必要はありません。 VNet 5、6、7、8 の NSG で、ブランチ (VPN/ER/P2S) またはリモート VNet に接続されている VNet に対するトラフィックが許可されていることを確認します。 たとえば、VNet 5、6 の NSG では、リモート Hub 2 に接続されているオンプレミスのアドレス プレフィックスと VNet 7、8 に対するトラフィックが許可される必要があります。
+   VNet 5、6、7、8 を仮想ハブに直接接続する必要はありません。 VNet 5、6、7、8 の NSG で、ブランチ (VPN/ER/P2S) またはリモート VNet に接続されている VNet に対するトラフィックが許可されていることを確認します。 たとえば、VNet 5、6 の NSG では、リモート Hub 2 に接続されているオンプレミスのアドレス プレフィックスと VNet 7、8 に対するトラフィックが確実に許可されている必要があります。
 
 Vnet 5、6 が仮想ハブに接続され、VNet 2 NVA IP 経由で通信することから、同様に Vnet 5、6 を VNet2、および VNet 7、8 を VNet 4 に接続する必要があるというシナリオを、Virtual WAN ではサポートしていません。
 

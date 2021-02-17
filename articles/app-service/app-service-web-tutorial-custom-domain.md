@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608267"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096346"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -309,17 +309,20 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 - 構成されているカスタム ドメインに A レコードまたは CNAME レコードがない。
 - クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
 
-<a name="virtualdir" aria-hidden="true"></a>
-
 ## <a name="migrate-an-active-domain"></a>アクティブなドメインの移行
 
 ライブ サイトとその DNS ドメイン名を App Service にダウンタイムなしで移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](manage-custom-dns-migrate-domain.md)」をご覧ください。
+
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="redirect-to-a-custom-directory"></a>カスタム ディレクトリにリダイレクトする
 
 既定では、App Service は Web 要求をアプリ コードのルート ディレクトリに送信します。 しかし、特定の Web フレームワークはルート ディレクトリで開始されません。 たとえば、[Laravel](https://laravel.com/) は `public` サブディレクトリで開始されます。 `contoso.com` の DNS の例を引き続き使用すると、このようなアプリには `http://contoso.com/public` でアクセスできますが、代わりに`http://contoso.com` を `public` ディレクトリにダイレクトするという方法もあります。 この手順は、DNS 解決に関わるものではなく、仮想ディレクトリのカスタマイズに関するものです。
 
-仮想ディレクトリをカスタマイズするには、Web アプリ ページの左側のウィンドウで、 **[アプリケーション設定]** を選択します。
+Windows アプリの仮想ディレクトリをカスタマイズするには、Web アプリ ページの左ペインで、 **[アプリケーション設定]** を選択します。 
+
+> [!NOTE]
+> Linux アプリにはこのページがありません。 Linux アプリのサイト ルートを変更するには、言語固有の構成ガイド ([PHP](configure-language-php.md?pivots=platform-linux#change-site-root) など) を参照してください。
 
 ページの下部でルート仮想ディレクトリ `/` が既定で `site\wwwroot` をポイントしていますが、これがお客様のアプリ コードのルート ディレクトリです。 たとえば、代わりに `site\wwwroot\public` をポイントするように変更して、変更内容を保存できます。
 

@@ -1,27 +1,31 @@
 ---
-title: ビデオ分析 - 物体とモーションの検出 Azure IoT Central アプリケーション テンプレートをデプロイする方法
-description: このガイドでは、ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して Azure IoT Central アプリケーションをデプロイする手順をまとめています。
+title: チュートリアル:ビデオ分析 - 物体とモーションの検出 Azure IoT Central アプリケーション テンプレートをデプロイする方法
+description: チュートリアル - このガイドでは、ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して Azure IoT Central アプリケーションをデプロイする手順をまとめています。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: how-to
+ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873338"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831945"
 ---
-# <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して IoT Central アプリケーションをデプロイする方法
+# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>チュートリアル:ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して IoT Central アプリケーションをデプロイする方法
 
 *ビデオ分析 - 物体とモーションの検出* アプリケーションの主要なコンポーネントの概要については、[物体とモーションの検出ビデオ分析アプリケーション アーキテクチャ](architecture-video-analytics.md)に関するページを参照してください。
 
 次のビデオでは、"_ビデオ分析 - 物体とモーションの検出アプリケーション テンプレート_" を使用して IoT Central ソリューションをデプロイする方法を段階的に説明しています。
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお勧めします。 また、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
 
 ## <a name="deploy-the-application"></a>アプリケーションをデプロイする
 
@@ -43,6 +47,20 @@ ms.locfileid: "91873338"
     - 検出された物体を示すキャプチャされたビデオを表示します。
     - 整理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-これで、ビデオ分析アプリケーション テンプレートをデプロイして使用する手順の概要を把握したので、[Azure IoT Central でのビデオ分析アプリケーションの作成 (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) または [Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するページを参照して、始めてください。
+アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
+
+1. IoT Central アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動します。 次に、 **[削除]** を選択します。
+1. Azure portal で、**lva-rg** リソース グループを削除します。
+1. ローカル コンピューターで、**amp-viewer** Docker コンテナーを停止します。
+
+## <a name="next-steps"></a>次のステップ
+
+ビデオ分析アプリケーション テンプレートをデプロイして使用する手順の概要を把握したら、
+
+> [!div class="nextstepaction"]
+> [Azure IoT Central (YOLO v3) でビデオ分析アプリケーションを作成する](tutorial-video-analytics-create-app-yolo-v3.md)方法に関するページか、
+
+> [!div class="nextstepaction"]
+> [Azure IoT Central (OpenVINO&trade;) でビデオ分析アプリケーションを作成する](tutorial-video-analytics-create-app-openvino.md)方法に関するページに進んでください。

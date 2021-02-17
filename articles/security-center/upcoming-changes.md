@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475592"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555132"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -31,39 +31,9 @@ ms.locfileid: "99475592"
 
 ## <a name="planned-changes"></a>計画されている変更
 
-- [Kubernetes ワークロード保護の推奨事項が間もなく一般提供 (GA) リリースへ](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)
-
-
-### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes ワークロード保護の推奨事項が間もなく一般提供 (GA) リリースへ
-
-**変更予定日:** 2021 年 2 月
-
-「[Kubernetes ワークロードを保護する](kubernetes-workload-protections.md)」で説明されている Kubernetes ワークロード保護の推奨事項は、現在プレビュー段階です。 プレビュー段階の推奨事項の観点からリソースが異常と見なされることはなく、これらの推奨事項はセキュア スコアの計算にも含まれません。
-
-これらの推奨事項は間もなく一般提供 (GA) リリースとなり、"*今後*"、スコアの計算に含まれるようになります。 その修復がまだ済んでいない場合、これが原因でセキュア スコアに若干の影響が生じる可能性があります。
-
-それらは可能な限り修復してください (その方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください)。
-
-Kubernetes ワークロード保護の推奨事項は次のとおりです。
-
-- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある
-- コンテナーの CPU とメモリの制限を強制する必要がある
-- 特権コンテナーの使用を避ける
-- コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある
-- 特権エスカレーションを含むコンテナーは避ける必要がある
-- コンテナーをルート ユーザーとして実行しない
-- 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある
-- コンテナーで最小限の特権を持つ Linux 機能を適用する必要がある
-- ポッド HostPath ボリューム マウントの使用は既知のリストに制限する必要がある
-- コンテナーは許可されたポートでのみリッスンする必要がある
-- サービスは許可されたポートでのみリッスンする必要がある
-- ホスト ネットワークとポートの使用を制限する必要がある
-- コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要がある
-- コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある             
-
-これらの推奨事項の詳細については、「[Kubernetes ワークロードを保護する](kubernetes-workload-protections.md)」を参照してください。
+- [11 個の Azure Defender アラートの非推奨化](#deprecation-of-11-azure-defender-alerts)
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化 
 
@@ -83,11 +53,38 @@ Kubernetes ワークロード保護の推奨事項は次のとおりです。
 
 **変更予定日:** 2021 年第 2 四半期
 
-"**データ分類の適用**" セキュリティ コントロールにおける現行バージョンの推奨事項 "**SQL データベースの機密データを分類する必要がある**" は、より Microsoft のデータ分類戦略に沿った新しいバージョンに置き換えられる予定です。 その結果、次のような影響が出ています。
+"**データ分類の適用**" セキュリティ コントロールにおける推奨事項 "**SQL データベースの機密データを分類する必要がある**" は、より Microsoft のデータ分類戦略に沿った新しいバージョンで置き換えられる予定です。 そのため、推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
 
-- 今後、推奨事項はセキュア スコアに影響しません。
-- 今後、セキュリティ コントロール ("データ分類の適用") はセキュア スコアに影響しません。
-- 推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
+
+### <a name="deprecation-of-11-azure-defender-alerts"></a>11 個の Azure Defender アラートの非推奨化
+
+**変更予定日:** 2021 年 3 月
+
+来月、以下に示す 11 個の Azure Defender アラートが非推奨となります。
+
+- 次の 2 つのアラートは、新しいアラートで置き換えられ、より適切なカバレッジが提供されます。
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW - MicroBurst toolkit "Get-AzureDomainInfo" function run detected (プレビュー - MicroBurst ツールキット "Get-AzureDomainInfo" 関数の実行が検出されました) |
+    | ARM_MicroBurstRunbook    | PREVIEW - MicroBurst toolkit "Get-AzurePasswords" function run detected (プレビュー - MicroBurst ツールキット "Get-AzurePasswords" 関数の実行が検出されました)  |
+    |                          |                                                                          |
+
+- 次の 9 つのアラートは、既に非推奨になっている Azure Active Directory Identity Protection コネクタに関連したものです。
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | 通常とは異なるサインイン プロパティ |
+    | AnonymousLogin      | 匿名 IP アドレス          |
+    | InfectedDeviceLogin | マルウェアにリンクした IP アドレス     |
+    | ImpossibleTravel    | 特殊な移動               |
+    | MaliciousIP         | 悪意のある IP アドレス          |
+    | LeakedCredentials   | 漏洩した資格情報            |
+    | PasswordSpray       | パスワード スプレー                |
+    | LeakedCredentials   | Azure AD 脅威インテリジェンス  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
 
 
 

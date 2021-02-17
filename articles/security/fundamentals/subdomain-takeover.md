@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409894"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559235"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
 この記事では、サブドメインの乗っ取りに関する一般的なセキュリティの脅威と、その軽減手順について説明します。
 
 
-## <a name="what-is-subdomain-takeover"></a>サブドメインの乗っ取りとは
+## <a name="what-is-a-subdomain-takeover"></a>サブドメインの乗っ取りとは
 
 サブドメインの乗っ取りは、多くのリソースを定期的に作成したり削除したりする組織にとって、重大度の高い一般的な脅威です。 サブドメインの乗っ取りは、プロビジョニング解除された Azure リソースを参照する [DNS レコード](../../dns/dns-zones-records.md#dns-records)がある場合に発生する可能性があります。 このような DNS レコードは、"未解決の DNS" エントリとも呼ばれます。 CNAME レコードは、この脅威に対して特に脆弱です。 サブドメインの乗っ取りが発生すると、悪意のあるアクターが悪意のあるアクティビティを実行しているサイトに、組織のドメイン向けのトラフィックをリダイレクトできるようになります。
 
@@ -41,7 +41,7 @@ ms.locfileid: "94409894"
 
     1. Azure リソースは、不要になるとプロビジョニング解除または削除されます。 
     
-        この時点で、CNAME レコード `greatapp.contoso.com` を DNS ゾーンから削除する *必要があります* 。 CNAME レコードが削除されていない場合でも、アクティブなドメインとして公開されますが、トラフィックはアクティブな Azure リソースにルーティングされません。 これは、"未解決の" DNS レコードの定義です。
+        この時点で、CNAME レコード `greatapp.contoso.com` を DNS ゾーンから削除する *必要があります*。 CNAME レコードが削除されていない場合でも、アクティブなドメインとして公開されますが、トラフィックはアクティブな Azure リソースにルーティングされません。 これは、"未解決の" DNS レコードの定義です。
 
     1. 未解決のサブドメイン `greatapp.contoso.com` が現在脆弱であり、別の Azure サブスクリプションのリソースに割り当てられることで乗っ取られる可能性があります。
 
@@ -119,7 +119,7 @@ CNAME が他の DNS サービス内にあり、Azure リソースを示してい
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
-PowerShell スクリプト ( **Get-DanglingDnsRecords.ps1** ) の詳細を確認し、GitHub (https://aka.ms/DanglingDNSDomains ) からダウンロードしてください。
+PowerShell スクリプト (**Get-DanglingDnsRecords.ps1**) の詳細を確認し、GitHub (https://aka.ms/DanglingDNSDomains ) からダウンロードしてください。
 
 ## <a name="remediate-dangling-dns-entries"></a>未解決の DNS エントリを修復する 
 
@@ -144,6 +144,15 @@ DNS ゾーンをレビューし、未解決の CNAME レコードまたは乗っ
 
 一部の Azure サービスでは、予防策の作成に役立つ機能が提供されています。詳細については、以下で説明します。 この問題を防止するための他の方法は、組織のベスト プラクティスまたは標準の操作手順に従って確立する必要があります。
 
+### <a name="enable-azure-defender-for-app-service"></a>Azure Defender for App Service を有効にする
+
+Azure Security Center の統合クラウド ワークロード保護プラットフォーム (CWPP) である Azure Defender には、Azure、ハイブリッド、およびマルチクラウドのリソースとワークロードを保護するためのさまざまなプランが用意されています。
+
+**Azure Defender for App Service** プランには、未解決の DNS の検出が含まれています。 このプランを有効にすると、App Service Web サイトを使用停止にしても、そのカスタム ドメインを DNS レジストラーから削除しない場合にセキュリティ アラートを受け取ります。
+
+Azure Defender による未解決の DNS の保護は、ドメイン管理に Azure DNS を使用しているか、外部のドメイン レジストラーを使用しているかに関係なく利用でき、Windows 上の App Service と Linux 上の App Service の両方に適用されます。
+
+この Azure Defender プランのその他の特典については、「[Azure Defender for App Service の概要](../../security-center/defender-for-app-service-introduction.md)」を参照してください。
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS エイリアス レコードの使用
 
@@ -201,6 +210,8 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 ## <a name="next-steps"></a>次のステップ
 
 サブドメインの乗っ取りを防ぐために使用できる関連のサービスと Azure の機能の詳細については、以下のページを参照してください。
+
+- [Azure Defender for App Service を有効にする](../../security-center/defender-for-app-service-introduction.md) - 未解決の DNS エントリを検出すると、アラートを受け取ります
 
 - [Azure DNS で未解決の DNS レコードを防ぐ](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
