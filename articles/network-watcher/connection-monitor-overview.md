@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 57228c6b7da04b139c7075c83e313b207907e214
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898013"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833101"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) に新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストおよび接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から](migrate-to-connection-monitor-from-network-performance-monitor.md)、または[接続モニター (クラシック) から](migrate-to-connection-monitor-from-connection-monitor-classic.md) Azure Network Watcher の新しい接続モニターにテストを移行します。
 
 接続モニターを使用すると、Azure Network Watcher で、統合されたエンド ツー エンドの接続監視が提供されます。 接続モニターの機能では、ハイブリッド デプロイと Azure クラウド デプロイがサポートされています。 Network Watcher には、Azure のデプロイに対する接続に関連したメトリックを監視、診断、表示するためのツールが用意されています。
 
@@ -111,7 +114,7 @@ Windows コンピューター用の Log Analytics エージェントをインス
 
  ![テスト グループとテストの関係が定義されている接続モニターを示す図](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure portal](./connection-monitor-create-using-portal.md) または [ARMClient](./connection-monitor-create-using-template.md) を使用して、接続モニターを作成できます
+[Azure portal](./connection-monitor-create-using-portal.md)、[ARMClient](./connection-monitor-create-using-template.md)、または [PowerShell](connection-monitor-create-using-powershell.md) を使用して、接続モニターを作成できます
 
 テスト グループに追加したすべてのソース、ターゲット、テスト構成は、個々のテストに分割されます。 ソースとターゲットの分割方法の例を次に示します。
 
@@ -273,10 +276,11 @@ Network Watcher から接続モニターに移動したときには、以下の�
 
 | メトリック | Display name | ユニット | 集計の種類 | 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | 失敗したプローブの割合 | パーセント | Average | 失敗した接続監視プローブの割合。 | ディメンションなし |
-| AverageRoundtripMs | Avg.ラウンド トリップ時間 (ミリ秒) | ミリ秒 | Average | ソースと接続先の間で送信された接続監視プローブのネットワーク RTT。 |             ディメンションなし |
-| ChecksFailedPercent (プレビュー) | チェックの失敗率 (%) (プレビュー) | パーセント | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
-| RoundTripTimeMs (プレビュー) | ラウンド トリップ時間 (ミリ秒) (プレビュー) | ミリ秒 | Average | ソースとターゲットの間で送信されたチェックの RTT。 これは平均値ではありません。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
+| ProbesFailedPercent (クラシック) | 失敗したプローブの割合 (クラシック) | パーセント | Average | 失敗した接続監視プローブの割合。 | ディメンションなし |
+| AverageRoundtripMs (クラシック) | Avg.ラウンドトリップ時間 (ms) (クラシック) | ミリ秒 | Average | ソースと接続先の間で送信された接続監視プローブのネットワーク RTT。 |             ディメンションなし |
+| ChecksFailedPercent | 失敗したチェックの割合 | パーセント | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
+| RoundTripTimeMs | ラウンド トリップ時間 (ミリ秒) | ミリ秒 | Average | ソースとターゲットの間で送信されたチェックの RTT。 これは平均値ではありません。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
+| TestResult | テスト結果 | Count | Average | 接続モニターのテスト結果 | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>接続モニターのメトリック ベースのアラート
 

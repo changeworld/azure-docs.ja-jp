@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b8a7679521096cf3d98e8f55748eb0398fdc4ab8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509101"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523602"
 ---
 # <a name="track-sensor-activity"></a>センサー アクティビティを追跡する
 
@@ -89,6 +89,6 @@ ms.locfileid: "99509101"
     
       PCAP ファイルには、イベントの正確なパラメーターを特定するのに役立つ技術情報が含まれています。 PCAP ファイルは、オープン ソースのアプリケーションである Wireshark などのネットワーク プロトコル アナライザーを使用して分析することができます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [アラートを表示する](how-to-view-alerts.md)

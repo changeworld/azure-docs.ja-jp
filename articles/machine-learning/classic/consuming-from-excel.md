@@ -3,18 +3,18 @@ title: ML Studio (classic):Excel で Web サービスを使用する - Azure
 description: Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 9ec781a5110dd2e7027ca91fd195bbb796f31020
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e8e7404a2b643cf90866253e5a7453381b66f73e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322904"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517860"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio (クラシック) Web サービスの使用
 
@@ -33,7 +33,7 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 
 **従来の Web サービス**
 
-1. Web サービスの **[ダッシュボード]** タブに、 **要求/応答** サービスの行があります。 このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
+1. Web サービスの **[ダッシュボード]** タブに、**要求/応答** サービスの行があります。 このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
 
     ![Studio (クラシック) Web サービス ポータルを使用して Excel ブックをダウンロードする](./media/consuming-from-excel/excellink.png)
 2. **[Excel ブックのダウンロード]** をクリックします。

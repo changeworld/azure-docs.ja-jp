@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628123"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373710"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>ArcMap および ArcGIS Desktop のラボを設定する
 
@@ -55,7 +55,7 @@ ArcGIS Desktop で使用することをお勧めする仮想マシン (VM) の�
 1.  テンプレート VM を起動し、RDP を使用してそのマシンに接続します。
 
 2.  ESRI からの手順を使用し、ArcGIS Desktop コンポーネントをダウンロードしてインストールします。  これらの手順には、同時使用ライセンス用のライセンス マネージャーの割り当てが含まれます。 
-    - [ArcGIS Desktop のインストールと構成の概要](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [ArcGIS Desktop のインストールと構成の概要](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  学生用の外部バックアップ ストレージを設定します。  学生が行ったすべての変更がセッション間で保存されるため、学生は割り当てられた VM にファイルを直接保存できます。  ただし、いくつかの理由から、学生が VM から外部のストレージに自分の作業をバックアップすることをお勧めします。
     - クラスとラボが終了した後、学生が自分の作業にアクセスできるようにするため。  

@@ -4,12 +4,12 @@ description: Azure Application Insights を使用して IP アドレスと位置
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333309"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521919"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -241,7 +241,7 @@ requests
 
 新しく収集された IP アドレスは `customDimensions_client-ip` 列に表示されます。 既定の `client-ip` 列では、4 つすべてのオクテットがゼロになります。 
 
-localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.01` と同じです。
+localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.0.1` と同じです。
 
 ## <a name="next-steps"></a>次の手順
 

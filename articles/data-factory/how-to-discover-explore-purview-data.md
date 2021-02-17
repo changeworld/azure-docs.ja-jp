@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 1a8ed80daa4406f32909a6622b8649f37ec48063
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: accb9bbf195daa3d25e1aed109e36ef309083385
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064380"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805311"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Purview を使用した ADF でのデータの検出と探索
 
@@ -47,7 +47,7 @@ Azure Purview によって登録およびスキャンされたデータを検出
 ### <a name="actions-that-you-can-perform-over-datasets-with-data-factory-resources"></a>Data Factory リソースを使用してデータセットに対して実行できるアクション 
 Azure Purview によって検索したデータに対して、リンクされたサービス、データセット、またはデータフローを直接作成できます。
 
-:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="データセットに対する実行のスクリーンショット。":::
+:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Azure Purview によって検索したデータに対して、リンクされたサービス、データセット、またはデータフローを直接作成できることを示すスクリーンショット。":::
 
 ##  <a name="nextsteps"></a>次のステップ 
 

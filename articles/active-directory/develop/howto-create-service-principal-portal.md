@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581756"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104214"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -75,7 +75,7 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
 
 では早速、ID の作成を開始しましょう。 問題が発生した場合は、「[必要なアクセス許可](#permissions-required-for-registering-an-app)」をチェックして、使用しているアカウントで ID を作成できることを確認してください。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> で Azure アカウントにサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> で Azure アカウントにサインインします。
 1. **[Azure Active Directory]** を選択します。
 1. **[アプリの登録]** を選択します。
 1. **[新規登録]** を選択します。
@@ -181,7 +181,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 ## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
 アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)必要があります。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> で、キー コンテナーに移動し、 **[アクセス ポリシー]** を選択します。
+1. **Azure portal** で、キー コンテナーに移動し、<a href="https://portal.azure.com/" target="_blank">[アクセス ポリシー]</a> を選択します。
 1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。
 1. **[追加]** を選択してアクセス ポリシーを追加し、 **[保存]** を選択して変更をコミットします。
     ![アクセス ポリシーの追加](./media/howto-create-service-principal-portal/add-access-policy.png)

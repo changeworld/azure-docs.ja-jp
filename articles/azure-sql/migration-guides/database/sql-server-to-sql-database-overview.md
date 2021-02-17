@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357332"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368049"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>移行の概要: SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ SQL Server Reporting Services (SSRS) のレポートを、Power BI のページ�
 SQL Database に含まれている高可用性アーキテクチャに加えて、[自動フェールオーバー グループ](../../database/auto-failover-group-overview.md)機能もあります。これを使用すると、マネージド インスタンス内のデータベースの別リージョンへのレプリケーションとフェールオーバーを管理できます。 
 
 #### <a name="sql-agent-jobs"></a>SQL Agent ジョブ
-SQL Agent ジョブは、Azure SQL Database では直接サポートされていないため、[Elastic Database ジョブ (プレビュー)](../../database/job-automation-overview.md#elastic-database-jobs-preview) にデプロイする必要があります。
+SQL Agent ジョブは、Azure SQL Database では直接サポートされていないため、[Elastic Database ジョブ (プレビュー)](../../database/job-automation-overview.md) にデプロイする必要があります。
 
 #### <a name="logins-and-groups"></a>ログインとグループ
 Database Migration Service (DMS) をオフライン モードで使用して、SQL ログインをソースの SQL Server から Azure SQL Database に移動します。  **移行ウィザード** の **[Selected logins]\(選択したログイン\)** ブレードを使用して、ログインをターゲットの SQL Database に移行します。 

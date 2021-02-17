@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346199"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831299"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>チュートリアル:デジタル配布センター アプリケーション テンプレートを展開して調べる
-
-
 
 このチュートリアルでは、IoT Central の **デジタル配布センター** アプリケーション テンプレートをデプロイする方法について説明します。 テンプレートをデプロイする方法、既定で含まれるもの、次にできることについて説明します。
 
 このチュートリアルで学習する内容は次のとおりです。 
-* デジタル配布センター アプリケーションを作成する 
-* アプリケーションを調べる 
+
+> [!div class="checklist"]
+> デジタル流通センター アプリケーションを作成する アプリケーションを調べる 
 
 ## <a name="prerequisites"></a>前提条件
 * このアプリをデプロイするために必要な特定の前提条件はありません
@@ -110,8 +109,8 @@ ms.locfileid: "97346199"
 > ![使い終えたアプリケーションを削除する方法を示す画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>次のステップ
-* デジタル流通センター ソリューション アーキテクチャについてさらに詳しく学習します 
+
+デジタル流通センター ソリューション アーキテクチャについてさらに詳しく学習します。
+
 > [!div class="nextstepaction"]
 > [デジタル流通センターの概念](./architecture-digital-distribution-center.md)
-* 他の [IoT Central 小売りテンプレート](./overview-iot-central-retail.md)についてさらに詳しく学習します
-* [IoT Central の概要](../core/overview-iot-central.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します
