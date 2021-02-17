@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16eefc8dd3f693e108e457782dc9d076180ba8e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535663"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520597"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Cognitive Search での類似性とスコアリング
 
@@ -21,7 +21,7 @@ ms.locfileid: "91535663"
 
 既定では、上位 50 個が応答で返されます。しかし、 **$top** パラメーターを使用すれば、返される項目数を減らしたり増やしたりすることができ (1 回の応答で 1000 個まで)、 **$skip** を使用すれば、次の結果セットを取得することができます。
 
-検索スコアは、データとクエリの統計プロパティに基づいて計算されます。 Azure Cognitive Search では、検索語句 ([searchMode](/rest/api/searchservice/search-documents#searchmodeany--all-optional) に応じて一部またはすべて) に一致するドキュメントが検索され、検索語句のインスタンスを多く含むドキュメントが優先されます。 データ インデックス全体での語句の出現頻度は低いがドキュメント内ではよく使用されている場合、検索スコアはより高くなります。 関連性を計算するこのアプローチの基礎となる手法は、*TF-IDF* (単語の出現頻度 - 逆文書頻度) と呼ばれています。
+検索スコアは、データとクエリの統計プロパティに基づいて計算されます。 Azure Cognitive Search では、検索語句 ([searchMode](/rest/api/searchservice/search-documents#query-parameters) に応じて一部またはすべて) に一致するドキュメントが検索され、検索語句のインスタンスを多く含むドキュメントが優先されます。 データ インデックス全体での語句の出現頻度は低いがドキュメント内ではよく使用されている場合、検索スコアはより高くなります。 関連性を計算するこのアプローチの基礎となる手法は、*TF-IDF* (単語の出現頻度 - 逆文書頻度) と呼ばれています。
 
 検索スコアの値は、結果セット全体で繰り返すことができます。 同じ検索スコアを持つ項目が複数ヒットした場合、同じスコアを持つ項目の順序付けは定義されていないので安定しません。 クエリを再度実行すると、特に、複数のレプリカで無料のサービスまたは課金対象サービスを使用している場合は、項目の位置が変わる場合があります。 同一スコアの項目が 2 つ存在する場合、最初に表示される項目を特定することはできません。
 
@@ -44,7 +44,7 @@ ms.locfileid: "91535663"
 
 既定では、ドキュメントのスコアは、"*シャード内*" のデータの統計プロパティに基づいて計算されます。 このアプローチは、一般に、データの大規模なコーパスでは問題にならず、すべてのシャードの情報に基づいてスコアを計算する必要がある場合よりもパフォーマンスが向上します。 ただし、このパフォーマンスの最適化を使用すると、2 つの非常に類似したドキュメント (またはまったく同一のドキュメント) は、それぞれが異なるシャードになる場合、関連性スコアが異なる可能性があります。
 
-すべてのシャードの統計プロパティに基づいてスコアを計算する場合、これを行うには、*scoringStatistics=global* を[クエリ パラメーター](/rest/api/searchservice/search-documents)として追加します (または[クエリ要求](/rest/api/searchservice/search-documents)の本文パラメーターとして *"scoringStatistics": "global"* を追加します)。
+すべてのシャードの統計プロパティに基づいてスコアを計算する場合、これを行うには、*scoringStatistics=global* を [クエリ パラメーター](/rest/api/searchservice/search-documents)として追加します (または [クエリ要求](/rest/api/searchservice/search-documents)の本文パラメーターとして *"scoringStatistics": "global"* を追加します)。
 
 ```http
 GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
@@ -77,7 +77,7 @@ Azure Cognitive Search では、次の 2 種類の類似性ランク付けアル
 
 ## <a name="featuresmode-parameter-preview"></a>featuresMode パラメーター (プレビュー)
 
-[ドキュメントの検索](/rest/api/searchservice/preview-api/search-documents)の要求には、フィールド レベルでの関連性に関する追加の詳細情報を提供できる新しい [featuresMode](/rest/api/searchservice/preview-api/search-documents#featuresmode) パラメーターがあります。 `@searchScore` はドキュメント全体に対して計算されますが (このクエリのコンテキストにおけるこのドキュメントの関連度)、featuresMode を使用すると、`@search.features` 構造体で表現された、個々のフィールドに関する情報を取得できます。 この構造体には、クエリで使用されるすべてのフィールド (クエリ内の **searchFields** を介した特定のフィールド、またはインデックス内で**検索可能**として属性が付けられているすべてのフィールド) が含まれます。 フィールドごとに、次の値が取得されます。
+[ドキュメントの検索](/rest/api/searchservice/preview-api/search-documents)の要求には、フィールド レベルでの関連性に関する追加の詳細情報を提供できる新しい [featuresMode](/rest/api/searchservice/preview-api/search-documents#featuresmode) パラメーターがあります。 `@searchScore` はドキュメント全体に対して計算されますが (このクエリのコンテキストにおけるこのドキュメントの関連度)、featuresMode を使用すると、`@search.features` 構造体で表現された、個々のフィールドに関する情報を取得できます。 この構造体には、クエリで使用されるすべてのフィールド (クエリ内の **searchFields** を介した特定のフィールド、またはインデックス内で **検索可能** として属性が付けられているすべてのフィールド) が含まれます。 フィールドごとに、次の値が取得されます。
 
 + フィールド内で見つかった一意のトークン数
 + 類似性スコア。つまり、クエリ用語に対するフィールド内容の類似度のメジャー

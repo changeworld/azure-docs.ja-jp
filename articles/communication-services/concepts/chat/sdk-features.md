@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885990"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625266"
 ---
 # <a name="chat-client-library-overview"></a>Chat クライアント ライブラリの概要
 
@@ -53,6 +53,17 @@ Azure Communication Services の Chat クライアント ライブラリを使�
 | 監視        | 送信メッセージの観点から使用状況を監視する                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | アプリによって行われた API 要求の品質と状態を監視し、ポータルを使用してアラートを構成する                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |その他の機能 | [Cognitive Services APIs](../../../cognitive-services/index.yml) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能を有効にする - *クライアントで受信メッセージの言語翻訳とセンチメント分析を行ったり、メンバーが話している最中に音声テキスト変換を行ってメッセージを作成したりします。*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>OS とブラウザーによる JavaScript チャット クライアント ライブラリのサポート
+
+次の表は、現在使用可能な、サポートされているブラウザーとバージョンのセットを示しています。
+
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **チャット クライアント ライブラリ** | Firefox *、Chrome*、新しい Edge | Firefox *、Chrome*、Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
+
+
+\* 前の 2 つのリリースに加えて最新バージョンがサポートされていることに注意してください。<br/>
 
 ## <a name="next-steps"></a>次の手順
 

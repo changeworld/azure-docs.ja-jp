@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581263"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364692"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -148,7 +148,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
   次の図に、テーブルが認識されて抽出される方法の例を示します。
 
   > [!div class="mx-imgBorder"]
-  > ![サンプル ラベル付けツールを使用したテーブルの視覚化](./media/whats-new/formre-table-viz.png)
+  > ![サンプル ラベル付けツールを使用したテーブルの視覚化](./media/whats-new/table-viz.png)
 
     抽出されたテーブルは、`"pageResults"` の JSON 出力で使用できます。
 

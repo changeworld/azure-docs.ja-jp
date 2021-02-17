@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219674"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805396"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -448,14 +448,14 @@ ms.locfileid: "99219674"
 次の例では、包含の使用方法を示します。
 
 - *REST-API-Common* - 基本構成を含む共通技術プロファイル。
-- *REST-ValidateProfile* - *REST-API-Commom* 技術プロファイルを含み、入力および出力要求を指定します。
-- *REST-UpdateProfile* - *REST-API-Commom* 技術プロファイルを含み、入力要求を指定し、`ServiceUrl` メタデータを上書きします。
+- *REST-ValidateProfile* - *REST-API-Common* 技術プロファイルを含み、入力および出力要求を指定します。
+- *REST-UpdateProfile* - *REST-API-Common* 技術プロファイルを含み、入力要求を指定し、`ServiceUrl` メタデータを上書きします。
 
 ```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="REST-API-Commom">
+    <TechnicalProfile Id="REST-API-Common">
       <DisplayName>Base REST API configuration</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
@@ -480,7 +480,7 @@ ms.locfileid: "99219674"
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="promoCode" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
@@ -492,7 +492,7 @@ ms.locfileid: "99219674"
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />
       </InputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>

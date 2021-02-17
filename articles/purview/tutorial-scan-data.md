@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: e373556d189e9fffc0626d19250e79c09962a004
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: a88c837c986db346bcb4fbb1b15ceab6a304347d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062106"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806225"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でデータをスキャンする
 
@@ -91,7 +91,9 @@ PowerShell スクリプトを実行してカタログをブートストラップ
    1. **[概要]** セクションを選択して、 **[サブスクリプション ID]** の GUID を保存します。
 
    > [!NOTE]
-   > 必ず、Azure Purview アカウントを作成したときと同じサブスクリプションを使用してください。 これは、許可リストに追加したのと同じサブスクリプションになります。
+   > - 必ず、Azure Purview アカウントを作成したときと同じサブスクリプションを使用してください。 これは、許可リストに追加したのと同じサブスクリプションになります。
+   > - スターター キットを実行した後、Azure Purview で系列が欠落することがあります。 これは、スターター キットによって作成されたデータ ファクトリに Purview のアクセス許可がないためです。 [**このドキュメント リンク**](how-to-link-azure-data-factory.md#view-existing-data-factory-connections)を選択して、Data Factory が正しく構成され、Purview で適切なロールが割り当てられていることを確認します
+
 
 * CatalogName: [Azure Purview アカウントの作成](create-catalog-portal.md)に関するページで作成した Azure Purview アカウントの名前。
 

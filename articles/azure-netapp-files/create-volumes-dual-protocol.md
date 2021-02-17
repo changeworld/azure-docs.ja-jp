@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 725f15d72694534da1fd924b3b6ffe223722fd3d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052415"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104469"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -140,4 +140,4 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 ## <a name="next-steps"></a>次の手順  
 
 * [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)
-* [デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
+* [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)

@@ -1,23 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーします
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 203b62bdeb2ef83d884188c5d1753b6a70050361
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 1b90ff8969edf3ce2886630dc88c50bc9185b85e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042727"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370854"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -49,10 +44,10 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
       
    ![[新しいデータ ファクトリ] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
-    * **Name** :Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 データ ファクトリをもう一度作成します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
-    * **サブスクリプション** :データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ** :ドロップダウン リストから既存のリソース グループを選択します。 **[新規作成]** オプションを選択し、リソース グループの名前を入力することもできます。 リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
-    * **バージョン** : **[V2]** を選択します。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 データ ファクトリをもう一度作成します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択します。 **[新規作成]** オプションを選択し、リソース グループの名前を入力することもできます。 リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
+    * **バージョン**: **[V2]** を選択します。
     * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
 3. **［作成］** を選択します
@@ -67,7 +62,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 1. **[開始]** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
 
    ![データのコピー ツールのタイル](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「 **CopyFromADLSGen1ToGen2** 」と指定します。 **[次へ]** を選択します。
+2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「**CopyFromADLSGen1ToGen2**」と指定します。 **[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. **[ソース データ ストア]** ページで、 **[+ 新しい接続の作成]** を選択します。
@@ -111,7 +106,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
    
    ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-10. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「 **copyfromadlsgen1** 」と入力し、 **[次へ]** を選択します。 対応する Azure Data Lake Storage Gen2 ファイル システムとサブフォルダーが存在しない場合、Data Factory により、コピー中、それらが作成されます。
+10. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromadlsgen1**」と入力し、 **[次へ]** を選択します。 対応する Azure Data Lake Storage Gen2 ファイル システムとサブフォルダーが存在しない場合、Data Factory により、コピー中、それらが作成されます。
 
     ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 

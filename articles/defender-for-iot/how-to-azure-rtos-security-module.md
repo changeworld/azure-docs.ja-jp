@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9106e00fe2146978f97b480e3afd3b7ed58c9130
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2b7810c0829859f4a104c62b6df2ca0495bac7
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930954"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809203"
 ---
 # <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>Azure RTOS のセキュリティ モジュールを構成およびカスタマイズする (プレビュー)
 
@@ -73,7 +73,7 @@ Azure RTOS 用のセキュリティ モジュールでは、特定のセキュ�
 
 ## <a name="log-analytics-optional"></a>Log Analytics (省略可能)
 
-省略可能で必須ではありませんが、デバイスのイベントとアクティビティをさらに詳しく調査したい場合、Log Analytics を有効にして構成すると役立つ場合があります。 [Defender for IoT と Log Analytics](how-to-security-data-access.md#log-analytics) を設定して使用する方法の詳細を参照してください。 
+省略可能で必須ではありませんが、デバイスのイベントとアクティビティをさらに詳しく調査したい場合、Log Analytics を有効にして構成すると役立つ場合があります。 [Defender for IoT サービスと Log Analytics](how-to-security-data-access.md#log-analytics) を設定して使用する方法の詳細を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 
