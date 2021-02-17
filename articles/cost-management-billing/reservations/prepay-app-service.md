@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577400"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374543"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Azure App Service 予約インスタンスを使用してコストを節約する
 
@@ -37,24 +37,12 @@ Azure App Service Premium v3 予約インスタンスにコミットすると、
 - API を使用して、共有スコープと単一サブスクリプション スコープの両方に対する購入のレコメンデーションを取得できます。 詳細については、「[Reserved instance purchase recommendation APIs for enterprise customers](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)」 (エンタープライズ顧客向けの予約インスタンスの購入に関するレコメンデーション API) を参照してください。
 - Enterprise Agreement (EA) および Microsoft Customer Agreement (MCA) の顧客の場合、共有スコープと単一サブスクリプション スコープにおける購入のレコメンデーションは、[Azure Consumption Insights の Power BI コンテンツ パック](/power-bi/service-connect-to-azure-consumption-insights)で利用できます。
 
-#### <a name="instance-size-flexibility-setting"></a>インスタンス サイズの柔軟性の設定
-
-インスタンス サイズの柔軟性の設定によって、予約インスタンスの割引が適用されるサービスが決まります。
-
-設定がオンかオフかにかかわらず、条件に一致する Premium v3 予約インスタンスの使用量に予約割引が自動適用されます。
-
 ### <a name="analyze-your-usage-information"></a>利用状況の情報を分析する
 
 購入する必要がある予約の決定に役立てるために、利用状況の情報を分析します。 利用状況データは、利用状況ファイルと API で入手できます。 それらをまとめて使用し、購入する予約を決定します。 購入する予約の数量を決定するには、日単位の使用率が高い Premium v3 インスタンスを確認します。
 
 使用状況ファイルは、請求期間と毎日の使用状況別の料金を示しています。 使用状況ファイルのダウンロードについては、「[Azure の使用量と料金の表示とダウンロード](../understand/download-azure-daily-usage.md)」を参照してください。 その後、使用状況ファイルの情報を使用して、[購入する予約を判断する](determine-reservation-purchase.md)ことができます。
 
-### <a name="purchase-restriction-considerations"></a>購入の制限に関する考慮事項
-
-次の Premium v3 インスタンスには予約割引は適用されません。
-
-- **プレビューまたはキャンペーン インスタンス** - プレビュー段階にあるか、プロモーション メーターを使用している Premium v3 予約インスタンスのシリーズまたはサイズ。
-- **クラウド**: ドイツまたは中国の各リージョンでは、予約購入を利用できません。
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Premium v3 予約インスタンスを購入する
 
@@ -79,7 +67,6 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
 | Scope | 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>**単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。 </li><li>**単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。</li><li>**共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。</li></ul> |
 | リージョン | 予約の対象となる Azure リージョン。 |
 | Premium v3 予約インスタンス サイズ | Premium v3 予約インスタンスのサイズです。 |
-| 最適化の対象 | Premium v3 予約インスタンス サイズの柔軟性は既定で選択されています。 インスタンス サイズの柔軟性の値を変更して、同じ [Premium v3 予約インスタンス サイズ グループ](../../virtual-machines/reserved-vm-instance-size-flexibility.md)内の他の Premium v3 予約インスタンスに予約割引を適用するには、 **[詳細設定]** をクリックします。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 それにより、必要なときに Premium v3 予約インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
 | 期間 | 1 年間または 3 年間。 また、HBv2 Premium v3 予約インスタンスでのみ使用できる 5 年間の期間もあります。 |
 | Quantity | 予約内で購入しているインスタンス数。 この数量は、課金の割引を受けることができる実行中の Premium v3 予約インスタンスの数です。 たとえば、米国東部で Standard\_D2 Premium v3 予約インスタンスを 10 個実行している場合、実行中のすべての Premium v3 予約インスタンスのメリットを最大限に利用するには、数量を 10 と指定します。 |
 
