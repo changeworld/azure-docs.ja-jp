@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 02/09/2021
 ms.reviewer: sngun
-ms.openlocfilehash: e227e230c4de1234e068f72958367dc2ac709426
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ee05cbdfb2634ed7c299f736b3343ce2dfbd3520
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881975"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548405"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プル モデル
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "97881975"
 変更フィード プル モデルを使用すると、Azure Cosmos DB の変更フィードを自分のペースで使用できます。 [変更フィード プロセッサ](change-feed-processor.md)で既に行えているのと同様に、変更フィード プル モデルを使用して、複数の変更フィード コンシューマーの変更処理を並列化することができます。
 
 > [!NOTE]
-> 変更フィード プル モデルは、現時点では、[Azure Cosmos DB .NET SDK でのみプレビュー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)段階です。 このプレビューは、他の SDK バージョンではまだ使用できません。
+> 変更フィード プル モデルは、現時点では、[Azure Cosmos DB .NET SDK でのみプレビュー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview)段階です。 このプレビューは、他の SDK バージョンではまだ使用できません。
 
 ## <a name="comparing-with-change-feed-processor"></a>変更フィード プロセッサとの比較
 
@@ -65,19 +65,19 @@ ms.locfileid: "97881975"
 次に、エンティティ オブジェクト (この例では `User` オブジェクト) を返す `FeedIterator` を取得する例を示します。
 
 ```csharp
-FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 次に、`Stream` を返す `FeedIterator` を取得する例を示します。
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 `FeedIterator`に対する `FeedRange` を指定しない場合は、コンテナー全体の変更フィードを独自のペースで処理できます。 すべての変更の読み取りが現在の時刻から開始される例を、次に示します。
 
 ```csharp
-FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Now());
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -103,7 +103,9 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 特定のパーティション キーの変更のみを処理することが必要になる場合があります。 特定のパーティション キーの `FeedIterator` を取得し、その変更をコンテナー全体の場合と同じ方法で処理することができます。
 
 ```csharp
-FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
+FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(
+    ChangeFeedMode.Incremental, 
+    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -147,7 +149,7 @@ FeedRange を使用する場合は、FeedRange を取得して対象のマシン
 マシン 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
     try {
@@ -169,7 +171,7 @@ while (iteratorA.HasMoreResults)
 マシン 2:
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
     try {
@@ -193,7 +195,7 @@ while (iteratorB.HasMoreResults)
 継続トークンを作成すれば、`FeedIterator` の位置を保存できます。 継続トークンとは、FeedIterator が最後に処理した変更を追跡し続ける文字列値のことです。 これにより、後で `FeedIterator` による処理をこの位置から再開できるようになります。 次のコードでは、コンテナーの作成以降の変更フィードを読み取ります。 それ以上読み取るべき変更がなくなると、変更フィードの使用を後で再開できるように継続トークンが保持されます。
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 
 string continuation = null;
 
@@ -216,7 +218,7 @@ while (iterator.HasMoreResults)
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation));
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.ContinuationToken(continuation));
 ```
 
 Cosmos コンテナーが存在する限り、FeedIterator の継続トークンが期限切れになることはありません。

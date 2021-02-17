@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/17/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 367974e214892d4dfefeb138ae5bfa516f49882a
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: d13520a6b2f5e473942d7d0221a4e6f0708b6411
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811570"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522259"
 ---
 # <a name="risk-assessment-reporting"></a>リスク評価レポートの作成
 
@@ -103,7 +103,7 @@ PDF のリスク評価レポートを作成します。 レポート名は、ris
 
 :::image type="content" source="media/how-to-generate-reports/import-logo-screenshot.png" alt-text="[リスク評価] ビューでロゴをインポートする。":::
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [攻撃ベクトル レポートの作成](how-to-create-attack-vector-reports.md)
 

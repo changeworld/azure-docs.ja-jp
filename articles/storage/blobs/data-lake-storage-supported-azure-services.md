@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0dd011d6c1ff631d537dbcadf9a77bbe6d89aa45
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879866"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518801"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされている Azure のサービス
 
@@ -29,7 +29,7 @@ Azure のサービスを使用して、データを取り込み、分析を実�
 |Azure サービス |サポート レベル |Azure AD |共有キー| 関連記事 |
 |---------------|-------------------|---|---|---|
 |Azure Data Factory|一般公開|はい|はい|[Load data into Azure Data Lake Storage Gen2 with Azure Data Factory (Azure Data Factory を使用して Azure Data Lake Storage Gen2 内にデータを読み込む)](../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Databricks|一般公開|はい|はい|[Azure Databricks で使用する](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [クイック スタート: Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する](data-lake-storage-quickstart-create-databricks-account.md) <br>[チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする](data-lake-storage-use-databricks-spark.md)|
+|Azure Databricks|一般公開|はい|はい|[Azure Databricks で使用する](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [クイック スタート: Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する](data-lake-storage-quickstart-create-databricks-account.md) <br>[チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする](data-lake-storage-use-databricks-spark.md)|
 |Azure Event Hub|一般公開|いいえ|はい|[Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする](../../event-hubs/event-hubs-capture-overview.md)|
 |Azure Event Grid|一般公開|はい|はい|[チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する](data-lake-storage-events.md)|
 |Azure Logic Apps|一般公開|いいえ|はい|[概要 - Azure Logic Apps とは](../../logic-apps/logic-apps-overview.md)|

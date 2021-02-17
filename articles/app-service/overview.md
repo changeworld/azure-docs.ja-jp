@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936211"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592332"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -56,7 +56,7 @@ App Service on Linux では、さまざまな言語に固有の組み込みイ�
 
 - App Service on Linux は、[共有](https://azure.microsoft.com/pricing/details/app-service/plans/)価格レベルではサポートされていません。 
 - Windows と Linux のアプリを同じ App Service プランに混在させることはできません。  
-- 同じリソース グループ内では、Windows と Linux のアプリを同じリージョンに混在させることはできません。
+- 従来、同じリソース グループ内に、Windows と Linux のアプリを混在させることはできませんでした。 ただし、2021 年 1 月 21 日以降に作成されたすべてのリソース グループでは、このシナリオがサポートさえます。 2021 年 1 月 21 日より前に作成されたリソース グループについては、混在するプラットフォーム デプロイを追加する機能は、近日中に Azure リージョン (国内クラウド リージョンを含む) 全体にロールアウトされます。
 - Azure portal では、Linux アプリで現在動作している機能のみが表示されます。 機能が有効になると、ポータルでアクティブになります。
 - 組み込みイメージにデプロイされているコードとコンテンツには、Azure Storage によってサポートされる、Web コンテンツ用のストレージ ボリュームが割り当てられます。 このボリュームのディスク待ち時間は、コンテナー ファイルシステムの待ち時間よりも長く、可変です。 コンテンツ ファイルに対する高負荷の読み取り専用アクセスが必要なアプリでは、コンテンツ ボリュームではなく、コンテナー ファイルシステムにファイルを配置するカスタム コンテナー オプションを使用した方が有益な場合があります。
 

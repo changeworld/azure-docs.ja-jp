@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/01/2020
+ms.date: 02/03/2021
 ms.author: radeltch
-ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 631ebcd41e50a6b8f9e049a646394e572c0b15f7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486344"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549322"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -294,16 +294,17 @@ sudo pcs property set stonith-timeout=900
 </code></pre>
 
 > [!NOTE]
-> 'pcmk_host_map' のオプションは、RHEL ホスト名と Azure ノード名が同一でない場合のみ、このコマンドで必要です。 このコマンドの太字のセクションを参照してください。
+> 'pcmk_host_map' のオプションは、RHEL ホスト名と Azure VM 名が同一でない場合のみ、このコマンドで必要です。 **hostname:vm-name** の形式でマッピングを指定します。
+> このコマンドの太字のセクションを参照してください。 詳細については、[pcmk_host_map で stonith デバイスへのノード マッピングを指定する場合に使用する形式](https://access.redhat.com/solutions/2619961)に関するページを参照してください。
 
 RHEL **7.X** の場合は、次のコマンドを使用してフェンス デバイスを構成します。    
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
 RHEL **8.X** の場合は、次のコマンドを使用してフェンス デバイスを構成します。  
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

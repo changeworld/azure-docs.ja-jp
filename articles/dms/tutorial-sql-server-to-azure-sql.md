@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 23bc476c0d4fd90e19428d52b1468d090ffe2a1b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785365"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820791"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する
 
@@ -237,6 +237,9 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 1. **[ターゲットの選択]** 画面で、ターゲットの Azure SQL Database の接続の詳細を指定します。これは、Data Migration Assistant を使用して **Adventureworks2016** スキーマがデプロイされた、事前プロビジョニング済みの Azure SQL Database です。
 
     ![ターゲットを選択する](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
+    
+    > [!NOTE]
+    > ターゲット Azure SQL Database へのプライベート エンドポイント接続は、カスタム DNS 名を使用している場合を除き、Azure Database Migration Service によってサポートされます。 
 
 2. **Next:ターゲット データベースへマッピング** を選択し、移行用のソース データベースとターゲット データベースをマップします。
 

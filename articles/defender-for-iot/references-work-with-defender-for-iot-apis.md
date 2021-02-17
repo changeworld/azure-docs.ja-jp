@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: ae7965dd319f2ff885f4329262ae4772452afd62
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222140"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523245"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -2654,6 +2654,6 @@ response:
 
 ## <a name="next-steps"></a>次のステップ
 
-- [デバイス インベントリのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[デバイス インベントリのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 
-- [デバイス インベントリのすべてのエンタープライズ センサー検出を調査する](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+[デバイス インベントリのすべてのエンタープライズ センサー検出を調査する](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

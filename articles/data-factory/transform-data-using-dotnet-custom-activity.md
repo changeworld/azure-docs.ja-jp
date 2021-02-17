@@ -1,21 +1,18 @@
 ---
 title: パイプラインでカスタム アクティビティを使用する
 description: .NET を使用してカスタム アクティビティを作成し、Azure Data Factory パイプラインでアクティビティを使用する方法について説明します。
-services: data-factory
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632109"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374798"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 
@@ -108,7 +105,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | はい      |
 | command               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | はい      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ &#42;       |
-| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。<br/><br/>依存関係ファイルをサブフォルダーに置いている場合 (つまり、 *folderPath* の下のフォルダー階層構造内に置いている場合)、現在の動作では、ファイルが Azure Batch にコピーされるときに、フォルダー構造がフラット化されます。 つまり、すべてのファイルは、サブフォルダーを使用せず、1 つのフォルダーにコピーされます。 この問題を回避するには、ファイルを圧縮し、圧縮されたファイルをコピーした後、目的の場所でカスタム コードと共に解凍することを検討してください。 | いいえ &#42;       |
+| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。<br/><br/>依存関係ファイルをサブフォルダーに置いている場合 (つまり、*folderPath* の下のフォルダー階層構造内に置いている場合)、現在の動作では、ファイルが Azure Batch にコピーされるときに、フォルダー構造がフラット化されます。 つまり、すべてのファイルは、サブフォルダーを使用せず、1 つのフォルダーにコピーされます。 この問題を回避するには、ファイルを圧縮し、圧縮されたファイルをコピーした後、目的の場所でカスタム コードと共に解凍することを検討してください。 | いいえ &#42;       |
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ       |
 | extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ       |
 | retentionTimeInDays | カスタム アクティビティ用に送信するファイルのリテンション期間。 既定値は 30 日です。 | いいえ |
@@ -120,7 +117,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 
 ## <a name="custom-activity-permissions"></a>カスタム アクティビティのアクセス許可
 
-カスタム アクティビティでは、Azure Batch の自動ユーザー アカウントが " *タスク スコープのある管理者以外のアクセス* " (既定の自動ユーザーの仕様) に設定されます。 自動ユーザー アカウントのアクセス許可レベルを変更することはできません。 詳細については、[「Batch のユーザー アカウントでタスクを実行する」の「自動ユーザー アカウント」](../batch/batch-user-accounts.md#auto-user-accounts)を参照してください。
+カスタム アクティビティでは、Azure Batch の自動ユーザー アカウントが "*タスク スコープのある管理者以外のアクセス*" (既定の自動ユーザーの仕様) に設定されます。 自動ユーザー アカウントのアクセス許可レベルを変更することはできません。 詳細については、[「Batch のユーザー アカウントでタスクを実行する」の「自動ユーザー アカウント」](../batch/batch-user-accounts.md#auto-user-accounts)を参照してください。
 
 ## <a name="executing-commands"></a>コマンドの実行
 
@@ -310,7 +307,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString 出力の取得
 
-*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、 *SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 次に例を示します。
+*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 次に例を示します。
 
 ```json
 "extendedProperties": {

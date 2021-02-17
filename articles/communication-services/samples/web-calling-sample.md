@@ -9,42 +9,34 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763047"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592791"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
+
+Web 通話サンプルは、Communication Services の Web 通話クライアント ライブラリが提供するさまざまな機能の詳細なチュートリアルとして機能する Web アプリケーションです。 
+
+このサンプルは開発者向けに構築されたもので、これにより Communication Services を簡単に使い始めることができます。 そのユーザー インターフェイスは複数のセクションに分かれており、それぞれに [Show code]\(コードの表示\) ボタンが用意されています。これを使用すると、ブラウザーから自分の Communication Services アプリケーションに直接コードをコピーすることができます。
+
+## <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [このサンプルは GitHub で入手できます](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)。
 
-Azure Communication Services の **Web 通話サンプル** では、Communication Services の通話クライアント ライブラリを使用して、JavaScript で通話エクスペリエンスを構築する方法を示します。
-
-このサンプルのクイックスタートでは、サンプルをローカル コンピューターで実行する前に、サンプルがどのように動作するかを学習します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
-
-## <a name="overview"></a>概要
-
-Web 通話サンプルは、Communication Services の Web 通話クライアント ライブラリが提供するさまざまな機能の詳細なチュートリアルとして機能する Web アプリケーションです。 
-
-このサンプルは開発者向けに構築されたもので、これにより Communication Services を簡単に使い始めることができます。 そのユーザー インターフェイスは複数のセクションに分かれており、それぞれに [Show code]\(コードの表示\) ボタンが用意されています。これを使用すると、ブラウザーから自分の Communication Services アプリケーションに直接コードをコピーすることができます。
-
-[Web 通話サンプル](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)をマシンで実行していると、次のランディング ページが表示されます。
+/Project/readme.md に従ってプロジェクトを設定し、お使いのマシンでローカルに実行します。
+[Web 通話サンプル](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)をマシンで実行すると、次のランディング ページが表示されます。
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web 通話のチュートリアル 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-
 ## <a name="user-provisioning-and-sdk-initialization"></a>ユーザーのプロビジョニングと SDK の初期化 
-
-このデモの使用を開始するには、お使いの [Communication Services リソース](../quickstarts/create-communication-resource.md)の接続文字列を `config.json` に入力します。 これは、通話 SDK を初期化できるように[ユーザー アクセス トークン](../concepts/authentication.md)をプロビジョニングするために使用されます。
-
-ユーザー ID の入力には自分の個人識別子を入力します。 ここに何も指定しないと、ランダムなユーザー ID が生成されます。 
 
 [Provisioning user and initialize SDK]\(ユーザーのプロビジョニングと SDK の初期化\) をクリックすると、バックエンドのトークン プロビジョニング サービスによってプロビジョニングされたトークンを使用して SDK が初期化されます。 このバックエンド サービスは `/project/webpack.config.js` にあります。
 
