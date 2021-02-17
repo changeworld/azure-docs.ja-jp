@@ -1,22 +1,17 @@
 ---
 title: オンプレミスの SQL Server Integration Services (SSIS) ジョブを Azure Data Factory に移行する
 description: この記事では、SQL Server Management Studio を使用して、SQL Server Integration Services (SSIS) のジョブを Azure Data Factory のパイプライン、アクティビティ、トリガーに移行する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: ec10abfd6f2fc221a9e86203b2faa0d173d67675
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555748"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379592"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS を使用して SQL Server エージェント ジョブを ADF に移行する
 

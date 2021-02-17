@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 7d53df4159c071c17657e8a8367da605b6a5dc9e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964373"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556179"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -185,5 +185,5 @@ ms.locfileid: "97964373"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用して Azure でのロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)
 - [Azure RBAC のトラブルシューティング](troubleshooting.md)

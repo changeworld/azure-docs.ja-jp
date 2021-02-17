@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575807"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545940"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -124,8 +124,6 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 ### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
 
 次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールを付与します。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。 プレースホルダーにリソースの詳細を入力します (お使いの Azure Digital Twins インンスタンスの URL は、*https://* で始まるホスト名であることに注意してください)。
 

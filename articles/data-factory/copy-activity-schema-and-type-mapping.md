@@ -1,22 +1,17 @@
 ---
 title: コピー アクティビティでのスキーマとデータ型のマッピング
 description: Azure Data Factory のコピー アクティビティによって、スキーマとデータ型が、ソース データからシンク データにどのようにマップされるかについて説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702221"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392784"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマとデータ型のマッピング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248647"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807769"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -41,7 +41,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
 ### <a name="geographical-availability-and-data-residency"></a>リージョン別の提供状況とデータの保存場所
 
-- Azure Sentinel は、中国およびドイツ (ソブリン) リージョンを除く、[Log Analytics のほとんどの GA リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Log Analytics の新しいリージョンでは、Sentinel サービスのオンボードに時間がかかる場合があります。 
+- Azure Sentinel は、中国およびドイツ (ソブリン) リージョンを除く、[Log Analytics のほとんどの GA リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Log Analytics の新しいリージョンでは、Azure Sentinel サービスのオンボードに時間がかかる場合があります。 
 
 - インシデント、ブックマーク、分析ルールなど、Azure Sentinel によって生成されたデータには、顧客の Log Analytics ワークスペースをソースとする顧客データが含まれている可能性があります。 Azure Sentinel で生成されたこのデータは、ワークスペースが配置されている地理的な場所に応じて、次の表に示す地理的な場所に保存されます。
 

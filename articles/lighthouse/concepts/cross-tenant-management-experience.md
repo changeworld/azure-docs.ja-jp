@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 01/26/2021
+ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9af90e10d889c3d30375e001891ce0dc70767ab4
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b76723c9ea94581561f5bdb04ea1fd8335da77b7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881403"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981087"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -98,6 +98,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - すべてのサブスクリプションにわたるアラートを表示する機能を使って、委任されたサブスクリプションに対するアラートを表示および更新する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - [ログ分析](../../azure-monitor/platform/service-providers.md):複数のテナントにあるリモートのワークスペースからデータを照会する (顧客テナントのワークスペースからデータにアクセスするために使用される Automation アカウントは、同じテナント内に作成する必要があることに注意してください)
+- [顧客のテナント内でアクティビティ ログ アラートの作成、表示、および管理を行う](../../azure-monitor/platform/alerts-activity-log.md)
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
 - 顧客テナント内で[診断設定](../..//azure-monitor/platform/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
@@ -142,7 +143,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel リソースを管理する
 - [複数のテナントにわたる攻撃を追跡し、セキュリティ アラートを表示する](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- テナント間に分散している複数の Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
+- テナント間に分散している複数の Azure Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
 
 [Azure Service Health](../../service-health/index.yml):
 
@@ -164,6 +165,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 サポート リクエスト:
 
 - Azure portal で、委任されたリソースに対する [サポート リクエストを **[ヘルプとサポート]** で開く](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) (委任されたスコープで利用可能なサポート プランを選択する)
+- [Azure クォータ API](/rest/api/reserved-vm-instances/quotaapi) を使用して、委任された顧客リソースの Azure サービス クォータを表示および管理する
 
 ## <a name="current-limitations"></a>現在の制限
 

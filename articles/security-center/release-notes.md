@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916467"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551027"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -29,6 +29,56 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 > [!TIP]
 > 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
+
+
+## <a name="february-2021"></a>2021 年 2 月
+
+2 月の更新プログラムには次のものが含まれます。
+
+- [Kubernetes ワークロード保護の推奨事項が一般提供 (GA) リリース](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [[推奨事項の詳細] ページからポリシーへの直接リンク](#direct-link-to-policy-from-recommendation-details-page)
+- [SQL データ分類の推奨事項がセキュリティ スコアに影響しなくなった](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [規制コンプライアンス評価の変更によって、ワークフロー自動化をトリガー可能 (プレビュー)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+
+### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes ワークロード保護の推奨事項が一般提供 (GA) リリース
+
+Kubernetes ワークロード保護に関する一連の推奨事項が一般提供 (GA) されたことをお知らせします。
+
+Security Center では、Kubernetes ワークロードが既定で確実に保護されるように、Kubernetes 受付制御を含む適用オプションなど、Kubernetes レベルの強化の推奨事項が追加されました。
+
+Azure Kubernetes Service (AKS) クラスターに Kubernetes 用 Azure Policy アドオンをインストールすると、Kubernetes API サーバーに対するすべての要求が、クラスターに保存される前に、事前定義された一連のベスト プラクティス (13 個のセキュリティ推奨事項として表示されます) を基準にして監視されます。 その後、ベスト プラクティスを適用し、それを将来のワークロードに対して要求するように構成できます。
+
+たとえば、特権コンテナーが作成されないように要求することができます。また、今後の特権コンテナー作成要求はすべてブロックされます。
+
+詳細については、[Kubernetes 受付制御を使用したワークロード保護のベスト プラクティス](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)に関するページを参照してください。
+
+> [!NOTE]
+> 推奨事項がプレビュー段階の間、これらによって AKS クラスター リソースが異常な状態にあると表示されることはありませんでした。これらの推奨事項は、セキュリティ スコアの計算には含まれていませんでした。 このたびの GA の発表により、これらがスコア計算に含まれるようになります。 その修復がまだ済んでいない場合、これが原因でセキュア スコアに若干の影響が生じる可能性があります。 「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」の説明に従って、可能な限りそれらを修復してください。
+
+
+### <a name="direct-link-to-policy-from-recommendation-details-page"></a>[推奨事項の詳細] ページからポリシーへの直接リンク
+
+推奨事項の詳細を確認しているときに、基になるポリシーを参照できると有益な場合が多くあります。 ポリシーによってサポートされているすべての推奨事項について、[推奨事項の詳細] ページに新しいリンクが追加されました。
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="推奨事項をサポートする特定のポリシーが記載されている Azure Policy ページへのリンク":::
+
+ポリシー定義を表示し、評価ロジックを確認するには、このリンクを使用します。 
+
+[セキュリティの推奨事項に関するリファレンス ガイド](recommendations-reference.md)に記載されている推奨事項の一覧を確認している場合も、ポリシー定義のページへのリンクが表示されます。
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Azure Security Center 推奨事項のリファレンス ページから、特定のポリシーに関する Azure Policy ページへの直接アクセス" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
+
+
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL データ分類の推奨事項がセキュリティ スコアに影響しなくなった
+
+**SQL データベースの機密データを分類する必要がある** という推奨事項が、セキュリティ スコアに影響することはなくなりました。 これは、**データ分類の適用** セキュリティ コントロールの唯一の推奨事項であり、このコントロールのセキュリティ スコアの値は 0 になりました。
+
+
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>規制コンプライアンス評価の変更によって、ワークフロー自動化をトリガー可能 (プレビュー)
+
+ワークフロー自動化のトリガー オプションに、規制コンプライアンス評価の変更という 3 つ目のデータの種類が追加されました。
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="規制コンプライアンス評価の変更を使用した、ワークフロー自動化のトリガー" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ## <a name="january-2021"></a>2021 年 1 月
@@ -102,9 +152,12 @@ Azure 以外のマシンで Azure Arc を有効にした場合、Security Center
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Secure Scores API が一般提供 (GA) リリース
 
-[Secure Scores API](/rest/api/securitycenter/securescores/) を使用してスコアにアクセスできるようになりました。 この API メソッドを使用すると、データに対してクエリを実行したり、一定期間のセキュリティ スコアをレポートする独自のメカニズムを構築したりするための柔軟性が得られます。 たとえば、**Secure Scores** API を使用して、特定のサブスクリプションのスコアを取得できます。 また、**Secure Score Controls** API を使用して、サブスクリプションのセキュリティ コントロールと現在のスコアを一覧表示できます。
+[Secure Scores API](/rest/api/securitycenter/securescores/) を使用してスコアにアクセスできるようになりました。 この API メソッドを使用すると、データに対してクエリを実行したり、一定期間のセキュリティ スコアをレポートする独自のメカニズムを構築したりするための柔軟性が得られます。 次に例を示します。
 
-セキュリティ スコア API で実現可能な外部ツールの例については、「[GitHub コミュニティのセキュリティ スコア エリア](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)」を参照してください。
+- **Secure Scores** API を使用して、特定のサブスクリプションのスコアを取得する
+- **Secure Score Controls** API を使用して、サブスクリプションのセキュリティ コントロールと現在のスコアを一覧表示する
+
+Secure Scores API で実現可能な外部ツールについては、[GitHub コミュニティのセキュリティ スコアの領域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)を参照してください。
 
 詳細については、[Azure Security Center のセキュリティ スコアとセキュリティ コントロール](secure-score-security-controls.md)に関するページを参照してください。
 
@@ -115,7 +168,7 @@ Azure 以外のマシンで Azure Arc を有効にした場合、Security Center
 
 サブドメインの乗っ取りが発生すると、脅威アクターが悪意のあるアクティビティを実行しているサイトに、組織のドメイン向けのトラフィックをリダイレクトできるようになります。
 
-今後は、App Service Web サイトの使用を停止する際、Azure Defender for App Service によって未解決の DNS エントリが検出されます。 DNS エントリの参照先リソースが存在せず、Web サイトがサブドメインの乗っ取りに対して無防備になる瞬間です。 これらの保護は、ドメインの管理に Azure DNS を使用しているか、外部のドメイン レジストラーを使用しているかに関係なく利用でき、Windows 上の App Service と Linux 上の App Service の両方に適用されます。
+今後は、App Service Web サイトの使用を停止する際、Azure Defender for App Service によって未解決の DNS エントリが検出されます。 このような場合、DNS エントリの参照先リソースが存在せず、Web サイトがサブドメインの乗っ取りに対して無防備になります。 これらの保護は、ドメインの管理に Azure DNS を使用しているか、外部のドメイン レジストラーを使用しているかに関係なく利用でき、Windows 上の App Service と Linux 上の App Service の両方に適用されます。
 
 詳細情報:
 
@@ -156,7 +209,7 @@ Security Center のメニューから、 **[マルチ クラウド コネクタ]
 
 現在、Microsoft では、推奨事項全体を除外できるように機能を拡張しています。 サブスクリプション、管理グループ、またはリソースに対して Security Center が行うセキュリティの推奨事項を微調整できるよう、さまざまなオプションを追加しているところです。
 
-まれに、サードパーティ ツールによって問題が解決済みであるにもかかわらず、Security Center で検出されず、リソースが異常として表示されてしまうことがあります。 または、推奨事項が属していないと思われるスコープに表示されます。 この推奨事項は、特定のサブスクリプションに適していない可能性があります。 または、ご自分の組織が、単に特定のリソースまたは推奨事項に関連するリスクを受け入れることにしたのかもしれません。
+まれに、サードパーティ ツールによって問題が解決済みであるにもかかわらず、Security Center で検出されず、リソースが異常として表示されてしまうことがあります。 または、推奨事項が属していないと思われるスコープに表示されます。 この推奨事項は、特定のサブスクリプションに適していない可能性があります。 または、ご自分の組織が、特定のリソースまたは推奨事項に関連するリスクを受け入れることにしたのかもしれません。
 
 このプレビュー機能では、推奨事項の除外を作成できるようになりました。
 
@@ -347,7 +400,7 @@ Azure Security Center のインベントリ ページが更新され、次の変
 - **[Guides and feedback]\(ガイドとフィードバック\)** がツール バーに追加されました。 これにより、関連する情報やツールへのリンクがあるペインが開きます。 
 - **サブスクリプション フィルター** が、リソースで使用可能な既定のフィルターに追加されました。
 - 現在のフィルター オプションを Azure Resource Graph クエリとして開くための **[クエリを開く]** リンク (以前は "Resource Graph エクスプローラーで表示" という名前でした)。
-- 各フィルターの **演算子オプション**。 "=" に加えて追加の論理演算子を選択できるようになりました。 たとえば、タイトルに "encrypt" という文字列が含まれているアクティブな推奨事項があるすべてのリソースを検索することができます。 
+- 各フィルターの **演算子オプション**。 "=" に加えて他の論理演算子も選択できるようになりました。 たとえば、タイトルに "encrypt" という文字列が含まれているアクティブな推奨事項があるすべてのリソースを検索することができます。 
 
     :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="資産インベントリのフィルターでの演算子オプションのコントロール":::
 
@@ -371,7 +424,7 @@ Azure Security Center では、接続されているすべてのリソースを�
 
 Security Center のカバレッジと機能が拡張されるにつれて、セキュリティに関する推奨事項の一覧が毎月増えていきます。 たとえば、「[Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)」を参照してください。
 
-一覧が増加するのに伴い、フィルターを使用して最も関心のある推奨事項を絞り込む機能が求められるようになりました。 11 月に、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)」を参照してください)。
+一覧が増加するのに伴い、最も関心のあるものを見つけることができるように、フィルターを使用して推奨事項を絞り込む機能が求められるようになりました。 11 月に、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)」を参照してください)。
 
 この月に追加されたフィルターには、次の条件で推奨事項の一覧を絞り込むためのオプションがあります。
 
@@ -453,7 +506,7 @@ Azure セキュリティ ベンチマークは Microsoft が作成したもの�
 
 NIST SP 800-171 R2 標準が、Azure Security Center の法令遵守ダッシュボードで使用するための組み込みイニシアティブとして使用できるようになりました。 コントロールのマッピングの詳細については、「[NIST SP 800-171 R2 規制コンプライアンスの組み込みイニシアチブの詳細](../governance/policy/samples/nist-sp-800-171-r2.md)」を参照してください。 
 
-標準をサブスクリプションに適用し、対応状態を継続的に監視するには、「[規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)」の手順を使用します。
+標準をサブスクリプションに適用し、コンプライアンス状態を継続的に監視するには、「[規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)」の手順を使用します。
 
 :::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="Security Center の法令遵守ダッシュボードでの NIST SP 800 171 R2 標準":::
 
@@ -475,7 +528,7 @@ NIST SP 800-171 R2 標準が、Azure Security Center の法令遵守ダッシュ
 
 自動プロビジョニング機能は、Security Center の保護によるメリットが得られるように、必要な拡張機能を新規および既存の Azure VM にインストールすることで管理オーバーヘッドの削減を支援します。 
 
-Azure Security Center の拡大に伴って、より多くの拡張機能が開発されています。Security Center では、リソースの種類の大規模な一覧を監視できます。 自動プロビジョニング ツールが拡張され、Azure Policy の機能を活用して、追加の拡張機能とリソースの種類がサポートされるようになりました。
+Azure Security Center の拡大に伴って、より多くの拡張機能が開発されています。Security Center では、リソースの種類の大規模な一覧を監視できます。 Azure Policy の機能を活用することで、自動プロビジョニング ツールが拡張され、他の拡張機能とリソースの種類がサポートされるようになりました。
 
 次の自動プロビジョニングを構成できるようになりました。
 
@@ -699,7 +752,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 ### <a name="security-center-gets-a-new-look"></a>Security Center の外観の変更
 
-Security Center のポータル ページの UI が更新されました。 新しいページには、新しい概要ページと、セキュリティ スコア、資産インベントリ、および Azure Defender のダッシュボードが含まれています。
+Security Center のポータル ページの UI が更新されました。 新しいページには、新しい概要ページと、セキュリティ スコア、資産インベントリ、および Azure Defender の各ダッシュボードが含まれています。
 
 新しいデザインの概要ページには、セキュリティ スコア、資産インベントリ、Azure Defender の各ダッシュボードにアクセスするためのタイルが追加されました。 規制コンプライアンス ダッシュボードにリンクしているタイルもあります。
 
@@ -892,114 +945,3 @@ Security Center は、セキュリティの問題について、リソース、�
 推奨事項の詳細ページに、更新間隔インジケーター (関連する場合) が追加され、推奨事項の重大度が明確に表示されるようになりました。
 
 :::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="更新間隔と重大度が表示されている推奨事項ページ":::
-
-
-
-## <a name="august-2020"></a>2020 年 8 月
-
-8 月の更新プログラムには次のものが含まれます。
-
-- [資産インベントリ - 資産のセキュリティ態勢の強力な新しいビュー](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
-- [Azure Active Directory のセキュリティの既定値群 (多要素認証用) のサポートの追加](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
-- [サービス プリンシパルに関する推奨事項の追加](#service-principals-recommendation-added)
-- [VM の脆弱性評価 - 推奨事項とポリシーの統合](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
-- [ASC_default イニシアティブに追加された新しい AKS セキュリティ ポリシー – プライベート プレビューのお客様のみ使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
-
-
-### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>資産インベントリ - 資産のセキュリティ態勢の強力な新しいビュー
-
-Security Center の資産インベントリ (現在プレビュー) を使用すると、Security Center に接続したリソースのセキュリティ態勢を確認することができます。
-
-Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。 いずれかのリソースに未処理の推奨事項がある場合は、インベントリに表示されます。
-
-ビューとそのフィルターを使用して、セキュリティの態勢データを調査し、結果に基づいてさらにアクションを実行できます。
-
-[資産インベントリ](asset-inventory.md)の詳細を確認してください。
-
-
-### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Azure Active Directory のセキュリティの既定値群 (多要素認証用) のサポートの追加
-
-Security Center に、Microsoft の無料の ID セキュリティ保護である[セキュリティの既定値群](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の完全なサポートが追加されました。
-
-セキュリティの既定値群により、構成済みの ID セキュリティ設定が提供され、組織は一般的な ID 関連の攻撃から保護されます。 セキュリティの既定値群により、500 万個以上のテナント全体が既に保護されています。50,000 個のテナントも Security Center によって保護されています。
-
-Security Center では現在、セキュリティの既定値群が有効になっていない Azure サブスクリプションを識別した時点で、セキュリティの推奨事項を提供します。 Security Center ではこれまで、Azure Active Directory (AD) Premium ライセンスの一部である条件付きアクセスを使用した多要素認証の有効化を推奨していました。 Azure AD Free をご利用のお客様には、セキュリティの既定値群を有効にすることを現在お勧めしています。 
-
-私たちの目標は、より多くのお客様に対して、MFA を使用してクラウド環境をセキュリティで保護し、[セキュリティ スコア](secure-score-security-controls.md)に対しても最もインパクトの高いリスクの 1 つを軽減することを推奨することです。
-
-[セキュリティの既定値群](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の詳細を確認してください。
-
-
-### <a name="service-principals-recommendation-added"></a>サービス プリンシパルに関する推奨事項の追加
-
-管理証明書を使用してサブスクリプションを管理している Security Center のお客様に対してサービス プリンシパルへの切り替えを推奨するための、新しい推奨事項が追加されました。
-
-推奨事項 **[管理証明書の代わりにサブスクリプションを保護するために、サービス プリンシパルを使用する必要があります]** は、サービスプリンシパルまたは Azure Resource Manager を使用してサブスクリプションをより安全に管理することをお勧めするものです。 
-
-「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)」で詳細を確認してください。
-
-
-### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>VM の脆弱性評価 - 推奨事項とポリシーの統合
-
-Security Center では、VM を調べて脆弱性評価ソリューションが実行されているかどうかを検出します。 脆弱性評価ソリューションが検出されない場合、Security Center によって、展開を簡略化するための推奨事項が示されます。
-
-脆弱性が発見された場合、調査結果をまとめた推奨事項が Security Center によって示され、必要に応じて調査および修復できるようにします。
-
-使用されているスキャナーの種類に関係なく、すべてのユーザーに一貫したエクスペリエンスを提供できるように、4 つの推奨事項を次の 2 つに統合しました。
-
-|統合された推奨事項|変更の説明|
-|----|:----|
-|**脆弱性評価ソリューションを仮想マシンで有効にする必要がある**|次の 2 つの推奨事項の代わりとなります。<br> **•** 組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用) (現在は非推奨) (Standard レベルに組み込み)<br> **•** 脆弱性評価ソリューションを仮想マシンにインストールする必要がある (現在は非推奨) (Standard と Free レベル)|
-|**仮想マシンの脆弱性を修復する必要がある**|次の 2 つの推奨事項の代わりとなります。<br>**•** 仮想マシンで検出された脆弱性を修復する (Qualys を利用) (現在は非推奨)<br>**•** 脆弱性評価ソリューションによって脆弱性を修復する必要がある (現在は非推奨)|
-|||
-
-これで、同じ推奨事項を利用して、Security Center の脆弱性評価拡張機能、または Qualys や Rapid7 などの、パートナーからプライベートにライセンス供与されたソリューション ("BYOL") をデプロイすることになります。
-
-また、脆弱性が検出され、Security Center に報告された場合、その脆弱性を特定した脆弱性評価ソリューションに関係なく、1 つの推奨事項によって調査結果がアラートとして通知されます。
-
-#### <a name="updating-dependencies"></a>依存関係の更新
-
-以前の推奨事項またはポリシーのキー/名前を参照するスクリプト、クエリ、または自動化がある場合は、次の表を利用してその参照を更新します。
-
-##### <a name="before-august-2020"></a>2020 年 8 月より前
-
-|推奨|Scope|
-|----|:----|
-|**組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用)**<br>キー:550e890b-e652-4d22-8274-60b3bdb24c63|組み込み|
-|**仮想マシンで検出された脆弱性を修復する (Qualys を利用)**<br>キー:1195afff-c881-495e-9bc5-1486211ae03f|組み込み|
-|**脆弱性評価ソリューションを仮想マシンにインストールする必要があります**<br>キー:01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
-|**脆弱性評価ソリューションによって脆弱性を修復する必要がある**<br>キー:71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
-
-
-|ポリシー|Scope|
-|----|:----|
-|**仮想マシンで脆弱性評価を有効にする必要がある**<br>ポリシー ID:501541f7-f7e7-4cd6-868c-4190fdad3ac9|組み込み|
-|**脆弱性評価ソリューションによって脆弱性を修復する必要がある**<br>ポリシー ID:760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
-
-
-##### <a name="from-august-2020"></a>2020 年 8 月以降
-
-|推奨|Scope|
-|----|:----|
-|**脆弱性評価ソリューションを仮想マシンで有効にする必要がある**<br>キー: ffff0522-1e88-47fc-8382-2a80ba848f5d|組み込み + BYOL|
-|**仮想マシンの脆弱性を修復する必要がある**<br>キー:1195afff-c881-495e-9bc5-1486211ae03f|組み込み + BYOL|
-||||
-
-|ポリシー|Scope|
-|----|:----|
-|[**仮想マシンで脆弱性評価を有効にする必要がある**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ポリシー ID:501541f7-f7e7-4cd6-868c-4190fdad3ac9 |組み込み + BYOL|
-||||
-
-
-### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>ASC_default イニシアティブに追加された新しい AKS セキュリティ ポリシー – プライベート プレビューのお客様のみ使用
-
-Kubernetes ワークロードが既定で確実に保護されるように、Security Center によって、Kubernetes 受付制御を含む適用オプションなど、Kubernetes レベル ポリシーが追加され、レコメンデーションが強化されます。
-
-このプロジェクトの早期段階には、プライベート プレビューが含まれ、(既定では無効になっている) 新しいポリシーが ASC_default イニシアティブに追加されます。
-
-このようなポリシーは無視しても問題ありません。お使いの環境に影響が出ることはありません。 有効にする場合、 https://aka.ms/SecurityPrP でプレビューに新規登録し、次のオプションから選択します。
-
-1. **シングル プレビュー** – このプライベート プレビューのみに参加します。 参加するプレビューとして "ASC Continuous Scan" を明示的に伝えます。
-1. **継続的プログラム** – これと将来のプライベート プレビューに追加します。 プロファイルとプライバシー契約を完了する必要があります。

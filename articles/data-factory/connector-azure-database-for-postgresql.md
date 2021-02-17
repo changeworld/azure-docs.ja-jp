@@ -1,22 +1,18 @@
 ---
 title: Azure Database for PostgreSQL のデータのコピーと変換
 description: Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223095"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381326"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する
 
@@ -73,7 +69,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 **例**:
 
-"**_Azure Key Vault にパスワードを格納する_* _"
+***Azure Key Vault にパスワードを格納する***
 
 ```json
 {
@@ -99,7 +95,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」を参照してください。 このセクションでは、Azure Database for PostgreSQL がデータセットでサポートするプロパティの一覧を示します。
 
-Azure Database for PostgreSQL からデータをコピーするには、データセットの type プロパティを _*AzurePostgreSqlTable** に設定します。 次のプロパティがサポートされています。
+Azure Database for PostgreSQL からデータをコピーするには、データセットの type プロパティを **AzurePostgreSqlTable** に設定します。 次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

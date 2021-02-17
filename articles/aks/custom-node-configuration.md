@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 589081149d08983d3cd5a4a8822873f5a6cfca0e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735266"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559443"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Azure Kubernetes Service (AKS) ノード プールのノード構成をカスタマイズする (プレビュー)
 
@@ -166,7 +166,7 @@ az extension update --name aks-preview
 }
 ```
 
-前の手順で作成した JSON ファイルを使用して、Kublet と OS の構成を指定する新しいクラスターを作成します。 
+前の手順で作成した JSON ファイルを使用して、kubelet と OS の構成を指定する新しいクラスターを作成します。 
 
 > [!NOTE]
 > クラスターを作成するときに、Kubelet の構成、OS の構成、またはその両方を指定できます。 クラスターを作成するときに構成を指定した場合、初期ノード プール内のノードにのみ、その構成が適用されます。 JSON ファイルで構成されていない設定は、既定値のままになります。

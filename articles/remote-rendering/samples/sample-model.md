@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6817601659c841ca98031f4e3e1590743bbed171
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507537"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530537"
 ---
 # <a name="sample-models"></a>サンプル モデル
 
@@ -26,7 +26,7 @@ URL **builtin://Engine** を使用していつでも読み込むことができ�
 
 | 名前 | 値 |
 |-----------|:-----------|
-| [必要なサーバー サイズ](../how-tos/session-rest-api.md#create-a-session) | standard |
+| [必要なサーバー サイズ](../reference/vm-sizes.md) | standard |
 | 三角形の数 | 1870 万 |
 | 可動パーツの数 | 2073 |
 | 素材の数 | 94 |

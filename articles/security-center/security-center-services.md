@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 04dfd731f1dcf0e9e7c045e0f7ef335c8db5b359
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 0e1f669b6955d5c5b70f2f29ff39ba5aef0a9a56
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805622"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544818"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -54,7 +54,7 @@ ms.locfileid: "98805622"
 
 |**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure Arc 対応マシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender for Endpoint 統合](security-center-wdatp.md)|-|-|-|はい|
+|[Microsoft Defender for Endpoint 統合](security-center-wdatp.md)|-|-|-|-|
 |[仮想マシン行動分析 (およびセキュリティ アラート)](./azure-defender.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|はい|
 |[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
@@ -96,10 +96,8 @@ ms.locfileid: "98805622"
 | Trend Micro – Deep Security | Windows Server ファミリ  | いいえ | はい |
 | Symantec v12.1.1100 以降| Windows Server ファミリ  | いいえ | はい |
 | McAfee v10 以降 | Windows Server ファミリ  | いいえ | はい |
-| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい * *\** _ |
-| Sophos V9+| Linux Server ファミリ  | いいえ | はい  _*\**_  |
-
- _*\**_ カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
+| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい |
+| Sophos V9+| Linux Server ファミリ  | いいえ | はい |
 
 > [!NOTE]
 > Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) を検出するには、PowerShell (v3.0 またはそれ以降) の後で SCEP をインストールする必要があります。
@@ -120,7 +118,7 @@ ms.locfileid: "98805622"
 |[AWS アカウントを接続する](quickstart-onboard-aws.md) (1)|-|-|
 |[GCP アカウントを接続する](quickstart-onboard-gcp.md) (1)|-|-|
 |[連続エクスポート](continuous-export.md)|✔|✔ (2)|
-|[ワークフローの自動化](workflow-automation.md)|✔|✔|
+|[ワークフローの自動化](workflow-automation.md)|✔ (2)|✔|
 |[推奨事項の除外規則](exempt-resource.md)|-|-|
 |[アラートの抑制ルール](alerts-suppression-rules.md)|✔|✔|
 |[セキュリティ アラートのメール通知](security-center-provide-security-contact-details.md)|✔|✔|
@@ -132,11 +130,11 @@ ms.locfileid: "98805622"
 |[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
 |[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
 |[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
-|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
-|[Kubernetes ワークロード保護](kubernetes-workload-protections.md)|-|-|
+|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔ (2)|✔|
+|[Kubernetes ワークロード保護](kubernetes-workload-protections.md)|✔|✔|
 |||
 
-(1) _ *Azure Defender for servers** が必要
+(1) **Azure Defender for servers** が必要
 
 (2) 部分的
 
