@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - オンプレミス アプリの追加 - Azure AD でのアプリケーション プロキシ
+title: チュートリアル - オンプレミス アプリを追加する - Azure Active Directory のアプリケーション プロキシ
 description: Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備する方法について説明します。 次に、Azure portal を使用して、自分の Azure AD テナントにオンプレミス アプリケーションを追加します。
 services: active-directory
 author: kenwith
@@ -8,22 +8,26 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260081"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095173"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
-Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備します。 環境の準備ができたら、Azure portal を使用して Azure AD テナントにオンプレミス アプリケーションを追加します。
+Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 アプリケーション プロキシの詳細については、[アプリ プロキシの概要](what-is-application-proxy.md)に関する記事をご覧ください。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備します。 環境の準備ができたら、Azure portal を使用して Azure AD テナントにオンプレミス アプリケーションを追加します。 
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="アプリケーション プロキシの概要図" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
+
+作業を開始する前に、アプリの管理と **シングル サインオン (SSO)** の概念を理解しておいてください。 次のリンクを参照してください。
+- [Azure AD でのアプリ管理のクイックスタート シリーズ](view-applications-portal.md)
+- [シングル サインオン (SSO) とは](what-is-single-sign-on.md)
 
 コネクタはアプリケーション プロキシの重要な一部です。 コネクタの詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」を参照してください。
 

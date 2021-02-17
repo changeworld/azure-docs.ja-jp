@@ -1,23 +1,18 @@
 ---
 title: MongoDB Atlas のデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB Atlas のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 34b0c053f4f0fea933a6e1f48d8f93e6352776b9
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b2f77e4bd8df66084937da3dd203ebb71d9a3511
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946546"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368797"
 ---
 # <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB Atlas のデータをコピーする
 
@@ -29,7 +24,7 @@ ms.locfileid: "91946546"
 
 MongoDB Atlas データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この MongoDB Atlas コネクタは **4.2 までのバージョン**をサポートしています。
+具体的には、この MongoDB Atlas コネクタは **4.2 までのバージョン** をサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -118,7 +113,7 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 | batchSize | MongoDB Atlas インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100**) |
 
 >[!TIP]
->ADF は、**厳格モード**での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
+>ADF は、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
 
 **例:**
 

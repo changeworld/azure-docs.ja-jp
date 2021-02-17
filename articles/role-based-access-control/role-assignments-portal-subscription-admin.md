@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/11/2021
 ms.author: rolyon
-ms.openlocfilehash: b15238a4308fe055f914d1a684b79b38a2c64870
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121855"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556835"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Azure サブスクリプションの管理者としてユーザーを割り当てる
 
@@ -89,6 +89,6 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)
 - [Azure portal を使用して Azure でのロールの割り当てを一覧表示する](role-assignments-list-portal.md)
 - [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)

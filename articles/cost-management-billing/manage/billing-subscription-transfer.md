@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601521"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979435"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -88,6 +88,20 @@ Azure サブスクリプションの課金所有権を受け取った場合は�
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 サブスクリプションの譲渡に問題がある場合は、次のトラブルシューティング情報を参照してください。
+
+### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Azure サブスクリプションの元の課金所有者が退職した
+
+Azure アカウントと Azure サブスクリプションを作成した元の課金所有者が退職する可能性があります。 その場合、組織の Azure Active Directory には、対応するユーザー ID が存在しません。 Azure サブスクリプションには課金所有者が不在という状況になります。 この状況では、請求書の表示と支払いなど、アカウントへの請求にまつわる操作をだれも実行できなくなります。 サブスクリプションは期限切れの状態になる可能性があります。 やがて料金の不払いから、サブスクリプションが無効になるでしょう。 最終的にはサブスクリプションは削除され、そのサブスクリプションで実行されるすべてのサービスに影響が及びます。
+
+サブスクリプションに有効な課金所有者が存在しない場合、その状況を伝えるメールが Azure から別の課金所有者、サービス管理者、共同管理者、サブスクリプション所有者宛てに送信されます。そのメールの中に、サブスクリプションの課金所有権を引き受けるためのリンクが記載されています。 いずれかのユーザーがそのリンクを選択することで、課金所有権を引き受けることができます。 課金ロールについて詳しくは、[課金ロール](understand-mca-roles.md)に関するページ、および[従来のロールと Azure RBAC ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
+
+次に示すのは、実際メールの例です。
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-email.png" alt-text="課金所有権を引き受けるためのメールの例を示すスクリーンショット。" lightbox="./media/billing-subscription-transfer/orphaned-subscription-email.png" :::
+
+加えて、Azure portal のサブスクリプションの詳細ウィンドウには、課金所有者、サービス管理者、共同管理者、サブスクリプション所有者に向けたバナーが表示されます。 課金所有権を引き受けるには、バナーのリンクをクリックしてください。
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-example.png" alt-text="有効な課金所有者が不在となっているサブスクリプションの例を示すスクリーンショット。" lightbox="./media/billing-subscription-transfer/orphaned-subscription-example.png" :::
 
 ### <a name="the-transfer-subscription-option-is-unavailable"></a>[サブスクリプションの譲渡] オプションを使用できない
 

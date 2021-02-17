@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538002"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515990"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -26,7 +26,7 @@ ms.locfileid: "99538002"
 
 このシリーズの他の記事は次のとおりです。
 
-[1.VNet の概要](how-to-network-security-overview.md) > [ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > **3. トレーニング環境をセキュリティで保護する** > [4. 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)  > [5. Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+[1.VNet の概要](how-to-network-security-overview.md) > [2.ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > **3.トレーニング環境をセキュリティで保護する** > [4.推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)  > [5.Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
 
 この記事では、仮想ネットワークで次のトレーニング コンピューティング リソースをセキュリティで保護する方法について説明します。
 > [!div class="checklist"]
@@ -273,7 +273,7 @@ Azure のコンピューティング インスタンスでノートブックを�
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Databricks クラスターと同じ仮想ネットワークに存在する必要があります。
 > * Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された __既定の__ サブネットも必要です。
 
-仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
+仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。
 
 <a id="vmorhdi"></a>
 

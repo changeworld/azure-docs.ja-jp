@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509033"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523568"
 ---
 # <a name="work-with-device-notifications"></a>デバイス通知を操作する
 
@@ -98,6 +98,6 @@ OS 分類をエンリッチするために、推奨事項を調査します。 �
 
 推奨事項を受け入れると、OS の種類の情報がセンサー内で更新されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [アラートを表示する](how-to-view-alerts.md)

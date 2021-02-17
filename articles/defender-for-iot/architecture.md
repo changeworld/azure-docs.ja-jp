@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 1eb939a63edc4abc638dc128af0d9ebbd7241bef
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 28449c4e80e22548d2f727e5ad330ab487528847
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809305"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521902"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT のアーキテクチャ
 
@@ -116,7 +116,7 @@ Azure の Defender for IoT ポータルを使用して、次のようなこと�
 
 - 脅威インテリジェンス パッケージの更新
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [Defender for IoT に関する FAQ](resources-frequently-asked-questions.md)
 

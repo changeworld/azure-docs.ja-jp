@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195876"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576401"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -28,6 +28,17 @@ ms.locfileid: "98195876"
 以下の図に、変更分析のアーキテクチャを示します。
 
 ![どのように変更分析で変更データが取得され、クライアント ツールに提供されるかを示すアーキテクチャ図](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>サポートされているリソースの種類
+
+アプリケーション変更分析サービスでは、次のような一般的なリソースを含む、すべての Azure リソースの種類でのリソース プロパティ レベルの変更がサポートされます。
+- 仮想マシン
+- 仮想マシン スケール セット
+- App Service
+- Azure Kubernetes Service
+- Azure 関数
+- ネットワーク リソース: つまり、ネットワーク セキュリティ グループ、Virtual Network、Application Gateway など。
+- データ サービス: つまり、Storage、SQL、Redis Cache、Cosmos DB など。
 
 ## <a name="data-sources"></a>データ ソース
 
@@ -49,17 +60,27 @@ IP 構成ルール、TLS 設定、拡張機能のバージョンなどの設定�
 
 ### <a name="dependency-changes"></a>依存関係の変更
 
-リソースの依存関係の変更も、Web アプリで問題を引き起こす場合があります。 たとえば、Web アプリから Redis キャッシュが呼び出される場合、Redis キャッシュ SKU が Web アプリのパフォーマンスに影響を与える可能性があります。 依存関係の変更を検出するために、変更分析では Web アプリの DNS レコードが確認されます。 このようにして、問題を引き起こす可能性のあるすべてのアプリ コンポーネントの変更が特定されます。
-現在、次の依存関係がサポートされています。
+リソースの依存関係の変更も、リソースで問題を引き起こす場合があります。 たとえば、Web アプリから Redis キャッシュが呼び出される場合、Redis キャッシュ SKU が Web アプリのパフォーマンスに影響を与える可能性があります。 別の例として、仮想マシンのネットワーク セキュリティ グループでポート 22 が閉じられた場合は、接続エラーが発生します。 
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Web アプリに関する問題の診断と解決のナビゲーター (プレビュー)
+依存関係の変更を検出するために、変更分析では Web アプリの DNS レコードが確認されます。 このようにして、問題を引き起こす可能性のあるすべてのアプリ コンポーネントの変更が特定されます。
+現在、次の依存関係は **Web アプリに関する問題の診断と解決 | ナビゲーター (プレビュー)** でサポートされています。
 - Web Apps
 - Azure Storage
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>アプリケーション変更分析サービス
+#### <a name="related-resources"></a>関連リソース
+アプリケーション変更分析により、関連リソースが検出されます。 一般的な例として、仮想マシンに関連するネットワーク セキュリティ グループ、Virtual Network、Application Gateway および Load Balancer があります。 通常、ネットワーク リソースは、それを使用するリソースと同じリソース グループに自動的にプロビジョニングされるため、リソース グループによる変更をフィルター処理すると、仮想マシンおよび関連するネットワーク リソースのすべての変更が表示されます。
+
+![ネットワークの変更のスクリーンショット](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>アプリケーション変更分析サービスの有効化
 
 アプリケーション変更分析サービスは、前述のデータ ソースから変更データを計算して集計します。 これには、ユーザーがすべてのリソースの変更参照したり、トラブルシューティングや監視のコンテキストに関係する変更を特定したりするための一連の分析機能が用意されています。
-Azure Resource Manager の追跡プロパティとプロキシ設定の変更データが利用できるようになるには、"Microsoft.ChangeAnalysis" リソース プロバイダーがサブスクリプションに登録されている必要があります。 Web アプリの問題の診断と解決ツールに入る、または [変更分析] スタンドアロン タブを起動すると、このリソース プロバイダーが自動的に登録されます。 サブスクリプションに対するパフォーマンスまたはコストの実装はありません。 Web アプリの変更分析を有効にすると (あるいは、問題の診断と解決ツールを有効にすると)、Web アプリのパフォーマンスに影響が出ますが、それは無視しても構わない程度であり、また、課金コストは発生しません。
-Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の[問題の診断と解決ツールの変更分析](#application-change-analysis-in-the-diagnose-and-solve-problems-tool)に関するセクションを参照してください。
+Azure Resource Manager の追跡プロパティとプロキシ設定の変更データが利用できるようになるには、"Microsoft.ChangeAnalysis" リソース プロバイダーがサブスクリプションに登録されている必要があります。 Web アプリの問題の診断と解決ツールに入る、または [変更分析] スタンドアロン タブを起動すると、このリソース プロバイダーが自動的に登録されます。 Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の[問題の診断と解決ツールの変更分析](#application-change-analysis-in-the-diagnose-and-solve-problems-tool)に関するセクションを参照してください。
+
+## <a name="cost"></a>コスト
+アプリケーション変更分析は無料のサービスであり、これが有効になっているサブスクリプションに対する課金コストは発生しません。 また、Azure リソース プロパティの変更をスキャンしても、サービスのパフォーマンスに影響はありません。 Web アプリのゲスト内のファイル変更に対して変更分析を有効にすると (あるいは、問題の診断と解決ツールを有効にすると)、Web アプリのパフォーマンスに影響が出ますが、それは無視しても構わない程度であり、また、課金コストは発生しません。
 
 ## <a name="visualizations-for-application-change-analysis"></a>アプリケーション変更分析の視覚化
 
@@ -82,6 +103,11 @@ Azure portal の検索バーで変更分析を検索し、エクスペリエン�
 フィードバックについては、ブレードにあるフィードバックの送信用のボタンを使用するか、changeanalysisteam@microsoft.com まで電子メールを送信してください。
 
 ![変更分析ブレードのフィードバック ボタンのスクリーンショット](./media/change-analysis/change-analysis-feedback.png)
+
+#### <a name="multiple-subscription-support"></a>複数のサブスクリプションのサポート
+UI では、リソースの変更を表示する複数のサブスクリプションの選択がサポートされています。 次のようにサブスクリプション フィルターを使用します。
+
+![複数のサブスクリプションの選択をサポートするサブスクリプション フィルターのスクリーンショット](./media/change-analysis/multiple-subscriptions-support.png)
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Web アプリに関する問題の診断と解決
 

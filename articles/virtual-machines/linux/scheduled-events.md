@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792805"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104741"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -71,7 +71,7 @@ VNET が有効な VM の場合は、静的でルーティング不可能な IP �
 VM が仮想ネットワーク内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法の詳細については、このサンプルを参照してください。
 
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
-スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-01-01` です。
+スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-08-01` です。
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
@@ -157,7 +157,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 ### <a name="polling-frequency"></a>ポーリング頻度
 
-任意の頻度で、更新についてエンドポイントをポーリングできます。 ただし、要求間の時間が長くなるほど、今後のイベントに対応できない時間が長くなる可能性があります。 ほとんどのイベントは、5 分から 15 分前に通知されますが、場合によっては、事前通知がわずか 30 秒ほどになることがあります。 軽減措置にかける時間を可能な限り多くするため、1 秒あたり 1 回サービスをポーリングすることが推奨されます。
+更新のエンドポイントは、任意の頻度でポーリングできます。 ただし、要求間の間隔が長くなるほど、発生するイベントに対応するのが遅くなる可能性があります。 ほとんどのイベントは、5 - 15 分前に通知されますが、場合によっては、通知がわずか 30 秒前ということもあります。 対策を講じるための時間をできるだけ多く確保するために、1 秒に 1 回サービスをポーリングすることをお勧めします。
 
 ### <a name="start-an-event"></a>イベントの開始 
 
