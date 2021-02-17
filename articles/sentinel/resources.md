@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920022"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390727"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -75,15 +75,6 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
     ```
 
 
-
-## <a name="vendor-documentation"></a>ベンダーのドキュメント
-
-| **ベンダー名**  | **Azure Sentinel でインシデントを使用する** | **リンク**|
-|----|----|----|
-| GitHub| コミュニティ ページにアクセスするために使用| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| CEF を構成| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto クエリ言語コース| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
-
 ## <a name="blogs-and-forums"></a>ブログとフォーラム
 
 ユーザーの方のご意見をお待ちしています。
@@ -96,8 +87,6 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 
     - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
     - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
-Azure のセキュリティとコンプライアンスの詳細については、[Microsoft Azure のセキュリティとコンプライアンスに関するブログ](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance)を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574433"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393855"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -22,7 +22,7 @@ ms.locfileid: "99574433"
 
 ### <a name="cause-1-share-was-throttled"></a>原因 1:共有がスロットルされていた
 
-1 秒あたりの操作回数 (IOPS)、ファイル共有のイングレスまたはエグレスの制限に達すると、要求がスロットルされます。 Standard および Premium ファイル共有の制限については、「[ファイル共有とファイルのスケール ターゲット](./storage-files-scale-targets.md#file-share-and-file-scale-targets)」を参照してください。
+1 秒あたりの操作回数 (IOPS)、ファイル共有のイングレスまたはエグレスの制限に達すると、要求がスロットルされます。 Standard および Premium ファイル共有の制限については、「[ファイル共有とファイルのスケール ターゲット](./storage-files-scale-targets.md#azure-file-share-scale-targets)」を参照してください。
 
 共有がスロットルされているかどうかを確認するには、ポータルで Azure メトリックスにアクセスして使用します。
 

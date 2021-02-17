@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Web テーブルからデータをコピーする
 description: Azure Data Factory の Web Table コネクタについて説明します。このコネクタを使用すると、Web テーブルから、Data Factory でシンクとしてサポートされているデータ ストアにデータをコピーすることができます。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab45868afd8d1b7ba1f61f5eaacca283817e6d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410211"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367012"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -28,9 +23,9 @@ ms.locfileid: "81410211"
 
 この Web テーブル コネクタ、[REST コネクタ](connector-rest.md)および [HTTP コネクタ](connector-http.md)の違いは次のとおりです。
 
-- **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
-- **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。
-- **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 
+- **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
+- **REST コネクタ** では、具体的には RESTful API からのデータのコピーがサポートされます。
+- **HTTP コネクタ** では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -41,7 +36,7 @@ ms.locfileid: "81410211"
 
 Web テーブル データベースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この Web テーブル コネクタは、**HTML ページからのテーブル コンテンツの抽出**をサポートしています。
+具体的には、この Web テーブル コネクタは、**HTML ページからのテーブル コンテンツの抽出** をサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -167,10 +162,10 @@ Web テーブルからデータをコピーするには、コピー アクティ
     ![Web ダイアログから](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     この例で使用される URL は https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies です。
-4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、 **[接続]** をクリックします。
+4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と **認証** を選択し、 **[接続]** をクリックします。
 
    ![[Access Web コンテンツ] ダイアログ ボックス](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
+5. ツリー ビューの **テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
 
    ![[ナビゲーター] ダイアログ](./media/copy-data-from-web-table/Navigator-DialogBox.png)
 6. **[クエリ エディター]** ウィンドウで、ツール バーの **[詳細エディター]** をクリックします。

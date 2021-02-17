@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 03/27/2018
+ms.date: 02/10/2021
 ms.author: alzam
-ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c8657f8a40084a726280efe471c0791931294f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359326"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366638"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN クライアントからのポイント対サイト VPN 接続のトラブルシューティング
 
@@ -29,9 +29,9 @@ ms.locfileid: "91359326"
 1. VPN クライアントの設定を確認します。 Command キーと Shift キーを押して **[Network Setting]\(ネットワーク設定\)** に移動し、「VPN」と入力してクライアントの設定を確認します。 一覧から、調べる必要がある VPN エントリをクリックします。
 
    ![IKEv2 証明書ベースの認証](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
-2. **サーバー アドレス**が完全な FQDN であり、cloudapp.net が含まれていることを確認します。
+2. **サーバー アドレス** が完全な FQDN であり、cloudapp.net が含まれていることを確認します。
 3. **リモート ID** は、サーバー アドレス (ゲートウェイの FQDN) と同じである必要があります。
-4. **ローカル ID** が、クライアント証明書の**サブジェクト**と同じである必要があります。
+4. **ローカル ID** が、クライアント証明書の **サブジェクト** と同じである必要があります。
 5. **[認証設定]** をクリックして [認証設定] ページを開きます。
 
    ![[認証設定] ダイアログ ボックスのスクリーンショット。[証明書] が選択されています。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
@@ -43,7 +43,7 @@ ms.locfileid: "91359326"
 1. VPN クライアントの設定を確認します。 Command キーと Shift キーを押して **[Network Setting]\(ネットワーク設定\)** に移動し、「VPN」と入力してクライアントの設定を確認します。 一覧から、調べる必要がある VPN エントリをクリックします。
 
    ![IKEv2 ユーザー名とパスワード](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2user3.jpg)
-2. **サーバー アドレス**が完全な FQDN であり、cloudapp.net が含まれていることを確認します。
+2. **サーバー アドレス** が完全な FQDN であり、cloudapp.net が含まれていることを確認します。
 3. **リモート ID** は、サーバー アドレス (ゲートウェイの FQDN) と同じである必要があります。
 4. **ローカル ID** は、空白にすることができます。
 5. **[認証設定]** をクリックし、ドロップダウンで [ユーザー名] が選択されていることを確認します。

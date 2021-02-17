@@ -15,17 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896364"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834087"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
 > [!NOTE]
 > このチュートリアルでは、接続モニター (クラシック) について取り上げます。 改良された新しい[接続モニター](connection-monitor-overview.md)で、強化された接続監視機能を体験してみましょう。
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、接続モニター (クラシック) に新しい接続モニターを追加することはできませんが、2021 年 7 月 1 日より前に作成された既存の接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターにテストを移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
 
 仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルでは、以下の内容を学習します。
 

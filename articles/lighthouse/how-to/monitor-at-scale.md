@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 797a6159d310f85c35c7eb550f05ff152526b3e8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131153"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575908"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -49,9 +49,9 @@ Log Analytics ワークスペースを作成したら、診断データが各テ
 
 管理対象の顧客テナントの委任されたサブスクリプションの[アラート](../../azure-monitor/platform/alerts-overview.md)を表示できます。
 
-複数の顧客にわたってアラートを自動的に更新するには、[Azure Resource Graph](../../governance/resource-graph/overview.md) クエリを使用して、アラートをフィルター処理します。 クエリをダッシュボードにピン留めし、すべての適切な顧客とサブスクリプションを選択することができます。
+管理対象のテナントから、Azure portal または API と管理ツールを使用して、[アクティビティ ログ アラートを作成、表示、および管理](../../azure-monitor/platform/alerts-activity-log.md)できます。
 
-次のクエリの例では、重大度が 0 および 1 のアラートが表示され、60 分ごとに更新されます。
+複数の顧客にわたってアラートを自動的に更新するには、[Azure Resource Graph](../../governance/resource-graph/overview.md) クエリを使用して、アラートをフィルター処理します。 クエリをダッシュボードにピン留めし、すべての適切な顧客とサブスクリプションを選択することができます。 たとえば、次のクエリを使用すると、重大度が 0 および 1 のアラートが表示され、60 分ごとに更新されます。
 
 ```kusto
 alertsmanagementresources

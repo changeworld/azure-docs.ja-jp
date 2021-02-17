@@ -3,21 +3,21 @@ title: ML Studio (classic) のチュートリアル サポート とトレーニ
 description: Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用してフィードバックを提供する
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: c49437db6bc3651d27181ef8e8f5248b5785e089
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 606229f8baf1016938ed531682d11297d14145fd
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325673"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517469"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
 
-**適用対象:** ![緑のチェック マーク。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![「いいえ」を意味する「X」。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![緑のチェック マーク。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![「いいえ」を意味する「X」。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -38,10 +38,10 @@ ms.locfileid: "93325673"
 
 次のサポート ソースを確認します。
 
-+ **Azure ユーザー向けテクニカル サポート** :Azure portal による [サポート要求の作成と管理](../../azure-portal/supportability/how-to-create-azure-support-request.md)
++ **Azure ユーザー向けテクニカル サポート**:Azure portal による [サポート要求の作成と管理](../../azure-portal/supportability/how-to-create-azure-support-request.md)
 
-+ **ユーザー フォーラム** : [Azure Machine Learning Studio (クラシック) サポート フォーラム](/answers/topics/azure-machine-learning.html)では、質問したり質問に回答したりして他のユーザーとつながることができます。
++ **ユーザー フォーラム**:[Azure Machine Learning Studio (クラシック) サポート フォーラム](/answers/topics/azure-machine-learning.html)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 
-+ **Stack Overflow** :"Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
++ **Stack Overflow**:"Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 
 + **Azure Machine Learning のフィードバック チャネル** から [製品のご提案や機能に対するご要望をお寄せください](https://feedback.azure.com/forums/257792-machine-learning)。 フィードバックをお送りいただくには、各記事の末尾にある **[製品のフィードバック]** ボタンを選択してください。

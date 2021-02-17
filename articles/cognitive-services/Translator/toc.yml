@@ -22,7 +22,7 @@
           href: character-counts.md
     - name: 操作方法ガイド
       items:
-        - name: Translator にサインアップする
+        - name: Translator リソースを作成する
           href: ./translator-how-to-signup.md
         - name: V3 Text API に移行する
           href: migrate-to-v3.md

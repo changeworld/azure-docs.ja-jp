@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Cassandra からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Cassandra からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3cd3c3ae28ae302e9469a71d00054152a9b5fb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417463"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383706"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory を使用して Cassandra からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -39,7 +34,7 @@ Cassandra データベースから、サポートされている任意のシン�
 具体的には、この Cassandra コネクタは以下をサポートします。
 
 - Cassandra **バージョン 2.X および 3.x**。
-- **基本**または**匿名**認証を使用したデータのコピー。
+- **基本** または **匿名** 認証を使用したデータのコピー。
 
 >[!NOTE]
 >セルフホステッド統合ランタイムでアクティビティを実行する場合、IR バージョン 3.7 以降で Cassandra 3.x がサポートされています。
