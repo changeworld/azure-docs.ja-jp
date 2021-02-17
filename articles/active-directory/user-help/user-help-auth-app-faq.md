@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226524"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547861"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -94,6 +94,7 @@ Microsoft Authenticator アプリは、Azure AD Authenticator アプリに置き
 ### <a name="device-registration"></a>デバイス登録
 
 **Q**: デバイスの登録とは何ですか?
+
 **A**: 組織では、ファイルやアプリなどのセキュリティで保護されたリソースへのアクセスを追跡するために、デバイスの登録が必要になる場合があります。 また、これらのリソースへの不適切なアクセスのリスクを低減するために、条件付きアクセスを有効にする可能性があります。 ユーザーは、 **[設定]** でデバイスの登録を解除できますが、これを行うと、Outlook で電子メールに、OneDrive でファイルにアクセスできなくなる可能性があり、スマートフォンによるサインインを使用する機能が失われます。
 
 ### <a name="verification-codes-when-connected"></a>接続時の確認コード

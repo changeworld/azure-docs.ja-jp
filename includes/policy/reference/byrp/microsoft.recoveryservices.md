@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c3ad521e2932ee45b557217c68be2c78efb21b5d
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 83927e04644bd07dfdf8be64c315cc6571dab13a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558068"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097613"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,4 +19,4 @@ ms.locfileid: "99558068"
 |[指定したタグを持つ VM に対して、同じ場所の既存の復旧サービス コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F345fa903-145c-4fe1-8bcd-93ec2adccde8) |すべての仮想マシンを仮想マシンと同じ場所およびサブスクリプション内の既存の中央復旧サービス コンテナーにバックアップして、それらのマシンにバックアップを適用します。 組織に、サブスクリプション内のすべてのリソースのバックアップを管理する中央のチームがある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて含めることができます。 [https://aka.ms/AzureVMCentralBackupIncludeTag](https://aka.ms/AzureVMCentralBackupIncludeTag) をご覧ください。 |deployIfNotExists、auditIfNotExists、disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineWithTag_Backup_Deploy.json) |
 |[指定したタグがない VM に対して、既定のポリシーを使用して、新しい復旧サービス コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86) |仮想マシンと同じ場所およびリソース グループに復旧サービス コンテナーをデプロイして、すべての仮想マシンにバックアップを適用します。 組織内の異なるアプリケーション チームに別個のリソース グループが割り当てられていて、独自のバックアップと復元を管理する必要がある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて除外することができます。 [https://aka.ms/AzureVMAppCentricBackupExcludeTag](https://aka.ms/AzureVMAppCentricBackupExcludeTag) をご覧ください。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithOutTag.json) |
 |[指定したタグがない VM に対して、同じ場所の既存の復旧サービス コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F09ce66bc-1220-4153-8104-e3f51c936913) |すべての仮想マシンを仮想マシンと同じ場所およびサブスクリプション内の既存の中央復旧サービス コンテナーにバックアップして、それらのマシンにバックアップを適用します。 組織に、サブスクリプション内のすべてのリソースのバックアップを管理する中央のチームがある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて除外することができます。 [https://aka.ms/AzureVMCentralBackupExcludeTag](https://aka.ms/AzureVMCentralBackupExcludeTag) をご覧ください。 |deployIfNotExists、auditIfNotExists、disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineBackup_Backup_DeployIfNotExists.json) |
-|[リソース固有のカテゴリの Log Analytics ワークスペースに Recovery Services コンテナーの診断設定をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc717fb0c-d118-4c43-ab3d-ece30ac81fb3) |リソース固有のカテゴリの Log Analytics ワークスペースにストリーム配信する Recovery Services コンテナーの診断設定をデプロイします。 リソース固有のカテゴリのいずれかが有効になっていない場合は、新しい診断設定が作成されます。 |deployIfNotExists |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/EnableRecoveryServiceVaultDiagnosticSetting_Backup_DeployIfNotExist.json) |
+|[リソース固有のカテゴリの Log Analytics ワークスペースに Recovery Services コンテナーの診断設定をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc717fb0c-d118-4c43-ab3d-ece30ac81fb3) |リソース固有のカテゴリの Log Analytics ワークスペースにストリーム配信する Recovery Services コンテナーの診断設定をデプロイします。 リソース固有のカテゴリのいずれかが有効になっていない場合は、新しい診断設定が作成されます。 |deployIfNotExists |[1.0.2-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/EnableRecoveryServiceVaultDiagnosticSetting_Backup_DeployIfNotExist.json) |

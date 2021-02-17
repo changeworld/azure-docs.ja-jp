@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 525ec334e73ca010d319b40ab864d08dae32f493
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6e1d9b8a53eaf69c2294ab42dc0718863e6c1837
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997148"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804939"
 ---
 # <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>Azure Sentinel と Azure Web Application Firewall の併用
 
-Azure Sentinel と Azure Web Application Firewall (WAF) を組み合わせると、WAF リソースのセキュリティ情報イベントを管理できます。 Azure Sentinel には、Log Analytics を使用したセキュリティ分析機能があります。これを使用すると、WAF データを簡単に分類して表示することができます。 Sentinel を使用すると、事前に作成されたブックにアクセスして、組織のニーズに合わせて変更することができます。 このブックには、Azure Content Delivery Network (CDN) 上の WAF、Azure Front Door 上の WAF、および複数のサブスクリプションとワークスペースにまたがる Application Gateway 上の WAF の分析を表示できます。
+Azure Sentinel と Azure Web Application Firewall (WAF) を組み合わせると、WAF リソースのセキュリティ情報イベントを管理できます。 Azure Sentinel には、Log Analytics を使用したセキュリティ分析機能があります。これを使用すると、WAF データを簡単に分類して表示することができます。 Azure Sentinel を使用すると、事前に作成されたブックにアクセスして、組織のニーズに合わせて変更することができます。 このブックには、Azure Content Delivery Network (CDN) 上の WAF、Azure Front Door 上の WAF、および複数のサブスクリプションとワークスペースにまたがる Application Gateway 上の WAF の分析を表示できます。
 
 ## <a name="waf-log-analytics-categories"></a>WAF ログ分析のカテゴリ
 
@@ -40,11 +40,11 @@ WAF ログ分析は次のカテゴリに分類されます。
 
 :::image type="content" source="media//waf-sentinel/waf-actions-filter.png" alt-text="WAF アクション フィルター":::
 
-:::image type="content" source="media//waf-sentinel/top-50-event-trigger.png" alt-text="WAF アクション フィルター":::
+:::image type="content" source="media//waf-sentinel/top-50-event-trigger.png" alt-text="上位 50 個のイベント":::
 
-:::image type="content" source="media//waf-sentinel/attack-events.png" alt-text="WAF アクション フィルター":::
+:::image type="content" source="media//waf-sentinel/attack-events.png" alt-text="攻撃イベント":::
 
-:::image type="content" source="media//waf-sentinel/top-10-attacking-ip-address.png" alt-text="WAF アクション フィルター":::
+:::image type="content" source="media//waf-sentinel/top-10-attacking-ip-address.png" alt-text="上位 10 個の攻撃元 IP アドレス":::
 
 ## <a name="launch-a-waf-workbook"></a>WAF ブックを起動する
 
@@ -64,14 +64,19 @@ WAF ブックは、すべての Azure Front Door、Application Gateway、およ�
       1. CDN:'AzureCdnAccessLog'
    1. **[保存]** を選択します。
 
-   :::image type="content" source="media//waf-sentinel/diagnostics-setting.png" alt-text="WAF アクション フィルター" を探し、 **[Microsoft web application firewall (WAF)]\(Microsoft Web アプリケーション ファイアウォール (WAF)\)** を選択します。 右下にある **[Open connector]\(コネクタを開く\)** ページを選択します。
+   :::image type="content" source="media//waf-sentinel/diagnostics-setting.png" alt-text="診断設定":::
 
-   :::image type="content" source="media//waf-sentinel/data-connectors.png" alt-text="WAF アクション フィルター":::
+4. Azure ホーム ページで、検索バーに「**Azure Sentinel**」と入力し、**Azure Sentinel** リソースを選択します。 
+2. 既にアクティブなワークスペースを選択するか、新しいワークスペースを作成します。 
+3. 左側のパネルの **[構成]** の下にある **[Data Connectors]\(データ コネクタ\)** を選択します。
+4. "**Microsoft Web アプリケーション ファイアウォール**" を探し、 **[Microsoft web application firewall (WAF)]\(Microsoft Web アプリケーション ファイアウォール (WAF)\)** を選択します。 右下にある **[Open connector]\(コネクタを開く\)** ページを選択します。
+
+   :::image type="content" source="media//waf-sentinel/data-connectors.png" alt-text="データ コネクタ":::
 
 8. **[構成]** の手順をまだ実行していない場合は、ログ分析データを取得する WAF リソースごとに実行します。
 6. 個々の WAF リソースの構成が完了したら、 **[次のステップ]** タブを選択します。推奨されるブックのいずれかを選択します。 このブックには、以前に有効にしたすべてのログ分析データが使用されます。 これで、WAF リソースに対して機能する WAF ブックが存在するようになりました。
 
-   :::image type="content" source="media//waf-sentinel/waf-workbooks.png" alt-text="WAF アクション フィルター":::
+   :::image type="content" source="media//waf-sentinel/waf-workbooks.png" alt-text="WAF ブック":::
 
 
 ## <a name="next-steps"></a>次のステップ

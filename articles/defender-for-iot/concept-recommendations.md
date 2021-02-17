@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: d11154e26e2ffe97a1ea102a11dddb746db9433a
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809271"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521868"
 ---
 # <a name="security-recommendations"></a>セキュリティに関する推奨事項
 
@@ -60,7 +60,6 @@ Defender for IoT では、Azure リソースと IoT デバイスがスキャン�
 | Medium | 既定の IP フィルター ポリシーを拒否にする必要があります | IoT Hub | 許可されるトラフィックを定義するルールを IP フィルター構成に含めて、それ以外のトラフィックはすべて既定で拒否する必要があります。 |
 | Medium | IP フィルター ルールに含まれている IP 範囲が大きい | IoT Hub | IP 許可フィルター ルールのソース IP 範囲が大きすぎます。 過度に制限の少ないルールでは、ご使用の IoT ハブが悪意のあるアクターに公開されてしまう可能性があります。 |
 | 低 | IoT Hub で診断ログを有効にする | IoT Hub | ログを有効にし、それらを最大 1 年間保持します。 ログを保持することで、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
-
 
 ## <a name="next-steps"></a>次のステップ
 

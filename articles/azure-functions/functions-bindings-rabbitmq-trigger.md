@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760403"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388993"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions の RabbitMQ トリガーの概要
 
@@ -27,7 +27,7 @@ RabbitMQ キューからのメッセージに応答するには、RabbitMQ ト�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-次の例は、RabbitMQ メッセージを [RabbitMQ イベント](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)として読み取り、ログに記録する [C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、RabbitMQ メッセージを [RabbitMQ イベント](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)として読み取り、ログに記録する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
@@ -229,7 +229,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-既定のメッセージの種類は [RabbitMQ Event](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) であり、RabbitMQ Event の `Body` プロパティは次の一覧に示されている型として読み取ることができます。
+既定のメッセージの種類は [RabbitMQ Event](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html) であり、RabbitMQ Event の `Body` プロパティは次の一覧に示されている型として読み取ることができます。
 
 * `An object serializable as JSON` - メッセージが有効な JSON 文字列として配信されている場合。
 * `string`
@@ -238,7 +238,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-既定のメッセージの種類は [RabbitMQ Event](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) であり、RabbitMQ Event の `Body` プロパティは次の一覧に示されている型として読み取ることができます。
+既定のメッセージの種類は [RabbitMQ Event](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html) であり、RabbitMQ Event の `Body` プロパティは次の一覧に示されている型として読み取ることができます。
 
 * `An object serializable as JSON` - メッセージが有効な JSON 文字列として配信されている場合。
 * `string`
