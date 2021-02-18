@@ -2,18 +2,18 @@
 title: クイックスタート - 音声通話をアプリに追加する
 titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、Azure Communication Services を使用して、アプリに通話機能を追加する方法について説明します。
-author: matthewrobertson
-ms.author: marobert
+author: GrantMeStrength
+ms.author: jken
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: e9f552d6be897b5d9fd462e9168b61fc0b934987
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 419997bf06dd951092661903f5a06ca86538de4f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761978"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548500"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>クイック スタート:音声通話をアプリに追加する
 

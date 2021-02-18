@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ceaa16ee2a54886cde45f37ea90ed617abafffc1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976081"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546909"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用にデバイス設定を構成する
 
@@ -73,7 +73,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスでデバイス関連の設定を
 
 1. **[Update]\(更新\)** ページで、デバイスの更新プログラムをダウンロードする場所を構成できます。  
 
-    - 更新プログラムは、**Microsoft Update サーバー**から直接取得できます。
+    - 更新プログラムは、**Microsoft Update サーバー** から直接取得できます。
 
         ![ローカル Web UI の [Update Server]\(更新サーバー\) ページ](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-2.png)
 
@@ -82,7 +82,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスでデバイス関連の設定を
         ![ローカル Web UI の [Update Server]\(更新サーバー\) ページ 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > 別の Windows Update サーバーが構成されていて、*http* ではなく *https* 経由で接続することを選択した場合は、更新サーバーに接続するための署名チェーン証明書が必要になります。 証明書を作成してアップロードする方法については、[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)に関する記事を参照してください。 
+        > 別の Windows Update サーバーが構成されていて、*http* ではなく *https* 経由で接続することを選択した場合は、更新サーバーに接続するための署名チェーン証明書が必要になります。 証明書を作成してアップロードする方法については、[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)に関する記事を参照してください。 
 
 2. **[適用]** を選択します。
 3. 更新サーバーを構成した後は、 **[Next: Time]\(次へ: 時刻\)** を選択します。

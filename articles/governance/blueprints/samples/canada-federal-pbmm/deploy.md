@@ -3,12 +3,12 @@ title: カナダ連邦 PBMM ブループリント サンプルをデプロイす
 description: ブループリント アーティファクト パラメーターの詳細を含む Canada Federal PBMM ブループリント サンプルのデプロイ手順です。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 376c6329c0c3c571364c7d5d23a21c9f8cad2e53
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: ec7b0f4bd049b8cb2ead9301ac9ddb76ae727cca
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624997"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594776"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Canada Federal PBMM ブループリント サンプルをデプロイする
 
@@ -93,12 +93,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
+|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |
-|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Windows VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
+|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Windows VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |VM で構成する必要がある Log Analytics ワークスペース ID |これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。 |
-|\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。 |
+|\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。 |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |管理者グループ |グループ。 例: `Administrator; myUser1; myUser2` |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |Windows VM Administrators グループに含める必要があるユーザーの一覧 |ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例: `Administrator; myUser1; myUser2` |
 |ストレージ アカウントに対する Advanced Threat Protection のデプロイ |ポリシー割り当て |結果 |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。 |

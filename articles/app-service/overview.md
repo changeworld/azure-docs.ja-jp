@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592332"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586351"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -28,7 +28,7 @@ App Service の主な機能として、次のようなものがあります。
 * **マネージド運用環境** - App Service が自動的に [パッチを適用し、OS と言語フレームワークを管理](overview-patch-os-runtime.md)します。 高品質なアプリの作成に専念し、プラットフォームにまつわる問題は Azure に任せましょう。
 * **コンテナー化と Docker** - アプリを Docker でコンテナー化し、App Service でカスタムの Windows または Linux コンテナーをホストできます。 Docker Compose で複数コンテナー アプリを実行できます。 Docker のスキルを App Service に直接移行できます。
 * **DevOps の最適化** - [継続的インテグレーションと継続的デプロイ](deploy-continuous-deployment.md)を、Azure DevOps、GitHub、BitBucket、Docker Hub、または Azure Container Registry で設定できます。 [テスト環境やステージング環境](deploy-staging-slots.md)を介して更新を反映できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azure/) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。
-* **高可用性を備えたグローバルなスケール** - 手動または自動で [スケールアップ](manage-scale-up.md)または [スケールアウト](../azure-monitor/platform/autoscale-get-started.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
+* **高可用性を備えたグローバルなスケール** - 手動または自動で [スケールアップ](manage-scale-up.md)または [スケールアウト](../azure-monitor/autoscale/autoscale-get-started.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP など)、SaaS サービス (Salesforce など)、インターネット サービス (Facebook など) 向けに用意された 50 を超える [コネクタ](../connectors/apis-list.md)から選択できます。 また、[ハイブリッド接続](app-service-hybrid-connections.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/en-us/trustcenter)しています。 [Azure Active Directory](configure-authentication-provider-aad.md)、[Google](configure-authentication-provider-google.md)、[Facebook](configure-authentication-provider-facebook.md)、[Twitter](configure-authentication-provider-twitter.md)、または [Microsoft アカウント](configure-authentication-provider-microsoft.md)でユーザーを認証します。 [IP アドレス制限](app-service-ip-restrictions.md)を作成し、[サービス ID を管理](overview-managed-identity.md)します。
 * **アプリケーション テンプレート** - WordPress、Joomla、Drupal など、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にある詳細な一覧からアプリケーション テンプレートを選択します。

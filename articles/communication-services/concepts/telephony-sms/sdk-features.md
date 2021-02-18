@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937187"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391747"
 ---
 # <a name="sms-client-library-overview"></a>SMS クライアント ライブラリの概要
 
@@ -43,10 +43,10 @@ Azure Communication Services の SMS クライアント ライブラリを使用
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [SMS の送信の概要](../../quickstarts/telephony-sms/send.md)
+> [SMS の送信を開始する](../../quickstarts/telephony-sms/send.md)
 
 次のドキュメントもご覧ください。
 
 - 一般的な [SMS の概念](../telephony-sms/concepts.md)を理解する
 - SMS 対応の[電話番号](../../quickstarts/telephony-sms/get-phone-number.md)を取得する
-- [SMS ソリューションを計画する](../telephony-sms/plan-solution.md)
+- [Azure Communication Services での電話番号の種類](../telephony-sms/plan-solution.md)
