@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150966"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579314"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
@@ -54,7 +54,7 @@ Azure SignalR Service は、ASP.NET Core SignalR が既定でサポートする 
 
 これらのメトリックの計算の詳細については、「[Azure SignalR Service でのメッセージと接続](signalr-concept-messages-and-connections.md)」を参照してください。
 
-Azure SignalR Service リソースの概要ペインでは、適切な集計の種類が既に選択されています。 メトリック ペインに移動すると、参照として [Azure SignalR Service でのメッセージと接続](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr)に対して集計の種類を使用できます。
+Azure SignalR Service リソースの概要ペインでは、適切な集計の種類が既に選択されています。 メトリック ペインに移動すると、参照として [Azure SignalR Service でのメッセージと接続](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr)に対して集計の種類を使用できます。
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>`Default`、`Serverless`、`Classic` の各サービス モードの意味を教えてください。 どのように選べばよいでしょうか?
 
