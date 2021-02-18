@@ -65,3 +65,6 @@
       href: troubleshoot-guide.md
     - name: TPM および VBS 構成証明プロトコル
       href: virtualization-based-security-protocol.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
