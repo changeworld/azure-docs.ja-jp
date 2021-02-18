@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572066"
 ---
 # <a name="metrics-overview"></a>メトリックの概要
 
-Azure Communication Services では現在、チャット用と SMS 用のメトリックが提供されています。 [Azure メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)では、チャットと SMS の要求から生成されるメトリック データを使用することで、独自のグラフをプロットしたり、メトリック値の異常を調査したり、API トラフィックを把握したりすることができます。
+Azure Communication Services では現在、チャット用と SMS 用のメトリックが提供されています。 [Azure メトリックス エクスプローラー](../../azure-monitor/essentials/metrics-getting-started.md)では、チャットと SMS の要求から生成されるメトリック データを使用することで、独自のグラフをプロットしたり、メトリック値の異常を調査したり、API トラフィックを把握したりすることができます。
 
 ## <a name="where-to-find-metrics"></a>メトリックを確認できる場所
 
@@ -30,7 +30,7 @@ Communication Services のメトリック内で表現される要求には、**�
 
 チャットと SMS 両方の API 要求のメトリックには、メトリック データをフィルター処理するために使用できる 3 つのディメンションが含まれています。 これらのディメンションは、`Count` という集計の種類を使用することでまとめて集計できます。また、Azure の標準的な集計時系列 (`Sum`、`Average`、`Min`、`Max` など) をサポートしています。
 
-サポートされる集計の種類と時系列集計について詳しくは、「[Azure メトリックス エクスプローラーの高度な機能](../../azure-monitor/platform/metrics-charts.md#aggregation)」を参照してください。
+サポートされる集計の種類と時系列集計について詳しくは、「[Azure メトリックス エクスプローラーの高度な機能](../../azure-monitor/essentials/metrics-charts.md#aggregation)」を参照してください。
 
 - **操作** - ACS チャット ゲートウェイで呼び出すことができるあらゆる操作またはルート。
 - **状態コード** - 要求の後に送信される状態コードの応答。
@@ -90,4 +90,4 @@ SMS API 要求のメトリックには、次の操作が利用できます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [データ プラットフォームのメトリック](../../azure-monitor/platform/data-platform-metrics.md)の詳細をご確認ください。
+- [データ プラットフォームのメトリック](../../azure-monitor/essentials/data-platform-metrics.md)の詳細をご確認ください。
