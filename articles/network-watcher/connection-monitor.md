@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834087"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570835"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
@@ -137,7 +137,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 2. **[ターゲットの選択]** をクリックして、対象となるリソースを選択します。 **[サブスクリプション]** を選択し、**リソースの種類** を設定して、使用したい接続モニターをフィルターで絞り込みます。
 
     ![ターゲットが選択された状態のアラート画面](./media/connection-monitor/set-alert-rule.png)
-1. 対象となるリソースを選択したら、**[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
+1. 対象となるリソースを選択したら、**[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
 
     ![シグナルが選択された状態のアラート ページ](./media/connection-monitor/set-alert-signals.png)
 1. アラート ルール名、説明、重大度などのアラートの詳細を指定します。 アラートにアクション グループを追加して、アラートへの対応を自動化したりカスタマイズしたりすることもできます。

@@ -9,18 +9,18 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913676"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516398"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
 
 このチュートリアルでは、階層型名前空間を持つストレージ アカウント内でイベントを処理する方法について説明します。
 
-販売注文を記述したコンマ区切り値 (csv) ファイルをアップロードすることで、ユーザーが Databricks Delta テーブルにデータを設定できるようにするための小規模なソリューションを構築します。 このソリューションを構築するには、Event Grid サブスクリプション、Azure 関数、および Azure Databricks 内の[ジョブ](https://docs.azuredatabricks.net/user-guide/jobs.html)を 1 つに接続します。
+販売注文を記述したコンマ区切り値 (csv) ファイルをアップロードすることで、ユーザーが Databricks Delta テーブルにデータを設定できるようにするための小規模なソリューションを構築します。 このソリューションを構築するには、Event Grid サブスクリプション、Azure 関数、および Azure Databricks 内の[ジョブ](/azure/databricks/jobs)を 1 つに接続します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "95913676"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 * 階層型名前空間 (Azure Data Lake Storage Gen2) を持つストレージ アカウントを作成します。 このチュートリアルでは、`contosoorders` という名前のストレージ アカウントを使用します。 ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](../common/storage-auth-aad-rbac-portal.md)が割り当てられていることを確認します。
 
@@ -116,7 +116,7 @@ ms.locfileid: "95913676"
 
 4. **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
-クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](https://docs.azuredatabricks.net/user-guide/clusters/create.html)をご覧ください。
+クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](/azure/databricks/clusters/create)をご覧ください。
 
 ### <a name="create-a-notebook"></a>ノートブックを作成する
 
@@ -153,7 +153,7 @@ ms.locfileid: "95913676"
     このコードによって、**source_file** という名前のウィジェットが作成されます。 後で、このコードを呼び出し、そのウィジェットにファイル パスを渡す Azure 関数を作成します。  また、このコードは、ストレージ アカウントを使用してサービス プリンシパルを認証し、他のセルで使用する変数をいくつか作成します。
 
     > [!NOTE]
-    > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 <br><br>たとえば、`spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` というコード行を使用する代わりに、`spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` というコード行を使用します。 <br><br>このチュートリアルの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
+    > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 <br><br>たとえば、`spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` というコード行を使用する代わりに、`spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` というコード行を使用します。 <br><br>このチュートリアルの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)」で、このアプローチの例を参照してください。
 
 2. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 

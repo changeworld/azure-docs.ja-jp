@@ -6,13 +6,13 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 10/09/2020
-ms.openlocfilehash: 9bb708f2525c0c98a4ce5b86f7593bb4b20cfd81
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 02/10/2021
+ms.openlocfilehash: b1a249bac4a1a46e52bf52eccd56649153eefe8e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105395"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360926"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してリージョン間 Azure ロード バランサーを作成する
 

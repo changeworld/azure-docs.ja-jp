@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: bf0df4cc6e686b553baf8c2439c807d2f07ef440
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807481"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380238"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -218,7 +218,7 @@ config.AddAzureAppConfiguration(options =>
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>依存関係の挿入を使用して IFeatureManager にアクセスする 
 
-機能フラグの値を手動でチェックするなど一部の操作では、[IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanage) のインスタンスを取得する必要があります。 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。 以下の例では、コントローラーのコンストラクターのシグネチャに `IFeatureManager` 型の引数が追加されています。 このランタイムは、コンストラクターを呼び出す際に、参照を自動的に解決してインターフェイスを提供します。 最初からコントローラーのコンストラクターに依存関係の挿入のための引数が少なくとも 1 つあるようなアプリケーション テンプレートを使用している場合は (`ILogger` など)、単純に引数として `IFeatureManager` を追加することができます。
+機能フラグの値を手動でチェックするなど一部の操作では、[IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) のインスタンスを取得する必要があります。 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。 以下の例では、コントローラーのコンストラクターのシグネチャに `IFeatureManager` 型の引数が追加されています。 このランタイムは、コンストラクターを呼び出す際に、参照を自動的に解決してインターフェイスを提供します。 最初からコントローラーのコンストラクターに依存関係の挿入のための引数が少なくとも 1 つあるようなアプリケーション テンプレートを使用している場合は (`ILogger` など)、単純に引数として `IFeatureManager` を追加することができます。
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     
