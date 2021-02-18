@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577396"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
@@ -91,7 +91,7 @@ Communication Services にデバイス ハンドルを登録する方法につ�
 
 通知が欠落した可能性がある最初の場所 (Azure Notification Hubs が、Azure Communication Services からの通知を受け取らなかった) については、以下で説明します。 他の 2 つの場所については、「[Azure Notification Hubs での欠落した通知の診断](../../notification-hubs/notification-hubs-push-notification-fixer.md)」を参照してください。
 
-自分の Communication Services リソースから Azure Notification Hubs に通知が送信されているかどうかを確認する方法の 1 つは、リンクされている [Azure 通知ハブ メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)の `incoming messages` メトリックを調べることです。
+自分の Communication Services リソースから Azure Notification Hubs に通知が送信されているかどうかを確認する方法の 1 つは、リンクされている [Azure 通知ハブ メトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)の `incoming messages` メトリックを調べることです。
 
 以下に、Azure 通知ハブが Communication Services リソースからの通知を受け取らない原因となる可能性がある一般的な構成ミスをいくつか示します。
 
