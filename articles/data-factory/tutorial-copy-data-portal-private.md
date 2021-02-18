@@ -1,23 +1,18 @@
 ---
 title: プライベート エンドポイントを使用して Azure Data Factory パイプラインを作成する
 description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 002ceba60853908e381f084e95ec1ee58e8580cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249518"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375818"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure BLOB ストレージから SQL データベースに安全にデータをコピーする
 
