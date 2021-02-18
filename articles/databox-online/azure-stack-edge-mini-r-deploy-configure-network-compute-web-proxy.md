@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594453"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546773"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R のネットワークを構成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "99594453"
 
 2. ゼロ デイの更新が必要な場合は、ワイヤード (有線) 接続でデータ ポートを構成することにより、ここで実行できます。 このデバイスのワイヤード (有線) 接続を設定する方法の詳細については、[デバイスのケーブル接続](azure-stack-edge-mini-r-deploy-install.md#cable-the-device)に関するセクションを参照してください。 更新が終了したら、ワイヤード (有線) 接続を取り外すことができます。
 
-3. Wi-Fi と署名チェーンの証明書を作成します。 署名チェーンと Wi-Fi の証明書はどちらも、ファイル拡張子が *.cer* の DER 形式である必要があります。 手順については、[証明書の作成](azure-stack-edge-j-series-manage-certificates.md)に関するページを参照してください。
+3. Wi-Fi と署名チェーンの証明書を作成します。 署名チェーンと Wi-Fi の証明書はどちらも、ファイル拡張子が *.cer* の DER 形式である必要があります。 手順については、[証明書の作成](azure-stack-edge-gpu-manage-certificates.md)に関するページを参照してください。
 
 4. ローカル Web UI で、 **[Get started]\(作業の開始\)** に移動します。 **[セキュリティ]** タイルで、 **[証明書]** を選択し、 **[構成]** を選択します。 
 

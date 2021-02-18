@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a169b93b20df14e536d8764b5fb4c889d645a1fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570413"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -32,7 +32,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
 - アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)を確認してください。 Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../azure-monitor/platform/design-logs-deployment.md)」を参照してください。
+- Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../azure-monitor/logs/quick-create-workspace.md)を確認してください。 Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../azure-monitor/logs/design-logs-deployment.md)」を参照してください。
 
 - Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 
 - Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
@@ -47,7 +47,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
     | ワークスペースの地理的な場所 | Azure Sentinel で生成されたデータの地理的な場所 |
     | --- | --- |
-    | United States<br>インド<br>ブラジル<br>アフリカ<br>韓国 | United States |
+    | United States<br>インド<br>ブラジル<br>アフリカ<br>韓国<br>アラブ首長国連邦 | United States |
     | ヨーロッパ<br>フランス<br>スイス | ヨーロッパ |
     | オーストラリア | オーストラリア |
     | イギリス | イギリス |
