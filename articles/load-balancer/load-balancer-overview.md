@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 6f83df22465a2dc5fb871ae4e2c6dedd75e00075
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834223"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588554"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -44,7 +44,7 @@ Standard Load Balancer を使用すると、アプリケーションをスケー
 
 Standard Load Balancer を使用して実現できる主なシナリオは、次のとおりです。
 
-- **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./tutorial-load-balancer-standard-manage-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
+- **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./quickstart-load-balancer-standard-public-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
 
 - ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** リソースを分散することによって、可用性を向上させる。
 

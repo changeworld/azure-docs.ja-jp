@@ -3,18 +3,18 @@ title: 'Machine Learning Studio (classic): 例から実験を開始する - Azur
 description: Azure AI Gallery と Azure Machine Learning Studio (クラシック) を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: cfee8a32c54bff5aecb1e298db8b4814255418b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 40306973dde989862f8dfe9df5c9d873ac18fdd0
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325754"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517503"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio (クラシック) の実験を作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "93325754"
 どのような実験を利用できるかを確認するには、 [ギャラリー](https://gallery.azure.ai/) に移動して、ページの上部の **[Experiments (実験)]** をクリックします。
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>最も新しい実験または最も人気のある実験を探す
-このページでは、 **最近追加された** 実験を確認できます。そのほか、 **人気のある実験** や、 **人気のある Microsoft の実験の最新** バージョンまで下へスクロールして確認することができます。
+このページでは、**最近追加された** 実験を確認できます。そのほか、**人気のある実験** や、**人気のある Microsoft の実験の最新** バージョンまで下へスクロールして確認することができます。
 
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>特定の要件を満たす実験を探す
 すべての実験を参照するには、次の手順を実行します。

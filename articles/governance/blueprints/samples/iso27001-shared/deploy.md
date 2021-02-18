@@ -3,12 +3,12 @@ title: ISO 27001 共有サービス ブループリント サンプルをデプ�
 description: ブループリント アーティファクト パラメーターの詳細を含む ISO 27001 Shared Services ブループリント サンプルのデプロイ手順です。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 8b28954b6145a9e6c1827107cf11aa85326dcc1f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2eb9ed2199b28ad7cb349e6088c3cc583d8f011d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627801"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577322"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルをデプロイする
 
@@ -110,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |許可されるリソースの種類|ポリシー割り当て|許可されるリソースの種類|デプロイできるリソースの種類の一覧。 この一覧は、共有サービスでデプロイされるすべてのリソースの種類から構成されています。|
 |許可されるストレージ アカウントの SKU|ポリシー割り当て|Allowed storage SKU (許可されるストレージの SKU)|許可される診断ログのストレージ アカウントの SKU の一覧。 既定値は _["Standard_LRS"]_ です。|
 |許可される仮想マシンの SKU|ポリシー割り当て|デプロイが許可される仮想マシンの SKU の一覧。 既定値は " _["Standard_DS1_v2", "Standard_DS2_v2"]\(["Standard_DS1_v2"、"Standard_DS2_v2"]\)_ " です。|
-|ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを監査するリソースの種類|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを監査するリソースの種類|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |Log Analytics resource group (Log Analytics リソース グループ)|Resource group|名前|**[ロック済み]** - **組織名** と `-sharedsvsc-log-rg` を連結して、リソース グループを一意にします。|
 |Log Analytics resource group (Log Analytics リソース グループ)|Resource group|場所|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Log Analytics テンプレート|Resource Manager テンプレート|サービス階層|Log Analytics ワークスペースの階層を設定します。 既定値は _[PerNode]_ です。|
