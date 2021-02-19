@@ -1,20 +1,20 @@
 ---
 title: Azure セキュリティ ベンチマーク基盤ブループリント サンプルの概要
 description: Azure セキュリティ ベンチマーク基盤ブループリント サンプルの概要とアーキテクチャ。
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 4bbc5b94ea9b977a2b71edbf15cf5a7aa0566974
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416223"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095271"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure セキュリティ ベンチマーク基盤ブループリント サンプルの概要
 
 Azure セキュリティ ベンチマーク基盤ブループリント サンプルは、コンプライアンスに準拠している安全な Azure 環境を構築するのに役立つ一連のベースライン インフラストラクチャ パターンを提供します。 このブループリントは、認定またはコンプライアンスの要件があるシナリオにソリューションを提供するクラウドベースのアーキテクチャをデプロイするのに役立ちます。 この基本ブループリント サンプルは、[Azure セキュリティ ベンチマーク ブループリント サンプル](../azure-security-benchmark/index.md)を拡張したものです。 これにより、[Azure セキュリティ ベンチマーク](../../../../security/benchmarks/index.yml)で定義されたポリシーとその他のガードレールに沿って、ネットワーク境界、監視、その他のリソースをデプロイして構成できます。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 このブループリント サンプルによって作成される基本環境は、[ハブ アンド スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)というアーキテクチャ原則に基づいています。
 このブループリントでは、一般的な共通のリソース、サービス、アーティファクトが含まれているハブ仮想ネットワークをデプロイします。たとえば、Azure Bastion や接続用のゲートウェイとファイアウォールのほか、管理、メンテナンス、運用、接続用のその他 (オプション) のインフラストラクチャをホストするための管理およびジャンプ ボックス サブネットなどが含まれます。 1 つ以上のスポーク仮想ネットワークがホスト アプリケーション ワークロード (Web やデータベースのサービスなど) にデプロイされます。 シームレスで安全な接続を実現するために、Azure 仮想ネットワーク ピアリングを使用してスポーク仮想ネットワークがハブ仮想ネットワークに接続されます。 サンプル ブループリントを再割り当てするか、Azure 仮想ネットワークを手動で作成してハブ仮想ネットワークとピアリングするかして、さらにスポークを追加することができます。 スポーク仮想ネットワークとサブネットへのすべての外部接続は、ハブ仮想ネットワーク、ファイアウォール、ゲートウェイ、管理ジャンプ ボックスを通じてルーティングされるよう構成されています。

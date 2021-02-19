@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: テレフォニーの概念
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Azure Communication Services での電話番号の種類
+        - name: 電話番号の種類
           href: concepts/telephony-sms/plan-solution.md
         - name: SIP インターフェイスのインフラストラクチャ要件
           href: concepts/telephony-sms/sip-interface-infrastructure.md
