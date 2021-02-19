@@ -86,6 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: コンプライアンス
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: ドキュメント変換
+  items:
+    - name: 概要
+      items:
+        - name: ドキュメント変換とは
+          href: document-translation/overview.md
+    - name: 操作方法ガイド
+      items:
+        - name: ドキュメント変換を使ってみる
+          href: document-translation/get-started-with-document-translation.md
+        - name: SAS トークンを作成する
+          href: document-translation/create-sas-tokens.md
+    - name: リファレンス
+      items:
+        - name: Document Translation API のリファレンス
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
 - name: Custom Translator
   items:
     - name: 概要

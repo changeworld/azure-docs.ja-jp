@@ -96,7 +96,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -132,6 +132,8 @@
       href: howto-backup-config-store.md
     - name: マネージド ID を使用して App Configuration にアクセスする
       href: howto-integrate-azure-managed-service-identity.md
+    - name: Visual Studio での App Configuration の統合
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: リファレンス
   items:
     - name: 構成

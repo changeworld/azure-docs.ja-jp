@@ -66,12 +66,12 @@
         - name: イベントの集計 (プレビュー)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
-        - name: セキュリティのアラート
+        - name: IoT Hub 用の組み込みアラート
           displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
           href: concept-security-alerts.md
-        - name: カスタム セキュリティ アラート
+        - name: IoT Hub のカスタム セキュリティ アラート
           href: concept-customizable-security-alerts.md
-        - name: セキュリティに関する推奨事項
+        - name: IoT Hub のセキュリティに関する推奨事項
           href: concept-recommendations.md
         - name: クラシック
           items:
@@ -94,6 +94,12 @@
             - name: セキュリティ モジュールの従来のイベントの集計
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
+            - name: エージェント ベースのセキュリティ アラート
+              href: agent-based-security-alerts.md
+            - name: エージェント ベースのセキュリティのカスタム アラート
+              href: agent-based-security-custom-alerts.md
+            - name: エージェント ベースの推奨事項
+              href: agent-based-recommendations.md
 - name: 操作方法ガイド
   items:
     - name: 組織向けのエージェントレス ソリューション

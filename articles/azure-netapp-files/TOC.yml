@@ -77,6 +77,8 @@
       href: manage-manual-qos-capacity-pool.md
     - name: サブネットを Azure NetApp Files に委任する
       href: azure-netapp-files-delegate-subnet.md
+    - name: Active Directory 接続の作成と管理
+      href: create-active-directory-connections.md
     - name: NFS ボリュームの作成と管理
       items:
         - name: NFS ボリュームを作成する

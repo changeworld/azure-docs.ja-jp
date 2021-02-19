@@ -281,6 +281,8 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: チュートリアル
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: 運用環境の問題を診断する
+          href: diagnose-solve-problems.md
 - name: リファレンス
   items:
     - name: Azure CLI
