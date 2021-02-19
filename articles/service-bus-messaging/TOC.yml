@@ -120,7 +120,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -144,6 +144,10 @@
           href: ./security-controls-policy.md
         - name: ネットワークのセキュリティ
           href: network-security.md
+    - name: 他のサービスとの統合
+      items:
+        - name: Azure Service Bus と Azure Event Grid の統合
+          href: service-bus-to-event-grid-integration-concept.md
 - name: 操作方法ガイド
   items:
     - name: リージョン間で移動する
@@ -168,8 +172,6 @@
               href: message-sequencing.md
             - name: メッセージの有効期限 (Time to Live)
               href: message-expiration.md
-            - name: Azure Event Grid を使用したメッセージの処理
-              href: service-bus-to-event-grid-integration-concept.md
         - name: トピック フィルターとアクション
           href: topic-filters.md
         - name: Standard 名前空間から Premium 名前空間への移行
@@ -216,7 +218,7 @@
       items:
         - name: ActiveMQ から Azure Service Bus への移行
           href: migrate-jms-activemq-to-servicebus.md
-    - name: Monitor
+    - name: モニター
       items:
         - name: エンドツーエンドのトレースと診断
           href: service-bus-end-to-end-tracing.md

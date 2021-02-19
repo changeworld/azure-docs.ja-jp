@@ -105,6 +105,8 @@
       items:
         - name: マッピング データ フローを使用してデータを変換する
           items:
+            - name: Delta Lake を使用してレイク内のデータを変換する
+              href: tutorial-data-flow-delta-lake.md
             - name: マッピング データ フローを使用してデータを変換する
               href: tutorial-data-flow.md
             - name: マッピング データ フローのビデオ チュートリアル
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: 新しいブランチ
           href: data-flow-new-branch.md
+        - name: '[解析]'
+          href: data-flow-parse.md
         - name: ピボット
           href: data-flow-pivot.md
         - name: 順位
@@ -732,6 +736,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: スニペットを使用した重複除去と null 値チェック
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: データ フローを使用して AML モデルからのデータを処理する
+              href: scenario-dataflow-process-data-aml-models.md
         - name: オンプレミスからの SSIS の移行
           items:
             - name: SSIS の移行の概要
@@ -806,6 +812,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Azure Policy の組み込み
+      href: policy-reference.md
 - name: リソース
   items:
     - name: ホワイトペーパー

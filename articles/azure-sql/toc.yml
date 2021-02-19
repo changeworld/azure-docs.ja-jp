@@ -143,8 +143,10 @@
       items:
         - name: クォータの増加を要求
           href: database/quota-increase-request.md
-        - name: ジョブの自動化
+        - name: エラスティック ジョブを使用したジョブの自動化
           href: database/job-automation-overview.md
+        - name: SQL Agent を使用したジョブの自動化
+          href: database/job-automation-managed-instances.md
         - name: ビジネス継続性
           items:
             - name: フェールオーバー グループの構成

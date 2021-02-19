@@ -165,8 +165,13 @@
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: メンテナンスと更新
-      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-      maintainContext: true
+      items:
+        - name: 概要
+          href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+          maintainContext: true
+        - name: 拡張機能の自動アップグレード (プレビュー)
+          href: ../virtual-machines/automatic-extension-upgrade.md
+          maintainContext: true
     - name: Disk Storage
       items:
         - name: Managed Disks

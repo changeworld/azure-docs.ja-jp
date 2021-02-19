@@ -113,6 +113,8 @@
                   href: ./security/workspace-data-exfiltration-protection.md
                 - name: プライベート リンク ハブの Synapse ワークスペース
                   href: ./security/synapse-private-link-hubs.md
+                - name: セキュリティで保護されたストレージ アカウントへの接続
+                  href: ./security/connect-to-a-secure-storage-account.md
             - name: 認証とパススルー
               items:
                 - name: Azure Active Directory
@@ -571,7 +573,11 @@
         - name: Delta Lake を使用する
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: ライブラリを管理する
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
+          items:
+            - name: ライブラリの追加と管理
+              href: ./spark/apache-spark-azure-portal-add-libraries.md
+            - name: ライブラリのインストール エラーのトラブルシューティング
+              href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: ノートブックと IDE ツールを使用する
           items:
             - name: Notebooks を管理する

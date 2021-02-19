@@ -30,7 +30,7 @@
     - name: クイックスタート
       expanded: true
       items:
-        - name: サーバーの作成
+        - name: MySQL 単一サーバーの作成
           items:
             - name: Azure portal
               href: quickstart-create-mysql-server-database-using-azure-portal.md
@@ -196,7 +196,7 @@
             - name: TLS の構成
               href: howto-tls-configurations.md
               displayName: 'TLS, security, development'
-            - name: 高度な脅威保護
+            - name: Advanced Threat Protection
               items:
                 - name: 概念
                   href: concepts-data-access-and-security-threat-protection.md
@@ -419,8 +419,7 @@
     - name: クイックスタート
       expanded: true
       items:
-        - name: サーバーの作成
-          expanded: true
+        - name: MySQL フレキシブル サーバーの作成
           items:
             - name: Azure portal
               href: flexible-server/quickstart-create-server-portal.md

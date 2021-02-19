@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: エージェントの管理
           href: manage-agent.md
+        - name: リージョンをまたいだマシンの移行
+          href: manage-howto-migrate.md
     - name: シナリオ
       items:
         - name: Azure Sentinel にオンボードする

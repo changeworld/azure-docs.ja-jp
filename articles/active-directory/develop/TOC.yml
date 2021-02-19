@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: Chrome における SameSite Cookie の変更を処理
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: パスワードレス認証のサポート
+      items:
+        - name: FIDO2 認証のサポート
+          href: support-fido2-authentication.md
     - name: アプリとサービスを認証する
       items:
         - name: Azure PowerShell を使用してサービス プリンシパルを作成する

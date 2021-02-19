@@ -159,7 +159,7 @@
         - name: Azure 仮想マシンの監視
           href: insights/monitor-vm-azure.md
           displayname: VM
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -426,8 +426,10 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 概要
+                - name: Version 4.0
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: Version 3.0
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?toc=/azure/azure-monitor/toc.json
                 - name: Telegraf を使用したメトリックの収集
                   href: platform/collect-custom-metrics-linux-telegraf.md
         - name: トラブルシューティング
@@ -781,6 +783,8 @@
             - name: 可用性のアラート
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
+            - name: SLA レポート
+              href: app/sla-report.md
             - name: トラブルシューティング
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -794,6 +798,8 @@
         - name: ライブ メトリック ストリーム
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
+        - name: 作業項目の統合
+          href: app/work-item-integration.md
         - name: メトリック
           items:
             - name: ログベースのメトリックと事前に集計されたメトリック
@@ -972,10 +978,14 @@
               href: app/sharepoint.md
             - name: Windows デスクトップ
               href: app/windows-desktop.md
-        - name: その他のツール
-          items:
-            - name: 変更の分析
-              href: app/change-analysis.md
+    - name: 変更の分析
+      items:
+        - name: 概要
+          href: app/change-analysis.md
+        - name: 視覚化
+          href: app/change-analysis-visualizations.md
+        - name: トラブルシューティング
+          href: app/change-analysis-troubleshoot.md
     - name: VM に対する Azure Monitor
       items:
         - name: 概要
@@ -1022,7 +1032,7 @@
               href: insights/vminsights-health-troubleshoot.md
         - name: ログ クエリによるデータの分析
           href: insights/vminsights-log-search.md
-        - name: パフォーマンスの監視
+        - name: 警告
           href: insights/vminsights-alerts.md
         - name: 変更の監視
           href: insights/vminsights-change-analysis.md

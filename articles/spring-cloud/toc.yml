@@ -157,7 +157,11 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
-- name: DevOps の展開
+- name: アーキテクチャ
+  items:
+    - name: 参照アーキテクチャ
+      href: spring-cloud-reference-architecture.md
+- name: DevOps 配置
   items:
     - name: Azure DevOps を使用した CI/CD
       href: spring-cloud-howto-cicd.md

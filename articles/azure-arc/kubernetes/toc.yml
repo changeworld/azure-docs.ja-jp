@@ -4,6 +4,14 @@
   items:
     - name: Arc 対応 Kubernetes について
       href: overview.md
+- name: 概念
+  items:
+    - name: エージェントのアーキテクチャ
+      href: conceptual-agent-architecture.md
+    - name: 構成と GitOps
+      href: conceptual-configurations.md
+    - name: よく寄せられる質問
+      href: faq.md
 - name: 操作方法ガイド
   items:
     - name: Azure Arc への接続
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: サービス プリンシパルのオンボード
           href: create-onboarding-service-principal.md
-    - name: 管理する
+    - name: シナリオ
       items:
         - name: GitOps を使用して構成をデプロイする
           href: use-gitops-connected-cluster.md

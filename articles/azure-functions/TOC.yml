@@ -138,6 +138,23 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
+    - name: ベスト プラクティス
+      items:
+        - name: パフォーマンスと信頼性
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: 接続の管理
+          href: manage-connections.md
+          displayName: best practices
+        - name: ストレージに関する考慮事項
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: エラー処理と関数の再試行
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: セキュリティ
+          href: security-concepts.md
+          displayName: best practices
     - name: ランタイムのバージョンの比較
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
@@ -212,12 +229,7 @@
       href: functions-diagnostics.md
     - name: 従量課金プランのコスト
       href: functions-consumption-costs.md
-    - name: パフォーマンスに関する考慮事項
-      href: functions-best-practices.md
       displayName: best practice
-    - name: ストレージに関する考慮事項
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: 関数プロキシ
       href: functions-proxies.md
     - name: ネットワーク オプション
@@ -457,7 +469,7 @@
             - name: 入力
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: 出力
+            - name: Output
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB

@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: 一時アクセス パス (プレビュー) の使用
+      href: howto-authentication-temporary-access-pass.md
     - name: SMS ベースの認証を使用する
       href: howto-authentication-sms-signin.md
     - name: メール アドレスのサインインを使用する
@@ -245,6 +247,8 @@
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: サービスの制限と制約
       href: ../enterprise-users/directory-service-limits-restrictions.md
+    - name: FIDO2 互換性
+      href: fido2-compatibility.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

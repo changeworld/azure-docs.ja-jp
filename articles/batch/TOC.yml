@@ -172,6 +172,11 @@
         - name: パブリック IP アドレスのないプールを作成する
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: プールで拡張機能を使用する
+          href: create-pool-extensions.md
+        - name: マネージド ID の構成
+          displayName: user-assigned
+          href: managed-identity-pools.md
         - name: 仮想ファイル システムをマウントする
           href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする

@@ -101,20 +101,12 @@
       href: ./workloads/oracle/oracle-database-quick-create.md
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
-    - name: FreeBSD のパケット フィルター
-      href: ./linux/freebsd-pf-nat.md
     - name: メインフレームのホスト変更
       href: ./workloads/mainframe-rehosting/overview.md
-    - name: データベース
-      items:
-        - name: MongoDB
-        - name: Linux 上の MS SQL
-          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: Virtual Machines 上の SQL
+      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
     - name: ハイ パフォーマンス コンピューティング (HPC)
       href: /azure/architecture/topics/high-performance-computing/
-    - name: Containers
-    - name: "Visual\_Studio"
-      href: ./windows/using-visual-studio-vm.md
 - name: インスタンス
   items:
     - name: サイズ
@@ -218,6 +210,12 @@
                   href: ./windows/n-series-driver-setup.md
             - name: AMD GPU ドライバーの設定
               href: ./windows/n-series-amd-driver-setup.md
+        - name: FPGA - 高速コンピューティング
+          items:
+            - name: 概要
+              href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
+            - name: NP シリーズ
+              href: np-series.md
         - name: ハイ パフォーマンス コンピューティング
           displayName: H-series
           items:
@@ -329,7 +327,8 @@
           href: ./linux/tutorial-build-deploy-azure-pipelines.md
         - name: LAMP スタックの作成
           href: ./linux/tutorial-lamp-stack.md
-        - name: SSL による Web サーバーのセキュリティ保護
+        - name: TLS および SSL による Web サーバーのセキュリティ保護
+          displayname: SSL TLS
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
@@ -592,6 +591,8 @@
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
               href: ./linux/freebsd-intro-on-azure.md
+            - name: FreeBSD のパケット フィルター
+              href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
@@ -636,6 +637,8 @@
           href: ./windows/capture-image-resource.md
         - name: 管理イメージから VM を作成する
           href: ./windows/create-vm-generalized-managed.md
+        - name: "Visual\_Studio"
+          href: ./windows/using-visual-studio-vm.md
     - name: Shared Image Gallery
       items:
         - name: 概要
@@ -987,7 +990,7 @@
       href: ephemeral-os-disks.md
     - name: 移行と変換
       items:
-        - name: Standard と Premium 間でディスクを変換する
+        - name: ディスクを別のディスクの種類に変換する
           items:
             - name: CLI
               href: ./linux/convert-disk-storage.md
@@ -1225,6 +1228,8 @@
       href: maintenance-and-updates.md
     - name: VM ゲストの自動修正プログラム (プレビュー)
       href: ./windows/automatic-vm-guest-patching.md
+    - name: 拡張機能の自動アップグレード (プレビュー)
+      href: ./automatic-extension-upgrade.md
     - name: メンテナンス管理
       items:
         - name: メンテナンスの通知
