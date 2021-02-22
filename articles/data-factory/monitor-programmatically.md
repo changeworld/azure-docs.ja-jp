@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory をプログラムで監視する
 description: さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556564"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379898"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 
@@ -28,9 +24,20 @@ ms.locfileid: "98556564"
 
 ## <a name="data-range"></a>データの範囲
 
-Data Factory では、パイプラインの実行データを 45 日間だけ格納します。 Data Factory パイプラインの実行に関するデータに対し、プログラムによってクエリを実行する場合 (たとえば、PowerShell コマンド `Get-AzDataFactoryV2PipelineRun` を使用して)、省略可能な `LastUpdatedAfter` パラメーターおよび `LastUpdatedBefore` パラメーターには日付の制限がありません。 ただし、たとえば、過去 1 年間のデータに対してクエリを実行した場合、クエリによってエラーは返されませんが、返されるパイプライン実行データは過去 45 のデータのみとなります。
+Data Factory では、パイプラインの実行データを 45 日間だけ格納します。 Data Factory パイプラインの実行に関するデータに対し、プログラムによってクエリを実行する場合 (たとえば、PowerShell コマンド `Get-AzDataFactoryV2PipelineRun` を使用して)、省略可能な `LastUpdatedAfter` パラメーターおよび `LastUpdatedBefore` パラメーターには日付の制限がありません。 ただし、たとえば、過去 1 年間のデータに対してクエリを実行した場合、エラーは発生しませんが、過去 45 日間のパイプライン実行データのみとなります。
 
 過去 45 日より前のパイプライン実行データを保持する場合は、[Azure Monitor](monitor-using-azure-monitor.md) を使用して独自の診断ログを設定する必要があります。
+
+## <a name="pipeline-run-information"></a>パイプライン実行情報
+
+パイプライン実行プロパティについては、[PipelineRun API リファレンス](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun)を参照してください。 パイプライン実行は、そのライフサイクル中にさまざまな状態になります。考えられる実行状態の値を次に示します。
+
+* キューに登録済み
+* InProgress
+* 成功
+* 失敗
+* Canceling
+* Canceled
 
 ## <a name="net"></a>.NET
 .NET SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[.NET を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-dot-net.md)に関する記事をご覧ください。
@@ -45,7 +52,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -99,7 +106,7 @@ REST API を使用して、パイプラインを作成し監視する完全な�
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -128,12 +135,12 @@ PowerShell を使用して、パイプラインを作成し監視する完全な
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30

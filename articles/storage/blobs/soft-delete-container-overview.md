@@ -10,12 +10,12 @@ ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 0c15be86c282451440f9b81d57f17e835559b5ae
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979107"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390183"
 ---
 # <a name="soft-delete-for-containers-preview"></a>コンテナーの論理的な削除 (プレビュー)
 
@@ -28,11 +28,11 @@ BLOB データのエンド ツー エンド保護では、次のデータ保護�
 - BLOB の論理的な削除。削除された BLOB またはバージョンを復元します。 BLOB の論理的な削除も有効にする方法については、[BLOB の論理的な削除の有効化と管理](soft-delete-blob-enable.md)に関する記事をご覧ください。
 
 > [!WARNING]
-> ストレージ アカウントの削除を元に戻すことはできません。 論理的な削除では、ストレージ アカウントの削除からは保護されませんが、そのアカウント内のデータ オブジェクトの削除からは保護されます。 ストレージ アカウントを削除から保護するには、ストレージ アカウント リソースに対して **CannotDelete** ロックを構成します。 Azure Resource Manager リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
+> ストレージ アカウントの削除を元に戻すことはできません。 コンテナーの論理的な削除では、ストレージ アカウントの削除からは保護されませんが、そのアカウント内のコンテナーの削除からは保護されます。 ストレージ アカウントを削除から保護するには、ストレージ アカウント リソースに対してロックを構成します。 Azure Resource Manager リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
 
 ## <a name="how-container-soft-delete-works"></a>コンテナーの論理的な削除のしくみ
 
-コンテナーの論理的な削除を有効にすると、削除されたコンテナーの保持期間を 1 - 365 日の範囲で指定できます。 既定の保有期間は 7 日です。 保持期間中は、**コンテナーの削除の取り消し** 操作を呼び出せば、削除されたコンテナーを復旧することができます。
+コンテナーの論理的な削除を有効にすると、削除されたコンテナーの保持期間を 1 - 365 日の範囲で指定できます。 既定の保有期間は 7 日です。 保持期間中は、**コンテナーの復元** 操作を呼び出せば、削除されたコンテナーを復旧することができます。
 
 コンテナーを復元すると、コンテナーの BLOB と BLOB バージョンも復元されます。 ただし、コンテナー自体が削除されている場合にのみ、コンテナーの論理的な削除を使用して BLOB を復元できます。 親コンテナーが削除されていないときに削除された BLOB を復元するには、BLOB の論理的な削除または BLOB のバージョン管理を使用する必要があります。
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964390"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556927"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure ロールの割り当てを一覧表示する
 
@@ -187,4 +187,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)
+- [Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)

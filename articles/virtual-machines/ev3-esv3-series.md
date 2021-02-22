@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097474"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558610"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
 
@@ -32,7 +32,7 @@ Ev3 シリーズの VM は Intel® ハイパー スレッディング テクノ�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
@@ -64,7 +64,7 @@ Esv3 シリーズの VM は Intel® ハイパー スレッディング テクノ
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743617"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530350"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -150,7 +150,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 -    サポートされているブラウザーでの Azure Active Directory Web アプリ
 -    Azure Active Directory 参加済み Windows 10 デバイス
 -    ハイブリッド Azure Active Directory 参加済み Windows 10 デバイス (プレビュー)
-     -    クラウドベースとオンプレミスの両方のリソースへのアクセスを提供します。 オンプレミスのリソースへのアクセスの詳細については、「[FIDO2 キーを使用したオンプレミスのリソースへの SSO](./howto-authentication-passwordless-security-key-on-premises.md)」を参照してください。
+     -    クラウドベースとオンプレミスの両方のリソースへのアクセスを提供します。 オンプレミスのリソースへのアクセスの詳細については、「[FIDO2 キーを使用したオンプレミスのリソースへの SSO](./howto-authentication-passwordless-security-key-on-premises.md)」を参照してください
 
 **互換性のある FIDO2 セキュリティ キー** を有効にする必要があります。 Microsoft は、[FIDO2 キー ベンダーとの重要なパートナーシップ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)を発表しました。
 

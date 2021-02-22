@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808454"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552676"
 ---
 > [!NOTE]
 > このガイドでは、cURL を使用して REST API 呼び出しを実行します。 また、[GitHub にはサンプル コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest)も用意されており、Python で REST API を呼び出す方法が示されています。
@@ -85,9 +85,14 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 JSON コンテンツを含む `200 (success)` 応答が返されます。
 
-次の請求書の画像とそれに対応する JSON 出力をご覧ください。 出力は、簡素化するために一部省略されています。 `"readResults"` ノードには、あらゆるテキスト行が、ページ上の対応する境界ボックスの配置と共に表示されます。 `"selectionMarks"` ノード (v2.1 プレビューの場合) には、すべての選択マーク (チェック ボックス、ラジオ マーク) と、その状態が "選択済み" と "未選択" のどちらであるかが示されます。 抽出された表は、`"pageResults"` セクションに含まれています。 それぞれの表について、テキスト、行インデックス、列インデックス、行スパン、列スパン、境界ボックスなどが抽出されます。
+次の請求書の画像とそれに対応する JSON 出力をご覧ください。
+* `"readResults"` ノードには、あらゆるテキスト行が、ページ上の対応する境界ボックスの配置と共に表示されます。 
+* `"selectionMarks"` ノード (v2.1 プレビューの場合) には、すべての選択マーク (チェック ボックス、ラジオ マーク) と、その状態が "選択済み" と "未選択" のどちらであるかが示されます。 
+* 抽出された表は、`"pageResults"` セクションに含まれています。 それぞれの表について、テキスト、行インデックス、列インデックス、行スパン、列スパン、境界ボックスなどが抽出されます。
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="表を含む Contoso プロジェクト ステートメント ドキュメント。":::
+
+この出力は、簡素化するために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)を参照してください。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```json
@@ -355,11 +360,16 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoic
 
 ### <a name="examine-the-response"></a>結果の確認
 
-JSON 出力で `200 (Success)` 応答を受信します。 `"readResults"` フィールドには、請求書から抽出された各テキスト行が含まれます。`"pageResults"` フィールドには、請求書から抽出されたテーブルと選択マークが含まれます。`"documentResults"` フィールドには、請求書の最も重要な部分のキーと値の情報が含まれます。
+JSON 出力で `200 (Success)` 応答を受信します。 
+* `"readResults"` フィールドには、請求書から抽出された各テキスト行が含まれます。
+* `"pageResults"` には、請求書から抽出されたテーブルと選択マークが含まれます。
+* `"documentResults"` フィールドには、請求書の最も重要な部分のキーと値の情報が含まれます。
 
-次の請求書ドキュメントとそれに対応する JSON 出力をご覧ください。 JSON コンテンツは、読みやすくするために一部省略されています。
+次の請求書ドキュメントとそれに対応する JSON 出力をご覧ください。 
 
 * [サンプル請求書](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+この JSON コンテンツは、読みやすくするために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json)を参照してください。
 
 ```json
 {
@@ -716,7 +726,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model
 
 ラベル付けを使用せずにトレーニングしたカスタム モデルでは、キーと値のペアの関連付けとテーブルが JSON 出力の `"pageResults"` ノードに存在します。 ラベル付けを使用してトレーニングしたカスタム モデルでは、キーと値のペアの関連付けが `"documentResults"` ノードに存在します。 *includeTextDetails* URL パラメーターを使用してプレーンテキスト抽出を指定した場合、`"readResults"` ノードには、ドキュメント内のすべてのテキストの内容と位置が表示されます。
 
-このサンプル JSON 出力は、簡素化するために一部省略されています。
+このサンプル JSON 出力は、簡素化するために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json)を参照してください。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 ```JSON
@@ -1041,13 +1051,15 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 ### <a name="examine-the-response"></a>結果の確認
 
-JSON 出力で `200 (Success)` 応答を受信します。 最初のフィールド `"status"` は、操作の状態を示します。 操作が完了した場合、`"readResults"` フィールドにはレシートから抽出された各テキスト行が含まれ、`"documentResults"` フィールドにはレシートの最も重要な部分のキー/値の情報が含まれます。 操作が完了していない場合、`"status"` の値は `"running"` または `"notStarted"` になり、手動またはスクリプトでもう一度 API を呼び出す必要があります。 呼び出しの間隔は 1 秒以上あけることをお勧めします。
+JSON 出力で `200 (Success)` 応答を受信します。 最初のフィールド `"status"` は、操作の状態を示します。 操作が完了していない場合、`"status"` の値は `"running"` または `"notStarted"` になり、手動またはスクリプトでもう一度 API を呼び出す必要があります。 呼び出しの間隔は 1 秒以上あけることをお勧めします。
 
-次のレシートの画像とそれに対応する JSON 出力をご覧ください。 出力は、読みやすくするために一部省略されています。
+`"readResults"` ノードには、認識されたすべてのテキストが格納されます (オプションの *includeTextDetails* パラメーターを `true` に設定した場合)。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"documentResults"` ノードには、モデルによって検出されたレシート固有の値が格納されます。 税、合計、店舗の住所など、大切なキーと値のペアが存在する場所です。
+
+次のレシートの画像とそれに対応する JSON 出力をご覧ください。
 
 ![Contoso ストアのレシート](../../media/contoso-allinone.jpg)
 
-`"readResults"` ノードには、認識されたすべてのテキストが格納されます (オプションの *includeTextDetails* パラメーターを `true` に設定した場合)。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"documentResults"` ノードには、モデルによって検出されたレシート固有の値が格納されます。 税、合計、店舗の住所など、大切なキーと値のペアが存在する場所です。
+この出力は、読みやすくするために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)を参照してください。
 
 ```json
 {
@@ -1386,11 +1398,11 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 名刺の分析を開始するには、下の cURL コマンドを使用して **[Analyze Business Card](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
-1. `{your receipt URL}` を、レシートの画像の URL アドレスに置き換えます。
+1. `{your business card URL}` を、レシートの画像の URL アドレスに置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
 ```
 
 **Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
@@ -1414,11 +1426,13 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ### <a name="examine-the-response"></a>結果の確認
 
-JSON 出力で `200 (Success)` 応答を受信します。 `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 これは、会社名、名、姓、電話番号など、有益な連絡先情報が表示される場所です。
+JSON 出力で `200 (Success)` 応答を受信します。 
+
+`"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 これは、会社名、名、姓、電話番号など、有益な連絡先情報が表示される場所です。
 
 ![Contoso 社の名刺](../../media/business-card-english.jpg)
 
-このサンプルは、Form Recognizer から返された JSON 出力を示しています。 読みやすくするために、一部が省略されています。
+このサンプル JSON 出力は、読みやすくするために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)を参照してください。
 
 ```json
 {

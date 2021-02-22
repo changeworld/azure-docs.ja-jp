@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560290"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388857"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
@@ -24,7 +24,12 @@ ms.locfileid: "99560290"
 認識能力を向上させるには、大量の文字起こしデータが必要です。10 から 20 時間の文字起こしデータを用意することをお勧めします。 このページでは、質の高い文字起こしを作成するために役立つガイドラインについて説明します。 このガイドは、ロケールごとに分かれており、米国英語、標準中国語、およびドイツ語のセクションで構成されています。
 
 > [!NOTE]
-> すべての基本モデルでオーディオ ファイルのカスタマイズがサポートされているわけではありません。 基本モデルでサポートされていない場合、トレーニングでは、関連するテキストが使用されるのと同じ方法で文字起こしテキストが使用されます。
+> すべての基本モデルでオーディオ ファイルのカスタマイズがサポートされているわけではありません。 基本モデルでサポートされていない場合、トレーニングでは、関連するテキストが使用されるのと同じ方法で文字起こしテキストが使用されます。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。
+
+> [!NOTE]
+> トレーニングに使用する基本モデルを変更し、トレーニング データセットにオーディオが含まれる場合は、選択した新しい基本モデルが [オーディオ データを使用したトレーニングをサポート](language-support.md#speech-to-text)しているかどうかを "*常に*" 確認します。 以前使用した基本モデルでオーディオ データを使用したトレーニングがサポートされておらず、トレーニング データセットにオーディオが含まれる場合は、新しい基本モデルを使用したトレーニングの時間が **大幅に** 増加し、数時間から数日以上かかる可能性が大いにあります。 これは特に、音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合に当てはまります。
+>
+> 上の段落で説明されている問題が発生した場合、データセット内のオーディオの量を減らすか、完全に削除してテキストのみを残すことで、トレーニング時間を簡単に短縮できます。 音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合、後者のオプションを強くお勧めします。
 
 ## <a name="us-english-en-us"></a>英語 (米国) (en-US)
 

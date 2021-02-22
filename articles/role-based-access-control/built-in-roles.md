@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809379"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535129"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -176,15 +176,15 @@ ms.locfileid: "99809379"
 > | [Azure Sentinel 共同作成者](#azure-sentinel-contributor) | Azure Sentinel 共同作成者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel 閲覧者](#azure-sentinel-reader) | Azure Sentinel 閲覧者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel レスポンダー](#azure-sentinel-responder) | Azure Sentinel レスポンダー | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Key Vault Administrator (プレビュー)](#key-vault-administrator-preview) | キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [Key Vault Certificates Officer (プレビュー)](#key-vault-certificates-officer-preview) | キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault Administrator](#key-vault-administrator) | キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault Certificates Officer](#key-vault-certificates-officer) | キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理しますが、Azure RBAC でのロール割り当ては許可されず、シークレット、キー、証明書へのアクセスも許可されません。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Key Vault Crypto Officer (プレビュー)](#key-vault-crypto-officer-preview) | キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Key Vault Crypto Service Encryption User (プレビュー)](#key-vault-crypto-service-encryption-user-preview) | キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault Crypto User (プレビュー)](#key-vault-crypto-user-preview) | キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault Reader (プレビュー)](#key-vault-reader-preview) | キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [Key Vault Secrets Officer (プレビュー)](#key-vault-secrets-officer-preview) | キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [Key Vault Secrets User (プレビュー)](#key-vault-secrets-user-preview) | シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 4633458b-17de-408a-b874-0445c86b69e6 |
+> | [Key Vault Crypto Officer](#key-vault-crypto-officer) | キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Key Vault Crypto Service Encryption User](#key-vault-crypto-service-encryption-user) | キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault Crypto User](#key-vault-crypto-user) | キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault Reader](#key-vault-reader) | キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault Secrets Officer](#key-vault-secrets-officer) | キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault Secrets User](#key-vault-secrets-user) | シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Managed HSM contributor](#managed-hsm-contributor) | マネージド HSM プールを管理できます。ただし、それらへのアクセスは含まれません。 | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [Security Admin](#security-admin) | Security Center の表示および更新のアクセス許可。 セキュリティ閲覧者と同じアクセス許可があり、セキュリティ ポリシーの更新、アラートと推奨事項の無視も可能になります。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Security Assessment Contributor](#security-assessment-contributor) | 評価を Security Center にプッシュできます | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -2175,8 +2175,9 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除する |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
-> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | パス間で BLOB を移動します |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | BLOB に書き込みます。 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | パス間で BLOB を移動します |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/add/action | BLOB コンテンツを追加した結果を返します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -2200,8 +2201,9 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
-        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
       ],
       "notDataActions": []
     }
@@ -4399,6 +4401,8 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | マネージド インスタンスの一覧を返すか、指定されたマネージド インスタンスのプロパティを取得します。 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/administrators/read | Managed Instance の管理者の一覧を取得します。 |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | 特定の Azure Active Directory 管理者オブジェクトを取得します |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -4461,7 +4465,9 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
         "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-        "Microsoft.Security/sqlVulnerabilityAssessments/*"
+        "Microsoft.Security/sqlVulnerabilityAssessments/*",
+        "Microsoft.Sql/managedInstances/administrators/read",
+        "Microsoft.Sql/servers/administrators/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7562,7 +7568,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>Key Vault Administrator (プレビュー)
+### <a name="key-vault-administrator"></a>Key Vault Administrator
 
 キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -7615,13 +7621,13 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Administrator (preview)",
+  "roleName": "Key Vault Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a>Key Vault Certificates Officer (プレビュー)
+### <a name="key-vault-certificates-officer"></a>Key Vault Certificates Officer
 
 キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -7676,7 +7682,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleName": "Key Vault Certificates Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7737,7 +7743,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a>Key Vault Crypto Officer (プレビュー)
+### <a name="key-vault-crypto-officer"></a>Key Vault Crypto Officer
 
 キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -7790,13 +7796,13 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleName": "Key Vault Crypto Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault Crypto Service Encryption User (プレビュー)
+### <a name="key-vault-crypto-service-encryption-user"></a>Key Vault Crypto Service Encryption User
 
 キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -7839,13 +7845,13 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption User (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>Key Vault Crypto User (プレビュー)
+### <a name="key-vault-crypto-user"></a>Key Vault Crypto User
 
 キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -7894,13 +7900,13 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto User (preview)",
+  "roleName": "Key Vault Crypto User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>Key Vault Reader (プレビュー)
+### <a name="key-vault-reader"></a>Key Vault Reader
 
 キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -7955,13 +7961,13 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Reader (preview)",
+  "roleName": "Key Vault Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a>Key Vault Secrets Officer (プレビュー)
+### <a name="key-vault-secrets-officer"></a>Key Vault Secrets Officer
 
 キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -8014,13 +8020,13 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleName": "Key Vault Secrets Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>Key Vault Secrets User (プレビュー)
+### <a name="key-vault-secrets-user"></a>Key Vault Secrets User
 
 シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
 
@@ -8055,7 +8061,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets User (preview)",
+  "roleName": "Key Vault Secrets User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

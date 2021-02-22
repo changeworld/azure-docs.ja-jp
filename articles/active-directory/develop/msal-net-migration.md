@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583927"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546348"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -170,7 +170,7 @@ Microsoft Graph API (https://graph.microsoft.com) など、v1.0 トークンを�
 たとえば、App ID URI が `ResourceId` である v1.0 Web API にユーザーの名前でアクセスするには、以下を使用します。
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Microsoft Graph API (https://graph.microsoft.com/) を使用して、MSAL.NET Azure Active Directory で読み取りと書き込みを行う場合、次のスニペットのようにスコープのリストを作成します。
@@ -205,7 +205,7 @@ Azure AD で使用されるロジックは次のとおりです。
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>クライアント資格証明フロー / デーモン アプリの場合に要求するスコープ

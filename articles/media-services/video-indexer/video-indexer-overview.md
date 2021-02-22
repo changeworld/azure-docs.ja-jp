@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783803"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530231"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
@@ -84,7 +84,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * **話者の列挙**:どの話者がどの言葉をいつ話したかをマップして認識します。 16 人の話者を 1 つの音声ファイルで検出できます。
 * **話者の統計情報**:話者の音声率の統計情報を提供します。
 * **テキストのコンテンツ モデレーション**:音声トランスクリプト内の明示的なテキストを検出します。
-* **音声効果**:拍手、発言、沈黙などの音声効果を識別します。
+* **音声効果** (パブリック プレビュー):コンテンツの非音声セグメントで以下の音声効果を検出します。銃声、ガラスの破砕音、警報、サイレン、爆発、犬の鳴き声、叫び声、笑い声、観衆の反応 (歓声、拍手、ブーイング)、沈黙。 注: アップロードのプリセットで "高度な音声分析" を選択した場合にのみすべてのイベントを利用できます。それ以外の場合は、"沈黙" と "観衆の反応" のみを使用できます。
 * **感情の検出**:音声 (話されている内容) と口調 (話し方) に基づいて感情を識別します。 この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。
 * **翻訳**:音声トランスクリプトの、54 の異なる言語への翻訳を作成します。
 

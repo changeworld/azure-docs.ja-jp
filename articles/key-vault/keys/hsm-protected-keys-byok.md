@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581008"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386103"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM で保護されたキーを Key Vault にインポートする (BYOK)
 
@@ -52,7 +52,7 @@ Azure Key Vault の詳細と、Key Vault の使用を開始するチュートリ
 | Azure サブスクリプション |Azure Key Vault でキー コンテナーを作成するには、Azure サブスクリプションが必要です。 [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。 |
 | HSM で保護されたキーをインポートするための Key Vault Premium SKU |Azure Key Vault のサービス レベルと機能の詳細については、「[Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/)」をご覧ください。 |
 | サポートされている HSM の一覧に含まれる HSM と、HSM ベンダーから提供されている BYOK ツールおよび説明 | HSM のアクセス許可と HSM の使用方法に関する基本的な知識が必要です。 「[サポートされている HSM](#supported-hsms)」を参照してください。 |
-| Azure CLI バージョン 2.1.0 以降 | 「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。|
+| Azure CLI バージョン 2.1.0 以降 | 「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。|
 
 ## <a name="supported-hsms"></a>サポートされている HSM
 
@@ -63,9 +63,10 @@ Azure Key Vault の詳細と、Key Vault の使用を開始するチュートリ
 |Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS キーを BYOK 用クラウド プロバイダーにエクスポートする - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[Marvell の BYOK ツールとドキュメント](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[Cryptomathic の BYOK ツールとドキュメント](https://www.cryptomathic.com/azurebyok)|
-|Securosys SA|製造元、サービスとしての HSM|Primus HSM ファミリ、Securosys Clouds HSM|[Primus の BYOK ツールとドキュメント](https://www.securosys.com/primus-azure-byok)|
+|Securosys SA|製造元、<br/>サービスとしての HSM|Primus HSM ファミリ、Securosys Clouds HSM|[Primus の BYOK ツールとドキュメント](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[詳細については、StorMagic のサイト](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)を参照してください|[SvKMS と Azure Key Vault の BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|製造元|IBM 476x、CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utimaco|製造元、<br/>サービスとしての HSM|u.trust Anchor、CryptoServer|[Utimaco BYOK ツールと統合ガイド](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 
@@ -100,7 +101,7 @@ KEK には次の条件があります。
 > [!NOTE]
 > KEK には、許可されている唯一のキー操作として「インポート」が必要です。 「インポート」は、他のすべてのキー操作と同時には使用できません。
 
-キー操作が `import` に設定されている KEK を作成するには、[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンドを使用します。 次のコマンドから返されるキー識別子 (`kid`) を記録しておきます。 (この `kid` 値は[手順 3](#step-3-generate-and-prepare-your-key-for-transfer) で使用します。)
+キー操作が `import` に設定されている KEK を作成するには、[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) コマンドを使用します。 次のコマンドから返されるキー識別子 (`kid`) を記録しておきます。 (この `kid` 値は[手順 3](#step-3-generate-and-prepare-your-key-for-transfer) で使用します。)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
@@ -108,7 +109,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>手順 2:KEK 公開キーをダウンロードする
 
-KEK 公開キーを .pem ファイルにダウンロードするには、[az keyvault key download](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) を使用します。 インポートするターゲット キーを暗号化するには、KEK 公開キーを使用します。
+KEK 公開キーを .pem ファイルにダウンロードするには、[az keyvault key download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) を使用します。 インポートするターゲット キーを暗号化するには、KEK 公開キーを使用します。
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -129,7 +130,7 @@ BYOK ツールをダウンロードしてインストールする方法につい
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>手順 4:キーを Azure Key Vault に転送する
 
-キーのインポートを完了するには、切断されたコンピューターからインターネットに接続されているコンピューターにキー転送パッケージ (BYOK ファイル) を転送します。 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) コマンドを使用して、BYOK ファイルを Key Vault HSM にアップロードします。
+キーのインポートを完了するには、切断されたコンピューターからインターネットに接続されているコンピューターにキー転送パッケージ (BYOK ファイル) を転送します。 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) コマンドを使用して、BYOK ファイルを Key Vault HSM にアップロードします。
 
 RSA キーをインポートするには、次のコマンドを使用します。 パラメーター - kty は省略可能で、既定値は "RSA-HSM" です。
 ```azurecli

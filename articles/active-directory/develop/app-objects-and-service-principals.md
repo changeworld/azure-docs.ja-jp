@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355768"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557834"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 
@@ -27,9 +27,9 @@ ms.locfileid: "97355768"
 ## <a name="application-registration"></a>アプリケーションの登録
 ID とアクセスの管理機能を Azure AD に委任するには、アプリケーションを Azure AD の[テナント](developer-glossary.md#tenant)に登録する必要があります。 アプリケーションを Azure AD に登録するときに、アプリケーションの ID 構成を作成します。これによって Azure AD との連携が可能となります。 [Azure portal][AZURE-Portal] でアプリを登録するときに、それがシングル テナント (自分のテナント内でのみアクセス可能) かマルチテナント (他のテナント内でアクセス可能) かを選択し、必要に応じてリダイレクト URI (アクセス トークンの送信先) を設定します。
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Azure portal の [アプリケーションの登録] ウィンドウのスクリーンショット":::
+アプリを登録する手順については、[アプリの登録に関するクイックスタート](quickstart-register-app.md)を参照してください。
 
-アプリの登録が完了すると、ホーム テナントまたはディレクトリ内に存在するアプリ (アプリケーション オブジェクト) のグローバルに一意なインスタンスが作成されます。  また、アプリにグローバルに一意な ID (アプリまたはクライアント ID) も割り当てられます。  ポータルでは、シークレットまたは証明書とスコープを追加してアプリを機能させることや、サインイン ダイアログでアプリのブランドをカスタマイズすることなどができます。
+アプリの登録が完了すると、ホーム テナントまたはディレクトリ内に存在するアプリ ([アプリケーション オブジェクト](#application-object)) のグローバルに一意なインスタンスが作成されます。  また、アプリにグローバルに一意な ID (アプリまたはクライアント ID) も割り当てられます。  ポータルでは、シークレットまたは証明書とスコープを追加してアプリを機能させることや、サインイン ダイアログでアプリのブランドをカスタマイズすることなどができます。
 
 ポータルでアプリケーションを登録すると、ホーム テナントにアプリケーション オブジェクトとサービス プリンシパル オブジェクトが自動的に作成されます。  Microsoft Graph API を使用してアプリケーションを登録または作成する場合、サービス プリンシパル オブジェクトの作成は別の手順です。
 

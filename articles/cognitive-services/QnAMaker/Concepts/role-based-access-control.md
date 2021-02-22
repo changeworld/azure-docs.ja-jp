@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988027"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522208"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>他の作成者や編集者との共同作業
 
@@ -23,6 +23,9 @@ QnA Maker リソースに設定された Azure ロールベースのアクセス
 この Azure RBAC の特徴は次のとおりです。
 * Azure Active Directory (AAD) は、所有者および共同作成者のキーベースの認証と完全に下位互換性があります。 お客様は、要求でキーベースの認証または Azure RBAC ベースの認証を使用できます。
 * 制御はナレッジ ベース レベルではなくリソース レベルであるため、リソース内のすべてのナレッジ ベースに作成者と編集者をすばやく追加できます。
+
+> [!NOTE]
+> 必ずリソース用のカスタム サブドメインを追加してください。 [カスタム サブドメイン](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)は既定で存在しているはずですが、存在しない場合は追加してください。
 
 ## <a name="access-is-provided-by-a-defined-role"></a>アクセスは定義済みのロールによって提供される
 

@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d1a0bf437df6bc0b68474e092ca23985493b24
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324133"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559590"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
 
@@ -33,7 +33,7 @@ ms.locfileid: "87324133"
 
 スマート検出のメール通知が関連するユーザーに確実に送信されるようにするには、それらのユーザーをサブスクリプションの[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)ロールまたは[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)ロールに割り当てる必要があります。
 
-Azure portal を使用してユーザーを監視閲覧者または監視共同作業者に割り当てるには、「[ロールの割り当てを追加する](../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)」で説明されている手順に従います。 ユーザーが割り当てられるロールとして、必ず "_監視閲覧者_" または "_監視共同作業者_" を選択してください。
+Azure portal を使用してユーザーを監視閲覧者または監視共同作業者ロールに割り当てるには、[Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)に関する記事で説明されている手順に従います。 ユーザーが割り当てられるロールとして、必ず "_監視閲覧者_" または "_監視共同作業者_" を選択してください。
 
 > [!NOTE]
 > ルール設定の "_追加の電子メール受信者_" オプションを使用して構成されるスマート検出通知の特定の受信者は、この変更による影響を受けません。 これらの受信者は、引き続き電子メール通知を受信します。

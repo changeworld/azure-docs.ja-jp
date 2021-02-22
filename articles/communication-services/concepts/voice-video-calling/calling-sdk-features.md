@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492112"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554734"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -96,9 +96,10 @@ Communication Services の通話クライアント ライブラリでは、次�
 
 |           |Web | Android、iOS|
 |-----------|----|------------|
-|**同時に送信できる発信ストリームの数** |1 つのビデオと 1 つの画面の共有 | 1 つのビデオ |
-|**同時に表示できる着信ストリームの数** |1 つのビデオと 1 つの画面の共有| 6 つのビデオと 1 つの画面の共有 |
+|**同時に送信できる発信ストリームの数** |オーディオまたはビデオ (x 1)、オーディオまたは画面共有 (x 1) | オーディオまたはビデオ (x 1) | 
+|**同時に表示できる着信ストリームの数** |オーディオまたはビデオ (x 1)、オーディオまたは画面共有 (x 1)| オーディオまたはビデオ (x 6)、画面共有 (x 1) |
 
+グループのシナリオでは、ミックスされた 1 つのオーディオ ストリームを使用して、参加者全員のオーディオがサポートされます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -106,6 +107,6 @@ Communication Services の通話クライアント ライブラリでは、次�
 > [通話を開始する](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 詳細については、次の記事を参照してください。
-- 一般的な[通話のフロー](../call-flows.md)を理解する
+- 一般的な[通話のフロー](../call-flows.md)を理解する 
 - [通話の種類](../voice-video-calling/about-call-types.md)について学習する
 - [PSTN ソリューションを計画する](../telephony-sms/plan-solution.md)

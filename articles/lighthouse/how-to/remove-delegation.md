@@ -1,14 +1,14 @@
 ---
 title: 委任へのアクセスを削除する
 description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791358"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555777"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 
@@ -21,7 +21,7 @@ ms.locfileid: "98791358"
 
 ## <a name="customers"></a>顧客
 
-サブスクリプションに対して[所有者組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持つ顧客のテナントのユーザーは、そのサブスクリプション (またはそのサブスクリプション内のリソース グループ) へのサービス プロバイダー アクセスを削除できます。 これを行うには、顧客のテナントのユーザーは、Azure portal の [[サービス プロバイダー]](view-manage-service-providers.md#add-or-remove-service-provider-offers) ページに移動し、 **[サービス プロバイダーのオファー]** 画面でオファーを見つけ、そのオファーの行のごみ箱アイコンを選択します。
+`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のユーザーは、そのサブスクリプション (またはそのサブスクリプション内のリソース グループ) へのサービス プロバイダー アクセスを削除できます。 これを行うには、ユーザーは、Azure portal の [[サービス プロバイダー]](view-manage-service-providers.md#add-or-remove-service-provider-offers) ページに移動し、 **[サービス プロバイダーのオファー]** 画面でオファーを見つけ、そのオファーの行のごみ箱アイコンを選択します。
 
 削除を確定すると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
 

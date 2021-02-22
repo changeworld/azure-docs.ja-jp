@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: f6b7000812f1adfe6ff7bd93711c9b8fe4ff9adc
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378147"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -49,7 +49,8 @@ HDInsight は Azure 仮想マシン スケール セットに段階的に移行�
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>.NET for Apache Spark 1.0.0 の破壊的変更
-HDInsight では、次のリリースで .NET for Apache Spark の最初の公式なメジャー リリースが導入されます。 これにより、他の機能と併せて、Spark 2.4. x と Spark 3.0. x 用の完全な DataFrame API が提供されます。 このメジャー バージョンでは破壊的変更が行われます。コードとパイプラインの更新に必要な手順を理解するには、[こちらの移行ガイド](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10)を参照してください。 [こちら](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)をご覧ください。
+最新リリースでは、HDInsight では、 [".NET for Apache Spark"](https://github.com/dotnet/spark) ライブラリの最初の公式バージョン v1.0.0 が導入されています。 これにより、多くの[他の機能](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)と併せて、Spark 2.4.x と Spark 3.0.x 用の完全な DataFrame API が提供されます。 このメジャー バージョンでは破壊的変更が行われます。コードとパイプラインの更新に必要な手順を理解するには、[.NET for Apache Spark 移行ガイド](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10)を参照してください。 詳細については、この [Azure HDInsight 上の .NET for Apache Spark v1.0 ガイド](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)を参照してください。
+
 
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。
@@ -68,4 +69,3 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
 このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](./hdinsight-component-versioning.md)を参照してください。
-

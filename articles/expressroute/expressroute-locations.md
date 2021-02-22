@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/22/2021
+ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: ea3a36fdc9ff9458677f43ef43bd7f45ea4652bd
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c686902ed23e0f1a94bc9548d0a876ecbbce8f31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377875"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -122,13 +122,14 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ、ロンドン |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、コペンハーゲン、ダブリン、フランクフルト、ロンドン、マルセイユ、パリ、チューリッヒ |
 | **[IRIDEOS](https://irideos.it/)** |サポートされています |サポートされています |ミラノ |
+| **Iron Mountain** | サポートされています |サポートされています |ワシントン DC |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|サポートされています |サポートされています | アムステルダム、ロンドン 2、シリコン バレー、トロント、ワシントン DC |
 | **Jaguar Network** |サポートされています |サポートされています |マルセイユ、パリ |
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |サポートされています |サポートされています |ロンドン、ニューポート (ウェールズ) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |サポートされています |サポートされています |ソウル |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | サポートされています |サポートされています |オークランド、シドニー |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | サポートされています | サポートされています | アムステルダム |
-| **[KT](https://cloud.kt.com/portal/ktcloudportal.epc.productintro.partnershipcloud_ConnectHub.html)** | サポートされています | サポートされています | ソウル |
+| **[KT](https://cloud.kt.com/)** | サポートされています | サポートされています | ソウル |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ニューポート (ウェールズ)、サンパウロ、シアトル、シリコン バレー、シンガポール、ワシントン DC |
 | **LG CNS** |サポートされています |サポートされています |釜山、ソウル |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
@@ -157,7 +158,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Sohonet](https://www.sohonet.com/fastlane/)** |サポートされています |サポートされています |ロンドン 2 |
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |サポートされています |サポートされています |オークランド、シドニー |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
-| **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | サポートされています | サポートされています | チューリッヒ |
+| **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | サポートされています | サポートされています | ジュネーブ、チューリヒ |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |サポートされています |サポートされています |アムステルダム、チェンナイ、香港特別行政区、ロンドン、ムンバイ、サンパウロ、シリコン バレー、シンガポール、ワシントン DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |サポートされています |サポートされています |アムステルダム、サンパウロ |
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |サポートされています |サポートされています |ロンドン、ロンドン 2、シンガポール 2 |
@@ -166,7 +167,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Telin](https://www.telin.net/)** | サポートされています | サポートされています |ジャカルタ |
 | **Telmex Uninet**| サポートされています | サポートされています | ダラス |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |サポートされています |サポートされています |メルボルン、シンガポール、シドニー |
-| **[Telus](https://www.telus.com)** |サポートされています |サポートされています |モントリオール、シアトル、トロント、バンクーバー |
+| **[Telus](https://www.telus.com)** |サポートされています |サポートされています |モントリオール、シアトル、ケベックシティ、トロント、バンクーバー |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | サポートされています | サポートされています | クアラルンプール |
 | **[Tokai Communications](https://www.tokai-com.co.jp/en/)** | サポートされています | サポートされています | 大阪、東京 2 |

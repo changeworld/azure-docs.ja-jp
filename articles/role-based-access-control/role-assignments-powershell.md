@@ -1,22 +1,22 @@
 ---
-title: Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する - Azure RBAC
+title: Azure PowerShell を使用して Azure ロールを割り当てる - Azure RBAC
 description: Azure PowerShell と Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 3bb09133ba6991554072b4bf68b5306c78f868a7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964288"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556801"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
+# <a name="assign-azure-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールを割り当てる
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、Azure PowerShell を使用してロールを割り当てる方法について説明します。
 
@@ -24,19 +24,19 @@ ms.locfileid: "97964288"
 
 ## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加または削除するには、以下が必要です。
+ロールを割り当てるには、以下が必要です。
 
-- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
+- `Microsoft.Authorization/roleAssignments/write` アクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
 - [Azure Cloud Shell の PowerShell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
 - PowerShell コマンドの実行に使用するアカウントには、Microsoft Graph の `Directory.Read.All` のアクセス許可が必要です。
 
-## <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
+## <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
-Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。 ロールの割り当てを追加するには、次の手順のようにします。
+ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
 
 ### <a name="step-1-determine-who-needs-access"></a>手順 1: アクセスが必要なユーザーを決定する
 
-ロールを、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てることができます。 ロールの割り当てを追加するには、オブジェクトの一意の ID の指定が必要になることがあります。 ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure PowerShell を使用して取得できます。
+ロールを、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てることができます。 ロールを割り当てるには、オブジェクトの一意の ID の指定が必要になることがあります。 ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure PowerShell を使用して取得できます。
 
 **User**
 
@@ -74,7 +74,7 @@ Get-AzADServicePrincipal -SearchString <principalName>
 (Get-AzADServicePrincipal -DisplayName <principalName>).id
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>手順 2:適切なロールを見つける
+### <a name="step-2-select-the-appropriate-role"></a>手順 2:適切なロールを選択する
 
 アクセス許可はロールでまとめてグループ化されます。 複数の [Azure 組み込みロール](built-in-roles.md)の一覧から選択することも、独自のカスタム ロールを使用することもできます。 必要最小限の特権を持つアクセス権を付与するのがベスト プラクティスなので、より広範なロールを割り当てることは避けてください。
 
@@ -128,9 +128,9 @@ Get-AzSubscription
 Get-AzManagementGroup
 ```
     
-### <a name="step-4-add-role-assignment"></a>手順 4:ロールの割り当ての追加
+### <a name="step-4-assign-role"></a>手順 4:ロールを割り当てる
 
-ロールの割り当てを追加するには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを使用します。 コマンドは、スコープに応じて、通常、次のいずれかの形式になります。
+ロールを割り当てるには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを使用します。 コマンドは、スコープに応じて、通常、次のいずれかの形式になります。
 
 **リソースのスコープ**
 
@@ -190,9 +190,9 @@ New-AzRoleAssignment -ObjectId <objectId> `
 -Scope /providers/Microsoft.Management/managementGroups/<groupName>
 ``` 
     
-## <a name="add-role-assignment-examples"></a>ロールの割り当ての追加の例
+## <a name="assign-role-examples"></a>ロールの割り当ての例
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>ストレージ アカウント リソース スコープ内のすべての BLOB コンテナーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>ストレージ アカウント リソース スコープ内のすべての BLOB コンテナーにロールを割り当てる
 
 [ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールを、*storage12345* という名前のストレージ アカウントに対するリソース スコープで、オブジェクト ID が *55555555-5555-5555-5555-555555555555* のサービス プリンシパルに割り当てます。
 
@@ -212,7 +212,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>特定の BLOB コンテナー リソース スコープにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>特定の BLOB コンテナー リソース スコープにロールを割り当てる
 
 [ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールを、*blob-container-01* という名前の BLOB コンテナーに対するリソース スコープで、オブジェクト ID が *55555555-5555-5555-5555-555555555555* のサービス プリンシパルに割り当てます。
 
@@ -233,7 +233,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>特定の仮想ネットワーク リソース スコープ内のグループにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>特定の仮想ネットワーク リソース スコープ内のグループにロールを割り当てる
 
 [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを、*pharma-sales-project-network* という名前の仮想ネットワークに対するリソース スコープで、ID が aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa の *Pharma Sales Admins* グループに割り当てます。
 
@@ -258,7 +258,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-#### <a name="add-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>リソース グループ スコープでユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>リソース グループ スコープでユーザーにロールを割り当てる
 
 [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを、*pharma-sales* リソース グループ スコープで、*patlong\@contoso.com* ユーザーに割り当てます。
 
@@ -297,7 +297,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>リソース グループ スコープで一意のロール ID を使用してユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>リソース グループ スコープで一意のロール ID を使用してユーザーにロールを割り当てる
 
 ロール名が変更されるときがあります。たとえば次のような場合です。
 
@@ -324,7 +324,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>リソース グループをスコープとするアプリケーションのロールの割り当てを追加する
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>リソース グループ スコープでアプリケーションにロールを割り当てる
 
 *pharma-sales* リソース グループ スコープで、サービス プリンシパル オブジェクト ID が 77777777-7777-7777-7777-777777777777 のアプリケーションに [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを割り当てます。
 
@@ -344,7 +344,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>サブスクリプション スコープでユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>サブスクリプション スコープでユーザーにロールを割り当てる
 
 [閲覧者](built-in-roles.md#reader)ロールを、サブスクリプション スコープで、*annm\@example.com* ユーザーに割り当てます。
 
@@ -364,7 +364,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>管理グループ スコープでユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>管理グループ スコープでユーザーにロールを割り当てる
 
 [課金データ閲覧者](built-in-roles.md#billing-reader)ロールを、管理グループ スコープで、*alain\@example.com* ユーザーに割り当てます。
 
@@ -383,36 +383,6 @@ ObjectId           : 44444444-4444-4444-4444-444444444444
 ObjectType         : User
 CanDelegate        : False
 ```
-
-## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
-
-Azure RBAC でアクセス権を削除するには、[Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) を使用してロールの割り当てを削除します。
-
-次の例では、*pharma-sales* リソース グループの *patlong\@contoso.com* ユーザーから、"[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)" ロールの割り当てを削除します。
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName patlong@contoso.com `
--RoleDefinitionName "Virtual Machine Contributor" `
--ResourceGroupName pharma-sales
-```
-
-[閲覧者](built-in-roles.md#reader)ロールを、サブスクリプション スコープで、ID が 22222222-2222-2222-2222-222222222222 の *Ann Mack Team* グループから削除します。
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -ObjectId 22222222-2222-2222-2222-222222222222 `
--RoleDefinitionName "Reader" `
--Scope "/subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-[課金データ閲覧者](built-in-roles.md#billing-reader)ロールを、管理グループ スコープで、*alain\@example.com* ユーザーから削除します。
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com `
--RoleDefinitionName "Billing Reader" `
--Scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません) というエラー メッセージが表示された場合、`-Scope` または `-ResourceGroupName` パラメーターも指定してください。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md#role-assignments-with-identity-not-found)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

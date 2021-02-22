@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 70aaa528fc86c9e543267b68b5b4cf157ec2dc65
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630278"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535265"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Azure Purview でデータに自動的にラベルを付ける
 
@@ -41,17 +41,17 @@ Azure Purview で秘密度ラベルを使用すると、ファイルおよびデ
 詳細については、次を参照してください。
 
 - Microsoft 365 のドキュメントの「[秘密度ラベルの詳細](/microsoft-365/compliance/sensitivity-labels)」
-- [自動ラベル付け規則とは](#what-are-autolabeling-rules)
+- [自動ラベル付け規則とは](#what-are-auto-labeling-rules)
 - [Azure Purview の秘密度ラベルでサポートされるデータ型](#supported-data-types-for-sensitivity-labels-in-azure-purview)
 - [SQL データベースの列のラベル付け](#labeling-for-sql-database-columns)
 
-#### <a name="what-are-autolabeling-rules"></a>自動ラベル付け規則とは
+#### <a name="what-are-auto-labeling-rules"></a>自動ラベル付け規則とは
 
 データは絶えず増加して変化しています。 現在ラベルが付けられていないデータを追跡し、ラベルを手動で適用するアクションを実行するのは、面倒なだけでなく、不必要な頭痛の種でもあります。 
 
-自動ラベル付けルールは、特定のラベルを適用するタイミングを指定する条件です。 これらの条件が満たされると、ラベルがデータに自動的に割り当てられ、一貫性のある秘密度ラベルが大規模なデータで維持されます。
+自動ラベル付け規則は、特定のラベルを適用するタイミングを指定する条件です。 これらの条件が満たされると、ラベルがデータに自動的に割り当てられ、一貫性のある秘密度ラベルが大規模なデータで維持されます。
 
-ラベルを作成するときは、[ファイル](#define-autolabeling-rules-for-files)と[データベースの列](#define-autolabeling-rules-for-database-columns)の両方に対して自動ラベル付け規則を定義し、各データ スキャンでラベルが自動的に適用されるようにしてください。 
+ラベルを作成するときは、[ファイル](#define-auto-labeling-rules-for-files)と[データベースの列](#define-auto-labeling-rules-for-database-columns)の両方に対して自動ラベル付け規則を定義し、各データ スキャンでラベルが自動的に適用されるようにしてください。 
 
 Purview でデータをスキャンすると、自動的に適用されたラベルを Purview Catalog と分析情報レポートに表示できます。
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Azure Purview の秘密度ラベルでサポートされるデータ型
@@ -125,8 +125,8 @@ Azure Purview の資産にラベル付けを拡張すると、Purview で使用�
 
     特にファイルとデータベースの列の自動ラベル付け規則を定義します。
 
-    - [ファイルの自動ラベル付け規則を定義する](#define-autolabeling-rules-for-files)
-    - [データベースの列の自動ラベル付け規則を定義する](#define-autolabeling-rules-for-database-columns)
+    - [ファイルの自動ラベル付け規則を定義する](#define-auto-labeling-rules-for-files)
+    - [データベースの列の自動ラベル付け規則を定義する](#define-auto-labeling-rules-for-database-columns)
 
     ウィザードのオプションの詳細については、Microsoft 365 のドキュメントの「[機密ラベルでできること](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do)」を参照してください。
 
@@ -156,7 +156,7 @@ Azure Purview の資産にラベル付けを拡張すると、Purview で使用�
 - [資産のラベルを表示する](#view-labels-on-assets)
 - [分類と秘密度ラベルの分析情報レポートを表示する](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
 
-#### <a name="define-autolabeling-rules-for-files"></a>ファイルの自動ラベル付け規則を定義する
+#### <a name="define-auto-labeling-rules-for-files"></a>ファイルの自動ラベル付け規則を定義する
 
 ファイルの自動ラベル付け規則は、ウィザードでラベルを作成または編集するときに定義します。 
 
@@ -168,7 +168,7 @@ Azure Purview の資産にラベル付けを拡張すると、Purview で使用�
  
 詳細については、Microsoft 365 のドキュメントの[データへの秘密度ラベルの自動適用](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps)に関するページを参照してください。 
 
-#### <a name="define-autolabeling-rules-for-database-columns"></a>データベースの列の自動ラベル付け規則を定義する
+#### <a name="define-auto-labeling-rules-for-database-columns"></a>データベースの列の自動ラベル付け規則を定義する
 
 データベースの列の自動ラベル付け規則は、ウィザードでラベルを作成または編集するときに定義します。 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e524905aaeed54de6501eb6f024bf28dbab9c594
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831945"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362167"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>チュートリアル:ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して IoT Central アプリケーションをデプロイする方法
 
@@ -22,6 +22,13 @@ ms.locfileid: "99831945"
 次のビデオでは、"_ビデオ分析 - 物体とモーションの検出アプリケーション テンプレート_" を使用して IoT Central ソリューションをデプロイする方法を段階的に説明しています。
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+この一連のチュートリアルでは、次の方法を学習します。
+
+> [!div class="checklist"]
+> * アプリケーションの配置
+> * アプリケーションに接続する IoT Edge インスタンスのデプロイ
+> * アプリケーションの監視と管理
 
 ## <a name="prerequisites"></a>前提条件
 

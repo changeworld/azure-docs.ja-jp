@@ -7,16 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832132"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390472"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
-このチュートリアルでは、Azure IoT Central のマイクロフルフィルメント センター アプリケーション テンプレートを使用して、小売業ソリューションを構築します。 テンプレートのデプロイ方法、テンプレートに含まれている内容、および次に実行できることについて説明します。
+このチュートリアルでは、Azure IoT Central のマイクロフルフィルメント センター アプリケーション テンプレートを使用して、小売業ソリューションを構築します。
+
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * アプリケーション テンプレートをデプロイする方法
+> * アプリケーション テンプレートを使用する方法
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアル シリーズを完了するには、Azure サブスクリプションが必要です。 必要に応じて、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。

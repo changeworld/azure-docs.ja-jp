@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526417"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555565"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス
 
@@ -30,7 +30,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 ![Azure RBAC と最小限の特権](./media/best-practices/rbac-least-privilege.png)
 
-ロールの割り当てを追加する方法の詳細については、[Azure portal を使用した Azure でのロールの割り当ての追加または削除](role-assignments-portal.md)に関する記事を参照してください。
+ロールの割り当て方法について詳しくは、「[Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)」をご覧ください。
 
 ## <a name="limit-the-number-of-subscription-owners"></a>サブスクリプションの所有者の数を制限する
 

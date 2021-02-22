@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088923"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372010"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps の価格および課金モデル
 
@@ -72,8 +72,8 @@ ms.locfileid: "99088923"
 
 | ISE SKU | 説明 |
 |---------|-------------|
-| **Premium** | 基本単位は固定容量であり、[Premium SKU の 1 時間あたりの料金で課金](https://azure.microsoft.com/pricing/details/logic-apps)されます。 さらにスループットが必要な場合は、ISE の作成時または作成後に[スケール ユニットをさらに追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 スケール ユニットごとに、[基本単位の料金のおよそ半額となる 1 時間あたりの料金で課金](https://azure.microsoft.com/pricing/details/logic-apps)されます。 <p><p>制限については、[Azure Logic Apps での ISE の制限](logic-apps-limits-and-config.md#integration-service-environment-ise)に関するページを参照してください。 |
-| **開発者** | 基本単位は固定容量であり、[Developer SKU の 1 時間あたりの料金で課金](https://azure.microsoft.com/pricing/details/logic-apps)されます。 この SKU には、スケールアップ機能、サービス レベル アグリーメント (SLA)、または公開された制限はありません。 この SKU は、探索、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。 |
+| **Premium** | 基本単位は[固定容量](logic-apps-limits-and-config.md#integration-service-environment-ise)であり、[Premium SKU の 1 時間あたりの料金で課金されます](https://azure.microsoft.com/pricing/details/logic-apps)。 さらにスループットが必要な場合は、ISE の作成時または作成後に[スケール ユニットをさらに追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 スケール ユニットごとに、[基本単位の料金のおよそ半額となる 1 時間あたりの料金で課金](https://azure.microsoft.com/pricing/details/logic-apps)されます。 <p><p>容量と制限については、[Azure Logic Apps での ISE の制限](logic-apps-limits-and-config.md#integration-service-environment-ise)に関する記事を参照してください。 |
+| **開発者** | 基本単位は[固定容量](logic-apps-limits-and-config.md#integration-service-environment-ise)であり、[Developer SKU の 1 時間あたりの料金で課金されます](https://azure.microsoft.com/pricing/details/logic-apps)。 ただし、この SKU には、サービス レベル アグリーメント (SLA)、スケールアップ機能、リサイクル中の冗長性がありません。これは、遅延やダウンタイムが発生する可能性があることを意味します。 バックエンドの更新により、サービスが断続的に中断する場合があります。 <p><p>**重要**:この SKU は、必ず探索、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。 <p><p>容量と制限については、[Azure Logic Apps での ISE の制限](logic-apps-limits-and-config.md#integration-service-environment-ise)に関する記事を参照してください。 |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>追加コストなしで含まれるもの

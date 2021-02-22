@@ -1,7 +1,7 @@
 ---
-title: Azure Communication Services のテレフォニーと SMS ソリューションを計画する
+title: Azure Communication Services での電話番号の種類
 titleSuffix: An Azure Communication Services concept document
-description: 電話番号とテレフォニーの使用を効果的に計画する方法について説明します。
+description: SMS やテレフォニーに各種の電話番号を効率的に使用する方法について説明します。
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937238"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366468"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>テレフォニーと SMS ソリューションを計画する
+# <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services では、公衆交換電話網 (PSTN) で、電話番号を使用して音声通話を行ったり携帯ショートメール (SMS) メッセージを送信したりすることができます。 このドキュメントでは、Communication Services を使用したテレフォニーと SMS ソリューションを計画している方のために、電話番号の種類、構成オプション、利用可能なリージョンについて見ていきます。
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
- 
+## <a name="number-types-and-features"></a>番号の種類と機能
 Communication Services には、**ローカル** と **無料電話番号** の 2 種類の電話番号が用意されています。 
 
 ### <a name="local-numbers"></a>ローカル番号
@@ -52,7 +47,7 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 | フリーダイヤル         | +1 (フリーダイヤルの市外 "*局番*") XXX XX XX | US                      | 通話 (発信)、SMS (受信または送信)| 音声自動応答 (IVR) システム (ボット) や SMS アプリケーションに電話番号を割り当てる                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Azure Communication Services での電話番号の機能 
+### <a name="phone-number-features-in-azure-communication-services"></a>Azure Communication Services での電話番号の機能 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント
 
 - [音声とビデオの概念](../voice-video-calling/about-call-types.md)
+- [テレフォニーの概念](./telephony-concept.md)
 - [通話フロー](../call-flows.md)
 - [料金](../pricing.md)

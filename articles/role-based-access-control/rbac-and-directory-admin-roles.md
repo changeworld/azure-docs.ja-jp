@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 0b43f30c25767a135b98b756d61ed2535e1fbd22
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: daab07a72f61cfdf4f39cae03a1c61bd18f37a8f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092202"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557439"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -91,7 +91,7 @@ Azure portal では、Azure RBAC を使用したロールの割り当てが **[�
 
 ![Azure portal での組み込みロール](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)方法に関するページを参照してください。
+詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](role-assignments-portal.md)に関するページを参照してください。
 
 ## <a name="azure-ad-roles"></a>Azure AD ロール
 

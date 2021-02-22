@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008589"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391774"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -41,7 +41,7 @@ Read 3.2-preview OCR コンテナーは、次のものを備えています。
 * 信頼度スコア。
 * 印刷および手書きの両方のテキストを含むドキュメントのサポート。
 * ドキュメント内の選択したページからのみテキストを抽出する機能。
-* テキスト行の出力順序の既定からより自然な読み取り順序への選択。
+* テキスト行の出力順序の既定からより自然な読み取り順序への選択 (ラテン語系の言語のみ)。
 * 手書きスタイルとしての、またはラテン言語に対してのみでないテキスト行の分類。
 
 現時点で Read 2.0 コンテナーを使用している場合は、 [移行ガイド](read-container-migration-guide.md)に関する記事を参照して、新しいバージョンの変更点を確認してください。

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576483"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374373"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -238,7 +238,7 @@ Azure Cosmos DB の Cassandra API は、管理されたサービス プラット
 
 ## <a name="hosted-cql-shell-preview"></a>ホステッドされる CQL シェル (プレビュー)
 
-ホストされるネイティブ Cassandra シェル (CQLSH v5.0.1) を [Azure portal](data-explorer.md) のデータ エクスプローラーまたは [Azure Cosmos DB Explorer](https://cosmos.azure.com/) で直接開くことができます。 CQL シェルを有効にする前に、アカウントで[ノートブック機能を有効にする](enable-notebooks.md) 必要があります (まだ有効になっていない場合、`Open Cassandra Shell` をクリックしたときにメッセージが表示されます)。 サポートされている Azure リージョンについては、「[Azure Cosmos DB アカウントのノートブックを有効にする](enable-notebooks.md)」で強調表示されている注意点を確認します。
+ホストされるネイティブ Cassandra シェル (CQLSH v5.0.1) を [Azure portal](data-explorer.md) のデータ エクスプローラーまたは [Azure Cosmos DB Explorer](https://cosmos.azure.com/) で直接開くことができます。 CQL シェルを有効にする前に、アカウントで[ノートブック機能を有効にする](enable-notebooks.md) 必要があります (まだ有効になっていない場合、`Open Cassandra Shell` をクリックしたときにメッセージが表示されます)。 サポートされている Azure リージョンについては、「[Azure Cosmos DB アカウントのノートブックを有効にする](enable-notebooks.md#supported-regions)」の記事を参照してください。
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH を開く":::
 

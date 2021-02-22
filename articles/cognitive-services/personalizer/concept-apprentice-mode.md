@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951329"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385032"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>見習いモードを使用して、既存のアプリケーションに影響を与えずに Personalizer をトレーニングする
 
@@ -63,7 +63,7 @@ Personalizer が一定のレベルの理解を学習して獲得すると、開�
 |--|--|--|
 |ユーザー エクスペリエンスへの影響|既存のユーザー動作を使用し、**既定のアクション** とそれによって獲得された報酬を(影響を与えるのではなく) 観察することによって、Personalizer をトレーニングできます。 これは、ユーザーのエクスペリエンスとビジネスの結果が影響を受けないことを意味します。|Rank の呼び出しから返された上位のアクションを表示して、ユーザーの動作に影響を与えます。|
 |学習速度|Personalizer の学習速度は、オンライン モードで学習しているときより、見習いモードのときの方が遅くなります。 見習いモードでは、**既定のアクション** によって獲得される報酬を観察することによってのみ学習できます。そのため、探索を実行できないので、学習の速度が制限されます。|現在のモデルの活用と新しい傾向の調査の両方が可能であるため、より迅速に学習できます。|
-|学習効果の "天井"|Personalizer は、基になるビジネス ロジックを近似でき、一致することはほとんどなく、超えることはありません (各 Rank 呼び出しの **既定のアクション** によって獲得される報酬合計)。|Personalizer はアプリケーションのベースラインを超える必要があり、時間が経って行き詰まったら、オフライン評価と特徴評価を実施して、モデルの改善を続ける必要があります。 |
+|学習効果の "天井"|Personalizer は、基になるビジネス ロジックを近似でき、一致することはほとんどなく、超えることはありません (各 Rank 呼び出しの **既定のアクション** によって獲得される報酬合計)。 この近似値の限界は探索によって軽減されます。 たとえば、20% の探索では、見習いモードのパフォーマンスが 80% を超えることはほとんどなく、60% がオンライン モードにレベル アップするための妥当な目標になります。|Personalizer はアプリケーションのベースラインを超える必要があり、時間が経って行き詰まったら、オフライン評価と特徴評価を実施して、モデルの改善を続ける必要があります。 |
 |rewardActionId に対する Rank API の値|_rewardActionId_ は常に Rank 要求で送信する最初のアクションであるため、ユーザーのエクスペリエンスが影響を受けることはありません。 つまり、見習いモードの間は、Rank API はアプリケーションに対して目に見えることは何も行いません。 アプリケーションの Reward API は、モードが変わっても、Reward API の使用方法が変更されないようにする必要があります。|ユーザーのエクスペリエンスは、Personalizer によってアプリケーションに対して選択された _rewardActionId_ により変更されます。 |
 |評価|Personalizer では、既定のビジネス ロジックによって得られる報酬の合計と、その時点でオンライン モードになっている場合に Personalizer が獲得する報酬の合計の比較が保持されています。 比較は、そのリソースの Azure portal で使用できます|[オフライン評価](concepts-offline-evaluation.md)を実行することによって、Personalizer の有効性を評価します。これにより、Personalizer によって達成された合計報酬と、アプリケーションのベースラインの予想される報酬を比較できます。|
 

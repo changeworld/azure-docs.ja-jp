@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6185c5408f74b914ce5ad47634999786ba1d7ab6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367998"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -29,7 +29,7 @@ ms.locfileid: "91299767"
 ## <a name="general-questions"></a>一般的な質問
 **Q:複数の Azure AD ディレクトリを管理しています。どのようにすれば Azure Active Directory Premium のディレクトリに切り替えることができますか。**
 
-Azure AD テナントを切り替えるには、現在サインインしている**ユーザー名**を右上隅で選択して、適切なアカウントを選択します。 ここにアカウントが表示されていない場合は、 **[サインアウト]** を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
+Azure AD テナントを切り替えるには、現在サインインしている **ユーザー名** を右上隅で選択して、適切なアカウントを選択します。 ここにアカウントが表示されていない場合は、 **[サインアウト]** を選択し、Azure Active Directory Premium (P1 または P2) が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
 
 **Q:Azure AD Connect Health では、どのバージョンの ID の役割がサポートされていますか。**
 
@@ -47,8 +47,8 @@ Windows Server Core インストールはサポートされません。
 
 **Q:インフラストラクチャの監視には、いくつライセンスが必要ですか。**
 
-* 最初の Connect Health エージェントに、少なくとも 1 つの Azure AD Premium ライセンスが必要です。
-* 追加登録されるエージェントごとに、25 個の追加 Azure AD Premium ライセンスが必要です。
+* 最初の Connect Health エージェントに、少なくとも 1 つの Azure AD Premium (P1 または P2) ライセンスが必要です。
+* 追加登録されるエージェントごとに、25 個の追加 Azure AD Premium (P1 または P2) ライセンスが必要です。
 * エージェントの数は、監視対象のすべての役割 (AD FS、Azure AD Connect、AD DS) で登録されるエージェントの合計数に相当します。
 * AAD Connect Health のライセンスでは、特定のユーザーにライセンスを割り当てる必要はありません。 必要な数の有効なライセンスを用意することだけが必要です。
 
@@ -201,7 +201,7 @@ CheckForMS17-010
 <i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。
 
 **Q:エージェント認定資格証は有効期限が切れる前に自動更新されますか?**
-エージェント認定資格証は、有効期限日の **6 か月**前に自動更新されます。 更新されない場合は、エージェントのネットワーク接続が安定していることを確認してください。 エージェントのサービスを再起動する、または最新バージョンを更新してもこの問題を解決できる場合があります。
+エージェント認定資格証は、有効期限日の **6 か月** 前に自動更新されます。 更新されない場合は、エージェントのネットワーク接続が安定していることを確認してください。 エージェントのサービスを再起動する、または最新バージョンを更新してもこの問題を解決できる場合があります。
 
 
 

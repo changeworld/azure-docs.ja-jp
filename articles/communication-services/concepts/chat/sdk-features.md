@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625266"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364836"
 ---
 # <a name="chat-client-library-overview"></a>Chat クライアント ライブラリの概要
 
@@ -44,7 +44,7 @@ Azure Communication Services の Chat クライアント ライブラリを使�
 |                   | メンバーがチャット スレッドにメッセージを入力中であることを示す入力通知を送受信する <br/> *チャット スレッドのメンバー数が 20 を超える場合は使用できません*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | チャット スレッド内のすべてのメッセージを取得する <br/> *Unicode の絵文字がサポートされています*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | メッセージ コンテンツの一部として絵文字を送信する                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|リアルタイムの通知 (独自の通知パッケージで対応)| メンバーになっているチャット スレッドでユーザーが新しいメッセージを受信したときに通知を受け取る                                     | ✔️   | ❌    | ❌  | ❌  |
+|リアルタイムの通知 (独自開発のシグナリング パッケージで対応**)| メンバーになっているチャット スレッドでユーザーが新しいメッセージを受信したときに通知を受け取る                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | メンバーになっているチャット スレッドで別のメンバーがメッセージを編集したときに通知を受け取る                | ✔️   | ❌    | ❌    | ❌  |
 |                    | メンバーになっているチャット スレッドで別のメンバーがメッセージを削除したときに通知を受け取る                | ✔️   | ❌    | ❌    | ❌  |
 |                    | チャット スレッドの別のメンバーが入力しているときに通知を受け取る                                                             | ✔️   | ❌    | ❌    | ❌  |
@@ -53,6 +53,8 @@ Azure Communication Services の Chat クライアント ライブラリを使�
 | 監視        | 送信メッセージの観点から使用状況を監視する                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | アプリによって行われた API 要求の品質と状態を監視し、ポータルを使用してアラートを構成する                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |その他の機能 | [Cognitive Services APIs](../../../cognitive-services/index.yml) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能を有効にする - *クライアントで受信メッセージの言語翻訳とセンチメント分析を行ったり、メンバーが話している最中に音声テキスト変換を行ってメッセージを作成したりします。*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+**独自開発のシグナリング パッケージは、Web ソケットを使用して実装します。 Web ソケットがサポートされていない場合は、ロング ポーリングにフォールバックされます。
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>OS とブラウザーによる JavaScript チャット クライアント ライブラリのサポート
 

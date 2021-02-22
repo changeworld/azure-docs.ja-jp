@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 3a044faf5546a22c997b8358d8809e240d563ac9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108385"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556814"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -79,7 +79,7 @@ Azure AD B2C でのユーザー アカウントの種類について詳しくは
 
 ![ソーシャル アカウント (Facebook) でのモバイル サインインの例](media/technical-overview/external-idp.png)
 
-Azure AD B2C で ID プロバイダーを追加する方法については、「[チュートリアル: Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)」をご覧ください。
+Azure AD B2C で ID プロバイダーを追加する方法については、[Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する方法](add-identity-provider.md)に関するページを参照してください。
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>ID エクスペリエンス: ユーザー フローまたはカスタム ポリシー
 

@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/14/2020
-ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382193"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 
@@ -74,26 +74,26 @@ Azure portal で Azure Database for PostgreSQL サーバーのテンプレート
 
 2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの **場所** を選択します。
 
-3. **サーバー名** 、 **管理者のログイン** 、 **管理者のログイン パスワード** を入力します。
+3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード** を入力します。
 
     :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal":::
 
 4. 必要に応じて、他の既定の設定を変更します。
 
     * **[サブスクリプション]** : サーバーに使用する Azure サブスクリプション。
-    * **[SKU 容量]** : 仮想コア容量。 *2* (既定)、 *4* 、 *8* 、 *16* 、 *32* 、 *64* のいずれかを指定できます。
-    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1* 、 *GP_Gen5_2* (既定)、 *MO_Gen5_32* )。
-    * **[SKU サイズ (MB)]** : Azure Database for PostgreSQL サーバーのメガバイト単位のストレージ サイズ (既定値: *51,200* )。
-    * **[SKU レベル]** : デプロイ レベル (例: *Basic* 、 *GeneralPurpose* (既定)、 *MemoryOptimized* )。
+    * **[SKU 容量]** : 仮想コア容量。*2* (既定)、*4*、*8*、*16*、*32*、*64* のいずれかを指定できます。
+    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1*、*GP_Gen5_2* (既定)、*MO_Gen5_32*)。
+    * **[SKU サイズ (MB)]** : Azure Database for PostgreSQL サーバーのメガバイト単位のストレージ サイズ (既定値: *51,200*)。
+    * **[SKU レベル]** : デプロイ レベル (例: *Basic*、*GeneralPurpose* (既定)、*MemoryOptimized*)。
     * **[SKU ファミリ]** : *Gen4* または *Gen5* (既定)。サーバーのデプロイに使用するハードウェアの世代を指定します。
-    * **[Postgresql バージョン]** : デプロイする PostgreSQL サーバーのバージョン (例: *9.5* 、 *9.6* 、 *10* 、 *11* (既定))。
-    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7* )。
-    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて " *有効* " または " *無効* " (既定) を選択します。
-    * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_postgresql_vnet* )。
-    * **[サブネット名]** : サブネットの名前 (既定値: *azure_postgresql_subnet* )。
-    * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet* )。
-    * **[Vnet Address Prefix]\(VNet のアドレス プレフィックス\)** : 仮想ネットワークのアドレス プレフィックス (既定値: *10.0.0.0/16* )。
-    * **[Subnet Prefix]\(サブネット プレフィックス\)** : サブネットのアドレス プレフィックス (既定値: *10.0.0.0/16* )。
+    * **[Postgresql バージョン]** : デプロイする PostgreSQL サーバーのバージョン (例: *9.5*、*9.6*、*10*、*11* (既定))。
+    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7*)。
+    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて "*有効*" または "*無効*" (既定) を選択します。
+    * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_postgresql_vnet*)。
+    * **[サブネット名]** : サブネットの名前 (既定値: *azure_postgresql_subnet*)。
+    * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet*)。
+    * **[Vnet Address Prefix]\(VNet のアドレス プレフィックス\)** : 仮想ネットワークのアドレス プレフィックス (既定値: *10.0.0.0/16*)。
+    * **[Subnet Prefix]\(サブネット プレフィックス\)** : サブネットのアドレス プレフィックス (既定値: *10.0.0.0/16*)。
 
 5. 使用条件を読み、 **[上記の使用条件に同意する]** をオンにします。
 
@@ -174,6 +174,34 @@ read -p "Press [ENTER] to continue: "
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>ポータルから ARM テンプレートをエクスポートする
+Azure portal から [ARM テンプレートをエクスポート](../azure-resource-manager/templates/export-template-portal.md)できます。 テンプレートをエクスポートするには、次の 2 とおりの方法があります。
+
+- [リソース グループまたはリソースからのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 このオプションでは、既存のリソースから新しいテンプレートを生成します。 エクスポートされたテンプレートは、リソース グループの現在の状態の "スナップショット" です。 リソース グループ全体、またはそのリソース グループ内の特定のリソースをエクスポートできます。
+- [デプロイ前または履歴からのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
+
+テンプレートをエクスポートすると、PostgreSQL サーバー リソースの ```"properties":{ }``` セクションに、セキュリティ上の理由から ```administratorLogin``` と ```administratorLoginPassword``` が含まれていないことがわかります。 テンプレートをデプロイする前に、これらのパラメーターをテンプレートに追加する **必要があります**。そうしないと、テンプレートは失敗します。
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

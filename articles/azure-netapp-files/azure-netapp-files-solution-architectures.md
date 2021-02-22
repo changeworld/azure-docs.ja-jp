@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537781"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559480"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -94,6 +94,8 @@ ms.locfileid: "99537781"
 * [Azure NetApp Files – クラウド同期を使用した SAP HANA のオフロード バックアップ](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Azure NetApp Files を使用して SAP HANA システムのコピーを高速化する](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloud Volumes ONTAP と Azure NetApp Files:SAP HANA システムの移行が簡単に](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 1 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 2 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware Solutions
 
@@ -146,6 +148,7 @@ ms.locfileid: "99537781"
 
 * [Azure NetApp Files と Azure Kubernetes Service を統合する](../aks/azure-netapp-files.md)
 * [Azure NetApp Files を使用した Azure での現実離れした Kubernetes のパフォーマンス](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
+* [Azure NetApp Files + Trident = Kubernetes 用の動的および永続的ストレージ](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident - コンテナー用のストレージ オーケストレーター](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes Service (AKS) の Magento eコマース プラットフォーム](/azure/architecture/example-scenario/magento/magento-azure)
 

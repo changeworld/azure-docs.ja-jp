@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356212"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529718"
 ---
 **データの収集量と保持期間** 
 
@@ -56,13 +56,19 @@ ms.locfileid: "96356212"
 | クエリの最大実行時間 | 10 分 | 詳細については、[タイムアウト](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)に関するページをご覧ください。  |
 | 最大要求レート | Azure AD ユーザーまたはクライアントの IP アドレスごとに、30 秒あたり 200 件の要求 | 詳細については、[レート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関するページをご覧ください。 |
 
+**Azure Monitor Logs コネクタ**
+| カテゴリ | 制限 | 説明 |
+|:---|:---|:---|
+| レコードの最大数 | 500,000 | |
+| クエリ タイムアウトの最大値 | 110 秒 | |
+| グラフ | | [ログ] ページとコネクタの視覚化で使用されているグラフ ライブラリは異なり、現在、コネクタでは一部機能が使用できません。 |
+
 **一般的なワークスペースの制限**
 
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
 | テーブルの最大列数         | 500 | |
 | 列名の最大文字数 | 500 | |
-| データのエクスポート | 現在、利用できません | データの集計とエクスポートには Azure Function または Logic App を使用してください。 | 
 
 **<a name="data-ingestion-volume-rate">データ インジェストのボリューム レート</a>**
 

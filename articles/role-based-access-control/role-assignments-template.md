@@ -1,25 +1,29 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する - Azure RBAC
+title: Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる - Azure RBAC
 description: Azure Resource Manager テンプレートと Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675338"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556023"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)]Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)を使ってロールを割り当てることもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、テンプレートを使用してロールを割り当てる方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>オブジェクト ID を取得する
 
@@ -73,13 +77,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
+## <a name="assign-an-azure-role"></a>Azure ロールを割り当てる
 
-Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
+Azure RBAC でアクセス権を付与するには、ロールを割り当てます。
 
 ### <a name="resource-group-scope-without-parameters"></a>リソース グループのスコープ (パラメーターなし)
 
-次のテンプレートは、ロールの割り当てを追加する基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。 以下のテンプレートでは次のことを示します。
+次のテンプレートは、ロールを割り当てる基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。 以下のテンプレートでは次のことを示します。
 
 -  リソース グループのスコープでユーザー、グループ、またはアプリケーションに[閲覧者](built-in-roles.md#reader)ロールを割り当てる方法
 
@@ -206,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>リソースのスコープ
 
-リソース レベルでロールの割り当てを追加する必要がある場合は、ロールの割り当てで `scope` プロパティをリソースの名前に設定します。
+リソース レベルでロールを割り当てる必要がある場合は、ロールの割り当てで `scope` プロパティをリソースの名前に設定します。
 
 以下のテンプレートでは次のことを示します。
 
@@ -369,15 +373,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 次に示すのは、テンプレートをデプロイした後で、新しいマネージド ID サービス プリンシパルに共同作成者ロールを割り当てる場合の例です。
 
 ![新しいマネージド ID サービス プリンシパルに対するロールの割り当て](./media/role-assignments-template/role-assignment-template-msi.png)
-
-## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
-
-Azure RBAC で Azure リソースへのアクセス権を削除するには、ロールの割り当てを削除します。 テンプレートを使用してロールの割り当てを削除する方法はありません。 ロールの割り当てを削除するには、次のような他のツールを使用する必要があります。
-
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
-- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>次のステップ
 

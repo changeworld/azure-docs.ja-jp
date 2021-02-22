@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2884df3a9b5cb3954c1c5e57d923eff97809a745
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382176"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
@@ -276,7 +276,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 このアプリでは、テキスト文字列が作成され、BLOB ストレージにアップロードされます。 例では、コンテナー内の BLOB を一覧表示し、BLOB をダウンロードして、ダウンロードしたデータを表示します。
 
-コンソール プロンプトから、*blob-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
+コンソール プロンプトから、*blob-quickstart-v12.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
 
 ```console
 node blob-quickstart-v12.js

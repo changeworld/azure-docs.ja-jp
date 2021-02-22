@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559446"
 ---
-# <a name="call-flows"></a>通話のフロー
+# <a name="call-flow-basics"></a>通話フローの基礎
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ PSTN メディア トラフィックは、メディア プロセッサと呼ば�
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Communication Services 内の TCP メディア処理フローを示す図。":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>ケース 5: スケジュールされた Teams の会議に Communication Services クライアント ライブラリと Microsoft Teams が参加
+
+シグナリングのフローは、シグナリング コントローラーを経由します。 メディアのフローは、メディア プロセッサを経由します。 シグナリング コントローラーとメディア プロセッサは、Communication Services と Microsoft Teams との間で共有されます。 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="スケジュールされた Teams の会議に参加する Communication Services クライアント ライブラリと Teams クライアントを示す図。":::
+
+
+
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ PSTN メディア トラフィックは、メディア プロセッサと呼ば�
 
 - [通話の種類](../concepts/voice-video-calling/about-call-types.md)についてさらに学習する
 - [クライアント - サーバー アーキテクチャ](./client-and-server-architecture.md)について学習する
+- [通話フローのトポロジ](./detailed-call-flows.md)について学習する

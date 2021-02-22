@@ -2,30 +2,30 @@
 title: Azure Arc 対応オンボード サービス プリンシパルの作成 (プレビュー)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 'Azure Arc 対応オンボード サービス プリンシパルを作成します '
+description: 'Azure Arc 対応オンボード サービス プリンシパルの作成 '
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184698"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390489"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc 対応オンボード サービス プリンシパルの作成 (プレビュー)
 
 ## <a name="overview"></a>概要
 
-Kubernetes クラスターを Azure Arc にオンボードするために、権限が制限されたロールが割り当てられたサービス プリンシパルを使用できます。これは、Azure Pipelines や GitHub Actions などの継続的インテグレーションおよび継続的デプロイ (CI/CD) パイプラインで役立ちます。
+限定された権限のロールの割り当てを持つサービス プリンシパルを使用して、Kubernetes クラスターを Azure Arc にオンボードできます。 この機能は、Azure Pipelines や GitHub Actions などの継続的インテグレーションおよび継続的デプロイ (CI/CD) パイプラインで役立ちます。
 
-以下の手順では、Kubernetes クラスターを Azure Arc にオンボードするためにサービス プリンシパルを使用する方法について説明します。
+以下の手順を実行して、Kubernetes クラスターを Azure Arc にオンボードするためにサービス プリンシパルを使用する方法について説明します。
 
 ## <a name="create-a-new-service-principal"></a>新しいサービス プリンシパルを作成する
 
-わかりやすい名前で新しいサービス プリンシパルを作成します。 この名前は、Azure Active Directory テナントで一意である必要があります。
+Azure Active Directory テナントに固有のわかりやすい名前で、新しいサービス プリンシパルを作成します。
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,7 +45,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>アクセス許可の割り当て
 
-新しいサービス プリンシパルを作成したら、新しく作成したプリンシパルに "Kubernetes クラスター - Azure Arc のオンボード" ロールを割り当てます。 これは、アクセス許可が制限された組み込みの Azure ロールであり、プリンシパルはクラスターを Azure に登録することだけが許可されます。 プリンシパルは、サブスクリプション内の他のクラスターまたはリソースを更新、削除、変更することはできません。
+新しく作成したサービス プリンシパルに "Kubernetes クラスター - Azure Arc のオンボード" ロールを割り当てます。 アクセス許可が制限されたこの組み込みの Azure ロールでは、プリンシパルがクラスターを Azure に登録することだけが許可されます。 この割り当て済みのロールを持つプリンシパルは、サブスクリプション内の他のクラスターまたはリソースを更新、削除、変更することはできません。
 
 機能が制限されているため、お客様はこのプリンシパルを再利用して、複数のクラスターを簡単にオンボードできます。
 
@@ -80,7 +80,7 @@ az role assignment create \
 
 ## <a name="use-service-principal-with-the-azure-cli"></a>Azure CLI でサービス プリンシパルを使用する
 
-新しく作成したサービス プリンシパルを参照します。
+次のコマンドを使用して、新しく作成されたサービス プリンシパルを参照します。
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID

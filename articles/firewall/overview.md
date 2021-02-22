@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5f12eae9345cbb1daa4097305bb85b8ceaf0b439
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681464"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547998"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -26,9 +26,17 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。 Azure Firewall では、外部のファイアウォールが仮想ネットワークからのトラフィックを識別できるよう、仮想ネットワーク リソースに静的パブリック IP アドレスが使用されます。  サービスはログ記録と分析を行うために Azure Monitor と完全に統合されます。
 
-## <a name="features"></a>特徴
-
 Azure Firewall の機能の詳細については、「[Azure Firewall の機能](features.md)」を参照してください。
+
+## <a name="azure-firewall-premium-preview"></a>Azure Firewall Premium プレビュー
+
+Azure Firewall Premium プレビューは、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 そうした機能として、TLS 検査、IDPS、URL フィルタリング、Web カテゴリなどがあります。
+
+Azure Firewall Premium プレビューの機能については、[Azure Firewall Premium プレビューの機能](premium-features.md)に関するページを参照してください。
+
+
+Azure portal で Firewall Premium プレビューを構成する方法については、「[Azure portal での Azure Firewall Premium プレビュー](premium-portal.md)」を参照してください。
+
 
 ## <a name="pricing-and-sla"></a>料金と SLA
 
@@ -68,7 +76,7 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |Azure Firewall では、HTTPS トラフィックと MSSQL トラフィックのフィルター処理に SNI TLS ヘッダーが使用される|ブラウザーまたはサーバー ソフトウェアが Server Name Indicator (SNI) 拡張機能をサポートしていない場合は、Azure Firewall 経由で接続することがはできません。|ブラウザーまたはサーバー ソフトウェアが SNI をサポートしていない場合は、アプリケーション ルールではなくネットワーク ルールを使用して接続を制御できます。 SNI をサポートするソフトウェアについては、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください。|
 |カスタム DNS が強制トンネリングで正しく機能しない|強制トンネリングが有効になっている場合、カスタム DNS は正しく機能しません。|解決策を調査中です。|
 |強制トンネリング モードで構成されたファイアウォールで開始と停止が機能しない|強制トンネリング モードで構成された Azure ファイアウォールで、開始と停止が機能しません。 強制トンネリングが構成された Azure Firewall を起動しようとすると、次のエラーが発生します。<br><br>*Set-AzFirewall: AzureFirewall FW-xx management IP configuration cannot be added to an existing firewall. Redeploy with a management IP configuration if you want to use forced tunneling support. (Set-AzFirewall: AzureFirewall FW-xx の管理 IP 構成を既存のファイアウォールに追加できません。強制トンネリング機能を使用したい場合は、管理 IP 構成で再デプロイしてください。)<br>StatusCode: 400<br>ReasonPhrase: Bad Request (無効な要求)*|調査中。<br><br>この問題は、既存のファイアウォールを削除してから、同じパラメーターで新しいファイアウォールを作成することで回避できます。|
-|ポータルを使用してファイアウォール ポリシー タグを追加できない|Azure Firewall ポリシーにはパッチ サポートの制限があり、Azure portal を使用してタグを追加することはできません。 次のエラーが発生します: "*リソースのタグを保存できませんでした*"。|解決策を調査中です。 代わりに、Azure PowerShell のコマンドレット `Set-AzFirewallPolicy` を使用してタグを更新することができます。|
+|ポータルを使用してファイアウォール ポリシー タグを追加できない|Azure Firewall ポリシーにはパッチ サポートの制限があり、Azure portal を使用してタグを追加することはできません。 次のエラーが発生します: "*リソースのタグを保存できませんでした*"。|解決策を調査中です。 または、Azure PowerShell のコマンドレット `Set-AzFirewallPolicy` を使用してタグを更新することもできます。|
 |IPv6 はまだサポートされていません|IPv6 アドレスをルールに追加した場合、ファイアウォールのエラーが発生します。|IPv4 アドレスのみを使用してください。 IPv6 のサポートは調査中です|
 
 

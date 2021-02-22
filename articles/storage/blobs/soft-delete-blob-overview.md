@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979295"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390359"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
@@ -83,7 +83,7 @@ BLOB の論理的な削除は、新規と既存の両方の汎用 v2、汎用 v1
 > [!NOTE]  
 > 論理的に削除された BLOB が上書きされると、書き込み操作前の BLOB の状態の論理的に削除されたスナップショットが、自動的に生成されます。 新しい BLOB は、上書きされた BLOB の階層を継承します。
 
-コンテナーまたはアカウントの削除の場合、または BLOB メタデータおよび BLOB プロパティが上書きされる場合、論理的な削除ではデータは保存されません。 削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。
+コンテナーまたはアカウントの削除の場合、または BLOB メタデータおよび BLOB プロパティが上書きされる場合、論理的な削除ではデータは保存されません。 削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。  コンテナーが誤って削除されないようにするには、ストレージ アカウントに対してコンテナーの論理的な削除を構成します。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」を参照してください。
 
 次の表では、論理的な削除を有効にしたときに想定される動作の詳細を示します。
 

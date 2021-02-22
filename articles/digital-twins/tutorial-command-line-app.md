@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d54207de9d74944e5b44e9970c1c5b896a56a373
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576246"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560769"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
@@ -118,7 +118,7 @@ CreateModels Room
 ```
 
 モデルを上書きすることはできないので、今度はサービス エラーが返されます。
-既存のモデルを削除する方法について詳しくは、"[*カスタム モデルを管理する方法*](how-to-manage-model.md)" に関するページを参照してください。
+既存のモデルを削除する方法について詳しくは、[*方法: DTDL モデルの管理*](how-to-manage-model.md)に関する記事を参照してください。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)

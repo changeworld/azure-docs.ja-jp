@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: f76a05757f86308785d4ca678675b87b3fa9d63e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: db3954b0368392d63680a8d92f13d6a0423e8ef5
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550793"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526877"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure Purview での接続のトラブルシューティング
 
@@ -53,7 +53,10 @@ Azure Key Vault にアクセスするために、Purview が管理する ID に�
 これを確認するには、次の手順を実行します。
 
 1. 使用するキー コンテナーに移動し、 **[アクセス ポリシー]** セクションに移動します。
-1. Purview が管理する ID が *[現在のアクセス ポリシー]* セクションに表示され、少なくともシークレットに対する **get** アクセス許可が付与されていることを確認します。
+
+1. Purview が管理する ID が *[現在のアクセス ポリシー]* セクションに表示され、少なくともシークレットに対する **Get** および **List** アクセス許可が付与されていることを確認します。
+
+   :::image type="content" source="./media/troubleshoot-connections/verify-minimum-permissions.png" alt-text="Get と List の両方のアクセス許可についてドロップダウンの選択を示す画像":::
 
 Purview が管理する ID が一覧に表示されない場合は、「[スキャン用の資格情報を作成して管理する](manage-credentials.md)」に記載されている手順に従って追加します。 
 

@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Azure Cache for Redis を作成する
-description: このクイックスタートでは、Azure Cache for Redis のインスタンスを作成する方法について学習します
+title: 'クイックスタート: オープンソースの Redis キャッシュを作成する'
+description: このクイックスタートでは、Azure Cache for Redis の Basic、Standard、Premium レベルのインスタンスを作成する方法について学習します
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 829f954fede18da2dbf7b3f2d84f69452294a17a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/08/2021
+ms.openlocfilehash: 24de9e4eabfbc03e942868cce7560b5df093e1ad
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83228264"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365125"
 ---
-# <a name="quickstart-create-an-azure-cache-for-redis-instance"></a>クイック スタート:Azure Cache for Redis インスタンスを作成する
+# <a name="quickstart-create-an-open-source-redis-cache"></a>クイックスタート: オープンソースの Redis キャッシュを作成する
 
 Azure Cache for Redis は、Azure 内でフル マネージド型の[オープンソース Redis](https://redis.io/) を提供します。 Azure Cache for Redis インスタンスは、任意のレベル (Basic、Standard、または Premium) とサイズで始めることができ、アプリケーションのパフォーマンス ニーズに合わせてスケーリングすることができます。 このクイックスタートでは、Azure portal を使用して新しい Azure Cache for Redis を作成する方法を示します。
 
@@ -31,4 +31,3 @@ Azure Cache for Redis は、Azure 内でフル マネージド型の[オープ�
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis を使用する ASP.NET Web アプリを作成する](./cache-web-app-howto.md)
-

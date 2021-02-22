@@ -3,12 +3,12 @@ title: ブループリント オペレーター用の環境を設定する
 description: ブループリント オペレーターの Azure 組み込みロールで使用するように Azure 環境を構成する方法について説明します。
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591603"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558721"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>ブループリント オペレーター用の環境を構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "99591603"
 
 1. (推奨) [セキュリティ グループを作成してメンバーを追加します](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. アカウントまたはセキュリティ グループに **ブループリント オペレーター** の [ロールの割り当てを追加します](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
+1. アカウントまたはセキュリティ グループに **ブループリント オペレーター** の [Azure ロールを割り当てます](../../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="user-assign-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -32,7 +32,7 @@ ms.locfileid: "99591603"
 
 1. 目的のスコープのブループリント定義で必要なロールまたはアクセス許可を、ユーザー割り当てのマネージド ID に付与します。
 
-1. アカウントまたはセキュリティ グループに **マネージド ID オペレーター** の [ロールの割り当てを追加します](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 ロールの割り当ての範囲を、新しいユーザー割り当てのマネージド ID に設定します。
+1. アカウントまたはセキュリティ グループに **マネージド ID オペレーター** の [Azure ロールを割り当てます](../../../role-based-access-control/role-assignments-portal.md)。 ロールの割り当ての範囲を、新しいユーザー割り当てのマネージド ID に設定します。
 
 1. **ブループリント オペレーター** として、新しいユーザー割り当て管理対象 ID を使用する [ブループリントを割り当てます](../create-blueprint-portal.md#assign-a-blueprint)。
 

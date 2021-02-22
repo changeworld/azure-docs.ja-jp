@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 6de91d51f3700c25ba1e0f361c948dc8ab338c43
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104605"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590548"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -24,7 +24,8 @@ ms.locfileid: "100104605"
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
 |------------------------------|---------------|---------------|
 | [ドキュメントのリセット (プレビュー)](search-howto-run-reset-indexers.md) |  インデクサー ワークロードで個別に選択された検索ドキュメントを再処理します。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) |
-| [可用性ゾーン](search-performance-optimization.md#availability-zones)| [こちらの記事](search-performance-optimization.md#availability-zones)に記載されているように、特定のリージョンに 2 つ以上のレプリカがある Search サービスは、2 つ以上の異なる物理的な場所にレプリカを配置することで回復性が得られます。  | 検索サービスを作成したリージョンと作成日によって可用性が決まります。 詳細については、パフォーマンス チューニングに関するドキュメントをご覧ください。 |
+| [可用性ゾーン](search-performance-optimization.md#availability-zones)| 「[パフォーマンスのためのスケール](search-performance-optimization.md#availability-zones)」に記載されているように、特定のリージョンに 2 つ以上のレプリカがある Search サービスは、2 つ以上の異なる物理的な場所にレプリカを配置することで回復性が得られます。  | 検索サービスを作成したリージョンと作成日によって可用性が決まります。 詳細については、パフォーマンスのスケーリングに関する記事を参照してください。 |
+| [Azure CLI](/cli/azure/search) </br>[Azure PowerShell](/powershell/module/az.search/) | 新しいリビジョンでは、IP ファイアウォール規則とプライベート エンドポイントのサポートを含め、Management REST API 2020-08-01 のあらゆる種類の操作が利用できるようになりました。 | 一般提供されています。 |
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -77,7 +78,7 @@ ms.locfileid: "100104605"
 |November | [テキスト翻訳スキル](cognitive-search-skill-text-translation.md) | テキストを評価し、翻訳するコグニティブ スキル。インデックス作成中に使用されます。 一般提供されています。|
 |November | [Power BI テンプレート](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | ナレッジ ストアのコンテンツを視覚化するためのテンプレート。 |
 |November | [Azure Data Lake Storage Gen2 (プレビュー)](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API (プレビュー)](search-howto-index-cosmosdb.md)、[Cosmos DB Cassandra API (プレビュー)](search-howto-index-cosmosdb.md) | パブリック プレビュー段階にある新しいインデクサー データ ソース。 |
-|7 月 | [Azure Government クラウドのサポート](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search) | 一般提供されています。|
+|7 月 | [Azure Government クラウドのサポート](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | 一般提供されています。|
 
 <a name="new-service-name"></a>
 

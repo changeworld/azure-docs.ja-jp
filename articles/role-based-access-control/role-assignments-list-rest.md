@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964332"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556899"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -92,5 +92,5 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
 
 ## <a name="next-steps"></a>次のステップ
 
-- [REST API を使用して Azure のロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979537"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362796"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -132,8 +132,8 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 }
 ```
 
-## <a name="natural-reading-order-output"></a>自然な読み取り順序の出力
-[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) では、`readingOrder` クエリ パラメーターを使用して、テキスト行の出力順序を指定します。 次の例に示すように、`natural` を使用して、よりわかりやすい読み取り順序の出力を行います。
+## <a name="natural-reading-order-output-latin-only"></a>自然な読み取り順序の出力 (ラテンのみ)
+[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) では、`readingOrder` クエリ パラメーターを使用して、テキスト行の出力順序を指定します。 次の例に示すように、`natural` を使用して、よりわかりやすい読み取り順序の出力を行います。 この機能は、ラテン語系の言語でのみサポートされています。
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR の読み取り順序の例":::
 

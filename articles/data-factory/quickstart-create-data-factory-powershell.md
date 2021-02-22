@@ -1,24 +1,18 @@
 ---
 title: Azure Data Factory を使用してデータを Blob Storage 内でコピーする
 description: PowerShell を使用して Azure データ ファクトリを作成し、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9f419d89a9757a11055781335cbf98e9eb651548
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013363"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372724"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>クイックスタート: PowerShell を使用した Azure データ ファクトリの作成
 
@@ -40,6 +34,9 @@ ms.locfileid: "96013363"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+
+>[!WARNING]
+>最新バージョンの PowerShell および Data Factory モジュールを使用しない場合は、コマンドの実行中に逆シリアル化エラーが発生する可能性があります。 
 
 #### <a name="log-in-to-powershell"></a>PowerShell にログインする
 
@@ -341,12 +338,12 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
             -PipelineRunId $RunId
 
         if ($Run) {
-            if ($run.Status -ne 'InProgress') {
+            if ( ($Run.Status -ne "InProgress") -and ($Run.Status -ne "Queued") ) {
                 Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
                 $Run
                 break
             }
-            Write-Output "Pipeline is running...status: InProgress"
+            Write-Output ("Pipeline is running...status: " + $Run.Status)
         }
 
         Start-Sleep -Seconds 10

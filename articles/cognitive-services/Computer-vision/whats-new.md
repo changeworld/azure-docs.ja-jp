@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007399"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390404"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -26,7 +26,7 @@ ms.locfileid: "100007399"
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Read API v3.2 のパブリック プレビューが 73 言語の OCR に対応
 クラウド サービスおよび Docker コンテナーとして利用できるようになった Computer Vision の Read API v3.2 パブリック プレビューでは、次の更新が行われています。
 * [OCR が 73 言語に対応](./language-support.md#optical-character-recognition-ocr)。簡易字中国語と繁体字中国語、日本語、韓国語、ラテン語系の言語が含まれます。
-* テキスト行出力に自然な読みの順序を使用。
+* テキスト行出力に自然な読みの順序を使用 (ラテン語系の言語のみ)
 * テキスト行に対する手書きスタイルの分類と信頼度スコア (ラテン語系の言語のみ)。
 * 複数ページから成るドキュメントで選択ページのみのテキストを抽出。
 * オンプレミス デプロイ用の[ディストリビューションレス コンテナー](./computer-vision-how-to-install-containers.md?tabs=version-3-2)として利用可能。

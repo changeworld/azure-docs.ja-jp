@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184265"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555883"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure のロールの割り当てに関する問題
 
-- **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている [所有者](built-in-roles.md#owner)や [ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
+- **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールを割り当てることができない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
 - サービス プリンシパルを使用してロールを割り当てると、"この操作を完了するのに十分な特権がありません" というエラーが表示されることがあります。 たとえば、所有者ロールが割り当てられたサービス プリンシパルがあり、Azure CLI を使用して、次のロールの割り当てをサービスプリンシパルとして作成しようとするとします。
 
     ```azurecli
@@ -63,7 +63,7 @@ $ras.Count
 
     このエラーを解決する可能性がある 2 つの方法があります。 最初の方法は、ディレクトリ内のデータを読み取ることができるように、[Directory Readers](../active-directory/roles/permissions-reference.md#directory-readers) ロールをサービス プリンシパルに割り当てることです。
 
-    このエラーを解決する 2 番目の方法は、`--assignee` ではなく `--assignee-object-id` パラメーターを使用して、ロールの割り当てを作成することです。 `--assignee-object-id` を使用すると、Azure CLI で Azure AD 検索がスキップされます。 ロールを割り当てるユーザー、グループ、またはアプリケーションのオブジェクト ID を取得する必要があります。 詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)」を参照してください。
+    このエラーを解決する 2 番目の方法は、`--assignee` ではなく `--assignee-object-id` パラメーターを使用して、ロールの割り当てを作成することです。 `--assignee-object-id` を使用すると、Azure CLI で Azure AD 検索がスキップされます。 ロールを割り当てるユーザー、グループ、またはアプリケーションのオブジェクト ID を取得する必要があります。 詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope)」を参照してください。
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -151,7 +151,7 @@ CanDelegate        : False
 }
 ```
 
-セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) を参照してください
+セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法の詳細については、「[Azure ロールの割り当ての削除](role-assignments-remove.md)」を参照してください。
 
 PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 次の出力は、エラー メッセージの例を示しています。
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>ロールの割り当ての変更が検出されない
 
-Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを追加または削除する場合、変更が適用されるまでに最大で 30 分かかることがあります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
+Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールを割り当てたり、ロールの割り当てを削除したりする場合、変更が有効になるまでに最大 30 分かかることがあります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
 
 管理グループのスコープでロールの割り当てを追加または削除し、ロールに `DataActions` がある場合、データ プレーンへのアクセスが数時間更新されない可能性があります。 これは、管理グループのスコープとデータ プレーンにのみ適用されます。
 
@@ -249,5 +249,5 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 ## <a name="next-steps"></a>次のステップ
 
 - [ゲスト ユーザーのトラブルシューティング](role-assignments-external-users.md#troubleshoot)
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)
 - [Azure RBAC の変更のアクティビティ ログを表示する](change-history-report.md)

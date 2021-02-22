@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551027"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379026"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -39,6 +39,7 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [[推奨事項の詳細] ページからポリシーへの直接リンク](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL データ分類の推奨事項がセキュリティ スコアに影響しなくなった](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [規制コンプライアンス評価の変更によって、ワークフロー自動化をトリガー可能 (プレビュー)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [資産インベントリ ページの拡充](#asset-inventory-page-enhancements)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes ワークロード保護の推奨事項が一般提供 (GA) リリース
 
@@ -70,16 +71,32 @@ Azure Kubernetes Service (AKS) クラスターに Kubernetes 用 Azure Policy �
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL データ分類の推奨事項がセキュリティ スコアに影響しなくなった
-
 **SQL データベースの機密データを分類する必要がある** という推奨事項が、セキュリティ スコアに影響することはなくなりました。 これは、**データ分類の適用** セキュリティ コントロールの唯一の推奨事項であり、このコントロールのセキュリティ スコアの値は 0 になりました。
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>規制コンプライアンス評価の変更によって、ワークフロー自動化をトリガー可能 (プレビュー)
-
 ワークフロー自動化のトリガー オプションに、規制コンプライアンス評価の変更という 3 つ目のデータの種類が追加されました。
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="規制コンプライアンス評価の変更を使用した、ワークフロー自動化のトリガー" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>資産インベントリ ページの拡充
+Security Center の [資産インベントリ] ページに次の改良が加えられています。
+
+- ページの上部にあるサマリーに **[Unregistered subscriptions]\(未登録のサブスクリプション\)** が追加され、Security Center が有効になっていないサブスクリプションの数を把握できるようになりました。
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="[資産インベントリ] ページ上部のサマリーに表示される未登録のサブスクリプション数":::
+
+- フィルターが拡張され、次の項目が追加されました。
+    - **カウント** - 各カテゴリの条件を満たすリソースの数がフィルターごとに表示されます。
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Azure Security Center の [資産インベントリ] ページのフィルターに表示されるカウント":::
+
+    - **Contains exemptions (適用除外を含む) フィルター** (省略可) - 適用除外が設定されている (または設定されていない) リソースに結果を絞り込みます。 このフィルターは既定では表示されませんが、 **[フィルターの追加]** ボタンで追加できます。
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="Azure Security Center の [資産インベントリ] ページに &quot;Contains Exemption (適用除外を含む)&quot; フィルターを追加する":::
+
+詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -630,7 +647,7 @@ Security Center の規制コンプライアンス ダッシュボードでは、
 
 ダッシュボードには、規制標準の既定のセットが含まれています。 提供されている標準に、組織に関連していないものが含まれている場合、簡単なプロセスでサブスクリプションの UI から削除できるようになりました。 標準は、"*サブスクリプション*" レベルだけで削除できます。管理グループのスコープでは、削除できません。
 
-詳細については、「[ダッシュボードから標準を削除する](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)」セクションを参照してください。
+詳細については、「[ダッシュボードから標準を削除する](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)」を参照してください。
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Azure Resource Graph (ARG) からの Microsoft.Security/securityStatuses テーブルの削除
