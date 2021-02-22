@@ -105,7 +105,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -212,8 +212,10 @@
               href: application-proxy-integrate-with-microsoft-cloud-application-security.md
             - name: リモート デスクトップとの統合
               href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: SharePoint との統合
+            - name: SharePoint との統合 (Kerberos)
               href: application-proxy-integrate-with-sharepoint-server.md
+            - name: SharePoint との統合 (SAML)
+              href: application-proxy-integrate-with-sharepoint-server-saml.md
             - name: Teams との統合
               href: application-proxy-integrate-with-teams.md
             - name: Tableau との統合

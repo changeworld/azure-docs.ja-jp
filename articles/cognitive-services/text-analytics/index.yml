@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: 48d045fb89a4b04826ecb9fd0c7d0b2ac676d64a
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  ms.openlocfilehash: 322be97658752fb1fd6c775ba25fc74f4e04e50d
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98944970"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101093288"
 landingContent:
 - title: Text Analytics API について
   linkLists:
@@ -114,6 +114,36 @@ landingContent:
     links:
     - text: エンティティの認識
       url: how-tos/text-analytics-how-to-entity-linking.md
+- title: AI の責任ある使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Text Analytics の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Health の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+    - text: PII の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+    - text: 感情分析の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+  - linkListType: concept
+    links:
+    - text: 統合と責任ある使用
+      url: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
+- title: Docker コンテナーを使用する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Text Analytics コンテナーをインストールして実行する
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: Text Analytics コンテナーを構成する
+      url: text-analytics-resource-container-config.md
+    - text: Text Analytics for health コンテナーを使用する
+      url: How-tos/text-analytics-for-health.md
+    - text: コンテナー インスタンスを Azure にデプロイする
+      url: ../containers/azure-container-instance-recipe.md
+    - text: コンテナーを Azure Kubernetes Service (AKS) にデプロイする
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: リファレンス
   linkLists:
   - linkListType: reference
@@ -134,20 +164,6 @@ landingContent:
       url: /powershell/module/az.cognitiveservices
     - text: Azure CLI
       url: /cli/azure/cognitiveservices?view=azure-cli-latest
-- title: Docker コンテナーを使用する
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Text Analytics コンテナーをインストールして実行する
-      url: how-tos/text-analytics-how-to-install-containers.md
-    - text: Text Analytics コンテナーを構成する
-      url: text-analytics-resource-container-config.md
-    - text: Text Analytics for health コンテナーを使用する
-      url: How-tos/text-analytics-for-health.md
-    - text: コンテナー インスタンスを Azure にデプロイする
-      url: ../containers/azure-container-instance-recipe.md
-    - text: コンテナーを Azure Kubernetes Service (AKS) にデプロイする
-      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

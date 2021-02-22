@@ -349,5 +349,7 @@
           href: 'https://azure.microsoft.com/regions/services/'
         - name: 価格
           href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+        - name: Azure Defender for IoT のサポート ポリシー
+          href: support-policies.md
         - name: ビデオ
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

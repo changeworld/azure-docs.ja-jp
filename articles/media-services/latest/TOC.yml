@@ -327,6 +327,8 @@
           href: how-to-create-transform.md
         - name: REST を使用して基本的なオーディオ変換を作成する
           href: how-to-create-basic-audio-transform.md
+        - name: サムネイル スプライトを作成する
+          href: how-to-create-thumbnail-sprites.md
         - name: REST を使用して copyAllBitrateNonInterleaved 変換を作成する
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: REST を使用してエンコードせずにビデオをコピーする
@@ -503,5 +505,3 @@
       href: azure-clouds-regions.md
     - name: リージョンのコード名とエンドポイント
       href: azure-regions-code-names.md
-    - name: ドキュメントの更新
-      href: docs-release-notes.md

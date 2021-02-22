@@ -7,7 +7,7 @@
     - name: メッセージング サービスの比較
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Service Bus と Java Message Service (JMS) 2.0 を使用する (プレビュー)
+    - name: Service Bus と Java Message Service (JMS) 2.0 を使用する
       href: how-to-use-java-message-service-20.md
 - name: クイックスタート
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: 概念
   items:
+    - name: キュー、トピック、サブスクリプション
+      href: service-bus-queues-topics-subscriptions.md
+    - name: トピック フィルターとアクション
+      href: topic-filters.md
     - name: Premium メッセージング
       href: service-bus-premium-messaging.md
     - name: Azure キューと Service Bus キューを比較する
@@ -120,7 +124,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: 開発
       items:
+        - name: サブスクリプションのフィルターとアクションを設定する
+          href: service-bus-filter-examples.md
         - name: メッセージの処理
           items:
             - name: キュー、トピック、サブスクリプション
               href: service-bus-queues-topics-subscriptions.md
-            - name: Java Message Service (JMS) 2.0 のエンティティ (プレビュー)
+            - name: Java Message Service (JMS) 2.0 のエンティティ
               href: java-message-service-20-entities.md
+            - name: Java Message Service (JMS) Developer guide.md
+              href: jms-developer-guide.md
             - name: メッセージ、ペイロード、およびシリアル化
               href: service-bus-messages-payloads.md
             - name: メッセージの転送、ロック、および解決
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: メッセージの有効期限 (Time to Live)
               href: message-expiration.md
-        - name: トピック フィルターとアクション
-          href: topic-filters.md
         - name: Standard 名前空間から Premium 名前空間への移行
           href: service-bus-migrate-standard-premium.md
         - name: パーティション分割されたキューとトピック

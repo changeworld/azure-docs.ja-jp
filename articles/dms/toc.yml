@@ -37,10 +37,8 @@
   items:
     - name: SQL Server の移行
       items:
-        - name: Azure SQL Database へ (オフライン)
+        - name: Azure SQL Database へ
           href: tutorial-sql-server-to-azure-sql.md
-        - name: Azure SQL Database へ (オンライン)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: Azure SQL Managed Instance へ (オフライン)
           href: tutorial-sql-server-to-managed-instance.md
         - name: Azure SQL Managed Instance へ (オンライン)

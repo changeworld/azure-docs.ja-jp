@@ -262,7 +262,7 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
-    - name: スポット仮想マシン
+    - name: Azure スポット仮想マシン
       displayName: 'pre-empt, preempt, spot'
       items:
         - name: 概要
@@ -328,12 +328,12 @@
         - name: LAMP スタックの作成
           href: ./linux/tutorial-lamp-stack.md
         - name: TLS および SSL による Web サーバーのセキュリティ保護
-          displayname: SSL TLS
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
             - name: Windows
               href: ./windows/tutorial-secure-web-server.md
+          displayname: SSL TLS
     - name: Linux VM への接続
       items:
         - name: Linux VM の SSH
@@ -362,8 +362,8 @@
           href: /azure/developer/chef/windows-vm-configure
         - name: Java の使用
           href: ./windows/java.md
-        - name: Python の使用
-          href: ./windows/python.md
+        - name: Python
+          href: 'https://docs.microsoft.com/samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context'
         - name: Resource Manager テンプレートの使用
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -445,7 +445,7 @@
         - name: Azure Monitor
           items:
             - name: Azure Monitor エージェント
-              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: 診断拡張機能
               href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics
@@ -950,6 +950,8 @@
           href: disks-reserved-capacity.md
         - name: 高パフォーマンス用の設計
           href: premium-storage-performance.md
+        - name: ディスク関連のメトリック
+          href: disks-metrics.md
         - name: ディスク バースト
           href: disk-bursting.md
         - name: ディスクのパフォーマンス レベル
@@ -1143,6 +1145,8 @@
       href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
 - name: Security
   items:
+    - name: 概要
+      href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Azure Security Center
       href: ../security-center/security-center-introduction.md
     - name: セキュリティ ベースライン
@@ -1285,7 +1289,7 @@
     - name: エージェント
       items:
         - name: エージェントの概要
-          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+          href: ../azure-monitor/agents/agents-overview.md?context=/azure/virtual-machines/context/context
         - name: よく寄せられる質問
           href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
         - name: Azure Diagnostics 拡張機能
@@ -1306,29 +1310,29 @@
             - name: 概要
               href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
             - name: Linux エージェント
-              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics ゲートウェイ
               href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
             - name: エージェント管理
-              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: エージェントの正常性
               href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
             - name: データ ソース
               items:
                 - name: 概要
-                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/agent-data-sources.md?context=/azure/virtual-machines/context/context
                 - name: カスタム JSON データ
-                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-json.md?context=/azure/virtual-machines/context/context
                 - name: collectd のパフォーマンス データ
-                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-collectd.md?context=/azure/virtual-machines/context/context
                 - name: syslog
-                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-syslog.md?context=/azure/virtual-machines/context/context
                 - name: パフォーマンス カウンター
-                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
                 - name: Linux アプリケーション パフォーマンス
-                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
                 - name: カスタム ログ
-                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: カスタム フィールド
                   href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
         - name: トラブルシューティング
@@ -1337,7 +1341,7 @@
               href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
               displayname: 'troubleshoot, troubleshooting'
             - name: Log Analytics Linux エージェント
-              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
               displayname: 'troubleshoot, troubleshooting'
         - name: VM に対する Azure Monitor
           items:
