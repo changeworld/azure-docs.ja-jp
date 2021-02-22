@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833101"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361028"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
@@ -74,11 +74,24 @@ ms.locfileid: "99833101"
 
 ### <a name="agents-for-on-premises-machines"></a>オンプレミス コンピューター用のエージェント
 
-接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。 その後、Network Performance Monitor ソリューションを有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
+接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。  その後、Network Performance Monitor ソリューションを有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
 
 Windows コンピューター用の Log Analytics エージェントをインストールする方法については、「[Windows 用の Azure Monitor 仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)」を参照してください。
 
 パスにファイアウォールまたはネットワーク仮想アプライアンス (NVA) が含まれている場合は、ターゲットに到達可能であることを確認します。
+
+Windows マシンでポートを開くには、[EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell スクリプトを、管理者特権の PowerShell ウィンドウでパラメーターを指定せずに実行します。
+
+Linux マシンの場合、使用する portNumber を手動で変更する必要があります。 
+* パス (/var/opt/microsoft/omsagent/npm_state) に移動します。 
+* ファイル (npmdregistry) を開きます
+* ポート番号 ```“PortNumber:<port of your choice>”``` の値を変更します
+
+ 使用するポート番号は、ワークスペースで使用されているすべてのエージェントで同じである必要があることに注意してください。 
+
+このスクリプトは、ソリューションで必要なレジストリ キーを作成します。 エージェントが互いに TCP 接続を作成することを許可する Windows ファイアウォール規則も作成されます。 スクリプトによって作成されたレジストリ キーは、デバッグ ログとログ ファイルのパスを記録するかどうかを指定します。 このスクリプトは、また、通信で使われるエージェント TCP ポートを定義します。 これらのキーの値は、スクリプトによって自動的に設定されます。 これらのキーを手動で変更しないでください。 既定で開かれるポートは 8084 です。 パラメーター "portNumber" をスクリプトに指定することでカスタム ポートを使用できます。 スクリプトが実行されるすべてのコンピューターで同じポートを使います。 Log Analytics エージェントのネットワーク要件の[詳細情報](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements)を参照してください。
+
+このスクリプトでは、Windows ファイアウォールがローカルでのみ構成されます。 ネットワーク ファイアウォールがある場合、ネットワーク パフォーマンス モニターによって使われている TCP ポート宛てのトラフィックを許可する必要があります。
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>サブスクリプションで Network Watcher を有効にする
 

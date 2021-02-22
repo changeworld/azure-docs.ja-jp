@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: cade888d951c2071f8f40c145e28eed3c3a5d27c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955231"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384250"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Kubernetes ツールを使用して Azure SQL マネージド インスタンスを作成する
 
@@ -45,13 +45,13 @@ data:
   username: <your base64 encoded user name. 'sa' is not allowed>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: sql1-login-secret
 type: Opaque
 ---
 apiVersion: sql.arcdata.microsoft.com/v1alpha1
 kind: sqlmanagedinstance
 metadata:
-  name: example
+  name: sql1
 spec:
   limits:
     memory: 4Gi
@@ -62,13 +62,7 @@ spec:
   service:
     type: LoadBalancer
   storage:
-    backups:
-      className: default
-      size: 5Gi
     data:
-      className: default
-      size: 5Gi
-    datalogs:
       className: default
       size: 5Gi
     logs:
@@ -107,7 +101,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>名前のカスタマイズ
 
-テンプレートにおいては、name 属性の値が "example" になっています。  これを変更できますが、DNS 名前付け標準に従う文字を使用する必要があります。  また、シークレットの名前も一致するように変更する必要があります。  たとえば、SQL マネージド インスタンスの名前を "sql1" に変更した場合は、シークレットの名前を "example-login-secret" から "sql1-login-secret" に変更する必要があります
+テンプレートにおいては、name 属性の値が "sql1" になっています。  これを変更できますが、DNS 名前付け標準に従う文字を使用する必要があります。  また、シークレットの名前も一致するように変更する必要があります。  たとえば、SQL マネージド インスタンスの名前を "sql2" に変更した場合は、シークレットの名前を "sql1-login-secret" から "sql2-login-secret" に変更する必要があります。
 
 ### <a name="customizing-the-resource-requirements"></a>リソース要件のカスタマイズ
 

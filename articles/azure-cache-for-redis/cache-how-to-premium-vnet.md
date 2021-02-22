@@ -4,29 +4,24 @@ description: Premium レベルの Azure Cache for Redis インスタンスに対
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833832"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375274"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートを構成する
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成
 
-Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 Premium レベルの機能には、クラスタリング、永続化、および仮想ネットワークのサポートが含まれています。 仮想ネットワークとは、クラウド内のプライベート ネットワークです。 仮想ネットワークを使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、仮想ネットワーク内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワークのサポートを構成する方法について説明します。
+[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、セキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシーや、アクセスをさらに制限する他の機能も提供されます。 仮想ネットワークを使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、仮想ネットワーク内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワークのサポートを構成する方法について説明します。
 
 > [!NOTE]
 > Azure Cache for Redis では、クラシック デプロイ モデルと Azure Resource Manager 仮想ネットワークの両方がサポートされています。
 > 
 
-## <a name="why-virtual-network"></a>Virtual Network を使用する理由
-
-[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Cache for Redis インスタンスのセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。
-
-## <a name="virtual-network-support"></a>Virtual Network のサポート
+## <a name="set-up-virtual-network-support"></a>仮想ネットワーク サポートの設定
 
 Virtual Network (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ペインで構成します。
 

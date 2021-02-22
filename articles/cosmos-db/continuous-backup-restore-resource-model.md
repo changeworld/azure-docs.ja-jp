@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538506"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369970"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB のポイントインタイム リストア機能 (プレビュー) のリソース モデル
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,14 +30,14 @@ ms.locfileid: "99538506"
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-"backuppolicy" パラメーターの下にある "Type" という名前のアカウント レベルのバックアップ ポリシーの新しいプロパティにより、継続的バックアップとポイントインタイム リストア機能が有効になります。 このモードは **継続的バックアップ** と呼ばれます。 パブリック プレビューでは、このモードはアカウントの作成時にのみ設定できます。 これを有効にすると、このアカウント内で作成されたすべてのコンテナーとデータベースで、継続的バックアップとポイントインタイム リストア機能が既定で有効になります。
+`backuppolicy` パラメーターの下にある `Type` という名前のアカウント レベルのバックアップ ポリシーの新しいプロパティにより、継続的バックアップとポイントインタイム リストア機能が有効になります。 このモードは **継続的バックアップ** と呼ばれます。 パブリック プレビューでは、このモードはアカウントの作成時にのみ設定できます。 これを有効にすると、このアカウント内で作成されたすべてのコンテナーとデータベースで、継続的バックアップとポイントインタイム リストア機能が既定で有効になります。
 
 > [!NOTE]
 > 現時点では、ポイントインタイム リストア機能はパブリック プレビュー段階であり、MongoDB および SQL アカウント用の Azure Cosmos DB API で使用できます。 継続的モードでアカウントを作成した後は、それを定期的モードに切り替えることはできません。
 
 ### <a name="createmode"></a>CreateMode
 
-このプロパティは、アカウントがどのように作成されたかを示します。 指定できる値は "Default" と "Restore" です。 復元を実行するには、この値を "Restore" に設定し、 `RestoreParameters` プロパティに適切な値を指定します。
+このプロパティは、アカウントがどのように作成されたかを示します。 指定できる値は *Default* と *Restore* です。 復元を実行するには、この値を *Restore* に設定し、`RestoreParameters` プロパティに適切な値を指定します。
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
@@ -45,7 +45,7 @@ ms.locfileid: "99538506"
 
 |プロパティ名 |説明  |
 |---------|---------|
-|restoreMode  | 復元モードは "PointInTime" にする必要があります。 |
+|restoreMode  | 復元モードは *PointInTime* にする必要があります。 |
 |restoreSource   |  復元が開始されるソース アカウントの instanceId。       |
 |restoreTimestampInUtc  | アカウントの復元先となる特定の時点 (UTC)。 |
 |databasesToRestore   | 復元するデータベースとコンテナーを指定する `DatabaseRestoreSource` オブジェクトの一覧。 この値が空の場合は、アカウント全体が復元されます。   |
