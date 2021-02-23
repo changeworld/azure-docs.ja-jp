@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1cf94964f420f7a7d4fc0f6ba0b77813b3e75787
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539184"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393226"
 ---
 # <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB のポイントインタイム リストア機能 (プレビュー) についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "99539184"
 データベースやコンテナーなどの主要リソースがその時点で存在していたかどうかによっては、復元が行われない場合があります。 確認するには、時刻を入力し、指定した時刻について、選択したデータベースまたはコンテナーを調べます。 復元するリソースが存在しない場合、復元プロセスは機能しません。
 
 ### <a name="how-can-i-track-if-an-account-is-being-restored"></a>アカウントが復元されているかどうかは、どのようにして追跡できますか?
-復元コマンドを送信して、同じページで待機します。操作が完了すると、ステータス バーに、アカウントが正常に復元されたというメッセージが表示されます。 また、復元されたアカウントを検索し、[復元されているアカウントの状態を追跡する](continuous-backup-restore-portal.md#track-restore-status)こともできます。 復元の進行中は、アカウントの状態は "Creating" (作成中) になります。復元操作が完了すると、アカウントの状態は "Online" (オンライン) に変わります。
+復元コマンドを送信して、同じページで待機します。操作が完了すると、ステータス バーに、アカウントが正常に復元されたというメッセージが表示されます。 また、復元されたアカウントを検索し、[復元されているアカウントの状態を追跡する](continuous-backup-restore-portal.md#track-restore-status)こともできます。 復元の進行中は、アカウントの状態は *Creating* (作成中) になります。復元操作が完了すると、アカウントの状態は *Online* (オンライン) に変わります。
 
 同様に、PowerShell と CLI では、次のように `az cosmosdb show` コマンドを実行して、復元操作の進行状況を追跡できます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "99539184"
 az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ```
 
-アカウントがオンラインになっている場合、provisioningState には "Succeeded" (成功) と表示されます。
+アカウントがオンラインになっている場合、provisioningState には *Succeeded* (成功) と表示されます。
 
 ```json
 {
@@ -60,7 +60,7 @@ az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ### <a name="how-can-i-find-out-whether-an-account-was-restored-from-another-account"></a>アカウントが別のアカウントから復元されたかどうかを確認するにはどうすればよいですか?
 `az cosmosdb show` コマンドを実行します。出力で、`createMode` プロパティの値を確認できます。 値が **Restore** に設定されている場合は、 アカウントが別のアカウントから復元されたことを示しています。 `restoreParameters` プロパティには、ソース アカウント ID を持つ `restoreSource` などの詳細があります。 `restoreSource` パラメーターの最後の GUID は、ソース アカウントの instanceId です。
 
-たとえば、次の出力では、ソース　アカウントのインスタンス ID は "7b4bb-f6a0-430e-ade1-638d781830cc" になります。
+たとえば、次の出力では、ソース アカウントのインスタンス ID は *7b4bb-f6a0-430e-ade1-638d781830cc* になります。
 
 ```json
 "restoreParameters": {
@@ -75,9 +75,9 @@ az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 共有スループット データベース全体が復元されます。 共有スループット データベース内のコンテナーのサブセットを復元用に選択することはできません。
 
 ### <a name="what-is-the-use-of-instanceid-in-the-account-definition"></a>アカウント定義で InstanceID はどのように使用されますか?
-いかなる時点においても、Azure Cosmos DB アカウントのプロパティは、それが有効な間はグローバルに一意です。 ただし、アカウントが削除された後は、同じ名前で別のアカウントを作成することが可能です。したがって、"accountName" はアカウントのインスタンスを識別するのに十分ではなくなります。 
+いかなる時点においても、Azure Cosmos DB アカウントの `accountName` プロパティは、それが有効な間はグローバルに一意です。 ただし、アカウントが削除された後は、同じ名前で別のアカウントを作成することが可能です。したがって、"accountName" はアカウントのインスタンスを識別するのに十分ではなくなります。 
 
-ID または "instanceId" はアカウントのインスタンスのプロパティです。これは、複数のアカウント (ライブおよび削除済み) で復元用に同じ名前が使用されている場合に、それらを明確に区別するために使用されます。 インスタンス ID を取得するには、`Get-AzCosmosDBRestorableDatabaseAccount` または `az cosmosdb restorable-database-account` コマンドを実行します。 name 属性の値は "InstanceID" を表します。
+ID または `instanceId` はアカウントのインスタンスのプロパティです。これは、複数のアカウント (ライブおよび削除済み) で復元用に同じ名前が使用されている場合に、それらを明確に区別するために使用されます。 インスタンス ID を取得するには、`Get-AzCosmosDBRestorableDatabaseAccount` または `az cosmosdb restorable-database-account` コマンドを実行します。 name 属性の値は "InstanceID" を表します。
 
 ## <a name="next-steps"></a>次のステップ
 

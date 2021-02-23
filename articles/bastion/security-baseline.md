@@ -4,15 +4,15 @@ description: Azure Bastion セキュリティ ベースラインは、Azure セ�
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723933"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392376"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azure Bastion 用の Azure セキュリティ ベースライン
 
@@ -69,7 +69,11 @@ Azure Bastion サービスの正常な動作を実現するには、次のポー
 
 **ガイダンス**:Azure Bastion は、Azure の既定の ID およびアクセス管理サービスである Azure Active Directory (Azure AD) と統合されています。 ユーザーは、Azure AD Authentication を使用して Azure portal にアクセスし、Azure Bastion サービスを管理 (Bastion リソースを作成、更新、削除) できます。
 
-Azure Bastion を使用した仮想マシンへの接続は、SSH キーか、ユーザー名とパスワードの組み合わせで行います。Azure AD の資格情報の使用は現在サポートされていません。
+Azure Bastion を使用した仮想マシンへの接続は、SSH キーか、ユーザー名とパスワードの組み合わせで行います。Azure AD の資格情報の使用は現在サポートされていません。 
+
+SSH キーを Azure Key Vault シークレットとして格納し、これらのシークレットで、Azure Bastion を使用して仮想マシンに接続できます。 これらのシークレットへのユーザー アクセスを制御するには、個々のユーザーまたは Azure AD グループに [Key Vault アクセス ポリシーを割り当てます](../key-vault/general/assign-access-policy-portal.md)。 この方法を使用して仮想マシンに接続するには、ユーザーに次のアクセス許可が必要です。
+- 選択した Azure Key Vault に格納されているシークレットに対する **取得** アクセス権
+- 選択した Azure Key Vault に格納されているシークレットに対する **リスト** アクセス権
 
 SSH キーまたはユーザー名とパスワードによる方法に加え、ユーザーが Azure Bastion を使用して仮想マシンに接続するときは、次のロールの割り当てが必要です。
 - 対象の仮想マシンに対する閲覧者ロール
@@ -106,7 +110,8 @@ SSH キーまたはユーザー名とパスワードによる方法に加え、�
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4:すべての Azure Active Directory ベースのアクセスに強力な認証制御を使用する
 
-**ガイダンス**:Azure Bastion は、サービスのアクセスと管理のために Azure Active Directory (Azure AD) と統合されています。 Azure AD テナント用に Azure Multi-Factor Authentication を構成してください。 Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。  
+**ガイダンス**:Azure Bastion は、サービスのアクセスと管理のために Azure Active Directory (Azure AD) と統合されています。 Azure AD テナント用に Azure Active Directory Multi-Factor Authentication を構成します。 Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。
+  
 - 多要素認証:Azure AD MFA を有効にして、MFA のセットアップに対する Azure Security Center ID とアクセス管理の推奨事項に従います。 MFA は、サインインの条件とリスク要因に基づいて、すべてのユーザー、選択されたユーザー、またはユーザー単位のレベルで適用できます。 
 
 - パスワードレスの認証:次の 3 つのパスワードレス認証オプションを利用できます: Windows Hello for Business、Microsoft Authenticator アプリ、スマート カードなどのオンプレミスの認証方法。 

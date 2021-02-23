@@ -3,15 +3,15 @@ title: Windows Virtual Desktop MSIX アプリ アタッチ ポータル (プレ�
 description: Azure portal を使用して MSIX アプリ アタッチを Windows Virtual Desktop 用に設定する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185956"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373472"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
@@ -65,7 +65,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 管理インターフェイスを設定するには、次のようにします。
 
-1. [プレビュー ポータルを開きます](https://preview.portal.azure.com/?feature.msixapplications=true#home)。
+1. [Azure portal を開きます](https://portal.azure.com)。
 2. この拡張機能を信頼できるかどうかを尋ねるプロンプトが表示されたら、 **[許可]** を選択します。
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ MSIX イメージが既にある場合は、スキップして、「[MSIX アプ
 ## <a name="assign-a-user-to-an-app-group"></a>ユーザーをアプリ グループに割り当てる
 
 MSIX アプリをアプリ グループに割り当てたら、ユーザーにそれに対するアクセス権を付与する必要があります。 アクセス権を割り当てるには、発行されている MSIX アプリケーションが含まれたアプリ グループにユーザーまたはユーザー グループを追加します。 「[Azure portal を使用してアプリ グループを管理する](manage-app-groups.md)」の手順に従って、ユーザーをアプリ グループに割り当てます。
+
+>[!NOTE]
+>パブリック プレビュー中にリモート アプリをテストするときに、MSIX アプリ アタッチのリモート アプリがフィードから消えることがあります。 このアプリが表示されないのは、評価環境で使用しているホスト プールが運用環境の RD ブローカーによって提供されているためです。 運用環境の RD ブローカーによって MSIX アプリ アタッチのリモート アプリの存在が登録されないため、このアプリはフィードに表示されません。
 
 ## <a name="change-msix-package-state"></a>MSIX パッケージの状態を変更する
 

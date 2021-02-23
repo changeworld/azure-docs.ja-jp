@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626662"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519798"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 
@@ -30,9 +30,9 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 
 このシナリオでは、次の名前付け規則を使用します。
 
-* ユーザーが NVA をデプロイし、その他の仮想ネットワークをスポークとして接続している仮想ネットワークの場合は "NVA VNet" を使用 (下の **接続マトリックス** の、VNet 2 および VNet 4)。
-* NVA VNet に接続されている仮想ネットワークの場合は "NVA スポーク" を使用 (下の **接続マトリックス** の VNet 5、VNet 6、VNet 7 および VNet 8)。
-* NVA またはその他の VNet がピアリングされていない Virtual WAN に接続されている仮想ネットワークの場合は "NVA 以外の VNet" を使用 (下の **接続マトリックス** の VNet 1 および VNet 3)。
+* ユーザーが NVA をデプロイし、その他の仮想ネットワークをスポークとして接続している仮想ネットワークの場合は "NVA VNet" を使用 (この記事の下の方にある **図 2** の、VNet 2 および VNet 4)。
+* NVA VNet に接続されている仮想ネットワークの場合は "NVA スポーク" を使用 (この記事の下の方にある **図 2** の VNet 5、VNet 6、VNet 7 および VNet 8)。
+* NVA またはその他の VNet がピアリングされていない Virtual WAN に接続されている仮想ネットワークの場合は "NVA 以外の VNet" を使用 (この記事の下の方にある **図 2** の VNet 1 および VNet 3)。
 * NVA VNet が接続されている Microsoft マネージドの Virtual WAN ハブの場合は "ハブ" を使用。 NVA スポーク VNet は、Virtual WAN ハブに接続されている必要はありません。その必要があるのは NVA VNet のみです。
 
 次の接続マトリックスは、このシナリオでサポートされるフローの概要を示しています。
@@ -49,7 +49,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 接続マトリックスの各セルは、特定のトラフィック フローについて、VNet またはブランチ (フローの "ソース" 側、表の行ヘッダー) と、接続先 VNet またはブランチ (フローの "移動先" 側、表の斜体の列ヘッダー) との通信方法を説明しています。 "直接" は、Virtual WAN によって接続がネイティブに提供されることを意味します。"ピアリング" は、VNet 内のユーザー定義ルートによって接続が提供されることを意味します。"NVA VNet 経由" は、NVA VNet にデプロイされた NVA を介して接続が行われることを意味します。 以下、具体例に沿って説明します。
 
 * NVA スポークは、Virtual WAN によって管理されていません。 そのため、他の VNet またはブランチとの通信に使用されるメカニズムは、ユーザーによって管理されます。 NVA VNet への接続性は、VNet ピアリングによって提供され、次ホップとして NVA を指す 0.0.0.0/0 への既定のルートは、インターネット、その他のスポーク、およびブランチへの接続に対応している必要があります
-* NVA VNet では自身の NVA スポークは認識されますが、他の NVA VNet に接続されている NVA スポークは認識されません。 たとえば、テーブル 1では、VNet 2 によって VNet 5 と VNet 6 が認識されますが、VNet 7 や VNet 8 などの他のスポークは認識されません。 他のスポークのプレフィックスを NVA VNet に挿入するには、静的ルートが必要です
+* NVA VNet では自身の NVA スポークは認識されますが、他の NVA VNet に接続されている NVA スポークは認識されません。 たとえば、この記事の下の方にある図 2 では、VNet 2 によって VNet 5 と VNet 6 が認識されますが、VNet 7 や VNet 8 などの他のスポークは認識されません。 他のスポークのプレフィックスを NVA VNet に挿入するには、静的ルートが必要です
 * 同様に、NVA スポークは Virtual WAN ハブに接続されていないため、ブランチ、および NVA 以外の VNet で NVA スポークは認識されません。 そのため、ここでも静的ルートが必要になります。
 
 NVA スポークは Virtual WAN によって管理されていないことを考慮すると、他のすべての行は同じ接続パターンを示しています。 その結果、1 つのルート テーブル (既定のもの) で十分ということになります。

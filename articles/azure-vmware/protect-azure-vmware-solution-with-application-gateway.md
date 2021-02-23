@@ -2,13 +2,13 @@
 title: Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384199"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
@@ -35,7 +35,7 @@ ms.locfileid: "99988633"
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Solution の Web アプリケーションを使用して Application Gateway を検証するために使用されるテスト シナリオを示す図。" border="false":::
 
-Application Gateway インスタンスは、専用サブネットのハブにデプロイされます。 これは Azure パブリック IP アドレスを保持します。 仮想ネットワークに対して Standard の DDoS 保護をアクティブ化することをお勧めします。 Web サーバーは、NSX T0 および T1 ルーターの背後にある Azure VMware Solution プライベート クラウドでホストされています。 Azure VMware Solution では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用して、ハブとオンプレミスのシステムとの通信が可能になります。
+Application Gateway インスタンスは、専用サブネットのハブにデプロイされます。 これは Azure パブリック IP アドレスを保持します。 仮想ネットワークに対して Standard の DDoS 保護をアクティブ化することをお勧めします。 Web サーバーは、NSX T0 および T1 ゲートウェイの背後にある Azure VMware Solution プライベート クラウドでホストされています。 Azure VMware Solution では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用して、ハブとオンプレミスのシステムとの通信が可能になります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +57,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 4. Azure VMware Solution インフラストラクチャで実行される VM のバックエンド プールを追加します。 Azure VMware Solution のプライベート クラウドで実行されている Web サーバーの詳細を入力し、 **[追加]** を選択します。  次に、 **[次のステップ: 構成 >]** を選択します。
 
-1. **[構成]** タブで、 **[ルーティング規則の追加]** を選択します。
+5. **[構成]** タブで、 **[ルーティング規則の追加]** を選択します。
 
 6. **[リスナー]** タブで、リスナーの詳細を入力します。 HTTPS を選択した場合、証明書は、PFX ファイル、または Azure Key Vault の既存の証明書から指定する必要があります。 
 
@@ -77,7 +77,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 ## <a name="configuration-examples"></a>構成の例
 
-このセクションでは、次のユース ケースで、バックエンド プールとして Azure VMware Solution の VM を使用して、Application Gateway を構成する方法について説明します。 
+次のユース ケースで、バックエンド プールとして Azure VMware Solution の VM を使用して、Application Gateway を構成します。 
 
 - [複数サイトのホスティング](#hosting-multiple-sites)
 - [URL によるルーティング](#routing-by-url)
@@ -94,7 +94,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="VSphere クライアントでの Web サーバーの詳細の概要を示すスクリーンショット。":::
 
-    このチュートリアルをわかりやすく説明するために、インターネット インフォメーション サービス (IIS) の役割がインストールされた Windows Server 2016 を使用しています。 VM がインストールされたら、次の PowerShell コマンドを実行して、各 VM で IIS を構成します。 
+    インターネット インフォメーション サービス (IIS) の役割がインストールされた Windows Server 2016 を使用しています。 VM がインストールされたら、次の PowerShell コマンドを実行して、各 VM で IIS を構成します。 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -121,7 +121,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 ### <a name="routing-by-url"></a>URL によるルーティング
 
-この手順では、Azure VMware Solution のプライベート クラウドで実行されている VM を使用して、既存のアプリケーション ゲートウェイ上でバックエンド アドレス プールを定義する方法を示します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
+次の手順では、Azure VMware Solution プライベート クラウドで実行されている VM を使用してバックエンド アドレス プールを定義します。 プライベート クラウドは、既存のアプリケーション ゲートウェイ上にあります。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
 1. プライベート クラウドで、Web ファームを表す仮想マシン プールを作成します。 
 

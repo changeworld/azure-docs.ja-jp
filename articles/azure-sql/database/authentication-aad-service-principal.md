@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2020
-ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 02/11/2021
+ms.openlocfilehash: 4012cd83cf2e6fe438792a503731729b57a1425c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669825"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380595"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL での Azure Active Directory のサービス プリンシパル
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure AD アプリケーション (サービスプリンシパル) の代わりに Azure SQL Database (SQL DB) および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に Azure Active Directory (Azure AD) ユーザーを作成する機能のサポートは、現在、 **パブリック プレビュー** の段階です。
+Azure AD アプリケーション (サービスプリンシパル) の代わりに Azure SQL Database (SQL DB) および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に Azure Active Directory (Azure AD) ユーザーを作成する機能のサポートは、現在、**パブリック プレビュー** の段階です。
 
 > [!NOTE]
 > この機能は、SQL Managed Instance では既にサポートされています。
@@ -52,7 +52,7 @@ Azure AD アプリケーションの代わりに T-SQL コマンド `CREATE USER
 
 Azure AD アプリケーションの代わりに SQL Database と Azure Synapse で Azure AD オブジェクトを作成できるようにするには、次の設定が必要となります。
 
-1. サーバー ID を割り当てます
+1. サーバー ID を割り当てます。 割り当てられたサーバー ID はマネージド システム ID (MSI) を表します。 現時点では、Azure SQL のサーバー ID ではユーザー マネージド ID (UMI) がサポートされていません。
     - 新しい Azure SQL 論理サーバーの場合は、次の PowerShell コマンドを実行します。
     
     ```powershell
@@ -83,7 +83,7 @@ Azure AD アプリケーションの代わりに SQL Database と Azure Synapse 
 >
 > サービス プリンシパルを使用して Azure AD 管理者を設定または設定解除する場合、アプリケーションには、Azure AD で [Directory.Read.All](/graph/permissions-reference#application-permissions-18) アプリケーション API アクセス許可も必要です。 [Azure AD 管理者を設定するために必要なアクセス許可](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)の詳細、および Azure AD アプリケーションの代わりに Azure AD ユーザーを作成するための詳細な手順については、「[チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](authentication-aad-service-principal-tutorial.md)」から)。
 >
-> **パブリック プレビュー** では、Azure AD 内のグループに **ディレクトリ閲覧者** ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、 **グローバル管理者** 、または **特権ロール管理者** のニーズがバイパスされ、 **ディレクトリ閲覧者** ロールが許可されます。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
+> **パブリック プレビュー** では、Azure AD 内のグループに **ディレクトリ閲覧者** ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、**グローバル管理者**、または **特権ロール管理者** のニーズがバイパスされ、**ディレクトリ閲覧者** ロールが許可されます。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>パブリック プレビューのトラブルシューティングと制限
 

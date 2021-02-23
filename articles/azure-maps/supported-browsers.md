@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601154"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384471"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 
@@ -72,6 +72,8 @@ WebGL をサポートしていない、または制限付きでのみサポー�
 </iframe>
 
 Leaflet で Azure Maps を使用した追加のコード サンプルについては、[こちら](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)を参照してください。
+
+Azure Maps チームによって対応するプラグインが作成されている、いくつかのよく知られているオープン ソースのマップ コントロールは[こちら](open-source-projects.md#third-part-map-control-plugins)に記載されています。
 
 ## <a name="next-steps"></a>次の手順
 

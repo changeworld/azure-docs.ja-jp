@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525570"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392801"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -66,7 +66,7 @@ az aks create \
 > [!NOTE]
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。
 
-## <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する
+## <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する 
 
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
@@ -79,7 +79,7 @@ az aks create \
 * AKS プレビュー バージョン 0.4.71 以降
 * API バージョン 2020-11-01 以降
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する (プレビュー)
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 69a970b7b088795602dfb842b20ad6457d5f27c4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808003"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374492"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>ボリューム ハード クォータへの変更が Azure NetApp Files サービスに対して何を意味するかについて
 
 Azure NetApp Files には、サービスの開始当初から、容量プールのプロビジョニングと自動拡張のメカニズムが使用されています。 Azure NetApp Files のボリュームは、お客様がプロビジョニングした、選択されたレベルとサイズを持つ基になる容量プールに基づいて仮想プロビジョニングされます。 ボリュームのサイズ (クォータ) がパフォーマンスと容量を提供するために使用され、クォータはいつでも即時に調整できます。 この動作が意味するのは、現時点ではボリューム クォータが、ボリュームに対して帯域幅を制御するために使用されるパフォーマンス操作であるということです。 現時点では、基になる容量プールは、容量が上限いっぱいになると自動的に拡張されます。   
 
 > [!IMPORTANT] 
-> Azure NetApp Files のボリュームと容量プールのプロビジョニング動作は、"*手動*" で "*制御可能な*" メカニズムに変わります。 **2021 年 3 月 15 日以降は、プロビジョニングされる容量だけでなく帯域幅のパフォーマンスもボリュームのサイズ (クォータ) で管理され、基になる容量プールは自動的に拡張されなくなります。** 
+> Azure NetApp Files のボリュームと容量プールのプロビジョニング動作は、"*手動*" で "*制御可能な*" メカニズムに変わります。 **2021 年 4 月 1 日以降は、プロビジョニングされる容量だけでなく帯域幅のパフォーマンスもボリュームのサイズ (クォータ) で管理され、基になる容量プールは自動的に拡張されなくなります。** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>ボリューム ハード クォータへの変更の理由
 

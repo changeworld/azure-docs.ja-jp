@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516840"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>疑わしい IoT デバイスを調査する
 
@@ -39,12 +39,12 @@ Defender for IoT サービスのアラートでは、IoT デバイスが不審�
 1. IoT ハブを開きます。
 1. **[セキュリティ]** で、 **[設定]** を選択し、 **[データ収集]** を選択します。
 1. Log Analytics ワークスペースの構成の詳細を変更します。
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
 
 Log Analytics ワークスペースに保存されているデータにアクセスするには、以下の構成に対して次の操作を行います。
 
-1. IoT Hub の Defender for IoT アラートを選択してクリックします。
-1. **[Further investigation]\(さらに調査\)** をクリックします。
+1. IoT ハブの Defender for IoT アラートを選択します。
+1. **[Further investigation]\(さらに調査\)** を選択します。
 1. **[To see which devices have this alert click here and view the DeviceId column]\(このアラートがどのデバイスのものかを確認するには、ここをクリックして DeviceId 列を見てください\)** を選択します。
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>疑わしい IoT デバイスに対する調査の手順
@@ -55,7 +55,7 @@ IoT デバイスについての分析情報と生データを表示するには�
 
 ### <a name="related-alerts"></a>関連するアラート
 
-他のアラートが同じころにトリガーされたかどうかを調べるには、次の kql クエリを使用します。
+次の kql クエリを使用して、他のアラートが同じころにトリガーされたかどうかを調べることができます。
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -143,9 +143,9 @@ IoT デバイスについての分析情報と生データを表示するには�
 
 クエリ結果を使用して、以下の事項を調べます。
 
-- どのユーザーがデバイスにログインしたか。
-- ログインしたユーザーはログインすると想定されていたか。
-- ログインしたユーザーは、予期される IP アドレスから接続したか、予期されない IP アドレスから接続したか。
+- どのユーザーがデバイスにサインインしたか。
+- サインインしたユーザーはサインインすると想定されていたか。
+- サインインしたユーザーの接続元の IP アドレスは予期されるものか、予期されないものか。
 
 ### <a name="process-list"></a>プロセス一覧
 

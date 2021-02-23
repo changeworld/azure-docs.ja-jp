@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: d7b672b7e2c3004eba4a38bd659965b7dee24db6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 02/09/2021
+ms.openlocfilehash: c992693bfb278ac559feb6fa82fa947086ceafbb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381139"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -22,19 +22,21 @@ ms.locfileid: "93422486"
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](/rest/api/searchmanagement/)
 > * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)
 
-Windows、Linux、または [Azure Cloud Shell](../cloud-shell/overview.md) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールでは、完全なパリティを保持する [Azure PowerShell](/powershell/) を、 [Search 管理 REST API](/rest/api/searchmanagement) に拡張し、次のタスクを実行できるようにします。
+Windows、Linux、または [Azure Cloud Shell](../cloud-shell/overview.md) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールでは、完全なパリティを保持する [Azure PowerShell](/powershell/) を、[Search 管理 REST API](/rest/api/searchmanagement) に拡張し、次のタスクを実行できるようにします。
 
 > [!div class="checklist"]
 > * [サブスクリプション内の検索サービスを一覧表示する](#list-search-services)
 > * [サービス情報を返す](#get-search-service-information)
 > * [サービスを作成または削除する](#create-or-delete-a-service)
+> * [プライベート エンドポイントを使用してサービスを作成する](#create-a-service-with-a-private-endpoint)
 > * [管理者 API キーを再生成する](#regenerate-admin-keys)
 > * [クエリ API キーを作成または削除する](#create-or-delete-query-keys)
 > * [レプリカとパーティションを使用してスケールアップまたはスケールダウンする](#scale-replicas-and-partitions)
+> * [共有プライベート リンク リソースを作成する](#create-a-shared-private-link-resource)
 
-場合によっては、上記の一覧には " *ない* " タスクについて質問されることがあります。 現在、 **Az.Search** モジュールや管理 REST API を使用して、サーバー名、リージョン、レベルを変更することはできません。 サービスの作成時に専用のリソースが割り当てられます。 そのため、基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 同様に、サービス間で、インデックスなどのコンテンツを転送するためのツールや API はありません。
+場合によっては、上記の一覧には "*ない*" タスクについて質問されることがあります。 現在、**Az.Search** モジュールや管理 REST API を使用して、サーバー名、リージョン、レベルを変更することはできません。 サービスの作成時に専用のリソースが割り当てられます。 そのため、基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 同様に、サービス間で、インデックスなどのコンテンツを転送するためのツールや API はありません。
 
 サービス内では、コンテンツの作成と管理は、[Search サービス REST API](/rest/api/searchservice/) または [.NET SDK](/dotnet/api/overview/azure/search.documents-readme) を介して行われます。 コンテンツ専用の PowerShell コマンドはありませんが、インデックスを作成したり読み込んだりする REST または .NET API を呼び出す PowerShell スクリプトを記述できます。
 
@@ -42,7 +44,7 @@ Windows、Linux、または [Azure Cloud Shell](../cloud-shell/overview.md) で 
 
 ## <a name="check-versions-and-load-modules"></a>バージョンの確認とモジュールの読み込み
 
-この記事の例は対話形式で、昇格された権限が必要です。 Azure PowerShell ( **Az** モジュール) がインストールされている必要があります。 詳しくは、[Azure PowerShell のインストール](/powershell/azure/)に関する記事をご覧ください。
+この記事の例は対話形式で、昇格された権限が必要です。 Azure PowerShell (**Az** モジュール) がインストールされている必要があります。 詳しくは、[Azure PowerShell のインストール](/powershell/azure/)に関する記事をご覧ください。
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell のバージョン チェック (5.1 以降)
 
@@ -90,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>サブスクリプション内のサービスを一覧表示する
 
-次のコマンドは、 [**Az.Resources**](/powershell/module/az.resources) から、サブスクリプションで既にプロビジョニングされている既存のリソースとサービスに関する情報を返します。 既に作成されている検索サービスの数がわからない場合は、これらのコマンドがその情報を返して、ポータルに移動する手間を省きます。
+次のコマンドは、[**Az.Resources**](/powershell/module/az.resources) から、サブスクリプションで既にプロビジョニングされている既存のリソースとサービスに関する情報を返します。 既に作成されている検索サービスの数がわからない場合は、これらのコマンドがその情報を返して、ポータルに移動する手間を省きます。
 
 最初のコマンドは、すべての検索サービスを返します。
 
@@ -111,7 +113,7 @@ Name              : my-demo-searchapp
 ResourceGroupName : demo-westus
 ResourceType      : Microsoft.Search/searchServices
 Location          : westus
-ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
+ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="import-azsearch"></a>Az.Search のインポート
@@ -133,22 +135,36 @@ Get-Command -Module Az.Search
 結果は次の出力のようになります。
 
 ```
-CommandType     Name                                Version    Source
------------     ----                                -------    ------
-Cmdlet          Get-AzSearchAdminKeyPair            0.7.1      Az.Search
-Cmdlet          Get-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          Get-AzSearchService                 0.7.1      Az.Search
-Cmdlet          New-AzSearchAdminKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchService                 0.7.1      Az.Search
-Cmdlet          Remove-AzSearchQueryKey             0.7.1      Az.Search
-Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
-Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
+CommandType     Name                                               Version    Source                                                                
+-----------     ----                                               -------    ------                                                                
+Cmdlet          Get-AzSearchAdminKeyPair                           0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateLinkResource                    0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchAdminKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchPrivateEndpointConnection           0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchQueryKey                            0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchService                             0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchSharedPrivateLinkResource           0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search   
+```
+
+古いバージョンのパッケージがある場合は、モジュールを更新して最新の機能を取得してください。
+
+```azurepowershell-interactive
+Update-Module -Name Az.Search
 ```
 
 ## <a name="get-search-service-information"></a>検索サービス情報の取得
 
-**Az.Search** がインポートされ、検索サービスが含まれているリソース グループがわかったら、 [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) を実行して、名前、リージョン、レベル、レプリカとパーティションの数などのサービス定義を返します。
+**Az.Search** がインポートされ、検索サービスが含まれているリソース グループがわかったら、[Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) を実行して、名前、リージョン、レベル、レプリカとパーティションの数などのサービス定義を返します。
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -173,7 +189,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 [**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey) は [新しい検索サービスの作成](search-create-service-portal.md)に使用されます。
 
 ```azurepowershell-interactive
-New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
+New-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3 -HostingMode Default
 ``` 
 結果は次の出力のようになります。
 
@@ -188,6 +204,141 @@ PartitionCount    : 3
 HostingMode       : Default
 Tags
 ```     
+
+### <a name="create-a-service-with-ip-rules"></a>IP 規則を使用してサービスを作成する
+
+セキュリティ要件によっては、[IP ファイアウォールが構成された](service-configure-firewall.md)検索サービスを作成したい場合があります。 そのためには、下に示すように、最初に IP 規則を定義して、それらを `IPRuleList` パラメーターに渡します。
+
+```azurepowershell-interactive
+$ipRules = @([pscustomobject]@{Value="55.5.63.73"},
+        [pscustomobject]@{Value="52.228.215.197"},
+        [pscustomobject]@{Value="101.37.221.205"})
+
+ New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IPRuleList $ipRules
+```
+
+### <a name="create-a-service-with-a-system-assigned-managed-identity"></a>システム割り当てマネージド ID を使用してサービスを作成する
+
+場合によっては、たとえば[マネージド ID を使用してデータ ソースに接続する](search-howto-managed-identities-storage.md)ときなど、[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする必要が生じることがあります。 これを行うには、`-IdentityType SystemAssigned` をコマンドに追加します。
+
+```azurepowershell-interactive
+New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IdentityType SystemAssigned
+```
+
+## <a name="create-a-service-with-a-private-endpoint"></a>プライベート エンドポイントを使用してサービスを作成する
+
+Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 詳細については、[Azure Cognitive Search 用のプライベート エンドポイントの作成](service-create-private-endpoint.md)に関するドキュメントを参照してください。
+
+次の例では、プライベート エンドポイントを使用して検索サービスを作成する方法を示します。
+
+最初に、`PublicNetworkAccess` を `Disabled` に設定した検索サービスをデプロイします。
+
+```azurepowershell-interactive
+$searchService = New-AzSearchService `
+    -ResourceGroupName <resource-group-name> `
+    -Name <search-service-name> `
+    -Sku Standard `
+    -Location "West US" `
+    -PartitionCount 1 -ReplicaCount 1 `
+    -HostingMode Default `
+    -PublicNetworkAccess Disabled
+```
+
+次に、仮想ネットワーク、プライベート ネットワーク接続、プライベート エンドポイントを作成します。
+
+```azurepowershell-interactive
+# Create the subnet
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+    -Name <subnet-name> `
+    -AddressPrefix 10.1.0.0/24 `
+    -PrivateEndpointNetworkPolicies Disabled 
+
+# Create the virtual network
+$virtualNetwork = New-AzVirtualNetwork `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Name <virtual-network-name> `
+    -AddressPrefix 10.1.0.0/16 `
+    -Subnet $subnetConfig
+
+# Create the private network connection
+$privateLinkConnection = New-AzPrivateLinkServiceConnection `
+    -Name <private-link-name> `
+    -PrivateLinkServiceId $searchService.Id `
+    -GroupId searchService
+
+# Create the private endpoint
+$privateEndpoint = New-AzPrivateEndpoint `
+    -Name <private-endpoint-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Subnet $virtualNetwork.subnets[0] `
+    -PrivateLinkServiceConnection $privateLinkConnection
+```
+
+最後に、プライベート DNS ゾーンを作成します。 
+
+```azurepowershell-interactive
+## Create private dns zone
+$zone = New-AzPrivateDnsZone `
+    -ResourceGroupName <resource-group-name> `
+    -Name "privatelink.search.windows.net"
+
+## Create dns network link
+$link = New-AzPrivateDnsVirtualNetworkLink `
+    -ResourceGroupName <resource-group-name> `
+    -ZoneName "privatelink.search.windows.net" `
+    -Name "myLink" `
+    -VirtualNetworkId $virtualNetwork.Id
+
+## Create DNS configuration 
+$config = New-AzPrivateDnsZoneConfig `
+    -Name "privatelink.search.windows.net" `
+    -PrivateDnsZoneId $zone.ResourceId
+
+## Create DNS zone group
+New-AzPrivateDnsZoneGroup `
+    -ResourceGroupName <resource-group-name> `
+    -PrivateEndpointName <private-endpoint-name> `
+    -Name 'myZoneGroup' `
+    -PrivateDnsZoneConfig $config
+```
+
+プライベート エンドポイントを PowerShell で作成する場合の詳細については、こちらの[プライベート リンクのクイックスタート](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)に関する記事を参照してください。
+
+### <a name="manage-private-endpoint-connections"></a>プライベート エンドポイント接続を管理する
+
+プライベー ト エンドポイント接続を作成するだけでなく、接続を `Get`、`Set`、`Remove` することもできます。
+
+[Get-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Get-AzSearchPrivateEndpointConnection) は、プライベート エンドポイント接続を取得するためと、その状態を確認するために使用します。
+
+```azurepowershell-interactive
+Get-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name>
+```
+
+[Set-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Set-AzSearchPrivateEndpointConnection) は、接続を更新するために使用します。 次の例では、プライベート エンドポイント接続を拒否に設定します。
+
+```azurepowershell-interactive
+Set-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name> -Status Rejected  -Description "Rejected"
+```
+
+[Remove-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Remove-AzSearchPrivateEndpointConnection) は、プライベート エンドポイント接続を削除するために使用します。
+
+```azurepowershell-interactive
+ Remove-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name>
+```
 
 ## <a name="regenerate-admin-keys"></a>管理者キーを再生成する
 
@@ -223,7 +374,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>レプリカとパーティションのスケーリング
 
-[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice) は、 [レプリカとパーティションを増減させて](search-capacity-planning.md)サービス内での課金対象のリソースを再調整するために使用します。 レプリカまたはパーティションを増やすと、請求書 (固定料金と変動料金の両方が含まれます) に加算されます。 一時的な処理能力の追加の必要がある場合は、レプリカとパーティションを増やしてワークロードを処理することができます。 ポータルの [概要] ページの監視領域には、クエリの待機時間、1 秒あたりのクエリ数、および調整に関するタイルがあり、現在の容量が適切かどうかが表示されます。
+[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice) は、[レプリカとパーティションを増減させて](search-capacity-planning.md)サービス内での課金対象のリソースを再調整するために使用します。 レプリカまたはパーティションを増やすと、請求書 (固定料金と変動料金の両方が含まれます) に加算されます。 一時的な処理能力の追加の必要がある場合は、レプリカとパーティションを増やしてワークロードを処理することができます。 ポータルの [概要] ページの監視領域には、クエリの待機時間、1 秒あたりのクエリ数、および調整に関するタイルがあり、現在の容量が適切かどうかが表示されます。
 
 リソース割り当ての追加または削除には時間がかかることがあります。 容量の調整は、既存のワークロードを続行できるように、バックグラウンドで行われます。 追加の容量は準備ができるとすぐに受信要求に使用され、追加の構成は必要ありません。 
 
@@ -247,6 +398,46 @@ PartitionCount    : 6
 HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
+
+## <a name="create-a-shared-private-link-resource"></a>共有プライベート リンク リソースを作成する
+
+Azure Cognitive Search API によって作成された、セキュリティで保護されたリソースのプライベート エンドポイントは、"*共有プライベート リンク リソース*" と呼ばれます。 これは、[Azure Private Link サービス](https://azure.microsoft.com/services/private-link/)と統合されているストレージ アカウントなどのリソースへのアクセスを "共有" しているためです。
+
+インデクサーを使用して Azure Cognitive Search のデータにインデックスを作成し、データ ソースがプライベート ネットワーク上にある場合は、データに到達するために発信[プライベート エンドポイント接続](../private-link/private-endpoint-overview.md)を作成できます。
+
+Azure Cognitive Search から発信プライベート エンドポイントを作成するための Azure リソースの完全な一覧は、関連する **グループ ID** 値と共に、[こちら](search-indexer-howto-access-private.md#shared-private-link-resources-management-apis)で参照できます。
+
+[New-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/New-AzSearchSharedPrivateLinkResource) は、共有プライベート リンク リソースを作成するために使用します。 このコマンドを実行する前にデータ ソースでいくつかの構成が必要になる場合がある点に注意してください。
+
+```azurepowershell-interactive
+New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
+```
+
+[Get-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Get-AzSearchSharedPrivateLinkResource) を使用すると、共有プライベート リンク リソースを取得し、それらの状態を表示することができます。
+
+```azurepowershell-interactive
+Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name>
+```
+
+これを使用する前に、次のコマンドで接続を承認する必要があります。
+
+```azurepowershell-interactive
+Approve-AzPrivateEndpointConnection `
+    -Name <spl-name> `
+    -ServiceName <search-service-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Description = "Approved"
+```
+
+[Remove-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Remove-AzSearchSharedPrivateLinkResource) は、共有プライベート リンク リソースを削除するために使用します。
+
+```azurepowershell-interactive
+$job = Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -Force -AsJob
+
+$job | Get-Job
+```
+
+共有プライベート リンク リソースの設定の詳細については、[プライベート エンドポイント経由でのインデクサー接続の作成](search-indexer-howto-access-private.md)に関するドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

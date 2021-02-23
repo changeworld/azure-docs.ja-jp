@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507572"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522481"
 ---
 # <a name="sensor-data-mining-queries"></a>センサーのデータ マイニング クエリ
 
@@ -285,3 +285,7 @@ CVE レポートで手動の変更を行うには、次のようにします。
 3. 右側のドロップダウン リストから、生成するレポートを選択します。
 
 4. レポート結果の PDF を作成するには、:::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: を選択します。
+
+## <a name="next-steps"></a>次のステップ
+
+[センサーの傾向と統計のレポート](how-to-create-trends-and-statistics-reports.md)。

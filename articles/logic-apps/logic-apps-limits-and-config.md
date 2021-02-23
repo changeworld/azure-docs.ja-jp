@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/05/2021
-ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805936"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388534"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -193,19 +193,20 @@ ms.locfileid: "99805936"
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
-[Premium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のスループットの上限は次のとおりです。
+* [Developer ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):1 分あたり最大 500 回の実行が提供されますが、これらの点に注意してください。
 
-| 名前 | 制限 | Notes |
-|------|-------|-------|
-| 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
-| スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
-| 追加できる最大スケール ユニット | 10 | |
-||||
+  * この SKU は、必ず探索、実験、開発、またはテストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。 この SKU には、サービス レベル アグリーメント (SLA)、スケールアップ機能、リサイクル中の冗長性がありません。これは、遅延やダウンタイムが発生する可能性があることを意味します。
 
-通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
+  * バックエンドの更新により、サービスが断続的に中断する場合があります。
 
-> [!NOTE]
-> [開発者 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) には公開されている制限、スケールアップの機能、サービス レベル アグリーメント (SLA) はありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
+* [Premium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):次の表では、この SKU のスループット制限について説明していますが、通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のあるロード テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
+
+  | 名前 | 制限 | Notes |
+  |------|-------|-------|
+  | 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
+  | スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
+  | 追加できる最大スケール ユニット | 10 | |
+  ||||
 
 <a name="gateway-limits"></a>
 

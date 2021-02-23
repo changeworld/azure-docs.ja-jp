@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566608"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096856"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Azure Sentinel に Apache HTTP Server を接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "99566608"
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>Log Analytics エージェントを使用した Apache HTTP Server のログの構成と統合
 
-Log Analytics エージェントを使用して Azure ワークスペースにデータを転送するように Apache HTTP Server のログ ファイルの場所を構成します。
+Log Analytics エージェントを使用して Azure ワークスペースにログ ファイルを送信するように Apache HTTP Server を構成します。
 Apache HTTP Server のログ ファイルを読み取るように Log Analytics エージェントを構成します。
 
 1. https://httpd.apache.org/docs/2.4/logs.html の手順に従って、Apache HTTP Server のログ ファイルの場所を設定します。

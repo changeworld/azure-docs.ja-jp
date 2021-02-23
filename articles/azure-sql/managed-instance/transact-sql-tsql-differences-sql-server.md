@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626276"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378623"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 ### <a name="sql-server-agent"></a>SQL Server エージェント
 
 - SQL Managed Instance では現在、SQL Server エージェントの有効化/無効化はサポートされていません。 SQL エージェントは常に実行されています。
+- アイドル状態の CPU に基づくジョブ スケジュール トリガーはサポートされていません。
 - SQL Server エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、SQL Managed Instance ではサポートされていません。 
 - ジョブ
   - T-SQL ジョブ ステップがサポートされています。
@@ -306,13 +307,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
   - プロキシはサポートされていません。
 - EventLog はサポートされていません。
 - SQL Agent ジョブを作成、変更、実行するために、ユーザーは Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 直接マップされていないユーザー (たとえば、SQL Agent ジョブを作成、変更、または実行する権利を持つ Azure AD グループに属しているユーザー) は、これらの操作を実質的に実行できません。 これは、Managed Instance の借用と [EXECUTE AS の制限事項](#logins-and-users)のためです。
-
-現在、次の SQL エージェント機能はサポートされていません。
-
-- プロキシ
-- アイドル状態の CPU でのジョブのスケジューリング
-- エージェントの有効化または無効化
-- 警告
+- マスター/ターゲット (MSX/TSX) ジョブのマルチサーバー管理機能はサポートされていません。
 
 SQL Server エージェントについては、「[SQL Server エージェント](/sql/ssms/agent/sql-server-agent)」をご覧ください。
 

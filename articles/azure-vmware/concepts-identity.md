@@ -3,12 +3,12 @@ title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 0f58cbdaa641af24cef53c3cfd9604cf1b0c1c3b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538943"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364887"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
@@ -49,7 +49,7 @@ CloudAdmin グループにより、vCenter での特権が提供されます。 
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager のアクセスと ID
 
-"管理者" アカウントを使用して、NSX-T Manager にアクセスします。 これには完全な特権があるため、T1 ルーター、論理スイッチ、およびすべてのサービスを作成および管理できます。 この特権により、NSX-T T0 ルーターへのアクセス権が付与されます。 T0 ルーターを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ルーターに対する変更を依頼してください。
+"*管理者*" アカウントを使用して、NSX-T Manager にアクセスします。 これには完全な特権があるため、 Tier-1 (T1) ゲートウェイ、セグメント (論理スイッチ)、およびすべてのサービスを作成および管理できます。 この特権により、NSX-T Tier-0 (T0) ゲートウェイへのアクセスが可能になります。 T0 ゲートウェイを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ゲートウェイに対する変更を依頼してください。
   
 ## <a name="next-steps"></a>次のステップ
 

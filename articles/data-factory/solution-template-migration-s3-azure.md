@@ -1,22 +1,18 @@
 ---
 title: Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
 description: ソリューション テンプレートを使用して Amazon S3 からデータを移行する方法について説明します。これには、Azure Data Factory で AWS S3 のパーティション一覧を格納する外部制御テーブルを使用します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398222"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361989"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
 
@@ -119,7 +115,7 @@ ms.locfileid: "91398222"
 
     ![テンプレートを使用して作成された 2 つのパイプラインと 3 つのデータセットを示すスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
+6. "BulkCopyFromS3" パイプラインに移動し、 **[デバッグ]** を選択し、 **[パラメーター]** を入力します。 次に、 **[Finish]\(完了\)** を選択します。
 
     ![[完了] を選択する前に、[デバッグ] を選択し、パラメーターを入力する場所を示すスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
@@ -182,7 +178,7 @@ ms.locfileid: "91398222"
 
     ![パイプラインのレビュー](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
+6.  "DeltaCopyFromS3" パイプラインに移動し、 **[デバッグ]** を選択し、 **[パラメーター]** を入力します。 次に、 **[Finish]\(完了\)** を選択します。
 
     ![**[デバッグ]** をクリックします。](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 

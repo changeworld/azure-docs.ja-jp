@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538851"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393141"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Azure Cosmos DB のポイントインタイム リストア (プレビュー) 機能を使用した継続的バックアップ
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB では、データのバックアップがバックグラウン�
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Blob Storage への Azure Cosmos DB データのバックアップ。" lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-復元に使用できる時間枠 (保持期間とも呼ばれます) は、次の 2 つのうち低い方の値です。"今から 30 日前" または "リソースの作成時まで" です。 復元する特定の時点には、保持期間内の任意のタイムスタンプを指定できます。
+復元に使用できる時間枠 (保持期間とも呼ばれます) は、次の 2 つのうち低い方の値です。"*今から 30 日前*" または "*リソースの作成時まで*" です。 復元する特定の時点には、保持期間内の任意のタイムスタンプを指定できます。
 
 パブリック プレビューでは、特定時点の SQL API または MongoDB コンテンツの Azure Cosmos DB アカウントを、[Azure portal](continuous-backup-restore-portal.md)、[Azure コマンド ライン インターフェイス](continuous-backup-restore-command-line.md) (az CLI)、[Azure PowerShell](continuous-backup-restore-powershell.md)、または [Azure Resource Manager](continuous-backup-restore-template.md) を使用して別のアカウントに復元できます。
 
@@ -59,17 +59,18 @@ Azure Cosmos DB では、データのバックアップがバックグラウン�
 
 ## <a name="restore-scenarios"></a>復元シナリオ
 
-以下に、ポイントインタイム リストア機能で対応する主なシナリオをいくつか示します。 シナリオ [a] ～ [c] は、復元のタイムスタンプが事前にわかっている場合に復元をトリガーする方法を示します。 ただし、偶発的に発生した削除や破損の正確な時刻がわからないというシナリオもあり得ます。 シナリオ [d] と [e] は、復元可能なデータベースまたはコンテナーで新しいイベント フィード API を使用して、復元のタイムスタンプを "_検出_" する方法を示します。
+以下に、ポイントインタイム リストア機能で対応する主なシナリオをいくつか示します。 シナリオ [a] ～ [c] は、復元のタイムスタンプが事前にわかっている場合に復元をトリガーする方法を示します。
+ただし、偶発的に発生した削除や破損の正確な時刻がわからないというシナリオもあり得ます。 シナリオ [d] と [e] は、復元可能なデータベースまたはコンテナーで新しいイベント フィード API を使用して、復元のタイムスタンプを "_検出_" する方法を示します。
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="復元可能なアカウントでのタイムスタンプを含むライフサイクル イベント。" lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **削除されたアカウントを復元する** - 削除された復元可能なすべてのアカウントは、 **[復元]** ウィンドウから表示できます。 たとえば、タイムスタンプ T3 で "アカウント A" が削除されたとします。 この場合、T3 の直前のタイムスタンプ、場所、ターゲット アカウント名、リソース グループ、ターゲット アカウント名を指定するだけで、[Azure portal](continuous-backup-restore-portal.md#restore-deleted-account)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore)、または [CLI](continuous-backup-restore-command-line.md#trigger-restore) から復元できます。  
+a. **削除されたアカウントを復元する** - 削除された復元可能なすべてのアカウントは、 **[復元]** ウィンドウから表示できます。 たとえば、タイムスタンプ T3 で "*アカウント A*" が削除されたとします。 この場合、T3 の直前のタイムスタンプ、場所、ターゲット アカウント名、リソース グループ、ターゲット アカウント名を指定するだけで、[Azure portal](continuous-backup-restore-portal.md#restore-deleted-account)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore)、または [CLI](continuous-backup-restore-command-line.md#trigger-restore) から復元できます。  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="復元可能なデータベースとコンテナーでのタイムスタンプを含むライフサイクル イベント。" lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **特定のリージョンのアカウントのデータを復元する** - たとえば、タイムスタンプ T3 で "アカウント A" が "米国東部" と "米国西部" の 2 つのリージョンに存在するとします。 "米国西部" にアカウント A のコピーが必要な場合、ターゲットの場所として米国西部を指定して、[Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore)、または [CLI](continuous-backup-restore-command-line.md#trigger-restore) からポイントインタイム リストアを行うことができます。
+b. **特定のリージョンのアカウントのデータを復元する** - たとえば、タイムスタンプ T3 で "*アカウント A*" が "*米国東部*" と "*米国西部*" の 2 つのリージョンに存在するとします。 "*米国西部*" にアカウント A のコピーが必要な場合、ターゲットの場所として米国西部を指定して、[Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore)、または [CLI](continuous-backup-restore-command-line.md#trigger-restore) からポイントインタイム リストアを行うことができます。
 
-c. **既知の復元タイムスタンプを使用してコンテナー内で誤って行われた書き込みまたは削除の操作から復旧する** - たとえば、"データベース 1" 内の "コンテナー 1" の内容が、タイムスタンプ T3 で誤って変更されたことが **わかっている** とします。 タイムスタンプ T3 で [Azure portal](continuous-backup-restore-portal.md#restore-live-account)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore)、または [CLI](continuous-backup-restore-command-line.md#trigger-restore) から別のアカウントへのポイントインタイム リストアを実行して、コンテナーの必要な状態を復旧することができます。
+c. **既知の復元タイムスタンプを使用してコンテナー内で誤って行われた書き込みまたは削除の操作から復旧する** - たとえば、"*データベース 1*" 内の "*コンテナー 1*" の内容が、タイムスタンプ T3 で誤って変更されたことが **わかっている** とします。 タイムスタンプ T3 で [Azure portal](continuous-backup-restore-portal.md#restore-live-account)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore)、または [CLI](continuous-backup-restore-command-line.md#trigger-restore) から別のアカウントへのポイントインタイム リストアを実行して、コンテナーの必要な状態を復旧することができます。
 
 d. **データベースが誤って削除される前の特定の時点にアカウントを復元する** - [Azure portal](continuous-backup-restore-portal.md#restore-live-account)で、イベント フィード ウィンドウを使用して、データベースがいつ削除されたかを確認し、復元時刻を見つけることができます。 同様に、[Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) と [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) を使用して、データベース イベント フィードを列挙することでデータベースの削除イベントを検出し、必要なパラメーターを指定して復元コマンドをトリガーできます。
 
@@ -81,7 +82,7 @@ Azure Cosmos DB を使用すると、継続的バックアップ アカウント
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>価格
 
-継続的バックアップが有効になっている Azure Cosmos DB アカウントでは、"バックアップを保存" し、"データを復元" するために追加の月額料金が発生します。 復元コストは、復元操作が開始されるたびに加算されます。 継続的バックアップを行うようにアカウントを構成していてもデータを復元しない場合は、バックアップ ストレージのコストのみが請求書に含まれます。
+継続的バックアップが有効になっている Azure Cosmos DB アカウントでは、"*バックアップを保存*" し、"*データを復元*" するために追加の月額料金が発生します。 復元コストは、復元操作が開始されるたびに加算されます。 継続的バックアップを行うようにアカウントを構成していてもデータを復元しない場合は、バックアップ ストレージのコストのみが請求書に含まれます。
 
 次の例は、米国の非政府リージョンにデプロイされている Azure Cosmos アカウントの価格に基づいています。 価格と計算は、お客様が使用しているリージョンによって異なる場合があります。最新の価格情報については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」ページをご覧ください。
 

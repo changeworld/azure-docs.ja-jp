@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981033"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382628"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack Edge Mini R の安全性のための指示
 
@@ -161,7 +161,6 @@ Netgear A6150 WiFi USB アダプターは、承認されたアンテナでのみ
 
 ![規制情報に関する警告 - 室内使用](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
 
-
 高出力レーダーは、5250 から 5350 MHz 帯および 5650 から 5850 MHz 帯のプライマリ ユーザー (優先ユーザー) として割り当てられており、これらのレーダーが LE-LAN デバイスに干渉したり損傷を与える可能性があることをご承知おき下さい。
 
 この装置は、無線周波数エネルギーを生成および使用し、また放射する場合があり、手順に従って設置および使用しないと、無線通信に有害な干渉を及ぼす可能性があります。 ただし、特定の設置により干渉が発生しないことを保証するものではありません。
@@ -205,11 +204,13 @@ Netgear A6150 WiFi USB アダプターは、管理されていない環境のた
 
 #### <a name="european-union"></a>欧州連合:
 
-この装置の EU 適合宣言のコピーを要求します。
+この装置の EU 適合宣言のコピーを要求します。 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com) に電子メールを送信します。
 
 この装置に付属している Netgear A6150 WiFi USB アダプターは、指令 2014/53/EU に準拠しており、要求に応じて提供することも可能です。
 
-> ![警告アイコン 13](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) これは、クラス A 製品です。 国内環境では、この製品は無線干渉を起こす可能性があり、その場合はユーザーが適切な対策を講じることが必要な場合があります。
+![警告アイコン 13](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **警告:**
+
+これは、クラス A 製品です。 国内環境では、この製品は無線干渉を起こす可能性があり、その場合はユーザーが適切な対策を講じることが必要な場合があります。
 
 廃棄バッテリと電気電子機器の廃棄:
 

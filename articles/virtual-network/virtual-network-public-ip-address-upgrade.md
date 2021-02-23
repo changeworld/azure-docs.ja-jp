@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493721"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522888"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 
@@ -36,7 +36,7 @@ Azure パブリック IP アドレスは、SKU (Basic または Standard) を使
 パブリック IP をアップグレードする場合、その IP をリソースに関連付けることはできません (パブリック IP の関連付けを解除する方法の詳細については、[このページ](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください)。
 
 >[!IMPORTANT]
->Basic から Standard にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)を使用できません。  つまり、ゾーン冗長である Azure リソース、または事前に指定されたゾーンに関連付けられている Azure リソースに関連付けることはできません。
+>Basic から Standard SKU にアップグレードされたパブリック IP には引き続き、[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)の保証はありません。  IP アドレスを関連付けるリソースを選択するときは、この点に留意してください。
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Basic から Standard へ - PowerShell**](#tab/option-upgrade-powershell)

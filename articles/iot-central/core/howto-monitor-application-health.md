@@ -3,25 +3,25 @@ title: Azure IoT Central アプリケーションの正常性状態を監視す�
 description: オペレーターまたは管理者として、IoT Central アプリケーションに接続されているデバイスの全体的な正常性状態を監視します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760773"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515871"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central アプリケーションに接続されているデバイスの全体的な正常性状態を監視する
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>IoT Central アプリケーションの全体的な正常性状態を監視する
 
 > [!NOTE]
 > メトリックは、バージョン 3 の IoT Central アプリケーションでのみ使用できます。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。
 
 *この記事は、オペレーターおよび管理者に適用されます。*
 
-この記事では、IoT Central によって提供される一連のメトリックを使用して、IoT Central アプリケーションに接続されているデバイスの全体的な正常性を評価する方法について説明します。
+この記事では、IoT Central で提供される一連のメトリックを使用して、IoT Central アプリケーションに接続されているデバイスの正常性、および実行中のデータ エクスポートの正常性を評価する方法について説明します。
 
 メトリックは、IoT Central アプリケーションでは既定で有効になっており、[Azure portal](https://portal.azure.com/) からアクセスします。 [Azure Monitor データ プラットフォームでは、これらのメトリックが公開](../../azure-monitor/platform/data-platform-metrics.md)されており、これらを対話方式で操作する複数の方法が用意されています。 たとえば、Azure portal、REST API、または PowerShell や Azure CLI のクエリでグラフを使用できます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "98760773"
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Azure portal でメトリックを表示する
 
-次の手順では、[接続されているデバイス](./tutorial-connect-device.md)に [IoT Central アプリケーション](./quick-deploy-iot-central.md)があることを前提としています。
+次の手順では、[IoT Central アプリケーション](./quick-deploy-iot-central.md)に、[接続されているデバイス](./tutorial-connect-device.md)または実行中の[データ エクスポート](howto-export-data.md)があることを前提としています。
 
 ポータルで IoT Central メトリックを表示するには:
 

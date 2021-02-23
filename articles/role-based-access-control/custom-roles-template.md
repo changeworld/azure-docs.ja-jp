@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 96915fe5cc7bc7b2f88e0cbd8619c10a6433dd71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631314"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557484"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>ARM テンプレートを使用して Azure カスタム ロールを作成または更新する
 
@@ -207,5 +207,5 @@ New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actio
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure ロールの定義について](role-definitions.md)
-- [クイック スタート: Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](quickstart-role-assignments-template.md)
+- [クイックスタート:Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](quickstart-role-assignments-template.md)
 - [ARM テンプレートのドキュメント](../azure-resource-manager/templates/index.yml)

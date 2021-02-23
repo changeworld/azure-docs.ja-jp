@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91cf6729911cdb674c5451f172e76a2e9d5943e4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465694"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367675"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows Virtual Desktop 向けの Azure Monitor (プレビュー) のトラブルシューティング
 
@@ -20,9 +20,9 @@ ms.locfileid: "96465694"
 
 この記事では、Windows Virtual Desktop 向けの Azure Monitor (プレビュー) の既知のイシューと、一般的な問題の解決策について説明します。
 
-## <a name="the-configuration-workbook-isnt-working-properly"></a>構成ブックが正しく動作しない
+## <a name="issues-with-configuration-and-setup"></a>構成と設定に関する問題
 
-Azure Monitor 構成ブックが動作しない場合は、次のリソースを使用して、手動でその部分を設定できます。
+構成ブックで設定の自動化が正常に動作していない場合は、これらのリソースを使用してご自身の環境を手動で設定できます。
 
 - 診断を手動で有効にするか、Log Analytics ワークスペースにアクセスする場合は、[Log Analytics への Windows Virtual Desktop 診断の送信](diagnostics-log-analytics.md)に関する記事をご覧ください。
 - Log Analytics 拡張機能をホストに手動でインストールする場合は、「[Windows 用の Log Analytics 仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)」をご覧ください。
@@ -30,27 +30,29 @@ Azure Monitor 構成ブックが動作しない場合は、次のリソースを
 - パフォーマンス カウンターを追加または削除する場合は、「[パフォーマンス カウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md)」をご覧ください。
 - Log Analytics ワークスペースのイベントを構成する場合は、「[Log Analytics エージェントを使用して Windows イベント ログのデータソースを収集する](../azure-monitor/platform/data-sources-windows-events.md)」をご覧ください。
 
-または、リソースが不足しているか、必要なアクセス許可がないことが原因で問題が発生しているおそれがあります。
-
-サブスクリプションに Windows Virtual Desktop リソースがない場合、それは *[サブスクリプション]* パラメーターに表示されません。
-
-正しいサブスクリプションに対する読み取りアクセスがない場合、それは *[サブスクリプション]* パラメーターに表示されず、ダッシュボードにデータが表示されません。 このイシューを解決するには、サブスクリプションの所有者に連絡し、読み取りアクセスを依頼してください。
-
 ## <a name="my-data-isnt-displaying-properly"></a>自分のデータが正しく表示されない
 
-データが正しく表示されない場合は、Azure Monitor の構成プロセスで何らかの問題が発生しているおそれがあります。 まず、「[Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)」の説明に従って、構成ブックのすべてのフィールドを入力していることを確認します。 新規でも既存の環境でも、設定はいつでも変更できます。 カウンターまたはイベントに入力されていない場合は、それらに関連付けられているデータが Azure portal に表示されません。
+データが正しく表示されない場合は、構成とアクセス許可を確認し、必要な IP アドレスのブロックが解除されていることを確認してください。 
 
-情報がすべて入力されていても、データが正しく表示されない場合は、クエリまたはデータソースに問題があるおそれがあります。 
+- まず、「[Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)」の説明に従って、構成ブックのすべてのフィールドを入力していることを確認します。 カウンターまたはイベントに入力されていない場合は、それらに関連付けられているデータが Azure portal に表示されません。
 
-設定エラーが表示されず、予期したデータが表示されない場合は、15 分間待機して、フィードを更新することをお勧めします。 Azure Monitor にはログ データの入力に 15 分の待機時間があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../azure-monitor/platform/data-ingestion-time.md)」をご覧ください。
+- 自分のアクセス許可を確認し、リソース所有者に連絡して不足しているアクセス許可を要請してください。Windows Virtual Desktop を監視するすべてのユーザーには、次のアクセス許可が必要です。
 
-最終的に、情報がすべて入力されていても、データが表示されない場合は、クエリまたはデータソースに問題があるおそれがあります。 該当する場合は、問題の解決をサポートに依頼する必要があります。
+    - Windows Virtual Desktop リソースを保持する Azure サブスクリプションへの読み取りアクセス
+    - Windows Virtual Desktop セッション ホストを保持するサブスクリプションのリソース グループへの読み取りアクセス 
+    - Log Analytics ワークスペースへの読み取りアクセス
+
+- Azure Monitor がポータルにデータを送信できるように、お使いのサーバーのファイアウォールで送信ポートを開く必要がある場合があります。[送信ポート](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)に関する記事を参照してください。 
+
+- 最近のアクティビティのデータが表示されない場合。 15 分間待機して、フィードを更新することをお勧めします。 Azure Monitor にはログ データの入力に 15 分の待機時間があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../azure-monitor/platform/data-ingestion-time.md)」をご覧ください。
+
+情報がすべて入力されていても、データが正しく表示されない場合は、クエリまたはデータソースに問題があるおそれがあります。 既知の問題と制限事項を確認してください。 
 
 ## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>Windows Virtual Desktop 向けの Azure Monitor をカスタマイズしたい
 
 Windows Virtual Desktop 向けの Azure Monitor は、Azure Monitor ブックを使用します。 ブックを使用すると、Windows Virtual Desktop ブック テンプレートのコピーを保存して、独自のカスタマイズを行うことができます。
 
-カスタマイズしたテンプレートは、製品グループが元のテンプレートを更新しても更新されません。 これは、ブック ツールでの仕様であり、更新を採用するには、更新されたテンプレートのコピーを保存して、カスタマイズを再ビルドする必要があります。 詳細については、「[ブックベースの分析情報のトラブルシューティング](../azure-monitor/insights/troubleshoot-workbooks.md)」および[ブックの概要](../azure-monitor/platform/workbooks-overview.md)に関するページをご覧ください。
+仕様により、カスタム ブック テンプレートでは、製品グループの更新プログラムが自動的に適用されることはありません。 詳細については、「[ブックベースの分析情報のトラブルシューティング](../azure-monitor/insights/troubleshoot-workbooks.md)」および[ブックの概要](../azure-monitor/platform/workbooks-overview.md)に関するページをご覧ください。
 
 ## <a name="i-cant-interpret-the-data"></a>データを解釈できない
 
@@ -58,24 +60,36 @@ Windows Virtual Desktop 向けの Azure Monitor は、Azure Monitor ブックを
 
 ## <a name="the-data-i-need-isnt-available"></a>必要なデータを使用できない
 
+より多くのパフォーマンス カウンターまたはイベントを監視する場合は、それらを自分の Log Analytics ワークスペースに送信できるようにして、[ホスト診断:ホスト ブラウザー] で監視できます。 
+
+- パフォーマンス カウンターを追加するには、「[パフォーマンス カウンターの構成](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters)」を参照してください
+- Windows イベントを追加するには、「[Windows イベント ログの構成](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)」を参照してください
+
 イシューの診断に役立つデータ ポイントが見つかりませんか。 フィードバックをお送りください。
 
 - フィードバックを残す方法については、「[Windows Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート](troubleshoot-set-up-overview.md)」をご覧ください。
 - また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)、または [UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)にお寄せいただくこともできます。
 
-## <a name="known-issues"></a>既知の問題
+## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
-現在認識されていて修正に向けて動いているイシューを以下に示します。
+これらは、現在認識され、修正に向けて対処中の問題と制限事項です。
 
-- 現在、監視するサブスクリプション、リソース グループ、ホスト プールを一度に 1 つしか選択できません。 このため、ユーザー レポートのページを使用してユーザーのエクスペリエンスを理解するときに、ユーザーが使用している正しいホスト プールを所有していること、データにビジュアルが入力されていないことを確認する必要があります。
+- 一度に監視できるホスト プールは 1 つのみです。 
 
-- 現在、ブックのカスタム テンプレートを保存していない限り、お気に入りの設定を Azure Monitor に保存することはできません。 これは、IT 管理者が Windows Virtual Desktop 向けの Azure Monitor を開くたびに、サブスクリプション名、リソース グループ名、ホスト プール設定を入力する必要があることを意味します。
-
-- 現在、Windows Virtual Desktop 向けの Azure Monitor から Excel にデータをエクスポートする方法はありません。
-
-- 選択したサブスクリプション内のすべての製品について、重大度 1 の Azure Monitor アラートがすべて概要ページに表示されます。 サブスクリプション内の他の製品からのアラートが Windows Virtual Desktop に影響を与える可能性があるため、これは仕様になっています。 現時点では、クエリは重大度 1 のアラートに制限されており、優先度の高い重大度 0 のアラートは概要ページから除外されています。
+- お気に入りの設定を保存するには、ブックのカスタム テンプレートを保存する必要があります。 カスタム テンプレートでは、製品グループの更新プログラムが自動的に適用されることはありません。
 
 - 一部のエラー メッセージはユーザーにとってわかりやすい言い回しではありません。また、すべてのエラー メッセージがドキュメントに記載されているわけではありません。
+
+- 合計セッション パフォーマンス カウンターでは、セッションがわずかにオーバーカウントされることがあり、セッションの合計数が最大セッション数を超えているように見える場合があります。
+
+- 使用可能なセッション数には、ホスト プールのスケーリング ポリシーは反映されません。 
+    
+- まれに、接続の完了イベントが失われる可能性があります。これは、経時的な接続やユーザーの接続状態などの一部の表示に影響を与える可能性があります。  
+    
+- 構成ブックでは、そのリソース グループと同じリージョン内でのホストの構成のみがサポートされます。 
+
+- 接続までの時間には、ユーザーが資格情報を入力するのにかかる時間が含まれます。これは経験と相関しますが、場合によっては、偽のピークが表示されることがあります。 
+    
 
 ## <a name="next-steps"></a>次のステップ
 

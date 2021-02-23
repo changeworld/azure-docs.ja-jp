@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979183"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368015"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する
 
@@ -31,8 +31,9 @@ Azure Private Link では、プライベート エンドポイントを使用し
 
 ## <a name="prerequisites"></a>[前提条件]
 
-カスタマー マネージド キーでプライベート リンクを有効にしたワークスペースを使用する場合は、サポート チケットを使用してこの機能を要求する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
+* カスタマー マネージド キーでプライベート リンクを有効にしたワークスペースを使用する場合は、サポート チケットを使用してこの機能を要求する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
+* プライベート エンドポイントを作成するには、既存の仮想ネットワークが必要です。 また、プライベート エンドポイントを追加する前に、[プライベート エンドポイントのネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
 ## <a name="limitations"></a>制限事項
 
 * Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
@@ -73,6 +74,19 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-vnet-name`:プライベート エンドポイントを作成する既存の仮想ネットワーク。
 * `--pe-subnet-name`:プライベート エンドポイントを作成するサブネットの名前。 既定値は `default` です。
 
+これらのパラメーターは、create コマンドのその他の必須パラメーターの他に追加するものです。 たとえば、次のコマンドは、既存のリソース グループと VNet を使用して、米国西部リージョンに新しいワークスペースを作成します。
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure Machine Learning スタジオの __[ネットワーク]__ タブで、プライベート エンドポイントを構成できます。 ただし、既存の仮想ネットワークが必要です。 詳細については、[ポータルでのワークスペースの作成](how-to-manage-workspace.md)に関するページを参照してください。
@@ -82,10 +96,6 @@ Azure Machine Learning スタジオの __[ネットワーク]__ タブで、プ�
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>ワークスペースにプライベート エンドポイントを追加する
 
 次のいずれかの方法を使用して、既存のワークスペースにプライベート エンドポイントを追加します。
-
-> [!IMPORTANT]
->
-> プライベート エンドポイントを作成するには、既存の仮想ネットワークが必要です。 また、プライベート エンドポイントを追加する前に、[プライベート エンドポイントのネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
 
 > [!WARNING]
 >

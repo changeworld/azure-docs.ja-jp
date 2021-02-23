@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626310"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558511"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -32,6 +32,30 @@ Azure Connected Machine エージェント パッケージには、まとめて�
     * 割り当ては 14 日後に削除され、14 日の期間の後にマシンに再割り当てされることはありません。
 
 * 拡張エージェントは VM 拡張機能 (インストール、アンインストール、アップグレードなど) を管理します。 拡張機能は Azure からダウンロードされ、Windows では `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` フォルダー、Linux の場合は `/opt/GC_Ext/downloads` にコピーされます。 Windows では、拡張機能はパス `%SystemDrive%\Packages\Plugins\<extension>` にインストールされます。Linux では、拡張機能は `/var/lib/waagent/<extension>` にインストールされます。
+
+## <a name="instance-metadata"></a>インスタンス メタデータ
+
+接続されたコンピューターに関するメタデータ情報は、Connected Machine エージェントが Arc 対応サーバーに登録された後に収集されます。 具体的な内容は次のとおりです。
+
+* オペレーティング システムの名前、種類、バージョン
+* コンピューター名
+* コンピューターの完全修飾ドメイン名 (FQDN)
+* Connected Machine エージェントのバージョン
+* Active Directory と DNS の完全修飾ドメイン名 (FQDN)
+* UUID (BIOS ID)
+* Connected Machine エージェントのハートビート
+* Connected Machine エージェントのバージョン
+* マネージド ID の公開キー
+* ポリシーのコンプライアンスの状態と詳細 (Azure Policy のゲスト構成ポリシーを使用している場合)
+
+次のメタデータ情報は、Azure からエージェントによって要求されます。
+
+* リソースの場所 (リージョン)
+* 仮想マシン ID
+* Tags
+* Azure Active Directory マネージド ID 証明書
+* ゲスト構成ポリシーの割り当て
+* 拡張要求 - インストール、更新、削除。
 
 ## <a name="download-agents"></a>エージェントをダウンロードする
 

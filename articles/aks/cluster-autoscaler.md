@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223144"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373251"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、[az aks nodepool update][az-aks-nodepool-update] コマンドで `--enable-cluster-autoscaler`、 `--min-count`、および `--max-count` パラメーターを指定することで有効にできます。
+
+> [!NOTE]
+> 複数のゾーンにまたがるノード プールでクラスター オートスケーラーを使用して、ボリューム トポロジ スケジュール設定など、ゾーンに関連するスケジュール機能を活用する予定の場合は、ゾーンごとに 1つのノード プールを用意し、オートスケーラー プロファイルを使用して `--balance-similar-node-groups` を有効にすることをお勧めします。 これにより、オートスケーラーが正常にスケールアップし、ノード プールのサイズが均衡を保つようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

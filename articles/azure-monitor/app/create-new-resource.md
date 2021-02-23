@@ -2,17 +2,20 @@
 title: 新しい Azure Application Insights リソースの作成 | Microsoft Docs
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062915"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104588"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
 Azure Application Insights には、Microsoft Azure *リソース* のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 新しいリソースを作成した後、そのインストルメンテーション キーを取得し、それを使用し Application Insights SDK を構成できます。 インストルメンテーション キーにより、リソースとテレメトリがリンクされます。
+
+> [!IMPORTANT]
+> クラシック Application Insights は非推奨となりました。 ワークスペースベースの Application Insights にアップグレードする方法については、[こちら](convert-classic-resource.md)の手順をご覧ください。
 
 ## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure にサインインする
 

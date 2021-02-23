@@ -1,19 +1,19 @@
 ---
-title: Azure Cache for Redis を監視する方法
+title: Azure Cache for Redis を監視する
 description: Azure Cache for Redis のインスタンスの正常性とパフォーマンスを監視する方法を学習します
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389707"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法
+# <a name="monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する
 
 Azure Cache for Redis は、[Azure Monitor](../azure-monitor/index.yml) を使用して、キャッシュのインスタンスを監視するための複数のオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。
 

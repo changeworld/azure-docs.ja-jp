@@ -3,14 +3,14 @@ title: Azure Monitor Application Insights のワークスペース ベースの�
 description: Azure Monitor Application Insights ワークスペース ベース リソースの新しいテーブルの構造とスキーマについて説明します。
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931055"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385967"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>ワークスペースベース リソースの変更 (プレビュー)
+# <a name="workspace-based-resource-changes"></a>ワークスペースベース リソースの変更
 
 [ワークスペースベース Application Insights リソース](create-workspace-resource.md)を導入する前、Application Insights データは Azure Monitor の他のログ データとは別に保存されていました。 どちらも Azure Data Explorer に基づいており、同じ Kusto Query Language (KQL) が使用されています。 これに関する説明は「[Azure Monitor のログ](../platform/data-platform-logs.md)」にあります。
 

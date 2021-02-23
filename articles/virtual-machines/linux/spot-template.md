@@ -1,6 +1,6 @@
 ---
-title: テンプレートを使用して Azure Spot VM をデプロイする
-description: テンプレートを使用してスポット VM をデプロイし、コストを節約する方法について説明します。
+title: テンプレートを使用して Azure Spot Virtual Machines をデプロイする
+description: テンプレートを使用して Azure Spot Virtual Machines をデプロイすることでコストを節約する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 0cf6fc1b37064ef6193f35334711dcc5b8d01088
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 44134e73f2e654d7bfdb9119942a5c3982859c7a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557760"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してスポット VM をデプロイする
+# <a name="deploy-azure-spot-virtual-machines-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Spot Virtual Machines をデプロイする
 
-[スポット VM](../spot-vms.md) を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
+[Azure Spot Virtual Machines](../spot-vms.md) を使用すると、大幅にコストを節約して未使用の容量を利用できます。 Azure で容量の回復が必要になると、Azure インフラストラクチャによって Azure Spot Virtual Machines が削除されます。 そのため、Azure Spot Virtual Machines は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断に対応できるワークロードに最適です。
 
-スポット VM の価格は、リージョンと SKU に基づいて変化します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。
+Azure Spot Virtual Machines の価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。
 
-VM に対して、1 時間あたりに支払うことができる最大価格を設定するオプションがあります。 スポット VM の最大価格は、小数点以下最大 5 桁を使用して米ドル (USD) で設定できます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。 最大価格の設定の詳細については、[スポット VM の価格](../spot-vms.md#pricing)に関するページを参照してください。
+VM に対して、1 時間あたりに支払うことができる最大価格を設定するオプションがあります。 Azure Spot Virtual Machine の最大価格は、小数点以下最大 5 桁を使用して米ドル (USD) で設定できます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在の Azure Spot Virtual Machines の価格または標準 VM の価格のいずれか低い方になります。 最大価格の設定の詳細については、[Azure Spot Virtual Machines の価格](../spot-vms.md#pricing)に関するページを参照してください。
 
 
 ## <a name="use-a-template"></a>テンプレートの使用
 
-スポット テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 テンプレートで、`priority`、`evictionPolicy`、`billingProfile` の各プロパティをに追加します。
+Azure Spot Virtual Machine テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 テンプレートで、`priority`、`evictionPolicy`、`billingProfile` の各プロパティをに追加します。
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 }
 ```
 
-ここでは、スポット VM のプロパティを追加したサンプル テンプレートを示します。 リソース名を実際の名前に置き換えて、`<password>` を VM 上のローカル管理者アカウントのパスワードに置き換えます。
+ここでは、Azure Spot Virtual Machine のプロパティを追加したサンプル テンプレートを示します。 リソース名を実際の名前に置き換えて、`<password>` を VM 上のローカル管理者アカウントのパスワードに置き換えます。
 
 ```json
 {
@@ -175,7 +175,7 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 
 ## <a name="simulate-an-eviction"></a>削除をシミュレートする
 
-スポット VM の[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対するアプリケーションの応答をテストすることができます。 
+Azure Spot Virtual Machine の[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
 
 次の情報をお客様の情報に置き換えてください。 
 
@@ -190,8 +190,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure PowerShell](../windows/spot-powershell.md) または [Azure CLI](spot-cli.md) を使って、スポット VM を作成することもできます。
+[Azure PowerShell](../windows/spot-powershell.md) または [Azure CLI](spot-cli.md) を使って、Azure Spot Virtual Machine を作成することもできます。
 
-スポットの価格についての情報が記載されている [Azure 小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) に関する記事を参照して、現在の価格情報を照会してください。 `meterName` と `skuName` の両方に `Spot` が含まれています。
+Azure Spot Virtual Machine の価格については、[Azure retail prices API](/rest/api/cost-management/retail-prices/azure-retail-prices) を使用して現在の価格情報を照会してください。 `meterName` と `skuName` の両方に `Spot` が含まれています。
 
 エラーが発生した場合は、[エラー コード](../error-codes-spot.md)を参照してください。

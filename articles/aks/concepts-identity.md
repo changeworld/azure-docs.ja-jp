@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8d69033dedc3a45263b087c9b9ee5b156af460be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615803"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361062"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -174,6 +174,8 @@ Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使�
 
 この機能を使用すると、たとえば、サブスクリプション間で AKS リソースへのアクセス許可をユーザーに付与するだけでなく、Kubernetes API へのアクセスを制御する各クラスター内でのロールとアクセス許可を設定してユーザーに付与することができます。 たとえば、`Azure Kubernetes Service RBAC Viewer` ロールをサブスクリプションのスコープで付与することができ、それを受け取ったユーザーは、すべてのクラスターのすべての Kubernetes オブジェクトを一覧表示して取得することができますが、変更することはできません。
 
+> [!IMPORTANT]
+> この機能を使用する前に、Kubernetes 認可に対して Azure RBAC を有効にする必要があることに注意してください。 詳細およびステップ バイ ステップ ガイダンスについては、[こちらを参照してください](manage-azure-rbac.md)。
 
 #### <a name="built-in-roles"></a>組み込みのロール
 
@@ -186,7 +188,6 @@ AKS には、次の 4 つの組み込みロールがあります。 これらは
 | Azure Kubernetes Service RBAC 管理者  | 名前空間内で付与されることが意図された、管理者アクセスが許可されます。 名前空間内でロールおよびロール バインドを作成する能力など、名前空間 (またはクラスター スコープ) 内のほとんどのリソースへの読み取りおよび書き込みアクセスが許可されます。 このロールでは、リソース クォータまたは名前空間自体への書き込みアクセスは許可されません。 |
 | Azure Kubernetes Service RBAC クラスター管理者  | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 これにより、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 |
 
-**Kubernetes 認可に Azure RBAC を有効にする方法については、[こちらを参照してください](manage-azure-rbac.md)。**
 
 ## <a name="summary"></a>まとめ
 

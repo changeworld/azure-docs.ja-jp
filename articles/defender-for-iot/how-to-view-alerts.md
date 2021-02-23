@@ -7,24 +7,24 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509073"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523670"
 ---
 # <a name="view-alerts"></a>アラートを表示する
 
 この記事では、センサーによってトリガーされたアラートを表示し、アラート ツールで管理する方法について説明します。
 
-アーカイブ済みまたは固定されたアラートなど、さまざまなカテゴリに基づいてアラートを表示できます。 または、IP または MAC アドレスに基づくアラートなど、目的のアラートを検索することもできます。  
+アーカイブ済みまたは固定されたアラートなど、さまざまなカテゴリに基づいてアラートを表示できます。 IP または MAC アドレスに基づくアラートなど、目的のアラートを検索することもできます。  
 
 センサー ダッシュボードからアラートを表示することもできます。
 
 アラートを表示するには、次の手順に従います。
 
-- サイド メニューから、 **[アラート]** を選択します。 **[アラート]** ウィンドウには、センサーによって検出されたアラートが表示されます。
+- サイド メニューから、 **[アラート]** を選択します。 [アラート] ウィンドウには、センサーによって検出されたアラートが表示されます。
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="[アラート] 画面の表示。":::
 
@@ -42,21 +42,21 @@ ms.locfileid: "99509073"
 
 ## <a name="search-for-alerts-of-interest"></a>目的のアラートを検索する
 
-**[アラート]** メイン ビューには、目的のアラートを見つけるのに役立つさまざまな検索機能が用意されています。
+[アラート] メイン ビューには、目的のアラートを見つけるのに役立つさまざまな検索機能が用意されています。
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="アラートの学習のスクリーンショット。":::
 
-### <a name="text-search"></a>テキスト検索 
+### <a name="text-search"></a>テキスト検索
 
-**[自由検索]** オプションを使用すると、テキスト、数字、または文字でアラートを検索できます。
+[自由検索] オプションを使用すると、テキスト、数字、または文字でアラートを検索できます。
 
 検索するには:
 
-- **[自由検索]** フィールドに必要なテキストを入力し、キーボードの Enter キーを押します。
+- [自由検索] フィールドに必要なテキストを入力し、キーボードの Enter キーを押します。
 
 検索をクリアするには:
 
-- **[自由検索]** フィールドのテキストを削除し、キーボードの Enter キーを押します。
+- [自由検索] フィールドのテキストを削除し、キーボードの Enter キーを押します。
 
 ### <a name="device-group-or-device-ip-address-search"></a>デバイス グループまたはデバイス IP アドレスの検索
 
@@ -100,7 +100,7 @@ ms.locfileid: "99509073"
 
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: を選択すると、すべてのアラートを学習および確認します。
 
-- :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: を選択すると、アラートの一覧を CSV ファイルにエクスポートし、エクスポート オプションを選択します。 通常の CSV へのエクスポー トオプションの場合は、 **[アラートのエクスポート]** を選択します。 または、アラートに関する追加情報用に別の行を CSV ファイルに追加する可能性がある場合は、 **[アラートの拡張エクスポート]** を選択します。
+- :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: を選択すると、.csv ファイルにアラート情報をエクスポートします。 複数のデバイスを対象とするアラートごとに個別の行にアラート情報をエクスポートするには、 **[拡張アラートのエクスポート]** オプションを使用します。
 
 ## <a name="alert-pop-up-window-options"></a>アラート ポップアップ ウィンドウのオプション
 

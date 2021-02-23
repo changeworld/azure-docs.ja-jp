@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932457"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521443"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -41,7 +41,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ## <a name="prerequisites"></a>前提条件
 
-現在、Azure Functions Core Tools では、Azure CLI に依存して Azure アカウントでの認証を行っています。 つまり、Azure Functions Core Tools から [Azure に発行](#publish)できるようにするには、[Azure CLI をローカルにインストール](/cli/azure/install-azure-cli)する必要があります。 
+現在、Azure Functions Core Tools では、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps) に依存して Azure アカウントでの認証を行っています。 つまり、Azure Functions Core Tools から [Azure に発行](#publish)できるようにするには、このいずれかのツールをインストールする必要があります。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools でサポートされている 2 種類のデプロイは、[Zip デプロイ](functions-deployment-technologies.md#zip-deploy)による関数アプリへの関数プロジェクト ファイルの直接的なデプロイと、[カスタム Docker コンテナーのデプロイ](functions-deployment-technologies.md#docker-container)です。 コードをデプロイする [Azure サブスクリプションで関数アプリを作成しておく](functions-cli-samples.md#create)必要があります。 コンパイルを必要とするプロジェクトは、バイナリをデプロイできるように、ビルドする必要があります。
 
 >[!IMPORTANT]
->Core Tools から Azure に発行できるようにするには、[Azure CLI](/cli/azure/install-azure-cli) がローカルにインストールされている必要があります。  
+>Core Tools から Azure に発行できるようにするには、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps) がローカルにインストールされている必要があります。  
 
 プロジェクト フォルダーには、発行するべきではない言語固有のファイルやディレクトリが含まれている場合があります。 除外された項目は、ルート プロジェクト フォルダーの .funcignore ファイルにリストされます。     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java では、Maven を使用して、ローカル プロジェクトが Azure に発行されます。 コマンド `mvn azure-functions:deploy` を実行して、Azure に発行します。 Azure リソースは、初期デプロイ中に作成されます。
 
-このコマンドにより、Azure の既存の関数アプリに公開されます。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
+このコマンドにより、Azure の既存の関数アプリに公開されます。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI または Azure PowerShell を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
 
 >[!IMPORTANT]
 > Azure portal で関数アプリを作成すると、既定でバージョン 3.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。

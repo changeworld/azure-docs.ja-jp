@@ -3,12 +3,12 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735862"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369460"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -36,6 +36,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 - Recovery Services コンテナーは、**同じリージョン** にある Azure キー コンテナーに格納されているキーを使用した場合にのみ暗号化できます。 また、キーは **RSA 2048 キー** に限定され、**有効な** 状態である必要があります。
 
 - 現在、CMK で暗号化された Recovery Services コンテナーをリソース グループとサブスクリプションの間で移動することは、サポートされていません。
+- 既にカスタマー マネージド キーを使用して暗号化された Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID および CMK (新しいテナント内にあるはずです) を再作成および再構成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
 
 - この機能は、Azure portal と PowerShell を使用して構成できます。
 
@@ -119,32 +120,6 @@ Type        : SystemAssigned
 
 1. **[保存]** を選択して、Azure キー コンテナーのアクセス ポリシーに加えた変更を保存します。
 
-**PowerShell の場合**:
-
-[Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) コマンドを使用して、カスタマー マネージド キーを使用した暗号化を有効にし、使用する暗号化キーの割り当てまたは更新を行います。
-
-例:
-
-```azurepowershell
-$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
-$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
-
-
-$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-$enc.encryptionProperties | fl
-```
-
-Output:
-
-```output
-EncryptionAtRestType          : CustomerManaged
-KeyUri                        : testkey
-SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-LastUpdateStatus              : Succeeded
-InfrastructureEncryptionState : Disabled
-```
-
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
 
 暗号化キーを格納している Azure キー コンテナーで、**論理的な削除と消去保護を有効にする** 必要があります。 これは、次に示すように、Azure キー コンテナーの UI から行うことができます (または、これらのプロパティはキー コンテナーの作成時に設定することができます)。 これらのキー コンテナーのプロパティの詳細については、[こちら](../key-vault/general/soft-delete-overview.md)を参照してください。
@@ -197,7 +172,7 @@ InfrastructureEncryptionState : Disabled
 
 上記の内容を確認したら、引き続きコンテナーの暗号化キーを選択します。
 
-キーを割り当てるには:
+#### <a name="to-assign-the-key-in-the-portal"></a>ポータルでキーを割り当てるには
 
 1. ご自身の Recovery Services コンテナー、 **[プロパティ]** の順に移動します
 
@@ -230,6 +205,32 @@ InfrastructureEncryptionState : Disabled
     暗号化キーの更新は、コンテナーのアクティビティ ログにも記録されます。
 
     ![アクティビティ ログ](./media/encryption-at-rest-with-cmk/activity-log.png)
+
+#### <a name="to-assign-the-key-with-powershell"></a>PowerShell を使用してキーを割り当てるには
+
+[Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) コマンドを使用して、カスタマー マネージド キーを使用した暗号化を有効にし、使用する暗号化キーの割り当てまたは更新を行います。
+
+例:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Output:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 >[!NOTE]
 > 暗号化キーを更新または変更する場合も、このプロセスは同じです。 (現在使用されているものとは異なる) 別のキー コンテナーのキーを更新して使用する場合は、次のことを確認してください。

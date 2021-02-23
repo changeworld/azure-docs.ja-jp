@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: b23dabb4388331de9e37ee9db1d4b9d727ccde68
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430562"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383536"
 ---
-# <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Azure Cognitive Search のインデックス作成で BLOB の変更と削除の検出を設定する方法
+# <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>BLOB インデックス作成での変更と削除の検出 (Azure Cognitive Search)
 
 最初の検索インデックスが作成された後、以降のインデクサー ジョブでは、新規および変更されたドキュメントのみを取得することができます。 Azure Blob Storage のものである検索コンテンツの場合、スケジュールを使用してインデックス作成をトリガーすると、変更の検出が自動的に行われます。 既定では、サービスによって、BLOB の `LastModified` タイムスタンプの指定に従い、変更された BLOB のみのインデックスが再作成されます。 検索インデクサーでサポートされている他のデータ ソースとは対照的に、BLOB には常にタイムスタンプがあるため、変更検出ポリシーを手動で設定する必要がなくなります。
 

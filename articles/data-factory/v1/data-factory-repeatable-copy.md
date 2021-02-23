@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory での反復可能なコピー
 description: データをコピーするスライスが複数回実行されたときに重複を回避する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456834"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387089"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
@@ -59,7 +54,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-たとえば、ソース ファイルにエラーが見つかり、Down Tube の数を 2 から 4 に更新したとします。 その期間のデータ スライスを手動で再実行すると、Azure SQL/SQL Server データベースに 2 つの新しいレコードが付加されます。 この例では、テーブルには主キーの制約がある列がないと想定しています。
+たとえば、ソース ファイルにエラーが見つかり、Down Tube の数を 2 から 4 に更新したとします。 その期間のデータ スライスを手動で再実行すると、Azure SQL または SQL Server データベースに 2 つの新しいレコードが追加されます。 この例では、テーブルには主キーの制約がある列がないと想定しています。
 
 ```
 ID    Product        Quantity    ModifiedDate

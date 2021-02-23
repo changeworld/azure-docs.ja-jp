@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 0d4ccc1a60f9ac3c2183023d3d3772da6a1e307b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f66aef64d68bd5d99d7a27d1382306d9202bd350
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830755"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388058"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
@@ -87,7 +87,7 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
 3. 適切なサブスクリプションと Azure Migrate プロジェクトを選択します。
 
 
-### <a name="find-a-legacy-project"></a>レガシ プロジェクトを検索する
+### <a name="find-a-classic-azure-migrate-project"></a>従来の Azure Migrate プロジェクトを検索する
 
 [以前のバージョン](migrate-services-overview.md#azure-migrate-versions)の Azure Migrate でプロジェクトを作成した場合は、次のようにプロジェクトを検索します。
 
