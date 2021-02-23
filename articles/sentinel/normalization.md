@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805092"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390812"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化
 
@@ -70,6 +70,9 @@ Azure Sentinel のお客様に固有の Log Analytics プラットフォーム�
 
 ## <a name="parsers"></a>パーサー
 
+- [解析とは](#what-is-parsing)
+- [クエリ時パーサーの使用](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>解析とは
 
 定義済みの正規化されたテーブルの基本セットが提供されているので、データをそれらのテーブルに変換 (解析/マップ) する必要があります。 つまり、特定のデータを、その生の形式から、正規化されたスキーマの既知の列に抽出します。 Azure Sentinel の解析は **クエリ時** に行われます。パーサーは、既存のテーブル (CommonSecurityLog、カスタム ログ テーブル、syslog など) のデータを、正規化されたテーブル スキーマに変換する Log Analytics ユーザー関数 (Kusto Query Language (KQL) を使用して) として構築されています。
@@ -77,6 +80,10 @@ Azure Sentinel のお客様に固有の Log Analytics プラットフォーム�
 Azure Sentinel でまだサポートされていない他の種類の解析は、**インジェスト時** に行われます。データをそのデータ ソースから取り込まれると同時に、正規化されたテーブルに直接収集できます。 インジェスト時の解析では、関数を使用する必要なくデータ モデルが直接クエリされるため、パフォーマンスが向上します。
 
 ### <a name="using-query-time-parsers"></a>クエリ時パーサーの使用
+
+- [パーサーのインストール](#installing-a-parser)
+- [パーサーの使用](#using-the-parsers)
+- [パーサーのカスタマイズ](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>パーサーのインストール
 
@@ -119,6 +126,12 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
 個々のパーサーをクリックして、そこで使用されている基になる関数を確認し、実行できます (前述のように、そのエイリアスによって直接アクセスすることもできます)。 パーサーによっては、利便性のため、元のフィールドと正規化されたフィールドを横に並べて保持できます。 これは、パーサーのクエリで簡単に編集できます。
 
+> [!TIP]
+> ハンティングや検出クエリなど、どのクエリでも、Azure Sentinel テーブルの代わりに保存した関数を使用できます。 詳細については、次を参照してください。
+>
+> - [Azure Sentinel のデータの正規化](normalization.md#parsers)
+> - [Azure Monitor ログのテキストの解析](/azure/azure-monitor/log-query/parse-text)
+>
 #### <a name="customizing-parsers"></a>パーサーのカスタマイズ
 
 上記の手順 (クエリ エクスプローラーでのパーサーの検索) を繰り返すことができます。関連パーサーをクリックし、その関数の実装を確認します。
@@ -131,6 +144,8 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 :::image type="content" source="./media/normalization/are-you-sure.png" alt-text="確認":::
 
 #### <a name="additional-information"></a>関連情報
+
+JSON、XML、CSV は、クエリ時の解析に特に便利です。 Azure Sentinel には、JSON、XML、CSV 用の解析関数のほか、JSON 解析ツールが組み込まれています。  詳細については、[Azure Sentinel での JSON フィールドの使用](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747)に関するページ (ブログ) を参照してください。 
 
 Log Analytics の[保存されたクエリ](../azure-monitor/log-query/example-queries.md) (クエリ時パーサーの実装) の詳細を確認してください。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 18d64e2b2ac359a9036ebd548ef886cb0efd3405
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d99ed71e284ae2e986a93591a61c3c9011857eb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622199"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>チュートリアル:Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合
 
@@ -28,10 +28,10 @@ ms.locfileid: "98622199"
 
 ## <a name="prerequisites"></a>前提条件
 
-Splunk Enterprise and Splunk Cloud と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
-* Splunk Enterprise and Splunk Cloud でのシングル サインオンが有効なサブスクリプション。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Splunk Enterprise and Splunk Cloud でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -63,7 +63,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD SSO を構成してテストす�
     1. **[Splunk Enterprise and Splunk Cloud のテスト ユーザーの作成](#create-splunk-enterprise-and-splunk-cloud-test-user)** - Splunk Enterprise and Splunk Cloud で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -111,16 +111,15 @@ Splunk Enterprise and Splunk Cloud で Azure AD SSO を構成してテストす�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Splunk Enterprise and Splunk Cloud SSO の構成
+## <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Splunk Enterprise and Splunk Cloud SSO の構成
 
   **Splunk Enterprise and Splunk Cloud** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Splunk Enterprise and Splunk Cloud サポート チーム](https://www.splunk.com/en_us/about-splunk/contact-us.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Splunk Enterprise and Splunk Cloud のテスト ユーザーの作成
 
 このセクションでは、Splunk Enterprise and Splunk Cloud で Britta Simon というユーザーを作成します。 [Splunk Enterprise and Splunk Cloud サポート チーム](https://www.splunk.com/en_us/about-splunk/contact-us.html)と連携して、Splunk Enterprise and Splunk Cloud プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 

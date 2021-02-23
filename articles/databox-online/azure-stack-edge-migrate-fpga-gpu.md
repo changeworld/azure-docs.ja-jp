@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ce063e27620c3b0ccec9336e7a45ebb2ee1ad10d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100907"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382822"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA から Azure Stack Edge Pro GPU へのワークロードの移行
 
@@ -190,8 +190,8 @@ Edge ローカル共有内のデータはデバイスに残ります。 次の�
 
 IoT Edge モジュールの準備ができたら、IoT Edge ワークロードをターゲット デバイスにデプロイする必要があります。 IoT Edge モジュールのデプロイ時にエラーが発生した場合は、次を参照してください。
 
-- [Azure IoT Edge での一般的な問題と解決](../iot-edge/troubleshoot-common-errors.md) 
-- [IoT Edge ランタイム エラー][Windows PowerShell を使用して Azure Stack Edge Pro GPU デバイスを管理する](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors)
+- 「[Azure IoT Edge での一般的な問題と解決](../iot-edge/troubleshoot-common-errors.md)」。 
+- [IoT Edge ランタイム エラー](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors)。
 
 ## <a name="verify-data"></a>データの確認
 

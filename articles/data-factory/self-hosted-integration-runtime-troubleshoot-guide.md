@@ -1,18 +1,17 @@
 ---
 title: Azure Data Factory でセルフホステッド統合ランタイムのトラブルシューティングを行う
 description: Azure Data Factory でセルフホステッド統合ランタイムの問題をトラブルシューティングする方法について説明します。
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551078"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376464"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -83,8 +82,8 @@ Azure Data Factory インターフェイスからコンカレント ジョブの
 コンカレント ジョブ数の制限は、コンピューターの論理コアとメモリによって決まります。 値を 24 などの値に下方に調整して、結果を表示してみてください。
 
 > [!TIP] 
-> - 論理コア数の詳細を確認し、使用するマシンの論理コア数を判別するには、[Windows 10 で CPU のコア数を調べる 4 つの方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)に関するページを参照してください。
-> - math.log を計算する方法については、[対数計算機](https://www.rapidtables.com/calc/math/Log_Calculator.html)のページにアクセスしてください。
+> -    論理コア数の詳細を確認し、使用するマシンの論理コア数を判別するには、[Windows 10 で CPU のコア数を調べる 4 つの方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)に関するページを参照してください。
+> -    math.log を計算する方法については、[対数計算機](https://www.rapidtables.com/calc/math/Log_Calculator.html)のページにアクセスしてください。
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>セルフホステッド IR 高可用性 (HA) の SSL 証明書の問題

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 34f24b8fbdb28e1b1f73e9db428c510d3f4661ce
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 4b48e98ab35b620030b15165d4c9341c0f11b440
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804847"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393277"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する
 
@@ -31,12 +31,12 @@ ms.locfileid: "99804847"
 ## <a name="portal"></a>ポータル
 
 1. ポータルで、**仮想ネットワーク ゲートウェイの [ポイント対サイトの構成]** に移動します。
-1. **[トンネルの種類]** については、ドロップダウンから  **[OpenVPN (SSL)]** または  **[IKEv2 と OpenVPN (SSL)]** を選択します。
+1. **[トンネルの種類]** については、ドロップダウンから **[OpenVPN (SSL)]** を選択します。
 
    :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="ドロップダウンから [OpenVPN (SSL)] を選択":::
 1. 変更を保存し、**次のステップ** に進みます。
 
-ゲートウェイで OpenVPN を有効にします。
+## <a name="enable-openvpn-on-your-gateway-using-powershell"></a>PowerShell を使用してゲートウェイで OpenVPN を有効にします。
 
 1. 次の例を使用して、ゲートウェイで OpenVPN を有効にします。
 

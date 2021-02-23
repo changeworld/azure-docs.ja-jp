@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 12/22/2020
+ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920428"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393355"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
 
@@ -37,7 +37,6 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
 
 ## <a name="availability"></a>可用性
-
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
@@ -48,33 +47,36 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>資産インベントリの主な機能
-
 インベントリ ページには次のツールが含まれています。
 
-- **概要** - フィルターを定義する前に、インベントリ ビューの上部に以下の値が横並びで目立つように表示されます。
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure Security Center の資産インベントリ ページの主な機能" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **リソースの合計**:Security Center に接続されているリソースの合計数。
-    - **異常なリソース**:アクティブなセキュリティのレコメンデーションがあるリソース。 セキュリティのレコメンデーションの詳細については、[こちら](security-center-recommendations.md)をご覧ください。
-    - **監視されていないリソース**:エージェントの監視に関して問題があるリソースです。Log Analytics エージェントがデプロイされていますが、エージェントがデータを送信していないか、正常性に関する他の問題が発生しています。
 
-- **フィルター** - ページの上部にある複数のフィルターを使用すると、回答しようとしている質問に従ってリソースの一覧をすばやく絞り込むことができます。 たとえば、「 *「Production」というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれか*」という質問に回答する場合は、次のクリップに示すように、 **[エージェント監視]** フィルターと **[タグ]** フィルターを組み合わせることができます。
+### <a name="1---summaries"></a>1 - 概要
+フィルターを定義する前に、インベントリ ビューの上部に以下の値のストリップが目立つように表示されます。
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="監視されていない運用リソースへのフィルター処理":::
+- **リソースの合計**:Security Center に接続されているリソースの合計数。
+- **異常なリソース**:アクティブなセキュリティのレコメンデーションがあるリソース。 セキュリティのレコメンデーションの詳細については、[こちら](security-center-recommendations.md)をご覧ください。
+- **監視されていないリソース**:エージェントの監視に関して問題があるリソースです。Log Analytics エージェントがデプロイされていますが、エージェントがデータを送信していないか、正常性に関する他の問題が発生しています。
+- **未登録のサブスクリプション**: Azure Security Center にまだ接続されていない選択したスコープ内のサブスクリプション。
 
-    フィルターを適用すると、すぐに概要の値がクエリ結果に関連付けて更新されます。 
+### <a name="2---filters"></a>2 - フィルター
+ページの上部にある複数のフィルターを使用すると、質問に回答しようとすることによって、リソースの一覧をすばやく絞り込むことができます。 たとえば、" *'Production' というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれですか?* " という質問に回答する場合は、 **[エージェント監視]** フィルターと **[タグ]** フィルターを組み合わせることができます。
 
-- **エクスポート オプション** - インベントリには、選択したフィルター オプションの結果を CSV ファイルにエクスポートするオプションが用意されています。 さらに、クエリ自体を Azure Resource Graph エクスプローラーにエクスポートして、Kusto クエリ言語 (KQL) クエリの絞り込み、保存、変更を行うこともできます。
+フィルターを適用すると、すぐに概要の値がクエリ結果に関連付けて更新されます。 
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="インベントリのエクスポート オプション":::
+### <a name="3---export-and-asset-management-tools"></a>3 - エクスポートと資産管理ツール
 
-    > [!TIP]
-    > KQL のドキュメントでは、いくつかのサンプル データと単純なクエリを組み合わせたデータベースを使用して、この言語の「感触」をつかむことができます。 詳しくは、[KQL のチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)をご覧ください。
+**エクスポート オプション** - インベントリには、選択したフィルター オプションの結果を CSV ファイルにエクスポートするオプションが含まれます。 クエリ自体を Azure Resource Graph エクスプローラーにエクスポートして、Kusto クエリ言語 (KQL) クエリを絞り込んだり、保存や変更を行ったりすることもできます。
 
-- **[資産管理オプション]** - インベントリでは、複雑な検出クエリを実行できます。 クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
+> [!TIP]
+> KQL のドキュメントでは、いくつかのサンプル データと単純なクエリを組み合わせたデータベースを使用して、この言語の「感触」をつかむことができます。 詳しくは、[KQL のチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)をご覧ください。
 
-    - フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします。
-    - Security Center に新しいサーバーをオンボードする - **[非 Azure サーバーの追加]** ツールバー ボタンを使用します。
-    - Azure Logic Apps を使用してワークロードを自動化する - **[ロジック アプリのトリガー]** ボタンを使用して、1 つ以上のリソースでロジック アプリを実行します。 ロジック アプリを事前に準備し、関連するトリガーの種類 (HTTP 要求) を受け入れる必要があります。 [Logic Apps の詳細をご覧ください](../logic-apps/logic-apps-overview.md)。
+**[資産管理オプション]** - インベントリでは、複雑な検出クエリを実行できます。 クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
+
+- フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします。
+- Security Center に新しいサーバーをオンボードする - **[非 Azure サーバーの追加]** ツールバー ボタンを使用します。
+- Azure Logic Apps を使用してワークロードを自動化する - **[ロジック アプリのトリガー]** ボタンを使用して、1 つ以上のリソースでロジック アプリを実行します。 ロジック アプリを事前に準備し、関連するトリガーの種類 (HTTP 要求) を受け入れる必要があります。 [Logic Apps の詳細をご覧ください](../logic-apps/logic-apps-overview.md)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>資産インベントリのしくみ
@@ -94,14 +96,14 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 1. フィルターの関連するオプションを選択して、実行する特定のクエリを作成します。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="インベントリのフィルター処理オプション" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     既定では、リソースはアクティブなセキュリティのレコメンデーションの数によって並べ替えられます。
 
     > [!IMPORTANT]
     > 各フィルターのオプションは、現在選択されているサブスクリプション内のリソース **および** 他のフィルターで選択した項目に固有のものです。
     >
     > たとえば、サブスクリプションを 1 つだけ選択していて、そのサブスクリプションに、修復すべき未処理のセキュリティの推奨事項があるリソースがない場合 (異常なリソースが 0 の場合)、 **[推奨事項]** フィルターにオプションは表示されません。 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Azure Security Center の資産インベントリのフィルター オプションを使用して、監視されていない運用リソースにリソースをフィルター処理する":::
 
 1. **[セキュリティの調査結果に含まれる内容]** フィルターを使用するには、脆弱性の検出結果の ID、セキュリティ チェック、または CVE 名からフリー テキストを入力して、影響を受けるリソースをフィルター処理します。
 

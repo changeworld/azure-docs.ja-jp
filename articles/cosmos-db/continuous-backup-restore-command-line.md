@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539196"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377331"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>継続的バックアップとポイントインタイム リストア (プレビュー) を構成および管理する - Azure CLI を使用
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ Azure Cosmos DB のポイントインタイム リストア機能 (プレビュ�
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>継続的バックアップを行う SQL API アカウントのプロビジョニング
 
-継続的バックアップを行う SQL API アカウントをプロビジョニングするには、通常のプロビジョニング コマンドと共に追加の引数 `--backup-policy-type Continuous` を渡す必要があります。 次のコマンドは、"myrg" リソース グループの下で "米国西部" リージョンに継続的バックアップ ポリシーを作成している `pitracct2` という名前の単一リージョン書き込みアカウントの例です。
+継続的バックアップを行う SQL API アカウントをプロビジョニングするには、通常のプロビジョニング コマンドと共に追加の引数 `--backup-policy-type Continuous` を渡す必要があります。 次のコマンドは、*myrg* リソース グループの下で "*米国西部*" リージョンに継続的バックアップ ポリシーを作成している `pitracct2` という名前の単一リージョン書き込みアカウントの例です。
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>継続的バックアップを行う MongoDB 用 Azure Cosmos DB API アカウントのプロビジョニング
 
-次のコマンドは、"myrg" リソース グループの下で "米国西部" リージョンに継続的バックアップ ポリシーを作成している `pitracct3` という名前の単一リージョン書き込みアカウントの例を示しています。
+次のコマンドは、*myrg* リソース グループの下で "*米国西部*" リージョンに継続的バックアップ ポリシーを作成している `pitracct3` という名前の単一リージョン書き込みアカウントの例を示しています。
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ az cosmosdb restorable-database-account list --account-name "pitrbb"
   }
 ```
 
-アカウントの "CreationTime" や "DeletionTime" と同じように、リージョンにも "CreationTime" や "DeletionTime" があります。 これらの時間によって、そのリージョンに復元する適切なリージョンと有効な時間範囲を選択できます。
+アカウントの `CreationTime` または `DeletionTime` と同様に、リージョンにも `CreationTime` または `DeletionTime` があります。 これらの時間によって、そのリージョンに復元する適切なリージョンと有効な時間範囲を選択できます。
 
 **ライブ データベース アカウント内のデータベースのすべてのバージョンを一覧表示する**
 
 データベースのすべてのバージョンを一覧表示すると、データベースの存在の実際の時間が不明なシナリオで、正しいデータベースを選択できます。
 
-データベースのすべてのバージョンを一覧表示するには、次の CLI コマンドを実行します。 このコマンドは、ライブ アカウントでのみ機能します。 "instanceId" パラメーターと "location" パラメーターは、`az cosmosdb restorable-database-account list` コマンドの応答の "name" プロパティと "location" プロパティから取得します。 instanceId 属性は、復元されるソース データベース アカウントのプロパティでもあります。
+データベースのすべてのバージョンを一覧表示するには、次の CLI コマンドを実行します。 このコマンドは、ライブ アカウントでのみ機能します。 `instanceId` と `location` パラメーターは、`az cosmosdb restorable-database-account list` コマンドの応答の `name` および `location` プロパティから取得されます。 instanceId 属性は、復元されるソース データベース アカウントのプロパティでもあります。
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ az cosmosdb sql restorable-database list \
 
 **ライブ データベース アカウント内のデータベースの SQL コンテナーのすべてのバージョンを一覧表示する**
 
-SQL コンテナーのすべてのバージョンを一覧表示するには、次のコマンドを使用します。 このコマンドは、ライブ アカウントでのみ機能します。 "databaseRid" パラメーターは、復元するデータベースの "ResourceId" です。 これは、`az cosmosdb sql restorable-database list` コマンドの応答で検出される "ownerResourceid" 属性の値です。
+SQL コンテナーのすべてのバージョンを一覧表示するには、次のコマンドを使用します。 このコマンドは、ライブ アカウントでのみ機能します。 `databaseRid` パラメーターは復元するデータベースの `ResourceId` です。 これは、`az cosmosdb sql restorable-database list` コマンドの応答で検出される `ownerResourceid` 属性の値です。
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>MongoDB API アカウントの復元可能なリソースの列挙
 
-下記の列挙コマンドは、さまざまなタイムスタンプで復元に使用できるリソースを検出するのに役立ちます。 また、復元可能なアカウント、データベース、およびコンテナー リソースでのキー イベントのフィードも提供されます。 SQL API の場合と同様に、`az cosmosdb` コマンドを使用できますが、"sql" の代わりに "mongodb" をパラメーターとして使用します。 これらのコマンドは、ライブ アカウントでのみ機能します。
+下記の列挙コマンドは、さまざまなタイムスタンプで復元に使用できるリソースを検出するのに役立ちます。 また、復元可能なアカウント、データベース、およびコンテナー リソースでのキー イベントのフィードも提供されます。 SQL API と同様に、`az cosmosdb` コマンドを使用できますが、`sql` の代わりに `mongodb` をパラメーターとして使用します。 これらのコマンドは、ライブ アカウントでのみ機能します。
 
 **ライブ データベース アカウント内の mongodb データベースのすべてのバージョンを一覧表示する**
 

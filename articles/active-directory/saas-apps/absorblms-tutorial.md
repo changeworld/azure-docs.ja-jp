@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5e962592779494e1d60d03e9e8a167d53ac8bda2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673870"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
-このチュートリアルでは、Absorb LMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Absorb LMS と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Absorb LMS と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Absorb LMS を統合すると、次のことができます。
 
-* Absorb LMS にアクセスするユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して Absorb LMS に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* Absorb LMS にアクセスできるユーザーを Azure AD で管理できます。
+* ユーザーが自分の Azure AD アカウントを使用して Absorb LMS に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Absorb LMS と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* Absorb LMS でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Absorb LMS でのシングル サインオンが有効なサブスクリプション。
 
 > [!NOTE]
 > この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
@@ -46,75 +42,56 @@ Absorb LMS と Azure AD の統合を構成するには、次のものが必要�
 
 * Absorb LMS では、**IDP** によって開始される SSO がサポートされます
 
-## <a name="adding-absorb-lms-from-the-gallery"></a>ギャラリーからの Absorb LMS の追加
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
+## <a name="add-absorb-lms-from-the-gallery"></a>ギャラリーから Absorb LMS を追加する
 
 Azure AD への Absorb LMS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Absorb LMS を追加する必要があります。
 
-**ギャラリーから Absorb LMS を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Absorb LMS**」と入力します。
+1. 結果のパネルから **[Absorb LMS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+## <a name="configure-and-test-azure-ad-sso-for-absorb-lms"></a>Absorb LMS の Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+**B.Simon** というテスト ユーザーを使用して、Absorb LMS に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Absorb LMS の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+Absorb LMS に対する Azure AD SSO を構成してテストするには、次の手順を行います。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Absorb LMS の SSO の構成](#configure-absorb-lms-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Absorb LMS テスト ユーザーの作成](#create-absorb-lms-test-user)** - Absorb LMS で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-4. 検索ボックスに「**Absorb LMS**」と入力し、結果ウィンドウで **[Absorb LMS]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. Azure portal の **Absorb LMS** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-    ![結果リストの Absorb LMS](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Absorb LMS で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Absorb LMS 内の関連ユーザー間にリンク関係が確立されている必要があります。
-
-Absorb LMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Absorb LMS シングル サインオンの構成](#configure-absorb-lms-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Absorb LMS テスト ユーザーの作成](#create-absorb-lms-test-user)** - Absorb LMS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-Absorb LMS で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **Absorb LMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![[Absorb LMS のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
-
     **Absorb 5 - UI** を使用している場合は、次の構成を使用します。
 
-    a. **[識別子]** ボックスに、`https://company.myabsorb.com/account/saml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.myabsorb.com/account/saml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://company.myabsorb.com/account/saml` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.myabsorb.com/account/saml` の形式で URL を入力します。
 
     **Absorb 5 - New Learner Experience** を使用している場合は、次の構成を使用します。
 
-    a. **[識別子]** ボックスに、`https://company.myabsorb.com/api/rest/v2/authentication/saml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://company.myabsorb.com/api/rest/v2/authentication/saml` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml` の形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Absorb LMS クライアント サポート チーム](https://support.absorblms.com/hc/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -131,27 +108,45 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    b. Azure AD 識別子
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    c. ログアウト URL
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-### <a name="configure-absorb-lms-single-sign-on"></a>Absorb LMS のシングル サインオンを構成する
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に Absorb LMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Absorb LMS]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-absorb-lms-sso"></a>Absorb LMS の SSO の構成
 
 1. 新しい Web ブラウザー ウィンドウで、Absorb LMS 企業サイトに管理者としてサインインします。
 
 2. 右上にある **[アカウント]** ボタンを選択します。
 
-    ![[アカウント] ボタン](./media/absorblms-tutorial/1.png)
+    ![[アカウント] ボタン](./media/absorblms-tutorial/account.png)
 
 3. [アカウント] ウィンドウで、**[ポータルの設定]** を選択します。
 
-    ![[ポータルの設定] リンク](./media/absorblms-tutorial/2.png)
+    ![[ポータルの設定] リンク](./media/absorblms-tutorial/portal.png)
 
 4. **[Manage SSO Settings]\(SSO の設定の管理\)** タブを選択します。
 
-    ![[ユーザー] タブ](./media/absorblms-tutorial/managesso.png)
+    ![[ユーザー] タブ](./media/absorblms-tutorial/sso.png)
 
 5. **[Manage Single Sign-On Settings]\(シングル サインオンの設定の管理\)** ページで、次のようにします。
 
@@ -179,57 +174,6 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     ![[Only Allow SSO Login]\(SSO ログインのみを許可する\) の切り替え](./media/absorblms-tutorial/save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Absorb LMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Absorb LMS]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で、「**Absorb LMS**」と入力して選択します。
-
-    ![アプリケーションの一覧の Absorb LMS のリンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
 ### <a name="create-absorb-lms-test-user"></a>Absorb LMS のテスト ユーザーの作成
 
 Azure AD ユーザーが Absorb LMS にサインインするには、そのユーザーを Absorb LMS で設定する必要があります。 Absorb LMS の場合、プロビジョニングは手動で行います。
@@ -240,11 +184,11 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
 
 2. **[ユーザー]** ウィンドウで、**[ユーザー]** を選択します。
 
-    ![[ユーザー] リンク](./media/absorblms-tutorial/absorblms_userssub.png)
+    ![[ユーザー] リンク](./media/absorblms-tutorial/users.png)
 
 3. **[ユーザー]** タブを選択します。
 
-    ![[新規追加] ドロップダウン リスト](./media/absorblms-tutorial/absorblms_createuser.png)
+    ![[新規追加] ドロップダウン リスト](./media/absorblms-tutorial/add.png)
 
 4. **[ユーザーの追加]** ページで、次の手順に従います。
 
@@ -269,16 +213,14 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
     > [!NOTE]
     > 既定では、ユーザー プロビジョニングは SSO では有効になりません。 顧客がこの機能を有効にすることを望む場合は、[こちら](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)のドキュメントで説明されているように設定する必要があります。 また、ユーザー プロビジョニングは ACS URL が `https://company.myabsorb.com/api/rest/v2/authentication/saml` の **Absorb 5 - New Learner Experience** でのみ使用できることに注意してください。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Absorb LMS] タイルをクリックすると、SSO を設定した Absorb LMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Absorb LMS に自動的にサインインされます。
 
-## <a name="additional-resources"></a>その他のリソース
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Absorb LMS] タイルをクリックすると、SSO を設定した Absorb LMS に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+Absorb LMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

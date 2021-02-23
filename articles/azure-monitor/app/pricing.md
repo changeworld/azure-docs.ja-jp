@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556131"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384505"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -286,15 +286,18 @@ Application Insights にデータを転送する場合、データ帯域幅の�
 
 Azure Application Insights の早期導入者は、引き続き次の 2 つの価格レベルをご利用いただけます。Basic と Enterprise。 Basic 価格レベルは前述のとおりで、既定のレベルです。 これには、Enterprise レベルのすべての機能が追加コストなしで含まれます。 Basic レベルでは基本的に、取り込まれるデータの量に基づいて請求されます。
 
-> [!NOTE]
-> レガシ価格レベルの名前が変更されました。 Enterprise 価格レベルの新しい名前は **Per Node** に、Basic 価格レベルの新しい名前は **Per GB** となります。 Azure portal も含め、以下、これらの新しい名前を使用します。  
+レガシ価格レベルの名前が変更されました。 Enterprise 価格レベルの新しい名前は **Per Node** に、Basic 価格レベルの新しい名前は **Per GB** となります。 Azure portal も含め、以下、これらの新しい名前を使用します。  
 
-Per Node (旧 Enterprise) レベルは、料金がノード単位となっており、日単位のデータ利用分が各ノードに割り当てられます。 Per Node 価格レベルでは、含まれる利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Per Node レベルを選択する必要があります。
+Per Node (旧 Enterprise) レベルは、料金がノード単位となっており、日単位のデータ利用分が各ノードに割り当てられます。 Per Node 価格レベルでは、含まれる利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Per Node レベルを選択する必要があります。 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](../platform/usage-estimated-costs.md)をご確認ください。
 
 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
-> [!NOTE]
-> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](../platform/usage-estimated-costs.md)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs)する方法、[新しいモデルを有効にする方法](../platform/usage-estimated-costs.md#azure-monitor-pricing-model)をご確認ください。
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>レガシ エンタープライズ (ノードごと) レベルでの課金の使用状況について 
+
+以下で説明するように、従来のレガシ エンタープライズ (ノードごと) レベルでは、サブスクリプション内のすべての Application Insights リソースの使用状況を組み合わせて、ノード数とデータ超過分数を計算します。 この組み合わせプロセスにより、**サブスクリプション内のすべての Application Insights リソースの使用状況が 1 つのリソースに対してのみ報告されます**。  これにより、Application Insights リソースごとに計測する使用量と[課金された使用量](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill)の調整が非常に複雑になります。 
+
+> [!WARNING]
+> 従来のエンタープライズ (ノードごと) レベルでの Application Insights リソースの使用状況は追跡することも理解することも複雑であるため、現在の従量課金制の価格レベルを使用することを強くお勧めします。 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Per Node レベルと Operations Management Suite のサブスクリプションの権利
 
@@ -347,4 +350,3 @@ Azure Resource Management を使用して、価格レベルを設定するスク
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

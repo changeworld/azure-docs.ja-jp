@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - Azure に vSphere クラスターをデプロイする
-description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
+title: チュートリアル - Azure VMware Solution のプライベート クラウドを作成してデプロイする
+description: Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093949"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653136"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドを作成する
 
-Azure VMware Solution を使用すると、Azure に vSphere クラスターをデプロイできます。 初期デプロイ時の最小ホスト数は 3 つです。 追加のホストは、クラスターあたり最大 16 個まで一度に 1 つずつ追加できます。 
+このチュートリアルでは、Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します。 初期デプロイ時の最小ホスト数は 3 つです。 追加のホストは、クラスターあたり最大 16 個まで一度に 1 つずつ追加できます。 
 
 Azure VMware Solution では、最初はオンプレミスの vCenter でプライベート クラウドを管理することができないため、追加の構成と接続が必要です。 このチュートリアルでは、これらの手順と、関連する前提条件について説明します。
 
@@ -25,13 +25,10 @@ Azure VMware Solution では、最初はオンプレミスの vCenter でプラ�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- プライベート クラウドを作成するための適切な管理者権限とアクセス許可。
+- プライベート クラウドを作成するための適切な管理者権限とアクセス許可。 サブスクリプションで、少なくとも共同作成者レベルである必要があります。
+- [計画](production-ready-deployment-steps.md)の記事で収集した情報に従って、Azure VMware Solution をデプロイします。
 - 適切なネットワークが構成されていることを確認するには、[ネットワークのチェックリストに関するチュートリアル](tutorial-network-checklist.md)をご確認ください。
-
-## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- [ホストの要求と Microsoft.AVS リソース プロバイダーの有効化](enable-azure-vmware-solution.md)に関する記事の説明に基づいて、ホストがプロビジョニングされ、Microsoft.AVS リソース プロバイダーが登録されていること。
 
 ## <a name="create-a-private-cloud"></a>プライベート クラウドを作成する
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601597"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386749"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -66,11 +66,14 @@ ms.locfileid: "98601597"
 | [Azure Maps を使用した IoT 空間分析の実装](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 |
 
 **サード パーティのマップ コントロール プラグイン**
+<a name="third-part-map-control-plugins"></a>
 
 | プロジェクト名 | 説明 |
 |-|-|
+| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)や[ジオコーディング サービス](https://docs.microsoft.com/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
 | [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
- 
+ | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
+
 **ツールとリソース**
 
 | プロジェクト名 | 説明 |

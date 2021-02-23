@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 02/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 4d095c3cc7e67938120260c35376b128be73ffa8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cd6ba1da92a19a1f73fc67c0165bfb19b3bb77aa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726983"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeter-81"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Perimeter 81 の統合
 
@@ -71,13 +71,13 @@ Perimeter 81 に対して Azure AD SSO を構成してテストするには、�
 
 1. Azure portal の **Perimeter 81** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`urn:auth0:perimeter81:<SUBDOMAIN>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`urn:auth0:perimeter81:<SUBDOMAIN>` の形式で値を入力します。
 
     b. **[応答 URL]** ボックスに、`https://auth.perimeter81.com/login/callback?connection=<SUBDOMAIN>` のパターンを使用して URL を入力します
 
@@ -88,9 +88,14 @@ Perimeter 81 に対して Azure AD SSO を構成してテストするには、�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Perimeter 81 クライアント サポート チーム](mailto:support@perimeter81.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+
+1. **[Perimeter 81 のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -117,7 +122,42 @@ Perimeter 81 に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-perimeter-81-sso"></a>Perimeter 81 の SSO の構成
 
-**Perimeter 81** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Perimeter 81 サポート チーム](mailto:support@perimeter81.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. Perimeter 81 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Perimeter 81 のセットアップ]** をクリックすると、Perimeter 81 アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Perimeter 81 にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 7 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Perimeter 81 を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Perimeter 81 企業サイトに管理者としてサインインします。
+
+4. **[設定]** に移動し、 **[ID プロバイダー]** をクリックします。
+
+    ![Perimeter 81 の設定](./media/perimeter-81-tutorial/settings.png)
+
+5. **[Add Provider]\(プロバイダーの追加\)** ボタンをクリックします。
+
+    ![Perimeter 81 のプロバイダーの追加](./media/perimeter-81-tutorial/add-provider.png)
+
+6. **[SAML 2.0 Identity Providers]\(SAML 2.0 ID プロバイダー\)** を選択し、 **[続行]** ボタンをクリックします。
+
+    ![Perimeter 81 の ID プロバイダーの追加](./media/perimeter-81-tutorial/add-identity-provider.png)
+
+7. **[SAML 2.0 Identity Providers]\(SAML 2.0 ID プロバイダー\)** セクションで、次の手順を実行します。
+
+    ![Perimeter 81 の SAML の設定](./media/perimeter-81-tutorial/setting-up-saml.png)
+
+    a. **[Sign In URL]\(サインイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
+
+    b. **[Domain Aliases]\(ドメイン エイリアス\)** ボックスに、実際のドメイン エイリアスの値を入力します。
+
+    c. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[X509 Signing Certificate]\(X509 署名証明書\)** ボックスに貼り付けます。
+
+    > [!NOTE]
+    > または、 **[Upload PEM/CERT File]\(PEM または CERT ファイルのアップロード\)** をクリックして、Azure portal からダウンロードした **証明書 (Base64)** をアップロードすることもできます。
+    
+    d. **[Done]** をクリックします。
 
 ### <a name="create-perimeter-81-test-user"></a>Perimeter 81 のテスト ユーザーの作成
 
@@ -135,7 +175,7 @@ Perimeter 81 に対して Azure AD SSO を構成してテストするには、�
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Perimeter 81 に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Perimeter 81 に自動的にサインインされます。
 
 また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Perimeter 81] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Perimeter 81 に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 

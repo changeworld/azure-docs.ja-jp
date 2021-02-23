@@ -1,5 +1,5 @@
 ---
-title: ワークスペースで Jupyter Notebooks を実行する方法
+title: ワークスペースで Jupyter Notebook を実行する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter Notebooks を実行する方法について説明します。
 services: machine-learning
@@ -11,89 +11,27 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 06ae46eb96db39f44cd052e6e9b0d1a19f898007
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061836"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091524"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebooks を実行する方法
+# <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
 Azure Machine Learning スタジオのワークスペースで Jupyter Notebooks を直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
+
+ノートブックを含むファイルを作成および管理する方法の詳細については、[ワークスペース内のファイルの作成と管理](how-to-manage-files.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://aka.ms/AMLFree) を作成してください。
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 
-## <a name="create-notebooks"></a><a name="create"></a> ノートブックを作成する
-
-Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks を作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
-
-新しいノートブックを作成するには: 
-
-1. [Azure Machine Learning Studio](https://ml.azure.com) で、ワークスペースを開きます。
-1. 左側にある **[Notebooks]\(ノートブック\)** を選択します。 
-1. **[My files]\(マイ ファイル\)** セクションの **[User files]\(ユーザー ファイル\)** リストの上にある **[新しいファイルの作成]** アイコンを選択します。
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="[新しいファイルの作成]":::
-
-1. ファイルに名前を付けます。 
-1. Jupyter Notebooks  ファイルの場合は、ファイルの種類として **[ノートブック]** を選択します。
-1. ファイル ディレクトリを選択します。
-1. **［作成］** を選択します
-
-テキスト ファイルを作成することもできます。  ファイルの種類として **[テキスト]** を選択し、拡張子を名前に追加します (たとえば、myfile.py、myfile.txt)。  
-
-[Notebooks]\(ノートブック\) ページの上部にあるツールを使用して、ノートブックを含むフォルダーとファイルをアップロードすることもできます。  ノートブックとほとんどのテキスト ファイルの種類はプレビュー セクションに表示されます。  他のほとんどのファイルの種類ではプレビューを使用できません。
-
-> [!IMPORTANT]
-> ノートブックやスクリプトの内容によっては、Azure の組織なしでセッションからデータを読み取ったり、データにアクセスしたりできる可能性があります。  信頼できるソースのファイル以外は読み込まないでください。 詳細については、[ソース コードのベスト プラクティス](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)に関する記事をご覧ください。
-
-### <a name="clone-samples"></a>サンプルを複製する
-
-ワークスペースには **Samples** フォルダーがあり、SDK を探索するために役立ち、独自の機械学習プロジェクトの例として利用できるように設計されたノートブックが格納されています。  これらのノートブックをワークスペース ストレージ コンテナーに作成したフォルダーに複製することができます。  
-
-例については、「[Tutorial:初めての ML 実験を作成する](tutorial-1st-experiment-sdk-setup.md#azure)」を参照してください。
-
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Git のファイルを使用し、ファイルのバージョン管理を行う
-
-ターミナル ウィンドウを使用してすべての Git 操作にアクセスできます。 すべての Git ファイルとフォルダーは、ワークスペース ファイル システムに格納されます。
-
-> [!NOTE]
-> すべての Jupyter 環境で表示されるように、 **~/cloudfiles/code/Users** フォルダー以下の任意の場所にファイルとフォルダーを追加します。
-
-ターミナルにアクセスするには:
-
-1. [Azure Machine Learning Studio](https://ml.azure.com) で、ワークスペースを開きます。
-1. 左側にある **[Notebooks]\(ノートブック\)** を選択します。
-1. 左側の **[User files]\(ユーザー ファイル\)** セクションにある任意のノートブックを選択します。  ノートブックがない場合は、まず[ノートブックを作成](#create)します
-1. **[コンピューティング]** 先を選択するか、新しいものを作成し、それが実行されるまで待ちます。
-1. **[Open terminal]\(ターミナルを開く\)** アイコンを選択します。
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="ターミナルを開きます":::
-
-1. アイコンが表示されない場合は、コンピューティング ターゲットの右側にある **[...]** を選択し、 **[ターミナルを開く]** を選択します。
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="[...] の [Open terminal]\(ターミナルを開く\)":::
-
-
-詳細については、[Git リポジトリをワークスペース ファイル システムに複製する](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)方法に関する記事を参照してください。
-
-### <a name="copy-and-paste-in-terminal"></a>ターミナルでのコピーと貼り付け
-
-> * Windows: コピーの場合は `Ctrl-Insert`、貼り付けの場合は `Ctrl-Shift-v` または `Shift-Insert` を使用します。
-> * Mac OS: コピーの場合は `Cmd-c`、貼り付けの場合は `Cmd-v` を使用します。
-> * Firefox や IE ではクリップボードのアクセス許可が正しくサポートされない場合があります。
-
-### <a name="share-notebooks-and-other-files"></a>ノートブックとその他のファイルを共有する
-
-ノートブックまたはファイルを共有するには、URL をコピーして貼り付けます。  この URL にアクセスできるのは、ワークスペースの他のユーザーだけです。  詳細については、[ワークスペースへのアクセスの許可](how-to-assign-roles.md)に関する記事を参照してください。
-
 ## <a name="edit-a-notebook"></a>ノートブックを編集する
 
-ノートブックを編集するには、ワークスペースの **[User files]\(ユーザー ファイル\)** セクションにあるノートブックを開きます。 編集するセルをクリックします。 
+ノートブックを編集するには、ワークスペースの **[User files]\(ユーザー ファイル\)** セクションにあるノートブックを開きます。 編集するセルをクリックします。  このセクションにノートブックがない場合は、[ワークスペース内のファイルの作成と管理](how-to-manage-files.md)に関するページを参照してください。
 
 ノートブックは、コンピューティング インスタンスに接続することなく編集できます。  ノートブックのセルを実行する場合は、コンピューティング インスタンスを選択または作成します。  停止したコンピューティング インスタンスを選択した場合は、最初のセルを実行すると自動的に開始されます。
 
@@ -101,7 +39,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 
 ノートブックのツールバーから Jupyter または JupyterLab を起動することもできます。  Azure Machine Learning では、Jupyter または JupyterLab からの更新プログラムの提供やバグの修正は行われません。これは、Microsoft サポートの範囲に含まれないオープン ソース製品であるためです。
 
-### <a name="focus-mode"></a>フォーカス モード
+## <a name="focus-mode"></a>フォーカス モード
 
 フォーカス モードを使用して現在のビューを拡張すると、アクティブなタブに集中できるようになります。 フォーカス モードでは、Notebook ファイル エクスプローラーが非表示になります。
 
@@ -110,14 +48,13 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="フォーカス モード/標準ビューの切り替え":::
 
-
-### <a name="use-intellisense"></a>IntelliSense を使用する
+## <a name="use-intellisense"></a>IntelliSense を使用する
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 これらの機能を使うと、数回のキーストロークだけで使用するコードの詳細を確認したり、入力するパラメーターを追跡したり、プロパティやメソッドの呼び出しを追加したりできます。  
 
 コードを入力するときは、Ctrl + Space キーを使用して IntelliSense をトリガーします。
 
-### <a name="clean-your-notebook-preview"></a>ノートブックをクリーンアップする (プレビュー)
+## <a name="clean-your-notebook-preview"></a>ノートブックをクリーンアップする (プレビュー)
 
 > [!IMPORTANT]
 > 現在、この収集機能はパブリック プレビュー段階にあります。
@@ -133,7 +70,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 
 新しいノートブックにはコード セルのみが含まれており、収集するよう選択したセルと同じ結果を得るために必要なすべてのセルが含まれています。
 
-### <a name="save-and-checkpoint-a-notebook"></a>ノートブックを保存およびチェックポイントする
+## <a name="save-and-checkpoint-a-notebook"></a>ノートブックを保存およびチェックポイントする
 
 *ipynb* ファイルを作成すると、Azure Machine Learning によってチェックポイント ファイルが作成されます。
 
@@ -145,24 +82,34 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
  
 ノートブックのメニューで **[チェックポイント]** を選択して、名前付きチェックポイントを作成し、保存されているチェックポイントにノートブックを戻すことができます。
 
-## <a name="delete-a-notebook"></a>ノートブックを削除する
+## <a name="export-a-notebook"></a>ノートブックをエクスポートする
 
-**Samples** ノートブックを削除することは "*できません*"。  これらのノートブックは Studio の一部であり、新しい SDK が発行されるたびに更新されます。  
+ノートブック ツールバーで、メニュー、 **[次としてエクスポート]** の順に選択して、サポートされているいずれかの種類としてノートブックをエクスポートします。
 
-**ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 "*できます*"。
+* ノートブック
+* Python
+* HTML
+* LaTeX
 
-* Studio で、フォルダーまたはファイルの末尾にある **[...]** を選択します。  必ずサポートされているブラウザー (Microsoft Edge、Chrome、または Firefox) を使用してください。
-* 任意のノートブック ツールバーから [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
-* Jupyter または JupyterLab で付属のツールを使用します。
+:::image type="content" source="media/how-to-run-jupyter-notebooks/export-notebook.png" alt-text="ノートブックをコンピューターにエクスポートする":::
+
+エクスポートしたファイルは、お使いのコンピューターに保存されます。
 
 ## <a name="run-a-notebook-or-python-script"></a>ノートブックまたは Python スクリプトを実行する
 
-ノートブックまたは Python スクリプトを実行するには、まず、実行中の[コンピューティング インスタンス](concept-compute-instance.md)に接続します。 コンピューティング インスタンスがない場合は、次の手順に従って作成します。 
+ノートブックまたは Python スクリプトを実行するには、まず、実行中の[コンピューティング インスタンス](concept-compute-instance.md)に接続します。
 
-1. ノートブックまたはスクリプトのツールバーで **[+]** を選択します。 
-2. コンピューティングに名前を付け、 **[仮想マシン サイズ]** を選択します。 
-3. **［作成］** を選択します
-4. コンピューティング インスタンスがファイルに自動的に接続されます。  これで、コンピューティング インスタンスの左側にあるツールを使用して、ノートブック セルまたは Python スクリプトを実行できるようになります
+* コンピューティング インスタンスがない場合は、次の手順に従って作成します。
+
+    1. ノートブックまたはスクリプト ツールバーで、[コンピューティング] ドロップダウンの右側にある **[+ 新しいコンピューティング]** を選択します。 画面のサイズによっては、これは **[...]** メニューの下に配置されている場合があります。
+        :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="新しいコンピューティングを作成する":::
+    1. コンピューティングに名前を付け、 **[仮想マシン サイズ]** を選択します。 
+    1. **［作成］** を選択します
+    1. コンピューティング インスタンスがファイルに自動的に接続されます。  これで、コンピューティング インスタンスの左側にあるツールを使用して、ノートブック セルまたは Python スクリプトを実行できるようになります。
+
+* コンピューティング インスタンスが停止している場合は、[コンピューティング] ドロップダウンの右側にある **[コンピューティングの開始]** を選択します。 画面のサイズによっては、これは **[...]** メニューの下に配置されている場合があります。
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="コンピューティング インスタンスを開始する":::
 
 作成したコンピューティング インスタンスを表示および使用できるのは自分のみです。  **ユーザー ファイル** は VM とは別に格納され、ワークスペース内のすべてのコンピューティング インスタンス間で共有されます。
 
@@ -209,33 +156,12 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
 | コンピューティングを停止する     |    セルは実行されません  |
 | Jupyter または JupyterLab でノートブックを開く     |    新しいタブでノートブックが開きます。  |
 
-### <a name="add-new-kernels"></a>新しいカーネルを追加する
+## <a name="add-new-kernels"></a>新しいカーネルを追加する
 
-ノートブックによって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
+[ターミナルを使用](how-to-access-terminal.md#add-new-kernels)して、新しいカーネルを作成し、コンピューティング インスタンスに追加します。 ノートブックによって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。
 
-1. ノートブックのツールバーで [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択します。
-1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
-    ```shell
-    conda create -y --name newenv
-    ```
-1. 環境をアクティブにします。  `newenv` を作成した後の例を次に示します。
+右側にあるカーネルのドロップダウンを使用して、インストールされているカーネルのいずれかに変更します。  
 
-    ```shell
-    conda activate newenv
-    ```
-1. pip と ipykernel パッケージを新しい環境にインストールし、その conda 環境用のカーネルを作成します
-
-    ```shell
-    conda install -y pip
-    conda install -y ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-1. カーネルをインストールしたら、ページを最新の情報に更新してノートブックを開いてください。 カーネルの一覧に新しいカーネルが表示されます。
-
-> [!NOTE]
-> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、**現在実行中のカーネル** にパッケージを自動的にインストールします
-
-任意の[使用可能な Jupyter カーネル](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)をインストールできます。
 
 ### <a name="status-indicators"></a>状態インジケーター
 

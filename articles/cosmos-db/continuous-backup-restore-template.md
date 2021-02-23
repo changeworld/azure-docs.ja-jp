@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 642c61414d882b9cfe83f585fda8ff5404e8834a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 4abfdd0209bd9f13fb7bd902b27a53f65156da2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538478"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381819"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>継続的バックアップと特定の時点への復元の構成と管理 (プレビュー) - Azure Resource Manager テンプレートの使用
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB の特定の時点への復元機能 (プレビュー) を使用
 
 ## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>継続的バックアップを使用してアカウントをプロビジョニングする
 
-Azure Resource Manager テンプレートを使用して、継続的モードで Azure Cosmos DB アカウントをデプロイできます。 アカウントをプロビジョニングするためのテンプレートを定義する場合は、次の例に示すように "backupPolicy" パラメーターを含めます。
+Azure Resource Manager テンプレートを使用して、継続的モードで Azure Cosmos DB アカウントをデプロイできます。 アカウントをプロビジョニングするためのテンプレートを定義する場合は、次の例に示すように `backupPolicy` パラメーターを含めます。
 
 ```json
 {
@@ -66,9 +66,9 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 また、Resource Manager テンプレートを使用してアカウントを復元することもできます。 テンプレートを定義するときは、次のパラメーターを指定します。
 
-* "createMode" パラメーターを "Restore" に設定します。
-* "restoreParameters" を定義します。"restoreSource" の値は、ソース アカウントの `az cosmosdb restorable-database-account list` コマンドの出力から抽出されます。 アカウント名のインスタンス ID 属性は、復元の実行に使用されます。
-* "restoreMode" パラメーターを "PointInTime" に設定し、"restoreTimestampInUtc" 値を構成します。
+* `createMode` パラメーターを *Restore* に設定します。
+* `restoreParameters` を定義します。`restoreSource` の値は、ソース アカウントの `az cosmosdb restorable-database-account list` コマンドの出力から抽出されます。 アカウント名のインスタンス ID 属性は、復元の実行に使用されます。
+* `restoreMode` パラメーターを *PointInTime* に設定し、`restoreTimestampInUtc` 値を構成します。
 
 ```json
 {

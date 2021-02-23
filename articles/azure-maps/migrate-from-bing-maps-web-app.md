@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684827"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389112"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>チュートリアル:Bing 地図から Web アプリを移行する
 
@@ -33,9 +33,9 @@ Bing 地図が使用される Web アプリでは、多くの場合、Bing 地�
 
 既存の Web アプリケーションを移行する場合は、Cesium、Leaflet、OpenLayers などのオープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 そういったライブラリが使用されていて、使用を継続したい場合は、それを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続することができます。 よく使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法については、以下のリンクから詳しい情報をご覧いただけます。
 
-* Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
-* Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
-* OpenLayers - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [ドキュメント](https://openlayers.org/)
+* [Cesium](https://cesiumjs.org/) - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [プラグイン リポジトリ]()
+* [Leaflet](https://leafletjs.com/) – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [プラグイン リポジトリ]()
+* [OpenLayers](https://openlayers.org/) - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [プラグイン リポジトリ]()
 
 JavaScript フレームワークを開発に使用している場合は、次のいずれかのオープンソース プロジェクトを利用できる可能性があります。
 
@@ -64,7 +64,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 | タイル レイヤー              | ✓                                                                                      |
 | KML レイヤー                | ✓                                                                                      |
 | 等高線レイヤー            | [サンプル](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| データのビン分割レイヤー       | [サンプル](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| データのビン分割レイヤー       | オープンソースの Azure Maps [Gridded Data Source モジュール](https://github.com/Azure-Samples/azure-maps-gridded-data-source)に含まれています。       |
 | アニメーション タイル レイヤー      | オープンソースの Azure Maps [アニメーション モジュール](https://github.com/Azure-Samples/azure-maps-animations)に含まれています。 |
 | 描画ツール            | ✓                                                                                      |
 | ジオコーダー サービス         | ✓                                                                                      |
@@ -72,10 +72,10 @@ JavaScript フレームワークを開発に使用している場合は、次の
 | 距離マトリックス サービス  | ✓                                                                                      |
 | 空間データ サービス     | 該当なし                                                                                    |
 | 衛星または航空映像 | ✓                                                                                      |
-| 鳥瞰図         | 対応予定                                                                                |
-| Streetside 映像       | 対応予定                                                                                |
+| 鳥瞰図         | N/A                                                                                |
+| Streetside 映像       | N/A                                                                                |
 | GeoJSON サポート          | ✓                                                                                      |
-| GeoXML サポート           | ✓                                                                                      |
+| GeoXML サポート           | ✓ [空間 IO モジュール](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known Text サポート  | ✓                                                                                      |
 | カスタム マップ スタイル        | 一部サポート                                                                                |
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dd4114f417fa266d8d638e28167d513fdf01aa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806302"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380846"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合
 
@@ -30,7 +30,7 @@ ms.locfileid: "98806302"
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Bynder でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -40,7 +40,7 @@ ms.locfileid: "98806302"
 * Bynder では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Bynder では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-## <a name="adding-bynder-from-the-gallery"></a>ギャラリーからの Bynder の追加
+## <a name="add-bynder-from-the-gallery"></a>ギャラリーからの Bynder の追加
 
 Azure AD への Bynder の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Bynder を追加する必要があります。
 
@@ -56,7 +56,7 @@ Azure AD への Bynder の統合を構成するには、ギャラリーから管
 
 **B.Simon** というテスト ユーザーを使用して、Bynder に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Bynder の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Bynder に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Bynder に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
@@ -65,13 +65,13 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
    1. **[Bynder のテスト ユーザーの作成](#create-bynder-test-user)** - Bynder で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **Bynder** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -163,4 +163,4 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Bynder を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Bynder を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

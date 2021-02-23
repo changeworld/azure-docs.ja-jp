@@ -1,22 +1,17 @@
 ---
 title: 変更データ キャプチャを使用してデータを増分コピーする
 description: このチュートリアルでは、Azure SQL Managed Instance データベースから Azure Storage に差分データを増分コピーする Azure Data Factory パイプラインを作成します。
-services: data-factory
 ms.author: nihurt
 author: hurtn
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: ba4e5c3998c7c6218d2f0232e3c05930ca82e378
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555918"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391271"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
@@ -90,10 +85,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```sql
      insert into customers 
-        (customer_id, first_name, last_name, email, city) 
+         (customer_id, first_name, last_name, email, city) 
      values 
-        (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
-        (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
+         (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
+         (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
         (3, 'Nathalia', 'Seckom', 'nseckom2@blogger.com', 'Portsmouth');
     ```
 
@@ -113,7 +108,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
-    *データ ファクトリ名 "ADFTutorialDataFactory" は利用できません。*
+    "*データ ファクトリ名 "ADFTutorialDataFactory" は利用できません。* "
 3. **バージョン** として **[V2]** を選択します。
 4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 5. **[リソース グループ]** について、次の手順のいずれかを行います。

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100915"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590661"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>チュートリアル:Media Services の信頼されたストレージ
 
@@ -23,6 +23,9 @@ ms.locfileid: "100100915"
 > - ネットワーク アクセス制御 (ファイアウォール、VPN など) が使用されていても Azure サービスからストレージ アカウントにアクセスできるようにする方法
 
 2020-05-01 API では、Media Services アカウントにマネージド ID を関連付けることにより、信頼されたストレージを有効にすることができます。
+
+>[!NOTE]
+>信頼されたストレージは API でのみ使用でき、現在、Azure portal では有効になっていません。
 
 Media Services は、システム認証を使用してストレージ アカウントに自動的にアクセスすることができます。 Media Services アカウントとストレージ アカウントが同じサブスクリプションに含まれていることが Media Services によって検証されます。 また、関連付けを追加するユーザーが Azure Resource Manager RBAC を使用してストレージ アカウントにアクセスしていることも検証されます。
 

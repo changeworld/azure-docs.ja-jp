@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091665"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557492"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -80,7 +80,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)」をご覧ください。 Privileged Identity Management を使用している場合、[管理する Azure リソースの検出](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)または [Azure リソース ロールの割り当て](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)に関するページを参照してください。
+    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)」をご覧ください。 Privileged Identity Management を使用している場合、[管理する Azure リソースの検出](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)または [Azure リソース ロールの割り当て](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)に関するページを参照してください。
 
 1. 次のセクションの手順を実行し、昇格したアクセス権を削除します。
 
@@ -149,7 +149,7 @@ CanDelegate        : False
 
 Azure CLI を使用して全体管理者のアクセス権を昇格するには、以下の基本的な手順を実行します。
 
-1. [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
+1. [az rest](/cli/azure/reference-index#az_rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ Azure CLI を使用して全体管理者のアクセス権を昇格するには�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)」をご覧ください。
+    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)」をご覧ください。
 
 1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
@@ -213,7 +213,7 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)」を参照してください。
+    ロールの割り当ての詳細については、「[REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)」をご覧ください。
 
 1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
@@ -330,4 +330,4 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 ## <a name="next-steps"></a>次のステップ
 
 - [各種ロールについて](rbac-and-directory-admin-roles.md)
-- [REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)

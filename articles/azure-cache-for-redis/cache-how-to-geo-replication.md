@@ -1,24 +1,28 @@
 ---
-title: Azure Cache for Redis の geo レプリケーションの設定方法 | Microsoft Docs
-description: 地理的リージョンに関係なく Azure Cache for Redis インスタンスをレプリケートする方法を説明します。
+title: Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
+description: Azure リージョンをまたいで Azure Cache for Redis Premium インスタンスをレプリケートする方法について説明します。
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 27ccc81ddf0a771de9fb15f60820dfd3efa6146e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536880"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386875"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの設定方法
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
 
-geo レプリケーションには、レベルが Premium である Azure Cache for Redis の 2 つのインスタンスをリンクするメカニズムが用意されています。 1 つのキャッシュはプライマリ リンク キャッシュとして、もう一方のキャッシュはセカンダリ リンク キャッシュとして選択されます。 セカンダリ リンク キャッシュは読み取り専用になり、プライマリ キャッシュに書き込まれたデータがセカンダリ リンク キャッシュにレプリケートされます。 プライマリ キャッシュ インスタンスとセカンダリ キャッシュ インスタンス間のデータ転送は TLS によって保護されます。 geo レプリケーションを使用すると、2 つの Azure リージョンにまたがるキャッシュを設定できます。 この記事では、Premium レベルの Azure Cache for Redis インスタンスの geo レプリケーションを構成するためのガイドを提供します。
+この記事では、Azure portal を使用し、geo レプリケートされた Azure Cache を構成する方法について説明します。
+
+geo レプリケーションによって 2 つの Premium Azure Cache for Redis インスタンスがリンクされ、データ レプリケーション関係が作られます。 これらのキャッシュ インスタンスは通常、異なる Azure リージョンに置かれますが、必須ではありません。 1 つのインスタンスはプライマリとして、もう 1 つはセカンダリとして機能します。 プライマリによって読み取りと書き込み要求が処理され、変更がセカンダリに反映されます。 2 つのインスタンス間のリンクが削除されるまで、このプロセスが続きます。
 
 > [!NOTE]
-> geo レプリケーションは、ディザスター リカバリー ソリューションとして設計されています。 既定では、アプリケーションはプライマリ リージョンに対して書き込みと読み取りを行います。 必要に応じて、セカンダリ リージョンから読み取るように構成することもできます。 geo レプリケーションでは、アプリケーションの他の部分がプライマリ リージョンに残っている場合に、リージョン間のネットワーク待ち時間が増えるという懸念があるため、自動フェールオーバーは提供されません。 セカンダリ キャッシュのリンクを解除することによって、フェールオーバーを管理および開始する必要があります。 これにより、新しいプライマリ インスタンスに昇格されます。
+> geo レプリケーションは、ディザスター リカバリー ソリューションとして設計されています。
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>geo レプリケーションの前提条件
 
@@ -75,7 +79,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     ![プライマリ キャッシュとセカンダリ キャッシュのリンク状態を表示する方法を強調表示するスクリーンショット。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    レプリケーション プロセスが完了すると、 **[リンクの状態]** が「 **成功** 」に変わります。
+    レプリケーション プロセスが完了すると、 **[リンクの状態]** が「**成功**」に変わります。
 
     ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -111,7 +115,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 - [リンクされたキャッシュを削除しようとすると、操作が失敗するのはどうしてですか](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [セカンダリ リンク キャッシュにはどのリージョンを使う必要がありますか](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [セカンダリ リンク キャッシュへのフェールオーバーはどのように動作しますか](#how-does-failing-over-to-the-secondary-linked-cache-work)
-- [Geo レプリケーションを使用してファイアウォールを構成することはできますか](#can-i-configure-a-firewall-with-geo-replication)
+- [geo レプリケーションを使用してファイアウォールを構成することはできますか](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Standard または Basic レベル キャッシュで geo レプリケーションを使用することはできますか
 

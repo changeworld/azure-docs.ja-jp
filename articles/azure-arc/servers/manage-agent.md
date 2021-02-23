@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 01/21/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662128"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368457"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -48,60 +48,17 @@ Arc 対応サーバーの場合、マシンの名前を変更する前に、VM �
 > [!WARNING]
 > そのマシンのコンピューター名を変更せずに、どうしても必要な場合にのみこの手順を行うことをお勧めします。
 
-以下の手順は、コンピューターの名前変更の手順をまとめたものです。
-
 1. マシンにインストールされている VM 拡張機能を監査し、それらの構成をメモしておきます。そのためには、[Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed) を使用します。
 
-2. PowerShell または Azure CLI を使用するか、あるいは Azure portal から VM 拡張機能を削除します。
+2. [Azure portal](manage-vm-extensions-portal.md#uninstall-extension) から、または [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、インストールされた VM 拡張機能を削除します。
 
-    > [!NOTE]
-    > Azure Policy ゲスト構成ポリシーを使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後、および名前が変更されたがマシンが Arc 対応サーバーに登録された後に再デプロイされます。
+3. **azcmagent** ツールと [Disconnect](manage-agent.md#disconnect) パラメーターを使用して、Azure Arc からマシンを切断し、Azure からマシン リソースを削除します。 マシンを Arc 対応サーバーから切断しても、Connected Machine エージェントは削除されず、このプロセスの一環としてエージェントを削除する必要はありません。 これは、対話形式でログオンしているときに手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォームの[アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化できます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
 
-3. PowerShell または Azure CLI を使用するか、あるいはポータルから、マシンを Arc 対応サーバーから切断します。
+4. コンピューター名を変更します。
 
-4. コンピューターの名前を変更します。
+5. もう一方のリージョンで Arc 対応サーバーに Connected Machine エージェントを再登録します。 [Connect](manage-agent.md#connect) パラメーターを指定して `azcmagent` ツールを実行し、この手順を完了します。
 
-5. `Azcmagent` ツールを使用してマシンを Arc 対応サーバーに接続し、Azure で新しいリソースを登録して作成します。
-
-6. ターゲット マシンに以前にインストールされた VM 拡張機能をデプロイします。
-
-このタスクを完了するには、次の手順を使用します。
-
-1. [Azure portal](manage-vm-extensions-portal.md#uninstall-extension) から、または [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、インストールされた VM 拡張機能を削除します。
-
-2. Azure Arc からマシンを切断するには、次のいずれかの方法を使用します。マシンを Arc 対応サーバーから切断しても、Connected Machine エージェントは削除されず、このプロセスの一環としてエージェントを削除する必要はありません。 マシンにデプロイされているすべての VM 拡張機能は、このプロセスの間、引き続き動作します。
-
-    # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
-
-    1. お使いのブラウザーで [Azure portal](https://portal.azure.com) に移動します。
-    1. ポータルで **[サーバー - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
-    1. 選択された登録済みの Arc 対応サーバーから、上部のバーの **[削除]** を選択して Azure のリソースを削除します。
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    ```azurecli
-    az resource delete \
-      --resource-group ExampleResourceGroup \
-      --name ExampleArcMachine \
-      --resource-type "Microsoft.HybridCompute/machines"
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-    ```powershell
-    Remove-AzResource `
-     -ResourceGroupName ExampleResourceGroup `
-     -ResourceName ExampleArcMachine `
-     -ResourceType Microsoft.HybridCompute/machines
-    ```
-
-3. マシンのコンピューター名を変更します。
-
-### <a name="after-renaming-operation"></a>名前変更操作の後
-
-マシンの名前が変更された後で、Connected Machine エージェントを Arc 対応サーバーに再登録する必要があります。 [Connect](#connect) パラメーターを指定して `azcmagent` ツールを実行し、この手順を完了します。
-
-Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure Policy ゲスト構成ポリシーを使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
+6. Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure ポリシーを使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
 
 ## <a name="upgrading-agent"></a>エージェントのアップグレード
 

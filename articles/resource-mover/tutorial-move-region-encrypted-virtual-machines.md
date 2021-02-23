@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981957"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361011"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>チュートリアル:暗号化された Azure VM をリージョン間で移動する
 
@@ -54,26 +54,49 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **ターゲット リージョンの料金** | VM の移動先となるターゲット リージョンに関連付する料金と課金を確認します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用すると便利です。
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>キー コンテナーのアクセス許可を確認する (Azure Disk Encryption)
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE) を使用して VM のキー コンテナーに対するユーザーのアクセス許可を確認する
 
-Azure Disk Encryption が有効になっている VM を移動する場合、暗号化された VM の移動が正しく実行されるよう、ソース リージョンと宛先リージョンのキー コンテナーでアクセス許可を確認および設定します。 
+Azure Disk Encryption が有効になっている VM を移動する場合、[以下](#copy-the-keys-to-the-destination-key-vault)に記載されているスクリプトを実行する必要があります。スクリプトを実行するユーザーには適切なアクセス許可が必要です。 必要なアクセス許可については、下の表を参照してください。 アクセス許可を変更するオプションは、Azure portal でキー コンテナーに移動して確認できます。 **[設定]** の **[アクセス ポリシー]** を選択してください。
 
-1. Azure portal で、ソース リージョンのキー コンテナーを開きます。
-2. **[設定]** の **[アクセス ポリシー]** を選択します。
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="キー コンテナーのアクセス ポリシーを開くためのボタン。" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="キー コンテナーのアクセス ポリシーを開くためのボタン。" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+ユーザーのアクセス許可がない場合、 **[アクセス ポリシーの追加]** を選択してアクセス許可を指定します。 ユーザー アカウントに既にポリシーがある場合は、 **[ユーザー]** で、下の表に従ってアクセス許可を設定します。
 
-3. ユーザーのアクセス許可がない場合、 **[アクセス ポリシーの追加]** を選択してアクセス許可を指定します。 ユーザー アカウントに既にポリシーがある場合は、 **[ユーザー]** で、アクセス許可を設定します。
+ADE を使用する Azure VM には次のバリエーションが考えられ、また、それに応じて、関連するコンポーネントのアクセス許可を設定する必要があります。
+- 既定のオプション (ディスクはシークレットのみを使用して暗号化されます)
+- [キー暗号化キー](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)を使用して強化されたセキュリティ
 
-    - 移動する VM の Azure Disk Encryption (ADE) が有効になっている場合、 **[キーのアクセス許可]**  >  **[キーの管理操作]** で、 **[取得]** と **[一覧]** が選択されていなければ、それらを選択します。
-    - 保存時の暗号化 (サーバー側暗号化) に使用するディスク暗号化キーを、カスタマー マネージド キー (CMK) を使用して暗号化する場合、 **[キーのアクセス許可]**  >  **[キーの管理操作]** で **[取得]** と **[一覧]** を選択します。 さらに、 **[暗号化操作]** で **[暗号化解除]** と **[暗号化]** を選択します。
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="キー コンテナーのアクセス許可を選択するためのドロップダウン リスト。" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>ソース リージョンのキー コンテナー
 
-4. **[シークレットのアクセス許可]** の **[シークレットの管理操作]** で、 **[取得]** 、 **[一覧]** 、 **[設定]** を選択します。 
-5. 新しいユーザー アカウントにアクセス許可を割り当てる場合、その割り当て先となるユーザーを **[プリンシパルの選択]** から選択します。
-6. **[アクセス ポリシー]** で、 **[Azure Disk Encryption (ボリューム暗号化用)]** が有効になっていることを確認します。
-7. キー コンテナーに対する手順を宛先リージョンについても行います。
+スクリプトを実行するユーザーには、次のアクセス許可を設定する必要があります。 
+
+**コンポーネント** | **必要なアクセス許可**
+--- | ---
+シークレット|  取得のアクセス許可 <br> </br> **[シークレットのアクセス許可]** >   **[シークレットの管理操作]** で **[取得]** を選択します 
+[キー] <br> </br> キー暗号化キー (KEK) を使用している場合は、シークレットに加えて、このアクセス許可が必要です| 取得と暗号化解除のアクセス許可 <br> </br> **[キーのアクセス許可]**  >  **[キーの管理操作]** で **[取得]** を選択します。 **[暗号化操作]** で、 **[暗号化解除]** を選択します。
+
+### <a name="destination-region-keyvault"></a>宛先リージョンのキー コンテナー
+
+**[アクセス ポリシー]** で、 **[Azure Disk Encryption (ボリューム暗号化用)]** が有効になっていることを確認します。 
+
+スクリプトを実行するユーザーには、次のアクセス許可を設定する必要があります。 
+
+**コンポーネント** | **必要なアクセス許可**
+--- | ---
+シークレット|  設定のアクセス許可 <br> </br> **[シークレットのアクセス許可]** >   **[シークレットの管理操作]** で **[設定]** を選択します 
+[キー] <br> </br> キー暗号化キー (KEK) を使用している場合は、シークレットに加えて、このアクセス許可が必要です| 取得、作成、暗号化のアクセス許可 <br> </br> **[キーのアクセス許可]**  >  **[キーの管理操作]** で **[取得]** と **[作成]** を選択します。 **[暗号化操作]** で **[暗号化]** を選択します。
+
+上のアクセス許可に加え、Resource Mover が皆さんに代わって Azure リソースへのアクセスに使用する[マネージド システム ID](./common-questions.md#how-is-managed-identity-used-in-resource-mover) のアクセス許可を宛先キー コンテナーに追加する必要があります。 
+
+1. **[設定]** の **[アクセス ポリシーの追加]** を選択します。 
+2. **[プリンシパルの選択]** で MSI を検索します。 MSI の名前は ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` です。 
+3. MSI に関して、次のアクセス許可を追加します。
+
+**コンポーネント** | **必要なアクセス許可**
+--- | ---
+シークレット|  取得と一覧のアクセス許可 <br> </br> **[シークレットのアクセス許可]** >   **[シークレットの管理操作]** で **[取得]** と **[一覧]** を選択します 
+[キー] <br> </br> キー暗号化キー (KEK) を使用している場合は、シークレットに加えて、このアクセス許可が必要です| 取得と一覧のアクセス許可 <br> </br> **[キーのアクセス許可]**  >  **[キーの管理操作]** で **[取得]** と **[一覧]** を選択します。
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>宛先キー コンテナーにキーをコピーする

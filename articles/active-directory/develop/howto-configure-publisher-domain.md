@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013636"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104180"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
 
@@ -48,18 +48,12 @@ ms.locfileid: "98013636"
 
 アプリの発行元ドメインを設定するには、次の手順に従います。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、<a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
-
-1. アカウントが複数の Azure AD テナントに存在する場合:
-   1. ページの右上隅にあるメニューからプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
-   1. アプリケーションを作成する Azure AD テナントにセッションを変更します。
-
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、上部のメニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリが登録されているテナントを選択します。
 1. [[Azure Active Directory] > [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) に移動し、構成するアプリを見つけて選択します。
 
    アプリを選択すると、アプリの **[概要]** ページが表示されます。
-
-1. アプリの **[概要]** ページから、 **[ブランド]** セクションを選択します。
-
+1. **[管理]** 下にある **[ブランド]** を選択します。
 1. **[発行元ドメイン]** フィールドを見つけ、次のいずれかのオプションを選択します。
 
    - ドメインがまだ構成されていない場合は、 **[ドメインの構成]** を選択します。

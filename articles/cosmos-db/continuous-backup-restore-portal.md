@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538850"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381870"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>継続的バックアップとポイントインタイム リストア (プレビュー) を構成および管理する - Azure portal を使用
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Azure portal で復元ポイントの時刻を入力する際に、復元ポイ�
 Azure portal を使用すると、削除されたアカウントを削除後 30 日以内に完全に復元できます。 次の手順に従って、削除されたアカウントを復元します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-1. グローバル検索バーで「Azure Cosmos DB」リソースを検索します。 すべての既存のアカウントが一覧表示されます。
+1. グローバル検索バーで「*Azure Cosmos DB*」リソースを検索します。 すべての既存のアカウントが一覧表示されます。
 1. 次に、 **[復元]** ボタンを選択します。 [復元] ペインに、保持期間 (削除時刻から 30 日間) 以内に復元できる削除済みアカウントの一覧が表示されます。
 1. 復元するアカウントを選択します。
 
@@ -95,7 +95,7 @@ Azure portal を使用すると、削除されたアカウントを削除後 30 
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>復元操作の状態を追跡する
 
-復元操作を開始した後、ポータルの右上隅にある **[通知]** ベル アイコンを選択します。 これにより、復元しているアカウントの状態を示すリンクが表示されます。 復元の進行中は、アカウントの状態は "Creating" (作成中) になります。復元操作が完了すると、アカウントの状態は "Online" (オンライン) に変わります。
+復元操作を開始した後、ポータルの右上隅にある **[通知]** ベル アイコンを選択します。 これにより、復元しているアカウントの状態を示すリンクが表示されます。 復元の進行中は、アカウントの状態は "*Creating*" (作成中) になります。復元操作が完了すると、アカウントの状態は "*Online*" (オンライン) に変わります。
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="操作が完了すると、復元されたアカウントの状態は、作成中からオンラインに変わります。" border="true":::
 

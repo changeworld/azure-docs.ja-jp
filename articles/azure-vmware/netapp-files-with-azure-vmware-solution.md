@@ -2,13 +2,13 @@
 title: Azure NetApp Files および Azure VMware Solution
 description: Azure NetApp Files および Azure VMware Solution VM を使用して、オンプレミス サーバー、Azure VMware Solution VM、クラウド インフラストラクチャの間でデータを移行および同期します。
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: db7d8eb05e5bd70f6a2397b3017924093218e78e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988650"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371568"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files および Azure VMware Solution
 
@@ -16,7 +16,7 @@ ms.locfileid: "99988650"
 
 ## <a name="azure-netapp-files-overview"></a>Azure NetApp Files の概要
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) は、クラウドで最も要求の厳しいエンタープライズ ファイルワークロードを移行および実行するための Azure サービスです。 これには、コードを変更することなく、データベース、SAP、およびハイパフォーマンス コンピューティング アプリケーションが含まれます。
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) は、クラウド内の最も要求の厳しいエンタープライズ ファイル ワークロード (データベース、SAP、ハイ パフォーマンス コンピューティング アプリケーション) を、コードを変更することなく移行および実行するための Azure サービスです。
 
 ### <a name="features"></a>機能
 (Azure NetApp Files が使用されているサービス)。
@@ -83,11 +83,13 @@ Azure NetApp Files は多くの Azure リージョンで使用でき、リージ
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="ボリュームの構成の詳細を示すスクリーンショット。":::
 
-    ボリューム anfvolume は、200 GiB のサイズで、容量プール anfpool1 にあることがわかります。  10.22.3.4:/ANFVOLUME を使用して NFS ファイル共有としてエクスポートされます。 Azure NetApp Files と、VM にマウントするための NFS パスのために Azure Virtual Network (VNet) から 1 つのプライベート IP が作成されました。 サイズまたは "クォータ" 別の Azure NetApp Files ボリュームのパフォーマンスについては、「[Azure NetApp Files のパフォーマンスに関する考慮事項](../azure-netapp-files/azure-netapp-files-performance-considerations.md)」を参照してください。 
+    anfvolume は、200 GiB のサイズで、容量プール anfpool1 にあることがわかります。 10.22.3.4:/ANFVOLUME を使用して NFS ファイル共有としてエクスポートされます。 Azure NetApp Files と、VM にマウントするための NFS パスのために Azure Virtual Network (VNet) から 1 つのプライベート IP が作成されました。
+
+    サイズまたは "クォータ" 別の Azure NetApp Files ボリュームのパフォーマンスについては、「[Azure NetApp Files のパフォーマンスに関する考慮事項](../azure-netapp-files/azure-netapp-files-performance-considerations.md)」を参照してください。 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>事前に構成された Azure VMware Solution VM の共有マッピングを検証する
 
-Azure NetApp Files 共有に Azure VMware Solution VM からアクセスできるようにするには、SMB と NFS の共有マッピングを理解することが重要です。 ここで説明されている SMB または NFS ボリュームのマウントは、これらのボリュームを構成した後でのみ可能です。
+Azure NetApp Files 共有に Azure VMware Solution VM からアクセスできるようにするには、SMB と NFS の共有マッピングを理解する必要があります。 SMB または NFS ボリュームは、構成した後にのみ、ここで説明する手順に従ってマウントできます。
 
 - SMB 共有: SMB ボリュームをデプロイする前に、Active Directory 接続を作成します。 接続を成功させるには、指定されたドメイン コントローラーが Azure NetApp Files の委任されたサブネットからアクセス可能である必要があります。 Active Directory は、Azure NetApp Files アカウント内で構成されると、SMB ボリュームの作成中に選択可能な項目として表示されます。
 

@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SharePoint Online List からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474949"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393430"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -196,7 +191,7 @@ SharePoint Online リストからデータをコピーすると、SharePoint Onl
 | 複数行のテキスト                          | Edm.String                                           | String                                   |
 | 選択 (メニューから選択)                    | Edm.String                                           | String                                   |
 | 数値 (1、1.0、100)                            | Edm.Double                                           | Double                                   |
-| 通貨 ($、¥、€)                              | Edm.Double                                           | Double                                   |
+| 通貨 ($、¥、&euro;)                              | Edm.Double                                           | Double                                   |
 | 日時                                   | Edm.DateTime                                         | DateTime                                 |
 | 参照 (このサイトに既に存在する情報)       | Edm.Int32                                            | Int32                                    |
 | はい/いいえ (チェック ボックス)                              | Edm.Boolean                                          | Boolean                                  |

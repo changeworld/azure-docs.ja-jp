@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930715"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547266"
 ---
 # <a name="tutorial-mock-api-responses"></a>チュートリアル:API の応答の模擬テストを実行する
 
@@ -53,11 +53,13 @@ ms.locfileid: "91930715"
 1. **[ゲートウェイ]** で **[Managed]\(マネージド\)** が選択されていることを確認します。
 1. **［作成］** を選択します
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="モック API 応答":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="空の API を作成":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
 
 API は、少なくとも 1 つの操作を公開します。 このセクションでは、作成した空の API に操作を追加します。 このセクションの手順を完了した後、操作を呼び出すと、エラーが発生します。 後で「[応答のモック作成を有効にする](#enable-response-mocking)」セクションの手順を完了した後は、エラーは発生しません。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. 前の手順で作成した API を選びます。
 1. **[+ Add Operation] \(+ 操作の追加\)** を選択します。
@@ -77,7 +79,7 @@ API は、少なくとも 1 つの操作を公開します。 このセクショ
 1. **[サンプル]** テキスト ボックスに「`{ "sampleField" : "test" }`」と入力します。
 1. **[保存]** を選択します。
 
-:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="モック API 応答" border="false":::
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="API 操作を追加する" border="false":::
 
 この例では必須ではありませんが、他のタブで、API 操作に対する追加の設定を構成できます。その例を次に示します。
 
@@ -87,6 +89,39 @@ API は、少なくとも 1 つの操作を公開します。 このセクショ
 |**クエリ**     |  クエリ パラメーターを追加します。 名前と説明を提供するだけでなく、クエリ パラメーターに割り当てる値を指定することもできます。 値の 1 つを既定値としてマークすることができます (オプション)。        |
 |**Request**     |  要求のコンテンツの種類、例、およびスキーマを定義します。       |
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+テスト API に操作を追加するには、[az apim api operation create](/cli/azure/apim/api/operation#az_apim_api_operation_create) コマンドを実行します。
+
+```azurecli
+az apim api operation create --resource-group apim-hello-word-resource-group \
+    --display-name "Test call" --api-id test-api --method GET \
+    --url-template /test --service-name apim-hello-world 
+```
+
+[az apim api operation list](/cli/azure/apim/api/operation#az_apim_api_operation_list) コマンドを実行して、API のすべての操作を表示します。
+
+```azurecli
+az apim api operation list --resource-group apim-hello-word-resource-group \
+    --api-id test-api --service-name apim-hello-world --output table
+```
+
+操作を削除するには、[az apim api operation delete](/cli/azure/apim/api/operation#az_apim_api_operation_delete) コマンドを使用します。 前のコマンドから操作 ID を取得します。
+
+```azurecli
+az apim api operation delete --resource-group apim-hello-word-resource-group \
+    --api-id test-api --operation-id 00000000000000000000000000000000 \
+    --service-name apim-hello-world
+```
+
+この記事の残りの部分で使用するために、この操作を保持します。
+
+---
+
 ## <a name="enable-response-mocking"></a>応答のモック作成を有効にする
 
 1. 「[テスト API を作成する](#create-a-test-api)」で作成した API を選択します。
@@ -94,15 +129,20 @@ API は、少なくとも 1 つの操作を公開します。 このセクショ
 1. 右側のウィンドウで **[デザイン]** タブが選択されていることを確認します。
 1. **[受信処理]** ウィンドウで、 **[+ ポリシーの追加]** を選択します。
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="モック API 応答" border="false":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="処理ポリシーを追加する" border="false":::
 
 1. ギャラリーから **[Mock responses]\(モック応答\)** を選択します。
 
-    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="モック API 応答" border="false":::
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="モック応答ポリシー タイル" border="false":::
 
 1. **[API Management response]\(API Management 応答\)** ボックスに「**200 OK, application/json**」と入力します。 この選択は、API が、前のセクションで定義した応答のサンプルを返すことを示します。
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="モック API 応答" というテキストを含む黄色のバーは、API Management から返された応答が[モック作成ポリシー](api-management-advanced-policies.md#mock-response)によってモック作成されるものの、バックエンドによって生成されるわけではないことを示しています。
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="モック応答を設定する":::
+
+1. **[保存]** を選択します。
+
+    > [!TIP]
+    > API の "**モック作成が有効になっています**" というテキストを含む黄色のバーは、API Management から返された応答が [モック作成ポリシー](api-management-advanced-policies.md#mock-response)によってモック作成されるものの、バックエンドによって生成されるわけではないことを示しています。
 
 ## <a name="test-the-mocked-api"></a>モック API をテストする
 
@@ -110,11 +150,11 @@ API は、少なくとも 1 つの操作を公開します。 このセクショ
 1. **[テスト]** タブを選びます。
 1. **[テスト呼び出し]** API が選択されていることを確認します。 **[送信]** を選択して、テスト呼び出しを実行します。
 
-   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="モック API 応答":::
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="モック API をテストする":::
 
 1. **[HTTP 応答]** に、チュートリアルの最初のセクションでサンプルとして指定した JSON が表示されます。
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="モック API 応答":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="モック HTTP 応答":::
 
 ## <a name="next-steps"></a>次のステップ
 

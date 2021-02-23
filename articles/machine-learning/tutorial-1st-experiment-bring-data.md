@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622797"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378003"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
@@ -82,21 +82,8 @@ optimizer = optim.SGD(
 
 これで、スクリプトは _データ パス_ を引数として受け付けるようになりました。 まず、それをローカルでテストします。 チュートリアル ディレクトリ構造に、`data` という名前のフォルダーを追加します。 ディレクトリ構造は次のようになります。
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-|  └──pytorch-env.yml
-└──data
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-└──04-run-pytorch.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text=".azureml、data、src の各サブディレクトリを示すディレクトリ構造":::
+
 
 前のチュートリアルで `train.py` をローカルで実行しなかった場合、`data/` ディレクトリは含まれません。 この場合は、`train.py` スクリプト内で `download=True` を使用して `torchvision.datasets.CIFAR10` メソッドをローカルで実行します。
 

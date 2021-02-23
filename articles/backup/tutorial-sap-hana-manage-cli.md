@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure VM で実行されたバ�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb552c5a336c3c55652936b87a668b54cfdeb41e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507234"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371772"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースを管理する
 
@@ -95,7 +95,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
 ```
 
-サンプル JSON (sappolicy.json) の出力:
+サンプル JSON (sappolicy.json):
 
 ```json
   "eTag": null,
@@ -226,11 +226,12 @@ az backup policy create --resource-group saphanaResourceGroup --vault-name sapha
     ],
     "workLoadType": "SAPHanaDatabase"
   },
-  "resourceGroup": "azurefiles",
+  "resourceGroup": "saphanaResourceGroup",
   "tags": null,
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+ポリシーが正常に作成されると、コマンドの実行中にパラメーターとして渡したポリシーの JSON が、その出力に表示されます。
 
 ポリシーの次のセクションを変更して、増分バックアップに必要なバックアップの頻度と保有期間を指定できます。
 

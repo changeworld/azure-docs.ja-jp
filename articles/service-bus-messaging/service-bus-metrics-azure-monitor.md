@@ -2,13 +2,13 @@
 title: Azure Monitor での Azure Service Bus メトリック | Microsoft Docs
 description: この記事では、Azure Monitor を使用して Service Bus エンティティ (キュー、トピック、およびサブスクリプション) を監視する方法について説明します。
 ms.topic: article
-ms.date: 11/18/2020
-ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 02/12/2021
+ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916884"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519101"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor での Azure Service Bus メトリック
 
@@ -74,7 +74,7 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|受信メッセージ|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|受信メッセージ|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。 このメトリックには、自動的に転送されるメッセージは含まれません。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 |送信メッセージ|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 | メッセージ| キュー/トピック内のメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:エンティティ名 |
 | アクティブなメッセージ| キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:エンティティ名 |

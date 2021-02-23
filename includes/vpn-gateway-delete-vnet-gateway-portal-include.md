@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8a61586acd888301350277d924f3d4fe176b4c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 91dc6ba0bcd455aefe9de2efdff2feb20938152d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148230"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376389"
 ---
 ### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>ステップ 1: 仮想ネットワーク ゲートウェイへの移動
 
 1. [Azure Portal](https://portal.azure.com) で **[すべてのリソース]** に移動します。 
-2. 仮想ネットワーク ゲートウェイのページを開くために、削除する仮想ネットワーク ゲートウェイに移動して、それをクリックします。
+2. 仮想ネットワーク ゲートウェイ ページを開くには、仮想ネットワーク ゲートウェイに移動し、クリックして選択します。 
 
 ### <a name="step-2-delete-connections"></a>ステップ 2: 接続の削除
 
